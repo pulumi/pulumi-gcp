@@ -13,16 +13,22 @@ namespace Pulumi.Gcp.DatabaseMigrationService.Inputs
     public sealed class ConnectionProfilePostgresqlArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// If the connected database is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.
+        /// </summary>
+        [Input("alloydbClusterId")]
+        public Input<string>? AlloydbClusterId { get; set; }
+
+        /// <summary>
         /// If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
         /// </summary>
         [Input("cloudSqlId")]
         public Input<string>? CloudSqlId { get; set; }
 
         /// <summary>
-        /// Required. The IP or hostname of the source MySQL database.
+        /// The IP or hostname of the source MySQL database.
         /// </summary>
-        [Input("host", required: true)]
-        public Input<string> Host { get; set; } = null!;
+        [Input("host")]
+        public Input<string>? Host { get; set; }
 
         /// <summary>
         /// (Output)
@@ -31,11 +37,11 @@ namespace Pulumi.Gcp.DatabaseMigrationService.Inputs
         [Input("networkArchitecture")]
         public Input<string>? NetworkArchitecture { get; set; }
 
-        [Input("password", required: true)]
+        [Input("password")]
         private Input<string>? _password;
 
         /// <summary>
-        /// Required. Input only. The password for the user that Database Migration Service will be using to connect to the database.
+        /// Input only. The password for the user that Database Migration Service will be using to connect to the database.
         /// This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
@@ -57,10 +63,10 @@ namespace Pulumi.Gcp.DatabaseMigrationService.Inputs
         public Input<bool>? PasswordSet { get; set; }
 
         /// <summary>
-        /// Required. The network port of the source MySQL database.
+        /// The network port of the source MySQL database.
         /// </summary>
-        [Input("port", required: true)]
-        public Input<int> Port { get; set; } = null!;
+        [Input("port")]
+        public Input<int>? Port { get; set; }
 
         /// <summary>
         /// SSL configuration for the destination to connect to the source database.
@@ -70,10 +76,10 @@ namespace Pulumi.Gcp.DatabaseMigrationService.Inputs
         public Input<Inputs.ConnectionProfilePostgresqlSslArgs>? Ssl { get; set; }
 
         /// <summary>
-        /// Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+        /// The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
         /// </summary>
-        [Input("username", required: true)]
-        public Input<string> Username { get; set; } = null!;
+        [Input("username")]
+        public Input<string>? Username { get; set; }
 
         public ConnectionProfilePostgresqlArgs()
         {

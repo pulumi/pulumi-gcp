@@ -81,7 +81,7 @@ type LookupInstanceResult struct {
 	ConfidentialInstanceConfigs []GetInstanceConfidentialInstanceConfig `pulumi:"confidentialInstanceConfigs"`
 	// The CPU platform used by this instance.
 	CpuPlatform string `pulumi:"cpuPlatform"`
-	// The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).`,
+	// The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
 	CurrentStatus string `pulumi:"currentStatus"`
 	// Whether deletion protection is enabled on this instance.
 	DeletionProtection bool `pulumi:"deletionProtection"`
@@ -221,7 +221,7 @@ func (o LookupInstanceResultOutput) CpuPlatform() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.CpuPlatform }).(pulumi.StringOutput)
 }
 
-// The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).`,
+// The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
 func (o LookupInstanceResultOutput) CurrentStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.CurrentStatus }).(pulumi.StringOutput)
 }

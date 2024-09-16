@@ -71,6 +71,7 @@ type LookupProjectResult struct {
 	OrgId        string            `pulumi:"orgId"`
 	ProjectId    *string           `pulumi:"projectId"`
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	Tags         map[string]string `pulumi:"tags"`
 }
 
 func LookupProjectOutput(ctx *pulumi.Context, args LookupProjectOutputArgs, opts ...pulumi.InvokeOption) LookupProjectResultOutput {
@@ -159,6 +160,10 @@ func (o LookupProjectResultOutput) ProjectId() pulumi.StringPtrOutput {
 
 func (o LookupProjectResultOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupProjectResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
+func (o LookupProjectResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupProjectResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func init() {

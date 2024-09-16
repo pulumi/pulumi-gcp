@@ -20,14 +20,18 @@ public final class FeatureMembershipConfigmanagementArgs extends com.pulumi.reso
     public static final FeatureMembershipConfigmanagementArgs Empty = new FeatureMembershipConfigmanagementArgs();
 
     /**
+     * (Optional, Deprecated)
      * Binauthz configuration for the cluster. Structure is documented below.
+     * This field will be ignored and should not be set.
      * 
      */
     @Import(name="binauthz")
     private @Nullable Output<FeatureMembershipConfigmanagementBinauthzArgs> binauthz;
 
     /**
-     * @return Binauthz configuration for the cluster. Structure is documented below.
+     * @return (Optional, Deprecated)
+     * Binauthz configuration for the cluster. Structure is documented below.
+     * This field will be ignored and should not be set.
      * 
      */
     public Optional<Output<FeatureMembershipConfigmanagementBinauthzArgs>> binauthz() {
@@ -51,6 +55,10 @@ public final class FeatureMembershipConfigmanagementArgs extends com.pulumi.reso
 
     /**
      * Hierarchy Controller configuration for the cluster. Structure is documented below.
+     * Configuring Hierarchy Controller through the configmanagement feature is no longer recommended.
+     * Use open source Kubernetes [Hierarchical Namespace Controller (HNC)](https://github.com/kubernetes-sigs/hierarchical-namespaces) instead.
+     * Follow the [instructions](https://cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/migrate-hierarchy-controller)
+     * to migrate from Hierarchy Controller to HNC.
      * 
      */
     @Import(name="hierarchyController")
@@ -58,6 +66,10 @@ public final class FeatureMembershipConfigmanagementArgs extends com.pulumi.reso
 
     /**
      * @return Hierarchy Controller configuration for the cluster. Structure is documented below.
+     * Configuring Hierarchy Controller through the configmanagement feature is no longer recommended.
+     * Use open source Kubernetes [Hierarchical Namespace Controller (HNC)](https://github.com/kubernetes-sigs/hierarchical-namespaces) instead.
+     * Follow the [instructions](https://cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/migrate-hierarchy-controller)
+     * to migrate from Hierarchy Controller to HNC.
      * 
      */
     public Optional<Output<FeatureMembershipConfigmanagementHierarchyControllerArgs>> hierarchyController() {
@@ -81,6 +93,8 @@ public final class FeatureMembershipConfigmanagementArgs extends com.pulumi.reso
 
     /**
      * Policy Controller configuration for the cluster. Structure is documented below.
+     * Configuring Policy Controller through the configmanagement feature is no longer recommended.
+     * Use the policycontroller feature instead.
      * 
      */
     @Import(name="policyController")
@@ -88,6 +102,8 @@ public final class FeatureMembershipConfigmanagementArgs extends com.pulumi.reso
 
     /**
      * @return Policy Controller configuration for the cluster. Structure is documented below.
+     * Configuring Policy Controller through the configmanagement feature is no longer recommended.
+     * Use the policycontroller feature instead.
      * 
      */
     public Optional<Output<FeatureMembershipConfigmanagementPolicyControllerArgs>> policyController() {
@@ -139,7 +155,9 @@ public final class FeatureMembershipConfigmanagementArgs extends com.pulumi.reso
         }
 
         /**
-         * @param binauthz Binauthz configuration for the cluster. Structure is documented below.
+         * @param binauthz (Optional, Deprecated)
+         * Binauthz configuration for the cluster. Structure is documented below.
+         * This field will be ignored and should not be set.
          * 
          * @return builder
          * 
@@ -150,7 +168,9 @@ public final class FeatureMembershipConfigmanagementArgs extends com.pulumi.reso
         }
 
         /**
-         * @param binauthz Binauthz configuration for the cluster. Structure is documented below.
+         * @param binauthz (Optional, Deprecated)
+         * Binauthz configuration for the cluster. Structure is documented below.
+         * This field will be ignored and should not be set.
          * 
          * @return builder
          * 
@@ -182,6 +202,10 @@ public final class FeatureMembershipConfigmanagementArgs extends com.pulumi.reso
 
         /**
          * @param hierarchyController Hierarchy Controller configuration for the cluster. Structure is documented below.
+         * Configuring Hierarchy Controller through the configmanagement feature is no longer recommended.
+         * Use open source Kubernetes [Hierarchical Namespace Controller (HNC)](https://github.com/kubernetes-sigs/hierarchical-namespaces) instead.
+         * Follow the [instructions](https://cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/migrate-hierarchy-controller)
+         * to migrate from Hierarchy Controller to HNC.
          * 
          * @return builder
          * 
@@ -193,6 +217,10 @@ public final class FeatureMembershipConfigmanagementArgs extends com.pulumi.reso
 
         /**
          * @param hierarchyController Hierarchy Controller configuration for the cluster. Structure is documented below.
+         * Configuring Hierarchy Controller through the configmanagement feature is no longer recommended.
+         * Use open source Kubernetes [Hierarchical Namespace Controller (HNC)](https://github.com/kubernetes-sigs/hierarchical-namespaces) instead.
+         * Follow the [instructions](https://cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/migrate-hierarchy-controller)
+         * to migrate from Hierarchy Controller to HNC.
          * 
          * @return builder
          * 
@@ -224,6 +252,8 @@ public final class FeatureMembershipConfigmanagementArgs extends com.pulumi.reso
 
         /**
          * @param policyController Policy Controller configuration for the cluster. Structure is documented below.
+         * Configuring Policy Controller through the configmanagement feature is no longer recommended.
+         * Use the policycontroller feature instead.
          * 
          * @return builder
          * 
@@ -235,6 +265,8 @@ public final class FeatureMembershipConfigmanagementArgs extends com.pulumi.reso
 
         /**
          * @param policyController Policy Controller configuration for the cluster. Structure is documented below.
+         * Configuring Policy Controller through the configmanagement feature is no longer recommended.
+         * Use the policycontroller feature instead.
          * 
          * @return builder
          * 

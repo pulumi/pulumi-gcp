@@ -13,6 +13,12 @@ namespace Pulumi.Gcp.Datastream.Inputs
     public sealed class StreamSourceConfigSqlServerSourceConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// CDC reader reads from change tables.
+        /// </summary>
+        [Input("changeTables")]
+        public Input<Inputs.StreamSourceConfigSqlServerSourceConfigChangeTablesArgs>? ChangeTables { get; set; }
+
+        /// <summary>
         /// SQL Server objects to exclude from the stream.
         /// Structure is documented below.
         /// </summary>
@@ -37,6 +43,12 @@ namespace Pulumi.Gcp.Datastream.Inputs
         /// </summary>
         [Input("maxConcurrentCdcTasks")]
         public Input<int>? MaxConcurrentCdcTasks { get; set; }
+
+        /// <summary>
+        /// CDC reader reads from transaction logs.
+        /// </summary>
+        [Input("transactionLogs")]
+        public Input<Inputs.StreamSourceConfigSqlServerSourceConfigTransactionLogsArgs>? TransactionLogs { get; set; }
 
         public StreamSourceConfigSqlServerSourceConfigArgs()
         {

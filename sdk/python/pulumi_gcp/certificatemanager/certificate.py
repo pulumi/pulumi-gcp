@@ -205,6 +205,7 @@ class _CertificateState:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 san_dnsnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
                  self_managed: Optional[pulumi.Input['CertificateSelfManagedArgs']] = None):
         """
@@ -229,6 +230,7 @@ class _CertificateState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] san_dnsnames: The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6)
         :param pulumi.Input[str] scope: The scope of the certificate.
                DEFAULT: Certificates with default scope are served from core Google data centers.
                If unsure, choose this option.
@@ -257,6 +259,8 @@ class _CertificateState:
             pulumi.set(__self__, "project", project)
         if pulumi_labels is not None:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
+        if san_dnsnames is not None:
+            pulumi.set(__self__, "san_dnsnames", san_dnsnames)
         if scope is not None:
             pulumi.set(__self__, "scope", scope)
         if self_managed is not None:
@@ -369,6 +373,18 @@ class _CertificateState:
     @pulumi_labels.setter
     def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "pulumi_labels", value)
+
+    @property
+    @pulumi.getter(name="sanDnsnames")
+    def san_dnsnames(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6)
+        """
+        return pulumi.get(self, "san_dnsnames")
+
+    @san_dnsnames.setter
+    def san_dnsnames(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "san_dnsnames", value)
 
     @property
     @pulumi.getter
@@ -1077,6 +1093,7 @@ class Certificate(pulumi.CustomResource):
             __props__.__dict__["self_managed"] = self_managed
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["pulumi_labels"] = None
+            __props__.__dict__["san_dnsnames"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Certificate, __self__).__init__(
@@ -1097,6 +1114,7 @@ class Certificate(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            san_dnsnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             scope: Optional[pulumi.Input[str]] = None,
             self_managed: Optional[pulumi.Input[Union['CertificateSelfManagedArgs', 'CertificateSelfManagedArgsDict']]] = None) -> 'Certificate':
         """
@@ -1126,6 +1144,7 @@ class Certificate(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] san_dnsnames: The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6)
         :param pulumi.Input[str] scope: The scope of the certificate.
                DEFAULT: Certificates with default scope are served from core Google data centers.
                If unsure, choose this option.
@@ -1150,6 +1169,7 @@ class Certificate(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
+        __props__.__dict__["san_dnsnames"] = san_dnsnames
         __props__.__dict__["scope"] = scope
         __props__.__dict__["self_managed"] = self_managed
         return Certificate(resource_name, opts=opts, __props__=__props__)
@@ -1229,6 +1249,14 @@ class Certificate(pulumi.CustomResource):
         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
+
+    @property
+    @pulumi.getter(name="sanDnsnames")
+    def san_dnsnames(self) -> pulumi.Output[Sequence[str]]:
+        """
+        The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6)
+        """
+        return pulumi.get(self, "san_dnsnames")
 
     @property
     @pulumi.getter

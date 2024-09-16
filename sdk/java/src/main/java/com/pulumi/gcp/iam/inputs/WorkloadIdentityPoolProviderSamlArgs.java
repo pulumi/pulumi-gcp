@@ -17,12 +17,16 @@ public final class WorkloadIdentityPoolProviderSamlArgs extends com.pulumi.resou
     /**
      * SAML Identity provider configuration metadata xml doc.
      * 
+     * &lt;a name=&#34;nested_x509&#34;&gt;&lt;/a&gt;The `x509` block supports:
+     * 
      */
     @Import(name="idpMetadataXml", required=true)
     private Output<String> idpMetadataXml;
 
     /**
      * @return SAML Identity provider configuration metadata xml doc.
+     * 
+     * &lt;a name=&#34;nested_x509&#34;&gt;&lt;/a&gt;The `x509` block supports:
      * 
      */
     public Output<String> idpMetadataXml() {
@@ -56,6 +60,8 @@ public final class WorkloadIdentityPoolProviderSamlArgs extends com.pulumi.resou
         /**
          * @param idpMetadataXml SAML Identity provider configuration metadata xml doc.
          * 
+         * &lt;a name=&#34;nested_x509&#34;&gt;&lt;/a&gt;The `x509` block supports:
+         * 
          * @return builder
          * 
          */
@@ -66,6 +72,8 @@ public final class WorkloadIdentityPoolProviderSamlArgs extends com.pulumi.resou
 
         /**
          * @param idpMetadataXml SAML Identity provider configuration metadata xml doc.
+         * 
+         * &lt;a name=&#34;nested_x509&#34;&gt;&lt;/a&gt;The `x509` block supports:
          * 
          * @return builder
          * 

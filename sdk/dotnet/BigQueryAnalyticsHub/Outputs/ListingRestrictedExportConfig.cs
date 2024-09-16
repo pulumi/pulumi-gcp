@@ -18,6 +18,11 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub.Outputs
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
+        /// (Output)
+        /// If true, restrict direct table access(read api/tabledata.list) on linked table.
+        /// </summary>
+        public readonly bool? RestrictDirectTableAccess;
+        /// <summary>
         /// If true, restrict export of query result derived from restricted linked dataset table.
         /// </summary>
         public readonly bool? RestrictQueryResult;
@@ -26,9 +31,12 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub.Outputs
         private ListingRestrictedExportConfig(
             bool? enabled,
 
+            bool? restrictDirectTableAccess,
+
             bool? restrictQueryResult)
         {
             Enabled = enabled;
+            RestrictDirectTableAccess = restrictDirectTableAccess;
             RestrictQueryResult = restrictQueryResult;
         }
     }

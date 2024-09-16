@@ -2072,22 +2072,22 @@ func (o ConnectionProfileErrorArrayOutput) Index(i pulumi.IntInput) ConnectionPr
 type ConnectionProfileMysql struct {
 	// If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
 	CloudSqlId *string `pulumi:"cloudSqlId"`
-	// Required. The IP or hostname of the source MySQL database.
-	Host string `pulumi:"host"`
-	// Required. Input only. The password for the user that Database Migration Service will be using to connect to the database.
+	// The IP or hostname of the source MySQL database.
+	Host *string `pulumi:"host"`
+	// Input only. The password for the user that Database Migration Service will be using to connect to the database.
 	// This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	Password string `pulumi:"password"`
+	Password *string `pulumi:"password"`
 	// (Output)
 	// Output only. Indicates If this connection profile password is stored.
 	PasswordSet *bool `pulumi:"passwordSet"`
-	// Required. The network port of the source MySQL database.
-	Port int `pulumi:"port"`
+	// The network port of the source MySQL database.
+	Port *int `pulumi:"port"`
 	// SSL configuration for the destination to connect to the source database.
 	// Structure is documented below.
 	Ssl *ConnectionProfileMysqlSsl `pulumi:"ssl"`
-	// Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
-	Username string `pulumi:"username"`
+	// The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+	Username *string `pulumi:"username"`
 }
 
 // ConnectionProfileMysqlInput is an input type that accepts ConnectionProfileMysqlArgs and ConnectionProfileMysqlOutput values.
@@ -2104,22 +2104,22 @@ type ConnectionProfileMysqlInput interface {
 type ConnectionProfileMysqlArgs struct {
 	// If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
 	CloudSqlId pulumi.StringPtrInput `pulumi:"cloudSqlId"`
-	// Required. The IP or hostname of the source MySQL database.
-	Host pulumi.StringInput `pulumi:"host"`
-	// Required. Input only. The password for the user that Database Migration Service will be using to connect to the database.
+	// The IP or hostname of the source MySQL database.
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// Input only. The password for the user that Database Migration Service will be using to connect to the database.
 	// This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	Password pulumi.StringInput `pulumi:"password"`
+	Password pulumi.StringPtrInput `pulumi:"password"`
 	// (Output)
 	// Output only. Indicates If this connection profile password is stored.
 	PasswordSet pulumi.BoolPtrInput `pulumi:"passwordSet"`
-	// Required. The network port of the source MySQL database.
-	Port pulumi.IntInput `pulumi:"port"`
+	// The network port of the source MySQL database.
+	Port pulumi.IntPtrInput `pulumi:"port"`
 	// SSL configuration for the destination to connect to the source database.
 	// Structure is documented below.
 	Ssl ConnectionProfileMysqlSslPtrInput `pulumi:"ssl"`
-	// Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
-	Username pulumi.StringInput `pulumi:"username"`
+	// The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+	Username pulumi.StringPtrInput `pulumi:"username"`
 }
 
 func (ConnectionProfileMysqlArgs) ElementType() reflect.Type {
@@ -2204,16 +2204,16 @@ func (o ConnectionProfileMysqlOutput) CloudSqlId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionProfileMysql) *string { return v.CloudSqlId }).(pulumi.StringPtrOutput)
 }
 
-// Required. The IP or hostname of the source MySQL database.
-func (o ConnectionProfileMysqlOutput) Host() pulumi.StringOutput {
-	return o.ApplyT(func(v ConnectionProfileMysql) string { return v.Host }).(pulumi.StringOutput)
+// The IP or hostname of the source MySQL database.
+func (o ConnectionProfileMysqlOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileMysql) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
-// Required. Input only. The password for the user that Database Migration Service will be using to connect to the database.
+// Input only. The password for the user that Database Migration Service will be using to connect to the database.
 // This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
 // **Note**: This property is sensitive and will not be displayed in the plan.
-func (o ConnectionProfileMysqlOutput) Password() pulumi.StringOutput {
-	return o.ApplyT(func(v ConnectionProfileMysql) string { return v.Password }).(pulumi.StringOutput)
+func (o ConnectionProfileMysqlOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileMysql) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
 // (Output)
@@ -2222,9 +2222,9 @@ func (o ConnectionProfileMysqlOutput) PasswordSet() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionProfileMysql) *bool { return v.PasswordSet }).(pulumi.BoolPtrOutput)
 }
 
-// Required. The network port of the source MySQL database.
-func (o ConnectionProfileMysqlOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func(v ConnectionProfileMysql) int { return v.Port }).(pulumi.IntOutput)
+// The network port of the source MySQL database.
+func (o ConnectionProfileMysqlOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileMysql) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
 // SSL configuration for the destination to connect to the source database.
@@ -2233,9 +2233,9 @@ func (o ConnectionProfileMysqlOutput) Ssl() ConnectionProfileMysqlSslPtrOutput {
 	return o.ApplyT(func(v ConnectionProfileMysql) *ConnectionProfileMysqlSsl { return v.Ssl }).(ConnectionProfileMysqlSslPtrOutput)
 }
 
-// Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
-func (o ConnectionProfileMysqlOutput) Username() pulumi.StringOutput {
-	return o.ApplyT(func(v ConnectionProfileMysql) string { return v.Username }).(pulumi.StringOutput)
+// The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+func (o ConnectionProfileMysqlOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileMysql) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
 
 type ConnectionProfileMysqlPtrOutput struct{ *pulumi.OutputState }
@@ -2272,17 +2272,17 @@ func (o ConnectionProfileMysqlPtrOutput) CloudSqlId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The IP or hostname of the source MySQL database.
+// The IP or hostname of the source MySQL database.
 func (o ConnectionProfileMysqlPtrOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionProfileMysql) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.Host
+		return v.Host
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Input only. The password for the user that Database Migration Service will be using to connect to the database.
+// Input only. The password for the user that Database Migration Service will be using to connect to the database.
 // This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
 // **Note**: This property is sensitive and will not be displayed in the plan.
 func (o ConnectionProfileMysqlPtrOutput) Password() pulumi.StringPtrOutput {
@@ -2290,7 +2290,7 @@ func (o ConnectionProfileMysqlPtrOutput) Password() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Password
+		return v.Password
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2305,13 +2305,13 @@ func (o ConnectionProfileMysqlPtrOutput) PasswordSet() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Required. The network port of the source MySQL database.
+// The network port of the source MySQL database.
 func (o ConnectionProfileMysqlPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ConnectionProfileMysql) *int {
 		if v == nil {
 			return nil
 		}
-		return &v.Port
+		return v.Port
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -2326,13 +2326,13 @@ func (o ConnectionProfileMysqlPtrOutput) Ssl() ConnectionProfileMysqlSslPtrOutpu
 	}).(ConnectionProfileMysqlSslPtrOutput)
 }
 
-// Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+// The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
 func (o ConnectionProfileMysqlPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionProfileMysql) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.Username
+		return v.Username
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3599,27 +3599,29 @@ func (o ConnectionProfileOracleStaticServiceIpConnectivityPtrOutput) Elem() Conn
 }
 
 type ConnectionProfilePostgresql struct {
+	// If the connected database is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.
+	AlloydbClusterId *string `pulumi:"alloydbClusterId"`
 	// If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
 	CloudSqlId *string `pulumi:"cloudSqlId"`
-	// Required. The IP or hostname of the source MySQL database.
-	Host string `pulumi:"host"`
+	// The IP or hostname of the source MySQL database.
+	Host *string `pulumi:"host"`
 	// (Output)
 	// Output only. If the source is a Cloud SQL database, this field indicates the network architecture it's associated with.
 	NetworkArchitecture *string `pulumi:"networkArchitecture"`
-	// Required. Input only. The password for the user that Database Migration Service will be using to connect to the database.
+	// Input only. The password for the user that Database Migration Service will be using to connect to the database.
 	// This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	Password string `pulumi:"password"`
+	Password *string `pulumi:"password"`
 	// (Output)
 	// Output only. Indicates If this connection profile password is stored.
 	PasswordSet *bool `pulumi:"passwordSet"`
-	// Required. The network port of the source MySQL database.
-	Port int `pulumi:"port"`
+	// The network port of the source MySQL database.
+	Port *int `pulumi:"port"`
 	// SSL configuration for the destination to connect to the source database.
 	// Structure is documented below.
 	Ssl *ConnectionProfilePostgresqlSsl `pulumi:"ssl"`
-	// Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
-	Username string `pulumi:"username"`
+	// The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+	Username *string `pulumi:"username"`
 }
 
 // ConnectionProfilePostgresqlInput is an input type that accepts ConnectionProfilePostgresqlArgs and ConnectionProfilePostgresqlOutput values.
@@ -3634,27 +3636,29 @@ type ConnectionProfilePostgresqlInput interface {
 }
 
 type ConnectionProfilePostgresqlArgs struct {
+	// If the connected database is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.
+	AlloydbClusterId pulumi.StringPtrInput `pulumi:"alloydbClusterId"`
 	// If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
 	CloudSqlId pulumi.StringPtrInput `pulumi:"cloudSqlId"`
-	// Required. The IP or hostname of the source MySQL database.
-	Host pulumi.StringInput `pulumi:"host"`
+	// The IP or hostname of the source MySQL database.
+	Host pulumi.StringPtrInput `pulumi:"host"`
 	// (Output)
 	// Output only. If the source is a Cloud SQL database, this field indicates the network architecture it's associated with.
 	NetworkArchitecture pulumi.StringPtrInput `pulumi:"networkArchitecture"`
-	// Required. Input only. The password for the user that Database Migration Service will be using to connect to the database.
+	// Input only. The password for the user that Database Migration Service will be using to connect to the database.
 	// This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	Password pulumi.StringInput `pulumi:"password"`
+	Password pulumi.StringPtrInput `pulumi:"password"`
 	// (Output)
 	// Output only. Indicates If this connection profile password is stored.
 	PasswordSet pulumi.BoolPtrInput `pulumi:"passwordSet"`
-	// Required. The network port of the source MySQL database.
-	Port pulumi.IntInput `pulumi:"port"`
+	// The network port of the source MySQL database.
+	Port pulumi.IntPtrInput `pulumi:"port"`
 	// SSL configuration for the destination to connect to the source database.
 	// Structure is documented below.
 	Ssl ConnectionProfilePostgresqlSslPtrInput `pulumi:"ssl"`
-	// Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
-	Username pulumi.StringInput `pulumi:"username"`
+	// The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+	Username pulumi.StringPtrInput `pulumi:"username"`
 }
 
 func (ConnectionProfilePostgresqlArgs) ElementType() reflect.Type {
@@ -3734,14 +3738,19 @@ func (o ConnectionProfilePostgresqlOutput) ToConnectionProfilePostgresqlPtrOutpu
 	}).(ConnectionProfilePostgresqlPtrOutput)
 }
 
+// If the connected database is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.
+func (o ConnectionProfilePostgresqlOutput) AlloydbClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionProfilePostgresql) *string { return v.AlloydbClusterId }).(pulumi.StringPtrOutput)
+}
+
 // If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
 func (o ConnectionProfilePostgresqlOutput) CloudSqlId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionProfilePostgresql) *string { return v.CloudSqlId }).(pulumi.StringPtrOutput)
 }
 
-// Required. The IP or hostname of the source MySQL database.
-func (o ConnectionProfilePostgresqlOutput) Host() pulumi.StringOutput {
-	return o.ApplyT(func(v ConnectionProfilePostgresql) string { return v.Host }).(pulumi.StringOutput)
+// The IP or hostname of the source MySQL database.
+func (o ConnectionProfilePostgresqlOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionProfilePostgresql) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
 // (Output)
@@ -3750,11 +3759,11 @@ func (o ConnectionProfilePostgresqlOutput) NetworkArchitecture() pulumi.StringPt
 	return o.ApplyT(func(v ConnectionProfilePostgresql) *string { return v.NetworkArchitecture }).(pulumi.StringPtrOutput)
 }
 
-// Required. Input only. The password for the user that Database Migration Service will be using to connect to the database.
+// Input only. The password for the user that Database Migration Service will be using to connect to the database.
 // This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
 // **Note**: This property is sensitive and will not be displayed in the plan.
-func (o ConnectionProfilePostgresqlOutput) Password() pulumi.StringOutput {
-	return o.ApplyT(func(v ConnectionProfilePostgresql) string { return v.Password }).(pulumi.StringOutput)
+func (o ConnectionProfilePostgresqlOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionProfilePostgresql) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
 // (Output)
@@ -3763,9 +3772,9 @@ func (o ConnectionProfilePostgresqlOutput) PasswordSet() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionProfilePostgresql) *bool { return v.PasswordSet }).(pulumi.BoolPtrOutput)
 }
 
-// Required. The network port of the source MySQL database.
-func (o ConnectionProfilePostgresqlOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func(v ConnectionProfilePostgresql) int { return v.Port }).(pulumi.IntOutput)
+// The network port of the source MySQL database.
+func (o ConnectionProfilePostgresqlOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ConnectionProfilePostgresql) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
 // SSL configuration for the destination to connect to the source database.
@@ -3774,9 +3783,9 @@ func (o ConnectionProfilePostgresqlOutput) Ssl() ConnectionProfilePostgresqlSslP
 	return o.ApplyT(func(v ConnectionProfilePostgresql) *ConnectionProfilePostgresqlSsl { return v.Ssl }).(ConnectionProfilePostgresqlSslPtrOutput)
 }
 
-// Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
-func (o ConnectionProfilePostgresqlOutput) Username() pulumi.StringOutput {
-	return o.ApplyT(func(v ConnectionProfilePostgresql) string { return v.Username }).(pulumi.StringOutput)
+// The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+func (o ConnectionProfilePostgresqlOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionProfilePostgresql) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
 
 type ConnectionProfilePostgresqlPtrOutput struct{ *pulumi.OutputState }
@@ -3803,6 +3812,16 @@ func (o ConnectionProfilePostgresqlPtrOutput) Elem() ConnectionProfilePostgresql
 	}).(ConnectionProfilePostgresqlOutput)
 }
 
+// If the connected database is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.
+func (o ConnectionProfilePostgresqlPtrOutput) AlloydbClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfilePostgresql) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AlloydbClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
 // If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
 func (o ConnectionProfilePostgresqlPtrOutput) CloudSqlId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionProfilePostgresql) *string {
@@ -3813,13 +3832,13 @@ func (o ConnectionProfilePostgresqlPtrOutput) CloudSqlId() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The IP or hostname of the source MySQL database.
+// The IP or hostname of the source MySQL database.
 func (o ConnectionProfilePostgresqlPtrOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionProfilePostgresql) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.Host
+		return v.Host
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3834,7 +3853,7 @@ func (o ConnectionProfilePostgresqlPtrOutput) NetworkArchitecture() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Input only. The password for the user that Database Migration Service will be using to connect to the database.
+// Input only. The password for the user that Database Migration Service will be using to connect to the database.
 // This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
 // **Note**: This property is sensitive and will not be displayed in the plan.
 func (o ConnectionProfilePostgresqlPtrOutput) Password() pulumi.StringPtrOutput {
@@ -3842,7 +3861,7 @@ func (o ConnectionProfilePostgresqlPtrOutput) Password() pulumi.StringPtrOutput 
 		if v == nil {
 			return nil
 		}
-		return &v.Password
+		return v.Password
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3857,13 +3876,13 @@ func (o ConnectionProfilePostgresqlPtrOutput) PasswordSet() pulumi.BoolPtrOutput
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Required. The network port of the source MySQL database.
+// The network port of the source MySQL database.
 func (o ConnectionProfilePostgresqlPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ConnectionProfilePostgresql) *int {
 		if v == nil {
 			return nil
 		}
-		return &v.Port
+		return v.Port
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -3878,13 +3897,13 @@ func (o ConnectionProfilePostgresqlPtrOutput) Ssl() ConnectionProfilePostgresqlS
 	}).(ConnectionProfilePostgresqlSslPtrOutput)
 }
 
-// Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+// The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
 func (o ConnectionProfilePostgresqlPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionProfilePostgresql) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.Username
+		return v.Username
 	}).(pulumi.StringPtrOutput)
 }
 

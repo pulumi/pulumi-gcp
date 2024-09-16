@@ -143,7 +143,7 @@ namespace Pulumi.Gcp.Firebase
         public Output<string> DatabaseUrl { get; private set; } = null!;
 
         /// <summary>
-        /// The intended database state.
+        /// The intended database state. Possible values: ACTIVE, DISABLED.
         /// </summary>
         [Output("desiredState")]
         public Output<string?> DesiredState { get; private set; } = null!;
@@ -245,7 +245,7 @@ namespace Pulumi.Gcp.Firebase
     public sealed class DatabaseInstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The intended database state.
+        /// The intended database state. Possible values: ACTIVE, DISABLED.
         /// </summary>
         [Input("desiredState")]
         public Input<string>? DesiredState { get; set; }
@@ -301,7 +301,7 @@ namespace Pulumi.Gcp.Firebase
         public Input<string>? DatabaseUrl { get; set; }
 
         /// <summary>
-        /// The intended database state.
+        /// The intended database state. Possible values: ACTIVE, DISABLED.
         /// </summary>
         [Input("desiredState")]
         public Input<string>? DesiredState { get; set; }

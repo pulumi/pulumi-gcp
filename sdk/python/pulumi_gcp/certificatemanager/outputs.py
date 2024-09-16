@@ -31,6 +31,10 @@ __all__ = [
     'TrustConfigTrustStoreTrustAnchor',
     'GetCertificateMapGclbTargetResult',
     'GetCertificateMapGclbTargetIpConfigResult',
+    'GetCertificatesCertificateResult',
+    'GetCertificatesCertificateManagedResult',
+    'GetCertificatesCertificateManagedAuthorizationAttemptInfoResult',
+    'GetCertificatesCertificateManagedProvisioningIssueResult',
 ]
 
 @pulumi.output_type
@@ -890,5 +894,323 @@ class GetCertificateMapGclbTargetIpConfigResult(dict):
         A list of ports
         """
         return pulumi.get(self, "ports")
+
+
+@pulumi.output_type
+class GetCertificatesCertificateResult(dict):
+    def __init__(__self__, *,
+                 description: str,
+                 effective_labels: Mapping[str, str],
+                 labels: Mapping[str, str],
+                 location: str,
+                 manageds: Sequence['outputs.GetCertificatesCertificateManagedResult'],
+                 name: str,
+                 project: str,
+                 pulumi_labels: Mapping[str, str],
+                 san_dnsnames: Sequence[str],
+                 scope: str):
+        """
+        :param str description: A human-readable description of the resource.
+        :param Mapping[str, str] labels: Set of label tags associated with the Certificate resource.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        :param str location: The Certificate Manager location. If not specified, "global" is used.
+        :param Sequence['GetCertificatesCertificateManagedArgs'] manageds: Configuration and state of a Managed Certificate.
+               Certificate Manager provisions and renews Managed Certificates
+               automatically, for as long as it's authorized to do so.
+        :param str name: A user-defined name of the certificate. Certificate names must be unique
+               The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
+               and all following characters must be a dash, underscore, letter or digit.
+        :param str project: The ID of the project in which the resource belongs. If it
+               is not provided, the provider project is used.
+        :param Mapping[str, str] pulumi_labels: The combination of labels configured directly on the resource
+                and default labels configured on the provider.
+        :param Sequence[str] san_dnsnames: The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6)
+        :param str scope: The scope of the certificate.
+               
+               DEFAULT: Certificates with default scope are served from core Google data centers.
+               If unsure, choose this option.
+               
+               EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
+               See https://cloud.google.com/vpc/docs/edge-locations.
+               
+               ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
+               See https://cloud.google.com/compute/docs/regions-zones
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "effective_labels", effective_labels)
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "manageds", manageds)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "pulumi_labels", pulumi_labels)
+        pulumi.set(__self__, "san_dnsnames", san_dnsnames)
+        pulumi.set(__self__, "scope", scope)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        A human-readable description of the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "effective_labels")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        Set of label tags associated with the Certificate resource.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field 'effective_labels' for all of the labels present on the resource.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        The Certificate Manager location. If not specified, "global" is used.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def manageds(self) -> Sequence['outputs.GetCertificatesCertificateManagedResult']:
+        """
+        Configuration and state of a Managed Certificate.
+        Certificate Manager provisions and renews Managed Certificates
+        automatically, for as long as it's authorized to do so.
+        """
+        return pulumi.get(self, "manageds")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        A user-defined name of the certificate. Certificate names must be unique
+        The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
+        and all following characters must be a dash, underscore, letter or digit.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The ID of the project in which the resource belongs. If it
+        is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Mapping[str, str]:
+        """
+        The combination of labels configured directly on the resource
+         and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
+    @pulumi.getter(name="sanDnsnames")
+    def san_dnsnames(self) -> Sequence[str]:
+        """
+        The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6)
+        """
+        return pulumi.get(self, "san_dnsnames")
+
+    @property
+    @pulumi.getter
+    def scope(self) -> str:
+        """
+        The scope of the certificate.
+
+        DEFAULT: Certificates with default scope are served from core Google data centers.
+        If unsure, choose this option.
+
+        EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
+        See https://cloud.google.com/vpc/docs/edge-locations.
+
+        ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
+        See https://cloud.google.com/compute/docs/regions-zones
+        """
+        return pulumi.get(self, "scope")
+
+
+@pulumi.output_type
+class GetCertificatesCertificateManagedResult(dict):
+    def __init__(__self__, *,
+                 authorization_attempt_infos: Sequence['outputs.GetCertificatesCertificateManagedAuthorizationAttemptInfoResult'],
+                 dns_authorizations: Sequence[str],
+                 domains: Sequence[str],
+                 issuance_config: str,
+                 provisioning_issues: Sequence['outputs.GetCertificatesCertificateManagedProvisioningIssueResult'],
+                 state: str):
+        """
+        :param Sequence['GetCertificatesCertificateManagedAuthorizationAttemptInfoArgs'] authorization_attempt_infos: Detailed state of the latest authorization attempt for each domain
+               specified for this Managed Certificate.
+        :param Sequence[str] dns_authorizations: Authorizations that will be used for performing domain authorization. Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
+        :param Sequence[str] domains: The domains for which a managed SSL certificate will be generated.
+               Wildcard domains are only supported with DNS challenge resolution
+        :param str issuance_config: The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*/locations/*/certificateIssuanceConfigs/*.
+               If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
+               Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
+        :param Sequence['GetCertificatesCertificateManagedProvisioningIssueArgs'] provisioning_issues: Information about issues with provisioning this Managed Certificate.
+        :param str state: A state of this Managed Certificate.
+        """
+        pulumi.set(__self__, "authorization_attempt_infos", authorization_attempt_infos)
+        pulumi.set(__self__, "dns_authorizations", dns_authorizations)
+        pulumi.set(__self__, "domains", domains)
+        pulumi.set(__self__, "issuance_config", issuance_config)
+        pulumi.set(__self__, "provisioning_issues", provisioning_issues)
+        pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="authorizationAttemptInfos")
+    def authorization_attempt_infos(self) -> Sequence['outputs.GetCertificatesCertificateManagedAuthorizationAttemptInfoResult']:
+        """
+        Detailed state of the latest authorization attempt for each domain
+        specified for this Managed Certificate.
+        """
+        return pulumi.get(self, "authorization_attempt_infos")
+
+    @property
+    @pulumi.getter(name="dnsAuthorizations")
+    def dns_authorizations(self) -> Sequence[str]:
+        """
+        Authorizations that will be used for performing domain authorization. Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
+        """
+        return pulumi.get(self, "dns_authorizations")
+
+    @property
+    @pulumi.getter
+    def domains(self) -> Sequence[str]:
+        """
+        The domains for which a managed SSL certificate will be generated.
+        Wildcard domains are only supported with DNS challenge resolution
+        """
+        return pulumi.get(self, "domains")
+
+    @property
+    @pulumi.getter(name="issuanceConfig")
+    def issuance_config(self) -> str:
+        """
+        The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*/locations/*/certificateIssuanceConfigs/*.
+        If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
+        Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
+        """
+        return pulumi.get(self, "issuance_config")
+
+    @property
+    @pulumi.getter(name="provisioningIssues")
+    def provisioning_issues(self) -> Sequence['outputs.GetCertificatesCertificateManagedProvisioningIssueResult']:
+        """
+        Information about issues with provisioning this Managed Certificate.
+        """
+        return pulumi.get(self, "provisioning_issues")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        A state of this Managed Certificate.
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class GetCertificatesCertificateManagedAuthorizationAttemptInfoResult(dict):
+    def __init__(__self__, *,
+                 details: str,
+                 domain: str,
+                 failure_reason: str,
+                 state: str):
+        """
+        :param str details: Human readable explanation for reaching the state. Provided to help
+               address the configuration issues.
+               Not guaranteed to be stable. For programmatic access use 'failure_reason' field.
+        :param str domain: Domain name of the authorization attempt.
+        :param str failure_reason: Reason for failure of the authorization attempt for the domain.
+        :param str state: State of the domain for managed certificate issuance.
+        """
+        pulumi.set(__self__, "details", details)
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "failure_reason", failure_reason)
+        pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def details(self) -> str:
+        """
+        Human readable explanation for reaching the state. Provided to help
+        address the configuration issues.
+        Not guaranteed to be stable. For programmatic access use 'failure_reason' field.
+        """
+        return pulumi.get(self, "details")
+
+    @property
+    @pulumi.getter
+    def domain(self) -> str:
+        """
+        Domain name of the authorization attempt.
+        """
+        return pulumi.get(self, "domain")
+
+    @property
+    @pulumi.getter(name="failureReason")
+    def failure_reason(self) -> str:
+        """
+        Reason for failure of the authorization attempt for the domain.
+        """
+        return pulumi.get(self, "failure_reason")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        State of the domain for managed certificate issuance.
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class GetCertificatesCertificateManagedProvisioningIssueResult(dict):
+    def __init__(__self__, *,
+                 details: str,
+                 reason: str):
+        """
+        :param str details: Human readable explanation about the issue. Provided to help address
+               the configuration issues.
+               Not guaranteed to be stable. For programmatic access use 'reason' field.
+        :param str reason: Reason for provisioning failures.
+        """
+        pulumi.set(__self__, "details", details)
+        pulumi.set(__self__, "reason", reason)
+
+    @property
+    @pulumi.getter
+    def details(self) -> str:
+        """
+        Human readable explanation about the issue. Provided to help address
+        the configuration issues.
+        Not guaranteed to be stable. For programmatic access use 'reason' field.
+        """
+        return pulumi.get(self, "details")
+
+    @property
+    @pulumi.getter
+    def reason(self) -> str:
+        """
+        Reason for provisioning failures.
+        """
+        return pulumi.get(self, "reason")
 
 

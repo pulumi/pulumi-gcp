@@ -395,6 +395,10 @@ export class Certificate extends pulumi.CustomResource {
      */
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
+     * The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6)
+     */
+    public /*out*/ readonly sanDnsnames!: pulumi.Output<string[]>;
+    /**
      * The scope of the certificate.
      * DEFAULT: Certificates with default scope are served from core Google data centers.
      * If unsure, choose this option.
@@ -433,6 +437,7 @@ export class Certificate extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
+            resourceInputs["sanDnsnames"] = state ? state.sanDnsnames : undefined;
             resourceInputs["scope"] = state ? state.scope : undefined;
             resourceInputs["selfManaged"] = state ? state.selfManaged : undefined;
         } else {
@@ -447,6 +452,7 @@ export class Certificate extends pulumi.CustomResource {
             resourceInputs["selfManaged"] = args ? args.selfManaged : undefined;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
+            resourceInputs["sanDnsnames"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
@@ -503,6 +509,10 @@ export interface CertificateState {
      * and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6)
+     */
+    sanDnsnames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The scope of the certificate.
      * DEFAULT: Certificates with default scope are served from core Google data centers.

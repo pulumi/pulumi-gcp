@@ -7,6 +7,12 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * ClientTlsPolicy is a resource that specifies how a client should authenticate connections to backends of a service. This resource itself does not affect configuration unless it is attached to a backend service resource.
+ *
+ * To get more information about ServerTlsPolicy, see:
+ *
+ * * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-security/rest/v1beta1/projects.locations.serverTlsPolicies)
+ *
  * ## Example Usage
  *
  * ### Network Security Server Tls Policy Basic
@@ -28,23 +34,11 @@ import * as utilities from "../utilities";
  *         },
  *     },
  *     mtlsPolicy: {
- *         clientValidationCas: [
- *             {
- *                 grpcEndpoint: {
- *                     targetUri: "unix:mypath",
- *                 },
+ *         clientValidationCas: [{
+ *             grpcEndpoint: {
+ *                 targetUri: "unix:mypath",
  *             },
- *             {
- *                 grpcEndpoint: {
- *                     targetUri: "unix:abc/mypath",
- *                 },
- *             },
- *             {
- *                 certificateProviderInstance: {
- *                     pluginInstance: "google_cloud_private_spiffe",
- *                 },
- *             },
- *         ],
+ *         }],
  *     },
  * });
  * ```

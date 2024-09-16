@@ -107,6 +107,87 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// 
     /// });
     /// ```
+    /// ### Bigquery Analyticshub Listing Dcr
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var listing = new Gcp.BigQueryAnalyticsHub.DataExchange("listing", new()
+    ///     {
+    ///         Location = "US",
+    ///         DataExchangeId = "dcr_data_exchange",
+    ///         DisplayName = "dcr_data_exchange",
+    ///         Description = "example dcr data exchange",
+    ///         SharingEnvironmentConfig = new Gcp.BigQueryAnalyticsHub.Inputs.DataExchangeSharingEnvironmentConfigArgs
+    ///         {
+    ///             DcrExchangeConfig = null,
+    ///         },
+    ///     });
+    /// 
+    ///     var listingDataset = new Gcp.BigQuery.Dataset("listing", new()
+    ///     {
+    ///         DatasetId = "dcr_listing",
+    ///         FriendlyName = "dcr_listing",
+    ///         Description = "example dcr data exchange",
+    ///         Location = "US",
+    ///     });
+    /// 
+    ///     var listingTable = new Gcp.BigQuery.Table("listing", new()
+    ///     {
+    ///         DeletionProtection = false,
+    ///         TableId = "dcr_listing",
+    ///         DatasetId = listingDataset.DatasetId,
+    ///         Schema = @"[
+    ///   {
+    ///     ""name"": ""name"",
+    ///     ""type"": ""STRING"",
+    ///     ""mode"": ""NULLABLE""
+    ///   },
+    ///   {
+    ///     ""name"": ""post_abbr"",
+    ///     ""type"": ""STRING"",
+    ///     ""mode"": ""NULLABLE""
+    ///   },
+    ///   {
+    ///     ""name"": ""date"",
+    ///     ""type"": ""DATE"",
+    ///     ""mode"": ""NULLABLE""
+    ///   }
+    /// ]
+    /// ",
+    ///     });
+    /// 
+    ///     var listingListing = new Gcp.BigQueryAnalyticsHub.Listing("listing", new()
+    ///     {
+    ///         Location = "US",
+    ///         DataExchangeId = listing.DataExchangeId,
+    ///         ListingId = "dcr_listing",
+    ///         DisplayName = "dcr_listing",
+    ///         Description = "example dcr data exchange",
+    ///         BigqueryDataset = new Gcp.BigQueryAnalyticsHub.Inputs.ListingBigqueryDatasetArgs
+    ///         {
+    ///             Dataset = listingDataset.Id,
+    ///             SelectedResources = new[]
+    ///             {
+    ///                 new Gcp.BigQueryAnalyticsHub.Inputs.ListingBigqueryDatasetSelectedResourceArgs
+    ///                 {
+    ///                     Table = listingTable.Id,
+    ///                 },
+    ///             },
+    ///         },
+    ///         RestrictedExportConfig = new Gcp.BigQueryAnalyticsHub.Inputs.ListingRestrictedExportConfigArgs
+    ///         {
+    ///             Enabled = true,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

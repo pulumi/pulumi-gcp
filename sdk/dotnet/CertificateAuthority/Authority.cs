@@ -481,7 +481,8 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
-        /// Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA.
+        /// Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA. Possible values:
+        /// ENABLED, DISABLED, STAGED.
         /// </summary>
         [Output("desiredState")]
         public Output<string?> DesiredState { get; private set; } = null!;
@@ -682,7 +683,8 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA.
+        /// Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA. Possible values:
+        /// ENABLED, DISABLED, STAGED.
         /// </summary>
         [Input("desiredState")]
         public Input<string>? DesiredState { get; set; }
@@ -824,7 +826,8 @@ namespace Pulumi.Gcp.CertificateAuthority
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA.
+        /// Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA. Possible values:
+        /// ENABLED, DISABLED, STAGED.
         /// </summary>
         [Input("desiredState")]
         public Input<string>? DesiredState { get; set; }

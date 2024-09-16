@@ -67,6 +67,10 @@ import (
 //						pulumi.String("198.51.100.0/24"),
 //						pulumi.String("10.10.0.0/16"),
 //					},
+//					IncludeExportRanges: pulumi.StringArray{
+//						pulumi.String("198.51.100.0/23"),
+//						pulumi.String("10.0.0.0/8"),
+//					},
 //					Uri: network.SelfLink,
 //				},
 //			})

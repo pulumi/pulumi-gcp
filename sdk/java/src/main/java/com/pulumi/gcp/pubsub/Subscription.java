@@ -555,6 +555,7 @@ import javax.annotation.Nullable;
  *                 .filenameDatetimeFormat("YYYY-MM-DD/hh_mm_ssZ")
  *                 .maxBytes(1000)
  *                 .maxDuration("300s")
+ *                 .maxMessages(1000)
  *                 .build())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(                
@@ -631,8 +632,10 @@ import javax.annotation.Nullable;
  *                 .filenameDatetimeFormat("YYYY-MM-DD/hh_mm_ssZ")
  *                 .maxBytes(1000)
  *                 .maxDuration("300s")
+ *                 .maxMessages(1000)
  *                 .avroConfig(SubscriptionCloudStorageConfigAvroConfigArgs.builder()
  *                     .writeMetadata(true)
+ *                     .useTopicSchema(true)
  *                     .build())
  *                 .build())
  *             .build(), CustomResourceOptions.builder()

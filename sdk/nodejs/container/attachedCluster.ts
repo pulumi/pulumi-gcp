@@ -217,7 +217,7 @@ export class AttachedCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * Policy to determine what flags to send on delete.
+     * Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
      */
     public readonly deletionPolicy!: pulumi.Output<string | undefined>;
     /**
@@ -425,7 +425,7 @@ export interface AttachedClusterState {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * Policy to determine what flags to send on delete.
+     * Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
      */
     deletionPolicy?: pulumi.Input<string>;
     /**
@@ -538,7 +538,7 @@ export interface AttachedClusterArgs {
      */
     binaryAuthorization?: pulumi.Input<inputs.container.AttachedClusterBinaryAuthorization>;
     /**
-     * Policy to determine what flags to send on delete.
+     * Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
      */
     deletionPolicy?: pulumi.Input<string>;
     /**

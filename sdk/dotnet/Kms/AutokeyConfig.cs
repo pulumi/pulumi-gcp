@@ -127,13 +127,26 @@ namespace Pulumi.Gcp.Kms
     /// 
     ///     var example_autokeyconfig = new Gcp.Kms.AutokeyConfig("example-autokeyconfig", new()
     ///     {
-    ///         Folder = autokmsFolder.FolderId,
+    ///         Folder = autokmsFolder.Id,
     ///         KeyProject = keyProject.ProjectId.Apply(projectId =&gt; $"projects/{projectId}"),
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =
     ///         {
     ///             waitSrvAccPermissions,
+    ///         },
+    ///     });
+    /// 
+    ///     // Wait delay after setting AutokeyConfig, to prevent diffs on reapply,
+    ///     // because setting the config takes a little to fully propagate.
+    ///     var waitAutokeyPropagation = new Time.Index.Sleep("wait_autokey_propagation", new()
+    ///     {
+    ///         CreateDuration = "30s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             example_autokeyconfig,
     ///         },
     ///     });
     /// 

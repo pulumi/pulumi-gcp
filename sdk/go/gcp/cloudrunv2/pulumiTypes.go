@@ -2322,12 +2322,12 @@ type JobTemplateTemplateVolume struct {
 	// Ephemeral storage used as a shared volume.
 	// Structure is documented below.
 	EmptyDir *JobTemplateTemplateVolumeEmptyDir `pulumi:"emptyDir"`
-	// Cloud Storage bucket mounted as a volume using GCSFuse. This feature requires the launch stage to be set to ALPHA or BETA.
+	// Cloud Storage bucket mounted as a volume using GCSFuse.
 	// Structure is documented below.
 	Gcs *JobTemplateTemplateVolumeGcs `pulumi:"gcs"`
 	// Volume's name.
 	Name string `pulumi:"name"`
-	// NFS share mounted as a volume. This feature requires the launch stage to be set to ALPHA or BETA.
+	// NFS share mounted as a volume.
 	// Structure is documented below.
 	Nfs *JobTemplateTemplateVolumeNfs `pulumi:"nfs"`
 	// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
@@ -2353,12 +2353,12 @@ type JobTemplateTemplateVolumeArgs struct {
 	// Ephemeral storage used as a shared volume.
 	// Structure is documented below.
 	EmptyDir JobTemplateTemplateVolumeEmptyDirPtrInput `pulumi:"emptyDir"`
-	// Cloud Storage bucket mounted as a volume using GCSFuse. This feature requires the launch stage to be set to ALPHA or BETA.
+	// Cloud Storage bucket mounted as a volume using GCSFuse.
 	// Structure is documented below.
 	Gcs JobTemplateTemplateVolumeGcsPtrInput `pulumi:"gcs"`
 	// Volume's name.
 	Name pulumi.StringInput `pulumi:"name"`
-	// NFS share mounted as a volume. This feature requires the launch stage to be set to ALPHA or BETA.
+	// NFS share mounted as a volume.
 	// Structure is documented below.
 	Nfs JobTemplateTemplateVolumeNfsPtrInput `pulumi:"nfs"`
 	// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
@@ -2431,7 +2431,7 @@ func (o JobTemplateTemplateVolumeOutput) EmptyDir() JobTemplateTemplateVolumeEmp
 	return o.ApplyT(func(v JobTemplateTemplateVolume) *JobTemplateTemplateVolumeEmptyDir { return v.EmptyDir }).(JobTemplateTemplateVolumeEmptyDirPtrOutput)
 }
 
-// Cloud Storage bucket mounted as a volume using GCSFuse. This feature requires the launch stage to be set to ALPHA or BETA.
+// Cloud Storage bucket mounted as a volume using GCSFuse.
 // Structure is documented below.
 func (o JobTemplateTemplateVolumeOutput) Gcs() JobTemplateTemplateVolumeGcsPtrOutput {
 	return o.ApplyT(func(v JobTemplateTemplateVolume) *JobTemplateTemplateVolumeGcs { return v.Gcs }).(JobTemplateTemplateVolumeGcsPtrOutput)
@@ -2442,7 +2442,7 @@ func (o JobTemplateTemplateVolumeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTemplateTemplateVolume) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// NFS share mounted as a volume. This feature requires the launch stage to be set to ALPHA or BETA.
+// NFS share mounted as a volume.
 // Structure is documented below.
 func (o JobTemplateTemplateVolumeOutput) Nfs() JobTemplateTemplateVolumeNfsPtrOutput {
 	return o.ApplyT(func(v JobTemplateTemplateVolume) *JobTemplateTemplateVolumeNfs { return v.Nfs }).(JobTemplateTemplateVolumeNfsPtrOutput)
@@ -4759,6 +4759,9 @@ type ServiceTemplate struct {
 	Scaling *ServiceTemplateScaling `pulumi:"scaling"`
 	// Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
 	ServiceAccount *string `pulumi:"serviceAccount"`
+	// Enables Cloud Service Mesh for this Revision.
+	// Structure is documented below.
+	ServiceMesh *ServiceTemplateServiceMesh `pulumi:"serviceMesh"`
 	// Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
 	SessionAffinity *bool `pulumi:"sessionAffinity"`
 	// Max allowed time for an instance to respond to a request.
@@ -4812,6 +4815,9 @@ type ServiceTemplateArgs struct {
 	Scaling ServiceTemplateScalingPtrInput `pulumi:"scaling"`
 	// Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
+	// Enables Cloud Service Mesh for this Revision.
+	// Structure is documented below.
+	ServiceMesh ServiceTemplateServiceMeshPtrInput `pulumi:"serviceMesh"`
 	// Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
 	SessionAffinity pulumi.BoolPtrInput `pulumi:"sessionAffinity"`
 	// Max allowed time for an instance to respond to a request.
@@ -4955,6 +4961,12 @@ func (o ServiceTemplateOutput) Scaling() ServiceTemplateScalingPtrOutput {
 // Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
 func (o ServiceTemplateOutput) ServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTemplate) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+}
+
+// Enables Cloud Service Mesh for this Revision.
+// Structure is documented below.
+func (o ServiceTemplateOutput) ServiceMesh() ServiceTemplateServiceMeshPtrOutput {
+	return o.ApplyT(func(v ServiceTemplate) *ServiceTemplateServiceMesh { return v.ServiceMesh }).(ServiceTemplateServiceMeshPtrOutput)
 }
 
 // Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
@@ -5102,6 +5114,17 @@ func (o ServiceTemplatePtrOutput) ServiceAccount() pulumi.StringPtrOutput {
 		}
 		return v.ServiceAccount
 	}).(pulumi.StringPtrOutput)
+}
+
+// Enables Cloud Service Mesh for this Revision.
+// Structure is documented below.
+func (o ServiceTemplatePtrOutput) ServiceMesh() ServiceTemplateServiceMeshPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplate) *ServiceTemplateServiceMesh {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceMesh
+	}).(ServiceTemplateServiceMeshPtrOutput)
 }
 
 // Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
@@ -8114,6 +8137,151 @@ func (o ServiceTemplateScalingPtrOutput) MinInstanceCount() pulumi.IntPtrOutput 
 	}).(pulumi.IntPtrOutput)
 }
 
+type ServiceTemplateServiceMesh struct {
+	// The Mesh resource name. For more information see https://cloud.google.com/service-mesh/docs/reference/network-services/rest/v1/projects.locations.meshes#resource:-mesh.
+	//
+	// ***
+	Mesh *string `pulumi:"mesh"`
+}
+
+// ServiceTemplateServiceMeshInput is an input type that accepts ServiceTemplateServiceMeshArgs and ServiceTemplateServiceMeshOutput values.
+// You can construct a concrete instance of `ServiceTemplateServiceMeshInput` via:
+//
+//	ServiceTemplateServiceMeshArgs{...}
+type ServiceTemplateServiceMeshInput interface {
+	pulumi.Input
+
+	ToServiceTemplateServiceMeshOutput() ServiceTemplateServiceMeshOutput
+	ToServiceTemplateServiceMeshOutputWithContext(context.Context) ServiceTemplateServiceMeshOutput
+}
+
+type ServiceTemplateServiceMeshArgs struct {
+	// The Mesh resource name. For more information see https://cloud.google.com/service-mesh/docs/reference/network-services/rest/v1/projects.locations.meshes#resource:-mesh.
+	//
+	// ***
+	Mesh pulumi.StringPtrInput `pulumi:"mesh"`
+}
+
+func (ServiceTemplateServiceMeshArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateServiceMesh)(nil)).Elem()
+}
+
+func (i ServiceTemplateServiceMeshArgs) ToServiceTemplateServiceMeshOutput() ServiceTemplateServiceMeshOutput {
+	return i.ToServiceTemplateServiceMeshOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateServiceMeshArgs) ToServiceTemplateServiceMeshOutputWithContext(ctx context.Context) ServiceTemplateServiceMeshOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateServiceMeshOutput)
+}
+
+func (i ServiceTemplateServiceMeshArgs) ToServiceTemplateServiceMeshPtrOutput() ServiceTemplateServiceMeshPtrOutput {
+	return i.ToServiceTemplateServiceMeshPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateServiceMeshArgs) ToServiceTemplateServiceMeshPtrOutputWithContext(ctx context.Context) ServiceTemplateServiceMeshPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateServiceMeshOutput).ToServiceTemplateServiceMeshPtrOutputWithContext(ctx)
+}
+
+// ServiceTemplateServiceMeshPtrInput is an input type that accepts ServiceTemplateServiceMeshArgs, ServiceTemplateServiceMeshPtr and ServiceTemplateServiceMeshPtrOutput values.
+// You can construct a concrete instance of `ServiceTemplateServiceMeshPtrInput` via:
+//
+//	        ServiceTemplateServiceMeshArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceTemplateServiceMeshPtrInput interface {
+	pulumi.Input
+
+	ToServiceTemplateServiceMeshPtrOutput() ServiceTemplateServiceMeshPtrOutput
+	ToServiceTemplateServiceMeshPtrOutputWithContext(context.Context) ServiceTemplateServiceMeshPtrOutput
+}
+
+type serviceTemplateServiceMeshPtrType ServiceTemplateServiceMeshArgs
+
+func ServiceTemplateServiceMeshPtr(v *ServiceTemplateServiceMeshArgs) ServiceTemplateServiceMeshPtrInput {
+	return (*serviceTemplateServiceMeshPtrType)(v)
+}
+
+func (*serviceTemplateServiceMeshPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTemplateServiceMesh)(nil)).Elem()
+}
+
+func (i *serviceTemplateServiceMeshPtrType) ToServiceTemplateServiceMeshPtrOutput() ServiceTemplateServiceMeshPtrOutput {
+	return i.ToServiceTemplateServiceMeshPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceTemplateServiceMeshPtrType) ToServiceTemplateServiceMeshPtrOutputWithContext(ctx context.Context) ServiceTemplateServiceMeshPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateServiceMeshPtrOutput)
+}
+
+type ServiceTemplateServiceMeshOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateServiceMeshOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateServiceMesh)(nil)).Elem()
+}
+
+func (o ServiceTemplateServiceMeshOutput) ToServiceTemplateServiceMeshOutput() ServiceTemplateServiceMeshOutput {
+	return o
+}
+
+func (o ServiceTemplateServiceMeshOutput) ToServiceTemplateServiceMeshOutputWithContext(ctx context.Context) ServiceTemplateServiceMeshOutput {
+	return o
+}
+
+func (o ServiceTemplateServiceMeshOutput) ToServiceTemplateServiceMeshPtrOutput() ServiceTemplateServiceMeshPtrOutput {
+	return o.ToServiceTemplateServiceMeshPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceTemplateServiceMeshOutput) ToServiceTemplateServiceMeshPtrOutputWithContext(ctx context.Context) ServiceTemplateServiceMeshPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateServiceMesh) *ServiceTemplateServiceMesh {
+		return &v
+	}).(ServiceTemplateServiceMeshPtrOutput)
+}
+
+// The Mesh resource name. For more information see https://cloud.google.com/service-mesh/docs/reference/network-services/rest/v1/projects.locations.meshes#resource:-mesh.
+//
+// ***
+func (o ServiceTemplateServiceMeshOutput) Mesh() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateServiceMesh) *string { return v.Mesh }).(pulumi.StringPtrOutput)
+}
+
+type ServiceTemplateServiceMeshPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateServiceMeshPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTemplateServiceMesh)(nil)).Elem()
+}
+
+func (o ServiceTemplateServiceMeshPtrOutput) ToServiceTemplateServiceMeshPtrOutput() ServiceTemplateServiceMeshPtrOutput {
+	return o
+}
+
+func (o ServiceTemplateServiceMeshPtrOutput) ToServiceTemplateServiceMeshPtrOutputWithContext(ctx context.Context) ServiceTemplateServiceMeshPtrOutput {
+	return o
+}
+
+func (o ServiceTemplateServiceMeshPtrOutput) Elem() ServiceTemplateServiceMeshOutput {
+	return o.ApplyT(func(v *ServiceTemplateServiceMesh) ServiceTemplateServiceMesh {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTemplateServiceMesh
+		return ret
+	}).(ServiceTemplateServiceMeshOutput)
+}
+
+// The Mesh resource name. For more information see https://cloud.google.com/service-mesh/docs/reference/network-services/rest/v1/projects.locations.meshes#resource:-mesh.
+//
+// ***
+func (o ServiceTemplateServiceMeshPtrOutput) Mesh() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateServiceMesh) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mesh
+	}).(pulumi.StringPtrOutput)
+}
+
 type ServiceTemplateVolume struct {
 	// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
 	// Structure is documented below.
@@ -8121,7 +8289,7 @@ type ServiceTemplateVolume struct {
 	// Ephemeral storage used as a shared volume.
 	// Structure is documented below.
 	EmptyDir *ServiceTemplateVolumeEmptyDir `pulumi:"emptyDir"`
-	// Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment and requires launch-stage to be set to ALPHA or BETA.
+	// Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment.
 	// Structure is documented below.
 	Gcs *ServiceTemplateVolumeGcs `pulumi:"gcs"`
 	// Volume's name.
@@ -8152,7 +8320,7 @@ type ServiceTemplateVolumeArgs struct {
 	// Ephemeral storage used as a shared volume.
 	// Structure is documented below.
 	EmptyDir ServiceTemplateVolumeEmptyDirPtrInput `pulumi:"emptyDir"`
-	// Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment and requires launch-stage to be set to ALPHA or BETA.
+	// Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment.
 	// Structure is documented below.
 	Gcs ServiceTemplateVolumeGcsPtrInput `pulumi:"gcs"`
 	// Volume's name.
@@ -8228,7 +8396,7 @@ func (o ServiceTemplateVolumeOutput) EmptyDir() ServiceTemplateVolumeEmptyDirPtr
 	return o.ApplyT(func(v ServiceTemplateVolume) *ServiceTemplateVolumeEmptyDir { return v.EmptyDir }).(ServiceTemplateVolumeEmptyDirPtrOutput)
 }
 
-// Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment and requires launch-stage to be set to ALPHA or BETA.
+// Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment.
 // Structure is documented below.
 func (o ServiceTemplateVolumeOutput) Gcs() ServiceTemplateVolumeGcsPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateVolume) *ServiceTemplateVolumeGcs { return v.Gcs }).(ServiceTemplateVolumeGcsPtrOutput)
@@ -8732,8 +8900,6 @@ type ServiceTemplateVolumeNfs struct {
 	// Path that is exported by the NFS server.
 	Path string `pulumi:"path"`
 	// If true, mount the NFS volume as read only
-	//
-	// ***
 	ReadOnly *bool `pulumi:"readOnly"`
 	// Hostname or IP address of the NFS server
 	Server string `pulumi:"server"`
@@ -8754,8 +8920,6 @@ type ServiceTemplateVolumeNfsArgs struct {
 	// Path that is exported by the NFS server.
 	Path pulumi.StringInput `pulumi:"path"`
 	// If true, mount the NFS volume as read only
-	//
-	// ***
 	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
 	// Hostname or IP address of the NFS server
 	Server pulumi.StringInput `pulumi:"server"`
@@ -8844,8 +9008,6 @@ func (o ServiceTemplateVolumeNfsOutput) Path() pulumi.StringOutput {
 }
 
 // If true, mount the NFS volume as read only
-//
-// ***
 func (o ServiceTemplateVolumeNfsOutput) ReadOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateVolumeNfs) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
 }
@@ -8890,8 +9052,6 @@ func (o ServiceTemplateVolumeNfsPtrOutput) Path() pulumi.StringPtrOutput {
 }
 
 // If true, mount the NFS volume as read only
-//
-// ***
 func (o ServiceTemplateVolumeNfsPtrOutput) ReadOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateVolumeNfs) *bool {
 		if v == nil {
@@ -11529,11 +11689,11 @@ type GetJobTemplateTemplateVolume struct {
 	CloudSqlInstances []GetJobTemplateTemplateVolumeCloudSqlInstance `pulumi:"cloudSqlInstances"`
 	// Ephemeral storage used as a shared volume.
 	EmptyDirs []GetJobTemplateTemplateVolumeEmptyDir `pulumi:"emptyDirs"`
-	// Cloud Storage bucket mounted as a volume using GCSFuse. This feature requires the launch stage to be set to ALPHA or BETA.
+	// Cloud Storage bucket mounted as a volume using GCSFuse.
 	Gcs []GetJobTemplateTemplateVolumeGc `pulumi:"gcs"`
 	// The name of the Cloud Run v2 Job.
 	Name string `pulumi:"name"`
-	// NFS share mounted as a volume. This feature requires the launch stage to be set to ALPHA or BETA.
+	// NFS share mounted as a volume.
 	Nfs []GetJobTemplateTemplateVolumeNf `pulumi:"nfs"`
 	// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
 	Secrets []GetJobTemplateTemplateVolumeSecret `pulumi:"secrets"`
@@ -11555,11 +11715,11 @@ type GetJobTemplateTemplateVolumeArgs struct {
 	CloudSqlInstances GetJobTemplateTemplateVolumeCloudSqlInstanceArrayInput `pulumi:"cloudSqlInstances"`
 	// Ephemeral storage used as a shared volume.
 	EmptyDirs GetJobTemplateTemplateVolumeEmptyDirArrayInput `pulumi:"emptyDirs"`
-	// Cloud Storage bucket mounted as a volume using GCSFuse. This feature requires the launch stage to be set to ALPHA or BETA.
+	// Cloud Storage bucket mounted as a volume using GCSFuse.
 	Gcs GetJobTemplateTemplateVolumeGcArrayInput `pulumi:"gcs"`
 	// The name of the Cloud Run v2 Job.
 	Name pulumi.StringInput `pulumi:"name"`
-	// NFS share mounted as a volume. This feature requires the launch stage to be set to ALPHA or BETA.
+	// NFS share mounted as a volume.
 	Nfs GetJobTemplateTemplateVolumeNfArrayInput `pulumi:"nfs"`
 	// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
 	Secrets GetJobTemplateTemplateVolumeSecretArrayInput `pulumi:"secrets"`
@@ -11628,7 +11788,7 @@ func (o GetJobTemplateTemplateVolumeOutput) EmptyDirs() GetJobTemplateTemplateVo
 	return o.ApplyT(func(v GetJobTemplateTemplateVolume) []GetJobTemplateTemplateVolumeEmptyDir { return v.EmptyDirs }).(GetJobTemplateTemplateVolumeEmptyDirArrayOutput)
 }
 
-// Cloud Storage bucket mounted as a volume using GCSFuse. This feature requires the launch stage to be set to ALPHA or BETA.
+// Cloud Storage bucket mounted as a volume using GCSFuse.
 func (o GetJobTemplateTemplateVolumeOutput) Gcs() GetJobTemplateTemplateVolumeGcArrayOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateVolume) []GetJobTemplateTemplateVolumeGc { return v.Gcs }).(GetJobTemplateTemplateVolumeGcArrayOutput)
 }
@@ -11638,7 +11798,7 @@ func (o GetJobTemplateTemplateVolumeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateVolume) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// NFS share mounted as a volume. This feature requires the launch stage to be set to ALPHA or BETA.
+// NFS share mounted as a volume.
 func (o GetJobTemplateTemplateVolumeOutput) Nfs() GetJobTemplateTemplateVolumeNfArrayOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateVolume) []GetJobTemplateTemplateVolumeNf { return v.Nfs }).(GetJobTemplateTemplateVolumeNfArrayOutput)
 }
@@ -13139,6 +13299,8 @@ type GetServiceTemplate struct {
 	Scalings []GetServiceTemplateScaling `pulumi:"scalings"`
 	// Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
 	ServiceAccount string `pulumi:"serviceAccount"`
+	// Enables Cloud Service Mesh for this Revision.
+	ServiceMeshes []GetServiceTemplateServiceMesh `pulumi:"serviceMeshes"`
 	// Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
 	SessionAffinity bool `pulumi:"sessionAffinity"`
 	// Max allowed time for an instance to respond to a request.
@@ -13191,6 +13353,8 @@ type GetServiceTemplateArgs struct {
 	Scalings GetServiceTemplateScalingArrayInput `pulumi:"scalings"`
 	// Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
 	ServiceAccount pulumi.StringInput `pulumi:"serviceAccount"`
+	// Enables Cloud Service Mesh for this Revision.
+	ServiceMeshes GetServiceTemplateServiceMeshArrayInput `pulumi:"serviceMeshes"`
 	// Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
 	SessionAffinity pulumi.BoolInput `pulumi:"sessionAffinity"`
 	// Max allowed time for an instance to respond to a request.
@@ -13307,6 +13471,11 @@ func (o GetServiceTemplateOutput) Scalings() GetServiceTemplateScalingArrayOutpu
 // Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
 func (o GetServiceTemplateOutput) ServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplate) string { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
+// Enables Cloud Service Mesh for this Revision.
+func (o GetServiceTemplateOutput) ServiceMeshes() GetServiceTemplateServiceMeshArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplate) []GetServiceTemplateServiceMesh { return v.ServiceMeshes }).(GetServiceTemplateServiceMeshArrayOutput)
 }
 
 // Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
@@ -15512,12 +15681,109 @@ func (o GetServiceTemplateScalingArrayOutput) Index(i pulumi.IntInput) GetServic
 	}).(GetServiceTemplateScalingOutput)
 }
 
+type GetServiceTemplateServiceMesh struct {
+	// The Mesh resource name. For more information see https://cloud.google.com/service-mesh/docs/reference/network-services/rest/v1/projects.locations.meshes#resource:-mesh.
+	Mesh string `pulumi:"mesh"`
+}
+
+// GetServiceTemplateServiceMeshInput is an input type that accepts GetServiceTemplateServiceMeshArgs and GetServiceTemplateServiceMeshOutput values.
+// You can construct a concrete instance of `GetServiceTemplateServiceMeshInput` via:
+//
+//	GetServiceTemplateServiceMeshArgs{...}
+type GetServiceTemplateServiceMeshInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateServiceMeshOutput() GetServiceTemplateServiceMeshOutput
+	ToGetServiceTemplateServiceMeshOutputWithContext(context.Context) GetServiceTemplateServiceMeshOutput
+}
+
+type GetServiceTemplateServiceMeshArgs struct {
+	// The Mesh resource name. For more information see https://cloud.google.com/service-mesh/docs/reference/network-services/rest/v1/projects.locations.meshes#resource:-mesh.
+	Mesh pulumi.StringInput `pulumi:"mesh"`
+}
+
+func (GetServiceTemplateServiceMeshArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateServiceMesh)(nil)).Elem()
+}
+
+func (i GetServiceTemplateServiceMeshArgs) ToGetServiceTemplateServiceMeshOutput() GetServiceTemplateServiceMeshOutput {
+	return i.ToGetServiceTemplateServiceMeshOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateServiceMeshArgs) ToGetServiceTemplateServiceMeshOutputWithContext(ctx context.Context) GetServiceTemplateServiceMeshOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateServiceMeshOutput)
+}
+
+// GetServiceTemplateServiceMeshArrayInput is an input type that accepts GetServiceTemplateServiceMeshArray and GetServiceTemplateServiceMeshArrayOutput values.
+// You can construct a concrete instance of `GetServiceTemplateServiceMeshArrayInput` via:
+//
+//	GetServiceTemplateServiceMeshArray{ GetServiceTemplateServiceMeshArgs{...} }
+type GetServiceTemplateServiceMeshArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateServiceMeshArrayOutput() GetServiceTemplateServiceMeshArrayOutput
+	ToGetServiceTemplateServiceMeshArrayOutputWithContext(context.Context) GetServiceTemplateServiceMeshArrayOutput
+}
+
+type GetServiceTemplateServiceMeshArray []GetServiceTemplateServiceMeshInput
+
+func (GetServiceTemplateServiceMeshArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateServiceMesh)(nil)).Elem()
+}
+
+func (i GetServiceTemplateServiceMeshArray) ToGetServiceTemplateServiceMeshArrayOutput() GetServiceTemplateServiceMeshArrayOutput {
+	return i.ToGetServiceTemplateServiceMeshArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateServiceMeshArray) ToGetServiceTemplateServiceMeshArrayOutputWithContext(ctx context.Context) GetServiceTemplateServiceMeshArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateServiceMeshArrayOutput)
+}
+
+type GetServiceTemplateServiceMeshOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateServiceMeshOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateServiceMesh)(nil)).Elem()
+}
+
+func (o GetServiceTemplateServiceMeshOutput) ToGetServiceTemplateServiceMeshOutput() GetServiceTemplateServiceMeshOutput {
+	return o
+}
+
+func (o GetServiceTemplateServiceMeshOutput) ToGetServiceTemplateServiceMeshOutputWithContext(ctx context.Context) GetServiceTemplateServiceMeshOutput {
+	return o
+}
+
+// The Mesh resource name. For more information see https://cloud.google.com/service-mesh/docs/reference/network-services/rest/v1/projects.locations.meshes#resource:-mesh.
+func (o GetServiceTemplateServiceMeshOutput) Mesh() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateServiceMesh) string { return v.Mesh }).(pulumi.StringOutput)
+}
+
+type GetServiceTemplateServiceMeshArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateServiceMeshArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateServiceMesh)(nil)).Elem()
+}
+
+func (o GetServiceTemplateServiceMeshArrayOutput) ToGetServiceTemplateServiceMeshArrayOutput() GetServiceTemplateServiceMeshArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateServiceMeshArrayOutput) ToGetServiceTemplateServiceMeshArrayOutputWithContext(ctx context.Context) GetServiceTemplateServiceMeshArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateServiceMeshArrayOutput) Index(i pulumi.IntInput) GetServiceTemplateServiceMeshOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateServiceMesh {
+		return vs[0].([]GetServiceTemplateServiceMesh)[vs[1].(int)]
+	}).(GetServiceTemplateServiceMeshOutput)
+}
+
 type GetServiceTemplateVolume struct {
 	// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
 	CloudSqlInstances []GetServiceTemplateVolumeCloudSqlInstance `pulumi:"cloudSqlInstances"`
 	// Ephemeral storage used as a shared volume.
 	EmptyDirs []GetServiceTemplateVolumeEmptyDir `pulumi:"emptyDirs"`
-	// Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment and requires launch-stage to be set to ALPHA or BETA.
+	// Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment.
 	Gcs []GetServiceTemplateVolumeGc `pulumi:"gcs"`
 	// The name of the Cloud Run v2 Service.
 	Name string `pulumi:"name"`
@@ -15543,7 +15809,7 @@ type GetServiceTemplateVolumeArgs struct {
 	CloudSqlInstances GetServiceTemplateVolumeCloudSqlInstanceArrayInput `pulumi:"cloudSqlInstances"`
 	// Ephemeral storage used as a shared volume.
 	EmptyDirs GetServiceTemplateVolumeEmptyDirArrayInput `pulumi:"emptyDirs"`
-	// Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment and requires launch-stage to be set to ALPHA or BETA.
+	// Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment.
 	Gcs GetServiceTemplateVolumeGcArrayInput `pulumi:"gcs"`
 	// The name of the Cloud Run v2 Service.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -15616,7 +15882,7 @@ func (o GetServiceTemplateVolumeOutput) EmptyDirs() GetServiceTemplateVolumeEmpt
 	return o.ApplyT(func(v GetServiceTemplateVolume) []GetServiceTemplateVolumeEmptyDir { return v.EmptyDirs }).(GetServiceTemplateVolumeEmptyDirArrayOutput)
 }
 
-// Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment and requires launch-stage to be set to ALPHA or BETA.
+// Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment.
 func (o GetServiceTemplateVolumeOutput) Gcs() GetServiceTemplateVolumeGcArrayOutput {
 	return o.ApplyT(func(v GetServiceTemplateVolume) []GetServiceTemplateVolumeGc { return v.Gcs }).(GetServiceTemplateVolumeGcArrayOutput)
 }
@@ -17068,6 +17334,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerVolumeMountArrayInput)(nil)).Elem(), ServiceTemplateContainerVolumeMountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateScalingInput)(nil)).Elem(), ServiceTemplateScalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateScalingPtrInput)(nil)).Elem(), ServiceTemplateScalingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateServiceMeshInput)(nil)).Elem(), ServiceTemplateServiceMeshArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateServiceMeshPtrInput)(nil)).Elem(), ServiceTemplateServiceMeshArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateVolumeInput)(nil)).Elem(), ServiceTemplateVolumeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateVolumeArrayInput)(nil)).Elem(), ServiceTemplateVolumeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateVolumeCloudSqlInstanceInput)(nil)).Elem(), ServiceTemplateVolumeCloudSqlInstanceArgs{})
@@ -17180,6 +17448,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerVolumeMountArrayInput)(nil)).Elem(), GetServiceTemplateContainerVolumeMountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateScalingInput)(nil)).Elem(), GetServiceTemplateScalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateScalingArrayInput)(nil)).Elem(), GetServiceTemplateScalingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateServiceMeshInput)(nil)).Elem(), GetServiceTemplateServiceMeshArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateServiceMeshArrayInput)(nil)).Elem(), GetServiceTemplateServiceMeshArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateVolumeInput)(nil)).Elem(), GetServiceTemplateVolumeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateVolumeArrayInput)(nil)).Elem(), GetServiceTemplateVolumeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateVolumeCloudSqlInstanceInput)(nil)).Elem(), GetServiceTemplateVolumeCloudSqlInstanceArgs{})
@@ -17300,6 +17570,8 @@ func init() {
 	pulumi.RegisterOutputType(ServiceTemplateContainerVolumeMountArrayOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateScalingOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateScalingPtrOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateServiceMeshOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateServiceMeshPtrOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateVolumeOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateVolumeArrayOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateVolumeCloudSqlInstanceOutput{})
@@ -17412,6 +17684,8 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceTemplateContainerVolumeMountArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateScalingOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateScalingArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateServiceMeshOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateServiceMeshArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateVolumeOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateVolumeArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateVolumeCloudSqlInstanceOutput{})

@@ -117,14 +117,14 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Policy to determine what flags to send on delete.
+     * Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
      * 
      */
     @Import(name="deletionPolicy")
     private @Nullable Output<String> deletionPolicy;
 
     /**
-     * @return Policy to determine what flags to send on delete.
+     * @return Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
      * 
      */
     public Optional<Output<String>> deletionPolicy() {
@@ -600,7 +600,7 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param deletionPolicy Policy to determine what flags to send on delete.
+         * @param deletionPolicy Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
          * 
          * @return builder
          * 
@@ -611,7 +611,7 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param deletionPolicy Policy to determine what flags to send on delete.
+         * @param deletionPolicy Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
          * 
          * @return builder
          * 

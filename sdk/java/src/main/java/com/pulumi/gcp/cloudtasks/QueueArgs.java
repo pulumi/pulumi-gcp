@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudtasks.inputs.QueueAppEngineRoutingOverrideArgs;
+import com.pulumi.gcp.cloudtasks.inputs.QueueHttpTargetArgs;
 import com.pulumi.gcp.cloudtasks.inputs.QueueRateLimitsArgs;
 import com.pulumi.gcp.cloudtasks.inputs.QueueRetryConfigArgs;
 import com.pulumi.gcp.cloudtasks.inputs.QueueStackdriverLoggingConfigArgs;
@@ -37,6 +38,23 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<QueueAppEngineRoutingOverrideArgs>> appEngineRoutingOverride() {
         return Optional.ofNullable(this.appEngineRoutingOverride);
+    }
+
+    /**
+     * Modifies HTTP target for HTTP tasks.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="httpTarget")
+    private @Nullable Output<QueueHttpTargetArgs> httpTarget;
+
+    /**
+     * @return Modifies HTTP target for HTTP tasks.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<QueueHttpTargetArgs>> httpTarget() {
+        return Optional.ofNullable(this.httpTarget);
     }
 
     /**
@@ -157,6 +175,7 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
 
     private QueueArgs(QueueArgs $) {
         this.appEngineRoutingOverride = $.appEngineRoutingOverride;
+        this.httpTarget = $.httpTarget;
         this.location = $.location;
         this.name = $.name;
         this.project = $.project;
@@ -206,6 +225,29 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder appEngineRoutingOverride(QueueAppEngineRoutingOverrideArgs appEngineRoutingOverride) {
             return appEngineRoutingOverride(Output.of(appEngineRoutingOverride));
+        }
+
+        /**
+         * @param httpTarget Modifies HTTP target for HTTP tasks.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpTarget(@Nullable Output<QueueHttpTargetArgs> httpTarget) {
+            $.httpTarget = httpTarget;
+            return this;
+        }
+
+        /**
+         * @param httpTarget Modifies HTTP target for HTTP tasks.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpTarget(QueueHttpTargetArgs httpTarget) {
+            return httpTarget(Output.of(httpTarget));
         }
 
         /**

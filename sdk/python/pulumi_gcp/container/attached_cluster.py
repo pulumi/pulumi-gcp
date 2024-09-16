@@ -63,7 +63,7 @@ class AttachedClusterArgs:
                'effective_annotations' for all of the annotations present on the resource.
         :param pulumi.Input['AttachedClusterAuthorizationArgs'] authorization: Configuration related to the cluster RBAC settings.
         :param pulumi.Input['AttachedClusterBinaryAuthorizationArgs'] binary_authorization: Binary Authorization configuration.
-        :param pulumi.Input[str] deletion_policy: Policy to determine what flags to send on delete.
+        :param pulumi.Input[str] deletion_policy: Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
         :param pulumi.Input[str] description: A human readable description of this attached cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         :param pulumi.Input['AttachedClusterLoggingConfigArgs'] logging_config: Logging configuration.
         :param pulumi.Input['AttachedClusterMonitoringConfigArgs'] monitoring_config: Monitoring configuration.
@@ -213,7 +213,7 @@ class AttachedClusterArgs:
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        Policy to determine what flags to send on delete.
+        Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -333,7 +333,7 @@ class _AttachedClusterState:
                For EKS clusters, this is an AWS region. For AKS clusters,
                this is an Azure region.
         :param pulumi.Input[str] create_time: Output only. The time at which this cluster was created.
-        :param pulumi.Input[str] deletion_policy: Policy to determine what flags to send on delete.
+        :param pulumi.Input[str] deletion_policy: Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
         :param pulumi.Input[str] description: A human readable description of this attached cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         :param pulumi.Input[str] distribution: The Kubernetes distribution of the underlying attached cluster. Supported values:
                "eks", "aks", "generic". The generic distribution provides the ability to register
@@ -490,7 +490,7 @@ class _AttachedClusterState:
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        Policy to determine what flags to send on delete.
+        Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -912,7 +912,7 @@ class AttachedCluster(pulumi.CustomResource):
                'effective_annotations' for all of the annotations present on the resource.
         :param pulumi.Input[Union['AttachedClusterAuthorizationArgs', 'AttachedClusterAuthorizationArgsDict']] authorization: Configuration related to the cluster RBAC settings.
         :param pulumi.Input[Union['AttachedClusterBinaryAuthorizationArgs', 'AttachedClusterBinaryAuthorizationArgsDict']] binary_authorization: Binary Authorization configuration.
-        :param pulumi.Input[str] deletion_policy: Policy to determine what flags to send on delete.
+        :param pulumi.Input[str] deletion_policy: Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
         :param pulumi.Input[str] description: A human readable description of this attached cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         :param pulumi.Input[str] distribution: The Kubernetes distribution of the underlying attached cluster. Supported values:
                "eks", "aks", "generic". The generic distribution provides the ability to register
@@ -1214,7 +1214,7 @@ class AttachedCluster(pulumi.CustomResource):
                For EKS clusters, this is an AWS region. For AKS clusters,
                this is an Azure region.
         :param pulumi.Input[str] create_time: Output only. The time at which this cluster was created.
-        :param pulumi.Input[str] deletion_policy: Policy to determine what flags to send on delete.
+        :param pulumi.Input[str] deletion_policy: Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
         :param pulumi.Input[str] description: A human readable description of this attached cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         :param pulumi.Input[str] distribution: The Kubernetes distribution of the underlying attached cluster. Supported values:
                "eks", "aks", "generic". The generic distribution provides the ability to register
@@ -1331,7 +1331,7 @@ class AttachedCluster(pulumi.CustomResource):
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[Optional[str]]:
         """
-        Policy to determine what flags to send on delete.
+        Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
         """
         return pulumi.get(self, "deletion_policy")
 

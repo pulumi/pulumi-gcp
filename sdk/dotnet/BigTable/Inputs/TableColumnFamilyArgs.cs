@@ -18,6 +18,12 @@ namespace Pulumi.Gcp.BigTable.Inputs
         [Input("family", required: true)]
         public Input<string> Family { get; set; } = null!;
 
+        /// <summary>
+        /// The type of the column family.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
         public TableColumnFamilyArgs()
         {
         }

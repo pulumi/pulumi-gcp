@@ -163,7 +163,7 @@ type DatabaseInstance struct {
 	// The database URL in the form of https://{instance-id}.firebaseio.com for us-central1 instances
 	// or https://{instance-id}.{region}.firebasedatabase.app in other regions.
 	DatabaseUrl pulumi.StringOutput `pulumi:"databaseUrl"`
-	// The intended database state.
+	// The intended database state. Possible values: ACTIVE, DISABLED.
 	DesiredState pulumi.StringPtrOutput `pulumi:"desiredState"`
 	// The globally unique identifier of the Firebase Realtime Database instance.
 	// Instance IDs cannot be reused after deletion.
@@ -231,7 +231,7 @@ type databaseInstanceState struct {
 	// The database URL in the form of https://{instance-id}.firebaseio.com for us-central1 instances
 	// or https://{instance-id}.{region}.firebasedatabase.app in other regions.
 	DatabaseUrl *string `pulumi:"databaseUrl"`
-	// The intended database state.
+	// The intended database state. Possible values: ACTIVE, DISABLED.
 	DesiredState *string `pulumi:"desiredState"`
 	// The globally unique identifier of the Firebase Realtime Database instance.
 	// Instance IDs cannot be reused after deletion.
@@ -264,7 +264,7 @@ type DatabaseInstanceState struct {
 	// The database URL in the form of https://{instance-id}.firebaseio.com for us-central1 instances
 	// or https://{instance-id}.{region}.firebasedatabase.app in other regions.
 	DatabaseUrl pulumi.StringPtrInput
-	// The intended database state.
+	// The intended database state. Possible values: ACTIVE, DISABLED.
 	DesiredState pulumi.StringPtrInput
 	// The globally unique identifier of the Firebase Realtime Database instance.
 	// Instance IDs cannot be reused after deletion.
@@ -298,7 +298,7 @@ func (DatabaseInstanceState) ElementType() reflect.Type {
 }
 
 type databaseInstanceArgs struct {
-	// The intended database state.
+	// The intended database state. Possible values: ACTIVE, DISABLED.
 	DesiredState *string `pulumi:"desiredState"`
 	// The globally unique identifier of the Firebase Realtime Database instance.
 	// Instance IDs cannot be reused after deletion.
@@ -322,7 +322,7 @@ type databaseInstanceArgs struct {
 
 // The set of arguments for constructing a DatabaseInstance resource.
 type DatabaseInstanceArgs struct {
-	// The intended database state.
+	// The intended database state. Possible values: ACTIVE, DISABLED.
 	DesiredState pulumi.StringPtrInput
 	// The globally unique identifier of the Firebase Realtime Database instance.
 	// Instance IDs cannot be reused after deletion.
@@ -437,7 +437,7 @@ func (o DatabaseInstanceOutput) DatabaseUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.DatabaseUrl }).(pulumi.StringOutput)
 }
 
-// The intended database state.
+// The intended database state. Possible values: ACTIVE, DISABLED.
 func (o DatabaseInstanceOutput) DesiredState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringPtrOutput { return v.DesiredState }).(pulumi.StringPtrOutput)
 }

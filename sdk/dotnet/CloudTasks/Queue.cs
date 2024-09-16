@@ -73,6 +73,140 @@ namespace Pulumi.Gcp.CloudTasks
     /// 
     /// });
     /// ```
+    /// ### Cloud Tasks Queue Http Target Oidc
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var oidcServiceAccount = new Gcp.ServiceAccount.Account("oidc_service_account", new()
+    ///     {
+    ///         AccountId = "example-oidc",
+    ///         DisplayName = "Tasks Queue OIDC Service Account",
+    ///     });
+    /// 
+    ///     var httpTargetOidc = new Gcp.CloudTasks.Queue("http_target_oidc", new()
+    ///     {
+    ///         Name = "cloud-tasks-queue-http-target-oidc",
+    ///         Location = "us-central1",
+    ///         HttpTarget = new Gcp.CloudTasks.Inputs.QueueHttpTargetArgs
+    ///         {
+    ///             HttpMethod = "POST",
+    ///             UriOverride = new Gcp.CloudTasks.Inputs.QueueHttpTargetUriOverrideArgs
+    ///             {
+    ///                 Scheme = "HTTPS",
+    ///                 Host = "oidc.example.com",
+    ///                 Port = "8443",
+    ///                 PathOverride = new Gcp.CloudTasks.Inputs.QueueHttpTargetUriOverridePathOverrideArgs
+    ///                 {
+    ///                     Path = "/users/1234",
+    ///                 },
+    ///                 QueryOverride = new Gcp.CloudTasks.Inputs.QueueHttpTargetUriOverrideQueryOverrideArgs
+    ///                 {
+    ///                     QueryParams = "qparam1=123&amp;qparam2=456",
+    ///                 },
+    ///                 UriOverrideEnforceMode = "IF_NOT_EXISTS",
+    ///             },
+    ///             HeaderOverrides = new[]
+    ///             {
+    ///                 new Gcp.CloudTasks.Inputs.QueueHttpTargetHeaderOverrideArgs
+    ///                 {
+    ///                     Header = new Gcp.CloudTasks.Inputs.QueueHttpTargetHeaderOverrideHeaderArgs
+    ///                     {
+    ///                         Key = "AddSomethingElse",
+    ///                         Value = "MyOtherValue",
+    ///                     },
+    ///                 },
+    ///                 new Gcp.CloudTasks.Inputs.QueueHttpTargetHeaderOverrideArgs
+    ///                 {
+    ///                     Header = new Gcp.CloudTasks.Inputs.QueueHttpTargetHeaderOverrideHeaderArgs
+    ///                     {
+    ///                         Key = "AddMe",
+    ///                         Value = "MyValue",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             OidcToken = new Gcp.CloudTasks.Inputs.QueueHttpTargetOidcTokenArgs
+    ///             {
+    ///                 ServiceAccountEmail = oidcServiceAccount.Email,
+    ///                 Audience = "https://oidc.example.com",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Cloud Tasks Queue Http Target Oauth
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var oauthServiceAccount = new Gcp.ServiceAccount.Account("oauth_service_account", new()
+    ///     {
+    ///         AccountId = "example-oauth",
+    ///         DisplayName = "Tasks Queue OAuth Service Account",
+    ///     });
+    /// 
+    ///     var httpTargetOauth = new Gcp.CloudTasks.Queue("http_target_oauth", new()
+    ///     {
+    ///         Name = "cloud-tasks-queue-http-target-oauth",
+    ///         Location = "us-central1",
+    ///         HttpTarget = new Gcp.CloudTasks.Inputs.QueueHttpTargetArgs
+    ///         {
+    ///             HttpMethod = "POST",
+    ///             UriOverride = new Gcp.CloudTasks.Inputs.QueueHttpTargetUriOverrideArgs
+    ///             {
+    ///                 Scheme = "HTTPS",
+    ///                 Host = "oauth.example.com",
+    ///                 Port = "8443",
+    ///                 PathOverride = new Gcp.CloudTasks.Inputs.QueueHttpTargetUriOverridePathOverrideArgs
+    ///                 {
+    ///                     Path = "/users/1234",
+    ///                 },
+    ///                 QueryOverride = new Gcp.CloudTasks.Inputs.QueueHttpTargetUriOverrideQueryOverrideArgs
+    ///                 {
+    ///                     QueryParams = "qparam1=123&amp;qparam2=456",
+    ///                 },
+    ///                 UriOverrideEnforceMode = "IF_NOT_EXISTS",
+    ///             },
+    ///             HeaderOverrides = new[]
+    ///             {
+    ///                 new Gcp.CloudTasks.Inputs.QueueHttpTargetHeaderOverrideArgs
+    ///                 {
+    ///                     Header = new Gcp.CloudTasks.Inputs.QueueHttpTargetHeaderOverrideHeaderArgs
+    ///                     {
+    ///                         Key = "AddSomethingElse",
+    ///                         Value = "MyOtherValue",
+    ///                     },
+    ///                 },
+    ///                 new Gcp.CloudTasks.Inputs.QueueHttpTargetHeaderOverrideArgs
+    ///                 {
+    ///                     Header = new Gcp.CloudTasks.Inputs.QueueHttpTargetHeaderOverrideHeaderArgs
+    ///                     {
+    ///                         Key = "AddMe",
+    ///                         Value = "MyValue",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             OauthToken = new Gcp.CloudTasks.Inputs.QueueHttpTargetOauthTokenArgs
+    ///             {
+    ///                 ServiceAccountEmail = oauthServiceAccount.Email,
+    ///                 Scope = "openid https://www.googleapis.com/auth/userinfo.email",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -108,6 +242,13 @@ namespace Pulumi.Gcp.CloudTasks
         /// </summary>
         [Output("appEngineRoutingOverride")]
         public Output<Outputs.QueueAppEngineRoutingOverride?> AppEngineRoutingOverride { get; private set; } = null!;
+
+        /// <summary>
+        /// Modifies HTTP target for HTTP tasks.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("httpTarget")]
+        public Output<Outputs.QueueHttpTarget?> HttpTarget { get; private set; } = null!;
 
         /// <summary>
         /// The location of the queue
@@ -213,6 +354,13 @@ namespace Pulumi.Gcp.CloudTasks
         public Input<Inputs.QueueAppEngineRoutingOverrideArgs>? AppEngineRoutingOverride { get; set; }
 
         /// <summary>
+        /// Modifies HTTP target for HTTP tasks.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("httpTarget")]
+        public Input<Inputs.QueueHttpTargetArgs>? HttpTarget { get; set; }
+
+        /// <summary>
         /// The location of the queue
         /// 
         /// 
@@ -276,6 +424,13 @@ namespace Pulumi.Gcp.CloudTasks
         /// </summary>
         [Input("appEngineRoutingOverride")]
         public Input<Inputs.QueueAppEngineRoutingOverrideGetArgs>? AppEngineRoutingOverride { get; set; }
+
+        /// <summary>
+        /// Modifies HTTP target for HTTP tasks.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("httpTarget")]
+        public Input<Inputs.QueueHttpTargetGetArgs>? HttpTarget { get; set; }
 
         /// <summary>
         /// The location of the queue

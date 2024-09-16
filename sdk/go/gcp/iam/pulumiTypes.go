@@ -3328,6 +3328,8 @@ func (o WorkloadIdentityPoolProviderOidcPtrOutput) JwksJson() pulumi.StringPtrOu
 
 type WorkloadIdentityPoolProviderSaml struct {
 	// SAML Identity provider configuration metadata xml doc.
+	//
+	// <a name="nestedX509"></a>The `x509` block supports:
 	IdpMetadataXml string `pulumi:"idpMetadataXml"`
 }
 
@@ -3344,6 +3346,8 @@ type WorkloadIdentityPoolProviderSamlInput interface {
 
 type WorkloadIdentityPoolProviderSamlArgs struct {
 	// SAML Identity provider configuration metadata xml doc.
+	//
+	// <a name="nestedX509"></a>The `x509` block supports:
 	IdpMetadataXml pulumi.StringInput `pulumi:"idpMetadataXml"`
 }
 
@@ -3425,6 +3429,8 @@ func (o WorkloadIdentityPoolProviderSamlOutput) ToWorkloadIdentityPoolProviderSa
 }
 
 // SAML Identity provider configuration metadata xml doc.
+//
+// <a name="nestedX509"></a>The `x509` block supports:
 func (o WorkloadIdentityPoolProviderSamlOutput) IdpMetadataXml() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkloadIdentityPoolProviderSaml) string { return v.IdpMetadataXml }).(pulumi.StringOutput)
 }
@@ -3454,6 +3460,8 @@ func (o WorkloadIdentityPoolProviderSamlPtrOutput) Elem() WorkloadIdentityPoolPr
 }
 
 // SAML Identity provider configuration metadata xml doc.
+//
+// <a name="nestedX509"></a>The `x509` block supports:
 func (o WorkloadIdentityPoolProviderSamlPtrOutput) IdpMetadataXml() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkloadIdentityPoolProviderSaml) *string {
 		if v == nil {
@@ -3461,6 +3469,545 @@ func (o WorkloadIdentityPoolProviderSamlPtrOutput) IdpMetadataXml() pulumi.Strin
 		}
 		return &v.IdpMetadataXml
 	}).(pulumi.StringPtrOutput)
+}
+
+type WorkloadIdentityPoolProviderX509 struct {
+	// A Trust store, use this trust store as a wrapper to config the trust
+	// anchor and optional intermediate cas to help build the trust chain for
+	// the incoming end entity certificate. Follow the x509 guidelines to
+	// define those PEM encoded certs. Only 1 trust store is currently
+	// supported.
+	TrustStore WorkloadIdentityPoolProviderX509TrustStore `pulumi:"trustStore"`
+}
+
+// WorkloadIdentityPoolProviderX509Input is an input type that accepts WorkloadIdentityPoolProviderX509Args and WorkloadIdentityPoolProviderX509Output values.
+// You can construct a concrete instance of `WorkloadIdentityPoolProviderX509Input` via:
+//
+//	WorkloadIdentityPoolProviderX509Args{...}
+type WorkloadIdentityPoolProviderX509Input interface {
+	pulumi.Input
+
+	ToWorkloadIdentityPoolProviderX509Output() WorkloadIdentityPoolProviderX509Output
+	ToWorkloadIdentityPoolProviderX509OutputWithContext(context.Context) WorkloadIdentityPoolProviderX509Output
+}
+
+type WorkloadIdentityPoolProviderX509Args struct {
+	// A Trust store, use this trust store as a wrapper to config the trust
+	// anchor and optional intermediate cas to help build the trust chain for
+	// the incoming end entity certificate. Follow the x509 guidelines to
+	// define those PEM encoded certs. Only 1 trust store is currently
+	// supported.
+	TrustStore WorkloadIdentityPoolProviderX509TrustStoreInput `pulumi:"trustStore"`
+}
+
+func (WorkloadIdentityPoolProviderX509Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadIdentityPoolProviderX509)(nil)).Elem()
+}
+
+func (i WorkloadIdentityPoolProviderX509Args) ToWorkloadIdentityPoolProviderX509Output() WorkloadIdentityPoolProviderX509Output {
+	return i.ToWorkloadIdentityPoolProviderX509OutputWithContext(context.Background())
+}
+
+func (i WorkloadIdentityPoolProviderX509Args) ToWorkloadIdentityPoolProviderX509OutputWithContext(ctx context.Context) WorkloadIdentityPoolProviderX509Output {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadIdentityPoolProviderX509Output)
+}
+
+func (i WorkloadIdentityPoolProviderX509Args) ToWorkloadIdentityPoolProviderX509PtrOutput() WorkloadIdentityPoolProviderX509PtrOutput {
+	return i.ToWorkloadIdentityPoolProviderX509PtrOutputWithContext(context.Background())
+}
+
+func (i WorkloadIdentityPoolProviderX509Args) ToWorkloadIdentityPoolProviderX509PtrOutputWithContext(ctx context.Context) WorkloadIdentityPoolProviderX509PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadIdentityPoolProviderX509Output).ToWorkloadIdentityPoolProviderX509PtrOutputWithContext(ctx)
+}
+
+// WorkloadIdentityPoolProviderX509PtrInput is an input type that accepts WorkloadIdentityPoolProviderX509Args, WorkloadIdentityPoolProviderX509Ptr and WorkloadIdentityPoolProviderX509PtrOutput values.
+// You can construct a concrete instance of `WorkloadIdentityPoolProviderX509PtrInput` via:
+//
+//	        WorkloadIdentityPoolProviderX509Args{...}
+//
+//	or:
+//
+//	        nil
+type WorkloadIdentityPoolProviderX509PtrInput interface {
+	pulumi.Input
+
+	ToWorkloadIdentityPoolProviderX509PtrOutput() WorkloadIdentityPoolProviderX509PtrOutput
+	ToWorkloadIdentityPoolProviderX509PtrOutputWithContext(context.Context) WorkloadIdentityPoolProviderX509PtrOutput
+}
+
+type workloadIdentityPoolProviderX509PtrType WorkloadIdentityPoolProviderX509Args
+
+func WorkloadIdentityPoolProviderX509Ptr(v *WorkloadIdentityPoolProviderX509Args) WorkloadIdentityPoolProviderX509PtrInput {
+	return (*workloadIdentityPoolProviderX509PtrType)(v)
+}
+
+func (*workloadIdentityPoolProviderX509PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkloadIdentityPoolProviderX509)(nil)).Elem()
+}
+
+func (i *workloadIdentityPoolProviderX509PtrType) ToWorkloadIdentityPoolProviderX509PtrOutput() WorkloadIdentityPoolProviderX509PtrOutput {
+	return i.ToWorkloadIdentityPoolProviderX509PtrOutputWithContext(context.Background())
+}
+
+func (i *workloadIdentityPoolProviderX509PtrType) ToWorkloadIdentityPoolProviderX509PtrOutputWithContext(ctx context.Context) WorkloadIdentityPoolProviderX509PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadIdentityPoolProviderX509PtrOutput)
+}
+
+type WorkloadIdentityPoolProviderX509Output struct{ *pulumi.OutputState }
+
+func (WorkloadIdentityPoolProviderX509Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadIdentityPoolProviderX509)(nil)).Elem()
+}
+
+func (o WorkloadIdentityPoolProviderX509Output) ToWorkloadIdentityPoolProviderX509Output() WorkloadIdentityPoolProviderX509Output {
+	return o
+}
+
+func (o WorkloadIdentityPoolProviderX509Output) ToWorkloadIdentityPoolProviderX509OutputWithContext(ctx context.Context) WorkloadIdentityPoolProviderX509Output {
+	return o
+}
+
+func (o WorkloadIdentityPoolProviderX509Output) ToWorkloadIdentityPoolProviderX509PtrOutput() WorkloadIdentityPoolProviderX509PtrOutput {
+	return o.ToWorkloadIdentityPoolProviderX509PtrOutputWithContext(context.Background())
+}
+
+func (o WorkloadIdentityPoolProviderX509Output) ToWorkloadIdentityPoolProviderX509PtrOutputWithContext(ctx context.Context) WorkloadIdentityPoolProviderX509PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkloadIdentityPoolProviderX509) *WorkloadIdentityPoolProviderX509 {
+		return &v
+	}).(WorkloadIdentityPoolProviderX509PtrOutput)
+}
+
+// A Trust store, use this trust store as a wrapper to config the trust
+// anchor and optional intermediate cas to help build the trust chain for
+// the incoming end entity certificate. Follow the x509 guidelines to
+// define those PEM encoded certs. Only 1 trust store is currently
+// supported.
+func (o WorkloadIdentityPoolProviderX509Output) TrustStore() WorkloadIdentityPoolProviderX509TrustStoreOutput {
+	return o.ApplyT(func(v WorkloadIdentityPoolProviderX509) WorkloadIdentityPoolProviderX509TrustStore {
+		return v.TrustStore
+	}).(WorkloadIdentityPoolProviderX509TrustStoreOutput)
+}
+
+type WorkloadIdentityPoolProviderX509PtrOutput struct{ *pulumi.OutputState }
+
+func (WorkloadIdentityPoolProviderX509PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkloadIdentityPoolProviderX509)(nil)).Elem()
+}
+
+func (o WorkloadIdentityPoolProviderX509PtrOutput) ToWorkloadIdentityPoolProviderX509PtrOutput() WorkloadIdentityPoolProviderX509PtrOutput {
+	return o
+}
+
+func (o WorkloadIdentityPoolProviderX509PtrOutput) ToWorkloadIdentityPoolProviderX509PtrOutputWithContext(ctx context.Context) WorkloadIdentityPoolProviderX509PtrOutput {
+	return o
+}
+
+func (o WorkloadIdentityPoolProviderX509PtrOutput) Elem() WorkloadIdentityPoolProviderX509Output {
+	return o.ApplyT(func(v *WorkloadIdentityPoolProviderX509) WorkloadIdentityPoolProviderX509 {
+		if v != nil {
+			return *v
+		}
+		var ret WorkloadIdentityPoolProviderX509
+		return ret
+	}).(WorkloadIdentityPoolProviderX509Output)
+}
+
+// A Trust store, use this trust store as a wrapper to config the trust
+// anchor and optional intermediate cas to help build the trust chain for
+// the incoming end entity certificate. Follow the x509 guidelines to
+// define those PEM encoded certs. Only 1 trust store is currently
+// supported.
+func (o WorkloadIdentityPoolProviderX509PtrOutput) TrustStore() WorkloadIdentityPoolProviderX509TrustStorePtrOutput {
+	return o.ApplyT(func(v *WorkloadIdentityPoolProviderX509) *WorkloadIdentityPoolProviderX509TrustStore {
+		if v == nil {
+			return nil
+		}
+		return &v.TrustStore
+	}).(WorkloadIdentityPoolProviderX509TrustStorePtrOutput)
+}
+
+type WorkloadIdentityPoolProviderX509TrustStore struct {
+	// Set of intermediate CA certificates used for building the trust chain to
+	// trust anchor.
+	// IMPORTANT: Intermediate CAs are only supported when configuring x509 federation.
+	// Structure is documented below.
+	IntermediateCas []WorkloadIdentityPoolProviderX509TrustStoreIntermediateCa `pulumi:"intermediateCas"`
+	// List of Trust Anchors to be used while performing validation
+	// against a given TrustStore. The incoming end entity's certificate
+	// must be chained up to one of the trust anchors here.
+	// Structure is documented below.
+	TrustAnchors []WorkloadIdentityPoolProviderX509TrustStoreTrustAnchor `pulumi:"trustAnchors"`
+}
+
+// WorkloadIdentityPoolProviderX509TrustStoreInput is an input type that accepts WorkloadIdentityPoolProviderX509TrustStoreArgs and WorkloadIdentityPoolProviderX509TrustStoreOutput values.
+// You can construct a concrete instance of `WorkloadIdentityPoolProviderX509TrustStoreInput` via:
+//
+//	WorkloadIdentityPoolProviderX509TrustStoreArgs{...}
+type WorkloadIdentityPoolProviderX509TrustStoreInput interface {
+	pulumi.Input
+
+	ToWorkloadIdentityPoolProviderX509TrustStoreOutput() WorkloadIdentityPoolProviderX509TrustStoreOutput
+	ToWorkloadIdentityPoolProviderX509TrustStoreOutputWithContext(context.Context) WorkloadIdentityPoolProviderX509TrustStoreOutput
+}
+
+type WorkloadIdentityPoolProviderX509TrustStoreArgs struct {
+	// Set of intermediate CA certificates used for building the trust chain to
+	// trust anchor.
+	// IMPORTANT: Intermediate CAs are only supported when configuring x509 federation.
+	// Structure is documented below.
+	IntermediateCas WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayInput `pulumi:"intermediateCas"`
+	// List of Trust Anchors to be used while performing validation
+	// against a given TrustStore. The incoming end entity's certificate
+	// must be chained up to one of the trust anchors here.
+	// Structure is documented below.
+	TrustAnchors WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayInput `pulumi:"trustAnchors"`
+}
+
+func (WorkloadIdentityPoolProviderX509TrustStoreArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadIdentityPoolProviderX509TrustStore)(nil)).Elem()
+}
+
+func (i WorkloadIdentityPoolProviderX509TrustStoreArgs) ToWorkloadIdentityPoolProviderX509TrustStoreOutput() WorkloadIdentityPoolProviderX509TrustStoreOutput {
+	return i.ToWorkloadIdentityPoolProviderX509TrustStoreOutputWithContext(context.Background())
+}
+
+func (i WorkloadIdentityPoolProviderX509TrustStoreArgs) ToWorkloadIdentityPoolProviderX509TrustStoreOutputWithContext(ctx context.Context) WorkloadIdentityPoolProviderX509TrustStoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadIdentityPoolProviderX509TrustStoreOutput)
+}
+
+func (i WorkloadIdentityPoolProviderX509TrustStoreArgs) ToWorkloadIdentityPoolProviderX509TrustStorePtrOutput() WorkloadIdentityPoolProviderX509TrustStorePtrOutput {
+	return i.ToWorkloadIdentityPoolProviderX509TrustStorePtrOutputWithContext(context.Background())
+}
+
+func (i WorkloadIdentityPoolProviderX509TrustStoreArgs) ToWorkloadIdentityPoolProviderX509TrustStorePtrOutputWithContext(ctx context.Context) WorkloadIdentityPoolProviderX509TrustStorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadIdentityPoolProviderX509TrustStoreOutput).ToWorkloadIdentityPoolProviderX509TrustStorePtrOutputWithContext(ctx)
+}
+
+// WorkloadIdentityPoolProviderX509TrustStorePtrInput is an input type that accepts WorkloadIdentityPoolProviderX509TrustStoreArgs, WorkloadIdentityPoolProviderX509TrustStorePtr and WorkloadIdentityPoolProviderX509TrustStorePtrOutput values.
+// You can construct a concrete instance of `WorkloadIdentityPoolProviderX509TrustStorePtrInput` via:
+//
+//	        WorkloadIdentityPoolProviderX509TrustStoreArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkloadIdentityPoolProviderX509TrustStorePtrInput interface {
+	pulumi.Input
+
+	ToWorkloadIdentityPoolProviderX509TrustStorePtrOutput() WorkloadIdentityPoolProviderX509TrustStorePtrOutput
+	ToWorkloadIdentityPoolProviderX509TrustStorePtrOutputWithContext(context.Context) WorkloadIdentityPoolProviderX509TrustStorePtrOutput
+}
+
+type workloadIdentityPoolProviderX509TrustStorePtrType WorkloadIdentityPoolProviderX509TrustStoreArgs
+
+func WorkloadIdentityPoolProviderX509TrustStorePtr(v *WorkloadIdentityPoolProviderX509TrustStoreArgs) WorkloadIdentityPoolProviderX509TrustStorePtrInput {
+	return (*workloadIdentityPoolProviderX509TrustStorePtrType)(v)
+}
+
+func (*workloadIdentityPoolProviderX509TrustStorePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkloadIdentityPoolProviderX509TrustStore)(nil)).Elem()
+}
+
+func (i *workloadIdentityPoolProviderX509TrustStorePtrType) ToWorkloadIdentityPoolProviderX509TrustStorePtrOutput() WorkloadIdentityPoolProviderX509TrustStorePtrOutput {
+	return i.ToWorkloadIdentityPoolProviderX509TrustStorePtrOutputWithContext(context.Background())
+}
+
+func (i *workloadIdentityPoolProviderX509TrustStorePtrType) ToWorkloadIdentityPoolProviderX509TrustStorePtrOutputWithContext(ctx context.Context) WorkloadIdentityPoolProviderX509TrustStorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadIdentityPoolProviderX509TrustStorePtrOutput)
+}
+
+type WorkloadIdentityPoolProviderX509TrustStoreOutput struct{ *pulumi.OutputState }
+
+func (WorkloadIdentityPoolProviderX509TrustStoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadIdentityPoolProviderX509TrustStore)(nil)).Elem()
+}
+
+func (o WorkloadIdentityPoolProviderX509TrustStoreOutput) ToWorkloadIdentityPoolProviderX509TrustStoreOutput() WorkloadIdentityPoolProviderX509TrustStoreOutput {
+	return o
+}
+
+func (o WorkloadIdentityPoolProviderX509TrustStoreOutput) ToWorkloadIdentityPoolProviderX509TrustStoreOutputWithContext(ctx context.Context) WorkloadIdentityPoolProviderX509TrustStoreOutput {
+	return o
+}
+
+func (o WorkloadIdentityPoolProviderX509TrustStoreOutput) ToWorkloadIdentityPoolProviderX509TrustStorePtrOutput() WorkloadIdentityPoolProviderX509TrustStorePtrOutput {
+	return o.ToWorkloadIdentityPoolProviderX509TrustStorePtrOutputWithContext(context.Background())
+}
+
+func (o WorkloadIdentityPoolProviderX509TrustStoreOutput) ToWorkloadIdentityPoolProviderX509TrustStorePtrOutputWithContext(ctx context.Context) WorkloadIdentityPoolProviderX509TrustStorePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkloadIdentityPoolProviderX509TrustStore) *WorkloadIdentityPoolProviderX509TrustStore {
+		return &v
+	}).(WorkloadIdentityPoolProviderX509TrustStorePtrOutput)
+}
+
+// Set of intermediate CA certificates used for building the trust chain to
+// trust anchor.
+// IMPORTANT: Intermediate CAs are only supported when configuring x509 federation.
+// Structure is documented below.
+func (o WorkloadIdentityPoolProviderX509TrustStoreOutput) IntermediateCas() WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayOutput {
+	return o.ApplyT(func(v WorkloadIdentityPoolProviderX509TrustStore) []WorkloadIdentityPoolProviderX509TrustStoreIntermediateCa {
+		return v.IntermediateCas
+	}).(WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayOutput)
+}
+
+// List of Trust Anchors to be used while performing validation
+// against a given TrustStore. The incoming end entity's certificate
+// must be chained up to one of the trust anchors here.
+// Structure is documented below.
+func (o WorkloadIdentityPoolProviderX509TrustStoreOutput) TrustAnchors() WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutput {
+	return o.ApplyT(func(v WorkloadIdentityPoolProviderX509TrustStore) []WorkloadIdentityPoolProviderX509TrustStoreTrustAnchor {
+		return v.TrustAnchors
+	}).(WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutput)
+}
+
+type WorkloadIdentityPoolProviderX509TrustStorePtrOutput struct{ *pulumi.OutputState }
+
+func (WorkloadIdentityPoolProviderX509TrustStorePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkloadIdentityPoolProviderX509TrustStore)(nil)).Elem()
+}
+
+func (o WorkloadIdentityPoolProviderX509TrustStorePtrOutput) ToWorkloadIdentityPoolProviderX509TrustStorePtrOutput() WorkloadIdentityPoolProviderX509TrustStorePtrOutput {
+	return o
+}
+
+func (o WorkloadIdentityPoolProviderX509TrustStorePtrOutput) ToWorkloadIdentityPoolProviderX509TrustStorePtrOutputWithContext(ctx context.Context) WorkloadIdentityPoolProviderX509TrustStorePtrOutput {
+	return o
+}
+
+func (o WorkloadIdentityPoolProviderX509TrustStorePtrOutput) Elem() WorkloadIdentityPoolProviderX509TrustStoreOutput {
+	return o.ApplyT(func(v *WorkloadIdentityPoolProviderX509TrustStore) WorkloadIdentityPoolProviderX509TrustStore {
+		if v != nil {
+			return *v
+		}
+		var ret WorkloadIdentityPoolProviderX509TrustStore
+		return ret
+	}).(WorkloadIdentityPoolProviderX509TrustStoreOutput)
+}
+
+// Set of intermediate CA certificates used for building the trust chain to
+// trust anchor.
+// IMPORTANT: Intermediate CAs are only supported when configuring x509 federation.
+// Structure is documented below.
+func (o WorkloadIdentityPoolProviderX509TrustStorePtrOutput) IntermediateCas() WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayOutput {
+	return o.ApplyT(func(v *WorkloadIdentityPoolProviderX509TrustStore) []WorkloadIdentityPoolProviderX509TrustStoreIntermediateCa {
+		if v == nil {
+			return nil
+		}
+		return v.IntermediateCas
+	}).(WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayOutput)
+}
+
+// List of Trust Anchors to be used while performing validation
+// against a given TrustStore. The incoming end entity's certificate
+// must be chained up to one of the trust anchors here.
+// Structure is documented below.
+func (o WorkloadIdentityPoolProviderX509TrustStorePtrOutput) TrustAnchors() WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutput {
+	return o.ApplyT(func(v *WorkloadIdentityPoolProviderX509TrustStore) []WorkloadIdentityPoolProviderX509TrustStoreTrustAnchor {
+		if v == nil {
+			return nil
+		}
+		return v.TrustAnchors
+	}).(WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutput)
+}
+
+type WorkloadIdentityPoolProviderX509TrustStoreIntermediateCa struct {
+	// PEM certificate of the PKI used for validation. Must only contain one
+	// ca certificate(either root or intermediate cert).
+	PemCertificate *string `pulumi:"pemCertificate"`
+}
+
+// WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaInput is an input type that accepts WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgs and WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaOutput values.
+// You can construct a concrete instance of `WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaInput` via:
+//
+//	WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgs{...}
+type WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaInput interface {
+	pulumi.Input
+
+	ToWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaOutput() WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaOutput
+	ToWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaOutputWithContext(context.Context) WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaOutput
+}
+
+type WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgs struct {
+	// PEM certificate of the PKI used for validation. Must only contain one
+	// ca certificate(either root or intermediate cert).
+	PemCertificate pulumi.StringPtrInput `pulumi:"pemCertificate"`
+}
+
+func (WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadIdentityPoolProviderX509TrustStoreIntermediateCa)(nil)).Elem()
+}
+
+func (i WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgs) ToWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaOutput() WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaOutput {
+	return i.ToWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaOutputWithContext(context.Background())
+}
+
+func (i WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgs) ToWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaOutputWithContext(ctx context.Context) WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaOutput)
+}
+
+// WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayInput is an input type that accepts WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArray and WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayOutput values.
+// You can construct a concrete instance of `WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayInput` via:
+//
+//	WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArray{ WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgs{...} }
+type WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayInput interface {
+	pulumi.Input
+
+	ToWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayOutput() WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayOutput
+	ToWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayOutputWithContext(context.Context) WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayOutput
+}
+
+type WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArray []WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaInput
+
+func (WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkloadIdentityPoolProviderX509TrustStoreIntermediateCa)(nil)).Elem()
+}
+
+func (i WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArray) ToWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayOutput() WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayOutput {
+	return i.ToWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayOutputWithContext(context.Background())
+}
+
+func (i WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArray) ToWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayOutputWithContext(ctx context.Context) WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayOutput)
+}
+
+type WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaOutput struct{ *pulumi.OutputState }
+
+func (WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadIdentityPoolProviderX509TrustStoreIntermediateCa)(nil)).Elem()
+}
+
+func (o WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaOutput) ToWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaOutput() WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaOutput {
+	return o
+}
+
+func (o WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaOutput) ToWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaOutputWithContext(ctx context.Context) WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaOutput {
+	return o
+}
+
+// PEM certificate of the PKI used for validation. Must only contain one
+// ca certificate(either root or intermediate cert).
+func (o WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaOutput) PemCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkloadIdentityPoolProviderX509TrustStoreIntermediateCa) *string { return v.PemCertificate }).(pulumi.StringPtrOutput)
+}
+
+type WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkloadIdentityPoolProviderX509TrustStoreIntermediateCa)(nil)).Elem()
+}
+
+func (o WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayOutput) ToWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayOutput() WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayOutput {
+	return o
+}
+
+func (o WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayOutput) ToWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayOutputWithContext(ctx context.Context) WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayOutput {
+	return o
+}
+
+func (o WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayOutput) Index(i pulumi.IntInput) WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkloadIdentityPoolProviderX509TrustStoreIntermediateCa {
+		return vs[0].([]WorkloadIdentityPoolProviderX509TrustStoreIntermediateCa)[vs[1].(int)]
+	}).(WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaOutput)
+}
+
+type WorkloadIdentityPoolProviderX509TrustStoreTrustAnchor struct {
+	// PEM certificate of the PKI used for validation. Must only contain one
+	// ca certificate(either root or intermediate cert).
+	PemCertificate *string `pulumi:"pemCertificate"`
+}
+
+// WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorInput is an input type that accepts WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgs and WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorOutput values.
+// You can construct a concrete instance of `WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorInput` via:
+//
+//	WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgs{...}
+type WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorInput interface {
+	pulumi.Input
+
+	ToWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorOutput() WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorOutput
+	ToWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorOutputWithContext(context.Context) WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorOutput
+}
+
+type WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgs struct {
+	// PEM certificate of the PKI used for validation. Must only contain one
+	// ca certificate(either root or intermediate cert).
+	PemCertificate pulumi.StringPtrInput `pulumi:"pemCertificate"`
+}
+
+func (WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadIdentityPoolProviderX509TrustStoreTrustAnchor)(nil)).Elem()
+}
+
+func (i WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgs) ToWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorOutput() WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorOutput {
+	return i.ToWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorOutputWithContext(context.Background())
+}
+
+func (i WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgs) ToWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorOutputWithContext(ctx context.Context) WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorOutput)
+}
+
+// WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayInput is an input type that accepts WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArray and WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutput values.
+// You can construct a concrete instance of `WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayInput` via:
+//
+//	WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArray{ WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgs{...} }
+type WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayInput interface {
+	pulumi.Input
+
+	ToWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutput() WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutput
+	ToWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutputWithContext(context.Context) WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutput
+}
+
+type WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArray []WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorInput
+
+func (WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkloadIdentityPoolProviderX509TrustStoreTrustAnchor)(nil)).Elem()
+}
+
+func (i WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArray) ToWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutput() WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutput {
+	return i.ToWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutputWithContext(context.Background())
+}
+
+func (i WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArray) ToWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutputWithContext(ctx context.Context) WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutput)
+}
+
+type WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorOutput struct{ *pulumi.OutputState }
+
+func (WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadIdentityPoolProviderX509TrustStoreTrustAnchor)(nil)).Elem()
+}
+
+func (o WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorOutput) ToWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorOutput() WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorOutput {
+	return o
+}
+
+func (o WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorOutput) ToWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorOutputWithContext(ctx context.Context) WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorOutput {
+	return o
+}
+
+// PEM certificate of the PKI used for validation. Must only contain one
+// ca certificate(either root or intermediate cert).
+func (o WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorOutput) PemCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkloadIdentityPoolProviderX509TrustStoreTrustAnchor) *string { return v.PemCertificate }).(pulumi.StringPtrOutput)
+}
+
+type WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkloadIdentityPoolProviderX509TrustStoreTrustAnchor)(nil)).Elem()
+}
+
+func (o WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutput) ToWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutput() WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutput {
+	return o
+}
+
+func (o WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutput) ToWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutputWithContext(ctx context.Context) WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutput {
+	return o
+}
+
+func (o WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutput) Index(i pulumi.IntInput) WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkloadIdentityPoolProviderX509TrustStoreTrustAnchor {
+		return vs[0].([]WorkloadIdentityPoolProviderX509TrustStoreTrustAnchor)[vs[1].(int)]
+	}).(WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorOutput)
 }
 
 type GetTestablePermissionsPermission struct {
@@ -4006,6 +4553,439 @@ func (o GetWorkloadIdentityPoolProviderSamlArrayOutput) Index(i pulumi.IntInput)
 	}).(GetWorkloadIdentityPoolProviderSamlOutput)
 }
 
+type GetWorkloadIdentityPoolProviderX509 struct {
+	// A Trust store, use this trust store as a wrapper to config the trust
+	// anchor and optional intermediate cas to help build the trust chain for
+	// the incoming end entity certificate. Follow the x509 guidelines to
+	// define those PEM encoded certs. Only 1 trust store is currently
+	// supported.
+	TrustStores []GetWorkloadIdentityPoolProviderX509TrustStore `pulumi:"trustStores"`
+}
+
+// GetWorkloadIdentityPoolProviderX509Input is an input type that accepts GetWorkloadIdentityPoolProviderX509Args and GetWorkloadIdentityPoolProviderX509Output values.
+// You can construct a concrete instance of `GetWorkloadIdentityPoolProviderX509Input` via:
+//
+//	GetWorkloadIdentityPoolProviderX509Args{...}
+type GetWorkloadIdentityPoolProviderX509Input interface {
+	pulumi.Input
+
+	ToGetWorkloadIdentityPoolProviderX509Output() GetWorkloadIdentityPoolProviderX509Output
+	ToGetWorkloadIdentityPoolProviderX509OutputWithContext(context.Context) GetWorkloadIdentityPoolProviderX509Output
+}
+
+type GetWorkloadIdentityPoolProviderX509Args struct {
+	// A Trust store, use this trust store as a wrapper to config the trust
+	// anchor and optional intermediate cas to help build the trust chain for
+	// the incoming end entity certificate. Follow the x509 guidelines to
+	// define those PEM encoded certs. Only 1 trust store is currently
+	// supported.
+	TrustStores GetWorkloadIdentityPoolProviderX509TrustStoreArrayInput `pulumi:"trustStores"`
+}
+
+func (GetWorkloadIdentityPoolProviderX509Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkloadIdentityPoolProviderX509)(nil)).Elem()
+}
+
+func (i GetWorkloadIdentityPoolProviderX509Args) ToGetWorkloadIdentityPoolProviderX509Output() GetWorkloadIdentityPoolProviderX509Output {
+	return i.ToGetWorkloadIdentityPoolProviderX509OutputWithContext(context.Background())
+}
+
+func (i GetWorkloadIdentityPoolProviderX509Args) ToGetWorkloadIdentityPoolProviderX509OutputWithContext(ctx context.Context) GetWorkloadIdentityPoolProviderX509Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkloadIdentityPoolProviderX509Output)
+}
+
+// GetWorkloadIdentityPoolProviderX509ArrayInput is an input type that accepts GetWorkloadIdentityPoolProviderX509Array and GetWorkloadIdentityPoolProviderX509ArrayOutput values.
+// You can construct a concrete instance of `GetWorkloadIdentityPoolProviderX509ArrayInput` via:
+//
+//	GetWorkloadIdentityPoolProviderX509Array{ GetWorkloadIdentityPoolProviderX509Args{...} }
+type GetWorkloadIdentityPoolProviderX509ArrayInput interface {
+	pulumi.Input
+
+	ToGetWorkloadIdentityPoolProviderX509ArrayOutput() GetWorkloadIdentityPoolProviderX509ArrayOutput
+	ToGetWorkloadIdentityPoolProviderX509ArrayOutputWithContext(context.Context) GetWorkloadIdentityPoolProviderX509ArrayOutput
+}
+
+type GetWorkloadIdentityPoolProviderX509Array []GetWorkloadIdentityPoolProviderX509Input
+
+func (GetWorkloadIdentityPoolProviderX509Array) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkloadIdentityPoolProviderX509)(nil)).Elem()
+}
+
+func (i GetWorkloadIdentityPoolProviderX509Array) ToGetWorkloadIdentityPoolProviderX509ArrayOutput() GetWorkloadIdentityPoolProviderX509ArrayOutput {
+	return i.ToGetWorkloadIdentityPoolProviderX509ArrayOutputWithContext(context.Background())
+}
+
+func (i GetWorkloadIdentityPoolProviderX509Array) ToGetWorkloadIdentityPoolProviderX509ArrayOutputWithContext(ctx context.Context) GetWorkloadIdentityPoolProviderX509ArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkloadIdentityPoolProviderX509ArrayOutput)
+}
+
+type GetWorkloadIdentityPoolProviderX509Output struct{ *pulumi.OutputState }
+
+func (GetWorkloadIdentityPoolProviderX509Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkloadIdentityPoolProviderX509)(nil)).Elem()
+}
+
+func (o GetWorkloadIdentityPoolProviderX509Output) ToGetWorkloadIdentityPoolProviderX509Output() GetWorkloadIdentityPoolProviderX509Output {
+	return o
+}
+
+func (o GetWorkloadIdentityPoolProviderX509Output) ToGetWorkloadIdentityPoolProviderX509OutputWithContext(ctx context.Context) GetWorkloadIdentityPoolProviderX509Output {
+	return o
+}
+
+// A Trust store, use this trust store as a wrapper to config the trust
+// anchor and optional intermediate cas to help build the trust chain for
+// the incoming end entity certificate. Follow the x509 guidelines to
+// define those PEM encoded certs. Only 1 trust store is currently
+// supported.
+func (o GetWorkloadIdentityPoolProviderX509Output) TrustStores() GetWorkloadIdentityPoolProviderX509TrustStoreArrayOutput {
+	return o.ApplyT(func(v GetWorkloadIdentityPoolProviderX509) []GetWorkloadIdentityPoolProviderX509TrustStore {
+		return v.TrustStores
+	}).(GetWorkloadIdentityPoolProviderX509TrustStoreArrayOutput)
+}
+
+type GetWorkloadIdentityPoolProviderX509ArrayOutput struct{ *pulumi.OutputState }
+
+func (GetWorkloadIdentityPoolProviderX509ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkloadIdentityPoolProviderX509)(nil)).Elem()
+}
+
+func (o GetWorkloadIdentityPoolProviderX509ArrayOutput) ToGetWorkloadIdentityPoolProviderX509ArrayOutput() GetWorkloadIdentityPoolProviderX509ArrayOutput {
+	return o
+}
+
+func (o GetWorkloadIdentityPoolProviderX509ArrayOutput) ToGetWorkloadIdentityPoolProviderX509ArrayOutputWithContext(ctx context.Context) GetWorkloadIdentityPoolProviderX509ArrayOutput {
+	return o
+}
+
+func (o GetWorkloadIdentityPoolProviderX509ArrayOutput) Index(i pulumi.IntInput) GetWorkloadIdentityPoolProviderX509Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWorkloadIdentityPoolProviderX509 {
+		return vs[0].([]GetWorkloadIdentityPoolProviderX509)[vs[1].(int)]
+	}).(GetWorkloadIdentityPoolProviderX509Output)
+}
+
+type GetWorkloadIdentityPoolProviderX509TrustStore struct {
+	// Set of intermediate CA certificates used for building the trust chain to
+	// trust anchor.
+	// IMPORTANT: Intermediate CAs are only supported when configuring x509 federation.
+	IntermediateCas []GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCa `pulumi:"intermediateCas"`
+	// List of Trust Anchors to be used while performing validation
+	// against a given TrustStore. The incoming end entity's certificate
+	// must be chained up to one of the trust anchors here.
+	TrustAnchors []GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchor `pulumi:"trustAnchors"`
+}
+
+// GetWorkloadIdentityPoolProviderX509TrustStoreInput is an input type that accepts GetWorkloadIdentityPoolProviderX509TrustStoreArgs and GetWorkloadIdentityPoolProviderX509TrustStoreOutput values.
+// You can construct a concrete instance of `GetWorkloadIdentityPoolProviderX509TrustStoreInput` via:
+//
+//	GetWorkloadIdentityPoolProviderX509TrustStoreArgs{...}
+type GetWorkloadIdentityPoolProviderX509TrustStoreInput interface {
+	pulumi.Input
+
+	ToGetWorkloadIdentityPoolProviderX509TrustStoreOutput() GetWorkloadIdentityPoolProviderX509TrustStoreOutput
+	ToGetWorkloadIdentityPoolProviderX509TrustStoreOutputWithContext(context.Context) GetWorkloadIdentityPoolProviderX509TrustStoreOutput
+}
+
+type GetWorkloadIdentityPoolProviderX509TrustStoreArgs struct {
+	// Set of intermediate CA certificates used for building the trust chain to
+	// trust anchor.
+	// IMPORTANT: Intermediate CAs are only supported when configuring x509 federation.
+	IntermediateCas GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayInput `pulumi:"intermediateCas"`
+	// List of Trust Anchors to be used while performing validation
+	// against a given TrustStore. The incoming end entity's certificate
+	// must be chained up to one of the trust anchors here.
+	TrustAnchors GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayInput `pulumi:"trustAnchors"`
+}
+
+func (GetWorkloadIdentityPoolProviderX509TrustStoreArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkloadIdentityPoolProviderX509TrustStore)(nil)).Elem()
+}
+
+func (i GetWorkloadIdentityPoolProviderX509TrustStoreArgs) ToGetWorkloadIdentityPoolProviderX509TrustStoreOutput() GetWorkloadIdentityPoolProviderX509TrustStoreOutput {
+	return i.ToGetWorkloadIdentityPoolProviderX509TrustStoreOutputWithContext(context.Background())
+}
+
+func (i GetWorkloadIdentityPoolProviderX509TrustStoreArgs) ToGetWorkloadIdentityPoolProviderX509TrustStoreOutputWithContext(ctx context.Context) GetWorkloadIdentityPoolProviderX509TrustStoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkloadIdentityPoolProviderX509TrustStoreOutput)
+}
+
+// GetWorkloadIdentityPoolProviderX509TrustStoreArrayInput is an input type that accepts GetWorkloadIdentityPoolProviderX509TrustStoreArray and GetWorkloadIdentityPoolProviderX509TrustStoreArrayOutput values.
+// You can construct a concrete instance of `GetWorkloadIdentityPoolProviderX509TrustStoreArrayInput` via:
+//
+//	GetWorkloadIdentityPoolProviderX509TrustStoreArray{ GetWorkloadIdentityPoolProviderX509TrustStoreArgs{...} }
+type GetWorkloadIdentityPoolProviderX509TrustStoreArrayInput interface {
+	pulumi.Input
+
+	ToGetWorkloadIdentityPoolProviderX509TrustStoreArrayOutput() GetWorkloadIdentityPoolProviderX509TrustStoreArrayOutput
+	ToGetWorkloadIdentityPoolProviderX509TrustStoreArrayOutputWithContext(context.Context) GetWorkloadIdentityPoolProviderX509TrustStoreArrayOutput
+}
+
+type GetWorkloadIdentityPoolProviderX509TrustStoreArray []GetWorkloadIdentityPoolProviderX509TrustStoreInput
+
+func (GetWorkloadIdentityPoolProviderX509TrustStoreArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkloadIdentityPoolProviderX509TrustStore)(nil)).Elem()
+}
+
+func (i GetWorkloadIdentityPoolProviderX509TrustStoreArray) ToGetWorkloadIdentityPoolProviderX509TrustStoreArrayOutput() GetWorkloadIdentityPoolProviderX509TrustStoreArrayOutput {
+	return i.ToGetWorkloadIdentityPoolProviderX509TrustStoreArrayOutputWithContext(context.Background())
+}
+
+func (i GetWorkloadIdentityPoolProviderX509TrustStoreArray) ToGetWorkloadIdentityPoolProviderX509TrustStoreArrayOutputWithContext(ctx context.Context) GetWorkloadIdentityPoolProviderX509TrustStoreArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkloadIdentityPoolProviderX509TrustStoreArrayOutput)
+}
+
+type GetWorkloadIdentityPoolProviderX509TrustStoreOutput struct{ *pulumi.OutputState }
+
+func (GetWorkloadIdentityPoolProviderX509TrustStoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkloadIdentityPoolProviderX509TrustStore)(nil)).Elem()
+}
+
+func (o GetWorkloadIdentityPoolProviderX509TrustStoreOutput) ToGetWorkloadIdentityPoolProviderX509TrustStoreOutput() GetWorkloadIdentityPoolProviderX509TrustStoreOutput {
+	return o
+}
+
+func (o GetWorkloadIdentityPoolProviderX509TrustStoreOutput) ToGetWorkloadIdentityPoolProviderX509TrustStoreOutputWithContext(ctx context.Context) GetWorkloadIdentityPoolProviderX509TrustStoreOutput {
+	return o
+}
+
+// Set of intermediate CA certificates used for building the trust chain to
+// trust anchor.
+// IMPORTANT: Intermediate CAs are only supported when configuring x509 federation.
+func (o GetWorkloadIdentityPoolProviderX509TrustStoreOutput) IntermediateCas() GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayOutput {
+	return o.ApplyT(func(v GetWorkloadIdentityPoolProviderX509TrustStore) []GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCa {
+		return v.IntermediateCas
+	}).(GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayOutput)
+}
+
+// List of Trust Anchors to be used while performing validation
+// against a given TrustStore. The incoming end entity's certificate
+// must be chained up to one of the trust anchors here.
+func (o GetWorkloadIdentityPoolProviderX509TrustStoreOutput) TrustAnchors() GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutput {
+	return o.ApplyT(func(v GetWorkloadIdentityPoolProviderX509TrustStore) []GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchor {
+		return v.TrustAnchors
+	}).(GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutput)
+}
+
+type GetWorkloadIdentityPoolProviderX509TrustStoreArrayOutput struct{ *pulumi.OutputState }
+
+func (GetWorkloadIdentityPoolProviderX509TrustStoreArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkloadIdentityPoolProviderX509TrustStore)(nil)).Elem()
+}
+
+func (o GetWorkloadIdentityPoolProviderX509TrustStoreArrayOutput) ToGetWorkloadIdentityPoolProviderX509TrustStoreArrayOutput() GetWorkloadIdentityPoolProviderX509TrustStoreArrayOutput {
+	return o
+}
+
+func (o GetWorkloadIdentityPoolProviderX509TrustStoreArrayOutput) ToGetWorkloadIdentityPoolProviderX509TrustStoreArrayOutputWithContext(ctx context.Context) GetWorkloadIdentityPoolProviderX509TrustStoreArrayOutput {
+	return o
+}
+
+func (o GetWorkloadIdentityPoolProviderX509TrustStoreArrayOutput) Index(i pulumi.IntInput) GetWorkloadIdentityPoolProviderX509TrustStoreOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWorkloadIdentityPoolProviderX509TrustStore {
+		return vs[0].([]GetWorkloadIdentityPoolProviderX509TrustStore)[vs[1].(int)]
+	}).(GetWorkloadIdentityPoolProviderX509TrustStoreOutput)
+}
+
+type GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCa struct {
+	// PEM certificate of the PKI used for validation. Must only contain one
+	// ca certificate(either root or intermediate cert).
+	PemCertificate string `pulumi:"pemCertificate"`
+}
+
+// GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaInput is an input type that accepts GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgs and GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaOutput values.
+// You can construct a concrete instance of `GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaInput` via:
+//
+//	GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgs{...}
+type GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaInput interface {
+	pulumi.Input
+
+	ToGetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaOutput() GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaOutput
+	ToGetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaOutputWithContext(context.Context) GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaOutput
+}
+
+type GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgs struct {
+	// PEM certificate of the PKI used for validation. Must only contain one
+	// ca certificate(either root or intermediate cert).
+	PemCertificate pulumi.StringInput `pulumi:"pemCertificate"`
+}
+
+func (GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCa)(nil)).Elem()
+}
+
+func (i GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgs) ToGetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaOutput() GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaOutput {
+	return i.ToGetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaOutputWithContext(context.Background())
+}
+
+func (i GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgs) ToGetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaOutputWithContext(ctx context.Context) GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaOutput)
+}
+
+// GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayInput is an input type that accepts GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArray and GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayOutput values.
+// You can construct a concrete instance of `GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayInput` via:
+//
+//	GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArray{ GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgs{...} }
+type GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayInput interface {
+	pulumi.Input
+
+	ToGetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayOutput() GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayOutput
+	ToGetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayOutputWithContext(context.Context) GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayOutput
+}
+
+type GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArray []GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaInput
+
+func (GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCa)(nil)).Elem()
+}
+
+func (i GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArray) ToGetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayOutput() GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayOutput {
+	return i.ToGetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayOutputWithContext(context.Background())
+}
+
+func (i GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArray) ToGetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayOutputWithContext(ctx context.Context) GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayOutput)
+}
+
+type GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaOutput struct{ *pulumi.OutputState }
+
+func (GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCa)(nil)).Elem()
+}
+
+func (o GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaOutput) ToGetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaOutput() GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaOutput {
+	return o
+}
+
+func (o GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaOutput) ToGetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaOutputWithContext(ctx context.Context) GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaOutput {
+	return o
+}
+
+// PEM certificate of the PKI used for validation. Must only contain one
+// ca certificate(either root or intermediate cert).
+func (o GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaOutput) PemCertificate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCa) string { return v.PemCertificate }).(pulumi.StringOutput)
+}
+
+type GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayOutput struct{ *pulumi.OutputState }
+
+func (GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCa)(nil)).Elem()
+}
+
+func (o GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayOutput) ToGetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayOutput() GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayOutput {
+	return o
+}
+
+func (o GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayOutput) ToGetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayOutputWithContext(ctx context.Context) GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayOutput {
+	return o
+}
+
+func (o GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayOutput) Index(i pulumi.IntInput) GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCa {
+		return vs[0].([]GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCa)[vs[1].(int)]
+	}).(GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaOutput)
+}
+
+type GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchor struct {
+	// PEM certificate of the PKI used for validation. Must only contain one
+	// ca certificate(either root or intermediate cert).
+	PemCertificate string `pulumi:"pemCertificate"`
+}
+
+// GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorInput is an input type that accepts GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgs and GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorOutput values.
+// You can construct a concrete instance of `GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorInput` via:
+//
+//	GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgs{...}
+type GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorInput interface {
+	pulumi.Input
+
+	ToGetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorOutput() GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorOutput
+	ToGetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorOutputWithContext(context.Context) GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorOutput
+}
+
+type GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgs struct {
+	// PEM certificate of the PKI used for validation. Must only contain one
+	// ca certificate(either root or intermediate cert).
+	PemCertificate pulumi.StringInput `pulumi:"pemCertificate"`
+}
+
+func (GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchor)(nil)).Elem()
+}
+
+func (i GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgs) ToGetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorOutput() GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorOutput {
+	return i.ToGetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorOutputWithContext(context.Background())
+}
+
+func (i GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgs) ToGetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorOutputWithContext(ctx context.Context) GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorOutput)
+}
+
+// GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayInput is an input type that accepts GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArray and GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutput values.
+// You can construct a concrete instance of `GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayInput` via:
+//
+//	GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArray{ GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgs{...} }
+type GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayInput interface {
+	pulumi.Input
+
+	ToGetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutput() GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutput
+	ToGetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutputWithContext(context.Context) GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutput
+}
+
+type GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArray []GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorInput
+
+func (GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchor)(nil)).Elem()
+}
+
+func (i GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArray) ToGetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutput() GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutput {
+	return i.ToGetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutputWithContext(context.Background())
+}
+
+func (i GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArray) ToGetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutputWithContext(ctx context.Context) GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutput)
+}
+
+type GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorOutput struct{ *pulumi.OutputState }
+
+func (GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchor)(nil)).Elem()
+}
+
+func (o GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorOutput) ToGetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorOutput() GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorOutput {
+	return o
+}
+
+func (o GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorOutput) ToGetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorOutputWithContext(ctx context.Context) GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorOutput {
+	return o
+}
+
+// PEM certificate of the PKI used for validation. Must only contain one
+// ca certificate(either root or intermediate cert).
+func (o GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorOutput) PemCertificate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchor) string { return v.PemCertificate }).(pulumi.StringOutput)
+}
+
+type GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchor)(nil)).Elem()
+}
+
+func (o GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutput) ToGetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutput() GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutput {
+	return o
+}
+
+func (o GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutput) ToGetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutputWithContext(ctx context.Context) GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutput {
+	return o
+}
+
+func (o GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutput) Index(i pulumi.IntInput) GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchor {
+		return vs[0].([]GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchor)[vs[1].(int)]
+	}).(GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessBoundaryPolicyRuleInput)(nil)).Elem(), AccessBoundaryPolicyRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessBoundaryPolicyRuleArrayInput)(nil)).Elem(), AccessBoundaryPolicyRuleArray{})
@@ -4047,6 +5027,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolProviderOidcPtrInput)(nil)).Elem(), WorkloadIdentityPoolProviderOidcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolProviderSamlInput)(nil)).Elem(), WorkloadIdentityPoolProviderSamlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolProviderSamlPtrInput)(nil)).Elem(), WorkloadIdentityPoolProviderSamlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolProviderX509Input)(nil)).Elem(), WorkloadIdentityPoolProviderX509Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolProviderX509PtrInput)(nil)).Elem(), WorkloadIdentityPoolProviderX509Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolProviderX509TrustStoreInput)(nil)).Elem(), WorkloadIdentityPoolProviderX509TrustStoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolProviderX509TrustStorePtrInput)(nil)).Elem(), WorkloadIdentityPoolProviderX509TrustStoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaInput)(nil)).Elem(), WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayInput)(nil)).Elem(), WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorInput)(nil)).Elem(), WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayInput)(nil)).Elem(), WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTestablePermissionsPermissionInput)(nil)).Elem(), GetTestablePermissionsPermissionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTestablePermissionsPermissionArrayInput)(nil)).Elem(), GetTestablePermissionsPermissionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkloadIdentityPoolProviderAwInput)(nil)).Elem(), GetWorkloadIdentityPoolProviderAwArgs{})
@@ -4055,6 +5043,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkloadIdentityPoolProviderOidcArrayInput)(nil)).Elem(), GetWorkloadIdentityPoolProviderOidcArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkloadIdentityPoolProviderSamlInput)(nil)).Elem(), GetWorkloadIdentityPoolProviderSamlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkloadIdentityPoolProviderSamlArrayInput)(nil)).Elem(), GetWorkloadIdentityPoolProviderSamlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkloadIdentityPoolProviderX509Input)(nil)).Elem(), GetWorkloadIdentityPoolProviderX509Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkloadIdentityPoolProviderX509ArrayInput)(nil)).Elem(), GetWorkloadIdentityPoolProviderX509Array{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkloadIdentityPoolProviderX509TrustStoreInput)(nil)).Elem(), GetWorkloadIdentityPoolProviderX509TrustStoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkloadIdentityPoolProviderX509TrustStoreArrayInput)(nil)).Elem(), GetWorkloadIdentityPoolProviderX509TrustStoreArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaInput)(nil)).Elem(), GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayInput)(nil)).Elem(), GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorInput)(nil)).Elem(), GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayInput)(nil)).Elem(), GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArray{})
 	pulumi.RegisterOutputType(AccessBoundaryPolicyRuleOutput{})
 	pulumi.RegisterOutputType(AccessBoundaryPolicyRuleArrayOutput{})
 	pulumi.RegisterOutputType(AccessBoundaryPolicyRuleAccessBoundaryRuleOutput{})
@@ -4095,6 +5091,14 @@ func init() {
 	pulumi.RegisterOutputType(WorkloadIdentityPoolProviderOidcPtrOutput{})
 	pulumi.RegisterOutputType(WorkloadIdentityPoolProviderSamlOutput{})
 	pulumi.RegisterOutputType(WorkloadIdentityPoolProviderSamlPtrOutput{})
+	pulumi.RegisterOutputType(WorkloadIdentityPoolProviderX509Output{})
+	pulumi.RegisterOutputType(WorkloadIdentityPoolProviderX509PtrOutput{})
+	pulumi.RegisterOutputType(WorkloadIdentityPoolProviderX509TrustStoreOutput{})
+	pulumi.RegisterOutputType(WorkloadIdentityPoolProviderX509TrustStorePtrOutput{})
+	pulumi.RegisterOutputType(WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaOutput{})
+	pulumi.RegisterOutputType(WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayOutput{})
+	pulumi.RegisterOutputType(WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorOutput{})
+	pulumi.RegisterOutputType(WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutput{})
 	pulumi.RegisterOutputType(GetTestablePermissionsPermissionOutput{})
 	pulumi.RegisterOutputType(GetTestablePermissionsPermissionArrayOutput{})
 	pulumi.RegisterOutputType(GetWorkloadIdentityPoolProviderAwOutput{})
@@ -4103,4 +5107,12 @@ func init() {
 	pulumi.RegisterOutputType(GetWorkloadIdentityPoolProviderOidcArrayOutput{})
 	pulumi.RegisterOutputType(GetWorkloadIdentityPoolProviderSamlOutput{})
 	pulumi.RegisterOutputType(GetWorkloadIdentityPoolProviderSamlArrayOutput{})
+	pulumi.RegisterOutputType(GetWorkloadIdentityPoolProviderX509Output{})
+	pulumi.RegisterOutputType(GetWorkloadIdentityPoolProviderX509ArrayOutput{})
+	pulumi.RegisterOutputType(GetWorkloadIdentityPoolProviderX509TrustStoreOutput{})
+	pulumi.RegisterOutputType(GetWorkloadIdentityPoolProviderX509TrustStoreArrayOutput{})
+	pulumi.RegisterOutputType(GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaOutput{})
+	pulumi.RegisterOutputType(GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArrayOutput{})
+	pulumi.RegisterOutputType(GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorOutput{})
+	pulumi.RegisterOutputType(GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArrayOutput{})
 }

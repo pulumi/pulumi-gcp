@@ -26,6 +26,13 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         [Input("pubSubNotification")]
         public Input<Inputs.PreventionDiscoveryConfigActionPubSubNotificationArgs>? PubSubNotification { get; set; }
 
+        /// <summary>
+        /// Publish a message into the Pub/Sub topic.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("tagResources")]
+        public Input<Inputs.PreventionDiscoveryConfigActionTagResourcesArgs>? TagResources { get; set; }
+
         public PreventionDiscoveryConfigActionArgs()
         {
         }

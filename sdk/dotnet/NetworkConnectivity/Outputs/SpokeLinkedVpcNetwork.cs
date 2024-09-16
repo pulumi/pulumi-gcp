@@ -18,6 +18,10 @@ namespace Pulumi.Gcp.NetworkConnectivity.Outputs
         /// </summary>
         public readonly ImmutableArray<string> ExcludeExportRanges;
         /// <summary>
+        /// IP ranges allowed to be included from peering.
+        /// </summary>
+        public readonly ImmutableArray<string> IncludeExportRanges;
+        /// <summary>
         /// The URI of the VPC network resource.
         /// </summary>
         public readonly string Uri;
@@ -26,9 +30,12 @@ namespace Pulumi.Gcp.NetworkConnectivity.Outputs
         private SpokeLinkedVpcNetwork(
             ImmutableArray<string> excludeExportRanges,
 
+            ImmutableArray<string> includeExportRanges,
+
             string uri)
         {
             ExcludeExportRanges = excludeExportRanges;
+            IncludeExportRanges = includeExportRanges;
             Uri = uri;
         }
     }

@@ -205,14 +205,14 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
         return this.databaseUrl;
     }
     /**
-     * The intended database state.
+     * The intended database state. Possible values: ACTIVE, DISABLED.
      * 
      */
     @Export(name="desiredState", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> desiredState;
 
     /**
-     * @return The intended database state.
+     * @return The intended database state. Possible values: ACTIVE, DISABLED.
      * 
      */
     public Output<Optional<String>> desiredState() {

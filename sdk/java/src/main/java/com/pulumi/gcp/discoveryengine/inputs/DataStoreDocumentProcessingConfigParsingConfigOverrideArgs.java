@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.discoveryengine.inputs.DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigArgs;
+import com.pulumi.gcp.discoveryengine.inputs.DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigArgs;
 import com.pulumi.gcp.discoveryengine.inputs.DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -49,6 +50,21 @@ public final class DataStoreDocumentProcessingConfigParsingConfigOverrideArgs ex
     }
 
     /**
+     * Configurations applied to layout parser.
+     * 
+     */
+    @Import(name="layoutParsingConfig")
+    private @Nullable Output<DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigArgs> layoutParsingConfig;
+
+    /**
+     * @return Configurations applied to layout parser.
+     * 
+     */
+    public Optional<Output<DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigArgs>> layoutParsingConfig() {
+        return Optional.ofNullable(this.layoutParsingConfig);
+    }
+
+    /**
      * Configurations applied to OCR parser. Currently it only applies to PDFs.
      * Structure is documented below.
      * 
@@ -70,6 +86,7 @@ public final class DataStoreDocumentProcessingConfigParsingConfigOverrideArgs ex
     private DataStoreDocumentProcessingConfigParsingConfigOverrideArgs(DataStoreDocumentProcessingConfigParsingConfigOverrideArgs $) {
         this.digitalParsingConfig = $.digitalParsingConfig;
         this.fileType = $.fileType;
+        this.layoutParsingConfig = $.layoutParsingConfig;
         this.ocrParsingConfig = $.ocrParsingConfig;
     }
 
@@ -131,6 +148,27 @@ public final class DataStoreDocumentProcessingConfigParsingConfigOverrideArgs ex
          */
         public Builder fileType(String fileType) {
             return fileType(Output.of(fileType));
+        }
+
+        /**
+         * @param layoutParsingConfig Configurations applied to layout parser.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder layoutParsingConfig(@Nullable Output<DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigArgs> layoutParsingConfig) {
+            $.layoutParsingConfig = layoutParsingConfig;
+            return this;
+        }
+
+        /**
+         * @param layoutParsingConfig Configurations applied to layout parser.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder layoutParsingConfig(DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigArgs layoutParsingConfig) {
+            return layoutParsingConfig(Output.of(layoutParsingConfig));
         }
 
         /**

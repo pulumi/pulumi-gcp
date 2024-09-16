@@ -22,7 +22,7 @@ public final class FirewallAllowArgs extends com.pulumi.resources.ResourceArgs {
      * is only applicable for UDP or TCP protocol. Each entry must be
      * either an integer or a range. If not specified, this rule
      * applies to connections through any port.
-     * Example inputs include: [&#34;22&#34;], [&#34;80&#34;,&#34;443&#34;], and
+     * Example inputs include: [22], [80, 443], and
      * [&#34;12345-12349&#34;].
      * 
      */
@@ -34,7 +34,7 @@ public final class FirewallAllowArgs extends com.pulumi.resources.ResourceArgs {
      * is only applicable for UDP or TCP protocol. Each entry must be
      * either an integer or a range. If not specified, this rule
      * applies to connections through any port.
-     * Example inputs include: [&#34;22&#34;], [&#34;80&#34;,&#34;443&#34;], and
+     * Example inputs include: [22], [80, 443], and
      * [&#34;12345-12349&#34;].
      * 
      */
@@ -93,7 +93,7 @@ public final class FirewallAllowArgs extends com.pulumi.resources.ResourceArgs {
          * is only applicable for UDP or TCP protocol. Each entry must be
          * either an integer or a range. If not specified, this rule
          * applies to connections through any port.
-         * Example inputs include: [&#34;22&#34;], [&#34;80&#34;,&#34;443&#34;], and
+         * Example inputs include: [22], [80, 443], and
          * [&#34;12345-12349&#34;].
          * 
          * @return builder
@@ -109,7 +109,7 @@ public final class FirewallAllowArgs extends com.pulumi.resources.ResourceArgs {
          * is only applicable for UDP or TCP protocol. Each entry must be
          * either an integer or a range. If not specified, this rule
          * applies to connections through any port.
-         * Example inputs include: [&#34;22&#34;], [&#34;80&#34;,&#34;443&#34;], and
+         * Example inputs include: [22], [80, 443], and
          * [&#34;12345-12349&#34;].
          * 
          * @return builder
@@ -124,7 +124,7 @@ public final class FirewallAllowArgs extends com.pulumi.resources.ResourceArgs {
          * is only applicable for UDP or TCP protocol. Each entry must be
          * either an integer or a range. If not specified, this rule
          * applies to connections through any port.
-         * Example inputs include: [&#34;22&#34;], [&#34;80&#34;,&#34;443&#34;], and
+         * Example inputs include: [22], [80, 443], and
          * [&#34;12345-12349&#34;].
          * 
          * @return builder

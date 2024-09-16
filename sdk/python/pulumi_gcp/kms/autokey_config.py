@@ -174,9 +174,13 @@ class AutokeyConfig(pulumi.CustomResource):
         wait_srv_acc_permissions = time.index.Sleep("wait_srv_acc_permissions", create_duration=10s,
         opts = pulumi.ResourceOptions(depends_on=[autokey_project_admin]))
         example_autokeyconfig = gcp.kms.AutokeyConfig("example-autokeyconfig",
-            folder=autokms_folder.folder_id,
+            folder=autokms_folder.id,
             key_project=key_project.project_id.apply(lambda project_id: f"projects/{project_id}"),
             opts = pulumi.ResourceOptions(depends_on=[wait_srv_acc_permissions]))
+        # Wait delay after setting AutokeyConfig, to prevent diffs on reapply,
+        # because setting the config takes a little to fully propagate.
+        wait_autokey_propagation = time.index.Sleep("wait_autokey_propagation", create_duration=30s,
+        opts = pulumi.ResourceOptions(depends_on=[example_autokeyconfig]))
         ```
 
         ## Import
@@ -264,9 +268,13 @@ class AutokeyConfig(pulumi.CustomResource):
         wait_srv_acc_permissions = time.index.Sleep("wait_srv_acc_permissions", create_duration=10s,
         opts = pulumi.ResourceOptions(depends_on=[autokey_project_admin]))
         example_autokeyconfig = gcp.kms.AutokeyConfig("example-autokeyconfig",
-            folder=autokms_folder.folder_id,
+            folder=autokms_folder.id,
             key_project=key_project.project_id.apply(lambda project_id: f"projects/{project_id}"),
             opts = pulumi.ResourceOptions(depends_on=[wait_srv_acc_permissions]))
+        # Wait delay after setting AutokeyConfig, to prevent diffs on reapply,
+        # because setting the config takes a little to fully propagate.
+        wait_autokey_propagation = time.index.Sleep("wait_autokey_propagation", create_duration=30s,
+        opts = pulumi.ResourceOptions(depends_on=[example_autokeyconfig]))
         ```
 
         ## Import

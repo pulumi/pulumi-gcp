@@ -60,6 +60,10 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly string ServiceAccount;
         /// <summary>
+        /// Enables Cloud Service Mesh for this Revision.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceTemplateServiceMeshResult> ServiceMeshes;
+        /// <summary>
         /// Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
         /// </summary>
         public readonly bool SessionAffinity;
@@ -98,6 +102,8 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
 
             string serviceAccount,
 
+            ImmutableArray<Outputs.GetServiceTemplateServiceMeshResult> serviceMeshes,
+
             bool sessionAffinity,
 
             string timeout,
@@ -115,6 +121,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
             Revision = revision;
             Scalings = scalings;
             ServiceAccount = serviceAccount;
+            ServiceMeshes = serviceMeshes;
             SessionAffinity = sessionAffinity;
             Timeout = timeout;
             Volumes = volumes;

@@ -79,6 +79,67 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Bigquery Analyticshub Listing Dcr
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const listing = new gcp.bigqueryanalyticshub.DataExchange("listing", {
+ *     location: "US",
+ *     dataExchangeId: "dcr_data_exchange",
+ *     displayName: "dcr_data_exchange",
+ *     description: "example dcr data exchange",
+ *     sharingEnvironmentConfig: {
+ *         dcrExchangeConfig: {},
+ *     },
+ * });
+ * const listingDataset = new gcp.bigquery.Dataset("listing", {
+ *     datasetId: "dcr_listing",
+ *     friendlyName: "dcr_listing",
+ *     description: "example dcr data exchange",
+ *     location: "US",
+ * });
+ * const listingTable = new gcp.bigquery.Table("listing", {
+ *     deletionProtection: false,
+ *     tableId: "dcr_listing",
+ *     datasetId: listingDataset.datasetId,
+ *     schema: `[
+ *   {
+ *     "name": "name",
+ *     "type": "STRING",
+ *     "mode": "NULLABLE"
+ *   },
+ *   {
+ *     "name": "post_abbr",
+ *     "type": "STRING",
+ *     "mode": "NULLABLE"
+ *   },
+ *   {
+ *     "name": "date",
+ *     "type": "DATE",
+ *     "mode": "NULLABLE"
+ *   }
+ * ]
+ * `,
+ * });
+ * const listingListing = new gcp.bigqueryanalyticshub.Listing("listing", {
+ *     location: "US",
+ *     dataExchangeId: listing.dataExchangeId,
+ *     listingId: "dcr_listing",
+ *     displayName: "dcr_listing",
+ *     description: "example dcr data exchange",
+ *     bigqueryDataset: {
+ *         dataset: listingDataset.id,
+ *         selectedResources: [{
+ *             table: listingTable.id,
+ *         }],
+ *     },
+ *     restrictedExportConfig: {
+ *         enabled: true,
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

@@ -6,6 +6,7 @@ package com.pulumi.gcp.discoveryengine.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.discoveryengine.inputs.DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigArgs;
+import com.pulumi.gcp.discoveryengine.inputs.DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigArgs;
 import com.pulumi.gcp.discoveryengine.inputs.DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigArgs;
 import java.util.Objects;
 import java.util.Optional;
@@ -32,6 +33,21 @@ public final class DataStoreDocumentProcessingConfigDefaultParsingConfigArgs ext
     }
 
     /**
+     * Configurations applied to layout parser.
+     * 
+     */
+    @Import(name="layoutParsingConfig")
+    private @Nullable Output<DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigArgs> layoutParsingConfig;
+
+    /**
+     * @return Configurations applied to layout parser.
+     * 
+     */
+    public Optional<Output<DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigArgs>> layoutParsingConfig() {
+        return Optional.ofNullable(this.layoutParsingConfig);
+    }
+
+    /**
      * Configurations applied to OCR parser. Currently it only applies to PDFs.
      * Structure is documented below.
      * 
@@ -52,6 +68,7 @@ public final class DataStoreDocumentProcessingConfigDefaultParsingConfigArgs ext
 
     private DataStoreDocumentProcessingConfigDefaultParsingConfigArgs(DataStoreDocumentProcessingConfigDefaultParsingConfigArgs $) {
         this.digitalParsingConfig = $.digitalParsingConfig;
+        this.layoutParsingConfig = $.layoutParsingConfig;
         this.ocrParsingConfig = $.ocrParsingConfig;
     }
 
@@ -92,6 +109,27 @@ public final class DataStoreDocumentProcessingConfigDefaultParsingConfigArgs ext
          */
         public Builder digitalParsingConfig(DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigArgs digitalParsingConfig) {
             return digitalParsingConfig(Output.of(digitalParsingConfig));
+        }
+
+        /**
+         * @param layoutParsingConfig Configurations applied to layout parser.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder layoutParsingConfig(@Nullable Output<DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigArgs> layoutParsingConfig) {
+            $.layoutParsingConfig = layoutParsingConfig;
+            return this;
+        }
+
+        /**
+         * @param layoutParsingConfig Configurations applied to layout parser.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder layoutParsingConfig(DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigArgs layoutParsingConfig) {
+            return layoutParsingConfig(Output.of(layoutParsingConfig));
         }
 
         /**

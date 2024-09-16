@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolAutoConfigNetworkTags;
+import com.pulumi.gcp.container.outputs.ClusterNodePoolAutoConfigNodeKubeletConfig;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -14,10 +15,16 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterNodePoolAutoConfig {
     /**
-     * @return The network tag config for the cluster&#39;s automatically provisioned node pools.
+     * @return The network tag config for the cluster&#39;s automatically provisioned node pools. Structure is documented below.
      * 
      */
     private @Nullable ClusterNodePoolAutoConfigNetworkTags networkTags;
+    /**
+     * @return Kubelet configuration for Autopilot clusters. Currently, only `insecure_kubelet_readonly_port_enabled` is supported here.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable ClusterNodePoolAutoConfigNodeKubeletConfig nodeKubeletConfig;
     /**
      * @return A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
      * 
@@ -26,11 +33,19 @@ public final class ClusterNodePoolAutoConfig {
 
     private ClusterNodePoolAutoConfig() {}
     /**
-     * @return The network tag config for the cluster&#39;s automatically provisioned node pools.
+     * @return The network tag config for the cluster&#39;s automatically provisioned node pools. Structure is documented below.
      * 
      */
     public Optional<ClusterNodePoolAutoConfigNetworkTags> networkTags() {
         return Optional.ofNullable(this.networkTags);
+    }
+    /**
+     * @return Kubelet configuration for Autopilot clusters. Currently, only `insecure_kubelet_readonly_port_enabled` is supported here.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<ClusterNodePoolAutoConfigNodeKubeletConfig> nodeKubeletConfig() {
+        return Optional.ofNullable(this.nodeKubeletConfig);
     }
     /**
      * @return A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
@@ -50,11 +65,13 @@ public final class ClusterNodePoolAutoConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable ClusterNodePoolAutoConfigNetworkTags networkTags;
+        private @Nullable ClusterNodePoolAutoConfigNodeKubeletConfig nodeKubeletConfig;
         private @Nullable Map<String,String> resourceManagerTags;
         public Builder() {}
         public Builder(ClusterNodePoolAutoConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.networkTags = defaults.networkTags;
+    	      this.nodeKubeletConfig = defaults.nodeKubeletConfig;
     	      this.resourceManagerTags = defaults.resourceManagerTags;
         }
 
@@ -62,6 +79,12 @@ public final class ClusterNodePoolAutoConfig {
         public Builder networkTags(@Nullable ClusterNodePoolAutoConfigNetworkTags networkTags) {
 
             this.networkTags = networkTags;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder nodeKubeletConfig(@Nullable ClusterNodePoolAutoConfigNodeKubeletConfig nodeKubeletConfig) {
+
+            this.nodeKubeletConfig = nodeKubeletConfig;
             return this;
         }
         @CustomType.Setter
@@ -73,6 +96,7 @@ public final class ClusterNodePoolAutoConfig {
         public ClusterNodePoolAutoConfig build() {
             final var _resultValue = new ClusterNodePoolAutoConfig();
             _resultValue.networkTags = networkTags;
+            _resultValue.nodeKubeletConfig = nodeKubeletConfig;
             _resultValue.resourceManagerTags = resourceManagerTags;
             return _resultValue;
         }

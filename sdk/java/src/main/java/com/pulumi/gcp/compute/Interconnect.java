@@ -569,22 +569,24 @@ public class Interconnect extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.remoteLocation);
     }
     /**
-     * interconnects.list of features requested for this Interconnect connection. Options: MACSEC (
+     * interconnects.list of features requested for this Interconnect connection. Options: IF_MACSEC (
      * If specified then the connection is created on MACsec capable hardware ports. If not
      * specified, the default value is false, which allocates non-MACsec capable ports first if
-     * available).
-     * Each value may be one of: `MACSEC`.
+     * available). Note that MACSEC is still technically allowed for compatibility reasons, but it
+     * does not work with the API, and will be removed in an upcoming major version.
+     * Each value may be one of: `MACSEC`, `IF_MACSEC`.
      * 
      */
     @Export(name="requestedFeatures", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> requestedFeatures;
 
     /**
-     * @return interconnects.list of features requested for this Interconnect connection. Options: MACSEC (
+     * @return interconnects.list of features requested for this Interconnect connection. Options: IF_MACSEC (
      * If specified then the connection is created on MACsec capable hardware ports. If not
      * specified, the default value is false, which allocates non-MACsec capable ports first if
-     * available).
-     * Each value may be one of: `MACSEC`.
+     * available). Note that MACSEC is still technically allowed for compatibility reasons, but it
+     * does not work with the API, and will be removed in an upcoming major version.
+     * Each value may be one of: `MACSEC`, `IF_MACSEC`.
      * 
      */
     public Output<Optional<List<String>>> requestedFeatures() {

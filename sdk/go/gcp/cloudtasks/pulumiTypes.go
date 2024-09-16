@@ -223,6 +223,1358 @@ func (o QueueAppEngineRoutingOverridePtrOutput) Version() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+type QueueHttpTarget struct {
+	// HTTP target headers.
+	// This map contains the header field names and values.
+	// Headers will be set when running the CreateTask and/or BufferTask.
+	// These headers represent a subset of the headers that will be configured for the task's HTTP request.
+	// Some HTTP request headers will be ignored or replaced.
+	// Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values.
+	// The size of the headers must be less than 80KB. Queue-level headers to override headers of all the tasks in the queue.
+	// Structure is documented below.
+	HeaderOverrides []QueueHttpTargetHeaderOverride `pulumi:"headerOverrides"`
+	// The HTTP method to use for the request.
+	// When specified, it overrides HttpRequest for the task.
+	// Note that if the value is set to GET the body of the task will be ignored at execution time.
+	// Possible values are: `HTTP_METHOD_UNSPECIFIED`, `POST`, `GET`, `HEAD`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`.
+	HttpMethod *string `pulumi:"httpMethod"`
+	// If specified, an OAuth token is generated and attached as the Authorization header in the HTTP request.
+	// This type of authorization should generally be used only when calling Google APIs hosted on *.googleapis.com.
+	// Note that both the service account email and the scope MUST be specified when using the queue-level authorization override.
+	// Structure is documented below.
+	OauthToken *QueueHttpTargetOauthToken `pulumi:"oauthToken"`
+	// If specified, an OIDC token is generated and attached as an Authorization header in the HTTP request.
+	// This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
+	// Note that both the service account email and the audience MUST be specified when using the queue-level authorization override.
+	// Structure is documented below.
+	OidcToken *QueueHttpTargetOidcToken `pulumi:"oidcToken"`
+	// URI override.
+	// When specified, overrides the execution URI for all the tasks in the queue.
+	// Structure is documented below.
+	UriOverride *QueueHttpTargetUriOverride `pulumi:"uriOverride"`
+}
+
+// QueueHttpTargetInput is an input type that accepts QueueHttpTargetArgs and QueueHttpTargetOutput values.
+// You can construct a concrete instance of `QueueHttpTargetInput` via:
+//
+//	QueueHttpTargetArgs{...}
+type QueueHttpTargetInput interface {
+	pulumi.Input
+
+	ToQueueHttpTargetOutput() QueueHttpTargetOutput
+	ToQueueHttpTargetOutputWithContext(context.Context) QueueHttpTargetOutput
+}
+
+type QueueHttpTargetArgs struct {
+	// HTTP target headers.
+	// This map contains the header field names and values.
+	// Headers will be set when running the CreateTask and/or BufferTask.
+	// These headers represent a subset of the headers that will be configured for the task's HTTP request.
+	// Some HTTP request headers will be ignored or replaced.
+	// Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values.
+	// The size of the headers must be less than 80KB. Queue-level headers to override headers of all the tasks in the queue.
+	// Structure is documented below.
+	HeaderOverrides QueueHttpTargetHeaderOverrideArrayInput `pulumi:"headerOverrides"`
+	// The HTTP method to use for the request.
+	// When specified, it overrides HttpRequest for the task.
+	// Note that if the value is set to GET the body of the task will be ignored at execution time.
+	// Possible values are: `HTTP_METHOD_UNSPECIFIED`, `POST`, `GET`, `HEAD`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`.
+	HttpMethod pulumi.StringPtrInput `pulumi:"httpMethod"`
+	// If specified, an OAuth token is generated and attached as the Authorization header in the HTTP request.
+	// This type of authorization should generally be used only when calling Google APIs hosted on *.googleapis.com.
+	// Note that both the service account email and the scope MUST be specified when using the queue-level authorization override.
+	// Structure is documented below.
+	OauthToken QueueHttpTargetOauthTokenPtrInput `pulumi:"oauthToken"`
+	// If specified, an OIDC token is generated and attached as an Authorization header in the HTTP request.
+	// This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
+	// Note that both the service account email and the audience MUST be specified when using the queue-level authorization override.
+	// Structure is documented below.
+	OidcToken QueueHttpTargetOidcTokenPtrInput `pulumi:"oidcToken"`
+	// URI override.
+	// When specified, overrides the execution URI for all the tasks in the queue.
+	// Structure is documented below.
+	UriOverride QueueHttpTargetUriOverridePtrInput `pulumi:"uriOverride"`
+}
+
+func (QueueHttpTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueueHttpTarget)(nil)).Elem()
+}
+
+func (i QueueHttpTargetArgs) ToQueueHttpTargetOutput() QueueHttpTargetOutput {
+	return i.ToQueueHttpTargetOutputWithContext(context.Background())
+}
+
+func (i QueueHttpTargetArgs) ToQueueHttpTargetOutputWithContext(ctx context.Context) QueueHttpTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueueHttpTargetOutput)
+}
+
+func (i QueueHttpTargetArgs) ToQueueHttpTargetPtrOutput() QueueHttpTargetPtrOutput {
+	return i.ToQueueHttpTargetPtrOutputWithContext(context.Background())
+}
+
+func (i QueueHttpTargetArgs) ToQueueHttpTargetPtrOutputWithContext(ctx context.Context) QueueHttpTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueueHttpTargetOutput).ToQueueHttpTargetPtrOutputWithContext(ctx)
+}
+
+// QueueHttpTargetPtrInput is an input type that accepts QueueHttpTargetArgs, QueueHttpTargetPtr and QueueHttpTargetPtrOutput values.
+// You can construct a concrete instance of `QueueHttpTargetPtrInput` via:
+//
+//	        QueueHttpTargetArgs{...}
+//
+//	or:
+//
+//	        nil
+type QueueHttpTargetPtrInput interface {
+	pulumi.Input
+
+	ToQueueHttpTargetPtrOutput() QueueHttpTargetPtrOutput
+	ToQueueHttpTargetPtrOutputWithContext(context.Context) QueueHttpTargetPtrOutput
+}
+
+type queueHttpTargetPtrType QueueHttpTargetArgs
+
+func QueueHttpTargetPtr(v *QueueHttpTargetArgs) QueueHttpTargetPtrInput {
+	return (*queueHttpTargetPtrType)(v)
+}
+
+func (*queueHttpTargetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueueHttpTarget)(nil)).Elem()
+}
+
+func (i *queueHttpTargetPtrType) ToQueueHttpTargetPtrOutput() QueueHttpTargetPtrOutput {
+	return i.ToQueueHttpTargetPtrOutputWithContext(context.Background())
+}
+
+func (i *queueHttpTargetPtrType) ToQueueHttpTargetPtrOutputWithContext(ctx context.Context) QueueHttpTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueueHttpTargetPtrOutput)
+}
+
+type QueueHttpTargetOutput struct{ *pulumi.OutputState }
+
+func (QueueHttpTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueueHttpTarget)(nil)).Elem()
+}
+
+func (o QueueHttpTargetOutput) ToQueueHttpTargetOutput() QueueHttpTargetOutput {
+	return o
+}
+
+func (o QueueHttpTargetOutput) ToQueueHttpTargetOutputWithContext(ctx context.Context) QueueHttpTargetOutput {
+	return o
+}
+
+func (o QueueHttpTargetOutput) ToQueueHttpTargetPtrOutput() QueueHttpTargetPtrOutput {
+	return o.ToQueueHttpTargetPtrOutputWithContext(context.Background())
+}
+
+func (o QueueHttpTargetOutput) ToQueueHttpTargetPtrOutputWithContext(ctx context.Context) QueueHttpTargetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v QueueHttpTarget) *QueueHttpTarget {
+		return &v
+	}).(QueueHttpTargetPtrOutput)
+}
+
+// HTTP target headers.
+// This map contains the header field names and values.
+// Headers will be set when running the CreateTask and/or BufferTask.
+// These headers represent a subset of the headers that will be configured for the task's HTTP request.
+// Some HTTP request headers will be ignored or replaced.
+// Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values.
+// The size of the headers must be less than 80KB. Queue-level headers to override headers of all the tasks in the queue.
+// Structure is documented below.
+func (o QueueHttpTargetOutput) HeaderOverrides() QueueHttpTargetHeaderOverrideArrayOutput {
+	return o.ApplyT(func(v QueueHttpTarget) []QueueHttpTargetHeaderOverride { return v.HeaderOverrides }).(QueueHttpTargetHeaderOverrideArrayOutput)
+}
+
+// The HTTP method to use for the request.
+// When specified, it overrides HttpRequest for the task.
+// Note that if the value is set to GET the body of the task will be ignored at execution time.
+// Possible values are: `HTTP_METHOD_UNSPECIFIED`, `POST`, `GET`, `HEAD`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`.
+func (o QueueHttpTargetOutput) HttpMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QueueHttpTarget) *string { return v.HttpMethod }).(pulumi.StringPtrOutput)
+}
+
+// If specified, an OAuth token is generated and attached as the Authorization header in the HTTP request.
+// This type of authorization should generally be used only when calling Google APIs hosted on *.googleapis.com.
+// Note that both the service account email and the scope MUST be specified when using the queue-level authorization override.
+// Structure is documented below.
+func (o QueueHttpTargetOutput) OauthToken() QueueHttpTargetOauthTokenPtrOutput {
+	return o.ApplyT(func(v QueueHttpTarget) *QueueHttpTargetOauthToken { return v.OauthToken }).(QueueHttpTargetOauthTokenPtrOutput)
+}
+
+// If specified, an OIDC token is generated and attached as an Authorization header in the HTTP request.
+// This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
+// Note that both the service account email and the audience MUST be specified when using the queue-level authorization override.
+// Structure is documented below.
+func (o QueueHttpTargetOutput) OidcToken() QueueHttpTargetOidcTokenPtrOutput {
+	return o.ApplyT(func(v QueueHttpTarget) *QueueHttpTargetOidcToken { return v.OidcToken }).(QueueHttpTargetOidcTokenPtrOutput)
+}
+
+// URI override.
+// When specified, overrides the execution URI for all the tasks in the queue.
+// Structure is documented below.
+func (o QueueHttpTargetOutput) UriOverride() QueueHttpTargetUriOverridePtrOutput {
+	return o.ApplyT(func(v QueueHttpTarget) *QueueHttpTargetUriOverride { return v.UriOverride }).(QueueHttpTargetUriOverridePtrOutput)
+}
+
+type QueueHttpTargetPtrOutput struct{ *pulumi.OutputState }
+
+func (QueueHttpTargetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueueHttpTarget)(nil)).Elem()
+}
+
+func (o QueueHttpTargetPtrOutput) ToQueueHttpTargetPtrOutput() QueueHttpTargetPtrOutput {
+	return o
+}
+
+func (o QueueHttpTargetPtrOutput) ToQueueHttpTargetPtrOutputWithContext(ctx context.Context) QueueHttpTargetPtrOutput {
+	return o
+}
+
+func (o QueueHttpTargetPtrOutput) Elem() QueueHttpTargetOutput {
+	return o.ApplyT(func(v *QueueHttpTarget) QueueHttpTarget {
+		if v != nil {
+			return *v
+		}
+		var ret QueueHttpTarget
+		return ret
+	}).(QueueHttpTargetOutput)
+}
+
+// HTTP target headers.
+// This map contains the header field names and values.
+// Headers will be set when running the CreateTask and/or BufferTask.
+// These headers represent a subset of the headers that will be configured for the task's HTTP request.
+// Some HTTP request headers will be ignored or replaced.
+// Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values.
+// The size of the headers must be less than 80KB. Queue-level headers to override headers of all the tasks in the queue.
+// Structure is documented below.
+func (o QueueHttpTargetPtrOutput) HeaderOverrides() QueueHttpTargetHeaderOverrideArrayOutput {
+	return o.ApplyT(func(v *QueueHttpTarget) []QueueHttpTargetHeaderOverride {
+		if v == nil {
+			return nil
+		}
+		return v.HeaderOverrides
+	}).(QueueHttpTargetHeaderOverrideArrayOutput)
+}
+
+// The HTTP method to use for the request.
+// When specified, it overrides HttpRequest for the task.
+// Note that if the value is set to GET the body of the task will be ignored at execution time.
+// Possible values are: `HTTP_METHOD_UNSPECIFIED`, `POST`, `GET`, `HEAD`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`.
+func (o QueueHttpTargetPtrOutput) HttpMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QueueHttpTarget) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpMethod
+	}).(pulumi.StringPtrOutput)
+}
+
+// If specified, an OAuth token is generated and attached as the Authorization header in the HTTP request.
+// This type of authorization should generally be used only when calling Google APIs hosted on *.googleapis.com.
+// Note that both the service account email and the scope MUST be specified when using the queue-level authorization override.
+// Structure is documented below.
+func (o QueueHttpTargetPtrOutput) OauthToken() QueueHttpTargetOauthTokenPtrOutput {
+	return o.ApplyT(func(v *QueueHttpTarget) *QueueHttpTargetOauthToken {
+		if v == nil {
+			return nil
+		}
+		return v.OauthToken
+	}).(QueueHttpTargetOauthTokenPtrOutput)
+}
+
+// If specified, an OIDC token is generated and attached as an Authorization header in the HTTP request.
+// This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
+// Note that both the service account email and the audience MUST be specified when using the queue-level authorization override.
+// Structure is documented below.
+func (o QueueHttpTargetPtrOutput) OidcToken() QueueHttpTargetOidcTokenPtrOutput {
+	return o.ApplyT(func(v *QueueHttpTarget) *QueueHttpTargetOidcToken {
+		if v == nil {
+			return nil
+		}
+		return v.OidcToken
+	}).(QueueHttpTargetOidcTokenPtrOutput)
+}
+
+// URI override.
+// When specified, overrides the execution URI for all the tasks in the queue.
+// Structure is documented below.
+func (o QueueHttpTargetPtrOutput) UriOverride() QueueHttpTargetUriOverridePtrOutput {
+	return o.ApplyT(func(v *QueueHttpTarget) *QueueHttpTargetUriOverride {
+		if v == nil {
+			return nil
+		}
+		return v.UriOverride
+	}).(QueueHttpTargetUriOverridePtrOutput)
+}
+
+type QueueHttpTargetHeaderOverride struct {
+	// Header embodying a key and a value.
+	// Structure is documented below.
+	Header QueueHttpTargetHeaderOverrideHeader `pulumi:"header"`
+}
+
+// QueueHttpTargetHeaderOverrideInput is an input type that accepts QueueHttpTargetHeaderOverrideArgs and QueueHttpTargetHeaderOverrideOutput values.
+// You can construct a concrete instance of `QueueHttpTargetHeaderOverrideInput` via:
+//
+//	QueueHttpTargetHeaderOverrideArgs{...}
+type QueueHttpTargetHeaderOverrideInput interface {
+	pulumi.Input
+
+	ToQueueHttpTargetHeaderOverrideOutput() QueueHttpTargetHeaderOverrideOutput
+	ToQueueHttpTargetHeaderOverrideOutputWithContext(context.Context) QueueHttpTargetHeaderOverrideOutput
+}
+
+type QueueHttpTargetHeaderOverrideArgs struct {
+	// Header embodying a key and a value.
+	// Structure is documented below.
+	Header QueueHttpTargetHeaderOverrideHeaderInput `pulumi:"header"`
+}
+
+func (QueueHttpTargetHeaderOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueueHttpTargetHeaderOverride)(nil)).Elem()
+}
+
+func (i QueueHttpTargetHeaderOverrideArgs) ToQueueHttpTargetHeaderOverrideOutput() QueueHttpTargetHeaderOverrideOutput {
+	return i.ToQueueHttpTargetHeaderOverrideOutputWithContext(context.Background())
+}
+
+func (i QueueHttpTargetHeaderOverrideArgs) ToQueueHttpTargetHeaderOverrideOutputWithContext(ctx context.Context) QueueHttpTargetHeaderOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueueHttpTargetHeaderOverrideOutput)
+}
+
+// QueueHttpTargetHeaderOverrideArrayInput is an input type that accepts QueueHttpTargetHeaderOverrideArray and QueueHttpTargetHeaderOverrideArrayOutput values.
+// You can construct a concrete instance of `QueueHttpTargetHeaderOverrideArrayInput` via:
+//
+//	QueueHttpTargetHeaderOverrideArray{ QueueHttpTargetHeaderOverrideArgs{...} }
+type QueueHttpTargetHeaderOverrideArrayInput interface {
+	pulumi.Input
+
+	ToQueueHttpTargetHeaderOverrideArrayOutput() QueueHttpTargetHeaderOverrideArrayOutput
+	ToQueueHttpTargetHeaderOverrideArrayOutputWithContext(context.Context) QueueHttpTargetHeaderOverrideArrayOutput
+}
+
+type QueueHttpTargetHeaderOverrideArray []QueueHttpTargetHeaderOverrideInput
+
+func (QueueHttpTargetHeaderOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]QueueHttpTargetHeaderOverride)(nil)).Elem()
+}
+
+func (i QueueHttpTargetHeaderOverrideArray) ToQueueHttpTargetHeaderOverrideArrayOutput() QueueHttpTargetHeaderOverrideArrayOutput {
+	return i.ToQueueHttpTargetHeaderOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i QueueHttpTargetHeaderOverrideArray) ToQueueHttpTargetHeaderOverrideArrayOutputWithContext(ctx context.Context) QueueHttpTargetHeaderOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueueHttpTargetHeaderOverrideArrayOutput)
+}
+
+type QueueHttpTargetHeaderOverrideOutput struct{ *pulumi.OutputState }
+
+func (QueueHttpTargetHeaderOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueueHttpTargetHeaderOverride)(nil)).Elem()
+}
+
+func (o QueueHttpTargetHeaderOverrideOutput) ToQueueHttpTargetHeaderOverrideOutput() QueueHttpTargetHeaderOverrideOutput {
+	return o
+}
+
+func (o QueueHttpTargetHeaderOverrideOutput) ToQueueHttpTargetHeaderOverrideOutputWithContext(ctx context.Context) QueueHttpTargetHeaderOverrideOutput {
+	return o
+}
+
+// Header embodying a key and a value.
+// Structure is documented below.
+func (o QueueHttpTargetHeaderOverrideOutput) Header() QueueHttpTargetHeaderOverrideHeaderOutput {
+	return o.ApplyT(func(v QueueHttpTargetHeaderOverride) QueueHttpTargetHeaderOverrideHeader { return v.Header }).(QueueHttpTargetHeaderOverrideHeaderOutput)
+}
+
+type QueueHttpTargetHeaderOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (QueueHttpTargetHeaderOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]QueueHttpTargetHeaderOverride)(nil)).Elem()
+}
+
+func (o QueueHttpTargetHeaderOverrideArrayOutput) ToQueueHttpTargetHeaderOverrideArrayOutput() QueueHttpTargetHeaderOverrideArrayOutput {
+	return o
+}
+
+func (o QueueHttpTargetHeaderOverrideArrayOutput) ToQueueHttpTargetHeaderOverrideArrayOutputWithContext(ctx context.Context) QueueHttpTargetHeaderOverrideArrayOutput {
+	return o
+}
+
+func (o QueueHttpTargetHeaderOverrideArrayOutput) Index(i pulumi.IntInput) QueueHttpTargetHeaderOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) QueueHttpTargetHeaderOverride {
+		return vs[0].([]QueueHttpTargetHeaderOverride)[vs[1].(int)]
+	}).(QueueHttpTargetHeaderOverrideOutput)
+}
+
+type QueueHttpTargetHeaderOverrideHeader struct {
+	// The Key of the header.
+	Key string `pulumi:"key"`
+	// The Value of the header.
+	Value string `pulumi:"value"`
+}
+
+// QueueHttpTargetHeaderOverrideHeaderInput is an input type that accepts QueueHttpTargetHeaderOverrideHeaderArgs and QueueHttpTargetHeaderOverrideHeaderOutput values.
+// You can construct a concrete instance of `QueueHttpTargetHeaderOverrideHeaderInput` via:
+//
+//	QueueHttpTargetHeaderOverrideHeaderArgs{...}
+type QueueHttpTargetHeaderOverrideHeaderInput interface {
+	pulumi.Input
+
+	ToQueueHttpTargetHeaderOverrideHeaderOutput() QueueHttpTargetHeaderOverrideHeaderOutput
+	ToQueueHttpTargetHeaderOverrideHeaderOutputWithContext(context.Context) QueueHttpTargetHeaderOverrideHeaderOutput
+}
+
+type QueueHttpTargetHeaderOverrideHeaderArgs struct {
+	// The Key of the header.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The Value of the header.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (QueueHttpTargetHeaderOverrideHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueueHttpTargetHeaderOverrideHeader)(nil)).Elem()
+}
+
+func (i QueueHttpTargetHeaderOverrideHeaderArgs) ToQueueHttpTargetHeaderOverrideHeaderOutput() QueueHttpTargetHeaderOverrideHeaderOutput {
+	return i.ToQueueHttpTargetHeaderOverrideHeaderOutputWithContext(context.Background())
+}
+
+func (i QueueHttpTargetHeaderOverrideHeaderArgs) ToQueueHttpTargetHeaderOverrideHeaderOutputWithContext(ctx context.Context) QueueHttpTargetHeaderOverrideHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueueHttpTargetHeaderOverrideHeaderOutput)
+}
+
+type QueueHttpTargetHeaderOverrideHeaderOutput struct{ *pulumi.OutputState }
+
+func (QueueHttpTargetHeaderOverrideHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueueHttpTargetHeaderOverrideHeader)(nil)).Elem()
+}
+
+func (o QueueHttpTargetHeaderOverrideHeaderOutput) ToQueueHttpTargetHeaderOverrideHeaderOutput() QueueHttpTargetHeaderOverrideHeaderOutput {
+	return o
+}
+
+func (o QueueHttpTargetHeaderOverrideHeaderOutput) ToQueueHttpTargetHeaderOverrideHeaderOutputWithContext(ctx context.Context) QueueHttpTargetHeaderOverrideHeaderOutput {
+	return o
+}
+
+// The Key of the header.
+func (o QueueHttpTargetHeaderOverrideHeaderOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v QueueHttpTargetHeaderOverrideHeader) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The Value of the header.
+func (o QueueHttpTargetHeaderOverrideHeaderOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v QueueHttpTargetHeaderOverrideHeader) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type QueueHttpTargetOauthToken struct {
+	// OAuth scope to be used for generating OAuth access token.
+	// If not specified, "https://www.googleapis.com/auth/cloud-platform" will be used.
+	Scope *string `pulumi:"scope"`
+	// Service account email to be used for generating OAuth token.
+	// The service account must be within the same project as the queue.
+	// The caller must have iam.serviceAccounts.actAs permission for the service account.
+	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
+}
+
+// QueueHttpTargetOauthTokenInput is an input type that accepts QueueHttpTargetOauthTokenArgs and QueueHttpTargetOauthTokenOutput values.
+// You can construct a concrete instance of `QueueHttpTargetOauthTokenInput` via:
+//
+//	QueueHttpTargetOauthTokenArgs{...}
+type QueueHttpTargetOauthTokenInput interface {
+	pulumi.Input
+
+	ToQueueHttpTargetOauthTokenOutput() QueueHttpTargetOauthTokenOutput
+	ToQueueHttpTargetOauthTokenOutputWithContext(context.Context) QueueHttpTargetOauthTokenOutput
+}
+
+type QueueHttpTargetOauthTokenArgs struct {
+	// OAuth scope to be used for generating OAuth access token.
+	// If not specified, "https://www.googleapis.com/auth/cloud-platform" will be used.
+	Scope pulumi.StringPtrInput `pulumi:"scope"`
+	// Service account email to be used for generating OAuth token.
+	// The service account must be within the same project as the queue.
+	// The caller must have iam.serviceAccounts.actAs permission for the service account.
+	ServiceAccountEmail pulumi.StringInput `pulumi:"serviceAccountEmail"`
+}
+
+func (QueueHttpTargetOauthTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueueHttpTargetOauthToken)(nil)).Elem()
+}
+
+func (i QueueHttpTargetOauthTokenArgs) ToQueueHttpTargetOauthTokenOutput() QueueHttpTargetOauthTokenOutput {
+	return i.ToQueueHttpTargetOauthTokenOutputWithContext(context.Background())
+}
+
+func (i QueueHttpTargetOauthTokenArgs) ToQueueHttpTargetOauthTokenOutputWithContext(ctx context.Context) QueueHttpTargetOauthTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueueHttpTargetOauthTokenOutput)
+}
+
+func (i QueueHttpTargetOauthTokenArgs) ToQueueHttpTargetOauthTokenPtrOutput() QueueHttpTargetOauthTokenPtrOutput {
+	return i.ToQueueHttpTargetOauthTokenPtrOutputWithContext(context.Background())
+}
+
+func (i QueueHttpTargetOauthTokenArgs) ToQueueHttpTargetOauthTokenPtrOutputWithContext(ctx context.Context) QueueHttpTargetOauthTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueueHttpTargetOauthTokenOutput).ToQueueHttpTargetOauthTokenPtrOutputWithContext(ctx)
+}
+
+// QueueHttpTargetOauthTokenPtrInput is an input type that accepts QueueHttpTargetOauthTokenArgs, QueueHttpTargetOauthTokenPtr and QueueHttpTargetOauthTokenPtrOutput values.
+// You can construct a concrete instance of `QueueHttpTargetOauthTokenPtrInput` via:
+//
+//	        QueueHttpTargetOauthTokenArgs{...}
+//
+//	or:
+//
+//	        nil
+type QueueHttpTargetOauthTokenPtrInput interface {
+	pulumi.Input
+
+	ToQueueHttpTargetOauthTokenPtrOutput() QueueHttpTargetOauthTokenPtrOutput
+	ToQueueHttpTargetOauthTokenPtrOutputWithContext(context.Context) QueueHttpTargetOauthTokenPtrOutput
+}
+
+type queueHttpTargetOauthTokenPtrType QueueHttpTargetOauthTokenArgs
+
+func QueueHttpTargetOauthTokenPtr(v *QueueHttpTargetOauthTokenArgs) QueueHttpTargetOauthTokenPtrInput {
+	return (*queueHttpTargetOauthTokenPtrType)(v)
+}
+
+func (*queueHttpTargetOauthTokenPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueueHttpTargetOauthToken)(nil)).Elem()
+}
+
+func (i *queueHttpTargetOauthTokenPtrType) ToQueueHttpTargetOauthTokenPtrOutput() QueueHttpTargetOauthTokenPtrOutput {
+	return i.ToQueueHttpTargetOauthTokenPtrOutputWithContext(context.Background())
+}
+
+func (i *queueHttpTargetOauthTokenPtrType) ToQueueHttpTargetOauthTokenPtrOutputWithContext(ctx context.Context) QueueHttpTargetOauthTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueueHttpTargetOauthTokenPtrOutput)
+}
+
+type QueueHttpTargetOauthTokenOutput struct{ *pulumi.OutputState }
+
+func (QueueHttpTargetOauthTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueueHttpTargetOauthToken)(nil)).Elem()
+}
+
+func (o QueueHttpTargetOauthTokenOutput) ToQueueHttpTargetOauthTokenOutput() QueueHttpTargetOauthTokenOutput {
+	return o
+}
+
+func (o QueueHttpTargetOauthTokenOutput) ToQueueHttpTargetOauthTokenOutputWithContext(ctx context.Context) QueueHttpTargetOauthTokenOutput {
+	return o
+}
+
+func (o QueueHttpTargetOauthTokenOutput) ToQueueHttpTargetOauthTokenPtrOutput() QueueHttpTargetOauthTokenPtrOutput {
+	return o.ToQueueHttpTargetOauthTokenPtrOutputWithContext(context.Background())
+}
+
+func (o QueueHttpTargetOauthTokenOutput) ToQueueHttpTargetOauthTokenPtrOutputWithContext(ctx context.Context) QueueHttpTargetOauthTokenPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v QueueHttpTargetOauthToken) *QueueHttpTargetOauthToken {
+		return &v
+	}).(QueueHttpTargetOauthTokenPtrOutput)
+}
+
+// OAuth scope to be used for generating OAuth access token.
+// If not specified, "https://www.googleapis.com/auth/cloud-platform" will be used.
+func (o QueueHttpTargetOauthTokenOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QueueHttpTargetOauthToken) *string { return v.Scope }).(pulumi.StringPtrOutput)
+}
+
+// Service account email to be used for generating OAuth token.
+// The service account must be within the same project as the queue.
+// The caller must have iam.serviceAccounts.actAs permission for the service account.
+func (o QueueHttpTargetOauthTokenOutput) ServiceAccountEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v QueueHttpTargetOauthToken) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
+}
+
+type QueueHttpTargetOauthTokenPtrOutput struct{ *pulumi.OutputState }
+
+func (QueueHttpTargetOauthTokenPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueueHttpTargetOauthToken)(nil)).Elem()
+}
+
+func (o QueueHttpTargetOauthTokenPtrOutput) ToQueueHttpTargetOauthTokenPtrOutput() QueueHttpTargetOauthTokenPtrOutput {
+	return o
+}
+
+func (o QueueHttpTargetOauthTokenPtrOutput) ToQueueHttpTargetOauthTokenPtrOutputWithContext(ctx context.Context) QueueHttpTargetOauthTokenPtrOutput {
+	return o
+}
+
+func (o QueueHttpTargetOauthTokenPtrOutput) Elem() QueueHttpTargetOauthTokenOutput {
+	return o.ApplyT(func(v *QueueHttpTargetOauthToken) QueueHttpTargetOauthToken {
+		if v != nil {
+			return *v
+		}
+		var ret QueueHttpTargetOauthToken
+		return ret
+	}).(QueueHttpTargetOauthTokenOutput)
+}
+
+// OAuth scope to be used for generating OAuth access token.
+// If not specified, "https://www.googleapis.com/auth/cloud-platform" will be used.
+func (o QueueHttpTargetOauthTokenPtrOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QueueHttpTargetOauthToken) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Scope
+	}).(pulumi.StringPtrOutput)
+}
+
+// Service account email to be used for generating OAuth token.
+// The service account must be within the same project as the queue.
+// The caller must have iam.serviceAccounts.actAs permission for the service account.
+func (o QueueHttpTargetOauthTokenPtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QueueHttpTargetOauthToken) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceAccountEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+type QueueHttpTargetOidcToken struct {
+	// Audience to be used when generating OIDC token. If not specified, the URI specified in target will be used.
+	Audience *string `pulumi:"audience"`
+	// Service account email to be used for generating OIDC token.
+	// The service account must be within the same project as the queue.
+	// The caller must have iam.serviceAccounts.actAs permission for the service account.
+	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
+}
+
+// QueueHttpTargetOidcTokenInput is an input type that accepts QueueHttpTargetOidcTokenArgs and QueueHttpTargetOidcTokenOutput values.
+// You can construct a concrete instance of `QueueHttpTargetOidcTokenInput` via:
+//
+//	QueueHttpTargetOidcTokenArgs{...}
+type QueueHttpTargetOidcTokenInput interface {
+	pulumi.Input
+
+	ToQueueHttpTargetOidcTokenOutput() QueueHttpTargetOidcTokenOutput
+	ToQueueHttpTargetOidcTokenOutputWithContext(context.Context) QueueHttpTargetOidcTokenOutput
+}
+
+type QueueHttpTargetOidcTokenArgs struct {
+	// Audience to be used when generating OIDC token. If not specified, the URI specified in target will be used.
+	Audience pulumi.StringPtrInput `pulumi:"audience"`
+	// Service account email to be used for generating OIDC token.
+	// The service account must be within the same project as the queue.
+	// The caller must have iam.serviceAccounts.actAs permission for the service account.
+	ServiceAccountEmail pulumi.StringInput `pulumi:"serviceAccountEmail"`
+}
+
+func (QueueHttpTargetOidcTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueueHttpTargetOidcToken)(nil)).Elem()
+}
+
+func (i QueueHttpTargetOidcTokenArgs) ToQueueHttpTargetOidcTokenOutput() QueueHttpTargetOidcTokenOutput {
+	return i.ToQueueHttpTargetOidcTokenOutputWithContext(context.Background())
+}
+
+func (i QueueHttpTargetOidcTokenArgs) ToQueueHttpTargetOidcTokenOutputWithContext(ctx context.Context) QueueHttpTargetOidcTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueueHttpTargetOidcTokenOutput)
+}
+
+func (i QueueHttpTargetOidcTokenArgs) ToQueueHttpTargetOidcTokenPtrOutput() QueueHttpTargetOidcTokenPtrOutput {
+	return i.ToQueueHttpTargetOidcTokenPtrOutputWithContext(context.Background())
+}
+
+func (i QueueHttpTargetOidcTokenArgs) ToQueueHttpTargetOidcTokenPtrOutputWithContext(ctx context.Context) QueueHttpTargetOidcTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueueHttpTargetOidcTokenOutput).ToQueueHttpTargetOidcTokenPtrOutputWithContext(ctx)
+}
+
+// QueueHttpTargetOidcTokenPtrInput is an input type that accepts QueueHttpTargetOidcTokenArgs, QueueHttpTargetOidcTokenPtr and QueueHttpTargetOidcTokenPtrOutput values.
+// You can construct a concrete instance of `QueueHttpTargetOidcTokenPtrInput` via:
+//
+//	        QueueHttpTargetOidcTokenArgs{...}
+//
+//	or:
+//
+//	        nil
+type QueueHttpTargetOidcTokenPtrInput interface {
+	pulumi.Input
+
+	ToQueueHttpTargetOidcTokenPtrOutput() QueueHttpTargetOidcTokenPtrOutput
+	ToQueueHttpTargetOidcTokenPtrOutputWithContext(context.Context) QueueHttpTargetOidcTokenPtrOutput
+}
+
+type queueHttpTargetOidcTokenPtrType QueueHttpTargetOidcTokenArgs
+
+func QueueHttpTargetOidcTokenPtr(v *QueueHttpTargetOidcTokenArgs) QueueHttpTargetOidcTokenPtrInput {
+	return (*queueHttpTargetOidcTokenPtrType)(v)
+}
+
+func (*queueHttpTargetOidcTokenPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueueHttpTargetOidcToken)(nil)).Elem()
+}
+
+func (i *queueHttpTargetOidcTokenPtrType) ToQueueHttpTargetOidcTokenPtrOutput() QueueHttpTargetOidcTokenPtrOutput {
+	return i.ToQueueHttpTargetOidcTokenPtrOutputWithContext(context.Background())
+}
+
+func (i *queueHttpTargetOidcTokenPtrType) ToQueueHttpTargetOidcTokenPtrOutputWithContext(ctx context.Context) QueueHttpTargetOidcTokenPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueueHttpTargetOidcTokenPtrOutput)
+}
+
+type QueueHttpTargetOidcTokenOutput struct{ *pulumi.OutputState }
+
+func (QueueHttpTargetOidcTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueueHttpTargetOidcToken)(nil)).Elem()
+}
+
+func (o QueueHttpTargetOidcTokenOutput) ToQueueHttpTargetOidcTokenOutput() QueueHttpTargetOidcTokenOutput {
+	return o
+}
+
+func (o QueueHttpTargetOidcTokenOutput) ToQueueHttpTargetOidcTokenOutputWithContext(ctx context.Context) QueueHttpTargetOidcTokenOutput {
+	return o
+}
+
+func (o QueueHttpTargetOidcTokenOutput) ToQueueHttpTargetOidcTokenPtrOutput() QueueHttpTargetOidcTokenPtrOutput {
+	return o.ToQueueHttpTargetOidcTokenPtrOutputWithContext(context.Background())
+}
+
+func (o QueueHttpTargetOidcTokenOutput) ToQueueHttpTargetOidcTokenPtrOutputWithContext(ctx context.Context) QueueHttpTargetOidcTokenPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v QueueHttpTargetOidcToken) *QueueHttpTargetOidcToken {
+		return &v
+	}).(QueueHttpTargetOidcTokenPtrOutput)
+}
+
+// Audience to be used when generating OIDC token. If not specified, the URI specified in target will be used.
+func (o QueueHttpTargetOidcTokenOutput) Audience() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QueueHttpTargetOidcToken) *string { return v.Audience }).(pulumi.StringPtrOutput)
+}
+
+// Service account email to be used for generating OIDC token.
+// The service account must be within the same project as the queue.
+// The caller must have iam.serviceAccounts.actAs permission for the service account.
+func (o QueueHttpTargetOidcTokenOutput) ServiceAccountEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v QueueHttpTargetOidcToken) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
+}
+
+type QueueHttpTargetOidcTokenPtrOutput struct{ *pulumi.OutputState }
+
+func (QueueHttpTargetOidcTokenPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueueHttpTargetOidcToken)(nil)).Elem()
+}
+
+func (o QueueHttpTargetOidcTokenPtrOutput) ToQueueHttpTargetOidcTokenPtrOutput() QueueHttpTargetOidcTokenPtrOutput {
+	return o
+}
+
+func (o QueueHttpTargetOidcTokenPtrOutput) ToQueueHttpTargetOidcTokenPtrOutputWithContext(ctx context.Context) QueueHttpTargetOidcTokenPtrOutput {
+	return o
+}
+
+func (o QueueHttpTargetOidcTokenPtrOutput) Elem() QueueHttpTargetOidcTokenOutput {
+	return o.ApplyT(func(v *QueueHttpTargetOidcToken) QueueHttpTargetOidcToken {
+		if v != nil {
+			return *v
+		}
+		var ret QueueHttpTargetOidcToken
+		return ret
+	}).(QueueHttpTargetOidcTokenOutput)
+}
+
+// Audience to be used when generating OIDC token. If not specified, the URI specified in target will be used.
+func (o QueueHttpTargetOidcTokenPtrOutput) Audience() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QueueHttpTargetOidcToken) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Audience
+	}).(pulumi.StringPtrOutput)
+}
+
+// Service account email to be used for generating OIDC token.
+// The service account must be within the same project as the queue.
+// The caller must have iam.serviceAccounts.actAs permission for the service account.
+func (o QueueHttpTargetOidcTokenPtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QueueHttpTargetOidcToken) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceAccountEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+type QueueHttpTargetUriOverride struct {
+	// Host override.
+	// When specified, replaces the host part of the task URL.
+	// For example, if the task URL is "https://www.google.com", and host value
+	// is set to "example.net", the overridden URI will be changed to "https://example.net".
+	// Host value cannot be an empty string (INVALID_ARGUMENT).
+	Host *string `pulumi:"host"`
+	// URI path.
+	// When specified, replaces the existing path of the task URL.
+	// Setting the path value to an empty string clears the URI path segment.
+	// Structure is documented below.
+	PathOverride *QueueHttpTargetUriOverridePathOverride `pulumi:"pathOverride"`
+	// Port override.
+	// When specified, replaces the port part of the task URI.
+	// For instance, for a URI http://www.google.com/foo and port=123, the overridden URI becomes http://www.google.com:123/foo.
+	// Note that the port value must be a positive integer.
+	// Setting the port to 0 (Zero) clears the URI port.
+	Port *string `pulumi:"port"`
+	// URI query.
+	// When specified, replaces the query part of the task URI. Setting the query value to an empty string clears the URI query segment.
+	// Structure is documented below.
+	QueryOverride *QueueHttpTargetUriOverrideQueryOverride `pulumi:"queryOverride"`
+	// Scheme override.
+	// When specified, the task URI scheme is replaced by the provided value (HTTP or HTTPS).
+	// Possible values are: `HTTP`, `HTTPS`.
+	Scheme *string `pulumi:"scheme"`
+	// URI Override Enforce Mode
+	// When specified, determines the Target UriOverride mode. If not specified, it defaults to ALWAYS.
+	// Possible values are: `ALWAYS`, `IF_NOT_EXISTS`.
+	UriOverrideEnforceMode *string `pulumi:"uriOverrideEnforceMode"`
+}
+
+// QueueHttpTargetUriOverrideInput is an input type that accepts QueueHttpTargetUriOverrideArgs and QueueHttpTargetUriOverrideOutput values.
+// You can construct a concrete instance of `QueueHttpTargetUriOverrideInput` via:
+//
+//	QueueHttpTargetUriOverrideArgs{...}
+type QueueHttpTargetUriOverrideInput interface {
+	pulumi.Input
+
+	ToQueueHttpTargetUriOverrideOutput() QueueHttpTargetUriOverrideOutput
+	ToQueueHttpTargetUriOverrideOutputWithContext(context.Context) QueueHttpTargetUriOverrideOutput
+}
+
+type QueueHttpTargetUriOverrideArgs struct {
+	// Host override.
+	// When specified, replaces the host part of the task URL.
+	// For example, if the task URL is "https://www.google.com", and host value
+	// is set to "example.net", the overridden URI will be changed to "https://example.net".
+	// Host value cannot be an empty string (INVALID_ARGUMENT).
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// URI path.
+	// When specified, replaces the existing path of the task URL.
+	// Setting the path value to an empty string clears the URI path segment.
+	// Structure is documented below.
+	PathOverride QueueHttpTargetUriOverridePathOverridePtrInput `pulumi:"pathOverride"`
+	// Port override.
+	// When specified, replaces the port part of the task URI.
+	// For instance, for a URI http://www.google.com/foo and port=123, the overridden URI becomes http://www.google.com:123/foo.
+	// Note that the port value must be a positive integer.
+	// Setting the port to 0 (Zero) clears the URI port.
+	Port pulumi.StringPtrInput `pulumi:"port"`
+	// URI query.
+	// When specified, replaces the query part of the task URI. Setting the query value to an empty string clears the URI query segment.
+	// Structure is documented below.
+	QueryOverride QueueHttpTargetUriOverrideQueryOverridePtrInput `pulumi:"queryOverride"`
+	// Scheme override.
+	// When specified, the task URI scheme is replaced by the provided value (HTTP or HTTPS).
+	// Possible values are: `HTTP`, `HTTPS`.
+	Scheme pulumi.StringPtrInput `pulumi:"scheme"`
+	// URI Override Enforce Mode
+	// When specified, determines the Target UriOverride mode. If not specified, it defaults to ALWAYS.
+	// Possible values are: `ALWAYS`, `IF_NOT_EXISTS`.
+	UriOverrideEnforceMode pulumi.StringPtrInput `pulumi:"uriOverrideEnforceMode"`
+}
+
+func (QueueHttpTargetUriOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueueHttpTargetUriOverride)(nil)).Elem()
+}
+
+func (i QueueHttpTargetUriOverrideArgs) ToQueueHttpTargetUriOverrideOutput() QueueHttpTargetUriOverrideOutput {
+	return i.ToQueueHttpTargetUriOverrideOutputWithContext(context.Background())
+}
+
+func (i QueueHttpTargetUriOverrideArgs) ToQueueHttpTargetUriOverrideOutputWithContext(ctx context.Context) QueueHttpTargetUriOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueueHttpTargetUriOverrideOutput)
+}
+
+func (i QueueHttpTargetUriOverrideArgs) ToQueueHttpTargetUriOverridePtrOutput() QueueHttpTargetUriOverridePtrOutput {
+	return i.ToQueueHttpTargetUriOverridePtrOutputWithContext(context.Background())
+}
+
+func (i QueueHttpTargetUriOverrideArgs) ToQueueHttpTargetUriOverridePtrOutputWithContext(ctx context.Context) QueueHttpTargetUriOverridePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueueHttpTargetUriOverrideOutput).ToQueueHttpTargetUriOverridePtrOutputWithContext(ctx)
+}
+
+// QueueHttpTargetUriOverridePtrInput is an input type that accepts QueueHttpTargetUriOverrideArgs, QueueHttpTargetUriOverridePtr and QueueHttpTargetUriOverridePtrOutput values.
+// You can construct a concrete instance of `QueueHttpTargetUriOverridePtrInput` via:
+//
+//	        QueueHttpTargetUriOverrideArgs{...}
+//
+//	or:
+//
+//	        nil
+type QueueHttpTargetUriOverridePtrInput interface {
+	pulumi.Input
+
+	ToQueueHttpTargetUriOverridePtrOutput() QueueHttpTargetUriOverridePtrOutput
+	ToQueueHttpTargetUriOverridePtrOutputWithContext(context.Context) QueueHttpTargetUriOverridePtrOutput
+}
+
+type queueHttpTargetUriOverridePtrType QueueHttpTargetUriOverrideArgs
+
+func QueueHttpTargetUriOverridePtr(v *QueueHttpTargetUriOverrideArgs) QueueHttpTargetUriOverridePtrInput {
+	return (*queueHttpTargetUriOverridePtrType)(v)
+}
+
+func (*queueHttpTargetUriOverridePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueueHttpTargetUriOverride)(nil)).Elem()
+}
+
+func (i *queueHttpTargetUriOverridePtrType) ToQueueHttpTargetUriOverridePtrOutput() QueueHttpTargetUriOverridePtrOutput {
+	return i.ToQueueHttpTargetUriOverridePtrOutputWithContext(context.Background())
+}
+
+func (i *queueHttpTargetUriOverridePtrType) ToQueueHttpTargetUriOverridePtrOutputWithContext(ctx context.Context) QueueHttpTargetUriOverridePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueueHttpTargetUriOverridePtrOutput)
+}
+
+type QueueHttpTargetUriOverrideOutput struct{ *pulumi.OutputState }
+
+func (QueueHttpTargetUriOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueueHttpTargetUriOverride)(nil)).Elem()
+}
+
+func (o QueueHttpTargetUriOverrideOutput) ToQueueHttpTargetUriOverrideOutput() QueueHttpTargetUriOverrideOutput {
+	return o
+}
+
+func (o QueueHttpTargetUriOverrideOutput) ToQueueHttpTargetUriOverrideOutputWithContext(ctx context.Context) QueueHttpTargetUriOverrideOutput {
+	return o
+}
+
+func (o QueueHttpTargetUriOverrideOutput) ToQueueHttpTargetUriOverridePtrOutput() QueueHttpTargetUriOverridePtrOutput {
+	return o.ToQueueHttpTargetUriOverridePtrOutputWithContext(context.Background())
+}
+
+func (o QueueHttpTargetUriOverrideOutput) ToQueueHttpTargetUriOverridePtrOutputWithContext(ctx context.Context) QueueHttpTargetUriOverridePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v QueueHttpTargetUriOverride) *QueueHttpTargetUriOverride {
+		return &v
+	}).(QueueHttpTargetUriOverridePtrOutput)
+}
+
+// Host override.
+// When specified, replaces the host part of the task URL.
+// For example, if the task URL is "https://www.google.com", and host value
+// is set to "example.net", the overridden URI will be changed to "https://example.net".
+// Host value cannot be an empty string (INVALID_ARGUMENT).
+func (o QueueHttpTargetUriOverrideOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QueueHttpTargetUriOverride) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+// URI path.
+// When specified, replaces the existing path of the task URL.
+// Setting the path value to an empty string clears the URI path segment.
+// Structure is documented below.
+func (o QueueHttpTargetUriOverrideOutput) PathOverride() QueueHttpTargetUriOverridePathOverridePtrOutput {
+	return o.ApplyT(func(v QueueHttpTargetUriOverride) *QueueHttpTargetUriOverridePathOverride { return v.PathOverride }).(QueueHttpTargetUriOverridePathOverridePtrOutput)
+}
+
+// Port override.
+// When specified, replaces the port part of the task URI.
+// For instance, for a URI http://www.google.com/foo and port=123, the overridden URI becomes http://www.google.com:123/foo.
+// Note that the port value must be a positive integer.
+// Setting the port to 0 (Zero) clears the URI port.
+func (o QueueHttpTargetUriOverrideOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QueueHttpTargetUriOverride) *string { return v.Port }).(pulumi.StringPtrOutput)
+}
+
+// URI query.
+// When specified, replaces the query part of the task URI. Setting the query value to an empty string clears the URI query segment.
+// Structure is documented below.
+func (o QueueHttpTargetUriOverrideOutput) QueryOverride() QueueHttpTargetUriOverrideQueryOverridePtrOutput {
+	return o.ApplyT(func(v QueueHttpTargetUriOverride) *QueueHttpTargetUriOverrideQueryOverride { return v.QueryOverride }).(QueueHttpTargetUriOverrideQueryOverridePtrOutput)
+}
+
+// Scheme override.
+// When specified, the task URI scheme is replaced by the provided value (HTTP or HTTPS).
+// Possible values are: `HTTP`, `HTTPS`.
+func (o QueueHttpTargetUriOverrideOutput) Scheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QueueHttpTargetUriOverride) *string { return v.Scheme }).(pulumi.StringPtrOutput)
+}
+
+// URI Override Enforce Mode
+// When specified, determines the Target UriOverride mode. If not specified, it defaults to ALWAYS.
+// Possible values are: `ALWAYS`, `IF_NOT_EXISTS`.
+func (o QueueHttpTargetUriOverrideOutput) UriOverrideEnforceMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QueueHttpTargetUriOverride) *string { return v.UriOverrideEnforceMode }).(pulumi.StringPtrOutput)
+}
+
+type QueueHttpTargetUriOverridePtrOutput struct{ *pulumi.OutputState }
+
+func (QueueHttpTargetUriOverridePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueueHttpTargetUriOverride)(nil)).Elem()
+}
+
+func (o QueueHttpTargetUriOverridePtrOutput) ToQueueHttpTargetUriOverridePtrOutput() QueueHttpTargetUriOverridePtrOutput {
+	return o
+}
+
+func (o QueueHttpTargetUriOverridePtrOutput) ToQueueHttpTargetUriOverridePtrOutputWithContext(ctx context.Context) QueueHttpTargetUriOverridePtrOutput {
+	return o
+}
+
+func (o QueueHttpTargetUriOverridePtrOutput) Elem() QueueHttpTargetUriOverrideOutput {
+	return o.ApplyT(func(v *QueueHttpTargetUriOverride) QueueHttpTargetUriOverride {
+		if v != nil {
+			return *v
+		}
+		var ret QueueHttpTargetUriOverride
+		return ret
+	}).(QueueHttpTargetUriOverrideOutput)
+}
+
+// Host override.
+// When specified, replaces the host part of the task URL.
+// For example, if the task URL is "https://www.google.com", and host value
+// is set to "example.net", the overridden URI will be changed to "https://example.net".
+// Host value cannot be an empty string (INVALID_ARGUMENT).
+func (o QueueHttpTargetUriOverridePtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QueueHttpTargetUriOverride) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// URI path.
+// When specified, replaces the existing path of the task URL.
+// Setting the path value to an empty string clears the URI path segment.
+// Structure is documented below.
+func (o QueueHttpTargetUriOverridePtrOutput) PathOverride() QueueHttpTargetUriOverridePathOverridePtrOutput {
+	return o.ApplyT(func(v *QueueHttpTargetUriOverride) *QueueHttpTargetUriOverridePathOverride {
+		if v == nil {
+			return nil
+		}
+		return v.PathOverride
+	}).(QueueHttpTargetUriOverridePathOverridePtrOutput)
+}
+
+// Port override.
+// When specified, replaces the port part of the task URI.
+// For instance, for a URI http://www.google.com/foo and port=123, the overridden URI becomes http://www.google.com:123/foo.
+// Note that the port value must be a positive integer.
+// Setting the port to 0 (Zero) clears the URI port.
+func (o QueueHttpTargetUriOverridePtrOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QueueHttpTargetUriOverride) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.StringPtrOutput)
+}
+
+// URI query.
+// When specified, replaces the query part of the task URI. Setting the query value to an empty string clears the URI query segment.
+// Structure is documented below.
+func (o QueueHttpTargetUriOverridePtrOutput) QueryOverride() QueueHttpTargetUriOverrideQueryOverridePtrOutput {
+	return o.ApplyT(func(v *QueueHttpTargetUriOverride) *QueueHttpTargetUriOverrideQueryOverride {
+		if v == nil {
+			return nil
+		}
+		return v.QueryOverride
+	}).(QueueHttpTargetUriOverrideQueryOverridePtrOutput)
+}
+
+// Scheme override.
+// When specified, the task URI scheme is replaced by the provided value (HTTP or HTTPS).
+// Possible values are: `HTTP`, `HTTPS`.
+func (o QueueHttpTargetUriOverridePtrOutput) Scheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QueueHttpTargetUriOverride) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Scheme
+	}).(pulumi.StringPtrOutput)
+}
+
+// URI Override Enforce Mode
+// When specified, determines the Target UriOverride mode. If not specified, it defaults to ALWAYS.
+// Possible values are: `ALWAYS`, `IF_NOT_EXISTS`.
+func (o QueueHttpTargetUriOverridePtrOutput) UriOverrideEnforceMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QueueHttpTargetUriOverride) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UriOverrideEnforceMode
+	}).(pulumi.StringPtrOutput)
+}
+
+type QueueHttpTargetUriOverridePathOverride struct {
+	// The URI path (e.g., /users/1234). Default is an empty string.
+	Path *string `pulumi:"path"`
+}
+
+// QueueHttpTargetUriOverridePathOverrideInput is an input type that accepts QueueHttpTargetUriOverridePathOverrideArgs and QueueHttpTargetUriOverridePathOverrideOutput values.
+// You can construct a concrete instance of `QueueHttpTargetUriOverridePathOverrideInput` via:
+//
+//	QueueHttpTargetUriOverridePathOverrideArgs{...}
+type QueueHttpTargetUriOverridePathOverrideInput interface {
+	pulumi.Input
+
+	ToQueueHttpTargetUriOverridePathOverrideOutput() QueueHttpTargetUriOverridePathOverrideOutput
+	ToQueueHttpTargetUriOverridePathOverrideOutputWithContext(context.Context) QueueHttpTargetUriOverridePathOverrideOutput
+}
+
+type QueueHttpTargetUriOverridePathOverrideArgs struct {
+	// The URI path (e.g., /users/1234). Default is an empty string.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+}
+
+func (QueueHttpTargetUriOverridePathOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueueHttpTargetUriOverridePathOverride)(nil)).Elem()
+}
+
+func (i QueueHttpTargetUriOverridePathOverrideArgs) ToQueueHttpTargetUriOverridePathOverrideOutput() QueueHttpTargetUriOverridePathOverrideOutput {
+	return i.ToQueueHttpTargetUriOverridePathOverrideOutputWithContext(context.Background())
+}
+
+func (i QueueHttpTargetUriOverridePathOverrideArgs) ToQueueHttpTargetUriOverridePathOverrideOutputWithContext(ctx context.Context) QueueHttpTargetUriOverridePathOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueueHttpTargetUriOverridePathOverrideOutput)
+}
+
+func (i QueueHttpTargetUriOverridePathOverrideArgs) ToQueueHttpTargetUriOverridePathOverridePtrOutput() QueueHttpTargetUriOverridePathOverridePtrOutput {
+	return i.ToQueueHttpTargetUriOverridePathOverridePtrOutputWithContext(context.Background())
+}
+
+func (i QueueHttpTargetUriOverridePathOverrideArgs) ToQueueHttpTargetUriOverridePathOverridePtrOutputWithContext(ctx context.Context) QueueHttpTargetUriOverridePathOverridePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueueHttpTargetUriOverridePathOverrideOutput).ToQueueHttpTargetUriOverridePathOverridePtrOutputWithContext(ctx)
+}
+
+// QueueHttpTargetUriOverridePathOverridePtrInput is an input type that accepts QueueHttpTargetUriOverridePathOverrideArgs, QueueHttpTargetUriOverridePathOverridePtr and QueueHttpTargetUriOverridePathOverridePtrOutput values.
+// You can construct a concrete instance of `QueueHttpTargetUriOverridePathOverridePtrInput` via:
+//
+//	        QueueHttpTargetUriOverridePathOverrideArgs{...}
+//
+//	or:
+//
+//	        nil
+type QueueHttpTargetUriOverridePathOverridePtrInput interface {
+	pulumi.Input
+
+	ToQueueHttpTargetUriOverridePathOverridePtrOutput() QueueHttpTargetUriOverridePathOverridePtrOutput
+	ToQueueHttpTargetUriOverridePathOverridePtrOutputWithContext(context.Context) QueueHttpTargetUriOverridePathOverridePtrOutput
+}
+
+type queueHttpTargetUriOverridePathOverridePtrType QueueHttpTargetUriOverridePathOverrideArgs
+
+func QueueHttpTargetUriOverridePathOverridePtr(v *QueueHttpTargetUriOverridePathOverrideArgs) QueueHttpTargetUriOverridePathOverridePtrInput {
+	return (*queueHttpTargetUriOverridePathOverridePtrType)(v)
+}
+
+func (*queueHttpTargetUriOverridePathOverridePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueueHttpTargetUriOverridePathOverride)(nil)).Elem()
+}
+
+func (i *queueHttpTargetUriOverridePathOverridePtrType) ToQueueHttpTargetUriOverridePathOverridePtrOutput() QueueHttpTargetUriOverridePathOverridePtrOutput {
+	return i.ToQueueHttpTargetUriOverridePathOverridePtrOutputWithContext(context.Background())
+}
+
+func (i *queueHttpTargetUriOverridePathOverridePtrType) ToQueueHttpTargetUriOverridePathOverridePtrOutputWithContext(ctx context.Context) QueueHttpTargetUriOverridePathOverridePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueueHttpTargetUriOverridePathOverridePtrOutput)
+}
+
+type QueueHttpTargetUriOverridePathOverrideOutput struct{ *pulumi.OutputState }
+
+func (QueueHttpTargetUriOverridePathOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueueHttpTargetUriOverridePathOverride)(nil)).Elem()
+}
+
+func (o QueueHttpTargetUriOverridePathOverrideOutput) ToQueueHttpTargetUriOverridePathOverrideOutput() QueueHttpTargetUriOverridePathOverrideOutput {
+	return o
+}
+
+func (o QueueHttpTargetUriOverridePathOverrideOutput) ToQueueHttpTargetUriOverridePathOverrideOutputWithContext(ctx context.Context) QueueHttpTargetUriOverridePathOverrideOutput {
+	return o
+}
+
+func (o QueueHttpTargetUriOverridePathOverrideOutput) ToQueueHttpTargetUriOverridePathOverridePtrOutput() QueueHttpTargetUriOverridePathOverridePtrOutput {
+	return o.ToQueueHttpTargetUriOverridePathOverridePtrOutputWithContext(context.Background())
+}
+
+func (o QueueHttpTargetUriOverridePathOverrideOutput) ToQueueHttpTargetUriOverridePathOverridePtrOutputWithContext(ctx context.Context) QueueHttpTargetUriOverridePathOverridePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v QueueHttpTargetUriOverridePathOverride) *QueueHttpTargetUriOverridePathOverride {
+		return &v
+	}).(QueueHttpTargetUriOverridePathOverridePtrOutput)
+}
+
+// The URI path (e.g., /users/1234). Default is an empty string.
+func (o QueueHttpTargetUriOverridePathOverrideOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QueueHttpTargetUriOverridePathOverride) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+type QueueHttpTargetUriOverridePathOverridePtrOutput struct{ *pulumi.OutputState }
+
+func (QueueHttpTargetUriOverridePathOverridePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueueHttpTargetUriOverridePathOverride)(nil)).Elem()
+}
+
+func (o QueueHttpTargetUriOverridePathOverridePtrOutput) ToQueueHttpTargetUriOverridePathOverridePtrOutput() QueueHttpTargetUriOverridePathOverridePtrOutput {
+	return o
+}
+
+func (o QueueHttpTargetUriOverridePathOverridePtrOutput) ToQueueHttpTargetUriOverridePathOverridePtrOutputWithContext(ctx context.Context) QueueHttpTargetUriOverridePathOverridePtrOutput {
+	return o
+}
+
+func (o QueueHttpTargetUriOverridePathOverridePtrOutput) Elem() QueueHttpTargetUriOverridePathOverrideOutput {
+	return o.ApplyT(func(v *QueueHttpTargetUriOverridePathOverride) QueueHttpTargetUriOverridePathOverride {
+		if v != nil {
+			return *v
+		}
+		var ret QueueHttpTargetUriOverridePathOverride
+		return ret
+	}).(QueueHttpTargetUriOverridePathOverrideOutput)
+}
+
+// The URI path (e.g., /users/1234). Default is an empty string.
+func (o QueueHttpTargetUriOverridePathOverridePtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QueueHttpTargetUriOverridePathOverride) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+type QueueHttpTargetUriOverrideQueryOverride struct {
+	// The query parameters (e.g., qparam1=123&qparam2=456). Default is an empty string.
+	QueryParams *string `pulumi:"queryParams"`
+}
+
+// QueueHttpTargetUriOverrideQueryOverrideInput is an input type that accepts QueueHttpTargetUriOverrideQueryOverrideArgs and QueueHttpTargetUriOverrideQueryOverrideOutput values.
+// You can construct a concrete instance of `QueueHttpTargetUriOverrideQueryOverrideInput` via:
+//
+//	QueueHttpTargetUriOverrideQueryOverrideArgs{...}
+type QueueHttpTargetUriOverrideQueryOverrideInput interface {
+	pulumi.Input
+
+	ToQueueHttpTargetUriOverrideQueryOverrideOutput() QueueHttpTargetUriOverrideQueryOverrideOutput
+	ToQueueHttpTargetUriOverrideQueryOverrideOutputWithContext(context.Context) QueueHttpTargetUriOverrideQueryOverrideOutput
+}
+
+type QueueHttpTargetUriOverrideQueryOverrideArgs struct {
+	// The query parameters (e.g., qparam1=123&qparam2=456). Default is an empty string.
+	QueryParams pulumi.StringPtrInput `pulumi:"queryParams"`
+}
+
+func (QueueHttpTargetUriOverrideQueryOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueueHttpTargetUriOverrideQueryOverride)(nil)).Elem()
+}
+
+func (i QueueHttpTargetUriOverrideQueryOverrideArgs) ToQueueHttpTargetUriOverrideQueryOverrideOutput() QueueHttpTargetUriOverrideQueryOverrideOutput {
+	return i.ToQueueHttpTargetUriOverrideQueryOverrideOutputWithContext(context.Background())
+}
+
+func (i QueueHttpTargetUriOverrideQueryOverrideArgs) ToQueueHttpTargetUriOverrideQueryOverrideOutputWithContext(ctx context.Context) QueueHttpTargetUriOverrideQueryOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueueHttpTargetUriOverrideQueryOverrideOutput)
+}
+
+func (i QueueHttpTargetUriOverrideQueryOverrideArgs) ToQueueHttpTargetUriOverrideQueryOverridePtrOutput() QueueHttpTargetUriOverrideQueryOverridePtrOutput {
+	return i.ToQueueHttpTargetUriOverrideQueryOverridePtrOutputWithContext(context.Background())
+}
+
+func (i QueueHttpTargetUriOverrideQueryOverrideArgs) ToQueueHttpTargetUriOverrideQueryOverridePtrOutputWithContext(ctx context.Context) QueueHttpTargetUriOverrideQueryOverridePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueueHttpTargetUriOverrideQueryOverrideOutput).ToQueueHttpTargetUriOverrideQueryOverridePtrOutputWithContext(ctx)
+}
+
+// QueueHttpTargetUriOverrideQueryOverridePtrInput is an input type that accepts QueueHttpTargetUriOverrideQueryOverrideArgs, QueueHttpTargetUriOverrideQueryOverridePtr and QueueHttpTargetUriOverrideQueryOverridePtrOutput values.
+// You can construct a concrete instance of `QueueHttpTargetUriOverrideQueryOverridePtrInput` via:
+//
+//	        QueueHttpTargetUriOverrideQueryOverrideArgs{...}
+//
+//	or:
+//
+//	        nil
+type QueueHttpTargetUriOverrideQueryOverridePtrInput interface {
+	pulumi.Input
+
+	ToQueueHttpTargetUriOverrideQueryOverridePtrOutput() QueueHttpTargetUriOverrideQueryOverridePtrOutput
+	ToQueueHttpTargetUriOverrideQueryOverridePtrOutputWithContext(context.Context) QueueHttpTargetUriOverrideQueryOverridePtrOutput
+}
+
+type queueHttpTargetUriOverrideQueryOverridePtrType QueueHttpTargetUriOverrideQueryOverrideArgs
+
+func QueueHttpTargetUriOverrideQueryOverridePtr(v *QueueHttpTargetUriOverrideQueryOverrideArgs) QueueHttpTargetUriOverrideQueryOverridePtrInput {
+	return (*queueHttpTargetUriOverrideQueryOverridePtrType)(v)
+}
+
+func (*queueHttpTargetUriOverrideQueryOverridePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueueHttpTargetUriOverrideQueryOverride)(nil)).Elem()
+}
+
+func (i *queueHttpTargetUriOverrideQueryOverridePtrType) ToQueueHttpTargetUriOverrideQueryOverridePtrOutput() QueueHttpTargetUriOverrideQueryOverridePtrOutput {
+	return i.ToQueueHttpTargetUriOverrideQueryOverridePtrOutputWithContext(context.Background())
+}
+
+func (i *queueHttpTargetUriOverrideQueryOverridePtrType) ToQueueHttpTargetUriOverrideQueryOverridePtrOutputWithContext(ctx context.Context) QueueHttpTargetUriOverrideQueryOverridePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueueHttpTargetUriOverrideQueryOverridePtrOutput)
+}
+
+type QueueHttpTargetUriOverrideQueryOverrideOutput struct{ *pulumi.OutputState }
+
+func (QueueHttpTargetUriOverrideQueryOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueueHttpTargetUriOverrideQueryOverride)(nil)).Elem()
+}
+
+func (o QueueHttpTargetUriOverrideQueryOverrideOutput) ToQueueHttpTargetUriOverrideQueryOverrideOutput() QueueHttpTargetUriOverrideQueryOverrideOutput {
+	return o
+}
+
+func (o QueueHttpTargetUriOverrideQueryOverrideOutput) ToQueueHttpTargetUriOverrideQueryOverrideOutputWithContext(ctx context.Context) QueueHttpTargetUriOverrideQueryOverrideOutput {
+	return o
+}
+
+func (o QueueHttpTargetUriOverrideQueryOverrideOutput) ToQueueHttpTargetUriOverrideQueryOverridePtrOutput() QueueHttpTargetUriOverrideQueryOverridePtrOutput {
+	return o.ToQueueHttpTargetUriOverrideQueryOverridePtrOutputWithContext(context.Background())
+}
+
+func (o QueueHttpTargetUriOverrideQueryOverrideOutput) ToQueueHttpTargetUriOverrideQueryOverridePtrOutputWithContext(ctx context.Context) QueueHttpTargetUriOverrideQueryOverridePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v QueueHttpTargetUriOverrideQueryOverride) *QueueHttpTargetUriOverrideQueryOverride {
+		return &v
+	}).(QueueHttpTargetUriOverrideQueryOverridePtrOutput)
+}
+
+// The query parameters (e.g., qparam1=123&qparam2=456). Default is an empty string.
+func (o QueueHttpTargetUriOverrideQueryOverrideOutput) QueryParams() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QueueHttpTargetUriOverrideQueryOverride) *string { return v.QueryParams }).(pulumi.StringPtrOutput)
+}
+
+type QueueHttpTargetUriOverrideQueryOverridePtrOutput struct{ *pulumi.OutputState }
+
+func (QueueHttpTargetUriOverrideQueryOverridePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueueHttpTargetUriOverrideQueryOverride)(nil)).Elem()
+}
+
+func (o QueueHttpTargetUriOverrideQueryOverridePtrOutput) ToQueueHttpTargetUriOverrideQueryOverridePtrOutput() QueueHttpTargetUriOverrideQueryOverridePtrOutput {
+	return o
+}
+
+func (o QueueHttpTargetUriOverrideQueryOverridePtrOutput) ToQueueHttpTargetUriOverrideQueryOverridePtrOutputWithContext(ctx context.Context) QueueHttpTargetUriOverrideQueryOverridePtrOutput {
+	return o
+}
+
+func (o QueueHttpTargetUriOverrideQueryOverridePtrOutput) Elem() QueueHttpTargetUriOverrideQueryOverrideOutput {
+	return o.ApplyT(func(v *QueueHttpTargetUriOverrideQueryOverride) QueueHttpTargetUriOverrideQueryOverride {
+		if v != nil {
+			return *v
+		}
+		var ret QueueHttpTargetUriOverrideQueryOverride
+		return ret
+	}).(QueueHttpTargetUriOverrideQueryOverrideOutput)
+}
+
+// The query parameters (e.g., qparam1=123&qparam2=456). Default is an empty string.
+func (o QueueHttpTargetUriOverrideQueryOverridePtrOutput) QueryParams() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QueueHttpTargetUriOverrideQueryOverride) *string {
+		if v == nil {
+			return nil
+		}
+		return v.QueryParams
+	}).(pulumi.StringPtrOutput)
+}
+
 type QueueIamBindingCondition struct {
 	Description *string `pulumi:"description"`
 	Expression  string  `pulumi:"expression"`
@@ -1193,6 +2545,21 @@ func (o QueueStackdriverLoggingConfigPtrOutput) SamplingRatio() pulumi.Float64Pt
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*QueueAppEngineRoutingOverrideInput)(nil)).Elem(), QueueAppEngineRoutingOverrideArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QueueAppEngineRoutingOverridePtrInput)(nil)).Elem(), QueueAppEngineRoutingOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueueHttpTargetInput)(nil)).Elem(), QueueHttpTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueueHttpTargetPtrInput)(nil)).Elem(), QueueHttpTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueueHttpTargetHeaderOverrideInput)(nil)).Elem(), QueueHttpTargetHeaderOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueueHttpTargetHeaderOverrideArrayInput)(nil)).Elem(), QueueHttpTargetHeaderOverrideArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueueHttpTargetHeaderOverrideHeaderInput)(nil)).Elem(), QueueHttpTargetHeaderOverrideHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueueHttpTargetOauthTokenInput)(nil)).Elem(), QueueHttpTargetOauthTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueueHttpTargetOauthTokenPtrInput)(nil)).Elem(), QueueHttpTargetOauthTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueueHttpTargetOidcTokenInput)(nil)).Elem(), QueueHttpTargetOidcTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueueHttpTargetOidcTokenPtrInput)(nil)).Elem(), QueueHttpTargetOidcTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueueHttpTargetUriOverrideInput)(nil)).Elem(), QueueHttpTargetUriOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueueHttpTargetUriOverridePtrInput)(nil)).Elem(), QueueHttpTargetUriOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueueHttpTargetUriOverridePathOverrideInput)(nil)).Elem(), QueueHttpTargetUriOverridePathOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueueHttpTargetUriOverridePathOverridePtrInput)(nil)).Elem(), QueueHttpTargetUriOverridePathOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueueHttpTargetUriOverrideQueryOverrideInput)(nil)).Elem(), QueueHttpTargetUriOverrideQueryOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueueHttpTargetUriOverrideQueryOverridePtrInput)(nil)).Elem(), QueueHttpTargetUriOverrideQueryOverrideArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QueueIamBindingConditionInput)(nil)).Elem(), QueueIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QueueIamBindingConditionPtrInput)(nil)).Elem(), QueueIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QueueIamMemberConditionInput)(nil)).Elem(), QueueIamMemberConditionArgs{})
@@ -1205,6 +2572,21 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*QueueStackdriverLoggingConfigPtrInput)(nil)).Elem(), QueueStackdriverLoggingConfigArgs{})
 	pulumi.RegisterOutputType(QueueAppEngineRoutingOverrideOutput{})
 	pulumi.RegisterOutputType(QueueAppEngineRoutingOverridePtrOutput{})
+	pulumi.RegisterOutputType(QueueHttpTargetOutput{})
+	pulumi.RegisterOutputType(QueueHttpTargetPtrOutput{})
+	pulumi.RegisterOutputType(QueueHttpTargetHeaderOverrideOutput{})
+	pulumi.RegisterOutputType(QueueHttpTargetHeaderOverrideArrayOutput{})
+	pulumi.RegisterOutputType(QueueHttpTargetHeaderOverrideHeaderOutput{})
+	pulumi.RegisterOutputType(QueueHttpTargetOauthTokenOutput{})
+	pulumi.RegisterOutputType(QueueHttpTargetOauthTokenPtrOutput{})
+	pulumi.RegisterOutputType(QueueHttpTargetOidcTokenOutput{})
+	pulumi.RegisterOutputType(QueueHttpTargetOidcTokenPtrOutput{})
+	pulumi.RegisterOutputType(QueueHttpTargetUriOverrideOutput{})
+	pulumi.RegisterOutputType(QueueHttpTargetUriOverridePtrOutput{})
+	pulumi.RegisterOutputType(QueueHttpTargetUriOverridePathOverrideOutput{})
+	pulumi.RegisterOutputType(QueueHttpTargetUriOverridePathOverridePtrOutput{})
+	pulumi.RegisterOutputType(QueueHttpTargetUriOverrideQueryOverrideOutput{})
+	pulumi.RegisterOutputType(QueueHttpTargetUriOverrideQueryOverridePtrOutput{})
 	pulumi.RegisterOutputType(QueueIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(QueueIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(QueueIamMemberConditionOutput{})

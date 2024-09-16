@@ -67,6 +67,8 @@ __all__ = [
     'ClusterRestoreContinuousBackupSourceArgsDict',
     'ClusterSecondaryConfigArgs',
     'ClusterSecondaryConfigArgsDict',
+    'ClusterTrialMetadataArgs',
+    'ClusterTrialMetadataArgsDict',
     'InstanceClientConnectionConfigArgs',
     'InstanceClientConnectionConfigArgsDict',
     'InstanceClientConnectionConfigSslConfigArgs',
@@ -1583,6 +1585,98 @@ class ClusterSecondaryConfigArgs:
     @primary_cluster_name.setter
     def primary_cluster_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "primary_cluster_name", value)
+
+
+if not MYPY:
+    class ClusterTrialMetadataArgsDict(TypedDict):
+        end_time: NotRequired[pulumi.Input[str]]
+        """
+        End time of the trial cluster.
+        """
+        grace_end_time: NotRequired[pulumi.Input[str]]
+        """
+        Grace end time of the trial cluster.
+        """
+        start_time: NotRequired[pulumi.Input[str]]
+        """
+        Start time of the trial cluster.
+        """
+        upgrade_time: NotRequired[pulumi.Input[str]]
+        """
+        Upgrade time of the trial cluster to standard cluster.
+        """
+elif False:
+    ClusterTrialMetadataArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterTrialMetadataArgs:
+    def __init__(__self__, *,
+                 end_time: Optional[pulumi.Input[str]] = None,
+                 grace_end_time: Optional[pulumi.Input[str]] = None,
+                 start_time: Optional[pulumi.Input[str]] = None,
+                 upgrade_time: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] end_time: End time of the trial cluster.
+        :param pulumi.Input[str] grace_end_time: Grace end time of the trial cluster.
+        :param pulumi.Input[str] start_time: Start time of the trial cluster.
+        :param pulumi.Input[str] upgrade_time: Upgrade time of the trial cluster to standard cluster.
+        """
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if grace_end_time is not None:
+            pulumi.set(__self__, "grace_end_time", grace_end_time)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+        if upgrade_time is not None:
+            pulumi.set(__self__, "upgrade_time", upgrade_time)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        End time of the trial cluster.
+        """
+        return pulumi.get(self, "end_time")
+
+    @end_time.setter
+    def end_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "end_time", value)
+
+    @property
+    @pulumi.getter(name="graceEndTime")
+    def grace_end_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Grace end time of the trial cluster.
+        """
+        return pulumi.get(self, "grace_end_time")
+
+    @grace_end_time.setter
+    def grace_end_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "grace_end_time", value)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Start time of the trial cluster.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "start_time", value)
+
+    @property
+    @pulumi.getter(name="upgradeTime")
+    def upgrade_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Upgrade time of the trial cluster to standard cluster.
+        """
+        return pulumi.get(self, "upgrade_time")
+
+    @upgrade_time.setter
+    def upgrade_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "upgrade_time", value)
 
 
 if not MYPY:

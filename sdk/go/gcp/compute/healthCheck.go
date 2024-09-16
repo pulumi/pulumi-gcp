@@ -468,6 +468,111 @@ import (
 //	}
 //
 // ```
+// ### Compute Health Check Http Source Regions
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewHealthCheck(ctx, "http-health-check-with-source-regions", &compute.HealthCheckArgs{
+//				Name:             pulumi.String("http-health-check"),
+//				CheckIntervalSec: pulumi.Int(30),
+//				HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
+//					Port:              pulumi.Int(80),
+//					PortSpecification: pulumi.String("USE_FIXED_PORT"),
+//				},
+//				SourceRegions: pulumi.StringArray{
+//					pulumi.String("us-west1"),
+//					pulumi.String("us-central1"),
+//					pulumi.String("us-east5"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Compute Health Check Https Source Regions
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewHealthCheck(ctx, "https-health-check-with-source-regions", &compute.HealthCheckArgs{
+//				Name:             pulumi.String("https-health-check"),
+//				CheckIntervalSec: pulumi.Int(30),
+//				HttpsHealthCheck: &compute.HealthCheckHttpsHealthCheckArgs{
+//					Port:              pulumi.Int(80),
+//					PortSpecification: pulumi.String("USE_FIXED_PORT"),
+//				},
+//				SourceRegions: pulumi.StringArray{
+//					pulumi.String("us-west1"),
+//					pulumi.String("us-central1"),
+//					pulumi.String("us-east5"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Compute Health Check Tcp Source Regions
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewHealthCheck(ctx, "tcp-health-check-with-source-regions", &compute.HealthCheckArgs{
+//				Name:             pulumi.String("tcp-health-check"),
+//				CheckIntervalSec: pulumi.Int(30),
+//				TcpHealthCheck: &compute.HealthCheckTcpHealthCheckArgs{
+//					Port:              pulumi.Int(80),
+//					PortSpecification: pulumi.String("USE_FIXED_PORT"),
+//				},
+//				SourceRegions: pulumi.StringArray{
+//					pulumi.String("us-west1"),
+//					pulumi.String("us-central1"),
+//					pulumi.String("us-east5"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

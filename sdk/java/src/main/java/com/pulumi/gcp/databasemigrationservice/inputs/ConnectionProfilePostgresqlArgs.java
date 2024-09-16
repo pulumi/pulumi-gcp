@@ -5,7 +5,6 @@ package com.pulumi.gcp.databasemigrationservice.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfilePostgresqlSslArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -18,6 +17,21 @@ import javax.annotation.Nullable;
 public final class ConnectionProfilePostgresqlArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ConnectionProfilePostgresqlArgs Empty = new ConnectionProfilePostgresqlArgs();
+
+    /**
+     * If the connected database is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.
+     * 
+     */
+    @Import(name="alloydbClusterId")
+    private @Nullable Output<String> alloydbClusterId;
+
+    /**
+     * @return If the connected database is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.
+     * 
+     */
+    public Optional<Output<String>> alloydbClusterId() {
+        return Optional.ofNullable(this.alloydbClusterId);
+    }
 
     /**
      * If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
@@ -35,18 +49,18 @@ public final class ConnectionProfilePostgresqlArgs extends com.pulumi.resources.
     }
 
     /**
-     * Required. The IP or hostname of the source MySQL database.
+     * The IP or hostname of the source MySQL database.
      * 
      */
-    @Import(name="host", required=true)
-    private Output<String> host;
+    @Import(name="host")
+    private @Nullable Output<String> host;
 
     /**
-     * @return Required. The IP or hostname of the source MySQL database.
+     * @return The IP or hostname of the source MySQL database.
      * 
      */
-    public Output<String> host() {
-        return this.host;
+    public Optional<Output<String>> host() {
+        return Optional.ofNullable(this.host);
     }
 
     /**
@@ -67,22 +81,22 @@ public final class ConnectionProfilePostgresqlArgs extends com.pulumi.resources.
     }
 
     /**
-     * Required. Input only. The password for the user that Database Migration Service will be using to connect to the database.
+     * Input only. The password for the user that Database Migration Service will be using to connect to the database.
      * This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    @Import(name="password", required=true)
-    private Output<String> password;
+    @Import(name="password")
+    private @Nullable Output<String> password;
 
     /**
-     * @return Required. Input only. The password for the user that Database Migration Service will be using to connect to the database.
+     * @return Input only. The password for the user that Database Migration Service will be using to connect to the database.
      * This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    public Output<String> password() {
-        return this.password;
+    public Optional<Output<String>> password() {
+        return Optional.ofNullable(this.password);
     }
 
     /**
@@ -103,18 +117,18 @@ public final class ConnectionProfilePostgresqlArgs extends com.pulumi.resources.
     }
 
     /**
-     * Required. The network port of the source MySQL database.
+     * The network port of the source MySQL database.
      * 
      */
-    @Import(name="port", required=true)
-    private Output<Integer> port;
+    @Import(name="port")
+    private @Nullable Output<Integer> port;
 
     /**
-     * @return Required. The network port of the source MySQL database.
+     * @return The network port of the source MySQL database.
      * 
      */
-    public Output<Integer> port() {
-        return this.port;
+    public Optional<Output<Integer>> port() {
+        return Optional.ofNullable(this.port);
     }
 
     /**
@@ -135,23 +149,24 @@ public final class ConnectionProfilePostgresqlArgs extends com.pulumi.resources.
     }
 
     /**
-     * Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+     * The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
      * 
      */
-    @Import(name="username", required=true)
-    private Output<String> username;
+    @Import(name="username")
+    private @Nullable Output<String> username;
 
     /**
-     * @return Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+     * @return The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
      * 
      */
-    public Output<String> username() {
-        return this.username;
+    public Optional<Output<String>> username() {
+        return Optional.ofNullable(this.username);
     }
 
     private ConnectionProfilePostgresqlArgs() {}
 
     private ConnectionProfilePostgresqlArgs(ConnectionProfilePostgresqlArgs $) {
+        this.alloydbClusterId = $.alloydbClusterId;
         this.cloudSqlId = $.cloudSqlId;
         this.host = $.host;
         this.networkArchitecture = $.networkArchitecture;
@@ -181,6 +196,27 @@ public final class ConnectionProfilePostgresqlArgs extends com.pulumi.resources.
         }
 
         /**
+         * @param alloydbClusterId If the connected database is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder alloydbClusterId(@Nullable Output<String> alloydbClusterId) {
+            $.alloydbClusterId = alloydbClusterId;
+            return this;
+        }
+
+        /**
+         * @param alloydbClusterId If the connected database is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder alloydbClusterId(String alloydbClusterId) {
+            return alloydbClusterId(Output.of(alloydbClusterId));
+        }
+
+        /**
          * @param cloudSqlId If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
          * 
          * @return builder
@@ -202,18 +238,18 @@ public final class ConnectionProfilePostgresqlArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param host Required. The IP or hostname of the source MySQL database.
+         * @param host The IP or hostname of the source MySQL database.
          * 
          * @return builder
          * 
          */
-        public Builder host(Output<String> host) {
+        public Builder host(@Nullable Output<String> host) {
             $.host = host;
             return this;
         }
 
         /**
-         * @param host Required. The IP or hostname of the source MySQL database.
+         * @param host The IP or hostname of the source MySQL database.
          * 
          * @return builder
          * 
@@ -246,20 +282,20 @@ public final class ConnectionProfilePostgresqlArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param password Required. Input only. The password for the user that Database Migration Service will be using to connect to the database.
+         * @param password Input only. The password for the user that Database Migration Service will be using to connect to the database.
          * This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
          * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
          * 
          */
-        public Builder password(Output<String> password) {
+        public Builder password(@Nullable Output<String> password) {
             $.password = password;
             return this;
         }
 
         /**
-         * @param password Required. Input only. The password for the user that Database Migration Service will be using to connect to the database.
+         * @param password Input only. The password for the user that Database Migration Service will be using to connect to the database.
          * This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
          * **Note**: This property is sensitive and will not be displayed in the plan.
          * 
@@ -294,18 +330,18 @@ public final class ConnectionProfilePostgresqlArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param port Required. The network port of the source MySQL database.
+         * @param port The network port of the source MySQL database.
          * 
          * @return builder
          * 
          */
-        public Builder port(Output<Integer> port) {
+        public Builder port(@Nullable Output<Integer> port) {
             $.port = port;
             return this;
         }
 
         /**
-         * @param port Required. The network port of the source MySQL database.
+         * @param port The network port of the source MySQL database.
          * 
          * @return builder
          * 
@@ -338,18 +374,18 @@ public final class ConnectionProfilePostgresqlArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param username Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+         * @param username The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
          * 
          * @return builder
          * 
          */
-        public Builder username(Output<String> username) {
+        public Builder username(@Nullable Output<String> username) {
             $.username = username;
             return this;
         }
 
         /**
-         * @param username Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+         * @param username The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
          * 
          * @return builder
          * 
@@ -359,18 +395,6 @@ public final class ConnectionProfilePostgresqlArgs extends com.pulumi.resources.
         }
 
         public ConnectionProfilePostgresqlArgs build() {
-            if ($.host == null) {
-                throw new MissingRequiredPropertyException("ConnectionProfilePostgresqlArgs", "host");
-            }
-            if ($.password == null) {
-                throw new MissingRequiredPropertyException("ConnectionProfilePostgresqlArgs", "password");
-            }
-            if ($.port == null) {
-                throw new MissingRequiredPropertyException("ConnectionProfilePostgresqlArgs", "port");
-            }
-            if ($.username == null) {
-                throw new MissingRequiredPropertyException("ConnectionProfilePostgresqlArgs", "username");
-            }
             return $;
         }
     }

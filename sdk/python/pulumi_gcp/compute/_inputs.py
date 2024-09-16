@@ -407,6 +407,8 @@ __all__ = [
     'NodeGroupShareSettingsArgsDict',
     'NodeGroupShareSettingsProjectMapArgs',
     'NodeGroupShareSettingsProjectMapArgsDict',
+    'NodeTemplateAcceleratorArgs',
+    'NodeTemplateAcceleratorArgsDict',
     'NodeTemplateNodeTypeFlexibilityArgs',
     'NodeTemplateNodeTypeFlexibilityArgsDict',
     'NodeTemplateServerBindingArgs',
@@ -5952,7 +5954,7 @@ if not MYPY:
         is only applicable for UDP or TCP protocol. Each entry must be
         either an integer or a range. If not specified, this rule
         applies to connections through any port.
-        Example inputs include: ["22"], ["80","443"], and
+        Example inputs include: [22], [80, 443], and
         ["12345-12349"].
         """
 elif False:
@@ -5972,7 +5974,7 @@ class FirewallAllowArgs:
                is only applicable for UDP or TCP protocol. Each entry must be
                either an integer or a range. If not specified, this rule
                applies to connections through any port.
-               Example inputs include: ["22"], ["80","443"], and
+               Example inputs include: [22], [80, 443], and
                ["12345-12349"].
         """
         pulumi.set(__self__, "protocol", protocol)
@@ -6002,7 +6004,7 @@ class FirewallAllowArgs:
         is only applicable for UDP or TCP protocol. Each entry must be
         either an integer or a range. If not specified, this rule
         applies to connections through any port.
-        Example inputs include: ["22"], ["80","443"], and
+        Example inputs include: [22], [80, 443], and
         ["12345-12349"].
         """
         return pulumi.get(self, "ports")
@@ -6027,7 +6029,7 @@ if not MYPY:
         is only applicable for UDP or TCP protocol. Each entry must be
         either an integer or a range. If not specified, this rule
         applies to connections through any port.
-        Example inputs include: ["22"], ["80","443"], and
+        Example inputs include: [22], [80, 443], and
         ["12345-12349"].
         """
 elif False:
@@ -6047,7 +6049,7 @@ class FirewallDenyArgs:
                is only applicable for UDP or TCP protocol. Each entry must be
                either an integer or a range. If not specified, this rule
                applies to connections through any port.
-               Example inputs include: ["22"], ["80","443"], and
+               Example inputs include: [22], [80, 443], and
                ["12345-12349"].
         """
         pulumi.set(__self__, "protocol", protocol)
@@ -6077,7 +6079,7 @@ class FirewallDenyArgs:
         is only applicable for UDP or TCP protocol. Each entry must be
         either an integer or a range. If not specified, this rule
         applies to connections through any port.
-        Example inputs include: ["22"], ["80","443"], and
+        Example inputs include: [22], [80, 443], and
         ["12345-12349"].
         """
         return pulumi.get(self, "ports")
@@ -8568,6 +8570,10 @@ if not MYPY:
         alongside the new instance. Either `initialize_params` or `source` must be set.
         Structure is documented below.
         """
+        interface: NotRequired[pulumi.Input[str]]
+        """
+        The disk interface used for attaching this disk. One of SCSI or NVME. (This field is shared with attached_disk and only used for specific cases, please don't specify this field without advice from Google.)
+        """
         kms_key_self_link: NotRequired[pulumi.Input[str]]
         """
         The self_link of the encryption key that is
@@ -8596,6 +8602,7 @@ class InstanceBootDiskArgs:
                  disk_encryption_key_raw: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key_sha256: Optional[pulumi.Input[str]] = None,
                  initialize_params: Optional[pulumi.Input['InstanceBootDiskInitializeParamsArgs']] = None,
+                 interface: Optional[pulumi.Input[str]] = None,
                  kms_key_self_link: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input[str]] = None):
@@ -8615,6 +8622,7 @@ class InstanceBootDiskArgs:
         :param pulumi.Input['InstanceBootDiskInitializeParamsArgs'] initialize_params: Parameters for a new disk that will be created
                alongside the new instance. Either `initialize_params` or `source` must be set.
                Structure is documented below.
+        :param pulumi.Input[str] interface: The disk interface used for attaching this disk. One of SCSI or NVME. (This field is shared with attached_disk and only used for specific cases, please don't specify this field without advice from Google.)
         :param pulumi.Input[str] kms_key_self_link: The self_link of the encryption key that is
                stored in Google Cloud KMS to encrypt this disk. Only one of `kms_key_self_link`
                and `disk_encryption_key_raw` may be set.
@@ -8634,6 +8642,8 @@ class InstanceBootDiskArgs:
             pulumi.set(__self__, "disk_encryption_key_sha256", disk_encryption_key_sha256)
         if initialize_params is not None:
             pulumi.set(__self__, "initialize_params", initialize_params)
+        if interface is not None:
+            pulumi.set(__self__, "interface", interface)
         if kms_key_self_link is not None:
             pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
         if mode is not None:
@@ -8710,6 +8720,18 @@ class InstanceBootDiskArgs:
     @initialize_params.setter
     def initialize_params(self, value: Optional[pulumi.Input['InstanceBootDiskInitializeParamsArgs']]):
         pulumi.set(self, "initialize_params", value)
+
+    @property
+    @pulumi.getter
+    def interface(self) -> Optional[pulumi.Input[str]]:
+        """
+        The disk interface used for attaching this disk. One of SCSI or NVME. (This field is shared with attached_disk and only used for specific cases, please don't specify this field without advice from Google.)
+        """
+        return pulumi.get(self, "interface")
+
+    @interface.setter
+    def interface(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "interface", value)
 
     @property
     @pulumi.getter(name="kmsKeySelfLink")
@@ -9300,6 +9322,10 @@ if not MYPY:
         """
         Parameters with which a disk was created alongside the instance.
         """
+        interface: NotRequired[pulumi.Input[str]]
+        """
+        The disk interface used for attaching this disk. One of SCSI or NVME. (This field is shared with attached_disk and only used for specific cases, please don't specify this field without advice from Google.)
+        """
         kms_key_self_link: NotRequired[pulumi.Input[str]]
         """
         The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
@@ -9323,6 +9349,7 @@ class InstanceFromMachineImageBootDiskArgs:
                  disk_encryption_key_raw: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key_sha256: Optional[pulumi.Input[str]] = None,
                  initialize_params: Optional[pulumi.Input['InstanceFromMachineImageBootDiskInitializeParamsArgs']] = None,
+                 interface: Optional[pulumi.Input[str]] = None,
                  kms_key_self_link: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input[str]] = None):
@@ -9332,6 +9359,7 @@ class InstanceFromMachineImageBootDiskArgs:
         :param pulumi.Input[str] disk_encryption_key_raw: A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
         :param pulumi.Input[str] disk_encryption_key_sha256: The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
         :param pulumi.Input['InstanceFromMachineImageBootDiskInitializeParamsArgs'] initialize_params: Parameters with which a disk was created alongside the instance.
+        :param pulumi.Input[str] interface: The disk interface used for attaching this disk. One of SCSI or NVME. (This field is shared with attached_disk and only used for specific cases, please don't specify this field without advice from Google.)
         :param pulumi.Input[str] kms_key_self_link: The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
         :param pulumi.Input[str] mode: Read/write mode for the disk. One of "READ_ONLY" or "READ_WRITE".
         :param pulumi.Input[str] source: The name or self_link of the disk attached to this instance.
@@ -9346,6 +9374,8 @@ class InstanceFromMachineImageBootDiskArgs:
             pulumi.set(__self__, "disk_encryption_key_sha256", disk_encryption_key_sha256)
         if initialize_params is not None:
             pulumi.set(__self__, "initialize_params", initialize_params)
+        if interface is not None:
+            pulumi.set(__self__, "interface", interface)
         if kms_key_self_link is not None:
             pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
         if mode is not None:
@@ -9412,6 +9442,18 @@ class InstanceFromMachineImageBootDiskArgs:
     @initialize_params.setter
     def initialize_params(self, value: Optional[pulumi.Input['InstanceFromMachineImageBootDiskInitializeParamsArgs']]):
         pulumi.set(self, "initialize_params", value)
+
+    @property
+    @pulumi.getter
+    def interface(self) -> Optional[pulumi.Input[str]]:
+        """
+        The disk interface used for attaching this disk. One of SCSI or NVME. (This field is shared with attached_disk and only used for specific cases, please don't specify this field without advice from Google.)
+        """
+        return pulumi.get(self, "interface")
+
+    @interface.setter
+    def interface(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "interface", value)
 
     @property
     @pulumi.getter(name="kmsKeySelfLink")
@@ -11386,6 +11428,10 @@ if not MYPY:
         """
         Parameters with which a disk was created alongside the instance.
         """
+        interface: NotRequired[pulumi.Input[str]]
+        """
+        The disk interface used for attaching this disk. One of SCSI or NVME. (This field is shared with attached_disk and only used for specific cases, please don't specify this field without advice from Google.)
+        """
         kms_key_self_link: NotRequired[pulumi.Input[str]]
         """
         The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
@@ -11409,6 +11455,7 @@ class InstanceFromTemplateBootDiskArgs:
                  disk_encryption_key_raw: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key_sha256: Optional[pulumi.Input[str]] = None,
                  initialize_params: Optional[pulumi.Input['InstanceFromTemplateBootDiskInitializeParamsArgs']] = None,
+                 interface: Optional[pulumi.Input[str]] = None,
                  kms_key_self_link: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input[str]] = None):
@@ -11418,6 +11465,7 @@ class InstanceFromTemplateBootDiskArgs:
         :param pulumi.Input[str] disk_encryption_key_raw: A 256-bit customer-supplied encryption key, encoded in RFC 4648 base64 to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
         :param pulumi.Input[str] disk_encryption_key_sha256: The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
         :param pulumi.Input['InstanceFromTemplateBootDiskInitializeParamsArgs'] initialize_params: Parameters with which a disk was created alongside the instance.
+        :param pulumi.Input[str] interface: The disk interface used for attaching this disk. One of SCSI or NVME. (This field is shared with attached_disk and only used for specific cases, please don't specify this field without advice from Google.)
         :param pulumi.Input[str] kms_key_self_link: The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
         :param pulumi.Input[str] mode: Read/write mode for the disk. One of "READ_ONLY" or "READ_WRITE".
         :param pulumi.Input[str] source: The name or self_link of the disk attached to this instance.
@@ -11432,6 +11480,8 @@ class InstanceFromTemplateBootDiskArgs:
             pulumi.set(__self__, "disk_encryption_key_sha256", disk_encryption_key_sha256)
         if initialize_params is not None:
             pulumi.set(__self__, "initialize_params", initialize_params)
+        if interface is not None:
+            pulumi.set(__self__, "interface", interface)
         if kms_key_self_link is not None:
             pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
         if mode is not None:
@@ -11498,6 +11548,18 @@ class InstanceFromTemplateBootDiskArgs:
     @initialize_params.setter
     def initialize_params(self, value: Optional[pulumi.Input['InstanceFromTemplateBootDiskInitializeParamsArgs']]):
         pulumi.set(self, "initialize_params", value)
+
+    @property
+    @pulumi.getter
+    def interface(self) -> Optional[pulumi.Input[str]]:
+        """
+        The disk interface used for attaching this disk. One of SCSI or NVME. (This field is shared with attached_disk and only used for specific cases, please don't specify this field without advice from Google.)
+        """
+        return pulumi.get(self, "interface")
+
+    @interface.setter
+    def interface(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "interface", value)
 
     @property
     @pulumi.getter(name="kmsKeySelfLink")
@@ -14649,7 +14711,7 @@ if not MYPY:
         subnetwork_project: NotRequired[pulumi.Input[str]]
         """
         The project in which the subnetwork belongs.
-        If the `subnetwork` is a self_link, this field is ignored in favor of the project
+        If the `subnetwork` is a self_link, this field is set to the project
         defined in the subnetwork self_link. If the `subnetwork` is a name and this
         field is not provided, the provider project is used.
         """
@@ -14707,7 +14769,7 @@ class InstanceNetworkInterfaceArgs:
                network is in auto subnet mode, specifying the subnetwork is optional. If the network is
                in custom subnet mode, specifying the subnetwork is required.
         :param pulumi.Input[str] subnetwork_project: The project in which the subnetwork belongs.
-               If the `subnetwork` is a self_link, this field is ignored in favor of the project
+               If the `subnetwork` is a self_link, this field is set to the project
                defined in the subnetwork self_link. If the `subnetwork` is a name and this
                field is not provided, the provider project is used.
         """
@@ -14944,7 +15006,7 @@ class InstanceNetworkInterfaceArgs:
     def subnetwork_project(self) -> Optional[pulumi.Input[str]]:
         """
         The project in which the subnetwork belongs.
-        If the `subnetwork` is a self_link, this field is ignored in favor of the project
+        If the `subnetwork` is a self_link, this field is set to the project
         defined in the subnetwork self_link. If the `subnetwork` is a name and this
         field is not provided, the provider project is used.
         """
@@ -20140,6 +20202,64 @@ class NodeGroupShareSettingsProjectMapArgs:
     @project_id.setter
     def project_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "project_id", value)
+
+
+if not MYPY:
+    class NodeTemplateAcceleratorArgsDict(TypedDict):
+        accelerator_count: NotRequired[pulumi.Input[int]]
+        """
+        The number of the guest accelerator cards exposed to this
+        node template.
+        """
+        accelerator_type: NotRequired[pulumi.Input[str]]
+        """
+        Full or partial URL of the accelerator type resource to expose
+        to this node template.
+        """
+elif False:
+    NodeTemplateAcceleratorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NodeTemplateAcceleratorArgs:
+    def __init__(__self__, *,
+                 accelerator_count: Optional[pulumi.Input[int]] = None,
+                 accelerator_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] accelerator_count: The number of the guest accelerator cards exposed to this
+               node template.
+        :param pulumi.Input[str] accelerator_type: Full or partial URL of the accelerator type resource to expose
+               to this node template.
+        """
+        if accelerator_count is not None:
+            pulumi.set(__self__, "accelerator_count", accelerator_count)
+        if accelerator_type is not None:
+            pulumi.set(__self__, "accelerator_type", accelerator_type)
+
+    @property
+    @pulumi.getter(name="acceleratorCount")
+    def accelerator_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of the guest accelerator cards exposed to this
+        node template.
+        """
+        return pulumi.get(self, "accelerator_count")
+
+    @accelerator_count.setter
+    def accelerator_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "accelerator_count", value)
+
+    @property
+    @pulumi.getter(name="acceleratorType")
+    def accelerator_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Full or partial URL of the accelerator type resource to expose
+        to this node template.
+        """
+        return pulumi.get(self, "accelerator_type")
+
+    @accelerator_type.setter
+    def accelerator_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "accelerator_type", value)
 
 
 if not MYPY:

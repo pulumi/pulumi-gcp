@@ -139,7 +139,7 @@ public final class DataStoreState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The industry vertical that the data store registers.
-     * Possible values are: `GENERIC`, `MEDIA`.
+     * Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
      * 
      */
     @Import(name="industryVertical")
@@ -147,7 +147,7 @@ public final class DataStoreState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The industry vertical that the data store registers.
-     * Possible values are: `GENERIC`, `MEDIA`.
+     * Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
      * 
      */
     public Optional<Output<String>> industryVertical() {
@@ -238,7 +238,7 @@ public final class DataStoreState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The solutions that the data store enrolls.
-     * Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`.
+     * Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`, `SOLUTION_TYPE_GENERATIVE_CHAT`.
      * 
      */
     @Import(name="solutionTypes")
@@ -246,7 +246,7 @@ public final class DataStoreState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The solutions that the data store enrolls.
-     * Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`.
+     * Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`, `SOLUTION_TYPE_GENERATIVE_CHAT`.
      * 
      */
     public Optional<Output<List<String>>> solutionTypes() {
@@ -452,7 +452,7 @@ public final class DataStoreState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param industryVertical The industry vertical that the data store registers.
-         * Possible values are: `GENERIC`, `MEDIA`.
+         * Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
          * 
          * @return builder
          * 
@@ -464,7 +464,7 @@ public final class DataStoreState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param industryVertical The industry vertical that the data store registers.
-         * Possible values are: `GENERIC`, `MEDIA`.
+         * Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
          * 
          * @return builder
          * 
@@ -581,7 +581,7 @@ public final class DataStoreState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param solutionTypes The solutions that the data store enrolls.
-         * Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`.
+         * Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`, `SOLUTION_TYPE_GENERATIVE_CHAT`.
          * 
          * @return builder
          * 
@@ -593,7 +593,7 @@ public final class DataStoreState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param solutionTypes The solutions that the data store enrolls.
-         * Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`.
+         * Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`, `SOLUTION_TYPE_GENERATIVE_CHAT`.
          * 
          * @return builder
          * 
@@ -604,7 +604,7 @@ public final class DataStoreState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param solutionTypes The solutions that the data store enrolls.
-         * Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`.
+         * Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`, `SOLUTION_TYPE_GENERATIVE_CHAT`.
          * 
          * @return builder
          * 

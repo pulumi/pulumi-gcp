@@ -415,6 +415,7 @@ namespace Pulumi.Gcp.PubSub
     ///             FilenameDatetimeFormat = "YYYY-MM-DD/hh_mm_ssZ",
     ///             MaxBytes = 1000,
     ///             MaxDuration = "300s",
+    ///             MaxMessages = 1000,
     ///         },
     ///     }, new CustomResourceOptions
     ///     {
@@ -470,9 +471,11 @@ namespace Pulumi.Gcp.PubSub
     ///             FilenameDatetimeFormat = "YYYY-MM-DD/hh_mm_ssZ",
     ///             MaxBytes = 1000,
     ///             MaxDuration = "300s",
+    ///             MaxMessages = 1000,
     ///             AvroConfig = new Gcp.PubSub.Inputs.SubscriptionCloudStorageConfigAvroConfigArgs
     ///             {
     ///                 WriteMetadata = true,
+    ///                 UseTopicSchema = true,
     ///             },
     ///         },
     ///     }, new CustomResourceOptions

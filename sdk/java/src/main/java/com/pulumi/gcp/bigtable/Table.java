@@ -75,6 +75,24 @@ import javax.annotation.Nullable;
  *                     .build(),
  *                 TableColumnFamilyArgs.builder()
  *                     .family("family-second")
+ *                     .type("intsum")
+ *                     .build(),
+ *                 TableColumnFamilyArgs.builder()
+ *                     .family("family-third")
+ *                     .type("""
+ *         {
+ * 					"aggregateType": {
+ * 						"max": {},
+ * 						"inputType": {
+ * 							"int64Type": {
+ * 								"encoding": {
+ * 									"bigEndianBytes": {}
+ * 								}
+ * 							}
+ * 						}
+ * 					}
+ * 				}
+ *                     """)
  *                     .build())
  *             .changeStreamRetention("24h0m0s")
  *             .automatedBackupPolicy(TableAutomatedBackupPolicyArgs.builder()

@@ -6,6 +6,8 @@ package com.pulumi.gcp.redis.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.redis.inputs.ClusterDiscoveryEndpointArgs;
+import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyArgs;
+import com.pulumi.gcp.redis.inputs.ClusterMaintenanceScheduleArgs;
 import com.pulumi.gcp.redis.inputs.ClusterPscConfigArgs;
 import com.pulumi.gcp.redis.inputs.ClusterPscConnectionArgs;
 import com.pulumi.gcp.redis.inputs.ClusterStateInfoArgs;
@@ -99,6 +101,38 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<ClusterDiscoveryEndpointArgs>>> discoveryEndpoints() {
         return Optional.ofNullable(this.discoveryEndpoints);
+    }
+
+    /**
+     * Maintenance policy for a cluster
+     * 
+     */
+    @Import(name="maintenancePolicy")
+    private @Nullable Output<ClusterMaintenancePolicyArgs> maintenancePolicy;
+
+    /**
+     * @return Maintenance policy for a cluster
+     * 
+     */
+    public Optional<Output<ClusterMaintenancePolicyArgs>> maintenancePolicy() {
+        return Optional.ofNullable(this.maintenancePolicy);
+    }
+
+    /**
+     * Upcoming maintenance schedule.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="maintenanceSchedules")
+    private @Nullable Output<List<ClusterMaintenanceScheduleArgs>> maintenanceSchedules;
+
+    /**
+     * @return Upcoming maintenance schedule.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<ClusterMaintenanceScheduleArgs>>> maintenanceSchedules() {
+        return Optional.ofNullable(this.maintenanceSchedules);
     }
 
     /**
@@ -362,6 +396,8 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.createTime = $.createTime;
         this.deletionProtectionEnabled = $.deletionProtectionEnabled;
         this.discoveryEndpoints = $.discoveryEndpoints;
+        this.maintenancePolicy = $.maintenancePolicy;
+        this.maintenanceSchedules = $.maintenanceSchedules;
         this.name = $.name;
         this.nodeType = $.nodeType;
         this.preciseSizeGb = $.preciseSizeGb;
@@ -509,6 +545,61 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder discoveryEndpoints(ClusterDiscoveryEndpointArgs... discoveryEndpoints) {
             return discoveryEndpoints(List.of(discoveryEndpoints));
+        }
+
+        /**
+         * @param maintenancePolicy Maintenance policy for a cluster
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenancePolicy(@Nullable Output<ClusterMaintenancePolicyArgs> maintenancePolicy) {
+            $.maintenancePolicy = maintenancePolicy;
+            return this;
+        }
+
+        /**
+         * @param maintenancePolicy Maintenance policy for a cluster
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenancePolicy(ClusterMaintenancePolicyArgs maintenancePolicy) {
+            return maintenancePolicy(Output.of(maintenancePolicy));
+        }
+
+        /**
+         * @param maintenanceSchedules Upcoming maintenance schedule.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenanceSchedules(@Nullable Output<List<ClusterMaintenanceScheduleArgs>> maintenanceSchedules) {
+            $.maintenanceSchedules = maintenanceSchedules;
+            return this;
+        }
+
+        /**
+         * @param maintenanceSchedules Upcoming maintenance schedule.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenanceSchedules(List<ClusterMaintenanceScheduleArgs> maintenanceSchedules) {
+            return maintenanceSchedules(Output.of(maintenanceSchedules));
+        }
+
+        /**
+         * @param maintenanceSchedules Upcoming maintenance schedule.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenanceSchedules(ClusterMaintenanceScheduleArgs... maintenanceSchedules) {
+            return maintenanceSchedules(List.of(maintenanceSchedules));
         }
 
         /**

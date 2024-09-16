@@ -1123,6 +1123,7 @@ class Subscription(pulumi.CustomResource):
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
+                "max_messages": 1000,
             },
             opts = pulumi.ResourceOptions(depends_on=[
                     example,
@@ -1155,8 +1156,10 @@ class Subscription(pulumi.CustomResource):
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
+                "max_messages": 1000,
                 "avro_config": {
                     "write_metadata": True,
+                    "use_topic_schema": True,
                 },
             },
             opts = pulumi.ResourceOptions(depends_on=[
@@ -1566,6 +1569,7 @@ class Subscription(pulumi.CustomResource):
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
+                "max_messages": 1000,
             },
             opts = pulumi.ResourceOptions(depends_on=[
                     example,
@@ -1598,8 +1602,10 @@ class Subscription(pulumi.CustomResource):
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
+                "max_messages": 1000,
                 "avro_config": {
                     "write_metadata": True,
+                    "use_topic_schema": True,
                 },
             },
             opts = pulumi.ResourceOptions(depends_on=[

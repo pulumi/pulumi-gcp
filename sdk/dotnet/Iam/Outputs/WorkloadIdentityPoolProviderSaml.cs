@@ -15,6 +15,8 @@ namespace Pulumi.Gcp.Iam.Outputs
     {
         /// <summary>
         /// SAML Identity provider configuration metadata xml doc.
+        /// 
+        /// &lt;a name="nested_x509"&gt;&lt;/a&gt;The `x509` block supports:
         /// </summary>
         public readonly string IdpMetadataXml;
 

@@ -578,7 +578,6 @@ import (
 //				Name:               pulumi.String("cloudrun-service"),
 //				Location:           pulumi.String("us-central1"),
 //				DeletionProtection: pulumi.Bool(false),
-//				LaunchStage:        pulumi.String("BETA"),
 //				Template: &cloudrunv2.ServiceTemplateArgs{
 //					ExecutionEnvironment: pulumi.String("EXECUTION_ENVIRONMENT_GEN2"),
 //					Containers: cloudrunv2.ServiceTemplateContainerArray{
@@ -651,7 +650,6 @@ import (
 //				Location:           pulumi.String("us-central1"),
 //				DeletionProtection: pulumi.Bool(false),
 //				Ingress:            pulumi.String("INGRESS_TRAFFIC_ALL"),
-//				LaunchStage:        pulumi.String("BETA"),
 //				Template: &cloudrunv2.ServiceTemplateArgs{
 //					ExecutionEnvironment: pulumi.String("EXECUTION_ENVIRONMENT_GEN2"),
 //					Containers: cloudrunv2.ServiceTemplateContainerArray{
@@ -687,6 +685,62 @@ import (
 //					},
 //				},
 //			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Cloudrunv2 Service Mesh
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi-time/sdk/go/time"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			mesh, err := networkservices.NewMesh(ctx, "mesh", &networkservices.MeshArgs{
+//				Name: pulumi.String("network-services-mesh"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			waitForMesh, err := time.NewSleep(ctx, "wait_for_mesh", &time.SleepArgs{
+//				CreateDuration: "1m",
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				mesh,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudrunv2.NewService(ctx, "default", &cloudrunv2.ServiceArgs{
+//				Name:               pulumi.String("cloudrun-service"),
+//				DeletionProtection: pulumi.Bool(false),
+//				Location:           pulumi.String("us-central1"),
+//				LaunchStage:        pulumi.String("BETA"),
+//				Template: &cloudrunv2.ServiceTemplateArgs{
+//					Containers: cloudrunv2.ServiceTemplateContainerArray{
+//						&cloudrunv2.ServiceTemplateContainerArgs{
+//							Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
+//						},
+//					},
+//					ServiceMesh: &cloudrunv2.ServiceTemplateServiceMeshArgs{
+//						Mesh: mesh.ID(),
+//					},
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				waitForMesh,
+//			}))
 //			if err != nil {
 //				return err
 //			}

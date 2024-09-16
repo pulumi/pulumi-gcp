@@ -269,6 +269,66 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Compute Health Check Http Source Regions
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const http_health_check_with_source_regions = new gcp.compute.HealthCheck("http-health-check-with-source-regions", {
+ *     name: "http-health-check",
+ *     checkIntervalSec: 30,
+ *     httpHealthCheck: {
+ *         port: 80,
+ *         portSpecification: "USE_FIXED_PORT",
+ *     },
+ *     sourceRegions: [
+ *         "us-west1",
+ *         "us-central1",
+ *         "us-east5",
+ *     ],
+ * });
+ * ```
+ * ### Compute Health Check Https Source Regions
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const https_health_check_with_source_regions = new gcp.compute.HealthCheck("https-health-check-with-source-regions", {
+ *     name: "https-health-check",
+ *     checkIntervalSec: 30,
+ *     httpsHealthCheck: {
+ *         port: 80,
+ *         portSpecification: "USE_FIXED_PORT",
+ *     },
+ *     sourceRegions: [
+ *         "us-west1",
+ *         "us-central1",
+ *         "us-east5",
+ *     ],
+ * });
+ * ```
+ * ### Compute Health Check Tcp Source Regions
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const tcp_health_check_with_source_regions = new gcp.compute.HealthCheck("tcp-health-check-with-source-regions", {
+ *     name: "tcp-health-check",
+ *     checkIntervalSec: 30,
+ *     tcpHealthCheck: {
+ *         port: 80,
+ *         portSpecification: "USE_FIXED_PORT",
+ *     },
+ *     sourceRegions: [
+ *         "us-west1",
+ *         "us-central1",
+ *         "us-east5",
+ *     ],
+ * });
+ * ```
  *
  * ## Import
  *

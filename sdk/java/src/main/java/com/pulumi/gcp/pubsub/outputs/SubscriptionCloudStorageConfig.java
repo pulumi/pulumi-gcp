@@ -54,6 +54,11 @@ public final class SubscriptionCloudStorageConfig {
      */
     private @Nullable String maxDuration;
     /**
+     * @return The maximum messages that can be written to a Cloud Storage file before a new file is created. Min 1000 messages.
+     * 
+     */
+    private @Nullable Integer maxMessages;
+    /**
      * @return The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
      * [service agent](https://cloud.google.com/iam/docs/service-agents),
      * service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com, is used.
@@ -122,6 +127,13 @@ public final class SubscriptionCloudStorageConfig {
         return Optional.ofNullable(this.maxDuration);
     }
     /**
+     * @return The maximum messages that can be written to a Cloud Storage file before a new file is created. Min 1000 messages.
+     * 
+     */
+    public Optional<Integer> maxMessages() {
+        return Optional.ofNullable(this.maxMessages);
+    }
+    /**
      * @return The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
      * [service agent](https://cloud.google.com/iam/docs/service-agents),
      * service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com, is used.
@@ -155,6 +167,7 @@ public final class SubscriptionCloudStorageConfig {
         private @Nullable String filenameSuffix;
         private @Nullable Integer maxBytes;
         private @Nullable String maxDuration;
+        private @Nullable Integer maxMessages;
         private @Nullable String serviceAccountEmail;
         private @Nullable String state;
         public Builder() {}
@@ -167,6 +180,7 @@ public final class SubscriptionCloudStorageConfig {
     	      this.filenameSuffix = defaults.filenameSuffix;
     	      this.maxBytes = defaults.maxBytes;
     	      this.maxDuration = defaults.maxDuration;
+    	      this.maxMessages = defaults.maxMessages;
     	      this.serviceAccountEmail = defaults.serviceAccountEmail;
     	      this.state = defaults.state;
         }
@@ -216,6 +230,12 @@ public final class SubscriptionCloudStorageConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder maxMessages(@Nullable Integer maxMessages) {
+
+            this.maxMessages = maxMessages;
+            return this;
+        }
+        @CustomType.Setter
         public Builder serviceAccountEmail(@Nullable String serviceAccountEmail) {
 
             this.serviceAccountEmail = serviceAccountEmail;
@@ -236,6 +256,7 @@ public final class SubscriptionCloudStorageConfig {
             _resultValue.filenameSuffix = filenameSuffix;
             _resultValue.maxBytes = maxBytes;
             _resultValue.maxDuration = maxDuration;
+            _resultValue.maxMessages = maxMessages;
             _resultValue.serviceAccountEmail = serviceAccountEmail;
             _resultValue.state = state;
             return _resultValue;

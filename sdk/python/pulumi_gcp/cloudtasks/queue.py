@@ -23,6 +23,7 @@ class QueueArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
                  app_engine_routing_override: Optional[pulumi.Input['QueueAppEngineRoutingOverrideArgs']] = None,
+                 http_target: Optional[pulumi.Input['QueueHttpTargetArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  rate_limits: Optional[pulumi.Input['QueueRateLimitsArgs']] = None,
@@ -36,6 +37,8 @@ class QueueArgs:
                - - -
         :param pulumi.Input['QueueAppEngineRoutingOverrideArgs'] app_engine_routing_override: Overrides for task-level appEngineRouting. These settings apply only
                to App Engine tasks in this queue
+               Structure is documented below.
+        :param pulumi.Input['QueueHttpTargetArgs'] http_target: Modifies HTTP target for HTTP tasks.
                Structure is documented below.
         :param pulumi.Input[str] name: The queue name.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -56,6 +59,8 @@ class QueueArgs:
         pulumi.set(__self__, "location", location)
         if app_engine_routing_override is not None:
             pulumi.set(__self__, "app_engine_routing_override", app_engine_routing_override)
+        if http_target is not None:
+            pulumi.set(__self__, "http_target", http_target)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -95,6 +100,19 @@ class QueueArgs:
     @app_engine_routing_override.setter
     def app_engine_routing_override(self, value: Optional[pulumi.Input['QueueAppEngineRoutingOverrideArgs']]):
         pulumi.set(self, "app_engine_routing_override", value)
+
+    @property
+    @pulumi.getter(name="httpTarget")
+    def http_target(self) -> Optional[pulumi.Input['QueueHttpTargetArgs']]:
+        """
+        Modifies HTTP target for HTTP tasks.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "http_target")
+
+    @http_target.setter
+    def http_target(self, value: Optional[pulumi.Input['QueueHttpTargetArgs']]):
+        pulumi.set(self, "http_target", value)
 
     @property
     @pulumi.getter
@@ -171,6 +189,7 @@ class QueueArgs:
 class _QueueState:
     def __init__(__self__, *,
                  app_engine_routing_override: Optional[pulumi.Input['QueueAppEngineRoutingOverrideArgs']] = None,
+                 http_target: Optional[pulumi.Input['QueueHttpTargetArgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -181,6 +200,8 @@ class _QueueState:
         Input properties used for looking up and filtering Queue resources.
         :param pulumi.Input['QueueAppEngineRoutingOverrideArgs'] app_engine_routing_override: Overrides for task-level appEngineRouting. These settings apply only
                to App Engine tasks in this queue
+               Structure is documented below.
+        :param pulumi.Input['QueueHttpTargetArgs'] http_target: Modifies HTTP target for HTTP tasks.
                Structure is documented below.
         :param pulumi.Input[str] location: The location of the queue
                
@@ -204,6 +225,8 @@ class _QueueState:
         """
         if app_engine_routing_override is not None:
             pulumi.set(__self__, "app_engine_routing_override", app_engine_routing_override)
+        if http_target is not None:
+            pulumi.set(__self__, "http_target", http_target)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if name is not None:
@@ -230,6 +253,19 @@ class _QueueState:
     @app_engine_routing_override.setter
     def app_engine_routing_override(self, value: Optional[pulumi.Input['QueueAppEngineRoutingOverrideArgs']]):
         pulumi.set(self, "app_engine_routing_override", value)
+
+    @property
+    @pulumi.getter(name="httpTarget")
+    def http_target(self) -> Optional[pulumi.Input['QueueHttpTargetArgs']]:
+        """
+        Modifies HTTP target for HTTP tasks.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "http_target")
+
+    @http_target.setter
+    def http_target(self, value: Optional[pulumi.Input['QueueHttpTargetArgs']]):
+        pulumi.set(self, "http_target", value)
 
     @property
     @pulumi.getter
@@ -323,6 +359,7 @@ class Queue(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_engine_routing_override: Optional[pulumi.Input[Union['QueueAppEngineRoutingOverrideArgs', 'QueueAppEngineRoutingOverrideArgsDict']]] = None,
+                 http_target: Optional[pulumi.Input[Union['QueueHttpTargetArgs', 'QueueHttpTargetArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -374,6 +411,98 @@ class Queue(pulumi.CustomResource):
                 "sampling_ratio": 0.9,
             })
         ```
+        ### Cloud Tasks Queue Http Target Oidc
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        oidc_service_account = gcp.serviceaccount.Account("oidc_service_account",
+            account_id="example-oidc",
+            display_name="Tasks Queue OIDC Service Account")
+        http_target_oidc = gcp.cloudtasks.Queue("http_target_oidc",
+            name="cloud-tasks-queue-http-target-oidc",
+            location="us-central1",
+            http_target={
+                "http_method": "POST",
+                "uri_override": {
+                    "scheme": "HTTPS",
+                    "host": "oidc.example.com",
+                    "port": "8443",
+                    "path_override": {
+                        "path": "/users/1234",
+                    },
+                    "query_override": {
+                        "query_params": "qparam1=123&qparam2=456",
+                    },
+                    "uri_override_enforce_mode": "IF_NOT_EXISTS",
+                },
+                "header_overrides": [
+                    {
+                        "header": {
+                            "key": "AddSomethingElse",
+                            "value": "MyOtherValue",
+                        },
+                    },
+                    {
+                        "header": {
+                            "key": "AddMe",
+                            "value": "MyValue",
+                        },
+                    },
+                ],
+                "oidc_token": {
+                    "service_account_email": oidc_service_account.email,
+                    "audience": "https://oidc.example.com",
+                },
+            })
+        ```
+        ### Cloud Tasks Queue Http Target Oauth
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        oauth_service_account = gcp.serviceaccount.Account("oauth_service_account",
+            account_id="example-oauth",
+            display_name="Tasks Queue OAuth Service Account")
+        http_target_oauth = gcp.cloudtasks.Queue("http_target_oauth",
+            name="cloud-tasks-queue-http-target-oauth",
+            location="us-central1",
+            http_target={
+                "http_method": "POST",
+                "uri_override": {
+                    "scheme": "HTTPS",
+                    "host": "oauth.example.com",
+                    "port": "8443",
+                    "path_override": {
+                        "path": "/users/1234",
+                    },
+                    "query_override": {
+                        "query_params": "qparam1=123&qparam2=456",
+                    },
+                    "uri_override_enforce_mode": "IF_NOT_EXISTS",
+                },
+                "header_overrides": [
+                    {
+                        "header": {
+                            "key": "AddSomethingElse",
+                            "value": "MyOtherValue",
+                        },
+                    },
+                    {
+                        "header": {
+                            "key": "AddMe",
+                            "value": "MyValue",
+                        },
+                    },
+                ],
+                "oauth_token": {
+                    "service_account_email": oauth_service_account.email,
+                    "scope": "openid https://www.googleapis.com/auth/userinfo.email",
+                },
+            })
+        ```
 
         ## Import
 
@@ -403,6 +532,8 @@ class Queue(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['QueueAppEngineRoutingOverrideArgs', 'QueueAppEngineRoutingOverrideArgsDict']] app_engine_routing_override: Overrides for task-level appEngineRouting. These settings apply only
                to App Engine tasks in this queue
+               Structure is documented below.
+        :param pulumi.Input[Union['QueueHttpTargetArgs', 'QueueHttpTargetArgsDict']] http_target: Modifies HTTP target for HTTP tasks.
                Structure is documented below.
         :param pulumi.Input[str] location: The location of the queue
                
@@ -474,6 +605,98 @@ class Queue(pulumi.CustomResource):
                 "sampling_ratio": 0.9,
             })
         ```
+        ### Cloud Tasks Queue Http Target Oidc
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        oidc_service_account = gcp.serviceaccount.Account("oidc_service_account",
+            account_id="example-oidc",
+            display_name="Tasks Queue OIDC Service Account")
+        http_target_oidc = gcp.cloudtasks.Queue("http_target_oidc",
+            name="cloud-tasks-queue-http-target-oidc",
+            location="us-central1",
+            http_target={
+                "http_method": "POST",
+                "uri_override": {
+                    "scheme": "HTTPS",
+                    "host": "oidc.example.com",
+                    "port": "8443",
+                    "path_override": {
+                        "path": "/users/1234",
+                    },
+                    "query_override": {
+                        "query_params": "qparam1=123&qparam2=456",
+                    },
+                    "uri_override_enforce_mode": "IF_NOT_EXISTS",
+                },
+                "header_overrides": [
+                    {
+                        "header": {
+                            "key": "AddSomethingElse",
+                            "value": "MyOtherValue",
+                        },
+                    },
+                    {
+                        "header": {
+                            "key": "AddMe",
+                            "value": "MyValue",
+                        },
+                    },
+                ],
+                "oidc_token": {
+                    "service_account_email": oidc_service_account.email,
+                    "audience": "https://oidc.example.com",
+                },
+            })
+        ```
+        ### Cloud Tasks Queue Http Target Oauth
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        oauth_service_account = gcp.serviceaccount.Account("oauth_service_account",
+            account_id="example-oauth",
+            display_name="Tasks Queue OAuth Service Account")
+        http_target_oauth = gcp.cloudtasks.Queue("http_target_oauth",
+            name="cloud-tasks-queue-http-target-oauth",
+            location="us-central1",
+            http_target={
+                "http_method": "POST",
+                "uri_override": {
+                    "scheme": "HTTPS",
+                    "host": "oauth.example.com",
+                    "port": "8443",
+                    "path_override": {
+                        "path": "/users/1234",
+                    },
+                    "query_override": {
+                        "query_params": "qparam1=123&qparam2=456",
+                    },
+                    "uri_override_enforce_mode": "IF_NOT_EXISTS",
+                },
+                "header_overrides": [
+                    {
+                        "header": {
+                            "key": "AddSomethingElse",
+                            "value": "MyOtherValue",
+                        },
+                    },
+                    {
+                        "header": {
+                            "key": "AddMe",
+                            "value": "MyValue",
+                        },
+                    },
+                ],
+                "oauth_token": {
+                    "service_account_email": oauth_service_account.email,
+                    "scope": "openid https://www.googleapis.com/auth/userinfo.email",
+                },
+            })
+        ```
 
         ## Import
 
@@ -515,6 +738,7 @@ class Queue(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_engine_routing_override: Optional[pulumi.Input[Union['QueueAppEngineRoutingOverrideArgs', 'QueueAppEngineRoutingOverrideArgsDict']]] = None,
+                 http_target: Optional[pulumi.Input[Union['QueueHttpTargetArgs', 'QueueHttpTargetArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -531,6 +755,7 @@ class Queue(pulumi.CustomResource):
             __props__ = QueueArgs.__new__(QueueArgs)
 
             __props__.__dict__["app_engine_routing_override"] = app_engine_routing_override
+            __props__.__dict__["http_target"] = http_target
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
@@ -550,6 +775,7 @@ class Queue(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             app_engine_routing_override: Optional[pulumi.Input[Union['QueueAppEngineRoutingOverrideArgs', 'QueueAppEngineRoutingOverrideArgsDict']]] = None,
+            http_target: Optional[pulumi.Input[Union['QueueHttpTargetArgs', 'QueueHttpTargetArgsDict']]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -565,6 +791,8 @@ class Queue(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['QueueAppEngineRoutingOverrideArgs', 'QueueAppEngineRoutingOverrideArgsDict']] app_engine_routing_override: Overrides for task-level appEngineRouting. These settings apply only
                to App Engine tasks in this queue
+               Structure is documented below.
+        :param pulumi.Input[Union['QueueHttpTargetArgs', 'QueueHttpTargetArgsDict']] http_target: Modifies HTTP target for HTTP tasks.
                Structure is documented below.
         :param pulumi.Input[str] location: The location of the queue
                
@@ -591,6 +819,7 @@ class Queue(pulumi.CustomResource):
         __props__ = _QueueState.__new__(_QueueState)
 
         __props__.__dict__["app_engine_routing_override"] = app_engine_routing_override
+        __props__.__dict__["http_target"] = http_target
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
@@ -608,6 +837,15 @@ class Queue(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "app_engine_routing_override")
+
+    @property
+    @pulumi.getter(name="httpTarget")
+    def http_target(self) -> pulumi.Output[Optional['outputs.QueueHttpTarget']]:
+        """
+        Modifies HTTP target for HTTP tasks.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "http_target")
 
     @property
     @pulumi.getter

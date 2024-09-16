@@ -261,7 +261,7 @@ type AttachedCluster struct {
 	ClusterRegion pulumi.StringOutput `pulumi:"clusterRegion"`
 	// Output only. The time at which this cluster was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Policy to determine what flags to send on delete.
+	// Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
 	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
 	// A human readable description of this attached cluster. Cannot be longer than 255 UTF-8 encoded bytes.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -379,7 +379,7 @@ type attachedClusterState struct {
 	ClusterRegion *string `pulumi:"clusterRegion"`
 	// Output only. The time at which this cluster was created.
 	CreateTime *string `pulumi:"createTime"`
-	// Policy to determine what flags to send on delete.
+	// Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A human readable description of this attached cluster. Cannot be longer than 255 UTF-8 encoded bytes.
 	Description *string `pulumi:"description"`
@@ -453,7 +453,7 @@ type AttachedClusterState struct {
 	ClusterRegion pulumi.StringPtrInput
 	// Output only. The time at which this cluster was created.
 	CreateTime pulumi.StringPtrInput
-	// Policy to determine what flags to send on delete.
+	// Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
 	DeletionPolicy pulumi.StringPtrInput
 	// A human readable description of this attached cluster. Cannot be longer than 255 UTF-8 encoded bytes.
 	Description pulumi.StringPtrInput
@@ -525,7 +525,7 @@ type attachedClusterArgs struct {
 	Authorization *AttachedClusterAuthorization `pulumi:"authorization"`
 	// Binary Authorization configuration.
 	BinaryAuthorization *AttachedClusterBinaryAuthorization `pulumi:"binaryAuthorization"`
-	// Policy to determine what flags to send on delete.
+	// Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A human readable description of this attached cluster. Cannot be longer than 255 UTF-8 encoded bytes.
 	Description *string `pulumi:"description"`
@@ -575,7 +575,7 @@ type AttachedClusterArgs struct {
 	Authorization AttachedClusterAuthorizationPtrInput
 	// Binary Authorization configuration.
 	BinaryAuthorization AttachedClusterBinaryAuthorizationPtrInput
-	// Policy to determine what flags to send on delete.
+	// Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
 	DeletionPolicy pulumi.StringPtrInput
 	// A human readable description of this attached cluster. Cannot be longer than 255 UTF-8 encoded bytes.
 	Description pulumi.StringPtrInput
@@ -731,7 +731,7 @@ func (o AttachedClusterOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AttachedCluster) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Policy to determine what flags to send on delete.
+// Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
 func (o AttachedClusterOutput) DeletionPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AttachedCluster) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
 }

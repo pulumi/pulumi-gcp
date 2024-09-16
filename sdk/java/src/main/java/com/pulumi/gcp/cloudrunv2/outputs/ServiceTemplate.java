@@ -6,6 +6,7 @@ package com.pulumi.gcp.cloudrunv2.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateContainer;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateScaling;
+import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateServiceMesh;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateVolume;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateVpcAccess;
 import java.lang.Boolean;
@@ -74,6 +75,12 @@ public final class ServiceTemplate {
      * 
      */
     private @Nullable String serviceAccount;
+    /**
+     * @return Enables Cloud Service Mesh for this Revision.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable ServiceTemplateServiceMesh serviceMesh;
     /**
      * @return Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
      * 
@@ -173,6 +180,14 @@ public final class ServiceTemplate {
         return Optional.ofNullable(this.serviceAccount);
     }
     /**
+     * @return Enables Cloud Service Mesh for this Revision.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<ServiceTemplateServiceMesh> serviceMesh() {
+        return Optional.ofNullable(this.serviceMesh);
+    }
+    /**
      * @return Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
      * 
      */
@@ -222,6 +237,7 @@ public final class ServiceTemplate {
         private @Nullable String revision;
         private @Nullable ServiceTemplateScaling scaling;
         private @Nullable String serviceAccount;
+        private @Nullable ServiceTemplateServiceMesh serviceMesh;
         private @Nullable Boolean sessionAffinity;
         private @Nullable String timeout;
         private @Nullable List<ServiceTemplateVolume> volumes;
@@ -238,6 +254,7 @@ public final class ServiceTemplate {
     	      this.revision = defaults.revision;
     	      this.scaling = defaults.scaling;
     	      this.serviceAccount = defaults.serviceAccount;
+    	      this.serviceMesh = defaults.serviceMesh;
     	      this.sessionAffinity = defaults.sessionAffinity;
     	      this.timeout = defaults.timeout;
     	      this.volumes = defaults.volumes;
@@ -302,6 +319,12 @@ public final class ServiceTemplate {
             return this;
         }
         @CustomType.Setter
+        public Builder serviceMesh(@Nullable ServiceTemplateServiceMesh serviceMesh) {
+
+            this.serviceMesh = serviceMesh;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sessionAffinity(@Nullable Boolean sessionAffinity) {
 
             this.sessionAffinity = sessionAffinity;
@@ -339,6 +362,7 @@ public final class ServiceTemplate {
             _resultValue.revision = revision;
             _resultValue.scaling = scaling;
             _resultValue.serviceAccount = serviceAccount;
+            _resultValue.serviceMesh = serviceMesh;
             _resultValue.sessionAffinity = sessionAffinity;
             _resultValue.timeout = timeout;
             _resultValue.volumes = volumes;

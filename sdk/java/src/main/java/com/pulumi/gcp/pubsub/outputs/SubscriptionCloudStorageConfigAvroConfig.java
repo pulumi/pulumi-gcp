@@ -12,12 +12,24 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SubscriptionCloudStorageConfigAvroConfig {
     /**
+     * @return When true, the output Cloud Storage file will be serialized using the topic schema, if it exists.
+     * 
+     */
+    private @Nullable Boolean useTopicSchema;
+    /**
      * @return When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output.
      * 
      */
     private @Nullable Boolean writeMetadata;
 
     private SubscriptionCloudStorageConfigAvroConfig() {}
+    /**
+     * @return When true, the output Cloud Storage file will be serialized using the topic schema, if it exists.
+     * 
+     */
+    public Optional<Boolean> useTopicSchema() {
+        return Optional.ofNullable(this.useTopicSchema);
+    }
     /**
      * @return When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output.
      * 
@@ -35,13 +47,21 @@ public final class SubscriptionCloudStorageConfigAvroConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean useTopicSchema;
         private @Nullable Boolean writeMetadata;
         public Builder() {}
         public Builder(SubscriptionCloudStorageConfigAvroConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.useTopicSchema = defaults.useTopicSchema;
     	      this.writeMetadata = defaults.writeMetadata;
         }
 
+        @CustomType.Setter
+        public Builder useTopicSchema(@Nullable Boolean useTopicSchema) {
+
+            this.useTopicSchema = useTopicSchema;
+            return this;
+        }
         @CustomType.Setter
         public Builder writeMetadata(@Nullable Boolean writeMetadata) {
 
@@ -50,6 +70,7 @@ public final class SubscriptionCloudStorageConfigAvroConfig {
         }
         public SubscriptionCloudStorageConfigAvroConfig build() {
             final var _resultValue = new SubscriptionCloudStorageConfigAvroConfig();
+            _resultValue.useTopicSchema = useTopicSchema;
             _resultValue.writeMetadata = writeMetadata;
             return _resultValue;
         }

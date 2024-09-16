@@ -86,6 +86,21 @@ public final class ClusterNodeConfigKubeletConfigArgs extends com.pulumi.resourc
     }
 
     /**
+     * Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+     * 
+     */
+    @Import(name="insecureKubeletReadonlyPortEnabled")
+    private @Nullable Output<String> insecureKubeletReadonlyPortEnabled;
+
+    /**
+     * @return Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+     * 
+     */
+    public Optional<Output<String>> insecureKubeletReadonlyPortEnabled() {
+        return Optional.ofNullable(this.insecureKubeletReadonlyPortEnabled);
+    }
+
+    /**
      * Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
      * 
      */
@@ -106,6 +121,7 @@ public final class ClusterNodeConfigKubeletConfigArgs extends com.pulumi.resourc
         this.cpuCfsQuota = $.cpuCfsQuota;
         this.cpuCfsQuotaPeriod = $.cpuCfsQuotaPeriod;
         this.cpuManagerPolicy = $.cpuManagerPolicy;
+        this.insecureKubeletReadonlyPortEnabled = $.insecureKubeletReadonlyPortEnabled;
         this.podPidsLimit = $.podPidsLimit;
     }
 
@@ -210,6 +226,27 @@ public final class ClusterNodeConfigKubeletConfigArgs extends com.pulumi.resourc
          */
         public Builder cpuManagerPolicy(String cpuManagerPolicy) {
             return cpuManagerPolicy(Output.of(cpuManagerPolicy));
+        }
+
+        /**
+         * @param insecureKubeletReadonlyPortEnabled Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder insecureKubeletReadonlyPortEnabled(@Nullable Output<String> insecureKubeletReadonlyPortEnabled) {
+            $.insecureKubeletReadonlyPortEnabled = insecureKubeletReadonlyPortEnabled;
+            return this;
+        }
+
+        /**
+         * @param insecureKubeletReadonlyPortEnabled Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder insecureKubeletReadonlyPortEnabled(String insecureKubeletReadonlyPortEnabled) {
+            return insecureKubeletReadonlyPortEnabled(Output.of(insecureKubeletReadonlyPortEnabled));
         }
 
         /**

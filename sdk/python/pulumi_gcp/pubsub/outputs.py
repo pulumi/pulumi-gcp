@@ -453,6 +453,8 @@ class SubscriptionCloudStorageConfig(dict):
             suggest = "max_bytes"
         elif key == "maxDuration":
             suggest = "max_duration"
+        elif key == "maxMessages":
+            suggest = "max_messages"
         elif key == "serviceAccountEmail":
             suggest = "service_account_email"
 
@@ -475,6 +477,7 @@ class SubscriptionCloudStorageConfig(dict):
                  filename_suffix: Optional[str] = None,
                  max_bytes: Optional[int] = None,
                  max_duration: Optional[str] = None,
+                 max_messages: Optional[int] = None,
                  service_account_email: Optional[str] = None,
                  state: Optional[str] = None):
         """
@@ -489,6 +492,7 @@ class SubscriptionCloudStorageConfig(dict):
         :param str max_duration: The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes.
                May not exceed the subscription's acknowledgement deadline.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        :param int max_messages: The maximum messages that can be written to a Cloud Storage file before a new file is created. Min 1000 messages.
         :param str service_account_email: The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
                [service agent](https://cloud.google.com/iam/docs/service-agents),
                service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
@@ -508,6 +512,8 @@ class SubscriptionCloudStorageConfig(dict):
             pulumi.set(__self__, "max_bytes", max_bytes)
         if max_duration is not None:
             pulumi.set(__self__, "max_duration", max_duration)
+        if max_messages is not None:
+            pulumi.set(__self__, "max_messages", max_messages)
         if service_account_email is not None:
             pulumi.set(__self__, "service_account_email", service_account_email)
         if state is not None:
@@ -574,6 +580,14 @@ class SubscriptionCloudStorageConfig(dict):
         return pulumi.get(self, "max_duration")
 
     @property
+    @pulumi.getter(name="maxMessages")
+    def max_messages(self) -> Optional[int]:
+        """
+        The maximum messages that can be written to a Cloud Storage file before a new file is created. Min 1000 messages.
+        """
+        return pulumi.get(self, "max_messages")
+
+    @property
     @pulumi.getter(name="serviceAccountEmail")
     def service_account_email(self) -> Optional[str]:
         """
@@ -598,7 +612,9 @@ class SubscriptionCloudStorageConfigAvroConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "writeMetadata":
+        if key == "useTopicSchema":
+            suggest = "use_topic_schema"
+        elif key == "writeMetadata":
             suggest = "write_metadata"
 
         if suggest:
@@ -613,12 +629,24 @@ class SubscriptionCloudStorageConfigAvroConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 use_topic_schema: Optional[bool] = None,
                  write_metadata: Optional[bool] = None):
         """
+        :param bool use_topic_schema: When true, the output Cloud Storage file will be serialized using the topic schema, if it exists.
         :param bool write_metadata: When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output.
         """
+        if use_topic_schema is not None:
+            pulumi.set(__self__, "use_topic_schema", use_topic_schema)
         if write_metadata is not None:
             pulumi.set(__self__, "write_metadata", write_metadata)
+
+    @property
+    @pulumi.getter(name="useTopicSchema")
+    def use_topic_schema(self) -> Optional[bool]:
+        """
+        When true, the output Cloud Storage file will be serialized using the topic schema, if it exists.
+        """
+        return pulumi.get(self, "use_topic_schema")
 
     @property
     @pulumi.getter(name="writeMetadata")
@@ -1428,6 +1456,7 @@ class GetSubscriptionCloudStorageConfigResult(dict):
                  filename_suffix: str,
                  max_bytes: int,
                  max_duration: str,
+                 max_messages: int,
                  service_account_email: str,
                  state: str):
         """
@@ -1441,6 +1470,7 @@ class GetSubscriptionCloudStorageConfigResult(dict):
         :param str max_duration: The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes.
                May not exceed the subscription's acknowledgement deadline.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        :param int max_messages: The maximum messages that can be written to a Cloud Storage file before a new file is created. Min 1000 messages.
         :param str service_account_email: The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
                [service agent](https://cloud.google.com/iam/docs/service-agents),
                service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
@@ -1453,6 +1483,7 @@ class GetSubscriptionCloudStorageConfigResult(dict):
         pulumi.set(__self__, "filename_suffix", filename_suffix)
         pulumi.set(__self__, "max_bytes", max_bytes)
         pulumi.set(__self__, "max_duration", max_duration)
+        pulumi.set(__self__, "max_messages", max_messages)
         pulumi.set(__self__, "service_account_email", service_account_email)
         pulumi.set(__self__, "state", state)
 
@@ -1516,6 +1547,14 @@ class GetSubscriptionCloudStorageConfigResult(dict):
         return pulumi.get(self, "max_duration")
 
     @property
+    @pulumi.getter(name="maxMessages")
+    def max_messages(self) -> int:
+        """
+        The maximum messages that can be written to a Cloud Storage file before a new file is created. Min 1000 messages.
+        """
+        return pulumi.get(self, "max_messages")
+
+    @property
     @pulumi.getter(name="serviceAccountEmail")
     def service_account_email(self) -> str:
         """
@@ -1537,11 +1576,22 @@ class GetSubscriptionCloudStorageConfigResult(dict):
 @pulumi.output_type
 class GetSubscriptionCloudStorageConfigAvroConfigResult(dict):
     def __init__(__self__, *,
+                 use_topic_schema: bool,
                  write_metadata: bool):
         """
+        :param bool use_topic_schema: When true, the output Cloud Storage file will be serialized using the topic schema, if it exists.
         :param bool write_metadata: When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output.
         """
+        pulumi.set(__self__, "use_topic_schema", use_topic_schema)
         pulumi.set(__self__, "write_metadata", write_metadata)
+
+    @property
+    @pulumi.getter(name="useTopicSchema")
+    def use_topic_schema(self) -> bool:
+        """
+        When true, the output Cloud Storage file will be serialized using the topic schema, if it exists.
+        """
+        return pulumi.get(self, "use_topic_schema")
 
     @property
     @pulumi.getter(name="writeMetadata")

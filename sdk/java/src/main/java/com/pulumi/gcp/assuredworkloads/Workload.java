@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *             .provisionedResourcesParent("folders/519620126891")
  *             .resourceSettings(            
  *                 WorkloadResourceSettingArgs.builder()
- *                     .displayName("folder-display-name")
+ *                     .displayName("{{name}}")
  *                     .resourceType("CONSUMER_FOLDER")
  *                     .build(),
  *                 WorkloadResourceSettingArgs.builder()
@@ -145,6 +145,66 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Split_billing_partner_workload
+ * A Split billing partner test of the assuredworkloads api
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.assuredworkloads.Workload;
+ * import com.pulumi.gcp.assuredworkloads.WorkloadArgs;
+ * import com.pulumi.gcp.assuredworkloads.inputs.WorkloadPartnerPermissionsArgs;
+ * import com.pulumi.gcp.assuredworkloads.inputs.WorkloadResourceSettingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var primary = new Workload("primary", WorkloadArgs.builder()
+ *             .complianceRegime("ASSURED_WORKLOADS_FOR_PARTNERS")
+ *             .displayName("display")
+ *             .location("europe-west8")
+ *             .organization("123456789")
+ *             .billingAccount("billingAccounts/000000-0000000-0000000-000000")
+ *             .partner("SOVEREIGN_CONTROLS_BY_PSN")
+ *             .partnerPermissions(WorkloadPartnerPermissionsArgs.builder()
+ *                 .assuredWorkloadsMonitoring(true)
+ *                 .dataLogsViewer(true)
+ *                 .serviceAccessApprover(true)
+ *                 .build())
+ *             .partnerServicesBillingAccount("billingAccounts/01BF3F-2C6DE5-30C607")
+ *             .resourceSettings(            
+ *                 WorkloadResourceSettingArgs.builder()
+ *                     .resourceType("CONSUMER_FOLDER")
+ *                     .build(),
+ *                 WorkloadResourceSettingArgs.builder()
+ *                     .resourceType("ENCRYPTION_KEYS_PROJECT")
+ *                     .build(),
+ *                 WorkloadResourceSettingArgs.builder()
+ *                     .resourceId("ring")
+ *                     .resourceType("KEYRING")
+ *                     .build())
+ *             .violationNotificationsEnabled(true)
+ *             .labels(Map.of("label-one", "value-one"))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -182,14 +242,14 @@ public class Workload extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.billingAccount);
     }
     /**
-     * Required. Immutable. Compliance Regime associated with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED, IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS, HIPAA, HITRUST, EU_REGIONS_AND_SUPPORT, CA_REGIONS_AND_SUPPORT, ITAR, AU_REGIONS_AND_US_SUPPORT, ASSURED_WORKLOADS_FOR_PARTNERS, ISR_REGIONS, ISR_REGIONS_AND_SUPPORT, CA_PROTECTED_B, IL5, IL2, JP_REGIONS_AND_SUPPORT
+     * Required. Immutable. Compliance Regime associated with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED, IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS, HIPAA, HITRUST, EU_REGIONS_AND_SUPPORT, CA_REGIONS_AND_SUPPORT, ITAR, AU_REGIONS_AND_US_SUPPORT, ASSURED_WORKLOADS_FOR_PARTNERS, ISR_REGIONS, ISR_REGIONS_AND_SUPPORT, CA_PROTECTED_B, IL5, IL2, JP_REGIONS_AND_SUPPORT, KSA_REGIONS_AND_SUPPORT_WITH_SOVEREIGNTY_CONTROLS, REGIONAL_CONTROLS
      * 
      */
     @Export(name="complianceRegime", refs={String.class}, tree="[0]")
     private Output<String> complianceRegime;
 
     /**
-     * @return Required. Immutable. Compliance Regime associated with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED, IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS, HIPAA, HITRUST, EU_REGIONS_AND_SUPPORT, CA_REGIONS_AND_SUPPORT, ITAR, AU_REGIONS_AND_US_SUPPORT, ASSURED_WORKLOADS_FOR_PARTNERS, ISR_REGIONS, ISR_REGIONS_AND_SUPPORT, CA_PROTECTED_B, IL5, IL2, JP_REGIONS_AND_SUPPORT
+     * @return Required. Immutable. Compliance Regime associated with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED, IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS, HIPAA, HITRUST, EU_REGIONS_AND_SUPPORT, CA_REGIONS_AND_SUPPORT, ITAR, AU_REGIONS_AND_US_SUPPORT, ASSURED_WORKLOADS_FOR_PARTNERS, ISR_REGIONS, ISR_REGIONS_AND_SUPPORT, CA_PROTECTED_B, IL5, IL2, JP_REGIONS_AND_SUPPORT, KSA_REGIONS_AND_SUPPORT_WITH_SOVEREIGNTY_CONTROLS, REGIONAL_CONTROLS
      * 
      */
     public Output<String> complianceRegime() {
@@ -388,14 +448,14 @@ public class Workload extends com.pulumi.resources.CustomResource {
         return this.organization;
     }
     /**
-     * Optional. Partner regime associated with this workload. Possible values: PARTNER_UNSPECIFIED, LOCAL_CONTROLS_BY_S3NS, SOVEREIGN_CONTROLS_BY_T_SYSTEMS, SOVEREIGN_CONTROLS_BY_SIA_MINSAIT, SOVEREIGN_CONTROLS_BY_PSN
+     * Optional. Partner regime associated with this workload. Possible values: PARTNER_UNSPECIFIED, LOCAL_CONTROLS_BY_S3NS, SOVEREIGN_CONTROLS_BY_T_SYSTEMS, SOVEREIGN_CONTROLS_BY_SIA_MINSAIT, SOVEREIGN_CONTROLS_BY_PSN, SOVEREIGN_CONTROLS_BY_CNTXT, SOVEREIGN_CONTROLS_BY_CNTXT_NO_EKM
      * 
      */
     @Export(name="partner", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> partner;
 
     /**
-     * @return Optional. Partner regime associated with this workload. Possible values: PARTNER_UNSPECIFIED, LOCAL_CONTROLS_BY_S3NS, SOVEREIGN_CONTROLS_BY_T_SYSTEMS, SOVEREIGN_CONTROLS_BY_SIA_MINSAIT, SOVEREIGN_CONTROLS_BY_PSN
+     * @return Optional. Partner regime associated with this workload. Possible values: PARTNER_UNSPECIFIED, LOCAL_CONTROLS_BY_S3NS, SOVEREIGN_CONTROLS_BY_T_SYSTEMS, SOVEREIGN_CONTROLS_BY_SIA_MINSAIT, SOVEREIGN_CONTROLS_BY_PSN, SOVEREIGN_CONTROLS_BY_CNTXT, SOVEREIGN_CONTROLS_BY_CNTXT_NO_EKM
      * 
      */
     public Output<Optional<String>> partner() {
@@ -414,6 +474,20 @@ public class Workload extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<WorkloadPartnerPermissions>> partnerPermissions() {
         return Codegen.optional(this.partnerPermissions);
+    }
+    /**
+     * Optional. Input only. Billing account necessary for purchasing services from Sovereign Partners. This field is required for creating SIA/PSN/CNTXT partner workloads. The caller should have &#39;billing.resourceAssociations.create&#39; IAM permission on this billing-account. The format of this string is billingAccounts/AAAAAA-BBBBBB-CCCCCC.
+     * 
+     */
+    @Export(name="partnerServicesBillingAccount", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> partnerServicesBillingAccount;
+
+    /**
+     * @return Optional. Input only. Billing account necessary for purchasing services from Sovereign Partners. This field is required for creating SIA/PSN/CNTXT partner workloads. The caller should have &#39;billing.resourceAssociations.create&#39; IAM permission on this billing-account. The format of this string is billingAccounts/AAAAAA-BBBBBB-CCCCCC.
+     * 
+     */
+    public Output<Optional<String>> partnerServicesBillingAccount() {
+        return Codegen.optional(this.partnerServicesBillingAccount);
     }
     /**
      * Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}

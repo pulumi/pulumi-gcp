@@ -29,6 +29,28 @@ namespace Pulumi.Gcp.Projects
     /// [the official documentation](https://cloud.google.com/iam/docs/granting-changing-revoking-access)
     /// and
     /// [API reference](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var targetProject = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var foo = new Gcp.Projects.IamMemberRemove("foo", new()
+    ///     {
+    ///         Role = "roles/editor",
+    ///         Project = targetProjectGoogleProject.ProjectId,
+    ///         Member = $"serviceAccount:{targetProjectGoogleProject.Number}-compute@developer.gserviceaccount.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [GcpResourceType("gcp:projects/iamMemberRemove:IamMemberRemove")]
     public partial class IamMemberRemove : global::Pulumi.CustomResource

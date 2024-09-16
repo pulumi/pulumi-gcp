@@ -233,6 +233,7 @@ export class Cluster extends pulumi.CustomResource {
      * Policy to determine if the cluster should be deleted forcefully.
      * Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
      * Deleting a Secondary cluster with a secondary instance REQUIRES setting deletionPolicy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+     * Possible values: DEFAULT, FORCE
      */
     public readonly deletionPolicy!: pulumi.Output<string | undefined>;
     /**
@@ -337,6 +338,16 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
+     * The subscrition type of cluster.
+     * Possible values are: `TRIAL`, `STANDARD`.
+     */
+    public readonly subscriptionType!: pulumi.Output<string>;
+    /**
+     * Contains information and all metadata related to TRIAL clusters.
+     * Structure is documented below.
+     */
+    public /*out*/ readonly trialMetadatas!: pulumi.Output<outputs.alloydb.ClusterTrialMetadata[]>;
+    /**
      * The system-generated UID of the resource.
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
@@ -384,6 +395,8 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["restoreContinuousBackupSource"] = state ? state.restoreContinuousBackupSource : undefined;
             resourceInputs["secondaryConfig"] = state ? state.secondaryConfig : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["subscriptionType"] = state ? state.subscriptionType : undefined;
+            resourceInputs["trialMetadatas"] = state ? state.trialMetadatas : undefined;
             resourceInputs["uid"] = state ? state.uid : undefined;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
@@ -413,6 +426,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["restoreBackupSource"] = args ? args.restoreBackupSource : undefined;
             resourceInputs["restoreContinuousBackupSource"] = args ? args.restoreContinuousBackupSource : undefined;
             resourceInputs["secondaryConfig"] = args ? args.secondaryConfig : undefined;
+            resourceInputs["subscriptionType"] = args ? args.subscriptionType : undefined;
             resourceInputs["backupSources"] = undefined /*out*/;
             resourceInputs["continuousBackupInfos"] = undefined /*out*/;
             resourceInputs["effectiveAnnotations"] = undefined /*out*/;
@@ -423,6 +437,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["reconciling"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["trialMetadatas"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -483,6 +498,7 @@ export interface ClusterState {
      * Policy to determine if the cluster should be deleted forcefully.
      * Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
      * Deleting a Secondary cluster with a secondary instance REQUIRES setting deletionPolicy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+     * Possible values: DEFAULT, FORCE
      */
     deletionPolicy?: pulumi.Input<string>;
     /**
@@ -587,6 +603,16 @@ export interface ClusterState {
      */
     state?: pulumi.Input<string>;
     /**
+     * The subscrition type of cluster.
+     * Possible values are: `TRIAL`, `STANDARD`.
+     */
+    subscriptionType?: pulumi.Input<string>;
+    /**
+     * Contains information and all metadata related to TRIAL clusters.
+     * Structure is documented below.
+     */
+    trialMetadatas?: pulumi.Input<pulumi.Input<inputs.alloydb.ClusterTrialMetadata>[]>;
+    /**
      * The system-generated UID of the resource.
      */
     uid?: pulumi.Input<string>;
@@ -633,6 +659,7 @@ export interface ClusterArgs {
      * Policy to determine if the cluster should be deleted forcefully.
      * Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
      * Deleting a Secondary cluster with a secondary instance REQUIRES setting deletionPolicy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+     * Possible values: DEFAULT, FORCE
      */
     deletionPolicy?: pulumi.Input<string>;
     /**
@@ -701,4 +728,9 @@ export interface ClusterArgs {
      * Structure is documented below.
      */
     secondaryConfig?: pulumi.Input<inputs.alloydb.ClusterSecondaryConfig>;
+    /**
+     * The subscrition type of cluster.
+     * Possible values are: `TRIAL`, `STANDARD`.
+     */
+    subscriptionType?: pulumi.Input<string>;
 }

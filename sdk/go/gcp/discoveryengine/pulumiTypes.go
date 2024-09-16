@@ -596,6 +596,9 @@ func (o ChatEngineCommonConfigPtrOutput) CompanyName() pulumi.StringPtrOutput {
 }
 
 type DataStoreDocumentProcessingConfig struct {
+	// Whether chunking mode is enabled.
+	// Structure is documented below.
+	ChunkingConfig *DataStoreDocumentProcessingConfigChunkingConfig `pulumi:"chunkingConfig"`
 	// Configurations for default Document parser. If not specified, this resource
 	// will be configured to use a default DigitalParsingConfig, and the default parsing
 	// config will be applied to all file types for Document parsing.
@@ -621,6 +624,9 @@ type DataStoreDocumentProcessingConfigInput interface {
 }
 
 type DataStoreDocumentProcessingConfigArgs struct {
+	// Whether chunking mode is enabled.
+	// Structure is documented below.
+	ChunkingConfig DataStoreDocumentProcessingConfigChunkingConfigPtrInput `pulumi:"chunkingConfig"`
 	// Configurations for default Document parser. If not specified, this resource
 	// will be configured to use a default DigitalParsingConfig, and the default parsing
 	// config will be applied to all file types for Document parsing.
@@ -711,6 +717,14 @@ func (o DataStoreDocumentProcessingConfigOutput) ToDataStoreDocumentProcessingCo
 	}).(DataStoreDocumentProcessingConfigPtrOutput)
 }
 
+// Whether chunking mode is enabled.
+// Structure is documented below.
+func (o DataStoreDocumentProcessingConfigOutput) ChunkingConfig() DataStoreDocumentProcessingConfigChunkingConfigPtrOutput {
+	return o.ApplyT(func(v DataStoreDocumentProcessingConfig) *DataStoreDocumentProcessingConfigChunkingConfig {
+		return v.ChunkingConfig
+	}).(DataStoreDocumentProcessingConfigChunkingConfigPtrOutput)
+}
+
 // Configurations for default Document parser. If not specified, this resource
 // will be configured to use a default DigitalParsingConfig, and the default parsing
 // config will be applied to all file types for Document parsing.
@@ -759,6 +773,17 @@ func (o DataStoreDocumentProcessingConfigPtrOutput) Elem() DataStoreDocumentProc
 	}).(DataStoreDocumentProcessingConfigOutput)
 }
 
+// Whether chunking mode is enabled.
+// Structure is documented below.
+func (o DataStoreDocumentProcessingConfigPtrOutput) ChunkingConfig() DataStoreDocumentProcessingConfigChunkingConfigPtrOutput {
+	return o.ApplyT(func(v *DataStoreDocumentProcessingConfig) *DataStoreDocumentProcessingConfigChunkingConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ChunkingConfig
+	}).(DataStoreDocumentProcessingConfigChunkingConfigPtrOutput)
+}
+
 // Configurations for default Document parser. If not specified, this resource
 // will be configured to use a default DigitalParsingConfig, and the default parsing
 // config will be applied to all file types for Document parsing.
@@ -794,9 +819,322 @@ func (o DataStoreDocumentProcessingConfigPtrOutput) ParsingConfigOverrides() Dat
 	}).(DataStoreDocumentProcessingConfigParsingConfigOverrideArrayOutput)
 }
 
+type DataStoreDocumentProcessingConfigChunkingConfig struct {
+	// Configuration for the layout based chunking.
+	// Structure is documented below.
+	LayoutBasedChunkingConfig *DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig `pulumi:"layoutBasedChunkingConfig"`
+}
+
+// DataStoreDocumentProcessingConfigChunkingConfigInput is an input type that accepts DataStoreDocumentProcessingConfigChunkingConfigArgs and DataStoreDocumentProcessingConfigChunkingConfigOutput values.
+// You can construct a concrete instance of `DataStoreDocumentProcessingConfigChunkingConfigInput` via:
+//
+//	DataStoreDocumentProcessingConfigChunkingConfigArgs{...}
+type DataStoreDocumentProcessingConfigChunkingConfigInput interface {
+	pulumi.Input
+
+	ToDataStoreDocumentProcessingConfigChunkingConfigOutput() DataStoreDocumentProcessingConfigChunkingConfigOutput
+	ToDataStoreDocumentProcessingConfigChunkingConfigOutputWithContext(context.Context) DataStoreDocumentProcessingConfigChunkingConfigOutput
+}
+
+type DataStoreDocumentProcessingConfigChunkingConfigArgs struct {
+	// Configuration for the layout based chunking.
+	// Structure is documented below.
+	LayoutBasedChunkingConfig DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtrInput `pulumi:"layoutBasedChunkingConfig"`
+}
+
+func (DataStoreDocumentProcessingConfigChunkingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataStoreDocumentProcessingConfigChunkingConfig)(nil)).Elem()
+}
+
+func (i DataStoreDocumentProcessingConfigChunkingConfigArgs) ToDataStoreDocumentProcessingConfigChunkingConfigOutput() DataStoreDocumentProcessingConfigChunkingConfigOutput {
+	return i.ToDataStoreDocumentProcessingConfigChunkingConfigOutputWithContext(context.Background())
+}
+
+func (i DataStoreDocumentProcessingConfigChunkingConfigArgs) ToDataStoreDocumentProcessingConfigChunkingConfigOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigChunkingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataStoreDocumentProcessingConfigChunkingConfigOutput)
+}
+
+func (i DataStoreDocumentProcessingConfigChunkingConfigArgs) ToDataStoreDocumentProcessingConfigChunkingConfigPtrOutput() DataStoreDocumentProcessingConfigChunkingConfigPtrOutput {
+	return i.ToDataStoreDocumentProcessingConfigChunkingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DataStoreDocumentProcessingConfigChunkingConfigArgs) ToDataStoreDocumentProcessingConfigChunkingConfigPtrOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigChunkingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataStoreDocumentProcessingConfigChunkingConfigOutput).ToDataStoreDocumentProcessingConfigChunkingConfigPtrOutputWithContext(ctx)
+}
+
+// DataStoreDocumentProcessingConfigChunkingConfigPtrInput is an input type that accepts DataStoreDocumentProcessingConfigChunkingConfigArgs, DataStoreDocumentProcessingConfigChunkingConfigPtr and DataStoreDocumentProcessingConfigChunkingConfigPtrOutput values.
+// You can construct a concrete instance of `DataStoreDocumentProcessingConfigChunkingConfigPtrInput` via:
+//
+//	        DataStoreDocumentProcessingConfigChunkingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataStoreDocumentProcessingConfigChunkingConfigPtrInput interface {
+	pulumi.Input
+
+	ToDataStoreDocumentProcessingConfigChunkingConfigPtrOutput() DataStoreDocumentProcessingConfigChunkingConfigPtrOutput
+	ToDataStoreDocumentProcessingConfigChunkingConfigPtrOutputWithContext(context.Context) DataStoreDocumentProcessingConfigChunkingConfigPtrOutput
+}
+
+type dataStoreDocumentProcessingConfigChunkingConfigPtrType DataStoreDocumentProcessingConfigChunkingConfigArgs
+
+func DataStoreDocumentProcessingConfigChunkingConfigPtr(v *DataStoreDocumentProcessingConfigChunkingConfigArgs) DataStoreDocumentProcessingConfigChunkingConfigPtrInput {
+	return (*dataStoreDocumentProcessingConfigChunkingConfigPtrType)(v)
+}
+
+func (*dataStoreDocumentProcessingConfigChunkingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataStoreDocumentProcessingConfigChunkingConfig)(nil)).Elem()
+}
+
+func (i *dataStoreDocumentProcessingConfigChunkingConfigPtrType) ToDataStoreDocumentProcessingConfigChunkingConfigPtrOutput() DataStoreDocumentProcessingConfigChunkingConfigPtrOutput {
+	return i.ToDataStoreDocumentProcessingConfigChunkingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *dataStoreDocumentProcessingConfigChunkingConfigPtrType) ToDataStoreDocumentProcessingConfigChunkingConfigPtrOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigChunkingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataStoreDocumentProcessingConfigChunkingConfigPtrOutput)
+}
+
+type DataStoreDocumentProcessingConfigChunkingConfigOutput struct{ *pulumi.OutputState }
+
+func (DataStoreDocumentProcessingConfigChunkingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataStoreDocumentProcessingConfigChunkingConfig)(nil)).Elem()
+}
+
+func (o DataStoreDocumentProcessingConfigChunkingConfigOutput) ToDataStoreDocumentProcessingConfigChunkingConfigOutput() DataStoreDocumentProcessingConfigChunkingConfigOutput {
+	return o
+}
+
+func (o DataStoreDocumentProcessingConfigChunkingConfigOutput) ToDataStoreDocumentProcessingConfigChunkingConfigOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigChunkingConfigOutput {
+	return o
+}
+
+func (o DataStoreDocumentProcessingConfigChunkingConfigOutput) ToDataStoreDocumentProcessingConfigChunkingConfigPtrOutput() DataStoreDocumentProcessingConfigChunkingConfigPtrOutput {
+	return o.ToDataStoreDocumentProcessingConfigChunkingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DataStoreDocumentProcessingConfigChunkingConfigOutput) ToDataStoreDocumentProcessingConfigChunkingConfigPtrOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigChunkingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataStoreDocumentProcessingConfigChunkingConfig) *DataStoreDocumentProcessingConfigChunkingConfig {
+		return &v
+	}).(DataStoreDocumentProcessingConfigChunkingConfigPtrOutput)
+}
+
+// Configuration for the layout based chunking.
+// Structure is documented below.
+func (o DataStoreDocumentProcessingConfigChunkingConfigOutput) LayoutBasedChunkingConfig() DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtrOutput {
+	return o.ApplyT(func(v DataStoreDocumentProcessingConfigChunkingConfig) *DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig {
+		return v.LayoutBasedChunkingConfig
+	}).(DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtrOutput)
+}
+
+type DataStoreDocumentProcessingConfigChunkingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DataStoreDocumentProcessingConfigChunkingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataStoreDocumentProcessingConfigChunkingConfig)(nil)).Elem()
+}
+
+func (o DataStoreDocumentProcessingConfigChunkingConfigPtrOutput) ToDataStoreDocumentProcessingConfigChunkingConfigPtrOutput() DataStoreDocumentProcessingConfigChunkingConfigPtrOutput {
+	return o
+}
+
+func (o DataStoreDocumentProcessingConfigChunkingConfigPtrOutput) ToDataStoreDocumentProcessingConfigChunkingConfigPtrOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigChunkingConfigPtrOutput {
+	return o
+}
+
+func (o DataStoreDocumentProcessingConfigChunkingConfigPtrOutput) Elem() DataStoreDocumentProcessingConfigChunkingConfigOutput {
+	return o.ApplyT(func(v *DataStoreDocumentProcessingConfigChunkingConfig) DataStoreDocumentProcessingConfigChunkingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DataStoreDocumentProcessingConfigChunkingConfig
+		return ret
+	}).(DataStoreDocumentProcessingConfigChunkingConfigOutput)
+}
+
+// Configuration for the layout based chunking.
+// Structure is documented below.
+func (o DataStoreDocumentProcessingConfigChunkingConfigPtrOutput) LayoutBasedChunkingConfig() DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtrOutput {
+	return o.ApplyT(func(v *DataStoreDocumentProcessingConfigChunkingConfig) *DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig {
+		if v == nil {
+			return nil
+		}
+		return v.LayoutBasedChunkingConfig
+	}).(DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtrOutput)
+}
+
+type DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig struct {
+	// The token size limit for each chunk.
+	// Supported values: 100-500 (inclusive). Default value: 500.
+	ChunkSize *int `pulumi:"chunkSize"`
+	// Whether to include appending different levels of headings to chunks from the middle of the document to prevent context loss.
+	// Default value: False.
+	IncludeAncestorHeadings *bool `pulumi:"includeAncestorHeadings"`
+}
+
+// DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigInput is an input type that accepts DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigArgs and DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigOutput values.
+// You can construct a concrete instance of `DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigInput` via:
+//
+//	DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigArgs{...}
+type DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigInput interface {
+	pulumi.Input
+
+	ToDataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigOutput() DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigOutput
+	ToDataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigOutputWithContext(context.Context) DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigOutput
+}
+
+type DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigArgs struct {
+	// The token size limit for each chunk.
+	// Supported values: 100-500 (inclusive). Default value: 500.
+	ChunkSize pulumi.IntPtrInput `pulumi:"chunkSize"`
+	// Whether to include appending different levels of headings to chunks from the middle of the document to prevent context loss.
+	// Default value: False.
+	IncludeAncestorHeadings pulumi.BoolPtrInput `pulumi:"includeAncestorHeadings"`
+}
+
+func (DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig)(nil)).Elem()
+}
+
+func (i DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigArgs) ToDataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigOutput() DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigOutput {
+	return i.ToDataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigOutputWithContext(context.Background())
+}
+
+func (i DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigArgs) ToDataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigOutput)
+}
+
+func (i DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigArgs) ToDataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtrOutput() DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtrOutput {
+	return i.ToDataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigArgs) ToDataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtrOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigOutput).ToDataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtrOutputWithContext(ctx)
+}
+
+// DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtrInput is an input type that accepts DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigArgs, DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtr and DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtrOutput values.
+// You can construct a concrete instance of `DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtrInput` via:
+//
+//	        DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtrInput interface {
+	pulumi.Input
+
+	ToDataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtrOutput() DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtrOutput
+	ToDataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtrOutputWithContext(context.Context) DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtrOutput
+}
+
+type dataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtrType DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigArgs
+
+func DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtr(v *DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigArgs) DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtrInput {
+	return (*dataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtrType)(v)
+}
+
+func (*dataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig)(nil)).Elem()
+}
+
+func (i *dataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtrType) ToDataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtrOutput() DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtrOutput {
+	return i.ToDataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *dataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtrType) ToDataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtrOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtrOutput)
+}
+
+type DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigOutput struct{ *pulumi.OutputState }
+
+func (DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig)(nil)).Elem()
+}
+
+func (o DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigOutput) ToDataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigOutput() DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigOutput {
+	return o
+}
+
+func (o DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigOutput) ToDataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigOutput {
+	return o
+}
+
+func (o DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigOutput) ToDataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtrOutput() DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtrOutput {
+	return o.ToDataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigOutput) ToDataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtrOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig) *DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig {
+		return &v
+	}).(DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtrOutput)
+}
+
+// The token size limit for each chunk.
+// Supported values: 100-500 (inclusive). Default value: 500.
+func (o DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigOutput) ChunkSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig) *int {
+		return v.ChunkSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whether to include appending different levels of headings to chunks from the middle of the document to prevent context loss.
+// Default value: False.
+func (o DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigOutput) IncludeAncestorHeadings() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig) *bool {
+		return v.IncludeAncestorHeadings
+	}).(pulumi.BoolPtrOutput)
+}
+
+type DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig)(nil)).Elem()
+}
+
+func (o DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtrOutput) ToDataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtrOutput() DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtrOutput {
+	return o
+}
+
+func (o DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtrOutput) ToDataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtrOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtrOutput {
+	return o
+}
+
+func (o DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtrOutput) Elem() DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigOutput {
+	return o.ApplyT(func(v *DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig) DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig
+		return ret
+	}).(DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigOutput)
+}
+
+// The token size limit for each chunk.
+// Supported values: 100-500 (inclusive). Default value: 500.
+func (o DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtrOutput) ChunkSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ChunkSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whether to include appending different levels of headings to chunks from the middle of the document to prevent context loss.
+// Default value: False.
+func (o DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtrOutput) IncludeAncestorHeadings() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeAncestorHeadings
+	}).(pulumi.BoolPtrOutput)
+}
+
 type DataStoreDocumentProcessingConfigDefaultParsingConfig struct {
 	// Configurations applied to digital parser.
 	DigitalParsingConfig *DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfig `pulumi:"digitalParsingConfig"`
+	// Configurations applied to layout parser.
+	LayoutParsingConfig *DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig `pulumi:"layoutParsingConfig"`
 	// Configurations applied to OCR parser. Currently it only applies to PDFs.
 	// Structure is documented below.
 	OcrParsingConfig *DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfig `pulumi:"ocrParsingConfig"`
@@ -816,6 +1154,8 @@ type DataStoreDocumentProcessingConfigDefaultParsingConfigInput interface {
 type DataStoreDocumentProcessingConfigDefaultParsingConfigArgs struct {
 	// Configurations applied to digital parser.
 	DigitalParsingConfig DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrInput `pulumi:"digitalParsingConfig"`
+	// Configurations applied to layout parser.
+	LayoutParsingConfig DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrInput `pulumi:"layoutParsingConfig"`
 	// Configurations applied to OCR parser. Currently it only applies to PDFs.
 	// Structure is documented below.
 	OcrParsingConfig DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrInput `pulumi:"ocrParsingConfig"`
@@ -905,6 +1245,13 @@ func (o DataStoreDocumentProcessingConfigDefaultParsingConfigOutput) DigitalPars
 	}).(DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrOutput)
 }
 
+// Configurations applied to layout parser.
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigOutput) LayoutParsingConfig() DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutput {
+	return o.ApplyT(func(v DataStoreDocumentProcessingConfigDefaultParsingConfig) *DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig {
+		return v.LayoutParsingConfig
+	}).(DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutput)
+}
+
 // Configurations applied to OCR parser. Currently it only applies to PDFs.
 // Structure is documented below.
 func (o DataStoreDocumentProcessingConfigDefaultParsingConfigOutput) OcrParsingConfig() DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrOutput {
@@ -945,6 +1292,16 @@ func (o DataStoreDocumentProcessingConfigDefaultParsingConfigPtrOutput) DigitalP
 		}
 		return v.DigitalParsingConfig
 	}).(DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrOutput)
+}
+
+// Configurations applied to layout parser.
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigPtrOutput) LayoutParsingConfig() DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutput {
+	return o.ApplyT(func(v *DataStoreDocumentProcessingConfigDefaultParsingConfig) *DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig {
+		if v == nil {
+			return nil
+		}
+		return v.LayoutParsingConfig
+	}).(DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutput)
 }
 
 // Configurations applied to OCR parser. Currently it only applies to PDFs.
@@ -1074,6 +1431,124 @@ func (o DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfi
 		var ret DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfig
 		return ret
 	}).(DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigOutput)
+}
+
+type DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig struct {
+}
+
+// DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigInput is an input type that accepts DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigArgs and DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigOutput values.
+// You can construct a concrete instance of `DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigInput` via:
+//
+//	DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigArgs{...}
+type DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigInput interface {
+	pulumi.Input
+
+	ToDataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigOutput() DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigOutput
+	ToDataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigOutputWithContext(context.Context) DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigOutput
+}
+
+type DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigArgs struct {
+}
+
+func (DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig)(nil)).Elem()
+}
+
+func (i DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigArgs) ToDataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigOutput() DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigOutput {
+	return i.ToDataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigOutputWithContext(context.Background())
+}
+
+func (i DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigArgs) ToDataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigOutput)
+}
+
+func (i DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigArgs) ToDataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutput() DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutput {
+	return i.ToDataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigArgs) ToDataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigOutput).ToDataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutputWithContext(ctx)
+}
+
+// DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrInput is an input type that accepts DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigArgs, DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtr and DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutput values.
+// You can construct a concrete instance of `DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrInput` via:
+//
+//	        DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrInput interface {
+	pulumi.Input
+
+	ToDataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutput() DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutput
+	ToDataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutputWithContext(context.Context) DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutput
+}
+
+type dataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrType DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigArgs
+
+func DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtr(v *DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigArgs) DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrInput {
+	return (*dataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrType)(v)
+}
+
+func (*dataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig)(nil)).Elem()
+}
+
+func (i *dataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrType) ToDataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutput() DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutput {
+	return i.ToDataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *dataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrType) ToDataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutput)
+}
+
+type DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigOutput struct{ *pulumi.OutputState }
+
+func (DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig)(nil)).Elem()
+}
+
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigOutput) ToDataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigOutput() DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigOutput {
+	return o
+}
+
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigOutput) ToDataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigOutput {
+	return o
+}
+
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigOutput) ToDataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutput() DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutput {
+	return o.ToDataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigOutput) ToDataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig) *DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig {
+		return &v
+	}).(DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutput)
+}
+
+type DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig)(nil)).Elem()
+}
+
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutput) ToDataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutput() DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutput {
+	return o
+}
+
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutput) ToDataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutput {
+	return o
+}
+
+func (o DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutput) Elem() DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigOutput {
+	return o.ApplyT(func(v *DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig) DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig
+		return ret
+	}).(DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigOutput)
 }
 
 type DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfig struct {
@@ -1220,6 +1695,8 @@ type DataStoreDocumentProcessingConfigParsingConfigOverride struct {
 	DigitalParsingConfig *DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfig `pulumi:"digitalParsingConfig"`
 	// The identifier for this object. Format specified above.
 	FileType string `pulumi:"fileType"`
+	// Configurations applied to layout parser.
+	LayoutParsingConfig *DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig `pulumi:"layoutParsingConfig"`
 	// Configurations applied to OCR parser. Currently it only applies to PDFs.
 	// Structure is documented below.
 	OcrParsingConfig *DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig `pulumi:"ocrParsingConfig"`
@@ -1241,6 +1718,8 @@ type DataStoreDocumentProcessingConfigParsingConfigOverrideArgs struct {
 	DigitalParsingConfig DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtrInput `pulumi:"digitalParsingConfig"`
 	// The identifier for this object. Format specified above.
 	FileType pulumi.StringInput `pulumi:"fileType"`
+	// Configurations applied to layout parser.
+	LayoutParsingConfig DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrInput `pulumi:"layoutParsingConfig"`
 	// Configurations applied to OCR parser. Currently it only applies to PDFs.
 	// Structure is documented below.
 	OcrParsingConfig DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrInput `pulumi:"ocrParsingConfig"`
@@ -1307,6 +1786,13 @@ func (o DataStoreDocumentProcessingConfigParsingConfigOverrideOutput) DigitalPar
 // The identifier for this object. Format specified above.
 func (o DataStoreDocumentProcessingConfigParsingConfigOverrideOutput) FileType() pulumi.StringOutput {
 	return o.ApplyT(func(v DataStoreDocumentProcessingConfigParsingConfigOverride) string { return v.FileType }).(pulumi.StringOutput)
+}
+
+// Configurations applied to layout parser.
+func (o DataStoreDocumentProcessingConfigParsingConfigOverrideOutput) LayoutParsingConfig() DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutput {
+	return o.ApplyT(func(v DataStoreDocumentProcessingConfigParsingConfigOverride) *DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig {
+		return v.LayoutParsingConfig
+	}).(DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutput)
 }
 
 // Configurations applied to OCR parser. Currently it only applies to PDFs.
@@ -1453,6 +1939,124 @@ func (o DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConf
 		var ret DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfig
 		return ret
 	}).(DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigOutput)
+}
+
+type DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig struct {
+}
+
+// DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigInput is an input type that accepts DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigArgs and DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigOutput values.
+// You can construct a concrete instance of `DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigInput` via:
+//
+//	DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigArgs{...}
+type DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigInput interface {
+	pulumi.Input
+
+	ToDataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigOutput() DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigOutput
+	ToDataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigOutputWithContext(context.Context) DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigOutput
+}
+
+type DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigArgs struct {
+}
+
+func (DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig)(nil)).Elem()
+}
+
+func (i DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigArgs) ToDataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigOutput() DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigOutput {
+	return i.ToDataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigOutputWithContext(context.Background())
+}
+
+func (i DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigArgs) ToDataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigOutput)
+}
+
+func (i DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigArgs) ToDataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutput() DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutput {
+	return i.ToDataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigArgs) ToDataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigOutput).ToDataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutputWithContext(ctx)
+}
+
+// DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrInput is an input type that accepts DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigArgs, DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtr and DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutput values.
+// You can construct a concrete instance of `DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrInput` via:
+//
+//	        DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrInput interface {
+	pulumi.Input
+
+	ToDataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutput() DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutput
+	ToDataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutputWithContext(context.Context) DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutput
+}
+
+type dataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrType DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigArgs
+
+func DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtr(v *DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigArgs) DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrInput {
+	return (*dataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrType)(v)
+}
+
+func (*dataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig)(nil)).Elem()
+}
+
+func (i *dataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrType) ToDataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutput() DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutput {
+	return i.ToDataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *dataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrType) ToDataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutput)
+}
+
+type DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigOutput struct{ *pulumi.OutputState }
+
+func (DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig)(nil)).Elem()
+}
+
+func (o DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigOutput) ToDataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigOutput() DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigOutput {
+	return o
+}
+
+func (o DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigOutput) ToDataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigOutput {
+	return o
+}
+
+func (o DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigOutput) ToDataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutput() DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutput {
+	return o.ToDataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigOutput) ToDataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig) *DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig {
+		return &v
+	}).(DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutput)
+}
+
+type DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig)(nil)).Elem()
+}
+
+func (o DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutput) ToDataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutput() DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutput {
+	return o
+}
+
+func (o DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutput) ToDataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutputWithContext(ctx context.Context) DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutput {
+	return o
+}
+
+func (o DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutput) Elem() DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigOutput {
+	return o.ApplyT(func(v *DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig) DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig
+		return ret
+	}).(DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigOutput)
 }
 
 type DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig struct {
@@ -1918,16 +2522,24 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ChatEngineCommonConfigPtrInput)(nil)).Elem(), ChatEngineCommonConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigInput)(nil)).Elem(), DataStoreDocumentProcessingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigPtrInput)(nil)).Elem(), DataStoreDocumentProcessingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigChunkingConfigInput)(nil)).Elem(), DataStoreDocumentProcessingConfigChunkingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigChunkingConfigPtrInput)(nil)).Elem(), DataStoreDocumentProcessingConfigChunkingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigInput)(nil)).Elem(), DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtrInput)(nil)).Elem(), DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigDefaultParsingConfigInput)(nil)).Elem(), DataStoreDocumentProcessingConfigDefaultParsingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigDefaultParsingConfigPtrInput)(nil)).Elem(), DataStoreDocumentProcessingConfigDefaultParsingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigInput)(nil)).Elem(), DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrInput)(nil)).Elem(), DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigInput)(nil)).Elem(), DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrInput)(nil)).Elem(), DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigInput)(nil)).Elem(), DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrInput)(nil)).Elem(), DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigParsingConfigOverrideInput)(nil)).Elem(), DataStoreDocumentProcessingConfigParsingConfigOverrideArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigParsingConfigOverrideArrayInput)(nil)).Elem(), DataStoreDocumentProcessingConfigParsingConfigOverrideArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigInput)(nil)).Elem(), DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtrInput)(nil)).Elem(), DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigInput)(nil)).Elem(), DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrInput)(nil)).Elem(), DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigInput)(nil)).Elem(), DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrInput)(nil)).Elem(), DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SearchEngineCommonConfigInput)(nil)).Elem(), SearchEngineCommonConfigArgs{})
@@ -1944,16 +2556,24 @@ func init() {
 	pulumi.RegisterOutputType(ChatEngineCommonConfigPtrOutput{})
 	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigOutput{})
 	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigPtrOutput{})
+	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigChunkingConfigOutput{})
+	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigChunkingConfigPtrOutput{})
+	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigOutput{})
+	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigPtrOutput{})
 	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigDefaultParsingConfigOutput{})
 	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigDefaultParsingConfigPtrOutput{})
 	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigOutput{})
 	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigPtrOutput{})
+	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigOutput{})
+	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigPtrOutput{})
 	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigOutput{})
 	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigPtrOutput{})
 	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigParsingConfigOverrideOutput{})
 	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigParsingConfigOverrideArrayOutput{})
 	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigOutput{})
 	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigPtrOutput{})
+	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigOutput{})
+	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigPtrOutput{})
 	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigOutput{})
 	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigPtrOutput{})
 	pulumi.RegisterOutputType(SearchEngineCommonConfigOutput{})

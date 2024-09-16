@@ -6,8 +6,12 @@ package com.pulumi.gcp.bigqueryanalyticshub.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingBigqueryDatasetSelectedResourceArgs;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ListingBigqueryDatasetArgs extends com.pulumi.resources.ResourceArgs {
@@ -17,8 +21,6 @@ public final class ListingBigqueryDatasetArgs extends com.pulumi.resources.Resou
     /**
      * Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
      * 
-     * ***
-     * 
      */
     @Import(name="dataset", required=true)
     private Output<String> dataset;
@@ -26,17 +28,33 @@ public final class ListingBigqueryDatasetArgs extends com.pulumi.resources.Resou
     /**
      * @return Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
      * 
-     * ***
-     * 
      */
     public Output<String> dataset() {
         return this.dataset;
+    }
+
+    /**
+     * Resource in this dataset that is selectively shared. This field is required for data clean room exchanges.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="selectedResources")
+    private @Nullable Output<List<ListingBigqueryDatasetSelectedResourceArgs>> selectedResources;
+
+    /**
+     * @return Resource in this dataset that is selectively shared. This field is required for data clean room exchanges.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<ListingBigqueryDatasetSelectedResourceArgs>>> selectedResources() {
+        return Optional.ofNullable(this.selectedResources);
     }
 
     private ListingBigqueryDatasetArgs() {}
 
     private ListingBigqueryDatasetArgs(ListingBigqueryDatasetArgs $) {
         this.dataset = $.dataset;
+        this.selectedResources = $.selectedResources;
     }
 
     public static Builder builder() {
@@ -60,8 +78,6 @@ public final class ListingBigqueryDatasetArgs extends com.pulumi.resources.Resou
         /**
          * @param dataset Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -73,13 +89,45 @@ public final class ListingBigqueryDatasetArgs extends com.pulumi.resources.Resou
         /**
          * @param dataset Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
         public Builder dataset(String dataset) {
             return dataset(Output.of(dataset));
+        }
+
+        /**
+         * @param selectedResources Resource in this dataset that is selectively shared. This field is required for data clean room exchanges.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder selectedResources(@Nullable Output<List<ListingBigqueryDatasetSelectedResourceArgs>> selectedResources) {
+            $.selectedResources = selectedResources;
+            return this;
+        }
+
+        /**
+         * @param selectedResources Resource in this dataset that is selectively shared. This field is required for data clean room exchanges.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder selectedResources(List<ListingBigqueryDatasetSelectedResourceArgs> selectedResources) {
+            return selectedResources(Output.of(selectedResources));
+        }
+
+        /**
+         * @param selectedResources Resource in this dataset that is selectively shared. This field is required for data clean room exchanges.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder selectedResources(ListingBigqueryDatasetSelectedResourceArgs... selectedResources) {
+            return selectedResources(List.of(selectedResources));
         }
 
         public ListingBigqueryDatasetArgs build() {

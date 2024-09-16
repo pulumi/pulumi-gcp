@@ -40,6 +40,30 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// 
     /// });
     /// ```
+    /// ### Bigquery Analyticshub Data Exchange Dcr
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var dataExchange = new Gcp.BigQueryAnalyticsHub.DataExchange("data_exchange", new()
+    ///     {
+    ///         Location = "US",
+    ///         DataExchangeId = "dcr_data_exchange",
+    ///         DisplayName = "dcr_data_exchange",
+    ///         Description = "example dcr data exchange",
+    ///         SharingEnvironmentConfig = new Gcp.BigQueryAnalyticsHub.Inputs.DataExchangeSharingEnvironmentConfigArgs
+    ///         {
+    ///             DcrExchangeConfig = null,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -139,6 +163,14 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// Configurable data sharing environment option for a data exchange.
+        /// This field is required for data clean room exchanges.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("sharingEnvironmentConfig")]
+        public Output<Outputs.DataExchangeSharingEnvironmentConfig> SharingEnvironmentConfig { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a DataExchange resource with the given unique name, arguments, and options.
@@ -237,6 +269,14 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Configurable data sharing environment option for a data exchange.
+        /// This field is required for data clean room exchanges.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("sharingEnvironmentConfig")]
+        public Input<Inputs.DataExchangeSharingEnvironmentConfigArgs>? SharingEnvironmentConfig { get; set; }
+
         public DataExchangeArgs()
         {
         }
@@ -309,6 +349,14 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Configurable data sharing environment option for a data exchange.
+        /// This field is required for data clean room exchanges.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("sharingEnvironmentConfig")]
+        public Input<Inputs.DataExchangeSharingEnvironmentConfigGetArgs>? SharingEnvironmentConfig { get; set; }
 
         public DataExchangeState()
         {

@@ -5,6 +5,7 @@ package com.pulumi.gcp.discoveryengine.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.discoveryengine.outputs.DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfig;
+import com.pulumi.gcp.discoveryengine.outputs.DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig;
 import com.pulumi.gcp.discoveryengine.outputs.DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfig;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,6 +18,11 @@ public final class DataStoreDocumentProcessingConfigDefaultParsingConfig {
      * 
      */
     private @Nullable DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfig digitalParsingConfig;
+    /**
+     * @return Configurations applied to layout parser.
+     * 
+     */
+    private @Nullable DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig layoutParsingConfig;
     /**
      * @return Configurations applied to OCR parser. Currently it only applies to PDFs.
      * Structure is documented below.
@@ -31,6 +37,13 @@ public final class DataStoreDocumentProcessingConfigDefaultParsingConfig {
      */
     public Optional<DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfig> digitalParsingConfig() {
         return Optional.ofNullable(this.digitalParsingConfig);
+    }
+    /**
+     * @return Configurations applied to layout parser.
+     * 
+     */
+    public Optional<DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig> layoutParsingConfig() {
+        return Optional.ofNullable(this.layoutParsingConfig);
     }
     /**
      * @return Configurations applied to OCR parser. Currently it only applies to PDFs.
@@ -51,11 +64,13 @@ public final class DataStoreDocumentProcessingConfigDefaultParsingConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfig digitalParsingConfig;
+        private @Nullable DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig layoutParsingConfig;
         private @Nullable DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfig ocrParsingConfig;
         public Builder() {}
         public Builder(DataStoreDocumentProcessingConfigDefaultParsingConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.digitalParsingConfig = defaults.digitalParsingConfig;
+    	      this.layoutParsingConfig = defaults.layoutParsingConfig;
     	      this.ocrParsingConfig = defaults.ocrParsingConfig;
         }
 
@@ -63,6 +78,12 @@ public final class DataStoreDocumentProcessingConfigDefaultParsingConfig {
         public Builder digitalParsingConfig(@Nullable DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfig digitalParsingConfig) {
 
             this.digitalParsingConfig = digitalParsingConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder layoutParsingConfig(@Nullable DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig layoutParsingConfig) {
+
+            this.layoutParsingConfig = layoutParsingConfig;
             return this;
         }
         @CustomType.Setter
@@ -74,6 +95,7 @@ public final class DataStoreDocumentProcessingConfigDefaultParsingConfig {
         public DataStoreDocumentProcessingConfigDefaultParsingConfig build() {
             final var _resultValue = new DataStoreDocumentProcessingConfigDefaultParsingConfig();
             _resultValue.digitalParsingConfig = digitalParsingConfig;
+            _resultValue.layoutParsingConfig = layoutParsingConfig;
             _resultValue.ocrParsingConfig = ocrParsingConfig;
             return _resultValue;
         }

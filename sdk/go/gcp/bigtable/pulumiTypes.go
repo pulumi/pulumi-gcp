@@ -1450,6 +1450,8 @@ func (o TableAutomatedBackupPolicyPtrOutput) RetentionPeriod() pulumi.StringPtrO
 type TableColumnFamily struct {
 	// The name of the column family.
 	Family string `pulumi:"family"`
+	// The type of the column family.
+	Type *string `pulumi:"type"`
 }
 
 // TableColumnFamilyInput is an input type that accepts TableColumnFamilyArgs and TableColumnFamilyOutput values.
@@ -1466,6 +1468,8 @@ type TableColumnFamilyInput interface {
 type TableColumnFamilyArgs struct {
 	// The name of the column family.
 	Family pulumi.StringInput `pulumi:"family"`
+	// The type of the column family.
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (TableColumnFamilyArgs) ElementType() reflect.Type {
@@ -1522,6 +1526,11 @@ func (o TableColumnFamilyOutput) ToTableColumnFamilyOutputWithContext(ctx contex
 // The name of the column family.
 func (o TableColumnFamilyOutput) Family() pulumi.StringOutput {
 	return o.ApplyT(func(v TableColumnFamily) string { return v.Family }).(pulumi.StringOutput)
+}
+
+// The type of the column family.
+func (o TableColumnFamilyOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableColumnFamily) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 type TableColumnFamilyArrayOutput struct{ *pulumi.OutputState }

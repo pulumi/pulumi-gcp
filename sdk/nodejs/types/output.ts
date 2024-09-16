@@ -2306,6 +2306,25 @@ export namespace alloydb {
         primaryClusterName: string;
     }
 
+    export interface ClusterTrialMetadata {
+        /**
+         * End time of the trial cluster.
+         */
+        endTime?: string;
+        /**
+         * Grace end time of the trial cluster.
+         */
+        graceEndTime?: string;
+        /**
+         * Start time of the trial cluster.
+         */
+        startTime?: string;
+        /**
+         * Upgrade time of the trial cluster to standard cluster.
+         */
+        upgradeTime?: string;
+    }
+
     export interface GetLocationsLocation {
         /**
          * The friendly name for this location, typically a nearby city name. For example, "Tokyo".
@@ -5747,6 +5766,13 @@ export namespace bigquery {
         enableFailureEmail: boolean;
     }
 
+    export interface DataTransferConfigEncryptionConfiguration {
+        /**
+         * The name of the KMS key used for encrypting BigQuery data.
+         */
+        kmsKeyName: string;
+    }
+
     export interface DataTransferConfigScheduleOptions {
         /**
          * If true, automatic scheduling of data transfer runs for this
@@ -7335,13 +7361,42 @@ export namespace bigqueryanalyticshub {
         title: string;
     }
 
+    export interface DataExchangeSharingEnvironmentConfig {
+        /**
+         * Data Clean Room (DCR), used for privacy-safe and secured data sharing.
+         */
+        dcrExchangeConfig?: outputs.bigqueryanalyticshub.DataExchangeSharingEnvironmentConfigDcrExchangeConfig;
+        /**
+         * Default Analytics Hub data exchange, used for secured data sharing.
+         */
+        defaultExchangeConfig?: outputs.bigqueryanalyticshub.DataExchangeSharingEnvironmentConfigDefaultExchangeConfig;
+    }
+
+    export interface DataExchangeSharingEnvironmentConfigDcrExchangeConfig {
+    }
+
+    export interface DataExchangeSharingEnvironmentConfigDefaultExchangeConfig {
+    }
+
     export interface ListingBigqueryDataset {
         /**
          * Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
+         */
+        dataset: string;
+        /**
+         * Resource in this dataset that is selectively shared. This field is required for data clean room exchanges.
+         * Structure is documented below.
+         */
+        selectedResources?: outputs.bigqueryanalyticshub.ListingBigqueryDatasetSelectedResource[];
+    }
+
+    export interface ListingBigqueryDatasetSelectedResource {
+        /**
+         * Format: For table: projects/{projectId}/datasets/{datasetId}/tables/{tableId} Example:"projects/test_project/datasets/test_dataset/tables/test_table"
          *
          * - - -
          */
-        dataset: string;
+        table?: string;
     }
 
     export interface ListingDataProvider {
@@ -7383,6 +7438,11 @@ export namespace bigqueryanalyticshub {
          * If true, enable restricted export.
          */
         enabled?: boolean;
+        /**
+         * (Output)
+         * If true, restrict direct table access(read api/tabledata.list) on linked table.
+         */
+        restrictDirectTableAccess: boolean;
         /**
          * If true, restrict export of query result derived from restricted linked dataset table.
          */
@@ -7566,6 +7626,10 @@ export namespace bigtable {
          * The name of the column family.
          */
         family: string;
+        /**
+         * The type of the column family.
+         */
+        type?: string;
     }
 
     export interface TableIamBindingCondition {
@@ -10513,6 +10577,129 @@ export namespace certificatemanager {
         ports: number[];
     }
 
+    export interface GetCertificatesCertificate {
+        /**
+         * A human-readable description of the resource.
+         */
+        description: string;
+        effectiveLabels: {[key: string]: string};
+        /**
+         * Set of label tags associated with the Certificate resource.
+         *
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field 'effective_labels' for all of the labels present on the resource.
+         */
+        labels: {[key: string]: string};
+        /**
+         * The Certificate Manager location. If not specified, "global" is used.
+         */
+        location: string;
+        /**
+         * Configuration and state of a Managed Certificate.
+         * Certificate Manager provisions and renews Managed Certificates
+         * automatically, for as long as it's authorized to do so.
+         */
+        manageds: outputs.certificatemanager.GetCertificatesCertificateManaged[];
+        /**
+         * A user-defined name of the certificate. Certificate names must be unique
+         * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
+         * and all following characters must be a dash, underscore, letter or digit.
+         */
+        name: string;
+        /**
+         * The ID of the project in which the resource belongs. If it
+         * is not provided, the provider project is used.
+         */
+        project: string;
+        /**
+         * The combination of labels configured directly on the resource
+         *  and default labels configured on the provider.
+         */
+        pulumiLabels: {[key: string]: string};
+        /**
+         * The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6)
+         */
+        sanDnsnames: string[];
+        /**
+         * The scope of the certificate.
+         *
+         * DEFAULT: Certificates with default scope are served from core Google data centers.
+         * If unsure, choose this option.
+         *
+         * EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
+         * See https://cloud.google.com/vpc/docs/edge-locations.
+         *
+         * ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
+         * See https://cloud.google.com/compute/docs/regions-zones
+         */
+        scope: string;
+    }
+
+    export interface GetCertificatesCertificateManaged {
+        /**
+         * Detailed state of the latest authorization attempt for each domain
+         * specified for this Managed Certificate.
+         */
+        authorizationAttemptInfos: outputs.certificatemanager.GetCertificatesCertificateManagedAuthorizationAttemptInfo[];
+        /**
+         * Authorizations that will be used for performing domain authorization. Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
+         */
+        dnsAuthorizations: string[];
+        /**
+         * The domains for which a managed SSL certificate will be generated.
+         * Wildcard domains are only supported with DNS challenge resolution
+         */
+        domains: string[];
+        /**
+         * The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*&#47;locations/*&#47;certificateIssuanceConfigs/*.
+         * If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
+         * Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
+         */
+        issuanceConfig: string;
+        /**
+         * Information about issues with provisioning this Managed Certificate.
+         */
+        provisioningIssues: outputs.certificatemanager.GetCertificatesCertificateManagedProvisioningIssue[];
+        /**
+         * A state of this Managed Certificate.
+         */
+        state: string;
+    }
+
+    export interface GetCertificatesCertificateManagedAuthorizationAttemptInfo {
+        /**
+         * Human readable explanation for reaching the state. Provided to help
+         * address the configuration issues.
+         * Not guaranteed to be stable. For programmatic access use 'failure_reason' field.
+         */
+        details: string;
+        /**
+         * Domain name of the authorization attempt.
+         */
+        domain: string;
+        /**
+         * Reason for failure of the authorization attempt for the domain.
+         */
+        failureReason: string;
+        /**
+         * State of the domain for managed certificate issuance.
+         */
+        state: string;
+    }
+
+    export interface GetCertificatesCertificateManagedProvisioningIssue {
+        /**
+         * Human readable explanation about the issue. Provided to help address
+         * the configuration issues.
+         * Not guaranteed to be stable. For programmatic access use 'reason' field.
+         */
+        details: string;
+        /**
+         * Reason for provisioning failures.
+         */
+        reason: string;
+    }
+
     export interface TrustConfigAllowlistedCertificate {
         /**
          * PEM certificate that is allowlisted. The certificate can be up to 5k bytes, and must be a parseable X.509 certificate.
@@ -12508,11 +12695,11 @@ export namespace cloudbuild {
 
     export interface WorkerPoolWorkerConfig {
         /**
-         * Size of the disk attached to the worker, in GB. See (https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
+         * Size of the disk attached to the worker, in GB. See [diskSizeGb](https://cloud.google.com/build/docs/private-pools/private-pool-config-file-schema#disksizegb). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
          */
         diskSizeGb?: number;
         /**
-         * Machine type of a worker, such as `n1-standard-1`. See (https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). If left blank, Cloud Build will use `n1-standard-1`.
+         * Machine type of a worker, such as `n1-standard-1`. See [machineType](https://cloud.google.com/build/docs/private-pools/private-pool-config-file-schema#machinetype). If left blank, Cloud Build will use `n1-standard-1`.
          */
         machineType?: string;
         /**
@@ -15814,8 +16001,7 @@ export namespace cloudrun {
         name: string;
         /**
          * A filesystem backed by a Network File System share. This filesystem requires the
-         * run.googleapis.com/execution-environment annotation to be set to "gen2" and
-         * run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
+         * run.googleapis.com/execution-environment annotation to be unset or set to "gen2"
          */
         nfs: outputs.cloudrun.GetServiceTemplateSpecVolumeNf[];
         /**
@@ -15830,8 +16016,7 @@ export namespace cloudrun {
         /**
          * Unique name representing the type of file system to be created. Cloud Run supports the following values:
          *   * gcsfuse.run.googleapis.com: Mount a Google Cloud Storage bucket using GCSFuse. This driver requires the
-         *     run.googleapis.com/execution-environment annotation to be set to "gen2" and
-         *     run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
+         *     run.googleapis.com/execution-environment annotation to be unset or set to "gen2"
          */
         driver: string;
         /**
@@ -16672,8 +16857,7 @@ export namespace cloudrun {
         name: string;
         /**
          * A filesystem backed by a Network File System share. This filesystem requires the
-         * run.googleapis.com/execution-environment annotation to be set to "gen2" and
-         * run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
+         * run.googleapis.com/execution-environment annotation to be unset or set to "gen2"
          * Structure is documented below.
          */
         nfs?: outputs.cloudrun.ServiceTemplateSpecVolumeNfs;
@@ -16690,8 +16874,7 @@ export namespace cloudrun {
         /**
          * Unique name representing the type of file system to be created. Cloud Run supports the following values:
          * * gcsfuse.run.googleapis.com: Mount a Google Cloud Storage bucket using GCSFuse. This driver requires the
-         * run.googleapis.com/execution-environment annotation to be set to "gen2" and
-         * run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
+         * run.googleapis.com/execution-environment annotation to be unset or set to "gen2"
          */
         driver: string;
         /**
@@ -17073,7 +17256,7 @@ export namespace cloudrunv2 {
          */
         emptyDirs: outputs.cloudrunv2.GetJobTemplateTemplateVolumeEmptyDir[];
         /**
-         * Cloud Storage bucket mounted as a volume using GCSFuse. This feature requires the launch stage to be set to ALPHA or BETA.
+         * Cloud Storage bucket mounted as a volume using GCSFuse.
          */
         gcs: outputs.cloudrunv2.GetJobTemplateTemplateVolumeGc[];
         /**
@@ -17081,7 +17264,7 @@ export namespace cloudrunv2 {
          */
         name: string;
         /**
-         * NFS share mounted as a volume. This feature requires the launch stage to be set to ALPHA or BETA.
+         * NFS share mounted as a volume.
          */
         nfs: outputs.cloudrunv2.GetJobTemplateTemplateVolumeNf[];
         /**
@@ -17341,6 +17524,10 @@ export namespace cloudrunv2 {
          * Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
          */
         serviceAccount: string;
+        /**
+         * Enables Cloud Service Mesh for this Revision.
+         */
+        serviceMeshes: outputs.cloudrunv2.GetServiceTemplateServiceMesh[];
         /**
          * Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
          */
@@ -17657,6 +17844,13 @@ export namespace cloudrunv2 {
         minInstanceCount: number;
     }
 
+    export interface GetServiceTemplateServiceMesh {
+        /**
+         * The Mesh resource name. For more information see https://cloud.google.com/service-mesh/docs/reference/network-services/rest/v1/projects.locations.meshes#resource:-mesh.
+         */
+        mesh: string;
+    }
+
     export interface GetServiceTemplateVolume {
         /**
          * For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
@@ -17667,7 +17861,7 @@ export namespace cloudrunv2 {
          */
         emptyDirs: outputs.cloudrunv2.GetServiceTemplateVolumeEmptyDir[];
         /**
-         * Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment and requires launch-stage to be set to ALPHA or BETA.
+         * Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment.
          */
         gcs: outputs.cloudrunv2.GetServiceTemplateVolumeGc[];
         /**
@@ -18150,7 +18344,7 @@ export namespace cloudrunv2 {
          */
         emptyDir?: outputs.cloudrunv2.JobTemplateTemplateVolumeEmptyDir;
         /**
-         * Cloud Storage bucket mounted as a volume using GCSFuse. This feature requires the launch stage to be set to ALPHA or BETA.
+         * Cloud Storage bucket mounted as a volume using GCSFuse.
          * Structure is documented below.
          */
         gcs?: outputs.cloudrunv2.JobTemplateTemplateVolumeGcs;
@@ -18159,7 +18353,7 @@ export namespace cloudrunv2 {
          */
         name: string;
         /**
-         * NFS share mounted as a volume. This feature requires the launch stage to be set to ALPHA or BETA.
+         * NFS share mounted as a volume.
          * Structure is documented below.
          */
         nfs?: outputs.cloudrunv2.JobTemplateTemplateVolumeNfs;
@@ -18454,6 +18648,11 @@ export namespace cloudrunv2 {
          * Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
          */
         serviceAccount: string;
+        /**
+         * Enables Cloud Service Mesh for this Revision.
+         * Structure is documented below.
+         */
+        serviceMesh?: outputs.cloudrunv2.ServiceTemplateServiceMesh;
         /**
          * Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
          */
@@ -18785,6 +18984,15 @@ export namespace cloudrunv2 {
         minInstanceCount?: number;
     }
 
+    export interface ServiceTemplateServiceMesh {
+        /**
+         * The Mesh resource name. For more information see https://cloud.google.com/service-mesh/docs/reference/network-services/rest/v1/projects.locations.meshes#resource:-mesh.
+         *
+         * - - -
+         */
+        mesh?: string;
+    }
+
     export interface ServiceTemplateVolume {
         /**
          * For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
@@ -18797,7 +19005,7 @@ export namespace cloudrunv2 {
          */
         emptyDir?: outputs.cloudrunv2.ServiceTemplateVolumeEmptyDir;
         /**
-         * Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment and requires launch-stage to be set to ALPHA or BETA.
+         * Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment.
          * Structure is documented below.
          */
         gcs?: outputs.cloudrunv2.ServiceTemplateVolumeGcs;
@@ -18855,8 +19063,6 @@ export namespace cloudrunv2 {
         path: string;
         /**
          * If true, mount the NFS volume as read only
-         *
-         * - - -
          */
         readOnly?: boolean;
         /**
@@ -19216,6 +19422,151 @@ export namespace cloudtasks {
          * By default, the task is sent to the version which is the default version when the task is attempted.
          */
         version?: string;
+    }
+
+    export interface QueueHttpTarget {
+        /**
+         * HTTP target headers.
+         * This map contains the header field names and values.
+         * Headers will be set when running the CreateTask and/or BufferTask.
+         * These headers represent a subset of the headers that will be configured for the task's HTTP request.
+         * Some HTTP request headers will be ignored or replaced.
+         * Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values.
+         * The size of the headers must be less than 80KB. Queue-level headers to override headers of all the tasks in the queue.
+         * Structure is documented below.
+         */
+        headerOverrides?: outputs.cloudtasks.QueueHttpTargetHeaderOverride[];
+        /**
+         * The HTTP method to use for the request.
+         * When specified, it overrides HttpRequest for the task.
+         * Note that if the value is set to GET the body of the task will be ignored at execution time.
+         * Possible values are: `HTTP_METHOD_UNSPECIFIED`, `POST`, `GET`, `HEAD`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`.
+         */
+        httpMethod: string;
+        /**
+         * If specified, an OAuth token is generated and attached as the Authorization header in the HTTP request.
+         * This type of authorization should generally be used only when calling Google APIs hosted on *.googleapis.com.
+         * Note that both the service account email and the scope MUST be specified when using the queue-level authorization override.
+         * Structure is documented below.
+         */
+        oauthToken?: outputs.cloudtasks.QueueHttpTargetOauthToken;
+        /**
+         * If specified, an OIDC token is generated and attached as an Authorization header in the HTTP request.
+         * This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
+         * Note that both the service account email and the audience MUST be specified when using the queue-level authorization override.
+         * Structure is documented below.
+         */
+        oidcToken?: outputs.cloudtasks.QueueHttpTargetOidcToken;
+        /**
+         * URI override.
+         * When specified, overrides the execution URI for all the tasks in the queue.
+         * Structure is documented below.
+         */
+        uriOverride?: outputs.cloudtasks.QueueHttpTargetUriOverride;
+    }
+
+    export interface QueueHttpTargetHeaderOverride {
+        /**
+         * Header embodying a key and a value.
+         * Structure is documented below.
+         */
+        header: outputs.cloudtasks.QueueHttpTargetHeaderOverrideHeader;
+    }
+
+    export interface QueueHttpTargetHeaderOverrideHeader {
+        /**
+         * The Key of the header.
+         */
+        key: string;
+        /**
+         * The Value of the header.
+         */
+        value: string;
+    }
+
+    export interface QueueHttpTargetOauthToken {
+        /**
+         * OAuth scope to be used for generating OAuth access token.
+         * If not specified, "https://www.googleapis.com/auth/cloud-platform" will be used.
+         */
+        scope: string;
+        /**
+         * Service account email to be used for generating OAuth token.
+         * The service account must be within the same project as the queue.
+         * The caller must have iam.serviceAccounts.actAs permission for the service account.
+         */
+        serviceAccountEmail: string;
+    }
+
+    export interface QueueHttpTargetOidcToken {
+        /**
+         * Audience to be used when generating OIDC token. If not specified, the URI specified in target will be used.
+         */
+        audience: string;
+        /**
+         * Service account email to be used for generating OIDC token.
+         * The service account must be within the same project as the queue.
+         * The caller must have iam.serviceAccounts.actAs permission for the service account.
+         */
+        serviceAccountEmail: string;
+    }
+
+    export interface QueueHttpTargetUriOverride {
+        /**
+         * Host override.
+         * When specified, replaces the host part of the task URL.
+         * For example, if the task URL is "https://www.google.com", and host value
+         * is set to "example.net", the overridden URI will be changed to "https://example.net".
+         * Host value cannot be an empty string (INVALID_ARGUMENT).
+         */
+        host?: string;
+        /**
+         * URI path.
+         * When specified, replaces the existing path of the task URL.
+         * Setting the path value to an empty string clears the URI path segment.
+         * Structure is documented below.
+         */
+        pathOverride?: outputs.cloudtasks.QueueHttpTargetUriOverridePathOverride;
+        /**
+         * Port override.
+         * When specified, replaces the port part of the task URI.
+         * For instance, for a URI http://www.google.com/foo and port=123, the overridden URI becomes http://www.google.com:123/foo.
+         * Note that the port value must be a positive integer.
+         * Setting the port to 0 (Zero) clears the URI port.
+         */
+        port?: string;
+        /**
+         * URI query.
+         * When specified, replaces the query part of the task URI. Setting the query value to an empty string clears the URI query segment.
+         * Structure is documented below.
+         */
+        queryOverride?: outputs.cloudtasks.QueueHttpTargetUriOverrideQueryOverride;
+        /**
+         * Scheme override.
+         * When specified, the task URI scheme is replaced by the provided value (HTTP or HTTPS).
+         * Possible values are: `HTTP`, `HTTPS`.
+         */
+        scheme: string;
+        /**
+         * URI Override Enforce Mode
+         * When specified, determines the Target UriOverride mode. If not specified, it defaults to ALWAYS.
+         * Possible values are: `ALWAYS`, `IF_NOT_EXISTS`.
+         */
+        uriOverrideEnforceMode: string;
+    }
+
+    export interface QueueHttpTargetUriOverridePathOverride {
+        /**
+         * The URI path (e.g., /users/1234). Default is an empty string.
+         */
+        path: string;
+    }
+
+    export interface QueueHttpTargetUriOverrideQueryOverride {
+        /**
+         * The query parameters (e.g., qparam1=123&qparam2=456). Default is an empty string.
+         */
+        queryParams: string;
     }
 
     export interface QueueIamBindingCondition {
@@ -21400,7 +21751,7 @@ export namespace compute {
          * is only applicable for UDP or TCP protocol. Each entry must be
          * either an integer or a range. If not specified, this rule
          * applies to connections through any port.
-         * Example inputs include: ["22"], ["80","443"], and
+         * Example inputs include: [22], [80, 443], and
          * ["12345-12349"].
          */
         ports?: string[];
@@ -21419,7 +21770,7 @@ export namespace compute {
          * is only applicable for UDP or TCP protocol. Each entry must be
          * either an integer or a range. If not specified, this rule
          * applies to connections through any port.
-         * Example inputs include: ["22"], ["80","443"], and
+         * Example inputs include: [22], [80, 443], and
          * ["12345-12349"].
          */
         ports?: string[];
@@ -23081,6 +23432,10 @@ export namespace compute {
          * Structure is documented below.
          */
         initializeParams: outputs.compute.GetInstanceBootDiskInitializeParam[];
+        /**
+         * The disk interface used for attaching this disk. One of `SCSI` or `NVME`.
+         */
+        interface: string;
         /**
          * The selfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
          */
@@ -26468,6 +26823,10 @@ export namespace compute {
          */
         initializeParams: outputs.compute.InstanceBootDiskInitializeParams;
         /**
+         * The disk interface used for attaching this disk. One of SCSI or NVME. (This field is shared with attachedDisk and only used for specific cases, please don't specify this field without advice from Google.)
+         */
+        interface?: string;
+        /**
          * The selfLink of the encryption key that is
          * stored in Google Cloud KMS to encrypt this disk. Only one of `kmsKeySelfLink`
          * and `diskEncryptionKeyRaw` may be set.
@@ -26625,6 +26984,10 @@ export namespace compute {
          * Parameters with which a disk was created alongside the instance.
          */
         initializeParams: outputs.compute.InstanceFromMachineImageBootDiskInitializeParams;
+        /**
+         * The disk interface used for attaching this disk. One of SCSI or NVME. (This field is shared with attachedDisk and only used for specific cases, please don't specify this field without advice from Google.)
+         */
+        interface: string;
         /**
          * The selfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
          */
@@ -27059,6 +27422,10 @@ export namespace compute {
          * Parameters with which a disk was created alongside the instance.
          */
         initializeParams: outputs.compute.InstanceFromTemplateBootDiskInitializeParams;
+        /**
+         * The disk interface used for attaching this disk. One of SCSI or NVME. (This field is shared with attachedDisk and only used for specific cases, please don't specify this field without advice from Google.)
+         */
+        interface: string;
         /**
          * The selfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
          */
@@ -27797,7 +28164,7 @@ export namespace compute {
         subnetwork: string;
         /**
          * The project in which the subnetwork belongs.
-         * If the `subnetwork` is a self_link, this field is ignored in favor of the project
+         * If the `subnetwork` is a self_link, this field is set to the project
          * defined in the subnetwork self_link. If the `subnetwork` is a name and this
          * field is not provided, the provider project is used.
          */
@@ -28975,6 +29342,19 @@ export namespace compute {
          * The project id/number should be the same as the key of this project config in the project map.
          */
         projectId: string;
+    }
+
+    export interface NodeTemplateAccelerator {
+        /**
+         * The number of the guest accelerator cards exposed to this
+         * node template.
+         */
+        acceleratorCount?: number;
+        /**
+         * Full or partial URL of the accelerator type resource to expose
+         * to this node template.
+         */
+        acceleratorType?: string;
     }
 
     export interface NodeTemplateNodeTypeFlexibility {
@@ -39322,6 +39702,10 @@ export namespace container {
          */
         cpuManagerPolicy: string;
         /**
+         * Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+         */
+        insecureKubeletReadonlyPortEnabled: string;
+        /**
          * Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
          */
         podPidsLimit?: number;
@@ -39547,9 +39931,14 @@ export namespace container {
 
     export interface ClusterNodePoolAutoConfig {
         /**
-         * The network tag config for the cluster's automatically provisioned node pools.
+         * The network tag config for the cluster's automatically provisioned node pools. Structure is documented below.
          */
         networkTags?: outputs.container.ClusterNodePoolAutoConfigNetworkTags;
+        /**
+         * Kubelet configuration for Autopilot clusters. Currently, only `insecureKubeletReadonlyPortEnabled` is supported here.
+         * Structure is documented below.
+         */
+        nodeKubeletConfig?: outputs.container.ClusterNodePoolAutoConfigNodeKubeletConfig;
         /**
          * A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
          */
@@ -39561,6 +39950,13 @@ export namespace container {
          * List of network tags applied to auto-provisioned node pools.
          */
         tags?: string[];
+    }
+
+    export interface ClusterNodePoolAutoConfigNodeKubeletConfig {
+        /**
+         * Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+         */
+        insecureKubeletReadonlyPortEnabled: string;
     }
 
     export interface ClusterNodePoolAutoscaling {
@@ -39602,6 +39998,10 @@ export namespace container {
          * The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
          */
         gcfsConfig?: outputs.container.ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig;
+        /**
+         * Controls whether the kubelet read-only port is enabled for newly created node pools in the cluster. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+         */
+        insecureKubeletReadonlyPortEnabled: string;
         /**
          * The type of logging agent that is deployed by default for newly created node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
          */
@@ -40151,6 +40551,10 @@ export namespace container {
          * One of `"none"` or `"static"`. Defaults to `none` when `kubeletConfig` is unset.
          */
         cpuManagerPolicy: string;
+        /**
+         * Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+         */
+        insecureKubeletReadonlyPortEnabled: string;
         /**
          * Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
          */
@@ -41522,6 +41926,10 @@ export namespace container {
          */
         cpuManagerPolicy: string;
         /**
+         * Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+         */
+        insecureKubeletReadonlyPortEnabled: string;
+        /**
          * Controls the maximum number of processes allowed to run in a pod.
          */
         podPidsLimit: number;
@@ -41703,6 +42111,10 @@ export namespace container {
          */
         networkTags: outputs.container.GetClusterNodePoolAutoConfigNetworkTag[];
         /**
+         * Node kubelet configs.
+         */
+        nodeKubeletConfigs: outputs.container.GetClusterNodePoolAutoConfigNodeKubeletConfig[];
+        /**
          * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
          */
         resourceManagerTags: {[key: string]: string};
@@ -41713,6 +42125,13 @@ export namespace container {
          * List of network tags applied to auto-provisioned node pools.
          */
         tags: string[];
+    }
+
+    export interface GetClusterNodePoolAutoConfigNodeKubeletConfig {
+        /**
+         * Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+         */
+        insecureKubeletReadonlyPortEnabled: string;
     }
 
     export interface GetClusterNodePoolAutoscaling {
@@ -41754,6 +42173,10 @@ export namespace container {
          * GCFS configuration for this node.
          */
         gcfsConfigs: outputs.container.GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig[];
+        /**
+         * Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+         */
+        insecureKubeletReadonlyPortEnabled: string;
         /**
          * Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
          */
@@ -42214,6 +42637,10 @@ export namespace container {
          * Control the CPU management policy on the node.
          */
         cpuManagerPolicy: string;
+        /**
+         * Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+         */
+        insecureKubeletReadonlyPortEnabled: string;
         /**
          * Controls the maximum number of processes allowed to run in a pod.
          */
@@ -43037,6 +43464,10 @@ export namespace container {
          */
         cpuManagerPolicy: string;
         /**
+         * Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+         */
+        insecureKubeletReadonlyPortEnabled: string;
+        /**
          * Controls the maximum number of processes allowed to run in a pod.
          */
         podPidsLimit?: number;
@@ -43582,33 +44013,33 @@ export namespace databasemigrationservice {
          */
         cloudSqlId?: string;
         /**
-         * Required. The IP or hostname of the source MySQL database.
+         * The IP or hostname of the source MySQL database.
          */
-        host: string;
+        host?: string;
         /**
-         * Required. Input only. The password for the user that Database Migration Service will be using to connect to the database.
+         * Input only. The password for the user that Database Migration Service will be using to connect to the database.
          * This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
          * **Note**: This property is sensitive and will not be displayed in the plan.
          */
-        password: string;
+        password?: string;
         /**
          * (Output)
          * Output only. Indicates If this connection profile password is stored.
          */
         passwordSet: boolean;
         /**
-         * Required. The network port of the source MySQL database.
+         * The network port of the source MySQL database.
          */
-        port: number;
+        port?: number;
         /**
          * SSL configuration for the destination to connect to the source database.
          * Structure is documented below.
          */
         ssl?: outputs.databasemigrationservice.ConnectionProfileMysqlSsl;
         /**
-         * Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+         * The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
          */
-        username: string;
+        username?: string;
     }
 
     export interface ConnectionProfileMysqlSsl {
@@ -43750,42 +44181,46 @@ export namespace databasemigrationservice {
 
     export interface ConnectionProfilePostgresql {
         /**
+         * If the connected database is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.
+         */
+        alloydbClusterId?: string;
+        /**
          * If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
          */
         cloudSqlId?: string;
         /**
-         * Required. The IP or hostname of the source MySQL database.
+         * The IP or hostname of the source MySQL database.
          */
-        host: string;
+        host?: string;
         /**
          * (Output)
          * Output only. If the source is a Cloud SQL database, this field indicates the network architecture it's associated with.
          */
         networkArchitecture: string;
         /**
-         * Required. Input only. The password for the user that Database Migration Service will be using to connect to the database.
+         * Input only. The password for the user that Database Migration Service will be using to connect to the database.
          * This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
          * **Note**: This property is sensitive and will not be displayed in the plan.
          */
-        password: string;
+        password?: string;
         /**
          * (Output)
          * Output only. Indicates If this connection profile password is stored.
          */
         passwordSet: boolean;
         /**
-         * Required. The network port of the source MySQL database.
+         * The network port of the source MySQL database.
          */
-        port: number;
+        port?: number;
         /**
          * SSL configuration for the destination to connect to the source database.
          * Structure is documented below.
          */
         ssl?: outputs.databasemigrationservice.ConnectionProfilePostgresqlSsl;
         /**
-         * Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+         * The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
          */
-        username: string;
+        username?: string;
     }
 
     export interface ConnectionProfilePostgresqlSsl {
@@ -47956,6 +48391,11 @@ export namespace dataloss {
          * Structure is documented below.
          */
         pubSubNotification?: outputs.dataloss.PreventionDiscoveryConfigActionPubSubNotification;
+        /**
+         * Publish a message into the Pub/Sub topic.
+         * Structure is documented below.
+         */
+        tagResources?: outputs.dataloss.PreventionDiscoveryConfigActionTagResources;
     }
 
     export interface PreventionDiscoveryConfigActionExportData {
@@ -48035,6 +48475,51 @@ export namespace dataloss {
          * Possible values are: `HIGH`, `MEDIUM_OR_HIGH`.
          */
         minimumSensitivityScore?: string;
+    }
+
+    export interface PreventionDiscoveryConfigActionTagResources {
+        /**
+         * Whether applying a tag to a resource should lower the risk of the profile for that resource. For example, in conjunction with an [IAM deny policy](https://cloud.google.com/iam/docs/deny-overview), you can deny all principals a permission if a tag value is present, mitigating the risk of the resource. This also lowers the data risk of resources at the lower levels of the resource hierarchy. For example, reducing the data risk of a table data profile also reduces the data risk of the constituent column data profiles.
+         */
+        lowerDataRiskToLow?: boolean;
+        /**
+         * The profile generations for which the tag should be attached to resources. If you attach a tag to only new profiles, then if the sensitivity score of a profile subsequently changes, its tag doesn't change. By default, this field includes only new profiles. To include both new and updated profiles for tagging, this field should explicitly include both `PROFILE_GENERATION_NEW` and `PROFILE_GENERATION_UPDATE`.
+         * Each value may be one of: `PROFILE_GENERATION_NEW`, `PROFILE_GENERATION_UPDATE`.
+         */
+        profileGenerationsToTags?: string[];
+        /**
+         * The tags to associate with different conditions.
+         * Structure is documented below.
+         */
+        tagConditions?: outputs.dataloss.PreventionDiscoveryConfigActionTagResourcesTagCondition[];
+    }
+
+    export interface PreventionDiscoveryConfigActionTagResourcesTagCondition {
+        /**
+         * Conditions attaching the tag to a resource on its profile having this sensitivity score.
+         * Structure is documented below.
+         */
+        sensitivityScore?: outputs.dataloss.PreventionDiscoveryConfigActionTagResourcesTagConditionSensitivityScore;
+        /**
+         * The tag value to attach to resources.
+         * Structure is documented below.
+         */
+        tag?: outputs.dataloss.PreventionDiscoveryConfigActionTagResourcesTagConditionTag;
+    }
+
+    export interface PreventionDiscoveryConfigActionTagResourcesTagConditionSensitivityScore {
+        /**
+         * The sensitivity score applied to the resource.
+         * Possible values are: `SENSITIVITY_LOW`, `SENSITIVITY_MODERATE`, `SENSITIVITY_HIGH`.
+         */
+        score: string;
+    }
+
+    export interface PreventionDiscoveryConfigActionTagResourcesTagConditionTag {
+        /**
+         * The namespaced name for the tag value to attach to resources. Must be in the format `{parent_id}/{tag_key_short_name}/{short_name}`, for example, "123456/environment/prod".
+         */
+        namespacedValue?: string;
     }
 
     export interface PreventionDiscoveryConfigError {
@@ -48132,6 +48617,11 @@ export namespace dataloss {
 
     export interface PreventionDiscoveryConfigTargetBigQueryTargetCadence {
         /**
+         * Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
+         * Structure is documented below.
+         */
+        inspectTemplateModifiedCadence?: outputs.dataloss.PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadence;
+        /**
          * Governs when to update data profiles when a schema is modified
          * Structure is documented below.
          */
@@ -48141,6 +48631,14 @@ export namespace dataloss {
          * Structure is documented below.
          */
         tableModifiedCadence?: outputs.dataloss.PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadence;
+    }
+
+    export interface PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadence {
+        /**
+         * How frequently data profiles can be updated when the template is modified. Defaults to never.
+         * Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+         */
+        frequency?: string;
     }
 
     export interface PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadence {
@@ -48389,6 +48887,11 @@ export namespace dataloss {
 
     export interface PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadence {
         /**
+         * Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
+         * Structure is documented below.
+         */
+        inspectTemplateModifiedCadence?: outputs.dataloss.PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceInspectTemplateModifiedCadence;
+        /**
          * Data changes in Cloud Storage can't trigger reprofiling. If you set this field, profiles are refreshed at this frequency regardless of whether the underlying buckets have changes. Defaults to never.
          * Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
          */
@@ -48398,6 +48901,14 @@ export namespace dataloss {
          * Structure is documented below.
          */
         schemaModifiedCadence?: outputs.dataloss.PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceSchemaModifiedCadence;
+    }
+
+    export interface PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceInspectTemplateModifiedCadence {
+        /**
+         * How frequently data profiles can be updated when the template is modified. Defaults to never.
+         * Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
+         */
+        frequency: string;
     }
 
     export interface PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceSchemaModifiedCadence {
@@ -53596,7 +54107,7 @@ export namespace dataproc {
          */
         softwareConfig?: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig;
         /**
-         * A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
+         * A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see [Dataproc staging and temp buckets](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
          */
         stagingBucket?: string;
         /**
@@ -53642,7 +54153,7 @@ export namespace dataproc {
          */
         internalIpOnly: boolean;
         /**
-         * The Compute Engine metadata entries to add to all instances (see (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
+         * The Compute Engine metadata entries to add to all instances (see [About VM metadata](https://cloud.google.com/compute/docs/metadata/overview)).
          */
         metadata?: {[key: string]: string};
         /**
@@ -53678,7 +54189,7 @@ export namespace dataproc {
          */
         subnetwork?: string;
         /**
-         * The Compute Engine tags to add to all instances (see (https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+         * The Compute Engine tags to add to all instances (see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)).
          */
         tags?: string[];
         /**
@@ -53748,26 +54259,26 @@ export namespace dataproc {
          */
         executableFile?: string;
         /**
-         * Amount of time executable has to complete. Default is 10 minutes (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)). Cluster creation fails with an explanatory error message (the name of the executable that caused the error and the exceeded timeout period) if the executable is not completed at end of the timeout period.
+         * Amount of time executable has to complete. Default is 10 minutes (see JSON representation of [JSON Mapping - Language Guide (proto 3)](https://developers.google.com/protocol-buffers/docs/proto3#json)). Cluster creation fails with an explanatory error message (the name of the executable that caused the error and the exceeded timeout period) if the executable is not completed at end of the timeout period.
          */
         executionTimeout?: string;
     }
 
     export interface WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig {
         /**
-         * The time when cluster will be auto-deleted (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+         * The time when cluster will be auto-deleted (see JSON representation of [JSON Mapping - Language Guide (proto 3)](https://developers.google.com/protocol-buffers/docs/proto3#json)).
          */
         autoDeleteTime?: string;
         /**
-         * The lifetime duration of cluster. The cluster will be auto-deleted at the end of this period. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+         * The lifetime duration of cluster. The cluster will be auto-deleted at the end of this period. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of [JSON Mapping - Language Guide (proto 3)](https://developers.google.com/protocol-buffers/docs/proto3#json)).
          */
         autoDeleteTtl?: string;
         /**
-         * The duration to keep the cluster alive while idling (when no jobs are running). Passing this threshold will cause the cluster to be deleted. Minimum value is 5 minutes; maximum value is 14 days (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json).
+         * The duration to keep the cluster alive while idling (when no jobs are running). Passing this threshold will cause the cluster to be deleted. Minimum value is 5 minutes; maximum value is 14 days (see JSON representation of [JSON Mapping - Language Guide (proto 3)](https://developers.google.com/protocol-buffers/docs/proto3#json).
          */
         idleDeleteTtl?: string;
         /**
-         * Output only. The time when cluster became idle (most recent job finished) and became eligible for deletion due to idleness (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+         * Output only. The time when cluster became idle (most recent job finished) and became eligible for deletion due to idleness (see JSON representation of [JSON Mapping - Language Guide (proto 3)](https://developers.google.com/protocol-buffers/docs/proto3#json)).
          */
         idleStartTime: string;
     }
@@ -53802,7 +54313,7 @@ export namespace dataproc {
          */
         managedGroupConfigs: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig[];
         /**
-         * Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+         * Specifies the minimum cpu platform for the Instance Group. See [Minimum CPU platform](https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
          */
         minCpuPlatform: string;
         /**
@@ -55329,6 +55840,10 @@ export namespace datastream {
 
     export interface StreamSourceConfigSqlServerSourceConfig {
         /**
+         * CDC reader reads from change tables.
+         */
+        changeTables?: outputs.datastream.StreamSourceConfigSqlServerSourceConfigChangeTables;
+        /**
          * SQL Server objects to exclude from the stream.
          * Structure is documented below.
          */
@@ -55346,6 +55861,13 @@ export namespace datastream {
          * Max concurrent CDC tasks.
          */
         maxConcurrentCdcTasks: number;
+        /**
+         * CDC reader reads from transaction logs.
+         */
+        transactionLogs?: outputs.datastream.StreamSourceConfigSqlServerSourceConfigTransactionLogs;
+    }
+
+    export interface StreamSourceConfigSqlServerSourceConfigChangeTables {
     }
 
     export interface StreamSourceConfigSqlServerSourceConfigExcludeObjects {
@@ -55494,6 +56016,9 @@ export namespace datastream {
          * Column scale.
          */
         scale: number;
+    }
+
+    export interface StreamSourceConfigSqlServerSourceConfigTransactionLogs {
     }
 
 }
@@ -57741,6 +58266,11 @@ export namespace discoveryengine {
 
     export interface DataStoreDocumentProcessingConfig {
         /**
+         * Whether chunking mode is enabled.
+         * Structure is documented below.
+         */
+        chunkingConfig?: outputs.discoveryengine.DataStoreDocumentProcessingConfigChunkingConfig;
+        /**
          * Configurations for default Document parser. If not specified, this resource
          * will be configured to use a default DigitalParsingConfig, and the default parsing
          * config will be applied to all file types for Document parsing.
@@ -57759,11 +58289,36 @@ export namespace discoveryengine {
         parsingConfigOverrides?: outputs.discoveryengine.DataStoreDocumentProcessingConfigParsingConfigOverride[];
     }
 
+    export interface DataStoreDocumentProcessingConfigChunkingConfig {
+        /**
+         * Configuration for the layout based chunking.
+         * Structure is documented below.
+         */
+        layoutBasedChunkingConfig?: outputs.discoveryengine.DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig;
+    }
+
+    export interface DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig {
+        /**
+         * The token size limit for each chunk.
+         * Supported values: 100-500 (inclusive). Default value: 500.
+         */
+        chunkSize?: number;
+        /**
+         * Whether to include appending different levels of headings to chunks from the middle of the document to prevent context loss.
+         * Default value: False.
+         */
+        includeAncestorHeadings?: boolean;
+    }
+
     export interface DataStoreDocumentProcessingConfigDefaultParsingConfig {
         /**
          * Configurations applied to digital parser.
          */
         digitalParsingConfig?: outputs.discoveryengine.DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfig;
+        /**
+         * Configurations applied to layout parser.
+         */
+        layoutParsingConfig?: outputs.discoveryengine.DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig;
         /**
          * Configurations applied to OCR parser. Currently it only applies to PDFs.
          * Structure is documented below.
@@ -57772,6 +58327,9 @@ export namespace discoveryengine {
     }
 
     export interface DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfig {
+    }
+
+    export interface DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig {
     }
 
     export interface DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfig {
@@ -57791,6 +58349,10 @@ export namespace discoveryengine {
          */
         fileType: string;
         /**
+         * Configurations applied to layout parser.
+         */
+        layoutParsingConfig?: outputs.discoveryengine.DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig;
+        /**
          * Configurations applied to OCR parser. Currently it only applies to PDFs.
          * Structure is documented below.
          */
@@ -57798,6 +58360,9 @@ export namespace discoveryengine {
     }
 
     export interface DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfig {
+    }
+
+    export interface DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig {
     }
 
     export interface DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig {
@@ -61138,7 +61703,9 @@ export namespace gkehub {
 
     export interface FeatureMembershipConfigmanagement {
         /**
+         * (Optional, Deprecated)
          * Binauthz configuration for the cluster. Structure is documented below.
+         * This field will be ignored and should not be set.
          */
         binauthz: outputs.gkehub.FeatureMembershipConfigmanagementBinauthz;
         /**
@@ -61147,6 +61714,10 @@ export namespace gkehub {
         configSync?: outputs.gkehub.FeatureMembershipConfigmanagementConfigSync;
         /**
          * Hierarchy Controller configuration for the cluster. Structure is documented below.
+         * Configuring Hierarchy Controller through the configmanagement feature is no longer recommended.
+         * Use open source Kubernetes [Hierarchical Namespace Controller (HNC)](https://github.com/kubernetes-sigs/hierarchical-namespaces) instead.
+         * Follow the [instructions](https://cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/migrate-hierarchy-controller)
+         * to migrate from Hierarchy Controller to HNC.
          */
         hierarchyController?: outputs.gkehub.FeatureMembershipConfigmanagementHierarchyController;
         /**
@@ -61155,6 +61726,8 @@ export namespace gkehub {
         management: string;
         /**
          * Policy Controller configuration for the cluster. Structure is documented below.
+         * Configuring Policy Controller through the configmanagement feature is no longer recommended.
+         * Use the policycontroller feature instead.
          */
         policyController?: outputs.gkehub.FeatureMembershipConfigmanagementPolicyController;
         /**
@@ -64203,6 +64776,48 @@ export namespace iam {
         idpMetadataXml: string;
     }
 
+    export interface GetWorkloadIdentityPoolProviderX509 {
+        /**
+         * A Trust store, use this trust store as a wrapper to config the trust
+         * anchor and optional intermediate cas to help build the trust chain for
+         * the incoming end entity certificate. Follow the x509 guidelines to
+         * define those PEM encoded certs. Only 1 trust store is currently
+         * supported.
+         */
+        trustStores: outputs.iam.GetWorkloadIdentityPoolProviderX509TrustStore[];
+    }
+
+    export interface GetWorkloadIdentityPoolProviderX509TrustStore {
+        /**
+         * Set of intermediate CA certificates used for building the trust chain to
+         * trust anchor.
+         * IMPORTANT: Intermediate CAs are only supported when configuring x509 federation.
+         */
+        intermediateCas: outputs.iam.GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCa[];
+        /**
+         * List of Trust Anchors to be used while performing validation
+         * against a given TrustStore. The incoming end entity's certificate
+         * must be chained up to one of the trust anchors here.
+         */
+        trustAnchors: outputs.iam.GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchor[];
+    }
+
+    export interface GetWorkloadIdentityPoolProviderX509TrustStoreIntermediateCa {
+        /**
+         * PEM certificate of the PKI used for validation. Must only contain one
+         * ca certificate(either root or intermediate cert).
+         */
+        pemCertificate: string;
+    }
+
+    export interface GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchor {
+        /**
+         * PEM certificate of the PKI used for validation. Must only contain one
+         * ca certificate(either root or intermediate cert).
+         */
+        pemCertificate: string;
+    }
+
     export interface WorkforcePoolAccessRestrictions {
         /**
          * Services allowed for web sign-in with the workforce pool.
@@ -64449,8 +65064,54 @@ export namespace iam {
     export interface WorkloadIdentityPoolProviderSaml {
         /**
          * SAML Identity provider configuration metadata xml doc.
+         *
+         * <a name="nestedX509"></a>The `x509` block supports:
          */
         idpMetadataXml: string;
+    }
+
+    export interface WorkloadIdentityPoolProviderX509 {
+        /**
+         * A Trust store, use this trust store as a wrapper to config the trust
+         * anchor and optional intermediate cas to help build the trust chain for
+         * the incoming end entity certificate. Follow the x509 guidelines to
+         * define those PEM encoded certs. Only 1 trust store is currently
+         * supported.
+         */
+        trustStore: outputs.iam.WorkloadIdentityPoolProviderX509TrustStore;
+    }
+
+    export interface WorkloadIdentityPoolProviderX509TrustStore {
+        /**
+         * Set of intermediate CA certificates used for building the trust chain to
+         * trust anchor.
+         * IMPORTANT: Intermediate CAs are only supported when configuring x509 federation.
+         * Structure is documented below.
+         */
+        intermediateCas?: outputs.iam.WorkloadIdentityPoolProviderX509TrustStoreIntermediateCa[];
+        /**
+         * List of Trust Anchors to be used while performing validation
+         * against a given TrustStore. The incoming end entity's certificate
+         * must be chained up to one of the trust anchors here.
+         * Structure is documented below.
+         */
+        trustAnchors: outputs.iam.WorkloadIdentityPoolProviderX509TrustStoreTrustAnchor[];
+    }
+
+    export interface WorkloadIdentityPoolProviderX509TrustStoreIntermediateCa {
+        /**
+         * PEM certificate of the PKI used for validation. Must only contain one
+         * ca certificate(either root or intermediate cert).
+         */
+        pemCertificate?: string;
+    }
+
+    export interface WorkloadIdentityPoolProviderX509TrustStoreTrustAnchor {
+        /**
+         * PEM certificate of the PKI used for validation. Must only contain one
+         * ca certificate(either root or intermediate cert).
+         */
+        pemCertificate?: string;
     }
 
 }
@@ -66135,6 +66796,57 @@ export namespace kms {
          * - - -
          */
         subjectAlternativeDnsNames: string[];
+    }
+
+    export interface GetCryptoKeyLatestVersionPublicKey {
+        /**
+         * The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
+         */
+        algorithm: string;
+        /**
+         * The public key, encoded in PEM format. For more information, see the RFC 7468 sections for General Considerations and Textual Encoding of Subject Public Key Info.
+         */
+        pem: string;
+    }
+
+    export interface GetCryptoKeyVersionsPublicKey {
+        /**
+         * The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
+         */
+        algorithm: string;
+        /**
+         * The public key, encoded in PEM format. For more information, see the RFC 7468 sections for General Considerations and Textual Encoding of Subject Public Key Info.
+         */
+        pem: string;
+    }
+
+    export interface GetCryptoKeyVersionsVersion {
+        /**
+         * The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
+         */
+        algorithm: string;
+        /**
+         * The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the 
+         * `gcp.kms.CryptoKey` resource/datasource.
+         */
+        cryptoKey: string;
+        id: string;
+        name: string;
+        protectionLevel: string;
+        publicKeys: outputs.kms.GetCryptoKeyVersionsVersionPublicKey[];
+        state: string;
+        version: number;
+    }
+
+    export interface GetCryptoKeyVersionsVersionPublicKey {
+        /**
+         * The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
+         */
+        algorithm: string;
+        /**
+         * The public key, encoded in PEM format. For more information, see the RFC 7468 sections for General Considerations and Textual Encoding of Subject Public Key Info.
+         */
+        pem: string;
     }
 
     export interface GetCryptoKeysKey {
@@ -69347,6 +70059,10 @@ export namespace networkconnectivity {
          * IP ranges encompassing the subnets to be excluded from peering.
          */
         excludeExportRanges?: string[];
+        /**
+         * IP ranges allowed to be included from peering.
+         */
+        includeExportRanges?: string[];
         /**
          * The URI of the VPC network resource.
          */
@@ -74533,6 +75249,10 @@ export namespace pubsub {
          */
         maxDuration: string;
         /**
+         * The maximum messages that can be written to a Cloud Storage file before a new file is created. Min 1000 messages.
+         */
+        maxMessages: number;
+        /**
          * The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
          * [service agent](https://cloud.google.com/iam/docs/service-agents),
          * service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
@@ -74545,6 +75265,10 @@ export namespace pubsub {
     }
 
     export interface GetSubscriptionCloudStorageConfigAvroConfig {
+        /**
+         * When true, the output Cloud Storage file will be serialized using the topic schema, if it exists.
+         */
+        useTopicSchema: boolean;
         /**
          * When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output.
          */
@@ -74873,6 +75597,10 @@ export namespace pubsub {
          */
         maxDuration?: string;
         /**
+         * The maximum messages that can be written to a Cloud Storage file before a new file is created. Min 1000 messages.
+         */
+        maxMessages?: number;
+        /**
          * The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
          * [service agent](https://cloud.google.com/iam/docs/service-agents),
          * service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
@@ -74886,6 +75614,10 @@ export namespace pubsub {
     }
 
     export interface SubscriptionCloudStorageConfigAvroConfig {
+        /**
+         * When true, the output Cloud Storage file will be serialized using the topic schema, if it exists.
+         */
+        useTopicSchema?: boolean;
         /**
          * When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output.
          */
@@ -75193,6 +75925,105 @@ export namespace redis {
          * The consumer network where the IP address resides, in the form of projects/{projectId}/global/networks/{network_id}.
          */
         network?: string;
+    }
+
+    export interface ClusterMaintenancePolicy {
+        /**
+         * (Output)
+         * Output only. The time when the policy was created.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+         * resolution and up to nine fractional digits.
+         */
+        createTime: string;
+        /**
+         * (Output)
+         * Output only. The time when the policy was last updated.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+         * resolution and up to nine fractional digits.
+         */
+        updateTime: string;
+        /**
+         * Optional. Maintenance window that is applied to resources covered by this policy.
+         * Minimum 1. For the current version, the maximum number
+         * of weeklyWindow is expected to be one.
+         * Structure is documented below.
+         */
+        weeklyMaintenanceWindows?: outputs.redis.ClusterMaintenancePolicyWeeklyMaintenanceWindow[];
+    }
+
+    export interface ClusterMaintenancePolicyWeeklyMaintenanceWindow {
+        /**
+         * Required. The day of week that maintenance updates occur.
+         * - DAY_OF_WEEK_UNSPECIFIED: The day of the week is unspecified.
+         * - MONDAY: Monday
+         * - TUESDAY: Tuesday
+         * - WEDNESDAY: Wednesday
+         * - THURSDAY: Thursday
+         * - FRIDAY: Friday
+         * - SATURDAY: Saturday
+         * - SUNDAY: Sunday
+         * Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+         */
+        day: string;
+        /**
+         * (Output)
+         * Output only. Duration of the maintenance window.
+         * The current window is fixed at 1 hour.
+         * A duration in seconds with up to nine fractional digits,
+         * terminated by 's'. Example: "3.5s".
+         */
+        duration: string;
+        /**
+         * Required. Start time of the window in UTC time.
+         * Structure is documented below.
+         */
+        startTime: outputs.redis.ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTime;
+    }
+
+    export interface ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTime {
+        /**
+         * Hours of day in 24 hour format. Should be from 0 to 23.
+         * An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+         */
+        hours?: number;
+        /**
+         * Minutes of hour of day. Must be from 0 to 59.
+         */
+        minutes?: number;
+        /**
+         * Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+         */
+        nanos?: number;
+        /**
+         * Seconds of minutes of the time. Must normally be from 0 to 59.
+         * An API may allow the value 60 if it allows leap-seconds.
+         */
+        seconds?: number;
+    }
+
+    export interface ClusterMaintenanceSchedule {
+        /**
+         * (Output)
+         * Output only. The end time of any upcoming scheduled maintenance for this cluster.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+         * resolution and up to nine fractional digits.
+         */
+        endTime: string;
+        /**
+         * (Output)
+         * Output only. The deadline that the maintenance schedule start time
+         * can not go beyond, including reschedule.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+         * resolution and up to nine fractional digits.
+         */
+        scheduleDeadlineTime: string;
+        /**
+         * (Output)
+         * Output only. The start time of any upcoming scheduled maintenance for this cluster.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+         * resolution and up to nine fractional digits.
+         */
+        startTime: string;
     }
 
     export interface ClusterPscConfig {

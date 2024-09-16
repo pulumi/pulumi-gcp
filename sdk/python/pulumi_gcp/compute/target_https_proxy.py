@@ -81,6 +81,10 @@ class TargetHttpsProxyArgs:
                INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
                loadBalancingScheme consult ServerTlsPolicy documentation.
                If left blank, communications are not encrypted.
+               If you remove this field from your configuration at the same time as
+               deleting or recreating a referenced ServerTlsPolicy resource, you will
+               receive a resourceInUseByAnotherResource error. Use lifecycle.create_before_destroy
+               within the ServerTlsPolicy resource to avoid this.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssl_certificates: URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
                Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
                sslCertificates and certificateManagerCertificates can not be defined together.
@@ -269,6 +273,10 @@ class TargetHttpsProxyArgs:
         INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
         loadBalancingScheme consult ServerTlsPolicy documentation.
         If left blank, communications are not encrypted.
+        If you remove this field from your configuration at the same time as
+        deleting or recreating a referenced ServerTlsPolicy resource, you will
+        receive a resourceInUseByAnotherResource error. Use lifecycle.create_before_destroy
+        within the ServerTlsPolicy resource to avoid this.
         """
         return pulumi.get(self, "server_tls_policy")
 
@@ -387,6 +395,10 @@ class _TargetHttpsProxyState:
                INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
                loadBalancingScheme consult ServerTlsPolicy documentation.
                If left blank, communications are not encrypted.
+               If you remove this field from your configuration at the same time as
+               deleting or recreating a referenced ServerTlsPolicy resource, you will
+               receive a resourceInUseByAnotherResource error. Use lifecycle.create_before_destroy
+               within the ServerTlsPolicy resource to avoid this.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssl_certificates: URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
                Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
                sslCertificates and certificateManagerCertificates can not be defined together.
@@ -607,6 +619,10 @@ class _TargetHttpsProxyState:
         INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
         loadBalancingScheme consult ServerTlsPolicy documentation.
         If left blank, communications are not encrypted.
+        If you remove this field from your configuration at the same time as
+        deleting or recreating a referenced ServerTlsPolicy resource, you will
+        receive a resourceInUseByAnotherResource error. Use lifecycle.create_before_destroy
+        within the ServerTlsPolicy resource to avoid this.
         """
         return pulumi.get(self, "server_tls_policy")
 
@@ -973,6 +989,10 @@ class TargetHttpsProxy(pulumi.CustomResource):
                INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
                loadBalancingScheme consult ServerTlsPolicy documentation.
                If left blank, communications are not encrypted.
+               If you remove this field from your configuration at the same time as
+               deleting or recreating a referenced ServerTlsPolicy resource, you will
+               receive a resourceInUseByAnotherResource error. Use lifecycle.create_before_destroy
+               within the ServerTlsPolicy resource to avoid this.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssl_certificates: URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
                Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
                sslCertificates and certificateManagerCertificates can not be defined together.
@@ -1364,6 +1384,10 @@ class TargetHttpsProxy(pulumi.CustomResource):
                INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
                loadBalancingScheme consult ServerTlsPolicy documentation.
                If left blank, communications are not encrypted.
+               If you remove this field from your configuration at the same time as
+               deleting or recreating a referenced ServerTlsPolicy resource, you will
+               receive a resourceInUseByAnotherResource error. Use lifecycle.create_before_destroy
+               within the ServerTlsPolicy resource to avoid this.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssl_certificates: URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
                Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
                sslCertificates and certificateManagerCertificates can not be defined together.
@@ -1529,6 +1553,10 @@ class TargetHttpsProxy(pulumi.CustomResource):
         INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
         loadBalancingScheme consult ServerTlsPolicy documentation.
         If left blank, communications are not encrypted.
+        If you remove this field from your configuration at the same time as
+        deleting or recreating a referenced ServerTlsPolicy resource, you will
+        receive a resourceInUseByAnotherResource error. Use lifecycle.create_before_destroy
+        within the ServerTlsPolicy resource to avoid this.
         """
         return pulumi.get(self, "server_tls_policy")
 

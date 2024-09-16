@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.bigqueryanalyticshub.DataExchangeArgs;
 import com.pulumi.gcp.bigqueryanalyticshub.inputs.DataExchangeState;
+import com.pulumi.gcp.bigqueryanalyticshub.outputs.DataExchangeSharingEnvironmentConfig;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Optional;
@@ -56,6 +57,48 @@ import javax.annotation.Nullable;
  *             .dataExchangeId("my_data_exchange")
  *             .displayName("my_data_exchange")
  *             .description("example data exchange")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Bigquery Analyticshub Data Exchange Dcr
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigqueryanalyticshub.DataExchange;
+ * import com.pulumi.gcp.bigqueryanalyticshub.DataExchangeArgs;
+ * import com.pulumi.gcp.bigqueryanalyticshub.inputs.DataExchangeSharingEnvironmentConfigArgs;
+ * import com.pulumi.gcp.bigqueryanalyticshub.inputs.DataExchangeSharingEnvironmentConfigDcrExchangeConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var dataExchange = new DataExchange("dataExchange", DataExchangeArgs.builder()
+ *             .location("US")
+ *             .dataExchangeId("dcr_data_exchange")
+ *             .displayName("dcr_data_exchange")
+ *             .description("example dcr data exchange")
+ *             .sharingEnvironmentConfig(DataExchangeSharingEnvironmentConfigArgs.builder()
+ *                 .dcrExchangeConfig()
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -244,6 +287,24 @@ public class DataExchange extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * Configurable data sharing environment option for a data exchange.
+     * This field is required for data clean room exchanges.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="sharingEnvironmentConfig", refs={DataExchangeSharingEnvironmentConfig.class}, tree="[0]")
+    private Output<DataExchangeSharingEnvironmentConfig> sharingEnvironmentConfig;
+
+    /**
+     * @return Configurable data sharing environment option for a data exchange.
+     * This field is required for data clean room exchanges.
+     * Structure is documented below.
+     * 
+     */
+    public Output<DataExchangeSharingEnvironmentConfig> sharingEnvironmentConfig() {
+        return this.sharingEnvironmentConfig;
     }
 
     /**

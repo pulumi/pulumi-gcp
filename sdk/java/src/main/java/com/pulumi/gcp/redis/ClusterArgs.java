@@ -6,6 +6,7 @@ package com.pulumi.gcp.redis;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyArgs;
 import com.pulumi.gcp.redis.inputs.ClusterPscConfigArgs;
 import com.pulumi.gcp.redis.inputs.ClusterZoneDistributionConfigArgs;
 import java.lang.Boolean;
@@ -56,6 +57,21 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> deletionProtectionEnabled() {
         return Optional.ofNullable(this.deletionProtectionEnabled);
+    }
+
+    /**
+     * Maintenance policy for a cluster
+     * 
+     */
+    @Import(name="maintenancePolicy")
+    private @Nullable Output<ClusterMaintenancePolicyArgs> maintenancePolicy;
+
+    /**
+     * @return Maintenance policy for a cluster
+     * 
+     */
+    public Optional<Output<ClusterMaintenancePolicyArgs>> maintenancePolicy() {
+        return Optional.ofNullable(this.maintenancePolicy);
     }
 
     /**
@@ -223,6 +239,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     private ClusterArgs(ClusterArgs $) {
         this.authorizationMode = $.authorizationMode;
         this.deletionProtectionEnabled = $.deletionProtectionEnabled;
+        this.maintenancePolicy = $.maintenancePolicy;
         this.name = $.name;
         this.nodeType = $.nodeType;
         this.project = $.project;
@@ -299,6 +316,27 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder deletionProtectionEnabled(Boolean deletionProtectionEnabled) {
             return deletionProtectionEnabled(Output.of(deletionProtectionEnabled));
+        }
+
+        /**
+         * @param maintenancePolicy Maintenance policy for a cluster
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenancePolicy(@Nullable Output<ClusterMaintenancePolicyArgs> maintenancePolicy) {
+            $.maintenancePolicy = maintenancePolicy;
+            return this;
+        }
+
+        /**
+         * @param maintenancePolicy Maintenance policy for a cluster
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenancePolicy(ClusterMaintenancePolicyArgs maintenancePolicy) {
+            return maintenancePolicy(Output.of(maintenancePolicy));
         }
 
         /**

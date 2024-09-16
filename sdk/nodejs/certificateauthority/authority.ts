@@ -365,7 +365,8 @@ export class Authority extends pulumi.CustomResource {
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
-     * Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA.
+     * Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA. Possible values:
+     * ENABLED, DISABLED, STAGED.
      */
     public readonly desiredState!: pulumi.Output<string | undefined>;
     /**
@@ -573,7 +574,8 @@ export interface AuthorityState {
     createTime?: pulumi.Input<string>;
     deletionProtection?: pulumi.Input<boolean>;
     /**
-     * Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA.
+     * Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA. Possible values:
+     * ENABLED, DISABLED, STAGED.
      */
     desiredState?: pulumi.Input<string>;
     /**
@@ -685,7 +687,8 @@ export interface AuthorityArgs {
     config: pulumi.Input<inputs.certificateauthority.AuthorityConfig>;
     deletionProtection?: pulumi.Input<boolean>;
     /**
-     * Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA.
+     * Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA. Possible values:
+     * ENABLED, DISABLED, STAGED.
      */
     desiredState?: pulumi.Input<string>;
     /**

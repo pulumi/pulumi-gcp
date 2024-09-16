@@ -24,6 +24,7 @@ import com.pulumi.gcp.alloydb.outputs.ClusterPscConfig;
 import com.pulumi.gcp.alloydb.outputs.ClusterRestoreBackupSource;
 import com.pulumi.gcp.alloydb.outputs.ClusterRestoreContinuousBackupSource;
 import com.pulumi.gcp.alloydb.outputs.ClusterSecondaryConfig;
+import com.pulumi.gcp.alloydb.outputs.ClusterTrialMetadata;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -442,6 +443,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Policy to determine if the cluster should be deleted forcefully.
      * Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
      * Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = &#34;FORCE&#34; otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+     * Possible values: DEFAULT, FORCE
      * 
      */
     @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
@@ -451,6 +453,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * @return Policy to determine if the cluster should be deleted forcefully.
      * Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
      * Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = &#34;FORCE&#34; otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+     * Possible values: DEFAULT, FORCE
      * 
      */
     public Output<Optional<String>> deletionPolicy() {
@@ -779,6 +782,38 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> state() {
         return this.state;
+    }
+    /**
+     * The subscrition type of cluster.
+     * Possible values are: `TRIAL`, `STANDARD`.
+     * 
+     */
+    @Export(name="subscriptionType", refs={String.class}, tree="[0]")
+    private Output<String> subscriptionType;
+
+    /**
+     * @return The subscrition type of cluster.
+     * Possible values are: `TRIAL`, `STANDARD`.
+     * 
+     */
+    public Output<String> subscriptionType() {
+        return this.subscriptionType;
+    }
+    /**
+     * Contains information and all metadata related to TRIAL clusters.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="trialMetadatas", refs={List.class,ClusterTrialMetadata.class}, tree="[0,1]")
+    private Output<List<ClusterTrialMetadata>> trialMetadatas;
+
+    /**
+     * @return Contains information and all metadata related to TRIAL clusters.
+     * Structure is documented below.
+     * 
+     */
+    public Output<List<ClusterTrialMetadata>> trialMetadatas() {
+        return this.trialMetadatas;
     }
     /**
      * The system-generated UID of the resource.

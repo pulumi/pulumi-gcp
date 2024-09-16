@@ -34,6 +34,7 @@ public final class GetProjectResult {
     private String orgId;
     private @Nullable String projectId;
     private Map<String,String> pulumiLabels;
+    private Map<String,String> tags;
 
     private GetProjectResult() {}
     public Boolean autoCreateNetwork() {
@@ -80,6 +81,9 @@ public final class GetProjectResult {
     public Map<String,String> pulumiLabels() {
         return this.pulumiLabels;
     }
+    public Map<String,String> tags() {
+        return this.tags;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -102,6 +106,7 @@ public final class GetProjectResult {
         private String orgId;
         private @Nullable String projectId;
         private Map<String,String> pulumiLabels;
+        private Map<String,String> tags;
         public Builder() {}
         public Builder(GetProjectResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -117,6 +122,7 @@ public final class GetProjectResult {
     	      this.orgId = defaults.orgId;
     	      this.projectId = defaults.projectId;
     	      this.pulumiLabels = defaults.pulumiLabels;
+    	      this.tags = defaults.tags;
         }
 
         @CustomType.Setter
@@ -213,6 +219,14 @@ public final class GetProjectResult {
             this.pulumiLabels = pulumiLabels;
             return this;
         }
+        @CustomType.Setter
+        public Builder tags(Map<String,String> tags) {
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "tags");
+            }
+            this.tags = tags;
+            return this;
+        }
         public GetProjectResult build() {
             final var _resultValue = new GetProjectResult();
             _resultValue.autoCreateNetwork = autoCreateNetwork;
@@ -227,6 +241,7 @@ public final class GetProjectResult {
             _resultValue.orgId = orgId;
             _resultValue.projectId = projectId;
             _resultValue.pulumiLabels = pulumiLabels;
+            _resultValue.tags = tags;
             return _resultValue;
         }
     }

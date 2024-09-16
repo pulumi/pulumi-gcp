@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolProviderAwsArgs;
 import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolProviderOidcArgs;
 import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolProviderSamlArgs;
+import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolProviderX509Args;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
@@ -331,6 +332,25 @@ public final class WorkloadIdentityPoolProviderState extends com.pulumi.resource
         return Optional.ofNullable(this.workloadIdentityPoolProviderId);
     }
 
+    /**
+     * An X.509-type identity provider represents a CA. It is trusted to assert a
+     * client identity if the client has a certificate that chains up to this CA.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="x509")
+    private @Nullable Output<WorkloadIdentityPoolProviderX509Args> x509;
+
+    /**
+     * @return An X.509-type identity provider represents a CA. It is trusted to assert a
+     * client identity if the client has a certificate that chains up to this CA.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<WorkloadIdentityPoolProviderX509Args>> x509() {
+        return Optional.ofNullable(this.x509);
+    }
+
     private WorkloadIdentityPoolProviderState() {}
 
     private WorkloadIdentityPoolProviderState(WorkloadIdentityPoolProviderState $) {
@@ -347,6 +367,7 @@ public final class WorkloadIdentityPoolProviderState extends com.pulumi.resource
         this.state = $.state;
         this.workloadIdentityPoolId = $.workloadIdentityPoolId;
         this.workloadIdentityPoolProviderId = $.workloadIdentityPoolProviderId;
+        this.x509 = $.x509;
     }
 
     public static Builder builder() {
@@ -754,6 +775,31 @@ public final class WorkloadIdentityPoolProviderState extends com.pulumi.resource
          */
         public Builder workloadIdentityPoolProviderId(String workloadIdentityPoolProviderId) {
             return workloadIdentityPoolProviderId(Output.of(workloadIdentityPoolProviderId));
+        }
+
+        /**
+         * @param x509 An X.509-type identity provider represents a CA. It is trusted to assert a
+         * client identity if the client has a certificate that chains up to this CA.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder x509(@Nullable Output<WorkloadIdentityPoolProviderX509Args> x509) {
+            $.x509 = x509;
+            return this;
+        }
+
+        /**
+         * @param x509 An X.509-type identity provider represents a CA. It is trusted to assert a
+         * client identity if the client has a certificate that chains up to this CA.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder x509(WorkloadIdentityPoolProviderX509Args x509) {
+            return x509(Output.of(x509));
         }
 
         public WorkloadIdentityPoolProviderState build() {

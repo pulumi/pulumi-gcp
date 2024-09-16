@@ -1388,6 +1388,8 @@ type SubscriptionCloudStorageConfig struct {
 	// May not exceed the subscription's acknowledgement deadline.
 	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
 	MaxDuration *string `pulumi:"maxDuration"`
+	// The maximum messages that can be written to a Cloud Storage file before a new file is created. Min 1000 messages.
+	MaxMessages *int `pulumi:"maxMessages"`
 	// The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
 	// [service agent](https://cloud.google.com/iam/docs/service-agents),
 	// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
@@ -1427,6 +1429,8 @@ type SubscriptionCloudStorageConfigArgs struct {
 	// May not exceed the subscription's acknowledgement deadline.
 	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
 	MaxDuration pulumi.StringPtrInput `pulumi:"maxDuration"`
+	// The maximum messages that can be written to a Cloud Storage file before a new file is created. Min 1000 messages.
+	MaxMessages pulumi.IntPtrInput `pulumi:"maxMessages"`
 	// The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
 	// [service agent](https://cloud.google.com/iam/docs/service-agents),
 	// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
@@ -1552,6 +1556,11 @@ func (o SubscriptionCloudStorageConfigOutput) MaxDuration() pulumi.StringPtrOutp
 	return o.ApplyT(func(v SubscriptionCloudStorageConfig) *string { return v.MaxDuration }).(pulumi.StringPtrOutput)
 }
 
+// The maximum messages that can be written to a Cloud Storage file before a new file is created. Min 1000 messages.
+func (o SubscriptionCloudStorageConfigOutput) MaxMessages() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SubscriptionCloudStorageConfig) *int { return v.MaxMessages }).(pulumi.IntPtrOutput)
+}
+
 // The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
 // [service agent](https://cloud.google.com/iam/docs/service-agents),
 // service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
@@ -1663,6 +1672,16 @@ func (o SubscriptionCloudStorageConfigPtrOutput) MaxDuration() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// The maximum messages that can be written to a Cloud Storage file before a new file is created. Min 1000 messages.
+func (o SubscriptionCloudStorageConfigPtrOutput) MaxMessages() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SubscriptionCloudStorageConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxMessages
+	}).(pulumi.IntPtrOutput)
+}
+
 // The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
 // [service agent](https://cloud.google.com/iam/docs/service-agents),
 // service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
@@ -1687,6 +1706,8 @@ func (o SubscriptionCloudStorageConfigPtrOutput) State() pulumi.StringPtrOutput 
 }
 
 type SubscriptionCloudStorageConfigAvroConfig struct {
+	// When true, the output Cloud Storage file will be serialized using the topic schema, if it exists.
+	UseTopicSchema *bool `pulumi:"useTopicSchema"`
 	// When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output.
 	WriteMetadata *bool `pulumi:"writeMetadata"`
 }
@@ -1703,6 +1724,8 @@ type SubscriptionCloudStorageConfigAvroConfigInput interface {
 }
 
 type SubscriptionCloudStorageConfigAvroConfigArgs struct {
+	// When true, the output Cloud Storage file will be serialized using the topic schema, if it exists.
+	UseTopicSchema pulumi.BoolPtrInput `pulumi:"useTopicSchema"`
 	// When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output.
 	WriteMetadata pulumi.BoolPtrInput `pulumi:"writeMetadata"`
 }
@@ -1784,6 +1807,11 @@ func (o SubscriptionCloudStorageConfigAvroConfigOutput) ToSubscriptionCloudStora
 	}).(SubscriptionCloudStorageConfigAvroConfigPtrOutput)
 }
 
+// When true, the output Cloud Storage file will be serialized using the topic schema, if it exists.
+func (o SubscriptionCloudStorageConfigAvroConfigOutput) UseTopicSchema() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SubscriptionCloudStorageConfigAvroConfig) *bool { return v.UseTopicSchema }).(pulumi.BoolPtrOutput)
+}
+
 // When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output.
 func (o SubscriptionCloudStorageConfigAvroConfigOutput) WriteMetadata() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SubscriptionCloudStorageConfigAvroConfig) *bool { return v.WriteMetadata }).(pulumi.BoolPtrOutput)
@@ -1811,6 +1839,16 @@ func (o SubscriptionCloudStorageConfigAvroConfigPtrOutput) Elem() SubscriptionCl
 		var ret SubscriptionCloudStorageConfigAvroConfig
 		return ret
 	}).(SubscriptionCloudStorageConfigAvroConfigOutput)
+}
+
+// When true, the output Cloud Storage file will be serialized using the topic schema, if it exists.
+func (o SubscriptionCloudStorageConfigAvroConfigPtrOutput) UseTopicSchema() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SubscriptionCloudStorageConfigAvroConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseTopicSchema
+	}).(pulumi.BoolPtrOutput)
 }
 
 // When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output.
@@ -4506,6 +4544,8 @@ type GetSubscriptionCloudStorageConfig struct {
 	// May not exceed the subscription's acknowledgement deadline.
 	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
 	MaxDuration string `pulumi:"maxDuration"`
+	// The maximum messages that can be written to a Cloud Storage file before a new file is created. Min 1000 messages.
+	MaxMessages int `pulumi:"maxMessages"`
 	// The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
 	// [service agent](https://cloud.google.com/iam/docs/service-agents),
 	// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
@@ -4543,6 +4583,8 @@ type GetSubscriptionCloudStorageConfigArgs struct {
 	// May not exceed the subscription's acknowledgement deadline.
 	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
 	MaxDuration pulumi.StringInput `pulumi:"maxDuration"`
+	// The maximum messages that can be written to a Cloud Storage file before a new file is created. Min 1000 messages.
+	MaxMessages pulumi.IntInput `pulumi:"maxMessages"`
 	// The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
 	// [service agent](https://cloud.google.com/iam/docs/service-agents),
 	// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
@@ -4642,6 +4684,11 @@ func (o GetSubscriptionCloudStorageConfigOutput) MaxDuration() pulumi.StringOutp
 	return o.ApplyT(func(v GetSubscriptionCloudStorageConfig) string { return v.MaxDuration }).(pulumi.StringOutput)
 }
 
+// The maximum messages that can be written to a Cloud Storage file before a new file is created. Min 1000 messages.
+func (o GetSubscriptionCloudStorageConfigOutput) MaxMessages() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSubscriptionCloudStorageConfig) int { return v.MaxMessages }).(pulumi.IntOutput)
+}
+
 // The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
 // [service agent](https://cloud.google.com/iam/docs/service-agents),
 // service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
@@ -4675,6 +4722,8 @@ func (o GetSubscriptionCloudStorageConfigArrayOutput) Index(i pulumi.IntInput) G
 }
 
 type GetSubscriptionCloudStorageConfigAvroConfig struct {
+	// When true, the output Cloud Storage file will be serialized using the topic schema, if it exists.
+	UseTopicSchema bool `pulumi:"useTopicSchema"`
 	// When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output.
 	WriteMetadata bool `pulumi:"writeMetadata"`
 }
@@ -4691,6 +4740,8 @@ type GetSubscriptionCloudStorageConfigAvroConfigInput interface {
 }
 
 type GetSubscriptionCloudStorageConfigAvroConfigArgs struct {
+	// When true, the output Cloud Storage file will be serialized using the topic schema, if it exists.
+	UseTopicSchema pulumi.BoolInput `pulumi:"useTopicSchema"`
 	// When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output.
 	WriteMetadata pulumi.BoolInput `pulumi:"writeMetadata"`
 }
@@ -4744,6 +4795,11 @@ func (o GetSubscriptionCloudStorageConfigAvroConfigOutput) ToGetSubscriptionClou
 
 func (o GetSubscriptionCloudStorageConfigAvroConfigOutput) ToGetSubscriptionCloudStorageConfigAvroConfigOutputWithContext(ctx context.Context) GetSubscriptionCloudStorageConfigAvroConfigOutput {
 	return o
+}
+
+// When true, the output Cloud Storage file will be serialized using the topic schema, if it exists.
+func (o GetSubscriptionCloudStorageConfigAvroConfigOutput) UseTopicSchema() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSubscriptionCloudStorageConfigAvroConfig) bool { return v.UseTopicSchema }).(pulumi.BoolOutput)
 }
 
 // When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output.

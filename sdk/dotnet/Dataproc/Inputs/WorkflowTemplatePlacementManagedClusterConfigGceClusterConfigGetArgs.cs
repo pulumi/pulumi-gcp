@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputMap<string>? _metadata;
 
         /// <summary>
-        /// The Compute Engine metadata entries to add to all instances (see (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
+        /// The Compute Engine metadata entries to add to all instances (see [About VM metadata](https://cloud.google.com/compute/docs/metadata/overview)).
         /// </summary>
         public InputMap<string> Metadata
         {
@@ -88,7 +88,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputList<string>? _tags;
 
         /// <summary>
-        /// The Compute Engine tags to add to all instances (see (https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+        /// The Compute Engine tags to add to all instances (see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)).
         /// </summary>
         public InputList<string> Tags
         {

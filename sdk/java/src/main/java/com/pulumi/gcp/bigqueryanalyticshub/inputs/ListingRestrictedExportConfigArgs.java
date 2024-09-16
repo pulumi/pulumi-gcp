@@ -31,6 +31,23 @@ public final class ListingRestrictedExportConfigArgs extends com.pulumi.resource
     }
 
     /**
+     * (Output)
+     * If true, restrict direct table access(read api/tabledata.list) on linked table.
+     * 
+     */
+    @Import(name="restrictDirectTableAccess")
+    private @Nullable Output<Boolean> restrictDirectTableAccess;
+
+    /**
+     * @return (Output)
+     * If true, restrict direct table access(read api/tabledata.list) on linked table.
+     * 
+     */
+    public Optional<Output<Boolean>> restrictDirectTableAccess() {
+        return Optional.ofNullable(this.restrictDirectTableAccess);
+    }
+
+    /**
      * If true, restrict export of query result derived from restricted linked dataset table.
      * 
      */
@@ -49,6 +66,7 @@ public final class ListingRestrictedExportConfigArgs extends com.pulumi.resource
 
     private ListingRestrictedExportConfigArgs(ListingRestrictedExportConfigArgs $) {
         this.enabled = $.enabled;
+        this.restrictDirectTableAccess = $.restrictDirectTableAccess;
         this.restrictQueryResult = $.restrictQueryResult;
     }
 
@@ -89,6 +107,29 @@ public final class ListingRestrictedExportConfigArgs extends com.pulumi.resource
          */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
+        }
+
+        /**
+         * @param restrictDirectTableAccess (Output)
+         * If true, restrict direct table access(read api/tabledata.list) on linked table.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder restrictDirectTableAccess(@Nullable Output<Boolean> restrictDirectTableAccess) {
+            $.restrictDirectTableAccess = restrictDirectTableAccess;
+            return this;
+        }
+
+        /**
+         * @param restrictDirectTableAccess (Output)
+         * If true, restrict direct table access(read api/tabledata.list) on linked table.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder restrictDirectTableAccess(Boolean restrictDirectTableAccess) {
+            return restrictDirectTableAccess(Output.of(restrictDirectTableAccess));
         }
 
         /**

@@ -60,6 +60,7 @@ export interface GetProjectResult {
     readonly orgId: string;
     readonly projectId?: string;
     readonly pulumiLabels: {[key: string]: string};
+    readonly tags: {[key: string]: string};
 }
 /**
  * Use this data source to get project details.

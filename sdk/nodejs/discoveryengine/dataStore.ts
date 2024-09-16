@@ -154,7 +154,7 @@ export class DataStore extends pulumi.CustomResource {
     public readonly documentProcessingConfig!: pulumi.Output<outputs.discoveryengine.DataStoreDocumentProcessingConfig | undefined>;
     /**
      * The industry vertical that the data store registers.
-     * Possible values are: `GENERIC`, `MEDIA`.
+     * Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
      */
     public readonly industryVertical!: pulumi.Output<string>;
     /**
@@ -186,7 +186,7 @@ export class DataStore extends pulumi.CustomResource {
     public readonly skipDefaultSchemaCreation!: pulumi.Output<boolean | undefined>;
     /**
      * The solutions that the data store enrolls.
-     * Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`.
+     * Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`, `SOLUTION_TYPE_GENERATIVE_CHAT`.
      */
     public readonly solutionTypes!: pulumi.Output<string[] | undefined>;
 
@@ -294,7 +294,7 @@ export interface DataStoreState {
     documentProcessingConfig?: pulumi.Input<inputs.discoveryengine.DataStoreDocumentProcessingConfig>;
     /**
      * The industry vertical that the data store registers.
-     * Possible values are: `GENERIC`, `MEDIA`.
+     * Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
      */
     industryVertical?: pulumi.Input<string>;
     /**
@@ -326,7 +326,7 @@ export interface DataStoreState {
     skipDefaultSchemaCreation?: pulumi.Input<boolean>;
     /**
      * The solutions that the data store enrolls.
-     * Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`.
+     * Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`, `SOLUTION_TYPE_GENERATIVE_CHAT`.
      */
     solutionTypes?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -365,7 +365,7 @@ export interface DataStoreArgs {
     documentProcessingConfig?: pulumi.Input<inputs.discoveryengine.DataStoreDocumentProcessingConfig>;
     /**
      * The industry vertical that the data store registers.
-     * Possible values are: `GENERIC`, `MEDIA`.
+     * Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
      */
     industryVertical: pulumi.Input<string>;
     /**
@@ -390,7 +390,7 @@ export interface DataStoreArgs {
     skipDefaultSchemaCreation?: pulumi.Input<boolean>;
     /**
      * The solutions that the data store enrolls.
-     * Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`.
+     * Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`, `SOLUTION_TYPE_GENERATIVE_CHAT`.
      */
     solutionTypes?: pulumi.Input<pulumi.Input<string>[]>;
 }

@@ -11,6 +11,8 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.redis.ClusterArgs;
 import com.pulumi.gcp.redis.inputs.ClusterState;
 import com.pulumi.gcp.redis.outputs.ClusterDiscoveryEndpoint;
+import com.pulumi.gcp.redis.outputs.ClusterMaintenancePolicy;
+import com.pulumi.gcp.redis.outputs.ClusterMaintenanceSchedule;
 import com.pulumi.gcp.redis.outputs.ClusterPscConfig;
 import com.pulumi.gcp.redis.outputs.ClusterPscConnection;
 import com.pulumi.gcp.redis.outputs.ClusterStateInfo;
@@ -56,6 +58,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.redis.ClusterArgs;
  * import com.pulumi.gcp.redis.inputs.ClusterPscConfigArgs;
  * import com.pulumi.gcp.redis.inputs.ClusterZoneDistributionConfigArgs;
+ * import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -109,6 +112,17 @@ import javax.annotation.Nullable;
  *             .zoneDistributionConfig(ClusterZoneDistributionConfigArgs.builder()
  *                 .mode("MULTI_ZONE")
  *                 .build())
+ *             .maintenancePolicy(ClusterMaintenancePolicyArgs.builder()
+ *                 .weeklyMaintenanceWindows(ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs.builder()
+ *                     .day("MONDAY")
+ *                     .startTime(ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs.builder()
+ *                         .hours(1)
+ *                         .minutes(0)
+ *                         .seconds(0)
+ *                         .nanos(0)
+ *                         .build())
+ *                     .build())
+ *                 .build())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(default_)
  *                 .build());
@@ -139,6 +153,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.redis.ClusterArgs;
  * import com.pulumi.gcp.redis.inputs.ClusterPscConfigArgs;
  * import com.pulumi.gcp.redis.inputs.ClusterZoneDistributionConfigArgs;
+ * import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -186,6 +201,17 @@ import javax.annotation.Nullable;
  *             .zoneDistributionConfig(ClusterZoneDistributionConfigArgs.builder()
  *                 .mode("SINGLE_ZONE")
  *                 .zone("us-central1-f")
+ *                 .build())
+ *             .maintenancePolicy(ClusterMaintenancePolicyArgs.builder()
+ *                 .weeklyMaintenanceWindows(ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs.builder()
+ *                     .day("MONDAY")
+ *                     .startTime(ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs.builder()
+ *                         .hours(1)
+ *                         .minutes(0)
+ *                         .seconds(0)
+ *                         .nanos(0)
+ *                         .build())
+ *                     .build())
  *                 .build())
  *             .deletionProtectionEnabled(true)
  *             .build(), CustomResourceOptions.builder()
@@ -302,6 +328,36 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<List<ClusterDiscoveryEndpoint>> discoveryEndpoints() {
         return this.discoveryEndpoints;
+    }
+    /**
+     * Maintenance policy for a cluster
+     * 
+     */
+    @Export(name="maintenancePolicy", refs={ClusterMaintenancePolicy.class}, tree="[0]")
+    private Output</* @Nullable */ ClusterMaintenancePolicy> maintenancePolicy;
+
+    /**
+     * @return Maintenance policy for a cluster
+     * 
+     */
+    public Output<Optional<ClusterMaintenancePolicy>> maintenancePolicy() {
+        return Codegen.optional(this.maintenancePolicy);
+    }
+    /**
+     * Upcoming maintenance schedule.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="maintenanceSchedules", refs={List.class,ClusterMaintenanceSchedule.class}, tree="[0,1]")
+    private Output<List<ClusterMaintenanceSchedule>> maintenanceSchedules;
+
+    /**
+     * @return Upcoming maintenance schedule.
+     * Structure is documented below.
+     * 
+     */
+    public Output<List<ClusterMaintenanceSchedule>> maintenanceSchedules() {
+        return this.maintenanceSchedules;
     }
     /**
      * Unique name of the resource in this scope including project and location using the form:

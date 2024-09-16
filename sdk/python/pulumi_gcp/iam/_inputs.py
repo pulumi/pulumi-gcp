@@ -55,6 +55,14 @@ __all__ = [
     'WorkloadIdentityPoolProviderOidcArgsDict',
     'WorkloadIdentityPoolProviderSamlArgs',
     'WorkloadIdentityPoolProviderSamlArgsDict',
+    'WorkloadIdentityPoolProviderX509Args',
+    'WorkloadIdentityPoolProviderX509ArgsDict',
+    'WorkloadIdentityPoolProviderX509TrustStoreArgs',
+    'WorkloadIdentityPoolProviderX509TrustStoreArgsDict',
+    'WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgs',
+    'WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgsDict',
+    'WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgs',
+    'WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgsDict',
 ]
 
 MYPY = False
@@ -1567,6 +1575,8 @@ if not MYPY:
         idp_metadata_xml: pulumi.Input[str]
         """
         SAML Identity provider configuration metadata xml doc.
+
+        <a name="nested_x509"></a>The `x509` block supports:
         """
 elif False:
     WorkloadIdentityPoolProviderSamlArgsDict: TypeAlias = Mapping[str, Any]
@@ -1577,6 +1587,8 @@ class WorkloadIdentityPoolProviderSamlArgs:
                  idp_metadata_xml: pulumi.Input[str]):
         """
         :param pulumi.Input[str] idp_metadata_xml: SAML Identity provider configuration metadata xml doc.
+               
+               <a name="nested_x509"></a>The `x509` block supports:
         """
         pulumi.set(__self__, "idp_metadata_xml", idp_metadata_xml)
 
@@ -1585,11 +1597,195 @@ class WorkloadIdentityPoolProviderSamlArgs:
     def idp_metadata_xml(self) -> pulumi.Input[str]:
         """
         SAML Identity provider configuration metadata xml doc.
+
+        <a name="nested_x509"></a>The `x509` block supports:
         """
         return pulumi.get(self, "idp_metadata_xml")
 
     @idp_metadata_xml.setter
     def idp_metadata_xml(self, value: pulumi.Input[str]):
         pulumi.set(self, "idp_metadata_xml", value)
+
+
+if not MYPY:
+    class WorkloadIdentityPoolProviderX509ArgsDict(TypedDict):
+        trust_store: pulumi.Input['WorkloadIdentityPoolProviderX509TrustStoreArgsDict']
+        """
+        A Trust store, use this trust store as a wrapper to config the trust
+        anchor and optional intermediate cas to help build the trust chain for
+        the incoming end entity certificate. Follow the x509 guidelines to
+        define those PEM encoded certs. Only 1 trust store is currently
+        supported.
+        """
+elif False:
+    WorkloadIdentityPoolProviderX509ArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkloadIdentityPoolProviderX509Args:
+    def __init__(__self__, *,
+                 trust_store: pulumi.Input['WorkloadIdentityPoolProviderX509TrustStoreArgs']):
+        """
+        :param pulumi.Input['WorkloadIdentityPoolProviderX509TrustStoreArgs'] trust_store: A Trust store, use this trust store as a wrapper to config the trust
+               anchor and optional intermediate cas to help build the trust chain for
+               the incoming end entity certificate. Follow the x509 guidelines to
+               define those PEM encoded certs. Only 1 trust store is currently
+               supported.
+        """
+        pulumi.set(__self__, "trust_store", trust_store)
+
+    @property
+    @pulumi.getter(name="trustStore")
+    def trust_store(self) -> pulumi.Input['WorkloadIdentityPoolProviderX509TrustStoreArgs']:
+        """
+        A Trust store, use this trust store as a wrapper to config the trust
+        anchor and optional intermediate cas to help build the trust chain for
+        the incoming end entity certificate. Follow the x509 guidelines to
+        define those PEM encoded certs. Only 1 trust store is currently
+        supported.
+        """
+        return pulumi.get(self, "trust_store")
+
+    @trust_store.setter
+    def trust_store(self, value: pulumi.Input['WorkloadIdentityPoolProviderX509TrustStoreArgs']):
+        pulumi.set(self, "trust_store", value)
+
+
+if not MYPY:
+    class WorkloadIdentityPoolProviderX509TrustStoreArgsDict(TypedDict):
+        trust_anchors: pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgsDict']]]
+        """
+        List of Trust Anchors to be used while performing validation
+        against a given TrustStore. The incoming end entity's certificate
+        must be chained up to one of the trust anchors here.
+        Structure is documented below.
+        """
+        intermediate_cas: NotRequired[pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgsDict']]]]
+        """
+        Set of intermediate CA certificates used for building the trust chain to
+        trust anchor.
+        IMPORTANT: Intermediate CAs are only supported when configuring x509 federation.
+        Structure is documented below.
+        """
+elif False:
+    WorkloadIdentityPoolProviderX509TrustStoreArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkloadIdentityPoolProviderX509TrustStoreArgs:
+    def __init__(__self__, *,
+                 trust_anchors: pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgs']]],
+                 intermediate_cas: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgs']]] trust_anchors: List of Trust Anchors to be used while performing validation
+               against a given TrustStore. The incoming end entity's certificate
+               must be chained up to one of the trust anchors here.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgs']]] intermediate_cas: Set of intermediate CA certificates used for building the trust chain to
+               trust anchor.
+               IMPORTANT: Intermediate CAs are only supported when configuring x509 federation.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "trust_anchors", trust_anchors)
+        if intermediate_cas is not None:
+            pulumi.set(__self__, "intermediate_cas", intermediate_cas)
+
+    @property
+    @pulumi.getter(name="trustAnchors")
+    def trust_anchors(self) -> pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgs']]]:
+        """
+        List of Trust Anchors to be used while performing validation
+        against a given TrustStore. The incoming end entity's certificate
+        must be chained up to one of the trust anchors here.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "trust_anchors")
+
+    @trust_anchors.setter
+    def trust_anchors(self, value: pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgs']]]):
+        pulumi.set(self, "trust_anchors", value)
+
+    @property
+    @pulumi.getter(name="intermediateCas")
+    def intermediate_cas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgs']]]]:
+        """
+        Set of intermediate CA certificates used for building the trust chain to
+        trust anchor.
+        IMPORTANT: Intermediate CAs are only supported when configuring x509 federation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "intermediate_cas")
+
+    @intermediate_cas.setter
+    def intermediate_cas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgs']]]]):
+        pulumi.set(self, "intermediate_cas", value)
+
+
+if not MYPY:
+    class WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgsDict(TypedDict):
+        pem_certificate: NotRequired[pulumi.Input[str]]
+        """
+        PEM certificate of the PKI used for validation. Must only contain one
+        ca certificate(either root or intermediate cert).
+        """
+elif False:
+    WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgs:
+    def __init__(__self__, *,
+                 pem_certificate: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] pem_certificate: PEM certificate of the PKI used for validation. Must only contain one
+               ca certificate(either root or intermediate cert).
+        """
+        if pem_certificate is not None:
+            pulumi.set(__self__, "pem_certificate", pem_certificate)
+
+    @property
+    @pulumi.getter(name="pemCertificate")
+    def pem_certificate(self) -> Optional[pulumi.Input[str]]:
+        """
+        PEM certificate of the PKI used for validation. Must only contain one
+        ca certificate(either root or intermediate cert).
+        """
+        return pulumi.get(self, "pem_certificate")
+
+    @pem_certificate.setter
+    def pem_certificate(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pem_certificate", value)
+
+
+if not MYPY:
+    class WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgsDict(TypedDict):
+        pem_certificate: NotRequired[pulumi.Input[str]]
+        """
+        PEM certificate of the PKI used for validation. Must only contain one
+        ca certificate(either root or intermediate cert).
+        """
+elif False:
+    WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgs:
+    def __init__(__self__, *,
+                 pem_certificate: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] pem_certificate: PEM certificate of the PKI used for validation. Must only contain one
+               ca certificate(either root or intermediate cert).
+        """
+        if pem_certificate is not None:
+            pulumi.set(__self__, "pem_certificate", pem_certificate)
+
+    @property
+    @pulumi.getter(name="pemCertificate")
+    def pem_certificate(self) -> Optional[pulumi.Input[str]]:
+        """
+        PEM certificate of the PKI used for validation. Must only contain one
+        ca certificate(either root or intermediate cert).
+        """
+        return pulumi.get(self, "pem_certificate")
+
+    @pem_certificate.setter
+    def pem_certificate(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pem_certificate", value)
 
 

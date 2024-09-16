@@ -892,6 +892,10 @@ if not MYPY:
         """
         IP ranges encompassing the subnets to be excluded from peering.
         """
+        include_export_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        IP ranges allowed to be included from peering.
+        """
 elif False:
     SpokeLinkedVpcNetworkArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -899,14 +903,18 @@ elif False:
 class SpokeLinkedVpcNetworkArgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[str],
-                 exclude_export_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 exclude_export_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 include_export_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] uri: The URI of the VPC network resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_export_ranges: IP ranges encompassing the subnets to be excluded from peering.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] include_export_ranges: IP ranges allowed to be included from peering.
         """
         pulumi.set(__self__, "uri", uri)
         if exclude_export_ranges is not None:
             pulumi.set(__self__, "exclude_export_ranges", exclude_export_ranges)
+        if include_export_ranges is not None:
+            pulumi.set(__self__, "include_export_ranges", include_export_ranges)
 
     @property
     @pulumi.getter
@@ -931,6 +939,18 @@ class SpokeLinkedVpcNetworkArgs:
     @exclude_export_ranges.setter
     def exclude_export_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "exclude_export_ranges", value)
+
+    @property
+    @pulumi.getter(name="includeExportRanges")
+    def include_export_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        IP ranges allowed to be included from peering.
+        """
+        return pulumi.get(self, "include_export_ranges")
+
+    @include_export_ranges.setter
+    def include_export_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "include_export_ranges", value)
 
 
 if not MYPY:

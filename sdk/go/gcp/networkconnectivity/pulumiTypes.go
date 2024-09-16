@@ -1839,6 +1839,8 @@ func (o SpokeLinkedRouterApplianceInstancesInstanceArrayOutput) Index(i pulumi.I
 type SpokeLinkedVpcNetwork struct {
 	// IP ranges encompassing the subnets to be excluded from peering.
 	ExcludeExportRanges []string `pulumi:"excludeExportRanges"`
+	// IP ranges allowed to be included from peering.
+	IncludeExportRanges []string `pulumi:"includeExportRanges"`
 	// The URI of the VPC network resource.
 	Uri string `pulumi:"uri"`
 }
@@ -1857,6 +1859,8 @@ type SpokeLinkedVpcNetworkInput interface {
 type SpokeLinkedVpcNetworkArgs struct {
 	// IP ranges encompassing the subnets to be excluded from peering.
 	ExcludeExportRanges pulumi.StringArrayInput `pulumi:"excludeExportRanges"`
+	// IP ranges allowed to be included from peering.
+	IncludeExportRanges pulumi.StringArrayInput `pulumi:"includeExportRanges"`
 	// The URI of the VPC network resource.
 	Uri pulumi.StringInput `pulumi:"uri"`
 }
@@ -1943,6 +1947,11 @@ func (o SpokeLinkedVpcNetworkOutput) ExcludeExportRanges() pulumi.StringArrayOut
 	return o.ApplyT(func(v SpokeLinkedVpcNetwork) []string { return v.ExcludeExportRanges }).(pulumi.StringArrayOutput)
 }
 
+// IP ranges allowed to be included from peering.
+func (o SpokeLinkedVpcNetworkOutput) IncludeExportRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SpokeLinkedVpcNetwork) []string { return v.IncludeExportRanges }).(pulumi.StringArrayOutput)
+}
+
 // The URI of the VPC network resource.
 func (o SpokeLinkedVpcNetworkOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v SpokeLinkedVpcNetwork) string { return v.Uri }).(pulumi.StringOutput)
@@ -1979,6 +1988,16 @@ func (o SpokeLinkedVpcNetworkPtrOutput) ExcludeExportRanges() pulumi.StringArray
 			return nil
 		}
 		return v.ExcludeExportRanges
+	}).(pulumi.StringArrayOutput)
+}
+
+// IP ranges allowed to be included from peering.
+func (o SpokeLinkedVpcNetworkPtrOutput) IncludeExportRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SpokeLinkedVpcNetwork) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeExportRanges
 	}).(pulumi.StringArrayOutput)
 }
 

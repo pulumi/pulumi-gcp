@@ -153,7 +153,7 @@ type DataStore struct {
 	// Structure is documented below.
 	DocumentProcessingConfig DataStoreDocumentProcessingConfigPtrOutput `pulumi:"documentProcessingConfig"`
 	// The industry vertical that the data store registers.
-	// Possible values are: `GENERIC`, `MEDIA`.
+	// Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
 	IndustryVertical pulumi.StringOutput `pulumi:"industryVertical"`
 	// The geographic location where the data store should reside. The value can
 	// only be one of "global", "us" and "eu".
@@ -175,7 +175,7 @@ type DataStore struct {
 	// specified.
 	SkipDefaultSchemaCreation pulumi.BoolPtrOutput `pulumi:"skipDefaultSchemaCreation"`
 	// The solutions that the data store enrolls.
-	// Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`.
+	// Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`, `SOLUTION_TYPE_GENERATIVE_CHAT`.
 	SolutionTypes pulumi.StringArrayOutput `pulumi:"solutionTypes"`
 }
 
@@ -246,7 +246,7 @@ type dataStoreState struct {
 	// Structure is documented below.
 	DocumentProcessingConfig *DataStoreDocumentProcessingConfig `pulumi:"documentProcessingConfig"`
 	// The industry vertical that the data store registers.
-	// Possible values are: `GENERIC`, `MEDIA`.
+	// Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
 	IndustryVertical *string `pulumi:"industryVertical"`
 	// The geographic location where the data store should reside. The value can
 	// only be one of "global", "us" and "eu".
@@ -268,7 +268,7 @@ type dataStoreState struct {
 	// specified.
 	SkipDefaultSchemaCreation *bool `pulumi:"skipDefaultSchemaCreation"`
 	// The solutions that the data store enrolls.
-	// Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`.
+	// Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`, `SOLUTION_TYPE_GENERATIVE_CHAT`.
 	SolutionTypes []string `pulumi:"solutionTypes"`
 }
 
@@ -295,7 +295,7 @@ type DataStoreState struct {
 	// Structure is documented below.
 	DocumentProcessingConfig DataStoreDocumentProcessingConfigPtrInput
 	// The industry vertical that the data store registers.
-	// Possible values are: `GENERIC`, `MEDIA`.
+	// Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
 	IndustryVertical pulumi.StringPtrInput
 	// The geographic location where the data store should reside. The value can
 	// only be one of "global", "us" and "eu".
@@ -317,7 +317,7 @@ type DataStoreState struct {
 	// specified.
 	SkipDefaultSchemaCreation pulumi.BoolPtrInput
 	// The solutions that the data store enrolls.
-	// Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`.
+	// Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`, `SOLUTION_TYPE_GENERATIVE_CHAT`.
 	SolutionTypes pulumi.StringArrayInput
 }
 
@@ -344,7 +344,7 @@ type dataStoreArgs struct {
 	// Structure is documented below.
 	DocumentProcessingConfig *DataStoreDocumentProcessingConfig `pulumi:"documentProcessingConfig"`
 	// The industry vertical that the data store registers.
-	// Possible values are: `GENERIC`, `MEDIA`.
+	// Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
 	IndustryVertical string `pulumi:"industryVertical"`
 	// The geographic location where the data store should reside. The value can
 	// only be one of "global", "us" and "eu".
@@ -361,7 +361,7 @@ type dataStoreArgs struct {
 	// specified.
 	SkipDefaultSchemaCreation *bool `pulumi:"skipDefaultSchemaCreation"`
 	// The solutions that the data store enrolls.
-	// Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`.
+	// Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`, `SOLUTION_TYPE_GENERATIVE_CHAT`.
 	SolutionTypes []string `pulumi:"solutionTypes"`
 }
 
@@ -385,7 +385,7 @@ type DataStoreArgs struct {
 	// Structure is documented below.
 	DocumentProcessingConfig DataStoreDocumentProcessingConfigPtrInput
 	// The industry vertical that the data store registers.
-	// Possible values are: `GENERIC`, `MEDIA`.
+	// Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
 	IndustryVertical pulumi.StringInput
 	// The geographic location where the data store should reside. The value can
 	// only be one of "global", "us" and "eu".
@@ -402,7 +402,7 @@ type DataStoreArgs struct {
 	// specified.
 	SkipDefaultSchemaCreation pulumi.BoolPtrInput
 	// The solutions that the data store enrolls.
-	// Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`.
+	// Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`, `SOLUTION_TYPE_GENERATIVE_CHAT`.
 	SolutionTypes pulumi.StringArrayInput
 }
 
@@ -536,7 +536,7 @@ func (o DataStoreOutput) DocumentProcessingConfig() DataStoreDocumentProcessingC
 }
 
 // The industry vertical that the data store registers.
-// Possible values are: `GENERIC`, `MEDIA`.
+// Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
 func (o DataStoreOutput) IndustryVertical() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataStore) pulumi.StringOutput { return v.IndustryVertical }).(pulumi.StringOutput)
 }
@@ -573,7 +573,7 @@ func (o DataStoreOutput) SkipDefaultSchemaCreation() pulumi.BoolPtrOutput {
 }
 
 // The solutions that the data store enrolls.
-// Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`.
+// Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`, `SOLUTION_TYPE_GENERATIVE_CHAT`.
 func (o DataStoreOutput) SolutionTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DataStore) pulumi.StringArrayOutput { return v.SolutionTypes }).(pulumi.StringArrayOutput)
 }

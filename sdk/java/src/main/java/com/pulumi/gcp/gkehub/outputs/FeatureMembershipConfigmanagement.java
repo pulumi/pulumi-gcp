@@ -16,7 +16,9 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FeatureMembershipConfigmanagement {
     /**
-     * @return Binauthz configuration for the cluster. Structure is documented below.
+     * @return (Optional, Deprecated)
+     * Binauthz configuration for the cluster. Structure is documented below.
+     * This field will be ignored and should not be set.
      * 
      */
     private @Nullable FeatureMembershipConfigmanagementBinauthz binauthz;
@@ -27,6 +29,10 @@ public final class FeatureMembershipConfigmanagement {
     private @Nullable FeatureMembershipConfigmanagementConfigSync configSync;
     /**
      * @return Hierarchy Controller configuration for the cluster. Structure is documented below.
+     * Configuring Hierarchy Controller through the configmanagement feature is no longer recommended.
+     * Use open source Kubernetes [Hierarchical Namespace Controller (HNC)](https://github.com/kubernetes-sigs/hierarchical-namespaces) instead.
+     * Follow the [instructions](https://cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/migrate-hierarchy-controller)
+     * to migrate from Hierarchy Controller to HNC.
      * 
      */
     private @Nullable FeatureMembershipConfigmanagementHierarchyController hierarchyController;
@@ -37,6 +43,8 @@ public final class FeatureMembershipConfigmanagement {
     private @Nullable String management;
     /**
      * @return Policy Controller configuration for the cluster. Structure is documented below.
+     * Configuring Policy Controller through the configmanagement feature is no longer recommended.
+     * Use the policycontroller feature instead.
      * 
      */
     private @Nullable FeatureMembershipConfigmanagementPolicyController policyController;
@@ -48,7 +56,9 @@ public final class FeatureMembershipConfigmanagement {
 
     private FeatureMembershipConfigmanagement() {}
     /**
-     * @return Binauthz configuration for the cluster. Structure is documented below.
+     * @return (Optional, Deprecated)
+     * Binauthz configuration for the cluster. Structure is documented below.
+     * This field will be ignored and should not be set.
      * 
      */
     public Optional<FeatureMembershipConfigmanagementBinauthz> binauthz() {
@@ -63,6 +73,10 @@ public final class FeatureMembershipConfigmanagement {
     }
     /**
      * @return Hierarchy Controller configuration for the cluster. Structure is documented below.
+     * Configuring Hierarchy Controller through the configmanagement feature is no longer recommended.
+     * Use open source Kubernetes [Hierarchical Namespace Controller (HNC)](https://github.com/kubernetes-sigs/hierarchical-namespaces) instead.
+     * Follow the [instructions](https://cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/migrate-hierarchy-controller)
+     * to migrate from Hierarchy Controller to HNC.
      * 
      */
     public Optional<FeatureMembershipConfigmanagementHierarchyController> hierarchyController() {
@@ -77,6 +91,8 @@ public final class FeatureMembershipConfigmanagement {
     }
     /**
      * @return Policy Controller configuration for the cluster. Structure is documented below.
+     * Configuring Policy Controller through the configmanagement feature is no longer recommended.
+     * Use the policycontroller feature instead.
      * 
      */
     public Optional<FeatureMembershipConfigmanagementPolicyController> policyController() {

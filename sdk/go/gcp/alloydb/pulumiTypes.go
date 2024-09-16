@@ -3648,6 +3648,130 @@ func (o ClusterSecondaryConfigPtrOutput) PrimaryClusterName() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+type ClusterTrialMetadata struct {
+	// End time of the trial cluster.
+	EndTime *string `pulumi:"endTime"`
+	// Grace end time of the trial cluster.
+	GraceEndTime *string `pulumi:"graceEndTime"`
+	// Start time of the trial cluster.
+	StartTime *string `pulumi:"startTime"`
+	// Upgrade time of the trial cluster to standard cluster.
+	UpgradeTime *string `pulumi:"upgradeTime"`
+}
+
+// ClusterTrialMetadataInput is an input type that accepts ClusterTrialMetadataArgs and ClusterTrialMetadataOutput values.
+// You can construct a concrete instance of `ClusterTrialMetadataInput` via:
+//
+//	ClusterTrialMetadataArgs{...}
+type ClusterTrialMetadataInput interface {
+	pulumi.Input
+
+	ToClusterTrialMetadataOutput() ClusterTrialMetadataOutput
+	ToClusterTrialMetadataOutputWithContext(context.Context) ClusterTrialMetadataOutput
+}
+
+type ClusterTrialMetadataArgs struct {
+	// End time of the trial cluster.
+	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
+	// Grace end time of the trial cluster.
+	GraceEndTime pulumi.StringPtrInput `pulumi:"graceEndTime"`
+	// Start time of the trial cluster.
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+	// Upgrade time of the trial cluster to standard cluster.
+	UpgradeTime pulumi.StringPtrInput `pulumi:"upgradeTime"`
+}
+
+func (ClusterTrialMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterTrialMetadata)(nil)).Elem()
+}
+
+func (i ClusterTrialMetadataArgs) ToClusterTrialMetadataOutput() ClusterTrialMetadataOutput {
+	return i.ToClusterTrialMetadataOutputWithContext(context.Background())
+}
+
+func (i ClusterTrialMetadataArgs) ToClusterTrialMetadataOutputWithContext(ctx context.Context) ClusterTrialMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTrialMetadataOutput)
+}
+
+// ClusterTrialMetadataArrayInput is an input type that accepts ClusterTrialMetadataArray and ClusterTrialMetadataArrayOutput values.
+// You can construct a concrete instance of `ClusterTrialMetadataArrayInput` via:
+//
+//	ClusterTrialMetadataArray{ ClusterTrialMetadataArgs{...} }
+type ClusterTrialMetadataArrayInput interface {
+	pulumi.Input
+
+	ToClusterTrialMetadataArrayOutput() ClusterTrialMetadataArrayOutput
+	ToClusterTrialMetadataArrayOutputWithContext(context.Context) ClusterTrialMetadataArrayOutput
+}
+
+type ClusterTrialMetadataArray []ClusterTrialMetadataInput
+
+func (ClusterTrialMetadataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterTrialMetadata)(nil)).Elem()
+}
+
+func (i ClusterTrialMetadataArray) ToClusterTrialMetadataArrayOutput() ClusterTrialMetadataArrayOutput {
+	return i.ToClusterTrialMetadataArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterTrialMetadataArray) ToClusterTrialMetadataArrayOutputWithContext(ctx context.Context) ClusterTrialMetadataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterTrialMetadataArrayOutput)
+}
+
+type ClusterTrialMetadataOutput struct{ *pulumi.OutputState }
+
+func (ClusterTrialMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterTrialMetadata)(nil)).Elem()
+}
+
+func (o ClusterTrialMetadataOutput) ToClusterTrialMetadataOutput() ClusterTrialMetadataOutput {
+	return o
+}
+
+func (o ClusterTrialMetadataOutput) ToClusterTrialMetadataOutputWithContext(ctx context.Context) ClusterTrialMetadataOutput {
+	return o
+}
+
+// End time of the trial cluster.
+func (o ClusterTrialMetadataOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterTrialMetadata) *string { return v.EndTime }).(pulumi.StringPtrOutput)
+}
+
+// Grace end time of the trial cluster.
+func (o ClusterTrialMetadataOutput) GraceEndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterTrialMetadata) *string { return v.GraceEndTime }).(pulumi.StringPtrOutput)
+}
+
+// Start time of the trial cluster.
+func (o ClusterTrialMetadataOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterTrialMetadata) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+// Upgrade time of the trial cluster to standard cluster.
+func (o ClusterTrialMetadataOutput) UpgradeTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterTrialMetadata) *string { return v.UpgradeTime }).(pulumi.StringPtrOutput)
+}
+
+type ClusterTrialMetadataArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterTrialMetadataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterTrialMetadata)(nil)).Elem()
+}
+
+func (o ClusterTrialMetadataArrayOutput) ToClusterTrialMetadataArrayOutput() ClusterTrialMetadataArrayOutput {
+	return o
+}
+
+func (o ClusterTrialMetadataArrayOutput) ToClusterTrialMetadataArrayOutputWithContext(ctx context.Context) ClusterTrialMetadataArrayOutput {
+	return o
+}
+
+func (o ClusterTrialMetadataArrayOutput) Index(i pulumi.IntInput) ClusterTrialMetadataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterTrialMetadata {
+		return vs[0].([]ClusterTrialMetadata)[vs[1].(int)]
+	}).(ClusterTrialMetadataOutput)
+}
+
 type InstanceClientConnectionConfig struct {
 	// Configuration to enforce connectors only (ex: AuthProxy) connections to the database.
 	RequireConnectors *bool `pulumi:"requireConnectors"`
@@ -5625,6 +5749,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterRestoreContinuousBackupSourcePtrInput)(nil)).Elem(), ClusterRestoreContinuousBackupSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterSecondaryConfigInput)(nil)).Elem(), ClusterSecondaryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterSecondaryConfigPtrInput)(nil)).Elem(), ClusterSecondaryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterTrialMetadataInput)(nil)).Elem(), ClusterTrialMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterTrialMetadataArrayInput)(nil)).Elem(), ClusterTrialMetadataArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceClientConnectionConfigInput)(nil)).Elem(), InstanceClientConnectionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceClientConnectionConfigPtrInput)(nil)).Elem(), InstanceClientConnectionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceClientConnectionConfigSslConfigInput)(nil)).Elem(), InstanceClientConnectionConfigSslConfigArgs{})
@@ -5700,6 +5826,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterRestoreContinuousBackupSourcePtrOutput{})
 	pulumi.RegisterOutputType(ClusterSecondaryConfigOutput{})
 	pulumi.RegisterOutputType(ClusterSecondaryConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterTrialMetadataOutput{})
+	pulumi.RegisterOutputType(ClusterTrialMetadataArrayOutput{})
 	pulumi.RegisterOutputType(InstanceClientConnectionConfigOutput{})
 	pulumi.RegisterOutputType(InstanceClientConnectionConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceClientConnectionConfigSslConfigOutput{})

@@ -659,6 +659,8 @@ class SpokeLinkedVpcNetwork(dict):
         suggest = None
         if key == "excludeExportRanges":
             suggest = "exclude_export_ranges"
+        elif key == "includeExportRanges":
+            suggest = "include_export_ranges"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in SpokeLinkedVpcNetwork. Access the value via the '{suggest}' property getter instead.")
@@ -673,14 +675,18 @@ class SpokeLinkedVpcNetwork(dict):
 
     def __init__(__self__, *,
                  uri: str,
-                 exclude_export_ranges: Optional[Sequence[str]] = None):
+                 exclude_export_ranges: Optional[Sequence[str]] = None,
+                 include_export_ranges: Optional[Sequence[str]] = None):
         """
         :param str uri: The URI of the VPC network resource.
         :param Sequence[str] exclude_export_ranges: IP ranges encompassing the subnets to be excluded from peering.
+        :param Sequence[str] include_export_ranges: IP ranges allowed to be included from peering.
         """
         pulumi.set(__self__, "uri", uri)
         if exclude_export_ranges is not None:
             pulumi.set(__self__, "exclude_export_ranges", exclude_export_ranges)
+        if include_export_ranges is not None:
+            pulumi.set(__self__, "include_export_ranges", include_export_ranges)
 
     @property
     @pulumi.getter
@@ -697,6 +703,14 @@ class SpokeLinkedVpcNetwork(dict):
         IP ranges encompassing the subnets to be excluded from peering.
         """
         return pulumi.get(self, "exclude_export_ranges")
+
+    @property
+    @pulumi.getter(name="includeExportRanges")
+    def include_export_ranges(self) -> Optional[Sequence[str]]:
+        """
+        IP ranges allowed to be included from peering.
+        """
+        return pulumi.get(self, "include_export_ranges")
 
 
 @pulumi.output_type

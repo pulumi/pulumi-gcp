@@ -1033,6 +1033,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "backupdisasterrecovery/backupVault",
+  "fqn": "pulumi_gcp.backupdisasterrecovery",
+  "classes": {
+   "gcp:backupdisasterrecovery/backupVault:BackupVault": "BackupVault"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "backupdisasterrecovery/managementServer",
   "fqn": "pulumi_gcp.backupdisasterrecovery",
   "classes": {
@@ -7161,6 +7169,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "securitycenter/v2FolderSccBigQueryExport",
+  "fqn": "pulumi_gcp.securitycenter",
+  "classes": {
+   "gcp:securitycenter/v2FolderSccBigQueryExport:V2FolderSccBigQueryExport": "V2FolderSccBigQueryExport"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "securitycenter/v2OrganizationMuteConfig",
   "fqn": "pulumi_gcp.securitycenter",
   "classes": {
@@ -7229,6 +7245,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.securitycenter",
   "classes": {
    "gcp:securitycenter/v2ProjectNotificationConfig:V2ProjectNotificationConfig": "V2ProjectNotificationConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "securitycenter/v2ProjectSccBigQueryExport",
+  "fqn": "pulumi_gcp.securitycenter",
+  "classes": {
+   "gcp:securitycenter/v2ProjectSccBigQueryExport:V2ProjectSccBigQueryExport": "V2ProjectSccBigQueryExport"
   }
  },
  {

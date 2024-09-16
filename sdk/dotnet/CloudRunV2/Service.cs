@@ -570,7 +570,6 @@ namespace Pulumi.Gcp.CloudRunV2
     ///         Name = "cloudrun-service",
     ///         Location = "us-central1",
     ///         DeletionProtection = false,
-    ///         LaunchStage = "BETA",
     ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
     ///         {
     ///             ExecutionEnvironment = "EXECUTION_ENVIRONMENT_GEN2",
@@ -645,7 +644,6 @@ namespace Pulumi.Gcp.CloudRunV2
     ///         Location = "us-central1",
     ///         DeletionProtection = false,
     ///         Ingress = "INGRESS_TRAFFIC_ALL",
-    ///         LaunchStage = "BETA",
     ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
     ///         {
     ///             ExecutionEnvironment = "EXECUTION_ENVIRONMENT_GEN2",
@@ -688,6 +686,63 @@ namespace Pulumi.Gcp.CloudRunV2
     ///                     },
     ///                 },
     ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Cloudrunv2 Service Mesh
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Time = Pulumi.Time;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var mesh = new Gcp.NetworkServices.Mesh("mesh", new()
+    ///     {
+    ///         Name = "network-services-mesh",
+    ///     });
+    /// 
+    ///     var waitForMesh = new Time.Index.Sleep("wait_for_mesh", new()
+    ///     {
+    ///         CreateDuration = "1m",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             mesh,
+    ///         },
+    ///     });
+    /// 
+    ///     var @default = new Gcp.CloudRunV2.Service("default", new()
+    ///     {
+    ///         Name = "cloudrun-service",
+    ///         DeletionProtection = false,
+    ///         Location = "us-central1",
+    ///         LaunchStage = "BETA",
+    ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
+    ///         {
+    ///             Containers = new[]
+    ///             {
+    ///                 new Gcp.CloudRunV2.Inputs.ServiceTemplateContainerArgs
+    ///                 {
+    ///                     Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                 },
+    ///             },
+    ///             ServiceMesh = new Gcp.CloudRunV2.Inputs.ServiceTemplateServiceMeshArgs
+    ///             {
+    ///                 Mesh = mesh.Id,
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             waitForMesh,
     ///         },
     ///     });
     /// 

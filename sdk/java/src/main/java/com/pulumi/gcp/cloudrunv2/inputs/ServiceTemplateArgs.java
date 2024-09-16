@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateScalingArgs;
+import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateServiceMeshArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVolumeArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVpcAccessArgs;
 import java.lang.Boolean;
@@ -179,6 +180,23 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * Enables Cloud Service Mesh for this Revision.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="serviceMesh")
+    private @Nullable Output<ServiceTemplateServiceMeshArgs> serviceMesh;
+
+    /**
+     * @return Enables Cloud Service Mesh for this Revision.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ServiceTemplateServiceMeshArgs>> serviceMesh() {
+        return Optional.ofNullable(this.serviceMesh);
+    }
+
+    /**
      * Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
      * 
      */
@@ -256,6 +274,7 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
         this.revision = $.revision;
         this.scaling = $.scaling;
         this.serviceAccount = $.serviceAccount;
+        this.serviceMesh = $.serviceMesh;
         this.sessionAffinity = $.sessionAffinity;
         this.timeout = $.timeout;
         this.volumes = $.volumes;
@@ -498,6 +517,29 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder serviceAccount(String serviceAccount) {
             return serviceAccount(Output.of(serviceAccount));
+        }
+
+        /**
+         * @param serviceMesh Enables Cloud Service Mesh for this Revision.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceMesh(@Nullable Output<ServiceTemplateServiceMeshArgs> serviceMesh) {
+            $.serviceMesh = serviceMesh;
+            return this;
+        }
+
+        /**
+         * @param serviceMesh Enables Cloud Service Mesh for this Revision.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceMesh(ServiceTemplateServiceMeshArgs serviceMesh) {
+            return serviceMesh(Output.of(serviceMesh));
         }
 
         /**

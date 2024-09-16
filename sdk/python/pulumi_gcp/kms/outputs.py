@@ -33,6 +33,10 @@ __all__ = [
     'KeyRingIAMMemberCondition',
     'KeyRingImportJobAttestation',
     'KeyRingImportJobPublicKey',
+    'GetCryptoKeyLatestVersionPublicKeyResult',
+    'GetCryptoKeyVersionsPublicKeyResult',
+    'GetCryptoKeyVersionsVersionResult',
+    'GetCryptoKeyVersionsVersionPublicKeyResult',
     'GetCryptoKeysKeyResult',
     'GetCryptoKeysKeyKeyAccessJustificationsPolicyResult',
     'GetCryptoKeysKeyPrimaryResult',
@@ -979,6 +983,166 @@ class KeyRingImportJobPublicKey(dict):
         (Output)
         The public key, encoded in PEM format. For more information, see the RFC 7468 sections
         for General Considerations and Textual Encoding of Subject Public Key Info.
+        """
+        return pulumi.get(self, "pem")
+
+
+@pulumi.output_type
+class GetCryptoKeyLatestVersionPublicKeyResult(dict):
+    def __init__(__self__, *,
+                 algorithm: str,
+                 pem: str):
+        """
+        :param str algorithm: The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
+        :param str pem: The public key, encoded in PEM format. For more information, see the RFC 7468 sections for General Considerations and Textual Encoding of Subject Public Key Info.
+        """
+        pulumi.set(__self__, "algorithm", algorithm)
+        pulumi.set(__self__, "pem", pem)
+
+    @property
+    @pulumi.getter
+    def algorithm(self) -> str:
+        """
+        The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
+        """
+        return pulumi.get(self, "algorithm")
+
+    @property
+    @pulumi.getter
+    def pem(self) -> str:
+        """
+        The public key, encoded in PEM format. For more information, see the RFC 7468 sections for General Considerations and Textual Encoding of Subject Public Key Info.
+        """
+        return pulumi.get(self, "pem")
+
+
+@pulumi.output_type
+class GetCryptoKeyVersionsPublicKeyResult(dict):
+    def __init__(__self__, *,
+                 algorithm: str,
+                 pem: str):
+        """
+        :param str algorithm: The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
+        :param str pem: The public key, encoded in PEM format. For more information, see the RFC 7468 sections for General Considerations and Textual Encoding of Subject Public Key Info.
+        """
+        pulumi.set(__self__, "algorithm", algorithm)
+        pulumi.set(__self__, "pem", pem)
+
+    @property
+    @pulumi.getter
+    def algorithm(self) -> str:
+        """
+        The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
+        """
+        return pulumi.get(self, "algorithm")
+
+    @property
+    @pulumi.getter
+    def pem(self) -> str:
+        """
+        The public key, encoded in PEM format. For more information, see the RFC 7468 sections for General Considerations and Textual Encoding of Subject Public Key Info.
+        """
+        return pulumi.get(self, "pem")
+
+
+@pulumi.output_type
+class GetCryptoKeyVersionsVersionResult(dict):
+    def __init__(__self__, *,
+                 algorithm: str,
+                 crypto_key: str,
+                 id: str,
+                 name: str,
+                 protection_level: str,
+                 public_keys: Sequence['outputs.GetCryptoKeyVersionsVersionPublicKeyResult'],
+                 state: str,
+                 version: int):
+        """
+        :param str algorithm: The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
+        :param str crypto_key: The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the 
+               `kms.CryptoKey` resource/datasource.
+        """
+        pulumi.set(__self__, "algorithm", algorithm)
+        pulumi.set(__self__, "crypto_key", crypto_key)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "protection_level", protection_level)
+        pulumi.set(__self__, "public_keys", public_keys)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def algorithm(self) -> str:
+        """
+        The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
+        """
+        return pulumi.get(self, "algorithm")
+
+    @property
+    @pulumi.getter(name="cryptoKey")
+    def crypto_key(self) -> str:
+        """
+        The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the 
+        `kms.CryptoKey` resource/datasource.
+        """
+        return pulumi.get(self, "crypto_key")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="protectionLevel")
+    def protection_level(self) -> str:
+        return pulumi.get(self, "protection_level")
+
+    @property
+    @pulumi.getter(name="publicKeys")
+    def public_keys(self) -> Sequence['outputs.GetCryptoKeyVersionsVersionPublicKeyResult']:
+        return pulumi.get(self, "public_keys")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def version(self) -> int:
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetCryptoKeyVersionsVersionPublicKeyResult(dict):
+    def __init__(__self__, *,
+                 algorithm: str,
+                 pem: str):
+        """
+        :param str algorithm: The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
+        :param str pem: The public key, encoded in PEM format. For more information, see the RFC 7468 sections for General Considerations and Textual Encoding of Subject Public Key Info.
+        """
+        pulumi.set(__self__, "algorithm", algorithm)
+        pulumi.set(__self__, "pem", pem)
+
+    @property
+    @pulumi.getter
+    def algorithm(self) -> str:
+        """
+        The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
+        """
+        return pulumi.get(self, "algorithm")
+
+    @property
+    @pulumi.getter
+    def pem(self) -> str:
+        """
+        The public key, encoded in PEM format. For more information, see the RFC 7468 sections for General Considerations and Textual Encoding of Subject Public Key Info.
         """
         return pulumi.get(self, "pem")
 

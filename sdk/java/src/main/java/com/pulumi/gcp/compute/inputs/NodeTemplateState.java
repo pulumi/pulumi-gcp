@@ -5,9 +5,11 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.compute.inputs.NodeTemplateAcceleratorArgs;
 import com.pulumi.gcp.compute.inputs.NodeTemplateNodeTypeFlexibilityArgs;
 import com.pulumi.gcp.compute.inputs.NodeTemplateServerBindingArgs;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,6 +19,25 @@ import javax.annotation.Nullable;
 public final class NodeTemplateState extends com.pulumi.resources.ResourceArgs {
 
     public static final NodeTemplateState Empty = new NodeTemplateState();
+
+    /**
+     * List of the type and count of accelerator cards attached to the
+     * node template
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="accelerators")
+    private @Nullable Output<List<NodeTemplateAcceleratorArgs>> accelerators;
+
+    /**
+     * @return List of the type and count of accelerator cards attached to the
+     * node template
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<NodeTemplateAcceleratorArgs>>> accelerators() {
+        return Optional.ofNullable(this.accelerators);
+    }
 
     /**
      * CPU overcommit.
@@ -210,6 +231,7 @@ public final class NodeTemplateState extends com.pulumi.resources.ResourceArgs {
     private NodeTemplateState() {}
 
     private NodeTemplateState(NodeTemplateState $) {
+        this.accelerators = $.accelerators;
         this.cpuOvercommitType = $.cpuOvercommitType;
         this.creationTimestamp = $.creationTimestamp;
         this.description = $.description;
@@ -239,6 +261,43 @@ public final class NodeTemplateState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(NodeTemplateState defaults) {
             $ = new NodeTemplateState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param accelerators List of the type and count of accelerator cards attached to the
+         * node template
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accelerators(@Nullable Output<List<NodeTemplateAcceleratorArgs>> accelerators) {
+            $.accelerators = accelerators;
+            return this;
+        }
+
+        /**
+         * @param accelerators List of the type and count of accelerator cards attached to the
+         * node template
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accelerators(List<NodeTemplateAcceleratorArgs> accelerators) {
+            return accelerators(Output.of(accelerators));
+        }
+
+        /**
+         * @param accelerators List of the type and count of accelerator cards attached to the
+         * node template
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accelerators(NodeTemplateAcceleratorArgs... accelerators) {
+            return accelerators(List.of(accelerators));
         }
 
         /**

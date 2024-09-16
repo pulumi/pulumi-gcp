@@ -155,6 +155,8 @@ __all__ = [
     'StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgsDict',
     'StreamSourceConfigSqlServerSourceConfigArgs',
     'StreamSourceConfigSqlServerSourceConfigArgsDict',
+    'StreamSourceConfigSqlServerSourceConfigChangeTablesArgs',
+    'StreamSourceConfigSqlServerSourceConfigChangeTablesArgsDict',
     'StreamSourceConfigSqlServerSourceConfigExcludeObjectsArgs',
     'StreamSourceConfigSqlServerSourceConfigExcludeObjectsArgsDict',
     'StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArgs',
@@ -171,6 +173,8 @@ __all__ = [
     'StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArgsDict',
     'StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArgs',
     'StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArgsDict',
+    'StreamSourceConfigSqlServerSourceConfigTransactionLogsArgs',
+    'StreamSourceConfigSqlServerSourceConfigTransactionLogsArgsDict',
 ]
 
 MYPY = False
@@ -5645,6 +5649,10 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPost
 
 if not MYPY:
     class StreamSourceConfigSqlServerSourceConfigArgsDict(TypedDict):
+        change_tables: NotRequired[pulumi.Input['StreamSourceConfigSqlServerSourceConfigChangeTablesArgsDict']]
+        """
+        CDC reader reads from change tables.
+        """
         exclude_objects: NotRequired[pulumi.Input['StreamSourceConfigSqlServerSourceConfigExcludeObjectsArgsDict']]
         """
         SQL Server objects to exclude from the stream.
@@ -5663,24 +5671,34 @@ if not MYPY:
         """
         Max concurrent CDC tasks.
         """
+        transaction_logs: NotRequired[pulumi.Input['StreamSourceConfigSqlServerSourceConfigTransactionLogsArgsDict']]
+        """
+        CDC reader reads from transaction logs.
+        """
 elif False:
     StreamSourceConfigSqlServerSourceConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class StreamSourceConfigSqlServerSourceConfigArgs:
     def __init__(__self__, *,
+                 change_tables: Optional[pulumi.Input['StreamSourceConfigSqlServerSourceConfigChangeTablesArgs']] = None,
                  exclude_objects: Optional[pulumi.Input['StreamSourceConfigSqlServerSourceConfigExcludeObjectsArgs']] = None,
                  include_objects: Optional[pulumi.Input['StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgs']] = None,
                  max_concurrent_backfill_tasks: Optional[pulumi.Input[int]] = None,
-                 max_concurrent_cdc_tasks: Optional[pulumi.Input[int]] = None):
+                 max_concurrent_cdc_tasks: Optional[pulumi.Input[int]] = None,
+                 transaction_logs: Optional[pulumi.Input['StreamSourceConfigSqlServerSourceConfigTransactionLogsArgs']] = None):
         """
+        :param pulumi.Input['StreamSourceConfigSqlServerSourceConfigChangeTablesArgs'] change_tables: CDC reader reads from change tables.
         :param pulumi.Input['StreamSourceConfigSqlServerSourceConfigExcludeObjectsArgs'] exclude_objects: SQL Server objects to exclude from the stream.
                Structure is documented below.
         :param pulumi.Input['StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgs'] include_objects: SQL Server objects to retrieve from the source.
                Structure is documented below.
         :param pulumi.Input[int] max_concurrent_backfill_tasks: Max concurrent backfill tasks.
         :param pulumi.Input[int] max_concurrent_cdc_tasks: Max concurrent CDC tasks.
+        :param pulumi.Input['StreamSourceConfigSqlServerSourceConfigTransactionLogsArgs'] transaction_logs: CDC reader reads from transaction logs.
         """
+        if change_tables is not None:
+            pulumi.set(__self__, "change_tables", change_tables)
         if exclude_objects is not None:
             pulumi.set(__self__, "exclude_objects", exclude_objects)
         if include_objects is not None:
@@ -5689,6 +5707,20 @@ class StreamSourceConfigSqlServerSourceConfigArgs:
             pulumi.set(__self__, "max_concurrent_backfill_tasks", max_concurrent_backfill_tasks)
         if max_concurrent_cdc_tasks is not None:
             pulumi.set(__self__, "max_concurrent_cdc_tasks", max_concurrent_cdc_tasks)
+        if transaction_logs is not None:
+            pulumi.set(__self__, "transaction_logs", transaction_logs)
+
+    @property
+    @pulumi.getter(name="changeTables")
+    def change_tables(self) -> Optional[pulumi.Input['StreamSourceConfigSqlServerSourceConfigChangeTablesArgs']]:
+        """
+        CDC reader reads from change tables.
+        """
+        return pulumi.get(self, "change_tables")
+
+    @change_tables.setter
+    def change_tables(self, value: Optional[pulumi.Input['StreamSourceConfigSqlServerSourceConfigChangeTablesArgs']]):
+        pulumi.set(self, "change_tables", value)
 
     @property
     @pulumi.getter(name="excludeObjects")
@@ -5739,6 +5771,30 @@ class StreamSourceConfigSqlServerSourceConfigArgs:
     @max_concurrent_cdc_tasks.setter
     def max_concurrent_cdc_tasks(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_concurrent_cdc_tasks", value)
+
+    @property
+    @pulumi.getter(name="transactionLogs")
+    def transaction_logs(self) -> Optional[pulumi.Input['StreamSourceConfigSqlServerSourceConfigTransactionLogsArgs']]:
+        """
+        CDC reader reads from transaction logs.
+        """
+        return pulumi.get(self, "transaction_logs")
+
+    @transaction_logs.setter
+    def transaction_logs(self, value: Optional[pulumi.Input['StreamSourceConfigSqlServerSourceConfigTransactionLogsArgs']]):
+        pulumi.set(self, "transaction_logs", value)
+
+
+if not MYPY:
+    class StreamSourceConfigSqlServerSourceConfigChangeTablesArgsDict(TypedDict):
+        pass
+elif False:
+    StreamSourceConfigSqlServerSourceConfigChangeTablesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class StreamSourceConfigSqlServerSourceConfigChangeTablesArgs:
+    def __init__(__self__):
+        pass
 
 
 if not MYPY:
@@ -6409,5 +6465,17 @@ class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArgs
     @scale.setter
     def scale(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "scale", value)
+
+
+if not MYPY:
+    class StreamSourceConfigSqlServerSourceConfigTransactionLogsArgsDict(TypedDict):
+        pass
+elif False:
+    StreamSourceConfigSqlServerSourceConfigTransactionLogsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class StreamSourceConfigSqlServerSourceConfigTransactionLogsArgs:
+    def __init__(__self__):
+        pass
 
 

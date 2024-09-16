@@ -697,6 +697,20 @@ public class Certificate extends com.pulumi.resources.CustomResource {
         return this.pulumiLabels;
     }
     /**
+     * The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6)
+     * 
+     */
+    @Export(name="sanDnsnames", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> sanDnsnames;
+
+    /**
+     * @return The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6)
+     * 
+     */
+    public Output<List<String>> sanDnsnames() {
+        return this.sanDnsnames;
+    }
+    /**
      * The scope of the certificate.
      * DEFAULT: Certificates with default scope are served from core Google data centers.
      * If unsure, choose this option.

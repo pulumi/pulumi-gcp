@@ -969,6 +969,63 @@ class HealthCheck(pulumi.CustomResource):
                 "enable": True,
             })
         ```
+        ### Compute Health Check Http Source Regions
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        http_health_check_with_source_regions = gcp.compute.HealthCheck("http-health-check-with-source-regions",
+            name="http-health-check",
+            check_interval_sec=30,
+            http_health_check={
+                "port": 80,
+                "port_specification": "USE_FIXED_PORT",
+            },
+            source_regions=[
+                "us-west1",
+                "us-central1",
+                "us-east5",
+            ])
+        ```
+        ### Compute Health Check Https Source Regions
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        https_health_check_with_source_regions = gcp.compute.HealthCheck("https-health-check-with-source-regions",
+            name="https-health-check",
+            check_interval_sec=30,
+            https_health_check={
+                "port": 80,
+                "port_specification": "USE_FIXED_PORT",
+            },
+            source_regions=[
+                "us-west1",
+                "us-central1",
+                "us-east5",
+            ])
+        ```
+        ### Compute Health Check Tcp Source Regions
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        tcp_health_check_with_source_regions = gcp.compute.HealthCheck("tcp-health-check-with-source-regions",
+            name="tcp-health-check",
+            check_interval_sec=30,
+            tcp_health_check={
+                "port": 80,
+                "port_specification": "USE_FIXED_PORT",
+            },
+            source_regions=[
+                "us-west1",
+                "us-central1",
+                "us-east5",
+            ])
+        ```
 
         ## Import
 
@@ -1301,6 +1358,63 @@ class HealthCheck(pulumi.CustomResource):
             log_config={
                 "enable": True,
             })
+        ```
+        ### Compute Health Check Http Source Regions
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        http_health_check_with_source_regions = gcp.compute.HealthCheck("http-health-check-with-source-regions",
+            name="http-health-check",
+            check_interval_sec=30,
+            http_health_check={
+                "port": 80,
+                "port_specification": "USE_FIXED_PORT",
+            },
+            source_regions=[
+                "us-west1",
+                "us-central1",
+                "us-east5",
+            ])
+        ```
+        ### Compute Health Check Https Source Regions
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        https_health_check_with_source_regions = gcp.compute.HealthCheck("https-health-check-with-source-regions",
+            name="https-health-check",
+            check_interval_sec=30,
+            https_health_check={
+                "port": 80,
+                "port_specification": "USE_FIXED_PORT",
+            },
+            source_regions=[
+                "us-west1",
+                "us-central1",
+                "us-east5",
+            ])
+        ```
+        ### Compute Health Check Tcp Source Regions
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        tcp_health_check_with_source_regions = gcp.compute.HealthCheck("tcp-health-check-with-source-regions",
+            name="tcp-health-check",
+            check_interval_sec=30,
+            tcp_health_check={
+                "port": 80,
+                "port_specification": "USE_FIXED_PORT",
+            },
+            source_regions=[
+                "us-west1",
+                "us-central1",
+                "us-east5",
+            ])
         ```
 
         ## Import

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.discoveryengine.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.discoveryengine.outputs.DataStoreDocumentProcessingConfigChunkingConfig;
 import com.pulumi.gcp.discoveryengine.outputs.DataStoreDocumentProcessingConfigDefaultParsingConfig;
 import com.pulumi.gcp.discoveryengine.outputs.DataStoreDocumentProcessingConfigParsingConfigOverride;
 import java.lang.String;
@@ -14,6 +15,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DataStoreDocumentProcessingConfig {
+    /**
+     * @return Whether chunking mode is enabled.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable DataStoreDocumentProcessingConfigChunkingConfig chunkingConfig;
     /**
      * @return Configurations for default Document parser. If not specified, this resource
      * will be configured to use a default DigitalParsingConfig, and the default parsing
@@ -36,6 +43,14 @@ public final class DataStoreDocumentProcessingConfig {
     private @Nullable List<DataStoreDocumentProcessingConfigParsingConfigOverride> parsingConfigOverrides;
 
     private DataStoreDocumentProcessingConfig() {}
+    /**
+     * @return Whether chunking mode is enabled.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<DataStoreDocumentProcessingConfigChunkingConfig> chunkingConfig() {
+        return Optional.ofNullable(this.chunkingConfig);
+    }
     /**
      * @return Configurations for default Document parser. If not specified, this resource
      * will be configured to use a default DigitalParsingConfig, and the default parsing
@@ -72,17 +87,25 @@ public final class DataStoreDocumentProcessingConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable DataStoreDocumentProcessingConfigChunkingConfig chunkingConfig;
         private @Nullable DataStoreDocumentProcessingConfigDefaultParsingConfig defaultParsingConfig;
         private @Nullable String name;
         private @Nullable List<DataStoreDocumentProcessingConfigParsingConfigOverride> parsingConfigOverrides;
         public Builder() {}
         public Builder(DataStoreDocumentProcessingConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.chunkingConfig = defaults.chunkingConfig;
     	      this.defaultParsingConfig = defaults.defaultParsingConfig;
     	      this.name = defaults.name;
     	      this.parsingConfigOverrides = defaults.parsingConfigOverrides;
         }
 
+        @CustomType.Setter
+        public Builder chunkingConfig(@Nullable DataStoreDocumentProcessingConfigChunkingConfig chunkingConfig) {
+
+            this.chunkingConfig = chunkingConfig;
+            return this;
+        }
         @CustomType.Setter
         public Builder defaultParsingConfig(@Nullable DataStoreDocumentProcessingConfigDefaultParsingConfig defaultParsingConfig) {
 
@@ -106,6 +129,7 @@ public final class DataStoreDocumentProcessingConfig {
         }
         public DataStoreDocumentProcessingConfig build() {
             final var _resultValue = new DataStoreDocumentProcessingConfig();
+            _resultValue.chunkingConfig = chunkingConfig;
             _resultValue.defaultParsingConfig = defaultParsingConfig;
             _resultValue.name = name;
             _resultValue.parsingConfigOverrides = parsingConfigOverrides;

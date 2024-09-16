@@ -285,6 +285,107 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
+    /// ### Iam Workload Identity Pool Provider X509 Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var pool = new Gcp.Iam.WorkloadIdentityPool("pool", new()
+    ///     {
+    ///         WorkloadIdentityPoolId = "example-pool",
+    ///     });
+    /// 
+    ///     var example = new Gcp.Iam.WorkloadIdentityPoolProvider("example", new()
+    ///     {
+    ///         WorkloadIdentityPoolId = pool.WorkloadIdentityPoolId,
+    ///         WorkloadIdentityPoolProviderId = "example-prvdr",
+    ///         AttributeMapping = 
+    ///         {
+    ///             { "google.subject", "assertion.subject.dn.cn" },
+    ///         },
+    ///         X509 = new Gcp.Iam.Inputs.WorkloadIdentityPoolProviderX509Args
+    ///         {
+    ///             TrustStore = new Gcp.Iam.Inputs.WorkloadIdentityPoolProviderX509TrustStoreArgs
+    ///             {
+    ///                 TrustAnchors = new[]
+    ///                 {
+    ///                     new Gcp.Iam.Inputs.WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgs
+    ///                     {
+    ///                         PemCertificate = Std.File.Invoke(new()
+    ///                         {
+    ///                             Input = "test-fixtures/trust_anchor.pem",
+    ///                         }).Apply(invoke =&gt; invoke.Result),
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Iam Workload Identity Pool Provider X509 Full
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var pool = new Gcp.Iam.WorkloadIdentityPool("pool", new()
+    ///     {
+    ///         WorkloadIdentityPoolId = "example-pool",
+    ///     });
+    /// 
+    ///     var example = new Gcp.Iam.WorkloadIdentityPoolProvider("example", new()
+    ///     {
+    ///         WorkloadIdentityPoolId = pool.WorkloadIdentityPoolId,
+    ///         WorkloadIdentityPoolProviderId = "example-prvdr",
+    ///         DisplayName = "Name of provider",
+    ///         Description = "X.509 identity pool provider for automated test",
+    ///         Disabled = true,
+    ///         AttributeMapping = 
+    ///         {
+    ///             { "google.subject", "assertion.subject.dn.cn" },
+    ///         },
+    ///         X509 = new Gcp.Iam.Inputs.WorkloadIdentityPoolProviderX509Args
+    ///         {
+    ///             TrustStore = new Gcp.Iam.Inputs.WorkloadIdentityPoolProviderX509TrustStoreArgs
+    ///             {
+    ///                 TrustAnchors = new[]
+    ///                 {
+    ///                     new Gcp.Iam.Inputs.WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgs
+    ///                     {
+    ///                         PemCertificate = Std.File.Invoke(new()
+    ///                         {
+    ///                             Input = "test-fixtures/trust_anchor.pem",
+    ///                         }).Apply(invoke =&gt; invoke.Result),
+    ///                     },
+    ///                 },
+    ///                 IntermediateCas = new[]
+    ///                 {
+    ///                     new Gcp.Iam.Inputs.WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgs
+    ///                     {
+    ///                         PemCertificate = Std.File.Invoke(new()
+    ///                         {
+    ///                             Input = "test-fixtures/intermediate_ca.pem",
+    ///                         }).Apply(invoke =&gt; invoke.Result),
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -463,6 +564,14 @@ namespace Pulumi.Gcp.Iam
         /// </summary>
         [Output("workloadIdentityPoolProviderId")]
         public Output<string> WorkloadIdentityPoolProviderId { get; private set; } = null!;
+
+        /// <summary>
+        /// An X.509-type identity provider represents a CA. It is trusted to assert a
+        /// client identity if the client has a certificate that chains up to this CA.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("x509")]
+        public Output<Outputs.WorkloadIdentityPoolProviderX509?> X509 { get; private set; } = null!;
 
 
         /// <summary>
@@ -648,6 +757,14 @@ namespace Pulumi.Gcp.Iam
         [Input("workloadIdentityPoolProviderId", required: true)]
         public Input<string> WorkloadIdentityPoolProviderId { get; set; } = null!;
 
+        /// <summary>
+        /// An X.509-type identity provider represents a CA. It is trusted to assert a
+        /// client identity if the client has a certificate that chains up to this CA.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("x509")]
+        public Input<Inputs.WorkloadIdentityPoolProviderX509Args>? X509 { get; set; }
+
         public WorkloadIdentityPoolProviderArgs()
         {
         }
@@ -812,6 +929,14 @@ namespace Pulumi.Gcp.Iam
         /// </summary>
         [Input("workloadIdentityPoolProviderId")]
         public Input<string>? WorkloadIdentityPoolProviderId { get; set; }
+
+        /// <summary>
+        /// An X.509-type identity provider represents a CA. It is trusted to assert a
+        /// client identity if the client has a certificate that chains up to this CA.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("x509")]
+        public Input<Inputs.WorkloadIdentityPoolProviderX509GetArgs>? X509 { get; set; }
 
         public WorkloadIdentityPoolProviderState()
         {

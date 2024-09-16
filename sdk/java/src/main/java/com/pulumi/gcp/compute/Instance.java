@@ -107,6 +107,80 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ### Confidential Computing
+ * 
+ * Example with [Confidential Mode](https://cloud.google.com/confidential-computing/confidential-vm/docs/confidential-vm-overview) activated.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.serviceaccount.Account;
+ * import com.pulumi.gcp.serviceaccount.AccountArgs;
+ * import com.pulumi.gcp.compute.Instance;
+ * import com.pulumi.gcp.compute.InstanceArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceConfidentialInstanceConfigArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceScratchDiskArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceServiceAccountArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Account("default", AccountArgs.builder()
+ *             .accountId("my-custom-sa")
+ *             .displayName("Custom SA for VM Instance")
+ *             .build());
+ * 
+ *         var confidentialInstance = new Instance("confidentialInstance", InstanceArgs.builder()
+ *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
+ *                 .accessConfigs()
+ *                 .network("default")
+ *                 .build())
+ *             .name("my-confidential-instance")
+ *             .zone("us-central1-a")
+ *             .machineType("n2d-standard-2")
+ *             .minCpuPlatform("AMD Milan")
+ *             .confidentialInstanceConfig(InstanceConfidentialInstanceConfigArgs.builder()
+ *                 .enableConfidentialCompute(true)
+ *                 .confidentialInstanceType("SEV")
+ *                 .build())
+ *             .bootDisk(InstanceBootDiskArgs.builder()
+ *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
+ *                     .image("ubuntu-os-cloud/ubuntu-2004-lts")
+ *                     .labels(Map.of("my_label", "value"))
+ *                     .build())
+ *                 .build())
+ *             .scratchDisks(InstanceScratchDiskArgs.builder()
+ *                 .interface_("NVME")
+ *                 .build())
+ *             .serviceAccount(InstanceServiceAccountArgs.builder()
+ *                 .email(default_.email())
+ *                 .scopes("cloud-platform")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * Instances can be imported using any of these accepted formats:
@@ -241,14 +315,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.cpuPlatform;
     }
     /**
-     * The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).`,
+     * The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
      * 
      */
     @Export(name="currentStatus", refs={String.class}, tree="[0]")
     private Output<String> currentStatus;
 
     /**
-     * @return The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).`,
+     * @return The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
      * 
      */
     public Output<String> currentStatus() {

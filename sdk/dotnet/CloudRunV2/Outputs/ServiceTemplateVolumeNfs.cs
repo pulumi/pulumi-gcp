@@ -19,8 +19,6 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         public readonly string Path;
         /// <summary>
         /// If true, mount the NFS volume as read only
-        /// 
-        /// - - -
         /// </summary>
         public readonly bool? ReadOnly;
         /// <summary>

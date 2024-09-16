@@ -333,6 +333,122 @@ import (
 //	}
 //
 // ```
+// ### Iam Workload Identity Pool Provider X509 Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/iam"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			pool, err := iam.NewWorkloadIdentityPool(ctx, "pool", &iam.WorkloadIdentityPoolArgs{
+//				WorkloadIdentityPoolId: pulumi.String("example-pool"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFile, err := std.File(ctx, &std.FileArgs{
+//				Input: "test-fixtures/trust_anchor.pem",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = iam.NewWorkloadIdentityPoolProvider(ctx, "example", &iam.WorkloadIdentityPoolProviderArgs{
+//				WorkloadIdentityPoolId:         pool.WorkloadIdentityPoolId,
+//				WorkloadIdentityPoolProviderId: pulumi.String("example-prvdr"),
+//				AttributeMapping: pulumi.StringMap{
+//					"google.subject": pulumi.String("assertion.subject.dn.cn"),
+//				},
+//				X509: &iam.WorkloadIdentityPoolProviderX509Args{
+//					TrustStore: &iam.WorkloadIdentityPoolProviderX509TrustStoreArgs{
+//						TrustAnchors: iam.WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArray{
+//							&iam.WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgs{
+//								PemCertificate: pulumi.String(invokeFile.Result),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Iam Workload Identity Pool Provider X509 Full
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/iam"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			pool, err := iam.NewWorkloadIdentityPool(ctx, "pool", &iam.WorkloadIdentityPoolArgs{
+//				WorkloadIdentityPoolId: pulumi.String("example-pool"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFile, err := std.File(ctx, &std.FileArgs{
+//				Input: "test-fixtures/trust_anchor.pem",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeFile1, err := std.File(ctx, &std.FileArgs{
+//				Input: "test-fixtures/intermediate_ca.pem",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = iam.NewWorkloadIdentityPoolProvider(ctx, "example", &iam.WorkloadIdentityPoolProviderArgs{
+//				WorkloadIdentityPoolId:         pool.WorkloadIdentityPoolId,
+//				WorkloadIdentityPoolProviderId: pulumi.String("example-prvdr"),
+//				DisplayName:                    pulumi.String("Name of provider"),
+//				Description:                    pulumi.String("X.509 identity pool provider for automated test"),
+//				Disabled:                       pulumi.Bool(true),
+//				AttributeMapping: pulumi.StringMap{
+//					"google.subject": pulumi.String("assertion.subject.dn.cn"),
+//				},
+//				X509: &iam.WorkloadIdentityPoolProviderX509Args{
+//					TrustStore: &iam.WorkloadIdentityPoolProviderX509TrustStoreArgs{
+//						TrustAnchors: iam.WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArray{
+//							&iam.WorkloadIdentityPoolProviderX509TrustStoreTrustAnchorArgs{
+//								PemCertificate: pulumi.String(invokeFile.Result),
+//							},
+//						},
+//						IntermediateCas: iam.WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArray{
+//							&iam.WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgs{
+//								PemCertificate: pulumi.String(invokeFile1.Result),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -444,6 +560,10 @@ type WorkloadIdentityPoolProvider struct {
 	//
 	// ***
 	WorkloadIdentityPoolProviderId pulumi.StringOutput `pulumi:"workloadIdentityPoolProviderId"`
+	// An X.509-type identity provider represents a CA. It is trusted to assert a
+	// client identity if the client has a certificate that chains up to this CA.
+	// Structure is documented below.
+	X509 WorkloadIdentityPoolProviderX509PtrOutput `pulumi:"x509"`
 }
 
 // NewWorkloadIdentityPoolProvider registers a new resource with the given unique name, arguments, and options.
@@ -566,6 +686,10 @@ type workloadIdentityPoolProviderState struct {
 	//
 	// ***
 	WorkloadIdentityPoolProviderId *string `pulumi:"workloadIdentityPoolProviderId"`
+	// An X.509-type identity provider represents a CA. It is trusted to assert a
+	// client identity if the client has a certificate that chains up to this CA.
+	// Structure is documented below.
+	X509 *WorkloadIdentityPoolProviderX509 `pulumi:"x509"`
 }
 
 type WorkloadIdentityPoolProviderState struct {
@@ -653,6 +777,10 @@ type WorkloadIdentityPoolProviderState struct {
 	//
 	// ***
 	WorkloadIdentityPoolProviderId pulumi.StringPtrInput
+	// An X.509-type identity provider represents a CA. It is trusted to assert a
+	// client identity if the client has a certificate that chains up to this CA.
+	// Structure is documented below.
+	X509 WorkloadIdentityPoolProviderX509PtrInput
 }
 
 func (WorkloadIdentityPoolProviderState) ElementType() reflect.Type {
@@ -733,6 +861,10 @@ type workloadIdentityPoolProviderArgs struct {
 	//
 	// ***
 	WorkloadIdentityPoolProviderId string `pulumi:"workloadIdentityPoolProviderId"`
+	// An X.509-type identity provider represents a CA. It is trusted to assert a
+	// client identity if the client has a certificate that chains up to this CA.
+	// Structure is documented below.
+	X509 *WorkloadIdentityPoolProviderX509 `pulumi:"x509"`
 }
 
 // The set of arguments for constructing a WorkloadIdentityPoolProvider resource.
@@ -810,6 +942,10 @@ type WorkloadIdentityPoolProviderArgs struct {
 	//
 	// ***
 	WorkloadIdentityPoolProviderId pulumi.StringInput
+	// An X.509-type identity provider represents a CA. It is trusted to assert a
+	// client identity if the client has a certificate that chains up to this CA.
+	// Structure is documented below.
+	X509 WorkloadIdentityPoolProviderX509PtrInput
 }
 
 func (WorkloadIdentityPoolProviderArgs) ElementType() reflect.Type {
@@ -1020,6 +1156,13 @@ func (o WorkloadIdentityPoolProviderOutput) WorkloadIdentityPoolId() pulumi.Stri
 // ***
 func (o WorkloadIdentityPoolProviderOutput) WorkloadIdentityPoolProviderId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkloadIdentityPoolProvider) pulumi.StringOutput { return v.WorkloadIdentityPoolProviderId }).(pulumi.StringOutput)
+}
+
+// An X.509-type identity provider represents a CA. It is trusted to assert a
+// client identity if the client has a certificate that chains up to this CA.
+// Structure is documented below.
+func (o WorkloadIdentityPoolProviderOutput) X509() WorkloadIdentityPoolProviderX509PtrOutput {
+	return o.ApplyT(func(v *WorkloadIdentityPoolProvider) WorkloadIdentityPoolProviderX509PtrOutput { return v.X509 }).(WorkloadIdentityPoolProviderX509PtrOutput)
 }
 
 type WorkloadIdentityPoolProviderArrayOutput struct{ *pulumi.OutputState }

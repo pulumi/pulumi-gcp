@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new Dataset("default", DatasetArgs.builder()
- *             .datasetId("my_dataset_id")
+ *             .datasetId("")
  *             .friendlyName("test")
  *             .description("This is a test description")
  *             .location("US")
@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  *             .name("my-export")
  *             .bigQueryExportId("my-export")
  *             .organization("123456789")
- *             .dataset("my-dataset")
+ *             .dataset(default_.id())
  *             .location("global")
  *             .description("Cloud Security Command Center Findings Big Query Export Config")
  *             .filter("state=\"ACTIVE\" AND NOT mute=\"MUTED\"")

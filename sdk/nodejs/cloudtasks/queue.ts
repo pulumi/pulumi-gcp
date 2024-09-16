@@ -52,6 +52,102 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Cloud Tasks Queue Http Target Oidc
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const oidcServiceAccount = new gcp.serviceaccount.Account("oidc_service_account", {
+ *     accountId: "example-oidc",
+ *     displayName: "Tasks Queue OIDC Service Account",
+ * });
+ * const httpTargetOidc = new gcp.cloudtasks.Queue("http_target_oidc", {
+ *     name: "cloud-tasks-queue-http-target-oidc",
+ *     location: "us-central1",
+ *     httpTarget: {
+ *         httpMethod: "POST",
+ *         uriOverride: {
+ *             scheme: "HTTPS",
+ *             host: "oidc.example.com",
+ *             port: "8443",
+ *             pathOverride: {
+ *                 path: "/users/1234",
+ *             },
+ *             queryOverride: {
+ *                 queryParams: "qparam1=123&qparam2=456",
+ *             },
+ *             uriOverrideEnforceMode: "IF_NOT_EXISTS",
+ *         },
+ *         headerOverrides: [
+ *             {
+ *                 header: {
+ *                     key: "AddSomethingElse",
+ *                     value: "MyOtherValue",
+ *                 },
+ *             },
+ *             {
+ *                 header: {
+ *                     key: "AddMe",
+ *                     value: "MyValue",
+ *                 },
+ *             },
+ *         ],
+ *         oidcToken: {
+ *             serviceAccountEmail: oidcServiceAccount.email,
+ *             audience: "https://oidc.example.com",
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Cloud Tasks Queue Http Target Oauth
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const oauthServiceAccount = new gcp.serviceaccount.Account("oauth_service_account", {
+ *     accountId: "example-oauth",
+ *     displayName: "Tasks Queue OAuth Service Account",
+ * });
+ * const httpTargetOauth = new gcp.cloudtasks.Queue("http_target_oauth", {
+ *     name: "cloud-tasks-queue-http-target-oauth",
+ *     location: "us-central1",
+ *     httpTarget: {
+ *         httpMethod: "POST",
+ *         uriOverride: {
+ *             scheme: "HTTPS",
+ *             host: "oauth.example.com",
+ *             port: "8443",
+ *             pathOverride: {
+ *                 path: "/users/1234",
+ *             },
+ *             queryOverride: {
+ *                 queryParams: "qparam1=123&qparam2=456",
+ *             },
+ *             uriOverrideEnforceMode: "IF_NOT_EXISTS",
+ *         },
+ *         headerOverrides: [
+ *             {
+ *                 header: {
+ *                     key: "AddSomethingElse",
+ *                     value: "MyOtherValue",
+ *                 },
+ *             },
+ *             {
+ *                 header: {
+ *                     key: "AddMe",
+ *                     value: "MyValue",
+ *                 },
+ *             },
+ *         ],
+ *         oauthToken: {
+ *             serviceAccountEmail: oauthServiceAccount.email,
+ *             scope: "openid https://www.googleapis.com/auth/userinfo.email",
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -112,6 +208,11 @@ export class Queue extends pulumi.CustomResource {
      */
     public readonly appEngineRoutingOverride!: pulumi.Output<outputs.cloudtasks.QueueAppEngineRoutingOverride | undefined>;
     /**
+     * Modifies HTTP target for HTTP tasks.
+     * Structure is documented below.
+     */
+    public readonly httpTarget!: pulumi.Output<outputs.cloudtasks.QueueHttpTarget | undefined>;
+    /**
      * The location of the queue
      *
      *
@@ -163,6 +264,7 @@ export class Queue extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as QueueState | undefined;
             resourceInputs["appEngineRoutingOverride"] = state ? state.appEngineRoutingOverride : undefined;
+            resourceInputs["httpTarget"] = state ? state.httpTarget : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -175,6 +277,7 @@ export class Queue extends pulumi.CustomResource {
                 throw new Error("Missing required property 'location'");
             }
             resourceInputs["appEngineRoutingOverride"] = args ? args.appEngineRoutingOverride : undefined;
+            resourceInputs["httpTarget"] = args ? args.httpTarget : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -197,6 +300,11 @@ export interface QueueState {
      * Structure is documented below.
      */
     appEngineRoutingOverride?: pulumi.Input<inputs.cloudtasks.QueueAppEngineRoutingOverride>;
+    /**
+     * Modifies HTTP target for HTTP tasks.
+     * Structure is documented below.
+     */
+    httpTarget?: pulumi.Input<inputs.cloudtasks.QueueHttpTarget>;
     /**
      * The location of the queue
      *
@@ -246,6 +354,11 @@ export interface QueueArgs {
      * Structure is documented below.
      */
     appEngineRoutingOverride?: pulumi.Input<inputs.cloudtasks.QueueAppEngineRoutingOverride>;
+    /**
+     * Modifies HTTP target for HTTP tasks.
+     * Structure is documented below.
+     */
+    httpTarget?: pulumi.Input<inputs.cloudtasks.QueueHttpTarget>;
     /**
      * The location of the queue
      *

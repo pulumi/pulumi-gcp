@@ -693,7 +693,7 @@ class _InstanceState:
                This defaults to false.
         :param pulumi.Input['InstanceConfidentialInstanceConfigArgs'] confidential_instance_config: Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
         :param pulumi.Input[str] cpu_platform: The CPU platform used by this instance.
-        :param pulumi.Input[str] current_status: The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).`,
+        :param pulumi.Input[str] current_status: The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
         :param pulumi.Input[bool] deletion_protection: Enable deletion protection on this instance. Defaults to false.
                **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
         :param pulumi.Input[str] description: A brief description of this resource.
@@ -955,7 +955,7 @@ class _InstanceState:
     @pulumi.getter(name="currentStatus")
     def current_status(self) -> Optional[pulumi.Input[str]]:
         """
-        The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).`,
+        The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
         """
         return pulumi.get(self, "current_status")
 
@@ -1488,6 +1488,47 @@ class Instance(pulumi.CustomResource):
             })
         ```
 
+        ### Confidential Computing
+
+        Example with [Confidential Mode](https://cloud.google.com/confidential-computing/confidential-vm/docs/confidential-vm-overview) activated.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.serviceaccount.Account("default",
+            account_id="my-custom-sa",
+            display_name="Custom SA for VM Instance")
+        confidential_instance = gcp.compute.Instance("confidential_instance",
+            network_interfaces=[{
+                "access_configs": [{}],
+                "network": "default",
+            }],
+            name="my-confidential-instance",
+            zone="us-central1-a",
+            machine_type="n2d-standard-2",
+            min_cpu_platform="AMD Milan",
+            confidential_instance_config={
+                "enable_confidential_compute": True,
+                "confidential_instance_type": "SEV",
+            },
+            boot_disk={
+                "initialize_params": {
+                    "image": "ubuntu-os-cloud/ubuntu-2004-lts",
+                    "labels": {
+                        "my_label": "value",
+                    },
+                },
+            },
+            scratch_disks=[{
+                "interface": "NVME",
+            }],
+            service_account={
+                "email": default.email,
+                "scopes": ["cloud-platform"],
+            })
+        ```
+
         ## Import
 
         Instances can be imported using any of these accepted formats:
@@ -1653,6 +1694,47 @@ class Instance(pulumi.CustomResource):
                 "foo": "bar",
             },
             metadata_startup_script="echo hi > /test.txt",
+            service_account={
+                "email": default.email,
+                "scopes": ["cloud-platform"],
+            })
+        ```
+
+        ### Confidential Computing
+
+        Example with [Confidential Mode](https://cloud.google.com/confidential-computing/confidential-vm/docs/confidential-vm-overview) activated.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.serviceaccount.Account("default",
+            account_id="my-custom-sa",
+            display_name="Custom SA for VM Instance")
+        confidential_instance = gcp.compute.Instance("confidential_instance",
+            network_interfaces=[{
+                "access_configs": [{}],
+                "network": "default",
+            }],
+            name="my-confidential-instance",
+            zone="us-central1-a",
+            machine_type="n2d-standard-2",
+            min_cpu_platform="AMD Milan",
+            confidential_instance_config={
+                "enable_confidential_compute": True,
+                "confidential_instance_type": "SEV",
+            },
+            boot_disk={
+                "initialize_params": {
+                    "image": "ubuntu-os-cloud/ubuntu-2004-lts",
+                    "labels": {
+                        "my_label": "value",
+                    },
+                },
+            },
+            scratch_disks=[{
+                "interface": "NVME",
+            }],
             service_account={
                 "email": default.email,
                 "scopes": ["cloud-platform"],
@@ -1854,7 +1936,7 @@ class Instance(pulumi.CustomResource):
                This defaults to false.
         :param pulumi.Input[Union['InstanceConfidentialInstanceConfigArgs', 'InstanceConfidentialInstanceConfigArgsDict']] confidential_instance_config: Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
         :param pulumi.Input[str] cpu_platform: The CPU platform used by this instance.
-        :param pulumi.Input[str] current_status: The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).`,
+        :param pulumi.Input[str] current_status: The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
         :param pulumi.Input[bool] deletion_protection: Enable deletion protection on this instance. Defaults to false.
                **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
         :param pulumi.Input[str] description: A brief description of this resource.
@@ -2053,7 +2135,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="currentStatus")
     def current_status(self) -> pulumi.Output[str]:
         """
-        The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).`,
+        The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
         """
         return pulumi.get(self, "current_status")
 

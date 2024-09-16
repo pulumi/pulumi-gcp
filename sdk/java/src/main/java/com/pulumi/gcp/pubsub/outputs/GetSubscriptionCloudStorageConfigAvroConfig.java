@@ -11,12 +11,24 @@ import java.util.Objects;
 @CustomType
 public final class GetSubscriptionCloudStorageConfigAvroConfig {
     /**
+     * @return When true, the output Cloud Storage file will be serialized using the topic schema, if it exists.
+     * 
+     */
+    private Boolean useTopicSchema;
+    /**
      * @return When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output.
      * 
      */
     private Boolean writeMetadata;
 
     private GetSubscriptionCloudStorageConfigAvroConfig() {}
+    /**
+     * @return When true, the output Cloud Storage file will be serialized using the topic schema, if it exists.
+     * 
+     */
+    public Boolean useTopicSchema() {
+        return this.useTopicSchema;
+    }
     /**
      * @return When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output.
      * 
@@ -34,13 +46,23 @@ public final class GetSubscriptionCloudStorageConfigAvroConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Boolean useTopicSchema;
         private Boolean writeMetadata;
         public Builder() {}
         public Builder(GetSubscriptionCloudStorageConfigAvroConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.useTopicSchema = defaults.useTopicSchema;
     	      this.writeMetadata = defaults.writeMetadata;
         }
 
+        @CustomType.Setter
+        public Builder useTopicSchema(Boolean useTopicSchema) {
+            if (useTopicSchema == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionCloudStorageConfigAvroConfig", "useTopicSchema");
+            }
+            this.useTopicSchema = useTopicSchema;
+            return this;
+        }
         @CustomType.Setter
         public Builder writeMetadata(Boolean writeMetadata) {
             if (writeMetadata == null) {
@@ -51,6 +73,7 @@ public final class GetSubscriptionCloudStorageConfigAvroConfig {
         }
         public GetSubscriptionCloudStorageConfigAvroConfig build() {
             final var _resultValue = new GetSubscriptionCloudStorageConfigAvroConfig();
+            _resultValue.useTopicSchema = useTopicSchema;
             _resultValue.writeMetadata = writeMetadata;
             return _resultValue;
         }

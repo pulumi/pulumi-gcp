@@ -1246,11 +1246,19 @@ class FeatureMembershipConfigmanagement(dict):
                  policy_controller: Optional['outputs.FeatureMembershipConfigmanagementPolicyController'] = None,
                  version: Optional[str] = None):
         """
-        :param 'FeatureMembershipConfigmanagementBinauthzArgs' binauthz: Binauthz configuration for the cluster. Structure is documented below.
+        :param 'FeatureMembershipConfigmanagementBinauthzArgs' binauthz: (Optional, Deprecated)
+               Binauthz configuration for the cluster. Structure is documented below.
+               This field will be ignored and should not be set.
         :param 'FeatureMembershipConfigmanagementConfigSyncArgs' config_sync: Config Sync configuration for the cluster. Structure is documented below.
         :param 'FeatureMembershipConfigmanagementHierarchyControllerArgs' hierarchy_controller: Hierarchy Controller configuration for the cluster. Structure is documented below.
+               Configuring Hierarchy Controller through the configmanagement feature is no longer recommended.
+               Use open source Kubernetes [Hierarchical Namespace Controller (HNC)](https://github.com/kubernetes-sigs/hierarchical-namespaces) instead.
+               Follow the [instructions](https://cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/migrate-hierarchy-controller)
+               to migrate from Hierarchy Controller to HNC.
         :param str management: Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
         :param 'FeatureMembershipConfigmanagementPolicyControllerArgs' policy_controller: Policy Controller configuration for the cluster. Structure is documented below.
+               Configuring Policy Controller through the configmanagement feature is no longer recommended.
+               Use the policycontroller feature instead.
         :param str version: Version of ACM installed.
         """
         if binauthz is not None:
@@ -1270,7 +1278,9 @@ class FeatureMembershipConfigmanagement(dict):
     @pulumi.getter
     def binauthz(self) -> Optional['outputs.FeatureMembershipConfigmanagementBinauthz']:
         """
+        (Optional, Deprecated)
         Binauthz configuration for the cluster. Structure is documented below.
+        This field will be ignored and should not be set.
         """
         return pulumi.get(self, "binauthz")
 
@@ -1287,6 +1297,10 @@ class FeatureMembershipConfigmanagement(dict):
     def hierarchy_controller(self) -> Optional['outputs.FeatureMembershipConfigmanagementHierarchyController']:
         """
         Hierarchy Controller configuration for the cluster. Structure is documented below.
+        Configuring Hierarchy Controller through the configmanagement feature is no longer recommended.
+        Use open source Kubernetes [Hierarchical Namespace Controller (HNC)](https://github.com/kubernetes-sigs/hierarchical-namespaces) instead.
+        Follow the [instructions](https://cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/migrate-hierarchy-controller)
+        to migrate from Hierarchy Controller to HNC.
         """
         return pulumi.get(self, "hierarchy_controller")
 
@@ -1303,6 +1317,8 @@ class FeatureMembershipConfigmanagement(dict):
     def policy_controller(self) -> Optional['outputs.FeatureMembershipConfigmanagementPolicyController']:
         """
         Policy Controller configuration for the cluster. Structure is documented below.
+        Configuring Policy Controller through the configmanagement feature is no longer recommended.
+        Use the policycontroller feature instead.
         """
         return pulumi.get(self, "policy_controller")
 

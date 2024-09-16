@@ -734,6 +734,109 @@ class ConnectionProfile(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
         ```
+        ### Database Migration Service Connection Profile Existing Mysql
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        destination_csql = gcp.sql.DatabaseInstance("destination_csql",
+            name="destination-csql",
+            database_version="MYSQL_5_7",
+            settings={
+                "tier": "db-n1-standard-1",
+                "deletion_protection_enabled": False,
+            },
+            deletion_protection=False)
+        existing_mysql = gcp.databasemigrationservice.ConnectionProfile("existing-mysql",
+            location="us-central1",
+            connection_profile_id="destination-cp",
+            display_name="destination-cp_display",
+            labels={
+                "foo": "bar",
+            },
+            mysql={
+                "cloud_sql_id": "destination-csql",
+            },
+            opts = pulumi.ResourceOptions(depends_on=[destination_csql]))
+        ```
+        ### Database Migration Service Connection Profile Existing Postgres
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        destination_csql = gcp.sql.DatabaseInstance("destination_csql",
+            name="destination-csql",
+            database_version="POSTGRES_15",
+            settings={
+                "tier": "db-custom-2-13312",
+                "deletion_protection_enabled": False,
+            },
+            deletion_protection=False)
+        existing_psql = gcp.databasemigrationservice.ConnectionProfile("existing-psql",
+            location="us-central1",
+            connection_profile_id="destination-cp",
+            display_name="destination-cp_display",
+            labels={
+                "foo": "bar",
+            },
+            postgresql={
+                "cloud_sql_id": "destination-csql",
+            },
+            opts = pulumi.ResourceOptions(depends_on=[destination_csql]))
+        ```
+        ### Database Migration Service Connection Profile Existing Alloydb
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        default = gcp.compute.Network("default", name="destination-alloydb")
+        destination_alloydb = gcp.alloydb.Cluster("destination_alloydb",
+            cluster_id="destination-alloydb",
+            location="us-central1",
+            network_config={
+                "network": default.id,
+            },
+            database_version="POSTGRES_15",
+            initial_user={
+                "user": "destination-alloydb",
+                "password": "destination-alloydb",
+            })
+        private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
+            name="destination-alloydb",
+            address_type="INTERNAL",
+            purpose="VPC_PEERING",
+            prefix_length=16,
+            network=default.id)
+        vpc_connection = gcp.servicenetworking.Connection("vpc_connection",
+            network=default.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[private_ip_alloc.name])
+        destination_alloydb_primary = gcp.alloydb.Instance("destination_alloydb_primary",
+            cluster=destination_alloydb.name,
+            instance_id="destination-alloydb-primary",
+            instance_type="PRIMARY",
+            opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
+        existing_alloydb = gcp.databasemigrationservice.ConnectionProfile("existing-alloydb",
+            location="us-central1",
+            connection_profile_id="destination-cp",
+            display_name="destination-cp_display",
+            labels={
+                "foo": "bar",
+            },
+            postgresql={
+                "alloydb_cluster_id": "destination-alloydb",
+            },
+            opts = pulumi.ResourceOptions(depends_on=[
+                    destination_alloydb,
+                    destination_alloydb_primary,
+                ]))
+        ```
 
         ## Import
 
@@ -990,6 +1093,109 @@ class ConnectionProfile(pulumi.CustomResource):
                 },
             },
             opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
+        ```
+        ### Database Migration Service Connection Profile Existing Mysql
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        destination_csql = gcp.sql.DatabaseInstance("destination_csql",
+            name="destination-csql",
+            database_version="MYSQL_5_7",
+            settings={
+                "tier": "db-n1-standard-1",
+                "deletion_protection_enabled": False,
+            },
+            deletion_protection=False)
+        existing_mysql = gcp.databasemigrationservice.ConnectionProfile("existing-mysql",
+            location="us-central1",
+            connection_profile_id="destination-cp",
+            display_name="destination-cp_display",
+            labels={
+                "foo": "bar",
+            },
+            mysql={
+                "cloud_sql_id": "destination-csql",
+            },
+            opts = pulumi.ResourceOptions(depends_on=[destination_csql]))
+        ```
+        ### Database Migration Service Connection Profile Existing Postgres
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        destination_csql = gcp.sql.DatabaseInstance("destination_csql",
+            name="destination-csql",
+            database_version="POSTGRES_15",
+            settings={
+                "tier": "db-custom-2-13312",
+                "deletion_protection_enabled": False,
+            },
+            deletion_protection=False)
+        existing_psql = gcp.databasemigrationservice.ConnectionProfile("existing-psql",
+            location="us-central1",
+            connection_profile_id="destination-cp",
+            display_name="destination-cp_display",
+            labels={
+                "foo": "bar",
+            },
+            postgresql={
+                "cloud_sql_id": "destination-csql",
+            },
+            opts = pulumi.ResourceOptions(depends_on=[destination_csql]))
+        ```
+        ### Database Migration Service Connection Profile Existing Alloydb
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        default = gcp.compute.Network("default", name="destination-alloydb")
+        destination_alloydb = gcp.alloydb.Cluster("destination_alloydb",
+            cluster_id="destination-alloydb",
+            location="us-central1",
+            network_config={
+                "network": default.id,
+            },
+            database_version="POSTGRES_15",
+            initial_user={
+                "user": "destination-alloydb",
+                "password": "destination-alloydb",
+            })
+        private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
+            name="destination-alloydb",
+            address_type="INTERNAL",
+            purpose="VPC_PEERING",
+            prefix_length=16,
+            network=default.id)
+        vpc_connection = gcp.servicenetworking.Connection("vpc_connection",
+            network=default.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[private_ip_alloc.name])
+        destination_alloydb_primary = gcp.alloydb.Instance("destination_alloydb_primary",
+            cluster=destination_alloydb.name,
+            instance_id="destination-alloydb-primary",
+            instance_type="PRIMARY",
+            opts = pulumi.ResourceOptions(depends_on=[vpc_connection]))
+        existing_alloydb = gcp.databasemigrationservice.ConnectionProfile("existing-alloydb",
+            location="us-central1",
+            connection_profile_id="destination-cp",
+            display_name="destination-cp_display",
+            labels={
+                "foo": "bar",
+            },
+            postgresql={
+                "alloydb_cluster_id": "destination-alloydb",
+            },
+            opts = pulumi.ResourceOptions(depends_on=[
+                    destination_alloydb,
+                    destination_alloydb_primary,
+                ]))
         ```
 
         ## Import

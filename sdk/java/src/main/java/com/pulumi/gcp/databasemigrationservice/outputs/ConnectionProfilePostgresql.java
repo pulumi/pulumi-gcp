@@ -4,7 +4,6 @@
 package com.pulumi.gcp.databasemigrationservice.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.databasemigrationservice.outputs.ConnectionProfilePostgresqlSsl;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -16,15 +15,20 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConnectionProfilePostgresql {
     /**
+     * @return If the connected database is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.
+     * 
+     */
+    private @Nullable String alloydbClusterId;
+    /**
      * @return If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
      * 
      */
     private @Nullable String cloudSqlId;
     /**
-     * @return Required. The IP or hostname of the source MySQL database.
+     * @return The IP or hostname of the source MySQL database.
      * 
      */
-    private String host;
+    private @Nullable String host;
     /**
      * @return (Output)
      * Output only. If the source is a Cloud SQL database, this field indicates the network architecture it&#39;s associated with.
@@ -32,12 +36,12 @@ public final class ConnectionProfilePostgresql {
      */
     private @Nullable String networkArchitecture;
     /**
-     * @return Required. Input only. The password for the user that Database Migration Service will be using to connect to the database.
+     * @return Input only. The password for the user that Database Migration Service will be using to connect to the database.
      * This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    private String password;
+    private @Nullable String password;
     /**
      * @return (Output)
      * Output only. Indicates If this connection profile password is stored.
@@ -45,10 +49,10 @@ public final class ConnectionProfilePostgresql {
      */
     private @Nullable Boolean passwordSet;
     /**
-     * @return Required. The network port of the source MySQL database.
+     * @return The network port of the source MySQL database.
      * 
      */
-    private Integer port;
+    private @Nullable Integer port;
     /**
      * @return SSL configuration for the destination to connect to the source database.
      * Structure is documented below.
@@ -56,12 +60,19 @@ public final class ConnectionProfilePostgresql {
      */
     private @Nullable ConnectionProfilePostgresqlSsl ssl;
     /**
-     * @return Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+     * @return The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
      * 
      */
-    private String username;
+    private @Nullable String username;
 
     private ConnectionProfilePostgresql() {}
+    /**
+     * @return If the connected database is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.
+     * 
+     */
+    public Optional<String> alloydbClusterId() {
+        return Optional.ofNullable(this.alloydbClusterId);
+    }
     /**
      * @return If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
      * 
@@ -70,11 +81,11 @@ public final class ConnectionProfilePostgresql {
         return Optional.ofNullable(this.cloudSqlId);
     }
     /**
-     * @return Required. The IP or hostname of the source MySQL database.
+     * @return The IP or hostname of the source MySQL database.
      * 
      */
-    public String host() {
-        return this.host;
+    public Optional<String> host() {
+        return Optional.ofNullable(this.host);
     }
     /**
      * @return (Output)
@@ -85,13 +96,13 @@ public final class ConnectionProfilePostgresql {
         return Optional.ofNullable(this.networkArchitecture);
     }
     /**
-     * @return Required. Input only. The password for the user that Database Migration Service will be using to connect to the database.
+     * @return Input only. The password for the user that Database Migration Service will be using to connect to the database.
      * This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    public String password() {
-        return this.password;
+    public Optional<String> password() {
+        return Optional.ofNullable(this.password);
     }
     /**
      * @return (Output)
@@ -102,11 +113,11 @@ public final class ConnectionProfilePostgresql {
         return Optional.ofNullable(this.passwordSet);
     }
     /**
-     * @return Required. The network port of the source MySQL database.
+     * @return The network port of the source MySQL database.
      * 
      */
-    public Integer port() {
-        return this.port;
+    public Optional<Integer> port() {
+        return Optional.ofNullable(this.port);
     }
     /**
      * @return SSL configuration for the destination to connect to the source database.
@@ -117,11 +128,11 @@ public final class ConnectionProfilePostgresql {
         return Optional.ofNullable(this.ssl);
     }
     /**
-     * @return Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+     * @return The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
      * 
      */
-    public String username() {
-        return this.username;
+    public Optional<String> username() {
+        return Optional.ofNullable(this.username);
     }
 
     public static Builder builder() {
@@ -133,17 +144,19 @@ public final class ConnectionProfilePostgresql {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String alloydbClusterId;
         private @Nullable String cloudSqlId;
-        private String host;
+        private @Nullable String host;
         private @Nullable String networkArchitecture;
-        private String password;
+        private @Nullable String password;
         private @Nullable Boolean passwordSet;
-        private Integer port;
+        private @Nullable Integer port;
         private @Nullable ConnectionProfilePostgresqlSsl ssl;
-        private String username;
+        private @Nullable String username;
         public Builder() {}
         public Builder(ConnectionProfilePostgresql defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.alloydbClusterId = defaults.alloydbClusterId;
     	      this.cloudSqlId = defaults.cloudSqlId;
     	      this.host = defaults.host;
     	      this.networkArchitecture = defaults.networkArchitecture;
@@ -155,16 +168,20 @@ public final class ConnectionProfilePostgresql {
         }
 
         @CustomType.Setter
+        public Builder alloydbClusterId(@Nullable String alloydbClusterId) {
+
+            this.alloydbClusterId = alloydbClusterId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder cloudSqlId(@Nullable String cloudSqlId) {
 
             this.cloudSqlId = cloudSqlId;
             return this;
         }
         @CustomType.Setter
-        public Builder host(String host) {
-            if (host == null) {
-              throw new MissingRequiredPropertyException("ConnectionProfilePostgresql", "host");
-            }
+        public Builder host(@Nullable String host) {
+
             this.host = host;
             return this;
         }
@@ -175,10 +192,8 @@ public final class ConnectionProfilePostgresql {
             return this;
         }
         @CustomType.Setter
-        public Builder password(String password) {
-            if (password == null) {
-              throw new MissingRequiredPropertyException("ConnectionProfilePostgresql", "password");
-            }
+        public Builder password(@Nullable String password) {
+
             this.password = password;
             return this;
         }
@@ -189,10 +204,8 @@ public final class ConnectionProfilePostgresql {
             return this;
         }
         @CustomType.Setter
-        public Builder port(Integer port) {
-            if (port == null) {
-              throw new MissingRequiredPropertyException("ConnectionProfilePostgresql", "port");
-            }
+        public Builder port(@Nullable Integer port) {
+
             this.port = port;
             return this;
         }
@@ -203,15 +216,14 @@ public final class ConnectionProfilePostgresql {
             return this;
         }
         @CustomType.Setter
-        public Builder username(String username) {
-            if (username == null) {
-              throw new MissingRequiredPropertyException("ConnectionProfilePostgresql", "username");
-            }
+        public Builder username(@Nullable String username) {
+
             this.username = username;
             return this;
         }
         public ConnectionProfilePostgresql build() {
             final var _resultValue = new ConnectionProfilePostgresql();
+            _resultValue.alloydbClusterId = alloydbClusterId;
             _resultValue.cloudSqlId = cloudSqlId;
             _resultValue.host = host;
             _resultValue.networkArchitecture = networkArchitecture;

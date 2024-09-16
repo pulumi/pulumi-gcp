@@ -40,6 +40,23 @@ import * as utilities from "../utilities";
  *         },
  *         {
  *             family: "family-second",
+ *             type: "intsum",
+ *         },
+ *         {
+ *             family: "family-third",
+ *             type: `        {
+ * \x09\x09\x09\x09\x09"aggregateType": {
+ * \x09\x09\x09\x09\x09\x09"max": {},
+ * \x09\x09\x09\x09\x09\x09"inputType": {
+ * \x09\x09\x09\x09\x09\x09\x09"int64Type": {
+ * \x09\x09\x09\x09\x09\x09\x09\x09"encoding": {
+ * \x09\x09\x09\x09\x09\x09\x09\x09\x09"bigEndianBytes": {}
+ * \x09\x09\x09\x09\x09\x09\x09\x09}
+ * \x09\x09\x09\x09\x09\x09\x09}
+ * \x09\x09\x09\x09\x09\x09}
+ * \x09\x09\x09\x09\x09}
+ * \x09\x09\x09\x09}
+ * `,
  *         },
  *     ],
  *     changeStreamRetention: "24h0m0s",

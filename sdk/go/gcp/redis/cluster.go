@@ -89,6 +89,19 @@ import (
 //				ZoneDistributionConfig: &redis.ClusterZoneDistributionConfigArgs{
 //					Mode: pulumi.String("MULTI_ZONE"),
 //				},
+//				MaintenancePolicy: &redis.ClusterMaintenancePolicyArgs{
+//					WeeklyMaintenanceWindows: redis.ClusterMaintenancePolicyWeeklyMaintenanceWindowArray{
+//						&redis.ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs{
+//							Day: pulumi.String("MONDAY"),
+//							StartTime: &redis.ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs{
+//								Hours:   pulumi.Int(1),
+//								Minutes: pulumi.Int(0),
+//								Seconds: pulumi.Int(0),
+//								Nanos:   pulumi.Int(0),
+//							},
+//						},
+//					},
+//				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				_default,
 //			}))
@@ -160,6 +173,19 @@ import (
 //					Mode: pulumi.String("SINGLE_ZONE"),
 //					Zone: pulumi.String("us-central1-f"),
 //				},
+//				MaintenancePolicy: &redis.ClusterMaintenancePolicyArgs{
+//					WeeklyMaintenanceWindows: redis.ClusterMaintenancePolicyWeeklyMaintenanceWindowArray{
+//						&redis.ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs{
+//							Day: pulumi.String("MONDAY"),
+//							StartTime: &redis.ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs{
+//								Hours:   pulumi.Int(1),
+//								Minutes: pulumi.Int(0),
+//								Seconds: pulumi.Int(0),
+//								Nanos:   pulumi.Int(0),
+//							},
+//						},
+//					},
+//				},
 //				DeletionProtectionEnabled: pulumi.Bool(true),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				_default,
@@ -221,6 +247,11 @@ type Cluster struct {
 	// Currently only one endpoint is supported.
 	// Structure is documented below.
 	DiscoveryEndpoints ClusterDiscoveryEndpointArrayOutput `pulumi:"discoveryEndpoints"`
+	// Maintenance policy for a cluster
+	MaintenancePolicy ClusterMaintenancePolicyPtrOutput `pulumi:"maintenancePolicy"`
+	// Upcoming maintenance schedule.
+	// Structure is documented below.
+	MaintenanceSchedules ClusterMaintenanceScheduleArrayOutput `pulumi:"maintenanceSchedules"`
 	// Unique name of the resource in this scope including project and location using the form:
 	// projects/{projectId}/locations/{locationId}/clusters/{clusterId}
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -317,6 +348,11 @@ type clusterState struct {
 	// Currently only one endpoint is supported.
 	// Structure is documented below.
 	DiscoveryEndpoints []ClusterDiscoveryEndpoint `pulumi:"discoveryEndpoints"`
+	// Maintenance policy for a cluster
+	MaintenancePolicy *ClusterMaintenancePolicy `pulumi:"maintenancePolicy"`
+	// Upcoming maintenance schedule.
+	// Structure is documented below.
+	MaintenanceSchedules []ClusterMaintenanceSchedule `pulumi:"maintenanceSchedules"`
 	// Unique name of the resource in this scope including project and location using the form:
 	// projects/{projectId}/locations/{locationId}/clusters/{clusterId}
 	Name *string `pulumi:"name"`
@@ -378,6 +414,11 @@ type ClusterState struct {
 	// Currently only one endpoint is supported.
 	// Structure is documented below.
 	DiscoveryEndpoints ClusterDiscoveryEndpointArrayInput
+	// Maintenance policy for a cluster
+	MaintenancePolicy ClusterMaintenancePolicyPtrInput
+	// Upcoming maintenance schedule.
+	// Structure is documented below.
+	MaintenanceSchedules ClusterMaintenanceScheduleArrayInput
 	// Unique name of the resource in this scope including project and location using the form:
 	// projects/{projectId}/locations/{locationId}/clusters/{clusterId}
 	Name pulumi.StringPtrInput
@@ -434,6 +475,8 @@ type clusterArgs struct {
 	// Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
 	// operation will fail. Default value is true.
 	DeletionProtectionEnabled *bool `pulumi:"deletionProtectionEnabled"`
+	// Maintenance policy for a cluster
+	MaintenancePolicy *ClusterMaintenancePolicy `pulumi:"maintenancePolicy"`
 	// Unique name of the resource in this scope including project and location using the form:
 	// projects/{projectId}/locations/{locationId}/clusters/{clusterId}
 	Name *string `pulumi:"name"`
@@ -473,6 +516,8 @@ type ClusterArgs struct {
 	// Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
 	// operation will fail. Default value is true.
 	DeletionProtectionEnabled pulumi.BoolPtrInput
+	// Maintenance policy for a cluster
+	MaintenancePolicy ClusterMaintenancePolicyPtrInput
 	// Unique name of the resource in this scope including project and location using the form:
 	// projects/{projectId}/locations/{locationId}/clusters/{clusterId}
 	Name pulumi.StringPtrInput
@@ -616,6 +661,17 @@ func (o ClusterOutput) DeletionProtectionEnabled() pulumi.BoolPtrOutput {
 // Structure is documented below.
 func (o ClusterOutput) DiscoveryEndpoints() ClusterDiscoveryEndpointArrayOutput {
 	return o.ApplyT(func(v *Cluster) ClusterDiscoveryEndpointArrayOutput { return v.DiscoveryEndpoints }).(ClusterDiscoveryEndpointArrayOutput)
+}
+
+// Maintenance policy for a cluster
+func (o ClusterOutput) MaintenancePolicy() ClusterMaintenancePolicyPtrOutput {
+	return o.ApplyT(func(v *Cluster) ClusterMaintenancePolicyPtrOutput { return v.MaintenancePolicy }).(ClusterMaintenancePolicyPtrOutput)
+}
+
+// Upcoming maintenance schedule.
+// Structure is documented below.
+func (o ClusterOutput) MaintenanceSchedules() ClusterMaintenanceScheduleArrayOutput {
+	return o.ApplyT(func(v *Cluster) ClusterMaintenanceScheduleArrayOutput { return v.MaintenanceSchedules }).(ClusterMaintenanceScheduleArrayOutput)
 }
 
 // Unique name of the resource in this scope including project and location using the form:

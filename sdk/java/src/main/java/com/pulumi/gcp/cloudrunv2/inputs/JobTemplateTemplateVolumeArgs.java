@@ -56,7 +56,7 @@ public final class JobTemplateTemplateVolumeArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Cloud Storage bucket mounted as a volume using GCSFuse. This feature requires the launch stage to be set to ALPHA or BETA.
+     * Cloud Storage bucket mounted as a volume using GCSFuse.
      * Structure is documented below.
      * 
      */
@@ -64,7 +64,7 @@ public final class JobTemplateTemplateVolumeArgs extends com.pulumi.resources.Re
     private @Nullable Output<JobTemplateTemplateVolumeGcsArgs> gcs;
 
     /**
-     * @return Cloud Storage bucket mounted as a volume using GCSFuse. This feature requires the launch stage to be set to ALPHA or BETA.
+     * @return Cloud Storage bucket mounted as a volume using GCSFuse.
      * Structure is documented below.
      * 
      */
@@ -88,7 +88,7 @@ public final class JobTemplateTemplateVolumeArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * NFS share mounted as a volume. This feature requires the launch stage to be set to ALPHA or BETA.
+     * NFS share mounted as a volume.
      * Structure is documented below.
      * 
      */
@@ -96,7 +96,7 @@ public final class JobTemplateTemplateVolumeArgs extends com.pulumi.resources.Re
     private @Nullable Output<JobTemplateTemplateVolumeNfsArgs> nfs;
 
     /**
-     * @return NFS share mounted as a volume. This feature requires the launch stage to be set to ALPHA or BETA.
+     * @return NFS share mounted as a volume.
      * Structure is documented below.
      * 
      */
@@ -197,7 +197,7 @@ public final class JobTemplateTemplateVolumeArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param gcs Cloud Storage bucket mounted as a volume using GCSFuse. This feature requires the launch stage to be set to ALPHA or BETA.
+         * @param gcs Cloud Storage bucket mounted as a volume using GCSFuse.
          * Structure is documented below.
          * 
          * @return builder
@@ -209,7 +209,7 @@ public final class JobTemplateTemplateVolumeArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param gcs Cloud Storage bucket mounted as a volume using GCSFuse. This feature requires the launch stage to be set to ALPHA or BETA.
+         * @param gcs Cloud Storage bucket mounted as a volume using GCSFuse.
          * Structure is documented below.
          * 
          * @return builder
@@ -241,7 +241,7 @@ public final class JobTemplateTemplateVolumeArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param nfs NFS share mounted as a volume. This feature requires the launch stage to be set to ALPHA or BETA.
+         * @param nfs NFS share mounted as a volume.
          * Structure is documented below.
          * 
          * @return builder
@@ -253,7 +253,7 @@ public final class JobTemplateTemplateVolumeArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param nfs NFS share mounted as a volume. This feature requires the launch stage to be set to ALPHA or BETA.
+         * @param nfs NFS share mounted as a volume.
          * Structure is documented below.
          * 
          * @return builder

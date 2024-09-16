@@ -254,7 +254,7 @@ namespace Pulumi.Gcp.Container
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Policy to determine what flags to send on delete.
+        /// Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
         /// </summary>
         [Output("deletionPolicy")]
         public Output<string?> DeletionPolicy { get; private set; } = null!;
@@ -459,7 +459,7 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.AttachedClusterBinaryAuthorizationArgs>? BinaryAuthorization { get; set; }
 
         /// <summary>
-        /// Policy to determine what flags to send on delete.
+        /// Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
@@ -591,7 +591,7 @@ namespace Pulumi.Gcp.Container
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Policy to determine what flags to send on delete.
+        /// Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }

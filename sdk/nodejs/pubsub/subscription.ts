@@ -258,6 +258,7 @@ import * as utilities from "../utilities";
  *         filenameDatetimeFormat: "YYYY-MM-DD/hh_mm_ssZ",
  *         maxBytes: 1000,
  *         maxDuration: "300s",
+ *         maxMessages: 1000,
  *     },
  * }, {
  *     dependsOn: [
@@ -294,8 +295,10 @@ import * as utilities from "../utilities";
  *         filenameDatetimeFormat: "YYYY-MM-DD/hh_mm_ssZ",
  *         maxBytes: 1000,
  *         maxDuration: "300s",
+ *         maxMessages: 1000,
  *         avroConfig: {
  *             writeMetadata: true,
+ *             useTopicSchema: true,
  *         },
  *     },
  * }, {

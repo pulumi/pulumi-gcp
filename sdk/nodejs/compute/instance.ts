@@ -56,6 +56,49 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ### Confidential Computing
+ *
+ * Example with [Confidential Mode](https://cloud.google.com/confidential-computing/confidential-vm/docs/confidential-vm-overview) activated.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.serviceaccount.Account("default", {
+ *     accountId: "my-custom-sa",
+ *     displayName: "Custom SA for VM Instance",
+ * });
+ * const confidentialInstance = new gcp.compute.Instance("confidential_instance", {
+ *     networkInterfaces: [{
+ *         accessConfigs: [{}],
+ *         network: "default",
+ *     }],
+ *     name: "my-confidential-instance",
+ *     zone: "us-central1-a",
+ *     machineType: "n2d-standard-2",
+ *     minCpuPlatform: "AMD Milan",
+ *     confidentialInstanceConfig: {
+ *         enableConfidentialCompute: true,
+ *         confidentialInstanceType: "SEV",
+ *     },
+ *     bootDisk: {
+ *         initializeParams: {
+ *             image: "ubuntu-os-cloud/ubuntu-2004-lts",
+ *             labels: {
+ *                 my_label: "value",
+ *             },
+ *         },
+ *     },
+ *     scratchDisks: [{
+ *         "interface": "NVME",
+ *     }],
+ *     serviceAccount: {
+ *         email: _default.email,
+ *         scopes: ["cloud-platform"],
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * Instances can be imported using any of these accepted formats:
@@ -141,7 +184,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly cpuPlatform!: pulumi.Output<string>;
     /**
-     * The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).`,
+     * The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
      */
     public /*out*/ readonly currentStatus!: pulumi.Output<string>;
     /**
@@ -477,7 +520,7 @@ export interface InstanceState {
      */
     cpuPlatform?: pulumi.Input<string>;
     /**
-     * The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).`,
+     * The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
      */
     currentStatus?: pulumi.Input<string>;
     /**

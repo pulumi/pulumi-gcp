@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateContainer;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateScaling;
+import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateServiceMesh;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateVolume;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateVpcAccess;
 import java.lang.Boolean;
@@ -73,6 +74,11 @@ public final class GetServiceTemplate {
      * 
      */
     private String serviceAccount;
+    /**
+     * @return Enables Cloud Service Mesh for this Revision.
+     * 
+     */
+    private List<GetServiceTemplateServiceMesh> serviceMeshes;
     /**
      * @return Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
      * 
@@ -171,6 +177,13 @@ public final class GetServiceTemplate {
         return this.serviceAccount;
     }
     /**
+     * @return Enables Cloud Service Mesh for this Revision.
+     * 
+     */
+    public List<GetServiceTemplateServiceMesh> serviceMeshes() {
+        return this.serviceMeshes;
+    }
+    /**
      * @return Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
      * 
      */
@@ -219,6 +232,7 @@ public final class GetServiceTemplate {
         private String revision;
         private List<GetServiceTemplateScaling> scalings;
         private String serviceAccount;
+        private List<GetServiceTemplateServiceMesh> serviceMeshes;
         private Boolean sessionAffinity;
         private String timeout;
         private List<GetServiceTemplateVolume> volumes;
@@ -235,6 +249,7 @@ public final class GetServiceTemplate {
     	      this.revision = defaults.revision;
     	      this.scalings = defaults.scalings;
     	      this.serviceAccount = defaults.serviceAccount;
+    	      this.serviceMeshes = defaults.serviceMeshes;
     	      this.sessionAffinity = defaults.sessionAffinity;
     	      this.timeout = defaults.timeout;
     	      this.volumes = defaults.volumes;
@@ -320,6 +335,17 @@ public final class GetServiceTemplate {
             return this;
         }
         @CustomType.Setter
+        public Builder serviceMeshes(List<GetServiceTemplateServiceMesh> serviceMeshes) {
+            if (serviceMeshes == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplate", "serviceMeshes");
+            }
+            this.serviceMeshes = serviceMeshes;
+            return this;
+        }
+        public Builder serviceMeshes(GetServiceTemplateServiceMesh... serviceMeshes) {
+            return serviceMeshes(List.of(serviceMeshes));
+        }
+        @CustomType.Setter
         public Builder sessionAffinity(Boolean sessionAffinity) {
             if (sessionAffinity == null) {
               throw new MissingRequiredPropertyException("GetServiceTemplate", "sessionAffinity");
@@ -368,6 +394,7 @@ public final class GetServiceTemplate {
             _resultValue.revision = revision;
             _resultValue.scalings = scalings;
             _resultValue.serviceAccount = serviceAccount;
+            _resultValue.serviceMeshes = serviceMeshes;
             _resultValue.sessionAffinity = sessionAffinity;
             _resultValue.timeout = timeout;
             _resultValue.volumes = volumes;

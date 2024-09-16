@@ -164,6 +164,41 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ### Confidential Computing
+ *
+ * Example with [Confidential Mode](https://cloud.google.com/confidential-computing/confidential-vm/docs/confidential-vm-overview) activated.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.serviceaccount.Account("default", {
+ *     accountId: "my-custom-sa",
+ *     displayName: "Custom SA for VM Instance",
+ * });
+ * const confidentialInstanceTemplate = new gcp.compute.InstanceTemplate("confidential_instance_template", {
+ *     networkInterfaces: [{
+ *         accessConfigs: [{}],
+ *         network: "default",
+ *     }],
+ *     name: "my-confidential-instance-template",
+ *     region: "us-central1",
+ *     machineType: "n2d-standard-2",
+ *     minCpuPlatform: "AMD Milan",
+ *     confidentialInstanceConfig: {
+ *         enableConfidentialCompute: true,
+ *         confidentialInstanceType: "SEV",
+ *     },
+ *     disks: [{
+ *         sourceImage: "ubuntu-os-cloud/ubuntu-2004-lts",
+ *     }],
+ *     serviceAccount: {
+ *         email: _default.email,
+ *         scopes: ["cloud-platform"],
+ *     },
+ * });
+ * ```
+ *
  * ## Deploying the Latest Image
  *
  * A common way to use instance templates and managed instance groups is to deploy the

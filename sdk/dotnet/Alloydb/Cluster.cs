@@ -303,6 +303,7 @@ namespace Pulumi.Gcp.Alloydb
         /// Policy to determine if the cluster should be deleted forcefully.
         /// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
         /// Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+        /// Possible values: DEFAULT, FORCE
         /// </summary>
         [Output("deletionPolicy")]
         public Output<string?> DeletionPolicy { get; private set; } = null!;
@@ -451,6 +452,20 @@ namespace Pulumi.Gcp.Alloydb
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
+        /// The subscrition type of cluster.
+        /// Possible values are: `TRIAL`, `STANDARD`.
+        /// </summary>
+        [Output("subscriptionType")]
+        public Output<string> SubscriptionType { get; private set; } = null!;
+
+        /// <summary>
+        /// Contains information and all metadata related to TRIAL clusters.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("trialMetadatas")]
+        public Output<ImmutableArray<Outputs.ClusterTrialMetadata>> TrialMetadatas { get; private set; } = null!;
+
+        /// <summary>
         /// The system-generated UID of the resource.
         /// </summary>
         [Output("uid")]
@@ -562,6 +577,7 @@ namespace Pulumi.Gcp.Alloydb
         /// Policy to determine if the cluster should be deleted forcefully.
         /// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
         /// Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+        /// Possible values: DEFAULT, FORCE
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
@@ -664,6 +680,13 @@ namespace Pulumi.Gcp.Alloydb
         [Input("secondaryConfig")]
         public Input<Inputs.ClusterSecondaryConfigArgs>? SecondaryConfig { get; set; }
 
+        /// <summary>
+        /// The subscrition type of cluster.
+        /// Possible values are: `TRIAL`, `STANDARD`.
+        /// </summary>
+        [Input("subscriptionType")]
+        public Input<string>? SubscriptionType { get; set; }
+
         public ClusterArgs()
         {
         }
@@ -753,6 +776,7 @@ namespace Pulumi.Gcp.Alloydb
         /// Policy to determine if the cluster should be deleted forcefully.
         /// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
         /// Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+        /// Possible values: DEFAULT, FORCE
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
@@ -942,6 +966,26 @@ namespace Pulumi.Gcp.Alloydb
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
+
+        /// <summary>
+        /// The subscrition type of cluster.
+        /// Possible values are: `TRIAL`, `STANDARD`.
+        /// </summary>
+        [Input("subscriptionType")]
+        public Input<string>? SubscriptionType { get; set; }
+
+        [Input("trialMetadatas")]
+        private InputList<Inputs.ClusterTrialMetadataGetArgs>? _trialMetadatas;
+
+        /// <summary>
+        /// Contains information and all metadata related to TRIAL clusters.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.ClusterTrialMetadataGetArgs> TrialMetadatas
+        {
+            get => _trialMetadatas ?? (_trialMetadatas = new InputList<Inputs.ClusterTrialMetadataGetArgs>());
+            set => _trialMetadatas = value;
+        }
 
         /// <summary>
         /// The system-generated UID of the resource.

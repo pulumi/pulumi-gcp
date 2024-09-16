@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.dataloss.outputs.PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadence;
 import com.pulumi.gcp.dataloss.outputs.PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadence;
 import com.pulumi.gcp.dataloss.outputs.PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadence;
 import java.util.Objects;
@@ -12,6 +13,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PreventionDiscoveryConfigTargetBigQueryTargetCadence {
+    /**
+     * @return Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadence inspectTemplateModifiedCadence;
     /**
      * @return Governs when to update data profiles when a schema is modified
      * Structure is documented below.
@@ -26,6 +33,14 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetCadence {
     private @Nullable PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadence tableModifiedCadence;
 
     private PreventionDiscoveryConfigTargetBigQueryTargetCadence() {}
+    /**
+     * @return Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadence> inspectTemplateModifiedCadence() {
+        return Optional.ofNullable(this.inspectTemplateModifiedCadence);
+    }
     /**
      * @return Governs when to update data profiles when a schema is modified
      * Structure is documented below.
@@ -52,15 +67,23 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetCadence {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadence inspectTemplateModifiedCadence;
         private @Nullable PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadence schemaModifiedCadence;
         private @Nullable PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadence tableModifiedCadence;
         public Builder() {}
         public Builder(PreventionDiscoveryConfigTargetBigQueryTargetCadence defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.inspectTemplateModifiedCadence = defaults.inspectTemplateModifiedCadence;
     	      this.schemaModifiedCadence = defaults.schemaModifiedCadence;
     	      this.tableModifiedCadence = defaults.tableModifiedCadence;
         }
 
+        @CustomType.Setter
+        public Builder inspectTemplateModifiedCadence(@Nullable PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadence inspectTemplateModifiedCadence) {
+
+            this.inspectTemplateModifiedCadence = inspectTemplateModifiedCadence;
+            return this;
+        }
         @CustomType.Setter
         public Builder schemaModifiedCadence(@Nullable PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadence schemaModifiedCadence) {
 
@@ -75,6 +98,7 @@ public final class PreventionDiscoveryConfigTargetBigQueryTargetCadence {
         }
         public PreventionDiscoveryConfigTargetBigQueryTargetCadence build() {
             final var _resultValue = new PreventionDiscoveryConfigTargetBigQueryTargetCadence();
+            _resultValue.inspectTemplateModifiedCadence = inspectTemplateModifiedCadence;
             _resultValue.schemaModifiedCadence = schemaModifiedCadence;
             _resultValue.tableModifiedCadence = tableModifiedCadence;
             return _resultValue;

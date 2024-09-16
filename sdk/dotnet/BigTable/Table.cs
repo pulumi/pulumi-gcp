@@ -58,6 +58,24 @@ namespace Pulumi.Gcp.BigTable
     ///             new Gcp.BigTable.Inputs.TableColumnFamilyArgs
     ///             {
     ///                 Family = "family-second",
+    ///                 Type = "intsum",
+    ///             },
+    ///             new Gcp.BigTable.Inputs.TableColumnFamilyArgs
+    ///             {
+    ///                 Family = "family-third",
+    ///                 Type = @"        {
+    /// 					""aggregateType"": {
+    /// 						""max"": {},
+    /// 						""inputType"": {
+    /// 							""int64Type"": {
+    /// 								""encoding"": {
+    /// 									""bigEndianBytes"": {}
+    /// 								}
+    /// 							}
+    /// 						}
+    /// 					}
+    /// 				}
+    /// ",
     ///             },
     ///         },
     ///         ChangeStreamRetention = "24h0m0s",

@@ -54,6 +54,7 @@ class VolumeArgs:
         :param pulumi.Input[str] deletion_policy: Policy to determine if the volume should be deleted forcefully.
                Volumes may have nested snapshot resources. Deleting such a volume will fail.
                Setting this parameter to FORCE will delete volumes including nested snapshots.
+               Possible values: DEFAULT, FORCE.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input['VolumeExportPolicyArgs'] export_policy: Export policy of the volume for NFSV3 and/or NFSV4.1 access.
                Structure is documented below.
@@ -200,6 +201,7 @@ class VolumeArgs:
         Policy to determine if the volume should be deleted forcefully.
         Volumes may have nested snapshot resources. Deleting such a volume will fail.
         Setting this parameter to FORCE will delete volumes including nested snapshots.
+        Possible values: DEFAULT, FORCE.
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -429,6 +431,7 @@ class _VolumeState:
         :param pulumi.Input[str] deletion_policy: Policy to determine if the volume should be deleted forcefully.
                Volumes may have nested snapshot resources. Deleting such a volume will fail.
                Setting this parameter to FORCE will delete volumes including nested snapshots.
+               Possible values: DEFAULT, FORCE.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] encryption_type: Reports the data-at-rest encryption type of the volume. Inherited from storage pool.
@@ -611,6 +614,7 @@ class _VolumeState:
         Policy to determine if the volume should be deleted forcefully.
         Volumes may have nested snapshot resources. Deleting such a volume will fail.
         Setting this parameter to FORCE will delete volumes including nested snapshots.
+        Possible values: DEFAULT, FORCE.
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -1118,6 +1122,7 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[str] deletion_policy: Policy to determine if the volume should be deleted forcefully.
                Volumes may have nested snapshot resources. Deleting such a volume will fail.
                Setting this parameter to FORCE will delete volumes including nested snapshots.
+               Possible values: DEFAULT, FORCE.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[Union['VolumeExportPolicyArgs', 'VolumeExportPolicyArgsDict']] export_policy: Export policy of the volume for NFSV3 and/or NFSV4.1 access.
                Structure is documented below.
@@ -1376,6 +1381,7 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[str] deletion_policy: Policy to determine if the volume should be deleted forcefully.
                Volumes may have nested snapshot resources. Deleting such a volume will fail.
                Setting this parameter to FORCE will delete volumes including nested snapshots.
+               Possible values: DEFAULT, FORCE.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] encryption_type: Reports the data-at-rest encryption type of the volume. Inherited from storage pool.
@@ -1510,6 +1516,7 @@ class Volume(pulumi.CustomResource):
         Policy to determine if the volume should be deleted forcefully.
         Volumes may have nested snapshot resources. Deleting such a volume will fail.
         Setting this parameter to FORCE will delete volumes including nested snapshots.
+        Possible values: DEFAULT, FORCE.
         """
         return pulumi.get(self, "deletion_policy")
 

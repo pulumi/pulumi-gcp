@@ -93,6 +93,21 @@ public final class InstanceFromTemplateBootDiskArgs extends com.pulumi.resources
     }
 
     /**
+     * The disk interface used for attaching this disk. One of SCSI or NVME. (This field is shared with attached_disk and only used for specific cases, please don&#39;t specify this field without advice from Google.)
+     * 
+     */
+    @Import(name="interface")
+    private @Nullable Output<String> interface_;
+
+    /**
+     * @return The disk interface used for attaching this disk. One of SCSI or NVME. (This field is shared with attached_disk and only used for specific cases, please don&#39;t specify this field without advice from Google.)
+     * 
+     */
+    public Optional<Output<String>> interface_() {
+        return Optional.ofNullable(this.interface_);
+    }
+
+    /**
      * The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
      * 
      */
@@ -145,6 +160,7 @@ public final class InstanceFromTemplateBootDiskArgs extends com.pulumi.resources
         this.diskEncryptionKeyRaw = $.diskEncryptionKeyRaw;
         this.diskEncryptionKeySha256 = $.diskEncryptionKeySha256;
         this.initializeParams = $.initializeParams;
+        this.interface_ = $.interface_;
         this.kmsKeySelfLink = $.kmsKeySelfLink;
         this.mode = $.mode;
         this.source = $.source;
@@ -271,6 +287,27 @@ public final class InstanceFromTemplateBootDiskArgs extends com.pulumi.resources
          */
         public Builder initializeParams(InstanceFromTemplateBootDiskInitializeParamsArgs initializeParams) {
             return initializeParams(Output.of(initializeParams));
+        }
+
+        /**
+         * @param interface_ The disk interface used for attaching this disk. One of SCSI or NVME. (This field is shared with attached_disk and only used for specific cases, please don&#39;t specify this field without advice from Google.)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder interface_(@Nullable Output<String> interface_) {
+            $.interface_ = interface_;
+            return this;
+        }
+
+        /**
+         * @param interface_ The disk interface used for attaching this disk. One of SCSI or NVME. (This field is shared with attached_disk and only used for specific cases, please don&#39;t specify this field without advice from Google.)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder interface_(String interface_) {
+            return interface_(Output.of(interface_));
         }
 
         /**

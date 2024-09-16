@@ -2813,8 +2813,7 @@ class ServiceTemplateSpecVolume(dict):
         :param 'ServiceTemplateSpecVolumeEmptyDirArgs' empty_dir: Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
                Structure is documented below.
         :param 'ServiceTemplateSpecVolumeNfsArgs' nfs: A filesystem backed by a Network File System share. This filesystem requires the
-               run.googleapis.com/execution-environment annotation to be set to "gen2" and
-               run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
+               run.googleapis.com/execution-environment annotation to be unset or set to "gen2"
                Structure is documented below.
         :param 'ServiceTemplateSpecVolumeSecretArgs' secret: The secret's value will be presented as the content of a file whose
                name is defined in the item path. If no items are defined, the name of
@@ -2862,8 +2861,7 @@ class ServiceTemplateSpecVolume(dict):
     def nfs(self) -> Optional['outputs.ServiceTemplateSpecVolumeNfs']:
         """
         A filesystem backed by a Network File System share. This filesystem requires the
-        run.googleapis.com/execution-environment annotation to be set to "gen2" and
-        run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
+        run.googleapis.com/execution-environment annotation to be unset or set to "gen2"
         Structure is documented below.
         """
         return pulumi.get(self, "nfs")
@@ -2908,8 +2906,7 @@ class ServiceTemplateSpecVolumeCsi(dict):
         """
         :param str driver: Unique name representing the type of file system to be created. Cloud Run supports the following values:
                * gcsfuse.run.googleapis.com: Mount a Google Cloud Storage bucket using GCSFuse. This driver requires the
-               run.googleapis.com/execution-environment annotation to be set to "gen2" and
-               run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
+               run.googleapis.com/execution-environment annotation to be unset or set to "gen2"
         :param bool read_only: If true, all mounts created from this volume will be read-only.
         :param Mapping[str, str] volume_attributes: Driver-specific attributes. The following options are supported for available drivers:
                * gcsfuse.run.googleapis.com
@@ -2927,8 +2924,7 @@ class ServiceTemplateSpecVolumeCsi(dict):
         """
         Unique name representing the type of file system to be created. Cloud Run supports the following values:
         * gcsfuse.run.googleapis.com: Mount a Google Cloud Storage bucket using GCSFuse. This driver requires the
-        run.googleapis.com/execution-environment annotation to be set to "gen2" and
-        run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
+        run.googleapis.com/execution-environment annotation to be unset or set to "gen2"
         """
         return pulumi.get(self, "driver")
 
@@ -4812,8 +4808,7 @@ class GetServiceTemplateSpecVolumeResult(dict):
         :param Sequence['GetServiceTemplateSpecVolumeEmptyDirArgs'] empty_dirs: Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
         :param str name: The name of the Cloud Run Service.
         :param Sequence['GetServiceTemplateSpecVolumeNfArgs'] nfs: A filesystem backed by a Network File System share. This filesystem requires the
-               run.googleapis.com/execution-environment annotation to be set to "gen2" and
-               run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
+               run.googleapis.com/execution-environment annotation to be unset or set to "gen2"
         :param Sequence['GetServiceTemplateSpecVolumeSecretArgs'] secrets: The secret's value will be presented as the content of a file whose
                name is defined in the item path. If no items are defined, the name of
                the file is the secret_name.
@@ -4853,8 +4848,7 @@ class GetServiceTemplateSpecVolumeResult(dict):
     def nfs(self) -> Sequence['outputs.GetServiceTemplateSpecVolumeNfResult']:
         """
         A filesystem backed by a Network File System share. This filesystem requires the
-        run.googleapis.com/execution-environment annotation to be set to "gen2" and
-        run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
+        run.googleapis.com/execution-environment annotation to be unset or set to "gen2"
         """
         return pulumi.get(self, "nfs")
 
@@ -4878,8 +4872,7 @@ class GetServiceTemplateSpecVolumeCsiResult(dict):
         """
         :param str driver: Unique name representing the type of file system to be created. Cloud Run supports the following values:
                  * gcsfuse.run.googleapis.com: Mount a Google Cloud Storage bucket using GCSFuse. This driver requires the
-                   run.googleapis.com/execution-environment annotation to be set to "gen2" and
-                   run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
+                   run.googleapis.com/execution-environment annotation to be unset or set to "gen2"
         :param bool read_only: If true, all mounts created from this volume will be read-only.
         :param Mapping[str, str] volume_attributes: Driver-specific attributes. The following options are supported for available drivers:
                  * gcsfuse.run.googleapis.com
@@ -4895,8 +4888,7 @@ class GetServiceTemplateSpecVolumeCsiResult(dict):
         """
         Unique name representing the type of file system to be created. Cloud Run supports the following values:
           * gcsfuse.run.googleapis.com: Mount a Google Cloud Storage bucket using GCSFuse. This driver requires the
-            run.googleapis.com/execution-environment annotation to be set to "gen2" and
-            run.googleapis.com/launch-stage set to "BETA" or "ALPHA".
+            run.googleapis.com/execution-environment annotation to be unset or set to "gen2"
         """
         return pulumi.get(self, "driver")
 

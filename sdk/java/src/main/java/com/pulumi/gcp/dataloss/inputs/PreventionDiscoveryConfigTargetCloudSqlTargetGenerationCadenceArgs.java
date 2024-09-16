@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataloss.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.dataloss.inputs.PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceInspectTemplateModifiedCadenceArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceSchemaModifiedCadenceArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -15,6 +16,23 @@ import javax.annotation.Nullable;
 public final class PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceArgs Empty = new PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceArgs();
+
+    /**
+     * Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="inspectTemplateModifiedCadence")
+    private @Nullable Output<PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceInspectTemplateModifiedCadenceArgs> inspectTemplateModifiedCadence;
+
+    /**
+     * @return Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceInspectTemplateModifiedCadenceArgs>> inspectTemplateModifiedCadence() {
+        return Optional.ofNullable(this.inspectTemplateModifiedCadence);
+    }
 
     /**
      * Data changes in Cloud Storage can&#39;t trigger reprofiling. If you set this field, profiles are refreshed at this frequency regardless of whether the underlying buckets have changes. Defaults to never.
@@ -53,6 +71,7 @@ public final class PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenc
     private PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceArgs() {}
 
     private PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceArgs(PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceArgs $) {
+        this.inspectTemplateModifiedCadence = $.inspectTemplateModifiedCadence;
         this.refreshFrequency = $.refreshFrequency;
         this.schemaModifiedCadence = $.schemaModifiedCadence;
     }
@@ -73,6 +92,29 @@ public final class PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenc
 
         public Builder(PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceArgs defaults) {
             $ = new PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param inspectTemplateModifiedCadence Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inspectTemplateModifiedCadence(@Nullable Output<PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceInspectTemplateModifiedCadenceArgs> inspectTemplateModifiedCadence) {
+            $.inspectTemplateModifiedCadence = inspectTemplateModifiedCadence;
+            return this;
+        }
+
+        /**
+         * @param inspectTemplateModifiedCadence Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder inspectTemplateModifiedCadence(PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceInspectTemplateModifiedCadenceArgs inspectTemplateModifiedCadence) {
+            return inspectTemplateModifiedCadence(Output.of(inspectTemplateModifiedCadence));
         }
 
         /**

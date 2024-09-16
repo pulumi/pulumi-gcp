@@ -13,6 +13,216 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type URLMapHeaderAction struct {
+	// Headers to add to a matching request prior to forwarding the request to the backendService.
+	// Structure is documented below.
+	RequestHeadersToAdds []URLMapHeaderActionRequestHeadersToAdd `pulumi:"requestHeadersToAdds"`
+	// A list of header names for headers that need to be removed from the request prior to
+	// forwarding the request to the backendService.
+	RequestHeadersToRemoves []string `pulumi:"requestHeadersToRemoves"`
+	// Headers to add the response prior to sending the response back to the client.
+	// Structure is documented below.
+	ResponseHeadersToAdds []URLMapHeaderActionResponseHeadersToAdd `pulumi:"responseHeadersToAdds"`
+	// A list of header names for headers that need to be removed from the response prior to sending the
+	// response back to the client.
+	ResponseHeadersToRemoves []string `pulumi:"responseHeadersToRemoves"`
+}
+
+// URLMapHeaderActionInput is an input type that accepts URLMapHeaderActionArgs and URLMapHeaderActionOutput values.
+// You can construct a concrete instance of `URLMapHeaderActionInput` via:
+//
+//	URLMapHeaderActionArgs{...}
+type URLMapHeaderActionInput interface {
+	pulumi.Input
+
+	ToURLMapHeaderActionOutput() URLMapHeaderActionOutput
+	ToURLMapHeaderActionOutputWithContext(context.Context) URLMapHeaderActionOutput
+}
+
+type URLMapHeaderActionArgs struct {
+	// Headers to add to a matching request prior to forwarding the request to the backendService.
+	// Structure is documented below.
+	RequestHeadersToAdds URLMapHeaderActionRequestHeadersToAddArrayInput `pulumi:"requestHeadersToAdds"`
+	// A list of header names for headers that need to be removed from the request prior to
+	// forwarding the request to the backendService.
+	RequestHeadersToRemoves pulumi.StringArrayInput `pulumi:"requestHeadersToRemoves"`
+	// Headers to add the response prior to sending the response back to the client.
+	// Structure is documented below.
+	ResponseHeadersToAdds URLMapHeaderActionResponseHeadersToAddArrayInput `pulumi:"responseHeadersToAdds"`
+	// A list of header names for headers that need to be removed from the response prior to sending the
+	// response back to the client.
+	ResponseHeadersToRemoves pulumi.StringArrayInput `pulumi:"responseHeadersToRemoves"`
+}
+
+func (URLMapHeaderActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapHeaderAction)(nil)).Elem()
+}
+
+func (i URLMapHeaderActionArgs) ToURLMapHeaderActionOutput() URLMapHeaderActionOutput {
+	return i.ToURLMapHeaderActionOutputWithContext(context.Background())
+}
+
+func (i URLMapHeaderActionArgs) ToURLMapHeaderActionOutputWithContext(ctx context.Context) URLMapHeaderActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapHeaderActionOutput)
+}
+
+func (i URLMapHeaderActionArgs) ToURLMapHeaderActionPtrOutput() URLMapHeaderActionPtrOutput {
+	return i.ToURLMapHeaderActionPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapHeaderActionArgs) ToURLMapHeaderActionPtrOutputWithContext(ctx context.Context) URLMapHeaderActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapHeaderActionOutput).ToURLMapHeaderActionPtrOutputWithContext(ctx)
+}
+
+// URLMapHeaderActionPtrInput is an input type that accepts URLMapHeaderActionArgs, URLMapHeaderActionPtr and URLMapHeaderActionPtrOutput values.
+// You can construct a concrete instance of `URLMapHeaderActionPtrInput` via:
+//
+//	        URLMapHeaderActionArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapHeaderActionPtrInput interface {
+	pulumi.Input
+
+	ToURLMapHeaderActionPtrOutput() URLMapHeaderActionPtrOutput
+	ToURLMapHeaderActionPtrOutputWithContext(context.Context) URLMapHeaderActionPtrOutput
+}
+
+type urlmapHeaderActionPtrType URLMapHeaderActionArgs
+
+func URLMapHeaderActionPtr(v *URLMapHeaderActionArgs) URLMapHeaderActionPtrInput {
+	return (*urlmapHeaderActionPtrType)(v)
+}
+
+func (*urlmapHeaderActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapHeaderAction)(nil)).Elem()
+}
+
+func (i *urlmapHeaderActionPtrType) ToURLMapHeaderActionPtrOutput() URLMapHeaderActionPtrOutput {
+	return i.ToURLMapHeaderActionPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapHeaderActionPtrType) ToURLMapHeaderActionPtrOutputWithContext(ctx context.Context) URLMapHeaderActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapHeaderActionPtrOutput)
+}
+
+type URLMapHeaderActionOutput struct{ *pulumi.OutputState }
+
+func (URLMapHeaderActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapHeaderAction)(nil)).Elem()
+}
+
+func (o URLMapHeaderActionOutput) ToURLMapHeaderActionOutput() URLMapHeaderActionOutput {
+	return o
+}
+
+func (o URLMapHeaderActionOutput) ToURLMapHeaderActionOutputWithContext(ctx context.Context) URLMapHeaderActionOutput {
+	return o
+}
+
+func (o URLMapHeaderActionOutput) ToURLMapHeaderActionPtrOutput() URLMapHeaderActionPtrOutput {
+	return o.ToURLMapHeaderActionPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapHeaderActionOutput) ToURLMapHeaderActionPtrOutputWithContext(ctx context.Context) URLMapHeaderActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapHeaderAction) *URLMapHeaderAction {
+		return &v
+	}).(URLMapHeaderActionPtrOutput)
+}
+
+// Headers to add to a matching request prior to forwarding the request to the backendService.
+// Structure is documented below.
+func (o URLMapHeaderActionOutput) RequestHeadersToAdds() URLMapHeaderActionRequestHeadersToAddArrayOutput {
+	return o.ApplyT(func(v URLMapHeaderAction) []URLMapHeaderActionRequestHeadersToAdd { return v.RequestHeadersToAdds }).(URLMapHeaderActionRequestHeadersToAddArrayOutput)
+}
+
+// A list of header names for headers that need to be removed from the request prior to
+// forwarding the request to the backendService.
+func (o URLMapHeaderActionOutput) RequestHeadersToRemoves() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v URLMapHeaderAction) []string { return v.RequestHeadersToRemoves }).(pulumi.StringArrayOutput)
+}
+
+// Headers to add the response prior to sending the response back to the client.
+// Structure is documented below.
+func (o URLMapHeaderActionOutput) ResponseHeadersToAdds() URLMapHeaderActionResponseHeadersToAddArrayOutput {
+	return o.ApplyT(func(v URLMapHeaderAction) []URLMapHeaderActionResponseHeadersToAdd { return v.ResponseHeadersToAdds }).(URLMapHeaderActionResponseHeadersToAddArrayOutput)
+}
+
+// A list of header names for headers that need to be removed from the response prior to sending the
+// response back to the client.
+func (o URLMapHeaderActionOutput) ResponseHeadersToRemoves() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v URLMapHeaderAction) []string { return v.ResponseHeadersToRemoves }).(pulumi.StringArrayOutput)
+}
+
+type URLMapHeaderActionPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapHeaderActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapHeaderAction)(nil)).Elem()
+}
+
+func (o URLMapHeaderActionPtrOutput) ToURLMapHeaderActionPtrOutput() URLMapHeaderActionPtrOutput {
+	return o
+}
+
+func (o URLMapHeaderActionPtrOutput) ToURLMapHeaderActionPtrOutputWithContext(ctx context.Context) URLMapHeaderActionPtrOutput {
+	return o
+}
+
+func (o URLMapHeaderActionPtrOutput) Elem() URLMapHeaderActionOutput {
+	return o.ApplyT(func(v *URLMapHeaderAction) URLMapHeaderAction {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapHeaderAction
+		return ret
+	}).(URLMapHeaderActionOutput)
+}
+
+// Headers to add to a matching request prior to forwarding the request to the backendService.
+// Structure is documented below.
+func (o URLMapHeaderActionPtrOutput) RequestHeadersToAdds() URLMapHeaderActionRequestHeadersToAddArrayOutput {
+	return o.ApplyT(func(v *URLMapHeaderAction) []URLMapHeaderActionRequestHeadersToAdd {
+		if v == nil {
+			return nil
+		}
+		return v.RequestHeadersToAdds
+	}).(URLMapHeaderActionRequestHeadersToAddArrayOutput)
+}
+
+// A list of header names for headers that need to be removed from the request prior to
+// forwarding the request to the backendService.
+func (o URLMapHeaderActionPtrOutput) RequestHeadersToRemoves() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *URLMapHeaderAction) []string {
+		if v == nil {
+			return nil
+		}
+		return v.RequestHeadersToRemoves
+	}).(pulumi.StringArrayOutput)
+}
+
+// Headers to add the response prior to sending the response back to the client.
+// Structure is documented below.
+func (o URLMapHeaderActionPtrOutput) ResponseHeadersToAdds() URLMapHeaderActionResponseHeadersToAddArrayOutput {
+	return o.ApplyT(func(v *URLMapHeaderAction) []URLMapHeaderActionResponseHeadersToAdd {
+		if v == nil {
+			return nil
+		}
+		return v.ResponseHeadersToAdds
+	}).(URLMapHeaderActionResponseHeadersToAddArrayOutput)
+}
+
+// A list of header names for headers that need to be removed from the response prior to sending the
+// response back to the client.
+func (o URLMapHeaderActionPtrOutput) ResponseHeadersToRemoves() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *URLMapHeaderAction) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ResponseHeadersToRemoves
+	}).(pulumi.StringArrayOutput)
+}
+
 type URLMapHeaderActionRequestHeadersToAdd struct {
 	// The name of the header to add.
 	HeaderName string `pulumi:"headerName"`
@@ -20919,6 +21129,8 @@ type GetInstanceBootDisk struct {
 	// Parameters with which a disk was created alongside the instance.
 	// Structure is documented below.
 	InitializeParams []GetInstanceBootDiskInitializeParam `pulumi:"initializeParams"`
+	// The disk interface used for attaching this disk. One of `SCSI` or `NVME`.
+	Interface string `pulumi:"interface"`
 	// The selfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
 	KmsKeySelfLink string `pulumi:"kmsKeySelfLink"`
 	// Read/write mode for the disk. One of `"READ_ONLY"` or `"READ_WRITE"`.
@@ -20953,6 +21165,8 @@ type GetInstanceBootDiskArgs struct {
 	// Parameters with which a disk was created alongside the instance.
 	// Structure is documented below.
 	InitializeParams GetInstanceBootDiskInitializeParamArrayInput `pulumi:"initializeParams"`
+	// The disk interface used for attaching this disk. One of `SCSI` or `NVME`.
+	Interface pulumi.StringInput `pulumi:"interface"`
 	// The selfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
 	KmsKeySelfLink pulumi.StringInput `pulumi:"kmsKeySelfLink"`
 	// Read/write mode for the disk. One of `"READ_ONLY"` or `"READ_WRITE"`.
@@ -21039,6 +21253,11 @@ func (o GetInstanceBootDiskOutput) DiskEncryptionKeySha256() pulumi.StringOutput
 // Structure is documented below.
 func (o GetInstanceBootDiskOutput) InitializeParams() GetInstanceBootDiskInitializeParamArrayOutput {
 	return o.ApplyT(func(v GetInstanceBootDisk) []GetInstanceBootDiskInitializeParam { return v.InitializeParams }).(GetInstanceBootDiskInitializeParamArrayOutput)
+}
+
+// The disk interface used for attaching this disk. One of `SCSI` or `NVME`.
+func (o GetInstanceBootDiskOutput) Interface() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceBootDisk) string { return v.Interface }).(pulumi.StringOutput)
 }
 
 // The selfLink of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kmsKeySelfLink and diskEncryptionKeyRaw may be set.
@@ -40145,6 +40364,8 @@ func (o GetSubnetworksSubnetworkArrayOutput) Index(i pulumi.IntInput) GetSubnetw
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapHeaderActionInput)(nil)).Elem(), URLMapHeaderActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapHeaderActionPtrInput)(nil)).Elem(), URLMapHeaderActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapHeaderActionRequestHeadersToAddInput)(nil)).Elem(), URLMapHeaderActionRequestHeadersToAddArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapHeaderActionRequestHeadersToAddArrayInput)(nil)).Elem(), URLMapHeaderActionRequestHeadersToAddArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapHeaderActionResponseHeadersToAddInput)(nil)).Elem(), URLMapHeaderActionResponseHeadersToAddArgs{})
@@ -40681,6 +40902,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkInput)(nil)).Elem(), GetSubnetworksSubnetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkArrayInput)(nil)).Elem(), GetSubnetworksSubnetworkArray{})
+	pulumi.RegisterOutputType(URLMapHeaderActionOutput{})
+	pulumi.RegisterOutputType(URLMapHeaderActionPtrOutput{})
 	pulumi.RegisterOutputType(URLMapHeaderActionRequestHeadersToAddOutput{})
 	pulumi.RegisterOutputType(URLMapHeaderActionRequestHeadersToAddArrayOutput{})
 	pulumi.RegisterOutputType(URLMapHeaderActionResponseHeadersToAddOutput{})

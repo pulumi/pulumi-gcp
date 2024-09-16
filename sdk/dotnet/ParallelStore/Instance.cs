@@ -121,7 +121,7 @@ namespace Pulumi.Gcp.ParallelStore
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The version of DAOS software running in the instance
+        /// The version of DAOS software running in the instance.
         /// </summary>
         [Output("daosVersion")]
         public Output<string> DaosVersion { get; private set; } = null!;
@@ -152,9 +152,9 @@ namespace Pulumi.Gcp.ParallelStore
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Immutable. Contains the id of the allocated IP address range associated with the
-        /// private service access connection for example, "test-default" associated
-        /// with IP range 10.0.0.0/29. This field is populated by the service and
+        /// Immutable. Contains the id of the allocated IP address
+        /// range associated with the private service access connection for example, \"test-default\"
+        /// associated with IP range 10.0.0.0/29. This field is populated by the service
         /// and contains the value currently used by the service.
         /// </summary>
         [Output("effectiveReservedIpRange")]
@@ -188,12 +188,12 @@ namespace Pulumi.Gcp.ParallelStore
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// Cloud Labels are a flexible and lightweight mechanism for organizing cloud
-        /// resources into groups that reflect a customer's organizational needs and
-        /// deployment strategies. Cloud Labels can be used to filter collections of
-        /// resources. They can be used to control how resource metrics are aggregated.
-        /// And they can be used as arguments to policy management rules (e.g. route,
-        /// firewall, load balancing, etc.).
+        /// Cloud Labels are a flexible and lightweight mechanism for
+        /// organizing cloud resources into groups that reflect a customer's organizational
+        /// needs and deployment strategies. Cloud Labels can be used to filter collections
+        /// of resources. They can be used to control how resource metrics are aggregated.
+        /// And they can be used as arguments to policy management rules (e.g. route, firewall,
+        /// load balancing, etc.).
         /// * Label keys must be between 1 and 63 characters long and must conform to
         /// the following regular expression: `a-z{0,62}`.
         /// * Label values must be between 0 and 63 characters long and must conform
@@ -204,8 +204,9 @@ namespace Pulumi.Gcp.ParallelStore
         /// characters may be allowed in the future. Therefore, you are advised to use
         /// an internal label representation, such as JSON, which doesn't rely upon
         /// specific characters being disallowed.  For example, representing labels
-        /// as the string:  name + "_" + value  would prove problematic if we were to
-        /// allow "_" in a future release.
+        /// as the string:  `name + "_" + value` would prove problematic if we were to
+        /// allow `"_"` in a future release. "
+        /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
@@ -226,9 +227,8 @@ namespace Pulumi.Gcp.ParallelStore
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Immutable. The name of the Google Compute Engine
-        /// [VPC network](https://cloud.google.com/vpc/docs/vpc) to which the
-        /// instance is connected.
+        /// Immutable. The name of the Google Compute Engine [VPC network](https://cloud.google.com/vpc/docs/vpc)
+        /// to which the instance is connected.
         /// </summary>
         [Output("network")]
         public Output<string?> Network { get; private set; } = null!;
@@ -248,10 +248,10 @@ namespace Pulumi.Gcp.ParallelStore
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Immutable. Contains the id of the allocated IP address range associated with the
-        /// private service access connection for example, "test-default" associated
-        /// with IP range 10.0.0.0/29. If no range id is provided all ranges will be
-        /// considered.
+        /// Immutable. Contains the id of the allocated IP address range
+        /// associated with the private service access connection for example, \"test-default\"
+        /// associated with IP range 10.0.0.0/29. If no range id is provided all ranges will
+        /// be considered.
         /// </summary>
         [Output("reservedIpRange")]
         public Output<string?> ReservedIpRange { get; private set; } = null!;
@@ -382,12 +382,12 @@ namespace Pulumi.Gcp.ParallelStore
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Cloud Labels are a flexible and lightweight mechanism for organizing cloud
-        /// resources into groups that reflect a customer's organizational needs and
-        /// deployment strategies. Cloud Labels can be used to filter collections of
-        /// resources. They can be used to control how resource metrics are aggregated.
-        /// And they can be used as arguments to policy management rules (e.g. route,
-        /// firewall, load balancing, etc.).
+        /// Cloud Labels are a flexible and lightweight mechanism for
+        /// organizing cloud resources into groups that reflect a customer's organizational
+        /// needs and deployment strategies. Cloud Labels can be used to filter collections
+        /// of resources. They can be used to control how resource metrics are aggregated.
+        /// And they can be used as arguments to policy management rules (e.g. route, firewall,
+        /// load balancing, etc.).
         /// * Label keys must be between 1 and 63 characters long and must conform to
         /// the following regular expression: `a-z{0,62}`.
         /// * Label values must be between 0 and 63 characters long and must conform
@@ -398,8 +398,9 @@ namespace Pulumi.Gcp.ParallelStore
         /// characters may be allowed in the future. Therefore, you are advised to use
         /// an internal label representation, such as JSON, which doesn't rely upon
         /// specific characters being disallowed.  For example, representing labels
-        /// as the string:  name + "_" + value  would prove problematic if we were to
-        /// allow "_" in a future release.
+        /// as the string:  `name + "_" + value` would prove problematic if we were to
+        /// allow `"_"` in a future release. "
+        /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
@@ -416,9 +417,8 @@ namespace Pulumi.Gcp.ParallelStore
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// Immutable. The name of the Google Compute Engine
-        /// [VPC network](https://cloud.google.com/vpc/docs/vpc) to which the
-        /// instance is connected.
+        /// Immutable. The name of the Google Compute Engine [VPC network](https://cloud.google.com/vpc/docs/vpc)
+        /// to which the instance is connected.
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
@@ -431,10 +431,10 @@ namespace Pulumi.Gcp.ParallelStore
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Immutable. Contains the id of the allocated IP address range associated with the
-        /// private service access connection for example, "test-default" associated
-        /// with IP range 10.0.0.0/29. If no range id is provided all ranges will be
-        /// considered.
+        /// Immutable. Contains the id of the allocated IP address range
+        /// associated with the private service access connection for example, \"test-default\"
+        /// associated with IP range 10.0.0.0/29. If no range id is provided all ranges will
+        /// be considered.
         /// </summary>
         [Input("reservedIpRange")]
         public Input<string>? ReservedIpRange { get; set; }
@@ -473,7 +473,7 @@ namespace Pulumi.Gcp.ParallelStore
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// The version of DAOS software running in the instance
+        /// The version of DAOS software running in the instance.
         /// </summary>
         [Input("daosVersion")]
         public Input<string>? DaosVersion { get; set; }
@@ -514,9 +514,9 @@ namespace Pulumi.Gcp.ParallelStore
         }
 
         /// <summary>
-        /// Immutable. Contains the id of the allocated IP address range associated with the
-        /// private service access connection for example, "test-default" associated
-        /// with IP range 10.0.0.0/29. This field is populated by the service and
+        /// Immutable. Contains the id of the allocated IP address
+        /// range associated with the private service access connection for example, \"test-default\"
+        /// associated with IP range 10.0.0.0/29. This field is populated by the service
         /// and contains the value currently used by the service.
         /// </summary>
         [Input("effectiveReservedIpRange")]
@@ -553,12 +553,12 @@ namespace Pulumi.Gcp.ParallelStore
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Cloud Labels are a flexible and lightweight mechanism for organizing cloud
-        /// resources into groups that reflect a customer's organizational needs and
-        /// deployment strategies. Cloud Labels can be used to filter collections of
-        /// resources. They can be used to control how resource metrics are aggregated.
-        /// And they can be used as arguments to policy management rules (e.g. route,
-        /// firewall, load balancing, etc.).
+        /// Cloud Labels are a flexible and lightweight mechanism for
+        /// organizing cloud resources into groups that reflect a customer's organizational
+        /// needs and deployment strategies. Cloud Labels can be used to filter collections
+        /// of resources. They can be used to control how resource metrics are aggregated.
+        /// And they can be used as arguments to policy management rules (e.g. route, firewall,
+        /// load balancing, etc.).
         /// * Label keys must be between 1 and 63 characters long and must conform to
         /// the following regular expression: `a-z{0,62}`.
         /// * Label values must be between 0 and 63 characters long and must conform
@@ -569,8 +569,9 @@ namespace Pulumi.Gcp.ParallelStore
         /// characters may be allowed in the future. Therefore, you are advised to use
         /// an internal label representation, such as JSON, which doesn't rely upon
         /// specific characters being disallowed.  For example, representing labels
-        /// as the string:  name + "_" + value  would prove problematic if we were to
-        /// allow "_" in a future release.
+        /// as the string:  `name + "_" + value` would prove problematic if we were to
+        /// allow `"_"` in a future release. "
+        /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
@@ -594,9 +595,8 @@ namespace Pulumi.Gcp.ParallelStore
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Immutable. The name of the Google Compute Engine
-        /// [VPC network](https://cloud.google.com/vpc/docs/vpc) to which the
-        /// instance is connected.
+        /// Immutable. The name of the Google Compute Engine [VPC network](https://cloud.google.com/vpc/docs/vpc)
+        /// to which the instance is connected.
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
@@ -626,10 +626,10 @@ namespace Pulumi.Gcp.ParallelStore
         }
 
         /// <summary>
-        /// Immutable. Contains the id of the allocated IP address range associated with the
-        /// private service access connection for example, "test-default" associated
-        /// with IP range 10.0.0.0/29. If no range id is provided all ranges will be
-        /// considered.
+        /// Immutable. Contains the id of the allocated IP address range
+        /// associated with the private service access connection for example, \"test-default\"
+        /// associated with IP range 10.0.0.0/29. If no range id is provided all ranges will
+        /// be considered.
         /// </summary>
         [Input("reservedIpRange")]
         public Input<string>? ReservedIpRange { get; set; }

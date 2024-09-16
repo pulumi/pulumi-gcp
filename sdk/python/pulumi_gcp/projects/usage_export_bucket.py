@@ -149,6 +149,10 @@ class UsageExportBucket(pulumi.CustomResource):
 
         > This resource reads the specified billing account on every pulumi up and plan operation so you must have permissions on the specified billing account.
 
+        > It is recommended to use the `constraints/compute.skipDefaultNetworkCreation` [constraint](https://www.terraform.io/docs/providers/google/r/google_organization_policy.html) to remove the default network instead of setting `auto_create_network` to false, when possible.
+
+        > It may take a while for the attached tag bindings to be deleted after the project is scheduled to be deleted.
+
         To get more information about projects, see:
 
         * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v1/projects)
@@ -180,6 +184,21 @@ class UsageExportBucket(pulumi.CustomResource):
             name="My Project",
             project_id="your-project-id",
             folder_id=department1.name)
+        ```
+
+        To create a project with a tag
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_project = gcp.organizations.Project("my_project",
+            name="My Project",
+            project_id="your-project-id",
+            org_id="1234567",
+            tags={
+                "1234567/env": "staging",
+            })
         ```
 
         ## Import
@@ -219,6 +238,10 @@ class UsageExportBucket(pulumi.CustomResource):
 
         > This resource reads the specified billing account on every pulumi up and plan operation so you must have permissions on the specified billing account.
 
+        > It is recommended to use the `constraints/compute.skipDefaultNetworkCreation` [constraint](https://www.terraform.io/docs/providers/google/r/google_organization_policy.html) to remove the default network instead of setting `auto_create_network` to false, when possible.
+
+        > It may take a while for the attached tag bindings to be deleted after the project is scheduled to be deleted.
+
         To get more information about projects, see:
 
         * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v1/projects)
@@ -250,6 +273,21 @@ class UsageExportBucket(pulumi.CustomResource):
             name="My Project",
             project_id="your-project-id",
             folder_id=department1.name)
+        ```
+
+        To create a project with a tag
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_project = gcp.organizations.Project("my_project",
+            name="My Project",
+            project_id="your-project-id",
+            org_id="1234567",
+            tags={
+                "1234567/env": "staging",
+            })
         ```
 
         ## Import

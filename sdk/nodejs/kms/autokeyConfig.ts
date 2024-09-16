@@ -67,10 +67,15 @@ import * as utilities from "../utilities";
  *     dependsOn: [autokeyProjectAdmin],
  * });
  * const example_autokeyconfig = new gcp.kms.AutokeyConfig("example-autokeyconfig", {
- *     folder: autokmsFolder.folderId,
+ *     folder: autokmsFolder.id,
  *     keyProject: pulumi.interpolate`projects/${keyProject.projectId}`,
  * }, {
  *     dependsOn: [waitSrvAccPermissions],
+ * });
+ * // Wait delay after setting AutokeyConfig, to prevent diffs on reapply,
+ * // because setting the config takes a little to fully propagate.
+ * const waitAutokeyPropagation = new time.index.Sleep("wait_autokey_propagation", {createDuration: "30s"}, {
+ *     dependsOn: [example_autokeyconfig],
  * });
  * ```
  *

@@ -521,6 +521,8 @@ type Certificate struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	// The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6)
+	SanDnsnames pulumi.StringArrayOutput `pulumi:"sanDnsnames"`
 	// The scope of the certificate.
 	// DEFAULT: Certificates with default scope are served from core Google data centers.
 	// If unsure, choose this option.
@@ -598,6 +600,8 @@ type certificateState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6)
+	SanDnsnames []string `pulumi:"sanDnsnames"`
 	// The scope of the certificate.
 	// DEFAULT: Certificates with default scope are served from core Google data centers.
 	// If unsure, choose this option.
@@ -641,6 +645,8 @@ type CertificateState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
+	// The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6)
+	SanDnsnames pulumi.StringArrayInput
 	// The scope of the certificate.
 	// DEFAULT: Certificates with default scope are served from core Google data centers.
 	// If unsure, choose this option.
@@ -873,6 +879,11 @@ func (o CertificateOutput) Project() pulumi.StringOutput {
 // and default labels configured on the provider.
 func (o CertificateOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
+// The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6)
+func (o CertificateOutput) SanDnsnames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringArrayOutput { return v.SanDnsnames }).(pulumi.StringArrayOutput)
 }
 
 // The scope of the certificate.

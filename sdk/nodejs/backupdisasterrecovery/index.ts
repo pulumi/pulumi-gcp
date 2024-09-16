@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { BackupVaultArgs, BackupVaultState } from "./backupVault";
+export type BackupVault = import("./backupVault").BackupVault;
+export const BackupVault: typeof import("./backupVault").BackupVault = null as any;
+utilities.lazyLoad(exports, ["BackupVault"], () => require("./backupVault"));
+
 export { GetManagementServerArgs, GetManagementServerResult, GetManagementServerOutputArgs } from "./getManagementServer";
 export const getManagementServer: typeof import("./getManagementServer").getManagementServer = null as any;
 export const getManagementServerOutput: typeof import("./getManagementServer").getManagementServerOutput = null as any;
@@ -20,6 +25,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:backupdisasterrecovery/backupVault:BackupVault":
+                return new BackupVault(name, <any>undefined, { urn })
             case "gcp:backupdisasterrecovery/managementServer:ManagementServer":
                 return new ManagementServer(name, <any>undefined, { urn })
             default:
@@ -27,4 +34,5 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "backupdisasterrecovery/backupVault", _module)
 pulumi.runtime.registerResourceModule("gcp", "backupdisasterrecovery/managementServer", _module)

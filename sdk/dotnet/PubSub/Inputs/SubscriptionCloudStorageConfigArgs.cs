@@ -59,6 +59,12 @@ namespace Pulumi.Gcp.PubSub.Inputs
         public Input<string>? MaxDuration { get; set; }
 
         /// <summary>
+        /// The maximum messages that can be written to a Cloud Storage file before a new file is created. Min 1000 messages.
+        /// </summary>
+        [Input("maxMessages")]
+        public Input<int>? MaxMessages { get; set; }
+
+        /// <summary>
         /// The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
         /// [service agent](https://cloud.google.com/iam/docs/service-agents),
         /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.

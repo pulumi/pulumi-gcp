@@ -17,6 +17,10 @@ import * as utilities from "../utilities";
  *
  * > This resource reads the specified billing account on every pulumi up and plan operation so you must have permissions on the specified billing account.
  *
+ * > It is recommended to use the `constraints/compute.skipDefaultNetworkCreation` [constraint](https://www.terraform.io/docs/providers/google/r/google_organization_policy.html) to remove the default network instead of setting `autoCreateNetwork` to false, when possible.
+ *
+ * > It may take a while for the attached tag bindings to be deleted after the project is scheduled to be deleted.
+ *
  * To get more information about projects, see:
  *
  * * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v1/projects)
@@ -50,6 +54,22 @@ import * as utilities from "../utilities";
  *     name: "My Project",
  *     projectId: "your-project-id",
  *     folderId: department1.name,
+ * });
+ * ```
+ *
+ * To create a project with a tag
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myProject = new gcp.organizations.Project("my_project", {
+ *     name: "My Project",
+ *     projectId: "your-project-id",
+ *     orgId: "1234567",
+ *     tags: {
+ *         "1234567/env": "staging",
+ *     },
  * });
  * ```
  *
@@ -151,6 +171,10 @@ export class Project extends pulumi.CustomResource {
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      */
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when mutated.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Project resource with the given unique name, arguments, and options.
@@ -176,6 +200,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["orgId"] = state ? state.orgId : undefined;
             resourceInputs["projectId"] = state ? state.projectId : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
             resourceInputs["autoCreateNetwork"] = args ? args.autoCreateNetwork : undefined;
@@ -186,6 +211,7 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["orgId"] = args ? args.orgId : undefined;
             resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["number"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
@@ -259,6 +285,10 @@ export interface ProjectState {
      * The combination of labels configured directly on the resource and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when mutated.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -311,4 +341,8 @@ export interface ProjectArgs {
      * The project ID. Changing this forces a new project to be created.
      */
     projectId?: pulumi.Input<string>;
+    /**
+     * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when mutated.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

@@ -60,9 +60,10 @@ namespace Pulumi.Gcp.GkeHub
     ///         Membership = membership.MembershipId,
     ///         Configmanagement = new Gcp.GkeHub.Inputs.FeatureMembershipConfigmanagementArgs
     ///         {
-    ///             Version = "1.6.2",
+    ///             Version = "1.19.0",
     ///             ConfigSync = new Gcp.GkeHub.Inputs.FeatureMembershipConfigmanagementConfigSyncArgs
     ///             {
+    ///                 Enabled = true,
     ///                 Git = new Gcp.GkeHub.Inputs.FeatureMembershipConfigmanagementConfigSyncGitArgs
     ///                 {
     ///                     SyncRepo = "https://github.com/hashicorp/terraform",
@@ -119,9 +120,10 @@ namespace Pulumi.Gcp.GkeHub
     ///         Membership = membership.MembershipId,
     ///         Configmanagement = new Gcp.GkeHub.Inputs.FeatureMembershipConfigmanagementArgs
     ///         {
-    ///             Version = "1.15.1",
+    ///             Version = "1.19.0",
     ///             ConfigSync = new Gcp.GkeHub.Inputs.FeatureMembershipConfigmanagementConfigSyncArgs
     ///             {
+    ///                 Enabled = true,
     ///                 Oci = new Gcp.GkeHub.Inputs.FeatureMembershipConfigmanagementConfigSyncOciArgs
     ///                 {
     ///                     SyncRepo = "us-central1-docker.pkg.dev/sample-project/config-repo/config-sync-gke:latest",
@@ -257,9 +259,10 @@ namespace Pulumi.Gcp.GkeHub
     ///         MembershipLocation = membership.Location,
     ///         Configmanagement = new Gcp.GkeHub.Inputs.FeatureMembershipConfigmanagementArgs
     ///         {
-    ///             Version = "1.6.2",
+    ///             Version = "1.19.0",
     ///             ConfigSync = new Gcp.GkeHub.Inputs.FeatureMembershipConfigmanagementConfigSyncArgs
     ///             {
+    ///                 Enabled = true,
     ///                 Git = new Gcp.GkeHub.Inputs.FeatureMembershipConfigmanagementConfigSyncGitArgs
     ///                 {
     ///                     SyncRepo = "https://github.com/hashicorp/terraform",

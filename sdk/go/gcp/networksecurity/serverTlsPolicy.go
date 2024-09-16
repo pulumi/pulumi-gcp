@@ -11,6 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ClientTlsPolicy is a resource that specifies how a client should authenticate connections to backends of a service. This resource itself does not affect configuration unless it is attached to a backend service resource.
+//
+// To get more information about ServerTlsPolicy, see:
+//
+// * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-security/rest/v1beta1/projects.locations.serverTlsPolicies)
+//
 // ## Example Usage
 //
 // ### Network Security Server Tls Policy Basic
@@ -44,16 +50,6 @@ import (
 //						&networksecurity.ServerTlsPolicyMtlsPolicyClientValidationCaArgs{
 //							GrpcEndpoint: &networksecurity.ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs{
 //								TargetUri: pulumi.String("unix:mypath"),
-//							},
-//						},
-//						&networksecurity.ServerTlsPolicyMtlsPolicyClientValidationCaArgs{
-//							GrpcEndpoint: &networksecurity.ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs{
-//								TargetUri: pulumi.String("unix:abc/mypath"),
-//							},
-//						},
-//						&networksecurity.ServerTlsPolicyMtlsPolicyClientValidationCaArgs{
-//							CertificateProviderInstance: &networksecurity.ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs{
-//								PluginInstance: pulumi.String("google_cloud_private_spiffe"),
 //							},
 //						},
 //					},

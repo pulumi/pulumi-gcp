@@ -189,11 +189,12 @@ type Interconnect struct {
 	// Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside
 	// of Google's network that the interconnect is connected to.
 	RemoteLocation pulumi.StringPtrOutput `pulumi:"remoteLocation"`
-	// interconnects.list of features requested for this Interconnect connection. Options: MACSEC (
+	// interconnects.list of features requested for this Interconnect connection. Options: IF_MACSEC (
 	// If specified then the connection is created on MACsec capable hardware ports. If not
 	// specified, the default value is false, which allocates non-MACsec capable ports first if
-	// available).
-	// Each value may be one of: `MACSEC`.
+	// available). Note that MACSEC is still technically allowed for compatibility reasons, but it
+	// does not work with the API, and will be removed in an upcoming major version.
+	// Each value may be one of: `MACSEC`, `IF_MACSEC`.
 	RequestedFeatures pulumi.StringArrayOutput `pulumi:"requestedFeatures"`
 	// Target number of physical links in the link bundle, as requested by the customer.
 	RequestedLinkCount pulumi.IntOutput `pulumi:"requestedLinkCount"`
@@ -362,11 +363,12 @@ type interconnectState struct {
 	// Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside
 	// of Google's network that the interconnect is connected to.
 	RemoteLocation *string `pulumi:"remoteLocation"`
-	// interconnects.list of features requested for this Interconnect connection. Options: MACSEC (
+	// interconnects.list of features requested for this Interconnect connection. Options: IF_MACSEC (
 	// If specified then the connection is created on MACsec capable hardware ports. If not
 	// specified, the default value is false, which allocates non-MACsec capable ports first if
-	// available).
-	// Each value may be one of: `MACSEC`.
+	// available). Note that MACSEC is still technically allowed for compatibility reasons, but it
+	// does not work with the API, and will be removed in an upcoming major version.
+	// Each value may be one of: `MACSEC`, `IF_MACSEC`.
 	RequestedFeatures []string `pulumi:"requestedFeatures"`
 	// Target number of physical links in the link bundle, as requested by the customer.
 	RequestedLinkCount *int `pulumi:"requestedLinkCount"`
@@ -486,11 +488,12 @@ type InterconnectState struct {
 	// Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside
 	// of Google's network that the interconnect is connected to.
 	RemoteLocation pulumi.StringPtrInput
-	// interconnects.list of features requested for this Interconnect connection. Options: MACSEC (
+	// interconnects.list of features requested for this Interconnect connection. Options: IF_MACSEC (
 	// If specified then the connection is created on MACsec capable hardware ports. If not
 	// specified, the default value is false, which allocates non-MACsec capable ports first if
-	// available).
-	// Each value may be one of: `MACSEC`.
+	// available). Note that MACSEC is still technically allowed for compatibility reasons, but it
+	// does not work with the API, and will be removed in an upcoming major version.
+	// Each value may be one of: `MACSEC`, `IF_MACSEC`.
 	RequestedFeatures pulumi.StringArrayInput
 	// Target number of physical links in the link bundle, as requested by the customer.
 	RequestedLinkCount pulumi.IntPtrInput
@@ -568,11 +571,12 @@ type interconnectArgs struct {
 	// Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside
 	// of Google's network that the interconnect is connected to.
 	RemoteLocation *string `pulumi:"remoteLocation"`
-	// interconnects.list of features requested for this Interconnect connection. Options: MACSEC (
+	// interconnects.list of features requested for this Interconnect connection. Options: IF_MACSEC (
 	// If specified then the connection is created on MACsec capable hardware ports. If not
 	// specified, the default value is false, which allocates non-MACsec capable ports first if
-	// available).
-	// Each value may be one of: `MACSEC`.
+	// available). Note that MACSEC is still technically allowed for compatibility reasons, but it
+	// does not work with the API, and will be removed in an upcoming major version.
+	// Each value may be one of: `MACSEC`, `IF_MACSEC`.
 	RequestedFeatures []string `pulumi:"requestedFeatures"`
 	// Target number of physical links in the link bundle, as requested by the customer.
 	RequestedLinkCount int `pulumi:"requestedLinkCount"`
@@ -636,11 +640,12 @@ type InterconnectArgs struct {
 	// Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside
 	// of Google's network that the interconnect is connected to.
 	RemoteLocation pulumi.StringPtrInput
-	// interconnects.list of features requested for this Interconnect connection. Options: MACSEC (
+	// interconnects.list of features requested for this Interconnect connection. Options: IF_MACSEC (
 	// If specified then the connection is created on MACsec capable hardware ports. If not
 	// specified, the default value is false, which allocates non-MACsec capable ports first if
-	// available).
-	// Each value may be one of: `MACSEC`.
+	// available). Note that MACSEC is still technically allowed for compatibility reasons, but it
+	// does not work with the API, and will be removed in an upcoming major version.
+	// Each value may be one of: `MACSEC`, `IF_MACSEC`.
 	RequestedFeatures pulumi.StringArrayInput
 	// Target number of physical links in the link bundle, as requested by the customer.
 	RequestedLinkCount pulumi.IntInput
@@ -913,11 +918,12 @@ func (o InterconnectOutput) RemoteLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Interconnect) pulumi.StringPtrOutput { return v.RemoteLocation }).(pulumi.StringPtrOutput)
 }
 
-// interconnects.list of features requested for this Interconnect connection. Options: MACSEC (
+// interconnects.list of features requested for this Interconnect connection. Options: IF_MACSEC (
 // If specified then the connection is created on MACsec capable hardware ports. If not
 // specified, the default value is false, which allocates non-MACsec capable ports first if
-// available).
-// Each value may be one of: `MACSEC`.
+// available). Note that MACSEC is still technically allowed for compatibility reasons, but it
+// does not work with the API, and will be removed in an upcoming major version.
+// Each value may be one of: `MACSEC`, `IF_MACSEC`.
 func (o InterconnectOutput) RequestedFeatures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Interconnect) pulumi.StringArrayOutput { return v.RequestedFeatures }).(pulumi.StringArrayOutput)
 }

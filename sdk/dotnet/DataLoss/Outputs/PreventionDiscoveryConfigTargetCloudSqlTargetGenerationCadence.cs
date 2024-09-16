@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.DataLoss.Outputs
     public sealed class PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadence
     {
         /// <summary>
+        /// Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceInspectTemplateModifiedCadence? InspectTemplateModifiedCadence;
+        /// <summary>
         /// Data changes in Cloud Storage can't trigger reprofiling. If you set this field, profiles are refreshed at this frequency regardless of whether the underlying buckets have changes. Defaults to never.
         /// Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
         /// </summary>
@@ -26,10 +31,13 @@ namespace Pulumi.Gcp.DataLoss.Outputs
 
         [OutputConstructor]
         private PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadence(
+            Outputs.PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceInspectTemplateModifiedCadence? inspectTemplateModifiedCadence,
+
             string? refreshFrequency,
 
             Outputs.PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceSchemaModifiedCadence? schemaModifiedCadence)
         {
+            InspectTemplateModifiedCadence = inspectTemplateModifiedCadence;
             RefreshFrequency = refreshFrequency;
             SchemaModifiedCadence = schemaModifiedCadence;
         }

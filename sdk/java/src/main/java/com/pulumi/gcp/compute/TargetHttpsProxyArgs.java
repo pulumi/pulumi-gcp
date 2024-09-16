@@ -199,6 +199,10 @@ public final class TargetHttpsProxyArgs extends com.pulumi.resources.ResourceArg
      * INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
      * loadBalancingScheme consult ServerTlsPolicy documentation.
      * If left blank, communications are not encrypted.
+     * If you remove this field from your configuration at the same time as
+     * deleting or recreating a referenced ServerTlsPolicy resource, you will
+     * receive a resourceInUseByAnotherResource error. Use lifecycle.create_before_destroy
+     * within the ServerTlsPolicy resource to avoid this.
      * 
      */
     @Import(name="serverTlsPolicy")
@@ -214,6 +218,10 @@ public final class TargetHttpsProxyArgs extends com.pulumi.resources.ResourceArg
      * INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
      * loadBalancingScheme consult ServerTlsPolicy documentation.
      * If left blank, communications are not encrypted.
+     * If you remove this field from your configuration at the same time as
+     * deleting or recreating a referenced ServerTlsPolicy resource, you will
+     * receive a resourceInUseByAnotherResource error. Use lifecycle.create_before_destroy
+     * within the ServerTlsPolicy resource to avoid this.
      * 
      */
     public Optional<Output<String>> serverTlsPolicy() {
@@ -580,6 +588,10 @@ public final class TargetHttpsProxyArgs extends com.pulumi.resources.ResourceArg
          * INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
          * loadBalancingScheme consult ServerTlsPolicy documentation.
          * If left blank, communications are not encrypted.
+         * If you remove this field from your configuration at the same time as
+         * deleting or recreating a referenced ServerTlsPolicy resource, you will
+         * receive a resourceInUseByAnotherResource error. Use lifecycle.create_before_destroy
+         * within the ServerTlsPolicy resource to avoid this.
          * 
          * @return builder
          * 
@@ -599,6 +611,10 @@ public final class TargetHttpsProxyArgs extends com.pulumi.resources.ResourceArg
          * INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
          * loadBalancingScheme consult ServerTlsPolicy documentation.
          * If left blank, communications are not encrypted.
+         * If you remove this field from your configuration at the same time as
+         * deleting or recreating a referenced ServerTlsPolicy resource, you will
+         * receive a resourceInUseByAnotherResource error. Use lifecycle.create_before_destroy
+         * within the ServerTlsPolicy resource to avoid this.
          * 
          * @return builder
          * 

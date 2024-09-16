@@ -31,7 +31,8 @@ class WorkloadIdentityPoolProviderArgs:
                  display_name: Optional[pulumi.Input[str]] = None,
                  oidc: Optional[pulumi.Input['WorkloadIdentityPoolProviderOidcArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 saml: Optional[pulumi.Input['WorkloadIdentityPoolProviderSamlArgs']] = None):
+                 saml: Optional[pulumi.Input['WorkloadIdentityPoolProviderSamlArgs']] = None,
+                 x509: Optional[pulumi.Input['WorkloadIdentityPoolProviderX509Args']] = None):
         """
         The set of arguments for constructing a WorkloadIdentityPoolProvider resource.
         :param pulumi.Input[str] workload_identity_pool_id: The ID used for the pool, which is the final component of the pool resource name. This
@@ -111,6 +112,9 @@ class WorkloadIdentityPoolProviderArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input['WorkloadIdentityPoolProviderSamlArgs'] saml: An SAML 2.0 identity provider. Not compatible with the property oidc or aws.
                Structure is documented below.
+        :param pulumi.Input['WorkloadIdentityPoolProviderX509Args'] x509: An X.509-type identity provider represents a CA. It is trusted to assert a
+               client identity if the client has a certificate that chains up to this CA.
+               Structure is documented below.
         """
         pulumi.set(__self__, "workload_identity_pool_id", workload_identity_pool_id)
         pulumi.set(__self__, "workload_identity_pool_provider_id", workload_identity_pool_provider_id)
@@ -132,6 +136,8 @@ class WorkloadIdentityPoolProviderArgs:
             pulumi.set(__self__, "project", project)
         if saml is not None:
             pulumi.set(__self__, "saml", saml)
+        if x509 is not None:
+            pulumi.set(__self__, "x509", x509)
 
     @property
     @pulumi.getter(name="workloadIdentityPoolId")
@@ -331,6 +337,20 @@ class WorkloadIdentityPoolProviderArgs:
     def saml(self, value: Optional[pulumi.Input['WorkloadIdentityPoolProviderSamlArgs']]):
         pulumi.set(self, "saml", value)
 
+    @property
+    @pulumi.getter
+    def x509(self) -> Optional[pulumi.Input['WorkloadIdentityPoolProviderX509Args']]:
+        """
+        An X.509-type identity provider represents a CA. It is trusted to assert a
+        client identity if the client has a certificate that chains up to this CA.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "x509")
+
+    @x509.setter
+    def x509(self, value: Optional[pulumi.Input['WorkloadIdentityPoolProviderX509Args']]):
+        pulumi.set(self, "x509", value)
+
 
 @pulumi.input_type
 class _WorkloadIdentityPoolProviderState:
@@ -347,7 +367,8 @@ class _WorkloadIdentityPoolProviderState:
                  saml: Optional[pulumi.Input['WorkloadIdentityPoolProviderSamlArgs']] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  workload_identity_pool_id: Optional[pulumi.Input[str]] = None,
-                 workload_identity_pool_provider_id: Optional[pulumi.Input[str]] = None):
+                 workload_identity_pool_provider_id: Optional[pulumi.Input[str]] = None,
+                 x509: Optional[pulumi.Input['WorkloadIdentityPoolProviderX509Args']] = None):
         """
         Input properties used for looking up and filtering WorkloadIdentityPoolProvider resources.
         :param pulumi.Input[str] attribute_condition: [A Common Expression Language](https://opensource.google/projects/cel) expression, in
@@ -436,6 +457,9 @@ class _WorkloadIdentityPoolProviderState:
                
                
                - - -
+        :param pulumi.Input['WorkloadIdentityPoolProviderX509Args'] x509: An X.509-type identity provider represents a CA. It is trusted to assert a
+               client identity if the client has a certificate that chains up to this CA.
+               Structure is documented below.
         """
         if attribute_condition is not None:
             pulumi.set(__self__, "attribute_condition", attribute_condition)
@@ -463,6 +487,8 @@ class _WorkloadIdentityPoolProviderState:
             pulumi.set(__self__, "workload_identity_pool_id", workload_identity_pool_id)
         if workload_identity_pool_provider_id is not None:
             pulumi.set(__self__, "workload_identity_pool_provider_id", workload_identity_pool_provider_id)
+        if x509 is not None:
+            pulumi.set(__self__, "x509", x509)
 
     @property
     @pulumi.getter(name="attributeCondition")
@@ -693,6 +719,20 @@ class _WorkloadIdentityPoolProviderState:
     def workload_identity_pool_provider_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "workload_identity_pool_provider_id", value)
 
+    @property
+    @pulumi.getter
+    def x509(self) -> Optional[pulumi.Input['WorkloadIdentityPoolProviderX509Args']]:
+        """
+        An X.509-type identity provider represents a CA. It is trusted to assert a
+        client identity if the client has a certificate that chains up to this CA.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "x509")
+
+    @x509.setter
+    def x509(self, value: Optional[pulumi.Input['WorkloadIdentityPoolProviderX509Args']]):
+        pulumi.set(self, "x509", value)
+
 
 class WorkloadIdentityPoolProvider(pulumi.CustomResource):
     @overload
@@ -710,6 +750,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                  saml: Optional[pulumi.Input[Union['WorkloadIdentityPoolProviderSamlArgs', 'WorkloadIdentityPoolProviderSamlArgsDict']]] = None,
                  workload_identity_pool_id: Optional[pulumi.Input[str]] = None,
                  workload_identity_pool_provider_id: Optional[pulumi.Input[str]] = None,
+                 x509: Optional[pulumi.Input[Union['WorkloadIdentityPoolProviderX509Args', 'WorkloadIdentityPoolProviderX509ArgsDict']]] = None,
                  __props__=None):
         """
         A configuration for an external identity provider.
@@ -882,6 +923,56 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 "jwks_json": "{\\"keys\\":[{\\"kty\\":\\"RSA\\",\\"alg\\":\\"RS256\\",\\"kid\\":\\"sif0AR-F6MuvksAyAOv-Pds08Bcf2eUMlxE30NofddA\\",\\"use\\":\\"sig\\",\\"e\\":\\"AQAB\\",\\"n\\":\\"ylH1Chl1tpfti3lh51E1g5dPogzXDaQseqjsefGLknaNl5W6Wd4frBhHyE2t41Q5zgz_Ll0-NvWm0FlaG6brhrN9QZu6sJP1bM8WPfJVPgXOanxi7d7TXCkeNubGeiLTf5R3UXtS9Lm_guemU7MxDjDTelxnlgGCihOVTcL526suNJUdfXtpwUsvdU6_ZnAp9IpsuYjCtwPm9hPumlcZGMbxstdh07O4y4O90cVQClJOKSGQjAUCKJWXIQ0cqffGS_HuS_725CPzQ85SzYZzaNpgfhAER7kx_9P16ARM3BJz0PI5fe2hECE61J4GYU_BY43sxDfs7HyJpEXKLU9eWw\\"}]}",
             })
         ```
+        ### Iam Workload Identity Pool Provider X509 Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        pool = gcp.iam.WorkloadIdentityPool("pool", workload_identity_pool_id="example-pool")
+        example = gcp.iam.WorkloadIdentityPoolProvider("example",
+            workload_identity_pool_id=pool.workload_identity_pool_id,
+            workload_identity_pool_provider_id="example-prvdr",
+            attribute_mapping={
+                "google.subject": "assertion.subject.dn.cn",
+            },
+            x509={
+                "trust_store": {
+                    "trust_anchors": [{
+                        "pem_certificate": std.file(input="test-fixtures/trust_anchor.pem").result,
+                    }],
+                },
+            })
+        ```
+        ### Iam Workload Identity Pool Provider X509 Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        pool = gcp.iam.WorkloadIdentityPool("pool", workload_identity_pool_id="example-pool")
+        example = gcp.iam.WorkloadIdentityPoolProvider("example",
+            workload_identity_pool_id=pool.workload_identity_pool_id,
+            workload_identity_pool_provider_id="example-prvdr",
+            display_name="Name of provider",
+            description="X.509 identity pool provider for automated test",
+            disabled=True,
+            attribute_mapping={
+                "google.subject": "assertion.subject.dn.cn",
+            },
+            x509={
+                "trust_store": {
+                    "trust_anchors": [{
+                        "pem_certificate": std.file(input="test-fixtures/trust_anchor.pem").result,
+                    }],
+                    "intermediate_cas": [{
+                        "pem_certificate": std.file(input="test-fixtures/intermediate_ca.pem").result,
+                    }],
+                },
+            })
+        ```
 
         ## Import
 
@@ -986,6 +1077,9 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[Union['WorkloadIdentityPoolProviderX509Args', 'WorkloadIdentityPoolProviderX509ArgsDict']] x509: An X.509-type identity provider represents a CA. It is trusted to assert a
+               client identity if the client has a certificate that chains up to this CA.
+               Structure is documented below.
         """
         ...
     @overload
@@ -1164,6 +1258,56 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 "jwks_json": "{\\"keys\\":[{\\"kty\\":\\"RSA\\",\\"alg\\":\\"RS256\\",\\"kid\\":\\"sif0AR-F6MuvksAyAOv-Pds08Bcf2eUMlxE30NofddA\\",\\"use\\":\\"sig\\",\\"e\\":\\"AQAB\\",\\"n\\":\\"ylH1Chl1tpfti3lh51E1g5dPogzXDaQseqjsefGLknaNl5W6Wd4frBhHyE2t41Q5zgz_Ll0-NvWm0FlaG6brhrN9QZu6sJP1bM8WPfJVPgXOanxi7d7TXCkeNubGeiLTf5R3UXtS9Lm_guemU7MxDjDTelxnlgGCihOVTcL526suNJUdfXtpwUsvdU6_ZnAp9IpsuYjCtwPm9hPumlcZGMbxstdh07O4y4O90cVQClJOKSGQjAUCKJWXIQ0cqffGS_HuS_725CPzQ85SzYZzaNpgfhAER7kx_9P16ARM3BJz0PI5fe2hECE61J4GYU_BY43sxDfs7HyJpEXKLU9eWw\\"}]}",
             })
         ```
+        ### Iam Workload Identity Pool Provider X509 Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        pool = gcp.iam.WorkloadIdentityPool("pool", workload_identity_pool_id="example-pool")
+        example = gcp.iam.WorkloadIdentityPoolProvider("example",
+            workload_identity_pool_id=pool.workload_identity_pool_id,
+            workload_identity_pool_provider_id="example-prvdr",
+            attribute_mapping={
+                "google.subject": "assertion.subject.dn.cn",
+            },
+            x509={
+                "trust_store": {
+                    "trust_anchors": [{
+                        "pem_certificate": std.file(input="test-fixtures/trust_anchor.pem").result,
+                    }],
+                },
+            })
+        ```
+        ### Iam Workload Identity Pool Provider X509 Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        pool = gcp.iam.WorkloadIdentityPool("pool", workload_identity_pool_id="example-pool")
+        example = gcp.iam.WorkloadIdentityPoolProvider("example",
+            workload_identity_pool_id=pool.workload_identity_pool_id,
+            workload_identity_pool_provider_id="example-prvdr",
+            display_name="Name of provider",
+            description="X.509 identity pool provider for automated test",
+            disabled=True,
+            attribute_mapping={
+                "google.subject": "assertion.subject.dn.cn",
+            },
+            x509={
+                "trust_store": {
+                    "trust_anchors": [{
+                        "pem_certificate": std.file(input="test-fixtures/trust_anchor.pem").result,
+                    }],
+                    "intermediate_cas": [{
+                        "pem_certificate": std.file(input="test-fixtures/intermediate_ca.pem").result,
+                    }],
+                },
+            })
+        ```
 
         ## Import
 
@@ -1215,6 +1359,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                  saml: Optional[pulumi.Input[Union['WorkloadIdentityPoolProviderSamlArgs', 'WorkloadIdentityPoolProviderSamlArgsDict']]] = None,
                  workload_identity_pool_id: Optional[pulumi.Input[str]] = None,
                  workload_identity_pool_provider_id: Optional[pulumi.Input[str]] = None,
+                 x509: Optional[pulumi.Input[Union['WorkloadIdentityPoolProviderX509Args', 'WorkloadIdentityPoolProviderX509ArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1239,6 +1384,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
             if workload_identity_pool_provider_id is None and not opts.urn:
                 raise TypeError("Missing required property 'workload_identity_pool_provider_id'")
             __props__.__dict__["workload_identity_pool_provider_id"] = workload_identity_pool_provider_id
+            __props__.__dict__["x509"] = x509
             __props__.__dict__["name"] = None
             __props__.__dict__["state"] = None
         super(WorkloadIdentityPoolProvider, __self__).__init__(
@@ -1263,7 +1409,8 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
             saml: Optional[pulumi.Input[Union['WorkloadIdentityPoolProviderSamlArgs', 'WorkloadIdentityPoolProviderSamlArgsDict']]] = None,
             state: Optional[pulumi.Input[str]] = None,
             workload_identity_pool_id: Optional[pulumi.Input[str]] = None,
-            workload_identity_pool_provider_id: Optional[pulumi.Input[str]] = None) -> 'WorkloadIdentityPoolProvider':
+            workload_identity_pool_provider_id: Optional[pulumi.Input[str]] = None,
+            x509: Optional[pulumi.Input[Union['WorkloadIdentityPoolProviderX509Args', 'WorkloadIdentityPoolProviderX509ArgsDict']]] = None) -> 'WorkloadIdentityPoolProvider':
         """
         Get an existing WorkloadIdentityPoolProvider resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1357,6 +1504,9 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[Union['WorkloadIdentityPoolProviderX509Args', 'WorkloadIdentityPoolProviderX509ArgsDict']] x509: An X.509-type identity provider represents a CA. It is trusted to assert a
+               client identity if the client has a certificate that chains up to this CA.
+               Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1375,6 +1525,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         __props__.__dict__["workload_identity_pool_id"] = workload_identity_pool_id
         __props__.__dict__["workload_identity_pool_provider_id"] = workload_identity_pool_provider_id
+        __props__.__dict__["x509"] = x509
         return WorkloadIdentityPoolProvider(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1553,4 +1704,14 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
         - - -
         """
         return pulumi.get(self, "workload_identity_pool_provider_id")
+
+    @property
+    @pulumi.getter
+    def x509(self) -> pulumi.Output[Optional['outputs.WorkloadIdentityPoolProviderX509']]:
+        """
+        An X.509-type identity provider represents a CA. It is trusted to assert a
+        client identity if the client has a certificate that chains up to this CA.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "x509")
 

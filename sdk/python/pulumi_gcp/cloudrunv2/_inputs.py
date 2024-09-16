@@ -111,6 +111,8 @@ __all__ = [
     'ServiceTemplateContainerVolumeMountArgsDict',
     'ServiceTemplateScalingArgs',
     'ServiceTemplateScalingArgsDict',
+    'ServiceTemplateServiceMeshArgs',
+    'ServiceTemplateServiceMeshArgsDict',
     'ServiceTemplateVolumeArgs',
     'ServiceTemplateVolumeArgsDict',
     'ServiceTemplateVolumeCloudSqlInstanceArgs',
@@ -1427,12 +1429,12 @@ if not MYPY:
         """
         gcs: NotRequired[pulumi.Input['JobTemplateTemplateVolumeGcsArgsDict']]
         """
-        Cloud Storage bucket mounted as a volume using GCSFuse. This feature requires the launch stage to be set to ALPHA or BETA.
+        Cloud Storage bucket mounted as a volume using GCSFuse.
         Structure is documented below.
         """
         nfs: NotRequired[pulumi.Input['JobTemplateTemplateVolumeNfsArgsDict']]
         """
-        NFS share mounted as a volume. This feature requires the launch stage to be set to ALPHA or BETA.
+        NFS share mounted as a volume.
         Structure is documented below.
         """
         secret: NotRequired[pulumi.Input['JobTemplateTemplateVolumeSecretArgsDict']]
@@ -1458,9 +1460,9 @@ class JobTemplateTemplateVolumeArgs:
                Structure is documented below.
         :param pulumi.Input['JobTemplateTemplateVolumeEmptyDirArgs'] empty_dir: Ephemeral storage used as a shared volume.
                Structure is documented below.
-        :param pulumi.Input['JobTemplateTemplateVolumeGcsArgs'] gcs: Cloud Storage bucket mounted as a volume using GCSFuse. This feature requires the launch stage to be set to ALPHA or BETA.
+        :param pulumi.Input['JobTemplateTemplateVolumeGcsArgs'] gcs: Cloud Storage bucket mounted as a volume using GCSFuse.
                Structure is documented below.
-        :param pulumi.Input['JobTemplateTemplateVolumeNfsArgs'] nfs: NFS share mounted as a volume. This feature requires the launch stage to be set to ALPHA or BETA.
+        :param pulumi.Input['JobTemplateTemplateVolumeNfsArgs'] nfs: NFS share mounted as a volume.
                Structure is documented below.
         :param pulumi.Input['JobTemplateTemplateVolumeSecretArgs'] secret: Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
                Structure is documented below.
@@ -1519,7 +1521,7 @@ class JobTemplateTemplateVolumeArgs:
     @pulumi.getter
     def gcs(self) -> Optional[pulumi.Input['JobTemplateTemplateVolumeGcsArgs']]:
         """
-        Cloud Storage bucket mounted as a volume using GCSFuse. This feature requires the launch stage to be set to ALPHA or BETA.
+        Cloud Storage bucket mounted as a volume using GCSFuse.
         Structure is documented below.
         """
         return pulumi.get(self, "gcs")
@@ -1532,7 +1534,7 @@ class JobTemplateTemplateVolumeArgs:
     @pulumi.getter
     def nfs(self) -> Optional[pulumi.Input['JobTemplateTemplateVolumeNfsArgs']]:
         """
-        NFS share mounted as a volume. This feature requires the launch stage to be set to ALPHA or BETA.
+        NFS share mounted as a volume.
         Structure is documented below.
         """
         return pulumi.get(self, "nfs")
@@ -2723,6 +2725,11 @@ if not MYPY:
         """
         Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
         """
+        service_mesh: NotRequired[pulumi.Input['ServiceTemplateServiceMeshArgsDict']]
+        """
+        Enables Cloud Service Mesh for this Revision.
+        Structure is documented below.
+        """
         session_affinity: NotRequired[pulumi.Input[bool]]
         """
         Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
@@ -2757,6 +2764,7 @@ class ServiceTemplateArgs:
                  revision: Optional[pulumi.Input[str]] = None,
                  scaling: Optional[pulumi.Input['ServiceTemplateScalingArgs']] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
+                 service_mesh: Optional[pulumi.Input['ServiceTemplateServiceMeshArgs']] = None,
                  session_affinity: Optional[pulumi.Input[bool]] = None,
                  timeout: Optional[pulumi.Input[str]] = None,
                  volumes: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTemplateVolumeArgs']]]] = None,
@@ -2781,6 +2789,8 @@ class ServiceTemplateArgs:
         :param pulumi.Input['ServiceTemplateScalingArgs'] scaling: Scaling settings for this Revision.
                Structure is documented below.
         :param pulumi.Input[str] service_account: Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
+        :param pulumi.Input['ServiceTemplateServiceMeshArgs'] service_mesh: Enables Cloud Service Mesh for this Revision.
+               Structure is documented below.
         :param pulumi.Input[bool] session_affinity: Enables session affinity. For more information, go to https://cloud.google.com/run/docs/configuring/session-affinity
         :param pulumi.Input[str] timeout: Max allowed time for an instance to respond to a request.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
@@ -2807,6 +2817,8 @@ class ServiceTemplateArgs:
             pulumi.set(__self__, "scaling", scaling)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
+        if service_mesh is not None:
+            pulumi.set(__self__, "service_mesh", service_mesh)
         if session_affinity is not None:
             pulumi.set(__self__, "session_affinity", session_affinity)
         if timeout is not None:
@@ -2933,6 +2945,19 @@ class ServiceTemplateArgs:
     @service_account.setter
     def service_account(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "service_account", value)
+
+    @property
+    @pulumi.getter(name="serviceMesh")
+    def service_mesh(self) -> Optional[pulumi.Input['ServiceTemplateServiceMeshArgs']]:
+        """
+        Enables Cloud Service Mesh for this Revision.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "service_mesh")
+
+    @service_mesh.setter
+    def service_mesh(self, value: Optional[pulumi.Input['ServiceTemplateServiceMeshArgs']]):
+        pulumi.set(self, "service_mesh", value)
 
     @property
     @pulumi.getter(name="sessionAffinity")
@@ -4419,6 +4444,44 @@ class ServiceTemplateScalingArgs:
 
 
 if not MYPY:
+    class ServiceTemplateServiceMeshArgsDict(TypedDict):
+        mesh: NotRequired[pulumi.Input[str]]
+        """
+        The Mesh resource name. For more information see https://cloud.google.com/service-mesh/docs/reference/network-services/rest/v1/projects.locations.meshes#resource:-mesh.
+
+        - - -
+        """
+elif False:
+    ServiceTemplateServiceMeshArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ServiceTemplateServiceMeshArgs:
+    def __init__(__self__, *,
+                 mesh: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] mesh: The Mesh resource name. For more information see https://cloud.google.com/service-mesh/docs/reference/network-services/rest/v1/projects.locations.meshes#resource:-mesh.
+               
+               - - -
+        """
+        if mesh is not None:
+            pulumi.set(__self__, "mesh", mesh)
+
+    @property
+    @pulumi.getter
+    def mesh(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Mesh resource name. For more information see https://cloud.google.com/service-mesh/docs/reference/network-services/rest/v1/projects.locations.meshes#resource:-mesh.
+
+        - - -
+        """
+        return pulumi.get(self, "mesh")
+
+    @mesh.setter
+    def mesh(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mesh", value)
+
+
+if not MYPY:
     class ServiceTemplateVolumeArgsDict(TypedDict):
         name: pulumi.Input[str]
         """
@@ -4436,7 +4499,7 @@ if not MYPY:
         """
         gcs: NotRequired[pulumi.Input['ServiceTemplateVolumeGcsArgsDict']]
         """
-        Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment and requires launch-stage to be set to ALPHA or BETA.
+        Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment.
         Structure is documented below.
         """
         nfs: NotRequired[pulumi.Input['ServiceTemplateVolumeNfsArgsDict']]
@@ -4467,7 +4530,7 @@ class ServiceTemplateVolumeArgs:
                Structure is documented below.
         :param pulumi.Input['ServiceTemplateVolumeEmptyDirArgs'] empty_dir: Ephemeral storage used as a shared volume.
                Structure is documented below.
-        :param pulumi.Input['ServiceTemplateVolumeGcsArgs'] gcs: Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment and requires launch-stage to be set to ALPHA or BETA.
+        :param pulumi.Input['ServiceTemplateVolumeGcsArgs'] gcs: Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment.
                Structure is documented below.
         :param pulumi.Input['ServiceTemplateVolumeNfsArgs'] nfs: Represents an NFS mount.
                Structure is documented below.
@@ -4528,7 +4591,7 @@ class ServiceTemplateVolumeArgs:
     @pulumi.getter
     def gcs(self) -> Optional[pulumi.Input['ServiceTemplateVolumeGcsArgs']]:
         """
-        Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment and requires launch-stage to be set to ALPHA or BETA.
+        Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment.
         Structure is documented below.
         """
         return pulumi.get(self, "gcs")
@@ -4718,8 +4781,6 @@ if not MYPY:
         read_only: NotRequired[pulumi.Input[bool]]
         """
         If true, mount the NFS volume as read only
-
-        - - -
         """
 elif False:
     ServiceTemplateVolumeNfsArgsDict: TypeAlias = Mapping[str, Any]
@@ -4734,8 +4795,6 @@ class ServiceTemplateVolumeNfsArgs:
         :param pulumi.Input[str] path: Path that is exported by the NFS server.
         :param pulumi.Input[str] server: Hostname or IP address of the NFS server
         :param pulumi.Input[bool] read_only: If true, mount the NFS volume as read only
-               
-               - - -
         """
         pulumi.set(__self__, "path", path)
         pulumi.set(__self__, "server", server)
@@ -4771,8 +4830,6 @@ class ServiceTemplateVolumeNfsArgs:
     def read_only(self) -> Optional[pulumi.Input[bool]]:
         """
         If true, mount the NFS volume as read only
-
-        - - -
         """
         return pulumi.get(self, "read_only")
 

@@ -13,10 +13,17 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class ClusterNodePoolAutoConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The network tag config for the cluster's automatically provisioned node pools.
+        /// The network tag config for the cluster's automatically provisioned node pools. Structure is documented below.
         /// </summary>
         [Input("networkTags")]
         public Input<Inputs.ClusterNodePoolAutoConfigNetworkTagsArgs>? NetworkTags { get; set; }
+
+        /// <summary>
+        /// Kubelet configuration for Autopilot clusters. Currently, only `insecure_kubelet_readonly_port_enabled` is supported here.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("nodeKubeletConfig")]
+        public Input<Inputs.ClusterNodePoolAutoConfigNodeKubeletConfigArgs>? NodeKubeletConfig { get; set; }
 
         [Input("resourceManagerTags")]
         private InputMap<string>? _resourceManagerTags;

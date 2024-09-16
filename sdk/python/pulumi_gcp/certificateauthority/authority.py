@@ -49,7 +49,8 @@ class AuthorityArgs:
         :param pulumi.Input[str] location: Location of the CertificateAuthority. A full list of valid locations can be found by
                running `gcloud privateca locations list`.
         :param pulumi.Input[str] pool: The name of the CaPool this Certificate Authority belongs to.
-        :param pulumi.Input[str] desired_state: Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA.
+        :param pulumi.Input[str] desired_state: Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA. Possible values:
+               ENABLED, DISABLED, STAGED.
         :param pulumi.Input[str] gcs_bucket: The name of a Cloud Storage bucket where this CertificateAuthority will publish content, such as the CA certificate and
                CRLs. This must be a bucket name, without any prefixes (such as 'gs://') or suffixes (such as '.googleapis.com'). For
                example, to use a bucket named my-bucket, you would simply specify 'my-bucket'. If not specified, a managed bucket will
@@ -177,7 +178,8 @@ class AuthorityArgs:
     @pulumi.getter(name="desiredState")
     def desired_state(self) -> Optional[pulumi.Input[str]]:
         """
-        Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA.
+        Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA. Possible values:
+        ENABLED, DISABLED, STAGED.
         """
         return pulumi.get(self, "desired_state")
 
@@ -340,7 +342,8 @@ class _AuthorityState:
         :param pulumi.Input[str] create_time: The time at which this CertificateAuthority was created.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
                fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        :param pulumi.Input[str] desired_state: Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA.
+        :param pulumi.Input[str] desired_state: Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA. Possible values:
+               ENABLED, DISABLED, STAGED.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] gcs_bucket: The name of a Cloud Storage bucket where this CertificateAuthority will publish content, such as the CA certificate and
                CRLs. This must be a bucket name, without any prefixes (such as 'gs://') or suffixes (such as '.googleapis.com'). For
@@ -496,7 +499,8 @@ class _AuthorityState:
     @pulumi.getter(name="desiredState")
     def desired_state(self) -> Optional[pulumi.Input[str]]:
         """
-        Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA.
+        Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA. Possible values:
+        ENABLED, DISABLED, STAGED.
         """
         return pulumi.get(self, "desired_state")
 
@@ -1069,7 +1073,8 @@ class Authority(pulumi.CustomResource):
         :param pulumi.Input[str] certificate_authority_id: The user provided Resource ID for this Certificate Authority.
         :param pulumi.Input[Union['AuthorityConfigArgs', 'AuthorityConfigArgsDict']] config: The config used to create a self-signed X.509 certificate or CSR.
                Structure is documented below.
-        :param pulumi.Input[str] desired_state: Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA.
+        :param pulumi.Input[str] desired_state: Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA. Possible values:
+               ENABLED, DISABLED, STAGED.
         :param pulumi.Input[str] gcs_bucket: The name of a Cloud Storage bucket where this CertificateAuthority will publish content, such as the CA certificate and
                CRLs. This must be a bucket name, without any prefixes (such as 'gs://') or suffixes (such as '.googleapis.com'). For
                example, to use a bucket named my-bucket, you would simply specify 'my-bucket'. If not specified, a managed bucket will
@@ -1530,7 +1535,8 @@ class Authority(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: The time at which this CertificateAuthority was created.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
                fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-        :param pulumi.Input[str] desired_state: Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA.
+        :param pulumi.Input[str] desired_state: Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA. Possible values:
+               ENABLED, DISABLED, STAGED.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] gcs_bucket: The name of a Cloud Storage bucket where this CertificateAuthority will publish content, such as the CA certificate and
                CRLs. This must be a bucket name, without any prefixes (such as 'gs://') or suffixes (such as '.googleapis.com'). For
@@ -1647,7 +1653,8 @@ class Authority(pulumi.CustomResource):
     @pulumi.getter(name="desiredState")
     def desired_state(self) -> pulumi.Output[Optional[str]]:
         """
-        Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA.
+        Desired state of the CertificateAuthority. Set this field to 'STAGED' to create a 'STAGED' root CA. Possible values:
+        ENABLED, DISABLED, STAGED.
         """
         return pulumi.get(self, "desired_state")
 

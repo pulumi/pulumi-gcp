@@ -3450,15 +3450,23 @@ func (o FeatureIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 type FeatureMembershipConfigmanagement struct {
+	// (Optional, Deprecated)
 	// Binauthz configuration for the cluster. Structure is documented below.
+	// This field will be ignored and should not be set.
 	Binauthz *FeatureMembershipConfigmanagementBinauthz `pulumi:"binauthz"`
 	// Config Sync configuration for the cluster. Structure is documented below.
 	ConfigSync *FeatureMembershipConfigmanagementConfigSync `pulumi:"configSync"`
 	// Hierarchy Controller configuration for the cluster. Structure is documented below.
+	// Configuring Hierarchy Controller through the configmanagement feature is no longer recommended.
+	// Use open source Kubernetes [Hierarchical Namespace Controller (HNC)](https://github.com/kubernetes-sigs/hierarchical-namespaces) instead.
+	// Follow the [instructions](https://cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/migrate-hierarchy-controller)
+	// to migrate from Hierarchy Controller to HNC.
 	HierarchyController *FeatureMembershipConfigmanagementHierarchyController `pulumi:"hierarchyController"`
 	// Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
 	Management *string `pulumi:"management"`
 	// Policy Controller configuration for the cluster. Structure is documented below.
+	// Configuring Policy Controller through the configmanagement feature is no longer recommended.
+	// Use the policycontroller feature instead.
 	PolicyController *FeatureMembershipConfigmanagementPolicyController `pulumi:"policyController"`
 	// Version of ACM installed.
 	Version *string `pulumi:"version"`
@@ -3476,15 +3484,23 @@ type FeatureMembershipConfigmanagementInput interface {
 }
 
 type FeatureMembershipConfigmanagementArgs struct {
+	// (Optional, Deprecated)
 	// Binauthz configuration for the cluster. Structure is documented below.
+	// This field will be ignored and should not be set.
 	Binauthz FeatureMembershipConfigmanagementBinauthzPtrInput `pulumi:"binauthz"`
 	// Config Sync configuration for the cluster. Structure is documented below.
 	ConfigSync FeatureMembershipConfigmanagementConfigSyncPtrInput `pulumi:"configSync"`
 	// Hierarchy Controller configuration for the cluster. Structure is documented below.
+	// Configuring Hierarchy Controller through the configmanagement feature is no longer recommended.
+	// Use open source Kubernetes [Hierarchical Namespace Controller (HNC)](https://github.com/kubernetes-sigs/hierarchical-namespaces) instead.
+	// Follow the [instructions](https://cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/migrate-hierarchy-controller)
+	// to migrate from Hierarchy Controller to HNC.
 	HierarchyController FeatureMembershipConfigmanagementHierarchyControllerPtrInput `pulumi:"hierarchyController"`
 	// Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
 	Management pulumi.StringPtrInput `pulumi:"management"`
 	// Policy Controller configuration for the cluster. Structure is documented below.
+	// Configuring Policy Controller through the configmanagement feature is no longer recommended.
+	// Use the policycontroller feature instead.
 	PolicyController FeatureMembershipConfigmanagementPolicyControllerPtrInput `pulumi:"policyController"`
 	// Version of ACM installed.
 	Version pulumi.StringPtrInput `pulumi:"version"`
@@ -3567,7 +3583,9 @@ func (o FeatureMembershipConfigmanagementOutput) ToFeatureMembershipConfigmanage
 	}).(FeatureMembershipConfigmanagementPtrOutput)
 }
 
+// (Optional, Deprecated)
 // Binauthz configuration for the cluster. Structure is documented below.
+// This field will be ignored and should not be set.
 func (o FeatureMembershipConfigmanagementOutput) Binauthz() FeatureMembershipConfigmanagementBinauthzPtrOutput {
 	return o.ApplyT(func(v FeatureMembershipConfigmanagement) *FeatureMembershipConfigmanagementBinauthz {
 		return v.Binauthz
@@ -3582,6 +3600,10 @@ func (o FeatureMembershipConfigmanagementOutput) ConfigSync() FeatureMembershipC
 }
 
 // Hierarchy Controller configuration for the cluster. Structure is documented below.
+// Configuring Hierarchy Controller through the configmanagement feature is no longer recommended.
+// Use open source Kubernetes [Hierarchical Namespace Controller (HNC)](https://github.com/kubernetes-sigs/hierarchical-namespaces) instead.
+// Follow the [instructions](https://cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/migrate-hierarchy-controller)
+// to migrate from Hierarchy Controller to HNC.
 func (o FeatureMembershipConfigmanagementOutput) HierarchyController() FeatureMembershipConfigmanagementHierarchyControllerPtrOutput {
 	return o.ApplyT(func(v FeatureMembershipConfigmanagement) *FeatureMembershipConfigmanagementHierarchyController {
 		return v.HierarchyController
@@ -3594,6 +3616,8 @@ func (o FeatureMembershipConfigmanagementOutput) Management() pulumi.StringPtrOu
 }
 
 // Policy Controller configuration for the cluster. Structure is documented below.
+// Configuring Policy Controller through the configmanagement feature is no longer recommended.
+// Use the policycontroller feature instead.
 func (o FeatureMembershipConfigmanagementOutput) PolicyController() FeatureMembershipConfigmanagementPolicyControllerPtrOutput {
 	return o.ApplyT(func(v FeatureMembershipConfigmanagement) *FeatureMembershipConfigmanagementPolicyController {
 		return v.PolicyController
@@ -3629,7 +3653,9 @@ func (o FeatureMembershipConfigmanagementPtrOutput) Elem() FeatureMembershipConf
 	}).(FeatureMembershipConfigmanagementOutput)
 }
 
+// (Optional, Deprecated)
 // Binauthz configuration for the cluster. Structure is documented below.
+// This field will be ignored and should not be set.
 func (o FeatureMembershipConfigmanagementPtrOutput) Binauthz() FeatureMembershipConfigmanagementBinauthzPtrOutput {
 	return o.ApplyT(func(v *FeatureMembershipConfigmanagement) *FeatureMembershipConfigmanagementBinauthz {
 		if v == nil {
@@ -3650,6 +3676,10 @@ func (o FeatureMembershipConfigmanagementPtrOutput) ConfigSync() FeatureMembersh
 }
 
 // Hierarchy Controller configuration for the cluster. Structure is documented below.
+// Configuring Hierarchy Controller through the configmanagement feature is no longer recommended.
+// Use open source Kubernetes [Hierarchical Namespace Controller (HNC)](https://github.com/kubernetes-sigs/hierarchical-namespaces) instead.
+// Follow the [instructions](https://cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/migrate-hierarchy-controller)
+// to migrate from Hierarchy Controller to HNC.
 func (o FeatureMembershipConfigmanagementPtrOutput) HierarchyController() FeatureMembershipConfigmanagementHierarchyControllerPtrOutput {
 	return o.ApplyT(func(v *FeatureMembershipConfigmanagement) *FeatureMembershipConfigmanagementHierarchyController {
 		if v == nil {
@@ -3670,6 +3700,8 @@ func (o FeatureMembershipConfigmanagementPtrOutput) Management() pulumi.StringPt
 }
 
 // Policy Controller configuration for the cluster. Structure is documented below.
+// Configuring Policy Controller through the configmanagement feature is no longer recommended.
+// Use the policycontroller feature instead.
 func (o FeatureMembershipConfigmanagementPtrOutput) PolicyController() FeatureMembershipConfigmanagementPolicyControllerPtrOutput {
 	return o.ApplyT(func(v *FeatureMembershipConfigmanagement) *FeatureMembershipConfigmanagementPolicyController {
 		if v == nil {

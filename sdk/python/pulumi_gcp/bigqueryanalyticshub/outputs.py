@@ -13,11 +13,16 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
 
 __all__ = [
     'DataExchangeIamBindingCondition',
     'DataExchangeIamMemberCondition',
+    'DataExchangeSharingEnvironmentConfig',
+    'DataExchangeSharingEnvironmentConfigDcrExchangeConfig',
+    'DataExchangeSharingEnvironmentConfigDefaultExchangeConfig',
     'ListingBigqueryDataset',
+    'ListingBigqueryDatasetSelectedResource',
     'ListingDataProvider',
     'ListingIamBindingCondition',
     'ListingIamMemberCondition',
@@ -80,25 +85,137 @@ class DataExchangeIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class ListingBigqueryDataset(dict):
+class DataExchangeSharingEnvironmentConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dcrExchangeConfig":
+            suggest = "dcr_exchange_config"
+        elif key == "defaultExchangeConfig":
+            suggest = "default_exchange_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataExchangeSharingEnvironmentConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataExchangeSharingEnvironmentConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataExchangeSharingEnvironmentConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 dataset: str):
+                 dcr_exchange_config: Optional['outputs.DataExchangeSharingEnvironmentConfigDcrExchangeConfig'] = None,
+                 default_exchange_config: Optional['outputs.DataExchangeSharingEnvironmentConfigDefaultExchangeConfig'] = None):
+        """
+        :param 'DataExchangeSharingEnvironmentConfigDcrExchangeConfigArgs' dcr_exchange_config: Data Clean Room (DCR), used for privacy-safe and secured data sharing.
+        :param 'DataExchangeSharingEnvironmentConfigDefaultExchangeConfigArgs' default_exchange_config: Default Analytics Hub data exchange, used for secured data sharing.
+        """
+        if dcr_exchange_config is not None:
+            pulumi.set(__self__, "dcr_exchange_config", dcr_exchange_config)
+        if default_exchange_config is not None:
+            pulumi.set(__self__, "default_exchange_config", default_exchange_config)
+
+    @property
+    @pulumi.getter(name="dcrExchangeConfig")
+    def dcr_exchange_config(self) -> Optional['outputs.DataExchangeSharingEnvironmentConfigDcrExchangeConfig']:
+        """
+        Data Clean Room (DCR), used for privacy-safe and secured data sharing.
+        """
+        return pulumi.get(self, "dcr_exchange_config")
+
+    @property
+    @pulumi.getter(name="defaultExchangeConfig")
+    def default_exchange_config(self) -> Optional['outputs.DataExchangeSharingEnvironmentConfigDefaultExchangeConfig']:
+        """
+        Default Analytics Hub data exchange, used for secured data sharing.
+        """
+        return pulumi.get(self, "default_exchange_config")
+
+
+@pulumi.output_type
+class DataExchangeSharingEnvironmentConfigDcrExchangeConfig(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class DataExchangeSharingEnvironmentConfigDefaultExchangeConfig(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class ListingBigqueryDataset(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "selectedResources":
+            suggest = "selected_resources"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ListingBigqueryDataset. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ListingBigqueryDataset.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ListingBigqueryDataset.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dataset: str,
+                 selected_resources: Optional[Sequence['outputs.ListingBigqueryDatasetSelectedResource']] = None):
         """
         :param str dataset: Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
-               
-               - - -
+        :param Sequence['ListingBigqueryDatasetSelectedResourceArgs'] selected_resources: Resource in this dataset that is selectively shared. This field is required for data clean room exchanges.
+               Structure is documented below.
         """
         pulumi.set(__self__, "dataset", dataset)
+        if selected_resources is not None:
+            pulumi.set(__self__, "selected_resources", selected_resources)
 
     @property
     @pulumi.getter
     def dataset(self) -> str:
         """
         Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
+        """
+        return pulumi.get(self, "dataset")
+
+    @property
+    @pulumi.getter(name="selectedResources")
+    def selected_resources(self) -> Optional[Sequence['outputs.ListingBigqueryDatasetSelectedResource']]:
+        """
+        Resource in this dataset that is selectively shared. This field is required for data clean room exchanges.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "selected_resources")
+
+
+@pulumi.output_type
+class ListingBigqueryDatasetSelectedResource(dict):
+    def __init__(__self__, *,
+                 table: Optional[str] = None):
+        """
+        :param str table: Format: For table: projects/{projectId}/datasets/{datasetId}/tables/{tableId} Example:"projects/test_project/datasets/test_dataset/tables/test_table"
+               
+               - - -
+        """
+        if table is not None:
+            pulumi.set(__self__, "table", table)
+
+    @property
+    @pulumi.getter
+    def table(self) -> Optional[str]:
+        """
+        Format: For table: projects/{projectId}/datasets/{datasetId}/tables/{tableId} Example:"projects/test_project/datasets/test_dataset/tables/test_table"
 
         - - -
         """
-        return pulumi.get(self, "dataset")
+        return pulumi.get(self, "table")
 
 
 @pulumi.output_type
@@ -254,7 +371,9 @@ class ListingRestrictedExportConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "restrictQueryResult":
+        if key == "restrictDirectTableAccess":
+            suggest = "restrict_direct_table_access"
+        elif key == "restrictQueryResult":
             suggest = "restrict_query_result"
 
         if suggest:
@@ -270,13 +389,18 @@ class ListingRestrictedExportConfig(dict):
 
     def __init__(__self__, *,
                  enabled: Optional[bool] = None,
+                 restrict_direct_table_access: Optional[bool] = None,
                  restrict_query_result: Optional[bool] = None):
         """
         :param bool enabled: If true, enable restricted export.
+        :param bool restrict_direct_table_access: (Output)
+               If true, restrict direct table access(read api/tabledata.list) on linked table.
         :param bool restrict_query_result: If true, restrict export of query result derived from restricted linked dataset table.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if restrict_direct_table_access is not None:
+            pulumi.set(__self__, "restrict_direct_table_access", restrict_direct_table_access)
         if restrict_query_result is not None:
             pulumi.set(__self__, "restrict_query_result", restrict_query_result)
 
@@ -287,6 +411,15 @@ class ListingRestrictedExportConfig(dict):
         If true, enable restricted export.
         """
         return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="restrictDirectTableAccess")
+    def restrict_direct_table_access(self) -> Optional[bool]:
+        """
+        (Output)
+        If true, restrict direct table access(read api/tabledata.list) on linked table.
+        """
+        return pulumi.get(self, "restrict_direct_table_access")
 
     @property
     @pulumi.getter(name="restrictQueryResult")

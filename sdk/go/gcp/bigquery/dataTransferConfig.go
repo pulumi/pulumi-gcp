@@ -86,6 +86,87 @@ import (
 //	}
 //
 // ```
+// ### Bigquerydatatransfer Config Cmek
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/projects"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			permissions, err := projects.NewIAMMember(ctx, "permissions", &projects.IAMMemberArgs{
+//				Project: pulumi.String(project.ProjectId),
+//				Role:    pulumi.String("roles/iam.serviceAccountTokenCreator"),
+//				Member:  pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com", project.Number),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myDataset, err := bigquery.NewDataset(ctx, "my_dataset", &bigquery.DatasetArgs{
+//				DatasetId:    pulumi.String("example_dataset"),
+//				FriendlyName: pulumi.String("foo"),
+//				Description:  pulumi.String("bar"),
+//				Location:     pulumi.String("asia-northeast1"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				permissions,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			keyRing, err := kms.NewKeyRing(ctx, "key_ring", &kms.KeyRingArgs{
+//				Name:     pulumi.String("example-keyring"),
+//				Location: pulumi.String("us"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
+//				Name:    pulumi.String("example-key"),
+//				KeyRing: keyRing.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewDataTransferConfig(ctx, "query_config_cmek", &bigquery.DataTransferConfigArgs{
+//				DisplayName:          pulumi.String(""),
+//				Location:             pulumi.String("asia-northeast1"),
+//				DataSourceId:         pulumi.String("scheduled_query"),
+//				Schedule:             pulumi.String("first sunday of quarter 00:00"),
+//				DestinationDatasetId: myDataset.DatasetId,
+//				Params: pulumi.StringMap{
+//					"destination_table_name_template": pulumi.String("my_table"),
+//					"write_disposition":               pulumi.String("WRITE_APPEND"),
+//					"query":                           pulumi.String("SELECT name FROM tabl WHERE x = 'y'"),
+//				},
+//				EncryptionConfiguration: &bigquery.DataTransferConfigEncryptionConfigurationArgs{
+//					KmsKeyName: cryptoKey.ID(),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				permissions,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Bigquerydatatransfer Config Salesforce
 //
 // ```go
@@ -122,10 +203,8 @@ import (
 //				Params: pulumi.StringMap{
 //					"connector.authentication.oauth.clientId":     pulumi.String("client-id"),
 //					"connector.authentication.oauth.clientSecret": pulumi.String("client-secret"),
-//					"connector.authentication.username":           pulumi.String("username"),
-//					"connector.authentication.password":           pulumi.String("password"),
-//					"connector.authentication.securityToken":      pulumi.String("security-token"),
-//					"assets":                                      pulumi.String("[\"asset-a\",\"asset-b\"]"),
+//					"connector.authentication.oauth.myDomain":     pulumi.String("MyDomainName"),
+//					"assets": pulumi.String("[\"asset-a\",\"asset-b\"]"),
 //				},
 //			})
 //			if err != nil {
@@ -169,6 +248,9 @@ type DataTransferConfig struct {
 	// email address of the user who owns this transfer config.
 	// Structure is documented below.
 	EmailPreferences DataTransferConfigEmailPreferencesPtrOutput `pulumi:"emailPreferences"`
+	// Represents the encryption configuration for a transfer.
+	// Structure is documented below.
+	EncryptionConfiguration DataTransferConfigEncryptionConfigurationPtrOutput `pulumi:"encryptionConfiguration"`
 	// The geographic location where the transfer config should reside.
 	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
@@ -275,6 +357,9 @@ type dataTransferConfigState struct {
 	// email address of the user who owns this transfer config.
 	// Structure is documented below.
 	EmailPreferences *DataTransferConfigEmailPreferences `pulumi:"emailPreferences"`
+	// Represents the encryption configuration for a transfer.
+	// Structure is documented below.
+	EncryptionConfiguration *DataTransferConfigEncryptionConfiguration `pulumi:"encryptionConfiguration"`
 	// The geographic location where the transfer config should reside.
 	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location *string `pulumi:"location"`
@@ -343,6 +428,9 @@ type DataTransferConfigState struct {
 	// email address of the user who owns this transfer config.
 	// Structure is documented below.
 	EmailPreferences DataTransferConfigEmailPreferencesPtrInput
+	// Represents the encryption configuration for a transfer.
+	// Structure is documented below.
+	EncryptionConfiguration DataTransferConfigEncryptionConfigurationPtrInput
 	// The geographic location where the transfer config should reside.
 	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location pulumi.StringPtrInput
@@ -415,6 +503,9 @@ type dataTransferConfigArgs struct {
 	// email address of the user who owns this transfer config.
 	// Structure is documented below.
 	EmailPreferences *DataTransferConfigEmailPreferences `pulumi:"emailPreferences"`
+	// Represents the encryption configuration for a transfer.
+	// Structure is documented below.
+	EncryptionConfiguration *DataTransferConfigEncryptionConfiguration `pulumi:"encryptionConfiguration"`
 	// The geographic location where the transfer config should reside.
 	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location *string `pulumi:"location"`
@@ -478,6 +569,9 @@ type DataTransferConfigArgs struct {
 	// email address of the user who owns this transfer config.
 	// Structure is documented below.
 	EmailPreferences DataTransferConfigEmailPreferencesPtrInput
+	// Represents the encryption configuration for a transfer.
+	// Structure is documented below.
+	EncryptionConfiguration DataTransferConfigEncryptionConfigurationPtrInput
 	// The geographic location where the transfer config should reside.
 	// Examples: US, EU, asia-northeast1. The default value is US.
 	Location pulumi.StringPtrInput
@@ -642,6 +736,14 @@ func (o DataTransferConfigOutput) DisplayName() pulumi.StringOutput {
 // Structure is documented below.
 func (o DataTransferConfigOutput) EmailPreferences() DataTransferConfigEmailPreferencesPtrOutput {
 	return o.ApplyT(func(v *DataTransferConfig) DataTransferConfigEmailPreferencesPtrOutput { return v.EmailPreferences }).(DataTransferConfigEmailPreferencesPtrOutput)
+}
+
+// Represents the encryption configuration for a transfer.
+// Structure is documented below.
+func (o DataTransferConfigOutput) EncryptionConfiguration() DataTransferConfigEncryptionConfigurationPtrOutput {
+	return o.ApplyT(func(v *DataTransferConfig) DataTransferConfigEncryptionConfigurationPtrOutput {
+		return v.EncryptionConfiguration
+	}).(DataTransferConfigEncryptionConfigurationPtrOutput)
 }
 
 // The geographic location where the transfer config should reside.

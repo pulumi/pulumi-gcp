@@ -23,6 +23,10 @@ import (
 //
 // > This resource reads the specified billing account on every pulumi up and plan operation so you must have permissions on the specified billing account.
 //
+// > It is recommended to use the `constraints/compute.skipDefaultNetworkCreation` [constraint](https://www.terraform.io/docs/providers/google/r/google_organization_policy.html) to remove the default network instead of setting `autoCreateNetwork` to false, when possible.
+//
+// > It may take a while for the attached tag bindings to be deleted after the project is scheduled to be deleted.
+//
 // To get more information about projects, see:
 //
 // * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v1/projects)
@@ -92,6 +96,37 @@ import (
 //
 // ```
 //
+// # To create a project with a tag
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.NewProject(ctx, "my_project", &organizations.ProjectArgs{
+//				Name:      pulumi.String("My Project"),
+//				ProjectId: pulumi.String("your-project-id"),
+//				OrgId:     pulumi.String("1234567"),
+//				Tags: pulumi.StringMap{
+//					"1234567/env": pulumi.String("staging"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Projects can be imported using the `project_id`, e.g.
@@ -144,6 +179,8 @@ type Project struct {
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when mutated.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewProject registers a new resource with the given unique name, arguments, and options.
@@ -219,6 +256,8 @@ type projectState struct {
 	ProjectId *string `pulumi:"projectId"`
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when mutated.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type ProjectState struct {
@@ -260,6 +299,8 @@ type ProjectState struct {
 	ProjectId pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
+	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when mutated.
+	Tags pulumi.StringMapInput
 }
 
 func (ProjectState) ElementType() reflect.Type {
@@ -299,6 +340,8 @@ type projectArgs struct {
 	OrgId *string `pulumi:"orgId"`
 	// The project ID. Changing this forces a new project to be created.
 	ProjectId *string `pulumi:"projectId"`
+	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when mutated.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Project resource.
@@ -335,6 +378,8 @@ type ProjectArgs struct {
 	OrgId pulumi.StringPtrInput
 	// The project ID. Changing this forces a new project to be created.
 	ProjectId pulumi.StringPtrInput
+	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when mutated.
+	Tags pulumi.StringMapInput
 }
 
 func (ProjectArgs) ElementType() reflect.Type {
@@ -493,6 +538,11 @@ func (o ProjectOutput) ProjectId() pulumi.StringOutput {
 // The combination of labels configured directly on the resource and default labels configured on the provider.
 func (o ProjectOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
+// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when mutated.
+func (o ProjectOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type ProjectArrayOutput struct{ *pulumi.OutputState }

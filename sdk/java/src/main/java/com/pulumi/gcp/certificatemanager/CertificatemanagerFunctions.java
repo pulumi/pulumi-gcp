@@ -10,7 +10,10 @@ import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.certificatemanager.inputs.GetCertificateMapArgs;
 import com.pulumi.gcp.certificatemanager.inputs.GetCertificateMapPlainArgs;
+import com.pulumi.gcp.certificatemanager.inputs.GetCertificatesArgs;
+import com.pulumi.gcp.certificatemanager.inputs.GetCertificatesPlainArgs;
 import com.pulumi.gcp.certificatemanager.outputs.GetCertificateMapResult;
+import com.pulumi.gcp.certificatemanager.outputs.GetCertificatesResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class CertificatemanagerFunctions {
@@ -181,5 +184,455 @@ public final class CertificatemanagerFunctions {
      */
     public static CompletableFuture<GetCertificateMapResult> getCertificateMapPlain(GetCertificateMapPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:certificatemanager/getCertificateMap:getCertificateMap", TypeShape.of(GetCertificateMapResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List all certificates within Google Certificate Manager for a given project, region or filter.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.certificatemanager.CertificatemanagerFunctions;
+     * import com.pulumi.gcp.certificatemanager.inputs.GetCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CertificatemanagerFunctions.getCertificates();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### With A Filter
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.certificatemanager.CertificatemanagerFunctions;
+     * import com.pulumi.gcp.certificatemanager.inputs.GetCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CertificatemanagerFunctions.getCertificates(GetCertificatesArgs.builder()
+     *             .filter("name:projects/PROJECT_ID/locations/REGION/certificates/certificate-name-*")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCertificatesResult> getCertificates() {
+        return getCertificates(GetCertificatesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * List all certificates within Google Certificate Manager for a given project, region or filter.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.certificatemanager.CertificatemanagerFunctions;
+     * import com.pulumi.gcp.certificatemanager.inputs.GetCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CertificatemanagerFunctions.getCertificates();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### With A Filter
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.certificatemanager.CertificatemanagerFunctions;
+     * import com.pulumi.gcp.certificatemanager.inputs.GetCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CertificatemanagerFunctions.getCertificates(GetCertificatesArgs.builder()
+     *             .filter("name:projects/PROJECT_ID/locations/REGION/certificates/certificate-name-*")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCertificatesResult> getCertificatesPlain() {
+        return getCertificatesPlain(GetCertificatesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * List all certificates within Google Certificate Manager for a given project, region or filter.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.certificatemanager.CertificatemanagerFunctions;
+     * import com.pulumi.gcp.certificatemanager.inputs.GetCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CertificatemanagerFunctions.getCertificates();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### With A Filter
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.certificatemanager.CertificatemanagerFunctions;
+     * import com.pulumi.gcp.certificatemanager.inputs.GetCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CertificatemanagerFunctions.getCertificates(GetCertificatesArgs.builder()
+     *             .filter("name:projects/PROJECT_ID/locations/REGION/certificates/certificate-name-*")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCertificatesResult> getCertificates(GetCertificatesArgs args) {
+        return getCertificates(args, InvokeOptions.Empty);
+    }
+    /**
+     * List all certificates within Google Certificate Manager for a given project, region or filter.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.certificatemanager.CertificatemanagerFunctions;
+     * import com.pulumi.gcp.certificatemanager.inputs.GetCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CertificatemanagerFunctions.getCertificates();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### With A Filter
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.certificatemanager.CertificatemanagerFunctions;
+     * import com.pulumi.gcp.certificatemanager.inputs.GetCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CertificatemanagerFunctions.getCertificates(GetCertificatesArgs.builder()
+     *             .filter("name:projects/PROJECT_ID/locations/REGION/certificates/certificate-name-*")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCertificatesResult> getCertificatesPlain(GetCertificatesPlainArgs args) {
+        return getCertificatesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * List all certificates within Google Certificate Manager for a given project, region or filter.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.certificatemanager.CertificatemanagerFunctions;
+     * import com.pulumi.gcp.certificatemanager.inputs.GetCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CertificatemanagerFunctions.getCertificates();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### With A Filter
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.certificatemanager.CertificatemanagerFunctions;
+     * import com.pulumi.gcp.certificatemanager.inputs.GetCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CertificatemanagerFunctions.getCertificates(GetCertificatesArgs.builder()
+     *             .filter("name:projects/PROJECT_ID/locations/REGION/certificates/certificate-name-*")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCertificatesResult> getCertificates(GetCertificatesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:certificatemanager/getCertificates:getCertificates", TypeShape.of(GetCertificatesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List all certificates within Google Certificate Manager for a given project, region or filter.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.certificatemanager.CertificatemanagerFunctions;
+     * import com.pulumi.gcp.certificatemanager.inputs.GetCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CertificatemanagerFunctions.getCertificates();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### With A Filter
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.certificatemanager.CertificatemanagerFunctions;
+     * import com.pulumi.gcp.certificatemanager.inputs.GetCertificatesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CertificatemanagerFunctions.getCertificates(GetCertificatesArgs.builder()
+     *             .filter("name:projects/PROJECT_ID/locations/REGION/certificates/certificate-name-*")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetCertificatesResult> getCertificatesPlain(GetCertificatesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:certificatemanager/getCertificates:getCertificates", TypeShape.of(GetCertificatesResult.class), args, Utilities.withVersion(options));
     }
 }

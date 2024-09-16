@@ -850,7 +850,7 @@ class ActiveDirectory(pulumi.CustomResource):
         """
         ActiveDirectory is the public representation of the active directory config.
 
-        To get more information about activeDirectory, see:
+        To get more information about ActiveDirectory, see:
 
         * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.activeDirectories)
         * How-to Guides
@@ -900,7 +900,7 @@ class ActiveDirectory(pulumi.CustomResource):
 
         ## Import
 
-        activeDirectory can be imported using any of these accepted formats:
+        ActiveDirectory can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/activeDirectories/{{name}}`
 
@@ -908,7 +908,7 @@ class ActiveDirectory(pulumi.CustomResource):
 
         * `{{location}}/{{name}}`
 
-        When using the `pulumi import` command, activeDirectory can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, ActiveDirectory can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:netapp/activeDirectory:ActiveDirectory default projects/{{project}}/locations/{{location}}/activeDirectories/{{name}}
@@ -966,7 +966,7 @@ class ActiveDirectory(pulumi.CustomResource):
         """
         ActiveDirectory is the public representation of the active directory config.
 
-        To get more information about activeDirectory, see:
+        To get more information about ActiveDirectory, see:
 
         * [API documentation](https://cloud.google.com/netapp/volumes/docs/reference/rest/v1/projects.locations.activeDirectories)
         * How-to Guides
@@ -1016,7 +1016,7 @@ class ActiveDirectory(pulumi.CustomResource):
 
         ## Import
 
-        activeDirectory can be imported using any of these accepted formats:
+        ActiveDirectory can be imported using any of these accepted formats:
 
         * `projects/{{project}}/locations/{{location}}/activeDirectories/{{name}}`
 
@@ -1024,7 +1024,7 @@ class ActiveDirectory(pulumi.CustomResource):
 
         * `{{location}}/{{name}}`
 
-        When using the `pulumi import` command, activeDirectory can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, ActiveDirectory can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:netapp/activeDirectory:ActiveDirectory default projects/{{project}}/locations/{{location}}/activeDirectories/{{name}}

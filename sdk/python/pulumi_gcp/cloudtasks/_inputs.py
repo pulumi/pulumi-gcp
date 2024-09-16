@@ -17,6 +17,22 @@ from .. import _utilities
 __all__ = [
     'QueueAppEngineRoutingOverrideArgs',
     'QueueAppEngineRoutingOverrideArgsDict',
+    'QueueHttpTargetArgs',
+    'QueueHttpTargetArgsDict',
+    'QueueHttpTargetHeaderOverrideArgs',
+    'QueueHttpTargetHeaderOverrideArgsDict',
+    'QueueHttpTargetHeaderOverrideHeaderArgs',
+    'QueueHttpTargetHeaderOverrideHeaderArgsDict',
+    'QueueHttpTargetOauthTokenArgs',
+    'QueueHttpTargetOauthTokenArgsDict',
+    'QueueHttpTargetOidcTokenArgs',
+    'QueueHttpTargetOidcTokenArgsDict',
+    'QueueHttpTargetUriOverrideArgs',
+    'QueueHttpTargetUriOverrideArgsDict',
+    'QueueHttpTargetUriOverridePathOverrideArgs',
+    'QueueHttpTargetUriOverridePathOverrideArgsDict',
+    'QueueHttpTargetUriOverrideQueryOverrideArgs',
+    'QueueHttpTargetUriOverrideQueryOverrideArgsDict',
     'QueueIamBindingConditionArgs',
     'QueueIamBindingConditionArgsDict',
     'QueueIamMemberConditionArgs',
@@ -133,6 +149,620 @@ class QueueAppEngineRoutingOverrideArgs:
     @version.setter
     def version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "version", value)
+
+
+if not MYPY:
+    class QueueHttpTargetArgsDict(TypedDict):
+        header_overrides: NotRequired[pulumi.Input[Sequence[pulumi.Input['QueueHttpTargetHeaderOverrideArgsDict']]]]
+        """
+        HTTP target headers.
+        This map contains the header field names and values.
+        Headers will be set when running the CreateTask and/or BufferTask.
+        These headers represent a subset of the headers that will be configured for the task's HTTP request.
+        Some HTTP request headers will be ignored or replaced.
+        Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values.
+        The size of the headers must be less than 80KB. Queue-level headers to override headers of all the tasks in the queue.
+        Structure is documented below.
+        """
+        http_method: NotRequired[pulumi.Input[str]]
+        """
+        The HTTP method to use for the request.
+        When specified, it overrides HttpRequest for the task.
+        Note that if the value is set to GET the body of the task will be ignored at execution time.
+        Possible values are: `HTTP_METHOD_UNSPECIFIED`, `POST`, `GET`, `HEAD`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`.
+        """
+        oauth_token: NotRequired[pulumi.Input['QueueHttpTargetOauthTokenArgsDict']]
+        """
+        If specified, an OAuth token is generated and attached as the Authorization header in the HTTP request.
+        This type of authorization should generally be used only when calling Google APIs hosted on *.googleapis.com.
+        Note that both the service account email and the scope MUST be specified when using the queue-level authorization override.
+        Structure is documented below.
+        """
+        oidc_token: NotRequired[pulumi.Input['QueueHttpTargetOidcTokenArgsDict']]
+        """
+        If specified, an OIDC token is generated and attached as an Authorization header in the HTTP request.
+        This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
+        Note that both the service account email and the audience MUST be specified when using the queue-level authorization override.
+        Structure is documented below.
+        """
+        uri_override: NotRequired[pulumi.Input['QueueHttpTargetUriOverrideArgsDict']]
+        """
+        URI override.
+        When specified, overrides the execution URI for all the tasks in the queue.
+        Structure is documented below.
+        """
+elif False:
+    QueueHttpTargetArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class QueueHttpTargetArgs:
+    def __init__(__self__, *,
+                 header_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['QueueHttpTargetHeaderOverrideArgs']]]] = None,
+                 http_method: Optional[pulumi.Input[str]] = None,
+                 oauth_token: Optional[pulumi.Input['QueueHttpTargetOauthTokenArgs']] = None,
+                 oidc_token: Optional[pulumi.Input['QueueHttpTargetOidcTokenArgs']] = None,
+                 uri_override: Optional[pulumi.Input['QueueHttpTargetUriOverrideArgs']] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['QueueHttpTargetHeaderOverrideArgs']]] header_overrides: HTTP target headers.
+               This map contains the header field names and values.
+               Headers will be set when running the CreateTask and/or BufferTask.
+               These headers represent a subset of the headers that will be configured for the task's HTTP request.
+               Some HTTP request headers will be ignored or replaced.
+               Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values.
+               The size of the headers must be less than 80KB. Queue-level headers to override headers of all the tasks in the queue.
+               Structure is documented below.
+        :param pulumi.Input[str] http_method: The HTTP method to use for the request.
+               When specified, it overrides HttpRequest for the task.
+               Note that if the value is set to GET the body of the task will be ignored at execution time.
+               Possible values are: `HTTP_METHOD_UNSPECIFIED`, `POST`, `GET`, `HEAD`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`.
+        :param pulumi.Input['QueueHttpTargetOauthTokenArgs'] oauth_token: If specified, an OAuth token is generated and attached as the Authorization header in the HTTP request.
+               This type of authorization should generally be used only when calling Google APIs hosted on *.googleapis.com.
+               Note that both the service account email and the scope MUST be specified when using the queue-level authorization override.
+               Structure is documented below.
+        :param pulumi.Input['QueueHttpTargetOidcTokenArgs'] oidc_token: If specified, an OIDC token is generated and attached as an Authorization header in the HTTP request.
+               This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
+               Note that both the service account email and the audience MUST be specified when using the queue-level authorization override.
+               Structure is documented below.
+        :param pulumi.Input['QueueHttpTargetUriOverrideArgs'] uri_override: URI override.
+               When specified, overrides the execution URI for all the tasks in the queue.
+               Structure is documented below.
+        """
+        if header_overrides is not None:
+            pulumi.set(__self__, "header_overrides", header_overrides)
+        if http_method is not None:
+            pulumi.set(__self__, "http_method", http_method)
+        if oauth_token is not None:
+            pulumi.set(__self__, "oauth_token", oauth_token)
+        if oidc_token is not None:
+            pulumi.set(__self__, "oidc_token", oidc_token)
+        if uri_override is not None:
+            pulumi.set(__self__, "uri_override", uri_override)
+
+    @property
+    @pulumi.getter(name="headerOverrides")
+    def header_overrides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['QueueHttpTargetHeaderOverrideArgs']]]]:
+        """
+        HTTP target headers.
+        This map contains the header field names and values.
+        Headers will be set when running the CreateTask and/or BufferTask.
+        These headers represent a subset of the headers that will be configured for the task's HTTP request.
+        Some HTTP request headers will be ignored or replaced.
+        Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values.
+        The size of the headers must be less than 80KB. Queue-level headers to override headers of all the tasks in the queue.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "header_overrides")
+
+    @header_overrides.setter
+    def header_overrides(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['QueueHttpTargetHeaderOverrideArgs']]]]):
+        pulumi.set(self, "header_overrides", value)
+
+    @property
+    @pulumi.getter(name="httpMethod")
+    def http_method(self) -> Optional[pulumi.Input[str]]:
+        """
+        The HTTP method to use for the request.
+        When specified, it overrides HttpRequest for the task.
+        Note that if the value is set to GET the body of the task will be ignored at execution time.
+        Possible values are: `HTTP_METHOD_UNSPECIFIED`, `POST`, `GET`, `HEAD`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`.
+        """
+        return pulumi.get(self, "http_method")
+
+    @http_method.setter
+    def http_method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "http_method", value)
+
+    @property
+    @pulumi.getter(name="oauthToken")
+    def oauth_token(self) -> Optional[pulumi.Input['QueueHttpTargetOauthTokenArgs']]:
+        """
+        If specified, an OAuth token is generated and attached as the Authorization header in the HTTP request.
+        This type of authorization should generally be used only when calling Google APIs hosted on *.googleapis.com.
+        Note that both the service account email and the scope MUST be specified when using the queue-level authorization override.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oauth_token")
+
+    @oauth_token.setter
+    def oauth_token(self, value: Optional[pulumi.Input['QueueHttpTargetOauthTokenArgs']]):
+        pulumi.set(self, "oauth_token", value)
+
+    @property
+    @pulumi.getter(name="oidcToken")
+    def oidc_token(self) -> Optional[pulumi.Input['QueueHttpTargetOidcTokenArgs']]:
+        """
+        If specified, an OIDC token is generated and attached as an Authorization header in the HTTP request.
+        This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
+        Note that both the service account email and the audience MUST be specified when using the queue-level authorization override.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oidc_token")
+
+    @oidc_token.setter
+    def oidc_token(self, value: Optional[pulumi.Input['QueueHttpTargetOidcTokenArgs']]):
+        pulumi.set(self, "oidc_token", value)
+
+    @property
+    @pulumi.getter(name="uriOverride")
+    def uri_override(self) -> Optional[pulumi.Input['QueueHttpTargetUriOverrideArgs']]:
+        """
+        URI override.
+        When specified, overrides the execution URI for all the tasks in the queue.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "uri_override")
+
+    @uri_override.setter
+    def uri_override(self, value: Optional[pulumi.Input['QueueHttpTargetUriOverrideArgs']]):
+        pulumi.set(self, "uri_override", value)
+
+
+if not MYPY:
+    class QueueHttpTargetHeaderOverrideArgsDict(TypedDict):
+        header: pulumi.Input['QueueHttpTargetHeaderOverrideHeaderArgsDict']
+        """
+        Header embodying a key and a value.
+        Structure is documented below.
+        """
+elif False:
+    QueueHttpTargetHeaderOverrideArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class QueueHttpTargetHeaderOverrideArgs:
+    def __init__(__self__, *,
+                 header: pulumi.Input['QueueHttpTargetHeaderOverrideHeaderArgs']):
+        """
+        :param pulumi.Input['QueueHttpTargetHeaderOverrideHeaderArgs'] header: Header embodying a key and a value.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "header", header)
+
+    @property
+    @pulumi.getter
+    def header(self) -> pulumi.Input['QueueHttpTargetHeaderOverrideHeaderArgs']:
+        """
+        Header embodying a key and a value.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "header")
+
+    @header.setter
+    def header(self, value: pulumi.Input['QueueHttpTargetHeaderOverrideHeaderArgs']):
+        pulumi.set(self, "header", value)
+
+
+if not MYPY:
+    class QueueHttpTargetHeaderOverrideHeaderArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        """
+        The Key of the header.
+        """
+        value: pulumi.Input[str]
+        """
+        The Value of the header.
+        """
+elif False:
+    QueueHttpTargetHeaderOverrideHeaderArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class QueueHttpTargetHeaderOverrideHeaderArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[str],
+                 value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] key: The Key of the header.
+        :param pulumi.Input[str] value: The Value of the header.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        """
+        The Key of the header.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        The Value of the header.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class QueueHttpTargetOauthTokenArgsDict(TypedDict):
+        service_account_email: pulumi.Input[str]
+        """
+        Service account email to be used for generating OAuth token.
+        The service account must be within the same project as the queue.
+        The caller must have iam.serviceAccounts.actAs permission for the service account.
+        """
+        scope: NotRequired[pulumi.Input[str]]
+        """
+        OAuth scope to be used for generating OAuth access token.
+        If not specified, "https://www.googleapis.com/auth/cloud-platform" will be used.
+        """
+elif False:
+    QueueHttpTargetOauthTokenArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class QueueHttpTargetOauthTokenArgs:
+    def __init__(__self__, *,
+                 service_account_email: pulumi.Input[str],
+                 scope: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] service_account_email: Service account email to be used for generating OAuth token.
+               The service account must be within the same project as the queue.
+               The caller must have iam.serviceAccounts.actAs permission for the service account.
+        :param pulumi.Input[str] scope: OAuth scope to be used for generating OAuth access token.
+               If not specified, "https://www.googleapis.com/auth/cloud-platform" will be used.
+        """
+        pulumi.set(__self__, "service_account_email", service_account_email)
+        if scope is not None:
+            pulumi.set(__self__, "scope", scope)
+
+    @property
+    @pulumi.getter(name="serviceAccountEmail")
+    def service_account_email(self) -> pulumi.Input[str]:
+        """
+        Service account email to be used for generating OAuth token.
+        The service account must be within the same project as the queue.
+        The caller must have iam.serviceAccounts.actAs permission for the service account.
+        """
+        return pulumi.get(self, "service_account_email")
+
+    @service_account_email.setter
+    def service_account_email(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_account_email", value)
+
+    @property
+    @pulumi.getter
+    def scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        OAuth scope to be used for generating OAuth access token.
+        If not specified, "https://www.googleapis.com/auth/cloud-platform" will be used.
+        """
+        return pulumi.get(self, "scope")
+
+    @scope.setter
+    def scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scope", value)
+
+
+if not MYPY:
+    class QueueHttpTargetOidcTokenArgsDict(TypedDict):
+        service_account_email: pulumi.Input[str]
+        """
+        Service account email to be used for generating OIDC token.
+        The service account must be within the same project as the queue.
+        The caller must have iam.serviceAccounts.actAs permission for the service account.
+        """
+        audience: NotRequired[pulumi.Input[str]]
+        """
+        Audience to be used when generating OIDC token. If not specified, the URI specified in target will be used.
+        """
+elif False:
+    QueueHttpTargetOidcTokenArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class QueueHttpTargetOidcTokenArgs:
+    def __init__(__self__, *,
+                 service_account_email: pulumi.Input[str],
+                 audience: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] service_account_email: Service account email to be used for generating OIDC token.
+               The service account must be within the same project as the queue.
+               The caller must have iam.serviceAccounts.actAs permission for the service account.
+        :param pulumi.Input[str] audience: Audience to be used when generating OIDC token. If not specified, the URI specified in target will be used.
+        """
+        pulumi.set(__self__, "service_account_email", service_account_email)
+        if audience is not None:
+            pulumi.set(__self__, "audience", audience)
+
+    @property
+    @pulumi.getter(name="serviceAccountEmail")
+    def service_account_email(self) -> pulumi.Input[str]:
+        """
+        Service account email to be used for generating OIDC token.
+        The service account must be within the same project as the queue.
+        The caller must have iam.serviceAccounts.actAs permission for the service account.
+        """
+        return pulumi.get(self, "service_account_email")
+
+    @service_account_email.setter
+    def service_account_email(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_account_email", value)
+
+    @property
+    @pulumi.getter
+    def audience(self) -> Optional[pulumi.Input[str]]:
+        """
+        Audience to be used when generating OIDC token. If not specified, the URI specified in target will be used.
+        """
+        return pulumi.get(self, "audience")
+
+    @audience.setter
+    def audience(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "audience", value)
+
+
+if not MYPY:
+    class QueueHttpTargetUriOverrideArgsDict(TypedDict):
+        host: NotRequired[pulumi.Input[str]]
+        """
+        Host override.
+        When specified, replaces the host part of the task URL.
+        For example, if the task URL is "https://www.google.com", and host value
+        is set to "example.net", the overridden URI will be changed to "https://example.net".
+        Host value cannot be an empty string (INVALID_ARGUMENT).
+        """
+        path_override: NotRequired[pulumi.Input['QueueHttpTargetUriOverridePathOverrideArgsDict']]
+        """
+        URI path.
+        When specified, replaces the existing path of the task URL.
+        Setting the path value to an empty string clears the URI path segment.
+        Structure is documented below.
+        """
+        port: NotRequired[pulumi.Input[str]]
+        """
+        Port override.
+        When specified, replaces the port part of the task URI.
+        For instance, for a URI http://www.google.com/foo and port=123, the overridden URI becomes http://www.google.com:123/foo.
+        Note that the port value must be a positive integer.
+        Setting the port to 0 (Zero) clears the URI port.
+        """
+        query_override: NotRequired[pulumi.Input['QueueHttpTargetUriOverrideQueryOverrideArgsDict']]
+        """
+        URI query.
+        When specified, replaces the query part of the task URI. Setting the query value to an empty string clears the URI query segment.
+        Structure is documented below.
+        """
+        scheme: NotRequired[pulumi.Input[str]]
+        """
+        Scheme override.
+        When specified, the task URI scheme is replaced by the provided value (HTTP or HTTPS).
+        Possible values are: `HTTP`, `HTTPS`.
+        """
+        uri_override_enforce_mode: NotRequired[pulumi.Input[str]]
+        """
+        URI Override Enforce Mode
+        When specified, determines the Target UriOverride mode. If not specified, it defaults to ALWAYS.
+        Possible values are: `ALWAYS`, `IF_NOT_EXISTS`.
+        """
+elif False:
+    QueueHttpTargetUriOverrideArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class QueueHttpTargetUriOverrideArgs:
+    def __init__(__self__, *,
+                 host: Optional[pulumi.Input[str]] = None,
+                 path_override: Optional[pulumi.Input['QueueHttpTargetUriOverridePathOverrideArgs']] = None,
+                 port: Optional[pulumi.Input[str]] = None,
+                 query_override: Optional[pulumi.Input['QueueHttpTargetUriOverrideQueryOverrideArgs']] = None,
+                 scheme: Optional[pulumi.Input[str]] = None,
+                 uri_override_enforce_mode: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] host: Host override.
+               When specified, replaces the host part of the task URL.
+               For example, if the task URL is "https://www.google.com", and host value
+               is set to "example.net", the overridden URI will be changed to "https://example.net".
+               Host value cannot be an empty string (INVALID_ARGUMENT).
+        :param pulumi.Input['QueueHttpTargetUriOverridePathOverrideArgs'] path_override: URI path.
+               When specified, replaces the existing path of the task URL.
+               Setting the path value to an empty string clears the URI path segment.
+               Structure is documented below.
+        :param pulumi.Input[str] port: Port override.
+               When specified, replaces the port part of the task URI.
+               For instance, for a URI http://www.google.com/foo and port=123, the overridden URI becomes http://www.google.com:123/foo.
+               Note that the port value must be a positive integer.
+               Setting the port to 0 (Zero) clears the URI port.
+        :param pulumi.Input['QueueHttpTargetUriOverrideQueryOverrideArgs'] query_override: URI query.
+               When specified, replaces the query part of the task URI. Setting the query value to an empty string clears the URI query segment.
+               Structure is documented below.
+        :param pulumi.Input[str] scheme: Scheme override.
+               When specified, the task URI scheme is replaced by the provided value (HTTP or HTTPS).
+               Possible values are: `HTTP`, `HTTPS`.
+        :param pulumi.Input[str] uri_override_enforce_mode: URI Override Enforce Mode
+               When specified, determines the Target UriOverride mode. If not specified, it defaults to ALWAYS.
+               Possible values are: `ALWAYS`, `IF_NOT_EXISTS`.
+        """
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if path_override is not None:
+            pulumi.set(__self__, "path_override", path_override)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if query_override is not None:
+            pulumi.set(__self__, "query_override", query_override)
+        if scheme is not None:
+            pulumi.set(__self__, "scheme", scheme)
+        if uri_override_enforce_mode is not None:
+            pulumi.set(__self__, "uri_override_enforce_mode", uri_override_enforce_mode)
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[str]]:
+        """
+        Host override.
+        When specified, replaces the host part of the task URL.
+        For example, if the task URL is "https://www.google.com", and host value
+        is set to "example.net", the overridden URI will be changed to "https://example.net".
+        Host value cannot be an empty string (INVALID_ARGUMENT).
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter(name="pathOverride")
+    def path_override(self) -> Optional[pulumi.Input['QueueHttpTargetUriOverridePathOverrideArgs']]:
+        """
+        URI path.
+        When specified, replaces the existing path of the task URL.
+        Setting the path value to an empty string clears the URI path segment.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "path_override")
+
+    @path_override.setter
+    def path_override(self, value: Optional[pulumi.Input['QueueHttpTargetUriOverridePathOverrideArgs']]):
+        pulumi.set(self, "path_override", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[str]]:
+        """
+        Port override.
+        When specified, replaces the port part of the task URI.
+        For instance, for a URI http://www.google.com/foo and port=123, the overridden URI becomes http://www.google.com:123/foo.
+        Note that the port value must be a positive integer.
+        Setting the port to 0 (Zero) clears the URI port.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter(name="queryOverride")
+    def query_override(self) -> Optional[pulumi.Input['QueueHttpTargetUriOverrideQueryOverrideArgs']]:
+        """
+        URI query.
+        When specified, replaces the query part of the task URI. Setting the query value to an empty string clears the URI query segment.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "query_override")
+
+    @query_override.setter
+    def query_override(self, value: Optional[pulumi.Input['QueueHttpTargetUriOverrideQueryOverrideArgs']]):
+        pulumi.set(self, "query_override", value)
+
+    @property
+    @pulumi.getter
+    def scheme(self) -> Optional[pulumi.Input[str]]:
+        """
+        Scheme override.
+        When specified, the task URI scheme is replaced by the provided value (HTTP or HTTPS).
+        Possible values are: `HTTP`, `HTTPS`.
+        """
+        return pulumi.get(self, "scheme")
+
+    @scheme.setter
+    def scheme(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scheme", value)
+
+    @property
+    @pulumi.getter(name="uriOverrideEnforceMode")
+    def uri_override_enforce_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        URI Override Enforce Mode
+        When specified, determines the Target UriOverride mode. If not specified, it defaults to ALWAYS.
+        Possible values are: `ALWAYS`, `IF_NOT_EXISTS`.
+        """
+        return pulumi.get(self, "uri_override_enforce_mode")
+
+    @uri_override_enforce_mode.setter
+    def uri_override_enforce_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uri_override_enforce_mode", value)
+
+
+if not MYPY:
+    class QueueHttpTargetUriOverridePathOverrideArgsDict(TypedDict):
+        path: NotRequired[pulumi.Input[str]]
+        """
+        The URI path (e.g., /users/1234). Default is an empty string.
+        """
+elif False:
+    QueueHttpTargetUriOverridePathOverrideArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class QueueHttpTargetUriOverridePathOverrideArgs:
+    def __init__(__self__, *,
+                 path: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] path: The URI path (e.g., /users/1234). Default is an empty string.
+        """
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URI path (e.g., /users/1234). Default is an empty string.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+
+if not MYPY:
+    class QueueHttpTargetUriOverrideQueryOverrideArgsDict(TypedDict):
+        query_params: NotRequired[pulumi.Input[str]]
+        """
+        The query parameters (e.g., qparam1=123&qparam2=456). Default is an empty string.
+        """
+elif False:
+    QueueHttpTargetUriOverrideQueryOverrideArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class QueueHttpTargetUriOverrideQueryOverrideArgs:
+    def __init__(__self__, *,
+                 query_params: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] query_params: The query parameters (e.g., qparam1=123&qparam2=456). Default is an empty string.
+        """
+        if query_params is not None:
+            pulumi.set(__self__, "query_params", query_params)
+
+    @property
+    @pulumi.getter(name="queryParams")
+    def query_params(self) -> Optional[pulumi.Input[str]]:
+        """
+        The query parameters (e.g., qparam1=123&qparam2=456). Default is an empty string.
+        """
+        return pulumi.get(self, "query_params")
+
+    @query_params.setter
+    def query_params(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "query_params", value)
 
 
 if not MYPY:

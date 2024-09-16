@@ -323,6 +323,8 @@ __all__ = [
     'ClusterNodePoolAutoConfigArgsDict',
     'ClusterNodePoolAutoConfigNetworkTagsArgs',
     'ClusterNodePoolAutoConfigNetworkTagsArgsDict',
+    'ClusterNodePoolAutoConfigNodeKubeletConfigArgs',
+    'ClusterNodePoolAutoConfigNodeKubeletConfigArgsDict',
     'ClusterNodePoolAutoscalingArgs',
     'ClusterNodePoolAutoscalingArgsDict',
     'ClusterNodePoolDefaultsArgs',
@@ -9735,6 +9737,10 @@ if not MYPY:
         not specifying the `kubelet_config` block should be the equivalent of specifying
         `none`.
         """
+        insecure_kubelet_readonly_port_enabled: NotRequired[pulumi.Input[str]]
+        """
+        Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+        """
         pod_pids_limit: NotRequired[pulumi.Input[int]]
         """
         Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
@@ -9748,6 +9754,7 @@ class ClusterNodeConfigKubeletConfigArgs:
                  cpu_manager_policy: pulumi.Input[str],
                  cpu_cfs_quota: Optional[pulumi.Input[bool]] = None,
                  cpu_cfs_quota_period: Optional[pulumi.Input[str]] = None,
+                 insecure_kubelet_readonly_port_enabled: Optional[pulumi.Input[str]] = None,
                  pod_pids_limit: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] cpu_manager_policy: The CPU management policy on the node. See
@@ -9764,6 +9771,7 @@ class ClusterNodeConfigKubeletConfigArgs:
                value and accepts an invalid `default` value instead. While this remains true,
                not specifying the `kubelet_config` block should be the equivalent of specifying
                `none`.
+        :param pulumi.Input[str] insecure_kubelet_readonly_port_enabled: Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
         :param pulumi.Input[int] pod_pids_limit: Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
         """
         pulumi.set(__self__, "cpu_manager_policy", cpu_manager_policy)
@@ -9771,6 +9779,8 @@ class ClusterNodeConfigKubeletConfigArgs:
             pulumi.set(__self__, "cpu_cfs_quota", cpu_cfs_quota)
         if cpu_cfs_quota_period is not None:
             pulumi.set(__self__, "cpu_cfs_quota_period", cpu_cfs_quota_period)
+        if insecure_kubelet_readonly_port_enabled is not None:
+            pulumi.set(__self__, "insecure_kubelet_readonly_port_enabled", insecure_kubelet_readonly_port_enabled)
         if pod_pids_limit is not None:
             pulumi.set(__self__, "pod_pids_limit", pod_pids_limit)
 
@@ -9820,6 +9830,18 @@ class ClusterNodeConfigKubeletConfigArgs:
     @cpu_cfs_quota_period.setter
     def cpu_cfs_quota_period(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cpu_cfs_quota_period", value)
+
+    @property
+    @pulumi.getter(name="insecureKubeletReadonlyPortEnabled")
+    def insecure_kubelet_readonly_port_enabled(self) -> Optional[pulumi.Input[str]]:
+        """
+        Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+        """
+        return pulumi.get(self, "insecure_kubelet_readonly_port_enabled")
+
+    @insecure_kubelet_readonly_port_enabled.setter
+    def insecure_kubelet_readonly_port_enabled(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "insecure_kubelet_readonly_port_enabled", value)
 
     @property
     @pulumi.getter(name="podPidsLimit")
@@ -10795,7 +10817,12 @@ if not MYPY:
     class ClusterNodePoolAutoConfigArgsDict(TypedDict):
         network_tags: NotRequired[pulumi.Input['ClusterNodePoolAutoConfigNetworkTagsArgsDict']]
         """
-        The network tag config for the cluster's automatically provisioned node pools.
+        The network tag config for the cluster's automatically provisioned node pools. Structure is documented below.
+        """
+        node_kubelet_config: NotRequired[pulumi.Input['ClusterNodePoolAutoConfigNodeKubeletConfigArgsDict']]
+        """
+        Kubelet configuration for Autopilot clusters. Currently, only `insecure_kubelet_readonly_port_enabled` is supported here.
+        Structure is documented below.
         """
         resource_manager_tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
@@ -10808,13 +10835,18 @@ elif False:
 class ClusterNodePoolAutoConfigArgs:
     def __init__(__self__, *,
                  network_tags: Optional[pulumi.Input['ClusterNodePoolAutoConfigNetworkTagsArgs']] = None,
+                 node_kubelet_config: Optional[pulumi.Input['ClusterNodePoolAutoConfigNodeKubeletConfigArgs']] = None,
                  resource_manager_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input['ClusterNodePoolAutoConfigNetworkTagsArgs'] network_tags: The network tag config for the cluster's automatically provisioned node pools.
+        :param pulumi.Input['ClusterNodePoolAutoConfigNetworkTagsArgs'] network_tags: The network tag config for the cluster's automatically provisioned node pools. Structure is documented below.
+        :param pulumi.Input['ClusterNodePoolAutoConfigNodeKubeletConfigArgs'] node_kubelet_config: Kubelet configuration for Autopilot clusters. Currently, only `insecure_kubelet_readonly_port_enabled` is supported here.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_manager_tags: A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
         """
         if network_tags is not None:
             pulumi.set(__self__, "network_tags", network_tags)
+        if node_kubelet_config is not None:
+            pulumi.set(__self__, "node_kubelet_config", node_kubelet_config)
         if resource_manager_tags is not None:
             pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
 
@@ -10822,13 +10854,26 @@ class ClusterNodePoolAutoConfigArgs:
     @pulumi.getter(name="networkTags")
     def network_tags(self) -> Optional[pulumi.Input['ClusterNodePoolAutoConfigNetworkTagsArgs']]:
         """
-        The network tag config for the cluster's automatically provisioned node pools.
+        The network tag config for the cluster's automatically provisioned node pools. Structure is documented below.
         """
         return pulumi.get(self, "network_tags")
 
     @network_tags.setter
     def network_tags(self, value: Optional[pulumi.Input['ClusterNodePoolAutoConfigNetworkTagsArgs']]):
         pulumi.set(self, "network_tags", value)
+
+    @property
+    @pulumi.getter(name="nodeKubeletConfig")
+    def node_kubelet_config(self) -> Optional[pulumi.Input['ClusterNodePoolAutoConfigNodeKubeletConfigArgs']]:
+        """
+        Kubelet configuration for Autopilot clusters. Currently, only `insecure_kubelet_readonly_port_enabled` is supported here.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "node_kubelet_config")
+
+    @node_kubelet_config.setter
+    def node_kubelet_config(self, value: Optional[pulumi.Input['ClusterNodePoolAutoConfigNodeKubeletConfigArgs']]):
+        pulumi.set(self, "node_kubelet_config", value)
 
     @property
     @pulumi.getter(name="resourceManagerTags")
@@ -10873,6 +10918,38 @@ class ClusterNodePoolAutoConfigNetworkTagsArgs:
     @tags.setter
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
+
+
+if not MYPY:
+    class ClusterNodePoolAutoConfigNodeKubeletConfigArgsDict(TypedDict):
+        insecure_kubelet_readonly_port_enabled: NotRequired[pulumi.Input[str]]
+        """
+        Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+        """
+elif False:
+    ClusterNodePoolAutoConfigNodeKubeletConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterNodePoolAutoConfigNodeKubeletConfigArgs:
+    def __init__(__self__, *,
+                 insecure_kubelet_readonly_port_enabled: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] insecure_kubelet_readonly_port_enabled: Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+        """
+        if insecure_kubelet_readonly_port_enabled is not None:
+            pulumi.set(__self__, "insecure_kubelet_readonly_port_enabled", insecure_kubelet_readonly_port_enabled)
+
+    @property
+    @pulumi.getter(name="insecureKubeletReadonlyPortEnabled")
+    def insecure_kubelet_readonly_port_enabled(self) -> Optional[pulumi.Input[str]]:
+        """
+        Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+        """
+        return pulumi.get(self, "insecure_kubelet_readonly_port_enabled")
+
+    @insecure_kubelet_readonly_port_enabled.setter
+    def insecure_kubelet_readonly_port_enabled(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "insecure_kubelet_readonly_port_enabled", value)
 
 
 if not MYPY:
@@ -11029,6 +11106,10 @@ if not MYPY:
         """
         The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
         """
+        insecure_kubelet_readonly_port_enabled: NotRequired[pulumi.Input[str]]
+        """
+        Controls whether the kubelet read-only port is enabled for newly created node pools in the cluster. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+        """
         logging_variant: NotRequired[pulumi.Input[str]]
         """
         The type of logging agent that is deployed by default for newly created node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
@@ -11041,16 +11122,20 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsArgs:
     def __init__(__self__, *,
                  containerd_config: Optional[pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigArgs']] = None,
                  gcfs_config: Optional[pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArgs']] = None,
+                 insecure_kubelet_readonly_port_enabled: Optional[pulumi.Input[str]] = None,
                  logging_variant: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigArgs'] containerd_config: Parameters for containerd configuration.
         :param pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArgs'] gcfs_config: The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
+        :param pulumi.Input[str] insecure_kubelet_readonly_port_enabled: Controls whether the kubelet read-only port is enabled for newly created node pools in the cluster. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
         :param pulumi.Input[str] logging_variant: The type of logging agent that is deployed by default for newly created node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
         """
         if containerd_config is not None:
             pulumi.set(__self__, "containerd_config", containerd_config)
         if gcfs_config is not None:
             pulumi.set(__self__, "gcfs_config", gcfs_config)
+        if insecure_kubelet_readonly_port_enabled is not None:
+            pulumi.set(__self__, "insecure_kubelet_readonly_port_enabled", insecure_kubelet_readonly_port_enabled)
         if logging_variant is not None:
             pulumi.set(__self__, "logging_variant", logging_variant)
 
@@ -11077,6 +11162,18 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsArgs:
     @gcfs_config.setter
     def gcfs_config(self, value: Optional[pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArgs']]):
         pulumi.set(self, "gcfs_config", value)
+
+    @property
+    @pulumi.getter(name="insecureKubeletReadonlyPortEnabled")
+    def insecure_kubelet_readonly_port_enabled(self) -> Optional[pulumi.Input[str]]:
+        """
+        Controls whether the kubelet read-only port is enabled for newly created node pools in the cluster. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+        """
+        return pulumi.get(self, "insecure_kubelet_readonly_port_enabled")
+
+    @insecure_kubelet_readonly_port_enabled.setter
+    def insecure_kubelet_readonly_port_enabled(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "insecure_kubelet_readonly_port_enabled", value)
 
     @property
     @pulumi.getter(name="loggingVariant")
@@ -13453,6 +13550,10 @@ if not MYPY:
         not specifying the `kubelet_config` block should be the equivalent of specifying
         `none`.
         """
+        insecure_kubelet_readonly_port_enabled: NotRequired[pulumi.Input[str]]
+        """
+        Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+        """
         pod_pids_limit: NotRequired[pulumi.Input[int]]
         """
         Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
@@ -13466,6 +13567,7 @@ class ClusterNodePoolNodeConfigKubeletConfigArgs:
                  cpu_manager_policy: pulumi.Input[str],
                  cpu_cfs_quota: Optional[pulumi.Input[bool]] = None,
                  cpu_cfs_quota_period: Optional[pulumi.Input[str]] = None,
+                 insecure_kubelet_readonly_port_enabled: Optional[pulumi.Input[str]] = None,
                  pod_pids_limit: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] cpu_manager_policy: The CPU management policy on the node. See
@@ -13482,6 +13584,7 @@ class ClusterNodePoolNodeConfigKubeletConfigArgs:
                value and accepts an invalid `default` value instead. While this remains true,
                not specifying the `kubelet_config` block should be the equivalent of specifying
                `none`.
+        :param pulumi.Input[str] insecure_kubelet_readonly_port_enabled: Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
         :param pulumi.Input[int] pod_pids_limit: Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
         """
         pulumi.set(__self__, "cpu_manager_policy", cpu_manager_policy)
@@ -13489,6 +13592,8 @@ class ClusterNodePoolNodeConfigKubeletConfigArgs:
             pulumi.set(__self__, "cpu_cfs_quota", cpu_cfs_quota)
         if cpu_cfs_quota_period is not None:
             pulumi.set(__self__, "cpu_cfs_quota_period", cpu_cfs_quota_period)
+        if insecure_kubelet_readonly_port_enabled is not None:
+            pulumi.set(__self__, "insecure_kubelet_readonly_port_enabled", insecure_kubelet_readonly_port_enabled)
         if pod_pids_limit is not None:
             pulumi.set(__self__, "pod_pids_limit", pod_pids_limit)
 
@@ -13538,6 +13643,18 @@ class ClusterNodePoolNodeConfigKubeletConfigArgs:
     @cpu_cfs_quota_period.setter
     def cpu_cfs_quota_period(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cpu_cfs_quota_period", value)
+
+    @property
+    @pulumi.getter(name="insecureKubeletReadonlyPortEnabled")
+    def insecure_kubelet_readonly_port_enabled(self) -> Optional[pulumi.Input[str]]:
+        """
+        Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+        """
+        return pulumi.get(self, "insecure_kubelet_readonly_port_enabled")
+
+    @insecure_kubelet_readonly_port_enabled.setter
+    def insecure_kubelet_readonly_port_enabled(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "insecure_kubelet_readonly_port_enabled", value)
 
     @property
     @pulumi.getter(name="podPidsLimit")
@@ -17484,6 +17601,10 @@ if not MYPY:
         """
         Set the CPU CFS quota period value 'cpu.cfs_period_us'.
         """
+        insecure_kubelet_readonly_port_enabled: NotRequired[pulumi.Input[str]]
+        """
+        Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+        """
         pod_pids_limit: NotRequired[pulumi.Input[int]]
         """
         Controls the maximum number of processes allowed to run in a pod.
@@ -17497,11 +17618,13 @@ class NodePoolNodeConfigKubeletConfigArgs:
                  cpu_manager_policy: pulumi.Input[str],
                  cpu_cfs_quota: Optional[pulumi.Input[bool]] = None,
                  cpu_cfs_quota_period: Optional[pulumi.Input[str]] = None,
+                 insecure_kubelet_readonly_port_enabled: Optional[pulumi.Input[str]] = None,
                  pod_pids_limit: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] cpu_manager_policy: Control the CPU management policy on the node.
         :param pulumi.Input[bool] cpu_cfs_quota: Enable CPU CFS quota enforcement for containers that specify CPU limits.
         :param pulumi.Input[str] cpu_cfs_quota_period: Set the CPU CFS quota period value 'cpu.cfs_period_us'.
+        :param pulumi.Input[str] insecure_kubelet_readonly_port_enabled: Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
         :param pulumi.Input[int] pod_pids_limit: Controls the maximum number of processes allowed to run in a pod.
         """
         pulumi.set(__self__, "cpu_manager_policy", cpu_manager_policy)
@@ -17509,6 +17632,8 @@ class NodePoolNodeConfigKubeletConfigArgs:
             pulumi.set(__self__, "cpu_cfs_quota", cpu_cfs_quota)
         if cpu_cfs_quota_period is not None:
             pulumi.set(__self__, "cpu_cfs_quota_period", cpu_cfs_quota_period)
+        if insecure_kubelet_readonly_port_enabled is not None:
+            pulumi.set(__self__, "insecure_kubelet_readonly_port_enabled", insecure_kubelet_readonly_port_enabled)
         if pod_pids_limit is not None:
             pulumi.set(__self__, "pod_pids_limit", pod_pids_limit)
 
@@ -17547,6 +17672,18 @@ class NodePoolNodeConfigKubeletConfigArgs:
     @cpu_cfs_quota_period.setter
     def cpu_cfs_quota_period(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cpu_cfs_quota_period", value)
+
+    @property
+    @pulumi.getter(name="insecureKubeletReadonlyPortEnabled")
+    def insecure_kubelet_readonly_port_enabled(self) -> Optional[pulumi.Input[str]]:
+        """
+        Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
+        """
+        return pulumi.get(self, "insecure_kubelet_readonly_port_enabled")
+
+    @insecure_kubelet_readonly_port_enabled.setter
+    def insecure_kubelet_readonly_port_enabled(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "insecure_kubelet_readonly_port_enabled", value)
 
     @property
     @pulumi.getter(name="podPidsLimit")

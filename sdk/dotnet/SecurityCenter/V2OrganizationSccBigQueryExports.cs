@@ -37,7 +37,7 @@ namespace Pulumi.Gcp.SecurityCenter
     /// {
     ///     var @default = new Gcp.BigQuery.Dataset("default", new()
     ///     {
-    ///         DatasetId = "my_dataset_id",
+    ///         DatasetId = "",
     ///         FriendlyName = "test",
     ///         Description = "This is a test description",
     ///         Location = "US",
@@ -54,7 +54,7 @@ namespace Pulumi.Gcp.SecurityCenter
     ///         Name = "my-export",
     ///         BigQueryExportId = "my-export",
     ///         Organization = "123456789",
-    ///         Dataset = "my-dataset",
+    ///         Dataset = @default.Id,
     ///         Location = "global",
     ///         Description = "Cloud Security Command Center Findings Big Query Export Config",
     ///         Filter = "state=\"ACTIVE\" AND NOT mute=\"MUTED\"",

@@ -37,14 +37,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
     }
 
     /**
-     * The Compute Engine metadata entries to add to all instances (see (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
+     * The Compute Engine metadata entries to add to all instances (see [About VM metadata](https://cloud.google.com/compute/docs/metadata/overview)).
      * 
      */
     @Import(name="metadata")
     private @Nullable Output<Map<String,String>> metadata;
 
     /**
-     * @return The Compute Engine metadata entries to add to all instances (see (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
+     * @return The Compute Engine metadata entries to add to all instances (see [About VM metadata](https://cloud.google.com/compute/docs/metadata/overview)).
      * 
      */
     public Optional<Output<Map<String,String>>> metadata() {
@@ -172,14 +172,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
     }
 
     /**
-     * The Compute Engine tags to add to all instances (see (https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+     * The Compute Engine tags to add to all instances (see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)).
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return The Compute Engine tags to add to all instances (see (https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+     * @return The Compute Engine tags to add to all instances (see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)).
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -258,7 +258,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
         }
 
         /**
-         * @param metadata The Compute Engine metadata entries to add to all instances (see (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
+         * @param metadata The Compute Engine metadata entries to add to all instances (see [About VM metadata](https://cloud.google.com/compute/docs/metadata/overview)).
          * 
          * @return builder
          * 
@@ -269,7 +269,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
         }
 
         /**
-         * @param metadata The Compute Engine metadata entries to add to all instances (see (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
+         * @param metadata The Compute Engine metadata entries to add to all instances (see [About VM metadata](https://cloud.google.com/compute/docs/metadata/overview)).
          * 
          * @return builder
          * 
@@ -457,7 +457,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
         }
 
         /**
-         * @param tags The Compute Engine tags to add to all instances (see (https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+         * @param tags The Compute Engine tags to add to all instances (see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)).
          * 
          * @return builder
          * 
@@ -468,7 +468,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
         }
 
         /**
-         * @param tags The Compute Engine tags to add to all instances (see (https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+         * @param tags The Compute Engine tags to add to all instances (see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)).
          * 
          * @return builder
          * 
@@ -478,7 +478,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
         }
 
         /**
-         * @param tags The Compute Engine tags to add to all instances (see (https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+         * @param tags The Compute Engine tags to add to all instances (see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)).
          * 
          * @return builder
          * 

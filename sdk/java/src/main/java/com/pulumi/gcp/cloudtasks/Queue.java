@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.cloudtasks.QueueArgs;
 import com.pulumi.gcp.cloudtasks.inputs.QueueState;
 import com.pulumi.gcp.cloudtasks.outputs.QueueAppEngineRoutingOverride;
+import com.pulumi.gcp.cloudtasks.outputs.QueueHttpTarget;
 import com.pulumi.gcp.cloudtasks.outputs.QueueRateLimits;
 import com.pulumi.gcp.cloudtasks.outputs.QueueRetryConfig;
 import com.pulumi.gcp.cloudtasks.outputs.QueueStackdriverLoggingConfig;
@@ -116,6 +117,164 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Cloud Tasks Queue Http Target Oidc
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.serviceaccount.Account;
+ * import com.pulumi.gcp.serviceaccount.AccountArgs;
+ * import com.pulumi.gcp.cloudtasks.Queue;
+ * import com.pulumi.gcp.cloudtasks.QueueArgs;
+ * import com.pulumi.gcp.cloudtasks.inputs.QueueHttpTargetArgs;
+ * import com.pulumi.gcp.cloudtasks.inputs.QueueHttpTargetUriOverrideArgs;
+ * import com.pulumi.gcp.cloudtasks.inputs.QueueHttpTargetUriOverridePathOverrideArgs;
+ * import com.pulumi.gcp.cloudtasks.inputs.QueueHttpTargetUriOverrideQueryOverrideArgs;
+ * import com.pulumi.gcp.cloudtasks.inputs.QueueHttpTargetOidcTokenArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var oidcServiceAccount = new Account("oidcServiceAccount", AccountArgs.builder()
+ *             .accountId("example-oidc")
+ *             .displayName("Tasks Queue OIDC Service Account")
+ *             .build());
+ * 
+ *         var httpTargetOidc = new Queue("httpTargetOidc", QueueArgs.builder()
+ *             .name("cloud-tasks-queue-http-target-oidc")
+ *             .location("us-central1")
+ *             .httpTarget(QueueHttpTargetArgs.builder()
+ *                 .httpMethod("POST")
+ *                 .uriOverride(QueueHttpTargetUriOverrideArgs.builder()
+ *                     .scheme("HTTPS")
+ *                     .host("oidc.example.com")
+ *                     .port(8443)
+ *                     .pathOverride(QueueHttpTargetUriOverridePathOverrideArgs.builder()
+ *                         .path("/users/1234")
+ *                         .build())
+ *                     .queryOverride(QueueHttpTargetUriOverrideQueryOverrideArgs.builder()
+ *                         .queryParams("qparam1=123&qparam2=456")
+ *                         .build())
+ *                     .uriOverrideEnforceMode("IF_NOT_EXISTS")
+ *                     .build())
+ *                 .headerOverrides(                
+ *                     QueueHttpTargetHeaderOverrideArgs.builder()
+ *                         .header(QueueHttpTargetHeaderOverrideHeaderArgs.builder()
+ *                             .key("AddSomethingElse")
+ *                             .value("MyOtherValue")
+ *                             .build())
+ *                         .build(),
+ *                     QueueHttpTargetHeaderOverrideArgs.builder()
+ *                         .header(QueueHttpTargetHeaderOverrideHeaderArgs.builder()
+ *                             .key("AddMe")
+ *                             .value("MyValue")
+ *                             .build())
+ *                         .build())
+ *                 .oidcToken(QueueHttpTargetOidcTokenArgs.builder()
+ *                     .serviceAccountEmail(oidcServiceAccount.email())
+ *                     .audience("https://oidc.example.com")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Cloud Tasks Queue Http Target Oauth
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.serviceaccount.Account;
+ * import com.pulumi.gcp.serviceaccount.AccountArgs;
+ * import com.pulumi.gcp.cloudtasks.Queue;
+ * import com.pulumi.gcp.cloudtasks.QueueArgs;
+ * import com.pulumi.gcp.cloudtasks.inputs.QueueHttpTargetArgs;
+ * import com.pulumi.gcp.cloudtasks.inputs.QueueHttpTargetUriOverrideArgs;
+ * import com.pulumi.gcp.cloudtasks.inputs.QueueHttpTargetUriOverridePathOverrideArgs;
+ * import com.pulumi.gcp.cloudtasks.inputs.QueueHttpTargetUriOverrideQueryOverrideArgs;
+ * import com.pulumi.gcp.cloudtasks.inputs.QueueHttpTargetOauthTokenArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var oauthServiceAccount = new Account("oauthServiceAccount", AccountArgs.builder()
+ *             .accountId("example-oauth")
+ *             .displayName("Tasks Queue OAuth Service Account")
+ *             .build());
+ * 
+ *         var httpTargetOauth = new Queue("httpTargetOauth", QueueArgs.builder()
+ *             .name("cloud-tasks-queue-http-target-oauth")
+ *             .location("us-central1")
+ *             .httpTarget(QueueHttpTargetArgs.builder()
+ *                 .httpMethod("POST")
+ *                 .uriOverride(QueueHttpTargetUriOverrideArgs.builder()
+ *                     .scheme("HTTPS")
+ *                     .host("oauth.example.com")
+ *                     .port(8443)
+ *                     .pathOverride(QueueHttpTargetUriOverridePathOverrideArgs.builder()
+ *                         .path("/users/1234")
+ *                         .build())
+ *                     .queryOverride(QueueHttpTargetUriOverrideQueryOverrideArgs.builder()
+ *                         .queryParams("qparam1=123&qparam2=456")
+ *                         .build())
+ *                     .uriOverrideEnforceMode("IF_NOT_EXISTS")
+ *                     .build())
+ *                 .headerOverrides(                
+ *                     QueueHttpTargetHeaderOverrideArgs.builder()
+ *                         .header(QueueHttpTargetHeaderOverrideHeaderArgs.builder()
+ *                             .key("AddSomethingElse")
+ *                             .value("MyOtherValue")
+ *                             .build())
+ *                         .build(),
+ *                     QueueHttpTargetHeaderOverrideArgs.builder()
+ *                         .header(QueueHttpTargetHeaderOverrideHeaderArgs.builder()
+ *                             .key("AddMe")
+ *                             .value("MyValue")
+ *                             .build())
+ *                         .build())
+ *                 .oauthToken(QueueHttpTargetOauthTokenArgs.builder()
+ *                     .serviceAccountEmail(oauthServiceAccount.email())
+ *                     .scope("openid https://www.googleapis.com/auth/userinfo.email")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -161,6 +320,22 @@ public class Queue extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<QueueAppEngineRoutingOverride>> appEngineRoutingOverride() {
         return Codegen.optional(this.appEngineRoutingOverride);
+    }
+    /**
+     * Modifies HTTP target for HTTP tasks.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="httpTarget", refs={QueueHttpTarget.class}, tree="[0]")
+    private Output</* @Nullable */ QueueHttpTarget> httpTarget;
+
+    /**
+     * @return Modifies HTTP target for HTTP tasks.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<QueueHttpTarget>> httpTarget() {
+        return Codegen.optional(this.httpTarget);
     }
     /**
      * The location of the queue

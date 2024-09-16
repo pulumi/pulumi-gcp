@@ -530,6 +530,12 @@ namespace Pulumi.Gcp.CertificateManager
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
+        /// The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6)
+        /// </summary>
+        [Output("sanDnsnames")]
+        public Output<ImmutableArray<string>> SanDnsnames { get; private set; } = null!;
+
+        /// <summary>
         /// The scope of the certificate.
         /// DEFAULT: Certificates with default scope are served from core Google data centers.
         /// If unsure, choose this option.
@@ -767,6 +773,18 @@ namespace Pulumi.Gcp.CertificateManager
                 var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
                 _pulumiLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
+        }
+
+        [Input("sanDnsnames")]
+        private InputList<string>? _sanDnsnames;
+
+        /// <summary>
+        /// The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6)
+        /// </summary>
+        public InputList<string> SanDnsnames
+        {
+            get => _sanDnsnames ?? (_sanDnsnames = new InputList<string>());
+            set => _sanDnsnames = value;
         }
 
         /// <summary>

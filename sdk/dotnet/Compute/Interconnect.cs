@@ -281,11 +281,12 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> RemoteLocation { get; private set; } = null!;
 
         /// <summary>
-        /// interconnects.list of features requested for this Interconnect connection. Options: MACSEC (
+        /// interconnects.list of features requested for this Interconnect connection. Options: IF_MACSEC (
         /// If specified then the connection is created on MACsec capable hardware ports. If not
         /// specified, the default value is false, which allocates non-MACsec capable ports first if
-        /// available).
-        /// Each value may be one of: `MACSEC`.
+        /// available). Note that MACSEC is still technically allowed for compatibility reasons, but it
+        /// does not work with the API, and will be removed in an upcoming major version.
+        /// Each value may be one of: `MACSEC`, `IF_MACSEC`.
         /// </summary>
         [Output("requestedFeatures")]
         public Output<ImmutableArray<string>> RequestedFeatures { get; private set; } = null!;
@@ -485,11 +486,12 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _requestedFeatures;
 
         /// <summary>
-        /// interconnects.list of features requested for this Interconnect connection. Options: MACSEC (
+        /// interconnects.list of features requested for this Interconnect connection. Options: IF_MACSEC (
         /// If specified then the connection is created on MACsec capable hardware ports. If not
         /// specified, the default value is false, which allocates non-MACsec capable ports first if
-        /// available).
-        /// Each value may be one of: `MACSEC`.
+        /// available). Note that MACSEC is still technically allowed for compatibility reasons, but it
+        /// does not work with the API, and will be removed in an upcoming major version.
+        /// Each value may be one of: `MACSEC`, `IF_MACSEC`.
         /// </summary>
         public InputList<string> RequestedFeatures
         {
@@ -772,11 +774,12 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _requestedFeatures;
 
         /// <summary>
-        /// interconnects.list of features requested for this Interconnect connection. Options: MACSEC (
+        /// interconnects.list of features requested for this Interconnect connection. Options: IF_MACSEC (
         /// If specified then the connection is created on MACsec capable hardware ports. If not
         /// specified, the default value is false, which allocates non-MACsec capable ports first if
-        /// available).
-        /// Each value may be one of: `MACSEC`.
+        /// available). Note that MACSEC is still technically allowed for compatibility reasons, but it
+        /// does not work with the API, and will be removed in an upcoming major version.
+        /// Each value may be one of: `MACSEC`, `IF_MACSEC`.
         /// </summary>
         public InputList<string> RequestedFeatures
         {

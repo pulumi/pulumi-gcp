@@ -75,6 +75,7 @@ export interface GetWorkloadIdentityPoolProviderResult {
     readonly state: string;
     readonly workloadIdentityPoolId: string;
     readonly workloadIdentityPoolProviderId: string;
+    readonly x509s: outputs.iam.GetWorkloadIdentityPoolProviderX509[];
 }
 /**
  * Get a IAM workload identity provider from Google Cloud by its id.

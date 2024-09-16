@@ -665,6 +665,10 @@ public class TargetHttpsProxy extends com.pulumi.resources.CustomResource {
      * INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
      * loadBalancingScheme consult ServerTlsPolicy documentation.
      * If left blank, communications are not encrypted.
+     * If you remove this field from your configuration at the same time as
+     * deleting or recreating a referenced ServerTlsPolicy resource, you will
+     * receive a resourceInUseByAnotherResource error. Use lifecycle.create_before_destroy
+     * within the ServerTlsPolicy resource to avoid this.
      * 
      */
     @Export(name="serverTlsPolicy", refs={String.class}, tree="[0]")
@@ -680,6 +684,10 @@ public class TargetHttpsProxy extends com.pulumi.resources.CustomResource {
      * INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED
      * loadBalancingScheme consult ServerTlsPolicy documentation.
      * If left blank, communications are not encrypted.
+     * If you remove this field from your configuration at the same time as
+     * deleting or recreating a referenced ServerTlsPolicy resource, you will
+     * receive a resourceInUseByAnotherResource error. Use lifecycle.create_before_destroy
+     * within the ServerTlsPolicy resource to avoid this.
      * 
      */
     public Output<Optional<String>> serverTlsPolicy() {

@@ -184,6 +184,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * Policy to determine if the volume should be deleted forcefully.
      * Volumes may have nested snapshot resources. Deleting such a volume will fail.
      * Setting this parameter to FORCE will delete volumes including nested snapshots.
+     * Possible values: DEFAULT, FORCE.
      * 
      */
     @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
@@ -193,6 +194,7 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * @return Policy to determine if the volume should be deleted forcefully.
      * Volumes may have nested snapshot resources. Deleting such a volume will fail.
      * Setting this parameter to FORCE will delete volumes including nested snapshots.
+     * Possible values: DEFAULT, FORCE.
      * 
      */
     public Output<Optional<String>> deletionPolicy() {

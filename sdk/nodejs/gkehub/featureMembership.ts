@@ -42,8 +42,9 @@ import * as utilities from "../utilities";
  *     feature: feature.name,
  *     membership: membership.membershipId,
  *     configmanagement: {
- *         version: "1.6.2",
+ *         version: "1.19.0",
  *         configSync: {
+ *             enabled: true,
  *             git: {
  *                 syncRepo: "https://github.com/hashicorp/terraform",
  *             },
@@ -82,8 +83,9 @@ import * as utilities from "../utilities";
  *     feature: feature.name,
  *     membership: membership.membershipId,
  *     configmanagement: {
- *         version: "1.15.1",
+ *         version: "1.19.0",
  *         configSync: {
+ *             enabled: true,
  *             oci: {
  *                 syncRepo: "us-central1-docker.pkg.dev/sample-project/config-repo/config-sync-gke:latest",
  *                 policyDir: "config-connector",
@@ -177,8 +179,9 @@ import * as utilities from "../utilities";
  *     membership: membership.membershipId,
  *     membershipLocation: membership.location,
  *     configmanagement: {
- *         version: "1.6.2",
+ *         version: "1.19.0",
  *         configSync: {
+ *             enabled: true,
  *             git: {
  *                 syncRepo: "https://github.com/hashicorp/terraform",
  *             },

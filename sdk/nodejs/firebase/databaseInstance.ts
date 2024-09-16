@@ -127,7 +127,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     public /*out*/ readonly databaseUrl!: pulumi.Output<string>;
     /**
-     * The intended database state.
+     * The intended database state. Possible values: ACTIVE, DISABLED.
      */
     public readonly desiredState!: pulumi.Output<string | undefined>;
     /**
@@ -222,7 +222,7 @@ export interface DatabaseInstanceState {
      */
     databaseUrl?: pulumi.Input<string>;
     /**
-     * The intended database state.
+     * The intended database state. Possible values: ACTIVE, DISABLED.
      */
     desiredState?: pulumi.Input<string>;
     /**
@@ -270,7 +270,7 @@ export interface DatabaseInstanceState {
  */
 export interface DatabaseInstanceArgs {
     /**
-     * The intended database state.
+     * The intended database state. Possible values: ACTIVE, DISABLED.
      */
     desiredState?: pulumi.Input<string>;
     /**

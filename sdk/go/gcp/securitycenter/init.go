@@ -63,6 +63,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &V2FolderMuteConfig{}
 	case "gcp:securitycenter/v2FolderNotificationConfig:V2FolderNotificationConfig":
 		r = &V2FolderNotificationConfig{}
+	case "gcp:securitycenter/v2FolderSccBigQueryExport:V2FolderSccBigQueryExport":
+		r = &V2FolderSccBigQueryExport{}
 	case "gcp:securitycenter/v2OrganizationMuteConfig:V2OrganizationMuteConfig":
 		r = &V2OrganizationMuteConfig{}
 	case "gcp:securitycenter/v2OrganizationNotificationConfig:V2OrganizationNotificationConfig":
@@ -81,6 +83,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &V2ProjectMuteConfig{}
 	case "gcp:securitycenter/v2ProjectNotificationConfig:V2ProjectNotificationConfig":
 		r = &V2ProjectNotificationConfig{}
+	case "gcp:securitycenter/v2ProjectSccBigQueryExport:V2ProjectSccBigQueryExport":
+		r = &V2ProjectSccBigQueryExport{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -201,6 +205,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"securitycenter/v2FolderSccBigQueryExport",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"securitycenter/v2OrganizationMuteConfig",
 		&module{version},
 	)
@@ -242,6 +251,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"securitycenter/v2ProjectNotificationConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"securitycenter/v2ProjectSccBigQueryExport",
 		&module{version},
 	)
 }

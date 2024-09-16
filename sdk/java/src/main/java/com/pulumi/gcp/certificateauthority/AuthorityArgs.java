@@ -61,14 +61,16 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Desired state of the CertificateAuthority. Set this field to &#39;STAGED&#39; to create a &#39;STAGED&#39; root CA.
+     * Desired state of the CertificateAuthority. Set this field to &#39;STAGED&#39; to create a &#39;STAGED&#39; root CA. Possible values:
+     * ENABLED, DISABLED, STAGED.
      * 
      */
     @Import(name="desiredState")
     private @Nullable Output<String> desiredState;
 
     /**
-     * @return Desired state of the CertificateAuthority. Set this field to &#39;STAGED&#39; to create a &#39;STAGED&#39; root CA.
+     * @return Desired state of the CertificateAuthority. Set this field to &#39;STAGED&#39; to create a &#39;STAGED&#39; root CA. Possible values:
+     * ENABLED, DISABLED, STAGED.
      * 
      */
     public Optional<Output<String>> desiredState() {
@@ -372,7 +374,8 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param desiredState Desired state of the CertificateAuthority. Set this field to &#39;STAGED&#39; to create a &#39;STAGED&#39; root CA.
+         * @param desiredState Desired state of the CertificateAuthority. Set this field to &#39;STAGED&#39; to create a &#39;STAGED&#39; root CA. Possible values:
+         * ENABLED, DISABLED, STAGED.
          * 
          * @return builder
          * 
@@ -383,7 +386,8 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param desiredState Desired state of the CertificateAuthority. Set this field to &#39;STAGED&#39; to create a &#39;STAGED&#39; root CA.
+         * @param desiredState Desired state of the CertificateAuthority. Set this field to &#39;STAGED&#39; to create a &#39;STAGED&#39; root CA. Possible values:
+         * ENABLED, DISABLED, STAGED.
          * 
          * @return builder
          * 

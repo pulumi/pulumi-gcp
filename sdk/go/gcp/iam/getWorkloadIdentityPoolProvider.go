@@ -81,6 +81,7 @@ type LookupWorkloadIdentityPoolProviderResult struct {
 	State                          string                                `pulumi:"state"`
 	WorkloadIdentityPoolId         string                                `pulumi:"workloadIdentityPoolId"`
 	WorkloadIdentityPoolProviderId string                                `pulumi:"workloadIdentityPoolProviderId"`
+	X509s                          []GetWorkloadIdentityPoolProviderX509 `pulumi:"x509s"`
 }
 
 func LookupWorkloadIdentityPoolProviderOutput(ctx *pulumi.Context, args LookupWorkloadIdentityPoolProviderOutputArgs, opts ...pulumi.InvokeOption) LookupWorkloadIdentityPoolProviderResultOutput {
@@ -185,6 +186,10 @@ func (o LookupWorkloadIdentityPoolProviderResultOutput) WorkloadIdentityPoolId()
 
 func (o LookupWorkloadIdentityPoolProviderResultOutput) WorkloadIdentityPoolProviderId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadIdentityPoolProviderResult) string { return v.WorkloadIdentityPoolProviderId }).(pulumi.StringOutput)
+}
+
+func (o LookupWorkloadIdentityPoolProviderResultOutput) X509s() GetWorkloadIdentityPoolProviderX509ArrayOutput {
+	return o.ApplyT(func(v LookupWorkloadIdentityPoolProviderResult) []GetWorkloadIdentityPoolProviderX509 { return v.X509s }).(GetWorkloadIdentityPoolProviderX509ArrayOutput)
 }
 
 func init() {

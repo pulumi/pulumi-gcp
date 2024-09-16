@@ -552,14 +552,16 @@ public class Authority extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.deletionProtection);
     }
     /**
-     * Desired state of the CertificateAuthority. Set this field to &#39;STAGED&#39; to create a &#39;STAGED&#39; root CA.
+     * Desired state of the CertificateAuthority. Set this field to &#39;STAGED&#39; to create a &#39;STAGED&#39; root CA. Possible values:
+     * ENABLED, DISABLED, STAGED.
      * 
      */
     @Export(name="desiredState", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> desiredState;
 
     /**
-     * @return Desired state of the CertificateAuthority. Set this field to &#39;STAGED&#39; to create a &#39;STAGED&#39; root CA.
+     * @return Desired state of the CertificateAuthority. Set this field to &#39;STAGED&#39; to create a &#39;STAGED&#39; root CA. Possible values:
+     * ENABLED, DISABLED, STAGED.
      * 
      */
     public Output<Optional<String>> desiredState() {

@@ -545,6 +545,10 @@ class Spoke(pulumi.CustomResource):
                     "198.51.100.0/24",
                     "10.10.0.0/16",
                 ],
+                "include_export_ranges": [
+                    "198.51.100.0/23",
+                    "10.0.0.0/8",
+                ],
                 "uri": network.self_link,
             })
         ```
@@ -693,6 +697,10 @@ class Spoke(pulumi.CustomResource):
                 "exclude_export_ranges": [
                     "198.51.100.0/24",
                     "10.10.0.0/16",
+                ],
+                "include_export_ranges": [
+                    "198.51.100.0/23",
+                    "10.0.0.0/8",
                 ],
                 "uri": network.self_link,
             })

@@ -2124,6 +2124,636 @@ func (o GetCertificateMapGclbTargetIpConfigArrayOutput) Index(i pulumi.IntInput)
 	}).(GetCertificateMapGclbTargetIpConfigOutput)
 }
 
+type GetCertificatesCertificate struct {
+	// A human-readable description of the resource.
+	Description     string            `pulumi:"description"`
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	// Set of label tags associated with the Certificate resource.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
+	Labels map[string]string `pulumi:"labels"`
+	// The Certificate Manager location. If not specified, "global" is used.
+	Location string `pulumi:"location"`
+	// Configuration and state of a Managed Certificate.
+	// Certificate Manager provisions and renews Managed Certificates
+	// automatically, for as long as it's authorized to do so.
+	Manageds []GetCertificatesCertificateManaged `pulumi:"manageds"`
+	// A user-defined name of the certificate. Certificate names must be unique
+	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
+	// and all following characters must be a dash, underscore, letter or digit.
+	Name string `pulumi:"name"`
+	// The ID of the project in which the resource belongs. If it
+	// is not provided, the provider project is used.
+	Project string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	//  and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6)
+	SanDnsnames []string `pulumi:"sanDnsnames"`
+	// The scope of the certificate.
+	//
+	// DEFAULT: Certificates with default scope are served from core Google data centers.
+	// If unsure, choose this option.
+	//
+	// EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
+	// See https://cloud.google.com/vpc/docs/edge-locations.
+	//
+	// ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
+	// See https://cloud.google.com/compute/docs/regions-zones
+	Scope string `pulumi:"scope"`
+}
+
+// GetCertificatesCertificateInput is an input type that accepts GetCertificatesCertificateArgs and GetCertificatesCertificateOutput values.
+// You can construct a concrete instance of `GetCertificatesCertificateInput` via:
+//
+//	GetCertificatesCertificateArgs{...}
+type GetCertificatesCertificateInput interface {
+	pulumi.Input
+
+	ToGetCertificatesCertificateOutput() GetCertificatesCertificateOutput
+	ToGetCertificatesCertificateOutputWithContext(context.Context) GetCertificatesCertificateOutput
+}
+
+type GetCertificatesCertificateArgs struct {
+	// A human-readable description of the resource.
+	Description     pulumi.StringInput    `pulumi:"description"`
+	EffectiveLabels pulumi.StringMapInput `pulumi:"effectiveLabels"`
+	// Set of label tags associated with the Certificate resource.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// The Certificate Manager location. If not specified, "global" is used.
+	Location pulumi.StringInput `pulumi:"location"`
+	// Configuration and state of a Managed Certificate.
+	// Certificate Manager provisions and renews Managed Certificates
+	// automatically, for as long as it's authorized to do so.
+	Manageds GetCertificatesCertificateManagedArrayInput `pulumi:"manageds"`
+	// A user-defined name of the certificate. Certificate names must be unique
+	// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
+	// and all following characters must be a dash, underscore, letter or digit.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The ID of the project in which the resource belongs. If it
+	// is not provided, the provider project is used.
+	Project pulumi.StringInput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	//  and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput `pulumi:"pulumiLabels"`
+	// The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6)
+	SanDnsnames pulumi.StringArrayInput `pulumi:"sanDnsnames"`
+	// The scope of the certificate.
+	//
+	// DEFAULT: Certificates with default scope are served from core Google data centers.
+	// If unsure, choose this option.
+	//
+	// EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
+	// See https://cloud.google.com/vpc/docs/edge-locations.
+	//
+	// ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
+	// See https://cloud.google.com/compute/docs/regions-zones
+	Scope pulumi.StringInput `pulumi:"scope"`
+}
+
+func (GetCertificatesCertificateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCertificatesCertificate)(nil)).Elem()
+}
+
+func (i GetCertificatesCertificateArgs) ToGetCertificatesCertificateOutput() GetCertificatesCertificateOutput {
+	return i.ToGetCertificatesCertificateOutputWithContext(context.Background())
+}
+
+func (i GetCertificatesCertificateArgs) ToGetCertificatesCertificateOutputWithContext(ctx context.Context) GetCertificatesCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCertificatesCertificateOutput)
+}
+
+// GetCertificatesCertificateArrayInput is an input type that accepts GetCertificatesCertificateArray and GetCertificatesCertificateArrayOutput values.
+// You can construct a concrete instance of `GetCertificatesCertificateArrayInput` via:
+//
+//	GetCertificatesCertificateArray{ GetCertificatesCertificateArgs{...} }
+type GetCertificatesCertificateArrayInput interface {
+	pulumi.Input
+
+	ToGetCertificatesCertificateArrayOutput() GetCertificatesCertificateArrayOutput
+	ToGetCertificatesCertificateArrayOutputWithContext(context.Context) GetCertificatesCertificateArrayOutput
+}
+
+type GetCertificatesCertificateArray []GetCertificatesCertificateInput
+
+func (GetCertificatesCertificateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCertificatesCertificate)(nil)).Elem()
+}
+
+func (i GetCertificatesCertificateArray) ToGetCertificatesCertificateArrayOutput() GetCertificatesCertificateArrayOutput {
+	return i.ToGetCertificatesCertificateArrayOutputWithContext(context.Background())
+}
+
+func (i GetCertificatesCertificateArray) ToGetCertificatesCertificateArrayOutputWithContext(ctx context.Context) GetCertificatesCertificateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCertificatesCertificateArrayOutput)
+}
+
+type GetCertificatesCertificateOutput struct{ *pulumi.OutputState }
+
+func (GetCertificatesCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCertificatesCertificate)(nil)).Elem()
+}
+
+func (o GetCertificatesCertificateOutput) ToGetCertificatesCertificateOutput() GetCertificatesCertificateOutput {
+	return o
+}
+
+func (o GetCertificatesCertificateOutput) ToGetCertificatesCertificateOutputWithContext(ctx context.Context) GetCertificatesCertificateOutput {
+	return o
+}
+
+// A human-readable description of the resource.
+func (o GetCertificatesCertificateOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatesCertificate) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetCertificatesCertificateOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetCertificatesCertificate) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
+// Set of label tags associated with the Certificate resource.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field 'effective_labels' for all of the labels present on the resource.
+func (o GetCertificatesCertificateOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetCertificatesCertificate) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The Certificate Manager location. If not specified, "global" is used.
+func (o GetCertificatesCertificateOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatesCertificate) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// Configuration and state of a Managed Certificate.
+// Certificate Manager provisions and renews Managed Certificates
+// automatically, for as long as it's authorized to do so.
+func (o GetCertificatesCertificateOutput) Manageds() GetCertificatesCertificateManagedArrayOutput {
+	return o.ApplyT(func(v GetCertificatesCertificate) []GetCertificatesCertificateManaged { return v.Manageds }).(GetCertificatesCertificateManagedArrayOutput)
+}
+
+// A user-defined name of the certificate. Certificate names must be unique
+// The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
+// and all following characters must be a dash, underscore, letter or digit.
+func (o GetCertificatesCertificateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatesCertificate) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ID of the project in which the resource belongs. If it
+// is not provided, the provider project is used.
+func (o GetCertificatesCertificateOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatesCertificate) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+//
+//	and default labels configured on the provider.
+func (o GetCertificatesCertificateOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetCertificatesCertificate) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
+// The list of Subject Alternative Names of dnsName type defined in the certificate (see RFC 5280 4.2.1.6)
+func (o GetCertificatesCertificateOutput) SanDnsnames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCertificatesCertificate) []string { return v.SanDnsnames }).(pulumi.StringArrayOutput)
+}
+
+// The scope of the certificate.
+//
+// DEFAULT: Certificates with default scope are served from core Google data centers.
+// If unsure, choose this option.
+//
+// EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates, served from Edge Points of Presence.
+// See https://cloud.google.com/vpc/docs/edge-locations.
+//
+// ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
+// See https://cloud.google.com/compute/docs/regions-zones
+func (o GetCertificatesCertificateOutput) Scope() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatesCertificate) string { return v.Scope }).(pulumi.StringOutput)
+}
+
+type GetCertificatesCertificateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCertificatesCertificateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCertificatesCertificate)(nil)).Elem()
+}
+
+func (o GetCertificatesCertificateArrayOutput) ToGetCertificatesCertificateArrayOutput() GetCertificatesCertificateArrayOutput {
+	return o
+}
+
+func (o GetCertificatesCertificateArrayOutput) ToGetCertificatesCertificateArrayOutputWithContext(ctx context.Context) GetCertificatesCertificateArrayOutput {
+	return o
+}
+
+func (o GetCertificatesCertificateArrayOutput) Index(i pulumi.IntInput) GetCertificatesCertificateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCertificatesCertificate {
+		return vs[0].([]GetCertificatesCertificate)[vs[1].(int)]
+	}).(GetCertificatesCertificateOutput)
+}
+
+type GetCertificatesCertificateManaged struct {
+	// Detailed state of the latest authorization attempt for each domain
+	// specified for this Managed Certificate.
+	AuthorizationAttemptInfos []GetCertificatesCertificateManagedAuthorizationAttemptInfo `pulumi:"authorizationAttemptInfos"`
+	// Authorizations that will be used for performing domain authorization. Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
+	DnsAuthorizations []string `pulumi:"dnsAuthorizations"`
+	// The domains for which a managed SSL certificate will be generated.
+	// Wildcard domains are only supported with DNS challenge resolution
+	Domains []string `pulumi:"domains"`
+	// The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*/locations/*/certificateIssuanceConfigs/*.
+	// If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
+	// Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
+	IssuanceConfig string `pulumi:"issuanceConfig"`
+	// Information about issues with provisioning this Managed Certificate.
+	ProvisioningIssues []GetCertificatesCertificateManagedProvisioningIssue `pulumi:"provisioningIssues"`
+	// A state of this Managed Certificate.
+	State string `pulumi:"state"`
+}
+
+// GetCertificatesCertificateManagedInput is an input type that accepts GetCertificatesCertificateManagedArgs and GetCertificatesCertificateManagedOutput values.
+// You can construct a concrete instance of `GetCertificatesCertificateManagedInput` via:
+//
+//	GetCertificatesCertificateManagedArgs{...}
+type GetCertificatesCertificateManagedInput interface {
+	pulumi.Input
+
+	ToGetCertificatesCertificateManagedOutput() GetCertificatesCertificateManagedOutput
+	ToGetCertificatesCertificateManagedOutputWithContext(context.Context) GetCertificatesCertificateManagedOutput
+}
+
+type GetCertificatesCertificateManagedArgs struct {
+	// Detailed state of the latest authorization attempt for each domain
+	// specified for this Managed Certificate.
+	AuthorizationAttemptInfos GetCertificatesCertificateManagedAuthorizationAttemptInfoArrayInput `pulumi:"authorizationAttemptInfos"`
+	// Authorizations that will be used for performing domain authorization. Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
+	DnsAuthorizations pulumi.StringArrayInput `pulumi:"dnsAuthorizations"`
+	// The domains for which a managed SSL certificate will be generated.
+	// Wildcard domains are only supported with DNS challenge resolution
+	Domains pulumi.StringArrayInput `pulumi:"domains"`
+	// The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*/locations/*/certificateIssuanceConfigs/*.
+	// If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
+	// Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
+	IssuanceConfig pulumi.StringInput `pulumi:"issuanceConfig"`
+	// Information about issues with provisioning this Managed Certificate.
+	ProvisioningIssues GetCertificatesCertificateManagedProvisioningIssueArrayInput `pulumi:"provisioningIssues"`
+	// A state of this Managed Certificate.
+	State pulumi.StringInput `pulumi:"state"`
+}
+
+func (GetCertificatesCertificateManagedArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCertificatesCertificateManaged)(nil)).Elem()
+}
+
+func (i GetCertificatesCertificateManagedArgs) ToGetCertificatesCertificateManagedOutput() GetCertificatesCertificateManagedOutput {
+	return i.ToGetCertificatesCertificateManagedOutputWithContext(context.Background())
+}
+
+func (i GetCertificatesCertificateManagedArgs) ToGetCertificatesCertificateManagedOutputWithContext(ctx context.Context) GetCertificatesCertificateManagedOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCertificatesCertificateManagedOutput)
+}
+
+// GetCertificatesCertificateManagedArrayInput is an input type that accepts GetCertificatesCertificateManagedArray and GetCertificatesCertificateManagedArrayOutput values.
+// You can construct a concrete instance of `GetCertificatesCertificateManagedArrayInput` via:
+//
+//	GetCertificatesCertificateManagedArray{ GetCertificatesCertificateManagedArgs{...} }
+type GetCertificatesCertificateManagedArrayInput interface {
+	pulumi.Input
+
+	ToGetCertificatesCertificateManagedArrayOutput() GetCertificatesCertificateManagedArrayOutput
+	ToGetCertificatesCertificateManagedArrayOutputWithContext(context.Context) GetCertificatesCertificateManagedArrayOutput
+}
+
+type GetCertificatesCertificateManagedArray []GetCertificatesCertificateManagedInput
+
+func (GetCertificatesCertificateManagedArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCertificatesCertificateManaged)(nil)).Elem()
+}
+
+func (i GetCertificatesCertificateManagedArray) ToGetCertificatesCertificateManagedArrayOutput() GetCertificatesCertificateManagedArrayOutput {
+	return i.ToGetCertificatesCertificateManagedArrayOutputWithContext(context.Background())
+}
+
+func (i GetCertificatesCertificateManagedArray) ToGetCertificatesCertificateManagedArrayOutputWithContext(ctx context.Context) GetCertificatesCertificateManagedArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCertificatesCertificateManagedArrayOutput)
+}
+
+type GetCertificatesCertificateManagedOutput struct{ *pulumi.OutputState }
+
+func (GetCertificatesCertificateManagedOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCertificatesCertificateManaged)(nil)).Elem()
+}
+
+func (o GetCertificatesCertificateManagedOutput) ToGetCertificatesCertificateManagedOutput() GetCertificatesCertificateManagedOutput {
+	return o
+}
+
+func (o GetCertificatesCertificateManagedOutput) ToGetCertificatesCertificateManagedOutputWithContext(ctx context.Context) GetCertificatesCertificateManagedOutput {
+	return o
+}
+
+// Detailed state of the latest authorization attempt for each domain
+// specified for this Managed Certificate.
+func (o GetCertificatesCertificateManagedOutput) AuthorizationAttemptInfos() GetCertificatesCertificateManagedAuthorizationAttemptInfoArrayOutput {
+	return o.ApplyT(func(v GetCertificatesCertificateManaged) []GetCertificatesCertificateManagedAuthorizationAttemptInfo {
+		return v.AuthorizationAttemptInfos
+	}).(GetCertificatesCertificateManagedAuthorizationAttemptInfoArrayOutput)
+}
+
+// Authorizations that will be used for performing domain authorization. Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
+func (o GetCertificatesCertificateManagedOutput) DnsAuthorizations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCertificatesCertificateManaged) []string { return v.DnsAuthorizations }).(pulumi.StringArrayOutput)
+}
+
+// The domains for which a managed SSL certificate will be generated.
+// Wildcard domains are only supported with DNS challenge resolution
+func (o GetCertificatesCertificateManagedOutput) Domains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCertificatesCertificateManaged) []string { return v.Domains }).(pulumi.StringArrayOutput)
+}
+
+// The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*/locations/*/certificateIssuanceConfigs/*.
+// If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
+// Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
+func (o GetCertificatesCertificateManagedOutput) IssuanceConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatesCertificateManaged) string { return v.IssuanceConfig }).(pulumi.StringOutput)
+}
+
+// Information about issues with provisioning this Managed Certificate.
+func (o GetCertificatesCertificateManagedOutput) ProvisioningIssues() GetCertificatesCertificateManagedProvisioningIssueArrayOutput {
+	return o.ApplyT(func(v GetCertificatesCertificateManaged) []GetCertificatesCertificateManagedProvisioningIssue {
+		return v.ProvisioningIssues
+	}).(GetCertificatesCertificateManagedProvisioningIssueArrayOutput)
+}
+
+// A state of this Managed Certificate.
+func (o GetCertificatesCertificateManagedOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatesCertificateManaged) string { return v.State }).(pulumi.StringOutput)
+}
+
+type GetCertificatesCertificateManagedArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCertificatesCertificateManagedArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCertificatesCertificateManaged)(nil)).Elem()
+}
+
+func (o GetCertificatesCertificateManagedArrayOutput) ToGetCertificatesCertificateManagedArrayOutput() GetCertificatesCertificateManagedArrayOutput {
+	return o
+}
+
+func (o GetCertificatesCertificateManagedArrayOutput) ToGetCertificatesCertificateManagedArrayOutputWithContext(ctx context.Context) GetCertificatesCertificateManagedArrayOutput {
+	return o
+}
+
+func (o GetCertificatesCertificateManagedArrayOutput) Index(i pulumi.IntInput) GetCertificatesCertificateManagedOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCertificatesCertificateManaged {
+		return vs[0].([]GetCertificatesCertificateManaged)[vs[1].(int)]
+	}).(GetCertificatesCertificateManagedOutput)
+}
+
+type GetCertificatesCertificateManagedAuthorizationAttemptInfo struct {
+	// Human readable explanation for reaching the state. Provided to help
+	// address the configuration issues.
+	// Not guaranteed to be stable. For programmatic access use 'failure_reason' field.
+	Details string `pulumi:"details"`
+	// Domain name of the authorization attempt.
+	Domain string `pulumi:"domain"`
+	// Reason for failure of the authorization attempt for the domain.
+	FailureReason string `pulumi:"failureReason"`
+	// State of the domain for managed certificate issuance.
+	State string `pulumi:"state"`
+}
+
+// GetCertificatesCertificateManagedAuthorizationAttemptInfoInput is an input type that accepts GetCertificatesCertificateManagedAuthorizationAttemptInfoArgs and GetCertificatesCertificateManagedAuthorizationAttemptInfoOutput values.
+// You can construct a concrete instance of `GetCertificatesCertificateManagedAuthorizationAttemptInfoInput` via:
+//
+//	GetCertificatesCertificateManagedAuthorizationAttemptInfoArgs{...}
+type GetCertificatesCertificateManagedAuthorizationAttemptInfoInput interface {
+	pulumi.Input
+
+	ToGetCertificatesCertificateManagedAuthorizationAttemptInfoOutput() GetCertificatesCertificateManagedAuthorizationAttemptInfoOutput
+	ToGetCertificatesCertificateManagedAuthorizationAttemptInfoOutputWithContext(context.Context) GetCertificatesCertificateManagedAuthorizationAttemptInfoOutput
+}
+
+type GetCertificatesCertificateManagedAuthorizationAttemptInfoArgs struct {
+	// Human readable explanation for reaching the state. Provided to help
+	// address the configuration issues.
+	// Not guaranteed to be stable. For programmatic access use 'failure_reason' field.
+	Details pulumi.StringInput `pulumi:"details"`
+	// Domain name of the authorization attempt.
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// Reason for failure of the authorization attempt for the domain.
+	FailureReason pulumi.StringInput `pulumi:"failureReason"`
+	// State of the domain for managed certificate issuance.
+	State pulumi.StringInput `pulumi:"state"`
+}
+
+func (GetCertificatesCertificateManagedAuthorizationAttemptInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCertificatesCertificateManagedAuthorizationAttemptInfo)(nil)).Elem()
+}
+
+func (i GetCertificatesCertificateManagedAuthorizationAttemptInfoArgs) ToGetCertificatesCertificateManagedAuthorizationAttemptInfoOutput() GetCertificatesCertificateManagedAuthorizationAttemptInfoOutput {
+	return i.ToGetCertificatesCertificateManagedAuthorizationAttemptInfoOutputWithContext(context.Background())
+}
+
+func (i GetCertificatesCertificateManagedAuthorizationAttemptInfoArgs) ToGetCertificatesCertificateManagedAuthorizationAttemptInfoOutputWithContext(ctx context.Context) GetCertificatesCertificateManagedAuthorizationAttemptInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCertificatesCertificateManagedAuthorizationAttemptInfoOutput)
+}
+
+// GetCertificatesCertificateManagedAuthorizationAttemptInfoArrayInput is an input type that accepts GetCertificatesCertificateManagedAuthorizationAttemptInfoArray and GetCertificatesCertificateManagedAuthorizationAttemptInfoArrayOutput values.
+// You can construct a concrete instance of `GetCertificatesCertificateManagedAuthorizationAttemptInfoArrayInput` via:
+//
+//	GetCertificatesCertificateManagedAuthorizationAttemptInfoArray{ GetCertificatesCertificateManagedAuthorizationAttemptInfoArgs{...} }
+type GetCertificatesCertificateManagedAuthorizationAttemptInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetCertificatesCertificateManagedAuthorizationAttemptInfoArrayOutput() GetCertificatesCertificateManagedAuthorizationAttemptInfoArrayOutput
+	ToGetCertificatesCertificateManagedAuthorizationAttemptInfoArrayOutputWithContext(context.Context) GetCertificatesCertificateManagedAuthorizationAttemptInfoArrayOutput
+}
+
+type GetCertificatesCertificateManagedAuthorizationAttemptInfoArray []GetCertificatesCertificateManagedAuthorizationAttemptInfoInput
+
+func (GetCertificatesCertificateManagedAuthorizationAttemptInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCertificatesCertificateManagedAuthorizationAttemptInfo)(nil)).Elem()
+}
+
+func (i GetCertificatesCertificateManagedAuthorizationAttemptInfoArray) ToGetCertificatesCertificateManagedAuthorizationAttemptInfoArrayOutput() GetCertificatesCertificateManagedAuthorizationAttemptInfoArrayOutput {
+	return i.ToGetCertificatesCertificateManagedAuthorizationAttemptInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetCertificatesCertificateManagedAuthorizationAttemptInfoArray) ToGetCertificatesCertificateManagedAuthorizationAttemptInfoArrayOutputWithContext(ctx context.Context) GetCertificatesCertificateManagedAuthorizationAttemptInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCertificatesCertificateManagedAuthorizationAttemptInfoArrayOutput)
+}
+
+type GetCertificatesCertificateManagedAuthorizationAttemptInfoOutput struct{ *pulumi.OutputState }
+
+func (GetCertificatesCertificateManagedAuthorizationAttemptInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCertificatesCertificateManagedAuthorizationAttemptInfo)(nil)).Elem()
+}
+
+func (o GetCertificatesCertificateManagedAuthorizationAttemptInfoOutput) ToGetCertificatesCertificateManagedAuthorizationAttemptInfoOutput() GetCertificatesCertificateManagedAuthorizationAttemptInfoOutput {
+	return o
+}
+
+func (o GetCertificatesCertificateManagedAuthorizationAttemptInfoOutput) ToGetCertificatesCertificateManagedAuthorizationAttemptInfoOutputWithContext(ctx context.Context) GetCertificatesCertificateManagedAuthorizationAttemptInfoOutput {
+	return o
+}
+
+// Human readable explanation for reaching the state. Provided to help
+// address the configuration issues.
+// Not guaranteed to be stable. For programmatic access use 'failure_reason' field.
+func (o GetCertificatesCertificateManagedAuthorizationAttemptInfoOutput) Details() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatesCertificateManagedAuthorizationAttemptInfo) string { return v.Details }).(pulumi.StringOutput)
+}
+
+// Domain name of the authorization attempt.
+func (o GetCertificatesCertificateManagedAuthorizationAttemptInfoOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatesCertificateManagedAuthorizationAttemptInfo) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// Reason for failure of the authorization attempt for the domain.
+func (o GetCertificatesCertificateManagedAuthorizationAttemptInfoOutput) FailureReason() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatesCertificateManagedAuthorizationAttemptInfo) string { return v.FailureReason }).(pulumi.StringOutput)
+}
+
+// State of the domain for managed certificate issuance.
+func (o GetCertificatesCertificateManagedAuthorizationAttemptInfoOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatesCertificateManagedAuthorizationAttemptInfo) string { return v.State }).(pulumi.StringOutput)
+}
+
+type GetCertificatesCertificateManagedAuthorizationAttemptInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCertificatesCertificateManagedAuthorizationAttemptInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCertificatesCertificateManagedAuthorizationAttemptInfo)(nil)).Elem()
+}
+
+func (o GetCertificatesCertificateManagedAuthorizationAttemptInfoArrayOutput) ToGetCertificatesCertificateManagedAuthorizationAttemptInfoArrayOutput() GetCertificatesCertificateManagedAuthorizationAttemptInfoArrayOutput {
+	return o
+}
+
+func (o GetCertificatesCertificateManagedAuthorizationAttemptInfoArrayOutput) ToGetCertificatesCertificateManagedAuthorizationAttemptInfoArrayOutputWithContext(ctx context.Context) GetCertificatesCertificateManagedAuthorizationAttemptInfoArrayOutput {
+	return o
+}
+
+func (o GetCertificatesCertificateManagedAuthorizationAttemptInfoArrayOutput) Index(i pulumi.IntInput) GetCertificatesCertificateManagedAuthorizationAttemptInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCertificatesCertificateManagedAuthorizationAttemptInfo {
+		return vs[0].([]GetCertificatesCertificateManagedAuthorizationAttemptInfo)[vs[1].(int)]
+	}).(GetCertificatesCertificateManagedAuthorizationAttemptInfoOutput)
+}
+
+type GetCertificatesCertificateManagedProvisioningIssue struct {
+	// Human readable explanation about the issue. Provided to help address
+	// the configuration issues.
+	// Not guaranteed to be stable. For programmatic access use 'reason' field.
+	Details string `pulumi:"details"`
+	// Reason for provisioning failures.
+	Reason string `pulumi:"reason"`
+}
+
+// GetCertificatesCertificateManagedProvisioningIssueInput is an input type that accepts GetCertificatesCertificateManagedProvisioningIssueArgs and GetCertificatesCertificateManagedProvisioningIssueOutput values.
+// You can construct a concrete instance of `GetCertificatesCertificateManagedProvisioningIssueInput` via:
+//
+//	GetCertificatesCertificateManagedProvisioningIssueArgs{...}
+type GetCertificatesCertificateManagedProvisioningIssueInput interface {
+	pulumi.Input
+
+	ToGetCertificatesCertificateManagedProvisioningIssueOutput() GetCertificatesCertificateManagedProvisioningIssueOutput
+	ToGetCertificatesCertificateManagedProvisioningIssueOutputWithContext(context.Context) GetCertificatesCertificateManagedProvisioningIssueOutput
+}
+
+type GetCertificatesCertificateManagedProvisioningIssueArgs struct {
+	// Human readable explanation about the issue. Provided to help address
+	// the configuration issues.
+	// Not guaranteed to be stable. For programmatic access use 'reason' field.
+	Details pulumi.StringInput `pulumi:"details"`
+	// Reason for provisioning failures.
+	Reason pulumi.StringInput `pulumi:"reason"`
+}
+
+func (GetCertificatesCertificateManagedProvisioningIssueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCertificatesCertificateManagedProvisioningIssue)(nil)).Elem()
+}
+
+func (i GetCertificatesCertificateManagedProvisioningIssueArgs) ToGetCertificatesCertificateManagedProvisioningIssueOutput() GetCertificatesCertificateManagedProvisioningIssueOutput {
+	return i.ToGetCertificatesCertificateManagedProvisioningIssueOutputWithContext(context.Background())
+}
+
+func (i GetCertificatesCertificateManagedProvisioningIssueArgs) ToGetCertificatesCertificateManagedProvisioningIssueOutputWithContext(ctx context.Context) GetCertificatesCertificateManagedProvisioningIssueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCertificatesCertificateManagedProvisioningIssueOutput)
+}
+
+// GetCertificatesCertificateManagedProvisioningIssueArrayInput is an input type that accepts GetCertificatesCertificateManagedProvisioningIssueArray and GetCertificatesCertificateManagedProvisioningIssueArrayOutput values.
+// You can construct a concrete instance of `GetCertificatesCertificateManagedProvisioningIssueArrayInput` via:
+//
+//	GetCertificatesCertificateManagedProvisioningIssueArray{ GetCertificatesCertificateManagedProvisioningIssueArgs{...} }
+type GetCertificatesCertificateManagedProvisioningIssueArrayInput interface {
+	pulumi.Input
+
+	ToGetCertificatesCertificateManagedProvisioningIssueArrayOutput() GetCertificatesCertificateManagedProvisioningIssueArrayOutput
+	ToGetCertificatesCertificateManagedProvisioningIssueArrayOutputWithContext(context.Context) GetCertificatesCertificateManagedProvisioningIssueArrayOutput
+}
+
+type GetCertificatesCertificateManagedProvisioningIssueArray []GetCertificatesCertificateManagedProvisioningIssueInput
+
+func (GetCertificatesCertificateManagedProvisioningIssueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCertificatesCertificateManagedProvisioningIssue)(nil)).Elem()
+}
+
+func (i GetCertificatesCertificateManagedProvisioningIssueArray) ToGetCertificatesCertificateManagedProvisioningIssueArrayOutput() GetCertificatesCertificateManagedProvisioningIssueArrayOutput {
+	return i.ToGetCertificatesCertificateManagedProvisioningIssueArrayOutputWithContext(context.Background())
+}
+
+func (i GetCertificatesCertificateManagedProvisioningIssueArray) ToGetCertificatesCertificateManagedProvisioningIssueArrayOutputWithContext(ctx context.Context) GetCertificatesCertificateManagedProvisioningIssueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCertificatesCertificateManagedProvisioningIssueArrayOutput)
+}
+
+type GetCertificatesCertificateManagedProvisioningIssueOutput struct{ *pulumi.OutputState }
+
+func (GetCertificatesCertificateManagedProvisioningIssueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCertificatesCertificateManagedProvisioningIssue)(nil)).Elem()
+}
+
+func (o GetCertificatesCertificateManagedProvisioningIssueOutput) ToGetCertificatesCertificateManagedProvisioningIssueOutput() GetCertificatesCertificateManagedProvisioningIssueOutput {
+	return o
+}
+
+func (o GetCertificatesCertificateManagedProvisioningIssueOutput) ToGetCertificatesCertificateManagedProvisioningIssueOutputWithContext(ctx context.Context) GetCertificatesCertificateManagedProvisioningIssueOutput {
+	return o
+}
+
+// Human readable explanation about the issue. Provided to help address
+// the configuration issues.
+// Not guaranteed to be stable. For programmatic access use 'reason' field.
+func (o GetCertificatesCertificateManagedProvisioningIssueOutput) Details() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatesCertificateManagedProvisioningIssue) string { return v.Details }).(pulumi.StringOutput)
+}
+
+// Reason for provisioning failures.
+func (o GetCertificatesCertificateManagedProvisioningIssueOutput) Reason() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificatesCertificateManagedProvisioningIssue) string { return v.Reason }).(pulumi.StringOutput)
+}
+
+type GetCertificatesCertificateManagedProvisioningIssueArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCertificatesCertificateManagedProvisioningIssueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCertificatesCertificateManagedProvisioningIssue)(nil)).Elem()
+}
+
+func (o GetCertificatesCertificateManagedProvisioningIssueArrayOutput) ToGetCertificatesCertificateManagedProvisioningIssueArrayOutput() GetCertificatesCertificateManagedProvisioningIssueArrayOutput {
+	return o
+}
+
+func (o GetCertificatesCertificateManagedProvisioningIssueArrayOutput) ToGetCertificatesCertificateManagedProvisioningIssueArrayOutputWithContext(ctx context.Context) GetCertificatesCertificateManagedProvisioningIssueArrayOutput {
+	return o
+}
+
+func (o GetCertificatesCertificateManagedProvisioningIssueArrayOutput) Index(i pulumi.IntInput) GetCertificatesCertificateManagedProvisioningIssueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCertificatesCertificateManagedProvisioningIssue {
+		return vs[0].([]GetCertificatesCertificateManagedProvisioningIssue)[vs[1].(int)]
+	}).(GetCertificatesCertificateManagedProvisioningIssueOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateIssuanceConfigCertificateAuthorityConfigInput)(nil)).Elem(), CertificateIssuanceConfigCertificateAuthorityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateIssuanceConfigCertificateAuthorityConfigPtrInput)(nil)).Elem(), CertificateIssuanceConfigCertificateAuthorityConfigArgs{})
@@ -2155,6 +2785,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCertificateMapGclbTargetArrayInput)(nil)).Elem(), GetCertificateMapGclbTargetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCertificateMapGclbTargetIpConfigInput)(nil)).Elem(), GetCertificateMapGclbTargetIpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCertificateMapGclbTargetIpConfigArrayInput)(nil)).Elem(), GetCertificateMapGclbTargetIpConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCertificatesCertificateInput)(nil)).Elem(), GetCertificatesCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCertificatesCertificateArrayInput)(nil)).Elem(), GetCertificatesCertificateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCertificatesCertificateManagedInput)(nil)).Elem(), GetCertificatesCertificateManagedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCertificatesCertificateManagedArrayInput)(nil)).Elem(), GetCertificatesCertificateManagedArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCertificatesCertificateManagedAuthorizationAttemptInfoInput)(nil)).Elem(), GetCertificatesCertificateManagedAuthorizationAttemptInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCertificatesCertificateManagedAuthorizationAttemptInfoArrayInput)(nil)).Elem(), GetCertificatesCertificateManagedAuthorizationAttemptInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCertificatesCertificateManagedProvisioningIssueInput)(nil)).Elem(), GetCertificatesCertificateManagedProvisioningIssueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCertificatesCertificateManagedProvisioningIssueArrayInput)(nil)).Elem(), GetCertificatesCertificateManagedProvisioningIssueArray{})
 	pulumi.RegisterOutputType(CertificateIssuanceConfigCertificateAuthorityConfigOutput{})
 	pulumi.RegisterOutputType(CertificateIssuanceConfigCertificateAuthorityConfigPtrOutput{})
 	pulumi.RegisterOutputType(CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigOutput{})
@@ -2185,4 +2823,12 @@ func init() {
 	pulumi.RegisterOutputType(GetCertificateMapGclbTargetArrayOutput{})
 	pulumi.RegisterOutputType(GetCertificateMapGclbTargetIpConfigOutput{})
 	pulumi.RegisterOutputType(GetCertificateMapGclbTargetIpConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetCertificatesCertificateOutput{})
+	pulumi.RegisterOutputType(GetCertificatesCertificateArrayOutput{})
+	pulumi.RegisterOutputType(GetCertificatesCertificateManagedOutput{})
+	pulumi.RegisterOutputType(GetCertificatesCertificateManagedArrayOutput{})
+	pulumi.RegisterOutputType(GetCertificatesCertificateManagedAuthorizationAttemptInfoOutput{})
+	pulumi.RegisterOutputType(GetCertificatesCertificateManagedAuthorizationAttemptInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetCertificatesCertificateManagedProvisioningIssueOutput{})
+	pulumi.RegisterOutputType(GetCertificatesCertificateManagedProvisioningIssueArrayOutput{})
 }

@@ -356,6 +356,23 @@ class Table(pulumi.CustomResource):
                 },
                 {
                     "family": "family-second",
+                    "type": "intsum",
+                },
+                {
+                    "family": "family-third",
+                    "type": \"\"\"        {
+        \\x09\\x09\\x09\\x09\\x09"aggregateType": {
+        \\x09\\x09\\x09\\x09\\x09\\x09"max": {},
+        \\x09\\x09\\x09\\x09\\x09\\x09"inputType": {
+        \\x09\\x09\\x09\\x09\\x09\\x09\\x09"int64Type": {
+        \\x09\\x09\\x09\\x09\\x09\\x09\\x09\\x09"encoding": {
+        \\x09\\x09\\x09\\x09\\x09\\x09\\x09\\x09\\x09"bigEndianBytes": {}
+        \\x09\\x09\\x09\\x09\\x09\\x09\\x09\\x09}
+        \\x09\\x09\\x09\\x09\\x09\\x09\\x09}
+        \\x09\\x09\\x09\\x09\\x09\\x09}
+        \\x09\\x09\\x09\\x09\\x09}
+        \\x09\\x09\\x09\\x09}
+        \"\"\",
                 },
             ],
             change_stream_retention="24h0m0s",
@@ -446,6 +463,23 @@ class Table(pulumi.CustomResource):
                 },
                 {
                     "family": "family-second",
+                    "type": "intsum",
+                },
+                {
+                    "family": "family-third",
+                    "type": \"\"\"        {
+        \\x09\\x09\\x09\\x09\\x09"aggregateType": {
+        \\x09\\x09\\x09\\x09\\x09\\x09"max": {},
+        \\x09\\x09\\x09\\x09\\x09\\x09"inputType": {
+        \\x09\\x09\\x09\\x09\\x09\\x09\\x09"int64Type": {
+        \\x09\\x09\\x09\\x09\\x09\\x09\\x09\\x09"encoding": {
+        \\x09\\x09\\x09\\x09\\x09\\x09\\x09\\x09\\x09"bigEndianBytes": {}
+        \\x09\\x09\\x09\\x09\\x09\\x09\\x09\\x09}
+        \\x09\\x09\\x09\\x09\\x09\\x09\\x09}
+        \\x09\\x09\\x09\\x09\\x09\\x09}
+        \\x09\\x09\\x09\\x09\\x09}
+        \\x09\\x09\\x09\\x09}
+        \"\"\",
                 },
             ],
             change_stream_retention="24h0m0s",

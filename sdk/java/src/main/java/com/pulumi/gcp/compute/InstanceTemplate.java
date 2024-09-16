@@ -254,6 +254,72 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ### Confidential Computing
+ * 
+ * Example with [Confidential Mode](https://cloud.google.com/confidential-computing/confidential-vm/docs/confidential-vm-overview) activated.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.serviceaccount.Account;
+ * import com.pulumi.gcp.serviceaccount.AccountArgs;
+ * import com.pulumi.gcp.compute.InstanceTemplate;
+ * import com.pulumi.gcp.compute.InstanceTemplateArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceTemplateNetworkInterfaceArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceTemplateConfidentialInstanceConfigArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceTemplateDiskArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceTemplateServiceAccountArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Account("default", AccountArgs.builder()
+ *             .accountId("my-custom-sa")
+ *             .displayName("Custom SA for VM Instance")
+ *             .build());
+ * 
+ *         var confidentialInstanceTemplate = new InstanceTemplate("confidentialInstanceTemplate", InstanceTemplateArgs.builder()
+ *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
+ *                 .accessConfigs()
+ *                 .network("default")
+ *                 .build())
+ *             .name("my-confidential-instance-template")
+ *             .region("us-central1")
+ *             .machineType("n2d-standard-2")
+ *             .minCpuPlatform("AMD Milan")
+ *             .confidentialInstanceConfig(InstanceTemplateConfidentialInstanceConfigArgs.builder()
+ *                 .enableConfidentialCompute(true)
+ *                 .confidentialInstanceType("SEV")
+ *                 .build())
+ *             .disks(InstanceTemplateDiskArgs.builder()
+ *                 .sourceImage("ubuntu-os-cloud/ubuntu-2004-lts")
+ *                 .build())
+ *             .serviceAccount(InstanceTemplateServiceAccountArgs.builder()
+ *                 .email(default_.email())
+ *                 .scopes("cloud-platform")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Deploying the Latest Image
  * 
  * A common way to use instance templates and managed instance groups is to deploy the

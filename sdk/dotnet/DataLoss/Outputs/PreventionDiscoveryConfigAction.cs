@@ -23,15 +23,23 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.PreventionDiscoveryConfigActionPubSubNotification? PubSubNotification;
+        /// <summary>
+        /// Publish a message into the Pub/Sub topic.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.PreventionDiscoveryConfigActionTagResources? TagResources;
 
         [OutputConstructor]
         private PreventionDiscoveryConfigAction(
             Outputs.PreventionDiscoveryConfigActionExportData? exportData,
 
-            Outputs.PreventionDiscoveryConfigActionPubSubNotification? pubSubNotification)
+            Outputs.PreventionDiscoveryConfigActionPubSubNotification? pubSubNotification,
+
+            Outputs.PreventionDiscoveryConfigActionTagResources? tagResources)
         {
             ExportData = exportData;
             PubSubNotification = pubSubNotification;
+            TagResources = tagResources;
         }
     }
 }

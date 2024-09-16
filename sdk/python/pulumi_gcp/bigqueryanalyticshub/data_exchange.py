@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['DataExchangeArgs', 'DataExchange']
 
@@ -26,7 +28,8 @@ class DataExchangeArgs:
                  documentation: Optional[pulumi.Input[str]] = None,
                  icon: Optional[pulumi.Input[str]] = None,
                  primary_contact: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None,
+                 sharing_environment_config: Optional[pulumi.Input['DataExchangeSharingEnvironmentConfigArgs']] = None):
         """
         The set of arguments for constructing a DataExchange resource.
         :param pulumi.Input[str] data_exchange_id: The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
@@ -41,6 +44,9 @@ class DataExchangeArgs:
         :param pulumi.Input[str] primary_contact: Email or URL of the primary point of contact of the data exchange.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['DataExchangeSharingEnvironmentConfigArgs'] sharing_environment_config: Configurable data sharing environment option for a data exchange.
+               This field is required for data clean room exchanges.
+               Structure is documented below.
         """
         pulumi.set(__self__, "data_exchange_id", data_exchange_id)
         pulumi.set(__self__, "display_name", display_name)
@@ -55,6 +61,8 @@ class DataExchangeArgs:
             pulumi.set(__self__, "primary_contact", primary_contact)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if sharing_environment_config is not None:
+            pulumi.set(__self__, "sharing_environment_config", sharing_environment_config)
 
     @property
     @pulumi.getter(name="dataExchangeId")
@@ -156,6 +164,20 @@ class DataExchangeArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
+    @property
+    @pulumi.getter(name="sharingEnvironmentConfig")
+    def sharing_environment_config(self) -> Optional[pulumi.Input['DataExchangeSharingEnvironmentConfigArgs']]:
+        """
+        Configurable data sharing environment option for a data exchange.
+        This field is required for data clean room exchanges.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sharing_environment_config")
+
+    @sharing_environment_config.setter
+    def sharing_environment_config(self, value: Optional[pulumi.Input['DataExchangeSharingEnvironmentConfigArgs']]):
+        pulumi.set(self, "sharing_environment_config", value)
+
 
 @pulumi.input_type
 class _DataExchangeState:
@@ -169,7 +191,8 @@ class _DataExchangeState:
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  primary_contact: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None,
+                 sharing_environment_config: Optional[pulumi.Input['DataExchangeSharingEnvironmentConfigArgs']] = None):
         """
         Input properties used for looking up and filtering DataExchange resources.
         :param pulumi.Input[str] data_exchange_id: The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
@@ -187,6 +210,9 @@ class _DataExchangeState:
         :param pulumi.Input[str] primary_contact: Email or URL of the primary point of contact of the data exchange.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['DataExchangeSharingEnvironmentConfigArgs'] sharing_environment_config: Configurable data sharing environment option for a data exchange.
+               This field is required for data clean room exchanges.
+               Structure is documented below.
         """
         if data_exchange_id is not None:
             pulumi.set(__self__, "data_exchange_id", data_exchange_id)
@@ -208,6 +234,8 @@ class _DataExchangeState:
             pulumi.set(__self__, "primary_contact", primary_contact)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if sharing_environment_config is not None:
+            pulumi.set(__self__, "sharing_environment_config", sharing_environment_config)
 
     @property
     @pulumi.getter(name="dataExchangeId")
@@ -334,6 +362,20 @@ class _DataExchangeState:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
+    @property
+    @pulumi.getter(name="sharingEnvironmentConfig")
+    def sharing_environment_config(self) -> Optional[pulumi.Input['DataExchangeSharingEnvironmentConfigArgs']]:
+        """
+        Configurable data sharing environment option for a data exchange.
+        This field is required for data clean room exchanges.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sharing_environment_config")
+
+    @sharing_environment_config.setter
+    def sharing_environment_config(self, value: Optional[pulumi.Input['DataExchangeSharingEnvironmentConfigArgs']]):
+        pulumi.set(self, "sharing_environment_config", value)
+
 
 class DataExchange(pulumi.CustomResource):
     @overload
@@ -348,6 +390,7 @@ class DataExchange(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  primary_contact: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 sharing_environment_config: Optional[pulumi.Input[Union['DataExchangeSharingEnvironmentConfigArgs', 'DataExchangeSharingEnvironmentConfigArgsDict']]] = None,
                  __props__=None):
         """
         A Bigquery Analytics Hub data exchange
@@ -371,6 +414,21 @@ class DataExchange(pulumi.CustomResource):
             data_exchange_id="my_data_exchange",
             display_name="my_data_exchange",
             description="example data exchange")
+        ```
+        ### Bigquery Analyticshub Data Exchange Dcr
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        data_exchange = gcp.bigqueryanalyticshub.DataExchange("data_exchange",
+            location="US",
+            data_exchange_id="dcr_data_exchange",
+            display_name="dcr_data_exchange",
+            description="example dcr data exchange",
+            sharing_environment_config={
+                "dcr_exchange_config": {},
+            })
         ```
 
         ## Import
@@ -417,6 +475,9 @@ class DataExchange(pulumi.CustomResource):
         :param pulumi.Input[str] primary_contact: Email or URL of the primary point of contact of the data exchange.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Union['DataExchangeSharingEnvironmentConfigArgs', 'DataExchangeSharingEnvironmentConfigArgsDict']] sharing_environment_config: Configurable data sharing environment option for a data exchange.
+               This field is required for data clean room exchanges.
+               Structure is documented below.
         """
         ...
     @overload
@@ -446,6 +507,21 @@ class DataExchange(pulumi.CustomResource):
             data_exchange_id="my_data_exchange",
             display_name="my_data_exchange",
             description="example data exchange")
+        ```
+        ### Bigquery Analyticshub Data Exchange Dcr
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        data_exchange = gcp.bigqueryanalyticshub.DataExchange("data_exchange",
+            location="US",
+            data_exchange_id="dcr_data_exchange",
+            display_name="dcr_data_exchange",
+            description="example dcr data exchange",
+            sharing_environment_config={
+                "dcr_exchange_config": {},
+            })
         ```
 
         ## Import
@@ -501,6 +577,7 @@ class DataExchange(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  primary_contact: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 sharing_environment_config: Optional[pulumi.Input[Union['DataExchangeSharingEnvironmentConfigArgs', 'DataExchangeSharingEnvironmentConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -524,6 +601,7 @@ class DataExchange(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["primary_contact"] = primary_contact
             __props__.__dict__["project"] = project
+            __props__.__dict__["sharing_environment_config"] = sharing_environment_config
             __props__.__dict__["listing_count"] = None
             __props__.__dict__["name"] = None
         super(DataExchange, __self__).__init__(
@@ -545,7 +623,8 @@ class DataExchange(pulumi.CustomResource):
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             primary_contact: Optional[pulumi.Input[str]] = None,
-            project: Optional[pulumi.Input[str]] = None) -> 'DataExchange':
+            project: Optional[pulumi.Input[str]] = None,
+            sharing_environment_config: Optional[pulumi.Input[Union['DataExchangeSharingEnvironmentConfigArgs', 'DataExchangeSharingEnvironmentConfigArgsDict']]] = None) -> 'DataExchange':
         """
         Get an existing DataExchange resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -568,6 +647,9 @@ class DataExchange(pulumi.CustomResource):
         :param pulumi.Input[str] primary_contact: Email or URL of the primary point of contact of the data exchange.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Union['DataExchangeSharingEnvironmentConfigArgs', 'DataExchangeSharingEnvironmentConfigArgsDict']] sharing_environment_config: Configurable data sharing environment option for a data exchange.
+               This field is required for data clean room exchanges.
+               Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -583,6 +665,7 @@ class DataExchange(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["primary_contact"] = primary_contact
         __props__.__dict__["project"] = project
+        __props__.__dict__["sharing_environment_config"] = sharing_environment_config
         return DataExchange(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -669,4 +752,14 @@ class DataExchange(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="sharingEnvironmentConfig")
+    def sharing_environment_config(self) -> pulumi.Output['outputs.DataExchangeSharingEnvironmentConfig']:
+        """
+        Configurable data sharing environment option for a data exchange.
+        This field is required for data clean room exchanges.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sharing_environment_config")
 

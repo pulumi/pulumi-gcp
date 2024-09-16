@@ -86,6 +86,7 @@ __all__ = [
     'StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable',
     'StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn',
     'StreamSourceConfigSqlServerSourceConfig',
+    'StreamSourceConfigSqlServerSourceConfigChangeTables',
     'StreamSourceConfigSqlServerSourceConfigExcludeObjects',
     'StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchema',
     'StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTable',
@@ -94,6 +95,7 @@ __all__ = [
     'StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchema',
     'StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTable',
     'StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumn',
+    'StreamSourceConfigSqlServerSourceConfigTransactionLogs',
 ]
 
 @pulumi.output_type
@@ -4408,7 +4410,9 @@ class StreamSourceConfigSqlServerSourceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "excludeObjects":
+        if key == "changeTables":
+            suggest = "change_tables"
+        elif key == "excludeObjects":
             suggest = "exclude_objects"
         elif key == "includeObjects":
             suggest = "include_objects"
@@ -4416,6 +4420,8 @@ class StreamSourceConfigSqlServerSourceConfig(dict):
             suggest = "max_concurrent_backfill_tasks"
         elif key == "maxConcurrentCdcTasks":
             suggest = "max_concurrent_cdc_tasks"
+        elif key == "transactionLogs":
+            suggest = "transaction_logs"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in StreamSourceConfigSqlServerSourceConfig. Access the value via the '{suggest}' property getter instead.")
@@ -4429,18 +4435,24 @@ class StreamSourceConfigSqlServerSourceConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 change_tables: Optional['outputs.StreamSourceConfigSqlServerSourceConfigChangeTables'] = None,
                  exclude_objects: Optional['outputs.StreamSourceConfigSqlServerSourceConfigExcludeObjects'] = None,
                  include_objects: Optional['outputs.StreamSourceConfigSqlServerSourceConfigIncludeObjects'] = None,
                  max_concurrent_backfill_tasks: Optional[int] = None,
-                 max_concurrent_cdc_tasks: Optional[int] = None):
+                 max_concurrent_cdc_tasks: Optional[int] = None,
+                 transaction_logs: Optional['outputs.StreamSourceConfigSqlServerSourceConfigTransactionLogs'] = None):
         """
+        :param 'StreamSourceConfigSqlServerSourceConfigChangeTablesArgs' change_tables: CDC reader reads from change tables.
         :param 'StreamSourceConfigSqlServerSourceConfigExcludeObjectsArgs' exclude_objects: SQL Server objects to exclude from the stream.
                Structure is documented below.
         :param 'StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgs' include_objects: SQL Server objects to retrieve from the source.
                Structure is documented below.
         :param int max_concurrent_backfill_tasks: Max concurrent backfill tasks.
         :param int max_concurrent_cdc_tasks: Max concurrent CDC tasks.
+        :param 'StreamSourceConfigSqlServerSourceConfigTransactionLogsArgs' transaction_logs: CDC reader reads from transaction logs.
         """
+        if change_tables is not None:
+            pulumi.set(__self__, "change_tables", change_tables)
         if exclude_objects is not None:
             pulumi.set(__self__, "exclude_objects", exclude_objects)
         if include_objects is not None:
@@ -4449,6 +4461,16 @@ class StreamSourceConfigSqlServerSourceConfig(dict):
             pulumi.set(__self__, "max_concurrent_backfill_tasks", max_concurrent_backfill_tasks)
         if max_concurrent_cdc_tasks is not None:
             pulumi.set(__self__, "max_concurrent_cdc_tasks", max_concurrent_cdc_tasks)
+        if transaction_logs is not None:
+            pulumi.set(__self__, "transaction_logs", transaction_logs)
+
+    @property
+    @pulumi.getter(name="changeTables")
+    def change_tables(self) -> Optional['outputs.StreamSourceConfigSqlServerSourceConfigChangeTables']:
+        """
+        CDC reader reads from change tables.
+        """
+        return pulumi.get(self, "change_tables")
 
     @property
     @pulumi.getter(name="excludeObjects")
@@ -4483,6 +4505,20 @@ class StreamSourceConfigSqlServerSourceConfig(dict):
         Max concurrent CDC tasks.
         """
         return pulumi.get(self, "max_concurrent_cdc_tasks")
+
+    @property
+    @pulumi.getter(name="transactionLogs")
+    def transaction_logs(self) -> Optional['outputs.StreamSourceConfigSqlServerSourceConfigTransactionLogs']:
+        """
+        CDC reader reads from transaction logs.
+        """
+        return pulumi.get(self, "transaction_logs")
+
+
+@pulumi.output_type
+class StreamSourceConfigSqlServerSourceConfigChangeTables(dict):
+    def __init__(__self__):
+        pass
 
 
 @pulumi.output_type
@@ -4927,5 +4963,11 @@ class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumn(dic
         Column scale.
         """
         return pulumi.get(self, "scale")
+
+
+@pulumi.output_type
+class StreamSourceConfigSqlServerSourceConfigTransactionLogs(dict):
+    def __init__(__self__):
+        pass
 
 

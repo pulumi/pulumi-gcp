@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.DiscoveryEngine.Outputs
     public sealed class DataStoreDocumentProcessingConfig
     {
         /// <summary>
+        /// Whether chunking mode is enabled.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.DataStoreDocumentProcessingConfigChunkingConfig? ChunkingConfig;
+        /// <summary>
         /// Configurations for default Document parser. If not specified, this resource
         /// will be configured to use a default DigitalParsingConfig, and the default parsing
         /// config will be applied to all file types for Document parsing.
@@ -33,12 +38,15 @@ namespace Pulumi.Gcp.DiscoveryEngine.Outputs
 
         [OutputConstructor]
         private DataStoreDocumentProcessingConfig(
+            Outputs.DataStoreDocumentProcessingConfigChunkingConfig? chunkingConfig,
+
             Outputs.DataStoreDocumentProcessingConfigDefaultParsingConfig? defaultParsingConfig,
 
             string? name,
 
             ImmutableArray<Outputs.DataStoreDocumentProcessingConfigParsingConfigOverride> parsingConfigOverrides)
         {
+            ChunkingConfig = chunkingConfig;
             DefaultParsingConfig = defaultParsingConfig;
             Name = name;
             ParsingConfigOverrides = parsingConfigOverrides;

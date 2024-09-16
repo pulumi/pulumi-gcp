@@ -267,7 +267,7 @@ public class DataStore extends com.pulumi.resources.CustomResource {
     }
     /**
      * The industry vertical that the data store registers.
-     * Possible values are: `GENERIC`, `MEDIA`.
+     * Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
      * 
      */
     @Export(name="industryVertical", refs={String.class}, tree="[0]")
@@ -275,7 +275,7 @@ public class DataStore extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The industry vertical that the data store registers.
-     * Possible values are: `GENERIC`, `MEDIA`.
+     * Possible values are: `GENERIC`, `MEDIA`, `HEALTHCARE_FHIR`.
      * 
      */
     public Output<String> industryVertical() {
@@ -361,7 +361,7 @@ public class DataStore extends com.pulumi.resources.CustomResource {
     }
     /**
      * The solutions that the data store enrolls.
-     * Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`.
+     * Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`, `SOLUTION_TYPE_GENERATIVE_CHAT`.
      * 
      */
     @Export(name="solutionTypes", refs={List.class,String.class}, tree="[0,1]")
@@ -369,7 +369,7 @@ public class DataStore extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The solutions that the data store enrolls.
-     * Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`.
+     * Each value may be one of: `SOLUTION_TYPE_RECOMMENDATION`, `SOLUTION_TYPE_SEARCH`, `SOLUTION_TYPE_CHAT`, `SOLUTION_TYPE_GENERATIVE_CHAT`.
      * 
      */
     public Output<Optional<List<String>>> solutionTypes() {

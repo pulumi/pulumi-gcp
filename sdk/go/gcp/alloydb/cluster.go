@@ -289,6 +289,7 @@ type Cluster struct {
 	// Policy to determine if the cluster should be deleted forcefully.
 	// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
 	// Deleting a Secondary cluster with a secondary instance REQUIRES setting deletionPolicy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+	// Possible values: DEFAULT, FORCE
 	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
 	// User-settable and human-readable display name for the Cluster.
 	DisplayName          pulumi.StringPtrOutput `pulumi:"displayName"`
@@ -350,6 +351,12 @@ type Cluster struct {
 	SecondaryConfig ClusterSecondaryConfigPtrOutput `pulumi:"secondaryConfig"`
 	// Output only. The current serving state of the cluster.
 	State pulumi.StringOutput `pulumi:"state"`
+	// The subscrition type of cluster.
+	// Possible values are: `TRIAL`, `STANDARD`.
+	SubscriptionType pulumi.StringOutput `pulumi:"subscriptionType"`
+	// Contains information and all metadata related to TRIAL clusters.
+	// Structure is documented below.
+	TrialMetadatas ClusterTrialMetadataArrayOutput `pulumi:"trialMetadatas"`
 	// The system-generated UID of the resource.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 }
@@ -425,6 +432,7 @@ type clusterState struct {
 	// Policy to determine if the cluster should be deleted forcefully.
 	// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
 	// Deleting a Secondary cluster with a secondary instance REQUIRES setting deletionPolicy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+	// Possible values: DEFAULT, FORCE
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// User-settable and human-readable display name for the Cluster.
 	DisplayName          *string           `pulumi:"displayName"`
@@ -486,6 +494,12 @@ type clusterState struct {
 	SecondaryConfig *ClusterSecondaryConfig `pulumi:"secondaryConfig"`
 	// Output only. The current serving state of the cluster.
 	State *string `pulumi:"state"`
+	// The subscrition type of cluster.
+	// Possible values are: `TRIAL`, `STANDARD`.
+	SubscriptionType *string `pulumi:"subscriptionType"`
+	// Contains information and all metadata related to TRIAL clusters.
+	// Structure is documented below.
+	TrialMetadatas []ClusterTrialMetadata `pulumi:"trialMetadatas"`
 	// The system-generated UID of the resource.
 	Uid *string `pulumi:"uid"`
 }
@@ -521,6 +535,7 @@ type ClusterState struct {
 	// Policy to determine if the cluster should be deleted forcefully.
 	// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
 	// Deleting a Secondary cluster with a secondary instance REQUIRES setting deletionPolicy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+	// Possible values: DEFAULT, FORCE
 	DeletionPolicy pulumi.StringPtrInput
 	// User-settable and human-readable display name for the Cluster.
 	DisplayName          pulumi.StringPtrInput
@@ -582,6 +597,12 @@ type ClusterState struct {
 	SecondaryConfig ClusterSecondaryConfigPtrInput
 	// Output only. The current serving state of the cluster.
 	State pulumi.StringPtrInput
+	// The subscrition type of cluster.
+	// Possible values are: `TRIAL`, `STANDARD`.
+	SubscriptionType pulumi.StringPtrInput
+	// Contains information and all metadata related to TRIAL clusters.
+	// Structure is documented below.
+	TrialMetadatas ClusterTrialMetadataArrayInput
 	// The system-generated UID of the resource.
 	Uid pulumi.StringPtrInput
 }
@@ -615,6 +636,7 @@ type clusterArgs struct {
 	// Policy to determine if the cluster should be deleted forcefully.
 	// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
 	// Deleting a Secondary cluster with a secondary instance REQUIRES setting deletionPolicy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+	// Possible values: DEFAULT, FORCE
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// User-settable and human-readable display name for the Cluster.
 	DisplayName *string `pulumi:"displayName"`
@@ -655,6 +677,9 @@ type clusterArgs struct {
 	// Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
 	// Structure is documented below.
 	SecondaryConfig *ClusterSecondaryConfig `pulumi:"secondaryConfig"`
+	// The subscrition type of cluster.
+	// Possible values are: `TRIAL`, `STANDARD`.
+	SubscriptionType *string `pulumi:"subscriptionType"`
 }
 
 // The set of arguments for constructing a Cluster resource.
@@ -683,6 +708,7 @@ type ClusterArgs struct {
 	// Policy to determine if the cluster should be deleted forcefully.
 	// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
 	// Deleting a Secondary cluster with a secondary instance REQUIRES setting deletionPolicy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+	// Possible values: DEFAULT, FORCE
 	DeletionPolicy pulumi.StringPtrInput
 	// User-settable and human-readable display name for the Cluster.
 	DisplayName pulumi.StringPtrInput
@@ -723,6 +749,9 @@ type ClusterArgs struct {
 	// Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
 	// Structure is documented below.
 	SecondaryConfig ClusterSecondaryConfigPtrInput
+	// The subscrition type of cluster.
+	// Possible values are: `TRIAL`, `STANDARD`.
+	SubscriptionType pulumi.StringPtrInput
 }
 
 func (ClusterArgs) ElementType() reflect.Type {
@@ -866,6 +895,7 @@ func (o ClusterOutput) DatabaseVersion() pulumi.StringOutput {
 // Policy to determine if the cluster should be deleted forcefully.
 // Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
 // Deleting a Secondary cluster with a secondary instance REQUIRES setting deletionPolicy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
+// Possible values: DEFAULT, FORCE
 func (o ClusterOutput) DeletionPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
 }
@@ -991,6 +1021,18 @@ func (o ClusterOutput) SecondaryConfig() ClusterSecondaryConfigPtrOutput {
 // Output only. The current serving state of the cluster.
 func (o ClusterOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// The subscrition type of cluster.
+// Possible values are: `TRIAL`, `STANDARD`.
+func (o ClusterOutput) SubscriptionType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.SubscriptionType }).(pulumi.StringOutput)
+}
+
+// Contains information and all metadata related to TRIAL clusters.
+// Structure is documented below.
+func (o ClusterOutput) TrialMetadatas() ClusterTrialMetadataArrayOutput {
+	return o.ApplyT(func(v *Cluster) ClusterTrialMetadataArrayOutput { return v.TrialMetadatas }).(ClusterTrialMetadataArrayOutput)
 }
 
 // The system-generated UID of the resource.

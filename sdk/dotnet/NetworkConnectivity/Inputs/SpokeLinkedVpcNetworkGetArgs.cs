@@ -24,6 +24,18 @@ namespace Pulumi.Gcp.NetworkConnectivity.Inputs
             set => _excludeExportRanges = value;
         }
 
+        [Input("includeExportRanges")]
+        private InputList<string>? _includeExportRanges;
+
+        /// <summary>
+        /// IP ranges allowed to be included from peering.
+        /// </summary>
+        public InputList<string> IncludeExportRanges
+        {
+            get => _includeExportRanges ?? (_includeExportRanges = new InputList<string>());
+            set => _includeExportRanges = value;
+        }
+
         /// <summary>
         /// The URI of the VPC network resource.
         /// </summary>

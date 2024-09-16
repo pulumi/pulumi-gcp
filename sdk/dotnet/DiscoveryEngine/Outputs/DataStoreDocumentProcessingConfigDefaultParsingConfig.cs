@@ -18,6 +18,10 @@ namespace Pulumi.Gcp.DiscoveryEngine.Outputs
         /// </summary>
         public readonly Outputs.DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfig? DigitalParsingConfig;
         /// <summary>
+        /// Configurations applied to layout parser.
+        /// </summary>
+        public readonly Outputs.DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig? LayoutParsingConfig;
+        /// <summary>
         /// Configurations applied to OCR parser. Currently it only applies to PDFs.
         /// Structure is documented below.
         /// </summary>
@@ -27,9 +31,12 @@ namespace Pulumi.Gcp.DiscoveryEngine.Outputs
         private DataStoreDocumentProcessingConfigDefaultParsingConfig(
             Outputs.DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfig? digitalParsingConfig,
 
+            Outputs.DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfig? layoutParsingConfig,
+
             Outputs.DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfig? ocrParsingConfig)
         {
             DigitalParsingConfig = digitalParsingConfig;
+            LayoutParsingConfig = layoutParsingConfig;
             OcrParsingConfig = ocrParsingConfig;
         }
     }

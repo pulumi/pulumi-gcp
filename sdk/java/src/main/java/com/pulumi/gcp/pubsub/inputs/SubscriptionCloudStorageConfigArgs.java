@@ -132,6 +132,21 @@ public final class SubscriptionCloudStorageConfigArgs extends com.pulumi.resourc
     }
 
     /**
+     * The maximum messages that can be written to a Cloud Storage file before a new file is created. Min 1000 messages.
+     * 
+     */
+    @Import(name="maxMessages")
+    private @Nullable Output<Integer> maxMessages;
+
+    /**
+     * @return The maximum messages that can be written to a Cloud Storage file before a new file is created. Min 1000 messages.
+     * 
+     */
+    public Optional<Output<Integer>> maxMessages() {
+        return Optional.ofNullable(this.maxMessages);
+    }
+
+    /**
      * The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
      * [service agent](https://cloud.google.com/iam/docs/service-agents),
      * service-{project_number}{@literal @}gcp-sa-pubsub.iam.gserviceaccount.com, is used.
@@ -177,6 +192,7 @@ public final class SubscriptionCloudStorageConfigArgs extends com.pulumi.resourc
         this.filenameSuffix = $.filenameSuffix;
         this.maxBytes = $.maxBytes;
         this.maxDuration = $.maxDuration;
+        this.maxMessages = $.maxMessages;
         this.serviceAccountEmail = $.serviceAccountEmail;
         this.state = $.state;
     }
@@ -352,6 +368,27 @@ public final class SubscriptionCloudStorageConfigArgs extends com.pulumi.resourc
          */
         public Builder maxDuration(String maxDuration) {
             return maxDuration(Output.of(maxDuration));
+        }
+
+        /**
+         * @param maxMessages The maximum messages that can be written to a Cloud Storage file before a new file is created. Min 1000 messages.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxMessages(@Nullable Output<Integer> maxMessages) {
+            $.maxMessages = maxMessages;
+            return this;
+        }
+
+        /**
+         * @param maxMessages The maximum messages that can be written to a Cloud Storage file before a new file is created. Min 1000 messages.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxMessages(Integer maxMessages) {
+            return maxMessages(Output.of(maxMessages));
         }
 
         /**

@@ -155,6 +155,105 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Bigquery Analyticshub Listing Dcr
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigqueryanalyticshub.DataExchange;
+ * import com.pulumi.gcp.bigqueryanalyticshub.DataExchangeArgs;
+ * import com.pulumi.gcp.bigqueryanalyticshub.inputs.DataExchangeSharingEnvironmentConfigArgs;
+ * import com.pulumi.gcp.bigqueryanalyticshub.inputs.DataExchangeSharingEnvironmentConfigDcrExchangeConfigArgs;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigquery.Table;
+ * import com.pulumi.gcp.bigquery.TableArgs;
+ * import com.pulumi.gcp.bigqueryanalyticshub.Listing;
+ * import com.pulumi.gcp.bigqueryanalyticshub.ListingArgs;
+ * import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingBigqueryDatasetArgs;
+ * import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingRestrictedExportConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var listing = new DataExchange("listing", DataExchangeArgs.builder()
+ *             .location("US")
+ *             .dataExchangeId("dcr_data_exchange")
+ *             .displayName("dcr_data_exchange")
+ *             .description("example dcr data exchange")
+ *             .sharingEnvironmentConfig(DataExchangeSharingEnvironmentConfigArgs.builder()
+ *                 .dcrExchangeConfig()
+ *                 .build())
+ *             .build());
+ * 
+ *         var listingDataset = new Dataset("listingDataset", DatasetArgs.builder()
+ *             .datasetId("dcr_listing")
+ *             .friendlyName("dcr_listing")
+ *             .description("example dcr data exchange")
+ *             .location("US")
+ *             .build());
+ * 
+ *         var listingTable = new Table("listingTable", TableArgs.builder()
+ *             .deletionProtection(false)
+ *             .tableId("dcr_listing")
+ *             .datasetId(listingDataset.datasetId())
+ *             .schema("""
+ * [
+ *   {
+ *     "name": "name",
+ *     "type": "STRING",
+ *     "mode": "NULLABLE"
+ *   },
+ *   {
+ *     "name": "post_abbr",
+ *     "type": "STRING",
+ *     "mode": "NULLABLE"
+ *   },
+ *   {
+ *     "name": "date",
+ *     "type": "DATE",
+ *     "mode": "NULLABLE"
+ *   }
+ * ]
+ *             """)
+ *             .build());
+ * 
+ *         var listingListing = new Listing("listingListing", ListingArgs.builder()
+ *             .location("US")
+ *             .dataExchangeId(listing.dataExchangeId())
+ *             .listingId("dcr_listing")
+ *             .displayName("dcr_listing")
+ *             .description("example dcr data exchange")
+ *             .bigqueryDataset(ListingBigqueryDatasetArgs.builder()
+ *                 .dataset(listingDataset.id())
+ *                 .selectedResources(ListingBigqueryDatasetSelectedResourceArgs.builder()
+ *                     .table(listingTable.id())
+ *                     .build())
+ *                 .build())
+ *             .restrictedExportConfig(ListingRestrictedExportConfigArgs.builder()
+ *                 .enabled(true)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

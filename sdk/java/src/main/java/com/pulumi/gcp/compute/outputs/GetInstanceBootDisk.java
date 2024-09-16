@@ -43,6 +43,11 @@ public final class GetInstanceBootDisk {
      */
     private List<GetInstanceBootDiskInitializeParam> initializeParams;
     /**
+     * @return The disk interface used for attaching this disk. One of `SCSI` or `NVME`.
+     * 
+     */
+    private String interface_;
+    /**
      * @return The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
      * 
      */
@@ -99,6 +104,13 @@ public final class GetInstanceBootDisk {
         return this.initializeParams;
     }
     /**
+     * @return The disk interface used for attaching this disk. One of `SCSI` or `NVME`.
+     * 
+     */
+    public String interface_() {
+        return this.interface_;
+    }
+    /**
      * @return The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
      * 
      */
@@ -134,6 +146,7 @@ public final class GetInstanceBootDisk {
         private String diskEncryptionKeyRaw;
         private String diskEncryptionKeySha256;
         private List<GetInstanceBootDiskInitializeParam> initializeParams;
+        private String interface_;
         private String kmsKeySelfLink;
         private String mode;
         private String source;
@@ -145,6 +158,7 @@ public final class GetInstanceBootDisk {
     	      this.diskEncryptionKeyRaw = defaults.diskEncryptionKeyRaw;
     	      this.diskEncryptionKeySha256 = defaults.diskEncryptionKeySha256;
     	      this.initializeParams = defaults.initializeParams;
+    	      this.interface_ = defaults.interface_;
     	      this.kmsKeySelfLink = defaults.kmsKeySelfLink;
     	      this.mode = defaults.mode;
     	      this.source = defaults.source;
@@ -193,6 +207,14 @@ public final class GetInstanceBootDisk {
         public Builder initializeParams(GetInstanceBootDiskInitializeParam... initializeParams) {
             return initializeParams(List.of(initializeParams));
         }
+        @CustomType.Setter("interface")
+        public Builder interface_(String interface_) {
+            if (interface_ == null) {
+              throw new MissingRequiredPropertyException("GetInstanceBootDisk", "interface_");
+            }
+            this.interface_ = interface_;
+            return this;
+        }
         @CustomType.Setter
         public Builder kmsKeySelfLink(String kmsKeySelfLink) {
             if (kmsKeySelfLink == null) {
@@ -224,6 +246,7 @@ public final class GetInstanceBootDisk {
             _resultValue.diskEncryptionKeyRaw = diskEncryptionKeyRaw;
             _resultValue.diskEncryptionKeySha256 = diskEncryptionKeySha256;
             _resultValue.initializeParams = initializeParams;
+            _resultValue.interface_ = interface_;
             _resultValue.kmsKeySelfLink = kmsKeySelfLink;
             _resultValue.mode = mode;
             _resultValue.source = source;

@@ -60,6 +60,16 @@ export const getCryptoKeyIamPolicy: typeof import("./getCryptoKeyIamPolicy").get
 export const getCryptoKeyIamPolicyOutput: typeof import("./getCryptoKeyIamPolicy").getCryptoKeyIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getCryptoKeyIamPolicy","getCryptoKeyIamPolicyOutput"], () => require("./getCryptoKeyIamPolicy"));
 
+export { GetCryptoKeyLatestVersionArgs, GetCryptoKeyLatestVersionResult, GetCryptoKeyLatestVersionOutputArgs } from "./getCryptoKeyLatestVersion";
+export const getCryptoKeyLatestVersion: typeof import("./getCryptoKeyLatestVersion").getCryptoKeyLatestVersion = null as any;
+export const getCryptoKeyLatestVersionOutput: typeof import("./getCryptoKeyLatestVersion").getCryptoKeyLatestVersionOutput = null as any;
+utilities.lazyLoad(exports, ["getCryptoKeyLatestVersion","getCryptoKeyLatestVersionOutput"], () => require("./getCryptoKeyLatestVersion"));
+
+export { GetCryptoKeyVersionsArgs, GetCryptoKeyVersionsResult, GetCryptoKeyVersionsOutputArgs } from "./getCryptoKeyVersions";
+export const getCryptoKeyVersions: typeof import("./getCryptoKeyVersions").getCryptoKeyVersions = null as any;
+export const getCryptoKeyVersionsOutput: typeof import("./getCryptoKeyVersions").getCryptoKeyVersionsOutput = null as any;
+utilities.lazyLoad(exports, ["getCryptoKeyVersions","getCryptoKeyVersionsOutput"], () => require("./getCryptoKeyVersions"));
+
 export { GetCryptoKeysArgs, GetCryptoKeysResult, GetCryptoKeysOutputArgs } from "./getCryptoKeys";
 export const getCryptoKeys: typeof import("./getCryptoKeys").getCryptoKeys = null as any;
 export const getCryptoKeysOutput: typeof import("./getCryptoKeys").getCryptoKeysOutput = null as any;

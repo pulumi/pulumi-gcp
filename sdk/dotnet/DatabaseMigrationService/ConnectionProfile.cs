@@ -341,6 +341,189 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     /// 
     /// });
     /// ```
+    /// ### Database Migration Service Connection Profile Existing Mysql
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var destinationCsql = new Gcp.Sql.DatabaseInstance("destination_csql", new()
+    ///     {
+    ///         Name = "destination-csql",
+    ///         DatabaseVersion = "MYSQL_5_7",
+    ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+    ///         {
+    ///             Tier = "db-n1-standard-1",
+    ///             DeletionProtectionEnabled = false,
+    ///         },
+    ///         DeletionProtection = false,
+    ///     });
+    /// 
+    ///     var existing_mysql = new Gcp.DatabaseMigrationService.ConnectionProfile("existing-mysql", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         ConnectionProfileId = "destination-cp",
+    ///         DisplayName = "destination-cp_display",
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         Mysql = new Gcp.DatabaseMigrationService.Inputs.ConnectionProfileMysqlArgs
+    ///         {
+    ///             CloudSqlId = "destination-csql",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             destinationCsql,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Database Migration Service Connection Profile Existing Postgres
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var destinationCsql = new Gcp.Sql.DatabaseInstance("destination_csql", new()
+    ///     {
+    ///         Name = "destination-csql",
+    ///         DatabaseVersion = "POSTGRES_15",
+    ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+    ///         {
+    ///             Tier = "db-custom-2-13312",
+    ///             DeletionProtectionEnabled = false,
+    ///         },
+    ///         DeletionProtection = false,
+    ///     });
+    /// 
+    ///     var existing_psql = new Gcp.DatabaseMigrationService.ConnectionProfile("existing-psql", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         ConnectionProfileId = "destination-cp",
+    ///         DisplayName = "destination-cp_display",
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         Postgresql = new Gcp.DatabaseMigrationService.Inputs.ConnectionProfilePostgresqlArgs
+    ///         {
+    ///             CloudSqlId = "destination-csql",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             destinationCsql,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Database Migration Service Connection Profile Existing Alloydb
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var @default = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "destination-alloydb",
+    ///     });
+    /// 
+    ///     var destinationAlloydb = new Gcp.Alloydb.Cluster("destination_alloydb", new()
+    ///     {
+    ///         ClusterId = "destination-alloydb",
+    ///         Location = "us-central1",
+    ///         NetworkConfig = new Gcp.Alloydb.Inputs.ClusterNetworkConfigArgs
+    ///         {
+    ///             Network = @default.Id,
+    ///         },
+    ///         DatabaseVersion = "POSTGRES_15",
+    ///         InitialUser = new Gcp.Alloydb.Inputs.ClusterInitialUserArgs
+    ///         {
+    ///             User = "destination-alloydb",
+    ///             Password = "destination-alloydb",
+    ///         },
+    ///     });
+    /// 
+    ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("private_ip_alloc", new()
+    ///     {
+    ///         Name = "destination-alloydb",
+    ///         AddressType = "INTERNAL",
+    ///         Purpose = "VPC_PEERING",
+    ///         PrefixLength = 16,
+    ///         Network = @default.Id,
+    ///     });
+    /// 
+    ///     var vpcConnection = new Gcp.ServiceNetworking.Connection("vpc_connection", new()
+    ///     {
+    ///         Network = @default.Id,
+    ///         Service = "servicenetworking.googleapis.com",
+    ///         ReservedPeeringRanges = new[]
+    ///         {
+    ///             privateIpAlloc.Name,
+    ///         },
+    ///     });
+    /// 
+    ///     var destinationAlloydbPrimary = new Gcp.Alloydb.Instance("destination_alloydb_primary", new()
+    ///     {
+    ///         Cluster = destinationAlloydb.Name,
+    ///         InstanceId = "destination-alloydb-primary",
+    ///         InstanceType = "PRIMARY",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             vpcConnection,
+    ///         },
+    ///     });
+    /// 
+    ///     var existing_alloydb = new Gcp.DatabaseMigrationService.ConnectionProfile("existing-alloydb", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         ConnectionProfileId = "destination-cp",
+    ///         DisplayName = "destination-cp_display",
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         Postgresql = new Gcp.DatabaseMigrationService.Inputs.ConnectionProfilePostgresqlArgs
+    ///         {
+    ///             AlloydbClusterId = "destination-alloydb",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             destinationAlloydb,
+    ///             destinationAlloydbPrimary,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

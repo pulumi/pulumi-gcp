@@ -613,6 +613,63 @@ class Listing(pulumi.CustomResource):
                 "restrict_query_result": True,
             })
         ```
+        ### Bigquery Analyticshub Listing Dcr
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        listing = gcp.bigqueryanalyticshub.DataExchange("listing",
+            location="US",
+            data_exchange_id="dcr_data_exchange",
+            display_name="dcr_data_exchange",
+            description="example dcr data exchange",
+            sharing_environment_config={
+                "dcr_exchange_config": {},
+            })
+        listing_dataset = gcp.bigquery.Dataset("listing",
+            dataset_id="dcr_listing",
+            friendly_name="dcr_listing",
+            description="example dcr data exchange",
+            location="US")
+        listing_table = gcp.bigquery.Table("listing",
+            deletion_protection=False,
+            table_id="dcr_listing",
+            dataset_id=listing_dataset.dataset_id,
+            schema=\"\"\"[
+          {
+            "name": "name",
+            "type": "STRING",
+            "mode": "NULLABLE"
+          },
+          {
+            "name": "post_abbr",
+            "type": "STRING",
+            "mode": "NULLABLE"
+          },
+          {
+            "name": "date",
+            "type": "DATE",
+            "mode": "NULLABLE"
+          }
+        ]
+        \"\"\")
+        listing_listing = gcp.bigqueryanalyticshub.Listing("listing",
+            location="US",
+            data_exchange_id=listing.data_exchange_id,
+            listing_id="dcr_listing",
+            display_name="dcr_listing",
+            description="example dcr data exchange",
+            bigquery_dataset={
+                "dataset": listing_dataset.id,
+                "selected_resources": [{
+                    "table": listing_table.id,
+                }],
+            },
+            restricted_export_config={
+                "enabled": True,
+            })
+        ```
 
         ## Import
 
@@ -728,6 +785,63 @@ class Listing(pulumi.CustomResource):
             restricted_export_config={
                 "enabled": True,
                 "restrict_query_result": True,
+            })
+        ```
+        ### Bigquery Analyticshub Listing Dcr
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        listing = gcp.bigqueryanalyticshub.DataExchange("listing",
+            location="US",
+            data_exchange_id="dcr_data_exchange",
+            display_name="dcr_data_exchange",
+            description="example dcr data exchange",
+            sharing_environment_config={
+                "dcr_exchange_config": {},
+            })
+        listing_dataset = gcp.bigquery.Dataset("listing",
+            dataset_id="dcr_listing",
+            friendly_name="dcr_listing",
+            description="example dcr data exchange",
+            location="US")
+        listing_table = gcp.bigquery.Table("listing",
+            deletion_protection=False,
+            table_id="dcr_listing",
+            dataset_id=listing_dataset.dataset_id,
+            schema=\"\"\"[
+          {
+            "name": "name",
+            "type": "STRING",
+            "mode": "NULLABLE"
+          },
+          {
+            "name": "post_abbr",
+            "type": "STRING",
+            "mode": "NULLABLE"
+          },
+          {
+            "name": "date",
+            "type": "DATE",
+            "mode": "NULLABLE"
+          }
+        ]
+        \"\"\")
+        listing_listing = gcp.bigqueryanalyticshub.Listing("listing",
+            location="US",
+            data_exchange_id=listing.data_exchange_id,
+            listing_id="dcr_listing",
+            display_name="dcr_listing",
+            description="example dcr data exchange",
+            bigquery_dataset={
+                "dataset": listing_dataset.id,
+                "selected_resources": [{
+                    "table": listing_table.id,
+                }],
+            },
+            restricted_export_config={
+                "enabled": True,
             })
         ```
 

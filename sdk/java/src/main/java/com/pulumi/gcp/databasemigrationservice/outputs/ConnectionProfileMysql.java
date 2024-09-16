@@ -4,7 +4,6 @@
 package com.pulumi.gcp.databasemigrationservice.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.databasemigrationservice.outputs.ConnectionProfileMysqlSsl;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -21,17 +20,17 @@ public final class ConnectionProfileMysql {
      */
     private @Nullable String cloudSqlId;
     /**
-     * @return Required. The IP or hostname of the source MySQL database.
+     * @return The IP or hostname of the source MySQL database.
      * 
      */
-    private String host;
+    private @Nullable String host;
     /**
-     * @return Required. Input only. The password for the user that Database Migration Service will be using to connect to the database.
+     * @return Input only. The password for the user that Database Migration Service will be using to connect to the database.
      * This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    private String password;
+    private @Nullable String password;
     /**
      * @return (Output)
      * Output only. Indicates If this connection profile password is stored.
@@ -39,10 +38,10 @@ public final class ConnectionProfileMysql {
      */
     private @Nullable Boolean passwordSet;
     /**
-     * @return Required. The network port of the source MySQL database.
+     * @return The network port of the source MySQL database.
      * 
      */
-    private Integer port;
+    private @Nullable Integer port;
     /**
      * @return SSL configuration for the destination to connect to the source database.
      * Structure is documented below.
@@ -50,10 +49,10 @@ public final class ConnectionProfileMysql {
      */
     private @Nullable ConnectionProfileMysqlSsl ssl;
     /**
-     * @return Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+     * @return The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
      * 
      */
-    private String username;
+    private @Nullable String username;
 
     private ConnectionProfileMysql() {}
     /**
@@ -64,20 +63,20 @@ public final class ConnectionProfileMysql {
         return Optional.ofNullable(this.cloudSqlId);
     }
     /**
-     * @return Required. The IP or hostname of the source MySQL database.
+     * @return The IP or hostname of the source MySQL database.
      * 
      */
-    public String host() {
-        return this.host;
+    public Optional<String> host() {
+        return Optional.ofNullable(this.host);
     }
     /**
-     * @return Required. Input only. The password for the user that Database Migration Service will be using to connect to the database.
+     * @return Input only. The password for the user that Database Migration Service will be using to connect to the database.
      * This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    public String password() {
-        return this.password;
+    public Optional<String> password() {
+        return Optional.ofNullable(this.password);
     }
     /**
      * @return (Output)
@@ -88,11 +87,11 @@ public final class ConnectionProfileMysql {
         return Optional.ofNullable(this.passwordSet);
     }
     /**
-     * @return Required. The network port of the source MySQL database.
+     * @return The network port of the source MySQL database.
      * 
      */
-    public Integer port() {
-        return this.port;
+    public Optional<Integer> port() {
+        return Optional.ofNullable(this.port);
     }
     /**
      * @return SSL configuration for the destination to connect to the source database.
@@ -103,11 +102,11 @@ public final class ConnectionProfileMysql {
         return Optional.ofNullable(this.ssl);
     }
     /**
-     * @return Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+     * @return The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
      * 
      */
-    public String username() {
-        return this.username;
+    public Optional<String> username() {
+        return Optional.ofNullable(this.username);
     }
 
     public static Builder builder() {
@@ -120,12 +119,12 @@ public final class ConnectionProfileMysql {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String cloudSqlId;
-        private String host;
-        private String password;
+        private @Nullable String host;
+        private @Nullable String password;
         private @Nullable Boolean passwordSet;
-        private Integer port;
+        private @Nullable Integer port;
         private @Nullable ConnectionProfileMysqlSsl ssl;
-        private String username;
+        private @Nullable String username;
         public Builder() {}
         public Builder(ConnectionProfileMysql defaults) {
     	      Objects.requireNonNull(defaults);
@@ -145,18 +144,14 @@ public final class ConnectionProfileMysql {
             return this;
         }
         @CustomType.Setter
-        public Builder host(String host) {
-            if (host == null) {
-              throw new MissingRequiredPropertyException("ConnectionProfileMysql", "host");
-            }
+        public Builder host(@Nullable String host) {
+
             this.host = host;
             return this;
         }
         @CustomType.Setter
-        public Builder password(String password) {
-            if (password == null) {
-              throw new MissingRequiredPropertyException("ConnectionProfileMysql", "password");
-            }
+        public Builder password(@Nullable String password) {
+
             this.password = password;
             return this;
         }
@@ -167,10 +162,8 @@ public final class ConnectionProfileMysql {
             return this;
         }
         @CustomType.Setter
-        public Builder port(Integer port) {
-            if (port == null) {
-              throw new MissingRequiredPropertyException("ConnectionProfileMysql", "port");
-            }
+        public Builder port(@Nullable Integer port) {
+
             this.port = port;
             return this;
         }
@@ -181,10 +174,8 @@ public final class ConnectionProfileMysql {
             return this;
         }
         @CustomType.Setter
-        public Builder username(String username) {
-            if (username == null) {
-              throw new MissingRequiredPropertyException("ConnectionProfileMysql", "username");
-            }
+        public Builder username(@Nullable String username) {
+
             this.username = username;
             return this;
         }

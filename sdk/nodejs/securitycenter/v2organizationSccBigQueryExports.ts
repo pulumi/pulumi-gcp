@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.bigquery.Dataset("default", {
- *     datasetId: "my_dataset_id",
+ *     datasetId: "",
  *     friendlyName: "test",
  *     description: "This is a test description",
  *     location: "US",
@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  *     name: "my-export",
  *     bigQueryExportId: "my-export",
  *     organization: "123456789",
- *     dataset: "my-dataset",
+ *     dataset: _default.id,
  *     location: "global",
  *     description: "Cloud Security Command Center Findings Big Query Export Config",
  *     filter: "state=\"ACTIVE\" AND NOT mute=\"MUTED\"",

@@ -5,8 +5,10 @@ package com.pulumi.gcp.datastream.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.datastream.inputs.StreamSourceConfigSqlServerSourceConfigChangeTablesArgs;
 import com.pulumi.gcp.datastream.inputs.StreamSourceConfigSqlServerSourceConfigExcludeObjectsArgs;
 import com.pulumi.gcp.datastream.inputs.StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgs;
+import com.pulumi.gcp.datastream.inputs.StreamSourceConfigSqlServerSourceConfigTransactionLogsArgs;
 import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,6 +18,21 @@ import javax.annotation.Nullable;
 public final class StreamSourceConfigSqlServerSourceConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final StreamSourceConfigSqlServerSourceConfigArgs Empty = new StreamSourceConfigSqlServerSourceConfigArgs();
+
+    /**
+     * CDC reader reads from change tables.
+     * 
+     */
+    @Import(name="changeTables")
+    private @Nullable Output<StreamSourceConfigSqlServerSourceConfigChangeTablesArgs> changeTables;
+
+    /**
+     * @return CDC reader reads from change tables.
+     * 
+     */
+    public Optional<Output<StreamSourceConfigSqlServerSourceConfigChangeTablesArgs>> changeTables() {
+        return Optional.ofNullable(this.changeTables);
+    }
 
     /**
      * SQL Server objects to exclude from the stream.
@@ -81,13 +98,30 @@ public final class StreamSourceConfigSqlServerSourceConfigArgs extends com.pulum
         return Optional.ofNullable(this.maxConcurrentCdcTasks);
     }
 
+    /**
+     * CDC reader reads from transaction logs.
+     * 
+     */
+    @Import(name="transactionLogs")
+    private @Nullable Output<StreamSourceConfigSqlServerSourceConfigTransactionLogsArgs> transactionLogs;
+
+    /**
+     * @return CDC reader reads from transaction logs.
+     * 
+     */
+    public Optional<Output<StreamSourceConfigSqlServerSourceConfigTransactionLogsArgs>> transactionLogs() {
+        return Optional.ofNullable(this.transactionLogs);
+    }
+
     private StreamSourceConfigSqlServerSourceConfigArgs() {}
 
     private StreamSourceConfigSqlServerSourceConfigArgs(StreamSourceConfigSqlServerSourceConfigArgs $) {
+        this.changeTables = $.changeTables;
         this.excludeObjects = $.excludeObjects;
         this.includeObjects = $.includeObjects;
         this.maxConcurrentBackfillTasks = $.maxConcurrentBackfillTasks;
         this.maxConcurrentCdcTasks = $.maxConcurrentCdcTasks;
+        this.transactionLogs = $.transactionLogs;
     }
 
     public static Builder builder() {
@@ -106,6 +140,27 @@ public final class StreamSourceConfigSqlServerSourceConfigArgs extends com.pulum
 
         public Builder(StreamSourceConfigSqlServerSourceConfigArgs defaults) {
             $ = new StreamSourceConfigSqlServerSourceConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param changeTables CDC reader reads from change tables.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder changeTables(@Nullable Output<StreamSourceConfigSqlServerSourceConfigChangeTablesArgs> changeTables) {
+            $.changeTables = changeTables;
+            return this;
+        }
+
+        /**
+         * @param changeTables CDC reader reads from change tables.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder changeTables(StreamSourceConfigSqlServerSourceConfigChangeTablesArgs changeTables) {
+            return changeTables(Output.of(changeTables));
         }
 
         /**
@@ -194,6 +249,27 @@ public final class StreamSourceConfigSqlServerSourceConfigArgs extends com.pulum
          */
         public Builder maxConcurrentCdcTasks(Integer maxConcurrentCdcTasks) {
             return maxConcurrentCdcTasks(Output.of(maxConcurrentCdcTasks));
+        }
+
+        /**
+         * @param transactionLogs CDC reader reads from transaction logs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transactionLogs(@Nullable Output<StreamSourceConfigSqlServerSourceConfigTransactionLogsArgs> transactionLogs) {
+            $.transactionLogs = transactionLogs;
+            return this;
+        }
+
+        /**
+         * @param transactionLogs CDC reader reads from transaction logs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transactionLogs(StreamSourceConfigSqlServerSourceConfigTransactionLogsArgs transactionLogs) {
+            return transactionLogs(Output.of(transactionLogs));
         }
 
         public StreamSourceConfigSqlServerSourceConfigArgs build() {

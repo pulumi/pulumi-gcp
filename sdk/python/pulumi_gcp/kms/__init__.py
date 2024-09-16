@@ -16,6 +16,8 @@ from .ekm_connection_iam_binding import *
 from .ekm_connection_iam_member import *
 from .ekm_connection_iam_policy import *
 from .get_crypto_key_iam_policy import *
+from .get_crypto_key_latest_version import *
+from .get_crypto_key_versions import *
 from .get_crypto_keys import *
 from .get_ekm_connection_iam_policy import *
 from .get_key_ring_iam_policy import *

@@ -53,6 +53,52 @@ import * as utilities from "../utilities";
  *     dependsOn: [permissions],
  * });
  * ```
+ * ### Bigquerydatatransfer Config Cmek
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const permissions = new gcp.projects.IAMMember("permissions", {
+ *     project: project.then(project => project.projectId),
+ *     role: "roles/iam.serviceAccountTokenCreator",
+ *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com`),
+ * });
+ * const myDataset = new gcp.bigquery.Dataset("my_dataset", {
+ *     datasetId: "example_dataset",
+ *     friendlyName: "foo",
+ *     description: "bar",
+ *     location: "asia-northeast1",
+ * }, {
+ *     dependsOn: [permissions],
+ * });
+ * const keyRing = new gcp.kms.KeyRing("key_ring", {
+ *     name: "example-keyring",
+ *     location: "us",
+ * });
+ * const cryptoKey = new gcp.kms.CryptoKey("crypto_key", {
+ *     name: "example-key",
+ *     keyRing: keyRing.id,
+ * });
+ * const queryConfigCmek = new gcp.bigquery.DataTransferConfig("query_config_cmek", {
+ *     displayName: "",
+ *     location: "asia-northeast1",
+ *     dataSourceId: "scheduled_query",
+ *     schedule: "first sunday of quarter 00:00",
+ *     destinationDatasetId: myDataset.datasetId,
+ *     params: {
+ *         destination_table_name_template: "my_table",
+ *         write_disposition: "WRITE_APPEND",
+ *         query: "SELECT name FROM tabl WHERE x = 'y'",
+ *     },
+ *     encryptionConfiguration: {
+ *         kmsKeyName: cryptoKey.id,
+ *     },
+ * }, {
+ *     dependsOn: [permissions],
+ * });
+ * ```
  * ### Bigquerydatatransfer Config Salesforce
  *
  * ```typescript
@@ -74,9 +120,7 @@ import * as utilities from "../utilities";
  *     params: {
  *         "connector.authentication.oauth.clientId": "client-id",
  *         "connector.authentication.oauth.clientSecret": "client-secret",
- *         "connector.authentication.username": "username",
- *         "connector.authentication.password": "password",
- *         "connector.authentication.securityToken": "security-token",
+ *         "connector.authentication.oauth.myDomain": "MyDomainName",
  *         assets: "[\"asset-a\",\"asset-b\"]",
  *     },
  * });
@@ -152,6 +196,11 @@ export class DataTransferConfig extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly emailPreferences!: pulumi.Output<outputs.bigquery.DataTransferConfigEmailPreferences | undefined>;
+    /**
+     * Represents the encryption configuration for a transfer.
+     * Structure is documented below.
+     */
+    public readonly encryptionConfiguration!: pulumi.Output<outputs.bigquery.DataTransferConfigEncryptionConfiguration | undefined>;
     /**
      * The geographic location where the transfer config should reside.
      * Examples: US, EU, asia-northeast1. The default value is US.
@@ -238,6 +287,7 @@ export class DataTransferConfig extends pulumi.CustomResource {
             resourceInputs["disabled"] = state ? state.disabled : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["emailPreferences"] = state ? state.emailPreferences : undefined;
+            resourceInputs["encryptionConfiguration"] = state ? state.encryptionConfiguration : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["notificationPubsubTopic"] = state ? state.notificationPubsubTopic : undefined;
@@ -264,6 +314,7 @@ export class DataTransferConfig extends pulumi.CustomResource {
             resourceInputs["disabled"] = args ? args.disabled : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["emailPreferences"] = args ? args.emailPreferences : undefined;
+            resourceInputs["encryptionConfiguration"] = args ? args.encryptionConfiguration : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["notificationPubsubTopic"] = args ? args.notificationPubsubTopic : undefined;
             resourceInputs["params"] = args ? args.params : undefined;
@@ -313,6 +364,11 @@ export interface DataTransferConfigState {
      * Structure is documented below.
      */
     emailPreferences?: pulumi.Input<inputs.bigquery.DataTransferConfigEmailPreferences>;
+    /**
+     * Represents the encryption configuration for a transfer.
+     * Structure is documented below.
+     */
+    encryptionConfiguration?: pulumi.Input<inputs.bigquery.DataTransferConfigEncryptionConfiguration>;
     /**
      * The geographic location where the transfer config should reside.
      * Examples: US, EU, asia-northeast1. The default value is US.
@@ -415,6 +471,11 @@ export interface DataTransferConfigArgs {
      * Structure is documented below.
      */
     emailPreferences?: pulumi.Input<inputs.bigquery.DataTransferConfigEmailPreferences>;
+    /**
+     * Represents the encryption configuration for a transfer.
+     * Structure is documented below.
+     */
+    encryptionConfiguration?: pulumi.Input<inputs.bigquery.DataTransferConfigEncryptionConfiguration>;
     /**
      * The geographic location where the transfer config should reside.
      * Examples: US, EU, asia-northeast1. The default value is US.

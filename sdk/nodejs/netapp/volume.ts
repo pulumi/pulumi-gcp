@@ -122,6 +122,7 @@ export class Volume extends pulumi.CustomResource {
      * Policy to determine if the volume should be deleted forcefully.
      * Volumes may have nested snapshot resources. Deleting such a volume will fail.
      * Setting this parameter to FORCE will delete volumes including nested snapshots.
+     * Possible values: DEFAULT, FORCE.
      */
     public readonly deletionPolicy!: pulumi.Output<string | undefined>;
     /**
@@ -408,6 +409,7 @@ export interface VolumeState {
      * Policy to determine if the volume should be deleted forcefully.
      * Volumes may have nested snapshot resources. Deleting such a volume will fail.
      * Setting this parameter to FORCE will delete volumes including nested snapshots.
+     * Possible values: DEFAULT, FORCE.
      */
     deletionPolicy?: pulumi.Input<string>;
     /**
@@ -575,6 +577,7 @@ export interface VolumeArgs {
      * Policy to determine if the volume should be deleted forcefully.
      * Volumes may have nested snapshot resources. Deleting such a volume will fail.
      * Setting this parameter to FORCE will delete volumes including nested snapshots.
+     * Possible values: DEFAULT, FORCE.
      */
     deletionPolicy?: pulumi.Input<string>;
     /**

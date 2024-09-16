@@ -22,6 +22,10 @@ namespace Pulumi.Gcp.DiscoveryEngine.Outputs
         /// </summary>
         public readonly string FileType;
         /// <summary>
+        /// Configurations applied to layout parser.
+        /// </summary>
+        public readonly Outputs.DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig? LayoutParsingConfig;
+        /// <summary>
         /// Configurations applied to OCR parser. Currently it only applies to PDFs.
         /// Structure is documented below.
         /// </summary>
@@ -33,10 +37,13 @@ namespace Pulumi.Gcp.DiscoveryEngine.Outputs
 
             string fileType,
 
+            Outputs.DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfig? layoutParsingConfig,
+
             Outputs.DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig? ocrParsingConfig)
         {
             DigitalParsingConfig = digitalParsingConfig;
             FileType = fileType;
+            LayoutParsingConfig = layoutParsingConfig;
             OcrParsingConfig = ocrParsingConfig;
         }
     }
