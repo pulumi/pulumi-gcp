@@ -45,3 +45,20 @@ func TestCloudrunServicePanicRegress2155(t *testing.T) {
 	test.Up()
 	test.Up()
 }
+
+func TestCloudfunctionWrongType(t *testing.T) {
+	if testing.Short() {
+		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without GCP creds")
+	}
+
+	cwd, err := os.Getwd()
+	require.NoError(t, err)
+	test := pulumitest.NewPulumiTest(t, filepath.Join("test-programs", "cloudfunction-wrong-type"),
+		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
+	)
+
+	_, err = test.CurrentStack().Up(test.Context())
+	require.Error(t, err)
+
+	require.Contains(t, err.Error(), `Unexpected type at field "environmentVariables"`)
+}
