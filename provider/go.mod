@@ -10,18 +10,13 @@ require (
 	github.com/hashicorp/terraform-provider-google-beta v0.0.0
 	github.com/hexops/autogold/v2 v2.2.1
 	github.com/pulumi/providertest v0.0.14
-	github.com/pulumi/pulumi-terraform-bridge/pf v0.43.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.90.0
+	github.com/pulumi/pulumi-terraform-bridge/pf v0.43.1-0.20240918114950-4954882afe70
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.90.1-0.20240918114950-4954882afe70
 	github.com/pulumi/pulumi/pkg/v3 v3.130.0
 	github.com/pulumi/pulumi/sdk/v3 v3.130.0
 	github.com/stretchr/testify v1.9.0
 	google.golang.org/api v0.193.0
 	sourcegraph.com/sourcegraph/appdash v0.0.0-20211028080628-e2786a622600
-)
-
-replace (
-	github.com/pulumi/pulumi-terraform-bridge/pf => github.com/pulumi/pulumi-terraform-bridge/pf v0.43.1-0.20240918114950-4954882afe70
-	github.com/pulumi/pulumi-terraform-bridge/v3 => github.com/pulumi/pulumi-terraform-bridge/v3 v3.90.1-0.20240918114950-4954882afe70
 )
 
 replace (
