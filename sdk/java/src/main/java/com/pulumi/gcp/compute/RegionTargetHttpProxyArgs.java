@@ -6,6 +6,7 @@ package com.pulumi.gcp.compute;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -29,6 +30,29 @@ public final class RegionTargetHttpProxyArgs extends com.pulumi.resources.Resour
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Specifies how long to keep a connection open, after completing a response,
+     * while there is no matching traffic (in seconds). If an HTTP keepalive is
+     * not specified, a default value (600 seconds) will be used. For Regional
+     * HTTP(S) load balancer, the minimum allowed value is 5 seconds and the
+     * maximum allowed value is 600 seconds.
+     * 
+     */
+    @Import(name="httpKeepAliveTimeoutSec")
+    private @Nullable Output<Integer> httpKeepAliveTimeoutSec;
+
+    /**
+     * @return Specifies how long to keep a connection open, after completing a response,
+     * while there is no matching traffic (in seconds). If an HTTP keepalive is
+     * not specified, a default value (600 seconds) will be used. For Regional
+     * HTTP(S) load balancer, the minimum allowed value is 5 seconds and the
+     * maximum allowed value is 600 seconds.
+     * 
+     */
+    public Optional<Output<Integer>> httpKeepAliveTimeoutSec() {
+        return Optional.ofNullable(this.httpKeepAliveTimeoutSec);
     }
 
     /**
@@ -117,6 +141,7 @@ public final class RegionTargetHttpProxyArgs extends com.pulumi.resources.Resour
 
     private RegionTargetHttpProxyArgs(RegionTargetHttpProxyArgs $) {
         this.description = $.description;
+        this.httpKeepAliveTimeoutSec = $.httpKeepAliveTimeoutSec;
         this.name = $.name;
         this.project = $.project;
         this.region = $.region;
@@ -160,6 +185,35 @@ public final class RegionTargetHttpProxyArgs extends com.pulumi.resources.Resour
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param httpKeepAliveTimeoutSec Specifies how long to keep a connection open, after completing a response,
+         * while there is no matching traffic (in seconds). If an HTTP keepalive is
+         * not specified, a default value (600 seconds) will be used. For Regional
+         * HTTP(S) load balancer, the minimum allowed value is 5 seconds and the
+         * maximum allowed value is 600 seconds.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpKeepAliveTimeoutSec(@Nullable Output<Integer> httpKeepAliveTimeoutSec) {
+            $.httpKeepAliveTimeoutSec = httpKeepAliveTimeoutSec;
+            return this;
+        }
+
+        /**
+         * @param httpKeepAliveTimeoutSec Specifies how long to keep a connection open, after completing a response,
+         * while there is no matching traffic (in seconds). If an HTTP keepalive is
+         * not specified, a default value (600 seconds) will be used. For Regional
+         * HTTP(S) load balancer, the minimum allowed value is 5 seconds and the
+         * maximum allowed value is 600 seconds.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpKeepAliveTimeoutSec(Integer httpKeepAliveTimeoutSec) {
+            return httpKeepAliveTimeoutSec(Output.of(httpKeepAliveTimeoutSec));
         }
 
         /**

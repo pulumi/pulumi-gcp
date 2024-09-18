@@ -12,6 +12,7 @@ import com.pulumi.gcp.organizations.FolderArgs;
 import com.pulumi.gcp.organizations.inputs.FolderState;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -30,48 +31,7 @@ import javax.annotation.Nullable;
  * [Access Control for Folders Using IAM](https://cloud.google.com/resource-manager/docs/access-control-folders)
  * doc for more information.
  * 
- * ## Example Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.organizations.Folder;
- * import com.pulumi.gcp.organizations.FolderArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         // Top-level folder under an organization.
- *         var department1 = new Folder("department1", FolderArgs.builder()
- *             .displayName("Department 1")
- *             .parent("organizations/1234567")
- *             .build());
- * 
- *         // Folder nested under another folder.
- *         var team_abc = new Folder("team-abc", FolderArgs.builder()
- *             .displayName("Team ABC")
- *             .parent(department1.name())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
+ * &gt; It may take a while for the attached tag bindings to be deleted after the folder is scheduled to be deleted.
  * 
  * ## Import
  * 
@@ -189,6 +149,20 @@ public class Folder extends com.pulumi.resources.CustomResource {
      */
     public Output<String> parent() {
         return this.parent;
+    }
+    /**
+     * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when  mutated.
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when  mutated.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
     }
 
     /**

@@ -19,23 +19,7 @@ import * as utilities from "../utilities";
  * [Access Control for Folders Using IAM](https://cloud.google.com/resource-manager/docs/access-control-folders)
  * doc for more information.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * // Top-level folder under an organization.
- * const department1 = new gcp.organizations.Folder("department1", {
- *     displayName: "Department 1",
- *     parent: "organizations/1234567",
- * });
- * // Folder nested under another folder.
- * const team_abc = new gcp.organizations.Folder("team-abc", {
- *     displayName: "Team ABC",
- *     parent: department1.name,
- * });
- * ```
+ * > It may take a while for the attached tag bindings to be deleted after the folder is scheduled to be deleted.
  *
  * ## Import
  *
@@ -111,6 +95,10 @@ export class Folder extends pulumi.CustomResource {
      * Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
      */
     public readonly parent!: pulumi.Output<string>;
+    /**
+     * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when  mutated.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Folder resource with the given unique name, arguments, and options.
@@ -132,6 +120,7 @@ export class Folder extends pulumi.CustomResource {
             resourceInputs["lifecycleState"] = state ? state.lifecycleState : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["parent"] = state ? state.parent : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as FolderArgs | undefined;
             if ((!args || args.displayName === undefined) && !opts.urn) {
@@ -143,6 +132,7 @@ export class Folder extends pulumi.CustomResource {
             resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["folderId"] = undefined /*out*/;
             resourceInputs["lifecycleState"] = undefined /*out*/;
@@ -185,6 +175,10 @@ export interface FolderState {
      * Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
      */
     parent?: pulumi.Input<string>;
+    /**
+     * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when  mutated.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -202,4 +196,8 @@ export interface FolderArgs {
      * Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
      */
     parent: pulumi.Input<string>;
+    /**
+     * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when  mutated.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

@@ -39,7 +39,7 @@ namespace Pulumi.Gcp.GkeOnPrem.Inputs
 
         /// <summary>
         /// The OS image to be used for each node in a node pool.
-        /// Currently `cos`, `ubuntu`, `ubuntu_containerd` and `windows` are supported.
+        /// Currently `cos`, `cos_cgv2`, `ubuntu`, `ubuntu_cgv2`, `ubuntu_containerd` and `windows` are supported.
         /// </summary>
         [Input("imageType", required: true)]
         public Input<string> ImageType { get; set; } = null!;

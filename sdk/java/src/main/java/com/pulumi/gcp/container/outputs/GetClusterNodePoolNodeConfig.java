@@ -221,6 +221,11 @@ public final class GetClusterNodePoolNodeConfig {
      */
     private Boolean spot;
     /**
+     * @return The list of Storage Pools where boot disks are provisioned.
+     * 
+     */
+    private List<String> storagePools;
+    /**
      * @return The list of instance tags applied to all nodes.
      * 
      */
@@ -497,6 +502,13 @@ public final class GetClusterNodePoolNodeConfig {
         return this.spot;
     }
     /**
+     * @return The list of Storage Pools where boot disks are provisioned.
+     * 
+     */
+    public List<String> storagePools() {
+        return this.storagePools;
+    }
+    /**
      * @return The list of instance tags applied to all nodes.
      * 
      */
@@ -564,6 +576,7 @@ public final class GetClusterNodePoolNodeConfig {
         private List<GetClusterNodePoolNodeConfigShieldedInstanceConfig> shieldedInstanceConfigs;
         private List<GetClusterNodePoolNodeConfigSoleTenantConfig> soleTenantConfigs;
         private Boolean spot;
+        private List<String> storagePools;
         private List<String> tags;
         private List<GetClusterNodePoolNodeConfigTaint> taints;
         private List<GetClusterNodePoolNodeConfigWorkloadMetadataConfig> workloadMetadataConfigs;
@@ -607,6 +620,7 @@ public final class GetClusterNodePoolNodeConfig {
     	      this.shieldedInstanceConfigs = defaults.shieldedInstanceConfigs;
     	      this.soleTenantConfigs = defaults.soleTenantConfigs;
     	      this.spot = defaults.spot;
+    	      this.storagePools = defaults.storagePools;
     	      this.tags = defaults.tags;
     	      this.taints = defaults.taints;
     	      this.workloadMetadataConfigs = defaults.workloadMetadataConfigs;
@@ -969,6 +983,17 @@ public final class GetClusterNodePoolNodeConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder storagePools(List<String> storagePools) {
+            if (storagePools == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfig", "storagePools");
+            }
+            this.storagePools = storagePools;
+            return this;
+        }
+        public Builder storagePools(String... storagePools) {
+            return storagePools(List.of(storagePools));
+        }
+        @CustomType.Setter
         public Builder tags(List<String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfig", "tags");
@@ -1040,6 +1065,7 @@ public final class GetClusterNodePoolNodeConfig {
             _resultValue.shieldedInstanceConfigs = shieldedInstanceConfigs;
             _resultValue.soleTenantConfigs = soleTenantConfigs;
             _resultValue.spot = spot;
+            _resultValue.storagePools = storagePools;
             _resultValue.tags = tags;
             _resultValue.taints = taints;
             _resultValue.workloadMetadataConfigs = workloadMetadataConfigs;

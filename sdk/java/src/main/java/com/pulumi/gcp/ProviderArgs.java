@@ -496,6 +496,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.deploymentManagerCustomEndpoint);
     }
 
+    @Import(name="developerConnectCustomEndpoint")
+    private @Nullable Output<String> developerConnectCustomEndpoint;
+
+    public Optional<Output<String>> developerConnectCustomEndpoint() {
+        return Optional.ofNullable(this.developerConnectCustomEndpoint);
+    }
+
     @Import(name="dialogflowCustomEndpoint")
     private @Nullable Output<String> dialogflowCustomEndpoint;
 
@@ -795,6 +802,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<String>> memcacheCustomEndpoint() {
         return Optional.ofNullable(this.memcacheCustomEndpoint);
+    }
+
+    @Import(name="memorystoreCustomEndpoint")
+    private @Nullable Output<String> memorystoreCustomEndpoint;
+
+    public Optional<Output<String>> memorystoreCustomEndpoint() {
+        return Optional.ofNullable(this.memorystoreCustomEndpoint);
     }
 
     @Import(name="migrationCenterCustomEndpoint")
@@ -1295,6 +1309,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.datastreamCustomEndpoint = $.datastreamCustomEndpoint;
         this.defaultLabels = $.defaultLabels;
         this.deploymentManagerCustomEndpoint = $.deploymentManagerCustomEndpoint;
+        this.developerConnectCustomEndpoint = $.developerConnectCustomEndpoint;
         this.dialogflowCustomEndpoint = $.dialogflowCustomEndpoint;
         this.dialogflowCxCustomEndpoint = $.dialogflowCxCustomEndpoint;
         this.disableGooglePartnerName = $.disableGooglePartnerName;
@@ -1338,6 +1353,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.lookerCustomEndpoint = $.lookerCustomEndpoint;
         this.managedKafkaCustomEndpoint = $.managedKafkaCustomEndpoint;
         this.memcacheCustomEndpoint = $.memcacheCustomEndpoint;
+        this.memorystoreCustomEndpoint = $.memorystoreCustomEndpoint;
         this.migrationCenterCustomEndpoint = $.migrationCenterCustomEndpoint;
         this.mlEngineCustomEndpoint = $.mlEngineCustomEndpoint;
         this.monitoringCustomEndpoint = $.monitoringCustomEndpoint;
@@ -2031,6 +2047,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             return deploymentManagerCustomEndpoint(Output.of(deploymentManagerCustomEndpoint));
         }
 
+        public Builder developerConnectCustomEndpoint(@Nullable Output<String> developerConnectCustomEndpoint) {
+            $.developerConnectCustomEndpoint = developerConnectCustomEndpoint;
+            return this;
+        }
+
+        public Builder developerConnectCustomEndpoint(String developerConnectCustomEndpoint) {
+            return developerConnectCustomEndpoint(Output.of(developerConnectCustomEndpoint));
+        }
+
         public Builder dialogflowCustomEndpoint(@Nullable Output<String> dialogflowCustomEndpoint) {
             $.dialogflowCustomEndpoint = dialogflowCustomEndpoint;
             return this;
@@ -2420,6 +2445,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder memcacheCustomEndpoint(String memcacheCustomEndpoint) {
             return memcacheCustomEndpoint(Output.of(memcacheCustomEndpoint));
+        }
+
+        public Builder memorystoreCustomEndpoint(@Nullable Output<String> memorystoreCustomEndpoint) {
+            $.memorystoreCustomEndpoint = memorystoreCustomEndpoint;
+            return this;
+        }
+
+        public Builder memorystoreCustomEndpoint(String memorystoreCustomEndpoint) {
+            return memorystoreCustomEndpoint(Output.of(memorystoreCustomEndpoint));
         }
 
         public Builder migrationCenterCustomEndpoint(@Nullable Output<String> migrationCenterCustomEndpoint) {

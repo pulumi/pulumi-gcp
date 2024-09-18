@@ -47,8 +47,9 @@ class StreamArgs:
         :param pulumi.Input[bool] create_without_validation: Create the stream without validating it.
         :param pulumi.Input[str] customer_managed_encryption_key: A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
                encrypted using an internal Stream-specific encryption key provisioned through KMS.
-        :param pulumi.Input[str] desired_state: Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream. Possible
-               values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
+        :param pulumi.Input[str] desired_state: Desired state of the Stream. Set this field to 'RUNNING' to start the stream, 'NOT_STARTED' to create the stream without
+               starting and 'PAUSED' to pause the stream from a 'RUNNING' state. Possible values: NOT_STARTED, RUNNING, PAUSED.
+               Default: NOT_STARTED
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels. **Note**: This field is non-authoritative, and will only manage the labels present in your configuration. Please
                refer to the field 'effective_labels' for all of the labels present on the resource.
         """
@@ -187,8 +188,9 @@ class StreamArgs:
     @pulumi.getter(name="desiredState")
     def desired_state(self) -> Optional[pulumi.Input[str]]:
         """
-        Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream. Possible
-        values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
+        Desired state of the Stream. Set this field to 'RUNNING' to start the stream, 'NOT_STARTED' to create the stream without
+        starting and 'PAUSED' to pause the stream from a 'RUNNING' state. Possible values: NOT_STARTED, RUNNING, PAUSED.
+        Default: NOT_STARTED
         """
         return pulumi.get(self, "desired_state")
 
@@ -245,8 +247,9 @@ class _StreamState:
         :param pulumi.Input[bool] create_without_validation: Create the stream without validating it.
         :param pulumi.Input[str] customer_managed_encryption_key: A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
                encrypted using an internal Stream-specific encryption key provisioned through KMS.
-        :param pulumi.Input[str] desired_state: Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream. Possible
-               values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
+        :param pulumi.Input[str] desired_state: Desired state of the Stream. Set this field to 'RUNNING' to start the stream, 'NOT_STARTED' to create the stream without
+               starting and 'PAUSED' to pause the stream from a 'RUNNING' state. Possible values: NOT_STARTED, RUNNING, PAUSED.
+               Default: NOT_STARTED
         :param pulumi.Input['StreamDestinationConfigArgs'] destination_config: Destination connection profile configuration.
                Structure is documented below.
         :param pulumi.Input[str] display_name: Display name.
@@ -348,8 +351,9 @@ class _StreamState:
     @pulumi.getter(name="desiredState")
     def desired_state(self) -> Optional[pulumi.Input[str]]:
         """
-        Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream. Possible
-        values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
+        Desired state of the Stream. Set this field to 'RUNNING' to start the stream, 'NOT_STARTED' to create the stream without
+        starting and 'PAUSED' to pause the stream from a 'RUNNING' state. Possible values: NOT_STARTED, RUNNING, PAUSED.
+        Default: NOT_STARTED
         """
         return pulumi.get(self, "desired_state")
 
@@ -1328,8 +1332,9 @@ class Stream(pulumi.CustomResource):
         :param pulumi.Input[bool] create_without_validation: Create the stream without validating it.
         :param pulumi.Input[str] customer_managed_encryption_key: A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
                encrypted using an internal Stream-specific encryption key provisioned through KMS.
-        :param pulumi.Input[str] desired_state: Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream. Possible
-               values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
+        :param pulumi.Input[str] desired_state: Desired state of the Stream. Set this field to 'RUNNING' to start the stream, 'NOT_STARTED' to create the stream without
+               starting and 'PAUSED' to pause the stream from a 'RUNNING' state. Possible values: NOT_STARTED, RUNNING, PAUSED.
+               Default: NOT_STARTED
         :param pulumi.Input[Union['StreamDestinationConfigArgs', 'StreamDestinationConfigArgsDict']] destination_config: Destination connection profile configuration.
                Structure is documented below.
         :param pulumi.Input[str] display_name: Display name.
@@ -2260,8 +2265,9 @@ class Stream(pulumi.CustomResource):
         :param pulumi.Input[bool] create_without_validation: Create the stream without validating it.
         :param pulumi.Input[str] customer_managed_encryption_key: A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
                encrypted using an internal Stream-specific encryption key provisioned through KMS.
-        :param pulumi.Input[str] desired_state: Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream. Possible
-               values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
+        :param pulumi.Input[str] desired_state: Desired state of the Stream. Set this field to 'RUNNING' to start the stream, 'NOT_STARTED' to create the stream without
+               starting and 'PAUSED' to pause the stream from a 'RUNNING' state. Possible values: NOT_STARTED, RUNNING, PAUSED.
+               Default: NOT_STARTED
         :param pulumi.Input[Union['StreamDestinationConfigArgs', 'StreamDestinationConfigArgsDict']] destination_config: Destination connection profile configuration.
                Structure is documented below.
         :param pulumi.Input[str] display_name: Display name.
@@ -2336,8 +2342,9 @@ class Stream(pulumi.CustomResource):
     @pulumi.getter(name="desiredState")
     def desired_state(self) -> pulumi.Output[Optional[str]]:
         """
-        Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream. Possible
-        values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
+        Desired state of the Stream. Set this field to 'RUNNING' to start the stream, 'NOT_STARTED' to create the stream without
+        starting and 'PAUSED' to pause the stream from a 'RUNNING' state. Possible values: NOT_STARTED, RUNNING, PAUSED.
+        Default: NOT_STARTED
         """
         return pulumi.get(self, "desired_state")
 

@@ -37,6 +37,8 @@ __all__ = [
     'AttachedClusterProxyConfigArgsDict',
     'AttachedClusterProxyConfigKubernetesSecretArgs',
     'AttachedClusterProxyConfigKubernetesSecretArgsDict',
+    'AttachedClusterSecurityPostureConfigArgs',
+    'AttachedClusterSecurityPostureConfigArgsDict',
     'AttachedClusterWorkloadIdentityConfigArgs',
     'AttachedClusterWorkloadIdentityConfigArgsDict',
     'AwsClusterAuthorizationArgs',
@@ -1016,6 +1018,40 @@ class AttachedClusterProxyConfigKubernetesSecretArgs:
     @namespace.setter
     def namespace(self, value: pulumi.Input[str]):
         pulumi.set(self, "namespace", value)
+
+
+if not MYPY:
+    class AttachedClusterSecurityPostureConfigArgsDict(TypedDict):
+        vulnerability_mode: pulumi.Input[str]
+        """
+        Sets the mode of the Kubernetes security posture API's workload vulnerability scanning.
+        Possible values are: `VULNERABILITY_DISABLED`, `VULNERABILITY_ENTERPRISE`.
+        """
+elif False:
+    AttachedClusterSecurityPostureConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AttachedClusterSecurityPostureConfigArgs:
+    def __init__(__self__, *,
+                 vulnerability_mode: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] vulnerability_mode: Sets the mode of the Kubernetes security posture API's workload vulnerability scanning.
+               Possible values are: `VULNERABILITY_DISABLED`, `VULNERABILITY_ENTERPRISE`.
+        """
+        pulumi.set(__self__, "vulnerability_mode", vulnerability_mode)
+
+    @property
+    @pulumi.getter(name="vulnerabilityMode")
+    def vulnerability_mode(self) -> pulumi.Input[str]:
+        """
+        Sets the mode of the Kubernetes security posture API's workload vulnerability scanning.
+        Possible values are: `VULNERABILITY_DISABLED`, `VULNERABILITY_ENTERPRISE`.
+        """
+        return pulumi.get(self, "vulnerability_mode")
+
+    @vulnerability_mode.setter
+    def vulnerability_mode(self, value: pulumi.Input[str]):
+        pulumi.set(self, "vulnerability_mode", value)
 
 
 if not MYPY:
@@ -8203,6 +8239,10 @@ if not MYPY:
         See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
         for more information. Defaults to false.
         """
+        storage_pools: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The list of Storage Pools where boot disks are provisioned.
+        """
         tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
         The list of instance tags applied to all nodes. Tags are used to identify
@@ -8267,6 +8307,7 @@ class ClusterNodeConfigArgs:
                  shielded_instance_config: Optional[pulumi.Input['ClusterNodeConfigShieldedInstanceConfigArgs']] = None,
                  sole_tenant_config: Optional[pulumi.Input['ClusterNodeConfigSoleTenantConfigArgs']] = None,
                  spot: Optional[pulumi.Input[bool]] = None,
+                 storage_pools: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigTaintArgs']]]] = None,
                  workload_metadata_config: Optional[pulumi.Input['ClusterNodeConfigWorkloadMetadataConfigArgs']] = None):
@@ -8357,6 +8398,7 @@ class ClusterNodeConfigArgs:
         :param pulumi.Input[bool] spot: A boolean that represents whether the underlying node VMs are spot.
                See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
                for more information. Defaults to false.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_pools: The list of Storage Pools where boot disks are provisioned.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The list of instance tags applied to all nodes. Tags are used to identify
                valid sources or targets for network firewalls.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigTaintArgs']]] taints: A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
@@ -8444,6 +8486,8 @@ class ClusterNodeConfigArgs:
             pulumi.set(__self__, "sole_tenant_config", sole_tenant_config)
         if spot is not None:
             pulumi.set(__self__, "spot", spot)
+        if storage_pools is not None:
+            pulumi.set(__self__, "storage_pools", storage_pools)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if taints is not None:
@@ -8943,6 +8987,18 @@ class ClusterNodeConfigArgs:
     @spot.setter
     def spot(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "spot", value)
+
+    @property
+    @pulumi.getter(name="storagePools")
+    def storage_pools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of Storage Pools where boot disks are provisioned.
+        """
+        return pulumi.get(self, "storage_pools")
+
+    @storage_pools.setter
+    def storage_pools(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "storage_pools", value)
 
     @property
     @pulumi.getter
@@ -12016,6 +12072,10 @@ if not MYPY:
         See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
         for more information. Defaults to false.
         """
+        storage_pools: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The list of Storage Pools where boot disks are provisioned.
+        """
         tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
         The list of instance tags applied to all nodes. Tags are used to identify
@@ -12080,6 +12140,7 @@ class ClusterNodePoolNodeConfigArgs:
                  shielded_instance_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigShieldedInstanceConfigArgs']] = None,
                  sole_tenant_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigSoleTenantConfigArgs']] = None,
                  spot: Optional[pulumi.Input[bool]] = None,
+                 storage_pools: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigTaintArgs']]]] = None,
                  workload_metadata_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs']] = None):
@@ -12170,6 +12231,7 @@ class ClusterNodePoolNodeConfigArgs:
         :param pulumi.Input[bool] spot: A boolean that represents whether the underlying node VMs are spot.
                See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
                for more information. Defaults to false.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_pools: The list of Storage Pools where boot disks are provisioned.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The list of instance tags applied to all nodes. Tags are used to identify
                valid sources or targets for network firewalls.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigTaintArgs']]] taints: A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
@@ -12257,6 +12319,8 @@ class ClusterNodePoolNodeConfigArgs:
             pulumi.set(__self__, "sole_tenant_config", sole_tenant_config)
         if spot is not None:
             pulumi.set(__self__, "spot", spot)
+        if storage_pools is not None:
+            pulumi.set(__self__, "storage_pools", storage_pools)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if taints is not None:
@@ -12756,6 +12820,18 @@ class ClusterNodePoolNodeConfigArgs:
     @spot.setter
     def spot(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "spot", value)
+
+    @property
+    @pulumi.getter(name="storagePools")
+    def storage_pools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of Storage Pools where boot disks are provisioned.
+        """
+        return pulumi.get(self, "storage_pools")
+
+    @storage_pools.setter
+    def storage_pools(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "storage_pools", value)
 
     @property
     @pulumi.getter
@@ -16224,6 +16300,10 @@ if not MYPY:
         """
         Whether the nodes are created as spot VM instances.
         """
+        storage_pools: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The list of Storage Pools where boot disks are provisioned.
+        """
         tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
         The list of instance tags applied to all nodes.
@@ -16279,6 +16359,7 @@ class NodePoolNodeConfigArgs:
                  shielded_instance_config: Optional[pulumi.Input['NodePoolNodeConfigShieldedInstanceConfigArgs']] = None,
                  sole_tenant_config: Optional[pulumi.Input['NodePoolNodeConfigSoleTenantConfigArgs']] = None,
                  spot: Optional[pulumi.Input[bool]] = None,
+                 storage_pools: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNodeConfigTaintArgs']]]] = None,
                  workload_metadata_config: Optional[pulumi.Input['NodePoolNodeConfigWorkloadMetadataConfigArgs']] = None):
@@ -16323,6 +16404,7 @@ class NodePoolNodeConfigArgs:
         :param pulumi.Input['NodePoolNodeConfigShieldedInstanceConfigArgs'] shielded_instance_config: Shielded Instance options.
         :param pulumi.Input['NodePoolNodeConfigSoleTenantConfigArgs'] sole_tenant_config: Node affinity options for sole tenant node pools.
         :param pulumi.Input[bool] spot: Whether the nodes are created as spot VM instances.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_pools: The list of Storage Pools where boot disks are provisioned.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The list of instance tags applied to all nodes.
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolNodeConfigTaintArgs']]] taints: List of Kubernetes taints to be applied to each node.
         :param pulumi.Input['NodePoolNodeConfigWorkloadMetadataConfigArgs'] workload_metadata_config: The workload metadata configuration for this node.
@@ -16401,6 +16483,8 @@ class NodePoolNodeConfigArgs:
             pulumi.set(__self__, "sole_tenant_config", sole_tenant_config)
         if spot is not None:
             pulumi.set(__self__, "spot", spot)
+        if storage_pools is not None:
+            pulumi.set(__self__, "storage_pools", storage_pools)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if taints is not None:
@@ -16854,6 +16938,18 @@ class NodePoolNodeConfigArgs:
     @spot.setter
     def spot(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "spot", value)
+
+    @property
+    @pulumi.getter(name="storagePools")
+    def storage_pools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of Storage Pools where boot disks are provisioned.
+        """
+        return pulumi.get(self, "storage_pools")
+
+    @storage_pools.setter
+    def storage_pools(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "storage_pools", value)
 
     @property
     @pulumi.getter

@@ -92,6 +92,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly dataprocMetastoreCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly datastreamCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly deploymentManagerCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly developerConnectCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly dialogflowCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly dialogflowCxCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly discoveryEngineCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -133,6 +134,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly lookerCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly managedKafkaCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly memcacheCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly memorystoreCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly migrationCenterCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly mlEngineCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly monitoringCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -272,6 +274,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["datastreamCustomEndpoint"] = args ? args.datastreamCustomEndpoint : undefined;
             resourceInputs["defaultLabels"] = pulumi.output(args ? args.defaultLabels : undefined).apply(JSON.stringify);
             resourceInputs["deploymentManagerCustomEndpoint"] = args ? args.deploymentManagerCustomEndpoint : undefined;
+            resourceInputs["developerConnectCustomEndpoint"] = args ? args.developerConnectCustomEndpoint : undefined;
             resourceInputs["dialogflowCustomEndpoint"] = args ? args.dialogflowCustomEndpoint : undefined;
             resourceInputs["dialogflowCxCustomEndpoint"] = args ? args.dialogflowCxCustomEndpoint : undefined;
             resourceInputs["disableGooglePartnerName"] = pulumi.output(args ? args.disableGooglePartnerName : undefined).apply(JSON.stringify);
@@ -315,6 +318,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["lookerCustomEndpoint"] = args ? args.lookerCustomEndpoint : undefined;
             resourceInputs["managedKafkaCustomEndpoint"] = args ? args.managedKafkaCustomEndpoint : undefined;
             resourceInputs["memcacheCustomEndpoint"] = args ? args.memcacheCustomEndpoint : undefined;
+            resourceInputs["memorystoreCustomEndpoint"] = args ? args.memorystoreCustomEndpoint : undefined;
             resourceInputs["migrationCenterCustomEndpoint"] = args ? args.migrationCenterCustomEndpoint : undefined;
             resourceInputs["mlEngineCustomEndpoint"] = args ? args.mlEngineCustomEndpoint : undefined;
             resourceInputs["monitoringCustomEndpoint"] = args ? args.monitoringCustomEndpoint : undefined;
@@ -456,6 +460,7 @@ export interface ProviderArgs {
     datastreamCustomEndpoint?: pulumi.Input<string>;
     defaultLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     deploymentManagerCustomEndpoint?: pulumi.Input<string>;
+    developerConnectCustomEndpoint?: pulumi.Input<string>;
     dialogflowCustomEndpoint?: pulumi.Input<string>;
     dialogflowCxCustomEndpoint?: pulumi.Input<string>;
     disableGooglePartnerName?: pulumi.Input<boolean>;
@@ -499,6 +504,7 @@ export interface ProviderArgs {
     lookerCustomEndpoint?: pulumi.Input<string>;
     managedKafkaCustomEndpoint?: pulumi.Input<string>;
     memcacheCustomEndpoint?: pulumi.Input<string>;
+    memorystoreCustomEndpoint?: pulumi.Input<string>;
     migrationCenterCustomEndpoint?: pulumi.Input<string>;
     mlEngineCustomEndpoint?: pulumi.Input<string>;
     monitoringCustomEndpoint?: pulumi.Input<string>;

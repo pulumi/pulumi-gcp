@@ -145,6 +145,10 @@ namespace Pulumi.Gcp.Container
     ///                 Namespace = "default",
     ///             },
     ///         },
+    ///         SecurityPostureConfig = new Gcp.Container.Inputs.AttachedClusterSecurityPostureConfigArgs
+    ///         {
+    ///             VulnerabilityMode = "VULNERABILITY_ENTERPRISE",
+    ///         },
     ///     });
     /// 
     /// });
@@ -357,6 +361,12 @@ namespace Pulumi.Gcp.Container
         public Output<bool> Reconciling { get; private set; } = null!;
 
         /// <summary>
+        /// Enable/Disable Security Posture API features for the cluster.
+        /// </summary>
+        [Output("securityPostureConfig")]
+        public Output<Outputs.AttachedClusterSecurityPostureConfig> SecurityPostureConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The current state of the cluster. Possible values:
         /// STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR,
         /// DEGRADED
@@ -539,6 +549,12 @@ namespace Pulumi.Gcp.Container
         [Input("proxyConfig")]
         public Input<Inputs.AttachedClusterProxyConfigArgs>? ProxyConfig { get; set; }
 
+        /// <summary>
+        /// Enable/Disable Security Posture API features for the cluster.
+        /// </summary>
+        [Input("securityPostureConfig")]
+        public Input<Inputs.AttachedClusterSecurityPostureConfigArgs>? SecurityPostureConfig { get; set; }
+
         public AttachedClusterArgs()
         {
         }
@@ -703,6 +719,12 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("reconciling")]
         public Input<bool>? Reconciling { get; set; }
+
+        /// <summary>
+        /// Enable/Disable Security Posture API features for the cluster.
+        /// </summary>
+        [Input("securityPostureConfig")]
+        public Input<Inputs.AttachedClusterSecurityPostureConfigGetArgs>? SecurityPostureConfig { get; set; }
 
         /// <summary>
         /// The current state of the cluster. Possible values:

@@ -215,6 +215,9 @@ func GetDefaultLabels(ctx *pulumi.Context) string {
 func GetDeploymentManagerCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:deploymentManagerCustomEndpoint")
 }
+func GetDeveloperConnectCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:developerConnectCustomEndpoint")
+}
 func GetDialogflowCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:dialogflowCustomEndpoint")
 }
@@ -343,6 +346,9 @@ func GetManagedKafkaCustomEndpoint(ctx *pulumi.Context) string {
 }
 func GetMemcacheCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:memcacheCustomEndpoint")
+}
+func GetMemorystoreCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:memorystoreCustomEndpoint")
 }
 func GetMigrationCenterCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:migrationCenterCustomEndpoint")

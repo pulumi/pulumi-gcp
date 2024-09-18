@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var default_ = new V2ProjectMuteConfig("default", V2ProjectMuteConfigArgs.builder()
  *             .muteConfigId("my-config")
- *             .project("")
+ *             .project("my-project-name")
  *             .location("global")
  *             .description("My custom Cloud Security Command Center Finding Project mute Configuration")
  *             .filter("severity = \"HIGH\"")

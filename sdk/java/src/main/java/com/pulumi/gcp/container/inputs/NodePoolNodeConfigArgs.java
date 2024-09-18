@@ -602,6 +602,21 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * The list of Storage Pools where boot disks are provisioned.
+     * 
+     */
+    @Import(name="storagePools")
+    private @Nullable Output<List<String>> storagePools;
+
+    /**
+     * @return The list of Storage Pools where boot disks are provisioned.
+     * 
+     */
+    public Optional<Output<List<String>>> storagePools() {
+        return Optional.ofNullable(this.storagePools);
+    }
+
+    /**
      * The list of instance tags applied to all nodes.
      * 
      */
@@ -686,6 +701,7 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
         this.shieldedInstanceConfig = $.shieldedInstanceConfig;
         this.soleTenantConfig = $.soleTenantConfig;
         this.spot = $.spot;
+        this.storagePools = $.storagePools;
         this.tags = $.tags;
         this.taints = $.taints;
         this.workloadMetadataConfig = $.workloadMetadataConfig;
@@ -1530,6 +1546,37 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
          */
         public Builder spot(Boolean spot) {
             return spot(Output.of(spot));
+        }
+
+        /**
+         * @param storagePools The list of Storage Pools where boot disks are provisioned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storagePools(@Nullable Output<List<String>> storagePools) {
+            $.storagePools = storagePools;
+            return this;
+        }
+
+        /**
+         * @param storagePools The list of Storage Pools where boot disks are provisioned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storagePools(List<String> storagePools) {
+            return storagePools(Output.of(storagePools));
+        }
+
+        /**
+         * @param storagePools The list of Storage Pools where boot disks are provisioned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storagePools(String... storagePools) {
+            return storagePools(List.of(storagePools));
         }
 
         /**

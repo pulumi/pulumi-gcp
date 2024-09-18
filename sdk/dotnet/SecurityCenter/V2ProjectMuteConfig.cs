@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.SecurityCenter
     ///     var @default = new Gcp.SecurityCenter.V2ProjectMuteConfig("default", new()
     ///     {
     ///         MuteConfigId = "my-config",
-    ///         Project = "",
+    ///         Project = "my-project-name",
     ///         Location = "global",
     ///         Description = "My custom Cloud Security Command Center Finding Project mute Configuration",
     ///         Filter = "severity = \"HIGH\"",

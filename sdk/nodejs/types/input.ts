@@ -17269,6 +17269,10 @@ export namespace compute {
          */
         resourceManagerTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
+         * A list of selfLinks of resource policies to attach to the instance's boot disk. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+         */
+        resourcePolicies?: pulumi.Input<string>;
+        /**
          * The size of the image in gigabytes. If not specified, it
          * will inherit the size of its base image.
          */
@@ -17403,6 +17407,10 @@ export namespace compute {
          * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
          */
         resourceManagerTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * A list of selfLinks of resource policies to attach to the instance's boot disk. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+         */
+        resourcePolicies?: pulumi.Input<string>;
         /**
          * The size of the image in gigabytes.
          */
@@ -17841,6 +17849,10 @@ export namespace compute {
          * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
          */
         resourceManagerTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * A list of selfLinks of resource policies to attach to the instance's boot disk. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+         */
+        resourcePolicies?: pulumi.Input<string>;
         /**
          * The size of the image in gigabytes.
          */
@@ -19662,6 +19674,429 @@ export namespace compute {
         name: pulumi.Input<string>;
         /**
          * [Output Only] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
+         */
+        state?: pulumi.Input<string>;
+    }
+
+    export interface NetworkFirewallPolicyWithRulesPredefinedRule {
+        /**
+         * (Output)
+         * The Action to perform when the client connection triggers the rule. Can currently be either
+         * "allow", "deny", "applySecurityProfileGroup" or "gotoNext".
+         */
+        action?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * A description of the rule.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The direction in which this rule applies. If unspecified an INGRESS rule is created.
+         */
+        direction?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Denotes whether the firewall policy rule is disabled. When set to true,
+         * the firewall policy rule is not enforced and traffic behaves as if it did
+         * not exist. If this is unspecified, the firewall policy rule will be
+         * enabled.
+         */
+        disabled?: pulumi.Input<boolean>;
+        /**
+         * (Output)
+         * Denotes whether to enable logging for a particular rule.
+         * If logging is enabled, logs will be exported to the
+         * configured export destination in Stackdriver.
+         */
+        enableLogging?: pulumi.Input<boolean>;
+        /**
+         * (Output)
+         * A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+         * Structure is documented below.
+         */
+        matches?: pulumi.Input<pulumi.Input<inputs.compute.NetworkFirewallPolicyWithRulesPredefinedRuleMatch>[]>;
+        /**
+         * (Output)
+         * An integer indicating the priority of a rule in the list. The priority must be a value
+         * between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
+         * highest priority and 2147483647 is the lowest priority.
+         */
+        priority?: pulumi.Input<number>;
+        /**
+         * (Output)
+         * An optional name for the rule. This field is not a unique identifier
+         * and can be updated.
+         */
+        ruleName?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * A fully-qualified URL of a SecurityProfile resource instance.
+         * Example:
+         * https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+         * Must be specified if action is 'apply_security_profile_group'.
+         */
+        securityProfileGroup?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * A list of secure tags that controls which instances the firewall rule
+         * applies to. If <code>targetSecureTag</code> are specified, then the
+         * firewall rule applies only to instances in the VPC network that have one
+         * of those EFFECTIVE secure tags, if all the targetSecureTag are in
+         * INEFFECTIVE state, then this rule will be ignored.
+         * <code>targetSecureTag</code> may not be set at the same time as
+         * <code>targetServiceAccounts</code>.
+         * If neither <code>targetServiceAccounts</code> nor
+         * <code>targetSecureTag</code> are specified, the firewall rule applies
+         * to all instances on the specified network.
+         * Maximum number of target label tags allowed is 256.
+         * Structure is documented below.
+         */
+        targetSecureTags?: pulumi.Input<pulumi.Input<inputs.compute.NetworkFirewallPolicyWithRulesPredefinedRuleTargetSecureTag>[]>;
+        /**
+         * (Output)
+         * A list of service accounts indicating the sets of
+         * instances that are applied with this rule.
+         */
+        targetServiceAccounts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * (Output)
+         * Boolean flag indicating if the traffic should be TLS decrypted.
+         * It can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
+         */
+        tlsInspect?: pulumi.Input<boolean>;
+    }
+
+    export interface NetworkFirewallPolicyWithRulesPredefinedRuleMatch {
+        /**
+         * Address groups which should be matched against the traffic destination.
+         * Maximum number of destination address groups is 10.
+         */
+        destAddressGroups?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Fully Qualified Domain Name (FQDN) which should be matched against
+         * traffic destination. Maximum number of destination fqdn allowed is 100.
+         */
+        destFqdns?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Destination IP address range in CIDR format. Required for
+         * EGRESS rules.
+         */
+        destIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Region codes whose IP addresses will be used to match for destination
+         * of traffic. Should be specified as 2 letter country code defined as per
+         * ISO 3166 alpha-2 country codes. ex."US"
+         * Maximum number of destination region codes allowed is 5000.
+         */
+        destRegionCodes?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Names of Network Threat Intelligence lists.
+         * The IPs in these lists will be matched against traffic destination.
+         */
+        destThreatIntelligences?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Pairs of IP protocols and ports that the rule should match.
+         * Structure is documented below.
+         */
+        layer4Configs?: pulumi.Input<pulumi.Input<inputs.compute.NetworkFirewallPolicyWithRulesPredefinedRuleMatchLayer4Config>[]>;
+        /**
+         * Address groups which should be matched against the traffic source.
+         * Maximum number of source address groups is 10.
+         */
+        srcAddressGroups?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Fully Qualified Domain Name (FQDN) which should be matched against
+         * traffic source. Maximum number of source fqdn allowed is 100.
+         */
+        srcFqdns?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Source IP address range in CIDR format. Required for
+         * INGRESS rules.
+         */
+        srcIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Region codes whose IP addresses will be used to match for source
+         * of traffic. Should be specified as 2 letter country code defined as per
+         * ISO 3166 alpha-2 country codes. ex."US"
+         * Maximum number of source region codes allowed is 5000.
+         */
+        srcRegionCodes?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * List of secure tag values, which should be matched at the source
+         * of the traffic.
+         * For INGRESS rule, if all the <code>srcSecureTag</code> are INEFFECTIVE,
+         * and there is no <code>srcIpRange</code>, this rule will be ignored.
+         * Maximum number of source tag values allowed is 256.
+         * Structure is documented below.
+         *
+         *
+         * <a name="nestedLayer4Config"></a>The `layer4Config` block supports:
+         */
+        srcSecureTags?: pulumi.Input<pulumi.Input<inputs.compute.NetworkFirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTag>[]>;
+        /**
+         * Names of Network Threat Intelligence lists.
+         * The IPs in these lists will be matched against traffic source.
+         */
+        srcThreatIntelligences?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface NetworkFirewallPolicyWithRulesPredefinedRuleMatchLayer4Config {
+        /**
+         * (Output)
+         * The IP protocol to which this rule applies. The protocol
+         * type is required when creating a firewall rule.
+         * This value can either be one of the following well
+         * known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp),
+         * or the IP protocol number.
+         */
+        ipProtocol?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * An optional list of ports to which this rule applies. This field
+         * is only applicable for UDP or TCP protocol. Each entry must be
+         * either an integer or a range. If not specified, this rule
+         * applies to connections through any port.
+         * Example inputs include: ["22"], ["80","443"], and
+         * ["12345-12349"].
+         */
+        ports?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface NetworkFirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTag {
+        /**
+         * Name of the secure tag, created with TagManager's TagValue API.
+         * @pattern tagValues/[0-9]+
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * [Output Only] State of the secure tag, either `EFFECTIVE` or
+         * `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
+         * or its network is deleted.
+         */
+        state?: pulumi.Input<string>;
+    }
+
+    export interface NetworkFirewallPolicyWithRulesPredefinedRuleTargetSecureTag {
+        /**
+         * Name of the secure tag, created with TagManager's TagValue API.
+         * @pattern tagValues/[0-9]+
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * [Output Only] State of the secure tag, either `EFFECTIVE` or
+         * `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
+         * or its network is deleted.
+         *
+         * - - -
+         */
+        state?: pulumi.Input<string>;
+    }
+
+    export interface NetworkFirewallPolicyWithRulesRule {
+        /**
+         * The Action to perform when the client connection triggers the rule. Can currently be either
+         * "allow", "deny", "applySecurityProfileGroup" or "gotoNext".
+         */
+        action: pulumi.Input<string>;
+        /**
+         * A description of the rule.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * The direction in which this rule applies. If unspecified an INGRESS rule is created.
+         * Possible values are: `INGRESS`, `EGRESS`.
+         */
+        direction?: pulumi.Input<string>;
+        /**
+         * Denotes whether the firewall policy rule is disabled. When set to true,
+         * the firewall policy rule is not enforced and traffic behaves as if it did
+         * not exist. If this is unspecified, the firewall policy rule will be
+         * enabled.
+         */
+        disabled?: pulumi.Input<boolean>;
+        /**
+         * Denotes whether to enable logging for a particular rule.
+         * If logging is enabled, logs will be exported to the
+         * configured export destination in Stackdriver.
+         */
+        enableLogging?: pulumi.Input<boolean>;
+        /**
+         * A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+         * Structure is documented below.
+         */
+        match: pulumi.Input<inputs.compute.NetworkFirewallPolicyWithRulesRuleMatch>;
+        /**
+         * An integer indicating the priority of a rule in the list. The priority must be a value
+         * between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
+         * highest priority and 2147483647 is the lowest priority.
+         */
+        priority: pulumi.Input<number>;
+        /**
+         * An optional name for the rule. This field is not a unique identifier
+         * and can be updated.
+         */
+        ruleName?: pulumi.Input<string>;
+        /**
+         * A fully-qualified URL of a SecurityProfile resource instance.
+         * Example:
+         * https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+         * Must be specified if action is 'apply_security_profile_group'.
+         */
+        securityProfileGroup?: pulumi.Input<string>;
+        /**
+         * A list of secure tags that controls which instances the firewall rule
+         * applies to. If <code>targetSecureTag</code> are specified, then the
+         * firewall rule applies only to instances in the VPC network that have one
+         * of those EFFECTIVE secure tags, if all the targetSecureTag are in
+         * INEFFECTIVE state, then this rule will be ignored.
+         * <code>targetSecureTag</code> may not be set at the same time as
+         * <code>targetServiceAccounts</code>.
+         * If neither <code>targetServiceAccounts</code> nor
+         * <code>targetSecureTag</code> are specified, the firewall rule applies
+         * to all instances on the specified network.
+         * Maximum number of target label tags allowed is 256.
+         * Structure is documented below.
+         */
+        targetSecureTags?: pulumi.Input<pulumi.Input<inputs.compute.NetworkFirewallPolicyWithRulesRuleTargetSecureTag>[]>;
+        /**
+         * A list of service accounts indicating the sets of
+         * instances that are applied with this rule.
+         */
+        targetServiceAccounts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Boolean flag indicating if the traffic should be TLS decrypted.
+         * It can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
+         */
+        tlsInspect?: pulumi.Input<boolean>;
+    }
+
+    export interface NetworkFirewallPolicyWithRulesRuleMatch {
+        /**
+         * Address groups which should be matched against the traffic destination.
+         * Maximum number of destination address groups is 10.
+         */
+        destAddressGroups?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Fully Qualified Domain Name (FQDN) which should be matched against
+         * traffic destination. Maximum number of destination fqdn allowed is 100.
+         */
+        destFqdns?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Destination IP address range in CIDR format. Required for
+         * EGRESS rules.
+         */
+        destIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Region codes whose IP addresses will be used to match for destination
+         * of traffic. Should be specified as 2 letter country code defined as per
+         * ISO 3166 alpha-2 country codes. ex."US"
+         * Maximum number of destination region codes allowed is 5000.
+         */
+        destRegionCodes?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Names of Network Threat Intelligence lists.
+         * The IPs in these lists will be matched against traffic destination.
+         */
+        destThreatIntelligences?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Pairs of IP protocols and ports that the rule should match.
+         * Structure is documented below.
+         */
+        layer4Configs: pulumi.Input<pulumi.Input<inputs.compute.NetworkFirewallPolicyWithRulesRuleMatchLayer4Config>[]>;
+        /**
+         * Address groups which should be matched against the traffic source.
+         * Maximum number of source address groups is 10.
+         */
+        srcAddressGroups?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Fully Qualified Domain Name (FQDN) which should be matched against
+         * traffic source. Maximum number of source fqdn allowed is 100.
+         */
+        srcFqdns?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Source IP address range in CIDR format. Required for
+         * INGRESS rules.
+         */
+        srcIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Region codes whose IP addresses will be used to match for source
+         * of traffic. Should be specified as 2 letter country code defined as per
+         * ISO 3166 alpha-2 country codes. ex."US"
+         * Maximum number of source region codes allowed is 5000.
+         */
+        srcRegionCodes?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * List of secure tag values, which should be matched at the source
+         * of the traffic.
+         * For INGRESS rule, if all the <code>srcSecureTag</code> are INEFFECTIVE,
+         * and there is no <code>srcIpRange</code>, this rule will be ignored.
+         * Maximum number of source tag values allowed is 256.
+         * Structure is documented below.
+         *
+         *
+         * <a name="nestedLayer4Config"></a>The `layer4Config` block supports:
+         */
+        srcSecureTags?: pulumi.Input<pulumi.Input<inputs.compute.NetworkFirewallPolicyWithRulesRuleMatchSrcSecureTag>[]>;
+        /**
+         * Names of Network Threat Intelligence lists.
+         * The IPs in these lists will be matched against traffic source.
+         */
+        srcThreatIntelligences?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface NetworkFirewallPolicyWithRulesRuleMatchLayer4Config {
+        /**
+         * (Output)
+         * The IP protocol to which this rule applies. The protocol
+         * type is required when creating a firewall rule.
+         * This value can either be one of the following well
+         * known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp),
+         * or the IP protocol number.
+         */
+        ipProtocol: pulumi.Input<string>;
+        /**
+         * (Output)
+         * An optional list of ports to which this rule applies. This field
+         * is only applicable for UDP or TCP protocol. Each entry must be
+         * either an integer or a range. If not specified, this rule
+         * applies to connections through any port.
+         * Example inputs include: ["22"], ["80","443"], and
+         * ["12345-12349"].
+         */
+        ports?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface NetworkFirewallPolicyWithRulesRuleMatchSrcSecureTag {
+        /**
+         * Name of the secure tag, created with TagManager's TagValue API.
+         * @pattern tagValues/[0-9]+
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * [Output Only] State of the secure tag, either `EFFECTIVE` or
+         * `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
+         * or its network is deleted.
+         */
+        state?: pulumi.Input<string>;
+    }
+
+    export interface NetworkFirewallPolicyWithRulesRuleTargetSecureTag {
+        /**
+         * Name of the secure tag, created with TagManager's TagValue API.
+         * @pattern tagValues/[0-9]+
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * [Output Only] State of the secure tag, either `EFFECTIVE` or
+         * `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
+         * or its network is deleted.
+         *
+         * - - -
          */
         state?: pulumi.Input<string>;
     }
@@ -25513,9 +25948,24 @@ export namespace compute {
     export interface ServiceAttachmentConnectedEndpoint {
         /**
          * (Output)
+         * The url of the consumer network.
+         */
+        consumerNetwork?: pulumi.Input<string>;
+        /**
+         * (Output)
          * The URL of the consumer forwarding rule.
          */
         endpoint?: pulumi.Input<string>;
+        /**
+         * (Output, Beta)
+         * The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to.
+         */
+        propagatedConnectionCount?: pulumi.Input<number>;
+        /**
+         * (Output)
+         * The PSC connection id of the connected endpoint.
+         */
+        pscConnectionId?: pulumi.Input<string>;
         /**
          * (Output)
          * The status of the connection from the consumer forwarding rule to
@@ -27939,6 +28389,14 @@ export namespace container {
         namespace: pulumi.Input<string>;
     }
 
+    export interface AttachedClusterSecurityPostureConfig {
+        /**
+         * Sets the mode of the Kubernetes security posture API's workload vulnerability scanning.
+         * Possible values are: `VULNERABILITY_DISABLED`, `VULNERABILITY_ENTERPRISE`.
+         */
+        vulnerabilityMode: pulumi.Input<string>;
+    }
+
     export interface AttachedClusterWorkloadIdentityConfig {
         /**
          * The ID of the OIDC Identity Provider (IdP) associated to
@@ -29672,6 +30130,10 @@ export namespace container {
          */
         spot?: pulumi.Input<boolean>;
         /**
+         * The list of Storage Pools where boot disks are provisioned.
+         */
+        storagePools?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
          * The list of instance tags applied to all nodes. Tags are used to identify
          * valid sources or targets for network firewalls.
          */
@@ -30521,6 +30983,10 @@ export namespace container {
          * for more information. Defaults to false.
          */
         spot?: pulumi.Input<boolean>;
+        /**
+         * The list of Storage Pools where boot disks are provisioned.
+         */
+        storagePools?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * The list of instance tags applied to all nodes. Tags are used to identify
          * valid sources or targets for network firewalls.
@@ -31430,6 +31896,10 @@ export namespace container {
          * Whether the nodes are created as spot VM instances.
          */
         spot?: pulumi.Input<boolean>;
+        /**
+         * The list of Storage Pools where boot disks are provisioned.
+         */
+        storagePools?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * The list of instance tags applied to all nodes.
          */
@@ -44021,6 +44491,73 @@ export namespace deploymentmanager {
     }
 }
 
+export namespace developerconnect {
+    export interface ConnectionGithubConfig {
+        /**
+         * Optional. GitHub App installation id.
+         */
+        appInstallationId?: pulumi.Input<string>;
+        /**
+         * Represents an OAuth token of the account that authorized the Connection,
+         * and associated metadata.
+         * Structure is documented below.
+         */
+        authorizerCredential?: pulumi.Input<inputs.developerconnect.ConnectionGithubConfigAuthorizerCredential>;
+        /**
+         * Required. Immutable. The GitHub Application that was installed to the GitHub user or
+         * organization.
+         * Possible values:
+         * GIT_HUB_APP_UNSPECIFIED
+         * DEVELOPER_CONNECT
+         * FIREBASE
+         */
+        githubApp: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. The URI to navigate to in order to manage the installation associated
+         * with this GitHubConfig.
+         */
+        installationUri?: pulumi.Input<string>;
+    }
+
+    export interface ConnectionGithubConfigAuthorizerCredential {
+        /**
+         * Required. A SecretManager resource containing the OAuth token that authorizes
+         * the connection. Format: `projects/*&#47;secrets/*&#47;versions/*`.
+         */
+        oauthTokenSecretVersion: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. The username associated with this token.
+         */
+        username?: pulumi.Input<string>;
+    }
+
+    export interface ConnectionInstallationState {
+        /**
+         * Output only. Link to follow for next action. Empty string if the installation is already
+         * complete.
+         */
+        actionUri?: pulumi.Input<string>;
+        /**
+         * Output only. Message of what the user should do next to continue the installation.
+         * Empty string if the installation is already complete.
+         */
+        message?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. Current step of the installation process.
+         * Possible values:
+         * STAGE_UNSPECIFIED
+         * PENDING_CREATE_APP
+         * PENDING_USER_OAUTH
+         * PENDING_INSTALL_APP
+         * COMPLETE
+         */
+        stage?: pulumi.Input<string>;
+    }
+}
+
 export namespace diagflow {
     export interface CxAgentAdvancedSettings {
         /**
@@ -51849,7 +52386,7 @@ export namespace gkeonprem {
         image?: pulumi.Input<string>;
         /**
          * The OS image to be used for each node in a node pool.
-         * Currently `cos`, `ubuntu`, `ubuntuContainerd` and `windows` are supported.
+         * Currently `cos`, `cosCgv2`, `ubuntu`, `ubuntuCgv2`, `ubuntuContainerd` and `windows` are supported.
          */
         imageType: pulumi.Input<string>;
         /**
@@ -55215,6 +55752,170 @@ export namespace memcache {
          * - - -
          */
         memorySizeMb: pulumi.Input<number>;
+    }
+}
+
+export namespace memorystore {
+    export interface InstanceDesiredPscAutoConnection {
+        /**
+         * (Output)
+         * Output only. The consumer network where the IP address resides, in the form of
+         * projects/{project_id}/global/networks/{network_id}.
+         */
+        network: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. The consumer projectId where the forwarding rule is created from.
+         */
+        projectId: pulumi.Input<string>;
+    }
+
+    export interface InstanceDiscoveryEndpoint {
+        /**
+         * (Output)
+         * Output only. IP address of the exposed endpoint clients connect to.
+         */
+        address?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. The consumer network where the IP address resides, in the form of
+         * projects/{project_id}/global/networks/{network_id}.
+         */
+        network?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. The port number of the exposed endpoint.
+         */
+        port?: pulumi.Input<number>;
+    }
+
+    export interface InstanceNodeConfig {
+        /**
+         * (Output)
+         * Output only. Memory size in GB of the node.
+         */
+        sizeGb?: pulumi.Input<number>;
+    }
+
+    export interface InstancePersistenceConfig {
+        /**
+         * Configuration for AOF based persistence.
+         * Structure is documented below.
+         */
+        aofConfig?: pulumi.Input<inputs.memorystore.InstancePersistenceConfigAofConfig>;
+        /**
+         * Optional. Current persistence mode.
+         * Possible values:
+         * DISABLED
+         * RDB
+         * AOF
+         * Possible values are: `DISABLED`, `RDB`, `AOF`.
+         */
+        mode?: pulumi.Input<string>;
+        /**
+         * Configuration for RDB based persistence.
+         * Structure is documented below.
+         */
+        rdbConfig?: pulumi.Input<inputs.memorystore.InstancePersistenceConfigRdbConfig>;
+    }
+
+    export interface InstancePersistenceConfigAofConfig {
+        /**
+         * Optional. The fsync mode.
+         * Possible values:
+         * NEVER
+         * EVERY_SEC
+         * ALWAYS
+         */
+        appendFsync?: pulumi.Input<string>;
+    }
+
+    export interface InstancePersistenceConfigRdbConfig {
+        /**
+         * Optional. Period between RDB snapshots.
+         * Possible values:
+         * ONE_HOUR
+         * SIX_HOURS
+         * TWELVE_HOURS
+         * TWENTY_FOUR_HOURS
+         */
+        rdbSnapshotPeriod?: pulumi.Input<string>;
+        /**
+         * Optional. Time that the first snapshot was/will be attempted, and to which future
+         * snapshots will be aligned. If not provided, the current time will be
+         * used.
+         */
+        rdbSnapshotStartTime?: pulumi.Input<string>;
+    }
+
+    export interface InstancePscAutoConnection {
+        /**
+         * (Output)
+         * Output only. The URI of the consumer side forwarding rule.
+         * Format:
+         * projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
+         */
+        forwardingRule?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. The IP allocated on the consumer network for the PSC forwarding rule.
+         */
+        ipAddress?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. The consumer network where the IP address resides, in the form of
+         * projects/{project_id}/global/networks/{network_id}.
+         */
+        network?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. The consumer projectId where the forwarding rule is created from.
+         */
+        projectId?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. The PSC connection id of the forwarding rule connected to the
+         * service attachment.
+         */
+        pscConnectionId?: pulumi.Input<string>;
+    }
+
+    export interface InstanceStateInfo {
+        /**
+         * (Output)
+         * Represents information about instance with state UPDATING.
+         * Structure is documented below.
+         */
+        updateInfos?: pulumi.Input<pulumi.Input<inputs.memorystore.InstanceStateInfoUpdateInfo>[]>;
+    }
+
+    export interface InstanceStateInfoUpdateInfo {
+        /**
+         * (Output)
+         * Output only. Target number of replica nodes per shard for the instance.
+         */
+        targetReplicaCount?: pulumi.Input<number>;
+        /**
+         * (Output)
+         * Output only. Target number of shards for the instance.
+         */
+        targetShardCount?: pulumi.Input<number>;
+    }
+
+    export interface InstanceZoneDistributionConfig {
+        /**
+         * Optional. Current zone distribution mode. Defaults to MULTI_ZONE.
+         * Possible values:
+         * MULTI_ZONE
+         * SINGLE_ZONE
+         * Possible values are: `MULTI_ZONE`, `SINGLE_ZONE`.
+         */
+        mode?: pulumi.Input<string>;
+        /**
+         * Optional. Defines zone where all resources will be allocated with SINGLE_ZONE mode.
+         * Ignored for MULTI_ZONE mode.
+         */
+        zone?: pulumi.Input<string>;
     }
 }
 

@@ -234,6 +234,9 @@ namespace Pulumi.Gcp.Compute
         public readonly string? Project;
         public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly ImmutableArray<Outputs.GetInstanceReservationAffinityResult> ReservationAffinities;
+        /// <summary>
+        /// A list of self_links to resource policies attached to the selected `boot_disk`
+        /// </summary>
         public readonly ImmutableArray<string> ResourcePolicies;
         /// <summary>
         /// The scheduling strategy being used by the instance. Structure is documented below

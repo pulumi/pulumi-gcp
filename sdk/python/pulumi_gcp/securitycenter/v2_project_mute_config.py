@@ -365,7 +365,7 @@ class V2ProjectMuteConfig(pulumi.CustomResource):
 
         default = gcp.securitycenter.V2ProjectMuteConfig("default",
             mute_config_id="my-config",
-            project="",
+            project="my-project-name",
             location="global",
             description="My custom Cloud Security Command Center Finding Project mute Configuration",
             filter="severity = \\"HIGH\\"",
@@ -439,7 +439,7 @@ class V2ProjectMuteConfig(pulumi.CustomResource):
 
         default = gcp.securitycenter.V2ProjectMuteConfig("default",
             mute_config_id="my-config",
-            project="",
+            project="my-project-name",
             location="global",
             description="My custom Cloud Security Command Center Finding Project mute Configuration",
             filter="severity = \\"HIGH\\"",

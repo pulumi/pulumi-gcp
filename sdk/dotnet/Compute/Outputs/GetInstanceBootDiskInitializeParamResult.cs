@@ -38,6 +38,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> ResourceManagerTags;
         /// <summary>
+        /// A list of self_links to resource policies attached to the selected `boot_disk`
+        /// </summary>
+        public readonly ImmutableArray<string> ResourcePolicies;
+        /// <summary>
         /// The size of the image in gigabytes.
         /// </summary>
         public readonly int Size;
@@ -64,6 +68,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             ImmutableDictionary<string, string> resourceManagerTags,
 
+            ImmutableArray<string> resourcePolicies,
+
             int size,
 
             string storagePool,
@@ -76,6 +82,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             ProvisionedIops = provisionedIops;
             ProvisionedThroughput = provisionedThroughput;
             ResourceManagerTags = resourceManagerTags;
+            ResourcePolicies = resourcePolicies;
             Size = size;
             StoragePool = storagePool;
             Type = type;

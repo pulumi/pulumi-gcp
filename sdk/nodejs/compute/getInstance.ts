@@ -155,6 +155,9 @@ export interface GetInstanceResult {
     readonly project?: string;
     readonly pulumiLabels: {[key: string]: string};
     readonly reservationAffinities: outputs.compute.GetInstanceReservationAffinity[];
+    /**
+     * A list of selfLinks to resource policies attached to the selected `bootDisk`
+     */
     readonly resourcePolicies: string[];
     /**
      * The scheduling strategy being used by the instance. Structure is documented below

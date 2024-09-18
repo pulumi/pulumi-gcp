@@ -508,6 +508,13 @@ namespace Pulumi.Gcp
             set => _deploymentManagerCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _developerConnectCustomEndpoint = new __Value<string?>(() => __config.Get("developerConnectCustomEndpoint"));
+        public static string? DeveloperConnectCustomEndpoint
+        {
+            get => _developerConnectCustomEndpoint.Get();
+            set => _developerConnectCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _dialogflowCustomEndpoint = new __Value<string?>(() => __config.Get("dialogflowCustomEndpoint"));
         public static string? DialogflowCustomEndpoint
         {
@@ -807,6 +814,13 @@ namespace Pulumi.Gcp
         {
             get => _memcacheCustomEndpoint.Get();
             set => _memcacheCustomEndpoint.Set(value);
+        }
+
+        private static readonly __Value<string?> _memorystoreCustomEndpoint = new __Value<string?>(() => __config.Get("memorystoreCustomEndpoint"));
+        public static string? MemorystoreCustomEndpoint
+        {
+            get => _memorystoreCustomEndpoint.Get();
+            set => _memorystoreCustomEndpoint.Set(value);
         }
 
         private static readonly __Value<string?> _migrationCenterCustomEndpoint = new __Value<string?>(() => __config.Get("migrationCenterCustomEndpoint"));

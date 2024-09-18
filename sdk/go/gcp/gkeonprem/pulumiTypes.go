@@ -17773,7 +17773,7 @@ type VMwareNodePoolConfig struct {
 	// The OS image name in vCenter, only valid when using Windows.
 	Image *string `pulumi:"image"`
 	// The OS image to be used for each node in a node pool.
-	// Currently `cos`, `ubuntu`, `ubuntuContainerd` and `windows` are supported.
+	// Currently `cos`, `cosCgv2`, `ubuntu`, `ubuntuCgv2`, `ubuntuContainerd` and `windows` are supported.
 	ImageType string `pulumi:"imageType"`
 	// The map of Kubernetes labels (key/value pairs) to be applied to each node.
 	// These will added in addition to any default label(s) that
@@ -17816,7 +17816,7 @@ type VMwareNodePoolConfigArgs struct {
 	// The OS image name in vCenter, only valid when using Windows.
 	Image pulumi.StringPtrInput `pulumi:"image"`
 	// The OS image to be used for each node in a node pool.
-	// Currently `cos`, `ubuntu`, `ubuntuContainerd` and `windows` are supported.
+	// Currently `cos`, `cosCgv2`, `ubuntu`, `ubuntuCgv2`, `ubuntuContainerd` and `windows` are supported.
 	ImageType pulumi.StringInput `pulumi:"imageType"`
 	// The map of Kubernetes labels (key/value pairs) to be applied to each node.
 	// These will added in addition to any default label(s) that
@@ -17936,7 +17936,7 @@ func (o VMwareNodePoolConfigOutput) Image() pulumi.StringPtrOutput {
 }
 
 // The OS image to be used for each node in a node pool.
-// Currently `cos`, `ubuntu`, `ubuntuContainerd` and `windows` are supported.
+// Currently `cos`, `cosCgv2`, `ubuntu`, `ubuntuCgv2`, `ubuntuContainerd` and `windows` are supported.
 func (o VMwareNodePoolConfigOutput) ImageType() pulumi.StringOutput {
 	return o.ApplyT(func(v VMwareNodePoolConfig) string { return v.ImageType }).(pulumi.StringOutput)
 }
@@ -18039,7 +18039,7 @@ func (o VMwareNodePoolConfigPtrOutput) Image() pulumi.StringPtrOutput {
 }
 
 // The OS image to be used for each node in a node pool.
-// Currently `cos`, `ubuntu`, `ubuntuContainerd` and `windows` are supported.
+// Currently `cos`, `cosCgv2`, `ubuntu`, `ubuntuCgv2`, `ubuntuContainerd` and `windows` are supported.
 func (o VMwareNodePoolConfigPtrOutput) ImageType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VMwareNodePoolConfig) *string {
 		if v == nil {

@@ -372,6 +372,9 @@ class GetInstanceResult:
     @property
     @pulumi.getter(name="resourcePolicies")
     def resource_policies(self) -> Sequence[str]:
+        """
+        A list of self_links to resource policies attached to the selected `boot_disk`
+        """
         return pulumi.get(self, "resource_policies")
 
     @property

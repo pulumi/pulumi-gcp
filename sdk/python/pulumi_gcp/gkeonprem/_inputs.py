@@ -7980,7 +7980,7 @@ if not MYPY:
         image_type: pulumi.Input[str]
         """
         The OS image to be used for each node in a node pool.
-        Currently `cos`, `ubuntu`, `ubuntu_containerd` and `windows` are supported.
+        Currently `cos`, `cos_cgv2`, `ubuntu`, `ubuntu_cgv2`, `ubuntu_containerd` and `windows` are supported.
         """
         boot_disk_size_gb: NotRequired[pulumi.Input[int]]
         """
@@ -8044,7 +8044,7 @@ class VMwareNodePoolConfigArgs:
                  vsphere_config: Optional[pulumi.Input['VMwareNodePoolConfigVsphereConfigArgs']] = None):
         """
         :param pulumi.Input[str] image_type: The OS image to be used for each node in a node pool.
-               Currently `cos`, `ubuntu`, `ubuntu_containerd` and `windows` are supported.
+               Currently `cos`, `cos_cgv2`, `ubuntu`, `ubuntu_cgv2`, `ubuntu_containerd` and `windows` are supported.
         :param pulumi.Input[int] boot_disk_size_gb: VMware disk size to be used during creation.
         :param pulumi.Input[int] cpus: The number of CPUs for each node in the node pool.
         :param pulumi.Input[bool] enable_load_balancer: Allow node pool traffic to be load balanced. Only works for clusters with
@@ -8088,7 +8088,7 @@ class VMwareNodePoolConfigArgs:
     def image_type(self) -> pulumi.Input[str]:
         """
         The OS image to be used for each node in a node pool.
-        Currently `cos`, `ubuntu`, `ubuntu_containerd` and `windows` are supported.
+        Currently `cos`, `cos_cgv2`, `ubuntu`, `ubuntu_cgv2`, `ubuntu_containerd` and `windows` are supported.
         """
         return pulumi.get(self, "image_type")
 

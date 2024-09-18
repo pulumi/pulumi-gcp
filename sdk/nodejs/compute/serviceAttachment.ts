@@ -439,6 +439,14 @@ export class ServiceAttachment extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The number of consumer spokes that connected Private Service Connect endpoints can be propagated to through Network Connectivity Center.
+     * This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.
+     * If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list.
+     * If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
+     * If unspecified, the default propagated connection limit is 250.
+     */
+    public readonly propagatedConnectionLimit!: pulumi.Output<number>;
+    /**
      * This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
      * If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
      * If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
@@ -481,6 +489,7 @@ export class ServiceAttachment extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["natSubnets"] = state ? state.natSubnets : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["propagatedConnectionLimit"] = state ? state.propagatedConnectionLimit : undefined;
             resourceInputs["reconcileConnections"] = state ? state.reconcileConnections : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
@@ -508,6 +517,7 @@ export class ServiceAttachment extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["natSubnets"] = args ? args.natSubnets : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["propagatedConnectionLimit"] = args ? args.propagatedConnectionLimit : undefined;
             resourceInputs["reconcileConnections"] = args ? args.reconcileConnections : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["targetService"] = args ? args.targetService : undefined;
@@ -590,6 +600,14 @@ export interface ServiceAttachmentState {
      */
     project?: pulumi.Input<string>;
     /**
+     * The number of consumer spokes that connected Private Service Connect endpoints can be propagated to through Network Connectivity Center.
+     * This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.
+     * If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list.
+     * If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
+     * If unspecified, the default propagated connection limit is 250.
+     */
+    propagatedConnectionLimit?: pulumi.Input<number>;
+    /**
      * This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
      * If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
      * If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
@@ -667,6 +685,14 @@ export interface ServiceAttachmentArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The number of consumer spokes that connected Private Service Connect endpoints can be propagated to through Network Connectivity Center.
+     * This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.
+     * If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list.
+     * If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
+     * If unspecified, the default propagated connection limit is 250.
+     */
+    propagatedConnectionLimit?: pulumi.Input<number>;
     /**
      * This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
      * If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .

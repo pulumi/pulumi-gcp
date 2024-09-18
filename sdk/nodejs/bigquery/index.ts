@@ -95,6 +95,11 @@ export const getTableIamPolicy: typeof import("./getTableIamPolicy").getTableIam
 export const getTableIamPolicyOutput: typeof import("./getTableIamPolicy").getTableIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getTableIamPolicy","getTableIamPolicyOutput"], () => require("./getTableIamPolicy"));
 
+export { GetTablesArgs, GetTablesResult, GetTablesOutputArgs } from "./getTables";
+export const getTables: typeof import("./getTables").getTables = null as any;
+export const getTablesOutput: typeof import("./getTables").getTablesOutput = null as any;
+utilities.lazyLoad(exports, ["getTables","getTablesOutput"], () => require("./getTables"));
+
 export { IamBindingArgs, IamBindingState } from "./iamBinding";
 export type IamBinding = import("./iamBinding").IamBinding;
 export const IamBinding: typeof import("./iamBinding").IamBinding = null as any;

@@ -132,8 +132,7 @@ export class Connector extends pulumi.CustomResource {
     /**
      * Maximum throughput of the connector in Mbps, must be greater than `minThroughput`. Default is 300. Refers to the expected throughput
      * when using an e2-micro machine type. Value must be a multiple of 100 from 300 through 1000. Must be higher than the value specified by
-     * min_throughput. If both maxThroughput and maxInstances are provided, maxInstances takes precedence over max_throughput. The use of
-     * maxThroughput is discouraged in favor of max_instances.
+     * min_throughput. Only one of `maxThroughput` and `maxInstances` can be specified. The use of maxThroughput is discouraged in favor of max_instances.
      */
     public readonly maxThroughput!: pulumi.Output<number>;
     /**
@@ -143,8 +142,8 @@ export class Connector extends pulumi.CustomResource {
     public readonly minInstances!: pulumi.Output<number>;
     /**
      * Minimum throughput of the connector in Mbps. Default and min is 200. Refers to the expected throughput when using an e2-micro machine type.
-     * Value must be a multiple of 100 from 200 through 900. Must be lower than the value specified by max_throughput. If both minThroughput and
-     * minInstances are provided, minInstances takes precedence over min_throughput. The use of minThroughput is discouraged in favor of min_instances.
+     * Value must be a multiple of 100 from 200 through 900. Must be lower than the value specified by max_throughput.
+     * Only one of `minThroughput` and `minInstances` can be specified. The use of minThroughput is discouraged in favor of min_instances.
      */
     public readonly minThroughput!: pulumi.Output<number>;
     /**
@@ -254,8 +253,7 @@ export interface ConnectorState {
     /**
      * Maximum throughput of the connector in Mbps, must be greater than `minThroughput`. Default is 300. Refers to the expected throughput
      * when using an e2-micro machine type. Value must be a multiple of 100 from 300 through 1000. Must be higher than the value specified by
-     * min_throughput. If both maxThroughput and maxInstances are provided, maxInstances takes precedence over max_throughput. The use of
-     * maxThroughput is discouraged in favor of max_instances.
+     * min_throughput. Only one of `maxThroughput` and `maxInstances` can be specified. The use of maxThroughput is discouraged in favor of max_instances.
      */
     maxThroughput?: pulumi.Input<number>;
     /**
@@ -265,8 +263,8 @@ export interface ConnectorState {
     minInstances?: pulumi.Input<number>;
     /**
      * Minimum throughput of the connector in Mbps. Default and min is 200. Refers to the expected throughput when using an e2-micro machine type.
-     * Value must be a multiple of 100 from 200 through 900. Must be lower than the value specified by max_throughput. If both minThroughput and
-     * minInstances are provided, minInstances takes precedence over min_throughput. The use of minThroughput is discouraged in favor of min_instances.
+     * Value must be a multiple of 100 from 200 through 900. Must be lower than the value specified by max_throughput.
+     * Only one of `minThroughput` and `minInstances` can be specified. The use of minThroughput is discouraged in favor of min_instances.
      */
     minThroughput?: pulumi.Input<number>;
     /**
@@ -324,8 +322,7 @@ export interface ConnectorArgs {
     /**
      * Maximum throughput of the connector in Mbps, must be greater than `minThroughput`. Default is 300. Refers to the expected throughput
      * when using an e2-micro machine type. Value must be a multiple of 100 from 300 through 1000. Must be higher than the value specified by
-     * min_throughput. If both maxThroughput and maxInstances are provided, maxInstances takes precedence over max_throughput. The use of
-     * maxThroughput is discouraged in favor of max_instances.
+     * min_throughput. Only one of `maxThroughput` and `maxInstances` can be specified. The use of maxThroughput is discouraged in favor of max_instances.
      */
     maxThroughput?: pulumi.Input<number>;
     /**
@@ -335,8 +332,8 @@ export interface ConnectorArgs {
     minInstances?: pulumi.Input<number>;
     /**
      * Minimum throughput of the connector in Mbps. Default and min is 200. Refers to the expected throughput when using an e2-micro machine type.
-     * Value must be a multiple of 100 from 200 through 900. Must be lower than the value specified by max_throughput. If both minThroughput and
-     * minInstances are provided, minInstances takes precedence over min_throughput. The use of minThroughput is discouraged in favor of min_instances.
+     * Value must be a multiple of 100 from 200 through 900. Must be lower than the value specified by max_throughput.
+     * Only one of `minThroughput` and `minInstances` can be specified. The use of minThroughput is discouraged in favor of min_instances.
      */
     minThroughput?: pulumi.Input<number>;
     /**

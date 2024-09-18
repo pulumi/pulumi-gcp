@@ -24,32 +24,7 @@ namespace Pulumi.Gcp.Organizations
     /// [Access Control for Folders Using IAM](https://cloud.google.com/resource-manager/docs/access-control-folders)
     /// doc for more information.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // Top-level folder under an organization.
-    ///     var department1 = new Gcp.Organizations.Folder("department1", new()
-    ///     {
-    ///         DisplayName = "Department 1",
-    ///         Parent = "organizations/1234567",
-    ///     });
-    /// 
-    ///     // Folder nested under another folder.
-    ///     var team_abc = new Gcp.Organizations.Folder("team-abc", new()
-    ///     {
-    ///         DisplayName = "Team ABC",
-    ///         Parent = department1.Name,
-    ///     });
-    /// 
-    /// });
-    /// ```
+    /// &gt; It may take a while for the attached tag bindings to be deleted after the folder is scheduled to be deleted.
     /// 
     /// ## Import
     /// 
@@ -114,6 +89,12 @@ namespace Pulumi.Gcp.Organizations
         [Output("parent")]
         public Output<string> Parent { get; private set; } = null!;
 
+        /// <summary>
+        /// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when  mutated.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Folder resource with the given unique name, arguments, and options.
@@ -177,6 +158,18 @@ namespace Pulumi.Gcp.Organizations
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
 
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when  mutated.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
         public FolderArgs()
         {
         }
@@ -226,6 +219,18 @@ namespace Pulumi.Gcp.Organizations
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when  mutated.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         public FolderState()
         {

@@ -85,16 +85,18 @@ public final class StreamArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Desired state of the Stream. Set this field to &#39;RUNNING&#39; to start the stream, and &#39;PAUSED&#39; to pause the stream. Possible
-     * values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
+     * Desired state of the Stream. Set this field to &#39;RUNNING&#39; to start the stream, &#39;NOT_STARTED&#39; to create the stream without
+     * starting and &#39;PAUSED&#39; to pause the stream from a &#39;RUNNING&#39; state. Possible values: NOT_STARTED, RUNNING, PAUSED.
+     * Default: NOT_STARTED
      * 
      */
     @Import(name="desiredState")
     private @Nullable Output<String> desiredState;
 
     /**
-     * @return Desired state of the Stream. Set this field to &#39;RUNNING&#39; to start the stream, and &#39;PAUSED&#39; to pause the stream. Possible
-     * values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
+     * @return Desired state of the Stream. Set this field to &#39;RUNNING&#39; to start the stream, &#39;NOT_STARTED&#39; to create the stream without
+     * starting and &#39;PAUSED&#39; to pause the stream from a &#39;RUNNING&#39; state. Possible values: NOT_STARTED, RUNNING, PAUSED.
+     * Default: NOT_STARTED
      * 
      */
     public Optional<Output<String>> desiredState() {
@@ -326,8 +328,9 @@ public final class StreamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param desiredState Desired state of the Stream. Set this field to &#39;RUNNING&#39; to start the stream, and &#39;PAUSED&#39; to pause the stream. Possible
-         * values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
+         * @param desiredState Desired state of the Stream. Set this field to &#39;RUNNING&#39; to start the stream, &#39;NOT_STARTED&#39; to create the stream without
+         * starting and &#39;PAUSED&#39; to pause the stream from a &#39;RUNNING&#39; state. Possible values: NOT_STARTED, RUNNING, PAUSED.
+         * Default: NOT_STARTED
          * 
          * @return builder
          * 
@@ -338,8 +341,9 @@ public final class StreamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param desiredState Desired state of the Stream. Set this field to &#39;RUNNING&#39; to start the stream, and &#39;PAUSED&#39; to pause the stream. Possible
-         * values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
+         * @param desiredState Desired state of the Stream. Set this field to &#39;RUNNING&#39; to start the stream, &#39;NOT_STARTED&#39; to create the stream without
+         * starting and &#39;PAUSED&#39; to pause the stream from a &#39;RUNNING&#39; state. Possible values: NOT_STARTED, RUNNING, PAUSED.
+         * Default: NOT_STARTED
          * 
          * @return builder
          * 

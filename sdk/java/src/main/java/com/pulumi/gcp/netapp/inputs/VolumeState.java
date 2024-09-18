@@ -235,6 +235,21 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
+     * 
+     */
+    @Import(name="largeCapacity")
+    private @Nullable Output<Boolean> largeCapacity;
+
+    /**
+     * @return Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
+     * 
+     */
+    public Optional<Output<Boolean>> largeCapacity() {
+        return Optional.ofNullable(this.largeCapacity);
+    }
+
+    /**
      * Flag indicating if the volume is NFS LDAP enabled or not. Inherited from storage pool.
      * 
      */
@@ -279,6 +294,23 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<VolumeMountOptionArgs>>> mountOptions() {
         return Optional.ofNullable(this.mountOptions);
+    }
+
+    /**
+     * Optional. Flag indicating if the volume will have an IP address per node for volumes supporting multiple IP endpoints.
+     * Only the volume with largeCapacity will be allowed to have multiple endpoints.
+     * 
+     */
+    @Import(name="multipleEndpoints")
+    private @Nullable Output<Boolean> multipleEndpoints;
+
+    /**
+     * @return Optional. Flag indicating if the volume will have an IP address per node for volumes supporting multiple IP endpoints.
+     * Only the volume with largeCapacity will be allowed to have multiple endpoints.
+     * 
+     */
+    public Optional<Output<Boolean>> multipleEndpoints() {
+        return Optional.ofNullable(this.multipleEndpoints);
     }
 
     /**
@@ -636,9 +668,11 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
         this.kerberosEnabled = $.kerberosEnabled;
         this.kmsConfig = $.kmsConfig;
         this.labels = $.labels;
+        this.largeCapacity = $.largeCapacity;
         this.ldapEnabled = $.ldapEnabled;
         this.location = $.location;
         this.mountOptions = $.mountOptions;
+        this.multipleEndpoints = $.multipleEndpoints;
         this.name = $.name;
         this.network = $.network;
         this.project = $.project;
@@ -970,6 +1004,27 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param largeCapacity Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder largeCapacity(@Nullable Output<Boolean> largeCapacity) {
+            $.largeCapacity = largeCapacity;
+            return this;
+        }
+
+        /**
+         * @param largeCapacity Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder largeCapacity(Boolean largeCapacity) {
+            return largeCapacity(Output.of(largeCapacity));
+        }
+
+        /**
          * @param ldapEnabled Flag indicating if the volume is NFS LDAP enabled or not. Inherited from storage pool.
          * 
          * @return builder
@@ -1043,6 +1098,29 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder mountOptions(VolumeMountOptionArgs... mountOptions) {
             return mountOptions(List.of(mountOptions));
+        }
+
+        /**
+         * @param multipleEndpoints Optional. Flag indicating if the volume will have an IP address per node for volumes supporting multiple IP endpoints.
+         * Only the volume with largeCapacity will be allowed to have multiple endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder multipleEndpoints(@Nullable Output<Boolean> multipleEndpoints) {
+            $.multipleEndpoints = multipleEndpoints;
+            return this;
+        }
+
+        /**
+         * @param multipleEndpoints Optional. Flag indicating if the volume will have an IP address per node for volumes supporting multiple IP endpoints.
+         * Only the volume with largeCapacity will be allowed to have multiple endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder multipleEndpoints(Boolean multipleEndpoints) {
+            return multipleEndpoints(Output.of(multipleEndpoints));
         }
 
         /**

@@ -86,6 +86,7 @@ import * as utilities from "../utilities";
  * const _default = new gcp.dataproc.MetastoreService("default", {
  *     serviceId: "metastore-srv",
  *     location: "us-central1",
+ *     tier: "DEVELOPER",
  *     hiveMetastoreConfig: {
  *         version: "3.1.2",
  *     },

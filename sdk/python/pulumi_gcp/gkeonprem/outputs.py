@@ -6294,7 +6294,7 @@ class VMwareNodePoolConfig(dict):
                  vsphere_config: Optional['outputs.VMwareNodePoolConfigVsphereConfig'] = None):
         """
         :param str image_type: The OS image to be used for each node in a node pool.
-               Currently `cos`, `ubuntu`, `ubuntu_containerd` and `windows` are supported.
+               Currently `cos`, `cos_cgv2`, `ubuntu`, `ubuntu_cgv2`, `ubuntu_containerd` and `windows` are supported.
         :param int boot_disk_size_gb: VMware disk size to be used during creation.
         :param int cpus: The number of CPUs for each node in the node pool.
         :param bool enable_load_balancer: Allow node pool traffic to be load balanced. Only works for clusters with
@@ -6338,7 +6338,7 @@ class VMwareNodePoolConfig(dict):
     def image_type(self) -> str:
         """
         The OS image to be used for each node in a node pool.
-        Currently `cos`, `ubuntu`, `ubuntu_containerd` and `windows` are supported.
+        Currently `cos`, `cos_cgv2`, `ubuntu`, `ubuntu_cgv2`, `ubuntu_containerd` and `windows` are supported.
         """
         return pulumi.get(self, "image_type")
 

@@ -1236,8 +1236,9 @@ type Stream struct {
 	// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
 	// encrypted using an internal Stream-specific encryption key provisioned through KMS.
 	CustomerManagedEncryptionKey pulumi.StringPtrOutput `pulumi:"customerManagedEncryptionKey"`
-	// Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream. Possible
-	// values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
+	// Desired state of the Stream. Set this field to 'RUNNING' to start the stream, 'NOT_STARTED' to create the stream without
+	// starting and 'PAUSED' to pause the stream from a 'RUNNING' state. Possible values: NOT_STARTED, RUNNING, PAUSED.
+	// Default: NOT_STARTED
 	DesiredState pulumi.StringPtrOutput `pulumi:"desiredState"`
 	// Destination connection profile configuration.
 	// Structure is documented below.
@@ -1325,8 +1326,9 @@ type streamState struct {
 	// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
 	// encrypted using an internal Stream-specific encryption key provisioned through KMS.
 	CustomerManagedEncryptionKey *string `pulumi:"customerManagedEncryptionKey"`
-	// Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream. Possible
-	// values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
+	// Desired state of the Stream. Set this field to 'RUNNING' to start the stream, 'NOT_STARTED' to create the stream without
+	// starting and 'PAUSED' to pause the stream from a 'RUNNING' state. Possible values: NOT_STARTED, RUNNING, PAUSED.
+	// Default: NOT_STARTED
 	DesiredState *string `pulumi:"desiredState"`
 	// Destination connection profile configuration.
 	// Structure is documented below.
@@ -1365,8 +1367,9 @@ type StreamState struct {
 	// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
 	// encrypted using an internal Stream-specific encryption key provisioned through KMS.
 	CustomerManagedEncryptionKey pulumi.StringPtrInput
-	// Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream. Possible
-	// values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
+	// Desired state of the Stream. Set this field to 'RUNNING' to start the stream, 'NOT_STARTED' to create the stream without
+	// starting and 'PAUSED' to pause the stream from a 'RUNNING' state. Possible values: NOT_STARTED, RUNNING, PAUSED.
+	// Default: NOT_STARTED
 	DesiredState pulumi.StringPtrInput
 	// Destination connection profile configuration.
 	// Structure is documented below.
@@ -1409,8 +1412,9 @@ type streamArgs struct {
 	// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
 	// encrypted using an internal Stream-specific encryption key provisioned through KMS.
 	CustomerManagedEncryptionKey *string `pulumi:"customerManagedEncryptionKey"`
-	// Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream. Possible
-	// values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
+	// Desired state of the Stream. Set this field to 'RUNNING' to start the stream, 'NOT_STARTED' to create the stream without
+	// starting and 'PAUSED' to pause the stream from a 'RUNNING' state. Possible values: NOT_STARTED, RUNNING, PAUSED.
+	// Default: NOT_STARTED
 	DesiredState *string `pulumi:"desiredState"`
 	// Destination connection profile configuration.
 	// Structure is documented below.
@@ -1441,8 +1445,9 @@ type StreamArgs struct {
 	// A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be
 	// encrypted using an internal Stream-specific encryption key provisioned through KMS.
 	CustomerManagedEncryptionKey pulumi.StringPtrInput
-	// Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream. Possible
-	// values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
+	// Desired state of the Stream. Set this field to 'RUNNING' to start the stream, 'NOT_STARTED' to create the stream without
+	// starting and 'PAUSED' to pause the stream from a 'RUNNING' state. Possible values: NOT_STARTED, RUNNING, PAUSED.
+	// Default: NOT_STARTED
 	DesiredState pulumi.StringPtrInput
 	// Destination connection profile configuration.
 	// Structure is documented below.
@@ -1570,8 +1575,9 @@ func (o StreamOutput) CustomerManagedEncryptionKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Stream) pulumi.StringPtrOutput { return v.CustomerManagedEncryptionKey }).(pulumi.StringPtrOutput)
 }
 
-// Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream. Possible
-// values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
+// Desired state of the Stream. Set this field to 'RUNNING' to start the stream, 'NOT_STARTED' to create the stream without
+// starting and 'PAUSED' to pause the stream from a 'RUNNING' state. Possible values: NOT_STARTED, RUNNING, PAUSED.
+// Default: NOT_STARTED
 func (o StreamOutput) DesiredState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Stream) pulumi.StringPtrOutput { return v.DesiredState }).(pulumi.StringPtrOutput)
 }

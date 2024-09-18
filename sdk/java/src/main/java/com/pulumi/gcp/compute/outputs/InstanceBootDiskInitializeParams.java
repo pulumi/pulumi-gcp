@@ -67,6 +67,11 @@ public final class InstanceBootDiskInitializeParams {
      */
     private @Nullable Map<String,String> resourceManagerTags;
     /**
+     * @return A list of self_links of resource policies to attach to the instance&#39;s boot disk. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+     * 
+     */
+    private @Nullable String resourcePolicies;
+    /**
      * @return The size of the image in gigabytes. If not specified, it
      * will inherit the size of its base image.
      * 
@@ -152,6 +157,13 @@ public final class InstanceBootDiskInitializeParams {
         return this.resourceManagerTags == null ? Map.of() : this.resourceManagerTags;
     }
     /**
+     * @return A list of self_links of resource policies to attach to the instance&#39;s boot disk. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+     * 
+     */
+    public Optional<String> resourcePolicies() {
+        return Optional.ofNullable(this.resourcePolicies);
+    }
+    /**
      * @return The size of the image in gigabytes. If not specified, it
      * will inherit the size of its base image.
      * 
@@ -192,6 +204,7 @@ public final class InstanceBootDiskInitializeParams {
         private @Nullable Integer provisionedIops;
         private @Nullable Integer provisionedThroughput;
         private @Nullable Map<String,String> resourceManagerTags;
+        private @Nullable String resourcePolicies;
         private @Nullable Integer size;
         private @Nullable String storagePool;
         private @Nullable String type;
@@ -204,6 +217,7 @@ public final class InstanceBootDiskInitializeParams {
     	      this.provisionedIops = defaults.provisionedIops;
     	      this.provisionedThroughput = defaults.provisionedThroughput;
     	      this.resourceManagerTags = defaults.resourceManagerTags;
+    	      this.resourcePolicies = defaults.resourcePolicies;
     	      this.size = defaults.size;
     	      this.storagePool = defaults.storagePool;
     	      this.type = defaults.type;
@@ -246,6 +260,12 @@ public final class InstanceBootDiskInitializeParams {
             return this;
         }
         @CustomType.Setter
+        public Builder resourcePolicies(@Nullable String resourcePolicies) {
+
+            this.resourcePolicies = resourcePolicies;
+            return this;
+        }
+        @CustomType.Setter
         public Builder size(@Nullable Integer size) {
 
             this.size = size;
@@ -271,6 +291,7 @@ public final class InstanceBootDiskInitializeParams {
             _resultValue.provisionedIops = provisionedIops;
             _resultValue.provisionedThroughput = provisionedThroughput;
             _resultValue.resourceManagerTags = resourceManagerTags;
+            _resultValue.resourcePolicies = resourcePolicies;
             _resultValue.size = size;
             _resultValue.storagePool = storagePool;
             _resultValue.type = type;

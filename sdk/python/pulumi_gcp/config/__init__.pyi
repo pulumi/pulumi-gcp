@@ -151,6 +151,8 @@ defaultLabels: Optional[str]
 
 deploymentManagerCustomEndpoint: Optional[str]
 
+developerConnectCustomEndpoint: Optional[str]
+
 dialogflowCustomEndpoint: Optional[str]
 
 dialogflowCxCustomEndpoint: Optional[str]
@@ -236,6 +238,8 @@ lookerCustomEndpoint: Optional[str]
 managedKafkaCustomEndpoint: Optional[str]
 
 memcacheCustomEndpoint: Optional[str]
+
+memorystoreCustomEndpoint: Optional[str]
 
 migrationCenterCustomEndpoint: Optional[str]
 

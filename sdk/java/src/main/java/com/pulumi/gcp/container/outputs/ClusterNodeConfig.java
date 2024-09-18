@@ -262,6 +262,11 @@ public final class ClusterNodeConfig {
      */
     private @Nullable Boolean spot;
     /**
+     * @return The list of Storage Pools where boot disks are provisioned.
+     * 
+     */
+    private @Nullable List<String> storagePools;
+    /**
      * @return The list of instance tags applied to all nodes. Tags are used to identify
      * valid sources or targets for network firewalls.
      * 
@@ -587,6 +592,13 @@ public final class ClusterNodeConfig {
         return Optional.ofNullable(this.spot);
     }
     /**
+     * @return The list of Storage Pools where boot disks are provisioned.
+     * 
+     */
+    public List<String> storagePools() {
+        return this.storagePools == null ? List.of() : this.storagePools;
+    }
+    /**
      * @return The list of instance tags applied to all nodes. Tags are used to identify
      * valid sources or targets for network firewalls.
      * 
@@ -663,6 +675,7 @@ public final class ClusterNodeConfig {
         private @Nullable ClusterNodeConfigShieldedInstanceConfig shieldedInstanceConfig;
         private @Nullable ClusterNodeConfigSoleTenantConfig soleTenantConfig;
         private @Nullable Boolean spot;
+        private @Nullable List<String> storagePools;
         private @Nullable List<String> tags;
         private @Nullable List<ClusterNodeConfigTaint> taints;
         private @Nullable ClusterNodeConfigWorkloadMetadataConfig workloadMetadataConfig;
@@ -706,6 +719,7 @@ public final class ClusterNodeConfig {
     	      this.shieldedInstanceConfig = defaults.shieldedInstanceConfig;
     	      this.soleTenantConfig = defaults.soleTenantConfig;
     	      this.spot = defaults.spot;
+    	      this.storagePools = defaults.storagePools;
     	      this.tags = defaults.tags;
     	      this.taints = defaults.taints;
     	      this.workloadMetadataConfig = defaults.workloadMetadataConfig;
@@ -946,6 +960,15 @@ public final class ClusterNodeConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder storagePools(@Nullable List<String> storagePools) {
+
+            this.storagePools = storagePools;
+            return this;
+        }
+        public Builder storagePools(String... storagePools) {
+            return storagePools(List.of(storagePools));
+        }
+        @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
 
             this.tags = tags;
@@ -1008,6 +1031,7 @@ public final class ClusterNodeConfig {
             _resultValue.shieldedInstanceConfig = shieldedInstanceConfig;
             _resultValue.soleTenantConfig = soleTenantConfig;
             _resultValue.spot = spot;
+            _resultValue.storagePools = storagePools;
             _resultValue.tags = tags;
             _resultValue.taints = taints;
             _resultValue.workloadMetadataConfig = workloadMetadataConfig;

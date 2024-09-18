@@ -21,18 +21,22 @@ class FolderArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
                  parent: pulumi.Input[str],
-                 deletion_protection: Optional[pulumi.Input[bool]] = None):
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Folder resource.
         :param pulumi.Input[str] display_name: The folder’s display name.
                A folder’s display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters.
         :param pulumi.Input[str] parent: The resource name of the parent Folder or Organization.
                Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when  mutated.
         """
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "parent", parent)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="displayName")
@@ -69,6 +73,18 @@ class FolderArgs:
     def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "deletion_protection", value)
 
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when  mutated.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
 
 @pulumi.input_type
 class _FolderState:
@@ -79,7 +95,8 @@ class _FolderState:
                  folder_id: Optional[pulumi.Input[str]] = None,
                  lifecycle_state: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None):
+                 parent: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Folder resources.
         :param pulumi.Input[str] create_time: Timestamp when the Folder was created. Assigned by the server.
@@ -91,6 +108,7 @@ class _FolderState:
         :param pulumi.Input[str] name: The resource name of the Folder. Its format is folders/{folder_id}.
         :param pulumi.Input[str] parent: The resource name of the parent Folder or Organization.
                Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when  mutated.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -106,6 +124,8 @@ class _FolderState:
             pulumi.set(__self__, "name", name)
         if parent is not None:
             pulumi.set(__self__, "parent", parent)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="createTime")
@@ -191,6 +211,18 @@ class _FolderState:
     def parent(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "parent", value)
 
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when  mutated.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
 
 class Folder(pulumi.CustomResource):
     @overload
@@ -200,6 +232,7 @@ class Folder(pulumi.CustomResource):
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Allows management of a Google Cloud Platform folder. For more information see
@@ -216,21 +249,7 @@ class Folder(pulumi.CustomResource):
         [Access Control for Folders Using IAM](https://cloud.google.com/resource-manager/docs/access-control-folders)
         doc for more information.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        # Top-level folder under an organization.
-        department1 = gcp.organizations.Folder("department1",
-            display_name="Department 1",
-            parent="organizations/1234567")
-        # Folder nested under another folder.
-        team_abc = gcp.organizations.Folder("team-abc",
-            display_name="Team ABC",
-            parent=department1.name)
-        ```
+        > It may take a while for the attached tag bindings to be deleted after the folder is scheduled to be deleted.
 
         ## Import
 
@@ -256,6 +275,7 @@ class Folder(pulumi.CustomResource):
                A folder’s display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters.
         :param pulumi.Input[str] parent: The resource name of the parent Folder or Organization.
                Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when  mutated.
         """
         ...
     @overload
@@ -278,21 +298,7 @@ class Folder(pulumi.CustomResource):
         [Access Control for Folders Using IAM](https://cloud.google.com/resource-manager/docs/access-control-folders)
         doc for more information.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        # Top-level folder under an organization.
-        department1 = gcp.organizations.Folder("department1",
-            display_name="Department 1",
-            parent="organizations/1234567")
-        # Folder nested under another folder.
-        team_abc = gcp.organizations.Folder("team-abc",
-            display_name="Team ABC",
-            parent=department1.name)
-        ```
+        > It may take a while for the attached tag bindings to be deleted after the folder is scheduled to be deleted.
 
         ## Import
 
@@ -330,6 +336,7 @@ class Folder(pulumi.CustomResource):
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -346,6 +353,7 @@ class Folder(pulumi.CustomResource):
             if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
             __props__.__dict__["parent"] = parent
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["create_time"] = None
             __props__.__dict__["folder_id"] = None
             __props__.__dict__["lifecycle_state"] = None
@@ -366,7 +374,8 @@ class Folder(pulumi.CustomResource):
             folder_id: Optional[pulumi.Input[str]] = None,
             lifecycle_state: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            parent: Optional[pulumi.Input[str]] = None) -> 'Folder':
+            parent: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Folder':
         """
         Get an existing Folder resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -383,6 +392,7 @@ class Folder(pulumi.CustomResource):
         :param pulumi.Input[str] name: The resource name of the Folder. Its format is folders/{folder_id}.
         :param pulumi.Input[str] parent: The resource name of the parent Folder or Organization.
                Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when  mutated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -395,6 +405,7 @@ class Folder(pulumi.CustomResource):
         __props__.__dict__["lifecycle_state"] = lifecycle_state
         __props__.__dict__["name"] = name
         __props__.__dict__["parent"] = parent
+        __props__.__dict__["tags"] = tags
         return Folder(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -452,4 +463,12 @@ class Folder(pulumi.CustomResource):
         Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
         """
         return pulumi.get(self, "parent")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when  mutated.
+        """
+        return pulumi.get(self, "tags")
 

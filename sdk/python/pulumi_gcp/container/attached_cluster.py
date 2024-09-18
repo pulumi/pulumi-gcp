@@ -35,7 +35,8 @@ class AttachedClusterArgs:
                  monitoring_config: Optional[pulumi.Input['AttachedClusterMonitoringConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 proxy_config: Optional[pulumi.Input['AttachedClusterProxyConfigArgs']] = None):
+                 proxy_config: Optional[pulumi.Input['AttachedClusterProxyConfigArgs']] = None,
+                 security_posture_config: Optional[pulumi.Input['AttachedClusterSecurityPostureConfigArgs']] = None):
         """
         The set of arguments for constructing a AttachedCluster resource.
         :param pulumi.Input[str] distribution: The Kubernetes distribution of the underlying attached cluster. Supported values:
@@ -69,6 +70,7 @@ class AttachedClusterArgs:
         :param pulumi.Input['AttachedClusterMonitoringConfigArgs'] monitoring_config: Monitoring configuration.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input['AttachedClusterProxyConfigArgs'] proxy_config: Support for proxy configuration.
+        :param pulumi.Input['AttachedClusterSecurityPostureConfigArgs'] security_posture_config: Enable/Disable Security Posture API features for the cluster.
         """
         pulumi.set(__self__, "distribution", distribution)
         pulumi.set(__self__, "fleet", fleet)
@@ -95,6 +97,8 @@ class AttachedClusterArgs:
             pulumi.set(__self__, "project", project)
         if proxy_config is not None:
             pulumi.set(__self__, "proxy_config", proxy_config)
+        if security_posture_config is not None:
+            pulumi.set(__self__, "security_posture_config", security_posture_config)
 
     @property
     @pulumi.getter
@@ -290,6 +294,18 @@ class AttachedClusterArgs:
     def proxy_config(self, value: Optional[pulumi.Input['AttachedClusterProxyConfigArgs']]):
         pulumi.set(self, "proxy_config", value)
 
+    @property
+    @pulumi.getter(name="securityPostureConfig")
+    def security_posture_config(self) -> Optional[pulumi.Input['AttachedClusterSecurityPostureConfigArgs']]:
+        """
+        Enable/Disable Security Posture API features for the cluster.
+        """
+        return pulumi.get(self, "security_posture_config")
+
+    @security_posture_config.setter
+    def security_posture_config(self, value: Optional[pulumi.Input['AttachedClusterSecurityPostureConfigArgs']]):
+        pulumi.set(self, "security_posture_config", value)
+
 
 @pulumi.input_type
 class _AttachedClusterState:
@@ -315,6 +331,7 @@ class _AttachedClusterState:
                  project: Optional[pulumi.Input[str]] = None,
                  proxy_config: Optional[pulumi.Input['AttachedClusterProxyConfigArgs']] = None,
                  reconciling: Optional[pulumi.Input[bool]] = None,
+                 security_posture_config: Optional[pulumi.Input['AttachedClusterSecurityPostureConfigArgs']] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
@@ -360,6 +377,7 @@ class _AttachedClusterState:
         :param pulumi.Input[str] platform_version: The platform version for the cluster (e.g. `1.23.0-gke.1`).
         :param pulumi.Input['AttachedClusterProxyConfigArgs'] proxy_config: Support for proxy configuration.
         :param pulumi.Input[bool] reconciling: If set, there are currently changes in flight to the cluster.
+        :param pulumi.Input['AttachedClusterSecurityPostureConfigArgs'] security_posture_config: Enable/Disable Security Posture API features for the cluster.
         :param pulumi.Input[str] state: The current state of the cluster. Possible values:
                STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR,
                DEGRADED
@@ -410,6 +428,8 @@ class _AttachedClusterState:
             pulumi.set(__self__, "proxy_config", proxy_config)
         if reconciling is not None:
             pulumi.set(__self__, "reconciling", reconciling)
+        if security_posture_config is not None:
+            pulumi.set(__self__, "security_posture_config", security_posture_config)
         if state is not None:
             pulumi.set(__self__, "state", state)
         if uid is not None:
@@ -686,6 +706,18 @@ class _AttachedClusterState:
         pulumi.set(self, "reconciling", value)
 
     @property
+    @pulumi.getter(name="securityPostureConfig")
+    def security_posture_config(self) -> Optional[pulumi.Input['AttachedClusterSecurityPostureConfigArgs']]:
+        """
+        Enable/Disable Security Posture API features for the cluster.
+        """
+        return pulumi.get(self, "security_posture_config")
+
+    @security_posture_config.setter
+    def security_posture_config(self, value: Optional[pulumi.Input['AttachedClusterSecurityPostureConfigArgs']]):
+        pulumi.set(self, "security_posture_config", value)
+
+    @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
@@ -757,6 +789,7 @@ class AttachedCluster(pulumi.CustomResource):
                  platform_version: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  proxy_config: Optional[pulumi.Input[Union['AttachedClusterProxyConfigArgs', 'AttachedClusterProxyConfigArgsDict']]] = None,
+                 security_posture_config: Optional[pulumi.Input[Union['AttachedClusterSecurityPostureConfigArgs', 'AttachedClusterSecurityPostureConfigArgsDict']]] = None,
                  __props__=None):
         """
         An Anthos cluster running on customer owned infrastructure.
@@ -851,6 +884,9 @@ class AttachedCluster(pulumi.CustomResource):
                     "name": "proxy-config",
                     "namespace": "default",
                 },
+            },
+            security_posture_config={
+                "vulnerability_mode": "VULNERABILITY_ENTERPRISE",
             })
         ```
         ### Container Attached Cluster Ignore Errors
@@ -935,6 +971,7 @@ class AttachedCluster(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] platform_version: The platform version for the cluster (e.g. `1.23.0-gke.1`).
         :param pulumi.Input[Union['AttachedClusterProxyConfigArgs', 'AttachedClusterProxyConfigArgsDict']] proxy_config: Support for proxy configuration.
+        :param pulumi.Input[Union['AttachedClusterSecurityPostureConfigArgs', 'AttachedClusterSecurityPostureConfigArgsDict']] security_posture_config: Enable/Disable Security Posture API features for the cluster.
         """
         ...
     @overload
@@ -1035,6 +1072,9 @@ class AttachedCluster(pulumi.CustomResource):
                     "name": "proxy-config",
                     "namespace": "default",
                 },
+            },
+            security_posture_config={
+                "vulnerability_mode": "VULNERABILITY_ENTERPRISE",
             })
         ```
         ### Container Attached Cluster Ignore Errors
@@ -1116,6 +1156,7 @@ class AttachedCluster(pulumi.CustomResource):
                  platform_version: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  proxy_config: Optional[pulumi.Input[Union['AttachedClusterProxyConfigArgs', 'AttachedClusterProxyConfigArgsDict']]] = None,
+                 security_posture_config: Optional[pulumi.Input[Union['AttachedClusterSecurityPostureConfigArgs', 'AttachedClusterSecurityPostureConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1150,6 +1191,7 @@ class AttachedCluster(pulumi.CustomResource):
             __props__.__dict__["platform_version"] = platform_version
             __props__.__dict__["project"] = project
             __props__.__dict__["proxy_config"] = proxy_config
+            __props__.__dict__["security_posture_config"] = security_posture_config
             __props__.__dict__["cluster_region"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_annotations"] = None
@@ -1191,6 +1233,7 @@ class AttachedCluster(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             proxy_config: Optional[pulumi.Input[Union['AttachedClusterProxyConfigArgs', 'AttachedClusterProxyConfigArgsDict']]] = None,
             reconciling: Optional[pulumi.Input[bool]] = None,
+            security_posture_config: Optional[pulumi.Input[Union['AttachedClusterSecurityPostureConfigArgs', 'AttachedClusterSecurityPostureConfigArgsDict']]] = None,
             state: Optional[pulumi.Input[str]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
@@ -1241,6 +1284,7 @@ class AttachedCluster(pulumi.CustomResource):
         :param pulumi.Input[str] platform_version: The platform version for the cluster (e.g. `1.23.0-gke.1`).
         :param pulumi.Input[Union['AttachedClusterProxyConfigArgs', 'AttachedClusterProxyConfigArgsDict']] proxy_config: Support for proxy configuration.
         :param pulumi.Input[bool] reconciling: If set, there are currently changes in flight to the cluster.
+        :param pulumi.Input[Union['AttachedClusterSecurityPostureConfigArgs', 'AttachedClusterSecurityPostureConfigArgsDict']] security_posture_config: Enable/Disable Security Posture API features for the cluster.
         :param pulumi.Input[str] state: The current state of the cluster. Possible values:
                STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR,
                DEGRADED
@@ -1274,6 +1318,7 @@ class AttachedCluster(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["proxy_config"] = proxy_config
         __props__.__dict__["reconciling"] = reconciling
+        __props__.__dict__["security_posture_config"] = security_posture_config
         __props__.__dict__["state"] = state
         __props__.__dict__["uid"] = uid
         __props__.__dict__["update_time"] = update_time
@@ -1461,6 +1506,14 @@ class AttachedCluster(pulumi.CustomResource):
         If set, there are currently changes in flight to the cluster.
         """
         return pulumi.get(self, "reconciling")
+
+    @property
+    @pulumi.getter(name="securityPostureConfig")
+    def security_posture_config(self) -> pulumi.Output['outputs.AttachedClusterSecurityPostureConfig']:
+        """
+        Enable/Disable Security Posture API features for the cluster.
+        """
+        return pulumi.get(self, "security_posture_config")
 
     @property
     @pulumi.getter

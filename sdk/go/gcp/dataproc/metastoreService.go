@@ -143,6 +143,7 @@ import (
 //			_, err = dataproc.NewMetastoreService(ctx, "default", &dataproc.MetastoreServiceArgs{
 //				ServiceId: pulumi.String("metastore-srv"),
 //				Location:  pulumi.String("us-central1"),
+//				Tier:      pulumi.String("DEVELOPER"),
 //				HiveMetastoreConfig: &dataproc.MetastoreServiceHiveMetastoreConfigArgs{
 //					Version: pulumi.String("3.1.2"),
 //				},

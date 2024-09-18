@@ -138,6 +138,8 @@ type Volume struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
+	LargeCapacity pulumi.BoolPtrOutput `pulumi:"largeCapacity"`
 	// Flag indicating if the volume is NFS LDAP enabled or not. Inherited from storage pool.
 	LdapEnabled pulumi.BoolOutput `pulumi:"ldapEnabled"`
 	// Name of the pool location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
@@ -145,6 +147,9 @@ type Volume struct {
 	// Reports mount instructions for this volume.
 	// Structure is documented below.
 	MountOptions VolumeMountOptionArrayOutput `pulumi:"mountOptions"`
+	// Optional. Flag indicating if the volume will have an IP address per node for volumes supporting multiple IP endpoints.
+	// Only the volume with largeCapacity will be allowed to have multiple endpoints.
+	MultipleEndpoints pulumi.BoolPtrOutput `pulumi:"multipleEndpoints"`
 	// The name of the volume. Needs to be unique per location.
 	//
 	// ***
@@ -285,6 +290,8 @@ type volumeState struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
+	// Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
+	LargeCapacity *bool `pulumi:"largeCapacity"`
 	// Flag indicating if the volume is NFS LDAP enabled or not. Inherited from storage pool.
 	LdapEnabled *bool `pulumi:"ldapEnabled"`
 	// Name of the pool location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
@@ -292,6 +299,9 @@ type volumeState struct {
 	// Reports mount instructions for this volume.
 	// Structure is documented below.
 	MountOptions []VolumeMountOption `pulumi:"mountOptions"`
+	// Optional. Flag indicating if the volume will have an IP address per node for volumes supporting multiple IP endpoints.
+	// Only the volume with largeCapacity will be allowed to have multiple endpoints.
+	MultipleEndpoints *bool `pulumi:"multipleEndpoints"`
 	// The name of the volume. Needs to be unique per location.
 	//
 	// ***
@@ -383,6 +393,8 @@ type VolumeState struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
+	// Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
+	LargeCapacity pulumi.BoolPtrInput
 	// Flag indicating if the volume is NFS LDAP enabled or not. Inherited from storage pool.
 	LdapEnabled pulumi.BoolPtrInput
 	// Name of the pool location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
@@ -390,6 +402,9 @@ type VolumeState struct {
 	// Reports mount instructions for this volume.
 	// Structure is documented below.
 	MountOptions VolumeMountOptionArrayInput
+	// Optional. Flag indicating if the volume will have an IP address per node for volumes supporting multiple IP endpoints.
+	// Only the volume with largeCapacity will be allowed to have multiple endpoints.
+	MultipleEndpoints pulumi.BoolPtrInput
 	// The name of the volume. Needs to be unique per location.
 	//
 	// ***
@@ -473,8 +488,13 @@ type volumeArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
+	// Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
+	LargeCapacity *bool `pulumi:"largeCapacity"`
 	// Name of the pool location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
 	Location string `pulumi:"location"`
+	// Optional. Flag indicating if the volume will have an IP address per node for volumes supporting multiple IP endpoints.
+	// Only the volume with largeCapacity will be allowed to have multiple endpoints.
+	MultipleEndpoints *bool `pulumi:"multipleEndpoints"`
 	// The name of the volume. Needs to be unique per location.
 	//
 	// ***
@@ -536,8 +556,13 @@ type VolumeArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
+	// Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
+	LargeCapacity pulumi.BoolPtrInput
 	// Name of the pool location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
 	Location pulumi.StringInput
+	// Optional. Flag indicating if the volume will have an IP address per node for volumes supporting multiple IP endpoints.
+	// Only the volume with largeCapacity will be allowed to have multiple endpoints.
+	MultipleEndpoints pulumi.BoolPtrInput
 	// The name of the volume. Needs to be unique per location.
 	//
 	// ***
@@ -735,6 +760,11 @@ func (o VolumeOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+// Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
+func (o VolumeOutput) LargeCapacity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Volume) pulumi.BoolPtrOutput { return v.LargeCapacity }).(pulumi.BoolPtrOutput)
+}
+
 // Flag indicating if the volume is NFS LDAP enabled or not. Inherited from storage pool.
 func (o VolumeOutput) LdapEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Volume) pulumi.BoolOutput { return v.LdapEnabled }).(pulumi.BoolOutput)
@@ -749,6 +779,12 @@ func (o VolumeOutput) Location() pulumi.StringOutput {
 // Structure is documented below.
 func (o VolumeOutput) MountOptions() VolumeMountOptionArrayOutput {
 	return o.ApplyT(func(v *Volume) VolumeMountOptionArrayOutput { return v.MountOptions }).(VolumeMountOptionArrayOutput)
+}
+
+// Optional. Flag indicating if the volume will have an IP address per node for volumes supporting multiple IP endpoints.
+// Only the volume with largeCapacity will be allowed to have multiple endpoints.
+func (o VolumeOutput) MultipleEndpoints() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Volume) pulumi.BoolPtrOutput { return v.MultipleEndpoints }).(pulumi.BoolPtrOutput)
 }
 
 // The name of the volume. Needs to be unique per location.

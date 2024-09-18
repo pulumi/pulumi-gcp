@@ -31,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			defaultMetastoreService, err := dataproc.NewMetastoreService(ctx, "default", &dataproc.MetastoreServiceArgs{
-//				ServiceId: pulumi.String(""),
+//				ServiceId: pulumi.String("metastore-service"),
 //				Location:  pulumi.String("us-central1"),
 //				Tier:      pulumi.String("DEVELOPER"),
 //				HiveMetastoreConfig: &dataproc.MetastoreServiceHiveMetastoreConfigArgs{
@@ -44,7 +44,7 @@ import (
 //			}
 //			_, err = dataproc.NewMetastoreFederation(ctx, "default", &dataproc.MetastoreFederationArgs{
 //				Location:     pulumi.String("us-central1"),
-//				FederationId: pulumi.String(""),
+//				FederationId: pulumi.String("metastore-fed"),
 //				Version:      pulumi.String("3.1.2"),
 //				BackendMetastores: dataproc.MetastoreFederationBackendMetastoreArray{
 //					&dataproc.MetastoreFederationBackendMetastoreArgs{
@@ -78,7 +78,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			defaultMetastoreService, err := dataproc.NewMetastoreService(ctx, "default", &dataproc.MetastoreServiceArgs{
-//				ServiceId: pulumi.String(""),
+//				ServiceId: pulumi.String("metastore-service"),
 //				Location:  pulumi.String("us-central1"),
 //				Tier:      pulumi.String("DEVELOPER"),
 //				HiveMetastoreConfig: &dataproc.MetastoreServiceHiveMetastoreConfigArgs{
@@ -95,7 +95,7 @@ import (
 //			}
 //			_, err = dataproc.NewMetastoreFederation(ctx, "default", &dataproc.MetastoreFederationArgs{
 //				Location:     pulumi.String("us-central1"),
-//				FederationId: pulumi.String(""),
+//				FederationId: pulumi.String("metastore-fed"),
 //				Version:      pulumi.String("3.1.2"),
 //				BackendMetastores: dataproc.MetastoreFederationBackendMetastoreArray{
 //					&dataproc.MetastoreFederationBackendMetastoreArgs{

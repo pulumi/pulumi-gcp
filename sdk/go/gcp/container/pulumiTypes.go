@@ -1630,6 +1630,147 @@ func (o AttachedClusterProxyConfigKubernetesSecretPtrOutput) Namespace() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+type AttachedClusterSecurityPostureConfig struct {
+	// Sets the mode of the Kubernetes security posture API's workload vulnerability scanning.
+	// Possible values are: `VULNERABILITY_DISABLED`, `VULNERABILITY_ENTERPRISE`.
+	VulnerabilityMode string `pulumi:"vulnerabilityMode"`
+}
+
+// AttachedClusterSecurityPostureConfigInput is an input type that accepts AttachedClusterSecurityPostureConfigArgs and AttachedClusterSecurityPostureConfigOutput values.
+// You can construct a concrete instance of `AttachedClusterSecurityPostureConfigInput` via:
+//
+//	AttachedClusterSecurityPostureConfigArgs{...}
+type AttachedClusterSecurityPostureConfigInput interface {
+	pulumi.Input
+
+	ToAttachedClusterSecurityPostureConfigOutput() AttachedClusterSecurityPostureConfigOutput
+	ToAttachedClusterSecurityPostureConfigOutputWithContext(context.Context) AttachedClusterSecurityPostureConfigOutput
+}
+
+type AttachedClusterSecurityPostureConfigArgs struct {
+	// Sets the mode of the Kubernetes security posture API's workload vulnerability scanning.
+	// Possible values are: `VULNERABILITY_DISABLED`, `VULNERABILITY_ENTERPRISE`.
+	VulnerabilityMode pulumi.StringInput `pulumi:"vulnerabilityMode"`
+}
+
+func (AttachedClusterSecurityPostureConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttachedClusterSecurityPostureConfig)(nil)).Elem()
+}
+
+func (i AttachedClusterSecurityPostureConfigArgs) ToAttachedClusterSecurityPostureConfigOutput() AttachedClusterSecurityPostureConfigOutput {
+	return i.ToAttachedClusterSecurityPostureConfigOutputWithContext(context.Background())
+}
+
+func (i AttachedClusterSecurityPostureConfigArgs) ToAttachedClusterSecurityPostureConfigOutputWithContext(ctx context.Context) AttachedClusterSecurityPostureConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttachedClusterSecurityPostureConfigOutput)
+}
+
+func (i AttachedClusterSecurityPostureConfigArgs) ToAttachedClusterSecurityPostureConfigPtrOutput() AttachedClusterSecurityPostureConfigPtrOutput {
+	return i.ToAttachedClusterSecurityPostureConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AttachedClusterSecurityPostureConfigArgs) ToAttachedClusterSecurityPostureConfigPtrOutputWithContext(ctx context.Context) AttachedClusterSecurityPostureConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttachedClusterSecurityPostureConfigOutput).ToAttachedClusterSecurityPostureConfigPtrOutputWithContext(ctx)
+}
+
+// AttachedClusterSecurityPostureConfigPtrInput is an input type that accepts AttachedClusterSecurityPostureConfigArgs, AttachedClusterSecurityPostureConfigPtr and AttachedClusterSecurityPostureConfigPtrOutput values.
+// You can construct a concrete instance of `AttachedClusterSecurityPostureConfigPtrInput` via:
+//
+//	        AttachedClusterSecurityPostureConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AttachedClusterSecurityPostureConfigPtrInput interface {
+	pulumi.Input
+
+	ToAttachedClusterSecurityPostureConfigPtrOutput() AttachedClusterSecurityPostureConfigPtrOutput
+	ToAttachedClusterSecurityPostureConfigPtrOutputWithContext(context.Context) AttachedClusterSecurityPostureConfigPtrOutput
+}
+
+type attachedClusterSecurityPostureConfigPtrType AttachedClusterSecurityPostureConfigArgs
+
+func AttachedClusterSecurityPostureConfigPtr(v *AttachedClusterSecurityPostureConfigArgs) AttachedClusterSecurityPostureConfigPtrInput {
+	return (*attachedClusterSecurityPostureConfigPtrType)(v)
+}
+
+func (*attachedClusterSecurityPostureConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttachedClusterSecurityPostureConfig)(nil)).Elem()
+}
+
+func (i *attachedClusterSecurityPostureConfigPtrType) ToAttachedClusterSecurityPostureConfigPtrOutput() AttachedClusterSecurityPostureConfigPtrOutput {
+	return i.ToAttachedClusterSecurityPostureConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *attachedClusterSecurityPostureConfigPtrType) ToAttachedClusterSecurityPostureConfigPtrOutputWithContext(ctx context.Context) AttachedClusterSecurityPostureConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttachedClusterSecurityPostureConfigPtrOutput)
+}
+
+type AttachedClusterSecurityPostureConfigOutput struct{ *pulumi.OutputState }
+
+func (AttachedClusterSecurityPostureConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttachedClusterSecurityPostureConfig)(nil)).Elem()
+}
+
+func (o AttachedClusterSecurityPostureConfigOutput) ToAttachedClusterSecurityPostureConfigOutput() AttachedClusterSecurityPostureConfigOutput {
+	return o
+}
+
+func (o AttachedClusterSecurityPostureConfigOutput) ToAttachedClusterSecurityPostureConfigOutputWithContext(ctx context.Context) AttachedClusterSecurityPostureConfigOutput {
+	return o
+}
+
+func (o AttachedClusterSecurityPostureConfigOutput) ToAttachedClusterSecurityPostureConfigPtrOutput() AttachedClusterSecurityPostureConfigPtrOutput {
+	return o.ToAttachedClusterSecurityPostureConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AttachedClusterSecurityPostureConfigOutput) ToAttachedClusterSecurityPostureConfigPtrOutputWithContext(ctx context.Context) AttachedClusterSecurityPostureConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttachedClusterSecurityPostureConfig) *AttachedClusterSecurityPostureConfig {
+		return &v
+	}).(AttachedClusterSecurityPostureConfigPtrOutput)
+}
+
+// Sets the mode of the Kubernetes security posture API's workload vulnerability scanning.
+// Possible values are: `VULNERABILITY_DISABLED`, `VULNERABILITY_ENTERPRISE`.
+func (o AttachedClusterSecurityPostureConfigOutput) VulnerabilityMode() pulumi.StringOutput {
+	return o.ApplyT(func(v AttachedClusterSecurityPostureConfig) string { return v.VulnerabilityMode }).(pulumi.StringOutput)
+}
+
+type AttachedClusterSecurityPostureConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AttachedClusterSecurityPostureConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttachedClusterSecurityPostureConfig)(nil)).Elem()
+}
+
+func (o AttachedClusterSecurityPostureConfigPtrOutput) ToAttachedClusterSecurityPostureConfigPtrOutput() AttachedClusterSecurityPostureConfigPtrOutput {
+	return o
+}
+
+func (o AttachedClusterSecurityPostureConfigPtrOutput) ToAttachedClusterSecurityPostureConfigPtrOutputWithContext(ctx context.Context) AttachedClusterSecurityPostureConfigPtrOutput {
+	return o
+}
+
+func (o AttachedClusterSecurityPostureConfigPtrOutput) Elem() AttachedClusterSecurityPostureConfigOutput {
+	return o.ApplyT(func(v *AttachedClusterSecurityPostureConfig) AttachedClusterSecurityPostureConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AttachedClusterSecurityPostureConfig
+		return ret
+	}).(AttachedClusterSecurityPostureConfigOutput)
+}
+
+// Sets the mode of the Kubernetes security posture API's workload vulnerability scanning.
+// Possible values are: `VULNERABILITY_DISABLED`, `VULNERABILITY_ENTERPRISE`.
+func (o AttachedClusterSecurityPostureConfigPtrOutput) VulnerabilityMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AttachedClusterSecurityPostureConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.VulnerabilityMode
+	}).(pulumi.StringPtrOutput)
+}
+
 type AttachedClusterWorkloadIdentityConfig struct {
 	// The ID of the OIDC Identity Provider (IdP) associated to
 	// the Workload Identity Pool.
@@ -19838,6 +19979,8 @@ type ClusterNodeConfig struct {
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
 	// for more information. Defaults to false.
 	Spot *bool `pulumi:"spot"`
+	// The list of Storage Pools where boot disks are provisioned.
+	StoragePools []string `pulumi:"storagePools"`
 	// The list of instance tags applied to all nodes. Tags are used to identify
 	// valid sources or targets for network firewalls.
 	Tags []string `pulumi:"tags"`
@@ -19981,6 +20124,8 @@ type ClusterNodeConfigArgs struct {
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
 	// for more information. Defaults to false.
 	Spot pulumi.BoolPtrInput `pulumi:"spot"`
+	// The list of Storage Pools where boot disks are provisioned.
+	StoragePools pulumi.StringArrayInput `pulumi:"storagePools"`
 	// The list of instance tags applied to all nodes. Tags are used to identify
 	// valid sources or targets for network firewalls.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
@@ -20300,6 +20445,11 @@ func (o ClusterNodeConfigOutput) SoleTenantConfig() ClusterNodeConfigSoleTenantC
 // for more information. Defaults to false.
 func (o ClusterNodeConfigOutput) Spot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *bool { return v.Spot }).(pulumi.BoolPtrOutput)
+}
+
+// The list of Storage Pools where boot disks are provisioned.
+func (o ClusterNodeConfigOutput) StoragePools() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterNodeConfig) []string { return v.StoragePools }).(pulumi.StringArrayOutput)
 }
 
 // The list of instance tags applied to all nodes. Tags are used to identify
@@ -20758,6 +20908,16 @@ func (o ClusterNodeConfigPtrOutput) Spot() pulumi.BoolPtrOutput {
 		}
 		return v.Spot
 	}).(pulumi.BoolPtrOutput)
+}
+
+// The list of Storage Pools where boot disks are provisioned.
+func (o ClusterNodeConfigPtrOutput) StoragePools() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClusterNodeConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.StoragePools
+	}).(pulumi.StringArrayOutput)
 }
 
 // The list of instance tags applied to all nodes. Tags are used to identify
@@ -27663,6 +27823,8 @@ type ClusterNodePoolNodeConfig struct {
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
 	// for more information. Defaults to false.
 	Spot *bool `pulumi:"spot"`
+	// The list of Storage Pools where boot disks are provisioned.
+	StoragePools []string `pulumi:"storagePools"`
 	// The list of instance tags applied to all nodes. Tags are used to identify
 	// valid sources or targets for network firewalls.
 	Tags []string `pulumi:"tags"`
@@ -27806,6 +27968,8 @@ type ClusterNodePoolNodeConfigArgs struct {
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
 	// for more information. Defaults to false.
 	Spot pulumi.BoolPtrInput `pulumi:"spot"`
+	// The list of Storage Pools where boot disks are provisioned.
+	StoragePools pulumi.StringArrayInput `pulumi:"storagePools"`
 	// The list of instance tags applied to all nodes. Tags are used to identify
 	// valid sources or targets for network firewalls.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
@@ -28147,6 +28311,11 @@ func (o ClusterNodePoolNodeConfigOutput) SoleTenantConfig() ClusterNodePoolNodeC
 // for more information. Defaults to false.
 func (o ClusterNodePoolNodeConfigOutput) Spot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *bool { return v.Spot }).(pulumi.BoolPtrOutput)
+}
+
+// The list of Storage Pools where boot disks are provisioned.
+func (o ClusterNodePoolNodeConfigOutput) StoragePools() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) []string { return v.StoragePools }).(pulumi.StringArrayOutput)
 }
 
 // The list of instance tags applied to all nodes. Tags are used to identify
@@ -28607,6 +28776,16 @@ func (o ClusterNodePoolNodeConfigPtrOutput) Spot() pulumi.BoolPtrOutput {
 		}
 		return v.Spot
 	}).(pulumi.BoolPtrOutput)
+}
+
+// The list of Storage Pools where boot disks are provisioned.
+func (o ClusterNodePoolNodeConfigPtrOutput) StoragePools() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.StoragePools
+	}).(pulumi.StringArrayOutput)
 }
 
 // The list of instance tags applied to all nodes. Tags are used to identify
@@ -37543,6 +37722,8 @@ type NodePoolNodeConfig struct {
 	SoleTenantConfig *NodePoolNodeConfigSoleTenantConfig `pulumi:"soleTenantConfig"`
 	// Whether the nodes are created as spot VM instances.
 	Spot *bool `pulumi:"spot"`
+	// The list of Storage Pools where boot disks are provisioned.
+	StoragePools []string `pulumi:"storagePools"`
 	// The list of instance tags applied to all nodes.
 	Tags []string `pulumi:"tags"`
 	// List of Kubernetes taints to be applied to each node.
@@ -37640,6 +37821,8 @@ type NodePoolNodeConfigArgs struct {
 	SoleTenantConfig NodePoolNodeConfigSoleTenantConfigPtrInput `pulumi:"soleTenantConfig"`
 	// Whether the nodes are created as spot VM instances.
 	Spot pulumi.BoolPtrInput `pulumi:"spot"`
+	// The list of Storage Pools where boot disks are provisioned.
+	StoragePools pulumi.StringArrayInput `pulumi:"storagePools"`
 	// The list of instance tags applied to all nodes.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 	// List of Kubernetes taints to be applied to each node.
@@ -37917,6 +38100,11 @@ func (o NodePoolNodeConfigOutput) SoleTenantConfig() NodePoolNodeConfigSoleTenan
 // Whether the nodes are created as spot VM instances.
 func (o NodePoolNodeConfigOutput) Spot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NodePoolNodeConfig) *bool { return v.Spot }).(pulumi.BoolPtrOutput)
+}
+
+// The list of Storage Pools where boot disks are provisioned.
+func (o NodePoolNodeConfigOutput) StoragePools() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NodePoolNodeConfig) []string { return v.StoragePools }).(pulumi.StringArrayOutput)
 }
 
 // The list of instance tags applied to all nodes.
@@ -38329,6 +38517,16 @@ func (o NodePoolNodeConfigPtrOutput) Spot() pulumi.BoolPtrOutput {
 		}
 		return v.Spot
 	}).(pulumi.BoolPtrOutput)
+}
+
+// The list of Storage Pools where boot disks are provisioned.
+func (o NodePoolNodeConfigPtrOutput) StoragePools() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.StoragePools
+	}).(pulumi.StringArrayOutput)
 }
 
 // The list of instance tags applied to all nodes.
@@ -49168,6 +49366,8 @@ type GetClusterNodeConfig struct {
 	SoleTenantConfigs []GetClusterNodeConfigSoleTenantConfig `pulumi:"soleTenantConfigs"`
 	// Whether the nodes are created as spot VM instances.
 	Spot bool `pulumi:"spot"`
+	// The list of Storage Pools where boot disks are provisioned.
+	StoragePools []string `pulumi:"storagePools"`
 	// The list of instance tags applied to all nodes.
 	Tags []string `pulumi:"tags"`
 	// List of Kubernetes taints to be applied to each node.
@@ -49262,6 +49462,8 @@ type GetClusterNodeConfigArgs struct {
 	SoleTenantConfigs GetClusterNodeConfigSoleTenantConfigArrayInput `pulumi:"soleTenantConfigs"`
 	// Whether the nodes are created as spot VM instances.
 	Spot pulumi.BoolInput `pulumi:"spot"`
+	// The list of Storage Pools where boot disks are provisioned.
+	StoragePools pulumi.StringArrayInput `pulumi:"storagePools"`
 	// The list of instance tags applied to all nodes.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 	// List of Kubernetes taints to be applied to each node.
@@ -49516,6 +49718,11 @@ func (o GetClusterNodeConfigOutput) SoleTenantConfigs() GetClusterNodeConfigSole
 // Whether the nodes are created as spot VM instances.
 func (o GetClusterNodeConfigOutput) Spot() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetClusterNodeConfig) bool { return v.Spot }).(pulumi.BoolOutput)
+}
+
+// The list of Storage Pools where boot disks are provisioned.
+func (o GetClusterNodeConfigOutput) StoragePools() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClusterNodeConfig) []string { return v.StoragePools }).(pulumi.StringArrayOutput)
 }
 
 // The list of instance tags applied to all nodes.
@@ -54579,6 +54786,8 @@ type GetClusterNodePoolNodeConfig struct {
 	SoleTenantConfigs []GetClusterNodePoolNodeConfigSoleTenantConfig `pulumi:"soleTenantConfigs"`
 	// Whether the nodes are created as spot VM instances.
 	Spot bool `pulumi:"spot"`
+	// The list of Storage Pools where boot disks are provisioned.
+	StoragePools []string `pulumi:"storagePools"`
 	// The list of instance tags applied to all nodes.
 	Tags []string `pulumi:"tags"`
 	// List of Kubernetes taints to be applied to each node.
@@ -54673,6 +54882,8 @@ type GetClusterNodePoolNodeConfigArgs struct {
 	SoleTenantConfigs GetClusterNodePoolNodeConfigSoleTenantConfigArrayInput `pulumi:"soleTenantConfigs"`
 	// Whether the nodes are created as spot VM instances.
 	Spot pulumi.BoolInput `pulumi:"spot"`
+	// The list of Storage Pools where boot disks are provisioned.
+	StoragePools pulumi.StringArrayInput `pulumi:"storagePools"`
 	// The list of instance tags applied to all nodes.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 	// List of Kubernetes taints to be applied to each node.
@@ -54947,6 +55158,11 @@ func (o GetClusterNodePoolNodeConfigOutput) SoleTenantConfigs() GetClusterNodePo
 // Whether the nodes are created as spot VM instances.
 func (o GetClusterNodePoolNodeConfigOutput) Spot() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) bool { return v.Spot }).(pulumi.BoolOutput)
+}
+
+// The list of Storage Pools where boot disks are provisioned.
+func (o GetClusterNodePoolNodeConfigOutput) StoragePools() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []string { return v.StoragePools }).(pulumi.StringArrayOutput)
 }
 
 // The list of instance tags applied to all nodes.
@@ -60326,6 +60542,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterProxyConfigPtrInput)(nil)).Elem(), AttachedClusterProxyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterProxyConfigKubernetesSecretInput)(nil)).Elem(), AttachedClusterProxyConfigKubernetesSecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterProxyConfigKubernetesSecretPtrInput)(nil)).Elem(), AttachedClusterProxyConfigKubernetesSecretArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterSecurityPostureConfigInput)(nil)).Elem(), AttachedClusterSecurityPostureConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterSecurityPostureConfigPtrInput)(nil)).Elem(), AttachedClusterSecurityPostureConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterWorkloadIdentityConfigInput)(nil)).Elem(), AttachedClusterWorkloadIdentityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttachedClusterWorkloadIdentityConfigArrayInput)(nil)).Elem(), AttachedClusterWorkloadIdentityConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsClusterAuthorizationInput)(nil)).Elem(), AwsClusterAuthorizationArgs{})
@@ -61148,6 +61366,8 @@ func init() {
 	pulumi.RegisterOutputType(AttachedClusterProxyConfigPtrOutput{})
 	pulumi.RegisterOutputType(AttachedClusterProxyConfigKubernetesSecretOutput{})
 	pulumi.RegisterOutputType(AttachedClusterProxyConfigKubernetesSecretPtrOutput{})
+	pulumi.RegisterOutputType(AttachedClusterSecurityPostureConfigOutput{})
+	pulumi.RegisterOutputType(AttachedClusterSecurityPostureConfigPtrOutput{})
 	pulumi.RegisterOutputType(AttachedClusterWorkloadIdentityConfigOutput{})
 	pulumi.RegisterOutputType(AttachedClusterWorkloadIdentityConfigArrayOutput{})
 	pulumi.RegisterOutputType(AwsClusterAuthorizationOutput{})

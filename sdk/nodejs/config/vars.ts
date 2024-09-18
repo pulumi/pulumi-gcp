@@ -553,6 +553,14 @@ Object.defineProperty(exports, "deploymentManagerCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const developerConnectCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "developerConnectCustomEndpoint", {
+    get() {
+        return __config.get("developerConnectCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const dialogflowCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "dialogflowCustomEndpoint", {
     get() {
@@ -893,6 +901,14 @@ export declare const memcacheCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "memcacheCustomEndpoint", {
     get() {
         return __config.get("memcacheCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const memorystoreCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "memorystoreCustomEndpoint", {
+    get() {
+        return __config.get("memorystoreCustomEndpoint");
     },
     enumerable: true,
 });

@@ -921,8 +921,9 @@ export class Stream extends pulumi.CustomResource {
      */
     public readonly customerManagedEncryptionKey!: pulumi.Output<string | undefined>;
     /**
-     * Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream. Possible
-     * values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
+     * Desired state of the Stream. Set this field to 'RUNNING' to start the stream, 'NOT_STARTED' to create the stream without
+     * starting and 'PAUSED' to pause the stream from a 'RUNNING' state. Possible values: NOT_STARTED, RUNNING, PAUSED.
+     * Default: NOT_STARTED
      */
     public readonly desiredState!: pulumi.Output<string | undefined>;
     /**
@@ -1063,8 +1064,9 @@ export interface StreamState {
      */
     customerManagedEncryptionKey?: pulumi.Input<string>;
     /**
-     * Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream. Possible
-     * values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
+     * Desired state of the Stream. Set this field to 'RUNNING' to start the stream, 'NOT_STARTED' to create the stream without
+     * starting and 'PAUSED' to pause the stream from a 'RUNNING' state. Possible values: NOT_STARTED, RUNNING, PAUSED.
+     * Default: NOT_STARTED
      */
     desiredState?: pulumi.Input<string>;
     /**
@@ -1136,8 +1138,9 @@ export interface StreamArgs {
      */
     customerManagedEncryptionKey?: pulumi.Input<string>;
     /**
-     * Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream. Possible
-     * values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
+     * Desired state of the Stream. Set this field to 'RUNNING' to start the stream, 'NOT_STARTED' to create the stream without
+     * starting and 'PAUSED' to pause the stream from a 'RUNNING' state. Possible values: NOT_STARTED, RUNNING, PAUSED.
+     * Default: NOT_STARTED
      */
     desiredState?: pulumi.Input<string>;
     /**

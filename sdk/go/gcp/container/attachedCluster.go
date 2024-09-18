@@ -157,6 +157,9 @@ import (
 //						Namespace: pulumi.String("default"),
 //					},
 //				},
+//				SecurityPostureConfig: &container.AttachedClusterSecurityPostureConfigArgs{
+//					VulnerabilityMode: pulumi.String("VULNERABILITY_ENTERPRISE"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -304,6 +307,8 @@ type AttachedCluster struct {
 	ProxyConfig AttachedClusterProxyConfigPtrOutput `pulumi:"proxyConfig"`
 	// If set, there are currently changes in flight to the cluster.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
+	// Enable/Disable Security Posture API features for the cluster.
+	SecurityPostureConfig AttachedClusterSecurityPostureConfigOutput `pulumi:"securityPostureConfig"`
 	// The current state of the cluster. Possible values:
 	// STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR,
 	// DEGRADED
@@ -422,6 +427,8 @@ type attachedClusterState struct {
 	ProxyConfig *AttachedClusterProxyConfig `pulumi:"proxyConfig"`
 	// If set, there are currently changes in flight to the cluster.
 	Reconciling *bool `pulumi:"reconciling"`
+	// Enable/Disable Security Posture API features for the cluster.
+	SecurityPostureConfig *AttachedClusterSecurityPostureConfig `pulumi:"securityPostureConfig"`
 	// The current state of the cluster. Possible values:
 	// STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR,
 	// DEGRADED
@@ -496,6 +503,8 @@ type AttachedClusterState struct {
 	ProxyConfig AttachedClusterProxyConfigPtrInput
 	// If set, there are currently changes in flight to the cluster.
 	Reconciling pulumi.BoolPtrInput
+	// Enable/Disable Security Posture API features for the cluster.
+	SecurityPostureConfig AttachedClusterSecurityPostureConfigPtrInput
 	// The current state of the cluster. Possible values:
 	// STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR,
 	// DEGRADED
@@ -560,6 +569,8 @@ type attachedClusterArgs struct {
 	Project         *string `pulumi:"project"`
 	// Support for proxy configuration.
 	ProxyConfig *AttachedClusterProxyConfig `pulumi:"proxyConfig"`
+	// Enable/Disable Security Posture API features for the cluster.
+	SecurityPostureConfig *AttachedClusterSecurityPostureConfig `pulumi:"securityPostureConfig"`
 }
 
 // The set of arguments for constructing a AttachedCluster resource.
@@ -610,6 +621,8 @@ type AttachedClusterArgs struct {
 	Project         pulumi.StringPtrInput
 	// Support for proxy configuration.
 	ProxyConfig AttachedClusterProxyConfigPtrInput
+	// Enable/Disable Security Posture API features for the cluster.
+	SecurityPostureConfig AttachedClusterSecurityPostureConfigPtrInput
 }
 
 func (AttachedClusterArgs) ElementType() reflect.Type {
@@ -820,6 +833,11 @@ func (o AttachedClusterOutput) ProxyConfig() AttachedClusterProxyConfigPtrOutput
 // If set, there are currently changes in flight to the cluster.
 func (o AttachedClusterOutput) Reconciling() pulumi.BoolOutput {
 	return o.ApplyT(func(v *AttachedCluster) pulumi.BoolOutput { return v.Reconciling }).(pulumi.BoolOutput)
+}
+
+// Enable/Disable Security Posture API features for the cluster.
+func (o AttachedClusterOutput) SecurityPostureConfig() AttachedClusterSecurityPostureConfigOutput {
+	return o.ApplyT(func(v *AttachedCluster) AttachedClusterSecurityPostureConfigOutput { return v.SecurityPostureConfig }).(AttachedClusterSecurityPostureConfigOutput)
 }
 
 // The current state of the cluster. Possible values:

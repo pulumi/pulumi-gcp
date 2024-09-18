@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -13,10 +14,28 @@ import javax.annotation.Nullable;
 public final class ServiceAttachmentConnectedEndpoint {
     /**
      * @return (Output)
+     * The url of the consumer network.
+     * 
+     */
+    private @Nullable String consumerNetwork;
+    /**
+     * @return (Output)
      * The URL of the consumer forwarding rule.
      * 
      */
     private @Nullable String endpoint;
+    /**
+     * @return (Output, Beta)
+     * The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to.
+     * 
+     */
+    private @Nullable Integer propagatedConnectionCount;
+    /**
+     * @return (Output)
+     * The PSC connection id of the connected endpoint.
+     * 
+     */
+    private @Nullable String pscConnectionId;
     /**
      * @return (Output)
      * The status of the connection from the consumer forwarding rule to
@@ -28,11 +47,35 @@ public final class ServiceAttachmentConnectedEndpoint {
     private ServiceAttachmentConnectedEndpoint() {}
     /**
      * @return (Output)
+     * The url of the consumer network.
+     * 
+     */
+    public Optional<String> consumerNetwork() {
+        return Optional.ofNullable(this.consumerNetwork);
+    }
+    /**
+     * @return (Output)
      * The URL of the consumer forwarding rule.
      * 
      */
     public Optional<String> endpoint() {
         return Optional.ofNullable(this.endpoint);
+    }
+    /**
+     * @return (Output, Beta)
+     * The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to.
+     * 
+     */
+    public Optional<Integer> propagatedConnectionCount() {
+        return Optional.ofNullable(this.propagatedConnectionCount);
+    }
+    /**
+     * @return (Output)
+     * The PSC connection id of the connected endpoint.
+     * 
+     */
+    public Optional<String> pscConnectionId() {
+        return Optional.ofNullable(this.pscConnectionId);
     }
     /**
      * @return (Output)
@@ -53,19 +96,43 @@ public final class ServiceAttachmentConnectedEndpoint {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String consumerNetwork;
         private @Nullable String endpoint;
+        private @Nullable Integer propagatedConnectionCount;
+        private @Nullable String pscConnectionId;
         private @Nullable String status;
         public Builder() {}
         public Builder(ServiceAttachmentConnectedEndpoint defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.consumerNetwork = defaults.consumerNetwork;
     	      this.endpoint = defaults.endpoint;
+    	      this.propagatedConnectionCount = defaults.propagatedConnectionCount;
+    	      this.pscConnectionId = defaults.pscConnectionId;
     	      this.status = defaults.status;
         }
 
         @CustomType.Setter
+        public Builder consumerNetwork(@Nullable String consumerNetwork) {
+
+            this.consumerNetwork = consumerNetwork;
+            return this;
+        }
+        @CustomType.Setter
         public Builder endpoint(@Nullable String endpoint) {
 
             this.endpoint = endpoint;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder propagatedConnectionCount(@Nullable Integer propagatedConnectionCount) {
+
+            this.propagatedConnectionCount = propagatedConnectionCount;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder pscConnectionId(@Nullable String pscConnectionId) {
+
+            this.pscConnectionId = pscConnectionId;
             return this;
         }
         @CustomType.Setter
@@ -76,7 +143,10 @@ public final class ServiceAttachmentConnectedEndpoint {
         }
         public ServiceAttachmentConnectedEndpoint build() {
             final var _resultValue = new ServiceAttachmentConnectedEndpoint();
+            _resultValue.consumerNetwork = consumerNetwork;
             _resultValue.endpoint = endpoint;
+            _resultValue.propagatedConnectionCount = propagatedConnectionCount;
+            _resultValue.pscConnectionId = pscConnectionId;
             _resultValue.status = status;
             return _resultValue;
         }

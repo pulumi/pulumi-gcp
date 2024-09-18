@@ -103,6 +103,7 @@ __all__ = [
     'GetDatasetAccessViewResult',
     'GetDatasetDefaultEncryptionConfigurationResult',
     'GetDatasetExternalDatasetReferenceResult',
+    'GetTablesTableResult',
 ]
 
 @pulumi.output_type
@@ -6333,5 +6334,34 @@ class GetDatasetExternalDatasetReferenceResult(dict):
         External source that backs this dataset.
         """
         return pulumi.get(self, "external_source")
+
+
+@pulumi.output_type
+class GetTablesTableResult(dict):
+    def __init__(__self__, *,
+                 labels: Mapping[str, str],
+                 table_id: str):
+        """
+        :param Mapping[str, str] labels: User-provided table labels, in key/value pairs.
+        :param str table_id: The name of the table.
+        """
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "table_id", table_id)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        User-provided table labels, in key/value pairs.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="tableId")
+    def table_id(self) -> str:
+        """
+        The name of the table.
+        """
+        return pulumi.get(self, "table_id")
 
 

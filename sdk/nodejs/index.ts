@@ -65,6 +65,7 @@ import * as dataplex from "./dataplex";
 import * as dataproc from "./dataproc";
 import * as datastream from "./datastream";
 import * as deploymentmanager from "./deploymentmanager";
+import * as developerconnect from "./developerconnect";
 import * as diagflow from "./diagflow";
 import * as discoveryengine from "./discoveryengine";
 import * as dns from "./dns";
@@ -91,6 +92,7 @@ import * as logging from "./logging";
 import * as looker from "./looker";
 import * as managedkafka from "./managedkafka";
 import * as memcache from "./memcache";
+import * as memorystore from "./memorystore";
 import * as migrationcenter from "./migrationcenter";
 import * as ml from "./ml";
 import * as monitoring from "./monitoring";
@@ -188,6 +190,7 @@ export {
     dataproc,
     datastream,
     deploymentmanager,
+    developerconnect,
     diagflow,
     discoveryengine,
     dns,
@@ -214,6 +217,7 @@ export {
     looker,
     managedkafka,
     memcache,
+    memorystore,
     migrationcenter,
     ml,
     monitoring,

@@ -13,6 +13,1824 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type URLMapDefaultRouteActionRequestMirrorPolicy struct {
+	// The full or partial URL to the BackendService resource being mirrored to.
+	BackendService string `pulumi:"backendService"`
+}
+
+// URLMapDefaultRouteActionRequestMirrorPolicyInput is an input type that accepts URLMapDefaultRouteActionRequestMirrorPolicyArgs and URLMapDefaultRouteActionRequestMirrorPolicyOutput values.
+// You can construct a concrete instance of `URLMapDefaultRouteActionRequestMirrorPolicyInput` via:
+//
+//	URLMapDefaultRouteActionRequestMirrorPolicyArgs{...}
+type URLMapDefaultRouteActionRequestMirrorPolicyInput interface {
+	pulumi.Input
+
+	ToURLMapDefaultRouteActionRequestMirrorPolicyOutput() URLMapDefaultRouteActionRequestMirrorPolicyOutput
+	ToURLMapDefaultRouteActionRequestMirrorPolicyOutputWithContext(context.Context) URLMapDefaultRouteActionRequestMirrorPolicyOutput
+}
+
+type URLMapDefaultRouteActionRequestMirrorPolicyArgs struct {
+	// The full or partial URL to the BackendService resource being mirrored to.
+	BackendService pulumi.StringInput `pulumi:"backendService"`
+}
+
+func (URLMapDefaultRouteActionRequestMirrorPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapDefaultRouteActionRequestMirrorPolicy)(nil)).Elem()
+}
+
+func (i URLMapDefaultRouteActionRequestMirrorPolicyArgs) ToURLMapDefaultRouteActionRequestMirrorPolicyOutput() URLMapDefaultRouteActionRequestMirrorPolicyOutput {
+	return i.ToURLMapDefaultRouteActionRequestMirrorPolicyOutputWithContext(context.Background())
+}
+
+func (i URLMapDefaultRouteActionRequestMirrorPolicyArgs) ToURLMapDefaultRouteActionRequestMirrorPolicyOutputWithContext(ctx context.Context) URLMapDefaultRouteActionRequestMirrorPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionRequestMirrorPolicyOutput)
+}
+
+func (i URLMapDefaultRouteActionRequestMirrorPolicyArgs) ToURLMapDefaultRouteActionRequestMirrorPolicyPtrOutput() URLMapDefaultRouteActionRequestMirrorPolicyPtrOutput {
+	return i.ToURLMapDefaultRouteActionRequestMirrorPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapDefaultRouteActionRequestMirrorPolicyArgs) ToURLMapDefaultRouteActionRequestMirrorPolicyPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionRequestMirrorPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionRequestMirrorPolicyOutput).ToURLMapDefaultRouteActionRequestMirrorPolicyPtrOutputWithContext(ctx)
+}
+
+// URLMapDefaultRouteActionRequestMirrorPolicyPtrInput is an input type that accepts URLMapDefaultRouteActionRequestMirrorPolicyArgs, URLMapDefaultRouteActionRequestMirrorPolicyPtr and URLMapDefaultRouteActionRequestMirrorPolicyPtrOutput values.
+// You can construct a concrete instance of `URLMapDefaultRouteActionRequestMirrorPolicyPtrInput` via:
+//
+//	        URLMapDefaultRouteActionRequestMirrorPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapDefaultRouteActionRequestMirrorPolicyPtrInput interface {
+	pulumi.Input
+
+	ToURLMapDefaultRouteActionRequestMirrorPolicyPtrOutput() URLMapDefaultRouteActionRequestMirrorPolicyPtrOutput
+	ToURLMapDefaultRouteActionRequestMirrorPolicyPtrOutputWithContext(context.Context) URLMapDefaultRouteActionRequestMirrorPolicyPtrOutput
+}
+
+type urlmapDefaultRouteActionRequestMirrorPolicyPtrType URLMapDefaultRouteActionRequestMirrorPolicyArgs
+
+func URLMapDefaultRouteActionRequestMirrorPolicyPtr(v *URLMapDefaultRouteActionRequestMirrorPolicyArgs) URLMapDefaultRouteActionRequestMirrorPolicyPtrInput {
+	return (*urlmapDefaultRouteActionRequestMirrorPolicyPtrType)(v)
+}
+
+func (*urlmapDefaultRouteActionRequestMirrorPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapDefaultRouteActionRequestMirrorPolicy)(nil)).Elem()
+}
+
+func (i *urlmapDefaultRouteActionRequestMirrorPolicyPtrType) ToURLMapDefaultRouteActionRequestMirrorPolicyPtrOutput() URLMapDefaultRouteActionRequestMirrorPolicyPtrOutput {
+	return i.ToURLMapDefaultRouteActionRequestMirrorPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapDefaultRouteActionRequestMirrorPolicyPtrType) ToURLMapDefaultRouteActionRequestMirrorPolicyPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionRequestMirrorPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionRequestMirrorPolicyPtrOutput)
+}
+
+type URLMapDefaultRouteActionRequestMirrorPolicyOutput struct{ *pulumi.OutputState }
+
+func (URLMapDefaultRouteActionRequestMirrorPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapDefaultRouteActionRequestMirrorPolicy)(nil)).Elem()
+}
+
+func (o URLMapDefaultRouteActionRequestMirrorPolicyOutput) ToURLMapDefaultRouteActionRequestMirrorPolicyOutput() URLMapDefaultRouteActionRequestMirrorPolicyOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionRequestMirrorPolicyOutput) ToURLMapDefaultRouteActionRequestMirrorPolicyOutputWithContext(ctx context.Context) URLMapDefaultRouteActionRequestMirrorPolicyOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionRequestMirrorPolicyOutput) ToURLMapDefaultRouteActionRequestMirrorPolicyPtrOutput() URLMapDefaultRouteActionRequestMirrorPolicyPtrOutput {
+	return o.ToURLMapDefaultRouteActionRequestMirrorPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapDefaultRouteActionRequestMirrorPolicyOutput) ToURLMapDefaultRouteActionRequestMirrorPolicyPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionRequestMirrorPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapDefaultRouteActionRequestMirrorPolicy) *URLMapDefaultRouteActionRequestMirrorPolicy {
+		return &v
+	}).(URLMapDefaultRouteActionRequestMirrorPolicyPtrOutput)
+}
+
+// The full or partial URL to the BackendService resource being mirrored to.
+func (o URLMapDefaultRouteActionRequestMirrorPolicyOutput) BackendService() pulumi.StringOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteActionRequestMirrorPolicy) string { return v.BackendService }).(pulumi.StringOutput)
+}
+
+type URLMapDefaultRouteActionRequestMirrorPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapDefaultRouteActionRequestMirrorPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapDefaultRouteActionRequestMirrorPolicy)(nil)).Elem()
+}
+
+func (o URLMapDefaultRouteActionRequestMirrorPolicyPtrOutput) ToURLMapDefaultRouteActionRequestMirrorPolicyPtrOutput() URLMapDefaultRouteActionRequestMirrorPolicyPtrOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionRequestMirrorPolicyPtrOutput) ToURLMapDefaultRouteActionRequestMirrorPolicyPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionRequestMirrorPolicyPtrOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionRequestMirrorPolicyPtrOutput) Elem() URLMapDefaultRouteActionRequestMirrorPolicyOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteActionRequestMirrorPolicy) URLMapDefaultRouteActionRequestMirrorPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapDefaultRouteActionRequestMirrorPolicy
+		return ret
+	}).(URLMapDefaultRouteActionRequestMirrorPolicyOutput)
+}
+
+// The full or partial URL to the BackendService resource being mirrored to.
+func (o URLMapDefaultRouteActionRequestMirrorPolicyPtrOutput) BackendService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteActionRequestMirrorPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BackendService
+	}).(pulumi.StringPtrOutput)
+}
+
+type URLMapDefaultRouteActionRetryPolicy struct {
+	// Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
+	NumRetries *int `pulumi:"numRetries"`
+	// Specifies a non-zero timeout per retry attempt.
+	// If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
+	// will use the largest timeout among all backend services associated with the route.
+	// Structure is documented below.
+	PerTryTimeout *URLMapDefaultRouteActionRetryPolicyPerTryTimeout `pulumi:"perTryTimeout"`
+	// Specfies one or more conditions when this retry rule applies. Valid values are:
+	// * 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
+	//   or if the backend service does not respond at all, example: disconnects, reset, read timeout,
+	// * connection failure, and refused streams.
+	// * gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504.
+	// * connect-failure: Loadbalancer will retry on failures connecting to backend services,
+	//   for example due to connection timeouts.
+	// * retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
+	//   Currently the only retriable error supported is 409.
+	// * refused-stream:Loadbalancer will retry if the backend service resets the stream with a REFUSED_STREAM error code.
+	//   This reset type indicates that it is safe to retry.
+	// * cancelled: Loadbalancer will retry if the gRPC status code in the response header is set to cancelled
+	// * deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded
+	// * resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted
+	// * unavailable: Loadbalancer will retry if the gRPC status code in the response header is set to unavailable
+	RetryConditions []string `pulumi:"retryConditions"`
+}
+
+// URLMapDefaultRouteActionRetryPolicyInput is an input type that accepts URLMapDefaultRouteActionRetryPolicyArgs and URLMapDefaultRouteActionRetryPolicyOutput values.
+// You can construct a concrete instance of `URLMapDefaultRouteActionRetryPolicyInput` via:
+//
+//	URLMapDefaultRouteActionRetryPolicyArgs{...}
+type URLMapDefaultRouteActionRetryPolicyInput interface {
+	pulumi.Input
+
+	ToURLMapDefaultRouteActionRetryPolicyOutput() URLMapDefaultRouteActionRetryPolicyOutput
+	ToURLMapDefaultRouteActionRetryPolicyOutputWithContext(context.Context) URLMapDefaultRouteActionRetryPolicyOutput
+}
+
+type URLMapDefaultRouteActionRetryPolicyArgs struct {
+	// Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
+	NumRetries pulumi.IntPtrInput `pulumi:"numRetries"`
+	// Specifies a non-zero timeout per retry attempt.
+	// If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
+	// will use the largest timeout among all backend services associated with the route.
+	// Structure is documented below.
+	PerTryTimeout URLMapDefaultRouteActionRetryPolicyPerTryTimeoutPtrInput `pulumi:"perTryTimeout"`
+	// Specfies one or more conditions when this retry rule applies. Valid values are:
+	// * 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
+	//   or if the backend service does not respond at all, example: disconnects, reset, read timeout,
+	// * connection failure, and refused streams.
+	// * gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504.
+	// * connect-failure: Loadbalancer will retry on failures connecting to backend services,
+	//   for example due to connection timeouts.
+	// * retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
+	//   Currently the only retriable error supported is 409.
+	// * refused-stream:Loadbalancer will retry if the backend service resets the stream with a REFUSED_STREAM error code.
+	//   This reset type indicates that it is safe to retry.
+	// * cancelled: Loadbalancer will retry if the gRPC status code in the response header is set to cancelled
+	// * deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded
+	// * resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted
+	// * unavailable: Loadbalancer will retry if the gRPC status code in the response header is set to unavailable
+	RetryConditions pulumi.StringArrayInput `pulumi:"retryConditions"`
+}
+
+func (URLMapDefaultRouteActionRetryPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapDefaultRouteActionRetryPolicy)(nil)).Elem()
+}
+
+func (i URLMapDefaultRouteActionRetryPolicyArgs) ToURLMapDefaultRouteActionRetryPolicyOutput() URLMapDefaultRouteActionRetryPolicyOutput {
+	return i.ToURLMapDefaultRouteActionRetryPolicyOutputWithContext(context.Background())
+}
+
+func (i URLMapDefaultRouteActionRetryPolicyArgs) ToURLMapDefaultRouteActionRetryPolicyOutputWithContext(ctx context.Context) URLMapDefaultRouteActionRetryPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionRetryPolicyOutput)
+}
+
+func (i URLMapDefaultRouteActionRetryPolicyArgs) ToURLMapDefaultRouteActionRetryPolicyPtrOutput() URLMapDefaultRouteActionRetryPolicyPtrOutput {
+	return i.ToURLMapDefaultRouteActionRetryPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapDefaultRouteActionRetryPolicyArgs) ToURLMapDefaultRouteActionRetryPolicyPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionRetryPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionRetryPolicyOutput).ToURLMapDefaultRouteActionRetryPolicyPtrOutputWithContext(ctx)
+}
+
+// URLMapDefaultRouteActionRetryPolicyPtrInput is an input type that accepts URLMapDefaultRouteActionRetryPolicyArgs, URLMapDefaultRouteActionRetryPolicyPtr and URLMapDefaultRouteActionRetryPolicyPtrOutput values.
+// You can construct a concrete instance of `URLMapDefaultRouteActionRetryPolicyPtrInput` via:
+//
+//	        URLMapDefaultRouteActionRetryPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapDefaultRouteActionRetryPolicyPtrInput interface {
+	pulumi.Input
+
+	ToURLMapDefaultRouteActionRetryPolicyPtrOutput() URLMapDefaultRouteActionRetryPolicyPtrOutput
+	ToURLMapDefaultRouteActionRetryPolicyPtrOutputWithContext(context.Context) URLMapDefaultRouteActionRetryPolicyPtrOutput
+}
+
+type urlmapDefaultRouteActionRetryPolicyPtrType URLMapDefaultRouteActionRetryPolicyArgs
+
+func URLMapDefaultRouteActionRetryPolicyPtr(v *URLMapDefaultRouteActionRetryPolicyArgs) URLMapDefaultRouteActionRetryPolicyPtrInput {
+	return (*urlmapDefaultRouteActionRetryPolicyPtrType)(v)
+}
+
+func (*urlmapDefaultRouteActionRetryPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapDefaultRouteActionRetryPolicy)(nil)).Elem()
+}
+
+func (i *urlmapDefaultRouteActionRetryPolicyPtrType) ToURLMapDefaultRouteActionRetryPolicyPtrOutput() URLMapDefaultRouteActionRetryPolicyPtrOutput {
+	return i.ToURLMapDefaultRouteActionRetryPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapDefaultRouteActionRetryPolicyPtrType) ToURLMapDefaultRouteActionRetryPolicyPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionRetryPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionRetryPolicyPtrOutput)
+}
+
+type URLMapDefaultRouteActionRetryPolicyOutput struct{ *pulumi.OutputState }
+
+func (URLMapDefaultRouteActionRetryPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapDefaultRouteActionRetryPolicy)(nil)).Elem()
+}
+
+func (o URLMapDefaultRouteActionRetryPolicyOutput) ToURLMapDefaultRouteActionRetryPolicyOutput() URLMapDefaultRouteActionRetryPolicyOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionRetryPolicyOutput) ToURLMapDefaultRouteActionRetryPolicyOutputWithContext(ctx context.Context) URLMapDefaultRouteActionRetryPolicyOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionRetryPolicyOutput) ToURLMapDefaultRouteActionRetryPolicyPtrOutput() URLMapDefaultRouteActionRetryPolicyPtrOutput {
+	return o.ToURLMapDefaultRouteActionRetryPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapDefaultRouteActionRetryPolicyOutput) ToURLMapDefaultRouteActionRetryPolicyPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionRetryPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapDefaultRouteActionRetryPolicy) *URLMapDefaultRouteActionRetryPolicy {
+		return &v
+	}).(URLMapDefaultRouteActionRetryPolicyPtrOutput)
+}
+
+// Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
+func (o URLMapDefaultRouteActionRetryPolicyOutput) NumRetries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteActionRetryPolicy) *int { return v.NumRetries }).(pulumi.IntPtrOutput)
+}
+
+// Specifies a non-zero timeout per retry attempt.
+// If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
+// will use the largest timeout among all backend services associated with the route.
+// Structure is documented below.
+func (o URLMapDefaultRouteActionRetryPolicyOutput) PerTryTimeout() URLMapDefaultRouteActionRetryPolicyPerTryTimeoutPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteActionRetryPolicy) *URLMapDefaultRouteActionRetryPolicyPerTryTimeout {
+		return v.PerTryTimeout
+	}).(URLMapDefaultRouteActionRetryPolicyPerTryTimeoutPtrOutput)
+}
+
+// Specfies one or more conditions when this retry rule applies. Valid values are:
+//   - 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
+//     or if the backend service does not respond at all, example: disconnects, reset, read timeout,
+//   - connection failure, and refused streams.
+//   - gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504.
+//   - connect-failure: Loadbalancer will retry on failures connecting to backend services,
+//     for example due to connection timeouts.
+//   - retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
+//     Currently the only retriable error supported is 409.
+//   - refused-stream:Loadbalancer will retry if the backend service resets the stream with a REFUSED_STREAM error code.
+//     This reset type indicates that it is safe to retry.
+//   - cancelled: Loadbalancer will retry if the gRPC status code in the response header is set to cancelled
+//   - deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded
+//   - resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted
+//   - unavailable: Loadbalancer will retry if the gRPC status code in the response header is set to unavailable
+func (o URLMapDefaultRouteActionRetryPolicyOutput) RetryConditions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteActionRetryPolicy) []string { return v.RetryConditions }).(pulumi.StringArrayOutput)
+}
+
+type URLMapDefaultRouteActionRetryPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapDefaultRouteActionRetryPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapDefaultRouteActionRetryPolicy)(nil)).Elem()
+}
+
+func (o URLMapDefaultRouteActionRetryPolicyPtrOutput) ToURLMapDefaultRouteActionRetryPolicyPtrOutput() URLMapDefaultRouteActionRetryPolicyPtrOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionRetryPolicyPtrOutput) ToURLMapDefaultRouteActionRetryPolicyPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionRetryPolicyPtrOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionRetryPolicyPtrOutput) Elem() URLMapDefaultRouteActionRetryPolicyOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteActionRetryPolicy) URLMapDefaultRouteActionRetryPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapDefaultRouteActionRetryPolicy
+		return ret
+	}).(URLMapDefaultRouteActionRetryPolicyOutput)
+}
+
+// Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
+func (o URLMapDefaultRouteActionRetryPolicyPtrOutput) NumRetries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteActionRetryPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumRetries
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies a non-zero timeout per retry attempt.
+// If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
+// will use the largest timeout among all backend services associated with the route.
+// Structure is documented below.
+func (o URLMapDefaultRouteActionRetryPolicyPtrOutput) PerTryTimeout() URLMapDefaultRouteActionRetryPolicyPerTryTimeoutPtrOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteActionRetryPolicy) *URLMapDefaultRouteActionRetryPolicyPerTryTimeout {
+		if v == nil {
+			return nil
+		}
+		return v.PerTryTimeout
+	}).(URLMapDefaultRouteActionRetryPolicyPerTryTimeoutPtrOutput)
+}
+
+// Specfies one or more conditions when this retry rule applies. Valid values are:
+//   - 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
+//     or if the backend service does not respond at all, example: disconnects, reset, read timeout,
+//   - connection failure, and refused streams.
+//   - gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504.
+//   - connect-failure: Loadbalancer will retry on failures connecting to backend services,
+//     for example due to connection timeouts.
+//   - retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
+//     Currently the only retriable error supported is 409.
+//   - refused-stream:Loadbalancer will retry if the backend service resets the stream with a REFUSED_STREAM error code.
+//     This reset type indicates that it is safe to retry.
+//   - cancelled: Loadbalancer will retry if the gRPC status code in the response header is set to cancelled
+//   - deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded
+//   - resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted
+//   - unavailable: Loadbalancer will retry if the gRPC status code in the response header is set to unavailable
+func (o URLMapDefaultRouteActionRetryPolicyPtrOutput) RetryConditions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteActionRetryPolicy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.RetryConditions
+	}).(pulumi.StringArrayOutput)
+}
+
+type URLMapDefaultRouteActionRetryPolicyPerTryTimeout struct {
+	// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+	// represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+	Nanos *int `pulumi:"nanos"`
+	// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+	// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+	Seconds *string `pulumi:"seconds"`
+}
+
+// URLMapDefaultRouteActionRetryPolicyPerTryTimeoutInput is an input type that accepts URLMapDefaultRouteActionRetryPolicyPerTryTimeoutArgs and URLMapDefaultRouteActionRetryPolicyPerTryTimeoutOutput values.
+// You can construct a concrete instance of `URLMapDefaultRouteActionRetryPolicyPerTryTimeoutInput` via:
+//
+//	URLMapDefaultRouteActionRetryPolicyPerTryTimeoutArgs{...}
+type URLMapDefaultRouteActionRetryPolicyPerTryTimeoutInput interface {
+	pulumi.Input
+
+	ToURLMapDefaultRouteActionRetryPolicyPerTryTimeoutOutput() URLMapDefaultRouteActionRetryPolicyPerTryTimeoutOutput
+	ToURLMapDefaultRouteActionRetryPolicyPerTryTimeoutOutputWithContext(context.Context) URLMapDefaultRouteActionRetryPolicyPerTryTimeoutOutput
+}
+
+type URLMapDefaultRouteActionRetryPolicyPerTryTimeoutArgs struct {
+	// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+	// represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
+	// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+	// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+	Seconds pulumi.StringPtrInput `pulumi:"seconds"`
+}
+
+func (URLMapDefaultRouteActionRetryPolicyPerTryTimeoutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapDefaultRouteActionRetryPolicyPerTryTimeout)(nil)).Elem()
+}
+
+func (i URLMapDefaultRouteActionRetryPolicyPerTryTimeoutArgs) ToURLMapDefaultRouteActionRetryPolicyPerTryTimeoutOutput() URLMapDefaultRouteActionRetryPolicyPerTryTimeoutOutput {
+	return i.ToURLMapDefaultRouteActionRetryPolicyPerTryTimeoutOutputWithContext(context.Background())
+}
+
+func (i URLMapDefaultRouteActionRetryPolicyPerTryTimeoutArgs) ToURLMapDefaultRouteActionRetryPolicyPerTryTimeoutOutputWithContext(ctx context.Context) URLMapDefaultRouteActionRetryPolicyPerTryTimeoutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionRetryPolicyPerTryTimeoutOutput)
+}
+
+func (i URLMapDefaultRouteActionRetryPolicyPerTryTimeoutArgs) ToURLMapDefaultRouteActionRetryPolicyPerTryTimeoutPtrOutput() URLMapDefaultRouteActionRetryPolicyPerTryTimeoutPtrOutput {
+	return i.ToURLMapDefaultRouteActionRetryPolicyPerTryTimeoutPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapDefaultRouteActionRetryPolicyPerTryTimeoutArgs) ToURLMapDefaultRouteActionRetryPolicyPerTryTimeoutPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionRetryPolicyPerTryTimeoutPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionRetryPolicyPerTryTimeoutOutput).ToURLMapDefaultRouteActionRetryPolicyPerTryTimeoutPtrOutputWithContext(ctx)
+}
+
+// URLMapDefaultRouteActionRetryPolicyPerTryTimeoutPtrInput is an input type that accepts URLMapDefaultRouteActionRetryPolicyPerTryTimeoutArgs, URLMapDefaultRouteActionRetryPolicyPerTryTimeoutPtr and URLMapDefaultRouteActionRetryPolicyPerTryTimeoutPtrOutput values.
+// You can construct a concrete instance of `URLMapDefaultRouteActionRetryPolicyPerTryTimeoutPtrInput` via:
+//
+//	        URLMapDefaultRouteActionRetryPolicyPerTryTimeoutArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapDefaultRouteActionRetryPolicyPerTryTimeoutPtrInput interface {
+	pulumi.Input
+
+	ToURLMapDefaultRouteActionRetryPolicyPerTryTimeoutPtrOutput() URLMapDefaultRouteActionRetryPolicyPerTryTimeoutPtrOutput
+	ToURLMapDefaultRouteActionRetryPolicyPerTryTimeoutPtrOutputWithContext(context.Context) URLMapDefaultRouteActionRetryPolicyPerTryTimeoutPtrOutput
+}
+
+type urlmapDefaultRouteActionRetryPolicyPerTryTimeoutPtrType URLMapDefaultRouteActionRetryPolicyPerTryTimeoutArgs
+
+func URLMapDefaultRouteActionRetryPolicyPerTryTimeoutPtr(v *URLMapDefaultRouteActionRetryPolicyPerTryTimeoutArgs) URLMapDefaultRouteActionRetryPolicyPerTryTimeoutPtrInput {
+	return (*urlmapDefaultRouteActionRetryPolicyPerTryTimeoutPtrType)(v)
+}
+
+func (*urlmapDefaultRouteActionRetryPolicyPerTryTimeoutPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapDefaultRouteActionRetryPolicyPerTryTimeout)(nil)).Elem()
+}
+
+func (i *urlmapDefaultRouteActionRetryPolicyPerTryTimeoutPtrType) ToURLMapDefaultRouteActionRetryPolicyPerTryTimeoutPtrOutput() URLMapDefaultRouteActionRetryPolicyPerTryTimeoutPtrOutput {
+	return i.ToURLMapDefaultRouteActionRetryPolicyPerTryTimeoutPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapDefaultRouteActionRetryPolicyPerTryTimeoutPtrType) ToURLMapDefaultRouteActionRetryPolicyPerTryTimeoutPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionRetryPolicyPerTryTimeoutPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionRetryPolicyPerTryTimeoutPtrOutput)
+}
+
+type URLMapDefaultRouteActionRetryPolicyPerTryTimeoutOutput struct{ *pulumi.OutputState }
+
+func (URLMapDefaultRouteActionRetryPolicyPerTryTimeoutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapDefaultRouteActionRetryPolicyPerTryTimeout)(nil)).Elem()
+}
+
+func (o URLMapDefaultRouteActionRetryPolicyPerTryTimeoutOutput) ToURLMapDefaultRouteActionRetryPolicyPerTryTimeoutOutput() URLMapDefaultRouteActionRetryPolicyPerTryTimeoutOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionRetryPolicyPerTryTimeoutOutput) ToURLMapDefaultRouteActionRetryPolicyPerTryTimeoutOutputWithContext(ctx context.Context) URLMapDefaultRouteActionRetryPolicyPerTryTimeoutOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionRetryPolicyPerTryTimeoutOutput) ToURLMapDefaultRouteActionRetryPolicyPerTryTimeoutPtrOutput() URLMapDefaultRouteActionRetryPolicyPerTryTimeoutPtrOutput {
+	return o.ToURLMapDefaultRouteActionRetryPolicyPerTryTimeoutPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapDefaultRouteActionRetryPolicyPerTryTimeoutOutput) ToURLMapDefaultRouteActionRetryPolicyPerTryTimeoutPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionRetryPolicyPerTryTimeoutPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapDefaultRouteActionRetryPolicyPerTryTimeout) *URLMapDefaultRouteActionRetryPolicyPerTryTimeout {
+		return &v
+	}).(URLMapDefaultRouteActionRetryPolicyPerTryTimeoutPtrOutput)
+}
+
+// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+// represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+func (o URLMapDefaultRouteActionRetryPolicyPerTryTimeoutOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteActionRetryPolicyPerTryTimeout) *int { return v.Nanos }).(pulumi.IntPtrOutput)
+}
+
+// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+func (o URLMapDefaultRouteActionRetryPolicyPerTryTimeoutOutput) Seconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteActionRetryPolicyPerTryTimeout) *string { return v.Seconds }).(pulumi.StringPtrOutput)
+}
+
+type URLMapDefaultRouteActionRetryPolicyPerTryTimeoutPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapDefaultRouteActionRetryPolicyPerTryTimeoutPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapDefaultRouteActionRetryPolicyPerTryTimeout)(nil)).Elem()
+}
+
+func (o URLMapDefaultRouteActionRetryPolicyPerTryTimeoutPtrOutput) ToURLMapDefaultRouteActionRetryPolicyPerTryTimeoutPtrOutput() URLMapDefaultRouteActionRetryPolicyPerTryTimeoutPtrOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionRetryPolicyPerTryTimeoutPtrOutput) ToURLMapDefaultRouteActionRetryPolicyPerTryTimeoutPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionRetryPolicyPerTryTimeoutPtrOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionRetryPolicyPerTryTimeoutPtrOutput) Elem() URLMapDefaultRouteActionRetryPolicyPerTryTimeoutOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteActionRetryPolicyPerTryTimeout) URLMapDefaultRouteActionRetryPolicyPerTryTimeout {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapDefaultRouteActionRetryPolicyPerTryTimeout
+		return ret
+	}).(URLMapDefaultRouteActionRetryPolicyPerTryTimeoutOutput)
+}
+
+// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+// represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+func (o URLMapDefaultRouteActionRetryPolicyPerTryTimeoutPtrOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteActionRetryPolicyPerTryTimeout) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Nanos
+	}).(pulumi.IntPtrOutput)
+}
+
+// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+func (o URLMapDefaultRouteActionRetryPolicyPerTryTimeoutPtrOutput) Seconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteActionRetryPolicyPerTryTimeout) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Seconds
+	}).(pulumi.StringPtrOutput)
+}
+
+type URLMapDefaultRouteActionTimeout struct {
+	// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+	// with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+	Nanos *int `pulumi:"nanos"`
+	// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+	// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+	Seconds *string `pulumi:"seconds"`
+}
+
+// URLMapDefaultRouteActionTimeoutInput is an input type that accepts URLMapDefaultRouteActionTimeoutArgs and URLMapDefaultRouteActionTimeoutOutput values.
+// You can construct a concrete instance of `URLMapDefaultRouteActionTimeoutInput` via:
+//
+//	URLMapDefaultRouteActionTimeoutArgs{...}
+type URLMapDefaultRouteActionTimeoutInput interface {
+	pulumi.Input
+
+	ToURLMapDefaultRouteActionTimeoutOutput() URLMapDefaultRouteActionTimeoutOutput
+	ToURLMapDefaultRouteActionTimeoutOutputWithContext(context.Context) URLMapDefaultRouteActionTimeoutOutput
+}
+
+type URLMapDefaultRouteActionTimeoutArgs struct {
+	// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+	// with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
+	// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+	// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+	Seconds pulumi.StringPtrInput `pulumi:"seconds"`
+}
+
+func (URLMapDefaultRouteActionTimeoutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapDefaultRouteActionTimeout)(nil)).Elem()
+}
+
+func (i URLMapDefaultRouteActionTimeoutArgs) ToURLMapDefaultRouteActionTimeoutOutput() URLMapDefaultRouteActionTimeoutOutput {
+	return i.ToURLMapDefaultRouteActionTimeoutOutputWithContext(context.Background())
+}
+
+func (i URLMapDefaultRouteActionTimeoutArgs) ToURLMapDefaultRouteActionTimeoutOutputWithContext(ctx context.Context) URLMapDefaultRouteActionTimeoutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionTimeoutOutput)
+}
+
+func (i URLMapDefaultRouteActionTimeoutArgs) ToURLMapDefaultRouteActionTimeoutPtrOutput() URLMapDefaultRouteActionTimeoutPtrOutput {
+	return i.ToURLMapDefaultRouteActionTimeoutPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapDefaultRouteActionTimeoutArgs) ToURLMapDefaultRouteActionTimeoutPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionTimeoutPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionTimeoutOutput).ToURLMapDefaultRouteActionTimeoutPtrOutputWithContext(ctx)
+}
+
+// URLMapDefaultRouteActionTimeoutPtrInput is an input type that accepts URLMapDefaultRouteActionTimeoutArgs, URLMapDefaultRouteActionTimeoutPtr and URLMapDefaultRouteActionTimeoutPtrOutput values.
+// You can construct a concrete instance of `URLMapDefaultRouteActionTimeoutPtrInput` via:
+//
+//	        URLMapDefaultRouteActionTimeoutArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapDefaultRouteActionTimeoutPtrInput interface {
+	pulumi.Input
+
+	ToURLMapDefaultRouteActionTimeoutPtrOutput() URLMapDefaultRouteActionTimeoutPtrOutput
+	ToURLMapDefaultRouteActionTimeoutPtrOutputWithContext(context.Context) URLMapDefaultRouteActionTimeoutPtrOutput
+}
+
+type urlmapDefaultRouteActionTimeoutPtrType URLMapDefaultRouteActionTimeoutArgs
+
+func URLMapDefaultRouteActionTimeoutPtr(v *URLMapDefaultRouteActionTimeoutArgs) URLMapDefaultRouteActionTimeoutPtrInput {
+	return (*urlmapDefaultRouteActionTimeoutPtrType)(v)
+}
+
+func (*urlmapDefaultRouteActionTimeoutPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapDefaultRouteActionTimeout)(nil)).Elem()
+}
+
+func (i *urlmapDefaultRouteActionTimeoutPtrType) ToURLMapDefaultRouteActionTimeoutPtrOutput() URLMapDefaultRouteActionTimeoutPtrOutput {
+	return i.ToURLMapDefaultRouteActionTimeoutPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapDefaultRouteActionTimeoutPtrType) ToURLMapDefaultRouteActionTimeoutPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionTimeoutPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionTimeoutPtrOutput)
+}
+
+type URLMapDefaultRouteActionTimeoutOutput struct{ *pulumi.OutputState }
+
+func (URLMapDefaultRouteActionTimeoutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapDefaultRouteActionTimeout)(nil)).Elem()
+}
+
+func (o URLMapDefaultRouteActionTimeoutOutput) ToURLMapDefaultRouteActionTimeoutOutput() URLMapDefaultRouteActionTimeoutOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionTimeoutOutput) ToURLMapDefaultRouteActionTimeoutOutputWithContext(ctx context.Context) URLMapDefaultRouteActionTimeoutOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionTimeoutOutput) ToURLMapDefaultRouteActionTimeoutPtrOutput() URLMapDefaultRouteActionTimeoutPtrOutput {
+	return o.ToURLMapDefaultRouteActionTimeoutPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapDefaultRouteActionTimeoutOutput) ToURLMapDefaultRouteActionTimeoutPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionTimeoutPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapDefaultRouteActionTimeout) *URLMapDefaultRouteActionTimeout {
+		return &v
+	}).(URLMapDefaultRouteActionTimeoutPtrOutput)
+}
+
+// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+// with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+func (o URLMapDefaultRouteActionTimeoutOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteActionTimeout) *int { return v.Nanos }).(pulumi.IntPtrOutput)
+}
+
+// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+func (o URLMapDefaultRouteActionTimeoutOutput) Seconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteActionTimeout) *string { return v.Seconds }).(pulumi.StringPtrOutput)
+}
+
+type URLMapDefaultRouteActionTimeoutPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapDefaultRouteActionTimeoutPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapDefaultRouteActionTimeout)(nil)).Elem()
+}
+
+func (o URLMapDefaultRouteActionTimeoutPtrOutput) ToURLMapDefaultRouteActionTimeoutPtrOutput() URLMapDefaultRouteActionTimeoutPtrOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionTimeoutPtrOutput) ToURLMapDefaultRouteActionTimeoutPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionTimeoutPtrOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionTimeoutPtrOutput) Elem() URLMapDefaultRouteActionTimeoutOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteActionTimeout) URLMapDefaultRouteActionTimeout {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapDefaultRouteActionTimeout
+		return ret
+	}).(URLMapDefaultRouteActionTimeoutOutput)
+}
+
+// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+// with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+func (o URLMapDefaultRouteActionTimeoutPtrOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteActionTimeout) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Nanos
+	}).(pulumi.IntPtrOutput)
+}
+
+// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+func (o URLMapDefaultRouteActionTimeoutPtrOutput) Seconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteActionTimeout) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Seconds
+	}).(pulumi.StringPtrOutput)
+}
+
+type URLMapDefaultRouteActionUrlRewrite struct {
+	// Prior to forwarding the request to the selected service, the request's host header is replaced
+	// with contents of hostRewrite.
+	// The value must be between 1 and 255 characters.
+	HostRewrite *string `pulumi:"hostRewrite"`
+	// Prior to forwarding the request to the selected backend service, the matching portion of the
+	// request's path is replaced by pathPrefixRewrite.
+	// The value must be between 1 and 1024 characters.
+	PathPrefixRewrite *string `pulumi:"pathPrefixRewrite"`
+}
+
+// URLMapDefaultRouteActionUrlRewriteInput is an input type that accepts URLMapDefaultRouteActionUrlRewriteArgs and URLMapDefaultRouteActionUrlRewriteOutput values.
+// You can construct a concrete instance of `URLMapDefaultRouteActionUrlRewriteInput` via:
+//
+//	URLMapDefaultRouteActionUrlRewriteArgs{...}
+type URLMapDefaultRouteActionUrlRewriteInput interface {
+	pulumi.Input
+
+	ToURLMapDefaultRouteActionUrlRewriteOutput() URLMapDefaultRouteActionUrlRewriteOutput
+	ToURLMapDefaultRouteActionUrlRewriteOutputWithContext(context.Context) URLMapDefaultRouteActionUrlRewriteOutput
+}
+
+type URLMapDefaultRouteActionUrlRewriteArgs struct {
+	// Prior to forwarding the request to the selected service, the request's host header is replaced
+	// with contents of hostRewrite.
+	// The value must be between 1 and 255 characters.
+	HostRewrite pulumi.StringPtrInput `pulumi:"hostRewrite"`
+	// Prior to forwarding the request to the selected backend service, the matching portion of the
+	// request's path is replaced by pathPrefixRewrite.
+	// The value must be between 1 and 1024 characters.
+	PathPrefixRewrite pulumi.StringPtrInput `pulumi:"pathPrefixRewrite"`
+}
+
+func (URLMapDefaultRouteActionUrlRewriteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapDefaultRouteActionUrlRewrite)(nil)).Elem()
+}
+
+func (i URLMapDefaultRouteActionUrlRewriteArgs) ToURLMapDefaultRouteActionUrlRewriteOutput() URLMapDefaultRouteActionUrlRewriteOutput {
+	return i.ToURLMapDefaultRouteActionUrlRewriteOutputWithContext(context.Background())
+}
+
+func (i URLMapDefaultRouteActionUrlRewriteArgs) ToURLMapDefaultRouteActionUrlRewriteOutputWithContext(ctx context.Context) URLMapDefaultRouteActionUrlRewriteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionUrlRewriteOutput)
+}
+
+func (i URLMapDefaultRouteActionUrlRewriteArgs) ToURLMapDefaultRouteActionUrlRewritePtrOutput() URLMapDefaultRouteActionUrlRewritePtrOutput {
+	return i.ToURLMapDefaultRouteActionUrlRewritePtrOutputWithContext(context.Background())
+}
+
+func (i URLMapDefaultRouteActionUrlRewriteArgs) ToURLMapDefaultRouteActionUrlRewritePtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionUrlRewritePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionUrlRewriteOutput).ToURLMapDefaultRouteActionUrlRewritePtrOutputWithContext(ctx)
+}
+
+// URLMapDefaultRouteActionUrlRewritePtrInput is an input type that accepts URLMapDefaultRouteActionUrlRewriteArgs, URLMapDefaultRouteActionUrlRewritePtr and URLMapDefaultRouteActionUrlRewritePtrOutput values.
+// You can construct a concrete instance of `URLMapDefaultRouteActionUrlRewritePtrInput` via:
+//
+//	        URLMapDefaultRouteActionUrlRewriteArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapDefaultRouteActionUrlRewritePtrInput interface {
+	pulumi.Input
+
+	ToURLMapDefaultRouteActionUrlRewritePtrOutput() URLMapDefaultRouteActionUrlRewritePtrOutput
+	ToURLMapDefaultRouteActionUrlRewritePtrOutputWithContext(context.Context) URLMapDefaultRouteActionUrlRewritePtrOutput
+}
+
+type urlmapDefaultRouteActionUrlRewritePtrType URLMapDefaultRouteActionUrlRewriteArgs
+
+func URLMapDefaultRouteActionUrlRewritePtr(v *URLMapDefaultRouteActionUrlRewriteArgs) URLMapDefaultRouteActionUrlRewritePtrInput {
+	return (*urlmapDefaultRouteActionUrlRewritePtrType)(v)
+}
+
+func (*urlmapDefaultRouteActionUrlRewritePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapDefaultRouteActionUrlRewrite)(nil)).Elem()
+}
+
+func (i *urlmapDefaultRouteActionUrlRewritePtrType) ToURLMapDefaultRouteActionUrlRewritePtrOutput() URLMapDefaultRouteActionUrlRewritePtrOutput {
+	return i.ToURLMapDefaultRouteActionUrlRewritePtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapDefaultRouteActionUrlRewritePtrType) ToURLMapDefaultRouteActionUrlRewritePtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionUrlRewritePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionUrlRewritePtrOutput)
+}
+
+type URLMapDefaultRouteActionUrlRewriteOutput struct{ *pulumi.OutputState }
+
+func (URLMapDefaultRouteActionUrlRewriteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapDefaultRouteActionUrlRewrite)(nil)).Elem()
+}
+
+func (o URLMapDefaultRouteActionUrlRewriteOutput) ToURLMapDefaultRouteActionUrlRewriteOutput() URLMapDefaultRouteActionUrlRewriteOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionUrlRewriteOutput) ToURLMapDefaultRouteActionUrlRewriteOutputWithContext(ctx context.Context) URLMapDefaultRouteActionUrlRewriteOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionUrlRewriteOutput) ToURLMapDefaultRouteActionUrlRewritePtrOutput() URLMapDefaultRouteActionUrlRewritePtrOutput {
+	return o.ToURLMapDefaultRouteActionUrlRewritePtrOutputWithContext(context.Background())
+}
+
+func (o URLMapDefaultRouteActionUrlRewriteOutput) ToURLMapDefaultRouteActionUrlRewritePtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionUrlRewritePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapDefaultRouteActionUrlRewrite) *URLMapDefaultRouteActionUrlRewrite {
+		return &v
+	}).(URLMapDefaultRouteActionUrlRewritePtrOutput)
+}
+
+// Prior to forwarding the request to the selected service, the request's host header is replaced
+// with contents of hostRewrite.
+// The value must be between 1 and 255 characters.
+func (o URLMapDefaultRouteActionUrlRewriteOutput) HostRewrite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteActionUrlRewrite) *string { return v.HostRewrite }).(pulumi.StringPtrOutput)
+}
+
+// Prior to forwarding the request to the selected backend service, the matching portion of the
+// request's path is replaced by pathPrefixRewrite.
+// The value must be between 1 and 1024 characters.
+func (o URLMapDefaultRouteActionUrlRewriteOutput) PathPrefixRewrite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteActionUrlRewrite) *string { return v.PathPrefixRewrite }).(pulumi.StringPtrOutput)
+}
+
+type URLMapDefaultRouteActionUrlRewritePtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapDefaultRouteActionUrlRewritePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapDefaultRouteActionUrlRewrite)(nil)).Elem()
+}
+
+func (o URLMapDefaultRouteActionUrlRewritePtrOutput) ToURLMapDefaultRouteActionUrlRewritePtrOutput() URLMapDefaultRouteActionUrlRewritePtrOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionUrlRewritePtrOutput) ToURLMapDefaultRouteActionUrlRewritePtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionUrlRewritePtrOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionUrlRewritePtrOutput) Elem() URLMapDefaultRouteActionUrlRewriteOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteActionUrlRewrite) URLMapDefaultRouteActionUrlRewrite {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapDefaultRouteActionUrlRewrite
+		return ret
+	}).(URLMapDefaultRouteActionUrlRewriteOutput)
+}
+
+// Prior to forwarding the request to the selected service, the request's host header is replaced
+// with contents of hostRewrite.
+// The value must be between 1 and 255 characters.
+func (o URLMapDefaultRouteActionUrlRewritePtrOutput) HostRewrite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteActionUrlRewrite) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HostRewrite
+	}).(pulumi.StringPtrOutput)
+}
+
+// Prior to forwarding the request to the selected backend service, the matching portion of the
+// request's path is replaced by pathPrefixRewrite.
+// The value must be between 1 and 1024 characters.
+func (o URLMapDefaultRouteActionUrlRewritePtrOutput) PathPrefixRewrite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteActionUrlRewrite) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PathPrefixRewrite
+	}).(pulumi.StringPtrOutput)
+}
+
+type URLMapDefaultRouteActionWeightedBackendService struct {
+	// The full or partial URL to the default BackendService resource. Before forwarding the
+	// request to backendService, the loadbalancer applies any relevant headerActions
+	// specified as part of this backendServiceWeight.
+	BackendService *string `pulumi:"backendService"`
+	// Specifies changes to request and response headers that need to take effect for
+	// the selected backendService.
+	// headerAction specified here take effect before headerAction in the enclosing
+	// HttpRouteRule, PathMatcher and UrlMap.
+	// Structure is documented below.
+	HeaderAction *URLMapDefaultRouteActionWeightedBackendServiceHeaderAction `pulumi:"headerAction"`
+	// Specifies the fraction of traffic sent to backendService, computed as
+	// weight / (sum of all weightedBackendService weights in routeAction) .
+	// The selection of a backend service is determined only for new traffic. Once a user's request
+	// has been directed to a backendService, subsequent requests will be sent to the same backendService
+	// as determined by the BackendService's session affinity policy.
+	// The value must be between 0 and 1000
+	Weight *int `pulumi:"weight"`
+}
+
+// URLMapDefaultRouteActionWeightedBackendServiceInput is an input type that accepts URLMapDefaultRouteActionWeightedBackendServiceArgs and URLMapDefaultRouteActionWeightedBackendServiceOutput values.
+// You can construct a concrete instance of `URLMapDefaultRouteActionWeightedBackendServiceInput` via:
+//
+//	URLMapDefaultRouteActionWeightedBackendServiceArgs{...}
+type URLMapDefaultRouteActionWeightedBackendServiceInput interface {
+	pulumi.Input
+
+	ToURLMapDefaultRouteActionWeightedBackendServiceOutput() URLMapDefaultRouteActionWeightedBackendServiceOutput
+	ToURLMapDefaultRouteActionWeightedBackendServiceOutputWithContext(context.Context) URLMapDefaultRouteActionWeightedBackendServiceOutput
+}
+
+type URLMapDefaultRouteActionWeightedBackendServiceArgs struct {
+	// The full or partial URL to the default BackendService resource. Before forwarding the
+	// request to backendService, the loadbalancer applies any relevant headerActions
+	// specified as part of this backendServiceWeight.
+	BackendService pulumi.StringPtrInput `pulumi:"backendService"`
+	// Specifies changes to request and response headers that need to take effect for
+	// the selected backendService.
+	// headerAction specified here take effect before headerAction in the enclosing
+	// HttpRouteRule, PathMatcher and UrlMap.
+	// Structure is documented below.
+	HeaderAction URLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrInput `pulumi:"headerAction"`
+	// Specifies the fraction of traffic sent to backendService, computed as
+	// weight / (sum of all weightedBackendService weights in routeAction) .
+	// The selection of a backend service is determined only for new traffic. Once a user's request
+	// has been directed to a backendService, subsequent requests will be sent to the same backendService
+	// as determined by the BackendService's session affinity policy.
+	// The value must be between 0 and 1000
+	Weight pulumi.IntPtrInput `pulumi:"weight"`
+}
+
+func (URLMapDefaultRouteActionWeightedBackendServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapDefaultRouteActionWeightedBackendService)(nil)).Elem()
+}
+
+func (i URLMapDefaultRouteActionWeightedBackendServiceArgs) ToURLMapDefaultRouteActionWeightedBackendServiceOutput() URLMapDefaultRouteActionWeightedBackendServiceOutput {
+	return i.ToURLMapDefaultRouteActionWeightedBackendServiceOutputWithContext(context.Background())
+}
+
+func (i URLMapDefaultRouteActionWeightedBackendServiceArgs) ToURLMapDefaultRouteActionWeightedBackendServiceOutputWithContext(ctx context.Context) URLMapDefaultRouteActionWeightedBackendServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionWeightedBackendServiceOutput)
+}
+
+// URLMapDefaultRouteActionWeightedBackendServiceArrayInput is an input type that accepts URLMapDefaultRouteActionWeightedBackendServiceArray and URLMapDefaultRouteActionWeightedBackendServiceArrayOutput values.
+// You can construct a concrete instance of `URLMapDefaultRouteActionWeightedBackendServiceArrayInput` via:
+//
+//	URLMapDefaultRouteActionWeightedBackendServiceArray{ URLMapDefaultRouteActionWeightedBackendServiceArgs{...} }
+type URLMapDefaultRouteActionWeightedBackendServiceArrayInput interface {
+	pulumi.Input
+
+	ToURLMapDefaultRouteActionWeightedBackendServiceArrayOutput() URLMapDefaultRouteActionWeightedBackendServiceArrayOutput
+	ToURLMapDefaultRouteActionWeightedBackendServiceArrayOutputWithContext(context.Context) URLMapDefaultRouteActionWeightedBackendServiceArrayOutput
+}
+
+type URLMapDefaultRouteActionWeightedBackendServiceArray []URLMapDefaultRouteActionWeightedBackendServiceInput
+
+func (URLMapDefaultRouteActionWeightedBackendServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]URLMapDefaultRouteActionWeightedBackendService)(nil)).Elem()
+}
+
+func (i URLMapDefaultRouteActionWeightedBackendServiceArray) ToURLMapDefaultRouteActionWeightedBackendServiceArrayOutput() URLMapDefaultRouteActionWeightedBackendServiceArrayOutput {
+	return i.ToURLMapDefaultRouteActionWeightedBackendServiceArrayOutputWithContext(context.Background())
+}
+
+func (i URLMapDefaultRouteActionWeightedBackendServiceArray) ToURLMapDefaultRouteActionWeightedBackendServiceArrayOutputWithContext(ctx context.Context) URLMapDefaultRouteActionWeightedBackendServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionWeightedBackendServiceArrayOutput)
+}
+
+type URLMapDefaultRouteActionWeightedBackendServiceOutput struct{ *pulumi.OutputState }
+
+func (URLMapDefaultRouteActionWeightedBackendServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapDefaultRouteActionWeightedBackendService)(nil)).Elem()
+}
+
+func (o URLMapDefaultRouteActionWeightedBackendServiceOutput) ToURLMapDefaultRouteActionWeightedBackendServiceOutput() URLMapDefaultRouteActionWeightedBackendServiceOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionWeightedBackendServiceOutput) ToURLMapDefaultRouteActionWeightedBackendServiceOutputWithContext(ctx context.Context) URLMapDefaultRouteActionWeightedBackendServiceOutput {
+	return o
+}
+
+// The full or partial URL to the default BackendService resource. Before forwarding the
+// request to backendService, the loadbalancer applies any relevant headerActions
+// specified as part of this backendServiceWeight.
+func (o URLMapDefaultRouteActionWeightedBackendServiceOutput) BackendService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteActionWeightedBackendService) *string { return v.BackendService }).(pulumi.StringPtrOutput)
+}
+
+// Specifies changes to request and response headers that need to take effect for
+// the selected backendService.
+// headerAction specified here take effect before headerAction in the enclosing
+// HttpRouteRule, PathMatcher and UrlMap.
+// Structure is documented below.
+func (o URLMapDefaultRouteActionWeightedBackendServiceOutput) HeaderAction() URLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteActionWeightedBackendService) *URLMapDefaultRouteActionWeightedBackendServiceHeaderAction {
+		return v.HeaderAction
+	}).(URLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrOutput)
+}
+
+// Specifies the fraction of traffic sent to backendService, computed as
+// weight / (sum of all weightedBackendService weights in routeAction) .
+// The selection of a backend service is determined only for new traffic. Once a user's request
+// has been directed to a backendService, subsequent requests will be sent to the same backendService
+// as determined by the BackendService's session affinity policy.
+// The value must be between 0 and 1000
+func (o URLMapDefaultRouteActionWeightedBackendServiceOutput) Weight() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteActionWeightedBackendService) *int { return v.Weight }).(pulumi.IntPtrOutput)
+}
+
+type URLMapDefaultRouteActionWeightedBackendServiceArrayOutput struct{ *pulumi.OutputState }
+
+func (URLMapDefaultRouteActionWeightedBackendServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]URLMapDefaultRouteActionWeightedBackendService)(nil)).Elem()
+}
+
+func (o URLMapDefaultRouteActionWeightedBackendServiceArrayOutput) ToURLMapDefaultRouteActionWeightedBackendServiceArrayOutput() URLMapDefaultRouteActionWeightedBackendServiceArrayOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionWeightedBackendServiceArrayOutput) ToURLMapDefaultRouteActionWeightedBackendServiceArrayOutputWithContext(ctx context.Context) URLMapDefaultRouteActionWeightedBackendServiceArrayOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionWeightedBackendServiceArrayOutput) Index(i pulumi.IntInput) URLMapDefaultRouteActionWeightedBackendServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) URLMapDefaultRouteActionWeightedBackendService {
+		return vs[0].([]URLMapDefaultRouteActionWeightedBackendService)[vs[1].(int)]
+	}).(URLMapDefaultRouteActionWeightedBackendServiceOutput)
+}
+
+type URLMapDefaultRouteActionWeightedBackendServiceHeaderAction struct {
+	// Headers to add to a matching request prior to forwarding the request to the backendService.
+	// Structure is documented below.
+	RequestHeadersToAdds []URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd `pulumi:"requestHeadersToAdds"`
+	// A list of header names for headers that need to be removed from the request prior to
+	// forwarding the request to the backendService.
+	RequestHeadersToRemoves []string `pulumi:"requestHeadersToRemoves"`
+	// Headers to add the response prior to sending the response back to the client.
+	// Structure is documented below.
+	ResponseHeadersToAdds []URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd `pulumi:"responseHeadersToAdds"`
+	// A list of header names for headers that need to be removed from the response prior to sending the
+	// response back to the client.
+	ResponseHeadersToRemoves []string `pulumi:"responseHeadersToRemoves"`
+}
+
+// URLMapDefaultRouteActionWeightedBackendServiceHeaderActionInput is an input type that accepts URLMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs and URLMapDefaultRouteActionWeightedBackendServiceHeaderActionOutput values.
+// You can construct a concrete instance of `URLMapDefaultRouteActionWeightedBackendServiceHeaderActionInput` via:
+//
+//	URLMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs{...}
+type URLMapDefaultRouteActionWeightedBackendServiceHeaderActionInput interface {
+	pulumi.Input
+
+	ToURLMapDefaultRouteActionWeightedBackendServiceHeaderActionOutput() URLMapDefaultRouteActionWeightedBackendServiceHeaderActionOutput
+	ToURLMapDefaultRouteActionWeightedBackendServiceHeaderActionOutputWithContext(context.Context) URLMapDefaultRouteActionWeightedBackendServiceHeaderActionOutput
+}
+
+type URLMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs struct {
+	// Headers to add to a matching request prior to forwarding the request to the backendService.
+	// Structure is documented below.
+	RequestHeadersToAdds URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayInput `pulumi:"requestHeadersToAdds"`
+	// A list of header names for headers that need to be removed from the request prior to
+	// forwarding the request to the backendService.
+	RequestHeadersToRemoves pulumi.StringArrayInput `pulumi:"requestHeadersToRemoves"`
+	// Headers to add the response prior to sending the response back to the client.
+	// Structure is documented below.
+	ResponseHeadersToAdds URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayInput `pulumi:"responseHeadersToAdds"`
+	// A list of header names for headers that need to be removed from the response prior to sending the
+	// response back to the client.
+	ResponseHeadersToRemoves pulumi.StringArrayInput `pulumi:"responseHeadersToRemoves"`
+}
+
+func (URLMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapDefaultRouteActionWeightedBackendServiceHeaderAction)(nil)).Elem()
+}
+
+func (i URLMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs) ToURLMapDefaultRouteActionWeightedBackendServiceHeaderActionOutput() URLMapDefaultRouteActionWeightedBackendServiceHeaderActionOutput {
+	return i.ToURLMapDefaultRouteActionWeightedBackendServiceHeaderActionOutputWithContext(context.Background())
+}
+
+func (i URLMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs) ToURLMapDefaultRouteActionWeightedBackendServiceHeaderActionOutputWithContext(ctx context.Context) URLMapDefaultRouteActionWeightedBackendServiceHeaderActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionWeightedBackendServiceHeaderActionOutput)
+}
+
+func (i URLMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs) ToURLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrOutput() URLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrOutput {
+	return i.ToURLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs) ToURLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionWeightedBackendServiceHeaderActionOutput).ToURLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrOutputWithContext(ctx)
+}
+
+// URLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrInput is an input type that accepts URLMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs, URLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtr and URLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrOutput values.
+// You can construct a concrete instance of `URLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrInput` via:
+//
+//	        URLMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrInput interface {
+	pulumi.Input
+
+	ToURLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrOutput() URLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrOutput
+	ToURLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrOutputWithContext(context.Context) URLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrOutput
+}
+
+type urlmapDefaultRouteActionWeightedBackendServiceHeaderActionPtrType URLMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs
+
+func URLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtr(v *URLMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs) URLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrInput {
+	return (*urlmapDefaultRouteActionWeightedBackendServiceHeaderActionPtrType)(v)
+}
+
+func (*urlmapDefaultRouteActionWeightedBackendServiceHeaderActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapDefaultRouteActionWeightedBackendServiceHeaderAction)(nil)).Elem()
+}
+
+func (i *urlmapDefaultRouteActionWeightedBackendServiceHeaderActionPtrType) ToURLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrOutput() URLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrOutput {
+	return i.ToURLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapDefaultRouteActionWeightedBackendServiceHeaderActionPtrType) ToURLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrOutput)
+}
+
+type URLMapDefaultRouteActionWeightedBackendServiceHeaderActionOutput struct{ *pulumi.OutputState }
+
+func (URLMapDefaultRouteActionWeightedBackendServiceHeaderActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapDefaultRouteActionWeightedBackendServiceHeaderAction)(nil)).Elem()
+}
+
+func (o URLMapDefaultRouteActionWeightedBackendServiceHeaderActionOutput) ToURLMapDefaultRouteActionWeightedBackendServiceHeaderActionOutput() URLMapDefaultRouteActionWeightedBackendServiceHeaderActionOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionWeightedBackendServiceHeaderActionOutput) ToURLMapDefaultRouteActionWeightedBackendServiceHeaderActionOutputWithContext(ctx context.Context) URLMapDefaultRouteActionWeightedBackendServiceHeaderActionOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionWeightedBackendServiceHeaderActionOutput) ToURLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrOutput() URLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrOutput {
+	return o.ToURLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapDefaultRouteActionWeightedBackendServiceHeaderActionOutput) ToURLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapDefaultRouteActionWeightedBackendServiceHeaderAction) *URLMapDefaultRouteActionWeightedBackendServiceHeaderAction {
+		return &v
+	}).(URLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrOutput)
+}
+
+// Headers to add to a matching request prior to forwarding the request to the backendService.
+// Structure is documented below.
+func (o URLMapDefaultRouteActionWeightedBackendServiceHeaderActionOutput) RequestHeadersToAdds() URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteActionWeightedBackendServiceHeaderAction) []URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd {
+		return v.RequestHeadersToAdds
+	}).(URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput)
+}
+
+// A list of header names for headers that need to be removed from the request prior to
+// forwarding the request to the backendService.
+func (o URLMapDefaultRouteActionWeightedBackendServiceHeaderActionOutput) RequestHeadersToRemoves() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteActionWeightedBackendServiceHeaderAction) []string {
+		return v.RequestHeadersToRemoves
+	}).(pulumi.StringArrayOutput)
+}
+
+// Headers to add the response prior to sending the response back to the client.
+// Structure is documented below.
+func (o URLMapDefaultRouteActionWeightedBackendServiceHeaderActionOutput) ResponseHeadersToAdds() URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteActionWeightedBackendServiceHeaderAction) []URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd {
+		return v.ResponseHeadersToAdds
+	}).(URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput)
+}
+
+// A list of header names for headers that need to be removed from the response prior to sending the
+// response back to the client.
+func (o URLMapDefaultRouteActionWeightedBackendServiceHeaderActionOutput) ResponseHeadersToRemoves() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteActionWeightedBackendServiceHeaderAction) []string {
+		return v.ResponseHeadersToRemoves
+	}).(pulumi.StringArrayOutput)
+}
+
+type URLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapDefaultRouteActionWeightedBackendServiceHeaderAction)(nil)).Elem()
+}
+
+func (o URLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrOutput) ToURLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrOutput() URLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrOutput) ToURLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrOutput) Elem() URLMapDefaultRouteActionWeightedBackendServiceHeaderActionOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteActionWeightedBackendServiceHeaderAction) URLMapDefaultRouteActionWeightedBackendServiceHeaderAction {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapDefaultRouteActionWeightedBackendServiceHeaderAction
+		return ret
+	}).(URLMapDefaultRouteActionWeightedBackendServiceHeaderActionOutput)
+}
+
+// Headers to add to a matching request prior to forwarding the request to the backendService.
+// Structure is documented below.
+func (o URLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrOutput) RequestHeadersToAdds() URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteActionWeightedBackendServiceHeaderAction) []URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd {
+		if v == nil {
+			return nil
+		}
+		return v.RequestHeadersToAdds
+	}).(URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput)
+}
+
+// A list of header names for headers that need to be removed from the request prior to
+// forwarding the request to the backendService.
+func (o URLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrOutput) RequestHeadersToRemoves() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteActionWeightedBackendServiceHeaderAction) []string {
+		if v == nil {
+			return nil
+		}
+		return v.RequestHeadersToRemoves
+	}).(pulumi.StringArrayOutput)
+}
+
+// Headers to add the response prior to sending the response back to the client.
+// Structure is documented below.
+func (o URLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrOutput) ResponseHeadersToAdds() URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteActionWeightedBackendServiceHeaderAction) []URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd {
+		if v == nil {
+			return nil
+		}
+		return v.ResponseHeadersToAdds
+	}).(URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput)
+}
+
+// A list of header names for headers that need to be removed from the response prior to sending the
+// response back to the client.
+func (o URLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrOutput) ResponseHeadersToRemoves() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteActionWeightedBackendServiceHeaderAction) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ResponseHeadersToRemoves
+	}).(pulumi.StringArrayOutput)
+}
+
+type URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd struct {
+	// The name of the header to add.
+	HeaderName *string `pulumi:"headerName"`
+	// The value of the header to add.
+	HeaderValue *string `pulumi:"headerValue"`
+	// If false, headerValue is appended to any values that already exist for the header.
+	// If true, headerValue is set for the header, discarding any values that were set for that header.
+	Replace *bool `pulumi:"replace"`
+}
+
+// URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddInput is an input type that accepts URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs and URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput values.
+// You can construct a concrete instance of `URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddInput` via:
+//
+//	URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs{...}
+type URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddInput interface {
+	pulumi.Input
+
+	ToURLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput() URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput
+	ToURLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutputWithContext(context.Context) URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput
+}
+
+type URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs struct {
+	// The name of the header to add.
+	HeaderName pulumi.StringPtrInput `pulumi:"headerName"`
+	// The value of the header to add.
+	HeaderValue pulumi.StringPtrInput `pulumi:"headerValue"`
+	// If false, headerValue is appended to any values that already exist for the header.
+	// If true, headerValue is set for the header, discarding any values that were set for that header.
+	Replace pulumi.BoolPtrInput `pulumi:"replace"`
+}
+
+func (URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd)(nil)).Elem()
+}
+
+func (i URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs) ToURLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput() URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput {
+	return i.ToURLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutputWithContext(context.Background())
+}
+
+func (i URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs) ToURLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutputWithContext(ctx context.Context) URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput)
+}
+
+// URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayInput is an input type that accepts URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArray and URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput values.
+// You can construct a concrete instance of `URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayInput` via:
+//
+//	URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArray{ URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs{...} }
+type URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayInput interface {
+	pulumi.Input
+
+	ToURLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput() URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput
+	ToURLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutputWithContext(context.Context) URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput
+}
+
+type URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArray []URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddInput
+
+func (URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd)(nil)).Elem()
+}
+
+func (i URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArray) ToURLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput() URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput {
+	return i.ToURLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutputWithContext(context.Background())
+}
+
+func (i URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArray) ToURLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutputWithContext(ctx context.Context) URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput)
+}
+
+type URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput struct{ *pulumi.OutputState }
+
+func (URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd)(nil)).Elem()
+}
+
+func (o URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput) ToURLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput() URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput) ToURLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutputWithContext(ctx context.Context) URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput {
+	return o
+}
+
+// The name of the header to add.
+func (o URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput) HeaderName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd) *string {
+		return v.HeaderName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The value of the header to add.
+func (o URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput) HeaderValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd) *string {
+		return v.HeaderValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// If false, headerValue is appended to any values that already exist for the header.
+// If true, headerValue is set for the header, discarding any values that were set for that header.
+func (o URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput) Replace() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd) *bool {
+		return v.Replace
+	}).(pulumi.BoolPtrOutput)
+}
+
+type URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput struct{ *pulumi.OutputState }
+
+func (URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd)(nil)).Elem()
+}
+
+func (o URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput) ToURLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput() URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput) ToURLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutputWithContext(ctx context.Context) URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput) Index(i pulumi.IntInput) URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd {
+		return vs[0].([]URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd)[vs[1].(int)]
+	}).(URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput)
+}
+
+type URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd struct {
+	// The name of the header to add.
+	HeaderName *string `pulumi:"headerName"`
+	// The value of the header to add.
+	HeaderValue *string `pulumi:"headerValue"`
+	// If false, headerValue is appended to any values that already exist for the header.
+	// If true, headerValue is set for the header, discarding any values that were set for that header.
+	Replace *bool `pulumi:"replace"`
+}
+
+// URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddInput is an input type that accepts URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs and URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput values.
+// You can construct a concrete instance of `URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddInput` via:
+//
+//	URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs{...}
+type URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddInput interface {
+	pulumi.Input
+
+	ToURLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput() URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput
+	ToURLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutputWithContext(context.Context) URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput
+}
+
+type URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs struct {
+	// The name of the header to add.
+	HeaderName pulumi.StringPtrInput `pulumi:"headerName"`
+	// The value of the header to add.
+	HeaderValue pulumi.StringPtrInput `pulumi:"headerValue"`
+	// If false, headerValue is appended to any values that already exist for the header.
+	// If true, headerValue is set for the header, discarding any values that were set for that header.
+	Replace pulumi.BoolPtrInput `pulumi:"replace"`
+}
+
+func (URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd)(nil)).Elem()
+}
+
+func (i URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs) ToURLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput() URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput {
+	return i.ToURLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutputWithContext(context.Background())
+}
+
+func (i URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs) ToURLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutputWithContext(ctx context.Context) URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput)
+}
+
+// URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayInput is an input type that accepts URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArray and URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput values.
+// You can construct a concrete instance of `URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayInput` via:
+//
+//	URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArray{ URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs{...} }
+type URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayInput interface {
+	pulumi.Input
+
+	ToURLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput() URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput
+	ToURLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutputWithContext(context.Context) URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput
+}
+
+type URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArray []URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddInput
+
+func (URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd)(nil)).Elem()
+}
+
+func (i URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArray) ToURLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput() URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput {
+	return i.ToURLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutputWithContext(context.Background())
+}
+
+func (i URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArray) ToURLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutputWithContext(ctx context.Context) URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput)
+}
+
+type URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput struct{ *pulumi.OutputState }
+
+func (URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd)(nil)).Elem()
+}
+
+func (o URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput) ToURLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput() URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput) ToURLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutputWithContext(ctx context.Context) URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput {
+	return o
+}
+
+// The name of the header to add.
+func (o URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput) HeaderName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd) *string {
+		return v.HeaderName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The value of the header to add.
+func (o URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput) HeaderValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd) *string {
+		return v.HeaderValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// If false, headerValue is appended to any values that already exist for the header.
+// If true, headerValue is set for the header, discarding any values that were set for that header.
+func (o URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput) Replace() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd) *bool {
+		return v.Replace
+	}).(pulumi.BoolPtrOutput)
+}
+
+type URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput struct{ *pulumi.OutputState }
+
+func (URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd)(nil)).Elem()
+}
+
+func (o URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput) ToURLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput() URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput) ToURLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutputWithContext(ctx context.Context) URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput) Index(i pulumi.IntInput) URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd {
+		return vs[0].([]URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd)[vs[1].(int)]
+	}).(URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput)
+}
+
+type URLMapDefaultUrlRedirect struct {
+	// The host that will be used in the redirect response instead of the one that was
+	// supplied in the request. The value must be between 1 and 255 characters.
+	HostRedirect *string `pulumi:"hostRedirect"`
+	// If set to true, the URL scheme in the redirected request is set to https. If set to
+	// false, the URL scheme of the redirected request will remain the same as that of the
+	// request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+	// true for TargetHttpsProxy is not permitted. The default is set to false.
+	HttpsRedirect *bool `pulumi:"httpsRedirect"`
+	// The path that will be used in the redirect response instead of the one that was
+	// supplied in the request. pathRedirect cannot be supplied together with
+	// prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+	// original request will be used for the redirect. The value must be between 1 and 1024
+	// characters.
+	PathRedirect *string `pulumi:"pathRedirect"`
+	// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+	// retaining the remaining portion of the URL before redirecting the request.
+	// prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+	// neither. If neither is supplied, the path of the original request will be used for
+	// the redirect. The value must be between 1 and 1024 characters.
+	PrefixRedirect *string `pulumi:"prefixRedirect"`
+	// The HTTP Status code to use for this RedirectAction. Supported values are:
+	// * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+	// * FOUND, which corresponds to 302.
+	// * SEE_OTHER which corresponds to 303.
+	// * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+	//   will be retained.
+	// * PERMANENT_REDIRECT, which corresponds to 308. In this case,
+	//   the request method will be retained.
+	RedirectResponseCode *string `pulumi:"redirectResponseCode"`
+	// If set to true, any accompanying query portion of the original URL is removed prior
+	// to redirecting the request. If set to false, the query portion of the original URL is
+	// retained. The default is set to false.
+	// This field is required to ensure an empty block is not set. The normal default value is false.
+	StripQuery bool `pulumi:"stripQuery"`
+}
+
+// URLMapDefaultUrlRedirectInput is an input type that accepts URLMapDefaultUrlRedirectArgs and URLMapDefaultUrlRedirectOutput values.
+// You can construct a concrete instance of `URLMapDefaultUrlRedirectInput` via:
+//
+//	URLMapDefaultUrlRedirectArgs{...}
+type URLMapDefaultUrlRedirectInput interface {
+	pulumi.Input
+
+	ToURLMapDefaultUrlRedirectOutput() URLMapDefaultUrlRedirectOutput
+	ToURLMapDefaultUrlRedirectOutputWithContext(context.Context) URLMapDefaultUrlRedirectOutput
+}
+
+type URLMapDefaultUrlRedirectArgs struct {
+	// The host that will be used in the redirect response instead of the one that was
+	// supplied in the request. The value must be between 1 and 255 characters.
+	HostRedirect pulumi.StringPtrInput `pulumi:"hostRedirect"`
+	// If set to true, the URL scheme in the redirected request is set to https. If set to
+	// false, the URL scheme of the redirected request will remain the same as that of the
+	// request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+	// true for TargetHttpsProxy is not permitted. The default is set to false.
+	HttpsRedirect pulumi.BoolPtrInput `pulumi:"httpsRedirect"`
+	// The path that will be used in the redirect response instead of the one that was
+	// supplied in the request. pathRedirect cannot be supplied together with
+	// prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+	// original request will be used for the redirect. The value must be between 1 and 1024
+	// characters.
+	PathRedirect pulumi.StringPtrInput `pulumi:"pathRedirect"`
+	// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+	// retaining the remaining portion of the URL before redirecting the request.
+	// prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+	// neither. If neither is supplied, the path of the original request will be used for
+	// the redirect. The value must be between 1 and 1024 characters.
+	PrefixRedirect pulumi.StringPtrInput `pulumi:"prefixRedirect"`
+	// The HTTP Status code to use for this RedirectAction. Supported values are:
+	// * MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+	// * FOUND, which corresponds to 302.
+	// * SEE_OTHER which corresponds to 303.
+	// * TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+	//   will be retained.
+	// * PERMANENT_REDIRECT, which corresponds to 308. In this case,
+	//   the request method will be retained.
+	RedirectResponseCode pulumi.StringPtrInput `pulumi:"redirectResponseCode"`
+	// If set to true, any accompanying query portion of the original URL is removed prior
+	// to redirecting the request. If set to false, the query portion of the original URL is
+	// retained. The default is set to false.
+	// This field is required to ensure an empty block is not set. The normal default value is false.
+	StripQuery pulumi.BoolInput `pulumi:"stripQuery"`
+}
+
+func (URLMapDefaultUrlRedirectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapDefaultUrlRedirect)(nil)).Elem()
+}
+
+func (i URLMapDefaultUrlRedirectArgs) ToURLMapDefaultUrlRedirectOutput() URLMapDefaultUrlRedirectOutput {
+	return i.ToURLMapDefaultUrlRedirectOutputWithContext(context.Background())
+}
+
+func (i URLMapDefaultUrlRedirectArgs) ToURLMapDefaultUrlRedirectOutputWithContext(ctx context.Context) URLMapDefaultUrlRedirectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultUrlRedirectOutput)
+}
+
+func (i URLMapDefaultUrlRedirectArgs) ToURLMapDefaultUrlRedirectPtrOutput() URLMapDefaultUrlRedirectPtrOutput {
+	return i.ToURLMapDefaultUrlRedirectPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapDefaultUrlRedirectArgs) ToURLMapDefaultUrlRedirectPtrOutputWithContext(ctx context.Context) URLMapDefaultUrlRedirectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultUrlRedirectOutput).ToURLMapDefaultUrlRedirectPtrOutputWithContext(ctx)
+}
+
+// URLMapDefaultUrlRedirectPtrInput is an input type that accepts URLMapDefaultUrlRedirectArgs, URLMapDefaultUrlRedirectPtr and URLMapDefaultUrlRedirectPtrOutput values.
+// You can construct a concrete instance of `URLMapDefaultUrlRedirectPtrInput` via:
+//
+//	        URLMapDefaultUrlRedirectArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapDefaultUrlRedirectPtrInput interface {
+	pulumi.Input
+
+	ToURLMapDefaultUrlRedirectPtrOutput() URLMapDefaultUrlRedirectPtrOutput
+	ToURLMapDefaultUrlRedirectPtrOutputWithContext(context.Context) URLMapDefaultUrlRedirectPtrOutput
+}
+
+type urlmapDefaultUrlRedirectPtrType URLMapDefaultUrlRedirectArgs
+
+func URLMapDefaultUrlRedirectPtr(v *URLMapDefaultUrlRedirectArgs) URLMapDefaultUrlRedirectPtrInput {
+	return (*urlmapDefaultUrlRedirectPtrType)(v)
+}
+
+func (*urlmapDefaultUrlRedirectPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapDefaultUrlRedirect)(nil)).Elem()
+}
+
+func (i *urlmapDefaultUrlRedirectPtrType) ToURLMapDefaultUrlRedirectPtrOutput() URLMapDefaultUrlRedirectPtrOutput {
+	return i.ToURLMapDefaultUrlRedirectPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapDefaultUrlRedirectPtrType) ToURLMapDefaultUrlRedirectPtrOutputWithContext(ctx context.Context) URLMapDefaultUrlRedirectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultUrlRedirectPtrOutput)
+}
+
+type URLMapDefaultUrlRedirectOutput struct{ *pulumi.OutputState }
+
+func (URLMapDefaultUrlRedirectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapDefaultUrlRedirect)(nil)).Elem()
+}
+
+func (o URLMapDefaultUrlRedirectOutput) ToURLMapDefaultUrlRedirectOutput() URLMapDefaultUrlRedirectOutput {
+	return o
+}
+
+func (o URLMapDefaultUrlRedirectOutput) ToURLMapDefaultUrlRedirectOutputWithContext(ctx context.Context) URLMapDefaultUrlRedirectOutput {
+	return o
+}
+
+func (o URLMapDefaultUrlRedirectOutput) ToURLMapDefaultUrlRedirectPtrOutput() URLMapDefaultUrlRedirectPtrOutput {
+	return o.ToURLMapDefaultUrlRedirectPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapDefaultUrlRedirectOutput) ToURLMapDefaultUrlRedirectPtrOutputWithContext(ctx context.Context) URLMapDefaultUrlRedirectPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapDefaultUrlRedirect) *URLMapDefaultUrlRedirect {
+		return &v
+	}).(URLMapDefaultUrlRedirectPtrOutput)
+}
+
+// The host that will be used in the redirect response instead of the one that was
+// supplied in the request. The value must be between 1 and 255 characters.
+func (o URLMapDefaultUrlRedirectOutput) HostRedirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultUrlRedirect) *string { return v.HostRedirect }).(pulumi.StringPtrOutput)
+}
+
+// If set to true, the URL scheme in the redirected request is set to https. If set to
+// false, the URL scheme of the redirected request will remain the same as that of the
+// request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+// true for TargetHttpsProxy is not permitted. The default is set to false.
+func (o URLMapDefaultUrlRedirectOutput) HttpsRedirect() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultUrlRedirect) *bool { return v.HttpsRedirect }).(pulumi.BoolPtrOutput)
+}
+
+// The path that will be used in the redirect response instead of the one that was
+// supplied in the request. pathRedirect cannot be supplied together with
+// prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+// original request will be used for the redirect. The value must be between 1 and 1024
+// characters.
+func (o URLMapDefaultUrlRedirectOutput) PathRedirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultUrlRedirect) *string { return v.PathRedirect }).(pulumi.StringPtrOutput)
+}
+
+// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+// retaining the remaining portion of the URL before redirecting the request.
+// prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+// neither. If neither is supplied, the path of the original request will be used for
+// the redirect. The value must be between 1 and 1024 characters.
+func (o URLMapDefaultUrlRedirectOutput) PrefixRedirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultUrlRedirect) *string { return v.PrefixRedirect }).(pulumi.StringPtrOutput)
+}
+
+// The HTTP Status code to use for this RedirectAction. Supported values are:
+//   - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+//   - FOUND, which corresponds to 302.
+//   - SEE_OTHER which corresponds to 303.
+//   - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+//     will be retained.
+//   - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+//     the request method will be retained.
+func (o URLMapDefaultUrlRedirectOutput) RedirectResponseCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultUrlRedirect) *string { return v.RedirectResponseCode }).(pulumi.StringPtrOutput)
+}
+
+// If set to true, any accompanying query portion of the original URL is removed prior
+// to redirecting the request. If set to false, the query portion of the original URL is
+// retained. The default is set to false.
+// This field is required to ensure an empty block is not set. The normal default value is false.
+func (o URLMapDefaultUrlRedirectOutput) StripQuery() pulumi.BoolOutput {
+	return o.ApplyT(func(v URLMapDefaultUrlRedirect) bool { return v.StripQuery }).(pulumi.BoolOutput)
+}
+
+type URLMapDefaultUrlRedirectPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapDefaultUrlRedirectPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapDefaultUrlRedirect)(nil)).Elem()
+}
+
+func (o URLMapDefaultUrlRedirectPtrOutput) ToURLMapDefaultUrlRedirectPtrOutput() URLMapDefaultUrlRedirectPtrOutput {
+	return o
+}
+
+func (o URLMapDefaultUrlRedirectPtrOutput) ToURLMapDefaultUrlRedirectPtrOutputWithContext(ctx context.Context) URLMapDefaultUrlRedirectPtrOutput {
+	return o
+}
+
+func (o URLMapDefaultUrlRedirectPtrOutput) Elem() URLMapDefaultUrlRedirectOutput {
+	return o.ApplyT(func(v *URLMapDefaultUrlRedirect) URLMapDefaultUrlRedirect {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapDefaultUrlRedirect
+		return ret
+	}).(URLMapDefaultUrlRedirectOutput)
+}
+
+// The host that will be used in the redirect response instead of the one that was
+// supplied in the request. The value must be between 1 and 255 characters.
+func (o URLMapDefaultUrlRedirectPtrOutput) HostRedirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapDefaultUrlRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HostRedirect
+	}).(pulumi.StringPtrOutput)
+}
+
+// If set to true, the URL scheme in the redirected request is set to https. If set to
+// false, the URL scheme of the redirected request will remain the same as that of the
+// request. This must only be set for UrlMaps used in TargetHttpProxys. Setting this
+// true for TargetHttpsProxy is not permitted. The default is set to false.
+func (o URLMapDefaultUrlRedirectPtrOutput) HttpsRedirect() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *URLMapDefaultUrlRedirect) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.HttpsRedirect
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The path that will be used in the redirect response instead of the one that was
+// supplied in the request. pathRedirect cannot be supplied together with
+// prefixRedirect. Supply one alone or neither. If neither is supplied, the path of the
+// original request will be used for the redirect. The value must be between 1 and 1024
+// characters.
+func (o URLMapDefaultUrlRedirectPtrOutput) PathRedirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapDefaultUrlRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PathRedirect
+	}).(pulumi.StringPtrOutput)
+}
+
+// The prefix that replaces the prefixMatch specified in the HttpRouteRuleMatch,
+// retaining the remaining portion of the URL before redirecting the request.
+// prefixRedirect cannot be supplied together with pathRedirect. Supply one alone or
+// neither. If neither is supplied, the path of the original request will be used for
+// the redirect. The value must be between 1 and 1024 characters.
+func (o URLMapDefaultUrlRedirectPtrOutput) PrefixRedirect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapDefaultUrlRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrefixRedirect
+	}).(pulumi.StringPtrOutput)
+}
+
+// The HTTP Status code to use for this RedirectAction. Supported values are:
+//   - MOVED_PERMANENTLY_DEFAULT, which is the default value and corresponds to 301.
+//   - FOUND, which corresponds to 302.
+//   - SEE_OTHER which corresponds to 303.
+//   - TEMPORARY_REDIRECT, which corresponds to 307. In this case, the request method
+//     will be retained.
+//   - PERMANENT_REDIRECT, which corresponds to 308. In this case,
+//     the request method will be retained.
+func (o URLMapDefaultUrlRedirectPtrOutput) RedirectResponseCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapDefaultUrlRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RedirectResponseCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// If set to true, any accompanying query portion of the original URL is removed prior
+// to redirecting the request. If set to false, the query portion of the original URL is
+// retained. The default is set to false.
+// This field is required to ensure an empty block is not set. The normal default value is false.
+func (o URLMapDefaultUrlRedirectPtrOutput) StripQuery() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *URLMapDefaultUrlRedirect) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.StripQuery
+	}).(pulumi.BoolPtrOutput)
+}
+
 type URLMapHeaderAction struct {
 	// Headers to add to a matching request prior to forwarding the request to the backendService.
 	// Structure is documented below.
@@ -21308,6 +23126,8 @@ type GetInstanceBootDiskInitializeParam struct {
 	ProvisionedThroughput int `pulumi:"provisionedThroughput"`
 	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
 	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
+	// A list of selfLinks to resource policies attached to the selected `bootDisk`
+	ResourcePolicies []string `pulumi:"resourcePolicies"`
 	// The size of the image in gigabytes.
 	Size int `pulumi:"size"`
 	// The URL of the storage pool in which the new disk is created
@@ -21340,6 +23160,8 @@ type GetInstanceBootDiskInitializeParamArgs struct {
 	ProvisionedThroughput pulumi.IntInput `pulumi:"provisionedThroughput"`
 	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
 	ResourceManagerTags pulumi.StringMapInput `pulumi:"resourceManagerTags"`
+	// A list of selfLinks to resource policies attached to the selected `bootDisk`
+	ResourcePolicies pulumi.StringArrayInput `pulumi:"resourcePolicies"`
 	// The size of the image in gigabytes.
 	Size pulumi.IntInput `pulumi:"size"`
 	// The URL of the storage pool in which the new disk is created
@@ -21427,6 +23249,11 @@ func (o GetInstanceBootDiskInitializeParamOutput) ProvisionedThroughput() pulumi
 // A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
 func (o GetInstanceBootDiskInitializeParamOutput) ResourceManagerTags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetInstanceBootDiskInitializeParam) map[string]string { return v.ResourceManagerTags }).(pulumi.StringMapOutput)
+}
+
+// A list of selfLinks to resource policies attached to the selected `bootDisk`
+func (o GetInstanceBootDiskInitializeParamOutput) ResourcePolicies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstanceBootDiskInitializeParam) []string { return v.ResourcePolicies }).(pulumi.StringArrayOutput)
 }
 
 // The size of the image in gigabytes.
@@ -40364,6 +42191,26 @@ func (o GetSubnetworksSubnetworkArrayOutput) Index(i pulumi.IntInput) GetSubnetw
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionRequestMirrorPolicyInput)(nil)).Elem(), URLMapDefaultRouteActionRequestMirrorPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionRequestMirrorPolicyPtrInput)(nil)).Elem(), URLMapDefaultRouteActionRequestMirrorPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionRetryPolicyInput)(nil)).Elem(), URLMapDefaultRouteActionRetryPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionRetryPolicyPtrInput)(nil)).Elem(), URLMapDefaultRouteActionRetryPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionRetryPolicyPerTryTimeoutInput)(nil)).Elem(), URLMapDefaultRouteActionRetryPolicyPerTryTimeoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionRetryPolicyPerTryTimeoutPtrInput)(nil)).Elem(), URLMapDefaultRouteActionRetryPolicyPerTryTimeoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionTimeoutInput)(nil)).Elem(), URLMapDefaultRouteActionTimeoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionTimeoutPtrInput)(nil)).Elem(), URLMapDefaultRouteActionTimeoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionUrlRewriteInput)(nil)).Elem(), URLMapDefaultRouteActionUrlRewriteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionUrlRewritePtrInput)(nil)).Elem(), URLMapDefaultRouteActionUrlRewriteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionWeightedBackendServiceInput)(nil)).Elem(), URLMapDefaultRouteActionWeightedBackendServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionWeightedBackendServiceArrayInput)(nil)).Elem(), URLMapDefaultRouteActionWeightedBackendServiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionWeightedBackendServiceHeaderActionInput)(nil)).Elem(), URLMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrInput)(nil)).Elem(), URLMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddInput)(nil)).Elem(), URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayInput)(nil)).Elem(), URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddInput)(nil)).Elem(), URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayInput)(nil)).Elem(), URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultUrlRedirectInput)(nil)).Elem(), URLMapDefaultUrlRedirectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultUrlRedirectPtrInput)(nil)).Elem(), URLMapDefaultUrlRedirectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapHeaderActionInput)(nil)).Elem(), URLMapHeaderActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapHeaderActionPtrInput)(nil)).Elem(), URLMapHeaderActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapHeaderActionRequestHeadersToAddInput)(nil)).Elem(), URLMapHeaderActionRequestHeadersToAddArgs{})
@@ -40902,6 +42749,26 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkInput)(nil)).Elem(), GetSubnetworksSubnetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkArrayInput)(nil)).Elem(), GetSubnetworksSubnetworkArray{})
+	pulumi.RegisterOutputType(URLMapDefaultRouteActionRequestMirrorPolicyOutput{})
+	pulumi.RegisterOutputType(URLMapDefaultRouteActionRequestMirrorPolicyPtrOutput{})
+	pulumi.RegisterOutputType(URLMapDefaultRouteActionRetryPolicyOutput{})
+	pulumi.RegisterOutputType(URLMapDefaultRouteActionRetryPolicyPtrOutput{})
+	pulumi.RegisterOutputType(URLMapDefaultRouteActionRetryPolicyPerTryTimeoutOutput{})
+	pulumi.RegisterOutputType(URLMapDefaultRouteActionRetryPolicyPerTryTimeoutPtrOutput{})
+	pulumi.RegisterOutputType(URLMapDefaultRouteActionTimeoutOutput{})
+	pulumi.RegisterOutputType(URLMapDefaultRouteActionTimeoutPtrOutput{})
+	pulumi.RegisterOutputType(URLMapDefaultRouteActionUrlRewriteOutput{})
+	pulumi.RegisterOutputType(URLMapDefaultRouteActionUrlRewritePtrOutput{})
+	pulumi.RegisterOutputType(URLMapDefaultRouteActionWeightedBackendServiceOutput{})
+	pulumi.RegisterOutputType(URLMapDefaultRouteActionWeightedBackendServiceArrayOutput{})
+	pulumi.RegisterOutputType(URLMapDefaultRouteActionWeightedBackendServiceHeaderActionOutput{})
+	pulumi.RegisterOutputType(URLMapDefaultRouteActionWeightedBackendServiceHeaderActionPtrOutput{})
+	pulumi.RegisterOutputType(URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput{})
+	pulumi.RegisterOutputType(URLMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput{})
+	pulumi.RegisterOutputType(URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput{})
+	pulumi.RegisterOutputType(URLMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput{})
+	pulumi.RegisterOutputType(URLMapDefaultUrlRedirectOutput{})
+	pulumi.RegisterOutputType(URLMapDefaultUrlRedirectPtrOutput{})
 	pulumi.RegisterOutputType(URLMapHeaderActionOutput{})
 	pulumi.RegisterOutputType(URLMapHeaderActionPtrOutput{})
 	pulumi.RegisterOutputType(URLMapHeaderActionRequestHeadersToAddOutput{})

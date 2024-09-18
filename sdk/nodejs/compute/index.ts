@@ -615,6 +615,11 @@ export type NetworkFirewallPolicyRule = import("./networkFirewallPolicyRule").Ne
 export const NetworkFirewallPolicyRule: typeof import("./networkFirewallPolicyRule").NetworkFirewallPolicyRule = null as any;
 utilities.lazyLoad(exports, ["NetworkFirewallPolicyRule"], () => require("./networkFirewallPolicyRule"));
 
+export { NetworkFirewallPolicyWithRulesArgs, NetworkFirewallPolicyWithRulesState } from "./networkFirewallPolicyWithRules";
+export type NetworkFirewallPolicyWithRules = import("./networkFirewallPolicyWithRules").NetworkFirewallPolicyWithRules;
+export const NetworkFirewallPolicyWithRules: typeof import("./networkFirewallPolicyWithRules").NetworkFirewallPolicyWithRules = null as any;
+utilities.lazyLoad(exports, ["NetworkFirewallPolicyWithRules"], () => require("./networkFirewallPolicyWithRules"));
+
 export { NetworkPeeringArgs, NetworkPeeringState } from "./networkPeering";
 export type NetworkPeering = import("./networkPeering").NetworkPeering;
 export const NetworkPeering: typeof import("./networkPeering").NetworkPeering = null as any;
@@ -1149,6 +1154,8 @@ const _module = {
                 return new NetworkFirewallPolicyAssociation(name, <any>undefined, { urn })
             case "gcp:compute/networkFirewallPolicyRule:NetworkFirewallPolicyRule":
                 return new NetworkFirewallPolicyRule(name, <any>undefined, { urn })
+            case "gcp:compute/networkFirewallPolicyWithRules:NetworkFirewallPolicyWithRules":
+                return new NetworkFirewallPolicyWithRules(name, <any>undefined, { urn })
             case "gcp:compute/networkPeering:NetworkPeering":
                 return new NetworkPeering(name, <any>undefined, { urn })
             case "gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig":
@@ -1377,6 +1384,7 @@ pulumi.runtime.registerResourceModule("gcp", "compute/networkEndpointList", _mod
 pulumi.runtime.registerResourceModule("gcp", "compute/networkFirewallPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/networkFirewallPolicyAssociation", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/networkFirewallPolicyRule", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/networkFirewallPolicyWithRules", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/networkPeering", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/networkPeeringRoutesConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/nodeGroup", _module)
