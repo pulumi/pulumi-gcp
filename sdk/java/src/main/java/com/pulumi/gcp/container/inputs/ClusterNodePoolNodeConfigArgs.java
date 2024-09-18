@@ -676,6 +676,21 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * The list of Storage Pools where boot disks are provisioned.
+     * 
+     */
+    @Import(name="storagePools")
+    private @Nullable Output<List<String>> storagePools;
+
+    /**
+     * @return The list of Storage Pools where boot disks are provisioned.
+     * 
+     */
+    public Optional<Output<List<String>>> storagePools() {
+        return Optional.ofNullable(this.storagePools);
+    }
+
+    /**
      * The list of instance tags applied to all nodes. Tags are used to identify
      * valid sources or targets for network firewalls.
      * 
@@ -778,6 +793,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
         this.shieldedInstanceConfig = $.shieldedInstanceConfig;
         this.soleTenantConfig = $.soleTenantConfig;
         this.spot = $.spot;
+        this.storagePools = $.storagePools;
         this.tags = $.tags;
         this.taints = $.taints;
         this.workloadMetadataConfig = $.workloadMetadataConfig;
@@ -1701,6 +1717,37 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
          */
         public Builder spot(Boolean spot) {
             return spot(Output.of(spot));
+        }
+
+        /**
+         * @param storagePools The list of Storage Pools where boot disks are provisioned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storagePools(@Nullable Output<List<String>> storagePools) {
+            $.storagePools = storagePools;
+            return this;
+        }
+
+        /**
+         * @param storagePools The list of Storage Pools where boot disks are provisioned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storagePools(List<String> storagePools) {
+            return storagePools(Output.of(storagePools));
+        }
+
+        /**
+         * @param storagePools The list of Storage Pools where boot disks are provisioned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storagePools(String... storagePools) {
+            return storagePools(List.of(storagePools));
         }
 
         /**

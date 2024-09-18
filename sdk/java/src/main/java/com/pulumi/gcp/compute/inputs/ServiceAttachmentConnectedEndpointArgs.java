@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +15,23 @@ import javax.annotation.Nullable;
 public final class ServiceAttachmentConnectedEndpointArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ServiceAttachmentConnectedEndpointArgs Empty = new ServiceAttachmentConnectedEndpointArgs();
+
+    /**
+     * (Output)
+     * The url of the consumer network.
+     * 
+     */
+    @Import(name="consumerNetwork")
+    private @Nullable Output<String> consumerNetwork;
+
+    /**
+     * @return (Output)
+     * The url of the consumer network.
+     * 
+     */
+    public Optional<Output<String>> consumerNetwork() {
+        return Optional.ofNullable(this.consumerNetwork);
+    }
 
     /**
      * (Output)
@@ -30,6 +48,40 @@ public final class ServiceAttachmentConnectedEndpointArgs extends com.pulumi.res
      */
     public Optional<Output<String>> endpoint() {
         return Optional.ofNullable(this.endpoint);
+    }
+
+    /**
+     * (Output, Beta)
+     * The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to.
+     * 
+     */
+    @Import(name="propagatedConnectionCount")
+    private @Nullable Output<Integer> propagatedConnectionCount;
+
+    /**
+     * @return (Output, Beta)
+     * The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to.
+     * 
+     */
+    public Optional<Output<Integer>> propagatedConnectionCount() {
+        return Optional.ofNullable(this.propagatedConnectionCount);
+    }
+
+    /**
+     * (Output)
+     * The PSC connection id of the connected endpoint.
+     * 
+     */
+    @Import(name="pscConnectionId")
+    private @Nullable Output<String> pscConnectionId;
+
+    /**
+     * @return (Output)
+     * The PSC connection id of the connected endpoint.
+     * 
+     */
+    public Optional<Output<String>> pscConnectionId() {
+        return Optional.ofNullable(this.pscConnectionId);
     }
 
     /**
@@ -54,7 +106,10 @@ public final class ServiceAttachmentConnectedEndpointArgs extends com.pulumi.res
     private ServiceAttachmentConnectedEndpointArgs() {}
 
     private ServiceAttachmentConnectedEndpointArgs(ServiceAttachmentConnectedEndpointArgs $) {
+        this.consumerNetwork = $.consumerNetwork;
         this.endpoint = $.endpoint;
+        this.propagatedConnectionCount = $.propagatedConnectionCount;
+        this.pscConnectionId = $.pscConnectionId;
         this.status = $.status;
     }
 
@@ -74,6 +129,29 @@ public final class ServiceAttachmentConnectedEndpointArgs extends com.pulumi.res
 
         public Builder(ServiceAttachmentConnectedEndpointArgs defaults) {
             $ = new ServiceAttachmentConnectedEndpointArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param consumerNetwork (Output)
+         * The url of the consumer network.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder consumerNetwork(@Nullable Output<String> consumerNetwork) {
+            $.consumerNetwork = consumerNetwork;
+            return this;
+        }
+
+        /**
+         * @param consumerNetwork (Output)
+         * The url of the consumer network.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder consumerNetwork(String consumerNetwork) {
+            return consumerNetwork(Output.of(consumerNetwork));
         }
 
         /**
@@ -97,6 +175,52 @@ public final class ServiceAttachmentConnectedEndpointArgs extends com.pulumi.res
          */
         public Builder endpoint(String endpoint) {
             return endpoint(Output.of(endpoint));
+        }
+
+        /**
+         * @param propagatedConnectionCount (Output, Beta)
+         * The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder propagatedConnectionCount(@Nullable Output<Integer> propagatedConnectionCount) {
+            $.propagatedConnectionCount = propagatedConnectionCount;
+            return this;
+        }
+
+        /**
+         * @param propagatedConnectionCount (Output, Beta)
+         * The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder propagatedConnectionCount(Integer propagatedConnectionCount) {
+            return propagatedConnectionCount(Output.of(propagatedConnectionCount));
+        }
+
+        /**
+         * @param pscConnectionId (Output)
+         * The PSC connection id of the connected endpoint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscConnectionId(@Nullable Output<String> pscConnectionId) {
+            $.pscConnectionId = pscConnectionId;
+            return this;
+        }
+
+        /**
+         * @param pscConnectionId (Output)
+         * The PSC connection id of the connected endpoint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscConnectionId(String pscConnectionId) {
+            return pscConnectionId(Output.of(pscConnectionId));
         }
 
         /**

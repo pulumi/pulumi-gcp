@@ -242,10 +242,13 @@ type TargetHttpProxy struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Specifies how long to keep a connection open, after completing a response,
 	// while there is no matching traffic (in seconds). If an HTTP keepalive is
-	// not specified, a default value (610 seconds) will be used. For Global
-	// external HTTP(S) load balancer, the minimum allowed value is 5 seconds and
-	// the maximum allowed value is 1200 seconds. For Global external HTTP(S)
-	// load balancer (classic), this option is not available publicly.
+	// not specified, a default value will be used. For Global
+	// external HTTP(S) load balancer, the default value is 610 seconds, the
+	// minimum allowed value is 5 seconds and the maximum allowed value is 1200
+	// seconds. For cross-region internal HTTP(S) load balancer, the default
+	// value is 600 seconds, the minimum allowed value is 5 seconds, and the
+	// maximum allowed value is 600 seconds. For Global external HTTP(S) load
+	// balancer (classic), this option is not available publicly.
 	HttpKeepAliveTimeoutSec pulumi.IntPtrOutput `pulumi:"httpKeepAliveTimeoutSec"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -311,10 +314,13 @@ type targetHttpProxyState struct {
 	Description *string `pulumi:"description"`
 	// Specifies how long to keep a connection open, after completing a response,
 	// while there is no matching traffic (in seconds). If an HTTP keepalive is
-	// not specified, a default value (610 seconds) will be used. For Global
-	// external HTTP(S) load balancer, the minimum allowed value is 5 seconds and
-	// the maximum allowed value is 1200 seconds. For Global external HTTP(S)
-	// load balancer (classic), this option is not available publicly.
+	// not specified, a default value will be used. For Global
+	// external HTTP(S) load balancer, the default value is 610 seconds, the
+	// minimum allowed value is 5 seconds and the maximum allowed value is 1200
+	// seconds. For cross-region internal HTTP(S) load balancer, the default
+	// value is 600 seconds, the minimum allowed value is 5 seconds, and the
+	// maximum allowed value is 600 seconds. For Global external HTTP(S) load
+	// balancer (classic), this option is not available publicly.
 	HttpKeepAliveTimeoutSec *int `pulumi:"httpKeepAliveTimeoutSec"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -348,10 +354,13 @@ type TargetHttpProxyState struct {
 	Description pulumi.StringPtrInput
 	// Specifies how long to keep a connection open, after completing a response,
 	// while there is no matching traffic (in seconds). If an HTTP keepalive is
-	// not specified, a default value (610 seconds) will be used. For Global
-	// external HTTP(S) load balancer, the minimum allowed value is 5 seconds and
-	// the maximum allowed value is 1200 seconds. For Global external HTTP(S)
-	// load balancer (classic), this option is not available publicly.
+	// not specified, a default value will be used. For Global
+	// external HTTP(S) load balancer, the default value is 610 seconds, the
+	// minimum allowed value is 5 seconds and the maximum allowed value is 1200
+	// seconds. For cross-region internal HTTP(S) load balancer, the default
+	// value is 600 seconds, the minimum allowed value is 5 seconds, and the
+	// maximum allowed value is 600 seconds. For Global external HTTP(S) load
+	// balancer (classic), this option is not available publicly.
 	HttpKeepAliveTimeoutSec pulumi.IntPtrInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -387,10 +396,13 @@ type targetHttpProxyArgs struct {
 	Description *string `pulumi:"description"`
 	// Specifies how long to keep a connection open, after completing a response,
 	// while there is no matching traffic (in seconds). If an HTTP keepalive is
-	// not specified, a default value (610 seconds) will be used. For Global
-	// external HTTP(S) load balancer, the minimum allowed value is 5 seconds and
-	// the maximum allowed value is 1200 seconds. For Global external HTTP(S)
-	// load balancer (classic), this option is not available publicly.
+	// not specified, a default value will be used. For Global
+	// external HTTP(S) load balancer, the default value is 610 seconds, the
+	// minimum allowed value is 5 seconds and the maximum allowed value is 1200
+	// seconds. For cross-region internal HTTP(S) load balancer, the default
+	// value is 600 seconds, the minimum allowed value is 5 seconds, and the
+	// maximum allowed value is 600 seconds. For Global external HTTP(S) load
+	// balancer (classic), this option is not available publicly.
 	HttpKeepAliveTimeoutSec *int `pulumi:"httpKeepAliveTimeoutSec"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -419,10 +431,13 @@ type TargetHttpProxyArgs struct {
 	Description pulumi.StringPtrInput
 	// Specifies how long to keep a connection open, after completing a response,
 	// while there is no matching traffic (in seconds). If an HTTP keepalive is
-	// not specified, a default value (610 seconds) will be used. For Global
-	// external HTTP(S) load balancer, the minimum allowed value is 5 seconds and
-	// the maximum allowed value is 1200 seconds. For Global external HTTP(S)
-	// load balancer (classic), this option is not available publicly.
+	// not specified, a default value will be used. For Global
+	// external HTTP(S) load balancer, the default value is 610 seconds, the
+	// minimum allowed value is 5 seconds and the maximum allowed value is 1200
+	// seconds. For cross-region internal HTTP(S) load balancer, the default
+	// value is 600 seconds, the minimum allowed value is 5 seconds, and the
+	// maximum allowed value is 600 seconds. For Global external HTTP(S) load
+	// balancer (classic), this option is not available publicly.
 	HttpKeepAliveTimeoutSec pulumi.IntPtrInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
@@ -544,10 +559,13 @@ func (o TargetHttpProxyOutput) Description() pulumi.StringPtrOutput {
 
 // Specifies how long to keep a connection open, after completing a response,
 // while there is no matching traffic (in seconds). If an HTTP keepalive is
-// not specified, a default value (610 seconds) will be used. For Global
-// external HTTP(S) load balancer, the minimum allowed value is 5 seconds and
-// the maximum allowed value is 1200 seconds. For Global external HTTP(S)
-// load balancer (classic), this option is not available publicly.
+// not specified, a default value will be used. For Global
+// external HTTP(S) load balancer, the default value is 610 seconds, the
+// minimum allowed value is 5 seconds and the maximum allowed value is 1200
+// seconds. For cross-region internal HTTP(S) load balancer, the default
+// value is 600 seconds, the minimum allowed value is 5 seconds, and the
+// maximum allowed value is 600 seconds. For Global external HTTP(S) load
+// balancer (classic), this option is not available publicly.
 func (o TargetHttpProxyOutput) HttpKeepAliveTimeoutSec() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *TargetHttpProxy) pulumi.IntPtrOutput { return v.HttpKeepAliveTimeoutSec }).(pulumi.IntPtrOutput)
 }

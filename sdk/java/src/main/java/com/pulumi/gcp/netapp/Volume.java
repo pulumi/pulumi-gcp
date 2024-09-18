@@ -321,6 +321,20 @@ public class Volume extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.labels);
     }
     /**
+     * Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
+     * 
+     */
+    @Export(name="largeCapacity", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> largeCapacity;
+
+    /**
+     * @return Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
+     * 
+     */
+    public Output<Optional<Boolean>> largeCapacity() {
+        return Codegen.optional(this.largeCapacity);
+    }
+    /**
      * Flag indicating if the volume is NFS LDAP enabled or not. Inherited from storage pool.
      * 
      */
@@ -363,6 +377,22 @@ public class Volume extends com.pulumi.resources.CustomResource {
      */
     public Output<List<VolumeMountOption>> mountOptions() {
         return this.mountOptions;
+    }
+    /**
+     * Optional. Flag indicating if the volume will have an IP address per node for volumes supporting multiple IP endpoints.
+     * Only the volume with largeCapacity will be allowed to have multiple endpoints.
+     * 
+     */
+    @Export(name="multipleEndpoints", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> multipleEndpoints;
+
+    /**
+     * @return Optional. Flag indicating if the volume will have an IP address per node for volumes supporting multiple IP endpoints.
+     * Only the volume with largeCapacity will be allowed to have multiple endpoints.
+     * 
+     */
+    public Output<Optional<Boolean>> multipleEndpoints() {
+        return Codegen.optional(this.multipleEndpoints);
     }
     /**
      * The name of the volume. Needs to be unique per location.

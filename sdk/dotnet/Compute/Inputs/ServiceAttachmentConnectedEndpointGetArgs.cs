@@ -14,10 +14,31 @@ namespace Pulumi.Gcp.Compute.Inputs
     {
         /// <summary>
         /// (Output)
+        /// The url of the consumer network.
+        /// </summary>
+        [Input("consumerNetwork")]
+        public Input<string>? ConsumerNetwork { get; set; }
+
+        /// <summary>
+        /// (Output)
         /// The URL of the consumer forwarding rule.
         /// </summary>
         [Input("endpoint")]
         public Input<string>? Endpoint { get; set; }
+
+        /// <summary>
+        /// (Output, Beta)
+        /// The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to.
+        /// </summary>
+        [Input("propagatedConnectionCount")]
+        public Input<int>? PropagatedConnectionCount { get; set; }
+
+        /// <summary>
+        /// (Output)
+        /// The PSC connection id of the connected endpoint.
+        /// </summary>
+        [Input("pscConnectionId")]
+        public Input<string>? PscConnectionId { get; set; }
 
         /// <summary>
         /// (Output)

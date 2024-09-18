@@ -107,6 +107,88 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Region Target Http Proxy Http Keep Alive Timeout
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionHealthCheck;
+ * import com.pulumi.gcp.compute.RegionHealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionHealthCheckHttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.RegionBackendService;
+ * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+ * import com.pulumi.gcp.compute.RegionUrlMap;
+ * import com.pulumi.gcp.compute.RegionUrlMapArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapHostRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherArgs;
+ * import com.pulumi.gcp.compute.RegionTargetHttpProxy;
+ * import com.pulumi.gcp.compute.RegionTargetHttpProxyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultRegionHealthCheck = new RegionHealthCheck("defaultRegionHealthCheck", RegionHealthCheckArgs.builder()
+ *             .region("us-central1")
+ *             .name("http-health-check")
+ *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultRegionBackendService = new RegionBackendService("defaultRegionBackendService", RegionBackendServiceArgs.builder()
+ *             .region("us-central1")
+ *             .name("backend-service")
+ *             .portName("http")
+ *             .protocol("HTTP")
+ *             .timeoutSec(10)
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
+ *             .healthChecks(defaultRegionHealthCheck.id())
+ *             .build());
+ * 
+ *         var defaultRegionUrlMap = new RegionUrlMap("defaultRegionUrlMap", RegionUrlMapArgs.builder()
+ *             .region("us-central1")
+ *             .name("url-map")
+ *             .defaultService(defaultRegionBackendService.id())
+ *             .hostRules(RegionUrlMapHostRuleArgs.builder()
+ *                 .hosts("mysite.com")
+ *                 .pathMatcher("allpaths")
+ *                 .build())
+ *             .pathMatchers(RegionUrlMapPathMatcherArgs.builder()
+ *                 .name("allpaths")
+ *                 .defaultService(defaultRegionBackendService.id())
+ *                 .pathRules(RegionUrlMapPathMatcherPathRuleArgs.builder()
+ *                     .paths("/*")
+ *                     .service(defaultRegionBackendService.id())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var default_ = new RegionTargetHttpProxy("default", RegionTargetHttpProxyArgs.builder()
+ *             .region("us-central1")
+ *             .name("test-http-keep-alive-timeout-proxy")
+ *             .httpKeepAliveTimeoutSec(600)
+ *             .urlMap(defaultRegionUrlMap.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Target Http Proxy Https Redirect
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -216,6 +298,28 @@ public class RegionTargetHttpProxy extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * Specifies how long to keep a connection open, after completing a response,
+     * while there is no matching traffic (in seconds). If an HTTP keepalive is
+     * not specified, a default value (600 seconds) will be used. For Regional
+     * HTTP(S) load balancer, the minimum allowed value is 5 seconds and the
+     * maximum allowed value is 600 seconds.
+     * 
+     */
+    @Export(name="httpKeepAliveTimeoutSec", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> httpKeepAliveTimeoutSec;
+
+    /**
+     * @return Specifies how long to keep a connection open, after completing a response,
+     * while there is no matching traffic (in seconds). If an HTTP keepalive is
+     * not specified, a default value (600 seconds) will be used. For Regional
+     * HTTP(S) load balancer, the minimum allowed value is 5 seconds and the
+     * maximum allowed value is 600 seconds.
+     * 
+     */
+    public Output<Optional<Integer>> httpKeepAliveTimeoutSec() {
+        return Codegen.optional(this.httpKeepAliveTimeoutSec);
     }
     /**
      * Name of the resource. Provided by the client when the resource is

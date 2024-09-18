@@ -114,6 +114,8 @@ if typing.TYPE_CHECKING:
     datastream = __datastream
     import pulumi_gcp.deploymentmanager as __deploymentmanager
     deploymentmanager = __deploymentmanager
+    import pulumi_gcp.developerconnect as __developerconnect
+    developerconnect = __developerconnect
     import pulumi_gcp.diagflow as __diagflow
     diagflow = __diagflow
     import pulumi_gcp.discoveryengine as __discoveryengine
@@ -166,6 +168,8 @@ if typing.TYPE_CHECKING:
     managedkafka = __managedkafka
     import pulumi_gcp.memcache as __memcache
     memcache = __memcache
+    import pulumi_gcp.memorystore as __memorystore
+    memorystore = __memorystore
     import pulumi_gcp.migrationcenter as __migrationcenter
     migrationcenter = __migrationcenter
     import pulumi_gcp.ml as __ml
@@ -303,6 +307,7 @@ else:
     dataproc = _utilities.lazy_import('pulumi_gcp.dataproc')
     datastream = _utilities.lazy_import('pulumi_gcp.datastream')
     deploymentmanager = _utilities.lazy_import('pulumi_gcp.deploymentmanager')
+    developerconnect = _utilities.lazy_import('pulumi_gcp.developerconnect')
     diagflow = _utilities.lazy_import('pulumi_gcp.diagflow')
     discoveryengine = _utilities.lazy_import('pulumi_gcp.discoveryengine')
     dns = _utilities.lazy_import('pulumi_gcp.dns')
@@ -329,6 +334,7 @@ else:
     looker = _utilities.lazy_import('pulumi_gcp.looker')
     managedkafka = _utilities.lazy_import('pulumi_gcp.managedkafka')
     memcache = _utilities.lazy_import('pulumi_gcp.memcache')
+    memorystore = _utilities.lazy_import('pulumi_gcp.memorystore')
     migrationcenter = _utilities.lazy_import('pulumi_gcp.migrationcenter')
     ml = _utilities.lazy_import('pulumi_gcp.ml')
     monitoring = _utilities.lazy_import('pulumi_gcp.monitoring')
@@ -2665,6 +2671,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "compute/networkFirewallPolicyWithRules",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/networkFirewallPolicyWithRules:NetworkFirewallPolicyWithRules": "NetworkFirewallPolicyWithRules"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "compute/networkPeering",
   "fqn": "pulumi_gcp.compute",
   "classes": {
@@ -4133,6 +4147,22 @@ _utilities.register(
   "fqn": "pulumi_gcp.deploymentmanager",
   "classes": {
    "gcp:deploymentmanager/deployment:Deployment": "Deployment"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "developerconnect/connection",
+  "fqn": "pulumi_gcp.developerconnect",
+  "classes": {
+   "gcp:developerconnect/connection:Connection": "Connection"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "developerconnect/gitRepositoryLink",
+  "fqn": "pulumi_gcp.developerconnect",
+  "classes": {
+   "gcp:developerconnect/gitRepositoryLink:GitRepositoryLink": "GitRepositoryLink"
   }
  },
  {
@@ -5917,6 +5947,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.memcache",
   "classes": {
    "gcp:memcache/instance:Instance": "Instance"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "memorystore/instance",
+  "fqn": "pulumi_gcp.memorystore",
+  "classes": {
+   "gcp:memorystore/instance:Instance": "Instance"
   }
  },
  {

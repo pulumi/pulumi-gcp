@@ -213,6 +213,9 @@ namespace Pulumi.Gcp
         [Output("deploymentManagerCustomEndpoint")]
         public Output<string?> DeploymentManagerCustomEndpoint { get; private set; } = null!;
 
+        [Output("developerConnectCustomEndpoint")]
+        public Output<string?> DeveloperConnectCustomEndpoint { get; private set; } = null!;
+
         [Output("dialogflowCustomEndpoint")]
         public Output<string?> DialogflowCustomEndpoint { get; private set; } = null!;
 
@@ -335,6 +338,9 @@ namespace Pulumi.Gcp
 
         [Output("memcacheCustomEndpoint")]
         public Output<string?> MemcacheCustomEndpoint { get; private set; } = null!;
+
+        [Output("memorystoreCustomEndpoint")]
+        public Output<string?> MemorystoreCustomEndpoint { get; private set; } = null!;
 
         [Output("migrationCenterCustomEndpoint")]
         public Output<string?> MigrationCenterCustomEndpoint { get; private set; } = null!;
@@ -763,6 +769,9 @@ namespace Pulumi.Gcp
         [Input("deploymentManagerCustomEndpoint")]
         public Input<string>? DeploymentManagerCustomEndpoint { get; set; }
 
+        [Input("developerConnectCustomEndpoint")]
+        public Input<string>? DeveloperConnectCustomEndpoint { get; set; }
+
         [Input("dialogflowCustomEndpoint")]
         public Input<string>? DialogflowCustomEndpoint { get; set; }
 
@@ -896,6 +905,9 @@ namespace Pulumi.Gcp
 
         [Input("memcacheCustomEndpoint")]
         public Input<string>? MemcacheCustomEndpoint { get; set; }
+
+        [Input("memorystoreCustomEndpoint")]
+        public Input<string>? MemorystoreCustomEndpoint { get; set; }
 
         [Input("migrationCenterCustomEndpoint")]
         public Input<string>? MigrationCenterCustomEndpoint { get; set; }

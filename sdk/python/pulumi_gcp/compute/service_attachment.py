@@ -31,6 +31,7 @@ class ServiceAttachmentArgs:
                  domain_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 propagated_connection_limit: Optional[pulumi.Input[int]] = None,
                  reconcile_connections: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None):
         """
@@ -63,6 +64,11 @@ class ServiceAttachmentArgs:
                except the last character, which cannot be a dash.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[int] propagated_connection_limit: The number of consumer spokes that connected Private Service Connect endpoints can be propagated to through Network Connectivity Center.
+               This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.
+               If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list.
+               If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
+               If unspecified, the default propagated connection limit is 250.
         :param pulumi.Input[bool] reconcile_connections: This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
                If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
                If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
@@ -84,6 +90,8 @@ class ServiceAttachmentArgs:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if propagated_connection_limit is not None:
+            pulumi.set(__self__, "propagated_connection_limit", propagated_connection_limit)
         if reconcile_connections is not None:
             pulumi.set(__self__, "reconcile_connections", reconcile_connections)
         if region is not None:
@@ -228,6 +236,22 @@ class ServiceAttachmentArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="propagatedConnectionLimit")
+    def propagated_connection_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of consumer spokes that connected Private Service Connect endpoints can be propagated to through Network Connectivity Center.
+        This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.
+        If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list.
+        If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
+        If unspecified, the default propagated connection limit is 250.
+        """
+        return pulumi.get(self, "propagated_connection_limit")
+
+    @propagated_connection_limit.setter
+    def propagated_connection_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "propagated_connection_limit", value)
+
+    @property
     @pulumi.getter(name="reconcileConnections")
     def reconcile_connections(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -268,6 +292,7 @@ class _ServiceAttachmentState:
                  name: Optional[pulumi.Input[str]] = None,
                  nat_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 propagated_connection_limit: Optional[pulumi.Input[int]] = None,
                  reconcile_connections: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
@@ -306,6 +331,11 @@ class _ServiceAttachmentState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] nat_subnets: An array of subnets that is provided for NAT in this service attachment.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[int] propagated_connection_limit: The number of consumer spokes that connected Private Service Connect endpoints can be propagated to through Network Connectivity Center.
+               This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.
+               If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list.
+               If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
+               If unspecified, the default propagated connection limit is 250.
         :param pulumi.Input[bool] reconcile_connections: This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
                If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
                If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
@@ -335,6 +365,8 @@ class _ServiceAttachmentState:
             pulumi.set(__self__, "nat_subnets", nat_subnets)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if propagated_connection_limit is not None:
+            pulumi.set(__self__, "propagated_connection_limit", propagated_connection_limit)
         if reconcile_connections is not None:
             pulumi.set(__self__, "reconcile_connections", reconcile_connections)
         if region is not None:
@@ -498,6 +530,22 @@ class _ServiceAttachmentState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="propagatedConnectionLimit")
+    def propagated_connection_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of consumer spokes that connected Private Service Connect endpoints can be propagated to through Network Connectivity Center.
+        This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.
+        If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list.
+        If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
+        If unspecified, the default propagated connection limit is 250.
+        """
+        return pulumi.get(self, "propagated_connection_limit")
+
+    @propagated_connection_limit.setter
+    def propagated_connection_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "propagated_connection_limit", value)
+
+    @property
     @pulumi.getter(name="reconcileConnections")
     def reconcile_connections(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -562,6 +610,7 @@ class ServiceAttachment(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  nat_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 propagated_connection_limit: Optional[pulumi.Input[int]] = None,
                  reconcile_connections: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  target_service: Optional[pulumi.Input[str]] = None,
@@ -898,6 +947,11 @@ class ServiceAttachment(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] nat_subnets: An array of subnets that is provided for NAT in this service attachment.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[int] propagated_connection_limit: The number of consumer spokes that connected Private Service Connect endpoints can be propagated to through Network Connectivity Center.
+               This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.
+               If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list.
+               If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
+               If unspecified, the default propagated connection limit is 250.
         :param pulumi.Input[bool] reconcile_connections: This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
                If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
                If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
@@ -1237,6 +1291,7 @@ class ServiceAttachment(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  nat_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 propagated_connection_limit: Optional[pulumi.Input[int]] = None,
                  reconcile_connections: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  target_service: Optional[pulumi.Input[str]] = None,
@@ -1264,6 +1319,7 @@ class ServiceAttachment(pulumi.CustomResource):
                 raise TypeError("Missing required property 'nat_subnets'")
             __props__.__dict__["nat_subnets"] = nat_subnets
             __props__.__dict__["project"] = project
+            __props__.__dict__["propagated_connection_limit"] = propagated_connection_limit
             __props__.__dict__["reconcile_connections"] = reconcile_connections
             __props__.__dict__["region"] = region
             if target_service is None and not opts.urn:
@@ -1293,6 +1349,7 @@ class ServiceAttachment(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             nat_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            propagated_connection_limit: Optional[pulumi.Input[int]] = None,
             reconcile_connections: Optional[pulumi.Input[bool]] = None,
             region: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
@@ -1336,6 +1393,11 @@ class ServiceAttachment(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] nat_subnets: An array of subnets that is provided for NAT in this service attachment.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[int] propagated_connection_limit: The number of consumer spokes that connected Private Service Connect endpoints can be propagated to through Network Connectivity Center.
+               This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.
+               If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list.
+               If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
+               If unspecified, the default propagated connection limit is 250.
         :param pulumi.Input[bool] reconcile_connections: This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
                If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
                If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
@@ -1358,6 +1420,7 @@ class ServiceAttachment(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["nat_subnets"] = nat_subnets
         __props__.__dict__["project"] = project
+        __props__.__dict__["propagated_connection_limit"] = propagated_connection_limit
         __props__.__dict__["reconcile_connections"] = reconcile_connections
         __props__.__dict__["region"] = region
         __props__.__dict__["self_link"] = self_link
@@ -1472,6 +1535,18 @@ class ServiceAttachment(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="propagatedConnectionLimit")
+    def propagated_connection_limit(self) -> pulumi.Output[int]:
+        """
+        The number of consumer spokes that connected Private Service Connect endpoints can be propagated to through Network Connectivity Center.
+        This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.
+        If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list.
+        If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
+        If unspecified, the default propagated connection limit is 250.
+        """
+        return pulumi.get(self, "propagated_connection_limit")
 
     @property
     @pulumi.getter(name="reconcileConnections")

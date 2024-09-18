@@ -109,6 +109,21 @@ public final class InstanceFromMachineImageBootDiskInitializeParamsArgs extends 
     }
 
     /**
+     * A list of self_links of resource policies to attach to the instance&#39;s boot disk. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+     * 
+     */
+    @Import(name="resourcePolicies")
+    private @Nullable Output<String> resourcePolicies;
+
+    /**
+     * @return A list of self_links of resource policies to attach to the instance&#39;s boot disk. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+     * 
+     */
+    public Optional<Output<String>> resourcePolicies() {
+        return Optional.ofNullable(this.resourcePolicies);
+    }
+
+    /**
      * The size of the image in gigabytes.
      * 
      */
@@ -162,6 +177,7 @@ public final class InstanceFromMachineImageBootDiskInitializeParamsArgs extends 
         this.provisionedIops = $.provisionedIops;
         this.provisionedThroughput = $.provisionedThroughput;
         this.resourceManagerTags = $.resourceManagerTags;
+        this.resourcePolicies = $.resourcePolicies;
         this.size = $.size;
         this.storagePool = $.storagePool;
         this.type = $.type;
@@ -309,6 +325,27 @@ public final class InstanceFromMachineImageBootDiskInitializeParamsArgs extends 
          */
         public Builder resourceManagerTags(Map<String,String> resourceManagerTags) {
             return resourceManagerTags(Output.of(resourceManagerTags));
+        }
+
+        /**
+         * @param resourcePolicies A list of self_links of resource policies to attach to the instance&#39;s boot disk. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourcePolicies(@Nullable Output<String> resourcePolicies) {
+            $.resourcePolicies = resourcePolicies;
+            return this;
+        }
+
+        /**
+         * @param resourcePolicies A list of self_links of resource policies to attach to the instance&#39;s boot disk. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourcePolicies(String resourcePolicies) {
+            return resourcePolicies(Output.of(resourcePolicies));
         }
 
         /**

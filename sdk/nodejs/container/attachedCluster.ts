@@ -107,6 +107,9 @@ import * as utilities from "../utilities";
  *             namespace: "default",
  *         },
  *     },
+ *     securityPostureConfig: {
+ *         vulnerabilityMode: "VULNERABILITY_ENTERPRISE",
+ *     },
  * });
  * ```
  * ### Container Attached Cluster Ignore Errors
@@ -288,6 +291,10 @@ export class AttachedCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
     /**
+     * Enable/Disable Security Posture API features for the cluster.
+     */
+    public readonly securityPostureConfig!: pulumi.Output<outputs.container.AttachedClusterSecurityPostureConfig>;
+    /**
      * The current state of the cluster. Possible values:
      * STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR,
      * DEGRADED
@@ -341,6 +348,7 @@ export class AttachedCluster extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["proxyConfig"] = state ? state.proxyConfig : undefined;
             resourceInputs["reconciling"] = state ? state.reconciling : undefined;
+            resourceInputs["securityPostureConfig"] = state ? state.securityPostureConfig : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["uid"] = state ? state.uid : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
@@ -377,6 +385,7 @@ export class AttachedCluster extends pulumi.CustomResource {
             resourceInputs["platformVersion"] = args ? args.platformVersion : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["proxyConfig"] = args ? args.proxyConfig : undefined;
+            resourceInputs["securityPostureConfig"] = args ? args.securityPostureConfig : undefined;
             resourceInputs["clusterRegion"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveAnnotations"] = undefined /*out*/;
@@ -496,6 +505,10 @@ export interface AttachedClusterState {
      */
     reconciling?: pulumi.Input<boolean>;
     /**
+     * Enable/Disable Security Posture API features for the cluster.
+     */
+    securityPostureConfig?: pulumi.Input<inputs.container.AttachedClusterSecurityPostureConfig>;
+    /**
      * The current state of the cluster. Possible values:
      * STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR,
      * DEGRADED
@@ -594,4 +607,8 @@ export interface AttachedClusterArgs {
      * Support for proxy configuration.
      */
     proxyConfig?: pulumi.Input<inputs.container.AttachedClusterProxyConfig>;
+    /**
+     * Enable/Disable Security Posture API features for the cluster.
+     */
+    securityPostureConfig?: pulumi.Input<inputs.container.AttachedClusterSecurityPostureConfig>;
 }

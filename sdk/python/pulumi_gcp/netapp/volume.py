@@ -32,6 +32,8 @@ class VolumeArgs:
                  export_policy: Optional[pulumi.Input['VolumeExportPolicyArgs']] = None,
                  kerberos_enabled: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 large_capacity: Optional[pulumi.Input[bool]] = None,
+                 multiple_endpoints: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  restore_parameters: Optional[pulumi.Input['VolumeRestoreParametersArgs']] = None,
@@ -63,6 +65,9 @@ class VolumeArgs:
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[bool] large_capacity: Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
+        :param pulumi.Input[bool] multiple_endpoints: Optional. Flag indicating if the volume will have an IP address per node for volumes supporting multiple IP endpoints.
+               Only the volume with largeCapacity will be allowed to have multiple endpoints.
         :param pulumi.Input[str] name: The name of the volume. Needs to be unique per location.
                
                
@@ -101,6 +106,10 @@ class VolumeArgs:
             pulumi.set(__self__, "kerberos_enabled", kerberos_enabled)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if large_capacity is not None:
+            pulumi.set(__self__, "large_capacity", large_capacity)
+        if multiple_endpoints is not None:
+            pulumi.set(__self__, "multiple_endpoints", multiple_endpoints)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -262,6 +271,31 @@ class VolumeArgs:
         pulumi.set(self, "labels", value)
 
     @property
+    @pulumi.getter(name="largeCapacity")
+    def large_capacity(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
+        """
+        return pulumi.get(self, "large_capacity")
+
+    @large_capacity.setter
+    def large_capacity(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "large_capacity", value)
+
+    @property
+    @pulumi.getter(name="multipleEndpoints")
+    def multiple_endpoints(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Flag indicating if the volume will have an IP address per node for volumes supporting multiple IP endpoints.
+        Only the volume with largeCapacity will be allowed to have multiple endpoints.
+        """
+        return pulumi.get(self, "multiple_endpoints")
+
+    @multiple_endpoints.setter
+    def multiple_endpoints(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "multiple_endpoints", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -397,9 +431,11 @@ class _VolumeState:
                  kerberos_enabled: Optional[pulumi.Input[bool]] = None,
                  kms_config: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 large_capacity: Optional[pulumi.Input[bool]] = None,
                  ldap_enabled: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  mount_options: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeMountOptionArgs']]]] = None,
+                 multiple_endpoints: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -444,10 +480,13 @@ class _VolumeState:
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[bool] large_capacity: Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
         :param pulumi.Input[bool] ldap_enabled: Flag indicating if the volume is NFS LDAP enabled or not. Inherited from storage pool.
         :param pulumi.Input[str] location: Name of the pool location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
         :param pulumi.Input[Sequence[pulumi.Input['VolumeMountOptionArgs']]] mount_options: Reports mount instructions for this volume.
                Structure is documented below.
+        :param pulumi.Input[bool] multiple_endpoints: Optional. Flag indicating if the volume will have an IP address per node for volumes supporting multiple IP endpoints.
+               Only the volume with largeCapacity will be allowed to have multiple endpoints.
         :param pulumi.Input[str] name: The name of the volume. Needs to be unique per location.
                
                
@@ -509,12 +548,16 @@ class _VolumeState:
             pulumi.set(__self__, "kms_config", kms_config)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if large_capacity is not None:
+            pulumi.set(__self__, "large_capacity", large_capacity)
         if ldap_enabled is not None:
             pulumi.set(__self__, "ldap_enabled", ldap_enabled)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if mount_options is not None:
             pulumi.set(__self__, "mount_options", mount_options)
+        if multiple_endpoints is not None:
+            pulumi.set(__self__, "multiple_endpoints", multiple_endpoints)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if network is not None:
@@ -723,6 +766,18 @@ class _VolumeState:
         pulumi.set(self, "labels", value)
 
     @property
+    @pulumi.getter(name="largeCapacity")
+    def large_capacity(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
+        """
+        return pulumi.get(self, "large_capacity")
+
+    @large_capacity.setter
+    def large_capacity(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "large_capacity", value)
+
+    @property
     @pulumi.getter(name="ldapEnabled")
     def ldap_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -758,6 +813,19 @@ class _VolumeState:
     @mount_options.setter
     def mount_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeMountOptionArgs']]]]):
         pulumi.set(self, "mount_options", value)
+
+    @property
+    @pulumi.getter(name="multipleEndpoints")
+    def multiple_endpoints(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Flag indicating if the volume will have an IP address per node for volumes supporting multiple IP endpoints.
+        Only the volume with largeCapacity will be allowed to have multiple endpoints.
+        """
+        return pulumi.get(self, "multiple_endpoints")
+
+    @multiple_endpoints.setter
+    def multiple_endpoints(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "multiple_endpoints", value)
 
     @property
     @pulumi.getter
@@ -1037,7 +1105,9 @@ class Volume(pulumi.CustomResource):
                  export_policy: Optional[pulumi.Input[Union['VolumeExportPolicyArgs', 'VolumeExportPolicyArgsDict']]] = None,
                  kerberos_enabled: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 large_capacity: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 multiple_endpoints: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  protocols: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1131,7 +1201,10 @@ class Volume(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[bool] large_capacity: Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
         :param pulumi.Input[str] location: Name of the pool location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
+        :param pulumi.Input[bool] multiple_endpoints: Optional. Flag indicating if the volume will have an IP address per node for volumes supporting multiple IP endpoints.
+               Only the volume with largeCapacity will be allowed to have multiple endpoints.
         :param pulumi.Input[str] name: The name of the volume. Needs to be unique per location.
                
                
@@ -1248,7 +1321,9 @@ class Volume(pulumi.CustomResource):
                  export_policy: Optional[pulumi.Input[Union['VolumeExportPolicyArgs', 'VolumeExportPolicyArgsDict']]] = None,
                  kerberos_enabled: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 large_capacity: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 multiple_endpoints: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  protocols: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1279,9 +1354,11 @@ class Volume(pulumi.CustomResource):
             __props__.__dict__["export_policy"] = export_policy
             __props__.__dict__["kerberos_enabled"] = kerberos_enabled
             __props__.__dict__["labels"] = labels
+            __props__.__dict__["large_capacity"] = large_capacity
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
+            __props__.__dict__["multiple_endpoints"] = multiple_endpoints
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             if protocols is None and not opts.urn:
@@ -1342,9 +1419,11 @@ class Volume(pulumi.CustomResource):
             kerberos_enabled: Optional[pulumi.Input[bool]] = None,
             kms_config: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            large_capacity: Optional[pulumi.Input[bool]] = None,
             ldap_enabled: Optional[pulumi.Input[bool]] = None,
             location: Optional[pulumi.Input[str]] = None,
             mount_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VolumeMountOptionArgs', 'VolumeMountOptionArgsDict']]]]] = None,
+            multiple_endpoints: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -1394,10 +1473,13 @@ class Volume(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[bool] large_capacity: Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
         :param pulumi.Input[bool] ldap_enabled: Flag indicating if the volume is NFS LDAP enabled or not. Inherited from storage pool.
         :param pulumi.Input[str] location: Name of the pool location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VolumeMountOptionArgs', 'VolumeMountOptionArgsDict']]]] mount_options: Reports mount instructions for this volume.
                Structure is documented below.
+        :param pulumi.Input[bool] multiple_endpoints: Optional. Flag indicating if the volume will have an IP address per node for volumes supporting multiple IP endpoints.
+               Only the volume with largeCapacity will be allowed to have multiple endpoints.
         :param pulumi.Input[str] name: The name of the volume. Needs to be unique per location.
                
                
@@ -1450,9 +1532,11 @@ class Volume(pulumi.CustomResource):
         __props__.__dict__["kerberos_enabled"] = kerberos_enabled
         __props__.__dict__["kms_config"] = kms_config
         __props__.__dict__["labels"] = labels
+        __props__.__dict__["large_capacity"] = large_capacity
         __props__.__dict__["ldap_enabled"] = ldap_enabled
         __props__.__dict__["location"] = location
         __props__.__dict__["mount_options"] = mount_options
+        __props__.__dict__["multiple_endpoints"] = multiple_endpoints
         __props__.__dict__["name"] = name
         __props__.__dict__["network"] = network
         __props__.__dict__["project"] = project
@@ -1589,6 +1673,14 @@ class Volume(pulumi.CustomResource):
         return pulumi.get(self, "labels")
 
     @property
+    @pulumi.getter(name="largeCapacity")
+    def large_capacity(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
+        """
+        return pulumi.get(self, "large_capacity")
+
+    @property
     @pulumi.getter(name="ldapEnabled")
     def ldap_enabled(self) -> pulumi.Output[bool]:
         """
@@ -1612,6 +1704,15 @@ class Volume(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "mount_options")
+
+    @property
+    @pulumi.getter(name="multipleEndpoints")
+    def multiple_endpoints(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Optional. Flag indicating if the volume will have an IP address per node for volumes supporting multiple IP endpoints.
+        Only the volume with largeCapacity will be allowed to have multiple endpoints.
+        """
+        return pulumi.get(self, "multiple_endpoints")
 
     @property
     @pulumi.getter

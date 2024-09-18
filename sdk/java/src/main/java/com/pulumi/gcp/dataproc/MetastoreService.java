@@ -188,6 +188,7 @@ import javax.annotation.Nullable;
  *         var default_ = new MetastoreService("default", MetastoreServiceArgs.builder()
  *             .serviceId("metastore-srv")
  *             .location("us-central1")
+ *             .tier("DEVELOPER")
  *             .hiveMetastoreConfig(MetastoreServiceHiveMetastoreConfigArgs.builder()
  *                 .version("3.1.2")
  *                 .build())

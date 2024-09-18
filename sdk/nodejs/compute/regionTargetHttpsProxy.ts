@@ -73,6 +73,65 @@ import * as utilities from "../utilities";
  *     sslCertificates: [defaultRegionSslCertificate.id],
  * });
  * ```
+ * ### Region Target Https Proxy Http Keep Alive Timeout
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
+ *
+ * const defaultRegionSslCertificate = new gcp.compute.RegionSslCertificate("default", {
+ *     region: "us-central1",
+ *     name: "my-certificate",
+ *     privateKey: std.file({
+ *         input: "path/to/private.key",
+ *     }).then(invoke => invoke.result),
+ *     certificate: std.file({
+ *         input: "path/to/certificate.crt",
+ *     }).then(invoke => invoke.result),
+ * });
+ * const defaultRegionHealthCheck = new gcp.compute.RegionHealthCheck("default", {
+ *     region: "us-central1",
+ *     name: "http-health-check",
+ *     httpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const defaultRegionBackendService = new gcp.compute.RegionBackendService("default", {
+ *     region: "us-central1",
+ *     name: "backend-service",
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ *     healthChecks: defaultRegionHealthCheck.id,
+ * });
+ * const defaultRegionUrlMap = new gcp.compute.RegionUrlMap("default", {
+ *     region: "us-central1",
+ *     name: "url-map",
+ *     description: "a description",
+ *     defaultService: defaultRegionBackendService.id,
+ *     hostRules: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     pathMatchers: [{
+ *         name: "allpaths",
+ *         defaultService: defaultRegionBackendService.id,
+ *         pathRules: [{
+ *             paths: ["/*"],
+ *             service: defaultRegionBackendService.id,
+ *         }],
+ *     }],
+ * });
+ * const _default = new gcp.compute.RegionTargetHttpsProxy("default", {
+ *     region: "us-central1",
+ *     name: "test-http-keep-alive-timeout-proxy",
+ *     httpKeepAliveTimeoutSec: 600,
+ *     urlMap: defaultRegionUrlMap.id,
+ *     sslCertificates: [defaultRegionSslCertificate.id],
+ * });
+ * ```
  * ### Region Target Https Proxy Mtls
  *
  * ```typescript
@@ -276,6 +335,14 @@ export class RegionTargetHttpsProxy extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * Specifies how long to keep a connection open, after completing a response,
+     * while there is no matching traffic (in seconds). If an HTTP keepalive is
+     * not specified, a default value (600 seconds) will be used. For Regioanl
+     * HTTP(S) load balancer, the minimum allowed value is 5 seconds and the
+     * maximum allowed value is 600 seconds.
+     */
+    public readonly httpKeepAliveTimeoutSec!: pulumi.Output<number | undefined>;
+    /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
      * RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -356,6 +423,7 @@ export class RegionTargetHttpsProxy extends pulumi.CustomResource {
             resourceInputs["certificateManagerCertificates"] = state ? state.certificateManagerCertificates : undefined;
             resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["httpKeepAliveTimeoutSec"] = state ? state.httpKeepAliveTimeoutSec : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["proxyId"] = state ? state.proxyId : undefined;
@@ -372,6 +440,7 @@ export class RegionTargetHttpsProxy extends pulumi.CustomResource {
             }
             resourceInputs["certificateManagerCertificates"] = args ? args.certificateManagerCertificates : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["httpKeepAliveTimeoutSec"] = args ? args.httpKeepAliveTimeoutSec : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
@@ -406,6 +475,14 @@ export interface RegionTargetHttpsProxyState {
      * An optional description of this resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Specifies how long to keep a connection open, after completing a response,
+     * while there is no matching traffic (in seconds). If an HTTP keepalive is
+     * not specified, a default value (600 seconds) will be used. For Regioanl
+     * HTTP(S) load balancer, the minimum allowed value is 5 seconds and the
+     * maximum allowed value is 600 seconds.
+     */
+    httpKeepAliveTimeoutSec?: pulumi.Input<number>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -486,6 +563,14 @@ export interface RegionTargetHttpsProxyArgs {
      * An optional description of this resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Specifies how long to keep a connection open, after completing a response,
+     * while there is no matching traffic (in seconds). If an HTTP keepalive is
+     * not specified, a default value (600 seconds) will be used. For Regioanl
+     * HTTP(S) load balancer, the minimum allowed value is 5 seconds and the
+     * maximum allowed value is 600 seconds.
+     */
+    httpKeepAliveTimeoutSec?: pulumi.Input<number>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with

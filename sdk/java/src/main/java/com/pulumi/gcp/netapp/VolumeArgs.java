@@ -145,6 +145,21 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
+     * 
+     */
+    @Import(name="largeCapacity")
+    private @Nullable Output<Boolean> largeCapacity;
+
+    /**
+     * @return Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
+     * 
+     */
+    public Optional<Output<Boolean>> largeCapacity() {
+        return Optional.ofNullable(this.largeCapacity);
+    }
+
+    /**
      * Name of the pool location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
      * 
      */
@@ -157,6 +172,23 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Output<String> location() {
         return this.location;
+    }
+
+    /**
+     * Optional. Flag indicating if the volume will have an IP address per node for volumes supporting multiple IP endpoints.
+     * Only the volume with largeCapacity will be allowed to have multiple endpoints.
+     * 
+     */
+    @Import(name="multipleEndpoints")
+    private @Nullable Output<Boolean> multipleEndpoints;
+
+    /**
+     * @return Optional. Flag indicating if the volume will have an IP address per node for volumes supporting multiple IP endpoints.
+     * Only the volume with largeCapacity will be allowed to have multiple endpoints.
+     * 
+     */
+    public Optional<Output<Boolean>> multipleEndpoints() {
+        return Optional.ofNullable(this.multipleEndpoints);
     }
 
     /**
@@ -371,7 +403,9 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
         this.exportPolicy = $.exportPolicy;
         this.kerberosEnabled = $.kerberosEnabled;
         this.labels = $.labels;
+        this.largeCapacity = $.largeCapacity;
         this.location = $.location;
+        this.multipleEndpoints = $.multipleEndpoints;
         this.name = $.name;
         this.project = $.project;
         this.protocols = $.protocols;
@@ -568,6 +602,27 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param largeCapacity Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder largeCapacity(@Nullable Output<Boolean> largeCapacity) {
+            $.largeCapacity = largeCapacity;
+            return this;
+        }
+
+        /**
+         * @param largeCapacity Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder largeCapacity(Boolean largeCapacity) {
+            return largeCapacity(Output.of(largeCapacity));
+        }
+
+        /**
          * @param location Name of the pool location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
          * 
          * @return builder
@@ -586,6 +641,29 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder location(String location) {
             return location(Output.of(location));
+        }
+
+        /**
+         * @param multipleEndpoints Optional. Flag indicating if the volume will have an IP address per node for volumes supporting multiple IP endpoints.
+         * Only the volume with largeCapacity will be allowed to have multiple endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder multipleEndpoints(@Nullable Output<Boolean> multipleEndpoints) {
+            $.multipleEndpoints = multipleEndpoints;
+            return this;
+        }
+
+        /**
+         * @param multipleEndpoints Optional. Flag indicating if the volume will have an IP address per node for volumes supporting multiple IP endpoints.
+         * Only the volume with largeCapacity will be allowed to have multiple endpoints.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder multipleEndpoints(Boolean multipleEndpoints) {
+            return multipleEndpoints(Output.of(multipleEndpoints));
         }
 
         /**

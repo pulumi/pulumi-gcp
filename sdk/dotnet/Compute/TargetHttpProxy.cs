@@ -236,10 +236,13 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Specifies how long to keep a connection open, after completing a response,
         /// while there is no matching traffic (in seconds). If an HTTP keepalive is
-        /// not specified, a default value (610 seconds) will be used. For Global
-        /// external HTTP(S) load balancer, the minimum allowed value is 5 seconds and
-        /// the maximum allowed value is 1200 seconds. For Global external HTTP(S)
-        /// load balancer (classic), this option is not available publicly.
+        /// not specified, a default value will be used. For Global
+        /// external HTTP(S) load balancer, the default value is 610 seconds, the
+        /// minimum allowed value is 5 seconds and the maximum allowed value is 1200
+        /// seconds. For cross-region internal HTTP(S) load balancer, the default
+        /// value is 600 seconds, the minimum allowed value is 5 seconds, and the
+        /// maximum allowed value is 600 seconds. For Global external HTTP(S) load
+        /// balancer (classic), this option is not available publicly.
         /// </summary>
         [Output("httpKeepAliveTimeoutSec")]
         public Output<int?> HttpKeepAliveTimeoutSec { get; private set; } = null!;
@@ -347,10 +350,13 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Specifies how long to keep a connection open, after completing a response,
         /// while there is no matching traffic (in seconds). If an HTTP keepalive is
-        /// not specified, a default value (610 seconds) will be used. For Global
-        /// external HTTP(S) load balancer, the minimum allowed value is 5 seconds and
-        /// the maximum allowed value is 1200 seconds. For Global external HTTP(S)
-        /// load balancer (classic), this option is not available publicly.
+        /// not specified, a default value will be used. For Global
+        /// external HTTP(S) load balancer, the default value is 610 seconds, the
+        /// minimum allowed value is 5 seconds and the maximum allowed value is 1200
+        /// seconds. For cross-region internal HTTP(S) load balancer, the default
+        /// value is 600 seconds, the minimum allowed value is 5 seconds, and the
+        /// maximum allowed value is 600 seconds. For Global external HTTP(S) load
+        /// balancer (classic), this option is not available publicly.
         /// </summary>
         [Input("httpKeepAliveTimeoutSec")]
         public Input<int>? HttpKeepAliveTimeoutSec { get; set; }
@@ -414,10 +420,13 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Specifies how long to keep a connection open, after completing a response,
         /// while there is no matching traffic (in seconds). If an HTTP keepalive is
-        /// not specified, a default value (610 seconds) will be used. For Global
-        /// external HTTP(S) load balancer, the minimum allowed value is 5 seconds and
-        /// the maximum allowed value is 1200 seconds. For Global external HTTP(S)
-        /// load balancer (classic), this option is not available publicly.
+        /// not specified, a default value will be used. For Global
+        /// external HTTP(S) load balancer, the default value is 610 seconds, the
+        /// minimum allowed value is 5 seconds and the maximum allowed value is 1200
+        /// seconds. For cross-region internal HTTP(S) load balancer, the default
+        /// value is 600 seconds, the minimum allowed value is 5 seconds, and the
+        /// maximum allowed value is 600 seconds. For Global external HTTP(S) load
+        /// balancer (classic), this option is not available publicly.
         /// </summary>
         [Input("httpKeepAliveTimeoutSec")]
         public Input<int>? HttpKeepAliveTimeoutSec { get; set; }

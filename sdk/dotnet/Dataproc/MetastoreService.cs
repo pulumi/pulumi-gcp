@@ -121,6 +121,7 @@ namespace Pulumi.Gcp.Dataproc
     ///     {
     ///         ServiceId = "metastore-srv",
     ///         Location = "us-central1",
+    ///         Tier = "DEVELOPER",
     ///         HiveMetastoreConfig = new Gcp.Dataproc.Inputs.MetastoreServiceHiveMetastoreConfigArgs
     ///         {
     ///             Version = "3.1.2",

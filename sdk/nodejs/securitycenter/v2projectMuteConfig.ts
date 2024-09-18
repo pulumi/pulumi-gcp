@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *
  * const _default = new gcp.securitycenter.V2ProjectMuteConfig("default", {
  *     muteConfigId: "my-config",
- *     project: "",
+ *     project: "my-project-name",
  *     location: "global",
  *     description: "My custom Cloud Security Command Center Finding Project mute Configuration",
  *     filter: "severity = \"HIGH\"",

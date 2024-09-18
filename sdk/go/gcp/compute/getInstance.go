@@ -121,7 +121,8 @@ type LookupInstanceResult struct {
 	Project                   *string                               `pulumi:"project"`
 	PulumiLabels              map[string]string                     `pulumi:"pulumiLabels"`
 	ReservationAffinities     []GetInstanceReservationAffinity      `pulumi:"reservationAffinities"`
-	ResourcePolicies          []string                              `pulumi:"resourcePolicies"`
+	// A list of selfLinks to resource policies attached to the selected `bootDisk`
+	ResourcePolicies []string `pulumi:"resourcePolicies"`
 	// The scheduling strategy being used by the instance. Structure is documented below
 	Schedulings []GetInstanceScheduling `pulumi:"schedulings"`
 	// The scratch disks attached to the instance. Structure is documented below.
@@ -336,6 +337,7 @@ func (o LookupInstanceResultOutput) ReservationAffinities() GetInstanceReservati
 	return o.ApplyT(func(v LookupInstanceResult) []GetInstanceReservationAffinity { return v.ReservationAffinities }).(GetInstanceReservationAffinityArrayOutput)
 }
 
+// A list of selfLinks to resource policies attached to the selected `bootDisk`
 func (o LookupInstanceResultOutput) ResourcePolicies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupInstanceResult) []string { return v.ResourcePolicies }).(pulumi.StringArrayOutput)
 }

@@ -16084,6 +16084,112 @@ func (o GetDatasetExternalDatasetReferenceArrayOutput) Index(i pulumi.IntInput) 
 	}).(GetDatasetExternalDatasetReferenceOutput)
 }
 
+type GetTablesTable struct {
+	// User-provided table labels, in key/value pairs.
+	Labels map[string]string `pulumi:"labels"`
+	// The name of the table.
+	TableId string `pulumi:"tableId"`
+}
+
+// GetTablesTableInput is an input type that accepts GetTablesTableArgs and GetTablesTableOutput values.
+// You can construct a concrete instance of `GetTablesTableInput` via:
+//
+//	GetTablesTableArgs{...}
+type GetTablesTableInput interface {
+	pulumi.Input
+
+	ToGetTablesTableOutput() GetTablesTableOutput
+	ToGetTablesTableOutputWithContext(context.Context) GetTablesTableOutput
+}
+
+type GetTablesTableArgs struct {
+	// User-provided table labels, in key/value pairs.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// The name of the table.
+	TableId pulumi.StringInput `pulumi:"tableId"`
+}
+
+func (GetTablesTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTablesTable)(nil)).Elem()
+}
+
+func (i GetTablesTableArgs) ToGetTablesTableOutput() GetTablesTableOutput {
+	return i.ToGetTablesTableOutputWithContext(context.Background())
+}
+
+func (i GetTablesTableArgs) ToGetTablesTableOutputWithContext(ctx context.Context) GetTablesTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTablesTableOutput)
+}
+
+// GetTablesTableArrayInput is an input type that accepts GetTablesTableArray and GetTablesTableArrayOutput values.
+// You can construct a concrete instance of `GetTablesTableArrayInput` via:
+//
+//	GetTablesTableArray{ GetTablesTableArgs{...} }
+type GetTablesTableArrayInput interface {
+	pulumi.Input
+
+	ToGetTablesTableArrayOutput() GetTablesTableArrayOutput
+	ToGetTablesTableArrayOutputWithContext(context.Context) GetTablesTableArrayOutput
+}
+
+type GetTablesTableArray []GetTablesTableInput
+
+func (GetTablesTableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTablesTable)(nil)).Elem()
+}
+
+func (i GetTablesTableArray) ToGetTablesTableArrayOutput() GetTablesTableArrayOutput {
+	return i.ToGetTablesTableArrayOutputWithContext(context.Background())
+}
+
+func (i GetTablesTableArray) ToGetTablesTableArrayOutputWithContext(ctx context.Context) GetTablesTableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTablesTableArrayOutput)
+}
+
+type GetTablesTableOutput struct{ *pulumi.OutputState }
+
+func (GetTablesTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTablesTable)(nil)).Elem()
+}
+
+func (o GetTablesTableOutput) ToGetTablesTableOutput() GetTablesTableOutput {
+	return o
+}
+
+func (o GetTablesTableOutput) ToGetTablesTableOutputWithContext(ctx context.Context) GetTablesTableOutput {
+	return o
+}
+
+// User-provided table labels, in key/value pairs.
+func (o GetTablesTableOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetTablesTable) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The name of the table.
+func (o GetTablesTableOutput) TableId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTablesTable) string { return v.TableId }).(pulumi.StringOutput)
+}
+
+type GetTablesTableArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTablesTableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTablesTable)(nil)).Elem()
+}
+
+func (o GetTablesTableArrayOutput) ToGetTablesTableArrayOutput() GetTablesTableArrayOutput {
+	return o
+}
+
+func (o GetTablesTableArrayOutput) ToGetTablesTableArrayOutputWithContext(ctx context.Context) GetTablesTableArrayOutput {
+	return o
+}
+
+func (o GetTablesTableArrayOutput) Index(i pulumi.IntInput) GetTablesTableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTablesTable {
+		return vs[0].([]GetTablesTable)[vs[1].(int)]
+	}).(GetTablesTableOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppProfileDataBoostIsolationReadOnlyInput)(nil)).Elem(), AppProfileDataBoostIsolationReadOnlyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppProfileDataBoostIsolationReadOnlyPtrInput)(nil)).Elem(), AppProfileDataBoostIsolationReadOnlyArgs{})
@@ -16257,6 +16363,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatasetDefaultEncryptionConfigurationArrayInput)(nil)).Elem(), GetDatasetDefaultEncryptionConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatasetExternalDatasetReferenceInput)(nil)).Elem(), GetDatasetExternalDatasetReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatasetExternalDatasetReferenceArrayInput)(nil)).Elem(), GetDatasetExternalDatasetReferenceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTablesTableInput)(nil)).Elem(), GetTablesTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTablesTableArrayInput)(nil)).Elem(), GetTablesTableArray{})
 	pulumi.RegisterOutputType(AppProfileDataBoostIsolationReadOnlyOutput{})
 	pulumi.RegisterOutputType(AppProfileDataBoostIsolationReadOnlyPtrOutput{})
 	pulumi.RegisterOutputType(AppProfileSingleClusterRoutingOutput{})
@@ -16429,4 +16537,6 @@ func init() {
 	pulumi.RegisterOutputType(GetDatasetDefaultEncryptionConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(GetDatasetExternalDatasetReferenceOutput{})
 	pulumi.RegisterOutputType(GetDatasetExternalDatasetReferenceArrayOutput{})
+	pulumi.RegisterOutputType(GetTablesTableOutput{})
+	pulumi.RegisterOutputType(GetTablesTableArrayOutput{})
 }

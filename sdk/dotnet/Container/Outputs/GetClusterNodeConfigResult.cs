@@ -162,6 +162,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly bool Spot;
         /// <summary>
+        /// The list of Storage Pools where boot disks are provisioned.
+        /// </summary>
+        public readonly ImmutableArray<string> StoragePools;
+        /// <summary>
         /// The list of instance tags applied to all nodes.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
@@ -250,6 +254,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             bool spot,
 
+            ImmutableArray<string> storagePools,
+
             ImmutableArray<string> tags,
 
             ImmutableArray<Outputs.GetClusterNodeConfigTaintResult> taints,
@@ -293,6 +299,7 @@ namespace Pulumi.Gcp.Container.Outputs
             ShieldedInstanceConfigs = shieldedInstanceConfigs;
             SoleTenantConfigs = soleTenantConfigs;
             Spot = spot;
+            StoragePools = storagePools;
             Tags = tags;
             Taints = taints;
             WorkloadMetadataConfigs = workloadMetadataConfigs;

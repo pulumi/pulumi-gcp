@@ -22,6 +22,7 @@ class RegionTargetHttpsProxyArgs:
                  url_map: pulumi.Input[str],
                  certificate_manager_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 http_keep_alive_timeout_sec: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -39,6 +40,11 @@ class RegionTargetHttpsProxyArgs:
                sslCertificates and certificateManagerCertificates can't be defined together.
                Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
         :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[int] http_keep_alive_timeout_sec: Specifies how long to keep a connection open, after completing a response,
+               while there is no matching traffic (in seconds). If an HTTP keepalive is
+               not specified, a default value (600 seconds) will be used. For Regioanl
+               HTTP(S) load balancer, the minimum allowed value is 5 seconds and the
+               maximum allowed value is 600 seconds.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -75,6 +81,8 @@ class RegionTargetHttpsProxyArgs:
             pulumi.set(__self__, "certificate_manager_certificates", certificate_manager_certificates)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if http_keep_alive_timeout_sec is not None:
+            pulumi.set(__self__, "http_keep_alive_timeout_sec", http_keep_alive_timeout_sec)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -129,6 +137,22 @@ class RegionTargetHttpsProxyArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="httpKeepAliveTimeoutSec")
+    def http_keep_alive_timeout_sec(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies how long to keep a connection open, after completing a response,
+        while there is no matching traffic (in seconds). If an HTTP keepalive is
+        not specified, a default value (600 seconds) will be used. For Regioanl
+        HTTP(S) load balancer, the minimum allowed value is 5 seconds and the
+        maximum allowed value is 600 seconds.
+        """
+        return pulumi.get(self, "http_keep_alive_timeout_sec")
+
+    @http_keep_alive_timeout_sec.setter
+    def http_keep_alive_timeout_sec(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "http_keep_alive_timeout_sec", value)
 
     @property
     @pulumi.getter
@@ -233,6 +257,7 @@ class _RegionTargetHttpsProxyState:
                  certificate_manager_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 http_keep_alive_timeout_sec: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  proxy_id: Optional[pulumi.Input[int]] = None,
@@ -249,6 +274,11 @@ class _RegionTargetHttpsProxyState:
                Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[int] http_keep_alive_timeout_sec: Specifies how long to keep a connection open, after completing a response,
+               while there is no matching traffic (in seconds). If an HTTP keepalive is
+               not specified, a default value (600 seconds) will be used. For Regioanl
+               HTTP(S) load balancer, the minimum allowed value is 5 seconds and the
+               maximum allowed value is 600 seconds.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -293,6 +323,8 @@ class _RegionTargetHttpsProxyState:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if http_keep_alive_timeout_sec is not None:
+            pulumi.set(__self__, "http_keep_alive_timeout_sec", http_keep_alive_timeout_sec)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -349,6 +381,22 @@ class _RegionTargetHttpsProxyState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="httpKeepAliveTimeoutSec")
+    def http_keep_alive_timeout_sec(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies how long to keep a connection open, after completing a response,
+        while there is no matching traffic (in seconds). If an HTTP keepalive is
+        not specified, a default value (600 seconds) will be used. For Regioanl
+        HTTP(S) load balancer, the minimum allowed value is 5 seconds and the
+        maximum allowed value is 600 seconds.
+        """
+        return pulumi.get(self, "http_keep_alive_timeout_sec")
+
+    @http_keep_alive_timeout_sec.setter
+    def http_keep_alive_timeout_sec(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "http_keep_alive_timeout_sec", value)
 
     @property
     @pulumi.getter
@@ -494,6 +542,7 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate_manager_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 http_keep_alive_timeout_sec: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -559,6 +608,56 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
         default = gcp.compute.RegionTargetHttpsProxy("default",
             region="us-central1",
             name="test-proxy",
+            url_map=default_region_url_map.id,
+            ssl_certificates=[default_region_ssl_certificate.id])
+        ```
+        ### Region Target Https Proxy Http Keep Alive Timeout
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        default_region_ssl_certificate = gcp.compute.RegionSslCertificate("default",
+            region="us-central1",
+            name="my-certificate",
+            private_key=std.file(input="path/to/private.key").result,
+            certificate=std.file(input="path/to/certificate.crt").result)
+        default_region_health_check = gcp.compute.RegionHealthCheck("default",
+            region="us-central1",
+            name="http-health-check",
+            http_health_check={
+                "port": 80,
+            })
+        default_region_backend_service = gcp.compute.RegionBackendService("default",
+            region="us-central1",
+            name="backend-service",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="INTERNAL_MANAGED",
+            health_checks=default_region_health_check.id)
+        default_region_url_map = gcp.compute.RegionUrlMap("default",
+            region="us-central1",
+            name="url-map",
+            description="a description",
+            default_service=default_region_backend_service.id,
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "path_matcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "default_service": default_region_backend_service.id,
+                "path_rules": [{
+                    "paths": ["/*"],
+                    "service": default_region_backend_service.id,
+                }],
+            }])
+        default = gcp.compute.RegionTargetHttpsProxy("default",
+            region="us-central1",
+            name="test-http-keep-alive-timeout-proxy",
+            http_keep_alive_timeout_sec=600,
             url_map=default_region_url_map.id,
             ssl_certificates=[default_region_ssl_certificate.id])
         ```
@@ -705,6 +804,11 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
                sslCertificates and certificateManagerCertificates can't be defined together.
                Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
         :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[int] http_keep_alive_timeout_sec: Specifies how long to keep a connection open, after completing a response,
+               while there is no matching traffic (in seconds). If an HTTP keepalive is
+               not specified, a default value (600 seconds) will be used. For Regioanl
+               HTTP(S) load balancer, the minimum allowed value is 5 seconds and the
+               maximum allowed value is 600 seconds.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -804,6 +908,56 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
         default = gcp.compute.RegionTargetHttpsProxy("default",
             region="us-central1",
             name="test-proxy",
+            url_map=default_region_url_map.id,
+            ssl_certificates=[default_region_ssl_certificate.id])
+        ```
+        ### Region Target Https Proxy Http Keep Alive Timeout
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        default_region_ssl_certificate = gcp.compute.RegionSslCertificate("default",
+            region="us-central1",
+            name="my-certificate",
+            private_key=std.file(input="path/to/private.key").result,
+            certificate=std.file(input="path/to/certificate.crt").result)
+        default_region_health_check = gcp.compute.RegionHealthCheck("default",
+            region="us-central1",
+            name="http-health-check",
+            http_health_check={
+                "port": 80,
+            })
+        default_region_backend_service = gcp.compute.RegionBackendService("default",
+            region="us-central1",
+            name="backend-service",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            load_balancing_scheme="INTERNAL_MANAGED",
+            health_checks=default_region_health_check.id)
+        default_region_url_map = gcp.compute.RegionUrlMap("default",
+            region="us-central1",
+            name="url-map",
+            description="a description",
+            default_service=default_region_backend_service.id,
+            host_rules=[{
+                "hosts": ["mysite.com"],
+                "path_matcher": "allpaths",
+            }],
+            path_matchers=[{
+                "name": "allpaths",
+                "default_service": default_region_backend_service.id,
+                "path_rules": [{
+                    "paths": ["/*"],
+                    "service": default_region_backend_service.id,
+                }],
+            }])
+        default = gcp.compute.RegionTargetHttpsProxy("default",
+            region="us-central1",
+            name="test-http-keep-alive-timeout-proxy",
+            http_keep_alive_timeout_sec=600,
             url_map=default_region_url_map.id,
             ssl_certificates=[default_region_ssl_certificate.id])
         ```
@@ -961,6 +1115,7 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate_manager_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 http_keep_alive_timeout_sec: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -979,6 +1134,7 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
 
             __props__.__dict__["certificate_manager_certificates"] = certificate_manager_certificates
             __props__.__dict__["description"] = description
+            __props__.__dict__["http_keep_alive_timeout_sec"] = http_keep_alive_timeout_sec
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
@@ -1004,6 +1160,7 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
             certificate_manager_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            http_keep_alive_timeout_sec: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             proxy_id: Optional[pulumi.Input[int]] = None,
@@ -1025,6 +1182,11 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
                Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the self_link `projects/{project}/locations/{location}/certificates/{resourceName}`
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[int] http_keep_alive_timeout_sec: Specifies how long to keep a connection open, after completing a response,
+               while there is no matching traffic (in seconds). If an HTTP keepalive is
+               not specified, a default value (600 seconds) will be used. For Regioanl
+               HTTP(S) load balancer, the minimum allowed value is 5 seconds and the
+               maximum allowed value is 600 seconds.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -1070,6 +1232,7 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
         __props__.__dict__["certificate_manager_certificates"] = certificate_manager_certificates
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["description"] = description
+        __props__.__dict__["http_keep_alive_timeout_sec"] = http_keep_alive_timeout_sec
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["proxy_id"] = proxy_id
@@ -1106,6 +1269,18 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="httpKeepAliveTimeoutSec")
+    def http_keep_alive_timeout_sec(self) -> pulumi.Output[Optional[int]]:
+        """
+        Specifies how long to keep a connection open, after completing a response,
+        while there is no matching traffic (in seconds). If an HTTP keepalive is
+        not specified, a default value (600 seconds) will be used. For Regioanl
+        HTTP(S) load balancer, the minimum allowed value is 5 seconds and the
+        maximum allowed value is 600 seconds.
+        """
+        return pulumi.get(self, "http_keep_alive_timeout_sec")
 
     @property
     @pulumi.getter

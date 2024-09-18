@@ -1363,16 +1363,18 @@ public class Stream extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.customerManagedEncryptionKey);
     }
     /**
-     * Desired state of the Stream. Set this field to &#39;RUNNING&#39; to start the stream, and &#39;PAUSED&#39; to pause the stream. Possible
-     * values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
+     * Desired state of the Stream. Set this field to &#39;RUNNING&#39; to start the stream, &#39;NOT_STARTED&#39; to create the stream without
+     * starting and &#39;PAUSED&#39; to pause the stream from a &#39;RUNNING&#39; state. Possible values: NOT_STARTED, RUNNING, PAUSED.
+     * Default: NOT_STARTED
      * 
      */
     @Export(name="desiredState", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> desiredState;
 
     /**
-     * @return Desired state of the Stream. Set this field to &#39;RUNNING&#39; to start the stream, and &#39;PAUSED&#39; to pause the stream. Possible
-     * values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
+     * @return Desired state of the Stream. Set this field to &#39;RUNNING&#39; to start the stream, &#39;NOT_STARTED&#39; to create the stream without
+     * starting and &#39;PAUSED&#39; to pause the stream from a &#39;RUNNING&#39; state. Possible values: NOT_STARTED, RUNNING, PAUSED.
+     * Default: NOT_STARTED
      * 
      */
     public Output<Optional<String>> desiredState() {

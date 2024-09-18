@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var defaultMetastoreService = new MetastoreService("defaultMetastoreService", MetastoreServiceArgs.builder()
- *             .serviceId("")
+ *             .serviceId("metastore-service")
  *             .location("us-central1")
  *             .tier("DEVELOPER")
  *             .hiveMetastoreConfig(MetastoreServiceHiveMetastoreConfigArgs.builder()
@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  * 
  *         var default_ = new MetastoreFederation("default", MetastoreFederationArgs.builder()
  *             .location("us-central1")
- *             .federationId("")
+ *             .federationId("metastore-fed")
  *             .version("3.1.2")
  *             .backendMetastores(MetastoreFederationBackendMetastoreArgs.builder()
  *                 .rank("1")
@@ -109,7 +109,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var defaultMetastoreService = new MetastoreService("defaultMetastoreService", MetastoreServiceArgs.builder()
- *             .serviceId("")
+ *             .serviceId("metastore-service")
  *             .location("us-central1")
  *             .tier("DEVELOPER")
  *             .hiveMetastoreConfig(MetastoreServiceHiveMetastoreConfigArgs.builder()
@@ -122,7 +122,7 @@ import javax.annotation.Nullable;
  * 
  *         var default_ = new MetastoreFederation("default", MetastoreFederationArgs.builder()
  *             .location("us-central1")
- *             .federationId("")
+ *             .federationId("metastore-fed")
  *             .version("3.1.2")
  *             .backendMetastores(            
  *                 MetastoreFederationBackendMetastoreArgs.builder()

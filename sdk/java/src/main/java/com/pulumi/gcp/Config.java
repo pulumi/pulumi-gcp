@@ -219,6 +219,9 @@ public final class Config {
     public Optional<String> deploymentManagerCustomEndpoint() {
         return Codegen.stringProp("deploymentManagerCustomEndpoint").config(config).get();
     }
+    public Optional<String> developerConnectCustomEndpoint() {
+        return Codegen.stringProp("developerConnectCustomEndpoint").config(config).get();
+    }
     public Optional<String> dialogflowCustomEndpoint() {
         return Codegen.stringProp("dialogflowCustomEndpoint").config(config).get();
     }
@@ -347,6 +350,9 @@ public final class Config {
     }
     public Optional<String> memcacheCustomEndpoint() {
         return Codegen.stringProp("memcacheCustomEndpoint").config(config).get();
+    }
+    public Optional<String> memorystoreCustomEndpoint() {
+        return Codegen.stringProp("memorystoreCustomEndpoint").config(config).get();
     }
     public Optional<String> migrationCenterCustomEndpoint() {
         return Codegen.stringProp("migrationCenterCustomEndpoint").config(config).get();

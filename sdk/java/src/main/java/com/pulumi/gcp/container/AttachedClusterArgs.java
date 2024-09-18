@@ -13,6 +13,7 @@ import com.pulumi.gcp.container.inputs.AttachedClusterLoggingConfigArgs;
 import com.pulumi.gcp.container.inputs.AttachedClusterMonitoringConfigArgs;
 import com.pulumi.gcp.container.inputs.AttachedClusterOidcConfigArgs;
 import com.pulumi.gcp.container.inputs.AttachedClusterProxyConfigArgs;
+import com.pulumi.gcp.container.inputs.AttachedClusterSecurityPostureConfigArgs;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -275,6 +276,21 @@ public final class AttachedClusterArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.proxyConfig);
     }
 
+    /**
+     * Enable/Disable Security Posture API features for the cluster.
+     * 
+     */
+    @Import(name="securityPostureConfig")
+    private @Nullable Output<AttachedClusterSecurityPostureConfigArgs> securityPostureConfig;
+
+    /**
+     * @return Enable/Disable Security Posture API features for the cluster.
+     * 
+     */
+    public Optional<Output<AttachedClusterSecurityPostureConfigArgs>> securityPostureConfig() {
+        return Optional.ofNullable(this.securityPostureConfig);
+    }
+
     private AttachedClusterArgs() {}
 
     private AttachedClusterArgs(AttachedClusterArgs $) {
@@ -293,6 +309,7 @@ public final class AttachedClusterArgs extends com.pulumi.resources.ResourceArgs
         this.platformVersion = $.platformVersion;
         this.project = $.project;
         this.proxyConfig = $.proxyConfig;
+        this.securityPostureConfig = $.securityPostureConfig;
     }
 
     public static Builder builder() {
@@ -648,6 +665,27 @@ public final class AttachedClusterArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder proxyConfig(AttachedClusterProxyConfigArgs proxyConfig) {
             return proxyConfig(Output.of(proxyConfig));
+        }
+
+        /**
+         * @param securityPostureConfig Enable/Disable Security Posture API features for the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityPostureConfig(@Nullable Output<AttachedClusterSecurityPostureConfigArgs> securityPostureConfig) {
+            $.securityPostureConfig = securityPostureConfig;
+            return this;
+        }
+
+        /**
+         * @param securityPostureConfig Enable/Disable Security Posture API features for the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityPostureConfig(AttachedClusterSecurityPostureConfigArgs securityPostureConfig) {
+            return securityPostureConfig(Output.of(securityPostureConfig));
         }
 
         public AttachedClusterArgs build() {

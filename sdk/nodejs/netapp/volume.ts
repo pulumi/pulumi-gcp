@@ -162,6 +162,10 @@ export class Volume extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
+     * Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
+     */
+    public readonly largeCapacity!: pulumi.Output<boolean | undefined>;
+    /**
      * Flag indicating if the volume is NFS LDAP enabled or not. Inherited from storage pool.
      */
     public /*out*/ readonly ldapEnabled!: pulumi.Output<boolean>;
@@ -174,6 +178,11 @@ export class Volume extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public /*out*/ readonly mountOptions!: pulumi.Output<outputs.netapp.VolumeMountOption[]>;
+    /**
+     * Optional. Flag indicating if the volume will have an IP address per node for volumes supporting multiple IP endpoints.
+     * Only the volume with largeCapacity will be allowed to have multiple endpoints.
+     */
+    public readonly multipleEndpoints!: pulumi.Output<boolean | undefined>;
     /**
      * The name of the volume. Needs to be unique per location.
      *
@@ -298,9 +307,11 @@ export class Volume extends pulumi.CustomResource {
             resourceInputs["kerberosEnabled"] = state ? state.kerberosEnabled : undefined;
             resourceInputs["kmsConfig"] = state ? state.kmsConfig : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["largeCapacity"] = state ? state.largeCapacity : undefined;
             resourceInputs["ldapEnabled"] = state ? state.ldapEnabled : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["mountOptions"] = state ? state.mountOptions : undefined;
+            resourceInputs["multipleEndpoints"] = state ? state.multipleEndpoints : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["network"] = state ? state.network : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -346,7 +357,9 @@ export class Volume extends pulumi.CustomResource {
             resourceInputs["exportPolicy"] = args ? args.exportPolicy : undefined;
             resourceInputs["kerberosEnabled"] = args ? args.kerberosEnabled : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["largeCapacity"] = args ? args.largeCapacity : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["multipleEndpoints"] = args ? args.multipleEndpoints : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["protocols"] = args ? args.protocols : undefined;
@@ -449,6 +462,10 @@ export interface VolumeState {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
+     */
+    largeCapacity?: pulumi.Input<boolean>;
+    /**
      * Flag indicating if the volume is NFS LDAP enabled or not. Inherited from storage pool.
      */
     ldapEnabled?: pulumi.Input<boolean>;
@@ -461,6 +478,11 @@ export interface VolumeState {
      * Structure is documented below.
      */
     mountOptions?: pulumi.Input<pulumi.Input<inputs.netapp.VolumeMountOption>[]>;
+    /**
+     * Optional. Flag indicating if the volume will have an IP address per node for volumes supporting multiple IP endpoints.
+     * Only the volume with largeCapacity will be allowed to have multiple endpoints.
+     */
+    multipleEndpoints?: pulumi.Input<boolean>;
     /**
      * The name of the volume. Needs to be unique per location.
      *
@@ -601,9 +623,18 @@ export interface VolumeArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
+     */
+    largeCapacity?: pulumi.Input<boolean>;
+    /**
      * Name of the pool location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
      */
     location: pulumi.Input<string>;
+    /**
+     * Optional. Flag indicating if the volume will have an IP address per node for volumes supporting multiple IP endpoints.
+     * Only the volume with largeCapacity will be allowed to have multiple endpoints.
+     */
+    multipleEndpoints?: pulumi.Input<boolean>;
     /**
      * The name of the volume. Needs to be unique per location.
      *

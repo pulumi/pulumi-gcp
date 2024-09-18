@@ -18,6 +18,7 @@ import com.pulumi.gcp.container.outputs.AttachedClusterLoggingConfig;
 import com.pulumi.gcp.container.outputs.AttachedClusterMonitoringConfig;
 import com.pulumi.gcp.container.outputs.AttachedClusterOidcConfig;
 import com.pulumi.gcp.container.outputs.AttachedClusterProxyConfig;
+import com.pulumi.gcp.container.outputs.AttachedClusterSecurityPostureConfig;
 import com.pulumi.gcp.container.outputs.AttachedClusterWorkloadIdentityConfig;
 import java.lang.Boolean;
 import java.lang.String;
@@ -122,6 +123,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.container.inputs.AttachedClusterBinaryAuthorizationArgs;
  * import com.pulumi.gcp.container.inputs.AttachedClusterProxyConfigArgs;
  * import com.pulumi.gcp.container.inputs.AttachedClusterProxyConfigKubernetesSecretArgs;
+ * import com.pulumi.gcp.container.inputs.AttachedClusterSecurityPostureConfigArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -187,6 +189,9 @@ import javax.annotation.Nullable;
  *                     .name("proxy-config")
  *                     .namespace("default")
  *                     .build())
+ *                 .build())
+ *             .securityPostureConfig(AttachedClusterSecurityPostureConfigArgs.builder()
+ *                 .vulnerabilityMode("VULNERABILITY_ENTERPRISE")
  *                 .build())
  *             .build());
  * 
@@ -599,6 +604,20 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> reconciling() {
         return this.reconciling;
+    }
+    /**
+     * Enable/Disable Security Posture API features for the cluster.
+     * 
+     */
+    @Export(name="securityPostureConfig", refs={AttachedClusterSecurityPostureConfig.class}, tree="[0]")
+    private Output<AttachedClusterSecurityPostureConfig> securityPostureConfig;
+
+    /**
+     * @return Enable/Disable Security Posture API features for the cluster.
+     * 
+     */
+    public Output<AttachedClusterSecurityPostureConfig> securityPostureConfig() {
+        return this.securityPostureConfig;
     }
     /**
      * The current state of the cluster. Possible values:

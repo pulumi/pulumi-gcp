@@ -294,6 +294,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('deploymentManagerCustomEndpoint')
 
     @property
+    def developer_connect_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('developerConnectCustomEndpoint')
+
+    @property
     def dialogflow_custom_endpoint(self) -> Optional[str]:
         return __config__.get('dialogflowCustomEndpoint')
 
@@ -464,6 +468,10 @@ class _ExportableConfig(types.ModuleType):
     @property
     def memcache_custom_endpoint(self) -> Optional[str]:
         return __config__.get('memcacheCustomEndpoint')
+
+    @property
+    def memorystore_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('memorystoreCustomEndpoint')
 
     @property
     def migration_center_custom_endpoint(self) -> Optional[str]:

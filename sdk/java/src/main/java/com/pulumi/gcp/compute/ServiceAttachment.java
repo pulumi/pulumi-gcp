@@ -13,6 +13,7 @@ import com.pulumi.gcp.compute.inputs.ServiceAttachmentState;
 import com.pulumi.gcp.compute.outputs.ServiceAttachmentConnectedEndpoint;
 import com.pulumi.gcp.compute.outputs.ServiceAttachmentConsumerAcceptList;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -732,6 +733,28 @@ public class ServiceAttachment extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * The number of consumer spokes that connected Private Service Connect endpoints can be propagated to through Network Connectivity Center.
+     * This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.
+     * If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list.
+     * If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
+     * If unspecified, the default propagated connection limit is 250.
+     * 
+     */
+    @Export(name="propagatedConnectionLimit", refs={Integer.class}, tree="[0]")
+    private Output<Integer> propagatedConnectionLimit;
+
+    /**
+     * @return The number of consumer spokes that connected Private Service Connect endpoints can be propagated to through Network Connectivity Center.
+     * This limit lets the service producer limit how many propagated Private Service Connect connections can be established to this service attachment from a single consumer.
+     * If the connection preference of the service attachment is ACCEPT_MANUAL, the limit applies to each project or network that is listed in the consumer accept list.
+     * If the connection preference of the service attachment is ACCEPT_AUTOMATIC, the limit applies to each project that contains a connected endpoint.
+     * If unspecified, the default propagated connection limit is 250.
+     * 
+     */
+    public Output<Integer> propagatedConnectionLimit() {
+        return this.propagatedConnectionLimit;
     }
     /**
      * This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.

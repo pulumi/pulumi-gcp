@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Dataproc
     /// {
     ///     var defaultMetastoreService = new Gcp.Dataproc.MetastoreService("default", new()
     ///     {
-    ///         ServiceId = "",
+    ///         ServiceId = "metastore-service",
     ///         Location = "us-central1",
     ///         Tier = "DEVELOPER",
     ///         HiveMetastoreConfig = new Gcp.Dataproc.Inputs.MetastoreServiceHiveMetastoreConfigArgs
@@ -39,7 +39,7 @@ namespace Pulumi.Gcp.Dataproc
     ///     var @default = new Gcp.Dataproc.MetastoreFederation("default", new()
     ///     {
     ///         Location = "us-central1",
-    ///         FederationId = "",
+    ///         FederationId = "metastore-fed",
     ///         Version = "3.1.2",
     ///         BackendMetastores = new[]
     ///         {
@@ -66,7 +66,7 @@ namespace Pulumi.Gcp.Dataproc
     /// {
     ///     var defaultMetastoreService = new Gcp.Dataproc.MetastoreService("default", new()
     ///     {
-    ///         ServiceId = "",
+    ///         ServiceId = "metastore-service",
     ///         Location = "us-central1",
     ///         Tier = "DEVELOPER",
     ///         HiveMetastoreConfig = new Gcp.Dataproc.Inputs.MetastoreServiceHiveMetastoreConfigArgs
@@ -81,7 +81,7 @@ namespace Pulumi.Gcp.Dataproc
     ///     var @default = new Gcp.Dataproc.MetastoreFederation("default", new()
     ///     {
     ///         Location = "us-central1",
-    ///         FederationId = "",
+    ///         FederationId = "metastore-fed",
     ///         Version = "3.1.2",
     ///         BackendMetastores = new[]
     ///         {

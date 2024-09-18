@@ -908,6 +908,7 @@ class MetastoreService(pulumi.CustomResource):
         default = gcp.dataproc.MetastoreService("default",
             service_id="metastore-srv",
             location="us-central1",
+            tier="DEVELOPER",
             hive_metastore_config={
                 "version": "3.1.2",
             },
@@ -1247,6 +1248,7 @@ class MetastoreService(pulumi.CustomResource):
         default = gcp.dataproc.MetastoreService("default",
             service_id="metastore-srv",
             location="us-central1",
+            tier="DEVELOPER",
             hive_metastore_config={
                 "version": "3.1.2",
             },

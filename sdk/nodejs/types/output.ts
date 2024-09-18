@@ -6119,6 +6119,17 @@ export namespace bigquery {
         externalSource: string;
     }
 
+    export interface GetTablesTable {
+        /**
+         * User-provided table labels, in key/value pairs.
+         */
+        labels: {[key: string]: string};
+        /**
+         * The name of the table.
+         */
+        tableId: string;
+    }
+
     export interface IamBindingCondition {
         description?: string;
         expression: string;
@@ -23476,6 +23487,10 @@ export namespace compute {
          */
         resourceManagerTags: {[key: string]: string};
         /**
+         * A list of selfLinks to resource policies attached to the selected `bootDisk`
+         */
+        resourcePolicies: string[];
+        /**
          * The size of the image in gigabytes.
          */
         size: number;
@@ -26893,6 +26908,10 @@ export namespace compute {
          */
         resourceManagerTags?: {[key: string]: string};
         /**
+         * A list of selfLinks of resource policies to attach to the instance's boot disk. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+         */
+        resourcePolicies?: string;
+        /**
          * The size of the image in gigabytes. If not specified, it
          * will inherit the size of its base image.
          */
@@ -27027,6 +27046,10 @@ export namespace compute {
          * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
          */
         resourceManagerTags: {[key: string]: string};
+        /**
+         * A list of selfLinks of resource policies to attach to the instance's boot disk. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+         */
+        resourcePolicies: string;
         /**
          * The size of the image in gigabytes.
          */
@@ -27465,6 +27488,10 @@ export namespace compute {
          * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
          */
         resourceManagerTags: {[key: string]: string};
+        /**
+         * A list of selfLinks of resource policies to attach to the instance's boot disk. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+         */
+        resourcePolicies: string;
         /**
          * The size of the image in gigabytes.
          */
@@ -29286,6 +29313,429 @@ export namespace compute {
         name: string;
         /**
          * [Output Only] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
+         */
+        state: string;
+    }
+
+    export interface NetworkFirewallPolicyWithRulesPredefinedRule {
+        /**
+         * (Output)
+         * The Action to perform when the client connection triggers the rule. Can currently be either
+         * "allow", "deny", "applySecurityProfileGroup" or "gotoNext".
+         */
+        action: string;
+        /**
+         * (Output)
+         * A description of the rule.
+         */
+        description: string;
+        /**
+         * (Output)
+         * The direction in which this rule applies. If unspecified an INGRESS rule is created.
+         */
+        direction: string;
+        /**
+         * (Output)
+         * Denotes whether the firewall policy rule is disabled. When set to true,
+         * the firewall policy rule is not enforced and traffic behaves as if it did
+         * not exist. If this is unspecified, the firewall policy rule will be
+         * enabled.
+         */
+        disabled: boolean;
+        /**
+         * (Output)
+         * Denotes whether to enable logging for a particular rule.
+         * If logging is enabled, logs will be exported to the
+         * configured export destination in Stackdriver.
+         */
+        enableLogging: boolean;
+        /**
+         * (Output)
+         * A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+         * Structure is documented below.
+         */
+        matches: outputs.compute.NetworkFirewallPolicyWithRulesPredefinedRuleMatch[];
+        /**
+         * (Output)
+         * An integer indicating the priority of a rule in the list. The priority must be a value
+         * between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
+         * highest priority and 2147483647 is the lowest priority.
+         */
+        priority: number;
+        /**
+         * (Output)
+         * An optional name for the rule. This field is not a unique identifier
+         * and can be updated.
+         */
+        ruleName: string;
+        /**
+         * (Output)
+         * A fully-qualified URL of a SecurityProfile resource instance.
+         * Example:
+         * https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+         * Must be specified if action is 'apply_security_profile_group'.
+         */
+        securityProfileGroup: string;
+        /**
+         * (Output)
+         * A list of secure tags that controls which instances the firewall rule
+         * applies to. If <code>targetSecureTag</code> are specified, then the
+         * firewall rule applies only to instances in the VPC network that have one
+         * of those EFFECTIVE secure tags, if all the targetSecureTag are in
+         * INEFFECTIVE state, then this rule will be ignored.
+         * <code>targetSecureTag</code> may not be set at the same time as
+         * <code>targetServiceAccounts</code>.
+         * If neither <code>targetServiceAccounts</code> nor
+         * <code>targetSecureTag</code> are specified, the firewall rule applies
+         * to all instances on the specified network.
+         * Maximum number of target label tags allowed is 256.
+         * Structure is documented below.
+         */
+        targetSecureTags: outputs.compute.NetworkFirewallPolicyWithRulesPredefinedRuleTargetSecureTag[];
+        /**
+         * (Output)
+         * A list of service accounts indicating the sets of
+         * instances that are applied with this rule.
+         */
+        targetServiceAccounts: string[];
+        /**
+         * (Output)
+         * Boolean flag indicating if the traffic should be TLS decrypted.
+         * It can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
+         */
+        tlsInspect: boolean;
+    }
+
+    export interface NetworkFirewallPolicyWithRulesPredefinedRuleMatch {
+        /**
+         * Address groups which should be matched against the traffic destination.
+         * Maximum number of destination address groups is 10.
+         */
+        destAddressGroups: string[];
+        /**
+         * Fully Qualified Domain Name (FQDN) which should be matched against
+         * traffic destination. Maximum number of destination fqdn allowed is 100.
+         */
+        destFqdns: string[];
+        /**
+         * Destination IP address range in CIDR format. Required for
+         * EGRESS rules.
+         */
+        destIpRanges: string[];
+        /**
+         * Region codes whose IP addresses will be used to match for destination
+         * of traffic. Should be specified as 2 letter country code defined as per
+         * ISO 3166 alpha-2 country codes. ex."US"
+         * Maximum number of destination region codes allowed is 5000.
+         */
+        destRegionCodes: string[];
+        /**
+         * Names of Network Threat Intelligence lists.
+         * The IPs in these lists will be matched against traffic destination.
+         */
+        destThreatIntelligences: string[];
+        /**
+         * Pairs of IP protocols and ports that the rule should match.
+         * Structure is documented below.
+         */
+        layer4Configs: outputs.compute.NetworkFirewallPolicyWithRulesPredefinedRuleMatchLayer4Config[];
+        /**
+         * Address groups which should be matched against the traffic source.
+         * Maximum number of source address groups is 10.
+         */
+        srcAddressGroups: string[];
+        /**
+         * Fully Qualified Domain Name (FQDN) which should be matched against
+         * traffic source. Maximum number of source fqdn allowed is 100.
+         */
+        srcFqdns: string[];
+        /**
+         * Source IP address range in CIDR format. Required for
+         * INGRESS rules.
+         */
+        srcIpRanges: string[];
+        /**
+         * Region codes whose IP addresses will be used to match for source
+         * of traffic. Should be specified as 2 letter country code defined as per
+         * ISO 3166 alpha-2 country codes. ex."US"
+         * Maximum number of source region codes allowed is 5000.
+         */
+        srcRegionCodes: string[];
+        /**
+         * List of secure tag values, which should be matched at the source
+         * of the traffic.
+         * For INGRESS rule, if all the <code>srcSecureTag</code> are INEFFECTIVE,
+         * and there is no <code>srcIpRange</code>, this rule will be ignored.
+         * Maximum number of source tag values allowed is 256.
+         * Structure is documented below.
+         *
+         *
+         * <a name="nestedLayer4Config"></a>The `layer4Config` block supports:
+         */
+        srcSecureTags: outputs.compute.NetworkFirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTag[];
+        /**
+         * Names of Network Threat Intelligence lists.
+         * The IPs in these lists will be matched against traffic source.
+         */
+        srcThreatIntelligences: string[];
+    }
+
+    export interface NetworkFirewallPolicyWithRulesPredefinedRuleMatchLayer4Config {
+        /**
+         * (Output)
+         * The IP protocol to which this rule applies. The protocol
+         * type is required when creating a firewall rule.
+         * This value can either be one of the following well
+         * known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp),
+         * or the IP protocol number.
+         */
+        ipProtocol: string;
+        /**
+         * (Output)
+         * An optional list of ports to which this rule applies. This field
+         * is only applicable for UDP or TCP protocol. Each entry must be
+         * either an integer or a range. If not specified, this rule
+         * applies to connections through any port.
+         * Example inputs include: ["22"], ["80","443"], and
+         * ["12345-12349"].
+         */
+        ports: string[];
+    }
+
+    export interface NetworkFirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTag {
+        /**
+         * Name of the secure tag, created with TagManager's TagValue API.
+         * @pattern tagValues/[0-9]+
+         */
+        name: string;
+        /**
+         * (Output)
+         * [Output Only] State of the secure tag, either `EFFECTIVE` or
+         * `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
+         * or its network is deleted.
+         */
+        state: string;
+    }
+
+    export interface NetworkFirewallPolicyWithRulesPredefinedRuleTargetSecureTag {
+        /**
+         * Name of the secure tag, created with TagManager's TagValue API.
+         * @pattern tagValues/[0-9]+
+         */
+        name: string;
+        /**
+         * (Output)
+         * [Output Only] State of the secure tag, either `EFFECTIVE` or
+         * `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
+         * or its network is deleted.
+         *
+         * - - -
+         */
+        state: string;
+    }
+
+    export interface NetworkFirewallPolicyWithRulesRule {
+        /**
+         * The Action to perform when the client connection triggers the rule. Can currently be either
+         * "allow", "deny", "applySecurityProfileGroup" or "gotoNext".
+         */
+        action: string;
+        /**
+         * A description of the rule.
+         */
+        description?: string;
+        /**
+         * The direction in which this rule applies. If unspecified an INGRESS rule is created.
+         * Possible values are: `INGRESS`, `EGRESS`.
+         */
+        direction?: string;
+        /**
+         * Denotes whether the firewall policy rule is disabled. When set to true,
+         * the firewall policy rule is not enforced and traffic behaves as if it did
+         * not exist. If this is unspecified, the firewall policy rule will be
+         * enabled.
+         */
+        disabled?: boolean;
+        /**
+         * Denotes whether to enable logging for a particular rule.
+         * If logging is enabled, logs will be exported to the
+         * configured export destination in Stackdriver.
+         */
+        enableLogging?: boolean;
+        /**
+         * A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+         * Structure is documented below.
+         */
+        match: outputs.compute.NetworkFirewallPolicyWithRulesRuleMatch;
+        /**
+         * An integer indicating the priority of a rule in the list. The priority must be a value
+         * between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
+         * highest priority and 2147483647 is the lowest priority.
+         */
+        priority: number;
+        /**
+         * An optional name for the rule. This field is not a unique identifier
+         * and can be updated.
+         */
+        ruleName?: string;
+        /**
+         * A fully-qualified URL of a SecurityProfile resource instance.
+         * Example:
+         * https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+         * Must be specified if action is 'apply_security_profile_group'.
+         */
+        securityProfileGroup?: string;
+        /**
+         * A list of secure tags that controls which instances the firewall rule
+         * applies to. If <code>targetSecureTag</code> are specified, then the
+         * firewall rule applies only to instances in the VPC network that have one
+         * of those EFFECTIVE secure tags, if all the targetSecureTag are in
+         * INEFFECTIVE state, then this rule will be ignored.
+         * <code>targetSecureTag</code> may not be set at the same time as
+         * <code>targetServiceAccounts</code>.
+         * If neither <code>targetServiceAccounts</code> nor
+         * <code>targetSecureTag</code> are specified, the firewall rule applies
+         * to all instances on the specified network.
+         * Maximum number of target label tags allowed is 256.
+         * Structure is documented below.
+         */
+        targetSecureTags?: outputs.compute.NetworkFirewallPolicyWithRulesRuleTargetSecureTag[];
+        /**
+         * A list of service accounts indicating the sets of
+         * instances that are applied with this rule.
+         */
+        targetServiceAccounts?: string[];
+        /**
+         * Boolean flag indicating if the traffic should be TLS decrypted.
+         * It can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
+         */
+        tlsInspect?: boolean;
+    }
+
+    export interface NetworkFirewallPolicyWithRulesRuleMatch {
+        /**
+         * Address groups which should be matched against the traffic destination.
+         * Maximum number of destination address groups is 10.
+         */
+        destAddressGroups?: string[];
+        /**
+         * Fully Qualified Domain Name (FQDN) which should be matched against
+         * traffic destination. Maximum number of destination fqdn allowed is 100.
+         */
+        destFqdns?: string[];
+        /**
+         * Destination IP address range in CIDR format. Required for
+         * EGRESS rules.
+         */
+        destIpRanges?: string[];
+        /**
+         * Region codes whose IP addresses will be used to match for destination
+         * of traffic. Should be specified as 2 letter country code defined as per
+         * ISO 3166 alpha-2 country codes. ex."US"
+         * Maximum number of destination region codes allowed is 5000.
+         */
+        destRegionCodes?: string[];
+        /**
+         * Names of Network Threat Intelligence lists.
+         * The IPs in these lists will be matched against traffic destination.
+         */
+        destThreatIntelligences?: string[];
+        /**
+         * Pairs of IP protocols and ports that the rule should match.
+         * Structure is documented below.
+         */
+        layer4Configs: outputs.compute.NetworkFirewallPolicyWithRulesRuleMatchLayer4Config[];
+        /**
+         * Address groups which should be matched against the traffic source.
+         * Maximum number of source address groups is 10.
+         */
+        srcAddressGroups?: string[];
+        /**
+         * Fully Qualified Domain Name (FQDN) which should be matched against
+         * traffic source. Maximum number of source fqdn allowed is 100.
+         */
+        srcFqdns?: string[];
+        /**
+         * Source IP address range in CIDR format. Required for
+         * INGRESS rules.
+         */
+        srcIpRanges?: string[];
+        /**
+         * Region codes whose IP addresses will be used to match for source
+         * of traffic. Should be specified as 2 letter country code defined as per
+         * ISO 3166 alpha-2 country codes. ex."US"
+         * Maximum number of source region codes allowed is 5000.
+         */
+        srcRegionCodes?: string[];
+        /**
+         * List of secure tag values, which should be matched at the source
+         * of the traffic.
+         * For INGRESS rule, if all the <code>srcSecureTag</code> are INEFFECTIVE,
+         * and there is no <code>srcIpRange</code>, this rule will be ignored.
+         * Maximum number of source tag values allowed is 256.
+         * Structure is documented below.
+         *
+         *
+         * <a name="nestedLayer4Config"></a>The `layer4Config` block supports:
+         */
+        srcSecureTags?: outputs.compute.NetworkFirewallPolicyWithRulesRuleMatchSrcSecureTag[];
+        /**
+         * Names of Network Threat Intelligence lists.
+         * The IPs in these lists will be matched against traffic source.
+         */
+        srcThreatIntelligences?: string[];
+    }
+
+    export interface NetworkFirewallPolicyWithRulesRuleMatchLayer4Config {
+        /**
+         * (Output)
+         * The IP protocol to which this rule applies. The protocol
+         * type is required when creating a firewall rule.
+         * This value can either be one of the following well
+         * known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp),
+         * or the IP protocol number.
+         */
+        ipProtocol: string;
+        /**
+         * (Output)
+         * An optional list of ports to which this rule applies. This field
+         * is only applicable for UDP or TCP protocol. Each entry must be
+         * either an integer or a range. If not specified, this rule
+         * applies to connections through any port.
+         * Example inputs include: ["22"], ["80","443"], and
+         * ["12345-12349"].
+         */
+        ports?: string[];
+    }
+
+    export interface NetworkFirewallPolicyWithRulesRuleMatchSrcSecureTag {
+        /**
+         * Name of the secure tag, created with TagManager's TagValue API.
+         * @pattern tagValues/[0-9]+
+         */
+        name?: string;
+        /**
+         * (Output)
+         * [Output Only] State of the secure tag, either `EFFECTIVE` or
+         * `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
+         * or its network is deleted.
+         */
+        state: string;
+    }
+
+    export interface NetworkFirewallPolicyWithRulesRuleTargetSecureTag {
+        /**
+         * Name of the secure tag, created with TagManager's TagValue API.
+         * @pattern tagValues/[0-9]+
+         */
+        name?: string;
+        /**
+         * (Output)
+         * [Output Only] State of the secure tag, either `EFFECTIVE` or
+         * `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
+         * or its network is deleted.
+         *
+         * - - -
          */
         state: string;
     }
@@ -35329,9 +35779,24 @@ export namespace compute {
     export interface ServiceAttachmentConnectedEndpoint {
         /**
          * (Output)
+         * The url of the consumer network.
+         */
+        consumerNetwork: string;
+        /**
+         * (Output)
          * The URL of the consumer forwarding rule.
          */
         endpoint: string;
+        /**
+         * (Output, Beta)
+         * The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to.
+         */
+        propagatedConnectionCount: number;
+        /**
+         * (Output)
+         * The PSC connection id of the connected endpoint.
+         */
+        pscConnectionId: string;
         /**
          * (Output)
          * The status of the connection from the consumer forwarding rule to
@@ -37761,6 +38226,14 @@ export namespace container {
         namespace: string;
     }
 
+    export interface AttachedClusterSecurityPostureConfig {
+        /**
+         * Sets the mode of the Kubernetes security posture API's workload vulnerability scanning.
+         * Possible values are: `VULNERABILITY_DISABLED`, `VULNERABILITY_ENTERPRISE`.
+         */
+        vulnerabilityMode: string;
+    }
+
     export interface AttachedClusterWorkloadIdentityConfig {
         /**
          * The ID of the OIDC Identity Provider (IdP) associated to
@@ -39494,6 +39967,10 @@ export namespace container {
          */
         spot?: boolean;
         /**
+         * The list of Storage Pools where boot disks are provisioned.
+         */
+        storagePools?: string[];
+        /**
          * The list of instance tags applied to all nodes. Tags are used to identify
          * valid sources or targets for network firewalls.
          */
@@ -40343,6 +40820,10 @@ export namespace container {
          * for more information. Defaults to false.
          */
         spot?: boolean;
+        /**
+         * The list of Storage Pools where boot disks are provisioned.
+         */
+        storagePools?: string[];
         /**
          * The list of instance tags applied to all nodes. Tags are used to identify
          * valid sources or targets for network firewalls.
@@ -41747,6 +42228,10 @@ export namespace container {
          */
         spot: boolean;
         /**
+         * The list of Storage Pools where boot disks are provisioned.
+         */
+        storagePools: string[];
+        /**
          * The list of instance tags applied to all nodes.
          */
         tags: string[];
@@ -42458,6 +42943,10 @@ export namespace container {
          * Whether the nodes are created as spot VM instances.
          */
         spot: boolean;
+        /**
+         * The list of Storage Pools where boot disks are provisioned.
+         */
+        storagePools: string[];
         /**
          * The list of instance tags applied to all nodes.
          */
@@ -43284,6 +43773,10 @@ export namespace container {
          * Whether the nodes are created as spot VM instances.
          */
         spot?: boolean;
+        /**
+         * The list of Storage Pools where boot disks are provisioned.
+         */
+        storagePools?: string[];
         /**
          * The list of instance tags applied to all nodes.
          */
@@ -56073,6 +56566,74 @@ export namespace deploymentmanager {
 
 }
 
+export namespace developerconnect {
+    export interface ConnectionGithubConfig {
+        /**
+         * Optional. GitHub App installation id.
+         */
+        appInstallationId?: string;
+        /**
+         * Represents an OAuth token of the account that authorized the Connection,
+         * and associated metadata.
+         * Structure is documented below.
+         */
+        authorizerCredential?: outputs.developerconnect.ConnectionGithubConfigAuthorizerCredential;
+        /**
+         * Required. Immutable. The GitHub Application that was installed to the GitHub user or
+         * organization.
+         * Possible values:
+         * GIT_HUB_APP_UNSPECIFIED
+         * DEVELOPER_CONNECT
+         * FIREBASE
+         */
+        githubApp: string;
+        /**
+         * (Output)
+         * Output only. The URI to navigate to in order to manage the installation associated
+         * with this GitHubConfig.
+         */
+        installationUri: string;
+    }
+
+    export interface ConnectionGithubConfigAuthorizerCredential {
+        /**
+         * Required. A SecretManager resource containing the OAuth token that authorizes
+         * the connection. Format: `projects/*&#47;secrets/*&#47;versions/*`.
+         */
+        oauthTokenSecretVersion: string;
+        /**
+         * (Output)
+         * Output only. The username associated with this token.
+         */
+        username: string;
+    }
+
+    export interface ConnectionInstallationState {
+        /**
+         * Output only. Link to follow for next action. Empty string if the installation is already
+         * complete.
+         */
+        actionUri?: string;
+        /**
+         * Output only. Message of what the user should do next to continue the installation.
+         * Empty string if the installation is already complete.
+         */
+        message?: string;
+        /**
+         * (Output)
+         * Output only. Current step of the installation process.
+         * Possible values:
+         * STAGE_UNSPECIFIED
+         * PENDING_CREATE_APP
+         * PENDING_USER_OAUTH
+         * PENDING_INSTALL_APP
+         * COMPLETE
+         */
+        stage: string;
+    }
+
+}
+
 export namespace diagflow {
     export interface CxAgentAdvancedSettings {
         /**
@@ -64178,7 +64739,7 @@ export namespace gkeonprem {
         image?: string;
         /**
          * The OS image to be used for each node in a node pool.
-         * Currently `cos`, `ubuntu`, `ubuntuContainerd` and `windows` are supported.
+         * Currently `cos`, `cosCgv2`, `ubuntu`, `ubuntuCgv2`, `ubuntuContainerd` and `windows` are supported.
          */
         imageType: string;
         /**
@@ -67919,6 +68480,171 @@ export namespace memcache {
          * - - -
          */
         memorySizeMb: number;
+    }
+
+}
+
+export namespace memorystore {
+    export interface InstanceDesiredPscAutoConnection {
+        /**
+         * (Output)
+         * Output only. The consumer network where the IP address resides, in the form of
+         * projects/{project_id}/global/networks/{network_id}.
+         */
+        network: string;
+        /**
+         * (Output)
+         * Output only. The consumer projectId where the forwarding rule is created from.
+         */
+        projectId: string;
+    }
+
+    export interface InstanceDiscoveryEndpoint {
+        /**
+         * (Output)
+         * Output only. IP address of the exposed endpoint clients connect to.
+         */
+        address: string;
+        /**
+         * (Output)
+         * Output only. The consumer network where the IP address resides, in the form of
+         * projects/{project_id}/global/networks/{network_id}.
+         */
+        network: string;
+        /**
+         * (Output)
+         * Output only. The port number of the exposed endpoint.
+         */
+        port: number;
+    }
+
+    export interface InstanceNodeConfig {
+        /**
+         * (Output)
+         * Output only. Memory size in GB of the node.
+         */
+        sizeGb: number;
+    }
+
+    export interface InstancePersistenceConfig {
+        /**
+         * Configuration for AOF based persistence.
+         * Structure is documented below.
+         */
+        aofConfig: outputs.memorystore.InstancePersistenceConfigAofConfig;
+        /**
+         * Optional. Current persistence mode.
+         * Possible values:
+         * DISABLED
+         * RDB
+         * AOF
+         * Possible values are: `DISABLED`, `RDB`, `AOF`.
+         */
+        mode: string;
+        /**
+         * Configuration for RDB based persistence.
+         * Structure is documented below.
+         */
+        rdbConfig: outputs.memorystore.InstancePersistenceConfigRdbConfig;
+    }
+
+    export interface InstancePersistenceConfigAofConfig {
+        /**
+         * Optional. The fsync mode.
+         * Possible values:
+         * NEVER
+         * EVERY_SEC
+         * ALWAYS
+         */
+        appendFsync: string;
+    }
+
+    export interface InstancePersistenceConfigRdbConfig {
+        /**
+         * Optional. Period between RDB snapshots.
+         * Possible values:
+         * ONE_HOUR
+         * SIX_HOURS
+         * TWELVE_HOURS
+         * TWENTY_FOUR_HOURS
+         */
+        rdbSnapshotPeriod: string;
+        /**
+         * Optional. Time that the first snapshot was/will be attempted, and to which future
+         * snapshots will be aligned. If not provided, the current time will be
+         * used.
+         */
+        rdbSnapshotStartTime: string;
+    }
+
+    export interface InstancePscAutoConnection {
+        /**
+         * (Output)
+         * Output only. The URI of the consumer side forwarding rule.
+         * Format:
+         * projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
+         */
+        forwardingRule: string;
+        /**
+         * (Output)
+         * Output only. The IP allocated on the consumer network for the PSC forwarding rule.
+         */
+        ipAddress: string;
+        /**
+         * (Output)
+         * Output only. The consumer network where the IP address resides, in the form of
+         * projects/{project_id}/global/networks/{network_id}.
+         */
+        network: string;
+        /**
+         * (Output)
+         * Output only. The consumer projectId where the forwarding rule is created from.
+         */
+        projectId: string;
+        /**
+         * (Output)
+         * Output only. The PSC connection id of the forwarding rule connected to the
+         * service attachment.
+         */
+        pscConnectionId: string;
+    }
+
+    export interface InstanceStateInfo {
+        /**
+         * (Output)
+         * Represents information about instance with state UPDATING.
+         * Structure is documented below.
+         */
+        updateInfos: outputs.memorystore.InstanceStateInfoUpdateInfo[];
+    }
+
+    export interface InstanceStateInfoUpdateInfo {
+        /**
+         * (Output)
+         * Output only. Target number of replica nodes per shard for the instance.
+         */
+        targetReplicaCount: number;
+        /**
+         * (Output)
+         * Output only. Target number of shards for the instance.
+         */
+        targetShardCount: number;
+    }
+
+    export interface InstanceZoneDistributionConfig {
+        /**
+         * Optional. Current zone distribution mode. Defaults to MULTI_ZONE.
+         * Possible values:
+         * MULTI_ZONE
+         * SINGLE_ZONE
+         * Possible values are: `MULTI_ZONE`, `SINGLE_ZONE`.
+         */
+        mode: string;
+        /**
+         * Optional. Defines zone where all resources will be allocated with SINGLE_ZONE mode.
+         * Ignored for MULTI_ZONE mode.
+         */
+        zone?: string;
     }
 
 }

@@ -18,11 +18,14 @@ import com.pulumi.gcp.bigquery.inputs.GetDefaultServiceAccountArgs;
 import com.pulumi.gcp.bigquery.inputs.GetDefaultServiceAccountPlainArgs;
 import com.pulumi.gcp.bigquery.inputs.GetTableIamPolicyArgs;
 import com.pulumi.gcp.bigquery.inputs.GetTableIamPolicyPlainArgs;
+import com.pulumi.gcp.bigquery.inputs.GetTablesArgs;
+import com.pulumi.gcp.bigquery.inputs.GetTablesPlainArgs;
 import com.pulumi.gcp.bigquery.outputs.GetConnectionIamPolicyResult;
 import com.pulumi.gcp.bigquery.outputs.GetDatasetIamPolicyResult;
 import com.pulumi.gcp.bigquery.outputs.GetDatasetResult;
 import com.pulumi.gcp.bigquery.outputs.GetDefaultServiceAccountResult;
 import com.pulumi.gcp.bigquery.outputs.GetTableIamPolicyResult;
+import com.pulumi.gcp.bigquery.outputs.GetTablesResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class BigqueryFunctions {
@@ -1061,5 +1064,185 @@ public final class BigqueryFunctions {
      */
     public static CompletableFuture<GetTableIamPolicyResult> getTableIamPolicyPlain(GetTableIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:bigquery/getTableIamPolicy:getTableIamPolicy", TypeShape.of(GetTableIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get a list of tables in a BigQuery dataset. For more information see
+     * the [official documentation](https://cloud.google.com/bigquery/docs)
+     * and [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.bigquery.BigqueryFunctions;
+     * import com.pulumi.gcp.bigquery.inputs.GetTablesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var tables = BigqueryFunctions.getTables(GetTablesArgs.builder()
+     *             .datasetId("my-bq-dataset")
+     *             .project("my-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetTablesResult> getTables(GetTablesArgs args) {
+        return getTables(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get a list of tables in a BigQuery dataset. For more information see
+     * the [official documentation](https://cloud.google.com/bigquery/docs)
+     * and [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.bigquery.BigqueryFunctions;
+     * import com.pulumi.gcp.bigquery.inputs.GetTablesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var tables = BigqueryFunctions.getTables(GetTablesArgs.builder()
+     *             .datasetId("my-bq-dataset")
+     *             .project("my-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetTablesResult> getTablesPlain(GetTablesPlainArgs args) {
+        return getTablesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get a list of tables in a BigQuery dataset. For more information see
+     * the [official documentation](https://cloud.google.com/bigquery/docs)
+     * and [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.bigquery.BigqueryFunctions;
+     * import com.pulumi.gcp.bigquery.inputs.GetTablesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var tables = BigqueryFunctions.getTables(GetTablesArgs.builder()
+     *             .datasetId("my-bq-dataset")
+     *             .project("my-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetTablesResult> getTables(GetTablesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:bigquery/getTables:getTables", TypeShape.of(GetTablesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get a list of tables in a BigQuery dataset. For more information see
+     * the [official documentation](https://cloud.google.com/bigquery/docs)
+     * and [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.bigquery.BigqueryFunctions;
+     * import com.pulumi.gcp.bigquery.inputs.GetTablesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var tables = BigqueryFunctions.getTables(GetTablesArgs.builder()
+     *             .datasetId("my-bq-dataset")
+     *             .project("my-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetTablesResult> getTablesPlain(GetTablesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:bigquery/getTables:getTables", TypeShape.of(GetTablesResult.class), args, Utilities.withVersion(options));
     }
 }

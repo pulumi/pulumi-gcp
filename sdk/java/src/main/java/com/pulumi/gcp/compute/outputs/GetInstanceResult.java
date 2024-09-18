@@ -136,6 +136,10 @@ public final class GetInstanceResult {
     private @Nullable String project;
     private Map<String,String> pulumiLabels;
     private List<GetInstanceReservationAffinity> reservationAffinities;
+    /**
+     * @return A list of self_links to resource policies attached to the selected `boot_disk`
+     * 
+     */
     private List<String> resourcePolicies;
     /**
      * @return The scheduling strategy being used by the instance. Structure is documented below
@@ -347,6 +351,10 @@ public final class GetInstanceResult {
     public List<GetInstanceReservationAffinity> reservationAffinities() {
         return this.reservationAffinities;
     }
+    /**
+     * @return A list of self_links to resource policies attached to the selected `boot_disk`
+     * 
+     */
     public List<String> resourcePolicies() {
         return this.resourcePolicies;
     }

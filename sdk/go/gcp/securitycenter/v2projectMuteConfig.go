@@ -39,7 +39,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := securitycenter.NewV2ProjectMuteConfig(ctx, "default", &securitycenter.V2ProjectMuteConfigArgs{
 //				MuteConfigId: pulumi.String("my-config"),
-//				Project:      pulumi.String(""),
+//				Project:      pulumi.String("my-project-name"),
 //				Location:     pulumi.String("global"),
 //				Description:  pulumi.String("My custom Cloud Security Command Center Finding Project mute Configuration"),
 //				Filter:       pulumi.String("severity = \"HIGH\""),

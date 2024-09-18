@@ -13,6 +13,7 @@ import com.pulumi.gcp.container.inputs.AttachedClusterLoggingConfigArgs;
 import com.pulumi.gcp.container.inputs.AttachedClusterMonitoringConfigArgs;
 import com.pulumi.gcp.container.inputs.AttachedClusterOidcConfigArgs;
 import com.pulumi.gcp.container.inputs.AttachedClusterProxyConfigArgs;
+import com.pulumi.gcp.container.inputs.AttachedClusterSecurityPostureConfigArgs;
 import com.pulumi.gcp.container.inputs.AttachedClusterWorkloadIdentityConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -367,6 +368,21 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Enable/Disable Security Posture API features for the cluster.
+     * 
+     */
+    @Import(name="securityPostureConfig")
+    private @Nullable Output<AttachedClusterSecurityPostureConfigArgs> securityPostureConfig;
+
+    /**
+     * @return Enable/Disable Security Posture API features for the cluster.
+     * 
+     */
+    public Optional<Output<AttachedClusterSecurityPostureConfigArgs>> securityPostureConfig() {
+        return Optional.ofNullable(this.securityPostureConfig);
+    }
+
+    /**
      * The current state of the cluster. Possible values:
      * STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR,
      * DEGRADED
@@ -456,6 +472,7 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
         this.project = $.project;
         this.proxyConfig = $.proxyConfig;
         this.reconciling = $.reconciling;
+        this.securityPostureConfig = $.securityPostureConfig;
         this.state = $.state;
         this.uid = $.uid;
         this.updateTime = $.updateTime;
@@ -946,6 +963,27 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
          */
         public Builder reconciling(Boolean reconciling) {
             return reconciling(Output.of(reconciling));
+        }
+
+        /**
+         * @param securityPostureConfig Enable/Disable Security Posture API features for the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityPostureConfig(@Nullable Output<AttachedClusterSecurityPostureConfigArgs> securityPostureConfig) {
+            $.securityPostureConfig = securityPostureConfig;
+            return this;
+        }
+
+        /**
+         * @param securityPostureConfig Enable/Disable Security Posture API features for the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityPostureConfig(AttachedClusterSecurityPostureConfigArgs securityPostureConfig) {
+            return securityPostureConfig(Output.of(securityPostureConfig));
         }
 
         /**

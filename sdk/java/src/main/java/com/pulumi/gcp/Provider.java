@@ -413,6 +413,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> deploymentManagerCustomEndpoint() {
         return Codegen.optional(this.deploymentManagerCustomEndpoint);
     }
+    @Export(name="developerConnectCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> developerConnectCustomEndpoint;
+
+    public Output<Optional<String>> developerConnectCustomEndpoint() {
+        return Codegen.optional(this.developerConnectCustomEndpoint);
+    }
     @Export(name="dialogflowCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dialogflowCustomEndpoint;
 
@@ -658,6 +664,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
 
     public Output<Optional<String>> memcacheCustomEndpoint() {
         return Codegen.optional(this.memcacheCustomEndpoint);
+    }
+    @Export(name="memorystoreCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> memorystoreCustomEndpoint;
+
+    public Output<Optional<String>> memorystoreCustomEndpoint() {
+        return Codegen.optional(this.memorystoreCustomEndpoint);
     }
     @Export(name="migrationCenterCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> migrationCenterCustomEndpoint;

@@ -285,6 +285,18 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("spot")]
         public Input<bool>? Spot { get; set; }
 
+        [Input("storagePools")]
+        private InputList<string>? _storagePools;
+
+        /// <summary>
+        /// The list of Storage Pools where boot disks are provisioned.
+        /// </summary>
+        public InputList<string> StoragePools
+        {
+            get => _storagePools ?? (_storagePools = new InputList<string>());
+            set => _storagePools = value;
+        }
+
         [Input("tags")]
         private InputList<string>? _tags;
 

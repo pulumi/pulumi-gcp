@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -43,6 +44,11 @@ public final class GetInstanceBootDiskInitializeParam {
      * 
      */
     private Map<String,String> resourceManagerTags;
+    /**
+     * @return A list of self_links to resource policies attached to the selected `boot_disk`
+     * 
+     */
+    private List<String> resourcePolicies;
     /**
      * @return The size of the image in gigabytes.
      * 
@@ -103,6 +109,13 @@ public final class GetInstanceBootDiskInitializeParam {
         return this.resourceManagerTags;
     }
     /**
+     * @return A list of self_links to resource policies attached to the selected `boot_disk`
+     * 
+     */
+    public List<String> resourcePolicies() {
+        return this.resourcePolicies;
+    }
+    /**
      * @return The size of the image in gigabytes.
      * 
      */
@@ -139,6 +152,7 @@ public final class GetInstanceBootDiskInitializeParam {
         private Integer provisionedIops;
         private Integer provisionedThroughput;
         private Map<String,String> resourceManagerTags;
+        private List<String> resourcePolicies;
         private Integer size;
         private String storagePool;
         private String type;
@@ -151,6 +165,7 @@ public final class GetInstanceBootDiskInitializeParam {
     	      this.provisionedIops = defaults.provisionedIops;
     	      this.provisionedThroughput = defaults.provisionedThroughput;
     	      this.resourceManagerTags = defaults.resourceManagerTags;
+    	      this.resourcePolicies = defaults.resourcePolicies;
     	      this.size = defaults.size;
     	      this.storagePool = defaults.storagePool;
     	      this.type = defaults.type;
@@ -205,6 +220,17 @@ public final class GetInstanceBootDiskInitializeParam {
             return this;
         }
         @CustomType.Setter
+        public Builder resourcePolicies(List<String> resourcePolicies) {
+            if (resourcePolicies == null) {
+              throw new MissingRequiredPropertyException("GetInstanceBootDiskInitializeParam", "resourcePolicies");
+            }
+            this.resourcePolicies = resourcePolicies;
+            return this;
+        }
+        public Builder resourcePolicies(String... resourcePolicies) {
+            return resourcePolicies(List.of(resourcePolicies));
+        }
+        @CustomType.Setter
         public Builder size(Integer size) {
             if (size == null) {
               throw new MissingRequiredPropertyException("GetInstanceBootDiskInitializeParam", "size");
@@ -236,6 +262,7 @@ public final class GetInstanceBootDiskInitializeParam {
             _resultValue.provisionedIops = provisionedIops;
             _resultValue.provisionedThroughput = provisionedThroughput;
             _resultValue.resourceManagerTags = resourceManagerTags;
+            _resultValue.resourcePolicies = resourcePolicies;
             _resultValue.size = size;
             _resultValue.storagePool = storagePool;
             _resultValue.type = type;

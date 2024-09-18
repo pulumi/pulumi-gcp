@@ -127,6 +127,112 @@ import (
 //	}
 //
 // ```
+// ### Region Target Https Proxy Http Keep Alive Timeout
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			invokeFile, err := std.File(ctx, &std.FileArgs{
+//				Input: "path/to/private.key",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeFile1, err := std.File(ctx, &std.FileArgs{
+//				Input: "path/to/certificate.crt",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultRegionSslCertificate, err := compute.NewRegionSslCertificate(ctx, "default", &compute.RegionSslCertificateArgs{
+//				Region:      pulumi.String("us-central1"),
+//				Name:        pulumi.String("my-certificate"),
+//				PrivateKey:  pulumi.String(invokeFile.Result),
+//				Certificate: pulumi.String(invokeFile1.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultRegionHealthCheck, err := compute.NewRegionHealthCheck(ctx, "default", &compute.RegionHealthCheckArgs{
+//				Region: pulumi.String("us-central1"),
+//				Name:   pulumi.String("http-health-check"),
+//				HttpHealthCheck: &compute.RegionHealthCheckHttpHealthCheckArgs{
+//					Port: pulumi.Int(80),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultRegionBackendService, err := compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
+//				Region:              pulumi.String("us-central1"),
+//				Name:                pulumi.String("backend-service"),
+//				PortName:            pulumi.String("http"),
+//				Protocol:            pulumi.String("HTTP"),
+//				TimeoutSec:          pulumi.Int(10),
+//				LoadBalancingScheme: pulumi.String("INTERNAL_MANAGED"),
+//				HealthChecks:        defaultRegionHealthCheck.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultRegionUrlMap, err := compute.NewRegionUrlMap(ctx, "default", &compute.RegionUrlMapArgs{
+//				Region:         pulumi.String("us-central1"),
+//				Name:           pulumi.String("url-map"),
+//				Description:    pulumi.String("a description"),
+//				DefaultService: defaultRegionBackendService.ID(),
+//				HostRules: compute.RegionUrlMapHostRuleArray{
+//					&compute.RegionUrlMapHostRuleArgs{
+//						Hosts: pulumi.StringArray{
+//							pulumi.String("mysite.com"),
+//						},
+//						PathMatcher: pulumi.String("allpaths"),
+//					},
+//				},
+//				PathMatchers: compute.RegionUrlMapPathMatcherArray{
+//					&compute.RegionUrlMapPathMatcherArgs{
+//						Name:           pulumi.String("allpaths"),
+//						DefaultService: defaultRegionBackendService.ID(),
+//						PathRules: compute.RegionUrlMapPathMatcherPathRuleArray{
+//							&compute.RegionUrlMapPathMatcherPathRuleArgs{
+//								Paths: pulumi.StringArray{
+//									pulumi.String("/*"),
+//								},
+//								Service: defaultRegionBackendService.ID(),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewRegionTargetHttpsProxy(ctx, "default", &compute.RegionTargetHttpsProxyArgs{
+//				Region:                  pulumi.String("us-central1"),
+//				Name:                    pulumi.String("test-http-keep-alive-timeout-proxy"),
+//				HttpKeepAliveTimeoutSec: pulumi.Int(600),
+//				UrlMap:                  defaultRegionUrlMap.ID(),
+//				SslCertificates: pulumi.StringArray{
+//					defaultRegionSslCertificate.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Region Target Https Proxy Mtls
 //
 // ```go
@@ -413,6 +519,12 @@ type RegionTargetHttpsProxy struct {
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Specifies how long to keep a connection open, after completing a response,
+	// while there is no matching traffic (in seconds). If an HTTP keepalive is
+	// not specified, a default value (600 seconds) will be used. For Regioanl
+	// HTTP(S) load balancer, the minimum allowed value is 5 seconds and the
+	// maximum allowed value is 600 seconds.
+	HttpKeepAliveTimeoutSec pulumi.IntPtrOutput `pulumi:"httpKeepAliveTimeoutSec"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -501,6 +613,12 @@ type regionTargetHttpsProxyState struct {
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
+	// Specifies how long to keep a connection open, after completing a response,
+	// while there is no matching traffic (in seconds). If an HTTP keepalive is
+	// not specified, a default value (600 seconds) will be used. For Regioanl
+	// HTTP(S) load balancer, the minimum allowed value is 5 seconds and the
+	// maximum allowed value is 600 seconds.
+	HttpKeepAliveTimeoutSec *int `pulumi:"httpKeepAliveTimeoutSec"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -557,6 +675,12 @@ type RegionTargetHttpsProxyState struct {
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
+	// Specifies how long to keep a connection open, after completing a response,
+	// while there is no matching traffic (in seconds). If an HTTP keepalive is
+	// not specified, a default value (600 seconds) will be used. For Regioanl
+	// HTTP(S) load balancer, the minimum allowed value is 5 seconds and the
+	// maximum allowed value is 600 seconds.
+	HttpKeepAliveTimeoutSec pulumi.IntPtrInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -615,6 +739,12 @@ type regionTargetHttpsProxyArgs struct {
 	CertificateManagerCertificates []string `pulumi:"certificateManagerCertificates"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
+	// Specifies how long to keep a connection open, after completing a response,
+	// while there is no matching traffic (in seconds). If an HTTP keepalive is
+	// not specified, a default value (600 seconds) will be used. For Regioanl
+	// HTTP(S) load balancer, the minimum allowed value is 5 seconds and the
+	// maximum allowed value is 600 seconds.
+	HttpKeepAliveTimeoutSec *int `pulumi:"httpKeepAliveTimeoutSec"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -666,6 +796,12 @@ type RegionTargetHttpsProxyArgs struct {
 	CertificateManagerCertificates pulumi.StringArrayInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
+	// Specifies how long to keep a connection open, after completing a response,
+	// while there is no matching traffic (in seconds). If an HTTP keepalive is
+	// not specified, a default value (600 seconds) will be used. For Regioanl
+	// HTTP(S) load balancer, the minimum allowed value is 5 seconds and the
+	// maximum allowed value is 600 seconds.
+	HttpKeepAliveTimeoutSec pulumi.IntPtrInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -811,6 +947,15 @@ func (o RegionTargetHttpsProxyOutput) CreationTimestamp() pulumi.StringOutput {
 // An optional description of this resource.
 func (o RegionTargetHttpsProxyOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionTargetHttpsProxy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Specifies how long to keep a connection open, after completing a response,
+// while there is no matching traffic (in seconds). If an HTTP keepalive is
+// not specified, a default value (600 seconds) will be used. For Regioanl
+// HTTP(S) load balancer, the minimum allowed value is 5 seconds and the
+// maximum allowed value is 600 seconds.
+func (o RegionTargetHttpsProxyOutput) HttpKeepAliveTimeoutSec() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RegionTargetHttpsProxy) pulumi.IntPtrOutput { return v.HttpKeepAliveTimeoutSec }).(pulumi.IntPtrOutput)
 }
 
 // Name of the resource. Provided by the client when the resource is

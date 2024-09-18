@@ -83,6 +83,7 @@ type Provider struct {
 	DataprocMetastoreCustomEndpoint        pulumi.StringPtrOutput `pulumi:"dataprocMetastoreCustomEndpoint"`
 	DatastreamCustomEndpoint               pulumi.StringPtrOutput `pulumi:"datastreamCustomEndpoint"`
 	DeploymentManagerCustomEndpoint        pulumi.StringPtrOutput `pulumi:"deploymentManagerCustomEndpoint"`
+	DeveloperConnectCustomEndpoint         pulumi.StringPtrOutput `pulumi:"developerConnectCustomEndpoint"`
 	DialogflowCustomEndpoint               pulumi.StringPtrOutput `pulumi:"dialogflowCustomEndpoint"`
 	DialogflowCxCustomEndpoint             pulumi.StringPtrOutput `pulumi:"dialogflowCxCustomEndpoint"`
 	DiscoveryEngineCustomEndpoint          pulumi.StringPtrOutput `pulumi:"discoveryEngineCustomEndpoint"`
@@ -124,6 +125,7 @@ type Provider struct {
 	LookerCustomEndpoint                   pulumi.StringPtrOutput `pulumi:"lookerCustomEndpoint"`
 	ManagedKafkaCustomEndpoint             pulumi.StringPtrOutput `pulumi:"managedKafkaCustomEndpoint"`
 	MemcacheCustomEndpoint                 pulumi.StringPtrOutput `pulumi:"memcacheCustomEndpoint"`
+	MemorystoreCustomEndpoint              pulumi.StringPtrOutput `pulumi:"memorystoreCustomEndpoint"`
 	MigrationCenterCustomEndpoint          pulumi.StringPtrOutput `pulumi:"migrationCenterCustomEndpoint"`
 	MlEngineCustomEndpoint                 pulumi.StringPtrOutput `pulumi:"mlEngineCustomEndpoint"`
 	MonitoringCustomEndpoint               pulumi.StringPtrOutput `pulumi:"monitoringCustomEndpoint"`
@@ -292,6 +294,7 @@ type providerArgs struct {
 	DatastreamCustomEndpoint               *string           `pulumi:"datastreamCustomEndpoint"`
 	DefaultLabels                          map[string]string `pulumi:"defaultLabels"`
 	DeploymentManagerCustomEndpoint        *string           `pulumi:"deploymentManagerCustomEndpoint"`
+	DeveloperConnectCustomEndpoint         *string           `pulumi:"developerConnectCustomEndpoint"`
 	DialogflowCustomEndpoint               *string           `pulumi:"dialogflowCustomEndpoint"`
 	DialogflowCxCustomEndpoint             *string           `pulumi:"dialogflowCxCustomEndpoint"`
 	DisableGooglePartnerName               *bool             `pulumi:"disableGooglePartnerName"`
@@ -335,6 +338,7 @@ type providerArgs struct {
 	LookerCustomEndpoint                   *string           `pulumi:"lookerCustomEndpoint"`
 	ManagedKafkaCustomEndpoint             *string           `pulumi:"managedKafkaCustomEndpoint"`
 	MemcacheCustomEndpoint                 *string           `pulumi:"memcacheCustomEndpoint"`
+	MemorystoreCustomEndpoint              *string           `pulumi:"memorystoreCustomEndpoint"`
 	MigrationCenterCustomEndpoint          *string           `pulumi:"migrationCenterCustomEndpoint"`
 	MlEngineCustomEndpoint                 *string           `pulumi:"mlEngineCustomEndpoint"`
 	MonitoringCustomEndpoint               *string           `pulumi:"monitoringCustomEndpoint"`
@@ -468,6 +472,7 @@ type ProviderArgs struct {
 	DatastreamCustomEndpoint               pulumi.StringPtrInput
 	DefaultLabels                          pulumi.StringMapInput
 	DeploymentManagerCustomEndpoint        pulumi.StringPtrInput
+	DeveloperConnectCustomEndpoint         pulumi.StringPtrInput
 	DialogflowCustomEndpoint               pulumi.StringPtrInput
 	DialogflowCxCustomEndpoint             pulumi.StringPtrInput
 	DisableGooglePartnerName               pulumi.BoolPtrInput
@@ -511,6 +516,7 @@ type ProviderArgs struct {
 	LookerCustomEndpoint                   pulumi.StringPtrInput
 	ManagedKafkaCustomEndpoint             pulumi.StringPtrInput
 	MemcacheCustomEndpoint                 pulumi.StringPtrInput
+	MemorystoreCustomEndpoint              pulumi.StringPtrInput
 	MigrationCenterCustomEndpoint          pulumi.StringPtrInput
 	MlEngineCustomEndpoint                 pulumi.StringPtrInput
 	MonitoringCustomEndpoint               pulumi.StringPtrInput
@@ -871,6 +877,10 @@ func (o ProviderOutput) DeploymentManagerCustomEndpoint() pulumi.StringPtrOutput
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.DeploymentManagerCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderOutput) DeveloperConnectCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.DeveloperConnectCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderOutput) DialogflowCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.DialogflowCustomEndpoint }).(pulumi.StringPtrOutput)
 }
@@ -1033,6 +1043,10 @@ func (o ProviderOutput) ManagedKafkaCustomEndpoint() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) MemcacheCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.MemcacheCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) MemorystoreCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.MemorystoreCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) MigrationCenterCustomEndpoint() pulumi.StringPtrOutput {

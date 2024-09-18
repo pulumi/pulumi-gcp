@@ -117,6 +117,104 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Region Target Https Proxy Http Keep Alive Timeout
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultRegionSslCertificate = new Gcp.Compute.RegionSslCertificate("default", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "my-certificate",
+    ///         PrivateKey = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "path/to/private.key",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         Certificate = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "path/to/certificate.crt",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    ///     var defaultRegionHealthCheck = new Gcp.Compute.RegionHealthCheck("default", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "http-health-check",
+    ///         HttpHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckHttpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultRegionBackendService = new Gcp.Compute.RegionBackendService("default", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "backend-service",
+    ///         PortName = "http",
+    ///         Protocol = "HTTP",
+    ///         TimeoutSec = 10,
+    ///         LoadBalancingScheme = "INTERNAL_MANAGED",
+    ///         HealthChecks = defaultRegionHealthCheck.Id,
+    ///     });
+    /// 
+    ///     var defaultRegionUrlMap = new Gcp.Compute.RegionUrlMap("default", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "url-map",
+    ///         Description = "a description",
+    ///         DefaultService = defaultRegionBackendService.Id,
+    ///         HostRules = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RegionUrlMapHostRuleArgs
+    ///             {
+    ///                 Hosts = new[]
+    ///                 {
+    ///                     "mysite.com",
+    ///                 },
+    ///                 PathMatcher = "allpaths",
+    ///             },
+    ///         },
+    ///         PathMatchers = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RegionUrlMapPathMatcherArgs
+    ///             {
+    ///                 Name = "allpaths",
+    ///                 DefaultService = defaultRegionBackendService.Id,
+    ///                 PathRules = new[]
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.RegionUrlMapPathMatcherPathRuleArgs
+    ///                     {
+    ///                         Paths = new[]
+    ///                         {
+    ///                             "/*",
+    ///                         },
+    ///                         Service = defaultRegionBackendService.Id,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.RegionTargetHttpsProxy("default", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Name = "test-http-keep-alive-timeout-proxy",
+    ///         HttpKeepAliveTimeoutSec = 600,
+    ///         UrlMap = defaultRegionUrlMap.Id,
+    ///         SslCertificates = new[]
+    ///         {
+    ///             defaultRegionSslCertificate.Id,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Region Target Https Proxy Mtls
     /// 
     /// ```csharp
@@ -385,6 +483,16 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies how long to keep a connection open, after completing a response,
+        /// while there is no matching traffic (in seconds). If an HTTP keepalive is
+        /// not specified, a default value (600 seconds) will be used. For Regioanl
+        /// HTTP(S) load balancer, the minimum allowed value is 5 seconds and the
+        /// maximum allowed value is 600 seconds.
+        /// </summary>
+        [Output("httpKeepAliveTimeoutSec")]
+        public Output<int?> HttpKeepAliveTimeoutSec { get; private set; } = null!;
+
+        /// <summary>
         /// Name of the resource. Provided by the client when the resource is
         /// created. The name must be 1-63 characters long, and comply with
         /// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -533,6 +641,16 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Specifies how long to keep a connection open, after completing a response,
+        /// while there is no matching traffic (in seconds). If an HTTP keepalive is
+        /// not specified, a default value (600 seconds) will be used. For Regioanl
+        /// HTTP(S) load balancer, the minimum allowed value is 5 seconds and the
+        /// maximum allowed value is 600 seconds.
+        /// </summary>
+        [Input("httpKeepAliveTimeoutSec")]
+        public Input<int>? HttpKeepAliveTimeoutSec { get; set; }
+
+        /// <summary>
         /// Name of the resource. Provided by the client when the resource is
         /// created. The name must be 1-63 characters long, and comply with
         /// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -641,6 +759,16 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Specifies how long to keep a connection open, after completing a response,
+        /// while there is no matching traffic (in seconds). If an HTTP keepalive is
+        /// not specified, a default value (600 seconds) will be used. For Regioanl
+        /// HTTP(S) load balancer, the minimum allowed value is 5 seconds and the
+        /// maximum allowed value is 600 seconds.
+        /// </summary>
+        [Input("httpKeepAliveTimeoutSec")]
+        public Input<int>? HttpKeepAliveTimeoutSec { get; set; }
 
         /// <summary>
         /// Name of the resource. Provided by the client when the resource is

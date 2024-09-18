@@ -26,41 +26,7 @@ import (
 // [Access Control for Folders Using IAM](https://cloud.google.com/resource-manager/docs/access-control-folders)
 // doc for more information.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Top-level folder under an organization.
-//			department1, err := organizations.NewFolder(ctx, "department1", &organizations.FolderArgs{
-//				DisplayName: pulumi.String("Department 1"),
-//				Parent:      pulumi.String("organizations/1234567"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Folder nested under another folder.
-//			_, err = organizations.NewFolder(ctx, "team-abc", &organizations.FolderArgs{
-//				DisplayName: pulumi.String("Team ABC"),
-//				Parent:      department1.Name,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
+// > It may take a while for the attached tag bindings to be deleted after the folder is scheduled to be deleted.
 //
 // ## Import
 //
@@ -98,6 +64,8 @@ type Folder struct {
 	// The resource name of the parent Folder or Organization.
 	// Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
 	Parent pulumi.StringOutput `pulumi:"parent"`
+	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when  mutated.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewFolder registers a new resource with the given unique name, arguments, and options.
@@ -152,6 +120,8 @@ type folderState struct {
 	// The resource name of the parent Folder or Organization.
 	// Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
 	Parent *string `pulumi:"parent"`
+	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when  mutated.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type FolderState struct {
@@ -171,6 +141,8 @@ type FolderState struct {
 	// The resource name of the parent Folder or Organization.
 	// Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
 	Parent pulumi.StringPtrInput
+	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when  mutated.
+	Tags pulumi.StringMapInput
 }
 
 func (FolderState) ElementType() reflect.Type {
@@ -185,6 +157,8 @@ type folderArgs struct {
 	// The resource name of the parent Folder or Organization.
 	// Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
 	Parent string `pulumi:"parent"`
+	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when  mutated.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Folder resource.
@@ -196,6 +170,8 @@ type FolderArgs struct {
 	// The resource name of the parent Folder or Organization.
 	// Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
 	Parent pulumi.StringInput
+	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when  mutated.
+	Tags pulumi.StringMapInput
 }
 
 func (FolderArgs) ElementType() reflect.Type {
@@ -320,6 +296,11 @@ func (o FolderOutput) Name() pulumi.StringOutput {
 // Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
 func (o FolderOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v *Folder) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
+}
+
+// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when  mutated.
+func (o FolderOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Folder) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type FolderArrayOutput struct{ *pulumi.OutputState }

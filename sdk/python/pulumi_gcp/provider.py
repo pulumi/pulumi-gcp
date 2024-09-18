@@ -88,6 +88,7 @@ class ProviderArgs:
                  datastream_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  default_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  deployment_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 developer_connect_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dialogflow_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dialogflow_cx_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  disable_google_partner_name: Optional[pulumi.Input[bool]] = None,
@@ -131,6 +132,7 @@ class ProviderArgs:
                  looker_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  managed_kafka_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  memcache_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 memorystore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  migration_center_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  ml_engine_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  monitoring_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -331,6 +333,8 @@ class ProviderArgs:
             pulumi.set(__self__, "default_labels", default_labels)
         if deployment_manager_custom_endpoint is not None:
             pulumi.set(__self__, "deployment_manager_custom_endpoint", deployment_manager_custom_endpoint)
+        if developer_connect_custom_endpoint is not None:
+            pulumi.set(__self__, "developer_connect_custom_endpoint", developer_connect_custom_endpoint)
         if dialogflow_custom_endpoint is not None:
             pulumi.set(__self__, "dialogflow_custom_endpoint", dialogflow_custom_endpoint)
         if dialogflow_cx_custom_endpoint is not None:
@@ -417,6 +421,8 @@ class ProviderArgs:
             pulumi.set(__self__, "managed_kafka_custom_endpoint", managed_kafka_custom_endpoint)
         if memcache_custom_endpoint is not None:
             pulumi.set(__self__, "memcache_custom_endpoint", memcache_custom_endpoint)
+        if memorystore_custom_endpoint is not None:
+            pulumi.set(__self__, "memorystore_custom_endpoint", memorystore_custom_endpoint)
         if migration_center_custom_endpoint is not None:
             pulumi.set(__self__, "migration_center_custom_endpoint", migration_center_custom_endpoint)
         if ml_engine_custom_endpoint is not None:
@@ -1159,6 +1165,15 @@ class ProviderArgs:
         pulumi.set(self, "deployment_manager_custom_endpoint", value)
 
     @property
+    @pulumi.getter(name="developerConnectCustomEndpoint")
+    def developer_connect_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "developer_connect_custom_endpoint")
+
+    @developer_connect_custom_endpoint.setter
+    def developer_connect_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "developer_connect_custom_endpoint", value)
+
+    @property
     @pulumi.getter(name="dialogflowCustomEndpoint")
     def dialogflow_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "dialogflow_custom_endpoint")
@@ -1544,6 +1559,15 @@ class ProviderArgs:
     @memcache_custom_endpoint.setter
     def memcache_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "memcache_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="memorystoreCustomEndpoint")
+    def memorystore_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "memorystore_custom_endpoint")
+
+    @memorystore_custom_endpoint.setter
+    def memorystore_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "memorystore_custom_endpoint", value)
 
     @property
     @pulumi.getter(name="migrationCenterCustomEndpoint")
@@ -2168,6 +2192,7 @@ class Provider(pulumi.ProviderResource):
                  datastream_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  default_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  deployment_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 developer_connect_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dialogflow_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dialogflow_cx_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  disable_google_partner_name: Optional[pulumi.Input[bool]] = None,
@@ -2211,6 +2236,7 @@ class Provider(pulumi.ProviderResource):
                  looker_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  managed_kafka_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  memcache_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 memorystore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  migration_center_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  ml_engine_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  monitoring_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2377,6 +2403,7 @@ class Provider(pulumi.ProviderResource):
                  datastream_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  default_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  deployment_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 developer_connect_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dialogflow_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dialogflow_cx_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  disable_google_partner_name: Optional[pulumi.Input[bool]] = None,
@@ -2420,6 +2447,7 @@ class Provider(pulumi.ProviderResource):
                  looker_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  managed_kafka_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  memcache_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 memorystore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  migration_center_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  ml_engine_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  monitoring_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2558,6 +2586,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["datastream_custom_endpoint"] = datastream_custom_endpoint
             __props__.__dict__["default_labels"] = pulumi.Output.from_input(default_labels).apply(pulumi.runtime.to_json) if default_labels is not None else None
             __props__.__dict__["deployment_manager_custom_endpoint"] = deployment_manager_custom_endpoint
+            __props__.__dict__["developer_connect_custom_endpoint"] = developer_connect_custom_endpoint
             __props__.__dict__["dialogflow_custom_endpoint"] = dialogflow_custom_endpoint
             __props__.__dict__["dialogflow_cx_custom_endpoint"] = dialogflow_cx_custom_endpoint
             __props__.__dict__["disable_google_partner_name"] = pulumi.Output.from_input(disable_google_partner_name).apply(pulumi.runtime.to_json) if disable_google_partner_name is not None else None
@@ -2601,6 +2630,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["looker_custom_endpoint"] = looker_custom_endpoint
             __props__.__dict__["managed_kafka_custom_endpoint"] = managed_kafka_custom_endpoint
             __props__.__dict__["memcache_custom_endpoint"] = memcache_custom_endpoint
+            __props__.__dict__["memorystore_custom_endpoint"] = memorystore_custom_endpoint
             __props__.__dict__["migration_center_custom_endpoint"] = migration_center_custom_endpoint
             __props__.__dict__["ml_engine_custom_endpoint"] = ml_engine_custom_endpoint
             __props__.__dict__["monitoring_custom_endpoint"] = monitoring_custom_endpoint
@@ -3002,6 +3032,11 @@ class Provider(pulumi.ProviderResource):
         return pulumi.get(self, "deployment_manager_custom_endpoint")
 
     @property
+    @pulumi.getter(name="developerConnectCustomEndpoint")
+    def developer_connect_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "developer_connect_custom_endpoint")
+
+    @property
     @pulumi.getter(name="dialogflowCustomEndpoint")
     def dialogflow_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "dialogflow_custom_endpoint")
@@ -3205,6 +3240,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="memcacheCustomEndpoint")
     def memcache_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "memcache_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="memorystoreCustomEndpoint")
+    def memorystore_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "memorystore_custom_endpoint")
 
     @property
     @pulumi.getter(name="migrationCenterCustomEndpoint")

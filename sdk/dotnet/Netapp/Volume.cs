@@ -180,6 +180,12 @@ namespace Pulumi.Gcp.Netapp
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
+        /// </summary>
+        [Output("largeCapacity")]
+        public Output<bool?> LargeCapacity { get; private set; } = null!;
+
+        /// <summary>
         /// Flag indicating if the volume is NFS LDAP enabled or not. Inherited from storage pool.
         /// </summary>
         [Output("ldapEnabled")]
@@ -197,6 +203,13 @@ namespace Pulumi.Gcp.Netapp
         /// </summary>
         [Output("mountOptions")]
         public Output<ImmutableArray<Outputs.VolumeMountOption>> MountOptions { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Flag indicating if the volume will have an IP address per node for volumes supporting multiple IP endpoints.
+        /// Only the volume with largeCapacity will be allowed to have multiple endpoints.
+        /// </summary>
+        [Output("multipleEndpoints")]
+        public Output<bool?> MultipleEndpoints { get; private set; } = null!;
 
         /// <summary>
         /// The name of the volume. Needs to be unique per location.
@@ -445,10 +458,23 @@ namespace Pulumi.Gcp.Netapp
         }
 
         /// <summary>
+        /// Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
+        /// </summary>
+        [Input("largeCapacity")]
+        public Input<bool>? LargeCapacity { get; set; }
+
+        /// <summary>
         /// Name of the pool location. Usually a region name, expect for some STANDARD service level pools which require a zone name.
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
+
+        /// <summary>
+        /// Optional. Flag indicating if the volume will have an IP address per node for volumes supporting multiple IP endpoints.
+        /// Only the volume with largeCapacity will be allowed to have multiple endpoints.
+        /// </summary>
+        [Input("multipleEndpoints")]
+        public Input<bool>? MultipleEndpoints { get; set; }
 
         /// <summary>
         /// The name of the volume. Needs to be unique per location.
@@ -663,6 +689,12 @@ namespace Pulumi.Gcp.Netapp
         }
 
         /// <summary>
+        /// Optional. Flag indicating if the volume will be a large capacity volume or a regular volume.
+        /// </summary>
+        [Input("largeCapacity")]
+        public Input<bool>? LargeCapacity { get; set; }
+
+        /// <summary>
         /// Flag indicating if the volume is NFS LDAP enabled or not. Inherited from storage pool.
         /// </summary>
         [Input("ldapEnabled")]
@@ -686,6 +718,13 @@ namespace Pulumi.Gcp.Netapp
             get => _mountOptions ?? (_mountOptions = new InputList<Inputs.VolumeMountOptionGetArgs>());
             set => _mountOptions = value;
         }
+
+        /// <summary>
+        /// Optional. Flag indicating if the volume will have an IP address per node for volumes supporting multiple IP endpoints.
+        /// Only the volume with largeCapacity will be allowed to have multiple endpoints.
+        /// </summary>
+        [Input("multipleEndpoints")]
+        public Input<bool>? MultipleEndpoints { get; set; }
 
         /// <summary>
         /// The name of the volume. Needs to be unique per location.

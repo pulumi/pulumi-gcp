@@ -155,6 +155,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NetworkFirewallPolicyAssociation{}
 	case "gcp:compute/networkFirewallPolicyRule:NetworkFirewallPolicyRule":
 		r = &NetworkFirewallPolicyRule{}
+	case "gcp:compute/networkFirewallPolicyWithRules:NetworkFirewallPolicyWithRules":
+		r = &NetworkFirewallPolicyWithRules{}
 	case "gcp:compute/networkPeering:NetworkPeering":
 		r = &NetworkPeering{}
 	case "gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig":
@@ -657,6 +659,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"compute/networkFirewallPolicyRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/networkFirewallPolicyWithRules",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

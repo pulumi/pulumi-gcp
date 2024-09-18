@@ -1315,8 +1315,9 @@ namespace Pulumi.Gcp.Datastream
         public Output<string?> CustomerManagedEncryptionKey { get; private set; } = null!;
 
         /// <summary>
-        /// Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream. Possible
-        /// values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
+        /// Desired state of the Stream. Set this field to 'RUNNING' to start the stream, 'NOT_STARTED' to create the stream without
+        /// starting and 'PAUSED' to pause the stream from a 'RUNNING' state. Possible values: NOT_STARTED, RUNNING, PAUSED.
+        /// Default: NOT_STARTED
         /// </summary>
         [Output("desiredState")]
         public Output<string?> DesiredState { get; private set; } = null!;
@@ -1465,8 +1466,9 @@ namespace Pulumi.Gcp.Datastream
         public Input<string>? CustomerManagedEncryptionKey { get; set; }
 
         /// <summary>
-        /// Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream. Possible
-        /// values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
+        /// Desired state of the Stream. Set this field to 'RUNNING' to start the stream, 'NOT_STARTED' to create the stream without
+        /// starting and 'PAUSED' to pause the stream from a 'RUNNING' state. Possible values: NOT_STARTED, RUNNING, PAUSED.
+        /// Default: NOT_STARTED
         /// </summary>
         [Input("desiredState")]
         public Input<string>? DesiredState { get; set; }
@@ -1553,8 +1555,9 @@ namespace Pulumi.Gcp.Datastream
         public Input<string>? CustomerManagedEncryptionKey { get; set; }
 
         /// <summary>
-        /// Desired state of the Stream. Set this field to 'RUNNING' to start the stream, and 'PAUSED' to pause the stream. Possible
-        /// values: NOT_STARTED, RUNNING, PAUSED. Default: NOT_STARTED
+        /// Desired state of the Stream. Set this field to 'RUNNING' to start the stream, 'NOT_STARTED' to create the stream without
+        /// starting and 'PAUSED' to pause the stream from a 'RUNNING' state. Possible values: NOT_STARTED, RUNNING, PAUSED.
+        /// Default: NOT_STARTED
         /// </summary>
         [Input("desiredState")]
         public Input<string>? DesiredState { get; set; }
