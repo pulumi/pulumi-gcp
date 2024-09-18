@@ -81,6 +81,7 @@ const (
 	gcpCompute                  = "Compute"                  // Compute resources
 	gcpContainerAnalysis        = "ContainerAnalysis"        // Container Analysis resources
 	gcpDNS                      = "Dns"                      // DNS resources
+	gcpDeveloperConnect         = "DeveloperConnect"         // Developer Connect
 	gcpDataCatalog              = "DataCatalog"              // Data Catalog resources
 	gcpDataFlow                 = "Dataflow"                 // DataFlow resources
 	gcpDataFusion               = "DataFusion"               // DataFusion resources
@@ -121,6 +122,7 @@ const (
 	gcpMachingLearning          = "ML"                       // Machine Learning
 	gcpManagedKafka             = "ManagedKafka"             // Managed Kafka
 	gcpMemcache                 = "Memcache"                 // Memcache resources
+	gcpMemorystore              = "MemoryStore"              // Memory Store
 	gcpMigrationCenter          = "MigrationCenter"          // Migration Center
 	gcpMonitoring               = "Monitoring"               // Monitoring resources
 	gcpNetapp                   = "Netapp"                   // Netapp
@@ -219,6 +221,7 @@ var moduleMapping = map[string]string{
 	"datastore":                  gcpDatastore,
 	"datastream":                 gcpDatastream,
 	"deployment_manager":         gcpDeploymentManager,
+	"developer_connect":          gcpDeveloperConnect,
 	"dialogflow":                 gcpDiagflow,
 	"discovery_engine":           gcpDiscoveryEngine,
 	"dns":                        gcpDNS,
@@ -246,6 +249,7 @@ var moduleMapping = map[string]string{
 	"looker":                     gcpLooker,
 	"managed_kafka":              gcpManagedKafka,
 	"memcache":                   gcpMemcache,
+	"memorystore":                gcpMemorystore,
 	"migration_center":           gcpMigrationCenter,
 	"ml":                         gcpMachingLearning,
 	"monitoring":                 gcpMonitoring,

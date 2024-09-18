@@ -47,7 +47,7 @@ index 50f04270d..87cb31d7c 100644
 -See [google_compute_global_forwarding_rule](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_global_forwarding_rule) resource for details of the available attributes.
 +See google_compute_global_forwarding_rule resource for details of the available attributes.
 diff --git a/website/docs/d/compute_instance.html.markdown b/website/docs/d/compute_instance.html.markdown
-index c52917b0f..62383a602 100644
+index c30d589a7..d0b83924e 100644
 --- a/website/docs/d/compute_instance.html.markdown
 +++ b/website/docs/d/compute_instance.html.markdown
 @@ -11,7 +11,6 @@ Get information about a VM instance resource within GCE. For more information se
@@ -77,7 +77,7 @@ index c52917b0f..62383a602 100644
  
  ---
  
-@@ -148,9 +147,9 @@ The following arguments are supported:
+@@ -150,9 +149,9 @@ The following arguments are supported:
  
  * `network` - The name or self_link of the network attached to this interface.
  
@@ -89,7 +89,7 @@ index c52917b0f..62383a602 100644
  
  * `network_ip` - The private IP address assigned to the instance.
  
-@@ -197,7 +196,7 @@ The following arguments are supported:
+@@ -199,7 +198,7 @@ The following arguments are supported:
      
  * `provisioning_model` - Describe the type of preemptible VM.
  
