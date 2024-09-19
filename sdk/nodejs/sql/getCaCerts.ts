@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  * [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances/listServerCas).
  */
 export function getCaCerts(args: GetCaCertsArgs, opts?: pulumi.InvokeOptions): Promise<GetCaCertsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:sql/getCaCerts:getCaCerts", {
         "instance": args.instance,
@@ -61,7 +60,11 @@ export interface GetCaCertsResult {
  * [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances/listServerCas).
  */
 export function getCaCertsOutput(args: GetCaCertsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCaCertsResult> {
-    return pulumi.output(args).apply((a: any) => getCaCerts(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:sql/getCaCerts:getCaCerts", {
+        "instance": args.instance,
+        "project": args.project,
+    }, opts);
 }
 
 /**

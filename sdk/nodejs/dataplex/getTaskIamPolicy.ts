@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getTaskIamPolicy(args: GetTaskIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetTaskIamPolicyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:dataplex/getTaskIamPolicy:getTaskIamPolicy", {
         "lake": args.lake,
@@ -96,7 +95,13 @@ export interface GetTaskIamPolicyResult {
  * ```
  */
 export function getTaskIamPolicyOutput(args: GetTaskIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTaskIamPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getTaskIamPolicy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:dataplex/getTaskIamPolicy:getTaskIamPolicy", {
+        "lake": args.lake,
+        "location": args.location,
+        "project": args.project,
+        "taskId": args.taskId,
+    }, opts);
 }
 
 /**

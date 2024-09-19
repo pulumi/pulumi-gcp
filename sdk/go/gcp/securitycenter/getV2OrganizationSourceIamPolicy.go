@@ -70,14 +70,20 @@ type LookupV2OrganizationSourceIamPolicyResult struct {
 
 func LookupV2OrganizationSourceIamPolicyOutput(ctx *pulumi.Context, args LookupV2OrganizationSourceIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupV2OrganizationSourceIamPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupV2OrganizationSourceIamPolicyResult, error) {
+		ApplyT(func(v interface{}) (LookupV2OrganizationSourceIamPolicyResultOutput, error) {
 			args := v.(LookupV2OrganizationSourceIamPolicyArgs)
-			r, err := LookupV2OrganizationSourceIamPolicy(ctx, &args, opts...)
-			var s LookupV2OrganizationSourceIamPolicyResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupV2OrganizationSourceIamPolicyResult
+			secret, err := ctx.InvokePackageRaw("gcp:securitycenter/getV2OrganizationSourceIamPolicy:getV2OrganizationSourceIamPolicy", args, &rv, "", opts...)
+			if err != nil {
+				return LookupV2OrganizationSourceIamPolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupV2OrganizationSourceIamPolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupV2OrganizationSourceIamPolicyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupV2OrganizationSourceIamPolicyResultOutput)
 }
 

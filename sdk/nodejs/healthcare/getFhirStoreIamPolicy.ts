@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getFhirStoreIamPolicy(args: GetFhirStoreIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetFhirStoreIamPolicyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:healthcare/getFhirStoreIamPolicy:getFhirStoreIamPolicy", {
         "fhirStoreId": args.fhirStoreId,
@@ -72,7 +71,10 @@ export interface GetFhirStoreIamPolicyResult {
  * ```
  */
 export function getFhirStoreIamPolicyOutput(args: GetFhirStoreIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFhirStoreIamPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getFhirStoreIamPolicy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:healthcare/getFhirStoreIamPolicy:getFhirStoreIamPolicy", {
+        "fhirStoreId": args.fhirStoreId,
+    }, opts);
 }
 
 /**

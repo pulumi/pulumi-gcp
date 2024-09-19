@@ -23,7 +23,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getExternalAddress(args: GetExternalAddressArgs, opts?: pulumi.InvokeOptions): Promise<GetExternalAddressResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:vmwareengine/getExternalAddress:getExternalAddress", {
         "name": args.name,
@@ -82,7 +81,11 @@ export interface GetExternalAddressResult {
  * ```
  */
 export function getExternalAddressOutput(args: GetExternalAddressOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExternalAddressResult> {
-    return pulumi.output(args).apply((a: any) => getExternalAddress(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:vmwareengine/getExternalAddress:getExternalAddress", {
+        "name": args.name,
+        "parent": args.parent,
+    }, opts);
 }
 
 /**

@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getConsentStoreIamPolicy(args: GetConsentStoreIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetConsentStoreIamPolicyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:healthcare/getConsentStoreIamPolicy:getConsentStoreIamPolicy", {
         "consentStoreId": args.consentStoreId,
@@ -80,7 +79,11 @@ export interface GetConsentStoreIamPolicyResult {
  * ```
  */
 export function getConsentStoreIamPolicyOutput(args: GetConsentStoreIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConsentStoreIamPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getConsentStoreIamPolicy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:healthcare/getConsentStoreIamPolicy:getConsentStoreIamPolicy", {
+        "consentStoreId": args.consentStoreId,
+        "dataset": args.dataset,
+    }, opts);
 }
 
 /**

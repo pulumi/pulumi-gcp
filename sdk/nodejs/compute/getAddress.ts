@@ -31,7 +31,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getAddress(args: GetAddressArgs, opts?: pulumi.InvokeOptions): Promise<GetAddressResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getAddress:getAddress", {
         "name": args.name,
@@ -120,7 +119,12 @@ export interface GetAddressResult {
  * ```
  */
 export function getAddressOutput(args: GetAddressOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAddressResult> {
-    return pulumi.output(args).apply((a: any) => getAddress(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:compute/getAddress:getAddress", {
+        "name": args.name,
+        "project": args.project,
+        "region": args.region,
+    }, opts);
 }
 
 /**

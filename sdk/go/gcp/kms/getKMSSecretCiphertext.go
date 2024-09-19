@@ -147,14 +147,20 @@ type GetKMSSecretCiphertextResult struct {
 
 func GetKMSSecretCiphertextOutput(ctx *pulumi.Context, args GetKMSSecretCiphertextOutputArgs, opts ...pulumi.InvokeOption) GetKMSSecretCiphertextResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetKMSSecretCiphertextResult, error) {
+		ApplyT(func(v interface{}) (GetKMSSecretCiphertextResultOutput, error) {
 			args := v.(GetKMSSecretCiphertextArgs)
-			r, err := GetKMSSecretCiphertext(ctx, &args, opts...)
-			var s GetKMSSecretCiphertextResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetKMSSecretCiphertextResult
+			secret, err := ctx.InvokePackageRaw("gcp:kms/getKMSSecretCiphertext:getKMSSecretCiphertext", args, &rv, "", opts...)
+			if err != nil {
+				return GetKMSSecretCiphertextResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetKMSSecretCiphertextResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetKMSSecretCiphertextResultOutput), nil
+			}
+			return output, nil
 		}).(GetKMSSecretCiphertextResultOutput)
 }
 

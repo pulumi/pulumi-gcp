@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getProjectSettings(args: GetProjectSettingsArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectSettingsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:logging/getProjectSettings:getProjectSettings", {
         "project": args.project,
@@ -105,7 +104,10 @@ export interface GetProjectSettingsResult {
  * ```
  */
 export function getProjectSettingsOutput(args: GetProjectSettingsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectSettingsResult> {
-    return pulumi.output(args).apply((a: any) => getProjectSettings(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:logging/getProjectSettings:getProjectSettings", {
+        "project": args.project,
+    }, opts);
 }
 
 /**

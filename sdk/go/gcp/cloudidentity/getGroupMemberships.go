@@ -73,14 +73,20 @@ type GetGroupMembershipsResult struct {
 
 func GetGroupMembershipsOutput(ctx *pulumi.Context, args GetGroupMembershipsOutputArgs, opts ...pulumi.InvokeOption) GetGroupMembershipsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetGroupMembershipsResult, error) {
+		ApplyT(func(v interface{}) (GetGroupMembershipsResultOutput, error) {
 			args := v.(GetGroupMembershipsArgs)
-			r, err := GetGroupMemberships(ctx, &args, opts...)
-			var s GetGroupMembershipsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetGroupMembershipsResult
+			secret, err := ctx.InvokePackageRaw("gcp:cloudidentity/getGroupMemberships:getGroupMemberships", args, &rv, "", opts...)
+			if err != nil {
+				return GetGroupMembershipsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetGroupMembershipsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetGroupMembershipsResultOutput), nil
+			}
+			return output, nil
 		}).(GetGroupMembershipsResultOutput)
 }
 

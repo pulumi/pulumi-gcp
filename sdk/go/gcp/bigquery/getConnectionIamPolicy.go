@@ -86,14 +86,20 @@ type LookupConnectionIamPolicyResult struct {
 
 func LookupConnectionIamPolicyOutput(ctx *pulumi.Context, args LookupConnectionIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupConnectionIamPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupConnectionIamPolicyResult, error) {
+		ApplyT(func(v interface{}) (LookupConnectionIamPolicyResultOutput, error) {
 			args := v.(LookupConnectionIamPolicyArgs)
-			r, err := LookupConnectionIamPolicy(ctx, &args, opts...)
-			var s LookupConnectionIamPolicyResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupConnectionIamPolicyResult
+			secret, err := ctx.InvokePackageRaw("gcp:bigquery/getConnectionIamPolicy:getConnectionIamPolicy", args, &rv, "", opts...)
+			if err != nil {
+				return LookupConnectionIamPolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupConnectionIamPolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupConnectionIamPolicyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupConnectionIamPolicyResultOutput)
 }
 

@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getFolderSettings(args: GetFolderSettingsArgs, opts?: pulumi.InvokeOptions): Promise<GetFolderSettingsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:logging/getFolderSettings:getFolderSettings", {
         "folder": args.folder,
@@ -105,7 +104,10 @@ export interface GetFolderSettingsResult {
  * ```
  */
 export function getFolderSettingsOutput(args: GetFolderSettingsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFolderSettingsResult> {
-    return pulumi.output(args).apply((a: any) => getFolderSettings(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:logging/getFolderSettings:getFolderSettings", {
+        "folder": args.folder,
+    }, opts);
 }
 
 /**

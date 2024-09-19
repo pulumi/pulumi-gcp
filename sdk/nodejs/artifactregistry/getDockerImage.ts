@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  * Requires one of the following OAuth scopes: `https://www.googleapis.com/auth/cloud-platform` or `https://www.googleapis.com/auth/cloud-platform.read-only`.
  */
 export function getDockerImage(args: GetDockerImageArgs, opts?: pulumi.InvokeOptions): Promise<GetDockerImageResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:artifactregistry/getDockerImage:getDockerImage", {
         "imageName": args.imageName,
@@ -101,7 +100,13 @@ export interface GetDockerImageResult {
  * Requires one of the following OAuth scopes: `https://www.googleapis.com/auth/cloud-platform` or `https://www.googleapis.com/auth/cloud-platform.read-only`.
  */
 export function getDockerImageOutput(args: GetDockerImageOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDockerImageResult> {
-    return pulumi.output(args).apply((a: any) => getDockerImage(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:artifactregistry/getDockerImage:getDockerImage", {
+        "imageName": args.imageName,
+        "location": args.location,
+        "project": args.project,
+        "repositoryId": args.repositoryId,
+    }, opts);
 }
 
 /**

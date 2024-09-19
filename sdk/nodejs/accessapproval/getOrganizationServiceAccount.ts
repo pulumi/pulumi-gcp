@@ -30,7 +30,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getOrganizationServiceAccount(args: GetOrganizationServiceAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationServiceAccountResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:accessapproval/getOrganizationServiceAccount:getOrganizationServiceAccount", {
         "organizationId": args.organizationId,
@@ -92,7 +91,10 @@ export interface GetOrganizationServiceAccountResult {
  * ```
  */
 export function getOrganizationServiceAccountOutput(args: GetOrganizationServiceAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationServiceAccountResult> {
-    return pulumi.output(args).apply((a: any) => getOrganizationServiceAccount(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:accessapproval/getOrganizationServiceAccount:getOrganizationServiceAccount", {
+        "organizationId": args.organizationId,
+    }, opts);
 }
 
 /**

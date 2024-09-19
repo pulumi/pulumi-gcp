@@ -71,14 +71,20 @@ type LookupDatasetIamPolicyResult struct {
 
 func LookupDatasetIamPolicyOutput(ctx *pulumi.Context, args LookupDatasetIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupDatasetIamPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupDatasetIamPolicyResult, error) {
+		ApplyT(func(v interface{}) (LookupDatasetIamPolicyResultOutput, error) {
 			args := v.(LookupDatasetIamPolicyArgs)
-			r, err := LookupDatasetIamPolicy(ctx, &args, opts...)
-			var s LookupDatasetIamPolicyResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupDatasetIamPolicyResult
+			secret, err := ctx.InvokePackageRaw("gcp:bigquery/getDatasetIamPolicy:getDatasetIamPolicy", args, &rv, "", opts...)
+			if err != nil {
+				return LookupDatasetIamPolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupDatasetIamPolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupDatasetIamPolicyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupDatasetIamPolicyResultOutput)
 }
 

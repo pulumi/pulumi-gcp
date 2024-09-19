@@ -67,14 +67,20 @@ type LookupAccountIamPolicyResult struct {
 
 func LookupAccountIamPolicyOutput(ctx *pulumi.Context, args LookupAccountIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupAccountIamPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAccountIamPolicyResult, error) {
+		ApplyT(func(v interface{}) (LookupAccountIamPolicyResultOutput, error) {
 			args := v.(LookupAccountIamPolicyArgs)
-			r, err := LookupAccountIamPolicy(ctx, &args, opts...)
-			var s LookupAccountIamPolicyResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupAccountIamPolicyResult
+			secret, err := ctx.InvokePackageRaw("gcp:billing/getAccountIamPolicy:getAccountIamPolicy", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAccountIamPolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAccountIamPolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAccountIamPolicyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAccountIamPolicyResultOutput)
 }
 

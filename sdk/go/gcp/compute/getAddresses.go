@@ -123,14 +123,20 @@ type GetAddressesResult struct {
 
 func GetAddressesOutput(ctx *pulumi.Context, args GetAddressesOutputArgs, opts ...pulumi.InvokeOption) GetAddressesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetAddressesResult, error) {
+		ApplyT(func(v interface{}) (GetAddressesResultOutput, error) {
 			args := v.(GetAddressesArgs)
-			r, err := GetAddresses(ctx, &args, opts...)
-			var s GetAddressesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetAddressesResult
+			secret, err := ctx.InvokePackageRaw("gcp:compute/getAddresses:getAddresses", args, &rv, "", opts...)
+			if err != nil {
+				return GetAddressesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetAddressesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetAddressesResultOutput), nil
+			}
+			return output, nil
 		}).(GetAddressesResultOutput)
 }
 

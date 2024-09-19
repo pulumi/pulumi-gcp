@@ -80,14 +80,20 @@ type GetNodeTypesResult struct {
 
 func GetNodeTypesOutput(ctx *pulumi.Context, args GetNodeTypesOutputArgs, opts ...pulumi.InvokeOption) GetNodeTypesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetNodeTypesResult, error) {
+		ApplyT(func(v interface{}) (GetNodeTypesResultOutput, error) {
 			args := v.(GetNodeTypesArgs)
-			r, err := GetNodeTypes(ctx, &args, opts...)
-			var s GetNodeTypesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetNodeTypesResult
+			secret, err := ctx.InvokePackageRaw("gcp:compute/getNodeTypes:getNodeTypes", args, &rv, "", opts...)
+			if err != nil {
+				return GetNodeTypesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetNodeTypesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetNodeTypesResultOutput), nil
+			}
+			return output, nil
 		}).(GetNodeTypesResultOutput)
 }
 

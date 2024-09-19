@@ -70,14 +70,20 @@ type LookupFhirStoreIamPolicyResult struct {
 
 func LookupFhirStoreIamPolicyOutput(ctx *pulumi.Context, args LookupFhirStoreIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupFhirStoreIamPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupFhirStoreIamPolicyResult, error) {
+		ApplyT(func(v interface{}) (LookupFhirStoreIamPolicyResultOutput, error) {
 			args := v.(LookupFhirStoreIamPolicyArgs)
-			r, err := LookupFhirStoreIamPolicy(ctx, &args, opts...)
-			var s LookupFhirStoreIamPolicyResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupFhirStoreIamPolicyResult
+			secret, err := ctx.InvokePackageRaw("gcp:healthcare/getFhirStoreIamPolicy:getFhirStoreIamPolicy", args, &rv, "", opts...)
+			if err != nil {
+				return LookupFhirStoreIamPolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupFhirStoreIamPolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupFhirStoreIamPolicyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupFhirStoreIamPolicyResultOutput)
 }
 

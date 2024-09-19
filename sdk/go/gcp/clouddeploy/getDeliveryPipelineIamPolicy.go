@@ -76,14 +76,20 @@ type LookupDeliveryPipelineIamPolicyResult struct {
 
 func LookupDeliveryPipelineIamPolicyOutput(ctx *pulumi.Context, args LookupDeliveryPipelineIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupDeliveryPipelineIamPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupDeliveryPipelineIamPolicyResult, error) {
+		ApplyT(func(v interface{}) (LookupDeliveryPipelineIamPolicyResultOutput, error) {
 			args := v.(LookupDeliveryPipelineIamPolicyArgs)
-			r, err := LookupDeliveryPipelineIamPolicy(ctx, &args, opts...)
-			var s LookupDeliveryPipelineIamPolicyResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupDeliveryPipelineIamPolicyResult
+			secret, err := ctx.InvokePackageRaw("gcp:clouddeploy/getDeliveryPipelineIamPolicy:getDeliveryPipelineIamPolicy", args, &rv, "", opts...)
+			if err != nil {
+				return LookupDeliveryPipelineIamPolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupDeliveryPipelineIamPolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupDeliveryPipelineIamPolicyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupDeliveryPipelineIamPolicyResultOutput)
 }
 

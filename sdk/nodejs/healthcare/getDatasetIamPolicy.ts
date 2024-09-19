@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getDatasetIamPolicy(args: GetDatasetIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetDatasetIamPolicyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:healthcare/getDatasetIamPolicy:getDatasetIamPolicy", {
         "datasetId": args.datasetId,
@@ -72,7 +71,10 @@ export interface GetDatasetIamPolicyResult {
  * ```
  */
 export function getDatasetIamPolicyOutput(args: GetDatasetIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatasetIamPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getDatasetIamPolicy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:healthcare/getDatasetIamPolicy:getDatasetIamPolicy", {
+        "datasetId": args.datasetId,
+    }, opts);
 }
 
 /**

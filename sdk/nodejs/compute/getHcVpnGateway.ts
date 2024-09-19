@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getHcVpnGateway(args: GetHcVpnGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetHcVpnGatewayResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getHcVpnGateway:getHcVpnGateway", {
         "name": args.name,
@@ -86,7 +85,12 @@ export interface GetHcVpnGatewayResult {
  * ```
  */
 export function getHcVpnGatewayOutput(args: GetHcVpnGatewayOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHcVpnGatewayResult> {
-    return pulumi.output(args).apply((a: any) => getHcVpnGateway(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:compute/getHcVpnGateway:getHcVpnGateway", {
+        "name": args.name,
+        "project": args.project,
+        "region": args.region,
+    }, opts);
 }
 
 /**

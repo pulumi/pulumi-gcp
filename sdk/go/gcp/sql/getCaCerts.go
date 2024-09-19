@@ -47,14 +47,20 @@ type GetCaCertsResult struct {
 
 func GetCaCertsOutput(ctx *pulumi.Context, args GetCaCertsOutputArgs, opts ...pulumi.InvokeOption) GetCaCertsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetCaCertsResult, error) {
+		ApplyT(func(v interface{}) (GetCaCertsResultOutput, error) {
 			args := v.(GetCaCertsArgs)
-			r, err := GetCaCerts(ctx, &args, opts...)
-			var s GetCaCertsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetCaCertsResult
+			secret, err := ctx.InvokePackageRaw("gcp:sql/getCaCerts:getCaCerts", args, &rv, "", opts...)
+			if err != nil {
+				return GetCaCertsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetCaCertsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetCaCertsResultOutput), nil
+			}
+			return output, nil
 		}).(GetCaCertsResultOutput)
 }
 

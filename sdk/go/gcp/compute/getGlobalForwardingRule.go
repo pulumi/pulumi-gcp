@@ -91,14 +91,20 @@ type LookupGlobalForwardingRuleResult struct {
 
 func LookupGlobalForwardingRuleOutput(ctx *pulumi.Context, args LookupGlobalForwardingRuleOutputArgs, opts ...pulumi.InvokeOption) LookupGlobalForwardingRuleResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupGlobalForwardingRuleResult, error) {
+		ApplyT(func(v interface{}) (LookupGlobalForwardingRuleResultOutput, error) {
 			args := v.(LookupGlobalForwardingRuleArgs)
-			r, err := LookupGlobalForwardingRule(ctx, &args, opts...)
-			var s LookupGlobalForwardingRuleResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupGlobalForwardingRuleResult
+			secret, err := ctx.InvokePackageRaw("gcp:compute/getGlobalForwardingRule:getGlobalForwardingRule", args, &rv, "", opts...)
+			if err != nil {
+				return LookupGlobalForwardingRuleResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupGlobalForwardingRuleResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupGlobalForwardingRuleResultOutput), nil
+			}
+			return output, nil
 		}).(LookupGlobalForwardingRuleResultOutput)
 }
 

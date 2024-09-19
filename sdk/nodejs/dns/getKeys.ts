@@ -39,7 +39,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getKeys(args: GetKeysArgs, opts?: pulumi.InvokeOptions): Promise<GetKeysResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:dns/getKeys:getKeys", {
         "managedZone": args.managedZone,
@@ -113,7 +112,11 @@ export interface GetKeysResult {
  * ```
  */
 export function getKeysOutput(args: GetKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeysResult> {
-    return pulumi.output(args).apply((a: any) => getKeys(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:dns/getKeys:getKeys", {
+        "managedZone": args.managedZone,
+        "project": args.project,
+    }, opts);
 }
 
 /**

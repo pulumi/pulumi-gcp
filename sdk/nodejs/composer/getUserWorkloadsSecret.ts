@@ -40,7 +40,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getUserWorkloadsSecret(args: GetUserWorkloadsSecretArgs, opts?: pulumi.InvokeOptions): Promise<GetUserWorkloadsSecretResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:composer/getUserWorkloadsSecret:getUserWorkloadsSecret", {
         "environment": args.environment,
@@ -123,7 +122,13 @@ export interface GetUserWorkloadsSecretResult {
  * ```
  */
 export function getUserWorkloadsSecretOutput(args: GetUserWorkloadsSecretOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserWorkloadsSecretResult> {
-    return pulumi.output(args).apply((a: any) => getUserWorkloadsSecret(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:composer/getUserWorkloadsSecret:getUserWorkloadsSecret", {
+        "environment": args.environment,
+        "name": args.name,
+        "project": args.project,
+        "region": args.region,
+    }, opts);
 }
 
 /**

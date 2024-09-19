@@ -79,14 +79,20 @@ type GetDatabaseInstancesResult struct {
 
 func GetDatabaseInstancesOutput(ctx *pulumi.Context, args GetDatabaseInstancesOutputArgs, opts ...pulumi.InvokeOption) GetDatabaseInstancesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetDatabaseInstancesResult, error) {
+		ApplyT(func(v interface{}) (GetDatabaseInstancesResultOutput, error) {
 			args := v.(GetDatabaseInstancesArgs)
-			r, err := GetDatabaseInstances(ctx, &args, opts...)
-			var s GetDatabaseInstancesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetDatabaseInstancesResult
+			secret, err := ctx.InvokePackageRaw("gcp:sql/getDatabaseInstances:getDatabaseInstances", args, &rv, "", opts...)
+			if err != nil {
+				return GetDatabaseInstancesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetDatabaseInstancesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetDatabaseInstancesResultOutput), nil
+			}
+			return output, nil
 		}).(GetDatabaseInstancesResultOutput)
 }
 

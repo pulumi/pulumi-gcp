@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getWorkloadIdentityPoolProvider(args: GetWorkloadIdentityPoolProviderArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkloadIdentityPoolProviderResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:iam/getWorkloadIdentityPoolProvider:getWorkloadIdentityPoolProvider", {
         "project": args.project,
@@ -93,7 +92,12 @@ export interface GetWorkloadIdentityPoolProviderResult {
  * ```
  */
 export function getWorkloadIdentityPoolProviderOutput(args: GetWorkloadIdentityPoolProviderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkloadIdentityPoolProviderResult> {
-    return pulumi.output(args).apply((a: any) => getWorkloadIdentityPoolProvider(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:iam/getWorkloadIdentityPoolProvider:getWorkloadIdentityPoolProvider", {
+        "project": args.project,
+        "workloadIdentityPoolId": args.workloadIdentityPoolId,
+        "workloadIdentityPoolProviderId": args.workloadIdentityPoolProviderId,
+    }, opts);
 }
 
 /**

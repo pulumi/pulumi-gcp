@@ -76,14 +76,20 @@ type GetCertificateMapResult struct {
 
 func GetCertificateMapOutput(ctx *pulumi.Context, args GetCertificateMapOutputArgs, opts ...pulumi.InvokeOption) GetCertificateMapResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetCertificateMapResult, error) {
+		ApplyT(func(v interface{}) (GetCertificateMapResultOutput, error) {
 			args := v.(GetCertificateMapArgs)
-			r, err := GetCertificateMap(ctx, &args, opts...)
-			var s GetCertificateMapResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetCertificateMapResult
+			secret, err := ctx.InvokePackageRaw("gcp:certificatemanager/getCertificateMap:getCertificateMap", args, &rv, "", opts...)
+			if err != nil {
+				return GetCertificateMapResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetCertificateMapResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetCertificateMapResultOutput), nil
+			}
+			return output, nil
 		}).(GetCertificateMapResultOutput)
 }
 

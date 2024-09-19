@@ -31,7 +31,6 @@ import * as utilities from "../utilities";
  */
 export function getRegionInstanceTemplate(args?: GetRegionInstanceTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionInstanceTemplateResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getRegionInstanceTemplate:getRegionInstanceTemplate", {
         "filter": args.filter,
@@ -229,7 +228,15 @@ export interface GetRegionInstanceTemplateResult {
  * ```
  */
 export function getRegionInstanceTemplateOutput(args?: GetRegionInstanceTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionInstanceTemplateResult> {
-    return pulumi.output(args).apply((a: any) => getRegionInstanceTemplate(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:compute/getRegionInstanceTemplate:getRegionInstanceTemplate", {
+        "filter": args.filter,
+        "mostRecent": args.mostRecent,
+        "name": args.name,
+        "project": args.project,
+        "region": args.region,
+    }, opts);
 }
 
 /**

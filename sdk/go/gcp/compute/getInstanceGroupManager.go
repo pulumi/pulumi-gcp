@@ -106,14 +106,20 @@ type LookupInstanceGroupManagerResult struct {
 
 func LookupInstanceGroupManagerOutput(ctx *pulumi.Context, args LookupInstanceGroupManagerOutputArgs, opts ...pulumi.InvokeOption) LookupInstanceGroupManagerResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupInstanceGroupManagerResult, error) {
+		ApplyT(func(v interface{}) (LookupInstanceGroupManagerResultOutput, error) {
 			args := v.(LookupInstanceGroupManagerArgs)
-			r, err := LookupInstanceGroupManager(ctx, &args, opts...)
-			var s LookupInstanceGroupManagerResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupInstanceGroupManagerResult
+			secret, err := ctx.InvokePackageRaw("gcp:compute/getInstanceGroupManager:getInstanceGroupManager", args, &rv, "", opts...)
+			if err != nil {
+				return LookupInstanceGroupManagerResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupInstanceGroupManagerResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupInstanceGroupManagerResultOutput), nil
+			}
+			return output, nil
 		}).(LookupInstanceGroupManagerResultOutput)
 }
 

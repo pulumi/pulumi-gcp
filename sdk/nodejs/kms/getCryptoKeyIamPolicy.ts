@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getCryptoKeyIamPolicy(args: GetCryptoKeyIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetCryptoKeyIamPolicyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:kms/getCryptoKeyIamPolicy:getCryptoKeyIamPolicy", {
         "cryptoKeyId": args.cryptoKeyId,
@@ -69,7 +68,10 @@ export interface GetCryptoKeyIamPolicyResult {
  * ```
  */
 export function getCryptoKeyIamPolicyOutput(args: GetCryptoKeyIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCryptoKeyIamPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getCryptoKeyIamPolicy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:kms/getCryptoKeyIamPolicy:getCryptoKeyIamPolicy", {
+        "cryptoKeyId": args.cryptoKeyId,
+    }, opts);
 }
 
 /**

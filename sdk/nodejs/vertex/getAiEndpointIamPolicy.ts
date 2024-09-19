@@ -5,7 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 export function getAiEndpointIamPolicy(args: GetAiEndpointIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAiEndpointIamPolicyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:vertex/getAiEndpointIamPolicy:getAiEndpointIamPolicy", {
         "endpoint": args.endpoint,
@@ -57,7 +56,12 @@ export interface GetAiEndpointIamPolicyResult {
     readonly project: string;
 }
 export function getAiEndpointIamPolicyOutput(args: GetAiEndpointIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAiEndpointIamPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getAiEndpointIamPolicy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:vertex/getAiEndpointIamPolicy:getAiEndpointIamPolicy", {
+        "endpoint": args.endpoint,
+        "location": args.location,
+        "project": args.project,
+    }, opts);
 }
 
 /**

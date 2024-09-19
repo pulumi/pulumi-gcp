@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getCustomTargetTypeIamPolicy(args: GetCustomTargetTypeIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomTargetTypeIamPolicyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:clouddeploy/getCustomTargetTypeIamPolicy:getCustomTargetTypeIamPolicy", {
         "location": args.location,
@@ -89,7 +88,12 @@ export interface GetCustomTargetTypeIamPolicyResult {
  * ```
  */
 export function getCustomTargetTypeIamPolicyOutput(args: GetCustomTargetTypeIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomTargetTypeIamPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getCustomTargetTypeIamPolicy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:clouddeploy/getCustomTargetTypeIamPolicy:getCustomTargetTypeIamPolicy", {
+        "location": args.location,
+        "name": args.name,
+        "project": args.project,
+    }, opts);
 }
 
 /**

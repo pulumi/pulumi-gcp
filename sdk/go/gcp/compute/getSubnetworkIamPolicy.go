@@ -80,14 +80,20 @@ type GetSubnetworkIamPolicyResult struct {
 
 func GetSubnetworkIamPolicyOutput(ctx *pulumi.Context, args GetSubnetworkIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetSubnetworkIamPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetSubnetworkIamPolicyResult, error) {
+		ApplyT(func(v interface{}) (GetSubnetworkIamPolicyResultOutput, error) {
 			args := v.(GetSubnetworkIamPolicyArgs)
-			r, err := GetSubnetworkIamPolicy(ctx, &args, opts...)
-			var s GetSubnetworkIamPolicyResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetSubnetworkIamPolicyResult
+			secret, err := ctx.InvokePackageRaw("gcp:compute/getSubnetworkIamPolicy:getSubnetworkIamPolicy", args, &rv, "", opts...)
+			if err != nil {
+				return GetSubnetworkIamPolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetSubnetworkIamPolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetSubnetworkIamPolicyResultOutput), nil
+			}
+			return output, nil
 		}).(GetSubnetworkIamPolicyResultOutput)
 }
 

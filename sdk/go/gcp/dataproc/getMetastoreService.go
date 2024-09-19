@@ -95,14 +95,20 @@ type LookupMetastoreServiceResult struct {
 
 func LookupMetastoreServiceOutput(ctx *pulumi.Context, args LookupMetastoreServiceOutputArgs, opts ...pulumi.InvokeOption) LookupMetastoreServiceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupMetastoreServiceResult, error) {
+		ApplyT(func(v interface{}) (LookupMetastoreServiceResultOutput, error) {
 			args := v.(LookupMetastoreServiceArgs)
-			r, err := LookupMetastoreService(ctx, &args, opts...)
-			var s LookupMetastoreServiceResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupMetastoreServiceResult
+			secret, err := ctx.InvokePackageRaw("gcp:dataproc/getMetastoreService:getMetastoreService", args, &rv, "", opts...)
+			if err != nil {
+				return LookupMetastoreServiceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupMetastoreServiceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupMetastoreServiceResultOutput), nil
+			}
+			return output, nil
 		}).(LookupMetastoreServiceResultOutput)
 }
 

@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getManagementServer(args: GetManagementServerArgs, opts?: pulumi.InvokeOptions): Promise<GetManagementServerResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:backupdisasterrecovery/getManagementServer:getManagementServer", {
         "location": args.location,
@@ -62,7 +61,10 @@ export interface GetManagementServerResult {
  * ```
  */
 export function getManagementServerOutput(args: GetManagementServerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetManagementServerResult> {
-    return pulumi.output(args).apply((a: any) => getManagementServer(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:backupdisasterrecovery/getManagementServer:getManagementServer", {
+        "location": args.location,
+    }, opts);
 }
 
 /**

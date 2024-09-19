@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getEnvironmentIamPolicy(args: GetEnvironmentIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetEnvironmentIamPolicyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:apigee/getEnvironmentIamPolicy:getEnvironmentIamPolicy", {
         "envId": args.envId,
@@ -75,7 +74,11 @@ export interface GetEnvironmentIamPolicyResult {
  * ```
  */
 export function getEnvironmentIamPolicyOutput(args: GetEnvironmentIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnvironmentIamPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getEnvironmentIamPolicy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:apigee/getEnvironmentIamPolicy:getEnvironmentIamPolicy", {
+        "envId": args.envId,
+        "orgId": args.orgId,
+    }, opts);
 }
 
 /**

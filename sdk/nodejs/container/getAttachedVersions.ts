@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getAttachedVersions(args: GetAttachedVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetAttachedVersionsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:container/getAttachedVersions:getAttachedVersions", {
         "location": args.location,
@@ -76,7 +75,11 @@ export interface GetAttachedVersionsResult {
  * ```
  */
 export function getAttachedVersionsOutput(args: GetAttachedVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAttachedVersionsResult> {
-    return pulumi.output(args).apply((a: any) => getAttachedVersions(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:container/getAttachedVersions:getAttachedVersions", {
+        "location": args.location,
+        "project": args.project,
+    }, opts);
 }
 
 /**

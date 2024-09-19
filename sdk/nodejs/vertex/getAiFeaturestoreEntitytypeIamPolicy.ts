@@ -5,7 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 export function getAiFeaturestoreEntitytypeIamPolicy(args: GetAiFeaturestoreEntitytypeIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAiFeaturestoreEntitytypeIamPolicyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:vertex/getAiFeaturestoreEntitytypeIamPolicy:getAiFeaturestoreEntitytypeIamPolicy", {
         "entitytype": args.entitytype,
@@ -48,7 +47,11 @@ export interface GetAiFeaturestoreEntitytypeIamPolicyResult {
     readonly policyData: string;
 }
 export function getAiFeaturestoreEntitytypeIamPolicyOutput(args: GetAiFeaturestoreEntitytypeIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAiFeaturestoreEntitytypeIamPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getAiFeaturestoreEntitytypeIamPolicy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:vertex/getAiFeaturestoreEntitytypeIamPolicy:getAiFeaturestoreEntitytypeIamPolicy", {
+        "entitytype": args.entitytype,
+        "featurestore": args.featurestore,
+    }, opts);
 }
 
 /**

@@ -113,14 +113,20 @@ type GetEngineVersionsResult struct {
 
 func GetEngineVersionsOutput(ctx *pulumi.Context, args GetEngineVersionsOutputArgs, opts ...pulumi.InvokeOption) GetEngineVersionsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetEngineVersionsResult, error) {
+		ApplyT(func(v interface{}) (GetEngineVersionsResultOutput, error) {
 			args := v.(GetEngineVersionsArgs)
-			r, err := GetEngineVersions(ctx, &args, opts...)
-			var s GetEngineVersionsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetEngineVersionsResult
+			secret, err := ctx.InvokePackageRaw("gcp:container/getEngineVersions:getEngineVersions", args, &rv, "", opts...)
+			if err != nil {
+				return GetEngineVersionsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetEngineVersionsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetEngineVersionsResultOutput), nil
+			}
+			return output, nil
 		}).(GetEngineVersionsResultOutput)
 }
 

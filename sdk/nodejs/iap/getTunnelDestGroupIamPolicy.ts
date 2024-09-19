@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getTunnelDestGroupIamPolicy(args: GetTunnelDestGroupIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetTunnelDestGroupIamPolicyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:iap/getTunnelDestGroupIamPolicy:getTunnelDestGroupIamPolicy", {
         "destGroup": args.destGroup,
@@ -87,7 +86,12 @@ export interface GetTunnelDestGroupIamPolicyResult {
  * ```
  */
 export function getTunnelDestGroupIamPolicyOutput(args: GetTunnelDestGroupIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTunnelDestGroupIamPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getTunnelDestGroupIamPolicy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:iap/getTunnelDestGroupIamPolicy:getTunnelDestGroupIamPolicy", {
+        "destGroup": args.destGroup,
+        "project": args.project,
+        "region": args.region,
+    }, opts);
 }
 
 /**

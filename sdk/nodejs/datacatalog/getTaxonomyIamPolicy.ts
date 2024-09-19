@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getTaxonomyIamPolicy(args: GetTaxonomyIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetTaxonomyIamPolicyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:datacatalog/getTaxonomyIamPolicy:getTaxonomyIamPolicy", {
         "project": args.project,
@@ -80,7 +79,12 @@ export interface GetTaxonomyIamPolicyResult {
  * ```
  */
 export function getTaxonomyIamPolicyOutput(args: GetTaxonomyIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTaxonomyIamPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getTaxonomyIamPolicy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:datacatalog/getTaxonomyIamPolicy:getTaxonomyIamPolicy", {
+        "project": args.project,
+        "region": args.region,
+        "taxonomy": args.taxonomy,
+    }, opts);
 }
 
 /**

@@ -50,7 +50,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getToken(args: GetTokenArgs, opts?: pulumi.InvokeOptions): Promise<GetTokenResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:siteverification/getToken:getToken", {
         "identifier": args.identifier,
@@ -146,7 +145,12 @@ export interface GetTokenResult {
  * ```
  */
 export function getTokenOutput(args: GetTokenOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTokenResult> {
-    return pulumi.output(args).apply((a: any) => getToken(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:siteverification/getToken:getToken", {
+        "identifier": args.identifier,
+        "type": args.type,
+        "verificationMethod": args.verificationMethod,
+    }, opts);
 }
 
 /**

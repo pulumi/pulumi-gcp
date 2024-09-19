@@ -5,7 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 export function getAiFeaturestoreIamPolicy(args: GetAiFeaturestoreIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAiFeaturestoreIamPolicyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:vertex/getAiFeaturestoreIamPolicy:getAiFeaturestoreIamPolicy", {
         "featurestore": args.featurestore,
@@ -57,7 +56,12 @@ export interface GetAiFeaturestoreIamPolicyResult {
     readonly region: string;
 }
 export function getAiFeaturestoreIamPolicyOutput(args: GetAiFeaturestoreIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAiFeaturestoreIamPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getAiFeaturestoreIamPolicy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:vertex/getAiFeaturestoreIamPolicy:getAiFeaturestoreIamPolicy", {
+        "featurestore": args.featurestore,
+        "project": args.project,
+        "region": args.region,
+    }, opts);
 }
 
 /**

@@ -90,14 +90,20 @@ type GetKeysResult struct {
 
 func GetKeysOutput(ctx *pulumi.Context, args GetKeysOutputArgs, opts ...pulumi.InvokeOption) GetKeysResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetKeysResult, error) {
+		ApplyT(func(v interface{}) (GetKeysResultOutput, error) {
 			args := v.(GetKeysArgs)
-			r, err := GetKeys(ctx, &args, opts...)
-			var s GetKeysResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetKeysResult
+			secret, err := ctx.InvokePackageRaw("gcp:dns/getKeys:getKeys", args, &rv, "", opts...)
+			if err != nil {
+				return GetKeysResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetKeysResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetKeysResultOutput), nil
+			}
+			return output, nil
 		}).(GetKeysResultOutput)
 }
 

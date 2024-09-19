@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  */
 export function getRegionNetworkEndpointGroup(args?: GetRegionNetworkEndpointGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionNetworkEndpointGroupResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getRegionNetworkEndpointGroup:getRegionNetworkEndpointGroup", {
         "name": args.name,
@@ -118,7 +117,14 @@ export interface GetRegionNetworkEndpointGroupResult {
  * ```
  */
 export function getRegionNetworkEndpointGroupOutput(args?: GetRegionNetworkEndpointGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionNetworkEndpointGroupResult> {
-    return pulumi.output(args).apply((a: any) => getRegionNetworkEndpointGroup(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:compute/getRegionNetworkEndpointGroup:getRegionNetworkEndpointGroup", {
+        "name": args.name,
+        "project": args.project,
+        "region": args.region,
+        "selfLink": args.selfLink,
+    }, opts);
 }
 
 /**

@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getAccountIamPolicy(args: GetAccountIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountIamPolicyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:billing/getAccountIamPolicy:getAccountIamPolicy", {
         "billingAccountId": args.billingAccountId,
@@ -69,7 +68,10 @@ export interface GetAccountIamPolicyResult {
  * ```
  */
 export function getAccountIamPolicyOutput(args: GetAccountIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountIamPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getAccountIamPolicy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:billing/getAccountIamPolicy:getAccountIamPolicy", {
+        "billingAccountId": args.billingAccountId,
+    }, opts);
 }
 
 /**

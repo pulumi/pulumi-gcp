@@ -79,14 +79,20 @@ type GetInstanceIamPolicyResult struct {
 
 func GetInstanceIamPolicyOutput(ctx *pulumi.Context, args GetInstanceIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetInstanceIamPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetInstanceIamPolicyResult, error) {
+		ApplyT(func(v interface{}) (GetInstanceIamPolicyResultOutput, error) {
 			args := v.(GetInstanceIamPolicyArgs)
-			r, err := GetInstanceIamPolicy(ctx, &args, opts...)
-			var s GetInstanceIamPolicyResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetInstanceIamPolicyResult
+			secret, err := ctx.InvokePackageRaw("gcp:compute/getInstanceIamPolicy:getInstanceIamPolicy", args, &rv, "", opts...)
+			if err != nil {
+				return GetInstanceIamPolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetInstanceIamPolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetInstanceIamPolicyResultOutput), nil
+			}
+			return output, nil
 		}).(GetInstanceIamPolicyResultOutput)
 }
 

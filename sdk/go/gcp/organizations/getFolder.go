@@ -87,14 +87,20 @@ type LookupFolderResult struct {
 
 func LookupFolderOutput(ctx *pulumi.Context, args LookupFolderOutputArgs, opts ...pulumi.InvokeOption) LookupFolderResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupFolderResult, error) {
+		ApplyT(func(v interface{}) (LookupFolderResultOutput, error) {
 			args := v.(LookupFolderArgs)
-			r, err := LookupFolder(ctx, &args, opts...)
-			var s LookupFolderResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupFolderResult
+			secret, err := ctx.InvokePackageRaw("gcp:organizations/getFolder:getFolder", args, &rv, "", opts...)
+			if err != nil {
+				return LookupFolderResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupFolderResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupFolderResultOutput), nil
+			}
+			return output, nil
 		}).(LookupFolderResultOutput)
 }
 

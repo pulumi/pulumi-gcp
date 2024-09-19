@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getPrivateCloud(args: GetPrivateCloudArgs, opts?: pulumi.InvokeOptions): Promise<GetPrivateCloudResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:vmwareengine/getPrivateCloud:getPrivateCloud", {
         "location": args.location,
@@ -97,7 +96,12 @@ export interface GetPrivateCloudResult {
  * ```
  */
 export function getPrivateCloudOutput(args: GetPrivateCloudOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrivateCloudResult> {
-    return pulumi.output(args).apply((a: any) => getPrivateCloud(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:vmwareengine/getPrivateCloud:getPrivateCloud", {
+        "location": args.location,
+        "name": args.name,
+        "project": args.project,
+    }, opts);
 }
 
 /**

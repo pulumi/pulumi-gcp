@@ -81,14 +81,20 @@ type LookupAppEngineVersionIamPolicyResult struct {
 
 func LookupAppEngineVersionIamPolicyOutput(ctx *pulumi.Context, args LookupAppEngineVersionIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupAppEngineVersionIamPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAppEngineVersionIamPolicyResult, error) {
+		ApplyT(func(v interface{}) (LookupAppEngineVersionIamPolicyResultOutput, error) {
 			args := v.(LookupAppEngineVersionIamPolicyArgs)
-			r, err := LookupAppEngineVersionIamPolicy(ctx, &args, opts...)
-			var s LookupAppEngineVersionIamPolicyResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupAppEngineVersionIamPolicyResult
+			secret, err := ctx.InvokePackageRaw("gcp:iap/getAppEngineVersionIamPolicy:getAppEngineVersionIamPolicy", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAppEngineVersionIamPolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAppEngineVersionIamPolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAppEngineVersionIamPolicyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAppEngineVersionIamPolicyResultOutput)
 }
 

@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getClusterIamPolicy(args: GetClusterIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterIamPolicyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:dataproc/getClusterIamPolicy:getClusterIamPolicy", {
         "cluster": args.cluster,
@@ -77,7 +76,12 @@ export interface GetClusterIamPolicyResult {
  * ```
  */
 export function getClusterIamPolicyOutput(args: GetClusterIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterIamPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getClusterIamPolicy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:dataproc/getClusterIamPolicy:getClusterIamPolicy", {
+        "cluster": args.cluster,
+        "project": args.project,
+        "region": args.region,
+    }, opts);
 }
 
 /**

@@ -106,14 +106,20 @@ type GetMeshIstioServiceResult struct {
 
 func GetMeshIstioServiceOutput(ctx *pulumi.Context, args GetMeshIstioServiceOutputArgs, opts ...pulumi.InvokeOption) GetMeshIstioServiceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetMeshIstioServiceResult, error) {
+		ApplyT(func(v interface{}) (GetMeshIstioServiceResultOutput, error) {
 			args := v.(GetMeshIstioServiceArgs)
-			r, err := GetMeshIstioService(ctx, &args, opts...)
-			var s GetMeshIstioServiceResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetMeshIstioServiceResult
+			secret, err := ctx.InvokePackageRaw("gcp:monitoring/getMeshIstioService:getMeshIstioService", args, &rv, "", opts...)
+			if err != nil {
+				return GetMeshIstioServiceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetMeshIstioServiceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetMeshIstioServiceResultOutput), nil
+			}
+			return output, nil
 		}).(GetMeshIstioServiceResultOutput)
 }
 

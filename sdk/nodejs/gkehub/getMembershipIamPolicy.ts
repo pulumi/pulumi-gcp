@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getMembershipIamPolicy(args: GetMembershipIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetMembershipIamPolicyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:gkehub/getMembershipIamPolicy:getMembershipIamPolicy", {
         "location": args.location,
@@ -88,7 +87,12 @@ export interface GetMembershipIamPolicyResult {
  * ```
  */
 export function getMembershipIamPolicyOutput(args: GetMembershipIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMembershipIamPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getMembershipIamPolicy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:gkehub/getMembershipIamPolicy:getMembershipIamPolicy", {
+        "location": args.location,
+        "membershipId": args.membershipId,
+        "project": args.project,
+    }, opts);
 }
 
 /**

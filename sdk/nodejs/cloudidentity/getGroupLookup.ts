@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getGroupLookup(args: GetGroupLookupArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupLookupResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:cloudidentity/getGroupLookup:getGroupLookup", {
         "groupKey": args.groupKey,
@@ -77,7 +76,10 @@ export interface GetGroupLookupResult {
  * ```
  */
 export function getGroupLookupOutput(args: GetGroupLookupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupLookupResult> {
-    return pulumi.output(args).apply((a: any) => getGroupLookup(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:cloudidentity/getGroupLookup:getGroupLookup", {
+        "groupKey": args.groupKey,
+    }, opts);
 }
 
 /**

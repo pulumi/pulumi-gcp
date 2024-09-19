@@ -10,7 +10,6 @@ import * as utilities from "../utilities";
  * A representation of a collection of database items organized in a way that allows for approximate nearest neighbor (a.k.a ANN) algorithms search.
  */
 export function getAiIndex(args: GetAiIndexArgs, opts?: pulumi.InvokeOptions): Promise<GetAiIndexResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:vertex/getAiIndex:getAiIndex", {
         "name": args.name,
@@ -68,7 +67,12 @@ export interface GetAiIndexResult {
  * A representation of a collection of database items organized in a way that allows for approximate nearest neighbor (a.k.a ANN) algorithms search.
  */
 export function getAiIndexOutput(args: GetAiIndexOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAiIndexResult> {
-    return pulumi.output(args).apply((a: any) => getAiIndex(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:vertex/getAiIndex:getAiIndex", {
+        "name": args.name,
+        "project": args.project,
+        "region": args.region,
+    }, opts);
 }
 
 /**

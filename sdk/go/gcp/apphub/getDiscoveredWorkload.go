@@ -77,14 +77,20 @@ type GetDiscoveredWorkloadResult struct {
 
 func GetDiscoveredWorkloadOutput(ctx *pulumi.Context, args GetDiscoveredWorkloadOutputArgs, opts ...pulumi.InvokeOption) GetDiscoveredWorkloadResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetDiscoveredWorkloadResult, error) {
+		ApplyT(func(v interface{}) (GetDiscoveredWorkloadResultOutput, error) {
 			args := v.(GetDiscoveredWorkloadArgs)
-			r, err := GetDiscoveredWorkload(ctx, &args, opts...)
-			var s GetDiscoveredWorkloadResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetDiscoveredWorkloadResult
+			secret, err := ctx.InvokePackageRaw("gcp:apphub/getDiscoveredWorkload:getDiscoveredWorkload", args, &rv, "", opts...)
+			if err != nil {
+				return GetDiscoveredWorkloadResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetDiscoveredWorkloadResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetDiscoveredWorkloadResultOutput), nil
+			}
+			return output, nil
 		}).(GetDiscoveredWorkloadResultOutput)
 }
 

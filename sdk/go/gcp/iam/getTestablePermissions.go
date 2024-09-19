@@ -78,14 +78,20 @@ type GetTestablePermissionsResult struct {
 
 func GetTestablePermissionsOutput(ctx *pulumi.Context, args GetTestablePermissionsOutputArgs, opts ...pulumi.InvokeOption) GetTestablePermissionsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetTestablePermissionsResult, error) {
+		ApplyT(func(v interface{}) (GetTestablePermissionsResultOutput, error) {
 			args := v.(GetTestablePermissionsArgs)
-			r, err := GetTestablePermissions(ctx, &args, opts...)
-			var s GetTestablePermissionsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetTestablePermissionsResult
+			secret, err := ctx.InvokePackageRaw("gcp:iam/getTestablePermissions:getTestablePermissions", args, &rv, "", opts...)
+			if err != nil {
+				return GetTestablePermissionsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetTestablePermissionsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetTestablePermissionsResultOutput), nil
+			}
+			return output, nil
 		}).(GetTestablePermissionsResultOutput)
 }
 

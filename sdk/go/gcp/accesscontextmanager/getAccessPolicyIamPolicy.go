@@ -68,14 +68,20 @@ type LookupAccessPolicyIamPolicyResult struct {
 
 func LookupAccessPolicyIamPolicyOutput(ctx *pulumi.Context, args LookupAccessPolicyIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupAccessPolicyIamPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAccessPolicyIamPolicyResult, error) {
+		ApplyT(func(v interface{}) (LookupAccessPolicyIamPolicyResultOutput, error) {
 			args := v.(LookupAccessPolicyIamPolicyArgs)
-			r, err := LookupAccessPolicyIamPolicy(ctx, &args, opts...)
-			var s LookupAccessPolicyIamPolicyResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupAccessPolicyIamPolicyResult
+			secret, err := ctx.InvokePackageRaw("gcp:accesscontextmanager/getAccessPolicyIamPolicy:getAccessPolicyIamPolicy", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAccessPolicyIamPolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAccessPolicyIamPolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAccessPolicyIamPolicyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAccessPolicyIamPolicyResultOutput)
 }
 

@@ -70,14 +70,20 @@ type LookupDicomStoreIamPolicyResult struct {
 
 func LookupDicomStoreIamPolicyOutput(ctx *pulumi.Context, args LookupDicomStoreIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupDicomStoreIamPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupDicomStoreIamPolicyResult, error) {
+		ApplyT(func(v interface{}) (LookupDicomStoreIamPolicyResultOutput, error) {
 			args := v.(LookupDicomStoreIamPolicyArgs)
-			r, err := LookupDicomStoreIamPolicy(ctx, &args, opts...)
-			var s LookupDicomStoreIamPolicyResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupDicomStoreIamPolicyResult
+			secret, err := ctx.InvokePackageRaw("gcp:healthcare/getDicomStoreIamPolicy:getDicomStoreIamPolicy", args, &rv, "", opts...)
+			if err != nil {
+				return LookupDicomStoreIamPolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupDicomStoreIamPolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupDicomStoreIamPolicyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupDicomStoreIamPolicyResultOutput)
 }
 

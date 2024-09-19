@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getStaticIps(args: GetStaticIpsArgs, opts?: pulumi.InvokeOptions): Promise<GetStaticIpsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:datastream/getStaticIps:getStaticIps", {
         "location": args.location,
@@ -77,7 +76,11 @@ export interface GetStaticIpsResult {
  * ```
  */
 export function getStaticIpsOutput(args: GetStaticIpsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStaticIpsResult> {
-    return pulumi.output(args).apply((a: any) => getStaticIps(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:datastream/getStaticIps:getStaticIps", {
+        "location": args.location,
+        "project": args.project,
+    }, opts);
 }
 
 /**

@@ -67,14 +67,20 @@ type GetCryptoKeyIamPolicyResult struct {
 
 func GetCryptoKeyIamPolicyOutput(ctx *pulumi.Context, args GetCryptoKeyIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetCryptoKeyIamPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetCryptoKeyIamPolicyResult, error) {
+		ApplyT(func(v interface{}) (GetCryptoKeyIamPolicyResultOutput, error) {
 			args := v.(GetCryptoKeyIamPolicyArgs)
-			r, err := GetCryptoKeyIamPolicy(ctx, &args, opts...)
-			var s GetCryptoKeyIamPolicyResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetCryptoKeyIamPolicyResult
+			secret, err := ctx.InvokePackageRaw("gcp:kms/getCryptoKeyIamPolicy:getCryptoKeyIamPolicy", args, &rv, "", opts...)
+			if err != nil {
+				return GetCryptoKeyIamPolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetCryptoKeyIamPolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetCryptoKeyIamPolicyResultOutput), nil
+			}
+			return output, nil
 		}).(GetCryptoKeyIamPolicyResultOutput)
 }
 
