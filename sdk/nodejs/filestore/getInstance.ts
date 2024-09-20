@@ -24,6 +24,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getInstance(args: GetInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:filestore/getInstance:getInstance", {
         "location": args.location,
@@ -97,12 +98,7 @@ export interface GetInstanceResult {
  * ```
  */
 export function getInstanceOutput(args: GetInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:filestore/getInstance:getInstance", {
-        "location": args.location,
-        "name": args.name,
-        "project": args.project,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getInstance(a, opts))
 }
 
 /**

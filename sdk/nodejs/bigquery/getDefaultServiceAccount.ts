@@ -31,6 +31,7 @@ import * as utilities from "../utilities";
  */
 export function getDefaultServiceAccount(args?: GetDefaultServiceAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetDefaultServiceAccountResult> {
     args = args || {};
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:bigquery/getDefaultServiceAccount:getDefaultServiceAccount", {
         "project": args.project,
@@ -92,11 +93,7 @@ export interface GetDefaultServiceAccountResult {
  * ```
  */
 export function getDefaultServiceAccountOutput(args?: GetDefaultServiceAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDefaultServiceAccountResult> {
-    args = args || {};
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:bigquery/getDefaultServiceAccount:getDefaultServiceAccount", {
-        "project": args.project,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getDefaultServiceAccount(a, opts))
 }
 
 /**

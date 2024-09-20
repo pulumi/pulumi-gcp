@@ -32,6 +32,7 @@ import * as utilities from "../utilities";
  */
 export function getSnapshot(args?: GetSnapshotArgs, opts?: pulumi.InvokeOptions): Promise<GetSnapshotResult> {
     args = args || {};
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getSnapshot:getSnapshot", {
         "filter": args.filter,
@@ -124,14 +125,7 @@ export interface GetSnapshotResult {
  * ```
  */
 export function getSnapshotOutput(args?: GetSnapshotOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSnapshotResult> {
-    args = args || {};
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:compute/getSnapshot:getSnapshot", {
-        "filter": args.filter,
-        "mostRecent": args.mostRecent,
-        "name": args.name,
-        "project": args.project,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getSnapshot(a, opts))
 }
 
 /**

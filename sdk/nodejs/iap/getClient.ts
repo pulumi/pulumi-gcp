@@ -23,6 +23,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getClient(args: GetClientArgs, opts?: pulumi.InvokeOptions): Promise<GetClientResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:iap/getClient:getClient", {
         "brand": args.brand,
@@ -76,11 +77,7 @@ export interface GetClientResult {
  * ```
  */
 export function getClientOutput(args: GetClientOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClientResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:iap/getClient:getClient", {
-        "brand": args.brand,
-        "clientId": args.clientId,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getClient(a, opts))
 }
 
 /**

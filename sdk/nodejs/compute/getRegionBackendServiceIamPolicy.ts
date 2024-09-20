@@ -5,6 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 export function getRegionBackendServiceIamPolicy(args: GetRegionBackendServiceIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionBackendServiceIamPolicyResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getRegionBackendServiceIamPolicy:getRegionBackendServiceIamPolicy", {
         "name": args.name,
@@ -58,12 +59,7 @@ export interface GetRegionBackendServiceIamPolicyResult {
     readonly region: string;
 }
 export function getRegionBackendServiceIamPolicyOutput(args: GetRegionBackendServiceIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionBackendServiceIamPolicyResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:compute/getRegionBackendServiceIamPolicy:getRegionBackendServiceIamPolicy", {
-        "name": args.name,
-        "project": args.project,
-        "region": args.region,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getRegionBackendServiceIamPolicy(a, opts))
 }
 
 /**

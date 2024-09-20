@@ -20,6 +20,7 @@ import * as utilities from "../utilities";
  */
 export function getWebIamPolicy(args?: GetWebIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetWebIamPolicyResult> {
     args = args || {};
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:iap/getWebIamPolicy:getWebIamPolicy", {
         "project": args.project,
@@ -71,11 +72,7 @@ export interface GetWebIamPolicyResult {
  * ```
  */
 export function getWebIamPolicyOutput(args?: GetWebIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebIamPolicyResult> {
-    args = args || {};
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:iap/getWebIamPolicy:getWebIamPolicy", {
-        "project": args.project,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getWebIamPolicy(a, opts))
 }
 
 /**

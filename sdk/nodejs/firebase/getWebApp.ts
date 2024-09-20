@@ -8,6 +8,7 @@ import * as utilities from "../utilities";
  * A Google Cloud Firebase web application instance
  */
 export function getWebApp(args: GetWebAppArgs, opts?: pulumi.InvokeOptions): Promise<GetWebAppResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:firebase/getWebApp:getWebApp", {
         "appId": args.appId,
@@ -61,11 +62,7 @@ export interface GetWebAppResult {
  * A Google Cloud Firebase web application instance
  */
 export function getWebAppOutput(args: GetWebAppOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebAppResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:firebase/getWebApp:getWebApp", {
-        "appId": args.appId,
-        "project": args.project,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getWebApp(a, opts))
 }
 
 /**

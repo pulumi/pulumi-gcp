@@ -20,6 +20,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getWebTypeAppEngineIamPolicy(args: GetWebTypeAppEngineIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetWebTypeAppEngineIamPolicyResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:iap/getWebTypeAppEngineIamPolicy:getWebTypeAppEngineIamPolicy", {
         "appId": args.appId,
@@ -78,11 +79,7 @@ export interface GetWebTypeAppEngineIamPolicyResult {
  * ```
  */
 export function getWebTypeAppEngineIamPolicyOutput(args: GetWebTypeAppEngineIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebTypeAppEngineIamPolicyResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:iap/getWebTypeAppEngineIamPolicy:getWebTypeAppEngineIamPolicy", {
-        "appId": args.appId,
-        "project": args.project,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getWebTypeAppEngineIamPolicy(a, opts))
 }
 
 /**

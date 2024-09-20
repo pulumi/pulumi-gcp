@@ -20,6 +20,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getAttestorIamPolicy(args: GetAttestorIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAttestorIamPolicyResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:binaryauthorization/getAttestorIamPolicy:getAttestorIamPolicy", {
         "attestor": args.attestor,
@@ -78,11 +79,7 @@ export interface GetAttestorIamPolicyResult {
  * ```
  */
 export function getAttestorIamPolicyOutput(args: GetAttestorIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAttestorIamPolicyResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:binaryauthorization/getAttestorIamPolicy:getAttestorIamPolicy", {
-        "attestor": args.attestor,
-        "project": args.project,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getAttestorIamPolicy(a, opts))
 }
 
 /**

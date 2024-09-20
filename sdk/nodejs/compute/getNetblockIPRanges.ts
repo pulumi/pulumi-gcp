@@ -44,6 +44,7 @@ import * as utilities from "../utilities";
  */
 export function getNetblockIPRanges(args?: GetNetblockIPRangesArgs, opts?: pulumi.InvokeOptions): Promise<GetNetblockIPRangesResult> {
     args = args || {};
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getNetblockIPRanges:getNetblockIPRanges", {
         "rangeType": args.rangeType,
@@ -139,11 +140,7 @@ export interface GetNetblockIPRangesResult {
  * ```
  */
 export function getNetblockIPRangesOutput(args?: GetNetblockIPRangesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetblockIPRangesResult> {
-    args = args || {};
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:compute/getNetblockIPRanges:getNetblockIPRanges", {
-        "rangeType": args.rangeType,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getNetblockIPRanges(a, opts))
 }
 
 /**

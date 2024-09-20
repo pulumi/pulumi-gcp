@@ -19,6 +19,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getPolicyTagIamPolicy(args: GetPolicyTagIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyTagIamPolicyResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:datacatalog/getPolicyTagIamPolicy:getPolicyTagIamPolicy", {
         "policyTag": args.policyTag,
@@ -69,10 +70,7 @@ export interface GetPolicyTagIamPolicyResult {
  * ```
  */
 export function getPolicyTagIamPolicyOutput(args: GetPolicyTagIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicyTagIamPolicyResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:datacatalog/getPolicyTagIamPolicy:getPolicyTagIamPolicy", {
-        "policyTag": args.policyTag,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getPolicyTagIamPolicy(a, opts))
 }
 
 /**

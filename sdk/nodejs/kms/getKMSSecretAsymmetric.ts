@@ -76,6 +76,7 @@ import * as utilities from "../utilities";
  * This will result in a Cloud SQL user being created with password `my-secret-password`.
  */
 export function getKMSSecretAsymmetric(args: GetKMSSecretAsymmetricArgs, opts?: pulumi.InvokeOptions): Promise<GetKMSSecretAsymmetricResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:kms/getKMSSecretAsymmetric:getKMSSecretAsymmetric", {
         "ciphertext": args.ciphertext,
@@ -195,12 +196,7 @@ export interface GetKMSSecretAsymmetricResult {
  * This will result in a Cloud SQL user being created with password `my-secret-password`.
  */
 export function getKMSSecretAsymmetricOutput(args: GetKMSSecretAsymmetricOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKMSSecretAsymmetricResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:kms/getKMSSecretAsymmetric:getKMSSecretAsymmetric", {
-        "ciphertext": args.ciphertext,
-        "crc32": args.crc32,
-        "cryptoKeyVersion": args.cryptoKeyVersion,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getKMSSecretAsymmetric(a, opts))
 }
 
 /**

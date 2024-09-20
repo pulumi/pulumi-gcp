@@ -19,6 +19,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getSubscriptionIamPolicy(args: GetSubscriptionIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetSubscriptionIamPolicyResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:pubsub/getSubscriptionIamPolicy:getSubscriptionIamPolicy", {
         "project": args.project,
@@ -75,11 +76,7 @@ export interface GetSubscriptionIamPolicyResult {
  * ```
  */
 export function getSubscriptionIamPolicyOutput(args: GetSubscriptionIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubscriptionIamPolicyResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:pubsub/getSubscriptionIamPolicy:getSubscriptionIamPolicy", {
-        "project": args.project,
-        "subscription": args.subscription,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getSubscriptionIamPolicy(a, opts))
 }
 
 /**

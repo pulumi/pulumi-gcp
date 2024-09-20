@@ -19,6 +19,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getDicomStoreIamPolicy(args: GetDicomStoreIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetDicomStoreIamPolicyResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:healthcare/getDicomStoreIamPolicy:getDicomStoreIamPolicy", {
         "dicomStoreId": args.dicomStoreId,
@@ -71,10 +72,7 @@ export interface GetDicomStoreIamPolicyResult {
  * ```
  */
 export function getDicomStoreIamPolicyOutput(args: GetDicomStoreIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDicomStoreIamPolicyResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:healthcare/getDicomStoreIamPolicy:getDicomStoreIamPolicy", {
-        "dicomStoreId": args.dicomStoreId,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getDicomStoreIamPolicy(a, opts))
 }
 
 /**

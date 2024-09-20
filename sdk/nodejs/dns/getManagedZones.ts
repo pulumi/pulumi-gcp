@@ -24,6 +24,7 @@ import * as utilities from "../utilities";
  */
 export function getManagedZones(args?: GetManagedZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetManagedZonesResult> {
     args = args || {};
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:dns/getManagedZones:getManagedZones", {
         "project": args.project,
@@ -68,11 +69,7 @@ export interface GetManagedZonesResult {
  * ```
  */
 export function getManagedZonesOutput(args?: GetManagedZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetManagedZonesResult> {
-    args = args || {};
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:dns/getManagedZones:getManagedZones", {
-        "project": args.project,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getManagedZones(a, opts))
 }
 
 /**

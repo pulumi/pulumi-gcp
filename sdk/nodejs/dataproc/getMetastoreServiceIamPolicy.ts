@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getMetastoreServiceIamPolicy(args: GetMetastoreServiceIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetMetastoreServiceIamPolicyResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:dataproc/getMetastoreServiceIamPolicy:getMetastoreServiceIamPolicy", {
         "location": args.location,
@@ -87,12 +88,7 @@ export interface GetMetastoreServiceIamPolicyResult {
  * ```
  */
 export function getMetastoreServiceIamPolicyOutput(args: GetMetastoreServiceIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMetastoreServiceIamPolicyResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:dataproc/getMetastoreServiceIamPolicy:getMetastoreServiceIamPolicy", {
-        "location": args.location,
-        "project": args.project,
-        "serviceId": args.serviceId,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getMetastoreServiceIamPolicy(a, opts))
 }
 
 /**

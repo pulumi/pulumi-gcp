@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getDatascanIamPolicy(args: GetDatascanIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetDatascanIamPolicyResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:dataplex/getDatascanIamPolicy:getDatascanIamPolicy", {
         "dataScanId": args.dataScanId,
@@ -86,12 +87,7 @@ export interface GetDatascanIamPolicyResult {
  * ```
  */
 export function getDatascanIamPolicyOutput(args: GetDatascanIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatascanIamPolicyResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:dataplex/getDatascanIamPolicy:getDatascanIamPolicy", {
-        "dataScanId": args.dataScanId,
-        "location": args.location,
-        "project": args.project,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getDatascanIamPolicy(a, opts))
 }
 
 /**

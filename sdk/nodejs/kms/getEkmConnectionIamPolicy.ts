@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getEkmConnectionIamPolicy(args: GetEkmConnectionIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetEkmConnectionIamPolicyResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:kms/getEkmConnectionIamPolicy:getEkmConnectionIamPolicy", {
         "location": args.location,
@@ -90,12 +91,7 @@ export interface GetEkmConnectionIamPolicyResult {
  * ```
  */
 export function getEkmConnectionIamPolicyOutput(args: GetEkmConnectionIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEkmConnectionIamPolicyResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:kms/getEkmConnectionIamPolicy:getEkmConnectionIamPolicy", {
-        "location": args.location,
-        "name": args.name,
-        "project": args.project,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getEkmConnectionIamPolicy(a, opts))
 }
 
 /**

@@ -22,6 +22,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getLogViewIamPolicy(args: GetLogViewIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetLogViewIamPolicyResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:logging/getLogViewIamPolicy:getLogViewIamPolicy", {
         "bucket": args.bucket,
@@ -95,13 +96,7 @@ export interface GetLogViewIamPolicyResult {
  * ```
  */
 export function getLogViewIamPolicyOutput(args: GetLogViewIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLogViewIamPolicyResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:logging/getLogViewIamPolicy:getLogViewIamPolicy", {
-        "bucket": args.bucket,
-        "location": args.location,
-        "name": args.name,
-        "parent": args.parent,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getLogViewIamPolicy(a, opts))
 }
 
 /**

@@ -5,6 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 export function getGatewayIamPolicy(args: GetGatewayIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewayIamPolicyResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:apigateway/getGatewayIamPolicy:getGatewayIamPolicy", {
         "gateway": args.gateway,
@@ -54,12 +55,7 @@ export interface GetGatewayIamPolicyResult {
     readonly region: string;
 }
 export function getGatewayIamPolicyOutput(args: GetGatewayIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewayIamPolicyResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:apigateway/getGatewayIamPolicy:getGatewayIamPolicy", {
-        "gateway": args.gateway,
-        "project": args.project,
-        "region": args.region,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getGatewayIamPolicy(a, opts))
 }
 
 /**

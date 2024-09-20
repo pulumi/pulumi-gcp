@@ -24,6 +24,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getJob(args: GetJobArgs, opts?: pulumi.InvokeOptions): Promise<GetJobResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:cloudrunv2/getJob:getJob", {
         "location": args.location,
@@ -111,12 +112,7 @@ export interface GetJobResult {
  * ```
  */
 export function getJobOutput(args: GetJobOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetJobResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:cloudrunv2/getJob:getJob", {
-        "location": args.location,
-        "name": args.name,
-        "project": args.project,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getJob(a, opts))
 }
 
 /**

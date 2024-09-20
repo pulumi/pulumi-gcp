@@ -27,6 +27,7 @@ import * as utilities from "../utilities";
  */
 export function getTiers(args?: GetTiersArgs, opts?: pulumi.InvokeOptions): Promise<GetTiersResult> {
     args = args || {};
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:sql/getTiers:getTiers", {
         "project": args.project,
@@ -77,11 +78,7 @@ export interface GetTiersResult {
  * ```
  */
 export function getTiersOutput(args?: GetTiersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTiersResult> {
-    args = args || {};
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:sql/getTiers:getTiers", {
-        "project": args.project,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getTiers(a, opts))
 }
 
 /**

@@ -23,6 +23,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getTopic(args: GetTopicArgs, opts?: pulumi.InvokeOptions): Promise<GetTopicResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:pubsub/getTopic:getTopic", {
         "name": args.name,
@@ -83,11 +84,7 @@ export interface GetTopicResult {
  * ```
  */
 export function getTopicOutput(args: GetTopicOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTopicResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:pubsub/getTopic:getTopic", {
-        "name": args.name,
-        "project": args.project,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getTopic(a, opts))
 }
 
 /**

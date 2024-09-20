@@ -26,6 +26,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getSink(args: GetSinkArgs, opts?: pulumi.InvokeOptions): Promise<GetSinkResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:logging/getSink:getSink", {
         "id": args.id,
@@ -106,10 +107,7 @@ export interface GetSinkResult {
  * ```
  */
 export function getSinkOutput(args: GetSinkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSinkResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:logging/getSink:getSink", {
-        "id": args.id,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getSink(a, opts))
 }
 
 /**

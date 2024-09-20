@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getAppGateway(args: GetAppGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetAppGatewayResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:beyondcorp/getAppGateway:getAppGateway", {
         "name": args.name,
@@ -87,12 +88,7 @@ export interface GetAppGatewayResult {
  * ```
  */
 export function getAppGatewayOutput(args: GetAppGatewayOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppGatewayResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:beyondcorp/getAppGateway:getAppGateway", {
-        "name": args.name,
-        "project": args.project,
-        "region": args.region,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getAppGateway(a, opts))
 }
 
 /**

@@ -12,6 +12,7 @@ import * as utilities from "../utilities";
  * [the official documentation](https://cloud.google.com/compute/docs/disks) and its [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionDisks).
  */
 export function getRegionDisk(args: GetRegionDiskArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionDiskResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getRegionDisk:getRegionDisk", {
         "name": args.name,
@@ -83,12 +84,7 @@ export interface GetRegionDiskResult {
  * [the official documentation](https://cloud.google.com/compute/docs/disks) and its [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionDisks).
  */
 export function getRegionDiskOutput(args: GetRegionDiskOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionDiskResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:compute/getRegionDisk:getRegionDisk", {
-        "name": args.name,
-        "project": args.project,
-        "region": args.region,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getRegionDisk(a, opts))
 }
 
 /**

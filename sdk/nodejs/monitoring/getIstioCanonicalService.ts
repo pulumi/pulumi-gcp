@@ -38,6 +38,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getIstioCanonicalService(args: GetIstioCanonicalServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetIstioCanonicalServiceResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:monitoring/getIstioCanonicalService:getIstioCanonicalService", {
         "canonicalService": args.canonicalService,
@@ -137,13 +138,7 @@ export interface GetIstioCanonicalServiceResult {
  * ```
  */
 export function getIstioCanonicalServiceOutput(args: GetIstioCanonicalServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIstioCanonicalServiceResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:monitoring/getIstioCanonicalService:getIstioCanonicalService", {
-        "canonicalService": args.canonicalService,
-        "canonicalServiceNamespace": args.canonicalServiceNamespace,
-        "meshUid": args.meshUid,
-        "project": args.project,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getIstioCanonicalService(a, opts))
 }
 
 /**

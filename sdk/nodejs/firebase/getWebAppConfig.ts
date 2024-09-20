@@ -14,6 +14,7 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://firebase.google.com/)
  */
 export function getWebAppConfig(args: GetWebAppConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetWebAppConfigResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:firebase/getWebAppConfig:getWebAppConfig", {
         "project": args.project,
@@ -93,11 +94,7 @@ export interface GetWebAppConfigResult {
  *     * [Official Documentation](https://firebase.google.com/)
  */
 export function getWebAppConfigOutput(args: GetWebAppConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebAppConfigResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:firebase/getWebAppConfig:getWebAppConfig", {
-        "project": args.project,
-        "webAppId": args.webAppId,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getWebAppConfig(a, opts))
 }
 
 /**

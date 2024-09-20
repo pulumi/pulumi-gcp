@@ -30,6 +30,7 @@ import * as utilities from "../utilities";
  */
 export function getSecurityPolicy(args?: GetSecurityPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetSecurityPolicyResult> {
     args = args || {};
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getSecurityPolicy:getSecurityPolicy", {
         "name": args.name,
@@ -98,13 +99,7 @@ export interface GetSecurityPolicyResult {
  * ```
  */
 export function getSecurityPolicyOutput(args?: GetSecurityPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecurityPolicyResult> {
-    args = args || {};
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:compute/getSecurityPolicy:getSecurityPolicy", {
-        "name": args.name,
-        "project": args.project,
-        "selfLink": args.selfLink,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getSecurityPolicy(a, opts))
 }
 
 /**

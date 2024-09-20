@@ -28,6 +28,7 @@ import * as utilities from "../utilities";
 /** @deprecated gcp.compute.RouterStatus has been deprecated in favor of gcp.compute.getRouterStatus */
 export function routerStatus(args: RouterStatusArgs, opts?: pulumi.InvokeOptions): Promise<RouterStatusResult> {
     pulumi.log.warn("routerStatus is deprecated: gcp.compute.RouterStatus has been deprecated in favor of gcp.compute.getRouterStatus")
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/routerStatus:RouterStatus", {
         "name": args.name,
@@ -102,13 +103,7 @@ export interface RouterStatusResult {
  */
 /** @deprecated gcp.compute.RouterStatus has been deprecated in favor of gcp.compute.getRouterStatus */
 export function routerStatusOutput(args: RouterStatusOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<RouterStatusResult> {
-    pulumi.log.warn("routerStatus is deprecated: gcp.compute.RouterStatus has been deprecated in favor of gcp.compute.getRouterStatus")
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:compute/routerStatus:RouterStatus", {
-        "name": args.name,
-        "project": args.project,
-        "region": args.region,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => routerStatus(a, opts))
 }
 
 /**

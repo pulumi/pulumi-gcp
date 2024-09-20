@@ -26,6 +26,7 @@ import * as utilities from "../utilities";
  */
 export function getNetworkEndpointGroup(args?: GetNetworkEndpointGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkEndpointGroupResult> {
     args = args || {};
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getNetworkEndpointGroup:getNetworkEndpointGroup", {
         "name": args.name,
@@ -117,14 +118,7 @@ export interface GetNetworkEndpointGroupResult {
  * ```
  */
 export function getNetworkEndpointGroupOutput(args?: GetNetworkEndpointGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkEndpointGroupResult> {
-    args = args || {};
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:compute/getNetworkEndpointGroup:getNetworkEndpointGroup", {
-        "name": args.name,
-        "project": args.project,
-        "selfLink": args.selfLink,
-        "zone": args.zone,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getNetworkEndpointGroup(a, opts))
 }
 
 /**

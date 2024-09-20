@@ -10,6 +10,7 @@ import * as utilities from "../utilities";
  */
 export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
     args = args || {};
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getZones:getZones", {
         "project": args.project,
@@ -58,13 +59,7 @@ export interface GetZonesResult {
  * See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
  */
 export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZonesResult> {
-    args = args || {};
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:compute/getZones:getZones", {
-        "project": args.project,
-        "region": args.region,
-        "status": args.status,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getZones(a, opts))
 }
 
 /**

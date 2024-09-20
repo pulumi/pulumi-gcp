@@ -29,6 +29,7 @@ import * as utilities from "../utilities";
  */
 export function getImageVersions(args?: GetImageVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetImageVersionsResult> {
     args = args || {};
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:composer/getImageVersions:getImageVersions", {
         "project": args.project,
@@ -89,12 +90,7 @@ export interface GetImageVersionsResult {
  * ```
  */
 export function getImageVersionsOutput(args?: GetImageVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImageVersionsResult> {
-    args = args || {};
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:composer/getImageVersions:getImageVersions", {
-        "project": args.project,
-        "region": args.region,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getImageVersions(a, opts))
 }
 
 /**

@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getServiceIamPolicy(args: GetServiceIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceIamPolicyResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:cloudrunv2/getServiceIamPolicy:getServiceIamPolicy", {
         "location": args.location,
@@ -88,12 +89,7 @@ export interface GetServiceIamPolicyResult {
  * ```
  */
 export function getServiceIamPolicyOutput(args: GetServiceIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceIamPolicyResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:cloudrunv2/getServiceIamPolicy:getServiceIamPolicy", {
-        "location": args.location,
-        "name": args.name,
-        "project": args.project,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getServiceIamPolicy(a, opts))
 }
 
 /**

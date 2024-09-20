@@ -19,6 +19,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getVPNGateway(args: GetVPNGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetVPNGatewayResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getVPNGateway:getVPNGateway", {
         "name": args.name,
@@ -92,12 +93,7 @@ export interface GetVPNGatewayResult {
  * ```
  */
 export function getVPNGatewayOutput(args: GetVPNGatewayOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVPNGatewayResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:compute/getVPNGateway:getVPNGateway", {
-        "name": args.name,
-        "project": args.project,
-        "region": args.region,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getVPNGateway(a, opts))
 }
 
 /**

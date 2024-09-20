@@ -19,6 +19,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getCertificateTemplateIamPolicy(args: GetCertificateTemplateIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificateTemplateIamPolicyResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:certificateauthority/getCertificateTemplateIamPolicy:getCertificateTemplateIamPolicy", {
         "certificateTemplate": args.certificateTemplate,
@@ -84,12 +85,7 @@ export interface GetCertificateTemplateIamPolicyResult {
  * ```
  */
 export function getCertificateTemplateIamPolicyOutput(args: GetCertificateTemplateIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCertificateTemplateIamPolicyResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:certificateauthority/getCertificateTemplateIamPolicy:getCertificateTemplateIamPolicy", {
-        "certificateTemplate": args.certificateTemplate,
-        "location": args.location,
-        "project": args.project,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getCertificateTemplateIamPolicy(a, opts))
 }
 
 /**

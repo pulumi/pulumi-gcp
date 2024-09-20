@@ -29,6 +29,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getTagKey(args: GetTagKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetTagKeyResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:tags/getTagKey:getTagKey", {
         "parent": args.parent,
@@ -105,11 +106,7 @@ export interface GetTagKeyResult {
  * ```
  */
 export function getTagKeyOutput(args: GetTagKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTagKeyResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:tags/getTagKey:getTagKey", {
-        "parent": args.parent,
-        "shortName": args.shortName,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getTagKey(a, opts))
 }
 
 /**

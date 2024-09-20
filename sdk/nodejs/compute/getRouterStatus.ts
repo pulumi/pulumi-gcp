@@ -26,6 +26,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getRouterStatus(args: GetRouterStatusArgs, opts?: pulumi.InvokeOptions): Promise<GetRouterStatusResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getRouterStatus:getRouterStatus", {
         "name": args.name,
@@ -99,12 +100,7 @@ export interface GetRouterStatusResult {
  * ```
  */
 export function getRouterStatusOutput(args: GetRouterStatusOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouterStatusResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:compute/getRouterStatus:getRouterStatus", {
-        "name": args.name,
-        "project": args.project,
-        "region": args.region,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getRouterStatus(a, opts))
 }
 
 /**

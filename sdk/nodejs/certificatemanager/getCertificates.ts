@@ -31,6 +31,7 @@ import * as utilities from "../utilities";
  */
 export function getCertificates(args?: GetCertificatesArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificatesResult> {
     args = args || {};
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:certificatemanager/getCertificates:getCertificates", {
         "filter": args.filter,
@@ -88,12 +89,7 @@ export interface GetCertificatesResult {
  * ```
  */
 export function getCertificatesOutput(args?: GetCertificatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCertificatesResult> {
-    args = args || {};
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:certificatemanager/getCertificates:getCertificates", {
-        "filter": args.filter,
-        "region": args.region,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getCertificates(a, opts))
 }
 
 /**

@@ -75,6 +75,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getAccountIdToken(args: GetAccountIdTokenArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountIdTokenResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:serviceaccount/getAccountIdToken:getAccountIdToken", {
         "delegates": args.delegates,
@@ -194,13 +195,7 @@ export interface GetAccountIdTokenResult {
  * ```
  */
 export function getAccountIdTokenOutput(args: GetAccountIdTokenOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountIdTokenResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:serviceaccount/getAccountIdToken:getAccountIdToken", {
-        "delegates": args.delegates,
-        "includeEmail": args.includeEmail,
-        "targetAudience": args.targetAudience,
-        "targetServiceAccount": args.targetServiceAccount,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getAccountIdToken(a, opts))
 }
 
 /**

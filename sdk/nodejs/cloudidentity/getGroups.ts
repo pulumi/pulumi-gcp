@@ -23,6 +23,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getGroups(args: GetGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupsResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:cloudidentity/getGroups:getGroups", {
         "parent": args.parent,
@@ -70,10 +71,7 @@ export interface GetGroupsResult {
  * ```
  */
 export function getGroupsOutput(args: GetGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupsResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:cloudidentity/getGroups:getGroups", {
-        "parent": args.parent,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getGroups(a, opts))
 }
 
 /**

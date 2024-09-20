@@ -23,6 +23,7 @@ import * as utilities from "../utilities";
  */
 export function getSubnetwork(args?: GetSubnetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetSubnetworkResult> {
     args = args || {};
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getSubnetwork:getSubnetwork", {
         "name": args.name,
@@ -120,14 +121,7 @@ export interface GetSubnetworkResult {
  * ```
  */
 export function getSubnetworkOutput(args?: GetSubnetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubnetworkResult> {
-    args = args || {};
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:compute/getSubnetwork:getSubnetwork", {
-        "name": args.name,
-        "project": args.project,
-        "region": args.region,
-        "selfLink": args.selfLink,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getSubnetwork(a, opts))
 }
 
 /**

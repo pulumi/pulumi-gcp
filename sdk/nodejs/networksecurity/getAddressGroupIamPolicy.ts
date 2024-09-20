@@ -8,6 +8,7 @@ import * as utilities from "../utilities";
  * Retrieves the current IAM policy data for projectaddressgroup
  */
 export function getAddressGroupIamPolicy(args: GetAddressGroupIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAddressGroupIamPolicyResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:networksecurity/getAddressGroupIamPolicy:getAddressGroupIamPolicy", {
         "location": args.location,
@@ -63,12 +64,7 @@ export interface GetAddressGroupIamPolicyResult {
  * Retrieves the current IAM policy data for projectaddressgroup
  */
 export function getAddressGroupIamPolicyOutput(args: GetAddressGroupIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAddressGroupIamPolicyResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:networksecurity/getAddressGroupIamPolicy:getAddressGroupIamPolicy", {
-        "location": args.location,
-        "name": args.name,
-        "project": args.project,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getAddressGroupIamPolicy(a, opts))
 }
 
 /**

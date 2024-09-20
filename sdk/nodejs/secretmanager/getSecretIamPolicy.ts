@@ -20,6 +20,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getSecretIamPolicy(args: GetSecretIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretIamPolicyResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:secretmanager/getSecretIamPolicy:getSecretIamPolicy", {
         "project": args.project,
@@ -75,11 +76,7 @@ export interface GetSecretIamPolicyResult {
  * ```
  */
 export function getSecretIamPolicyOutput(args: GetSecretIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretIamPolicyResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:secretmanager/getSecretIamPolicy:getSecretIamPolicy", {
-        "project": args.project,
-        "secretId": args.secretId,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getSecretIamPolicy(a, opts))
 }
 
 /**

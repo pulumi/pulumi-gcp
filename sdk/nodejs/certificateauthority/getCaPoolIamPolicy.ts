@@ -19,6 +19,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getCaPoolIamPolicy(args: GetCaPoolIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetCaPoolIamPolicyResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:certificateauthority/getCaPoolIamPolicy:getCaPoolIamPolicy", {
         "caPool": args.caPool,
@@ -86,12 +87,7 @@ export interface GetCaPoolIamPolicyResult {
  * ```
  */
 export function getCaPoolIamPolicyOutput(args: GetCaPoolIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCaPoolIamPolicyResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:certificateauthority/getCaPoolIamPolicy:getCaPoolIamPolicy", {
-        "caPool": args.caPool,
-        "location": args.location,
-        "project": args.project,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getCaPoolIamPolicy(a, opts))
 }
 
 /**

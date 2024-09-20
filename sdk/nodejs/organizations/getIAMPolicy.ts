@@ -14,6 +14,7 @@ import * as utilities from "../utilities";
  */
 export function getIAMPolicy(args?: GetIAMPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetIAMPolicyResult> {
     args = args || {};
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:organizations/getIAMPolicy:getIAMPolicy", {
         "auditConfigs": args.auditConfigs,
@@ -63,12 +64,7 @@ export interface GetIAMPolicyResult {
  * **Note:** Please review the documentation of the resource that you will be using the datasource with. Some resources such as `gcp.projects.IAMPolicy` and others have limitations in their API methods which are noted on their respective page.
  */
 export function getIAMPolicyOutput(args?: GetIAMPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIAMPolicyResult> {
-    args = args || {};
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:organizations/getIAMPolicy:getIAMPolicy", {
-        "auditConfigs": args.auditConfigs,
-        "bindings": args.bindings,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getIAMPolicy(a, opts))
 }
 
 /**

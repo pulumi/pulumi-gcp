@@ -35,6 +35,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getConnector(args: GetConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectorResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:vpcaccess/getConnector:getConnector", {
         "name": args.name,
@@ -117,12 +118,7 @@ export interface GetConnectorResult {
  * ```
  */
 export function getConnectorOutput(args: GetConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectorResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:vpcaccess/getConnector:getConnector", {
-        "name": args.name,
-        "project": args.project,
-        "region": args.region,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getConnector(a, opts))
 }
 
 /**

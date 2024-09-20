@@ -22,6 +22,7 @@ import * as utilities from "../utilities";
  */
 export function getAzureVersions(args?: GetAzureVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetAzureVersionsResult> {
     args = args || {};
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:container/getAzureVersions:getAzureVersions", {
         "location": args.location,
@@ -80,12 +81,7 @@ export interface GetAzureVersionsResult {
  * ```
  */
 export function getAzureVersionsOutput(args?: GetAzureVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAzureVersionsResult> {
-    args = args || {};
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:container/getAzureVersions:getAzureVersions", {
-        "location": args.location,
-        "project": args.project,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getAzureVersions(a, opts))
 }
 
 /**

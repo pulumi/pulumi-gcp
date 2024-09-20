@@ -20,6 +20,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getSSLPolicy(args: GetSSLPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetSSLPolicyResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getSSLPolicy:getSSLPolicy", {
         "name": args.name,
@@ -102,11 +103,7 @@ export interface GetSSLPolicyResult {
  * ```
  */
 export function getSSLPolicyOutput(args: GetSSLPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSSLPolicyResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:compute/getSSLPolicy:getSSLPolicy", {
-        "name": args.name,
-        "project": args.project,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getSSLPolicy(a, opts))
 }
 
 /**

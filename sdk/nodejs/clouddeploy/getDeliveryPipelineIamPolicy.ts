@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getDeliveryPipelineIamPolicy(args: GetDeliveryPipelineIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetDeliveryPipelineIamPolicyResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:clouddeploy/getDeliveryPipelineIamPolicy:getDeliveryPipelineIamPolicy", {
         "location": args.location,
@@ -83,12 +84,7 @@ export interface GetDeliveryPipelineIamPolicyResult {
  * ```
  */
 export function getDeliveryPipelineIamPolicyOutput(args: GetDeliveryPipelineIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeliveryPipelineIamPolicyResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:clouddeploy/getDeliveryPipelineIamPolicy:getDeliveryPipelineIamPolicy", {
-        "location": args.location,
-        "name": args.name,
-        "project": args.project,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getDeliveryPipelineIamPolicy(a, opts))
 }
 
 /**

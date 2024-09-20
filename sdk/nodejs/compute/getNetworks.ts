@@ -20,6 +20,7 @@ import * as utilities from "../utilities";
  */
 export function getNetworks(args?: GetNetworksArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworksResult> {
     args = args || {};
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getNetworks:getNetworks", {
         "project": args.project,
@@ -72,11 +73,7 @@ export interface GetNetworksResult {
  * ```
  */
 export function getNetworksOutput(args?: GetNetworksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworksResult> {
-    args = args || {};
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:compute/getNetworks:getNetworks", {
-        "project": args.project,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getNetworks(a, opts))
 }
 
 /**

@@ -22,6 +22,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getRouter(args: GetRouterArgs, opts?: pulumi.InvokeOptions): Promise<GetRouterResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getRouter:getRouter", {
         "name": args.name,
@@ -89,13 +90,7 @@ export interface GetRouterResult {
  * ```
  */
 export function getRouterOutput(args: GetRouterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouterResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:compute/getRouter:getRouter", {
-        "name": args.name,
-        "network": args.network,
-        "project": args.project,
-        "region": args.region,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getRouter(a, opts))
 }
 
 /**

@@ -26,6 +26,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getOrganizationSettings(args: GetOrganizationSettingsArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationSettingsResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:logging/getOrganizationSettings:getOrganizationSettings", {
         "organization": args.organization,
@@ -104,10 +105,7 @@ export interface GetOrganizationSettingsResult {
  * ```
  */
 export function getOrganizationSettingsOutput(args: GetOrganizationSettingsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationSettingsResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:logging/getOrganizationSettings:getOrganizationSettings", {
-        "organization": args.organization,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getOrganizationSettings(a, opts))
 }
 
 /**

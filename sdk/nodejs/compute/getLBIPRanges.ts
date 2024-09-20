@@ -29,6 +29,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getLBIPRanges(opts?: pulumi.InvokeOptions): Promise<GetLBIPRangesResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getLBIPRanges:getLBIPRanges", {
     }, opts);
@@ -76,7 +77,5 @@ export interface GetLBIPRangesResult {
  * ```
  */
 export function getLBIPRangesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetLBIPRangesResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:compute/getLBIPRanges:getLBIPRanges", {
-    }, opts);
+    return pulumi.output(getLBIPRanges(opts))
 }

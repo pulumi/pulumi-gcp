@@ -20,6 +20,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getBackupRun(args: GetBackupRunArgs, opts?: pulumi.InvokeOptions): Promise<GetBackupRunResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:sql/getBackupRun:getBackupRun", {
         "backupId": args.backupId,
@@ -96,13 +97,7 @@ export interface GetBackupRunResult {
  * ```
  */
 export function getBackupRunOutput(args: GetBackupRunOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackupRunResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:sql/getBackupRun:getBackupRun", {
-        "backupId": args.backupId,
-        "instance": args.instance,
-        "mostRecent": args.mostRecent,
-        "project": args.project,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getBackupRun(a, opts))
 }
 
 /**

@@ -22,6 +22,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getDiscoveredService(args: GetDiscoveredServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetDiscoveredServiceResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:apphub/getDiscoveredService:getDiscoveredService", {
         "location": args.location,
@@ -91,12 +92,7 @@ export interface GetDiscoveredServiceResult {
  * ```
  */
 export function getDiscoveredServiceOutput(args: GetDiscoveredServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDiscoveredServiceResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:apphub/getDiscoveredService:getDiscoveredService", {
-        "location": args.location,
-        "project": args.project,
-        "serviceUri": args.serviceUri,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getDiscoveredService(a, opts))
 }
 
 /**

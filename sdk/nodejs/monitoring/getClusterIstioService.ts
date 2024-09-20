@@ -39,6 +39,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getClusterIstioService(args: GetClusterIstioServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterIstioServiceResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:monitoring/getClusterIstioService:getClusterIstioService", {
         "clusterName": args.clusterName,
@@ -146,14 +147,7 @@ export interface GetClusterIstioServiceResult {
  * ```
  */
 export function getClusterIstioServiceOutput(args: GetClusterIstioServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterIstioServiceResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:monitoring/getClusterIstioService:getClusterIstioService", {
-        "clusterName": args.clusterName,
-        "location": args.location,
-        "project": args.project,
-        "serviceName": args.serviceName,
-        "serviceNamespace": args.serviceNamespace,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getClusterIstioService(a, opts))
 }
 
 /**

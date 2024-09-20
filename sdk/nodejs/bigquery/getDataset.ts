@@ -24,6 +24,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getDataset(args: GetDatasetArgs, opts?: pulumi.InvokeOptions): Promise<GetDatasetResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:bigquery/getDataset:getDataset", {
         "datasetId": args.datasetId,
@@ -96,11 +97,7 @@ export interface GetDatasetResult {
  * ```
  */
 export function getDatasetOutput(args: GetDatasetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatasetResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:bigquery/getDataset:getDataset", {
-        "datasetId": args.datasetId,
-        "project": args.project,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getDataset(a, opts))
 }
 
 /**

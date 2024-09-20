@@ -38,6 +38,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getMeshIstioService(args: GetMeshIstioServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetMeshIstioServiceResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:monitoring/getMeshIstioService:getMeshIstioService", {
         "meshUid": args.meshUid,
@@ -137,13 +138,7 @@ export interface GetMeshIstioServiceResult {
  * ```
  */
 export function getMeshIstioServiceOutput(args: GetMeshIstioServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMeshIstioServiceResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:monitoring/getMeshIstioService:getMeshIstioService", {
-        "meshUid": args.meshUid,
-        "project": args.project,
-        "serviceName": args.serviceName,
-        "serviceNamespace": args.serviceNamespace,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getMeshIstioService(a, opts))
 }
 
 /**

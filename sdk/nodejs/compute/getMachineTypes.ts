@@ -19,6 +19,7 @@ import * as utilities from "../utilities";
  */
 export function getMachineTypes(args?: GetMachineTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetMachineTypesResult> {
     args = args || {};
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getMachineTypes:getMachineTypes", {
         "filter": args.filter,
@@ -73,13 +74,7 @@ export interface GetMachineTypesResult {
  * ## Example Usage
  */
 export function getMachineTypesOutput(args?: GetMachineTypesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMachineTypesResult> {
-    args = args || {};
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:compute/getMachineTypes:getMachineTypes", {
-        "filter": args.filter,
-        "project": args.project,
-        "zone": args.zone,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getMachineTypes(a, opts))
 }
 
 /**

@@ -27,6 +27,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getBackendService(args: GetBackendServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetBackendServiceResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getBackendService:getBackendService", {
         "name": args.name,
@@ -148,11 +149,7 @@ export interface GetBackendServiceResult {
  * ```
  */
 export function getBackendServiceOutput(args: GetBackendServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackendServiceResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:compute/getBackendService:getBackendService", {
-        "name": args.name,
-        "project": args.project,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getBackendService(a, opts))
 }
 
 /**

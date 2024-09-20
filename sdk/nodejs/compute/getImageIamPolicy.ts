@@ -20,6 +20,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getImageIamPolicy(args: GetImageIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetImageIamPolicyResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getImageIamPolicy:getImageIamPolicy", {
         "image": args.image,
@@ -78,11 +79,7 @@ export interface GetImageIamPolicyResult {
  * ```
  */
 export function getImageIamPolicyOutput(args: GetImageIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImageIamPolicyResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:compute/getImageIamPolicy:getImageIamPolicy", {
-        "image": args.image,
-        "project": args.project,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getImageIamPolicy(a, opts))
 }
 
 /**

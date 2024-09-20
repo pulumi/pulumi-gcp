@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getQueueIamPolicy(args: GetQueueIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetQueueIamPolicyResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:cloudtasks/getQueueIamPolicy:getQueueIamPolicy", {
         "location": args.location,
@@ -88,12 +89,7 @@ export interface GetQueueIamPolicyResult {
  * ```
  */
 export function getQueueIamPolicyOutput(args: GetQueueIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQueueIamPolicyResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:cloudtasks/getQueueIamPolicy:getQueueIamPolicy", {
-        "location": args.location,
-        "name": args.name,
-        "project": args.project,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getQueueIamPolicy(a, opts))
 }
 
 /**

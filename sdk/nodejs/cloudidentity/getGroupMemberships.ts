@@ -29,6 +29,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getGroupMemberships(args: GetGroupMembershipsArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupMembershipsResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:cloudidentity/getGroupMemberships:getGroupMemberships", {
         "group": args.group,
@@ -82,10 +83,7 @@ export interface GetGroupMembershipsResult {
  * ```
  */
 export function getGroupMembershipsOutput(args: GetGroupMembershipsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupMembershipsResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:cloudidentity/getGroupMemberships:getGroupMemberships", {
-        "group": args.group,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getGroupMemberships(a, opts))
 }
 
 /**

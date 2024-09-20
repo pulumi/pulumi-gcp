@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getDatabaseIamPolicy(args: GetDatabaseIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseIamPolicyResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:spanner/getDatabaseIamPolicy:getDatabaseIamPolicy", {
         "database": args.database,
@@ -85,12 +86,7 @@ export interface GetDatabaseIamPolicyResult {
  * ```
  */
 export function getDatabaseIamPolicyOutput(args: GetDatabaseIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseIamPolicyResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:spanner/getDatabaseIamPolicy:getDatabaseIamPolicy", {
-        "database": args.database,
-        "instance": args.instance,
-        "project": args.project,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getDatabaseIamPolicy(a, opts))
 }
 
 /**
