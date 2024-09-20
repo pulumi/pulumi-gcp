@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getBucketIamPolicy(args: GetBucketIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetBucketIamPolicyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:storage/getBucketIamPolicy:getBucketIamPolicy", {
         "bucket": args.bucket,
@@ -70,7 +69,10 @@ export interface GetBucketIamPolicyResult {
  * ```
  */
 export function getBucketIamPolicyOutput(args: GetBucketIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBucketIamPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getBucketIamPolicy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:storage/getBucketIamPolicy:getBucketIamPolicy", {
+        "bucket": args.bucket,
+    }, opts);
 }
 
 /**

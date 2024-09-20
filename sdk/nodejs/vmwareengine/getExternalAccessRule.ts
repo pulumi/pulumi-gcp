@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getExternalAccessRule(args: GetExternalAccessRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetExternalAccessRuleResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:vmwareengine/getExternalAccessRule:getExternalAccessRule", {
         "name": args.name,
@@ -89,7 +88,11 @@ export interface GetExternalAccessRuleResult {
  * ```
  */
 export function getExternalAccessRuleOutput(args: GetExternalAccessRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExternalAccessRuleResult> {
-    return pulumi.output(args).apply((a: any) => getExternalAccessRule(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:vmwareengine/getExternalAccessRule:getExternalAccessRule", {
+        "name": args.name,
+        "parent": args.parent,
+    }, opts);
 }
 
 /**

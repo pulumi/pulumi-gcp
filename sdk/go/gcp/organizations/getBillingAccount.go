@@ -88,14 +88,20 @@ type GetBillingAccountResult struct {
 
 func GetBillingAccountOutput(ctx *pulumi.Context, args GetBillingAccountOutputArgs, opts ...pulumi.InvokeOption) GetBillingAccountResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetBillingAccountResult, error) {
+		ApplyT(func(v interface{}) (GetBillingAccountResultOutput, error) {
 			args := v.(GetBillingAccountArgs)
-			r, err := GetBillingAccount(ctx, &args, opts...)
-			var s GetBillingAccountResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetBillingAccountResult
+			secret, err := ctx.InvokePackageRaw("gcp:organizations/getBillingAccount:getBillingAccount", args, &rv, "", opts...)
+			if err != nil {
+				return GetBillingAccountResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetBillingAccountResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetBillingAccountResultOutput), nil
+			}
+			return output, nil
 		}).(GetBillingAccountResultOutput)
 }
 

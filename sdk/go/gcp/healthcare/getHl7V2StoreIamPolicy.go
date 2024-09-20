@@ -70,14 +70,20 @@ type GetHl7V2StoreIamPolicyResult struct {
 
 func GetHl7V2StoreIamPolicyOutput(ctx *pulumi.Context, args GetHl7V2StoreIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetHl7V2StoreIamPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetHl7V2StoreIamPolicyResult, error) {
+		ApplyT(func(v interface{}) (GetHl7V2StoreIamPolicyResultOutput, error) {
 			args := v.(GetHl7V2StoreIamPolicyArgs)
-			r, err := GetHl7V2StoreIamPolicy(ctx, &args, opts...)
-			var s GetHl7V2StoreIamPolicyResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetHl7V2StoreIamPolicyResult
+			secret, err := ctx.InvokePackageRaw("gcp:healthcare/getHl7V2StoreIamPolicy:getHl7V2StoreIamPolicy", args, &rv, "", opts...)
+			if err != nil {
+				return GetHl7V2StoreIamPolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetHl7V2StoreIamPolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetHl7V2StoreIamPolicyResultOutput), nil
+			}
+			return output, nil
 		}).(GetHl7V2StoreIamPolicyResultOutput)
 }
 

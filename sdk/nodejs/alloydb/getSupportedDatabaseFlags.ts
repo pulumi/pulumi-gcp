@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getSupportedDatabaseFlags(args: GetSupportedDatabaseFlagsArgs, opts?: pulumi.InvokeOptions): Promise<GetSupportedDatabaseFlagsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:alloydb/getSupportedDatabaseFlags:getSupportedDatabaseFlags", {
         "location": args.location,
@@ -73,7 +72,11 @@ export interface GetSupportedDatabaseFlagsResult {
  * ```
  */
 export function getSupportedDatabaseFlagsOutput(args: GetSupportedDatabaseFlagsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSupportedDatabaseFlagsResult> {
-    return pulumi.output(args).apply((a: any) => getSupportedDatabaseFlags(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:alloydb/getSupportedDatabaseFlags:getSupportedDatabaseFlags", {
+        "location": args.location,
+        "project": args.project,
+    }, opts);
 }
 
 /**

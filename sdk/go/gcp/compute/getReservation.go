@@ -77,14 +77,20 @@ type LookupReservationResult struct {
 
 func LookupReservationOutput(ctx *pulumi.Context, args LookupReservationOutputArgs, opts ...pulumi.InvokeOption) LookupReservationResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupReservationResult, error) {
+		ApplyT(func(v interface{}) (LookupReservationResultOutput, error) {
 			args := v.(LookupReservationArgs)
-			r, err := LookupReservation(ctx, &args, opts...)
-			var s LookupReservationResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupReservationResult
+			secret, err := ctx.InvokePackageRaw("gcp:compute/getReservation:getReservation", args, &rv, "", opts...)
+			if err != nil {
+				return LookupReservationResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupReservationResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupReservationResultOutput), nil
+			}
+			return output, nil
 		}).(LookupReservationResultOutput)
 }
 

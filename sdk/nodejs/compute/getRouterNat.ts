@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getRouterNat(args: GetRouterNatArgs, opts?: pulumi.InvokeOptions): Promise<GetRouterNatResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getRouterNat:getRouterNat", {
         "name": args.name,
@@ -114,7 +113,13 @@ export interface GetRouterNatResult {
  * ```
  */
 export function getRouterNatOutput(args: GetRouterNatOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouterNatResult> {
-    return pulumi.output(args).apply((a: any) => getRouterNat(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:compute/getRouterNat:getRouterNat", {
+        "name": args.name,
+        "project": args.project,
+        "region": args.region,
+        "router": args.router,
+    }, opts);
 }
 
 /**

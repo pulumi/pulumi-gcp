@@ -45,14 +45,20 @@ type GetAppleAppConfigResult struct {
 
 func GetAppleAppConfigOutput(ctx *pulumi.Context, args GetAppleAppConfigOutputArgs, opts ...pulumi.InvokeOption) GetAppleAppConfigResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetAppleAppConfigResult, error) {
+		ApplyT(func(v interface{}) (GetAppleAppConfigResultOutput, error) {
 			args := v.(GetAppleAppConfigArgs)
-			r, err := GetAppleAppConfig(ctx, &args, opts...)
-			var s GetAppleAppConfigResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetAppleAppConfigResult
+			secret, err := ctx.InvokePackageRaw("gcp:firebase/getAppleAppConfig:getAppleAppConfig", args, &rv, "", opts...)
+			if err != nil {
+				return GetAppleAppConfigResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetAppleAppConfigResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetAppleAppConfigResultOutput), nil
+			}
+			return output, nil
 		}).(GetAppleAppConfigResultOutput)
 }
 

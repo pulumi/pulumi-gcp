@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  */
 export function getSecrets(args?: GetSecretsArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:secretmanager/getSecrets:getSecrets", {
         "filter": args.filter,
@@ -73,7 +72,12 @@ export interface GetSecretsResult {
  * ```
  */
 export function getSecretsOutput(args?: GetSecretsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretsResult> {
-    return pulumi.output(args).apply((a: any) => getSecrets(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:secretmanager/getSecrets:getSecrets", {
+        "filter": args.filter,
+        "project": args.project,
+    }, opts);
 }
 
 /**

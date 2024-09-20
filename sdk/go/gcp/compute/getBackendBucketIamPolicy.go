@@ -45,14 +45,20 @@ type LookupBackendBucketIamPolicyResult struct {
 
 func LookupBackendBucketIamPolicyOutput(ctx *pulumi.Context, args LookupBackendBucketIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupBackendBucketIamPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupBackendBucketIamPolicyResult, error) {
+		ApplyT(func(v interface{}) (LookupBackendBucketIamPolicyResultOutput, error) {
 			args := v.(LookupBackendBucketIamPolicyArgs)
-			r, err := LookupBackendBucketIamPolicy(ctx, &args, opts...)
-			var s LookupBackendBucketIamPolicyResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupBackendBucketIamPolicyResult
+			secret, err := ctx.InvokePackageRaw("gcp:compute/getBackendBucketIamPolicy:getBackendBucketIamPolicy", args, &rv, "", opts...)
+			if err != nil {
+				return LookupBackendBucketIamPolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupBackendBucketIamPolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupBackendBucketIamPolicyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupBackendBucketIamPolicyResultOutput)
 }
 

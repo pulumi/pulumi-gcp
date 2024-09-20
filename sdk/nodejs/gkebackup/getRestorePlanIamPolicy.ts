@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getRestorePlanIamPolicy(args: GetRestorePlanIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetRestorePlanIamPolicyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:gkebackup/getRestorePlanIamPolicy:getRestorePlanIamPolicy", {
         "location": args.location,
@@ -90,7 +89,12 @@ export interface GetRestorePlanIamPolicyResult {
  * ```
  */
 export function getRestorePlanIamPolicyOutput(args: GetRestorePlanIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRestorePlanIamPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getRestorePlanIamPolicy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:gkebackup/getRestorePlanIamPolicy:getRestorePlanIamPolicy", {
+        "location": args.location,
+        "name": args.name,
+        "project": args.project,
+    }, opts);
 }
 
 /**

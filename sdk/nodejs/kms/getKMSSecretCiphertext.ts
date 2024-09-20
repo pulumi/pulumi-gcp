@@ -70,7 +70,6 @@ import * as utilities from "../utilities";
  * and decrypt it, e.g. using the [Cloud SDK](https://cloud.google.com/sdk/gcloud/reference/kms/decrypt)):
  */
 export function getKMSSecretCiphertext(args: GetKMSSecretCiphertextArgs, opts?: pulumi.InvokeOptions): Promise<GetKMSSecretCiphertextResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:kms/getKMSSecretCiphertext:getKMSSecretCiphertext", {
         "cryptoKey": args.cryptoKey,
@@ -175,7 +174,11 @@ export interface GetKMSSecretCiphertextResult {
  * and decrypt it, e.g. using the [Cloud SDK](https://cloud.google.com/sdk/gcloud/reference/kms/decrypt)):
  */
 export function getKMSSecretCiphertextOutput(args: GetKMSSecretCiphertextOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKMSSecretCiphertextResult> {
-    return pulumi.output(args).apply((a: any) => getKMSSecretCiphertext(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:kms/getKMSSecretCiphertext:getKMSSecretCiphertext", {
+        "cryptoKey": args.cryptoKey,
+        "plaintext": args.plaintext,
+    }, opts);
 }
 
 /**

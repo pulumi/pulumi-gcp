@@ -100,14 +100,20 @@ type GetV2RuntimeVersionsResult struct {
 
 func GetV2RuntimeVersionsOutput(ctx *pulumi.Context, args GetV2RuntimeVersionsOutputArgs, opts ...pulumi.InvokeOption) GetV2RuntimeVersionsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetV2RuntimeVersionsResult, error) {
+		ApplyT(func(v interface{}) (GetV2RuntimeVersionsResultOutput, error) {
 			args := v.(GetV2RuntimeVersionsArgs)
-			r, err := GetV2RuntimeVersions(ctx, &args, opts...)
-			var s GetV2RuntimeVersionsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetV2RuntimeVersionsResult
+			secret, err := ctx.InvokePackageRaw("gcp:tpu/getV2RuntimeVersions:getV2RuntimeVersions", args, &rv, "", opts...)
+			if err != nil {
+				return GetV2RuntimeVersionsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetV2RuntimeVersionsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetV2RuntimeVersionsResultOutput), nil
+			}
+			return output, nil
 		}).(GetV2RuntimeVersionsResultOutput)
 }
 

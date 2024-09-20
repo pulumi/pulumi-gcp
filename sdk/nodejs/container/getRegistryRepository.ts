@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  */
 export function getRegistryRepository(args?: GetRegistryRepositoryArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistryRepositoryResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:container/getRegistryRepository:getRegistryRepository", {
         "project": args.project,
@@ -74,7 +73,12 @@ export interface GetRegistryRepositoryResult {
  * ```
  */
 export function getRegistryRepositoryOutput(args?: GetRegistryRepositoryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistryRepositoryResult> {
-    return pulumi.output(args).apply((a: any) => getRegistryRepository(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:container/getRegistryRepository:getRegistryRepository", {
+        "project": args.project,
+        "region": args.region,
+    }, opts);
 }
 
 /**

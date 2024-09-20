@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getAutoscalingPolicyIamPolicy(args: GetAutoscalingPolicyIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAutoscalingPolicyIamPolicyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:dataproc/getAutoscalingPolicyIamPolicy:getAutoscalingPolicyIamPolicy", {
         "location": args.location,
@@ -94,7 +93,12 @@ export interface GetAutoscalingPolicyIamPolicyResult {
  * ```
  */
 export function getAutoscalingPolicyIamPolicyOutput(args: GetAutoscalingPolicyIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAutoscalingPolicyIamPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getAutoscalingPolicyIamPolicy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:dataproc/getAutoscalingPolicyIamPolicy:getAutoscalingPolicyIamPolicy", {
+        "location": args.location,
+        "policyId": args.policyId,
+        "project": args.project,
+    }, opts);
 }
 
 /**

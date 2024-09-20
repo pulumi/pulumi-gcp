@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getJobIamPolicy(args: GetJobIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetJobIamPolicyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:dataproc/getJobIamPolicy:getJobIamPolicy", {
         "jobId": args.jobId,
@@ -77,7 +76,12 @@ export interface GetJobIamPolicyResult {
  * ```
  */
 export function getJobIamPolicyOutput(args: GetJobIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetJobIamPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getJobIamPolicy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:dataproc/getJobIamPolicy:getJobIamPolicy", {
+        "jobId": args.jobId,
+        "project": args.project,
+        "region": args.region,
+    }, opts);
 }
 
 /**

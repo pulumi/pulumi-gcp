@@ -80,14 +80,20 @@ type LookupRestorePlanIamPolicyResult struct {
 
 func LookupRestorePlanIamPolicyOutput(ctx *pulumi.Context, args LookupRestorePlanIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupRestorePlanIamPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupRestorePlanIamPolicyResult, error) {
+		ApplyT(func(v interface{}) (LookupRestorePlanIamPolicyResultOutput, error) {
 			args := v.(LookupRestorePlanIamPolicyArgs)
-			r, err := LookupRestorePlanIamPolicy(ctx, &args, opts...)
-			var s LookupRestorePlanIamPolicyResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupRestorePlanIamPolicyResult
+			secret, err := ctx.InvokePackageRaw("gcp:gkebackup/getRestorePlanIamPolicy:getRestorePlanIamPolicy", args, &rv, "", opts...)
+			if err != nil {
+				return LookupRestorePlanIamPolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupRestorePlanIamPolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupRestorePlanIamPolicyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupRestorePlanIamPolicyResultOutput)
 }
 

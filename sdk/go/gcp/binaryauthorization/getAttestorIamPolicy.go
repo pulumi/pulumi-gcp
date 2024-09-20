@@ -73,14 +73,20 @@ type LookupAttestorIamPolicyResult struct {
 
 func LookupAttestorIamPolicyOutput(ctx *pulumi.Context, args LookupAttestorIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupAttestorIamPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAttestorIamPolicyResult, error) {
+		ApplyT(func(v interface{}) (LookupAttestorIamPolicyResultOutput, error) {
 			args := v.(LookupAttestorIamPolicyArgs)
-			r, err := LookupAttestorIamPolicy(ctx, &args, opts...)
-			var s LookupAttestorIamPolicyResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupAttestorIamPolicyResult
+			secret, err := ctx.InvokePackageRaw("gcp:binaryauthorization/getAttestorIamPolicy:getAttestorIamPolicy", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAttestorIamPolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAttestorIamPolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAttestorIamPolicyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAttestorIamPolicyResultOutput)
 }
 

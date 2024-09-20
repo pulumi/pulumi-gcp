@@ -72,14 +72,20 @@ type GetTablesResult struct {
 
 func GetTablesOutput(ctx *pulumi.Context, args GetTablesOutputArgs, opts ...pulumi.InvokeOption) GetTablesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetTablesResult, error) {
+		ApplyT(func(v interface{}) (GetTablesResultOutput, error) {
 			args := v.(GetTablesArgs)
-			r, err := GetTables(ctx, &args, opts...)
-			var s GetTablesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetTablesResult
+			secret, err := ctx.InvokePackageRaw("gcp:bigquery/getTables:getTables", args, &rv, "", opts...)
+			if err != nil {
+				return GetTablesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetTablesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetTablesResultOutput), nil
+			}
+			return output, nil
 		}).(GetTablesResultOutput)
 }
 

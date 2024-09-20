@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getCertificateMap(args: GetCertificateMapArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificateMapResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:certificatemanager/getCertificateMap:getCertificateMap", {
         "name": args.name,
@@ -79,7 +78,11 @@ export interface GetCertificateMapResult {
  * ```
  */
 export function getCertificateMapOutput(args: GetCertificateMapOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCertificateMapResult> {
-    return pulumi.output(args).apply((a: any) => getCertificateMap(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:certificatemanager/getCertificateMap:getCertificateMap", {
+        "name": args.name,
+        "project": args.project,
+    }, opts);
 }
 
 /**

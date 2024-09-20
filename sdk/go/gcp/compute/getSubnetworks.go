@@ -77,14 +77,20 @@ type GetSubnetworksResult struct {
 
 func GetSubnetworksOutput(ctx *pulumi.Context, args GetSubnetworksOutputArgs, opts ...pulumi.InvokeOption) GetSubnetworksResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetSubnetworksResult, error) {
+		ApplyT(func(v interface{}) (GetSubnetworksResultOutput, error) {
 			args := v.(GetSubnetworksArgs)
-			r, err := GetSubnetworks(ctx, &args, opts...)
-			var s GetSubnetworksResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetSubnetworksResult
+			secret, err := ctx.InvokePackageRaw("gcp:compute/getSubnetworks:getSubnetworks", args, &rv, "", opts...)
+			if err != nil {
+				return GetSubnetworksResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetSubnetworksResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetSubnetworksResultOutput), nil
+			}
+			return output, nil
 		}).(GetSubnetworksResultOutput)
 }
 

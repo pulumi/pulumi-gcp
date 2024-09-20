@@ -73,14 +73,20 @@ type GetAzureVersionsResult struct {
 
 func GetAzureVersionsOutput(ctx *pulumi.Context, args GetAzureVersionsOutputArgs, opts ...pulumi.InvokeOption) GetAzureVersionsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetAzureVersionsResult, error) {
+		ApplyT(func(v interface{}) (GetAzureVersionsResultOutput, error) {
 			args := v.(GetAzureVersionsArgs)
-			r, err := GetAzureVersions(ctx, &args, opts...)
-			var s GetAzureVersionsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetAzureVersionsResult
+			secret, err := ctx.InvokePackageRaw("gcp:container/getAzureVersions:getAzureVersions", args, &rv, "", opts...)
+			if err != nil {
+				return GetAzureVersionsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetAzureVersionsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetAzureVersionsResultOutput), nil
+			}
+			return output, nil
 		}).(GetAzureVersionsResultOutput)
 }
 

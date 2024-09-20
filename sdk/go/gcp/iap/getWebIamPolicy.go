@@ -69,14 +69,20 @@ type LookupWebIamPolicyResult struct {
 
 func LookupWebIamPolicyOutput(ctx *pulumi.Context, args LookupWebIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupWebIamPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupWebIamPolicyResult, error) {
+		ApplyT(func(v interface{}) (LookupWebIamPolicyResultOutput, error) {
 			args := v.(LookupWebIamPolicyArgs)
-			r, err := LookupWebIamPolicy(ctx, &args, opts...)
-			var s LookupWebIamPolicyResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupWebIamPolicyResult
+			secret, err := ctx.InvokePackageRaw("gcp:iap/getWebIamPolicy:getWebIamPolicy", args, &rv, "", opts...)
+			if err != nil {
+				return LookupWebIamPolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupWebIamPolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupWebIamPolicyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupWebIamPolicyResultOutput)
 }
 

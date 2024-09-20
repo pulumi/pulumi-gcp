@@ -133,14 +133,20 @@ type LookupResourcesSearchAllResult struct {
 
 func LookupResourcesSearchAllOutput(ctx *pulumi.Context, args LookupResourcesSearchAllOutputArgs, opts ...pulumi.InvokeOption) LookupResourcesSearchAllResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupResourcesSearchAllResult, error) {
+		ApplyT(func(v interface{}) (LookupResourcesSearchAllResultOutput, error) {
 			args := v.(LookupResourcesSearchAllArgs)
-			r, err := LookupResourcesSearchAll(ctx, &args, opts...)
-			var s LookupResourcesSearchAllResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupResourcesSearchAllResult
+			secret, err := ctx.InvokePackageRaw("gcp:cloudasset/getResourcesSearchAll:getResourcesSearchAll", args, &rv, "", opts...)
+			if err != nil {
+				return LookupResourcesSearchAllResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupResourcesSearchAllResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupResourcesSearchAllResultOutput), nil
+			}
+			return output, nil
 		}).(LookupResourcesSearchAllResultOutput)
 }
 

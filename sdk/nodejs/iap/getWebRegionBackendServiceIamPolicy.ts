@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getWebRegionBackendServiceIamPolicy(args: GetWebRegionBackendServiceIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetWebRegionBackendServiceIamPolicyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:iap/getWebRegionBackendServiceIamPolicy:getWebRegionBackendServiceIamPolicy", {
         "project": args.project,
@@ -84,7 +83,12 @@ export interface GetWebRegionBackendServiceIamPolicyResult {
  * ```
  */
 export function getWebRegionBackendServiceIamPolicyOutput(args: GetWebRegionBackendServiceIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebRegionBackendServiceIamPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getWebRegionBackendServiceIamPolicy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:iap/getWebRegionBackendServiceIamPolicy:getWebRegionBackendServiceIamPolicy", {
+        "project": args.project,
+        "region": args.region,
+        "webRegionBackendService": args.webRegionBackendService,
+    }, opts);
 }
 
 /**

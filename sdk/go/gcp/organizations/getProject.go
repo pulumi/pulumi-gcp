@@ -76,14 +76,20 @@ type LookupProjectResult struct {
 
 func LookupProjectOutput(ctx *pulumi.Context, args LookupProjectOutputArgs, opts ...pulumi.InvokeOption) LookupProjectResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupProjectResult, error) {
+		ApplyT(func(v interface{}) (LookupProjectResultOutput, error) {
 			args := v.(LookupProjectArgs)
-			r, err := LookupProject(ctx, &args, opts...)
-			var s LookupProjectResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupProjectResult
+			secret, err := ctx.InvokePackageRaw("gcp:organizations/getProject:getProject", args, &rv, "", opts...)
+			if err != nil {
+				return LookupProjectResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupProjectResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupProjectResultOutput), nil
+			}
+			return output, nil
 		}).(LookupProjectResultOutput)
 }
 

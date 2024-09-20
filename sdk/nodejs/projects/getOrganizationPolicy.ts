@@ -25,7 +25,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getOrganizationPolicy(args: GetOrganizationPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationPolicyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:projects/getOrganizationPolicy:getOrganizationPolicy", {
         "constraint": args.constraint,
@@ -83,7 +82,11 @@ export interface GetOrganizationPolicyResult {
  * ```
  */
 export function getOrganizationPolicyOutput(args: GetOrganizationPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getOrganizationPolicy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:projects/getOrganizationPolicy:getOrganizationPolicy", {
+        "constraint": args.constraint,
+        "project": args.project,
+    }, opts);
 }
 
 /**

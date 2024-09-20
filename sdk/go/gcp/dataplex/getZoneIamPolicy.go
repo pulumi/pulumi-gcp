@@ -79,14 +79,20 @@ type LookupZoneIamPolicyResult struct {
 
 func LookupZoneIamPolicyOutput(ctx *pulumi.Context, args LookupZoneIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupZoneIamPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupZoneIamPolicyResult, error) {
+		ApplyT(func(v interface{}) (LookupZoneIamPolicyResultOutput, error) {
 			args := v.(LookupZoneIamPolicyArgs)
-			r, err := LookupZoneIamPolicy(ctx, &args, opts...)
-			var s LookupZoneIamPolicyResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupZoneIamPolicyResult
+			secret, err := ctx.InvokePackageRaw("gcp:dataplex/getZoneIamPolicy:getZoneIamPolicy", args, &rv, "", opts...)
+			if err != nil {
+				return LookupZoneIamPolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupZoneIamPolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupZoneIamPolicyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupZoneIamPolicyResultOutput)
 }
 

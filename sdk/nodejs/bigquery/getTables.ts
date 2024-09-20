@@ -24,7 +24,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getTables(args: GetTablesArgs, opts?: pulumi.InvokeOptions): Promise<GetTablesResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:bigquery/getTables:getTables", {
         "datasetId": args.datasetId,
@@ -80,7 +79,11 @@ export interface GetTablesResult {
  * ```
  */
 export function getTablesOutput(args: GetTablesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTablesResult> {
-    return pulumi.output(args).apply((a: any) => getTables(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:bigquery/getTables:getTables", {
+        "datasetId": args.datasetId,
+        "project": args.project,
+    }, opts);
 }
 
 /**

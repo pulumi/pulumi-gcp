@@ -71,14 +71,20 @@ type GetAttachedVersionsResult struct {
 
 func GetAttachedVersionsOutput(ctx *pulumi.Context, args GetAttachedVersionsOutputArgs, opts ...pulumi.InvokeOption) GetAttachedVersionsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetAttachedVersionsResult, error) {
+		ApplyT(func(v interface{}) (GetAttachedVersionsResultOutput, error) {
 			args := v.(GetAttachedVersionsArgs)
-			r, err := GetAttachedVersions(ctx, &args, opts...)
-			var s GetAttachedVersionsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetAttachedVersionsResult
+			secret, err := ctx.InvokePackageRaw("gcp:container/getAttachedVersions:getAttachedVersions", args, &rv, "", opts...)
+			if err != nil {
+				return GetAttachedVersionsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetAttachedVersionsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetAttachedVersionsResultOutput), nil
+			}
+			return output, nil
 		}).(GetAttachedVersionsResultOutput)
 }
 

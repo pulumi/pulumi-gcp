@@ -85,14 +85,20 @@ type GetOrganizationServiceAccountResult struct {
 
 func GetOrganizationServiceAccountOutput(ctx *pulumi.Context, args GetOrganizationServiceAccountOutputArgs, opts ...pulumi.InvokeOption) GetOrganizationServiceAccountResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetOrganizationServiceAccountResult, error) {
+		ApplyT(func(v interface{}) (GetOrganizationServiceAccountResultOutput, error) {
 			args := v.(GetOrganizationServiceAccountArgs)
-			r, err := GetOrganizationServiceAccount(ctx, &args, opts...)
-			var s GetOrganizationServiceAccountResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetOrganizationServiceAccountResult
+			secret, err := ctx.InvokePackageRaw("gcp:accessapproval/getOrganizationServiceAccount:getOrganizationServiceAccount", args, &rv, "", opts...)
+			if err != nil {
+				return GetOrganizationServiceAccountResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetOrganizationServiceAccountResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetOrganizationServiceAccountResultOutput), nil
+			}
+			return output, nil
 		}).(GetOrganizationServiceAccountResultOutput)
 }
 

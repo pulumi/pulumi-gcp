@@ -23,7 +23,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getDatabaseInstanceLatestRecoveryTime(args: GetDatabaseInstanceLatestRecoveryTimeArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseInstanceLatestRecoveryTimeResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:sql/getDatabaseInstanceLatestRecoveryTime:getDatabaseInstanceLatestRecoveryTime", {
         "instance": args.instance,
@@ -85,7 +84,11 @@ export interface GetDatabaseInstanceLatestRecoveryTimeResult {
  * ```
  */
 export function getDatabaseInstanceLatestRecoveryTimeOutput(args: GetDatabaseInstanceLatestRecoveryTimeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseInstanceLatestRecoveryTimeResult> {
-    return pulumi.output(args).apply((a: any) => getDatabaseInstanceLatestRecoveryTime(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:sql/getDatabaseInstanceLatestRecoveryTime:getDatabaseInstanceLatestRecoveryTime", {
+        "instance": args.instance,
+        "project": args.project,
+    }, opts);
 }
 
 /**

@@ -51,7 +51,6 @@ import * as utilities from "../utilities";
  */
 export function getNotificationChannel(args?: GetNotificationChannelArgs, opts?: pulumi.InvokeOptions): Promise<GetNotificationChannelResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:monitoring/getNotificationChannel:getNotificationChannel", {
         "displayName": args.displayName,
@@ -177,7 +176,15 @@ export interface GetNotificationChannelResult {
  * ```
  */
 export function getNotificationChannelOutput(args?: GetNotificationChannelOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNotificationChannelResult> {
-    return pulumi.output(args).apply((a: any) => getNotificationChannel(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:monitoring/getNotificationChannel:getNotificationChannel", {
+        "displayName": args.displayName,
+        "labels": args.labels,
+        "project": args.project,
+        "type": args.type,
+        "userLabels": args.userLabels,
+    }, opts);
 }
 
 /**

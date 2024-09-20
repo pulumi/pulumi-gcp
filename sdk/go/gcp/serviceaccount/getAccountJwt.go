@@ -89,14 +89,20 @@ type GetAccountJwtResult struct {
 
 func GetAccountJwtOutput(ctx *pulumi.Context, args GetAccountJwtOutputArgs, opts ...pulumi.InvokeOption) GetAccountJwtResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetAccountJwtResult, error) {
+		ApplyT(func(v interface{}) (GetAccountJwtResultOutput, error) {
 			args := v.(GetAccountJwtArgs)
-			r, err := GetAccountJwt(ctx, &args, opts...)
-			var s GetAccountJwtResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetAccountJwtResult
+			secret, err := ctx.InvokePackageRaw("gcp:serviceaccount/getAccountJwt:getAccountJwt", args, &rv, "", opts...)
+			if err != nil {
+				return GetAccountJwtResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetAccountJwtResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetAccountJwtResultOutput), nil
+			}
+			return output, nil
 		}).(GetAccountJwtResultOutput)
 }
 

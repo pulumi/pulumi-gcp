@@ -34,7 +34,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getClientOpenIdUserInfo(opts?: pulumi.InvokeOptions): Promise<GetClientOpenIdUserInfoResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:organizations/getClientOpenIdUserInfo:getClientOpenIdUserInfo", {
     }, opts);
@@ -80,5 +79,7 @@ export interface GetClientOpenIdUserInfoResult {
  * ```
  */
 export function getClientOpenIdUserInfoOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetClientOpenIdUserInfoResult> {
-    return pulumi.output(getClientOpenIdUserInfo(opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:organizations/getClientOpenIdUserInfo:getClientOpenIdUserInfo", {
+    }, opts);
 }

@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getFolders(args: GetFoldersArgs, opts?: pulumi.InvokeOptions): Promise<GetFoldersResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:organizations/getFolders:getFolders", {
         "parentId": args.parentId,
@@ -81,7 +80,10 @@ export interface GetFoldersResult {
  * ```
  */
 export function getFoldersOutput(args: GetFoldersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFoldersResult> {
-    return pulumi.output(args).apply((a: any) => getFolders(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:organizations/getFolders:getFolders", {
+        "parentId": args.parentId,
+    }, opts);
 }
 
 /**

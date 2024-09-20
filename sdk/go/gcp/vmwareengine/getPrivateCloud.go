@@ -87,14 +87,20 @@ type LookupPrivateCloudResult struct {
 
 func LookupPrivateCloudOutput(ctx *pulumi.Context, args LookupPrivateCloudOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateCloudResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupPrivateCloudResult, error) {
+		ApplyT(func(v interface{}) (LookupPrivateCloudResultOutput, error) {
 			args := v.(LookupPrivateCloudArgs)
-			r, err := LookupPrivateCloud(ctx, &args, opts...)
-			var s LookupPrivateCloudResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupPrivateCloudResult
+			secret, err := ctx.InvokePackageRaw("gcp:vmwareengine/getPrivateCloud:getPrivateCloud", args, &rv, "", opts...)
+			if err != nil {
+				return LookupPrivateCloudResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupPrivateCloudResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupPrivateCloudResultOutput), nil
+			}
+			return output, nil
 		}).(LookupPrivateCloudResultOutput)
 }
 

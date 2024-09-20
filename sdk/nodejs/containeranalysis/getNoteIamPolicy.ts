@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getNoteIamPolicy(args: GetNoteIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetNoteIamPolicyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:containeranalysis/getNoteIamPolicy:getNoteIamPolicy", {
         "note": args.note,
@@ -79,7 +78,11 @@ export interface GetNoteIamPolicyResult {
  * ```
  */
 export function getNoteIamPolicyOutput(args: GetNoteIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNoteIamPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getNoteIamPolicy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:containeranalysis/getNoteIamPolicy:getNoteIamPolicy", {
+        "note": args.note,
+        "project": args.project,
+    }, opts);
 }
 
 /**

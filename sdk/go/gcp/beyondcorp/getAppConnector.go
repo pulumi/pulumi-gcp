@@ -79,14 +79,20 @@ type LookupAppConnectorResult struct {
 
 func LookupAppConnectorOutput(ctx *pulumi.Context, args LookupAppConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupAppConnectorResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAppConnectorResult, error) {
+		ApplyT(func(v interface{}) (LookupAppConnectorResultOutput, error) {
 			args := v.(LookupAppConnectorArgs)
-			r, err := LookupAppConnector(ctx, &args, opts...)
-			var s LookupAppConnectorResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupAppConnectorResult
+			secret, err := ctx.InvokePackageRaw("gcp:beyondcorp/getAppConnector:getAppConnector", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAppConnectorResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAppConnectorResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAppConnectorResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAppConnectorResultOutput)
 }
 

@@ -77,14 +77,20 @@ type GetDiscoveredServiceResult struct {
 
 func GetDiscoveredServiceOutput(ctx *pulumi.Context, args GetDiscoveredServiceOutputArgs, opts ...pulumi.InvokeOption) GetDiscoveredServiceResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetDiscoveredServiceResult, error) {
+		ApplyT(func(v interface{}) (GetDiscoveredServiceResultOutput, error) {
 			args := v.(GetDiscoveredServiceArgs)
-			r, err := GetDiscoveredService(ctx, &args, opts...)
-			var s GetDiscoveredServiceResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetDiscoveredServiceResult
+			secret, err := ctx.InvokePackageRaw("gcp:apphub/getDiscoveredService:getDiscoveredService", args, &rv, "", opts...)
+			if err != nil {
+				return GetDiscoveredServiceResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetDiscoveredServiceResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetDiscoveredServiceResultOutput), nil
+			}
+			return output, nil
 		}).(GetDiscoveredServiceResultOutput)
 }
 

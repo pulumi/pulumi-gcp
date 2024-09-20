@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getTunnelInstanceIamPolicy(args: GetTunnelInstanceIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetTunnelInstanceIamPolicyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:iap/getTunnelInstanceIamPolicy:getTunnelInstanceIamPolicy", {
         "instance": args.instance,
@@ -84,7 +83,12 @@ export interface GetTunnelInstanceIamPolicyResult {
  * ```
  */
 export function getTunnelInstanceIamPolicyOutput(args: GetTunnelInstanceIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTunnelInstanceIamPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getTunnelInstanceIamPolicy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:iap/getTunnelInstanceIamPolicy:getTunnelInstanceIamPolicy", {
+        "instance": args.instance,
+        "project": args.project,
+        "zone": args.zone,
+    }, opts);
 }
 
 /**

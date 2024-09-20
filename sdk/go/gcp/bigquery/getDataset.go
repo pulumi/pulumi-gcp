@@ -91,14 +91,20 @@ type LookupDatasetResult struct {
 
 func LookupDatasetOutput(ctx *pulumi.Context, args LookupDatasetOutputArgs, opts ...pulumi.InvokeOption) LookupDatasetResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupDatasetResult, error) {
+		ApplyT(func(v interface{}) (LookupDatasetResultOutput, error) {
 			args := v.(LookupDatasetArgs)
-			r, err := LookupDataset(ctx, &args, opts...)
-			var s LookupDatasetResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupDatasetResult
+			secret, err := ctx.InvokePackageRaw("gcp:bigquery/getDataset:getDataset", args, &rv, "", opts...)
+			if err != nil {
+				return LookupDatasetResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupDatasetResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupDatasetResultOutput), nil
+			}
+			return output, nil
 		}).(LookupDatasetResultOutput)
 }
 

@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getKMSKeyRing(args: GetKMSKeyRingArgs, opts?: pulumi.InvokeOptions): Promise<GetKMSKeyRingResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:kms/getKMSKeyRing:getKMSKeyRing", {
         "location": args.location,
@@ -92,7 +91,12 @@ export interface GetKMSKeyRingResult {
  * ```
  */
 export function getKMSKeyRingOutput(args: GetKMSKeyRingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKMSKeyRingResult> {
-    return pulumi.output(args).apply((a: any) => getKMSKeyRing(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:kms/getKMSKeyRing:getKMSKeyRing", {
+        "location": args.location,
+        "name": args.name,
+        "project": args.project,
+    }, opts);
 }
 
 /**

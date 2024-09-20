@@ -166,14 +166,20 @@ type GetProjectServiceAccountResult struct {
 
 func GetProjectServiceAccountOutput(ctx *pulumi.Context, args GetProjectServiceAccountOutputArgs, opts ...pulumi.InvokeOption) GetProjectServiceAccountResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetProjectServiceAccountResult, error) {
+		ApplyT(func(v interface{}) (GetProjectServiceAccountResultOutput, error) {
 			args := v.(GetProjectServiceAccountArgs)
-			r, err := GetProjectServiceAccount(ctx, &args, opts...)
-			var s GetProjectServiceAccountResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetProjectServiceAccountResult
+			secret, err := ctx.InvokePackageRaw("gcp:storage/getProjectServiceAccount:getProjectServiceAccount", args, &rv, "", opts...)
+			if err != nil {
+				return GetProjectServiceAccountResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetProjectServiceAccountResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetProjectServiceAccountResultOutput), nil
+			}
+			return output, nil
 		}).(GetProjectServiceAccountResultOutput)
 }
 

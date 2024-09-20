@@ -81,14 +81,20 @@ type LookupNetworkPolicyResult struct {
 
 func LookupNetworkPolicyOutput(ctx *pulumi.Context, args LookupNetworkPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupNetworkPolicyResult, error) {
+		ApplyT(func(v interface{}) (LookupNetworkPolicyResultOutput, error) {
 			args := v.(LookupNetworkPolicyArgs)
-			r, err := LookupNetworkPolicy(ctx, &args, opts...)
-			var s LookupNetworkPolicyResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupNetworkPolicyResult
+			secret, err := ctx.InvokePackageRaw("gcp:vmwareengine/getNetworkPolicy:getNetworkPolicy", args, &rv, "", opts...)
+			if err != nil {
+				return LookupNetworkPolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupNetworkPolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupNetworkPolicyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupNetworkPolicyResultOutput)
 }
 

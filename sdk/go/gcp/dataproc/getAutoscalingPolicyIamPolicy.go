@@ -84,14 +84,20 @@ type LookupAutoscalingPolicyIamPolicyResult struct {
 
 func LookupAutoscalingPolicyIamPolicyOutput(ctx *pulumi.Context, args LookupAutoscalingPolicyIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupAutoscalingPolicyIamPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAutoscalingPolicyIamPolicyResult, error) {
+		ApplyT(func(v interface{}) (LookupAutoscalingPolicyIamPolicyResultOutput, error) {
 			args := v.(LookupAutoscalingPolicyIamPolicyArgs)
-			r, err := LookupAutoscalingPolicyIamPolicy(ctx, &args, opts...)
-			var s LookupAutoscalingPolicyIamPolicyResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupAutoscalingPolicyIamPolicyResult
+			secret, err := ctx.InvokePackageRaw("gcp:dataproc/getAutoscalingPolicyIamPolicy:getAutoscalingPolicyIamPolicy", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAutoscalingPolicyIamPolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAutoscalingPolicyIamPolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAutoscalingPolicyIamPolicyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAutoscalingPolicyIamPolicyResultOutput)
 }
 

@@ -36,14 +36,20 @@ type GetGroupTransitiveMembershipsResult struct {
 
 func GetGroupTransitiveMembershipsOutput(ctx *pulumi.Context, args GetGroupTransitiveMembershipsOutputArgs, opts ...pulumi.InvokeOption) GetGroupTransitiveMembershipsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetGroupTransitiveMembershipsResult, error) {
+		ApplyT(func(v interface{}) (GetGroupTransitiveMembershipsResultOutput, error) {
 			args := v.(GetGroupTransitiveMembershipsArgs)
-			r, err := GetGroupTransitiveMemberships(ctx, &args, opts...)
-			var s GetGroupTransitiveMembershipsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetGroupTransitiveMembershipsResult
+			secret, err := ctx.InvokePackageRaw("gcp:cloudidentity/getGroupTransitiveMemberships:getGroupTransitiveMemberships", args, &rv, "", opts...)
+			if err != nil {
+				return GetGroupTransitiveMembershipsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetGroupTransitiveMembershipsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetGroupTransitiveMembershipsResultOutput), nil
+			}
+			return output, nil
 		}).(GetGroupTransitiveMembershipsResultOutput)
 }
 

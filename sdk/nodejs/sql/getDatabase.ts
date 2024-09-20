@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getDatabase(args: GetDatabaseArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:sql/getDatabase:getDatabase", {
         "instance": args.instance,
@@ -79,7 +78,12 @@ export interface GetDatabaseResult {
  * ```
  */
 export function getDatabaseOutput(args: GetDatabaseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseResult> {
-    return pulumi.output(args).apply((a: any) => getDatabase(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:sql/getDatabase:getDatabase", {
+        "instance": args.instance,
+        "name": args.name,
+        "project": args.project,
+    }, opts);
 }
 
 /**

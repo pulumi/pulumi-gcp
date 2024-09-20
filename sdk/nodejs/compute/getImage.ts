@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  */
 export function getImage(args?: GetImageArgs, opts?: pulumi.InvokeOptions): Promise<GetImageResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getImage:getImage", {
         "family": args.family,
@@ -177,7 +176,15 @@ export interface GetImageResult {
  * ```
  */
 export function getImageOutput(args?: GetImageOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImageResult> {
-    return pulumi.output(args).apply((a: any) => getImage(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:compute/getImage:getImage", {
+        "family": args.family,
+        "filter": args.filter,
+        "mostRecent": args.mostRecent,
+        "name": args.name,
+        "project": args.project,
+    }, opts);
 }
 
 /**

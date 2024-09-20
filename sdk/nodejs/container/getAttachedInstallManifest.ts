@@ -23,7 +23,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getAttachedInstallManifest(args: GetAttachedInstallManifestArgs, opts?: pulumi.InvokeOptions): Promise<GetAttachedInstallManifestResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:container/getAttachedInstallManifest:getAttachedInstallManifest", {
         "clusterId": args.clusterId,
@@ -92,7 +91,13 @@ export interface GetAttachedInstallManifestResult {
  * ```
  */
 export function getAttachedInstallManifestOutput(args: GetAttachedInstallManifestOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAttachedInstallManifestResult> {
-    return pulumi.output(args).apply((a: any) => getAttachedInstallManifest(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:container/getAttachedInstallManifest:getAttachedInstallManifest", {
+        "clusterId": args.clusterId,
+        "location": args.location,
+        "platformVersion": args.platformVersion,
+        "project": args.project,
+    }, opts);
 }
 
 /**

@@ -71,14 +71,20 @@ type GetWebAppConfigResult struct {
 
 func GetWebAppConfigOutput(ctx *pulumi.Context, args GetWebAppConfigOutputArgs, opts ...pulumi.InvokeOption) GetWebAppConfigResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetWebAppConfigResult, error) {
+		ApplyT(func(v interface{}) (GetWebAppConfigResultOutput, error) {
 			args := v.(GetWebAppConfigArgs)
-			r, err := GetWebAppConfig(ctx, &args, opts...)
-			var s GetWebAppConfigResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetWebAppConfigResult
+			secret, err := ctx.InvokePackageRaw("gcp:firebase/getWebAppConfig:getWebAppConfig", args, &rv, "", opts...)
+			if err != nil {
+				return GetWebAppConfigResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetWebAppConfigResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetWebAppConfigResultOutput), nil
+			}
+			return output, nil
 		}).(GetWebAppConfigResultOutput)
 }
 

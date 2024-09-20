@@ -23,7 +23,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getSQuotaInfo(args: GetSQuotaInfoArgs, opts?: pulumi.InvokeOptions): Promise<GetSQuotaInfoResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:cloudquota/getSQuotaInfo:getSQuotaInfo", {
         "parent": args.parent,
@@ -135,7 +134,12 @@ export interface GetSQuotaInfoResult {
  * ```
  */
 export function getSQuotaInfoOutput(args: GetSQuotaInfoOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSQuotaInfoResult> {
-    return pulumi.output(args).apply((a: any) => getSQuotaInfo(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:cloudquota/getSQuotaInfo:getSQuotaInfo", {
+        "parent": args.parent,
+        "quotaId": args.quotaId,
+        "service": args.service,
+    }, opts);
 }
 
 /**

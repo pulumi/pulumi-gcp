@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getHealthCheck(args: GetHealthCheckArgs, opts?: pulumi.InvokeOptions): Promise<GetHealthCheckResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getHealthCheck:getHealthCheck", {
         "name": args.name,
@@ -88,7 +87,11 @@ export interface GetHealthCheckResult {
  * ```
  */
 export function getHealthCheckOutput(args: GetHealthCheckOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHealthCheckResult> {
-    return pulumi.output(args).apply((a: any) => getHealthCheck(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:compute/getHealthCheck:getHealthCheck", {
+        "name": args.name,
+        "project": args.project,
+    }, opts);
 }
 
 /**

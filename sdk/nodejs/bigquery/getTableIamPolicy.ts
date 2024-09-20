@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getTableIamPolicy(args: GetTableIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetTableIamPolicyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:bigquery/getTableIamPolicy:getTableIamPolicy", {
         "datasetId": args.datasetId,
@@ -81,7 +80,12 @@ export interface GetTableIamPolicyResult {
  * ```
  */
 export function getTableIamPolicyOutput(args: GetTableIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTableIamPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getTableIamPolicy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:bigquery/getTableIamPolicy:getTableIamPolicy", {
+        "datasetId": args.datasetId,
+        "project": args.project,
+        "tableId": args.tableId,
+    }, opts);
 }
 
 /**

@@ -68,7 +68,6 @@ import * as utilities from "../utilities";
  * This will result in a Cloud SQL user being created with password `my-secret-password`.
  */
 export function getKMSSecret(args: GetKMSSecretArgs, opts?: pulumi.InvokeOptions): Promise<GetKMSSecretResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:kms/getKMSSecret:getKMSSecret", {
         "additionalAuthenticatedData": args.additionalAuthenticatedData,
@@ -177,7 +176,12 @@ export interface GetKMSSecretResult {
  * This will result in a Cloud SQL user being created with password `my-secret-password`.
  */
 export function getKMSSecretOutput(args: GetKMSSecretOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKMSSecretResult> {
-    return pulumi.output(args).apply((a: any) => getKMSSecret(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:kms/getKMSSecret:getKMSSecret", {
+        "additionalAuthenticatedData": args.additionalAuthenticatedData,
+        "ciphertext": args.ciphertext,
+        "cryptoKey": args.cryptoKey,
+    }, opts);
 }
 
 /**

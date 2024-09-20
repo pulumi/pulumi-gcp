@@ -27,7 +27,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getAccountJwt(args: GetAccountJwtArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountJwtResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:serviceaccount/getAccountJwt:getAccountJwt", {
         "delegates": args.delegates,
@@ -99,7 +98,13 @@ export interface GetAccountJwtResult {
  * ```
  */
 export function getAccountJwtOutput(args: GetAccountJwtOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountJwtResult> {
-    return pulumi.output(args).apply((a: any) => getAccountJwt(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:serviceaccount/getAccountJwt:getAccountJwt", {
+        "delegates": args.delegates,
+        "expiresIn": args.expiresIn,
+        "payload": args.payload,
+        "targetServiceAccount": args.targetServiceAccount,
+    }, opts);
 }
 
 /**

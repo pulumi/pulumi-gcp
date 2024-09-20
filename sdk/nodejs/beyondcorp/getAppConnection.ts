@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getAppConnection(args: GetAppConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetAppConnectionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:beyondcorp/getAppConnection:getAppConnection", {
         "name": args.name,
@@ -87,7 +86,12 @@ export interface GetAppConnectionResult {
  * ```
  */
 export function getAppConnectionOutput(args: GetAppConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppConnectionResult> {
-    return pulumi.output(args).apply((a: any) => getAppConnection(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:beyondcorp/getAppConnection:getAppConnection", {
+        "name": args.name,
+        "project": args.project,
+        "region": args.region,
+    }, opts);
 }
 
 /**

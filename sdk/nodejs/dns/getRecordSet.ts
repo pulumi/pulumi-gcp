@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getRecordSet(args: GetRecordSetArgs, opts?: pulumi.InvokeOptions): Promise<GetRecordSetResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:dns/getRecordSet:getRecordSet", {
         "managedZone": args.managedZone,
@@ -105,7 +104,13 @@ export interface GetRecordSetResult {
  * ```
  */
 export function getRecordSetOutput(args: GetRecordSetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRecordSetResult> {
-    return pulumi.output(args).apply((a: any) => getRecordSet(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:dns/getRecordSet:getRecordSet", {
+        "managedZone": args.managedZone,
+        "name": args.name,
+        "project": args.project,
+        "type": args.type,
+    }, opts);
 }
 
 /**

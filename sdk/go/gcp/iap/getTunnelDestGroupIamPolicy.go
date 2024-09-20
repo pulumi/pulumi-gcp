@@ -79,14 +79,20 @@ type LookupTunnelDestGroupIamPolicyResult struct {
 
 func LookupTunnelDestGroupIamPolicyOutput(ctx *pulumi.Context, args LookupTunnelDestGroupIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupTunnelDestGroupIamPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupTunnelDestGroupIamPolicyResult, error) {
+		ApplyT(func(v interface{}) (LookupTunnelDestGroupIamPolicyResultOutput, error) {
 			args := v.(LookupTunnelDestGroupIamPolicyArgs)
-			r, err := LookupTunnelDestGroupIamPolicy(ctx, &args, opts...)
-			var s LookupTunnelDestGroupIamPolicyResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupTunnelDestGroupIamPolicyResult
+			secret, err := ctx.InvokePackageRaw("gcp:iap/getTunnelDestGroupIamPolicy:getTunnelDestGroupIamPolicy", args, &rv, "", opts...)
+			if err != nil {
+				return LookupTunnelDestGroupIamPolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupTunnelDestGroupIamPolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupTunnelDestGroupIamPolicyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupTunnelDestGroupIamPolicyResultOutput)
 }
 

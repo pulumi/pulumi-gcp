@@ -23,7 +23,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getEnvironment(args: GetEnvironmentArgs, opts?: pulumi.InvokeOptions): Promise<GetEnvironmentResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:composer/getEnvironment:getEnvironment", {
         "name": args.name,
@@ -88,7 +87,12 @@ export interface GetEnvironmentResult {
  * ```
  */
 export function getEnvironmentOutput(args: GetEnvironmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnvironmentResult> {
-    return pulumi.output(args).apply((a: any) => getEnvironment(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:composer/getEnvironment:getEnvironment", {
+        "name": args.name,
+        "project": args.project,
+        "region": args.region,
+    }, opts);
 }
 
 /**

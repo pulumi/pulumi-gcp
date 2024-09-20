@@ -71,14 +71,20 @@ type GetSubscriptionIamPolicyResult struct {
 
 func GetSubscriptionIamPolicyOutput(ctx *pulumi.Context, args GetSubscriptionIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetSubscriptionIamPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetSubscriptionIamPolicyResult, error) {
+		ApplyT(func(v interface{}) (GetSubscriptionIamPolicyResultOutput, error) {
 			args := v.(GetSubscriptionIamPolicyArgs)
-			r, err := GetSubscriptionIamPolicy(ctx, &args, opts...)
-			var s GetSubscriptionIamPolicyResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetSubscriptionIamPolicyResult
+			secret, err := ctx.InvokePackageRaw("gcp:pubsub/getSubscriptionIamPolicy:getSubscriptionIamPolicy", args, &rv, "", opts...)
+			if err != nil {
+				return GetSubscriptionIamPolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetSubscriptionIamPolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetSubscriptionIamPolicyResultOutput), nil
+			}
+			return output, nil
 		}).(GetSubscriptionIamPolicyResultOutput)
 }
 

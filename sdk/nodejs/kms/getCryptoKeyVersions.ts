@@ -32,7 +32,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getCryptoKeyVersions(args: GetCryptoKeyVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetCryptoKeyVersionsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:kms/getCryptoKeyVersions:getCryptoKeyVersions", {
         "cryptoKey": args.cryptoKey,
@@ -104,7 +103,11 @@ export interface GetCryptoKeyVersionsResult {
  * ```
  */
 export function getCryptoKeyVersionsOutput(args: GetCryptoKeyVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCryptoKeyVersionsResult> {
-    return pulumi.output(args).apply((a: any) => getCryptoKeyVersions(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:kms/getCryptoKeyVersions:getCryptoKeyVersions", {
+        "cryptoKey": args.cryptoKey,
+        "filter": args.filter,
+    }, opts);
 }
 
 /**

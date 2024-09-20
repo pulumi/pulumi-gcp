@@ -76,14 +76,20 @@ type LookupWebRegionBackendServiceIamPolicyResult struct {
 
 func LookupWebRegionBackendServiceIamPolicyOutput(ctx *pulumi.Context, args LookupWebRegionBackendServiceIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupWebRegionBackendServiceIamPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupWebRegionBackendServiceIamPolicyResult, error) {
+		ApplyT(func(v interface{}) (LookupWebRegionBackendServiceIamPolicyResultOutput, error) {
 			args := v.(LookupWebRegionBackendServiceIamPolicyArgs)
-			r, err := LookupWebRegionBackendServiceIamPolicy(ctx, &args, opts...)
-			var s LookupWebRegionBackendServiceIamPolicyResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupWebRegionBackendServiceIamPolicyResult
+			secret, err := ctx.InvokePackageRaw("gcp:iap/getWebRegionBackendServiceIamPolicy:getWebRegionBackendServiceIamPolicy", args, &rv, "", opts...)
+			if err != nil {
+				return LookupWebRegionBackendServiceIamPolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupWebRegionBackendServiceIamPolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupWebRegionBackendServiceIamPolicyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupWebRegionBackendServiceIamPolicyResultOutput)
 }
 

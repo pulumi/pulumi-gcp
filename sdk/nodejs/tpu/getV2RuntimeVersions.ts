@@ -32,7 +32,6 @@ import * as utilities from "../utilities";
  */
 export function getV2RuntimeVersions(args?: GetV2RuntimeVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetV2RuntimeVersionsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:tpu/getV2RuntimeVersions:getV2RuntimeVersions", {
         "project": args.project,
@@ -98,7 +97,12 @@ export interface GetV2RuntimeVersionsResult {
  * ```
  */
 export function getV2RuntimeVersionsOutput(args?: GetV2RuntimeVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetV2RuntimeVersionsResult> {
-    return pulumi.output(args).apply((a: any) => getV2RuntimeVersions(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:tpu/getV2RuntimeVersions:getV2RuntimeVersions", {
+        "project": args.project,
+        "zone": args.zone,
+    }, opts);
 }
 
 /**

@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getTagKeyIamPolicy(args: GetTagKeyIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetTagKeyIamPolicyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:tags/getTagKeyIamPolicy:getTagKeyIamPolicy", {
         "tagKey": args.tagKey,
@@ -70,7 +69,10 @@ export interface GetTagKeyIamPolicyResult {
  * ```
  */
 export function getTagKeyIamPolicyOutput(args: GetTagKeyIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTagKeyIamPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getTagKeyIamPolicy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:tags/getTagKeyIamPolicy:getTagKeyIamPolicy", {
+        "tagKey": args.tagKey,
+    }, opts);
 }
 
 /**

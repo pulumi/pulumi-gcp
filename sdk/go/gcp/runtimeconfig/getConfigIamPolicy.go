@@ -45,14 +45,20 @@ type LookupConfigIamPolicyResult struct {
 
 func LookupConfigIamPolicyOutput(ctx *pulumi.Context, args LookupConfigIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupConfigIamPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupConfigIamPolicyResult, error) {
+		ApplyT(func(v interface{}) (LookupConfigIamPolicyResultOutput, error) {
 			args := v.(LookupConfigIamPolicyArgs)
-			r, err := LookupConfigIamPolicy(ctx, &args, opts...)
-			var s LookupConfigIamPolicyResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupConfigIamPolicyResult
+			secret, err := ctx.InvokePackageRaw("gcp:runtimeconfig/getConfigIamPolicy:getConfigIamPolicy", args, &rv, "", opts...)
+			if err != nil {
+				return LookupConfigIamPolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupConfigIamPolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupConfigIamPolicyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupConfigIamPolicyResultOutput)
 }
 

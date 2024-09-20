@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getKeyRingIamPolicy(args: GetKeyRingIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetKeyRingIamPolicyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:kms/getKeyRingIamPolicy:getKeyRingIamPolicy", {
         "keyRingId": args.keyRingId,
@@ -72,7 +71,10 @@ export interface GetKeyRingIamPolicyResult {
  * ```
  */
 export function getKeyRingIamPolicyOutput(args: GetKeyRingIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeyRingIamPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getKeyRingIamPolicy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:kms/getKeyRingIamPolicy:getKeyRingIamPolicy", {
+        "keyRingId": args.keyRingId,
+    }, opts);
 }
 
 /**

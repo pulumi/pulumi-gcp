@@ -103,14 +103,20 @@ type LookupJobResult struct {
 
 func LookupJobOutput(ctx *pulumi.Context, args LookupJobOutputArgs, opts ...pulumi.InvokeOption) LookupJobResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupJobResult, error) {
+		ApplyT(func(v interface{}) (LookupJobResultOutput, error) {
 			args := v.(LookupJobArgs)
-			r, err := LookupJob(ctx, &args, opts...)
-			var s LookupJobResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupJobResult
+			secret, err := ctx.InvokePackageRaw("gcp:cloudrunv2/getJob:getJob", args, &rv, "", opts...)
+			if err != nil {
+				return LookupJobResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupJobResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupJobResultOutput), nil
+			}
+			return output, nil
 		}).(LookupJobResultOutput)
 }
 

@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getMetastoreFederationIamPolicy(args: GetMetastoreFederationIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetMetastoreFederationIamPolicyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:dataproc/getMetastoreFederationIamPolicy:getMetastoreFederationIamPolicy", {
         "federationId": args.federationId,
@@ -87,7 +86,12 @@ export interface GetMetastoreFederationIamPolicyResult {
  * ```
  */
 export function getMetastoreFederationIamPolicyOutput(args: GetMetastoreFederationIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMetastoreFederationIamPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getMetastoreFederationIamPolicy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:dataproc/getMetastoreFederationIamPolicy:getMetastoreFederationIamPolicy", {
+        "federationId": args.federationId,
+        "location": args.location,
+        "project": args.project,
+    }, opts);
 }
 
 /**

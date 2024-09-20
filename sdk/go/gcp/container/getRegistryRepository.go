@@ -69,14 +69,20 @@ type GetRegistryRepositoryResult struct {
 
 func GetRegistryRepositoryOutput(ctx *pulumi.Context, args GetRegistryRepositoryOutputArgs, opts ...pulumi.InvokeOption) GetRegistryRepositoryResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetRegistryRepositoryResult, error) {
+		ApplyT(func(v interface{}) (GetRegistryRepositoryResultOutput, error) {
 			args := v.(GetRegistryRepositoryArgs)
-			r, err := GetRegistryRepository(ctx, &args, opts...)
-			var s GetRegistryRepositoryResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetRegistryRepositoryResult
+			secret, err := ctx.InvokePackageRaw("gcp:container/getRegistryRepository:getRegistryRepository", args, &rv, "", opts...)
+			if err != nil {
+				return GetRegistryRepositoryResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetRegistryRepositoryResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetRegistryRepositoryResultOutput), nil
+			}
+			return output, nil
 		}).(GetRegistryRepositoryResultOutput)
 }
 

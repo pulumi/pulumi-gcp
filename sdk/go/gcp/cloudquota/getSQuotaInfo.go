@@ -99,14 +99,20 @@ type GetSQuotaInfoResult struct {
 
 func GetSQuotaInfoOutput(ctx *pulumi.Context, args GetSQuotaInfoOutputArgs, opts ...pulumi.InvokeOption) GetSQuotaInfoResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetSQuotaInfoResult, error) {
+		ApplyT(func(v interface{}) (GetSQuotaInfoResultOutput, error) {
 			args := v.(GetSQuotaInfoArgs)
-			r, err := GetSQuotaInfo(ctx, &args, opts...)
-			var s GetSQuotaInfoResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetSQuotaInfoResult
+			secret, err := ctx.InvokePackageRaw("gcp:cloudquota/getSQuotaInfo:getSQuotaInfo", args, &rv, "", opts...)
+			if err != nil {
+				return GetSQuotaInfoResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetSQuotaInfoResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetSQuotaInfoResultOutput), nil
+			}
+			return output, nil
 		}).(GetSQuotaInfoResultOutput)
 }
 

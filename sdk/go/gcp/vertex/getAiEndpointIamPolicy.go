@@ -50,14 +50,20 @@ type LookupAiEndpointIamPolicyResult struct {
 
 func LookupAiEndpointIamPolicyOutput(ctx *pulumi.Context, args LookupAiEndpointIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupAiEndpointIamPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAiEndpointIamPolicyResult, error) {
+		ApplyT(func(v interface{}) (LookupAiEndpointIamPolicyResultOutput, error) {
 			args := v.(LookupAiEndpointIamPolicyArgs)
-			r, err := LookupAiEndpointIamPolicy(ctx, &args, opts...)
-			var s LookupAiEndpointIamPolicyResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupAiEndpointIamPolicyResult
+			secret, err := ctx.InvokePackageRaw("gcp:vertex/getAiEndpointIamPolicy:getAiEndpointIamPolicy", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAiEndpointIamPolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAiEndpointIamPolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAiEndpointIamPolicyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAiEndpointIamPolicyResultOutput)
 }
 

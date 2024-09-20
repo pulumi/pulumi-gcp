@@ -62,7 +62,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getAppEngineService(args: GetAppEngineServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetAppEngineServiceResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:monitoring/getAppEngineService:getAppEngineService", {
         "moduleId": args.moduleId,
@@ -172,7 +171,11 @@ export interface GetAppEngineServiceResult {
  * ```
  */
 export function getAppEngineServiceOutput(args: GetAppEngineServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppEngineServiceResult> {
-    return pulumi.output(args).apply((a: any) => getAppEngineService(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:monitoring/getAppEngineService:getAppEngineService", {
+        "moduleId": args.moduleId,
+        "project": args.project,
+    }, opts);
 }
 
 /**
