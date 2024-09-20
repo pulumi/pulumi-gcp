@@ -18,7 +18,6 @@ import (
 	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/sql"
 	"github.com/pulumi/pulumi/pkg/v3/testing/integration"
 	"github.com/pulumi/pulumi/sdk/v3/go/auto"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/workspace"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
@@ -105,8 +104,8 @@ func TestRegression794(t *testing.T) {
 	t.Cleanup(func() {
 		// Select an empty program to delete the stack.
 		s, err := auto.UpsertStackInlineSource(ctx, stackName, originProject, nil, auto.WorkDir(workdir), auto.EnvVars(map[string]string{
-			workspace.PulumiBackendURLEnvVar: backendUrl,
-			"PULUMI_CONFIG_PASSPHRASE":       configPassphrase,
+			"PULUMI_BACKEND_URL":       backendUrl,
+			"PULUMI_CONFIG_PASSPHRASE": configPassphrase,
 		}))
 		if err != nil {
 			t.Fatalf("failed to select workspace to delete: %v", err)
@@ -146,8 +145,8 @@ func TestRegression794(t *testing.T) {
 
 			return nil
 		}, auto.WorkDir(workdir), auto.EnvVars(map[string]string{
-			workspace.PulumiBackendURLEnvVar: backendUrl,
-			"PULUMI_CONFIG_PASSPHRASE":       configPassphrase,
+			"PULUMI_BACKEND_URL":       backendUrl,
+			"PULUMI_CONFIG_PASSPHRASE": configPassphrase,
 		}))
 		if err != nil {
 			t.Fatalf("failed to create workspace: %v", err)
