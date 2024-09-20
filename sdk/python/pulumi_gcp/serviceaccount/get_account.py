@@ -155,9 +155,9 @@ def get_account(account_id: Optional[str] = None,
     myaccount = gcp.serviceaccount.get_account(account_id="myaccount-id")
     mykey = gcp.serviceaccount.Key("mykey", service_account_id=myaccount.name)
     google_application_credentials = kubernetes.core.v1.Secret("google-application-credentials",
-        metadata={
-            "name": "google-application-credentials",
-        },
+        metadata=kubernetes.meta.v1.ObjectMetaArgs(
+            name="google-application-credentials",
+        ),
         data={
             "json": std.base64decode_output(input=mykey.private_key).apply(lambda invoke: invoke.result),
         })
@@ -220,9 +220,9 @@ def get_account_output(account_id: Optional[pulumi.Input[str]] = None,
     myaccount = gcp.serviceaccount.get_account(account_id="myaccount-id")
     mykey = gcp.serviceaccount.Key("mykey", service_account_id=myaccount.name)
     google_application_credentials = kubernetes.core.v1.Secret("google-application-credentials",
-        metadata={
-            "name": "google-application-credentials",
-        },
+        metadata=kubernetes.meta.v1.ObjectMetaArgs(
+            name="google-application-credentials",
+        ),
         data={
             "json": std.base64decode_output(input=mykey.private_key).apply(lambda invoke: invoke.result),
         })
