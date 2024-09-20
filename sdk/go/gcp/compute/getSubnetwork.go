@@ -96,14 +96,20 @@ type LookupSubnetworkResult struct {
 
 func LookupSubnetworkOutput(ctx *pulumi.Context, args LookupSubnetworkOutputArgs, opts ...pulumi.InvokeOption) LookupSubnetworkResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupSubnetworkResult, error) {
+		ApplyT(func(v interface{}) (LookupSubnetworkResultOutput, error) {
 			args := v.(LookupSubnetworkArgs)
-			r, err := LookupSubnetwork(ctx, &args, opts...)
-			var s LookupSubnetworkResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupSubnetworkResult
+			secret, err := ctx.InvokePackageRaw("gcp:compute/getSubnetwork:getSubnetwork", args, &rv, "", opts...)
+			if err != nil {
+				return LookupSubnetworkResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupSubnetworkResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupSubnetworkResultOutput), nil
+			}
+			return output, nil
 		}).(LookupSubnetworkResultOutput)
 }
 

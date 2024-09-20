@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getGlobalForwardingRule(args: GetGlobalForwardingRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetGlobalForwardingRuleResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getGlobalForwardingRule:getGlobalForwardingRule", {
         "name": args.name,
@@ -94,7 +93,11 @@ export interface GetGlobalForwardingRuleResult {
  * ```
  */
 export function getGlobalForwardingRuleOutput(args: GetGlobalForwardingRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGlobalForwardingRuleResult> {
-    return pulumi.output(args).apply((a: any) => getGlobalForwardingRule(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:compute/getGlobalForwardingRule:getGlobalForwardingRule", {
+        "name": args.name,
+        "project": args.project,
+    }, opts);
 }
 
 /**

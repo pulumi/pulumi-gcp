@@ -43,7 +43,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getAccount(args: GetAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:serviceaccount/getAccount:getAccount", {
         "accountId": args.accountId,
@@ -146,7 +145,11 @@ export interface GetAccountResult {
  * ```
  */
 export function getAccountOutput(args: GetAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountResult> {
-    return pulumi.output(args).apply((a: any) => getAccount(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:serviceaccount/getAccount:getAccount", {
+        "accountId": args.accountId,
+        "project": args.project,
+    }, opts);
 }
 
 /**

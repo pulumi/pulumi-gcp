@@ -79,14 +79,20 @@ type LookupMetastoreFederationIamPolicyResult struct {
 
 func LookupMetastoreFederationIamPolicyOutput(ctx *pulumi.Context, args LookupMetastoreFederationIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupMetastoreFederationIamPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupMetastoreFederationIamPolicyResult, error) {
+		ApplyT(func(v interface{}) (LookupMetastoreFederationIamPolicyResultOutput, error) {
 			args := v.(LookupMetastoreFederationIamPolicyArgs)
-			r, err := LookupMetastoreFederationIamPolicy(ctx, &args, opts...)
-			var s LookupMetastoreFederationIamPolicyResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupMetastoreFederationIamPolicyResult
+			secret, err := ctx.InvokePackageRaw("gcp:dataproc/getMetastoreFederationIamPolicy:getMetastoreFederationIamPolicy", args, &rv, "", opts...)
+			if err != nil {
+				return LookupMetastoreFederationIamPolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupMetastoreFederationIamPolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupMetastoreFederationIamPolicyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupMetastoreFederationIamPolicyResultOutput)
 }
 

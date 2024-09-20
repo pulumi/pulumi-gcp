@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getListingIamPolicy(args: GetListingIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetListingIamPolicyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:bigqueryanalyticshub/getListingIamPolicy:getListingIamPolicy", {
         "dataExchangeId": args.dataExchangeId,
@@ -98,7 +97,13 @@ export interface GetListingIamPolicyResult {
  * ```
  */
 export function getListingIamPolicyOutput(args: GetListingIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetListingIamPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getListingIamPolicy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:bigqueryanalyticshub/getListingIamPolicy:getListingIamPolicy", {
+        "dataExchangeId": args.dataExchangeId,
+        "listingId": args.listingId,
+        "location": args.location,
+        "project": args.project,
+    }, opts);
 }
 
 /**

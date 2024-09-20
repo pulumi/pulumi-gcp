@@ -55,14 +55,20 @@ type GetCryptoKeysResult struct {
 
 func GetCryptoKeysOutput(ctx *pulumi.Context, args GetCryptoKeysOutputArgs, opts ...pulumi.InvokeOption) GetCryptoKeysResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetCryptoKeysResult, error) {
+		ApplyT(func(v interface{}) (GetCryptoKeysResultOutput, error) {
 			args := v.(GetCryptoKeysArgs)
-			r, err := GetCryptoKeys(ctx, &args, opts...)
-			var s GetCryptoKeysResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetCryptoKeysResult
+			secret, err := ctx.InvokePackageRaw("gcp:kms/getCryptoKeys:getCryptoKeys", args, &rv, "", opts...)
+			if err != nil {
+				return GetCryptoKeysResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetCryptoKeysResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetCryptoKeysResultOutput), nil
+			}
+			return output, nil
 		}).(GetCryptoKeysResultOutput)
 }
 

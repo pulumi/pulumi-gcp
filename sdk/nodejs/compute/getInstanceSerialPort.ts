@@ -68,7 +68,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getInstanceSerialPort(args: GetInstanceSerialPortArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceSerialPortResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getInstanceSerialPort:getInstanceSerialPort", {
         "instance": args.instance,
@@ -185,7 +184,13 @@ export interface GetInstanceSerialPortResult {
  * ```
  */
 export function getInstanceSerialPortOutput(args: GetInstanceSerialPortOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceSerialPortResult> {
-    return pulumi.output(args).apply((a: any) => getInstanceSerialPort(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:compute/getInstanceSerialPort:getInstanceSerialPort", {
+        "instance": args.instance,
+        "port": args.port,
+        "project": args.project,
+        "zone": args.zone,
+    }, opts);
 }
 
 /**

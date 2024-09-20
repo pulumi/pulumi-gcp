@@ -79,14 +79,20 @@ type GetAttachedInstallManifestResult struct {
 
 func GetAttachedInstallManifestOutput(ctx *pulumi.Context, args GetAttachedInstallManifestOutputArgs, opts ...pulumi.InvokeOption) GetAttachedInstallManifestResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetAttachedInstallManifestResult, error) {
+		ApplyT(func(v interface{}) (GetAttachedInstallManifestResultOutput, error) {
 			args := v.(GetAttachedInstallManifestArgs)
-			r, err := GetAttachedInstallManifest(ctx, &args, opts...)
-			var s GetAttachedInstallManifestResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetAttachedInstallManifestResult
+			secret, err := ctx.InvokePackageRaw("gcp:container/getAttachedInstallManifest:getAttachedInstallManifest", args, &rv, "", opts...)
+			if err != nil {
+				return GetAttachedInstallManifestResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetAttachedInstallManifestResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetAttachedInstallManifestResultOutput), nil
+			}
+			return output, nil
 		}).(GetAttachedInstallManifestResultOutput)
 }
 

@@ -23,7 +23,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getAssetIamPolicy(args: GetAssetIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAssetIamPolicyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:dataplex/getAssetIamPolicy:getAssetIamPolicy", {
         "asset": args.asset,
@@ -94,7 +93,14 @@ export interface GetAssetIamPolicyResult {
  * ```
  */
 export function getAssetIamPolicyOutput(args: GetAssetIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAssetIamPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getAssetIamPolicy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:dataplex/getAssetIamPolicy:getAssetIamPolicy", {
+        "asset": args.asset,
+        "dataplexZone": args.dataplexZone,
+        "lake": args.lake,
+        "location": args.location,
+        "project": args.project,
+    }, opts);
 }
 
 /**

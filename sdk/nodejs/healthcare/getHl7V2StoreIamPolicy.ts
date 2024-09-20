@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getHl7V2StoreIamPolicy(args: GetHl7V2StoreIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetHl7V2StoreIamPolicyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:healthcare/getHl7V2StoreIamPolicy:getHl7V2StoreIamPolicy", {
         "hl7V2StoreId": args.hl7V2StoreId,
@@ -72,7 +71,10 @@ export interface GetHl7V2StoreIamPolicyResult {
  * ```
  */
 export function getHl7V2StoreIamPolicyOutput(args: GetHl7V2StoreIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHl7V2StoreIamPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getHl7V2StoreIamPolicy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:healthcare/getHl7V2StoreIamPolicy:getHl7V2StoreIamPolicy", {
+        "hl7V2StoreId": args.hl7V2StoreId,
+    }, opts);
 }
 
 /**

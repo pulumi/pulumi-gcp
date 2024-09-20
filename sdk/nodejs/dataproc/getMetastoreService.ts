@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getMetastoreService(args: GetMetastoreServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetMetastoreServiceResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:dataproc/getMetastoreService:getMetastoreService", {
         "location": args.location,
@@ -102,7 +101,12 @@ export interface GetMetastoreServiceResult {
  * ```
  */
 export function getMetastoreServiceOutput(args: GetMetastoreServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMetastoreServiceResult> {
-    return pulumi.output(args).apply((a: any) => getMetastoreService(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:dataproc/getMetastoreService:getMetastoreService", {
+        "location": args.location,
+        "project": args.project,
+        "serviceId": args.serviceId,
+    }, opts);
 }
 
 /**

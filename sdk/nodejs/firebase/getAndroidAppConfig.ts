@@ -5,7 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 export function getAndroidAppConfig(args: GetAndroidAppConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetAndroidAppConfigResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:firebase/getAndroidAppConfig:getAndroidAppConfig", {
         "appId": args.appId,
@@ -32,7 +31,11 @@ export interface GetAndroidAppConfigResult {
     readonly project?: string;
 }
 export function getAndroidAppConfigOutput(args: GetAndroidAppConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAndroidAppConfigResult> {
-    return pulumi.output(args).apply((a: any) => getAndroidAppConfig(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:firebase/getAndroidAppConfig:getAndroidAppConfig", {
+        "appId": args.appId,
+        "project": args.project,
+    }, opts);
 }
 
 /**

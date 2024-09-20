@@ -71,14 +71,20 @@ type GetStaticIpsResult struct {
 
 func GetStaticIpsOutput(ctx *pulumi.Context, args GetStaticIpsOutputArgs, opts ...pulumi.InvokeOption) GetStaticIpsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetStaticIpsResult, error) {
+		ApplyT(func(v interface{}) (GetStaticIpsResultOutput, error) {
 			args := v.(GetStaticIpsArgs)
-			r, err := GetStaticIps(ctx, &args, opts...)
-			var s GetStaticIpsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetStaticIpsResult
+			secret, err := ctx.InvokePackageRaw("gcp:datastream/getStaticIps:getStaticIps", args, &rv, "", opts...)
+			if err != nil {
+				return GetStaticIpsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetStaticIpsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetStaticIpsResultOutput), nil
+			}
+			return output, nil
 		}).(GetStaticIpsResultOutput)
 }
 

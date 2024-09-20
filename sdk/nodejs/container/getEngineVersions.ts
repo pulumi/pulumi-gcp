@@ -38,7 +38,6 @@ import * as utilities from "../utilities";
  */
 export function getEngineVersions(args?: GetEngineVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetEngineVersionsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:container/getEngineVersions:getEngineVersions", {
         "location": args.location,
@@ -147,7 +146,13 @@ export interface GetEngineVersionsResult {
  * ```
  */
 export function getEngineVersionsOutput(args?: GetEngineVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEngineVersionsResult> {
-    return pulumi.output(args).apply((a: any) => getEngineVersions(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:container/getEngineVersions:getEngineVersions", {
+        "location": args.location,
+        "project": args.project,
+        "versionPrefix": args.versionPrefix,
+    }, opts);
 }
 
 /**

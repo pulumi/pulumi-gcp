@@ -80,14 +80,20 @@ type LookupDataExchangeIamPolicyResult struct {
 
 func LookupDataExchangeIamPolicyOutput(ctx *pulumi.Context, args LookupDataExchangeIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupDataExchangeIamPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupDataExchangeIamPolicyResult, error) {
+		ApplyT(func(v interface{}) (LookupDataExchangeIamPolicyResultOutput, error) {
 			args := v.(LookupDataExchangeIamPolicyArgs)
-			r, err := LookupDataExchangeIamPolicy(ctx, &args, opts...)
-			var s LookupDataExchangeIamPolicyResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupDataExchangeIamPolicyResult
+			secret, err := ctx.InvokePackageRaw("gcp:bigqueryanalyticshub/getDataExchangeIamPolicy:getDataExchangeIamPolicy", args, &rv, "", opts...)
+			if err != nil {
+				return LookupDataExchangeIamPolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupDataExchangeIamPolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupDataExchangeIamPolicyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupDataExchangeIamPolicyResultOutput)
 }
 

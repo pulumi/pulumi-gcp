@@ -68,14 +68,20 @@ type LookupConfigResult struct {
 
 func LookupConfigOutput(ctx *pulumi.Context, args LookupConfigOutputArgs, opts ...pulumi.InvokeOption) LookupConfigResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupConfigResult, error) {
+		ApplyT(func(v interface{}) (LookupConfigResultOutput, error) {
 			args := v.(LookupConfigArgs)
-			r, err := LookupConfig(ctx, &args, opts...)
-			var s LookupConfigResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupConfigResult
+			secret, err := ctx.InvokePackageRaw("gcp:runtimeconfig/getConfig:getConfig", args, &rv, "", opts...)
+			if err != nil {
+				return LookupConfigResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupConfigResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupConfigResultOutput), nil
+			}
+			return output, nil
 		}).(LookupConfigResultOutput)
 }
 

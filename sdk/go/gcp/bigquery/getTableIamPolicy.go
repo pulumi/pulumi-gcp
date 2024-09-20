@@ -75,14 +75,20 @@ type GetTableIamPolicyResult struct {
 
 func GetTableIamPolicyOutput(ctx *pulumi.Context, args GetTableIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetTableIamPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetTableIamPolicyResult, error) {
+		ApplyT(func(v interface{}) (GetTableIamPolicyResultOutput, error) {
 			args := v.(GetTableIamPolicyArgs)
-			r, err := GetTableIamPolicy(ctx, &args, opts...)
-			var s GetTableIamPolicyResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetTableIamPolicyResult
+			secret, err := ctx.InvokePackageRaw("gcp:bigquery/getTableIamPolicy:getTableIamPolicy", args, &rv, "", opts...)
+			if err != nil {
+				return GetTableIamPolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetTableIamPolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetTableIamPolicyResultOutput), nil
+			}
+			return output, nil
 		}).(GetTableIamPolicyResultOutput)
 }
 

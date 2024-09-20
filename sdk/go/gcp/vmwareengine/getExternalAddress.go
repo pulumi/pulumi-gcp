@@ -77,14 +77,20 @@ type LookupExternalAddressResult struct {
 
 func LookupExternalAddressOutput(ctx *pulumi.Context, args LookupExternalAddressOutputArgs, opts ...pulumi.InvokeOption) LookupExternalAddressResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupExternalAddressResult, error) {
+		ApplyT(func(v interface{}) (LookupExternalAddressResultOutput, error) {
 			args := v.(LookupExternalAddressArgs)
-			r, err := LookupExternalAddress(ctx, &args, opts...)
-			var s LookupExternalAddressResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupExternalAddressResult
+			secret, err := ctx.InvokePackageRaw("gcp:vmwareengine/getExternalAddress:getExternalAddress", args, &rv, "", opts...)
+			if err != nil {
+				return LookupExternalAddressResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupExternalAddressResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupExternalAddressResultOutput), nil
+			}
+			return output, nil
 		}).(LookupExternalAddressResultOutput)
 }
 

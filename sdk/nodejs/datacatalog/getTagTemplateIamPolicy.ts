@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getTagTemplateIamPolicy(args: GetTagTemplateIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetTagTemplateIamPolicyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:datacatalog/getTagTemplateIamPolicy:getTagTemplateIamPolicy", {
         "project": args.project,
@@ -80,7 +79,12 @@ export interface GetTagTemplateIamPolicyResult {
  * ```
  */
 export function getTagTemplateIamPolicyOutput(args: GetTagTemplateIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTagTemplateIamPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getTagTemplateIamPolicy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:datacatalog/getTagTemplateIamPolicy:getTagTemplateIamPolicy", {
+        "project": args.project,
+        "region": args.region,
+        "tagTemplate": args.tagTemplate,
+    }, opts);
 }
 
 /**

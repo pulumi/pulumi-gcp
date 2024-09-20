@@ -7,7 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 export function getMembershipBinding(args: GetMembershipBindingArgs, opts?: pulumi.InvokeOptions): Promise<GetMembershipBindingResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:gkehub/getMembershipBinding:getMembershipBinding", {
         "location": args.location,
@@ -51,7 +50,13 @@ export interface GetMembershipBindingResult {
     readonly updateTime: string;
 }
 export function getMembershipBindingOutput(args: GetMembershipBindingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMembershipBindingResult> {
-    return pulumi.output(args).apply((a: any) => getMembershipBinding(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:gkehub/getMembershipBinding:getMembershipBinding", {
+        "location": args.location,
+        "membershipBindingId": args.membershipBindingId,
+        "membershipId": args.membershipId,
+        "project": args.project,
+    }, opts);
 }
 
 /**

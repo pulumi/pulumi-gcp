@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getAspectTypeIamPolicy(args: GetAspectTypeIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAspectTypeIamPolicyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:dataplex/getAspectTypeIamPolicy:getAspectTypeIamPolicy", {
         "aspectTypeId": args.aspectTypeId,
@@ -87,7 +86,12 @@ export interface GetAspectTypeIamPolicyResult {
  * ```
  */
 export function getAspectTypeIamPolicyOutput(args: GetAspectTypeIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAspectTypeIamPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getAspectTypeIamPolicy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:dataplex/getAspectTypeIamPolicy:getAspectTypeIamPolicy", {
+        "aspectTypeId": args.aspectTypeId,
+        "location": args.location,
+        "project": args.project,
+    }, opts);
 }
 
 /**

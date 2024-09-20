@@ -74,14 +74,20 @@ type LookupTaxonomyIamPolicyResult struct {
 
 func LookupTaxonomyIamPolicyOutput(ctx *pulumi.Context, args LookupTaxonomyIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupTaxonomyIamPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupTaxonomyIamPolicyResult, error) {
+		ApplyT(func(v interface{}) (LookupTaxonomyIamPolicyResultOutput, error) {
 			args := v.(LookupTaxonomyIamPolicyArgs)
-			r, err := LookupTaxonomyIamPolicy(ctx, &args, opts...)
-			var s LookupTaxonomyIamPolicyResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupTaxonomyIamPolicyResult
+			secret, err := ctx.InvokePackageRaw("gcp:datacatalog/getTaxonomyIamPolicy:getTaxonomyIamPolicy", args, &rv, "", opts...)
+			if err != nil {
+				return LookupTaxonomyIamPolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupTaxonomyIamPolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupTaxonomyIamPolicyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupTaxonomyIamPolicyResultOutput)
 }
 

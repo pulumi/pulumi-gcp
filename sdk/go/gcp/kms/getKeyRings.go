@@ -40,14 +40,20 @@ type GetKeyRingsResult struct {
 
 func GetKeyRingsOutput(ctx *pulumi.Context, args GetKeyRingsOutputArgs, opts ...pulumi.InvokeOption) GetKeyRingsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetKeyRingsResult, error) {
+		ApplyT(func(v interface{}) (GetKeyRingsResultOutput, error) {
 			args := v.(GetKeyRingsArgs)
-			r, err := GetKeyRings(ctx, &args, opts...)
-			var s GetKeyRingsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetKeyRingsResult
+			secret, err := ctx.InvokePackageRaw("gcp:kms/getKeyRings:getKeyRings", args, &rv, "", opts...)
+			if err != nil {
+				return GetKeyRingsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetKeyRingsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetKeyRingsResultOutput), nil
+			}
+			return output, nil
 		}).(GetKeyRingsResultOutput)
 }
 

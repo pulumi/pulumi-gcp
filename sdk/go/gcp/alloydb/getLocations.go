@@ -63,14 +63,20 @@ type GetLocationsResult struct {
 
 func GetLocationsOutput(ctx *pulumi.Context, args GetLocationsOutputArgs, opts ...pulumi.InvokeOption) GetLocationsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetLocationsResult, error) {
+		ApplyT(func(v interface{}) (GetLocationsResultOutput, error) {
 			args := v.(GetLocationsArgs)
-			r, err := GetLocations(ctx, &args, opts...)
-			var s GetLocationsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetLocationsResult
+			secret, err := ctx.InvokePackageRaw("gcp:alloydb/getLocations:getLocations", args, &rv, "", opts...)
+			if err != nil {
+				return GetLocationsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetLocationsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetLocationsResultOutput), nil
+			}
+			return output, nil
 		}).(GetLocationsResultOutput)
 }
 

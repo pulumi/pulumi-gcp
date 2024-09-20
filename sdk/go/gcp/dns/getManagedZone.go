@@ -93,14 +93,20 @@ type LookupManagedZoneResult struct {
 
 func LookupManagedZoneOutput(ctx *pulumi.Context, args LookupManagedZoneOutputArgs, opts ...pulumi.InvokeOption) LookupManagedZoneResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupManagedZoneResult, error) {
+		ApplyT(func(v interface{}) (LookupManagedZoneResultOutput, error) {
 			args := v.(LookupManagedZoneArgs)
-			r, err := LookupManagedZone(ctx, &args, opts...)
-			var s LookupManagedZoneResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupManagedZoneResult
+			secret, err := ctx.InvokePackageRaw("gcp:dns/getManagedZone:getManagedZone", args, &rv, "", opts...)
+			if err != nil {
+				return LookupManagedZoneResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupManagedZoneResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupManagedZoneResultOutput), nil
+			}
+			return output, nil
 		}).(LookupManagedZoneResultOutput)
 }
 

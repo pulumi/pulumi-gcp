@@ -99,14 +99,20 @@ type GetBucketObjectContentResult struct {
 
 func GetBucketObjectContentOutput(ctx *pulumi.Context, args GetBucketObjectContentOutputArgs, opts ...pulumi.InvokeOption) GetBucketObjectContentResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetBucketObjectContentResult, error) {
+		ApplyT(func(v interface{}) (GetBucketObjectContentResultOutput, error) {
 			args := v.(GetBucketObjectContentArgs)
-			r, err := GetBucketObjectContent(ctx, &args, opts...)
-			var s GetBucketObjectContentResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetBucketObjectContentResult
+			secret, err := ctx.InvokePackageRaw("gcp:storage/getBucketObjectContent:getBucketObjectContent", args, &rv, "", opts...)
+			if err != nil {
+				return GetBucketObjectContentResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetBucketObjectContentResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetBucketObjectContentResultOutput), nil
+			}
+			return output, nil
 		}).(GetBucketObjectContentResultOutput)
 }
 

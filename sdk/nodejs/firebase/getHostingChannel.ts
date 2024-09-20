@@ -5,7 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 export function getHostingChannel(args: GetHostingChannelArgs, opts?: pulumi.InvokeOptions): Promise<GetHostingChannelResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:firebase/getHostingChannel:getHostingChannel", {
         "channelId": args.channelId,
@@ -49,7 +48,11 @@ export interface GetHostingChannelResult {
     readonly ttl: string;
 }
 export function getHostingChannelOutput(args: GetHostingChannelOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostingChannelResult> {
-    return pulumi.output(args).apply((a: any) => getHostingChannel(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:firebase/getHostingChannel:getHostingChannel", {
+        "channelId": args.channelId,
+        "siteId": args.siteId,
+    }, opts);
 }
 
 /**

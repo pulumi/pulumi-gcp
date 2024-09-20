@@ -76,14 +76,20 @@ type GetTunnelInstanceIamPolicyResult struct {
 
 func GetTunnelInstanceIamPolicyOutput(ctx *pulumi.Context, args GetTunnelInstanceIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetTunnelInstanceIamPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetTunnelInstanceIamPolicyResult, error) {
+		ApplyT(func(v interface{}) (GetTunnelInstanceIamPolicyResultOutput, error) {
 			args := v.(GetTunnelInstanceIamPolicyArgs)
-			r, err := GetTunnelInstanceIamPolicy(ctx, &args, opts...)
-			var s GetTunnelInstanceIamPolicyResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetTunnelInstanceIamPolicyResult
+			secret, err := ctx.InvokePackageRaw("gcp:iap/getTunnelInstanceIamPolicy:getTunnelInstanceIamPolicy", args, &rv, "", opts...)
+			if err != nil {
+				return GetTunnelInstanceIamPolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetTunnelInstanceIamPolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetTunnelInstanceIamPolicyResultOutput), nil
+			}
+			return output, nil
 		}).(GetTunnelInstanceIamPolicyResultOutput)
 }
 

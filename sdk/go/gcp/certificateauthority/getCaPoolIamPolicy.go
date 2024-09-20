@@ -79,14 +79,20 @@ type LookupCaPoolIamPolicyResult struct {
 
 func LookupCaPoolIamPolicyOutput(ctx *pulumi.Context, args LookupCaPoolIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupCaPoolIamPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupCaPoolIamPolicyResult, error) {
+		ApplyT(func(v interface{}) (LookupCaPoolIamPolicyResultOutput, error) {
 			args := v.(LookupCaPoolIamPolicyArgs)
-			r, err := LookupCaPoolIamPolicy(ctx, &args, opts...)
-			var s LookupCaPoolIamPolicyResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupCaPoolIamPolicyResult
+			secret, err := ctx.InvokePackageRaw("gcp:certificateauthority/getCaPoolIamPolicy:getCaPoolIamPolicy", args, &rv, "", opts...)
+			if err != nil {
+				return LookupCaPoolIamPolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupCaPoolIamPolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupCaPoolIamPolicyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupCaPoolIamPolicyResultOutput)
 }
 

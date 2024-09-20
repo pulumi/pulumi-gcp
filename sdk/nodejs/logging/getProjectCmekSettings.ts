@@ -26,7 +26,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getProjectCmekSettings(args: GetProjectCmekSettingsArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectCmekSettingsResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:logging/getProjectCmekSettings:getProjectCmekSettings", {
         "kmsKeyName": args.kmsKeyName,
@@ -113,7 +112,11 @@ export interface GetProjectCmekSettingsResult {
  * ```
  */
 export function getProjectCmekSettingsOutput(args: GetProjectCmekSettingsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectCmekSettingsResult> {
-    return pulumi.output(args).apply((a: any) => getProjectCmekSettings(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:logging/getProjectCmekSettings:getProjectCmekSettings", {
+        "kmsKeyName": args.kmsKeyName,
+        "project": args.project,
+    }, opts);
 }
 
 /**

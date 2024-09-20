@@ -24,7 +24,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getFunction(args: GetFunctionArgs, opts?: pulumi.InvokeOptions): Promise<GetFunctionResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:cloudfunctionsv2/getFunction:getFunction", {
         "location": args.location,
@@ -96,7 +95,12 @@ export interface GetFunctionResult {
  * ```
  */
 export function getFunctionOutput(args: GetFunctionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFunctionResult> {
-    return pulumi.output(args).apply((a: any) => getFunction(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:cloudfunctionsv2/getFunction:getFunction", {
+        "location": args.location,
+        "name": args.name,
+        "project": args.project,
+    }, opts);
 }
 
 /**

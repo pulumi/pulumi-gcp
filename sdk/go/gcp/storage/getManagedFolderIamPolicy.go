@@ -39,14 +39,20 @@ type LookupManagedFolderIamPolicyResult struct {
 
 func LookupManagedFolderIamPolicyOutput(ctx *pulumi.Context, args LookupManagedFolderIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupManagedFolderIamPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupManagedFolderIamPolicyResult, error) {
+		ApplyT(func(v interface{}) (LookupManagedFolderIamPolicyResultOutput, error) {
 			args := v.(LookupManagedFolderIamPolicyArgs)
-			r, err := LookupManagedFolderIamPolicy(ctx, &args, opts...)
-			var s LookupManagedFolderIamPolicyResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupManagedFolderIamPolicyResult
+			secret, err := ctx.InvokePackageRaw("gcp:storage/getManagedFolderIamPolicy:getManagedFolderIamPolicy", args, &rv, "", opts...)
+			if err != nil {
+				return LookupManagedFolderIamPolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupManagedFolderIamPolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupManagedFolderIamPolicyResultOutput), nil
+			}
+			return output, nil
 		}).(LookupManagedFolderIamPolicyResultOutput)
 }
 

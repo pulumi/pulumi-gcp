@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getInstanceIamPolicy(args: GetInstanceIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceIamPolicyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:datafusion/getInstanceIamPolicy:getInstanceIamPolicy", {
         "name": args.name,
@@ -90,7 +89,12 @@ export interface GetInstanceIamPolicyResult {
  * ```
  */
 export function getInstanceIamPolicyOutput(args: GetInstanceIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceIamPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getInstanceIamPolicy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:datafusion/getInstanceIamPolicy:getInstanceIamPolicy", {
+        "name": args.name,
+        "project": args.project,
+        "region": args.region,
+    }, opts);
 }
 
 /**

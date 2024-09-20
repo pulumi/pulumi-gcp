@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getAccessPolicyIamPolicy(args: GetAccessPolicyIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessPolicyIamPolicyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:accesscontextmanager/getAccessPolicyIamPolicy:getAccessPolicyIamPolicy", {
         "name": args.name,
@@ -70,7 +69,10 @@ export interface GetAccessPolicyIamPolicyResult {
  * ```
  */
 export function getAccessPolicyIamPolicyOutput(args: GetAccessPolicyIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessPolicyIamPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getAccessPolicyIamPolicy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:accesscontextmanager/getAccessPolicyIamPolicy:getAccessPolicyIamPolicy", {
+        "name": args.name,
+    }, opts);
 }
 
 /**

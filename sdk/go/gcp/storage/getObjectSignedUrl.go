@@ -140,14 +140,20 @@ type GetObjectSignedUrlResult struct {
 
 func GetObjectSignedUrlOutput(ctx *pulumi.Context, args GetObjectSignedUrlOutputArgs, opts ...pulumi.InvokeOption) GetObjectSignedUrlResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetObjectSignedUrlResult, error) {
+		ApplyT(func(v interface{}) (GetObjectSignedUrlResultOutput, error) {
 			args := v.(GetObjectSignedUrlArgs)
-			r, err := GetObjectSignedUrl(ctx, &args, opts...)
-			var s GetObjectSignedUrlResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetObjectSignedUrlResult
+			secret, err := ctx.InvokePackageRaw("gcp:storage/getObjectSignedUrl:getObjectSignedUrl", args, &rv, "", opts...)
+			if err != nil {
+				return GetObjectSignedUrlResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetObjectSignedUrlResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetObjectSignedUrlResultOutput), nil
+			}
+			return output, nil
 		}).(GetObjectSignedUrlResultOutput)
 }
 

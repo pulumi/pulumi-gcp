@@ -74,14 +74,20 @@ type GetDatabaseInstanceLatestRecoveryTimeResult struct {
 
 func GetDatabaseInstanceLatestRecoveryTimeOutput(ctx *pulumi.Context, args GetDatabaseInstanceLatestRecoveryTimeOutputArgs, opts ...pulumi.InvokeOption) GetDatabaseInstanceLatestRecoveryTimeResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetDatabaseInstanceLatestRecoveryTimeResult, error) {
+		ApplyT(func(v interface{}) (GetDatabaseInstanceLatestRecoveryTimeResultOutput, error) {
 			args := v.(GetDatabaseInstanceLatestRecoveryTimeArgs)
-			r, err := GetDatabaseInstanceLatestRecoveryTime(ctx, &args, opts...)
-			var s GetDatabaseInstanceLatestRecoveryTimeResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetDatabaseInstanceLatestRecoveryTimeResult
+			secret, err := ctx.InvokePackageRaw("gcp:sql/getDatabaseInstanceLatestRecoveryTime:getDatabaseInstanceLatestRecoveryTime", args, &rv, "", opts...)
+			if err != nil {
+				return GetDatabaseInstanceLatestRecoveryTimeResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetDatabaseInstanceLatestRecoveryTimeResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetDatabaseInstanceLatestRecoveryTimeResultOutput), nil
+			}
+			return output, nil
 		}).(GetDatabaseInstanceLatestRecoveryTimeResultOutput)
 }
 

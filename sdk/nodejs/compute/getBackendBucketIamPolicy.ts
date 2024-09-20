@@ -5,7 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 export function getBackendBucketIamPolicy(args: GetBackendBucketIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetBackendBucketIamPolicyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getBackendBucketIamPolicy:getBackendBucketIamPolicy", {
         "name": args.name,
@@ -49,7 +48,11 @@ export interface GetBackendBucketIamPolicyResult {
     readonly project: string;
 }
 export function getBackendBucketIamPolicyOutput(args: GetBackendBucketIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackendBucketIamPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getBackendBucketIamPolicy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:compute/getBackendBucketIamPolicy:getBackendBucketIamPolicy", {
+        "name": args.name,
+        "project": args.project,
+    }, opts);
 }
 
 /**

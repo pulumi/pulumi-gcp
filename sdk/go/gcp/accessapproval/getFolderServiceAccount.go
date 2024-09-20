@@ -85,14 +85,20 @@ type GetFolderServiceAccountResult struct {
 
 func GetFolderServiceAccountOutput(ctx *pulumi.Context, args GetFolderServiceAccountOutputArgs, opts ...pulumi.InvokeOption) GetFolderServiceAccountResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetFolderServiceAccountResult, error) {
+		ApplyT(func(v interface{}) (GetFolderServiceAccountResultOutput, error) {
 			args := v.(GetFolderServiceAccountArgs)
-			r, err := GetFolderServiceAccount(ctx, &args, opts...)
-			var s GetFolderServiceAccountResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetFolderServiceAccountResult
+			secret, err := ctx.InvokePackageRaw("gcp:accessapproval/getFolderServiceAccount:getFolderServiceAccount", args, &rv, "", opts...)
+			if err != nil {
+				return GetFolderServiceAccountResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetFolderServiceAccountResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetFolderServiceAccountResultOutput), nil
+			}
+			return output, nil
 		}).(GetFolderServiceAccountResultOutput)
 }
 

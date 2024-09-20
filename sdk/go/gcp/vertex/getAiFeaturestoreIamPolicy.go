@@ -50,14 +50,20 @@ type GetAiFeaturestoreIamPolicyResult struct {
 
 func GetAiFeaturestoreIamPolicyOutput(ctx *pulumi.Context, args GetAiFeaturestoreIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetAiFeaturestoreIamPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetAiFeaturestoreIamPolicyResult, error) {
+		ApplyT(func(v interface{}) (GetAiFeaturestoreIamPolicyResultOutput, error) {
 			args := v.(GetAiFeaturestoreIamPolicyArgs)
-			r, err := GetAiFeaturestoreIamPolicy(ctx, &args, opts...)
-			var s GetAiFeaturestoreIamPolicyResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetAiFeaturestoreIamPolicyResult
+			secret, err := ctx.InvokePackageRaw("gcp:vertex/getAiFeaturestoreIamPolicy:getAiFeaturestoreIamPolicy", args, &rv, "", opts...)
+			if err != nil {
+				return GetAiFeaturestoreIamPolicyResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetAiFeaturestoreIamPolicyResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetAiFeaturestoreIamPolicyResultOutput), nil
+			}
+			return output, nil
 		}).(GetAiFeaturestoreIamPolicyResultOutput)
 }
 

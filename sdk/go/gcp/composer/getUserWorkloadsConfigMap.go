@@ -97,14 +97,20 @@ type LookupUserWorkloadsConfigMapResult struct {
 
 func LookupUserWorkloadsConfigMapOutput(ctx *pulumi.Context, args LookupUserWorkloadsConfigMapOutputArgs, opts ...pulumi.InvokeOption) LookupUserWorkloadsConfigMapResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupUserWorkloadsConfigMapResult, error) {
+		ApplyT(func(v interface{}) (LookupUserWorkloadsConfigMapResultOutput, error) {
 			args := v.(LookupUserWorkloadsConfigMapArgs)
-			r, err := LookupUserWorkloadsConfigMap(ctx, &args, opts...)
-			var s LookupUserWorkloadsConfigMapResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupUserWorkloadsConfigMapResult
+			secret, err := ctx.InvokePackageRaw("gcp:composer/getUserWorkloadsConfigMap:getUserWorkloadsConfigMap", args, &rv, "", opts...)
+			if err != nil {
+				return LookupUserWorkloadsConfigMapResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupUserWorkloadsConfigMapResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupUserWorkloadsConfigMapResultOutput), nil
+			}
+			return output, nil
 		}).(LookupUserWorkloadsConfigMapResultOutput)
 }
 

@@ -5,7 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 export function getAndroidApp(args: GetAndroidAppArgs, opts?: pulumi.InvokeOptions): Promise<GetAndroidAppResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:firebase/getAndroidApp:getAndroidApp", {
         "appId": args.appId,
@@ -75,7 +74,11 @@ export interface GetAndroidAppResult {
     readonly sha256Hashes: string[];
 }
 export function getAndroidAppOutput(args: GetAndroidAppOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAndroidAppResult> {
-    return pulumi.output(args).apply((a: any) => getAndroidApp(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:firebase/getAndroidApp:getAndroidApp", {
+        "appId": args.appId,
+        "project": args.project,
+    }, opts);
 }
 
 /**

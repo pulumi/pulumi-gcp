@@ -105,14 +105,20 @@ type LookupNetworkPeeringResult struct {
 
 func LookupNetworkPeeringOutput(ctx *pulumi.Context, args LookupNetworkPeeringOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkPeeringResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupNetworkPeeringResult, error) {
+		ApplyT(func(v interface{}) (LookupNetworkPeeringResultOutput, error) {
 			args := v.(LookupNetworkPeeringArgs)
-			r, err := LookupNetworkPeering(ctx, &args, opts...)
-			var s LookupNetworkPeeringResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupNetworkPeeringResult
+			secret, err := ctx.InvokePackageRaw("gcp:compute/getNetworkPeering:getNetworkPeering", args, &rv, "", opts...)
+			if err != nil {
+				return LookupNetworkPeeringResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupNetworkPeeringResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupNetworkPeeringResultOutput), nil
+			}
+			return output, nil
 		}).(LookupNetworkPeeringResultOutput)
 }
 

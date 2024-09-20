@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  */
 export function getInstanceGroupManager(args?: GetInstanceGroupManagerArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceGroupManagerResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getInstanceGroupManager:getInstanceGroupManager", {
         "name": args.name,
@@ -119,7 +118,14 @@ export interface GetInstanceGroupManagerResult {
  * ```
  */
 export function getInstanceGroupManagerOutput(args?: GetInstanceGroupManagerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceGroupManagerResult> {
-    return pulumi.output(args).apply((a: any) => getInstanceGroupManager(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:compute/getInstanceGroupManager:getInstanceGroupManager", {
+        "name": args.name,
+        "project": args.project,
+        "selfLink": args.selfLink,
+        "zone": args.zone,
+    }, opts);
 }
 
 /**

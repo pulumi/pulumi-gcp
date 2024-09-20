@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getManagedZoneIamPolicy(args: GetManagedZoneIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetManagedZoneIamPolicyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:dns/getManagedZoneIamPolicy:getManagedZoneIamPolicy", {
         "managedZone": args.managedZone,
@@ -79,7 +78,11 @@ export interface GetManagedZoneIamPolicyResult {
  * ```
  */
 export function getManagedZoneIamPolicyOutput(args: GetManagedZoneIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetManagedZoneIamPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getManagedZoneIamPolicy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:dns/getManagedZoneIamPolicy:getManagedZoneIamPolicy", {
+        "managedZone": args.managedZone,
+        "project": args.project,
+    }, opts);
 }
 
 /**

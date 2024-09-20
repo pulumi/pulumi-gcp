@@ -97,14 +97,20 @@ type GetProjectCmekSettingsResult struct {
 
 func GetProjectCmekSettingsOutput(ctx *pulumi.Context, args GetProjectCmekSettingsOutputArgs, opts ...pulumi.InvokeOption) GetProjectCmekSettingsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetProjectCmekSettingsResult, error) {
+		ApplyT(func(v interface{}) (GetProjectCmekSettingsResultOutput, error) {
 			args := v.(GetProjectCmekSettingsArgs)
-			r, err := GetProjectCmekSettings(ctx, &args, opts...)
-			var s GetProjectCmekSettingsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetProjectCmekSettingsResult
+			secret, err := ctx.InvokePackageRaw("gcp:logging/getProjectCmekSettings:getProjectCmekSettings", args, &rv, "", opts...)
+			if err != nil {
+				return GetProjectCmekSettingsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetProjectCmekSettingsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetProjectCmekSettingsResultOutput), nil
+			}
+			return output, nil
 		}).(GetProjectCmekSettingsResultOutput)
 }
 

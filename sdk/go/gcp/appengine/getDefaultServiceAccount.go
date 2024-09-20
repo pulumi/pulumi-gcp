@@ -72,14 +72,20 @@ type GetDefaultServiceAccountResult struct {
 
 func GetDefaultServiceAccountOutput(ctx *pulumi.Context, args GetDefaultServiceAccountOutputArgs, opts ...pulumi.InvokeOption) GetDefaultServiceAccountResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetDefaultServiceAccountResult, error) {
+		ApplyT(func(v interface{}) (GetDefaultServiceAccountResultOutput, error) {
 			args := v.(GetDefaultServiceAccountArgs)
-			r, err := GetDefaultServiceAccount(ctx, &args, opts...)
-			var s GetDefaultServiceAccountResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetDefaultServiceAccountResult
+			secret, err := ctx.InvokePackageRaw("gcp:appengine/getDefaultServiceAccount:getDefaultServiceAccount", args, &rv, "", opts...)
+			if err != nil {
+				return GetDefaultServiceAccountResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetDefaultServiceAccountResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetDefaultServiceAccountResultOutput), nil
+			}
+			return output, nil
 		}).(GetDefaultServiceAccountResultOutput)
 }
 

@@ -70,14 +70,20 @@ type GetTransferProjectServieAccountResult struct {
 
 func GetTransferProjectServieAccountOutput(ctx *pulumi.Context, args GetTransferProjectServieAccountOutputArgs, opts ...pulumi.InvokeOption) GetTransferProjectServieAccountResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetTransferProjectServieAccountResult, error) {
+		ApplyT(func(v interface{}) (GetTransferProjectServieAccountResultOutput, error) {
 			args := v.(GetTransferProjectServieAccountArgs)
-			r, err := GetTransferProjectServieAccount(ctx, &args, opts...)
-			var s GetTransferProjectServieAccountResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetTransferProjectServieAccountResult
+			secret, err := ctx.InvokePackageRaw("gcp:storage/getTransferProjectServieAccount:getTransferProjectServieAccount", args, &rv, "", opts...)
+			if err != nil {
+				return GetTransferProjectServieAccountResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetTransferProjectServieAccountResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetTransferProjectServieAccountResultOutput), nil
+			}
+			return output, nil
 		}).(GetTransferProjectServieAccountResultOutput)
 }
 

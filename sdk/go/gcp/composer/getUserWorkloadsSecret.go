@@ -108,14 +108,20 @@ type LookupUserWorkloadsSecretResult struct {
 
 func LookupUserWorkloadsSecretOutput(ctx *pulumi.Context, args LookupUserWorkloadsSecretOutputArgs, opts ...pulumi.InvokeOption) LookupUserWorkloadsSecretResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupUserWorkloadsSecretResult, error) {
+		ApplyT(func(v interface{}) (LookupUserWorkloadsSecretResultOutput, error) {
 			args := v.(LookupUserWorkloadsSecretArgs)
-			r, err := LookupUserWorkloadsSecret(ctx, &args, opts...)
-			var s LookupUserWorkloadsSecretResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupUserWorkloadsSecretResult
+			secret, err := ctx.InvokePackageRaw("gcp:composer/getUserWorkloadsSecret:getUserWorkloadsSecret", args, &rv, "", opts...)
+			if err != nil {
+				return LookupUserWorkloadsSecretResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupUserWorkloadsSecretResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupUserWorkloadsSecretResultOutput), nil
+			}
+			return output, nil
 		}).(LookupUserWorkloadsSecretResultOutput)
 }
 

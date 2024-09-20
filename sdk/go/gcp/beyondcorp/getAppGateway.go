@@ -82,14 +82,20 @@ type LookupAppGatewayResult struct {
 
 func LookupAppGatewayOutput(ctx *pulumi.Context, args LookupAppGatewayOutputArgs, opts ...pulumi.InvokeOption) LookupAppGatewayResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAppGatewayResult, error) {
+		ApplyT(func(v interface{}) (LookupAppGatewayResultOutput, error) {
 			args := v.(LookupAppGatewayArgs)
-			r, err := LookupAppGateway(ctx, &args, opts...)
-			var s LookupAppGatewayResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupAppGatewayResult
+			secret, err := ctx.InvokePackageRaw("gcp:beyondcorp/getAppGateway:getAppGateway", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAppGatewayResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAppGatewayResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAppGatewayResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAppGatewayResultOutput)
 }
 

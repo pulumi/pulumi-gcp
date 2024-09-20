@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getSubnetworkIamPolicy(args: GetSubnetworkIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetSubnetworkIamPolicyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getSubnetworkIamPolicy:getSubnetworkIamPolicy", {
         "project": args.project,
@@ -90,7 +89,12 @@ export interface GetSubnetworkIamPolicyResult {
  * ```
  */
 export function getSubnetworkIamPolicyOutput(args: GetSubnetworkIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubnetworkIamPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getSubnetworkIamPolicy(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:compute/getSubnetworkIamPolicy:getSubnetworkIamPolicy", {
+        "project": args.project,
+        "region": args.region,
+        "subnetwork": args.subnetwork,
+    }, opts);
 }
 
 /**

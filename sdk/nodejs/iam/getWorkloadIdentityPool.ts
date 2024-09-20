@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getWorkloadIdentityPool(args: GetWorkloadIdentityPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkloadIdentityPoolResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:iam/getWorkloadIdentityPool:getWorkloadIdentityPool", {
         "project": args.project,
@@ -76,7 +75,11 @@ export interface GetWorkloadIdentityPoolResult {
  * ```
  */
 export function getWorkloadIdentityPoolOutput(args: GetWorkloadIdentityPoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkloadIdentityPoolResult> {
-    return pulumi.output(args).apply((a: any) => getWorkloadIdentityPool(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:iam/getWorkloadIdentityPool:getWorkloadIdentityPool", {
+        "project": args.project,
+        "workloadIdentityPoolId": args.workloadIdentityPoolId,
+    }, opts);
 }
 
 /**

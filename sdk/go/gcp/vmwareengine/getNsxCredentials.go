@@ -70,14 +70,20 @@ type GetNsxCredentialsResult struct {
 
 func GetNsxCredentialsOutput(ctx *pulumi.Context, args GetNsxCredentialsOutputArgs, opts ...pulumi.InvokeOption) GetNsxCredentialsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetNsxCredentialsResult, error) {
+		ApplyT(func(v interface{}) (GetNsxCredentialsResultOutput, error) {
 			args := v.(GetNsxCredentialsArgs)
-			r, err := GetNsxCredentials(ctx, &args, opts...)
-			var s GetNsxCredentialsResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetNsxCredentialsResult
+			secret, err := ctx.InvokePackageRaw("gcp:vmwareengine/getNsxCredentials:getNsxCredentials", args, &rv, "", opts...)
+			if err != nil {
+				return GetNsxCredentialsResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetNsxCredentialsResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetNsxCredentialsResultOutput), nil
+			}
+			return output, nil
 		}).(GetNsxCredentialsResultOutput)
 }
 

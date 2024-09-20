@@ -34,7 +34,6 @@ import * as utilities from "../utilities";
  */
 export function getV2AcceleratorTypes(args?: GetV2AcceleratorTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetV2AcceleratorTypesResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:tpu/getV2AcceleratorTypes:getV2AcceleratorTypes", {
         "project": args.project,
@@ -102,7 +101,12 @@ export interface GetV2AcceleratorTypesResult {
  * ```
  */
 export function getV2AcceleratorTypesOutput(args?: GetV2AcceleratorTypesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetV2AcceleratorTypesResult> {
-    return pulumi.output(args).apply((a: any) => getV2AcceleratorTypes(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:tpu/getV2AcceleratorTypes:getV2AcceleratorTypes", {
+        "project": args.project,
+        "zone": args.zone,
+    }, opts);
 }
 
 /**

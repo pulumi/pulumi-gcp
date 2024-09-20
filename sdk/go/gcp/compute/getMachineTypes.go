@@ -53,14 +53,20 @@ type GetMachineTypesResult struct {
 
 func GetMachineTypesOutput(ctx *pulumi.Context, args GetMachineTypesOutputArgs, opts ...pulumi.InvokeOption) GetMachineTypesResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetMachineTypesResult, error) {
+		ApplyT(func(v interface{}) (GetMachineTypesResultOutput, error) {
 			args := v.(GetMachineTypesArgs)
-			r, err := GetMachineTypes(ctx, &args, opts...)
-			var s GetMachineTypesResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetMachineTypesResult
+			secret, err := ctx.InvokePackageRaw("gcp:compute/getMachineTypes:getMachineTypes", args, &rv, "", opts...)
+			if err != nil {
+				return GetMachineTypesResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetMachineTypesResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetMachineTypesResultOutput), nil
+			}
+			return output, nil
 		}).(GetMachineTypesResultOutput)
 }
 

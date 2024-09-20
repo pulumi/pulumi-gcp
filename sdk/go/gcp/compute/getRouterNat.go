@@ -100,14 +100,20 @@ type LookupRouterNatResult struct {
 
 func LookupRouterNatOutput(ctx *pulumi.Context, args LookupRouterNatOutputArgs, opts ...pulumi.InvokeOption) LookupRouterNatResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupRouterNatResult, error) {
+		ApplyT(func(v interface{}) (LookupRouterNatResultOutput, error) {
 			args := v.(LookupRouterNatArgs)
-			r, err := LookupRouterNat(ctx, &args, opts...)
-			var s LookupRouterNatResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupRouterNatResult
+			secret, err := ctx.InvokePackageRaw("gcp:compute/getRouterNat:getRouterNat", args, &rv, "", opts...)
+			if err != nil {
+				return LookupRouterNatResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupRouterNatResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupRouterNatResultOutput), nil
+			}
+			return output, nil
 		}).(LookupRouterNatResultOutput)
 }
 

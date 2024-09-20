@@ -43,7 +43,6 @@ import * as utilities from "../utilities";
  */
 export function getLocations(args?: GetLocationsArgs, opts?: pulumi.InvokeOptions): Promise<GetLocationsResult> {
     args = args || {};
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:artifactregistry/getLocations:getLocations", {
         "project": args.project,
@@ -113,7 +112,11 @@ export interface GetLocationsResult {
  * ```
  */
 export function getLocationsOutput(args?: GetLocationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLocationsResult> {
-    return pulumi.output(args).apply((a: any) => getLocations(a, opts))
+    args = args || {};
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:artifactregistry/getLocations:getLocations", {
+        "project": args.project,
+    }, opts);
 }
 
 /**

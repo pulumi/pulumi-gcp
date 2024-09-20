@@ -32,7 +32,6 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getKMSCryptoKey(args: GetKMSCryptoKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetKMSCryptoKeyResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:kms/getKMSCryptoKey:getKMSCryptoKey", {
         "keyRing": args.keyRing,
@@ -112,7 +111,11 @@ export interface GetKMSCryptoKeyResult {
  * ```
  */
 export function getKMSCryptoKeyOutput(args: GetKMSCryptoKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKMSCryptoKeyResult> {
-    return pulumi.output(args).apply((a: any) => getKMSCryptoKey(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("gcp:kms/getKMSCryptoKey:getKMSCryptoKey", {
+        "keyRing": args.keyRing,
+        "name": args.name,
+    }, opts);
 }
 
 /**

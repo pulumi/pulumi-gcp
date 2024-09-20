@@ -68,14 +68,20 @@ type GetRuleResult struct {
 
 func GetRuleOutput(ctx *pulumi.Context, args GetRuleOutputArgs, opts ...pulumi.InvokeOption) GetRuleResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetRuleResult, error) {
+		ApplyT(func(v interface{}) (GetRuleResultOutput, error) {
 			args := v.(GetRuleArgs)
-			r, err := GetRule(ctx, &args, opts...)
-			var s GetRuleResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv GetRuleResult
+			secret, err := ctx.InvokePackageRaw("gcp:iam/getRule:getRule", args, &rv, "", opts...)
+			if err != nil {
+				return GetRuleResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(GetRuleResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(GetRuleResultOutput), nil
+			}
+			return output, nil
 		}).(GetRuleResultOutput)
 }
 

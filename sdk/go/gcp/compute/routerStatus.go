@@ -85,14 +85,20 @@ type RouterStatusResult struct {
 
 func RouterStatusOutput(ctx *pulumi.Context, args RouterStatusOutputArgs, opts ...pulumi.InvokeOption) RouterStatusResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (RouterStatusResult, error) {
+		ApplyT(func(v interface{}) (RouterStatusResultOutput, error) {
 			args := v.(RouterStatusArgs)
-			r, err := RouterStatus(ctx, &args, opts...)
-			var s RouterStatusResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv RouterStatusResult
+			secret, err := ctx.InvokePackageRaw("gcp:compute/routerStatus:RouterStatus", args, &rv, "", opts...)
+			if err != nil {
+				return RouterStatusResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(RouterStatusResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(RouterStatusResultOutput), nil
+			}
+			return output, nil
 		}).(RouterStatusResultOutput)
 }
 

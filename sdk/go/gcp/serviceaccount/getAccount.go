@@ -137,14 +137,20 @@ type LookupAccountResult struct {
 
 func LookupAccountOutput(ctx *pulumi.Context, args LookupAccountOutputArgs, opts ...pulumi.InvokeOption) LookupAccountResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupAccountResult, error) {
+		ApplyT(func(v interface{}) (LookupAccountResultOutput, error) {
 			args := v.(LookupAccountArgs)
-			r, err := LookupAccount(ctx, &args, opts...)
-			var s LookupAccountResult
-			if r != nil {
-				s = *r
+			opts = internal.PkgInvokeDefaultOpts(opts)
+			var rv LookupAccountResult
+			secret, err := ctx.InvokePackageRaw("gcp:serviceaccount/getAccount:getAccount", args, &rv, "", opts...)
+			if err != nil {
+				return LookupAccountResultOutput{}, err
 			}
-			return s, err
+
+			output := pulumi.ToOutput(rv).(LookupAccountResultOutput)
+			if secret {
+				return pulumi.ToSecret(output).(LookupAccountResultOutput), nil
+			}
+			return output, nil
 		}).(LookupAccountResultOutput)
 }
 
