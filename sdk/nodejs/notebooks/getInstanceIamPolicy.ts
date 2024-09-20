@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getInstanceIamPolicy(args: GetInstanceIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceIamPolicyResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:notebooks/getInstanceIamPolicy:getInstanceIamPolicy", {
         "instanceName": args.instanceName,
@@ -88,12 +89,7 @@ export interface GetInstanceIamPolicyResult {
  * ```
  */
 export function getInstanceIamPolicyOutput(args: GetInstanceIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceIamPolicyResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:notebooks/getInstanceIamPolicy:getInstanceIamPolicy", {
-        "instanceName": args.instanceName,
-        "location": args.location,
-        "project": args.project,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getInstanceIamPolicy(a, opts))
 }
 
 /**

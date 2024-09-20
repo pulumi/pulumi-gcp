@@ -30,6 +30,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getFolderServiceAccount(args: GetFolderServiceAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetFolderServiceAccountResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:accessapproval/getFolderServiceAccount:getFolderServiceAccount", {
         "folderId": args.folderId,
@@ -91,10 +92,7 @@ export interface GetFolderServiceAccountResult {
  * ```
  */
 export function getFolderServiceAccountOutput(args: GetFolderServiceAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFolderServiceAccountResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:accessapproval/getFolderServiceAccount:getFolderServiceAccount", {
-        "folderId": args.folderId,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getFolderServiceAccount(a, opts))
 }
 
 /**

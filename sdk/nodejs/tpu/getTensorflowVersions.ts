@@ -34,6 +34,7 @@ import * as utilities from "../utilities";
  */
 export function getTensorflowVersions(args?: GetTensorflowVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetTensorflowVersionsResult> {
     args = args || {};
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:tpu/getTensorflowVersions:getTensorflowVersions", {
         "project": args.project,
@@ -101,12 +102,7 @@ export interface GetTensorflowVersionsResult {
  * ```
  */
 export function getTensorflowVersionsOutput(args?: GetTensorflowVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTensorflowVersionsResult> {
-    args = args || {};
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:tpu/getTensorflowVersions:getTensorflowVersions", {
-        "project": args.project,
-        "zone": args.zone,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getTensorflowVersions(a, opts))
 }
 
 /**

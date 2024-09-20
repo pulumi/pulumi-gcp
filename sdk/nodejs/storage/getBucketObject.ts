@@ -28,6 +28,7 @@ import * as utilities from "../utilities";
  */
 export function getBucketObject(args?: GetBucketObjectArgs, opts?: pulumi.InvokeOptions): Promise<GetBucketObjectResult> {
     args = args || {};
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:storage/getBucketObject:getBucketObject", {
         "bucket": args.bucket,
@@ -144,12 +145,7 @@ export interface GetBucketObjectResult {
  * ```
  */
 export function getBucketObjectOutput(args?: GetBucketObjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBucketObjectResult> {
-    args = args || {};
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:storage/getBucketObject:getBucketObject", {
-        "bucket": args.bucket,
-        "name": args.name,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getBucketObject(a, opts))
 }
 
 /**

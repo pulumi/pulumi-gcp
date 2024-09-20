@@ -25,6 +25,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getSubnet(args: GetSubnetArgs, opts?: pulumi.InvokeOptions): Promise<GetSubnetResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:vmwareengine/getSubnet:getSubnet", {
         "name": args.name,
@@ -89,11 +90,7 @@ export interface GetSubnetResult {
  * ```
  */
 export function getSubnetOutput(args: GetSubnetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubnetResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:vmwareengine/getSubnet:getSubnet", {
-        "name": args.name,
-        "parent": args.parent,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getSubnet(a, opts))
 }
 
 /**

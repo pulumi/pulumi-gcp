@@ -22,6 +22,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getDiscoveredWorkload(args: GetDiscoveredWorkloadArgs, opts?: pulumi.InvokeOptions): Promise<GetDiscoveredWorkloadResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:apphub/getDiscoveredWorkload:getDiscoveredWorkload", {
         "location": args.location,
@@ -91,12 +92,7 @@ export interface GetDiscoveredWorkloadResult {
  * ```
  */
 export function getDiscoveredWorkloadOutput(args: GetDiscoveredWorkloadOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDiscoveredWorkloadResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:apphub/getDiscoveredWorkload:getDiscoveredWorkload", {
-        "location": args.location,
-        "project": args.project,
-        "workloadUri": args.workloadUri,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getDiscoveredWorkload(a, opts))
 }
 
 /**

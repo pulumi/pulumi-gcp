@@ -55,6 +55,7 @@ import * as utilities from "../utilities";
  * > *Note*: the generated token is non-refreshable and can have a maximum `lifetime` of `3600` seconds.
  */
 export function getAccountAccessToken(args: GetAccountAccessTokenArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountAccessTokenResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:serviceaccount/getAccountAccessToken:getAccountAccessToken", {
         "delegates": args.delegates,
@@ -154,13 +155,7 @@ export interface GetAccountAccessTokenResult {
  * > *Note*: the generated token is non-refreshable and can have a maximum `lifetime` of `3600` seconds.
  */
 export function getAccountAccessTokenOutput(args: GetAccountAccessTokenOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountAccessTokenResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:serviceaccount/getAccountAccessToken:getAccountAccessToken", {
-        "delegates": args.delegates,
-        "lifetime": args.lifetime,
-        "scopes": args.scopes,
-        "targetServiceAccount": args.targetServiceAccount,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getAccountAccessToken(a, opts))
 }
 
 /**

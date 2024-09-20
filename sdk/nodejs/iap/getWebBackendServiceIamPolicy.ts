@@ -20,6 +20,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getWebBackendServiceIamPolicy(args: GetWebBackendServiceIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetWebBackendServiceIamPolicyResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:iap/getWebBackendServiceIamPolicy:getWebBackendServiceIamPolicy", {
         "project": args.project,
@@ -78,11 +79,7 @@ export interface GetWebBackendServiceIamPolicyResult {
  * ```
  */
 export function getWebBackendServiceIamPolicyOutput(args: GetWebBackendServiceIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebBackendServiceIamPolicyResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:iap/getWebBackendServiceIamPolicy:getWebBackendServiceIamPolicy", {
-        "project": args.project,
-        "webBackendService": args.webBackendService,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getWebBackendServiceIamPolicy(a, opts))
 }
 
 /**

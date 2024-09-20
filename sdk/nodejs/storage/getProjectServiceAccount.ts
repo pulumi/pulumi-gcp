@@ -79,6 +79,7 @@ import * as utilities from "../utilities";
  */
 export function getProjectServiceAccount(args?: GetProjectServiceAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectServiceAccountResult> {
     args = args || {};
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:storage/getProjectServiceAccount:getProjectServiceAccount", {
         "project": args.project,
@@ -195,12 +196,7 @@ export interface GetProjectServiceAccountResult {
  * ```
  */
 export function getProjectServiceAccountOutput(args?: GetProjectServiceAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectServiceAccountResult> {
-    args = args || {};
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:storage/getProjectServiceAccount:getProjectServiceAccount", {
-        "project": args.project,
-        "userProject": args.userProject,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getProjectServiceAccount(a, opts))
 }
 
 /**

@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getUptimeCheckIPs(opts?: pulumi.InvokeOptions): Promise<GetUptimeCheckIPsResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:monitoring/getUptimeCheckIPs:getUptimeCheckIPs", {
     }, opts);
@@ -54,7 +55,5 @@ export interface GetUptimeCheckIPsResult {
  * ```
  */
 export function getUptimeCheckIPsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetUptimeCheckIPsResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:monitoring/getUptimeCheckIPs:getUptimeCheckIPs", {
-    }, opts);
+    return pulumi.output(getUptimeCheckIPs(opts))
 }

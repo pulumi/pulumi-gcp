@@ -16,6 +16,7 @@ import * as utilities from "../utilities";
  * Google Cloud KMS KeyRing.
  */
 export function getCryptoKeys(args: GetCryptoKeysArgs, opts?: pulumi.InvokeOptions): Promise<GetCryptoKeysResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:kms/getCryptoKeys:getCryptoKeys", {
         "filter": args.filter,
@@ -69,11 +70,7 @@ export interface GetCryptoKeysResult {
  * Google Cloud KMS KeyRing.
  */
 export function getCryptoKeysOutput(args: GetCryptoKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCryptoKeysResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:kms/getCryptoKeys:getCryptoKeys", {
-        "filter": args.filter,
-        "keyRing": args.keyRing,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getCryptoKeys(a, opts))
 }
 
 /**

@@ -18,6 +18,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getVariable(args: GetVariableArgs, opts?: pulumi.InvokeOptions): Promise<GetVariableResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:runtimeconfig/getVariable:getVariable", {
         "name": args.name,
@@ -76,12 +77,7 @@ export interface GetVariableResult {
  * ```
  */
 export function getVariableOutput(args: GetVariableOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVariableResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:runtimeconfig/getVariable:getVariable", {
-        "name": args.name,
-        "parent": args.parent,
-        "project": args.project,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getVariable(a, opts))
 }
 
 /**

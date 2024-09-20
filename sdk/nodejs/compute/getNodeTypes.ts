@@ -26,6 +26,7 @@ import * as utilities from "../utilities";
  */
 export function getNodeTypes(args?: GetNodeTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeTypesResult> {
     args = args || {};
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getNodeTypes:getNodeTypes", {
         "project": args.project,
@@ -86,12 +87,7 @@ export interface GetNodeTypesResult {
  * ```
  */
 export function getNodeTypesOutput(args?: GetNodeTypesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodeTypesResult> {
-    args = args || {};
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:compute/getNodeTypes:getNodeTypes", {
-        "project": args.project,
-        "zone": args.zone,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getNodeTypes(a, opts))
 }
 
 /**

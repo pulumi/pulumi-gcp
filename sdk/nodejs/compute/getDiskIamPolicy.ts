@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getDiskIamPolicy(args: GetDiskIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetDiskIamPolicyResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getDiskIamPolicy:getDiskIamPolicy", {
         "name": args.name,
@@ -88,12 +89,7 @@ export interface GetDiskIamPolicyResult {
  * ```
  */
 export function getDiskIamPolicyOutput(args: GetDiskIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDiskIamPolicyResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:compute/getDiskIamPolicy:getDiskIamPolicy", {
-        "name": args.name,
-        "project": args.project,
-        "zone": args.zone,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getDiskIamPolicy(a, opts))
 }
 
 /**

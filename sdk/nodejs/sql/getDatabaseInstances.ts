@@ -22,6 +22,7 @@ import * as utilities from "../utilities";
  */
 export function getDatabaseInstances(args?: GetDatabaseInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseInstancesResult> {
     args = args || {};
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:sql/getDatabaseInstances:getDatabaseInstances", {
         "databaseVersion": args.databaseVersion,
@@ -94,16 +95,7 @@ export interface GetDatabaseInstancesResult {
  * ```
  */
 export function getDatabaseInstancesOutput(args?: GetDatabaseInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseInstancesResult> {
-    args = args || {};
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:sql/getDatabaseInstances:getDatabaseInstances", {
-        "databaseVersion": args.databaseVersion,
-        "project": args.project,
-        "region": args.region,
-        "state": args.state,
-        "tier": args.tier,
-        "zone": args.zone,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getDatabaseInstances(a, opts))
 }
 
 /**

@@ -20,6 +20,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getActiveFolder(args: GetActiveFolderArgs, opts?: pulumi.InvokeOptions): Promise<GetActiveFolderResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:organizations/getActiveFolder:getActiveFolder", {
         "apiMethod": args.apiMethod,
@@ -78,12 +79,7 @@ export interface GetActiveFolderResult {
  * ```
  */
 export function getActiveFolderOutput(args: GetActiveFolderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetActiveFolderResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:organizations/getActiveFolder:getActiveFolder", {
-        "apiMethod": args.apiMethod,
-        "displayName": args.displayName,
-        "parent": args.parent,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getActiveFolder(a, opts))
 }
 
 /**

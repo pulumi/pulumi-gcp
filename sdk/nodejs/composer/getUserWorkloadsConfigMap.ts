@@ -35,6 +35,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getUserWorkloadsConfigMap(args: GetUserWorkloadsConfigMapArgs, opts?: pulumi.InvokeOptions): Promise<GetUserWorkloadsConfigMapResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:composer/getUserWorkloadsConfigMap:getUserWorkloadsConfigMap", {
         "environment": args.environment,
@@ -116,13 +117,7 @@ export interface GetUserWorkloadsConfigMapResult {
  * ```
  */
 export function getUserWorkloadsConfigMapOutput(args: GetUserWorkloadsConfigMapOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserWorkloadsConfigMapResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:composer/getUserWorkloadsConfigMap:getUserWorkloadsConfigMap", {
-        "environment": args.environment,
-        "name": args.name,
-        "project": args.project,
-        "region": args.region,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getUserWorkloadsConfigMap(a, opts))
 }
 
 /**

@@ -5,6 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 export function getConfigIamPolicy(args: GetConfigIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetConfigIamPolicyResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:runtimeconfig/getConfigIamPolicy:getConfigIamPolicy", {
         "config": args.config,
@@ -48,11 +49,7 @@ export interface GetConfigIamPolicyResult {
     readonly project: string;
 }
 export function getConfigIamPolicyOutput(args: GetConfigIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConfigIamPolicyResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:runtimeconfig/getConfigIamPolicy:getConfigIamPolicy", {
-        "config": args.config,
-        "project": args.project,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getConfigIamPolicy(a, opts))
 }
 
 /**

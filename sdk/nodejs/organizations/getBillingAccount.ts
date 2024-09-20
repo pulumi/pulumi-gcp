@@ -25,6 +25,7 @@ import * as utilities from "../utilities";
  */
 export function getBillingAccount(args?: GetBillingAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetBillingAccountResult> {
     args = args || {};
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:organizations/getBillingAccount:getBillingAccount", {
         "billingAccount": args.billingAccount,
@@ -101,14 +102,7 @@ export interface GetBillingAccountResult {
  * ```
  */
 export function getBillingAccountOutput(args?: GetBillingAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBillingAccountResult> {
-    args = args || {};
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:organizations/getBillingAccount:getBillingAccount", {
-        "billingAccount": args.billingAccount,
-        "displayName": args.displayName,
-        "lookupProjects": args.lookupProjects,
-        "open": args.open,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getBillingAccount(a, opts))
 }
 
 /**

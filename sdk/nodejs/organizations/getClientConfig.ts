@@ -16,6 +16,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getClientConfig(opts?: pulumi.InvokeOptions): Promise<GetClientConfigResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:organizations/getClientConfig:getClientConfig", {
     }, opts);
@@ -59,7 +60,5 @@ export interface GetClientConfigResult {
  * ```
  */
 export function getClientConfigOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetClientConfigResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:organizations/getClientConfig:getClientConfig", {
-    }, opts);
+    return pulumi.output(getClientConfig(opts))
 }

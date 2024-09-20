@@ -16,6 +16,7 @@ import * as utilities from "../utilities";
  */
 export function getInstanceTemplate(args?: GetInstanceTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceTemplateResult> {
     args = args || {};
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getInstanceTemplate:getInstanceTemplate", {
         "filter": args.filter,
@@ -213,15 +214,7 @@ export interface GetInstanceTemplateResult {
  * [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates).
  */
 export function getInstanceTemplateOutput(args?: GetInstanceTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceTemplateResult> {
-    args = args || {};
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:compute/getInstanceTemplate:getInstanceTemplate", {
-        "filter": args.filter,
-        "mostRecent": args.mostRecent,
-        "name": args.name,
-        "project": args.project,
-        "selfLinkUnique": args.selfLinkUnique,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getInstanceTemplate(a, opts))
 }
 
 /**

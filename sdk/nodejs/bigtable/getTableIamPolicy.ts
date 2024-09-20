@@ -20,6 +20,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getTableIamPolicy(args: GetTableIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetTableIamPolicyResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:bigtable/getTableIamPolicy:getTableIamPolicy", {
         "instance": args.instance,
@@ -79,12 +80,7 @@ export interface GetTableIamPolicyResult {
  * ```
  */
 export function getTableIamPolicyOutput(args: GetTableIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTableIamPolicyResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:bigtable/getTableIamPolicy:getTableIamPolicy", {
-        "instance": args.instance,
-        "project": args.project,
-        "table": args.table,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getTableIamPolicy(a, opts))
 }
 
 /**

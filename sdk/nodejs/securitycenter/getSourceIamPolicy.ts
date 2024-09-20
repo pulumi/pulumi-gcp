@@ -19,6 +19,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getSourceIamPolicy(args: GetSourceIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetSourceIamPolicyResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:securitycenter/getSourceIamPolicy:getSourceIamPolicy", {
         "organization": args.organization,
@@ -72,11 +73,7 @@ export interface GetSourceIamPolicyResult {
  * ```
  */
 export function getSourceIamPolicyOutput(args: GetSourceIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSourceIamPolicyResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:securitycenter/getSourceIamPolicy:getSourceIamPolicy", {
-        "organization": args.organization,
-        "source": args.source,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getSourceIamPolicy(a, opts))
 }
 
 /**

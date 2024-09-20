@@ -51,6 +51,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getSearchAllResources(args: GetSearchAllResourcesArgs, opts?: pulumi.InvokeOptions): Promise<GetSearchAllResourcesResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:cloudasset/getSearchAllResources:getSearchAllResources", {
         "assetTypes": args.assetTypes,
@@ -138,12 +139,7 @@ export interface GetSearchAllResourcesResult {
  * ```
  */
 export function getSearchAllResourcesOutput(args: GetSearchAllResourcesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSearchAllResourcesResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:cloudasset/getSearchAllResources:getSearchAllResources", {
-        "assetTypes": args.assetTypes,
-        "query": args.query,
-        "scope": args.scope,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getSearchAllResources(a, opts))
 }
 
 /**

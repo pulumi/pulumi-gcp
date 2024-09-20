@@ -22,6 +22,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getVcenterCredentials(args: GetVcenterCredentialsArgs, opts?: pulumi.InvokeOptions): Promise<GetVcenterCredentialsResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:vmwareengine/getVcenterCredentials:getVcenterCredentials", {
         "parent": args.parent,
@@ -74,10 +75,7 @@ export interface GetVcenterCredentialsResult {
  * ```
  */
 export function getVcenterCredentialsOutput(args: GetVcenterCredentialsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVcenterCredentialsResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:vmwareengine/getVcenterCredentials:getVcenterCredentials", {
-        "parent": args.parent,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getVcenterCredentials(a, opts))
 }
 
 /**

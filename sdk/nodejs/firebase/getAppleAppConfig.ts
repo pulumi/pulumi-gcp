@@ -5,6 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 export function getAppleAppConfig(args: GetAppleAppConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetAppleAppConfigResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:firebase/getAppleAppConfig:getAppleAppConfig", {
         "appId": args.appId,
@@ -46,11 +47,7 @@ export interface GetAppleAppConfigResult {
     readonly project?: string;
 }
 export function getAppleAppConfigOutput(args: GetAppleAppConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppleAppConfigResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:firebase/getAppleAppConfig:getAppleAppConfig", {
-        "appId": args.appId,
-        "project": args.project,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getAppleAppConfig(a, opts))
 }
 
 /**

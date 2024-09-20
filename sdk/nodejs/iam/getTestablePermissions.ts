@@ -27,6 +27,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getTestablePermissions(args: GetTestablePermissionsArgs, opts?: pulumi.InvokeOptions): Promise<GetTestablePermissionsResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:iam/getTestablePermissions:getTestablePermissions", {
         "customSupportLevel": args.customSupportLevel,
@@ -93,12 +94,7 @@ export interface GetTestablePermissionsResult {
  * ```
  */
 export function getTestablePermissionsOutput(args: GetTestablePermissionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTestablePermissionsResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:iam/getTestablePermissions:getTestablePermissions", {
-        "customSupportLevel": args.customSupportLevel,
-        "fullResourceName": args.fullResourceName,
-        "stages": args.stages,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getTestablePermissions(a, opts))
 }
 
 /**

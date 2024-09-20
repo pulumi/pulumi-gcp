@@ -226,9 +226,6 @@ def get_docker_image(image_name: Optional[str] = None,
         tags=pulumi.get(__ret__, 'tags'),
         update_time=pulumi.get(__ret__, 'update_time'),
         upload_time=pulumi.get(__ret__, 'upload_time'))
-
-
-@_utilities.lift_output_func(get_docker_image)
 def get_docker_image_output(image_name: Optional[pulumi.Input[str]] = None,
                             location: Optional[pulumi.Input[str]] = None,
                             project: Optional[pulumi.Input[Optional[str]]] = None,
@@ -246,4 +243,24 @@ def get_docker_image_output(image_name: Optional[pulumi.Input[str]] = None,
     :param str project: The project ID in which the resource belongs. If it is not provided, the provider project is used.
     :param str repository_id: The last part of the repository name to fetch from.
     """
-    ...
+    __args__ = dict()
+    __args__['imageName'] = image_name
+    __args__['location'] = location
+    __args__['project'] = project
+    __args__['repositoryId'] = repository_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:artifactregistry/getDockerImage:getDockerImage', __args__, opts=opts, typ=GetDockerImageResult)
+    return __ret__.apply(lambda __response__: GetDockerImageResult(
+        build_time=pulumi.get(__response__, 'build_time'),
+        id=pulumi.get(__response__, 'id'),
+        image_name=pulumi.get(__response__, 'image_name'),
+        image_size_bytes=pulumi.get(__response__, 'image_size_bytes'),
+        location=pulumi.get(__response__, 'location'),
+        media_type=pulumi.get(__response__, 'media_type'),
+        name=pulumi.get(__response__, 'name'),
+        project=pulumi.get(__response__, 'project'),
+        repository_id=pulumi.get(__response__, 'repository_id'),
+        self_link=pulumi.get(__response__, 'self_link'),
+        tags=pulumi.get(__response__, 'tags'),
+        update_time=pulumi.get(__response__, 'update_time'),
+        upload_time=pulumi.get(__response__, 'upload_time')))

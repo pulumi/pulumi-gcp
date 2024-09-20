@@ -22,6 +22,7 @@ import * as utilities from "../utilities";
  */
 export function getAwsVersions(args?: GetAwsVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetAwsVersionsResult> {
     args = args || {};
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:container/getAwsVersions:getAwsVersions", {
         "location": args.location,
@@ -80,12 +81,7 @@ export interface GetAwsVersionsResult {
  * ```
  */
 export function getAwsVersionsOutput(args?: GetAwsVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAwsVersionsResult> {
-    args = args || {};
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:container/getAwsVersions:getAwsVersions", {
-        "location": args.location,
-        "project": args.project,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getAwsVersions(a, opts))
 }
 
 /**

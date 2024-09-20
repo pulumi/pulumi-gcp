@@ -22,6 +22,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getRegistryImage(args: GetRegistryImageArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistryImageResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:container/getRegistryImage:getRegistryImage", {
         "digest": args.digest,
@@ -94,14 +95,7 @@ export interface GetRegistryImageResult {
  * ```
  */
 export function getRegistryImageOutput(args: GetRegistryImageOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistryImageResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:container/getRegistryImage:getRegistryImage", {
-        "digest": args.digest,
-        "name": args.name,
-        "project": args.project,
-        "region": args.region,
-        "tag": args.tag,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getRegistryImage(a, opts))
 }
 
 /**

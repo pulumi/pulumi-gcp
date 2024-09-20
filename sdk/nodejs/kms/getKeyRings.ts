@@ -7,6 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 export function getKeyRings(args: GetKeyRingsArgs, opts?: pulumi.InvokeOptions): Promise<GetKeyRingsResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:kms/getKeyRings:getKeyRings", {
         "filter": args.filter,
@@ -38,12 +39,7 @@ export interface GetKeyRingsResult {
     readonly project?: string;
 }
 export function getKeyRingsOutput(args: GetKeyRingsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeyRingsResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:kms/getKeyRings:getKeyRings", {
-        "filter": args.filter,
-        "location": args.location,
-        "project": args.project,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getKeyRings(a, opts))
 }
 
 /**

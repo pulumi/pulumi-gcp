@@ -25,6 +25,7 @@ import * as utilities from "../utilities";
  */
 export function getAuthority(args?: GetAuthorityArgs, opts?: pulumi.InvokeOptions): Promise<GetAuthorityResult> {
     args = args || {};
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:certificateauthority/getAuthority:getAuthority", {
         "certificateAuthorityId": args.certificateAuthorityId,
@@ -114,14 +115,7 @@ export interface GetAuthorityResult {
  * ```
  */
 export function getAuthorityOutput(args?: GetAuthorityOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAuthorityResult> {
-    args = args || {};
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:certificateauthority/getAuthority:getAuthority", {
-        "certificateAuthorityId": args.certificateAuthorityId,
-        "location": args.location,
-        "pool": args.pool,
-        "project": args.project,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getAuthority(a, opts))
 }
 
 /**

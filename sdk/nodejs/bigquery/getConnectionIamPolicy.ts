@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getConnectionIamPolicy(args: GetConnectionIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectionIamPolicyResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:bigquery/getConnectionIamPolicy:getConnectionIamPolicy", {
         "connectionId": args.connectionId,
@@ -95,12 +96,7 @@ export interface GetConnectionIamPolicyResult {
  * ```
  */
 export function getConnectionIamPolicyOutput(args: GetConnectionIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectionIamPolicyResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:bigquery/getConnectionIamPolicy:getConnectionIamPolicy", {
-        "connectionId": args.connectionId,
-        "location": args.location,
-        "project": args.project,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getConnectionIamPolicy(a, opts))
 }
 
 /**

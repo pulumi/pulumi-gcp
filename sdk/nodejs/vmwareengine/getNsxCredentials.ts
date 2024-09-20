@@ -22,6 +22,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getNsxCredentials(args: GetNsxCredentialsArgs, opts?: pulumi.InvokeOptions): Promise<GetNsxCredentialsResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:vmwareengine/getNsxCredentials:getNsxCredentials", {
         "parent": args.parent,
@@ -74,10 +75,7 @@ export interface GetNsxCredentialsResult {
  * ```
  */
 export function getNsxCredentialsOutput(args: GetNsxCredentialsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNsxCredentialsResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:vmwareengine/getNsxCredentials:getNsxCredentials", {
-        "parent": args.parent,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getNsxCredentials(a, opts))
 }
 
 /**

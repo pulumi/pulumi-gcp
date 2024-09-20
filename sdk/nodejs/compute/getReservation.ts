@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getReservation(args: GetReservationArgs, opts?: pulumi.InvokeOptions): Promise<GetReservationResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getReservation:getReservation", {
         "name": args.name,
@@ -82,12 +83,7 @@ export interface GetReservationResult {
  * ```
  */
 export function getReservationOutput(args: GetReservationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReservationResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:compute/getReservation:getReservation", {
-        "name": args.name,
-        "project": args.project,
-        "zone": args.zone,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getReservation(a, opts))
 }
 
 /**

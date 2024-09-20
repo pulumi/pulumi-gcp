@@ -35,6 +35,7 @@ import * as utilities from "../utilities";
  */
 export function getAddresses(args?: GetAddressesArgs, opts?: pulumi.InvokeOptions): Promise<GetAddressesResult> {
     args = args || {};
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getAddresses:getAddresses", {
         "filter": args.filter,
@@ -131,13 +132,7 @@ export interface GetAddressesResult {
  * ```
  */
 export function getAddressesOutput(args?: GetAddressesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAddressesResult> {
-    args = args || {};
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:compute/getAddresses:getAddresses", {
-        "filter": args.filter,
-        "project": args.project,
-        "region": args.region,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getAddresses(a, opts))
 }
 
 /**

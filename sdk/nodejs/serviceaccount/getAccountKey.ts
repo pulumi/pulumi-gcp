@@ -22,6 +22,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getAccountKey(args: GetAccountKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountKeyResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:serviceaccount/getAccountKey:getAccountKey", {
         "name": args.name,
@@ -86,12 +87,7 @@ export interface GetAccountKeyResult {
  * ```
  */
 export function getAccountKeyOutput(args: GetAccountKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountKeyResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:serviceaccount/getAccountKey:getAccountKey", {
-        "name": args.name,
-        "project": args.project,
-        "publicKeyType": args.publicKeyType,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getAccountKey(a, opts))
 }
 
 /**

@@ -8,6 +8,7 @@ import * as utilities from "../utilities";
  * Retrieves the current IAM policy data for serviceconsumers
  */
 export function getServiceConsumersIamPolicy(args: GetServiceConsumersIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceConsumersIamPolicyResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:endpoints/getServiceConsumersIamPolicy:getServiceConsumersIamPolicy", {
         "consumerProject": args.consumerProject,
@@ -47,11 +48,7 @@ export interface GetServiceConsumersIamPolicyResult {
  * Retrieves the current IAM policy data for serviceconsumers
  */
 export function getServiceConsumersIamPolicyOutput(args: GetServiceConsumersIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceConsumersIamPolicyResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:endpoints/getServiceConsumersIamPolicy:getServiceConsumersIamPolicy", {
-        "consumerProject": args.consumerProject,
-        "serviceName": args.serviceName,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getServiceConsumersIamPolicy(a, opts))
 }
 
 /**

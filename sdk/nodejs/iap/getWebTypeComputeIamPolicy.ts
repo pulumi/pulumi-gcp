@@ -20,6 +20,7 @@ import * as utilities from "../utilities";
  */
 export function getWebTypeComputeIamPolicy(args?: GetWebTypeComputeIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetWebTypeComputeIamPolicyResult> {
     args = args || {};
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:iap/getWebTypeComputeIamPolicy:getWebTypeComputeIamPolicy", {
         "project": args.project,
@@ -71,11 +72,7 @@ export interface GetWebTypeComputeIamPolicyResult {
  * ```
  */
 export function getWebTypeComputeIamPolicyOutput(args?: GetWebTypeComputeIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebTypeComputeIamPolicyResult> {
-    args = args || {};
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:iap/getWebTypeComputeIamPolicy:getWebTypeComputeIamPolicy", {
-        "project": args.project,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getWebTypeComputeIamPolicy(a, opts))
 }
 
 /**

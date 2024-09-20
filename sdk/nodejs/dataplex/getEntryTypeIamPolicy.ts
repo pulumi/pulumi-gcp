@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getEntryTypeIamPolicy(args: GetEntryTypeIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetEntryTypeIamPolicyResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:dataplex/getEntryTypeIamPolicy:getEntryTypeIamPolicy", {
         "entryTypeId": args.entryTypeId,
@@ -86,12 +87,7 @@ export interface GetEntryTypeIamPolicyResult {
  * ```
  */
 export function getEntryTypeIamPolicyOutput(args: GetEntryTypeIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEntryTypeIamPolicyResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:dataplex/getEntryTypeIamPolicy:getEntryTypeIamPolicy", {
-        "entryTypeId": args.entryTypeId,
-        "location": args.location,
-        "project": args.project,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getEntryTypeIamPolicy(a, opts))
 }
 
 /**

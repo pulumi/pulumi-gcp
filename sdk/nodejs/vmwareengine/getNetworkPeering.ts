@@ -22,6 +22,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getNetworkPeering(args: GetNetworkPeeringArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkPeeringResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:vmwareengine/getNetworkPeering:getNetworkPeering", {
         "name": args.name,
@@ -83,11 +84,7 @@ export interface GetNetworkPeeringResult {
  * ```
  */
 export function getNetworkPeeringOutput(args: GetNetworkPeeringOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkPeeringResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:vmwareengine/getNetworkPeering:getNetworkPeering", {
-        "name": args.name,
-        "project": args.project,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getNetworkPeering(a, opts))
 }
 
 /**

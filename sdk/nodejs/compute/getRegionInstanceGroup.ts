@@ -23,6 +23,7 @@ import * as utilities from "../utilities";
  */
 export function getRegionInstanceGroup(args?: GetRegionInstanceGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionInstanceGroupResult> {
     args = args || {};
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup", {
         "name": args.name,
@@ -100,14 +101,7 @@ export interface GetRegionInstanceGroupResult {
  * The most common use of this datasource will be to fetch information about the instances inside regional managed instance groups, for instance:
  */
 export function getRegionInstanceGroupOutput(args?: GetRegionInstanceGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionInstanceGroupResult> {
-    args = args || {};
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup", {
-        "name": args.name,
-        "project": args.project,
-        "region": args.region,
-        "selfLink": args.selfLink,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getRegionInstanceGroup(a, opts))
 }
 
 /**

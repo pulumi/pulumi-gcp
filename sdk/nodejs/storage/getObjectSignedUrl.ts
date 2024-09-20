@@ -45,6 +45,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getObjectSignedUrl(args: GetObjectSignedUrlArgs, opts?: pulumi.InvokeOptions): Promise<GetObjectSignedUrlResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:storage/getObjectSignedUrl:getObjectSignedUrl", {
         "bucket": args.bucket,
@@ -165,17 +166,7 @@ export interface GetObjectSignedUrlResult {
  * ```
  */
 export function getObjectSignedUrlOutput(args: GetObjectSignedUrlOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetObjectSignedUrlResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:storage/getObjectSignedUrl:getObjectSignedUrl", {
-        "bucket": args.bucket,
-        "contentMd5": args.contentMd5,
-        "contentType": args.contentType,
-        "credentials": args.credentials,
-        "duration": args.duration,
-        "extensionHeaders": args.extensionHeaders,
-        "httpMethod": args.httpMethod,
-        "path": args.path,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getObjectSignedUrl(a, opts))
 }
 
 /**

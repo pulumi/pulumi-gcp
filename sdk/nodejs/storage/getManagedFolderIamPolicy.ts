@@ -5,6 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 export function getManagedFolderIamPolicy(args: GetManagedFolderIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetManagedFolderIamPolicyResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:storage/getManagedFolderIamPolicy:getManagedFolderIamPolicy", {
         "bucket": args.bucket,
@@ -34,11 +35,7 @@ export interface GetManagedFolderIamPolicyResult {
     readonly policyData: string;
 }
 export function getManagedFolderIamPolicyOutput(args: GetManagedFolderIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetManagedFolderIamPolicyResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:storage/getManagedFolderIamPolicy:getManagedFolderIamPolicy", {
-        "bucket": args.bucket,
-        "managedFolder": args.managedFolder,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getManagedFolderIamPolicy(a, opts))
 }
 
 /**

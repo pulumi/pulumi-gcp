@@ -5,6 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 export function getAppleApp(args: GetAppleAppArgs, opts?: pulumi.InvokeOptions): Promise<GetAppleAppResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:firebase/getAppleApp:getAppleApp", {
         "appId": args.appId,
@@ -69,11 +70,7 @@ export interface GetAppleAppResult {
     readonly teamId: string;
 }
 export function getAppleAppOutput(args: GetAppleAppOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppleAppResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:firebase/getAppleApp:getAppleApp", {
-        "appId": args.appId,
-        "project": args.project,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getAppleApp(a, opts))
 }
 
 /**

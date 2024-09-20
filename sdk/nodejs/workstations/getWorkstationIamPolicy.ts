@@ -5,6 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 export function getWorkstationIamPolicy(args: GetWorkstationIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkstationIamPolicyResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:workstations/getWorkstationIamPolicy:getWorkstationIamPolicy", {
         "location": args.location,
@@ -60,14 +61,7 @@ export interface GetWorkstationIamPolicyResult {
     readonly workstationId: string;
 }
 export function getWorkstationIamPolicyOutput(args: GetWorkstationIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkstationIamPolicyResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:workstations/getWorkstationIamPolicy:getWorkstationIamPolicy", {
-        "location": args.location,
-        "project": args.project,
-        "workstationClusterId": args.workstationClusterId,
-        "workstationConfigId": args.workstationConfigId,
-        "workstationId": args.workstationId,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getWorkstationIamPolicy(a, opts))
 }
 
 /**

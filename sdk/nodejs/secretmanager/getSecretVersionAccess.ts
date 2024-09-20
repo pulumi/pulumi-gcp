@@ -19,6 +19,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getSecretVersionAccess(args: GetSecretVersionAccessArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretVersionAccessResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:secretmanager/getSecretVersionAccess:getSecretVersionAccess", {
         "project": args.project,
@@ -83,12 +84,7 @@ export interface GetSecretVersionAccessResult {
  * ```
  */
 export function getSecretVersionAccessOutput(args: GetSecretVersionAccessOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretVersionAccessResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:secretmanager/getSecretVersionAccess:getSecretVersionAccess", {
-        "project": args.project,
-        "secret": args.secret,
-        "version": args.version,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getSecretVersionAccess(a, opts))
 }
 
 /**

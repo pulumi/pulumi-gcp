@@ -5,6 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 export function getRepositoryIamPolicy(args: GetRepositoryIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetRepositoryIamPolicyResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:dataform/getRepositoryIamPolicy:getRepositoryIamPolicy", {
         "project": args.project,
@@ -56,12 +57,7 @@ export interface GetRepositoryIamPolicyResult {
     readonly repository: string;
 }
 export function getRepositoryIamPolicyOutput(args: GetRepositoryIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRepositoryIamPolicyResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:dataform/getRepositoryIamPolicy:getRepositoryIamPolicy", {
-        "project": args.project,
-        "region": args.region,
-        "repository": args.repository,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getRepositoryIamPolicy(a, opts))
 }
 
 /**

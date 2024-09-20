@@ -23,6 +23,7 @@ import * as utilities from "../utilities";
  */
 export function getForwardingRules(args?: GetForwardingRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetForwardingRulesResult> {
     args = args || {};
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getForwardingRules:getForwardingRules", {
         "project": args.project,
@@ -83,12 +84,7 @@ export interface GetForwardingRulesResult {
  * ```
  */
 export function getForwardingRulesOutput(args?: GetForwardingRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetForwardingRulesResult> {
-    args = args || {};
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:compute/getForwardingRules:getForwardingRules", {
-        "project": args.project,
-        "region": args.region,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getForwardingRules(a, opts))
 }
 
 /**

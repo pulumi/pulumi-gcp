@@ -5,6 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 export function getMachineImageIamPolicy(args: GetMachineImageIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetMachineImageIamPolicyResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getMachineImageIamPolicy:getMachineImageIamPolicy", {
         "machineImage": args.machineImage,
@@ -48,11 +49,7 @@ export interface GetMachineImageIamPolicyResult {
     readonly project: string;
 }
 export function getMachineImageIamPolicyOutput(args: GetMachineImageIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMachineImageIamPolicyResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:compute/getMachineImageIamPolicy:getMachineImageIamPolicy", {
-        "machineImage": args.machineImage,
-        "project": args.project,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getMachineImageIamPolicy(a, opts))
 }
 
 /**

@@ -22,6 +22,7 @@ import * as utilities from "../utilities";
  * ```
  */
 export function getZoneIamPolicy(args: GetZoneIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneIamPolicyResult> {
+
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:dataplex/getZoneIamPolicy:getZoneIamPolicy", {
         "dataplexZone": args.dataplexZone,
@@ -88,13 +89,7 @@ export interface GetZoneIamPolicyResult {
  * ```
  */
 export function getZoneIamPolicyOutput(args: GetZoneIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZoneIamPolicyResult> {
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("gcp:dataplex/getZoneIamPolicy:getZoneIamPolicy", {
-        "dataplexZone": args.dataplexZone,
-        "lake": args.lake,
-        "location": args.location,
-        "project": args.project,
-    }, opts);
+    return pulumi.output(args).apply((a: any) => getZoneIamPolicy(a, opts))
 }
 
 /**
