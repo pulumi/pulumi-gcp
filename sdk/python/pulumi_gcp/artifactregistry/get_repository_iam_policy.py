@@ -142,9 +142,6 @@ def get_repository_iam_policy(location: Optional[str] = None,
         policy_data=pulumi.get(__ret__, 'policy_data'),
         project=pulumi.get(__ret__, 'project'),
         repository=pulumi.get(__ret__, 'repository'))
-
-
-@_utilities.lift_output_func(get_repository_iam_policy)
 def get_repository_iam_policy_output(location: Optional[pulumi.Input[Optional[str]]] = None,
                                      project: Optional[pulumi.Input[Optional[str]]] = None,
                                      repository: Optional[pulumi.Input[str]] = None,
@@ -172,4 +169,16 @@ def get_repository_iam_policy_output(location: Optional[pulumi.Input[Optional[st
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
     :param str repository: Used to find the parent resource to bind the IAM policy to
     """
-    ...
+    __args__ = dict()
+    __args__['location'] = location
+    __args__['project'] = project
+    __args__['repository'] = repository
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:artifactregistry/getRepositoryIamPolicy:getRepositoryIamPolicy', __args__, opts=opts, typ=GetRepositoryIamPolicyResult)
+    return __ret__.apply(lambda __response__: GetRepositoryIamPolicyResult(
+        etag=pulumi.get(__response__, 'etag'),
+        id=pulumi.get(__response__, 'id'),
+        location=pulumi.get(__response__, 'location'),
+        policy_data=pulumi.get(__response__, 'policy_data'),
+        project=pulumi.get(__response__, 'project'),
+        repository=pulumi.get(__response__, 'repository')))

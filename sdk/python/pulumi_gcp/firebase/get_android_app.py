@@ -194,9 +194,6 @@ def get_android_app(app_id: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'),
         sha1_hashes=pulumi.get(__ret__, 'sha1_hashes'),
         sha256_hashes=pulumi.get(__ret__, 'sha256_hashes'))
-
-
-@_utilities.lift_output_func(get_android_app)
 def get_android_app_output(app_id: Optional[pulumi.Input[str]] = None,
                            project: Optional[pulumi.Input[Optional[str]]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAndroidAppResult]:
@@ -210,4 +207,20 @@ def get_android_app_output(app_id: Optional[pulumi.Input[str]] = None,
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the provider project is used.
     """
-    ...
+    __args__ = dict()
+    __args__['appId'] = app_id
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:firebase/getAndroidApp:getAndroidApp', __args__, opts=opts, typ=GetAndroidAppResult)
+    return __ret__.apply(lambda __response__: GetAndroidAppResult(
+        api_key_id=pulumi.get(__response__, 'api_key_id'),
+        app_id=pulumi.get(__response__, 'app_id'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
+        display_name=pulumi.get(__response__, 'display_name'),
+        etag=pulumi.get(__response__, 'etag'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        package_name=pulumi.get(__response__, 'package_name'),
+        project=pulumi.get(__response__, 'project'),
+        sha1_hashes=pulumi.get(__response__, 'sha1_hashes'),
+        sha256_hashes=pulumi.get(__response__, 'sha256_hashes')))

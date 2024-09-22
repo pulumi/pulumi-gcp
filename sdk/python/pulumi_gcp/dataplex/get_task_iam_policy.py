@@ -156,9 +156,6 @@ def get_task_iam_policy(lake: Optional[str] = None,
         policy_data=pulumi.get(__ret__, 'policy_data'),
         project=pulumi.get(__ret__, 'project'),
         task_id=pulumi.get(__ret__, 'task_id'))
-
-
-@_utilities.lift_output_func(get_task_iam_policy)
 def get_task_iam_policy_output(lake: Optional[pulumi.Input[str]] = None,
                                location: Optional[pulumi.Input[Optional[str]]] = None,
                                project: Optional[pulumi.Input[Optional[str]]] = None,
@@ -189,4 +186,18 @@ def get_task_iam_policy_output(lake: Optional[pulumi.Input[str]] = None,
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
     """
-    ...
+    __args__ = dict()
+    __args__['lake'] = lake
+    __args__['location'] = location
+    __args__['project'] = project
+    __args__['taskId'] = task_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:dataplex/getTaskIamPolicy:getTaskIamPolicy', __args__, opts=opts, typ=GetTaskIamPolicyResult)
+    return __ret__.apply(lambda __response__: GetTaskIamPolicyResult(
+        etag=pulumi.get(__response__, 'etag'),
+        id=pulumi.get(__response__, 'id'),
+        lake=pulumi.get(__response__, 'lake'),
+        location=pulumi.get(__response__, 'location'),
+        policy_data=pulumi.get(__response__, 'policy_data'),
+        project=pulumi.get(__response__, 'project'),
+        task_id=pulumi.get(__response__, 'task_id')))
