@@ -126,9 +126,6 @@ def get_transfer_project_servie_account(project: Optional[str] = None,
         member=pulumi.get(__ret__, 'member'),
         project=pulumi.get(__ret__, 'project'),
         subject_id=pulumi.get(__ret__, 'subject_id'))
-
-
-@_utilities.lift_output_func(get_transfer_project_servie_account)
 def get_transfer_project_servie_account_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTransferProjectServieAccountResult]:
     """
@@ -148,4 +145,13 @@ def get_transfer_project_servie_account_output(project: Optional[pulumi.Input[Op
     :param str project: The project ID. If it is not provided, the provider project is used.
     """
     pulumi.log.warn("""get_transfer_project_servie_account is deprecated: gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount""")
-    ...
+    __args__ = dict()
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:storage/getTransferProjectServieAccount:getTransferProjectServieAccount', __args__, opts=opts, typ=GetTransferProjectServieAccountResult)
+    return __ret__.apply(lambda __response__: GetTransferProjectServieAccountResult(
+        email=pulumi.get(__response__, 'email'),
+        id=pulumi.get(__response__, 'id'),
+        member=pulumi.get(__response__, 'member'),
+        project=pulumi.get(__response__, 'project'),
+        subject_id=pulumi.get(__response__, 'subject_id')))

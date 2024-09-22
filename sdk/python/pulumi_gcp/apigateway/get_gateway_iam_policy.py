@@ -129,9 +129,6 @@ def get_gateway_iam_policy(gateway: Optional[str] = None,
         policy_data=pulumi.get(__ret__, 'policy_data'),
         project=pulumi.get(__ret__, 'project'),
         region=pulumi.get(__ret__, 'region'))
-
-
-@_utilities.lift_output_func(get_gateway_iam_policy)
 def get_gateway_iam_policy_output(gateway: Optional[pulumi.Input[str]] = None,
                                   project: Optional[pulumi.Input[Optional[str]]] = None,
                                   region: Optional[pulumi.Input[Optional[str]]] = None,
@@ -146,4 +143,16 @@ def get_gateway_iam_policy_output(gateway: Optional[pulumi.Input[str]] = None,
            the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
            region is specified, it is taken from the provider configuration.
     """
-    ...
+    __args__ = dict()
+    __args__['gateway'] = gateway
+    __args__['project'] = project
+    __args__['region'] = region
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:apigateway/getGatewayIamPolicy:getGatewayIamPolicy', __args__, opts=opts, typ=GetGatewayIamPolicyResult)
+    return __ret__.apply(lambda __response__: GetGatewayIamPolicyResult(
+        etag=pulumi.get(__response__, 'etag'),
+        gateway=pulumi.get(__response__, 'gateway'),
+        id=pulumi.get(__response__, 'id'),
+        policy_data=pulumi.get(__response__, 'policy_data'),
+        project=pulumi.get(__response__, 'project'),
+        region=pulumi.get(__response__, 'region')))

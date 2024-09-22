@@ -159,9 +159,6 @@ def get_database_instances(database_version: Optional[str] = None,
         state=pulumi.get(__ret__, 'state'),
         tier=pulumi.get(__ret__, 'tier'),
         zone=pulumi.get(__ret__, 'zone'))
-
-
-@_utilities.lift_output_func(get_database_instances)
 def get_database_instances_output(database_version: Optional[pulumi.Input[Optional[str]]] = None,
                                   project: Optional[pulumi.Input[Optional[str]]] = None,
                                   region: Optional[pulumi.Input[Optional[str]]] = None,
@@ -189,4 +186,21 @@ def get_database_instances_output(database_version: Optional[pulumi.Input[Option
     :param str tier: To filter out the Cloud SQL instances based on the tier(or machine type) of the database instances.
     :param str zone: To filter out the Cloud SQL instances which are located in the specified zone. This zone refers to the Compute Engine zone that the instance is currently serving from.
     """
-    ...
+    __args__ = dict()
+    __args__['databaseVersion'] = database_version
+    __args__['project'] = project
+    __args__['region'] = region
+    __args__['state'] = state
+    __args__['tier'] = tier
+    __args__['zone'] = zone
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:sql/getDatabaseInstances:getDatabaseInstances', __args__, opts=opts, typ=GetDatabaseInstancesResult)
+    return __ret__.apply(lambda __response__: GetDatabaseInstancesResult(
+        database_version=pulumi.get(__response__, 'database_version'),
+        id=pulumi.get(__response__, 'id'),
+        instances=pulumi.get(__response__, 'instances'),
+        project=pulumi.get(__response__, 'project'),
+        region=pulumi.get(__response__, 'region'),
+        state=pulumi.get(__response__, 'state'),
+        tier=pulumi.get(__response__, 'tier'),
+        zone=pulumi.get(__response__, 'zone')))
