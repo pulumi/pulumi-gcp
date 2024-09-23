@@ -123,9 +123,6 @@ def get_subscription_iam_policy(project: Optional[str] = None,
         policy_data=pulumi.get(__ret__, 'policy_data'),
         project=pulumi.get(__ret__, 'project'),
         subscription=pulumi.get(__ret__, 'subscription'))
-
-
-@_utilities.lift_output_func(get_subscription_iam_policy)
 def get_subscription_iam_policy_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                                        subscription: Optional[pulumi.Input[str]] = None,
                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSubscriptionIamPolicyResult]:
@@ -146,4 +143,14 @@ def get_subscription_iam_policy_output(project: Optional[pulumi.Input[Optional[s
            is not provided, the provider project is used.
     :param str subscription: The subscription name or id to bind to attach IAM policy to.
     """
-    ...
+    __args__ = dict()
+    __args__['project'] = project
+    __args__['subscription'] = subscription
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:pubsub/getSubscriptionIamPolicy:getSubscriptionIamPolicy', __args__, opts=opts, typ=GetSubscriptionIamPolicyResult)
+    return __ret__.apply(lambda __response__: GetSubscriptionIamPolicyResult(
+        etag=pulumi.get(__response__, 'etag'),
+        id=pulumi.get(__response__, 'id'),
+        policy_data=pulumi.get(__response__, 'policy_data'),
+        project=pulumi.get(__response__, 'project'),
+        subscription=pulumi.get(__response__, 'subscription')))

@@ -138,9 +138,6 @@ def get_account_key(name: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'),
         public_key=pulumi.get(__ret__, 'public_key'),
         public_key_type=pulumi.get(__ret__, 'public_key_type'))
-
-
-@_utilities.lift_output_func(get_account_key)
 def get_account_key_output(name: Optional[pulumi.Input[str]] = None,
                            project: Optional[pulumi.Input[Optional[str]]] = None,
                            public_key_type: Optional[pulumi.Input[Optional[str]]] = None,
@@ -168,4 +165,16 @@ def get_account_key_output(name: Optional[pulumi.Input[str]] = None,
            Defaults to the provider project configuration.
     :param str public_key_type: The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['project'] = project
+    __args__['publicKeyType'] = public_key_type
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:serviceaccount/getAccountKey:getAccountKey', __args__, opts=opts, typ=GetAccountKeyResult)
+    return __ret__.apply(lambda __response__: GetAccountKeyResult(
+        id=pulumi.get(__response__, 'id'),
+        key_algorithm=pulumi.get(__response__, 'key_algorithm'),
+        name=pulumi.get(__response__, 'name'),
+        project=pulumi.get(__response__, 'project'),
+        public_key=pulumi.get(__response__, 'public_key'),
+        public_key_type=pulumi.get(__response__, 'public_key_type')))
