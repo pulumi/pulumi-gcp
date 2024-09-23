@@ -111,9 +111,6 @@ def get_s_quota_infos(parent: Optional[str] = None,
         parent=pulumi.get(__ret__, 'parent'),
         quota_infos=pulumi.get(__ret__, 'quota_infos'),
         service=pulumi.get(__ret__, 'service'))
-
-
-@_utilities.lift_output_func(get_s_quota_infos)
 def get_s_quota_infos_output(parent: Optional[pulumi.Input[str]] = None,
                              service: Optional[pulumi.Input[str]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSQuotaInfosResult]:
@@ -134,4 +131,13 @@ def get_s_quota_infos_output(parent: Optional[pulumi.Input[str]] = None,
     :param str parent: Parent value of QuotaInfo resources. Listing across different resource containers (such as 'projects/-') is not allowed. Allowed parents are "projects/[project-id / number]" or "folders/[folder-id / number]" or "organizations/[org-id / number].
     :param str service: The name of the service in which the quotas are defined.
     """
-    ...
+    __args__ = dict()
+    __args__['parent'] = parent
+    __args__['service'] = service
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:cloudquota/getSQuotaInfos:getSQuotaInfos', __args__, opts=opts, typ=GetSQuotaInfosResult)
+    return __ret__.apply(lambda __response__: GetSQuotaInfosResult(
+        id=pulumi.get(__response__, 'id'),
+        parent=pulumi.get(__response__, 'parent'),
+        quota_infos=pulumi.get(__response__, 'quota_infos'),
+        service=pulumi.get(__response__, 'service')))

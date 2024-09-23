@@ -112,9 +112,6 @@ def get_hl7_v2_store_iam_policy(hl7_v2_store_id: Optional[str] = None,
         hl7_v2_store_id=pulumi.get(__ret__, 'hl7_v2_store_id'),
         id=pulumi.get(__ret__, 'id'),
         policy_data=pulumi.get(__ret__, 'policy_data'))
-
-
-@_utilities.lift_output_func(get_hl7_v2_store_iam_policy)
 def get_hl7_v2_store_iam_policy_output(hl7_v2_store_id: Optional[pulumi.Input[str]] = None,
                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHl7V2StoreIamPolicyResult]:
     """
@@ -135,4 +132,12 @@ def get_hl7_v2_store_iam_policy_output(hl7_v2_store_id: Optional[pulumi.Input[st
            `{location_name}/{dataset_name}/{hl7_v2_store_name}`. In the second form, the provider's
            project setting will be used as a fallback.
     """
-    ...
+    __args__ = dict()
+    __args__['hl7V2StoreId'] = hl7_v2_store_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:healthcare/getHl7V2StoreIamPolicy:getHl7V2StoreIamPolicy', __args__, opts=opts, typ=GetHl7V2StoreIamPolicyResult)
+    return __ret__.apply(lambda __response__: GetHl7V2StoreIamPolicyResult(
+        etag=pulumi.get(__response__, 'etag'),
+        hl7_v2_store_id=pulumi.get(__response__, 'hl7_v2_store_id'),
+        id=pulumi.get(__response__, 'id'),
+        policy_data=pulumi.get(__response__, 'policy_data')))

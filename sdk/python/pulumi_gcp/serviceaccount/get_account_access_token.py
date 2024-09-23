@@ -166,9 +166,6 @@ def get_account_access_token(delegates: Optional[Sequence[str]] = None,
         lifetime=pulumi.get(__ret__, 'lifetime'),
         scopes=pulumi.get(__ret__, 'scopes'),
         target_service_account=pulumi.get(__ret__, 'target_service_account'))
-
-
-@_utilities.lift_output_func(get_account_access_token)
 def get_account_access_token_output(delegates: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                     lifetime: Optional[pulumi.Input[Optional[str]]] = None,
                                     scopes: Optional[pulumi.Input[Sequence[str]]] = None,
@@ -223,4 +220,17 @@ def get_account_access_token_output(delegates: Optional[pulumi.Input[Optional[Se
     :param Sequence[str] scopes: The scopes the new credential should have (e.g. `["cloud-platform"]`)
     :param str target_service_account: The service account _to_ impersonate (e.g. `service_B@your-project-id.iam.gserviceaccount.com`)
     """
-    ...
+    __args__ = dict()
+    __args__['delegates'] = delegates
+    __args__['lifetime'] = lifetime
+    __args__['scopes'] = scopes
+    __args__['targetServiceAccount'] = target_service_account
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:serviceaccount/getAccountAccessToken:getAccountAccessToken', __args__, opts=opts, typ=GetAccountAccessTokenResult)
+    return __ret__.apply(lambda __response__: GetAccountAccessTokenResult(
+        access_token=pulumi.get(__response__, 'access_token'),
+        delegates=pulumi.get(__response__, 'delegates'),
+        id=pulumi.get(__response__, 'id'),
+        lifetime=pulumi.get(__response__, 'lifetime'),
+        scopes=pulumi.get(__response__, 'scopes'),
+        target_service_account=pulumi.get(__response__, 'target_service_account')))

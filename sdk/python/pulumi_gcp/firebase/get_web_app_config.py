@@ -193,9 +193,6 @@ def get_web_app_config(project: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'),
         storage_bucket=pulumi.get(__ret__, 'storage_bucket'),
         web_app_id=pulumi.get(__ret__, 'web_app_id'))
-
-
-@_utilities.lift_output_func(get_web_app_config)
 def get_web_app_config_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                               web_app_id: Optional[pulumi.Input[str]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWebAppConfigResult]:
@@ -215,4 +212,19 @@ def get_web_app_config_output(project: Optional[pulumi.Input[Optional[str]]] = N
            
            - - -
     """
-    ...
+    __args__ = dict()
+    __args__['project'] = project
+    __args__['webAppId'] = web_app_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:firebase/getWebAppConfig:getWebAppConfig', __args__, opts=opts, typ=GetWebAppConfigResult)
+    return __ret__.apply(lambda __response__: GetWebAppConfigResult(
+        api_key=pulumi.get(__response__, 'api_key'),
+        auth_domain=pulumi.get(__response__, 'auth_domain'),
+        database_url=pulumi.get(__response__, 'database_url'),
+        id=pulumi.get(__response__, 'id'),
+        location_id=pulumi.get(__response__, 'location_id'),
+        measurement_id=pulumi.get(__response__, 'measurement_id'),
+        messaging_sender_id=pulumi.get(__response__, 'messaging_sender_id'),
+        project=pulumi.get(__response__, 'project'),
+        storage_bucket=pulumi.get(__response__, 'storage_bucket'),
+        web_app_id=pulumi.get(__response__, 'web_app_id')))
