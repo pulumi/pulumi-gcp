@@ -238,9 +238,6 @@ def get_instance(location: Optional[str] = None,
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         tier=pulumi.get(__ret__, 'tier'),
         zone=pulumi.get(__ret__, 'zone'))
-
-
-@_utilities.lift_output_func(get_instance)
 def get_instance_output(location: Optional[pulumi.Input[Optional[str]]] = None,
                         name: Optional[pulumi.Input[str]] = None,
                         project: Optional[pulumi.Input[Optional[str]]] = None,
@@ -270,4 +267,26 @@ def get_instance_output(location: Optional[pulumi.Input[Optional[str]]] = None,
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     """
-    ...
+    __args__ = dict()
+    __args__['location'] = location
+    __args__['name'] = name
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:filestore/getInstance:getInstance', __args__, opts=opts, typ=GetInstanceResult)
+    return __ret__.apply(lambda __response__: GetInstanceResult(
+        create_time=pulumi.get(__response__, 'create_time'),
+        description=pulumi.get(__response__, 'description'),
+        effective_labels=pulumi.get(__response__, 'effective_labels'),
+        etag=pulumi.get(__response__, 'etag'),
+        file_shares=pulumi.get(__response__, 'file_shares'),
+        id=pulumi.get(__response__, 'id'),
+        kms_key_name=pulumi.get(__response__, 'kms_key_name'),
+        labels=pulumi.get(__response__, 'labels'),
+        location=pulumi.get(__response__, 'location'),
+        name=pulumi.get(__response__, 'name'),
+        networks=pulumi.get(__response__, 'networks'),
+        project=pulumi.get(__response__, 'project'),
+        protocol=pulumi.get(__response__, 'protocol'),
+        pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
+        tier=pulumi.get(__response__, 'tier'),
+        zone=pulumi.get(__response__, 'zone')))

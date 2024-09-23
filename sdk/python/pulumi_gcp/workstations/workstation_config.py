@@ -917,7 +917,7 @@ class WorkstationConfig(pulumi.CustomResource):
                         tagKey1Name=tag_key1.name,
                         tagValue1Name=tag_value1.name
         ).apply(lambda resolved_outputs: {
-                        "": f"tagValues/{resolved_outputs['tagValue1Name']}",
+                        f"tagKeys/{resolved_outputs['tagKey1Name']}": f"tagValues/{resolved_outputs['tagValue1Name']}",
                     })
         ,
                 },
@@ -963,8 +963,8 @@ class WorkstationConfig(pulumi.CustomResource):
             container={
                 "image": "intellij",
                 "env": {
-                    "name": "FOO",
-                    "babe": "bar",
+                    "NAME": "FOO",
+                    "BABE": "bar",
                 },
             })
         ```
@@ -1380,7 +1380,7 @@ class WorkstationConfig(pulumi.CustomResource):
                         tagKey1Name=tag_key1.name,
                         tagValue1Name=tag_value1.name
         ).apply(lambda resolved_outputs: {
-                        "": f"tagValues/{resolved_outputs['tagValue1Name']}",
+                        f"tagKeys/{resolved_outputs['tagKey1Name']}": f"tagValues/{resolved_outputs['tagValue1Name']}",
                     })
         ,
                 },
@@ -1426,8 +1426,8 @@ class WorkstationConfig(pulumi.CustomResource):
             container={
                 "image": "intellij",
                 "env": {
-                    "name": "FOO",
-                    "babe": "bar",
+                    "NAME": "FOO",
+                    "BABE": "bar",
                 },
             })
         ```
