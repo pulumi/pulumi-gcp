@@ -95,7 +95,7 @@ index 02f68ce79..07ddfeefe 100644
  ```hcl
  data "google_iam_policy" "admin" {
 diff --git a/website/docs/r/apigee_instance.html.markdown b/website/docs/r/apigee_instance.html.markdown
-index eea4d065c..a75990e47 100644
+index 2dbadf3dd..7e3e047fe 100644
 --- a/website/docs/r/apigee_instance.html.markdown
 +++ b/website/docs/r/apigee_instance.html.markdown
 @@ -195,7 +195,7 @@ resource "google_kms_crypto_key_iam_member" "apigee_sa_keyuser" {
@@ -551,7 +551,7 @@ index 254316ed9..739d098c9 100644
  ## Example Usage
  
 diff --git a/website/docs/r/compute_attached_disk.html.markdown b/website/docs/r/compute_attached_disk.html.markdown
-index 41d360860..96f45ea70 100644
+index 4ec98cbfa..6eddeae81 100644
 --- a/website/docs/r/compute_attached_disk.html.markdown
 +++ b/website/docs/r/compute_attached_disk.html.markdown
 @@ -6,8 +6,8 @@ description: |-
@@ -590,7 +590,7 @@ index 0a305240d..845f44993 100644
  ## Example Usage - Backend Bucket Signed Url Key
  
 diff --git a/website/docs/r/compute_backend_service.html.markdown b/website/docs/r/compute_backend_service.html.markdown
-index 696a907a2..0ed5ab32d 100644
+index ed4537219..973c11834 100644
 --- a/website/docs/r/compute_backend_service.html.markdown
 +++ b/website/docs/r/compute_backend_service.html.markdown
 @@ -36,7 +36,6 @@ To get more information about BackendService, see:
@@ -1595,7 +1595,7 @@ index f18c91533..924ad4cc0 100644
  <div class = "oics-button" style="float: right; margin: 0 0 -15px">
    <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md&cloudshell_working_dir=vpn_tunnel_basic&open_in_editor=main.tf" target="_blank">
 diff --git a/website/docs/r/container_cluster.html.markdown b/website/docs/r/container_cluster.html.markdown
-index 5f3e93f2f..5c14761ac 100644
+index df2af254e..3d40c2391 100644
 --- a/website/docs/r/container_cluster.html.markdown
 +++ b/website/docs/r/container_cluster.html.markdown
 @@ -13,15 +13,12 @@ To get more information about GKE clusters, see:
