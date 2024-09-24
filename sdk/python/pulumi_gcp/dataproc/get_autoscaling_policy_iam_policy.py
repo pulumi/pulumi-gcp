@@ -146,9 +146,6 @@ def get_autoscaling_policy_iam_policy(location: Optional[str] = None,
         policy_data=pulumi.get(__ret__, 'policy_data'),
         policy_id=pulumi.get(__ret__, 'policy_id'),
         project=pulumi.get(__ret__, 'project'))
-
-
-@_utilities.lift_output_func(get_autoscaling_policy_iam_policy)
 def get_autoscaling_policy_iam_policy_output(location: Optional[pulumi.Input[Optional[str]]] = None,
                                              policy_id: Optional[pulumi.Input[str]] = None,
                                              project: Optional[pulumi.Input[Optional[str]]] = None,
@@ -180,4 +177,16 @@ def get_autoscaling_policy_iam_policy_output(location: Optional[pulumi.Input[Opt
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
     """
-    ...
+    __args__ = dict()
+    __args__['location'] = location
+    __args__['policyId'] = policy_id
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:dataproc/getAutoscalingPolicyIamPolicy:getAutoscalingPolicyIamPolicy', __args__, opts=opts, typ=GetAutoscalingPolicyIamPolicyResult)
+    return __ret__.apply(lambda __response__: GetAutoscalingPolicyIamPolicyResult(
+        etag=pulumi.get(__response__, 'etag'),
+        id=pulumi.get(__response__, 'id'),
+        location=pulumi.get(__response__, 'location'),
+        policy_data=pulumi.get(__response__, 'policy_data'),
+        policy_id=pulumi.get(__response__, 'policy_id'),
+        project=pulumi.get(__response__, 'project')))

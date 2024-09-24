@@ -153,9 +153,6 @@ def get_discovered_workload(location: Optional[str] = None,
         workload_properties=pulumi.get(__ret__, 'workload_properties'),
         workload_references=pulumi.get(__ret__, 'workload_references'),
         workload_uri=pulumi.get(__ret__, 'workload_uri'))
-
-
-@_utilities.lift_output_func(get_discovered_workload)
 def get_discovered_workload_output(location: Optional[pulumi.Input[str]] = None,
                                    project: Optional[pulumi.Input[Optional[str]]] = None,
                                    workload_uri: Optional[pulumi.Input[str]] = None,
@@ -178,4 +175,17 @@ def get_discovered_workload_output(location: Optional[pulumi.Input[str]] = None,
     :param str project: The host project of the discovered workload.
     :param str workload_uri: The uri of the workload (instance group managed by the Instance Group Manager). Example: "//compute.googleapis.com/projects/1/regions/us-east1/instanceGroups/id1"
     """
-    ...
+    __args__ = dict()
+    __args__['location'] = location
+    __args__['project'] = project
+    __args__['workloadUri'] = workload_uri
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:apphub/getDiscoveredWorkload:getDiscoveredWorkload', __args__, opts=opts, typ=GetDiscoveredWorkloadResult)
+    return __ret__.apply(lambda __response__: GetDiscoveredWorkloadResult(
+        id=pulumi.get(__response__, 'id'),
+        location=pulumi.get(__response__, 'location'),
+        name=pulumi.get(__response__, 'name'),
+        project=pulumi.get(__response__, 'project'),
+        workload_properties=pulumi.get(__response__, 'workload_properties'),
+        workload_references=pulumi.get(__response__, 'workload_references'),
+        workload_uri=pulumi.get(__response__, 'workload_uri')))
