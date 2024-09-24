@@ -206,9 +206,6 @@ def get_network_endpoint_group(name: Optional[str] = None,
         size=pulumi.get(__ret__, 'size'),
         subnetwork=pulumi.get(__ret__, 'subnetwork'),
         zone=pulumi.get(__ret__, 'zone'))
-
-
-@_utilities.lift_output_func(get_network_endpoint_group)
 def get_network_endpoint_group_output(name: Optional[pulumi.Input[Optional[str]]] = None,
                                       project: Optional[pulumi.Input[Optional[str]]] = None,
                                       self_link: Optional[pulumi.Input[Optional[str]]] = None,
@@ -238,4 +235,22 @@ def get_network_endpoint_group_output(name: Optional[pulumi.Input[Optional[str]]
     :param str self_link: The Network Endpoint Group self_link.
     :param str zone: The Network Endpoint Group availability zone.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['project'] = project
+    __args__['selfLink'] = self_link
+    __args__['zone'] = zone
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:compute/getNetworkEndpointGroup:getNetworkEndpointGroup', __args__, opts=opts, typ=GetNetworkEndpointGroupResult)
+    return __ret__.apply(lambda __response__: GetNetworkEndpointGroupResult(
+        default_port=pulumi.get(__response__, 'default_port'),
+        description=pulumi.get(__response__, 'description'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        network=pulumi.get(__response__, 'network'),
+        network_endpoint_type=pulumi.get(__response__, 'network_endpoint_type'),
+        project=pulumi.get(__response__, 'project'),
+        self_link=pulumi.get(__response__, 'self_link'),
+        size=pulumi.get(__response__, 'size'),
+        subnetwork=pulumi.get(__response__, 'subnetwork'),
+        zone=pulumi.get(__response__, 'zone')))
