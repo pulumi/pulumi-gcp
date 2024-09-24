@@ -212,7 +212,7 @@ require (
 	github.com/pulumi/inflector v0.1.1 // indirect
 	github.com/pulumi/pulumi-java/pkg v0.16.1 // indirect
 	github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.9-0.20240227144008-2da15b3d6f6e // indirect
-	github.com/pulumi/pulumi-yaml v1.10.0 // indirect
+	github.com/pulumi/pulumi-yaml v1.10.1 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.2 // indirect
 	github.com/rivo/uniseg v0.4.4 // indirect
@@ -281,3 +281,7 @@ require (
 	lukechampine.com/frand v1.4.2 // indirect
 	mvdan.cc/gofumpt v0.5.0 // indirect
 )
+
+replace github.com/pulumi/pulumi/pkg/v3 => github.com/pulumi/pulumi/pkg/v3 v3.133.1-0.20240924005238-1a257254905e
+
+replace github.com/pulumi/pulumi/sdk/v3 => github.com/pulumi/pulumi/sdk/v3 v3.133.1-0.20240924005238-1a257254905e
