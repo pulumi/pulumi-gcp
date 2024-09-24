@@ -122,9 +122,6 @@ def get_source_iam_policy(organization: Optional[str] = None,
         organization=pulumi.get(__ret__, 'organization'),
         policy_data=pulumi.get(__ret__, 'policy_data'),
         source=pulumi.get(__ret__, 'source'))
-
-
-@_utilities.lift_output_func(get_source_iam_policy)
 def get_source_iam_policy_output(organization: Optional[pulumi.Input[str]] = None,
                                  source: Optional[pulumi.Input[str]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSourceIamPolicyResult]:
@@ -143,4 +140,14 @@ def get_source_iam_policy_output(organization: Optional[pulumi.Input[str]] = Non
 
     :param str source: Used to find the parent resource to bind the IAM policy to
     """
-    ...
+    __args__ = dict()
+    __args__['organization'] = organization
+    __args__['source'] = source
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:securitycenter/getSourceIamPolicy:getSourceIamPolicy', __args__, opts=opts, typ=GetSourceIamPolicyResult)
+    return __ret__.apply(lambda __response__: GetSourceIamPolicyResult(
+        etag=pulumi.get(__response__, 'etag'),
+        id=pulumi.get(__response__, 'id'),
+        organization=pulumi.get(__response__, 'organization'),
+        policy_data=pulumi.get(__response__, 'policy_data'),
+        source=pulumi.get(__response__, 'source')))
