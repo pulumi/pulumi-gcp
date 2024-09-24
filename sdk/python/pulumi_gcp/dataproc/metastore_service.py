@@ -23,6 +23,7 @@ class MetastoreServiceArgs:
     def __init__(__self__, *,
                  service_id: pulumi.Input[str],
                  database_type: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  encryption_config: Optional[pulumi.Input['MetastoreServiceEncryptionConfigArgs']] = None,
                  hive_metastore_config: Optional[pulumi.Input['MetastoreServiceHiveMetastoreConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -49,6 +50,7 @@ class MetastoreServiceArgs:
         :param pulumi.Input[str] database_type: The database type that the Metastore service stores its data.
                Default value is `MYSQL`.
                Possible values are: `MYSQL`, `SPANNER`.
+        :param pulumi.Input[bool] deletion_protection: Indicates if the dataproc metastore should be protected against accidental deletions.
         :param pulumi.Input['MetastoreServiceEncryptionConfigArgs'] encryption_config: Information used to configure the Dataproc Metastore service to encrypt
                customer data at rest.
                Structure is documented below.
@@ -87,6 +89,8 @@ class MetastoreServiceArgs:
         pulumi.set(__self__, "service_id", service_id)
         if database_type is not None:
             pulumi.set(__self__, "database_type", database_type)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if encryption_config is not None:
             pulumi.set(__self__, "encryption_config", encryption_config)
         if hive_metastore_config is not None:
@@ -148,6 +152,18 @@ class MetastoreServiceArgs:
     @database_type.setter
     def database_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "database_type", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates if the dataproc metastore should be protected against accidental deletions.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @property
     @pulumi.getter(name="encryptionConfig")
@@ -354,6 +370,7 @@ class _MetastoreServiceState:
     def __init__(__self__, *,
                  artifact_gcs_uri: Optional[pulumi.Input[str]] = None,
                  database_type: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  encryption_config: Optional[pulumi.Input['MetastoreServiceEncryptionConfigArgs']] = None,
                  endpoint_uri: Optional[pulumi.Input[str]] = None,
@@ -383,6 +400,7 @@ class _MetastoreServiceState:
         :param pulumi.Input[str] database_type: The database type that the Metastore service stores its data.
                Default value is `MYSQL`.
                Possible values are: `MYSQL`, `SPANNER`.
+        :param pulumi.Input[bool] deletion_protection: Indicates if the dataproc metastore should be protected against accidental deletions.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input['MetastoreServiceEncryptionConfigArgs'] encryption_config: Information used to configure the Dataproc Metastore service to encrypt
                customer data at rest.
@@ -436,6 +454,8 @@ class _MetastoreServiceState:
             pulumi.set(__self__, "artifact_gcs_uri", artifact_gcs_uri)
         if database_type is not None:
             pulumi.set(__self__, "database_type", database_type)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
         if encryption_config is not None:
@@ -508,6 +528,18 @@ class _MetastoreServiceState:
     @database_type.setter
     def database_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "database_type", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates if the dataproc metastore should be protected against accidental deletions.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @property
     @pulumi.getter(name="effectiveLabels")
@@ -817,6 +849,7 @@ class MetastoreService(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  database_type: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  encryption_config: Optional[pulumi.Input[Union['MetastoreServiceEncryptionConfigArgs', 'MetastoreServiceEncryptionConfigArgsDict']]] = None,
                  hive_metastore_config: Optional[pulumi.Input[Union['MetastoreServiceHiveMetastoreConfigArgs', 'MetastoreServiceHiveMetastoreConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -856,6 +889,29 @@ class MetastoreService(pulumi.CustomResource):
             location="us-central1",
             port=9080,
             tier="DEVELOPER",
+            maintenance_window={
+                "hour_of_day": 2,
+                "day_of_week": "SUNDAY",
+            },
+            hive_metastore_config={
+                "version": "2.3.6",
+            },
+            labels={
+                "env": "test",
+            })
+        ```
+        ### Dataproc Metastore Service Deletion Protection
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.dataproc.MetastoreService("default",
+            service_id="metastore-srv",
+            location="us-central1",
+            port=9080,
+            tier="DEVELOPER",
+            deletion_protection=True,
             maintenance_window={
                 "hour_of_day": 2,
                 "day_of_week": "SUNDAY",
@@ -1127,6 +1183,7 @@ class MetastoreService(pulumi.CustomResource):
         :param pulumi.Input[str] database_type: The database type that the Metastore service stores its data.
                Default value is `MYSQL`.
                Possible values are: `MYSQL`, `SPANNER`.
+        :param pulumi.Input[bool] deletion_protection: Indicates if the dataproc metastore should be protected against accidental deletions.
         :param pulumi.Input[Union['MetastoreServiceEncryptionConfigArgs', 'MetastoreServiceEncryptionConfigArgsDict']] encryption_config: Information used to configure the Dataproc Metastore service to encrypt
                customer data at rest.
                Structure is documented below.
@@ -1196,6 +1253,29 @@ class MetastoreService(pulumi.CustomResource):
             location="us-central1",
             port=9080,
             tier="DEVELOPER",
+            maintenance_window={
+                "hour_of_day": 2,
+                "day_of_week": "SUNDAY",
+            },
+            hive_metastore_config={
+                "version": "2.3.6",
+            },
+            labels={
+                "env": "test",
+            })
+        ```
+        ### Dataproc Metastore Service Deletion Protection
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.dataproc.MetastoreService("default",
+            service_id="metastore-srv",
+            location="us-central1",
+            port=9080,
+            tier="DEVELOPER",
+            deletion_protection=True,
             maintenance_window={
                 "hour_of_day": 2,
                 "day_of_week": "SUNDAY",
@@ -1478,6 +1558,7 @@ class MetastoreService(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  database_type: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  encryption_config: Optional[pulumi.Input[Union['MetastoreServiceEncryptionConfigArgs', 'MetastoreServiceEncryptionConfigArgsDict']]] = None,
                  hive_metastore_config: Optional[pulumi.Input[Union['MetastoreServiceHiveMetastoreConfigArgs', 'MetastoreServiceHiveMetastoreConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1504,6 +1585,7 @@ class MetastoreService(pulumi.CustomResource):
             __props__ = MetastoreServiceArgs.__new__(MetastoreServiceArgs)
 
             __props__.__dict__["database_type"] = database_type
+            __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["encryption_config"] = encryption_config
             __props__.__dict__["hive_metastore_config"] = hive_metastore_config
             __props__.__dict__["labels"] = labels
@@ -1544,6 +1626,7 @@ class MetastoreService(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             artifact_gcs_uri: Optional[pulumi.Input[str]] = None,
             database_type: Optional[pulumi.Input[str]] = None,
+            deletion_protection: Optional[pulumi.Input[bool]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             encryption_config: Optional[pulumi.Input[Union['MetastoreServiceEncryptionConfigArgs', 'MetastoreServiceEncryptionConfigArgsDict']]] = None,
             endpoint_uri: Optional[pulumi.Input[str]] = None,
@@ -1578,6 +1661,7 @@ class MetastoreService(pulumi.CustomResource):
         :param pulumi.Input[str] database_type: The database type that the Metastore service stores its data.
                Default value is `MYSQL`.
                Possible values are: `MYSQL`, `SPANNER`.
+        :param pulumi.Input[bool] deletion_protection: Indicates if the dataproc metastore should be protected against accidental deletions.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Union['MetastoreServiceEncryptionConfigArgs', 'MetastoreServiceEncryptionConfigArgsDict']] encryption_config: Information used to configure the Dataproc Metastore service to encrypt
                customer data at rest.
@@ -1633,6 +1717,7 @@ class MetastoreService(pulumi.CustomResource):
 
         __props__.__dict__["artifact_gcs_uri"] = artifact_gcs_uri
         __props__.__dict__["database_type"] = database_type
+        __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["encryption_config"] = encryption_config
         __props__.__dict__["endpoint_uri"] = endpoint_uri
@@ -1675,6 +1760,14 @@ class MetastoreService(pulumi.CustomResource):
         Possible values are: `MYSQL`, `SPANNER`.
         """
         return pulumi.get(self, "database_type")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Indicates if the dataproc metastore should be protected against accidental deletions.
+        """
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter(name="effectiveLabels")

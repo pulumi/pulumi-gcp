@@ -5,7 +5,6 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -52,15 +51,15 @@ public final class NodePoolNodeConfigKubeletConfigArgs extends com.pulumi.resour
      * Control the CPU management policy on the node.
      * 
      */
-    @Import(name="cpuManagerPolicy", required=true)
-    private Output<String> cpuManagerPolicy;
+    @Import(name="cpuManagerPolicy")
+    private @Nullable Output<String> cpuManagerPolicy;
 
     /**
      * @return Control the CPU management policy on the node.
      * 
      */
-    public Output<String> cpuManagerPolicy() {
-        return this.cpuManagerPolicy;
+    public Optional<Output<String>> cpuManagerPolicy() {
+        return Optional.ofNullable(this.cpuManagerPolicy);
     }
 
     /**
@@ -169,7 +168,7 @@ public final class NodePoolNodeConfigKubeletConfigArgs extends com.pulumi.resour
          * @return builder
          * 
          */
-        public Builder cpuManagerPolicy(Output<String> cpuManagerPolicy) {
+        public Builder cpuManagerPolicy(@Nullable Output<String> cpuManagerPolicy) {
             $.cpuManagerPolicy = cpuManagerPolicy;
             return this;
         }
@@ -227,9 +226,6 @@ public final class NodePoolNodeConfigKubeletConfigArgs extends com.pulumi.resour
         }
 
         public NodePoolNodeConfigKubeletConfigArgs build() {
-            if ($.cpuManagerPolicy == null) {
-                throw new MissingRequiredPropertyException("NodePoolNodeConfigKubeletConfigArgs", "cpuManagerPolicy");
-            }
             return $;
         }
     }

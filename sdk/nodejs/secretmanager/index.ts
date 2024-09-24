@@ -5,6 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { GetRegionalSecretArgs, GetRegionalSecretResult, GetRegionalSecretOutputArgs } from "./getRegionalSecret";
+export const getRegionalSecret: typeof import("./getRegionalSecret").getRegionalSecret = null as any;
+export const getRegionalSecretOutput: typeof import("./getRegionalSecret").getRegionalSecretOutput = null as any;
+utilities.lazyLoad(exports, ["getRegionalSecret","getRegionalSecretOutput"], () => require("./getRegionalSecret"));
+
+export { GetRegionalSecretIamPolicyArgs, GetRegionalSecretIamPolicyResult, GetRegionalSecretIamPolicyOutputArgs } from "./getRegionalSecretIamPolicy";
+export const getRegionalSecretIamPolicy: typeof import("./getRegionalSecretIamPolicy").getRegionalSecretIamPolicy = null as any;
+export const getRegionalSecretIamPolicyOutput: typeof import("./getRegionalSecretIamPolicy").getRegionalSecretIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getRegionalSecretIamPolicy","getRegionalSecretIamPolicyOutput"], () => require("./getRegionalSecretIamPolicy"));
+
+export { GetRegionalSecretVersionArgs, GetRegionalSecretVersionResult, GetRegionalSecretVersionOutputArgs } from "./getRegionalSecretVersion";
+export const getRegionalSecretVersion: typeof import("./getRegionalSecretVersion").getRegionalSecretVersion = null as any;
+export const getRegionalSecretVersionOutput: typeof import("./getRegionalSecretVersion").getRegionalSecretVersionOutput = null as any;
+utilities.lazyLoad(exports, ["getRegionalSecretVersion","getRegionalSecretVersionOutput"], () => require("./getRegionalSecretVersion"));
+
 export { GetSecretArgs, GetSecretResult, GetSecretOutputArgs } from "./getSecret";
 export const getSecret: typeof import("./getSecret").getSecret = null as any;
 export const getSecretOutput: typeof import("./getSecret").getSecretOutput = null as any;
@@ -29,6 +44,31 @@ export { GetSecretsArgs, GetSecretsResult, GetSecretsOutputArgs } from "./getSec
 export const getSecrets: typeof import("./getSecrets").getSecrets = null as any;
 export const getSecretsOutput: typeof import("./getSecrets").getSecretsOutput = null as any;
 utilities.lazyLoad(exports, ["getSecrets","getSecretsOutput"], () => require("./getSecrets"));
+
+export { RegionalSecretArgs, RegionalSecretState } from "./regionalSecret";
+export type RegionalSecret = import("./regionalSecret").RegionalSecret;
+export const RegionalSecret: typeof import("./regionalSecret").RegionalSecret = null as any;
+utilities.lazyLoad(exports, ["RegionalSecret"], () => require("./regionalSecret"));
+
+export { RegionalSecretIamBindingArgs, RegionalSecretIamBindingState } from "./regionalSecretIamBinding";
+export type RegionalSecretIamBinding = import("./regionalSecretIamBinding").RegionalSecretIamBinding;
+export const RegionalSecretIamBinding: typeof import("./regionalSecretIamBinding").RegionalSecretIamBinding = null as any;
+utilities.lazyLoad(exports, ["RegionalSecretIamBinding"], () => require("./regionalSecretIamBinding"));
+
+export { RegionalSecretIamMemberArgs, RegionalSecretIamMemberState } from "./regionalSecretIamMember";
+export type RegionalSecretIamMember = import("./regionalSecretIamMember").RegionalSecretIamMember;
+export const RegionalSecretIamMember: typeof import("./regionalSecretIamMember").RegionalSecretIamMember = null as any;
+utilities.lazyLoad(exports, ["RegionalSecretIamMember"], () => require("./regionalSecretIamMember"));
+
+export { RegionalSecretIamPolicyArgs, RegionalSecretIamPolicyState } from "./regionalSecretIamPolicy";
+export type RegionalSecretIamPolicy = import("./regionalSecretIamPolicy").RegionalSecretIamPolicy;
+export const RegionalSecretIamPolicy: typeof import("./regionalSecretIamPolicy").RegionalSecretIamPolicy = null as any;
+utilities.lazyLoad(exports, ["RegionalSecretIamPolicy"], () => require("./regionalSecretIamPolicy"));
+
+export { RegionalSecretVersionArgs, RegionalSecretVersionState } from "./regionalSecretVersion";
+export type RegionalSecretVersion = import("./regionalSecretVersion").RegionalSecretVersion;
+export const RegionalSecretVersion: typeof import("./regionalSecretVersion").RegionalSecretVersion = null as any;
+utilities.lazyLoad(exports, ["RegionalSecretVersion"], () => require("./regionalSecretVersion"));
 
 export { SecretArgs, SecretState } from "./secret";
 export type Secret = import("./secret").Secret;
@@ -60,6 +100,16 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:secretmanager/regionalSecret:RegionalSecret":
+                return new RegionalSecret(name, <any>undefined, { urn })
+            case "gcp:secretmanager/regionalSecretIamBinding:RegionalSecretIamBinding":
+                return new RegionalSecretIamBinding(name, <any>undefined, { urn })
+            case "gcp:secretmanager/regionalSecretIamMember:RegionalSecretIamMember":
+                return new RegionalSecretIamMember(name, <any>undefined, { urn })
+            case "gcp:secretmanager/regionalSecretIamPolicy:RegionalSecretIamPolicy":
+                return new RegionalSecretIamPolicy(name, <any>undefined, { urn })
+            case "gcp:secretmanager/regionalSecretVersion:RegionalSecretVersion":
+                return new RegionalSecretVersion(name, <any>undefined, { urn })
             case "gcp:secretmanager/secret:Secret":
                 return new Secret(name, <any>undefined, { urn })
             case "gcp:secretmanager/secretIamBinding:SecretIamBinding":
@@ -75,6 +125,11 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "secretmanager/regionalSecret", _module)
+pulumi.runtime.registerResourceModule("gcp", "secretmanager/regionalSecretIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "secretmanager/regionalSecretIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "secretmanager/regionalSecretIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "secretmanager/regionalSecretVersion", _module)
 pulumi.runtime.registerResourceModule("gcp", "secretmanager/secret", _module)
 pulumi.runtime.registerResourceModule("gcp", "secretmanager/secretIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "secretmanager/secretIamMember", _module)

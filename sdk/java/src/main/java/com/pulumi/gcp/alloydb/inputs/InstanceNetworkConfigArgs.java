@@ -39,6 +39,21 @@ public final class InstanceNetworkConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * Enabling outbound public ip for the instance.
+     * 
+     */
+    @Import(name="enableOutboundPublicIp")
+    private @Nullable Output<Boolean> enableOutboundPublicIp;
+
+    /**
+     * @return Enabling outbound public ip for the instance.
+     * 
+     */
+    public Optional<Output<Boolean>> enableOutboundPublicIp() {
+        return Optional.ofNullable(this.enableOutboundPublicIp);
+    }
+
+    /**
      * Enabling public ip for the instance. If a user wishes to disable this,
      * please also clear the list of the authorized external networks set on
      * the same instance.
@@ -61,6 +76,7 @@ public final class InstanceNetworkConfigArgs extends com.pulumi.resources.Resour
 
     private InstanceNetworkConfigArgs(InstanceNetworkConfigArgs $) {
         this.authorizedExternalNetworks = $.authorizedExternalNetworks;
+        this.enableOutboundPublicIp = $.enableOutboundPublicIp;
         this.enablePublicIp = $.enablePublicIp;
     }
 
@@ -120,6 +136,27 @@ public final class InstanceNetworkConfigArgs extends com.pulumi.resources.Resour
          */
         public Builder authorizedExternalNetworks(InstanceNetworkConfigAuthorizedExternalNetworkArgs... authorizedExternalNetworks) {
             return authorizedExternalNetworks(List.of(authorizedExternalNetworks));
+        }
+
+        /**
+         * @param enableOutboundPublicIp Enabling outbound public ip for the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableOutboundPublicIp(@Nullable Output<Boolean> enableOutboundPublicIp) {
+            $.enableOutboundPublicIp = enableOutboundPublicIp;
+            return this;
+        }
+
+        /**
+         * @param enableOutboundPublicIp Enabling outbound public ip for the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableOutboundPublicIp(Boolean enableOutboundPublicIp) {
+            return enableOutboundPublicIp(Output.of(enableOutboundPublicIp));
         }
 
         /**

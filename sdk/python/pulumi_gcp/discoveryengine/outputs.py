@@ -33,6 +33,9 @@ __all__ = [
     'DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfig',
     'SearchEngineCommonConfig',
     'SearchEngineSearchEngineConfig',
+    'TargetSiteFailureReason',
+    'TargetSiteFailureReasonQuotaFailure',
+    'TargetSiteSiteVerificationInfo',
 ]
 
 @pulumi.output_type
@@ -737,5 +740,133 @@ class SearchEngineSearchEngineConfig(dict):
         Possible values are: `SEARCH_TIER_STANDARD`, `SEARCH_TIER_ENTERPRISE`.
         """
         return pulumi.get(self, "search_tier")
+
+
+@pulumi.output_type
+class TargetSiteFailureReason(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "quotaFailure":
+            suggest = "quota_failure"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TargetSiteFailureReason. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TargetSiteFailureReason.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TargetSiteFailureReason.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 quota_failure: Optional['outputs.TargetSiteFailureReasonQuotaFailure'] = None):
+        """
+        :param 'TargetSiteFailureReasonQuotaFailureArgs' quota_failure: Site verification state indicating the ownership and validity.
+               Structure is documented below.
+        """
+        if quota_failure is not None:
+            pulumi.set(__self__, "quota_failure", quota_failure)
+
+    @property
+    @pulumi.getter(name="quotaFailure")
+    def quota_failure(self) -> Optional['outputs.TargetSiteFailureReasonQuotaFailure']:
+        """
+        Site verification state indicating the ownership and validity.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "quota_failure")
+
+
+@pulumi.output_type
+class TargetSiteFailureReasonQuotaFailure(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "totalRequiredQuota":
+            suggest = "total_required_quota"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TargetSiteFailureReasonQuotaFailure. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TargetSiteFailureReasonQuotaFailure.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TargetSiteFailureReasonQuotaFailure.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 total_required_quota: Optional[int] = None):
+        """
+        :param int total_required_quota: This number is an estimation on how much total quota this project
+               needs to successfully complete indexing.
+        """
+        if total_required_quota is not None:
+            pulumi.set(__self__, "total_required_quota", total_required_quota)
+
+    @property
+    @pulumi.getter(name="totalRequiredQuota")
+    def total_required_quota(self) -> Optional[int]:
+        """
+        This number is an estimation on how much total quota this project
+        needs to successfully complete indexing.
+        """
+        return pulumi.get(self, "total_required_quota")
+
+
+@pulumi.output_type
+class TargetSiteSiteVerificationInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "siteVerificationState":
+            suggest = "site_verification_state"
+        elif key == "verifyTime":
+            suggest = "verify_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TargetSiteSiteVerificationInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TargetSiteSiteVerificationInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TargetSiteSiteVerificationInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 site_verification_state: Optional[str] = None,
+                 verify_time: Optional[str] = None):
+        """
+        :param str site_verification_state: Site verification state indicating the ownership and validity.
+               Possible values are: `VERIFIED`, `UNVERIFIED`, `EXEMPTED`.
+        :param str verify_time: Latest site verification time.
+        """
+        if site_verification_state is not None:
+            pulumi.set(__self__, "site_verification_state", site_verification_state)
+        if verify_time is not None:
+            pulumi.set(__self__, "verify_time", verify_time)
+
+    @property
+    @pulumi.getter(name="siteVerificationState")
+    def site_verification_state(self) -> Optional[str]:
+        """
+        Site verification state indicating the ownership and validity.
+        Possible values are: `VERIFIED`, `UNVERIFIED`, `EXEMPTED`.
+        """
+        return pulumi.get(self, "site_verification_state")
+
+    @property
+    @pulumi.getter(name="verifyTime")
+    def verify_time(self) -> Optional[str]:
+        """
+        Latest site verification time.
+        """
+        return pulumi.get(self, "verify_time")
 
 

@@ -14,6 +14,7 @@ import com.pulumi.gcp.alloydb.inputs.InstanceQueryInsightsConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.InstanceReadPoolConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -313,6 +314,25 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The outbound public IP addresses for the instance. This is available ONLY when
+     * networkConfig.enableOutboundPublicIp is set to true. These IP addresses are used
+     * for outbound connections.
+     * 
+     */
+    @Import(name="outboundPublicIpAddresses")
+    private @Nullable Output<List<String>> outboundPublicIpAddresses;
+
+    /**
+     * @return The outbound public IP addresses for the instance. This is available ONLY when
+     * networkConfig.enableOutboundPublicIp is set to true. These IP addresses are used
+     * for outbound connections.
+     * 
+     */
+    public Optional<Output<List<String>>> outboundPublicIpAddresses() {
+        return Optional.ofNullable(this.outboundPublicIpAddresses);
+    }
+
+    /**
      * Configuration for Private Service Connect (PSC) for the instance.
      * Structure is documented below.
      * 
@@ -480,6 +500,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.networkConfig = $.networkConfig;
         this.observabilityConfig = $.observabilityConfig;
+        this.outboundPublicIpAddresses = $.outboundPublicIpAddresses;
         this.pscInstanceConfig = $.pscInstanceConfig;
         this.publicIpAddress = $.publicIpAddress;
         this.pulumiLabels = $.pulumiLabels;
@@ -895,6 +916,43 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder observabilityConfig(InstanceObservabilityConfigArgs observabilityConfig) {
             return observabilityConfig(Output.of(observabilityConfig));
+        }
+
+        /**
+         * @param outboundPublicIpAddresses The outbound public IP addresses for the instance. This is available ONLY when
+         * networkConfig.enableOutboundPublicIp is set to true. These IP addresses are used
+         * for outbound connections.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder outboundPublicIpAddresses(@Nullable Output<List<String>> outboundPublicIpAddresses) {
+            $.outboundPublicIpAddresses = outboundPublicIpAddresses;
+            return this;
+        }
+
+        /**
+         * @param outboundPublicIpAddresses The outbound public IP addresses for the instance. This is available ONLY when
+         * networkConfig.enableOutboundPublicIp is set to true. These IP addresses are used
+         * for outbound connections.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder outboundPublicIpAddresses(List<String> outboundPublicIpAddresses) {
+            return outboundPublicIpAddresses(Output.of(outboundPublicIpAddresses));
+        }
+
+        /**
+         * @param outboundPublicIpAddresses The outbound public IP addresses for the instance. This is available ONLY when
+         * networkConfig.enableOutboundPublicIp is set to true. These IP addresses are used
+         * for outbound connections.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder outboundPublicIpAddresses(String... outboundPublicIpAddresses) {
+            return outboundPublicIpAddresses(List.of(outboundPublicIpAddresses));
         }
 
         /**

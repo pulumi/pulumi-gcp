@@ -260,7 +260,7 @@ public final class SubscriptionArgs extends com.pulumi.resources.ResourceArgs {
      * retain_acked_messages is true, then this also configures the retention
      * of acknowledged messages, and thus configures how far back in time a
      * subscriptions.seek can be done. Defaults to 7 days. Cannot be more
-     * than 7 days (`&#34;604800s&#34;`) or less than 10 minutes (`&#34;600s&#34;`).
+     * than 31 days (`&#34;2678400s&#34;`) or less than 10 minutes (`&#34;600s&#34;`).
      * A duration in seconds with up to nine fractional digits, terminated
      * by &#39;s&#39;. Example: `&#34;600.5s&#34;`.
      * 
@@ -274,7 +274,7 @@ public final class SubscriptionArgs extends com.pulumi.resources.ResourceArgs {
      * retain_acked_messages is true, then this also configures the retention
      * of acknowledged messages, and thus configures how far back in time a
      * subscriptions.seek can be done. Defaults to 7 days. Cannot be more
-     * than 7 days (`&#34;604800s&#34;`) or less than 10 minutes (`&#34;600s&#34;`).
+     * than 31 days (`&#34;2678400s&#34;`) or less than 10 minutes (`&#34;600s&#34;`).
      * A duration in seconds with up to nine fractional digits, terminated
      * by &#39;s&#39;. Example: `&#34;600.5s&#34;`.
      * 
@@ -729,7 +729,7 @@ public final class SubscriptionArgs extends com.pulumi.resources.ResourceArgs {
          * retain_acked_messages is true, then this also configures the retention
          * of acknowledged messages, and thus configures how far back in time a
          * subscriptions.seek can be done. Defaults to 7 days. Cannot be more
-         * than 7 days (`&#34;604800s&#34;`) or less than 10 minutes (`&#34;600s&#34;`).
+         * than 31 days (`&#34;2678400s&#34;`) or less than 10 minutes (`&#34;600s&#34;`).
          * A duration in seconds with up to nine fractional digits, terminated
          * by &#39;s&#39;. Example: `&#34;600.5s&#34;`.
          * 
@@ -747,7 +747,7 @@ public final class SubscriptionArgs extends com.pulumi.resources.ResourceArgs {
          * retain_acked_messages is true, then this also configures the retention
          * of acknowledged messages, and thus configures how far back in time a
          * subscriptions.seek can be done. Defaults to 7 days. Cannot be more
-         * than 7 days (`&#34;604800s&#34;`) or less than 10 minutes (`&#34;600s&#34;`).
+         * than 31 days (`&#34;2678400s&#34;`) or less than 10 minutes (`&#34;600s&#34;`).
          * A duration in seconds with up to nine fractional digits, terminated
          * by &#39;s&#39;. Example: `&#34;600.5s&#34;`.
          * 

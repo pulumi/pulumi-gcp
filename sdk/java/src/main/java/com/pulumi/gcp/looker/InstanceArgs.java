@@ -115,6 +115,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * FIPS 140-2 Encryption enablement for Looker (Google Cloud Core).
+     * 
+     */
+    @Import(name="fipsEnabled")
+    private @Nullable Output<Boolean> fipsEnabled;
+
+    /**
+     * @return FIPS 140-2 Encryption enablement for Looker (Google Cloud Core).
+     * 
+     */
+    public Optional<Output<Boolean>> fipsEnabled() {
+        return Optional.ofNullable(this.fipsEnabled);
+    }
+
+    /**
      * Maintenance window for an instance.
      * Maintenance of your instance takes place once a month, and will require
      * your instance to be restarted during updates, which will temporarily
@@ -318,6 +333,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.customDomain = $.customDomain;
         this.denyMaintenancePeriod = $.denyMaintenancePeriod;
         this.encryptionConfig = $.encryptionConfig;
+        this.fipsEnabled = $.fipsEnabled;
         this.maintenanceWindow = $.maintenanceWindow;
         this.name = $.name;
         this.oauthConfig = $.oauthConfig;
@@ -467,6 +483,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder encryptionConfig(InstanceEncryptionConfigArgs encryptionConfig) {
             return encryptionConfig(Output.of(encryptionConfig));
+        }
+
+        /**
+         * @param fipsEnabled FIPS 140-2 Encryption enablement for Looker (Google Cloud Core).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fipsEnabled(@Nullable Output<Boolean> fipsEnabled) {
+            $.fipsEnabled = fipsEnabled;
+            return this;
+        }
+
+        /**
+         * @param fipsEnabled FIPS 140-2 Encryption enablement for Looker (Google Cloud Core).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fipsEnabled(Boolean fipsEnabled) {
+            return fipsEnabled(Output.of(fipsEnabled));
         }
 
         /**

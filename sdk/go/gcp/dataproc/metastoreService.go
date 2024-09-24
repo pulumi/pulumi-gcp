@@ -60,6 +60,45 @@ import (
 //	}
 //
 // ```
+// ### Dataproc Metastore Service Deletion Protection
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dataproc.NewMetastoreService(ctx, "default", &dataproc.MetastoreServiceArgs{
+//				ServiceId:          pulumi.String("metastore-srv"),
+//				Location:           pulumi.String("us-central1"),
+//				Port:               pulumi.Int(9080),
+//				Tier:               pulumi.String("DEVELOPER"),
+//				DeletionProtection: pulumi.Bool(true),
+//				MaintenanceWindow: &dataproc.MetastoreServiceMaintenanceWindowArgs{
+//					HourOfDay: pulumi.Int(2),
+//					DayOfWeek: pulumi.String("SUNDAY"),
+//				},
+//				HiveMetastoreConfig: &dataproc.MetastoreServiceHiveMetastoreConfigArgs{
+//					Version: pulumi.String("2.3.6"),
+//				},
+//				Labels: pulumi.StringMap{
+//					"env": pulumi.String("test"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Dataproc Metastore Service Cmek Example
 //
 // ```go
@@ -523,6 +562,8 @@ type MetastoreService struct {
 	// Default value is `MYSQL`.
 	// Possible values are: `MYSQL`, `SPANNER`.
 	DatabaseType pulumi.StringPtrOutput `pulumi:"databaseType"`
+	// Indicates if the dataproc metastore should be protected against accidental deletions.
+	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Information used to configure the Dataproc Metastore service to encrypt
@@ -639,6 +680,8 @@ type metastoreServiceState struct {
 	// Default value is `MYSQL`.
 	// Possible values are: `MYSQL`, `SPANNER`.
 	DatabaseType *string `pulumi:"databaseType"`
+	// Indicates if the dataproc metastore should be protected against accidental deletions.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Information used to configure the Dataproc Metastore service to encrypt
@@ -718,6 +761,8 @@ type MetastoreServiceState struct {
 	// Default value is `MYSQL`.
 	// Possible values are: `MYSQL`, `SPANNER`.
 	DatabaseType pulumi.StringPtrInput
+	// Indicates if the dataproc metastore should be protected against accidental deletions.
+	DeletionProtection pulumi.BoolPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// Information used to configure the Dataproc Metastore service to encrypt
@@ -799,6 +844,8 @@ type metastoreServiceArgs struct {
 	// Default value is `MYSQL`.
 	// Possible values are: `MYSQL`, `SPANNER`.
 	DatabaseType *string `pulumi:"databaseType"`
+	// Indicates if the dataproc metastore should be protected against accidental deletions.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Information used to configure the Dataproc Metastore service to encrypt
 	// customer data at rest.
 	// Structure is documented below.
@@ -862,6 +909,8 @@ type MetastoreServiceArgs struct {
 	// Default value is `MYSQL`.
 	// Possible values are: `MYSQL`, `SPANNER`.
 	DatabaseType pulumi.StringPtrInput
+	// Indicates if the dataproc metastore should be protected against accidental deletions.
+	DeletionProtection pulumi.BoolPtrInput
 	// Information used to configure the Dataproc Metastore service to encrypt
 	// customer data at rest.
 	// Structure is documented below.
@@ -1016,6 +1065,11 @@ func (o MetastoreServiceOutput) ArtifactGcsUri() pulumi.StringOutput {
 // Possible values are: `MYSQL`, `SPANNER`.
 func (o MetastoreServiceOutput) DatabaseType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetastoreService) pulumi.StringPtrOutput { return v.DatabaseType }).(pulumi.StringPtrOutput)
+}
+
+// Indicates if the dataproc metastore should be protected against accidental deletions.
+func (o MetastoreServiceOutput) DeletionProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MetastoreService) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
 
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.

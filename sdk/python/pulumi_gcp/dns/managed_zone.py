@@ -1439,7 +1439,7 @@ class ManagedZone(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dnssecConfig")
-    def dnssec_config(self) -> pulumi.Output[Optional['outputs.ManagedZoneDnssecConfig']]:
+    def dnssec_config(self) -> pulumi.Output['outputs.ManagedZoneDnssecConfig']:
         """
         DNSSEC configuration
         Structure is documented below.

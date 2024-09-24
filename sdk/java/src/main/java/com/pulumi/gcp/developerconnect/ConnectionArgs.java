@@ -21,6 +21,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Optional. Allows clients to store small amounts of arbitrary data.
+     * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
@@ -30,6 +31,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Optional. Allows clients to store small amounts of arbitrary data.
+     * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
@@ -39,9 +41,8 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required. Id of the requesting object
-     * If auto-generating Id server-side, remove this field and
-     * connection_id from the method_signature of Create RPC
+     * Required. Id of the requesting object. If auto-generating Id server-side,
+     * remove this field and connection_id from the method_signature of Create RPC.
      * 
      * ***
      * 
@@ -50,9 +51,8 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     private Output<String> connectionId;
 
     /**
-     * @return Required. Id of the requesting object
-     * If auto-generating Id server-side, remove this field and
-     * connection_id from the method_signature of Create RPC
+     * @return Required. Id of the requesting object. If auto-generating Id server-side,
+     * remove this field and connection_id from the method_signature of Create RPC.
      * 
      * ***
      * 
@@ -62,18 +62,14 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional. If disabled is set to true, functionality is disabled for this connection.
-     * Repository based API methods and webhooks processing for repositories in
-     * this connection will be disabled.
+     * Optional. If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
      * 
      */
     @Import(name="disabled")
     private @Nullable Output<Boolean> disabled;
 
     /**
-     * @return Optional. If disabled is set to true, functionality is disabled for this connection.
-     * Repository based API methods and webhooks processing for repositories in
-     * this connection will be disabled.
+     * @return Optional. If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
      * 
      */
     public Optional<Output<Boolean>> disabled() {
@@ -81,8 +77,8 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional. This checksum is computed by the server based on the value of other
-     * fields, and may be sent on update and delete requests to ensure the
+     * Optional. This checksum is computed by the server based on the value
+     * of other fields, and may be sent on update and delete requests to ensure the
      * client has an up-to-date value before proceeding.
      * 
      */
@@ -90,8 +86,8 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> etag;
 
     /**
-     * @return Optional. This checksum is computed by the server based on the value of other
-     * fields, and may be sent on update and delete requests to ensure the
+     * @return Optional. This checksum is computed by the server based on the value
+     * of other fields, and may be sent on update and delete requests to ensure the
      * client has an up-to-date value before proceeding.
      * 
      */
@@ -118,6 +114,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Optional. Labels as key value pairs
+     * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -127,6 +124,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Optional. Labels as key value pairs
+     * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -136,14 +134,18 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
+     * Resource ID segment making up resource `name`. It identifies the resource
+     * within its parent collection as described in https://google.aip.dev/122. See documentation
+     * for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
      * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
-     * @return Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
+     * @return Resource ID segment making up resource `name`. It identifies the resource
+     * within its parent collection as described in https://google.aip.dev/122. See documentation
+     * for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
      * 
      */
     public Output<String> location() {
@@ -200,6 +202,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param annotations Optional. Allows clients to store small amounts of arbitrary data.
+         * 
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
          * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
          * 
@@ -213,6 +216,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param annotations Optional. Allows clients to store small amounts of arbitrary data.
+         * 
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
          * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
          * 
@@ -224,9 +228,8 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionId Required. Id of the requesting object
-         * If auto-generating Id server-side, remove this field and
-         * connection_id from the method_signature of Create RPC
+         * @param connectionId Required. Id of the requesting object. If auto-generating Id server-side,
+         * remove this field and connection_id from the method_signature of Create RPC.
          * 
          * ***
          * 
@@ -239,9 +242,8 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionId Required. Id of the requesting object
-         * If auto-generating Id server-side, remove this field and
-         * connection_id from the method_signature of Create RPC
+         * @param connectionId Required. Id of the requesting object. If auto-generating Id server-side,
+         * remove this field and connection_id from the method_signature of Create RPC.
          * 
          * ***
          * 
@@ -253,9 +255,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disabled Optional. If disabled is set to true, functionality is disabled for this connection.
-         * Repository based API methods and webhooks processing for repositories in
-         * this connection will be disabled.
+         * @param disabled Optional. If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
          * 
          * @return builder
          * 
@@ -266,9 +266,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disabled Optional. If disabled is set to true, functionality is disabled for this connection.
-         * Repository based API methods and webhooks processing for repositories in
-         * this connection will be disabled.
+         * @param disabled Optional. If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
          * 
          * @return builder
          * 
@@ -278,8 +276,8 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param etag Optional. This checksum is computed by the server based on the value of other
-         * fields, and may be sent on update and delete requests to ensure the
+         * @param etag Optional. This checksum is computed by the server based on the value
+         * of other fields, and may be sent on update and delete requests to ensure the
          * client has an up-to-date value before proceeding.
          * 
          * @return builder
@@ -291,8 +289,8 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param etag Optional. This checksum is computed by the server based on the value of other
-         * fields, and may be sent on update and delete requests to ensure the
+         * @param etag Optional. This checksum is computed by the server based on the value
+         * of other fields, and may be sent on update and delete requests to ensure the
          * client has an up-to-date value before proceeding.
          * 
          * @return builder
@@ -327,6 +325,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels Optional. Labels as key value pairs
+         * 
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
          * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
@@ -340,6 +339,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels Optional. Labels as key value pairs
+         * 
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
          * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
@@ -351,7 +351,9 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
+         * @param location Resource ID segment making up resource `name`. It identifies the resource
+         * within its parent collection as described in https://google.aip.dev/122. See documentation
+         * for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
          * 
          * @return builder
          * 
@@ -362,7 +364,9 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
+         * @param location Resource ID segment making up resource `name`. It identifies the resource
+         * within its parent collection as described in https://google.aip.dev/122. See documentation
+         * for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
          * 
          * @return builder
          * 

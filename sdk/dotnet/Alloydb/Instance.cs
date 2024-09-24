@@ -338,6 +338,14 @@ namespace Pulumi.Gcp.Alloydb
         public Output<Outputs.InstanceObservabilityConfig> ObservabilityConfig { get; private set; } = null!;
 
         /// <summary>
+        /// The outbound public IP addresses for the instance. This is available ONLY when
+        /// networkConfig.enableOutboundPublicIp is set to true. These IP addresses are used
+        /// for outbound connections.
+        /// </summary>
+        [Output("outboundPublicIpAddresses")]
+        public Output<ImmutableArray<string>> OutboundPublicIpAddresses { get; private set; } = null!;
+
+        /// <summary>
         /// Configuration for Private Service Connect (PSC) for the instance.
         /// Structure is documented below.
         /// </summary>
@@ -740,6 +748,20 @@ namespace Pulumi.Gcp.Alloydb
         /// </summary>
         [Input("observabilityConfig")]
         public Input<Inputs.InstanceObservabilityConfigGetArgs>? ObservabilityConfig { get; set; }
+
+        [Input("outboundPublicIpAddresses")]
+        private InputList<string>? _outboundPublicIpAddresses;
+
+        /// <summary>
+        /// The outbound public IP addresses for the instance. This is available ONLY when
+        /// networkConfig.enableOutboundPublicIp is set to true. These IP addresses are used
+        /// for outbound connections.
+        /// </summary>
+        public InputList<string> OutboundPublicIpAddresses
+        {
+            get => _outboundPublicIpAddresses ?? (_outboundPublicIpAddresses = new InputList<string>());
+            set => _outboundPublicIpAddresses = value;
+        }
 
         /// <summary>
         /// Configuration for Private Service Connect (PSC) for the instance.

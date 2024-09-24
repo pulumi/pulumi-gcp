@@ -432,6 +432,9 @@ namespace Pulumi.Gcp
         [Output("secretManagerCustomEndpoint")]
         public Output<string?> SecretManagerCustomEndpoint { get; private set; } = null!;
 
+        [Output("secretManagerRegionalCustomEndpoint")]
+        public Output<string?> SecretManagerRegionalCustomEndpoint { get; private set; } = null!;
+
         [Output("secureSourceManagerCustomEndpoint")]
         public Output<string?> SecureSourceManagerCustomEndpoint { get; private set; } = null!;
 
@@ -1006,6 +1009,9 @@ namespace Pulumi.Gcp
 
         [Input("secretManagerCustomEndpoint")]
         public Input<string>? SecretManagerCustomEndpoint { get; set; }
+
+        [Input("secretManagerRegionalCustomEndpoint")]
+        public Input<string>? SecretManagerRegionalCustomEndpoint { get; set; }
 
         [Input("secureSourceManagerCustomEndpoint")]
         public Input<string>? SecureSourceManagerCustomEndpoint { get; set; }

@@ -4,7 +4,6 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -26,20 +25,15 @@ public final class ClusterNodeConfigKubeletConfig {
      * such as `&#34;300ms&#34;`. Valid time units are &#34;ns&#34;, &#34;us&#34; (or &#34;µs&#34;), &#34;ms&#34;, &#34;s&#34;, &#34;m&#34;,
      * &#34;h&#34;. The value must be a positive duration.
      * 
-     * &gt; Note: At the time of writing (2020/08/18) the GKE API rejects the `none`
-     * value and accepts an invalid `default` value instead. While this remains true,
-     * not specifying the `kubelet_config` block should be the equivalent of specifying
-     * `none`.
-     * 
      */
     private @Nullable String cpuCfsQuotaPeriod;
     /**
      * @return The CPU management policy on the node. See
      * [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
-     * One of `&#34;none&#34;` or `&#34;static&#34;`. Defaults to `none` when `kubelet_config` is unset.
+     * One of `&#34;none&#34;` or `&#34;static&#34;`. If unset (or set to the empty string `&#34;&#34;`), the API will treat the field as if set to &#34;none&#34;.
      * 
      */
-    private String cpuManagerPolicy;
+    private @Nullable String cpuManagerPolicy;
     /**
      * @return Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
      * 
@@ -66,11 +60,6 @@ public final class ClusterNodeConfigKubeletConfig {
      * such as `&#34;300ms&#34;`. Valid time units are &#34;ns&#34;, &#34;us&#34; (or &#34;µs&#34;), &#34;ms&#34;, &#34;s&#34;, &#34;m&#34;,
      * &#34;h&#34;. The value must be a positive duration.
      * 
-     * &gt; Note: At the time of writing (2020/08/18) the GKE API rejects the `none`
-     * value and accepts an invalid `default` value instead. While this remains true,
-     * not specifying the `kubelet_config` block should be the equivalent of specifying
-     * `none`.
-     * 
      */
     public Optional<String> cpuCfsQuotaPeriod() {
         return Optional.ofNullable(this.cpuCfsQuotaPeriod);
@@ -78,11 +67,11 @@ public final class ClusterNodeConfigKubeletConfig {
     /**
      * @return The CPU management policy on the node. See
      * [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
-     * One of `&#34;none&#34;` or `&#34;static&#34;`. Defaults to `none` when `kubelet_config` is unset.
+     * One of `&#34;none&#34;` or `&#34;static&#34;`. If unset (or set to the empty string `&#34;&#34;`), the API will treat the field as if set to &#34;none&#34;.
      * 
      */
-    public String cpuManagerPolicy() {
-        return this.cpuManagerPolicy;
+    public Optional<String> cpuManagerPolicy() {
+        return Optional.ofNullable(this.cpuManagerPolicy);
     }
     /**
      * @return Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
@@ -110,7 +99,7 @@ public final class ClusterNodeConfigKubeletConfig {
     public static final class Builder {
         private @Nullable Boolean cpuCfsQuota;
         private @Nullable String cpuCfsQuotaPeriod;
-        private String cpuManagerPolicy;
+        private @Nullable String cpuManagerPolicy;
         private @Nullable String insecureKubeletReadonlyPortEnabled;
         private @Nullable Integer podPidsLimit;
         public Builder() {}
@@ -136,10 +125,8 @@ public final class ClusterNodeConfigKubeletConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder cpuManagerPolicy(String cpuManagerPolicy) {
-            if (cpuManagerPolicy == null) {
-              throw new MissingRequiredPropertyException("ClusterNodeConfigKubeletConfig", "cpuManagerPolicy");
-            }
+        public Builder cpuManagerPolicy(@Nullable String cpuManagerPolicy) {
+
             this.cpuManagerPolicy = cpuManagerPolicy;
             return this;
         }

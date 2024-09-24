@@ -14,6 +14,9 @@ import (
 
 // A NAT service created in a router.
 //
+// > **Note:** Recreating a `compute.Address` that is being used by `compute.RouterNat` will give a `resourceInUseByAnotherResource` error.
+// Use `lifecycle.create_before_destroy` on this address resource to avoid this type of error as shown in the Manual Ips example.
+//
 // To get more information about RouterNat, see:
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
@@ -71,86 +74,6 @@ import (
 //				LogConfig: &compute.RouterNatLogConfigArgs{
 //					Enable: pulumi.Bool(true),
 //					Filter: pulumi.String("ERRORS_ONLY"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// ### Router Nat Manual Ips
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			net, err := compute.NewNetwork(ctx, "net", &compute.NetworkArgs{
-//				Name: pulumi.String("my-network"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			subnet, err := compute.NewSubnetwork(ctx, "subnet", &compute.SubnetworkArgs{
-//				Name:        pulumi.String("my-subnetwork"),
-//				Network:     net.ID(),
-//				IpCidrRange: pulumi.String("10.0.0.0/16"),
-//				Region:      pulumi.String("us-central1"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			router, err := compute.NewRouter(ctx, "router", &compute.RouterArgs{
-//				Name:    pulumi.String("my-router"),
-//				Region:  subnet.Region,
-//				Network: net.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			var address []*compute.Address
-//			for index := 0; index < 2; index++ {
-//				key0 := index
-//				val0 := index
-//				__res, err := compute.NewAddress(ctx, fmt.Sprintf("address-%v", key0), &compute.AddressArgs{
-//					Name:   pulumi.Sprintf("nat-manual-ip-%v", val0),
-//					Region: subnet.Region,
-//				})
-//				if err != nil {
-//					return err
-//				}
-//				address = append(address, __res)
-//			}
-//			var splat0 pulumi.StringArray
-//			for _, val0 := range address {
-//				splat0 = append(splat0, val0.SelfLink)
-//			}
-//			_, err = compute.NewRouterNat(ctx, "nat_manual", &compute.RouterNatArgs{
-//				Name:                          pulumi.String("my-router-nat"),
-//				Router:                        router.Name,
-//				Region:                        router.Region,
-//				NatIpAllocateOption:           pulumi.String("MANUAL_ONLY"),
-//				NatIps:                        splat0,
-//				SourceSubnetworkIpRangesToNat: pulumi.String("LIST_OF_SUBNETWORKS"),
-//				Subnetworks: compute.RouterNatSubnetworkArray{
-//					&compute.RouterNatSubnetworkArgs{
-//						Name: subnet.ID(),
-//						SourceIpRangesToNats: pulumi.StringArray{
-//							pulumi.String("ALL_IP_RANGES"),
-//						},
-//					},
 //				},
 //			})
 //			if err != nil {
@@ -436,6 +359,9 @@ type RouterNat struct {
 	NatIpAllocateOption pulumi.StringPtrOutput `pulumi:"natIpAllocateOption"`
 	// Self-links of NAT IPs. Only valid if natIpAllocateOption
 	// is set to MANUAL_ONLY.
+	// If this field is used alongside with a count created list of address resources `google_compute_address.foobar.*.self_link`,
+	// the access level resource for the address resource must have a `lifecycle` block with `createBeforeDestroy = true` so
+	// the number of resources can be increased/decreased without triggering the `resourceInUseByAnotherResource` error.
 	NatIps pulumi.StringArrayOutput `pulumi:"natIps"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -564,6 +490,9 @@ type routerNatState struct {
 	NatIpAllocateOption *string `pulumi:"natIpAllocateOption"`
 	// Self-links of NAT IPs. Only valid if natIpAllocateOption
 	// is set to MANUAL_ONLY.
+	// If this field is used alongside with a count created list of address resources `google_compute_address.foobar.*.self_link`,
+	// the access level resource for the address resource must have a `lifecycle` block with `createBeforeDestroy = true` so
+	// the number of resources can be increased/decreased without triggering the `resourceInUseByAnotherResource` error.
 	NatIps []string `pulumi:"natIps"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -657,6 +586,9 @@ type RouterNatState struct {
 	NatIpAllocateOption pulumi.StringPtrInput
 	// Self-links of NAT IPs. Only valid if natIpAllocateOption
 	// is set to MANUAL_ONLY.
+	// If this field is used alongside with a count created list of address resources `google_compute_address.foobar.*.self_link`,
+	// the access level resource for the address resource must have a `lifecycle` block with `createBeforeDestroy = true` so
+	// the number of resources can be increased/decreased without triggering the `resourceInUseByAnotherResource` error.
 	NatIps pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -754,6 +686,9 @@ type routerNatArgs struct {
 	NatIpAllocateOption *string `pulumi:"natIpAllocateOption"`
 	// Self-links of NAT IPs. Only valid if natIpAllocateOption
 	// is set to MANUAL_ONLY.
+	// If this field is used alongside with a count created list of address resources `google_compute_address.foobar.*.self_link`,
+	// the access level resource for the address resource must have a `lifecycle` block with `createBeforeDestroy = true` so
+	// the number of resources can be increased/decreased without triggering the `resourceInUseByAnotherResource` error.
 	NatIps []string `pulumi:"natIps"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -848,6 +783,9 @@ type RouterNatArgs struct {
 	NatIpAllocateOption pulumi.StringPtrInput
 	// Self-links of NAT IPs. Only valid if natIpAllocateOption
 	// is set to MANUAL_ONLY.
+	// If this field is used alongside with a count created list of address resources `google_compute_address.foobar.*.self_link`,
+	// the access level resource for the address resource must have a `lifecycle` block with `createBeforeDestroy = true` so
+	// the number of resources can be increased/decreased without triggering the `resourceInUseByAnotherResource` error.
 	NatIps pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -1060,6 +998,9 @@ func (o RouterNatOutput) NatIpAllocateOption() pulumi.StringPtrOutput {
 
 // Self-links of NAT IPs. Only valid if natIpAllocateOption
 // is set to MANUAL_ONLY.
+// If this field is used alongside with a count created list of address resources `google_compute_address.foobar.*.self_link`,
+// the access level resource for the address resource must have a `lifecycle` block with `createBeforeDestroy = true` so
+// the number of resources can be increased/decreased without triggering the `resourceInUseByAnotherResource` error.
 func (o RouterNatOutput) NatIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RouterNat) pulumi.StringArrayOutput { return v.NatIps }).(pulumi.StringArrayOutput)
 }

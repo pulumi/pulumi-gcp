@@ -1161,6 +1161,14 @@ Object.defineProperty(exports, "secretManagerCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const secretManagerRegionalCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "secretManagerRegionalCustomEndpoint", {
+    get() {
+        return __config.get("secretManagerRegionalCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const secureSourceManagerCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "secureSourceManagerCustomEndpoint", {
     get() {

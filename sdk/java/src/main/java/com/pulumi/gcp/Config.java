@@ -447,6 +447,9 @@ public final class Config {
     public Optional<String> secretManagerCustomEndpoint() {
         return Codegen.stringProp("secretManagerCustomEndpoint").config(config).get();
     }
+    public Optional<String> secretManagerRegionalCustomEndpoint() {
+        return Codegen.stringProp("secretManagerRegionalCustomEndpoint").config(config).get();
+    }
     public Optional<String> secureSourceManagerCustomEndpoint() {
         return Codegen.stringProp("secureSourceManagerCustomEndpoint").config(config).get();
     }

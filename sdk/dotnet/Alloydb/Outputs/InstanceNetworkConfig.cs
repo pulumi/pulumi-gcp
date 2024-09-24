@@ -21,6 +21,10 @@ namespace Pulumi.Gcp.Alloydb.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.InstanceNetworkConfigAuthorizedExternalNetwork> AuthorizedExternalNetworks;
         /// <summary>
+        /// Enabling outbound public ip for the instance.
+        /// </summary>
+        public readonly bool? EnableOutboundPublicIp;
+        /// <summary>
         /// Enabling public ip for the instance. If a user wishes to disable this,
         /// please also clear the list of the authorized external networks set on
         /// the same instance.
@@ -31,9 +35,12 @@ namespace Pulumi.Gcp.Alloydb.Outputs
         private InstanceNetworkConfig(
             ImmutableArray<Outputs.InstanceNetworkConfigAuthorizedExternalNetwork> authorizedExternalNetworks,
 
+            bool? enableOutboundPublicIp,
+
             bool? enablePublicIp)
         {
             AuthorizedExternalNetworks = authorizedExternalNetworks;
+            EnableOutboundPublicIp = enableOutboundPublicIp;
             EnablePublicIp = enablePublicIp;
         }
     }

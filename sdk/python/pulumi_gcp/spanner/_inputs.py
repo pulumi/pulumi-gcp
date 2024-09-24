@@ -15,6 +15,14 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'BackupScheduleFullBackupSpecArgs',
+    'BackupScheduleFullBackupSpecArgsDict',
+    'BackupScheduleIncrementalBackupSpecArgs',
+    'BackupScheduleIncrementalBackupSpecArgsDict',
+    'BackupScheduleSpecArgs',
+    'BackupScheduleSpecArgsDict',
+    'BackupScheduleSpecCronSpecArgs',
+    'BackupScheduleSpecCronSpecArgsDict',
     'DatabaseEncryptionConfigArgs',
     'DatabaseEncryptionConfigArgsDict',
     'DatabaseIAMBindingConditionArgs',
@@ -36,6 +44,127 @@ __all__ = [
 ]
 
 MYPY = False
+
+if not MYPY:
+    class BackupScheduleFullBackupSpecArgsDict(TypedDict):
+        pass
+elif False:
+    BackupScheduleFullBackupSpecArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BackupScheduleFullBackupSpecArgs:
+    def __init__(__self__):
+        pass
+
+
+if not MYPY:
+    class BackupScheduleIncrementalBackupSpecArgsDict(TypedDict):
+        pass
+elif False:
+    BackupScheduleIncrementalBackupSpecArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BackupScheduleIncrementalBackupSpecArgs:
+    def __init__(__self__):
+        pass
+
+
+if not MYPY:
+    class BackupScheduleSpecArgsDict(TypedDict):
+        cron_spec: NotRequired[pulumi.Input['BackupScheduleSpecCronSpecArgsDict']]
+        """
+        Cron style schedule specification..
+        Structure is documented below.
+        """
+elif False:
+    BackupScheduleSpecArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BackupScheduleSpecArgs:
+    def __init__(__self__, *,
+                 cron_spec: Optional[pulumi.Input['BackupScheduleSpecCronSpecArgs']] = None):
+        """
+        :param pulumi.Input['BackupScheduleSpecCronSpecArgs'] cron_spec: Cron style schedule specification..
+               Structure is documented below.
+        """
+        if cron_spec is not None:
+            pulumi.set(__self__, "cron_spec", cron_spec)
+
+    @property
+    @pulumi.getter(name="cronSpec")
+    def cron_spec(self) -> Optional[pulumi.Input['BackupScheduleSpecCronSpecArgs']]:
+        """
+        Cron style schedule specification..
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cron_spec")
+
+    @cron_spec.setter
+    def cron_spec(self, value: Optional[pulumi.Input['BackupScheduleSpecCronSpecArgs']]):
+        pulumi.set(self, "cron_spec", value)
+
+
+if not MYPY:
+    class BackupScheduleSpecCronSpecArgsDict(TypedDict):
+        text: NotRequired[pulumi.Input[str]]
+        """
+        Textual representation of the crontab. User can customize the
+        backup frequency and the backup version time using the cron
+        expression. The version time must be in UTC timzeone.
+        The backup will contain an externally consistent copy of the
+        database at the version time. Allowed frequencies are 12 hour, 1 day,
+        1 week and 1 month. Examples of valid cron specifications:
+        0 2/12 * * * : every 12 hours at (2, 14) hours past midnight in UTC.
+        0 2,14 * * * : every 12 hours at (2,14) hours past midnight in UTC.
+        0 2 * * *    : once a day at 2 past midnight in UTC.
+        0 2 * * 0    : once a week every Sunday at 2 past midnight in UTC.
+        0 2 8 * *    : once a month on 8th day at 2 past midnight in UTC.
+        """
+elif False:
+    BackupScheduleSpecCronSpecArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BackupScheduleSpecCronSpecArgs:
+    def __init__(__self__, *,
+                 text: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] text: Textual representation of the crontab. User can customize the
+               backup frequency and the backup version time using the cron
+               expression. The version time must be in UTC timzeone.
+               The backup will contain an externally consistent copy of the
+               database at the version time. Allowed frequencies are 12 hour, 1 day,
+               1 week and 1 month. Examples of valid cron specifications:
+               0 2/12 * * * : every 12 hours at (2, 14) hours past midnight in UTC.
+               0 2,14 * * * : every 12 hours at (2,14) hours past midnight in UTC.
+               0 2 * * *    : once a day at 2 past midnight in UTC.
+               0 2 * * 0    : once a week every Sunday at 2 past midnight in UTC.
+               0 2 8 * *    : once a month on 8th day at 2 past midnight in UTC.
+        """
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter
+    def text(self) -> Optional[pulumi.Input[str]]:
+        """
+        Textual representation of the crontab. User can customize the
+        backup frequency and the backup version time using the cron
+        expression. The version time must be in UTC timzeone.
+        The backup will contain an externally consistent copy of the
+        database at the version time. Allowed frequencies are 12 hour, 1 day,
+        1 week and 1 month. Examples of valid cron specifications:
+        0 2/12 * * * : every 12 hours at (2, 14) hours past midnight in UTC.
+        0 2,14 * * * : every 12 hours at (2,14) hours past midnight in UTC.
+        0 2 * * *    : once a day at 2 past midnight in UTC.
+        0 2 * * 0    : once a week every Sunday at 2 past midnight in UTC.
+        0 2 8 * *    : once a month on 8th day at 2 past midnight in UTC.
+        """
+        return pulumi.get(self, "text")
+
+    @text.setter
+    def text(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "text", value)
+
 
 if not MYPY:
     class DatabaseEncryptionConfigArgsDict(TypedDict):

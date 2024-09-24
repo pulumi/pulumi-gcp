@@ -110,6 +110,32 @@ namespace Pulumi.Gcp.Looker
     /// 
     /// });
     /// ```
+    /// ### Looker Instance Fips
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var looker_instance = new Gcp.Looker.Instance("looker-instance", new()
+    ///     {
+    ///         Name = "my-instance-fips",
+    ///         PlatformEdition = "LOOKER_CORE_ENTERPRISE_ANNUAL",
+    ///         Region = "us-central1",
+    ///         PublicIpEnabled = true,
+    ///         FipsEnabled = true,
+    ///         OauthConfig = new Gcp.Looker.Inputs.InstanceOauthConfigArgs
+    ///         {
+    ///             ClientId = "my-client-id",
+    ///             ClientSecret = "my-client-secret",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Looker Instance Enterprise Full
     /// 
     /// ```csharp
@@ -335,6 +361,12 @@ namespace Pulumi.Gcp.Looker
         public Output<Outputs.InstanceEncryptionConfig> EncryptionConfig { get; private set; } = null!;
 
         /// <summary>
+        /// FIPS 140-2 Encryption enablement for Looker (Google Cloud Core).
+        /// </summary>
+        [Output("fipsEnabled")]
+        public Output<bool?> FipsEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// Private Ingress IP (IPv4).
         /// </summary>
         [Output("ingressPrivateIp")]
@@ -534,6 +566,12 @@ namespace Pulumi.Gcp.Looker
         public Input<Inputs.InstanceEncryptionConfigArgs>? EncryptionConfig { get; set; }
 
         /// <summary>
+        /// FIPS 140-2 Encryption enablement for Looker (Google Cloud Core).
+        /// </summary>
+        [Input("fipsEnabled")]
+        public Input<bool>? FipsEnabled { get; set; }
+
+        /// <summary>
         /// Maintenance window for an instance.
         /// Maintenance of your instance takes place once a month, and will require
         /// your instance to be restarted during updates, which will temporarily
@@ -675,6 +713,12 @@ namespace Pulumi.Gcp.Looker
         /// </summary>
         [Input("encryptionConfig")]
         public Input<Inputs.InstanceEncryptionConfigGetArgs>? EncryptionConfig { get; set; }
+
+        /// <summary>
+        /// FIPS 140-2 Encryption enablement for Looker (Google Cloud Core).
+        /// </summary>
+        [Input("fipsEnabled")]
+        public Input<bool>? FipsEnabled { get; set; }
 
         /// <summary>
         /// Private Ingress IP (IPv4).

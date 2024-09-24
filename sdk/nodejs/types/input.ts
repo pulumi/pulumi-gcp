@@ -2364,6 +2364,10 @@ export namespace alloydb {
          */
         authorizedExternalNetworks?: pulumi.Input<pulumi.Input<inputs.alloydb.InstanceNetworkConfigAuthorizedExternalNetwork>[]>;
         /**
+         * Enabling outbound public ip for the instance.
+         */
+        enableOutboundPublicIp?: pulumi.Input<boolean>;
+        /**
          * Enabling public ip for the instance. If a user wishes to disable this,
          * please also clear the list of the authorized external networks set on
          * the same instance.
@@ -16660,6 +16664,331 @@ export namespace compute {
         ports?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
+    export interface FirewallPolicyWithRulesPredefinedRule {
+        /**
+         * (Output)
+         * The Action to perform when the client connection triggers the rule. Can currently be either
+         * "allow", "deny", "applySecurityProfileGroup" or "gotoNext".
+         */
+        action?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * A description of the rule.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The direction in which this rule applies. If unspecified an INGRESS rule is created.
+         */
+        direction?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Denotes whether the firewall policy rule is disabled. When set to true,
+         * the firewall policy rule is not enforced and traffic behaves as if it did
+         * not exist. If this is unspecified, the firewall policy rule will be
+         * enabled.
+         */
+        disabled?: pulumi.Input<boolean>;
+        /**
+         * (Output)
+         * Denotes whether to enable logging for a particular rule.
+         * If logging is enabled, logs will be exported to the
+         * configured export destination in Stackdriver.
+         */
+        enableLogging?: pulumi.Input<boolean>;
+        /**
+         * (Output)
+         * A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+         * Structure is documented below.
+         */
+        matches?: pulumi.Input<pulumi.Input<inputs.compute.FirewallPolicyWithRulesPredefinedRuleMatch>[]>;
+        /**
+         * (Output)
+         * An integer indicating the priority of a rule in the list. The priority must be a value
+         * between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
+         * highest priority and 2147483647 is the lowest priority.
+         */
+        priority?: pulumi.Input<number>;
+        /**
+         * (Output)
+         * An optional name for the rule. This field is not a unique identifier
+         * and can be updated.
+         */
+        ruleName?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * A fully-qualified URL of a SecurityProfile resource instance.
+         * Example:
+         * https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+         * Must be specified if action is 'apply_security_profile_group'.
+         */
+        securityProfileGroup?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * A list of network resource URLs to which this rule applies.
+         * This field allows you to control which network's VMs get
+         * this rule. If this field is left blank, all VMs
+         * within the organization will receive the rule.
+         */
+        targetResources?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * (Output)
+         * A list of service accounts indicating the sets of
+         * instances that are applied with this rule.
+         */
+        targetServiceAccounts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * (Output)
+         * Boolean flag indicating if the traffic should be TLS decrypted.
+         * It can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
+         */
+        tlsInspect?: pulumi.Input<boolean>;
+    }
+
+    export interface FirewallPolicyWithRulesPredefinedRuleMatch {
+        /**
+         * Address groups which should be matched against the traffic destination.
+         * Maximum number of destination address groups is 10.
+         */
+        destAddressGroups?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Fully Qualified Domain Name (FQDN) which should be matched against
+         * traffic destination. Maximum number of destination fqdn allowed is 100.
+         */
+        destFqdns?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Destination IP address range in CIDR format. Required for
+         * EGRESS rules.
+         */
+        destIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Region codes whose IP addresses will be used to match for destination
+         * of traffic. Should be specified as 2 letter country code defined as per
+         * ISO 3166 alpha-2 country codes. ex."US"
+         * Maximum number of destination region codes allowed is 5000.
+         */
+        destRegionCodes?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Names of Network Threat Intelligence lists.
+         * The IPs in these lists will be matched against traffic destination.
+         */
+        destThreatIntelligences?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Pairs of IP protocols and ports that the rule should match.
+         * Structure is documented below.
+         *
+         *
+         * <a name="nestedLayer4Config"></a>The `layer4Config` block supports:
+         */
+        layer4Configs?: pulumi.Input<pulumi.Input<inputs.compute.FirewallPolicyWithRulesPredefinedRuleMatchLayer4Config>[]>;
+        /**
+         * Address groups which should be matched against the traffic source.
+         * Maximum number of source address groups is 10.
+         */
+        srcAddressGroups?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Fully Qualified Domain Name (FQDN) which should be matched against
+         * traffic source. Maximum number of source fqdn allowed is 100.
+         */
+        srcFqdns?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Source IP address range in CIDR format. Required for
+         * INGRESS rules.
+         */
+        srcIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Region codes whose IP addresses will be used to match for source
+         * of traffic. Should be specified as 2 letter country code defined as per
+         * ISO 3166 alpha-2 country codes. ex."US"
+         * Maximum number of source region codes allowed is 5000.
+         */
+        srcRegionCodes?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Names of Network Threat Intelligence lists.
+         * The IPs in these lists will be matched against traffic source.
+         */
+        srcThreatIntelligences?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface FirewallPolicyWithRulesPredefinedRuleMatchLayer4Config {
+        /**
+         * (Output)
+         * The IP protocol to which this rule applies. The protocol
+         * type is required when creating a firewall rule.
+         * This value can either be one of the following well
+         * known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp),
+         * or the IP protocol number.
+         */
+        ipProtocol?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * An optional list of ports to which this rule applies. This field
+         * is only applicable for UDP or TCP protocol. Each entry must be
+         * either an integer or a range. If not specified, this rule
+         * applies to connections through any port.
+         * Example inputs include: ["22"], ["80","443"], and
+         * ["12345-12349"].
+         */
+        ports?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface FirewallPolicyWithRulesRule {
+        /**
+         * The Action to perform when the client connection triggers the rule. Can currently be either
+         * "allow", "deny", "applySecurityProfileGroup" or "gotoNext".
+         */
+        action: pulumi.Input<string>;
+        /**
+         * A description of the rule.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * The direction in which this rule applies. If unspecified an INGRESS rule is created.
+         * Possible values are: `INGRESS`, `EGRESS`.
+         */
+        direction?: pulumi.Input<string>;
+        /**
+         * Denotes whether the firewall policy rule is disabled. When set to true,
+         * the firewall policy rule is not enforced and traffic behaves as if it did
+         * not exist. If this is unspecified, the firewall policy rule will be
+         * enabled.
+         */
+        disabled?: pulumi.Input<boolean>;
+        /**
+         * Denotes whether to enable logging for a particular rule.
+         * If logging is enabled, logs will be exported to the
+         * configured export destination in Stackdriver.
+         */
+        enableLogging?: pulumi.Input<boolean>;
+        /**
+         * A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+         * Structure is documented below.
+         */
+        match: pulumi.Input<inputs.compute.FirewallPolicyWithRulesRuleMatch>;
+        /**
+         * An integer indicating the priority of a rule in the list. The priority must be a value
+         * between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
+         * highest priority and 2147483647 is the lowest priority.
+         */
+        priority: pulumi.Input<number>;
+        /**
+         * An optional name for the rule. This field is not a unique identifier
+         * and can be updated.
+         */
+        ruleName?: pulumi.Input<string>;
+        /**
+         * A fully-qualified URL of a SecurityProfile resource instance.
+         * Example:
+         * https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+         * Must be specified if action is 'apply_security_profile_group'.
+         */
+        securityProfileGroup?: pulumi.Input<string>;
+        /**
+         * A list of network resource URLs to which this rule applies.
+         * This field allows you to control which network's VMs get
+         * this rule. If this field is left blank, all VMs
+         * within the organization will receive the rule.
+         */
+        targetResources?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * A list of service accounts indicating the sets of
+         * instances that are applied with this rule.
+         */
+        targetServiceAccounts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Boolean flag indicating if the traffic should be TLS decrypted.
+         * It can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
+         */
+        tlsInspect?: pulumi.Input<boolean>;
+    }
+
+    export interface FirewallPolicyWithRulesRuleMatch {
+        /**
+         * Address groups which should be matched against the traffic destination.
+         * Maximum number of destination address groups is 10.
+         */
+        destAddressGroups?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Fully Qualified Domain Name (FQDN) which should be matched against
+         * traffic destination. Maximum number of destination fqdn allowed is 100.
+         */
+        destFqdns?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Destination IP address range in CIDR format. Required for
+         * EGRESS rules.
+         */
+        destIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Region codes whose IP addresses will be used to match for destination
+         * of traffic. Should be specified as 2 letter country code defined as per
+         * ISO 3166 alpha-2 country codes. ex."US"
+         * Maximum number of destination region codes allowed is 5000.
+         */
+        destRegionCodes?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Names of Network Threat Intelligence lists.
+         * The IPs in these lists will be matched against traffic destination.
+         */
+        destThreatIntelligences?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Pairs of IP protocols and ports that the rule should match.
+         * Structure is documented below.
+         *
+         *
+         * <a name="nestedLayer4Config"></a>The `layer4Config` block supports:
+         */
+        layer4Configs: pulumi.Input<pulumi.Input<inputs.compute.FirewallPolicyWithRulesRuleMatchLayer4Config>[]>;
+        /**
+         * Address groups which should be matched against the traffic source.
+         * Maximum number of source address groups is 10.
+         */
+        srcAddressGroups?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Fully Qualified Domain Name (FQDN) which should be matched against
+         * traffic source. Maximum number of source fqdn allowed is 100.
+         */
+        srcFqdns?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Source IP address range in CIDR format. Required for
+         * INGRESS rules.
+         */
+        srcIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Region codes whose IP addresses will be used to match for source
+         * of traffic. Should be specified as 2 letter country code defined as per
+         * ISO 3166 alpha-2 country codes. ex."US"
+         * Maximum number of source region codes allowed is 5000.
+         */
+        srcRegionCodes?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Names of Network Threat Intelligence lists.
+         * The IPs in these lists will be matched against traffic source.
+         */
+        srcThreatIntelligences?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface FirewallPolicyWithRulesRuleMatchLayer4Config {
+        /**
+         * (Output)
+         * The IP protocol to which this rule applies. The protocol
+         * type is required when creating a firewall rule.
+         * This value can either be one of the following well
+         * known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp),
+         * or the IP protocol number.
+         */
+        ipProtocol: pulumi.Input<string>;
+        /**
+         * (Output)
+         * An optional list of ports to which this rule applies. This field
+         * is only applicable for UDP or TCP protocol. Each entry must be
+         * either an integer or a range. If not specified, this rule
+         * applies to connections through any port.
+         * Example inputs include: ["22"], ["80","443"], and
+         * ["12345-12349"].
+         */
+        ports?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
     export interface ForwardingRuleServiceDirectoryRegistrations {
         /**
          * Service Directory namespace to register the forwarding rule under.
@@ -30328,19 +30657,14 @@ export namespace container {
          * as a sequence of decimal numbers, each with optional fraction and a unit suffix,
          * such as `"300ms"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m",
          * "h". The value must be a positive duration.
-         *
-         * > Note: At the time of writing (2020/08/18) the GKE API rejects the `none`
-         * value and accepts an invalid `default` value instead. While this remains true,
-         * not specifying the `kubeletConfig` block should be the equivalent of specifying
-         * `none`.
          */
         cpuCfsQuotaPeriod?: pulumi.Input<string>;
         /**
          * The CPU management policy on the node. See
          * [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
-         * One of `"none"` or `"static"`. Defaults to `none` when `kubeletConfig` is unset.
+         * One of `"none"` or `"static"`. If unset (or set to the empty string `""`), the API will treat the field as if set to "none".
          */
-        cpuManagerPolicy: pulumi.Input<string>;
+        cpuManagerPolicy?: pulumi.Input<string>;
         /**
          * Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
          */
@@ -31182,19 +31506,14 @@ export namespace container {
          * as a sequence of decimal numbers, each with optional fraction and a unit suffix,
          * such as `"300ms"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m",
          * "h". The value must be a positive duration.
-         *
-         * > Note: At the time of writing (2020/08/18) the GKE API rejects the `none`
-         * value and accepts an invalid `default` value instead. While this remains true,
-         * not specifying the `kubeletConfig` block should be the equivalent of specifying
-         * `none`.
          */
         cpuCfsQuotaPeriod?: pulumi.Input<string>;
         /**
          * The CPU management policy on the node. See
          * [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
-         * One of `"none"` or `"static"`. Defaults to `none` when `kubeletConfig` is unset.
+         * One of `"none"` or `"static"`. If unset (or set to the empty string `""`), the API will treat the field as if set to "none".
          */
-        cpuManagerPolicy: pulumi.Input<string>;
+        cpuManagerPolicy?: pulumi.Input<string>;
         /**
          * Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
          */
@@ -32078,7 +32397,7 @@ export namespace container {
         /**
          * Control the CPU management policy on the node.
          */
-        cpuManagerPolicy: pulumi.Input<string>;
+        cpuManagerPolicy?: pulumi.Input<string>;
         /**
          * Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
          */
@@ -32861,6 +33180,83 @@ export namespace databasemigrationservice {
          * The current connection profile state.
          */
         type?: pulumi.Input<string>;
+    }
+
+    export interface MigrationJobDumpFlags {
+        /**
+         * A list of dump flags
+         * Structure is documented below.
+         */
+        dumpFlags?: pulumi.Input<pulumi.Input<inputs.databasemigrationservice.MigrationJobDumpFlagsDumpFlag>[]>;
+    }
+
+    export interface MigrationJobDumpFlagsDumpFlag {
+        /**
+         * The name of the flag
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * The vale of the flag
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface MigrationJobError {
+        /**
+         * (Output)
+         * The status code, which should be an enum value of google.rpc.Code.
+         */
+        code?: pulumi.Input<number>;
+        /**
+         * (Output)
+         * A list of messages that carry the error details.
+         */
+        details?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+        /**
+         * (Output)
+         * Human readable message indicating details about the current status.
+         */
+        message?: pulumi.Input<string>;
+    }
+
+    export interface MigrationJobPerformanceConfig {
+        /**
+         * Initial dump parallelism level.
+         * Possible values are: `MIN`, `OPTIMAL`, `MAX`.
+         */
+        dumpParallelLevel?: pulumi.Input<string>;
+    }
+
+    export interface MigrationJobReverseSshConnectivity {
+        /**
+         * The name of the virtual machine (Compute Engine) used as the bastion server
+         * for the SSH tunnel.
+         */
+        vm?: pulumi.Input<string>;
+        /**
+         * The IP of the virtual machine (Compute Engine) used as the bastion server
+         * for the SSH tunnel.
+         */
+        vmIp?: pulumi.Input<string>;
+        /**
+         * The forwarding port of the virtual machine (Compute Engine) used as the
+         * bastion server for the SSH tunnel.
+         */
+        vmPort?: pulumi.Input<number>;
+        /**
+         * The name of the VPC to peer with the Cloud SQL private network.
+         */
+        vpc?: pulumi.Input<string>;
+    }
+
+    export interface MigrationJobStaticIpConnectivity {
+    }
+
+    export interface MigrationJobVpcPeeringConnectivity {
+        /**
+         * The name of the VPC network to peer with the Cloud SQL private network.
+         */
+        vpc?: pulumi.Input<string>;
     }
 
     export interface PrivateConnectionError {
@@ -44498,32 +44894,33 @@ export namespace developerconnect {
          */
         appInstallationId?: pulumi.Input<string>;
         /**
-         * Represents an OAuth token of the account that authorized the Connection,
-         * and associated metadata.
+         * Represents an OAuth token of the account that authorized the Connection,and
+         * associated metadata.
          * Structure is documented below.
          */
         authorizerCredential?: pulumi.Input<inputs.developerconnect.ConnectionGithubConfigAuthorizerCredential>;
         /**
-         * Required. Immutable. The GitHub Application that was installed to the GitHub user or
-         * organization.
+         * Required. Immutable. The GitHub Application that was installed to
+         * the GitHub user or organization.
          * Possible values:
          * GIT_HUB_APP_UNSPECIFIED
          * DEVELOPER_CONNECT
-         * FIREBASE
+         * FIREBASE"
          */
         githubApp: pulumi.Input<string>;
         /**
          * (Output)
-         * Output only. The URI to navigate to in order to manage the installation associated
-         * with this GitHubConfig.
+         * Output only. The URI to navigate to in order to manage the installation
+         * associated with this GitHubConfig.
          */
         installationUri?: pulumi.Input<string>;
     }
 
     export interface ConnectionGithubConfigAuthorizerCredential {
         /**
-         * Required. A SecretManager resource containing the OAuth token that authorizes
-         * the connection. Format: `projects/*&#47;secrets/*&#47;versions/*`.
+         * Required. A SecretManager resource containing the OAuth token
+         * that authorizes the connection.
+         * Format: `projects/*&#47;secrets/*&#47;versions/*`.
          */
         oauthTokenSecretVersion: pulumi.Input<string>;
         /**
@@ -44535,13 +44932,13 @@ export namespace developerconnect {
 
     export interface ConnectionInstallationState {
         /**
-         * Output only. Link to follow for next action. Empty string if the installation is already
-         * complete.
+         * Output only. Link to follow for next action. Empty string if the
+         * installation is already complete.
          */
         actionUri?: pulumi.Input<string>;
         /**
-         * Output only. Message of what the user should do next to continue the installation.
-         * Empty string if the installation is already complete.
+         * Output only. Message of what the user should do next to continue
+         * the installation.Empty string if the installation is already complete.
          */
         message?: pulumi.Input<string>;
         /**
@@ -46877,6 +47274,34 @@ export namespace discoveryengine {
          * Possible values are: `SEARCH_TIER_STANDARD`, `SEARCH_TIER_ENTERPRISE`.
          */
         searchTier?: pulumi.Input<string>;
+    }
+
+    export interface TargetSiteFailureReason {
+        /**
+         * Site verification state indicating the ownership and validity.
+         * Structure is documented below.
+         */
+        quotaFailure?: pulumi.Input<inputs.discoveryengine.TargetSiteFailureReasonQuotaFailure>;
+    }
+
+    export interface TargetSiteFailureReasonQuotaFailure {
+        /**
+         * This number is an estimation on how much total quota this project
+         * needs to successfully complete indexing.
+         */
+        totalRequiredQuota?: pulumi.Input<number>;
+    }
+
+    export interface TargetSiteSiteVerificationInfo {
+        /**
+         * Site verification state indicating the ownership and validity.
+         * Possible values are: `VERIFIED`, `UNVERIFIED`, `EXEMPTED`.
+         */
+        siteVerificationState?: pulumi.Input<string>;
+        /**
+         * Latest site verification time.
+         */
+        verifyTime?: pulumi.Input<string>;
     }
 }
 
@@ -52778,6 +53203,15 @@ export namespace healthcare {
          */
         version?: pulumi.Input<string>;
     }
+
+    export interface WorkspaceSettings {
+        /**
+         * Project IDs for data projects hosted in a workspace.
+         *
+         * - - -
+         */
+        dataProjectIds: pulumi.Input<pulumi.Input<string>[]>;
+    }
 }
 
 export namespace iam {
@@ -57791,6 +58225,20 @@ export namespace netapp {
          * The maximum number of snapshots to keep for the weekly schedule.
          */
         snapshotsToKeep: pulumi.Input<number>;
+    }
+
+    export interface VolumeTieringPolicy {
+        /**
+         * Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be range from 7-183.
+         * Default is 31.
+         */
+        coolingThresholdDays?: pulumi.Input<number>;
+        /**
+         * Optional. Flag indicating if the volume has tiering policy enable/pause. Default is PAUSED.
+         * Default value is `PAUSED`.
+         * Possible values are: `ENABLED`, `PAUSED`.
+         */
+        tierAction?: pulumi.Input<string>;
     }
 }
 
@@ -63859,6 +64307,70 @@ export namespace runtimeconfig {
 }
 
 export namespace secretmanager {
+    export interface RegionalSecretCustomerManagedEncryption {
+        /**
+         * The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
+         */
+        kmsKeyName: pulumi.Input<string>;
+    }
+
+    export interface RegionalSecretIamBindingCondition {
+        description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: pulumi.Input<string>;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
+        title: pulumi.Input<string>;
+    }
+
+    export interface RegionalSecretIamMemberCondition {
+        description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: pulumi.Input<string>;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
+        title: pulumi.Input<string>;
+    }
+
+    export interface RegionalSecretRotation {
+        /**
+         * Timestamp in UTC at which the Secret is scheduled to rotate.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+         * fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
+        nextRotationTime?: pulumi.Input<string>;
+        /**
+         * The Duration between rotation notifications. Must be in seconds and at least 3600s (1h)
+         * and at most 3153600000s (100 years). If rotationPeriod is set, `nextRotationTime` must
+         * be set. `nextRotationTime` will be advanced by this period when the service
+         * automatically sends rotation notifications.
+         */
+        rotationPeriod?: pulumi.Input<string>;
+    }
+
+    export interface RegionalSecretTopic {
+        /**
+         * The resource name of the Pub/Sub topic that will be published to, in the following format:
+         * projects/*&#47;topics/*. For publication to succeed, the Secret Manager Service
+         * Agent service account must have pubsub.publisher permissions on the topic.
+         */
+        name: pulumi.Input<string>;
+    }
+
+    export interface RegionalSecretVersionCustomerManagedEncryption {
+        /**
+         * (Output)
+         * The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
+         */
+        kmsKeyVersionName?: pulumi.Input<string>;
+    }
+
     export interface SecretIamBindingCondition {
         description?: pulumi.Input<string>;
         /**
@@ -65403,6 +65915,23 @@ export namespace servicedirectory {
     }
 }
 
+export namespace siteverification {
+    export interface WebResourceSite {
+        /**
+         * The site identifier. If the type is set to SITE, the identifier is a URL. If the type is
+         * set to INET_DOMAIN, the identifier is a domain name.
+         *
+         * - - -
+         */
+        identifier: pulumi.Input<string>;
+        /**
+         * The type of resource to be verified.
+         * Possible values are: `INET_DOMAIN`, `SITE`.
+         */
+        type: pulumi.Input<string>;
+    }
+}
+
 export namespace sourcerepo {
     export interface RepositoryIamBindingCondition {
         description?: pulumi.Input<string>;
@@ -65439,6 +65968,37 @@ export namespace sourcerepo {
 }
 
 export namespace spanner {
+    export interface BackupScheduleFullBackupSpec {
+    }
+
+    export interface BackupScheduleIncrementalBackupSpec {
+    }
+
+    export interface BackupScheduleSpec {
+        /**
+         * Cron style schedule specification..
+         * Structure is documented below.
+         */
+        cronSpec?: pulumi.Input<inputs.spanner.BackupScheduleSpecCronSpec>;
+    }
+
+    export interface BackupScheduleSpecCronSpec {
+        /**
+         * Textual representation of the crontab. User can customize the
+         * backup frequency and the backup version time using the cron
+         * expression. The version time must be in UTC timzeone.
+         * The backup will contain an externally consistent copy of the
+         * database at the version time. Allowed frequencies are 12 hour, 1 day,
+         * 1 week and 1 month. Examples of valid cron specifications:
+         * 0 2/12 * * * : every 12 hours at (2, 14) hours past midnight in UTC.
+         * 0 2,14 * * * : every 12 hours at (2,14) hours past midnight in UTC.
+         * 0 2 * * *    : once a day at 2 past midnight in UTC.
+         * 0 2 * * 0    : once a week every Sunday at 2 past midnight in UTC.
+         * 0 2 8 * *    : once a month on 8th day at 2 past midnight in UTC.
+         */
+        text?: pulumi.Input<string>;
+    }
+
     export interface DatabaseEncryptionConfig {
         /**
          * Fully qualified name of the KMS key to use to encrypt this database. This key must exist

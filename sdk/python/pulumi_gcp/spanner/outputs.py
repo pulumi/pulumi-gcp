@@ -16,6 +16,10 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'BackupScheduleFullBackupSpec',
+    'BackupScheduleIncrementalBackupSpec',
+    'BackupScheduleSpec',
+    'BackupScheduleSpecCronSpec',
     'DatabaseEncryptionConfig',
     'DatabaseIAMBindingCondition',
     'DatabaseIAMMemberCondition',
@@ -29,6 +33,95 @@ __all__ = [
     'GetInstanceAutoscalingConfigAutoscalingLimitResult',
     'GetInstanceAutoscalingConfigAutoscalingTargetResult',
 ]
+
+@pulumi.output_type
+class BackupScheduleFullBackupSpec(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class BackupScheduleIncrementalBackupSpec(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class BackupScheduleSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cronSpec":
+            suggest = "cron_spec"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BackupScheduleSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BackupScheduleSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BackupScheduleSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cron_spec: Optional['outputs.BackupScheduleSpecCronSpec'] = None):
+        """
+        :param 'BackupScheduleSpecCronSpecArgs' cron_spec: Cron style schedule specification..
+               Structure is documented below.
+        """
+        if cron_spec is not None:
+            pulumi.set(__self__, "cron_spec", cron_spec)
+
+    @property
+    @pulumi.getter(name="cronSpec")
+    def cron_spec(self) -> Optional['outputs.BackupScheduleSpecCronSpec']:
+        """
+        Cron style schedule specification..
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cron_spec")
+
+
+@pulumi.output_type
+class BackupScheduleSpecCronSpec(dict):
+    def __init__(__self__, *,
+                 text: Optional[str] = None):
+        """
+        :param str text: Textual representation of the crontab. User can customize the
+               backup frequency and the backup version time using the cron
+               expression. The version time must be in UTC timzeone.
+               The backup will contain an externally consistent copy of the
+               database at the version time. Allowed frequencies are 12 hour, 1 day,
+               1 week and 1 month. Examples of valid cron specifications:
+               0 2/12 * * * : every 12 hours at (2, 14) hours past midnight in UTC.
+               0 2,14 * * * : every 12 hours at (2,14) hours past midnight in UTC.
+               0 2 * * *    : once a day at 2 past midnight in UTC.
+               0 2 * * 0    : once a week every Sunday at 2 past midnight in UTC.
+               0 2 8 * *    : once a month on 8th day at 2 past midnight in UTC.
+        """
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter
+    def text(self) -> Optional[str]:
+        """
+        Textual representation of the crontab. User can customize the
+        backup frequency and the backup version time using the cron
+        expression. The version time must be in UTC timzeone.
+        The backup will contain an externally consistent copy of the
+        database at the version time. Allowed frequencies are 12 hour, 1 day,
+        1 week and 1 month. Examples of valid cron specifications:
+        0 2/12 * * * : every 12 hours at (2, 14) hours past midnight in UTC.
+        0 2,14 * * * : every 12 hours at (2,14) hours past midnight in UTC.
+        0 2 * * *    : once a day at 2 past midnight in UTC.
+        0 2 * * 0    : once a week every Sunday at 2 past midnight in UTC.
+        0 2 8 * *    : once a month on 8th day at 2 past midnight in UTC.
+        """
+        return pulumi.get(self, "text")
+
 
 @pulumi.output_type
 class DatabaseEncryptionConfig(dict):

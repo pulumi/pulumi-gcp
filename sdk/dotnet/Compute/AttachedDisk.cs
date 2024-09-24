@@ -118,6 +118,20 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Instance { get; private set; } = null!;
 
         /// <summary>
+        /// The disk interface used for attaching this disk.
+        /// 
+        /// This field is only used for specific cases, please don't specify
+        /// this field without advice from Google. Not specifying the field
+        /// will allow the the server to assign the correct interface.
+        /// 
+        /// Possible values:
+        /// "SCSI"
+        /// "NVME"
+        /// </summary>
+        [Output("interface")]
+        public Output<string?> Interface { get; private set; } = null!;
+
+        /// <summary>
         /// The mode in which to attach this disk, either READ_WRITE or
         /// READ_ONLY. If not specified, the default is to attach the disk in
         /// READ_WRITE mode.
@@ -222,6 +236,20 @@ namespace Pulumi.Gcp.Compute
         public Input<string> Instance { get; set; } = null!;
 
         /// <summary>
+        /// The disk interface used for attaching this disk.
+        /// 
+        /// This field is only used for specific cases, please don't specify
+        /// this field without advice from Google. Not specifying the field
+        /// will allow the the server to assign the correct interface.
+        /// 
+        /// Possible values:
+        /// "SCSI"
+        /// "NVME"
+        /// </summary>
+        [Input("interface")]
+        public Input<string>? Interface { get; set; }
+
+        /// <summary>
         /// The mode in which to attach this disk, either READ_WRITE or
         /// READ_ONLY. If not specified, the default is to attach the disk in
         /// READ_WRITE mode.
@@ -286,6 +314,20 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("instance")]
         public Input<string>? Instance { get; set; }
+
+        /// <summary>
+        /// The disk interface used for attaching this disk.
+        /// 
+        /// This field is only used for specific cases, please don't specify
+        /// this field without advice from Google. Not specifying the field
+        /// will allow the the server to assign the correct interface.
+        /// 
+        /// Possible values:
+        /// "SCSI"
+        /// "NVME"
+        /// </summary>
+        [Input("interface")]
+        public Input<string>? Interface { get; set; }
 
         /// <summary>
         /// The mode in which to attach this disk, either READ_WRITE or

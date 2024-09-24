@@ -68,11 +68,13 @@ type LookupInstanceArgs struct {
 
 // A collection of values returned by getInstance.
 type LookupInstanceResult struct {
-	CreateTime      string                 `pulumi:"createTime"`
-	Description     string                 `pulumi:"description"`
-	EffectiveLabels map[string]string      `pulumi:"effectiveLabels"`
-	Etag            string                 `pulumi:"etag"`
-	FileShares      []GetInstanceFileShare `pulumi:"fileShares"`
+	CreateTime                string                 `pulumi:"createTime"`
+	DeletionProtectionEnabled bool                   `pulumi:"deletionProtectionEnabled"`
+	DeletionProtectionReason  string                 `pulumi:"deletionProtectionReason"`
+	Description               string                 `pulumi:"description"`
+	EffectiveLabels           map[string]string      `pulumi:"effectiveLabels"`
+	Etag                      string                 `pulumi:"etag"`
+	FileShares                []GetInstanceFileShare `pulumi:"fileShares"`
 	// The provider-assigned unique ID for this managed resource.
 	Id           string               `pulumi:"id"`
 	KmsKeyName   string               `pulumi:"kmsKeyName"`
@@ -142,6 +144,14 @@ func (o LookupInstanceResultOutput) ToLookupInstanceResultOutputWithContext(ctx 
 
 func (o LookupInstanceResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) DeletionProtectionEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupInstanceResult) bool { return v.DeletionProtectionEnabled }).(pulumi.BoolOutput)
+}
+
+func (o LookupInstanceResultOutput) DeletionProtectionReason() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.DeletionProtectionReason }).(pulumi.StringOutput)
 }
 
 func (o LookupInstanceResultOutput) Description() pulumi.StringOutput {

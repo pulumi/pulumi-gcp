@@ -410,7 +410,8 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
      *   build times and host selection times. For more information about
      *   Maglev, refer to https://ai.google/research/pubs/pub44824
      * * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
-     *   reported weights. If set, the Backend Service must
+     *   reported weights. Only applicable to loadBalancingScheme
+     *   EXTERNAL. If set, the Backend Service must
      *   configure a non legacy HTTP-based Health Check, and
      *   health check replies are expected to contain
      *   non-standard HTTP response header field
@@ -421,14 +422,14 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
      *   instance either reported a valid weight or had
      *   UNAVAILABLE_WEIGHT. Otherwise, Load Balancing remains
      *   equal-weight.
-     *   This field is applicable to either:
+     *   locality_lb_policy is applicable to either:
      * * A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2,
      *   and loadBalancingScheme set to INTERNAL_MANAGED.
      * * A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
      * * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
      *   Load Balancing). Only MAGLEV and WEIGHTED_MAGLEV values are possible for External
      *   Network Load Balancing. The default is MAGLEV.
-     *   If session_affinity is not NONE, and this field is not set to MAGLEV, WEIGHTED_MAGLEV,
+     *   If session_affinity is not NONE, and locality_lb_policy is not set to MAGLEV, WEIGHTED_MAGLEV,
      *   or RING_HASH, session affinity settings will not take effect.
      *   Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced
      *   by a URL map that is bound to target gRPC proxy that has validate_for_proxyless
@@ -461,7 +462,8 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
      *   build times and host selection times. For more information about
      *   Maglev, refer to https://ai.google/research/pubs/pub44824
      * * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
-     *   reported weights. If set, the Backend Service must
+     *   reported weights. Only applicable to loadBalancingScheme
+     *   EXTERNAL. If set, the Backend Service must
      *   configure a non legacy HTTP-based Health Check, and
      *   health check replies are expected to contain
      *   non-standard HTTP response header field
@@ -472,14 +474,14 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
      *   instance either reported a valid weight or had
      *   UNAVAILABLE_WEIGHT. Otherwise, Load Balancing remains
      *   equal-weight.
-     *   This field is applicable to either:
+     *   locality_lb_policy is applicable to either:
      * * A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2,
      *   and loadBalancingScheme set to INTERNAL_MANAGED.
      * * A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
      * * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
      *   Load Balancing). Only MAGLEV and WEIGHTED_MAGLEV values are possible for External
      *   Network Load Balancing. The default is MAGLEV.
-     *   If session_affinity is not NONE, and this field is not set to MAGLEV, WEIGHTED_MAGLEV,
+     *   If session_affinity is not NONE, and locality_lb_policy is not set to MAGLEV, WEIGHTED_MAGLEV,
      *   or RING_HASH, session affinity settings will not take effect.
      *   Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced
      *   by a URL map that is bound to target gRPC proxy that has validate_for_proxyless
@@ -1334,7 +1336,8 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
          *   build times and host selection times. For more information about
          *   Maglev, refer to https://ai.google/research/pubs/pub44824
          * * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
-         *   reported weights. If set, the Backend Service must
+         *   reported weights. Only applicable to loadBalancingScheme
+         *   EXTERNAL. If set, the Backend Service must
          *   configure a non legacy HTTP-based Health Check, and
          *   health check replies are expected to contain
          *   non-standard HTTP response header field
@@ -1345,14 +1348,14 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
          *   instance either reported a valid weight or had
          *   UNAVAILABLE_WEIGHT. Otherwise, Load Balancing remains
          *   equal-weight.
-         *   This field is applicable to either:
+         *   locality_lb_policy is applicable to either:
          * * A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2,
          *   and loadBalancingScheme set to INTERNAL_MANAGED.
          * * A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
          * * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
          *   Load Balancing). Only MAGLEV and WEIGHTED_MAGLEV values are possible for External
          *   Network Load Balancing. The default is MAGLEV.
-         *   If session_affinity is not NONE, and this field is not set to MAGLEV, WEIGHTED_MAGLEV,
+         *   If session_affinity is not NONE, and locality_lb_policy is not set to MAGLEV, WEIGHTED_MAGLEV,
          *   or RING_HASH, session affinity settings will not take effect.
          *   Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced
          *   by a URL map that is bound to target gRPC proxy that has validate_for_proxyless
@@ -1389,7 +1392,8 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
          *   build times and host selection times. For more information about
          *   Maglev, refer to https://ai.google/research/pubs/pub44824
          * * `WEIGHTED_MAGLEV`: Per-instance weighted Load Balancing via health check
-         *   reported weights. If set, the Backend Service must
+         *   reported weights. Only applicable to loadBalancingScheme
+         *   EXTERNAL. If set, the Backend Service must
          *   configure a non legacy HTTP-based Health Check, and
          *   health check replies are expected to contain
          *   non-standard HTTP response header field
@@ -1400,14 +1404,14 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
          *   instance either reported a valid weight or had
          *   UNAVAILABLE_WEIGHT. Otherwise, Load Balancing remains
          *   equal-weight.
-         *   This field is applicable to either:
+         *   locality_lb_policy is applicable to either:
          * * A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2,
          *   and loadBalancingScheme set to INTERNAL_MANAGED.
          * * A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
          * * A regional backend service with loadBalancingScheme set to EXTERNAL (External Network
          *   Load Balancing). Only MAGLEV and WEIGHTED_MAGLEV values are possible for External
          *   Network Load Balancing. The default is MAGLEV.
-         *   If session_affinity is not NONE, and this field is not set to MAGLEV, WEIGHTED_MAGLEV,
+         *   If session_affinity is not NONE, and locality_lb_policy is not set to MAGLEV, WEIGHTED_MAGLEV,
          *   or RING_HASH, session affinity settings will not take effect.
          *   Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced
          *   by a URL map that is bound to target gRPC proxy that has validate_for_proxyless

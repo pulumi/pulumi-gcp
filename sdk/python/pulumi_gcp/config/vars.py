@@ -598,6 +598,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('secretManagerCustomEndpoint')
 
     @property
+    def secret_manager_regional_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('secretManagerRegionalCustomEndpoint')
+
+    @property
     def secure_source_manager_custom_endpoint(self) -> Optional[str]:
         return __config__.get('secureSourceManagerCustomEndpoint')
 

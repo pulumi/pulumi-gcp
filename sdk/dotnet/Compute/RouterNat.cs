@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Compute
     /// <summary>
     /// A NAT service created in a router.
     /// 
+    /// &gt; **Note:** Recreating a `gcp.compute.Address` that is being used by `gcp.compute.RouterNat` will give a `resourceInUseByAnotherResource` error.
+    /// Use `lifecycle.create_before_destroy` on this address resource to avoid this type of error as shown in the Manual Ips example.
+    /// 
     /// To get more information about RouterNat, see:
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
@@ -65,69 +68,6 @@ namespace Pulumi.Gcp.Compute
     ///         {
     ///             Enable = true,
     ///             Filter = "ERRORS_ONLY",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Router Nat Manual Ips
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var net = new Gcp.Compute.Network("net", new()
-    ///     {
-    ///         Name = "my-network",
-    ///     });
-    /// 
-    ///     var subnet = new Gcp.Compute.Subnetwork("subnet", new()
-    ///     {
-    ///         Name = "my-subnetwork",
-    ///         Network = net.Id,
-    ///         IpCidrRange = "10.0.0.0/16",
-    ///         Region = "us-central1",
-    ///     });
-    /// 
-    ///     var router = new Gcp.Compute.Router("router", new()
-    ///     {
-    ///         Name = "my-router",
-    ///         Region = subnet.Region,
-    ///         Network = net.Id,
-    ///     });
-    /// 
-    ///     var address = new List&lt;Gcp.Compute.Address&gt;();
-    ///     for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
-    ///     {
-    ///         var range = new { Value = rangeIndex };
-    ///         address.Add(new Gcp.Compute.Address($"address-{range.Value}", new()
-    ///         {
-    ///             Name = $"nat-manual-ip-{range.Value}",
-    ///             Region = subnet.Region,
-    ///         }));
-    ///     }
-    ///     var natManual = new Gcp.Compute.RouterNat("nat_manual", new()
-    ///     {
-    ///         Name = "my-router-nat",
-    ///         Router = router.Name,
-    ///         Region = router.Region,
-    ///         NatIpAllocateOption = "MANUAL_ONLY",
-    ///         NatIps = address.Select(__item =&gt; __item.SelfLink).ToList(),
-    ///         SourceSubnetworkIpRangesToNat = "LIST_OF_SUBNETWORKS",
-    ///         Subnetworks = new[]
-    ///         {
-    ///             new Gcp.Compute.Inputs.RouterNatSubnetworkArgs
-    ///             {
-    ///                 Name = subnet.Id,
-    ///                 SourceIpRangesToNats = new[]
-    ///                 {
-    ///                     "ALL_IP_RANGES",
-    ///                 },
-    ///             },
     ///         },
     ///     });
     /// 
@@ -443,6 +383,9 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Self-links of NAT IPs. Only valid if natIpAllocateOption
         /// is set to MANUAL_ONLY.
+        /// If this field is used alongside with a count created list of address resources `google_compute_address.foobar.*.self_link`,
+        /// the access level resource for the address resource must have a `lifecycle` block with `create_before_destroy = true` so
+        /// the number of resources can be increased/decreased without triggering the `resourceInUseByAnotherResource` error.
         /// </summary>
         [Output("natIps")]
         public Output<ImmutableArray<string>> NatIps { get; private set; } = null!;
@@ -687,6 +630,9 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Self-links of NAT IPs. Only valid if natIpAllocateOption
         /// is set to MANUAL_ONLY.
+        /// If this field is used alongside with a count created list of address resources `google_compute_address.foobar.*.self_link`,
+        /// the access level resource for the address resource must have a `lifecycle` block with `create_before_destroy = true` so
+        /// the number of resources can be increased/decreased without triggering the `resourceInUseByAnotherResource` error.
         /// </summary>
         public InputList<string> NatIps
         {
@@ -908,6 +854,9 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Self-links of NAT IPs. Only valid if natIpAllocateOption
         /// is set to MANUAL_ONLY.
+        /// If this field is used alongside with a count created list of address resources `google_compute_address.foobar.*.self_link`,
+        /// the access level resource for the address resource must have a `lifecycle` block with `create_before_destroy = true` so
+        /// the number of resources can be increased/decreased without triggering the `resourceInUseByAnotherResource` error.
         /// </summary>
         public InputList<string> NatIps
         {

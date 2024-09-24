@@ -93,6 +93,9 @@ class RouterNatArgs:
                Possible values are: `MANUAL_ONLY`, `AUTO_ONLY`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] nat_ips: Self-links of NAT IPs. Only valid if natIpAllocateOption
                is set to MANUAL_ONLY.
+               If this field is used alongside with a count created list of address resources `google_compute_address.foobar.*.self_link`,
+               the access level resource for the address resource must have a `lifecycle` block with `create_before_destroy = true` so
+               the number of resources can be increased/decreased without triggering the `resourceInUseByAnotherResource` error.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where the router and NAT reside.
@@ -354,6 +357,9 @@ class RouterNatArgs:
         """
         Self-links of NAT IPs. Only valid if natIpAllocateOption
         is set to MANUAL_ONLY.
+        If this field is used alongside with a count created list of address resources `google_compute_address.foobar.*.self_link`,
+        the access level resource for the address resource must have a `lifecycle` block with `create_before_destroy = true` so
+        the number of resources can be increased/decreased without triggering the `resourceInUseByAnotherResource` error.
         """
         return pulumi.get(self, "nat_ips")
 
@@ -542,6 +548,9 @@ class _RouterNatState:
                Possible values are: `MANUAL_ONLY`, `AUTO_ONLY`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] nat_ips: Self-links of NAT IPs. Only valid if natIpAllocateOption
                is set to MANUAL_ONLY.
+               If this field is used alongside with a count created list of address resources `google_compute_address.foobar.*.self_link`,
+               the access level resource for the address resource must have a `lifecycle` block with `create_before_destroy = true` so
+               the number of resources can be increased/decreased without triggering the `resourceInUseByAnotherResource` error.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where the router and NAT reside.
@@ -783,6 +792,9 @@ class _RouterNatState:
         """
         Self-links of NAT IPs. Only valid if natIpAllocateOption
         is set to MANUAL_ONLY.
+        If this field is used alongside with a count created list of address resources `google_compute_address.foobar.*.self_link`,
+        the access level resource for the address resource must have a `lifecycle` block with `create_before_destroy = true` so
+        the number of resources can be increased/decreased without triggering the `resourceInUseByAnotherResource` error.
         """
         return pulumi.get(self, "nat_ips")
 
@@ -980,6 +992,9 @@ class RouterNat(pulumi.CustomResource):
         """
         A NAT service created in a router.
 
+        > **Note:** Recreating a `compute.Address` that is being used by `compute.RouterNat` will give a `resourceInUseByAnotherResource` error.
+        Use `lifecycle.create_before_destroy` on this address resource to avoid this type of error as shown in the Manual Ips example.
+
         To get more information about RouterNat, see:
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
@@ -1017,39 +1032,6 @@ class RouterNat(pulumi.CustomResource):
                 "enable": True,
                 "filter": "ERRORS_ONLY",
             })
-        ```
-        ### Router Nat Manual Ips
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        net = gcp.compute.Network("net", name="my-network")
-        subnet = gcp.compute.Subnetwork("subnet",
-            name="my-subnetwork",
-            network=net.id,
-            ip_cidr_range="10.0.0.0/16",
-            region="us-central1")
-        router = gcp.compute.Router("router",
-            name="my-router",
-            region=subnet.region,
-            network=net.id)
-        address = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            address.append(gcp.compute.Address(f"address-{range['value']}",
-                name=f"nat-manual-ip-{range['value']}",
-                region=subnet.region))
-        nat_manual = gcp.compute.RouterNat("nat_manual",
-            name="my-router-nat",
-            router=router.name,
-            region=router.region,
-            nat_ip_allocate_option="MANUAL_ONLY",
-            nat_ips=[__item.self_link for __item in address],
-            source_subnetwork_ip_ranges_to_nat="LIST_OF_SUBNETWORKS",
-            subnetworks=[{
-                "name": subnet.id,
-                "source_ip_ranges_to_nats": ["ALL_IP_RANGES"],
-            }])
         ```
         ### Router Nat Rules
 
@@ -1221,6 +1203,9 @@ class RouterNat(pulumi.CustomResource):
                Possible values are: `MANUAL_ONLY`, `AUTO_ONLY`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] nat_ips: Self-links of NAT IPs. Only valid if natIpAllocateOption
                is set to MANUAL_ONLY.
+               If this field is used alongside with a count created list of address resources `google_compute_address.foobar.*.self_link`,
+               the access level resource for the address resource must have a `lifecycle` block with `create_before_destroy = true` so
+               the number of resources can be increased/decreased without triggering the `resourceInUseByAnotherResource` error.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where the router and NAT reside.
@@ -1267,6 +1252,9 @@ class RouterNat(pulumi.CustomResource):
         """
         A NAT service created in a router.
 
+        > **Note:** Recreating a `compute.Address` that is being used by `compute.RouterNat` will give a `resourceInUseByAnotherResource` error.
+        Use `lifecycle.create_before_destroy` on this address resource to avoid this type of error as shown in the Manual Ips example.
+
         To get more information about RouterNat, see:
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
@@ -1304,39 +1292,6 @@ class RouterNat(pulumi.CustomResource):
                 "enable": True,
                 "filter": "ERRORS_ONLY",
             })
-        ```
-        ### Router Nat Manual Ips
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        net = gcp.compute.Network("net", name="my-network")
-        subnet = gcp.compute.Subnetwork("subnet",
-            name="my-subnetwork",
-            network=net.id,
-            ip_cidr_range="10.0.0.0/16",
-            region="us-central1")
-        router = gcp.compute.Router("router",
-            name="my-router",
-            region=subnet.region,
-            network=net.id)
-        address = []
-        for range in [{"value": i} for i in range(0, 2)]:
-            address.append(gcp.compute.Address(f"address-{range['value']}",
-                name=f"nat-manual-ip-{range['value']}",
-                region=subnet.region))
-        nat_manual = gcp.compute.RouterNat("nat_manual",
-            name="my-router-nat",
-            router=router.name,
-            region=router.region,
-            nat_ip_allocate_option="MANUAL_ONLY",
-            nat_ips=[__item.self_link for __item in address],
-            source_subnetwork_ip_ranges_to_nat="LIST_OF_SUBNETWORKS",
-            subnetworks=[{
-                "name": subnet.id,
-                "source_ip_ranges_to_nats": ["ALL_IP_RANGES"],
-            }])
         ```
         ### Router Nat Rules
 
@@ -1620,6 +1575,9 @@ class RouterNat(pulumi.CustomResource):
                Possible values are: `MANUAL_ONLY`, `AUTO_ONLY`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] nat_ips: Self-links of NAT IPs. Only valid if natIpAllocateOption
                is set to MANUAL_ONLY.
+               If this field is used alongside with a count created list of address resources `google_compute_address.foobar.*.self_link`,
+               the access level resource for the address resource must have a `lifecycle` block with `create_before_destroy = true` so
+               the number of resources can be increased/decreased without triggering the `resourceInUseByAnotherResource` error.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where the router and NAT reside.
@@ -1799,6 +1757,9 @@ class RouterNat(pulumi.CustomResource):
         """
         Self-links of NAT IPs. Only valid if natIpAllocateOption
         is set to MANUAL_ONLY.
+        If this field is used alongside with a count created list of address resources `google_compute_address.foobar.*.self_link`,
+        the access level resource for the address resource must have a `lifecycle` block with `create_before_destroy = true` so
+        the number of resources can be increased/decreased without triggering the `resourceInUseByAnotherResource` error.
         """
         return pulumi.get(self, "nat_ips")
 

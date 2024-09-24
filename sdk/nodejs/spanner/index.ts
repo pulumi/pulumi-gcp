@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { BackupScheduleArgs, BackupScheduleState } from "./backupSchedule";
+export type BackupSchedule = import("./backupSchedule").BackupSchedule;
+export const BackupSchedule: typeof import("./backupSchedule").BackupSchedule = null as any;
+utilities.lazyLoad(exports, ["BackupSchedule"], () => require("./backupSchedule"));
+
 export { DatabaseArgs, DatabaseState } from "./database";
 export type Database = import("./database").Database;
 export const Database: typeof import("./database").Database = null as any;
@@ -70,6 +75,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:spanner/backupSchedule:BackupSchedule":
+                return new BackupSchedule(name, <any>undefined, { urn })
             case "gcp:spanner/database:Database":
                 return new Database(name, <any>undefined, { urn })
             case "gcp:spanner/databaseIAMBinding:DatabaseIAMBinding":
@@ -93,6 +100,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "spanner/backupSchedule", _module)
 pulumi.runtime.registerResourceModule("gcp", "spanner/database", _module)
 pulumi.runtime.registerResourceModule("gcp", "spanner/databaseIAMBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "spanner/databaseIAMMember", _module)

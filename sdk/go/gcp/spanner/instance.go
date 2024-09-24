@@ -41,6 +41,7 @@ import (
 //				Config:      pulumi.String("regional-us-central1"),
 //				DisplayName: pulumi.String("Test Spanner Instance"),
 //				NumNodes:    pulumi.Int(2),
+//				Edition:     pulumi.String("STANDARD"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -197,6 +198,9 @@ type Instance struct {
 	//
 	// ***
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// The edition selected for this instance. Different editions provide different capabilities at different price points.
+	// Possible values are: `EDITION_UNSPECIFIED`, `STANDARD`, `ENTERPRISE`, `ENTERPRISE_PLUS`.
+	Edition pulumi.StringOutput `pulumi:"edition"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// When deleting a spanner instance, this boolean option will delete all backups of this instance.
@@ -284,6 +288,9 @@ type instanceState struct {
 	//
 	// ***
 	DisplayName *string `pulumi:"displayName"`
+	// The edition selected for this instance. Different editions provide different capabilities at different price points.
+	// Possible values are: `EDITION_UNSPECIFIED`, `STANDARD`, `ENTERPRISE`, `ENTERPRISE_PLUS`.
+	Edition *string `pulumi:"edition"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// When deleting a spanner instance, this boolean option will delete all backups of this instance.
@@ -331,6 +338,9 @@ type InstanceState struct {
 	//
 	// ***
 	DisplayName pulumi.StringPtrInput
+	// The edition selected for this instance. Different editions provide different capabilities at different price points.
+	// Possible values are: `EDITION_UNSPECIFIED`, `STANDARD`, `ENTERPRISE`, `ENTERPRISE_PLUS`.
+	Edition pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// When deleting a spanner instance, this boolean option will delete all backups of this instance.
@@ -382,6 +392,9 @@ type instanceArgs struct {
 	//
 	// ***
 	DisplayName string `pulumi:"displayName"`
+	// The edition selected for this instance. Different editions provide different capabilities at different price points.
+	// Possible values are: `EDITION_UNSPECIFIED`, `STANDARD`, `ENTERPRISE`, `ENTERPRISE_PLUS`.
+	Edition *string `pulumi:"edition"`
 	// When deleting a spanner instance, this boolean option will delete all backups of this instance.
 	// This must be set to true if you created a backup manually in the console.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
@@ -423,6 +436,9 @@ type InstanceArgs struct {
 	//
 	// ***
 	DisplayName pulumi.StringInput
+	// The edition selected for this instance. Different editions provide different capabilities at different price points.
+	// Possible values are: `EDITION_UNSPECIFIED`, `STANDARD`, `ENTERPRISE`, `ENTERPRISE_PLUS`.
+	Edition pulumi.StringPtrInput
 	// When deleting a spanner instance, this boolean option will delete all backups of this instance.
 	// This must be set to true if you created a backup manually in the console.
 	ForceDestroy pulumi.BoolPtrInput
@@ -556,6 +572,12 @@ func (o InstanceOutput) Config() pulumi.StringOutput {
 // ***
 func (o InstanceOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The edition selected for this instance. Different editions provide different capabilities at different price points.
+// Possible values are: `EDITION_UNSPECIFIED`, `STANDARD`, `ENTERPRISE`, `ENTERPRISE_PLUS`.
+func (o InstanceOutput) Edition() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Edition }).(pulumi.StringOutput)
 }
 
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.

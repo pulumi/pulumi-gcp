@@ -22,7 +22,84 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * ### Config Management
+ * ### Config Management With Config Sync Auto-Upgrades And Without Git/OCI
+ * 
+ * With [Config Sync auto-upgrades](https://cloud.devsite.corp.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/upgrade-config-sync#auto-upgrade-config), Google assumes responsibility for automatically upgrading Config Sync versions
+ * and overseeing the lifecycle of its components.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.container.Cluster;
+ * import com.pulumi.gcp.container.ClusterArgs;
+ * import com.pulumi.gcp.gkehub.Membership;
+ * import com.pulumi.gcp.gkehub.MembershipArgs;
+ * import com.pulumi.gcp.gkehub.inputs.MembershipEndpointArgs;
+ * import com.pulumi.gcp.gkehub.inputs.MembershipEndpointGkeClusterArgs;
+ * import com.pulumi.gcp.gkehub.Feature;
+ * import com.pulumi.gcp.gkehub.FeatureArgs;
+ * import com.pulumi.gcp.gkehub.FeatureMembership;
+ * import com.pulumi.gcp.gkehub.FeatureMembershipArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementConfigSyncArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var cluster = new Cluster("cluster", ClusterArgs.builder()
+ *             .name("my-cluster")
+ *             .location("us-central1-a")
+ *             .initialNodeCount(1)
+ *             .build());
+ * 
+ *         var membership = new Membership("membership", MembershipArgs.builder()
+ *             .membershipId("my-membership")
+ *             .endpoint(MembershipEndpointArgs.builder()
+ *                 .gkeCluster(MembershipEndpointGkeClusterArgs.builder()
+ *                     .resourceLink(cluster.id().applyValue(id -> String.format("//container.googleapis.com/%s", id)))
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var feature = new Feature("feature", FeatureArgs.builder()
+ *             .name("configmanagement")
+ *             .location("global")
+ *             .labels(Map.of("foo", "bar"))
+ *             .build());
+ * 
+ *         var featureMember = new FeatureMembership("featureMember", FeatureMembershipArgs.builder()
+ *             .location("global")
+ *             .feature(feature.name())
+ *             .membership(membership.membershipId())
+ *             .configmanagement(FeatureMembershipConfigmanagementArgs.builder()
+ *                 .management("MANAGEMENT_AUTOMATIC")
+ *                 .configSync(FeatureMembershipConfigmanagementConfigSyncArgs.builder()
+ *                     .enabled(true)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ### Config Management With Git
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -99,6 +176,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ### Config Management With OCI
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -177,6 +255,86 @@ import javax.annotation.Nullable;
  * 
  *     }}{@code
  * }}{@code
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ### Config Management With Regional Membership
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.container.Cluster;
+ * import com.pulumi.gcp.container.ClusterArgs;
+ * import com.pulumi.gcp.gkehub.Membership;
+ * import com.pulumi.gcp.gkehub.MembershipArgs;
+ * import com.pulumi.gcp.gkehub.inputs.MembershipEndpointArgs;
+ * import com.pulumi.gcp.gkehub.inputs.MembershipEndpointGkeClusterArgs;
+ * import com.pulumi.gcp.gkehub.Feature;
+ * import com.pulumi.gcp.gkehub.FeatureArgs;
+ * import com.pulumi.gcp.gkehub.FeatureMembership;
+ * import com.pulumi.gcp.gkehub.FeatureMembershipArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementConfigSyncArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementConfigSyncGitArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var cluster = new Cluster("cluster", ClusterArgs.builder()
+ *             .name("my-cluster")
+ *             .location("us-central1-a")
+ *             .initialNodeCount(1)
+ *             .build());
+ * 
+ *         var membership = new Membership("membership", MembershipArgs.builder()
+ *             .membershipId("my-membership")
+ *             .location("us-central1")
+ *             .endpoint(MembershipEndpointArgs.builder()
+ *                 .gkeCluster(MembershipEndpointGkeClusterArgs.builder()
+ *                     .resourceLink(cluster.id().applyValue(id -> String.format("//container.googleapis.com/%s", id)))
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var feature = new Feature("feature", FeatureArgs.builder()
+ *             .name("configmanagement")
+ *             .location("global")
+ *             .labels(Map.of("foo", "bar"))
+ *             .build());
+ * 
+ *         var featureMember = new FeatureMembership("featureMember", FeatureMembershipArgs.builder()
+ *             .location("global")
+ *             .feature(feature.name())
+ *             .membership(membership.membershipId())
+ *             .membershipLocation(membership.location())
+ *             .configmanagement(FeatureMembershipConfigmanagementArgs.builder()
+ *                 .version("1.19.0")
+ *                 .configSync(FeatureMembershipConfigmanagementConfigSyncArgs.builder()
+ *                     .enabled(true)
+ *                     .git(FeatureMembershipConfigmanagementConfigSyncGitArgs.builder()
+ *                         .syncRepo("https://github.com/hashicorp/terraform")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -278,86 +436,6 @@ import javax.annotation.Nullable;
  *             .membership(membership.membershipId())
  *             .mesh(FeatureMembershipMeshArgs.builder()
  *                 .management("MANAGEMENT_AUTOMATIC")
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ### Config Management With Regional Membership
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.container.Cluster;
- * import com.pulumi.gcp.container.ClusterArgs;
- * import com.pulumi.gcp.gkehub.Membership;
- * import com.pulumi.gcp.gkehub.MembershipArgs;
- * import com.pulumi.gcp.gkehub.inputs.MembershipEndpointArgs;
- * import com.pulumi.gcp.gkehub.inputs.MembershipEndpointGkeClusterArgs;
- * import com.pulumi.gcp.gkehub.Feature;
- * import com.pulumi.gcp.gkehub.FeatureArgs;
- * import com.pulumi.gcp.gkehub.FeatureMembership;
- * import com.pulumi.gcp.gkehub.FeatureMembershipArgs;
- * import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementArgs;
- * import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementConfigSyncArgs;
- * import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementConfigSyncGitArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var cluster = new Cluster("cluster", ClusterArgs.builder()
- *             .name("my-cluster")
- *             .location("us-central1-a")
- *             .initialNodeCount(1)
- *             .build());
- * 
- *         var membership = new Membership("membership", MembershipArgs.builder()
- *             .membershipId("my-membership")
- *             .location("us-central1")
- *             .endpoint(MembershipEndpointArgs.builder()
- *                 .gkeCluster(MembershipEndpointGkeClusterArgs.builder()
- *                     .resourceLink(cluster.id().applyValue(id -> String.format("//container.googleapis.com/%s", id)))
- *                     .build())
- *                 .build())
- *             .build());
- * 
- *         var feature = new Feature("feature", FeatureArgs.builder()
- *             .name("configmanagement")
- *             .location("global")
- *             .labels(Map.of("foo", "bar"))
- *             .build());
- * 
- *         var featureMember = new FeatureMembership("featureMember", FeatureMembershipArgs.builder()
- *             .location("global")
- *             .feature(feature.name())
- *             .membership(membership.membershipId())
- *             .membershipLocation(membership.location())
- *             .configmanagement(FeatureMembershipConfigmanagementArgs.builder()
- *                 .version("1.19.0")
- *                 .configSync(FeatureMembershipConfigmanagementConfigSyncArgs.builder()
- *                     .enabled(true)
- *                     .git(FeatureMembershipConfigmanagementConfigSyncGitArgs.builder()
- *                         .syncRepo("https://github.com/hashicorp/terraform")
- *                         .build())
- *                     .build())
  *                 .build())
  *             .build());
  * 

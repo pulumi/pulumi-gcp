@@ -130,6 +130,11 @@ export type Hl7StoreIamPolicy = import("./hl7StoreIamPolicy").Hl7StoreIamPolicy;
 export const Hl7StoreIamPolicy: typeof import("./hl7StoreIamPolicy").Hl7StoreIamPolicy = null as any;
 utilities.lazyLoad(exports, ["Hl7StoreIamPolicy"], () => require("./hl7StoreIamPolicy"));
 
+export { WorkspaceArgs, WorkspaceState } from "./workspace";
+export type Workspace = import("./workspace").Workspace;
+export const Workspace: typeof import("./workspace").Workspace = null as any;
+utilities.lazyLoad(exports, ["Workspace"], () => require("./workspace"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -175,6 +180,8 @@ const _module = {
                 return new Hl7StoreIamMember(name, <any>undefined, { urn })
             case "gcp:healthcare/hl7StoreIamPolicy:Hl7StoreIamPolicy":
                 return new Hl7StoreIamPolicy(name, <any>undefined, { urn })
+            case "gcp:healthcare/workspace:Workspace":
+                return new Workspace(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -200,3 +207,4 @@ pulumi.runtime.registerResourceModule("gcp", "healthcare/hl7Store", _module)
 pulumi.runtime.registerResourceModule("gcp", "healthcare/hl7StoreIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "healthcare/hl7StoreIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "healthcare/hl7StoreIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "healthcare/workspace", _module)

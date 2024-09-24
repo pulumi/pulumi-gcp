@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// <summary>
         /// Control the CPU management policy on the node.
         /// </summary>
-        public readonly string CpuManagerPolicy;
+        public readonly string? CpuManagerPolicy;
         /// <summary>
         /// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
         /// </summary>
@@ -40,7 +40,7 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string? cpuCfsQuotaPeriod,
 
-            string cpuManagerPolicy,
+            string? cpuManagerPolicy,
 
             string? insecureKubeletReadonlyPortEnabled,
 

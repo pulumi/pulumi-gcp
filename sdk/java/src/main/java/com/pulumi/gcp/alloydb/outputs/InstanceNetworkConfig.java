@@ -22,6 +22,11 @@ public final class InstanceNetworkConfig {
      */
     private @Nullable List<InstanceNetworkConfigAuthorizedExternalNetwork> authorizedExternalNetworks;
     /**
+     * @return Enabling outbound public ip for the instance.
+     * 
+     */
+    private @Nullable Boolean enableOutboundPublicIp;
+    /**
      * @return Enabling public ip for the instance. If a user wishes to disable this,
      * please also clear the list of the authorized external networks set on
      * the same instance.
@@ -39,6 +44,13 @@ public final class InstanceNetworkConfig {
      */
     public List<InstanceNetworkConfigAuthorizedExternalNetwork> authorizedExternalNetworks() {
         return this.authorizedExternalNetworks == null ? List.of() : this.authorizedExternalNetworks;
+    }
+    /**
+     * @return Enabling outbound public ip for the instance.
+     * 
+     */
+    public Optional<Boolean> enableOutboundPublicIp() {
+        return Optional.ofNullable(this.enableOutboundPublicIp);
     }
     /**
      * @return Enabling public ip for the instance. If a user wishes to disable this,
@@ -60,11 +72,13 @@ public final class InstanceNetworkConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<InstanceNetworkConfigAuthorizedExternalNetwork> authorizedExternalNetworks;
+        private @Nullable Boolean enableOutboundPublicIp;
         private @Nullable Boolean enablePublicIp;
         public Builder() {}
         public Builder(InstanceNetworkConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.authorizedExternalNetworks = defaults.authorizedExternalNetworks;
+    	      this.enableOutboundPublicIp = defaults.enableOutboundPublicIp;
     	      this.enablePublicIp = defaults.enablePublicIp;
         }
 
@@ -78,6 +92,12 @@ public final class InstanceNetworkConfig {
             return authorizedExternalNetworks(List.of(authorizedExternalNetworks));
         }
         @CustomType.Setter
+        public Builder enableOutboundPublicIp(@Nullable Boolean enableOutboundPublicIp) {
+
+            this.enableOutboundPublicIp = enableOutboundPublicIp;
+            return this;
+        }
+        @CustomType.Setter
         public Builder enablePublicIp(@Nullable Boolean enablePublicIp) {
 
             this.enablePublicIp = enablePublicIp;
@@ -86,6 +106,7 @@ public final class InstanceNetworkConfig {
         public InstanceNetworkConfig build() {
             final var _resultValue = new InstanceNetworkConfig();
             _resultValue.authorizedExternalNetworks = authorizedExternalNetworks;
+            _resultValue.enableOutboundPublicIp = enableOutboundPublicIp;
             _resultValue.enablePublicIp = enablePublicIp;
             return _resultValue;
         }

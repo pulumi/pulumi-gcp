@@ -113,6 +113,12 @@ namespace Pulumi.Gcp.Netapp
         public Output<string> CapacityGib { get; private set; } = null!;
 
         /// <summary>
+        /// Output only. Size of the volume cold tier data in GiB.
+        /// </summary>
+        [Output("coldTierSizeGib")]
+        public Output<string> ColdTierSizeGib { get; private set; } = null!;
+
+        /// <summary>
         /// Create time of the volume. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
         /// </summary>
         [Output("createTime")]
@@ -331,6 +337,13 @@ namespace Pulumi.Gcp.Netapp
         /// </summary>
         [Output("storagePool")]
         public Output<string> StoragePool { get; private set; } = null!;
+
+        /// <summary>
+        /// Tiering policy for the volume.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("tieringPolicy")]
+        public Output<Outputs.VolumeTieringPolicy?> TieringPolicy { get; private set; } = null!;
 
         /// <summary>
         /// Unix permission the mount point will be created with. Default is 0770. Applicable for UNIX security style volumes only.
@@ -573,6 +586,13 @@ namespace Pulumi.Gcp.Netapp
         public Input<string> StoragePool { get; set; } = null!;
 
         /// <summary>
+        /// Tiering policy for the volume.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("tieringPolicy")]
+        public Input<Inputs.VolumeTieringPolicyArgs>? TieringPolicy { get; set; }
+
+        /// <summary>
         /// Unix permission the mount point will be created with. Default is 0770. Applicable for UNIX security style volumes only.
         /// </summary>
         [Input("unixPermissions")]
@@ -604,6 +624,12 @@ namespace Pulumi.Gcp.Netapp
         /// </summary>
         [Input("capacityGib")]
         public Input<string>? CapacityGib { get; set; }
+
+        /// <summary>
+        /// Output only. Size of the volume cold tier data in GiB.
+        /// </summary>
+        [Input("coldTierSizeGib")]
+        public Input<string>? ColdTierSizeGib { get; set; }
 
         /// <summary>
         /// Create time of the volume. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
@@ -874,6 +900,13 @@ namespace Pulumi.Gcp.Netapp
         /// </summary>
         [Input("storagePool")]
         public Input<string>? StoragePool { get; set; }
+
+        /// <summary>
+        /// Tiering policy for the volume.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("tieringPolicy")]
+        public Input<Inputs.VolumeTieringPolicyGetArgs>? TieringPolicy { get; set; }
 
         /// <summary>
         /// Unix permission the mount point will be created with. Default is 0770. Applicable for UNIX security style volumes only.

@@ -235,6 +235,18 @@ namespace Pulumi.Gcp.Filestore
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates whether the instance is protected against deletion.
+        /// </summary>
+        [Output("deletionProtectionEnabled")]
+        public Output<bool?> DeletionProtectionEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// The reason for enabling deletion protection.
+        /// </summary>
+        [Output("deletionProtectionReason")]
+        public Output<string?> DeletionProtectionReason { get; private set; } = null!;
+
+        /// <summary>
         /// A description of the instance.
         /// </summary>
         [Output("description")]
@@ -378,6 +390,18 @@ namespace Pulumi.Gcp.Filestore
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Indicates whether the instance is protected against deletion.
+        /// </summary>
+        [Input("deletionProtectionEnabled")]
+        public Input<bool>? DeletionProtectionEnabled { get; set; }
+
+        /// <summary>
+        /// The reason for enabling deletion protection.
+        /// </summary>
+        [Input("deletionProtectionReason")]
+        public Input<string>? DeletionProtectionReason { get; set; }
+
+        /// <summary>
         /// A description of the instance.
         /// </summary>
         [Input("description")]
@@ -474,6 +498,18 @@ namespace Pulumi.Gcp.Filestore
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Indicates whether the instance is protected against deletion.
+        /// </summary>
+        [Input("deletionProtectionEnabled")]
+        public Input<bool>? DeletionProtectionEnabled { get; set; }
+
+        /// <summary>
+        /// The reason for enabling deletion protection.
+        /// </summary>
+        [Input("deletionProtectionReason")]
+        public Input<string>? DeletionProtectionReason { get; set; }
 
         /// <summary>
         /// A description of the instance.

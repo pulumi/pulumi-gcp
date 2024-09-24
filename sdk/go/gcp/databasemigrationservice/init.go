@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:databasemigrationservice/connectionProfile:ConnectionProfile":
 		r = &ConnectionProfile{}
+	case "gcp:databasemigrationservice/migrationJob:MigrationJob":
+		r = &MigrationJob{}
 	case "gcp:databasemigrationservice/privateConnection:PrivateConnection":
 		r = &PrivateConnection{}
 	default:
@@ -41,6 +43,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"databasemigrationservice/connectionProfile",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"databasemigrationservice/migrationJob",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

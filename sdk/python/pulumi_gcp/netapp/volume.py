@@ -42,6 +42,7 @@ class VolumeArgs:
                  smb_settings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  snapshot_directory: Optional[pulumi.Input[bool]] = None,
                  snapshot_policy: Optional[pulumi.Input['VolumeSnapshotPolicyArgs']] = None,
+                 tiering_policy: Optional[pulumi.Input['VolumeTieringPolicyArgs']] = None,
                  unix_permissions: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Volume resource.
@@ -87,6 +88,8 @@ class VolumeArgs:
         :param pulumi.Input['VolumeSnapshotPolicyArgs'] snapshot_policy: Snapshot policy defines the schedule for automatic snapshot creation.
                To disable automatic snapshot creation you have to remove the whole snapshot_policy block.
                Structure is documented below.
+        :param pulumi.Input['VolumeTieringPolicyArgs'] tiering_policy: Tiering policy for the volume.
+               Structure is documented below.
         :param pulumi.Input[str] unix_permissions: Unix permission the mount point will be created with. Default is 0770. Applicable for UNIX security style volumes only.
         """
         pulumi.set(__self__, "capacity_gib", capacity_gib)
@@ -126,6 +129,8 @@ class VolumeArgs:
             pulumi.set(__self__, "snapshot_directory", snapshot_directory)
         if snapshot_policy is not None:
             pulumi.set(__self__, "snapshot_policy", snapshot_policy)
+        if tiering_policy is not None:
+            pulumi.set(__self__, "tiering_policy", tiering_policy)
         if unix_permissions is not None:
             pulumi.set(__self__, "unix_permissions", unix_permissions)
 
@@ -403,6 +408,19 @@ class VolumeArgs:
         pulumi.set(self, "snapshot_policy", value)
 
     @property
+    @pulumi.getter(name="tieringPolicy")
+    def tiering_policy(self) -> Optional[pulumi.Input['VolumeTieringPolicyArgs']]:
+        """
+        Tiering policy for the volume.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tiering_policy")
+
+    @tiering_policy.setter
+    def tiering_policy(self, value: Optional[pulumi.Input['VolumeTieringPolicyArgs']]):
+        pulumi.set(self, "tiering_policy", value)
+
+    @property
     @pulumi.getter(name="unixPermissions")
     def unix_permissions(self) -> Optional[pulumi.Input[str]]:
         """
@@ -421,6 +439,7 @@ class _VolumeState:
                  active_directory: Optional[pulumi.Input[str]] = None,
                  backup_config: Optional[pulumi.Input['VolumeBackupConfigArgs']] = None,
                  capacity_gib: Optional[pulumi.Input[str]] = None,
+                 cold_tier_size_gib: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  deletion_policy: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -454,6 +473,7 @@ class _VolumeState:
                  state: Optional[pulumi.Input[str]] = None,
                  state_details: Optional[pulumi.Input[str]] = None,
                  storage_pool: Optional[pulumi.Input[str]] = None,
+                 tiering_policy: Optional[pulumi.Input['VolumeTieringPolicyArgs']] = None,
                  unix_permissions: Optional[pulumi.Input[str]] = None,
                  used_gib: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
@@ -463,6 +483,7 @@ class _VolumeState:
         :param pulumi.Input['VolumeBackupConfigArgs'] backup_config: Backup configuration for the volume.
                Structure is documented below.
         :param pulumi.Input[str] capacity_gib: Capacity of the volume (in GiB).
+        :param pulumi.Input[str] cold_tier_size_gib: Output only. Size of the volume cold tier data in GiB.
         :param pulumi.Input[str] create_time: Create time of the volume. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
         :param pulumi.Input[str] deletion_policy: Policy to determine if the volume should be deleted forcefully.
                Volumes may have nested snapshot resources. Deleting such a volume will fail.
@@ -518,6 +539,8 @@ class _VolumeState:
         :param pulumi.Input[str] state: State of the volume.
         :param pulumi.Input[str] state_details: State details of the volume.
         :param pulumi.Input[str] storage_pool: Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.
+        :param pulumi.Input['VolumeTieringPolicyArgs'] tiering_policy: Tiering policy for the volume.
+               Structure is documented below.
         :param pulumi.Input[str] unix_permissions: Unix permission the mount point will be created with. Default is 0770. Applicable for UNIX security style volumes only.
         :param pulumi.Input[str] used_gib: Used capacity of the volume (in GiB). This is computed periodically and it does not represent the realtime usage.
         :param pulumi.Input[str] zone: Specifies the active zone for regional volume.
@@ -528,6 +551,8 @@ class _VolumeState:
             pulumi.set(__self__, "backup_config", backup_config)
         if capacity_gib is not None:
             pulumi.set(__self__, "capacity_gib", capacity_gib)
+        if cold_tier_size_gib is not None:
+            pulumi.set(__self__, "cold_tier_size_gib", cold_tier_size_gib)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if deletion_policy is not None:
@@ -594,6 +619,8 @@ class _VolumeState:
             pulumi.set(__self__, "state_details", state_details)
         if storage_pool is not None:
             pulumi.set(__self__, "storage_pool", storage_pool)
+        if tiering_policy is not None:
+            pulumi.set(__self__, "tiering_policy", tiering_policy)
         if unix_permissions is not None:
             pulumi.set(__self__, "unix_permissions", unix_permissions)
         if used_gib is not None:
@@ -637,6 +664,18 @@ class _VolumeState:
     @capacity_gib.setter
     def capacity_gib(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "capacity_gib", value)
+
+    @property
+    @pulumi.getter(name="coldTierSizeGib")
+    def cold_tier_size_gib(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. Size of the volume cold tier data in GiB.
+        """
+        return pulumi.get(self, "cold_tier_size_gib")
+
+    @cold_tier_size_gib.setter
+    def cold_tier_size_gib(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cold_tier_size_gib", value)
 
     @property
     @pulumi.getter(name="createTime")
@@ -1057,6 +1096,19 @@ class _VolumeState:
         pulumi.set(self, "storage_pool", value)
 
     @property
+    @pulumi.getter(name="tieringPolicy")
+    def tiering_policy(self) -> Optional[pulumi.Input['VolumeTieringPolicyArgs']]:
+        """
+        Tiering policy for the volume.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tiering_policy")
+
+    @tiering_policy.setter
+    def tiering_policy(self, value: Optional[pulumi.Input['VolumeTieringPolicyArgs']]):
+        pulumi.set(self, "tiering_policy", value)
+
+    @property
     @pulumi.getter(name="unixPermissions")
     def unix_permissions(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1119,6 +1171,7 @@ class Volume(pulumi.CustomResource):
                  snapshot_directory: Optional[pulumi.Input[bool]] = None,
                  snapshot_policy: Optional[pulumi.Input[Union['VolumeSnapshotPolicyArgs', 'VolumeSnapshotPolicyArgsDict']]] = None,
                  storage_pool: Optional[pulumi.Input[str]] = None,
+                 tiering_policy: Optional[pulumi.Input[Union['VolumeTieringPolicyArgs', 'VolumeTieringPolicyArgsDict']]] = None,
                  unix_permissions: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -1228,6 +1281,8 @@ class Volume(pulumi.CustomResource):
                To disable automatic snapshot creation you have to remove the whole snapshot_policy block.
                Structure is documented below.
         :param pulumi.Input[str] storage_pool: Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.
+        :param pulumi.Input[Union['VolumeTieringPolicyArgs', 'VolumeTieringPolicyArgsDict']] tiering_policy: Tiering policy for the volume.
+               Structure is documented below.
         :param pulumi.Input[str] unix_permissions: Unix permission the mount point will be created with. Default is 0770. Applicable for UNIX security style volumes only.
         """
         ...
@@ -1335,6 +1390,7 @@ class Volume(pulumi.CustomResource):
                  snapshot_directory: Optional[pulumi.Input[bool]] = None,
                  snapshot_policy: Optional[pulumi.Input[Union['VolumeSnapshotPolicyArgs', 'VolumeSnapshotPolicyArgsDict']]] = None,
                  storage_pool: Optional[pulumi.Input[str]] = None,
+                 tiering_policy: Optional[pulumi.Input[Union['VolumeTieringPolicyArgs', 'VolumeTieringPolicyArgsDict']]] = None,
                  unix_permissions: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1376,8 +1432,10 @@ class Volume(pulumi.CustomResource):
             if storage_pool is None and not opts.urn:
                 raise TypeError("Missing required property 'storage_pool'")
             __props__.__dict__["storage_pool"] = storage_pool
+            __props__.__dict__["tiering_policy"] = tiering_policy
             __props__.__dict__["unix_permissions"] = unix_permissions
             __props__.__dict__["active_directory"] = None
+            __props__.__dict__["cold_tier_size_gib"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["encryption_type"] = None
@@ -1409,6 +1467,7 @@ class Volume(pulumi.CustomResource):
             active_directory: Optional[pulumi.Input[str]] = None,
             backup_config: Optional[pulumi.Input[Union['VolumeBackupConfigArgs', 'VolumeBackupConfigArgsDict']]] = None,
             capacity_gib: Optional[pulumi.Input[str]] = None,
+            cold_tier_size_gib: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             deletion_policy: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -1442,6 +1501,7 @@ class Volume(pulumi.CustomResource):
             state: Optional[pulumi.Input[str]] = None,
             state_details: Optional[pulumi.Input[str]] = None,
             storage_pool: Optional[pulumi.Input[str]] = None,
+            tiering_policy: Optional[pulumi.Input[Union['VolumeTieringPolicyArgs', 'VolumeTieringPolicyArgsDict']]] = None,
             unix_permissions: Optional[pulumi.Input[str]] = None,
             used_gib: Optional[pulumi.Input[str]] = None,
             zone: Optional[pulumi.Input[str]] = None) -> 'Volume':
@@ -1456,6 +1516,7 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[Union['VolumeBackupConfigArgs', 'VolumeBackupConfigArgsDict']] backup_config: Backup configuration for the volume.
                Structure is documented below.
         :param pulumi.Input[str] capacity_gib: Capacity of the volume (in GiB).
+        :param pulumi.Input[str] cold_tier_size_gib: Output only. Size of the volume cold tier data in GiB.
         :param pulumi.Input[str] create_time: Create time of the volume. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
         :param pulumi.Input[str] deletion_policy: Policy to determine if the volume should be deleted forcefully.
                Volumes may have nested snapshot resources. Deleting such a volume will fail.
@@ -1511,6 +1572,8 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[str] state: State of the volume.
         :param pulumi.Input[str] state_details: State details of the volume.
         :param pulumi.Input[str] storage_pool: Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.
+        :param pulumi.Input[Union['VolumeTieringPolicyArgs', 'VolumeTieringPolicyArgsDict']] tiering_policy: Tiering policy for the volume.
+               Structure is documented below.
         :param pulumi.Input[str] unix_permissions: Unix permission the mount point will be created with. Default is 0770. Applicable for UNIX security style volumes only.
         :param pulumi.Input[str] used_gib: Used capacity of the volume (in GiB). This is computed periodically and it does not represent the realtime usage.
         :param pulumi.Input[str] zone: Specifies the active zone for regional volume.
@@ -1522,6 +1585,7 @@ class Volume(pulumi.CustomResource):
         __props__.__dict__["active_directory"] = active_directory
         __props__.__dict__["backup_config"] = backup_config
         __props__.__dict__["capacity_gib"] = capacity_gib
+        __props__.__dict__["cold_tier_size_gib"] = cold_tier_size_gib
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
@@ -1555,6 +1619,7 @@ class Volume(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         __props__.__dict__["state_details"] = state_details
         __props__.__dict__["storage_pool"] = storage_pool
+        __props__.__dict__["tiering_policy"] = tiering_policy
         __props__.__dict__["unix_permissions"] = unix_permissions
         __props__.__dict__["used_gib"] = used_gib
         __props__.__dict__["zone"] = zone
@@ -1584,6 +1649,14 @@ class Volume(pulumi.CustomResource):
         Capacity of the volume (in GiB).
         """
         return pulumi.get(self, "capacity_gib")
+
+    @property
+    @pulumi.getter(name="coldTierSizeGib")
+    def cold_tier_size_gib(self) -> pulumi.Output[str]:
+        """
+        Output only. Size of the volume cold tier data in GiB.
+        """
+        return pulumi.get(self, "cold_tier_size_gib")
 
     @property
     @pulumi.getter(name="createTime")
@@ -1870,6 +1943,15 @@ class Volume(pulumi.CustomResource):
         Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.
         """
         return pulumi.get(self, "storage_pool")
+
+    @property
+    @pulumi.getter(name="tieringPolicy")
+    def tiering_policy(self) -> pulumi.Output[Optional['outputs.VolumeTieringPolicy']]:
+        """
+        Tiering policy for the volume.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tiering_policy")
 
     @property
     @pulumi.getter(name="unixPermissions")

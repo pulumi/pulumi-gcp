@@ -59,6 +59,8 @@ __all__ = [
     'Hl7StoreNotificationConfigsArgsDict',
     'Hl7StoreParserConfigArgs',
     'Hl7StoreParserConfigArgsDict',
+    'WorkspaceSettingsArgs',
+    'WorkspaceSettingsArgsDict',
 ]
 
 MYPY = False
@@ -1336,5 +1338,42 @@ class Hl7StoreParserConfigArgs:
     @version.setter
     def version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "version", value)
+
+
+if not MYPY:
+    class WorkspaceSettingsArgsDict(TypedDict):
+        data_project_ids: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Project IDs for data projects hosted in a workspace.
+
+        - - -
+        """
+elif False:
+    WorkspaceSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkspaceSettingsArgs:
+    def __init__(__self__, *,
+                 data_project_ids: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] data_project_ids: Project IDs for data projects hosted in a workspace.
+               
+               - - -
+        """
+        pulumi.set(__self__, "data_project_ids", data_project_ids)
+
+    @property
+    @pulumi.getter(name="dataProjectIds")
+    def data_project_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Project IDs for data projects hosted in a workspace.
+
+        - - -
+        """
+        return pulumi.get(self, "data_project_ids")
+
+    @data_project_ids.setter
+    def data_project_ids(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "data_project_ids", value)
 
 

@@ -306,7 +306,45 @@ class FeatureMembership(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Config Management
+        ### Config Management With Config Sync Auto-Upgrades And Without Git/OCI
+
+        With [Config Sync auto-upgrades](https://cloud.devsite.corp.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/upgrade-config-sync#auto-upgrade-config), Google assumes responsibility for automatically upgrading Config Sync versions
+        and overseeing the lifecycle of its components.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        cluster = gcp.container.Cluster("cluster",
+            name="my-cluster",
+            location="us-central1-a",
+            initial_node_count=1)
+        membership = gcp.gkehub.Membership("membership",
+            membership_id="my-membership",
+            endpoint={
+                "gke_cluster": {
+                    "resource_link": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                },
+            })
+        feature = gcp.gkehub.Feature("feature",
+            name="configmanagement",
+            location="global",
+            labels={
+                "foo": "bar",
+            })
+        feature_member = gcp.gkehub.FeatureMembership("feature_member",
+            location="global",
+            feature=feature.name,
+            membership=membership.membership_id,
+            configmanagement={
+                "management": "MANAGEMENT_AUTOMATIC",
+                "config_sync": {
+                    "enabled": True,
+                },
+            })
+        ```
+
+        ### Config Management With Git
 
         ```python
         import pulumi
@@ -343,6 +381,7 @@ class FeatureMembership(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Config Management With OCI
 
         ```python
@@ -380,6 +419,46 @@ class FeatureMembership(pulumi.CustomResource):
                         "sync_wait_secs": "20",
                         "secret_type": "gcpserviceaccount",
                         "gcp_service_account_email": "sa@project-id.iam.gserviceaccount.com",
+                    },
+                },
+            })
+        ```
+
+        ### Config Management With Regional Membership
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        cluster = gcp.container.Cluster("cluster",
+            name="my-cluster",
+            location="us-central1-a",
+            initial_node_count=1)
+        membership = gcp.gkehub.Membership("membership",
+            membership_id="my-membership",
+            location="us-central1",
+            endpoint={
+                "gke_cluster": {
+                    "resource_link": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                },
+            })
+        feature = gcp.gkehub.Feature("feature",
+            name="configmanagement",
+            location="global",
+            labels={
+                "foo": "bar",
+            })
+        feature_member = gcp.gkehub.FeatureMembership("feature_member",
+            location="global",
+            feature=feature.name,
+            membership=membership.membership_id,
+            membership_location=membership.location,
+            configmanagement={
+                "version": "1.19.0",
+                "config_sync": {
+                    "enabled": True,
+                    "git": {
+                        "sync_repo": "https://github.com/hashicorp/terraform",
                     },
                 },
             })
@@ -425,46 +504,6 @@ class FeatureMembership(pulumi.CustomResource):
             membership=membership.membership_id,
             mesh={
                 "management": "MANAGEMENT_AUTOMATIC",
-            })
-        ```
-
-        ### Config Management With Regional Membership
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        cluster = gcp.container.Cluster("cluster",
-            name="my-cluster",
-            location="us-central1-a",
-            initial_node_count=1)
-        membership = gcp.gkehub.Membership("membership",
-            membership_id="my-membership",
-            location="us-central1",
-            endpoint={
-                "gke_cluster": {
-                    "resource_link": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
-                },
-            })
-        feature = gcp.gkehub.Feature("feature",
-            name="configmanagement",
-            location="global",
-            labels={
-                "foo": "bar",
-            })
-        feature_member = gcp.gkehub.FeatureMembership("feature_member",
-            location="global",
-            feature=feature.name,
-            membership=membership.membership_id,
-            membership_location=membership.location,
-            configmanagement={
-                "version": "1.19.0",
-                "config_sync": {
-                    "enabled": True,
-                    "git": {
-                        "sync_repo": "https://github.com/hashicorp/terraform",
-                    },
-                },
             })
         ```
 
@@ -587,7 +626,45 @@ class FeatureMembership(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Config Management
+        ### Config Management With Config Sync Auto-Upgrades And Without Git/OCI
+
+        With [Config Sync auto-upgrades](https://cloud.devsite.corp.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/upgrade-config-sync#auto-upgrade-config), Google assumes responsibility for automatically upgrading Config Sync versions
+        and overseeing the lifecycle of its components.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        cluster = gcp.container.Cluster("cluster",
+            name="my-cluster",
+            location="us-central1-a",
+            initial_node_count=1)
+        membership = gcp.gkehub.Membership("membership",
+            membership_id="my-membership",
+            endpoint={
+                "gke_cluster": {
+                    "resource_link": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                },
+            })
+        feature = gcp.gkehub.Feature("feature",
+            name="configmanagement",
+            location="global",
+            labels={
+                "foo": "bar",
+            })
+        feature_member = gcp.gkehub.FeatureMembership("feature_member",
+            location="global",
+            feature=feature.name,
+            membership=membership.membership_id,
+            configmanagement={
+                "management": "MANAGEMENT_AUTOMATIC",
+                "config_sync": {
+                    "enabled": True,
+                },
+            })
+        ```
+
+        ### Config Management With Git
 
         ```python
         import pulumi
@@ -624,6 +701,7 @@ class FeatureMembership(pulumi.CustomResource):
                 },
             })
         ```
+
         ### Config Management With OCI
 
         ```python
@@ -661,6 +739,46 @@ class FeatureMembership(pulumi.CustomResource):
                         "sync_wait_secs": "20",
                         "secret_type": "gcpserviceaccount",
                         "gcp_service_account_email": "sa@project-id.iam.gserviceaccount.com",
+                    },
+                },
+            })
+        ```
+
+        ### Config Management With Regional Membership
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        cluster = gcp.container.Cluster("cluster",
+            name="my-cluster",
+            location="us-central1-a",
+            initial_node_count=1)
+        membership = gcp.gkehub.Membership("membership",
+            membership_id="my-membership",
+            location="us-central1",
+            endpoint={
+                "gke_cluster": {
+                    "resource_link": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                },
+            })
+        feature = gcp.gkehub.Feature("feature",
+            name="configmanagement",
+            location="global",
+            labels={
+                "foo": "bar",
+            })
+        feature_member = gcp.gkehub.FeatureMembership("feature_member",
+            location="global",
+            feature=feature.name,
+            membership=membership.membership_id,
+            membership_location=membership.location,
+            configmanagement={
+                "version": "1.19.0",
+                "config_sync": {
+                    "enabled": True,
+                    "git": {
+                        "sync_repo": "https://github.com/hashicorp/terraform",
                     },
                 },
             })
@@ -706,46 +824,6 @@ class FeatureMembership(pulumi.CustomResource):
             membership=membership.membership_id,
             mesh={
                 "management": "MANAGEMENT_AUTOMATIC",
-            })
-        ```
-
-        ### Config Management With Regional Membership
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        cluster = gcp.container.Cluster("cluster",
-            name="my-cluster",
-            location="us-central1-a",
-            initial_node_count=1)
-        membership = gcp.gkehub.Membership("membership",
-            membership_id="my-membership",
-            location="us-central1",
-            endpoint={
-                "gke_cluster": {
-                    "resource_link": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
-                },
-            })
-        feature = gcp.gkehub.Feature("feature",
-            name="configmanagement",
-            location="global",
-            labels={
-                "foo": "bar",
-            })
-        feature_member = gcp.gkehub.FeatureMembership("feature_member",
-            location="global",
-            feature=feature.name,
-            membership=membership.membership_id,
-            membership_location=membership.location,
-            configmanagement={
-                "version": "1.19.0",
-                "config_sync": {
-                    "enabled": True,
-                    "git": {
-                        "sync_repo": "https://github.com/hashicorp/terraform",
-                    },
-                },
             })
         ```
 

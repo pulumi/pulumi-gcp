@@ -57,6 +57,7 @@ export interface GetMetastoreServiceArgs {
 export interface GetMetastoreServiceResult {
     readonly artifactGcsUri: string;
     readonly databaseType: string;
+    readonly deletionProtection: boolean;
     readonly effectiveLabels: {[key: string]: string};
     readonly encryptionConfigs: outputs.dataproc.GetMetastoreServiceEncryptionConfig[];
     readonly endpointUri: string;

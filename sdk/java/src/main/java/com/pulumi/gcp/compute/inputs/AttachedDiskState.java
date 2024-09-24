@@ -87,6 +87,37 @@ public final class AttachedDiskState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The disk interface used for attaching this disk.
+     * 
+     * This field is only used for specific cases, please don&#39;t specify
+     * this field without advice from Google. Not specifying the field
+     * will allow the the server to assign the correct interface.
+     * 
+     * Possible values:
+     * &#34;SCSI&#34;
+     * &#34;NVME&#34;
+     * 
+     */
+    @Import(name="interface")
+    private @Nullable Output<String> interface_;
+
+    /**
+     * @return The disk interface used for attaching this disk.
+     * 
+     * This field is only used for specific cases, please don&#39;t specify
+     * this field without advice from Google. Not specifying the field
+     * will allow the the server to assign the correct interface.
+     * 
+     * Possible values:
+     * &#34;SCSI&#34;
+     * &#34;NVME&#34;
+     * 
+     */
+    public Optional<Output<String>> interface_() {
+        return Optional.ofNullable(this.interface_);
+    }
+
+    /**
      * The mode in which to attach this disk, either READ_WRITE or
      * READ_ONLY. If not specified, the default is to attach the disk in
      * READ_WRITE mode.
@@ -153,6 +184,7 @@ public final class AttachedDiskState extends com.pulumi.resources.ResourceArgs {
         this.deviceName = $.deviceName;
         this.disk = $.disk;
         this.instance = $.instance;
+        this.interface_ = $.interface_;
         this.mode = $.mode;
         this.project = $.project;
         this.zone = $.zone;
@@ -263,6 +295,43 @@ public final class AttachedDiskState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder instance(String instance) {
             return instance(Output.of(instance));
+        }
+
+        /**
+         * @param interface_ The disk interface used for attaching this disk.
+         * 
+         * This field is only used for specific cases, please don&#39;t specify
+         * this field without advice from Google. Not specifying the field
+         * will allow the the server to assign the correct interface.
+         * 
+         * Possible values:
+         * &#34;SCSI&#34;
+         * &#34;NVME&#34;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder interface_(@Nullable Output<String> interface_) {
+            $.interface_ = interface_;
+            return this;
+        }
+
+        /**
+         * @param interface_ The disk interface used for attaching this disk.
+         * 
+         * This field is only used for specific cases, please don&#39;t specify
+         * this field without advice from Google. Not specifying the field
+         * will allow the the server to assign the correct interface.
+         * 
+         * Possible values:
+         * &#34;SCSI&#34;
+         * &#34;NVME&#34;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder interface_(String interface_) {
+            return interface_(Output.of(interface_));
         }
 
         /**

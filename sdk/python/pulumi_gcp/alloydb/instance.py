@@ -338,6 +338,7 @@ class _InstanceState:
                  name: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input['InstanceNetworkConfigArgs']] = None,
                  observability_config: Optional[pulumi.Input['InstanceObservabilityConfigArgs']] = None,
+                 outbound_public_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  psc_instance_config: Optional[pulumi.Input['InstancePscInstanceConfigArgs']] = None,
                  public_ip_address: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -383,6 +384,9 @@ class _InstanceState:
                Structure is documented below.
         :param pulumi.Input['InstanceObservabilityConfigArgs'] observability_config: Configuration for enhanced query insights.
                Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] outbound_public_ip_addresses: The outbound public IP addresses for the instance. This is available ONLY when
+               networkConfig.enableOutboundPublicIp is set to true. These IP addresses are used
+               for outbound connections.
         :param pulumi.Input['InstancePscInstanceConfigArgs'] psc_instance_config: Configuration for Private Service Connect (PSC) for the instance.
                Structure is documented below.
         :param pulumi.Input[str] public_ip_address: The public IP addresses for the Instance. This is available ONLY when
@@ -435,6 +439,8 @@ class _InstanceState:
             pulumi.set(__self__, "network_config", network_config)
         if observability_config is not None:
             pulumi.set(__self__, "observability_config", observability_config)
+        if outbound_public_ip_addresses is not None:
+            pulumi.set(__self__, "outbound_public_ip_addresses", outbound_public_ip_addresses)
         if psc_instance_config is not None:
             pulumi.set(__self__, "psc_instance_config", psc_instance_config)
         if public_ip_address is not None:
@@ -681,6 +687,20 @@ class _InstanceState:
     @observability_config.setter
     def observability_config(self, value: Optional[pulumi.Input['InstanceObservabilityConfigArgs']]):
         pulumi.set(self, "observability_config", value)
+
+    @property
+    @pulumi.getter(name="outboundPublicIpAddresses")
+    def outbound_public_ip_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The outbound public IP addresses for the instance. This is available ONLY when
+        networkConfig.enableOutboundPublicIp is set to true. These IP addresses are used
+        for outbound connections.
+        """
+        return pulumi.get(self, "outbound_public_ip_addresses")
+
+    @outbound_public_ip_addresses.setter
+    def outbound_public_ip_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "outbound_public_ip_addresses", value)
 
     @property
     @pulumi.getter(name="pscInstanceConfig")
@@ -1171,6 +1191,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["ip_address"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["outbound_public_ip_addresses"] = None
             __props__.__dict__["public_ip_address"] = None
             __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["reconciling"] = None
@@ -1207,6 +1228,7 @@ class Instance(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             network_config: Optional[pulumi.Input[Union['InstanceNetworkConfigArgs', 'InstanceNetworkConfigArgsDict']]] = None,
             observability_config: Optional[pulumi.Input[Union['InstanceObservabilityConfigArgs', 'InstanceObservabilityConfigArgsDict']]] = None,
+            outbound_public_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             psc_instance_config: Optional[pulumi.Input[Union['InstancePscInstanceConfigArgs', 'InstancePscInstanceConfigArgsDict']]] = None,
             public_ip_address: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1257,6 +1279,9 @@ class Instance(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Union['InstanceObservabilityConfigArgs', 'InstanceObservabilityConfigArgsDict']] observability_config: Configuration for enhanced query insights.
                Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] outbound_public_ip_addresses: The outbound public IP addresses for the instance. This is available ONLY when
+               networkConfig.enableOutboundPublicIp is set to true. These IP addresses are used
+               for outbound connections.
         :param pulumi.Input[Union['InstancePscInstanceConfigArgs', 'InstancePscInstanceConfigArgsDict']] psc_instance_config: Configuration for Private Service Connect (PSC) for the instance.
                Structure is documented below.
         :param pulumi.Input[str] public_ip_address: The public IP addresses for the Instance. This is available ONLY when
@@ -1295,6 +1320,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["network_config"] = network_config
         __props__.__dict__["observability_config"] = observability_config
+        __props__.__dict__["outbound_public_ip_addresses"] = outbound_public_ip_addresses
         __props__.__dict__["psc_instance_config"] = psc_instance_config
         __props__.__dict__["public_ip_address"] = public_ip_address
         __props__.__dict__["pulumi_labels"] = pulumi_labels
@@ -1461,6 +1487,16 @@ class Instance(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "observability_config")
+
+    @property
+    @pulumi.getter(name="outboundPublicIpAddresses")
+    def outbound_public_ip_addresses(self) -> pulumi.Output[Sequence[str]]:
+        """
+        The outbound public IP addresses for the instance. This is available ONLY when
+        networkConfig.enableOutboundPublicIp is set to true. These IP addresses are used
+        for outbound connections.
+        """
+        return pulumi.get(self, "outbound_public_ip_addresses")
 
     @property
     @pulumi.getter(name="pscInstanceConfig")

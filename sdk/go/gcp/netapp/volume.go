@@ -111,6 +111,8 @@ type Volume struct {
 	BackupConfig VolumeBackupConfigPtrOutput `pulumi:"backupConfig"`
 	// Capacity of the volume (in GiB).
 	CapacityGib pulumi.StringOutput `pulumi:"capacityGib"`
+	// Output only. Size of the volume cold tier data in GiB.
+	ColdTierSizeGib pulumi.StringOutput `pulumi:"coldTierSizeGib"`
 	// Create time of the volume. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Policy to determine if the volume should be deleted forcefully.
@@ -198,6 +200,9 @@ type Volume struct {
 	StateDetails pulumi.StringOutput `pulumi:"stateDetails"`
 	// Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.
 	StoragePool pulumi.StringOutput `pulumi:"storagePool"`
+	// Tiering policy for the volume.
+	// Structure is documented below.
+	TieringPolicy VolumeTieringPolicyPtrOutput `pulumi:"tieringPolicy"`
 	// Unix permission the mount point will be created with. Default is 0770. Applicable for UNIX security style volumes only.
 	UnixPermissions pulumi.StringOutput `pulumi:"unixPermissions"`
 	// Used capacity of the volume (in GiB). This is computed periodically and it does not represent the realtime usage.
@@ -263,6 +268,8 @@ type volumeState struct {
 	BackupConfig *VolumeBackupConfig `pulumi:"backupConfig"`
 	// Capacity of the volume (in GiB).
 	CapacityGib *string `pulumi:"capacityGib"`
+	// Output only. Size of the volume cold tier data in GiB.
+	ColdTierSizeGib *string `pulumi:"coldTierSizeGib"`
 	// Create time of the volume. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
 	CreateTime *string `pulumi:"createTime"`
 	// Policy to determine if the volume should be deleted forcefully.
@@ -350,6 +357,9 @@ type volumeState struct {
 	StateDetails *string `pulumi:"stateDetails"`
 	// Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.
 	StoragePool *string `pulumi:"storagePool"`
+	// Tiering policy for the volume.
+	// Structure is documented below.
+	TieringPolicy *VolumeTieringPolicy `pulumi:"tieringPolicy"`
 	// Unix permission the mount point will be created with. Default is 0770. Applicable for UNIX security style volumes only.
 	UnixPermissions *string `pulumi:"unixPermissions"`
 	// Used capacity of the volume (in GiB). This is computed periodically and it does not represent the realtime usage.
@@ -366,6 +376,8 @@ type VolumeState struct {
 	BackupConfig VolumeBackupConfigPtrInput
 	// Capacity of the volume (in GiB).
 	CapacityGib pulumi.StringPtrInput
+	// Output only. Size of the volume cold tier data in GiB.
+	ColdTierSizeGib pulumi.StringPtrInput
 	// Create time of the volume. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
 	CreateTime pulumi.StringPtrInput
 	// Policy to determine if the volume should be deleted forcefully.
@@ -453,6 +465,9 @@ type VolumeState struct {
 	StateDetails pulumi.StringPtrInput
 	// Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.
 	StoragePool pulumi.StringPtrInput
+	// Tiering policy for the volume.
+	// Structure is documented below.
+	TieringPolicy VolumeTieringPolicyPtrInput
 	// Unix permission the mount point will be created with. Default is 0770. Applicable for UNIX security style volumes only.
 	UnixPermissions pulumi.StringPtrInput
 	// Used capacity of the volume (in GiB). This is computed periodically and it does not represent the realtime usage.
@@ -528,6 +543,9 @@ type volumeArgs struct {
 	SnapshotPolicy *VolumeSnapshotPolicy `pulumi:"snapshotPolicy"`
 	// Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.
 	StoragePool string `pulumi:"storagePool"`
+	// Tiering policy for the volume.
+	// Structure is documented below.
+	TieringPolicy *VolumeTieringPolicy `pulumi:"tieringPolicy"`
 	// Unix permission the mount point will be created with. Default is 0770. Applicable for UNIX security style volumes only.
 	UnixPermissions *string `pulumi:"unixPermissions"`
 }
@@ -596,6 +614,9 @@ type VolumeArgs struct {
 	SnapshotPolicy VolumeSnapshotPolicyPtrInput
 	// Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.
 	StoragePool pulumi.StringInput
+	// Tiering policy for the volume.
+	// Structure is documented below.
+	TieringPolicy VolumeTieringPolicyPtrInput
 	// Unix permission the mount point will be created with. Default is 0770. Applicable for UNIX security style volumes only.
 	UnixPermissions pulumi.StringPtrInput
 }
@@ -701,6 +722,11 @@ func (o VolumeOutput) BackupConfig() VolumeBackupConfigPtrOutput {
 // Capacity of the volume (in GiB).
 func (o VolumeOutput) CapacityGib() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.CapacityGib }).(pulumi.StringOutput)
+}
+
+// Output only. Size of the volume cold tier data in GiB.
+func (o VolumeOutput) ColdTierSizeGib() pulumi.StringOutput {
+	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.ColdTierSizeGib }).(pulumi.StringOutput)
 }
 
 // Create time of the volume. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
@@ -887,6 +913,12 @@ func (o VolumeOutput) StateDetails() pulumi.StringOutput {
 // Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.
 func (o VolumeOutput) StoragePool() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.StoragePool }).(pulumi.StringOutput)
+}
+
+// Tiering policy for the volume.
+// Structure is documented below.
+func (o VolumeOutput) TieringPolicy() VolumeTieringPolicyPtrOutput {
+	return o.ApplyT(func(v *Volume) VolumeTieringPolicyPtrOutput { return v.TieringPolicy }).(VolumeTieringPolicyPtrOutput)
 }
 
 // Unix permission the mount point will be created with. Default is 0770. Applicable for UNIX security style volumes only.

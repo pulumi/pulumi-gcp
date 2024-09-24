@@ -36,6 +36,7 @@ namespace Pulumi.Gcp.Spanner
     ///         Config = "regional-us-central1",
     ///         DisplayName = "Test Spanner Instance",
     ///         NumNodes = 2,
+    ///         Edition = "STANDARD",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -185,6 +186,13 @@ namespace Pulumi.Gcp.Spanner
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// The edition selected for this instance. Different editions provide different capabilities at different price points.
+        /// Possible values are: `EDITION_UNSPECIFIED`, `STANDARD`, `ENTERPRISE`, `ENTERPRISE_PLUS`.
+        /// </summary>
+        [Output("edition")]
+        public Output<string> Edition { get; private set; } = null!;
+
+        /// <summary>
         /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         /// </summary>
         [Output("effectiveLabels")]
@@ -325,6 +333,13 @@ namespace Pulumi.Gcp.Spanner
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
+        /// The edition selected for this instance. Different editions provide different capabilities at different price points.
+        /// Possible values are: `EDITION_UNSPECIFIED`, `STANDARD`, `ENTERPRISE`, `ENTERPRISE_PLUS`.
+        /// </summary>
+        [Input("edition")]
+        public Input<string>? Edition { get; set; }
+
+        /// <summary>
         /// When deleting a spanner instance, this boolean option will delete all backups of this instance.
         /// This must be set to true if you created a backup manually in the console.
         /// </summary>
@@ -407,6 +422,13 @@ namespace Pulumi.Gcp.Spanner
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// The edition selected for this instance. Different editions provide different capabilities at different price points.
+        /// Possible values are: `EDITION_UNSPECIFIED`, `STANDARD`, `ENTERPRISE`, `ENTERPRISE_PLUS`.
+        /// </summary>
+        [Input("edition")]
+        public Input<string>? Edition { get; set; }
 
         [Input("effectiveLabels")]
         private InputMap<string>? _effectiveLabels;

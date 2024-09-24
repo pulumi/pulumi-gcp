@@ -21,6 +21,16 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:secretmanager/regionalSecret:RegionalSecret":
+		r = &RegionalSecret{}
+	case "gcp:secretmanager/regionalSecretIamBinding:RegionalSecretIamBinding":
+		r = &RegionalSecretIamBinding{}
+	case "gcp:secretmanager/regionalSecretIamMember:RegionalSecretIamMember":
+		r = &RegionalSecretIamMember{}
+	case "gcp:secretmanager/regionalSecretIamPolicy:RegionalSecretIamPolicy":
+		r = &RegionalSecretIamPolicy{}
+	case "gcp:secretmanager/regionalSecretVersion:RegionalSecretVersion":
+		r = &RegionalSecretVersion{}
 	case "gcp:secretmanager/secret:Secret":
 		r = &Secret{}
 	case "gcp:secretmanager/secretIamBinding:SecretIamBinding":
@@ -44,6 +54,31 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"secretmanager/regionalSecret",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"secretmanager/regionalSecretIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"secretmanager/regionalSecretIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"secretmanager/regionalSecretIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"secretmanager/regionalSecretVersion",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"secretmanager/secret",

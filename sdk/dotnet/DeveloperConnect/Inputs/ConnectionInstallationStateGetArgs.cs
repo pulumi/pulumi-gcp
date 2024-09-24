@@ -13,15 +13,15 @@ namespace Pulumi.Gcp.DeveloperConnect.Inputs
     public sealed class ConnectionInstallationStateGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Output only. Link to follow for next action. Empty string if the installation is already
-        /// complete.
+        /// Output only. Link to follow for next action. Empty string if the
+        /// installation is already complete.
         /// </summary>
         [Input("actionUri")]
         public Input<string>? ActionUri { get; set; }
 
         /// <summary>
-        /// Output only. Message of what the user should do next to continue the installation.
-        /// Empty string if the installation is already complete.
+        /// Output only. Message of what the user should do next to continue
+        /// the installation.Empty string if the installation is already complete.
         /// </summary>
         [Input("message")]
         public Input<string>? Message { get; set; }

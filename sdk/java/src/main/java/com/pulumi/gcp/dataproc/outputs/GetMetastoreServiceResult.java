@@ -13,6 +13,7 @@ import com.pulumi.gcp.dataproc.outputs.GetMetastoreServiceNetworkConfig;
 import com.pulumi.gcp.dataproc.outputs.GetMetastoreServiceScalingConfig;
 import com.pulumi.gcp.dataproc.outputs.GetMetastoreServiceScheduledBackup;
 import com.pulumi.gcp.dataproc.outputs.GetMetastoreServiceTelemetryConfig;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -25,6 +26,7 @@ import javax.annotation.Nullable;
 public final class GetMetastoreServiceResult {
     private String artifactGcsUri;
     private String databaseType;
+    private Boolean deletionProtection;
     private Map<String,String> effectiveLabels;
     private List<GetMetastoreServiceEncryptionConfig> encryptionConfigs;
     private String endpointUri;
@@ -60,6 +62,9 @@ public final class GetMetastoreServiceResult {
     }
     public String databaseType() {
         return this.databaseType;
+    }
+    public Boolean deletionProtection() {
+        return this.deletionProtection;
     }
     public Map<String,String> effectiveLabels() {
         return this.effectiveLabels;
@@ -149,6 +154,7 @@ public final class GetMetastoreServiceResult {
     public static final class Builder {
         private String artifactGcsUri;
         private String databaseType;
+        private Boolean deletionProtection;
         private Map<String,String> effectiveLabels;
         private List<GetMetastoreServiceEncryptionConfig> encryptionConfigs;
         private String endpointUri;
@@ -178,6 +184,7 @@ public final class GetMetastoreServiceResult {
     	      Objects.requireNonNull(defaults);
     	      this.artifactGcsUri = defaults.artifactGcsUri;
     	      this.databaseType = defaults.databaseType;
+    	      this.deletionProtection = defaults.deletionProtection;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.encryptionConfigs = defaults.encryptionConfigs;
     	      this.endpointUri = defaults.endpointUri;
@@ -218,6 +225,14 @@ public final class GetMetastoreServiceResult {
               throw new MissingRequiredPropertyException("GetMetastoreServiceResult", "databaseType");
             }
             this.databaseType = databaseType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionProtection(Boolean deletionProtection) {
+            if (deletionProtection == null) {
+              throw new MissingRequiredPropertyException("GetMetastoreServiceResult", "deletionProtection");
+            }
+            this.deletionProtection = deletionProtection;
             return this;
         }
         @CustomType.Setter
@@ -438,6 +453,7 @@ public final class GetMetastoreServiceResult {
             final var _resultValue = new GetMetastoreServiceResult();
             _resultValue.artifactGcsUri = artifactGcsUri;
             _resultValue.databaseType = databaseType;
+            _resultValue.deletionProtection = deletionProtection;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.encryptionConfigs = encryptionConfigs;
             _resultValue.endpointUri = endpointUri;

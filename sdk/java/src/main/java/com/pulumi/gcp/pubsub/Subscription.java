@@ -141,6 +141,53 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Pubsub Subscription Pull Filter
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.pubsub.TopicArgs;
+ * import com.pulumi.gcp.pubsub.Subscription;
+ * import com.pulumi.gcp.pubsub.SubscriptionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Topic("example", TopicArgs.builder()
+ *             .name("example-topic")
+ *             .build());
+ * 
+ *         var exampleSubscription = new Subscription("exampleSubscription", SubscriptionArgs.builder()
+ *             .name("example-subscription")
+ *             .topic(example.id())
+ *             .labels(Map.of("foo", "bar"))
+ *             .filter("""
+ *     attributes.foo = "foo"
+ *     AND attributes.bar = "bar"
+ *             """)
+ *             .ackDeadlineSeconds(20)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Pubsub Subscription Dead Letter
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -1001,7 +1048,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * retain_acked_messages is true, then this also configures the retention
      * of acknowledged messages, and thus configures how far back in time a
      * subscriptions.seek can be done. Defaults to 7 days. Cannot be more
-     * than 7 days (`&#34;604800s&#34;`) or less than 10 minutes (`&#34;600s&#34;`).
+     * than 31 days (`&#34;2678400s&#34;`) or less than 10 minutes (`&#34;600s&#34;`).
      * A duration in seconds with up to nine fractional digits, terminated
      * by &#39;s&#39;. Example: `&#34;600.5s&#34;`.
      * 
@@ -1015,7 +1062,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * retain_acked_messages is true, then this also configures the retention
      * of acknowledged messages, and thus configures how far back in time a
      * subscriptions.seek can be done. Defaults to 7 days. Cannot be more
-     * than 7 days (`&#34;604800s&#34;`) or less than 10 minutes (`&#34;600s&#34;`).
+     * than 31 days (`&#34;2678400s&#34;`) or less than 10 minutes (`&#34;600s&#34;`).
      * A duration in seconds with up to nine fractional digits, terminated
      * by &#39;s&#39;. Example: `&#34;600.5s&#34;`.
      * 

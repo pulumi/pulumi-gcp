@@ -227,6 +227,9 @@ public final class RouterNatState extends com.pulumi.resources.ResourceArgs {
     /**
      * Self-links of NAT IPs. Only valid if natIpAllocateOption
      * is set to MANUAL_ONLY.
+     * If this field is used alongside with a count created list of address resources `google_compute_address.foobar.*.self_link`,
+     * the access level resource for the address resource must have a `lifecycle` block with `create_before_destroy = true` so
+     * the number of resources can be increased/decreased without triggering the `resourceInUseByAnotherResource` error.
      * 
      */
     @Import(name="natIps")
@@ -235,6 +238,9 @@ public final class RouterNatState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Self-links of NAT IPs. Only valid if natIpAllocateOption
      * is set to MANUAL_ONLY.
+     * If this field is used alongside with a count created list of address resources `google_compute_address.foobar.*.self_link`,
+     * the access level resource for the address resource must have a `lifecycle` block with `create_before_destroy = true` so
+     * the number of resources can be increased/decreased without triggering the `resourceInUseByAnotherResource` error.
      * 
      */
     public Optional<Output<List<String>>> natIps() {
@@ -796,6 +802,9 @@ public final class RouterNatState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param natIps Self-links of NAT IPs. Only valid if natIpAllocateOption
          * is set to MANUAL_ONLY.
+         * If this field is used alongside with a count created list of address resources `google_compute_address.foobar.*.self_link`,
+         * the access level resource for the address resource must have a `lifecycle` block with `create_before_destroy = true` so
+         * the number of resources can be increased/decreased without triggering the `resourceInUseByAnotherResource` error.
          * 
          * @return builder
          * 
@@ -808,6 +817,9 @@ public final class RouterNatState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param natIps Self-links of NAT IPs. Only valid if natIpAllocateOption
          * is set to MANUAL_ONLY.
+         * If this field is used alongside with a count created list of address resources `google_compute_address.foobar.*.self_link`,
+         * the access level resource for the address resource must have a `lifecycle` block with `create_before_destroy = true` so
+         * the number of resources can be increased/decreased without triggering the `resourceInUseByAnotherResource` error.
          * 
          * @return builder
          * 
@@ -819,6 +831,9 @@ public final class RouterNatState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param natIps Self-links of NAT IPs. Only valid if natIpAllocateOption
          * is set to MANUAL_ONLY.
+         * If this field is used alongside with a count created list of address resources `google_compute_address.foobar.*.self_link`,
+         * the access level resource for the address resource must have a `lifecycle` block with `create_before_destroy = true` so
+         * the number of resources can be increased/decreased without triggering the `resourceInUseByAnotherResource` error.
          * 
          * @return builder
          * 
