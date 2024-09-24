@@ -1081,7 +1081,7 @@ class Dataset(pulumi.CustomResource):
                 "name": "value",
                 "argument_kind": "FIXED_TYPE",
                 "data_type": json.dumps({
-                    "type_kind": "INT64",
+                    "typeKind": "INT64",
                 }),
             }],
             return_table_type=json.dumps({
@@ -1366,7 +1366,7 @@ class Dataset(pulumi.CustomResource):
                 "name": "value",
                 "argument_kind": "FIXED_TYPE",
                 "data_type": json.dumps({
-                    "type_kind": "INT64",
+                    "typeKind": "INT64",
                 }),
             }],
             return_table_type=json.dumps({

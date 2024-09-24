@@ -125,9 +125,6 @@ def get_web_backend_service_iam_policy(project: Optional[str] = None,
         policy_data=pulumi.get(__ret__, 'policy_data'),
         project=pulumi.get(__ret__, 'project'),
         web_backend_service=pulumi.get(__ret__, 'web_backend_service'))
-
-
-@_utilities.lift_output_func(get_web_backend_service_iam_policy)
 def get_web_backend_service_iam_policy_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                                               web_backend_service: Optional[pulumi.Input[str]] = None,
                                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWebBackendServiceIamPolicyResult]:
@@ -149,4 +146,14 @@ def get_web_backend_service_iam_policy_output(project: Optional[pulumi.Input[Opt
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
     :param str web_backend_service: Used to find the parent resource to bind the IAM policy to
     """
-    ...
+    __args__ = dict()
+    __args__['project'] = project
+    __args__['webBackendService'] = web_backend_service
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:iap/getWebBackendServiceIamPolicy:getWebBackendServiceIamPolicy', __args__, opts=opts, typ=GetWebBackendServiceIamPolicyResult)
+    return __ret__.apply(lambda __response__: GetWebBackendServiceIamPolicyResult(
+        etag=pulumi.get(__response__, 'etag'),
+        id=pulumi.get(__response__, 'id'),
+        policy_data=pulumi.get(__response__, 'policy_data'),
+        project=pulumi.get(__response__, 'project'),
+        web_backend_service=pulumi.get(__response__, 'web_backend_service')))
