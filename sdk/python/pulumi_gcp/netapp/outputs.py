@@ -28,6 +28,7 @@ __all__ = [
     'VolumeSnapshotPolicyHourlySchedule',
     'VolumeSnapshotPolicyMonthlySchedule',
     'VolumeSnapshotPolicyWeeklySchedule',
+    'VolumeTieringPolicy',
 ]
 
 @pulumi.output_type
@@ -1009,5 +1010,61 @@ class VolumeSnapshotPolicyWeeklySchedule(dict):
         Set the minute of the hour to create the snapshot (0-59), defaults to the top of the hour (0).
         """
         return pulumi.get(self, "minute")
+
+
+@pulumi.output_type
+class VolumeTieringPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "coolingThresholdDays":
+            suggest = "cooling_threshold_days"
+        elif key == "tierAction":
+            suggest = "tier_action"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VolumeTieringPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VolumeTieringPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VolumeTieringPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cooling_threshold_days: Optional[int] = None,
+                 tier_action: Optional[str] = None):
+        """
+        :param int cooling_threshold_days: Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be range from 7-183.
+               Default is 31.
+        :param str tier_action: Optional. Flag indicating if the volume has tiering policy enable/pause. Default is PAUSED.
+               Default value is `PAUSED`.
+               Possible values are: `ENABLED`, `PAUSED`.
+        """
+        if cooling_threshold_days is not None:
+            pulumi.set(__self__, "cooling_threshold_days", cooling_threshold_days)
+        if tier_action is not None:
+            pulumi.set(__self__, "tier_action", tier_action)
+
+    @property
+    @pulumi.getter(name="coolingThresholdDays")
+    def cooling_threshold_days(self) -> Optional[int]:
+        """
+        Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be range from 7-183.
+        Default is 31.
+        """
+        return pulumi.get(self, "cooling_threshold_days")
+
+    @property
+    @pulumi.getter(name="tierAction")
+    def tier_action(self) -> Optional[str]:
+        """
+        Optional. Flag indicating if the volume has tiering policy enable/pause. Default is PAUSED.
+        Default value is `PAUSED`.
+        Possible values are: `ENABLED`, `PAUSED`.
+        """
+        return pulumi.get(self, "tier_action")
 
 

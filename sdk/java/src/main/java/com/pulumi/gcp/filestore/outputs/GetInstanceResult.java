@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.filestore.outputs.GetInstanceFileShare;
 import com.pulumi.gcp.filestore.outputs.GetInstanceNetwork;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +18,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetInstanceResult {
     private String createTime;
+    private Boolean deletionProtectionEnabled;
+    private String deletionProtectionReason;
     private String description;
     private Map<String,String> effectiveLabels;
     private String etag;
@@ -40,6 +43,12 @@ public final class GetInstanceResult {
     private GetInstanceResult() {}
     public String createTime() {
         return this.createTime;
+    }
+    public Boolean deletionProtectionEnabled() {
+        return this.deletionProtectionEnabled;
+    }
+    public String deletionProtectionReason() {
+        return this.deletionProtectionReason;
     }
     public String description() {
         return this.description;
@@ -101,6 +110,8 @@ public final class GetInstanceResult {
     @CustomType.Builder
     public static final class Builder {
         private String createTime;
+        private Boolean deletionProtectionEnabled;
+        private String deletionProtectionReason;
         private String description;
         private Map<String,String> effectiveLabels;
         private String etag;
@@ -120,6 +131,8 @@ public final class GetInstanceResult {
         public Builder(GetInstanceResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
+    	      this.deletionProtectionEnabled = defaults.deletionProtectionEnabled;
+    	      this.deletionProtectionReason = defaults.deletionProtectionReason;
     	      this.description = defaults.description;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.etag = defaults.etag;
@@ -143,6 +156,22 @@ public final class GetInstanceResult {
               throw new MissingRequiredPropertyException("GetInstanceResult", "createTime");
             }
             this.createTime = createTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionProtectionEnabled(Boolean deletionProtectionEnabled) {
+            if (deletionProtectionEnabled == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "deletionProtectionEnabled");
+            }
+            this.deletionProtectionEnabled = deletionProtectionEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionProtectionReason(String deletionProtectionReason) {
+            if (deletionProtectionReason == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "deletionProtectionReason");
+            }
+            this.deletionProtectionReason = deletionProtectionReason;
             return this;
         }
         @CustomType.Setter
@@ -270,6 +299,8 @@ public final class GetInstanceResult {
         public GetInstanceResult build() {
             final var _resultValue = new GetInstanceResult();
             _resultValue.createTime = createTime;
+            _resultValue.deletionProtectionEnabled = deletionProtectionEnabled;
+            _resultValue.deletionProtectionReason = deletionProtectionReason;
             _resultValue.description = description;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.etag = etag;

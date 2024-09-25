@@ -13,6 +13,864 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type RegionalSecretCustomerManagedEncryption struct {
+	// The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
+	KmsKeyName string `pulumi:"kmsKeyName"`
+}
+
+// RegionalSecretCustomerManagedEncryptionInput is an input type that accepts RegionalSecretCustomerManagedEncryptionArgs and RegionalSecretCustomerManagedEncryptionOutput values.
+// You can construct a concrete instance of `RegionalSecretCustomerManagedEncryptionInput` via:
+//
+//	RegionalSecretCustomerManagedEncryptionArgs{...}
+type RegionalSecretCustomerManagedEncryptionInput interface {
+	pulumi.Input
+
+	ToRegionalSecretCustomerManagedEncryptionOutput() RegionalSecretCustomerManagedEncryptionOutput
+	ToRegionalSecretCustomerManagedEncryptionOutputWithContext(context.Context) RegionalSecretCustomerManagedEncryptionOutput
+}
+
+type RegionalSecretCustomerManagedEncryptionArgs struct {
+	// The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+}
+
+func (RegionalSecretCustomerManagedEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionalSecretCustomerManagedEncryption)(nil)).Elem()
+}
+
+func (i RegionalSecretCustomerManagedEncryptionArgs) ToRegionalSecretCustomerManagedEncryptionOutput() RegionalSecretCustomerManagedEncryptionOutput {
+	return i.ToRegionalSecretCustomerManagedEncryptionOutputWithContext(context.Background())
+}
+
+func (i RegionalSecretCustomerManagedEncryptionArgs) ToRegionalSecretCustomerManagedEncryptionOutputWithContext(ctx context.Context) RegionalSecretCustomerManagedEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionalSecretCustomerManagedEncryptionOutput)
+}
+
+func (i RegionalSecretCustomerManagedEncryptionArgs) ToRegionalSecretCustomerManagedEncryptionPtrOutput() RegionalSecretCustomerManagedEncryptionPtrOutput {
+	return i.ToRegionalSecretCustomerManagedEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i RegionalSecretCustomerManagedEncryptionArgs) ToRegionalSecretCustomerManagedEncryptionPtrOutputWithContext(ctx context.Context) RegionalSecretCustomerManagedEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionalSecretCustomerManagedEncryptionOutput).ToRegionalSecretCustomerManagedEncryptionPtrOutputWithContext(ctx)
+}
+
+// RegionalSecretCustomerManagedEncryptionPtrInput is an input type that accepts RegionalSecretCustomerManagedEncryptionArgs, RegionalSecretCustomerManagedEncryptionPtr and RegionalSecretCustomerManagedEncryptionPtrOutput values.
+// You can construct a concrete instance of `RegionalSecretCustomerManagedEncryptionPtrInput` via:
+//
+//	        RegionalSecretCustomerManagedEncryptionArgs{...}
+//
+//	or:
+//
+//	        nil
+type RegionalSecretCustomerManagedEncryptionPtrInput interface {
+	pulumi.Input
+
+	ToRegionalSecretCustomerManagedEncryptionPtrOutput() RegionalSecretCustomerManagedEncryptionPtrOutput
+	ToRegionalSecretCustomerManagedEncryptionPtrOutputWithContext(context.Context) RegionalSecretCustomerManagedEncryptionPtrOutput
+}
+
+type regionalSecretCustomerManagedEncryptionPtrType RegionalSecretCustomerManagedEncryptionArgs
+
+func RegionalSecretCustomerManagedEncryptionPtr(v *RegionalSecretCustomerManagedEncryptionArgs) RegionalSecretCustomerManagedEncryptionPtrInput {
+	return (*regionalSecretCustomerManagedEncryptionPtrType)(v)
+}
+
+func (*regionalSecretCustomerManagedEncryptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionalSecretCustomerManagedEncryption)(nil)).Elem()
+}
+
+func (i *regionalSecretCustomerManagedEncryptionPtrType) ToRegionalSecretCustomerManagedEncryptionPtrOutput() RegionalSecretCustomerManagedEncryptionPtrOutput {
+	return i.ToRegionalSecretCustomerManagedEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i *regionalSecretCustomerManagedEncryptionPtrType) ToRegionalSecretCustomerManagedEncryptionPtrOutputWithContext(ctx context.Context) RegionalSecretCustomerManagedEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionalSecretCustomerManagedEncryptionPtrOutput)
+}
+
+type RegionalSecretCustomerManagedEncryptionOutput struct{ *pulumi.OutputState }
+
+func (RegionalSecretCustomerManagedEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionalSecretCustomerManagedEncryption)(nil)).Elem()
+}
+
+func (o RegionalSecretCustomerManagedEncryptionOutput) ToRegionalSecretCustomerManagedEncryptionOutput() RegionalSecretCustomerManagedEncryptionOutput {
+	return o
+}
+
+func (o RegionalSecretCustomerManagedEncryptionOutput) ToRegionalSecretCustomerManagedEncryptionOutputWithContext(ctx context.Context) RegionalSecretCustomerManagedEncryptionOutput {
+	return o
+}
+
+func (o RegionalSecretCustomerManagedEncryptionOutput) ToRegionalSecretCustomerManagedEncryptionPtrOutput() RegionalSecretCustomerManagedEncryptionPtrOutput {
+	return o.ToRegionalSecretCustomerManagedEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (o RegionalSecretCustomerManagedEncryptionOutput) ToRegionalSecretCustomerManagedEncryptionPtrOutputWithContext(ctx context.Context) RegionalSecretCustomerManagedEncryptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionalSecretCustomerManagedEncryption) *RegionalSecretCustomerManagedEncryption {
+		return &v
+	}).(RegionalSecretCustomerManagedEncryptionPtrOutput)
+}
+
+// The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
+func (o RegionalSecretCustomerManagedEncryptionOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v RegionalSecretCustomerManagedEncryption) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+type RegionalSecretCustomerManagedEncryptionPtrOutput struct{ *pulumi.OutputState }
+
+func (RegionalSecretCustomerManagedEncryptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionalSecretCustomerManagedEncryption)(nil)).Elem()
+}
+
+func (o RegionalSecretCustomerManagedEncryptionPtrOutput) ToRegionalSecretCustomerManagedEncryptionPtrOutput() RegionalSecretCustomerManagedEncryptionPtrOutput {
+	return o
+}
+
+func (o RegionalSecretCustomerManagedEncryptionPtrOutput) ToRegionalSecretCustomerManagedEncryptionPtrOutputWithContext(ctx context.Context) RegionalSecretCustomerManagedEncryptionPtrOutput {
+	return o
+}
+
+func (o RegionalSecretCustomerManagedEncryptionPtrOutput) Elem() RegionalSecretCustomerManagedEncryptionOutput {
+	return o.ApplyT(func(v *RegionalSecretCustomerManagedEncryption) RegionalSecretCustomerManagedEncryption {
+		if v != nil {
+			return *v
+		}
+		var ret RegionalSecretCustomerManagedEncryption
+		return ret
+	}).(RegionalSecretCustomerManagedEncryptionOutput)
+}
+
+// The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
+func (o RegionalSecretCustomerManagedEncryptionPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionalSecretCustomerManagedEncryption) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+type RegionalSecretIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
+}
+
+// RegionalSecretIamBindingConditionInput is an input type that accepts RegionalSecretIamBindingConditionArgs and RegionalSecretIamBindingConditionOutput values.
+// You can construct a concrete instance of `RegionalSecretIamBindingConditionInput` via:
+//
+//	RegionalSecretIamBindingConditionArgs{...}
+type RegionalSecretIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToRegionalSecretIamBindingConditionOutput() RegionalSecretIamBindingConditionOutput
+	ToRegionalSecretIamBindingConditionOutputWithContext(context.Context) RegionalSecretIamBindingConditionOutput
+}
+
+type RegionalSecretIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (RegionalSecretIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionalSecretIamBindingCondition)(nil)).Elem()
+}
+
+func (i RegionalSecretIamBindingConditionArgs) ToRegionalSecretIamBindingConditionOutput() RegionalSecretIamBindingConditionOutput {
+	return i.ToRegionalSecretIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i RegionalSecretIamBindingConditionArgs) ToRegionalSecretIamBindingConditionOutputWithContext(ctx context.Context) RegionalSecretIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionalSecretIamBindingConditionOutput)
+}
+
+func (i RegionalSecretIamBindingConditionArgs) ToRegionalSecretIamBindingConditionPtrOutput() RegionalSecretIamBindingConditionPtrOutput {
+	return i.ToRegionalSecretIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i RegionalSecretIamBindingConditionArgs) ToRegionalSecretIamBindingConditionPtrOutputWithContext(ctx context.Context) RegionalSecretIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionalSecretIamBindingConditionOutput).ToRegionalSecretIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// RegionalSecretIamBindingConditionPtrInput is an input type that accepts RegionalSecretIamBindingConditionArgs, RegionalSecretIamBindingConditionPtr and RegionalSecretIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `RegionalSecretIamBindingConditionPtrInput` via:
+//
+//	        RegionalSecretIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type RegionalSecretIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToRegionalSecretIamBindingConditionPtrOutput() RegionalSecretIamBindingConditionPtrOutput
+	ToRegionalSecretIamBindingConditionPtrOutputWithContext(context.Context) RegionalSecretIamBindingConditionPtrOutput
+}
+
+type regionalSecretIamBindingConditionPtrType RegionalSecretIamBindingConditionArgs
+
+func RegionalSecretIamBindingConditionPtr(v *RegionalSecretIamBindingConditionArgs) RegionalSecretIamBindingConditionPtrInput {
+	return (*regionalSecretIamBindingConditionPtrType)(v)
+}
+
+func (*regionalSecretIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionalSecretIamBindingCondition)(nil)).Elem()
+}
+
+func (i *regionalSecretIamBindingConditionPtrType) ToRegionalSecretIamBindingConditionPtrOutput() RegionalSecretIamBindingConditionPtrOutput {
+	return i.ToRegionalSecretIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *regionalSecretIamBindingConditionPtrType) ToRegionalSecretIamBindingConditionPtrOutputWithContext(ctx context.Context) RegionalSecretIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionalSecretIamBindingConditionPtrOutput)
+}
+
+type RegionalSecretIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (RegionalSecretIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionalSecretIamBindingCondition)(nil)).Elem()
+}
+
+func (o RegionalSecretIamBindingConditionOutput) ToRegionalSecretIamBindingConditionOutput() RegionalSecretIamBindingConditionOutput {
+	return o
+}
+
+func (o RegionalSecretIamBindingConditionOutput) ToRegionalSecretIamBindingConditionOutputWithContext(ctx context.Context) RegionalSecretIamBindingConditionOutput {
+	return o
+}
+
+func (o RegionalSecretIamBindingConditionOutput) ToRegionalSecretIamBindingConditionPtrOutput() RegionalSecretIamBindingConditionPtrOutput {
+	return o.ToRegionalSecretIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o RegionalSecretIamBindingConditionOutput) ToRegionalSecretIamBindingConditionPtrOutputWithContext(ctx context.Context) RegionalSecretIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionalSecretIamBindingCondition) *RegionalSecretIamBindingCondition {
+		return &v
+	}).(RegionalSecretIamBindingConditionPtrOutput)
+}
+
+func (o RegionalSecretIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionalSecretIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o RegionalSecretIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v RegionalSecretIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o RegionalSecretIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v RegionalSecretIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type RegionalSecretIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (RegionalSecretIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionalSecretIamBindingCondition)(nil)).Elem()
+}
+
+func (o RegionalSecretIamBindingConditionPtrOutput) ToRegionalSecretIamBindingConditionPtrOutput() RegionalSecretIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o RegionalSecretIamBindingConditionPtrOutput) ToRegionalSecretIamBindingConditionPtrOutputWithContext(ctx context.Context) RegionalSecretIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o RegionalSecretIamBindingConditionPtrOutput) Elem() RegionalSecretIamBindingConditionOutput {
+	return o.ApplyT(func(v *RegionalSecretIamBindingCondition) RegionalSecretIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret RegionalSecretIamBindingCondition
+		return ret
+	}).(RegionalSecretIamBindingConditionOutput)
+}
+
+func (o RegionalSecretIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionalSecretIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o RegionalSecretIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionalSecretIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o RegionalSecretIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionalSecretIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type RegionalSecretIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
+}
+
+// RegionalSecretIamMemberConditionInput is an input type that accepts RegionalSecretIamMemberConditionArgs and RegionalSecretIamMemberConditionOutput values.
+// You can construct a concrete instance of `RegionalSecretIamMemberConditionInput` via:
+//
+//	RegionalSecretIamMemberConditionArgs{...}
+type RegionalSecretIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToRegionalSecretIamMemberConditionOutput() RegionalSecretIamMemberConditionOutput
+	ToRegionalSecretIamMemberConditionOutputWithContext(context.Context) RegionalSecretIamMemberConditionOutput
+}
+
+type RegionalSecretIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (RegionalSecretIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionalSecretIamMemberCondition)(nil)).Elem()
+}
+
+func (i RegionalSecretIamMemberConditionArgs) ToRegionalSecretIamMemberConditionOutput() RegionalSecretIamMemberConditionOutput {
+	return i.ToRegionalSecretIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i RegionalSecretIamMemberConditionArgs) ToRegionalSecretIamMemberConditionOutputWithContext(ctx context.Context) RegionalSecretIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionalSecretIamMemberConditionOutput)
+}
+
+func (i RegionalSecretIamMemberConditionArgs) ToRegionalSecretIamMemberConditionPtrOutput() RegionalSecretIamMemberConditionPtrOutput {
+	return i.ToRegionalSecretIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i RegionalSecretIamMemberConditionArgs) ToRegionalSecretIamMemberConditionPtrOutputWithContext(ctx context.Context) RegionalSecretIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionalSecretIamMemberConditionOutput).ToRegionalSecretIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// RegionalSecretIamMemberConditionPtrInput is an input type that accepts RegionalSecretIamMemberConditionArgs, RegionalSecretIamMemberConditionPtr and RegionalSecretIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `RegionalSecretIamMemberConditionPtrInput` via:
+//
+//	        RegionalSecretIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type RegionalSecretIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToRegionalSecretIamMemberConditionPtrOutput() RegionalSecretIamMemberConditionPtrOutput
+	ToRegionalSecretIamMemberConditionPtrOutputWithContext(context.Context) RegionalSecretIamMemberConditionPtrOutput
+}
+
+type regionalSecretIamMemberConditionPtrType RegionalSecretIamMemberConditionArgs
+
+func RegionalSecretIamMemberConditionPtr(v *RegionalSecretIamMemberConditionArgs) RegionalSecretIamMemberConditionPtrInput {
+	return (*regionalSecretIamMemberConditionPtrType)(v)
+}
+
+func (*regionalSecretIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionalSecretIamMemberCondition)(nil)).Elem()
+}
+
+func (i *regionalSecretIamMemberConditionPtrType) ToRegionalSecretIamMemberConditionPtrOutput() RegionalSecretIamMemberConditionPtrOutput {
+	return i.ToRegionalSecretIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *regionalSecretIamMemberConditionPtrType) ToRegionalSecretIamMemberConditionPtrOutputWithContext(ctx context.Context) RegionalSecretIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionalSecretIamMemberConditionPtrOutput)
+}
+
+type RegionalSecretIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (RegionalSecretIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionalSecretIamMemberCondition)(nil)).Elem()
+}
+
+func (o RegionalSecretIamMemberConditionOutput) ToRegionalSecretIamMemberConditionOutput() RegionalSecretIamMemberConditionOutput {
+	return o
+}
+
+func (o RegionalSecretIamMemberConditionOutput) ToRegionalSecretIamMemberConditionOutputWithContext(ctx context.Context) RegionalSecretIamMemberConditionOutput {
+	return o
+}
+
+func (o RegionalSecretIamMemberConditionOutput) ToRegionalSecretIamMemberConditionPtrOutput() RegionalSecretIamMemberConditionPtrOutput {
+	return o.ToRegionalSecretIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o RegionalSecretIamMemberConditionOutput) ToRegionalSecretIamMemberConditionPtrOutputWithContext(ctx context.Context) RegionalSecretIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionalSecretIamMemberCondition) *RegionalSecretIamMemberCondition {
+		return &v
+	}).(RegionalSecretIamMemberConditionPtrOutput)
+}
+
+func (o RegionalSecretIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionalSecretIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o RegionalSecretIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v RegionalSecretIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o RegionalSecretIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v RegionalSecretIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type RegionalSecretIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (RegionalSecretIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionalSecretIamMemberCondition)(nil)).Elem()
+}
+
+func (o RegionalSecretIamMemberConditionPtrOutput) ToRegionalSecretIamMemberConditionPtrOutput() RegionalSecretIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o RegionalSecretIamMemberConditionPtrOutput) ToRegionalSecretIamMemberConditionPtrOutputWithContext(ctx context.Context) RegionalSecretIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o RegionalSecretIamMemberConditionPtrOutput) Elem() RegionalSecretIamMemberConditionOutput {
+	return o.ApplyT(func(v *RegionalSecretIamMemberCondition) RegionalSecretIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret RegionalSecretIamMemberCondition
+		return ret
+	}).(RegionalSecretIamMemberConditionOutput)
+}
+
+func (o RegionalSecretIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionalSecretIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o RegionalSecretIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionalSecretIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o RegionalSecretIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionalSecretIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type RegionalSecretRotation struct {
+	// Timestamp in UTC at which the Secret is scheduled to rotate.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+	// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	NextRotationTime *string `pulumi:"nextRotationTime"`
+	// The Duration between rotation notifications. Must be in seconds and at least 3600s (1h)
+	// and at most 3153600000s (100 years). If rotationPeriod is set, `nextRotationTime` must
+	// be set. `nextRotationTime` will be advanced by this period when the service
+	// automatically sends rotation notifications.
+	RotationPeriod *string `pulumi:"rotationPeriod"`
+}
+
+// RegionalSecretRotationInput is an input type that accepts RegionalSecretRotationArgs and RegionalSecretRotationOutput values.
+// You can construct a concrete instance of `RegionalSecretRotationInput` via:
+//
+//	RegionalSecretRotationArgs{...}
+type RegionalSecretRotationInput interface {
+	pulumi.Input
+
+	ToRegionalSecretRotationOutput() RegionalSecretRotationOutput
+	ToRegionalSecretRotationOutputWithContext(context.Context) RegionalSecretRotationOutput
+}
+
+type RegionalSecretRotationArgs struct {
+	// Timestamp in UTC at which the Secret is scheduled to rotate.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+	// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	NextRotationTime pulumi.StringPtrInput `pulumi:"nextRotationTime"`
+	// The Duration between rotation notifications. Must be in seconds and at least 3600s (1h)
+	// and at most 3153600000s (100 years). If rotationPeriod is set, `nextRotationTime` must
+	// be set. `nextRotationTime` will be advanced by this period when the service
+	// automatically sends rotation notifications.
+	RotationPeriod pulumi.StringPtrInput `pulumi:"rotationPeriod"`
+}
+
+func (RegionalSecretRotationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionalSecretRotation)(nil)).Elem()
+}
+
+func (i RegionalSecretRotationArgs) ToRegionalSecretRotationOutput() RegionalSecretRotationOutput {
+	return i.ToRegionalSecretRotationOutputWithContext(context.Background())
+}
+
+func (i RegionalSecretRotationArgs) ToRegionalSecretRotationOutputWithContext(ctx context.Context) RegionalSecretRotationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionalSecretRotationOutput)
+}
+
+func (i RegionalSecretRotationArgs) ToRegionalSecretRotationPtrOutput() RegionalSecretRotationPtrOutput {
+	return i.ToRegionalSecretRotationPtrOutputWithContext(context.Background())
+}
+
+func (i RegionalSecretRotationArgs) ToRegionalSecretRotationPtrOutputWithContext(ctx context.Context) RegionalSecretRotationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionalSecretRotationOutput).ToRegionalSecretRotationPtrOutputWithContext(ctx)
+}
+
+// RegionalSecretRotationPtrInput is an input type that accepts RegionalSecretRotationArgs, RegionalSecretRotationPtr and RegionalSecretRotationPtrOutput values.
+// You can construct a concrete instance of `RegionalSecretRotationPtrInput` via:
+//
+//	        RegionalSecretRotationArgs{...}
+//
+//	or:
+//
+//	        nil
+type RegionalSecretRotationPtrInput interface {
+	pulumi.Input
+
+	ToRegionalSecretRotationPtrOutput() RegionalSecretRotationPtrOutput
+	ToRegionalSecretRotationPtrOutputWithContext(context.Context) RegionalSecretRotationPtrOutput
+}
+
+type regionalSecretRotationPtrType RegionalSecretRotationArgs
+
+func RegionalSecretRotationPtr(v *RegionalSecretRotationArgs) RegionalSecretRotationPtrInput {
+	return (*regionalSecretRotationPtrType)(v)
+}
+
+func (*regionalSecretRotationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionalSecretRotation)(nil)).Elem()
+}
+
+func (i *regionalSecretRotationPtrType) ToRegionalSecretRotationPtrOutput() RegionalSecretRotationPtrOutput {
+	return i.ToRegionalSecretRotationPtrOutputWithContext(context.Background())
+}
+
+func (i *regionalSecretRotationPtrType) ToRegionalSecretRotationPtrOutputWithContext(ctx context.Context) RegionalSecretRotationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionalSecretRotationPtrOutput)
+}
+
+type RegionalSecretRotationOutput struct{ *pulumi.OutputState }
+
+func (RegionalSecretRotationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionalSecretRotation)(nil)).Elem()
+}
+
+func (o RegionalSecretRotationOutput) ToRegionalSecretRotationOutput() RegionalSecretRotationOutput {
+	return o
+}
+
+func (o RegionalSecretRotationOutput) ToRegionalSecretRotationOutputWithContext(ctx context.Context) RegionalSecretRotationOutput {
+	return o
+}
+
+func (o RegionalSecretRotationOutput) ToRegionalSecretRotationPtrOutput() RegionalSecretRotationPtrOutput {
+	return o.ToRegionalSecretRotationPtrOutputWithContext(context.Background())
+}
+
+func (o RegionalSecretRotationOutput) ToRegionalSecretRotationPtrOutputWithContext(ctx context.Context) RegionalSecretRotationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionalSecretRotation) *RegionalSecretRotation {
+		return &v
+	}).(RegionalSecretRotationPtrOutput)
+}
+
+// Timestamp in UTC at which the Secret is scheduled to rotate.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o RegionalSecretRotationOutput) NextRotationTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionalSecretRotation) *string { return v.NextRotationTime }).(pulumi.StringPtrOutput)
+}
+
+// The Duration between rotation notifications. Must be in seconds and at least 3600s (1h)
+// and at most 3153600000s (100 years). If rotationPeriod is set, `nextRotationTime` must
+// be set. `nextRotationTime` will be advanced by this period when the service
+// automatically sends rotation notifications.
+func (o RegionalSecretRotationOutput) RotationPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionalSecretRotation) *string { return v.RotationPeriod }).(pulumi.StringPtrOutput)
+}
+
+type RegionalSecretRotationPtrOutput struct{ *pulumi.OutputState }
+
+func (RegionalSecretRotationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionalSecretRotation)(nil)).Elem()
+}
+
+func (o RegionalSecretRotationPtrOutput) ToRegionalSecretRotationPtrOutput() RegionalSecretRotationPtrOutput {
+	return o
+}
+
+func (o RegionalSecretRotationPtrOutput) ToRegionalSecretRotationPtrOutputWithContext(ctx context.Context) RegionalSecretRotationPtrOutput {
+	return o
+}
+
+func (o RegionalSecretRotationPtrOutput) Elem() RegionalSecretRotationOutput {
+	return o.ApplyT(func(v *RegionalSecretRotation) RegionalSecretRotation {
+		if v != nil {
+			return *v
+		}
+		var ret RegionalSecretRotation
+		return ret
+	}).(RegionalSecretRotationOutput)
+}
+
+// Timestamp in UTC at which the Secret is scheduled to rotate.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o RegionalSecretRotationPtrOutput) NextRotationTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionalSecretRotation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NextRotationTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Duration between rotation notifications. Must be in seconds and at least 3600s (1h)
+// and at most 3153600000s (100 years). If rotationPeriod is set, `nextRotationTime` must
+// be set. `nextRotationTime` will be advanced by this period when the service
+// automatically sends rotation notifications.
+func (o RegionalSecretRotationPtrOutput) RotationPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionalSecretRotation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RotationPeriod
+	}).(pulumi.StringPtrOutput)
+}
+
+type RegionalSecretTopic struct {
+	// The resource name of the Pub/Sub topic that will be published to, in the following format:
+	// projects/*/topics/*. For publication to succeed, the Secret Manager Service
+	// Agent service account must have pubsub.publisher permissions on the topic.
+	Name string `pulumi:"name"`
+}
+
+// RegionalSecretTopicInput is an input type that accepts RegionalSecretTopicArgs and RegionalSecretTopicOutput values.
+// You can construct a concrete instance of `RegionalSecretTopicInput` via:
+//
+//	RegionalSecretTopicArgs{...}
+type RegionalSecretTopicInput interface {
+	pulumi.Input
+
+	ToRegionalSecretTopicOutput() RegionalSecretTopicOutput
+	ToRegionalSecretTopicOutputWithContext(context.Context) RegionalSecretTopicOutput
+}
+
+type RegionalSecretTopicArgs struct {
+	// The resource name of the Pub/Sub topic that will be published to, in the following format:
+	// projects/*/topics/*. For publication to succeed, the Secret Manager Service
+	// Agent service account must have pubsub.publisher permissions on the topic.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (RegionalSecretTopicArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionalSecretTopic)(nil)).Elem()
+}
+
+func (i RegionalSecretTopicArgs) ToRegionalSecretTopicOutput() RegionalSecretTopicOutput {
+	return i.ToRegionalSecretTopicOutputWithContext(context.Background())
+}
+
+func (i RegionalSecretTopicArgs) ToRegionalSecretTopicOutputWithContext(ctx context.Context) RegionalSecretTopicOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionalSecretTopicOutput)
+}
+
+// RegionalSecretTopicArrayInput is an input type that accepts RegionalSecretTopicArray and RegionalSecretTopicArrayOutput values.
+// You can construct a concrete instance of `RegionalSecretTopicArrayInput` via:
+//
+//	RegionalSecretTopicArray{ RegionalSecretTopicArgs{...} }
+type RegionalSecretTopicArrayInput interface {
+	pulumi.Input
+
+	ToRegionalSecretTopicArrayOutput() RegionalSecretTopicArrayOutput
+	ToRegionalSecretTopicArrayOutputWithContext(context.Context) RegionalSecretTopicArrayOutput
+}
+
+type RegionalSecretTopicArray []RegionalSecretTopicInput
+
+func (RegionalSecretTopicArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionalSecretTopic)(nil)).Elem()
+}
+
+func (i RegionalSecretTopicArray) ToRegionalSecretTopicArrayOutput() RegionalSecretTopicArrayOutput {
+	return i.ToRegionalSecretTopicArrayOutputWithContext(context.Background())
+}
+
+func (i RegionalSecretTopicArray) ToRegionalSecretTopicArrayOutputWithContext(ctx context.Context) RegionalSecretTopicArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionalSecretTopicArrayOutput)
+}
+
+type RegionalSecretTopicOutput struct{ *pulumi.OutputState }
+
+func (RegionalSecretTopicOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionalSecretTopic)(nil)).Elem()
+}
+
+func (o RegionalSecretTopicOutput) ToRegionalSecretTopicOutput() RegionalSecretTopicOutput {
+	return o
+}
+
+func (o RegionalSecretTopicOutput) ToRegionalSecretTopicOutputWithContext(ctx context.Context) RegionalSecretTopicOutput {
+	return o
+}
+
+// The resource name of the Pub/Sub topic that will be published to, in the following format:
+// projects/*/topics/*. For publication to succeed, the Secret Manager Service
+// Agent service account must have pubsub.publisher permissions on the topic.
+func (o RegionalSecretTopicOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v RegionalSecretTopic) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type RegionalSecretTopicArrayOutput struct{ *pulumi.OutputState }
+
+func (RegionalSecretTopicArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionalSecretTopic)(nil)).Elem()
+}
+
+func (o RegionalSecretTopicArrayOutput) ToRegionalSecretTopicArrayOutput() RegionalSecretTopicArrayOutput {
+	return o
+}
+
+func (o RegionalSecretTopicArrayOutput) ToRegionalSecretTopicArrayOutputWithContext(ctx context.Context) RegionalSecretTopicArrayOutput {
+	return o
+}
+
+func (o RegionalSecretTopicArrayOutput) Index(i pulumi.IntInput) RegionalSecretTopicOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionalSecretTopic {
+		return vs[0].([]RegionalSecretTopic)[vs[1].(int)]
+	}).(RegionalSecretTopicOutput)
+}
+
+type RegionalSecretVersionCustomerManagedEncryption struct {
+	// (Output)
+	// The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
+	KmsKeyVersionName *string `pulumi:"kmsKeyVersionName"`
+}
+
+// RegionalSecretVersionCustomerManagedEncryptionInput is an input type that accepts RegionalSecretVersionCustomerManagedEncryptionArgs and RegionalSecretVersionCustomerManagedEncryptionOutput values.
+// You can construct a concrete instance of `RegionalSecretVersionCustomerManagedEncryptionInput` via:
+//
+//	RegionalSecretVersionCustomerManagedEncryptionArgs{...}
+type RegionalSecretVersionCustomerManagedEncryptionInput interface {
+	pulumi.Input
+
+	ToRegionalSecretVersionCustomerManagedEncryptionOutput() RegionalSecretVersionCustomerManagedEncryptionOutput
+	ToRegionalSecretVersionCustomerManagedEncryptionOutputWithContext(context.Context) RegionalSecretVersionCustomerManagedEncryptionOutput
+}
+
+type RegionalSecretVersionCustomerManagedEncryptionArgs struct {
+	// (Output)
+	// The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
+	KmsKeyVersionName pulumi.StringPtrInput `pulumi:"kmsKeyVersionName"`
+}
+
+func (RegionalSecretVersionCustomerManagedEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionalSecretVersionCustomerManagedEncryption)(nil)).Elem()
+}
+
+func (i RegionalSecretVersionCustomerManagedEncryptionArgs) ToRegionalSecretVersionCustomerManagedEncryptionOutput() RegionalSecretVersionCustomerManagedEncryptionOutput {
+	return i.ToRegionalSecretVersionCustomerManagedEncryptionOutputWithContext(context.Background())
+}
+
+func (i RegionalSecretVersionCustomerManagedEncryptionArgs) ToRegionalSecretVersionCustomerManagedEncryptionOutputWithContext(ctx context.Context) RegionalSecretVersionCustomerManagedEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionalSecretVersionCustomerManagedEncryptionOutput)
+}
+
+// RegionalSecretVersionCustomerManagedEncryptionArrayInput is an input type that accepts RegionalSecretVersionCustomerManagedEncryptionArray and RegionalSecretVersionCustomerManagedEncryptionArrayOutput values.
+// You can construct a concrete instance of `RegionalSecretVersionCustomerManagedEncryptionArrayInput` via:
+//
+//	RegionalSecretVersionCustomerManagedEncryptionArray{ RegionalSecretVersionCustomerManagedEncryptionArgs{...} }
+type RegionalSecretVersionCustomerManagedEncryptionArrayInput interface {
+	pulumi.Input
+
+	ToRegionalSecretVersionCustomerManagedEncryptionArrayOutput() RegionalSecretVersionCustomerManagedEncryptionArrayOutput
+	ToRegionalSecretVersionCustomerManagedEncryptionArrayOutputWithContext(context.Context) RegionalSecretVersionCustomerManagedEncryptionArrayOutput
+}
+
+type RegionalSecretVersionCustomerManagedEncryptionArray []RegionalSecretVersionCustomerManagedEncryptionInput
+
+func (RegionalSecretVersionCustomerManagedEncryptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionalSecretVersionCustomerManagedEncryption)(nil)).Elem()
+}
+
+func (i RegionalSecretVersionCustomerManagedEncryptionArray) ToRegionalSecretVersionCustomerManagedEncryptionArrayOutput() RegionalSecretVersionCustomerManagedEncryptionArrayOutput {
+	return i.ToRegionalSecretVersionCustomerManagedEncryptionArrayOutputWithContext(context.Background())
+}
+
+func (i RegionalSecretVersionCustomerManagedEncryptionArray) ToRegionalSecretVersionCustomerManagedEncryptionArrayOutputWithContext(ctx context.Context) RegionalSecretVersionCustomerManagedEncryptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionalSecretVersionCustomerManagedEncryptionArrayOutput)
+}
+
+type RegionalSecretVersionCustomerManagedEncryptionOutput struct{ *pulumi.OutputState }
+
+func (RegionalSecretVersionCustomerManagedEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionalSecretVersionCustomerManagedEncryption)(nil)).Elem()
+}
+
+func (o RegionalSecretVersionCustomerManagedEncryptionOutput) ToRegionalSecretVersionCustomerManagedEncryptionOutput() RegionalSecretVersionCustomerManagedEncryptionOutput {
+	return o
+}
+
+func (o RegionalSecretVersionCustomerManagedEncryptionOutput) ToRegionalSecretVersionCustomerManagedEncryptionOutputWithContext(ctx context.Context) RegionalSecretVersionCustomerManagedEncryptionOutput {
+	return o
+}
+
+// (Output)
+// The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
+func (o RegionalSecretVersionCustomerManagedEncryptionOutput) KmsKeyVersionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionalSecretVersionCustomerManagedEncryption) *string { return v.KmsKeyVersionName }).(pulumi.StringPtrOutput)
+}
+
+type RegionalSecretVersionCustomerManagedEncryptionArrayOutput struct{ *pulumi.OutputState }
+
+func (RegionalSecretVersionCustomerManagedEncryptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionalSecretVersionCustomerManagedEncryption)(nil)).Elem()
+}
+
+func (o RegionalSecretVersionCustomerManagedEncryptionArrayOutput) ToRegionalSecretVersionCustomerManagedEncryptionArrayOutput() RegionalSecretVersionCustomerManagedEncryptionArrayOutput {
+	return o
+}
+
+func (o RegionalSecretVersionCustomerManagedEncryptionArrayOutput) ToRegionalSecretVersionCustomerManagedEncryptionArrayOutputWithContext(ctx context.Context) RegionalSecretVersionCustomerManagedEncryptionArrayOutput {
+	return o
+}
+
+func (o RegionalSecretVersionCustomerManagedEncryptionArrayOutput) Index(i pulumi.IntInput) RegionalSecretVersionCustomerManagedEncryptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionalSecretVersionCustomerManagedEncryption {
+		return vs[0].([]RegionalSecretVersionCustomerManagedEncryption)[vs[1].(int)]
+	}).(RegionalSecretVersionCustomerManagedEncryptionOutput)
+}
+
 type SecretIamBindingCondition struct {
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
@@ -1474,6 +2332,424 @@ func (o SecretTopicArrayOutput) Index(i pulumi.IntInput) SecretTopicOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecretTopic {
 		return vs[0].([]SecretTopic)[vs[1].(int)]
 	}).(SecretTopicOutput)
+}
+
+type GetRegionalSecretCustomerManagedEncryption struct {
+	// The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
+	KmsKeyName string `pulumi:"kmsKeyName"`
+}
+
+// GetRegionalSecretCustomerManagedEncryptionInput is an input type that accepts GetRegionalSecretCustomerManagedEncryptionArgs and GetRegionalSecretCustomerManagedEncryptionOutput values.
+// You can construct a concrete instance of `GetRegionalSecretCustomerManagedEncryptionInput` via:
+//
+//	GetRegionalSecretCustomerManagedEncryptionArgs{...}
+type GetRegionalSecretCustomerManagedEncryptionInput interface {
+	pulumi.Input
+
+	ToGetRegionalSecretCustomerManagedEncryptionOutput() GetRegionalSecretCustomerManagedEncryptionOutput
+	ToGetRegionalSecretCustomerManagedEncryptionOutputWithContext(context.Context) GetRegionalSecretCustomerManagedEncryptionOutput
+}
+
+type GetRegionalSecretCustomerManagedEncryptionArgs struct {
+	// The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+}
+
+func (GetRegionalSecretCustomerManagedEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionalSecretCustomerManagedEncryption)(nil)).Elem()
+}
+
+func (i GetRegionalSecretCustomerManagedEncryptionArgs) ToGetRegionalSecretCustomerManagedEncryptionOutput() GetRegionalSecretCustomerManagedEncryptionOutput {
+	return i.ToGetRegionalSecretCustomerManagedEncryptionOutputWithContext(context.Background())
+}
+
+func (i GetRegionalSecretCustomerManagedEncryptionArgs) ToGetRegionalSecretCustomerManagedEncryptionOutputWithContext(ctx context.Context) GetRegionalSecretCustomerManagedEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionalSecretCustomerManagedEncryptionOutput)
+}
+
+// GetRegionalSecretCustomerManagedEncryptionArrayInput is an input type that accepts GetRegionalSecretCustomerManagedEncryptionArray and GetRegionalSecretCustomerManagedEncryptionArrayOutput values.
+// You can construct a concrete instance of `GetRegionalSecretCustomerManagedEncryptionArrayInput` via:
+//
+//	GetRegionalSecretCustomerManagedEncryptionArray{ GetRegionalSecretCustomerManagedEncryptionArgs{...} }
+type GetRegionalSecretCustomerManagedEncryptionArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionalSecretCustomerManagedEncryptionArrayOutput() GetRegionalSecretCustomerManagedEncryptionArrayOutput
+	ToGetRegionalSecretCustomerManagedEncryptionArrayOutputWithContext(context.Context) GetRegionalSecretCustomerManagedEncryptionArrayOutput
+}
+
+type GetRegionalSecretCustomerManagedEncryptionArray []GetRegionalSecretCustomerManagedEncryptionInput
+
+func (GetRegionalSecretCustomerManagedEncryptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionalSecretCustomerManagedEncryption)(nil)).Elem()
+}
+
+func (i GetRegionalSecretCustomerManagedEncryptionArray) ToGetRegionalSecretCustomerManagedEncryptionArrayOutput() GetRegionalSecretCustomerManagedEncryptionArrayOutput {
+	return i.ToGetRegionalSecretCustomerManagedEncryptionArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionalSecretCustomerManagedEncryptionArray) ToGetRegionalSecretCustomerManagedEncryptionArrayOutputWithContext(ctx context.Context) GetRegionalSecretCustomerManagedEncryptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionalSecretCustomerManagedEncryptionArrayOutput)
+}
+
+type GetRegionalSecretCustomerManagedEncryptionOutput struct{ *pulumi.OutputState }
+
+func (GetRegionalSecretCustomerManagedEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionalSecretCustomerManagedEncryption)(nil)).Elem()
+}
+
+func (o GetRegionalSecretCustomerManagedEncryptionOutput) ToGetRegionalSecretCustomerManagedEncryptionOutput() GetRegionalSecretCustomerManagedEncryptionOutput {
+	return o
+}
+
+func (o GetRegionalSecretCustomerManagedEncryptionOutput) ToGetRegionalSecretCustomerManagedEncryptionOutputWithContext(ctx context.Context) GetRegionalSecretCustomerManagedEncryptionOutput {
+	return o
+}
+
+// The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
+func (o GetRegionalSecretCustomerManagedEncryptionOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionalSecretCustomerManagedEncryption) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+type GetRegionalSecretCustomerManagedEncryptionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionalSecretCustomerManagedEncryptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionalSecretCustomerManagedEncryption)(nil)).Elem()
+}
+
+func (o GetRegionalSecretCustomerManagedEncryptionArrayOutput) ToGetRegionalSecretCustomerManagedEncryptionArrayOutput() GetRegionalSecretCustomerManagedEncryptionArrayOutput {
+	return o
+}
+
+func (o GetRegionalSecretCustomerManagedEncryptionArrayOutput) ToGetRegionalSecretCustomerManagedEncryptionArrayOutputWithContext(ctx context.Context) GetRegionalSecretCustomerManagedEncryptionArrayOutput {
+	return o
+}
+
+func (o GetRegionalSecretCustomerManagedEncryptionArrayOutput) Index(i pulumi.IntInput) GetRegionalSecretCustomerManagedEncryptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionalSecretCustomerManagedEncryption {
+		return vs[0].([]GetRegionalSecretCustomerManagedEncryption)[vs[1].(int)]
+	}).(GetRegionalSecretCustomerManagedEncryptionOutput)
+}
+
+type GetRegionalSecretRotation struct {
+	// Timestamp in UTC at which the Secret is scheduled to rotate.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+	// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	NextRotationTime string `pulumi:"nextRotationTime"`
+	// The Duration between rotation notifications. Must be in seconds and at least 3600s (1h)
+	// and at most 3153600000s (100 years). If rotationPeriod is set, 'next_rotation_time' must
+	// be set. 'next_rotation_time' will be advanced by this period when the service
+	// automatically sends rotation notifications.
+	RotationPeriod string `pulumi:"rotationPeriod"`
+}
+
+// GetRegionalSecretRotationInput is an input type that accepts GetRegionalSecretRotationArgs and GetRegionalSecretRotationOutput values.
+// You can construct a concrete instance of `GetRegionalSecretRotationInput` via:
+//
+//	GetRegionalSecretRotationArgs{...}
+type GetRegionalSecretRotationInput interface {
+	pulumi.Input
+
+	ToGetRegionalSecretRotationOutput() GetRegionalSecretRotationOutput
+	ToGetRegionalSecretRotationOutputWithContext(context.Context) GetRegionalSecretRotationOutput
+}
+
+type GetRegionalSecretRotationArgs struct {
+	// Timestamp in UTC at which the Secret is scheduled to rotate.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+	// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	NextRotationTime pulumi.StringInput `pulumi:"nextRotationTime"`
+	// The Duration between rotation notifications. Must be in seconds and at least 3600s (1h)
+	// and at most 3153600000s (100 years). If rotationPeriod is set, 'next_rotation_time' must
+	// be set. 'next_rotation_time' will be advanced by this period when the service
+	// automatically sends rotation notifications.
+	RotationPeriod pulumi.StringInput `pulumi:"rotationPeriod"`
+}
+
+func (GetRegionalSecretRotationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionalSecretRotation)(nil)).Elem()
+}
+
+func (i GetRegionalSecretRotationArgs) ToGetRegionalSecretRotationOutput() GetRegionalSecretRotationOutput {
+	return i.ToGetRegionalSecretRotationOutputWithContext(context.Background())
+}
+
+func (i GetRegionalSecretRotationArgs) ToGetRegionalSecretRotationOutputWithContext(ctx context.Context) GetRegionalSecretRotationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionalSecretRotationOutput)
+}
+
+// GetRegionalSecretRotationArrayInput is an input type that accepts GetRegionalSecretRotationArray and GetRegionalSecretRotationArrayOutput values.
+// You can construct a concrete instance of `GetRegionalSecretRotationArrayInput` via:
+//
+//	GetRegionalSecretRotationArray{ GetRegionalSecretRotationArgs{...} }
+type GetRegionalSecretRotationArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionalSecretRotationArrayOutput() GetRegionalSecretRotationArrayOutput
+	ToGetRegionalSecretRotationArrayOutputWithContext(context.Context) GetRegionalSecretRotationArrayOutput
+}
+
+type GetRegionalSecretRotationArray []GetRegionalSecretRotationInput
+
+func (GetRegionalSecretRotationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionalSecretRotation)(nil)).Elem()
+}
+
+func (i GetRegionalSecretRotationArray) ToGetRegionalSecretRotationArrayOutput() GetRegionalSecretRotationArrayOutput {
+	return i.ToGetRegionalSecretRotationArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionalSecretRotationArray) ToGetRegionalSecretRotationArrayOutputWithContext(ctx context.Context) GetRegionalSecretRotationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionalSecretRotationArrayOutput)
+}
+
+type GetRegionalSecretRotationOutput struct{ *pulumi.OutputState }
+
+func (GetRegionalSecretRotationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionalSecretRotation)(nil)).Elem()
+}
+
+func (o GetRegionalSecretRotationOutput) ToGetRegionalSecretRotationOutput() GetRegionalSecretRotationOutput {
+	return o
+}
+
+func (o GetRegionalSecretRotationOutput) ToGetRegionalSecretRotationOutputWithContext(ctx context.Context) GetRegionalSecretRotationOutput {
+	return o
+}
+
+// Timestamp in UTC at which the Secret is scheduled to rotate.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+// fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o GetRegionalSecretRotationOutput) NextRotationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionalSecretRotation) string { return v.NextRotationTime }).(pulumi.StringOutput)
+}
+
+// The Duration between rotation notifications. Must be in seconds and at least 3600s (1h)
+// and at most 3153600000s (100 years). If rotationPeriod is set, 'next_rotation_time' must
+// be set. 'next_rotation_time' will be advanced by this period when the service
+// automatically sends rotation notifications.
+func (o GetRegionalSecretRotationOutput) RotationPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionalSecretRotation) string { return v.RotationPeriod }).(pulumi.StringOutput)
+}
+
+type GetRegionalSecretRotationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionalSecretRotationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionalSecretRotation)(nil)).Elem()
+}
+
+func (o GetRegionalSecretRotationArrayOutput) ToGetRegionalSecretRotationArrayOutput() GetRegionalSecretRotationArrayOutput {
+	return o
+}
+
+func (o GetRegionalSecretRotationArrayOutput) ToGetRegionalSecretRotationArrayOutputWithContext(ctx context.Context) GetRegionalSecretRotationArrayOutput {
+	return o
+}
+
+func (o GetRegionalSecretRotationArrayOutput) Index(i pulumi.IntInput) GetRegionalSecretRotationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionalSecretRotation {
+		return vs[0].([]GetRegionalSecretRotation)[vs[1].(int)]
+	}).(GetRegionalSecretRotationOutput)
+}
+
+type GetRegionalSecretTopic struct {
+	// The resource name of the Pub/Sub topic that will be published to, in the following format:
+	// projects/*/topics/*. For publication to succeed, the Secret Manager Service
+	// Agent service account must have pubsub.publisher permissions on the topic.
+	Name string `pulumi:"name"`
+}
+
+// GetRegionalSecretTopicInput is an input type that accepts GetRegionalSecretTopicArgs and GetRegionalSecretTopicOutput values.
+// You can construct a concrete instance of `GetRegionalSecretTopicInput` via:
+//
+//	GetRegionalSecretTopicArgs{...}
+type GetRegionalSecretTopicInput interface {
+	pulumi.Input
+
+	ToGetRegionalSecretTopicOutput() GetRegionalSecretTopicOutput
+	ToGetRegionalSecretTopicOutputWithContext(context.Context) GetRegionalSecretTopicOutput
+}
+
+type GetRegionalSecretTopicArgs struct {
+	// The resource name of the Pub/Sub topic that will be published to, in the following format:
+	// projects/*/topics/*. For publication to succeed, the Secret Manager Service
+	// Agent service account must have pubsub.publisher permissions on the topic.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetRegionalSecretTopicArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionalSecretTopic)(nil)).Elem()
+}
+
+func (i GetRegionalSecretTopicArgs) ToGetRegionalSecretTopicOutput() GetRegionalSecretTopicOutput {
+	return i.ToGetRegionalSecretTopicOutputWithContext(context.Background())
+}
+
+func (i GetRegionalSecretTopicArgs) ToGetRegionalSecretTopicOutputWithContext(ctx context.Context) GetRegionalSecretTopicOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionalSecretTopicOutput)
+}
+
+// GetRegionalSecretTopicArrayInput is an input type that accepts GetRegionalSecretTopicArray and GetRegionalSecretTopicArrayOutput values.
+// You can construct a concrete instance of `GetRegionalSecretTopicArrayInput` via:
+//
+//	GetRegionalSecretTopicArray{ GetRegionalSecretTopicArgs{...} }
+type GetRegionalSecretTopicArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionalSecretTopicArrayOutput() GetRegionalSecretTopicArrayOutput
+	ToGetRegionalSecretTopicArrayOutputWithContext(context.Context) GetRegionalSecretTopicArrayOutput
+}
+
+type GetRegionalSecretTopicArray []GetRegionalSecretTopicInput
+
+func (GetRegionalSecretTopicArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionalSecretTopic)(nil)).Elem()
+}
+
+func (i GetRegionalSecretTopicArray) ToGetRegionalSecretTopicArrayOutput() GetRegionalSecretTopicArrayOutput {
+	return i.ToGetRegionalSecretTopicArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionalSecretTopicArray) ToGetRegionalSecretTopicArrayOutputWithContext(ctx context.Context) GetRegionalSecretTopicArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionalSecretTopicArrayOutput)
+}
+
+type GetRegionalSecretTopicOutput struct{ *pulumi.OutputState }
+
+func (GetRegionalSecretTopicOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionalSecretTopic)(nil)).Elem()
+}
+
+func (o GetRegionalSecretTopicOutput) ToGetRegionalSecretTopicOutput() GetRegionalSecretTopicOutput {
+	return o
+}
+
+func (o GetRegionalSecretTopicOutput) ToGetRegionalSecretTopicOutputWithContext(ctx context.Context) GetRegionalSecretTopicOutput {
+	return o
+}
+
+// The resource name of the Pub/Sub topic that will be published to, in the following format:
+// projects/*/topics/*. For publication to succeed, the Secret Manager Service
+// Agent service account must have pubsub.publisher permissions on the topic.
+func (o GetRegionalSecretTopicOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionalSecretTopic) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetRegionalSecretTopicArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionalSecretTopicArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionalSecretTopic)(nil)).Elem()
+}
+
+func (o GetRegionalSecretTopicArrayOutput) ToGetRegionalSecretTopicArrayOutput() GetRegionalSecretTopicArrayOutput {
+	return o
+}
+
+func (o GetRegionalSecretTopicArrayOutput) ToGetRegionalSecretTopicArrayOutputWithContext(ctx context.Context) GetRegionalSecretTopicArrayOutput {
+	return o
+}
+
+func (o GetRegionalSecretTopicArrayOutput) Index(i pulumi.IntInput) GetRegionalSecretTopicOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionalSecretTopic {
+		return vs[0].([]GetRegionalSecretTopic)[vs[1].(int)]
+	}).(GetRegionalSecretTopicOutput)
+}
+
+type GetRegionalSecretVersionCustomerManagedEncryption struct {
+	// The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
+	KmsKeyVersionName string `pulumi:"kmsKeyVersionName"`
+}
+
+// GetRegionalSecretVersionCustomerManagedEncryptionInput is an input type that accepts GetRegionalSecretVersionCustomerManagedEncryptionArgs and GetRegionalSecretVersionCustomerManagedEncryptionOutput values.
+// You can construct a concrete instance of `GetRegionalSecretVersionCustomerManagedEncryptionInput` via:
+//
+//	GetRegionalSecretVersionCustomerManagedEncryptionArgs{...}
+type GetRegionalSecretVersionCustomerManagedEncryptionInput interface {
+	pulumi.Input
+
+	ToGetRegionalSecretVersionCustomerManagedEncryptionOutput() GetRegionalSecretVersionCustomerManagedEncryptionOutput
+	ToGetRegionalSecretVersionCustomerManagedEncryptionOutputWithContext(context.Context) GetRegionalSecretVersionCustomerManagedEncryptionOutput
+}
+
+type GetRegionalSecretVersionCustomerManagedEncryptionArgs struct {
+	// The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
+	KmsKeyVersionName pulumi.StringInput `pulumi:"kmsKeyVersionName"`
+}
+
+func (GetRegionalSecretVersionCustomerManagedEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionalSecretVersionCustomerManagedEncryption)(nil)).Elem()
+}
+
+func (i GetRegionalSecretVersionCustomerManagedEncryptionArgs) ToGetRegionalSecretVersionCustomerManagedEncryptionOutput() GetRegionalSecretVersionCustomerManagedEncryptionOutput {
+	return i.ToGetRegionalSecretVersionCustomerManagedEncryptionOutputWithContext(context.Background())
+}
+
+func (i GetRegionalSecretVersionCustomerManagedEncryptionArgs) ToGetRegionalSecretVersionCustomerManagedEncryptionOutputWithContext(ctx context.Context) GetRegionalSecretVersionCustomerManagedEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionalSecretVersionCustomerManagedEncryptionOutput)
+}
+
+// GetRegionalSecretVersionCustomerManagedEncryptionArrayInput is an input type that accepts GetRegionalSecretVersionCustomerManagedEncryptionArray and GetRegionalSecretVersionCustomerManagedEncryptionArrayOutput values.
+// You can construct a concrete instance of `GetRegionalSecretVersionCustomerManagedEncryptionArrayInput` via:
+//
+//	GetRegionalSecretVersionCustomerManagedEncryptionArray{ GetRegionalSecretVersionCustomerManagedEncryptionArgs{...} }
+type GetRegionalSecretVersionCustomerManagedEncryptionArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionalSecretVersionCustomerManagedEncryptionArrayOutput() GetRegionalSecretVersionCustomerManagedEncryptionArrayOutput
+	ToGetRegionalSecretVersionCustomerManagedEncryptionArrayOutputWithContext(context.Context) GetRegionalSecretVersionCustomerManagedEncryptionArrayOutput
+}
+
+type GetRegionalSecretVersionCustomerManagedEncryptionArray []GetRegionalSecretVersionCustomerManagedEncryptionInput
+
+func (GetRegionalSecretVersionCustomerManagedEncryptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionalSecretVersionCustomerManagedEncryption)(nil)).Elem()
+}
+
+func (i GetRegionalSecretVersionCustomerManagedEncryptionArray) ToGetRegionalSecretVersionCustomerManagedEncryptionArrayOutput() GetRegionalSecretVersionCustomerManagedEncryptionArrayOutput {
+	return i.ToGetRegionalSecretVersionCustomerManagedEncryptionArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionalSecretVersionCustomerManagedEncryptionArray) ToGetRegionalSecretVersionCustomerManagedEncryptionArrayOutputWithContext(ctx context.Context) GetRegionalSecretVersionCustomerManagedEncryptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionalSecretVersionCustomerManagedEncryptionArrayOutput)
+}
+
+type GetRegionalSecretVersionCustomerManagedEncryptionOutput struct{ *pulumi.OutputState }
+
+func (GetRegionalSecretVersionCustomerManagedEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionalSecretVersionCustomerManagedEncryption)(nil)).Elem()
+}
+
+func (o GetRegionalSecretVersionCustomerManagedEncryptionOutput) ToGetRegionalSecretVersionCustomerManagedEncryptionOutput() GetRegionalSecretVersionCustomerManagedEncryptionOutput {
+	return o
+}
+
+func (o GetRegionalSecretVersionCustomerManagedEncryptionOutput) ToGetRegionalSecretVersionCustomerManagedEncryptionOutputWithContext(ctx context.Context) GetRegionalSecretVersionCustomerManagedEncryptionOutput {
+	return o
+}
+
+// The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
+func (o GetRegionalSecretVersionCustomerManagedEncryptionOutput) KmsKeyVersionName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionalSecretVersionCustomerManagedEncryption) string { return v.KmsKeyVersionName }).(pulumi.StringOutput)
+}
+
+type GetRegionalSecretVersionCustomerManagedEncryptionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionalSecretVersionCustomerManagedEncryptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionalSecretVersionCustomerManagedEncryption)(nil)).Elem()
+}
+
+func (o GetRegionalSecretVersionCustomerManagedEncryptionArrayOutput) ToGetRegionalSecretVersionCustomerManagedEncryptionArrayOutput() GetRegionalSecretVersionCustomerManagedEncryptionArrayOutput {
+	return o
+}
+
+func (o GetRegionalSecretVersionCustomerManagedEncryptionArrayOutput) ToGetRegionalSecretVersionCustomerManagedEncryptionArrayOutputWithContext(ctx context.Context) GetRegionalSecretVersionCustomerManagedEncryptionArrayOutput {
+	return o
+}
+
+func (o GetRegionalSecretVersionCustomerManagedEncryptionArrayOutput) Index(i pulumi.IntInput) GetRegionalSecretVersionCustomerManagedEncryptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionalSecretVersionCustomerManagedEncryption {
+		return vs[0].([]GetRegionalSecretVersionCustomerManagedEncryption)[vs[1].(int)]
+	}).(GetRegionalSecretVersionCustomerManagedEncryptionOutput)
 }
 
 type GetSecretReplication struct {
@@ -3382,6 +4658,18 @@ func (o GetSecretsSecretTopicArrayOutput) Index(i pulumi.IntInput) GetSecretsSec
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionalSecretCustomerManagedEncryptionInput)(nil)).Elem(), RegionalSecretCustomerManagedEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionalSecretCustomerManagedEncryptionPtrInput)(nil)).Elem(), RegionalSecretCustomerManagedEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionalSecretIamBindingConditionInput)(nil)).Elem(), RegionalSecretIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionalSecretIamBindingConditionPtrInput)(nil)).Elem(), RegionalSecretIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionalSecretIamMemberConditionInput)(nil)).Elem(), RegionalSecretIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionalSecretIamMemberConditionPtrInput)(nil)).Elem(), RegionalSecretIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionalSecretRotationInput)(nil)).Elem(), RegionalSecretRotationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionalSecretRotationPtrInput)(nil)).Elem(), RegionalSecretRotationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionalSecretTopicInput)(nil)).Elem(), RegionalSecretTopicArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionalSecretTopicArrayInput)(nil)).Elem(), RegionalSecretTopicArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionalSecretVersionCustomerManagedEncryptionInput)(nil)).Elem(), RegionalSecretVersionCustomerManagedEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionalSecretVersionCustomerManagedEncryptionArrayInput)(nil)).Elem(), RegionalSecretVersionCustomerManagedEncryptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretIamBindingConditionInput)(nil)).Elem(), SecretIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretIamBindingConditionPtrInput)(nil)).Elem(), SecretIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretIamMemberConditionInput)(nil)).Elem(), SecretIamMemberConditionArgs{})
@@ -3402,6 +4690,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretRotationPtrInput)(nil)).Elem(), SecretRotationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretTopicInput)(nil)).Elem(), SecretTopicArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretTopicArrayInput)(nil)).Elem(), SecretTopicArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionalSecretCustomerManagedEncryptionInput)(nil)).Elem(), GetRegionalSecretCustomerManagedEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionalSecretCustomerManagedEncryptionArrayInput)(nil)).Elem(), GetRegionalSecretCustomerManagedEncryptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionalSecretRotationInput)(nil)).Elem(), GetRegionalSecretRotationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionalSecretRotationArrayInput)(nil)).Elem(), GetRegionalSecretRotationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionalSecretTopicInput)(nil)).Elem(), GetRegionalSecretTopicArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionalSecretTopicArrayInput)(nil)).Elem(), GetRegionalSecretTopicArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionalSecretVersionCustomerManagedEncryptionInput)(nil)).Elem(), GetRegionalSecretVersionCustomerManagedEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionalSecretVersionCustomerManagedEncryptionArrayInput)(nil)).Elem(), GetRegionalSecretVersionCustomerManagedEncryptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretReplicationInput)(nil)).Elem(), GetSecretReplicationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretReplicationArrayInput)(nil)).Elem(), GetSecretReplicationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretReplicationAutoInput)(nil)).Elem(), GetSecretReplicationAutoArgs{})
@@ -3436,6 +4732,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretsSecretRotationArrayInput)(nil)).Elem(), GetSecretsSecretRotationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretsSecretTopicInput)(nil)).Elem(), GetSecretsSecretTopicArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretsSecretTopicArrayInput)(nil)).Elem(), GetSecretsSecretTopicArray{})
+	pulumi.RegisterOutputType(RegionalSecretCustomerManagedEncryptionOutput{})
+	pulumi.RegisterOutputType(RegionalSecretCustomerManagedEncryptionPtrOutput{})
+	pulumi.RegisterOutputType(RegionalSecretIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(RegionalSecretIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(RegionalSecretIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(RegionalSecretIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(RegionalSecretRotationOutput{})
+	pulumi.RegisterOutputType(RegionalSecretRotationPtrOutput{})
+	pulumi.RegisterOutputType(RegionalSecretTopicOutput{})
+	pulumi.RegisterOutputType(RegionalSecretTopicArrayOutput{})
+	pulumi.RegisterOutputType(RegionalSecretVersionCustomerManagedEncryptionOutput{})
+	pulumi.RegisterOutputType(RegionalSecretVersionCustomerManagedEncryptionArrayOutput{})
 	pulumi.RegisterOutputType(SecretIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(SecretIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(SecretIamMemberConditionOutput{})
@@ -3456,6 +4764,14 @@ func init() {
 	pulumi.RegisterOutputType(SecretRotationPtrOutput{})
 	pulumi.RegisterOutputType(SecretTopicOutput{})
 	pulumi.RegisterOutputType(SecretTopicArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionalSecretCustomerManagedEncryptionOutput{})
+	pulumi.RegisterOutputType(GetRegionalSecretCustomerManagedEncryptionArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionalSecretRotationOutput{})
+	pulumi.RegisterOutputType(GetRegionalSecretRotationArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionalSecretTopicOutput{})
+	pulumi.RegisterOutputType(GetRegionalSecretTopicArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionalSecretVersionCustomerManagedEncryptionOutput{})
+	pulumi.RegisterOutputType(GetRegionalSecretVersionCustomerManagedEncryptionArrayOutput{})
 	pulumi.RegisterOutputType(GetSecretReplicationOutput{})
 	pulumi.RegisterOutputType(GetSecretReplicationArrayOutput{})
 	pulumi.RegisterOutputType(GetSecretReplicationAutoOutput{})

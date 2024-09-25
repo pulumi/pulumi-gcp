@@ -110,6 +110,13 @@ namespace Pulumi.Gcp.Netapp
         public Output<string?> ActiveDirectory { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. True if the storage pool supports Auto Tiering enabled volumes. Default is false.
+        /// Auto-tiering can be enabled after storage pool creation but it can't be disabled once enabled.
+        /// </summary>
+        [Output("allowAutoTiering")]
+        public Output<bool?> AllowAutoTiering { get; private set; } = null!;
+
+        /// <summary>
         /// Capacity of the storage pool (in GiB).
         /// </summary>
         [Output("capacityGib")]
@@ -284,6 +291,13 @@ namespace Pulumi.Gcp.Netapp
         public Input<string>? ActiveDirectory { get; set; }
 
         /// <summary>
+        /// Optional. True if the storage pool supports Auto Tiering enabled volumes. Default is false.
+        /// Auto-tiering can be enabled after storage pool creation but it can't be disabled once enabled.
+        /// </summary>
+        [Input("allowAutoTiering")]
+        public Input<bool>? AllowAutoTiering { get; set; }
+
+        /// <summary>
         /// Capacity of the storage pool (in GiB).
         /// </summary>
         [Input("capacityGib", required: true)]
@@ -388,6 +402,13 @@ namespace Pulumi.Gcp.Netapp
         /// </summary>
         [Input("activeDirectory")]
         public Input<string>? ActiveDirectory { get; set; }
+
+        /// <summary>
+        /// Optional. True if the storage pool supports Auto Tiering enabled volumes. Default is false.
+        /// Auto-tiering can be enabled after storage pool creation but it can't be disabled once enabled.
+        /// </summary>
+        [Input("allowAutoTiering")]
+        public Input<bool>? AllowAutoTiering { get; set; }
 
         /// <summary>
         /// Capacity of the storage pool (in GiB).

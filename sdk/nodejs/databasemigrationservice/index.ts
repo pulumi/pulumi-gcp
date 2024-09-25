@@ -10,6 +10,11 @@ export type ConnectionProfile = import("./connectionProfile").ConnectionProfile;
 export const ConnectionProfile: typeof import("./connectionProfile").ConnectionProfile = null as any;
 utilities.lazyLoad(exports, ["ConnectionProfile"], () => require("./connectionProfile"));
 
+export { MigrationJobArgs, MigrationJobState } from "./migrationJob";
+export type MigrationJob = import("./migrationJob").MigrationJob;
+export const MigrationJob: typeof import("./migrationJob").MigrationJob = null as any;
+utilities.lazyLoad(exports, ["MigrationJob"], () => require("./migrationJob"));
+
 export { PrivateConnectionArgs, PrivateConnectionState } from "./privateConnection";
 export type PrivateConnection = import("./privateConnection").PrivateConnection;
 export const PrivateConnection: typeof import("./privateConnection").PrivateConnection = null as any;
@@ -22,6 +27,8 @@ const _module = {
         switch (type) {
             case "gcp:databasemigrationservice/connectionProfile:ConnectionProfile":
                 return new ConnectionProfile(name, <any>undefined, { urn })
+            case "gcp:databasemigrationservice/migrationJob:MigrationJob":
+                return new MigrationJob(name, <any>undefined, { urn })
             case "gcp:databasemigrationservice/privateConnection:PrivateConnection":
                 return new PrivateConnection(name, <any>undefined, { urn })
             default:
@@ -30,4 +37,5 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "databasemigrationservice/connectionProfile", _module)
+pulumi.runtime.registerResourceModule("gcp", "databasemigrationservice/migrationJob", _module)
 pulumi.runtime.registerResourceModule("gcp", "databasemigrationservice/privateConnection", _module)

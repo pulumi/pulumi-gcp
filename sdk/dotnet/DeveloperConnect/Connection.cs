@@ -135,6 +135,7 @@ namespace Pulumi.Gcp.DeveloperConnect
     {
         /// <summary>
         /// Optional. Allows clients to store small amounts of arbitrary data.
+        /// 
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
         /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
@@ -142,9 +143,8 @@ namespace Pulumi.Gcp.DeveloperConnect
         public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Id of the requesting object
-        /// If auto-generating Id server-side, remove this field and
-        /// connection_id from the method_signature of Create RPC
+        /// Required. Id of the requesting object. If auto-generating Id server-side,
+        /// remove this field and connection_id from the method_signature of Create RPC.
         /// 
         /// 
         /// - - -
@@ -165,9 +165,7 @@ namespace Pulumi.Gcp.DeveloperConnect
         public Output<string> DeleteTime { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. If disabled is set to true, functionality is disabled for this connection.
-        /// Repository based API methods and webhooks processing for repositories in
-        /// this connection will be disabled.
+        /// Optional. If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
         /// </summary>
         [Output("disabled")]
         public Output<bool?> Disabled { get; private set; } = null!;
@@ -182,8 +180,8 @@ namespace Pulumi.Gcp.DeveloperConnect
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. This checksum is computed by the server based on the value of other
-        /// fields, and may be sent on update and delete requests to ensure the
+        /// Optional. This checksum is computed by the server based on the value
+        /// of other fields, and may be sent on update and delete requests to ensure the
         /// client has an up-to-date value before proceeding.
         /// </summary>
         [Output("etag")]
@@ -197,9 +195,8 @@ namespace Pulumi.Gcp.DeveloperConnect
         public Output<Outputs.ConnectionGithubConfig?> GithubConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Describes stage and necessary actions to be taken by the
-        /// user to complete the installation. Used for GitHub and GitHub Enterprise
-        /// based connections.
+        /// Describes stage and necessary actions to be taken by the user to complete the installation.
+        /// Used for GitHub and GitHub Enterprise based connections.
         /// Structure is documented below.
         /// </summary>
         [Output("installationStates")]
@@ -207,6 +204,7 @@ namespace Pulumi.Gcp.DeveloperConnect
 
         /// <summary>
         /// Optional. Labels as key value pairs
+        /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
@@ -214,7 +212,9 @@ namespace Pulumi.Gcp.DeveloperConnect
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
+        /// Resource ID segment making up resource `name`. It identifies the resource
+        /// within its parent collection as described in https://google.aip.dev/122. See documentation
+        /// for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -241,8 +241,8 @@ namespace Pulumi.Gcp.DeveloperConnect
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. Set to true when the connection is being set up or updated in the
-        /// background.
+        /// Output only. Set to true when the connection is being set up or updated
+        /// in the background.
         /// </summary>
         [Output("reconciling")]
         public Output<bool> Reconciling { get; private set; } = null!;
@@ -315,6 +315,7 @@ namespace Pulumi.Gcp.DeveloperConnect
 
         /// <summary>
         /// Optional. Allows clients to store small amounts of arbitrary data.
+        /// 
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
         /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
@@ -325,9 +326,8 @@ namespace Pulumi.Gcp.DeveloperConnect
         }
 
         /// <summary>
-        /// Required. Id of the requesting object
-        /// If auto-generating Id server-side, remove this field and
-        /// connection_id from the method_signature of Create RPC
+        /// Required. Id of the requesting object. If auto-generating Id server-side,
+        /// remove this field and connection_id from the method_signature of Create RPC.
         /// 
         /// 
         /// - - -
@@ -336,16 +336,14 @@ namespace Pulumi.Gcp.DeveloperConnect
         public Input<string> ConnectionId { get; set; } = null!;
 
         /// <summary>
-        /// Optional. If disabled is set to true, functionality is disabled for this connection.
-        /// Repository based API methods and webhooks processing for repositories in
-        /// this connection will be disabled.
+        /// Optional. If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// Optional. This checksum is computed by the server based on the value of other
-        /// fields, and may be sent on update and delete requests to ensure the
+        /// Optional. This checksum is computed by the server based on the value
+        /// of other fields, and may be sent on update and delete requests to ensure the
         /// client has an up-to-date value before proceeding.
         /// </summary>
         [Input("etag")]
@@ -363,6 +361,7 @@ namespace Pulumi.Gcp.DeveloperConnect
 
         /// <summary>
         /// Optional. Labels as key value pairs
+        /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
@@ -373,7 +372,9 @@ namespace Pulumi.Gcp.DeveloperConnect
         }
 
         /// <summary>
-        /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
+        /// Resource ID segment making up resource `name`. It identifies the resource
+        /// within its parent collection as described in https://google.aip.dev/122. See documentation
+        /// for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -398,6 +399,7 @@ namespace Pulumi.Gcp.DeveloperConnect
 
         /// <summary>
         /// Optional. Allows clients to store small amounts of arbitrary data.
+        /// 
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
         /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
@@ -408,9 +410,8 @@ namespace Pulumi.Gcp.DeveloperConnect
         }
 
         /// <summary>
-        /// Required. Id of the requesting object
-        /// If auto-generating Id server-side, remove this field and
-        /// connection_id from the method_signature of Create RPC
+        /// Required. Id of the requesting object. If auto-generating Id server-side,
+        /// remove this field and connection_id from the method_signature of Create RPC.
         /// 
         /// 
         /// - - -
@@ -431,9 +432,7 @@ namespace Pulumi.Gcp.DeveloperConnect
         public Input<string>? DeleteTime { get; set; }
 
         /// <summary>
-        /// Optional. If disabled is set to true, functionality is disabled for this connection.
-        /// Repository based API methods and webhooks processing for repositories in
-        /// this connection will be disabled.
+        /// Optional. If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
@@ -463,8 +462,8 @@ namespace Pulumi.Gcp.DeveloperConnect
         }
 
         /// <summary>
-        /// Optional. This checksum is computed by the server based on the value of other
-        /// fields, and may be sent on update and delete requests to ensure the
+        /// Optional. This checksum is computed by the server based on the value
+        /// of other fields, and may be sent on update and delete requests to ensure the
         /// client has an up-to-date value before proceeding.
         /// </summary>
         [Input("etag")]
@@ -481,9 +480,8 @@ namespace Pulumi.Gcp.DeveloperConnect
         private InputList<Inputs.ConnectionInstallationStateGetArgs>? _installationStates;
 
         /// <summary>
-        /// Describes stage and necessary actions to be taken by the
-        /// user to complete the installation. Used for GitHub and GitHub Enterprise
-        /// based connections.
+        /// Describes stage and necessary actions to be taken by the user to complete the installation.
+        /// Used for GitHub and GitHub Enterprise based connections.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.ConnectionInstallationStateGetArgs> InstallationStates
@@ -497,6 +495,7 @@ namespace Pulumi.Gcp.DeveloperConnect
 
         /// <summary>
         /// Optional. Labels as key value pairs
+        /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
@@ -507,7 +506,9 @@ namespace Pulumi.Gcp.DeveloperConnect
         }
 
         /// <summary>
-        /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
+        /// Resource ID segment making up resource `name`. It identifies the resource
+        /// within its parent collection as described in https://google.aip.dev/122. See documentation
+        /// for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -544,8 +545,8 @@ namespace Pulumi.Gcp.DeveloperConnect
         }
 
         /// <summary>
-        /// Output only. Set to true when the connection is being set up or updated in the
-        /// background.
+        /// Output only. Set to true when the connection is being set up or updated
+        /// in the background.
         /// </summary>
         [Input("reconciling")]
         public Input<bool>? Reconciling { get; set; }

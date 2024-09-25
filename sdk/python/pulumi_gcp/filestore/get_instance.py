@@ -27,10 +27,16 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, create_time=None, description=None, effective_labels=None, etag=None, file_shares=None, id=None, kms_key_name=None, labels=None, location=None, name=None, networks=None, project=None, protocol=None, pulumi_labels=None, tier=None, zone=None):
+    def __init__(__self__, create_time=None, deletion_protection_enabled=None, deletion_protection_reason=None, description=None, effective_labels=None, etag=None, file_shares=None, id=None, kms_key_name=None, labels=None, location=None, name=None, networks=None, project=None, protocol=None, pulumi_labels=None, tier=None, zone=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if deletion_protection_enabled and not isinstance(deletion_protection_enabled, bool):
+            raise TypeError("Expected argument 'deletion_protection_enabled' to be a bool")
+        pulumi.set(__self__, "deletion_protection_enabled", deletion_protection_enabled)
+        if deletion_protection_reason and not isinstance(deletion_protection_reason, str):
+            raise TypeError("Expected argument 'deletion_protection_reason' to be a str")
+        pulumi.set(__self__, "deletion_protection_reason", deletion_protection_reason)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -81,6 +87,16 @@ class GetInstanceResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="deletionProtectionEnabled")
+    def deletion_protection_enabled(self) -> bool:
+        return pulumi.get(self, "deletion_protection_enabled")
+
+    @property
+    @pulumi.getter(name="deletionProtectionReason")
+    def deletion_protection_reason(self) -> str:
+        return pulumi.get(self, "deletion_protection_reason")
 
     @property
     @pulumi.getter
@@ -168,6 +184,8 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             yield self
         return GetInstanceResult(
             create_time=self.create_time,
+            deletion_protection_enabled=self.deletion_protection_enabled,
+            deletion_protection_reason=self.deletion_protection_reason,
             description=self.description,
             effective_labels=self.effective_labels,
             etag=self.etag,
@@ -223,6 +241,8 @@ def get_instance(location: Optional[str] = None,
 
     return AwaitableGetInstanceResult(
         create_time=pulumi.get(__ret__, 'create_time'),
+        deletion_protection_enabled=pulumi.get(__ret__, 'deletion_protection_enabled'),
+        deletion_protection_reason=pulumi.get(__ret__, 'deletion_protection_reason'),
         description=pulumi.get(__ret__, 'description'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
         etag=pulumi.get(__ret__, 'etag'),

@@ -562,15 +562,15 @@ public class ManagedZone extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="dnssecConfig", refs={ManagedZoneDnssecConfig.class}, tree="[0]")
-    private Output</* @Nullable */ ManagedZoneDnssecConfig> dnssecConfig;
+    private Output<ManagedZoneDnssecConfig> dnssecConfig;
 
     /**
      * @return DNSSEC configuration
      * Structure is documented below.
      * 
      */
-    public Output<Optional<ManagedZoneDnssecConfig>> dnssecConfig() {
-        return Codegen.optional(this.dnssecConfig);
+    public Output<ManagedZoneDnssecConfig> dnssecConfig() {
+        return this.dnssecConfig;
     }
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.

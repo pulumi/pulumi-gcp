@@ -27,7 +27,7 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, autoscaling_configs=None, config=None, display_name=None, effective_labels=None, force_destroy=None, id=None, labels=None, name=None, num_nodes=None, processing_units=None, project=None, pulumi_labels=None, state=None):
+    def __init__(__self__, autoscaling_configs=None, config=None, display_name=None, edition=None, effective_labels=None, force_destroy=None, id=None, labels=None, name=None, num_nodes=None, processing_units=None, project=None, pulumi_labels=None, state=None):
         if autoscaling_configs and not isinstance(autoscaling_configs, list):
             raise TypeError("Expected argument 'autoscaling_configs' to be a list")
         pulumi.set(__self__, "autoscaling_configs", autoscaling_configs)
@@ -37,6 +37,9 @@ class GetInstanceResult:
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
+        if edition and not isinstance(edition, str):
+            raise TypeError("Expected argument 'edition' to be a str")
+        pulumi.set(__self__, "edition", edition)
         if effective_labels and not isinstance(effective_labels, dict):
             raise TypeError("Expected argument 'effective_labels' to be a dict")
         pulumi.set(__self__, "effective_labels", effective_labels)
@@ -82,6 +85,11 @@ class GetInstanceResult:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[str]:
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def edition(self) -> str:
+        return pulumi.get(self, "edition")
 
     @property
     @pulumi.getter(name="effectiveLabels")
@@ -146,6 +154,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             autoscaling_configs=self.autoscaling_configs,
             config=self.config,
             display_name=self.display_name,
+            edition=self.edition,
             effective_labels=self.effective_labels,
             force_destroy=self.force_destroy,
             id=self.id,
@@ -194,6 +203,7 @@ def get_instance(config: Optional[str] = None,
         autoscaling_configs=pulumi.get(__ret__, 'autoscaling_configs'),
         config=pulumi.get(__ret__, 'config'),
         display_name=pulumi.get(__ret__, 'display_name'),
+        edition=pulumi.get(__ret__, 'edition'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
         force_destroy=pulumi.get(__ret__, 'force_destroy'),
         id=pulumi.get(__ret__, 'id'),

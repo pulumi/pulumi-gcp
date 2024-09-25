@@ -60,6 +60,8 @@ export interface GetInstanceArgs {
  */
 export interface GetInstanceResult {
     readonly createTime: string;
+    readonly deletionProtectionEnabled: boolean;
+    readonly deletionProtectionReason: string;
     readonly description: string;
     readonly effectiveLabels: {[key: string]: string};
     readonly etag: string;

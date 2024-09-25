@@ -1028,6 +1028,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.secretManagerCustomEndpoint);
     }
 
+    @Import(name="secretManagerRegionalCustomEndpoint")
+    private @Nullable Output<String> secretManagerRegionalCustomEndpoint;
+
+    public Optional<Output<String>> secretManagerRegionalCustomEndpoint() {
+        return Optional.ofNullable(this.secretManagerRegionalCustomEndpoint);
+    }
+
     @Import(name="secureSourceManagerCustomEndpoint")
     private @Nullable Output<String> secureSourceManagerCustomEndpoint;
 
@@ -1385,6 +1392,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.runtimeconfigCustomEndpoint = $.runtimeconfigCustomEndpoint;
         this.scopes = $.scopes;
         this.secretManagerCustomEndpoint = $.secretManagerCustomEndpoint;
+        this.secretManagerRegionalCustomEndpoint = $.secretManagerRegionalCustomEndpoint;
         this.secureSourceManagerCustomEndpoint = $.secureSourceManagerCustomEndpoint;
         this.securityCenterCustomEndpoint = $.securityCenterCustomEndpoint;
         this.securityCenterManagementCustomEndpoint = $.securityCenterManagementCustomEndpoint;
@@ -2737,6 +2745,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder secretManagerCustomEndpoint(String secretManagerCustomEndpoint) {
             return secretManagerCustomEndpoint(Output.of(secretManagerCustomEndpoint));
+        }
+
+        public Builder secretManagerRegionalCustomEndpoint(@Nullable Output<String> secretManagerRegionalCustomEndpoint) {
+            $.secretManagerRegionalCustomEndpoint = secretManagerRegionalCustomEndpoint;
+            return this;
+        }
+
+        public Builder secretManagerRegionalCustomEndpoint(String secretManagerRegionalCustomEndpoint) {
+            return secretManagerRegionalCustomEndpoint(Output.of(secretManagerRegionalCustomEndpoint));
         }
 
         public Builder secureSourceManagerCustomEndpoint(@Nullable Output<String> secureSourceManagerCustomEndpoint) {

@@ -459,6 +459,9 @@ func GetScopes(ctx *pulumi.Context) string {
 func GetSecretManagerCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:secretManagerCustomEndpoint")
 }
+func GetSecretManagerRegionalCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:secretManagerRegionalCustomEndpoint")
+}
 func GetSecureSourceManagerCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:secureSourceManagerCustomEndpoint")
 }

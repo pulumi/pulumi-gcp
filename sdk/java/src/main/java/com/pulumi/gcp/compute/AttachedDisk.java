@@ -174,6 +174,36 @@ public class AttachedDisk extends com.pulumi.resources.CustomResource {
         return this.instance;
     }
     /**
+     * The disk interface used for attaching this disk.
+     * 
+     * This field is only used for specific cases, please don&#39;t specify
+     * this field without advice from Google. Not specifying the field
+     * will allow the the server to assign the correct interface.
+     * 
+     * Possible values:
+     * &#34;SCSI&#34;
+     * &#34;NVME&#34;
+     * 
+     */
+    @Export(name="interface", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> interface_;
+
+    /**
+     * @return The disk interface used for attaching this disk.
+     * 
+     * This field is only used for specific cases, please don&#39;t specify
+     * this field without advice from Google. Not specifying the field
+     * will allow the the server to assign the correct interface.
+     * 
+     * Possible values:
+     * &#34;SCSI&#34;
+     * &#34;NVME&#34;
+     * 
+     */
+    public Output<Optional<String>> interface_() {
+        return Codegen.optional(this.interface_);
+    }
+    /**
      * The mode in which to attach this disk, either READ_WRITE or
      * READ_ONLY. If not specified, the default is to attach the disk in
      * READ_WRITE mode.

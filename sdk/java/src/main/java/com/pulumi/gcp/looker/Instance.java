@@ -154,6 +154,49 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Looker Instance Fips
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.looker.Instance;
+ * import com.pulumi.gcp.looker.InstanceArgs;
+ * import com.pulumi.gcp.looker.inputs.InstanceOauthConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var looker_instance = new Instance("looker-instance", InstanceArgs.builder()
+ *             .name("my-instance-fips")
+ *             .platformEdition("LOOKER_CORE_ENTERPRISE_ANNUAL")
+ *             .region("us-central1")
+ *             .publicIpEnabled(true)
+ *             .fipsEnabled(true)
+ *             .oauthConfig(InstanceOauthConfigArgs.builder()
+ *                 .clientId("my-client-id")
+ *                 .clientSecret("my-client-secret")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Looker Instance Enterprise Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -473,6 +516,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<InstanceEncryptionConfig> encryptionConfig() {
         return this.encryptionConfig;
+    }
+    /**
+     * FIPS 140-2 Encryption enablement for Looker (Google Cloud Core).
+     * 
+     */
+    @Export(name="fipsEnabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> fipsEnabled;
+
+    /**
+     * @return FIPS 140-2 Encryption enablement for Looker (Google Cloud Core).
+     * 
+     */
+    public Output<Optional<Boolean>> fipsEnabled() {
+        return Codegen.optional(this.fipsEnabled);
     }
     /**
      * Private Ingress IP (IPv4).

@@ -24,6 +24,8 @@ class InstanceArgs:
                  file_shares: pulumi.Input['InstanceFileSharesArgs'],
                  networks: pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]],
                  tier: pulumi.Input[str],
+                 deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
+                 deletion_protection_reason: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -42,6 +44,8 @@ class InstanceArgs:
                Structure is documented below.
         :param pulumi.Input[str] tier: The service tier of the instance.
                Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
+        :param pulumi.Input[bool] deletion_protection_enabled: Indicates whether the instance is protected against deletion.
+        :param pulumi.Input[str] deletion_protection_reason: The reason for enabling deletion protection.
         :param pulumi.Input[str] description: A description of the instance.
         :param pulumi.Input[str] kms_key_name: KMS key name used for data encryption.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata. **Note**: This field is non-authoritative, and will only manage the
@@ -57,6 +61,10 @@ class InstanceArgs:
         pulumi.set(__self__, "file_shares", file_shares)
         pulumi.set(__self__, "networks", networks)
         pulumi.set(__self__, "tier", tier)
+        if deletion_protection_enabled is not None:
+            pulumi.set(__self__, "deletion_protection_enabled", deletion_protection_enabled)
+        if deletion_protection_reason is not None:
+            pulumi.set(__self__, "deletion_protection_reason", deletion_protection_reason)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if kms_key_name is not None:
@@ -117,6 +125,30 @@ class InstanceArgs:
     @tier.setter
     def tier(self, value: pulumi.Input[str]):
         pulumi.set(self, "tier", value)
+
+    @property
+    @pulumi.getter(name="deletionProtectionEnabled")
+    def deletion_protection_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether the instance is protected against deletion.
+        """
+        return pulumi.get(self, "deletion_protection_enabled")
+
+    @deletion_protection_enabled.setter
+    def deletion_protection_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection_enabled", value)
+
+    @property
+    @pulumi.getter(name="deletionProtectionReason")
+    def deletion_protection_reason(self) -> Optional[pulumi.Input[str]]:
+        """
+        The reason for enabling deletion protection.
+        """
+        return pulumi.get(self, "deletion_protection_reason")
+
+    @deletion_protection_reason.setter
+    def deletion_protection_reason(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deletion_protection_reason", value)
 
     @property
     @pulumi.getter
@@ -221,6 +253,8 @@ class InstanceArgs:
 class _InstanceState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
+                 deletion_protection_reason: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
@@ -238,6 +272,8 @@ class _InstanceState:
         """
         Input properties used for looking up and filtering Instance resources.
         :param pulumi.Input[str] create_time: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[bool] deletion_protection_enabled: Indicates whether the instance is protected against deletion.
+        :param pulumi.Input[str] deletion_protection_reason: The reason for enabling deletion protection.
         :param pulumi.Input[str] description: A description of the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] etag: Server-specified ETag for the instance resource to prevent
@@ -265,6 +301,10 @@ class _InstanceState:
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_protection_enabled is not None:
+            pulumi.set(__self__, "deletion_protection_enabled", deletion_protection_enabled)
+        if deletion_protection_reason is not None:
+            pulumi.set(__self__, "deletion_protection_reason", deletion_protection_reason)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if effective_labels is not None:
@@ -308,6 +348,30 @@ class _InstanceState:
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="deletionProtectionEnabled")
+    def deletion_protection_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether the instance is protected against deletion.
+        """
+        return pulumi.get(self, "deletion_protection_enabled")
+
+    @deletion_protection_enabled.setter
+    def deletion_protection_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection_enabled", value)
+
+    @property
+    @pulumi.getter(name="deletionProtectionReason")
+    def deletion_protection_reason(self) -> Optional[pulumi.Input[str]]:
+        """
+        The reason for enabling deletion protection.
+        """
+        return pulumi.get(self, "deletion_protection_reason")
+
+    @deletion_protection_reason.setter
+    def deletion_protection_reason(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deletion_protection_reason", value)
 
     @property
     @pulumi.getter
@@ -492,6 +556,8 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
+                 deletion_protection_reason: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  file_shares: Optional[pulumi.Input[Union['InstanceFileSharesArgs', 'InstanceFileSharesArgsDict']]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
@@ -643,6 +709,8 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] deletion_protection_enabled: Indicates whether the instance is protected against deletion.
+        :param pulumi.Input[str] deletion_protection_reason: The reason for enabling deletion protection.
         :param pulumi.Input[str] description: A description of the instance.
         :param pulumi.Input[Union['InstanceFileSharesArgs', 'InstanceFileSharesArgsDict']] file_shares: File system shares on the instance. For this version, only a
                single file share is supported.
@@ -821,6 +889,8 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
+                 deletion_protection_reason: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  file_shares: Optional[pulumi.Input[Union['InstanceFileSharesArgs', 'InstanceFileSharesArgsDict']]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
@@ -841,6 +911,8 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
+            __props__.__dict__["deletion_protection_enabled"] = deletion_protection_enabled
+            __props__.__dict__["deletion_protection_reason"] = deletion_protection_reason
             __props__.__dict__["description"] = description
             if file_shares is None and not opts.urn:
                 raise TypeError("Missing required property 'file_shares'")
@@ -875,6 +947,8 @@ class Instance(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
+            deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
+            deletion_protection_reason: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
@@ -897,6 +971,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[bool] deletion_protection_enabled: Indicates whether the instance is protected against deletion.
+        :param pulumi.Input[str] deletion_protection_reason: The reason for enabling deletion protection.
         :param pulumi.Input[str] description: A description of the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] etag: Server-specified ETag for the instance resource to prevent
@@ -927,6 +1003,8 @@ class Instance(pulumi.CustomResource):
         __props__ = _InstanceState.__new__(_InstanceState)
 
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_protection_enabled"] = deletion_protection_enabled
+        __props__.__dict__["deletion_protection_reason"] = deletion_protection_reason
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["etag"] = etag
@@ -950,6 +1028,22 @@ class Instance(pulumi.CustomResource):
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="deletionProtectionEnabled")
+    def deletion_protection_enabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Indicates whether the instance is protected against deletion.
+        """
+        return pulumi.get(self, "deletion_protection_enabled")
+
+    @property
+    @pulumi.getter(name="deletionProtectionReason")
+    def deletion_protection_reason(self) -> pulumi.Output[Optional[str]]:
+        """
+        The reason for enabling deletion protection.
+        """
+        return pulumi.get(self, "deletion_protection_reason")
 
     @property
     @pulumi.getter

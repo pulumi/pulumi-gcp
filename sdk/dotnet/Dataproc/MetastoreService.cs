@@ -53,6 +53,40 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// });
     /// ```
+    /// ### Dataproc Metastore Service Deletion Protection
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Dataproc.MetastoreService("default", new()
+    ///     {
+    ///         ServiceId = "metastore-srv",
+    ///         Location = "us-central1",
+    ///         Port = 9080,
+    ///         Tier = "DEVELOPER",
+    ///         DeletionProtection = true,
+    ///         MaintenanceWindow = new Gcp.Dataproc.Inputs.MetastoreServiceMaintenanceWindowArgs
+    ///         {
+    ///             HourOfDay = 2,
+    ///             DayOfWeek = "SUNDAY",
+    ///         },
+    ///         HiveMetastoreConfig = new Gcp.Dataproc.Inputs.MetastoreServiceHiveMetastoreConfigArgs
+    ///         {
+    ///             Version = "2.3.6",
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "env", "test" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Dataproc Metastore Service Cmek Example
     /// 
     /// ```csharp
@@ -464,6 +498,12 @@ namespace Pulumi.Gcp.Dataproc
         public Output<string?> DatabaseType { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates if the dataproc metastore should be protected against accidental deletions.
+        /// </summary>
+        [Output("deletionProtection")]
+        public Output<bool?> DeletionProtection { get; private set; } = null!;
+
+        /// <summary>
         /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         /// </summary>
         [Output("effectiveLabels")]
@@ -686,6 +726,12 @@ namespace Pulumi.Gcp.Dataproc
         public Input<string>? DatabaseType { get; set; }
 
         /// <summary>
+        /// Indicates if the dataproc metastore should be protected against accidental deletions.
+        /// </summary>
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
+
+        /// <summary>
         /// Information used to configure the Dataproc Metastore service to encrypt
         /// customer data at rest.
         /// Structure is documented below.
@@ -832,6 +878,12 @@ namespace Pulumi.Gcp.Dataproc
         /// </summary>
         [Input("databaseType")]
         public Input<string>? DatabaseType { get; set; }
+
+        /// <summary>
+        /// Indicates if the dataproc metastore should be protected against accidental deletions.
+        /// </summary>
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
 
         [Input("effectiveLabels")]
         private InputMap<string>? _effectiveLabels;

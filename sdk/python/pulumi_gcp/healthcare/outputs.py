@@ -38,6 +38,7 @@ __all__ = [
     'Hl7StoreNotificationConfig',
     'Hl7StoreNotificationConfigs',
     'Hl7StoreParserConfig',
+    'WorkspaceSettings',
 ]
 
 @pulumi.output_type
@@ -1017,5 +1018,44 @@ class Hl7StoreParserConfig(dict):
         Possible values are: `V1`, `V2`, `V3`.
         """
         return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class WorkspaceSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataProjectIds":
+            suggest = "data_project_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkspaceSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkspaceSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkspaceSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 data_project_ids: Sequence[str]):
+        """
+        :param Sequence[str] data_project_ids: Project IDs for data projects hosted in a workspace.
+               
+               - - -
+        """
+        pulumi.set(__self__, "data_project_ids", data_project_ids)
+
+    @property
+    @pulumi.getter(name="dataProjectIds")
+    def data_project_ids(self) -> Sequence[str]:
+        """
+        Project IDs for data projects hosted in a workspace.
+
+        - - -
+        """
+        return pulumi.get(self, "data_project_ids")
 
 

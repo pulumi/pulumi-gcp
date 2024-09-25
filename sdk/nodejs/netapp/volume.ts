@@ -115,6 +115,10 @@ export class Volume extends pulumi.CustomResource {
      */
     public readonly capacityGib!: pulumi.Output<string>;
     /**
+     * Output only. Size of the volume cold tier data in GiB.
+     */
+    public /*out*/ readonly coldTierSizeGib!: pulumi.Output<string>;
+    /**
      * Create time of the volume. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -269,6 +273,11 @@ export class Volume extends pulumi.CustomResource {
      */
     public readonly storagePool!: pulumi.Output<string>;
     /**
+     * Tiering policy for the volume.
+     * Structure is documented below.
+     */
+    public readonly tieringPolicy!: pulumi.Output<outputs.netapp.VolumeTieringPolicy | undefined>;
+    /**
      * Unix permission the mount point will be created with. Default is 0770. Applicable for UNIX security style volumes only.
      */
     public readonly unixPermissions!: pulumi.Output<string>;
@@ -297,6 +306,7 @@ export class Volume extends pulumi.CustomResource {
             resourceInputs["activeDirectory"] = state ? state.activeDirectory : undefined;
             resourceInputs["backupConfig"] = state ? state.backupConfig : undefined;
             resourceInputs["capacityGib"] = state ? state.capacityGib : undefined;
+            resourceInputs["coldTierSizeGib"] = state ? state.coldTierSizeGib : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -330,6 +340,7 @@ export class Volume extends pulumi.CustomResource {
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["stateDetails"] = state ? state.stateDetails : undefined;
             resourceInputs["storagePool"] = state ? state.storagePool : undefined;
+            resourceInputs["tieringPolicy"] = state ? state.tieringPolicy : undefined;
             resourceInputs["unixPermissions"] = state ? state.unixPermissions : undefined;
             resourceInputs["usedGib"] = state ? state.usedGib : undefined;
             resourceInputs["zone"] = state ? state.zone : undefined;
@@ -371,8 +382,10 @@ export class Volume extends pulumi.CustomResource {
             resourceInputs["snapshotDirectory"] = args ? args.snapshotDirectory : undefined;
             resourceInputs["snapshotPolicy"] = args ? args.snapshotPolicy : undefined;
             resourceInputs["storagePool"] = args ? args.storagePool : undefined;
+            resourceInputs["tieringPolicy"] = args ? args.tieringPolicy : undefined;
             resourceInputs["unixPermissions"] = args ? args.unixPermissions : undefined;
             resourceInputs["activeDirectory"] = undefined /*out*/;
+            resourceInputs["coldTierSizeGib"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["encryptionType"] = undefined /*out*/;
@@ -414,6 +427,10 @@ export interface VolumeState {
      * Capacity of the volume (in GiB).
      */
     capacityGib?: pulumi.Input<string>;
+    /**
+     * Output only. Size of the volume cold tier data in GiB.
+     */
+    coldTierSizeGib?: pulumi.Input<string>;
     /**
      * Create time of the volume. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
      */
@@ -569,6 +586,11 @@ export interface VolumeState {
      */
     storagePool?: pulumi.Input<string>;
     /**
+     * Tiering policy for the volume.
+     * Structure is documented below.
+     */
+    tieringPolicy?: pulumi.Input<inputs.netapp.VolumeTieringPolicy>;
+    /**
      * Unix permission the mount point will be created with. Default is 0770. Applicable for UNIX security style volumes only.
      */
     unixPermissions?: pulumi.Input<string>;
@@ -691,6 +713,11 @@ export interface VolumeArgs {
      * Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.
      */
     storagePool: pulumi.Input<string>;
+    /**
+     * Tiering policy for the volume.
+     * Structure is documented below.
+     */
+    tieringPolicy?: pulumi.Input<inputs.netapp.VolumeTieringPolicy>;
     /**
      * Unix permission the mount point will be created with. Default is 0770. Applicable for UNIX security style volumes only.
      */

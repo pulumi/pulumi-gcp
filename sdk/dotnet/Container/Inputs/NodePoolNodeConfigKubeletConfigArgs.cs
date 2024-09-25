@@ -27,8 +27,8 @@ namespace Pulumi.Gcp.Container.Inputs
         /// <summary>
         /// Control the CPU management policy on the node.
         /// </summary>
-        [Input("cpuManagerPolicy", required: true)]
-        public Input<string> CpuManagerPolicy { get; set; } = null!;
+        [Input("cpuManagerPolicy")]
+        public Input<string>? CpuManagerPolicy { get; set; }
 
         /// <summary>
         /// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.

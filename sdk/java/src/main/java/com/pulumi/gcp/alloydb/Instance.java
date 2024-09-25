@@ -525,6 +525,24 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.observabilityConfig;
     }
     /**
+     * The outbound public IP addresses for the instance. This is available ONLY when
+     * networkConfig.enableOutboundPublicIp is set to true. These IP addresses are used
+     * for outbound connections.
+     * 
+     */
+    @Export(name="outboundPublicIpAddresses", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> outboundPublicIpAddresses;
+
+    /**
+     * @return The outbound public IP addresses for the instance. This is available ONLY when
+     * networkConfig.enableOutboundPublicIp is set to true. These IP addresses are used
+     * for outbound connections.
+     * 
+     */
+    public Output<List<String>> outboundPublicIpAddresses() {
+        return this.outboundPublicIpAddresses;
+    }
+    /**
      * Configuration for Private Service Connect (PSC) for the instance.
      * Structure is documented below.
      * 

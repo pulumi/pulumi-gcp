@@ -140,6 +140,8 @@ namespace Pulumi.Gcp.Filestore
     public sealed class GetInstanceResult
     {
         public readonly string CreateTime;
+        public readonly bool DeletionProtectionEnabled;
+        public readonly string DeletionProtectionReason;
         public readonly string Description;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly string Etag;
@@ -162,6 +164,10 @@ namespace Pulumi.Gcp.Filestore
         [OutputConstructor]
         private GetInstanceResult(
             string createTime,
+
+            bool deletionProtectionEnabled,
+
+            string deletionProtectionReason,
 
             string description,
 
@@ -194,6 +200,8 @@ namespace Pulumi.Gcp.Filestore
             string zone)
         {
             CreateTime = createTime;
+            DeletionProtectionEnabled = deletionProtectionEnabled;
+            DeletionProtectionReason = deletionProtectionReason;
             Description = description;
             EffectiveLabels = effectiveLabels;
             Etag = etag;

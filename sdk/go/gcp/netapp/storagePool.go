@@ -119,6 +119,9 @@ type StoragePool struct {
 	// Specifies the Active Directory policy to be used. Format: `projects/{{project}}/locations/{{location}}/activeDirectories/{{name}}`.
 	// The policy needs to be in the same location as the storage pool.
 	ActiveDirectory pulumi.StringPtrOutput `pulumi:"activeDirectory"`
+	// Optional. True if the storage pool supports Auto Tiering enabled volumes. Default is false.
+	// Auto-tiering can be enabled after storage pool creation but it can't be disabled once enabled.
+	AllowAutoTiering pulumi.BoolPtrOutput `pulumi:"allowAutoTiering"`
 	// Capacity of the storage pool (in GiB).
 	CapacityGib pulumi.StringOutput `pulumi:"capacityGib"`
 	// An optional description of this resource.
@@ -218,6 +221,9 @@ type storagePoolState struct {
 	// Specifies the Active Directory policy to be used. Format: `projects/{{project}}/locations/{{location}}/activeDirectories/{{name}}`.
 	// The policy needs to be in the same location as the storage pool.
 	ActiveDirectory *string `pulumi:"activeDirectory"`
+	// Optional. True if the storage pool supports Auto Tiering enabled volumes. Default is false.
+	// Auto-tiering can be enabled after storage pool creation but it can't be disabled once enabled.
+	AllowAutoTiering *bool `pulumi:"allowAutoTiering"`
 	// Capacity of the storage pool (in GiB).
 	CapacityGib *string `pulumi:"capacityGib"`
 	// An optional description of this resource.
@@ -271,6 +277,9 @@ type StoragePoolState struct {
 	// Specifies the Active Directory policy to be used. Format: `projects/{{project}}/locations/{{location}}/activeDirectories/{{name}}`.
 	// The policy needs to be in the same location as the storage pool.
 	ActiveDirectory pulumi.StringPtrInput
+	// Optional. True if the storage pool supports Auto Tiering enabled volumes. Default is false.
+	// Auto-tiering can be enabled after storage pool creation but it can't be disabled once enabled.
+	AllowAutoTiering pulumi.BoolPtrInput
 	// Capacity of the storage pool (in GiB).
 	CapacityGib pulumi.StringPtrInput
 	// An optional description of this resource.
@@ -328,6 +337,9 @@ type storagePoolArgs struct {
 	// Specifies the Active Directory policy to be used. Format: `projects/{{project}}/locations/{{location}}/activeDirectories/{{name}}`.
 	// The policy needs to be in the same location as the storage pool.
 	ActiveDirectory *string `pulumi:"activeDirectory"`
+	// Optional. True if the storage pool supports Auto Tiering enabled volumes. Default is false.
+	// Auto-tiering can be enabled after storage pool creation but it can't be disabled once enabled.
+	AllowAutoTiering *bool `pulumi:"allowAutoTiering"`
 	// Capacity of the storage pool (in GiB).
 	CapacityGib string `pulumi:"capacityGib"`
 	// An optional description of this resource.
@@ -371,6 +383,9 @@ type StoragePoolArgs struct {
 	// Specifies the Active Directory policy to be used. Format: `projects/{{project}}/locations/{{location}}/activeDirectories/{{name}}`.
 	// The policy needs to be in the same location as the storage pool.
 	ActiveDirectory pulumi.StringPtrInput
+	// Optional. True if the storage pool supports Auto Tiering enabled volumes. Default is false.
+	// Auto-tiering can be enabled after storage pool creation but it can't be disabled once enabled.
+	AllowAutoTiering pulumi.BoolPtrInput
 	// Capacity of the storage pool (in GiB).
 	CapacityGib pulumi.StringInput
 	// An optional description of this resource.
@@ -500,6 +515,12 @@ func (o StoragePoolOutput) ToStoragePoolOutputWithContext(ctx context.Context) S
 // The policy needs to be in the same location as the storage pool.
 func (o StoragePoolOutput) ActiveDirectory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StoragePool) pulumi.StringPtrOutput { return v.ActiveDirectory }).(pulumi.StringPtrOutput)
+}
+
+// Optional. True if the storage pool supports Auto Tiering enabled volumes. Default is false.
+// Auto-tiering can be enabled after storage pool creation but it can't be disabled once enabled.
+func (o StoragePoolOutput) AllowAutoTiering() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *StoragePool) pulumi.BoolPtrOutput { return v.AllowAutoTiering }).(pulumi.BoolPtrOutput)
 }
 
 // Capacity of the storage pool (in GiB).

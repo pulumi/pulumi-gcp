@@ -29,12 +29,12 @@ if not MYPY:
     class ConnectionGithubConfigArgsDict(TypedDict):
         github_app: pulumi.Input[str]
         """
-        Required. Immutable. The GitHub Application that was installed to the GitHub user or
-        organization.
+        Required. Immutable. The GitHub Application that was installed to
+        the GitHub user or organization.
         Possible values:
         GIT_HUB_APP_UNSPECIFIED
         DEVELOPER_CONNECT
-        FIREBASE
+        FIREBASE"
         """
         app_installation_id: NotRequired[pulumi.Input[str]]
         """
@@ -42,15 +42,15 @@ if not MYPY:
         """
         authorizer_credential: NotRequired[pulumi.Input['ConnectionGithubConfigAuthorizerCredentialArgsDict']]
         """
-        Represents an OAuth token of the account that authorized the Connection,
-        and associated metadata.
+        Represents an OAuth token of the account that authorized the Connection,and
+        associated metadata.
         Structure is documented below.
         """
         installation_uri: NotRequired[pulumi.Input[str]]
         """
         (Output)
-        Output only. The URI to navigate to in order to manage the installation associated
-        with this GitHubConfig.
+        Output only. The URI to navigate to in order to manage the installation
+        associated with this GitHubConfig.
         """
 elif False:
     ConnectionGithubConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -63,19 +63,19 @@ class ConnectionGithubConfigArgs:
                  authorizer_credential: Optional[pulumi.Input['ConnectionGithubConfigAuthorizerCredentialArgs']] = None,
                  installation_uri: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] github_app: Required. Immutable. The GitHub Application that was installed to the GitHub user or
-               organization.
+        :param pulumi.Input[str] github_app: Required. Immutable. The GitHub Application that was installed to
+               the GitHub user or organization.
                Possible values:
                GIT_HUB_APP_UNSPECIFIED
                DEVELOPER_CONNECT
-               FIREBASE
+               FIREBASE"
         :param pulumi.Input[str] app_installation_id: Optional. GitHub App installation id.
-        :param pulumi.Input['ConnectionGithubConfigAuthorizerCredentialArgs'] authorizer_credential: Represents an OAuth token of the account that authorized the Connection,
-               and associated metadata.
+        :param pulumi.Input['ConnectionGithubConfigAuthorizerCredentialArgs'] authorizer_credential: Represents an OAuth token of the account that authorized the Connection,and
+               associated metadata.
                Structure is documented below.
         :param pulumi.Input[str] installation_uri: (Output)
-               Output only. The URI to navigate to in order to manage the installation associated
-               with this GitHubConfig.
+               Output only. The URI to navigate to in order to manage the installation
+               associated with this GitHubConfig.
         """
         pulumi.set(__self__, "github_app", github_app)
         if app_installation_id is not None:
@@ -89,12 +89,12 @@ class ConnectionGithubConfigArgs:
     @pulumi.getter(name="githubApp")
     def github_app(self) -> pulumi.Input[str]:
         """
-        Required. Immutable. The GitHub Application that was installed to the GitHub user or
-        organization.
+        Required. Immutable. The GitHub Application that was installed to
+        the GitHub user or organization.
         Possible values:
         GIT_HUB_APP_UNSPECIFIED
         DEVELOPER_CONNECT
-        FIREBASE
+        FIREBASE"
         """
         return pulumi.get(self, "github_app")
 
@@ -118,8 +118,8 @@ class ConnectionGithubConfigArgs:
     @pulumi.getter(name="authorizerCredential")
     def authorizer_credential(self) -> Optional[pulumi.Input['ConnectionGithubConfigAuthorizerCredentialArgs']]:
         """
-        Represents an OAuth token of the account that authorized the Connection,
-        and associated metadata.
+        Represents an OAuth token of the account that authorized the Connection,and
+        associated metadata.
         Structure is documented below.
         """
         return pulumi.get(self, "authorizer_credential")
@@ -133,8 +133,8 @@ class ConnectionGithubConfigArgs:
     def installation_uri(self) -> Optional[pulumi.Input[str]]:
         """
         (Output)
-        Output only. The URI to navigate to in order to manage the installation associated
-        with this GitHubConfig.
+        Output only. The URI to navigate to in order to manage the installation
+        associated with this GitHubConfig.
         """
         return pulumi.get(self, "installation_uri")
 
@@ -147,8 +147,9 @@ if not MYPY:
     class ConnectionGithubConfigAuthorizerCredentialArgsDict(TypedDict):
         oauth_token_secret_version: pulumi.Input[str]
         """
-        Required. A SecretManager resource containing the OAuth token that authorizes
-        the connection. Format: `projects/*/secrets/*/versions/*`.
+        Required. A SecretManager resource containing the OAuth token
+        that authorizes the connection.
+        Format: `projects/*/secrets/*/versions/*`.
         """
         username: NotRequired[pulumi.Input[str]]
         """
@@ -164,8 +165,9 @@ class ConnectionGithubConfigAuthorizerCredentialArgs:
                  oauth_token_secret_version: pulumi.Input[str],
                  username: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] oauth_token_secret_version: Required. A SecretManager resource containing the OAuth token that authorizes
-               the connection. Format: `projects/*/secrets/*/versions/*`.
+        :param pulumi.Input[str] oauth_token_secret_version: Required. A SecretManager resource containing the OAuth token
+               that authorizes the connection.
+               Format: `projects/*/secrets/*/versions/*`.
         :param pulumi.Input[str] username: (Output)
                Output only. The username associated with this token.
         """
@@ -177,8 +179,9 @@ class ConnectionGithubConfigAuthorizerCredentialArgs:
     @pulumi.getter(name="oauthTokenSecretVersion")
     def oauth_token_secret_version(self) -> pulumi.Input[str]:
         """
-        Required. A SecretManager resource containing the OAuth token that authorizes
-        the connection. Format: `projects/*/secrets/*/versions/*`.
+        Required. A SecretManager resource containing the OAuth token
+        that authorizes the connection.
+        Format: `projects/*/secrets/*/versions/*`.
         """
         return pulumi.get(self, "oauth_token_secret_version")
 
@@ -204,13 +207,13 @@ if not MYPY:
     class ConnectionInstallationStateArgsDict(TypedDict):
         action_uri: NotRequired[pulumi.Input[str]]
         """
-        Output only. Link to follow for next action. Empty string if the installation is already
-        complete.
+        Output only. Link to follow for next action. Empty string if the
+        installation is already complete.
         """
         message: NotRequired[pulumi.Input[str]]
         """
-        Output only. Message of what the user should do next to continue the installation.
-        Empty string if the installation is already complete.
+        Output only. Message of what the user should do next to continue
+        the installation.Empty string if the installation is already complete.
         """
         stage: NotRequired[pulumi.Input[str]]
         """
@@ -233,10 +236,10 @@ class ConnectionInstallationStateArgs:
                  message: Optional[pulumi.Input[str]] = None,
                  stage: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] action_uri: Output only. Link to follow for next action. Empty string if the installation is already
-               complete.
-        :param pulumi.Input[str] message: Output only. Message of what the user should do next to continue the installation.
-               Empty string if the installation is already complete.
+        :param pulumi.Input[str] action_uri: Output only. Link to follow for next action. Empty string if the
+               installation is already complete.
+        :param pulumi.Input[str] message: Output only. Message of what the user should do next to continue
+               the installation.Empty string if the installation is already complete.
         :param pulumi.Input[str] stage: (Output)
                Output only. Current step of the installation process.
                Possible values:
@@ -257,8 +260,8 @@ class ConnectionInstallationStateArgs:
     @pulumi.getter(name="actionUri")
     def action_uri(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. Link to follow for next action. Empty string if the installation is already
-        complete.
+        Output only. Link to follow for next action. Empty string if the
+        installation is already complete.
         """
         return pulumi.get(self, "action_uri")
 
@@ -270,8 +273,8 @@ class ConnectionInstallationStateArgs:
     @pulumi.getter
     def message(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. Message of what the user should do next to continue the installation.
-        Empty string if the installation is already complete.
+        Output only. Message of what the user should do next to continue
+        the installation.Empty string if the installation is already complete.
         """
         return pulumi.get(self, "message")
 

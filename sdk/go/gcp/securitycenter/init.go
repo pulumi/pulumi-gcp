@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &FolderCustomModule{}
 	case "gcp:securitycenter/folderNotificationConfig:FolderNotificationConfig":
 		r = &FolderNotificationConfig{}
+	case "gcp:securitycenter/folderSccBigQueryExport:FolderSccBigQueryExport":
+		r = &FolderSccBigQueryExport{}
 	case "gcp:securitycenter/instanceIamBinding:InstanceIamBinding":
 		r = &InstanceIamBinding{}
 	case "gcp:securitycenter/instanceIamMember:InstanceIamMember":
@@ -47,10 +49,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NotificationConfig{}
 	case "gcp:securitycenter/organizationCustomModule:OrganizationCustomModule":
 		r = &OrganizationCustomModule{}
+	case "gcp:securitycenter/organizationSccBigQueryExport:OrganizationSccBigQueryExport":
+		r = &OrganizationSccBigQueryExport{}
 	case "gcp:securitycenter/projectCustomModule:ProjectCustomModule":
 		r = &ProjectCustomModule{}
 	case "gcp:securitycenter/projectNotificationConfig:ProjectNotificationConfig":
 		r = &ProjectNotificationConfig{}
+	case "gcp:securitycenter/projectSccBigQueryExport:ProjectSccBigQueryExport":
+		r = &ProjectSccBigQueryExport{}
 	case "gcp:securitycenter/source:Source":
 		r = &Source{}
 	case "gcp:securitycenter/sourceIamBinding:SourceIamBinding":
@@ -69,6 +75,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &V2OrganizationMuteConfig{}
 	case "gcp:securitycenter/v2OrganizationNotificationConfig:V2OrganizationNotificationConfig":
 		r = &V2OrganizationNotificationConfig{}
+	case "gcp:securitycenter/v2OrganizationSccBigQueryExport:V2OrganizationSccBigQueryExport":
+		r = &V2OrganizationSccBigQueryExport{}
 	case "gcp:securitycenter/v2OrganizationSccBigQueryExports:V2OrganizationSccBigQueryExports":
 		r = &V2OrganizationSccBigQueryExports{}
 	case "gcp:securitycenter/v2OrganizationSource:V2OrganizationSource":
@@ -111,6 +119,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"securitycenter/folderNotificationConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"securitycenter/folderSccBigQueryExport",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -165,12 +178,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"securitycenter/organizationSccBigQueryExport",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"securitycenter/projectCustomModule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"securitycenter/projectNotificationConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"securitycenter/projectSccBigQueryExport",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -216,6 +239,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"securitycenter/v2OrganizationNotificationConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"securitycenter/v2OrganizationSccBigQueryExport",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

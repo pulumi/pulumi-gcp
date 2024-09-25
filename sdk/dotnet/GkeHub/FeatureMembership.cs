@@ -14,7 +14,67 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     /// ## Example Usage
     /// 
-    /// ### Config Management
+    /// ### Config Management With Config Sync Auto-Upgrades And Without Git/OCI
+    /// 
+    /// With [Config Sync auto-upgrades](https://cloud.devsite.corp.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/upgrade-config-sync#auto-upgrade-config), Google assumes responsibility for automatically upgrading Config Sync versions
+    /// and overseeing the lifecycle of its components.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var cluster = new Gcp.Container.Cluster("cluster", new()
+    ///     {
+    ///         Name = "my-cluster",
+    ///         Location = "us-central1-a",
+    ///         InitialNodeCount = 1,
+    ///     });
+    /// 
+    ///     var membership = new Gcp.GkeHub.Membership("membership", new()
+    ///     {
+    ///         MembershipId = "my-membership",
+    ///         Endpoint = new Gcp.GkeHub.Inputs.MembershipEndpointArgs
+    ///         {
+    ///             GkeCluster = new Gcp.GkeHub.Inputs.MembershipEndpointGkeClusterArgs
+    ///             {
+    ///                 ResourceLink = cluster.Id.Apply(id =&gt; $"//container.googleapis.com/{id}"),
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var feature = new Gcp.GkeHub.Feature("feature", new()
+    ///     {
+    ///         Name = "configmanagement",
+    ///         Location = "global",
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///     });
+    /// 
+    ///     var featureMember = new Gcp.GkeHub.FeatureMembership("feature_member", new()
+    ///     {
+    ///         Location = "global",
+    ///         Feature = feature.Name,
+    ///         Membership = membership.MembershipId,
+    ///         Configmanagement = new Gcp.GkeHub.Inputs.FeatureMembershipConfigmanagementArgs
+    ///         {
+    ///             Management = "MANAGEMENT_AUTOMATIC",
+    ///             ConfigSync = new Gcp.GkeHub.Inputs.FeatureMembershipConfigmanagementConfigSyncArgs
+    ///             {
+    ///                 Enabled = true,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Config Management With Git
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -74,6 +134,7 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     /// });
     /// ```
+    /// 
     /// ### Config Management With OCI
     /// 
     /// ```csharp
@@ -131,6 +192,69 @@ namespace Pulumi.Gcp.GkeHub
     ///                     SyncWaitSecs = "20",
     ///                     SecretType = "gcpserviceaccount",
     ///                     GcpServiceAccountEmail = "sa@project-id.iam.gserviceaccount.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Config Management With Regional Membership
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var cluster = new Gcp.Container.Cluster("cluster", new()
+    ///     {
+    ///         Name = "my-cluster",
+    ///         Location = "us-central1-a",
+    ///         InitialNodeCount = 1,
+    ///     });
+    /// 
+    ///     var membership = new Gcp.GkeHub.Membership("membership", new()
+    ///     {
+    ///         MembershipId = "my-membership",
+    ///         Location = "us-central1",
+    ///         Endpoint = new Gcp.GkeHub.Inputs.MembershipEndpointArgs
+    ///         {
+    ///             GkeCluster = new Gcp.GkeHub.Inputs.MembershipEndpointGkeClusterArgs
+    ///             {
+    ///                 ResourceLink = cluster.Id.Apply(id =&gt; $"//container.googleapis.com/{id}"),
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var feature = new Gcp.GkeHub.Feature("feature", new()
+    ///     {
+    ///         Name = "configmanagement",
+    ///         Location = "global",
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///     });
+    /// 
+    ///     var featureMember = new Gcp.GkeHub.FeatureMembership("feature_member", new()
+    ///     {
+    ///         Location = "global",
+    ///         Feature = feature.Name,
+    ///         Membership = membership.MembershipId,
+    ///         MembershipLocation = membership.Location,
+    ///         Configmanagement = new Gcp.GkeHub.Inputs.FeatureMembershipConfigmanagementArgs
+    ///         {
+    ///             Version = "1.19.0",
+    ///             ConfigSync = new Gcp.GkeHub.Inputs.FeatureMembershipConfigmanagementConfigSyncArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 Git = new Gcp.GkeHub.Inputs.FeatureMembershipConfigmanagementConfigSyncGitArgs
+    ///                 {
+    ///                     SyncRepo = "https://github.com/hashicorp/terraform",
     ///                 },
     ///             },
     ///         },
@@ -205,69 +329,6 @@ namespace Pulumi.Gcp.GkeHub
     ///         Mesh = new Gcp.GkeHub.Inputs.FeatureMembershipMeshArgs
     ///         {
     ///             Management = "MANAGEMENT_AUTOMATIC",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ### Config Management With Regional Membership
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var cluster = new Gcp.Container.Cluster("cluster", new()
-    ///     {
-    ///         Name = "my-cluster",
-    ///         Location = "us-central1-a",
-    ///         InitialNodeCount = 1,
-    ///     });
-    /// 
-    ///     var membership = new Gcp.GkeHub.Membership("membership", new()
-    ///     {
-    ///         MembershipId = "my-membership",
-    ///         Location = "us-central1",
-    ///         Endpoint = new Gcp.GkeHub.Inputs.MembershipEndpointArgs
-    ///         {
-    ///             GkeCluster = new Gcp.GkeHub.Inputs.MembershipEndpointGkeClusterArgs
-    ///             {
-    ///                 ResourceLink = cluster.Id.Apply(id =&gt; $"//container.googleapis.com/{id}"),
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     var feature = new Gcp.GkeHub.Feature("feature", new()
-    ///     {
-    ///         Name = "configmanagement",
-    ///         Location = "global",
-    ///         Labels = 
-    ///         {
-    ///             { "foo", "bar" },
-    ///         },
-    ///     });
-    /// 
-    ///     var featureMember = new Gcp.GkeHub.FeatureMembership("feature_member", new()
-    ///     {
-    ///         Location = "global",
-    ///         Feature = feature.Name,
-    ///         Membership = membership.MembershipId,
-    ///         MembershipLocation = membership.Location,
-    ///         Configmanagement = new Gcp.GkeHub.Inputs.FeatureMembershipConfigmanagementArgs
-    ///         {
-    ///             Version = "1.19.0",
-    ///             ConfigSync = new Gcp.GkeHub.Inputs.FeatureMembershipConfigmanagementConfigSyncArgs
-    ///             {
-    ///                 Enabled = true,
-    ///                 Git = new Gcp.GkeHub.Inputs.FeatureMembershipConfigmanagementConfigSyncGitArgs
-    ///                 {
-    ///                     SyncRepo = "https://github.com/hashicorp/terraform",
-    ///                 },
-    ///             },
     ///         },
     ///     });
     /// 

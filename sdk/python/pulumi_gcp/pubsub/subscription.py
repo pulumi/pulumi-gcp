@@ -106,7 +106,7 @@ class SubscriptionArgs:
                retain_acked_messages is true, then this also configures the retention
                of acknowledged messages, and thus configures how far back in time a
                subscriptions.seek can be done. Defaults to 7 days. Cannot be more
-               than 7 days (`"604800s"`) or less than 10 minutes (`"600s"`).
+               than 31 days (`"2678400s"`) or less than 10 minutes (`"600s"`).
                A duration in seconds with up to nine fractional digits, terminated
                by 's'. Example: `"600.5s"`.
         :param pulumi.Input[str] name: Name of the subscription.
@@ -338,7 +338,7 @@ class SubscriptionArgs:
         retain_acked_messages is true, then this also configures the retention
         of acknowledged messages, and thus configures how far back in time a
         subscriptions.seek can be done. Defaults to 7 days. Cannot be more
-        than 7 days (`"604800s"`) or less than 10 minutes (`"600s"`).
+        than 31 days (`"2678400s"`) or less than 10 minutes (`"600s"`).
         A duration in seconds with up to nine fractional digits, terminated
         by 's'. Example: `"600.5s"`.
         """
@@ -504,7 +504,7 @@ class _SubscriptionState:
                retain_acked_messages is true, then this also configures the retention
                of acknowledged messages, and thus configures how far back in time a
                subscriptions.seek can be done. Defaults to 7 days. Cannot be more
-               than 7 days (`"604800s"`) or less than 10 minutes (`"600s"`).
+               than 31 days (`"2678400s"`) or less than 10 minutes (`"600s"`).
                A duration in seconds with up to nine fractional digits, terminated
                by 's'. Example: `"600.5s"`.
         :param pulumi.Input[str] name: Name of the subscription.
@@ -744,7 +744,7 @@ class _SubscriptionState:
         retain_acked_messages is true, then this also configures the retention
         of acknowledged messages, and thus configures how far back in time a
         subscriptions.seek can be done. Defaults to 7 days. Cannot be more
-        than 7 days (`"604800s"`) or less than 10 minutes (`"600s"`).
+        than 31 days (`"2678400s"`) or less than 10 minutes (`"600s"`).
         A duration in seconds with up to nine fractional digits, terminated
         by 's'. Example: `"600.5s"`.
         """
@@ -936,6 +936,24 @@ class Subscription(pulumi.CustomResource):
                 "minimum_backoff": "10s",
             },
             enable_message_ordering=False)
+        ```
+        ### Pubsub Subscription Pull Filter
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.pubsub.Topic("example", name="example-topic")
+        example_subscription = gcp.pubsub.Subscription("example",
+            name="example-subscription",
+            topic=example.id,
+            labels={
+                "foo": "bar",
+            },
+            filter=\"\"\"    attributes.foo = "foo"
+            AND attributes.bar = "bar"
+        \"\"\",
+            ack_deadline_seconds=20)
         ```
         ### Pubsub Subscription Dead Letter
 
@@ -1292,7 +1310,7 @@ class Subscription(pulumi.CustomResource):
                retain_acked_messages is true, then this also configures the retention
                of acknowledged messages, and thus configures how far back in time a
                subscriptions.seek can be done. Defaults to 7 days. Cannot be more
-               than 7 days (`"604800s"`) or less than 10 minutes (`"600s"`).
+               than 31 days (`"2678400s"`) or less than 10 minutes (`"600s"`).
                A duration in seconds with up to nine fractional digits, terminated
                by 's'. Example: `"600.5s"`.
         :param pulumi.Input[str] name: Name of the subscription.
@@ -1382,6 +1400,24 @@ class Subscription(pulumi.CustomResource):
                 "minimum_backoff": "10s",
             },
             enable_message_ordering=False)
+        ```
+        ### Pubsub Subscription Pull Filter
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.pubsub.Topic("example", name="example-topic")
+        example_subscription = gcp.pubsub.Subscription("example",
+            name="example-subscription",
+            topic=example.id,
+            labels={
+                "foo": "bar",
+            },
+            filter=\"\"\"    attributes.foo = "foo"
+            AND attributes.bar = "bar"
+        \"\"\",
+            ack_deadline_seconds=20)
         ```
         ### Pubsub Subscription Dead Letter
 
@@ -1834,7 +1870,7 @@ class Subscription(pulumi.CustomResource):
                retain_acked_messages is true, then this also configures the retention
                of acknowledged messages, and thus configures how far back in time a
                subscriptions.seek can be done. Defaults to 7 days. Cannot be more
-               than 7 days (`"604800s"`) or less than 10 minutes (`"600s"`).
+               than 31 days (`"2678400s"`) or less than 10 minutes (`"600s"`).
                A duration in seconds with up to nine fractional digits, terminated
                by 's'. Example: `"600.5s"`.
         :param pulumi.Input[str] name: Name of the subscription.
@@ -2021,7 +2057,7 @@ class Subscription(pulumi.CustomResource):
         retain_acked_messages is true, then this also configures the retention
         of acknowledged messages, and thus configures how far back in time a
         subscriptions.seek can be done. Defaults to 7 days. Cannot be more
-        than 7 days (`"604800s"`) or less than 10 minutes (`"600s"`).
+        than 31 days (`"2678400s"`) or less than 10 minutes (`"600s"`).
         A duration in seconds with up to nine fractional digits, terminated
         by 's'. Example: `"600.5s"`.
         """

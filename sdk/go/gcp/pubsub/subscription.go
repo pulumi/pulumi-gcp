@@ -113,6 +113,43 @@ import (
 //	}
 //
 // ```
+// ### Pubsub Subscription Pull Filter
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
+//				Name: pulumi.String("example-topic"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = pubsub.NewSubscription(ctx, "example", &pubsub.SubscriptionArgs{
+//				Name:  pulumi.String("example-subscription"),
+//				Topic: example.ID(),
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//				Filter:             pulumi.String("    attributes.foo = \"foo\"\n    AND attributes.bar = \"bar\"\n"),
+//				AckDeadlineSeconds: pulumi.Int(20),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Pubsub Subscription Dead Letter
 //
 // ```go
@@ -767,7 +804,7 @@ type Subscription struct {
 	// retainAckedMessages is true, then this also configures the retention
 	// of acknowledged messages, and thus configures how far back in time a
 	// subscriptions.seek can be done. Defaults to 7 days. Cannot be more
-	// than 7 days (`"604800s"`) or less than 10 minutes (`"600s"`).
+	// than 31 days (`"2678400s"`) or less than 10 minutes (`"600s"`).
 	// A duration in seconds with up to nine fractional digits, terminated
 	// by 's'. Example: `"600.5s"`.
 	MessageRetentionDuration pulumi.StringPtrOutput `pulumi:"messageRetentionDuration"`
@@ -912,7 +949,7 @@ type subscriptionState struct {
 	// retainAckedMessages is true, then this also configures the retention
 	// of acknowledged messages, and thus configures how far back in time a
 	// subscriptions.seek can be done. Defaults to 7 days. Cannot be more
-	// than 7 days (`"604800s"`) or less than 10 minutes (`"600s"`).
+	// than 31 days (`"2678400s"`) or less than 10 minutes (`"600s"`).
 	// A duration in seconds with up to nine fractional digits, terminated
 	// by 's'. Example: `"600.5s"`.
 	MessageRetentionDuration *string `pulumi:"messageRetentionDuration"`
@@ -1020,7 +1057,7 @@ type SubscriptionState struct {
 	// retainAckedMessages is true, then this also configures the retention
 	// of acknowledged messages, and thus configures how far back in time a
 	// subscriptions.seek can be done. Defaults to 7 days. Cannot be more
-	// than 7 days (`"604800s"`) or less than 10 minutes (`"600s"`).
+	// than 31 days (`"2678400s"`) or less than 10 minutes (`"600s"`).
 	// A duration in seconds with up to nine fractional digits, terminated
 	// by 's'. Example: `"600.5s"`.
 	MessageRetentionDuration pulumi.StringPtrInput
@@ -1130,7 +1167,7 @@ type subscriptionArgs struct {
 	// retainAckedMessages is true, then this also configures the retention
 	// of acknowledged messages, and thus configures how far back in time a
 	// subscriptions.seek can be done. Defaults to 7 days. Cannot be more
-	// than 7 days (`"604800s"`) or less than 10 minutes (`"600s"`).
+	// than 31 days (`"2678400s"`) or less than 10 minutes (`"600s"`).
 	// A duration in seconds with up to nine fractional digits, terminated
 	// by 's'. Example: `"600.5s"`.
 	MessageRetentionDuration *string `pulumi:"messageRetentionDuration"`
@@ -1234,7 +1271,7 @@ type SubscriptionArgs struct {
 	// retainAckedMessages is true, then this also configures the retention
 	// of acknowledged messages, and thus configures how far back in time a
 	// subscriptions.seek can be done. Defaults to 7 days. Cannot be more
-	// than 7 days (`"604800s"`) or less than 10 minutes (`"600s"`).
+	// than 31 days (`"2678400s"`) or less than 10 minutes (`"600s"`).
 	// A duration in seconds with up to nine fractional digits, terminated
 	// by 's'. Example: `"600.5s"`.
 	MessageRetentionDuration pulumi.StringPtrInput
@@ -1455,7 +1492,7 @@ func (o SubscriptionOutput) Labels() pulumi.StringMapOutput {
 // retainAckedMessages is true, then this also configures the retention
 // of acknowledged messages, and thus configures how far back in time a
 // subscriptions.seek can be done. Defaults to 7 days. Cannot be more
-// than 7 days (`"604800s"`) or less than 10 minutes (`"600s"`).
+// than 31 days (`"2678400s"`) or less than 10 minutes (`"600s"`).
 // A duration in seconds with up to nine fractional digits, terminated
 // by 's'. Example: `"600.5s"`.
 func (o SubscriptionOutput) MessageRetentionDuration() pulumi.StringPtrOutput {

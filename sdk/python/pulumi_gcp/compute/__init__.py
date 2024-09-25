@@ -30,6 +30,7 @@ from .firewall import *
 from .firewall_policy import *
 from .firewall_policy_association import *
 from .firewall_policy_rule import *
+from .firewall_policy_with_rules import *
 from .forwarding_rule import *
 from .get_address import *
 from .get_addresses import *

@@ -89,6 +89,23 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The edition selected for this instance. Different editions provide different capabilities at different price points.
+     * Possible values are: `EDITION_UNSPECIFIED`, `STANDARD`, `ENTERPRISE`, `ENTERPRISE_PLUS`.
+     * 
+     */
+    @Import(name="edition")
+    private @Nullable Output<String> edition;
+
+    /**
+     * @return The edition selected for this instance. Different editions provide different capabilities at different price points.
+     * Possible values are: `EDITION_UNSPECIFIED`, `STANDARD`, `ENTERPRISE`, `ENTERPRISE_PLUS`.
+     * 
+     */
+    public Optional<Output<String>> edition() {
+        return Optional.ofNullable(this.edition);
+    }
+
+    /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      * 
      */
@@ -233,6 +250,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.autoscalingConfig = $.autoscalingConfig;
         this.config = $.config;
         this.displayName = $.displayName;
+        this.edition = $.edition;
         this.effectiveLabels = $.effectiveLabels;
         this.forceDestroy = $.forceDestroy;
         this.labels = $.labels;
@@ -347,6 +365,29 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param edition The edition selected for this instance. Different editions provide different capabilities at different price points.
+         * Possible values are: `EDITION_UNSPECIFIED`, `STANDARD`, `ENTERPRISE`, `ENTERPRISE_PLUS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder edition(@Nullable Output<String> edition) {
+            $.edition = edition;
+            return this;
+        }
+
+        /**
+         * @param edition The edition selected for this instance. Different editions provide different capabilities at different price points.
+         * Possible values are: `EDITION_UNSPECIFIED`, `STANDARD`, `ENTERPRISE`, `ENTERPRISE_PLUS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder edition(String edition) {
+            return edition(Output.of(edition));
         }
 
         /**

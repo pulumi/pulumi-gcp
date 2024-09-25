@@ -30,5 +30,6 @@ from .hl7_store import *
 from .hl7_store_iam_binding import *
 from .hl7_store_iam_member import *
 from .hl7_store_iam_policy import *
+from .workspace import *
 from ._inputs import *
 from . import outputs

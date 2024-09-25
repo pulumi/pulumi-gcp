@@ -4216,6 +4216,8 @@ type InstanceNetworkConfig struct {
 	// true.
 	// Structure is documented below.
 	AuthorizedExternalNetworks []InstanceNetworkConfigAuthorizedExternalNetwork `pulumi:"authorizedExternalNetworks"`
+	// Enabling outbound public ip for the instance.
+	EnableOutboundPublicIp *bool `pulumi:"enableOutboundPublicIp"`
 	// Enabling public ip for the instance. If a user wishes to disable this,
 	// please also clear the list of the authorized external networks set on
 	// the same instance.
@@ -4239,6 +4241,8 @@ type InstanceNetworkConfigArgs struct {
 	// true.
 	// Structure is documented below.
 	AuthorizedExternalNetworks InstanceNetworkConfigAuthorizedExternalNetworkArrayInput `pulumi:"authorizedExternalNetworks"`
+	// Enabling outbound public ip for the instance.
+	EnableOutboundPublicIp pulumi.BoolPtrInput `pulumi:"enableOutboundPublicIp"`
 	// Enabling public ip for the instance. If a user wishes to disable this,
 	// please also clear the list of the authorized external networks set on
 	// the same instance.
@@ -4332,6 +4336,11 @@ func (o InstanceNetworkConfigOutput) AuthorizedExternalNetworks() InstanceNetwor
 	}).(InstanceNetworkConfigAuthorizedExternalNetworkArrayOutput)
 }
 
+// Enabling outbound public ip for the instance.
+func (o InstanceNetworkConfigOutput) EnableOutboundPublicIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceNetworkConfig) *bool { return v.EnableOutboundPublicIp }).(pulumi.BoolPtrOutput)
+}
+
 // Enabling public ip for the instance. If a user wishes to disable this,
 // please also clear the list of the authorized external networks set on
 // the same instance.
@@ -4374,6 +4383,16 @@ func (o InstanceNetworkConfigPtrOutput) AuthorizedExternalNetworks() InstanceNet
 		}
 		return v.AuthorizedExternalNetworks
 	}).(InstanceNetworkConfigAuthorizedExternalNetworkArrayOutput)
+}
+
+// Enabling outbound public ip for the instance.
+func (o InstanceNetworkConfigPtrOutput) EnableOutboundPublicIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceNetworkConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableOutboundPublicIp
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Enabling public ip for the instance. If a user wishes to disable this,

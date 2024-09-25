@@ -49,6 +49,12 @@ __all__ = [
     'SearchEngineCommonConfigArgsDict',
     'SearchEngineSearchEngineConfigArgs',
     'SearchEngineSearchEngineConfigArgsDict',
+    'TargetSiteFailureReasonArgs',
+    'TargetSiteFailureReasonArgsDict',
+    'TargetSiteFailureReasonQuotaFailureArgs',
+    'TargetSiteFailureReasonQuotaFailureArgsDict',
+    'TargetSiteSiteVerificationInfoArgs',
+    'TargetSiteSiteVerificationInfoArgsDict',
 ]
 
 MYPY = False
@@ -831,5 +837,130 @@ class SearchEngineSearchEngineConfigArgs:
     @search_tier.setter
     def search_tier(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "search_tier", value)
+
+
+if not MYPY:
+    class TargetSiteFailureReasonArgsDict(TypedDict):
+        quota_failure: NotRequired[pulumi.Input['TargetSiteFailureReasonQuotaFailureArgsDict']]
+        """
+        Site verification state indicating the ownership and validity.
+        Structure is documented below.
+        """
+elif False:
+    TargetSiteFailureReasonArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TargetSiteFailureReasonArgs:
+    def __init__(__self__, *,
+                 quota_failure: Optional[pulumi.Input['TargetSiteFailureReasonQuotaFailureArgs']] = None):
+        """
+        :param pulumi.Input['TargetSiteFailureReasonQuotaFailureArgs'] quota_failure: Site verification state indicating the ownership and validity.
+               Structure is documented below.
+        """
+        if quota_failure is not None:
+            pulumi.set(__self__, "quota_failure", quota_failure)
+
+    @property
+    @pulumi.getter(name="quotaFailure")
+    def quota_failure(self) -> Optional[pulumi.Input['TargetSiteFailureReasonQuotaFailureArgs']]:
+        """
+        Site verification state indicating the ownership and validity.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "quota_failure")
+
+    @quota_failure.setter
+    def quota_failure(self, value: Optional[pulumi.Input['TargetSiteFailureReasonQuotaFailureArgs']]):
+        pulumi.set(self, "quota_failure", value)
+
+
+if not MYPY:
+    class TargetSiteFailureReasonQuotaFailureArgsDict(TypedDict):
+        total_required_quota: NotRequired[pulumi.Input[int]]
+        """
+        This number is an estimation on how much total quota this project
+        needs to successfully complete indexing.
+        """
+elif False:
+    TargetSiteFailureReasonQuotaFailureArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TargetSiteFailureReasonQuotaFailureArgs:
+    def __init__(__self__, *,
+                 total_required_quota: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] total_required_quota: This number is an estimation on how much total quota this project
+               needs to successfully complete indexing.
+        """
+        if total_required_quota is not None:
+            pulumi.set(__self__, "total_required_quota", total_required_quota)
+
+    @property
+    @pulumi.getter(name="totalRequiredQuota")
+    def total_required_quota(self) -> Optional[pulumi.Input[int]]:
+        """
+        This number is an estimation on how much total quota this project
+        needs to successfully complete indexing.
+        """
+        return pulumi.get(self, "total_required_quota")
+
+    @total_required_quota.setter
+    def total_required_quota(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "total_required_quota", value)
+
+
+if not MYPY:
+    class TargetSiteSiteVerificationInfoArgsDict(TypedDict):
+        site_verification_state: NotRequired[pulumi.Input[str]]
+        """
+        Site verification state indicating the ownership and validity.
+        Possible values are: `VERIFIED`, `UNVERIFIED`, `EXEMPTED`.
+        """
+        verify_time: NotRequired[pulumi.Input[str]]
+        """
+        Latest site verification time.
+        """
+elif False:
+    TargetSiteSiteVerificationInfoArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TargetSiteSiteVerificationInfoArgs:
+    def __init__(__self__, *,
+                 site_verification_state: Optional[pulumi.Input[str]] = None,
+                 verify_time: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] site_verification_state: Site verification state indicating the ownership and validity.
+               Possible values are: `VERIFIED`, `UNVERIFIED`, `EXEMPTED`.
+        :param pulumi.Input[str] verify_time: Latest site verification time.
+        """
+        if site_verification_state is not None:
+            pulumi.set(__self__, "site_verification_state", site_verification_state)
+        if verify_time is not None:
+            pulumi.set(__self__, "verify_time", verify_time)
+
+    @property
+    @pulumi.getter(name="siteVerificationState")
+    def site_verification_state(self) -> Optional[pulumi.Input[str]]:
+        """
+        Site verification state indicating the ownership and validity.
+        Possible values are: `VERIFIED`, `UNVERIFIED`, `EXEMPTED`.
+        """
+        return pulumi.get(self, "site_verification_state")
+
+    @site_verification_state.setter
+    def site_verification_state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "site_verification_state", value)
+
+    @property
+    @pulumi.getter(name="verifyTime")
+    def verify_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Latest site verification time.
+        """
+        return pulumi.get(self, "verify_time")
+
+    @verify_time.setter
+    def verify_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "verify_time", value)
 
 

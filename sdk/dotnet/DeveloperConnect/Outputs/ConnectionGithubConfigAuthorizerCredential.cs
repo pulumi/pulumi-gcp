@@ -14,8 +14,9 @@ namespace Pulumi.Gcp.DeveloperConnect.Outputs
     public sealed class ConnectionGithubConfigAuthorizerCredential
     {
         /// <summary>
-        /// Required. A SecretManager resource containing the OAuth token that authorizes
-        /// the connection. Format: `projects/*/secrets/*/versions/*`.
+        /// Required. A SecretManager resource containing the OAuth token
+        /// that authorizes the connection.
+        /// Format: `projects/*/secrets/*/versions/*`.
         /// </summary>
         public readonly string OauthTokenSecretVersion;
         /// <summary>

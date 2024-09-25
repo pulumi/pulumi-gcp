@@ -126,6 +126,7 @@ namespace Pulumi.Gcp.Spanner
         public readonly ImmutableArray<Outputs.GetInstanceAutoscalingConfigResult> AutoscalingConfigs;
         public readonly string? Config;
         public readonly string? DisplayName;
+        public readonly string Edition;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly bool ForceDestroy;
         /// <summary>
@@ -147,6 +148,8 @@ namespace Pulumi.Gcp.Spanner
             string? config,
 
             string? displayName,
+
+            string edition,
 
             ImmutableDictionary<string, string> effectiveLabels,
 
@@ -171,6 +174,7 @@ namespace Pulumi.Gcp.Spanner
             AutoscalingConfigs = autoscalingConfigs;
             Config = config;
             DisplayName = displayName;
+            Edition = edition;
             EffectiveLabels = effectiveLabels;
             ForceDestroy = forceDestroy;
             Id = id;

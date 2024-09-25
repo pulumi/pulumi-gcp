@@ -66,6 +66,7 @@ type LookupInstanceResult struct {
 	AutoscalingConfigs []GetInstanceAutoscalingConfig `pulumi:"autoscalingConfigs"`
 	Config             *string                        `pulumi:"config"`
 	DisplayName        *string                        `pulumi:"displayName"`
+	Edition            string                         `pulumi:"edition"`
 	EffectiveLabels    map[string]string              `pulumi:"effectiveLabels"`
 	ForceDestroy       bool                           `pulumi:"forceDestroy"`
 	// The provider-assigned unique ID for this managed resource.
@@ -140,6 +141,10 @@ func (o LookupInstanceResultOutput) Config() pulumi.StringPtrOutput {
 
 func (o LookupInstanceResultOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupInstanceResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupInstanceResultOutput) Edition() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.Edition }).(pulumi.StringOutput)
 }
 
 func (o LookupInstanceResultOutput) EffectiveLabels() pulumi.StringMapOutput {

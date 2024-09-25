@@ -67,6 +67,12 @@ __all__ = [
     'FirewallLogConfig',
     'FirewallPolicyRuleMatch',
     'FirewallPolicyRuleMatchLayer4Config',
+    'FirewallPolicyWithRulesPredefinedRule',
+    'FirewallPolicyWithRulesPredefinedRuleMatch',
+    'FirewallPolicyWithRulesPredefinedRuleMatchLayer4Config',
+    'FirewallPolicyWithRulesRule',
+    'FirewallPolicyWithRulesRuleMatch',
+    'FirewallPolicyWithRulesRuleMatchLayer4Config',
     'ForwardingRuleServiceDirectoryRegistrations',
     'GlobalForwardingRuleMetadataFilter',
     'GlobalForwardingRuleMetadataFilterFilterLabel',
@@ -4621,6 +4627,1019 @@ class FirewallPolicyRuleMatchLayer4Config(dict):
     def ports(self) -> Optional[Sequence[str]]:
         """
         An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
+        """
+        return pulumi.get(self, "ports")
+
+
+@pulumi.output_type
+class FirewallPolicyWithRulesPredefinedRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableLogging":
+            suggest = "enable_logging"
+        elif key == "ruleName":
+            suggest = "rule_name"
+        elif key == "securityProfileGroup":
+            suggest = "security_profile_group"
+        elif key == "targetResources":
+            suggest = "target_resources"
+        elif key == "targetServiceAccounts":
+            suggest = "target_service_accounts"
+        elif key == "tlsInspect":
+            suggest = "tls_inspect"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FirewallPolicyWithRulesPredefinedRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FirewallPolicyWithRulesPredefinedRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FirewallPolicyWithRulesPredefinedRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 action: Optional[str] = None,
+                 description: Optional[str] = None,
+                 direction: Optional[str] = None,
+                 disabled: Optional[bool] = None,
+                 enable_logging: Optional[bool] = None,
+                 matches: Optional[Sequence['outputs.FirewallPolicyWithRulesPredefinedRuleMatch']] = None,
+                 priority: Optional[int] = None,
+                 rule_name: Optional[str] = None,
+                 security_profile_group: Optional[str] = None,
+                 target_resources: Optional[Sequence[str]] = None,
+                 target_service_accounts: Optional[Sequence[str]] = None,
+                 tls_inspect: Optional[bool] = None):
+        """
+        :param str action: (Output)
+               The Action to perform when the client connection triggers the rule. Can currently be either
+               "allow", "deny", "apply_security_profile_group" or "goto_next".
+        :param str description: (Output)
+               A description of the rule.
+        :param str direction: (Output)
+               The direction in which this rule applies. If unspecified an INGRESS rule is created.
+        :param bool disabled: (Output)
+               Denotes whether the firewall policy rule is disabled. When set to true,
+               the firewall policy rule is not enforced and traffic behaves as if it did
+               not exist. If this is unspecified, the firewall policy rule will be
+               enabled.
+        :param bool enable_logging: (Output)
+               Denotes whether to enable logging for a particular rule.
+               If logging is enabled, logs will be exported to the
+               configured export destination in Stackdriver.
+        :param Sequence['FirewallPolicyWithRulesPredefinedRuleMatchArgs'] matches: (Output)
+               A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+               Structure is documented below.
+        :param int priority: (Output)
+               An integer indicating the priority of a rule in the list. The priority must be a value
+               between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
+               highest priority and 2147483647 is the lowest priority.
+        :param str rule_name: (Output)
+               An optional name for the rule. This field is not a unique identifier
+               and can be updated.
+        :param str security_profile_group: (Output)
+               A fully-qualified URL of a SecurityProfile resource instance.
+               Example:
+               https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+               Must be specified if action is 'apply_security_profile_group'.
+        :param Sequence[str] target_resources: (Output)
+               A list of network resource URLs to which this rule applies.
+               This field allows you to control which network's VMs get
+               this rule. If this field is left blank, all VMs
+               within the organization will receive the rule.
+        :param Sequence[str] target_service_accounts: (Output)
+               A list of service accounts indicating the sets of
+               instances that are applied with this rule.
+        :param bool tls_inspect: (Output)
+               Boolean flag indicating if the traffic should be TLS decrypted.
+               It can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
+        """
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if enable_logging is not None:
+            pulumi.set(__self__, "enable_logging", enable_logging)
+        if matches is not None:
+            pulumi.set(__self__, "matches", matches)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+        if rule_name is not None:
+            pulumi.set(__self__, "rule_name", rule_name)
+        if security_profile_group is not None:
+            pulumi.set(__self__, "security_profile_group", security_profile_group)
+        if target_resources is not None:
+            pulumi.set(__self__, "target_resources", target_resources)
+        if target_service_accounts is not None:
+            pulumi.set(__self__, "target_service_accounts", target_service_accounts)
+        if tls_inspect is not None:
+            pulumi.set(__self__, "tls_inspect", tls_inspect)
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional[str]:
+        """
+        (Output)
+        The Action to perform when the client connection triggers the rule. Can currently be either
+        "allow", "deny", "apply_security_profile_group" or "goto_next".
+        """
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        (Output)
+        A description of the rule.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        """
+        (Output)
+        The direction in which this rule applies. If unspecified an INGRESS rule is created.
+        """
+        return pulumi.get(self, "direction")
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[bool]:
+        """
+        (Output)
+        Denotes whether the firewall policy rule is disabled. When set to true,
+        the firewall policy rule is not enforced and traffic behaves as if it did
+        not exist. If this is unspecified, the firewall policy rule will be
+        enabled.
+        """
+        return pulumi.get(self, "disabled")
+
+    @property
+    @pulumi.getter(name="enableLogging")
+    def enable_logging(self) -> Optional[bool]:
+        """
+        (Output)
+        Denotes whether to enable logging for a particular rule.
+        If logging is enabled, logs will be exported to the
+        configured export destination in Stackdriver.
+        """
+        return pulumi.get(self, "enable_logging")
+
+    @property
+    @pulumi.getter
+    def matches(self) -> Optional[Sequence['outputs.FirewallPolicyWithRulesPredefinedRuleMatch']]:
+        """
+        (Output)
+        A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "matches")
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[int]:
+        """
+        (Output)
+        An integer indicating the priority of a rule in the list. The priority must be a value
+        between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
+        highest priority and 2147483647 is the lowest priority.
+        """
+        return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter(name="ruleName")
+    def rule_name(self) -> Optional[str]:
+        """
+        (Output)
+        An optional name for the rule. This field is not a unique identifier
+        and can be updated.
+        """
+        return pulumi.get(self, "rule_name")
+
+    @property
+    @pulumi.getter(name="securityProfileGroup")
+    def security_profile_group(self) -> Optional[str]:
+        """
+        (Output)
+        A fully-qualified URL of a SecurityProfile resource instance.
+        Example:
+        https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+        Must be specified if action is 'apply_security_profile_group'.
+        """
+        return pulumi.get(self, "security_profile_group")
+
+    @property
+    @pulumi.getter(name="targetResources")
+    def target_resources(self) -> Optional[Sequence[str]]:
+        """
+        (Output)
+        A list of network resource URLs to which this rule applies.
+        This field allows you to control which network's VMs get
+        this rule. If this field is left blank, all VMs
+        within the organization will receive the rule.
+        """
+        return pulumi.get(self, "target_resources")
+
+    @property
+    @pulumi.getter(name="targetServiceAccounts")
+    def target_service_accounts(self) -> Optional[Sequence[str]]:
+        """
+        (Output)
+        A list of service accounts indicating the sets of
+        instances that are applied with this rule.
+        """
+        return pulumi.get(self, "target_service_accounts")
+
+    @property
+    @pulumi.getter(name="tlsInspect")
+    def tls_inspect(self) -> Optional[bool]:
+        """
+        (Output)
+        Boolean flag indicating if the traffic should be TLS decrypted.
+        It can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
+        """
+        return pulumi.get(self, "tls_inspect")
+
+
+@pulumi.output_type
+class FirewallPolicyWithRulesPredefinedRuleMatch(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "destAddressGroups":
+            suggest = "dest_address_groups"
+        elif key == "destFqdns":
+            suggest = "dest_fqdns"
+        elif key == "destIpRanges":
+            suggest = "dest_ip_ranges"
+        elif key == "destRegionCodes":
+            suggest = "dest_region_codes"
+        elif key == "destThreatIntelligences":
+            suggest = "dest_threat_intelligences"
+        elif key == "layer4Configs":
+            suggest = "layer4_configs"
+        elif key == "srcAddressGroups":
+            suggest = "src_address_groups"
+        elif key == "srcFqdns":
+            suggest = "src_fqdns"
+        elif key == "srcIpRanges":
+            suggest = "src_ip_ranges"
+        elif key == "srcRegionCodes":
+            suggest = "src_region_codes"
+        elif key == "srcThreatIntelligences":
+            suggest = "src_threat_intelligences"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FirewallPolicyWithRulesPredefinedRuleMatch. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FirewallPolicyWithRulesPredefinedRuleMatch.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FirewallPolicyWithRulesPredefinedRuleMatch.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dest_address_groups: Optional[Sequence[str]] = None,
+                 dest_fqdns: Optional[Sequence[str]] = None,
+                 dest_ip_ranges: Optional[Sequence[str]] = None,
+                 dest_region_codes: Optional[Sequence[str]] = None,
+                 dest_threat_intelligences: Optional[Sequence[str]] = None,
+                 layer4_configs: Optional[Sequence['outputs.FirewallPolicyWithRulesPredefinedRuleMatchLayer4Config']] = None,
+                 src_address_groups: Optional[Sequence[str]] = None,
+                 src_fqdns: Optional[Sequence[str]] = None,
+                 src_ip_ranges: Optional[Sequence[str]] = None,
+                 src_region_codes: Optional[Sequence[str]] = None,
+                 src_threat_intelligences: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] dest_address_groups: Address groups which should be matched against the traffic destination.
+               Maximum number of destination address groups is 10.
+        :param Sequence[str] dest_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against
+               traffic destination. Maximum number of destination fqdn allowed is 100.
+        :param Sequence[str] dest_ip_ranges: Destination IP address range in CIDR format. Required for
+               EGRESS rules.
+        :param Sequence[str] dest_region_codes: Region codes whose IP addresses will be used to match for destination
+               of traffic. Should be specified as 2 letter country code defined as per
+               ISO 3166 alpha-2 country codes. ex."US"
+               Maximum number of destination region codes allowed is 5000.
+        :param Sequence[str] dest_threat_intelligences: Names of Network Threat Intelligence lists.
+               The IPs in these lists will be matched against traffic destination.
+        :param Sequence['FirewallPolicyWithRulesPredefinedRuleMatchLayer4ConfigArgs'] layer4_configs: Pairs of IP protocols and ports that the rule should match.
+               Structure is documented below.
+               
+               
+               <a name="nested_layer4_config"></a>The `layer4_config` block supports:
+        :param Sequence[str] src_address_groups: Address groups which should be matched against the traffic source.
+               Maximum number of source address groups is 10.
+        :param Sequence[str] src_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against
+               traffic source. Maximum number of source fqdn allowed is 100.
+        :param Sequence[str] src_ip_ranges: Source IP address range in CIDR format. Required for
+               INGRESS rules.
+        :param Sequence[str] src_region_codes: Region codes whose IP addresses will be used to match for source
+               of traffic. Should be specified as 2 letter country code defined as per
+               ISO 3166 alpha-2 country codes. ex."US"
+               Maximum number of source region codes allowed is 5000.
+        :param Sequence[str] src_threat_intelligences: Names of Network Threat Intelligence lists.
+               The IPs in these lists will be matched against traffic source.
+        """
+        if dest_address_groups is not None:
+            pulumi.set(__self__, "dest_address_groups", dest_address_groups)
+        if dest_fqdns is not None:
+            pulumi.set(__self__, "dest_fqdns", dest_fqdns)
+        if dest_ip_ranges is not None:
+            pulumi.set(__self__, "dest_ip_ranges", dest_ip_ranges)
+        if dest_region_codes is not None:
+            pulumi.set(__self__, "dest_region_codes", dest_region_codes)
+        if dest_threat_intelligences is not None:
+            pulumi.set(__self__, "dest_threat_intelligences", dest_threat_intelligences)
+        if layer4_configs is not None:
+            pulumi.set(__self__, "layer4_configs", layer4_configs)
+        if src_address_groups is not None:
+            pulumi.set(__self__, "src_address_groups", src_address_groups)
+        if src_fqdns is not None:
+            pulumi.set(__self__, "src_fqdns", src_fqdns)
+        if src_ip_ranges is not None:
+            pulumi.set(__self__, "src_ip_ranges", src_ip_ranges)
+        if src_region_codes is not None:
+            pulumi.set(__self__, "src_region_codes", src_region_codes)
+        if src_threat_intelligences is not None:
+            pulumi.set(__self__, "src_threat_intelligences", src_threat_intelligences)
+
+    @property
+    @pulumi.getter(name="destAddressGroups")
+    def dest_address_groups(self) -> Optional[Sequence[str]]:
+        """
+        Address groups which should be matched against the traffic destination.
+        Maximum number of destination address groups is 10.
+        """
+        return pulumi.get(self, "dest_address_groups")
+
+    @property
+    @pulumi.getter(name="destFqdns")
+    def dest_fqdns(self) -> Optional[Sequence[str]]:
+        """
+        Fully Qualified Domain Name (FQDN) which should be matched against
+        traffic destination. Maximum number of destination fqdn allowed is 100.
+        """
+        return pulumi.get(self, "dest_fqdns")
+
+    @property
+    @pulumi.getter(name="destIpRanges")
+    def dest_ip_ranges(self) -> Optional[Sequence[str]]:
+        """
+        Destination IP address range in CIDR format. Required for
+        EGRESS rules.
+        """
+        return pulumi.get(self, "dest_ip_ranges")
+
+    @property
+    @pulumi.getter(name="destRegionCodes")
+    def dest_region_codes(self) -> Optional[Sequence[str]]:
+        """
+        Region codes whose IP addresses will be used to match for destination
+        of traffic. Should be specified as 2 letter country code defined as per
+        ISO 3166 alpha-2 country codes. ex."US"
+        Maximum number of destination region codes allowed is 5000.
+        """
+        return pulumi.get(self, "dest_region_codes")
+
+    @property
+    @pulumi.getter(name="destThreatIntelligences")
+    def dest_threat_intelligences(self) -> Optional[Sequence[str]]:
+        """
+        Names of Network Threat Intelligence lists.
+        The IPs in these lists will be matched against traffic destination.
+        """
+        return pulumi.get(self, "dest_threat_intelligences")
+
+    @property
+    @pulumi.getter(name="layer4Configs")
+    def layer4_configs(self) -> Optional[Sequence['outputs.FirewallPolicyWithRulesPredefinedRuleMatchLayer4Config']]:
+        """
+        Pairs of IP protocols and ports that the rule should match.
+        Structure is documented below.
+
+
+        <a name="nested_layer4_config"></a>The `layer4_config` block supports:
+        """
+        return pulumi.get(self, "layer4_configs")
+
+    @property
+    @pulumi.getter(name="srcAddressGroups")
+    def src_address_groups(self) -> Optional[Sequence[str]]:
+        """
+        Address groups which should be matched against the traffic source.
+        Maximum number of source address groups is 10.
+        """
+        return pulumi.get(self, "src_address_groups")
+
+    @property
+    @pulumi.getter(name="srcFqdns")
+    def src_fqdns(self) -> Optional[Sequence[str]]:
+        """
+        Fully Qualified Domain Name (FQDN) which should be matched against
+        traffic source. Maximum number of source fqdn allowed is 100.
+        """
+        return pulumi.get(self, "src_fqdns")
+
+    @property
+    @pulumi.getter(name="srcIpRanges")
+    def src_ip_ranges(self) -> Optional[Sequence[str]]:
+        """
+        Source IP address range in CIDR format. Required for
+        INGRESS rules.
+        """
+        return pulumi.get(self, "src_ip_ranges")
+
+    @property
+    @pulumi.getter(name="srcRegionCodes")
+    def src_region_codes(self) -> Optional[Sequence[str]]:
+        """
+        Region codes whose IP addresses will be used to match for source
+        of traffic. Should be specified as 2 letter country code defined as per
+        ISO 3166 alpha-2 country codes. ex."US"
+        Maximum number of source region codes allowed is 5000.
+        """
+        return pulumi.get(self, "src_region_codes")
+
+    @property
+    @pulumi.getter(name="srcThreatIntelligences")
+    def src_threat_intelligences(self) -> Optional[Sequence[str]]:
+        """
+        Names of Network Threat Intelligence lists.
+        The IPs in these lists will be matched against traffic source.
+        """
+        return pulumi.get(self, "src_threat_intelligences")
+
+
+@pulumi.output_type
+class FirewallPolicyWithRulesPredefinedRuleMatchLayer4Config(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipProtocol":
+            suggest = "ip_protocol"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FirewallPolicyWithRulesPredefinedRuleMatchLayer4Config. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FirewallPolicyWithRulesPredefinedRuleMatchLayer4Config.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FirewallPolicyWithRulesPredefinedRuleMatchLayer4Config.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ip_protocol: Optional[str] = None,
+                 ports: Optional[Sequence[str]] = None):
+        """
+        :param str ip_protocol: (Output)
+               The IP protocol to which this rule applies. The protocol
+               type is required when creating a firewall rule.
+               This value can either be one of the following well
+               known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp),
+               or the IP protocol number.
+        :param Sequence[str] ports: (Output)
+               An optional list of ports to which this rule applies. This field
+               is only applicable for UDP or TCP protocol. Each entry must be
+               either an integer or a range. If not specified, this rule
+               applies to connections through any port.
+               Example inputs include: ["22"], ["80","443"], and
+               ["12345-12349"].
+        """
+        if ip_protocol is not None:
+            pulumi.set(__self__, "ip_protocol", ip_protocol)
+        if ports is not None:
+            pulumi.set(__self__, "ports", ports)
+
+    @property
+    @pulumi.getter(name="ipProtocol")
+    def ip_protocol(self) -> Optional[str]:
+        """
+        (Output)
+        The IP protocol to which this rule applies. The protocol
+        type is required when creating a firewall rule.
+        This value can either be one of the following well
+        known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp),
+        or the IP protocol number.
+        """
+        return pulumi.get(self, "ip_protocol")
+
+    @property
+    @pulumi.getter
+    def ports(self) -> Optional[Sequence[str]]:
+        """
+        (Output)
+        An optional list of ports to which this rule applies. This field
+        is only applicable for UDP or TCP protocol. Each entry must be
+        either an integer or a range. If not specified, this rule
+        applies to connections through any port.
+        Example inputs include: ["22"], ["80","443"], and
+        ["12345-12349"].
+        """
+        return pulumi.get(self, "ports")
+
+
+@pulumi.output_type
+class FirewallPolicyWithRulesRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableLogging":
+            suggest = "enable_logging"
+        elif key == "ruleName":
+            suggest = "rule_name"
+        elif key == "securityProfileGroup":
+            suggest = "security_profile_group"
+        elif key == "targetResources":
+            suggest = "target_resources"
+        elif key == "targetServiceAccounts":
+            suggest = "target_service_accounts"
+        elif key == "tlsInspect":
+            suggest = "tls_inspect"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FirewallPolicyWithRulesRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FirewallPolicyWithRulesRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FirewallPolicyWithRulesRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 action: str,
+                 match: 'outputs.FirewallPolicyWithRulesRuleMatch',
+                 priority: int,
+                 description: Optional[str] = None,
+                 direction: Optional[str] = None,
+                 disabled: Optional[bool] = None,
+                 enable_logging: Optional[bool] = None,
+                 rule_name: Optional[str] = None,
+                 security_profile_group: Optional[str] = None,
+                 target_resources: Optional[Sequence[str]] = None,
+                 target_service_accounts: Optional[Sequence[str]] = None,
+                 tls_inspect: Optional[bool] = None):
+        """
+        :param str action: The Action to perform when the client connection triggers the rule. Can currently be either
+               "allow", "deny", "apply_security_profile_group" or "goto_next".
+        :param 'FirewallPolicyWithRulesRuleMatchArgs' match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+               Structure is documented below.
+        :param int priority: An integer indicating the priority of a rule in the list. The priority must be a value
+               between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
+               highest priority and 2147483647 is the lowest priority.
+        :param str description: A description of the rule.
+        :param str direction: The direction in which this rule applies. If unspecified an INGRESS rule is created.
+               Possible values are: `INGRESS`, `EGRESS`.
+        :param bool disabled: Denotes whether the firewall policy rule is disabled. When set to true,
+               the firewall policy rule is not enforced and traffic behaves as if it did
+               not exist. If this is unspecified, the firewall policy rule will be
+               enabled.
+        :param bool enable_logging: Denotes whether to enable logging for a particular rule.
+               If logging is enabled, logs will be exported to the
+               configured export destination in Stackdriver.
+        :param str rule_name: An optional name for the rule. This field is not a unique identifier
+               and can be updated.
+        :param str security_profile_group: A fully-qualified URL of a SecurityProfile resource instance.
+               Example:
+               https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+               Must be specified if action is 'apply_security_profile_group'.
+        :param Sequence[str] target_resources: A list of network resource URLs to which this rule applies.
+               This field allows you to control which network's VMs get
+               this rule. If this field is left blank, all VMs
+               within the organization will receive the rule.
+        :param Sequence[str] target_service_accounts: A list of service accounts indicating the sets of
+               instances that are applied with this rule.
+        :param bool tls_inspect: Boolean flag indicating if the traffic should be TLS decrypted.
+               It can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "match", match)
+        pulumi.set(__self__, "priority", priority)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if enable_logging is not None:
+            pulumi.set(__self__, "enable_logging", enable_logging)
+        if rule_name is not None:
+            pulumi.set(__self__, "rule_name", rule_name)
+        if security_profile_group is not None:
+            pulumi.set(__self__, "security_profile_group", security_profile_group)
+        if target_resources is not None:
+            pulumi.set(__self__, "target_resources", target_resources)
+        if target_service_accounts is not None:
+            pulumi.set(__self__, "target_service_accounts", target_service_accounts)
+        if tls_inspect is not None:
+            pulumi.set(__self__, "tls_inspect", tls_inspect)
+
+    @property
+    @pulumi.getter
+    def action(self) -> str:
+        """
+        The Action to perform when the client connection triggers the rule. Can currently be either
+        "allow", "deny", "apply_security_profile_group" or "goto_next".
+        """
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter
+    def match(self) -> 'outputs.FirewallPolicyWithRulesRuleMatch':
+        """
+        A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "match")
+
+    @property
+    @pulumi.getter
+    def priority(self) -> int:
+        """
+        An integer indicating the priority of a rule in the list. The priority must be a value
+        between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
+        highest priority and 2147483647 is the lowest priority.
+        """
+        return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        A description of the rule.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        """
+        The direction in which this rule applies. If unspecified an INGRESS rule is created.
+        Possible values are: `INGRESS`, `EGRESS`.
+        """
+        return pulumi.get(self, "direction")
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[bool]:
+        """
+        Denotes whether the firewall policy rule is disabled. When set to true,
+        the firewall policy rule is not enforced and traffic behaves as if it did
+        not exist. If this is unspecified, the firewall policy rule will be
+        enabled.
+        """
+        return pulumi.get(self, "disabled")
+
+    @property
+    @pulumi.getter(name="enableLogging")
+    def enable_logging(self) -> Optional[bool]:
+        """
+        Denotes whether to enable logging for a particular rule.
+        If logging is enabled, logs will be exported to the
+        configured export destination in Stackdriver.
+        """
+        return pulumi.get(self, "enable_logging")
+
+    @property
+    @pulumi.getter(name="ruleName")
+    def rule_name(self) -> Optional[str]:
+        """
+        An optional name for the rule. This field is not a unique identifier
+        and can be updated.
+        """
+        return pulumi.get(self, "rule_name")
+
+    @property
+    @pulumi.getter(name="securityProfileGroup")
+    def security_profile_group(self) -> Optional[str]:
+        """
+        A fully-qualified URL of a SecurityProfile resource instance.
+        Example:
+        https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+        Must be specified if action is 'apply_security_profile_group'.
+        """
+        return pulumi.get(self, "security_profile_group")
+
+    @property
+    @pulumi.getter(name="targetResources")
+    def target_resources(self) -> Optional[Sequence[str]]:
+        """
+        A list of network resource URLs to which this rule applies.
+        This field allows you to control which network's VMs get
+        this rule. If this field is left blank, all VMs
+        within the organization will receive the rule.
+        """
+        return pulumi.get(self, "target_resources")
+
+    @property
+    @pulumi.getter(name="targetServiceAccounts")
+    def target_service_accounts(self) -> Optional[Sequence[str]]:
+        """
+        A list of service accounts indicating the sets of
+        instances that are applied with this rule.
+        """
+        return pulumi.get(self, "target_service_accounts")
+
+    @property
+    @pulumi.getter(name="tlsInspect")
+    def tls_inspect(self) -> Optional[bool]:
+        """
+        Boolean flag indicating if the traffic should be TLS decrypted.
+        It can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
+        """
+        return pulumi.get(self, "tls_inspect")
+
+
+@pulumi.output_type
+class FirewallPolicyWithRulesRuleMatch(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "layer4Configs":
+            suggest = "layer4_configs"
+        elif key == "destAddressGroups":
+            suggest = "dest_address_groups"
+        elif key == "destFqdns":
+            suggest = "dest_fqdns"
+        elif key == "destIpRanges":
+            suggest = "dest_ip_ranges"
+        elif key == "destRegionCodes":
+            suggest = "dest_region_codes"
+        elif key == "destThreatIntelligences":
+            suggest = "dest_threat_intelligences"
+        elif key == "srcAddressGroups":
+            suggest = "src_address_groups"
+        elif key == "srcFqdns":
+            suggest = "src_fqdns"
+        elif key == "srcIpRanges":
+            suggest = "src_ip_ranges"
+        elif key == "srcRegionCodes":
+            suggest = "src_region_codes"
+        elif key == "srcThreatIntelligences":
+            suggest = "src_threat_intelligences"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FirewallPolicyWithRulesRuleMatch. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FirewallPolicyWithRulesRuleMatch.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FirewallPolicyWithRulesRuleMatch.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 layer4_configs: Sequence['outputs.FirewallPolicyWithRulesRuleMatchLayer4Config'],
+                 dest_address_groups: Optional[Sequence[str]] = None,
+                 dest_fqdns: Optional[Sequence[str]] = None,
+                 dest_ip_ranges: Optional[Sequence[str]] = None,
+                 dest_region_codes: Optional[Sequence[str]] = None,
+                 dest_threat_intelligences: Optional[Sequence[str]] = None,
+                 src_address_groups: Optional[Sequence[str]] = None,
+                 src_fqdns: Optional[Sequence[str]] = None,
+                 src_ip_ranges: Optional[Sequence[str]] = None,
+                 src_region_codes: Optional[Sequence[str]] = None,
+                 src_threat_intelligences: Optional[Sequence[str]] = None):
+        """
+        :param Sequence['FirewallPolicyWithRulesRuleMatchLayer4ConfigArgs'] layer4_configs: Pairs of IP protocols and ports that the rule should match.
+               Structure is documented below.
+               
+               
+               <a name="nested_layer4_config"></a>The `layer4_config` block supports:
+        :param Sequence[str] dest_address_groups: Address groups which should be matched against the traffic destination.
+               Maximum number of destination address groups is 10.
+        :param Sequence[str] dest_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against
+               traffic destination. Maximum number of destination fqdn allowed is 100.
+        :param Sequence[str] dest_ip_ranges: Destination IP address range in CIDR format. Required for
+               EGRESS rules.
+        :param Sequence[str] dest_region_codes: Region codes whose IP addresses will be used to match for destination
+               of traffic. Should be specified as 2 letter country code defined as per
+               ISO 3166 alpha-2 country codes. ex."US"
+               Maximum number of destination region codes allowed is 5000.
+        :param Sequence[str] dest_threat_intelligences: Names of Network Threat Intelligence lists.
+               The IPs in these lists will be matched against traffic destination.
+        :param Sequence[str] src_address_groups: Address groups which should be matched against the traffic source.
+               Maximum number of source address groups is 10.
+        :param Sequence[str] src_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against
+               traffic source. Maximum number of source fqdn allowed is 100.
+        :param Sequence[str] src_ip_ranges: Source IP address range in CIDR format. Required for
+               INGRESS rules.
+        :param Sequence[str] src_region_codes: Region codes whose IP addresses will be used to match for source
+               of traffic. Should be specified as 2 letter country code defined as per
+               ISO 3166 alpha-2 country codes. ex."US"
+               Maximum number of source region codes allowed is 5000.
+        :param Sequence[str] src_threat_intelligences: Names of Network Threat Intelligence lists.
+               The IPs in these lists will be matched against traffic source.
+        """
+        pulumi.set(__self__, "layer4_configs", layer4_configs)
+        if dest_address_groups is not None:
+            pulumi.set(__self__, "dest_address_groups", dest_address_groups)
+        if dest_fqdns is not None:
+            pulumi.set(__self__, "dest_fqdns", dest_fqdns)
+        if dest_ip_ranges is not None:
+            pulumi.set(__self__, "dest_ip_ranges", dest_ip_ranges)
+        if dest_region_codes is not None:
+            pulumi.set(__self__, "dest_region_codes", dest_region_codes)
+        if dest_threat_intelligences is not None:
+            pulumi.set(__self__, "dest_threat_intelligences", dest_threat_intelligences)
+        if src_address_groups is not None:
+            pulumi.set(__self__, "src_address_groups", src_address_groups)
+        if src_fqdns is not None:
+            pulumi.set(__self__, "src_fqdns", src_fqdns)
+        if src_ip_ranges is not None:
+            pulumi.set(__self__, "src_ip_ranges", src_ip_ranges)
+        if src_region_codes is not None:
+            pulumi.set(__self__, "src_region_codes", src_region_codes)
+        if src_threat_intelligences is not None:
+            pulumi.set(__self__, "src_threat_intelligences", src_threat_intelligences)
+
+    @property
+    @pulumi.getter(name="layer4Configs")
+    def layer4_configs(self) -> Sequence['outputs.FirewallPolicyWithRulesRuleMatchLayer4Config']:
+        """
+        Pairs of IP protocols and ports that the rule should match.
+        Structure is documented below.
+
+
+        <a name="nested_layer4_config"></a>The `layer4_config` block supports:
+        """
+        return pulumi.get(self, "layer4_configs")
+
+    @property
+    @pulumi.getter(name="destAddressGroups")
+    def dest_address_groups(self) -> Optional[Sequence[str]]:
+        """
+        Address groups which should be matched against the traffic destination.
+        Maximum number of destination address groups is 10.
+        """
+        return pulumi.get(self, "dest_address_groups")
+
+    @property
+    @pulumi.getter(name="destFqdns")
+    def dest_fqdns(self) -> Optional[Sequence[str]]:
+        """
+        Fully Qualified Domain Name (FQDN) which should be matched against
+        traffic destination. Maximum number of destination fqdn allowed is 100.
+        """
+        return pulumi.get(self, "dest_fqdns")
+
+    @property
+    @pulumi.getter(name="destIpRanges")
+    def dest_ip_ranges(self) -> Optional[Sequence[str]]:
+        """
+        Destination IP address range in CIDR format. Required for
+        EGRESS rules.
+        """
+        return pulumi.get(self, "dest_ip_ranges")
+
+    @property
+    @pulumi.getter(name="destRegionCodes")
+    def dest_region_codes(self) -> Optional[Sequence[str]]:
+        """
+        Region codes whose IP addresses will be used to match for destination
+        of traffic. Should be specified as 2 letter country code defined as per
+        ISO 3166 alpha-2 country codes. ex."US"
+        Maximum number of destination region codes allowed is 5000.
+        """
+        return pulumi.get(self, "dest_region_codes")
+
+    @property
+    @pulumi.getter(name="destThreatIntelligences")
+    def dest_threat_intelligences(self) -> Optional[Sequence[str]]:
+        """
+        Names of Network Threat Intelligence lists.
+        The IPs in these lists will be matched against traffic destination.
+        """
+        return pulumi.get(self, "dest_threat_intelligences")
+
+    @property
+    @pulumi.getter(name="srcAddressGroups")
+    def src_address_groups(self) -> Optional[Sequence[str]]:
+        """
+        Address groups which should be matched against the traffic source.
+        Maximum number of source address groups is 10.
+        """
+        return pulumi.get(self, "src_address_groups")
+
+    @property
+    @pulumi.getter(name="srcFqdns")
+    def src_fqdns(self) -> Optional[Sequence[str]]:
+        """
+        Fully Qualified Domain Name (FQDN) which should be matched against
+        traffic source. Maximum number of source fqdn allowed is 100.
+        """
+        return pulumi.get(self, "src_fqdns")
+
+    @property
+    @pulumi.getter(name="srcIpRanges")
+    def src_ip_ranges(self) -> Optional[Sequence[str]]:
+        """
+        Source IP address range in CIDR format. Required for
+        INGRESS rules.
+        """
+        return pulumi.get(self, "src_ip_ranges")
+
+    @property
+    @pulumi.getter(name="srcRegionCodes")
+    def src_region_codes(self) -> Optional[Sequence[str]]:
+        """
+        Region codes whose IP addresses will be used to match for source
+        of traffic. Should be specified as 2 letter country code defined as per
+        ISO 3166 alpha-2 country codes. ex."US"
+        Maximum number of source region codes allowed is 5000.
+        """
+        return pulumi.get(self, "src_region_codes")
+
+    @property
+    @pulumi.getter(name="srcThreatIntelligences")
+    def src_threat_intelligences(self) -> Optional[Sequence[str]]:
+        """
+        Names of Network Threat Intelligence lists.
+        The IPs in these lists will be matched against traffic source.
+        """
+        return pulumi.get(self, "src_threat_intelligences")
+
+
+@pulumi.output_type
+class FirewallPolicyWithRulesRuleMatchLayer4Config(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipProtocol":
+            suggest = "ip_protocol"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FirewallPolicyWithRulesRuleMatchLayer4Config. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FirewallPolicyWithRulesRuleMatchLayer4Config.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FirewallPolicyWithRulesRuleMatchLayer4Config.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ip_protocol: str,
+                 ports: Optional[Sequence[str]] = None):
+        """
+        :param str ip_protocol: (Output)
+               The IP protocol to which this rule applies. The protocol
+               type is required when creating a firewall rule.
+               This value can either be one of the following well
+               known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp),
+               or the IP protocol number.
+        :param Sequence[str] ports: (Output)
+               An optional list of ports to which this rule applies. This field
+               is only applicable for UDP or TCP protocol. Each entry must be
+               either an integer or a range. If not specified, this rule
+               applies to connections through any port.
+               Example inputs include: ["22"], ["80","443"], and
+               ["12345-12349"].
+        """
+        pulumi.set(__self__, "ip_protocol", ip_protocol)
+        if ports is not None:
+            pulumi.set(__self__, "ports", ports)
+
+    @property
+    @pulumi.getter(name="ipProtocol")
+    def ip_protocol(self) -> str:
+        """
+        (Output)
+        The IP protocol to which this rule applies. The protocol
+        type is required when creating a firewall rule.
+        This value can either be one of the following well
+        known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp),
+        or the IP protocol number.
+        """
+        return pulumi.get(self, "ip_protocol")
+
+    @property
+    @pulumi.getter
+    def ports(self) -> Optional[Sequence[str]]:
+        """
+        (Output)
+        An optional list of ports to which this rule applies. This field
+        is only applicable for UDP or TCP protocol. Each entry must be
+        either an integer or a range. If not specified, this rule
+        applies to connections through any port.
+        Example inputs include: ["22"], ["80","443"], and
+        ["12345-12349"].
         """
         return pulumi.get(self, "ports")
 

@@ -81,6 +81,24 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Looker Instance Fips
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const looker_instance = new gcp.looker.Instance("looker-instance", {
+ *     name: "my-instance-fips",
+ *     platformEdition: "LOOKER_CORE_ENTERPRISE_ANNUAL",
+ *     region: "us-central1",
+ *     publicIpEnabled: true,
+ *     fipsEnabled: true,
+ *     oauthConfig: {
+ *         clientId: "my-client-id",
+ *         clientSecret: "my-client-secret",
+ *     },
+ * });
+ * ```
  * ### Looker Instance Enterprise Full
  *
  * ```typescript
@@ -271,6 +289,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly encryptionConfig!: pulumi.Output<outputs.looker.InstanceEncryptionConfig>;
     /**
+     * FIPS 140-2 Encryption enablement for Looker (Google Cloud Core).
+     */
+    public readonly fipsEnabled!: pulumi.Output<boolean | undefined>;
+    /**
      * Private Ingress IP (IPv4).
      */
     public /*out*/ readonly ingressPrivateIp!: pulumi.Output<string>;
@@ -376,6 +398,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["denyMaintenancePeriod"] = state ? state.denyMaintenancePeriod : undefined;
             resourceInputs["egressPublicIp"] = state ? state.egressPublicIp : undefined;
             resourceInputs["encryptionConfig"] = state ? state.encryptionConfig : undefined;
+            resourceInputs["fipsEnabled"] = state ? state.fipsEnabled : undefined;
             resourceInputs["ingressPrivateIp"] = state ? state.ingressPrivateIp : undefined;
             resourceInputs["ingressPublicIp"] = state ? state.ingressPublicIp : undefined;
             resourceInputs["lookerUri"] = state ? state.lookerUri : undefined;
@@ -398,6 +421,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["customDomain"] = args ? args.customDomain : undefined;
             resourceInputs["denyMaintenancePeriod"] = args ? args.denyMaintenancePeriod : undefined;
             resourceInputs["encryptionConfig"] = args ? args.encryptionConfig : undefined;
+            resourceInputs["fipsEnabled"] = args ? args.fipsEnabled : undefined;
             resourceInputs["maintenanceWindow"] = args ? args.maintenanceWindow : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["oauthConfig"] = args ? args.oauthConfig : undefined;
@@ -462,6 +486,10 @@ export interface InstanceState {
      * Structure is documented below.
      */
     encryptionConfig?: pulumi.Input<inputs.looker.InstanceEncryptionConfig>;
+    /**
+     * FIPS 140-2 Encryption enablement for Looker (Google Cloud Core).
+     */
+    fipsEnabled?: pulumi.Input<boolean>;
     /**
      * Private Ingress IP (IPv4).
      */
@@ -581,6 +609,10 @@ export interface InstanceArgs {
      * Structure is documented below.
      */
     encryptionConfig?: pulumi.Input<inputs.looker.InstanceEncryptionConfig>;
+    /**
+     * FIPS 140-2 Encryption enablement for Looker (Google Cloud Core).
+     */
+    fipsEnabled?: pulumi.Input<boolean>;
     /**
      * Maintenance window for an instance.
      * Maintenance of your instance takes place once a month, and will require

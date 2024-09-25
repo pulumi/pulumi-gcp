@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.filestore.inputs.InstanceFileSharesArgs;
 import com.pulumi.gcp.filestore.inputs.InstanceNetworkArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +20,36 @@ import javax.annotation.Nullable;
 public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final InstanceArgs Empty = new InstanceArgs();
+
+    /**
+     * Indicates whether the instance is protected against deletion.
+     * 
+     */
+    @Import(name="deletionProtectionEnabled")
+    private @Nullable Output<Boolean> deletionProtectionEnabled;
+
+    /**
+     * @return Indicates whether the instance is protected against deletion.
+     * 
+     */
+    public Optional<Output<Boolean>> deletionProtectionEnabled() {
+        return Optional.ofNullable(this.deletionProtectionEnabled);
+    }
+
+    /**
+     * The reason for enabling deletion protection.
+     * 
+     */
+    @Import(name="deletionProtectionReason")
+    private @Nullable Output<String> deletionProtectionReason;
+
+    /**
+     * @return The reason for enabling deletion protection.
+     * 
+     */
+    public Optional<Output<String>> deletionProtectionReason() {
+        return Optional.ofNullable(this.deletionProtectionReason);
+    }
 
     /**
      * A description of the instance.
@@ -206,6 +237,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private InstanceArgs() {}
 
     private InstanceArgs(InstanceArgs $) {
+        this.deletionProtectionEnabled = $.deletionProtectionEnabled;
+        this.deletionProtectionReason = $.deletionProtectionReason;
         this.description = $.description;
         this.fileShares = $.fileShares;
         this.kmsKeyName = $.kmsKeyName;
@@ -235,6 +268,48 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(InstanceArgs defaults) {
             $ = new InstanceArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param deletionProtectionEnabled Indicates whether the instance is protected against deletion.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionProtectionEnabled(@Nullable Output<Boolean> deletionProtectionEnabled) {
+            $.deletionProtectionEnabled = deletionProtectionEnabled;
+            return this;
+        }
+
+        /**
+         * @param deletionProtectionEnabled Indicates whether the instance is protected against deletion.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionProtectionEnabled(Boolean deletionProtectionEnabled) {
+            return deletionProtectionEnabled(Output.of(deletionProtectionEnabled));
+        }
+
+        /**
+         * @param deletionProtectionReason The reason for enabling deletion protection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionProtectionReason(@Nullable Output<String> deletionProtectionReason) {
+            $.deletionProtectionReason = deletionProtectionReason;
+            return this;
+        }
+
+        /**
+         * @param deletionProtectionReason The reason for enabling deletion protection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionProtectionReason(String deletionProtectionReason) {
+            return deletionProtectionReason(Output.of(deletionProtectionReason));
         }
 
         /**

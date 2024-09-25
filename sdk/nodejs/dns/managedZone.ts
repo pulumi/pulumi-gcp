@@ -329,7 +329,7 @@ export class ManagedZone extends pulumi.CustomResource {
      * DNSSEC configuration
      * Structure is documented below.
      */
-    public readonly dnssecConfig!: pulumi.Output<outputs.dns.ManagedZoneDnssecConfig | undefined>;
+    public readonly dnssecConfig!: pulumi.Output<outputs.dns.ManagedZoneDnssecConfig>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */

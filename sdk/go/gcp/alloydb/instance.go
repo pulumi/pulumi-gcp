@@ -278,6 +278,10 @@ type Instance struct {
 	// Configuration for enhanced query insights.
 	// Structure is documented below.
 	ObservabilityConfig InstanceObservabilityConfigOutput `pulumi:"observabilityConfig"`
+	// The outbound public IP addresses for the instance. This is available ONLY when
+	// networkConfig.enableOutboundPublicIp is set to true. These IP addresses are used
+	// for outbound connections.
+	OutboundPublicIpAddresses pulumi.StringArrayOutput `pulumi:"outboundPublicIpAddresses"`
 	// Configuration for Private Service Connect (PSC) for the instance.
 	// Structure is documented below.
 	PscInstanceConfig InstancePscInstanceConfigOutput `pulumi:"pscInstanceConfig"`
@@ -399,6 +403,10 @@ type instanceState struct {
 	// Configuration for enhanced query insights.
 	// Structure is documented below.
 	ObservabilityConfig *InstanceObservabilityConfig `pulumi:"observabilityConfig"`
+	// The outbound public IP addresses for the instance. This is available ONLY when
+	// networkConfig.enableOutboundPublicIp is set to true. These IP addresses are used
+	// for outbound connections.
+	OutboundPublicIpAddresses []string `pulumi:"outboundPublicIpAddresses"`
 	// Configuration for Private Service Connect (PSC) for the instance.
 	// Structure is documented below.
 	PscInstanceConfig *InstancePscInstanceConfig `pulumi:"pscInstanceConfig"`
@@ -477,6 +485,10 @@ type InstanceState struct {
 	// Configuration for enhanced query insights.
 	// Structure is documented below.
 	ObservabilityConfig InstanceObservabilityConfigPtrInput
+	// The outbound public IP addresses for the instance. This is available ONLY when
+	// networkConfig.enableOutboundPublicIp is set to true. These IP addresses are used
+	// for outbound connections.
+	OutboundPublicIpAddresses pulumi.StringArrayInput
 	// Configuration for Private Service Connect (PSC) for the instance.
 	// Structure is documented below.
 	PscInstanceConfig InstancePscInstanceConfigPtrInput
@@ -806,6 +818,13 @@ func (o InstanceOutput) NetworkConfig() InstanceNetworkConfigPtrOutput {
 // Structure is documented below.
 func (o InstanceOutput) ObservabilityConfig() InstanceObservabilityConfigOutput {
 	return o.ApplyT(func(v *Instance) InstanceObservabilityConfigOutput { return v.ObservabilityConfig }).(InstanceObservabilityConfigOutput)
+}
+
+// The outbound public IP addresses for the instance. This is available ONLY when
+// networkConfig.enableOutboundPublicIp is set to true. These IP addresses are used
+// for outbound connections.
+func (o InstanceOutput) OutboundPublicIpAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.OutboundPublicIpAddresses }).(pulumi.StringArrayOutput)
 }
 
 // Configuration for Private Service Connect (PSC) for the instance.

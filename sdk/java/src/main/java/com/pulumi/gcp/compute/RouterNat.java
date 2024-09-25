@@ -23,6 +23,9 @@ import javax.annotation.Nullable;
 /**
  * A NAT service created in a router.
  * 
+ * &gt; **Note:** Recreating a `gcp.compute.Address` that is being used by `gcp.compute.RouterNat` will give a `resourceInUseByAnotherResource` error.
+ * Use `lifecycle.create_before_destroy` on this address resource to avoid this type of error as shown in the Manual Ips example.
+ * 
  * To get more information about RouterNat, see:
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
@@ -93,84 +96,6 @@ import javax.annotation.Nullable;
  *             .logConfig(RouterNatLogConfigArgs.builder()
  *                 .enable(true)
  *                 .filter("ERRORS_ONLY")
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * ### Router Nat Manual Ips
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.Network;
- * import com.pulumi.gcp.compute.NetworkArgs;
- * import com.pulumi.gcp.compute.Subnetwork;
- * import com.pulumi.gcp.compute.SubnetworkArgs;
- * import com.pulumi.gcp.compute.Router;
- * import com.pulumi.gcp.compute.RouterArgs;
- * import com.pulumi.gcp.compute.Address;
- * import com.pulumi.gcp.compute.AddressArgs;
- * import com.pulumi.gcp.compute.RouterNat;
- * import com.pulumi.gcp.compute.RouterNatArgs;
- * import com.pulumi.gcp.compute.inputs.RouterNatSubnetworkArgs;
- * import com.pulumi.codegen.internal.KeyedValue;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var net = new Network("net", NetworkArgs.builder()
- *             .name("my-network")
- *             .build());
- * 
- *         var subnet = new Subnetwork("subnet", SubnetworkArgs.builder()
- *             .name("my-subnetwork")
- *             .network(net.id())
- *             .ipCidrRange("10.0.0.0/16")
- *             .region("us-central1")
- *             .build());
- * 
- *         var router = new Router("router", RouterArgs.builder()
- *             .name("my-router")
- *             .region(subnet.region())
- *             .network(net.id())
- *             .build());
- * 
- *         for (var i = 0; i < 2; i++) {
- *             new Address("address-" + i, AddressArgs.builder()
- *                 .name(String.format("nat-manual-ip-%s", range.value()))
- *                 .region(subnet.region())
- *                 .build());
- * 
- *         
- * }
- *         var natManual = new RouterNat("natManual", RouterNatArgs.builder()
- *             .name("my-router-nat")
- *             .router(router.name())
- *             .region(router.region())
- *             .natIpAllocateOption("MANUAL_ONLY")
- *             .natIps(address.stream().map(element -> element.selfLink()).collect(toList()))
- *             .sourceSubnetworkIpRangesToNat("LIST_OF_SUBNETWORKS")
- *             .subnetworks(RouterNatSubnetworkArgs.builder()
- *                 .name(subnet.id())
- *                 .sourceIpRangesToNats("ALL_IP_RANGES")
  *                 .build())
  *             .build());
  * 
@@ -609,6 +534,9 @@ public class RouterNat extends com.pulumi.resources.CustomResource {
     /**
      * Self-links of NAT IPs. Only valid if natIpAllocateOption
      * is set to MANUAL_ONLY.
+     * If this field is used alongside with a count created list of address resources `google_compute_address.foobar.*.self_link`,
+     * the access level resource for the address resource must have a `lifecycle` block with `create_before_destroy = true` so
+     * the number of resources can be increased/decreased without triggering the `resourceInUseByAnotherResource` error.
      * 
      */
     @Export(name="natIps", refs={List.class,String.class}, tree="[0,1]")
@@ -617,6 +545,9 @@ public class RouterNat extends com.pulumi.resources.CustomResource {
     /**
      * @return Self-links of NAT IPs. Only valid if natIpAllocateOption
      * is set to MANUAL_ONLY.
+     * If this field is used alongside with a count created list of address resources `google_compute_address.foobar.*.self_link`,
+     * the access level resource for the address resource must have a `lifecycle` block with `create_before_destroy = true` so
+     * the number of resources can be increased/decreased without triggering the `resourceInUseByAnotherResource` error.
      * 
      */
     public Output<Optional<List<String>>> natIps() {

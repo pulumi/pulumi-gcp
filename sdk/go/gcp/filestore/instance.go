@@ -245,6 +245,10 @@ type Instance struct {
 
 	// Creation timestamp in RFC3339 text format.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Indicates whether the instance is protected against deletion.
+	DeletionProtectionEnabled pulumi.BoolPtrOutput `pulumi:"deletionProtectionEnabled"`
+	// The reason for enabling deletion protection.
+	DeletionProtectionReason pulumi.StringPtrOutput `pulumi:"deletionProtectionReason"`
 	// A description of the instance.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -333,6 +337,10 @@ func GetInstance(ctx *pulumi.Context,
 type instanceState struct {
 	// Creation timestamp in RFC3339 text format.
 	CreateTime *string `pulumi:"createTime"`
+	// Indicates whether the instance is protected against deletion.
+	DeletionProtectionEnabled *bool `pulumi:"deletionProtectionEnabled"`
+	// The reason for enabling deletion protection.
+	DeletionProtectionReason *string `pulumi:"deletionProtectionReason"`
 	// A description of the instance.
 	Description *string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -378,6 +386,10 @@ type instanceState struct {
 type InstanceState struct {
 	// Creation timestamp in RFC3339 text format.
 	CreateTime pulumi.StringPtrInput
+	// Indicates whether the instance is protected against deletion.
+	DeletionProtectionEnabled pulumi.BoolPtrInput
+	// The reason for enabling deletion protection.
+	DeletionProtectionReason pulumi.StringPtrInput
 	// A description of the instance.
 	Description pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -425,6 +437,10 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
+	// Indicates whether the instance is protected against deletion.
+	DeletionProtectionEnabled *bool `pulumi:"deletionProtectionEnabled"`
+	// The reason for enabling deletion protection.
+	DeletionProtectionReason *string `pulumi:"deletionProtectionReason"`
 	// A description of the instance.
 	Description *string `pulumi:"description"`
 	// File system shares on the instance. For this version, only a
@@ -461,6 +477,10 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
+	// Indicates whether the instance is protected against deletion.
+	DeletionProtectionEnabled pulumi.BoolPtrInput
+	// The reason for enabling deletion protection.
+	DeletionProtectionReason pulumi.StringPtrInput
 	// A description of the instance.
 	Description pulumi.StringPtrInput
 	// File system shares on the instance. For this version, only a
@@ -585,6 +605,16 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 // Creation timestamp in RFC3339 text format.
 func (o InstanceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Indicates whether the instance is protected against deletion.
+func (o InstanceOutput) DeletionProtectionEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.DeletionProtectionEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The reason for enabling deletion protection.
+func (o InstanceOutput) DeletionProtectionReason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.DeletionProtectionReason }).(pulumi.StringPtrOutput)
 }
 
 // A description of the instance.

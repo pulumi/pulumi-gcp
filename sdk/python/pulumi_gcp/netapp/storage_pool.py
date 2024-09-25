@@ -24,6 +24,7 @@ class StoragePoolArgs:
                  network: pulumi.Input[str],
                  service_level: pulumi.Input[str],
                  active_directory: Optional[pulumi.Input[str]] = None,
+                 allow_auto_tiering: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  kms_config: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -41,6 +42,8 @@ class StoragePoolArgs:
                Possible values are: `PREMIUM`, `EXTREME`, `STANDARD`, `FLEX`.
         :param pulumi.Input[str] active_directory: Specifies the Active Directory policy to be used. Format: `projects/{{project}}/locations/{{location}}/activeDirectories/{{name}}`.
                The policy needs to be in the same location as the storage pool.
+        :param pulumi.Input[bool] allow_auto_tiering: Optional. True if the storage pool supports Auto Tiering enabled volumes. Default is false.
+               Auto-tiering can be enabled after storage pool creation but it can't be disabled once enabled.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] kms_config: Specifies the CMEK policy to be used for volume encryption. Format: `projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}`.
                The policy needs to be in the same location as the storage pool.
@@ -68,6 +71,8 @@ class StoragePoolArgs:
         pulumi.set(__self__, "service_level", service_level)
         if active_directory is not None:
             pulumi.set(__self__, "active_directory", active_directory)
+        if allow_auto_tiering is not None:
+            pulumi.set(__self__, "allow_auto_tiering", allow_auto_tiering)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if kms_config is not None:
@@ -146,6 +151,19 @@ class StoragePoolArgs:
     @active_directory.setter
     def active_directory(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "active_directory", value)
+
+    @property
+    @pulumi.getter(name="allowAutoTiering")
+    def allow_auto_tiering(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. True if the storage pool supports Auto Tiering enabled volumes. Default is false.
+        Auto-tiering can be enabled after storage pool creation but it can't be disabled once enabled.
+        """
+        return pulumi.get(self, "allow_auto_tiering")
+
+    @allow_auto_tiering.setter
+    def allow_auto_tiering(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_auto_tiering", value)
 
     @property
     @pulumi.getter
@@ -260,6 +278,7 @@ class StoragePoolArgs:
 class _StoragePoolState:
     def __init__(__self__, *,
                  active_directory: Optional[pulumi.Input[str]] = None,
+                 allow_auto_tiering: Optional[pulumi.Input[bool]] = None,
                  capacity_gib: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -281,6 +300,8 @@ class _StoragePoolState:
         Input properties used for looking up and filtering StoragePool resources.
         :param pulumi.Input[str] active_directory: Specifies the Active Directory policy to be used. Format: `projects/{{project}}/locations/{{location}}/activeDirectories/{{name}}`.
                The policy needs to be in the same location as the storage pool.
+        :param pulumi.Input[bool] allow_auto_tiering: Optional. True if the storage pool supports Auto Tiering enabled volumes. Default is false.
+               Auto-tiering can be enabled after storage pool creation but it can't be disabled once enabled.
         :param pulumi.Input[str] capacity_gib: Capacity of the storage pool (in GiB).
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -315,6 +336,8 @@ class _StoragePoolState:
         """
         if active_directory is not None:
             pulumi.set(__self__, "active_directory", active_directory)
+        if allow_auto_tiering is not None:
+            pulumi.set(__self__, "allow_auto_tiering", allow_auto_tiering)
         if capacity_gib is not None:
             pulumi.set(__self__, "capacity_gib", capacity_gib)
         if description is not None:
@@ -362,6 +385,19 @@ class _StoragePoolState:
     @active_directory.setter
     def active_directory(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "active_directory", value)
+
+    @property
+    @pulumi.getter(name="allowAutoTiering")
+    def allow_auto_tiering(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. True if the storage pool supports Auto Tiering enabled volumes. Default is false.
+        Auto-tiering can be enabled after storage pool creation but it can't be disabled once enabled.
+        """
+        return pulumi.get(self, "allow_auto_tiering")
+
+    @allow_auto_tiering.setter
+    def allow_auto_tiering(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_auto_tiering", value)
 
     @property
     @pulumi.getter(name="capacityGib")
@@ -588,6 +624,7 @@ class StoragePool(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  active_directory: Optional[pulumi.Input[str]] = None,
+                 allow_auto_tiering: Optional[pulumi.Input[bool]] = None,
                  capacity_gib: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  kms_config: Optional[pulumi.Input[str]] = None,
@@ -671,6 +708,8 @@ class StoragePool(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] active_directory: Specifies the Active Directory policy to be used. Format: `projects/{{project}}/locations/{{location}}/activeDirectories/{{name}}`.
                The policy needs to be in the same location as the storage pool.
+        :param pulumi.Input[bool] allow_auto_tiering: Optional. True if the storage pool supports Auto Tiering enabled volumes. Default is false.
+               Auto-tiering can be enabled after storage pool creation but it can't be disabled once enabled.
         :param pulumi.Input[str] capacity_gib: Capacity of the storage pool (in GiB).
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] kms_config: Specifies the CMEK policy to be used for volume encryption. Format: `projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}`.
@@ -785,6 +824,7 @@ class StoragePool(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  active_directory: Optional[pulumi.Input[str]] = None,
+                 allow_auto_tiering: Optional[pulumi.Input[bool]] = None,
                  capacity_gib: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  kms_config: Optional[pulumi.Input[str]] = None,
@@ -807,6 +847,7 @@ class StoragePool(pulumi.CustomResource):
             __props__ = StoragePoolArgs.__new__(StoragePoolArgs)
 
             __props__.__dict__["active_directory"] = active_directory
+            __props__.__dict__["allow_auto_tiering"] = allow_auto_tiering
             if capacity_gib is None and not opts.urn:
                 raise TypeError("Missing required property 'capacity_gib'")
             __props__.__dict__["capacity_gib"] = capacity_gib
@@ -845,6 +886,7 @@ class StoragePool(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             active_directory: Optional[pulumi.Input[str]] = None,
+            allow_auto_tiering: Optional[pulumi.Input[bool]] = None,
             capacity_gib: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -871,6 +913,8 @@ class StoragePool(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] active_directory: Specifies the Active Directory policy to be used. Format: `projects/{{project}}/locations/{{location}}/activeDirectories/{{name}}`.
                The policy needs to be in the same location as the storage pool.
+        :param pulumi.Input[bool] allow_auto_tiering: Optional. True if the storage pool supports Auto Tiering enabled volumes. Default is false.
+               Auto-tiering can be enabled after storage pool creation but it can't be disabled once enabled.
         :param pulumi.Input[str] capacity_gib: Capacity of the storage pool (in GiB).
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -908,6 +952,7 @@ class StoragePool(pulumi.CustomResource):
         __props__ = _StoragePoolState.__new__(_StoragePoolState)
 
         __props__.__dict__["active_directory"] = active_directory
+        __props__.__dict__["allow_auto_tiering"] = allow_auto_tiering
         __props__.__dict__["capacity_gib"] = capacity_gib
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_labels"] = effective_labels
@@ -935,6 +980,15 @@ class StoragePool(pulumi.CustomResource):
         The policy needs to be in the same location as the storage pool.
         """
         return pulumi.get(self, "active_directory")
+
+    @property
+    @pulumi.getter(name="allowAutoTiering")
+    def allow_auto_tiering(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Optional. True if the storage pool supports Auto Tiering enabled volumes. Default is false.
+        Auto-tiering can be enabled after storage pool creation but it can't be disabled once enabled.
+        """
+        return pulumi.get(self, "allow_auto_tiering")
 
     @property
     @pulumi.getter(name="capacityGib")

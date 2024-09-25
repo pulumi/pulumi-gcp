@@ -53,6 +53,20 @@ __all__ = [
     'ConnectionProfilePostgresqlArgsDict',
     'ConnectionProfilePostgresqlSslArgs',
     'ConnectionProfilePostgresqlSslArgsDict',
+    'MigrationJobDumpFlagsArgs',
+    'MigrationJobDumpFlagsArgsDict',
+    'MigrationJobDumpFlagsDumpFlagArgs',
+    'MigrationJobDumpFlagsDumpFlagArgsDict',
+    'MigrationJobErrorArgs',
+    'MigrationJobErrorArgsDict',
+    'MigrationJobPerformanceConfigArgs',
+    'MigrationJobPerformanceConfigArgsDict',
+    'MigrationJobReverseSshConnectivityArgs',
+    'MigrationJobReverseSshConnectivityArgsDict',
+    'MigrationJobStaticIpConnectivityArgs',
+    'MigrationJobStaticIpConnectivityArgsDict',
+    'MigrationJobVpcPeeringConnectivityArgs',
+    'MigrationJobVpcPeeringConnectivityArgsDict',
     'PrivateConnectionErrorArgs',
     'PrivateConnectionErrorArgsDict',
     'PrivateConnectionVpcPeeringConfigArgs',
@@ -2280,6 +2294,354 @@ class ConnectionProfilePostgresqlSslArgs:
     @type.setter
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class MigrationJobDumpFlagsArgsDict(TypedDict):
+        dump_flags: NotRequired[pulumi.Input[Sequence[pulumi.Input['MigrationJobDumpFlagsDumpFlagArgsDict']]]]
+        """
+        A list of dump flags
+        Structure is documented below.
+        """
+elif False:
+    MigrationJobDumpFlagsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MigrationJobDumpFlagsArgs:
+    def __init__(__self__, *,
+                 dump_flags: Optional[pulumi.Input[Sequence[pulumi.Input['MigrationJobDumpFlagsDumpFlagArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['MigrationJobDumpFlagsDumpFlagArgs']]] dump_flags: A list of dump flags
+               Structure is documented below.
+        """
+        if dump_flags is not None:
+            pulumi.set(__self__, "dump_flags", dump_flags)
+
+    @property
+    @pulumi.getter(name="dumpFlags")
+    def dump_flags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MigrationJobDumpFlagsDumpFlagArgs']]]]:
+        """
+        A list of dump flags
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dump_flags")
+
+    @dump_flags.setter
+    def dump_flags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MigrationJobDumpFlagsDumpFlagArgs']]]]):
+        pulumi.set(self, "dump_flags", value)
+
+
+if not MYPY:
+    class MigrationJobDumpFlagsDumpFlagArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the flag
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The vale of the flag
+        """
+elif False:
+    MigrationJobDumpFlagsDumpFlagArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MigrationJobDumpFlagsDumpFlagArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: The name of the flag
+        :param pulumi.Input[str] value: The vale of the flag
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the flag
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The vale of the flag
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class MigrationJobErrorArgsDict(TypedDict):
+        code: NotRequired[pulumi.Input[int]]
+        """
+        (Output)
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        details: NotRequired[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]
+        """
+        (Output)
+        A list of messages that carry the error details.
+        """
+        message: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Human readable message indicating details about the current status.
+        """
+elif False:
+    MigrationJobErrorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MigrationJobErrorArgs:
+    def __init__(__self__, *,
+                 code: Optional[pulumi.Input[int]] = None,
+                 details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 message: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] code: (Output)
+               The status code, which should be an enum value of google.rpc.Code.
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] details: (Output)
+               A list of messages that carry the error details.
+        :param pulumi.Input[str] message: (Output)
+               Human readable message indicating details about the current status.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if details is not None:
+            pulumi.set(__self__, "details", details)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Output)
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "code", value)
+
+    @property
+    @pulumi.getter
+    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
+        """
+        (Output)
+        A list of messages that carry the error details.
+        """
+        return pulumi.get(self, "details")
+
+    @details.setter
+    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
+        pulumi.set(self, "details", value)
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Human readable message indicating details about the current status.
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "message", value)
+
+
+if not MYPY:
+    class MigrationJobPerformanceConfigArgsDict(TypedDict):
+        dump_parallel_level: NotRequired[pulumi.Input[str]]
+        """
+        Initial dump parallelism level.
+        Possible values are: `MIN`, `OPTIMAL`, `MAX`.
+        """
+elif False:
+    MigrationJobPerformanceConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MigrationJobPerformanceConfigArgs:
+    def __init__(__self__, *,
+                 dump_parallel_level: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] dump_parallel_level: Initial dump parallelism level.
+               Possible values are: `MIN`, `OPTIMAL`, `MAX`.
+        """
+        if dump_parallel_level is not None:
+            pulumi.set(__self__, "dump_parallel_level", dump_parallel_level)
+
+    @property
+    @pulumi.getter(name="dumpParallelLevel")
+    def dump_parallel_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Initial dump parallelism level.
+        Possible values are: `MIN`, `OPTIMAL`, `MAX`.
+        """
+        return pulumi.get(self, "dump_parallel_level")
+
+    @dump_parallel_level.setter
+    def dump_parallel_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dump_parallel_level", value)
+
+
+if not MYPY:
+    class MigrationJobReverseSshConnectivityArgsDict(TypedDict):
+        vm: NotRequired[pulumi.Input[str]]
+        """
+        The name of the virtual machine (Compute Engine) used as the bastion server
+        for the SSH tunnel.
+        """
+        vm_ip: NotRequired[pulumi.Input[str]]
+        """
+        The IP of the virtual machine (Compute Engine) used as the bastion server
+        for the SSH tunnel.
+        """
+        vm_port: NotRequired[pulumi.Input[int]]
+        """
+        The forwarding port of the virtual machine (Compute Engine) used as the
+        bastion server for the SSH tunnel.
+        """
+        vpc: NotRequired[pulumi.Input[str]]
+        """
+        The name of the VPC to peer with the Cloud SQL private network.
+        """
+elif False:
+    MigrationJobReverseSshConnectivityArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MigrationJobReverseSshConnectivityArgs:
+    def __init__(__self__, *,
+                 vm: Optional[pulumi.Input[str]] = None,
+                 vm_ip: Optional[pulumi.Input[str]] = None,
+                 vm_port: Optional[pulumi.Input[int]] = None,
+                 vpc: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] vm: The name of the virtual machine (Compute Engine) used as the bastion server
+               for the SSH tunnel.
+        :param pulumi.Input[str] vm_ip: The IP of the virtual machine (Compute Engine) used as the bastion server
+               for the SSH tunnel.
+        :param pulumi.Input[int] vm_port: The forwarding port of the virtual machine (Compute Engine) used as the
+               bastion server for the SSH tunnel.
+        :param pulumi.Input[str] vpc: The name of the VPC to peer with the Cloud SQL private network.
+        """
+        if vm is not None:
+            pulumi.set(__self__, "vm", vm)
+        if vm_ip is not None:
+            pulumi.set(__self__, "vm_ip", vm_ip)
+        if vm_port is not None:
+            pulumi.set(__self__, "vm_port", vm_port)
+        if vpc is not None:
+            pulumi.set(__self__, "vpc", vpc)
+
+    @property
+    @pulumi.getter
+    def vm(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the virtual machine (Compute Engine) used as the bastion server
+        for the SSH tunnel.
+        """
+        return pulumi.get(self, "vm")
+
+    @vm.setter
+    def vm(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vm", value)
+
+    @property
+    @pulumi.getter(name="vmIp")
+    def vm_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP of the virtual machine (Compute Engine) used as the bastion server
+        for the SSH tunnel.
+        """
+        return pulumi.get(self, "vm_ip")
+
+    @vm_ip.setter
+    def vm_ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vm_ip", value)
+
+    @property
+    @pulumi.getter(name="vmPort")
+    def vm_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The forwarding port of the virtual machine (Compute Engine) used as the
+        bastion server for the SSH tunnel.
+        """
+        return pulumi.get(self, "vm_port")
+
+    @vm_port.setter
+    def vm_port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "vm_port", value)
+
+    @property
+    @pulumi.getter
+    def vpc(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the VPC to peer with the Cloud SQL private network.
+        """
+        return pulumi.get(self, "vpc")
+
+    @vpc.setter
+    def vpc(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc", value)
+
+
+if not MYPY:
+    class MigrationJobStaticIpConnectivityArgsDict(TypedDict):
+        pass
+elif False:
+    MigrationJobStaticIpConnectivityArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MigrationJobStaticIpConnectivityArgs:
+    def __init__(__self__):
+        pass
+
+
+if not MYPY:
+    class MigrationJobVpcPeeringConnectivityArgsDict(TypedDict):
+        vpc: NotRequired[pulumi.Input[str]]
+        """
+        The name of the VPC network to peer with the Cloud SQL private network.
+        """
+elif False:
+    MigrationJobVpcPeeringConnectivityArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MigrationJobVpcPeeringConnectivityArgs:
+    def __init__(__self__, *,
+                 vpc: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] vpc: The name of the VPC network to peer with the Cloud SQL private network.
+        """
+        if vpc is not None:
+            pulumi.set(__self__, "vpc", vpc)
+
+    @property
+    @pulumi.getter
+    def vpc(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the VPC network to peer with the Cloud SQL private network.
+        """
+        return pulumi.get(self, "vpc")
+
+    @vpc.setter
+    def vpc(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc", value)
 
 
 if not MYPY:

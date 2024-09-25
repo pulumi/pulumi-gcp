@@ -10,6 +10,7 @@ import com.pulumi.gcp.netapp.inputs.VolumeExportPolicyArgs;
 import com.pulumi.gcp.netapp.inputs.VolumeMountOptionArgs;
 import com.pulumi.gcp.netapp.inputs.VolumeRestoreParametersArgs;
 import com.pulumi.gcp.netapp.inputs.VolumeSnapshotPolicyArgs;
+import com.pulumi.gcp.netapp.inputs.VolumeTieringPolicyArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -68,6 +69,21 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> capacityGib() {
         return Optional.ofNullable(this.capacityGib);
+    }
+
+    /**
+     * Output only. Size of the volume cold tier data in GiB.
+     * 
+     */
+    @Import(name="coldTierSizeGib")
+    private @Nullable Output<String> coldTierSizeGib;
+
+    /**
+     * @return Output only. Size of the volume cold tier data in GiB.
+     * 
+     */
+    public Optional<Output<String>> coldTierSizeGib() {
+        return Optional.ofNullable(this.coldTierSizeGib);
     }
 
     /**
@@ -608,6 +624,23 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Tiering policy for the volume.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="tieringPolicy")
+    private @Nullable Output<VolumeTieringPolicyArgs> tieringPolicy;
+
+    /**
+     * @return Tiering policy for the volume.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<VolumeTieringPolicyArgs>> tieringPolicy() {
+        return Optional.ofNullable(this.tieringPolicy);
+    }
+
+    /**
      * Unix permission the mount point will be created with. Default is 0770. Applicable for UNIX security style volumes only.
      * 
      */
@@ -658,6 +691,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
         this.activeDirectory = $.activeDirectory;
         this.backupConfig = $.backupConfig;
         this.capacityGib = $.capacityGib;
+        this.coldTierSizeGib = $.coldTierSizeGib;
         this.createTime = $.createTime;
         this.deletionPolicy = $.deletionPolicy;
         this.description = $.description;
@@ -691,6 +725,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
         this.state = $.state;
         this.stateDetails = $.stateDetails;
         this.storagePool = $.storagePool;
+        this.tieringPolicy = $.tieringPolicy;
         this.unixPermissions = $.unixPermissions;
         this.usedGib = $.usedGib;
         this.zone = $.zone;
@@ -777,6 +812,27 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder capacityGib(String capacityGib) {
             return capacityGib(Output.of(capacityGib));
+        }
+
+        /**
+         * @param coldTierSizeGib Output only. Size of the volume cold tier data in GiB.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder coldTierSizeGib(@Nullable Output<String> coldTierSizeGib) {
+            $.coldTierSizeGib = coldTierSizeGib;
+            return this;
+        }
+
+        /**
+         * @param coldTierSizeGib Output only. Size of the volume cold tier data in GiB.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder coldTierSizeGib(String coldTierSizeGib) {
+            return coldTierSizeGib(Output.of(coldTierSizeGib));
         }
 
         /**
@@ -1556,6 +1612,29 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder storagePool(String storagePool) {
             return storagePool(Output.of(storagePool));
+        }
+
+        /**
+         * @param tieringPolicy Tiering policy for the volume.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tieringPolicy(@Nullable Output<VolumeTieringPolicyArgs> tieringPolicy) {
+            $.tieringPolicy = tieringPolicy;
+            return this;
+        }
+
+        /**
+         * @param tieringPolicy Tiering policy for the volume.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tieringPolicy(VolumeTieringPolicyArgs tieringPolicy) {
+            return tieringPolicy(Output.of(tieringPolicy));
         }
 
         /**

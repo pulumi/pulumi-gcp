@@ -14,6 +14,7 @@ import com.pulumi.gcp.dataproc.inputs.MetastoreServiceNetworkConfigArgs;
 import com.pulumi.gcp.dataproc.inputs.MetastoreServiceScalingConfigArgs;
 import com.pulumi.gcp.dataproc.inputs.MetastoreServiceScheduledBackupArgs;
 import com.pulumi.gcp.dataproc.inputs.MetastoreServiceTelemetryConfigArgs;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
@@ -43,6 +44,21 @@ public final class MetastoreServiceArgs extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> databaseType() {
         return Optional.ofNullable(this.databaseType);
+    }
+
+    /**
+     * Indicates if the dataproc metastore should be protected against accidental deletions.
+     * 
+     */
+    @Import(name="deletionProtection")
+    private @Nullable Output<Boolean> deletionProtection;
+
+    /**
+     * @return Indicates if the dataproc metastore should be protected against accidental deletions.
+     * 
+     */
+    public Optional<Output<Boolean>> deletionProtection() {
+        return Optional.ofNullable(this.deletionProtection);
     }
 
     /**
@@ -335,6 +351,7 @@ public final class MetastoreServiceArgs extends com.pulumi.resources.ResourceArg
 
     private MetastoreServiceArgs(MetastoreServiceArgs $) {
         this.databaseType = $.databaseType;
+        this.deletionProtection = $.deletionProtection;
         this.encryptionConfig = $.encryptionConfig;
         this.hiveMetastoreConfig = $.hiveMetastoreConfig;
         this.labels = $.labels;
@@ -394,6 +411,27 @@ public final class MetastoreServiceArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder databaseType(String databaseType) {
             return databaseType(Output.of(databaseType));
+        }
+
+        /**
+         * @param deletionProtection Indicates if the dataproc metastore should be protected against accidental deletions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionProtection(@Nullable Output<Boolean> deletionProtection) {
+            $.deletionProtection = deletionProtection;
+            return this;
+        }
+
+        /**
+         * @param deletionProtection Indicates if the dataproc metastore should be protected against accidental deletions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionProtection(Boolean deletionProtection) {
+            return deletionProtection(Output.of(deletionProtection));
         }
 
         /**

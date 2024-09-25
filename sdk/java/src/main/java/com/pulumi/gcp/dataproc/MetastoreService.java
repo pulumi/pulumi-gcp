@@ -18,6 +18,7 @@ import com.pulumi.gcp.dataproc.outputs.MetastoreServiceNetworkConfig;
 import com.pulumi.gcp.dataproc.outputs.MetastoreServiceScalingConfig;
 import com.pulumi.gcp.dataproc.outputs.MetastoreServiceScheduledBackup;
 import com.pulumi.gcp.dataproc.outputs.MetastoreServiceTelemetryConfig;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -68,6 +69,54 @@ import javax.annotation.Nullable;
  *             .location("us-central1")
  *             .port(9080)
  *             .tier("DEVELOPER")
+ *             .maintenanceWindow(MetastoreServiceMaintenanceWindowArgs.builder()
+ *                 .hourOfDay(2)
+ *                 .dayOfWeek("SUNDAY")
+ *                 .build())
+ *             .hiveMetastoreConfig(MetastoreServiceHiveMetastoreConfigArgs.builder()
+ *                 .version("2.3.6")
+ *                 .build())
+ *             .labels(Map.of("env", "test"))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Dataproc Metastore Service Deletion Protection
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.dataproc.MetastoreService;
+ * import com.pulumi.gcp.dataproc.MetastoreServiceArgs;
+ * import com.pulumi.gcp.dataproc.inputs.MetastoreServiceMaintenanceWindowArgs;
+ * import com.pulumi.gcp.dataproc.inputs.MetastoreServiceHiveMetastoreConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new MetastoreService("default", MetastoreServiceArgs.builder()
+ *             .serviceId("metastore-srv")
+ *             .location("us-central1")
+ *             .port(9080)
+ *             .tier("DEVELOPER")
+ *             .deletionProtection("true")
  *             .maintenanceWindow(MetastoreServiceMaintenanceWindowArgs.builder()
  *                 .hourOfDay(2)
  *                 .dayOfWeek("SUNDAY")
@@ -676,6 +725,20 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> databaseType() {
         return Codegen.optional(this.databaseType);
+    }
+    /**
+     * Indicates if the dataproc metastore should be protected against accidental deletions.
+     * 
+     */
+    @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> deletionProtection;
+
+    /**
+     * @return Indicates if the dataproc metastore should be protected against accidental deletions.
+     * 
+     */
+    public Output<Optional<Boolean>> deletionProtection() {
+        return Codegen.optional(this.deletionProtection);
     }
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.

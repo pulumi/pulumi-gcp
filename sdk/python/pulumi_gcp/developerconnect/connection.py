@@ -31,25 +31,26 @@ class ConnectionArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Connection resource.
-        :param pulumi.Input[str] connection_id: Required. Id of the requesting object
-               If auto-generating Id server-side, remove this field and
-               connection_id from the method_signature of Create RPC
+        :param pulumi.Input[str] connection_id: Required. Id of the requesting object. If auto-generating Id server-side,
+               remove this field and connection_id from the method_signature of Create RPC.
                
                
                - - -
-        :param pulumi.Input[str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
+        :param pulumi.Input[str] location: Resource ID segment making up resource `name`. It identifies the resource
+               within its parent collection as described in https://google.aip.dev/122. See documentation
+               for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Allows clients to store small amounts of arbitrary data.
+               
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[bool] disabled: Optional. If disabled is set to true, functionality is disabled for this connection.
-               Repository based API methods and webhooks processing for repositories in
-               this connection will be disabled.
-        :param pulumi.Input[str] etag: Optional. This checksum is computed by the server based on the value of other
-               fields, and may be sent on update and delete requests to ensure the
+        :param pulumi.Input[bool] disabled: Optional. If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
+        :param pulumi.Input[str] etag: Optional. This checksum is computed by the server based on the value
+               of other fields, and may be sent on update and delete requests to ensure the
                client has an up-to-date value before proceeding.
         :param pulumi.Input['ConnectionGithubConfigArgs'] github_config: Configuration for connections to github.com.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels as key value pairs
+               
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -74,9 +75,8 @@ class ConnectionArgs:
     @pulumi.getter(name="connectionId")
     def connection_id(self) -> pulumi.Input[str]:
         """
-        Required. Id of the requesting object
-        If auto-generating Id server-side, remove this field and
-        connection_id from the method_signature of Create RPC
+        Required. Id of the requesting object. If auto-generating Id server-side,
+        remove this field and connection_id from the method_signature of Create RPC.
 
 
         - - -
@@ -91,7 +91,9 @@ class ConnectionArgs:
     @pulumi.getter
     def location(self) -> pulumi.Input[str]:
         """
-        Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
+        Resource ID segment making up resource `name`. It identifies the resource
+        within its parent collection as described in https://google.aip.dev/122. See documentation
+        for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
         """
         return pulumi.get(self, "location")
 
@@ -104,6 +106,7 @@ class ConnectionArgs:
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Optional. Allows clients to store small amounts of arbitrary data.
+
         **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
         Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
@@ -117,9 +120,7 @@ class ConnectionArgs:
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Optional. If disabled is set to true, functionality is disabled for this connection.
-        Repository based API methods and webhooks processing for repositories in
-        this connection will be disabled.
+        Optional. If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
         """
         return pulumi.get(self, "disabled")
 
@@ -131,8 +132,8 @@ class ConnectionArgs:
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. This checksum is computed by the server based on the value of other
-        fields, and may be sent on update and delete requests to ensure the
+        Optional. This checksum is computed by the server based on the value
+        of other fields, and may be sent on update and delete requests to ensure the
         client has an up-to-date value before proceeding.
         """
         return pulumi.get(self, "etag")
@@ -159,6 +160,7 @@ class ConnectionArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Optional. Labels as key value pairs
+
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
@@ -206,41 +208,41 @@ class _ConnectionState:
         """
         Input properties used for looking up and filtering Connection resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Allows clients to store small amounts of arbitrary data.
+               
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[str] connection_id: Required. Id of the requesting object
-               If auto-generating Id server-side, remove this field and
-               connection_id from the method_signature of Create RPC
+        :param pulumi.Input[str] connection_id: Required. Id of the requesting object. If auto-generating Id server-side,
+               remove this field and connection_id from the method_signature of Create RPC.
                
                
                - - -
         :param pulumi.Input[str] create_time: Output only. [Output only] Create timestamp
         :param pulumi.Input[str] delete_time: Output only. [Output only] Delete timestamp
-        :param pulumi.Input[bool] disabled: Optional. If disabled is set to true, functionality is disabled for this connection.
-               Repository based API methods and webhooks processing for repositories in
-               this connection will be disabled.
+        :param pulumi.Input[bool] disabled: Optional. If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[str] etag: Optional. This checksum is computed by the server based on the value of other
-               fields, and may be sent on update and delete requests to ensure the
+        :param pulumi.Input[str] etag: Optional. This checksum is computed by the server based on the value
+               of other fields, and may be sent on update and delete requests to ensure the
                client has an up-to-date value before proceeding.
         :param pulumi.Input['ConnectionGithubConfigArgs'] github_config: Configuration for connections to github.com.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['ConnectionInstallationStateArgs']]] installation_states: Describes stage and necessary actions to be taken by the
-               user to complete the installation. Used for GitHub and GitHub Enterprise
-               based connections.
+        :param pulumi.Input[Sequence[pulumi.Input['ConnectionInstallationStateArgs']]] installation_states: Describes stage and necessary actions to be taken by the user to complete the installation.
+               Used for GitHub and GitHub Enterprise based connections.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels as key value pairs
+               
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
+        :param pulumi.Input[str] location: Resource ID segment making up resource `name`. It identifies the resource
+               within its parent collection as described in https://google.aip.dev/122. See documentation
+               for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
         :param pulumi.Input[str] name: Identifier. The resource name of the connection, in the format
                `projects/{project}/locations/{location}/connections/{connection_id}`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[bool] reconciling: Output only. Set to true when the connection is being set up or updated in the
-               background.
+        :param pulumi.Input[bool] reconciling: Output only. Set to true when the connection is being set up or updated
+               in the background.
         :param pulumi.Input[str] uid: Output only. A system-assigned unique identifier for a the GitRepositoryLink.
         :param pulumi.Input[str] update_time: Output only. [Output only] Update timestamp
         """
@@ -286,6 +288,7 @@ class _ConnectionState:
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Optional. Allows clients to store small amounts of arbitrary data.
+
         **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
         Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
@@ -299,9 +302,8 @@ class _ConnectionState:
     @pulumi.getter(name="connectionId")
     def connection_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Required. Id of the requesting object
-        If auto-generating Id server-side, remove this field and
-        connection_id from the method_signature of Create RPC
+        Required. Id of the requesting object. If auto-generating Id server-side,
+        remove this field and connection_id from the method_signature of Create RPC.
 
 
         - - -
@@ -340,9 +342,7 @@ class _ConnectionState:
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Optional. If disabled is set to true, functionality is disabled for this connection.
-        Repository based API methods and webhooks processing for repositories in
-        this connection will be disabled.
+        Optional. If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
         """
         return pulumi.get(self, "disabled")
 
@@ -375,8 +375,8 @@ class _ConnectionState:
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. This checksum is computed by the server based on the value of other
-        fields, and may be sent on update and delete requests to ensure the
+        Optional. This checksum is computed by the server based on the value
+        of other fields, and may be sent on update and delete requests to ensure the
         client has an up-to-date value before proceeding.
         """
         return pulumi.get(self, "etag")
@@ -402,9 +402,8 @@ class _ConnectionState:
     @pulumi.getter(name="installationStates")
     def installation_states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionInstallationStateArgs']]]]:
         """
-        Describes stage and necessary actions to be taken by the
-        user to complete the installation. Used for GitHub and GitHub Enterprise
-        based connections.
+        Describes stage and necessary actions to be taken by the user to complete the installation.
+        Used for GitHub and GitHub Enterprise based connections.
         Structure is documented below.
         """
         return pulumi.get(self, "installation_states")
@@ -418,6 +417,7 @@ class _ConnectionState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Optional. Labels as key value pairs
+
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
@@ -431,7 +431,9 @@ class _ConnectionState:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
-        Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
+        Resource ID segment making up resource `name`. It identifies the resource
+        within its parent collection as described in https://google.aip.dev/122. See documentation
+        for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
         """
         return pulumi.get(self, "location")
 
@@ -482,8 +484,8 @@ class _ConnectionState:
     @pulumi.getter
     def reconciling(self) -> Optional[pulumi.Input[bool]]:
         """
-        Output only. Set to true when the connection is being set up or updated in the
-        background.
+        Output only. Set to true when the connection is being set up or updated
+        in the background.
         """
         return pulumi.get(self, "reconciling")
 
@@ -610,26 +612,27 @@ class Connection(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Allows clients to store small amounts of arbitrary data.
+               
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[str] connection_id: Required. Id of the requesting object
-               If auto-generating Id server-side, remove this field and
-               connection_id from the method_signature of Create RPC
+        :param pulumi.Input[str] connection_id: Required. Id of the requesting object. If auto-generating Id server-side,
+               remove this field and connection_id from the method_signature of Create RPC.
                
                
                - - -
-        :param pulumi.Input[bool] disabled: Optional. If disabled is set to true, functionality is disabled for this connection.
-               Repository based API methods and webhooks processing for repositories in
-               this connection will be disabled.
-        :param pulumi.Input[str] etag: Optional. This checksum is computed by the server based on the value of other
-               fields, and may be sent on update and delete requests to ensure the
+        :param pulumi.Input[bool] disabled: Optional. If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
+        :param pulumi.Input[str] etag: Optional. This checksum is computed by the server based on the value
+               of other fields, and may be sent on update and delete requests to ensure the
                client has an up-to-date value before proceeding.
         :param pulumi.Input[Union['ConnectionGithubConfigArgs', 'ConnectionGithubConfigArgsDict']] github_config: Configuration for connections to github.com.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels as key value pairs
+               
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
+        :param pulumi.Input[str] location: Resource ID segment making up resource `name`. It identifies the resource
+               within its parent collection as described in https://google.aip.dev/122. See documentation
+               for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -808,41 +811,41 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Allows clients to store small amounts of arbitrary data.
+               
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[str] connection_id: Required. Id of the requesting object
-               If auto-generating Id server-side, remove this field and
-               connection_id from the method_signature of Create RPC
+        :param pulumi.Input[str] connection_id: Required. Id of the requesting object. If auto-generating Id server-side,
+               remove this field and connection_id from the method_signature of Create RPC.
                
                
                - - -
         :param pulumi.Input[str] create_time: Output only. [Output only] Create timestamp
         :param pulumi.Input[str] delete_time: Output only. [Output only] Delete timestamp
-        :param pulumi.Input[bool] disabled: Optional. If disabled is set to true, functionality is disabled for this connection.
-               Repository based API methods and webhooks processing for repositories in
-               this connection will be disabled.
+        :param pulumi.Input[bool] disabled: Optional. If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[str] etag: Optional. This checksum is computed by the server based on the value of other
-               fields, and may be sent on update and delete requests to ensure the
+        :param pulumi.Input[str] etag: Optional. This checksum is computed by the server based on the value
+               of other fields, and may be sent on update and delete requests to ensure the
                client has an up-to-date value before proceeding.
         :param pulumi.Input[Union['ConnectionGithubConfigArgs', 'ConnectionGithubConfigArgsDict']] github_config: Configuration for connections to github.com.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionInstallationStateArgs', 'ConnectionInstallationStateArgsDict']]]] installation_states: Describes stage and necessary actions to be taken by the
-               user to complete the installation. Used for GitHub and GitHub Enterprise
-               based connections.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionInstallationStateArgs', 'ConnectionInstallationStateArgsDict']]]] installation_states: Describes stage and necessary actions to be taken by the user to complete the installation.
+               Used for GitHub and GitHub Enterprise based connections.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels as key value pairs
+               
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
+        :param pulumi.Input[str] location: Resource ID segment making up resource `name`. It identifies the resource
+               within its parent collection as described in https://google.aip.dev/122. See documentation
+               for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
         :param pulumi.Input[str] name: Identifier. The resource name of the connection, in the format
                `projects/{project}/locations/{location}/connections/{connection_id}`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[bool] reconciling: Output only. Set to true when the connection is being set up or updated in the
-               background.
+        :param pulumi.Input[bool] reconciling: Output only. Set to true when the connection is being set up or updated
+               in the background.
         :param pulumi.Input[str] uid: Output only. A system-assigned unique identifier for a the GitRepositoryLink.
         :param pulumi.Input[str] update_time: Output only. [Output only] Update timestamp
         """
@@ -875,6 +878,7 @@ class Connection(pulumi.CustomResource):
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Optional. Allows clients to store small amounts of arbitrary data.
+
         **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
         Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
@@ -884,9 +888,8 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter(name="connectionId")
     def connection_id(self) -> pulumi.Output[str]:
         """
-        Required. Id of the requesting object
-        If auto-generating Id server-side, remove this field and
-        connection_id from the method_signature of Create RPC
+        Required. Id of the requesting object. If auto-generating Id server-side,
+        remove this field and connection_id from the method_signature of Create RPC.
 
 
         - - -
@@ -913,9 +916,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter
     def disabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Optional. If disabled is set to true, functionality is disabled for this connection.
-        Repository based API methods and webhooks processing for repositories in
-        this connection will be disabled.
+        Optional. If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
         """
         return pulumi.get(self, "disabled")
 
@@ -936,8 +937,8 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter
     def etag(self) -> pulumi.Output[Optional[str]]:
         """
-        Optional. This checksum is computed by the server based on the value of other
-        fields, and may be sent on update and delete requests to ensure the
+        Optional. This checksum is computed by the server based on the value
+        of other fields, and may be sent on update and delete requests to ensure the
         client has an up-to-date value before proceeding.
         """
         return pulumi.get(self, "etag")
@@ -955,9 +956,8 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter(name="installationStates")
     def installation_states(self) -> pulumi.Output[Sequence['outputs.ConnectionInstallationState']]:
         """
-        Describes stage and necessary actions to be taken by the
-        user to complete the installation. Used for GitHub and GitHub Enterprise
-        based connections.
+        Describes stage and necessary actions to be taken by the user to complete the installation.
+        Used for GitHub and GitHub Enterprise based connections.
         Structure is documented below.
         """
         return pulumi.get(self, "installation_states")
@@ -967,6 +967,7 @@ class Connection(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Optional. Labels as key value pairs
+
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
@@ -976,7 +977,9 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter
     def location(self) -> pulumi.Output[str]:
         """
-        Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
+        Resource ID segment making up resource `name`. It identifies the resource
+        within its parent collection as described in https://google.aip.dev/122. See documentation
+        for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
         """
         return pulumi.get(self, "location")
 
@@ -1011,8 +1014,8 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter
     def reconciling(self) -> pulumi.Output[bool]:
         """
-        Output only. Set to true when the connection is being set up or updated in the
-        background.
+        Output only. Set to true when the connection is being set up or updated
+        in the background.
         """
         return pulumi.get(self, "reconciling")
 

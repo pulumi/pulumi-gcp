@@ -9770,12 +9770,6 @@ class ClusterNodeConfigHostMaintenancePolicyArgs:
 
 if not MYPY:
     class ClusterNodeConfigKubeletConfigArgsDict(TypedDict):
-        cpu_manager_policy: pulumi.Input[str]
-        """
-        The CPU management policy on the node. See
-        [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
-        One of `"none"` or `"static"`. Defaults to `none` when `kubelet_config` is unset.
-        """
         cpu_cfs_quota: NotRequired[pulumi.Input[bool]]
         """
         If true, enables CPU CFS quota enforcement for
@@ -9787,11 +9781,12 @@ if not MYPY:
         as a sequence of decimal numbers, each with optional fraction and a unit suffix,
         such as `"300ms"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m",
         "h". The value must be a positive duration.
-
-        > Note: At the time of writing (2020/08/18) the GKE API rejects the `none`
-        value and accepts an invalid `default` value instead. While this remains true,
-        not specifying the `kubelet_config` block should be the equivalent of specifying
-        `none`.
+        """
+        cpu_manager_policy: NotRequired[pulumi.Input[str]]
+        """
+        The CPU management policy on the node. See
+        [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
+        One of `"none"` or `"static"`. If unset (or set to the empty string `""`), the API will treat the field as if set to "none".
         """
         insecure_kubelet_readonly_port_enabled: NotRequired[pulumi.Input[str]]
         """
@@ -9807,52 +9802,34 @@ elif False:
 @pulumi.input_type
 class ClusterNodeConfigKubeletConfigArgs:
     def __init__(__self__, *,
-                 cpu_manager_policy: pulumi.Input[str],
                  cpu_cfs_quota: Optional[pulumi.Input[bool]] = None,
                  cpu_cfs_quota_period: Optional[pulumi.Input[str]] = None,
+                 cpu_manager_policy: Optional[pulumi.Input[str]] = None,
                  insecure_kubelet_readonly_port_enabled: Optional[pulumi.Input[str]] = None,
                  pod_pids_limit: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[str] cpu_manager_policy: The CPU management policy on the node. See
-               [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
-               One of `"none"` or `"static"`. Defaults to `none` when `kubelet_config` is unset.
         :param pulumi.Input[bool] cpu_cfs_quota: If true, enables CPU CFS quota enforcement for
                containers that specify CPU limits.
         :param pulumi.Input[str] cpu_cfs_quota_period: The CPU CFS quota period value. Specified
                as a sequence of decimal numbers, each with optional fraction and a unit suffix,
                such as `"300ms"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m",
                "h". The value must be a positive duration.
-               
-               > Note: At the time of writing (2020/08/18) the GKE API rejects the `none`
-               value and accepts an invalid `default` value instead. While this remains true,
-               not specifying the `kubelet_config` block should be the equivalent of specifying
-               `none`.
+        :param pulumi.Input[str] cpu_manager_policy: The CPU management policy on the node. See
+               [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
+               One of `"none"` or `"static"`. If unset (or set to the empty string `""`), the API will treat the field as if set to "none".
         :param pulumi.Input[str] insecure_kubelet_readonly_port_enabled: Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
         :param pulumi.Input[int] pod_pids_limit: Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
         """
-        pulumi.set(__self__, "cpu_manager_policy", cpu_manager_policy)
         if cpu_cfs_quota is not None:
             pulumi.set(__self__, "cpu_cfs_quota", cpu_cfs_quota)
         if cpu_cfs_quota_period is not None:
             pulumi.set(__self__, "cpu_cfs_quota_period", cpu_cfs_quota_period)
+        if cpu_manager_policy is not None:
+            pulumi.set(__self__, "cpu_manager_policy", cpu_manager_policy)
         if insecure_kubelet_readonly_port_enabled is not None:
             pulumi.set(__self__, "insecure_kubelet_readonly_port_enabled", insecure_kubelet_readonly_port_enabled)
         if pod_pids_limit is not None:
             pulumi.set(__self__, "pod_pids_limit", pod_pids_limit)
-
-    @property
-    @pulumi.getter(name="cpuManagerPolicy")
-    def cpu_manager_policy(self) -> pulumi.Input[str]:
-        """
-        The CPU management policy on the node. See
-        [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
-        One of `"none"` or `"static"`. Defaults to `none` when `kubelet_config` is unset.
-        """
-        return pulumi.get(self, "cpu_manager_policy")
-
-    @cpu_manager_policy.setter
-    def cpu_manager_policy(self, value: pulumi.Input[str]):
-        pulumi.set(self, "cpu_manager_policy", value)
 
     @property
     @pulumi.getter(name="cpuCfsQuota")
@@ -9875,17 +9852,26 @@ class ClusterNodeConfigKubeletConfigArgs:
         as a sequence of decimal numbers, each with optional fraction and a unit suffix,
         such as `"300ms"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m",
         "h". The value must be a positive duration.
-
-        > Note: At the time of writing (2020/08/18) the GKE API rejects the `none`
-        value and accepts an invalid `default` value instead. While this remains true,
-        not specifying the `kubelet_config` block should be the equivalent of specifying
-        `none`.
         """
         return pulumi.get(self, "cpu_cfs_quota_period")
 
     @cpu_cfs_quota_period.setter
     def cpu_cfs_quota_period(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cpu_cfs_quota_period", value)
+
+    @property
+    @pulumi.getter(name="cpuManagerPolicy")
+    def cpu_manager_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The CPU management policy on the node. See
+        [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
+        One of `"none"` or `"static"`. If unset (or set to the empty string `""`), the API will treat the field as if set to "none".
+        """
+        return pulumi.get(self, "cpu_manager_policy")
+
+    @cpu_manager_policy.setter
+    def cpu_manager_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cpu_manager_policy", value)
 
     @property
     @pulumi.getter(name="insecureKubeletReadonlyPortEnabled")
@@ -13603,12 +13589,6 @@ class ClusterNodePoolNodeConfigHostMaintenancePolicyArgs:
 
 if not MYPY:
     class ClusterNodePoolNodeConfigKubeletConfigArgsDict(TypedDict):
-        cpu_manager_policy: pulumi.Input[str]
-        """
-        The CPU management policy on the node. See
-        [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
-        One of `"none"` or `"static"`. Defaults to `none` when `kubelet_config` is unset.
-        """
         cpu_cfs_quota: NotRequired[pulumi.Input[bool]]
         """
         If true, enables CPU CFS quota enforcement for
@@ -13620,11 +13600,12 @@ if not MYPY:
         as a sequence of decimal numbers, each with optional fraction and a unit suffix,
         such as `"300ms"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m",
         "h". The value must be a positive duration.
-
-        > Note: At the time of writing (2020/08/18) the GKE API rejects the `none`
-        value and accepts an invalid `default` value instead. While this remains true,
-        not specifying the `kubelet_config` block should be the equivalent of specifying
-        `none`.
+        """
+        cpu_manager_policy: NotRequired[pulumi.Input[str]]
+        """
+        The CPU management policy on the node. See
+        [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
+        One of `"none"` or `"static"`. If unset (or set to the empty string `""`), the API will treat the field as if set to "none".
         """
         insecure_kubelet_readonly_port_enabled: NotRequired[pulumi.Input[str]]
         """
@@ -13640,52 +13621,34 @@ elif False:
 @pulumi.input_type
 class ClusterNodePoolNodeConfigKubeletConfigArgs:
     def __init__(__self__, *,
-                 cpu_manager_policy: pulumi.Input[str],
                  cpu_cfs_quota: Optional[pulumi.Input[bool]] = None,
                  cpu_cfs_quota_period: Optional[pulumi.Input[str]] = None,
+                 cpu_manager_policy: Optional[pulumi.Input[str]] = None,
                  insecure_kubelet_readonly_port_enabled: Optional[pulumi.Input[str]] = None,
                  pod_pids_limit: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[str] cpu_manager_policy: The CPU management policy on the node. See
-               [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
-               One of `"none"` or `"static"`. Defaults to `none` when `kubelet_config` is unset.
         :param pulumi.Input[bool] cpu_cfs_quota: If true, enables CPU CFS quota enforcement for
                containers that specify CPU limits.
         :param pulumi.Input[str] cpu_cfs_quota_period: The CPU CFS quota period value. Specified
                as a sequence of decimal numbers, each with optional fraction and a unit suffix,
                such as `"300ms"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m",
                "h". The value must be a positive duration.
-               
-               > Note: At the time of writing (2020/08/18) the GKE API rejects the `none`
-               value and accepts an invalid `default` value instead. While this remains true,
-               not specifying the `kubelet_config` block should be the equivalent of specifying
-               `none`.
+        :param pulumi.Input[str] cpu_manager_policy: The CPU management policy on the node. See
+               [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
+               One of `"none"` or `"static"`. If unset (or set to the empty string `""`), the API will treat the field as if set to "none".
         :param pulumi.Input[str] insecure_kubelet_readonly_port_enabled: Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
         :param pulumi.Input[int] pod_pids_limit: Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
         """
-        pulumi.set(__self__, "cpu_manager_policy", cpu_manager_policy)
         if cpu_cfs_quota is not None:
             pulumi.set(__self__, "cpu_cfs_quota", cpu_cfs_quota)
         if cpu_cfs_quota_period is not None:
             pulumi.set(__self__, "cpu_cfs_quota_period", cpu_cfs_quota_period)
+        if cpu_manager_policy is not None:
+            pulumi.set(__self__, "cpu_manager_policy", cpu_manager_policy)
         if insecure_kubelet_readonly_port_enabled is not None:
             pulumi.set(__self__, "insecure_kubelet_readonly_port_enabled", insecure_kubelet_readonly_port_enabled)
         if pod_pids_limit is not None:
             pulumi.set(__self__, "pod_pids_limit", pod_pids_limit)
-
-    @property
-    @pulumi.getter(name="cpuManagerPolicy")
-    def cpu_manager_policy(self) -> pulumi.Input[str]:
-        """
-        The CPU management policy on the node. See
-        [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
-        One of `"none"` or `"static"`. Defaults to `none` when `kubelet_config` is unset.
-        """
-        return pulumi.get(self, "cpu_manager_policy")
-
-    @cpu_manager_policy.setter
-    def cpu_manager_policy(self, value: pulumi.Input[str]):
-        pulumi.set(self, "cpu_manager_policy", value)
 
     @property
     @pulumi.getter(name="cpuCfsQuota")
@@ -13708,17 +13671,26 @@ class ClusterNodePoolNodeConfigKubeletConfigArgs:
         as a sequence of decimal numbers, each with optional fraction and a unit suffix,
         such as `"300ms"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m",
         "h". The value must be a positive duration.
-
-        > Note: At the time of writing (2020/08/18) the GKE API rejects the `none`
-        value and accepts an invalid `default` value instead. While this remains true,
-        not specifying the `kubelet_config` block should be the equivalent of specifying
-        `none`.
         """
         return pulumi.get(self, "cpu_cfs_quota_period")
 
     @cpu_cfs_quota_period.setter
     def cpu_cfs_quota_period(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cpu_cfs_quota_period", value)
+
+    @property
+    @pulumi.getter(name="cpuManagerPolicy")
+    def cpu_manager_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The CPU management policy on the node. See
+        [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
+        One of `"none"` or `"static"`. If unset (or set to the empty string `""`), the API will treat the field as if set to "none".
+        """
+        return pulumi.get(self, "cpu_manager_policy")
+
+    @cpu_manager_policy.setter
+    def cpu_manager_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cpu_manager_policy", value)
 
     @property
     @pulumi.getter(name="insecureKubeletReadonlyPortEnabled")
@@ -17685,10 +17657,6 @@ class NodePoolNodeConfigHostMaintenancePolicyArgs:
 
 if not MYPY:
     class NodePoolNodeConfigKubeletConfigArgsDict(TypedDict):
-        cpu_manager_policy: pulumi.Input[str]
-        """
-        Control the CPU management policy on the node.
-        """
         cpu_cfs_quota: NotRequired[pulumi.Input[bool]]
         """
         Enable CPU CFS quota enforcement for containers that specify CPU limits.
@@ -17696,6 +17664,10 @@ if not MYPY:
         cpu_cfs_quota_period: NotRequired[pulumi.Input[str]]
         """
         Set the CPU CFS quota period value 'cpu.cfs_period_us'.
+        """
+        cpu_manager_policy: NotRequired[pulumi.Input[str]]
+        """
+        Control the CPU management policy on the node.
         """
         insecure_kubelet_readonly_port_enabled: NotRequired[pulumi.Input[str]]
         """
@@ -17711,39 +17683,28 @@ elif False:
 @pulumi.input_type
 class NodePoolNodeConfigKubeletConfigArgs:
     def __init__(__self__, *,
-                 cpu_manager_policy: pulumi.Input[str],
                  cpu_cfs_quota: Optional[pulumi.Input[bool]] = None,
                  cpu_cfs_quota_period: Optional[pulumi.Input[str]] = None,
+                 cpu_manager_policy: Optional[pulumi.Input[str]] = None,
                  insecure_kubelet_readonly_port_enabled: Optional[pulumi.Input[str]] = None,
                  pod_pids_limit: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[str] cpu_manager_policy: Control the CPU management policy on the node.
         :param pulumi.Input[bool] cpu_cfs_quota: Enable CPU CFS quota enforcement for containers that specify CPU limits.
         :param pulumi.Input[str] cpu_cfs_quota_period: Set the CPU CFS quota period value 'cpu.cfs_period_us'.
+        :param pulumi.Input[str] cpu_manager_policy: Control the CPU management policy on the node.
         :param pulumi.Input[str] insecure_kubelet_readonly_port_enabled: Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
         :param pulumi.Input[int] pod_pids_limit: Controls the maximum number of processes allowed to run in a pod.
         """
-        pulumi.set(__self__, "cpu_manager_policy", cpu_manager_policy)
         if cpu_cfs_quota is not None:
             pulumi.set(__self__, "cpu_cfs_quota", cpu_cfs_quota)
         if cpu_cfs_quota_period is not None:
             pulumi.set(__self__, "cpu_cfs_quota_period", cpu_cfs_quota_period)
+        if cpu_manager_policy is not None:
+            pulumi.set(__self__, "cpu_manager_policy", cpu_manager_policy)
         if insecure_kubelet_readonly_port_enabled is not None:
             pulumi.set(__self__, "insecure_kubelet_readonly_port_enabled", insecure_kubelet_readonly_port_enabled)
         if pod_pids_limit is not None:
             pulumi.set(__self__, "pod_pids_limit", pod_pids_limit)
-
-    @property
-    @pulumi.getter(name="cpuManagerPolicy")
-    def cpu_manager_policy(self) -> pulumi.Input[str]:
-        """
-        Control the CPU management policy on the node.
-        """
-        return pulumi.get(self, "cpu_manager_policy")
-
-    @cpu_manager_policy.setter
-    def cpu_manager_policy(self, value: pulumi.Input[str]):
-        pulumi.set(self, "cpu_manager_policy", value)
 
     @property
     @pulumi.getter(name="cpuCfsQuota")
@@ -17768,6 +17729,18 @@ class NodePoolNodeConfigKubeletConfigArgs:
     @cpu_cfs_quota_period.setter
     def cpu_cfs_quota_period(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cpu_cfs_quota_period", value)
+
+    @property
+    @pulumi.getter(name="cpuManagerPolicy")
+    def cpu_manager_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Control the CPU management policy on the node.
+        """
+        return pulumi.get(self, "cpu_manager_policy")
+
+    @cpu_manager_policy.setter
+    def cpu_manager_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cpu_manager_policy", value)
 
     @property
     @pulumi.getter(name="insecureKubeletReadonlyPortEnabled")

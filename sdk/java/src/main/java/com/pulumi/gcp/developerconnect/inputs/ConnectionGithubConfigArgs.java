@@ -33,8 +33,8 @@ public final class ConnectionGithubConfigArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Represents an OAuth token of the account that authorized the Connection,
-     * and associated metadata.
+     * Represents an OAuth token of the account that authorized the Connection,and
+     * associated metadata.
      * Structure is documented below.
      * 
      */
@@ -42,8 +42,8 @@ public final class ConnectionGithubConfigArgs extends com.pulumi.resources.Resou
     private @Nullable Output<ConnectionGithubConfigAuthorizerCredentialArgs> authorizerCredential;
 
     /**
-     * @return Represents an OAuth token of the account that authorized the Connection,
-     * and associated metadata.
+     * @return Represents an OAuth token of the account that authorized the Connection,and
+     * associated metadata.
      * Structure is documented below.
      * 
      */
@@ -52,24 +52,24 @@ public final class ConnectionGithubConfigArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Required. Immutable. The GitHub Application that was installed to the GitHub user or
-     * organization.
+     * Required. Immutable. The GitHub Application that was installed to
+     * the GitHub user or organization.
      * Possible values:
      * GIT_HUB_APP_UNSPECIFIED
      * DEVELOPER_CONNECT
-     * FIREBASE
+     * FIREBASE&#34;
      * 
      */
     @Import(name="githubApp", required=true)
     private Output<String> githubApp;
 
     /**
-     * @return Required. Immutable. The GitHub Application that was installed to the GitHub user or
-     * organization.
+     * @return Required. Immutable. The GitHub Application that was installed to
+     * the GitHub user or organization.
      * Possible values:
      * GIT_HUB_APP_UNSPECIFIED
      * DEVELOPER_CONNECT
-     * FIREBASE
+     * FIREBASE&#34;
      * 
      */
     public Output<String> githubApp() {
@@ -78,8 +78,8 @@ public final class ConnectionGithubConfigArgs extends com.pulumi.resources.Resou
 
     /**
      * (Output)
-     * Output only. The URI to navigate to in order to manage the installation associated
-     * with this GitHubConfig.
+     * Output only. The URI to navigate to in order to manage the installation
+     * associated with this GitHubConfig.
      * 
      */
     @Import(name="installationUri")
@@ -87,8 +87,8 @@ public final class ConnectionGithubConfigArgs extends com.pulumi.resources.Resou
 
     /**
      * @return (Output)
-     * Output only. The URI to navigate to in order to manage the installation associated
-     * with this GitHubConfig.
+     * Output only. The URI to navigate to in order to manage the installation
+     * associated with this GitHubConfig.
      * 
      */
     public Optional<Output<String>> installationUri() {
@@ -144,8 +144,8 @@ public final class ConnectionGithubConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param authorizerCredential Represents an OAuth token of the account that authorized the Connection,
-         * and associated metadata.
+         * @param authorizerCredential Represents an OAuth token of the account that authorized the Connection,and
+         * associated metadata.
          * Structure is documented below.
          * 
          * @return builder
@@ -157,8 +157,8 @@ public final class ConnectionGithubConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param authorizerCredential Represents an OAuth token of the account that authorized the Connection,
-         * and associated metadata.
+         * @param authorizerCredential Represents an OAuth token of the account that authorized the Connection,and
+         * associated metadata.
          * Structure is documented below.
          * 
          * @return builder
@@ -169,12 +169,12 @@ public final class ConnectionGithubConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param githubApp Required. Immutable. The GitHub Application that was installed to the GitHub user or
-         * organization.
+         * @param githubApp Required. Immutable. The GitHub Application that was installed to
+         * the GitHub user or organization.
          * Possible values:
          * GIT_HUB_APP_UNSPECIFIED
          * DEVELOPER_CONNECT
-         * FIREBASE
+         * FIREBASE&#34;
          * 
          * @return builder
          * 
@@ -185,12 +185,12 @@ public final class ConnectionGithubConfigArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param githubApp Required. Immutable. The GitHub Application that was installed to the GitHub user or
-         * organization.
+         * @param githubApp Required. Immutable. The GitHub Application that was installed to
+         * the GitHub user or organization.
          * Possible values:
          * GIT_HUB_APP_UNSPECIFIED
          * DEVELOPER_CONNECT
-         * FIREBASE
+         * FIREBASE&#34;
          * 
          * @return builder
          * 
@@ -201,8 +201,8 @@ public final class ConnectionGithubConfigArgs extends com.pulumi.resources.Resou
 
         /**
          * @param installationUri (Output)
-         * Output only. The URI to navigate to in order to manage the installation associated
-         * with this GitHubConfig.
+         * Output only. The URI to navigate to in order to manage the installation
+         * associated with this GitHubConfig.
          * 
          * @return builder
          * 
@@ -214,8 +214,8 @@ public final class ConnectionGithubConfigArgs extends com.pulumi.resources.Resou
 
         /**
          * @param installationUri (Output)
-         * Output only. The URI to navigate to in order to manage the installation associated
-         * with this GitHubConfig.
+         * Output only. The URI to navigate to in order to manage the installation
+         * associated with this GitHubConfig.
          * 
          * @return builder
          * 

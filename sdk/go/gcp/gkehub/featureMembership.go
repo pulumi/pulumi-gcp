@@ -16,7 +16,78 @@ import (
 //
 // ## Example Usage
 //
-// ### Config Management
+// ### Config Management With Config Sync Auto-Upgrades And Without Git/OCI
+//
+// With [Config Sync auto-upgrades](https://cloud.devsite.corp.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/upgrade-config-sync#auto-upgrade-config), Google assumes responsibility for automatically upgrading Config Sync versions
+// and overseeing the lifecycle of its components.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cluster, err := container.NewCluster(ctx, "cluster", &container.ClusterArgs{
+//				Name:             pulumi.String("my-cluster"),
+//				Location:         pulumi.String("us-central1-a"),
+//				InitialNodeCount: pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			membership, err := gkehub.NewMembership(ctx, "membership", &gkehub.MembershipArgs{
+//				MembershipId: pulumi.String("my-membership"),
+//				Endpoint: &gkehub.MembershipEndpointArgs{
+//					GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
+//						ResourceLink: cluster.ID().ApplyT(func(id string) (string, error) {
+//							return fmt.Sprintf("//container.googleapis.com/%v", id), nil
+//						}).(pulumi.StringOutput),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			feature, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
+//				Name:     pulumi.String("configmanagement"),
+//				Location: pulumi.String("global"),
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gkehub.NewFeatureMembership(ctx, "feature_member", &gkehub.FeatureMembershipArgs{
+//				Location:   pulumi.String("global"),
+//				Feature:    feature.Name,
+//				Membership: membership.MembershipId,
+//				Configmanagement: &gkehub.FeatureMembershipConfigmanagementArgs{
+//					Management: pulumi.String("MANAGEMENT_AUTOMATIC"),
+//					ConfigSync: &gkehub.FeatureMembershipConfigmanagementConfigSyncArgs{
+//						Enabled: pulumi.Bool(true),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Config Management With Git
 //
 // ```go
 // package main
@@ -86,6 +157,7 @@ import (
 //	}
 //
 // ```
+//
 // ### Config Management With OCI
 //
 // ```go
@@ -148,6 +220,79 @@ import (
 //							SyncWaitSecs:           pulumi.String("20"),
 //							SecretType:             pulumi.String("gcpserviceaccount"),
 //							GcpServiceAccountEmail: pulumi.String("sa@project-id.iam.gserviceaccount.com"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Config Management With Regional Membership
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cluster, err := container.NewCluster(ctx, "cluster", &container.ClusterArgs{
+//				Name:             pulumi.String("my-cluster"),
+//				Location:         pulumi.String("us-central1-a"),
+//				InitialNodeCount: pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			membership, err := gkehub.NewMembership(ctx, "membership", &gkehub.MembershipArgs{
+//				MembershipId: pulumi.String("my-membership"),
+//				Location:     pulumi.String("us-central1"),
+//				Endpoint: &gkehub.MembershipEndpointArgs{
+//					GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
+//						ResourceLink: cluster.ID().ApplyT(func(id string) (string, error) {
+//							return fmt.Sprintf("//container.googleapis.com/%v", id), nil
+//						}).(pulumi.StringOutput),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			feature, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
+//				Name:     pulumi.String("configmanagement"),
+//				Location: pulumi.String("global"),
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gkehub.NewFeatureMembership(ctx, "feature_member", &gkehub.FeatureMembershipArgs{
+//				Location:           pulumi.String("global"),
+//				Feature:            feature.Name,
+//				Membership:         membership.MembershipId,
+//				MembershipLocation: membership.Location,
+//				Configmanagement: &gkehub.FeatureMembershipConfigmanagementArgs{
+//					Version: pulumi.String("1.19.0"),
+//					ConfigSync: &gkehub.FeatureMembershipConfigmanagementConfigSyncArgs{
+//						Enabled: pulumi.Bool(true),
+//						Git: &gkehub.FeatureMembershipConfigmanagementConfigSyncGitArgs{
+//							SyncRepo: pulumi.String("https://github.com/hashicorp/terraform"),
 //						},
 //					},
 //				},
@@ -242,79 +387,6 @@ import (
 //				Membership: membership.MembershipId,
 //				Mesh: &gkehub.FeatureMembershipMeshArgs{
 //					Management: pulumi.String("MANAGEMENT_AUTOMATIC"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Config Management With Regional Membership
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/container"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/gkehub"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cluster, err := container.NewCluster(ctx, "cluster", &container.ClusterArgs{
-//				Name:             pulumi.String("my-cluster"),
-//				Location:         pulumi.String("us-central1-a"),
-//				InitialNodeCount: pulumi.Int(1),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			membership, err := gkehub.NewMembership(ctx, "membership", &gkehub.MembershipArgs{
-//				MembershipId: pulumi.String("my-membership"),
-//				Location:     pulumi.String("us-central1"),
-//				Endpoint: &gkehub.MembershipEndpointArgs{
-//					GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
-//						ResourceLink: cluster.ID().ApplyT(func(id string) (string, error) {
-//							return fmt.Sprintf("//container.googleapis.com/%v", id), nil
-//						}).(pulumi.StringOutput),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			feature, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
-//				Name:     pulumi.String("configmanagement"),
-//				Location: pulumi.String("global"),
-//				Labels: pulumi.StringMap{
-//					"foo": pulumi.String("bar"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = gkehub.NewFeatureMembership(ctx, "feature_member", &gkehub.FeatureMembershipArgs{
-//				Location:           pulumi.String("global"),
-//				Feature:            feature.Name,
-//				Membership:         membership.MembershipId,
-//				MembershipLocation: membership.Location,
-//				Configmanagement: &gkehub.FeatureMembershipConfigmanagementArgs{
-//					Version: pulumi.String("1.19.0"),
-//					ConfigSync: &gkehub.FeatureMembershipConfigmanagementConfigSyncArgs{
-//						Enabled: pulumi.Bool(true),
-//						Git: &gkehub.FeatureMembershipConfigmanagementConfigSyncGitArgs{
-//							SyncRepo: pulumi.String("https://github.com/hashicorp/terraform"),
-//						},
-//					},
 //				},
 //			})
 //			if err != nil {

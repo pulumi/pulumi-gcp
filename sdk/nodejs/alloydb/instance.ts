@@ -253,6 +253,12 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly observabilityConfig!: pulumi.Output<outputs.alloydb.InstanceObservabilityConfig>;
     /**
+     * The outbound public IP addresses for the instance. This is available ONLY when
+     * networkConfig.enableOutboundPublicIp is set to true. These IP addresses are used
+     * for outbound connections.
+     */
+    public /*out*/ readonly outboundPublicIpAddresses!: pulumi.Output<string[]>;
+    /**
      * Configuration for Private Service Connect (PSC) for the instance.
      * Structure is documented below.
      */
@@ -326,6 +332,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["networkConfig"] = state ? state.networkConfig : undefined;
             resourceInputs["observabilityConfig"] = state ? state.observabilityConfig : undefined;
+            resourceInputs["outboundPublicIpAddresses"] = state ? state.outboundPublicIpAddresses : undefined;
             resourceInputs["pscInstanceConfig"] = state ? state.pscInstanceConfig : undefined;
             resourceInputs["publicIpAddress"] = state ? state.publicIpAddress : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
@@ -367,6 +374,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["ipAddress"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["outboundPublicIpAddresses"] = undefined /*out*/;
             resourceInputs["publicIpAddress"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["reconciling"] = undefined /*out*/;
@@ -469,6 +477,12 @@ export interface InstanceState {
      * Structure is documented below.
      */
     observabilityConfig?: pulumi.Input<inputs.alloydb.InstanceObservabilityConfig>;
+    /**
+     * The outbound public IP addresses for the instance. This is available ONLY when
+     * networkConfig.enableOutboundPublicIp is set to true. These IP addresses are used
+     * for outbound connections.
+     */
+    outboundPublicIpAddresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Configuration for Private Service Connect (PSC) for the instance.
      * Structure is documented below.

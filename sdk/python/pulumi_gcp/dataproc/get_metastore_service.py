@@ -27,13 +27,16 @@ class GetMetastoreServiceResult:
     """
     A collection of values returned by getMetastoreService.
     """
-    def __init__(__self__, artifact_gcs_uri=None, database_type=None, effective_labels=None, encryption_configs=None, endpoint_uri=None, hive_metastore_configs=None, id=None, labels=None, location=None, maintenance_windows=None, metadata_integrations=None, name=None, network=None, network_configs=None, port=None, project=None, pulumi_labels=None, release_channel=None, scaling_configs=None, scheduled_backups=None, service_id=None, state=None, state_message=None, telemetry_configs=None, tier=None, uid=None):
+    def __init__(__self__, artifact_gcs_uri=None, database_type=None, deletion_protection=None, effective_labels=None, encryption_configs=None, endpoint_uri=None, hive_metastore_configs=None, id=None, labels=None, location=None, maintenance_windows=None, metadata_integrations=None, name=None, network=None, network_configs=None, port=None, project=None, pulumi_labels=None, release_channel=None, scaling_configs=None, scheduled_backups=None, service_id=None, state=None, state_message=None, telemetry_configs=None, tier=None, uid=None):
         if artifact_gcs_uri and not isinstance(artifact_gcs_uri, str):
             raise TypeError("Expected argument 'artifact_gcs_uri' to be a str")
         pulumi.set(__self__, "artifact_gcs_uri", artifact_gcs_uri)
         if database_type and not isinstance(database_type, str):
             raise TypeError("Expected argument 'database_type' to be a str")
         pulumi.set(__self__, "database_type", database_type)
+        if deletion_protection and not isinstance(deletion_protection, bool):
+            raise TypeError("Expected argument 'deletion_protection' to be a bool")
+        pulumi.set(__self__, "deletion_protection", deletion_protection)
         if effective_labels and not isinstance(effective_labels, dict):
             raise TypeError("Expected argument 'effective_labels' to be a dict")
         pulumi.set(__self__, "effective_labels", effective_labels)
@@ -116,6 +119,11 @@ class GetMetastoreServiceResult:
     @pulumi.getter(name="databaseType")
     def database_type(self) -> str:
         return pulumi.get(self, "database_type")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> bool:
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter(name="effectiveLabels")
@@ -249,6 +257,7 @@ class AwaitableGetMetastoreServiceResult(GetMetastoreServiceResult):
         return GetMetastoreServiceResult(
             artifact_gcs_uri=self.artifact_gcs_uri,
             database_type=self.database_type,
+            deletion_protection=self.deletion_protection,
             effective_labels=self.effective_labels,
             encryption_configs=self.encryption_configs,
             endpoint_uri=self.endpoint_uri,
@@ -310,6 +319,7 @@ def get_metastore_service(location: Optional[str] = None,
     return AwaitableGetMetastoreServiceResult(
         artifact_gcs_uri=pulumi.get(__ret__, 'artifact_gcs_uri'),
         database_type=pulumi.get(__ret__, 'database_type'),
+        deletion_protection=pulumi.get(__ret__, 'deletion_protection'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
         encryption_configs=pulumi.get(__ret__, 'encryption_configs'),
         endpoint_uri=pulumi.get(__ret__, 'endpoint_uri'),

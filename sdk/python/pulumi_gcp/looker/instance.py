@@ -26,6 +26,7 @@ class InstanceArgs:
                  custom_domain: Optional[pulumi.Input['InstanceCustomDomainArgs']] = None,
                  deny_maintenance_period: Optional[pulumi.Input['InstanceDenyMaintenancePeriodArgs']] = None,
                  encryption_config: Optional[pulumi.Input['InstanceEncryptionConfigArgs']] = None,
+                 fips_enabled: Optional[pulumi.Input[bool]] = None,
                  maintenance_window: Optional[pulumi.Input['InstanceMaintenanceWindowArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  oauth_config: Optional[pulumi.Input['InstanceOauthConfigArgs']] = None,
@@ -51,6 +52,7 @@ class InstanceArgs:
                Structure is documented below.
         :param pulumi.Input['InstanceEncryptionConfigArgs'] encryption_config: Looker instance encryption settings.
                Structure is documented below.
+        :param pulumi.Input[bool] fips_enabled: FIPS 140-2 Encryption enablement for Looker (Google Cloud Core).
         :param pulumi.Input['InstanceMaintenanceWindowArgs'] maintenance_window: Maintenance window for an instance.
                Maintenance of your instance takes place once a month, and will require
                your instance to be restarted during updates, which will temporarily
@@ -96,6 +98,8 @@ class InstanceArgs:
             pulumi.set(__self__, "deny_maintenance_period", deny_maintenance_period)
         if encryption_config is not None:
             pulumi.set(__self__, "encryption_config", encryption_config)
+        if fips_enabled is not None:
+            pulumi.set(__self__, "fips_enabled", fips_enabled)
         if maintenance_window is not None:
             pulumi.set(__self__, "maintenance_window", maintenance_window)
         if name is not None:
@@ -184,6 +188,18 @@ class InstanceArgs:
     @encryption_config.setter
     def encryption_config(self, value: Optional[pulumi.Input['InstanceEncryptionConfigArgs']]):
         pulumi.set(self, "encryption_config", value)
+
+    @property
+    @pulumi.getter(name="fipsEnabled")
+    def fips_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        FIPS 140-2 Encryption enablement for Looker (Google Cloud Core).
+        """
+        return pulumi.get(self, "fips_enabled")
+
+    @fips_enabled.setter
+    def fips_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "fips_enabled", value)
 
     @property
     @pulumi.getter(name="maintenanceWindow")
@@ -340,6 +356,7 @@ class _InstanceState:
                  deny_maintenance_period: Optional[pulumi.Input['InstanceDenyMaintenancePeriodArgs']] = None,
                  egress_public_ip: Optional[pulumi.Input[str]] = None,
                  encryption_config: Optional[pulumi.Input['InstanceEncryptionConfigArgs']] = None,
+                 fips_enabled: Optional[pulumi.Input[bool]] = None,
                  ingress_private_ip: Optional[pulumi.Input[str]] = None,
                  ingress_public_ip: Optional[pulumi.Input[str]] = None,
                  looker_uri: Optional[pulumi.Input[str]] = None,
@@ -373,6 +390,7 @@ class _InstanceState:
         :param pulumi.Input[str] egress_public_ip: Public Egress IP (IPv4).
         :param pulumi.Input['InstanceEncryptionConfigArgs'] encryption_config: Looker instance encryption settings.
                Structure is documented below.
+        :param pulumi.Input[bool] fips_enabled: FIPS 140-2 Encryption enablement for Looker (Google Cloud Core).
         :param pulumi.Input[str] ingress_private_ip: Private Ingress IP (IPv4).
         :param pulumi.Input[str] ingress_public_ip: Public Ingress IP (IPv4).
         :param pulumi.Input[str] looker_uri: Looker instance URI which can be used to access the Looker Instance UI.
@@ -428,6 +446,8 @@ class _InstanceState:
             pulumi.set(__self__, "egress_public_ip", egress_public_ip)
         if encryption_config is not None:
             pulumi.set(__self__, "encryption_config", encryption_config)
+        if fips_enabled is not None:
+            pulumi.set(__self__, "fips_enabled", fips_enabled)
         if ingress_private_ip is not None:
             pulumi.set(__self__, "ingress_private_ip", ingress_private_ip)
         if ingress_public_ip is not None:
@@ -551,6 +571,18 @@ class _InstanceState:
     @encryption_config.setter
     def encryption_config(self, value: Optional[pulumi.Input['InstanceEncryptionConfigArgs']]):
         pulumi.set(self, "encryption_config", value)
+
+    @property
+    @pulumi.getter(name="fipsEnabled")
+    def fips_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        FIPS 140-2 Encryption enablement for Looker (Google Cloud Core).
+        """
+        return pulumi.get(self, "fips_enabled")
+
+    @fips_enabled.setter
+    def fips_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "fips_enabled", value)
 
     @property
     @pulumi.getter(name="ingressPrivateIp")
@@ -768,6 +800,7 @@ class Instance(pulumi.CustomResource):
                  custom_domain: Optional[pulumi.Input[Union['InstanceCustomDomainArgs', 'InstanceCustomDomainArgsDict']]] = None,
                  deny_maintenance_period: Optional[pulumi.Input[Union['InstanceDenyMaintenancePeriodArgs', 'InstanceDenyMaintenancePeriodArgsDict']]] = None,
                  encryption_config: Optional[pulumi.Input[Union['InstanceEncryptionConfigArgs', 'InstanceEncryptionConfigArgsDict']]] = None,
+                 fips_enabled: Optional[pulumi.Input[bool]] = None,
                  maintenance_window: Optional[pulumi.Input[Union['InstanceMaintenanceWindowArgs', 'InstanceMaintenanceWindowArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  oauth_config: Optional[pulumi.Input[Union['InstanceOauthConfigArgs', 'InstanceOauthConfigArgsDict']]] = None,
@@ -847,6 +880,23 @@ class Instance(pulumi.CustomResource):
                     "nanos": 0,
                 },
             },
+            oauth_config={
+                "client_id": "my-client-id",
+                "client_secret": "my-client-secret",
+            })
+        ```
+        ### Looker Instance Fips
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        looker_instance = gcp.looker.Instance("looker-instance",
+            name="my-instance-fips",
+            platform_edition="LOOKER_CORE_ENTERPRISE_ANNUAL",
+            region="us-central1",
+            public_ip_enabled=True,
+            fips_enabled=True,
             oauth_config={
                 "client_id": "my-client-id",
                 "client_secret": "my-client-secret",
@@ -985,6 +1035,7 @@ class Instance(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Union['InstanceEncryptionConfigArgs', 'InstanceEncryptionConfigArgsDict']] encryption_config: Looker instance encryption settings.
                Structure is documented below.
+        :param pulumi.Input[bool] fips_enabled: FIPS 140-2 Encryption enablement for Looker (Google Cloud Core).
         :param pulumi.Input[Union['InstanceMaintenanceWindowArgs', 'InstanceMaintenanceWindowArgsDict']] maintenance_window: Maintenance window for an instance.
                Maintenance of your instance takes place once a month, and will require
                your instance to be restarted during updates, which will temporarily
@@ -1094,6 +1145,23 @@ class Instance(pulumi.CustomResource):
                     "nanos": 0,
                 },
             },
+            oauth_config={
+                "client_id": "my-client-id",
+                "client_secret": "my-client-secret",
+            })
+        ```
+        ### Looker Instance Fips
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        looker_instance = gcp.looker.Instance("looker-instance",
+            name="my-instance-fips",
+            platform_edition="LOOKER_CORE_ENTERPRISE_ANNUAL",
+            region="us-central1",
+            public_ip_enabled=True,
+            fips_enabled=True,
             oauth_config={
                 "client_id": "my-client-id",
                 "client_secret": "my-client-secret",
@@ -1237,6 +1305,7 @@ class Instance(pulumi.CustomResource):
                  custom_domain: Optional[pulumi.Input[Union['InstanceCustomDomainArgs', 'InstanceCustomDomainArgsDict']]] = None,
                  deny_maintenance_period: Optional[pulumi.Input[Union['InstanceDenyMaintenancePeriodArgs', 'InstanceDenyMaintenancePeriodArgsDict']]] = None,
                  encryption_config: Optional[pulumi.Input[Union['InstanceEncryptionConfigArgs', 'InstanceEncryptionConfigArgsDict']]] = None,
+                 fips_enabled: Optional[pulumi.Input[bool]] = None,
                  maintenance_window: Optional[pulumi.Input[Union['InstanceMaintenanceWindowArgs', 'InstanceMaintenanceWindowArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  oauth_config: Optional[pulumi.Input[Union['InstanceOauthConfigArgs', 'InstanceOauthConfigArgsDict']]] = None,
@@ -1261,6 +1330,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["custom_domain"] = custom_domain
             __props__.__dict__["deny_maintenance_period"] = deny_maintenance_period
             __props__.__dict__["encryption_config"] = encryption_config
+            __props__.__dict__["fips_enabled"] = fips_enabled
             __props__.__dict__["maintenance_window"] = maintenance_window
             __props__.__dict__["name"] = name
             __props__.__dict__["oauth_config"] = oauth_config
@@ -1295,6 +1365,7 @@ class Instance(pulumi.CustomResource):
             deny_maintenance_period: Optional[pulumi.Input[Union['InstanceDenyMaintenancePeriodArgs', 'InstanceDenyMaintenancePeriodArgsDict']]] = None,
             egress_public_ip: Optional[pulumi.Input[str]] = None,
             encryption_config: Optional[pulumi.Input[Union['InstanceEncryptionConfigArgs', 'InstanceEncryptionConfigArgsDict']]] = None,
+            fips_enabled: Optional[pulumi.Input[bool]] = None,
             ingress_private_ip: Optional[pulumi.Input[str]] = None,
             ingress_public_ip: Optional[pulumi.Input[str]] = None,
             looker_uri: Optional[pulumi.Input[str]] = None,
@@ -1333,6 +1404,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] egress_public_ip: Public Egress IP (IPv4).
         :param pulumi.Input[Union['InstanceEncryptionConfigArgs', 'InstanceEncryptionConfigArgsDict']] encryption_config: Looker instance encryption settings.
                Structure is documented below.
+        :param pulumi.Input[bool] fips_enabled: FIPS 140-2 Encryption enablement for Looker (Google Cloud Core).
         :param pulumi.Input[str] ingress_private_ip: Private Ingress IP (IPv4).
         :param pulumi.Input[str] ingress_public_ip: Public Ingress IP (IPv4).
         :param pulumi.Input[str] looker_uri: Looker instance URI which can be used to access the Looker Instance UI.
@@ -1385,6 +1457,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["deny_maintenance_period"] = deny_maintenance_period
         __props__.__dict__["egress_public_ip"] = egress_public_ip
         __props__.__dict__["encryption_config"] = encryption_config
+        __props__.__dict__["fips_enabled"] = fips_enabled
         __props__.__dict__["ingress_private_ip"] = ingress_private_ip
         __props__.__dict__["ingress_public_ip"] = ingress_public_ip
         __props__.__dict__["looker_uri"] = looker_uri
@@ -1466,6 +1539,14 @@ class Instance(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "encryption_config")
+
+    @property
+    @pulumi.getter(name="fipsEnabled")
+    def fips_enabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        FIPS 140-2 Encryption enablement for Looker (Google Cloud Core).
+        """
+        return pulumi.get(self, "fips_enabled")
 
     @property
     @pulumi.getter(name="ingressPrivateIp")

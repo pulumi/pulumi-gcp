@@ -12,6 +12,7 @@ import com.pulumi.gcp.filestore.InstanceArgs;
 import com.pulumi.gcp.filestore.inputs.InstanceState;
 import com.pulumi.gcp.filestore.outputs.InstanceFileShares;
 import com.pulumi.gcp.filestore.outputs.InstanceNetwork;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -286,6 +287,34 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * Indicates whether the instance is protected against deletion.
+     * 
+     */
+    @Export(name="deletionProtectionEnabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> deletionProtectionEnabled;
+
+    /**
+     * @return Indicates whether the instance is protected against deletion.
+     * 
+     */
+    public Output<Optional<Boolean>> deletionProtectionEnabled() {
+        return Codegen.optional(this.deletionProtectionEnabled);
+    }
+    /**
+     * The reason for enabling deletion protection.
+     * 
+     */
+    @Export(name="deletionProtectionReason", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> deletionProtectionReason;
+
+    /**
+     * @return The reason for enabling deletion protection.
+     * 
+     */
+    public Output<Optional<String>> deletionProtectionReason() {
+        return Codegen.optional(this.deletionProtectionReason);
     }
     /**
      * A description of the instance.

@@ -40,6 +40,30 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Dataproc Metastore Service Deletion Protection
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.dataproc.MetastoreService("default", {
+ *     serviceId: "metastore-srv",
+ *     location: "us-central1",
+ *     port: 9080,
+ *     tier: "DEVELOPER",
+ *     deletionProtection: true,
+ *     maintenanceWindow: {
+ *         hourOfDay: 2,
+ *         dayOfWeek: "SUNDAY",
+ *     },
+ *     hiveMetastoreConfig: {
+ *         version: "2.3.6",
+ *     },
+ *     labels: {
+ *         env: "test",
+ *     },
+ * });
+ * ```
  * ### Dataproc Metastore Service Cmek Example
  *
  * ```typescript
@@ -351,6 +375,10 @@ export class MetastoreService extends pulumi.CustomResource {
      */
     public readonly databaseType!: pulumi.Output<string | undefined>;
     /**
+     * Indicates if the dataproc metastore should be protected against accidental deletions.
+     */
+    public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
+    /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
@@ -483,6 +511,7 @@ export class MetastoreService extends pulumi.CustomResource {
             const state = argsOrState as MetastoreServiceState | undefined;
             resourceInputs["artifactGcsUri"] = state ? state.artifactGcsUri : undefined;
             resourceInputs["databaseType"] = state ? state.databaseType : undefined;
+            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["encryptionConfig"] = state ? state.encryptionConfig : undefined;
             resourceInputs["endpointUri"] = state ? state.endpointUri : undefined;
@@ -512,6 +541,7 @@ export class MetastoreService extends pulumi.CustomResource {
                 throw new Error("Missing required property 'serviceId'");
             }
             resourceInputs["databaseType"] = args ? args.databaseType : undefined;
+            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             resourceInputs["encryptionConfig"] = args ? args.encryptionConfig : undefined;
             resourceInputs["hiveMetastoreConfig"] = args ? args.hiveMetastoreConfig : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -558,6 +588,10 @@ export interface MetastoreServiceState {
      * Possible values are: `MYSQL`, `SPANNER`.
      */
     databaseType?: pulumi.Input<string>;
+    /**
+     * Indicates if the dataproc metastore should be protected against accidental deletions.
+     */
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
@@ -687,6 +721,10 @@ export interface MetastoreServiceArgs {
      * Possible values are: `MYSQL`, `SPANNER`.
      */
     databaseType?: pulumi.Input<string>;
+    /**
+     * Indicates if the dataproc metastore should be protected against accidental deletions.
+     */
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * Information used to configure the Dataproc Metastore service to encrypt
      * customer data at rest.

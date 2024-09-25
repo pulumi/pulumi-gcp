@@ -19,28 +19,28 @@ namespace Pulumi.Gcp.DeveloperConnect.Inputs
         public Input<string>? AppInstallationId { get; set; }
 
         /// <summary>
-        /// Represents an OAuth token of the account that authorized the Connection,
-        /// and associated metadata.
+        /// Represents an OAuth token of the account that authorized the Connection,and
+        /// associated metadata.
         /// Structure is documented below.
         /// </summary>
         [Input("authorizerCredential")]
         public Input<Inputs.ConnectionGithubConfigAuthorizerCredentialArgs>? AuthorizerCredential { get; set; }
 
         /// <summary>
-        /// Required. Immutable. The GitHub Application that was installed to the GitHub user or
-        /// organization.
+        /// Required. Immutable. The GitHub Application that was installed to
+        /// the GitHub user or organization.
         /// Possible values:
         /// GIT_HUB_APP_UNSPECIFIED
         /// DEVELOPER_CONNECT
-        /// FIREBASE
+        /// FIREBASE"
         /// </summary>
         [Input("githubApp", required: true)]
         public Input<string> GithubApp { get; set; } = null!;
 
         /// <summary>
         /// (Output)
-        /// Output only. The URI to navigate to in order to manage the installation associated
-        /// with this GitHubConfig.
+        /// Output only. The URI to navigate to in order to manage the installation
+        /// associated with this GitHubConfig.
         /// </summary>
         [Input("installationUri")]
         public Input<string>? InstallationUri { get; set; }

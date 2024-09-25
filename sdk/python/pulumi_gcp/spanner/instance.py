@@ -24,6 +24,7 @@ class InstanceArgs:
                  config: pulumi.Input[str],
                  display_name: pulumi.Input[str],
                  autoscaling_config: Optional[pulumi.Input['InstanceAutoscalingConfigArgs']] = None,
+                 edition: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -48,6 +49,8 @@ class InstanceArgs:
                OUTPUT_ONLY fields and reflect the current compute capacity allocated to
                the instance.
                Structure is documented below.
+        :param pulumi.Input[str] edition: The edition selected for this instance. Different editions provide different capabilities at different price points.
+               Possible values are: `EDITION_UNSPECIFIED`, `STANDARD`, `ENTERPRISE`, `ENTERPRISE_PLUS`.
         :param pulumi.Input[bool] force_destroy: When deleting a spanner instance, this boolean option will delete all backups of this instance.
                This must be set to true if you created a backup manually in the console.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: An object containing a list of "key": value pairs.
@@ -66,6 +69,8 @@ class InstanceArgs:
         pulumi.set(__self__, "display_name", display_name)
         if autoscaling_config is not None:
             pulumi.set(__self__, "autoscaling_config", autoscaling_config)
+        if edition is not None:
+            pulumi.set(__self__, "edition", edition)
         if force_destroy is not None:
             pulumi.set(__self__, "force_destroy", force_destroy)
         if labels is not None:
@@ -127,6 +132,19 @@ class InstanceArgs:
     @autoscaling_config.setter
     def autoscaling_config(self, value: Optional[pulumi.Input['InstanceAutoscalingConfigArgs']]):
         pulumi.set(self, "autoscaling_config", value)
+
+    @property
+    @pulumi.getter
+    def edition(self) -> Optional[pulumi.Input[str]]:
+        """
+        The edition selected for this instance. Different editions provide different capabilities at different price points.
+        Possible values are: `EDITION_UNSPECIFIED`, `STANDARD`, `ENTERPRISE`, `ENTERPRISE_PLUS`.
+        """
+        return pulumi.get(self, "edition")
+
+    @edition.setter
+    def edition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "edition", value)
 
     @property
     @pulumi.getter(name="forceDestroy")
@@ -210,6 +228,7 @@ class _InstanceState:
                  autoscaling_config: Optional[pulumi.Input['InstanceAutoscalingConfigArgs']] = None,
                  config: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 edition: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -237,6 +256,8 @@ class _InstanceState:
                
                
                - - -
+        :param pulumi.Input[str] edition: The edition selected for this instance. Different editions provide different capabilities at different price points.
+               Possible values are: `EDITION_UNSPECIFIED`, `STANDARD`, `ENTERPRISE`, `ENTERPRISE_PLUS`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[bool] force_destroy: When deleting a spanner instance, this boolean option will delete all backups of this instance.
                This must be set to true if you created a backup manually in the console.
@@ -261,6 +282,8 @@ class _InstanceState:
             pulumi.set(__self__, "config", config)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if edition is not None:
+            pulumi.set(__self__, "edition", edition)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
         if force_destroy is not None:
@@ -328,6 +351,19 @@ class _InstanceState:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def edition(self) -> Optional[pulumi.Input[str]]:
+        """
+        The edition selected for this instance. Different editions provide different capabilities at different price points.
+        Possible values are: `EDITION_UNSPECIFIED`, `STANDARD`, `ENTERPRISE`, `ENTERPRISE_PLUS`.
+        """
+        return pulumi.get(self, "edition")
+
+    @edition.setter
+    def edition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "edition", value)
 
     @property
     @pulumi.getter(name="effectiveLabels")
@@ -450,6 +486,7 @@ class Instance(pulumi.CustomResource):
                  autoscaling_config: Optional[pulumi.Input[Union['InstanceAutoscalingConfigArgs', 'InstanceAutoscalingConfigArgsDict']]] = None,
                  config: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 edition: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -479,6 +516,7 @@ class Instance(pulumi.CustomResource):
             config="regional-us-central1",
             display_name="Test Spanner Instance",
             num_nodes=2,
+            edition="STANDARD",
             labels={
                 "foo": "bar",
             })
@@ -577,6 +615,8 @@ class Instance(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[str] edition: The edition selected for this instance. Different editions provide different capabilities at different price points.
+               Possible values are: `EDITION_UNSPECIFIED`, `STANDARD`, `ENTERPRISE`, `ENTERPRISE_PLUS`.
         :param pulumi.Input[bool] force_destroy: When deleting a spanner instance, this boolean option will delete all backups of this instance.
                This must be set to true if you created a backup manually in the console.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: An object containing a list of "key": value pairs.
@@ -619,6 +659,7 @@ class Instance(pulumi.CustomResource):
             config="regional-us-central1",
             display_name="Test Spanner Instance",
             num_nodes=2,
+            edition="STANDARD",
             labels={
                 "foo": "bar",
             })
@@ -717,6 +758,7 @@ class Instance(pulumi.CustomResource):
                  autoscaling_config: Optional[pulumi.Input[Union['InstanceAutoscalingConfigArgs', 'InstanceAutoscalingConfigArgsDict']]] = None,
                  config: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 edition: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -739,6 +781,7 @@ class Instance(pulumi.CustomResource):
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["edition"] = edition
             __props__.__dict__["force_destroy"] = force_destroy
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
@@ -763,6 +806,7 @@ class Instance(pulumi.CustomResource):
             autoscaling_config: Optional[pulumi.Input[Union['InstanceAutoscalingConfigArgs', 'InstanceAutoscalingConfigArgsDict']]] = None,
             config: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
+            edition: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             force_destroy: Optional[pulumi.Input[bool]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -795,6 +839,8 @@ class Instance(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[str] edition: The edition selected for this instance. Different editions provide different capabilities at different price points.
+               Possible values are: `EDITION_UNSPECIFIED`, `STANDARD`, `ENTERPRISE`, `ENTERPRISE_PLUS`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[bool] force_destroy: When deleting a spanner instance, this boolean option will delete all backups of this instance.
                This must be set to true if you created a backup manually in the console.
@@ -820,6 +866,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["autoscaling_config"] = autoscaling_config
         __props__.__dict__["config"] = config
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["edition"] = edition
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["force_destroy"] = force_destroy
         __props__.__dict__["labels"] = labels
@@ -867,6 +914,15 @@ class Instance(pulumi.CustomResource):
         - - -
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def edition(self) -> pulumi.Output[str]:
+        """
+        The edition selected for this instance. Different editions provide different capabilities at different price points.
+        Possible values are: `EDITION_UNSPECIFIED`, `STANDARD`, `ENTERPRISE`, `ENTERPRISE_PLUS`.
+        """
+        return pulumi.get(self, "edition")
 
     @property
     @pulumi.getter(name="effectiveLabels")

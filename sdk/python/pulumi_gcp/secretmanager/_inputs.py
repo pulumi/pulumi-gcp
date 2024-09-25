@@ -15,6 +15,18 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'RegionalSecretCustomerManagedEncryptionArgs',
+    'RegionalSecretCustomerManagedEncryptionArgsDict',
+    'RegionalSecretIamBindingConditionArgs',
+    'RegionalSecretIamBindingConditionArgsDict',
+    'RegionalSecretIamMemberConditionArgs',
+    'RegionalSecretIamMemberConditionArgsDict',
+    'RegionalSecretRotationArgs',
+    'RegionalSecretRotationArgsDict',
+    'RegionalSecretTopicArgs',
+    'RegionalSecretTopicArgsDict',
+    'RegionalSecretVersionCustomerManagedEncryptionArgs',
+    'RegionalSecretVersionCustomerManagedEncryptionArgsDict',
     'SecretIamBindingConditionArgs',
     'SecretIamBindingConditionArgsDict',
     'SecretIamMemberConditionArgs',
@@ -38,6 +50,302 @@ __all__ = [
 ]
 
 MYPY = False
+
+if not MYPY:
+    class RegionalSecretCustomerManagedEncryptionArgsDict(TypedDict):
+        kms_key_name: pulumi.Input[str]
+        """
+        The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
+        """
+elif False:
+    RegionalSecretCustomerManagedEncryptionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionalSecretCustomerManagedEncryptionArgs:
+    def __init__(__self__, *,
+                 kms_key_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] kms_key_name: The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
+        """
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> pulumi.Input[str]:
+        """
+        The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @kms_key_name.setter
+    def kms_key_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "kms_key_name", value)
+
+
+if not MYPY:
+    class RegionalSecretIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    RegionalSecretIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionalSecretIamBindingConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
+        :param pulumi.Input[str] title: A title for the expression, i.e. a short string describing its purpose.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class RegionalSecretIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    RegionalSecretIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionalSecretIamMemberConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
+        :param pulumi.Input[str] title: A title for the expression, i.e. a short string describing its purpose.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class RegionalSecretRotationArgsDict(TypedDict):
+        next_rotation_time: NotRequired[pulumi.Input[str]]
+        """
+        Timestamp in UTC at which the Secret is scheduled to rotate.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+        fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        rotation_period: NotRequired[pulumi.Input[str]]
+        """
+        The Duration between rotation notifications. Must be in seconds and at least 3600s (1h)
+        and at most 3153600000s (100 years). If rotationPeriod is set, `next_rotation_time` must
+        be set. `next_rotation_time` will be advanced by this period when the service
+        automatically sends rotation notifications.
+        """
+elif False:
+    RegionalSecretRotationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionalSecretRotationArgs:
+    def __init__(__self__, *,
+                 next_rotation_time: Optional[pulumi.Input[str]] = None,
+                 rotation_period: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] next_rotation_time: Timestamp in UTC at which the Secret is scheduled to rotate.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+               fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[str] rotation_period: The Duration between rotation notifications. Must be in seconds and at least 3600s (1h)
+               and at most 3153600000s (100 years). If rotationPeriod is set, `next_rotation_time` must
+               be set. `next_rotation_time` will be advanced by this period when the service
+               automatically sends rotation notifications.
+        """
+        if next_rotation_time is not None:
+            pulumi.set(__self__, "next_rotation_time", next_rotation_time)
+        if rotation_period is not None:
+            pulumi.set(__self__, "rotation_period", rotation_period)
+
+    @property
+    @pulumi.getter(name="nextRotationTime")
+    def next_rotation_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Timestamp in UTC at which the Secret is scheduled to rotate.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+        fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "next_rotation_time")
+
+    @next_rotation_time.setter
+    def next_rotation_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "next_rotation_time", value)
+
+    @property
+    @pulumi.getter(name="rotationPeriod")
+    def rotation_period(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Duration between rotation notifications. Must be in seconds and at least 3600s (1h)
+        and at most 3153600000s (100 years). If rotationPeriod is set, `next_rotation_time` must
+        be set. `next_rotation_time` will be advanced by this period when the service
+        automatically sends rotation notifications.
+        """
+        return pulumi.get(self, "rotation_period")
+
+    @rotation_period.setter
+    def rotation_period(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rotation_period", value)
+
+
+if not MYPY:
+    class RegionalSecretTopicArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The resource name of the Pub/Sub topic that will be published to, in the following format:
+        projects/*/topics/*. For publication to succeed, the Secret Manager Service
+        Agent service account must have pubsub.publisher permissions on the topic.
+        """
+elif False:
+    RegionalSecretTopicArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionalSecretTopicArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] name: The resource name of the Pub/Sub topic that will be published to, in the following format:
+               projects/*/topics/*. For publication to succeed, the Secret Manager Service
+               Agent service account must have pubsub.publisher permissions on the topic.
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The resource name of the Pub/Sub topic that will be published to, in the following format:
+        projects/*/topics/*. For publication to succeed, the Secret Manager Service
+        Agent service account must have pubsub.publisher permissions on the topic.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+
+if not MYPY:
+    class RegionalSecretVersionCustomerManagedEncryptionArgsDict(TypedDict):
+        kms_key_version_name: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
+        """
+elif False:
+    RegionalSecretVersionCustomerManagedEncryptionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionalSecretVersionCustomerManagedEncryptionArgs:
+    def __init__(__self__, *,
+                 kms_key_version_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] kms_key_version_name: (Output)
+               The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
+        """
+        if kms_key_version_name is not None:
+            pulumi.set(__self__, "kms_key_version_name", kms_key_version_name)
+
+    @property
+    @pulumi.getter(name="kmsKeyVersionName")
+    def kms_key_version_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
+        """
+        return pulumi.get(self, "kms_key_version_name")
+
+    @kms_key_version_name.setter
+    def kms_key_version_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_version_name", value)
+
 
 if not MYPY:
     class SecretIamBindingConditionArgsDict(TypedDict):
