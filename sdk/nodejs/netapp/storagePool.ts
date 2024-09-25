@@ -108,6 +108,11 @@ export class StoragePool extends pulumi.CustomResource {
      */
     public readonly activeDirectory!: pulumi.Output<string | undefined>;
     /**
+     * Optional. True if the storage pool supports Auto Tiering enabled volumes. Default is false.
+     * Auto-tiering can be enabled after storage pool creation but it can't be disabled once enabled.
+     */
+    public readonly allowAutoTiering!: pulumi.Output<boolean | undefined>;
+    /**
      * Capacity of the storage pool (in GiB).
      */
     public readonly capacityGib!: pulumi.Output<string>;
@@ -204,6 +209,7 @@ export class StoragePool extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as StoragePoolState | undefined;
             resourceInputs["activeDirectory"] = state ? state.activeDirectory : undefined;
+            resourceInputs["allowAutoTiering"] = state ? state.allowAutoTiering : undefined;
             resourceInputs["capacityGib"] = state ? state.capacityGib : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
@@ -236,6 +242,7 @@ export class StoragePool extends pulumi.CustomResource {
                 throw new Error("Missing required property 'serviceLevel'");
             }
             resourceInputs["activeDirectory"] = args ? args.activeDirectory : undefined;
+            resourceInputs["allowAutoTiering"] = args ? args.allowAutoTiering : undefined;
             resourceInputs["capacityGib"] = args ? args.capacityGib : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["kmsConfig"] = args ? args.kmsConfig : undefined;
@@ -270,6 +277,11 @@ export interface StoragePoolState {
      * The policy needs to be in the same location as the storage pool.
      */
     activeDirectory?: pulumi.Input<string>;
+    /**
+     * Optional. True if the storage pool supports Auto Tiering enabled volumes. Default is false.
+     * Auto-tiering can be enabled after storage pool creation but it can't be disabled once enabled.
+     */
+    allowAutoTiering?: pulumi.Input<boolean>;
     /**
      * Capacity of the storage pool (in GiB).
      */
@@ -363,6 +375,11 @@ export interface StoragePoolArgs {
      * The policy needs to be in the same location as the storage pool.
      */
     activeDirectory?: pulumi.Input<string>;
+    /**
+     * Optional. True if the storage pool supports Auto Tiering enabled volumes. Default is false.
+     * Auto-tiering can be enabled after storage pool creation but it can't be disabled once enabled.
+     */
+    allowAutoTiering?: pulumi.Input<boolean>;
     /**
      * Capacity of the storage pool (in GiB).
      */

@@ -2335,6 +2335,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "compute/firewallPolicyWithRules",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/firewallPolicyWithRules:FirewallPolicyWithRules": "FirewallPolicyWithRules"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "compute/forwardingRule",
   "fqn": "pulumi_gcp.compute",
   "classes": {
@@ -3423,6 +3431,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "databasemigrationservice/migrationJob",
+  "fqn": "pulumi_gcp.databasemigrationservice",
+  "classes": {
+   "gcp:databasemigrationservice/migrationJob:MigrationJob": "MigrationJob"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "databasemigrationservice/privateConnection",
   "fqn": "pulumi_gcp.databasemigrationservice",
   "classes": {
@@ -4307,6 +4323,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.discoveryengine",
   "classes": {
    "gcp:discoveryengine/searchEngine:SearchEngine": "SearchEngine"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "discoveryengine/targetSite",
+  "fqn": "pulumi_gcp.discoveryengine",
+  "classes": {
+   "gcp:discoveryengine/targetSite:TargetSite": "TargetSite"
   }
  },
  {
@@ -5219,6 +5243,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.healthcare",
   "classes": {
    "gcp:healthcare/hl7StoreIamPolicy:Hl7StoreIamPolicy": "Hl7StoreIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "healthcare/workspace",
+  "fqn": "pulumi_gcp.healthcare",
+  "classes": {
+   "gcp:healthcare/workspace:Workspace": "Workspace"
   }
  },
  {
@@ -6935,6 +6967,46 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "secretmanager/regionalSecret",
+  "fqn": "pulumi_gcp.secretmanager",
+  "classes": {
+   "gcp:secretmanager/regionalSecret:RegionalSecret": "RegionalSecret"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "secretmanager/regionalSecretIamBinding",
+  "fqn": "pulumi_gcp.secretmanager",
+  "classes": {
+   "gcp:secretmanager/regionalSecretIamBinding:RegionalSecretIamBinding": "RegionalSecretIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "secretmanager/regionalSecretIamMember",
+  "fqn": "pulumi_gcp.secretmanager",
+  "classes": {
+   "gcp:secretmanager/regionalSecretIamMember:RegionalSecretIamMember": "RegionalSecretIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "secretmanager/regionalSecretIamPolicy",
+  "fqn": "pulumi_gcp.secretmanager",
+  "classes": {
+   "gcp:secretmanager/regionalSecretIamPolicy:RegionalSecretIamPolicy": "RegionalSecretIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "secretmanager/regionalSecretVersion",
+  "fqn": "pulumi_gcp.secretmanager",
+  "classes": {
+   "gcp:secretmanager/regionalSecretVersion:RegionalSecretVersion": "RegionalSecretVersion"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "secretmanager/secret",
   "fqn": "pulumi_gcp.secretmanager",
   "classes": {
@@ -7063,6 +7135,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "securitycenter/folderSccBigQueryExport",
+  "fqn": "pulumi_gcp.securitycenter",
+  "classes": {
+   "gcp:securitycenter/folderSccBigQueryExport:FolderSccBigQueryExport": "FolderSccBigQueryExport"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "securitycenter/instanceIamBinding",
   "fqn": "pulumi_gcp.securitycenter",
   "classes": {
@@ -7143,6 +7223,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "securitycenter/organizationSccBigQueryExport",
+  "fqn": "pulumi_gcp.securitycenter",
+  "classes": {
+   "gcp:securitycenter/organizationSccBigQueryExport:OrganizationSccBigQueryExport": "OrganizationSccBigQueryExport"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "securitycenter/projectCustomModule",
   "fqn": "pulumi_gcp.securitycenter",
   "classes": {
@@ -7155,6 +7243,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.securitycenter",
   "classes": {
    "gcp:securitycenter/projectNotificationConfig:ProjectNotificationConfig": "ProjectNotificationConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "securitycenter/projectSccBigQueryExport",
+  "fqn": "pulumi_gcp.securitycenter",
+  "classes": {
+   "gcp:securitycenter/projectSccBigQueryExport:ProjectSccBigQueryExport": "ProjectSccBigQueryExport"
   }
  },
  {
@@ -7227,6 +7323,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.securitycenter",
   "classes": {
    "gcp:securitycenter/v2OrganizationNotificationConfig:V2OrganizationNotificationConfig": "V2OrganizationNotificationConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "securitycenter/v2OrganizationSccBigQueryExport",
+  "fqn": "pulumi_gcp.securitycenter",
+  "classes": {
+   "gcp:securitycenter/v2OrganizationSccBigQueryExport:V2OrganizationSccBigQueryExport": "V2OrganizationSccBigQueryExport"
   }
  },
  {
@@ -7455,6 +7559,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "siteverification/webResource",
+  "fqn": "pulumi_gcp.siteverification",
+  "classes": {
+   "gcp:siteverification/webResource:WebResource": "WebResource"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "sourcerepo/repository",
   "fqn": "pulumi_gcp.sourcerepo",
   "classes": {
@@ -7483,6 +7595,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.sourcerepo",
   "classes": {
    "gcp:sourcerepo/repositoryIamPolicy:RepositoryIamPolicy": "RepositoryIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "spanner/backupSchedule",
+  "fqn": "pulumi_gcp.spanner",
+  "classes": {
+   "gcp:spanner/backupSchedule:BackupSchedule": "BackupSchedule"
   }
  },
  {

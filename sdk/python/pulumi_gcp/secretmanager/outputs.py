@@ -16,6 +16,12 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'RegionalSecretCustomerManagedEncryption',
+    'RegionalSecretIamBindingCondition',
+    'RegionalSecretIamMemberCondition',
+    'RegionalSecretRotation',
+    'RegionalSecretTopic',
+    'RegionalSecretVersionCustomerManagedEncryption',
     'SecretIamBindingCondition',
     'SecretIamMemberCondition',
     'SecretReplication',
@@ -26,6 +32,10 @@ __all__ = [
     'SecretReplicationUserManagedReplicaCustomerManagedEncryption',
     'SecretRotation',
     'SecretTopic',
+    'GetRegionalSecretCustomerManagedEncryptionResult',
+    'GetRegionalSecretRotationResult',
+    'GetRegionalSecretTopicResult',
+    'GetRegionalSecretVersionCustomerManagedEncryptionResult',
     'GetSecretReplicationResult',
     'GetSecretReplicationAutoResult',
     'GetSecretReplicationAutoCustomerManagedEncryptionResult',
@@ -44,6 +54,235 @@ __all__ = [
     'GetSecretsSecretRotationResult',
     'GetSecretsSecretTopicResult',
 ]
+
+@pulumi.output_type
+class RegionalSecretCustomerManagedEncryption(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeyName":
+            suggest = "kms_key_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionalSecretCustomerManagedEncryption. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionalSecretCustomerManagedEncryption.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionalSecretCustomerManagedEncryption.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key_name: str):
+        """
+        :param str kms_key_name: The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
+        """
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> str:
+        """
+        The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+
+@pulumi.output_type
+class RegionalSecretIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        """
+        :param str expression: Textual representation of an expression in Common Expression Language syntax.
+        :param str title: A title for the expression, i.e. a short string describing its purpose.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class RegionalSecretIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        """
+        :param str expression: Textual representation of an expression in Common Expression Language syntax.
+        :param str title: A title for the expression, i.e. a short string describing its purpose.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class RegionalSecretRotation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nextRotationTime":
+            suggest = "next_rotation_time"
+        elif key == "rotationPeriod":
+            suggest = "rotation_period"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionalSecretRotation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionalSecretRotation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionalSecretRotation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 next_rotation_time: Optional[str] = None,
+                 rotation_period: Optional[str] = None):
+        """
+        :param str next_rotation_time: Timestamp in UTC at which the Secret is scheduled to rotate.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+               fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param str rotation_period: The Duration between rotation notifications. Must be in seconds and at least 3600s (1h)
+               and at most 3153600000s (100 years). If rotationPeriod is set, `next_rotation_time` must
+               be set. `next_rotation_time` will be advanced by this period when the service
+               automatically sends rotation notifications.
+        """
+        if next_rotation_time is not None:
+            pulumi.set(__self__, "next_rotation_time", next_rotation_time)
+        if rotation_period is not None:
+            pulumi.set(__self__, "rotation_period", rotation_period)
+
+    @property
+    @pulumi.getter(name="nextRotationTime")
+    def next_rotation_time(self) -> Optional[str]:
+        """
+        Timestamp in UTC at which the Secret is scheduled to rotate.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+        fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "next_rotation_time")
+
+    @property
+    @pulumi.getter(name="rotationPeriod")
+    def rotation_period(self) -> Optional[str]:
+        """
+        The Duration between rotation notifications. Must be in seconds and at least 3600s (1h)
+        and at most 3153600000s (100 years). If rotationPeriod is set, `next_rotation_time` must
+        be set. `next_rotation_time` will be advanced by this period when the service
+        automatically sends rotation notifications.
+        """
+        return pulumi.get(self, "rotation_period")
+
+
+@pulumi.output_type
+class RegionalSecretTopic(dict):
+    def __init__(__self__, *,
+                 name: str):
+        """
+        :param str name: The resource name of the Pub/Sub topic that will be published to, in the following format:
+               projects/*/topics/*. For publication to succeed, the Secret Manager Service
+               Agent service account must have pubsub.publisher permissions on the topic.
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The resource name of the Pub/Sub topic that will be published to, in the following format:
+        projects/*/topics/*. For publication to succeed, the Secret Manager Service
+        Agent service account must have pubsub.publisher permissions on the topic.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class RegionalSecretVersionCustomerManagedEncryption(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeyVersionName":
+            suggest = "kms_key_version_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionalSecretVersionCustomerManagedEncryption. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionalSecretVersionCustomerManagedEncryption.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionalSecretVersionCustomerManagedEncryption.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key_version_name: Optional[str] = None):
+        """
+        :param str kms_key_version_name: (Output)
+               The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
+        """
+        if kms_key_version_name is not None:
+            pulumi.set(__self__, "kms_key_version_name", kms_key_version_name)
+
+    @property
+    @pulumi.getter(name="kmsKeyVersionName")
+    def kms_key_version_name(self) -> Optional[str]:
+        """
+        (Output)
+        The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
+        """
+        return pulumi.get(self, "kms_key_version_name")
+
 
 @pulumi.output_type
 class SecretIamBindingCondition(dict):
@@ -432,6 +671,103 @@ class SecretTopic(dict):
         For publication to succeed, the Secret Manager Service Agent service account must have pubsub.publisher permissions on the topic.
         """
         return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetRegionalSecretCustomerManagedEncryptionResult(dict):
+    def __init__(__self__, *,
+                 kms_key_name: str):
+        """
+        :param str kms_key_name: The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
+        """
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> str:
+        """
+        The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+
+@pulumi.output_type
+class GetRegionalSecretRotationResult(dict):
+    def __init__(__self__, *,
+                 next_rotation_time: str,
+                 rotation_period: str):
+        """
+        :param str next_rotation_time: Timestamp in UTC at which the Secret is scheduled to rotate.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+               fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param str rotation_period: The Duration between rotation notifications. Must be in seconds and at least 3600s (1h)
+               and at most 3153600000s (100 years). If rotationPeriod is set, 'next_rotation_time' must
+               be set. 'next_rotation_time' will be advanced by this period when the service
+               automatically sends rotation notifications.
+        """
+        pulumi.set(__self__, "next_rotation_time", next_rotation_time)
+        pulumi.set(__self__, "rotation_period", rotation_period)
+
+    @property
+    @pulumi.getter(name="nextRotationTime")
+    def next_rotation_time(self) -> str:
+        """
+        Timestamp in UTC at which the Secret is scheduled to rotate.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+        fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "next_rotation_time")
+
+    @property
+    @pulumi.getter(name="rotationPeriod")
+    def rotation_period(self) -> str:
+        """
+        The Duration between rotation notifications. Must be in seconds and at least 3600s (1h)
+        and at most 3153600000s (100 years). If rotationPeriod is set, 'next_rotation_time' must
+        be set. 'next_rotation_time' will be advanced by this period when the service
+        automatically sends rotation notifications.
+        """
+        return pulumi.get(self, "rotation_period")
+
+
+@pulumi.output_type
+class GetRegionalSecretTopicResult(dict):
+    def __init__(__self__, *,
+                 name: str):
+        """
+        :param str name: The resource name of the Pub/Sub topic that will be published to, in the following format:
+               projects/*/topics/*. For publication to succeed, the Secret Manager Service
+               Agent service account must have pubsub.publisher permissions on the topic.
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The resource name of the Pub/Sub topic that will be published to, in the following format:
+        projects/*/topics/*. For publication to succeed, the Secret Manager Service
+        Agent service account must have pubsub.publisher permissions on the topic.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetRegionalSecretVersionCustomerManagedEncryptionResult(dict):
+    def __init__(__self__, *,
+                 kms_key_version_name: str):
+        """
+        :param str kms_key_version_name: The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
+        """
+        pulumi.set(__self__, "kms_key_version_name", kms_key_version_name)
+
+    @property
+    @pulumi.getter(name="kmsKeyVersionName")
+    def kms_key_version_name(self) -> str:
+        """
+        The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
+        """
+        return pulumi.get(self, "kms_key_version_name")
 
 
 @pulumi.output_type

@@ -23124,16 +23124,11 @@ type ClusterNodeConfigKubeletConfig struct {
 	// as a sequence of decimal numbers, each with optional fraction and a unit suffix,
 	// such as `"300ms"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m",
 	// "h". The value must be a positive duration.
-	//
-	// > Note: At the time of writing (2020/08/18) the GKE API rejects the `none`
-	// value and accepts an invalid `default` value instead. While this remains true,
-	// not specifying the `kubeletConfig` block should be the equivalent of specifying
-	// `none`.
 	CpuCfsQuotaPeriod *string `pulumi:"cpuCfsQuotaPeriod"`
 	// The CPU management policy on the node. See
 	// [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
-	// One of `"none"` or `"static"`. Defaults to `none` when `kubeletConfig` is unset.
-	CpuManagerPolicy string `pulumi:"cpuManagerPolicy"`
+	// One of `"none"` or `"static"`. If unset (or set to the empty string `""`), the API will treat the field as if set to "none".
+	CpuManagerPolicy *string `pulumi:"cpuManagerPolicy"`
 	// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
 	InsecureKubeletReadonlyPortEnabled *string `pulumi:"insecureKubeletReadonlyPortEnabled"`
 	// Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
@@ -23159,16 +23154,11 @@ type ClusterNodeConfigKubeletConfigArgs struct {
 	// as a sequence of decimal numbers, each with optional fraction and a unit suffix,
 	// such as `"300ms"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m",
 	// "h". The value must be a positive duration.
-	//
-	// > Note: At the time of writing (2020/08/18) the GKE API rejects the `none`
-	// value and accepts an invalid `default` value instead. While this remains true,
-	// not specifying the `kubeletConfig` block should be the equivalent of specifying
-	// `none`.
 	CpuCfsQuotaPeriod pulumi.StringPtrInput `pulumi:"cpuCfsQuotaPeriod"`
 	// The CPU management policy on the node. See
 	// [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
-	// One of `"none"` or `"static"`. Defaults to `none` when `kubeletConfig` is unset.
-	CpuManagerPolicy pulumi.StringInput `pulumi:"cpuManagerPolicy"`
+	// One of `"none"` or `"static"`. If unset (or set to the empty string `""`), the API will treat the field as if set to "none".
+	CpuManagerPolicy pulumi.StringPtrInput `pulumi:"cpuManagerPolicy"`
 	// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
 	InsecureKubeletReadonlyPortEnabled pulumi.StringPtrInput `pulumi:"insecureKubeletReadonlyPortEnabled"`
 	// Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
@@ -23262,20 +23252,15 @@ func (o ClusterNodeConfigKubeletConfigOutput) CpuCfsQuota() pulumi.BoolPtrOutput
 // as a sequence of decimal numbers, each with optional fraction and a unit suffix,
 // such as `"300ms"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m",
 // "h". The value must be a positive duration.
-//
-// > Note: At the time of writing (2020/08/18) the GKE API rejects the `none`
-// value and accepts an invalid `default` value instead. While this remains true,
-// not specifying the `kubeletConfig` block should be the equivalent of specifying
-// `none`.
 func (o ClusterNodeConfigKubeletConfigOutput) CpuCfsQuotaPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfigKubeletConfig) *string { return v.CpuCfsQuotaPeriod }).(pulumi.StringPtrOutput)
 }
 
 // The CPU management policy on the node. See
 // [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
-// One of `"none"` or `"static"`. Defaults to `none` when `kubeletConfig` is unset.
-func (o ClusterNodeConfigKubeletConfigOutput) CpuManagerPolicy() pulumi.StringOutput {
-	return o.ApplyT(func(v ClusterNodeConfigKubeletConfig) string { return v.CpuManagerPolicy }).(pulumi.StringOutput)
+// One of `"none"` or `"static"`. If unset (or set to the empty string `""`), the API will treat the field as if set to "none".
+func (o ClusterNodeConfigKubeletConfigOutput) CpuManagerPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfigKubeletConfig) *string { return v.CpuManagerPolicy }).(pulumi.StringPtrOutput)
 }
 
 // Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
@@ -23327,11 +23312,6 @@ func (o ClusterNodeConfigKubeletConfigPtrOutput) CpuCfsQuota() pulumi.BoolPtrOut
 // as a sequence of decimal numbers, each with optional fraction and a unit suffix,
 // such as `"300ms"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m",
 // "h". The value must be a positive duration.
-//
-// > Note: At the time of writing (2020/08/18) the GKE API rejects the `none`
-// value and accepts an invalid `default` value instead. While this remains true,
-// not specifying the `kubeletConfig` block should be the equivalent of specifying
-// `none`.
 func (o ClusterNodeConfigKubeletConfigPtrOutput) CpuCfsQuotaPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfigKubeletConfig) *string {
 		if v == nil {
@@ -23343,13 +23323,13 @@ func (o ClusterNodeConfigKubeletConfigPtrOutput) CpuCfsQuotaPeriod() pulumi.Stri
 
 // The CPU management policy on the node. See
 // [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
-// One of `"none"` or `"static"`. Defaults to `none` when `kubeletConfig` is unset.
+// One of `"none"` or `"static"`. If unset (or set to the empty string `""`), the API will treat the field as if set to "none".
 func (o ClusterNodeConfigKubeletConfigPtrOutput) CpuManagerPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfigKubeletConfig) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.CpuManagerPolicy
+		return v.CpuManagerPolicy
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -30994,16 +30974,11 @@ type ClusterNodePoolNodeConfigKubeletConfig struct {
 	// as a sequence of decimal numbers, each with optional fraction and a unit suffix,
 	// such as `"300ms"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m",
 	// "h". The value must be a positive duration.
-	//
-	// > Note: At the time of writing (2020/08/18) the GKE API rejects the `none`
-	// value and accepts an invalid `default` value instead. While this remains true,
-	// not specifying the `kubeletConfig` block should be the equivalent of specifying
-	// `none`.
 	CpuCfsQuotaPeriod *string `pulumi:"cpuCfsQuotaPeriod"`
 	// The CPU management policy on the node. See
 	// [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
-	// One of `"none"` or `"static"`. Defaults to `none` when `kubeletConfig` is unset.
-	CpuManagerPolicy string `pulumi:"cpuManagerPolicy"`
+	// One of `"none"` or `"static"`. If unset (or set to the empty string `""`), the API will treat the field as if set to "none".
+	CpuManagerPolicy *string `pulumi:"cpuManagerPolicy"`
 	// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
 	InsecureKubeletReadonlyPortEnabled *string `pulumi:"insecureKubeletReadonlyPortEnabled"`
 	// Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
@@ -31029,16 +31004,11 @@ type ClusterNodePoolNodeConfigKubeletConfigArgs struct {
 	// as a sequence of decimal numbers, each with optional fraction and a unit suffix,
 	// such as `"300ms"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m",
 	// "h". The value must be a positive duration.
-	//
-	// > Note: At the time of writing (2020/08/18) the GKE API rejects the `none`
-	// value and accepts an invalid `default` value instead. While this remains true,
-	// not specifying the `kubeletConfig` block should be the equivalent of specifying
-	// `none`.
 	CpuCfsQuotaPeriod pulumi.StringPtrInput `pulumi:"cpuCfsQuotaPeriod"`
 	// The CPU management policy on the node. See
 	// [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
-	// One of `"none"` or `"static"`. Defaults to `none` when `kubeletConfig` is unset.
-	CpuManagerPolicy pulumi.StringInput `pulumi:"cpuManagerPolicy"`
+	// One of `"none"` or `"static"`. If unset (or set to the empty string `""`), the API will treat the field as if set to "none".
+	CpuManagerPolicy pulumi.StringPtrInput `pulumi:"cpuManagerPolicy"`
 	// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
 	InsecureKubeletReadonlyPortEnabled pulumi.StringPtrInput `pulumi:"insecureKubeletReadonlyPortEnabled"`
 	// Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
@@ -31132,20 +31102,15 @@ func (o ClusterNodePoolNodeConfigKubeletConfigOutput) CpuCfsQuota() pulumi.BoolP
 // as a sequence of decimal numbers, each with optional fraction and a unit suffix,
 // such as `"300ms"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m",
 // "h". The value must be a positive duration.
-//
-// > Note: At the time of writing (2020/08/18) the GKE API rejects the `none`
-// value and accepts an invalid `default` value instead. While this remains true,
-// not specifying the `kubeletConfig` block should be the equivalent of specifying
-// `none`.
 func (o ClusterNodePoolNodeConfigKubeletConfigOutput) CpuCfsQuotaPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigKubeletConfig) *string { return v.CpuCfsQuotaPeriod }).(pulumi.StringPtrOutput)
 }
 
 // The CPU management policy on the node. See
 // [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
-// One of `"none"` or `"static"`. Defaults to `none` when `kubeletConfig` is unset.
-func (o ClusterNodePoolNodeConfigKubeletConfigOutput) CpuManagerPolicy() pulumi.StringOutput {
-	return o.ApplyT(func(v ClusterNodePoolNodeConfigKubeletConfig) string { return v.CpuManagerPolicy }).(pulumi.StringOutput)
+// One of `"none"` or `"static"`. If unset (or set to the empty string `""`), the API will treat the field as if set to "none".
+func (o ClusterNodePoolNodeConfigKubeletConfigOutput) CpuManagerPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigKubeletConfig) *string { return v.CpuManagerPolicy }).(pulumi.StringPtrOutput)
 }
 
 // Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
@@ -31197,11 +31162,6 @@ func (o ClusterNodePoolNodeConfigKubeletConfigPtrOutput) CpuCfsQuota() pulumi.Bo
 // as a sequence of decimal numbers, each with optional fraction and a unit suffix,
 // such as `"300ms"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m",
 // "h". The value must be a positive duration.
-//
-// > Note: At the time of writing (2020/08/18) the GKE API rejects the `none`
-// value and accepts an invalid `default` value instead. While this remains true,
-// not specifying the `kubeletConfig` block should be the equivalent of specifying
-// `none`.
 func (o ClusterNodePoolNodeConfigKubeletConfigPtrOutput) CpuCfsQuotaPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfigKubeletConfig) *string {
 		if v == nil {
@@ -31213,13 +31173,13 @@ func (o ClusterNodePoolNodeConfigKubeletConfigPtrOutput) CpuCfsQuotaPeriod() pul
 
 // The CPU management policy on the node. See
 // [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
-// One of `"none"` or `"static"`. Defaults to `none` when `kubeletConfig` is unset.
+// One of `"none"` or `"static"`. If unset (or set to the empty string `""`), the API will treat the field as if set to "none".
 func (o ClusterNodePoolNodeConfigKubeletConfigPtrOutput) CpuManagerPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfigKubeletConfig) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.CpuManagerPolicy
+		return v.CpuManagerPolicy
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -40688,7 +40648,7 @@ type NodePoolNodeConfigKubeletConfig struct {
 	// Set the CPU CFS quota period value 'cpu.cfs_period_us'.
 	CpuCfsQuotaPeriod *string `pulumi:"cpuCfsQuotaPeriod"`
 	// Control the CPU management policy on the node.
-	CpuManagerPolicy string `pulumi:"cpuManagerPolicy"`
+	CpuManagerPolicy *string `pulumi:"cpuManagerPolicy"`
 	// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
 	InsecureKubeletReadonlyPortEnabled *string `pulumi:"insecureKubeletReadonlyPortEnabled"`
 	// Controls the maximum number of processes allowed to run in a pod.
@@ -40712,7 +40672,7 @@ type NodePoolNodeConfigKubeletConfigArgs struct {
 	// Set the CPU CFS quota period value 'cpu.cfs_period_us'.
 	CpuCfsQuotaPeriod pulumi.StringPtrInput `pulumi:"cpuCfsQuotaPeriod"`
 	// Control the CPU management policy on the node.
-	CpuManagerPolicy pulumi.StringInput `pulumi:"cpuManagerPolicy"`
+	CpuManagerPolicy pulumi.StringPtrInput `pulumi:"cpuManagerPolicy"`
 	// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
 	InsecureKubeletReadonlyPortEnabled pulumi.StringPtrInput `pulumi:"insecureKubeletReadonlyPortEnabled"`
 	// Controls the maximum number of processes allowed to run in a pod.
@@ -40807,8 +40767,8 @@ func (o NodePoolNodeConfigKubeletConfigOutput) CpuCfsQuotaPeriod() pulumi.String
 }
 
 // Control the CPU management policy on the node.
-func (o NodePoolNodeConfigKubeletConfigOutput) CpuManagerPolicy() pulumi.StringOutput {
-	return o.ApplyT(func(v NodePoolNodeConfigKubeletConfig) string { return v.CpuManagerPolicy }).(pulumi.StringOutput)
+func (o NodePoolNodeConfigKubeletConfigOutput) CpuManagerPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigKubeletConfig) *string { return v.CpuManagerPolicy }).(pulumi.StringPtrOutput)
 }
 
 // Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
@@ -40871,7 +40831,7 @@ func (o NodePoolNodeConfigKubeletConfigPtrOutput) CpuManagerPolicy() pulumi.Stri
 		if v == nil {
 			return nil
 		}
-		return &v.CpuManagerPolicy
+		return v.CpuManagerPolicy
 	}).(pulumi.StringPtrOutput)
 }
 

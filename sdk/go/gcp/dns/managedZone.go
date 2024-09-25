@@ -451,7 +451,7 @@ type ManagedZone struct {
 	DnsName pulumi.StringOutput `pulumi:"dnsName"`
 	// DNSSEC configuration
 	// Structure is documented below.
-	DnssecConfig ManagedZoneDnssecConfigPtrOutput `pulumi:"dnssecConfig"`
+	DnssecConfig ManagedZoneDnssecConfigOutput `pulumi:"dnssecConfig"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Set this true to delete all records in the zone.
@@ -898,8 +898,8 @@ func (o ManagedZoneOutput) DnsName() pulumi.StringOutput {
 
 // DNSSEC configuration
 // Structure is documented below.
-func (o ManagedZoneOutput) DnssecConfig() ManagedZoneDnssecConfigPtrOutput {
-	return o.ApplyT(func(v *ManagedZone) ManagedZoneDnssecConfigPtrOutput { return v.DnssecConfig }).(ManagedZoneDnssecConfigPtrOutput)
+func (o ManagedZoneOutput) DnssecConfig() ManagedZoneDnssecConfigOutput {
+	return o.ApplyT(func(v *ManagedZone) ManagedZoneDnssecConfigOutput { return v.DnssecConfig }).(ManagedZoneDnssecConfigOutput)
 }
 
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.

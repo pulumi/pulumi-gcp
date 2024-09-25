@@ -182,6 +182,14 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * Indicates whether the instance is protected against deletion.
+     */
+    public readonly deletionProtectionEnabled!: pulumi.Output<boolean | undefined>;
+    /**
+     * The reason for enabling deletion protection.
+     */
+    public readonly deletionProtectionReason!: pulumi.Output<string | undefined>;
+    /**
      * A description of the instance.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -262,6 +270,8 @@ export class Instance extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["deletionProtectionEnabled"] = state ? state.deletionProtectionEnabled : undefined;
+            resourceInputs["deletionProtectionReason"] = state ? state.deletionProtectionReason : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
@@ -287,6 +297,8 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.tier === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tier'");
             }
+            resourceInputs["deletionProtectionEnabled"] = args ? args.deletionProtectionEnabled : undefined;
+            resourceInputs["deletionProtectionReason"] = args ? args.deletionProtectionReason : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["fileShares"] = args ? args.fileShares : undefined;
             resourceInputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
@@ -318,6 +330,14 @@ export interface InstanceState {
      * Creation timestamp in RFC3339 text format.
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * Indicates whether the instance is protected against deletion.
+     */
+    deletionProtectionEnabled?: pulumi.Input<boolean>;
+    /**
+     * The reason for enabling deletion protection.
+     */
+    deletionProtectionReason?: pulumi.Input<string>;
     /**
      * A description of the instance.
      */
@@ -390,6 +410,14 @@ export interface InstanceState {
  * The set of arguments for constructing a Instance resource.
  */
 export interface InstanceArgs {
+    /**
+     * Indicates whether the instance is protected against deletion.
+     */
+    deletionProtectionEnabled?: pulumi.Input<boolean>;
+    /**
+     * The reason for enabling deletion protection.
+     */
+    deletionProtectionReason?: pulumi.Input<string>;
     /**
      * A description of the instance.
      */

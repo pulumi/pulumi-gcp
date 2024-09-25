@@ -16,20 +16,20 @@ var _ = internal.GetEnvOrDefault
 type ConnectionGithubConfig struct {
 	// Optional. GitHub App installation id.
 	AppInstallationId *string `pulumi:"appInstallationId"`
-	// Represents an OAuth token of the account that authorized the Connection,
-	// and associated metadata.
+	// Represents an OAuth token of the account that authorized the Connection,and
+	// associated metadata.
 	// Structure is documented below.
 	AuthorizerCredential *ConnectionGithubConfigAuthorizerCredential `pulumi:"authorizerCredential"`
-	// Required. Immutable. The GitHub Application that was installed to the GitHub user or
-	// organization.
+	// Required. Immutable. The GitHub Application that was installed to
+	// the GitHub user or organization.
 	// Possible values:
 	// GIT_HUB_APP_UNSPECIFIED
 	// DEVELOPER_CONNECT
-	// FIREBASE
+	// FIREBASE"
 	GithubApp string `pulumi:"githubApp"`
 	// (Output)
-	// Output only. The URI to navigate to in order to manage the installation associated
-	// with this GitHubConfig.
+	// Output only. The URI to navigate to in order to manage the installation
+	// associated with this GitHubConfig.
 	InstallationUri *string `pulumi:"installationUri"`
 }
 
@@ -47,20 +47,20 @@ type ConnectionGithubConfigInput interface {
 type ConnectionGithubConfigArgs struct {
 	// Optional. GitHub App installation id.
 	AppInstallationId pulumi.StringPtrInput `pulumi:"appInstallationId"`
-	// Represents an OAuth token of the account that authorized the Connection,
-	// and associated metadata.
+	// Represents an OAuth token of the account that authorized the Connection,and
+	// associated metadata.
 	// Structure is documented below.
 	AuthorizerCredential ConnectionGithubConfigAuthorizerCredentialPtrInput `pulumi:"authorizerCredential"`
-	// Required. Immutable. The GitHub Application that was installed to the GitHub user or
-	// organization.
+	// Required. Immutable. The GitHub Application that was installed to
+	// the GitHub user or organization.
 	// Possible values:
 	// GIT_HUB_APP_UNSPECIFIED
 	// DEVELOPER_CONNECT
-	// FIREBASE
+	// FIREBASE"
 	GithubApp pulumi.StringInput `pulumi:"githubApp"`
 	// (Output)
-	// Output only. The URI to navigate to in order to manage the installation associated
-	// with this GitHubConfig.
+	// Output only. The URI to navigate to in order to manage the installation
+	// associated with this GitHubConfig.
 	InstallationUri pulumi.StringPtrInput `pulumi:"installationUri"`
 }
 
@@ -146,8 +146,8 @@ func (o ConnectionGithubConfigOutput) AppInstallationId() pulumi.StringPtrOutput
 	return o.ApplyT(func(v ConnectionGithubConfig) *string { return v.AppInstallationId }).(pulumi.StringPtrOutput)
 }
 
-// Represents an OAuth token of the account that authorized the Connection,
-// and associated metadata.
+// Represents an OAuth token of the account that authorized the Connection,and
+// associated metadata.
 // Structure is documented below.
 func (o ConnectionGithubConfigOutput) AuthorizerCredential() ConnectionGithubConfigAuthorizerCredentialPtrOutput {
 	return o.ApplyT(func(v ConnectionGithubConfig) *ConnectionGithubConfigAuthorizerCredential {
@@ -155,19 +155,19 @@ func (o ConnectionGithubConfigOutput) AuthorizerCredential() ConnectionGithubCon
 	}).(ConnectionGithubConfigAuthorizerCredentialPtrOutput)
 }
 
-// Required. Immutable. The GitHub Application that was installed to the GitHub user or
-// organization.
+// Required. Immutable. The GitHub Application that was installed to
+// the GitHub user or organization.
 // Possible values:
 // GIT_HUB_APP_UNSPECIFIED
 // DEVELOPER_CONNECT
-// FIREBASE
+// FIREBASE"
 func (o ConnectionGithubConfigOutput) GithubApp() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionGithubConfig) string { return v.GithubApp }).(pulumi.StringOutput)
 }
 
 // (Output)
-// Output only. The URI to navigate to in order to manage the installation associated
-// with this GitHubConfig.
+// Output only. The URI to navigate to in order to manage the installation
+// associated with this GitHubConfig.
 func (o ConnectionGithubConfigOutput) InstallationUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionGithubConfig) *string { return v.InstallationUri }).(pulumi.StringPtrOutput)
 }
@@ -206,8 +206,8 @@ func (o ConnectionGithubConfigPtrOutput) AppInstallationId() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Represents an OAuth token of the account that authorized the Connection,
-// and associated metadata.
+// Represents an OAuth token of the account that authorized the Connection,and
+// associated metadata.
 // Structure is documented below.
 func (o ConnectionGithubConfigPtrOutput) AuthorizerCredential() ConnectionGithubConfigAuthorizerCredentialPtrOutput {
 	return o.ApplyT(func(v *ConnectionGithubConfig) *ConnectionGithubConfigAuthorizerCredential {
@@ -218,12 +218,12 @@ func (o ConnectionGithubConfigPtrOutput) AuthorizerCredential() ConnectionGithub
 	}).(ConnectionGithubConfigAuthorizerCredentialPtrOutput)
 }
 
-// Required. Immutable. The GitHub Application that was installed to the GitHub user or
-// organization.
+// Required. Immutable. The GitHub Application that was installed to
+// the GitHub user or organization.
 // Possible values:
 // GIT_HUB_APP_UNSPECIFIED
 // DEVELOPER_CONNECT
-// FIREBASE
+// FIREBASE"
 func (o ConnectionGithubConfigPtrOutput) GithubApp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionGithubConfig) *string {
 		if v == nil {
@@ -234,8 +234,8 @@ func (o ConnectionGithubConfigPtrOutput) GithubApp() pulumi.StringPtrOutput {
 }
 
 // (Output)
-// Output only. The URI to navigate to in order to manage the installation associated
-// with this GitHubConfig.
+// Output only. The URI to navigate to in order to manage the installation
+// associated with this GitHubConfig.
 func (o ConnectionGithubConfigPtrOutput) InstallationUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionGithubConfig) *string {
 		if v == nil {
@@ -246,8 +246,9 @@ func (o ConnectionGithubConfigPtrOutput) InstallationUri() pulumi.StringPtrOutpu
 }
 
 type ConnectionGithubConfigAuthorizerCredential struct {
-	// Required. A SecretManager resource containing the OAuth token that authorizes
-	// the connection. Format: `projects/*/secrets/*/versions/*`.
+	// Required. A SecretManager resource containing the OAuth token
+	// that authorizes the connection.
+	// Format: `projects/*/secrets/*/versions/*`.
 	OauthTokenSecretVersion string `pulumi:"oauthTokenSecretVersion"`
 	// (Output)
 	// Output only. The username associated with this token.
@@ -266,8 +267,9 @@ type ConnectionGithubConfigAuthorizerCredentialInput interface {
 }
 
 type ConnectionGithubConfigAuthorizerCredentialArgs struct {
-	// Required. A SecretManager resource containing the OAuth token that authorizes
-	// the connection. Format: `projects/*/secrets/*/versions/*`.
+	// Required. A SecretManager resource containing the OAuth token
+	// that authorizes the connection.
+	// Format: `projects/*/secrets/*/versions/*`.
 	OauthTokenSecretVersion pulumi.StringInput `pulumi:"oauthTokenSecretVersion"`
 	// (Output)
 	// Output only. The username associated with this token.
@@ -351,8 +353,9 @@ func (o ConnectionGithubConfigAuthorizerCredentialOutput) ToConnectionGithubConf
 	}).(ConnectionGithubConfigAuthorizerCredentialPtrOutput)
 }
 
-// Required. A SecretManager resource containing the OAuth token that authorizes
-// the connection. Format: `projects/*/secrets/*/versions/*`.
+// Required. A SecretManager resource containing the OAuth token
+// that authorizes the connection.
+// Format: `projects/*/secrets/*/versions/*`.
 func (o ConnectionGithubConfigAuthorizerCredentialOutput) OauthTokenSecretVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionGithubConfigAuthorizerCredential) string { return v.OauthTokenSecretVersion }).(pulumi.StringOutput)
 }
@@ -387,8 +390,9 @@ func (o ConnectionGithubConfigAuthorizerCredentialPtrOutput) Elem() ConnectionGi
 	}).(ConnectionGithubConfigAuthorizerCredentialOutput)
 }
 
-// Required. A SecretManager resource containing the OAuth token that authorizes
-// the connection. Format: `projects/*/secrets/*/versions/*`.
+// Required. A SecretManager resource containing the OAuth token
+// that authorizes the connection.
+// Format: `projects/*/secrets/*/versions/*`.
 func (o ConnectionGithubConfigAuthorizerCredentialPtrOutput) OauthTokenSecretVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionGithubConfigAuthorizerCredential) *string {
 		if v == nil {
@@ -410,11 +414,11 @@ func (o ConnectionGithubConfigAuthorizerCredentialPtrOutput) Username() pulumi.S
 }
 
 type ConnectionInstallationState struct {
-	// Output only. Link to follow for next action. Empty string if the installation is already
-	// complete.
+	// Output only. Link to follow for next action. Empty string if the
+	// installation is already complete.
 	ActionUri *string `pulumi:"actionUri"`
-	// Output only. Message of what the user should do next to continue the installation.
-	// Empty string if the installation is already complete.
+	// Output only. Message of what the user should do next to continue
+	// the installation.Empty string if the installation is already complete.
 	Message *string `pulumi:"message"`
 	// (Output)
 	// Output only. Current step of the installation process.
@@ -439,11 +443,11 @@ type ConnectionInstallationStateInput interface {
 }
 
 type ConnectionInstallationStateArgs struct {
-	// Output only. Link to follow for next action. Empty string if the installation is already
-	// complete.
+	// Output only. Link to follow for next action. Empty string if the
+	// installation is already complete.
 	ActionUri pulumi.StringPtrInput `pulumi:"actionUri"`
-	// Output only. Message of what the user should do next to continue the installation.
-	// Empty string if the installation is already complete.
+	// Output only. Message of what the user should do next to continue
+	// the installation.Empty string if the installation is already complete.
 	Message pulumi.StringPtrInput `pulumi:"message"`
 	// (Output)
 	// Output only. Current step of the installation process.
@@ -507,14 +511,14 @@ func (o ConnectionInstallationStateOutput) ToConnectionInstallationStateOutputWi
 	return o
 }
 
-// Output only. Link to follow for next action. Empty string if the installation is already
-// complete.
+// Output only. Link to follow for next action. Empty string if the
+// installation is already complete.
 func (o ConnectionInstallationStateOutput) ActionUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionInstallationState) *string { return v.ActionUri }).(pulumi.StringPtrOutput)
 }
 
-// Output only. Message of what the user should do next to continue the installation.
-// Empty string if the installation is already complete.
+// Output only. Message of what the user should do next to continue
+// the installation.Empty string if the installation is already complete.
 func (o ConnectionInstallationStateOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionInstallationState) *string { return v.Message }).(pulumi.StringPtrOutput)
 }

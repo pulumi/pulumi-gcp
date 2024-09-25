@@ -8,6 +8,7 @@ import typing
 from .event_threat_detection_custom_module import *
 from .folder_custom_module import *
 from .folder_notification_config import *
+from .folder_scc_big_query_export import *
 from .get_source_iam_policy import *
 from .get_v2_organization_source_iam_policy import *
 from .instance_iam_binding import *
@@ -20,8 +21,10 @@ from .management_project_security_health_analytics_custom_module import *
 from .mute_config import *
 from .notification_config import *
 from .organization_custom_module import *
+from .organization_scc_big_query_export import *
 from .project_custom_module import *
 from .project_notification_config import *
+from .project_scc_big_query_export import *
 from .source import *
 from .source_iam_binding import *
 from .source_iam_member import *
@@ -31,6 +34,7 @@ from .v2_folder_notification_config import *
 from .v2_folder_scc_big_query_export import *
 from .v2_organization_mute_config import *
 from .v2_organization_notification_config import *
+from .v2_organization_scc_big_query_export import *
 from .v2_organization_scc_big_query_exports import *
 from .v2_organization_source import *
 from .v2_organization_source_iam_binding import *

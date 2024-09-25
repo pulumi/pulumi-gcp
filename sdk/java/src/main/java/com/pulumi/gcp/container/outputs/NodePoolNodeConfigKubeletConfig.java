@@ -4,7 +4,6 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -28,7 +27,7 @@ public final class NodePoolNodeConfigKubeletConfig {
      * @return Control the CPU management policy on the node.
      * 
      */
-    private String cpuManagerPolicy;
+    private @Nullable String cpuManagerPolicy;
     /**
      * @return Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
      * 
@@ -59,8 +58,8 @@ public final class NodePoolNodeConfigKubeletConfig {
      * @return Control the CPU management policy on the node.
      * 
      */
-    public String cpuManagerPolicy() {
-        return this.cpuManagerPolicy;
+    public Optional<String> cpuManagerPolicy() {
+        return Optional.ofNullable(this.cpuManagerPolicy);
     }
     /**
      * @return Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
@@ -88,7 +87,7 @@ public final class NodePoolNodeConfigKubeletConfig {
     public static final class Builder {
         private @Nullable Boolean cpuCfsQuota;
         private @Nullable String cpuCfsQuotaPeriod;
-        private String cpuManagerPolicy;
+        private @Nullable String cpuManagerPolicy;
         private @Nullable String insecureKubeletReadonlyPortEnabled;
         private @Nullable Integer podPidsLimit;
         public Builder() {}
@@ -114,10 +113,8 @@ public final class NodePoolNodeConfigKubeletConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder cpuManagerPolicy(String cpuManagerPolicy) {
-            if (cpuManagerPolicy == null) {
-              throw new MissingRequiredPropertyException("NodePoolNodeConfigKubeletConfig", "cpuManagerPolicy");
-            }
+        public Builder cpuManagerPolicy(@Nullable String cpuManagerPolicy) {
+
             this.cpuManagerPolicy = cpuManagerPolicy;
             return this;
         }

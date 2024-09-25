@@ -36,6 +36,23 @@ public final class StoragePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Optional. True if the storage pool supports Auto Tiering enabled volumes. Default is false.
+     * Auto-tiering can be enabled after storage pool creation but it can&#39;t be disabled once enabled.
+     * 
+     */
+    @Import(name="allowAutoTiering")
+    private @Nullable Output<Boolean> allowAutoTiering;
+
+    /**
+     * @return Optional. True if the storage pool supports Auto Tiering enabled volumes. Default is false.
+     * Auto-tiering can be enabled after storage pool creation but it can&#39;t be disabled once enabled.
+     * 
+     */
+    public Optional<Output<Boolean>> allowAutoTiering() {
+        return Optional.ofNullable(this.allowAutoTiering);
+    }
+
+    /**
      * Capacity of the storage pool (in GiB).
      * 
      */
@@ -243,6 +260,7 @@ public final class StoragePoolArgs extends com.pulumi.resources.ResourceArgs {
 
     private StoragePoolArgs(StoragePoolArgs $) {
         this.activeDirectory = $.activeDirectory;
+        this.allowAutoTiering = $.allowAutoTiering;
         this.capacityGib = $.capacityGib;
         this.description = $.description;
         this.kmsConfig = $.kmsConfig;
@@ -296,6 +314,29 @@ public final class StoragePoolArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder activeDirectory(String activeDirectory) {
             return activeDirectory(Output.of(activeDirectory));
+        }
+
+        /**
+         * @param allowAutoTiering Optional. True if the storage pool supports Auto Tiering enabled volumes. Default is false.
+         * Auto-tiering can be enabled after storage pool creation but it can&#39;t be disabled once enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowAutoTiering(@Nullable Output<Boolean> allowAutoTiering) {
+            $.allowAutoTiering = allowAutoTiering;
+            return this;
+        }
+
+        /**
+         * @param allowAutoTiering Optional. True if the storage pool supports Auto Tiering enabled volumes. Default is false.
+         * Auto-tiering can be enabled after storage pool creation but it can&#39;t be disabled once enabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowAutoTiering(Boolean allowAutoTiering) {
+            return allowAutoTiering(Output.of(allowAutoTiering));
         }
 
         /**

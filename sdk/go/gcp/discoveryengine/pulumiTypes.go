@@ -2511,6 +2511,356 @@ func (o SearchEngineSearchEngineConfigPtrOutput) SearchTier() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+type TargetSiteFailureReason struct {
+	// Site verification state indicating the ownership and validity.
+	// Structure is documented below.
+	QuotaFailure *TargetSiteFailureReasonQuotaFailure `pulumi:"quotaFailure"`
+}
+
+// TargetSiteFailureReasonInput is an input type that accepts TargetSiteFailureReasonArgs and TargetSiteFailureReasonOutput values.
+// You can construct a concrete instance of `TargetSiteFailureReasonInput` via:
+//
+//	TargetSiteFailureReasonArgs{...}
+type TargetSiteFailureReasonInput interface {
+	pulumi.Input
+
+	ToTargetSiteFailureReasonOutput() TargetSiteFailureReasonOutput
+	ToTargetSiteFailureReasonOutputWithContext(context.Context) TargetSiteFailureReasonOutput
+}
+
+type TargetSiteFailureReasonArgs struct {
+	// Site verification state indicating the ownership and validity.
+	// Structure is documented below.
+	QuotaFailure TargetSiteFailureReasonQuotaFailurePtrInput `pulumi:"quotaFailure"`
+}
+
+func (TargetSiteFailureReasonArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetSiteFailureReason)(nil)).Elem()
+}
+
+func (i TargetSiteFailureReasonArgs) ToTargetSiteFailureReasonOutput() TargetSiteFailureReasonOutput {
+	return i.ToTargetSiteFailureReasonOutputWithContext(context.Background())
+}
+
+func (i TargetSiteFailureReasonArgs) ToTargetSiteFailureReasonOutputWithContext(ctx context.Context) TargetSiteFailureReasonOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetSiteFailureReasonOutput)
+}
+
+// TargetSiteFailureReasonArrayInput is an input type that accepts TargetSiteFailureReasonArray and TargetSiteFailureReasonArrayOutput values.
+// You can construct a concrete instance of `TargetSiteFailureReasonArrayInput` via:
+//
+//	TargetSiteFailureReasonArray{ TargetSiteFailureReasonArgs{...} }
+type TargetSiteFailureReasonArrayInput interface {
+	pulumi.Input
+
+	ToTargetSiteFailureReasonArrayOutput() TargetSiteFailureReasonArrayOutput
+	ToTargetSiteFailureReasonArrayOutputWithContext(context.Context) TargetSiteFailureReasonArrayOutput
+}
+
+type TargetSiteFailureReasonArray []TargetSiteFailureReasonInput
+
+func (TargetSiteFailureReasonArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TargetSiteFailureReason)(nil)).Elem()
+}
+
+func (i TargetSiteFailureReasonArray) ToTargetSiteFailureReasonArrayOutput() TargetSiteFailureReasonArrayOutput {
+	return i.ToTargetSiteFailureReasonArrayOutputWithContext(context.Background())
+}
+
+func (i TargetSiteFailureReasonArray) ToTargetSiteFailureReasonArrayOutputWithContext(ctx context.Context) TargetSiteFailureReasonArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetSiteFailureReasonArrayOutput)
+}
+
+type TargetSiteFailureReasonOutput struct{ *pulumi.OutputState }
+
+func (TargetSiteFailureReasonOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetSiteFailureReason)(nil)).Elem()
+}
+
+func (o TargetSiteFailureReasonOutput) ToTargetSiteFailureReasonOutput() TargetSiteFailureReasonOutput {
+	return o
+}
+
+func (o TargetSiteFailureReasonOutput) ToTargetSiteFailureReasonOutputWithContext(ctx context.Context) TargetSiteFailureReasonOutput {
+	return o
+}
+
+// Site verification state indicating the ownership and validity.
+// Structure is documented below.
+func (o TargetSiteFailureReasonOutput) QuotaFailure() TargetSiteFailureReasonQuotaFailurePtrOutput {
+	return o.ApplyT(func(v TargetSiteFailureReason) *TargetSiteFailureReasonQuotaFailure { return v.QuotaFailure }).(TargetSiteFailureReasonQuotaFailurePtrOutput)
+}
+
+type TargetSiteFailureReasonArrayOutput struct{ *pulumi.OutputState }
+
+func (TargetSiteFailureReasonArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TargetSiteFailureReason)(nil)).Elem()
+}
+
+func (o TargetSiteFailureReasonArrayOutput) ToTargetSiteFailureReasonArrayOutput() TargetSiteFailureReasonArrayOutput {
+	return o
+}
+
+func (o TargetSiteFailureReasonArrayOutput) ToTargetSiteFailureReasonArrayOutputWithContext(ctx context.Context) TargetSiteFailureReasonArrayOutput {
+	return o
+}
+
+func (o TargetSiteFailureReasonArrayOutput) Index(i pulumi.IntInput) TargetSiteFailureReasonOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TargetSiteFailureReason {
+		return vs[0].([]TargetSiteFailureReason)[vs[1].(int)]
+	}).(TargetSiteFailureReasonOutput)
+}
+
+type TargetSiteFailureReasonQuotaFailure struct {
+	// This number is an estimation on how much total quota this project
+	// needs to successfully complete indexing.
+	TotalRequiredQuota *int `pulumi:"totalRequiredQuota"`
+}
+
+// TargetSiteFailureReasonQuotaFailureInput is an input type that accepts TargetSiteFailureReasonQuotaFailureArgs and TargetSiteFailureReasonQuotaFailureOutput values.
+// You can construct a concrete instance of `TargetSiteFailureReasonQuotaFailureInput` via:
+//
+//	TargetSiteFailureReasonQuotaFailureArgs{...}
+type TargetSiteFailureReasonQuotaFailureInput interface {
+	pulumi.Input
+
+	ToTargetSiteFailureReasonQuotaFailureOutput() TargetSiteFailureReasonQuotaFailureOutput
+	ToTargetSiteFailureReasonQuotaFailureOutputWithContext(context.Context) TargetSiteFailureReasonQuotaFailureOutput
+}
+
+type TargetSiteFailureReasonQuotaFailureArgs struct {
+	// This number is an estimation on how much total quota this project
+	// needs to successfully complete indexing.
+	TotalRequiredQuota pulumi.IntPtrInput `pulumi:"totalRequiredQuota"`
+}
+
+func (TargetSiteFailureReasonQuotaFailureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetSiteFailureReasonQuotaFailure)(nil)).Elem()
+}
+
+func (i TargetSiteFailureReasonQuotaFailureArgs) ToTargetSiteFailureReasonQuotaFailureOutput() TargetSiteFailureReasonQuotaFailureOutput {
+	return i.ToTargetSiteFailureReasonQuotaFailureOutputWithContext(context.Background())
+}
+
+func (i TargetSiteFailureReasonQuotaFailureArgs) ToTargetSiteFailureReasonQuotaFailureOutputWithContext(ctx context.Context) TargetSiteFailureReasonQuotaFailureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetSiteFailureReasonQuotaFailureOutput)
+}
+
+func (i TargetSiteFailureReasonQuotaFailureArgs) ToTargetSiteFailureReasonQuotaFailurePtrOutput() TargetSiteFailureReasonQuotaFailurePtrOutput {
+	return i.ToTargetSiteFailureReasonQuotaFailurePtrOutputWithContext(context.Background())
+}
+
+func (i TargetSiteFailureReasonQuotaFailureArgs) ToTargetSiteFailureReasonQuotaFailurePtrOutputWithContext(ctx context.Context) TargetSiteFailureReasonQuotaFailurePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetSiteFailureReasonQuotaFailureOutput).ToTargetSiteFailureReasonQuotaFailurePtrOutputWithContext(ctx)
+}
+
+// TargetSiteFailureReasonQuotaFailurePtrInput is an input type that accepts TargetSiteFailureReasonQuotaFailureArgs, TargetSiteFailureReasonQuotaFailurePtr and TargetSiteFailureReasonQuotaFailurePtrOutput values.
+// You can construct a concrete instance of `TargetSiteFailureReasonQuotaFailurePtrInput` via:
+//
+//	        TargetSiteFailureReasonQuotaFailureArgs{...}
+//
+//	or:
+//
+//	        nil
+type TargetSiteFailureReasonQuotaFailurePtrInput interface {
+	pulumi.Input
+
+	ToTargetSiteFailureReasonQuotaFailurePtrOutput() TargetSiteFailureReasonQuotaFailurePtrOutput
+	ToTargetSiteFailureReasonQuotaFailurePtrOutputWithContext(context.Context) TargetSiteFailureReasonQuotaFailurePtrOutput
+}
+
+type targetSiteFailureReasonQuotaFailurePtrType TargetSiteFailureReasonQuotaFailureArgs
+
+func TargetSiteFailureReasonQuotaFailurePtr(v *TargetSiteFailureReasonQuotaFailureArgs) TargetSiteFailureReasonQuotaFailurePtrInput {
+	return (*targetSiteFailureReasonQuotaFailurePtrType)(v)
+}
+
+func (*targetSiteFailureReasonQuotaFailurePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TargetSiteFailureReasonQuotaFailure)(nil)).Elem()
+}
+
+func (i *targetSiteFailureReasonQuotaFailurePtrType) ToTargetSiteFailureReasonQuotaFailurePtrOutput() TargetSiteFailureReasonQuotaFailurePtrOutput {
+	return i.ToTargetSiteFailureReasonQuotaFailurePtrOutputWithContext(context.Background())
+}
+
+func (i *targetSiteFailureReasonQuotaFailurePtrType) ToTargetSiteFailureReasonQuotaFailurePtrOutputWithContext(ctx context.Context) TargetSiteFailureReasonQuotaFailurePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetSiteFailureReasonQuotaFailurePtrOutput)
+}
+
+type TargetSiteFailureReasonQuotaFailureOutput struct{ *pulumi.OutputState }
+
+func (TargetSiteFailureReasonQuotaFailureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetSiteFailureReasonQuotaFailure)(nil)).Elem()
+}
+
+func (o TargetSiteFailureReasonQuotaFailureOutput) ToTargetSiteFailureReasonQuotaFailureOutput() TargetSiteFailureReasonQuotaFailureOutput {
+	return o
+}
+
+func (o TargetSiteFailureReasonQuotaFailureOutput) ToTargetSiteFailureReasonQuotaFailureOutputWithContext(ctx context.Context) TargetSiteFailureReasonQuotaFailureOutput {
+	return o
+}
+
+func (o TargetSiteFailureReasonQuotaFailureOutput) ToTargetSiteFailureReasonQuotaFailurePtrOutput() TargetSiteFailureReasonQuotaFailurePtrOutput {
+	return o.ToTargetSiteFailureReasonQuotaFailurePtrOutputWithContext(context.Background())
+}
+
+func (o TargetSiteFailureReasonQuotaFailureOutput) ToTargetSiteFailureReasonQuotaFailurePtrOutputWithContext(ctx context.Context) TargetSiteFailureReasonQuotaFailurePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TargetSiteFailureReasonQuotaFailure) *TargetSiteFailureReasonQuotaFailure {
+		return &v
+	}).(TargetSiteFailureReasonQuotaFailurePtrOutput)
+}
+
+// This number is an estimation on how much total quota this project
+// needs to successfully complete indexing.
+func (o TargetSiteFailureReasonQuotaFailureOutput) TotalRequiredQuota() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TargetSiteFailureReasonQuotaFailure) *int { return v.TotalRequiredQuota }).(pulumi.IntPtrOutput)
+}
+
+type TargetSiteFailureReasonQuotaFailurePtrOutput struct{ *pulumi.OutputState }
+
+func (TargetSiteFailureReasonQuotaFailurePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TargetSiteFailureReasonQuotaFailure)(nil)).Elem()
+}
+
+func (o TargetSiteFailureReasonQuotaFailurePtrOutput) ToTargetSiteFailureReasonQuotaFailurePtrOutput() TargetSiteFailureReasonQuotaFailurePtrOutput {
+	return o
+}
+
+func (o TargetSiteFailureReasonQuotaFailurePtrOutput) ToTargetSiteFailureReasonQuotaFailurePtrOutputWithContext(ctx context.Context) TargetSiteFailureReasonQuotaFailurePtrOutput {
+	return o
+}
+
+func (o TargetSiteFailureReasonQuotaFailurePtrOutput) Elem() TargetSiteFailureReasonQuotaFailureOutput {
+	return o.ApplyT(func(v *TargetSiteFailureReasonQuotaFailure) TargetSiteFailureReasonQuotaFailure {
+		if v != nil {
+			return *v
+		}
+		var ret TargetSiteFailureReasonQuotaFailure
+		return ret
+	}).(TargetSiteFailureReasonQuotaFailureOutput)
+}
+
+// This number is an estimation on how much total quota this project
+// needs to successfully complete indexing.
+func (o TargetSiteFailureReasonQuotaFailurePtrOutput) TotalRequiredQuota() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TargetSiteFailureReasonQuotaFailure) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TotalRequiredQuota
+	}).(pulumi.IntPtrOutput)
+}
+
+type TargetSiteSiteVerificationInfo struct {
+	// Site verification state indicating the ownership and validity.
+	// Possible values are: `VERIFIED`, `UNVERIFIED`, `EXEMPTED`.
+	SiteVerificationState *string `pulumi:"siteVerificationState"`
+	// Latest site verification time.
+	VerifyTime *string `pulumi:"verifyTime"`
+}
+
+// TargetSiteSiteVerificationInfoInput is an input type that accepts TargetSiteSiteVerificationInfoArgs and TargetSiteSiteVerificationInfoOutput values.
+// You can construct a concrete instance of `TargetSiteSiteVerificationInfoInput` via:
+//
+//	TargetSiteSiteVerificationInfoArgs{...}
+type TargetSiteSiteVerificationInfoInput interface {
+	pulumi.Input
+
+	ToTargetSiteSiteVerificationInfoOutput() TargetSiteSiteVerificationInfoOutput
+	ToTargetSiteSiteVerificationInfoOutputWithContext(context.Context) TargetSiteSiteVerificationInfoOutput
+}
+
+type TargetSiteSiteVerificationInfoArgs struct {
+	// Site verification state indicating the ownership and validity.
+	// Possible values are: `VERIFIED`, `UNVERIFIED`, `EXEMPTED`.
+	SiteVerificationState pulumi.StringPtrInput `pulumi:"siteVerificationState"`
+	// Latest site verification time.
+	VerifyTime pulumi.StringPtrInput `pulumi:"verifyTime"`
+}
+
+func (TargetSiteSiteVerificationInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetSiteSiteVerificationInfo)(nil)).Elem()
+}
+
+func (i TargetSiteSiteVerificationInfoArgs) ToTargetSiteSiteVerificationInfoOutput() TargetSiteSiteVerificationInfoOutput {
+	return i.ToTargetSiteSiteVerificationInfoOutputWithContext(context.Background())
+}
+
+func (i TargetSiteSiteVerificationInfoArgs) ToTargetSiteSiteVerificationInfoOutputWithContext(ctx context.Context) TargetSiteSiteVerificationInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetSiteSiteVerificationInfoOutput)
+}
+
+// TargetSiteSiteVerificationInfoArrayInput is an input type that accepts TargetSiteSiteVerificationInfoArray and TargetSiteSiteVerificationInfoArrayOutput values.
+// You can construct a concrete instance of `TargetSiteSiteVerificationInfoArrayInput` via:
+//
+//	TargetSiteSiteVerificationInfoArray{ TargetSiteSiteVerificationInfoArgs{...} }
+type TargetSiteSiteVerificationInfoArrayInput interface {
+	pulumi.Input
+
+	ToTargetSiteSiteVerificationInfoArrayOutput() TargetSiteSiteVerificationInfoArrayOutput
+	ToTargetSiteSiteVerificationInfoArrayOutputWithContext(context.Context) TargetSiteSiteVerificationInfoArrayOutput
+}
+
+type TargetSiteSiteVerificationInfoArray []TargetSiteSiteVerificationInfoInput
+
+func (TargetSiteSiteVerificationInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TargetSiteSiteVerificationInfo)(nil)).Elem()
+}
+
+func (i TargetSiteSiteVerificationInfoArray) ToTargetSiteSiteVerificationInfoArrayOutput() TargetSiteSiteVerificationInfoArrayOutput {
+	return i.ToTargetSiteSiteVerificationInfoArrayOutputWithContext(context.Background())
+}
+
+func (i TargetSiteSiteVerificationInfoArray) ToTargetSiteSiteVerificationInfoArrayOutputWithContext(ctx context.Context) TargetSiteSiteVerificationInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetSiteSiteVerificationInfoArrayOutput)
+}
+
+type TargetSiteSiteVerificationInfoOutput struct{ *pulumi.OutputState }
+
+func (TargetSiteSiteVerificationInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetSiteSiteVerificationInfo)(nil)).Elem()
+}
+
+func (o TargetSiteSiteVerificationInfoOutput) ToTargetSiteSiteVerificationInfoOutput() TargetSiteSiteVerificationInfoOutput {
+	return o
+}
+
+func (o TargetSiteSiteVerificationInfoOutput) ToTargetSiteSiteVerificationInfoOutputWithContext(ctx context.Context) TargetSiteSiteVerificationInfoOutput {
+	return o
+}
+
+// Site verification state indicating the ownership and validity.
+// Possible values are: `VERIFIED`, `UNVERIFIED`, `EXEMPTED`.
+func (o TargetSiteSiteVerificationInfoOutput) SiteVerificationState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TargetSiteSiteVerificationInfo) *string { return v.SiteVerificationState }).(pulumi.StringPtrOutput)
+}
+
+// Latest site verification time.
+func (o TargetSiteSiteVerificationInfoOutput) VerifyTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TargetSiteSiteVerificationInfo) *string { return v.VerifyTime }).(pulumi.StringPtrOutput)
+}
+
+type TargetSiteSiteVerificationInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (TargetSiteSiteVerificationInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TargetSiteSiteVerificationInfo)(nil)).Elem()
+}
+
+func (o TargetSiteSiteVerificationInfoArrayOutput) ToTargetSiteSiteVerificationInfoArrayOutput() TargetSiteSiteVerificationInfoArrayOutput {
+	return o
+}
+
+func (o TargetSiteSiteVerificationInfoArrayOutput) ToTargetSiteSiteVerificationInfoArrayOutputWithContext(ctx context.Context) TargetSiteSiteVerificationInfoArrayOutput {
+	return o
+}
+
+func (o TargetSiteSiteVerificationInfoArrayOutput) Index(i pulumi.IntInput) TargetSiteSiteVerificationInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TargetSiteSiteVerificationInfo {
+		return vs[0].([]TargetSiteSiteVerificationInfo)[vs[1].(int)]
+	}).(TargetSiteSiteVerificationInfoOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ChatEngineChatEngineConfigInput)(nil)).Elem(), ChatEngineChatEngineConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ChatEngineChatEngineConfigPtrInput)(nil)).Elem(), ChatEngineChatEngineConfigArgs{})
@@ -2546,6 +2896,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SearchEngineCommonConfigPtrInput)(nil)).Elem(), SearchEngineCommonConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SearchEngineSearchEngineConfigInput)(nil)).Elem(), SearchEngineSearchEngineConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SearchEngineSearchEngineConfigPtrInput)(nil)).Elem(), SearchEngineSearchEngineConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetSiteFailureReasonInput)(nil)).Elem(), TargetSiteFailureReasonArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetSiteFailureReasonArrayInput)(nil)).Elem(), TargetSiteFailureReasonArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetSiteFailureReasonQuotaFailureInput)(nil)).Elem(), TargetSiteFailureReasonQuotaFailureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetSiteFailureReasonQuotaFailurePtrInput)(nil)).Elem(), TargetSiteFailureReasonQuotaFailureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetSiteSiteVerificationInfoInput)(nil)).Elem(), TargetSiteSiteVerificationInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetSiteSiteVerificationInfoArrayInput)(nil)).Elem(), TargetSiteSiteVerificationInfoArray{})
 	pulumi.RegisterOutputType(ChatEngineChatEngineConfigOutput{})
 	pulumi.RegisterOutputType(ChatEngineChatEngineConfigPtrOutput{})
 	pulumi.RegisterOutputType(ChatEngineChatEngineConfigAgentCreationConfigOutput{})
@@ -2580,4 +2936,10 @@ func init() {
 	pulumi.RegisterOutputType(SearchEngineCommonConfigPtrOutput{})
 	pulumi.RegisterOutputType(SearchEngineSearchEngineConfigOutput{})
 	pulumi.RegisterOutputType(SearchEngineSearchEngineConfigPtrOutput{})
+	pulumi.RegisterOutputType(TargetSiteFailureReasonOutput{})
+	pulumi.RegisterOutputType(TargetSiteFailureReasonArrayOutput{})
+	pulumi.RegisterOutputType(TargetSiteFailureReasonQuotaFailureOutput{})
+	pulumi.RegisterOutputType(TargetSiteFailureReasonQuotaFailurePtrOutput{})
+	pulumi.RegisterOutputType(TargetSiteSiteVerificationInfoOutput{})
+	pulumi.RegisterOutputType(TargetSiteSiteVerificationInfoArrayOutput{})
 }

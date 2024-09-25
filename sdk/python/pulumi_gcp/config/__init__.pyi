@@ -303,6 +303,8 @@ scopes: Optional[str]
 
 secretManagerCustomEndpoint: Optional[str]
 
+secretManagerRegionalCustomEndpoint: Optional[str]
+
 secureSourceManagerCustomEndpoint: Optional[str]
 
 securityCenterCustomEndpoint: Optional[str]

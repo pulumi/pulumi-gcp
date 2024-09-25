@@ -122,14 +122,14 @@ export class Connection extends pulumi.CustomResource {
 
     /**
      * Optional. Allows clients to store small amounts of arbitrary data.
+     *
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Required. Id of the requesting object
-     * If auto-generating Id server-side, remove this field and
-     * connectionId from the methodSignature of Create RPC
+     * Required. Id of the requesting object. If auto-generating Id server-side,
+     * remove this field and connectionId from the methodSignature of Create RPC.
      *
      *
      * - - -
@@ -144,9 +144,7 @@ export class Connection extends pulumi.CustomResource {
      */
     public /*out*/ readonly deleteTime!: pulumi.Output<string>;
     /**
-     * Optional. If disabled is set to true, functionality is disabled for this connection.
-     * Repository based API methods and webhooks processing for repositories in
-     * this connection will be disabled.
+     * Optional. If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
      */
     public readonly disabled!: pulumi.Output<boolean | undefined>;
     public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
@@ -155,8 +153,8 @@ export class Connection extends pulumi.CustomResource {
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Optional. This checksum is computed by the server based on the value of other
-     * fields, and may be sent on update and delete requests to ensure the
+     * Optional. This checksum is computed by the server based on the value
+     * of other fields, and may be sent on update and delete requests to ensure the
      * client has an up-to-date value before proceeding.
      */
     public readonly etag!: pulumi.Output<string | undefined>;
@@ -166,20 +164,22 @@ export class Connection extends pulumi.CustomResource {
      */
     public readonly githubConfig!: pulumi.Output<outputs.developerconnect.ConnectionGithubConfig | undefined>;
     /**
-     * Describes stage and necessary actions to be taken by the
-     * user to complete the installation. Used for GitHub and GitHub Enterprise
-     * based connections.
+     * Describes stage and necessary actions to be taken by the user to complete the installation.
+     * Used for GitHub and GitHub Enterprise based connections.
      * Structure is documented below.
      */
     public /*out*/ readonly installationStates!: pulumi.Output<outputs.developerconnect.ConnectionInstallationState[]>;
     /**
      * Optional. Labels as key value pairs
+     *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
+     * Resource ID segment making up resource `name`. It identifies the resource
+     * within its parent collection as described in https://google.aip.dev/122. See documentation
+     * for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -198,8 +198,8 @@ export class Connection extends pulumi.CustomResource {
      */
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Output only. Set to true when the connection is being set up or updated in the
-     * background.
+     * Output only. Set to true when the connection is being set up or updated
+     * in the background.
      */
     public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
     /**
@@ -282,14 +282,14 @@ export class Connection extends pulumi.CustomResource {
 export interface ConnectionState {
     /**
      * Optional. Allows clients to store small amounts of arbitrary data.
+     *
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Required. Id of the requesting object
-     * If auto-generating Id server-side, remove this field and
-     * connectionId from the methodSignature of Create RPC
+     * Required. Id of the requesting object. If auto-generating Id server-side,
+     * remove this field and connectionId from the methodSignature of Create RPC.
      *
      *
      * - - -
@@ -304,9 +304,7 @@ export interface ConnectionState {
      */
     deleteTime?: pulumi.Input<string>;
     /**
-     * Optional. If disabled is set to true, functionality is disabled for this connection.
-     * Repository based API methods and webhooks processing for repositories in
-     * this connection will be disabled.
+     * Optional. If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
      */
     disabled?: pulumi.Input<boolean>;
     effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -315,8 +313,8 @@ export interface ConnectionState {
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Optional. This checksum is computed by the server based on the value of other
-     * fields, and may be sent on update and delete requests to ensure the
+     * Optional. This checksum is computed by the server based on the value
+     * of other fields, and may be sent on update and delete requests to ensure the
      * client has an up-to-date value before proceeding.
      */
     etag?: pulumi.Input<string>;
@@ -326,20 +324,22 @@ export interface ConnectionState {
      */
     githubConfig?: pulumi.Input<inputs.developerconnect.ConnectionGithubConfig>;
     /**
-     * Describes stage and necessary actions to be taken by the
-     * user to complete the installation. Used for GitHub and GitHub Enterprise
-     * based connections.
+     * Describes stage and necessary actions to be taken by the user to complete the installation.
+     * Used for GitHub and GitHub Enterprise based connections.
      * Structure is documented below.
      */
     installationStates?: pulumi.Input<pulumi.Input<inputs.developerconnect.ConnectionInstallationState>[]>;
     /**
      * Optional. Labels as key value pairs
+     *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
+     * Resource ID segment making up resource `name`. It identifies the resource
+     * within its parent collection as described in https://google.aip.dev/122. See documentation
+     * for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
      */
     location?: pulumi.Input<string>;
     /**
@@ -358,8 +358,8 @@ export interface ConnectionState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Output only. Set to true when the connection is being set up or updated in the
-     * background.
+     * Output only. Set to true when the connection is being set up or updated
+     * in the background.
      */
     reconciling?: pulumi.Input<boolean>;
     /**
@@ -378,28 +378,26 @@ export interface ConnectionState {
 export interface ConnectionArgs {
     /**
      * Optional. Allows clients to store small amounts of arbitrary data.
+     *
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Required. Id of the requesting object
-     * If auto-generating Id server-side, remove this field and
-     * connectionId from the methodSignature of Create RPC
+     * Required. Id of the requesting object. If auto-generating Id server-side,
+     * remove this field and connectionId from the methodSignature of Create RPC.
      *
      *
      * - - -
      */
     connectionId: pulumi.Input<string>;
     /**
-     * Optional. If disabled is set to true, functionality is disabled for this connection.
-     * Repository based API methods and webhooks processing for repositories in
-     * this connection will be disabled.
+     * Optional. If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
      */
     disabled?: pulumi.Input<boolean>;
     /**
-     * Optional. This checksum is computed by the server based on the value of other
-     * fields, and may be sent on update and delete requests to ensure the
+     * Optional. This checksum is computed by the server based on the value
+     * of other fields, and may be sent on update and delete requests to ensure the
      * client has an up-to-date value before proceeding.
      */
     etag?: pulumi.Input<string>;
@@ -410,12 +408,15 @@ export interface ConnectionArgs {
     githubConfig?: pulumi.Input<inputs.developerconnect.ConnectionGithubConfig>;
     /**
      * Optional. Labels as key value pairs
+     *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
+     * Resource ID segment making up resource `name`. It identifies the resource
+     * within its parent collection as described in https://google.aip.dev/122. See documentation
+     * for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
      */
     location: pulumi.Input<string>;
     /**

@@ -165,6 +165,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly runtimeConfigCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly runtimeconfigCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly secretManagerCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly secretManagerRegionalCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly secureSourceManagerCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly securityCenterCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly securityCenterManagementCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -350,6 +351,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["runtimeconfigCustomEndpoint"] = args ? args.runtimeconfigCustomEndpoint : undefined;
             resourceInputs["scopes"] = pulumi.output(args ? args.scopes : undefined).apply(JSON.stringify);
             resourceInputs["secretManagerCustomEndpoint"] = args ? args.secretManagerCustomEndpoint : undefined;
+            resourceInputs["secretManagerRegionalCustomEndpoint"] = args ? args.secretManagerRegionalCustomEndpoint : undefined;
             resourceInputs["secureSourceManagerCustomEndpoint"] = args ? args.secureSourceManagerCustomEndpoint : undefined;
             resourceInputs["securityCenterCustomEndpoint"] = args ? args.securityCenterCustomEndpoint : undefined;
             resourceInputs["securityCenterManagementCustomEndpoint"] = args ? args.securityCenterManagementCustomEndpoint : undefined;
@@ -536,6 +538,7 @@ export interface ProviderArgs {
     runtimeconfigCustomEndpoint?: pulumi.Input<string>;
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
     secretManagerCustomEndpoint?: pulumi.Input<string>;
+    secretManagerRegionalCustomEndpoint?: pulumi.Input<string>;
     secureSourceManagerCustomEndpoint?: pulumi.Input<string>;
     securityCenterCustomEndpoint?: pulumi.Input<string>;
     securityCenterManagementCustomEndpoint?: pulumi.Input<string>;

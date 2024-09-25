@@ -1040,6 +1040,13 @@ namespace Pulumi.Gcp
             set => _secretManagerCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _secretManagerRegionalCustomEndpoint = new __Value<string?>(() => __config.Get("secretManagerRegionalCustomEndpoint"));
+        public static string? SecretManagerRegionalCustomEndpoint
+        {
+            get => _secretManagerRegionalCustomEndpoint.Get();
+            set => _secretManagerRegionalCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _secureSourceManagerCustomEndpoint = new __Value<string?>(() => __config.Get("secureSourceManagerCustomEndpoint"));
         public static string? SecureSourceManagerCustomEndpoint
         {

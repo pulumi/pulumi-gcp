@@ -110,6 +110,16 @@ type AttachedDisk struct {
 	// self link. If only the name is used then `zone` and `project` must be defined
 	// as properties on the resource or provider.
 	Instance pulumi.StringOutput `pulumi:"instance"`
+	// The disk interface used for attaching this disk.
+	//
+	// This field is only used for specific cases, please don't specify
+	// this field without advice from Google. Not specifying the field
+	// will allow the the server to assign the correct interface.
+	//
+	// Possible values:
+	// "SCSI"
+	// "NVME"
+	Interface pulumi.StringPtrOutput `pulumi:"interface"`
 	// The mode in which to attach this disk, either READ_WRITE or
 	// READ_ONLY. If not specified, the default is to attach the disk in
 	// READ_WRITE mode.
@@ -181,6 +191,16 @@ type attachedDiskState struct {
 	// self link. If only the name is used then `zone` and `project` must be defined
 	// as properties on the resource or provider.
 	Instance *string `pulumi:"instance"`
+	// The disk interface used for attaching this disk.
+	//
+	// This field is only used for specific cases, please don't specify
+	// this field without advice from Google. Not specifying the field
+	// will allow the the server to assign the correct interface.
+	//
+	// Possible values:
+	// "SCSI"
+	// "NVME"
+	Interface *string `pulumi:"interface"`
 	// The mode in which to attach this disk, either READ_WRITE or
 	// READ_ONLY. If not specified, the default is to attach the disk in
 	// READ_WRITE mode.
@@ -217,6 +237,16 @@ type AttachedDiskState struct {
 	// self link. If only the name is used then `zone` and `project` must be defined
 	// as properties on the resource or provider.
 	Instance pulumi.StringPtrInput
+	// The disk interface used for attaching this disk.
+	//
+	// This field is only used for specific cases, please don't specify
+	// this field without advice from Google. Not specifying the field
+	// will allow the the server to assign the correct interface.
+	//
+	// Possible values:
+	// "SCSI"
+	// "NVME"
+	Interface pulumi.StringPtrInput
 	// The mode in which to attach this disk, either READ_WRITE or
 	// READ_ONLY. If not specified, the default is to attach the disk in
 	// READ_WRITE mode.
@@ -257,6 +287,16 @@ type attachedDiskArgs struct {
 	// self link. If only the name is used then `zone` and `project` must be defined
 	// as properties on the resource or provider.
 	Instance string `pulumi:"instance"`
+	// The disk interface used for attaching this disk.
+	//
+	// This field is only used for specific cases, please don't specify
+	// this field without advice from Google. Not specifying the field
+	// will allow the the server to assign the correct interface.
+	//
+	// Possible values:
+	// "SCSI"
+	// "NVME"
+	Interface *string `pulumi:"interface"`
 	// The mode in which to attach this disk, either READ_WRITE or
 	// READ_ONLY. If not specified, the default is to attach the disk in
 	// READ_WRITE mode.
@@ -294,6 +334,16 @@ type AttachedDiskArgs struct {
 	// self link. If only the name is used then `zone` and `project` must be defined
 	// as properties on the resource or provider.
 	Instance pulumi.StringInput
+	// The disk interface used for attaching this disk.
+	//
+	// This field is only used for specific cases, please don't specify
+	// this field without advice from Google. Not specifying the field
+	// will allow the the server to assign the correct interface.
+	//
+	// Possible values:
+	// "SCSI"
+	// "NVME"
+	Interface pulumi.StringPtrInput
 	// The mode in which to attach this disk, either READ_WRITE or
 	// READ_ONLY. If not specified, the default is to attach the disk in
 	// READ_WRITE mode.
@@ -423,6 +473,19 @@ func (o AttachedDiskOutput) Disk() pulumi.StringOutput {
 // as properties on the resource or provider.
 func (o AttachedDiskOutput) Instance() pulumi.StringOutput {
 	return o.ApplyT(func(v *AttachedDisk) pulumi.StringOutput { return v.Instance }).(pulumi.StringOutput)
+}
+
+// The disk interface used for attaching this disk.
+//
+// This field is only used for specific cases, please don't specify
+// this field without advice from Google. Not specifying the field
+// will allow the the server to assign the correct interface.
+//
+// Possible values:
+// "SCSI"
+// "NVME"
+func (o AttachedDiskOutput) Interface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AttachedDisk) pulumi.StringPtrOutput { return v.Interface }).(pulumi.StringPtrOutput)
 }
 
 // The mode in which to attach this disk, either READ_WRITE or

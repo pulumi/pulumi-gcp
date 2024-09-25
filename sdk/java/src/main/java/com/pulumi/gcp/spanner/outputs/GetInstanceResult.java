@@ -20,6 +20,7 @@ public final class GetInstanceResult {
     private List<GetInstanceAutoscalingConfig> autoscalingConfigs;
     private @Nullable String config;
     private @Nullable String displayName;
+    private String edition;
     private Map<String,String> effectiveLabels;
     private Boolean forceDestroy;
     /**
@@ -44,6 +45,9 @@ public final class GetInstanceResult {
     }
     public Optional<String> displayName() {
         return Optional.ofNullable(this.displayName);
+    }
+    public String edition() {
+        return this.edition;
     }
     public Map<String,String> effectiveLabels() {
         return this.effectiveLabels;
@@ -92,6 +96,7 @@ public final class GetInstanceResult {
         private List<GetInstanceAutoscalingConfig> autoscalingConfigs;
         private @Nullable String config;
         private @Nullable String displayName;
+        private String edition;
         private Map<String,String> effectiveLabels;
         private Boolean forceDestroy;
         private String id;
@@ -108,6 +113,7 @@ public final class GetInstanceResult {
     	      this.autoscalingConfigs = defaults.autoscalingConfigs;
     	      this.config = defaults.config;
     	      this.displayName = defaults.displayName;
+    	      this.edition = defaults.edition;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.forceDestroy = defaults.forceDestroy;
     	      this.id = defaults.id;
@@ -141,6 +147,14 @@ public final class GetInstanceResult {
         public Builder displayName(@Nullable String displayName) {
 
             this.displayName = displayName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder edition(String edition) {
+            if (edition == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "edition");
+            }
+            this.edition = edition;
             return this;
         }
         @CustomType.Setter
@@ -226,6 +240,7 @@ public final class GetInstanceResult {
             _resultValue.autoscalingConfigs = autoscalingConfigs;
             _resultValue.config = config;
             _resultValue.displayName = displayName;
+            _resultValue.edition = edition;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.forceDestroy = forceDestroy;
             _resultValue.id = id;

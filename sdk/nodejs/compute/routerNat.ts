@@ -9,6 +9,9 @@ import * as utilities from "../utilities";
 /**
  * A NAT service created in a router.
  *
+ * > **Note:** Recreating a `gcp.compute.Address` that is being used by `gcp.compute.RouterNat` will give a `resourceInUseByAnotherResource` error.
+ * Use `lifecycle.create_before_destroy` on this address resource to avoid this type of error as shown in the Manual Ips example.
+ *
  * To get more information about RouterNat, see:
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
@@ -48,44 +51,6 @@ import * as utilities from "../utilities";
  *         enable: true,
  *         filter: "ERRORS_ONLY",
  *     },
- * });
- * ```
- * ### Router Nat Manual Ips
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const net = new gcp.compute.Network("net", {name: "my-network"});
- * const subnet = new gcp.compute.Subnetwork("subnet", {
- *     name: "my-subnetwork",
- *     network: net.id,
- *     ipCidrRange: "10.0.0.0/16",
- *     region: "us-central1",
- * });
- * const router = new gcp.compute.Router("router", {
- *     name: "my-router",
- *     region: subnet.region,
- *     network: net.id,
- * });
- * const address: gcp.compute.Address[] = [];
- * for (const range = {value: 0}; range.value < 2; range.value++) {
- *     address.push(new gcp.compute.Address(`address-${range.value}`, {
- *         name: `nat-manual-ip-${range.value}`,
- *         region: subnet.region,
- *     }));
- * }
- * const natManual = new gcp.compute.RouterNat("nat_manual", {
- *     name: "my-router-nat",
- *     router: router.name,
- *     region: router.region,
- *     natIpAllocateOption: "MANUAL_ONLY",
- *     natIps: address.map(__item => __item.selfLink),
- *     sourceSubnetworkIpRangesToNat: "LIST_OF_SUBNETWORKS",
- *     subnetworks: [{
- *         name: subnet.id,
- *         sourceIpRangesToNats: ["ALL_IP_RANGES"],
- *     }],
  * });
  * ```
  * ### Router Nat Rules
@@ -330,6 +295,9 @@ export class RouterNat extends pulumi.CustomResource {
     /**
      * Self-links of NAT IPs. Only valid if natIpAllocateOption
      * is set to MANUAL_ONLY.
+     * If this field is used alongside with a count created list of address resources `google_compute_address.foobar.*.self_link`,
+     * the access level resource for the address resource must have a `lifecycle` block with `createBeforeDestroy = true` so
+     * the number of resources can be increased/decreased without triggering the `resourceInUseByAnotherResource` error.
      */
     public readonly natIps!: pulumi.Output<string[] | undefined>;
     /**
@@ -545,6 +513,9 @@ export interface RouterNatState {
     /**
      * Self-links of NAT IPs. Only valid if natIpAllocateOption
      * is set to MANUAL_ONLY.
+     * If this field is used alongside with a count created list of address resources `google_compute_address.foobar.*.self_link`,
+     * the access level resource for the address resource must have a `lifecycle` block with `createBeforeDestroy = true` so
+     * the number of resources can be increased/decreased without triggering the `resourceInUseByAnotherResource` error.
      */
     natIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -688,6 +659,9 @@ export interface RouterNatArgs {
     /**
      * Self-links of NAT IPs. Only valid if natIpAllocateOption
      * is set to MANUAL_ONLY.
+     * If this field is used alongside with a count created list of address resources `google_compute_address.foobar.*.self_link`,
+     * the access level resource for the address resource must have a `lifecycle` block with `createBeforeDestroy = true` so
+     * the number of resources can be increased/decreased without triggering the `resourceInUseByAnotherResource` error.
      */
     natIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**

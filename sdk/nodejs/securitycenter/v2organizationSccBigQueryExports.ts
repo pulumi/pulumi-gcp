@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * > **Warning:** `gcp.securitycenter.V2OrganizationSccBigQueryExports` is deprecated and will be removed in a future major release. Use `gcp.securitycenter.V2OrganizationSccBigQueryExport` instead.
+ *
  * A Cloud Security Command Center (Cloud SCC) Big Query Export Config.
  * It represents exporting Security Command Center data, including assets, findings, and security marks
  * using gcloud scc bqexports
@@ -20,7 +22,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * ### Scc V2 Organization Big Query Export Config Basic
+ * ### Scc V2 Organization Big Query Exports Config Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

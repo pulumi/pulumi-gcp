@@ -20,6 +20,11 @@ export type FolderNotificationConfig = import("./folderNotificationConfig").Fold
 export const FolderNotificationConfig: typeof import("./folderNotificationConfig").FolderNotificationConfig = null as any;
 utilities.lazyLoad(exports, ["FolderNotificationConfig"], () => require("./folderNotificationConfig"));
 
+export { FolderSccBigQueryExportArgs, FolderSccBigQueryExportState } from "./folderSccBigQueryExport";
+export type FolderSccBigQueryExport = import("./folderSccBigQueryExport").FolderSccBigQueryExport;
+export const FolderSccBigQueryExport: typeof import("./folderSccBigQueryExport").FolderSccBigQueryExport = null as any;
+utilities.lazyLoad(exports, ["FolderSccBigQueryExport"], () => require("./folderSccBigQueryExport"));
+
 export { GetSourceIamPolicyArgs, GetSourceIamPolicyResult, GetSourceIamPolicyOutputArgs } from "./getSourceIamPolicy";
 export const getSourceIamPolicy: typeof import("./getSourceIamPolicy").getSourceIamPolicy = null as any;
 export const getSourceIamPolicyOutput: typeof import("./getSourceIamPolicy").getSourceIamPolicyOutput = null as any;
@@ -80,6 +85,11 @@ export type OrganizationCustomModule = import("./organizationCustomModule").Orga
 export const OrganizationCustomModule: typeof import("./organizationCustomModule").OrganizationCustomModule = null as any;
 utilities.lazyLoad(exports, ["OrganizationCustomModule"], () => require("./organizationCustomModule"));
 
+export { OrganizationSccBigQueryExportArgs, OrganizationSccBigQueryExportState } from "./organizationSccBigQueryExport";
+export type OrganizationSccBigQueryExport = import("./organizationSccBigQueryExport").OrganizationSccBigQueryExport;
+export const OrganizationSccBigQueryExport: typeof import("./organizationSccBigQueryExport").OrganizationSccBigQueryExport = null as any;
+utilities.lazyLoad(exports, ["OrganizationSccBigQueryExport"], () => require("./organizationSccBigQueryExport"));
+
 export { ProjectCustomModuleArgs, ProjectCustomModuleState } from "./projectCustomModule";
 export type ProjectCustomModule = import("./projectCustomModule").ProjectCustomModule;
 export const ProjectCustomModule: typeof import("./projectCustomModule").ProjectCustomModule = null as any;
@@ -89,6 +99,11 @@ export { ProjectNotificationConfigArgs, ProjectNotificationConfigState } from ".
 export type ProjectNotificationConfig = import("./projectNotificationConfig").ProjectNotificationConfig;
 export const ProjectNotificationConfig: typeof import("./projectNotificationConfig").ProjectNotificationConfig = null as any;
 utilities.lazyLoad(exports, ["ProjectNotificationConfig"], () => require("./projectNotificationConfig"));
+
+export { ProjectSccBigQueryExportArgs, ProjectSccBigQueryExportState } from "./projectSccBigQueryExport";
+export type ProjectSccBigQueryExport = import("./projectSccBigQueryExport").ProjectSccBigQueryExport;
+export const ProjectSccBigQueryExport: typeof import("./projectSccBigQueryExport").ProjectSccBigQueryExport = null as any;
+utilities.lazyLoad(exports, ["ProjectSccBigQueryExport"], () => require("./projectSccBigQueryExport"));
 
 export { SourceArgs, SourceState } from "./source";
 export type Source = import("./source").Source;
@@ -134,6 +149,11 @@ export { V2OrganizationNotificationConfigArgs, V2OrganizationNotificationConfigS
 export type V2OrganizationNotificationConfig = import("./v2organizationNotificationConfig").V2OrganizationNotificationConfig;
 export const V2OrganizationNotificationConfig: typeof import("./v2organizationNotificationConfig").V2OrganizationNotificationConfig = null as any;
 utilities.lazyLoad(exports, ["V2OrganizationNotificationConfig"], () => require("./v2organizationNotificationConfig"));
+
+export { V2OrganizationSccBigQueryExportArgs, V2OrganizationSccBigQueryExportState } from "./v2organizationSccBigQueryExport";
+export type V2OrganizationSccBigQueryExport = import("./v2organizationSccBigQueryExport").V2OrganizationSccBigQueryExport;
+export const V2OrganizationSccBigQueryExport: typeof import("./v2organizationSccBigQueryExport").V2OrganizationSccBigQueryExport = null as any;
+utilities.lazyLoad(exports, ["V2OrganizationSccBigQueryExport"], () => require("./v2organizationSccBigQueryExport"));
 
 export { V2OrganizationSccBigQueryExportsArgs, V2OrganizationSccBigQueryExportsState } from "./v2organizationSccBigQueryExports";
 export type V2OrganizationSccBigQueryExports = import("./v2organizationSccBigQueryExports").V2OrganizationSccBigQueryExports;
@@ -186,6 +206,8 @@ const _module = {
                 return new FolderCustomModule(name, <any>undefined, { urn })
             case "gcp:securitycenter/folderNotificationConfig:FolderNotificationConfig":
                 return new FolderNotificationConfig(name, <any>undefined, { urn })
+            case "gcp:securitycenter/folderSccBigQueryExport:FolderSccBigQueryExport":
+                return new FolderSccBigQueryExport(name, <any>undefined, { urn })
             case "gcp:securitycenter/instanceIamBinding:InstanceIamBinding":
                 return new InstanceIamBinding(name, <any>undefined, { urn })
             case "gcp:securitycenter/instanceIamMember:InstanceIamMember":
@@ -206,10 +228,14 @@ const _module = {
                 return new NotificationConfig(name, <any>undefined, { urn })
             case "gcp:securitycenter/organizationCustomModule:OrganizationCustomModule":
                 return new OrganizationCustomModule(name, <any>undefined, { urn })
+            case "gcp:securitycenter/organizationSccBigQueryExport:OrganizationSccBigQueryExport":
+                return new OrganizationSccBigQueryExport(name, <any>undefined, { urn })
             case "gcp:securitycenter/projectCustomModule:ProjectCustomModule":
                 return new ProjectCustomModule(name, <any>undefined, { urn })
             case "gcp:securitycenter/projectNotificationConfig:ProjectNotificationConfig":
                 return new ProjectNotificationConfig(name, <any>undefined, { urn })
+            case "gcp:securitycenter/projectSccBigQueryExport:ProjectSccBigQueryExport":
+                return new ProjectSccBigQueryExport(name, <any>undefined, { urn })
             case "gcp:securitycenter/source:Source":
                 return new Source(name, <any>undefined, { urn })
             case "gcp:securitycenter/sourceIamBinding:SourceIamBinding":
@@ -228,6 +254,8 @@ const _module = {
                 return new V2OrganizationMuteConfig(name, <any>undefined, { urn })
             case "gcp:securitycenter/v2OrganizationNotificationConfig:V2OrganizationNotificationConfig":
                 return new V2OrganizationNotificationConfig(name, <any>undefined, { urn })
+            case "gcp:securitycenter/v2OrganizationSccBigQueryExport:V2OrganizationSccBigQueryExport":
+                return new V2OrganizationSccBigQueryExport(name, <any>undefined, { urn })
             case "gcp:securitycenter/v2OrganizationSccBigQueryExports:V2OrganizationSccBigQueryExports":
                 return new V2OrganizationSccBigQueryExports(name, <any>undefined, { urn })
             case "gcp:securitycenter/v2OrganizationSource:V2OrganizationSource":
@@ -252,6 +280,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/eventThreatDetectionCustomModule", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/folderCustomModule", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/folderNotificationConfig", _module)
+pulumi.runtime.registerResourceModule("gcp", "securitycenter/folderSccBigQueryExport", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/instanceIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/instanceIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/instanceIamPolicy", _module)
@@ -262,8 +291,10 @@ pulumi.runtime.registerResourceModule("gcp", "securitycenter/managementProjectSe
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/muteConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/notificationConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/organizationCustomModule", _module)
+pulumi.runtime.registerResourceModule("gcp", "securitycenter/organizationSccBigQueryExport", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/projectCustomModule", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/projectNotificationConfig", _module)
+pulumi.runtime.registerResourceModule("gcp", "securitycenter/projectSccBigQueryExport", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/source", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/sourceIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/sourceIamMember", _module)
@@ -273,6 +304,7 @@ pulumi.runtime.registerResourceModule("gcp", "securitycenter/v2FolderNotificatio
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/v2FolderSccBigQueryExport", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/v2OrganizationMuteConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/v2OrganizationNotificationConfig", _module)
+pulumi.runtime.registerResourceModule("gcp", "securitycenter/v2OrganizationSccBigQueryExport", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/v2OrganizationSccBigQueryExports", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/v2OrganizationSource", _module)
 pulumi.runtime.registerResourceModule("gcp", "securitycenter/v2OrganizationSourceIamBinding", _module)

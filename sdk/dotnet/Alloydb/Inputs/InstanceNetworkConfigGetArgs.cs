@@ -28,6 +28,12 @@ namespace Pulumi.Gcp.Alloydb.Inputs
         }
 
         /// <summary>
+        /// Enabling outbound public ip for the instance.
+        /// </summary>
+        [Input("enableOutboundPublicIp")]
+        public Input<bool>? EnableOutboundPublicIp { get; set; }
+
+        /// <summary>
         /// Enabling public ip for the instance. If a user wishes to disable this,
         /// please also clear the list of the authorized external networks set on
         /// the same instance.

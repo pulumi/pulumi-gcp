@@ -19,26 +19,26 @@ public final class ConnectionGithubConfig {
      */
     private @Nullable String appInstallationId;
     /**
-     * @return Represents an OAuth token of the account that authorized the Connection,
-     * and associated metadata.
+     * @return Represents an OAuth token of the account that authorized the Connection,and
+     * associated metadata.
      * Structure is documented below.
      * 
      */
     private @Nullable ConnectionGithubConfigAuthorizerCredential authorizerCredential;
     /**
-     * @return Required. Immutable. The GitHub Application that was installed to the GitHub user or
-     * organization.
+     * @return Required. Immutable. The GitHub Application that was installed to
+     * the GitHub user or organization.
      * Possible values:
      * GIT_HUB_APP_UNSPECIFIED
      * DEVELOPER_CONNECT
-     * FIREBASE
+     * FIREBASE&#34;
      * 
      */
     private String githubApp;
     /**
      * @return (Output)
-     * Output only. The URI to navigate to in order to manage the installation associated
-     * with this GitHubConfig.
+     * Output only. The URI to navigate to in order to manage the installation
+     * associated with this GitHubConfig.
      * 
      */
     private @Nullable String installationUri;
@@ -52,8 +52,8 @@ public final class ConnectionGithubConfig {
         return Optional.ofNullable(this.appInstallationId);
     }
     /**
-     * @return Represents an OAuth token of the account that authorized the Connection,
-     * and associated metadata.
+     * @return Represents an OAuth token of the account that authorized the Connection,and
+     * associated metadata.
      * Structure is documented below.
      * 
      */
@@ -61,12 +61,12 @@ public final class ConnectionGithubConfig {
         return Optional.ofNullable(this.authorizerCredential);
     }
     /**
-     * @return Required. Immutable. The GitHub Application that was installed to the GitHub user or
-     * organization.
+     * @return Required. Immutable. The GitHub Application that was installed to
+     * the GitHub user or organization.
      * Possible values:
      * GIT_HUB_APP_UNSPECIFIED
      * DEVELOPER_CONNECT
-     * FIREBASE
+     * FIREBASE&#34;
      * 
      */
     public String githubApp() {
@@ -74,8 +74,8 @@ public final class ConnectionGithubConfig {
     }
     /**
      * @return (Output)
-     * Output only. The URI to navigate to in order to manage the installation associated
-     * with this GitHubConfig.
+     * Output only. The URI to navigate to in order to manage the installation
+     * associated with this GitHubConfig.
      * 
      */
     public Optional<String> installationUri() {

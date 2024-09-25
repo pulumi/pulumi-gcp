@@ -52,19 +52,19 @@ class ConnectionGithubConfig(dict):
                  authorizer_credential: Optional['outputs.ConnectionGithubConfigAuthorizerCredential'] = None,
                  installation_uri: Optional[str] = None):
         """
-        :param str github_app: Required. Immutable. The GitHub Application that was installed to the GitHub user or
-               organization.
+        :param str github_app: Required. Immutable. The GitHub Application that was installed to
+               the GitHub user or organization.
                Possible values:
                GIT_HUB_APP_UNSPECIFIED
                DEVELOPER_CONNECT
-               FIREBASE
+               FIREBASE"
         :param str app_installation_id: Optional. GitHub App installation id.
-        :param 'ConnectionGithubConfigAuthorizerCredentialArgs' authorizer_credential: Represents an OAuth token of the account that authorized the Connection,
-               and associated metadata.
+        :param 'ConnectionGithubConfigAuthorizerCredentialArgs' authorizer_credential: Represents an OAuth token of the account that authorized the Connection,and
+               associated metadata.
                Structure is documented below.
         :param str installation_uri: (Output)
-               Output only. The URI to navigate to in order to manage the installation associated
-               with this GitHubConfig.
+               Output only. The URI to navigate to in order to manage the installation
+               associated with this GitHubConfig.
         """
         pulumi.set(__self__, "github_app", github_app)
         if app_installation_id is not None:
@@ -78,12 +78,12 @@ class ConnectionGithubConfig(dict):
     @pulumi.getter(name="githubApp")
     def github_app(self) -> str:
         """
-        Required. Immutable. The GitHub Application that was installed to the GitHub user or
-        organization.
+        Required. Immutable. The GitHub Application that was installed to
+        the GitHub user or organization.
         Possible values:
         GIT_HUB_APP_UNSPECIFIED
         DEVELOPER_CONNECT
-        FIREBASE
+        FIREBASE"
         """
         return pulumi.get(self, "github_app")
 
@@ -99,8 +99,8 @@ class ConnectionGithubConfig(dict):
     @pulumi.getter(name="authorizerCredential")
     def authorizer_credential(self) -> Optional['outputs.ConnectionGithubConfigAuthorizerCredential']:
         """
-        Represents an OAuth token of the account that authorized the Connection,
-        and associated metadata.
+        Represents an OAuth token of the account that authorized the Connection,and
+        associated metadata.
         Structure is documented below.
         """
         return pulumi.get(self, "authorizer_credential")
@@ -110,8 +110,8 @@ class ConnectionGithubConfig(dict):
     def installation_uri(self) -> Optional[str]:
         """
         (Output)
-        Output only. The URI to navigate to in order to manage the installation associated
-        with this GitHubConfig.
+        Output only. The URI to navigate to in order to manage the installation
+        associated with this GitHubConfig.
         """
         return pulumi.get(self, "installation_uri")
 
@@ -139,8 +139,9 @@ class ConnectionGithubConfigAuthorizerCredential(dict):
                  oauth_token_secret_version: str,
                  username: Optional[str] = None):
         """
-        :param str oauth_token_secret_version: Required. A SecretManager resource containing the OAuth token that authorizes
-               the connection. Format: `projects/*/secrets/*/versions/*`.
+        :param str oauth_token_secret_version: Required. A SecretManager resource containing the OAuth token
+               that authorizes the connection.
+               Format: `projects/*/secrets/*/versions/*`.
         :param str username: (Output)
                Output only. The username associated with this token.
         """
@@ -152,8 +153,9 @@ class ConnectionGithubConfigAuthorizerCredential(dict):
     @pulumi.getter(name="oauthTokenSecretVersion")
     def oauth_token_secret_version(self) -> str:
         """
-        Required. A SecretManager resource containing the OAuth token that authorizes
-        the connection. Format: `projects/*/secrets/*/versions/*`.
+        Required. A SecretManager resource containing the OAuth token
+        that authorizes the connection.
+        Format: `projects/*/secrets/*/versions/*`.
         """
         return pulumi.get(self, "oauth_token_secret_version")
 
@@ -191,10 +193,10 @@ class ConnectionInstallationState(dict):
                  message: Optional[str] = None,
                  stage: Optional[str] = None):
         """
-        :param str action_uri: Output only. Link to follow for next action. Empty string if the installation is already
-               complete.
-        :param str message: Output only. Message of what the user should do next to continue the installation.
-               Empty string if the installation is already complete.
+        :param str action_uri: Output only. Link to follow for next action. Empty string if the
+               installation is already complete.
+        :param str message: Output only. Message of what the user should do next to continue
+               the installation.Empty string if the installation is already complete.
         :param str stage: (Output)
                Output only. Current step of the installation process.
                Possible values:
@@ -215,8 +217,8 @@ class ConnectionInstallationState(dict):
     @pulumi.getter(name="actionUri")
     def action_uri(self) -> Optional[str]:
         """
-        Output only. Link to follow for next action. Empty string if the installation is already
-        complete.
+        Output only. Link to follow for next action. Empty string if the
+        installation is already complete.
         """
         return pulumi.get(self, "action_uri")
 
@@ -224,8 +226,8 @@ class ConnectionInstallationState(dict):
     @pulumi.getter
     def message(self) -> Optional[str]:
         """
-        Output only. Message of what the user should do next to continue the installation.
-        Empty string if the installation is already complete.
+        Output only. Message of what the user should do next to continue
+        the installation.Empty string if the installation is already complete.
         """
         return pulumi.get(self, "message")
 

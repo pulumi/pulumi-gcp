@@ -15,6 +15,7 @@ import com.pulumi.gcp.netapp.outputs.VolumeExportPolicy;
 import com.pulumi.gcp.netapp.outputs.VolumeMountOption;
 import com.pulumi.gcp.netapp.outputs.VolumeRestoreParameters;
 import com.pulumi.gcp.netapp.outputs.VolumeSnapshotPolicy;
+import com.pulumi.gcp.netapp.outputs.VolumeTieringPolicy;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -165,6 +166,20 @@ public class Volume extends com.pulumi.resources.CustomResource {
      */
     public Output<String> capacityGib() {
         return this.capacityGib;
+    }
+    /**
+     * Output only. Size of the volume cold tier data in GiB.
+     * 
+     */
+    @Export(name="coldTierSizeGib", refs={String.class}, tree="[0]")
+    private Output<String> coldTierSizeGib;
+
+    /**
+     * @return Output only. Size of the volume cold tier data in GiB.
+     * 
+     */
+    public Output<String> coldTierSizeGib() {
+        return this.coldTierSizeGib;
     }
     /**
      * Create time of the volume. A timestamp in RFC3339 UTC &#34;Zulu&#34; format. Examples: &#34;2023-06-22T09:13:01.617Z&#34;.
@@ -669,6 +684,22 @@ public class Volume extends com.pulumi.resources.CustomResource {
      */
     public Output<String> storagePool() {
         return this.storagePool;
+    }
+    /**
+     * Tiering policy for the volume.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="tieringPolicy", refs={VolumeTieringPolicy.class}, tree="[0]")
+    private Output</* @Nullable */ VolumeTieringPolicy> tieringPolicy;
+
+    /**
+     * @return Tiering policy for the volume.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<VolumeTieringPolicy>> tieringPolicy() {
+        return Codegen.optional(this.tieringPolicy);
     }
     /**
      * Unix permission the mount point will be created with. Default is 0770. Applicable for UNIX security style volumes only.

@@ -3366,6 +3366,151 @@ func (o Hl7StoreParserConfigPtrOutput) Version() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type WorkspaceSettings struct {
+	// Project IDs for data projects hosted in a workspace.
+	//
+	// ***
+	DataProjectIds []string `pulumi:"dataProjectIds"`
+}
+
+// WorkspaceSettingsInput is an input type that accepts WorkspaceSettingsArgs and WorkspaceSettingsOutput values.
+// You can construct a concrete instance of `WorkspaceSettingsInput` via:
+//
+//	WorkspaceSettingsArgs{...}
+type WorkspaceSettingsInput interface {
+	pulumi.Input
+
+	ToWorkspaceSettingsOutput() WorkspaceSettingsOutput
+	ToWorkspaceSettingsOutputWithContext(context.Context) WorkspaceSettingsOutput
+}
+
+type WorkspaceSettingsArgs struct {
+	// Project IDs for data projects hosted in a workspace.
+	//
+	// ***
+	DataProjectIds pulumi.StringArrayInput `pulumi:"dataProjectIds"`
+}
+
+func (WorkspaceSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceSettings)(nil)).Elem()
+}
+
+func (i WorkspaceSettingsArgs) ToWorkspaceSettingsOutput() WorkspaceSettingsOutput {
+	return i.ToWorkspaceSettingsOutputWithContext(context.Background())
+}
+
+func (i WorkspaceSettingsArgs) ToWorkspaceSettingsOutputWithContext(ctx context.Context) WorkspaceSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceSettingsOutput)
+}
+
+func (i WorkspaceSettingsArgs) ToWorkspaceSettingsPtrOutput() WorkspaceSettingsPtrOutput {
+	return i.ToWorkspaceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i WorkspaceSettingsArgs) ToWorkspaceSettingsPtrOutputWithContext(ctx context.Context) WorkspaceSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceSettingsOutput).ToWorkspaceSettingsPtrOutputWithContext(ctx)
+}
+
+// WorkspaceSettingsPtrInput is an input type that accepts WorkspaceSettingsArgs, WorkspaceSettingsPtr and WorkspaceSettingsPtrOutput values.
+// You can construct a concrete instance of `WorkspaceSettingsPtrInput` via:
+//
+//	        WorkspaceSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkspaceSettingsPtrInput interface {
+	pulumi.Input
+
+	ToWorkspaceSettingsPtrOutput() WorkspaceSettingsPtrOutput
+	ToWorkspaceSettingsPtrOutputWithContext(context.Context) WorkspaceSettingsPtrOutput
+}
+
+type workspaceSettingsPtrType WorkspaceSettingsArgs
+
+func WorkspaceSettingsPtr(v *WorkspaceSettingsArgs) WorkspaceSettingsPtrInput {
+	return (*workspaceSettingsPtrType)(v)
+}
+
+func (*workspaceSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkspaceSettings)(nil)).Elem()
+}
+
+func (i *workspaceSettingsPtrType) ToWorkspaceSettingsPtrOutput() WorkspaceSettingsPtrOutput {
+	return i.ToWorkspaceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *workspaceSettingsPtrType) ToWorkspaceSettingsPtrOutputWithContext(ctx context.Context) WorkspaceSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceSettingsPtrOutput)
+}
+
+type WorkspaceSettingsOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceSettings)(nil)).Elem()
+}
+
+func (o WorkspaceSettingsOutput) ToWorkspaceSettingsOutput() WorkspaceSettingsOutput {
+	return o
+}
+
+func (o WorkspaceSettingsOutput) ToWorkspaceSettingsOutputWithContext(ctx context.Context) WorkspaceSettingsOutput {
+	return o
+}
+
+func (o WorkspaceSettingsOutput) ToWorkspaceSettingsPtrOutput() WorkspaceSettingsPtrOutput {
+	return o.ToWorkspaceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o WorkspaceSettingsOutput) ToWorkspaceSettingsPtrOutputWithContext(ctx context.Context) WorkspaceSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkspaceSettings) *WorkspaceSettings {
+		return &v
+	}).(WorkspaceSettingsPtrOutput)
+}
+
+// Project IDs for data projects hosted in a workspace.
+//
+// ***
+func (o WorkspaceSettingsOutput) DataProjectIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkspaceSettings) []string { return v.DataProjectIds }).(pulumi.StringArrayOutput)
+}
+
+type WorkspaceSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkspaceSettings)(nil)).Elem()
+}
+
+func (o WorkspaceSettingsPtrOutput) ToWorkspaceSettingsPtrOutput() WorkspaceSettingsPtrOutput {
+	return o
+}
+
+func (o WorkspaceSettingsPtrOutput) ToWorkspaceSettingsPtrOutputWithContext(ctx context.Context) WorkspaceSettingsPtrOutput {
+	return o
+}
+
+func (o WorkspaceSettingsPtrOutput) Elem() WorkspaceSettingsOutput {
+	return o.ApplyT(func(v *WorkspaceSettings) WorkspaceSettings {
+		if v != nil {
+			return *v
+		}
+		var ret WorkspaceSettings
+		return ret
+	}).(WorkspaceSettingsOutput)
+}
+
+// Project IDs for data projects hosted in a workspace.
+//
+// ***
+func (o WorkspaceSettingsPtrOutput) DataProjectIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkspaceSettings) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DataProjectIds
+	}).(pulumi.StringArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConsentStoreIamBindingConditionInput)(nil)).Elem(), ConsentStoreIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConsentStoreIamBindingConditionPtrInput)(nil)).Elem(), ConsentStoreIamBindingConditionArgs{})
@@ -3409,6 +3554,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*Hl7StoreNotificationConfigsArrayInput)(nil)).Elem(), Hl7StoreNotificationConfigsArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Hl7StoreParserConfigInput)(nil)).Elem(), Hl7StoreParserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Hl7StoreParserConfigPtrInput)(nil)).Elem(), Hl7StoreParserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkspaceSettingsInput)(nil)).Elem(), WorkspaceSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkspaceSettingsPtrInput)(nil)).Elem(), WorkspaceSettingsArgs{})
 	pulumi.RegisterOutputType(ConsentStoreIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(ConsentStoreIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(ConsentStoreIamMemberConditionOutput{})
@@ -3451,4 +3598,6 @@ func init() {
 	pulumi.RegisterOutputType(Hl7StoreNotificationConfigsArrayOutput{})
 	pulumi.RegisterOutputType(Hl7StoreParserConfigOutput{})
 	pulumi.RegisterOutputType(Hl7StoreParserConfigPtrOutput{})
+	pulumi.RegisterOutputType(WorkspaceSettingsOutput{})
+	pulumi.RegisterOutputType(WorkspaceSettingsPtrOutput{})
 }

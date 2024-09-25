@@ -16,16 +16,16 @@ public final class ConnectionInstallationStateArgs extends com.pulumi.resources.
     public static final ConnectionInstallationStateArgs Empty = new ConnectionInstallationStateArgs();
 
     /**
-     * Output only. Link to follow for next action. Empty string if the installation is already
-     * complete.
+     * Output only. Link to follow for next action. Empty string if the
+     * installation is already complete.
      * 
      */
     @Import(name="actionUri")
     private @Nullable Output<String> actionUri;
 
     /**
-     * @return Output only. Link to follow for next action. Empty string if the installation is already
-     * complete.
+     * @return Output only. Link to follow for next action. Empty string if the
+     * installation is already complete.
      * 
      */
     public Optional<Output<String>> actionUri() {
@@ -33,16 +33,16 @@ public final class ConnectionInstallationStateArgs extends com.pulumi.resources.
     }
 
     /**
-     * Output only. Message of what the user should do next to continue the installation.
-     * Empty string if the installation is already complete.
+     * Output only. Message of what the user should do next to continue
+     * the installation.Empty string if the installation is already complete.
      * 
      */
     @Import(name="message")
     private @Nullable Output<String> message;
 
     /**
-     * @return Output only. Message of what the user should do next to continue the installation.
-     * Empty string if the installation is already complete.
+     * @return Output only. Message of what the user should do next to continue
+     * the installation.Empty string if the installation is already complete.
      * 
      */
     public Optional<Output<String>> message() {
@@ -105,8 +105,8 @@ public final class ConnectionInstallationStateArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param actionUri Output only. Link to follow for next action. Empty string if the installation is already
-         * complete.
+         * @param actionUri Output only. Link to follow for next action. Empty string if the
+         * installation is already complete.
          * 
          * @return builder
          * 
@@ -117,8 +117,8 @@ public final class ConnectionInstallationStateArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param actionUri Output only. Link to follow for next action. Empty string if the installation is already
-         * complete.
+         * @param actionUri Output only. Link to follow for next action. Empty string if the
+         * installation is already complete.
          * 
          * @return builder
          * 
@@ -128,8 +128,8 @@ public final class ConnectionInstallationStateArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param message Output only. Message of what the user should do next to continue the installation.
-         * Empty string if the installation is already complete.
+         * @param message Output only. Message of what the user should do next to continue
+         * the installation.Empty string if the installation is already complete.
          * 
          * @return builder
          * 
@@ -140,8 +140,8 @@ public final class ConnectionInstallationStateArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param message Output only. Message of what the user should do next to continue the installation.
-         * Empty string if the installation is already complete.
+         * @param message Output only. Message of what the user should do next to continue
+         * the installation.Empty string if the installation is already complete.
          * 
          * @return builder
          * 

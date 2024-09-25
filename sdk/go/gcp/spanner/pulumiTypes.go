@@ -13,6 +13,560 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type BackupScheduleFullBackupSpec struct {
+}
+
+// BackupScheduleFullBackupSpecInput is an input type that accepts BackupScheduleFullBackupSpecArgs and BackupScheduleFullBackupSpecOutput values.
+// You can construct a concrete instance of `BackupScheduleFullBackupSpecInput` via:
+//
+//	BackupScheduleFullBackupSpecArgs{...}
+type BackupScheduleFullBackupSpecInput interface {
+	pulumi.Input
+
+	ToBackupScheduleFullBackupSpecOutput() BackupScheduleFullBackupSpecOutput
+	ToBackupScheduleFullBackupSpecOutputWithContext(context.Context) BackupScheduleFullBackupSpecOutput
+}
+
+type BackupScheduleFullBackupSpecArgs struct {
+}
+
+func (BackupScheduleFullBackupSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupScheduleFullBackupSpec)(nil)).Elem()
+}
+
+func (i BackupScheduleFullBackupSpecArgs) ToBackupScheduleFullBackupSpecOutput() BackupScheduleFullBackupSpecOutput {
+	return i.ToBackupScheduleFullBackupSpecOutputWithContext(context.Background())
+}
+
+func (i BackupScheduleFullBackupSpecArgs) ToBackupScheduleFullBackupSpecOutputWithContext(ctx context.Context) BackupScheduleFullBackupSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupScheduleFullBackupSpecOutput)
+}
+
+func (i BackupScheduleFullBackupSpecArgs) ToBackupScheduleFullBackupSpecPtrOutput() BackupScheduleFullBackupSpecPtrOutput {
+	return i.ToBackupScheduleFullBackupSpecPtrOutputWithContext(context.Background())
+}
+
+func (i BackupScheduleFullBackupSpecArgs) ToBackupScheduleFullBackupSpecPtrOutputWithContext(ctx context.Context) BackupScheduleFullBackupSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupScheduleFullBackupSpecOutput).ToBackupScheduleFullBackupSpecPtrOutputWithContext(ctx)
+}
+
+// BackupScheduleFullBackupSpecPtrInput is an input type that accepts BackupScheduleFullBackupSpecArgs, BackupScheduleFullBackupSpecPtr and BackupScheduleFullBackupSpecPtrOutput values.
+// You can construct a concrete instance of `BackupScheduleFullBackupSpecPtrInput` via:
+//
+//	        BackupScheduleFullBackupSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type BackupScheduleFullBackupSpecPtrInput interface {
+	pulumi.Input
+
+	ToBackupScheduleFullBackupSpecPtrOutput() BackupScheduleFullBackupSpecPtrOutput
+	ToBackupScheduleFullBackupSpecPtrOutputWithContext(context.Context) BackupScheduleFullBackupSpecPtrOutput
+}
+
+type backupScheduleFullBackupSpecPtrType BackupScheduleFullBackupSpecArgs
+
+func BackupScheduleFullBackupSpecPtr(v *BackupScheduleFullBackupSpecArgs) BackupScheduleFullBackupSpecPtrInput {
+	return (*backupScheduleFullBackupSpecPtrType)(v)
+}
+
+func (*backupScheduleFullBackupSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupScheduleFullBackupSpec)(nil)).Elem()
+}
+
+func (i *backupScheduleFullBackupSpecPtrType) ToBackupScheduleFullBackupSpecPtrOutput() BackupScheduleFullBackupSpecPtrOutput {
+	return i.ToBackupScheduleFullBackupSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *backupScheduleFullBackupSpecPtrType) ToBackupScheduleFullBackupSpecPtrOutputWithContext(ctx context.Context) BackupScheduleFullBackupSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupScheduleFullBackupSpecPtrOutput)
+}
+
+type BackupScheduleFullBackupSpecOutput struct{ *pulumi.OutputState }
+
+func (BackupScheduleFullBackupSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupScheduleFullBackupSpec)(nil)).Elem()
+}
+
+func (o BackupScheduleFullBackupSpecOutput) ToBackupScheduleFullBackupSpecOutput() BackupScheduleFullBackupSpecOutput {
+	return o
+}
+
+func (o BackupScheduleFullBackupSpecOutput) ToBackupScheduleFullBackupSpecOutputWithContext(ctx context.Context) BackupScheduleFullBackupSpecOutput {
+	return o
+}
+
+func (o BackupScheduleFullBackupSpecOutput) ToBackupScheduleFullBackupSpecPtrOutput() BackupScheduleFullBackupSpecPtrOutput {
+	return o.ToBackupScheduleFullBackupSpecPtrOutputWithContext(context.Background())
+}
+
+func (o BackupScheduleFullBackupSpecOutput) ToBackupScheduleFullBackupSpecPtrOutputWithContext(ctx context.Context) BackupScheduleFullBackupSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackupScheduleFullBackupSpec) *BackupScheduleFullBackupSpec {
+		return &v
+	}).(BackupScheduleFullBackupSpecPtrOutput)
+}
+
+type BackupScheduleFullBackupSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (BackupScheduleFullBackupSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupScheduleFullBackupSpec)(nil)).Elem()
+}
+
+func (o BackupScheduleFullBackupSpecPtrOutput) ToBackupScheduleFullBackupSpecPtrOutput() BackupScheduleFullBackupSpecPtrOutput {
+	return o
+}
+
+func (o BackupScheduleFullBackupSpecPtrOutput) ToBackupScheduleFullBackupSpecPtrOutputWithContext(ctx context.Context) BackupScheduleFullBackupSpecPtrOutput {
+	return o
+}
+
+func (o BackupScheduleFullBackupSpecPtrOutput) Elem() BackupScheduleFullBackupSpecOutput {
+	return o.ApplyT(func(v *BackupScheduleFullBackupSpec) BackupScheduleFullBackupSpec {
+		if v != nil {
+			return *v
+		}
+		var ret BackupScheduleFullBackupSpec
+		return ret
+	}).(BackupScheduleFullBackupSpecOutput)
+}
+
+type BackupScheduleIncrementalBackupSpec struct {
+}
+
+// BackupScheduleIncrementalBackupSpecInput is an input type that accepts BackupScheduleIncrementalBackupSpecArgs and BackupScheduleIncrementalBackupSpecOutput values.
+// You can construct a concrete instance of `BackupScheduleIncrementalBackupSpecInput` via:
+//
+//	BackupScheduleIncrementalBackupSpecArgs{...}
+type BackupScheduleIncrementalBackupSpecInput interface {
+	pulumi.Input
+
+	ToBackupScheduleIncrementalBackupSpecOutput() BackupScheduleIncrementalBackupSpecOutput
+	ToBackupScheduleIncrementalBackupSpecOutputWithContext(context.Context) BackupScheduleIncrementalBackupSpecOutput
+}
+
+type BackupScheduleIncrementalBackupSpecArgs struct {
+}
+
+func (BackupScheduleIncrementalBackupSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupScheduleIncrementalBackupSpec)(nil)).Elem()
+}
+
+func (i BackupScheduleIncrementalBackupSpecArgs) ToBackupScheduleIncrementalBackupSpecOutput() BackupScheduleIncrementalBackupSpecOutput {
+	return i.ToBackupScheduleIncrementalBackupSpecOutputWithContext(context.Background())
+}
+
+func (i BackupScheduleIncrementalBackupSpecArgs) ToBackupScheduleIncrementalBackupSpecOutputWithContext(ctx context.Context) BackupScheduleIncrementalBackupSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupScheduleIncrementalBackupSpecOutput)
+}
+
+func (i BackupScheduleIncrementalBackupSpecArgs) ToBackupScheduleIncrementalBackupSpecPtrOutput() BackupScheduleIncrementalBackupSpecPtrOutput {
+	return i.ToBackupScheduleIncrementalBackupSpecPtrOutputWithContext(context.Background())
+}
+
+func (i BackupScheduleIncrementalBackupSpecArgs) ToBackupScheduleIncrementalBackupSpecPtrOutputWithContext(ctx context.Context) BackupScheduleIncrementalBackupSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupScheduleIncrementalBackupSpecOutput).ToBackupScheduleIncrementalBackupSpecPtrOutputWithContext(ctx)
+}
+
+// BackupScheduleIncrementalBackupSpecPtrInput is an input type that accepts BackupScheduleIncrementalBackupSpecArgs, BackupScheduleIncrementalBackupSpecPtr and BackupScheduleIncrementalBackupSpecPtrOutput values.
+// You can construct a concrete instance of `BackupScheduleIncrementalBackupSpecPtrInput` via:
+//
+//	        BackupScheduleIncrementalBackupSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type BackupScheduleIncrementalBackupSpecPtrInput interface {
+	pulumi.Input
+
+	ToBackupScheduleIncrementalBackupSpecPtrOutput() BackupScheduleIncrementalBackupSpecPtrOutput
+	ToBackupScheduleIncrementalBackupSpecPtrOutputWithContext(context.Context) BackupScheduleIncrementalBackupSpecPtrOutput
+}
+
+type backupScheduleIncrementalBackupSpecPtrType BackupScheduleIncrementalBackupSpecArgs
+
+func BackupScheduleIncrementalBackupSpecPtr(v *BackupScheduleIncrementalBackupSpecArgs) BackupScheduleIncrementalBackupSpecPtrInput {
+	return (*backupScheduleIncrementalBackupSpecPtrType)(v)
+}
+
+func (*backupScheduleIncrementalBackupSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupScheduleIncrementalBackupSpec)(nil)).Elem()
+}
+
+func (i *backupScheduleIncrementalBackupSpecPtrType) ToBackupScheduleIncrementalBackupSpecPtrOutput() BackupScheduleIncrementalBackupSpecPtrOutput {
+	return i.ToBackupScheduleIncrementalBackupSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *backupScheduleIncrementalBackupSpecPtrType) ToBackupScheduleIncrementalBackupSpecPtrOutputWithContext(ctx context.Context) BackupScheduleIncrementalBackupSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupScheduleIncrementalBackupSpecPtrOutput)
+}
+
+type BackupScheduleIncrementalBackupSpecOutput struct{ *pulumi.OutputState }
+
+func (BackupScheduleIncrementalBackupSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupScheduleIncrementalBackupSpec)(nil)).Elem()
+}
+
+func (o BackupScheduleIncrementalBackupSpecOutput) ToBackupScheduleIncrementalBackupSpecOutput() BackupScheduleIncrementalBackupSpecOutput {
+	return o
+}
+
+func (o BackupScheduleIncrementalBackupSpecOutput) ToBackupScheduleIncrementalBackupSpecOutputWithContext(ctx context.Context) BackupScheduleIncrementalBackupSpecOutput {
+	return o
+}
+
+func (o BackupScheduleIncrementalBackupSpecOutput) ToBackupScheduleIncrementalBackupSpecPtrOutput() BackupScheduleIncrementalBackupSpecPtrOutput {
+	return o.ToBackupScheduleIncrementalBackupSpecPtrOutputWithContext(context.Background())
+}
+
+func (o BackupScheduleIncrementalBackupSpecOutput) ToBackupScheduleIncrementalBackupSpecPtrOutputWithContext(ctx context.Context) BackupScheduleIncrementalBackupSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackupScheduleIncrementalBackupSpec) *BackupScheduleIncrementalBackupSpec {
+		return &v
+	}).(BackupScheduleIncrementalBackupSpecPtrOutput)
+}
+
+type BackupScheduleIncrementalBackupSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (BackupScheduleIncrementalBackupSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupScheduleIncrementalBackupSpec)(nil)).Elem()
+}
+
+func (o BackupScheduleIncrementalBackupSpecPtrOutput) ToBackupScheduleIncrementalBackupSpecPtrOutput() BackupScheduleIncrementalBackupSpecPtrOutput {
+	return o
+}
+
+func (o BackupScheduleIncrementalBackupSpecPtrOutput) ToBackupScheduleIncrementalBackupSpecPtrOutputWithContext(ctx context.Context) BackupScheduleIncrementalBackupSpecPtrOutput {
+	return o
+}
+
+func (o BackupScheduleIncrementalBackupSpecPtrOutput) Elem() BackupScheduleIncrementalBackupSpecOutput {
+	return o.ApplyT(func(v *BackupScheduleIncrementalBackupSpec) BackupScheduleIncrementalBackupSpec {
+		if v != nil {
+			return *v
+		}
+		var ret BackupScheduleIncrementalBackupSpec
+		return ret
+	}).(BackupScheduleIncrementalBackupSpecOutput)
+}
+
+type BackupScheduleSpec struct {
+	// Cron style schedule specification..
+	// Structure is documented below.
+	CronSpec *BackupScheduleSpecCronSpec `pulumi:"cronSpec"`
+}
+
+// BackupScheduleSpecInput is an input type that accepts BackupScheduleSpecArgs and BackupScheduleSpecOutput values.
+// You can construct a concrete instance of `BackupScheduleSpecInput` via:
+//
+//	BackupScheduleSpecArgs{...}
+type BackupScheduleSpecInput interface {
+	pulumi.Input
+
+	ToBackupScheduleSpecOutput() BackupScheduleSpecOutput
+	ToBackupScheduleSpecOutputWithContext(context.Context) BackupScheduleSpecOutput
+}
+
+type BackupScheduleSpecArgs struct {
+	// Cron style schedule specification..
+	// Structure is documented below.
+	CronSpec BackupScheduleSpecCronSpecPtrInput `pulumi:"cronSpec"`
+}
+
+func (BackupScheduleSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupScheduleSpec)(nil)).Elem()
+}
+
+func (i BackupScheduleSpecArgs) ToBackupScheduleSpecOutput() BackupScheduleSpecOutput {
+	return i.ToBackupScheduleSpecOutputWithContext(context.Background())
+}
+
+func (i BackupScheduleSpecArgs) ToBackupScheduleSpecOutputWithContext(ctx context.Context) BackupScheduleSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupScheduleSpecOutput)
+}
+
+func (i BackupScheduleSpecArgs) ToBackupScheduleSpecPtrOutput() BackupScheduleSpecPtrOutput {
+	return i.ToBackupScheduleSpecPtrOutputWithContext(context.Background())
+}
+
+func (i BackupScheduleSpecArgs) ToBackupScheduleSpecPtrOutputWithContext(ctx context.Context) BackupScheduleSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupScheduleSpecOutput).ToBackupScheduleSpecPtrOutputWithContext(ctx)
+}
+
+// BackupScheduleSpecPtrInput is an input type that accepts BackupScheduleSpecArgs, BackupScheduleSpecPtr and BackupScheduleSpecPtrOutput values.
+// You can construct a concrete instance of `BackupScheduleSpecPtrInput` via:
+//
+//	        BackupScheduleSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type BackupScheduleSpecPtrInput interface {
+	pulumi.Input
+
+	ToBackupScheduleSpecPtrOutput() BackupScheduleSpecPtrOutput
+	ToBackupScheduleSpecPtrOutputWithContext(context.Context) BackupScheduleSpecPtrOutput
+}
+
+type backupScheduleSpecPtrType BackupScheduleSpecArgs
+
+func BackupScheduleSpecPtr(v *BackupScheduleSpecArgs) BackupScheduleSpecPtrInput {
+	return (*backupScheduleSpecPtrType)(v)
+}
+
+func (*backupScheduleSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupScheduleSpec)(nil)).Elem()
+}
+
+func (i *backupScheduleSpecPtrType) ToBackupScheduleSpecPtrOutput() BackupScheduleSpecPtrOutput {
+	return i.ToBackupScheduleSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *backupScheduleSpecPtrType) ToBackupScheduleSpecPtrOutputWithContext(ctx context.Context) BackupScheduleSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupScheduleSpecPtrOutput)
+}
+
+type BackupScheduleSpecOutput struct{ *pulumi.OutputState }
+
+func (BackupScheduleSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupScheduleSpec)(nil)).Elem()
+}
+
+func (o BackupScheduleSpecOutput) ToBackupScheduleSpecOutput() BackupScheduleSpecOutput {
+	return o
+}
+
+func (o BackupScheduleSpecOutput) ToBackupScheduleSpecOutputWithContext(ctx context.Context) BackupScheduleSpecOutput {
+	return o
+}
+
+func (o BackupScheduleSpecOutput) ToBackupScheduleSpecPtrOutput() BackupScheduleSpecPtrOutput {
+	return o.ToBackupScheduleSpecPtrOutputWithContext(context.Background())
+}
+
+func (o BackupScheduleSpecOutput) ToBackupScheduleSpecPtrOutputWithContext(ctx context.Context) BackupScheduleSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackupScheduleSpec) *BackupScheduleSpec {
+		return &v
+	}).(BackupScheduleSpecPtrOutput)
+}
+
+// Cron style schedule specification..
+// Structure is documented below.
+func (o BackupScheduleSpecOutput) CronSpec() BackupScheduleSpecCronSpecPtrOutput {
+	return o.ApplyT(func(v BackupScheduleSpec) *BackupScheduleSpecCronSpec { return v.CronSpec }).(BackupScheduleSpecCronSpecPtrOutput)
+}
+
+type BackupScheduleSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (BackupScheduleSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupScheduleSpec)(nil)).Elem()
+}
+
+func (o BackupScheduleSpecPtrOutput) ToBackupScheduleSpecPtrOutput() BackupScheduleSpecPtrOutput {
+	return o
+}
+
+func (o BackupScheduleSpecPtrOutput) ToBackupScheduleSpecPtrOutputWithContext(ctx context.Context) BackupScheduleSpecPtrOutput {
+	return o
+}
+
+func (o BackupScheduleSpecPtrOutput) Elem() BackupScheduleSpecOutput {
+	return o.ApplyT(func(v *BackupScheduleSpec) BackupScheduleSpec {
+		if v != nil {
+			return *v
+		}
+		var ret BackupScheduleSpec
+		return ret
+	}).(BackupScheduleSpecOutput)
+}
+
+// Cron style schedule specification..
+// Structure is documented below.
+func (o BackupScheduleSpecPtrOutput) CronSpec() BackupScheduleSpecCronSpecPtrOutput {
+	return o.ApplyT(func(v *BackupScheduleSpec) *BackupScheduleSpecCronSpec {
+		if v == nil {
+			return nil
+		}
+		return v.CronSpec
+	}).(BackupScheduleSpecCronSpecPtrOutput)
+}
+
+type BackupScheduleSpecCronSpec struct {
+	// Textual representation of the crontab. User can customize the
+	// backup frequency and the backup version time using the cron
+	// expression. The version time must be in UTC timzeone.
+	// The backup will contain an externally consistent copy of the
+	// database at the version time. Allowed frequencies are 12 hour, 1 day,
+	// 1 week and 1 month. Examples of valid cron specifications:
+	// 0 2/12 * * * : every 12 hours at (2, 14) hours past midnight in UTC.
+	// 0 2,14 * * * : every 12 hours at (2,14) hours past midnight in UTC.
+	// 0 2 * * *    : once a day at 2 past midnight in UTC.
+	// 0 2 * * 0    : once a week every Sunday at 2 past midnight in UTC.
+	// 0 2 8 * *    : once a month on 8th day at 2 past midnight in UTC.
+	Text *string `pulumi:"text"`
+}
+
+// BackupScheduleSpecCronSpecInput is an input type that accepts BackupScheduleSpecCronSpecArgs and BackupScheduleSpecCronSpecOutput values.
+// You can construct a concrete instance of `BackupScheduleSpecCronSpecInput` via:
+//
+//	BackupScheduleSpecCronSpecArgs{...}
+type BackupScheduleSpecCronSpecInput interface {
+	pulumi.Input
+
+	ToBackupScheduleSpecCronSpecOutput() BackupScheduleSpecCronSpecOutput
+	ToBackupScheduleSpecCronSpecOutputWithContext(context.Context) BackupScheduleSpecCronSpecOutput
+}
+
+type BackupScheduleSpecCronSpecArgs struct {
+	// Textual representation of the crontab. User can customize the
+	// backup frequency and the backup version time using the cron
+	// expression. The version time must be in UTC timzeone.
+	// The backup will contain an externally consistent copy of the
+	// database at the version time. Allowed frequencies are 12 hour, 1 day,
+	// 1 week and 1 month. Examples of valid cron specifications:
+	// 0 2/12 * * * : every 12 hours at (2, 14) hours past midnight in UTC.
+	// 0 2,14 * * * : every 12 hours at (2,14) hours past midnight in UTC.
+	// 0 2 * * *    : once a day at 2 past midnight in UTC.
+	// 0 2 * * 0    : once a week every Sunday at 2 past midnight in UTC.
+	// 0 2 8 * *    : once a month on 8th day at 2 past midnight in UTC.
+	Text pulumi.StringPtrInput `pulumi:"text"`
+}
+
+func (BackupScheduleSpecCronSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupScheduleSpecCronSpec)(nil)).Elem()
+}
+
+func (i BackupScheduleSpecCronSpecArgs) ToBackupScheduleSpecCronSpecOutput() BackupScheduleSpecCronSpecOutput {
+	return i.ToBackupScheduleSpecCronSpecOutputWithContext(context.Background())
+}
+
+func (i BackupScheduleSpecCronSpecArgs) ToBackupScheduleSpecCronSpecOutputWithContext(ctx context.Context) BackupScheduleSpecCronSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupScheduleSpecCronSpecOutput)
+}
+
+func (i BackupScheduleSpecCronSpecArgs) ToBackupScheduleSpecCronSpecPtrOutput() BackupScheduleSpecCronSpecPtrOutput {
+	return i.ToBackupScheduleSpecCronSpecPtrOutputWithContext(context.Background())
+}
+
+func (i BackupScheduleSpecCronSpecArgs) ToBackupScheduleSpecCronSpecPtrOutputWithContext(ctx context.Context) BackupScheduleSpecCronSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupScheduleSpecCronSpecOutput).ToBackupScheduleSpecCronSpecPtrOutputWithContext(ctx)
+}
+
+// BackupScheduleSpecCronSpecPtrInput is an input type that accepts BackupScheduleSpecCronSpecArgs, BackupScheduleSpecCronSpecPtr and BackupScheduleSpecCronSpecPtrOutput values.
+// You can construct a concrete instance of `BackupScheduleSpecCronSpecPtrInput` via:
+//
+//	        BackupScheduleSpecCronSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type BackupScheduleSpecCronSpecPtrInput interface {
+	pulumi.Input
+
+	ToBackupScheduleSpecCronSpecPtrOutput() BackupScheduleSpecCronSpecPtrOutput
+	ToBackupScheduleSpecCronSpecPtrOutputWithContext(context.Context) BackupScheduleSpecCronSpecPtrOutput
+}
+
+type backupScheduleSpecCronSpecPtrType BackupScheduleSpecCronSpecArgs
+
+func BackupScheduleSpecCronSpecPtr(v *BackupScheduleSpecCronSpecArgs) BackupScheduleSpecCronSpecPtrInput {
+	return (*backupScheduleSpecCronSpecPtrType)(v)
+}
+
+func (*backupScheduleSpecCronSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupScheduleSpecCronSpec)(nil)).Elem()
+}
+
+func (i *backupScheduleSpecCronSpecPtrType) ToBackupScheduleSpecCronSpecPtrOutput() BackupScheduleSpecCronSpecPtrOutput {
+	return i.ToBackupScheduleSpecCronSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *backupScheduleSpecCronSpecPtrType) ToBackupScheduleSpecCronSpecPtrOutputWithContext(ctx context.Context) BackupScheduleSpecCronSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupScheduleSpecCronSpecPtrOutput)
+}
+
+type BackupScheduleSpecCronSpecOutput struct{ *pulumi.OutputState }
+
+func (BackupScheduleSpecCronSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupScheduleSpecCronSpec)(nil)).Elem()
+}
+
+func (o BackupScheduleSpecCronSpecOutput) ToBackupScheduleSpecCronSpecOutput() BackupScheduleSpecCronSpecOutput {
+	return o
+}
+
+func (o BackupScheduleSpecCronSpecOutput) ToBackupScheduleSpecCronSpecOutputWithContext(ctx context.Context) BackupScheduleSpecCronSpecOutput {
+	return o
+}
+
+func (o BackupScheduleSpecCronSpecOutput) ToBackupScheduleSpecCronSpecPtrOutput() BackupScheduleSpecCronSpecPtrOutput {
+	return o.ToBackupScheduleSpecCronSpecPtrOutputWithContext(context.Background())
+}
+
+func (o BackupScheduleSpecCronSpecOutput) ToBackupScheduleSpecCronSpecPtrOutputWithContext(ctx context.Context) BackupScheduleSpecCronSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackupScheduleSpecCronSpec) *BackupScheduleSpecCronSpec {
+		return &v
+	}).(BackupScheduleSpecCronSpecPtrOutput)
+}
+
+// Textual representation of the crontab. User can customize the
+// backup frequency and the backup version time using the cron
+// expression. The version time must be in UTC timzeone.
+// The backup will contain an externally consistent copy of the
+// database at the version time. Allowed frequencies are 12 hour, 1 day,
+// 1 week and 1 month. Examples of valid cron specifications:
+// 0 2/12 * * * : every 12 hours at (2, 14) hours past midnight in UTC.
+// 0 2,14 * * * : every 12 hours at (2,14) hours past midnight in UTC.
+// 0 2 * * *    : once a day at 2 past midnight in UTC.
+// 0 2 * * 0    : once a week every Sunday at 2 past midnight in UTC.
+// 0 2 8 * *    : once a month on 8th day at 2 past midnight in UTC.
+func (o BackupScheduleSpecCronSpecOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackupScheduleSpecCronSpec) *string { return v.Text }).(pulumi.StringPtrOutput)
+}
+
+type BackupScheduleSpecCronSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (BackupScheduleSpecCronSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupScheduleSpecCronSpec)(nil)).Elem()
+}
+
+func (o BackupScheduleSpecCronSpecPtrOutput) ToBackupScheduleSpecCronSpecPtrOutput() BackupScheduleSpecCronSpecPtrOutput {
+	return o
+}
+
+func (o BackupScheduleSpecCronSpecPtrOutput) ToBackupScheduleSpecCronSpecPtrOutputWithContext(ctx context.Context) BackupScheduleSpecCronSpecPtrOutput {
+	return o
+}
+
+func (o BackupScheduleSpecCronSpecPtrOutput) Elem() BackupScheduleSpecCronSpecOutput {
+	return o.ApplyT(func(v *BackupScheduleSpecCronSpec) BackupScheduleSpecCronSpec {
+		if v != nil {
+			return *v
+		}
+		var ret BackupScheduleSpecCronSpec
+		return ret
+	}).(BackupScheduleSpecCronSpecOutput)
+}
+
+// Textual representation of the crontab. User can customize the
+// backup frequency and the backup version time using the cron
+// expression. The version time must be in UTC timzeone.
+// The backup will contain an externally consistent copy of the
+// database at the version time. Allowed frequencies are 12 hour, 1 day,
+// 1 week and 1 month. Examples of valid cron specifications:
+// 0 2/12 * * * : every 12 hours at (2, 14) hours past midnight in UTC.
+// 0 2,14 * * * : every 12 hours at (2,14) hours past midnight in UTC.
+// 0 2 * * *    : once a day at 2 past midnight in UTC.
+// 0 2 * * 0    : once a week every Sunday at 2 past midnight in UTC.
+// 0 2 8 * *    : once a month on 8th day at 2 past midnight in UTC.
+func (o BackupScheduleSpecCronSpecPtrOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackupScheduleSpecCronSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Text
+	}).(pulumi.StringPtrOutput)
+}
+
 type DatabaseEncryptionConfig struct {
 	// Fully qualified name of the KMS key to use to encrypt this database. This key must exist
 	// in the same location as the Spanner Database.
@@ -1919,6 +2473,14 @@ func (o GetInstanceAutoscalingConfigAutoscalingTargetArrayOutput) Index(i pulumi
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupScheduleFullBackupSpecInput)(nil)).Elem(), BackupScheduleFullBackupSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupScheduleFullBackupSpecPtrInput)(nil)).Elem(), BackupScheduleFullBackupSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupScheduleIncrementalBackupSpecInput)(nil)).Elem(), BackupScheduleIncrementalBackupSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupScheduleIncrementalBackupSpecPtrInput)(nil)).Elem(), BackupScheduleIncrementalBackupSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupScheduleSpecInput)(nil)).Elem(), BackupScheduleSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupScheduleSpecPtrInput)(nil)).Elem(), BackupScheduleSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupScheduleSpecCronSpecInput)(nil)).Elem(), BackupScheduleSpecCronSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupScheduleSpecCronSpecPtrInput)(nil)).Elem(), BackupScheduleSpecCronSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseEncryptionConfigInput)(nil)).Elem(), DatabaseEncryptionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseEncryptionConfigPtrInput)(nil)).Elem(), DatabaseEncryptionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseIAMBindingConditionInput)(nil)).Elem(), DatabaseIAMBindingConditionArgs{})
@@ -1943,6 +2505,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAutoscalingConfigAutoscalingLimitArrayInput)(nil)).Elem(), GetInstanceAutoscalingConfigAutoscalingLimitArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAutoscalingConfigAutoscalingTargetInput)(nil)).Elem(), GetInstanceAutoscalingConfigAutoscalingTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAutoscalingConfigAutoscalingTargetArrayInput)(nil)).Elem(), GetInstanceAutoscalingConfigAutoscalingTargetArray{})
+	pulumi.RegisterOutputType(BackupScheduleFullBackupSpecOutput{})
+	pulumi.RegisterOutputType(BackupScheduleFullBackupSpecPtrOutput{})
+	pulumi.RegisterOutputType(BackupScheduleIncrementalBackupSpecOutput{})
+	pulumi.RegisterOutputType(BackupScheduleIncrementalBackupSpecPtrOutput{})
+	pulumi.RegisterOutputType(BackupScheduleSpecOutput{})
+	pulumi.RegisterOutputType(BackupScheduleSpecPtrOutput{})
+	pulumi.RegisterOutputType(BackupScheduleSpecCronSpecOutput{})
+	pulumi.RegisterOutputType(BackupScheduleSpecCronSpecPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseEncryptionConfigOutput{})
 	pulumi.RegisterOutputType(DatabaseEncryptionConfigPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseIAMBindingConditionOutput{})

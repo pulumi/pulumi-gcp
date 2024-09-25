@@ -13,6 +13,1303 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type URLMapDefaultRouteAction struct {
+	// The specification for allowing client side cross-origin requests. Please see
+	// [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
+	// Structure is documented below.
+	CorsPolicy *URLMapDefaultRouteActionCorsPolicy `pulumi:"corsPolicy"`
+	// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
+	// As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
+	// percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
+	// by the Loadbalancer for a percentage of requests.
+	// timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
+	// Structure is documented below.
+	FaultInjectionPolicy *URLMapDefaultRouteActionFaultInjectionPolicy `pulumi:"faultInjectionPolicy"`
+	// Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
+	// Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
+	// the host / authority header is suffixed with -shadow.
+	// Structure is documented below.
+	RequestMirrorPolicy *URLMapDefaultRouteActionRequestMirrorPolicy `pulumi:"requestMirrorPolicy"`
+	// Specifies the retry policy associated with this route.
+	// Structure is documented below.
+	RetryPolicy *URLMapDefaultRouteActionRetryPolicy `pulumi:"retryPolicy"`
+	// Specifies the timeout for the selected route. Timeout is computed from the time the request has been
+	// fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries.
+	// If not specified, will use the largest timeout among all backend services associated with the route.
+	// Structure is documented below.
+	Timeout *URLMapDefaultRouteActionTimeout `pulumi:"timeout"`
+	// The spec to modify the URL of the request, prior to forwarding the request to the matched service.
+	// Structure is documented below.
+	UrlRewrite *URLMapDefaultRouteActionUrlRewrite `pulumi:"urlRewrite"`
+	// A list of weighted backend services to send traffic to when a route match occurs.
+	// The weights determine the fraction of traffic that flows to their corresponding backend service.
+	// If all traffic needs to go to a single backend service, there must be one weightedBackendService
+	// with weight set to a non 0 number.
+	// Once a backendService is identified and before forwarding the request to the backend service,
+	// advanced routing actions like Url rewrites and header transformations are applied depending on
+	// additional settings specified in this HttpRouteAction.
+	// Structure is documented below.
+	WeightedBackendServices []URLMapDefaultRouteActionWeightedBackendService `pulumi:"weightedBackendServices"`
+}
+
+// URLMapDefaultRouteActionInput is an input type that accepts URLMapDefaultRouteActionArgs and URLMapDefaultRouteActionOutput values.
+// You can construct a concrete instance of `URLMapDefaultRouteActionInput` via:
+//
+//	URLMapDefaultRouteActionArgs{...}
+type URLMapDefaultRouteActionInput interface {
+	pulumi.Input
+
+	ToURLMapDefaultRouteActionOutput() URLMapDefaultRouteActionOutput
+	ToURLMapDefaultRouteActionOutputWithContext(context.Context) URLMapDefaultRouteActionOutput
+}
+
+type URLMapDefaultRouteActionArgs struct {
+	// The specification for allowing client side cross-origin requests. Please see
+	// [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
+	// Structure is documented below.
+	CorsPolicy URLMapDefaultRouteActionCorsPolicyPtrInput `pulumi:"corsPolicy"`
+	// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
+	// As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
+	// percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
+	// by the Loadbalancer for a percentage of requests.
+	// timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
+	// Structure is documented below.
+	FaultInjectionPolicy URLMapDefaultRouteActionFaultInjectionPolicyPtrInput `pulumi:"faultInjectionPolicy"`
+	// Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
+	// Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
+	// the host / authority header is suffixed with -shadow.
+	// Structure is documented below.
+	RequestMirrorPolicy URLMapDefaultRouteActionRequestMirrorPolicyPtrInput `pulumi:"requestMirrorPolicy"`
+	// Specifies the retry policy associated with this route.
+	// Structure is documented below.
+	RetryPolicy URLMapDefaultRouteActionRetryPolicyPtrInput `pulumi:"retryPolicy"`
+	// Specifies the timeout for the selected route. Timeout is computed from the time the request has been
+	// fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries.
+	// If not specified, will use the largest timeout among all backend services associated with the route.
+	// Structure is documented below.
+	Timeout URLMapDefaultRouteActionTimeoutPtrInput `pulumi:"timeout"`
+	// The spec to modify the URL of the request, prior to forwarding the request to the matched service.
+	// Structure is documented below.
+	UrlRewrite URLMapDefaultRouteActionUrlRewritePtrInput `pulumi:"urlRewrite"`
+	// A list of weighted backend services to send traffic to when a route match occurs.
+	// The weights determine the fraction of traffic that flows to their corresponding backend service.
+	// If all traffic needs to go to a single backend service, there must be one weightedBackendService
+	// with weight set to a non 0 number.
+	// Once a backendService is identified and before forwarding the request to the backend service,
+	// advanced routing actions like Url rewrites and header transformations are applied depending on
+	// additional settings specified in this HttpRouteAction.
+	// Structure is documented below.
+	WeightedBackendServices URLMapDefaultRouteActionWeightedBackendServiceArrayInput `pulumi:"weightedBackendServices"`
+}
+
+func (URLMapDefaultRouteActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapDefaultRouteAction)(nil)).Elem()
+}
+
+func (i URLMapDefaultRouteActionArgs) ToURLMapDefaultRouteActionOutput() URLMapDefaultRouteActionOutput {
+	return i.ToURLMapDefaultRouteActionOutputWithContext(context.Background())
+}
+
+func (i URLMapDefaultRouteActionArgs) ToURLMapDefaultRouteActionOutputWithContext(ctx context.Context) URLMapDefaultRouteActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionOutput)
+}
+
+func (i URLMapDefaultRouteActionArgs) ToURLMapDefaultRouteActionPtrOutput() URLMapDefaultRouteActionPtrOutput {
+	return i.ToURLMapDefaultRouteActionPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapDefaultRouteActionArgs) ToURLMapDefaultRouteActionPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionOutput).ToURLMapDefaultRouteActionPtrOutputWithContext(ctx)
+}
+
+// URLMapDefaultRouteActionPtrInput is an input type that accepts URLMapDefaultRouteActionArgs, URLMapDefaultRouteActionPtr and URLMapDefaultRouteActionPtrOutput values.
+// You can construct a concrete instance of `URLMapDefaultRouteActionPtrInput` via:
+//
+//	        URLMapDefaultRouteActionArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapDefaultRouteActionPtrInput interface {
+	pulumi.Input
+
+	ToURLMapDefaultRouteActionPtrOutput() URLMapDefaultRouteActionPtrOutput
+	ToURLMapDefaultRouteActionPtrOutputWithContext(context.Context) URLMapDefaultRouteActionPtrOutput
+}
+
+type urlmapDefaultRouteActionPtrType URLMapDefaultRouteActionArgs
+
+func URLMapDefaultRouteActionPtr(v *URLMapDefaultRouteActionArgs) URLMapDefaultRouteActionPtrInput {
+	return (*urlmapDefaultRouteActionPtrType)(v)
+}
+
+func (*urlmapDefaultRouteActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapDefaultRouteAction)(nil)).Elem()
+}
+
+func (i *urlmapDefaultRouteActionPtrType) ToURLMapDefaultRouteActionPtrOutput() URLMapDefaultRouteActionPtrOutput {
+	return i.ToURLMapDefaultRouteActionPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapDefaultRouteActionPtrType) ToURLMapDefaultRouteActionPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionPtrOutput)
+}
+
+type URLMapDefaultRouteActionOutput struct{ *pulumi.OutputState }
+
+func (URLMapDefaultRouteActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapDefaultRouteAction)(nil)).Elem()
+}
+
+func (o URLMapDefaultRouteActionOutput) ToURLMapDefaultRouteActionOutput() URLMapDefaultRouteActionOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionOutput) ToURLMapDefaultRouteActionOutputWithContext(ctx context.Context) URLMapDefaultRouteActionOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionOutput) ToURLMapDefaultRouteActionPtrOutput() URLMapDefaultRouteActionPtrOutput {
+	return o.ToURLMapDefaultRouteActionPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapDefaultRouteActionOutput) ToURLMapDefaultRouteActionPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapDefaultRouteAction) *URLMapDefaultRouteAction {
+		return &v
+	}).(URLMapDefaultRouteActionPtrOutput)
+}
+
+// The specification for allowing client side cross-origin requests. Please see
+// [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
+// Structure is documented below.
+func (o URLMapDefaultRouteActionOutput) CorsPolicy() URLMapDefaultRouteActionCorsPolicyPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteAction) *URLMapDefaultRouteActionCorsPolicy { return v.CorsPolicy }).(URLMapDefaultRouteActionCorsPolicyPtrOutput)
+}
+
+// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
+// As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
+// percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
+// by the Loadbalancer for a percentage of requests.
+// timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
+// Structure is documented below.
+func (o URLMapDefaultRouteActionOutput) FaultInjectionPolicy() URLMapDefaultRouteActionFaultInjectionPolicyPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteAction) *URLMapDefaultRouteActionFaultInjectionPolicy {
+		return v.FaultInjectionPolicy
+	}).(URLMapDefaultRouteActionFaultInjectionPolicyPtrOutput)
+}
+
+// Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
+// Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
+// the host / authority header is suffixed with -shadow.
+// Structure is documented below.
+func (o URLMapDefaultRouteActionOutput) RequestMirrorPolicy() URLMapDefaultRouteActionRequestMirrorPolicyPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteAction) *URLMapDefaultRouteActionRequestMirrorPolicy {
+		return v.RequestMirrorPolicy
+	}).(URLMapDefaultRouteActionRequestMirrorPolicyPtrOutput)
+}
+
+// Specifies the retry policy associated with this route.
+// Structure is documented below.
+func (o URLMapDefaultRouteActionOutput) RetryPolicy() URLMapDefaultRouteActionRetryPolicyPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteAction) *URLMapDefaultRouteActionRetryPolicy { return v.RetryPolicy }).(URLMapDefaultRouteActionRetryPolicyPtrOutput)
+}
+
+// Specifies the timeout for the selected route. Timeout is computed from the time the request has been
+// fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries.
+// If not specified, will use the largest timeout among all backend services associated with the route.
+// Structure is documented below.
+func (o URLMapDefaultRouteActionOutput) Timeout() URLMapDefaultRouteActionTimeoutPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteAction) *URLMapDefaultRouteActionTimeout { return v.Timeout }).(URLMapDefaultRouteActionTimeoutPtrOutput)
+}
+
+// The spec to modify the URL of the request, prior to forwarding the request to the matched service.
+// Structure is documented below.
+func (o URLMapDefaultRouteActionOutput) UrlRewrite() URLMapDefaultRouteActionUrlRewritePtrOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteAction) *URLMapDefaultRouteActionUrlRewrite { return v.UrlRewrite }).(URLMapDefaultRouteActionUrlRewritePtrOutput)
+}
+
+// A list of weighted backend services to send traffic to when a route match occurs.
+// The weights determine the fraction of traffic that flows to their corresponding backend service.
+// If all traffic needs to go to a single backend service, there must be one weightedBackendService
+// with weight set to a non 0 number.
+// Once a backendService is identified and before forwarding the request to the backend service,
+// advanced routing actions like Url rewrites and header transformations are applied depending on
+// additional settings specified in this HttpRouteAction.
+// Structure is documented below.
+func (o URLMapDefaultRouteActionOutput) WeightedBackendServices() URLMapDefaultRouteActionWeightedBackendServiceArrayOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteAction) []URLMapDefaultRouteActionWeightedBackendService {
+		return v.WeightedBackendServices
+	}).(URLMapDefaultRouteActionWeightedBackendServiceArrayOutput)
+}
+
+type URLMapDefaultRouteActionPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapDefaultRouteActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapDefaultRouteAction)(nil)).Elem()
+}
+
+func (o URLMapDefaultRouteActionPtrOutput) ToURLMapDefaultRouteActionPtrOutput() URLMapDefaultRouteActionPtrOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionPtrOutput) ToURLMapDefaultRouteActionPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionPtrOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionPtrOutput) Elem() URLMapDefaultRouteActionOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteAction) URLMapDefaultRouteAction {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapDefaultRouteAction
+		return ret
+	}).(URLMapDefaultRouteActionOutput)
+}
+
+// The specification for allowing client side cross-origin requests. Please see
+// [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
+// Structure is documented below.
+func (o URLMapDefaultRouteActionPtrOutput) CorsPolicy() URLMapDefaultRouteActionCorsPolicyPtrOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteAction) *URLMapDefaultRouteActionCorsPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.CorsPolicy
+	}).(URLMapDefaultRouteActionCorsPolicyPtrOutput)
+}
+
+// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
+// As part of fault injection, when clients send requests to a backend service, delays can be introduced by Loadbalancer on a
+// percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted
+// by the Loadbalancer for a percentage of requests.
+// timeout and retryPolicy will be ignored by clients that are configured with a faultInjectionPolicy.
+// Structure is documented below.
+func (o URLMapDefaultRouteActionPtrOutput) FaultInjectionPolicy() URLMapDefaultRouteActionFaultInjectionPolicyPtrOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteAction) *URLMapDefaultRouteActionFaultInjectionPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.FaultInjectionPolicy
+	}).(URLMapDefaultRouteActionFaultInjectionPolicyPtrOutput)
+}
+
+// Specifies the policy on how requests intended for the route's backends are shadowed to a separate mirrored backend service.
+// Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service,
+// the host / authority header is suffixed with -shadow.
+// Structure is documented below.
+func (o URLMapDefaultRouteActionPtrOutput) RequestMirrorPolicy() URLMapDefaultRouteActionRequestMirrorPolicyPtrOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteAction) *URLMapDefaultRouteActionRequestMirrorPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.RequestMirrorPolicy
+	}).(URLMapDefaultRouteActionRequestMirrorPolicyPtrOutput)
+}
+
+// Specifies the retry policy associated with this route.
+// Structure is documented below.
+func (o URLMapDefaultRouteActionPtrOutput) RetryPolicy() URLMapDefaultRouteActionRetryPolicyPtrOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteAction) *URLMapDefaultRouteActionRetryPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.RetryPolicy
+	}).(URLMapDefaultRouteActionRetryPolicyPtrOutput)
+}
+
+// Specifies the timeout for the selected route. Timeout is computed from the time the request has been
+// fully processed (i.e. end-of-stream) up until the response has been completely processed. Timeout includes all retries.
+// If not specified, will use the largest timeout among all backend services associated with the route.
+// Structure is documented below.
+func (o URLMapDefaultRouteActionPtrOutput) Timeout() URLMapDefaultRouteActionTimeoutPtrOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteAction) *URLMapDefaultRouteActionTimeout {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(URLMapDefaultRouteActionTimeoutPtrOutput)
+}
+
+// The spec to modify the URL of the request, prior to forwarding the request to the matched service.
+// Structure is documented below.
+func (o URLMapDefaultRouteActionPtrOutput) UrlRewrite() URLMapDefaultRouteActionUrlRewritePtrOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteAction) *URLMapDefaultRouteActionUrlRewrite {
+		if v == nil {
+			return nil
+		}
+		return v.UrlRewrite
+	}).(URLMapDefaultRouteActionUrlRewritePtrOutput)
+}
+
+// A list of weighted backend services to send traffic to when a route match occurs.
+// The weights determine the fraction of traffic that flows to their corresponding backend service.
+// If all traffic needs to go to a single backend service, there must be one weightedBackendService
+// with weight set to a non 0 number.
+// Once a backendService is identified and before forwarding the request to the backend service,
+// advanced routing actions like Url rewrites and header transformations are applied depending on
+// additional settings specified in this HttpRouteAction.
+// Structure is documented below.
+func (o URLMapDefaultRouteActionPtrOutput) WeightedBackendServices() URLMapDefaultRouteActionWeightedBackendServiceArrayOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteAction) []URLMapDefaultRouteActionWeightedBackendService {
+		if v == nil {
+			return nil
+		}
+		return v.WeightedBackendServices
+	}).(URLMapDefaultRouteActionWeightedBackendServiceArrayOutput)
+}
+
+type URLMapDefaultRouteActionCorsPolicy struct {
+	// In response to a preflight request, setting this to true indicates that the actual request can include user credentials.
+	// This translates to the Access-Control-Allow-Credentials header.
+	AllowCredentials *bool `pulumi:"allowCredentials"`
+	// Specifies the content for the Access-Control-Allow-Headers header.
+	AllowHeaders []string `pulumi:"allowHeaders"`
+	// Specifies the content for the Access-Control-Allow-Methods header.
+	AllowMethods []string `pulumi:"allowMethods"`
+	// Specifies the regular expression patterns that match allowed origins. For regular expression grammar
+	// please see en.cppreference.com/w/cpp/regex/ecmascript
+	// An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+	AllowOriginRegexes []string `pulumi:"allowOriginRegexes"`
+	// Specifies the list of origins that will be allowed to do CORS requests.
+	// An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+	AllowOrigins []string `pulumi:"allowOrigins"`
+	// If true, specifies the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
+	Disabled *bool `pulumi:"disabled"`
+	// Specifies the content for the Access-Control-Expose-Headers header.
+	ExposeHeaders []string `pulumi:"exposeHeaders"`
+	// Specifies how long results of a preflight request can be cached in seconds.
+	// This translates to the Access-Control-Max-Age header.
+	MaxAge *int `pulumi:"maxAge"`
+}
+
+// URLMapDefaultRouteActionCorsPolicyInput is an input type that accepts URLMapDefaultRouteActionCorsPolicyArgs and URLMapDefaultRouteActionCorsPolicyOutput values.
+// You can construct a concrete instance of `URLMapDefaultRouteActionCorsPolicyInput` via:
+//
+//	URLMapDefaultRouteActionCorsPolicyArgs{...}
+type URLMapDefaultRouteActionCorsPolicyInput interface {
+	pulumi.Input
+
+	ToURLMapDefaultRouteActionCorsPolicyOutput() URLMapDefaultRouteActionCorsPolicyOutput
+	ToURLMapDefaultRouteActionCorsPolicyOutputWithContext(context.Context) URLMapDefaultRouteActionCorsPolicyOutput
+}
+
+type URLMapDefaultRouteActionCorsPolicyArgs struct {
+	// In response to a preflight request, setting this to true indicates that the actual request can include user credentials.
+	// This translates to the Access-Control-Allow-Credentials header.
+	AllowCredentials pulumi.BoolPtrInput `pulumi:"allowCredentials"`
+	// Specifies the content for the Access-Control-Allow-Headers header.
+	AllowHeaders pulumi.StringArrayInput `pulumi:"allowHeaders"`
+	// Specifies the content for the Access-Control-Allow-Methods header.
+	AllowMethods pulumi.StringArrayInput `pulumi:"allowMethods"`
+	// Specifies the regular expression patterns that match allowed origins. For regular expression grammar
+	// please see en.cppreference.com/w/cpp/regex/ecmascript
+	// An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+	AllowOriginRegexes pulumi.StringArrayInput `pulumi:"allowOriginRegexes"`
+	// Specifies the list of origins that will be allowed to do CORS requests.
+	// An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+	AllowOrigins pulumi.StringArrayInput `pulumi:"allowOrigins"`
+	// If true, specifies the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// Specifies the content for the Access-Control-Expose-Headers header.
+	ExposeHeaders pulumi.StringArrayInput `pulumi:"exposeHeaders"`
+	// Specifies how long results of a preflight request can be cached in seconds.
+	// This translates to the Access-Control-Max-Age header.
+	MaxAge pulumi.IntPtrInput `pulumi:"maxAge"`
+}
+
+func (URLMapDefaultRouteActionCorsPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapDefaultRouteActionCorsPolicy)(nil)).Elem()
+}
+
+func (i URLMapDefaultRouteActionCorsPolicyArgs) ToURLMapDefaultRouteActionCorsPolicyOutput() URLMapDefaultRouteActionCorsPolicyOutput {
+	return i.ToURLMapDefaultRouteActionCorsPolicyOutputWithContext(context.Background())
+}
+
+func (i URLMapDefaultRouteActionCorsPolicyArgs) ToURLMapDefaultRouteActionCorsPolicyOutputWithContext(ctx context.Context) URLMapDefaultRouteActionCorsPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionCorsPolicyOutput)
+}
+
+func (i URLMapDefaultRouteActionCorsPolicyArgs) ToURLMapDefaultRouteActionCorsPolicyPtrOutput() URLMapDefaultRouteActionCorsPolicyPtrOutput {
+	return i.ToURLMapDefaultRouteActionCorsPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapDefaultRouteActionCorsPolicyArgs) ToURLMapDefaultRouteActionCorsPolicyPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionCorsPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionCorsPolicyOutput).ToURLMapDefaultRouteActionCorsPolicyPtrOutputWithContext(ctx)
+}
+
+// URLMapDefaultRouteActionCorsPolicyPtrInput is an input type that accepts URLMapDefaultRouteActionCorsPolicyArgs, URLMapDefaultRouteActionCorsPolicyPtr and URLMapDefaultRouteActionCorsPolicyPtrOutput values.
+// You can construct a concrete instance of `URLMapDefaultRouteActionCorsPolicyPtrInput` via:
+//
+//	        URLMapDefaultRouteActionCorsPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapDefaultRouteActionCorsPolicyPtrInput interface {
+	pulumi.Input
+
+	ToURLMapDefaultRouteActionCorsPolicyPtrOutput() URLMapDefaultRouteActionCorsPolicyPtrOutput
+	ToURLMapDefaultRouteActionCorsPolicyPtrOutputWithContext(context.Context) URLMapDefaultRouteActionCorsPolicyPtrOutput
+}
+
+type urlmapDefaultRouteActionCorsPolicyPtrType URLMapDefaultRouteActionCorsPolicyArgs
+
+func URLMapDefaultRouteActionCorsPolicyPtr(v *URLMapDefaultRouteActionCorsPolicyArgs) URLMapDefaultRouteActionCorsPolicyPtrInput {
+	return (*urlmapDefaultRouteActionCorsPolicyPtrType)(v)
+}
+
+func (*urlmapDefaultRouteActionCorsPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapDefaultRouteActionCorsPolicy)(nil)).Elem()
+}
+
+func (i *urlmapDefaultRouteActionCorsPolicyPtrType) ToURLMapDefaultRouteActionCorsPolicyPtrOutput() URLMapDefaultRouteActionCorsPolicyPtrOutput {
+	return i.ToURLMapDefaultRouteActionCorsPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapDefaultRouteActionCorsPolicyPtrType) ToURLMapDefaultRouteActionCorsPolicyPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionCorsPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionCorsPolicyPtrOutput)
+}
+
+type URLMapDefaultRouteActionCorsPolicyOutput struct{ *pulumi.OutputState }
+
+func (URLMapDefaultRouteActionCorsPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapDefaultRouteActionCorsPolicy)(nil)).Elem()
+}
+
+func (o URLMapDefaultRouteActionCorsPolicyOutput) ToURLMapDefaultRouteActionCorsPolicyOutput() URLMapDefaultRouteActionCorsPolicyOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionCorsPolicyOutput) ToURLMapDefaultRouteActionCorsPolicyOutputWithContext(ctx context.Context) URLMapDefaultRouteActionCorsPolicyOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionCorsPolicyOutput) ToURLMapDefaultRouteActionCorsPolicyPtrOutput() URLMapDefaultRouteActionCorsPolicyPtrOutput {
+	return o.ToURLMapDefaultRouteActionCorsPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapDefaultRouteActionCorsPolicyOutput) ToURLMapDefaultRouteActionCorsPolicyPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionCorsPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapDefaultRouteActionCorsPolicy) *URLMapDefaultRouteActionCorsPolicy {
+		return &v
+	}).(URLMapDefaultRouteActionCorsPolicyPtrOutput)
+}
+
+// In response to a preflight request, setting this to true indicates that the actual request can include user credentials.
+// This translates to the Access-Control-Allow-Credentials header.
+func (o URLMapDefaultRouteActionCorsPolicyOutput) AllowCredentials() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteActionCorsPolicy) *bool { return v.AllowCredentials }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the content for the Access-Control-Allow-Headers header.
+func (o URLMapDefaultRouteActionCorsPolicyOutput) AllowHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteActionCorsPolicy) []string { return v.AllowHeaders }).(pulumi.StringArrayOutput)
+}
+
+// Specifies the content for the Access-Control-Allow-Methods header.
+func (o URLMapDefaultRouteActionCorsPolicyOutput) AllowMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteActionCorsPolicy) []string { return v.AllowMethods }).(pulumi.StringArrayOutput)
+}
+
+// Specifies the regular expression patterns that match allowed origins. For regular expression grammar
+// please see en.cppreference.com/w/cpp/regex/ecmascript
+// An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+func (o URLMapDefaultRouteActionCorsPolicyOutput) AllowOriginRegexes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteActionCorsPolicy) []string { return v.AllowOriginRegexes }).(pulumi.StringArrayOutput)
+}
+
+// Specifies the list of origins that will be allowed to do CORS requests.
+// An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+func (o URLMapDefaultRouteActionCorsPolicyOutput) AllowOrigins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteActionCorsPolicy) []string { return v.AllowOrigins }).(pulumi.StringArrayOutput)
+}
+
+// If true, specifies the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
+func (o URLMapDefaultRouteActionCorsPolicyOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteActionCorsPolicy) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the content for the Access-Control-Expose-Headers header.
+func (o URLMapDefaultRouteActionCorsPolicyOutput) ExposeHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteActionCorsPolicy) []string { return v.ExposeHeaders }).(pulumi.StringArrayOutput)
+}
+
+// Specifies how long results of a preflight request can be cached in seconds.
+// This translates to the Access-Control-Max-Age header.
+func (o URLMapDefaultRouteActionCorsPolicyOutput) MaxAge() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteActionCorsPolicy) *int { return v.MaxAge }).(pulumi.IntPtrOutput)
+}
+
+type URLMapDefaultRouteActionCorsPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapDefaultRouteActionCorsPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapDefaultRouteActionCorsPolicy)(nil)).Elem()
+}
+
+func (o URLMapDefaultRouteActionCorsPolicyPtrOutput) ToURLMapDefaultRouteActionCorsPolicyPtrOutput() URLMapDefaultRouteActionCorsPolicyPtrOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionCorsPolicyPtrOutput) ToURLMapDefaultRouteActionCorsPolicyPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionCorsPolicyPtrOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionCorsPolicyPtrOutput) Elem() URLMapDefaultRouteActionCorsPolicyOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteActionCorsPolicy) URLMapDefaultRouteActionCorsPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapDefaultRouteActionCorsPolicy
+		return ret
+	}).(URLMapDefaultRouteActionCorsPolicyOutput)
+}
+
+// In response to a preflight request, setting this to true indicates that the actual request can include user credentials.
+// This translates to the Access-Control-Allow-Credentials header.
+func (o URLMapDefaultRouteActionCorsPolicyPtrOutput) AllowCredentials() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteActionCorsPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowCredentials
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the content for the Access-Control-Allow-Headers header.
+func (o URLMapDefaultRouteActionCorsPolicyPtrOutput) AllowHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteActionCorsPolicy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowHeaders
+	}).(pulumi.StringArrayOutput)
+}
+
+// Specifies the content for the Access-Control-Allow-Methods header.
+func (o URLMapDefaultRouteActionCorsPolicyPtrOutput) AllowMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteActionCorsPolicy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowMethods
+	}).(pulumi.StringArrayOutput)
+}
+
+// Specifies the regular expression patterns that match allowed origins. For regular expression grammar
+// please see en.cppreference.com/w/cpp/regex/ecmascript
+// An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+func (o URLMapDefaultRouteActionCorsPolicyPtrOutput) AllowOriginRegexes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteActionCorsPolicy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowOriginRegexes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Specifies the list of origins that will be allowed to do CORS requests.
+// An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+func (o URLMapDefaultRouteActionCorsPolicyPtrOutput) AllowOrigins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteActionCorsPolicy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowOrigins
+	}).(pulumi.StringArrayOutput)
+}
+
+// If true, specifies the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
+func (o URLMapDefaultRouteActionCorsPolicyPtrOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteActionCorsPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Disabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the content for the Access-Control-Expose-Headers header.
+func (o URLMapDefaultRouteActionCorsPolicyPtrOutput) ExposeHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteActionCorsPolicy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExposeHeaders
+	}).(pulumi.StringArrayOutput)
+}
+
+// Specifies how long results of a preflight request can be cached in seconds.
+// This translates to the Access-Control-Max-Age header.
+func (o URLMapDefaultRouteActionCorsPolicyPtrOutput) MaxAge() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteActionCorsPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxAge
+	}).(pulumi.IntPtrOutput)
+}
+
+type URLMapDefaultRouteActionFaultInjectionPolicy struct {
+	// The specification for how client requests are aborted as part of fault injection.
+	// Structure is documented below.
+	Abort *URLMapDefaultRouteActionFaultInjectionPolicyAbort `pulumi:"abort"`
+	// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+	// Structure is documented below.
+	Delay *URLMapDefaultRouteActionFaultInjectionPolicyDelay `pulumi:"delay"`
+}
+
+// URLMapDefaultRouteActionFaultInjectionPolicyInput is an input type that accepts URLMapDefaultRouteActionFaultInjectionPolicyArgs and URLMapDefaultRouteActionFaultInjectionPolicyOutput values.
+// You can construct a concrete instance of `URLMapDefaultRouteActionFaultInjectionPolicyInput` via:
+//
+//	URLMapDefaultRouteActionFaultInjectionPolicyArgs{...}
+type URLMapDefaultRouteActionFaultInjectionPolicyInput interface {
+	pulumi.Input
+
+	ToURLMapDefaultRouteActionFaultInjectionPolicyOutput() URLMapDefaultRouteActionFaultInjectionPolicyOutput
+	ToURLMapDefaultRouteActionFaultInjectionPolicyOutputWithContext(context.Context) URLMapDefaultRouteActionFaultInjectionPolicyOutput
+}
+
+type URLMapDefaultRouteActionFaultInjectionPolicyArgs struct {
+	// The specification for how client requests are aborted as part of fault injection.
+	// Structure is documented below.
+	Abort URLMapDefaultRouteActionFaultInjectionPolicyAbortPtrInput `pulumi:"abort"`
+	// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+	// Structure is documented below.
+	Delay URLMapDefaultRouteActionFaultInjectionPolicyDelayPtrInput `pulumi:"delay"`
+}
+
+func (URLMapDefaultRouteActionFaultInjectionPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapDefaultRouteActionFaultInjectionPolicy)(nil)).Elem()
+}
+
+func (i URLMapDefaultRouteActionFaultInjectionPolicyArgs) ToURLMapDefaultRouteActionFaultInjectionPolicyOutput() URLMapDefaultRouteActionFaultInjectionPolicyOutput {
+	return i.ToURLMapDefaultRouteActionFaultInjectionPolicyOutputWithContext(context.Background())
+}
+
+func (i URLMapDefaultRouteActionFaultInjectionPolicyArgs) ToURLMapDefaultRouteActionFaultInjectionPolicyOutputWithContext(ctx context.Context) URLMapDefaultRouteActionFaultInjectionPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionFaultInjectionPolicyOutput)
+}
+
+func (i URLMapDefaultRouteActionFaultInjectionPolicyArgs) ToURLMapDefaultRouteActionFaultInjectionPolicyPtrOutput() URLMapDefaultRouteActionFaultInjectionPolicyPtrOutput {
+	return i.ToURLMapDefaultRouteActionFaultInjectionPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapDefaultRouteActionFaultInjectionPolicyArgs) ToURLMapDefaultRouteActionFaultInjectionPolicyPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionFaultInjectionPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionFaultInjectionPolicyOutput).ToURLMapDefaultRouteActionFaultInjectionPolicyPtrOutputWithContext(ctx)
+}
+
+// URLMapDefaultRouteActionFaultInjectionPolicyPtrInput is an input type that accepts URLMapDefaultRouteActionFaultInjectionPolicyArgs, URLMapDefaultRouteActionFaultInjectionPolicyPtr and URLMapDefaultRouteActionFaultInjectionPolicyPtrOutput values.
+// You can construct a concrete instance of `URLMapDefaultRouteActionFaultInjectionPolicyPtrInput` via:
+//
+//	        URLMapDefaultRouteActionFaultInjectionPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapDefaultRouteActionFaultInjectionPolicyPtrInput interface {
+	pulumi.Input
+
+	ToURLMapDefaultRouteActionFaultInjectionPolicyPtrOutput() URLMapDefaultRouteActionFaultInjectionPolicyPtrOutput
+	ToURLMapDefaultRouteActionFaultInjectionPolicyPtrOutputWithContext(context.Context) URLMapDefaultRouteActionFaultInjectionPolicyPtrOutput
+}
+
+type urlmapDefaultRouteActionFaultInjectionPolicyPtrType URLMapDefaultRouteActionFaultInjectionPolicyArgs
+
+func URLMapDefaultRouteActionFaultInjectionPolicyPtr(v *URLMapDefaultRouteActionFaultInjectionPolicyArgs) URLMapDefaultRouteActionFaultInjectionPolicyPtrInput {
+	return (*urlmapDefaultRouteActionFaultInjectionPolicyPtrType)(v)
+}
+
+func (*urlmapDefaultRouteActionFaultInjectionPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapDefaultRouteActionFaultInjectionPolicy)(nil)).Elem()
+}
+
+func (i *urlmapDefaultRouteActionFaultInjectionPolicyPtrType) ToURLMapDefaultRouteActionFaultInjectionPolicyPtrOutput() URLMapDefaultRouteActionFaultInjectionPolicyPtrOutput {
+	return i.ToURLMapDefaultRouteActionFaultInjectionPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapDefaultRouteActionFaultInjectionPolicyPtrType) ToURLMapDefaultRouteActionFaultInjectionPolicyPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionFaultInjectionPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionFaultInjectionPolicyPtrOutput)
+}
+
+type URLMapDefaultRouteActionFaultInjectionPolicyOutput struct{ *pulumi.OutputState }
+
+func (URLMapDefaultRouteActionFaultInjectionPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapDefaultRouteActionFaultInjectionPolicy)(nil)).Elem()
+}
+
+func (o URLMapDefaultRouteActionFaultInjectionPolicyOutput) ToURLMapDefaultRouteActionFaultInjectionPolicyOutput() URLMapDefaultRouteActionFaultInjectionPolicyOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionFaultInjectionPolicyOutput) ToURLMapDefaultRouteActionFaultInjectionPolicyOutputWithContext(ctx context.Context) URLMapDefaultRouteActionFaultInjectionPolicyOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionFaultInjectionPolicyOutput) ToURLMapDefaultRouteActionFaultInjectionPolicyPtrOutput() URLMapDefaultRouteActionFaultInjectionPolicyPtrOutput {
+	return o.ToURLMapDefaultRouteActionFaultInjectionPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapDefaultRouteActionFaultInjectionPolicyOutput) ToURLMapDefaultRouteActionFaultInjectionPolicyPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionFaultInjectionPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapDefaultRouteActionFaultInjectionPolicy) *URLMapDefaultRouteActionFaultInjectionPolicy {
+		return &v
+	}).(URLMapDefaultRouteActionFaultInjectionPolicyPtrOutput)
+}
+
+// The specification for how client requests are aborted as part of fault injection.
+// Structure is documented below.
+func (o URLMapDefaultRouteActionFaultInjectionPolicyOutput) Abort() URLMapDefaultRouteActionFaultInjectionPolicyAbortPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteActionFaultInjectionPolicy) *URLMapDefaultRouteActionFaultInjectionPolicyAbort {
+		return v.Abort
+	}).(URLMapDefaultRouteActionFaultInjectionPolicyAbortPtrOutput)
+}
+
+// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+// Structure is documented below.
+func (o URLMapDefaultRouteActionFaultInjectionPolicyOutput) Delay() URLMapDefaultRouteActionFaultInjectionPolicyDelayPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteActionFaultInjectionPolicy) *URLMapDefaultRouteActionFaultInjectionPolicyDelay {
+		return v.Delay
+	}).(URLMapDefaultRouteActionFaultInjectionPolicyDelayPtrOutput)
+}
+
+type URLMapDefaultRouteActionFaultInjectionPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapDefaultRouteActionFaultInjectionPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapDefaultRouteActionFaultInjectionPolicy)(nil)).Elem()
+}
+
+func (o URLMapDefaultRouteActionFaultInjectionPolicyPtrOutput) ToURLMapDefaultRouteActionFaultInjectionPolicyPtrOutput() URLMapDefaultRouteActionFaultInjectionPolicyPtrOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionFaultInjectionPolicyPtrOutput) ToURLMapDefaultRouteActionFaultInjectionPolicyPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionFaultInjectionPolicyPtrOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionFaultInjectionPolicyPtrOutput) Elem() URLMapDefaultRouteActionFaultInjectionPolicyOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteActionFaultInjectionPolicy) URLMapDefaultRouteActionFaultInjectionPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapDefaultRouteActionFaultInjectionPolicy
+		return ret
+	}).(URLMapDefaultRouteActionFaultInjectionPolicyOutput)
+}
+
+// The specification for how client requests are aborted as part of fault injection.
+// Structure is documented below.
+func (o URLMapDefaultRouteActionFaultInjectionPolicyPtrOutput) Abort() URLMapDefaultRouteActionFaultInjectionPolicyAbortPtrOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteActionFaultInjectionPolicy) *URLMapDefaultRouteActionFaultInjectionPolicyAbort {
+		if v == nil {
+			return nil
+		}
+		return v.Abort
+	}).(URLMapDefaultRouteActionFaultInjectionPolicyAbortPtrOutput)
+}
+
+// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+// Structure is documented below.
+func (o URLMapDefaultRouteActionFaultInjectionPolicyPtrOutput) Delay() URLMapDefaultRouteActionFaultInjectionPolicyDelayPtrOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteActionFaultInjectionPolicy) *URLMapDefaultRouteActionFaultInjectionPolicyDelay {
+		if v == nil {
+			return nil
+		}
+		return v.Delay
+	}).(URLMapDefaultRouteActionFaultInjectionPolicyDelayPtrOutput)
+}
+
+type URLMapDefaultRouteActionFaultInjectionPolicyAbort struct {
+	// The HTTP status code used to abort the request.
+	// The value must be between 200 and 599 inclusive.
+	HttpStatus *int `pulumi:"httpStatus"`
+	// The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+	// The value must be between 0.0 and 100.0 inclusive.
+	Percentage *float64 `pulumi:"percentage"`
+}
+
+// URLMapDefaultRouteActionFaultInjectionPolicyAbortInput is an input type that accepts URLMapDefaultRouteActionFaultInjectionPolicyAbortArgs and URLMapDefaultRouteActionFaultInjectionPolicyAbortOutput values.
+// You can construct a concrete instance of `URLMapDefaultRouteActionFaultInjectionPolicyAbortInput` via:
+//
+//	URLMapDefaultRouteActionFaultInjectionPolicyAbortArgs{...}
+type URLMapDefaultRouteActionFaultInjectionPolicyAbortInput interface {
+	pulumi.Input
+
+	ToURLMapDefaultRouteActionFaultInjectionPolicyAbortOutput() URLMapDefaultRouteActionFaultInjectionPolicyAbortOutput
+	ToURLMapDefaultRouteActionFaultInjectionPolicyAbortOutputWithContext(context.Context) URLMapDefaultRouteActionFaultInjectionPolicyAbortOutput
+}
+
+type URLMapDefaultRouteActionFaultInjectionPolicyAbortArgs struct {
+	// The HTTP status code used to abort the request.
+	// The value must be between 200 and 599 inclusive.
+	HttpStatus pulumi.IntPtrInput `pulumi:"httpStatus"`
+	// The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+	// The value must be between 0.0 and 100.0 inclusive.
+	Percentage pulumi.Float64PtrInput `pulumi:"percentage"`
+}
+
+func (URLMapDefaultRouteActionFaultInjectionPolicyAbortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapDefaultRouteActionFaultInjectionPolicyAbort)(nil)).Elem()
+}
+
+func (i URLMapDefaultRouteActionFaultInjectionPolicyAbortArgs) ToURLMapDefaultRouteActionFaultInjectionPolicyAbortOutput() URLMapDefaultRouteActionFaultInjectionPolicyAbortOutput {
+	return i.ToURLMapDefaultRouteActionFaultInjectionPolicyAbortOutputWithContext(context.Background())
+}
+
+func (i URLMapDefaultRouteActionFaultInjectionPolicyAbortArgs) ToURLMapDefaultRouteActionFaultInjectionPolicyAbortOutputWithContext(ctx context.Context) URLMapDefaultRouteActionFaultInjectionPolicyAbortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionFaultInjectionPolicyAbortOutput)
+}
+
+func (i URLMapDefaultRouteActionFaultInjectionPolicyAbortArgs) ToURLMapDefaultRouteActionFaultInjectionPolicyAbortPtrOutput() URLMapDefaultRouteActionFaultInjectionPolicyAbortPtrOutput {
+	return i.ToURLMapDefaultRouteActionFaultInjectionPolicyAbortPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapDefaultRouteActionFaultInjectionPolicyAbortArgs) ToURLMapDefaultRouteActionFaultInjectionPolicyAbortPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionFaultInjectionPolicyAbortPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionFaultInjectionPolicyAbortOutput).ToURLMapDefaultRouteActionFaultInjectionPolicyAbortPtrOutputWithContext(ctx)
+}
+
+// URLMapDefaultRouteActionFaultInjectionPolicyAbortPtrInput is an input type that accepts URLMapDefaultRouteActionFaultInjectionPolicyAbortArgs, URLMapDefaultRouteActionFaultInjectionPolicyAbortPtr and URLMapDefaultRouteActionFaultInjectionPolicyAbortPtrOutput values.
+// You can construct a concrete instance of `URLMapDefaultRouteActionFaultInjectionPolicyAbortPtrInput` via:
+//
+//	        URLMapDefaultRouteActionFaultInjectionPolicyAbortArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapDefaultRouteActionFaultInjectionPolicyAbortPtrInput interface {
+	pulumi.Input
+
+	ToURLMapDefaultRouteActionFaultInjectionPolicyAbortPtrOutput() URLMapDefaultRouteActionFaultInjectionPolicyAbortPtrOutput
+	ToURLMapDefaultRouteActionFaultInjectionPolicyAbortPtrOutputWithContext(context.Context) URLMapDefaultRouteActionFaultInjectionPolicyAbortPtrOutput
+}
+
+type urlmapDefaultRouteActionFaultInjectionPolicyAbortPtrType URLMapDefaultRouteActionFaultInjectionPolicyAbortArgs
+
+func URLMapDefaultRouteActionFaultInjectionPolicyAbortPtr(v *URLMapDefaultRouteActionFaultInjectionPolicyAbortArgs) URLMapDefaultRouteActionFaultInjectionPolicyAbortPtrInput {
+	return (*urlmapDefaultRouteActionFaultInjectionPolicyAbortPtrType)(v)
+}
+
+func (*urlmapDefaultRouteActionFaultInjectionPolicyAbortPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapDefaultRouteActionFaultInjectionPolicyAbort)(nil)).Elem()
+}
+
+func (i *urlmapDefaultRouteActionFaultInjectionPolicyAbortPtrType) ToURLMapDefaultRouteActionFaultInjectionPolicyAbortPtrOutput() URLMapDefaultRouteActionFaultInjectionPolicyAbortPtrOutput {
+	return i.ToURLMapDefaultRouteActionFaultInjectionPolicyAbortPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapDefaultRouteActionFaultInjectionPolicyAbortPtrType) ToURLMapDefaultRouteActionFaultInjectionPolicyAbortPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionFaultInjectionPolicyAbortPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionFaultInjectionPolicyAbortPtrOutput)
+}
+
+type URLMapDefaultRouteActionFaultInjectionPolicyAbortOutput struct{ *pulumi.OutputState }
+
+func (URLMapDefaultRouteActionFaultInjectionPolicyAbortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapDefaultRouteActionFaultInjectionPolicyAbort)(nil)).Elem()
+}
+
+func (o URLMapDefaultRouteActionFaultInjectionPolicyAbortOutput) ToURLMapDefaultRouteActionFaultInjectionPolicyAbortOutput() URLMapDefaultRouteActionFaultInjectionPolicyAbortOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionFaultInjectionPolicyAbortOutput) ToURLMapDefaultRouteActionFaultInjectionPolicyAbortOutputWithContext(ctx context.Context) URLMapDefaultRouteActionFaultInjectionPolicyAbortOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionFaultInjectionPolicyAbortOutput) ToURLMapDefaultRouteActionFaultInjectionPolicyAbortPtrOutput() URLMapDefaultRouteActionFaultInjectionPolicyAbortPtrOutput {
+	return o.ToURLMapDefaultRouteActionFaultInjectionPolicyAbortPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapDefaultRouteActionFaultInjectionPolicyAbortOutput) ToURLMapDefaultRouteActionFaultInjectionPolicyAbortPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionFaultInjectionPolicyAbortPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapDefaultRouteActionFaultInjectionPolicyAbort) *URLMapDefaultRouteActionFaultInjectionPolicyAbort {
+		return &v
+	}).(URLMapDefaultRouteActionFaultInjectionPolicyAbortPtrOutput)
+}
+
+// The HTTP status code used to abort the request.
+// The value must be between 200 and 599 inclusive.
+func (o URLMapDefaultRouteActionFaultInjectionPolicyAbortOutput) HttpStatus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteActionFaultInjectionPolicyAbort) *int { return v.HttpStatus }).(pulumi.IntPtrOutput)
+}
+
+// The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+// The value must be between 0.0 and 100.0 inclusive.
+func (o URLMapDefaultRouteActionFaultInjectionPolicyAbortOutput) Percentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteActionFaultInjectionPolicyAbort) *float64 { return v.Percentage }).(pulumi.Float64PtrOutput)
+}
+
+type URLMapDefaultRouteActionFaultInjectionPolicyAbortPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapDefaultRouteActionFaultInjectionPolicyAbortPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapDefaultRouteActionFaultInjectionPolicyAbort)(nil)).Elem()
+}
+
+func (o URLMapDefaultRouteActionFaultInjectionPolicyAbortPtrOutput) ToURLMapDefaultRouteActionFaultInjectionPolicyAbortPtrOutput() URLMapDefaultRouteActionFaultInjectionPolicyAbortPtrOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionFaultInjectionPolicyAbortPtrOutput) ToURLMapDefaultRouteActionFaultInjectionPolicyAbortPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionFaultInjectionPolicyAbortPtrOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionFaultInjectionPolicyAbortPtrOutput) Elem() URLMapDefaultRouteActionFaultInjectionPolicyAbortOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteActionFaultInjectionPolicyAbort) URLMapDefaultRouteActionFaultInjectionPolicyAbort {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapDefaultRouteActionFaultInjectionPolicyAbort
+		return ret
+	}).(URLMapDefaultRouteActionFaultInjectionPolicyAbortOutput)
+}
+
+// The HTTP status code used to abort the request.
+// The value must be between 200 and 599 inclusive.
+func (o URLMapDefaultRouteActionFaultInjectionPolicyAbortPtrOutput) HttpStatus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteActionFaultInjectionPolicyAbort) *int {
+		if v == nil {
+			return nil
+		}
+		return v.HttpStatus
+	}).(pulumi.IntPtrOutput)
+}
+
+// The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+// The value must be between 0.0 and 100.0 inclusive.
+func (o URLMapDefaultRouteActionFaultInjectionPolicyAbortPtrOutput) Percentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteActionFaultInjectionPolicyAbort) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Percentage
+	}).(pulumi.Float64PtrOutput)
+}
+
+type URLMapDefaultRouteActionFaultInjectionPolicyDelay struct {
+	// Specifies the value of the fixed delay interval.
+	// Structure is documented below.
+	FixedDelay *URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay `pulumi:"fixedDelay"`
+	// The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection.
+	// The value must be between 0.0 and 100.0 inclusive.
+	Percentage *float64 `pulumi:"percentage"`
+}
+
+// URLMapDefaultRouteActionFaultInjectionPolicyDelayInput is an input type that accepts URLMapDefaultRouteActionFaultInjectionPolicyDelayArgs and URLMapDefaultRouteActionFaultInjectionPolicyDelayOutput values.
+// You can construct a concrete instance of `URLMapDefaultRouteActionFaultInjectionPolicyDelayInput` via:
+//
+//	URLMapDefaultRouteActionFaultInjectionPolicyDelayArgs{...}
+type URLMapDefaultRouteActionFaultInjectionPolicyDelayInput interface {
+	pulumi.Input
+
+	ToURLMapDefaultRouteActionFaultInjectionPolicyDelayOutput() URLMapDefaultRouteActionFaultInjectionPolicyDelayOutput
+	ToURLMapDefaultRouteActionFaultInjectionPolicyDelayOutputWithContext(context.Context) URLMapDefaultRouteActionFaultInjectionPolicyDelayOutput
+}
+
+type URLMapDefaultRouteActionFaultInjectionPolicyDelayArgs struct {
+	// Specifies the value of the fixed delay interval.
+	// Structure is documented below.
+	FixedDelay URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrInput `pulumi:"fixedDelay"`
+	// The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection.
+	// The value must be between 0.0 and 100.0 inclusive.
+	Percentage pulumi.Float64PtrInput `pulumi:"percentage"`
+}
+
+func (URLMapDefaultRouteActionFaultInjectionPolicyDelayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapDefaultRouteActionFaultInjectionPolicyDelay)(nil)).Elem()
+}
+
+func (i URLMapDefaultRouteActionFaultInjectionPolicyDelayArgs) ToURLMapDefaultRouteActionFaultInjectionPolicyDelayOutput() URLMapDefaultRouteActionFaultInjectionPolicyDelayOutput {
+	return i.ToURLMapDefaultRouteActionFaultInjectionPolicyDelayOutputWithContext(context.Background())
+}
+
+func (i URLMapDefaultRouteActionFaultInjectionPolicyDelayArgs) ToURLMapDefaultRouteActionFaultInjectionPolicyDelayOutputWithContext(ctx context.Context) URLMapDefaultRouteActionFaultInjectionPolicyDelayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionFaultInjectionPolicyDelayOutput)
+}
+
+func (i URLMapDefaultRouteActionFaultInjectionPolicyDelayArgs) ToURLMapDefaultRouteActionFaultInjectionPolicyDelayPtrOutput() URLMapDefaultRouteActionFaultInjectionPolicyDelayPtrOutput {
+	return i.ToURLMapDefaultRouteActionFaultInjectionPolicyDelayPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapDefaultRouteActionFaultInjectionPolicyDelayArgs) ToURLMapDefaultRouteActionFaultInjectionPolicyDelayPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionFaultInjectionPolicyDelayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionFaultInjectionPolicyDelayOutput).ToURLMapDefaultRouteActionFaultInjectionPolicyDelayPtrOutputWithContext(ctx)
+}
+
+// URLMapDefaultRouteActionFaultInjectionPolicyDelayPtrInput is an input type that accepts URLMapDefaultRouteActionFaultInjectionPolicyDelayArgs, URLMapDefaultRouteActionFaultInjectionPolicyDelayPtr and URLMapDefaultRouteActionFaultInjectionPolicyDelayPtrOutput values.
+// You can construct a concrete instance of `URLMapDefaultRouteActionFaultInjectionPolicyDelayPtrInput` via:
+//
+//	        URLMapDefaultRouteActionFaultInjectionPolicyDelayArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapDefaultRouteActionFaultInjectionPolicyDelayPtrInput interface {
+	pulumi.Input
+
+	ToURLMapDefaultRouteActionFaultInjectionPolicyDelayPtrOutput() URLMapDefaultRouteActionFaultInjectionPolicyDelayPtrOutput
+	ToURLMapDefaultRouteActionFaultInjectionPolicyDelayPtrOutputWithContext(context.Context) URLMapDefaultRouteActionFaultInjectionPolicyDelayPtrOutput
+}
+
+type urlmapDefaultRouteActionFaultInjectionPolicyDelayPtrType URLMapDefaultRouteActionFaultInjectionPolicyDelayArgs
+
+func URLMapDefaultRouteActionFaultInjectionPolicyDelayPtr(v *URLMapDefaultRouteActionFaultInjectionPolicyDelayArgs) URLMapDefaultRouteActionFaultInjectionPolicyDelayPtrInput {
+	return (*urlmapDefaultRouteActionFaultInjectionPolicyDelayPtrType)(v)
+}
+
+func (*urlmapDefaultRouteActionFaultInjectionPolicyDelayPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapDefaultRouteActionFaultInjectionPolicyDelay)(nil)).Elem()
+}
+
+func (i *urlmapDefaultRouteActionFaultInjectionPolicyDelayPtrType) ToURLMapDefaultRouteActionFaultInjectionPolicyDelayPtrOutput() URLMapDefaultRouteActionFaultInjectionPolicyDelayPtrOutput {
+	return i.ToURLMapDefaultRouteActionFaultInjectionPolicyDelayPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapDefaultRouteActionFaultInjectionPolicyDelayPtrType) ToURLMapDefaultRouteActionFaultInjectionPolicyDelayPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionFaultInjectionPolicyDelayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionFaultInjectionPolicyDelayPtrOutput)
+}
+
+type URLMapDefaultRouteActionFaultInjectionPolicyDelayOutput struct{ *pulumi.OutputState }
+
+func (URLMapDefaultRouteActionFaultInjectionPolicyDelayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapDefaultRouteActionFaultInjectionPolicyDelay)(nil)).Elem()
+}
+
+func (o URLMapDefaultRouteActionFaultInjectionPolicyDelayOutput) ToURLMapDefaultRouteActionFaultInjectionPolicyDelayOutput() URLMapDefaultRouteActionFaultInjectionPolicyDelayOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionFaultInjectionPolicyDelayOutput) ToURLMapDefaultRouteActionFaultInjectionPolicyDelayOutputWithContext(ctx context.Context) URLMapDefaultRouteActionFaultInjectionPolicyDelayOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionFaultInjectionPolicyDelayOutput) ToURLMapDefaultRouteActionFaultInjectionPolicyDelayPtrOutput() URLMapDefaultRouteActionFaultInjectionPolicyDelayPtrOutput {
+	return o.ToURLMapDefaultRouteActionFaultInjectionPolicyDelayPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapDefaultRouteActionFaultInjectionPolicyDelayOutput) ToURLMapDefaultRouteActionFaultInjectionPolicyDelayPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionFaultInjectionPolicyDelayPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapDefaultRouteActionFaultInjectionPolicyDelay) *URLMapDefaultRouteActionFaultInjectionPolicyDelay {
+		return &v
+	}).(URLMapDefaultRouteActionFaultInjectionPolicyDelayPtrOutput)
+}
+
+// Specifies the value of the fixed delay interval.
+// Structure is documented below.
+func (o URLMapDefaultRouteActionFaultInjectionPolicyDelayOutput) FixedDelay() URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteActionFaultInjectionPolicyDelay) *URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay {
+		return v.FixedDelay
+	}).(URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput)
+}
+
+// The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection.
+// The value must be between 0.0 and 100.0 inclusive.
+func (o URLMapDefaultRouteActionFaultInjectionPolicyDelayOutput) Percentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteActionFaultInjectionPolicyDelay) *float64 { return v.Percentage }).(pulumi.Float64PtrOutput)
+}
+
+type URLMapDefaultRouteActionFaultInjectionPolicyDelayPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapDefaultRouteActionFaultInjectionPolicyDelayPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapDefaultRouteActionFaultInjectionPolicyDelay)(nil)).Elem()
+}
+
+func (o URLMapDefaultRouteActionFaultInjectionPolicyDelayPtrOutput) ToURLMapDefaultRouteActionFaultInjectionPolicyDelayPtrOutput() URLMapDefaultRouteActionFaultInjectionPolicyDelayPtrOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionFaultInjectionPolicyDelayPtrOutput) ToURLMapDefaultRouteActionFaultInjectionPolicyDelayPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionFaultInjectionPolicyDelayPtrOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionFaultInjectionPolicyDelayPtrOutput) Elem() URLMapDefaultRouteActionFaultInjectionPolicyDelayOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteActionFaultInjectionPolicyDelay) URLMapDefaultRouteActionFaultInjectionPolicyDelay {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapDefaultRouteActionFaultInjectionPolicyDelay
+		return ret
+	}).(URLMapDefaultRouteActionFaultInjectionPolicyDelayOutput)
+}
+
+// Specifies the value of the fixed delay interval.
+// Structure is documented below.
+func (o URLMapDefaultRouteActionFaultInjectionPolicyDelayPtrOutput) FixedDelay() URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteActionFaultInjectionPolicyDelay) *URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay {
+		if v == nil {
+			return nil
+		}
+		return v.FixedDelay
+	}).(URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput)
+}
+
+// The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection.
+// The value must be between 0.0 and 100.0 inclusive.
+func (o URLMapDefaultRouteActionFaultInjectionPolicyDelayPtrOutput) Percentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteActionFaultInjectionPolicyDelay) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Percentage
+	}).(pulumi.Float64PtrOutput)
+}
+
+type URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay struct {
+	// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+	// represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+	Nanos *int `pulumi:"nanos"`
+	// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+	// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+	Seconds *string `pulumi:"seconds"`
+}
+
+// URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayInput is an input type that accepts URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs and URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayOutput values.
+// You can construct a concrete instance of `URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayInput` via:
+//
+//	URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs{...}
+type URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayInput interface {
+	pulumi.Input
+
+	ToURLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayOutput() URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayOutput
+	ToURLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayOutputWithContext(context.Context) URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayOutput
+}
+
+type URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs struct {
+	// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+	// represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
+	// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+	// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+	Seconds pulumi.StringPtrInput `pulumi:"seconds"`
+}
+
+func (URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay)(nil)).Elem()
+}
+
+func (i URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs) ToURLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayOutput() URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayOutput {
+	return i.ToURLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayOutputWithContext(context.Background())
+}
+
+func (i URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs) ToURLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayOutputWithContext(ctx context.Context) URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayOutput)
+}
+
+func (i URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs) ToURLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput() URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput {
+	return i.ToURLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs) ToURLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayOutput).ToURLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutputWithContext(ctx)
+}
+
+// URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrInput is an input type that accepts URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs, URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtr and URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput values.
+// You can construct a concrete instance of `URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrInput` via:
+//
+//	        URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrInput interface {
+	pulumi.Input
+
+	ToURLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput() URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput
+	ToURLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutputWithContext(context.Context) URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput
+}
+
+type urlmapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrType URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs
+
+func URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtr(v *URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs) URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrInput {
+	return (*urlmapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrType)(v)
+}
+
+func (*urlmapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay)(nil)).Elem()
+}
+
+func (i *urlmapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrType) ToURLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput() URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput {
+	return i.ToURLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrType) ToURLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput)
+}
+
+type URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayOutput struct{ *pulumi.OutputState }
+
+func (URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay)(nil)).Elem()
+}
+
+func (o URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayOutput) ToURLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayOutput() URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayOutput) ToURLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayOutputWithContext(ctx context.Context) URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayOutput) ToURLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput() URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput {
+	return o.ToURLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayOutput) ToURLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay) *URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay {
+		return &v
+	}).(URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput)
+}
+
+// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+// represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+func (o URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay) *int { return v.Nanos }).(pulumi.IntPtrOutput)
+}
+
+// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+func (o URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayOutput) Seconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay) *string { return v.Seconds }).(pulumi.StringPtrOutput)
+}
+
+type URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay)(nil)).Elem()
+}
+
+func (o URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput) ToURLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput() URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput) ToURLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutputWithContext(ctx context.Context) URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput {
+	return o
+}
+
+func (o URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput) Elem() URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay) URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay
+		return ret
+	}).(URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayOutput)
+}
+
+// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+// represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+func (o URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Nanos
+	}).(pulumi.IntPtrOutput)
+}
+
+// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+func (o URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput) Seconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelay) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Seconds
+	}).(pulumi.StringPtrOutput)
+}
+
 type URLMapDefaultRouteActionRequestMirrorPolicy struct {
 	// The full or partial URL to the BackendService resource being mirrored to.
 	BackendService string `pulumi:"backendService"`
@@ -42191,6 +43488,18 @@ func (o GetSubnetworksSubnetworkArrayOutput) Index(i pulumi.IntInput) GetSubnetw
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionInput)(nil)).Elem(), URLMapDefaultRouteActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionPtrInput)(nil)).Elem(), URLMapDefaultRouteActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionCorsPolicyInput)(nil)).Elem(), URLMapDefaultRouteActionCorsPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionCorsPolicyPtrInput)(nil)).Elem(), URLMapDefaultRouteActionCorsPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionFaultInjectionPolicyInput)(nil)).Elem(), URLMapDefaultRouteActionFaultInjectionPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionFaultInjectionPolicyPtrInput)(nil)).Elem(), URLMapDefaultRouteActionFaultInjectionPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionFaultInjectionPolicyAbortInput)(nil)).Elem(), URLMapDefaultRouteActionFaultInjectionPolicyAbortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionFaultInjectionPolicyAbortPtrInput)(nil)).Elem(), URLMapDefaultRouteActionFaultInjectionPolicyAbortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionFaultInjectionPolicyDelayInput)(nil)).Elem(), URLMapDefaultRouteActionFaultInjectionPolicyDelayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionFaultInjectionPolicyDelayPtrInput)(nil)).Elem(), URLMapDefaultRouteActionFaultInjectionPolicyDelayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayInput)(nil)).Elem(), URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrInput)(nil)).Elem(), URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionRequestMirrorPolicyInput)(nil)).Elem(), URLMapDefaultRouteActionRequestMirrorPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionRequestMirrorPolicyPtrInput)(nil)).Elem(), URLMapDefaultRouteActionRequestMirrorPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionRetryPolicyInput)(nil)).Elem(), URLMapDefaultRouteActionRetryPolicyArgs{})
@@ -42749,6 +44058,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkInput)(nil)).Elem(), GetSubnetworksSubnetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkArrayInput)(nil)).Elem(), GetSubnetworksSubnetworkArray{})
+	pulumi.RegisterOutputType(URLMapDefaultRouteActionOutput{})
+	pulumi.RegisterOutputType(URLMapDefaultRouteActionPtrOutput{})
+	pulumi.RegisterOutputType(URLMapDefaultRouteActionCorsPolicyOutput{})
+	pulumi.RegisterOutputType(URLMapDefaultRouteActionCorsPolicyPtrOutput{})
+	pulumi.RegisterOutputType(URLMapDefaultRouteActionFaultInjectionPolicyOutput{})
+	pulumi.RegisterOutputType(URLMapDefaultRouteActionFaultInjectionPolicyPtrOutput{})
+	pulumi.RegisterOutputType(URLMapDefaultRouteActionFaultInjectionPolicyAbortOutput{})
+	pulumi.RegisterOutputType(URLMapDefaultRouteActionFaultInjectionPolicyAbortPtrOutput{})
+	pulumi.RegisterOutputType(URLMapDefaultRouteActionFaultInjectionPolicyDelayOutput{})
+	pulumi.RegisterOutputType(URLMapDefaultRouteActionFaultInjectionPolicyDelayPtrOutput{})
+	pulumi.RegisterOutputType(URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayOutput{})
+	pulumi.RegisterOutputType(URLMapDefaultRouteActionFaultInjectionPolicyDelayFixedDelayPtrOutput{})
 	pulumi.RegisterOutputType(URLMapDefaultRouteActionRequestMirrorPolicyOutput{})
 	pulumi.RegisterOutputType(URLMapDefaultRouteActionRequestMirrorPolicyPtrOutput{})
 	pulumi.RegisterOutputType(URLMapDefaultRouteActionRetryPolicyOutput{})

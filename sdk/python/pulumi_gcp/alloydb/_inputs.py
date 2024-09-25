@@ -1810,6 +1810,10 @@ if not MYPY:
         true.
         Structure is documented below.
         """
+        enable_outbound_public_ip: NotRequired[pulumi.Input[bool]]
+        """
+        Enabling outbound public ip for the instance.
+        """
         enable_public_ip: NotRequired[pulumi.Input[bool]]
         """
         Enabling public ip for the instance. If a user wishes to disable this,
@@ -1823,18 +1827,22 @@ elif False:
 class InstanceNetworkConfigArgs:
     def __init__(__self__, *,
                  authorized_external_networks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkConfigAuthorizedExternalNetworkArgs']]]] = None,
+                 enable_outbound_public_ip: Optional[pulumi.Input[bool]] = None,
                  enable_public_ip: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['InstanceNetworkConfigAuthorizedExternalNetworkArgs']]] authorized_external_networks: A list of external networks authorized to access this instance. This
                field is only allowed to be set when `enable_public_ip` is set to
                true.
                Structure is documented below.
+        :param pulumi.Input[bool] enable_outbound_public_ip: Enabling outbound public ip for the instance.
         :param pulumi.Input[bool] enable_public_ip: Enabling public ip for the instance. If a user wishes to disable this,
                please also clear the list of the authorized external networks set on
                the same instance.
         """
         if authorized_external_networks is not None:
             pulumi.set(__self__, "authorized_external_networks", authorized_external_networks)
+        if enable_outbound_public_ip is not None:
+            pulumi.set(__self__, "enable_outbound_public_ip", enable_outbound_public_ip)
         if enable_public_ip is not None:
             pulumi.set(__self__, "enable_public_ip", enable_public_ip)
 
@@ -1852,6 +1860,18 @@ class InstanceNetworkConfigArgs:
     @authorized_external_networks.setter
     def authorized_external_networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkConfigAuthorizedExternalNetworkArgs']]]]):
         pulumi.set(self, "authorized_external_networks", value)
+
+    @property
+    @pulumi.getter(name="enableOutboundPublicIp")
+    def enable_outbound_public_ip(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enabling outbound public ip for the instance.
+        """
+        return pulumi.get(self, "enable_outbound_public_ip")
+
+    @enable_outbound_public_ip.setter
+    def enable_outbound_public_ip(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_outbound_public_ip", value)
 
     @property
     @pulumi.getter(name="enablePublicIp")

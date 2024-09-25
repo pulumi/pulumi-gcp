@@ -35,6 +35,13 @@ __all__ = [
     'ConnectionProfileOracleStaticServiceIpConnectivity',
     'ConnectionProfilePostgresql',
     'ConnectionProfilePostgresqlSsl',
+    'MigrationJobDumpFlags',
+    'MigrationJobDumpFlagsDumpFlag',
+    'MigrationJobError',
+    'MigrationJobPerformanceConfig',
+    'MigrationJobReverseSshConnectivity',
+    'MigrationJobStaticIpConnectivity',
+    'MigrationJobVpcPeeringConnectivity',
     'PrivateConnectionError',
     'PrivateConnectionVpcPeeringConfig',
 ]
@@ -1728,6 +1735,267 @@ class ConnectionProfilePostgresqlSsl(dict):
         The current connection profile state.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class MigrationJobDumpFlags(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dumpFlags":
+            suggest = "dump_flags"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MigrationJobDumpFlags. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MigrationJobDumpFlags.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MigrationJobDumpFlags.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dump_flags: Optional[Sequence['outputs.MigrationJobDumpFlagsDumpFlag']] = None):
+        """
+        :param Sequence['MigrationJobDumpFlagsDumpFlagArgs'] dump_flags: A list of dump flags
+               Structure is documented below.
+        """
+        if dump_flags is not None:
+            pulumi.set(__self__, "dump_flags", dump_flags)
+
+    @property
+    @pulumi.getter(name="dumpFlags")
+    def dump_flags(self) -> Optional[Sequence['outputs.MigrationJobDumpFlagsDumpFlag']]:
+        """
+        A list of dump flags
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dump_flags")
+
+
+@pulumi.output_type
+class MigrationJobDumpFlagsDumpFlag(dict):
+    def __init__(__self__, *,
+                 name: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str name: The name of the flag
+        :param str value: The vale of the flag
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of the flag
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        The vale of the flag
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class MigrationJobError(dict):
+    def __init__(__self__, *,
+                 code: Optional[int] = None,
+                 details: Optional[Sequence[Mapping[str, str]]] = None,
+                 message: Optional[str] = None):
+        """
+        :param int code: (Output)
+               The status code, which should be an enum value of google.rpc.Code.
+        :param Sequence[Mapping[str, str]] details: (Output)
+               A list of messages that carry the error details.
+        :param str message: (Output)
+               Human readable message indicating details about the current status.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if details is not None:
+            pulumi.set(__self__, "details", details)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[int]:
+        """
+        (Output)
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def details(self) -> Optional[Sequence[Mapping[str, str]]]:
+        """
+        (Output)
+        A list of messages that carry the error details.
+        """
+        return pulumi.get(self, "details")
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[str]:
+        """
+        (Output)
+        Human readable message indicating details about the current status.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class MigrationJobPerformanceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dumpParallelLevel":
+            suggest = "dump_parallel_level"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MigrationJobPerformanceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MigrationJobPerformanceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MigrationJobPerformanceConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dump_parallel_level: Optional[str] = None):
+        """
+        :param str dump_parallel_level: Initial dump parallelism level.
+               Possible values are: `MIN`, `OPTIMAL`, `MAX`.
+        """
+        if dump_parallel_level is not None:
+            pulumi.set(__self__, "dump_parallel_level", dump_parallel_level)
+
+    @property
+    @pulumi.getter(name="dumpParallelLevel")
+    def dump_parallel_level(self) -> Optional[str]:
+        """
+        Initial dump parallelism level.
+        Possible values are: `MIN`, `OPTIMAL`, `MAX`.
+        """
+        return pulumi.get(self, "dump_parallel_level")
+
+
+@pulumi.output_type
+class MigrationJobReverseSshConnectivity(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "vmIp":
+            suggest = "vm_ip"
+        elif key == "vmPort":
+            suggest = "vm_port"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MigrationJobReverseSshConnectivity. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MigrationJobReverseSshConnectivity.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MigrationJobReverseSshConnectivity.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 vm: Optional[str] = None,
+                 vm_ip: Optional[str] = None,
+                 vm_port: Optional[int] = None,
+                 vpc: Optional[str] = None):
+        """
+        :param str vm: The name of the virtual machine (Compute Engine) used as the bastion server
+               for the SSH tunnel.
+        :param str vm_ip: The IP of the virtual machine (Compute Engine) used as the bastion server
+               for the SSH tunnel.
+        :param int vm_port: The forwarding port of the virtual machine (Compute Engine) used as the
+               bastion server for the SSH tunnel.
+        :param str vpc: The name of the VPC to peer with the Cloud SQL private network.
+        """
+        if vm is not None:
+            pulumi.set(__self__, "vm", vm)
+        if vm_ip is not None:
+            pulumi.set(__self__, "vm_ip", vm_ip)
+        if vm_port is not None:
+            pulumi.set(__self__, "vm_port", vm_port)
+        if vpc is not None:
+            pulumi.set(__self__, "vpc", vpc)
+
+    @property
+    @pulumi.getter
+    def vm(self) -> Optional[str]:
+        """
+        The name of the virtual machine (Compute Engine) used as the bastion server
+        for the SSH tunnel.
+        """
+        return pulumi.get(self, "vm")
+
+    @property
+    @pulumi.getter(name="vmIp")
+    def vm_ip(self) -> Optional[str]:
+        """
+        The IP of the virtual machine (Compute Engine) used as the bastion server
+        for the SSH tunnel.
+        """
+        return pulumi.get(self, "vm_ip")
+
+    @property
+    @pulumi.getter(name="vmPort")
+    def vm_port(self) -> Optional[int]:
+        """
+        The forwarding port of the virtual machine (Compute Engine) used as the
+        bastion server for the SSH tunnel.
+        """
+        return pulumi.get(self, "vm_port")
+
+    @property
+    @pulumi.getter
+    def vpc(self) -> Optional[str]:
+        """
+        The name of the VPC to peer with the Cloud SQL private network.
+        """
+        return pulumi.get(self, "vpc")
+
+
+@pulumi.output_type
+class MigrationJobStaticIpConnectivity(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class MigrationJobVpcPeeringConnectivity(dict):
+    def __init__(__self__, *,
+                 vpc: Optional[str] = None):
+        """
+        :param str vpc: The name of the VPC network to peer with the Cloud SQL private network.
+        """
+        if vpc is not None:
+            pulumi.set(__self__, "vpc", vpc)
+
+    @property
+    @pulumi.getter
+    def vpc(self) -> Optional[str]:
+        """
+        The name of the VPC network to peer with the Cloud SQL private network.
+        """
+        return pulumi.get(self, "vpc")
 
 
 @pulumi.output_type

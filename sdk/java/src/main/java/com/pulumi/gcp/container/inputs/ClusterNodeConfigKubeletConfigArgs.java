@@ -5,7 +5,6 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -41,11 +40,6 @@ public final class ClusterNodeConfigKubeletConfigArgs extends com.pulumi.resourc
      * such as `&#34;300ms&#34;`. Valid time units are &#34;ns&#34;, &#34;us&#34; (or &#34;µs&#34;), &#34;ms&#34;, &#34;s&#34;, &#34;m&#34;,
      * &#34;h&#34;. The value must be a positive duration.
      * 
-     * &gt; Note: At the time of writing (2020/08/18) the GKE API rejects the `none`
-     * value and accepts an invalid `default` value instead. While this remains true,
-     * not specifying the `kubelet_config` block should be the equivalent of specifying
-     * `none`.
-     * 
      */
     @Import(name="cpuCfsQuotaPeriod")
     private @Nullable Output<String> cpuCfsQuotaPeriod;
@@ -56,11 +50,6 @@ public final class ClusterNodeConfigKubeletConfigArgs extends com.pulumi.resourc
      * such as `&#34;300ms&#34;`. Valid time units are &#34;ns&#34;, &#34;us&#34; (or &#34;µs&#34;), &#34;ms&#34;, &#34;s&#34;, &#34;m&#34;,
      * &#34;h&#34;. The value must be a positive duration.
      * 
-     * &gt; Note: At the time of writing (2020/08/18) the GKE API rejects the `none`
-     * value and accepts an invalid `default` value instead. While this remains true,
-     * not specifying the `kubelet_config` block should be the equivalent of specifying
-     * `none`.
-     * 
      */
     public Optional<Output<String>> cpuCfsQuotaPeriod() {
         return Optional.ofNullable(this.cpuCfsQuotaPeriod);
@@ -69,20 +58,20 @@ public final class ClusterNodeConfigKubeletConfigArgs extends com.pulumi.resourc
     /**
      * The CPU management policy on the node. See
      * [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
-     * One of `&#34;none&#34;` or `&#34;static&#34;`. Defaults to `none` when `kubelet_config` is unset.
+     * One of `&#34;none&#34;` or `&#34;static&#34;`. If unset (or set to the empty string `&#34;&#34;`), the API will treat the field as if set to &#34;none&#34;.
      * 
      */
-    @Import(name="cpuManagerPolicy", required=true)
-    private Output<String> cpuManagerPolicy;
+    @Import(name="cpuManagerPolicy")
+    private @Nullable Output<String> cpuManagerPolicy;
 
     /**
      * @return The CPU management policy on the node. See
      * [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
-     * One of `&#34;none&#34;` or `&#34;static&#34;`. Defaults to `none` when `kubelet_config` is unset.
+     * One of `&#34;none&#34;` or `&#34;static&#34;`. If unset (or set to the empty string `&#34;&#34;`), the API will treat the field as if set to &#34;none&#34;.
      * 
      */
-    public Output<String> cpuManagerPolicy() {
-        return this.cpuManagerPolicy;
+    public Optional<Output<String>> cpuManagerPolicy() {
+        return Optional.ofNullable(this.cpuManagerPolicy);
     }
 
     /**
@@ -172,11 +161,6 @@ public final class ClusterNodeConfigKubeletConfigArgs extends com.pulumi.resourc
          * such as `&#34;300ms&#34;`. Valid time units are &#34;ns&#34;, &#34;us&#34; (or &#34;µs&#34;), &#34;ms&#34;, &#34;s&#34;, &#34;m&#34;,
          * &#34;h&#34;. The value must be a positive duration.
          * 
-         * &gt; Note: At the time of writing (2020/08/18) the GKE API rejects the `none`
-         * value and accepts an invalid `default` value instead. While this remains true,
-         * not specifying the `kubelet_config` block should be the equivalent of specifying
-         * `none`.
-         * 
          * @return builder
          * 
          */
@@ -191,11 +175,6 @@ public final class ClusterNodeConfigKubeletConfigArgs extends com.pulumi.resourc
          * such as `&#34;300ms&#34;`. Valid time units are &#34;ns&#34;, &#34;us&#34; (or &#34;µs&#34;), &#34;ms&#34;, &#34;s&#34;, &#34;m&#34;,
          * &#34;h&#34;. The value must be a positive duration.
          * 
-         * &gt; Note: At the time of writing (2020/08/18) the GKE API rejects the `none`
-         * value and accepts an invalid `default` value instead. While this remains true,
-         * not specifying the `kubelet_config` block should be the equivalent of specifying
-         * `none`.
-         * 
          * @return builder
          * 
          */
@@ -206,12 +185,12 @@ public final class ClusterNodeConfigKubeletConfigArgs extends com.pulumi.resourc
         /**
          * @param cpuManagerPolicy The CPU management policy on the node. See
          * [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
-         * One of `&#34;none&#34;` or `&#34;static&#34;`. Defaults to `none` when `kubelet_config` is unset.
+         * One of `&#34;none&#34;` or `&#34;static&#34;`. If unset (or set to the empty string `&#34;&#34;`), the API will treat the field as if set to &#34;none&#34;.
          * 
          * @return builder
          * 
          */
-        public Builder cpuManagerPolicy(Output<String> cpuManagerPolicy) {
+        public Builder cpuManagerPolicy(@Nullable Output<String> cpuManagerPolicy) {
             $.cpuManagerPolicy = cpuManagerPolicy;
             return this;
         }
@@ -219,7 +198,7 @@ public final class ClusterNodeConfigKubeletConfigArgs extends com.pulumi.resourc
         /**
          * @param cpuManagerPolicy The CPU management policy on the node. See
          * [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
-         * One of `&#34;none&#34;` or `&#34;static&#34;`. Defaults to `none` when `kubelet_config` is unset.
+         * One of `&#34;none&#34;` or `&#34;static&#34;`. If unset (or set to the empty string `&#34;&#34;`), the API will treat the field as if set to &#34;none&#34;.
          * 
          * @return builder
          * 
@@ -271,9 +250,6 @@ public final class ClusterNodeConfigKubeletConfigArgs extends com.pulumi.resourc
         }
 
         public ClusterNodeConfigKubeletConfigArgs build() {
-            if ($.cpuManagerPolicy == null) {
-                throw new MissingRequiredPropertyException("ClusterNodeConfigKubeletConfigArgs", "cpuManagerPolicy");
-            }
             return $;
         }
     }

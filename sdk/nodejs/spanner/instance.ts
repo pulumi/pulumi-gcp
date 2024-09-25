@@ -28,6 +28,7 @@ import * as utilities from "../utilities";
  *     config: "regional-us-central1",
  *     displayName: "Test Spanner Instance",
  *     numNodes: 2,
+ *     edition: "STANDARD",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -166,6 +167,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
+     * The edition selected for this instance. Different editions provide different capabilities at different price points.
+     * Possible values are: `EDITION_UNSPECIFIED`, `STANDARD`, `ENTERPRISE`, `ENTERPRISE_PLUS`.
+     */
+    public readonly edition!: pulumi.Output<string>;
+    /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
@@ -222,6 +228,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["autoscalingConfig"] = state ? state.autoscalingConfig : undefined;
             resourceInputs["config"] = state ? state.config : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["edition"] = state ? state.edition : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
@@ -242,6 +249,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["autoscalingConfig"] = args ? args.autoscalingConfig : undefined;
             resourceInputs["config"] = args ? args.config : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["edition"] = args ? args.edition : undefined;
             resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -288,6 +296,11 @@ export interface InstanceState {
      * - - -
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * The edition selected for this instance. Different editions provide different capabilities at different price points.
+     * Possible values are: `EDITION_UNSPECIFIED`, `STANDARD`, `ENTERPRISE`, `ENTERPRISE_PLUS`.
+     */
+    edition?: pulumi.Input<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
@@ -359,6 +372,11 @@ export interface InstanceArgs {
      * - - -
      */
     displayName: pulumi.Input<string>;
+    /**
+     * The edition selected for this instance. Different editions provide different capabilities at different price points.
+     * Possible values are: `EDITION_UNSPECIFIED`, `STANDARD`, `ENTERPRISE`, `ENTERPRISE_PLUS`.
+     */
+    edition?: pulumi.Input<string>;
     /**
      * When deleting a spanner instance, this boolean option will delete all backups of this instance.
      * This must be set to true if you created a backup manually in the console.

@@ -1566,6 +1566,8 @@ class InstanceNetworkConfig(dict):
         suggest = None
         if key == "authorizedExternalNetworks":
             suggest = "authorized_external_networks"
+        elif key == "enableOutboundPublicIp":
+            suggest = "enable_outbound_public_ip"
         elif key == "enablePublicIp":
             suggest = "enable_public_ip"
 
@@ -1582,18 +1584,22 @@ class InstanceNetworkConfig(dict):
 
     def __init__(__self__, *,
                  authorized_external_networks: Optional[Sequence['outputs.InstanceNetworkConfigAuthorizedExternalNetwork']] = None,
+                 enable_outbound_public_ip: Optional[bool] = None,
                  enable_public_ip: Optional[bool] = None):
         """
         :param Sequence['InstanceNetworkConfigAuthorizedExternalNetworkArgs'] authorized_external_networks: A list of external networks authorized to access this instance. This
                field is only allowed to be set when `enable_public_ip` is set to
                true.
                Structure is documented below.
+        :param bool enable_outbound_public_ip: Enabling outbound public ip for the instance.
         :param bool enable_public_ip: Enabling public ip for the instance. If a user wishes to disable this,
                please also clear the list of the authorized external networks set on
                the same instance.
         """
         if authorized_external_networks is not None:
             pulumi.set(__self__, "authorized_external_networks", authorized_external_networks)
+        if enable_outbound_public_ip is not None:
+            pulumi.set(__self__, "enable_outbound_public_ip", enable_outbound_public_ip)
         if enable_public_ip is not None:
             pulumi.set(__self__, "enable_public_ip", enable_public_ip)
 
@@ -1607,6 +1613,14 @@ class InstanceNetworkConfig(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "authorized_external_networks")
+
+    @property
+    @pulumi.getter(name="enableOutboundPublicIp")
+    def enable_outbound_public_ip(self) -> Optional[bool]:
+        """
+        Enabling outbound public ip for the instance.
+        """
+        return pulumi.get(self, "enable_outbound_public_ip")
 
     @property
     @pulumi.getter(name="enablePublicIp")

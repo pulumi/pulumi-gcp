@@ -22,6 +22,7 @@ class AttachedDiskArgs:
                  disk: pulumi.Input[str],
                  instance: pulumi.Input[str],
                  device_name: Optional[pulumi.Input[str]] = None,
+                 interface: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
@@ -44,6 +45,15 @@ class AttachedDiskArgs:
                If not specified, the server chooses a default device name to apply
                to this disk, in the form persistent-disks-x, where x is a number
                assigned by Google Compute Engine.
+        :param pulumi.Input[str] interface: The disk interface used for attaching this disk.
+               
+               This field is only used for specific cases, please don't specify
+               this field without advice from Google. Not specifying the field
+               will allow the the server to assign the correct interface.
+               
+               Possible values:
+               "SCSI"
+               "NVME"
         :param pulumi.Input[str] mode: The mode in which to attach this disk, either READ_WRITE or
                READ_ONLY. If not specified, the default is to attach the disk in
                READ_WRITE mode.
@@ -60,6 +70,8 @@ class AttachedDiskArgs:
         pulumi.set(__self__, "instance", instance)
         if device_name is not None:
             pulumi.set(__self__, "device_name", device_name)
+        if interface is not None:
+            pulumi.set(__self__, "interface", interface)
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
         if project is not None:
@@ -119,6 +131,26 @@ class AttachedDiskArgs:
 
     @property
     @pulumi.getter
+    def interface(self) -> Optional[pulumi.Input[str]]:
+        """
+        The disk interface used for attaching this disk.
+
+        This field is only used for specific cases, please don't specify
+        this field without advice from Google. Not specifying the field
+        will allow the the server to assign the correct interface.
+
+        Possible values:
+        "SCSI"
+        "NVME"
+        """
+        return pulumi.get(self, "interface")
+
+    @interface.setter
+    def interface(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "interface", value)
+
+    @property
+    @pulumi.getter
     def mode(self) -> Optional[pulumi.Input[str]]:
         """
         The mode in which to attach this disk, either READ_WRITE or
@@ -168,6 +200,7 @@ class _AttachedDiskState:
                  device_name: Optional[pulumi.Input[str]] = None,
                  disk: Optional[pulumi.Input[str]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
+                 interface: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
@@ -190,6 +223,15 @@ class _AttachedDiskState:
                If the `self_link` is provided then `zone` and `project` are extracted from the
                self link. If only the name is used then `zone` and `project` must be defined
                as properties on the resource or provider.
+        :param pulumi.Input[str] interface: The disk interface used for attaching this disk.
+               
+               This field is only used for specific cases, please don't specify
+               this field without advice from Google. Not specifying the field
+               will allow the the server to assign the correct interface.
+               
+               Possible values:
+               "SCSI"
+               "NVME"
         :param pulumi.Input[str] mode: The mode in which to attach this disk, either READ_WRITE or
                READ_ONLY. If not specified, the default is to attach the disk in
                READ_WRITE mode.
@@ -208,6 +250,8 @@ class _AttachedDiskState:
             pulumi.set(__self__, "disk", disk)
         if instance is not None:
             pulumi.set(__self__, "instance", instance)
+        if interface is not None:
+            pulumi.set(__self__, "interface", interface)
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
         if project is not None:
@@ -267,6 +311,26 @@ class _AttachedDiskState:
 
     @property
     @pulumi.getter
+    def interface(self) -> Optional[pulumi.Input[str]]:
+        """
+        The disk interface used for attaching this disk.
+
+        This field is only used for specific cases, please don't specify
+        this field without advice from Google. Not specifying the field
+        will allow the the server to assign the correct interface.
+
+        Possible values:
+        "SCSI"
+        "NVME"
+        """
+        return pulumi.get(self, "interface")
+
+    @interface.setter
+    def interface(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "interface", value)
+
+    @property
+    @pulumi.getter
     def mode(self) -> Optional[pulumi.Input[str]]:
         """
         The mode in which to attach this disk, either READ_WRITE or
@@ -318,6 +382,7 @@ class AttachedDisk(pulumi.CustomResource):
                  device_name: Optional[pulumi.Input[str]] = None,
                  disk: Optional[pulumi.Input[str]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
+                 interface: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
@@ -397,6 +462,15 @@ class AttachedDisk(pulumi.CustomResource):
                If the `self_link` is provided then `zone` and `project` are extracted from the
                self link. If only the name is used then `zone` and `project` must be defined
                as properties on the resource or provider.
+        :param pulumi.Input[str] interface: The disk interface used for attaching this disk.
+               
+               This field is only used for specific cases, please don't specify
+               this field without advice from Google. Not specifying the field
+               will allow the the server to assign the correct interface.
+               
+               Possible values:
+               "SCSI"
+               "NVME"
         :param pulumi.Input[str] mode: The mode in which to attach this disk, either READ_WRITE or
                READ_ONLY. If not specified, the default is to attach the disk in
                READ_WRITE mode.
@@ -489,6 +563,7 @@ class AttachedDisk(pulumi.CustomResource):
                  device_name: Optional[pulumi.Input[str]] = None,
                  disk: Optional[pulumi.Input[str]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
+                 interface: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
@@ -508,6 +583,7 @@ class AttachedDisk(pulumi.CustomResource):
             if instance is None and not opts.urn:
                 raise TypeError("Missing required property 'instance'")
             __props__.__dict__["instance"] = instance
+            __props__.__dict__["interface"] = interface
             __props__.__dict__["mode"] = mode
             __props__.__dict__["project"] = project
             __props__.__dict__["zone"] = zone
@@ -524,6 +600,7 @@ class AttachedDisk(pulumi.CustomResource):
             device_name: Optional[pulumi.Input[str]] = None,
             disk: Optional[pulumi.Input[str]] = None,
             instance: Optional[pulumi.Input[str]] = None,
+            interface: Optional[pulumi.Input[str]] = None,
             mode: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             zone: Optional[pulumi.Input[str]] = None) -> 'AttachedDisk':
@@ -551,6 +628,15 @@ class AttachedDisk(pulumi.CustomResource):
                If the `self_link` is provided then `zone` and `project` are extracted from the
                self link. If only the name is used then `zone` and `project` must be defined
                as properties on the resource or provider.
+        :param pulumi.Input[str] interface: The disk interface used for attaching this disk.
+               
+               This field is only used for specific cases, please don't specify
+               this field without advice from Google. Not specifying the field
+               will allow the the server to assign the correct interface.
+               
+               Possible values:
+               "SCSI"
+               "NVME"
         :param pulumi.Input[str] mode: The mode in which to attach this disk, either READ_WRITE or
                READ_ONLY. If not specified, the default is to attach the disk in
                READ_WRITE mode.
@@ -570,6 +656,7 @@ class AttachedDisk(pulumi.CustomResource):
         __props__.__dict__["device_name"] = device_name
         __props__.__dict__["disk"] = disk
         __props__.__dict__["instance"] = instance
+        __props__.__dict__["interface"] = interface
         __props__.__dict__["mode"] = mode
         __props__.__dict__["project"] = project
         __props__.__dict__["zone"] = zone
@@ -612,6 +699,22 @@ class AttachedDisk(pulumi.CustomResource):
         as properties on the resource or provider.
         """
         return pulumi.get(self, "instance")
+
+    @property
+    @pulumi.getter
+    def interface(self) -> pulumi.Output[Optional[str]]:
+        """
+        The disk interface used for attaching this disk.
+
+        This field is only used for specific cases, please don't specify
+        this field without advice from Google. Not specifying the field
+        will allow the the server to assign the correct interface.
+
+        Possible values:
+        "SCSI"
+        "NVME"
+        """
+        return pulumi.get(self, "interface")
 
     @property
     @pulumi.getter

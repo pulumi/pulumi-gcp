@@ -147,6 +147,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * FIPS 140-2 Encryption enablement for Looker (Google Cloud Core).
+     * 
+     */
+    @Import(name="fipsEnabled")
+    private @Nullable Output<Boolean> fipsEnabled;
+
+    /**
+     * @return FIPS 140-2 Encryption enablement for Looker (Google Cloud Core).
+     * 
+     */
+    public Optional<Output<Boolean>> fipsEnabled() {
+        return Optional.ofNullable(this.fipsEnabled);
+    }
+
+    /**
      * Private Ingress IP (IPv4).
      * 
      */
@@ -429,6 +444,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.denyMaintenancePeriod = $.denyMaintenancePeriod;
         this.egressPublicIp = $.egressPublicIp;
         this.encryptionConfig = $.encryptionConfig;
+        this.fipsEnabled = $.fipsEnabled;
         this.ingressPrivateIp = $.ingressPrivateIp;
         this.ingressPublicIp = $.ingressPublicIp;
         this.lookerUri = $.lookerUri;
@@ -627,6 +643,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder encryptionConfig(InstanceEncryptionConfigArgs encryptionConfig) {
             return encryptionConfig(Output.of(encryptionConfig));
+        }
+
+        /**
+         * @param fipsEnabled FIPS 140-2 Encryption enablement for Looker (Google Cloud Core).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fipsEnabled(@Nullable Output<Boolean> fipsEnabled) {
+            $.fipsEnabled = fipsEnabled;
+            return this;
+        }
+
+        /**
+         * @param fipsEnabled FIPS 140-2 Encryption enablement for Looker (Google Cloud Core).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fipsEnabled(Boolean fipsEnabled) {
+            return fipsEnabled(Output.of(fipsEnabled));
         }
 
         /**

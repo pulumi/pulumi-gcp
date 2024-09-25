@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Schema{}
 	case "gcp:discoveryengine/searchEngine:SearchEngine":
 		r = &SearchEngine{}
+	case "gcp:discoveryengine/targetSite:TargetSite":
+		r = &TargetSite{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -60,6 +62,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"discoveryengine/searchEngine",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"discoveryengine/targetSite",
 		&module{version},
 	)
 }

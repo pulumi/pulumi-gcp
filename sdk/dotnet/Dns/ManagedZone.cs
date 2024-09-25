@@ -426,7 +426,7 @@ namespace Pulumi.Gcp.Dns
         /// Structure is documented below.
         /// </summary>
         [Output("dnssecConfig")]
-        public Output<Outputs.ManagedZoneDnssecConfig?> DnssecConfig { get; private set; } = null!;
+        public Output<Outputs.ManagedZoneDnssecConfig> DnssecConfig { get; private set; } = null!;
 
         /// <summary>
         /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.

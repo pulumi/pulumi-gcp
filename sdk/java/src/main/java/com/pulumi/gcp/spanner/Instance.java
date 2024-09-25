@@ -60,6 +60,7 @@ import javax.annotation.Nullable;
  *             .config("regional-us-central1")
  *             .displayName("Test Spanner Instance")
  *             .numNodes(2)
+ *             .edition("STANDARD")
  *             .labels(Map.of("foo", "bar"))
  *             .build());
  * 
@@ -284,6 +285,22 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> displayName() {
         return this.displayName;
+    }
+    /**
+     * The edition selected for this instance. Different editions provide different capabilities at different price points.
+     * Possible values are: `EDITION_UNSPECIFIED`, `STANDARD`, `ENTERPRISE`, `ENTERPRISE_PLUS`.
+     * 
+     */
+    @Export(name="edition", refs={String.class}, tree="[0]")
+    private Output<String> edition;
+
+    /**
+     * @return The edition selected for this instance. Different editions provide different capabilities at different price points.
+     * Possible values are: `EDITION_UNSPECIFIED`, `STANDARD`, `ENTERPRISE`, `ENTERPRISE_PLUS`.
+     * 
+     */
+    public Output<String> edition() {
+        return this.edition;
     }
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.

@@ -146,6 +146,22 @@ public class StoragePool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.activeDirectory);
     }
     /**
+     * Optional. True if the storage pool supports Auto Tiering enabled volumes. Default is false.
+     * Auto-tiering can be enabled after storage pool creation but it can&#39;t be disabled once enabled.
+     * 
+     */
+    @Export(name="allowAutoTiering", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> allowAutoTiering;
+
+    /**
+     * @return Optional. True if the storage pool supports Auto Tiering enabled volumes. Default is false.
+     * Auto-tiering can be enabled after storage pool creation but it can&#39;t be disabled once enabled.
+     * 
+     */
+    public Output<Optional<Boolean>> allowAutoTiering() {
+        return Codegen.optional(this.allowAutoTiering);
+    }
+    /**
      * Capacity of the storage pool (in GiB).
      * 
      */

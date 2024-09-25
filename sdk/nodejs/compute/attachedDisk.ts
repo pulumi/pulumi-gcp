@@ -117,6 +117,18 @@ export class AttachedDisk extends pulumi.CustomResource {
      */
     public readonly instance!: pulumi.Output<string>;
     /**
+     * The disk interface used for attaching this disk.
+     *
+     * This field is only used for specific cases, please don't specify
+     * this field without advice from Google. Not specifying the field
+     * will allow the the server to assign the correct interface.
+     *
+     * Possible values:
+     * "SCSI"
+     * "NVME"
+     */
+    public readonly interface!: pulumi.Output<string | undefined>;
+    /**
      * The mode in which to attach this disk, either READ_WRITE or
      * READ_ONLY. If not specified, the default is to attach the disk in
      * READ_WRITE mode.
@@ -153,6 +165,7 @@ export class AttachedDisk extends pulumi.CustomResource {
             resourceInputs["deviceName"] = state ? state.deviceName : undefined;
             resourceInputs["disk"] = state ? state.disk : undefined;
             resourceInputs["instance"] = state ? state.instance : undefined;
+            resourceInputs["interface"] = state ? state.interface : undefined;
             resourceInputs["mode"] = state ? state.mode : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["zone"] = state ? state.zone : undefined;
@@ -167,6 +180,7 @@ export class AttachedDisk extends pulumi.CustomResource {
             resourceInputs["deviceName"] = args ? args.deviceName : undefined;
             resourceInputs["disk"] = args ? args.disk : undefined;
             resourceInputs["instance"] = args ? args.instance : undefined;
+            resourceInputs["interface"] = args ? args.interface : undefined;
             resourceInputs["mode"] = args ? args.mode : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
@@ -206,6 +220,18 @@ export interface AttachedDiskState {
      * as properties on the resource or provider.
      */
     instance?: pulumi.Input<string>;
+    /**
+     * The disk interface used for attaching this disk.
+     *
+     * This field is only used for specific cases, please don't specify
+     * this field without advice from Google. Not specifying the field
+     * will allow the the server to assign the correct interface.
+     *
+     * Possible values:
+     * "SCSI"
+     * "NVME"
+     */
+    interface?: pulumi.Input<string>;
     /**
      * The mode in which to attach this disk, either READ_WRITE or
      * READ_ONLY. If not specified, the default is to attach the disk in
@@ -258,6 +284,18 @@ export interface AttachedDiskArgs {
      * as properties on the resource or provider.
      */
     instance: pulumi.Input<string>;
+    /**
+     * The disk interface used for attaching this disk.
+     *
+     * This field is only used for specific cases, please don't specify
+     * this field without advice from Google. Not specifying the field
+     * will allow the the server to assign the correct interface.
+     *
+     * Possible values:
+     * "SCSI"
+     * "NVME"
+     */
+    interface?: pulumi.Input<string>;
     /**
      * The mode in which to attach this disk, either READ_WRITE or
      * READ_ONLY. If not specified, the default is to attach the disk in

@@ -68,6 +68,25 @@ import * as utilities from "../utilities";
  *     enableMessageOrdering: false,
  * });
  * ```
+ * ### Pubsub Subscription Pull Filter
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example = new gcp.pubsub.Topic("example", {name: "example-topic"});
+ * const exampleSubscription = new gcp.pubsub.Subscription("example", {
+ *     name: "example-subscription",
+ *     topic: example.id,
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     filter: `    attributes.foo = "foo"
+ *     AND attributes.bar = "bar"
+ * `,
+ *     ackDeadlineSeconds: 20,
+ * });
+ * ```
  * ### Pubsub Subscription Dead Letter
  *
  * ```typescript
@@ -496,7 +515,7 @@ export class Subscription extends pulumi.CustomResource {
      * retainAckedMessages is true, then this also configures the retention
      * of acknowledged messages, and thus configures how far back in time a
      * subscriptions.seek can be done. Defaults to 7 days. Cannot be more
-     * than 7 days (`"604800s"`) or less than 10 minutes (`"600s"`).
+     * than 31 days (`"2678400s"`) or less than 10 minutes (`"600s"`).
      * A duration in seconds with up to nine fractional digits, terminated
      * by 's'. Example: `"600.5s"`.
      */
@@ -705,7 +724,7 @@ export interface SubscriptionState {
      * retainAckedMessages is true, then this also configures the retention
      * of acknowledged messages, and thus configures how far back in time a
      * subscriptions.seek can be done. Defaults to 7 days. Cannot be more
-     * than 7 days (`"604800s"`) or less than 10 minutes (`"600s"`).
+     * than 31 days (`"2678400s"`) or less than 10 minutes (`"600s"`).
      * A duration in seconds with up to nine fractional digits, terminated
      * by 's'. Example: `"600.5s"`.
      */
@@ -849,7 +868,7 @@ export interface SubscriptionArgs {
      * retainAckedMessages is true, then this also configures the retention
      * of acknowledged messages, and thus configures how far back in time a
      * subscriptions.seek can be done. Defaults to 7 days. Cannot be more
-     * than 7 days (`"604800s"`) or less than 10 minutes (`"600s"`).
+     * than 31 days (`"2678400s"`) or less than 10 minutes (`"600s"`).
      * A duration in seconds with up to nine fractional digits, terminated
      * by 's'. Example: `"600.5s"`.
      */

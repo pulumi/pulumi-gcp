@@ -4129,6 +4129,979 @@ func (o ConnectionProfilePostgresqlSslPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type MigrationJobDumpFlags struct {
+	// A list of dump flags
+	// Structure is documented below.
+	DumpFlags []MigrationJobDumpFlagsDumpFlag `pulumi:"dumpFlags"`
+}
+
+// MigrationJobDumpFlagsInput is an input type that accepts MigrationJobDumpFlagsArgs and MigrationJobDumpFlagsOutput values.
+// You can construct a concrete instance of `MigrationJobDumpFlagsInput` via:
+//
+//	MigrationJobDumpFlagsArgs{...}
+type MigrationJobDumpFlagsInput interface {
+	pulumi.Input
+
+	ToMigrationJobDumpFlagsOutput() MigrationJobDumpFlagsOutput
+	ToMigrationJobDumpFlagsOutputWithContext(context.Context) MigrationJobDumpFlagsOutput
+}
+
+type MigrationJobDumpFlagsArgs struct {
+	// A list of dump flags
+	// Structure is documented below.
+	DumpFlags MigrationJobDumpFlagsDumpFlagArrayInput `pulumi:"dumpFlags"`
+}
+
+func (MigrationJobDumpFlagsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MigrationJobDumpFlags)(nil)).Elem()
+}
+
+func (i MigrationJobDumpFlagsArgs) ToMigrationJobDumpFlagsOutput() MigrationJobDumpFlagsOutput {
+	return i.ToMigrationJobDumpFlagsOutputWithContext(context.Background())
+}
+
+func (i MigrationJobDumpFlagsArgs) ToMigrationJobDumpFlagsOutputWithContext(ctx context.Context) MigrationJobDumpFlagsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MigrationJobDumpFlagsOutput)
+}
+
+func (i MigrationJobDumpFlagsArgs) ToMigrationJobDumpFlagsPtrOutput() MigrationJobDumpFlagsPtrOutput {
+	return i.ToMigrationJobDumpFlagsPtrOutputWithContext(context.Background())
+}
+
+func (i MigrationJobDumpFlagsArgs) ToMigrationJobDumpFlagsPtrOutputWithContext(ctx context.Context) MigrationJobDumpFlagsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MigrationJobDumpFlagsOutput).ToMigrationJobDumpFlagsPtrOutputWithContext(ctx)
+}
+
+// MigrationJobDumpFlagsPtrInput is an input type that accepts MigrationJobDumpFlagsArgs, MigrationJobDumpFlagsPtr and MigrationJobDumpFlagsPtrOutput values.
+// You can construct a concrete instance of `MigrationJobDumpFlagsPtrInput` via:
+//
+//	        MigrationJobDumpFlagsArgs{...}
+//
+//	or:
+//
+//	        nil
+type MigrationJobDumpFlagsPtrInput interface {
+	pulumi.Input
+
+	ToMigrationJobDumpFlagsPtrOutput() MigrationJobDumpFlagsPtrOutput
+	ToMigrationJobDumpFlagsPtrOutputWithContext(context.Context) MigrationJobDumpFlagsPtrOutput
+}
+
+type migrationJobDumpFlagsPtrType MigrationJobDumpFlagsArgs
+
+func MigrationJobDumpFlagsPtr(v *MigrationJobDumpFlagsArgs) MigrationJobDumpFlagsPtrInput {
+	return (*migrationJobDumpFlagsPtrType)(v)
+}
+
+func (*migrationJobDumpFlagsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MigrationJobDumpFlags)(nil)).Elem()
+}
+
+func (i *migrationJobDumpFlagsPtrType) ToMigrationJobDumpFlagsPtrOutput() MigrationJobDumpFlagsPtrOutput {
+	return i.ToMigrationJobDumpFlagsPtrOutputWithContext(context.Background())
+}
+
+func (i *migrationJobDumpFlagsPtrType) ToMigrationJobDumpFlagsPtrOutputWithContext(ctx context.Context) MigrationJobDumpFlagsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MigrationJobDumpFlagsPtrOutput)
+}
+
+type MigrationJobDumpFlagsOutput struct{ *pulumi.OutputState }
+
+func (MigrationJobDumpFlagsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MigrationJobDumpFlags)(nil)).Elem()
+}
+
+func (o MigrationJobDumpFlagsOutput) ToMigrationJobDumpFlagsOutput() MigrationJobDumpFlagsOutput {
+	return o
+}
+
+func (o MigrationJobDumpFlagsOutput) ToMigrationJobDumpFlagsOutputWithContext(ctx context.Context) MigrationJobDumpFlagsOutput {
+	return o
+}
+
+func (o MigrationJobDumpFlagsOutput) ToMigrationJobDumpFlagsPtrOutput() MigrationJobDumpFlagsPtrOutput {
+	return o.ToMigrationJobDumpFlagsPtrOutputWithContext(context.Background())
+}
+
+func (o MigrationJobDumpFlagsOutput) ToMigrationJobDumpFlagsPtrOutputWithContext(ctx context.Context) MigrationJobDumpFlagsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MigrationJobDumpFlags) *MigrationJobDumpFlags {
+		return &v
+	}).(MigrationJobDumpFlagsPtrOutput)
+}
+
+// A list of dump flags
+// Structure is documented below.
+func (o MigrationJobDumpFlagsOutput) DumpFlags() MigrationJobDumpFlagsDumpFlagArrayOutput {
+	return o.ApplyT(func(v MigrationJobDumpFlags) []MigrationJobDumpFlagsDumpFlag { return v.DumpFlags }).(MigrationJobDumpFlagsDumpFlagArrayOutput)
+}
+
+type MigrationJobDumpFlagsPtrOutput struct{ *pulumi.OutputState }
+
+func (MigrationJobDumpFlagsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MigrationJobDumpFlags)(nil)).Elem()
+}
+
+func (o MigrationJobDumpFlagsPtrOutput) ToMigrationJobDumpFlagsPtrOutput() MigrationJobDumpFlagsPtrOutput {
+	return o
+}
+
+func (o MigrationJobDumpFlagsPtrOutput) ToMigrationJobDumpFlagsPtrOutputWithContext(ctx context.Context) MigrationJobDumpFlagsPtrOutput {
+	return o
+}
+
+func (o MigrationJobDumpFlagsPtrOutput) Elem() MigrationJobDumpFlagsOutput {
+	return o.ApplyT(func(v *MigrationJobDumpFlags) MigrationJobDumpFlags {
+		if v != nil {
+			return *v
+		}
+		var ret MigrationJobDumpFlags
+		return ret
+	}).(MigrationJobDumpFlagsOutput)
+}
+
+// A list of dump flags
+// Structure is documented below.
+func (o MigrationJobDumpFlagsPtrOutput) DumpFlags() MigrationJobDumpFlagsDumpFlagArrayOutput {
+	return o.ApplyT(func(v *MigrationJobDumpFlags) []MigrationJobDumpFlagsDumpFlag {
+		if v == nil {
+			return nil
+		}
+		return v.DumpFlags
+	}).(MigrationJobDumpFlagsDumpFlagArrayOutput)
+}
+
+type MigrationJobDumpFlagsDumpFlag struct {
+	// The name of the flag
+	Name *string `pulumi:"name"`
+	// The vale of the flag
+	Value *string `pulumi:"value"`
+}
+
+// MigrationJobDumpFlagsDumpFlagInput is an input type that accepts MigrationJobDumpFlagsDumpFlagArgs and MigrationJobDumpFlagsDumpFlagOutput values.
+// You can construct a concrete instance of `MigrationJobDumpFlagsDumpFlagInput` via:
+//
+//	MigrationJobDumpFlagsDumpFlagArgs{...}
+type MigrationJobDumpFlagsDumpFlagInput interface {
+	pulumi.Input
+
+	ToMigrationJobDumpFlagsDumpFlagOutput() MigrationJobDumpFlagsDumpFlagOutput
+	ToMigrationJobDumpFlagsDumpFlagOutputWithContext(context.Context) MigrationJobDumpFlagsDumpFlagOutput
+}
+
+type MigrationJobDumpFlagsDumpFlagArgs struct {
+	// The name of the flag
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The vale of the flag
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (MigrationJobDumpFlagsDumpFlagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MigrationJobDumpFlagsDumpFlag)(nil)).Elem()
+}
+
+func (i MigrationJobDumpFlagsDumpFlagArgs) ToMigrationJobDumpFlagsDumpFlagOutput() MigrationJobDumpFlagsDumpFlagOutput {
+	return i.ToMigrationJobDumpFlagsDumpFlagOutputWithContext(context.Background())
+}
+
+func (i MigrationJobDumpFlagsDumpFlagArgs) ToMigrationJobDumpFlagsDumpFlagOutputWithContext(ctx context.Context) MigrationJobDumpFlagsDumpFlagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MigrationJobDumpFlagsDumpFlagOutput)
+}
+
+// MigrationJobDumpFlagsDumpFlagArrayInput is an input type that accepts MigrationJobDumpFlagsDumpFlagArray and MigrationJobDumpFlagsDumpFlagArrayOutput values.
+// You can construct a concrete instance of `MigrationJobDumpFlagsDumpFlagArrayInput` via:
+//
+//	MigrationJobDumpFlagsDumpFlagArray{ MigrationJobDumpFlagsDumpFlagArgs{...} }
+type MigrationJobDumpFlagsDumpFlagArrayInput interface {
+	pulumi.Input
+
+	ToMigrationJobDumpFlagsDumpFlagArrayOutput() MigrationJobDumpFlagsDumpFlagArrayOutput
+	ToMigrationJobDumpFlagsDumpFlagArrayOutputWithContext(context.Context) MigrationJobDumpFlagsDumpFlagArrayOutput
+}
+
+type MigrationJobDumpFlagsDumpFlagArray []MigrationJobDumpFlagsDumpFlagInput
+
+func (MigrationJobDumpFlagsDumpFlagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MigrationJobDumpFlagsDumpFlag)(nil)).Elem()
+}
+
+func (i MigrationJobDumpFlagsDumpFlagArray) ToMigrationJobDumpFlagsDumpFlagArrayOutput() MigrationJobDumpFlagsDumpFlagArrayOutput {
+	return i.ToMigrationJobDumpFlagsDumpFlagArrayOutputWithContext(context.Background())
+}
+
+func (i MigrationJobDumpFlagsDumpFlagArray) ToMigrationJobDumpFlagsDumpFlagArrayOutputWithContext(ctx context.Context) MigrationJobDumpFlagsDumpFlagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MigrationJobDumpFlagsDumpFlagArrayOutput)
+}
+
+type MigrationJobDumpFlagsDumpFlagOutput struct{ *pulumi.OutputState }
+
+func (MigrationJobDumpFlagsDumpFlagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MigrationJobDumpFlagsDumpFlag)(nil)).Elem()
+}
+
+func (o MigrationJobDumpFlagsDumpFlagOutput) ToMigrationJobDumpFlagsDumpFlagOutput() MigrationJobDumpFlagsDumpFlagOutput {
+	return o
+}
+
+func (o MigrationJobDumpFlagsDumpFlagOutput) ToMigrationJobDumpFlagsDumpFlagOutputWithContext(ctx context.Context) MigrationJobDumpFlagsDumpFlagOutput {
+	return o
+}
+
+// The name of the flag
+func (o MigrationJobDumpFlagsDumpFlagOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrationJobDumpFlagsDumpFlag) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The vale of the flag
+func (o MigrationJobDumpFlagsDumpFlagOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrationJobDumpFlagsDumpFlag) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type MigrationJobDumpFlagsDumpFlagArrayOutput struct{ *pulumi.OutputState }
+
+func (MigrationJobDumpFlagsDumpFlagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MigrationJobDumpFlagsDumpFlag)(nil)).Elem()
+}
+
+func (o MigrationJobDumpFlagsDumpFlagArrayOutput) ToMigrationJobDumpFlagsDumpFlagArrayOutput() MigrationJobDumpFlagsDumpFlagArrayOutput {
+	return o
+}
+
+func (o MigrationJobDumpFlagsDumpFlagArrayOutput) ToMigrationJobDumpFlagsDumpFlagArrayOutputWithContext(ctx context.Context) MigrationJobDumpFlagsDumpFlagArrayOutput {
+	return o
+}
+
+func (o MigrationJobDumpFlagsDumpFlagArrayOutput) Index(i pulumi.IntInput) MigrationJobDumpFlagsDumpFlagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MigrationJobDumpFlagsDumpFlag {
+		return vs[0].([]MigrationJobDumpFlagsDumpFlag)[vs[1].(int)]
+	}).(MigrationJobDumpFlagsDumpFlagOutput)
+}
+
+type MigrationJobError struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code *int `pulumi:"code"`
+	// (Output)
+	// A list of messages that carry the error details.
+	Details []map[string]string `pulumi:"details"`
+	// (Output)
+	// Human readable message indicating details about the current status.
+	Message *string `pulumi:"message"`
+}
+
+// MigrationJobErrorInput is an input type that accepts MigrationJobErrorArgs and MigrationJobErrorOutput values.
+// You can construct a concrete instance of `MigrationJobErrorInput` via:
+//
+//	MigrationJobErrorArgs{...}
+type MigrationJobErrorInput interface {
+	pulumi.Input
+
+	ToMigrationJobErrorOutput() MigrationJobErrorOutput
+	ToMigrationJobErrorOutputWithContext(context.Context) MigrationJobErrorOutput
+}
+
+type MigrationJobErrorArgs struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code pulumi.IntPtrInput `pulumi:"code"`
+	// (Output)
+	// A list of messages that carry the error details.
+	Details pulumi.StringMapArrayInput `pulumi:"details"`
+	// (Output)
+	// Human readable message indicating details about the current status.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (MigrationJobErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MigrationJobError)(nil)).Elem()
+}
+
+func (i MigrationJobErrorArgs) ToMigrationJobErrorOutput() MigrationJobErrorOutput {
+	return i.ToMigrationJobErrorOutputWithContext(context.Background())
+}
+
+func (i MigrationJobErrorArgs) ToMigrationJobErrorOutputWithContext(ctx context.Context) MigrationJobErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MigrationJobErrorOutput)
+}
+
+// MigrationJobErrorArrayInput is an input type that accepts MigrationJobErrorArray and MigrationJobErrorArrayOutput values.
+// You can construct a concrete instance of `MigrationJobErrorArrayInput` via:
+//
+//	MigrationJobErrorArray{ MigrationJobErrorArgs{...} }
+type MigrationJobErrorArrayInput interface {
+	pulumi.Input
+
+	ToMigrationJobErrorArrayOutput() MigrationJobErrorArrayOutput
+	ToMigrationJobErrorArrayOutputWithContext(context.Context) MigrationJobErrorArrayOutput
+}
+
+type MigrationJobErrorArray []MigrationJobErrorInput
+
+func (MigrationJobErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MigrationJobError)(nil)).Elem()
+}
+
+func (i MigrationJobErrorArray) ToMigrationJobErrorArrayOutput() MigrationJobErrorArrayOutput {
+	return i.ToMigrationJobErrorArrayOutputWithContext(context.Background())
+}
+
+func (i MigrationJobErrorArray) ToMigrationJobErrorArrayOutputWithContext(ctx context.Context) MigrationJobErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MigrationJobErrorArrayOutput)
+}
+
+type MigrationJobErrorOutput struct{ *pulumi.OutputState }
+
+func (MigrationJobErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MigrationJobError)(nil)).Elem()
+}
+
+func (o MigrationJobErrorOutput) ToMigrationJobErrorOutput() MigrationJobErrorOutput {
+	return o
+}
+
+func (o MigrationJobErrorOutput) ToMigrationJobErrorOutputWithContext(ctx context.Context) MigrationJobErrorOutput {
+	return o
+}
+
+// (Output)
+// The status code, which should be an enum value of google.rpc.Code.
+func (o MigrationJobErrorOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MigrationJobError) *int { return v.Code }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// A list of messages that carry the error details.
+func (o MigrationJobErrorOutput) Details() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v MigrationJobError) []map[string]string { return v.Details }).(pulumi.StringMapArrayOutput)
+}
+
+// (Output)
+// Human readable message indicating details about the current status.
+func (o MigrationJobErrorOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrationJobError) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type MigrationJobErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (MigrationJobErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MigrationJobError)(nil)).Elem()
+}
+
+func (o MigrationJobErrorArrayOutput) ToMigrationJobErrorArrayOutput() MigrationJobErrorArrayOutput {
+	return o
+}
+
+func (o MigrationJobErrorArrayOutput) ToMigrationJobErrorArrayOutputWithContext(ctx context.Context) MigrationJobErrorArrayOutput {
+	return o
+}
+
+func (o MigrationJobErrorArrayOutput) Index(i pulumi.IntInput) MigrationJobErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MigrationJobError {
+		return vs[0].([]MigrationJobError)[vs[1].(int)]
+	}).(MigrationJobErrorOutput)
+}
+
+type MigrationJobPerformanceConfig struct {
+	// Initial dump parallelism level.
+	// Possible values are: `MIN`, `OPTIMAL`, `MAX`.
+	DumpParallelLevel *string `pulumi:"dumpParallelLevel"`
+}
+
+// MigrationJobPerformanceConfigInput is an input type that accepts MigrationJobPerformanceConfigArgs and MigrationJobPerformanceConfigOutput values.
+// You can construct a concrete instance of `MigrationJobPerformanceConfigInput` via:
+//
+//	MigrationJobPerformanceConfigArgs{...}
+type MigrationJobPerformanceConfigInput interface {
+	pulumi.Input
+
+	ToMigrationJobPerformanceConfigOutput() MigrationJobPerformanceConfigOutput
+	ToMigrationJobPerformanceConfigOutputWithContext(context.Context) MigrationJobPerformanceConfigOutput
+}
+
+type MigrationJobPerformanceConfigArgs struct {
+	// Initial dump parallelism level.
+	// Possible values are: `MIN`, `OPTIMAL`, `MAX`.
+	DumpParallelLevel pulumi.StringPtrInput `pulumi:"dumpParallelLevel"`
+}
+
+func (MigrationJobPerformanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MigrationJobPerformanceConfig)(nil)).Elem()
+}
+
+func (i MigrationJobPerformanceConfigArgs) ToMigrationJobPerformanceConfigOutput() MigrationJobPerformanceConfigOutput {
+	return i.ToMigrationJobPerformanceConfigOutputWithContext(context.Background())
+}
+
+func (i MigrationJobPerformanceConfigArgs) ToMigrationJobPerformanceConfigOutputWithContext(ctx context.Context) MigrationJobPerformanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MigrationJobPerformanceConfigOutput)
+}
+
+func (i MigrationJobPerformanceConfigArgs) ToMigrationJobPerformanceConfigPtrOutput() MigrationJobPerformanceConfigPtrOutput {
+	return i.ToMigrationJobPerformanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i MigrationJobPerformanceConfigArgs) ToMigrationJobPerformanceConfigPtrOutputWithContext(ctx context.Context) MigrationJobPerformanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MigrationJobPerformanceConfigOutput).ToMigrationJobPerformanceConfigPtrOutputWithContext(ctx)
+}
+
+// MigrationJobPerformanceConfigPtrInput is an input type that accepts MigrationJobPerformanceConfigArgs, MigrationJobPerformanceConfigPtr and MigrationJobPerformanceConfigPtrOutput values.
+// You can construct a concrete instance of `MigrationJobPerformanceConfigPtrInput` via:
+//
+//	        MigrationJobPerformanceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type MigrationJobPerformanceConfigPtrInput interface {
+	pulumi.Input
+
+	ToMigrationJobPerformanceConfigPtrOutput() MigrationJobPerformanceConfigPtrOutput
+	ToMigrationJobPerformanceConfigPtrOutputWithContext(context.Context) MigrationJobPerformanceConfigPtrOutput
+}
+
+type migrationJobPerformanceConfigPtrType MigrationJobPerformanceConfigArgs
+
+func MigrationJobPerformanceConfigPtr(v *MigrationJobPerformanceConfigArgs) MigrationJobPerformanceConfigPtrInput {
+	return (*migrationJobPerformanceConfigPtrType)(v)
+}
+
+func (*migrationJobPerformanceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MigrationJobPerformanceConfig)(nil)).Elem()
+}
+
+func (i *migrationJobPerformanceConfigPtrType) ToMigrationJobPerformanceConfigPtrOutput() MigrationJobPerformanceConfigPtrOutput {
+	return i.ToMigrationJobPerformanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *migrationJobPerformanceConfigPtrType) ToMigrationJobPerformanceConfigPtrOutputWithContext(ctx context.Context) MigrationJobPerformanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MigrationJobPerformanceConfigPtrOutput)
+}
+
+type MigrationJobPerformanceConfigOutput struct{ *pulumi.OutputState }
+
+func (MigrationJobPerformanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MigrationJobPerformanceConfig)(nil)).Elem()
+}
+
+func (o MigrationJobPerformanceConfigOutput) ToMigrationJobPerformanceConfigOutput() MigrationJobPerformanceConfigOutput {
+	return o
+}
+
+func (o MigrationJobPerformanceConfigOutput) ToMigrationJobPerformanceConfigOutputWithContext(ctx context.Context) MigrationJobPerformanceConfigOutput {
+	return o
+}
+
+func (o MigrationJobPerformanceConfigOutput) ToMigrationJobPerformanceConfigPtrOutput() MigrationJobPerformanceConfigPtrOutput {
+	return o.ToMigrationJobPerformanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o MigrationJobPerformanceConfigOutput) ToMigrationJobPerformanceConfigPtrOutputWithContext(ctx context.Context) MigrationJobPerformanceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MigrationJobPerformanceConfig) *MigrationJobPerformanceConfig {
+		return &v
+	}).(MigrationJobPerformanceConfigPtrOutput)
+}
+
+// Initial dump parallelism level.
+// Possible values are: `MIN`, `OPTIMAL`, `MAX`.
+func (o MigrationJobPerformanceConfigOutput) DumpParallelLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrationJobPerformanceConfig) *string { return v.DumpParallelLevel }).(pulumi.StringPtrOutput)
+}
+
+type MigrationJobPerformanceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (MigrationJobPerformanceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MigrationJobPerformanceConfig)(nil)).Elem()
+}
+
+func (o MigrationJobPerformanceConfigPtrOutput) ToMigrationJobPerformanceConfigPtrOutput() MigrationJobPerformanceConfigPtrOutput {
+	return o
+}
+
+func (o MigrationJobPerformanceConfigPtrOutput) ToMigrationJobPerformanceConfigPtrOutputWithContext(ctx context.Context) MigrationJobPerformanceConfigPtrOutput {
+	return o
+}
+
+func (o MigrationJobPerformanceConfigPtrOutput) Elem() MigrationJobPerformanceConfigOutput {
+	return o.ApplyT(func(v *MigrationJobPerformanceConfig) MigrationJobPerformanceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret MigrationJobPerformanceConfig
+		return ret
+	}).(MigrationJobPerformanceConfigOutput)
+}
+
+// Initial dump parallelism level.
+// Possible values are: `MIN`, `OPTIMAL`, `MAX`.
+func (o MigrationJobPerformanceConfigPtrOutput) DumpParallelLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrationJobPerformanceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DumpParallelLevel
+	}).(pulumi.StringPtrOutput)
+}
+
+type MigrationJobReverseSshConnectivity struct {
+	// The name of the virtual machine (Compute Engine) used as the bastion server
+	// for the SSH tunnel.
+	Vm *string `pulumi:"vm"`
+	// The IP of the virtual machine (Compute Engine) used as the bastion server
+	// for the SSH tunnel.
+	VmIp *string `pulumi:"vmIp"`
+	// The forwarding port of the virtual machine (Compute Engine) used as the
+	// bastion server for the SSH tunnel.
+	VmPort *int `pulumi:"vmPort"`
+	// The name of the VPC to peer with the Cloud SQL private network.
+	Vpc *string `pulumi:"vpc"`
+}
+
+// MigrationJobReverseSshConnectivityInput is an input type that accepts MigrationJobReverseSshConnectivityArgs and MigrationJobReverseSshConnectivityOutput values.
+// You can construct a concrete instance of `MigrationJobReverseSshConnectivityInput` via:
+//
+//	MigrationJobReverseSshConnectivityArgs{...}
+type MigrationJobReverseSshConnectivityInput interface {
+	pulumi.Input
+
+	ToMigrationJobReverseSshConnectivityOutput() MigrationJobReverseSshConnectivityOutput
+	ToMigrationJobReverseSshConnectivityOutputWithContext(context.Context) MigrationJobReverseSshConnectivityOutput
+}
+
+type MigrationJobReverseSshConnectivityArgs struct {
+	// The name of the virtual machine (Compute Engine) used as the bastion server
+	// for the SSH tunnel.
+	Vm pulumi.StringPtrInput `pulumi:"vm"`
+	// The IP of the virtual machine (Compute Engine) used as the bastion server
+	// for the SSH tunnel.
+	VmIp pulumi.StringPtrInput `pulumi:"vmIp"`
+	// The forwarding port of the virtual machine (Compute Engine) used as the
+	// bastion server for the SSH tunnel.
+	VmPort pulumi.IntPtrInput `pulumi:"vmPort"`
+	// The name of the VPC to peer with the Cloud SQL private network.
+	Vpc pulumi.StringPtrInput `pulumi:"vpc"`
+}
+
+func (MigrationJobReverseSshConnectivityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MigrationJobReverseSshConnectivity)(nil)).Elem()
+}
+
+func (i MigrationJobReverseSshConnectivityArgs) ToMigrationJobReverseSshConnectivityOutput() MigrationJobReverseSshConnectivityOutput {
+	return i.ToMigrationJobReverseSshConnectivityOutputWithContext(context.Background())
+}
+
+func (i MigrationJobReverseSshConnectivityArgs) ToMigrationJobReverseSshConnectivityOutputWithContext(ctx context.Context) MigrationJobReverseSshConnectivityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MigrationJobReverseSshConnectivityOutput)
+}
+
+func (i MigrationJobReverseSshConnectivityArgs) ToMigrationJobReverseSshConnectivityPtrOutput() MigrationJobReverseSshConnectivityPtrOutput {
+	return i.ToMigrationJobReverseSshConnectivityPtrOutputWithContext(context.Background())
+}
+
+func (i MigrationJobReverseSshConnectivityArgs) ToMigrationJobReverseSshConnectivityPtrOutputWithContext(ctx context.Context) MigrationJobReverseSshConnectivityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MigrationJobReverseSshConnectivityOutput).ToMigrationJobReverseSshConnectivityPtrOutputWithContext(ctx)
+}
+
+// MigrationJobReverseSshConnectivityPtrInput is an input type that accepts MigrationJobReverseSshConnectivityArgs, MigrationJobReverseSshConnectivityPtr and MigrationJobReverseSshConnectivityPtrOutput values.
+// You can construct a concrete instance of `MigrationJobReverseSshConnectivityPtrInput` via:
+//
+//	        MigrationJobReverseSshConnectivityArgs{...}
+//
+//	or:
+//
+//	        nil
+type MigrationJobReverseSshConnectivityPtrInput interface {
+	pulumi.Input
+
+	ToMigrationJobReverseSshConnectivityPtrOutput() MigrationJobReverseSshConnectivityPtrOutput
+	ToMigrationJobReverseSshConnectivityPtrOutputWithContext(context.Context) MigrationJobReverseSshConnectivityPtrOutput
+}
+
+type migrationJobReverseSshConnectivityPtrType MigrationJobReverseSshConnectivityArgs
+
+func MigrationJobReverseSshConnectivityPtr(v *MigrationJobReverseSshConnectivityArgs) MigrationJobReverseSshConnectivityPtrInput {
+	return (*migrationJobReverseSshConnectivityPtrType)(v)
+}
+
+func (*migrationJobReverseSshConnectivityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MigrationJobReverseSshConnectivity)(nil)).Elem()
+}
+
+func (i *migrationJobReverseSshConnectivityPtrType) ToMigrationJobReverseSshConnectivityPtrOutput() MigrationJobReverseSshConnectivityPtrOutput {
+	return i.ToMigrationJobReverseSshConnectivityPtrOutputWithContext(context.Background())
+}
+
+func (i *migrationJobReverseSshConnectivityPtrType) ToMigrationJobReverseSshConnectivityPtrOutputWithContext(ctx context.Context) MigrationJobReverseSshConnectivityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MigrationJobReverseSshConnectivityPtrOutput)
+}
+
+type MigrationJobReverseSshConnectivityOutput struct{ *pulumi.OutputState }
+
+func (MigrationJobReverseSshConnectivityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MigrationJobReverseSshConnectivity)(nil)).Elem()
+}
+
+func (o MigrationJobReverseSshConnectivityOutput) ToMigrationJobReverseSshConnectivityOutput() MigrationJobReverseSshConnectivityOutput {
+	return o
+}
+
+func (o MigrationJobReverseSshConnectivityOutput) ToMigrationJobReverseSshConnectivityOutputWithContext(ctx context.Context) MigrationJobReverseSshConnectivityOutput {
+	return o
+}
+
+func (o MigrationJobReverseSshConnectivityOutput) ToMigrationJobReverseSshConnectivityPtrOutput() MigrationJobReverseSshConnectivityPtrOutput {
+	return o.ToMigrationJobReverseSshConnectivityPtrOutputWithContext(context.Background())
+}
+
+func (o MigrationJobReverseSshConnectivityOutput) ToMigrationJobReverseSshConnectivityPtrOutputWithContext(ctx context.Context) MigrationJobReverseSshConnectivityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MigrationJobReverseSshConnectivity) *MigrationJobReverseSshConnectivity {
+		return &v
+	}).(MigrationJobReverseSshConnectivityPtrOutput)
+}
+
+// The name of the virtual machine (Compute Engine) used as the bastion server
+// for the SSH tunnel.
+func (o MigrationJobReverseSshConnectivityOutput) Vm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrationJobReverseSshConnectivity) *string { return v.Vm }).(pulumi.StringPtrOutput)
+}
+
+// The IP of the virtual machine (Compute Engine) used as the bastion server
+// for the SSH tunnel.
+func (o MigrationJobReverseSshConnectivityOutput) VmIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrationJobReverseSshConnectivity) *string { return v.VmIp }).(pulumi.StringPtrOutput)
+}
+
+// The forwarding port of the virtual machine (Compute Engine) used as the
+// bastion server for the SSH tunnel.
+func (o MigrationJobReverseSshConnectivityOutput) VmPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MigrationJobReverseSshConnectivity) *int { return v.VmPort }).(pulumi.IntPtrOutput)
+}
+
+// The name of the VPC to peer with the Cloud SQL private network.
+func (o MigrationJobReverseSshConnectivityOutput) Vpc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrationJobReverseSshConnectivity) *string { return v.Vpc }).(pulumi.StringPtrOutput)
+}
+
+type MigrationJobReverseSshConnectivityPtrOutput struct{ *pulumi.OutputState }
+
+func (MigrationJobReverseSshConnectivityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MigrationJobReverseSshConnectivity)(nil)).Elem()
+}
+
+func (o MigrationJobReverseSshConnectivityPtrOutput) ToMigrationJobReverseSshConnectivityPtrOutput() MigrationJobReverseSshConnectivityPtrOutput {
+	return o
+}
+
+func (o MigrationJobReverseSshConnectivityPtrOutput) ToMigrationJobReverseSshConnectivityPtrOutputWithContext(ctx context.Context) MigrationJobReverseSshConnectivityPtrOutput {
+	return o
+}
+
+func (o MigrationJobReverseSshConnectivityPtrOutput) Elem() MigrationJobReverseSshConnectivityOutput {
+	return o.ApplyT(func(v *MigrationJobReverseSshConnectivity) MigrationJobReverseSshConnectivity {
+		if v != nil {
+			return *v
+		}
+		var ret MigrationJobReverseSshConnectivity
+		return ret
+	}).(MigrationJobReverseSshConnectivityOutput)
+}
+
+// The name of the virtual machine (Compute Engine) used as the bastion server
+// for the SSH tunnel.
+func (o MigrationJobReverseSshConnectivityPtrOutput) Vm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrationJobReverseSshConnectivity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Vm
+	}).(pulumi.StringPtrOutput)
+}
+
+// The IP of the virtual machine (Compute Engine) used as the bastion server
+// for the SSH tunnel.
+func (o MigrationJobReverseSshConnectivityPtrOutput) VmIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrationJobReverseSshConnectivity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VmIp
+	}).(pulumi.StringPtrOutput)
+}
+
+// The forwarding port of the virtual machine (Compute Engine) used as the
+// bastion server for the SSH tunnel.
+func (o MigrationJobReverseSshConnectivityPtrOutput) VmPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MigrationJobReverseSshConnectivity) *int {
+		if v == nil {
+			return nil
+		}
+		return v.VmPort
+	}).(pulumi.IntPtrOutput)
+}
+
+// The name of the VPC to peer with the Cloud SQL private network.
+func (o MigrationJobReverseSshConnectivityPtrOutput) Vpc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrationJobReverseSshConnectivity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Vpc
+	}).(pulumi.StringPtrOutput)
+}
+
+type MigrationJobStaticIpConnectivity struct {
+}
+
+// MigrationJobStaticIpConnectivityInput is an input type that accepts MigrationJobStaticIpConnectivityArgs and MigrationJobStaticIpConnectivityOutput values.
+// You can construct a concrete instance of `MigrationJobStaticIpConnectivityInput` via:
+//
+//	MigrationJobStaticIpConnectivityArgs{...}
+type MigrationJobStaticIpConnectivityInput interface {
+	pulumi.Input
+
+	ToMigrationJobStaticIpConnectivityOutput() MigrationJobStaticIpConnectivityOutput
+	ToMigrationJobStaticIpConnectivityOutputWithContext(context.Context) MigrationJobStaticIpConnectivityOutput
+}
+
+type MigrationJobStaticIpConnectivityArgs struct {
+}
+
+func (MigrationJobStaticIpConnectivityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MigrationJobStaticIpConnectivity)(nil)).Elem()
+}
+
+func (i MigrationJobStaticIpConnectivityArgs) ToMigrationJobStaticIpConnectivityOutput() MigrationJobStaticIpConnectivityOutput {
+	return i.ToMigrationJobStaticIpConnectivityOutputWithContext(context.Background())
+}
+
+func (i MigrationJobStaticIpConnectivityArgs) ToMigrationJobStaticIpConnectivityOutputWithContext(ctx context.Context) MigrationJobStaticIpConnectivityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MigrationJobStaticIpConnectivityOutput)
+}
+
+func (i MigrationJobStaticIpConnectivityArgs) ToMigrationJobStaticIpConnectivityPtrOutput() MigrationJobStaticIpConnectivityPtrOutput {
+	return i.ToMigrationJobStaticIpConnectivityPtrOutputWithContext(context.Background())
+}
+
+func (i MigrationJobStaticIpConnectivityArgs) ToMigrationJobStaticIpConnectivityPtrOutputWithContext(ctx context.Context) MigrationJobStaticIpConnectivityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MigrationJobStaticIpConnectivityOutput).ToMigrationJobStaticIpConnectivityPtrOutputWithContext(ctx)
+}
+
+// MigrationJobStaticIpConnectivityPtrInput is an input type that accepts MigrationJobStaticIpConnectivityArgs, MigrationJobStaticIpConnectivityPtr and MigrationJobStaticIpConnectivityPtrOutput values.
+// You can construct a concrete instance of `MigrationJobStaticIpConnectivityPtrInput` via:
+//
+//	        MigrationJobStaticIpConnectivityArgs{...}
+//
+//	or:
+//
+//	        nil
+type MigrationJobStaticIpConnectivityPtrInput interface {
+	pulumi.Input
+
+	ToMigrationJobStaticIpConnectivityPtrOutput() MigrationJobStaticIpConnectivityPtrOutput
+	ToMigrationJobStaticIpConnectivityPtrOutputWithContext(context.Context) MigrationJobStaticIpConnectivityPtrOutput
+}
+
+type migrationJobStaticIpConnectivityPtrType MigrationJobStaticIpConnectivityArgs
+
+func MigrationJobStaticIpConnectivityPtr(v *MigrationJobStaticIpConnectivityArgs) MigrationJobStaticIpConnectivityPtrInput {
+	return (*migrationJobStaticIpConnectivityPtrType)(v)
+}
+
+func (*migrationJobStaticIpConnectivityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MigrationJobStaticIpConnectivity)(nil)).Elem()
+}
+
+func (i *migrationJobStaticIpConnectivityPtrType) ToMigrationJobStaticIpConnectivityPtrOutput() MigrationJobStaticIpConnectivityPtrOutput {
+	return i.ToMigrationJobStaticIpConnectivityPtrOutputWithContext(context.Background())
+}
+
+func (i *migrationJobStaticIpConnectivityPtrType) ToMigrationJobStaticIpConnectivityPtrOutputWithContext(ctx context.Context) MigrationJobStaticIpConnectivityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MigrationJobStaticIpConnectivityPtrOutput)
+}
+
+type MigrationJobStaticIpConnectivityOutput struct{ *pulumi.OutputState }
+
+func (MigrationJobStaticIpConnectivityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MigrationJobStaticIpConnectivity)(nil)).Elem()
+}
+
+func (o MigrationJobStaticIpConnectivityOutput) ToMigrationJobStaticIpConnectivityOutput() MigrationJobStaticIpConnectivityOutput {
+	return o
+}
+
+func (o MigrationJobStaticIpConnectivityOutput) ToMigrationJobStaticIpConnectivityOutputWithContext(ctx context.Context) MigrationJobStaticIpConnectivityOutput {
+	return o
+}
+
+func (o MigrationJobStaticIpConnectivityOutput) ToMigrationJobStaticIpConnectivityPtrOutput() MigrationJobStaticIpConnectivityPtrOutput {
+	return o.ToMigrationJobStaticIpConnectivityPtrOutputWithContext(context.Background())
+}
+
+func (o MigrationJobStaticIpConnectivityOutput) ToMigrationJobStaticIpConnectivityPtrOutputWithContext(ctx context.Context) MigrationJobStaticIpConnectivityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MigrationJobStaticIpConnectivity) *MigrationJobStaticIpConnectivity {
+		return &v
+	}).(MigrationJobStaticIpConnectivityPtrOutput)
+}
+
+type MigrationJobStaticIpConnectivityPtrOutput struct{ *pulumi.OutputState }
+
+func (MigrationJobStaticIpConnectivityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MigrationJobStaticIpConnectivity)(nil)).Elem()
+}
+
+func (o MigrationJobStaticIpConnectivityPtrOutput) ToMigrationJobStaticIpConnectivityPtrOutput() MigrationJobStaticIpConnectivityPtrOutput {
+	return o
+}
+
+func (o MigrationJobStaticIpConnectivityPtrOutput) ToMigrationJobStaticIpConnectivityPtrOutputWithContext(ctx context.Context) MigrationJobStaticIpConnectivityPtrOutput {
+	return o
+}
+
+func (o MigrationJobStaticIpConnectivityPtrOutput) Elem() MigrationJobStaticIpConnectivityOutput {
+	return o.ApplyT(func(v *MigrationJobStaticIpConnectivity) MigrationJobStaticIpConnectivity {
+		if v != nil {
+			return *v
+		}
+		var ret MigrationJobStaticIpConnectivity
+		return ret
+	}).(MigrationJobStaticIpConnectivityOutput)
+}
+
+type MigrationJobVpcPeeringConnectivity struct {
+	// The name of the VPC network to peer with the Cloud SQL private network.
+	Vpc *string `pulumi:"vpc"`
+}
+
+// MigrationJobVpcPeeringConnectivityInput is an input type that accepts MigrationJobVpcPeeringConnectivityArgs and MigrationJobVpcPeeringConnectivityOutput values.
+// You can construct a concrete instance of `MigrationJobVpcPeeringConnectivityInput` via:
+//
+//	MigrationJobVpcPeeringConnectivityArgs{...}
+type MigrationJobVpcPeeringConnectivityInput interface {
+	pulumi.Input
+
+	ToMigrationJobVpcPeeringConnectivityOutput() MigrationJobVpcPeeringConnectivityOutput
+	ToMigrationJobVpcPeeringConnectivityOutputWithContext(context.Context) MigrationJobVpcPeeringConnectivityOutput
+}
+
+type MigrationJobVpcPeeringConnectivityArgs struct {
+	// The name of the VPC network to peer with the Cloud SQL private network.
+	Vpc pulumi.StringPtrInput `pulumi:"vpc"`
+}
+
+func (MigrationJobVpcPeeringConnectivityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MigrationJobVpcPeeringConnectivity)(nil)).Elem()
+}
+
+func (i MigrationJobVpcPeeringConnectivityArgs) ToMigrationJobVpcPeeringConnectivityOutput() MigrationJobVpcPeeringConnectivityOutput {
+	return i.ToMigrationJobVpcPeeringConnectivityOutputWithContext(context.Background())
+}
+
+func (i MigrationJobVpcPeeringConnectivityArgs) ToMigrationJobVpcPeeringConnectivityOutputWithContext(ctx context.Context) MigrationJobVpcPeeringConnectivityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MigrationJobVpcPeeringConnectivityOutput)
+}
+
+func (i MigrationJobVpcPeeringConnectivityArgs) ToMigrationJobVpcPeeringConnectivityPtrOutput() MigrationJobVpcPeeringConnectivityPtrOutput {
+	return i.ToMigrationJobVpcPeeringConnectivityPtrOutputWithContext(context.Background())
+}
+
+func (i MigrationJobVpcPeeringConnectivityArgs) ToMigrationJobVpcPeeringConnectivityPtrOutputWithContext(ctx context.Context) MigrationJobVpcPeeringConnectivityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MigrationJobVpcPeeringConnectivityOutput).ToMigrationJobVpcPeeringConnectivityPtrOutputWithContext(ctx)
+}
+
+// MigrationJobVpcPeeringConnectivityPtrInput is an input type that accepts MigrationJobVpcPeeringConnectivityArgs, MigrationJobVpcPeeringConnectivityPtr and MigrationJobVpcPeeringConnectivityPtrOutput values.
+// You can construct a concrete instance of `MigrationJobVpcPeeringConnectivityPtrInput` via:
+//
+//	        MigrationJobVpcPeeringConnectivityArgs{...}
+//
+//	or:
+//
+//	        nil
+type MigrationJobVpcPeeringConnectivityPtrInput interface {
+	pulumi.Input
+
+	ToMigrationJobVpcPeeringConnectivityPtrOutput() MigrationJobVpcPeeringConnectivityPtrOutput
+	ToMigrationJobVpcPeeringConnectivityPtrOutputWithContext(context.Context) MigrationJobVpcPeeringConnectivityPtrOutput
+}
+
+type migrationJobVpcPeeringConnectivityPtrType MigrationJobVpcPeeringConnectivityArgs
+
+func MigrationJobVpcPeeringConnectivityPtr(v *MigrationJobVpcPeeringConnectivityArgs) MigrationJobVpcPeeringConnectivityPtrInput {
+	return (*migrationJobVpcPeeringConnectivityPtrType)(v)
+}
+
+func (*migrationJobVpcPeeringConnectivityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MigrationJobVpcPeeringConnectivity)(nil)).Elem()
+}
+
+func (i *migrationJobVpcPeeringConnectivityPtrType) ToMigrationJobVpcPeeringConnectivityPtrOutput() MigrationJobVpcPeeringConnectivityPtrOutput {
+	return i.ToMigrationJobVpcPeeringConnectivityPtrOutputWithContext(context.Background())
+}
+
+func (i *migrationJobVpcPeeringConnectivityPtrType) ToMigrationJobVpcPeeringConnectivityPtrOutputWithContext(ctx context.Context) MigrationJobVpcPeeringConnectivityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MigrationJobVpcPeeringConnectivityPtrOutput)
+}
+
+type MigrationJobVpcPeeringConnectivityOutput struct{ *pulumi.OutputState }
+
+func (MigrationJobVpcPeeringConnectivityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MigrationJobVpcPeeringConnectivity)(nil)).Elem()
+}
+
+func (o MigrationJobVpcPeeringConnectivityOutput) ToMigrationJobVpcPeeringConnectivityOutput() MigrationJobVpcPeeringConnectivityOutput {
+	return o
+}
+
+func (o MigrationJobVpcPeeringConnectivityOutput) ToMigrationJobVpcPeeringConnectivityOutputWithContext(ctx context.Context) MigrationJobVpcPeeringConnectivityOutput {
+	return o
+}
+
+func (o MigrationJobVpcPeeringConnectivityOutput) ToMigrationJobVpcPeeringConnectivityPtrOutput() MigrationJobVpcPeeringConnectivityPtrOutput {
+	return o.ToMigrationJobVpcPeeringConnectivityPtrOutputWithContext(context.Background())
+}
+
+func (o MigrationJobVpcPeeringConnectivityOutput) ToMigrationJobVpcPeeringConnectivityPtrOutputWithContext(ctx context.Context) MigrationJobVpcPeeringConnectivityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MigrationJobVpcPeeringConnectivity) *MigrationJobVpcPeeringConnectivity {
+		return &v
+	}).(MigrationJobVpcPeeringConnectivityPtrOutput)
+}
+
+// The name of the VPC network to peer with the Cloud SQL private network.
+func (o MigrationJobVpcPeeringConnectivityOutput) Vpc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrationJobVpcPeeringConnectivity) *string { return v.Vpc }).(pulumi.StringPtrOutput)
+}
+
+type MigrationJobVpcPeeringConnectivityPtrOutput struct{ *pulumi.OutputState }
+
+func (MigrationJobVpcPeeringConnectivityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MigrationJobVpcPeeringConnectivity)(nil)).Elem()
+}
+
+func (o MigrationJobVpcPeeringConnectivityPtrOutput) ToMigrationJobVpcPeeringConnectivityPtrOutput() MigrationJobVpcPeeringConnectivityPtrOutput {
+	return o
+}
+
+func (o MigrationJobVpcPeeringConnectivityPtrOutput) ToMigrationJobVpcPeeringConnectivityPtrOutputWithContext(ctx context.Context) MigrationJobVpcPeeringConnectivityPtrOutput {
+	return o
+}
+
+func (o MigrationJobVpcPeeringConnectivityPtrOutput) Elem() MigrationJobVpcPeeringConnectivityOutput {
+	return o.ApplyT(func(v *MigrationJobVpcPeeringConnectivity) MigrationJobVpcPeeringConnectivity {
+		if v != nil {
+			return *v
+		}
+		var ret MigrationJobVpcPeeringConnectivity
+		return ret
+	}).(MigrationJobVpcPeeringConnectivityOutput)
+}
+
+// The name of the VPC network to peer with the Cloud SQL private network.
+func (o MigrationJobVpcPeeringConnectivityPtrOutput) Vpc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MigrationJobVpcPeeringConnectivity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Vpc
+	}).(pulumi.StringPtrOutput)
+}
+
 type PrivateConnectionError struct {
 	// A list of messages that carry the error details.
 	Details map[string]string `pulumi:"details"`
@@ -4442,6 +5415,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfilePostgresqlPtrInput)(nil)).Elem(), ConnectionProfilePostgresqlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfilePostgresqlSslInput)(nil)).Elem(), ConnectionProfilePostgresqlSslArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfilePostgresqlSslPtrInput)(nil)).Elem(), ConnectionProfilePostgresqlSslArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MigrationJobDumpFlagsInput)(nil)).Elem(), MigrationJobDumpFlagsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MigrationJobDumpFlagsPtrInput)(nil)).Elem(), MigrationJobDumpFlagsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MigrationJobDumpFlagsDumpFlagInput)(nil)).Elem(), MigrationJobDumpFlagsDumpFlagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MigrationJobDumpFlagsDumpFlagArrayInput)(nil)).Elem(), MigrationJobDumpFlagsDumpFlagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MigrationJobErrorInput)(nil)).Elem(), MigrationJobErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MigrationJobErrorArrayInput)(nil)).Elem(), MigrationJobErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MigrationJobPerformanceConfigInput)(nil)).Elem(), MigrationJobPerformanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MigrationJobPerformanceConfigPtrInput)(nil)).Elem(), MigrationJobPerformanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MigrationJobReverseSshConnectivityInput)(nil)).Elem(), MigrationJobReverseSshConnectivityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MigrationJobReverseSshConnectivityPtrInput)(nil)).Elem(), MigrationJobReverseSshConnectivityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MigrationJobStaticIpConnectivityInput)(nil)).Elem(), MigrationJobStaticIpConnectivityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MigrationJobStaticIpConnectivityPtrInput)(nil)).Elem(), MigrationJobStaticIpConnectivityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MigrationJobVpcPeeringConnectivityInput)(nil)).Elem(), MigrationJobVpcPeeringConnectivityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MigrationJobVpcPeeringConnectivityPtrInput)(nil)).Elem(), MigrationJobVpcPeeringConnectivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateConnectionErrorInput)(nil)).Elem(), PrivateConnectionErrorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateConnectionErrorArrayInput)(nil)).Elem(), PrivateConnectionErrorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateConnectionVpcPeeringConfigInput)(nil)).Elem(), PrivateConnectionVpcPeeringConfigArgs{})
@@ -4484,6 +5471,20 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionProfilePostgresqlPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionProfilePostgresqlSslOutput{})
 	pulumi.RegisterOutputType(ConnectionProfilePostgresqlSslPtrOutput{})
+	pulumi.RegisterOutputType(MigrationJobDumpFlagsOutput{})
+	pulumi.RegisterOutputType(MigrationJobDumpFlagsPtrOutput{})
+	pulumi.RegisterOutputType(MigrationJobDumpFlagsDumpFlagOutput{})
+	pulumi.RegisterOutputType(MigrationJobDumpFlagsDumpFlagArrayOutput{})
+	pulumi.RegisterOutputType(MigrationJobErrorOutput{})
+	pulumi.RegisterOutputType(MigrationJobErrorArrayOutput{})
+	pulumi.RegisterOutputType(MigrationJobPerformanceConfigOutput{})
+	pulumi.RegisterOutputType(MigrationJobPerformanceConfigPtrOutput{})
+	pulumi.RegisterOutputType(MigrationJobReverseSshConnectivityOutput{})
+	pulumi.RegisterOutputType(MigrationJobReverseSshConnectivityPtrOutput{})
+	pulumi.RegisterOutputType(MigrationJobStaticIpConnectivityOutput{})
+	pulumi.RegisterOutputType(MigrationJobStaticIpConnectivityPtrOutput{})
+	pulumi.RegisterOutputType(MigrationJobVpcPeeringConnectivityOutput{})
+	pulumi.RegisterOutputType(MigrationJobVpcPeeringConnectivityPtrOutput{})
 	pulumi.RegisterOutputType(PrivateConnectionErrorOutput{})
 	pulumi.RegisterOutputType(PrivateConnectionErrorArrayOutput{})
 	pulumi.RegisterOutputType(PrivateConnectionVpcPeeringConfigOutput{})

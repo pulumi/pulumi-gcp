@@ -175,6 +175,7 @@ import javax.annotation.Nullable;
 public class Connection extends com.pulumi.resources.CustomResource {
     /**
      * Optional. Allows clients to store small amounts of arbitrary data.
+     * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
@@ -184,6 +185,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Optional. Allows clients to store small amounts of arbitrary data.
+     * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
@@ -192,9 +194,8 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.annotations);
     }
     /**
-     * Required. Id of the requesting object
-     * If auto-generating Id server-side, remove this field and
-     * connection_id from the method_signature of Create RPC
+     * Required. Id of the requesting object. If auto-generating Id server-side,
+     * remove this field and connection_id from the method_signature of Create RPC.
      * 
      * ***
      * 
@@ -203,9 +204,8 @@ public class Connection extends com.pulumi.resources.CustomResource {
     private Output<String> connectionId;
 
     /**
-     * @return Required. Id of the requesting object
-     * If auto-generating Id server-side, remove this field and
-     * connection_id from the method_signature of Create RPC
+     * @return Required. Id of the requesting object. If auto-generating Id server-side,
+     * remove this field and connection_id from the method_signature of Create RPC.
      * 
      * ***
      * 
@@ -242,18 +242,14 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return this.deleteTime;
     }
     /**
-     * Optional. If disabled is set to true, functionality is disabled for this connection.
-     * Repository based API methods and webhooks processing for repositories in
-     * this connection will be disabled.
+     * Optional. If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
      * 
      */
     @Export(name="disabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disabled;
 
     /**
-     * @return Optional. If disabled is set to true, functionality is disabled for this connection.
-     * Repository based API methods and webhooks processing for repositories in
-     * this connection will be disabled.
+     * @return Optional. If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
      * 
      */
     public Output<Optional<Boolean>> disabled() {
@@ -280,8 +276,8 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return this.effectiveLabels;
     }
     /**
-     * Optional. This checksum is computed by the server based on the value of other
-     * fields, and may be sent on update and delete requests to ensure the
+     * Optional. This checksum is computed by the server based on the value
+     * of other fields, and may be sent on update and delete requests to ensure the
      * client has an up-to-date value before proceeding.
      * 
      */
@@ -289,8 +285,8 @@ public class Connection extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> etag;
 
     /**
-     * @return Optional. This checksum is computed by the server based on the value of other
-     * fields, and may be sent on update and delete requests to ensure the
+     * @return Optional. This checksum is computed by the server based on the value
+     * of other fields, and may be sent on update and delete requests to ensure the
      * client has an up-to-date value before proceeding.
      * 
      */
@@ -314,9 +310,8 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.githubConfig);
     }
     /**
-     * Describes stage and necessary actions to be taken by the
-     * user to complete the installation. Used for GitHub and GitHub Enterprise
-     * based connections.
+     * Describes stage and necessary actions to be taken by the user to complete the installation.
+     * Used for GitHub and GitHub Enterprise based connections.
      * Structure is documented below.
      * 
      */
@@ -324,9 +319,8 @@ public class Connection extends com.pulumi.resources.CustomResource {
     private Output<List<ConnectionInstallationState>> installationStates;
 
     /**
-     * @return Describes stage and necessary actions to be taken by the
-     * user to complete the installation. Used for GitHub and GitHub Enterprise
-     * based connections.
+     * @return Describes stage and necessary actions to be taken by the user to complete the installation.
+     * Used for GitHub and GitHub Enterprise based connections.
      * Structure is documented below.
      * 
      */
@@ -335,6 +329,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
     }
     /**
      * Optional. Labels as key value pairs
+     * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -344,6 +339,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Optional. Labels as key value pairs
+     * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -352,14 +348,18 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.labels);
     }
     /**
-     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
+     * Resource ID segment making up resource `name`. It identifies the resource
+     * within its parent collection as described in https://google.aip.dev/122. See documentation
+     * for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
      * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
-     * @return Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
+     * @return Resource ID segment making up resource `name`. It identifies the resource
+     * within its parent collection as described in https://google.aip.dev/122. See documentation
+     * for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
      * 
      */
     public Output<String> location() {
@@ -414,16 +414,16 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return this.pulumiLabels;
     }
     /**
-     * Output only. Set to true when the connection is being set up or updated in the
-     * background.
+     * Output only. Set to true when the connection is being set up or updated
+     * in the background.
      * 
      */
     @Export(name="reconciling", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> reconciling;
 
     /**
-     * @return Output only. Set to true when the connection is being set up or updated in the
-     * background.
+     * @return Output only. Set to true when the connection is being set up or updated
+     * in the background.
      * 
      */
     public Output<Boolean> reconciling() {

@@ -152,12 +152,12 @@ type Connection struct {
 	pulumi.CustomResourceState
 
 	// Optional. Allows clients to store small amounts of arbitrary data.
+	//
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
-	// Required. Id of the requesting object
-	// If auto-generating Id server-side, remove this field and
-	// connectionId from the methodSignature of Create RPC
+	// Required. Id of the requesting object. If auto-generating Id server-side,
+	// remove this field and connectionId from the methodSignature of Create RPC.
 	//
 	// ***
 	ConnectionId pulumi.StringOutput `pulumi:"connectionId"`
@@ -165,30 +165,30 @@ type Connection struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Output only. [Output only] Delete timestamp
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
-	// Optional. If disabled is set to true, functionality is disabled for this connection.
-	// Repository based API methods and webhooks processing for repositories in
-	// this connection will be disabled.
+	// Optional. If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
 	Disabled             pulumi.BoolPtrOutput   `pulumi:"disabled"`
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
-	// Optional. This checksum is computed by the server based on the value of other
-	// fields, and may be sent on update and delete requests to ensure the
+	// Optional. This checksum is computed by the server based on the value
+	// of other fields, and may be sent on update and delete requests to ensure the
 	// client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// Configuration for connections to github.com.
 	// Structure is documented below.
 	GithubConfig ConnectionGithubConfigPtrOutput `pulumi:"githubConfig"`
-	// Describes stage and necessary actions to be taken by the
-	// user to complete the installation. Used for GitHub and GitHub Enterprise
-	// based connections.
+	// Describes stage and necessary actions to be taken by the user to complete the installation.
+	// Used for GitHub and GitHub Enterprise based connections.
 	// Structure is documented below.
 	InstallationStates ConnectionInstallationStateArrayOutput `pulumi:"installationStates"`
 	// Optional. Labels as key value pairs
+	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
+	// Resource ID segment making up resource `name`. It identifies the resource
+	// within its parent collection as described in https://google.aip.dev/122. See documentation
+	// for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Identifier. The resource name of the connection, in the format
 	// `projects/{project}/locations/{location}/connections/{connection_id}`.
@@ -199,8 +199,8 @@ type Connection struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
-	// Output only. Set to true when the connection is being set up or updated in the
-	// background.
+	// Output only. Set to true when the connection is being set up or updated
+	// in the background.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
 	// Output only. A system-assigned unique identifier for a the GitRepositoryLink.
 	Uid pulumi.StringOutput `pulumi:"uid"`
@@ -250,12 +250,12 @@ func GetConnection(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Connection resources.
 type connectionState struct {
 	// Optional. Allows clients to store small amounts of arbitrary data.
+	//
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
-	// Required. Id of the requesting object
-	// If auto-generating Id server-side, remove this field and
-	// connectionId from the methodSignature of Create RPC
+	// Required. Id of the requesting object. If auto-generating Id server-side,
+	// remove this field and connectionId from the methodSignature of Create RPC.
 	//
 	// ***
 	ConnectionId *string `pulumi:"connectionId"`
@@ -263,30 +263,30 @@ type connectionState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Output only. [Output only] Delete timestamp
 	DeleteTime *string `pulumi:"deleteTime"`
-	// Optional. If disabled is set to true, functionality is disabled for this connection.
-	// Repository based API methods and webhooks processing for repositories in
-	// this connection will be disabled.
+	// Optional. If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
 	Disabled             *bool             `pulumi:"disabled"`
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
-	// Optional. This checksum is computed by the server based on the value of other
-	// fields, and may be sent on update and delete requests to ensure the
+	// Optional. This checksum is computed by the server based on the value
+	// of other fields, and may be sent on update and delete requests to ensure the
 	// client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
 	// Configuration for connections to github.com.
 	// Structure is documented below.
 	GithubConfig *ConnectionGithubConfig `pulumi:"githubConfig"`
-	// Describes stage and necessary actions to be taken by the
-	// user to complete the installation. Used for GitHub and GitHub Enterprise
-	// based connections.
+	// Describes stage and necessary actions to be taken by the user to complete the installation.
+	// Used for GitHub and GitHub Enterprise based connections.
 	// Structure is documented below.
 	InstallationStates []ConnectionInstallationState `pulumi:"installationStates"`
 	// Optional. Labels as key value pairs
+	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
-	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
+	// Resource ID segment making up resource `name`. It identifies the resource
+	// within its parent collection as described in https://google.aip.dev/122. See documentation
+	// for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
 	Location *string `pulumi:"location"`
 	// Identifier. The resource name of the connection, in the format
 	// `projects/{project}/locations/{location}/connections/{connection_id}`.
@@ -297,8 +297,8 @@ type connectionState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
-	// Output only. Set to true when the connection is being set up or updated in the
-	// background.
+	// Output only. Set to true when the connection is being set up or updated
+	// in the background.
 	Reconciling *bool `pulumi:"reconciling"`
 	// Output only. A system-assigned unique identifier for a the GitRepositoryLink.
 	Uid *string `pulumi:"uid"`
@@ -308,12 +308,12 @@ type connectionState struct {
 
 type ConnectionState struct {
 	// Optional. Allows clients to store small amounts of arbitrary data.
+	//
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
-	// Required. Id of the requesting object
-	// If auto-generating Id server-side, remove this field and
-	// connectionId from the methodSignature of Create RPC
+	// Required. Id of the requesting object. If auto-generating Id server-side,
+	// remove this field and connectionId from the methodSignature of Create RPC.
 	//
 	// ***
 	ConnectionId pulumi.StringPtrInput
@@ -321,30 +321,30 @@ type ConnectionState struct {
 	CreateTime pulumi.StringPtrInput
 	// Output only. [Output only] Delete timestamp
 	DeleteTime pulumi.StringPtrInput
-	// Optional. If disabled is set to true, functionality is disabled for this connection.
-	// Repository based API methods and webhooks processing for repositories in
-	// this connection will be disabled.
+	// Optional. If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
 	Disabled             pulumi.BoolPtrInput
 	EffectiveAnnotations pulumi.StringMapInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
-	// Optional. This checksum is computed by the server based on the value of other
-	// fields, and may be sent on update and delete requests to ensure the
+	// Optional. This checksum is computed by the server based on the value
+	// of other fields, and may be sent on update and delete requests to ensure the
 	// client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
 	// Configuration for connections to github.com.
 	// Structure is documented below.
 	GithubConfig ConnectionGithubConfigPtrInput
-	// Describes stage and necessary actions to be taken by the
-	// user to complete the installation. Used for GitHub and GitHub Enterprise
-	// based connections.
+	// Describes stage and necessary actions to be taken by the user to complete the installation.
+	// Used for GitHub and GitHub Enterprise based connections.
 	// Structure is documented below.
 	InstallationStates ConnectionInstallationStateArrayInput
 	// Optional. Labels as key value pairs
+	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
-	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
+	// Resource ID segment making up resource `name`. It identifies the resource
+	// within its parent collection as described in https://google.aip.dev/122. See documentation
+	// for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
 	Location pulumi.StringPtrInput
 	// Identifier. The resource name of the connection, in the format
 	// `projects/{project}/locations/{location}/connections/{connection_id}`.
@@ -355,8 +355,8 @@ type ConnectionState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
-	// Output only. Set to true when the connection is being set up or updated in the
-	// background.
+	// Output only. Set to true when the connection is being set up or updated
+	// in the background.
 	Reconciling pulumi.BoolPtrInput
 	// Output only. A system-assigned unique identifier for a the GitRepositoryLink.
 	Uid pulumi.StringPtrInput
@@ -370,31 +370,32 @@ func (ConnectionState) ElementType() reflect.Type {
 
 type connectionArgs struct {
 	// Optional. Allows clients to store small amounts of arbitrary data.
+	//
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
-	// Required. Id of the requesting object
-	// If auto-generating Id server-side, remove this field and
-	// connectionId from the methodSignature of Create RPC
+	// Required. Id of the requesting object. If auto-generating Id server-side,
+	// remove this field and connectionId from the methodSignature of Create RPC.
 	//
 	// ***
 	ConnectionId string `pulumi:"connectionId"`
-	// Optional. If disabled is set to true, functionality is disabled for this connection.
-	// Repository based API methods and webhooks processing for repositories in
-	// this connection will be disabled.
+	// Optional. If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
 	Disabled *bool `pulumi:"disabled"`
-	// Optional. This checksum is computed by the server based on the value of other
-	// fields, and may be sent on update and delete requests to ensure the
+	// Optional. This checksum is computed by the server based on the value
+	// of other fields, and may be sent on update and delete requests to ensure the
 	// client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
 	// Configuration for connections to github.com.
 	// Structure is documented below.
 	GithubConfig *ConnectionGithubConfig `pulumi:"githubConfig"`
 	// Optional. Labels as key value pairs
+	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
-	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
+	// Resource ID segment making up resource `name`. It identifies the resource
+	// within its parent collection as described in https://google.aip.dev/122. See documentation
+	// for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
 	Location string `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -404,31 +405,32 @@ type connectionArgs struct {
 // The set of arguments for constructing a Connection resource.
 type ConnectionArgs struct {
 	// Optional. Allows clients to store small amounts of arbitrary data.
+	//
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
-	// Required. Id of the requesting object
-	// If auto-generating Id server-side, remove this field and
-	// connectionId from the methodSignature of Create RPC
+	// Required. Id of the requesting object. If auto-generating Id server-side,
+	// remove this field and connectionId from the methodSignature of Create RPC.
 	//
 	// ***
 	ConnectionId pulumi.StringInput
-	// Optional. If disabled is set to true, functionality is disabled for this connection.
-	// Repository based API methods and webhooks processing for repositories in
-	// this connection will be disabled.
+	// Optional. If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
 	Disabled pulumi.BoolPtrInput
-	// Optional. This checksum is computed by the server based on the value of other
-	// fields, and may be sent on update and delete requests to ensure the
+	// Optional. This checksum is computed by the server based on the value
+	// of other fields, and may be sent on update and delete requests to ensure the
 	// client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
 	// Configuration for connections to github.com.
 	// Structure is documented below.
 	GithubConfig ConnectionGithubConfigPtrInput
 	// Optional. Labels as key value pairs
+	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
-	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
+	// Resource ID segment making up resource `name`. It identifies the resource
+	// within its parent collection as described in https://google.aip.dev/122. See documentation
+	// for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
 	Location pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -523,15 +525,15 @@ func (o ConnectionOutput) ToConnectionOutputWithContext(ctx context.Context) Con
 }
 
 // Optional. Allows clients to store small amounts of arbitrary data.
+//
 // **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 // Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 func (o ConnectionOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
-// Required. Id of the requesting object
-// If auto-generating Id server-side, remove this field and
-// connectionId from the methodSignature of Create RPC
+// Required. Id of the requesting object. If auto-generating Id server-side,
+// remove this field and connectionId from the methodSignature of Create RPC.
 //
 // ***
 func (o ConnectionOutput) ConnectionId() pulumi.StringOutput {
@@ -548,9 +550,7 @@ func (o ConnectionOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
 }
 
-// Optional. If disabled is set to true, functionality is disabled for this connection.
-// Repository based API methods and webhooks processing for repositories in
-// this connection will be disabled.
+// Optional. If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
 func (o ConnectionOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Connection) pulumi.BoolPtrOutput { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
@@ -564,8 +564,8 @@ func (o ConnectionOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
-// Optional. This checksum is computed by the server based on the value of other
-// fields, and may be sent on update and delete requests to ensure the
+// Optional. This checksum is computed by the server based on the value
+// of other fields, and may be sent on update and delete requests to ensure the
 // client has an up-to-date value before proceeding.
 func (o ConnectionOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringPtrOutput { return v.Etag }).(pulumi.StringPtrOutput)
@@ -577,22 +577,24 @@ func (o ConnectionOutput) GithubConfig() ConnectionGithubConfigPtrOutput {
 	return o.ApplyT(func(v *Connection) ConnectionGithubConfigPtrOutput { return v.GithubConfig }).(ConnectionGithubConfigPtrOutput)
 }
 
-// Describes stage and necessary actions to be taken by the
-// user to complete the installation. Used for GitHub and GitHub Enterprise
-// based connections.
+// Describes stage and necessary actions to be taken by the user to complete the installation.
+// Used for GitHub and GitHub Enterprise based connections.
 // Structure is documented below.
 func (o ConnectionOutput) InstallationStates() ConnectionInstallationStateArrayOutput {
 	return o.ApplyT(func(v *Connection) ConnectionInstallationStateArrayOutput { return v.InstallationStates }).(ConnectionInstallationStateArrayOutput)
 }
 
 // Optional. Labels as key value pairs
+//
 // **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 // Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 func (o ConnectionOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
+// Resource ID segment making up resource `name`. It identifies the resource
+// within its parent collection as described in https://google.aip.dev/122. See documentation
+// for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
 func (o ConnectionOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
@@ -615,8 +617,8 @@ func (o ConnectionOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
-// Output only. Set to true when the connection is being set up or updated in the
-// background.
+// Output only. Set to true when the connection is being set up or updated
+// in the background.
 func (o ConnectionOutput) Reconciling() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Connection) pulumi.BoolOutput { return v.Reconciling }).(pulumi.BoolOutput)
 }
