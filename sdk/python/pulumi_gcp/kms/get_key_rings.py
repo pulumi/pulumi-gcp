@@ -106,9 +106,6 @@ def get_key_rings(filter: Optional[str] = None,
         key_rings=pulumi.get(__ret__, 'key_rings'),
         location=pulumi.get(__ret__, 'location'),
         project=pulumi.get(__ret__, 'project'))
-
-
-@_utilities.lift_output_func(get_key_rings)
 def get_key_rings_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
                          location: Optional[pulumi.Input[str]] = None,
                          project: Optional[pulumi.Input[Optional[str]]] = None,
@@ -116,4 +113,15 @@ def get_key_rings_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
     """
     Use this data source to access information about an existing resource.
     """
-    ...
+    __args__ = dict()
+    __args__['filter'] = filter
+    __args__['location'] = location
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:kms/getKeyRings:getKeyRings', __args__, opts=opts, typ=GetKeyRingsResult)
+    return __ret__.apply(lambda __response__: GetKeyRingsResult(
+        filter=pulumi.get(__response__, 'filter'),
+        id=pulumi.get(__response__, 'id'),
+        key_rings=pulumi.get(__response__, 'key_rings'),
+        location=pulumi.get(__response__, 'location'),
+        project=pulumi.get(__response__, 'project')))

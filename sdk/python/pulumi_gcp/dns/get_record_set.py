@@ -155,9 +155,6 @@ def get_record_set(managed_zone: Optional[str] = None,
         rrdatas=pulumi.get(__ret__, 'rrdatas'),
         ttl=pulumi.get(__ret__, 'ttl'),
         type=pulumi.get(__ret__, 'type'))
-
-
-@_utilities.lift_output_func(get_record_set)
 def get_record_set_output(managed_zone: Optional[pulumi.Input[str]] = None,
                           name: Optional[pulumi.Input[str]] = None,
                           project: Optional[pulumi.Input[Optional[str]]] = None,
@@ -188,4 +185,18 @@ def get_record_set_output(managed_zone: Optional[pulumi.Input[str]] = None,
     :param str project: The ID of the project for the Google Cloud.
     :param str type: The RRSet type. [See this table for supported types](https://cloud.google.com/dns/docs/records#record_type).
     """
-    ...
+    __args__ = dict()
+    __args__['managedZone'] = managed_zone
+    __args__['name'] = name
+    __args__['project'] = project
+    __args__['type'] = type
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:dns/getRecordSet:getRecordSet', __args__, opts=opts, typ=GetRecordSetResult)
+    return __ret__.apply(lambda __response__: GetRecordSetResult(
+        id=pulumi.get(__response__, 'id'),
+        managed_zone=pulumi.get(__response__, 'managed_zone'),
+        name=pulumi.get(__response__, 'name'),
+        project=pulumi.get(__response__, 'project'),
+        rrdatas=pulumi.get(__response__, 'rrdatas'),
+        ttl=pulumi.get(__response__, 'ttl'),
+        type=pulumi.get(__response__, 'type')))
