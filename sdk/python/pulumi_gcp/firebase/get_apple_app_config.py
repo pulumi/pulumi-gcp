@@ -112,9 +112,6 @@ def get_apple_app_config(app_id: Optional[str] = None,
         config_filename=pulumi.get(__ret__, 'config_filename'),
         id=pulumi.get(__ret__, 'id'),
         project=pulumi.get(__ret__, 'project'))
-
-
-@_utilities.lift_output_func(get_apple_app_config)
 def get_apple_app_config_output(app_id: Optional[pulumi.Input[str]] = None,
                                 project: Optional[pulumi.Input[Optional[str]]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAppleAppConfigResult]:
@@ -127,4 +124,14 @@ def get_apple_app_config_output(app_id: Optional[pulumi.Input[str]] = None,
     :param str project: The ID of the project in which the resource belongs. If it
            is not provided, the provider project is used.
     """
-    ...
+    __args__ = dict()
+    __args__['appId'] = app_id
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:firebase/getAppleAppConfig:getAppleAppConfig', __args__, opts=opts, typ=GetAppleAppConfigResult)
+    return __ret__.apply(lambda __response__: GetAppleAppConfigResult(
+        app_id=pulumi.get(__response__, 'app_id'),
+        config_file_contents=pulumi.get(__response__, 'config_file_contents'),
+        config_filename=pulumi.get(__response__, 'config_filename'),
+        id=pulumi.get(__response__, 'id'),
+        project=pulumi.get(__response__, 'project')))

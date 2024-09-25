@@ -164,9 +164,6 @@ def get_organization(domain: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         org_id=pulumi.get(__ret__, 'org_id'),
         organization=pulumi.get(__ret__, 'organization'))
-
-
-@_utilities.lift_output_func(get_organization)
 def get_organization_output(domain: Optional[pulumi.Input[Optional[str]]] = None,
                             organization: Optional[pulumi.Input[Optional[str]]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOrganizationResult]:
@@ -189,4 +186,17 @@ def get_organization_output(domain: Optional[pulumi.Input[Optional[str]]] = None
            > **NOTE:** One of `organization` or `domain` must be specified.
     :param str organization: The Organization's numeric ID, including an optional `organizations/` prefix.
     """
-    ...
+    __args__ = dict()
+    __args__['domain'] = domain
+    __args__['organization'] = organization
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:organizations/getOrganization:getOrganization', __args__, opts=opts, typ=GetOrganizationResult)
+    return __ret__.apply(lambda __response__: GetOrganizationResult(
+        create_time=pulumi.get(__response__, 'create_time'),
+        directory_customer_id=pulumi.get(__response__, 'directory_customer_id'),
+        domain=pulumi.get(__response__, 'domain'),
+        id=pulumi.get(__response__, 'id'),
+        lifecycle_state=pulumi.get(__response__, 'lifecycle_state'),
+        name=pulumi.get(__response__, 'name'),
+        org_id=pulumi.get(__response__, 'org_id'),
+        organization=pulumi.get(__response__, 'organization')))
