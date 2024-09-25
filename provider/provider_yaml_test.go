@@ -384,7 +384,7 @@ func writeStackExport(path string, snapshot *apitype.UntypedDeployment, overwrit
 		return fmt.Errorf("stack export must not be nil")
 	}
 	dir := filepath.Dir(path)
-	err := os.MkdirAll(dir, 0755)
+	err := os.MkdirAll(dir, 0o755)
 	if err != nil {
 		return err
 	}
@@ -399,8 +399,9 @@ func writeStackExport(path string, snapshot *apitype.UntypedDeployment, overwrit
 	if pathExists && !overwrite {
 		return fmt.Errorf("stack export already exists at %s", path)
 	}
-	return os.WriteFile(path, stackBytes, 0600)
+	return os.WriteFile(path, stackBytes, 0o600)
 }
+
 func exists(filePath string) (bool, error) {
 	_, err := os.Stat(filePath)
 	switch {
@@ -1243,6 +1244,51 @@ Resources:
 				Secret: true,
 			},
 		})},
+		{
+			// Cluster overloads the labels field and instead uses resourceLabels for GCP labels.
+			"empty-label-cluster",
+			autogold.Expect(`Previewing update (test):
+
+ +  pulumi:pulumi:Stack empty-label-cluster-test create
+ +  random:index:RandomString random-account-id create
+ +  gcp:container:Cluster primary create
+ +  gcp:serviceaccount:Account serviceAccount create
+ +  pulumi:pulumi:Stack empty-label-cluster-test create
+Outputs:
+    effectiveLabels: [secret]
+    labels         : {
+        environment: "dev"
+        test       : ""
+    }
+    pulumiLabels   : [secret]
+
+Resources:
+    + 4 to create
+
+`),
+			autogold.Expect(auto.OutputMap{
+				"effectiveLabels": auto.OutputValue{
+					Value: map[string]interface{}{
+						"environment":             "dev",
+						"goog-pulumi-provisioned": "true",
+						"test":                    "",
+					},
+					Secret: true,
+				},
+				"labels": auto.OutputValue{Value: map[string]interface{}{
+					"environment": "dev",
+					"test":        "",
+				}},
+				"pulumiLabels": auto.OutputValue{
+					Value: map[string]interface{}{
+						"environment":             "dev",
+						"goog-pulumi-provisioned": "true",
+						"test":                    "",
+					},
+					Secret: true,
+				},
+			}),
+		},
 	}
 
 	for _, tt := range tests {
