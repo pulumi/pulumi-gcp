@@ -4,7 +4,6 @@ package gcp
 
 import (
 	"context"
-	"q"
 
 	"github.com/hashicorp/go-cty/cty"
 
@@ -26,7 +25,6 @@ func fixEmptyLabels(_ context.Context, req shimv2.PlanStateEditRequest) (cty.Val
 	programLabels := property.Map{}
 
 	labelsPropertyName := "labels"
-	q.Q(req.TfToken, req.NewInputs, req.PlanState, req.ProviderConfig)
 	if req.TfToken == "google_container_cluster" {
 		labelsPropertyName = "resourceLabels"
 	}
