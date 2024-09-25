@@ -384,7 +384,7 @@ func writeStackExport(path string, snapshot *apitype.UntypedDeployment, overwrit
 		return fmt.Errorf("stack export must not be nil")
 	}
 	dir := filepath.Dir(path)
-	err := os.MkdirAll(dir, 0o755)
+	err := os.MkdirAll(dir, 0755)
 	if err != nil {
 		return err
 	}
@@ -399,9 +399,8 @@ func writeStackExport(path string, snapshot *apitype.UntypedDeployment, overwrit
 	if pathExists && !overwrite {
 		return fmt.Errorf("stack export already exists at %s", path)
 	}
-	return os.WriteFile(path, stackBytes, 0o600)
+	return os.WriteFile(path, stackBytes, 0600)
 }
-
 func exists(filePath string) (bool, error) {
 	_, err := os.Stat(filePath)
 	switch {
