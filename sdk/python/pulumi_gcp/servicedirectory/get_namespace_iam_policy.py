@@ -100,9 +100,6 @@ def get_namespace_iam_policy(name: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         policy_data=pulumi.get(__ret__, 'policy_data'))
-
-
-@_utilities.lift_output_func(get_namespace_iam_policy)
 def get_namespace_iam_policy_output(name: Optional[pulumi.Input[str]] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNamespaceIamPolicyResult]:
     """
@@ -110,4 +107,12 @@ def get_namespace_iam_policy_output(name: Optional[pulumi.Input[str]] = None,
 
     :param str name: Used to find the parent resource to bind the IAM policy to
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:servicedirectory/getNamespaceIamPolicy:getNamespaceIamPolicy', __args__, opts=opts, typ=GetNamespaceIamPolicyResult)
+    return __ret__.apply(lambda __response__: GetNamespaceIamPolicyResult(
+        etag=pulumi.get(__response__, 'etag'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        policy_data=pulumi.get(__response__, 'policy_data')))

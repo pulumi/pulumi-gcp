@@ -112,9 +112,6 @@ def get_vcenter_credentials(parent: Optional[str] = None,
         parent=pulumi.get(__ret__, 'parent'),
         password=pulumi.get(__ret__, 'password'),
         username=pulumi.get(__ret__, 'username'))
-
-
-@_utilities.lift_output_func(get_vcenter_credentials)
 def get_vcenter_credentials_output(parent: Optional[pulumi.Input[str]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVcenterCredentialsResult]:
     """
@@ -135,4 +132,12 @@ def get_vcenter_credentials_output(parent: Optional[pulumi.Input[str]] = None,
 
     :param str parent: The resource name of the private cloud which contains the Vcenter.
     """
-    ...
+    __args__ = dict()
+    __args__['parent'] = parent
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:vmwareengine/getVcenterCredentials:getVcenterCredentials', __args__, opts=opts, typ=GetVcenterCredentialsResult)
+    return __ret__.apply(lambda __response__: GetVcenterCredentialsResult(
+        id=pulumi.get(__response__, 'id'),
+        parent=pulumi.get(__response__, 'parent'),
+        password=pulumi.get(__response__, 'password'),
+        username=pulumi.get(__response__, 'username')))
