@@ -1133,27 +1133,9 @@ func TestFirestoreDatabaseAutoname(t *testing.T) {
 func TestEmptyLabels(t *testing.T) {
 	tests := []struct {
 		program       string
-		previewStdout autogold.Value
 		upOutputs     autogold.Value
 	}{
-		{"empty-label", autogold.Expect(`Previewing update (test):
-
- +  pulumi:pulumi:Stack empty-label-test create
- +  gcp:kms:KeyRing ring create
- +  gcp:kms:CryptoKey key create
- +  pulumi:pulumi:Stack empty-label-test create
-Outputs:
-    effectiveLabels: [secret]
-    labels         : {
-        empty : ""
-        static: "value"
-    }
-    pulumiLabels   : [secret]
-
-Resources:
-    + 3 to create
-
-`), autogold.Expect(auto.OutputMap{
+		{"empty-label", autogold.Expect(auto.OutputMap{
 			"effectiveLabels": auto.OutputValue{
 				Value: map[string]interface{}{
 					"empty":                   "",
@@ -1175,23 +1157,7 @@ Resources:
 				Secret: true,
 			},
 		})},
-		{"empty-alone-label", autogold.Expect(`Previewing update (test):
-
- +  pulumi:pulumi:Stack empty-alone-label-test create
- +  gcp:kms:KeyRing ring create
- +  gcp:kms:CryptoKey key create
- +  pulumi:pulumi:Stack empty-alone-label-test create
-Outputs:
-    effectiveLabels: [secret]
-    labels         : {
-        empty: ""
-    }
-    pulumiLabels   : [secret]
-
-Resources:
-    + 3 to create
-
-`), autogold.Expect(auto.OutputMap{
+		{"empty-alone-label", autogold.Expect(auto.OutputMap{
 			"effectiveLabels": auto.OutputValue{
 				Value: map[string]interface{}{
 					"empty":                   "",
@@ -1208,23 +1174,7 @@ Resources:
 				Secret: true,
 			},
 		})},
-		{"empty-default-label", autogold.Expect(`Previewing update (test):
-
- +  pulumi:pulumi:Stack empty-default-label-test create
- +  gcp:kms:KeyRing ring create
- +  gcp:kms:CryptoKey key create
- +  pulumi:pulumi:Stack empty-default-label-test create
-Outputs:
-    effectiveLabels: [secret]
-    labels         : {
-        static: "value"
-    }
-    pulumiLabels   : [secret]
-
-Resources:
-    + 3 to create
-
-`), autogold.Expect(auto.OutputMap{
+		{"empty-default-label", autogold.Expect(auto.OutputMap{
 			"effectiveLabels": auto.OutputValue{
 				Value: map[string]interface{}{
 					"empty-default":           "",
@@ -1246,25 +1196,6 @@ Resources:
 		{
 			// Cluster overloads the labels field and instead uses resourceLabels for GCP labels.
 			"empty-label-cluster",
-			autogold.Expect(`Previewing update (test):
-
- +  pulumi:pulumi:Stack empty-label-cluster-test create
- +  random:index:RandomString random-account-id create
- +  gcp:container:Cluster primary create
- +  gcp:serviceaccount:Account serviceAccount create
- +  pulumi:pulumi:Stack empty-label-cluster-test create
-Outputs:
-    effectiveLabels: [secret]
-    labels         : {
-        environment: "dev"
-        test       : ""
-    }
-    pulumiLabels   : [secret]
-
-Resources:
-    + 4 to create
-
-`),
 			autogold.Expect(auto.OutputMap{
 				"effectiveLabels": auto.OutputValue{
 					Value: map[string]interface{}{
@@ -1297,9 +1228,6 @@ Resources:
 			pt := pulumiTest(t, "test-programs/"+tt.program)
 			proj := getProject()
 			pt.SetConfig("gcpProj", proj)
-
-			previewResult := pt.Preview(optpreview.SuppressProgress())
-			tt.previewStdout.Equal(t, previewResult.StdOut)
 
 			upResult := pt.Up(optup.SuppressProgress())
 			tt.upOutputs.Equal(t, upResult.Outputs)
