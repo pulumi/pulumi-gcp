@@ -1132,8 +1132,8 @@ func TestFirestoreDatabaseAutoname(t *testing.T) {
 
 func TestEmptyLabels(t *testing.T) {
 	tests := []struct {
-		program       string
-		upOutputs     autogold.Value
+		program   string
+		upOutputs autogold.Value
 	}{
 		{"empty-label", autogold.Expect(auto.OutputMap{
 			"effectiveLabels": auto.OutputValue{
