@@ -1093,6 +1093,9 @@
                     "observability_config": {
                         "maxItemsOne": true
                     },
+                    "outbound_public_ip_addresses": {
+                        "maxItemsOne": false
+                    },
                     "psc_instance_config": {
                         "maxItemsOne": true,
                         "elem": {
@@ -5637,6 +5640,132 @@
                     },
                     "target_service_accounts": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "google_compute_firewall_policy_with_rules": {
+                "current": "gcp:compute/firewallPolicyWithRules:FirewallPolicyWithRules",
+                "majorVersion": 8,
+                "fields": {
+                    "predefined_rules": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "match": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "dest_address_groups": {
+                                                "maxItemsOne": false
+                                            },
+                                            "dest_fqdns": {
+                                                "maxItemsOne": false
+                                            },
+                                            "dest_ip_ranges": {
+                                                "maxItemsOne": false
+                                            },
+                                            "dest_region_codes": {
+                                                "maxItemsOne": false
+                                            },
+                                            "dest_threat_intelligences": {
+                                                "maxItemsOne": false
+                                            },
+                                            "layer4_config": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "ports": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "src_address_groups": {
+                                                "maxItemsOne": false
+                                            },
+                                            "src_fqdns": {
+                                                "maxItemsOne": false
+                                            },
+                                            "src_ip_ranges": {
+                                                "maxItemsOne": false
+                                            },
+                                            "src_region_codes": {
+                                                "maxItemsOne": false
+                                            },
+                                            "src_threat_intelligences": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "target_resources": {
+                                    "maxItemsOne": false
+                                },
+                                "target_service_accounts": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "rule": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "match": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "dest_address_groups": {
+                                                "maxItemsOne": false
+                                            },
+                                            "dest_fqdns": {
+                                                "maxItemsOne": false
+                                            },
+                                            "dest_ip_ranges": {
+                                                "maxItemsOne": false
+                                            },
+                                            "dest_region_codes": {
+                                                "maxItemsOne": false
+                                            },
+                                            "dest_threat_intelligences": {
+                                                "maxItemsOne": false
+                                            },
+                                            "layer4_config": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "ports": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "src_address_groups": {
+                                                "maxItemsOne": false
+                                            },
+                                            "src_fqdns": {
+                                                "maxItemsOne": false
+                                            },
+                                            "src_ip_ranges": {
+                                                "maxItemsOne": false
+                                            },
+                                            "src_region_codes": {
+                                                "maxItemsOne": false
+                                            },
+                                            "src_threat_intelligences": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "target_resources": {
+                                    "maxItemsOne": false
+                                },
+                                "target_service_accounts": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -13247,6 +13376,44 @@
                     }
                 }
             },
+            "google_database_migration_service_migration_job": {
+                "current": "gcp:databasemigrationservice/migrationJob:MigrationJob",
+                "majorVersion": 8,
+                "fields": {
+                    "dump_flags": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "dump_flags": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "error": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "details": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "performance_config": {
+                        "maxItemsOne": true
+                    },
+                    "reverse_ssh_connectivity": {
+                        "maxItemsOne": true
+                    },
+                    "static_ip_connectivity": {
+                        "maxItemsOne": true
+                    },
+                    "vpc_peering_connectivity": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "google_database_migration_service_private_connection": {
                 "current": "gcp:databasemigrationservice/privateConnection:PrivateConnection",
                 "majorVersion": 8,
@@ -16315,6 +16482,25 @@
                     }
                 }
             },
+            "google_discovery_engine_target_site": {
+                "current": "gcp:discoveryengine/targetSite:TargetSite",
+                "majorVersion": 8,
+                "fields": {
+                    "failure_reason": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "quota_failure": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "site_verification_info": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "google_dns_managed_zone": {
                 "current": "gcp:dns/managedZone:ManagedZone",
                 "majorVersion": 8,
@@ -19002,6 +19188,22 @@
                 "current": "gcp:healthcare/hl7StoreIamPolicy:Hl7StoreIamPolicy",
                 "majorVersion": 8
             },
+            "google_healthcare_workspace": {
+                "current": "gcp:healthcare/workspace:Workspace",
+                "majorVersion": 8,
+                "fields": {
+                    "settings": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "data_project_ids": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "google_iam_access_boundary_policy": {
                 "current": "gcp:iam/accessBoundaryPolicy:AccessBoundaryPolicy",
                 "majorVersion": 8,
@@ -21040,6 +21242,9 @@
                                 }
                             }
                         }
+                    },
+                    "tiering_policy": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -24468,6 +24673,10 @@
                     }
                 }
             },
+            "google_scc_folder_scc_big_query_export": {
+                "current": "gcp:securitycenter/folderSccBigQueryExport:FolderSccBigQueryExport",
+                "majorVersion": 8
+            },
             "google_scc_management_folder_security_health_analytics_custom_module": {
                 "current": "gcp:securitycenter/managementFolderSecurityHealthAnalyticsCustomModule:ManagementFolderSecurityHealthAnalyticsCustomModule",
                 "majorVersion": 8,
@@ -24657,6 +24866,10 @@
                     }
                 }
             },
+            "google_scc_organization_scc_big_query_export": {
+                "current": "gcp:securitycenter/organizationSccBigQueryExport:OrganizationSccBigQueryExport",
+                "majorVersion": 8
+            },
             "google_scc_project_custom_module": {
                 "current": "gcp:securitycenter/projectCustomModule:ProjectCustomModule",
                 "majorVersion": 8,
@@ -24708,6 +24921,10 @@
                         "maxItemsOne": true
                     }
                 }
+            },
+            "google_scc_project_scc_big_query_export": {
+                "current": "gcp:securitycenter/projectSccBigQueryExport:ProjectSccBigQueryExport",
+                "majorVersion": 8
             },
             "google_scc_source": {
                 "current": "gcp:securitycenter/source:Source",
@@ -24768,6 +24985,10 @@
                     }
                 }
             },
+            "google_scc_v2_organization_scc_big_query_export": {
+                "current": "gcp:securitycenter/v2OrganizationSccBigQueryExport:V2OrganizationSccBigQueryExport",
+                "majorVersion": 8
+            },
             "google_scc_v2_organization_scc_big_query_exports": {
                 "current": "gcp:securitycenter/v2OrganizationSccBigQueryExports:V2OrganizationSccBigQueryExports",
                 "majorVersion": 8
@@ -24817,6 +25038,55 @@
             "google_scc_v2_project_scc_big_query_export": {
                 "current": "gcp:securitycenter/v2ProjectSccBigQueryExport:V2ProjectSccBigQueryExport",
                 "majorVersion": 8
+            },
+            "google_secret_manager_regional_secret": {
+                "current": "gcp:secretmanager/regionalSecret:RegionalSecret",
+                "majorVersion": 8,
+                "fields": {
+                    "customer_managed_encryption": {
+                        "maxItemsOne": true
+                    },
+                    "rotation": {
+                        "maxItemsOne": true
+                    },
+                    "topics": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_secret_manager_regional_secret_iam_binding": {
+                "current": "gcp:secretmanager/regionalSecretIamBinding:RegionalSecretIamBinding",
+                "majorVersion": 8,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    },
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_secret_manager_regional_secret_iam_member": {
+                "current": "gcp:secretmanager/regionalSecretIamMember:RegionalSecretIamMember",
+                "majorVersion": 8,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "google_secret_manager_regional_secret_iam_policy": {
+                "current": "gcp:secretmanager/regionalSecretIamPolicy:RegionalSecretIamPolicy",
+                "majorVersion": 8
+            },
+            "google_secret_manager_regional_secret_version": {
+                "current": "gcp:secretmanager/regionalSecretVersion:RegionalSecretVersion",
+                "majorVersion": 8,
+                "fields": {
+                    "customer_managed_encryption": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "google_secret_manager_secret": {
                 "current": "gcp:secretmanager/secret:Secret",
@@ -25310,6 +25580,18 @@
                 "current": "gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride",
                 "majorVersion": 8
             },
+            "google_site_verification_web_resource": {
+                "current": "gcp:siteverification/webResource:WebResource",
+                "majorVersion": 8,
+                "fields": {
+                    "owners": {
+                        "maxItemsOne": false
+                    },
+                    "site": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "google_sourcerepo_repository": {
                 "current": "gcp:sourcerepo/repository:Repository",
                 "majorVersion": 8,
@@ -25343,6 +25625,28 @@
             "google_sourcerepo_repository_iam_policy": {
                 "current": "gcp:sourcerepo/repositoryIamPolicy:RepositoryIamPolicy",
                 "majorVersion": 8
+            },
+            "google_spanner_backup_schedule": {
+                "current": "gcp:spanner/backupSchedule:BackupSchedule",
+                "majorVersion": 8,
+                "fields": {
+                    "full_backup_spec": {
+                        "maxItemsOne": true
+                    },
+                    "incremental_backup_spec": {
+                        "maxItemsOne": true
+                    },
+                    "spec": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "cron_spec": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "google_spanner_database": {
                 "current": "gcp:spanner/database:Database",
@@ -31861,6 +32165,34 @@
                 "current": "gcp:securitycenter/getV2OrganizationSourceIamPolicy:getV2OrganizationSourceIamPolicy",
                 "majorVersion": 8
             },
+            "google_secret_manager_regional_secret": {
+                "current": "gcp:secretmanager/getRegionalSecret:getRegionalSecret",
+                "majorVersion": 8,
+                "fields": {
+                    "customer_managed_encryption": {
+                        "maxItemsOne": false
+                    },
+                    "rotation": {
+                        "maxItemsOne": false
+                    },
+                    "topics": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_secret_manager_regional_secret_iam_policy": {
+                "current": "gcp:secretmanager/getRegionalSecretIamPolicy:getRegionalSecretIamPolicy",
+                "majorVersion": 8
+            },
+            "google_secret_manager_regional_secret_version": {
+                "current": "gcp:secretmanager/getRegionalSecretVersion:getRegionalSecretVersion",
+                "majorVersion": 8,
+                "fields": {
+                    "customer_managed_encryption": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "google_secret_manager_secret": {
                 "current": "gcp:secretmanager/getSecret:getSecret",
                 "majorVersion": 8,
@@ -32978,6 +33310,10 @@
                 "effective_labels",
                 "terraform_labels"
             ],
+            "google_database_migration_service_migration_job": [
+                "effective_labels",
+                "terraform_labels"
+            ],
             "google_database_migration_service_private_connection": [
                 "effective_labels",
                 "terraform_labels"
@@ -33159,6 +33495,10 @@
                 "terraform_labels"
             ],
             "google_healthcare_hl7_v2_store": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_healthcare_workspace": [
                 "effective_labels",
                 "terraform_labels"
             ],
@@ -33391,6 +33731,10 @@
                 "terraform_labels"
             ],
             "google_redis_instance": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_secret_manager_regional_secret": [
                 "effective_labels",
                 "terraform_labels"
             ],
@@ -33629,6 +33973,10 @@
                 "terraform_labels"
             ],
             "google_redis_instance": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_secret_manager_regional_secret": [
                 "effective_labels",
                 "terraform_labels"
             ],
@@ -33915,6 +34263,7 @@
             "gcp:compute/firewallPolicy:FirewallPolicy": 0,
             "gcp:compute/firewallPolicyAssociation:FirewallPolicyAssociation": 0,
             "gcp:compute/firewallPolicyRule:FirewallPolicyRule": 0,
+            "gcp:compute/firewallPolicyWithRules:FirewallPolicyWithRules": 0,
             "gcp:compute/forwardingRule:ForwardingRule": 0,
             "gcp:compute/globalAddress:GlobalAddress": 0,
             "gcp:compute/globalForwardingRule:GlobalForwardingRule": 0,
@@ -34051,6 +34400,7 @@
             "gcp:containeranalysis/noteIamPolicy:NoteIamPolicy": 0,
             "gcp:containeranalysis/occurence:Occurence": 0,
             "gcp:databasemigrationservice/connectionProfile:ConnectionProfile": 0,
+            "gcp:databasemigrationservice/migrationJob:MigrationJob": 0,
             "gcp:databasemigrationservice/privateConnection:PrivateConnection": 0,
             "gcp:datacatalog/entry:Entry": 0,
             "gcp:datacatalog/entryGroup:EntryGroup": 0,
@@ -34162,6 +34512,7 @@
             "gcp:discoveryengine/dataStore:DataStore": 0,
             "gcp:discoveryengine/schema:Schema": 0,
             "gcp:discoveryengine/searchEngine:SearchEngine": 0,
+            "gcp:discoveryengine/targetSite:TargetSite": 0,
             "gcp:dns/dnsManagedZoneIamBinding:DnsManagedZoneIamBinding": 0,
             "gcp:dns/dnsManagedZoneIamMember:DnsManagedZoneIamMember": 0,
             "gcp:dns/dnsManagedZoneIamPolicy:DnsManagedZoneIamPolicy": 0,
@@ -34276,6 +34627,7 @@
             "gcp:healthcare/hl7StoreIamBinding:Hl7StoreIamBinding": 0,
             "gcp:healthcare/hl7StoreIamMember:Hl7StoreIamMember": 0,
             "gcp:healthcare/hl7StoreIamPolicy:Hl7StoreIamPolicy": 0,
+            "gcp:healthcare/workspace:Workspace": 0,
             "gcp:iam/accessBoundaryPolicy:AccessBoundaryPolicy": 0,
             "gcp:iam/denyPolicy:DenyPolicy": 0,
             "gcp:iam/workforcePool:WorkforcePool": 0,
@@ -34490,6 +34842,11 @@
             "gcp:runtimeconfig/configIamMember:ConfigIamMember": 0,
             "gcp:runtimeconfig/configIamPolicy:ConfigIamPolicy": 0,
             "gcp:runtimeconfig/variable:Variable": 0,
+            "gcp:secretmanager/regionalSecret:RegionalSecret": 0,
+            "gcp:secretmanager/regionalSecretIamBinding:RegionalSecretIamBinding": 0,
+            "gcp:secretmanager/regionalSecretIamMember:RegionalSecretIamMember": 0,
+            "gcp:secretmanager/regionalSecretIamPolicy:RegionalSecretIamPolicy": 0,
+            "gcp:secretmanager/regionalSecretVersion:RegionalSecretVersion": 0,
             "gcp:secretmanager/secret:Secret": 0,
             "gcp:secretmanager/secretIamBinding:SecretIamBinding": 0,
             "gcp:secretmanager/secretIamMember:SecretIamMember": 0,
@@ -34506,6 +34863,7 @@
             "gcp:securitycenter/eventThreatDetectionCustomModule:EventThreatDetectionCustomModule": 0,
             "gcp:securitycenter/folderCustomModule:FolderCustomModule": 0,
             "gcp:securitycenter/folderNotificationConfig:FolderNotificationConfig": 0,
+            "gcp:securitycenter/folderSccBigQueryExport:FolderSccBigQueryExport": 0,
             "gcp:securitycenter/instanceIamBinding:InstanceIamBinding": 0,
             "gcp:securitycenter/instanceIamMember:InstanceIamMember": 0,
             "gcp:securitycenter/instanceIamPolicy:InstanceIamPolicy": 0,
@@ -34516,8 +34874,10 @@
             "gcp:securitycenter/muteConfig:MuteConfig": 0,
             "gcp:securitycenter/notificationConfig:NotificationConfig": 0,
             "gcp:securitycenter/organizationCustomModule:OrganizationCustomModule": 0,
+            "gcp:securitycenter/organizationSccBigQueryExport:OrganizationSccBigQueryExport": 0,
             "gcp:securitycenter/projectCustomModule:ProjectCustomModule": 0,
             "gcp:securitycenter/projectNotificationConfig:ProjectNotificationConfig": 0,
+            "gcp:securitycenter/projectSccBigQueryExport:ProjectSccBigQueryExport": 0,
             "gcp:securitycenter/source:Source": 0,
             "gcp:securitycenter/sourceIamBinding:SourceIamBinding": 0,
             "gcp:securitycenter/sourceIamMember:SourceIamMember": 0,
@@ -34527,6 +34887,7 @@
             "gcp:securitycenter/v2FolderSccBigQueryExport:V2FolderSccBigQueryExport": 0,
             "gcp:securitycenter/v2OrganizationMuteConfig:V2OrganizationMuteConfig": 0,
             "gcp:securitycenter/v2OrganizationNotificationConfig:V2OrganizationNotificationConfig": 0,
+            "gcp:securitycenter/v2OrganizationSccBigQueryExport:V2OrganizationSccBigQueryExport": 0,
             "gcp:securitycenter/v2OrganizationSccBigQueryExports:V2OrganizationSccBigQueryExports": 0,
             "gcp:securitycenter/v2OrganizationSource:V2OrganizationSource": 0,
             "gcp:securitycenter/v2OrganizationSourceIamBinding:V2OrganizationSourceIamBinding": 0,
@@ -34555,10 +34916,12 @@
             "gcp:servicenetworking/peeredDnsDomain:PeeredDnsDomain": 0,
             "gcp:servicenetworking/vpcServiceControls:VpcServiceControls": 0,
             "gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride": 0,
+            "gcp:siteverification/webResource:WebResource": 0,
             "gcp:sourcerepo/repository:Repository": 0,
             "gcp:sourcerepo/repositoryIamBinding:RepositoryIamBinding": 0,
             "gcp:sourcerepo/repositoryIamMember:RepositoryIamMember": 0,
             "gcp:sourcerepo/repositoryIamPolicy:RepositoryIamPolicy": 0,
+            "gcp:spanner/backupSchedule:BackupSchedule": 0,
             "gcp:spanner/database:Database": 0,
             "gcp:spanner/databaseIAMBinding:DatabaseIAMBinding": 0,
             "gcp:spanner/databaseIAMMember:DatabaseIAMMember": 0,
@@ -34903,6 +35266,9 @@
             "gcp:runtimeconfig/getConfig:getConfig": 0,
             "gcp:runtimeconfig/getConfigIamPolicy:getConfigIamPolicy": 0,
             "gcp:runtimeconfig/getVariable:getVariable": 0,
+            "gcp:secretmanager/getRegionalSecret:getRegionalSecret": 0,
+            "gcp:secretmanager/getRegionalSecretIamPolicy:getRegionalSecretIamPolicy": 0,
+            "gcp:secretmanager/getRegionalSecretVersion:getRegionalSecretVersion": 0,
             "gcp:secretmanager/getSecret:getSecret": 0,
             "gcp:secretmanager/getSecretIamPolicy:getSecretIamPolicy": 0,
             "gcp:secretmanager/getSecretVersion:getSecretVersion": 0,
