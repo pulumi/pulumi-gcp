@@ -320,9 +320,6 @@ def get_global_forwarding_rule(name: Optional[str] = None,
         source_ip_ranges=pulumi.get(__ret__, 'source_ip_ranges'),
         subnetwork=pulumi.get(__ret__, 'subnetwork'),
         target=pulumi.get(__ret__, 'target'))
-
-
-@_utilities.lift_output_func(get_global_forwarding_rule)
 def get_global_forwarding_rule_output(name: Optional[pulumi.Input[str]] = None,
                                       project: Optional[pulumi.Input[Optional[str]]] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGlobalForwardingRuleResult]:
@@ -345,4 +342,34 @@ def get_global_forwarding_rule_output(name: Optional[pulumi.Input[str]] = None,
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:compute/getGlobalForwardingRule:getGlobalForwardingRule', __args__, opts=opts, typ=GetGlobalForwardingRuleResult)
+    return __ret__.apply(lambda __response__: GetGlobalForwardingRuleResult(
+        allow_psc_global_access=pulumi.get(__response__, 'allow_psc_global_access'),
+        base_forwarding_rule=pulumi.get(__response__, 'base_forwarding_rule'),
+        description=pulumi.get(__response__, 'description'),
+        effective_labels=pulumi.get(__response__, 'effective_labels'),
+        id=pulumi.get(__response__, 'id'),
+        ip_address=pulumi.get(__response__, 'ip_address'),
+        ip_protocol=pulumi.get(__response__, 'ip_protocol'),
+        ip_version=pulumi.get(__response__, 'ip_version'),
+        label_fingerprint=pulumi.get(__response__, 'label_fingerprint'),
+        labels=pulumi.get(__response__, 'labels'),
+        load_balancing_scheme=pulumi.get(__response__, 'load_balancing_scheme'),
+        metadata_filters=pulumi.get(__response__, 'metadata_filters'),
+        name=pulumi.get(__response__, 'name'),
+        network=pulumi.get(__response__, 'network'),
+        no_automate_dns_zone=pulumi.get(__response__, 'no_automate_dns_zone'),
+        port_range=pulumi.get(__response__, 'port_range'),
+        project=pulumi.get(__response__, 'project'),
+        psc_connection_id=pulumi.get(__response__, 'psc_connection_id'),
+        psc_connection_status=pulumi.get(__response__, 'psc_connection_status'),
+        pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
+        self_link=pulumi.get(__response__, 'self_link'),
+        service_directory_registrations=pulumi.get(__response__, 'service_directory_registrations'),
+        source_ip_ranges=pulumi.get(__response__, 'source_ip_ranges'),
+        subnetwork=pulumi.get(__response__, 'subnetwork'),
+        target=pulumi.get(__response__, 'target')))

@@ -490,9 +490,6 @@ def get_function(name: Optional[str] = None,
         version_id=pulumi.get(__ret__, 'version_id'),
         vpc_connector=pulumi.get(__ret__, 'vpc_connector'),
         vpc_connector_egress_settings=pulumi.get(__ret__, 'vpc_connector_egress_settings'))
-
-
-@_utilities.lift_output_func(get_function)
 def get_function_output(name: Optional[pulumi.Input[str]] = None,
                         project: Optional[pulumi.Input[Optional[str]]] = None,
                         region: Optional[pulumi.Input[Optional[str]]] = None,
@@ -520,4 +517,46 @@ def get_function_output(name: Optional[pulumi.Input[str]] = None,
     :param str region: The region in which the resource belongs. If it
            is not provided, the provider region is used.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['project'] = project
+    __args__['region'] = region
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:cloudfunctions/getFunction:getFunction', __args__, opts=opts, typ=GetFunctionResult)
+    return __ret__.apply(lambda __response__: GetFunctionResult(
+        available_memory_mb=pulumi.get(__response__, 'available_memory_mb'),
+        build_environment_variables=pulumi.get(__response__, 'build_environment_variables'),
+        build_service_account=pulumi.get(__response__, 'build_service_account'),
+        build_worker_pool=pulumi.get(__response__, 'build_worker_pool'),
+        description=pulumi.get(__response__, 'description'),
+        docker_registry=pulumi.get(__response__, 'docker_registry'),
+        docker_repository=pulumi.get(__response__, 'docker_repository'),
+        effective_labels=pulumi.get(__response__, 'effective_labels'),
+        entry_point=pulumi.get(__response__, 'entry_point'),
+        environment_variables=pulumi.get(__response__, 'environment_variables'),
+        event_triggers=pulumi.get(__response__, 'event_triggers'),
+        https_trigger_security_level=pulumi.get(__response__, 'https_trigger_security_level'),
+        https_trigger_url=pulumi.get(__response__, 'https_trigger_url'),
+        id=pulumi.get(__response__, 'id'),
+        ingress_settings=pulumi.get(__response__, 'ingress_settings'),
+        kms_key_name=pulumi.get(__response__, 'kms_key_name'),
+        labels=pulumi.get(__response__, 'labels'),
+        max_instances=pulumi.get(__response__, 'max_instances'),
+        min_instances=pulumi.get(__response__, 'min_instances'),
+        name=pulumi.get(__response__, 'name'),
+        project=pulumi.get(__response__, 'project'),
+        pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
+        region=pulumi.get(__response__, 'region'),
+        runtime=pulumi.get(__response__, 'runtime'),
+        secret_environment_variables=pulumi.get(__response__, 'secret_environment_variables'),
+        secret_volumes=pulumi.get(__response__, 'secret_volumes'),
+        service_account_email=pulumi.get(__response__, 'service_account_email'),
+        source_archive_bucket=pulumi.get(__response__, 'source_archive_bucket'),
+        source_archive_object=pulumi.get(__response__, 'source_archive_object'),
+        source_repositories=pulumi.get(__response__, 'source_repositories'),
+        status=pulumi.get(__response__, 'status'),
+        timeout=pulumi.get(__response__, 'timeout'),
+        trigger_http=pulumi.get(__response__, 'trigger_http'),
+        version_id=pulumi.get(__response__, 'version_id'),
+        vpc_connector=pulumi.get(__response__, 'vpc_connector'),
+        vpc_connector_egress_settings=pulumi.get(__response__, 'vpc_connector_egress_settings')))

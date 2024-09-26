@@ -97,9 +97,6 @@ def get_locations(project: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         locations=pulumi.get(__ret__, 'locations'),
         project=pulumi.get(__ret__, 'project'))
-
-
-@_utilities.lift_output_func(get_locations)
 def get_locations_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLocationsResult]:
     """
@@ -117,4 +114,11 @@ def get_locations_output(project: Optional[pulumi.Input[Optional[str]]] = None,
 
     :param str project: The ID of the project.
     """
-    ...
+    __args__ = dict()
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:alloydb/getLocations:getLocations', __args__, opts=opts, typ=GetLocationsResult)
+    return __ret__.apply(lambda __response__: GetLocationsResult(
+        id=pulumi.get(__response__, 'id'),
+        locations=pulumi.get(__response__, 'locations'),
+        project=pulumi.get(__response__, 'project')))
