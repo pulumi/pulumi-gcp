@@ -249,9 +249,6 @@ def get_notification_channel(display_name: Optional[str] = None,
         type=pulumi.get(__ret__, 'type'),
         user_labels=pulumi.get(__ret__, 'user_labels'),
         verification_status=pulumi.get(__ret__, 'verification_status'))
-
-
-@_utilities.lift_output_func(get_notification_channel)
 def get_notification_channel_output(display_name: Optional[pulumi.Input[Optional[str]]] = None,
                                     labels: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                     project: Optional[pulumi.Input[Optional[str]]] = None,
@@ -311,4 +308,24 @@ def get_notification_channel_output(display_name: Optional[pulumi.Input[Optional
            Other optional fields include:
     :param Mapping[str, str] user_labels: User-provided key-value labels to filter by.
     """
-    ...
+    __args__ = dict()
+    __args__['displayName'] = display_name
+    __args__['labels'] = labels
+    __args__['project'] = project
+    __args__['type'] = type
+    __args__['userLabels'] = user_labels
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:monitoring/getNotificationChannel:getNotificationChannel', __args__, opts=opts, typ=GetNotificationChannelResult)
+    return __ret__.apply(lambda __response__: GetNotificationChannelResult(
+        description=pulumi.get(__response__, 'description'),
+        display_name=pulumi.get(__response__, 'display_name'),
+        enabled=pulumi.get(__response__, 'enabled'),
+        force_delete=pulumi.get(__response__, 'force_delete'),
+        id=pulumi.get(__response__, 'id'),
+        labels=pulumi.get(__response__, 'labels'),
+        name=pulumi.get(__response__, 'name'),
+        project=pulumi.get(__response__, 'project'),
+        sensitive_labels=pulumi.get(__response__, 'sensitive_labels'),
+        type=pulumi.get(__response__, 'type'),
+        user_labels=pulumi.get(__response__, 'user_labels'),
+        verification_status=pulumi.get(__response__, 'verification_status')))
