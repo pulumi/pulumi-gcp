@@ -435,9 +435,6 @@ def get_forwarding_rule(name: Optional[str] = None,
         source_ip_ranges=pulumi.get(__ret__, 'source_ip_ranges'),
         subnetwork=pulumi.get(__ret__, 'subnetwork'),
         target=pulumi.get(__ret__, 'target'))
-
-
-@_utilities.lift_output_func(get_forwarding_rule)
 def get_forwarding_rule_output(name: Optional[pulumi.Input[str]] = None,
                                project: Optional[pulumi.Input[Optional[str]]] = None,
                                region: Optional[pulumi.Input[Optional[str]]] = None,
@@ -464,4 +461,46 @@ def get_forwarding_rule_output(name: Optional[pulumi.Input[str]] = None,
     :param str region: The region in which the resource belongs. If it
            is not provided, the project region is used.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['project'] = project
+    __args__['region'] = region
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:compute/getForwardingRule:getForwardingRule', __args__, opts=opts, typ=GetForwardingRuleResult)
+    return __ret__.apply(lambda __response__: GetForwardingRuleResult(
+        all_ports=pulumi.get(__response__, 'all_ports'),
+        allow_global_access=pulumi.get(__response__, 'allow_global_access'),
+        allow_psc_global_access=pulumi.get(__response__, 'allow_psc_global_access'),
+        backend_service=pulumi.get(__response__, 'backend_service'),
+        base_forwarding_rule=pulumi.get(__response__, 'base_forwarding_rule'),
+        creation_timestamp=pulumi.get(__response__, 'creation_timestamp'),
+        description=pulumi.get(__response__, 'description'),
+        effective_labels=pulumi.get(__response__, 'effective_labels'),
+        forwarding_rule_id=pulumi.get(__response__, 'forwarding_rule_id'),
+        id=pulumi.get(__response__, 'id'),
+        ip_address=pulumi.get(__response__, 'ip_address'),
+        ip_protocol=pulumi.get(__response__, 'ip_protocol'),
+        ip_version=pulumi.get(__response__, 'ip_version'),
+        is_mirroring_collector=pulumi.get(__response__, 'is_mirroring_collector'),
+        label_fingerprint=pulumi.get(__response__, 'label_fingerprint'),
+        labels=pulumi.get(__response__, 'labels'),
+        load_balancing_scheme=pulumi.get(__response__, 'load_balancing_scheme'),
+        name=pulumi.get(__response__, 'name'),
+        network=pulumi.get(__response__, 'network'),
+        network_tier=pulumi.get(__response__, 'network_tier'),
+        no_automate_dns_zone=pulumi.get(__response__, 'no_automate_dns_zone'),
+        port_range=pulumi.get(__response__, 'port_range'),
+        ports=pulumi.get(__response__, 'ports'),
+        project=pulumi.get(__response__, 'project'),
+        psc_connection_id=pulumi.get(__response__, 'psc_connection_id'),
+        psc_connection_status=pulumi.get(__response__, 'psc_connection_status'),
+        pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
+        recreate_closed_psc=pulumi.get(__response__, 'recreate_closed_psc'),
+        region=pulumi.get(__response__, 'region'),
+        self_link=pulumi.get(__response__, 'self_link'),
+        service_directory_registrations=pulumi.get(__response__, 'service_directory_registrations'),
+        service_label=pulumi.get(__response__, 'service_label'),
+        service_name=pulumi.get(__response__, 'service_name'),
+        source_ip_ranges=pulumi.get(__response__, 'source_ip_ranges'),
+        subnetwork=pulumi.get(__response__, 'subnetwork'),
+        target=pulumi.get(__response__, 'target')))
