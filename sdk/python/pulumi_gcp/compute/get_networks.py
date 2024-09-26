@@ -112,9 +112,6 @@ def get_networks(project: Optional[str] = None,
         networks=pulumi.get(__ret__, 'networks'),
         project=pulumi.get(__ret__, 'project'),
         self_link=pulumi.get(__ret__, 'self_link'))
-
-
-@_utilities.lift_output_func(get_networks)
 def get_networks_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworksResult]:
     """
@@ -132,4 +129,12 @@ def get_networks_output(project: Optional[pulumi.Input[Optional[str]]] = None,
 
     :param str project: The name of the project.
     """
-    ...
+    __args__ = dict()
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:compute/getNetworks:getNetworks', __args__, opts=opts, typ=GetNetworksResult)
+    return __ret__.apply(lambda __response__: GetNetworksResult(
+        id=pulumi.get(__response__, 'id'),
+        networks=pulumi.get(__response__, 'networks'),
+        project=pulumi.get(__response__, 'project'),
+        self_link=pulumi.get(__response__, 'self_link')))

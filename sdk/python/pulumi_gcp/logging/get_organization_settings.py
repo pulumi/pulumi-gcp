@@ -174,9 +174,6 @@ def get_organization_settings(organization: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         organization=pulumi.get(__ret__, 'organization'),
         storage_location=pulumi.get(__ret__, 'storage_location'))
-
-
-@_utilities.lift_output_func(get_organization_settings)
 def get_organization_settings_output(organization: Optional[pulumi.Input[str]] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOrganizationSettingsResult]:
     """
@@ -201,4 +198,16 @@ def get_organization_settings_output(organization: Optional[pulumi.Input[str]] =
 
     :param str organization: The ID of the organization for which to retrieve settings.
     """
-    ...
+    __args__ = dict()
+    __args__['organization'] = organization
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:logging/getOrganizationSettings:getOrganizationSettings', __args__, opts=opts, typ=GetOrganizationSettingsResult)
+    return __ret__.apply(lambda __response__: GetOrganizationSettingsResult(
+        disable_default_sink=pulumi.get(__response__, 'disable_default_sink'),
+        id=pulumi.get(__response__, 'id'),
+        kms_key_name=pulumi.get(__response__, 'kms_key_name'),
+        kms_service_account_id=pulumi.get(__response__, 'kms_service_account_id'),
+        logging_service_account_id=pulumi.get(__response__, 'logging_service_account_id'),
+        name=pulumi.get(__response__, 'name'),
+        organization=pulumi.get(__response__, 'organization'),
+        storage_location=pulumi.get(__response__, 'storage_location')))
