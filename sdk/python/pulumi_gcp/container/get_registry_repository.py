@@ -112,9 +112,6 @@ def get_registry_repository(project: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'),
         region=pulumi.get(__ret__, 'region'),
         repository_url=pulumi.get(__ret__, 'repository_url'))
-
-
-@_utilities.lift_output_func(get_registry_repository)
 def get_registry_repository_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                                    region: Optional[pulumi.Input[Optional[str]]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegistryRepositoryResult]:
@@ -137,4 +134,13 @@ def get_registry_repository_output(project: Optional[pulumi.Input[Optional[str]]
     :param str project: The project ID that this repository is attached to.  If not provided, provider project will be used instead.
     :param str region: The GCR region to use.  As of this writing, one of `asia`, `eu`, and `us`.  See [the documentation](https://cloud.google.com/container-registry/docs/pushing-and-pulling) for additional information.
     """
-    ...
+    __args__ = dict()
+    __args__['project'] = project
+    __args__['region'] = region
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:container/getRegistryRepository:getRegistryRepository', __args__, opts=opts, typ=GetRegistryRepositoryResult)
+    return __ret__.apply(lambda __response__: GetRegistryRepositoryResult(
+        id=pulumi.get(__response__, 'id'),
+        project=pulumi.get(__response__, 'project'),
+        region=pulumi.get(__response__, 'region'),
+        repository_url=pulumi.get(__response__, 'repository_url')))
