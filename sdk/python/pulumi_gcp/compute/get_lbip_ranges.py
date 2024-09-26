@@ -105,9 +105,6 @@ def get_lbip_ranges(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGet
         http_ssl_tcp_internals=pulumi.get(__ret__, 'http_ssl_tcp_internals'),
         id=pulumi.get(__ret__, 'id'),
         networks=pulumi.get(__ret__, 'networks'))
-
-
-@_utilities.lift_output_func(get_lbip_ranges)
 def get_lbip_ranges_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLBIPRangesResult]:
     """
     Use this data source to access IP ranges in your firewall rules.
@@ -132,4 +129,10 @@ def get_lbip_ranges_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulum
         target_tags=["InstanceBehindLoadBalancer"])
     ```
     """
-    ...
+    __args__ = dict()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:compute/getLBIPRanges:getLBIPRanges', __args__, opts=opts, typ=GetLBIPRangesResult)
+    return __ret__.apply(lambda __response__: GetLBIPRangesResult(
+        http_ssl_tcp_internals=pulumi.get(__response__, 'http_ssl_tcp_internals'),
+        id=pulumi.get(__response__, 'id'),
+        networks=pulumi.get(__response__, 'networks')))

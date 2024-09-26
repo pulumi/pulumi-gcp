@@ -156,9 +156,6 @@ def get_billing_account(billing_account: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         open=pulumi.get(__ret__, 'open'),
         project_ids=pulumi.get(__ret__, 'project_ids'))
-
-
-@_utilities.lift_output_func(get_billing_account)
 def get_billing_account_output(billing_account: Optional[pulumi.Input[Optional[str]]] = None,
                                display_name: Optional[pulumi.Input[Optional[str]]] = None,
                                lookup_projects: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -189,4 +186,18 @@ def get_billing_account_output(billing_account: Optional[pulumi.Input[Optional[s
            > **NOTE:** One of `billing_account` or `display_name` must be specified.
     :param bool open: `true` if the billing account is open, `false` if the billing account is closed.
     """
-    ...
+    __args__ = dict()
+    __args__['billingAccount'] = billing_account
+    __args__['displayName'] = display_name
+    __args__['lookupProjects'] = lookup_projects
+    __args__['open'] = open
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:organizations/getBillingAccount:getBillingAccount', __args__, opts=opts, typ=GetBillingAccountResult)
+    return __ret__.apply(lambda __response__: GetBillingAccountResult(
+        billing_account=pulumi.get(__response__, 'billing_account'),
+        display_name=pulumi.get(__response__, 'display_name'),
+        id=pulumi.get(__response__, 'id'),
+        lookup_projects=pulumi.get(__response__, 'lookup_projects'),
+        name=pulumi.get(__response__, 'name'),
+        open=pulumi.get(__response__, 'open'),
+        project_ids=pulumi.get(__response__, 'project_ids')))

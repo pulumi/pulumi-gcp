@@ -227,9 +227,6 @@ def get_private_cloud(location: Optional[str] = None,
         type=pulumi.get(__ret__, 'type'),
         uid=pulumi.get(__ret__, 'uid'),
         vcenters=pulumi.get(__ret__, 'vcenters'))
-
-
-@_utilities.lift_output_func(get_private_cloud)
 def get_private_cloud_output(location: Optional[pulumi.Input[str]] = None,
                              name: Optional[pulumi.Input[str]] = None,
                              project: Optional[pulumi.Input[Optional[str]]] = None,
@@ -258,4 +255,25 @@ def get_private_cloud_output(location: Optional[pulumi.Input[str]] = None,
     :param str project: The ID of the project in which the resource belongs. If it
            is not provided, the provider project is used.
     """
-    ...
+    __args__ = dict()
+    __args__['location'] = location
+    __args__['name'] = name
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:vmwareengine/getPrivateCloud:getPrivateCloud', __args__, opts=opts, typ=GetPrivateCloudResult)
+    return __ret__.apply(lambda __response__: GetPrivateCloudResult(
+        deletion_delay_hours=pulumi.get(__response__, 'deletion_delay_hours'),
+        description=pulumi.get(__response__, 'description'),
+        hcxes=pulumi.get(__response__, 'hcxes'),
+        id=pulumi.get(__response__, 'id'),
+        location=pulumi.get(__response__, 'location'),
+        management_clusters=pulumi.get(__response__, 'management_clusters'),
+        name=pulumi.get(__response__, 'name'),
+        network_configs=pulumi.get(__response__, 'network_configs'),
+        nsxes=pulumi.get(__response__, 'nsxes'),
+        project=pulumi.get(__response__, 'project'),
+        send_deletion_delay_hours_if_zero=pulumi.get(__response__, 'send_deletion_delay_hours_if_zero'),
+        state=pulumi.get(__response__, 'state'),
+        type=pulumi.get(__response__, 'type'),
+        uid=pulumi.get(__response__, 'uid'),
+        vcenters=pulumi.get(__response__, 'vcenters')))

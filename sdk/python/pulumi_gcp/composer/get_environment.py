@@ -166,9 +166,6 @@ def get_environment(name: Optional[str] = None,
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         region=pulumi.get(__ret__, 'region'),
         storage_configs=pulumi.get(__ret__, 'storage_configs'))
-
-
-@_utilities.lift_output_func(get_environment)
 def get_environment_output(name: Optional[pulumi.Input[str]] = None,
                            project: Optional[pulumi.Input[Optional[str]]] = None,
                            region: Optional[pulumi.Input[Optional[str]]] = None,
@@ -193,4 +190,19 @@ def get_environment_output(name: Optional[pulumi.Input[str]] = None,
            If it is not provided, the provider project is used.
     :param str region: The location or Compute Engine region of the environment.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['project'] = project
+    __args__['region'] = region
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:composer/getEnvironment:getEnvironment', __args__, opts=opts, typ=GetEnvironmentResult)
+    return __ret__.apply(lambda __response__: GetEnvironmentResult(
+        configs=pulumi.get(__response__, 'configs'),
+        effective_labels=pulumi.get(__response__, 'effective_labels'),
+        id=pulumi.get(__response__, 'id'),
+        labels=pulumi.get(__response__, 'labels'),
+        name=pulumi.get(__response__, 'name'),
+        project=pulumi.get(__response__, 'project'),
+        pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
+        region=pulumi.get(__response__, 'region'),
+        storage_configs=pulumi.get(__response__, 'storage_configs')))
