@@ -205,9 +205,6 @@ def get_app_engine_service(module_id: Optional[str] = None,
         service_id=pulumi.get(__ret__, 'service_id'),
         telemetries=pulumi.get(__ret__, 'telemetries'),
         user_labels=pulumi.get(__ret__, 'user_labels'))
-
-
-@_utilities.lift_output_func(get_app_engine_service)
 def get_app_engine_service_output(module_id: Optional[pulumi.Input[str]] = None,
                                   project: Optional[pulumi.Input[Optional[str]]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAppEngineServiceResult]:
@@ -275,4 +272,17 @@ def get_app_engine_service_output(module_id: Optional[pulumi.Input[str]] = None,
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the provider project is used.
     """
-    ...
+    __args__ = dict()
+    __args__['moduleId'] = module_id
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:monitoring/getAppEngineService:getAppEngineService', __args__, opts=opts, typ=GetAppEngineServiceResult)
+    return __ret__.apply(lambda __response__: GetAppEngineServiceResult(
+        display_name=pulumi.get(__response__, 'display_name'),
+        id=pulumi.get(__response__, 'id'),
+        module_id=pulumi.get(__response__, 'module_id'),
+        name=pulumi.get(__response__, 'name'),
+        project=pulumi.get(__response__, 'project'),
+        service_id=pulumi.get(__response__, 'service_id'),
+        telemetries=pulumi.get(__response__, 'telemetries'),
+        user_labels=pulumi.get(__response__, 'user_labels')))
