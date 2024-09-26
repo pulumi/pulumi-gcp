@@ -109,9 +109,6 @@ def get_iam_policy(service_account_id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         policy_data=pulumi.get(__ret__, 'policy_data'),
         service_account_id=pulumi.get(__ret__, 'service_account_id'))
-
-
-@_utilities.lift_output_func(get_iam_policy)
 def get_iam_policy_output(service_account_id: Optional[pulumi.Input[str]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIamPolicyResult]:
     """
@@ -129,4 +126,12 @@ def get_iam_policy_output(service_account_id: Optional[pulumi.Input[str]] = None
 
     :param str service_account_id: The fully-qualified name of the service account to apply policy to.
     """
-    ...
+    __args__ = dict()
+    __args__['serviceAccountId'] = service_account_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:serviceaccount/getIamPolicy:getIamPolicy', __args__, opts=opts, typ=GetIamPolicyResult)
+    return __ret__.apply(lambda __response__: GetIamPolicyResult(
+        etag=pulumi.get(__response__, 'etag'),
+        id=pulumi.get(__response__, 'id'),
+        policy_data=pulumi.get(__response__, 'policy_data'),
+        service_account_id=pulumi.get(__response__, 'service_account_id')))
