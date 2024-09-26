@@ -569,9 +569,6 @@ def get_instance(name: Optional[str] = None,
         tags=pulumi.get(__ret__, 'tags'),
         tags_fingerprint=pulumi.get(__ret__, 'tags_fingerprint'),
         zone=pulumi.get(__ret__, 'zone'))
-
-
-@_utilities.lift_output_func(get_instance)
 def get_instance_output(name: Optional[pulumi.Input[Optional[str]]] = None,
                         project: Optional[pulumi.Input[Optional[str]]] = None,
                         self_link: Optional[pulumi.Input[Optional[str]]] = None,
@@ -603,4 +600,52 @@ def get_instance_output(name: Optional[pulumi.Input[Optional[str]]] = None,
            value is ignored.  If neither `self_link` nor `zone` are provided, the
            provider zone is used.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['project'] = project
+    __args__['selfLink'] = self_link
+    __args__['zone'] = zone
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:compute/getInstance:getInstance', __args__, opts=opts, typ=GetInstanceResult)
+    return __ret__.apply(lambda __response__: GetInstanceResult(
+        advanced_machine_features=pulumi.get(__response__, 'advanced_machine_features'),
+        allow_stopping_for_update=pulumi.get(__response__, 'allow_stopping_for_update'),
+        attached_disks=pulumi.get(__response__, 'attached_disks'),
+        boot_disks=pulumi.get(__response__, 'boot_disks'),
+        can_ip_forward=pulumi.get(__response__, 'can_ip_forward'),
+        confidential_instance_configs=pulumi.get(__response__, 'confidential_instance_configs'),
+        cpu_platform=pulumi.get(__response__, 'cpu_platform'),
+        current_status=pulumi.get(__response__, 'current_status'),
+        deletion_protection=pulumi.get(__response__, 'deletion_protection'),
+        description=pulumi.get(__response__, 'description'),
+        desired_status=pulumi.get(__response__, 'desired_status'),
+        effective_labels=pulumi.get(__response__, 'effective_labels'),
+        enable_display=pulumi.get(__response__, 'enable_display'),
+        guest_accelerators=pulumi.get(__response__, 'guest_accelerators'),
+        hostname=pulumi.get(__response__, 'hostname'),
+        id=pulumi.get(__response__, 'id'),
+        instance_id=pulumi.get(__response__, 'instance_id'),
+        label_fingerprint=pulumi.get(__response__, 'label_fingerprint'),
+        labels=pulumi.get(__response__, 'labels'),
+        machine_type=pulumi.get(__response__, 'machine_type'),
+        metadata=pulumi.get(__response__, 'metadata'),
+        metadata_fingerprint=pulumi.get(__response__, 'metadata_fingerprint'),
+        metadata_startup_script=pulumi.get(__response__, 'metadata_startup_script'),
+        min_cpu_platform=pulumi.get(__response__, 'min_cpu_platform'),
+        name=pulumi.get(__response__, 'name'),
+        network_interfaces=pulumi.get(__response__, 'network_interfaces'),
+        network_performance_configs=pulumi.get(__response__, 'network_performance_configs'),
+        params=pulumi.get(__response__, 'params'),
+        partner_metadata=pulumi.get(__response__, 'partner_metadata'),
+        project=pulumi.get(__response__, 'project'),
+        pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
+        reservation_affinities=pulumi.get(__response__, 'reservation_affinities'),
+        resource_policies=pulumi.get(__response__, 'resource_policies'),
+        schedulings=pulumi.get(__response__, 'schedulings'),
+        scratch_disks=pulumi.get(__response__, 'scratch_disks'),
+        self_link=pulumi.get(__response__, 'self_link'),
+        service_accounts=pulumi.get(__response__, 'service_accounts'),
+        shielded_instance_configs=pulumi.get(__response__, 'shielded_instance_configs'),
+        tags=pulumi.get(__response__, 'tags'),
+        tags_fingerprint=pulumi.get(__response__, 'tags_fingerprint'),
+        zone=pulumi.get(__response__, 'zone')))

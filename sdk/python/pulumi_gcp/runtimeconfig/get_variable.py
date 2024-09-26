@@ -141,9 +141,6 @@ def get_variable(name: Optional[str] = None,
         text=pulumi.get(__ret__, 'text'),
         update_time=pulumi.get(__ret__, 'update_time'),
         value=pulumi.get(__ret__, 'value'))
-
-
-@_utilities.lift_output_func(get_variable)
 def get_variable_output(name: Optional[pulumi.Input[str]] = None,
                         parent: Optional[pulumi.Input[str]] = None,
                         project: Optional[pulumi.Input[Optional[str]]] = None,
@@ -167,4 +164,17 @@ def get_variable_output(name: Optional[pulumi.Input[str]] = None,
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['parent'] = parent
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:runtimeconfig/getVariable:getVariable', __args__, opts=opts, typ=GetVariableResult)
+    return __ret__.apply(lambda __response__: GetVariableResult(
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        parent=pulumi.get(__response__, 'parent'),
+        project=pulumi.get(__response__, 'project'),
+        text=pulumi.get(__response__, 'text'),
+        update_time=pulumi.get(__response__, 'update_time'),
+        value=pulumi.get(__response__, 'value')))
