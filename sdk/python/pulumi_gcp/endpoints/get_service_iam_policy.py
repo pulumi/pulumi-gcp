@@ -107,9 +107,6 @@ def get_service_iam_policy(service_name: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         policy_data=pulumi.get(__ret__, 'policy_data'),
         service_name=pulumi.get(__ret__, 'service_name'))
-
-
-@_utilities.lift_output_func(get_service_iam_policy)
 def get_service_iam_policy_output(service_name: Optional[pulumi.Input[str]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceIamPolicyResult]:
     """
@@ -124,4 +121,12 @@ def get_service_iam_policy_output(service_name: Optional[pulumi.Input[str]] = No
     policy = gcp.endpoints.get_service_iam_policy(service_name=endpoints_service["serviceName"])
     ```
     """
-    ...
+    __args__ = dict()
+    __args__['serviceName'] = service_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:endpoints/getServiceIamPolicy:getServiceIamPolicy', __args__, opts=opts, typ=GetServiceIamPolicyResult)
+    return __ret__.apply(lambda __response__: GetServiceIamPolicyResult(
+        etag=pulumi.get(__response__, 'etag'),
+        id=pulumi.get(__response__, 'id'),
+        policy_data=pulumi.get(__response__, 'policy_data'),
+        service_name=pulumi.get(__response__, 'service_name')))
