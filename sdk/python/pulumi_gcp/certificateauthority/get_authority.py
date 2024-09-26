@@ -342,9 +342,6 @@ def get_authority(certificate_authority_id: Optional[str] = None,
         subordinate_configs=pulumi.get(__ret__, 'subordinate_configs'),
         type=pulumi.get(__ret__, 'type'),
         update_time=pulumi.get(__ret__, 'update_time'))
-
-
-@_utilities.lift_output_func(get_authority)
 def get_authority_output(certificate_authority_id: Optional[pulumi.Input[Optional[str]]] = None,
                          location: Optional[pulumi.Input[Optional[str]]] = None,
                          pool: Optional[pulumi.Input[Optional[str]]] = None,
@@ -374,4 +371,37 @@ def get_authority_output(certificate_authority_id: Optional[pulumi.Input[Optiona
     :param str project: The ID of the project in which the resource belongs. If it
            is not provided, the provider project is used.
     """
-    ...
+    __args__ = dict()
+    __args__['certificateAuthorityId'] = certificate_authority_id
+    __args__['location'] = location
+    __args__['pool'] = pool
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:certificateauthority/getAuthority:getAuthority', __args__, opts=opts, typ=GetAuthorityResult)
+    return __ret__.apply(lambda __response__: GetAuthorityResult(
+        access_urls=pulumi.get(__response__, 'access_urls'),
+        certificate_authority_id=pulumi.get(__response__, 'certificate_authority_id'),
+        configs=pulumi.get(__response__, 'configs'),
+        create_time=pulumi.get(__response__, 'create_time'),
+        deletion_protection=pulumi.get(__response__, 'deletion_protection'),
+        desired_state=pulumi.get(__response__, 'desired_state'),
+        effective_labels=pulumi.get(__response__, 'effective_labels'),
+        gcs_bucket=pulumi.get(__response__, 'gcs_bucket'),
+        id=pulumi.get(__response__, 'id'),
+        ignore_active_certificates_on_deletion=pulumi.get(__response__, 'ignore_active_certificates_on_deletion'),
+        key_specs=pulumi.get(__response__, 'key_specs'),
+        labels=pulumi.get(__response__, 'labels'),
+        lifetime=pulumi.get(__response__, 'lifetime'),
+        location=pulumi.get(__response__, 'location'),
+        name=pulumi.get(__response__, 'name'),
+        pem_ca_certificate=pulumi.get(__response__, 'pem_ca_certificate'),
+        pem_ca_certificates=pulumi.get(__response__, 'pem_ca_certificates'),
+        pem_csr=pulumi.get(__response__, 'pem_csr'),
+        pool=pulumi.get(__response__, 'pool'),
+        project=pulumi.get(__response__, 'project'),
+        pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
+        skip_grace_period=pulumi.get(__response__, 'skip_grace_period'),
+        state=pulumi.get(__response__, 'state'),
+        subordinate_configs=pulumi.get(__response__, 'subordinate_configs'),
+        type=pulumi.get(__response__, 'type'),
+        update_time=pulumi.get(__response__, 'update_time')))

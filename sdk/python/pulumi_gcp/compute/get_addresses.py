@@ -160,9 +160,6 @@ def get_addresses(filter: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         project=pulumi.get(__ret__, 'project'),
         region=pulumi.get(__ret__, 'region'))
-
-
-@_utilities.lift_output_func(get_addresses)
 def get_addresses_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
                          project: Optional[pulumi.Input[Optional[str]]] = None,
                          region: Optional[pulumi.Input[Optional[str]]] = None,
@@ -218,4 +215,15 @@ def get_addresses_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
     :param str region: Region that should be considered to search addresses.
            All regions are considered if missing.
     """
-    ...
+    __args__ = dict()
+    __args__['filter'] = filter
+    __args__['project'] = project
+    __args__['region'] = region
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:compute/getAddresses:getAddresses', __args__, opts=opts, typ=GetAddressesResult)
+    return __ret__.apply(lambda __response__: GetAddressesResult(
+        addresses=pulumi.get(__response__, 'addresses'),
+        filter=pulumi.get(__response__, 'filter'),
+        id=pulumi.get(__response__, 'id'),
+        project=pulumi.get(__response__, 'project'),
+        region=pulumi.get(__response__, 'region')))
