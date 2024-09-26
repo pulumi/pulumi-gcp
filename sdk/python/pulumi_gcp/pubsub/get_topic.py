@@ -182,9 +182,6 @@ def get_topic(name: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'),
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         schema_settings=pulumi.get(__ret__, 'schema_settings'))
-
-
-@_utilities.lift_output_func(get_topic)
 def get_topic_output(name: Optional[pulumi.Input[str]] = None,
                      project: Optional[pulumi.Input[Optional[str]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTopicResult]:
@@ -209,4 +206,20 @@ def get_topic_output(name: Optional[pulumi.Input[str]] = None,
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:pubsub/getTopic:getTopic', __args__, opts=opts, typ=GetTopicResult)
+    return __ret__.apply(lambda __response__: GetTopicResult(
+        effective_labels=pulumi.get(__response__, 'effective_labels'),
+        id=pulumi.get(__response__, 'id'),
+        ingestion_data_source_settings=pulumi.get(__response__, 'ingestion_data_source_settings'),
+        kms_key_name=pulumi.get(__response__, 'kms_key_name'),
+        labels=pulumi.get(__response__, 'labels'),
+        message_retention_duration=pulumi.get(__response__, 'message_retention_duration'),
+        message_storage_policies=pulumi.get(__response__, 'message_storage_policies'),
+        name=pulumi.get(__response__, 'name'),
+        project=pulumi.get(__response__, 'project'),
+        pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
+        schema_settings=pulumi.get(__response__, 'schema_settings')))
