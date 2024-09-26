@@ -156,9 +156,6 @@ def get_listing_iam_policy(data_exchange_id: Optional[str] = None,
         location=pulumi.get(__ret__, 'location'),
         policy_data=pulumi.get(__ret__, 'policy_data'),
         project=pulumi.get(__ret__, 'project'))
-
-
-@_utilities.lift_output_func(get_listing_iam_policy)
 def get_listing_iam_policy_output(data_exchange_id: Optional[pulumi.Input[str]] = None,
                                   listing_id: Optional[pulumi.Input[str]] = None,
                                   location: Optional[pulumi.Input[Optional[str]]] = None,
@@ -189,4 +186,18 @@ def get_listing_iam_policy_output(data_exchange_id: Optional[pulumi.Input[str]] 
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
     """
-    ...
+    __args__ = dict()
+    __args__['dataExchangeId'] = data_exchange_id
+    __args__['listingId'] = listing_id
+    __args__['location'] = location
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:bigqueryanalyticshub/getListingIamPolicy:getListingIamPolicy', __args__, opts=opts, typ=GetListingIamPolicyResult)
+    return __ret__.apply(lambda __response__: GetListingIamPolicyResult(
+        data_exchange_id=pulumi.get(__response__, 'data_exchange_id'),
+        etag=pulumi.get(__response__, 'etag'),
+        id=pulumi.get(__response__, 'id'),
+        listing_id=pulumi.get(__response__, 'listing_id'),
+        location=pulumi.get(__response__, 'location'),
+        policy_data=pulumi.get(__response__, 'policy_data'),
+        project=pulumi.get(__response__, 'project')))

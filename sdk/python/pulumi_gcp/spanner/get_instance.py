@@ -214,9 +214,6 @@ def get_instance(config: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'),
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         state=pulumi.get(__ret__, 'state'))
-
-
-@_utilities.lift_output_func(get_instance)
 def get_instance_output(config: Optional[pulumi.Input[Optional[str]]] = None,
                         display_name: Optional[pulumi.Input[Optional[str]]] = None,
                         name: Optional[pulumi.Input[str]] = None,
@@ -241,4 +238,25 @@ def get_instance_output(config: Optional[pulumi.Input[Optional[str]]] = None,
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     """
-    ...
+    __args__ = dict()
+    __args__['config'] = config
+    __args__['displayName'] = display_name
+    __args__['name'] = name
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:spanner/getInstance:getInstance', __args__, opts=opts, typ=GetInstanceResult)
+    return __ret__.apply(lambda __response__: GetInstanceResult(
+        autoscaling_configs=pulumi.get(__response__, 'autoscaling_configs'),
+        config=pulumi.get(__response__, 'config'),
+        display_name=pulumi.get(__response__, 'display_name'),
+        edition=pulumi.get(__response__, 'edition'),
+        effective_labels=pulumi.get(__response__, 'effective_labels'),
+        force_destroy=pulumi.get(__response__, 'force_destroy'),
+        id=pulumi.get(__response__, 'id'),
+        labels=pulumi.get(__response__, 'labels'),
+        name=pulumi.get(__response__, 'name'),
+        num_nodes=pulumi.get(__response__, 'num_nodes'),
+        processing_units=pulumi.get(__response__, 'processing_units'),
+        project=pulumi.get(__response__, 'project'),
+        pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
+        state=pulumi.get(__response__, 'state')))
