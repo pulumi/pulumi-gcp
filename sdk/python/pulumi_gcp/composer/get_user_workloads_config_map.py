@@ -151,9 +151,6 @@ def get_user_workloads_config_map(environment: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
         region=pulumi.get(__ret__, 'region'))
-
-
-@_utilities.lift_output_func(get_user_workloads_config_map)
 def get_user_workloads_config_map_output(environment: Optional[pulumi.Input[str]] = None,
                                          name: Optional[pulumi.Input[str]] = None,
                                          project: Optional[pulumi.Input[Optional[str]]] = None,
@@ -192,4 +189,17 @@ def get_user_workloads_config_map_output(environment: Optional[pulumi.Input[str]
            If it is not provided, the provider project is used.
     :param str region: The location or Compute Engine region of the environment.
     """
-    ...
+    __args__ = dict()
+    __args__['environment'] = environment
+    __args__['name'] = name
+    __args__['project'] = project
+    __args__['region'] = region
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:composer/getUserWorkloadsConfigMap:getUserWorkloadsConfigMap', __args__, opts=opts, typ=GetUserWorkloadsConfigMapResult)
+    return __ret__.apply(lambda __response__: GetUserWorkloadsConfigMapResult(
+        data=pulumi.get(__response__, 'data'),
+        environment=pulumi.get(__response__, 'environment'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        project=pulumi.get(__response__, 'project'),
+        region=pulumi.get(__response__, 'region')))
