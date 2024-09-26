@@ -163,9 +163,6 @@ def get_netblock_ip_ranges(range_type: Optional[str] = None,
         cidr_blocks_ipv6s=pulumi.get(__ret__, 'cidr_blocks_ipv6s'),
         id=pulumi.get(__ret__, 'id'),
         range_type=pulumi.get(__ret__, 'range_type'))
-
-
-@_utilities.lift_output_func(get_netblock_ip_ranges)
 def get_netblock_ip_ranges_output(range_type: Optional[pulumi.Input[Optional[str]]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetblockIPRangesResult]:
     """
@@ -224,4 +221,13 @@ def get_netblock_ip_ranges_output(range_type: Optional[pulumi.Input[Optional[str
            
            * `legacy-health-checkers` - Corresponds to the IP addresses used for legacy style health checkers (used by Network Load Balancing). [ More details.](https://cloud.google.com/load-balancing/docs/health-checks)
     """
-    ...
+    __args__ = dict()
+    __args__['rangeType'] = range_type
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:compute/getNetblockIPRanges:getNetblockIPRanges', __args__, opts=opts, typ=GetNetblockIPRangesResult)
+    return __ret__.apply(lambda __response__: GetNetblockIPRangesResult(
+        cidr_blocks=pulumi.get(__response__, 'cidr_blocks'),
+        cidr_blocks_ipv4s=pulumi.get(__response__, 'cidr_blocks_ipv4s'),
+        cidr_blocks_ipv6s=pulumi.get(__response__, 'cidr_blocks_ipv6s'),
+        id=pulumi.get(__response__, 'id'),
+        range_type=pulumi.get(__response__, 'range_type')))

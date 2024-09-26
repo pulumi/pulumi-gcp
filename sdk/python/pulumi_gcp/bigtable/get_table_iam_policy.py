@@ -135,9 +135,6 @@ def get_table_iam_policy(instance: Optional[str] = None,
         policy_data=pulumi.get(__ret__, 'policy_data'),
         project=pulumi.get(__ret__, 'project'),
         table=pulumi.get(__ret__, 'table'))
-
-
-@_utilities.lift_output_func(get_table_iam_policy)
 def get_table_iam_policy_output(instance: Optional[pulumi.Input[str]] = None,
                                 project: Optional[pulumi.Input[Optional[str]]] = None,
                                 table: Optional[pulumi.Input[str]] = None,
@@ -159,4 +156,16 @@ def get_table_iam_policy_output(instance: Optional[pulumi.Input[str]] = None,
     :param str instance: The name or relative resource id of the instance that owns the table.
     :param str table: The name or relative resource id of the table to manage IAM policies for.
     """
-    ...
+    __args__ = dict()
+    __args__['instance'] = instance
+    __args__['project'] = project
+    __args__['table'] = table
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:bigtable/getTableIamPolicy:getTableIamPolicy', __args__, opts=opts, typ=GetTableIamPolicyResult)
+    return __ret__.apply(lambda __response__: GetTableIamPolicyResult(
+        etag=pulumi.get(__response__, 'etag'),
+        id=pulumi.get(__response__, 'id'),
+        instance=pulumi.get(__response__, 'instance'),
+        policy_data=pulumi.get(__response__, 'policy_data'),
+        project=pulumi.get(__response__, 'project'),
+        table=pulumi.get(__response__, 'table')))
