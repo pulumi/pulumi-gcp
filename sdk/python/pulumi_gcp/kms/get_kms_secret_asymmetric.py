@@ -178,9 +178,6 @@ def get_kms_secret_asymmetric(ciphertext: Optional[str] = None,
         crypto_key_version=pulumi.get(__ret__, 'crypto_key_version'),
         id=pulumi.get(__ret__, 'id'),
         plaintext=pulumi.get(__ret__, 'plaintext'))
-
-
-@_utilities.lift_output_func(get_kms_secret_asymmetric)
 def get_kms_secret_asymmetric_output(ciphertext: Optional[pulumi.Input[str]] = None,
                                      crc32: Optional[pulumi.Input[Optional[str]]] = None,
                                      crypto_key_version: Optional[pulumi.Input[str]] = None,
@@ -255,4 +252,15 @@ def get_kms_secret_asymmetric_output(ciphertext: Optional[pulumi.Input[str]] = N
            decrypt the provided ciphertext. This is represented by the format
            `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}/cryptoKeyVersions/{version}`.
     """
-    ...
+    __args__ = dict()
+    __args__['ciphertext'] = ciphertext
+    __args__['crc32'] = crc32
+    __args__['cryptoKeyVersion'] = crypto_key_version
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:kms/getKMSSecretAsymmetric:getKMSSecretAsymmetric', __args__, opts=opts, typ=GetKMSSecretAsymmetricResult)
+    return __ret__.apply(lambda __response__: GetKMSSecretAsymmetricResult(
+        ciphertext=pulumi.get(__response__, 'ciphertext'),
+        crc32=pulumi.get(__response__, 'crc32'),
+        crypto_key_version=pulumi.get(__response__, 'crypto_key_version'),
+        id=pulumi.get(__response__, 'id'),
+        plaintext=pulumi.get(__response__, 'plaintext')))

@@ -396,9 +396,6 @@ def get_job(location: Optional[str] = None,
         terminal_conditions=pulumi.get(__ret__, 'terminal_conditions'),
         uid=pulumi.get(__ret__, 'uid'),
         update_time=pulumi.get(__ret__, 'update_time'))
-
-
-@_utilities.lift_output_func(get_job)
 def get_job_output(location: Optional[pulumi.Input[Optional[str]]] = None,
                    name: Optional[pulumi.Input[str]] = None,
                    project: Optional[pulumi.Input[Optional[str]]] = None,
@@ -426,4 +423,42 @@ def get_job_output(location: Optional[pulumi.Input[Optional[str]]] = None,
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     """
-    ...
+    __args__ = dict()
+    __args__['location'] = location
+    __args__['name'] = name
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:cloudrunv2/getJob:getJob', __args__, opts=opts, typ=GetJobResult)
+    return __ret__.apply(lambda __response__: GetJobResult(
+        annotations=pulumi.get(__response__, 'annotations'),
+        binary_authorizations=pulumi.get(__response__, 'binary_authorizations'),
+        client=pulumi.get(__response__, 'client'),
+        client_version=pulumi.get(__response__, 'client_version'),
+        conditions=pulumi.get(__response__, 'conditions'),
+        create_time=pulumi.get(__response__, 'create_time'),
+        creator=pulumi.get(__response__, 'creator'),
+        delete_time=pulumi.get(__response__, 'delete_time'),
+        deletion_protection=pulumi.get(__response__, 'deletion_protection'),
+        effective_annotations=pulumi.get(__response__, 'effective_annotations'),
+        effective_labels=pulumi.get(__response__, 'effective_labels'),
+        etag=pulumi.get(__response__, 'etag'),
+        execution_count=pulumi.get(__response__, 'execution_count'),
+        expire_time=pulumi.get(__response__, 'expire_time'),
+        generation=pulumi.get(__response__, 'generation'),
+        id=pulumi.get(__response__, 'id'),
+        labels=pulumi.get(__response__, 'labels'),
+        last_modifier=pulumi.get(__response__, 'last_modifier'),
+        latest_created_executions=pulumi.get(__response__, 'latest_created_executions'),
+        launch_stage=pulumi.get(__response__, 'launch_stage'),
+        location=pulumi.get(__response__, 'location'),
+        name=pulumi.get(__response__, 'name'),
+        observed_generation=pulumi.get(__response__, 'observed_generation'),
+        project=pulumi.get(__response__, 'project'),
+        pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
+        reconciling=pulumi.get(__response__, 'reconciling'),
+        run_execution_token=pulumi.get(__response__, 'run_execution_token'),
+        start_execution_token=pulumi.get(__response__, 'start_execution_token'),
+        templates=pulumi.get(__response__, 'templates'),
+        terminal_conditions=pulumi.get(__response__, 'terminal_conditions'),
+        uid=pulumi.get(__response__, 'uid'),
+        update_time=pulumi.get(__response__, 'update_time')))

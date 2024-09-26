@@ -108,9 +108,6 @@ def get_databases(instance: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         instance=pulumi.get(__ret__, 'instance'),
         project=pulumi.get(__ret__, 'project'))
-
-
-@_utilities.lift_output_func(get_databases)
 def get_databases_output(instance: Optional[pulumi.Input[str]] = None,
                          project: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabasesResult]:
@@ -131,4 +128,13 @@ def get_databases_output(instance: Optional[pulumi.Input[str]] = None,
            
            > **Note** This datasource performs client-side sorting to provide consistent ordering of the databases.
     """
-    ...
+    __args__ = dict()
+    __args__['instance'] = instance
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:sql/getDatabases:getDatabases', __args__, opts=opts, typ=GetDatabasesResult)
+    return __ret__.apply(lambda __response__: GetDatabasesResult(
+        databases=pulumi.get(__response__, 'databases'),
+        id=pulumi.get(__response__, 'id'),
+        instance=pulumi.get(__response__, 'instance'),
+        project=pulumi.get(__response__, 'project')))

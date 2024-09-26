@@ -350,9 +350,6 @@ def get_bucket(name: Optional[str] = None,
         url=pulumi.get(__ret__, 'url'),
         versionings=pulumi.get(__ret__, 'versionings'),
         websites=pulumi.get(__ret__, 'websites'))
-
-
-@_utilities.lift_output_func(get_bucket)
 def get_bucket_output(name: Optional[pulumi.Input[str]] = None,
                       project: Optional[pulumi.Input[Optional[str]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBucketResult]:
@@ -375,4 +372,37 @@ def get_bucket_output(name: Optional[pulumi.Input[str]] = None,
     :param str name: The name of the bucket.
     :param str project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used. If no value is supplied in the configuration or through provider defaults then the data source will use the Compute API to find the project id that corresponds to the project number returned from the Storage API. Supplying a value for `project` doesn't influence retrieving data about the bucket but it can be used to prevent use of the Compute API. If you do provide a `project` value ensure that it is the correct value for that bucket; the data source will not check that the project id and project number match.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:storage/getBucket:getBucket', __args__, opts=opts, typ=GetBucketResult)
+    return __ret__.apply(lambda __response__: GetBucketResult(
+        autoclasses=pulumi.get(__response__, 'autoclasses'),
+        cors=pulumi.get(__response__, 'cors'),
+        custom_placement_configs=pulumi.get(__response__, 'custom_placement_configs'),
+        default_event_based_hold=pulumi.get(__response__, 'default_event_based_hold'),
+        effective_labels=pulumi.get(__response__, 'effective_labels'),
+        enable_object_retention=pulumi.get(__response__, 'enable_object_retention'),
+        encryptions=pulumi.get(__response__, 'encryptions'),
+        force_destroy=pulumi.get(__response__, 'force_destroy'),
+        id=pulumi.get(__response__, 'id'),
+        labels=pulumi.get(__response__, 'labels'),
+        lifecycle_rules=pulumi.get(__response__, 'lifecycle_rules'),
+        location=pulumi.get(__response__, 'location'),
+        loggings=pulumi.get(__response__, 'loggings'),
+        name=pulumi.get(__response__, 'name'),
+        project=pulumi.get(__response__, 'project'),
+        project_number=pulumi.get(__response__, 'project_number'),
+        public_access_prevention=pulumi.get(__response__, 'public_access_prevention'),
+        pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
+        requester_pays=pulumi.get(__response__, 'requester_pays'),
+        retention_policies=pulumi.get(__response__, 'retention_policies'),
+        rpo=pulumi.get(__response__, 'rpo'),
+        self_link=pulumi.get(__response__, 'self_link'),
+        soft_delete_policies=pulumi.get(__response__, 'soft_delete_policies'),
+        storage_class=pulumi.get(__response__, 'storage_class'),
+        uniform_bucket_level_access=pulumi.get(__response__, 'uniform_bucket_level_access'),
+        url=pulumi.get(__response__, 'url'),
+        versionings=pulumi.get(__response__, 'versionings'),
+        websites=pulumi.get(__response__, 'websites')))
