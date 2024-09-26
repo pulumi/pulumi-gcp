@@ -114,9 +114,6 @@ def get_tables(dataset_id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         project=pulumi.get(__ret__, 'project'),
         tables=pulumi.get(__ret__, 'tables'))
-
-
-@_utilities.lift_output_func(get_tables)
 def get_tables_output(dataset_id: Optional[pulumi.Input[str]] = None,
                       project: Optional[pulumi.Input[Optional[str]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTablesResult]:
@@ -140,4 +137,13 @@ def get_tables_output(dataset_id: Optional[pulumi.Input[str]] = None,
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the provider project is used.
     """
-    ...
+    __args__ = dict()
+    __args__['datasetId'] = dataset_id
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:bigquery/getTables:getTables', __args__, opts=opts, typ=GetTablesResult)
+    return __ret__.apply(lambda __response__: GetTablesResult(
+        dataset_id=pulumi.get(__response__, 'dataset_id'),
+        id=pulumi.get(__response__, 'id'),
+        project=pulumi.get(__response__, 'project'),
+        tables=pulumi.get(__response__, 'tables')))

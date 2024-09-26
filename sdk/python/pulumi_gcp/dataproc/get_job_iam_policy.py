@@ -134,9 +134,6 @@ def get_job_iam_policy(job_id: Optional[str] = None,
         policy_data=pulumi.get(__ret__, 'policy_data'),
         project=pulumi.get(__ret__, 'project'),
         region=pulumi.get(__ret__, 'region'))
-
-
-@_utilities.lift_output_func(get_job_iam_policy)
 def get_job_iam_policy_output(job_id: Optional[pulumi.Input[str]] = None,
                               project: Optional[pulumi.Input[Optional[str]]] = None,
                               region: Optional[pulumi.Input[Optional[str]]] = None,
@@ -157,4 +154,16 @@ def get_job_iam_policy_output(job_id: Optional[pulumi.Input[str]] = None,
 
     :param str job_id: The name or relative resource id of the job to manage IAM policies for.
     """
-    ...
+    __args__ = dict()
+    __args__['jobId'] = job_id
+    __args__['project'] = project
+    __args__['region'] = region
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:dataproc/getJobIamPolicy:getJobIamPolicy', __args__, opts=opts, typ=GetJobIamPolicyResult)
+    return __ret__.apply(lambda __response__: GetJobIamPolicyResult(
+        etag=pulumi.get(__response__, 'etag'),
+        id=pulumi.get(__response__, 'id'),
+        job_id=pulumi.get(__response__, 'job_id'),
+        policy_data=pulumi.get(__response__, 'policy_data'),
+        project=pulumi.get(__response__, 'project'),
+        region=pulumi.get(__response__, 'region')))
