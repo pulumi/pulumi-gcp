@@ -221,9 +221,6 @@ def get_external_access_rule(name: Optional[str] = None,
         state=pulumi.get(__ret__, 'state'),
         uid=pulumi.get(__ret__, 'uid'),
         update_time=pulumi.get(__ret__, 'update_time'))
-
-
-@_utilities.lift_output_func(get_external_access_rule)
 def get_external_access_rule_output(name: Optional[pulumi.Input[str]] = None,
                                     parent: Optional[pulumi.Input[str]] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetExternalAccessRuleResult]:
@@ -247,4 +244,24 @@ def get_external_access_rule_output(name: Optional[pulumi.Input[str]] = None,
     :param str name: Name of the resource.
     :param str parent: The resource name of the network policy that this cluster belongs.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['parent'] = parent
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:vmwareengine/getExternalAccessRule:getExternalAccessRule', __args__, opts=opts, typ=GetExternalAccessRuleResult)
+    return __ret__.apply(lambda __response__: GetExternalAccessRuleResult(
+        action=pulumi.get(__response__, 'action'),
+        create_time=pulumi.get(__response__, 'create_time'),
+        description=pulumi.get(__response__, 'description'),
+        destination_ip_ranges=pulumi.get(__response__, 'destination_ip_ranges'),
+        destination_ports=pulumi.get(__response__, 'destination_ports'),
+        id=pulumi.get(__response__, 'id'),
+        ip_protocol=pulumi.get(__response__, 'ip_protocol'),
+        name=pulumi.get(__response__, 'name'),
+        parent=pulumi.get(__response__, 'parent'),
+        priority=pulumi.get(__response__, 'priority'),
+        source_ip_ranges=pulumi.get(__response__, 'source_ip_ranges'),
+        source_ports=pulumi.get(__response__, 'source_ports'),
+        state=pulumi.get(__response__, 'state'),
+        uid=pulumi.get(__response__, 'uid'),
+        update_time=pulumi.get(__response__, 'update_time')))

@@ -151,9 +151,6 @@ def get_registry_image(digest: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'),
         region=pulumi.get(__ret__, 'region'),
         tag=pulumi.get(__ret__, 'tag'))
-
-
-@_utilities.lift_output_func(get_registry_image)
 def get_registry_image_output(digest: Optional[pulumi.Input[Optional[str]]] = None,
                               name: Optional[pulumi.Input[str]] = None,
                               project: Optional[pulumi.Input[Optional[str]]] = None,
@@ -182,4 +179,19 @@ def get_registry_image_output(digest: Optional[pulumi.Input[Optional[str]]] = No
     :param str region: The GCR region to use.  As of this writing, one of `asia`, `eu`, and `us`.  See [the documentation](https://cloud.google.com/container-registry/docs/pushing-and-pulling) for additional information.
     :param str tag: The tag to fetch, if any.
     """
-    ...
+    __args__ = dict()
+    __args__['digest'] = digest
+    __args__['name'] = name
+    __args__['project'] = project
+    __args__['region'] = region
+    __args__['tag'] = tag
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:container/getRegistryImage:getRegistryImage', __args__, opts=opts, typ=GetRegistryImageResult)
+    return __ret__.apply(lambda __response__: GetRegistryImageResult(
+        digest=pulumi.get(__response__, 'digest'),
+        id=pulumi.get(__response__, 'id'),
+        image_url=pulumi.get(__response__, 'image_url'),
+        name=pulumi.get(__response__, 'name'),
+        project=pulumi.get(__response__, 'project'),
+        region=pulumi.get(__response__, 'region'),
+        tag=pulumi.get(__response__, 'tag')))

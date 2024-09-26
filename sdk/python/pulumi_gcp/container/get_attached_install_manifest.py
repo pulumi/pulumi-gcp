@@ -140,9 +140,6 @@ def get_attached_install_manifest(cluster_id: Optional[str] = None,
         manifest=pulumi.get(__ret__, 'manifest'),
         platform_version=pulumi.get(__ret__, 'platform_version'),
         project=pulumi.get(__ret__, 'project'))
-
-
-@_utilities.lift_output_func(get_attached_install_manifest)
 def get_attached_install_manifest_output(cluster_id: Optional[pulumi.Input[str]] = None,
                                          location: Optional[pulumi.Input[str]] = None,
                                          platform_version: Optional[pulumi.Input[str]] = None,
@@ -171,4 +168,17 @@ def get_attached_install_manifest_output(cluster_id: Optional[pulumi.Input[str]]
     :param str project: ID of the project to list available platform versions for. Should match the project the cluster will be deployed to.
            Defaults to the project that the provider is authenticated with.
     """
-    ...
+    __args__ = dict()
+    __args__['clusterId'] = cluster_id
+    __args__['location'] = location
+    __args__['platformVersion'] = platform_version
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:container/getAttachedInstallManifest:getAttachedInstallManifest', __args__, opts=opts, typ=GetAttachedInstallManifestResult)
+    return __ret__.apply(lambda __response__: GetAttachedInstallManifestResult(
+        cluster_id=pulumi.get(__response__, 'cluster_id'),
+        id=pulumi.get(__response__, 'id'),
+        location=pulumi.get(__response__, 'location'),
+        manifest=pulumi.get(__response__, 'manifest'),
+        platform_version=pulumi.get(__response__, 'platform_version'),
+        project=pulumi.get(__response__, 'project')))
