@@ -111,9 +111,6 @@ def get_iam_policy(audit_configs: Optional[Sequence[Union['GetIAMPolicyAuditConf
         bindings=pulumi.get(__ret__, 'bindings'),
         id=pulumi.get(__ret__, 'id'),
         policy_data=pulumi.get(__ret__, 'policy_data'))
-
-
-@_utilities.lift_output_func(get_iam_policy)
 def get_iam_policy_output(audit_configs: Optional[pulumi.Input[Optional[Sequence[Union['GetIAMPolicyAuditConfigArgs', 'GetIAMPolicyAuditConfigArgsDict']]]]] = None,
                           bindings: Optional[pulumi.Input[Optional[Sequence[Union['GetIAMPolicyBindingArgs', 'GetIAMPolicyBindingArgsDict']]]]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIAMPolicyResult]:
@@ -132,4 +129,13 @@ def get_iam_policy_output(audit_configs: Optional[pulumi.Input[Optional[Sequence
            Each document configuration must have one or more `binding` blocks, which
            each accept the following arguments:
     """
-    ...
+    __args__ = dict()
+    __args__['auditConfigs'] = audit_configs
+    __args__['bindings'] = bindings
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:organizations/getIAMPolicy:getIAMPolicy', __args__, opts=opts, typ=GetIAMPolicyResult)
+    return __ret__.apply(lambda __response__: GetIAMPolicyResult(
+        audit_configs=pulumi.get(__response__, 'audit_configs'),
+        bindings=pulumi.get(__response__, 'bindings'),
+        id=pulumi.get(__response__, 'id'),
+        policy_data=pulumi.get(__response__, 'policy_data')))
