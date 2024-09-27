@@ -126,9 +126,6 @@ def get_v2_accelerator_types(project: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'),
         types=pulumi.get(__ret__, 'types'),
         zone=pulumi.get(__ret__, 'zone'))
-
-
-@_utilities.lift_output_func(get_v2_accelerator_types)
 def get_v2_accelerator_types_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                                     zone: Optional[pulumi.Input[Optional[str]]] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetV2AcceleratorTypesResult]:
@@ -165,4 +162,13 @@ def get_v2_accelerator_types_output(project: Optional[pulumi.Input[Optional[str]
     :param str zone: The zone to list types for. If it
            is not provided, the provider zone is used.
     """
-    ...
+    __args__ = dict()
+    __args__['project'] = project
+    __args__['zone'] = zone
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:tpu/getV2AcceleratorTypes:getV2AcceleratorTypes', __args__, opts=opts, typ=GetV2AcceleratorTypesResult)
+    return __ret__.apply(lambda __response__: GetV2AcceleratorTypesResult(
+        id=pulumi.get(__response__, 'id'),
+        project=pulumi.get(__response__, 'project'),
+        types=pulumi.get(__response__, 'types'),
+        zone=pulumi.get(__response__, 'zone')))

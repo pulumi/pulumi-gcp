@@ -42,7 +42,7 @@ import (
 //			_, err := secretmanager.NewSecret(ctx, "private-key-secret", &secretmanager.SecretArgs{
 //				SecretId: pulumi.String("ghe-pk-secret"),
 //				Replication: &secretmanager.SecretReplicationArgs{
-//					Auto: nil,
+//					Auto: &secretmanager.SecretReplicationAutoArgs{},
 //				},
 //			})
 //			if err != nil {
@@ -64,7 +64,7 @@ import (
 //			_, err = secretmanager.NewSecret(ctx, "webhook-secret-secret", &secretmanager.SecretArgs{
 //				SecretId: pulumi.String("github-token-secret"),
 //				Replication: &secretmanager.SecretReplicationArgs{
-//					Auto: nil,
+//					Auto: &secretmanager.SecretReplicationAutoArgs{},
 //				},
 //			})
 //			if err != nil {
@@ -156,7 +156,7 @@ import (
 //			_, err := secretmanager.NewSecret(ctx, "github-token-secret", &secretmanager.SecretArgs{
 //				SecretId: pulumi.String("github-token-secret"),
 //				Replication: &secretmanager.SecretReplicationArgs{
-//					Auto: nil,
+//					Auto: &secretmanager.SecretReplicationAutoArgs{},
 //				},
 //			})
 //			if err != nil {
