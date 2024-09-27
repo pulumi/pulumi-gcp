@@ -334,7 +334,7 @@ import (
 //					},
 //					Monthly: &osconfig.PatchDeploymentRecurringScheduleMonthlyArgs{
 //						WeekDayOfMonth: &osconfig.PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs{
-//							WeekOrdinal: int(-1),
+//							WeekOrdinal: pulumi.Int(-1),
 //							DayOfWeek:   pulumi.String("TUESDAY"),
 //							DayOffset:   pulumi.Int(3),
 //						},

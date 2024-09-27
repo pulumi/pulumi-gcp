@@ -114,9 +114,6 @@ def get_buckets(prefix: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         prefix=pulumi.get(__ret__, 'prefix'),
         project=pulumi.get(__ret__, 'project'))
-
-
-@_utilities.lift_output_func(get_buckets)
 def get_buckets_output(prefix: Optional[pulumi.Input[Optional[str]]] = None,
                        project: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBucketsResult]:
@@ -140,4 +137,13 @@ def get_buckets_output(prefix: Optional[pulumi.Input[Optional[str]]] = None,
     :param str prefix: Filter results to buckets whose names begin with this prefix.
     :param str project: The ID of the project. If it is not provided, the provider project is used.
     """
-    ...
+    __args__ = dict()
+    __args__['prefix'] = prefix
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:storage/getBuckets:getBuckets', __args__, opts=opts, typ=GetBucketsResult)
+    return __ret__.apply(lambda __response__: GetBucketsResult(
+        buckets=pulumi.get(__response__, 'buckets'),
+        id=pulumi.get(__response__, 'id'),
+        prefix=pulumi.get(__response__, 'prefix'),
+        project=pulumi.get(__response__, 'project')))

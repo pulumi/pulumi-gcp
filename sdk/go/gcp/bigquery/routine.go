@@ -192,7 +192,7 @@ import (
 //			testConnection, err := bigquery.NewConnection(ctx, "test", &bigquery.ConnectionArgs{
 //				ConnectionId: pulumi.String("connection_id"),
 //				Location:     pulumi.String("US"),
-//				Spark:        nil,
+//				Spark:        &bigquery.ConnectionSparkArgs{},
 //			})
 //			if err != nil {
 //				return err
@@ -263,7 +263,7 @@ import (
 //			testConnection, err := bigquery.NewConnection(ctx, "test", &bigquery.ConnectionArgs{
 //				ConnectionId: pulumi.String("connection_id"),
 //				Location:     pulumi.String("US"),
-//				Spark:        nil,
+//				Spark:        &bigquery.ConnectionSparkArgs{},
 //			})
 //			if err != nil {
 //				return err
@@ -320,7 +320,7 @@ import (
 //			testConnection, err := bigquery.NewConnection(ctx, "test", &bigquery.ConnectionArgs{
 //				ConnectionId: pulumi.String("connection_id"),
 //				Location:     pulumi.String("US"),
-//				Spark:        nil,
+//				Spark:        &bigquery.ConnectionSparkArgs{},
 //			})
 //			if err != nil {
 //				return err
@@ -419,7 +419,7 @@ import (
 //			testConnection, err := bigquery.NewConnection(ctx, "test", &bigquery.ConnectionArgs{
 //				ConnectionId:  pulumi.String("connection_id"),
 //				Location:      pulumi.String("US"),
-//				CloudResource: nil,
+//				CloudResource: &bigquery.ConnectionCloudResourceArgs{},
 //			})
 //			if err != nil {
 //				return err

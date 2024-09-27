@@ -174,9 +174,6 @@ def get_project_settings(project: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
         storage_location=pulumi.get(__ret__, 'storage_location'))
-
-
-@_utilities.lift_output_func(get_project_settings)
 def get_project_settings_output(project: Optional[pulumi.Input[str]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectSettingsResult]:
     """
@@ -201,4 +198,16 @@ def get_project_settings_output(project: Optional[pulumi.Input[str]] = None,
 
     :param str project: The ID of the project for which to retrieve settings.
     """
-    ...
+    __args__ = dict()
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:logging/getProjectSettings:getProjectSettings', __args__, opts=opts, typ=GetProjectSettingsResult)
+    return __ret__.apply(lambda __response__: GetProjectSettingsResult(
+        disable_default_sink=pulumi.get(__response__, 'disable_default_sink'),
+        id=pulumi.get(__response__, 'id'),
+        kms_key_name=pulumi.get(__response__, 'kms_key_name'),
+        kms_service_account_id=pulumi.get(__response__, 'kms_service_account_id'),
+        logging_service_account_id=pulumi.get(__response__, 'logging_service_account_id'),
+        name=pulumi.get(__response__, 'name'),
+        project=pulumi.get(__response__, 'project'),
+        storage_location=pulumi.get(__response__, 'storage_location')))
