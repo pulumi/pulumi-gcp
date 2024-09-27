@@ -139,9 +139,6 @@ def get_management_server(location: Optional[str] = None,
         oauth2_client_id=pulumi.get(__ret__, 'oauth2_client_id'),
         project=pulumi.get(__ret__, 'project'),
         type=pulumi.get(__ret__, 'type'))
-
-
-@_utilities.lift_output_func(get_management_server)
 def get_management_server_output(location: Optional[pulumi.Input[str]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetManagementServerResult]:
     """
@@ -154,4 +151,16 @@ def get_management_server_output(location: Optional[pulumi.Input[str]] = None,
     my_backup_dr_management_server = gcp.backupdisasterrecovery.get_management_server(location="us-central1")
     ```
     """
-    ...
+    __args__ = dict()
+    __args__['location'] = location
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:backupdisasterrecovery/getManagementServer:getManagementServer', __args__, opts=opts, typ=GetManagementServerResult)
+    return __ret__.apply(lambda __response__: GetManagementServerResult(
+        id=pulumi.get(__response__, 'id'),
+        location=pulumi.get(__response__, 'location'),
+        management_uris=pulumi.get(__response__, 'management_uris'),
+        name=pulumi.get(__response__, 'name'),
+        networks=pulumi.get(__response__, 'networks'),
+        oauth2_client_id=pulumi.get(__response__, 'oauth2_client_id'),
+        project=pulumi.get(__response__, 'project'),
+        type=pulumi.get(__response__, 'type')))
