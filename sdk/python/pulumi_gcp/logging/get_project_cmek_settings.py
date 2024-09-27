@@ -162,9 +162,6 @@ def get_project_cmek_settings(kms_key_name: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
         service_account_id=pulumi.get(__ret__, 'service_account_id'))
-
-
-@_utilities.lift_output_func(get_project_cmek_settings)
 def get_project_cmek_settings_output(kms_key_name: Optional[pulumi.Input[Optional[str]]] = None,
                                      project: Optional[pulumi.Input[str]] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectCmekSettingsResult]:
@@ -196,4 +193,15 @@ def get_project_cmek_settings_output(kms_key_name: Optional[pulumi.Input[Optiona
            See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
     :param str project: The ID of the project.
     """
-    ...
+    __args__ = dict()
+    __args__['kmsKeyName'] = kms_key_name
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:logging/getProjectCmekSettings:getProjectCmekSettings', __args__, opts=opts, typ=GetProjectCmekSettingsResult)
+    return __ret__.apply(lambda __response__: GetProjectCmekSettingsResult(
+        id=pulumi.get(__response__, 'id'),
+        kms_key_name=pulumi.get(__response__, 'kms_key_name'),
+        kms_key_version_name=pulumi.get(__response__, 'kms_key_version_name'),
+        name=pulumi.get(__response__, 'name'),
+        project=pulumi.get(__response__, 'project'),
+        service_account_id=pulumi.get(__response__, 'service_account_id')))

@@ -44,10 +44,10 @@ import (
 //				},
 //				ExecutionSpec: &dataplex.DatascanExecutionSpecArgs{
 //					Trigger: &dataplex.DatascanExecutionSpecTriggerArgs{
-//						OnDemand: nil,
+//						OnDemand: &dataplex.DatascanExecutionSpecTriggerOnDemandArgs{},
 //					},
 //				},
-//				DataProfileSpec: nil,
+//				DataProfileSpec: &dataplex.DatascanDataProfileSpecArgs{},
 //				Project:         pulumi.String("my-project-name"),
 //			})
 //			if err != nil {
@@ -154,7 +154,7 @@ import (
 //				},
 //				ExecutionSpec: &dataplex.DatascanExecutionSpecArgs{
 //					Trigger: &dataplex.DatascanExecutionSpecTriggerArgs{
-//						OnDemand: nil,
+//						OnDemand: &dataplex.DatascanExecutionSpecTriggerOnDemandArgs{},
 //					},
 //				},
 //				DataQualitySpec: &dataplex.DatascanDataQualitySpecArgs{
@@ -220,7 +220,7 @@ import (
 //							Column:             pulumi.String("address"),
 //							Dimension:          pulumi.String("VALIDITY"),
 //							Threshold:          pulumi.Float64(0.99),
-//							NonNullExpectation: nil,
+//							NonNullExpectation: &dataplex.DatascanDataQualitySpecRuleNonNullExpectationArgs{},
 //						},
 //						&dataplex.DatascanDataQualitySpecRuleArgs{
 //							Column:     pulumi.String("council_district"),
@@ -256,7 +256,7 @@ import (
 //						&dataplex.DatascanDataQualitySpecRuleArgs{
 //							Column:                pulumi.String("address"),
 //							Dimension:             pulumi.String("UNIQUENESS"),
-//							UniquenessExpectation: nil,
+//							UniquenessExpectation: &dataplex.DatascanDataQualitySpecRuleUniquenessExpectationArgs{},
 //						},
 //						&dataplex.DatascanDataQualitySpecRuleArgs{
 //							Column:    pulumi.String("number_of_docks"),

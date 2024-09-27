@@ -141,9 +141,6 @@ def get_metastore_federation_iam_policy(federation_id: Optional[str] = None,
         location=pulumi.get(__ret__, 'location'),
         policy_data=pulumi.get(__ret__, 'policy_data'),
         project=pulumi.get(__ret__, 'project'))
-
-
-@_utilities.lift_output_func(get_metastore_federation_iam_policy)
 def get_metastore_federation_iam_policy_output(federation_id: Optional[pulumi.Input[str]] = None,
                                                location: Optional[pulumi.Input[Optional[str]]] = None,
                                                project: Optional[pulumi.Input[Optional[str]]] = None,
@@ -170,4 +167,16 @@ def get_metastore_federation_iam_policy_output(federation_id: Optional[pulumi.In
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
     """
-    ...
+    __args__ = dict()
+    __args__['federationId'] = federation_id
+    __args__['location'] = location
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:dataproc/getMetastoreFederationIamPolicy:getMetastoreFederationIamPolicy', __args__, opts=opts, typ=GetMetastoreFederationIamPolicyResult)
+    return __ret__.apply(lambda __response__: GetMetastoreFederationIamPolicyResult(
+        etag=pulumi.get(__response__, 'etag'),
+        federation_id=pulumi.get(__response__, 'federation_id'),
+        id=pulumi.get(__response__, 'id'),
+        location=pulumi.get(__response__, 'location'),
+        policy_data=pulumi.get(__response__, 'policy_data'),
+        project=pulumi.get(__response__, 'project')))

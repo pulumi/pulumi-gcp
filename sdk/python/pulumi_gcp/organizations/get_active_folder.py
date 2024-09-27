@@ -123,9 +123,6 @@ def get_active_folder(api_method: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         parent=pulumi.get(__ret__, 'parent'))
-
-
-@_utilities.lift_output_func(get_active_folder)
 def get_active_folder_output(api_method: Optional[pulumi.Input[Optional[str]]] = None,
                              display_name: Optional[pulumi.Input[str]] = None,
                              parent: Optional[pulumi.Input[str]] = None,
@@ -148,4 +145,15 @@ def get_active_folder_output(api_method: Optional[pulumi.Input[Optional[str]]] =
     :param str display_name: The folder's display name.
     :param str parent: The resource name of the parent Folder or Organization.
     """
-    ...
+    __args__ = dict()
+    __args__['apiMethod'] = api_method
+    __args__['displayName'] = display_name
+    __args__['parent'] = parent
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:organizations/getActiveFolder:getActiveFolder', __args__, opts=opts, typ=GetActiveFolderResult)
+    return __ret__.apply(lambda __response__: GetActiveFolderResult(
+        api_method=pulumi.get(__response__, 'api_method'),
+        display_name=pulumi.get(__response__, 'display_name'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        parent=pulumi.get(__response__, 'parent')))

@@ -122,9 +122,6 @@ def get_machine_types(filter: Optional[str] = None,
         machine_types=pulumi.get(__ret__, 'machine_types'),
         project=pulumi.get(__ret__, 'project'),
         zone=pulumi.get(__ret__, 'zone'))
-
-
-@_utilities.lift_output_func(get_machine_types)
 def get_machine_types_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
                              project: Optional[pulumi.Input[Optional[str]]] = None,
                              zone: Optional[pulumi.Input[Optional[str]]] = None,
@@ -145,4 +142,15 @@ def get_machine_types_output(filter: Optional[pulumi.Input[Optional[str]]] = Non
     :param str project: Project from which to list available zones. Defaults to project declared in the provider.
     :param str zone: Zone from which to list machine types.
     """
-    ...
+    __args__ = dict()
+    __args__['filter'] = filter
+    __args__['project'] = project
+    __args__['zone'] = zone
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:compute/getMachineTypes:getMachineTypes', __args__, opts=opts, typ=GetMachineTypesResult)
+    return __ret__.apply(lambda __response__: GetMachineTypesResult(
+        filter=pulumi.get(__response__, 'filter'),
+        id=pulumi.get(__response__, 'id'),
+        machine_types=pulumi.get(__response__, 'machine_types'),
+        project=pulumi.get(__response__, 'project'),
+        zone=pulumi.get(__response__, 'zone')))
