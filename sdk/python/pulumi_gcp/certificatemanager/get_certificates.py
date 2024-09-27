@@ -116,9 +116,6 @@ def get_certificates(filter: Optional[str] = None,
         filter=pulumi.get(__ret__, 'filter'),
         id=pulumi.get(__ret__, 'id'),
         region=pulumi.get(__ret__, 'region'))
-
-
-@_utilities.lift_output_func(get_certificates)
 def get_certificates_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
                             region: Optional[pulumi.Input[Optional[str]]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCertificatesResult]:
@@ -147,4 +144,13 @@ def get_certificates_output(filter: Optional[pulumi.Input[Optional[str]]] = None
     :param str filter: Filter expression to restrict the certificates returned.
     :param str region: The region in which the resource belongs. If it is not provided, `GLOBAL` is used.
     """
-    ...
+    __args__ = dict()
+    __args__['filter'] = filter
+    __args__['region'] = region
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:certificatemanager/getCertificates:getCertificates', __args__, opts=opts, typ=GetCertificatesResult)
+    return __ret__.apply(lambda __response__: GetCertificatesResult(
+        certificates=pulumi.get(__response__, 'certificates'),
+        filter=pulumi.get(__response__, 'filter'),
+        id=pulumi.get(__response__, 'id'),
+        region=pulumi.get(__response__, 'region')))

@@ -154,9 +154,6 @@ def get_log_view_iam_policy(bucket: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         parent=pulumi.get(__ret__, 'parent'),
         policy_data=pulumi.get(__ret__, 'policy_data'))
-
-
-@_utilities.lift_output_func(get_log_view_iam_policy)
 def get_log_view_iam_policy_output(bucket: Optional[pulumi.Input[str]] = None,
                                    location: Optional[pulumi.Input[Optional[str]]] = None,
                                    name: Optional[pulumi.Input[str]] = None,
@@ -185,4 +182,18 @@ def get_log_view_iam_policy_output(bucket: Optional[pulumi.Input[str]] = None,
     :param str name: Used to find the parent resource to bind the IAM policy to
     :param str parent: The parent of the resource. Used to find the parent resource to bind the IAM policy to
     """
-    ...
+    __args__ = dict()
+    __args__['bucket'] = bucket
+    __args__['location'] = location
+    __args__['name'] = name
+    __args__['parent'] = parent
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:logging/getLogViewIamPolicy:getLogViewIamPolicy', __args__, opts=opts, typ=GetLogViewIamPolicyResult)
+    return __ret__.apply(lambda __response__: GetLogViewIamPolicyResult(
+        bucket=pulumi.get(__response__, 'bucket'),
+        etag=pulumi.get(__response__, 'etag'),
+        id=pulumi.get(__response__, 'id'),
+        location=pulumi.get(__response__, 'location'),
+        name=pulumi.get(__response__, 'name'),
+        parent=pulumi.get(__response__, 'parent'),
+        policy_data=pulumi.get(__response__, 'policy_data')))
