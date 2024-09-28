@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ips, err := monitoring.GetUptimeCheckIPs(ctx, nil, nil)
+//			ips, err := monitoring.GetUptimeCheckIPs(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}

@@ -130,9 +130,6 @@ def get_repository(name: Optional[str] = None,
         pubsub_configs=pulumi.get(__ret__, 'pubsub_configs'),
         size=pulumi.get(__ret__, 'size'),
         url=pulumi.get(__ret__, 'url'))
-
-
-@_utilities.lift_output_func(get_repository)
 def get_repository_output(name: Optional[pulumi.Input[str]] = None,
                           project: Optional[pulumi.Input[Optional[str]]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRepositoryResult]:
@@ -155,4 +152,15 @@ def get_repository_output(name: Optional[pulumi.Input[str]] = None,
     :param str name: Resource name of the repository. The repo name may contain slashes. eg, `name/with/slash`
     :param str project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:sourcerepo/getRepository:getRepository', __args__, opts=opts, typ=GetRepositoryResult)
+    return __ret__.apply(lambda __response__: GetRepositoryResult(
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        project=pulumi.get(__response__, 'project'),
+        pubsub_configs=pulumi.get(__response__, 'pubsub_configs'),
+        size=pulumi.get(__response__, 'size'),
+        url=pulumi.get(__response__, 'url')))

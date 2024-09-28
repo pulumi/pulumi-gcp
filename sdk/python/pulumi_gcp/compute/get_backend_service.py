@@ -440,9 +440,6 @@ def get_backend_service(name: Optional[str] = None,
         service_lb_policy=pulumi.get(__ret__, 'service_lb_policy'),
         session_affinity=pulumi.get(__ret__, 'session_affinity'),
         timeout_sec=pulumi.get(__ret__, 'timeout_sec'))
-
-
-@_utilities.lift_output_func(get_backend_service)
 def get_backend_service_output(name: Optional[pulumi.Input[str]] = None,
                                project: Optional[pulumi.Input[Optional[str]]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBackendServiceResult]:
@@ -469,4 +466,42 @@ def get_backend_service_output(name: Optional[pulumi.Input[str]] = None,
            - - -
     :param str project: The project in which the resource belongs. If it is not provided, the provider project is used.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:compute/getBackendService:getBackendService', __args__, opts=opts, typ=GetBackendServiceResult)
+    return __ret__.apply(lambda __response__: GetBackendServiceResult(
+        affinity_cookie_ttl_sec=pulumi.get(__response__, 'affinity_cookie_ttl_sec'),
+        backends=pulumi.get(__response__, 'backends'),
+        cdn_policies=pulumi.get(__response__, 'cdn_policies'),
+        circuit_breakers=pulumi.get(__response__, 'circuit_breakers'),
+        compression_mode=pulumi.get(__response__, 'compression_mode'),
+        connection_draining_timeout_sec=pulumi.get(__response__, 'connection_draining_timeout_sec'),
+        consistent_hash=pulumi.get(__response__, 'consistent_hash'),
+        creation_timestamp=pulumi.get(__response__, 'creation_timestamp'),
+        custom_request_headers=pulumi.get(__response__, 'custom_request_headers'),
+        custom_response_headers=pulumi.get(__response__, 'custom_response_headers'),
+        description=pulumi.get(__response__, 'description'),
+        edge_security_policy=pulumi.get(__response__, 'edge_security_policy'),
+        enable_cdn=pulumi.get(__response__, 'enable_cdn'),
+        fingerprint=pulumi.get(__response__, 'fingerprint'),
+        generated_id=pulumi.get(__response__, 'generated_id'),
+        health_checks=pulumi.get(__response__, 'health_checks'),
+        iaps=pulumi.get(__response__, 'iaps'),
+        id=pulumi.get(__response__, 'id'),
+        load_balancing_scheme=pulumi.get(__response__, 'load_balancing_scheme'),
+        locality_lb_policies=pulumi.get(__response__, 'locality_lb_policies'),
+        locality_lb_policy=pulumi.get(__response__, 'locality_lb_policy'),
+        log_configs=pulumi.get(__response__, 'log_configs'),
+        name=pulumi.get(__response__, 'name'),
+        outlier_detections=pulumi.get(__response__, 'outlier_detections'),
+        port_name=pulumi.get(__response__, 'port_name'),
+        project=pulumi.get(__response__, 'project'),
+        protocol=pulumi.get(__response__, 'protocol'),
+        security_policy=pulumi.get(__response__, 'security_policy'),
+        security_settings=pulumi.get(__response__, 'security_settings'),
+        self_link=pulumi.get(__response__, 'self_link'),
+        service_lb_policy=pulumi.get(__response__, 'service_lb_policy'),
+        session_affinity=pulumi.get(__response__, 'session_affinity'),
+        timeout_sec=pulumi.get(__response__, 'timeout_sec')))
