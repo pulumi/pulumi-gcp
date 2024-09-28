@@ -93,7 +93,7 @@ import (
 //				Name:               pulumi.String("autopilot-cluster"),
 //				Location:           pulumi.String("us-central1"),
 //				EnableAutopilot:    pulumi.Bool(true),
-//				IpAllocationPolicy: nil,
+//				IpAllocationPolicy: &container.ClusterIpAllocationPolicyArgs{},
 //				ReleaseChannel: &container.ClusterReleaseChannelArgs{
 //					Channel: pulumi.String("RAPID"),
 //				},

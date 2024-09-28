@@ -123,9 +123,6 @@ def get_environment_iam_policy(env_id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         org_id=pulumi.get(__ret__, 'org_id'),
         policy_data=pulumi.get(__ret__, 'policy_data'))
-
-
-@_utilities.lift_output_func(get_environment_iam_policy)
 def get_environment_iam_policy_output(env_id: Optional[pulumi.Input[str]] = None,
                                       org_id: Optional[pulumi.Input[str]] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEnvironmentIamPolicyResult]:
@@ -145,4 +142,14 @@ def get_environment_iam_policy_output(env_id: Optional[pulumi.Input[str]] = None
 
     :param str env_id: Used to find the parent resource to bind the IAM policy to
     """
-    ...
+    __args__ = dict()
+    __args__['envId'] = env_id
+    __args__['orgId'] = org_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:apigee/getEnvironmentIamPolicy:getEnvironmentIamPolicy', __args__, opts=opts, typ=GetEnvironmentIamPolicyResult)
+    return __ret__.apply(lambda __response__: GetEnvironmentIamPolicyResult(
+        env_id=pulumi.get(__response__, 'env_id'),
+        etag=pulumi.get(__response__, 'etag'),
+        id=pulumi.get(__response__, 'id'),
+        org_id=pulumi.get(__response__, 'org_id'),
+        policy_data=pulumi.get(__response__, 'policy_data')))
