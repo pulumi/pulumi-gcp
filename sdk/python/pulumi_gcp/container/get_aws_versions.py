@@ -125,9 +125,6 @@ def get_aws_versions(location: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'),
         supported_regions=pulumi.get(__ret__, 'supported_regions'),
         valid_versions=pulumi.get(__ret__, 'valid_versions'))
-
-
-@_utilities.lift_output_func(get_aws_versions)
 def get_aws_versions_output(location: Optional[pulumi.Input[Optional[str]]] = None,
                             project: Optional[pulumi.Input[Optional[str]]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAwsVersionsResult]:
@@ -150,4 +147,14 @@ def get_aws_versions_output(location: Optional[pulumi.Input[Optional[str]]] = No
     :param str project: ID of the project to list available cluster versions for. Should match the project the cluster will be deployed to.
            Defaults to the project that the provider is authenticated with.
     """
-    ...
+    __args__ = dict()
+    __args__['location'] = location
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:container/getAwsVersions:getAwsVersions', __args__, opts=opts, typ=GetAwsVersionsResult)
+    return __ret__.apply(lambda __response__: GetAwsVersionsResult(
+        id=pulumi.get(__response__, 'id'),
+        location=pulumi.get(__response__, 'location'),
+        project=pulumi.get(__response__, 'project'),
+        supported_regions=pulumi.get(__response__, 'supported_regions'),
+        valid_versions=pulumi.get(__response__, 'valid_versions')))

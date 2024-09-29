@@ -526,9 +526,6 @@ def get_disk(name: Optional[str] = None,
         type=pulumi.get(__ret__, 'type'),
         users=pulumi.get(__ret__, 'users'),
         zone=pulumi.get(__ret__, 'zone'))
-
-
-@_utilities.lift_output_func(get_disk)
 def get_disk_output(name: Optional[pulumi.Input[str]] = None,
                     project: Optional[pulumi.Input[Optional[str]]] = None,
                     zone: Optional[pulumi.Input[Optional[str]]] = None,
@@ -560,4 +557,48 @@ def get_disk_output(name: Optional[pulumi.Input[str]] = None,
            If it is not provided, the provider project is used.
     :param str zone: A reference to the zone where the disk resides.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['project'] = project
+    __args__['zone'] = zone
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:compute/getDisk:getDisk', __args__, opts=opts, typ=GetDiskResult)
+    return __ret__.apply(lambda __response__: GetDiskResult(
+        access_mode=pulumi.get(__response__, 'access_mode'),
+        async_primary_disks=pulumi.get(__response__, 'async_primary_disks'),
+        creation_timestamp=pulumi.get(__response__, 'creation_timestamp'),
+        description=pulumi.get(__response__, 'description'),
+        disk_encryption_keys=pulumi.get(__response__, 'disk_encryption_keys'),
+        disk_id=pulumi.get(__response__, 'disk_id'),
+        effective_labels=pulumi.get(__response__, 'effective_labels'),
+        enable_confidential_compute=pulumi.get(__response__, 'enable_confidential_compute'),
+        guest_os_features=pulumi.get(__response__, 'guest_os_features'),
+        id=pulumi.get(__response__, 'id'),
+        image=pulumi.get(__response__, 'image'),
+        interface=pulumi.get(__response__, 'interface'),
+        label_fingerprint=pulumi.get(__response__, 'label_fingerprint'),
+        labels=pulumi.get(__response__, 'labels'),
+        last_attach_timestamp=pulumi.get(__response__, 'last_attach_timestamp'),
+        last_detach_timestamp=pulumi.get(__response__, 'last_detach_timestamp'),
+        licenses=pulumi.get(__response__, 'licenses'),
+        multi_writer=pulumi.get(__response__, 'multi_writer'),
+        name=pulumi.get(__response__, 'name'),
+        physical_block_size_bytes=pulumi.get(__response__, 'physical_block_size_bytes'),
+        project=pulumi.get(__response__, 'project'),
+        provisioned_iops=pulumi.get(__response__, 'provisioned_iops'),
+        provisioned_throughput=pulumi.get(__response__, 'provisioned_throughput'),
+        pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
+        resource_policies=pulumi.get(__response__, 'resource_policies'),
+        self_link=pulumi.get(__response__, 'self_link'),
+        size=pulumi.get(__response__, 'size'),
+        snapshot=pulumi.get(__response__, 'snapshot'),
+        source_disk=pulumi.get(__response__, 'source_disk'),
+        source_disk_id=pulumi.get(__response__, 'source_disk_id'),
+        source_image_encryption_keys=pulumi.get(__response__, 'source_image_encryption_keys'),
+        source_image_id=pulumi.get(__response__, 'source_image_id'),
+        source_snapshot_encryption_keys=pulumi.get(__response__, 'source_snapshot_encryption_keys'),
+        source_snapshot_id=pulumi.get(__response__, 'source_snapshot_id'),
+        storage_pool=pulumi.get(__response__, 'storage_pool'),
+        type=pulumi.get(__response__, 'type'),
+        users=pulumi.get(__response__, 'users'),
+        zone=pulumi.get(__response__, 'zone')))

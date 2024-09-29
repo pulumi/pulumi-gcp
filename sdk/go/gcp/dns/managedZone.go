@@ -237,7 +237,7 @@ import (
 //						Enabled: pulumi.Bool(true),
 //					},
 //				},
-//				MasterAuthorizedNetworksConfig: nil,
+//				MasterAuthorizedNetworksConfig: &container.ClusterMasterAuthorizedNetworksConfigArgs{},
 //				IpAllocationPolicy: &container.ClusterIpAllocationPolicyArgs{
 //					ClusterSecondaryRangeName: subnetwork_1.SecondaryIpRanges.ApplyT(func(secondaryIpRanges []compute.SubnetworkSecondaryIpRange) (*string, error) {
 //						return &secondaryIpRanges[0].RangeName, nil
