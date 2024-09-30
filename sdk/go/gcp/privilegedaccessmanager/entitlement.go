@@ -36,7 +36,7 @@ import (
 //				MaxRequestDuration: pulumi.String("43200s"),
 //				Parent:             pulumi.String("projects/my-project-name"),
 //				RequesterJustificationConfig: &privilegedaccessmanager.EntitlementRequesterJustificationConfigArgs{
-//					Unstructured: nil,
+//					Unstructured: &privilegedaccessmanager.EntitlementRequesterJustificationConfigUnstructuredArgs{},
 //				},
 //				EligibleUsers: privilegedaccessmanager.EntitlementEligibleUserArray{
 //					&privilegedaccessmanager.EntitlementEligibleUserArgs{

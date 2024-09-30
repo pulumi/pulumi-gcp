@@ -183,9 +183,6 @@ def get_account_id_token(delegates: Optional[Sequence[str]] = None,
         include_email=pulumi.get(__ret__, 'include_email'),
         target_audience=pulumi.get(__ret__, 'target_audience'),
         target_service_account=pulumi.get(__ret__, 'target_service_account'))
-
-
-@_utilities.lift_output_func(get_account_id_token)
 def get_account_id_token_output(delegates: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                 include_email: Optional[pulumi.Input[Optional[bool]]] = None,
                                 target_audience: Optional[pulumi.Input[str]] = None,
@@ -257,4 +254,17 @@ def get_account_id_token_output(delegates: Optional[pulumi.Input[Optional[Sequen
     :param str target_audience: The audience claim for the `id_token`.
     :param str target_service_account: The email of the service account being impersonated.  Used only when using impersonation mode.
     """
-    ...
+    __args__ = dict()
+    __args__['delegates'] = delegates
+    __args__['includeEmail'] = include_email
+    __args__['targetAudience'] = target_audience
+    __args__['targetServiceAccount'] = target_service_account
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:serviceaccount/getAccountIdToken:getAccountIdToken', __args__, opts=opts, typ=GetAccountIdTokenResult)
+    return __ret__.apply(lambda __response__: GetAccountIdTokenResult(
+        delegates=pulumi.get(__response__, 'delegates'),
+        id=pulumi.get(__response__, 'id'),
+        id_token=pulumi.get(__response__, 'id_token'),
+        include_email=pulumi.get(__response__, 'include_email'),
+        target_audience=pulumi.get(__response__, 'target_audience'),
+        target_service_account=pulumi.get(__response__, 'target_service_account')))
