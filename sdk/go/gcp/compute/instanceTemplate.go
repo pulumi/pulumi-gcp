@@ -141,7 +141,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := compute.GetDefaultServiceAccount(ctx, nil, nil)
+//			_default, err := compute.GetDefaultServiceAccount(ctx, &compute.GetDefaultServiceAccountArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -260,7 +260,7 @@ import (
 //				NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
 //					&compute.InstanceTemplateNetworkInterfaceArgs{
 //						AccessConfigs: compute.InstanceTemplateNetworkInterfaceAccessConfigArray{
-//							nil,
+//							&compute.InstanceTemplateNetworkInterfaceAccessConfigArgs{},
 //						},
 //						Network: pulumi.String("default"),
 //					},
