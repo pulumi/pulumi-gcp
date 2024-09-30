@@ -175,9 +175,6 @@ def get_resource_policy(name: Optional[str] = None,
         region=pulumi.get(__ret__, 'region'),
         self_link=pulumi.get(__ret__, 'self_link'),
         snapshot_schedule_policies=pulumi.get(__ret__, 'snapshot_schedule_policies'))
-
-
-@_utilities.lift_output_func(get_resource_policy)
 def get_resource_policy_output(name: Optional[pulumi.Input[str]] = None,
                                project: Optional[pulumi.Input[Optional[str]]] = None,
                                region: Optional[pulumi.Input[Optional[str]]] = None,
@@ -198,4 +195,20 @@ def get_resource_policy_output(name: Optional[pulumi.Input[str]] = None,
     :param str project: Project from which to list the Resource Policy. Defaults to project declared in the provider.
     :param str region: Region where the Resource Policy resides.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['project'] = project
+    __args__['region'] = region
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:compute/getResourcePolicy:getResourcePolicy', __args__, opts=opts, typ=GetResourcePolicyResult)
+    return __ret__.apply(lambda __response__: GetResourcePolicyResult(
+        description=pulumi.get(__response__, 'description'),
+        disk_consistency_group_policies=pulumi.get(__response__, 'disk_consistency_group_policies'),
+        group_placement_policies=pulumi.get(__response__, 'group_placement_policies'),
+        id=pulumi.get(__response__, 'id'),
+        instance_schedule_policies=pulumi.get(__response__, 'instance_schedule_policies'),
+        name=pulumi.get(__response__, 'name'),
+        project=pulumi.get(__response__, 'project'),
+        region=pulumi.get(__response__, 'region'),
+        self_link=pulumi.get(__response__, 'self_link'),
+        snapshot_schedule_policies=pulumi.get(__response__, 'snapshot_schedule_policies')))

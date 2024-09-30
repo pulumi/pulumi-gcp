@@ -183,9 +183,6 @@ def get_crypto_key_latest_version(crypto_key: Optional[str] = None,
         public_keys=pulumi.get(__ret__, 'public_keys'),
         state=pulumi.get(__ret__, 'state'),
         version=pulumi.get(__ret__, 'version'))
-
-
-@_utilities.lift_output_func(get_crypto_key_latest_version)
 def get_crypto_key_latest_version_output(crypto_key: Optional[pulumi.Input[str]] = None,
                                          filter: Optional[pulumi.Input[Optional[str]]] = None,
                                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCryptoKeyLatestVersionResult]:
@@ -219,4 +216,18 @@ def get_crypto_key_latest_version_output(crypto_key: Optional[pulumi.Input[str]]
            
            [See the documentation about using filters](https://cloud.google.com/kms/docs/sorting-and-filtering)
     """
-    ...
+    __args__ = dict()
+    __args__['cryptoKey'] = crypto_key
+    __args__['filter'] = filter
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:kms/getCryptoKeyLatestVersion:getCryptoKeyLatestVersion', __args__, opts=opts, typ=GetCryptoKeyLatestVersionResult)
+    return __ret__.apply(lambda __response__: GetCryptoKeyLatestVersionResult(
+        algorithm=pulumi.get(__response__, 'algorithm'),
+        crypto_key=pulumi.get(__response__, 'crypto_key'),
+        filter=pulumi.get(__response__, 'filter'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        protection_level=pulumi.get(__response__, 'protection_level'),
+        public_keys=pulumi.get(__response__, 'public_keys'),
+        state=pulumi.get(__response__, 'state'),
+        version=pulumi.get(__response__, 'version')))

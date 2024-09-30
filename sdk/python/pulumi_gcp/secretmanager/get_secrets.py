@@ -113,9 +113,6 @@ def get_secrets(filter: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         project=pulumi.get(__ret__, 'project'),
         secrets=pulumi.get(__ret__, 'secrets'))
-
-
-@_utilities.lift_output_func(get_secrets)
 def get_secrets_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
                        project: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecretsResult]:
@@ -135,4 +132,13 @@ def get_secrets_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
     :param str filter: Filter string, adhering to the rules in [List-operation filtering](https://cloud.google.com/secret-manager/docs/filtering). List only secrets matching the filter. If filter is empty, all secrets are listed.
     :param str project: The ID of the project.
     """
-    ...
+    __args__ = dict()
+    __args__['filter'] = filter
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:secretmanager/getSecrets:getSecrets', __args__, opts=opts, typ=GetSecretsResult)
+    return __ret__.apply(lambda __response__: GetSecretsResult(
+        filter=pulumi.get(__response__, 'filter'),
+        id=pulumi.get(__response__, 'id'),
+        project=pulumi.get(__response__, 'project'),
+        secrets=pulumi.get(__response__, 'secrets')))
