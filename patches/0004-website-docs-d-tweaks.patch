@@ -47,7 +47,7 @@ index 50f04270d..87cb31d7c 100644
 -See [google_compute_global_forwarding_rule](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_global_forwarding_rule) resource for details of the available attributes.
 +See google_compute_global_forwarding_rule resource for details of the available attributes.
 diff --git a/website/docs/d/compute_instance.html.markdown b/website/docs/d/compute_instance.html.markdown
-index c30d589a7..d0b83924e 100644
+index 743fc9f1a..4b1ae7d5f 100644
 --- a/website/docs/d/compute_instance.html.markdown
 +++ b/website/docs/d/compute_instance.html.markdown
 @@ -11,7 +11,6 @@ Get information about a VM instance resource within GCE. For more information se
@@ -89,7 +89,7 @@ index c30d589a7..d0b83924e 100644
  
  * `network_ip` - The private IP address assigned to the instance.
  
-@@ -199,7 +198,7 @@ The following arguments are supported:
+@@ -201,7 +200,7 @@ The following arguments are supported:
      
  * `provisioning_model` - Describe the type of preemptible VM.
  
@@ -99,7 +99,7 @@ index c30d589a7..d0b83924e 100644
  <a name="nested_guest_accelerator"></a>The `guest_accelerator` block supports:
  
 diff --git a/website/docs/d/compute_instance_template.html.markdown b/website/docs/d/compute_instance_template.html.markdown
-index b3b7133bf..bae508658 100644
+index 08be6b15f..829134670 100644
 --- a/website/docs/d/compute_instance_template.html.markdown
 +++ b/website/docs/d/compute_instance_template.html.markdown
 @@ -65,7 +65,7 @@ The following arguments are supported:
