@@ -2731,6 +2731,9 @@ func Provider() tfbridge.ProviderInfo {
 			InputTypes:           tfbridge.PythonInputTypeClassesAndDicts,
 		},
 		CSharp: &tfbridge.CSharpInfo{
+			PackageReferences: map[string]string{
+				"Pulumi": "3.*",
+			},
 			RespectSchemaVersion: true,
 			Namespaces:           namespaceMap,
 		},
