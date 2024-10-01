@@ -125,9 +125,6 @@ def get_image_iam_policy(image: Optional[str] = None,
         image=pulumi.get(__ret__, 'image'),
         policy_data=pulumi.get(__ret__, 'policy_data'),
         project=pulumi.get(__ret__, 'project'))
-
-
-@_utilities.lift_output_func(get_image_iam_policy)
 def get_image_iam_policy_output(image: Optional[pulumi.Input[str]] = None,
                                 project: Optional[pulumi.Input[Optional[str]]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetImageIamPolicyResult]:
@@ -149,4 +146,14 @@ def get_image_iam_policy_output(image: Optional[pulumi.Input[str]] = None,
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
     """
-    ...
+    __args__ = dict()
+    __args__['image'] = image
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:compute/getImageIamPolicy:getImageIamPolicy', __args__, opts=opts, typ=GetImageIamPolicyResult)
+    return __ret__.apply(lambda __response__: GetImageIamPolicyResult(
+        etag=pulumi.get(__response__, 'etag'),
+        id=pulumi.get(__response__, 'id'),
+        image=pulumi.get(__response__, 'image'),
+        policy_data=pulumi.get(__response__, 'policy_data'),
+        project=pulumi.get(__response__, 'project')))

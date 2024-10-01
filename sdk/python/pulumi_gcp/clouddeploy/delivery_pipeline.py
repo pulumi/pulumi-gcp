@@ -484,7 +484,7 @@ class DeliveryPipeline(pulumi.CustomResource):
                     {
                         "deploy_parameters": [{
                             "values": {
-                                "deploy_parameter_key": "deployParameterValue",
+                                "deployParameterKey": "deployParameterValue",
                             },
                             "match_target_labels": {},
                         }],
@@ -525,7 +525,7 @@ class DeliveryPipeline(pulumi.CustomResource):
                     {
                         "deploy_parameters": [{
                             "values": {
-                                "deploy_parameter_key": "deployParameterValue",
+                                "deployParameterKey": "deployParameterValue",
                             },
                             "match_target_labels": {},
                         }],
@@ -566,7 +566,7 @@ class DeliveryPipeline(pulumi.CustomResource):
                     {
                         "deploy_parameters": [{
                             "values": {
-                                "deploy_parameter_key": "deployParameterValue",
+                                "deployParameterKey": "deployParameterValue",
                             },
                             "match_target_labels": {},
                         }],
@@ -607,7 +607,7 @@ class DeliveryPipeline(pulumi.CustomResource):
                     {
                         "deploy_parameters": [{
                             "values": {
-                                "deploy_parameter_key": "deployParameterValue",
+                                "deployParameterKey": "deployParameterValue",
                             },
                             "match_target_labels": {},
                         }],
@@ -648,7 +648,7 @@ class DeliveryPipeline(pulumi.CustomResource):
                     {
                         "deploy_parameters": [{
                             "values": {
-                                "deploy_parameter_key": "deployParameterValue",
+                                "deployParameterKey": "deployParameterValue",
                             },
                             "match_target_labels": {},
                         }],
@@ -745,7 +745,7 @@ class DeliveryPipeline(pulumi.CustomResource):
                     {
                         "deploy_parameters": [{
                             "values": {
-                                "deploy_parameter_key": "deployParameterValue",
+                                "deployParameterKey": "deployParameterValue",
                             },
                             "match_target_labels": {},
                         }],
@@ -786,7 +786,7 @@ class DeliveryPipeline(pulumi.CustomResource):
                     {
                         "deploy_parameters": [{
                             "values": {
-                                "deploy_parameter_key": "deployParameterValue",
+                                "deployParameterKey": "deployParameterValue",
                             },
                             "match_target_labels": {},
                         }],
@@ -827,7 +827,7 @@ class DeliveryPipeline(pulumi.CustomResource):
                     {
                         "deploy_parameters": [{
                             "values": {
-                                "deploy_parameter_key": "deployParameterValue",
+                                "deployParameterKey": "deployParameterValue",
                             },
                             "match_target_labels": {},
                         }],
@@ -868,7 +868,7 @@ class DeliveryPipeline(pulumi.CustomResource):
                     {
                         "deploy_parameters": [{
                             "values": {
-                                "deploy_parameter_key": "deployParameterValue",
+                                "deployParameterKey": "deployParameterValue",
                             },
                             "match_target_labels": {},
                         }],
@@ -909,7 +909,7 @@ class DeliveryPipeline(pulumi.CustomResource):
                     {
                         "deploy_parameters": [{
                             "values": {
-                                "deploy_parameter_key": "deployParameterValue",
+                                "deployParameterKey": "deployParameterValue",
                             },
                             "match_target_labels": {},
                         }],

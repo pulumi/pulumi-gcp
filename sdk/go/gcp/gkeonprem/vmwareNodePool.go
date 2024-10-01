@@ -166,7 +166,7 @@ import (
 //				Name:          pulumi.String("my-nodepool"),
 //				Location:      pulumi.String("us-west1"),
 //				VmwareCluster: default_full.Name,
-//				Annotations:   nil,
+//				Annotations:   pulumi.StringMap{},
 //				Config: &gkeonprem.VMwareNodePoolConfigArgs{
 //					Cpus:           pulumi.Int(4),
 //					MemoryMb:       pulumi.Int(8196),
@@ -185,7 +185,7 @@ import (
 //							Effect: pulumi.String("NO_SCHEDULE"),
 //						},
 //					},
-//					Labels: nil,
+//					Labels: pulumi.StringMap{},
 //					VsphereConfig: &gkeonprem.VMwareNodePoolConfigVsphereConfigArgs{
 //						Datastore: pulumi.String("test-datastore"),
 //						Tags: gkeonprem.VMwareNodePoolConfigVsphereConfigTagArray{
