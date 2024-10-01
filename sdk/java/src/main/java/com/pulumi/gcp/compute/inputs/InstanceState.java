@@ -193,7 +193,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Desired status of the instance. Either
-     * `&#34;RUNNING&#34;` or `&#34;TERMINATED&#34;`.
+     * `&#34;RUNNING&#34;`, `&#34;SUSPENDED&#34;` or `&#34;TERMINATED&#34;`.
      * 
      */
     @Import(name="desiredStatus")
@@ -201,7 +201,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Desired status of the instance. Either
-     * `&#34;RUNNING&#34;` or `&#34;TERMINATED&#34;`.
+     * `&#34;RUNNING&#34;`, `&#34;SUSPENDED&#34;` or `&#34;TERMINATED&#34;`.
      * 
      */
     public Optional<Output<String>> desiredStatus() {
@@ -1044,7 +1044,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param desiredStatus Desired status of the instance. Either
-         * `&#34;RUNNING&#34;` or `&#34;TERMINATED&#34;`.
+         * `&#34;RUNNING&#34;`, `&#34;SUSPENDED&#34;` or `&#34;TERMINATED&#34;`.
          * 
          * @return builder
          * 
@@ -1056,7 +1056,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param desiredStatus Desired status of the instance. Either
-         * `&#34;RUNNING&#34;` or `&#34;TERMINATED&#34;`.
+         * `&#34;RUNNING&#34;`, `&#34;SUSPENDED&#34;` or `&#34;TERMINATED&#34;`.
          * 
          * @return builder
          * 

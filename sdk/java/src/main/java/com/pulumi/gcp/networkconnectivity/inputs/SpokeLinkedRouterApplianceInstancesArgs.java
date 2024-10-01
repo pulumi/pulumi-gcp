@@ -8,13 +8,33 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.networkconnectivity.inputs.SpokeLinkedRouterApplianceInstancesInstanceArgs;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class SpokeLinkedRouterApplianceInstancesArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final SpokeLinkedRouterApplianceInstancesArgs Empty = new SpokeLinkedRouterApplianceInstancesArgs();
+
+    /**
+     * IP ranges allowed to be included during import from hub (does not control transit connectivity).
+     * The only allowed value for now is &#34;ALL_IPV4_RANGES&#34;.
+     * 
+     */
+    @Import(name="includeImportRanges")
+    private @Nullable Output<List<String>> includeImportRanges;
+
+    /**
+     * @return IP ranges allowed to be included during import from hub (does not control transit connectivity).
+     * The only allowed value for now is &#34;ALL_IPV4_RANGES&#34;.
+     * 
+     */
+    public Optional<Output<List<String>>> includeImportRanges() {
+        return Optional.ofNullable(this.includeImportRanges);
+    }
 
     /**
      * The list of router appliance instances
@@ -51,6 +71,7 @@ public final class SpokeLinkedRouterApplianceInstancesArgs extends com.pulumi.re
     private SpokeLinkedRouterApplianceInstancesArgs() {}
 
     private SpokeLinkedRouterApplianceInstancesArgs(SpokeLinkedRouterApplianceInstancesArgs $) {
+        this.includeImportRanges = $.includeImportRanges;
         this.instances = $.instances;
         this.siteToSiteDataTransfer = $.siteToSiteDataTransfer;
     }
@@ -71,6 +92,40 @@ public final class SpokeLinkedRouterApplianceInstancesArgs extends com.pulumi.re
 
         public Builder(SpokeLinkedRouterApplianceInstancesArgs defaults) {
             $ = new SpokeLinkedRouterApplianceInstancesArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param includeImportRanges IP ranges allowed to be included during import from hub (does not control transit connectivity).
+         * The only allowed value for now is &#34;ALL_IPV4_RANGES&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeImportRanges(@Nullable Output<List<String>> includeImportRanges) {
+            $.includeImportRanges = includeImportRanges;
+            return this;
+        }
+
+        /**
+         * @param includeImportRanges IP ranges allowed to be included during import from hub (does not control transit connectivity).
+         * The only allowed value for now is &#34;ALL_IPV4_RANGES&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeImportRanges(List<String> includeImportRanges) {
+            return includeImportRanges(Output.of(includeImportRanges));
+        }
+
+        /**
+         * @param includeImportRanges IP ranges allowed to be included during import from hub (does not control transit connectivity).
+         * The only allowed value for now is &#34;ALL_IPV4_RANGES&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeImportRanges(String... includeImportRanges) {
+            return includeImportRanges(List.of(includeImportRanges));
         }
 
         /**

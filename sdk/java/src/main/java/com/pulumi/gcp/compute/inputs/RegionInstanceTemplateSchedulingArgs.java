@@ -42,6 +42,21 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
     }
 
     /**
+     * Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+     * 
+     */
+    @Import(name="hostErrorTimeoutSeconds")
+    private @Nullable Output<Integer> hostErrorTimeoutSeconds;
+
+    /**
+     * @return Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+     * 
+     */
+    public Optional<Output<Integer>> hostErrorTimeoutSeconds() {
+        return Optional.ofNullable(this.hostErrorTimeoutSeconds);
+    }
+
+    /**
      * Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
      * 
      */
@@ -221,6 +236,7 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
 
     private RegionInstanceTemplateSchedulingArgs(RegionInstanceTemplateSchedulingArgs $) {
         this.automaticRestart = $.automaticRestart;
+        this.hostErrorTimeoutSeconds = $.hostErrorTimeoutSeconds;
         this.instanceTerminationAction = $.instanceTerminationAction;
         this.localSsdRecoveryTimeouts = $.localSsdRecoveryTimeouts;
         this.maintenanceInterval = $.maintenanceInterval;
@@ -274,6 +290,27 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
          */
         public Builder automaticRestart(Boolean automaticRestart) {
             return automaticRestart(Output.of(automaticRestart));
+        }
+
+        /**
+         * @param hostErrorTimeoutSeconds Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostErrorTimeoutSeconds(@Nullable Output<Integer> hostErrorTimeoutSeconds) {
+            $.hostErrorTimeoutSeconds = hostErrorTimeoutSeconds;
+            return this;
+        }
+
+        /**
+         * @param hostErrorTimeoutSeconds Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostErrorTimeoutSeconds(Integer hostErrorTimeoutSeconds) {
+            return hostErrorTimeoutSeconds(Output.of(hostErrorTimeoutSeconds));
         }
 
         /**

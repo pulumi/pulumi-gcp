@@ -210,7 +210,7 @@ type Instance struct {
 	// A brief description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Desired status of the instance. Either
-	// `"RUNNING"` or `"TERMINATED"`.
+	// `"RUNNING"`, `"SUSPENDED"` or `"TERMINATED"`.
 	DesiredStatus pulumi.StringPtrOutput `pulumi:"desiredStatus"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
@@ -395,7 +395,7 @@ type instanceState struct {
 	// A brief description of this resource.
 	Description *string `pulumi:"description"`
 	// Desired status of the instance. Either
-	// `"RUNNING"` or `"TERMINATED"`.
+	// `"RUNNING"`, `"SUSPENDED"` or `"TERMINATED"`.
 	DesiredStatus *string `pulumi:"desiredStatus"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -537,7 +537,7 @@ type InstanceState struct {
 	// A brief description of this resource.
 	Description pulumi.StringPtrInput
 	// Desired status of the instance. Either
-	// `"RUNNING"` or `"TERMINATED"`.
+	// `"RUNNING"`, `"SUSPENDED"` or `"TERMINATED"`.
 	DesiredStatus pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -679,7 +679,7 @@ type instanceArgs struct {
 	// A brief description of this resource.
 	Description *string `pulumi:"description"`
 	// Desired status of the instance. Either
-	// `"RUNNING"` or `"TERMINATED"`.
+	// `"RUNNING"`, `"SUSPENDED"` or `"TERMINATED"`.
 	DesiredStatus *string `pulumi:"desiredStatus"`
 	// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
 	// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
@@ -804,7 +804,7 @@ type InstanceArgs struct {
 	// A brief description of this resource.
 	Description pulumi.StringPtrInput
 	// Desired status of the instance. Either
-	// `"RUNNING"` or `"TERMINATED"`.
+	// `"RUNNING"`, `"SUSPENDED"` or `"TERMINATED"`.
 	DesiredStatus pulumi.StringPtrInput
 	// Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
 	// **Note**: `allowStoppingForUpdate` must be set to true or your instance must have a `desiredStatus` of `TERMINATED` in order to update this field.
@@ -1048,7 +1048,7 @@ func (o InstanceOutput) Description() pulumi.StringPtrOutput {
 }
 
 // Desired status of the instance. Either
-// `"RUNNING"` or `"TERMINATED"`.
+// `"RUNNING"`, `"SUSPENDED"` or `"TERMINATED"`.
 func (o InstanceOutput) DesiredStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.DesiredStatus }).(pulumi.StringPtrOutput)
 }

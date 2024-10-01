@@ -1786,6 +1786,307 @@ func (o InstanceOauthConfigPtrOutput) ClientSecret() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type InstancePscConfig struct {
+	// List of VPCs that are allowed ingress into the Looker instance.
+	AllowedVpcs []string `pulumi:"allowedVpcs"`
+	// (Output)
+	// URI of the Looker service attachment.
+	LookerServiceAttachmentUri *string `pulumi:"lookerServiceAttachmentUri"`
+	// List of egress service attachment configurations.
+	// Structure is documented below.
+	ServiceAttachments []InstancePscConfigServiceAttachment `pulumi:"serviceAttachments"`
+}
+
+// InstancePscConfigInput is an input type that accepts InstancePscConfigArgs and InstancePscConfigOutput values.
+// You can construct a concrete instance of `InstancePscConfigInput` via:
+//
+//	InstancePscConfigArgs{...}
+type InstancePscConfigInput interface {
+	pulumi.Input
+
+	ToInstancePscConfigOutput() InstancePscConfigOutput
+	ToInstancePscConfigOutputWithContext(context.Context) InstancePscConfigOutput
+}
+
+type InstancePscConfigArgs struct {
+	// List of VPCs that are allowed ingress into the Looker instance.
+	AllowedVpcs pulumi.StringArrayInput `pulumi:"allowedVpcs"`
+	// (Output)
+	// URI of the Looker service attachment.
+	LookerServiceAttachmentUri pulumi.StringPtrInput `pulumi:"lookerServiceAttachmentUri"`
+	// List of egress service attachment configurations.
+	// Structure is documented below.
+	ServiceAttachments InstancePscConfigServiceAttachmentArrayInput `pulumi:"serviceAttachments"`
+}
+
+func (InstancePscConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstancePscConfig)(nil)).Elem()
+}
+
+func (i InstancePscConfigArgs) ToInstancePscConfigOutput() InstancePscConfigOutput {
+	return i.ToInstancePscConfigOutputWithContext(context.Background())
+}
+
+func (i InstancePscConfigArgs) ToInstancePscConfigOutputWithContext(ctx context.Context) InstancePscConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePscConfigOutput)
+}
+
+func (i InstancePscConfigArgs) ToInstancePscConfigPtrOutput() InstancePscConfigPtrOutput {
+	return i.ToInstancePscConfigPtrOutputWithContext(context.Background())
+}
+
+func (i InstancePscConfigArgs) ToInstancePscConfigPtrOutputWithContext(ctx context.Context) InstancePscConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePscConfigOutput).ToInstancePscConfigPtrOutputWithContext(ctx)
+}
+
+// InstancePscConfigPtrInput is an input type that accepts InstancePscConfigArgs, InstancePscConfigPtr and InstancePscConfigPtrOutput values.
+// You can construct a concrete instance of `InstancePscConfigPtrInput` via:
+//
+//	        InstancePscConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstancePscConfigPtrInput interface {
+	pulumi.Input
+
+	ToInstancePscConfigPtrOutput() InstancePscConfigPtrOutput
+	ToInstancePscConfigPtrOutputWithContext(context.Context) InstancePscConfigPtrOutput
+}
+
+type instancePscConfigPtrType InstancePscConfigArgs
+
+func InstancePscConfigPtr(v *InstancePscConfigArgs) InstancePscConfigPtrInput {
+	return (*instancePscConfigPtrType)(v)
+}
+
+func (*instancePscConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstancePscConfig)(nil)).Elem()
+}
+
+func (i *instancePscConfigPtrType) ToInstancePscConfigPtrOutput() InstancePscConfigPtrOutput {
+	return i.ToInstancePscConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *instancePscConfigPtrType) ToInstancePscConfigPtrOutputWithContext(ctx context.Context) InstancePscConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePscConfigPtrOutput)
+}
+
+type InstancePscConfigOutput struct{ *pulumi.OutputState }
+
+func (InstancePscConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstancePscConfig)(nil)).Elem()
+}
+
+func (o InstancePscConfigOutput) ToInstancePscConfigOutput() InstancePscConfigOutput {
+	return o
+}
+
+func (o InstancePscConfigOutput) ToInstancePscConfigOutputWithContext(ctx context.Context) InstancePscConfigOutput {
+	return o
+}
+
+func (o InstancePscConfigOutput) ToInstancePscConfigPtrOutput() InstancePscConfigPtrOutput {
+	return o.ToInstancePscConfigPtrOutputWithContext(context.Background())
+}
+
+func (o InstancePscConfigOutput) ToInstancePscConfigPtrOutputWithContext(ctx context.Context) InstancePscConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstancePscConfig) *InstancePscConfig {
+		return &v
+	}).(InstancePscConfigPtrOutput)
+}
+
+// List of VPCs that are allowed ingress into the Looker instance.
+func (o InstancePscConfigOutput) AllowedVpcs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v InstancePscConfig) []string { return v.AllowedVpcs }).(pulumi.StringArrayOutput)
+}
+
+// (Output)
+// URI of the Looker service attachment.
+func (o InstancePscConfigOutput) LookerServiceAttachmentUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstancePscConfig) *string { return v.LookerServiceAttachmentUri }).(pulumi.StringPtrOutput)
+}
+
+// List of egress service attachment configurations.
+// Structure is documented below.
+func (o InstancePscConfigOutput) ServiceAttachments() InstancePscConfigServiceAttachmentArrayOutput {
+	return o.ApplyT(func(v InstancePscConfig) []InstancePscConfigServiceAttachment { return v.ServiceAttachments }).(InstancePscConfigServiceAttachmentArrayOutput)
+}
+
+type InstancePscConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (InstancePscConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstancePscConfig)(nil)).Elem()
+}
+
+func (o InstancePscConfigPtrOutput) ToInstancePscConfigPtrOutput() InstancePscConfigPtrOutput {
+	return o
+}
+
+func (o InstancePscConfigPtrOutput) ToInstancePscConfigPtrOutputWithContext(ctx context.Context) InstancePscConfigPtrOutput {
+	return o
+}
+
+func (o InstancePscConfigPtrOutput) Elem() InstancePscConfigOutput {
+	return o.ApplyT(func(v *InstancePscConfig) InstancePscConfig {
+		if v != nil {
+			return *v
+		}
+		var ret InstancePscConfig
+		return ret
+	}).(InstancePscConfigOutput)
+}
+
+// List of VPCs that are allowed ingress into the Looker instance.
+func (o InstancePscConfigPtrOutput) AllowedVpcs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *InstancePscConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedVpcs
+	}).(pulumi.StringArrayOutput)
+}
+
+// (Output)
+// URI of the Looker service attachment.
+func (o InstancePscConfigPtrOutput) LookerServiceAttachmentUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstancePscConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LookerServiceAttachmentUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of egress service attachment configurations.
+// Structure is documented below.
+func (o InstancePscConfigPtrOutput) ServiceAttachments() InstancePscConfigServiceAttachmentArrayOutput {
+	return o.ApplyT(func(v *InstancePscConfig) []InstancePscConfigServiceAttachment {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAttachments
+	}).(InstancePscConfigServiceAttachmentArrayOutput)
+}
+
+type InstancePscConfigServiceAttachment struct {
+	// (Output)
+	// Status of the service attachment connection.
+	ConnectionStatus *string `pulumi:"connectionStatus"`
+	// Fully qualified domain name that will be used in the private DNS record created for the service attachment.
+	LocalFqdn *string `pulumi:"localFqdn"`
+	// URI of the service attachment to connect to.
+	TargetServiceAttachmentUri *string `pulumi:"targetServiceAttachmentUri"`
+}
+
+// InstancePscConfigServiceAttachmentInput is an input type that accepts InstancePscConfigServiceAttachmentArgs and InstancePscConfigServiceAttachmentOutput values.
+// You can construct a concrete instance of `InstancePscConfigServiceAttachmentInput` via:
+//
+//	InstancePscConfigServiceAttachmentArgs{...}
+type InstancePscConfigServiceAttachmentInput interface {
+	pulumi.Input
+
+	ToInstancePscConfigServiceAttachmentOutput() InstancePscConfigServiceAttachmentOutput
+	ToInstancePscConfigServiceAttachmentOutputWithContext(context.Context) InstancePscConfigServiceAttachmentOutput
+}
+
+type InstancePscConfigServiceAttachmentArgs struct {
+	// (Output)
+	// Status of the service attachment connection.
+	ConnectionStatus pulumi.StringPtrInput `pulumi:"connectionStatus"`
+	// Fully qualified domain name that will be used in the private DNS record created for the service attachment.
+	LocalFqdn pulumi.StringPtrInput `pulumi:"localFqdn"`
+	// URI of the service attachment to connect to.
+	TargetServiceAttachmentUri pulumi.StringPtrInput `pulumi:"targetServiceAttachmentUri"`
+}
+
+func (InstancePscConfigServiceAttachmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstancePscConfigServiceAttachment)(nil)).Elem()
+}
+
+func (i InstancePscConfigServiceAttachmentArgs) ToInstancePscConfigServiceAttachmentOutput() InstancePscConfigServiceAttachmentOutput {
+	return i.ToInstancePscConfigServiceAttachmentOutputWithContext(context.Background())
+}
+
+func (i InstancePscConfigServiceAttachmentArgs) ToInstancePscConfigServiceAttachmentOutputWithContext(ctx context.Context) InstancePscConfigServiceAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePscConfigServiceAttachmentOutput)
+}
+
+// InstancePscConfigServiceAttachmentArrayInput is an input type that accepts InstancePscConfigServiceAttachmentArray and InstancePscConfigServiceAttachmentArrayOutput values.
+// You can construct a concrete instance of `InstancePscConfigServiceAttachmentArrayInput` via:
+//
+//	InstancePscConfigServiceAttachmentArray{ InstancePscConfigServiceAttachmentArgs{...} }
+type InstancePscConfigServiceAttachmentArrayInput interface {
+	pulumi.Input
+
+	ToInstancePscConfigServiceAttachmentArrayOutput() InstancePscConfigServiceAttachmentArrayOutput
+	ToInstancePscConfigServiceAttachmentArrayOutputWithContext(context.Context) InstancePscConfigServiceAttachmentArrayOutput
+}
+
+type InstancePscConfigServiceAttachmentArray []InstancePscConfigServiceAttachmentInput
+
+func (InstancePscConfigServiceAttachmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstancePscConfigServiceAttachment)(nil)).Elem()
+}
+
+func (i InstancePscConfigServiceAttachmentArray) ToInstancePscConfigServiceAttachmentArrayOutput() InstancePscConfigServiceAttachmentArrayOutput {
+	return i.ToInstancePscConfigServiceAttachmentArrayOutputWithContext(context.Background())
+}
+
+func (i InstancePscConfigServiceAttachmentArray) ToInstancePscConfigServiceAttachmentArrayOutputWithContext(ctx context.Context) InstancePscConfigServiceAttachmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePscConfigServiceAttachmentArrayOutput)
+}
+
+type InstancePscConfigServiceAttachmentOutput struct{ *pulumi.OutputState }
+
+func (InstancePscConfigServiceAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstancePscConfigServiceAttachment)(nil)).Elem()
+}
+
+func (o InstancePscConfigServiceAttachmentOutput) ToInstancePscConfigServiceAttachmentOutput() InstancePscConfigServiceAttachmentOutput {
+	return o
+}
+
+func (o InstancePscConfigServiceAttachmentOutput) ToInstancePscConfigServiceAttachmentOutputWithContext(ctx context.Context) InstancePscConfigServiceAttachmentOutput {
+	return o
+}
+
+// (Output)
+// Status of the service attachment connection.
+func (o InstancePscConfigServiceAttachmentOutput) ConnectionStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstancePscConfigServiceAttachment) *string { return v.ConnectionStatus }).(pulumi.StringPtrOutput)
+}
+
+// Fully qualified domain name that will be used in the private DNS record created for the service attachment.
+func (o InstancePscConfigServiceAttachmentOutput) LocalFqdn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstancePscConfigServiceAttachment) *string { return v.LocalFqdn }).(pulumi.StringPtrOutput)
+}
+
+// URI of the service attachment to connect to.
+func (o InstancePscConfigServiceAttachmentOutput) TargetServiceAttachmentUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstancePscConfigServiceAttachment) *string { return v.TargetServiceAttachmentUri }).(pulumi.StringPtrOutput)
+}
+
+type InstancePscConfigServiceAttachmentArrayOutput struct{ *pulumi.OutputState }
+
+func (InstancePscConfigServiceAttachmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstancePscConfigServiceAttachment)(nil)).Elem()
+}
+
+func (o InstancePscConfigServiceAttachmentArrayOutput) ToInstancePscConfigServiceAttachmentArrayOutput() InstancePscConfigServiceAttachmentArrayOutput {
+	return o
+}
+
+func (o InstancePscConfigServiceAttachmentArrayOutput) ToInstancePscConfigServiceAttachmentArrayOutputWithContext(ctx context.Context) InstancePscConfigServiceAttachmentArrayOutput {
+	return o
+}
+
+func (o InstancePscConfigServiceAttachmentArrayOutput) Index(i pulumi.IntInput) InstancePscConfigServiceAttachmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstancePscConfigServiceAttachment {
+		return vs[0].([]InstancePscConfigServiceAttachment)[vs[1].(int)]
+	}).(InstancePscConfigServiceAttachmentOutput)
+}
+
 type InstanceUserMetadata struct {
 	// Number of additional Developer Users to allocate to the Looker Instance.
 	AdditionalDeveloperUserCount *int `pulumi:"additionalDeveloperUserCount"`
@@ -1982,6 +2283,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenanceWindowStartTimePtrInput)(nil)).Elem(), InstanceMaintenanceWindowStartTimeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceOauthConfigInput)(nil)).Elem(), InstanceOauthConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceOauthConfigPtrInput)(nil)).Elem(), InstanceOauthConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstancePscConfigInput)(nil)).Elem(), InstancePscConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstancePscConfigPtrInput)(nil)).Elem(), InstancePscConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstancePscConfigServiceAttachmentInput)(nil)).Elem(), InstancePscConfigServiceAttachmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstancePscConfigServiceAttachmentArrayInput)(nil)).Elem(), InstancePscConfigServiceAttachmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceUserMetadataInput)(nil)).Elem(), InstanceUserMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceUserMetadataPtrInput)(nil)).Elem(), InstanceUserMetadataArgs{})
 	pulumi.RegisterOutputType(InstanceAdminSettingsOutput{})
@@ -2004,6 +2309,10 @@ func init() {
 	pulumi.RegisterOutputType(InstanceMaintenanceWindowStartTimePtrOutput{})
 	pulumi.RegisterOutputType(InstanceOauthConfigOutput{})
 	pulumi.RegisterOutputType(InstanceOauthConfigPtrOutput{})
+	pulumi.RegisterOutputType(InstancePscConfigOutput{})
+	pulumi.RegisterOutputType(InstancePscConfigPtrOutput{})
+	pulumi.RegisterOutputType(InstancePscConfigServiceAttachmentOutput{})
+	pulumi.RegisterOutputType(InstancePscConfigServiceAttachmentArrayOutput{})
 	pulumi.RegisterOutputType(InstanceUserMetadataOutput{})
 	pulumi.RegisterOutputType(InstanceUserMetadataPtrOutput{})
 }

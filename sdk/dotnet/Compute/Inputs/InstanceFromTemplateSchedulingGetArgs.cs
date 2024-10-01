@@ -19,6 +19,12 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<bool>? AutomaticRestart { get; set; }
 
         /// <summary>
+        /// Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+        /// </summary>
+        [Input("hostErrorTimeoutSeconds")]
+        public Input<int>? HostErrorTimeoutSeconds { get; set; }
+
+        /// <summary>
         /// Specifies the action GCE should take when SPOT VM is preempted.
         /// </summary>
         [Input("instanceTerminationAction")]

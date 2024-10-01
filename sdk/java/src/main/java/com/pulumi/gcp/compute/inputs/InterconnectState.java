@@ -96,9 +96,8 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Customer name, to put in the Letter of Authorization as the party authorized to request a
-     * crossconnect.
-     * 
-     * ***
+     * crossconnect. This field is required for Dedicated and Partner Interconnect, should not be specified
+     * for cross-cloud interconnect.
      * 
      */
     @Import(name="customerName")
@@ -106,9 +105,8 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Customer name, to put in the Letter of Authorization as the party authorized to request a
-     * crossconnect.
-     * 
-     * ***
+     * crossconnect. This field is required for Dedicated and Partner Interconnect, should not be specified
+     * for cross-cloud interconnect.
      * 
      */
     public Optional<Output<String>> customerName() {
@@ -218,6 +216,8 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
      * - DEDICATED: A dedicated physical interconnection with the customer.
      *   Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
      * 
+     * ***
+     * 
      */
     @Import(name="interconnectType")
     private @Nullable Output<String> interconnectType;
@@ -228,6 +228,8 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
      * - PARTNER: A partner-managed interconnection shared between customers though a partner.
      * - DEDICATED: A dedicated physical interconnection with the customer.
      *   Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> interconnectType() {
@@ -305,6 +307,7 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+     * Specifies the location inside Google&#39;s Networks, should not be passed in case of cross-cloud interconnect.
      * 
      */
     @Import(name="location")
@@ -312,6 +315,7 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+     * Specifies the location inside Google&#39;s Networks, should not be passed in case of cross-cloud interconnect.
      * 
      */
     public Optional<Output<String>> location() {
@@ -771,9 +775,8 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param customerName Customer name, to put in the Letter of Authorization as the party authorized to request a
-         * crossconnect.
-         * 
-         * ***
+         * crossconnect. This field is required for Dedicated and Partner Interconnect, should not be specified
+         * for cross-cloud interconnect.
          * 
          * @return builder
          * 
@@ -785,9 +788,8 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param customerName Customer name, to put in the Letter of Authorization as the party authorized to request a
-         * crossconnect.
-         * 
-         * ***
+         * crossconnect. This field is required for Dedicated and Partner Interconnect, should not be specified
+         * for cross-cloud interconnect.
          * 
          * @return builder
          * 
@@ -956,6 +958,8 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
          * - DEDICATED: A dedicated physical interconnection with the customer.
          *   Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -970,6 +974,8 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
          * - PARTNER: A partner-managed interconnection shared between customers though a partner.
          * - DEDICATED: A dedicated physical interconnection with the customer.
          *   Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
+         * 
+         * ***
          * 
          * @return builder
          * 
@@ -1067,6 +1073,7 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+         * Specifies the location inside Google&#39;s Networks, should not be passed in case of cross-cloud interconnect.
          * 
          * @return builder
          * 
@@ -1078,6 +1085,7 @@ public final class InterconnectState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+         * Specifies the location inside Google&#39;s Networks, should not be passed in case of cross-cloud interconnect.
          * 
          * @return builder
          * 

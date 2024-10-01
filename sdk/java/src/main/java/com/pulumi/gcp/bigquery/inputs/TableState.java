@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigquery.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.bigquery.inputs.TableBiglakeConfigurationArgs;
 import com.pulumi.gcp.bigquery.inputs.TableEncryptionConfigurationArgs;
 import com.pulumi.gcp.bigquery.inputs.TableExternalDataConfigurationArgs;
 import com.pulumi.gcp.bigquery.inputs.TableMaterializedViewArgs;
@@ -26,6 +27,21 @@ import javax.annotation.Nullable;
 public final class TableState extends com.pulumi.resources.ResourceArgs {
 
     public static final TableState Empty = new TableState();
+
+    /**
+     * Specifies the configuration of a BigLake managed table. Structure is documented below
+     * 
+     */
+    @Import(name="biglakeConfiguration")
+    private @Nullable Output<TableBiglakeConfigurationArgs> biglakeConfiguration;
+
+    /**
+     * @return Specifies the configuration of a BigLake managed table. Structure is documented below
+     * 
+     */
+    public Optional<Output<TableBiglakeConfigurationArgs>> biglakeConfiguration() {
+        return Optional.ofNullable(this.biglakeConfiguration);
+    }
 
     /**
      * Specifies column names to use for data clustering.
@@ -608,6 +624,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
     private TableState() {}
 
     private TableState(TableState $) {
+        this.biglakeConfiguration = $.biglakeConfiguration;
         this.clusterings = $.clusterings;
         this.creationTime = $.creationTime;
         this.datasetId = $.datasetId;
@@ -658,6 +675,27 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(TableState defaults) {
             $ = new TableState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param biglakeConfiguration Specifies the configuration of a BigLake managed table. Structure is documented below
+         * 
+         * @return builder
+         * 
+         */
+        public Builder biglakeConfiguration(@Nullable Output<TableBiglakeConfigurationArgs> biglakeConfiguration) {
+            $.biglakeConfiguration = biglakeConfiguration;
+            return this;
+        }
+
+        /**
+         * @param biglakeConfiguration Specifies the configuration of a BigLake managed table. Structure is documented below
+         * 
+         * @return builder
+         * 
+         */
+        public Builder biglakeConfiguration(TableBiglakeConfigurationArgs biglakeConfiguration) {
+            return biglakeConfiguration(Output.of(biglakeConfiguration));
         }
 
         /**

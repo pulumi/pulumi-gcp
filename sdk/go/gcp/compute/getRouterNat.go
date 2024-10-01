@@ -79,6 +79,7 @@ type LookupRouterNatResult struct {
 	IcmpIdleTimeoutSec               int      `pulumi:"icmpIdleTimeoutSec"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                            string                   `pulumi:"id"`
+	InitialNatIps                 []string                 `pulumi:"initialNatIps"`
 	LogConfigs                    []GetRouterNatLogConfig  `pulumi:"logConfigs"`
 	MaxPortsPerVm                 int                      `pulumi:"maxPortsPerVm"`
 	MinPortsPerVm                 int                      `pulumi:"minPortsPerVm"`
@@ -179,6 +180,10 @@ func (o LookupRouterNatResultOutput) IcmpIdleTimeoutSec() pulumi.IntOutput {
 // The provider-assigned unique ID for this managed resource.
 func (o LookupRouterNatResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRouterNatResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupRouterNatResultOutput) InitialNatIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupRouterNatResult) []string { return v.InitialNatIps }).(pulumi.StringArrayOutput)
 }
 
 func (o LookupRouterNatResultOutput) LogConfigs() GetRouterNatLogConfigArrayOutput {

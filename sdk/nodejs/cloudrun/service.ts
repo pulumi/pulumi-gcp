@@ -93,6 +93,45 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * ### Cloud Run Service Gpu
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.cloudrun.Service("default", {
+ *     name: "cloudrun-srv",
+ *     location: "us-central1",
+ *     metadata: {
+ *         annotations: {
+ *             "run.googleapis.com/launch-stage": "BETA",
+ *         },
+ *     },
+ *     template: {
+ *         metadata: {
+ *             annotations: {
+ *                 "autoscaling.knative.dev/maxScale": "1",
+ *                 "run.googleapis.com/cpu-throttling": "false",
+ *             },
+ *         },
+ *         spec: {
+ *             containers: [{
+ *                 image: "gcr.io/cloudrun/hello",
+ *                 resources: {
+ *                     limits: {
+ *                         cpu: "4",
+ *                         memory: "16Gi",
+ *                         "nvidia.com/gpu": "1",
+ *                     },
+ *                 },
+ *             }],
+ *             nodeSelector: {
+ *                 "run.googleapis.com/accelerator": "nvidia-l4",
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
  * ### Cloud Run Service Sql
  *
  * ```typescript

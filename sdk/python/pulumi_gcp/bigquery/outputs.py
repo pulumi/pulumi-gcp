@@ -74,6 +74,7 @@ __all__ = [
     'RoutineArgument',
     'RoutineRemoteFunctionOptions',
     'RoutineSparkOptions',
+    'TableBiglakeConfiguration',
     'TableEncryptionConfiguration',
     'TableExternalDataConfiguration',
     'TableExternalDataConfigurationAvroOptions',
@@ -4268,6 +4269,88 @@ class RoutineSparkOptions(dict):
         Runtime version. If not specified, the default runtime version is used.
         """
         return pulumi.get(self, "runtime_version")
+
+
+@pulumi.output_type
+class TableBiglakeConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionId":
+            suggest = "connection_id"
+        elif key == "fileFormat":
+            suggest = "file_format"
+        elif key == "storageUri":
+            suggest = "storage_uri"
+        elif key == "tableFormat":
+            suggest = "table_format"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TableBiglakeConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TableBiglakeConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TableBiglakeConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection_id: str,
+                 file_format: str,
+                 storage_uri: str,
+                 table_format: str):
+        """
+        :param str connection_id: The connection specifying the credentials to be used to
+               read and write to external storage, such as Cloud Storage. The connection_id can
+               have the form "&lt;project\\_id&gt;.&lt;location\\_id&gt;.&lt;connection\\_id&gt;" or
+               projects/&lt;project\\_id&gt;/locations/&lt;location\\_id&gt;/connections/&lt;connection\\_id&gt;".
+        :param str file_format: The file format the table data is stored in.
+        :param str storage_uri: The fully qualified location prefix of the external folder where table data
+               is stored. The '*' wildcard character is not allowed. The URI should be in the format "gs://bucket/path_to_table/"
+        :param str table_format: The table format the metadata only snapshots are stored in.
+        """
+        pulumi.set(__self__, "connection_id", connection_id)
+        pulumi.set(__self__, "file_format", file_format)
+        pulumi.set(__self__, "storage_uri", storage_uri)
+        pulumi.set(__self__, "table_format", table_format)
+
+    @property
+    @pulumi.getter(name="connectionId")
+    def connection_id(self) -> str:
+        """
+        The connection specifying the credentials to be used to
+        read and write to external storage, such as Cloud Storage. The connection_id can
+        have the form "&lt;project\\_id&gt;.&lt;location\\_id&gt;.&lt;connection\\_id&gt;" or
+        projects/&lt;project\\_id&gt;/locations/&lt;location\\_id&gt;/connections/&lt;connection\\_id&gt;".
+        """
+        return pulumi.get(self, "connection_id")
+
+    @property
+    @pulumi.getter(name="fileFormat")
+    def file_format(self) -> str:
+        """
+        The file format the table data is stored in.
+        """
+        return pulumi.get(self, "file_format")
+
+    @property
+    @pulumi.getter(name="storageUri")
+    def storage_uri(self) -> str:
+        """
+        The fully qualified location prefix of the external folder where table data
+        is stored. The '*' wildcard character is not allowed. The URI should be in the format "gs://bucket/path_to_table/"
+        """
+        return pulumi.get(self, "storage_uri")
+
+    @property
+    @pulumi.getter(name="tableFormat")
+    def table_format(self) -> str:
+        """
+        The table format the metadata only snapshots are stored in.
+        """
+        return pulumi.get(self, "table_format")
 
 
 @pulumi.output_type

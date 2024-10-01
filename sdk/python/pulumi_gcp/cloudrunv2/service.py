@@ -1199,6 +1199,38 @@ class Service(pulumi.CustomResource):
                 },
             })
         ```
+        ### Cloudrunv2 Service Gpu
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.Service("default",
+            name="cloudrun-service",
+            location="us-central1",
+            deletion_protection=False,
+            ingress="INGRESS_TRAFFIC_ALL",
+            launch_stage="BETA",
+            template={
+                "containers": [{
+                    "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                    "resources": {
+                        "limits": {
+                            "cpu": "4",
+                            "memory": "16Gi",
+                            "nvidia_com_gpu": "1",
+                        },
+                        "startup_cpu_boost": True,
+                    },
+                }],
+                "node_selector": {
+                    "accelerator": "nvidia-l4",
+                },
+                "scaling": {
+                    "max_instance_count": 1,
+                },
+            })
+        ```
         ### Cloudrunv2 Service Probes
 
         ```python
@@ -1687,6 +1719,38 @@ class Service(pulumi.CustomResource):
                             "tag3",
                         ],
                     }],
+                },
+            })
+        ```
+        ### Cloudrunv2 Service Gpu
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.Service("default",
+            name="cloudrun-service",
+            location="us-central1",
+            deletion_protection=False,
+            ingress="INGRESS_TRAFFIC_ALL",
+            launch_stage="BETA",
+            template={
+                "containers": [{
+                    "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                    "resources": {
+                        "limits": {
+                            "cpu": "4",
+                            "memory": "16Gi",
+                            "nvidia_com_gpu": "1",
+                        },
+                        "startup_cpu_boost": True,
+                    },
+                }],
+                "node_selector": {
+                    "accelerator": "nvidia-l4",
+                },
+                "scaling": {
+                    "max_instance_count": 1,
                 },
             })
         ```

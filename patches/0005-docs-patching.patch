@@ -175,7 +175,7 @@ index e3f4654b4..5ebc3ee84 100644
    an empty value.
  
 diff --git a/website/docs/r/bigquery_table.html.markdown b/website/docs/r/bigquery_table.html.markdown
-index e999cc72f..69103ae22 100644
+index c844a4974..3f1d7e5a7 100644
 --- a/website/docs/r/bigquery_table.html.markdown
 +++ b/website/docs/r/bigquery_table.html.markdown
 @@ -11,7 +11,7 @@ Creates a table resource in a dataset for Google BigQuery. For more information
@@ -187,7 +187,7 @@ index e999cc72f..69103ae22 100644
  It is recommended to not set this field (or set it to true) until you're ready to destroy.
  
  ## Example Usage
-@@ -161,10 +161,8 @@ The following arguments are supported:
+@@ -163,10 +163,8 @@ The following arguments are supported:
  * `materialized_view` - (Optional) If specified, configures this table as a materialized view.
      Structure is [documented below](#nested_materialized_view).
  
@@ -200,7 +200,7 @@ index e999cc72f..69103ae22 100644
  
  * `table_constraints` - (Optional) Defines the primary key and foreign keys. 
      Structure is [documented below](#nested_table_constraints).
-@@ -281,8 +279,8 @@ The following arguments are supported:
+@@ -283,8 +281,8 @@ The following arguments are supported:
      CSV file. If your data does not contain quoted sections, set the
      property value to an empty string. If your data contains quoted newline
      characters, you must also set the `allow_quoted_newlines` property to true.
@@ -388,7 +388,7 @@ index a68f58813..650247567 100644
    **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
    Please refer to the field `effective_annotations` for all of the annotations present on the resource.
 diff --git a/website/docs/r/cloud_run_service.html.markdown b/website/docs/r/cloud_run_service.html.markdown
-index db315a058..05482b44b 100644
+index 1397d5627..0fcdca361 100644
 --- a/website/docs/r/cloud_run_service.html.markdown
 +++ b/website/docs/r/cloud_run_service.html.markdown
 @@ -31,8 +31,63 @@ To get more information about Service, see:
@@ -456,7 +456,7 @@ index db315a058..05482b44b 100644
  
  ```hcl
  resource "google_cloud_run_service" "default" {
-@@ -77,7 +132,7 @@ resource "google_cloud_run_service" "default" {
+@@ -117,7 +172,7 @@ resource "google_cloud_run_service" "default" {
        annotations = {
          "autoscaling.knative.dev/maxScale"      = "1000"
          "run.googleapis.com/cloudsql-instances" = google_sql_database_instance.instance.connection_name
@@ -465,7 +465,7 @@ index db315a058..05482b44b 100644
        }
      }
    }
-@@ -343,7 +398,7 @@ The following arguments are supported:
+@@ -383,7 +438,7 @@ The following arguments are supported:
    may be set by external tools to store and retrieve arbitrary metadata.
    More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
    **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
@@ -474,7 +474,7 @@ index db315a058..05482b44b 100644
    or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
    Annotations with `run.googleapis.com/` and `autoscaling.knative.dev` are restricted. Use the following annotation
    keys to configure features on a Revision template:
-@@ -493,7 +548,8 @@ The following arguments are supported:
+@@ -539,7 +594,8 @@ The following arguments are supported:
  
  * `liveness_probe` -
    (Optional)
@@ -484,7 +484,7 @@ index db315a058..05482b44b 100644
    Structure is [documented below](#nested_liveness_probe).
  
  
-@@ -996,7 +1052,7 @@ this field is set to false, the revision name will still autogenerate.)
+@@ -1042,7 +1098,7 @@ this field is set to false, the revision name will still autogenerate.)
    may be set by external tools to store and retrieve arbitrary metadata.
    More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
    **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
@@ -507,7 +507,7 @@ index c3e738686..4ab0fb25d 100644
  * `project` - (Optional) The ID of the project in which the resource belongs.
      If it is not provided, the provider project is used.
 diff --git a/website/docs/r/composer_environment.html.markdown b/website/docs/r/composer_environment.html.markdown
-index 254316ed9..739d098c9 100644
+index 0e7437591..4766f2d48 100644
 --- a/website/docs/r/composer_environment.html.markdown
 +++ b/website/docs/r/composer_environment.html.markdown
 @@ -31,24 +31,21 @@ To get more information about Environments, see:
@@ -682,7 +682,7 @@ index f9cad9040..243ba6fd0 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_instance.html.markdown b/website/docs/r/compute_instance.html.markdown
-index 2b931df48..bfc1ab89d 100644
+index e1bea1efa..c5c69ad43 100644
 --- a/website/docs/r/compute_instance.html.markdown
 +++ b/website/docs/r/compute_instance.html.markdown
 @@ -138,7 +138,7 @@ The following arguments are supported:
@@ -695,7 +695,7 @@ index 2b931df48..bfc1ab89d 100644
  
  * `attached_disk` - (Optional) Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is [documented below](#nested_attached_disk).
 @@ -153,7 +153,7 @@ The following arguments are supported:
- `"RUNNING"` or `"TERMINATED"`.
+ `"RUNNING"`, `"SUSPENDED"` or `"TERMINATED"`.
  
  * `deletion_protection` - (Optional) Enable deletion protection on this instance. Defaults to false.
 -    **Note:** you must disable deletion protection before removing the resource (e.g., via `terraform destroy`), or the instance cannot be deleted and the Terraform run will not complete successfully.
@@ -839,7 +839,7 @@ index fe6888f17..64fce6636 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_instance_template.html.markdown b/website/docs/r/compute_instance_template.html.markdown
-index 5d66dca4c..7f60e238f 100644
+index 009a38511..17141e4b0 100644
 --- a/website/docs/r/compute_instance_template.html.markdown
 +++ b/website/docs/r/compute_instance_template.html.markdown
 @@ -183,12 +183,11 @@ resource "google_compute_instance_template" "foobar" {
@@ -1158,7 +1158,7 @@ index cdc4e9963..0f0c5cb65 100644
  
  * `wait_for_instances_status` - (Optional) When used with `wait_for_instances` it specifies the status to wait for.
 diff --git a/website/docs/r/compute_region_network_endpoint_group.html.markdown b/website/docs/r/compute_region_network_endpoint_group.html.markdown
-index 35c6a9fda..42c666893 100644
+index 4041ee9b5..db7ec64f1 100644
 --- a/website/docs/r/compute_region_network_endpoint_group.html.markdown
 +++ b/website/docs/r/compute_region_network_endpoint_group.html.markdown
 @@ -23,11 +23,6 @@ description: |-
@@ -1537,7 +1537,7 @@ index e96d17f09..bbd005a6a 100644
  resource "google_compute_ssl_certificate" "default" {
    name_prefix = "my-certificate-"
 diff --git a/website/docs/r/compute_subnetwork.html.markdown b/website/docs/r/compute_subnetwork.html.markdown
-index bbf573573..af4df1796 100644
+index c68c72847..bdd8ac3d3 100644
 --- a/website/docs/r/compute_subnetwork.html.markdown
 +++ b/website/docs/r/compute_subnetwork.html.markdown
 @@ -391,9 +391,6 @@ The following arguments are supported:
@@ -1595,7 +1595,7 @@ index f18c91533..924ad4cc0 100644
  <div class = "oics-button" style="float: right; margin: 0 0 -15px">
    <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md&cloudshell_working_dir=vpn_tunnel_basic&open_in_editor=main.tf" target="_blank">
 diff --git a/website/docs/r/container_cluster.html.markdown b/website/docs/r/container_cluster.html.markdown
-index df2af254e..3d40c2391 100644
+index 512283c15..9c53460c1 100644
 --- a/website/docs/r/container_cluster.html.markdown
 +++ b/website/docs/r/container_cluster.html.markdown
 @@ -13,15 +13,12 @@ To get more information about GKE clusters, see:

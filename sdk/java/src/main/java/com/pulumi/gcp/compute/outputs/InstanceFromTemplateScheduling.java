@@ -24,6 +24,11 @@ public final class InstanceFromTemplateScheduling {
      */
     private @Nullable Boolean automaticRestart;
     /**
+     * @return Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+     * 
+     */
+    private @Nullable Integer hostErrorTimeoutSeconds;
+    /**
      * @return Specifies the action GCE should take when SPOT VM is preempted.
      * 
      */
@@ -80,6 +85,13 @@ public final class InstanceFromTemplateScheduling {
      */
     public Optional<Boolean> automaticRestart() {
         return Optional.ofNullable(this.automaticRestart);
+    }
+    /**
+     * @return Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+     * 
+     */
+    public Optional<Integer> hostErrorTimeoutSeconds() {
+        return Optional.ofNullable(this.hostErrorTimeoutSeconds);
     }
     /**
      * @return Specifies the action GCE should take when SPOT VM is preempted.
@@ -161,6 +173,7 @@ public final class InstanceFromTemplateScheduling {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean automaticRestart;
+        private @Nullable Integer hostErrorTimeoutSeconds;
         private @Nullable String instanceTerminationAction;
         private @Nullable InstanceFromTemplateSchedulingLocalSsdRecoveryTimeout localSsdRecoveryTimeout;
         private @Nullable String maintenanceInterval;
@@ -175,6 +188,7 @@ public final class InstanceFromTemplateScheduling {
         public Builder(InstanceFromTemplateScheduling defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.automaticRestart = defaults.automaticRestart;
+    	      this.hostErrorTimeoutSeconds = defaults.hostErrorTimeoutSeconds;
     	      this.instanceTerminationAction = defaults.instanceTerminationAction;
     	      this.localSsdRecoveryTimeout = defaults.localSsdRecoveryTimeout;
     	      this.maintenanceInterval = defaults.maintenanceInterval;
@@ -191,6 +205,12 @@ public final class InstanceFromTemplateScheduling {
         public Builder automaticRestart(@Nullable Boolean automaticRestart) {
 
             this.automaticRestart = automaticRestart;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder hostErrorTimeoutSeconds(@Nullable Integer hostErrorTimeoutSeconds) {
+
+            this.hostErrorTimeoutSeconds = hostErrorTimeoutSeconds;
             return this;
         }
         @CustomType.Setter
@@ -259,6 +279,7 @@ public final class InstanceFromTemplateScheduling {
         public InstanceFromTemplateScheduling build() {
             final var _resultValue = new InstanceFromTemplateScheduling();
             _resultValue.automaticRestart = automaticRestart;
+            _resultValue.hostErrorTimeoutSeconds = hostErrorTimeoutSeconds;
             _resultValue.instanceTerminationAction = instanceTerminationAction;
             _resultValue.localSsdRecoveryTimeout = localSsdRecoveryTimeout;
             _resultValue.maintenanceInterval = maintenanceInterval;

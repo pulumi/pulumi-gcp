@@ -109,6 +109,8 @@ __all__ = [
     'ServiceTemplateContainerStartupProbeTcpSocketArgsDict',
     'ServiceTemplateContainerVolumeMountArgs',
     'ServiceTemplateContainerVolumeMountArgsDict',
+    'ServiceTemplateNodeSelectorArgs',
+    'ServiceTemplateNodeSelectorArgsDict',
     'ServiceTemplateScalingArgs',
     'ServiceTemplateScalingArgsDict',
     'ServiceTemplateServiceMeshArgs',
@@ -2712,6 +2714,11 @@ if not MYPY:
         Sets the maximum number of requests that each serving instance can receive.
         If not specified or 0, defaults to 80 when requested CPU >= 1 and defaults to 1 when requested CPU < 1.
         """
+        node_selector: NotRequired[pulumi.Input['ServiceTemplateNodeSelectorArgsDict']]
+        """
+        Node Selector describes the hardware requirements of the resources.
+        Structure is documented below.
+        """
         revision: NotRequired[pulumi.Input[str]]
         """
         The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
@@ -2761,6 +2768,7 @@ class ServiceTemplateArgs:
                  execution_environment: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  max_instance_request_concurrency: Optional[pulumi.Input[int]] = None,
+                 node_selector: Optional[pulumi.Input['ServiceTemplateNodeSelectorArgs']] = None,
                  revision: Optional[pulumi.Input[str]] = None,
                  scaling: Optional[pulumi.Input['ServiceTemplateScalingArgs']] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
@@ -2785,6 +2793,8 @@ class ServiceTemplateArgs:
                All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
         :param pulumi.Input[int] max_instance_request_concurrency: Sets the maximum number of requests that each serving instance can receive.
                If not specified or 0, defaults to 80 when requested CPU >= 1 and defaults to 1 when requested CPU < 1.
+        :param pulumi.Input['ServiceTemplateNodeSelectorArgs'] node_selector: Node Selector describes the hardware requirements of the resources.
+               Structure is documented below.
         :param pulumi.Input[str] revision: The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
         :param pulumi.Input['ServiceTemplateScalingArgs'] scaling: Scaling settings for this Revision.
                Structure is documented below.
@@ -2811,6 +2821,8 @@ class ServiceTemplateArgs:
             pulumi.set(__self__, "labels", labels)
         if max_instance_request_concurrency is not None:
             pulumi.set(__self__, "max_instance_request_concurrency", max_instance_request_concurrency)
+        if node_selector is not None:
+            pulumi.set(__self__, "node_selector", node_selector)
         if revision is not None:
             pulumi.set(__self__, "revision", revision)
         if scaling is not None:
@@ -2908,6 +2920,19 @@ class ServiceTemplateArgs:
     @max_instance_request_concurrency.setter
     def max_instance_request_concurrency(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_instance_request_concurrency", value)
+
+    @property
+    @pulumi.getter(name="nodeSelector")
+    def node_selector(self) -> Optional[pulumi.Input['ServiceTemplateNodeSelectorArgs']]:
+        """
+        Node Selector describes the hardware requirements of the resources.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "node_selector")
+
+    @node_selector.setter
+    def node_selector(self, value: Optional[pulumi.Input['ServiceTemplateNodeSelectorArgs']]):
+        pulumi.set(self, "node_selector", value)
 
     @property
     @pulumi.getter
@@ -3889,7 +3914,7 @@ if not MYPY:
         """
         limits: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
-        Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        Only memory, CPU, and nvidia.com/gpu are supported. Use key `cpu` for CPU limit, `memory` for memory limit, `nvidia.com/gpu` for gpu limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         """
         startup_cpu_boost: NotRequired[pulumi.Input[bool]]
         """
@@ -3907,7 +3932,7 @@ class ServiceTemplateContainerResourcesArgs:
         """
         :param pulumi.Input[bool] cpu_idle: Determines whether CPU is only allocated during requests. True by default if the parent `resources` field is not set. However, if
                `resources` is set, this field must be explicitly set to true to preserve the default behavior.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] limits: Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] limits: Only memory, CPU, and nvidia.com/gpu are supported. Use key `cpu` for CPU limit, `memory` for memory limit, `nvidia.com/gpu` for gpu limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         :param pulumi.Input[bool] startup_cpu_boost: Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
         """
         if cpu_idle is not None:
@@ -3934,7 +3959,7 @@ class ServiceTemplateContainerResourcesArgs:
     @pulumi.getter
     def limits(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        Only memory, CPU, and nvidia.com/gpu are supported. Use key `cpu` for CPU limit, `memory` for memory limit, `nvidia.com/gpu` for gpu limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         """
         return pulumi.get(self, "limits")
 
@@ -4392,6 +4417,43 @@ class ServiceTemplateContainerVolumeMountArgs:
 
 
 if not MYPY:
+    class ServiceTemplateNodeSelectorArgsDict(TypedDict):
+        accelerator: pulumi.Input[str]
+        """
+        The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/services/gpu for configuring GPU.
+
+        - - -
+        """
+elif False:
+    ServiceTemplateNodeSelectorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ServiceTemplateNodeSelectorArgs:
+    def __init__(__self__, *,
+                 accelerator: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] accelerator: The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/services/gpu for configuring GPU.
+               
+               - - -
+        """
+        pulumi.set(__self__, "accelerator", accelerator)
+
+    @property
+    @pulumi.getter
+    def accelerator(self) -> pulumi.Input[str]:
+        """
+        The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/services/gpu for configuring GPU.
+
+        - - -
+        """
+        return pulumi.get(self, "accelerator")
+
+    @accelerator.setter
+    def accelerator(self, value: pulumi.Input[str]):
+        pulumi.set(self, "accelerator", value)
+
+
+if not MYPY:
     class ServiceTemplateScalingArgsDict(TypedDict):
         max_instance_count: NotRequired[pulumi.Input[int]]
         """
@@ -4448,8 +4510,6 @@ if not MYPY:
         mesh: NotRequired[pulumi.Input[str]]
         """
         The Mesh resource name. For more information see https://cloud.google.com/service-mesh/docs/reference/network-services/rest/v1/projects.locations.meshes#resource:-mesh.
-
-        - - -
         """
 elif False:
     ServiceTemplateServiceMeshArgsDict: TypeAlias = Mapping[str, Any]
@@ -4460,8 +4520,6 @@ class ServiceTemplateServiceMeshArgs:
                  mesh: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] mesh: The Mesh resource name. For more information see https://cloud.google.com/service-mesh/docs/reference/network-services/rest/v1/projects.locations.meshes#resource:-mesh.
-               
-               - - -
         """
         if mesh is not None:
             pulumi.set(__self__, "mesh", mesh)
@@ -4471,8 +4529,6 @@ class ServiceTemplateServiceMeshArgs:
     def mesh(self) -> Optional[pulumi.Input[str]]:
         """
         The Mesh resource name. For more information see https://cloud.google.com/service-mesh/docs/reference/network-services/rest/v1/projects.locations.meshes#resource:-mesh.
-
-        - - -
         """
         return pulumi.get(self, "mesh")
 

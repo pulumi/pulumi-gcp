@@ -653,6 +653,26 @@ __all__ = [
     'RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgsDict',
     'RegionNetworkFirewallPolicyRuleTargetSecureTagArgs',
     'RegionNetworkFirewallPolicyRuleTargetSecureTagArgsDict',
+    'RegionNetworkFirewallPolicyWithRulesPredefinedRuleArgs',
+    'RegionNetworkFirewallPolicyWithRulesPredefinedRuleArgsDict',
+    'RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchArgs',
+    'RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchArgsDict',
+    'RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchLayer4ConfigArgs',
+    'RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchLayer4ConfigArgsDict',
+    'RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTagArgs',
+    'RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTagArgsDict',
+    'RegionNetworkFirewallPolicyWithRulesPredefinedRuleTargetSecureTagArgs',
+    'RegionNetworkFirewallPolicyWithRulesPredefinedRuleTargetSecureTagArgsDict',
+    'RegionNetworkFirewallPolicyWithRulesRuleArgs',
+    'RegionNetworkFirewallPolicyWithRulesRuleArgsDict',
+    'RegionNetworkFirewallPolicyWithRulesRuleMatchArgs',
+    'RegionNetworkFirewallPolicyWithRulesRuleMatchArgsDict',
+    'RegionNetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArgs',
+    'RegionNetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArgsDict',
+    'RegionNetworkFirewallPolicyWithRulesRuleMatchSrcSecureTagArgs',
+    'RegionNetworkFirewallPolicyWithRulesRuleMatchSrcSecureTagArgsDict',
+    'RegionNetworkFirewallPolicyWithRulesRuleTargetSecureTagArgs',
+    'RegionNetworkFirewallPolicyWithRulesRuleTargetSecureTagArgsDict',
     'RegionPerInstanceConfigPreservedStateArgs',
     'RegionPerInstanceConfigPreservedStateArgsDict',
     'RegionPerInstanceConfigPreservedStateDiskArgs',
@@ -12037,6 +12057,10 @@ if not MYPY:
         """
         Specifies if the instance should be restarted if it was terminated by Compute Engine (not a user).
         """
+        host_error_timeout_seconds: NotRequired[pulumi.Input[int]]
+        """
+        Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+        """
         instance_termination_action: NotRequired[pulumi.Input[str]]
         """
         Specifies the action GCE should take when SPOT VM is preempted.
@@ -12084,6 +12108,7 @@ elif False:
 class InstanceFromMachineImageSchedulingArgs:
     def __init__(__self__, *,
                  automatic_restart: Optional[pulumi.Input[bool]] = None,
+                 host_error_timeout_seconds: Optional[pulumi.Input[int]] = None,
                  instance_termination_action: Optional[pulumi.Input[str]] = None,
                  local_ssd_recovery_timeout: Optional[pulumi.Input['InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeoutArgs']] = None,
                  maintenance_interval: Optional[pulumi.Input[str]] = None,
@@ -12096,6 +12121,7 @@ class InstanceFromMachineImageSchedulingArgs:
                  provisioning_model: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] automatic_restart: Specifies if the instance should be restarted if it was terminated by Compute Engine (not a user).
+        :param pulumi.Input[int] host_error_timeout_seconds: Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
         :param pulumi.Input[str] instance_termination_action: Specifies the action GCE should take when SPOT VM is preempted.
         :param pulumi.Input['InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeoutArgs'] local_ssd_recovery_timeout: Specifies the maximum amount of time a Local Ssd Vm should wait while
                  recovery of the Local Ssd state is attempted. Its value should be in
@@ -12111,6 +12137,8 @@ class InstanceFromMachineImageSchedulingArgs:
         """
         if automatic_restart is not None:
             pulumi.set(__self__, "automatic_restart", automatic_restart)
+        if host_error_timeout_seconds is not None:
+            pulumi.set(__self__, "host_error_timeout_seconds", host_error_timeout_seconds)
         if instance_termination_action is not None:
             pulumi.set(__self__, "instance_termination_action", instance_termination_action)
         if local_ssd_recovery_timeout is not None:
@@ -12143,6 +12171,18 @@ class InstanceFromMachineImageSchedulingArgs:
     @automatic_restart.setter
     def automatic_restart(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "automatic_restart", value)
+
+    @property
+    @pulumi.getter(name="hostErrorTimeoutSeconds")
+    def host_error_timeout_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+        """
+        return pulumi.get(self, "host_error_timeout_seconds")
+
+    @host_error_timeout_seconds.setter
+    def host_error_timeout_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "host_error_timeout_seconds", value)
 
     @property
     @pulumi.getter(name="instanceTerminationAction")
@@ -14163,6 +14203,10 @@ if not MYPY:
         """
         Specifies if the instance should be restarted if it was terminated by Compute Engine (not a user).
         """
+        host_error_timeout_seconds: NotRequired[pulumi.Input[int]]
+        """
+        Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+        """
         instance_termination_action: NotRequired[pulumi.Input[str]]
         """
         Specifies the action GCE should take when SPOT VM is preempted.
@@ -14210,6 +14254,7 @@ elif False:
 class InstanceFromTemplateSchedulingArgs:
     def __init__(__self__, *,
                  automatic_restart: Optional[pulumi.Input[bool]] = None,
+                 host_error_timeout_seconds: Optional[pulumi.Input[int]] = None,
                  instance_termination_action: Optional[pulumi.Input[str]] = None,
                  local_ssd_recovery_timeout: Optional[pulumi.Input['InstanceFromTemplateSchedulingLocalSsdRecoveryTimeoutArgs']] = None,
                  maintenance_interval: Optional[pulumi.Input[str]] = None,
@@ -14222,6 +14267,7 @@ class InstanceFromTemplateSchedulingArgs:
                  provisioning_model: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] automatic_restart: Specifies if the instance should be restarted if it was terminated by Compute Engine (not a user).
+        :param pulumi.Input[int] host_error_timeout_seconds: Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
         :param pulumi.Input[str] instance_termination_action: Specifies the action GCE should take when SPOT VM is preempted.
         :param pulumi.Input['InstanceFromTemplateSchedulingLocalSsdRecoveryTimeoutArgs'] local_ssd_recovery_timeout: Specifies the maximum amount of time a Local Ssd Vm should wait while
                  recovery of the Local Ssd state is attempted. Its value should be in
@@ -14237,6 +14283,8 @@ class InstanceFromTemplateSchedulingArgs:
         """
         if automatic_restart is not None:
             pulumi.set(__self__, "automatic_restart", automatic_restart)
+        if host_error_timeout_seconds is not None:
+            pulumi.set(__self__, "host_error_timeout_seconds", host_error_timeout_seconds)
         if instance_termination_action is not None:
             pulumi.set(__self__, "instance_termination_action", instance_termination_action)
         if local_ssd_recovery_timeout is not None:
@@ -14269,6 +14317,18 @@ class InstanceFromTemplateSchedulingArgs:
     @automatic_restart.setter
     def automatic_restart(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "automatic_restart", value)
+
+    @property
+    @pulumi.getter(name="hostErrorTimeoutSeconds")
+    def host_error_timeout_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+        """
+        return pulumi.get(self, "host_error_timeout_seconds")
+
+    @host_error_timeout_seconds.setter
+    def host_error_timeout_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "host_error_timeout_seconds", value)
 
     @property
     @pulumi.getter(name="instanceTerminationAction")
@@ -16976,6 +17036,10 @@ if not MYPY:
         restarted if it was terminated by Compute Engine (not a user).
         Defaults to true.
         """
+        host_error_timeout_seconds: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+        """
         instance_termination_action: NotRequired[pulumi.Input[str]]
         """
         Describe the type of termination action for VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
@@ -17037,6 +17101,7 @@ elif False:
 class InstanceSchedulingArgs:
     def __init__(__self__, *,
                  automatic_restart: Optional[pulumi.Input[bool]] = None,
+                 host_error_timeout_seconds: Optional[pulumi.Input[int]] = None,
                  instance_termination_action: Optional[pulumi.Input[str]] = None,
                  local_ssd_recovery_timeout: Optional[pulumi.Input['InstanceSchedulingLocalSsdRecoveryTimeoutArgs']] = None,
                  maintenance_interval: Optional[pulumi.Input[str]] = None,
@@ -17051,6 +17116,7 @@ class InstanceSchedulingArgs:
         :param pulumi.Input[bool] automatic_restart: Specifies if the instance should be
                restarted if it was terminated by Compute Engine (not a user).
                Defaults to true.
+        :param pulumi.Input[int] host_error_timeout_seconds: Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
         :param pulumi.Input[str] instance_termination_action: Describe the type of termination action for VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         :param pulumi.Input['InstanceSchedulingLocalSsdRecoveryTimeoutArgs'] local_ssd_recovery_timeout: Specifies the maximum amount of time a Local Ssd Vm should wait while
                  recovery of the Local Ssd state is attempted. Its value should be in
@@ -17078,6 +17144,8 @@ class InstanceSchedulingArgs:
         """
         if automatic_restart is not None:
             pulumi.set(__self__, "automatic_restart", automatic_restart)
+        if host_error_timeout_seconds is not None:
+            pulumi.set(__self__, "host_error_timeout_seconds", host_error_timeout_seconds)
         if instance_termination_action is not None:
             pulumi.set(__self__, "instance_termination_action", instance_termination_action)
         if local_ssd_recovery_timeout is not None:
@@ -17112,6 +17180,18 @@ class InstanceSchedulingArgs:
     @automatic_restart.setter
     def automatic_restart(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "automatic_restart", value)
+
+    @property
+    @pulumi.getter(name="hostErrorTimeoutSeconds")
+    def host_error_timeout_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+        """
+        return pulumi.get(self, "host_error_timeout_seconds")
+
+    @host_error_timeout_seconds.setter
+    def host_error_timeout_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "host_error_timeout_seconds", value)
 
     @property
     @pulumi.getter(name="instanceTerminationAction")
@@ -19338,6 +19418,10 @@ if not MYPY:
         automatically restarted if it is terminated by Compute Engine (not
         terminated by a user). This defaults to true.
         """
+        host_error_timeout_seconds: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+        """
         instance_termination_action: NotRequired[pulumi.Input[str]]
         """
         Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
@@ -19398,6 +19482,7 @@ elif False:
 class InstanceTemplateSchedulingArgs:
     def __init__(__self__, *,
                  automatic_restart: Optional[pulumi.Input[bool]] = None,
+                 host_error_timeout_seconds: Optional[pulumi.Input[int]] = None,
                  instance_termination_action: Optional[pulumi.Input[str]] = None,
                  local_ssd_recovery_timeouts: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs']]]] = None,
                  maintenance_interval: Optional[pulumi.Input[str]] = None,
@@ -19412,6 +19497,7 @@ class InstanceTemplateSchedulingArgs:
         :param pulumi.Input[bool] automatic_restart: Specifies whether the instance should be
                automatically restarted if it is terminated by Compute Engine (not
                terminated by a user). This defaults to true.
+        :param pulumi.Input[int] host_error_timeout_seconds: Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
         :param pulumi.Input[str] instance_termination_action: Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         :param pulumi.Input[Sequence[pulumi.Input['InstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs']]] local_ssd_recovery_timeouts: Specifies the maximum amount of time a Local Ssd Vm should wait while
                  recovery of the Local Ssd state is attempted. Its value should be in
@@ -19438,6 +19524,8 @@ class InstanceTemplateSchedulingArgs:
         """
         if automatic_restart is not None:
             pulumi.set(__self__, "automatic_restart", automatic_restart)
+        if host_error_timeout_seconds is not None:
+            pulumi.set(__self__, "host_error_timeout_seconds", host_error_timeout_seconds)
         if instance_termination_action is not None:
             pulumi.set(__self__, "instance_termination_action", instance_termination_action)
         if local_ssd_recovery_timeouts is not None:
@@ -19472,6 +19560,18 @@ class InstanceTemplateSchedulingArgs:
     @automatic_restart.setter
     def automatic_restart(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "automatic_restart", value)
+
+    @property
+    @pulumi.getter(name="hostErrorTimeoutSeconds")
+    def host_error_timeout_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+        """
+        return pulumi.get(self, "host_error_timeout_seconds")
+
+    @host_error_timeout_seconds.setter
+    def host_error_timeout_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "host_error_timeout_seconds", value)
 
     @property
     @pulumi.getter(name="instanceTerminationAction")
@@ -20372,21 +20472,37 @@ if not MYPY:
         or re-establishing a MACsec secure link.
         Structure is documented below.
         """
+        fail_open: NotRequired[pulumi.Input[bool]]
+        """
+        If set to true, the Interconnect connection is configured with a should-secure
+        MACsec security policy, that allows the Google router to fallback to cleartext
+        traffic if the MKA session cannot be established. By default, the Interconnect
+        connection is configured with a must-secure security policy that drops all traffic
+        if the MKA session cannot be established with your router.
+        """
 elif False:
     InterconnectMacsecArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InterconnectMacsecArgs:
     def __init__(__self__, *,
-                 pre_shared_keys: pulumi.Input[Sequence[pulumi.Input['InterconnectMacsecPreSharedKeyArgs']]]):
+                 pre_shared_keys: pulumi.Input[Sequence[pulumi.Input['InterconnectMacsecPreSharedKeyArgs']]],
+                 fail_open: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['InterconnectMacsecPreSharedKeyArgs']]] pre_shared_keys: A keychain placeholder describing a set of named key objects along with their
                start times. A MACsec CKN/CAK is generated for each key in the key chain.
                Google router automatically picks the key with the most recent startTime when establishing
                or re-establishing a MACsec secure link.
                Structure is documented below.
+        :param pulumi.Input[bool] fail_open: If set to true, the Interconnect connection is configured with a should-secure
+               MACsec security policy, that allows the Google router to fallback to cleartext
+               traffic if the MKA session cannot be established. By default, the Interconnect
+               connection is configured with a must-secure security policy that drops all traffic
+               if the MKA session cannot be established with your router.
         """
         pulumi.set(__self__, "pre_shared_keys", pre_shared_keys)
+        if fail_open is not None:
+            pulumi.set(__self__, "fail_open", fail_open)
 
     @property
     @pulumi.getter(name="preSharedKeys")
@@ -20404,6 +20520,22 @@ class InterconnectMacsecArgs:
     def pre_shared_keys(self, value: pulumi.Input[Sequence[pulumi.Input['InterconnectMacsecPreSharedKeyArgs']]]):
         pulumi.set(self, "pre_shared_keys", value)
 
+    @property
+    @pulumi.getter(name="failOpen")
+    def fail_open(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to true, the Interconnect connection is configured with a should-secure
+        MACsec security policy, that allows the Google router to fallback to cleartext
+        traffic if the MKA session cannot be established. By default, the Interconnect
+        connection is configured with a must-secure security policy that drops all traffic
+        if the MKA session cannot be established with your router.
+        """
+        return pulumi.get(self, "fail_open")
+
+    @fail_open.setter
+    def fail_open(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "fail_open", value)
+
 
 if not MYPY:
     class InterconnectMacsecPreSharedKeyArgsDict(TypedDict):
@@ -20417,11 +20549,14 @@ if not MYPY:
         """
         fail_open: NotRequired[pulumi.Input[bool]]
         """
+        (Optional, Deprecated)
         If set to true, the Interconnect connection is configured with a should-secure
         MACsec security policy, that allows the Google router to fallback to cleartext
         traffic if the MKA session cannot be established. By default, the Interconnect
         connection is configured with a must-secure security policy that drops all traffic
         if the MKA session cannot be established with your router.
+
+        > **Warning:** `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead.
         """
         start_time: NotRequired[pulumi.Input[str]]
         """
@@ -20446,11 +20581,14 @@ class InterconnectMacsecPreSharedKeyArgs:
                the regular expression `a-z?` which means the first character
                must be a lowercase letter, and all following characters must be a dash, lowercase
                letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[bool] fail_open: If set to true, the Interconnect connection is configured with a should-secure
+        :param pulumi.Input[bool] fail_open: (Optional, Deprecated)
+               If set to true, the Interconnect connection is configured with a should-secure
                MACsec security policy, that allows the Google router to fallback to cleartext
                traffic if the MKA session cannot be established. By default, the Interconnect
                connection is configured with a must-secure security policy that drops all traffic
                if the MKA session cannot be established with your router.
+               
+               > **Warning:** `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead.
         :param pulumi.Input[str] start_time: A RFC3339 timestamp on or after which the key is valid. startTime can be in the
                future. If the keychain has a single key, startTime can be omitted. If the keychain
                has multiple keys, startTime is mandatory for each key. The start times of keys must
@@ -20458,6 +20596,9 @@ class InterconnectMacsecPreSharedKeyArgs:
                hours apart.
         """
         pulumi.set(__self__, "name", name)
+        if fail_open is not None:
+            warnings.warn("""`failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead.""", DeprecationWarning)
+            pulumi.log.warn("""fail_open is deprecated: `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead.""")
         if fail_open is not None:
             pulumi.set(__self__, "fail_open", fail_open)
         if start_time is not None:
@@ -20481,13 +20622,17 @@ class InterconnectMacsecPreSharedKeyArgs:
 
     @property
     @pulumi.getter(name="failOpen")
+    @_utilities.deprecated("""`failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead.""")
     def fail_open(self) -> Optional[pulumi.Input[bool]]:
         """
+        (Optional, Deprecated)
         If set to true, the Interconnect connection is configured with a should-secure
         MACsec security policy, that allows the Google router to fallback to cleartext
         traffic if the MKA session cannot be established. By default, the Interconnect
         connection is configured with a must-secure security policy that drops all traffic
         if the MKA session cannot be established with your router.
+
+        > **Warning:** `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead.
         """
         return pulumi.get(self, "fail_open")
 
@@ -32403,6 +32548,10 @@ if not MYPY:
         automatically restarted if it is terminated by Compute Engine (not
         terminated by a user). This defaults to true.
         """
+        host_error_timeout_seconds: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+        """
         instance_termination_action: NotRequired[pulumi.Input[str]]
         """
         Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
@@ -32463,6 +32612,7 @@ elif False:
 class RegionInstanceTemplateSchedulingArgs:
     def __init__(__self__, *,
                  automatic_restart: Optional[pulumi.Input[bool]] = None,
+                 host_error_timeout_seconds: Optional[pulumi.Input[int]] = None,
                  instance_termination_action: Optional[pulumi.Input[str]] = None,
                  local_ssd_recovery_timeouts: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs']]]] = None,
                  maintenance_interval: Optional[pulumi.Input[str]] = None,
@@ -32477,6 +32627,7 @@ class RegionInstanceTemplateSchedulingArgs:
         :param pulumi.Input[bool] automatic_restart: Specifies whether the instance should be
                automatically restarted if it is terminated by Compute Engine (not
                terminated by a user). This defaults to true.
+        :param pulumi.Input[int] host_error_timeout_seconds: Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
         :param pulumi.Input[str] instance_termination_action: Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs']]] local_ssd_recovery_timeouts: Specifies the maximum amount of time a Local Ssd Vm should wait while
                  recovery of the Local Ssd state is attempted. Its value should be in
@@ -32503,6 +32654,8 @@ class RegionInstanceTemplateSchedulingArgs:
         """
         if automatic_restart is not None:
             pulumi.set(__self__, "automatic_restart", automatic_restart)
+        if host_error_timeout_seconds is not None:
+            pulumi.set(__self__, "host_error_timeout_seconds", host_error_timeout_seconds)
         if instance_termination_action is not None:
             pulumi.set(__self__, "instance_termination_action", instance_termination_action)
         if local_ssd_recovery_timeouts is not None:
@@ -32537,6 +32690,18 @@ class RegionInstanceTemplateSchedulingArgs:
     @automatic_restart.setter
     def automatic_restart(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "automatic_restart", value)
+
+    @property
+    @pulumi.getter(name="hostErrorTimeoutSeconds")
+    def host_error_timeout_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+        """
+        return pulumi.get(self, "host_error_timeout_seconds")
+
+    @host_error_timeout_seconds.setter
+    def host_error_timeout_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "host_error_timeout_seconds", value)
 
     @property
     @pulumi.getter(name="instanceTerminationAction")
@@ -33852,6 +34017,1780 @@ class RegionNetworkFirewallPolicyRuleTargetSecureTagArgs:
     def state(self) -> Optional[pulumi.Input[str]]:
         """
         [Output Only] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
+
+if not MYPY:
+    class RegionNetworkFirewallPolicyWithRulesPredefinedRuleArgsDict(TypedDict):
+        action: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The Action to perform when the client connection triggers the rule. Can currently be either
+        "allow", "deny", "apply_security_profile_group" or "goto_next".
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        A description of the rule.
+        """
+        direction: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The direction in which this rule applies. If unspecified an INGRESS rule is created.
+        """
+        disabled: NotRequired[pulumi.Input[bool]]
+        """
+        (Output)
+        Denotes whether the firewall policy rule is disabled. When set to true,
+        the firewall policy rule is not enforced and traffic behaves as if it did
+        not exist. If this is unspecified, the firewall policy rule will be
+        enabled.
+        """
+        enable_logging: NotRequired[pulumi.Input[bool]]
+        """
+        (Output)
+        Denotes whether to enable logging for a particular rule.
+        If logging is enabled, logs will be exported to the
+        configured export destination in Stackdriver.
+        """
+        matches: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchArgsDict']]]]
+        """
+        (Output)
+        A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+        Structure is documented below.
+        """
+        priority: NotRequired[pulumi.Input[int]]
+        """
+        (Output)
+        An integer indicating the priority of a rule in the list. The priority must be a value
+        between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
+        highest priority and 2147483647 is the lowest priority.
+        """
+        rule_name: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        An optional name for the rule. This field is not a unique identifier
+        and can be updated.
+        """
+        security_profile_group: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        A fully-qualified URL of a SecurityProfile resource instance.
+        Example:
+        https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+        Must be specified if action is 'apply_security_profile_group'.
+        """
+        target_secure_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyWithRulesPredefinedRuleTargetSecureTagArgsDict']]]]
+        """
+        (Output)
+        A list of secure tags that controls which instances the firewall rule
+        applies to. If <code>targetSecureTag</code> are specified, then the
+        firewall rule applies only to instances in the VPC network that have one
+        of those EFFECTIVE secure tags, if all the target_secure_tag are in
+        INEFFECTIVE state, then this rule will be ignored.
+        <code>targetSecureTag</code> may not be set at the same time as
+        <code>targetServiceAccounts</code>.
+        If neither <code>targetServiceAccounts</code> nor
+        <code>targetSecureTag</code> are specified, the firewall rule applies
+        to all instances on the specified network.
+        Maximum number of target label tags allowed is 256.
+        Structure is documented below.
+        """
+        target_service_accounts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        (Output)
+        A list of service accounts indicating the sets of
+        instances that are applied with this rule.
+        """
+        tls_inspect: NotRequired[pulumi.Input[bool]]
+        """
+        (Output)
+        Boolean flag indicating if the traffic should be TLS decrypted.
+        It can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
+        """
+elif False:
+    RegionNetworkFirewallPolicyWithRulesPredefinedRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionNetworkFirewallPolicyWithRulesPredefinedRuleArgs:
+    def __init__(__self__, *,
+                 action: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 direction: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
+                 enable_logging: Optional[pulumi.Input[bool]] = None,
+                 matches: Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchArgs']]]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
+                 rule_name: Optional[pulumi.Input[str]] = None,
+                 security_profile_group: Optional[pulumi.Input[str]] = None,
+                 target_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyWithRulesPredefinedRuleTargetSecureTagArgs']]]] = None,
+                 target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tls_inspect: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] action: (Output)
+               The Action to perform when the client connection triggers the rule. Can currently be either
+               "allow", "deny", "apply_security_profile_group" or "goto_next".
+        :param pulumi.Input[str] description: (Output)
+               A description of the rule.
+        :param pulumi.Input[str] direction: (Output)
+               The direction in which this rule applies. If unspecified an INGRESS rule is created.
+        :param pulumi.Input[bool] disabled: (Output)
+               Denotes whether the firewall policy rule is disabled. When set to true,
+               the firewall policy rule is not enforced and traffic behaves as if it did
+               not exist. If this is unspecified, the firewall policy rule will be
+               enabled.
+        :param pulumi.Input[bool] enable_logging: (Output)
+               Denotes whether to enable logging for a particular rule.
+               If logging is enabled, logs will be exported to the
+               configured export destination in Stackdriver.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchArgs']]] matches: (Output)
+               A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+               Structure is documented below.
+        :param pulumi.Input[int] priority: (Output)
+               An integer indicating the priority of a rule in the list. The priority must be a value
+               between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
+               highest priority and 2147483647 is the lowest priority.
+        :param pulumi.Input[str] rule_name: (Output)
+               An optional name for the rule. This field is not a unique identifier
+               and can be updated.
+        :param pulumi.Input[str] security_profile_group: (Output)
+               A fully-qualified URL of a SecurityProfile resource instance.
+               Example:
+               https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+               Must be specified if action is 'apply_security_profile_group'.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyWithRulesPredefinedRuleTargetSecureTagArgs']]] target_secure_tags: (Output)
+               A list of secure tags that controls which instances the firewall rule
+               applies to. If <code>targetSecureTag</code> are specified, then the
+               firewall rule applies only to instances in the VPC network that have one
+               of those EFFECTIVE secure tags, if all the target_secure_tag are in
+               INEFFECTIVE state, then this rule will be ignored.
+               <code>targetSecureTag</code> may not be set at the same time as
+               <code>targetServiceAccounts</code>.
+               If neither <code>targetServiceAccounts</code> nor
+               <code>targetSecureTag</code> are specified, the firewall rule applies
+               to all instances on the specified network.
+               Maximum number of target label tags allowed is 256.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_service_accounts: (Output)
+               A list of service accounts indicating the sets of
+               instances that are applied with this rule.
+        :param pulumi.Input[bool] tls_inspect: (Output)
+               Boolean flag indicating if the traffic should be TLS decrypted.
+               It can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
+        """
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if enable_logging is not None:
+            pulumi.set(__self__, "enable_logging", enable_logging)
+        if matches is not None:
+            pulumi.set(__self__, "matches", matches)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+        if rule_name is not None:
+            pulumi.set(__self__, "rule_name", rule_name)
+        if security_profile_group is not None:
+            pulumi.set(__self__, "security_profile_group", security_profile_group)
+        if target_secure_tags is not None:
+            pulumi.set(__self__, "target_secure_tags", target_secure_tags)
+        if target_service_accounts is not None:
+            pulumi.set(__self__, "target_service_accounts", target_service_accounts)
+        if tls_inspect is not None:
+            pulumi.set(__self__, "tls_inspect", tls_inspect)
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The Action to perform when the client connection triggers the rule. Can currently be either
+        "allow", "deny", "apply_security_profile_group" or "goto_next".
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        A description of the rule.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The direction in which this rule applies. If unspecified an INGRESS rule is created.
+        """
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "direction", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Output)
+        Denotes whether the firewall policy rule is disabled. When set to true,
+        the firewall policy rule is not enforced and traffic behaves as if it did
+        not exist. If this is unspecified, the firewall policy rule will be
+        enabled.
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter(name="enableLogging")
+    def enable_logging(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Output)
+        Denotes whether to enable logging for a particular rule.
+        If logging is enabled, logs will be exported to the
+        configured export destination in Stackdriver.
+        """
+        return pulumi.get(self, "enable_logging")
+
+    @enable_logging.setter
+    def enable_logging(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_logging", value)
+
+    @property
+    @pulumi.getter
+    def matches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchArgs']]]]:
+        """
+        (Output)
+        A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "matches")
+
+    @matches.setter
+    def matches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchArgs']]]]):
+        pulumi.set(self, "matches", value)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Output)
+        An integer indicating the priority of a rule in the list. The priority must be a value
+        between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
+        highest priority and 2147483647 is the lowest priority.
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "priority", value)
+
+    @property
+    @pulumi.getter(name="ruleName")
+    def rule_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        An optional name for the rule. This field is not a unique identifier
+        and can be updated.
+        """
+        return pulumi.get(self, "rule_name")
+
+    @rule_name.setter
+    def rule_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rule_name", value)
+
+    @property
+    @pulumi.getter(name="securityProfileGroup")
+    def security_profile_group(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        A fully-qualified URL of a SecurityProfile resource instance.
+        Example:
+        https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+        Must be specified if action is 'apply_security_profile_group'.
+        """
+        return pulumi.get(self, "security_profile_group")
+
+    @security_profile_group.setter
+    def security_profile_group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_profile_group", value)
+
+    @property
+    @pulumi.getter(name="targetSecureTags")
+    def target_secure_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyWithRulesPredefinedRuleTargetSecureTagArgs']]]]:
+        """
+        (Output)
+        A list of secure tags that controls which instances the firewall rule
+        applies to. If <code>targetSecureTag</code> are specified, then the
+        firewall rule applies only to instances in the VPC network that have one
+        of those EFFECTIVE secure tags, if all the target_secure_tag are in
+        INEFFECTIVE state, then this rule will be ignored.
+        <code>targetSecureTag</code> may not be set at the same time as
+        <code>targetServiceAccounts</code>.
+        If neither <code>targetServiceAccounts</code> nor
+        <code>targetSecureTag</code> are specified, the firewall rule applies
+        to all instances on the specified network.
+        Maximum number of target label tags allowed is 256.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "target_secure_tags")
+
+    @target_secure_tags.setter
+    def target_secure_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyWithRulesPredefinedRuleTargetSecureTagArgs']]]]):
+        pulumi.set(self, "target_secure_tags", value)
+
+    @property
+    @pulumi.getter(name="targetServiceAccounts")
+    def target_service_accounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        (Output)
+        A list of service accounts indicating the sets of
+        instances that are applied with this rule.
+        """
+        return pulumi.get(self, "target_service_accounts")
+
+    @target_service_accounts.setter
+    def target_service_accounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "target_service_accounts", value)
+
+    @property
+    @pulumi.getter(name="tlsInspect")
+    def tls_inspect(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Output)
+        Boolean flag indicating if the traffic should be TLS decrypted.
+        It can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
+        """
+        return pulumi.get(self, "tls_inspect")
+
+    @tls_inspect.setter
+    def tls_inspect(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "tls_inspect", value)
+
+
+if not MYPY:
+    class RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchArgsDict(TypedDict):
+        dest_address_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Address groups which should be matched against the traffic destination.
+        Maximum number of destination address groups is 10.
+        """
+        dest_fqdns: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Fully Qualified Domain Name (FQDN) which should be matched against
+        traffic destination. Maximum number of destination fqdn allowed is 100.
+        """
+        dest_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Destination IP address range in CIDR format. Required for
+        EGRESS rules.
+        """
+        dest_region_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Region codes whose IP addresses will be used to match for destination
+        of traffic. Should be specified as 2 letter country code defined as per
+        ISO 3166 alpha-2 country codes. ex."US"
+        Maximum number of destination region codes allowed is 5000.
+        """
+        dest_threat_intelligences: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Names of Network Threat Intelligence lists.
+        The IPs in these lists will be matched against traffic destination.
+        """
+        layer4_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchLayer4ConfigArgsDict']]]]
+        """
+        Pairs of IP protocols and ports that the rule should match.
+        Structure is documented below.
+        """
+        src_address_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Address groups which should be matched against the traffic source.
+        Maximum number of source address groups is 10.
+        """
+        src_fqdns: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Fully Qualified Domain Name (FQDN) which should be matched against
+        traffic source. Maximum number of source fqdn allowed is 100.
+        """
+        src_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Source IP address range in CIDR format. Required for
+        INGRESS rules.
+        """
+        src_region_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Region codes whose IP addresses will be used to match for source
+        of traffic. Should be specified as 2 letter country code defined as per
+        ISO 3166 alpha-2 country codes. ex."US"
+        Maximum number of source region codes allowed is 5000.
+        """
+        src_secure_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTagArgsDict']]]]
+        """
+        List of secure tag values, which should be matched at the source
+        of the traffic.
+        For INGRESS rule, if all the <code>srcSecureTag</code> are INEFFECTIVE,
+        and there is no <code>srcIpRange</code>, this rule will be ignored.
+        Maximum number of source tag values allowed is 256.
+        Structure is documented below.
+
+
+        <a name="nested_layer4_config"></a>The `layer4_config` block supports:
+        """
+        src_threat_intelligences: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Names of Network Threat Intelligence lists.
+        The IPs in these lists will be matched against traffic source.
+        """
+elif False:
+    RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchArgs:
+    def __init__(__self__, *,
+                 dest_address_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 dest_fqdns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 dest_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 dest_region_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 dest_threat_intelligences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 layer4_configs: Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchLayer4ConfigArgs']]]] = None,
+                 src_address_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 src_fqdns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 src_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 src_region_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 src_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTagArgs']]]] = None,
+                 src_threat_intelligences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_address_groups: Address groups which should be matched against the traffic destination.
+               Maximum number of destination address groups is 10.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against
+               traffic destination. Maximum number of destination fqdn allowed is 100.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_ip_ranges: Destination IP address range in CIDR format. Required for
+               EGRESS rules.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_region_codes: Region codes whose IP addresses will be used to match for destination
+               of traffic. Should be specified as 2 letter country code defined as per
+               ISO 3166 alpha-2 country codes. ex."US"
+               Maximum number of destination region codes allowed is 5000.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_threat_intelligences: Names of Network Threat Intelligence lists.
+               The IPs in these lists will be matched against traffic destination.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchLayer4ConfigArgs']]] layer4_configs: Pairs of IP protocols and ports that the rule should match.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_address_groups: Address groups which should be matched against the traffic source.
+               Maximum number of source address groups is 10.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against
+               traffic source. Maximum number of source fqdn allowed is 100.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_ip_ranges: Source IP address range in CIDR format. Required for
+               INGRESS rules.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_region_codes: Region codes whose IP addresses will be used to match for source
+               of traffic. Should be specified as 2 letter country code defined as per
+               ISO 3166 alpha-2 country codes. ex."US"
+               Maximum number of source region codes allowed is 5000.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTagArgs']]] src_secure_tags: List of secure tag values, which should be matched at the source
+               of the traffic.
+               For INGRESS rule, if all the <code>srcSecureTag</code> are INEFFECTIVE,
+               and there is no <code>srcIpRange</code>, this rule will be ignored.
+               Maximum number of source tag values allowed is 256.
+               Structure is documented below.
+               
+               
+               <a name="nested_layer4_config"></a>The `layer4_config` block supports:
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_threat_intelligences: Names of Network Threat Intelligence lists.
+               The IPs in these lists will be matched against traffic source.
+        """
+        if dest_address_groups is not None:
+            pulumi.set(__self__, "dest_address_groups", dest_address_groups)
+        if dest_fqdns is not None:
+            pulumi.set(__self__, "dest_fqdns", dest_fqdns)
+        if dest_ip_ranges is not None:
+            pulumi.set(__self__, "dest_ip_ranges", dest_ip_ranges)
+        if dest_region_codes is not None:
+            pulumi.set(__self__, "dest_region_codes", dest_region_codes)
+        if dest_threat_intelligences is not None:
+            pulumi.set(__self__, "dest_threat_intelligences", dest_threat_intelligences)
+        if layer4_configs is not None:
+            pulumi.set(__self__, "layer4_configs", layer4_configs)
+        if src_address_groups is not None:
+            pulumi.set(__self__, "src_address_groups", src_address_groups)
+        if src_fqdns is not None:
+            pulumi.set(__self__, "src_fqdns", src_fqdns)
+        if src_ip_ranges is not None:
+            pulumi.set(__self__, "src_ip_ranges", src_ip_ranges)
+        if src_region_codes is not None:
+            pulumi.set(__self__, "src_region_codes", src_region_codes)
+        if src_secure_tags is not None:
+            pulumi.set(__self__, "src_secure_tags", src_secure_tags)
+        if src_threat_intelligences is not None:
+            pulumi.set(__self__, "src_threat_intelligences", src_threat_intelligences)
+
+    @property
+    @pulumi.getter(name="destAddressGroups")
+    def dest_address_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Address groups which should be matched against the traffic destination.
+        Maximum number of destination address groups is 10.
+        """
+        return pulumi.get(self, "dest_address_groups")
+
+    @dest_address_groups.setter
+    def dest_address_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dest_address_groups", value)
+
+    @property
+    @pulumi.getter(name="destFqdns")
+    def dest_fqdns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Fully Qualified Domain Name (FQDN) which should be matched against
+        traffic destination. Maximum number of destination fqdn allowed is 100.
+        """
+        return pulumi.get(self, "dest_fqdns")
+
+    @dest_fqdns.setter
+    def dest_fqdns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dest_fqdns", value)
+
+    @property
+    @pulumi.getter(name="destIpRanges")
+    def dest_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Destination IP address range in CIDR format. Required for
+        EGRESS rules.
+        """
+        return pulumi.get(self, "dest_ip_ranges")
+
+    @dest_ip_ranges.setter
+    def dest_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dest_ip_ranges", value)
+
+    @property
+    @pulumi.getter(name="destRegionCodes")
+    def dest_region_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Region codes whose IP addresses will be used to match for destination
+        of traffic. Should be specified as 2 letter country code defined as per
+        ISO 3166 alpha-2 country codes. ex."US"
+        Maximum number of destination region codes allowed is 5000.
+        """
+        return pulumi.get(self, "dest_region_codes")
+
+    @dest_region_codes.setter
+    def dest_region_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dest_region_codes", value)
+
+    @property
+    @pulumi.getter(name="destThreatIntelligences")
+    def dest_threat_intelligences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Names of Network Threat Intelligence lists.
+        The IPs in these lists will be matched against traffic destination.
+        """
+        return pulumi.get(self, "dest_threat_intelligences")
+
+    @dest_threat_intelligences.setter
+    def dest_threat_intelligences(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dest_threat_intelligences", value)
+
+    @property
+    @pulumi.getter(name="layer4Configs")
+    def layer4_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchLayer4ConfigArgs']]]]:
+        """
+        Pairs of IP protocols and ports that the rule should match.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "layer4_configs")
+
+    @layer4_configs.setter
+    def layer4_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchLayer4ConfigArgs']]]]):
+        pulumi.set(self, "layer4_configs", value)
+
+    @property
+    @pulumi.getter(name="srcAddressGroups")
+    def src_address_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Address groups which should be matched against the traffic source.
+        Maximum number of source address groups is 10.
+        """
+        return pulumi.get(self, "src_address_groups")
+
+    @src_address_groups.setter
+    def src_address_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "src_address_groups", value)
+
+    @property
+    @pulumi.getter(name="srcFqdns")
+    def src_fqdns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Fully Qualified Domain Name (FQDN) which should be matched against
+        traffic source. Maximum number of source fqdn allowed is 100.
+        """
+        return pulumi.get(self, "src_fqdns")
+
+    @src_fqdns.setter
+    def src_fqdns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "src_fqdns", value)
+
+    @property
+    @pulumi.getter(name="srcIpRanges")
+    def src_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Source IP address range in CIDR format. Required for
+        INGRESS rules.
+        """
+        return pulumi.get(self, "src_ip_ranges")
+
+    @src_ip_ranges.setter
+    def src_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "src_ip_ranges", value)
+
+    @property
+    @pulumi.getter(name="srcRegionCodes")
+    def src_region_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Region codes whose IP addresses will be used to match for source
+        of traffic. Should be specified as 2 letter country code defined as per
+        ISO 3166 alpha-2 country codes. ex."US"
+        Maximum number of source region codes allowed is 5000.
+        """
+        return pulumi.get(self, "src_region_codes")
+
+    @src_region_codes.setter
+    def src_region_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "src_region_codes", value)
+
+    @property
+    @pulumi.getter(name="srcSecureTags")
+    def src_secure_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTagArgs']]]]:
+        """
+        List of secure tag values, which should be matched at the source
+        of the traffic.
+        For INGRESS rule, if all the <code>srcSecureTag</code> are INEFFECTIVE,
+        and there is no <code>srcIpRange</code>, this rule will be ignored.
+        Maximum number of source tag values allowed is 256.
+        Structure is documented below.
+
+
+        <a name="nested_layer4_config"></a>The `layer4_config` block supports:
+        """
+        return pulumi.get(self, "src_secure_tags")
+
+    @src_secure_tags.setter
+    def src_secure_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTagArgs']]]]):
+        pulumi.set(self, "src_secure_tags", value)
+
+    @property
+    @pulumi.getter(name="srcThreatIntelligences")
+    def src_threat_intelligences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Names of Network Threat Intelligence lists.
+        The IPs in these lists will be matched against traffic source.
+        """
+        return pulumi.get(self, "src_threat_intelligences")
+
+    @src_threat_intelligences.setter
+    def src_threat_intelligences(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "src_threat_intelligences", value)
+
+
+if not MYPY:
+    class RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchLayer4ConfigArgsDict(TypedDict):
+        ip_protocol: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The IP protocol to which this rule applies. The protocol
+        type is required when creating a firewall rule.
+        This value can either be one of the following well
+        known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp),
+        or the IP protocol number.
+        """
+        ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        (Output)
+        An optional list of ports to which this rule applies. This field
+        is only applicable for UDP or TCP protocol. Each entry must be
+        either an integer or a range. If not specified, this rule
+        applies to connections through any port.
+        Example inputs include: ["22"], ["80","443"], and
+        ["12345-12349"].
+        """
+elif False:
+    RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchLayer4ConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchLayer4ConfigArgs:
+    def __init__(__self__, *,
+                 ip_protocol: Optional[pulumi.Input[str]] = None,
+                 ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] ip_protocol: (Output)
+               The IP protocol to which this rule applies. The protocol
+               type is required when creating a firewall rule.
+               This value can either be one of the following well
+               known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp),
+               or the IP protocol number.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: (Output)
+               An optional list of ports to which this rule applies. This field
+               is only applicable for UDP or TCP protocol. Each entry must be
+               either an integer or a range. If not specified, this rule
+               applies to connections through any port.
+               Example inputs include: ["22"], ["80","443"], and
+               ["12345-12349"].
+        """
+        if ip_protocol is not None:
+            pulumi.set(__self__, "ip_protocol", ip_protocol)
+        if ports is not None:
+            pulumi.set(__self__, "ports", ports)
+
+    @property
+    @pulumi.getter(name="ipProtocol")
+    def ip_protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The IP protocol to which this rule applies. The protocol
+        type is required when creating a firewall rule.
+        This value can either be one of the following well
+        known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp),
+        or the IP protocol number.
+        """
+        return pulumi.get(self, "ip_protocol")
+
+    @ip_protocol.setter
+    def ip_protocol(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_protocol", value)
+
+    @property
+    @pulumi.getter
+    def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        (Output)
+        An optional list of ports to which this rule applies. This field
+        is only applicable for UDP or TCP protocol. Each entry must be
+        either an integer or a range. If not specified, this rule
+        applies to connections through any port.
+        Example inputs include: ["22"], ["80","443"], and
+        ["12345-12349"].
+        """
+        return pulumi.get(self, "ports")
+
+    @ports.setter
+    def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ports", value)
+
+
+if not MYPY:
+    class RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTagArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the secure tag, created with TagManager's TagValue API.
+        @pattern tagValues/[0-9]+
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        [Output Only] State of the secure tag, either `EFFECTIVE` or
+        `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
+        or its network is deleted.
+        """
+elif False:
+    RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTagArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTagArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Name of the secure tag, created with TagManager's TagValue API.
+               @pattern tagValues/[0-9]+
+        :param pulumi.Input[str] state: (Output)
+               [Output Only] State of the secure tag, either `EFFECTIVE` or
+               `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
+               or its network is deleted.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the secure tag, created with TagManager's TagValue API.
+        @pattern tagValues/[0-9]+
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        [Output Only] State of the secure tag, either `EFFECTIVE` or
+        `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
+        or its network is deleted.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
+
+if not MYPY:
+    class RegionNetworkFirewallPolicyWithRulesPredefinedRuleTargetSecureTagArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the secure tag, created with TagManager's TagValue API.
+        @pattern tagValues/[0-9]+
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        [Output Only] State of the secure tag, either `EFFECTIVE` or
+        `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
+        or its network is deleted.
+
+        - - -
+        """
+elif False:
+    RegionNetworkFirewallPolicyWithRulesPredefinedRuleTargetSecureTagArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionNetworkFirewallPolicyWithRulesPredefinedRuleTargetSecureTagArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Name of the secure tag, created with TagManager's TagValue API.
+               @pattern tagValues/[0-9]+
+        :param pulumi.Input[str] state: (Output)
+               [Output Only] State of the secure tag, either `EFFECTIVE` or
+               `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
+               or its network is deleted.
+               
+               - - -
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the secure tag, created with TagManager's TagValue API.
+        @pattern tagValues/[0-9]+
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        [Output Only] State of the secure tag, either `EFFECTIVE` or
+        `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
+        or its network is deleted.
+
+        - - -
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
+
+if not MYPY:
+    class RegionNetworkFirewallPolicyWithRulesRuleArgsDict(TypedDict):
+        action: pulumi.Input[str]
+        """
+        The Action to perform when the client connection triggers the rule. Can currently be either
+        "allow", "deny", "apply_security_profile_group" or "goto_next".
+        """
+        match: pulumi.Input['RegionNetworkFirewallPolicyWithRulesRuleMatchArgsDict']
+        """
+        A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+        Structure is documented below.
+        """
+        priority: pulumi.Input[int]
+        """
+        An integer indicating the priority of a rule in the list. The priority must be a value
+        between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
+        highest priority and 2147483647 is the lowest priority.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        A description of the rule.
+        """
+        direction: NotRequired[pulumi.Input[str]]
+        """
+        The direction in which this rule applies. If unspecified an INGRESS rule is created.
+        Possible values are: `INGRESS`, `EGRESS`.
+        """
+        disabled: NotRequired[pulumi.Input[bool]]
+        """
+        Denotes whether the firewall policy rule is disabled. When set to true,
+        the firewall policy rule is not enforced and traffic behaves as if it did
+        not exist. If this is unspecified, the firewall policy rule will be
+        enabled.
+        """
+        enable_logging: NotRequired[pulumi.Input[bool]]
+        """
+        Denotes whether to enable logging for a particular rule.
+        If logging is enabled, logs will be exported to the
+        configured export destination in Stackdriver.
+        """
+        rule_name: NotRequired[pulumi.Input[str]]
+        """
+        An optional name for the rule. This field is not a unique identifier
+        and can be updated.
+        """
+        security_profile_group: NotRequired[pulumi.Input[str]]
+        """
+        A fully-qualified URL of a SecurityProfile resource instance.
+        Example:
+        https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+        Must be specified if action is 'apply_security_profile_group'.
+        """
+        target_secure_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyWithRulesRuleTargetSecureTagArgsDict']]]]
+        """
+        A list of secure tags that controls which instances the firewall rule
+        applies to. If <code>targetSecureTag</code> are specified, then the
+        firewall rule applies only to instances in the VPC network that have one
+        of those EFFECTIVE secure tags, if all the target_secure_tag are in
+        INEFFECTIVE state, then this rule will be ignored.
+        <code>targetSecureTag</code> may not be set at the same time as
+        <code>targetServiceAccounts</code>.
+        If neither <code>targetServiceAccounts</code> nor
+        <code>targetSecureTag</code> are specified, the firewall rule applies
+        to all instances on the specified network.
+        Maximum number of target label tags allowed is 256.
+        Structure is documented below.
+        """
+        target_service_accounts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of service accounts indicating the sets of
+        instances that are applied with this rule.
+        """
+        tls_inspect: NotRequired[pulumi.Input[bool]]
+        """
+        Boolean flag indicating if the traffic should be TLS decrypted.
+        It can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
+        """
+elif False:
+    RegionNetworkFirewallPolicyWithRulesRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionNetworkFirewallPolicyWithRulesRuleArgs:
+    def __init__(__self__, *,
+                 action: pulumi.Input[str],
+                 match: pulumi.Input['RegionNetworkFirewallPolicyWithRulesRuleMatchArgs'],
+                 priority: pulumi.Input[int],
+                 description: Optional[pulumi.Input[str]] = None,
+                 direction: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
+                 enable_logging: Optional[pulumi.Input[bool]] = None,
+                 rule_name: Optional[pulumi.Input[str]] = None,
+                 security_profile_group: Optional[pulumi.Input[str]] = None,
+                 target_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyWithRulesRuleTargetSecureTagArgs']]]] = None,
+                 target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tls_inspect: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] action: The Action to perform when the client connection triggers the rule. Can currently be either
+               "allow", "deny", "apply_security_profile_group" or "goto_next".
+        :param pulumi.Input['RegionNetworkFirewallPolicyWithRulesRuleMatchArgs'] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+               Structure is documented below.
+        :param pulumi.Input[int] priority: An integer indicating the priority of a rule in the list. The priority must be a value
+               between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
+               highest priority and 2147483647 is the lowest priority.
+        :param pulumi.Input[str] description: A description of the rule.
+        :param pulumi.Input[str] direction: The direction in which this rule applies. If unspecified an INGRESS rule is created.
+               Possible values are: `INGRESS`, `EGRESS`.
+        :param pulumi.Input[bool] disabled: Denotes whether the firewall policy rule is disabled. When set to true,
+               the firewall policy rule is not enforced and traffic behaves as if it did
+               not exist. If this is unspecified, the firewall policy rule will be
+               enabled.
+        :param pulumi.Input[bool] enable_logging: Denotes whether to enable logging for a particular rule.
+               If logging is enabled, logs will be exported to the
+               configured export destination in Stackdriver.
+        :param pulumi.Input[str] rule_name: An optional name for the rule. This field is not a unique identifier
+               and can be updated.
+        :param pulumi.Input[str] security_profile_group: A fully-qualified URL of a SecurityProfile resource instance.
+               Example:
+               https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+               Must be specified if action is 'apply_security_profile_group'.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyWithRulesRuleTargetSecureTagArgs']]] target_secure_tags: A list of secure tags that controls which instances the firewall rule
+               applies to. If <code>targetSecureTag</code> are specified, then the
+               firewall rule applies only to instances in the VPC network that have one
+               of those EFFECTIVE secure tags, if all the target_secure_tag are in
+               INEFFECTIVE state, then this rule will be ignored.
+               <code>targetSecureTag</code> may not be set at the same time as
+               <code>targetServiceAccounts</code>.
+               If neither <code>targetServiceAccounts</code> nor
+               <code>targetSecureTag</code> are specified, the firewall rule applies
+               to all instances on the specified network.
+               Maximum number of target label tags allowed is 256.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_service_accounts: A list of service accounts indicating the sets of
+               instances that are applied with this rule.
+        :param pulumi.Input[bool] tls_inspect: Boolean flag indicating if the traffic should be TLS decrypted.
+               It can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "match", match)
+        pulumi.set(__self__, "priority", priority)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if enable_logging is not None:
+            pulumi.set(__self__, "enable_logging", enable_logging)
+        if rule_name is not None:
+            pulumi.set(__self__, "rule_name", rule_name)
+        if security_profile_group is not None:
+            pulumi.set(__self__, "security_profile_group", security_profile_group)
+        if target_secure_tags is not None:
+            pulumi.set(__self__, "target_secure_tags", target_secure_tags)
+        if target_service_accounts is not None:
+            pulumi.set(__self__, "target_service_accounts", target_service_accounts)
+        if tls_inspect is not None:
+            pulumi.set(__self__, "tls_inspect", tls_inspect)
+
+    @property
+    @pulumi.getter
+    def action(self) -> pulumi.Input[str]:
+        """
+        The Action to perform when the client connection triggers the rule. Can currently be either
+        "allow", "deny", "apply_security_profile_group" or "goto_next".
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: pulumi.Input[str]):
+        pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter
+    def match(self) -> pulumi.Input['RegionNetworkFirewallPolicyWithRulesRuleMatchArgs']:
+        """
+        A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "match")
+
+    @match.setter
+    def match(self, value: pulumi.Input['RegionNetworkFirewallPolicyWithRulesRuleMatchArgs']):
+        pulumi.set(self, "match", value)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> pulumi.Input[int]:
+        """
+        An integer indicating the priority of a rule in the list. The priority must be a value
+        between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
+        highest priority and 2147483647 is the lowest priority.
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: pulumi.Input[int]):
+        pulumi.set(self, "priority", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description of the rule.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[pulumi.Input[str]]:
+        """
+        The direction in which this rule applies. If unspecified an INGRESS rule is created.
+        Possible values are: `INGRESS`, `EGRESS`.
+        """
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "direction", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Denotes whether the firewall policy rule is disabled. When set to true,
+        the firewall policy rule is not enforced and traffic behaves as if it did
+        not exist. If this is unspecified, the firewall policy rule will be
+        enabled.
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter(name="enableLogging")
+    def enable_logging(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Denotes whether to enable logging for a particular rule.
+        If logging is enabled, logs will be exported to the
+        configured export destination in Stackdriver.
+        """
+        return pulumi.get(self, "enable_logging")
+
+    @enable_logging.setter
+    def enable_logging(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_logging", value)
+
+    @property
+    @pulumi.getter(name="ruleName")
+    def rule_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional name for the rule. This field is not a unique identifier
+        and can be updated.
+        """
+        return pulumi.get(self, "rule_name")
+
+    @rule_name.setter
+    def rule_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rule_name", value)
+
+    @property
+    @pulumi.getter(name="securityProfileGroup")
+    def security_profile_group(self) -> Optional[pulumi.Input[str]]:
+        """
+        A fully-qualified URL of a SecurityProfile resource instance.
+        Example:
+        https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+        Must be specified if action is 'apply_security_profile_group'.
+        """
+        return pulumi.get(self, "security_profile_group")
+
+    @security_profile_group.setter
+    def security_profile_group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_profile_group", value)
+
+    @property
+    @pulumi.getter(name="targetSecureTags")
+    def target_secure_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyWithRulesRuleTargetSecureTagArgs']]]]:
+        """
+        A list of secure tags that controls which instances the firewall rule
+        applies to. If <code>targetSecureTag</code> are specified, then the
+        firewall rule applies only to instances in the VPC network that have one
+        of those EFFECTIVE secure tags, if all the target_secure_tag are in
+        INEFFECTIVE state, then this rule will be ignored.
+        <code>targetSecureTag</code> may not be set at the same time as
+        <code>targetServiceAccounts</code>.
+        If neither <code>targetServiceAccounts</code> nor
+        <code>targetSecureTag</code> are specified, the firewall rule applies
+        to all instances on the specified network.
+        Maximum number of target label tags allowed is 256.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "target_secure_tags")
+
+    @target_secure_tags.setter
+    def target_secure_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyWithRulesRuleTargetSecureTagArgs']]]]):
+        pulumi.set(self, "target_secure_tags", value)
+
+    @property
+    @pulumi.getter(name="targetServiceAccounts")
+    def target_service_accounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of service accounts indicating the sets of
+        instances that are applied with this rule.
+        """
+        return pulumi.get(self, "target_service_accounts")
+
+    @target_service_accounts.setter
+    def target_service_accounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "target_service_accounts", value)
+
+    @property
+    @pulumi.getter(name="tlsInspect")
+    def tls_inspect(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean flag indicating if the traffic should be TLS decrypted.
+        It can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
+        """
+        return pulumi.get(self, "tls_inspect")
+
+    @tls_inspect.setter
+    def tls_inspect(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "tls_inspect", value)
+
+
+if not MYPY:
+    class RegionNetworkFirewallPolicyWithRulesRuleMatchArgsDict(TypedDict):
+        layer4_configs: pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArgsDict']]]
+        """
+        Pairs of IP protocols and ports that the rule should match.
+        Structure is documented below.
+        """
+        dest_address_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Address groups which should be matched against the traffic destination.
+        Maximum number of destination address groups is 10.
+        """
+        dest_fqdns: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Fully Qualified Domain Name (FQDN) which should be matched against
+        traffic destination. Maximum number of destination fqdn allowed is 100.
+        """
+        dest_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Destination IP address range in CIDR format. Required for
+        EGRESS rules.
+        """
+        dest_region_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Region codes whose IP addresses will be used to match for destination
+        of traffic. Should be specified as 2 letter country code defined as per
+        ISO 3166 alpha-2 country codes. ex."US"
+        Maximum number of destination region codes allowed is 5000.
+        """
+        dest_threat_intelligences: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Names of Network Threat Intelligence lists.
+        The IPs in these lists will be matched against traffic destination.
+        """
+        src_address_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Address groups which should be matched against the traffic source.
+        Maximum number of source address groups is 10.
+        """
+        src_fqdns: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Fully Qualified Domain Name (FQDN) which should be matched against
+        traffic source. Maximum number of source fqdn allowed is 100.
+        """
+        src_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Source IP address range in CIDR format. Required for
+        INGRESS rules.
+        """
+        src_region_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Region codes whose IP addresses will be used to match for source
+        of traffic. Should be specified as 2 letter country code defined as per
+        ISO 3166 alpha-2 country codes. ex."US"
+        Maximum number of source region codes allowed is 5000.
+        """
+        src_secure_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyWithRulesRuleMatchSrcSecureTagArgsDict']]]]
+        """
+        List of secure tag values, which should be matched at the source
+        of the traffic.
+        For INGRESS rule, if all the <code>srcSecureTag</code> are INEFFECTIVE,
+        and there is no <code>srcIpRange</code>, this rule will be ignored.
+        Maximum number of source tag values allowed is 256.
+        Structure is documented below.
+
+
+        <a name="nested_layer4_config"></a>The `layer4_config` block supports:
+        """
+        src_threat_intelligences: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Names of Network Threat Intelligence lists.
+        The IPs in these lists will be matched against traffic source.
+        """
+elif False:
+    RegionNetworkFirewallPolicyWithRulesRuleMatchArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionNetworkFirewallPolicyWithRulesRuleMatchArgs:
+    def __init__(__self__, *,
+                 layer4_configs: pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArgs']]],
+                 dest_address_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 dest_fqdns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 dest_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 dest_region_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 dest_threat_intelligences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 src_address_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 src_fqdns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 src_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 src_region_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 src_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyWithRulesRuleMatchSrcSecureTagArgs']]]] = None,
+                 src_threat_intelligences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArgs']]] layer4_configs: Pairs of IP protocols and ports that the rule should match.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_address_groups: Address groups which should be matched against the traffic destination.
+               Maximum number of destination address groups is 10.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against
+               traffic destination. Maximum number of destination fqdn allowed is 100.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_ip_ranges: Destination IP address range in CIDR format. Required for
+               EGRESS rules.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_region_codes: Region codes whose IP addresses will be used to match for destination
+               of traffic. Should be specified as 2 letter country code defined as per
+               ISO 3166 alpha-2 country codes. ex."US"
+               Maximum number of destination region codes allowed is 5000.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_threat_intelligences: Names of Network Threat Intelligence lists.
+               The IPs in these lists will be matched against traffic destination.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_address_groups: Address groups which should be matched against the traffic source.
+               Maximum number of source address groups is 10.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against
+               traffic source. Maximum number of source fqdn allowed is 100.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_ip_ranges: Source IP address range in CIDR format. Required for
+               INGRESS rules.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_region_codes: Region codes whose IP addresses will be used to match for source
+               of traffic. Should be specified as 2 letter country code defined as per
+               ISO 3166 alpha-2 country codes. ex."US"
+               Maximum number of source region codes allowed is 5000.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyWithRulesRuleMatchSrcSecureTagArgs']]] src_secure_tags: List of secure tag values, which should be matched at the source
+               of the traffic.
+               For INGRESS rule, if all the <code>srcSecureTag</code> are INEFFECTIVE,
+               and there is no <code>srcIpRange</code>, this rule will be ignored.
+               Maximum number of source tag values allowed is 256.
+               Structure is documented below.
+               
+               
+               <a name="nested_layer4_config"></a>The `layer4_config` block supports:
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_threat_intelligences: Names of Network Threat Intelligence lists.
+               The IPs in these lists will be matched against traffic source.
+        """
+        pulumi.set(__self__, "layer4_configs", layer4_configs)
+        if dest_address_groups is not None:
+            pulumi.set(__self__, "dest_address_groups", dest_address_groups)
+        if dest_fqdns is not None:
+            pulumi.set(__self__, "dest_fqdns", dest_fqdns)
+        if dest_ip_ranges is not None:
+            pulumi.set(__self__, "dest_ip_ranges", dest_ip_ranges)
+        if dest_region_codes is not None:
+            pulumi.set(__self__, "dest_region_codes", dest_region_codes)
+        if dest_threat_intelligences is not None:
+            pulumi.set(__self__, "dest_threat_intelligences", dest_threat_intelligences)
+        if src_address_groups is not None:
+            pulumi.set(__self__, "src_address_groups", src_address_groups)
+        if src_fqdns is not None:
+            pulumi.set(__self__, "src_fqdns", src_fqdns)
+        if src_ip_ranges is not None:
+            pulumi.set(__self__, "src_ip_ranges", src_ip_ranges)
+        if src_region_codes is not None:
+            pulumi.set(__self__, "src_region_codes", src_region_codes)
+        if src_secure_tags is not None:
+            pulumi.set(__self__, "src_secure_tags", src_secure_tags)
+        if src_threat_intelligences is not None:
+            pulumi.set(__self__, "src_threat_intelligences", src_threat_intelligences)
+
+    @property
+    @pulumi.getter(name="layer4Configs")
+    def layer4_configs(self) -> pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArgs']]]:
+        """
+        Pairs of IP protocols and ports that the rule should match.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "layer4_configs")
+
+    @layer4_configs.setter
+    def layer4_configs(self, value: pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArgs']]]):
+        pulumi.set(self, "layer4_configs", value)
+
+    @property
+    @pulumi.getter(name="destAddressGroups")
+    def dest_address_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Address groups which should be matched against the traffic destination.
+        Maximum number of destination address groups is 10.
+        """
+        return pulumi.get(self, "dest_address_groups")
+
+    @dest_address_groups.setter
+    def dest_address_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dest_address_groups", value)
+
+    @property
+    @pulumi.getter(name="destFqdns")
+    def dest_fqdns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Fully Qualified Domain Name (FQDN) which should be matched against
+        traffic destination. Maximum number of destination fqdn allowed is 100.
+        """
+        return pulumi.get(self, "dest_fqdns")
+
+    @dest_fqdns.setter
+    def dest_fqdns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dest_fqdns", value)
+
+    @property
+    @pulumi.getter(name="destIpRanges")
+    def dest_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Destination IP address range in CIDR format. Required for
+        EGRESS rules.
+        """
+        return pulumi.get(self, "dest_ip_ranges")
+
+    @dest_ip_ranges.setter
+    def dest_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dest_ip_ranges", value)
+
+    @property
+    @pulumi.getter(name="destRegionCodes")
+    def dest_region_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Region codes whose IP addresses will be used to match for destination
+        of traffic. Should be specified as 2 letter country code defined as per
+        ISO 3166 alpha-2 country codes. ex."US"
+        Maximum number of destination region codes allowed is 5000.
+        """
+        return pulumi.get(self, "dest_region_codes")
+
+    @dest_region_codes.setter
+    def dest_region_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dest_region_codes", value)
+
+    @property
+    @pulumi.getter(name="destThreatIntelligences")
+    def dest_threat_intelligences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Names of Network Threat Intelligence lists.
+        The IPs in these lists will be matched against traffic destination.
+        """
+        return pulumi.get(self, "dest_threat_intelligences")
+
+    @dest_threat_intelligences.setter
+    def dest_threat_intelligences(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dest_threat_intelligences", value)
+
+    @property
+    @pulumi.getter(name="srcAddressGroups")
+    def src_address_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Address groups which should be matched against the traffic source.
+        Maximum number of source address groups is 10.
+        """
+        return pulumi.get(self, "src_address_groups")
+
+    @src_address_groups.setter
+    def src_address_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "src_address_groups", value)
+
+    @property
+    @pulumi.getter(name="srcFqdns")
+    def src_fqdns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Fully Qualified Domain Name (FQDN) which should be matched against
+        traffic source. Maximum number of source fqdn allowed is 100.
+        """
+        return pulumi.get(self, "src_fqdns")
+
+    @src_fqdns.setter
+    def src_fqdns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "src_fqdns", value)
+
+    @property
+    @pulumi.getter(name="srcIpRanges")
+    def src_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Source IP address range in CIDR format. Required for
+        INGRESS rules.
+        """
+        return pulumi.get(self, "src_ip_ranges")
+
+    @src_ip_ranges.setter
+    def src_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "src_ip_ranges", value)
+
+    @property
+    @pulumi.getter(name="srcRegionCodes")
+    def src_region_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Region codes whose IP addresses will be used to match for source
+        of traffic. Should be specified as 2 letter country code defined as per
+        ISO 3166 alpha-2 country codes. ex."US"
+        Maximum number of source region codes allowed is 5000.
+        """
+        return pulumi.get(self, "src_region_codes")
+
+    @src_region_codes.setter
+    def src_region_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "src_region_codes", value)
+
+    @property
+    @pulumi.getter(name="srcSecureTags")
+    def src_secure_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyWithRulesRuleMatchSrcSecureTagArgs']]]]:
+        """
+        List of secure tag values, which should be matched at the source
+        of the traffic.
+        For INGRESS rule, if all the <code>srcSecureTag</code> are INEFFECTIVE,
+        and there is no <code>srcIpRange</code>, this rule will be ignored.
+        Maximum number of source tag values allowed is 256.
+        Structure is documented below.
+
+
+        <a name="nested_layer4_config"></a>The `layer4_config` block supports:
+        """
+        return pulumi.get(self, "src_secure_tags")
+
+    @src_secure_tags.setter
+    def src_secure_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyWithRulesRuleMatchSrcSecureTagArgs']]]]):
+        pulumi.set(self, "src_secure_tags", value)
+
+    @property
+    @pulumi.getter(name="srcThreatIntelligences")
+    def src_threat_intelligences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Names of Network Threat Intelligence lists.
+        The IPs in these lists will be matched against traffic source.
+        """
+        return pulumi.get(self, "src_threat_intelligences")
+
+    @src_threat_intelligences.setter
+    def src_threat_intelligences(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "src_threat_intelligences", value)
+
+
+if not MYPY:
+    class RegionNetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArgsDict(TypedDict):
+        ip_protocol: pulumi.Input[str]
+        """
+        (Output)
+        The IP protocol to which this rule applies. The protocol
+        type is required when creating a firewall rule.
+        This value can either be one of the following well
+        known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp),
+        or the IP protocol number.
+        """
+        ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        (Output)
+        An optional list of ports to which this rule applies. This field
+        is only applicable for UDP or TCP protocol. Each entry must be
+        either an integer or a range. If not specified, this rule
+        applies to connections through any port.
+        Example inputs include: ["22"], ["80","443"], and
+        ["12345-12349"].
+        """
+elif False:
+    RegionNetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionNetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArgs:
+    def __init__(__self__, *,
+                 ip_protocol: pulumi.Input[str],
+                 ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] ip_protocol: (Output)
+               The IP protocol to which this rule applies. The protocol
+               type is required when creating a firewall rule.
+               This value can either be one of the following well
+               known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp),
+               or the IP protocol number.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: (Output)
+               An optional list of ports to which this rule applies. This field
+               is only applicable for UDP or TCP protocol. Each entry must be
+               either an integer or a range. If not specified, this rule
+               applies to connections through any port.
+               Example inputs include: ["22"], ["80","443"], and
+               ["12345-12349"].
+        """
+        pulumi.set(__self__, "ip_protocol", ip_protocol)
+        if ports is not None:
+            pulumi.set(__self__, "ports", ports)
+
+    @property
+    @pulumi.getter(name="ipProtocol")
+    def ip_protocol(self) -> pulumi.Input[str]:
+        """
+        (Output)
+        The IP protocol to which this rule applies. The protocol
+        type is required when creating a firewall rule.
+        This value can either be one of the following well
+        known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp),
+        or the IP protocol number.
+        """
+        return pulumi.get(self, "ip_protocol")
+
+    @ip_protocol.setter
+    def ip_protocol(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ip_protocol", value)
+
+    @property
+    @pulumi.getter
+    def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        (Output)
+        An optional list of ports to which this rule applies. This field
+        is only applicable for UDP or TCP protocol. Each entry must be
+        either an integer or a range. If not specified, this rule
+        applies to connections through any port.
+        Example inputs include: ["22"], ["80","443"], and
+        ["12345-12349"].
+        """
+        return pulumi.get(self, "ports")
+
+    @ports.setter
+    def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ports", value)
+
+
+if not MYPY:
+    class RegionNetworkFirewallPolicyWithRulesRuleMatchSrcSecureTagArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the secure tag, created with TagManager's TagValue API.
+        @pattern tagValues/[0-9]+
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        [Output Only] State of the secure tag, either `EFFECTIVE` or
+        `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
+        or its network is deleted.
+        """
+elif False:
+    RegionNetworkFirewallPolicyWithRulesRuleMatchSrcSecureTagArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionNetworkFirewallPolicyWithRulesRuleMatchSrcSecureTagArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Name of the secure tag, created with TagManager's TagValue API.
+               @pattern tagValues/[0-9]+
+        :param pulumi.Input[str] state: (Output)
+               [Output Only] State of the secure tag, either `EFFECTIVE` or
+               `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
+               or its network is deleted.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the secure tag, created with TagManager's TagValue API.
+        @pattern tagValues/[0-9]+
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        [Output Only] State of the secure tag, either `EFFECTIVE` or
+        `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
+        or its network is deleted.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
+
+if not MYPY:
+    class RegionNetworkFirewallPolicyWithRulesRuleTargetSecureTagArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the secure tag, created with TagManager's TagValue API.
+        @pattern tagValues/[0-9]+
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        [Output Only] State of the secure tag, either `EFFECTIVE` or
+        `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
+        or its network is deleted.
+
+        - - -
+        """
+elif False:
+    RegionNetworkFirewallPolicyWithRulesRuleTargetSecureTagArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionNetworkFirewallPolicyWithRulesRuleTargetSecureTagArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Name of the secure tag, created with TagManager's TagValue API.
+               @pattern tagValues/[0-9]+
+        :param pulumi.Input[str] state: (Output)
+               [Output Only] State of the secure tag, either `EFFECTIVE` or
+               `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
+               or its network is deleted.
+               
+               - - -
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the secure tag, created with TagManager's TagValue API.
+        @pattern tagValues/[0-9]+
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        [Output Only] State of the secure tag, either `EFFECTIVE` or
+        `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
+        or its network is deleted.
+
+        - - -
         """
         return pulumi.get(self, "state")
 

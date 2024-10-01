@@ -157,6 +157,7 @@ namespace Pulumi.Gcp.Compute
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly ImmutableArray<string> InitialNatIps;
         public readonly ImmutableArray<Outputs.GetRouterNatLogConfigResult> LogConfigs;
         public readonly int MaxPortsPerVm;
         public readonly int MinPortsPerVm;
@@ -190,6 +191,8 @@ namespace Pulumi.Gcp.Compute
             int icmpIdleTimeoutSec,
 
             string id,
+
+            ImmutableArray<string> initialNatIps,
 
             ImmutableArray<Outputs.GetRouterNatLogConfigResult> logConfigs,
 
@@ -232,6 +235,7 @@ namespace Pulumi.Gcp.Compute
             EndpointTypes = endpointTypes;
             IcmpIdleTimeoutSec = icmpIdleTimeoutSec;
             Id = id;
+            InitialNatIps = initialNatIps;
             LogConfigs = logConfigs;
             MaxPortsPerVm = maxPortsPerVm;
             MinPortsPerVm = minPortsPerVm;

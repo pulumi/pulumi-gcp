@@ -413,6 +413,44 @@ class Service(pulumi.CustomResource):
                 "latest_revision": True,
             }])
         ```
+        ### Cloud Run Service Gpu
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            name="cloudrun-srv",
+            location="us-central1",
+            metadata={
+                "annotations": {
+                    "run_googleapis_com_launch_stage": "BETA",
+                },
+            },
+            template={
+                "metadata": {
+                    "annotations": {
+                        "autoscaling_knative_dev_max_scale": "1",
+                        "run_googleapis_com_cpu_throttling": "false",
+                    },
+                },
+                "spec": {
+                    "containers": [{
+                        "image": "gcr.io/cloudrun/hello",
+                        "resources": {
+                            "limits": {
+                                "cpu": "4",
+                                "memory": "16Gi",
+                                "nvidia_com_gpu": "1",
+                            },
+                        },
+                    }],
+                    "node_selector": {
+                        "run_googleapis_com_accelerator": "nvidia-l4",
+                    },
+                },
+            })
+        ```
         ### Cloud Run Service Sql
 
         ```python
@@ -704,6 +742,44 @@ class Service(pulumi.CustomResource):
                 "percent": 100,
                 "latest_revision": True,
             }])
+        ```
+        ### Cloud Run Service Gpu
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            name="cloudrun-srv",
+            location="us-central1",
+            metadata={
+                "annotations": {
+                    "run_googleapis_com_launch_stage": "BETA",
+                },
+            },
+            template={
+                "metadata": {
+                    "annotations": {
+                        "autoscaling_knative_dev_max_scale": "1",
+                        "run_googleapis_com_cpu_throttling": "false",
+                    },
+                },
+                "spec": {
+                    "containers": [{
+                        "image": "gcr.io/cloudrun/hello",
+                        "resources": {
+                            "limits": {
+                                "cpu": "4",
+                                "memory": "16Gi",
+                                "nvidia_com_gpu": "1",
+                            },
+                        },
+                    }],
+                    "node_selector": {
+                        "run_googleapis_com_accelerator": "nvidia-l4",
+                    },
+                },
+            })
         ```
         ### Cloud Run Service Sql
 

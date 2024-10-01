@@ -261,6 +261,20 @@ public class RegionCommitment extends com.pulumi.resources.CustomResource {
         return this.endTimestamp;
     }
     /**
+     * Specifies the already existing reservations to attach to the Commitment.
+     * 
+     */
+    @Export(name="existingReservations", refs={String.class}, tree="[0]")
+    private Output<String> existingReservations;
+
+    /**
+     * @return Specifies the already existing reservations to attach to the Commitment.
+     * 
+     */
+    public Output<String> existingReservations() {
+        return this.existingReservations;
+    }
+    /**
      * The license specification required as part of a license commitment.
      * Structure is documented below.
      * 

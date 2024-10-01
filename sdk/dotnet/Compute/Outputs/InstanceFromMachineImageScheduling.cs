@@ -18,6 +18,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly bool? AutomaticRestart;
         /// <summary>
+        /// Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+        /// </summary>
+        public readonly int? HostErrorTimeoutSeconds;
+        /// <summary>
         /// Specifies the action GCE should take when SPOT VM is preempted.
         /// </summary>
         public readonly string? InstanceTerminationAction;
@@ -62,6 +66,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         private InstanceFromMachineImageScheduling(
             bool? automaticRestart,
 
+            int? hostErrorTimeoutSeconds,
+
             string? instanceTerminationAction,
 
             Outputs.InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeout? localSsdRecoveryTimeout,
@@ -83,6 +89,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             string? provisioningModel)
         {
             AutomaticRestart = automaticRestart;
+            HostErrorTimeoutSeconds = hostErrorTimeoutSeconds;
             InstanceTerminationAction = instanceTerminationAction;
             LocalSsdRecoveryTimeout = localSsdRecoveryTimeout;
             MaintenanceInterval = maintenanceInterval;

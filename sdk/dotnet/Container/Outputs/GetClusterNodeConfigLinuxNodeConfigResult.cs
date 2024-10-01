@@ -18,6 +18,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string CgroupMode;
         /// <summary>
+        /// Amounts for 2M and 1G hugepages.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClusterNodeConfigLinuxNodeConfigHugepagesConfigResult> HugepagesConfigs;
+        /// <summary>
         /// The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Sysctls;
@@ -26,9 +30,12 @@ namespace Pulumi.Gcp.Container.Outputs
         private GetClusterNodeConfigLinuxNodeConfigResult(
             string cgroupMode,
 
+            ImmutableArray<Outputs.GetClusterNodeConfigLinuxNodeConfigHugepagesConfigResult> hugepagesConfigs,
+
             ImmutableDictionary<string, string> sysctls)
         {
             CgroupMode = cgroupMode;
+            HugepagesConfigs = hugepagesConfigs;
             Sysctls = sysctls;
         }
     }

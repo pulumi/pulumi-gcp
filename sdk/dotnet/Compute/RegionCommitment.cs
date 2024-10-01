@@ -168,6 +168,12 @@ namespace Pulumi.Gcp.Compute
         public Output<string> EndTimestamp { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies the already existing reservations to attach to the Commitment.
+        /// </summary>
+        [Output("existingReservations")]
+        public Output<string> ExistingReservations { get; private set; } = null!;
+
+        /// <summary>
         /// The license specification required as part of a license commitment.
         /// Structure is documented below.
         /// </summary>
@@ -323,6 +329,12 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Specifies the already existing reservations to attach to the Commitment.
+        /// </summary>
+        [Input("existingReservations")]
+        public Input<string>? ExistingReservations { get; set; }
+
+        /// <summary>
         /// The license specification required as part of a license commitment.
         /// Structure is documented below.
         /// </summary>
@@ -437,6 +449,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("endTimestamp")]
         public Input<string>? EndTimestamp { get; set; }
+
+        /// <summary>
+        /// Specifies the already existing reservations to attach to the Commitment.
+        /// </summary>
+        [Input("existingReservations")]
+        public Input<string>? ExistingReservations { get; set; }
 
         /// <summary>
         /// The license specification required as part of a license commitment.

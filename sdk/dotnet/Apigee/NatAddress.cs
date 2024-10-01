@@ -11,7 +11,6 @@ namespace Pulumi.Gcp.Apigee
 {
     /// <summary>
     /// Apigee NAT (network address translation) address. A NAT address is a static external IP address used for Internet egress traffic. This is not avaible for Apigee hybrid.
-    /// Apigee NAT addresses are not automatically activated because they might require explicit allow entries on the target systems first. See https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.instances.natAddresses/activate
     /// 
     /// To get more information about NatAddress, see:
     /// 
@@ -117,6 +116,103 @@ namespace Pulumi.Gcp.Apigee
     /// 
     /// });
     /// ```
+    /// ### Apigee Nat Address With Activate
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var current = Gcp.Organizations.GetClientConfig.Invoke();
+    /// 
+    ///     var apigeeNetwork = new Gcp.Compute.Network("apigee_network", new()
+    ///     {
+    ///         Name = "apigee-network",
+    ///     });
+    /// 
+    ///     var apigeeRange = new Gcp.Compute.GlobalAddress("apigee_range", new()
+    ///     {
+    ///         Name = "apigee-range",
+    ///         Purpose = "VPC_PEERING",
+    ///         AddressType = "INTERNAL",
+    ///         PrefixLength = 21,
+    ///         Network = apigeeNetwork.Id,
+    ///     });
+    /// 
+    ///     var apigeeVpcConnection = new Gcp.ServiceNetworking.Connection("apigee_vpc_connection", new()
+    ///     {
+    ///         Network = apigeeNetwork.Id,
+    ///         Service = "servicenetworking.googleapis.com",
+    ///         ReservedPeeringRanges = new[]
+    ///         {
+    ///             apigeeRange.Name,
+    ///         },
+    ///     });
+    /// 
+    ///     var apigeeKeyring = new Gcp.Kms.KeyRing("apigee_keyring", new()
+    ///     {
+    ///         Name = "apigee-keyring",
+    ///         Location = "us-central1",
+    ///     });
+    /// 
+    ///     var apigeeKey = new Gcp.Kms.CryptoKey("apigee_key", new()
+    ///     {
+    ///         Name = "apigee-key",
+    ///         KeyRing = apigeeKeyring.Id,
+    ///     });
+    /// 
+    ///     var apigeeSa = new Gcp.Projects.ServiceIdentity("apigee_sa", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         Service = apigee.Service,
+    ///     });
+    /// 
+    ///     var apigeeSaKeyuser = new Gcp.Kms.CryptoKeyIAMMember("apigee_sa_keyuser", new()
+    ///     {
+    ///         CryptoKeyId = apigeeKey.Id,
+    ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+    ///         Member = apigeeSa.Member,
+    ///     });
+    /// 
+    ///     var apigeeOrg = new Gcp.Apigee.Organization("apigee_org", new()
+    ///     {
+    ///         AnalyticsRegion = "us-central1",
+    ///         DisplayName = "apigee-org",
+    ///         Description = "Terraform-provisioned Apigee Org.",
+    ///         ProjectId = current.Apply(getClientConfigResult =&gt; getClientConfigResult.Project),
+    ///         AuthorizedNetwork = apigeeNetwork.Id,
+    ///         RuntimeDatabaseEncryptionKeyName = apigeeKey.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             apigeeVpcConnection,
+    ///             apigeeSaKeyuser,
+    ///         },
+    ///     });
+    /// 
+    ///     var apigeeInstance = new Gcp.Apigee.Instance("apigee_instance", new()
+    ///     {
+    ///         Name = "apigee-instance",
+    ///         Location = "us-central1",
+    ///         Description = "Terraform-managed Apigee Runtime Instance",
+    ///         DisplayName = "apigee-instance",
+    ///         OrgId = apigeeOrg.Id,
+    ///         DiskEncryptionKeyName = apigeeKey.Id,
+    ///     });
+    /// 
+    ///     var apigee_nat = new Gcp.Apigee.NatAddress("apigee-nat", new()
+    ///     {
+    ///         Name = "my-nat-address",
+    ///         Activate = true,
+    ///         InstanceId = apigeeInstance.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -139,6 +235,12 @@ namespace Pulumi.Gcp.Apigee
     [GcpResourceType("gcp:apigee/natAddress:NatAddress")]
     public partial class NatAddress : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Flag that specifies whether the reserved NAT address should be activate.
+        /// </summary>
+        [Output("activate")]
+        public Output<bool?> Activate { get; private set; } = null!;
+
         /// <summary>
         /// The Apigee instance associated with the Apigee environment,
         /// in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
@@ -214,6 +316,12 @@ namespace Pulumi.Gcp.Apigee
     public sealed class NatAddressArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Flag that specifies whether the reserved NAT address should be activate.
+        /// </summary>
+        [Input("activate")]
+        public Input<bool>? Activate { get; set; }
+
+        /// <summary>
         /// The Apigee instance associated with the Apigee environment,
         /// in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
         /// 
@@ -237,6 +345,12 @@ namespace Pulumi.Gcp.Apigee
 
     public sealed class NatAddressState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Flag that specifies whether the reserved NAT address should be activate.
+        /// </summary>
+        [Input("activate")]
+        public Input<bool>? Activate { get; set; }
+
         /// <summary>
         /// The Apigee instance associated with the Apigee environment,
         /// in the format `organizations/{{org_name}}/instances/{{instance_name}}`.

@@ -208,6 +208,39 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Cloudrunv2 Service Gpu
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.cloudrunv2.Service("default", {
+ *     name: "cloudrun-service",
+ *     location: "us-central1",
+ *     deletionProtection: false,
+ *     ingress: "INGRESS_TRAFFIC_ALL",
+ *     launchStage: "BETA",
+ *     template: {
+ *         containers: [{
+ *             image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *             resources: {
+ *                 limits: {
+ *                     cpu: "4",
+ *                     memory: "16Gi",
+ *                     "nvidia.com/gpu": "1",
+ *                 },
+ *                 startupCpuBoost: true,
+ *             },
+ *         }],
+ *         nodeSelector: {
+ *             accelerator: "nvidia-l4",
+ *         },
+ *         scaling: {
+ *             maxInstanceCount: 1,
+ *         },
+ *     },
+ * });
+ * ```
  * ### Cloudrunv2 Service Probes
  *
  * ```typescript

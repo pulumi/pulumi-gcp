@@ -79,6 +79,8 @@ import com.pulumi.gcp.compute.inputs.GetRegionDiskIamPolicyArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionDiskIamPolicyPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionDiskPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionInstanceGroupArgs;
+import com.pulumi.gcp.compute.inputs.GetRegionInstanceGroupManagerArgs;
+import com.pulumi.gcp.compute.inputs.GetRegionInstanceGroupManagerPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionInstanceGroupPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionInstanceTemplateArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionInstanceTemplatePlainArgs;
@@ -154,6 +156,7 @@ import com.pulumi.gcp.compute.outputs.GetNodeTypesResult;
 import com.pulumi.gcp.compute.outputs.GetRegionBackendServiceIamPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetRegionDiskIamPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetRegionDiskResult;
+import com.pulumi.gcp.compute.outputs.GetRegionInstanceGroupManagerResult;
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceGroupResult;
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceTemplateResult;
 import com.pulumi.gcp.compute.outputs.GetRegionNetworkEndpointGroupResult;
@@ -8267,6 +8270,330 @@ public final class ComputeFunctions {
      */
     public static CompletableFuture<GetRegionInstanceGroupResult> getRegionInstanceGroupPlain(GetRegionInstanceGroupPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup", TypeShape.of(GetRegionInstanceGroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## subcategory: &#34;Compute Engine&#34;
+     * 
+     * page_title: &#34;Google: gcp.compute.RegionInstanceGroupManager&#34;
+     * description: |-
+     * Get a Compute Region Instance Group within GCE.
+     * ---
+     * 
+     * # google\_compute\_region\_instance\_group\_manager
+     * 
+     * Get a Compute Region Instance Group Manager within GCE.
+     * For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups)
+     * and [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceGroupManagers)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionInstanceGroupManagerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var rigm = ComputeFunctions.getRegionInstanceGroupManager(GetRegionInstanceGroupManagerArgs.builder()
+     *             .name("my-igm")
+     *             .region("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRegionInstanceGroupManagerResult> getRegionInstanceGroupManager() {
+        return getRegionInstanceGroupManager(GetRegionInstanceGroupManagerArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * ## subcategory: &#34;Compute Engine&#34;
+     * 
+     * page_title: &#34;Google: gcp.compute.RegionInstanceGroupManager&#34;
+     * description: |-
+     * Get a Compute Region Instance Group within GCE.
+     * ---
+     * 
+     * # google\_compute\_region\_instance\_group\_manager
+     * 
+     * Get a Compute Region Instance Group Manager within GCE.
+     * For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups)
+     * and [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceGroupManagers)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionInstanceGroupManagerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var rigm = ComputeFunctions.getRegionInstanceGroupManager(GetRegionInstanceGroupManagerArgs.builder()
+     *             .name("my-igm")
+     *             .region("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetRegionInstanceGroupManagerResult> getRegionInstanceGroupManagerPlain() {
+        return getRegionInstanceGroupManagerPlain(GetRegionInstanceGroupManagerPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * ## subcategory: &#34;Compute Engine&#34;
+     * 
+     * page_title: &#34;Google: gcp.compute.RegionInstanceGroupManager&#34;
+     * description: |-
+     * Get a Compute Region Instance Group within GCE.
+     * ---
+     * 
+     * # google\_compute\_region\_instance\_group\_manager
+     * 
+     * Get a Compute Region Instance Group Manager within GCE.
+     * For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups)
+     * and [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceGroupManagers)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionInstanceGroupManagerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var rigm = ComputeFunctions.getRegionInstanceGroupManager(GetRegionInstanceGroupManagerArgs.builder()
+     *             .name("my-igm")
+     *             .region("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRegionInstanceGroupManagerResult> getRegionInstanceGroupManager(GetRegionInstanceGroupManagerArgs args) {
+        return getRegionInstanceGroupManager(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## subcategory: &#34;Compute Engine&#34;
+     * 
+     * page_title: &#34;Google: gcp.compute.RegionInstanceGroupManager&#34;
+     * description: |-
+     * Get a Compute Region Instance Group within GCE.
+     * ---
+     * 
+     * # google\_compute\_region\_instance\_group\_manager
+     * 
+     * Get a Compute Region Instance Group Manager within GCE.
+     * For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups)
+     * and [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceGroupManagers)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionInstanceGroupManagerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var rigm = ComputeFunctions.getRegionInstanceGroupManager(GetRegionInstanceGroupManagerArgs.builder()
+     *             .name("my-igm")
+     *             .region("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetRegionInstanceGroupManagerResult> getRegionInstanceGroupManagerPlain(GetRegionInstanceGroupManagerPlainArgs args) {
+        return getRegionInstanceGroupManagerPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## subcategory: &#34;Compute Engine&#34;
+     * 
+     * page_title: &#34;Google: gcp.compute.RegionInstanceGroupManager&#34;
+     * description: |-
+     * Get a Compute Region Instance Group within GCE.
+     * ---
+     * 
+     * # google\_compute\_region\_instance\_group\_manager
+     * 
+     * Get a Compute Region Instance Group Manager within GCE.
+     * For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups)
+     * and [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceGroupManagers)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionInstanceGroupManagerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var rigm = ComputeFunctions.getRegionInstanceGroupManager(GetRegionInstanceGroupManagerArgs.builder()
+     *             .name("my-igm")
+     *             .region("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRegionInstanceGroupManagerResult> getRegionInstanceGroupManager(GetRegionInstanceGroupManagerArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getRegionInstanceGroupManager:getRegionInstanceGroupManager", TypeShape.of(GetRegionInstanceGroupManagerResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## subcategory: &#34;Compute Engine&#34;
+     * 
+     * page_title: &#34;Google: gcp.compute.RegionInstanceGroupManager&#34;
+     * description: |-
+     * Get a Compute Region Instance Group within GCE.
+     * ---
+     * 
+     * # google\_compute\_region\_instance\_group\_manager
+     * 
+     * Get a Compute Region Instance Group Manager within GCE.
+     * For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups)
+     * and [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceGroupManagers)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionInstanceGroupManagerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var rigm = ComputeFunctions.getRegionInstanceGroupManager(GetRegionInstanceGroupManagerArgs.builder()
+     *             .name("my-igm")
+     *             .region("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetRegionInstanceGroupManagerResult> getRegionInstanceGroupManagerPlain(GetRegionInstanceGroupManagerPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getRegionInstanceGroupManager:getRegionInstanceGroupManager", TypeShape.of(GetRegionInstanceGroupManagerResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get information about a VM instance template resource within GCE. For more information see

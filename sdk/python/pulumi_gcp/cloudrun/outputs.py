@@ -1400,6 +1400,8 @@ class ServiceTemplateSpec(dict):
         suggest = None
         if key == "containerConcurrency":
             suggest = "container_concurrency"
+        elif key == "nodeSelector":
+            suggest = "node_selector"
         elif key == "serviceAccountName":
             suggest = "service_account_name"
         elif key == "servingState":
@@ -1421,6 +1423,7 @@ class ServiceTemplateSpec(dict):
     def __init__(__self__, *,
                  container_concurrency: Optional[int] = None,
                  containers: Optional[Sequence['outputs.ServiceTemplateSpecContainer']] = None,
+                 node_selector: Optional[Mapping[str, str]] = None,
                  service_account_name: Optional[str] = None,
                  serving_state: Optional[str] = None,
                  timeout_seconds: Optional[int] = None,
@@ -1431,6 +1434,9 @@ class ServiceTemplateSpec(dict):
                requested CPU >= 1 and defaults to 1 when requested CPU < 1.
         :param Sequence['ServiceTemplateSpecContainerArgs'] containers: Containers defines the unit of execution for this Revision.
                Structure is documented below.
+        :param Mapping[str, str] node_selector: Node Selector describes the hardware requirements of the resources.
+               Use the following node selector keys to configure features on a Revision:
+               - `run.googleapis.com/accelerator` sets the [type of GPU](https://cloud.google.com/run/docs/configuring/services/gpu) required by the Revision to run.
         :param str service_account_name: Email address of the IAM service account associated with the revision of the
                service. The service account represents the identity of the running revision,
                and determines what permissions the revision has. If not provided, the revision
@@ -1450,6 +1456,8 @@ class ServiceTemplateSpec(dict):
             pulumi.set(__self__, "container_concurrency", container_concurrency)
         if containers is not None:
             pulumi.set(__self__, "containers", containers)
+        if node_selector is not None:
+            pulumi.set(__self__, "node_selector", node_selector)
         if service_account_name is not None:
             pulumi.set(__self__, "service_account_name", service_account_name)
         if serving_state is not None:
@@ -1477,6 +1485,16 @@ class ServiceTemplateSpec(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "containers")
+
+    @property
+    @pulumi.getter(name="nodeSelector")
+    def node_selector(self) -> Optional[Mapping[str, str]]:
+        """
+        Node Selector describes the hardware requirements of the resources.
+        Use the following node selector keys to configure features on a Revision:
+        - `run.googleapis.com/accelerator` sets the [type of GPU](https://cloud.google.com/run/docs/configuring/services/gpu) required by the Revision to run.
+        """
+        return pulumi.get(self, "node_selector")
 
     @property
     @pulumi.getter(name="serviceAccountName")
@@ -3800,6 +3818,7 @@ class GetServiceTemplateSpecResult(dict):
     def __init__(__self__, *,
                  container_concurrency: int,
                  containers: Sequence['outputs.GetServiceTemplateSpecContainerResult'],
+                 node_selector: Mapping[str, str],
                  service_account_name: str,
                  serving_state: str,
                  timeout_seconds: int,
@@ -3809,6 +3828,9 @@ class GetServiceTemplateSpecResult(dict):
                requests per container of the Revision. If not specified or 0, defaults to 80 when
                requested CPU >= 1 and defaults to 1 when requested CPU < 1.
         :param Sequence['GetServiceTemplateSpecContainerArgs'] containers: Containers defines the unit of execution for this Revision.
+        :param Mapping[str, str] node_selector: Node Selector describes the hardware requirements of the resources.
+               Use the following node selector keys to configure features on a Revision:
+                 - 'run.googleapis.com/accelerator' sets the [type of GPU](https://cloud.google.com/run/docs/configuring/services/gpu) required by the Revision to run.
         :param str service_account_name: Email address of the IAM service account associated with the revision of the
                service. The service account represents the identity of the running revision,
                and determines what permissions the revision has. If not provided, the revision
@@ -3822,6 +3844,7 @@ class GetServiceTemplateSpecResult(dict):
         """
         pulumi.set(__self__, "container_concurrency", container_concurrency)
         pulumi.set(__self__, "containers", containers)
+        pulumi.set(__self__, "node_selector", node_selector)
         pulumi.set(__self__, "service_account_name", service_account_name)
         pulumi.set(__self__, "serving_state", serving_state)
         pulumi.set(__self__, "timeout_seconds", timeout_seconds)
@@ -3844,6 +3867,16 @@ class GetServiceTemplateSpecResult(dict):
         Containers defines the unit of execution for this Revision.
         """
         return pulumi.get(self, "containers")
+
+    @property
+    @pulumi.getter(name="nodeSelector")
+    def node_selector(self) -> Mapping[str, str]:
+        """
+        Node Selector describes the hardware requirements of the resources.
+        Use the following node selector keys to configure features on a Revision:
+          - 'run.googleapis.com/accelerator' sets the [type of GPU](https://cloud.google.com/run/docs/configuring/services/gpu) required by the Revision to run.
+        """
+        return pulumi.get(self, "node_selector")
 
     @property
     @pulumi.getter(name="serviceAccountName")

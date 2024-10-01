@@ -198,7 +198,7 @@ export class Instance extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Desired status of the instance. Either
-     * `"RUNNING"` or `"TERMINATED"`.
+     * `"RUNNING"`, `"SUSPENDED"` or `"TERMINATED"`.
      */
     public readonly desiredStatus!: pulumi.Output<string | undefined>;
     /**
@@ -534,7 +534,7 @@ export interface InstanceState {
     description?: pulumi.Input<string>;
     /**
      * Desired status of the instance. Either
-     * `"RUNNING"` or `"TERMINATED"`.
+     * `"RUNNING"`, `"SUSPENDED"` or `"TERMINATED"`.
      */
     desiredStatus?: pulumi.Input<string>;
     /**
@@ -751,7 +751,7 @@ export interface InstanceArgs {
     description?: pulumi.Input<string>;
     /**
      * Desired status of the instance. Either
-     * `"RUNNING"` or `"TERMINATED"`.
+     * `"RUNNING"`, `"SUSPENDED"` or `"TERMINATED"`.
      */
     desiredStatus?: pulumi.Input<string>;
     /**

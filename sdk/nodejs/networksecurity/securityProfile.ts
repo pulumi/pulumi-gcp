@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * To get more information about SecurityProfile, see:
  *
- * * [API documentation](https://cloud.google.com/firewall/docs/reference/network-security/rest/v1/projects.locations.securityProfiles)
+ * * [API documentation](https://cloud.google.com/firewall/docs/reference/network-security/rest/v1/organizations.locations.securityProfiles)
  * * How-to Guides
  *     * [Create and manage security profiles](https://cloud.google.com/firewall/docs/configure-security-profiles)
  *

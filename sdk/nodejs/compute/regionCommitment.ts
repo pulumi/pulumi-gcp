@@ -158,6 +158,10 @@ export class RegionCommitment extends pulumi.CustomResource {
      */
     public /*out*/ readonly endTimestamp!: pulumi.Output<string>;
     /**
+     * Specifies the already existing reservations to attach to the Commitment.
+     */
+    public readonly existingReservations!: pulumi.Output<string>;
+    /**
      * The license specification required as part of a license commitment.
      * Structure is documented below.
      */
@@ -239,6 +243,7 @@ export class RegionCommitment extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["endTimestamp"] = state ? state.endTimestamp : undefined;
+            resourceInputs["existingReservations"] = state ? state.existingReservations : undefined;
             resourceInputs["licenseResource"] = state ? state.licenseResource : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["plan"] = state ? state.plan : undefined;
@@ -258,6 +263,7 @@ export class RegionCommitment extends pulumi.CustomResource {
             resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
             resourceInputs["category"] = args ? args.category : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["existingReservations"] = args ? args.existingReservations : undefined;
             resourceInputs["licenseResource"] = args ? args.licenseResource : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["plan"] = args ? args.plan : undefined;
@@ -313,6 +319,10 @@ export interface RegionCommitmentState {
      * Commitment end time in RFC3339 text format.
      */
     endTimestamp?: pulumi.Input<string>;
+    /**
+     * Specifies the already existing reservations to attach to the Commitment.
+     */
+    existingReservations?: pulumi.Input<string>;
     /**
      * The license specification required as part of a license commitment.
      * Structure is documented below.
@@ -400,6 +410,10 @@ export interface RegionCommitmentArgs {
      * An optional description of this resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Specifies the already existing reservations to attach to the Commitment.
+     */
+    existingReservations?: pulumi.Input<string>;
     /**
      * The license specification required as part of a license commitment.
      * Structure is documented below.

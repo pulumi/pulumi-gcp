@@ -18,16 +18,12 @@ public final class ServiceTemplateServiceMeshArgs extends com.pulumi.resources.R
     /**
      * The Mesh resource name. For more information see https://cloud.google.com/service-mesh/docs/reference/network-services/rest/v1/projects.locations.meshes#resource:-mesh.
      * 
-     * ***
-     * 
      */
     @Import(name="mesh")
     private @Nullable Output<String> mesh;
 
     /**
      * @return The Mesh resource name. For more information see https://cloud.google.com/service-mesh/docs/reference/network-services/rest/v1/projects.locations.meshes#resource:-mesh.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> mesh() {
@@ -61,8 +57,6 @@ public final class ServiceTemplateServiceMeshArgs extends com.pulumi.resources.R
         /**
          * @param mesh The Mesh resource name. For more information see https://cloud.google.com/service-mesh/docs/reference/network-services/rest/v1/projects.locations.meshes#resource:-mesh.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -73,8 +67,6 @@ public final class ServiceTemplateServiceMeshArgs extends com.pulumi.resources.R
 
         /**
          * @param mesh The Mesh resource name. For more information see https://cloud.google.com/service-mesh/docs/reference/network-services/rest/v1/projects.locations.meshes#resource:-mesh.
-         * 
-         * ***
          * 
          * @return builder
          * 

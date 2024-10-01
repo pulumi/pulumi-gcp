@@ -22,6 +22,12 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("cgroupMode")]
         public Input<string>? CgroupMode { get; set; }
 
+        /// <summary>
+        /// Amounts for 2M and 1G hugepages. Structure is documented below.
+        /// </summary>
+        [Input("hugepagesConfig")]
+        public Input<Inputs.ClusterNodeConfigLinuxNodeConfigHugepagesConfigGetArgs>? HugepagesConfig { get; set; }
+
         [Input("sysctls")]
         private InputMap<string>? _sysctls;
 

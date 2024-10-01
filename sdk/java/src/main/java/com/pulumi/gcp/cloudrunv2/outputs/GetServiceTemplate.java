@@ -6,6 +6,7 @@ package com.pulumi.gcp.cloudrunv2.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateContainer;
+import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateNodeSelector;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateScaling;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateServiceMesh;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateVolume;
@@ -59,6 +60,11 @@ public final class GetServiceTemplate {
      * 
      */
     private Integer maxInstanceRequestConcurrency;
+    /**
+     * @return Node Selector describes the hardware requirements of the resources.
+     * 
+     */
+    private List<GetServiceTemplateNodeSelector> nodeSelectors;
     /**
      * @return The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
      * 
@@ -156,6 +162,13 @@ public final class GetServiceTemplate {
         return this.maxInstanceRequestConcurrency;
     }
     /**
+     * @return Node Selector describes the hardware requirements of the resources.
+     * 
+     */
+    public List<GetServiceTemplateNodeSelector> nodeSelectors() {
+        return this.nodeSelectors;
+    }
+    /**
      * @return The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
      * 
      */
@@ -229,6 +242,7 @@ public final class GetServiceTemplate {
         private String executionEnvironment;
         private Map<String,String> labels;
         private Integer maxInstanceRequestConcurrency;
+        private List<GetServiceTemplateNodeSelector> nodeSelectors;
         private String revision;
         private List<GetServiceTemplateScaling> scalings;
         private String serviceAccount;
@@ -246,6 +260,7 @@ public final class GetServiceTemplate {
     	      this.executionEnvironment = defaults.executionEnvironment;
     	      this.labels = defaults.labels;
     	      this.maxInstanceRequestConcurrency = defaults.maxInstanceRequestConcurrency;
+    	      this.nodeSelectors = defaults.nodeSelectors;
     	      this.revision = defaults.revision;
     	      this.scalings = defaults.scalings;
     	      this.serviceAccount = defaults.serviceAccount;
@@ -306,6 +321,17 @@ public final class GetServiceTemplate {
             }
             this.maxInstanceRequestConcurrency = maxInstanceRequestConcurrency;
             return this;
+        }
+        @CustomType.Setter
+        public Builder nodeSelectors(List<GetServiceTemplateNodeSelector> nodeSelectors) {
+            if (nodeSelectors == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplate", "nodeSelectors");
+            }
+            this.nodeSelectors = nodeSelectors;
+            return this;
+        }
+        public Builder nodeSelectors(GetServiceTemplateNodeSelector... nodeSelectors) {
+            return nodeSelectors(List.of(nodeSelectors));
         }
         @CustomType.Setter
         public Builder revision(String revision) {
@@ -391,6 +417,7 @@ public final class GetServiceTemplate {
             _resultValue.executionEnvironment = executionEnvironment;
             _resultValue.labels = labels;
             _resultValue.maxInstanceRequestConcurrency = maxInstanceRequestConcurrency;
+            _resultValue.nodeSelectors = nodeSelectors;
             _resultValue.revision = revision;
             _resultValue.scalings = scalings;
             _resultValue.serviceAccount = serviceAccount;

@@ -20,6 +20,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly bool AutomaticRestart;
         /// <summary>
+        /// Beta Time in seconds for host error detection.
+        /// </summary>
+        public readonly int HostErrorTimeoutSeconds;
+        /// <summary>
         /// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         /// </summary>
         public readonly string InstanceTerminationAction;
@@ -74,6 +78,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         private GetRegionInstanceTemplateSchedulingResult(
             bool automaticRestart,
 
+            int hostErrorTimeoutSeconds,
+
             string instanceTerminationAction,
 
             ImmutableArray<Outputs.GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutResult> localSsdRecoveryTimeouts,
@@ -95,6 +101,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             string provisioningModel)
         {
             AutomaticRestart = automaticRestart;
+            HostErrorTimeoutSeconds = hostErrorTimeoutSeconds;
             InstanceTerminationAction = instanceTerminationAction;
             LocalSsdRecoveryTimeouts = localSsdRecoveryTimeouts;
             MaintenanceInterval = maintenanceInterval;

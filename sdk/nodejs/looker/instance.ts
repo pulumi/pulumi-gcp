@@ -192,6 +192,28 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Looker Instance Psc
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const looker_instance = new gcp.looker.Instance("looker-instance", {
+ *     name: "my-instance",
+ *     platformEdition: "LOOKER_CORE_ENTERPRISE_ANNUAL",
+ *     region: "us-central1",
+ *     privateIpEnabled: false,
+ *     publicIpEnabled: false,
+ *     pscEnabled: true,
+ *     oauthConfig: {
+ *         clientId: "my-client-id",
+ *         clientSecret: "my-client-secret",
+ *     },
+ *     pscConfig: {
+ *         allowedVpcs: ["projects/test-project/global/networks/test"],
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -349,6 +371,15 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * Information for Private Service Connect (PSC) setup for a Looker instance.
+     * Structure is documented below.
+     */
+    public readonly pscConfig!: pulumi.Output<outputs.looker.InstancePscConfig | undefined>;
+    /**
+     * Whether Public Service Connect (PSC) is enabled on the Looker instance
+     */
+    public readonly pscEnabled!: pulumi.Output<boolean | undefined>;
+    /**
      * Whether public IP is enabled on the Looker instance.
      */
     public readonly publicIpEnabled!: pulumi.Output<boolean | undefined>;
@@ -409,6 +440,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["platformEdition"] = state ? state.platformEdition : undefined;
             resourceInputs["privateIpEnabled"] = state ? state.privateIpEnabled : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pscConfig"] = state ? state.pscConfig : undefined;
+            resourceInputs["pscEnabled"] = state ? state.pscEnabled : undefined;
             resourceInputs["publicIpEnabled"] = state ? state.publicIpEnabled : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["reservedRange"] = state ? state.reservedRange : undefined;
@@ -428,6 +461,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["platformEdition"] = args ? args.platformEdition : undefined;
             resourceInputs["privateIpEnabled"] = args ? args.privateIpEnabled : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["pscConfig"] = args ? args.pscConfig : undefined;
+            resourceInputs["pscEnabled"] = args ? args.pscEnabled : undefined;
             resourceInputs["publicIpEnabled"] = args ? args.publicIpEnabled : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["reservedRange"] = args ? args.reservedRange : undefined;
@@ -547,6 +582,15 @@ export interface InstanceState {
      */
     project?: pulumi.Input<string>;
     /**
+     * Information for Private Service Connect (PSC) setup for a Looker instance.
+     * Structure is documented below.
+     */
+    pscConfig?: pulumi.Input<inputs.looker.InstancePscConfig>;
+    /**
+     * Whether Public Service Connect (PSC) is enabled on the Looker instance
+     */
+    pscEnabled?: pulumi.Input<boolean>;
+    /**
      * Whether public IP is enabled on the Looker instance.
      */
     publicIpEnabled?: pulumi.Input<boolean>;
@@ -653,6 +697,15 @@ export interface InstanceArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Information for Private Service Connect (PSC) setup for a Looker instance.
+     * Structure is documented below.
+     */
+    pscConfig?: pulumi.Input<inputs.looker.InstancePscConfig>;
+    /**
+     * Whether Public Service Connect (PSC) is enabled on the Looker instance
+     */
+    pscEnabled?: pulumi.Input<boolean>;
     /**
      * Whether public IP is enabled on the Looker instance.
      */

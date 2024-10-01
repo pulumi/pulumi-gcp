@@ -1413,6 +1413,9 @@ func (o ServiceConnectionPolicyPscConnectionErrorInfoPtrOutput) Reason() pulumi.
 }
 
 type SpokeLinkedInterconnectAttachments struct {
+	// IP ranges allowed to be included during import from hub (does not control transit connectivity).
+	// The only allowed value for now is "ALL_IPV4_RANGES".
+	IncludeImportRanges []string `pulumi:"includeImportRanges"`
 	// A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
 	SiteToSiteDataTransfer bool `pulumi:"siteToSiteDataTransfer"`
 	// The URIs of linked interconnect attachment resources
@@ -1431,6 +1434,9 @@ type SpokeLinkedInterconnectAttachmentsInput interface {
 }
 
 type SpokeLinkedInterconnectAttachmentsArgs struct {
+	// IP ranges allowed to be included during import from hub (does not control transit connectivity).
+	// The only allowed value for now is "ALL_IPV4_RANGES".
+	IncludeImportRanges pulumi.StringArrayInput `pulumi:"includeImportRanges"`
 	// A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
 	SiteToSiteDataTransfer pulumi.BoolInput `pulumi:"siteToSiteDataTransfer"`
 	// The URIs of linked interconnect attachment resources
@@ -1514,6 +1520,12 @@ func (o SpokeLinkedInterconnectAttachmentsOutput) ToSpokeLinkedInterconnectAttac
 	}).(SpokeLinkedInterconnectAttachmentsPtrOutput)
 }
 
+// IP ranges allowed to be included during import from hub (does not control transit connectivity).
+// The only allowed value for now is "ALL_IPV4_RANGES".
+func (o SpokeLinkedInterconnectAttachmentsOutput) IncludeImportRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SpokeLinkedInterconnectAttachments) []string { return v.IncludeImportRanges }).(pulumi.StringArrayOutput)
+}
+
 // A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
 func (o SpokeLinkedInterconnectAttachmentsOutput) SiteToSiteDataTransfer() pulumi.BoolOutput {
 	return o.ApplyT(func(v SpokeLinkedInterconnectAttachments) bool { return v.SiteToSiteDataTransfer }).(pulumi.BoolOutput)
@@ -1548,6 +1560,17 @@ func (o SpokeLinkedInterconnectAttachmentsPtrOutput) Elem() SpokeLinkedInterconn
 	}).(SpokeLinkedInterconnectAttachmentsOutput)
 }
 
+// IP ranges allowed to be included during import from hub (does not control transit connectivity).
+// The only allowed value for now is "ALL_IPV4_RANGES".
+func (o SpokeLinkedInterconnectAttachmentsPtrOutput) IncludeImportRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SpokeLinkedInterconnectAttachments) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeImportRanges
+	}).(pulumi.StringArrayOutput)
+}
+
 // A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
 func (o SpokeLinkedInterconnectAttachmentsPtrOutput) SiteToSiteDataTransfer() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SpokeLinkedInterconnectAttachments) *bool {
@@ -1569,6 +1592,9 @@ func (o SpokeLinkedInterconnectAttachmentsPtrOutput) Uris() pulumi.StringArrayOu
 }
 
 type SpokeLinkedRouterApplianceInstances struct {
+	// IP ranges allowed to be included during import from hub (does not control transit connectivity).
+	// The only allowed value for now is "ALL_IPV4_RANGES".
+	IncludeImportRanges []string `pulumi:"includeImportRanges"`
 	// The list of router appliance instances
 	// Structure is documented below.
 	Instances []SpokeLinkedRouterApplianceInstancesInstance `pulumi:"instances"`
@@ -1588,6 +1614,9 @@ type SpokeLinkedRouterApplianceInstancesInput interface {
 }
 
 type SpokeLinkedRouterApplianceInstancesArgs struct {
+	// IP ranges allowed to be included during import from hub (does not control transit connectivity).
+	// The only allowed value for now is "ALL_IPV4_RANGES".
+	IncludeImportRanges pulumi.StringArrayInput `pulumi:"includeImportRanges"`
 	// The list of router appliance instances
 	// Structure is documented below.
 	Instances SpokeLinkedRouterApplianceInstancesInstanceArrayInput `pulumi:"instances"`
@@ -1672,6 +1701,12 @@ func (o SpokeLinkedRouterApplianceInstancesOutput) ToSpokeLinkedRouterApplianceI
 	}).(SpokeLinkedRouterApplianceInstancesPtrOutput)
 }
 
+// IP ranges allowed to be included during import from hub (does not control transit connectivity).
+// The only allowed value for now is "ALL_IPV4_RANGES".
+func (o SpokeLinkedRouterApplianceInstancesOutput) IncludeImportRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SpokeLinkedRouterApplianceInstances) []string { return v.IncludeImportRanges }).(pulumi.StringArrayOutput)
+}
+
 // The list of router appliance instances
 // Structure is documented below.
 func (o SpokeLinkedRouterApplianceInstancesOutput) Instances() SpokeLinkedRouterApplianceInstancesInstanceArrayOutput {
@@ -1707,6 +1742,17 @@ func (o SpokeLinkedRouterApplianceInstancesPtrOutput) Elem() SpokeLinkedRouterAp
 		var ret SpokeLinkedRouterApplianceInstances
 		return ret
 	}).(SpokeLinkedRouterApplianceInstancesOutput)
+}
+
+// IP ranges allowed to be included during import from hub (does not control transit connectivity).
+// The only allowed value for now is "ALL_IPV4_RANGES".
+func (o SpokeLinkedRouterApplianceInstancesPtrOutput) IncludeImportRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SpokeLinkedRouterApplianceInstances) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeImportRanges
+	}).(pulumi.StringArrayOutput)
 }
 
 // The list of router appliance instances
@@ -2012,6 +2058,9 @@ func (o SpokeLinkedVpcNetworkPtrOutput) Uri() pulumi.StringPtrOutput {
 }
 
 type SpokeLinkedVpnTunnels struct {
+	// IP ranges allowed to be included during import from hub (does not control transit connectivity).
+	// The only allowed value for now is "ALL_IPV4_RANGES".
+	IncludeImportRanges []string `pulumi:"includeImportRanges"`
 	// A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
 	SiteToSiteDataTransfer bool `pulumi:"siteToSiteDataTransfer"`
 	// The URIs of linked VPN tunnel resources.
@@ -2030,6 +2079,9 @@ type SpokeLinkedVpnTunnelsInput interface {
 }
 
 type SpokeLinkedVpnTunnelsArgs struct {
+	// IP ranges allowed to be included during import from hub (does not control transit connectivity).
+	// The only allowed value for now is "ALL_IPV4_RANGES".
+	IncludeImportRanges pulumi.StringArrayInput `pulumi:"includeImportRanges"`
 	// A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
 	SiteToSiteDataTransfer pulumi.BoolInput `pulumi:"siteToSiteDataTransfer"`
 	// The URIs of linked VPN tunnel resources.
@@ -2113,6 +2165,12 @@ func (o SpokeLinkedVpnTunnelsOutput) ToSpokeLinkedVpnTunnelsPtrOutputWithContext
 	}).(SpokeLinkedVpnTunnelsPtrOutput)
 }
 
+// IP ranges allowed to be included during import from hub (does not control transit connectivity).
+// The only allowed value for now is "ALL_IPV4_RANGES".
+func (o SpokeLinkedVpnTunnelsOutput) IncludeImportRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SpokeLinkedVpnTunnels) []string { return v.IncludeImportRanges }).(pulumi.StringArrayOutput)
+}
+
 // A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
 func (o SpokeLinkedVpnTunnelsOutput) SiteToSiteDataTransfer() pulumi.BoolOutput {
 	return o.ApplyT(func(v SpokeLinkedVpnTunnels) bool { return v.SiteToSiteDataTransfer }).(pulumi.BoolOutput)
@@ -2145,6 +2203,17 @@ func (o SpokeLinkedVpnTunnelsPtrOutput) Elem() SpokeLinkedVpnTunnelsOutput {
 		var ret SpokeLinkedVpnTunnels
 		return ret
 	}).(SpokeLinkedVpnTunnelsOutput)
+}
+
+// IP ranges allowed to be included during import from hub (does not control transit connectivity).
+// The only allowed value for now is "ALL_IPV4_RANGES".
+func (o SpokeLinkedVpnTunnelsPtrOutput) IncludeImportRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SpokeLinkedVpnTunnels) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeImportRanges
+	}).(pulumi.StringArrayOutput)
 }
 
 // A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.

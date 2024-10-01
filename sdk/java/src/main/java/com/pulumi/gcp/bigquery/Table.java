@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.bigquery.TableArgs;
 import com.pulumi.gcp.bigquery.inputs.TableState;
+import com.pulumi.gcp.bigquery.outputs.TableBiglakeConfiguration;
 import com.pulumi.gcp.bigquery.outputs.TableEncryptionConfiguration;
 import com.pulumi.gcp.bigquery.outputs.TableExternalDataConfiguration;
 import com.pulumi.gcp.bigquery.outputs.TableMaterializedView;
@@ -145,6 +146,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:bigquery/table:Table")
 public class Table extends com.pulumi.resources.CustomResource {
+    /**
+     * Specifies the configuration of a BigLake managed table. Structure is documented below
+     * 
+     */
+    @Export(name="biglakeConfiguration", refs={TableBiglakeConfiguration.class}, tree="[0]")
+    private Output</* @Nullable */ TableBiglakeConfiguration> biglakeConfiguration;
+
+    /**
+     * @return Specifies the configuration of a BigLake managed table. Structure is documented below
+     * 
+     */
+    public Output<Optional<TableBiglakeConfiguration>> biglakeConfiguration() {
+        return Codegen.optional(this.biglakeConfiguration);
+    }
     /**
      * Specifies column names to use for data clustering.
      * Up to four top-level columns are allowed, and should be specified in

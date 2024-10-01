@@ -6,6 +6,7 @@ package com.pulumi.gcp.cloudrunv2.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateContainerArgs;
+import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateNodeSelectorArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateScalingArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateServiceMeshArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVolumeArgs;
@@ -130,6 +131,23 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
      */
     public Optional<Output<Integer>> maxInstanceRequestConcurrency() {
         return Optional.ofNullable(this.maxInstanceRequestConcurrency);
+    }
+
+    /**
+     * Node Selector describes the hardware requirements of the resources.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="nodeSelector")
+    private @Nullable Output<ServiceTemplateNodeSelectorArgs> nodeSelector;
+
+    /**
+     * @return Node Selector describes the hardware requirements of the resources.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ServiceTemplateNodeSelectorArgs>> nodeSelector() {
+        return Optional.ofNullable(this.nodeSelector);
     }
 
     /**
@@ -271,6 +289,7 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
         this.executionEnvironment = $.executionEnvironment;
         this.labels = $.labels;
         this.maxInstanceRequestConcurrency = $.maxInstanceRequestConcurrency;
+        this.nodeSelector = $.nodeSelector;
         this.revision = $.revision;
         this.scaling = $.scaling;
         this.serviceAccount = $.serviceAccount;
@@ -452,6 +471,29 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder maxInstanceRequestConcurrency(Integer maxInstanceRequestConcurrency) {
             return maxInstanceRequestConcurrency(Output.of(maxInstanceRequestConcurrency));
+        }
+
+        /**
+         * @param nodeSelector Node Selector describes the hardware requirements of the resources.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeSelector(@Nullable Output<ServiceTemplateNodeSelectorArgs> nodeSelector) {
+            $.nodeSelector = nodeSelector;
+            return this;
+        }
+
+        /**
+         * @param nodeSelector Node Selector describes the hardware requirements of the resources.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeSelector(ServiceTemplateNodeSelectorArgs nodeSelector) {
+            return nodeSelector(Output.of(nodeSelector));
         }
 
         /**

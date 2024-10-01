@@ -26,6 +26,8 @@ __all__ = [
     'InstanceMaintenanceWindow',
     'InstanceMaintenanceWindowStartTime',
     'InstanceOauthConfig',
+    'InstancePscConfig',
+    'InstancePscConfigServiceAttachment',
     'InstanceUserMetadata',
 ]
 
@@ -545,6 +547,140 @@ class InstanceOauthConfig(dict):
         The client secret for the Oauth config.
         """
         return pulumi.get(self, "client_secret")
+
+
+@pulumi.output_type
+class InstancePscConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedVpcs":
+            suggest = "allowed_vpcs"
+        elif key == "lookerServiceAttachmentUri":
+            suggest = "looker_service_attachment_uri"
+        elif key == "serviceAttachments":
+            suggest = "service_attachments"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstancePscConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstancePscConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstancePscConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allowed_vpcs: Optional[Sequence[str]] = None,
+                 looker_service_attachment_uri: Optional[str] = None,
+                 service_attachments: Optional[Sequence['outputs.InstancePscConfigServiceAttachment']] = None):
+        """
+        :param Sequence[str] allowed_vpcs: List of VPCs that are allowed ingress into the Looker instance.
+        :param str looker_service_attachment_uri: (Output)
+               URI of the Looker service attachment.
+        :param Sequence['InstancePscConfigServiceAttachmentArgs'] service_attachments: List of egress service attachment configurations.
+               Structure is documented below.
+        """
+        if allowed_vpcs is not None:
+            pulumi.set(__self__, "allowed_vpcs", allowed_vpcs)
+        if looker_service_attachment_uri is not None:
+            pulumi.set(__self__, "looker_service_attachment_uri", looker_service_attachment_uri)
+        if service_attachments is not None:
+            pulumi.set(__self__, "service_attachments", service_attachments)
+
+    @property
+    @pulumi.getter(name="allowedVpcs")
+    def allowed_vpcs(self) -> Optional[Sequence[str]]:
+        """
+        List of VPCs that are allowed ingress into the Looker instance.
+        """
+        return pulumi.get(self, "allowed_vpcs")
+
+    @property
+    @pulumi.getter(name="lookerServiceAttachmentUri")
+    def looker_service_attachment_uri(self) -> Optional[str]:
+        """
+        (Output)
+        URI of the Looker service attachment.
+        """
+        return pulumi.get(self, "looker_service_attachment_uri")
+
+    @property
+    @pulumi.getter(name="serviceAttachments")
+    def service_attachments(self) -> Optional[Sequence['outputs.InstancePscConfigServiceAttachment']]:
+        """
+        List of egress service attachment configurations.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "service_attachments")
+
+
+@pulumi.output_type
+class InstancePscConfigServiceAttachment(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionStatus":
+            suggest = "connection_status"
+        elif key == "localFqdn":
+            suggest = "local_fqdn"
+        elif key == "targetServiceAttachmentUri":
+            suggest = "target_service_attachment_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstancePscConfigServiceAttachment. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstancePscConfigServiceAttachment.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstancePscConfigServiceAttachment.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection_status: Optional[str] = None,
+                 local_fqdn: Optional[str] = None,
+                 target_service_attachment_uri: Optional[str] = None):
+        """
+        :param str connection_status: (Output)
+               Status of the service attachment connection.
+        :param str local_fqdn: Fully qualified domain name that will be used in the private DNS record created for the service attachment.
+        :param str target_service_attachment_uri: URI of the service attachment to connect to.
+        """
+        if connection_status is not None:
+            pulumi.set(__self__, "connection_status", connection_status)
+        if local_fqdn is not None:
+            pulumi.set(__self__, "local_fqdn", local_fqdn)
+        if target_service_attachment_uri is not None:
+            pulumi.set(__self__, "target_service_attachment_uri", target_service_attachment_uri)
+
+    @property
+    @pulumi.getter(name="connectionStatus")
+    def connection_status(self) -> Optional[str]:
+        """
+        (Output)
+        Status of the service attachment connection.
+        """
+        return pulumi.get(self, "connection_status")
+
+    @property
+    @pulumi.getter(name="localFqdn")
+    def local_fqdn(self) -> Optional[str]:
+        """
+        Fully qualified domain name that will be used in the private DNS record created for the service attachment.
+        """
+        return pulumi.get(self, "local_fqdn")
+
+    @property
+    @pulumi.getter(name="targetServiceAttachmentUri")
+    def target_service_attachment_uri(self) -> Optional[str]:
+        """
+        URI of the service attachment to connect to.
+        """
+        return pulumi.get(self, "target_service_attachment_uri")
 
 
 @pulumi.output_type

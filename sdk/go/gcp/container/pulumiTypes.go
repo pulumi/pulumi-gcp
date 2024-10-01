@@ -23360,6 +23360,8 @@ type ClusterNodeConfigLinuxNodeConfig struct {
 	// * `CGROUP_MODE_V1`: CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
 	// * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
 	CgroupMode *string `pulumi:"cgroupMode"`
+	// Amounts for 2M and 1G hugepages. Structure is documented below.
+	HugepagesConfig *ClusterNodeConfigLinuxNodeConfigHugepagesConfig `pulumi:"hugepagesConfig"`
 	// The Linux kernel parameters to be applied to the nodes
 	// and all pods running on the nodes. Specified as a map from the key, such as
 	// `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
@@ -23385,6 +23387,8 @@ type ClusterNodeConfigLinuxNodeConfigArgs struct {
 	// * `CGROUP_MODE_V1`: CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
 	// * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
 	CgroupMode pulumi.StringPtrInput `pulumi:"cgroupMode"`
+	// Amounts for 2M and 1G hugepages. Structure is documented below.
+	HugepagesConfig ClusterNodeConfigLinuxNodeConfigHugepagesConfigPtrInput `pulumi:"hugepagesConfig"`
 	// The Linux kernel parameters to be applied to the nodes
 	// and all pods running on the nodes. Specified as a map from the key, such as
 	// `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
@@ -23478,6 +23482,13 @@ func (o ClusterNodeConfigLinuxNodeConfigOutput) CgroupMode() pulumi.StringPtrOut
 	return o.ApplyT(func(v ClusterNodeConfigLinuxNodeConfig) *string { return v.CgroupMode }).(pulumi.StringPtrOutput)
 }
 
+// Amounts for 2M and 1G hugepages. Structure is documented below.
+func (o ClusterNodeConfigLinuxNodeConfigOutput) HugepagesConfig() ClusterNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfigLinuxNodeConfig) *ClusterNodeConfigLinuxNodeConfigHugepagesConfig {
+		return v.HugepagesConfig
+	}).(ClusterNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput)
+}
+
 // The Linux kernel parameters to be applied to the nodes
 // and all pods running on the nodes. Specified as a map from the key, such as
 // `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
@@ -23524,6 +23535,16 @@ func (o ClusterNodeConfigLinuxNodeConfigPtrOutput) CgroupMode() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// Amounts for 2M and 1G hugepages. Structure is documented below.
+func (o ClusterNodeConfigLinuxNodeConfigPtrOutput) HugepagesConfig() ClusterNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigLinuxNodeConfig) *ClusterNodeConfigLinuxNodeConfigHugepagesConfig {
+		if v == nil {
+			return nil
+		}
+		return v.HugepagesConfig
+	}).(ClusterNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput)
+}
+
 // The Linux kernel parameters to be applied to the nodes
 // and all pods running on the nodes. Specified as a map from the key, such as
 // `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
@@ -23535,6 +23556,162 @@ func (o ClusterNodeConfigLinuxNodeConfigPtrOutput) Sysctls() pulumi.StringMapOut
 		}
 		return v.Sysctls
 	}).(pulumi.StringMapOutput)
+}
+
+type ClusterNodeConfigLinuxNodeConfigHugepagesConfig struct {
+	// Amount of 1G hugepages.
+	HugepageSize1g *int `pulumi:"hugepageSize1g"`
+	// Amount of 2M hugepages.
+	HugepageSize2m *int `pulumi:"hugepageSize2m"`
+}
+
+// ClusterNodeConfigLinuxNodeConfigHugepagesConfigInput is an input type that accepts ClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs and ClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput values.
+// You can construct a concrete instance of `ClusterNodeConfigLinuxNodeConfigHugepagesConfigInput` via:
+//
+//	ClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs{...}
+type ClusterNodeConfigLinuxNodeConfigHugepagesConfigInput interface {
+	pulumi.Input
+
+	ToClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput() ClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput
+	ToClusterNodeConfigLinuxNodeConfigHugepagesConfigOutputWithContext(context.Context) ClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput
+}
+
+type ClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs struct {
+	// Amount of 1G hugepages.
+	HugepageSize1g pulumi.IntPtrInput `pulumi:"hugepageSize1g"`
+	// Amount of 2M hugepages.
+	HugepageSize2m pulumi.IntPtrInput `pulumi:"hugepageSize2m"`
+}
+
+func (ClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeConfigLinuxNodeConfigHugepagesConfig)(nil)).Elem()
+}
+
+func (i ClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs) ToClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput() ClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput {
+	return i.ToClusterNodeConfigLinuxNodeConfigHugepagesConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs) ToClusterNodeConfigLinuxNodeConfigHugepagesConfigOutputWithContext(ctx context.Context) ClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput)
+}
+
+func (i ClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs) ToClusterNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput() ClusterNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput {
+	return i.ToClusterNodeConfigLinuxNodeConfigHugepagesConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs) ToClusterNodeConfigLinuxNodeConfigHugepagesConfigPtrOutputWithContext(ctx context.Context) ClusterNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput).ToClusterNodeConfigLinuxNodeConfigHugepagesConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterNodeConfigLinuxNodeConfigHugepagesConfigPtrInput is an input type that accepts ClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs, ClusterNodeConfigLinuxNodeConfigHugepagesConfigPtr and ClusterNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterNodeConfigLinuxNodeConfigHugepagesConfigPtrInput` via:
+//
+//	        ClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNodeConfigLinuxNodeConfigHugepagesConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput() ClusterNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput
+	ToClusterNodeConfigLinuxNodeConfigHugepagesConfigPtrOutputWithContext(context.Context) ClusterNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput
+}
+
+type clusterNodeConfigLinuxNodeConfigHugepagesConfigPtrType ClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs
+
+func ClusterNodeConfigLinuxNodeConfigHugepagesConfigPtr(v *ClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs) ClusterNodeConfigLinuxNodeConfigHugepagesConfigPtrInput {
+	return (*clusterNodeConfigLinuxNodeConfigHugepagesConfigPtrType)(v)
+}
+
+func (*clusterNodeConfigLinuxNodeConfigHugepagesConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeConfigLinuxNodeConfigHugepagesConfig)(nil)).Elem()
+}
+
+func (i *clusterNodeConfigLinuxNodeConfigHugepagesConfigPtrType) ToClusterNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput() ClusterNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput {
+	return i.ToClusterNodeConfigLinuxNodeConfigHugepagesConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodeConfigLinuxNodeConfigHugepagesConfigPtrType) ToClusterNodeConfigLinuxNodeConfigHugepagesConfigPtrOutputWithContext(ctx context.Context) ClusterNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput)
+}
+
+type ClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeConfigLinuxNodeConfigHugepagesConfig)(nil)).Elem()
+}
+
+func (o ClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput) ToClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput() ClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput {
+	return o
+}
+
+func (o ClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput) ToClusterNodeConfigLinuxNodeConfigHugepagesConfigOutputWithContext(ctx context.Context) ClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput {
+	return o
+}
+
+func (o ClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput) ToClusterNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput() ClusterNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput {
+	return o.ToClusterNodeConfigLinuxNodeConfigHugepagesConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput) ToClusterNodeConfigLinuxNodeConfigHugepagesConfigPtrOutputWithContext(ctx context.Context) ClusterNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodeConfigLinuxNodeConfigHugepagesConfig) *ClusterNodeConfigLinuxNodeConfigHugepagesConfig {
+		return &v
+	}).(ClusterNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput)
+}
+
+// Amount of 1G hugepages.
+func (o ClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput) HugepageSize1g() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfigLinuxNodeConfigHugepagesConfig) *int { return v.HugepageSize1g }).(pulumi.IntPtrOutput)
+}
+
+// Amount of 2M hugepages.
+func (o ClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput) HugepageSize2m() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfigLinuxNodeConfigHugepagesConfig) *int { return v.HugepageSize2m }).(pulumi.IntPtrOutput)
+}
+
+type ClusterNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeConfigLinuxNodeConfigHugepagesConfig)(nil)).Elem()
+}
+
+func (o ClusterNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput) ToClusterNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput() ClusterNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput) ToClusterNodeConfigLinuxNodeConfigHugepagesConfigPtrOutputWithContext(ctx context.Context) ClusterNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput) Elem() ClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigLinuxNodeConfigHugepagesConfig) ClusterNodeConfigLinuxNodeConfigHugepagesConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodeConfigLinuxNodeConfigHugepagesConfig
+		return ret
+	}).(ClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput)
+}
+
+// Amount of 1G hugepages.
+func (o ClusterNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput) HugepageSize1g() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigLinuxNodeConfigHugepagesConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.HugepageSize1g
+	}).(pulumi.IntPtrOutput)
+}
+
+// Amount of 2M hugepages.
+func (o ClusterNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput) HugepageSize2m() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigLinuxNodeConfigHugepagesConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.HugepageSize2m
+	}).(pulumi.IntPtrOutput)
 }
 
 type ClusterNodeConfigLocalNvmeSsdBlockConfig struct {
@@ -31210,6 +31387,8 @@ type ClusterNodePoolNodeConfigLinuxNodeConfig struct {
 	// * `CGROUP_MODE_V1`: CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
 	// * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
 	CgroupMode *string `pulumi:"cgroupMode"`
+	// Amounts for 2M and 1G hugepages. Structure is documented below.
+	HugepagesConfig *ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig `pulumi:"hugepagesConfig"`
 	// The Linux kernel parameters to be applied to the nodes
 	// and all pods running on the nodes. Specified as a map from the key, such as
 	// `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
@@ -31235,6 +31414,8 @@ type ClusterNodePoolNodeConfigLinuxNodeConfigArgs struct {
 	// * `CGROUP_MODE_V1`: CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
 	// * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
 	CgroupMode pulumi.StringPtrInput `pulumi:"cgroupMode"`
+	// Amounts for 2M and 1G hugepages. Structure is documented below.
+	HugepagesConfig ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrInput `pulumi:"hugepagesConfig"`
 	// The Linux kernel parameters to be applied to the nodes
 	// and all pods running on the nodes. Specified as a map from the key, such as
 	// `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
@@ -31328,6 +31509,13 @@ func (o ClusterNodePoolNodeConfigLinuxNodeConfigOutput) CgroupMode() pulumi.Stri
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigLinuxNodeConfig) *string { return v.CgroupMode }).(pulumi.StringPtrOutput)
 }
 
+// Amounts for 2M and 1G hugepages. Structure is documented below.
+func (o ClusterNodePoolNodeConfigLinuxNodeConfigOutput) HugepagesConfig() ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigLinuxNodeConfig) *ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig {
+		return v.HugepagesConfig
+	}).(ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput)
+}
+
 // The Linux kernel parameters to be applied to the nodes
 // and all pods running on the nodes. Specified as a map from the key, such as
 // `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
@@ -31374,6 +31562,16 @@ func (o ClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput) CgroupMode() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
+// Amounts for 2M and 1G hugepages. Structure is documented below.
+func (o ClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput) HugepagesConfig() ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigLinuxNodeConfig) *ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig {
+		if v == nil {
+			return nil
+		}
+		return v.HugepagesConfig
+	}).(ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput)
+}
+
 // The Linux kernel parameters to be applied to the nodes
 // and all pods running on the nodes. Specified as a map from the key, such as
 // `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
@@ -31385,6 +31583,162 @@ func (o ClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput) Sysctls() pulumi.Stri
 		}
 		return v.Sysctls
 	}).(pulumi.StringMapOutput)
+}
+
+type ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig struct {
+	// Amount of 1G hugepages.
+	HugepageSize1g *int `pulumi:"hugepageSize1g"`
+	// Amount of 2M hugepages.
+	HugepageSize2m *int `pulumi:"hugepageSize2m"`
+}
+
+// ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigInput is an input type that accepts ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs and ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigInput` via:
+//
+//	ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs{...}
+type ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput() ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput
+	ToClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutputWithContext(context.Context) ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput
+}
+
+type ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs struct {
+	// Amount of 1G hugepages.
+	HugepageSize1g pulumi.IntPtrInput `pulumi:"hugepageSize1g"`
+	// Amount of 2M hugepages.
+	HugepageSize2m pulumi.IntPtrInput `pulumi:"hugepageSize2m"`
+}
+
+func (ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig)(nil)).Elem()
+}
+
+func (i ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs) ToClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput() ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput {
+	return i.ToClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs) ToClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput)
+}
+
+func (i ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs) ToClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput() ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput {
+	return i.ToClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs) ToClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput).ToClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrInput is an input type that accepts ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs, ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtr and ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrInput` via:
+//
+//	        ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput() ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput
+	ToClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutputWithContext(context.Context) ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput
+}
+
+type clusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrType ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs
+
+func ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtr(v *ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs) ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrInput {
+	return (*clusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrType)(v)
+}
+
+func (*clusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig)(nil)).Elem()
+}
+
+func (i *clusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrType) ToClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput() ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput {
+	return i.ToClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrType) ToClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput)
+}
+
+type ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput) ToClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput() ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput) ToClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput) ToClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput() ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput {
+	return o.ToClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput) ToClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig) *ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig {
+		return &v
+	}).(ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput)
+}
+
+// Amount of 1G hugepages.
+func (o ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput) HugepageSize1g() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig) *int { return v.HugepageSize1g }).(pulumi.IntPtrOutput)
+}
+
+// Amount of 2M hugepages.
+func (o ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput) HugepageSize2m() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig) *int { return v.HugepageSize2m }).(pulumi.IntPtrOutput)
+}
+
+type ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput) ToClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput() ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput) ToClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput) Elem() ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig) ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig
+		return ret
+	}).(ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput)
+}
+
+// Amount of 1G hugepages.
+func (o ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput) HugepageSize1g() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.HugepageSize1g
+	}).(pulumi.IntPtrOutput)
+}
+
+// Amount of 2M hugepages.
+func (o ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput) HugepageSize2m() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.HugepageSize2m
+	}).(pulumi.IntPtrOutput)
 }
 
 type ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig struct {
@@ -40858,6 +41212,8 @@ func (o NodePoolNodeConfigKubeletConfigPtrOutput) PodPidsLimit() pulumi.IntPtrOu
 type NodePoolNodeConfigLinuxNodeConfig struct {
 	// cgroupMode specifies the cgroup mode to be used on the node.
 	CgroupMode *string `pulumi:"cgroupMode"`
+	// Amounts for 2M and 1G hugepages.
+	HugepagesConfig *NodePoolNodeConfigLinuxNodeConfigHugepagesConfig `pulumi:"hugepagesConfig"`
 	// The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
 	Sysctls map[string]string `pulumi:"sysctls"`
 }
@@ -40876,6 +41232,8 @@ type NodePoolNodeConfigLinuxNodeConfigInput interface {
 type NodePoolNodeConfigLinuxNodeConfigArgs struct {
 	// cgroupMode specifies the cgroup mode to be used on the node.
 	CgroupMode pulumi.StringPtrInput `pulumi:"cgroupMode"`
+	// Amounts for 2M and 1G hugepages.
+	HugepagesConfig NodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrInput `pulumi:"hugepagesConfig"`
 	// The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
 	Sysctls pulumi.StringMapInput `pulumi:"sysctls"`
 }
@@ -40962,6 +41320,13 @@ func (o NodePoolNodeConfigLinuxNodeConfigOutput) CgroupMode() pulumi.StringPtrOu
 	return o.ApplyT(func(v NodePoolNodeConfigLinuxNodeConfig) *string { return v.CgroupMode }).(pulumi.StringPtrOutput)
 }
 
+// Amounts for 2M and 1G hugepages.
+func (o NodePoolNodeConfigLinuxNodeConfigOutput) HugepagesConfig() NodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigLinuxNodeConfig) *NodePoolNodeConfigLinuxNodeConfigHugepagesConfig {
+		return v.HugepagesConfig
+	}).(NodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput)
+}
+
 // The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
 func (o NodePoolNodeConfigLinuxNodeConfigOutput) Sysctls() pulumi.StringMapOutput {
 	return o.ApplyT(func(v NodePoolNodeConfigLinuxNodeConfig) map[string]string { return v.Sysctls }).(pulumi.StringMapOutput)
@@ -41001,6 +41366,16 @@ func (o NodePoolNodeConfigLinuxNodeConfigPtrOutput) CgroupMode() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// Amounts for 2M and 1G hugepages.
+func (o NodePoolNodeConfigLinuxNodeConfigPtrOutput) HugepagesConfig() NodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigLinuxNodeConfig) *NodePoolNodeConfigLinuxNodeConfigHugepagesConfig {
+		if v == nil {
+			return nil
+		}
+		return v.HugepagesConfig
+	}).(NodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput)
+}
+
 // The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
 func (o NodePoolNodeConfigLinuxNodeConfigPtrOutput) Sysctls() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *NodePoolNodeConfigLinuxNodeConfig) map[string]string {
@@ -41009,6 +41384,162 @@ func (o NodePoolNodeConfigLinuxNodeConfigPtrOutput) Sysctls() pulumi.StringMapOu
 		}
 		return v.Sysctls
 	}).(pulumi.StringMapOutput)
+}
+
+type NodePoolNodeConfigLinuxNodeConfigHugepagesConfig struct {
+	// Amount of 1G hugepages.
+	HugepageSize1g *int `pulumi:"hugepageSize1g"`
+	// Amount of 2M hugepages.
+	HugepageSize2m *int `pulumi:"hugepageSize2m"`
+}
+
+// NodePoolNodeConfigLinuxNodeConfigHugepagesConfigInput is an input type that accepts NodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs and NodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput values.
+// You can construct a concrete instance of `NodePoolNodeConfigLinuxNodeConfigHugepagesConfigInput` via:
+//
+//	NodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs{...}
+type NodePoolNodeConfigLinuxNodeConfigHugepagesConfigInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput() NodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput
+	ToNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutputWithContext(context.Context) NodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput
+}
+
+type NodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs struct {
+	// Amount of 1G hugepages.
+	HugepageSize1g pulumi.IntPtrInput `pulumi:"hugepageSize1g"`
+	// Amount of 2M hugepages.
+	HugepageSize2m pulumi.IntPtrInput `pulumi:"hugepageSize2m"`
+}
+
+func (NodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeConfigLinuxNodeConfigHugepagesConfig)(nil)).Elem()
+}
+
+func (i NodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs) ToNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput() NodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput {
+	return i.ToNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs) ToNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutputWithContext(ctx context.Context) NodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput)
+}
+
+func (i NodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs) ToNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput() NodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput {
+	return i.ToNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs) ToNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput).ToNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutputWithContext(ctx)
+}
+
+// NodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrInput is an input type that accepts NodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs, NodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtr and NodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput values.
+// You can construct a concrete instance of `NodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrInput` via:
+//
+//	        NodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type NodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput() NodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput
+	ToNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutputWithContext(context.Context) NodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput
+}
+
+type nodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrType NodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs
+
+func NodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtr(v *NodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs) NodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrInput {
+	return (*nodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrType)(v)
+}
+
+func (*nodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolNodeConfigLinuxNodeConfigHugepagesConfig)(nil)).Elem()
+}
+
+func (i *nodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrType) ToNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput() NodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput {
+	return i.ToNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrType) ToNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput)
+}
+
+type NodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeConfigLinuxNodeConfigHugepagesConfig)(nil)).Elem()
+}
+
+func (o NodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput) ToNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput() NodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput) ToNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutputWithContext(ctx context.Context) NodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput) ToNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput() NodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput {
+	return o.ToNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput) ToNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodePoolNodeConfigLinuxNodeConfigHugepagesConfig) *NodePoolNodeConfigLinuxNodeConfigHugepagesConfig {
+		return &v
+	}).(NodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput)
+}
+
+// Amount of 1G hugepages.
+func (o NodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput) HugepageSize1g() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigLinuxNodeConfigHugepagesConfig) *int { return v.HugepageSize1g }).(pulumi.IntPtrOutput)
+}
+
+// Amount of 2M hugepages.
+func (o NodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput) HugepageSize2m() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigLinuxNodeConfigHugepagesConfig) *int { return v.HugepageSize2m }).(pulumi.IntPtrOutput)
+}
+
+type NodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolNodeConfigLinuxNodeConfigHugepagesConfig)(nil)).Elem()
+}
+
+func (o NodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput) ToNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput() NodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput) ToNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput) Elem() NodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigLinuxNodeConfigHugepagesConfig) NodePoolNodeConfigLinuxNodeConfigHugepagesConfig {
+		if v != nil {
+			return *v
+		}
+		var ret NodePoolNodeConfigLinuxNodeConfigHugepagesConfig
+		return ret
+	}).(NodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput)
+}
+
+// Amount of 1G hugepages.
+func (o NodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput) HugepageSize1g() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigLinuxNodeConfigHugepagesConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.HugepageSize1g
+	}).(pulumi.IntPtrOutput)
+}
+
+// Amount of 2M hugepages.
+func (o NodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput) HugepageSize2m() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigLinuxNodeConfigHugepagesConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.HugepageSize2m
+	}).(pulumi.IntPtrOutput)
 }
 
 type NodePoolNodeConfigLocalNvmeSsdBlockConfig struct {
@@ -43152,7 +43683,7 @@ type GetClusterAddonsConfig struct {
 	DnsCacheConfigs []GetClusterAddonsConfigDnsCacheConfig `pulumi:"dnsCacheConfigs"`
 	// Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Set enabled = true to enable. The Compute Engine persistent disk CSI Driver is enabled by default on newly created clusters for the following versions: Linux clusters: GKE version 1.18.10-gke.2100 or later, or 1.19.3-gke.2100 or later.
 	GcePersistentDiskCsiDriverConfigs []GetClusterAddonsConfigGcePersistentDiskCsiDriverConfig `pulumi:"gcePersistentDiskCsiDriverConfigs"`
-	// The status of the Filestore CSI driver addon, which allows the usage of filestore instance as volumes. Defaults to disabled; set enabled = true to enable.
+	// The status of the Filestore CSI driver addon, which allows the usage of filestore instance as volumes. Defaults to disabled for Standard clusters; set enabled = true to enable. It is enabled by default for Autopilot clusters; set enabled = true to enable it explicitly.
 	GcpFilestoreCsiDriverConfigs []GetClusterAddonsConfigGcpFilestoreCsiDriverConfig `pulumi:"gcpFilestoreCsiDriverConfigs"`
 	// The status of the GCS Fuse CSI driver addon, which allows the usage of gcs bucket as volumes. Defaults to disabled; set enabled = true to enable.
 	GcsFuseCsiDriverConfigs []GetClusterAddonsConfigGcsFuseCsiDriverConfig `pulumi:"gcsFuseCsiDriverConfigs"`
@@ -43194,7 +43725,7 @@ type GetClusterAddonsConfigArgs struct {
 	DnsCacheConfigs GetClusterAddonsConfigDnsCacheConfigArrayInput `pulumi:"dnsCacheConfigs"`
 	// Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Set enabled = true to enable. The Compute Engine persistent disk CSI Driver is enabled by default on newly created clusters for the following versions: Linux clusters: GKE version 1.18.10-gke.2100 or later, or 1.19.3-gke.2100 or later.
 	GcePersistentDiskCsiDriverConfigs GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArrayInput `pulumi:"gcePersistentDiskCsiDriverConfigs"`
-	// The status of the Filestore CSI driver addon, which allows the usage of filestore instance as volumes. Defaults to disabled; set enabled = true to enable.
+	// The status of the Filestore CSI driver addon, which allows the usage of filestore instance as volumes. Defaults to disabled for Standard clusters; set enabled = true to enable. It is enabled by default for Autopilot clusters; set enabled = true to enable it explicitly.
 	GcpFilestoreCsiDriverConfigs GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArrayInput `pulumi:"gcpFilestoreCsiDriverConfigs"`
 	// The status of the GCS Fuse CSI driver addon, which allows the usage of gcs bucket as volumes. Defaults to disabled; set enabled = true to enable.
 	GcsFuseCsiDriverConfigs GetClusterAddonsConfigGcsFuseCsiDriverConfigArrayInput `pulumi:"gcsFuseCsiDriverConfigs"`
@@ -43291,7 +43822,7 @@ func (o GetClusterAddonsConfigOutput) GcePersistentDiskCsiDriverConfigs() GetClu
 	}).(GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArrayOutput)
 }
 
-// The status of the Filestore CSI driver addon, which allows the usage of filestore instance as volumes. Defaults to disabled; set enabled = true to enable.
+// The status of the Filestore CSI driver addon, which allows the usage of filestore instance as volumes. Defaults to disabled for Standard clusters; set enabled = true to enable. It is enabled by default for Autopilot clusters; set enabled = true to enable it explicitly.
 func (o GetClusterAddonsConfigOutput) GcpFilestoreCsiDriverConfigs() GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArrayOutput {
 	return o.ApplyT(func(v GetClusterAddonsConfig) []GetClusterAddonsConfigGcpFilestoreCsiDriverConfig {
 		return v.GcpFilestoreCsiDriverConfigs
@@ -51516,6 +52047,8 @@ func (o GetClusterNodeConfigKubeletConfigArrayOutput) Index(i pulumi.IntInput) G
 type GetClusterNodeConfigLinuxNodeConfig struct {
 	// cgroupMode specifies the cgroup mode to be used on the node.
 	CgroupMode string `pulumi:"cgroupMode"`
+	// Amounts for 2M and 1G hugepages.
+	HugepagesConfigs []GetClusterNodeConfigLinuxNodeConfigHugepagesConfig `pulumi:"hugepagesConfigs"`
 	// The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
 	Sysctls map[string]string `pulumi:"sysctls"`
 }
@@ -51534,6 +52067,8 @@ type GetClusterNodeConfigLinuxNodeConfigInput interface {
 type GetClusterNodeConfigLinuxNodeConfigArgs struct {
 	// cgroupMode specifies the cgroup mode to be used on the node.
 	CgroupMode pulumi.StringInput `pulumi:"cgroupMode"`
+	// Amounts for 2M and 1G hugepages.
+	HugepagesConfigs GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayInput `pulumi:"hugepagesConfigs"`
 	// The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
 	Sysctls pulumi.StringMapInput `pulumi:"sysctls"`
 }
@@ -51594,6 +52129,13 @@ func (o GetClusterNodeConfigLinuxNodeConfigOutput) CgroupMode() pulumi.StringOut
 	return o.ApplyT(func(v GetClusterNodeConfigLinuxNodeConfig) string { return v.CgroupMode }).(pulumi.StringOutput)
 }
 
+// Amounts for 2M and 1G hugepages.
+func (o GetClusterNodeConfigLinuxNodeConfigOutput) HugepagesConfigs() GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigLinuxNodeConfig) []GetClusterNodeConfigLinuxNodeConfigHugepagesConfig {
+		return v.HugepagesConfigs
+	}).(GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput)
+}
+
 // The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
 func (o GetClusterNodeConfigLinuxNodeConfigOutput) Sysctls() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetClusterNodeConfigLinuxNodeConfig) map[string]string { return v.Sysctls }).(pulumi.StringMapOutput)
@@ -51617,6 +52159,112 @@ func (o GetClusterNodeConfigLinuxNodeConfigArrayOutput) Index(i pulumi.IntInput)
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigLinuxNodeConfig {
 		return vs[0].([]GetClusterNodeConfigLinuxNodeConfig)[vs[1].(int)]
 	}).(GetClusterNodeConfigLinuxNodeConfigOutput)
+}
+
+type GetClusterNodeConfigLinuxNodeConfigHugepagesConfig struct {
+	// Amount of 1G hugepages.
+	HugepageSize1g int `pulumi:"hugepageSize1g"`
+	// Amount of 2M hugepages.
+	HugepageSize2m int `pulumi:"hugepageSize2m"`
+}
+
+// GetClusterNodeConfigLinuxNodeConfigHugepagesConfigInput is an input type that accepts GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs and GetClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigLinuxNodeConfigHugepagesConfigInput` via:
+//
+//	GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs{...}
+type GetClusterNodeConfigLinuxNodeConfigHugepagesConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput() GetClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput
+	ToGetClusterNodeConfigLinuxNodeConfigHugepagesConfigOutputWithContext(context.Context) GetClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput
+}
+
+type GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs struct {
+	// Amount of 1G hugepages.
+	HugepageSize1g pulumi.IntInput `pulumi:"hugepageSize1g"`
+	// Amount of 2M hugepages.
+	HugepageSize2m pulumi.IntInput `pulumi:"hugepageSize2m"`
+}
+
+func (GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigHugepagesConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs) ToGetClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput() GetClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput {
+	return i.ToGetClusterNodeConfigLinuxNodeConfigHugepagesConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs) ToGetClusterNodeConfigLinuxNodeConfigHugepagesConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput)
+}
+
+// GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayInput is an input type that accepts GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArray and GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayInput` via:
+//
+//	GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArray{ GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs{...} }
+type GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput() GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput
+	ToGetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayOutputWithContext(context.Context) GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput
+}
+
+type GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArray []GetClusterNodeConfigLinuxNodeConfigHugepagesConfigInput
+
+func (GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigLinuxNodeConfigHugepagesConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArray) ToGetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput() GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput {
+	return i.ToGetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArray) ToGetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput)
+}
+
+type GetClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigHugepagesConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput) ToGetClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput() GetClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput) ToGetClusterNodeConfigLinuxNodeConfigHugepagesConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput {
+	return o
+}
+
+// Amount of 1G hugepages.
+func (o GetClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput) HugepageSize1g() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigLinuxNodeConfigHugepagesConfig) int { return v.HugepageSize1g }).(pulumi.IntOutput)
+}
+
+// Amount of 2M hugepages.
+func (o GetClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput) HugepageSize2m() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigLinuxNodeConfigHugepagesConfig) int { return v.HugepageSize2m }).(pulumi.IntOutput)
+}
+
+type GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigLinuxNodeConfigHugepagesConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput) ToGetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput() GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput) ToGetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigLinuxNodeConfigHugepagesConfig {
+		return vs[0].([]GetClusterNodeConfigLinuxNodeConfigHugepagesConfig)[vs[1].(int)]
+	}).(GetClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput)
 }
 
 type GetClusterNodeConfigLocalNvmeSsdBlockConfig struct {
@@ -56960,6 +57608,8 @@ func (o GetClusterNodePoolNodeConfigKubeletConfigArrayOutput) Index(i pulumi.Int
 type GetClusterNodePoolNodeConfigLinuxNodeConfig struct {
 	// cgroupMode specifies the cgroup mode to be used on the node.
 	CgroupMode string `pulumi:"cgroupMode"`
+	// Amounts for 2M and 1G hugepages.
+	HugepagesConfigs []GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig `pulumi:"hugepagesConfigs"`
 	// The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
 	Sysctls map[string]string `pulumi:"sysctls"`
 }
@@ -56978,6 +57628,8 @@ type GetClusterNodePoolNodeConfigLinuxNodeConfigInput interface {
 type GetClusterNodePoolNodeConfigLinuxNodeConfigArgs struct {
 	// cgroupMode specifies the cgroup mode to be used on the node.
 	CgroupMode pulumi.StringInput `pulumi:"cgroupMode"`
+	// Amounts for 2M and 1G hugepages.
+	HugepagesConfigs GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArrayInput `pulumi:"hugepagesConfigs"`
 	// The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
 	Sysctls pulumi.StringMapInput `pulumi:"sysctls"`
 }
@@ -57038,6 +57690,13 @@ func (o GetClusterNodePoolNodeConfigLinuxNodeConfigOutput) CgroupMode() pulumi.S
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfigLinuxNodeConfig) string { return v.CgroupMode }).(pulumi.StringOutput)
 }
 
+// Amounts for 2M and 1G hugepages.
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigOutput) HugepagesConfigs() GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigLinuxNodeConfig) []GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig {
+		return v.HugepagesConfigs
+	}).(GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput)
+}
+
 // The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
 func (o GetClusterNodePoolNodeConfigLinuxNodeConfigOutput) Sysctls() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfigLinuxNodeConfig) map[string]string { return v.Sysctls }).(pulumi.StringMapOutput)
@@ -57061,6 +57720,112 @@ func (o GetClusterNodePoolNodeConfigLinuxNodeConfigArrayOutput) Index(i pulumi.I
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigLinuxNodeConfig {
 		return vs[0].([]GetClusterNodePoolNodeConfigLinuxNodeConfig)[vs[1].(int)]
 	}).(GetClusterNodePoolNodeConfigLinuxNodeConfigOutput)
+}
+
+type GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig struct {
+	// Amount of 1G hugepages.
+	HugepageSize1g int `pulumi:"hugepageSize1g"`
+	// Amount of 2M hugepages.
+	HugepageSize2m int `pulumi:"hugepageSize2m"`
+}
+
+// GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigInput is an input type that accepts GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs and GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigInput` via:
+//
+//	GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs{...}
+type GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput
+	ToGetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutputWithContext(context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput
+}
+
+type GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs struct {
+	// Amount of 1G hugepages.
+	HugepageSize1g pulumi.IntInput `pulumi:"hugepageSize1g"`
+	// Amount of 2M hugepages.
+	HugepageSize2m pulumi.IntInput `pulumi:"hugepageSize2m"`
+}
+
+func (GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs) ToGetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput {
+	return i.ToGetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs) ToGetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput)
+}
+
+// GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArrayInput is an input type that accepts GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArray and GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArrayInput` via:
+//
+//	GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArray{ GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs{...} }
+type GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput
+	ToGetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArrayOutputWithContext(context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput
+}
+
+type GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArray []GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigInput
+
+func (GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArray) ToGetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput {
+	return i.ToGetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArray) ToGetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput)
+}
+
+type GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput) ToGetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput) ToGetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput {
+	return o
+}
+
+// Amount of 1G hugepages.
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput) HugepageSize1g() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig) int { return v.HugepageSize1g }).(pulumi.IntOutput)
+}
+
+// Amount of 2M hugepages.
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput) HugepageSize2m() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig) int { return v.HugepageSize2m }).(pulumi.IntOutput)
+}
+
+type GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput) ToGetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput() GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput) ToGetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig {
+		return vs[0].([]GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig)[vs[1].(int)]
+	}).(GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput)
 }
 
 type GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig struct {
@@ -60765,6 +61530,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigKubeletConfigPtrInput)(nil)).Elem(), ClusterNodeConfigKubeletConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigLinuxNodeConfigInput)(nil)).Elem(), ClusterNodeConfigLinuxNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigLinuxNodeConfigPtrInput)(nil)).Elem(), ClusterNodeConfigLinuxNodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigLinuxNodeConfigHugepagesConfigInput)(nil)).Elem(), ClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigLinuxNodeConfigHugepagesConfigPtrInput)(nil)).Elem(), ClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigLocalNvmeSsdBlockConfigInput)(nil)).Elem(), ClusterNodeConfigLocalNvmeSsdBlockConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigLocalNvmeSsdBlockConfigPtrInput)(nil)).Elem(), ClusterNodeConfigLocalNvmeSsdBlockConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigReservationAffinityInput)(nil)).Elem(), ClusterNodeConfigReservationAffinityArgs{})
@@ -60855,6 +61622,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigKubeletConfigPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigKubeletConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigLinuxNodeConfigInput)(nil)).Elem(), ClusterNodePoolNodeConfigLinuxNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigLinuxNodeConfigPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigLinuxNodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigInput)(nil)).Elem(), ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigInput)(nil)).Elem(), ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigReservationAffinityInput)(nil)).Elem(), ClusterNodePoolNodeConfigReservationAffinityArgs{})
@@ -60970,6 +61739,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigKubeletConfigPtrInput)(nil)).Elem(), NodePoolNodeConfigKubeletConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigLinuxNodeConfigInput)(nil)).Elem(), NodePoolNodeConfigLinuxNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigLinuxNodeConfigPtrInput)(nil)).Elem(), NodePoolNodeConfigLinuxNodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigLinuxNodeConfigHugepagesConfigInput)(nil)).Elem(), NodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrInput)(nil)).Elem(), NodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigLocalNvmeSsdBlockConfigInput)(nil)).Elem(), NodePoolNodeConfigLocalNvmeSsdBlockConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigLocalNvmeSsdBlockConfigPtrInput)(nil)).Elem(), NodePoolNodeConfigLocalNvmeSsdBlockConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigReservationAffinityInput)(nil)).Elem(), NodePoolNodeConfigReservationAffinityArgs{})
@@ -61148,6 +61919,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigKubeletConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigKubeletConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigInput)(nil)).Elem(), GetClusterNodeConfigLinuxNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigLinuxNodeConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigHugepagesConfigInput)(nil)).Elem(), GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigLocalNvmeSsdBlockConfigInput)(nil)).Elem(), GetClusterNodeConfigLocalNvmeSsdBlockConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigLocalNvmeSsdBlockConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigLocalNvmeSsdBlockConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigReservationAffinityInput)(nil)).Elem(), GetClusterNodeConfigReservationAffinityArgs{})
@@ -61240,6 +62013,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigKubeletConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigKubeletConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigLinuxNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigLinuxNodeConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigReservationAffinityInput)(nil)).Elem(), GetClusterNodePoolNodeConfigReservationAffinityArgs{})
@@ -61589,6 +62364,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodeConfigKubeletConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigLinuxNodeConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigLinuxNodeConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput{})
+	pulumi.RegisterOutputType(ClusterNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigLocalNvmeSsdBlockConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigLocalNvmeSsdBlockConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigReservationAffinityOutput{})
@@ -61679,6 +62456,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigKubeletConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigLinuxNodeConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigReservationAffinityOutput{})
@@ -61794,6 +62573,8 @@ func init() {
 	pulumi.RegisterOutputType(NodePoolNodeConfigKubeletConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigLinuxNodeConfigOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigLinuxNodeConfigPtrOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeConfigLinuxNodeConfigHugepagesConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigLocalNvmeSsdBlockConfigOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigReservationAffinityOutput{})
@@ -61972,6 +62753,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodeConfigKubeletConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigLinuxNodeConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigLinuxNodeConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigLinuxNodeConfigHugepagesConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigLocalNvmeSsdBlockConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigLocalNvmeSsdBlockConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigReservationAffinityOutput{})
@@ -62064,6 +62847,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigKubeletConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigLinuxNodeConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigLinuxNodeConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigReservationAffinityOutput{})

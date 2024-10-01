@@ -28,6 +28,18 @@ __all__ = [
     'EntitlementRequesterJustificationConfig',
     'EntitlementRequesterJustificationConfigNotMandatory',
     'EntitlementRequesterJustificationConfigUnstructured',
+    'GetEntitlementAdditionalNotificationTargetResult',
+    'GetEntitlementApprovalWorkflowResult',
+    'GetEntitlementApprovalWorkflowManualApprovalResult',
+    'GetEntitlementApprovalWorkflowManualApprovalStepResult',
+    'GetEntitlementApprovalWorkflowManualApprovalStepApproverResult',
+    'GetEntitlementEligibleUserResult',
+    'GetEntitlementPrivilegedAccessResult',
+    'GetEntitlementPrivilegedAccessGcpIamAccessResult',
+    'GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingResult',
+    'GetEntitlementRequesterJustificationConfigResult',
+    'GetEntitlementRequesterJustificationConfigNotMandatoryResult',
+    'GetEntitlementRequesterJustificationConfigUnstructuredResult',
 ]
 
 @pulumi.output_type
@@ -490,6 +502,306 @@ class EntitlementRequesterJustificationConfigNotMandatory(dict):
 
 @pulumi.output_type
 class EntitlementRequesterJustificationConfigUnstructured(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class GetEntitlementAdditionalNotificationTargetResult(dict):
+    def __init__(__self__, *,
+                 admin_email_recipients: Sequence[str],
+                 requester_email_recipients: Sequence[str]):
+        """
+        :param Sequence[str] admin_email_recipients: Optional. Additional email addresses to be notified when a principal(requester) is granted access.
+        :param Sequence[str] requester_email_recipients: Optional. Additional email address to be notified about an eligible entitlement.
+        """
+        pulumi.set(__self__, "admin_email_recipients", admin_email_recipients)
+        pulumi.set(__self__, "requester_email_recipients", requester_email_recipients)
+
+    @property
+    @pulumi.getter(name="adminEmailRecipients")
+    def admin_email_recipients(self) -> Sequence[str]:
+        """
+        Optional. Additional email addresses to be notified when a principal(requester) is granted access.
+        """
+        return pulumi.get(self, "admin_email_recipients")
+
+    @property
+    @pulumi.getter(name="requesterEmailRecipients")
+    def requester_email_recipients(self) -> Sequence[str]:
+        """
+        Optional. Additional email address to be notified about an eligible entitlement.
+        """
+        return pulumi.get(self, "requester_email_recipients")
+
+
+@pulumi.output_type
+class GetEntitlementApprovalWorkflowResult(dict):
+    def __init__(__self__, *,
+                 manual_approvals: Sequence['outputs.GetEntitlementApprovalWorkflowManualApprovalResult']):
+        """
+        :param Sequence['GetEntitlementApprovalWorkflowManualApprovalArgs'] manual_approvals: A manual approval workflow where users who are designated as approvers need to call the ApproveGrant/DenyGrant APIs for an Grant.
+               The workflow can consist of multiple serial steps where each step defines who can act as Approver in that step and how many of those users should approve before the workflow moves to the next step.
+               This can be used to create approval workflows such as
+               * Require an approval from any user in a group G.
+               * Require an approval from any k number of users from a Group G.
+               * Require an approval from any user in a group G and then from a user U. etc.
+               A single user might be part of 'approvers' ACL for multiple steps in this workflow but they can only approve once and that approval will only be considered to satisfy the approval step at which it was granted.
+        """
+        pulumi.set(__self__, "manual_approvals", manual_approvals)
+
+    @property
+    @pulumi.getter(name="manualApprovals")
+    def manual_approvals(self) -> Sequence['outputs.GetEntitlementApprovalWorkflowManualApprovalResult']:
+        """
+        A manual approval workflow where users who are designated as approvers need to call the ApproveGrant/DenyGrant APIs for an Grant.
+        The workflow can consist of multiple serial steps where each step defines who can act as Approver in that step and how many of those users should approve before the workflow moves to the next step.
+        This can be used to create approval workflows such as
+        * Require an approval from any user in a group G.
+        * Require an approval from any k number of users from a Group G.
+        * Require an approval from any user in a group G and then from a user U. etc.
+        A single user might be part of 'approvers' ACL for multiple steps in this workflow but they can only approve once and that approval will only be considered to satisfy the approval step at which it was granted.
+        """
+        return pulumi.get(self, "manual_approvals")
+
+
+@pulumi.output_type
+class GetEntitlementApprovalWorkflowManualApprovalResult(dict):
+    def __init__(__self__, *,
+                 require_approver_justification: bool,
+                 steps: Sequence['outputs.GetEntitlementApprovalWorkflowManualApprovalStepResult']):
+        """
+        :param bool require_approver_justification: Optional. Do the approvers need to provide a justification for their actions?
+        :param Sequence['GetEntitlementApprovalWorkflowManualApprovalStepArgs'] steps: List of approval steps in this workflow. These steps would be followed in the specified order sequentially.  1 step is supported for now.
+        """
+        pulumi.set(__self__, "require_approver_justification", require_approver_justification)
+        pulumi.set(__self__, "steps", steps)
+
+    @property
+    @pulumi.getter(name="requireApproverJustification")
+    def require_approver_justification(self) -> bool:
+        """
+        Optional. Do the approvers need to provide a justification for their actions?
+        """
+        return pulumi.get(self, "require_approver_justification")
+
+    @property
+    @pulumi.getter
+    def steps(self) -> Sequence['outputs.GetEntitlementApprovalWorkflowManualApprovalStepResult']:
+        """
+        List of approval steps in this workflow. These steps would be followed in the specified order sequentially.  1 step is supported for now.
+        """
+        return pulumi.get(self, "steps")
+
+
+@pulumi.output_type
+class GetEntitlementApprovalWorkflowManualApprovalStepResult(dict):
+    def __init__(__self__, *,
+                 approvals_needed: int,
+                 approver_email_recipients: Sequence[str],
+                 approvers: Sequence['outputs.GetEntitlementApprovalWorkflowManualApprovalStepApproverResult']):
+        """
+        :param int approvals_needed: How many users from the above list need to approve.
+               If there are not enough distinct users in the list above then the workflow
+               will indefinitely block. Should always be greater than 0. Currently 1 is the only
+               supported value.
+        :param Sequence[str] approver_email_recipients: Optional. Additional email addresses to be notified when a grant is pending approval.
+        :param Sequence['GetEntitlementApprovalWorkflowManualApprovalStepApproverArgs'] approvers: The potential set of approvers in this step. This list should contain at only one entry.
+        """
+        pulumi.set(__self__, "approvals_needed", approvals_needed)
+        pulumi.set(__self__, "approver_email_recipients", approver_email_recipients)
+        pulumi.set(__self__, "approvers", approvers)
+
+    @property
+    @pulumi.getter(name="approvalsNeeded")
+    def approvals_needed(self) -> int:
+        """
+        How many users from the above list need to approve.
+        If there are not enough distinct users in the list above then the workflow
+        will indefinitely block. Should always be greater than 0. Currently 1 is the only
+        supported value.
+        """
+        return pulumi.get(self, "approvals_needed")
+
+    @property
+    @pulumi.getter(name="approverEmailRecipients")
+    def approver_email_recipients(self) -> Sequence[str]:
+        """
+        Optional. Additional email addresses to be notified when a grant is pending approval.
+        """
+        return pulumi.get(self, "approver_email_recipients")
+
+    @property
+    @pulumi.getter
+    def approvers(self) -> Sequence['outputs.GetEntitlementApprovalWorkflowManualApprovalStepApproverResult']:
+        """
+        The potential set of approvers in this step. This list should contain at only one entry.
+        """
+        return pulumi.get(self, "approvers")
+
+
+@pulumi.output_type
+class GetEntitlementApprovalWorkflowManualApprovalStepApproverResult(dict):
+    def __init__(__self__, *,
+                 principals: Sequence[str]):
+        """
+        :param Sequence[str] principals: Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at: https://cloud.google.com/iam/docs/principal-identifiers#v1
+        """
+        pulumi.set(__self__, "principals", principals)
+
+    @property
+    @pulumi.getter
+    def principals(self) -> Sequence[str]:
+        """
+        Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at: https://cloud.google.com/iam/docs/principal-identifiers#v1
+        """
+        return pulumi.get(self, "principals")
+
+
+@pulumi.output_type
+class GetEntitlementEligibleUserResult(dict):
+    def __init__(__self__, *,
+                 principals: Sequence[str]):
+        """
+        :param Sequence[str] principals: Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at "https://cloud.google.com/iam/docs/principal-identifiers#v1"
+        """
+        pulumi.set(__self__, "principals", principals)
+
+    @property
+    @pulumi.getter
+    def principals(self) -> Sequence[str]:
+        """
+        Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at "https://cloud.google.com/iam/docs/principal-identifiers#v1"
+        """
+        return pulumi.get(self, "principals")
+
+
+@pulumi.output_type
+class GetEntitlementPrivilegedAccessResult(dict):
+    def __init__(__self__, *,
+                 gcp_iam_accesses: Sequence['outputs.GetEntitlementPrivilegedAccessGcpIamAccessResult']):
+        """
+        :param Sequence['GetEntitlementPrivilegedAccessGcpIamAccessArgs'] gcp_iam_accesses: GcpIamAccess represents IAM based access control on a GCP resource. Refer to https://cloud.google.com/iam/docs to understand more about IAM.
+        """
+        pulumi.set(__self__, "gcp_iam_accesses", gcp_iam_accesses)
+
+    @property
+    @pulumi.getter(name="gcpIamAccesses")
+    def gcp_iam_accesses(self) -> Sequence['outputs.GetEntitlementPrivilegedAccessGcpIamAccessResult']:
+        """
+        GcpIamAccess represents IAM based access control on a GCP resource. Refer to https://cloud.google.com/iam/docs to understand more about IAM.
+        """
+        return pulumi.get(self, "gcp_iam_accesses")
+
+
+@pulumi.output_type
+class GetEntitlementPrivilegedAccessGcpIamAccessResult(dict):
+    def __init__(__self__, *,
+                 resource: str,
+                 resource_type: str,
+                 role_bindings: Sequence['outputs.GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingResult']):
+        """
+        :param str resource: Name of the resource.
+        :param str resource_type: The type of this resource.
+        :param Sequence['GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingArgs'] role_bindings: Role bindings to be created on successful grant.
+        """
+        pulumi.set(__self__, "resource", resource)
+        pulumi.set(__self__, "resource_type", resource_type)
+        pulumi.set(__self__, "role_bindings", role_bindings)
+
+    @property
+    @pulumi.getter
+    def resource(self) -> str:
+        """
+        Name of the resource.
+        """
+        return pulumi.get(self, "resource")
+
+    @property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> str:
+        """
+        The type of this resource.
+        """
+        return pulumi.get(self, "resource_type")
+
+    @property
+    @pulumi.getter(name="roleBindings")
+    def role_bindings(self) -> Sequence['outputs.GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingResult']:
+        """
+        Role bindings to be created on successful grant.
+        """
+        return pulumi.get(self, "role_bindings")
+
+
+@pulumi.output_type
+class GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingResult(dict):
+    def __init__(__self__, *,
+                 condition_expression: str,
+                 role: str):
+        """
+        :param str condition_expression: The expression field of the IAM condition to be associated with the role. If specified, a user with an active grant for this entitlement would be able to access the resource only if this condition evaluates to true for their request.
+               https://cloud.google.com/iam/docs/conditions-overview#attributes.
+        :param str role: IAM role to be granted. https://cloud.google.com/iam/docs/roles-overview.
+        """
+        pulumi.set(__self__, "condition_expression", condition_expression)
+        pulumi.set(__self__, "role", role)
+
+    @property
+    @pulumi.getter(name="conditionExpression")
+    def condition_expression(self) -> str:
+        """
+        The expression field of the IAM condition to be associated with the role. If specified, a user with an active grant for this entitlement would be able to access the resource only if this condition evaluates to true for their request.
+        https://cloud.google.com/iam/docs/conditions-overview#attributes.
+        """
+        return pulumi.get(self, "condition_expression")
+
+    @property
+    @pulumi.getter
+    def role(self) -> str:
+        """
+        IAM role to be granted. https://cloud.google.com/iam/docs/roles-overview.
+        """
+        return pulumi.get(self, "role")
+
+
+@pulumi.output_type
+class GetEntitlementRequesterJustificationConfigResult(dict):
+    def __init__(__self__, *,
+                 not_mandatories: Sequence['outputs.GetEntitlementRequesterJustificationConfigNotMandatoryResult'],
+                 unstructureds: Sequence['outputs.GetEntitlementRequesterJustificationConfigUnstructuredResult']):
+        """
+        :param Sequence['GetEntitlementRequesterJustificationConfigNotMandatoryArgs'] not_mandatories: The justification is not mandatory but can be provided in any of the supported formats.
+        :param Sequence['GetEntitlementRequesterJustificationConfigUnstructuredArgs'] unstructureds: The requester has to provide a justification in the form of free flowing text.
+        """
+        pulumi.set(__self__, "not_mandatories", not_mandatories)
+        pulumi.set(__self__, "unstructureds", unstructureds)
+
+    @property
+    @pulumi.getter(name="notMandatories")
+    def not_mandatories(self) -> Sequence['outputs.GetEntitlementRequesterJustificationConfigNotMandatoryResult']:
+        """
+        The justification is not mandatory but can be provided in any of the supported formats.
+        """
+        return pulumi.get(self, "not_mandatories")
+
+    @property
+    @pulumi.getter
+    def unstructureds(self) -> Sequence['outputs.GetEntitlementRequesterJustificationConfigUnstructuredResult']:
+        """
+        The requester has to provide a justification in the form of free flowing text.
+        """
+        return pulumi.get(self, "unstructureds")
+
+
+@pulumi.output_type
+class GetEntitlementRequesterJustificationConfigNotMandatoryResult(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class GetEntitlementRequesterJustificationConfigUnstructuredResult(dict):
     def __init__(__self__):
         pass
 

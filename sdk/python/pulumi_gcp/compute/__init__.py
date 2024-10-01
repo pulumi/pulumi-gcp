@@ -69,6 +69,7 @@ from .get_region_backend_service_iam_policy import *
 from .get_region_disk import *
 from .get_region_disk_iam_policy import *
 from .get_region_instance_group import *
+from .get_region_instance_group_manager import *
 from .get_region_instance_template import *
 from .get_region_network_endpoint_group import *
 from .get_region_ssl_certificate import *
@@ -163,6 +164,7 @@ from .region_network_endpoint_group import *
 from .region_network_firewall_policy import *
 from .region_network_firewall_policy_association import *
 from .region_network_firewall_policy_rule import *
+from .region_network_firewall_policy_with_rules import *
 from .region_per_instance_config import *
 from .region_security_policy import *
 from .region_security_policy_rule import *
@@ -179,6 +181,7 @@ from .route import *
 from .router import *
 from .router_interface import *
 from .router_nat import *
+from .router_nat_address import *
 from .router_peer import *
 from .router_route_policy import *
 from .router_status import *

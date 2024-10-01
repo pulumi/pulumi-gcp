@@ -4752,6 +4752,9 @@ type ServiceTemplate struct {
 	// Sets the maximum number of requests that each serving instance can receive.
 	// If not specified or 0, defaults to 80 when requested CPU >= 1 and defaults to 1 when requested CPU < 1.
 	MaxInstanceRequestConcurrency *int `pulumi:"maxInstanceRequestConcurrency"`
+	// Node Selector describes the hardware requirements of the resources.
+	// Structure is documented below.
+	NodeSelector *ServiceTemplateNodeSelector `pulumi:"nodeSelector"`
 	// The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
 	Revision *string `pulumi:"revision"`
 	// Scaling settings for this Revision.
@@ -4808,6 +4811,9 @@ type ServiceTemplateArgs struct {
 	// Sets the maximum number of requests that each serving instance can receive.
 	// If not specified or 0, defaults to 80 when requested CPU >= 1 and defaults to 1 when requested CPU < 1.
 	MaxInstanceRequestConcurrency pulumi.IntPtrInput `pulumi:"maxInstanceRequestConcurrency"`
+	// Node Selector describes the hardware requirements of the resources.
+	// Structure is documented below.
+	NodeSelector ServiceTemplateNodeSelectorPtrInput `pulumi:"nodeSelector"`
 	// The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
 	Revision pulumi.StringPtrInput `pulumi:"revision"`
 	// Scaling settings for this Revision.
@@ -4947,6 +4953,12 @@ func (o ServiceTemplateOutput) MaxInstanceRequestConcurrency() pulumi.IntPtrOutp
 	return o.ApplyT(func(v ServiceTemplate) *int { return v.MaxInstanceRequestConcurrency }).(pulumi.IntPtrOutput)
 }
 
+// Node Selector describes the hardware requirements of the resources.
+// Structure is documented below.
+func (o ServiceTemplateOutput) NodeSelector() ServiceTemplateNodeSelectorPtrOutput {
+	return o.ApplyT(func(v ServiceTemplate) *ServiceTemplateNodeSelector { return v.NodeSelector }).(ServiceTemplateNodeSelectorPtrOutput)
+}
+
 // The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
 func (o ServiceTemplateOutput) Revision() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTemplate) *string { return v.Revision }).(pulumi.StringPtrOutput)
@@ -5083,6 +5095,17 @@ func (o ServiceTemplatePtrOutput) MaxInstanceRequestConcurrency() pulumi.IntPtrO
 		}
 		return v.MaxInstanceRequestConcurrency
 	}).(pulumi.IntPtrOutput)
+}
+
+// Node Selector describes the hardware requirements of the resources.
+// Structure is documented below.
+func (o ServiceTemplatePtrOutput) NodeSelector() ServiceTemplateNodeSelectorPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplate) *ServiceTemplateNodeSelector {
+		if v == nil {
+			return nil
+		}
+		return v.NodeSelector
+	}).(ServiceTemplateNodeSelectorPtrOutput)
 }
 
 // The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
@@ -6833,7 +6856,7 @@ type ServiceTemplateContainerResources struct {
 	// Determines whether CPU is only allocated during requests. True by default if the parent `resources` field is not set. However, if
 	// `resources` is set, this field must be explicitly set to true to preserve the default behavior.
 	CpuIdle *bool `pulumi:"cpuIdle"`
-	// Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// Only memory, CPU, and nvidia.com/gpu are supported. Use key `cpu` for CPU limit, `memory` for memory limit, `nvidia.com/gpu` for gpu limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Limits map[string]string `pulumi:"limits"`
 	// Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
 	StartupCpuBoost *bool `pulumi:"startupCpuBoost"`
@@ -6854,7 +6877,7 @@ type ServiceTemplateContainerResourcesArgs struct {
 	// Determines whether CPU is only allocated during requests. True by default if the parent `resources` field is not set. However, if
 	// `resources` is set, this field must be explicitly set to true to preserve the default behavior.
 	CpuIdle pulumi.BoolPtrInput `pulumi:"cpuIdle"`
-	// Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// Only memory, CPU, and nvidia.com/gpu are supported. Use key `cpu` for CPU limit, `memory` for memory limit, `nvidia.com/gpu` for gpu limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Limits pulumi.StringMapInput `pulumi:"limits"`
 	// Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
 	StartupCpuBoost pulumi.BoolPtrInput `pulumi:"startupCpuBoost"`
@@ -6943,7 +6966,7 @@ func (o ServiceTemplateContainerResourcesOutput) CpuIdle() pulumi.BoolPtrOutput 
 	return o.ApplyT(func(v ServiceTemplateContainerResources) *bool { return v.CpuIdle }).(pulumi.BoolPtrOutput)
 }
 
-// Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+// Only memory, CPU, and nvidia.com/gpu are supported. Use key `cpu` for CPU limit, `memory` for memory limit, `nvidia.com/gpu` for gpu limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 func (o ServiceTemplateContainerResourcesOutput) Limits() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ServiceTemplateContainerResources) map[string]string { return v.Limits }).(pulumi.StringMapOutput)
 }
@@ -6988,7 +7011,7 @@ func (o ServiceTemplateContainerResourcesPtrOutput) CpuIdle() pulumi.BoolPtrOutp
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+// Only memory, CPU, and nvidia.com/gpu are supported. Use key `cpu` for CPU limit, `memory` for memory limit, `nvidia.com/gpu` for gpu limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 func (o ServiceTemplateContainerResourcesPtrOutput) Limits() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ServiceTemplateContainerResources) map[string]string {
 		if v == nil {
@@ -7981,6 +8004,151 @@ func (o ServiceTemplateContainerVolumeMountArrayOutput) Index(i pulumi.IntInput)
 	}).(ServiceTemplateContainerVolumeMountOutput)
 }
 
+type ServiceTemplateNodeSelector struct {
+	// The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/services/gpu for configuring GPU.
+	//
+	// ***
+	Accelerator string `pulumi:"accelerator"`
+}
+
+// ServiceTemplateNodeSelectorInput is an input type that accepts ServiceTemplateNodeSelectorArgs and ServiceTemplateNodeSelectorOutput values.
+// You can construct a concrete instance of `ServiceTemplateNodeSelectorInput` via:
+//
+//	ServiceTemplateNodeSelectorArgs{...}
+type ServiceTemplateNodeSelectorInput interface {
+	pulumi.Input
+
+	ToServiceTemplateNodeSelectorOutput() ServiceTemplateNodeSelectorOutput
+	ToServiceTemplateNodeSelectorOutputWithContext(context.Context) ServiceTemplateNodeSelectorOutput
+}
+
+type ServiceTemplateNodeSelectorArgs struct {
+	// The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/services/gpu for configuring GPU.
+	//
+	// ***
+	Accelerator pulumi.StringInput `pulumi:"accelerator"`
+}
+
+func (ServiceTemplateNodeSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateNodeSelector)(nil)).Elem()
+}
+
+func (i ServiceTemplateNodeSelectorArgs) ToServiceTemplateNodeSelectorOutput() ServiceTemplateNodeSelectorOutput {
+	return i.ToServiceTemplateNodeSelectorOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateNodeSelectorArgs) ToServiceTemplateNodeSelectorOutputWithContext(ctx context.Context) ServiceTemplateNodeSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateNodeSelectorOutput)
+}
+
+func (i ServiceTemplateNodeSelectorArgs) ToServiceTemplateNodeSelectorPtrOutput() ServiceTemplateNodeSelectorPtrOutput {
+	return i.ToServiceTemplateNodeSelectorPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateNodeSelectorArgs) ToServiceTemplateNodeSelectorPtrOutputWithContext(ctx context.Context) ServiceTemplateNodeSelectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateNodeSelectorOutput).ToServiceTemplateNodeSelectorPtrOutputWithContext(ctx)
+}
+
+// ServiceTemplateNodeSelectorPtrInput is an input type that accepts ServiceTemplateNodeSelectorArgs, ServiceTemplateNodeSelectorPtr and ServiceTemplateNodeSelectorPtrOutput values.
+// You can construct a concrete instance of `ServiceTemplateNodeSelectorPtrInput` via:
+//
+//	        ServiceTemplateNodeSelectorArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceTemplateNodeSelectorPtrInput interface {
+	pulumi.Input
+
+	ToServiceTemplateNodeSelectorPtrOutput() ServiceTemplateNodeSelectorPtrOutput
+	ToServiceTemplateNodeSelectorPtrOutputWithContext(context.Context) ServiceTemplateNodeSelectorPtrOutput
+}
+
+type serviceTemplateNodeSelectorPtrType ServiceTemplateNodeSelectorArgs
+
+func ServiceTemplateNodeSelectorPtr(v *ServiceTemplateNodeSelectorArgs) ServiceTemplateNodeSelectorPtrInput {
+	return (*serviceTemplateNodeSelectorPtrType)(v)
+}
+
+func (*serviceTemplateNodeSelectorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTemplateNodeSelector)(nil)).Elem()
+}
+
+func (i *serviceTemplateNodeSelectorPtrType) ToServiceTemplateNodeSelectorPtrOutput() ServiceTemplateNodeSelectorPtrOutput {
+	return i.ToServiceTemplateNodeSelectorPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceTemplateNodeSelectorPtrType) ToServiceTemplateNodeSelectorPtrOutputWithContext(ctx context.Context) ServiceTemplateNodeSelectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateNodeSelectorPtrOutput)
+}
+
+type ServiceTemplateNodeSelectorOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateNodeSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateNodeSelector)(nil)).Elem()
+}
+
+func (o ServiceTemplateNodeSelectorOutput) ToServiceTemplateNodeSelectorOutput() ServiceTemplateNodeSelectorOutput {
+	return o
+}
+
+func (o ServiceTemplateNodeSelectorOutput) ToServiceTemplateNodeSelectorOutputWithContext(ctx context.Context) ServiceTemplateNodeSelectorOutput {
+	return o
+}
+
+func (o ServiceTemplateNodeSelectorOutput) ToServiceTemplateNodeSelectorPtrOutput() ServiceTemplateNodeSelectorPtrOutput {
+	return o.ToServiceTemplateNodeSelectorPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceTemplateNodeSelectorOutput) ToServiceTemplateNodeSelectorPtrOutputWithContext(ctx context.Context) ServiceTemplateNodeSelectorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateNodeSelector) *ServiceTemplateNodeSelector {
+		return &v
+	}).(ServiceTemplateNodeSelectorPtrOutput)
+}
+
+// The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/services/gpu for configuring GPU.
+//
+// ***
+func (o ServiceTemplateNodeSelectorOutput) Accelerator() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceTemplateNodeSelector) string { return v.Accelerator }).(pulumi.StringOutput)
+}
+
+type ServiceTemplateNodeSelectorPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateNodeSelectorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTemplateNodeSelector)(nil)).Elem()
+}
+
+func (o ServiceTemplateNodeSelectorPtrOutput) ToServiceTemplateNodeSelectorPtrOutput() ServiceTemplateNodeSelectorPtrOutput {
+	return o
+}
+
+func (o ServiceTemplateNodeSelectorPtrOutput) ToServiceTemplateNodeSelectorPtrOutputWithContext(ctx context.Context) ServiceTemplateNodeSelectorPtrOutput {
+	return o
+}
+
+func (o ServiceTemplateNodeSelectorPtrOutput) Elem() ServiceTemplateNodeSelectorOutput {
+	return o.ApplyT(func(v *ServiceTemplateNodeSelector) ServiceTemplateNodeSelector {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTemplateNodeSelector
+		return ret
+	}).(ServiceTemplateNodeSelectorOutput)
+}
+
+// The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/services/gpu for configuring GPU.
+//
+// ***
+func (o ServiceTemplateNodeSelectorPtrOutput) Accelerator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateNodeSelector) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Accelerator
+	}).(pulumi.StringPtrOutput)
+}
+
 type ServiceTemplateScaling struct {
 	// Maximum number of serving instances that this resource should have.
 	MaxInstanceCount *int `pulumi:"maxInstanceCount"`
@@ -8139,8 +8307,6 @@ func (o ServiceTemplateScalingPtrOutput) MinInstanceCount() pulumi.IntPtrOutput 
 
 type ServiceTemplateServiceMesh struct {
 	// The Mesh resource name. For more information see https://cloud.google.com/service-mesh/docs/reference/network-services/rest/v1/projects.locations.meshes#resource:-mesh.
-	//
-	// ***
 	Mesh *string `pulumi:"mesh"`
 }
 
@@ -8157,8 +8323,6 @@ type ServiceTemplateServiceMeshInput interface {
 
 type ServiceTemplateServiceMeshArgs struct {
 	// The Mesh resource name. For more information see https://cloud.google.com/service-mesh/docs/reference/network-services/rest/v1/projects.locations.meshes#resource:-mesh.
-	//
-	// ***
 	Mesh pulumi.StringPtrInput `pulumi:"mesh"`
 }
 
@@ -8240,8 +8404,6 @@ func (o ServiceTemplateServiceMeshOutput) ToServiceTemplateServiceMeshPtrOutputW
 }
 
 // The Mesh resource name. For more information see https://cloud.google.com/service-mesh/docs/reference/network-services/rest/v1/projects.locations.meshes#resource:-mesh.
-//
-// ***
 func (o ServiceTemplateServiceMeshOutput) Mesh() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateServiceMesh) *string { return v.Mesh }).(pulumi.StringPtrOutput)
 }
@@ -8271,8 +8433,6 @@ func (o ServiceTemplateServiceMeshPtrOutput) Elem() ServiceTemplateServiceMeshOu
 }
 
 // The Mesh resource name. For more information see https://cloud.google.com/service-mesh/docs/reference/network-services/rest/v1/projects.locations.meshes#resource:-mesh.
-//
-// ***
 func (o ServiceTemplateServiceMeshPtrOutput) Mesh() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateServiceMesh) *string {
 		if v == nil {
@@ -13293,6 +13453,8 @@ type GetServiceTemplate struct {
 	// Sets the maximum number of requests that each serving instance can receive.
 	// If not specified or 0, defaults to 80 when requested CPU >= 1 and defaults to 1 when requested CPU < 1.
 	MaxInstanceRequestConcurrency int `pulumi:"maxInstanceRequestConcurrency"`
+	// Node Selector describes the hardware requirements of the resources.
+	NodeSelectors []GetServiceTemplateNodeSelector `pulumi:"nodeSelectors"`
 	// The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
 	Revision string `pulumi:"revision"`
 	// Scaling settings for this Revision.
@@ -13347,6 +13509,8 @@ type GetServiceTemplateArgs struct {
 	// Sets the maximum number of requests that each serving instance can receive.
 	// If not specified or 0, defaults to 80 when requested CPU >= 1 and defaults to 1 when requested CPU < 1.
 	MaxInstanceRequestConcurrency pulumi.IntInput `pulumi:"maxInstanceRequestConcurrency"`
+	// Node Selector describes the hardware requirements of the resources.
+	NodeSelectors GetServiceTemplateNodeSelectorArrayInput `pulumi:"nodeSelectors"`
 	// The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
 	Revision pulumi.StringInput `pulumi:"revision"`
 	// Scaling settings for this Revision.
@@ -13456,6 +13620,11 @@ func (o GetServiceTemplateOutput) Labels() pulumi.StringMapOutput {
 // If not specified or 0, defaults to 80 when requested CPU >= 1 and defaults to 1 when requested CPU < 1.
 func (o GetServiceTemplateOutput) MaxInstanceRequestConcurrency() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServiceTemplate) int { return v.MaxInstanceRequestConcurrency }).(pulumi.IntOutput)
+}
+
+// Node Selector describes the hardware requirements of the resources.
+func (o GetServiceTemplateOutput) NodeSelectors() GetServiceTemplateNodeSelectorArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplate) []GetServiceTemplateNodeSelector { return v.NodeSelectors }).(GetServiceTemplateNodeSelectorArrayOutput)
 }
 
 // The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
@@ -14757,7 +14926,7 @@ type GetServiceTemplateContainerResource struct {
 	// Determines whether CPU is only allocated during requests. True by default if the parent 'resources' field is not set. However, if
 	// 'resources' is set, this field must be explicitly set to true to preserve the default behavior.
 	CpuIdle bool `pulumi:"cpuIdle"`
-	// Only memory and CPU are supported. Use key 'cpu' for CPU limit and 'memory' for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// Only memory, CPU, and nvidia.com/gpu are supported. Use key 'cpu' for CPU limit, 'memory' for memory limit, 'nvidia.com/gpu' for gpu limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Limits map[string]string `pulumi:"limits"`
 	// Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
 	StartupCpuBoost bool `pulumi:"startupCpuBoost"`
@@ -14778,7 +14947,7 @@ type GetServiceTemplateContainerResourceArgs struct {
 	// Determines whether CPU is only allocated during requests. True by default if the parent 'resources' field is not set. However, if
 	// 'resources' is set, this field must be explicitly set to true to preserve the default behavior.
 	CpuIdle pulumi.BoolInput `pulumi:"cpuIdle"`
-	// Only memory and CPU are supported. Use key 'cpu' for CPU limit and 'memory' for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// Only memory, CPU, and nvidia.com/gpu are supported. Use key 'cpu' for CPU limit, 'memory' for memory limit, 'nvidia.com/gpu' for gpu limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Limits pulumi.StringMapInput `pulumi:"limits"`
 	// Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
 	StartupCpuBoost pulumi.BoolInput `pulumi:"startupCpuBoost"`
@@ -14841,7 +15010,7 @@ func (o GetServiceTemplateContainerResourceOutput) CpuIdle() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainerResource) bool { return v.CpuIdle }).(pulumi.BoolOutput)
 }
 
-// Only memory and CPU are supported. Use key 'cpu' for CPU limit and 'memory' for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+// Only memory, CPU, and nvidia.com/gpu are supported. Use key 'cpu' for CPU limit, 'memory' for memory limit, 'nvidia.com/gpu' for gpu limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 func (o GetServiceTemplateContainerResourceOutput) Limits() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainerResource) map[string]string { return v.Limits }).(pulumi.StringMapOutput)
 }
@@ -15573,6 +15742,103 @@ func (o GetServiceTemplateContainerVolumeMountArrayOutput) Index(i pulumi.IntInp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateContainerVolumeMount {
 		return vs[0].([]GetServiceTemplateContainerVolumeMount)[vs[1].(int)]
 	}).(GetServiceTemplateContainerVolumeMountOutput)
+}
+
+type GetServiceTemplateNodeSelector struct {
+	// The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/services/gpu for configuring GPU.
+	Accelerator string `pulumi:"accelerator"`
+}
+
+// GetServiceTemplateNodeSelectorInput is an input type that accepts GetServiceTemplateNodeSelectorArgs and GetServiceTemplateNodeSelectorOutput values.
+// You can construct a concrete instance of `GetServiceTemplateNodeSelectorInput` via:
+//
+//	GetServiceTemplateNodeSelectorArgs{...}
+type GetServiceTemplateNodeSelectorInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateNodeSelectorOutput() GetServiceTemplateNodeSelectorOutput
+	ToGetServiceTemplateNodeSelectorOutputWithContext(context.Context) GetServiceTemplateNodeSelectorOutput
+}
+
+type GetServiceTemplateNodeSelectorArgs struct {
+	// The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/services/gpu for configuring GPU.
+	Accelerator pulumi.StringInput `pulumi:"accelerator"`
+}
+
+func (GetServiceTemplateNodeSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateNodeSelector)(nil)).Elem()
+}
+
+func (i GetServiceTemplateNodeSelectorArgs) ToGetServiceTemplateNodeSelectorOutput() GetServiceTemplateNodeSelectorOutput {
+	return i.ToGetServiceTemplateNodeSelectorOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateNodeSelectorArgs) ToGetServiceTemplateNodeSelectorOutputWithContext(ctx context.Context) GetServiceTemplateNodeSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateNodeSelectorOutput)
+}
+
+// GetServiceTemplateNodeSelectorArrayInput is an input type that accepts GetServiceTemplateNodeSelectorArray and GetServiceTemplateNodeSelectorArrayOutput values.
+// You can construct a concrete instance of `GetServiceTemplateNodeSelectorArrayInput` via:
+//
+//	GetServiceTemplateNodeSelectorArray{ GetServiceTemplateNodeSelectorArgs{...} }
+type GetServiceTemplateNodeSelectorArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateNodeSelectorArrayOutput() GetServiceTemplateNodeSelectorArrayOutput
+	ToGetServiceTemplateNodeSelectorArrayOutputWithContext(context.Context) GetServiceTemplateNodeSelectorArrayOutput
+}
+
+type GetServiceTemplateNodeSelectorArray []GetServiceTemplateNodeSelectorInput
+
+func (GetServiceTemplateNodeSelectorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateNodeSelector)(nil)).Elem()
+}
+
+func (i GetServiceTemplateNodeSelectorArray) ToGetServiceTemplateNodeSelectorArrayOutput() GetServiceTemplateNodeSelectorArrayOutput {
+	return i.ToGetServiceTemplateNodeSelectorArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateNodeSelectorArray) ToGetServiceTemplateNodeSelectorArrayOutputWithContext(ctx context.Context) GetServiceTemplateNodeSelectorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateNodeSelectorArrayOutput)
+}
+
+type GetServiceTemplateNodeSelectorOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateNodeSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateNodeSelector)(nil)).Elem()
+}
+
+func (o GetServiceTemplateNodeSelectorOutput) ToGetServiceTemplateNodeSelectorOutput() GetServiceTemplateNodeSelectorOutput {
+	return o
+}
+
+func (o GetServiceTemplateNodeSelectorOutput) ToGetServiceTemplateNodeSelectorOutputWithContext(ctx context.Context) GetServiceTemplateNodeSelectorOutput {
+	return o
+}
+
+// The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/services/gpu for configuring GPU.
+func (o GetServiceTemplateNodeSelectorOutput) Accelerator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateNodeSelector) string { return v.Accelerator }).(pulumi.StringOutput)
+}
+
+type GetServiceTemplateNodeSelectorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateNodeSelectorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateNodeSelector)(nil)).Elem()
+}
+
+func (o GetServiceTemplateNodeSelectorArrayOutput) ToGetServiceTemplateNodeSelectorArrayOutput() GetServiceTemplateNodeSelectorArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateNodeSelectorArrayOutput) ToGetServiceTemplateNodeSelectorArrayOutputWithContext(ctx context.Context) GetServiceTemplateNodeSelectorArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateNodeSelectorArrayOutput) Index(i pulumi.IntInput) GetServiceTemplateNodeSelectorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateNodeSelector {
+		return vs[0].([]GetServiceTemplateNodeSelector)[vs[1].(int)]
+	}).(GetServiceTemplateNodeSelectorOutput)
 }
 
 type GetServiceTemplateScaling struct {
@@ -17332,6 +17598,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerStartupProbeTcpSocketPtrInput)(nil)).Elem(), ServiceTemplateContainerStartupProbeTcpSocketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerVolumeMountInput)(nil)).Elem(), ServiceTemplateContainerVolumeMountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerVolumeMountArrayInput)(nil)).Elem(), ServiceTemplateContainerVolumeMountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateNodeSelectorInput)(nil)).Elem(), ServiceTemplateNodeSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateNodeSelectorPtrInput)(nil)).Elem(), ServiceTemplateNodeSelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateScalingInput)(nil)).Elem(), ServiceTemplateScalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateScalingPtrInput)(nil)).Elem(), ServiceTemplateScalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateServiceMeshInput)(nil)).Elem(), ServiceTemplateServiceMeshArgs{})
@@ -17446,6 +17714,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerStartupProbeTcpSocketArrayInput)(nil)).Elem(), GetServiceTemplateContainerStartupProbeTcpSocketArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerVolumeMountInput)(nil)).Elem(), GetServiceTemplateContainerVolumeMountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerVolumeMountArrayInput)(nil)).Elem(), GetServiceTemplateContainerVolumeMountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateNodeSelectorInput)(nil)).Elem(), GetServiceTemplateNodeSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateNodeSelectorArrayInput)(nil)).Elem(), GetServiceTemplateNodeSelectorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateScalingInput)(nil)).Elem(), GetServiceTemplateScalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateScalingArrayInput)(nil)).Elem(), GetServiceTemplateScalingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateServiceMeshInput)(nil)).Elem(), GetServiceTemplateServiceMeshArgs{})
@@ -17568,6 +17838,8 @@ func init() {
 	pulumi.RegisterOutputType(ServiceTemplateContainerStartupProbeTcpSocketPtrOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateContainerVolumeMountOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateContainerVolumeMountArrayOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateNodeSelectorOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateNodeSelectorPtrOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateScalingOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateScalingPtrOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateServiceMeshOutput{})
@@ -17682,6 +17954,8 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceTemplateContainerStartupProbeTcpSocketArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateContainerVolumeMountOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateContainerVolumeMountArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateNodeSelectorOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateNodeSelectorArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateScalingOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateScalingArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateServiceMeshOutput{})

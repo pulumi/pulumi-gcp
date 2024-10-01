@@ -180,14 +180,14 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Desired status of the instance. Either &#34;RUNNING&#34; or &#34;TERMINATED&#34;.
+     * Desired status of the instance. Either &#34;RUNNING&#34;, &#34;SUSPENDED&#34; or &#34;TERMINATED&#34;.
      * 
      */
     @Import(name="desiredStatus")
     private @Nullable Output<String> desiredStatus;
 
     /**
-     * @return Desired status of the instance. Either &#34;RUNNING&#34; or &#34;TERMINATED&#34;.
+     * @return Desired status of the instance. Either &#34;RUNNING&#34;, &#34;SUSPENDED&#34; or &#34;TERMINATED&#34;.
      * 
      */
     public Optional<Output<String>> desiredStatus() {
@@ -947,7 +947,7 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param desiredStatus Desired status of the instance. Either &#34;RUNNING&#34; or &#34;TERMINATED&#34;.
+         * @param desiredStatus Desired status of the instance. Either &#34;RUNNING&#34;, &#34;SUSPENDED&#34; or &#34;TERMINATED&#34;.
          * 
          * @return builder
          * 
@@ -958,7 +958,7 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param desiredStatus Desired status of the instance. Either &#34;RUNNING&#34; or &#34;TERMINATED&#34;.
+         * @param desiredStatus Desired status of the instance. Either &#34;RUNNING&#34;, &#34;SUSPENDED&#34; or &#34;TERMINATED&#34;.
          * 
          * @return builder
          * 

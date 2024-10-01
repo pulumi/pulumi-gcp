@@ -240,7 +240,7 @@ export class RouterNat extends pulumi.CustomResource {
      * A list of URLs of the IP resources to be drained. These IPs must be
      * valid static external IPs that have been assigned to the NAT.
      */
-    public readonly drainNatIps!: pulumi.Output<string[] | undefined>;
+    public readonly drainNatIps!: pulumi.Output<string[]>;
     /**
      * Enable Dynamic Port Allocation.
      * If minPortsPerVm is set, minPortsPerVm must be set to a power of two greater than or equal to 32.
@@ -266,6 +266,11 @@ export class RouterNat extends pulumi.CustomResource {
      * Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
      */
     public readonly icmpIdleTimeoutSec!: pulumi.Output<number | undefined>;
+    /**
+     * Self-links of NAT IPs to be used as initial value for creation alongside a RouterNatAddress resource.
+     * Conflicts with natIps and drainNatIps. Only valid if natIpAllocateOption is set to MANUAL_ONLY.
+     */
+    public readonly initialNatIps!: pulumi.Output<string[] | undefined>;
     /**
      * Configuration for logging on NAT
      * Structure is documented below.
@@ -299,7 +304,7 @@ export class RouterNat extends pulumi.CustomResource {
      * the access level resource for the address resource must have a `lifecycle` block with `createBeforeDestroy = true` so
      * the number of resources can be increased/decreased without triggering the `resourceInUseByAnotherResource` error.
      */
-    public readonly natIps!: pulumi.Output<string[] | undefined>;
+    public readonly natIps!: pulumi.Output<string[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -389,6 +394,7 @@ export class RouterNat extends pulumi.CustomResource {
             resourceInputs["enableEndpointIndependentMapping"] = state ? state.enableEndpointIndependentMapping : undefined;
             resourceInputs["endpointTypes"] = state ? state.endpointTypes : undefined;
             resourceInputs["icmpIdleTimeoutSec"] = state ? state.icmpIdleTimeoutSec : undefined;
+            resourceInputs["initialNatIps"] = state ? state.initialNatIps : undefined;
             resourceInputs["logConfig"] = state ? state.logConfig : undefined;
             resourceInputs["maxPortsPerVm"] = state ? state.maxPortsPerVm : undefined;
             resourceInputs["minPortsPerVm"] = state ? state.minPortsPerVm : undefined;
@@ -420,6 +426,7 @@ export class RouterNat extends pulumi.CustomResource {
             resourceInputs["enableEndpointIndependentMapping"] = args ? args.enableEndpointIndependentMapping : undefined;
             resourceInputs["endpointTypes"] = args ? args.endpointTypes : undefined;
             resourceInputs["icmpIdleTimeoutSec"] = args ? args.icmpIdleTimeoutSec : undefined;
+            resourceInputs["initialNatIps"] = args ? args.initialNatIps : undefined;
             resourceInputs["logConfig"] = args ? args.logConfig : undefined;
             resourceInputs["maxPortsPerVm"] = args ? args.maxPortsPerVm : undefined;
             resourceInputs["minPortsPerVm"] = args ? args.minPortsPerVm : undefined;
@@ -484,6 +491,11 @@ export interface RouterNatState {
      * Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
      */
     icmpIdleTimeoutSec?: pulumi.Input<number>;
+    /**
+     * Self-links of NAT IPs to be used as initial value for creation alongside a RouterNatAddress resource.
+     * Conflicts with natIps and drainNatIps. Only valid if natIpAllocateOption is set to MANUAL_ONLY.
+     */
+    initialNatIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Configuration for logging on NAT
      * Structure is documented below.
@@ -630,6 +642,11 @@ export interface RouterNatArgs {
      * Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
      */
     icmpIdleTimeoutSec?: pulumi.Input<number>;
+    /**
+     * Self-links of NAT IPs to be used as initial value for creation alongside a RouterNatAddress resource.
+     * Conflicts with natIps and drainNatIps. Only valid if natIpAllocateOption is set to MANUAL_ONLY.
+     */
+    initialNatIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Configuration for logging on NAT
      * Structure is documented below.

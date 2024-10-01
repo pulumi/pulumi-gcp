@@ -110,6 +110,180 @@ import * as utilities from "../utilities";
  *             ipAddress: "10.0.0.2",
  *         }],
  *         siteToSiteDataTransfer: true,
+ *         includeImportRanges: ["ALL_IPV4_RANGES"],
+ *     },
+ * });
+ * ```
+ * ### Network Connectivity Spoke Vpn Tunnel Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basicHub = new gcp.networkconnectivity.Hub("basic_hub", {
+ *     name: "basic-hub1",
+ *     description: "A sample hub",
+ *     labels: {
+ *         "label-two": "value-one",
+ *     },
+ * });
+ * const network = new gcp.compute.Network("network", {
+ *     name: "basic-network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const subnetwork = new gcp.compute.Subnetwork("subnetwork", {
+ *     name: "basic-subnetwork",
+ *     ipCidrRange: "10.0.0.0/28",
+ *     region: "us-central1",
+ *     network: network.selfLink,
+ * });
+ * const gateway = new gcp.compute.HaVpnGateway("gateway", {
+ *     name: "vpn-gateway",
+ *     network: network.id,
+ * });
+ * const externalVpnGw = new gcp.compute.ExternalVpnGateway("external_vpn_gw", {
+ *     name: "external-vpn-gateway",
+ *     redundancyType: "SINGLE_IP_INTERNALLY_REDUNDANT",
+ *     description: "An externally managed VPN gateway",
+ *     interfaces: [{
+ *         id: 0,
+ *         ipAddress: "8.8.8.8",
+ *     }],
+ * });
+ * const router = new gcp.compute.Router("router", {
+ *     name: "external-vpn-gateway",
+ *     region: "us-central1",
+ *     network: network.name,
+ *     bgp: {
+ *         asn: 64514,
+ *     },
+ * });
+ * const tunnel1 = new gcp.compute.VPNTunnel("tunnel1", {
+ *     name: "tunnel1",
+ *     region: "us-central1",
+ *     vpnGateway: gateway.id,
+ *     peerExternalGateway: externalVpnGw.id,
+ *     peerExternalGatewayInterface: 0,
+ *     sharedSecret: "a secret message",
+ *     router: router.id,
+ *     vpnGatewayInterface: 0,
+ * });
+ * const tunnel2 = new gcp.compute.VPNTunnel("tunnel2", {
+ *     name: "tunnel2",
+ *     region: "us-central1",
+ *     vpnGateway: gateway.id,
+ *     peerExternalGateway: externalVpnGw.id,
+ *     peerExternalGatewayInterface: 0,
+ *     sharedSecret: "a secret message",
+ *     router: pulumi.interpolate` ${router.id}`,
+ *     vpnGatewayInterface: 1,
+ * });
+ * const routerInterface1 = new gcp.compute.RouterInterface("router_interface1", {
+ *     name: "router-interface1",
+ *     router: router.name,
+ *     region: "us-central1",
+ *     ipRange: "169.254.0.1/30",
+ *     vpnTunnel: tunnel1.name,
+ * });
+ * const routerPeer1 = new gcp.compute.RouterPeer("router_peer1", {
+ *     name: "router-peer1",
+ *     router: router.name,
+ *     region: "us-central1",
+ *     peerIpAddress: "169.254.0.2",
+ *     peerAsn: 64515,
+ *     advertisedRoutePriority: 100,
+ *     "interface": routerInterface1.name,
+ * });
+ * const routerInterface2 = new gcp.compute.RouterInterface("router_interface2", {
+ *     name: "router-interface2",
+ *     router: router.name,
+ *     region: "us-central1",
+ *     ipRange: "169.254.1.1/30",
+ *     vpnTunnel: tunnel2.name,
+ * });
+ * const routerPeer2 = new gcp.compute.RouterPeer("router_peer2", {
+ *     name: "router-peer2",
+ *     router: router.name,
+ *     region: "us-central1",
+ *     peerIpAddress: "169.254.1.2",
+ *     peerAsn: 64515,
+ *     advertisedRoutePriority: 100,
+ *     "interface": routerInterface2.name,
+ * });
+ * const tunnel1Spoke = new gcp.networkconnectivity.Spoke("tunnel1", {
+ *     name: "vpn-tunnel-1-spoke",
+ *     location: "us-central1",
+ *     description: "A sample spoke with a linked VPN Tunnel",
+ *     labels: {
+ *         "label-one": "value-one",
+ *     },
+ *     hub: basicHub.id,
+ *     linkedVpnTunnels: {
+ *         uris: [tunnel1.selfLink],
+ *         siteToSiteDataTransfer: true,
+ *         includeImportRanges: ["ALL_IPV4_RANGES"],
+ *     },
+ * });
+ * const tunnel2Spoke = new gcp.networkconnectivity.Spoke("tunnel2", {
+ *     name: "vpn-tunnel-2-spoke",
+ *     location: "us-central1",
+ *     description: "A sample spoke with a linked VPN Tunnel",
+ *     labels: {
+ *         "label-one": "value-one",
+ *     },
+ *     hub: basicHub.id,
+ *     linkedVpnTunnels: {
+ *         uris: [tunnel2.selfLink],
+ *         siteToSiteDataTransfer: true,
+ *         includeImportRanges: ["ALL_IPV4_RANGES"],
+ *     },
+ * });
+ * ```
+ * ### Network Connectivity Spoke Interconnect Attachment Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basicHub = new gcp.networkconnectivity.Hub("basic_hub", {
+ *     name: "basic-hub1",
+ *     description: "A sample hub",
+ *     labels: {
+ *         "label-two": "value-one",
+ *     },
+ * });
+ * const network = new gcp.compute.Network("network", {
+ *     name: "basic-network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const router = new gcp.compute.Router("router", {
+ *     name: "external-vpn-gateway",
+ *     region: "us-central1",
+ *     network: network.name,
+ *     bgp: {
+ *         asn: 16550,
+ *     },
+ * });
+ * const interconnect_attachment = new gcp.compute.InterconnectAttachment("interconnect-attachment", {
+ *     name: "partner-interconnect1",
+ *     edgeAvailabilityDomain: "AVAILABILITY_DOMAIN_1",
+ *     type: "PARTNER",
+ *     router: router.id,
+ *     mtu: "1500",
+ *     region: "us-central1",
+ * });
+ * const primary = new gcp.networkconnectivity.Spoke("primary", {
+ *     name: "interconnect-attachment-spoke",
+ *     location: "us-central1",
+ *     description: "A sample spoke with a linked Interconnect Attachment",
+ *     labels: {
+ *         "label-one": "value-one",
+ *     },
+ *     hub: basicHub.id,
+ *     linkedInterconnectAttachments: {
+ *         uris: [interconnect_attachment.selfLink],
+ *         siteToSiteDataTransfer: true,
+ *         includeImportRanges: ["ALL_IPV4_RANGES"],
  *     },
  * });
  * ```

@@ -105,13 +105,11 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Customer name, to put in the Letter of Authorization as the party authorized to request a
-        /// crossconnect.
-        /// 
-        /// 
-        /// - - -
+        /// crossconnect. This field is required for Dedicated and Partner Interconnect, should not be specified
+        /// for cross-cloud interconnect.
         /// </summary>
         [Output("customerName")]
-        public Output<string> CustomerName { get; private set; } = null!;
+        public Output<string?> CustomerName { get; private set; } = null!;
 
         /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
@@ -158,6 +156,9 @@ namespace Pulumi.Gcp.Compute
         /// - PARTNER: A partner-managed interconnection shared between customers though a partner.
         /// - DEDICATED: A dedicated physical interconnection with the customer.
         /// Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("interconnectType")]
         public Output<string> InterconnectType { get; private set; } = null!;
@@ -194,9 +195,10 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+        /// Specifies the location inside Google's Networks, should not be passed in case of cross-cloud interconnect.
         /// </summary>
         [Output("location")]
-        public Output<string> Location { get; private set; } = null!;
+        public Output<string?> Location { get; private set; } = null!;
 
         /// <summary>
         /// Configuration that enables Media Access Control security (MACsec) on the Cloud
@@ -377,13 +379,11 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Customer name, to put in the Letter of Authorization as the party authorized to request a
-        /// crossconnect.
-        /// 
-        /// 
-        /// - - -
+        /// crossconnect. This field is required for Dedicated and Partner Interconnect, should not be specified
+        /// for cross-cloud interconnect.
         /// </summary>
-        [Input("customerName", required: true)]
-        public Input<string> CustomerName { get; set; } = null!;
+        [Input("customerName")]
+        public Input<string>? CustomerName { get; set; }
 
         /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
@@ -397,6 +397,9 @@ namespace Pulumi.Gcp.Compute
         /// - PARTNER: A partner-managed interconnection shared between customers though a partner.
         /// - DEDICATED: A dedicated physical interconnection with the customer.
         /// Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("interconnectType", required: true)]
         public Input<string> InterconnectType { get; set; } = null!;
@@ -429,9 +432,10 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+        /// Specifies the location inside Google's Networks, should not be passed in case of cross-cloud interconnect.
         /// </summary>
-        [Input("location", required: true)]
-        public Input<string> Location { get; set; } = null!;
+        [Input("location")]
+        public Input<string>? Location { get; set; }
 
         /// <summary>
         /// Configuration that enables Media Access Control security (MACsec) on the Cloud
@@ -557,10 +561,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Customer name, to put in the Letter of Authorization as the party authorized to request a
-        /// crossconnect.
-        /// 
-        /// 
-        /// - - -
+        /// crossconnect. This field is required for Dedicated and Partner Interconnect, should not be specified
+        /// for cross-cloud interconnect.
         /// </summary>
         [Input("customerName")]
         public Input<string>? CustomerName { get; set; }
@@ -632,6 +634,9 @@ namespace Pulumi.Gcp.Compute
         /// - PARTNER: A partner-managed interconnection shared between customers though a partner.
         /// - DEDICATED: A dedicated physical interconnection with the customer.
         /// Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("interconnectType")]
         public Input<string>? InterconnectType { get; set; }
@@ -674,6 +679,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+        /// Specifies the location inside Google's Networks, should not be passed in case of cross-cloud interconnect.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

@@ -33,6 +33,8 @@ class InstanceArgs:
                  platform_edition: Optional[pulumi.Input[str]] = None,
                  private_ip_enabled: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 psc_config: Optional[pulumi.Input['InstancePscConfigArgs']] = None,
+                 psc_enabled: Optional[pulumi.Input[bool]] = None,
                  public_ip_enabled: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  reserved_range: Optional[pulumi.Input[str]] = None,
@@ -75,6 +77,9 @@ class InstanceArgs:
         :param pulumi.Input[bool] private_ip_enabled: Whether private IP is enabled on the Looker instance.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['InstancePscConfigArgs'] psc_config: Information for Private Service Connect (PSC) setup for a Looker instance.
+               Structure is documented below.
+        :param pulumi.Input[bool] psc_enabled: Whether Public Service Connect (PSC) is enabled on the Looker instance
         :param pulumi.Input[bool] public_ip_enabled: Whether public IP is enabled on the Looker instance.
         :param pulumi.Input[str] region: The name of the Looker region of the instance.
         :param pulumi.Input[str] reserved_range: Name of a reserved IP address range within the consumer network, to be used for
@@ -112,6 +117,10 @@ class InstanceArgs:
             pulumi.set(__self__, "private_ip_enabled", private_ip_enabled)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if psc_config is not None:
+            pulumi.set(__self__, "psc_config", psc_config)
+        if psc_enabled is not None:
+            pulumi.set(__self__, "psc_enabled", psc_enabled)
         if public_ip_enabled is not None:
             pulumi.set(__self__, "public_ip_enabled", public_ip_enabled)
         if region is not None:
@@ -290,6 +299,31 @@ class InstanceArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pscConfig")
+    def psc_config(self) -> Optional[pulumi.Input['InstancePscConfigArgs']]:
+        """
+        Information for Private Service Connect (PSC) setup for a Looker instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_config")
+
+    @psc_config.setter
+    def psc_config(self, value: Optional[pulumi.Input['InstancePscConfigArgs']]):
+        pulumi.set(self, "psc_config", value)
+
+    @property
+    @pulumi.getter(name="pscEnabled")
+    def psc_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether Public Service Connect (PSC) is enabled on the Looker instance
+        """
+        return pulumi.get(self, "psc_enabled")
+
+    @psc_enabled.setter
+    def psc_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "psc_enabled", value)
+
+    @property
     @pulumi.getter(name="publicIpEnabled")
     def public_ip_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -367,6 +401,8 @@ class _InstanceState:
                  platform_edition: Optional[pulumi.Input[str]] = None,
                  private_ip_enabled: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 psc_config: Optional[pulumi.Input['InstancePscConfigArgs']] = None,
+                 psc_enabled: Optional[pulumi.Input[bool]] = None,
                  public_ip_enabled: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  reserved_range: Optional[pulumi.Input[str]] = None,
@@ -417,6 +453,9 @@ class _InstanceState:
         :param pulumi.Input[bool] private_ip_enabled: Whether private IP is enabled on the Looker instance.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['InstancePscConfigArgs'] psc_config: Information for Private Service Connect (PSC) setup for a Looker instance.
+               Structure is documented below.
+        :param pulumi.Input[bool] psc_enabled: Whether Public Service Connect (PSC) is enabled on the Looker instance
         :param pulumi.Input[bool] public_ip_enabled: Whether public IP is enabled on the Looker instance.
         :param pulumi.Input[str] region: The name of the Looker region of the instance.
         :param pulumi.Input[str] reserved_range: Name of a reserved IP address range within the consumer network, to be used for
@@ -468,6 +507,10 @@ class _InstanceState:
             pulumi.set(__self__, "private_ip_enabled", private_ip_enabled)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if psc_config is not None:
+            pulumi.set(__self__, "psc_config", psc_config)
+        if psc_enabled is not None:
+            pulumi.set(__self__, "psc_enabled", psc_enabled)
         if public_ip_enabled is not None:
             pulumi.set(__self__, "public_ip_enabled", public_ip_enabled)
         if region is not None:
@@ -721,6 +764,31 @@ class _InstanceState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pscConfig")
+    def psc_config(self) -> Optional[pulumi.Input['InstancePscConfigArgs']]:
+        """
+        Information for Private Service Connect (PSC) setup for a Looker instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_config")
+
+    @psc_config.setter
+    def psc_config(self, value: Optional[pulumi.Input['InstancePscConfigArgs']]):
+        pulumi.set(self, "psc_config", value)
+
+    @property
+    @pulumi.getter(name="pscEnabled")
+    def psc_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether Public Service Connect (PSC) is enabled on the Looker instance
+        """
+        return pulumi.get(self, "psc_enabled")
+
+    @psc_enabled.setter
+    def psc_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "psc_enabled", value)
+
+    @property
     @pulumi.getter(name="publicIpEnabled")
     def public_ip_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -807,6 +875,8 @@ class Instance(pulumi.CustomResource):
                  platform_edition: Optional[pulumi.Input[str]] = None,
                  private_ip_enabled: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 psc_config: Optional[pulumi.Input[Union['InstancePscConfigArgs', 'InstancePscConfigArgsDict']]] = None,
+                 psc_enabled: Optional[pulumi.Input[bool]] = None,
                  public_ip_enabled: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  reserved_range: Optional[pulumi.Input[str]] = None,
@@ -989,6 +1059,27 @@ class Instance(pulumi.CustomResource):
                 "domain": "my-custom-domain.com",
             })
         ```
+        ### Looker Instance Psc
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        looker_instance = gcp.looker.Instance("looker-instance",
+            name="my-instance",
+            platform_edition="LOOKER_CORE_ENTERPRISE_ANNUAL",
+            region="us-central1",
+            private_ip_enabled=False,
+            public_ip_enabled=False,
+            psc_enabled=True,
+            oauth_config={
+                "client_id": "my-client-id",
+                "client_secret": "my-client-secret",
+            },
+            psc_config={
+                "allowed_vpcs": ["projects/test-project/global/networks/test"],
+            })
+        ```
 
         ## Import
 
@@ -1058,6 +1149,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] private_ip_enabled: Whether private IP is enabled on the Looker instance.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Union['InstancePscConfigArgs', 'InstancePscConfigArgsDict']] psc_config: Information for Private Service Connect (PSC) setup for a Looker instance.
+               Structure is documented below.
+        :param pulumi.Input[bool] psc_enabled: Whether Public Service Connect (PSC) is enabled on the Looker instance
         :param pulumi.Input[bool] public_ip_enabled: Whether public IP is enabled on the Looker instance.
         :param pulumi.Input[str] region: The name of the Looker region of the instance.
         :param pulumi.Input[str] reserved_range: Name of a reserved IP address range within the consumer network, to be used for
@@ -1254,6 +1348,27 @@ class Instance(pulumi.CustomResource):
                 "domain": "my-custom-domain.com",
             })
         ```
+        ### Looker Instance Psc
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        looker_instance = gcp.looker.Instance("looker-instance",
+            name="my-instance",
+            platform_edition="LOOKER_CORE_ENTERPRISE_ANNUAL",
+            region="us-central1",
+            private_ip_enabled=False,
+            public_ip_enabled=False,
+            psc_enabled=True,
+            oauth_config={
+                "client_id": "my-client-id",
+                "client_secret": "my-client-secret",
+            },
+            psc_config={
+                "allowed_vpcs": ["projects/test-project/global/networks/test"],
+            })
+        ```
 
         ## Import
 
@@ -1312,6 +1427,8 @@ class Instance(pulumi.CustomResource):
                  platform_edition: Optional[pulumi.Input[str]] = None,
                  private_ip_enabled: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 psc_config: Optional[pulumi.Input[Union['InstancePscConfigArgs', 'InstancePscConfigArgsDict']]] = None,
+                 psc_enabled: Optional[pulumi.Input[bool]] = None,
                  public_ip_enabled: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  reserved_range: Optional[pulumi.Input[str]] = None,
@@ -1337,6 +1454,8 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["platform_edition"] = platform_edition
             __props__.__dict__["private_ip_enabled"] = private_ip_enabled
             __props__.__dict__["project"] = project
+            __props__.__dict__["psc_config"] = psc_config
+            __props__.__dict__["psc_enabled"] = psc_enabled
             __props__.__dict__["public_ip_enabled"] = public_ip_enabled
             __props__.__dict__["region"] = region
             __props__.__dict__["reserved_range"] = reserved_range
@@ -1376,6 +1495,8 @@ class Instance(pulumi.CustomResource):
             platform_edition: Optional[pulumi.Input[str]] = None,
             private_ip_enabled: Optional[pulumi.Input[bool]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            psc_config: Optional[pulumi.Input[Union['InstancePscConfigArgs', 'InstancePscConfigArgsDict']]] = None,
+            psc_enabled: Optional[pulumi.Input[bool]] = None,
             public_ip_enabled: Optional[pulumi.Input[bool]] = None,
             region: Optional[pulumi.Input[str]] = None,
             reserved_range: Optional[pulumi.Input[str]] = None,
@@ -1431,6 +1552,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] private_ip_enabled: Whether private IP is enabled on the Looker instance.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Union['InstancePscConfigArgs', 'InstancePscConfigArgsDict']] psc_config: Information for Private Service Connect (PSC) setup for a Looker instance.
+               Structure is documented below.
+        :param pulumi.Input[bool] psc_enabled: Whether Public Service Connect (PSC) is enabled on the Looker instance
         :param pulumi.Input[bool] public_ip_enabled: Whether public IP is enabled on the Looker instance.
         :param pulumi.Input[str] region: The name of the Looker region of the instance.
         :param pulumi.Input[str] reserved_range: Name of a reserved IP address range within the consumer network, to be used for
@@ -1468,6 +1592,8 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["platform_edition"] = platform_edition
         __props__.__dict__["private_ip_enabled"] = private_ip_enabled
         __props__.__dict__["project"] = project
+        __props__.__dict__["psc_config"] = psc_config
+        __props__.__dict__["psc_enabled"] = psc_enabled
         __props__.__dict__["public_ip_enabled"] = public_ip_enabled
         __props__.__dict__["region"] = region
         __props__.__dict__["reserved_range"] = reserved_range
@@ -1643,6 +1769,23 @@ class Instance(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="pscConfig")
+    def psc_config(self) -> pulumi.Output[Optional['outputs.InstancePscConfig']]:
+        """
+        Information for Private Service Connect (PSC) setup for a Looker instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_config")
+
+    @property
+    @pulumi.getter(name="pscEnabled")
+    def psc_enabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether Public Service Connect (PSC) is enabled on the Looker instance
+        """
+        return pulumi.get(self, "psc_enabled")
 
     @property
     @pulumi.getter(name="publicIpEnabled")

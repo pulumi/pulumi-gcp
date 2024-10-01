@@ -11,6 +11,7 @@ import com.pulumi.gcp.looker.inputs.InstanceDenyMaintenancePeriodArgs;
 import com.pulumi.gcp.looker.inputs.InstanceEncryptionConfigArgs;
 import com.pulumi.gcp.looker.inputs.InstanceMaintenanceWindowArgs;
 import com.pulumi.gcp.looker.inputs.InstanceOauthConfigArgs;
+import com.pulumi.gcp.looker.inputs.InstancePscConfigArgs;
 import com.pulumi.gcp.looker.inputs.InstanceUserMetadataArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -342,6 +343,38 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Information for Private Service Connect (PSC) setup for a Looker instance.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="pscConfig")
+    private @Nullable Output<InstancePscConfigArgs> pscConfig;
+
+    /**
+     * @return Information for Private Service Connect (PSC) setup for a Looker instance.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstancePscConfigArgs>> pscConfig() {
+        return Optional.ofNullable(this.pscConfig);
+    }
+
+    /**
+     * Whether Public Service Connect (PSC) is enabled on the Looker instance
+     * 
+     */
+    @Import(name="pscEnabled")
+    private @Nullable Output<Boolean> pscEnabled;
+
+    /**
+     * @return Whether Public Service Connect (PSC) is enabled on the Looker instance
+     * 
+     */
+    public Optional<Output<Boolean>> pscEnabled() {
+        return Optional.ofNullable(this.pscEnabled);
+    }
+
+    /**
      * Whether public IP is enabled on the Looker instance.
      * 
      */
@@ -455,6 +488,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.platformEdition = $.platformEdition;
         this.privateIpEnabled = $.privateIpEnabled;
         this.project = $.project;
+        this.pscConfig = $.pscConfig;
+        this.pscEnabled = $.pscEnabled;
         this.publicIpEnabled = $.publicIpEnabled;
         this.region = $.region;
         this.reservedRange = $.reservedRange;
@@ -904,6 +939,50 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param pscConfig Information for Private Service Connect (PSC) setup for a Looker instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscConfig(@Nullable Output<InstancePscConfigArgs> pscConfig) {
+            $.pscConfig = pscConfig;
+            return this;
+        }
+
+        /**
+         * @param pscConfig Information for Private Service Connect (PSC) setup for a Looker instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscConfig(InstancePscConfigArgs pscConfig) {
+            return pscConfig(Output.of(pscConfig));
+        }
+
+        /**
+         * @param pscEnabled Whether Public Service Connect (PSC) is enabled on the Looker instance
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscEnabled(@Nullable Output<Boolean> pscEnabled) {
+            $.pscEnabled = pscEnabled;
+            return this;
+        }
+
+        /**
+         * @param pscEnabled Whether Public Service Connect (PSC) is enabled on the Looker instance
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscEnabled(Boolean pscEnabled) {
+            return pscEnabled(Output.of(pscEnabled));
         }
 
         /**

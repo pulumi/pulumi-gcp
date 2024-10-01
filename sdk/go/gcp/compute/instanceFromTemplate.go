@@ -105,7 +105,7 @@ type InstanceFromTemplate struct {
 	DeletionProtection pulumi.BoolOutput `pulumi:"deletionProtection"`
 	// A brief description of the resource.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Desired status of the instance. Either "RUNNING" or "TERMINATED".
+	// Desired status of the instance. Either "RUNNING", "SUSPENDED" or "TERMINATED".
 	DesiredStatus   pulumi.StringOutput    `pulumi:"desiredStatus"`
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Whether the instance has virtual displays enabled.
@@ -244,7 +244,7 @@ type instanceFromTemplateState struct {
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// A brief description of the resource.
 	Description *string `pulumi:"description"`
-	// Desired status of the instance. Either "RUNNING" or "TERMINATED".
+	// Desired status of the instance. Either "RUNNING", "SUSPENDED" or "TERMINATED".
 	DesiredStatus   *string           `pulumi:"desiredStatus"`
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Whether the instance has virtual displays enabled.
@@ -346,7 +346,7 @@ type InstanceFromTemplateState struct {
 	DeletionProtection pulumi.BoolPtrInput
 	// A brief description of the resource.
 	Description pulumi.StringPtrInput
-	// Desired status of the instance. Either "RUNNING" or "TERMINATED".
+	// Desired status of the instance. Either "RUNNING", "SUSPENDED" or "TERMINATED".
 	DesiredStatus   pulumi.StringPtrInput
 	EffectiveLabels pulumi.StringMapInput
 	// Whether the instance has virtual displays enabled.
@@ -446,7 +446,7 @@ type instanceFromTemplateArgs struct {
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// A brief description of the resource.
 	Description *string `pulumi:"description"`
-	// Desired status of the instance. Either "RUNNING" or "TERMINATED".
+	// Desired status of the instance. Either "RUNNING", "SUSPENDED" or "TERMINATED".
 	DesiredStatus *string `pulumi:"desiredStatus"`
 	// Whether the instance has virtual displays enabled.
 	EnableDisplay *bool `pulumi:"enableDisplay"`
@@ -530,7 +530,7 @@ type InstanceFromTemplateArgs struct {
 	DeletionProtection pulumi.BoolPtrInput
 	// A brief description of the resource.
 	Description pulumi.StringPtrInput
-	// Desired status of the instance. Either "RUNNING" or "TERMINATED".
+	// Desired status of the instance. Either "RUNNING", "SUSPENDED" or "TERMINATED".
 	DesiredStatus pulumi.StringPtrInput
 	// Whether the instance has virtual displays enabled.
 	EnableDisplay pulumi.BoolPtrInput
@@ -739,7 +739,7 @@ func (o InstanceFromTemplateOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceFromTemplate) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// Desired status of the instance. Either "RUNNING" or "TERMINATED".
+// Desired status of the instance. Either "RUNNING", "SUSPENDED" or "TERMINATED".
 func (o InstanceFromTemplateOutput) DesiredStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceFromTemplate) pulumi.StringOutput { return v.DesiredStatus }).(pulumi.StringOutput)
 }

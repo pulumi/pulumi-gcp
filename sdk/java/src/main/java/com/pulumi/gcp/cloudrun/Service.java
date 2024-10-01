@@ -178,6 +178,69 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Cloud Run Service Gpu
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudrun.Service;
+ * import com.pulumi.gcp.cloudrun.ServiceArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceMetadataArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateMetadataArgs;
+ * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Service("default", ServiceArgs.builder()
+ *             .name("cloudrun-srv")
+ *             .location("us-central1")
+ *             .metadata(ServiceMetadataArgs.builder()
+ *                 .annotations(Map.of("run.googleapis.com/launch-stage", "BETA"))
+ *                 .build())
+ *             .template(ServiceTemplateArgs.builder()
+ *                 .metadata(ServiceTemplateMetadataArgs.builder()
+ *                     .annotations(Map.ofEntries(
+ *                         Map.entry("autoscaling.knative.dev/maxScale", "1"),
+ *                         Map.entry("run.googleapis.com/cpu-throttling", "false")
+ *                     ))
+ *                     .build())
+ *                 .spec(ServiceTemplateSpecArgs.builder()
+ *                     .containers(ServiceTemplateSpecContainerArgs.builder()
+ *                         .image("gcr.io/cloudrun/hello")
+ *                         .resources(ServiceTemplateSpecContainerResourcesArgs.builder()
+ *                             .limits(Map.ofEntries(
+ *                                 Map.entry("cpu", "4"),
+ *                                 Map.entry("memory", "16Gi"),
+ *                                 Map.entry("nvidia.com/gpu", "1")
+ *                             ))
+ *                             .build())
+ *                         .build())
+ *                     .nodeSelector(Map.of("run.googleapis.com/accelerator", "nvidia-l4"))
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Cloud Run Service Sql
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

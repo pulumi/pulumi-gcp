@@ -345,6 +345,13 @@ namespace Pulumi.Gcp.Compute
         public Output<int?> IcmpIdleTimeoutSec { get; private set; } = null!;
 
         /// <summary>
+        /// Self-links of NAT IPs to be used as initial value for creation alongside a RouterNatAddress resource.
+        /// Conflicts with natIps and drainNatIps. Only valid if natIpAllocateOption is set to MANUAL_ONLY.
+        /// </summary>
+        [Output("initialNatIps")]
+        public Output<ImmutableArray<string>> InitialNatIps { get; private set; } = null!;
+
+        /// <summary>
         /// Configuration for logging on NAT
         /// Structure is documented below.
         /// </summary>
@@ -588,6 +595,19 @@ namespace Pulumi.Gcp.Compute
         [Input("icmpIdleTimeoutSec")]
         public Input<int>? IcmpIdleTimeoutSec { get; set; }
 
+        [Input("initialNatIps")]
+        private InputList<string>? _initialNatIps;
+
+        /// <summary>
+        /// Self-links of NAT IPs to be used as initial value for creation alongside a RouterNatAddress resource.
+        /// Conflicts with natIps and drainNatIps. Only valid if natIpAllocateOption is set to MANUAL_ONLY.
+        /// </summary>
+        public InputList<string> InitialNatIps
+        {
+            get => _initialNatIps ?? (_initialNatIps = new InputList<string>());
+            set => _initialNatIps = value;
+        }
+
         /// <summary>
         /// Configuration for logging on NAT
         /// Structure is documented below.
@@ -811,6 +831,19 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("icmpIdleTimeoutSec")]
         public Input<int>? IcmpIdleTimeoutSec { get; set; }
+
+        [Input("initialNatIps")]
+        private InputList<string>? _initialNatIps;
+
+        /// <summary>
+        /// Self-links of NAT IPs to be used as initial value for creation alongside a RouterNatAddress resource.
+        /// Conflicts with natIps and drainNatIps. Only valid if natIpAllocateOption is set to MANUAL_ONLY.
+        /// </summary>
+        public InputList<string> InitialNatIps
+        {
+            get => _initialNatIps ?? (_initialNatIps = new InputList<string>());
+            set => _initialNatIps = value;
+        }
 
         /// <summary>
         /// Configuration for logging on NAT

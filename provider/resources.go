@@ -2670,6 +2670,9 @@ func Provider() tfbridge.ProviderInfo {
 
 			"google_kms_key_rings":              {Docs: &tfbridge.DocInfo{AllowMissing: true}},
 			"google_gke_hub_membership_binding": {Docs: &tfbridge.DocInfo{AllowMissing: true}},
+			"google_privileged_access_manager_entitlement": {
+				Docs: &tfbridge.DocInfo{AllowMissing: true},
+			},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

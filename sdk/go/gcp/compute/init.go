@@ -227,6 +227,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RegionNetworkFirewallPolicyAssociation{}
 	case "gcp:compute/regionNetworkFirewallPolicyRule:RegionNetworkFirewallPolicyRule":
 		r = &RegionNetworkFirewallPolicyRule{}
+	case "gcp:compute/regionNetworkFirewallPolicyWithRules:RegionNetworkFirewallPolicyWithRules":
+		r = &RegionNetworkFirewallPolicyWithRules{}
 	case "gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig":
 		r = &RegionPerInstanceConfig{}
 	case "gcp:compute/regionSecurityPolicy:RegionSecurityPolicy":
@@ -259,6 +261,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RouterInterface{}
 	case "gcp:compute/routerNat:RouterNat":
 		r = &RouterNat{}
+	case "gcp:compute/routerNatAddress:RouterNatAddress":
+		r = &RouterNatAddress{}
 	case "gcp:compute/routerPeer:RouterPeer":
 		r = &RouterPeer{}
 	case "gcp:compute/routerRoutePolicy:RouterRoutePolicy":
@@ -845,6 +849,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"compute/regionNetworkFirewallPolicyWithRules",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"compute/regionPerInstanceConfig",
 		&module{version},
 	)
@@ -921,6 +930,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"compute/routerNat",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/routerNatAddress",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

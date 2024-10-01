@@ -19,6 +19,7 @@ from .get_project_cmek_settings import *
 from .get_project_settings import *
 from .get_sink import *
 from .linked_dataset import *
+from .log_scope import *
 from .log_view import *
 from .log_view_iam_binding import *
 from .log_view_iam_member import *

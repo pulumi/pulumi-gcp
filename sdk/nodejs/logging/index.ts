@@ -75,6 +75,11 @@ export type LinkedDataset = import("./linkedDataset").LinkedDataset;
 export const LinkedDataset: typeof import("./linkedDataset").LinkedDataset = null as any;
 utilities.lazyLoad(exports, ["LinkedDataset"], () => require("./linkedDataset"));
 
+export { LogScopeArgs, LogScopeState } from "./logScope";
+export type LogScope = import("./logScope").LogScope;
+export const LogScope: typeof import("./logScope").LogScope = null as any;
+utilities.lazyLoad(exports, ["LogScope"], () => require("./logScope"));
+
 export { LogViewArgs, LogViewState } from "./logView";
 export type LogView = import("./logView").LogView;
 export const LogView: typeof import("./logView").LogView = null as any;
@@ -156,6 +161,8 @@ const _module = {
                 return new FolderSink(name, <any>undefined, { urn })
             case "gcp:logging/linkedDataset:LinkedDataset":
                 return new LinkedDataset(name, <any>undefined, { urn })
+            case "gcp:logging/logScope:LogScope":
+                return new LogScope(name, <any>undefined, { urn })
             case "gcp:logging/logView:LogView":
                 return new LogView(name, <any>undefined, { urn })
             case "gcp:logging/logViewIamBinding:LogViewIamBinding":
@@ -193,6 +200,7 @@ pulumi.runtime.registerResourceModule("gcp", "logging/folderExclusion", _module)
 pulumi.runtime.registerResourceModule("gcp", "logging/folderSettings", _module)
 pulumi.runtime.registerResourceModule("gcp", "logging/folderSink", _module)
 pulumi.runtime.registerResourceModule("gcp", "logging/linkedDataset", _module)
+pulumi.runtime.registerResourceModule("gcp", "logging/logScope", _module)
 pulumi.runtime.registerResourceModule("gcp", "logging/logView", _module)
 pulumi.runtime.registerResourceModule("gcp", "logging/logViewIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "logging/logViewIamMember", _module)

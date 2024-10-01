@@ -131,6 +131,8 @@ __all__ = [
     'RoutineRemoteFunctionOptionsArgsDict',
     'RoutineSparkOptionsArgs',
     'RoutineSparkOptionsArgsDict',
+    'TableBiglakeConfigurationArgs',
+    'TableBiglakeConfigurationArgsDict',
     'TableEncryptionConfigurationArgs',
     'TableEncryptionConfigurationArgsDict',
     'TableExternalDataConfigurationArgs',
@@ -5424,6 +5426,106 @@ class RoutineSparkOptionsArgs:
     @runtime_version.setter
     def runtime_version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "runtime_version", value)
+
+
+if not MYPY:
+    class TableBiglakeConfigurationArgsDict(TypedDict):
+        connection_id: pulumi.Input[str]
+        """
+        The connection specifying the credentials to be used to
+        read and write to external storage, such as Cloud Storage. The connection_id can
+        have the form "&lt;project\\_id&gt;.&lt;location\\_id&gt;.&lt;connection\\_id&gt;" or
+        projects/&lt;project\\_id&gt;/locations/&lt;location\\_id&gt;/connections/&lt;connection\\_id&gt;".
+        """
+        file_format: pulumi.Input[str]
+        """
+        The file format the table data is stored in.
+        """
+        storage_uri: pulumi.Input[str]
+        """
+        The fully qualified location prefix of the external folder where table data
+        is stored. The '*' wildcard character is not allowed. The URI should be in the format "gs://bucket/path_to_table/"
+        """
+        table_format: pulumi.Input[str]
+        """
+        The table format the metadata only snapshots are stored in.
+        """
+elif False:
+    TableBiglakeConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TableBiglakeConfigurationArgs:
+    def __init__(__self__, *,
+                 connection_id: pulumi.Input[str],
+                 file_format: pulumi.Input[str],
+                 storage_uri: pulumi.Input[str],
+                 table_format: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] connection_id: The connection specifying the credentials to be used to
+               read and write to external storage, such as Cloud Storage. The connection_id can
+               have the form "&lt;project\\_id&gt;.&lt;location\\_id&gt;.&lt;connection\\_id&gt;" or
+               projects/&lt;project\\_id&gt;/locations/&lt;location\\_id&gt;/connections/&lt;connection\\_id&gt;".
+        :param pulumi.Input[str] file_format: The file format the table data is stored in.
+        :param pulumi.Input[str] storage_uri: The fully qualified location prefix of the external folder where table data
+               is stored. The '*' wildcard character is not allowed. The URI should be in the format "gs://bucket/path_to_table/"
+        :param pulumi.Input[str] table_format: The table format the metadata only snapshots are stored in.
+        """
+        pulumi.set(__self__, "connection_id", connection_id)
+        pulumi.set(__self__, "file_format", file_format)
+        pulumi.set(__self__, "storage_uri", storage_uri)
+        pulumi.set(__self__, "table_format", table_format)
+
+    @property
+    @pulumi.getter(name="connectionId")
+    def connection_id(self) -> pulumi.Input[str]:
+        """
+        The connection specifying the credentials to be used to
+        read and write to external storage, such as Cloud Storage. The connection_id can
+        have the form "&lt;project\\_id&gt;.&lt;location\\_id&gt;.&lt;connection\\_id&gt;" or
+        projects/&lt;project\\_id&gt;/locations/&lt;location\\_id&gt;/connections/&lt;connection\\_id&gt;".
+        """
+        return pulumi.get(self, "connection_id")
+
+    @connection_id.setter
+    def connection_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "connection_id", value)
+
+    @property
+    @pulumi.getter(name="fileFormat")
+    def file_format(self) -> pulumi.Input[str]:
+        """
+        The file format the table data is stored in.
+        """
+        return pulumi.get(self, "file_format")
+
+    @file_format.setter
+    def file_format(self, value: pulumi.Input[str]):
+        pulumi.set(self, "file_format", value)
+
+    @property
+    @pulumi.getter(name="storageUri")
+    def storage_uri(self) -> pulumi.Input[str]:
+        """
+        The fully qualified location prefix of the external folder where table data
+        is stored. The '*' wildcard character is not allowed. The URI should be in the format "gs://bucket/path_to_table/"
+        """
+        return pulumi.get(self, "storage_uri")
+
+    @storage_uri.setter
+    def storage_uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "storage_uri", value)
+
+    @property
+    @pulumi.getter(name="tableFormat")
+    def table_format(self) -> pulumi.Input[str]:
+        """
+        The table format the metadata only snapshots are stored in.
+        """
+        return pulumi.get(self, "table_format")
+
+    @table_format.setter
+    def table_format(self, value: pulumi.Input[str]):
+        pulumi.set(self, "table_format", value)
 
 
 if not MYPY:

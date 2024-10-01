@@ -5,7 +5,9 @@ package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -16,6 +18,11 @@ public final class GetClusterNodePoolNodeConfigLinuxNodeConfig {
      * 
      */
     private String cgroupMode;
+    /**
+     * @return Amounts for 2M and 1G hugepages.
+     * 
+     */
+    private List<GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig> hugepagesConfigs;
     /**
      * @return The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
      * 
@@ -29,6 +36,13 @@ public final class GetClusterNodePoolNodeConfigLinuxNodeConfig {
      */
     public String cgroupMode() {
         return this.cgroupMode;
+    }
+    /**
+     * @return Amounts for 2M and 1G hugepages.
+     * 
+     */
+    public List<GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig> hugepagesConfigs() {
+        return this.hugepagesConfigs;
     }
     /**
      * @return The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
@@ -48,11 +62,13 @@ public final class GetClusterNodePoolNodeConfigLinuxNodeConfig {
     @CustomType.Builder
     public static final class Builder {
         private String cgroupMode;
+        private List<GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig> hugepagesConfigs;
         private Map<String,String> sysctls;
         public Builder() {}
         public Builder(GetClusterNodePoolNodeConfigLinuxNodeConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cgroupMode = defaults.cgroupMode;
+    	      this.hugepagesConfigs = defaults.hugepagesConfigs;
     	      this.sysctls = defaults.sysctls;
         }
 
@@ -65,6 +81,17 @@ public final class GetClusterNodePoolNodeConfigLinuxNodeConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder hugepagesConfigs(List<GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig> hugepagesConfigs) {
+            if (hugepagesConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfigLinuxNodeConfig", "hugepagesConfigs");
+            }
+            this.hugepagesConfigs = hugepagesConfigs;
+            return this;
+        }
+        public Builder hugepagesConfigs(GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig... hugepagesConfigs) {
+            return hugepagesConfigs(List.of(hugepagesConfigs));
+        }
+        @CustomType.Setter
         public Builder sysctls(Map<String,String> sysctls) {
             if (sysctls == null) {
               throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfigLinuxNodeConfig", "sysctls");
@@ -75,6 +102,7 @@ public final class GetClusterNodePoolNodeConfigLinuxNodeConfig {
         public GetClusterNodePoolNodeConfigLinuxNodeConfig build() {
             final var _resultValue = new GetClusterNodePoolNodeConfigLinuxNodeConfig();
             _resultValue.cgroupMode = cgroupMode;
+            _resultValue.hugepagesConfigs = hugepagesConfigs;
             _resultValue.sysctls = sysctls;
             return _resultValue;
         }

@@ -168,6 +168,62 @@ import (
 //	}
 //
 // ```
+// ### Cloud Run Service Gpu
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudrun"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudrun.NewService(ctx, "default", &cloudrun.ServiceArgs{
+//				Name:     pulumi.String("cloudrun-srv"),
+//				Location: pulumi.String("us-central1"),
+//				Metadata: &cloudrun.ServiceMetadataArgs{
+//					Annotations: pulumi.StringMap{
+//						"run.googleapis.com/launch-stage": pulumi.String("BETA"),
+//					},
+//				},
+//				Template: &cloudrun.ServiceTemplateArgs{
+//					Metadata: &cloudrun.ServiceTemplateMetadataArgs{
+//						Annotations: pulumi.StringMap{
+//							"autoscaling.knative.dev/maxScale":  pulumi.String("1"),
+//							"run.googleapis.com/cpu-throttling": pulumi.String("false"),
+//						},
+//					},
+//					Spec: &cloudrun.ServiceTemplateSpecArgs{
+//						Containers: cloudrun.ServiceTemplateSpecContainerArray{
+//							&cloudrun.ServiceTemplateSpecContainerArgs{
+//								Image: pulumi.String("gcr.io/cloudrun/hello"),
+//								Resources: &cloudrun.ServiceTemplateSpecContainerResourcesArgs{
+//									Limits: pulumi.StringMap{
+//										"cpu":            pulumi.String("4"),
+//										"memory":         pulumi.String("16Gi"),
+//										"nvidia.com/gpu": pulumi.String("1"),
+//									},
+//								},
+//							},
+//						},
+//						NodeSelector: pulumi.StringMap{
+//							"run.googleapis.com/accelerator": pulumi.String("nvidia-l4"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Cloud Run Service Sql
 //
 // ```go

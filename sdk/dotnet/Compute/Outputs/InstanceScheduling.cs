@@ -20,6 +20,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly bool? AutomaticRestart;
         /// <summary>
+        /// Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+        /// </summary>
+        public readonly int? HostErrorTimeoutSeconds;
+        /// <summary>
         /// Describe the type of termination action for VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         /// </summary>
         public readonly string? InstanceTerminationAction;
@@ -78,6 +82,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         private InstanceScheduling(
             bool? automaticRestart,
 
+            int? hostErrorTimeoutSeconds,
+
             string? instanceTerminationAction,
 
             Outputs.InstanceSchedulingLocalSsdRecoveryTimeout? localSsdRecoveryTimeout,
@@ -99,6 +105,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             string? provisioningModel)
         {
             AutomaticRestart = automaticRestart;
+            HostErrorTimeoutSeconds = hostErrorTimeoutSeconds;
             InstanceTerminationAction = instanceTerminationAction;
             LocalSsdRecoveryTimeout = localSsdRecoveryTimeout;
             MaintenanceInterval = maintenanceInterval;

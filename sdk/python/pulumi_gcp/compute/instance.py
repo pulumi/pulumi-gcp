@@ -79,7 +79,7 @@ class InstanceArgs:
                **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
         :param pulumi.Input[str] description: A brief description of this resource.
         :param pulumi.Input[str] desired_status: Desired status of the instance. Either
-               `"RUNNING"` or `"TERMINATED"`.
+               `"RUNNING"`, `"SUSPENDED"` or `"TERMINATED"`.
         :param pulumi.Input[bool] enable_display: Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGuestAcceleratorArgs']]] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
@@ -344,7 +344,7 @@ class InstanceArgs:
     def desired_status(self) -> Optional[pulumi.Input[str]]:
         """
         Desired status of the instance. Either
-        `"RUNNING"` or `"TERMINATED"`.
+        `"RUNNING"`, `"SUSPENDED"` or `"TERMINATED"`.
         """
         return pulumi.get(self, "desired_status")
 
@@ -698,7 +698,7 @@ class _InstanceState:
                **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
         :param pulumi.Input[str] description: A brief description of this resource.
         :param pulumi.Input[str] desired_status: Desired status of the instance. Either
-               `"RUNNING"` or `"TERMINATED"`.
+               `"RUNNING"`, `"SUSPENDED"` or `"TERMINATED"`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[bool] enable_display: Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
@@ -993,7 +993,7 @@ class _InstanceState:
     def desired_status(self) -> Optional[pulumi.Input[str]]:
         """
         Desired status of the instance. Either
-        `"RUNNING"` or `"TERMINATED"`.
+        `"RUNNING"`, `"SUSPENDED"` or `"TERMINATED"`.
         """
         return pulumi.get(self, "desired_status")
 
@@ -1569,7 +1569,7 @@ class Instance(pulumi.CustomResource):
                **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
         :param pulumi.Input[str] description: A brief description of this resource.
         :param pulumi.Input[str] desired_status: Desired status of the instance. Either
-               `"RUNNING"` or `"TERMINATED"`.
+               `"RUNNING"`, `"SUSPENDED"` or `"TERMINATED"`.
         :param pulumi.Input[bool] enable_display: Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceGuestAcceleratorArgs', 'InstanceGuestAcceleratorArgsDict']]]] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
@@ -1941,7 +1941,7 @@ class Instance(pulumi.CustomResource):
                **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
         :param pulumi.Input[str] description: A brief description of this resource.
         :param pulumi.Input[str] desired_status: Desired status of the instance. Either
-               `"RUNNING"` or `"TERMINATED"`.
+               `"RUNNING"`, `"SUSPENDED"` or `"TERMINATED"`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[bool] enable_display: Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
@@ -2161,7 +2161,7 @@ class Instance(pulumi.CustomResource):
     def desired_status(self) -> pulumi.Output[Optional[str]]:
         """
         Desired status of the instance. Either
-        `"RUNNING"` or `"TERMINATED"`.
+        `"RUNNING"`, `"SUSPENDED"` or `"TERMINATED"`.
         """
         return pulumi.get(self, "desired_status")
 

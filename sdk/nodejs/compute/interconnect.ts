@@ -111,12 +111,10 @@ export class Interconnect extends pulumi.CustomResource {
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
      * Customer name, to put in the Letter of Authorization as the party authorized to request a
-     * crossconnect.
-     *
-     *
-     * - - -
+     * crossconnect. This field is required for Dedicated and Partner Interconnect, should not be specified
+     * for cross-cloud interconnect.
      */
-    public readonly customerName!: pulumi.Output<string>;
+    public readonly customerName!: pulumi.Output<string | undefined>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
@@ -150,6 +148,9 @@ export class Interconnect extends pulumi.CustomResource {
      * - PARTNER: A partner-managed interconnection shared between customers though a partner.
      * - DEDICATED: A dedicated physical interconnection with the customer.
      * Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
+     *
+     *
+     * - - -
      */
     public readonly interconnectType!: pulumi.Output<string>;
     /**
@@ -178,8 +179,9 @@ export class Interconnect extends pulumi.CustomResource {
     public readonly linkType!: pulumi.Output<string>;
     /**
      * URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+     * Specifies the location inside Google's Networks, should not be passed in case of cross-cloud interconnect.
      */
-    public readonly location!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string | undefined>;
     /**
      * Configuration that enables Media Access Control security (MACsec) on the Cloud
      * Interconnect connection between Google and your on-premises router.
@@ -316,17 +318,11 @@ export class Interconnect extends pulumi.CustomResource {
             resourceInputs["state"] = state ? state.state : undefined;
         } else {
             const args = argsOrState as InterconnectArgs | undefined;
-            if ((!args || args.customerName === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'customerName'");
-            }
             if ((!args || args.interconnectType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'interconnectType'");
             }
             if ((!args || args.linkType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'linkType'");
-            }
-            if ((!args || args.location === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'location'");
             }
             if ((!args || args.requestedLinkCount === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'requestedLinkCount'");
@@ -397,10 +393,8 @@ export interface InterconnectState {
     creationTimestamp?: pulumi.Input<string>;
     /**
      * Customer name, to put in the Letter of Authorization as the party authorized to request a
-     * crossconnect.
-     *
-     *
-     * - - -
+     * crossconnect. This field is required for Dedicated and Partner Interconnect, should not be specified
+     * for cross-cloud interconnect.
      */
     customerName?: pulumi.Input<string>;
     /**
@@ -436,6 +430,9 @@ export interface InterconnectState {
      * - PARTNER: A partner-managed interconnection shared between customers though a partner.
      * - DEDICATED: A dedicated physical interconnection with the customer.
      * Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
+     *
+     *
+     * - - -
      */
     interconnectType?: pulumi.Input<string>;
     /**
@@ -464,6 +461,7 @@ export interface InterconnectState {
     linkType?: pulumi.Input<string>;
     /**
      * URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+     * Specifies the location inside Google's Networks, should not be passed in case of cross-cloud interconnect.
      */
     location?: pulumi.Input<string>;
     /**
@@ -570,12 +568,10 @@ export interface InterconnectArgs {
     adminEnabled?: pulumi.Input<boolean>;
     /**
      * Customer name, to put in the Letter of Authorization as the party authorized to request a
-     * crossconnect.
-     *
-     *
-     * - - -
+     * crossconnect. This field is required for Dedicated and Partner Interconnect, should not be specified
+     * for cross-cloud interconnect.
      */
-    customerName: pulumi.Input<string>;
+    customerName?: pulumi.Input<string>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
@@ -586,6 +582,9 @@ export interface InterconnectArgs {
      * - PARTNER: A partner-managed interconnection shared between customers though a partner.
      * - DEDICATED: A dedicated physical interconnection with the customer.
      * Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
+     *
+     *
+     * - - -
      */
     interconnectType: pulumi.Input<string>;
     /**
@@ -606,8 +605,9 @@ export interface InterconnectArgs {
     linkType: pulumi.Input<string>;
     /**
      * URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+     * Specifies the location inside Google's Networks, should not be passed in case of cross-cloud interconnect.
      */
-    location: pulumi.Input<string>;
+    location?: pulumi.Input<string>;
     /**
      * Configuration that enables Media Access Control security (MACsec) on the Cloud
      * Interconnect connection between Google and your on-premises router.

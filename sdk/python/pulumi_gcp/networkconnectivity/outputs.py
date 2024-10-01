@@ -515,6 +515,8 @@ class SpokeLinkedInterconnectAttachments(dict):
         suggest = None
         if key == "siteToSiteDataTransfer":
             suggest = "site_to_site_data_transfer"
+        elif key == "includeImportRanges":
+            suggest = "include_import_ranges"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in SpokeLinkedInterconnectAttachments. Access the value via the '{suggest}' property getter instead.")
@@ -529,13 +531,18 @@ class SpokeLinkedInterconnectAttachments(dict):
 
     def __init__(__self__, *,
                  site_to_site_data_transfer: bool,
-                 uris: Sequence[str]):
+                 uris: Sequence[str],
+                 include_import_ranges: Optional[Sequence[str]] = None):
         """
         :param bool site_to_site_data_transfer: A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
         :param Sequence[str] uris: The URIs of linked interconnect attachment resources
+        :param Sequence[str] include_import_ranges: IP ranges allowed to be included during import from hub (does not control transit connectivity).
+               The only allowed value for now is "ALL_IPV4_RANGES".
         """
         pulumi.set(__self__, "site_to_site_data_transfer", site_to_site_data_transfer)
         pulumi.set(__self__, "uris", uris)
+        if include_import_ranges is not None:
+            pulumi.set(__self__, "include_import_ranges", include_import_ranges)
 
     @property
     @pulumi.getter(name="siteToSiteDataTransfer")
@@ -553,6 +560,15 @@ class SpokeLinkedInterconnectAttachments(dict):
         """
         return pulumi.get(self, "uris")
 
+    @property
+    @pulumi.getter(name="includeImportRanges")
+    def include_import_ranges(self) -> Optional[Sequence[str]]:
+        """
+        IP ranges allowed to be included during import from hub (does not control transit connectivity).
+        The only allowed value for now is "ALL_IPV4_RANGES".
+        """
+        return pulumi.get(self, "include_import_ranges")
+
 
 @pulumi.output_type
 class SpokeLinkedRouterApplianceInstances(dict):
@@ -561,6 +577,8 @@ class SpokeLinkedRouterApplianceInstances(dict):
         suggest = None
         if key == "siteToSiteDataTransfer":
             suggest = "site_to_site_data_transfer"
+        elif key == "includeImportRanges":
+            suggest = "include_import_ranges"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in SpokeLinkedRouterApplianceInstances. Access the value via the '{suggest}' property getter instead.")
@@ -575,14 +593,19 @@ class SpokeLinkedRouterApplianceInstances(dict):
 
     def __init__(__self__, *,
                  instances: Sequence['outputs.SpokeLinkedRouterApplianceInstancesInstance'],
-                 site_to_site_data_transfer: bool):
+                 site_to_site_data_transfer: bool,
+                 include_import_ranges: Optional[Sequence[str]] = None):
         """
         :param Sequence['SpokeLinkedRouterApplianceInstancesInstanceArgs'] instances: The list of router appliance instances
                Structure is documented below.
         :param bool site_to_site_data_transfer: A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
+        :param Sequence[str] include_import_ranges: IP ranges allowed to be included during import from hub (does not control transit connectivity).
+               The only allowed value for now is "ALL_IPV4_RANGES".
         """
         pulumi.set(__self__, "instances", instances)
         pulumi.set(__self__, "site_to_site_data_transfer", site_to_site_data_transfer)
+        if include_import_ranges is not None:
+            pulumi.set(__self__, "include_import_ranges", include_import_ranges)
 
     @property
     @pulumi.getter
@@ -600,6 +623,15 @@ class SpokeLinkedRouterApplianceInstances(dict):
         A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
         """
         return pulumi.get(self, "site_to_site_data_transfer")
+
+    @property
+    @pulumi.getter(name="includeImportRanges")
+    def include_import_ranges(self) -> Optional[Sequence[str]]:
+        """
+        IP ranges allowed to be included during import from hub (does not control transit connectivity).
+        The only allowed value for now is "ALL_IPV4_RANGES".
+        """
+        return pulumi.get(self, "include_import_ranges")
 
 
 @pulumi.output_type
@@ -720,6 +752,8 @@ class SpokeLinkedVpnTunnels(dict):
         suggest = None
         if key == "siteToSiteDataTransfer":
             suggest = "site_to_site_data_transfer"
+        elif key == "includeImportRanges":
+            suggest = "include_import_ranges"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in SpokeLinkedVpnTunnels. Access the value via the '{suggest}' property getter instead.")
@@ -734,13 +768,18 @@ class SpokeLinkedVpnTunnels(dict):
 
     def __init__(__self__, *,
                  site_to_site_data_transfer: bool,
-                 uris: Sequence[str]):
+                 uris: Sequence[str],
+                 include_import_ranges: Optional[Sequence[str]] = None):
         """
         :param bool site_to_site_data_transfer: A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
         :param Sequence[str] uris: The URIs of linked VPN tunnel resources.
+        :param Sequence[str] include_import_ranges: IP ranges allowed to be included during import from hub (does not control transit connectivity).
+               The only allowed value for now is "ALL_IPV4_RANGES".
         """
         pulumi.set(__self__, "site_to_site_data_transfer", site_to_site_data_transfer)
         pulumi.set(__self__, "uris", uris)
+        if include_import_ranges is not None:
+            pulumi.set(__self__, "include_import_ranges", include_import_ranges)
 
     @property
     @pulumi.getter(name="siteToSiteDataTransfer")
@@ -757,5 +796,14 @@ class SpokeLinkedVpnTunnels(dict):
         The URIs of linked VPN tunnel resources.
         """
         return pulumi.get(self, "uris")
+
+    @property
+    @pulumi.getter(name="includeImportRanges")
+    def include_import_ranges(self) -> Optional[Sequence[str]]:
+        """
+        IP ranges allowed to be included during import from hub (does not control transit connectivity).
+        The only allowed value for now is "ALL_IPV4_RANGES".
+        """
+        return pulumi.get(self, "include_import_ranges")
 
 

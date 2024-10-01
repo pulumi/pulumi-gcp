@@ -1611,6 +1611,1268 @@ func (o EntitlementRequesterJustificationConfigUnstructuredPtrOutput) Elem() Ent
 	}).(EntitlementRequesterJustificationConfigUnstructuredOutput)
 }
 
+type GetEntitlementAdditionalNotificationTarget struct {
+	// Optional. Additional email addresses to be notified when a principal(requester) is granted access.
+	AdminEmailRecipients []string `pulumi:"adminEmailRecipients"`
+	// Optional. Additional email address to be notified about an eligible entitlement.
+	RequesterEmailRecipients []string `pulumi:"requesterEmailRecipients"`
+}
+
+// GetEntitlementAdditionalNotificationTargetInput is an input type that accepts GetEntitlementAdditionalNotificationTargetArgs and GetEntitlementAdditionalNotificationTargetOutput values.
+// You can construct a concrete instance of `GetEntitlementAdditionalNotificationTargetInput` via:
+//
+//	GetEntitlementAdditionalNotificationTargetArgs{...}
+type GetEntitlementAdditionalNotificationTargetInput interface {
+	pulumi.Input
+
+	ToGetEntitlementAdditionalNotificationTargetOutput() GetEntitlementAdditionalNotificationTargetOutput
+	ToGetEntitlementAdditionalNotificationTargetOutputWithContext(context.Context) GetEntitlementAdditionalNotificationTargetOutput
+}
+
+type GetEntitlementAdditionalNotificationTargetArgs struct {
+	// Optional. Additional email addresses to be notified when a principal(requester) is granted access.
+	AdminEmailRecipients pulumi.StringArrayInput `pulumi:"adminEmailRecipients"`
+	// Optional. Additional email address to be notified about an eligible entitlement.
+	RequesterEmailRecipients pulumi.StringArrayInput `pulumi:"requesterEmailRecipients"`
+}
+
+func (GetEntitlementAdditionalNotificationTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEntitlementAdditionalNotificationTarget)(nil)).Elem()
+}
+
+func (i GetEntitlementAdditionalNotificationTargetArgs) ToGetEntitlementAdditionalNotificationTargetOutput() GetEntitlementAdditionalNotificationTargetOutput {
+	return i.ToGetEntitlementAdditionalNotificationTargetOutputWithContext(context.Background())
+}
+
+func (i GetEntitlementAdditionalNotificationTargetArgs) ToGetEntitlementAdditionalNotificationTargetOutputWithContext(ctx context.Context) GetEntitlementAdditionalNotificationTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEntitlementAdditionalNotificationTargetOutput)
+}
+
+// GetEntitlementAdditionalNotificationTargetArrayInput is an input type that accepts GetEntitlementAdditionalNotificationTargetArray and GetEntitlementAdditionalNotificationTargetArrayOutput values.
+// You can construct a concrete instance of `GetEntitlementAdditionalNotificationTargetArrayInput` via:
+//
+//	GetEntitlementAdditionalNotificationTargetArray{ GetEntitlementAdditionalNotificationTargetArgs{...} }
+type GetEntitlementAdditionalNotificationTargetArrayInput interface {
+	pulumi.Input
+
+	ToGetEntitlementAdditionalNotificationTargetArrayOutput() GetEntitlementAdditionalNotificationTargetArrayOutput
+	ToGetEntitlementAdditionalNotificationTargetArrayOutputWithContext(context.Context) GetEntitlementAdditionalNotificationTargetArrayOutput
+}
+
+type GetEntitlementAdditionalNotificationTargetArray []GetEntitlementAdditionalNotificationTargetInput
+
+func (GetEntitlementAdditionalNotificationTargetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEntitlementAdditionalNotificationTarget)(nil)).Elem()
+}
+
+func (i GetEntitlementAdditionalNotificationTargetArray) ToGetEntitlementAdditionalNotificationTargetArrayOutput() GetEntitlementAdditionalNotificationTargetArrayOutput {
+	return i.ToGetEntitlementAdditionalNotificationTargetArrayOutputWithContext(context.Background())
+}
+
+func (i GetEntitlementAdditionalNotificationTargetArray) ToGetEntitlementAdditionalNotificationTargetArrayOutputWithContext(ctx context.Context) GetEntitlementAdditionalNotificationTargetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEntitlementAdditionalNotificationTargetArrayOutput)
+}
+
+type GetEntitlementAdditionalNotificationTargetOutput struct{ *pulumi.OutputState }
+
+func (GetEntitlementAdditionalNotificationTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEntitlementAdditionalNotificationTarget)(nil)).Elem()
+}
+
+func (o GetEntitlementAdditionalNotificationTargetOutput) ToGetEntitlementAdditionalNotificationTargetOutput() GetEntitlementAdditionalNotificationTargetOutput {
+	return o
+}
+
+func (o GetEntitlementAdditionalNotificationTargetOutput) ToGetEntitlementAdditionalNotificationTargetOutputWithContext(ctx context.Context) GetEntitlementAdditionalNotificationTargetOutput {
+	return o
+}
+
+// Optional. Additional email addresses to be notified when a principal(requester) is granted access.
+func (o GetEntitlementAdditionalNotificationTargetOutput) AdminEmailRecipients() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEntitlementAdditionalNotificationTarget) []string { return v.AdminEmailRecipients }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Additional email address to be notified about an eligible entitlement.
+func (o GetEntitlementAdditionalNotificationTargetOutput) RequesterEmailRecipients() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEntitlementAdditionalNotificationTarget) []string { return v.RequesterEmailRecipients }).(pulumi.StringArrayOutput)
+}
+
+type GetEntitlementAdditionalNotificationTargetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEntitlementAdditionalNotificationTargetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEntitlementAdditionalNotificationTarget)(nil)).Elem()
+}
+
+func (o GetEntitlementAdditionalNotificationTargetArrayOutput) ToGetEntitlementAdditionalNotificationTargetArrayOutput() GetEntitlementAdditionalNotificationTargetArrayOutput {
+	return o
+}
+
+func (o GetEntitlementAdditionalNotificationTargetArrayOutput) ToGetEntitlementAdditionalNotificationTargetArrayOutputWithContext(ctx context.Context) GetEntitlementAdditionalNotificationTargetArrayOutput {
+	return o
+}
+
+func (o GetEntitlementAdditionalNotificationTargetArrayOutput) Index(i pulumi.IntInput) GetEntitlementAdditionalNotificationTargetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEntitlementAdditionalNotificationTarget {
+		return vs[0].([]GetEntitlementAdditionalNotificationTarget)[vs[1].(int)]
+	}).(GetEntitlementAdditionalNotificationTargetOutput)
+}
+
+type GetEntitlementApprovalWorkflow struct {
+	// A manual approval workflow where users who are designated as approvers need to call the ApproveGrant/DenyGrant APIs for an Grant.
+	// The workflow can consist of multiple serial steps where each step defines who can act as Approver in that step and how many of those users should approve before the workflow moves to the next step.
+	// This can be used to create approval workflows such as
+	// * Require an approval from any user in a group G.
+	// * Require an approval from any k number of users from a Group G.
+	// * Require an approval from any user in a group G and then from a user U. etc.
+	//   A single user might be part of 'approvers' ACL for multiple steps in this workflow but they can only approve once and that approval will only be considered to satisfy the approval step at which it was granted.
+	ManualApprovals []GetEntitlementApprovalWorkflowManualApproval `pulumi:"manualApprovals"`
+}
+
+// GetEntitlementApprovalWorkflowInput is an input type that accepts GetEntitlementApprovalWorkflowArgs and GetEntitlementApprovalWorkflowOutput values.
+// You can construct a concrete instance of `GetEntitlementApprovalWorkflowInput` via:
+//
+//	GetEntitlementApprovalWorkflowArgs{...}
+type GetEntitlementApprovalWorkflowInput interface {
+	pulumi.Input
+
+	ToGetEntitlementApprovalWorkflowOutput() GetEntitlementApprovalWorkflowOutput
+	ToGetEntitlementApprovalWorkflowOutputWithContext(context.Context) GetEntitlementApprovalWorkflowOutput
+}
+
+type GetEntitlementApprovalWorkflowArgs struct {
+	// A manual approval workflow where users who are designated as approvers need to call the ApproveGrant/DenyGrant APIs for an Grant.
+	// The workflow can consist of multiple serial steps where each step defines who can act as Approver in that step and how many of those users should approve before the workflow moves to the next step.
+	// This can be used to create approval workflows such as
+	// * Require an approval from any user in a group G.
+	// * Require an approval from any k number of users from a Group G.
+	// * Require an approval from any user in a group G and then from a user U. etc.
+	//   A single user might be part of 'approvers' ACL for multiple steps in this workflow but they can only approve once and that approval will only be considered to satisfy the approval step at which it was granted.
+	ManualApprovals GetEntitlementApprovalWorkflowManualApprovalArrayInput `pulumi:"manualApprovals"`
+}
+
+func (GetEntitlementApprovalWorkflowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEntitlementApprovalWorkflow)(nil)).Elem()
+}
+
+func (i GetEntitlementApprovalWorkflowArgs) ToGetEntitlementApprovalWorkflowOutput() GetEntitlementApprovalWorkflowOutput {
+	return i.ToGetEntitlementApprovalWorkflowOutputWithContext(context.Background())
+}
+
+func (i GetEntitlementApprovalWorkflowArgs) ToGetEntitlementApprovalWorkflowOutputWithContext(ctx context.Context) GetEntitlementApprovalWorkflowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEntitlementApprovalWorkflowOutput)
+}
+
+// GetEntitlementApprovalWorkflowArrayInput is an input type that accepts GetEntitlementApprovalWorkflowArray and GetEntitlementApprovalWorkflowArrayOutput values.
+// You can construct a concrete instance of `GetEntitlementApprovalWorkflowArrayInput` via:
+//
+//	GetEntitlementApprovalWorkflowArray{ GetEntitlementApprovalWorkflowArgs{...} }
+type GetEntitlementApprovalWorkflowArrayInput interface {
+	pulumi.Input
+
+	ToGetEntitlementApprovalWorkflowArrayOutput() GetEntitlementApprovalWorkflowArrayOutput
+	ToGetEntitlementApprovalWorkflowArrayOutputWithContext(context.Context) GetEntitlementApprovalWorkflowArrayOutput
+}
+
+type GetEntitlementApprovalWorkflowArray []GetEntitlementApprovalWorkflowInput
+
+func (GetEntitlementApprovalWorkflowArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEntitlementApprovalWorkflow)(nil)).Elem()
+}
+
+func (i GetEntitlementApprovalWorkflowArray) ToGetEntitlementApprovalWorkflowArrayOutput() GetEntitlementApprovalWorkflowArrayOutput {
+	return i.ToGetEntitlementApprovalWorkflowArrayOutputWithContext(context.Background())
+}
+
+func (i GetEntitlementApprovalWorkflowArray) ToGetEntitlementApprovalWorkflowArrayOutputWithContext(ctx context.Context) GetEntitlementApprovalWorkflowArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEntitlementApprovalWorkflowArrayOutput)
+}
+
+type GetEntitlementApprovalWorkflowOutput struct{ *pulumi.OutputState }
+
+func (GetEntitlementApprovalWorkflowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEntitlementApprovalWorkflow)(nil)).Elem()
+}
+
+func (o GetEntitlementApprovalWorkflowOutput) ToGetEntitlementApprovalWorkflowOutput() GetEntitlementApprovalWorkflowOutput {
+	return o
+}
+
+func (o GetEntitlementApprovalWorkflowOutput) ToGetEntitlementApprovalWorkflowOutputWithContext(ctx context.Context) GetEntitlementApprovalWorkflowOutput {
+	return o
+}
+
+// A manual approval workflow where users who are designated as approvers need to call the ApproveGrant/DenyGrant APIs for an Grant.
+// The workflow can consist of multiple serial steps where each step defines who can act as Approver in that step and how many of those users should approve before the workflow moves to the next step.
+// This can be used to create approval workflows such as
+//   - Require an approval from any user in a group G.
+//   - Require an approval from any k number of users from a Group G.
+//   - Require an approval from any user in a group G and then from a user U. etc.
+//     A single user might be part of 'approvers' ACL for multiple steps in this workflow but they can only approve once and that approval will only be considered to satisfy the approval step at which it was granted.
+func (o GetEntitlementApprovalWorkflowOutput) ManualApprovals() GetEntitlementApprovalWorkflowManualApprovalArrayOutput {
+	return o.ApplyT(func(v GetEntitlementApprovalWorkflow) []GetEntitlementApprovalWorkflowManualApproval {
+		return v.ManualApprovals
+	}).(GetEntitlementApprovalWorkflowManualApprovalArrayOutput)
+}
+
+type GetEntitlementApprovalWorkflowArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEntitlementApprovalWorkflowArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEntitlementApprovalWorkflow)(nil)).Elem()
+}
+
+func (o GetEntitlementApprovalWorkflowArrayOutput) ToGetEntitlementApprovalWorkflowArrayOutput() GetEntitlementApprovalWorkflowArrayOutput {
+	return o
+}
+
+func (o GetEntitlementApprovalWorkflowArrayOutput) ToGetEntitlementApprovalWorkflowArrayOutputWithContext(ctx context.Context) GetEntitlementApprovalWorkflowArrayOutput {
+	return o
+}
+
+func (o GetEntitlementApprovalWorkflowArrayOutput) Index(i pulumi.IntInput) GetEntitlementApprovalWorkflowOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEntitlementApprovalWorkflow {
+		return vs[0].([]GetEntitlementApprovalWorkflow)[vs[1].(int)]
+	}).(GetEntitlementApprovalWorkflowOutput)
+}
+
+type GetEntitlementApprovalWorkflowManualApproval struct {
+	// Optional. Do the approvers need to provide a justification for their actions?
+	RequireApproverJustification bool `pulumi:"requireApproverJustification"`
+	// List of approval steps in this workflow. These steps would be followed in the specified order sequentially.  1 step is supported for now.
+	Steps []GetEntitlementApprovalWorkflowManualApprovalStep `pulumi:"steps"`
+}
+
+// GetEntitlementApprovalWorkflowManualApprovalInput is an input type that accepts GetEntitlementApprovalWorkflowManualApprovalArgs and GetEntitlementApprovalWorkflowManualApprovalOutput values.
+// You can construct a concrete instance of `GetEntitlementApprovalWorkflowManualApprovalInput` via:
+//
+//	GetEntitlementApprovalWorkflowManualApprovalArgs{...}
+type GetEntitlementApprovalWorkflowManualApprovalInput interface {
+	pulumi.Input
+
+	ToGetEntitlementApprovalWorkflowManualApprovalOutput() GetEntitlementApprovalWorkflowManualApprovalOutput
+	ToGetEntitlementApprovalWorkflowManualApprovalOutputWithContext(context.Context) GetEntitlementApprovalWorkflowManualApprovalOutput
+}
+
+type GetEntitlementApprovalWorkflowManualApprovalArgs struct {
+	// Optional. Do the approvers need to provide a justification for their actions?
+	RequireApproverJustification pulumi.BoolInput `pulumi:"requireApproverJustification"`
+	// List of approval steps in this workflow. These steps would be followed in the specified order sequentially.  1 step is supported for now.
+	Steps GetEntitlementApprovalWorkflowManualApprovalStepArrayInput `pulumi:"steps"`
+}
+
+func (GetEntitlementApprovalWorkflowManualApprovalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEntitlementApprovalWorkflowManualApproval)(nil)).Elem()
+}
+
+func (i GetEntitlementApprovalWorkflowManualApprovalArgs) ToGetEntitlementApprovalWorkflowManualApprovalOutput() GetEntitlementApprovalWorkflowManualApprovalOutput {
+	return i.ToGetEntitlementApprovalWorkflowManualApprovalOutputWithContext(context.Background())
+}
+
+func (i GetEntitlementApprovalWorkflowManualApprovalArgs) ToGetEntitlementApprovalWorkflowManualApprovalOutputWithContext(ctx context.Context) GetEntitlementApprovalWorkflowManualApprovalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEntitlementApprovalWorkflowManualApprovalOutput)
+}
+
+// GetEntitlementApprovalWorkflowManualApprovalArrayInput is an input type that accepts GetEntitlementApprovalWorkflowManualApprovalArray and GetEntitlementApprovalWorkflowManualApprovalArrayOutput values.
+// You can construct a concrete instance of `GetEntitlementApprovalWorkflowManualApprovalArrayInput` via:
+//
+//	GetEntitlementApprovalWorkflowManualApprovalArray{ GetEntitlementApprovalWorkflowManualApprovalArgs{...} }
+type GetEntitlementApprovalWorkflowManualApprovalArrayInput interface {
+	pulumi.Input
+
+	ToGetEntitlementApprovalWorkflowManualApprovalArrayOutput() GetEntitlementApprovalWorkflowManualApprovalArrayOutput
+	ToGetEntitlementApprovalWorkflowManualApprovalArrayOutputWithContext(context.Context) GetEntitlementApprovalWorkflowManualApprovalArrayOutput
+}
+
+type GetEntitlementApprovalWorkflowManualApprovalArray []GetEntitlementApprovalWorkflowManualApprovalInput
+
+func (GetEntitlementApprovalWorkflowManualApprovalArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEntitlementApprovalWorkflowManualApproval)(nil)).Elem()
+}
+
+func (i GetEntitlementApprovalWorkflowManualApprovalArray) ToGetEntitlementApprovalWorkflowManualApprovalArrayOutput() GetEntitlementApprovalWorkflowManualApprovalArrayOutput {
+	return i.ToGetEntitlementApprovalWorkflowManualApprovalArrayOutputWithContext(context.Background())
+}
+
+func (i GetEntitlementApprovalWorkflowManualApprovalArray) ToGetEntitlementApprovalWorkflowManualApprovalArrayOutputWithContext(ctx context.Context) GetEntitlementApprovalWorkflowManualApprovalArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEntitlementApprovalWorkflowManualApprovalArrayOutput)
+}
+
+type GetEntitlementApprovalWorkflowManualApprovalOutput struct{ *pulumi.OutputState }
+
+func (GetEntitlementApprovalWorkflowManualApprovalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEntitlementApprovalWorkflowManualApproval)(nil)).Elem()
+}
+
+func (o GetEntitlementApprovalWorkflowManualApprovalOutput) ToGetEntitlementApprovalWorkflowManualApprovalOutput() GetEntitlementApprovalWorkflowManualApprovalOutput {
+	return o
+}
+
+func (o GetEntitlementApprovalWorkflowManualApprovalOutput) ToGetEntitlementApprovalWorkflowManualApprovalOutputWithContext(ctx context.Context) GetEntitlementApprovalWorkflowManualApprovalOutput {
+	return o
+}
+
+// Optional. Do the approvers need to provide a justification for their actions?
+func (o GetEntitlementApprovalWorkflowManualApprovalOutput) RequireApproverJustification() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEntitlementApprovalWorkflowManualApproval) bool { return v.RequireApproverJustification }).(pulumi.BoolOutput)
+}
+
+// List of approval steps in this workflow. These steps would be followed in the specified order sequentially.  1 step is supported for now.
+func (o GetEntitlementApprovalWorkflowManualApprovalOutput) Steps() GetEntitlementApprovalWorkflowManualApprovalStepArrayOutput {
+	return o.ApplyT(func(v GetEntitlementApprovalWorkflowManualApproval) []GetEntitlementApprovalWorkflowManualApprovalStep {
+		return v.Steps
+	}).(GetEntitlementApprovalWorkflowManualApprovalStepArrayOutput)
+}
+
+type GetEntitlementApprovalWorkflowManualApprovalArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEntitlementApprovalWorkflowManualApprovalArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEntitlementApprovalWorkflowManualApproval)(nil)).Elem()
+}
+
+func (o GetEntitlementApprovalWorkflowManualApprovalArrayOutput) ToGetEntitlementApprovalWorkflowManualApprovalArrayOutput() GetEntitlementApprovalWorkflowManualApprovalArrayOutput {
+	return o
+}
+
+func (o GetEntitlementApprovalWorkflowManualApprovalArrayOutput) ToGetEntitlementApprovalWorkflowManualApprovalArrayOutputWithContext(ctx context.Context) GetEntitlementApprovalWorkflowManualApprovalArrayOutput {
+	return o
+}
+
+func (o GetEntitlementApprovalWorkflowManualApprovalArrayOutput) Index(i pulumi.IntInput) GetEntitlementApprovalWorkflowManualApprovalOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEntitlementApprovalWorkflowManualApproval {
+		return vs[0].([]GetEntitlementApprovalWorkflowManualApproval)[vs[1].(int)]
+	}).(GetEntitlementApprovalWorkflowManualApprovalOutput)
+}
+
+type GetEntitlementApprovalWorkflowManualApprovalStep struct {
+	// How many users from the above list need to approve.
+	// If there are not enough distinct users in the list above then the workflow
+	// will indefinitely block. Should always be greater than 0. Currently 1 is the only
+	// supported value.
+	ApprovalsNeeded int `pulumi:"approvalsNeeded"`
+	// Optional. Additional email addresses to be notified when a grant is pending approval.
+	ApproverEmailRecipients []string `pulumi:"approverEmailRecipients"`
+	// The potential set of approvers in this step. This list should contain at only one entry.
+	Approvers []GetEntitlementApprovalWorkflowManualApprovalStepApprover `pulumi:"approvers"`
+}
+
+// GetEntitlementApprovalWorkflowManualApprovalStepInput is an input type that accepts GetEntitlementApprovalWorkflowManualApprovalStepArgs and GetEntitlementApprovalWorkflowManualApprovalStepOutput values.
+// You can construct a concrete instance of `GetEntitlementApprovalWorkflowManualApprovalStepInput` via:
+//
+//	GetEntitlementApprovalWorkflowManualApprovalStepArgs{...}
+type GetEntitlementApprovalWorkflowManualApprovalStepInput interface {
+	pulumi.Input
+
+	ToGetEntitlementApprovalWorkflowManualApprovalStepOutput() GetEntitlementApprovalWorkflowManualApprovalStepOutput
+	ToGetEntitlementApprovalWorkflowManualApprovalStepOutputWithContext(context.Context) GetEntitlementApprovalWorkflowManualApprovalStepOutput
+}
+
+type GetEntitlementApprovalWorkflowManualApprovalStepArgs struct {
+	// How many users from the above list need to approve.
+	// If there are not enough distinct users in the list above then the workflow
+	// will indefinitely block. Should always be greater than 0. Currently 1 is the only
+	// supported value.
+	ApprovalsNeeded pulumi.IntInput `pulumi:"approvalsNeeded"`
+	// Optional. Additional email addresses to be notified when a grant is pending approval.
+	ApproverEmailRecipients pulumi.StringArrayInput `pulumi:"approverEmailRecipients"`
+	// The potential set of approvers in this step. This list should contain at only one entry.
+	Approvers GetEntitlementApprovalWorkflowManualApprovalStepApproverArrayInput `pulumi:"approvers"`
+}
+
+func (GetEntitlementApprovalWorkflowManualApprovalStepArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEntitlementApprovalWorkflowManualApprovalStep)(nil)).Elem()
+}
+
+func (i GetEntitlementApprovalWorkflowManualApprovalStepArgs) ToGetEntitlementApprovalWorkflowManualApprovalStepOutput() GetEntitlementApprovalWorkflowManualApprovalStepOutput {
+	return i.ToGetEntitlementApprovalWorkflowManualApprovalStepOutputWithContext(context.Background())
+}
+
+func (i GetEntitlementApprovalWorkflowManualApprovalStepArgs) ToGetEntitlementApprovalWorkflowManualApprovalStepOutputWithContext(ctx context.Context) GetEntitlementApprovalWorkflowManualApprovalStepOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEntitlementApprovalWorkflowManualApprovalStepOutput)
+}
+
+// GetEntitlementApprovalWorkflowManualApprovalStepArrayInput is an input type that accepts GetEntitlementApprovalWorkflowManualApprovalStepArray and GetEntitlementApprovalWorkflowManualApprovalStepArrayOutput values.
+// You can construct a concrete instance of `GetEntitlementApprovalWorkflowManualApprovalStepArrayInput` via:
+//
+//	GetEntitlementApprovalWorkflowManualApprovalStepArray{ GetEntitlementApprovalWorkflowManualApprovalStepArgs{...} }
+type GetEntitlementApprovalWorkflowManualApprovalStepArrayInput interface {
+	pulumi.Input
+
+	ToGetEntitlementApprovalWorkflowManualApprovalStepArrayOutput() GetEntitlementApprovalWorkflowManualApprovalStepArrayOutput
+	ToGetEntitlementApprovalWorkflowManualApprovalStepArrayOutputWithContext(context.Context) GetEntitlementApprovalWorkflowManualApprovalStepArrayOutput
+}
+
+type GetEntitlementApprovalWorkflowManualApprovalStepArray []GetEntitlementApprovalWorkflowManualApprovalStepInput
+
+func (GetEntitlementApprovalWorkflowManualApprovalStepArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEntitlementApprovalWorkflowManualApprovalStep)(nil)).Elem()
+}
+
+func (i GetEntitlementApprovalWorkflowManualApprovalStepArray) ToGetEntitlementApprovalWorkflowManualApprovalStepArrayOutput() GetEntitlementApprovalWorkflowManualApprovalStepArrayOutput {
+	return i.ToGetEntitlementApprovalWorkflowManualApprovalStepArrayOutputWithContext(context.Background())
+}
+
+func (i GetEntitlementApprovalWorkflowManualApprovalStepArray) ToGetEntitlementApprovalWorkflowManualApprovalStepArrayOutputWithContext(ctx context.Context) GetEntitlementApprovalWorkflowManualApprovalStepArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEntitlementApprovalWorkflowManualApprovalStepArrayOutput)
+}
+
+type GetEntitlementApprovalWorkflowManualApprovalStepOutput struct{ *pulumi.OutputState }
+
+func (GetEntitlementApprovalWorkflowManualApprovalStepOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEntitlementApprovalWorkflowManualApprovalStep)(nil)).Elem()
+}
+
+func (o GetEntitlementApprovalWorkflowManualApprovalStepOutput) ToGetEntitlementApprovalWorkflowManualApprovalStepOutput() GetEntitlementApprovalWorkflowManualApprovalStepOutput {
+	return o
+}
+
+func (o GetEntitlementApprovalWorkflowManualApprovalStepOutput) ToGetEntitlementApprovalWorkflowManualApprovalStepOutputWithContext(ctx context.Context) GetEntitlementApprovalWorkflowManualApprovalStepOutput {
+	return o
+}
+
+// How many users from the above list need to approve.
+// If there are not enough distinct users in the list above then the workflow
+// will indefinitely block. Should always be greater than 0. Currently 1 is the only
+// supported value.
+func (o GetEntitlementApprovalWorkflowManualApprovalStepOutput) ApprovalsNeeded() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEntitlementApprovalWorkflowManualApprovalStep) int { return v.ApprovalsNeeded }).(pulumi.IntOutput)
+}
+
+// Optional. Additional email addresses to be notified when a grant is pending approval.
+func (o GetEntitlementApprovalWorkflowManualApprovalStepOutput) ApproverEmailRecipients() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEntitlementApprovalWorkflowManualApprovalStep) []string { return v.ApproverEmailRecipients }).(pulumi.StringArrayOutput)
+}
+
+// The potential set of approvers in this step. This list should contain at only one entry.
+func (o GetEntitlementApprovalWorkflowManualApprovalStepOutput) Approvers() GetEntitlementApprovalWorkflowManualApprovalStepApproverArrayOutput {
+	return o.ApplyT(func(v GetEntitlementApprovalWorkflowManualApprovalStep) []GetEntitlementApprovalWorkflowManualApprovalStepApprover {
+		return v.Approvers
+	}).(GetEntitlementApprovalWorkflowManualApprovalStepApproverArrayOutput)
+}
+
+type GetEntitlementApprovalWorkflowManualApprovalStepArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEntitlementApprovalWorkflowManualApprovalStepArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEntitlementApprovalWorkflowManualApprovalStep)(nil)).Elem()
+}
+
+func (o GetEntitlementApprovalWorkflowManualApprovalStepArrayOutput) ToGetEntitlementApprovalWorkflowManualApprovalStepArrayOutput() GetEntitlementApprovalWorkflowManualApprovalStepArrayOutput {
+	return o
+}
+
+func (o GetEntitlementApprovalWorkflowManualApprovalStepArrayOutput) ToGetEntitlementApprovalWorkflowManualApprovalStepArrayOutputWithContext(ctx context.Context) GetEntitlementApprovalWorkflowManualApprovalStepArrayOutput {
+	return o
+}
+
+func (o GetEntitlementApprovalWorkflowManualApprovalStepArrayOutput) Index(i pulumi.IntInput) GetEntitlementApprovalWorkflowManualApprovalStepOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEntitlementApprovalWorkflowManualApprovalStep {
+		return vs[0].([]GetEntitlementApprovalWorkflowManualApprovalStep)[vs[1].(int)]
+	}).(GetEntitlementApprovalWorkflowManualApprovalStepOutput)
+}
+
+type GetEntitlementApprovalWorkflowManualApprovalStepApprover struct {
+	// Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at: https://cloud.google.com/iam/docs/principal-identifiers#v1
+	Principals []string `pulumi:"principals"`
+}
+
+// GetEntitlementApprovalWorkflowManualApprovalStepApproverInput is an input type that accepts GetEntitlementApprovalWorkflowManualApprovalStepApproverArgs and GetEntitlementApprovalWorkflowManualApprovalStepApproverOutput values.
+// You can construct a concrete instance of `GetEntitlementApprovalWorkflowManualApprovalStepApproverInput` via:
+//
+//	GetEntitlementApprovalWorkflowManualApprovalStepApproverArgs{...}
+type GetEntitlementApprovalWorkflowManualApprovalStepApproverInput interface {
+	pulumi.Input
+
+	ToGetEntitlementApprovalWorkflowManualApprovalStepApproverOutput() GetEntitlementApprovalWorkflowManualApprovalStepApproverOutput
+	ToGetEntitlementApprovalWorkflowManualApprovalStepApproverOutputWithContext(context.Context) GetEntitlementApprovalWorkflowManualApprovalStepApproverOutput
+}
+
+type GetEntitlementApprovalWorkflowManualApprovalStepApproverArgs struct {
+	// Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at: https://cloud.google.com/iam/docs/principal-identifiers#v1
+	Principals pulumi.StringArrayInput `pulumi:"principals"`
+}
+
+func (GetEntitlementApprovalWorkflowManualApprovalStepApproverArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEntitlementApprovalWorkflowManualApprovalStepApprover)(nil)).Elem()
+}
+
+func (i GetEntitlementApprovalWorkflowManualApprovalStepApproverArgs) ToGetEntitlementApprovalWorkflowManualApprovalStepApproverOutput() GetEntitlementApprovalWorkflowManualApprovalStepApproverOutput {
+	return i.ToGetEntitlementApprovalWorkflowManualApprovalStepApproverOutputWithContext(context.Background())
+}
+
+func (i GetEntitlementApprovalWorkflowManualApprovalStepApproverArgs) ToGetEntitlementApprovalWorkflowManualApprovalStepApproverOutputWithContext(ctx context.Context) GetEntitlementApprovalWorkflowManualApprovalStepApproverOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEntitlementApprovalWorkflowManualApprovalStepApproverOutput)
+}
+
+// GetEntitlementApprovalWorkflowManualApprovalStepApproverArrayInput is an input type that accepts GetEntitlementApprovalWorkflowManualApprovalStepApproverArray and GetEntitlementApprovalWorkflowManualApprovalStepApproverArrayOutput values.
+// You can construct a concrete instance of `GetEntitlementApprovalWorkflowManualApprovalStepApproverArrayInput` via:
+//
+//	GetEntitlementApprovalWorkflowManualApprovalStepApproverArray{ GetEntitlementApprovalWorkflowManualApprovalStepApproverArgs{...} }
+type GetEntitlementApprovalWorkflowManualApprovalStepApproverArrayInput interface {
+	pulumi.Input
+
+	ToGetEntitlementApprovalWorkflowManualApprovalStepApproverArrayOutput() GetEntitlementApprovalWorkflowManualApprovalStepApproverArrayOutput
+	ToGetEntitlementApprovalWorkflowManualApprovalStepApproverArrayOutputWithContext(context.Context) GetEntitlementApprovalWorkflowManualApprovalStepApproverArrayOutput
+}
+
+type GetEntitlementApprovalWorkflowManualApprovalStepApproverArray []GetEntitlementApprovalWorkflowManualApprovalStepApproverInput
+
+func (GetEntitlementApprovalWorkflowManualApprovalStepApproverArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEntitlementApprovalWorkflowManualApprovalStepApprover)(nil)).Elem()
+}
+
+func (i GetEntitlementApprovalWorkflowManualApprovalStepApproverArray) ToGetEntitlementApprovalWorkflowManualApprovalStepApproverArrayOutput() GetEntitlementApprovalWorkflowManualApprovalStepApproverArrayOutput {
+	return i.ToGetEntitlementApprovalWorkflowManualApprovalStepApproverArrayOutputWithContext(context.Background())
+}
+
+func (i GetEntitlementApprovalWorkflowManualApprovalStepApproverArray) ToGetEntitlementApprovalWorkflowManualApprovalStepApproverArrayOutputWithContext(ctx context.Context) GetEntitlementApprovalWorkflowManualApprovalStepApproverArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEntitlementApprovalWorkflowManualApprovalStepApproverArrayOutput)
+}
+
+type GetEntitlementApprovalWorkflowManualApprovalStepApproverOutput struct{ *pulumi.OutputState }
+
+func (GetEntitlementApprovalWorkflowManualApprovalStepApproverOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEntitlementApprovalWorkflowManualApprovalStepApprover)(nil)).Elem()
+}
+
+func (o GetEntitlementApprovalWorkflowManualApprovalStepApproverOutput) ToGetEntitlementApprovalWorkflowManualApprovalStepApproverOutput() GetEntitlementApprovalWorkflowManualApprovalStepApproverOutput {
+	return o
+}
+
+func (o GetEntitlementApprovalWorkflowManualApprovalStepApproverOutput) ToGetEntitlementApprovalWorkflowManualApprovalStepApproverOutputWithContext(ctx context.Context) GetEntitlementApprovalWorkflowManualApprovalStepApproverOutput {
+	return o
+}
+
+// Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at: https://cloud.google.com/iam/docs/principal-identifiers#v1
+func (o GetEntitlementApprovalWorkflowManualApprovalStepApproverOutput) Principals() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEntitlementApprovalWorkflowManualApprovalStepApprover) []string { return v.Principals }).(pulumi.StringArrayOutput)
+}
+
+type GetEntitlementApprovalWorkflowManualApprovalStepApproverArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEntitlementApprovalWorkflowManualApprovalStepApproverArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEntitlementApprovalWorkflowManualApprovalStepApprover)(nil)).Elem()
+}
+
+func (o GetEntitlementApprovalWorkflowManualApprovalStepApproverArrayOutput) ToGetEntitlementApprovalWorkflowManualApprovalStepApproverArrayOutput() GetEntitlementApprovalWorkflowManualApprovalStepApproverArrayOutput {
+	return o
+}
+
+func (o GetEntitlementApprovalWorkflowManualApprovalStepApproverArrayOutput) ToGetEntitlementApprovalWorkflowManualApprovalStepApproverArrayOutputWithContext(ctx context.Context) GetEntitlementApprovalWorkflowManualApprovalStepApproverArrayOutput {
+	return o
+}
+
+func (o GetEntitlementApprovalWorkflowManualApprovalStepApproverArrayOutput) Index(i pulumi.IntInput) GetEntitlementApprovalWorkflowManualApprovalStepApproverOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEntitlementApprovalWorkflowManualApprovalStepApprover {
+		return vs[0].([]GetEntitlementApprovalWorkflowManualApprovalStepApprover)[vs[1].(int)]
+	}).(GetEntitlementApprovalWorkflowManualApprovalStepApproverOutput)
+}
+
+type GetEntitlementEligibleUser struct {
+	// Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at "https://cloud.google.com/iam/docs/principal-identifiers#v1"
+	Principals []string `pulumi:"principals"`
+}
+
+// GetEntitlementEligibleUserInput is an input type that accepts GetEntitlementEligibleUserArgs and GetEntitlementEligibleUserOutput values.
+// You can construct a concrete instance of `GetEntitlementEligibleUserInput` via:
+//
+//	GetEntitlementEligibleUserArgs{...}
+type GetEntitlementEligibleUserInput interface {
+	pulumi.Input
+
+	ToGetEntitlementEligibleUserOutput() GetEntitlementEligibleUserOutput
+	ToGetEntitlementEligibleUserOutputWithContext(context.Context) GetEntitlementEligibleUserOutput
+}
+
+type GetEntitlementEligibleUserArgs struct {
+	// Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at "https://cloud.google.com/iam/docs/principal-identifiers#v1"
+	Principals pulumi.StringArrayInput `pulumi:"principals"`
+}
+
+func (GetEntitlementEligibleUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEntitlementEligibleUser)(nil)).Elem()
+}
+
+func (i GetEntitlementEligibleUserArgs) ToGetEntitlementEligibleUserOutput() GetEntitlementEligibleUserOutput {
+	return i.ToGetEntitlementEligibleUserOutputWithContext(context.Background())
+}
+
+func (i GetEntitlementEligibleUserArgs) ToGetEntitlementEligibleUserOutputWithContext(ctx context.Context) GetEntitlementEligibleUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEntitlementEligibleUserOutput)
+}
+
+// GetEntitlementEligibleUserArrayInput is an input type that accepts GetEntitlementEligibleUserArray and GetEntitlementEligibleUserArrayOutput values.
+// You can construct a concrete instance of `GetEntitlementEligibleUserArrayInput` via:
+//
+//	GetEntitlementEligibleUserArray{ GetEntitlementEligibleUserArgs{...} }
+type GetEntitlementEligibleUserArrayInput interface {
+	pulumi.Input
+
+	ToGetEntitlementEligibleUserArrayOutput() GetEntitlementEligibleUserArrayOutput
+	ToGetEntitlementEligibleUserArrayOutputWithContext(context.Context) GetEntitlementEligibleUserArrayOutput
+}
+
+type GetEntitlementEligibleUserArray []GetEntitlementEligibleUserInput
+
+func (GetEntitlementEligibleUserArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEntitlementEligibleUser)(nil)).Elem()
+}
+
+func (i GetEntitlementEligibleUserArray) ToGetEntitlementEligibleUserArrayOutput() GetEntitlementEligibleUserArrayOutput {
+	return i.ToGetEntitlementEligibleUserArrayOutputWithContext(context.Background())
+}
+
+func (i GetEntitlementEligibleUserArray) ToGetEntitlementEligibleUserArrayOutputWithContext(ctx context.Context) GetEntitlementEligibleUserArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEntitlementEligibleUserArrayOutput)
+}
+
+type GetEntitlementEligibleUserOutput struct{ *pulumi.OutputState }
+
+func (GetEntitlementEligibleUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEntitlementEligibleUser)(nil)).Elem()
+}
+
+func (o GetEntitlementEligibleUserOutput) ToGetEntitlementEligibleUserOutput() GetEntitlementEligibleUserOutput {
+	return o
+}
+
+func (o GetEntitlementEligibleUserOutput) ToGetEntitlementEligibleUserOutputWithContext(ctx context.Context) GetEntitlementEligibleUserOutput {
+	return o
+}
+
+// Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at "https://cloud.google.com/iam/docs/principal-identifiers#v1"
+func (o GetEntitlementEligibleUserOutput) Principals() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEntitlementEligibleUser) []string { return v.Principals }).(pulumi.StringArrayOutput)
+}
+
+type GetEntitlementEligibleUserArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEntitlementEligibleUserArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEntitlementEligibleUser)(nil)).Elem()
+}
+
+func (o GetEntitlementEligibleUserArrayOutput) ToGetEntitlementEligibleUserArrayOutput() GetEntitlementEligibleUserArrayOutput {
+	return o
+}
+
+func (o GetEntitlementEligibleUserArrayOutput) ToGetEntitlementEligibleUserArrayOutputWithContext(ctx context.Context) GetEntitlementEligibleUserArrayOutput {
+	return o
+}
+
+func (o GetEntitlementEligibleUserArrayOutput) Index(i pulumi.IntInput) GetEntitlementEligibleUserOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEntitlementEligibleUser {
+		return vs[0].([]GetEntitlementEligibleUser)[vs[1].(int)]
+	}).(GetEntitlementEligibleUserOutput)
+}
+
+type GetEntitlementPrivilegedAccess struct {
+	// GcpIamAccess represents IAM based access control on a GCP resource. Refer to https://cloud.google.com/iam/docs to understand more about IAM.
+	GcpIamAccesses []GetEntitlementPrivilegedAccessGcpIamAccess `pulumi:"gcpIamAccesses"`
+}
+
+// GetEntitlementPrivilegedAccessInput is an input type that accepts GetEntitlementPrivilegedAccessArgs and GetEntitlementPrivilegedAccessOutput values.
+// You can construct a concrete instance of `GetEntitlementPrivilegedAccessInput` via:
+//
+//	GetEntitlementPrivilegedAccessArgs{...}
+type GetEntitlementPrivilegedAccessInput interface {
+	pulumi.Input
+
+	ToGetEntitlementPrivilegedAccessOutput() GetEntitlementPrivilegedAccessOutput
+	ToGetEntitlementPrivilegedAccessOutputWithContext(context.Context) GetEntitlementPrivilegedAccessOutput
+}
+
+type GetEntitlementPrivilegedAccessArgs struct {
+	// GcpIamAccess represents IAM based access control on a GCP resource. Refer to https://cloud.google.com/iam/docs to understand more about IAM.
+	GcpIamAccesses GetEntitlementPrivilegedAccessGcpIamAccessArrayInput `pulumi:"gcpIamAccesses"`
+}
+
+func (GetEntitlementPrivilegedAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEntitlementPrivilegedAccess)(nil)).Elem()
+}
+
+func (i GetEntitlementPrivilegedAccessArgs) ToGetEntitlementPrivilegedAccessOutput() GetEntitlementPrivilegedAccessOutput {
+	return i.ToGetEntitlementPrivilegedAccessOutputWithContext(context.Background())
+}
+
+func (i GetEntitlementPrivilegedAccessArgs) ToGetEntitlementPrivilegedAccessOutputWithContext(ctx context.Context) GetEntitlementPrivilegedAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEntitlementPrivilegedAccessOutput)
+}
+
+// GetEntitlementPrivilegedAccessArrayInput is an input type that accepts GetEntitlementPrivilegedAccessArray and GetEntitlementPrivilegedAccessArrayOutput values.
+// You can construct a concrete instance of `GetEntitlementPrivilegedAccessArrayInput` via:
+//
+//	GetEntitlementPrivilegedAccessArray{ GetEntitlementPrivilegedAccessArgs{...} }
+type GetEntitlementPrivilegedAccessArrayInput interface {
+	pulumi.Input
+
+	ToGetEntitlementPrivilegedAccessArrayOutput() GetEntitlementPrivilegedAccessArrayOutput
+	ToGetEntitlementPrivilegedAccessArrayOutputWithContext(context.Context) GetEntitlementPrivilegedAccessArrayOutput
+}
+
+type GetEntitlementPrivilegedAccessArray []GetEntitlementPrivilegedAccessInput
+
+func (GetEntitlementPrivilegedAccessArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEntitlementPrivilegedAccess)(nil)).Elem()
+}
+
+func (i GetEntitlementPrivilegedAccessArray) ToGetEntitlementPrivilegedAccessArrayOutput() GetEntitlementPrivilegedAccessArrayOutput {
+	return i.ToGetEntitlementPrivilegedAccessArrayOutputWithContext(context.Background())
+}
+
+func (i GetEntitlementPrivilegedAccessArray) ToGetEntitlementPrivilegedAccessArrayOutputWithContext(ctx context.Context) GetEntitlementPrivilegedAccessArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEntitlementPrivilegedAccessArrayOutput)
+}
+
+type GetEntitlementPrivilegedAccessOutput struct{ *pulumi.OutputState }
+
+func (GetEntitlementPrivilegedAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEntitlementPrivilegedAccess)(nil)).Elem()
+}
+
+func (o GetEntitlementPrivilegedAccessOutput) ToGetEntitlementPrivilegedAccessOutput() GetEntitlementPrivilegedAccessOutput {
+	return o
+}
+
+func (o GetEntitlementPrivilegedAccessOutput) ToGetEntitlementPrivilegedAccessOutputWithContext(ctx context.Context) GetEntitlementPrivilegedAccessOutput {
+	return o
+}
+
+// GcpIamAccess represents IAM based access control on a GCP resource. Refer to https://cloud.google.com/iam/docs to understand more about IAM.
+func (o GetEntitlementPrivilegedAccessOutput) GcpIamAccesses() GetEntitlementPrivilegedAccessGcpIamAccessArrayOutput {
+	return o.ApplyT(func(v GetEntitlementPrivilegedAccess) []GetEntitlementPrivilegedAccessGcpIamAccess {
+		return v.GcpIamAccesses
+	}).(GetEntitlementPrivilegedAccessGcpIamAccessArrayOutput)
+}
+
+type GetEntitlementPrivilegedAccessArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEntitlementPrivilegedAccessArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEntitlementPrivilegedAccess)(nil)).Elem()
+}
+
+func (o GetEntitlementPrivilegedAccessArrayOutput) ToGetEntitlementPrivilegedAccessArrayOutput() GetEntitlementPrivilegedAccessArrayOutput {
+	return o
+}
+
+func (o GetEntitlementPrivilegedAccessArrayOutput) ToGetEntitlementPrivilegedAccessArrayOutputWithContext(ctx context.Context) GetEntitlementPrivilegedAccessArrayOutput {
+	return o
+}
+
+func (o GetEntitlementPrivilegedAccessArrayOutput) Index(i pulumi.IntInput) GetEntitlementPrivilegedAccessOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEntitlementPrivilegedAccess {
+		return vs[0].([]GetEntitlementPrivilegedAccess)[vs[1].(int)]
+	}).(GetEntitlementPrivilegedAccessOutput)
+}
+
+type GetEntitlementPrivilegedAccessGcpIamAccess struct {
+	// Name of the resource.
+	Resource string `pulumi:"resource"`
+	// The type of this resource.
+	ResourceType string `pulumi:"resourceType"`
+	// Role bindings to be created on successful grant.
+	RoleBindings []GetEntitlementPrivilegedAccessGcpIamAccessRoleBinding `pulumi:"roleBindings"`
+}
+
+// GetEntitlementPrivilegedAccessGcpIamAccessInput is an input type that accepts GetEntitlementPrivilegedAccessGcpIamAccessArgs and GetEntitlementPrivilegedAccessGcpIamAccessOutput values.
+// You can construct a concrete instance of `GetEntitlementPrivilegedAccessGcpIamAccessInput` via:
+//
+//	GetEntitlementPrivilegedAccessGcpIamAccessArgs{...}
+type GetEntitlementPrivilegedAccessGcpIamAccessInput interface {
+	pulumi.Input
+
+	ToGetEntitlementPrivilegedAccessGcpIamAccessOutput() GetEntitlementPrivilegedAccessGcpIamAccessOutput
+	ToGetEntitlementPrivilegedAccessGcpIamAccessOutputWithContext(context.Context) GetEntitlementPrivilegedAccessGcpIamAccessOutput
+}
+
+type GetEntitlementPrivilegedAccessGcpIamAccessArgs struct {
+	// Name of the resource.
+	Resource pulumi.StringInput `pulumi:"resource"`
+	// The type of this resource.
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+	// Role bindings to be created on successful grant.
+	RoleBindings GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingArrayInput `pulumi:"roleBindings"`
+}
+
+func (GetEntitlementPrivilegedAccessGcpIamAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEntitlementPrivilegedAccessGcpIamAccess)(nil)).Elem()
+}
+
+func (i GetEntitlementPrivilegedAccessGcpIamAccessArgs) ToGetEntitlementPrivilegedAccessGcpIamAccessOutput() GetEntitlementPrivilegedAccessGcpIamAccessOutput {
+	return i.ToGetEntitlementPrivilegedAccessGcpIamAccessOutputWithContext(context.Background())
+}
+
+func (i GetEntitlementPrivilegedAccessGcpIamAccessArgs) ToGetEntitlementPrivilegedAccessGcpIamAccessOutputWithContext(ctx context.Context) GetEntitlementPrivilegedAccessGcpIamAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEntitlementPrivilegedAccessGcpIamAccessOutput)
+}
+
+// GetEntitlementPrivilegedAccessGcpIamAccessArrayInput is an input type that accepts GetEntitlementPrivilegedAccessGcpIamAccessArray and GetEntitlementPrivilegedAccessGcpIamAccessArrayOutput values.
+// You can construct a concrete instance of `GetEntitlementPrivilegedAccessGcpIamAccessArrayInput` via:
+//
+//	GetEntitlementPrivilegedAccessGcpIamAccessArray{ GetEntitlementPrivilegedAccessGcpIamAccessArgs{...} }
+type GetEntitlementPrivilegedAccessGcpIamAccessArrayInput interface {
+	pulumi.Input
+
+	ToGetEntitlementPrivilegedAccessGcpIamAccessArrayOutput() GetEntitlementPrivilegedAccessGcpIamAccessArrayOutput
+	ToGetEntitlementPrivilegedAccessGcpIamAccessArrayOutputWithContext(context.Context) GetEntitlementPrivilegedAccessGcpIamAccessArrayOutput
+}
+
+type GetEntitlementPrivilegedAccessGcpIamAccessArray []GetEntitlementPrivilegedAccessGcpIamAccessInput
+
+func (GetEntitlementPrivilegedAccessGcpIamAccessArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEntitlementPrivilegedAccessGcpIamAccess)(nil)).Elem()
+}
+
+func (i GetEntitlementPrivilegedAccessGcpIamAccessArray) ToGetEntitlementPrivilegedAccessGcpIamAccessArrayOutput() GetEntitlementPrivilegedAccessGcpIamAccessArrayOutput {
+	return i.ToGetEntitlementPrivilegedAccessGcpIamAccessArrayOutputWithContext(context.Background())
+}
+
+func (i GetEntitlementPrivilegedAccessGcpIamAccessArray) ToGetEntitlementPrivilegedAccessGcpIamAccessArrayOutputWithContext(ctx context.Context) GetEntitlementPrivilegedAccessGcpIamAccessArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEntitlementPrivilegedAccessGcpIamAccessArrayOutput)
+}
+
+type GetEntitlementPrivilegedAccessGcpIamAccessOutput struct{ *pulumi.OutputState }
+
+func (GetEntitlementPrivilegedAccessGcpIamAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEntitlementPrivilegedAccessGcpIamAccess)(nil)).Elem()
+}
+
+func (o GetEntitlementPrivilegedAccessGcpIamAccessOutput) ToGetEntitlementPrivilegedAccessGcpIamAccessOutput() GetEntitlementPrivilegedAccessGcpIamAccessOutput {
+	return o
+}
+
+func (o GetEntitlementPrivilegedAccessGcpIamAccessOutput) ToGetEntitlementPrivilegedAccessGcpIamAccessOutputWithContext(ctx context.Context) GetEntitlementPrivilegedAccessGcpIamAccessOutput {
+	return o
+}
+
+// Name of the resource.
+func (o GetEntitlementPrivilegedAccessGcpIamAccessOutput) Resource() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEntitlementPrivilegedAccessGcpIamAccess) string { return v.Resource }).(pulumi.StringOutput)
+}
+
+// The type of this resource.
+func (o GetEntitlementPrivilegedAccessGcpIamAccessOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEntitlementPrivilegedAccessGcpIamAccess) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// Role bindings to be created on successful grant.
+func (o GetEntitlementPrivilegedAccessGcpIamAccessOutput) RoleBindings() GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingArrayOutput {
+	return o.ApplyT(func(v GetEntitlementPrivilegedAccessGcpIamAccess) []GetEntitlementPrivilegedAccessGcpIamAccessRoleBinding {
+		return v.RoleBindings
+	}).(GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingArrayOutput)
+}
+
+type GetEntitlementPrivilegedAccessGcpIamAccessArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEntitlementPrivilegedAccessGcpIamAccessArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEntitlementPrivilegedAccessGcpIamAccess)(nil)).Elem()
+}
+
+func (o GetEntitlementPrivilegedAccessGcpIamAccessArrayOutput) ToGetEntitlementPrivilegedAccessGcpIamAccessArrayOutput() GetEntitlementPrivilegedAccessGcpIamAccessArrayOutput {
+	return o
+}
+
+func (o GetEntitlementPrivilegedAccessGcpIamAccessArrayOutput) ToGetEntitlementPrivilegedAccessGcpIamAccessArrayOutputWithContext(ctx context.Context) GetEntitlementPrivilegedAccessGcpIamAccessArrayOutput {
+	return o
+}
+
+func (o GetEntitlementPrivilegedAccessGcpIamAccessArrayOutput) Index(i pulumi.IntInput) GetEntitlementPrivilegedAccessGcpIamAccessOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEntitlementPrivilegedAccessGcpIamAccess {
+		return vs[0].([]GetEntitlementPrivilegedAccessGcpIamAccess)[vs[1].(int)]
+	}).(GetEntitlementPrivilegedAccessGcpIamAccessOutput)
+}
+
+type GetEntitlementPrivilegedAccessGcpIamAccessRoleBinding struct {
+	// The expression field of the IAM condition to be associated with the role. If specified, a user with an active grant for this entitlement would be able to access the resource only if this condition evaluates to true for their request.
+	// https://cloud.google.com/iam/docs/conditions-overview#attributes.
+	ConditionExpression string `pulumi:"conditionExpression"`
+	// IAM role to be granted. https://cloud.google.com/iam/docs/roles-overview.
+	Role string `pulumi:"role"`
+}
+
+// GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingInput is an input type that accepts GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingArgs and GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingOutput values.
+// You can construct a concrete instance of `GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingInput` via:
+//
+//	GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingArgs{...}
+type GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingInput interface {
+	pulumi.Input
+
+	ToGetEntitlementPrivilegedAccessGcpIamAccessRoleBindingOutput() GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingOutput
+	ToGetEntitlementPrivilegedAccessGcpIamAccessRoleBindingOutputWithContext(context.Context) GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingOutput
+}
+
+type GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingArgs struct {
+	// The expression field of the IAM condition to be associated with the role. If specified, a user with an active grant for this entitlement would be able to access the resource only if this condition evaluates to true for their request.
+	// https://cloud.google.com/iam/docs/conditions-overview#attributes.
+	ConditionExpression pulumi.StringInput `pulumi:"conditionExpression"`
+	// IAM role to be granted. https://cloud.google.com/iam/docs/roles-overview.
+	Role pulumi.StringInput `pulumi:"role"`
+}
+
+func (GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEntitlementPrivilegedAccessGcpIamAccessRoleBinding)(nil)).Elem()
+}
+
+func (i GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingArgs) ToGetEntitlementPrivilegedAccessGcpIamAccessRoleBindingOutput() GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingOutput {
+	return i.ToGetEntitlementPrivilegedAccessGcpIamAccessRoleBindingOutputWithContext(context.Background())
+}
+
+func (i GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingArgs) ToGetEntitlementPrivilegedAccessGcpIamAccessRoleBindingOutputWithContext(ctx context.Context) GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingOutput)
+}
+
+// GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingArrayInput is an input type that accepts GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingArray and GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingArrayOutput values.
+// You can construct a concrete instance of `GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingArrayInput` via:
+//
+//	GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingArray{ GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingArgs{...} }
+type GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingArrayInput interface {
+	pulumi.Input
+
+	ToGetEntitlementPrivilegedAccessGcpIamAccessRoleBindingArrayOutput() GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingArrayOutput
+	ToGetEntitlementPrivilegedAccessGcpIamAccessRoleBindingArrayOutputWithContext(context.Context) GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingArrayOutput
+}
+
+type GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingArray []GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingInput
+
+func (GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEntitlementPrivilegedAccessGcpIamAccessRoleBinding)(nil)).Elem()
+}
+
+func (i GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingArray) ToGetEntitlementPrivilegedAccessGcpIamAccessRoleBindingArrayOutput() GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingArrayOutput {
+	return i.ToGetEntitlementPrivilegedAccessGcpIamAccessRoleBindingArrayOutputWithContext(context.Background())
+}
+
+func (i GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingArray) ToGetEntitlementPrivilegedAccessGcpIamAccessRoleBindingArrayOutputWithContext(ctx context.Context) GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingArrayOutput)
+}
+
+type GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingOutput struct{ *pulumi.OutputState }
+
+func (GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEntitlementPrivilegedAccessGcpIamAccessRoleBinding)(nil)).Elem()
+}
+
+func (o GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingOutput) ToGetEntitlementPrivilegedAccessGcpIamAccessRoleBindingOutput() GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingOutput {
+	return o
+}
+
+func (o GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingOutput) ToGetEntitlementPrivilegedAccessGcpIamAccessRoleBindingOutputWithContext(ctx context.Context) GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingOutput {
+	return o
+}
+
+// The expression field of the IAM condition to be associated with the role. If specified, a user with an active grant for this entitlement would be able to access the resource only if this condition evaluates to true for their request.
+// https://cloud.google.com/iam/docs/conditions-overview#attributes.
+func (o GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingOutput) ConditionExpression() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEntitlementPrivilegedAccessGcpIamAccessRoleBinding) string { return v.ConditionExpression }).(pulumi.StringOutput)
+}
+
+// IAM role to be granted. https://cloud.google.com/iam/docs/roles-overview.
+func (o GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEntitlementPrivilegedAccessGcpIamAccessRoleBinding) string { return v.Role }).(pulumi.StringOutput)
+}
+
+type GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEntitlementPrivilegedAccessGcpIamAccessRoleBinding)(nil)).Elem()
+}
+
+func (o GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingArrayOutput) ToGetEntitlementPrivilegedAccessGcpIamAccessRoleBindingArrayOutput() GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingArrayOutput {
+	return o
+}
+
+func (o GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingArrayOutput) ToGetEntitlementPrivilegedAccessGcpIamAccessRoleBindingArrayOutputWithContext(ctx context.Context) GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingArrayOutput {
+	return o
+}
+
+func (o GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingArrayOutput) Index(i pulumi.IntInput) GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEntitlementPrivilegedAccessGcpIamAccessRoleBinding {
+		return vs[0].([]GetEntitlementPrivilegedAccessGcpIamAccessRoleBinding)[vs[1].(int)]
+	}).(GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingOutput)
+}
+
+type GetEntitlementRequesterJustificationConfig struct {
+	// The justification is not mandatory but can be provided in any of the supported formats.
+	NotMandatories []GetEntitlementRequesterJustificationConfigNotMandatory `pulumi:"notMandatories"`
+	// The requester has to provide a justification in the form of free flowing text.
+	Unstructureds []GetEntitlementRequesterJustificationConfigUnstructured `pulumi:"unstructureds"`
+}
+
+// GetEntitlementRequesterJustificationConfigInput is an input type that accepts GetEntitlementRequesterJustificationConfigArgs and GetEntitlementRequesterJustificationConfigOutput values.
+// You can construct a concrete instance of `GetEntitlementRequesterJustificationConfigInput` via:
+//
+//	GetEntitlementRequesterJustificationConfigArgs{...}
+type GetEntitlementRequesterJustificationConfigInput interface {
+	pulumi.Input
+
+	ToGetEntitlementRequesterJustificationConfigOutput() GetEntitlementRequesterJustificationConfigOutput
+	ToGetEntitlementRequesterJustificationConfigOutputWithContext(context.Context) GetEntitlementRequesterJustificationConfigOutput
+}
+
+type GetEntitlementRequesterJustificationConfigArgs struct {
+	// The justification is not mandatory but can be provided in any of the supported formats.
+	NotMandatories GetEntitlementRequesterJustificationConfigNotMandatoryArrayInput `pulumi:"notMandatories"`
+	// The requester has to provide a justification in the form of free flowing text.
+	Unstructureds GetEntitlementRequesterJustificationConfigUnstructuredArrayInput `pulumi:"unstructureds"`
+}
+
+func (GetEntitlementRequesterJustificationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEntitlementRequesterJustificationConfig)(nil)).Elem()
+}
+
+func (i GetEntitlementRequesterJustificationConfigArgs) ToGetEntitlementRequesterJustificationConfigOutput() GetEntitlementRequesterJustificationConfigOutput {
+	return i.ToGetEntitlementRequesterJustificationConfigOutputWithContext(context.Background())
+}
+
+func (i GetEntitlementRequesterJustificationConfigArgs) ToGetEntitlementRequesterJustificationConfigOutputWithContext(ctx context.Context) GetEntitlementRequesterJustificationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEntitlementRequesterJustificationConfigOutput)
+}
+
+// GetEntitlementRequesterJustificationConfigArrayInput is an input type that accepts GetEntitlementRequesterJustificationConfigArray and GetEntitlementRequesterJustificationConfigArrayOutput values.
+// You can construct a concrete instance of `GetEntitlementRequesterJustificationConfigArrayInput` via:
+//
+//	GetEntitlementRequesterJustificationConfigArray{ GetEntitlementRequesterJustificationConfigArgs{...} }
+type GetEntitlementRequesterJustificationConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetEntitlementRequesterJustificationConfigArrayOutput() GetEntitlementRequesterJustificationConfigArrayOutput
+	ToGetEntitlementRequesterJustificationConfigArrayOutputWithContext(context.Context) GetEntitlementRequesterJustificationConfigArrayOutput
+}
+
+type GetEntitlementRequesterJustificationConfigArray []GetEntitlementRequesterJustificationConfigInput
+
+func (GetEntitlementRequesterJustificationConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEntitlementRequesterJustificationConfig)(nil)).Elem()
+}
+
+func (i GetEntitlementRequesterJustificationConfigArray) ToGetEntitlementRequesterJustificationConfigArrayOutput() GetEntitlementRequesterJustificationConfigArrayOutput {
+	return i.ToGetEntitlementRequesterJustificationConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetEntitlementRequesterJustificationConfigArray) ToGetEntitlementRequesterJustificationConfigArrayOutputWithContext(ctx context.Context) GetEntitlementRequesterJustificationConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEntitlementRequesterJustificationConfigArrayOutput)
+}
+
+type GetEntitlementRequesterJustificationConfigOutput struct{ *pulumi.OutputState }
+
+func (GetEntitlementRequesterJustificationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEntitlementRequesterJustificationConfig)(nil)).Elem()
+}
+
+func (o GetEntitlementRequesterJustificationConfigOutput) ToGetEntitlementRequesterJustificationConfigOutput() GetEntitlementRequesterJustificationConfigOutput {
+	return o
+}
+
+func (o GetEntitlementRequesterJustificationConfigOutput) ToGetEntitlementRequesterJustificationConfigOutputWithContext(ctx context.Context) GetEntitlementRequesterJustificationConfigOutput {
+	return o
+}
+
+// The justification is not mandatory but can be provided in any of the supported formats.
+func (o GetEntitlementRequesterJustificationConfigOutput) NotMandatories() GetEntitlementRequesterJustificationConfigNotMandatoryArrayOutput {
+	return o.ApplyT(func(v GetEntitlementRequesterJustificationConfig) []GetEntitlementRequesterJustificationConfigNotMandatory {
+		return v.NotMandatories
+	}).(GetEntitlementRequesterJustificationConfigNotMandatoryArrayOutput)
+}
+
+// The requester has to provide a justification in the form of free flowing text.
+func (o GetEntitlementRequesterJustificationConfigOutput) Unstructureds() GetEntitlementRequesterJustificationConfigUnstructuredArrayOutput {
+	return o.ApplyT(func(v GetEntitlementRequesterJustificationConfig) []GetEntitlementRequesterJustificationConfigUnstructured {
+		return v.Unstructureds
+	}).(GetEntitlementRequesterJustificationConfigUnstructuredArrayOutput)
+}
+
+type GetEntitlementRequesterJustificationConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEntitlementRequesterJustificationConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEntitlementRequesterJustificationConfig)(nil)).Elem()
+}
+
+func (o GetEntitlementRequesterJustificationConfigArrayOutput) ToGetEntitlementRequesterJustificationConfigArrayOutput() GetEntitlementRequesterJustificationConfigArrayOutput {
+	return o
+}
+
+func (o GetEntitlementRequesterJustificationConfigArrayOutput) ToGetEntitlementRequesterJustificationConfigArrayOutputWithContext(ctx context.Context) GetEntitlementRequesterJustificationConfigArrayOutput {
+	return o
+}
+
+func (o GetEntitlementRequesterJustificationConfigArrayOutput) Index(i pulumi.IntInput) GetEntitlementRequesterJustificationConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEntitlementRequesterJustificationConfig {
+		return vs[0].([]GetEntitlementRequesterJustificationConfig)[vs[1].(int)]
+	}).(GetEntitlementRequesterJustificationConfigOutput)
+}
+
+type GetEntitlementRequesterJustificationConfigNotMandatory struct {
+}
+
+// GetEntitlementRequesterJustificationConfigNotMandatoryInput is an input type that accepts GetEntitlementRequesterJustificationConfigNotMandatoryArgs and GetEntitlementRequesterJustificationConfigNotMandatoryOutput values.
+// You can construct a concrete instance of `GetEntitlementRequesterJustificationConfigNotMandatoryInput` via:
+//
+//	GetEntitlementRequesterJustificationConfigNotMandatoryArgs{...}
+type GetEntitlementRequesterJustificationConfigNotMandatoryInput interface {
+	pulumi.Input
+
+	ToGetEntitlementRequesterJustificationConfigNotMandatoryOutput() GetEntitlementRequesterJustificationConfigNotMandatoryOutput
+	ToGetEntitlementRequesterJustificationConfigNotMandatoryOutputWithContext(context.Context) GetEntitlementRequesterJustificationConfigNotMandatoryOutput
+}
+
+type GetEntitlementRequesterJustificationConfigNotMandatoryArgs struct {
+}
+
+func (GetEntitlementRequesterJustificationConfigNotMandatoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEntitlementRequesterJustificationConfigNotMandatory)(nil)).Elem()
+}
+
+func (i GetEntitlementRequesterJustificationConfigNotMandatoryArgs) ToGetEntitlementRequesterJustificationConfigNotMandatoryOutput() GetEntitlementRequesterJustificationConfigNotMandatoryOutput {
+	return i.ToGetEntitlementRequesterJustificationConfigNotMandatoryOutputWithContext(context.Background())
+}
+
+func (i GetEntitlementRequesterJustificationConfigNotMandatoryArgs) ToGetEntitlementRequesterJustificationConfigNotMandatoryOutputWithContext(ctx context.Context) GetEntitlementRequesterJustificationConfigNotMandatoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEntitlementRequesterJustificationConfigNotMandatoryOutput)
+}
+
+// GetEntitlementRequesterJustificationConfigNotMandatoryArrayInput is an input type that accepts GetEntitlementRequesterJustificationConfigNotMandatoryArray and GetEntitlementRequesterJustificationConfigNotMandatoryArrayOutput values.
+// You can construct a concrete instance of `GetEntitlementRequesterJustificationConfigNotMandatoryArrayInput` via:
+//
+//	GetEntitlementRequesterJustificationConfigNotMandatoryArray{ GetEntitlementRequesterJustificationConfigNotMandatoryArgs{...} }
+type GetEntitlementRequesterJustificationConfigNotMandatoryArrayInput interface {
+	pulumi.Input
+
+	ToGetEntitlementRequesterJustificationConfigNotMandatoryArrayOutput() GetEntitlementRequesterJustificationConfigNotMandatoryArrayOutput
+	ToGetEntitlementRequesterJustificationConfigNotMandatoryArrayOutputWithContext(context.Context) GetEntitlementRequesterJustificationConfigNotMandatoryArrayOutput
+}
+
+type GetEntitlementRequesterJustificationConfigNotMandatoryArray []GetEntitlementRequesterJustificationConfigNotMandatoryInput
+
+func (GetEntitlementRequesterJustificationConfigNotMandatoryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEntitlementRequesterJustificationConfigNotMandatory)(nil)).Elem()
+}
+
+func (i GetEntitlementRequesterJustificationConfigNotMandatoryArray) ToGetEntitlementRequesterJustificationConfigNotMandatoryArrayOutput() GetEntitlementRequesterJustificationConfigNotMandatoryArrayOutput {
+	return i.ToGetEntitlementRequesterJustificationConfigNotMandatoryArrayOutputWithContext(context.Background())
+}
+
+func (i GetEntitlementRequesterJustificationConfigNotMandatoryArray) ToGetEntitlementRequesterJustificationConfigNotMandatoryArrayOutputWithContext(ctx context.Context) GetEntitlementRequesterJustificationConfigNotMandatoryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEntitlementRequesterJustificationConfigNotMandatoryArrayOutput)
+}
+
+type GetEntitlementRequesterJustificationConfigNotMandatoryOutput struct{ *pulumi.OutputState }
+
+func (GetEntitlementRequesterJustificationConfigNotMandatoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEntitlementRequesterJustificationConfigNotMandatory)(nil)).Elem()
+}
+
+func (o GetEntitlementRequesterJustificationConfigNotMandatoryOutput) ToGetEntitlementRequesterJustificationConfigNotMandatoryOutput() GetEntitlementRequesterJustificationConfigNotMandatoryOutput {
+	return o
+}
+
+func (o GetEntitlementRequesterJustificationConfigNotMandatoryOutput) ToGetEntitlementRequesterJustificationConfigNotMandatoryOutputWithContext(ctx context.Context) GetEntitlementRequesterJustificationConfigNotMandatoryOutput {
+	return o
+}
+
+type GetEntitlementRequesterJustificationConfigNotMandatoryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEntitlementRequesterJustificationConfigNotMandatoryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEntitlementRequesterJustificationConfigNotMandatory)(nil)).Elem()
+}
+
+func (o GetEntitlementRequesterJustificationConfigNotMandatoryArrayOutput) ToGetEntitlementRequesterJustificationConfigNotMandatoryArrayOutput() GetEntitlementRequesterJustificationConfigNotMandatoryArrayOutput {
+	return o
+}
+
+func (o GetEntitlementRequesterJustificationConfigNotMandatoryArrayOutput) ToGetEntitlementRequesterJustificationConfigNotMandatoryArrayOutputWithContext(ctx context.Context) GetEntitlementRequesterJustificationConfigNotMandatoryArrayOutput {
+	return o
+}
+
+func (o GetEntitlementRequesterJustificationConfigNotMandatoryArrayOutput) Index(i pulumi.IntInput) GetEntitlementRequesterJustificationConfigNotMandatoryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEntitlementRequesterJustificationConfigNotMandatory {
+		return vs[0].([]GetEntitlementRequesterJustificationConfigNotMandatory)[vs[1].(int)]
+	}).(GetEntitlementRequesterJustificationConfigNotMandatoryOutput)
+}
+
+type GetEntitlementRequesterJustificationConfigUnstructured struct {
+}
+
+// GetEntitlementRequesterJustificationConfigUnstructuredInput is an input type that accepts GetEntitlementRequesterJustificationConfigUnstructuredArgs and GetEntitlementRequesterJustificationConfigUnstructuredOutput values.
+// You can construct a concrete instance of `GetEntitlementRequesterJustificationConfigUnstructuredInput` via:
+//
+//	GetEntitlementRequesterJustificationConfigUnstructuredArgs{...}
+type GetEntitlementRequesterJustificationConfigUnstructuredInput interface {
+	pulumi.Input
+
+	ToGetEntitlementRequesterJustificationConfigUnstructuredOutput() GetEntitlementRequesterJustificationConfigUnstructuredOutput
+	ToGetEntitlementRequesterJustificationConfigUnstructuredOutputWithContext(context.Context) GetEntitlementRequesterJustificationConfigUnstructuredOutput
+}
+
+type GetEntitlementRequesterJustificationConfigUnstructuredArgs struct {
+}
+
+func (GetEntitlementRequesterJustificationConfigUnstructuredArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEntitlementRequesterJustificationConfigUnstructured)(nil)).Elem()
+}
+
+func (i GetEntitlementRequesterJustificationConfigUnstructuredArgs) ToGetEntitlementRequesterJustificationConfigUnstructuredOutput() GetEntitlementRequesterJustificationConfigUnstructuredOutput {
+	return i.ToGetEntitlementRequesterJustificationConfigUnstructuredOutputWithContext(context.Background())
+}
+
+func (i GetEntitlementRequesterJustificationConfigUnstructuredArgs) ToGetEntitlementRequesterJustificationConfigUnstructuredOutputWithContext(ctx context.Context) GetEntitlementRequesterJustificationConfigUnstructuredOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEntitlementRequesterJustificationConfigUnstructuredOutput)
+}
+
+// GetEntitlementRequesterJustificationConfigUnstructuredArrayInput is an input type that accepts GetEntitlementRequesterJustificationConfigUnstructuredArray and GetEntitlementRequesterJustificationConfigUnstructuredArrayOutput values.
+// You can construct a concrete instance of `GetEntitlementRequesterJustificationConfigUnstructuredArrayInput` via:
+//
+//	GetEntitlementRequesterJustificationConfigUnstructuredArray{ GetEntitlementRequesterJustificationConfigUnstructuredArgs{...} }
+type GetEntitlementRequesterJustificationConfigUnstructuredArrayInput interface {
+	pulumi.Input
+
+	ToGetEntitlementRequesterJustificationConfigUnstructuredArrayOutput() GetEntitlementRequesterJustificationConfigUnstructuredArrayOutput
+	ToGetEntitlementRequesterJustificationConfigUnstructuredArrayOutputWithContext(context.Context) GetEntitlementRequesterJustificationConfigUnstructuredArrayOutput
+}
+
+type GetEntitlementRequesterJustificationConfigUnstructuredArray []GetEntitlementRequesterJustificationConfigUnstructuredInput
+
+func (GetEntitlementRequesterJustificationConfigUnstructuredArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEntitlementRequesterJustificationConfigUnstructured)(nil)).Elem()
+}
+
+func (i GetEntitlementRequesterJustificationConfigUnstructuredArray) ToGetEntitlementRequesterJustificationConfigUnstructuredArrayOutput() GetEntitlementRequesterJustificationConfigUnstructuredArrayOutput {
+	return i.ToGetEntitlementRequesterJustificationConfigUnstructuredArrayOutputWithContext(context.Background())
+}
+
+func (i GetEntitlementRequesterJustificationConfigUnstructuredArray) ToGetEntitlementRequesterJustificationConfigUnstructuredArrayOutputWithContext(ctx context.Context) GetEntitlementRequesterJustificationConfigUnstructuredArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEntitlementRequesterJustificationConfigUnstructuredArrayOutput)
+}
+
+type GetEntitlementRequesterJustificationConfigUnstructuredOutput struct{ *pulumi.OutputState }
+
+func (GetEntitlementRequesterJustificationConfigUnstructuredOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEntitlementRequesterJustificationConfigUnstructured)(nil)).Elem()
+}
+
+func (o GetEntitlementRequesterJustificationConfigUnstructuredOutput) ToGetEntitlementRequesterJustificationConfigUnstructuredOutput() GetEntitlementRequesterJustificationConfigUnstructuredOutput {
+	return o
+}
+
+func (o GetEntitlementRequesterJustificationConfigUnstructuredOutput) ToGetEntitlementRequesterJustificationConfigUnstructuredOutputWithContext(ctx context.Context) GetEntitlementRequesterJustificationConfigUnstructuredOutput {
+	return o
+}
+
+type GetEntitlementRequesterJustificationConfigUnstructuredArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEntitlementRequesterJustificationConfigUnstructuredArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEntitlementRequesterJustificationConfigUnstructured)(nil)).Elem()
+}
+
+func (o GetEntitlementRequesterJustificationConfigUnstructuredArrayOutput) ToGetEntitlementRequesterJustificationConfigUnstructuredArrayOutput() GetEntitlementRequesterJustificationConfigUnstructuredArrayOutput {
+	return o
+}
+
+func (o GetEntitlementRequesterJustificationConfigUnstructuredArrayOutput) ToGetEntitlementRequesterJustificationConfigUnstructuredArrayOutputWithContext(ctx context.Context) GetEntitlementRequesterJustificationConfigUnstructuredArrayOutput {
+	return o
+}
+
+func (o GetEntitlementRequesterJustificationConfigUnstructuredArrayOutput) Index(i pulumi.IntInput) GetEntitlementRequesterJustificationConfigUnstructuredOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEntitlementRequesterJustificationConfigUnstructured {
+		return vs[0].([]GetEntitlementRequesterJustificationConfigUnstructured)[vs[1].(int)]
+	}).(GetEntitlementRequesterJustificationConfigUnstructuredOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EntitlementAdditionalNotificationTargetsInput)(nil)).Elem(), EntitlementAdditionalNotificationTargetsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EntitlementAdditionalNotificationTargetsPtrInput)(nil)).Elem(), EntitlementAdditionalNotificationTargetsArgs{})
@@ -1635,6 +2897,30 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EntitlementRequesterJustificationConfigNotMandatoryPtrInput)(nil)).Elem(), EntitlementRequesterJustificationConfigNotMandatoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EntitlementRequesterJustificationConfigUnstructuredInput)(nil)).Elem(), EntitlementRequesterJustificationConfigUnstructuredArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EntitlementRequesterJustificationConfigUnstructuredPtrInput)(nil)).Elem(), EntitlementRequesterJustificationConfigUnstructuredArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEntitlementAdditionalNotificationTargetInput)(nil)).Elem(), GetEntitlementAdditionalNotificationTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEntitlementAdditionalNotificationTargetArrayInput)(nil)).Elem(), GetEntitlementAdditionalNotificationTargetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEntitlementApprovalWorkflowInput)(nil)).Elem(), GetEntitlementApprovalWorkflowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEntitlementApprovalWorkflowArrayInput)(nil)).Elem(), GetEntitlementApprovalWorkflowArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEntitlementApprovalWorkflowManualApprovalInput)(nil)).Elem(), GetEntitlementApprovalWorkflowManualApprovalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEntitlementApprovalWorkflowManualApprovalArrayInput)(nil)).Elem(), GetEntitlementApprovalWorkflowManualApprovalArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEntitlementApprovalWorkflowManualApprovalStepInput)(nil)).Elem(), GetEntitlementApprovalWorkflowManualApprovalStepArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEntitlementApprovalWorkflowManualApprovalStepArrayInput)(nil)).Elem(), GetEntitlementApprovalWorkflowManualApprovalStepArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEntitlementApprovalWorkflowManualApprovalStepApproverInput)(nil)).Elem(), GetEntitlementApprovalWorkflowManualApprovalStepApproverArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEntitlementApprovalWorkflowManualApprovalStepApproverArrayInput)(nil)).Elem(), GetEntitlementApprovalWorkflowManualApprovalStepApproverArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEntitlementEligibleUserInput)(nil)).Elem(), GetEntitlementEligibleUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEntitlementEligibleUserArrayInput)(nil)).Elem(), GetEntitlementEligibleUserArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEntitlementPrivilegedAccessInput)(nil)).Elem(), GetEntitlementPrivilegedAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEntitlementPrivilegedAccessArrayInput)(nil)).Elem(), GetEntitlementPrivilegedAccessArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEntitlementPrivilegedAccessGcpIamAccessInput)(nil)).Elem(), GetEntitlementPrivilegedAccessGcpIamAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEntitlementPrivilegedAccessGcpIamAccessArrayInput)(nil)).Elem(), GetEntitlementPrivilegedAccessGcpIamAccessArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingInput)(nil)).Elem(), GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingArrayInput)(nil)).Elem(), GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEntitlementRequesterJustificationConfigInput)(nil)).Elem(), GetEntitlementRequesterJustificationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEntitlementRequesterJustificationConfigArrayInput)(nil)).Elem(), GetEntitlementRequesterJustificationConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEntitlementRequesterJustificationConfigNotMandatoryInput)(nil)).Elem(), GetEntitlementRequesterJustificationConfigNotMandatoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEntitlementRequesterJustificationConfigNotMandatoryArrayInput)(nil)).Elem(), GetEntitlementRequesterJustificationConfigNotMandatoryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEntitlementRequesterJustificationConfigUnstructuredInput)(nil)).Elem(), GetEntitlementRequesterJustificationConfigUnstructuredArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEntitlementRequesterJustificationConfigUnstructuredArrayInput)(nil)).Elem(), GetEntitlementRequesterJustificationConfigUnstructuredArray{})
 	pulumi.RegisterOutputType(EntitlementAdditionalNotificationTargetsOutput{})
 	pulumi.RegisterOutputType(EntitlementAdditionalNotificationTargetsPtrOutput{})
 	pulumi.RegisterOutputType(EntitlementApprovalWorkflowOutput{})
@@ -1658,4 +2944,28 @@ func init() {
 	pulumi.RegisterOutputType(EntitlementRequesterJustificationConfigNotMandatoryPtrOutput{})
 	pulumi.RegisterOutputType(EntitlementRequesterJustificationConfigUnstructuredOutput{})
 	pulumi.RegisterOutputType(EntitlementRequesterJustificationConfigUnstructuredPtrOutput{})
+	pulumi.RegisterOutputType(GetEntitlementAdditionalNotificationTargetOutput{})
+	pulumi.RegisterOutputType(GetEntitlementAdditionalNotificationTargetArrayOutput{})
+	pulumi.RegisterOutputType(GetEntitlementApprovalWorkflowOutput{})
+	pulumi.RegisterOutputType(GetEntitlementApprovalWorkflowArrayOutput{})
+	pulumi.RegisterOutputType(GetEntitlementApprovalWorkflowManualApprovalOutput{})
+	pulumi.RegisterOutputType(GetEntitlementApprovalWorkflowManualApprovalArrayOutput{})
+	pulumi.RegisterOutputType(GetEntitlementApprovalWorkflowManualApprovalStepOutput{})
+	pulumi.RegisterOutputType(GetEntitlementApprovalWorkflowManualApprovalStepArrayOutput{})
+	pulumi.RegisterOutputType(GetEntitlementApprovalWorkflowManualApprovalStepApproverOutput{})
+	pulumi.RegisterOutputType(GetEntitlementApprovalWorkflowManualApprovalStepApproverArrayOutput{})
+	pulumi.RegisterOutputType(GetEntitlementEligibleUserOutput{})
+	pulumi.RegisterOutputType(GetEntitlementEligibleUserArrayOutput{})
+	pulumi.RegisterOutputType(GetEntitlementPrivilegedAccessOutput{})
+	pulumi.RegisterOutputType(GetEntitlementPrivilegedAccessArrayOutput{})
+	pulumi.RegisterOutputType(GetEntitlementPrivilegedAccessGcpIamAccessOutput{})
+	pulumi.RegisterOutputType(GetEntitlementPrivilegedAccessGcpIamAccessArrayOutput{})
+	pulumi.RegisterOutputType(GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingOutput{})
+	pulumi.RegisterOutputType(GetEntitlementPrivilegedAccessGcpIamAccessRoleBindingArrayOutput{})
+	pulumi.RegisterOutputType(GetEntitlementRequesterJustificationConfigOutput{})
+	pulumi.RegisterOutputType(GetEntitlementRequesterJustificationConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetEntitlementRequesterJustificationConfigNotMandatoryOutput{})
+	pulumi.RegisterOutputType(GetEntitlementRequesterJustificationConfigNotMandatoryArrayOutput{})
+	pulumi.RegisterOutputType(GetEntitlementRequesterJustificationConfigUnstructuredOutput{})
+	pulumi.RegisterOutputType(GetEntitlementRequesterJustificationConfigUnstructuredArrayOutput{})
 }

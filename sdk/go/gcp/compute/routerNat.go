@@ -341,6 +341,9 @@ type RouterNat struct {
 	EndpointTypes pulumi.StringArrayOutput `pulumi:"endpointTypes"`
 	// Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
 	IcmpIdleTimeoutSec pulumi.IntPtrOutput `pulumi:"icmpIdleTimeoutSec"`
+	// Self-links of NAT IPs to be used as initial value for creation alongside a RouterNatAddress resource.
+	// Conflicts with natIps and drainNatIps. Only valid if natIpAllocateOption is set to MANUAL_ONLY.
+	InitialNatIps pulumi.StringArrayOutput `pulumi:"initialNatIps"`
 	// Configuration for logging on NAT
 	// Structure is documented below.
 	LogConfig RouterNatLogConfigPtrOutput `pulumi:"logConfig"`
@@ -472,6 +475,9 @@ type routerNatState struct {
 	EndpointTypes []string `pulumi:"endpointTypes"`
 	// Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
 	IcmpIdleTimeoutSec *int `pulumi:"icmpIdleTimeoutSec"`
+	// Self-links of NAT IPs to be used as initial value for creation alongside a RouterNatAddress resource.
+	// Conflicts with natIps and drainNatIps. Only valid if natIpAllocateOption is set to MANUAL_ONLY.
+	InitialNatIps []string `pulumi:"initialNatIps"`
 	// Configuration for logging on NAT
 	// Structure is documented below.
 	LogConfig *RouterNatLogConfig `pulumi:"logConfig"`
@@ -568,6 +574,9 @@ type RouterNatState struct {
 	EndpointTypes pulumi.StringArrayInput
 	// Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
 	IcmpIdleTimeoutSec pulumi.IntPtrInput
+	// Self-links of NAT IPs to be used as initial value for creation alongside a RouterNatAddress resource.
+	// Conflicts with natIps and drainNatIps. Only valid if natIpAllocateOption is set to MANUAL_ONLY.
+	InitialNatIps pulumi.StringArrayInput
 	// Configuration for logging on NAT
 	// Structure is documented below.
 	LogConfig RouterNatLogConfigPtrInput
@@ -668,6 +677,9 @@ type routerNatArgs struct {
 	EndpointTypes []string `pulumi:"endpointTypes"`
 	// Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
 	IcmpIdleTimeoutSec *int `pulumi:"icmpIdleTimeoutSec"`
+	// Self-links of NAT IPs to be used as initial value for creation alongside a RouterNatAddress resource.
+	// Conflicts with natIps and drainNatIps. Only valid if natIpAllocateOption is set to MANUAL_ONLY.
+	InitialNatIps []string `pulumi:"initialNatIps"`
 	// Configuration for logging on NAT
 	// Structure is documented below.
 	LogConfig *RouterNatLogConfig `pulumi:"logConfig"`
@@ -765,6 +777,9 @@ type RouterNatArgs struct {
 	EndpointTypes pulumi.StringArrayInput
 	// Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
 	IcmpIdleTimeoutSec pulumi.IntPtrInput
+	// Self-links of NAT IPs to be used as initial value for creation alongside a RouterNatAddress resource.
+	// Conflicts with natIps and drainNatIps. Only valid if natIpAllocateOption is set to MANUAL_ONLY.
+	InitialNatIps pulumi.StringArrayInput
 	// Configuration for logging on NAT
 	// Structure is documented below.
 	LogConfig RouterNatLogConfigPtrInput
@@ -963,6 +978,12 @@ func (o RouterNatOutput) EndpointTypes() pulumi.StringArrayOutput {
 // Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
 func (o RouterNatOutput) IcmpIdleTimeoutSec() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RouterNat) pulumi.IntPtrOutput { return v.IcmpIdleTimeoutSec }).(pulumi.IntPtrOutput)
+}
+
+// Self-links of NAT IPs to be used as initial value for creation alongside a RouterNatAddress resource.
+// Conflicts with natIps and drainNatIps. Only valid if natIpAllocateOption is set to MANUAL_ONLY.
+func (o RouterNatOutput) InitialNatIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RouterNat) pulumi.StringArrayOutput { return v.InitialNatIps }).(pulumi.StringArrayOutput)
 }
 
 // Configuration for logging on NAT

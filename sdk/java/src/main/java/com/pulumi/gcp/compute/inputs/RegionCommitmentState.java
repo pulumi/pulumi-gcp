@@ -125,6 +125,21 @@ public final class RegionCommitmentState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Specifies the already existing reservations to attach to the Commitment.
+     * 
+     */
+    @Import(name="existingReservations")
+    private @Nullable Output<String> existingReservations;
+
+    /**
+     * @return Specifies the already existing reservations to attach to the Commitment.
+     * 
+     */
+    public Optional<Output<String>> existingReservations() {
+        return Optional.ofNullable(this.existingReservations);
+    }
+
+    /**
      * The license specification required as part of a license commitment.
      * Structure is documented below.
      * 
@@ -332,6 +347,7 @@ public final class RegionCommitmentState extends com.pulumi.resources.ResourceAr
         this.creationTimestamp = $.creationTimestamp;
         this.description = $.description;
         this.endTimestamp = $.endTimestamp;
+        this.existingReservations = $.existingReservations;
         this.licenseResource = $.licenseResource;
         this.name = $.name;
         this.plan = $.plan;
@@ -501,6 +517,27 @@ public final class RegionCommitmentState extends com.pulumi.resources.ResourceAr
          */
         public Builder endTimestamp(String endTimestamp) {
             return endTimestamp(Output.of(endTimestamp));
+        }
+
+        /**
+         * @param existingReservations Specifies the already existing reservations to attach to the Commitment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder existingReservations(@Nullable Output<String> existingReservations) {
+            $.existingReservations = existingReservations;
+            return this;
+        }
+
+        /**
+         * @param existingReservations Specifies the already existing reservations to attach to the Commitment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder existingReservations(String existingReservations) {
+            return existingReservations(Output.of(existingReservations));
         }
 
         /**

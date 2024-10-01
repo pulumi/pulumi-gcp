@@ -29,6 +29,7 @@ public final class GetRouterNatResult {
      * 
      */
     private String id;
+    private List<String> initialNatIps;
     private List<GetRouterNatLogConfig> logConfigs;
     private Integer maxPortsPerVm;
     private Integer minPortsPerVm;
@@ -72,6 +73,9 @@ public final class GetRouterNatResult {
      */
     public String id() {
         return this.id;
+    }
+    public List<String> initialNatIps() {
+        return this.initialNatIps;
     }
     public List<GetRouterNatLogConfig> logConfigs() {
         return this.logConfigs;
@@ -141,6 +145,7 @@ public final class GetRouterNatResult {
         private List<String> endpointTypes;
         private Integer icmpIdleTimeoutSec;
         private String id;
+        private List<String> initialNatIps;
         private List<GetRouterNatLogConfig> logConfigs;
         private Integer maxPortsPerVm;
         private Integer minPortsPerVm;
@@ -168,6 +173,7 @@ public final class GetRouterNatResult {
     	      this.endpointTypes = defaults.endpointTypes;
     	      this.icmpIdleTimeoutSec = defaults.icmpIdleTimeoutSec;
     	      this.id = defaults.id;
+    	      this.initialNatIps = defaults.initialNatIps;
     	      this.logConfigs = defaults.logConfigs;
     	      this.maxPortsPerVm = defaults.maxPortsPerVm;
     	      this.minPortsPerVm = defaults.minPortsPerVm;
@@ -248,6 +254,17 @@ public final class GetRouterNatResult {
             }
             this.id = id;
             return this;
+        }
+        @CustomType.Setter
+        public Builder initialNatIps(List<String> initialNatIps) {
+            if (initialNatIps == null) {
+              throw new MissingRequiredPropertyException("GetRouterNatResult", "initialNatIps");
+            }
+            this.initialNatIps = initialNatIps;
+            return this;
+        }
+        public Builder initialNatIps(String... initialNatIps) {
+            return initialNatIps(List.of(initialNatIps));
         }
         @CustomType.Setter
         public Builder logConfigs(List<GetRouterNatLogConfig> logConfigs) {
@@ -402,6 +419,7 @@ public final class GetRouterNatResult {
             _resultValue.endpointTypes = endpointTypes;
             _resultValue.icmpIdleTimeoutSec = icmpIdleTimeoutSec;
             _resultValue.id = id;
+            _resultValue.initialNatIps = initialNatIps;
             _resultValue.logConfigs = logConfigs;
             _resultValue.maxPortsPerVm = maxPortsPerVm;
             _resultValue.minPortsPerVm = minPortsPerVm;

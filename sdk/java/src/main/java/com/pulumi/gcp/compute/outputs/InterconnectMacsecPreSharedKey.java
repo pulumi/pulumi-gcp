@@ -14,13 +14,20 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InterconnectMacsecPreSharedKey {
     /**
-     * @return If set to true, the Interconnect connection is configured with a should-secure
+     * @return (Optional, Deprecated)
+     * If set to true, the Interconnect connection is configured with a should-secure
      * MACsec security policy, that allows the Google router to fallback to cleartext
      * traffic if the MKA session cannot be established. By default, the Interconnect
      * connection is configured with a must-secure security policy that drops all traffic
      * if the MKA session cannot be established with your router.
      * 
+     * &gt; **Warning:** `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead.
+     * 
+     * @deprecated
+     * `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead.
+     * 
      */
+    @Deprecated /* `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead. */
     private @Nullable Boolean failOpen;
     /**
      * @return A name for this pre-shared key. The name must be 1-63 characters long, and
@@ -43,13 +50,20 @@ public final class InterconnectMacsecPreSharedKey {
 
     private InterconnectMacsecPreSharedKey() {}
     /**
-     * @return If set to true, the Interconnect connection is configured with a should-secure
+     * @return (Optional, Deprecated)
+     * If set to true, the Interconnect connection is configured with a should-secure
      * MACsec security policy, that allows the Google router to fallback to cleartext
      * traffic if the MKA session cannot be established. By default, the Interconnect
      * connection is configured with a must-secure security policy that drops all traffic
      * if the MKA session cannot be established with your router.
      * 
+     * &gt; **Warning:** `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead.
+     * 
+     * @deprecated
+     * `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead.
+     * 
      */
+    @Deprecated /* `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead. */
     public Optional<Boolean> failOpen() {
         return Optional.ofNullable(this.failOpen);
     }

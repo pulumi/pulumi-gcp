@@ -25,6 +25,11 @@ public final class GetInstanceTemplateScheduling {
      */
     private Boolean automaticRestart;
     /**
+     * @return Beta Time in seconds for host error detection.
+     * 
+     */
+    private Integer hostErrorTimeoutSeconds;
+    /**
      * @return Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
      * 
      */
@@ -94,6 +99,13 @@ public final class GetInstanceTemplateScheduling {
      */
     public Boolean automaticRestart() {
         return this.automaticRestart;
+    }
+    /**
+     * @return Beta Time in seconds for host error detection.
+     * 
+     */
+    public Integer hostErrorTimeoutSeconds() {
+        return this.hostErrorTimeoutSeconds;
     }
     /**
      * @return Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
@@ -186,6 +198,7 @@ public final class GetInstanceTemplateScheduling {
     @CustomType.Builder
     public static final class Builder {
         private Boolean automaticRestart;
+        private Integer hostErrorTimeoutSeconds;
         private String instanceTerminationAction;
         private List<GetInstanceTemplateSchedulingLocalSsdRecoveryTimeout> localSsdRecoveryTimeouts;
         private String maintenanceInterval;
@@ -200,6 +213,7 @@ public final class GetInstanceTemplateScheduling {
         public Builder(GetInstanceTemplateScheduling defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.automaticRestart = defaults.automaticRestart;
+    	      this.hostErrorTimeoutSeconds = defaults.hostErrorTimeoutSeconds;
     	      this.instanceTerminationAction = defaults.instanceTerminationAction;
     	      this.localSsdRecoveryTimeouts = defaults.localSsdRecoveryTimeouts;
     	      this.maintenanceInterval = defaults.maintenanceInterval;
@@ -218,6 +232,14 @@ public final class GetInstanceTemplateScheduling {
               throw new MissingRequiredPropertyException("GetInstanceTemplateScheduling", "automaticRestart");
             }
             this.automaticRestart = automaticRestart;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder hostErrorTimeoutSeconds(Integer hostErrorTimeoutSeconds) {
+            if (hostErrorTimeoutSeconds == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateScheduling", "hostErrorTimeoutSeconds");
+            }
+            this.hostErrorTimeoutSeconds = hostErrorTimeoutSeconds;
             return this;
         }
         @CustomType.Setter
@@ -315,6 +337,7 @@ public final class GetInstanceTemplateScheduling {
         public GetInstanceTemplateScheduling build() {
             final var _resultValue = new GetInstanceTemplateScheduling();
             _resultValue.automaticRestart = automaticRestart;
+            _resultValue.hostErrorTimeoutSeconds = hostErrorTimeoutSeconds;
             _resultValue.instanceTerminationAction = instanceTerminationAction;
             _resultValue.localSsdRecoveryTimeouts = localSsdRecoveryTimeouts;
             _resultValue.maintenanceInterval = maintenanceInterval;

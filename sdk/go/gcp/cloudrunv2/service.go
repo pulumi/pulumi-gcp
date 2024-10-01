@@ -339,6 +339,56 @@ import (
 //	}
 //
 // ```
+// ### Cloudrunv2 Service Gpu
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudrunv2.NewService(ctx, "default", &cloudrunv2.ServiceArgs{
+//				Name:               pulumi.String("cloudrun-service"),
+//				Location:           pulumi.String("us-central1"),
+//				DeletionProtection: pulumi.Bool(false),
+//				Ingress:            pulumi.String("INGRESS_TRAFFIC_ALL"),
+//				LaunchStage:        pulumi.String("BETA"),
+//				Template: &cloudrunv2.ServiceTemplateArgs{
+//					Containers: cloudrunv2.ServiceTemplateContainerArray{
+//						&cloudrunv2.ServiceTemplateContainerArgs{
+//							Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
+//							Resources: &cloudrunv2.ServiceTemplateContainerResourcesArgs{
+//								Limits: pulumi.StringMap{
+//									"cpu":            pulumi.String("4"),
+//									"memory":         pulumi.String("16Gi"),
+//									"nvidia.com/gpu": pulumi.String("1"),
+//								},
+//								StartupCpuBoost: pulumi.Bool(true),
+//							},
+//						},
+//					},
+//					NodeSelector: &cloudrunv2.ServiceTemplateNodeSelectorArgs{
+//						Accelerator: pulumi.String("nvidia-l4"),
+//					},
+//					Scaling: &cloudrunv2.ServiceTemplateScalingArgs{
+//						MaxInstanceCount: pulumi.Int(1),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Cloudrunv2 Service Probes
 //
 // ```go

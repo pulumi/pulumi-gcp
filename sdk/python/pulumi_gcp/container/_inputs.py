@@ -301,6 +301,8 @@ __all__ = [
     'ClusterNodeConfigKubeletConfigArgsDict',
     'ClusterNodeConfigLinuxNodeConfigArgs',
     'ClusterNodeConfigLinuxNodeConfigArgsDict',
+    'ClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs',
+    'ClusterNodeConfigLinuxNodeConfigHugepagesConfigArgsDict',
     'ClusterNodeConfigLocalNvmeSsdBlockConfigArgs',
     'ClusterNodeConfigLocalNvmeSsdBlockConfigArgsDict',
     'ClusterNodeConfigReservationAffinityArgs',
@@ -393,6 +395,8 @@ __all__ = [
     'ClusterNodePoolNodeConfigKubeletConfigArgsDict',
     'ClusterNodePoolNodeConfigLinuxNodeConfigArgs',
     'ClusterNodePoolNodeConfigLinuxNodeConfigArgsDict',
+    'ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs',
+    'ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgsDict',
     'ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs',
     'ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgsDict',
     'ClusterNodePoolNodeConfigReservationAffinityArgs',
@@ -509,6 +513,8 @@ __all__ = [
     'NodePoolNodeConfigKubeletConfigArgsDict',
     'NodePoolNodeConfigLinuxNodeConfigArgs',
     'NodePoolNodeConfigLinuxNodeConfigArgsDict',
+    'NodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs',
+    'NodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgsDict',
     'NodePoolNodeConfigLocalNvmeSsdBlockConfigArgs',
     'NodePoolNodeConfigLocalNvmeSsdBlockConfigArgsDict',
     'NodePoolNodeConfigReservationAffinityArgs',
@@ -9908,6 +9914,10 @@ if not MYPY:
         * `CGROUP_MODE_V1`: CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
         * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
         """
+        hugepages_config: NotRequired[pulumi.Input['ClusterNodeConfigLinuxNodeConfigHugepagesConfigArgsDict']]
+        """
+        Amounts for 2M and 1G hugepages. Structure is documented below.
+        """
         sysctls: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
         The Linux kernel parameters to be applied to the nodes
@@ -9922,6 +9932,7 @@ elif False:
 class ClusterNodeConfigLinuxNodeConfigArgs:
     def __init__(__self__, *,
                  cgroup_mode: Optional[pulumi.Input[str]] = None,
+                 hugepages_config: Optional[pulumi.Input['ClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs']] = None,
                  sysctls: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] cgroup_mode: Possible cgroup modes that can be used.
@@ -9929,6 +9940,7 @@ class ClusterNodeConfigLinuxNodeConfigArgs:
                * `CGROUP_MODE_UNSPECIFIED`: CGROUP_MODE_UNSPECIFIED is when unspecified cgroup configuration is used. The default for the GKE node OS image will be used.
                * `CGROUP_MODE_V1`: CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
                * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
+        :param pulumi.Input['ClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs'] hugepages_config: Amounts for 2M and 1G hugepages. Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] sysctls: The Linux kernel parameters to be applied to the nodes
                and all pods running on the nodes. Specified as a map from the key, such as
                `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
@@ -9936,6 +9948,8 @@ class ClusterNodeConfigLinuxNodeConfigArgs:
         """
         if cgroup_mode is not None:
             pulumi.set(__self__, "cgroup_mode", cgroup_mode)
+        if hugepages_config is not None:
+            pulumi.set(__self__, "hugepages_config", hugepages_config)
         if sysctls is not None:
             pulumi.set(__self__, "sysctls", sysctls)
 
@@ -9956,6 +9970,18 @@ class ClusterNodeConfigLinuxNodeConfigArgs:
         pulumi.set(self, "cgroup_mode", value)
 
     @property
+    @pulumi.getter(name="hugepagesConfig")
+    def hugepages_config(self) -> Optional[pulumi.Input['ClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs']]:
+        """
+        Amounts for 2M and 1G hugepages. Structure is documented below.
+        """
+        return pulumi.get(self, "hugepages_config")
+
+    @hugepages_config.setter
+    def hugepages_config(self, value: Optional[pulumi.Input['ClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs']]):
+        pulumi.set(self, "hugepages_config", value)
+
+    @property
     @pulumi.getter
     def sysctls(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -9969,6 +9995,58 @@ class ClusterNodeConfigLinuxNodeConfigArgs:
     @sysctls.setter
     def sysctls(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "sysctls", value)
+
+
+if not MYPY:
+    class ClusterNodeConfigLinuxNodeConfigHugepagesConfigArgsDict(TypedDict):
+        hugepage_size1g: NotRequired[pulumi.Input[int]]
+        """
+        Amount of 1G hugepages.
+        """
+        hugepage_size2m: NotRequired[pulumi.Input[int]]
+        """
+        Amount of 2M hugepages.
+        """
+elif False:
+    ClusterNodeConfigLinuxNodeConfigHugepagesConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs:
+    def __init__(__self__, *,
+                 hugepage_size1g: Optional[pulumi.Input[int]] = None,
+                 hugepage_size2m: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] hugepage_size1g: Amount of 1G hugepages.
+        :param pulumi.Input[int] hugepage_size2m: Amount of 2M hugepages.
+        """
+        if hugepage_size1g is not None:
+            pulumi.set(__self__, "hugepage_size1g", hugepage_size1g)
+        if hugepage_size2m is not None:
+            pulumi.set(__self__, "hugepage_size2m", hugepage_size2m)
+
+    @property
+    @pulumi.getter(name="hugepageSize1g")
+    def hugepage_size1g(self) -> Optional[pulumi.Input[int]]:
+        """
+        Amount of 1G hugepages.
+        """
+        return pulumi.get(self, "hugepage_size1g")
+
+    @hugepage_size1g.setter
+    def hugepage_size1g(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "hugepage_size1g", value)
+
+    @property
+    @pulumi.getter(name="hugepageSize2m")
+    def hugepage_size2m(self) -> Optional[pulumi.Input[int]]:
+        """
+        Amount of 2M hugepages.
+        """
+        return pulumi.get(self, "hugepage_size2m")
+
+    @hugepage_size2m.setter
+    def hugepage_size2m(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "hugepage_size2m", value)
 
 
 if not MYPY:
@@ -13727,6 +13805,10 @@ if not MYPY:
         * `CGROUP_MODE_V1`: CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
         * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
         """
+        hugepages_config: NotRequired[pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgsDict']]
+        """
+        Amounts for 2M and 1G hugepages. Structure is documented below.
+        """
         sysctls: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
         The Linux kernel parameters to be applied to the nodes
@@ -13741,6 +13823,7 @@ elif False:
 class ClusterNodePoolNodeConfigLinuxNodeConfigArgs:
     def __init__(__self__, *,
                  cgroup_mode: Optional[pulumi.Input[str]] = None,
+                 hugepages_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs']] = None,
                  sysctls: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] cgroup_mode: Possible cgroup modes that can be used.
@@ -13748,6 +13831,7 @@ class ClusterNodePoolNodeConfigLinuxNodeConfigArgs:
                * `CGROUP_MODE_UNSPECIFIED`: CGROUP_MODE_UNSPECIFIED is when unspecified cgroup configuration is used. The default for the GKE node OS image will be used.
                * `CGROUP_MODE_V1`: CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
                * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
+        :param pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs'] hugepages_config: Amounts for 2M and 1G hugepages. Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] sysctls: The Linux kernel parameters to be applied to the nodes
                and all pods running on the nodes. Specified as a map from the key, such as
                `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
@@ -13755,6 +13839,8 @@ class ClusterNodePoolNodeConfigLinuxNodeConfigArgs:
         """
         if cgroup_mode is not None:
             pulumi.set(__self__, "cgroup_mode", cgroup_mode)
+        if hugepages_config is not None:
+            pulumi.set(__self__, "hugepages_config", hugepages_config)
         if sysctls is not None:
             pulumi.set(__self__, "sysctls", sysctls)
 
@@ -13775,6 +13861,18 @@ class ClusterNodePoolNodeConfigLinuxNodeConfigArgs:
         pulumi.set(self, "cgroup_mode", value)
 
     @property
+    @pulumi.getter(name="hugepagesConfig")
+    def hugepages_config(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs']]:
+        """
+        Amounts for 2M and 1G hugepages. Structure is documented below.
+        """
+        return pulumi.get(self, "hugepages_config")
+
+    @hugepages_config.setter
+    def hugepages_config(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs']]):
+        pulumi.set(self, "hugepages_config", value)
+
+    @property
     @pulumi.getter
     def sysctls(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -13788,6 +13886,58 @@ class ClusterNodePoolNodeConfigLinuxNodeConfigArgs:
     @sysctls.setter
     def sysctls(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "sysctls", value)
+
+
+if not MYPY:
+    class ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgsDict(TypedDict):
+        hugepage_size1g: NotRequired[pulumi.Input[int]]
+        """
+        Amount of 1G hugepages.
+        """
+        hugepage_size2m: NotRequired[pulumi.Input[int]]
+        """
+        Amount of 2M hugepages.
+        """
+elif False:
+    ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs:
+    def __init__(__self__, *,
+                 hugepage_size1g: Optional[pulumi.Input[int]] = None,
+                 hugepage_size2m: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] hugepage_size1g: Amount of 1G hugepages.
+        :param pulumi.Input[int] hugepage_size2m: Amount of 2M hugepages.
+        """
+        if hugepage_size1g is not None:
+            pulumi.set(__self__, "hugepage_size1g", hugepage_size1g)
+        if hugepage_size2m is not None:
+            pulumi.set(__self__, "hugepage_size2m", hugepage_size2m)
+
+    @property
+    @pulumi.getter(name="hugepageSize1g")
+    def hugepage_size1g(self) -> Optional[pulumi.Input[int]]:
+        """
+        Amount of 1G hugepages.
+        """
+        return pulumi.get(self, "hugepage_size1g")
+
+    @hugepage_size1g.setter
+    def hugepage_size1g(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "hugepage_size1g", value)
+
+    @property
+    @pulumi.getter(name="hugepageSize2m")
+    def hugepage_size2m(self) -> Optional[pulumi.Input[int]]:
+        """
+        Amount of 2M hugepages.
+        """
+        return pulumi.get(self, "hugepage_size2m")
+
+    @hugepage_size2m.setter
+    def hugepage_size2m(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "hugepage_size2m", value)
 
 
 if not MYPY:
@@ -17773,6 +17923,10 @@ if not MYPY:
         """
         cgroupMode specifies the cgroup mode to be used on the node.
         """
+        hugepages_config: NotRequired[pulumi.Input['NodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgsDict']]
+        """
+        Amounts for 2M and 1G hugepages.
+        """
         sysctls: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
         The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
@@ -17784,13 +17938,17 @@ elif False:
 class NodePoolNodeConfigLinuxNodeConfigArgs:
     def __init__(__self__, *,
                  cgroup_mode: Optional[pulumi.Input[str]] = None,
+                 hugepages_config: Optional[pulumi.Input['NodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs']] = None,
                  sysctls: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] cgroup_mode: cgroupMode specifies the cgroup mode to be used on the node.
+        :param pulumi.Input['NodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs'] hugepages_config: Amounts for 2M and 1G hugepages.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] sysctls: The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
         """
         if cgroup_mode is not None:
             pulumi.set(__self__, "cgroup_mode", cgroup_mode)
+        if hugepages_config is not None:
+            pulumi.set(__self__, "hugepages_config", hugepages_config)
         if sysctls is not None:
             pulumi.set(__self__, "sysctls", sysctls)
 
@@ -17807,6 +17965,18 @@ class NodePoolNodeConfigLinuxNodeConfigArgs:
         pulumi.set(self, "cgroup_mode", value)
 
     @property
+    @pulumi.getter(name="hugepagesConfig")
+    def hugepages_config(self) -> Optional[pulumi.Input['NodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs']]:
+        """
+        Amounts for 2M and 1G hugepages.
+        """
+        return pulumi.get(self, "hugepages_config")
+
+    @hugepages_config.setter
+    def hugepages_config(self, value: Optional[pulumi.Input['NodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs']]):
+        pulumi.set(self, "hugepages_config", value)
+
+    @property
     @pulumi.getter
     def sysctls(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -17817,6 +17987,58 @@ class NodePoolNodeConfigLinuxNodeConfigArgs:
     @sysctls.setter
     def sysctls(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "sysctls", value)
+
+
+if not MYPY:
+    class NodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgsDict(TypedDict):
+        hugepage_size1g: NotRequired[pulumi.Input[int]]
+        """
+        Amount of 1G hugepages.
+        """
+        hugepage_size2m: NotRequired[pulumi.Input[int]]
+        """
+        Amount of 2M hugepages.
+        """
+elif False:
+    NodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs:
+    def __init__(__self__, *,
+                 hugepage_size1g: Optional[pulumi.Input[int]] = None,
+                 hugepage_size2m: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] hugepage_size1g: Amount of 1G hugepages.
+        :param pulumi.Input[int] hugepage_size2m: Amount of 2M hugepages.
+        """
+        if hugepage_size1g is not None:
+            pulumi.set(__self__, "hugepage_size1g", hugepage_size1g)
+        if hugepage_size2m is not None:
+            pulumi.set(__self__, "hugepage_size2m", hugepage_size2m)
+
+    @property
+    @pulumi.getter(name="hugepageSize1g")
+    def hugepage_size1g(self) -> Optional[pulumi.Input[int]]:
+        """
+        Amount of 1G hugepages.
+        """
+        return pulumi.get(self, "hugepage_size1g")
+
+    @hugepage_size1g.setter
+    def hugepage_size1g(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "hugepage_size1g", value)
+
+    @property
+    @pulumi.getter(name="hugepageSize2m")
+    def hugepage_size2m(self) -> Optional[pulumi.Input[int]]:
+        """
+        Amount of 2M hugepages.
+        """
+        return pulumi.get(self, "hugepage_size2m")
+
+    @hugepage_size2m.setter
+    def hugepage_size2m(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "hugepage_size2m", value)
 
 
 if not MYPY:

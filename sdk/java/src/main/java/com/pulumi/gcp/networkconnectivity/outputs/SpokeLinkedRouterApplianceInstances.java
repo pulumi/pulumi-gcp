@@ -7,11 +7,19 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.networkconnectivity.outputs.SpokeLinkedRouterApplianceInstancesInstance;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class SpokeLinkedRouterApplianceInstances {
+    /**
+     * @return IP ranges allowed to be included during import from hub (does not control transit connectivity).
+     * The only allowed value for now is &#34;ALL_IPV4_RANGES&#34;.
+     * 
+     */
+    private @Nullable List<String> includeImportRanges;
     /**
      * @return The list of router appliance instances
      * Structure is documented below.
@@ -25,6 +33,14 @@ public final class SpokeLinkedRouterApplianceInstances {
     private Boolean siteToSiteDataTransfer;
 
     private SpokeLinkedRouterApplianceInstances() {}
+    /**
+     * @return IP ranges allowed to be included during import from hub (does not control transit connectivity).
+     * The only allowed value for now is &#34;ALL_IPV4_RANGES&#34;.
+     * 
+     */
+    public List<String> includeImportRanges() {
+        return this.includeImportRanges == null ? List.of() : this.includeImportRanges;
+    }
     /**
      * @return The list of router appliance instances
      * Structure is documented below.
@@ -50,15 +66,26 @@ public final class SpokeLinkedRouterApplianceInstances {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<String> includeImportRanges;
         private List<SpokeLinkedRouterApplianceInstancesInstance> instances;
         private Boolean siteToSiteDataTransfer;
         public Builder() {}
         public Builder(SpokeLinkedRouterApplianceInstances defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.includeImportRanges = defaults.includeImportRanges;
     	      this.instances = defaults.instances;
     	      this.siteToSiteDataTransfer = defaults.siteToSiteDataTransfer;
         }
 
+        @CustomType.Setter
+        public Builder includeImportRanges(@Nullable List<String> includeImportRanges) {
+
+            this.includeImportRanges = includeImportRanges;
+            return this;
+        }
+        public Builder includeImportRanges(String... includeImportRanges) {
+            return includeImportRanges(List.of(includeImportRanges));
+        }
         @CustomType.Setter
         public Builder instances(List<SpokeLinkedRouterApplianceInstancesInstance> instances) {
             if (instances == null) {
@@ -80,6 +107,7 @@ public final class SpokeLinkedRouterApplianceInstances {
         }
         public SpokeLinkedRouterApplianceInstances build() {
             final var _resultValue = new SpokeLinkedRouterApplianceInstances();
+            _resultValue.includeImportRanges = includeImportRanges;
             _resultValue.instances = instances;
             _resultValue.siteToSiteDataTransfer = siteToSiteDataTransfer;
             return _resultValue;

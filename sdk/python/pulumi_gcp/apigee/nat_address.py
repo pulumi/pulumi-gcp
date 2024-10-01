@@ -20,6 +20,7 @@ __all__ = ['NatAddressArgs', 'NatAddress']
 class NatAddressArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[str],
+                 activate: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a NatAddress resource.
@@ -28,9 +29,12 @@ class NatAddressArgs:
                
                
                - - -
+        :param pulumi.Input[bool] activate: Flag that specifies whether the reserved NAT address should be activate.
         :param pulumi.Input[str] name: Resource ID of the NAT address.
         """
         pulumi.set(__self__, "instance_id", instance_id)
+        if activate is not None:
+            pulumi.set(__self__, "activate", activate)
         if name is not None:
             pulumi.set(__self__, "name", name)
 
@@ -52,6 +56,18 @@ class NatAddressArgs:
 
     @property
     @pulumi.getter
+    def activate(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Flag that specifies whether the reserved NAT address should be activate.
+        """
+        return pulumi.get(self, "activate")
+
+    @activate.setter
+    def activate(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "activate", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Resource ID of the NAT address.
@@ -66,12 +82,14 @@ class NatAddressArgs:
 @pulumi.input_type
 class _NatAddressState:
     def __init__(__self__, *,
+                 activate: Optional[pulumi.Input[bool]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering NatAddress resources.
+        :param pulumi.Input[bool] activate: Flag that specifies whether the reserved NAT address should be activate.
         :param pulumi.Input[str] instance_id: The Apigee instance associated with the Apigee environment,
                in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
                
@@ -81,6 +99,8 @@ class _NatAddressState:
         :param pulumi.Input[str] name: Resource ID of the NAT address.
         :param pulumi.Input[str] state: State of the NAT IP address.
         """
+        if activate is not None:
+            pulumi.set(__self__, "activate", activate)
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
         if ip_address is not None:
@@ -89,6 +109,18 @@ class _NatAddressState:
             pulumi.set(__self__, "name", name)
         if state is not None:
             pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def activate(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Flag that specifies whether the reserved NAT address should be activate.
+        """
+        return pulumi.get(self, "activate")
+
+    @activate.setter
+    def activate(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "activate", value)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -148,12 +180,12 @@ class NatAddress(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 activate: Optional[pulumi.Input[bool]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Apigee NAT (network address translation) address. A NAT address is a static external IP address used for Internet egress traffic. This is not avaible for Apigee hybrid.
-        Apigee NAT addresses are not automatically activated because they might require explicit allow entries on the target systems first. See https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.instances.natAddresses/activate
 
         To get more information about NatAddress, see:
 
@@ -216,6 +248,60 @@ class NatAddress(pulumi.CustomResource):
             name="my-nat-address",
             instance_id=apigee_instance.id)
         ```
+        ### Apigee Nat Address With Activate
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        current = gcp.organizations.get_client_config()
+        apigee_network = gcp.compute.Network("apigee_network", name="apigee-network")
+        apigee_range = gcp.compute.GlobalAddress("apigee_range",
+            name="apigee-range",
+            purpose="VPC_PEERING",
+            address_type="INTERNAL",
+            prefix_length=21,
+            network=apigee_network.id)
+        apigee_vpc_connection = gcp.servicenetworking.Connection("apigee_vpc_connection",
+            network=apigee_network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[apigee_range.name])
+        apigee_keyring = gcp.kms.KeyRing("apigee_keyring",
+            name="apigee-keyring",
+            location="us-central1")
+        apigee_key = gcp.kms.CryptoKey("apigee_key",
+            name="apigee-key",
+            key_ring=apigee_keyring.id)
+        apigee_sa = gcp.projects.ServiceIdentity("apigee_sa",
+            project=project["projectId"],
+            service=apigee["service"])
+        apigee_sa_keyuser = gcp.kms.CryptoKeyIAMMember("apigee_sa_keyuser",
+            crypto_key_id=apigee_key.id,
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            member=apigee_sa.member)
+        apigee_org = gcp.apigee.Organization("apigee_org",
+            analytics_region="us-central1",
+            display_name="apigee-org",
+            description="Terraform-provisioned Apigee Org.",
+            project_id=current.project,
+            authorized_network=apigee_network.id,
+            runtime_database_encryption_key_name=apigee_key.id,
+            opts = pulumi.ResourceOptions(depends_on=[
+                    apigee_vpc_connection,
+                    apigee_sa_keyuser,
+                ]))
+        apigee_instance = gcp.apigee.Instance("apigee_instance",
+            name="apigee-instance",
+            location="us-central1",
+            description="Terraform-managed Apigee Runtime Instance",
+            display_name="apigee-instance",
+            org_id=apigee_org.id,
+            disk_encryption_key_name=apigee_key.id)
+        apigee_nat = gcp.apigee.NatAddress("apigee-nat",
+            name="my-nat-address",
+            activate=True,
+            instance_id=apigee_instance.id)
+        ```
 
         ## Import
 
@@ -237,6 +323,7 @@ class NatAddress(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] activate: Flag that specifies whether the reserved NAT address should be activate.
         :param pulumi.Input[str] instance_id: The Apigee instance associated with the Apigee environment,
                in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
                
@@ -252,7 +339,6 @@ class NatAddress(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Apigee NAT (network address translation) address. A NAT address is a static external IP address used for Internet egress traffic. This is not avaible for Apigee hybrid.
-        Apigee NAT addresses are not automatically activated because they might require explicit allow entries on the target systems first. See https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.instances.natAddresses/activate
 
         To get more information about NatAddress, see:
 
@@ -313,6 +399,60 @@ class NatAddress(pulumi.CustomResource):
             disk_encryption_key_name=apigee_key.id)
         apigee_nat = gcp.apigee.NatAddress("apigee-nat",
             name="my-nat-address",
+            instance_id=apigee_instance.id)
+        ```
+        ### Apigee Nat Address With Activate
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        current = gcp.organizations.get_client_config()
+        apigee_network = gcp.compute.Network("apigee_network", name="apigee-network")
+        apigee_range = gcp.compute.GlobalAddress("apigee_range",
+            name="apigee-range",
+            purpose="VPC_PEERING",
+            address_type="INTERNAL",
+            prefix_length=21,
+            network=apigee_network.id)
+        apigee_vpc_connection = gcp.servicenetworking.Connection("apigee_vpc_connection",
+            network=apigee_network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[apigee_range.name])
+        apigee_keyring = gcp.kms.KeyRing("apigee_keyring",
+            name="apigee-keyring",
+            location="us-central1")
+        apigee_key = gcp.kms.CryptoKey("apigee_key",
+            name="apigee-key",
+            key_ring=apigee_keyring.id)
+        apigee_sa = gcp.projects.ServiceIdentity("apigee_sa",
+            project=project["projectId"],
+            service=apigee["service"])
+        apigee_sa_keyuser = gcp.kms.CryptoKeyIAMMember("apigee_sa_keyuser",
+            crypto_key_id=apigee_key.id,
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            member=apigee_sa.member)
+        apigee_org = gcp.apigee.Organization("apigee_org",
+            analytics_region="us-central1",
+            display_name="apigee-org",
+            description="Terraform-provisioned Apigee Org.",
+            project_id=current.project,
+            authorized_network=apigee_network.id,
+            runtime_database_encryption_key_name=apigee_key.id,
+            opts = pulumi.ResourceOptions(depends_on=[
+                    apigee_vpc_connection,
+                    apigee_sa_keyuser,
+                ]))
+        apigee_instance = gcp.apigee.Instance("apigee_instance",
+            name="apigee-instance",
+            location="us-central1",
+            description="Terraform-managed Apigee Runtime Instance",
+            display_name="apigee-instance",
+            org_id=apigee_org.id,
+            disk_encryption_key_name=apigee_key.id)
+        apigee_nat = gcp.apigee.NatAddress("apigee-nat",
+            name="my-nat-address",
+            activate=True,
             instance_id=apigee_instance.id)
         ```
 
@@ -349,6 +489,7 @@ class NatAddress(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 activate: Optional[pulumi.Input[bool]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -360,6 +501,7 @@ class NatAddress(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = NatAddressArgs.__new__(NatAddressArgs)
 
+            __props__.__dict__["activate"] = activate
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
@@ -376,6 +518,7 @@ class NatAddress(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            activate: Optional[pulumi.Input[bool]] = None,
             instance_id: Optional[pulumi.Input[str]] = None,
             ip_address: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -387,6 +530,7 @@ class NatAddress(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] activate: Flag that specifies whether the reserved NAT address should be activate.
         :param pulumi.Input[str] instance_id: The Apigee instance associated with the Apigee environment,
                in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
                
@@ -400,11 +544,20 @@ class NatAddress(pulumi.CustomResource):
 
         __props__ = _NatAddressState.__new__(_NatAddressState)
 
+        __props__.__dict__["activate"] = activate
         __props__.__dict__["instance_id"] = instance_id
         __props__.__dict__["ip_address"] = ip_address
         __props__.__dict__["name"] = name
         __props__.__dict__["state"] = state
         return NatAddress(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def activate(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Flag that specifies whether the reserved NAT address should be activate.
+        """
+        return pulumi.get(self, "activate")
 
     @property
     @pulumi.getter(name="instanceId")
