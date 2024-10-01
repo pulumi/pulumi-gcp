@@ -150,9 +150,6 @@ def get_workload_identity_pool(project: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'),
         state=pulumi.get(__ret__, 'state'),
         workload_identity_pool_id=pulumi.get(__ret__, 'workload_identity_pool_id'))
-
-
-@_utilities.lift_output_func(get_workload_identity_pool)
 def get_workload_identity_pool_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                                       workload_identity_pool_id: Optional[pulumi.Input[str]] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWorkloadIdentityPoolResult]:
@@ -176,4 +173,17 @@ def get_workload_identity_pool_output(project: Optional[pulumi.Input[Optional[st
            
            - - -
     """
-    ...
+    __args__ = dict()
+    __args__['project'] = project
+    __args__['workloadIdentityPoolId'] = workload_identity_pool_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:iam/getWorkloadIdentityPool:getWorkloadIdentityPool', __args__, opts=opts, typ=GetWorkloadIdentityPoolResult)
+    return __ret__.apply(lambda __response__: GetWorkloadIdentityPoolResult(
+        description=pulumi.get(__response__, 'description'),
+        disabled=pulumi.get(__response__, 'disabled'),
+        display_name=pulumi.get(__response__, 'display_name'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        project=pulumi.get(__response__, 'project'),
+        state=pulumi.get(__response__, 'state'),
+        workload_identity_pool_id=pulumi.get(__response__, 'workload_identity_pool_id')))

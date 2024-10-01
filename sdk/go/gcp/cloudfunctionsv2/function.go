@@ -340,7 +340,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			gcsAccount, err := storage.GetProjectServiceAccount(ctx, nil, nil)
+//			gcsAccount, err := storage.GetProjectServiceAccount(ctx, &storage.GetProjectServiceAccountArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -1011,7 +1011,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			project := "my-project-name"
-//			projectGetProject, err := organizations.LookupProject(ctx, nil, nil)
+//			projectGetProject, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -1181,7 +1181,7 @@ import (
 //							Object: object.Name,
 //						},
 //					},
-//					AutomaticUpdatePolicy: nil,
+//					AutomaticUpdatePolicy: &cloudfunctionsv2.FunctionBuildConfigAutomaticUpdatePolicyArgs{},
 //				},
 //				ServiceConfig: &cloudfunctionsv2.FunctionServiceConfigArgs{
 //					MaxInstanceCount:              pulumi.Int(3),
@@ -1277,7 +1277,7 @@ import (
 //							Object: object.Name,
 //						},
 //					},
-//					OnDeployUpdatePolicy: nil,
+//					OnDeployUpdatePolicy: &cloudfunctionsv2.FunctionBuildConfigOnDeployUpdatePolicyArgs{},
 //				},
 //				ServiceConfig: &cloudfunctionsv2.FunctionServiceConfigArgs{
 //					MaxInstanceCount:              pulumi.Int(3),
