@@ -220,14 +220,14 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
         return this.description;
     }
     /**
-     * Desired status of the instance. Either &#34;RUNNING&#34; or &#34;TERMINATED&#34;.
+     * Desired status of the instance. Either &#34;RUNNING&#34;, &#34;SUSPENDED&#34; or &#34;TERMINATED&#34;.
      * 
      */
     @Export(name="desiredStatus", refs={String.class}, tree="[0]")
     private Output<String> desiredStatus;
 
     /**
-     * @return Desired status of the instance. Either &#34;RUNNING&#34; or &#34;TERMINATED&#34;.
+     * @return Desired status of the instance. Either &#34;RUNNING&#34;, &#34;SUSPENDED&#34; or &#34;TERMINATED&#34;.
      * 
      */
     public Output<String> desiredStatus() {

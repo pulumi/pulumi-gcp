@@ -6855,6 +6855,29 @@ export namespace bigquery {
         runtimeVersion?: string;
     }
 
+    export interface TableBiglakeConfiguration {
+        /**
+         * The connection specifying the credentials to be used to
+         * read and write to external storage, such as Cloud Storage. The connectionId can
+         * have the form "&lt;project\_id&gt;.&lt;location\_id&gt;.&lt;connection\_id&gt;" or
+         * projects/&lt;project\_id&gt;/locations/&lt;location\_id&gt;/connections/&lt;connection\_id&gt;".
+         */
+        connectionId: string;
+        /**
+         * The file format the table data is stored in.
+         */
+        fileFormat: string;
+        /**
+         * The fully qualified location prefix of the external folder where table data
+         * is stored. The '*' wildcard character is not allowed. The URI should be in the format "gs://bucket/path_to_table/"
+         */
+        storageUri: string;
+        /**
+         * The table format the metadata only snapshots are stored in.
+         */
+        tableFormat: string;
+    }
+
     export interface TableEncryptionConfiguration {
         /**
          * The self link or full name of a key which should be used to
@@ -15626,6 +15649,12 @@ export namespace cloudrun {
          */
         containers: outputs.cloudrun.GetServiceTemplateSpecContainer[];
         /**
+         * Node Selector describes the hardware requirements of the resources.
+         * Use the following node selector keys to configure features on a Revision:
+         *   - 'run.googleapis.com/accelerator' sets the [type of GPU](https://cloud.google.com/run/docs/configuring/services/gpu) required by the Revision to run.
+         */
+        nodeSelector: {[key: string]: string};
+        /**
          * Email address of the IAM service account associated with the revision of the
          * service. The service account represents the identity of the running revision,
          * and determines what permissions the revision has. If not provided, the revision
@@ -16438,6 +16467,12 @@ export namespace cloudrun {
          * Structure is documented below.
          */
         containers: outputs.cloudrun.ServiceTemplateSpecContainer[];
+        /**
+         * Node Selector describes the hardware requirements of the resources.
+         * Use the following node selector keys to configure features on a Revision:
+         * - `run.googleapis.com/accelerator` sets the [type of GPU](https://cloud.google.com/run/docs/configuring/services/gpu) required by the Revision to run.
+         */
+        nodeSelector?: {[key: string]: string};
         /**
          * Email address of the IAM service account associated with the revision of the
          * service. The service account represents the identity of the running revision,
@@ -17528,6 +17563,10 @@ export namespace cloudrunv2 {
          */
         maxInstanceRequestConcurrency: number;
         /**
+         * Node Selector describes the hardware requirements of the resources.
+         */
+        nodeSelectors: outputs.cloudrunv2.GetServiceTemplateNodeSelector[];
+        /**
          * The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
          */
         revision: string;
@@ -17748,7 +17787,7 @@ export namespace cloudrunv2 {
          */
         cpuIdle: boolean;
         /**
-         * Only memory and CPU are supported. Use key 'cpu' for CPU limit and 'memory' for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+         * Only memory, CPU, and nvidia.com/gpu are supported. Use key 'cpu' for CPU limit, 'memory' for memory limit, 'nvidia.com/gpu' for gpu limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
          */
         limits: {[key: string]: string};
         /**
@@ -17846,6 +17885,13 @@ export namespace cloudrunv2 {
          * The name of the Cloud Run v2 Service.
          */
         name: string;
+    }
+
+    export interface GetServiceTemplateNodeSelector {
+        /**
+         * The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/services/gpu for configuring GPU.
+         */
+        accelerator: string;
     }
 
     export interface GetServiceTemplateScaling {
@@ -18651,6 +18697,11 @@ export namespace cloudrunv2 {
          */
         maxInstanceRequestConcurrency: number;
         /**
+         * Node Selector describes the hardware requirements of the resources.
+         * Structure is documented below.
+         */
+        nodeSelector?: outputs.cloudrunv2.ServiceTemplateNodeSelector;
+        /**
          * The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
          */
         revision?: string;
@@ -18884,7 +18935,7 @@ export namespace cloudrunv2 {
          */
         cpuIdle?: boolean;
         /**
-         * Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+         * Only memory, CPU, and nvidia.com/gpu are supported. Use key `cpu` for CPU limit, `memory` for memory limit, `nvidia.com/gpu` for gpu limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
          */
         limits: {[key: string]: string};
         /**
@@ -18988,6 +19039,15 @@ export namespace cloudrunv2 {
         name: string;
     }
 
+    export interface ServiceTemplateNodeSelector {
+        /**
+         * The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/services/gpu for configuring GPU.
+         *
+         * - - -
+         */
+        accelerator: string;
+    }
+
     export interface ServiceTemplateScaling {
         /**
          * Maximum number of serving instances that this resource should have.
@@ -19002,8 +19062,6 @@ export namespace cloudrunv2 {
     export interface ServiceTemplateServiceMesh {
         /**
          * The Mesh resource name. For more information see https://cloud.google.com/service-mesh/docs/reference/network-services/rest/v1/projects.locations.meshes#resource:-mesh.
-         *
-         * - - -
          */
         mesh?: string;
     }
@@ -24251,6 +24309,10 @@ export namespace compute {
          */
         automaticRestart: boolean;
         /**
+         * Beta Time in seconds for host error detection.
+         */
+        hostErrorTimeoutSeconds: number;
+        /**
          * Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
          */
         instanceTerminationAction: string;
@@ -24738,6 +24800,10 @@ export namespace compute {
          */
         automaticRestart: boolean;
         /**
+         * Beta Time in seconds for host error detection.
+         */
+        hostErrorTimeoutSeconds: number;
+        /**
          * Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
          */
         instanceTerminationAction: string;
@@ -25020,6 +25086,225 @@ export namespace compute {
          * Integer port number
          */
         port: number;
+    }
+
+    export interface GetRegionInstanceGroupManagerAllInstancesConfig {
+        /**
+         * The label key-value pairs that you want to patch onto the instance,
+         */
+        labels: {[key: string]: string};
+        /**
+         * The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata,
+         */
+        metadata: {[key: string]: string};
+    }
+
+    export interface GetRegionInstanceGroupManagerAutoHealingPolicy {
+        /**
+         * The health check resource that signals autohealing.
+         */
+        healthCheck: string;
+        /**
+         * The number of seconds that the managed instance group waits before it applies autohealing policies to new instances or recently recreated instances. Between 0 and 3600.
+         */
+        initialDelaySec: number;
+    }
+
+    export interface GetRegionInstanceGroupManagerInstanceLifecyclePolicy {
+        /**
+         * Default behavior for all instance or health check failures.
+         */
+        defaultActionOnFailure: string;
+        /**
+         * Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: YES, NO. If YES and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If NO (default), then updates are applied in accordance with the group's update policy type.
+         */
+        forceUpdateOnRepair: string;
+    }
+
+    export interface GetRegionInstanceGroupManagerNamedPort {
+        /**
+         * The name of the instance group. Either `name` or `selfLink` must be provided.
+         */
+        name: string;
+        /**
+         * The port number.
+         */
+        port: number;
+    }
+
+    export interface GetRegionInstanceGroupManagerParam {
+        /**
+         * Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456.
+         */
+        resourceManagerTags: {[key: string]: string};
+    }
+
+    export interface GetRegionInstanceGroupManagerStandbyPolicy {
+        /**
+         * Specifies the number of seconds that the MIG should wait to suspend or stop a VM after that VM was created. The initial delay gives the initialization script the time to prepare your VM for a quick scale out. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
+         */
+        initialDelaySec: number;
+        /**
+         * Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. The default mode is "MANUAL".
+         */
+        mode: string;
+    }
+
+    export interface GetRegionInstanceGroupManagerStatefulDisk {
+        /**
+         * A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the disk when the VM is deleted, but do not delete the disk. ON_PERMANENT_INSTANCE_DELETION will delete the stateful disk when the VM is permanently deleted from the instance group. The default is NEVER.
+         */
+        deleteRule: string;
+        /**
+         * The device name of the disk to be attached.
+         */
+        deviceName: string;
+    }
+
+    export interface GetRegionInstanceGroupManagerStatefulExternalIp {
+        /**
+         * A value that prescribes what should happen to an associated static Address resource when a VM instance is permanently deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the IP when the VM is deleted, but do not delete the address resource. ON_PERMANENT_INSTANCE_DELETION will delete the stateful address when the VM is permanently deleted from the instance group. The default is NEVER.
+         */
+        deleteRule: string;
+        /**
+         * The network interface name
+         */
+        interfaceName: string;
+    }
+
+    export interface GetRegionInstanceGroupManagerStatefulInternalIp {
+        /**
+         * A value that prescribes what should happen to an associated static Address resource when a VM instance is permanently deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the IP when the VM is deleted, but do not delete the address resource. ON_PERMANENT_INSTANCE_DELETION will delete the stateful address when the VM is permanently deleted from the instance group. The default is NEVER.
+         */
+        deleteRule: string;
+        /**
+         * The network interface name
+         */
+        interfaceName: string;
+    }
+
+    export interface GetRegionInstanceGroupManagerStatus {
+        /**
+         * Status of all-instances configuration on the group.
+         */
+        allInstancesConfigs: outputs.compute.GetRegionInstanceGroupManagerStatusAllInstancesConfig[];
+        /**
+         * A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
+         */
+        isStable: boolean;
+        /**
+         * Stateful status of the given Instance Group Manager.
+         */
+        statefuls: outputs.compute.GetRegionInstanceGroupManagerStatusStateful[];
+        /**
+         * A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
+         */
+        versionTargets: outputs.compute.GetRegionInstanceGroupManagerStatusVersionTarget[];
+    }
+
+    export interface GetRegionInstanceGroupManagerStatusAllInstancesConfig {
+        /**
+         * Current all-instances configuration revision. This value is in RFC3339 text format.
+         */
+        currentRevision: string;
+        /**
+         * A bit indicating whether this configuration has been applied to all managed instances in the group.
+         */
+        effective: boolean;
+    }
+
+    export interface GetRegionInstanceGroupManagerStatusStateful {
+        /**
+         * A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
+         */
+        hasStatefulConfig: boolean;
+        /**
+         * Status of per-instance configs on the instances.
+         */
+        perInstanceConfigs: outputs.compute.GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfig[];
+    }
+
+    export interface GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfig {
+        /**
+         * A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status EFFECTIVE or there are no per-instance-configs.
+         */
+        allEffective: boolean;
+    }
+
+    export interface GetRegionInstanceGroupManagerStatusVersionTarget {
+        /**
+         * A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+         */
+        isReached: boolean;
+    }
+
+    export interface GetRegionInstanceGroupManagerUpdatePolicy {
+        /**
+         * The instance redistribution policy for regional managed instance groups. Valid values are: "PROACTIVE", "NONE". If PROACTIVE (default), the group attempts to maintain an even distribution of VM instances across zones in the region. If NONE, proactive redistribution is disabled.
+         */
+        instanceRedistributionType: string;
+        /**
+         * Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with max_surge_percent. Both cannot be 0
+         */
+        maxSurgeFixed: number;
+        /**
+         * Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with max_surge_fixed.
+         */
+        maxSurgePercent: number;
+        /**
+         * Specifies a fixed number of VM instances. This must be a positive integer.
+         */
+        maxUnavailableFixed: number;
+        /**
+         * Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%.
+         */
+        maxUnavailablePercent: number;
+        /**
+         * Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600].
+         */
+        minReadySec: number;
+        /**
+         * Minimal action to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to update without stopping instances, RESTART to restart existing instances or REPLACE to delete and create new instances from the target template. If you specify a REFRESH, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+         */
+        minimalAction: string;
+        /**
+         * Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+         */
+        mostDisruptiveAllowedAction: string;
+        /**
+         * The instance replacement method for regional managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set maxUnavailableFixed or maxUnavailablePercent to be greater than 0.
+         */
+        replacementMethod: string;
+        /**
+         * The type of update process. You can specify either PROACTIVE so that the instance group manager proactively executes actions in order to bring instances to their target versions or OPPORTUNISTIC so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
+         */
+        type: string;
+    }
+
+    export interface GetRegionInstanceGroupManagerVersion {
+        /**
+         * The full URL to an instance template from which all new instances of this version will be created.
+         */
+        instanceTemplate: string;
+        /**
+         * The name of the instance group. Either `name` or `selfLink` must be provided.
+         */
+        name: string;
+        /**
+         * The number of instances calculated as a fixed number or a percentage depending on the settings.
+         */
+        targetSizes: outputs.compute.GetRegionInstanceGroupManagerVersionTargetSize[];
+    }
+
+    export interface GetRegionInstanceGroupManagerVersionTargetSize {
+        /**
+         * The number of instances which are managed for this version. Conflicts with percent.
+         */
+        fixed: number;
+        /**
+         * The number of instances (calculated as percentage) which are managed for this version. Conflicts with fixed. Note that when using percent, rounding will be in favor of explicitly set targetSize values; a managed instance group with 2 instances and 2 versions, one of which has a target_size.percent of 60 will create 2 instances of that version.
+         */
+        percent: number;
     }
 
     export interface GetRegionInstanceTemplateAdvancedMachineFeature {
@@ -25368,6 +25653,10 @@ export namespace compute {
          * terminated by a user). This defaults to true.
          */
         automaticRestart: boolean;
+        /**
+         * Beta Time in seconds for host error detection.
+         */
+        hostErrorTimeoutSeconds: number;
         /**
          * Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
          */
@@ -27586,6 +27875,10 @@ export namespace compute {
          */
         automaticRestart: boolean;
         /**
+         * Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+         */
+        hostErrorTimeoutSeconds: number;
+        /**
          * Specifies the action GCE should take when SPOT VM is preempted.
          */
         instanceTerminationAction: string;
@@ -28027,6 +28320,10 @@ export namespace compute {
          * Specifies if the instance should be restarted if it was terminated by Compute Engine (not a user).
          */
         automaticRestart: boolean;
+        /**
+         * Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+         */
+        hostErrorTimeoutSeconds: number;
         /**
          * Specifies the action GCE should take when SPOT VM is preempted.
          */
@@ -28639,6 +28936,10 @@ export namespace compute {
          */
         automaticRestart?: boolean;
         /**
+         * Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+         */
+        hostErrorTimeoutSeconds?: number;
+        /**
          * Describe the type of termination action for VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
          */
         instanceTerminationAction?: string;
@@ -29172,6 +29473,10 @@ export namespace compute {
          */
         automaticRestart?: boolean;
         /**
+         * Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+         */
+        hostErrorTimeoutSeconds?: number;
+        /**
          * Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
          */
         instanceTerminationAction?: string;
@@ -29406,6 +29711,14 @@ export namespace compute {
 
     export interface InterconnectMacsec {
         /**
+         * If set to true, the Interconnect connection is configured with a should-secure
+         * MACsec security policy, that allows the Google router to fallback to cleartext
+         * traffic if the MKA session cannot be established. By default, the Interconnect
+         * connection is configured with a must-secure security policy that drops all traffic
+         * if the MKA session cannot be established with your router.
+         */
+        failOpen?: boolean;
+        /**
          * A keychain placeholder describing a set of named key objects along with their
          * start times. A MACsec CKN/CAK is generated for each key in the key chain.
          * Google router automatically picks the key with the most recent startTime when establishing
@@ -29417,11 +29730,16 @@ export namespace compute {
 
     export interface InterconnectMacsecPreSharedKey {
         /**
+         * (Optional, Deprecated)
          * If set to true, the Interconnect connection is configured with a should-secure
          * MACsec security policy, that allows the Google router to fallback to cleartext
          * traffic if the MKA session cannot be established. By default, the Interconnect
          * connection is configured with a must-secure security policy that drops all traffic
          * if the MKA session cannot be established with your router.
+         *
+         * > **Warning:** `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead.
+         *
+         * @deprecated `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead.
          */
         failOpen?: boolean;
         /**
@@ -32198,6 +32516,10 @@ export namespace compute {
          */
         automaticRestart?: boolean;
         /**
+         * Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+         */
+        hostErrorTimeoutSeconds?: number;
+        /**
          * Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
          */
         instanceTerminationAction?: string;
@@ -32519,6 +32841,429 @@ export namespace compute {
         name: string;
         /**
          * [Output Only] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
+         */
+        state: string;
+    }
+
+    export interface RegionNetworkFirewallPolicyWithRulesPredefinedRule {
+        /**
+         * (Output)
+         * The Action to perform when the client connection triggers the rule. Can currently be either
+         * "allow", "deny", "applySecurityProfileGroup" or "gotoNext".
+         */
+        action: string;
+        /**
+         * (Output)
+         * A description of the rule.
+         */
+        description: string;
+        /**
+         * (Output)
+         * The direction in which this rule applies. If unspecified an INGRESS rule is created.
+         */
+        direction: string;
+        /**
+         * (Output)
+         * Denotes whether the firewall policy rule is disabled. When set to true,
+         * the firewall policy rule is not enforced and traffic behaves as if it did
+         * not exist. If this is unspecified, the firewall policy rule will be
+         * enabled.
+         */
+        disabled: boolean;
+        /**
+         * (Output)
+         * Denotes whether to enable logging for a particular rule.
+         * If logging is enabled, logs will be exported to the
+         * configured export destination in Stackdriver.
+         */
+        enableLogging: boolean;
+        /**
+         * (Output)
+         * A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+         * Structure is documented below.
+         */
+        matches: outputs.compute.RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatch[];
+        /**
+         * (Output)
+         * An integer indicating the priority of a rule in the list. The priority must be a value
+         * between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
+         * highest priority and 2147483647 is the lowest priority.
+         */
+        priority: number;
+        /**
+         * (Output)
+         * An optional name for the rule. This field is not a unique identifier
+         * and can be updated.
+         */
+        ruleName: string;
+        /**
+         * (Output)
+         * A fully-qualified URL of a SecurityProfile resource instance.
+         * Example:
+         * https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+         * Must be specified if action is 'apply_security_profile_group'.
+         */
+        securityProfileGroup: string;
+        /**
+         * (Output)
+         * A list of secure tags that controls which instances the firewall rule
+         * applies to. If <code>targetSecureTag</code> are specified, then the
+         * firewall rule applies only to instances in the VPC network that have one
+         * of those EFFECTIVE secure tags, if all the targetSecureTag are in
+         * INEFFECTIVE state, then this rule will be ignored.
+         * <code>targetSecureTag</code> may not be set at the same time as
+         * <code>targetServiceAccounts</code>.
+         * If neither <code>targetServiceAccounts</code> nor
+         * <code>targetSecureTag</code> are specified, the firewall rule applies
+         * to all instances on the specified network.
+         * Maximum number of target label tags allowed is 256.
+         * Structure is documented below.
+         */
+        targetSecureTags: outputs.compute.RegionNetworkFirewallPolicyWithRulesPredefinedRuleTargetSecureTag[];
+        /**
+         * (Output)
+         * A list of service accounts indicating the sets of
+         * instances that are applied with this rule.
+         */
+        targetServiceAccounts: string[];
+        /**
+         * (Output)
+         * Boolean flag indicating if the traffic should be TLS decrypted.
+         * It can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
+         */
+        tlsInspect: boolean;
+    }
+
+    export interface RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatch {
+        /**
+         * Address groups which should be matched against the traffic destination.
+         * Maximum number of destination address groups is 10.
+         */
+        destAddressGroups: string[];
+        /**
+         * Fully Qualified Domain Name (FQDN) which should be matched against
+         * traffic destination. Maximum number of destination fqdn allowed is 100.
+         */
+        destFqdns: string[];
+        /**
+         * Destination IP address range in CIDR format. Required for
+         * EGRESS rules.
+         */
+        destIpRanges: string[];
+        /**
+         * Region codes whose IP addresses will be used to match for destination
+         * of traffic. Should be specified as 2 letter country code defined as per
+         * ISO 3166 alpha-2 country codes. ex."US"
+         * Maximum number of destination region codes allowed is 5000.
+         */
+        destRegionCodes: string[];
+        /**
+         * Names of Network Threat Intelligence lists.
+         * The IPs in these lists will be matched against traffic destination.
+         */
+        destThreatIntelligences: string[];
+        /**
+         * Pairs of IP protocols and ports that the rule should match.
+         * Structure is documented below.
+         */
+        layer4Configs: outputs.compute.RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchLayer4Config[];
+        /**
+         * Address groups which should be matched against the traffic source.
+         * Maximum number of source address groups is 10.
+         */
+        srcAddressGroups: string[];
+        /**
+         * Fully Qualified Domain Name (FQDN) which should be matched against
+         * traffic source. Maximum number of source fqdn allowed is 100.
+         */
+        srcFqdns: string[];
+        /**
+         * Source IP address range in CIDR format. Required for
+         * INGRESS rules.
+         */
+        srcIpRanges: string[];
+        /**
+         * Region codes whose IP addresses will be used to match for source
+         * of traffic. Should be specified as 2 letter country code defined as per
+         * ISO 3166 alpha-2 country codes. ex."US"
+         * Maximum number of source region codes allowed is 5000.
+         */
+        srcRegionCodes: string[];
+        /**
+         * List of secure tag values, which should be matched at the source
+         * of the traffic.
+         * For INGRESS rule, if all the <code>srcSecureTag</code> are INEFFECTIVE,
+         * and there is no <code>srcIpRange</code>, this rule will be ignored.
+         * Maximum number of source tag values allowed is 256.
+         * Structure is documented below.
+         *
+         *
+         * <a name="nestedLayer4Config"></a>The `layer4Config` block supports:
+         */
+        srcSecureTags: outputs.compute.RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTag[];
+        /**
+         * Names of Network Threat Intelligence lists.
+         * The IPs in these lists will be matched against traffic source.
+         */
+        srcThreatIntelligences: string[];
+    }
+
+    export interface RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchLayer4Config {
+        /**
+         * (Output)
+         * The IP protocol to which this rule applies. The protocol
+         * type is required when creating a firewall rule.
+         * This value can either be one of the following well
+         * known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp),
+         * or the IP protocol number.
+         */
+        ipProtocol: string;
+        /**
+         * (Output)
+         * An optional list of ports to which this rule applies. This field
+         * is only applicable for UDP or TCP protocol. Each entry must be
+         * either an integer or a range. If not specified, this rule
+         * applies to connections through any port.
+         * Example inputs include: ["22"], ["80","443"], and
+         * ["12345-12349"].
+         */
+        ports: string[];
+    }
+
+    export interface RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTag {
+        /**
+         * Name of the secure tag, created with TagManager's TagValue API.
+         * @pattern tagValues/[0-9]+
+         */
+        name: string;
+        /**
+         * (Output)
+         * [Output Only] State of the secure tag, either `EFFECTIVE` or
+         * `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
+         * or its network is deleted.
+         */
+        state: string;
+    }
+
+    export interface RegionNetworkFirewallPolicyWithRulesPredefinedRuleTargetSecureTag {
+        /**
+         * Name of the secure tag, created with TagManager's TagValue API.
+         * @pattern tagValues/[0-9]+
+         */
+        name: string;
+        /**
+         * (Output)
+         * [Output Only] State of the secure tag, either `EFFECTIVE` or
+         * `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
+         * or its network is deleted.
+         *
+         * - - -
+         */
+        state: string;
+    }
+
+    export interface RegionNetworkFirewallPolicyWithRulesRule {
+        /**
+         * The Action to perform when the client connection triggers the rule. Can currently be either
+         * "allow", "deny", "applySecurityProfileGroup" or "gotoNext".
+         */
+        action: string;
+        /**
+         * A description of the rule.
+         */
+        description?: string;
+        /**
+         * The direction in which this rule applies. If unspecified an INGRESS rule is created.
+         * Possible values are: `INGRESS`, `EGRESS`.
+         */
+        direction?: string;
+        /**
+         * Denotes whether the firewall policy rule is disabled. When set to true,
+         * the firewall policy rule is not enforced and traffic behaves as if it did
+         * not exist. If this is unspecified, the firewall policy rule will be
+         * enabled.
+         */
+        disabled?: boolean;
+        /**
+         * Denotes whether to enable logging for a particular rule.
+         * If logging is enabled, logs will be exported to the
+         * configured export destination in Stackdriver.
+         */
+        enableLogging?: boolean;
+        /**
+         * A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+         * Structure is documented below.
+         */
+        match: outputs.compute.RegionNetworkFirewallPolicyWithRulesRuleMatch;
+        /**
+         * An integer indicating the priority of a rule in the list. The priority must be a value
+         * between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
+         * highest priority and 2147483647 is the lowest priority.
+         */
+        priority: number;
+        /**
+         * An optional name for the rule. This field is not a unique identifier
+         * and can be updated.
+         */
+        ruleName?: string;
+        /**
+         * A fully-qualified URL of a SecurityProfile resource instance.
+         * Example:
+         * https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+         * Must be specified if action is 'apply_security_profile_group'.
+         */
+        securityProfileGroup?: string;
+        /**
+         * A list of secure tags that controls which instances the firewall rule
+         * applies to. If <code>targetSecureTag</code> are specified, then the
+         * firewall rule applies only to instances in the VPC network that have one
+         * of those EFFECTIVE secure tags, if all the targetSecureTag are in
+         * INEFFECTIVE state, then this rule will be ignored.
+         * <code>targetSecureTag</code> may not be set at the same time as
+         * <code>targetServiceAccounts</code>.
+         * If neither <code>targetServiceAccounts</code> nor
+         * <code>targetSecureTag</code> are specified, the firewall rule applies
+         * to all instances on the specified network.
+         * Maximum number of target label tags allowed is 256.
+         * Structure is documented below.
+         */
+        targetSecureTags?: outputs.compute.RegionNetworkFirewallPolicyWithRulesRuleTargetSecureTag[];
+        /**
+         * A list of service accounts indicating the sets of
+         * instances that are applied with this rule.
+         */
+        targetServiceAccounts?: string[];
+        /**
+         * Boolean flag indicating if the traffic should be TLS decrypted.
+         * It can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
+         */
+        tlsInspect?: boolean;
+    }
+
+    export interface RegionNetworkFirewallPolicyWithRulesRuleMatch {
+        /**
+         * Address groups which should be matched against the traffic destination.
+         * Maximum number of destination address groups is 10.
+         */
+        destAddressGroups?: string[];
+        /**
+         * Fully Qualified Domain Name (FQDN) which should be matched against
+         * traffic destination. Maximum number of destination fqdn allowed is 100.
+         */
+        destFqdns?: string[];
+        /**
+         * Destination IP address range in CIDR format. Required for
+         * EGRESS rules.
+         */
+        destIpRanges?: string[];
+        /**
+         * Region codes whose IP addresses will be used to match for destination
+         * of traffic. Should be specified as 2 letter country code defined as per
+         * ISO 3166 alpha-2 country codes. ex."US"
+         * Maximum number of destination region codes allowed is 5000.
+         */
+        destRegionCodes?: string[];
+        /**
+         * Names of Network Threat Intelligence lists.
+         * The IPs in these lists will be matched against traffic destination.
+         */
+        destThreatIntelligences?: string[];
+        /**
+         * Pairs of IP protocols and ports that the rule should match.
+         * Structure is documented below.
+         */
+        layer4Configs: outputs.compute.RegionNetworkFirewallPolicyWithRulesRuleMatchLayer4Config[];
+        /**
+         * Address groups which should be matched against the traffic source.
+         * Maximum number of source address groups is 10.
+         */
+        srcAddressGroups?: string[];
+        /**
+         * Fully Qualified Domain Name (FQDN) which should be matched against
+         * traffic source. Maximum number of source fqdn allowed is 100.
+         */
+        srcFqdns?: string[];
+        /**
+         * Source IP address range in CIDR format. Required for
+         * INGRESS rules.
+         */
+        srcIpRanges?: string[];
+        /**
+         * Region codes whose IP addresses will be used to match for source
+         * of traffic. Should be specified as 2 letter country code defined as per
+         * ISO 3166 alpha-2 country codes. ex."US"
+         * Maximum number of source region codes allowed is 5000.
+         */
+        srcRegionCodes?: string[];
+        /**
+         * List of secure tag values, which should be matched at the source
+         * of the traffic.
+         * For INGRESS rule, if all the <code>srcSecureTag</code> are INEFFECTIVE,
+         * and there is no <code>srcIpRange</code>, this rule will be ignored.
+         * Maximum number of source tag values allowed is 256.
+         * Structure is documented below.
+         *
+         *
+         * <a name="nestedLayer4Config"></a>The `layer4Config` block supports:
+         */
+        srcSecureTags?: outputs.compute.RegionNetworkFirewallPolicyWithRulesRuleMatchSrcSecureTag[];
+        /**
+         * Names of Network Threat Intelligence lists.
+         * The IPs in these lists will be matched against traffic source.
+         */
+        srcThreatIntelligences?: string[];
+    }
+
+    export interface RegionNetworkFirewallPolicyWithRulesRuleMatchLayer4Config {
+        /**
+         * (Output)
+         * The IP protocol to which this rule applies. The protocol
+         * type is required when creating a firewall rule.
+         * This value can either be one of the following well
+         * known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp),
+         * or the IP protocol number.
+         */
+        ipProtocol: string;
+        /**
+         * (Output)
+         * An optional list of ports to which this rule applies. This field
+         * is only applicable for UDP or TCP protocol. Each entry must be
+         * either an integer or a range. If not specified, this rule
+         * applies to connections through any port.
+         * Example inputs include: ["22"], ["80","443"], and
+         * ["12345-12349"].
+         */
+        ports?: string[];
+    }
+
+    export interface RegionNetworkFirewallPolicyWithRulesRuleMatchSrcSecureTag {
+        /**
+         * Name of the secure tag, created with TagManager's TagValue API.
+         * @pattern tagValues/[0-9]+
+         */
+        name?: string;
+        /**
+         * (Output)
+         * [Output Only] State of the secure tag, either `EFFECTIVE` or
+         * `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
+         * or its network is deleted.
+         */
+        state: string;
+    }
+
+    export interface RegionNetworkFirewallPolicyWithRulesRuleTargetSecureTag {
+        /**
+         * Name of the secure tag, created with TagManager's TagValue API.
+         * @pattern tagValues/[0-9]+
+         */
+        name?: string;
+        /**
+         * (Output)
+         * [Output Only] State of the secure tag, either `EFFECTIVE` or
+         * `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
+         * or its network is deleted.
+         *
+         * - - -
          */
         state: string;
     }
@@ -40522,12 +41267,27 @@ export namespace container {
          */
         cgroupMode: string;
         /**
+         * Amounts for 2M and 1G hugepages. Structure is documented below.
+         */
+        hugepagesConfig?: outputs.container.ClusterNodeConfigLinuxNodeConfigHugepagesConfig;
+        /**
          * The Linux kernel parameters to be applied to the nodes
          * and all pods running on the nodes. Specified as a map from the key, such as
          * `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
          * Note that validations happen all server side. All attributes are optional.
          */
         sysctls?: {[key: string]: string};
+    }
+
+    export interface ClusterNodeConfigLinuxNodeConfigHugepagesConfig {
+        /**
+         * Amount of 1G hugepages.
+         */
+        hugepageSize1g?: number;
+        /**
+         * Amount of 2M hugepages.
+         */
+        hugepageSize2m?: number;
     }
 
     export interface ClusterNodeConfigLocalNvmeSsdBlockConfig {
@@ -41371,12 +42131,27 @@ export namespace container {
          */
         cgroupMode: string;
         /**
+         * Amounts for 2M and 1G hugepages. Structure is documented below.
+         */
+        hugepagesConfig?: outputs.container.ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig;
+        /**
          * The Linux kernel parameters to be applied to the nodes
          * and all pods running on the nodes. Specified as a map from the key, such as
          * `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
          * Note that validations happen all server side. All attributes are optional.
          */
         sysctls?: {[key: string]: string};
+    }
+
+    export interface ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig {
+        /**
+         * Amount of 1G hugepages.
+         */
+        hugepageSize1g?: number;
+        /**
+         * Amount of 2M hugepages.
+         */
+        hugepageSize2m?: number;
     }
 
     export interface ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig {
@@ -41797,7 +42572,7 @@ export namespace container {
          */
         gcePersistentDiskCsiDriverConfigs: outputs.container.GetClusterAddonsConfigGcePersistentDiskCsiDriverConfig[];
         /**
-         * The status of the Filestore CSI driver addon, which allows the usage of filestore instance as volumes. Defaults to disabled; set enabled = true to enable.
+         * The status of the Filestore CSI driver addon, which allows the usage of filestore instance as volumes. Defaults to disabled for Standard clusters; set enabled = true to enable. It is enabled by default for Autopilot clusters; set enabled = true to enable it explicitly.
          */
         gcpFilestoreCsiDriverConfigs: outputs.container.GetClusterAddonsConfigGcpFilestoreCsiDriverConfig[];
         /**
@@ -42745,9 +43520,24 @@ export namespace container {
          */
         cgroupMode: string;
         /**
+         * Amounts for 2M and 1G hugepages.
+         */
+        hugepagesConfigs: outputs.container.GetClusterNodeConfigLinuxNodeConfigHugepagesConfig[];
+        /**
          * The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
          */
         sysctls: {[key: string]: string};
+    }
+
+    export interface GetClusterNodeConfigLinuxNodeConfigHugepagesConfig {
+        /**
+         * Amount of 1G hugepages.
+         */
+        hugepageSize1g: number;
+        /**
+         * Amount of 2M hugepages.
+         */
+        hugepageSize2m: number;
     }
 
     export interface GetClusterNodeConfigLocalNvmeSsdBlockConfig {
@@ -43461,9 +44251,24 @@ export namespace container {
          */
         cgroupMode: string;
         /**
+         * Amounts for 2M and 1G hugepages.
+         */
+        hugepagesConfigs: outputs.container.GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig[];
+        /**
          * The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
          */
         sysctls: {[key: string]: string};
+    }
+
+    export interface GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig {
+        /**
+         * Amount of 1G hugepages.
+         */
+        hugepageSize1g: number;
+        /**
+         * Amount of 2M hugepages.
+         */
+        hugepageSize2m: number;
     }
 
     export interface GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig {
@@ -44291,9 +45096,24 @@ export namespace container {
          */
         cgroupMode: string;
         /**
+         * Amounts for 2M and 1G hugepages.
+         */
+        hugepagesConfig?: outputs.container.NodePoolNodeConfigLinuxNodeConfigHugepagesConfig;
+        /**
          * The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
          */
         sysctls?: {[key: string]: string};
+    }
+
+    export interface NodePoolNodeConfigLinuxNodeConfigHugepagesConfig {
+        /**
+         * Amount of 1G hugepages.
+         */
+        hugepageSize1g?: number;
+        /**
+         * Amount of 2M hugepages.
+         */
+        hugepageSize2m?: number;
     }
 
     export interface NodePoolNodeConfigLocalNvmeSsdBlockConfig {
@@ -68692,6 +69512,39 @@ export namespace looker {
         clientSecret: string;
     }
 
+    export interface InstancePscConfig {
+        /**
+         * List of VPCs that are allowed ingress into the Looker instance.
+         */
+        allowedVpcs?: string[];
+        /**
+         * (Output)
+         * URI of the Looker service attachment.
+         */
+        lookerServiceAttachmentUri: string;
+        /**
+         * List of egress service attachment configurations.
+         * Structure is documented below.
+         */
+        serviceAttachments?: outputs.looker.InstancePscConfigServiceAttachment[];
+    }
+
+    export interface InstancePscConfigServiceAttachment {
+        /**
+         * (Output)
+         * Status of the service attachment connection.
+         */
+        connectionStatus: string;
+        /**
+         * Fully qualified domain name that will be used in the private DNS record created for the service attachment.
+         */
+        localFqdn?: string;
+        /**
+         * URI of the service attachment to connect to.
+         */
+        targetServiceAttachmentUri?: string;
+    }
+
     export interface InstanceUserMetadata {
         /**
          * Number of additional Developer Users to allocate to the Looker Instance.
@@ -71196,6 +72049,11 @@ export namespace networkconnectivity {
 
     export interface SpokeLinkedInterconnectAttachments {
         /**
+         * IP ranges allowed to be included during import from hub (does not control transit connectivity).
+         * The only allowed value for now is "ALL_IPV4_RANGES".
+         */
+        includeImportRanges?: string[];
+        /**
          * A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
          */
         siteToSiteDataTransfer: boolean;
@@ -71206,6 +72064,11 @@ export namespace networkconnectivity {
     }
 
     export interface SpokeLinkedRouterApplianceInstances {
+        /**
+         * IP ranges allowed to be included during import from hub (does not control transit connectivity).
+         * The only allowed value for now is "ALL_IPV4_RANGES".
+         */
+        includeImportRanges?: string[];
         /**
          * The list of router appliance instances
          * Structure is documented below.
@@ -71244,6 +72107,11 @@ export namespace networkconnectivity {
     }
 
     export interface SpokeLinkedVpnTunnels {
+        /**
+         * IP ranges allowed to be included during import from hub (does not control transit connectivity).
+         * The only allowed value for now is "ALL_IPV4_RANGES".
+         */
+        includeImportRanges?: string[];
         /**
          * A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
          */
@@ -76057,6 +76925,124 @@ export namespace privilegedaccessmanager {
     export interface EntitlementRequesterJustificationConfigUnstructured {
     }
 
+    export interface GetEntitlementAdditionalNotificationTarget {
+        /**
+         * Optional. Additional email addresses to be notified when a principal(requester) is granted access.
+         */
+        adminEmailRecipients: string[];
+        /**
+         * Optional. Additional email address to be notified about an eligible entitlement.
+         */
+        requesterEmailRecipients: string[];
+    }
+
+    export interface GetEntitlementApprovalWorkflow {
+        /**
+         * A manual approval workflow where users who are designated as approvers need to call the ApproveGrant/DenyGrant APIs for an Grant.
+         * The workflow can consist of multiple serial steps where each step defines who can act as Approver in that step and how many of those users should approve before the workflow moves to the next step.
+         * This can be used to create approval workflows such as
+         * * Require an approval from any user in a group G.
+         * * Require an approval from any k number of users from a Group G.
+         * * Require an approval from any user in a group G and then from a user U. etc.
+         * A single user might be part of 'approvers' ACL for multiple steps in this workflow but they can only approve once and that approval will only be considered to satisfy the approval step at which it was granted.
+         */
+        manualApprovals: outputs.privilegedaccessmanager.GetEntitlementApprovalWorkflowManualApproval[];
+    }
+
+    export interface GetEntitlementApprovalWorkflowManualApproval {
+        /**
+         * Optional. Do the approvers need to provide a justification for their actions?
+         */
+        requireApproverJustification: boolean;
+        /**
+         * List of approval steps in this workflow. These steps would be followed in the specified order sequentially.  1 step is supported for now.
+         */
+        steps: outputs.privilegedaccessmanager.GetEntitlementApprovalWorkflowManualApprovalStep[];
+    }
+
+    export interface GetEntitlementApprovalWorkflowManualApprovalStep {
+        /**
+         * How many users from the above list need to approve.
+         * If there are not enough distinct users in the list above then the workflow
+         * will indefinitely block. Should always be greater than 0. Currently 1 is the only
+         * supported value.
+         */
+        approvalsNeeded: number;
+        /**
+         * Optional. Additional email addresses to be notified when a grant is pending approval.
+         */
+        approverEmailRecipients: string[];
+        /**
+         * The potential set of approvers in this step. This list should contain at only one entry.
+         */
+        approvers: outputs.privilegedaccessmanager.GetEntitlementApprovalWorkflowManualApprovalStepApprover[];
+    }
+
+    export interface GetEntitlementApprovalWorkflowManualApprovalStepApprover {
+        /**
+         * Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at: https://cloud.google.com/iam/docs/principal-identifiers#v1
+         */
+        principals: string[];
+    }
+
+    export interface GetEntitlementEligibleUser {
+        /**
+         * Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at "https://cloud.google.com/iam/docs/principal-identifiers#v1"
+         */
+        principals: string[];
+    }
+
+    export interface GetEntitlementPrivilegedAccess {
+        /**
+         * GcpIamAccess represents IAM based access control on a GCP resource. Refer to https://cloud.google.com/iam/docs to understand more about IAM.
+         */
+        gcpIamAccesses: outputs.privilegedaccessmanager.GetEntitlementPrivilegedAccessGcpIamAccess[];
+    }
+
+    export interface GetEntitlementPrivilegedAccessGcpIamAccess {
+        /**
+         * Name of the resource.
+         */
+        resource: string;
+        /**
+         * The type of this resource.
+         */
+        resourceType: string;
+        /**
+         * Role bindings to be created on successful grant.
+         */
+        roleBindings: outputs.privilegedaccessmanager.GetEntitlementPrivilegedAccessGcpIamAccessRoleBinding[];
+    }
+
+    export interface GetEntitlementPrivilegedAccessGcpIamAccessRoleBinding {
+        /**
+         * The expression field of the IAM condition to be associated with the role. If specified, a user with an active grant for this entitlement would be able to access the resource only if this condition evaluates to true for their request.
+         * https://cloud.google.com/iam/docs/conditions-overview#attributes.
+         */
+        conditionExpression: string;
+        /**
+         * IAM role to be granted. https://cloud.google.com/iam/docs/roles-overview.
+         */
+        role: string;
+    }
+
+    export interface GetEntitlementRequesterJustificationConfig {
+        /**
+         * The justification is not mandatory but can be provided in any of the supported formats.
+         */
+        notMandatories: outputs.privilegedaccessmanager.GetEntitlementRequesterJustificationConfigNotMandatory[];
+        /**
+         * The requester has to provide a justification in the form of free flowing text.
+         */
+        unstructureds: outputs.privilegedaccessmanager.GetEntitlementRequesterJustificationConfigUnstructured[];
+    }
+
+    export interface GetEntitlementRequesterJustificationConfigNotMandatory {
+    }
+
+    export interface GetEntitlementRequesterJustificationConfigUnstructured {
+    }
+
 }
 
 export namespace projects {
@@ -77669,6 +78655,101 @@ export namespace secretmanager {
          * The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
          */
         kmsKeyVersionName: string;
+    }
+
+    export interface GetRegionalSecretsSecret {
+        /**
+         * Custom metadata about the regional secret.
+         */
+        annotations: {[key: string]: string};
+        /**
+         * The time at which the regional secret was created.
+         */
+        createTime: string;
+        /**
+         * Customer Managed Encryption for the regional secret.
+         * Structure is documented below.
+         */
+        customerManagedEncryptions: outputs.secretmanager.GetRegionalSecretsSecretCustomerManagedEncryption[];
+        effectiveAnnotations: {[key: string]: string};
+        effectiveLabels: {[key: string]: string};
+        /**
+         * Timestamp in UTC when the regional secret is scheduled to expire.
+         */
+        expireTime: string;
+        /**
+         * The labels assigned to this regional secret.
+         */
+        labels: {[key: string]: string};
+        /**
+         * The location of the regional secret.
+         */
+        location: string;
+        /**
+         * The resource name of the Pub/Sub topic that will be published to.
+         */
+        name: string;
+        /**
+         * The ID of the project.
+         */
+        project: string;
+        /**
+         * The combination of labels configured directly on the resource
+         *  and default labels configured on the provider.
+         */
+        pulumiLabels: {[key: string]: string};
+        /**
+         * The rotation time and period for a regional secret.
+         * Structure is documented below.
+         */
+        rotations: outputs.secretmanager.GetRegionalSecretsSecretRotation[];
+        /**
+         * The unique name of the resource.
+         */
+        secretId: string;
+        /**
+         * A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the regional secret or its versions.
+         * Structure is documented below.
+         */
+        topics: outputs.secretmanager.GetRegionalSecretsSecretTopic[];
+        /**
+         * The TTL for the regional secret. A duration in seconds with up to nine fractional digits,
+         * terminated by 's'. Example: "3.5s". Only one of 'ttl' or 'expire_time' can be provided.
+         */
+        ttl: string;
+        /**
+         * Mapping from version alias to version name.
+         */
+        versionAliases: {[key: string]: string};
+        /**
+         * The version destroy ttl for the regional secret version.
+         */
+        versionDestroyTtl: string;
+    }
+
+    export interface GetRegionalSecretsSecretCustomerManagedEncryption {
+        /**
+         * Describes the Cloud KMS encryption key that will be used to protect destination secret.
+         */
+        kmsKeyName: string;
+    }
+
+    export interface GetRegionalSecretsSecretRotation {
+        /**
+         * Timestamp in UTC at which the secret is scheduled to rotate.
+         */
+        nextRotationTime: string;
+        /**
+         * The Duration between rotation notifications.
+         */
+        rotationPeriod: string;
+    }
+
+    export interface GetRegionalSecretsSecretTopic {
+        /**
+         * The resource name of the Pub/Sub topic that will be published to.
+         */
+        name: string;
     }
 
     export interface GetSecretReplication {

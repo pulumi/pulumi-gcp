@@ -6,7 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Apigee NAT (network address translation) address. A NAT address is a static external IP address used for Internet egress traffic. This is not avaible for Apigee hybrid.
- * Apigee NAT addresses are not automatically activated because they might require explicit allow entries on the target systems first. See https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.instances.natAddresses/activate
  *
  * To get more information about NatAddress, see:
  *
@@ -79,6 +78,70 @@ import * as utilities from "../utilities";
  *     instanceId: apigeeInstance.id,
  * });
  * ```
+ * ### Apigee Nat Address With Activate
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const current = gcp.organizations.getClientConfig({});
+ * const apigeeNetwork = new gcp.compute.Network("apigee_network", {name: "apigee-network"});
+ * const apigeeRange = new gcp.compute.GlobalAddress("apigee_range", {
+ *     name: "apigee-range",
+ *     purpose: "VPC_PEERING",
+ *     addressType: "INTERNAL",
+ *     prefixLength: 21,
+ *     network: apigeeNetwork.id,
+ * });
+ * const apigeeVpcConnection = new gcp.servicenetworking.Connection("apigee_vpc_connection", {
+ *     network: apigeeNetwork.id,
+ *     service: "servicenetworking.googleapis.com",
+ *     reservedPeeringRanges: [apigeeRange.name],
+ * });
+ * const apigeeKeyring = new gcp.kms.KeyRing("apigee_keyring", {
+ *     name: "apigee-keyring",
+ *     location: "us-central1",
+ * });
+ * const apigeeKey = new gcp.kms.CryptoKey("apigee_key", {
+ *     name: "apigee-key",
+ *     keyRing: apigeeKeyring.id,
+ * });
+ * const apigeeSa = new gcp.projects.ServiceIdentity("apigee_sa", {
+ *     project: project.projectId,
+ *     service: apigee.service,
+ * });
+ * const apigeeSaKeyuser = new gcp.kms.CryptoKeyIAMMember("apigee_sa_keyuser", {
+ *     cryptoKeyId: apigeeKey.id,
+ *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+ *     member: apigeeSa.member,
+ * });
+ * const apigeeOrg = new gcp.apigee.Organization("apigee_org", {
+ *     analyticsRegion: "us-central1",
+ *     displayName: "apigee-org",
+ *     description: "Terraform-provisioned Apigee Org.",
+ *     projectId: current.then(current => current.project),
+ *     authorizedNetwork: apigeeNetwork.id,
+ *     runtimeDatabaseEncryptionKeyName: apigeeKey.id,
+ * }, {
+ *     dependsOn: [
+ *         apigeeVpcConnection,
+ *         apigeeSaKeyuser,
+ *     ],
+ * });
+ * const apigeeInstance = new gcp.apigee.Instance("apigee_instance", {
+ *     name: "apigee-instance",
+ *     location: "us-central1",
+ *     description: "Terraform-managed Apigee Runtime Instance",
+ *     displayName: "apigee-instance",
+ *     orgId: apigeeOrg.id,
+ *     diskEncryptionKeyName: apigeeKey.id,
+ * });
+ * const apigee_nat = new gcp.apigee.NatAddress("apigee-nat", {
+ *     name: "my-nat-address",
+ *     activate: true,
+ *     instanceId: apigeeInstance.id,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -127,6 +190,10 @@ export class NatAddress extends pulumi.CustomResource {
     }
 
     /**
+     * Flag that specifies whether the reserved NAT address should be activate.
+     */
+    public readonly activate!: pulumi.Output<boolean | undefined>;
+    /**
      * The Apigee instance associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
      *
@@ -160,6 +227,7 @@ export class NatAddress extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NatAddressState | undefined;
+            resourceInputs["activate"] = state ? state.activate : undefined;
             resourceInputs["instanceId"] = state ? state.instanceId : undefined;
             resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -169,6 +237,7 @@ export class NatAddress extends pulumi.CustomResource {
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
+            resourceInputs["activate"] = args ? args.activate : undefined;
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["ipAddress"] = undefined /*out*/;
@@ -183,6 +252,10 @@ export class NatAddress extends pulumi.CustomResource {
  * Input properties used for looking up and filtering NatAddress resources.
  */
 export interface NatAddressState {
+    /**
+     * Flag that specifies whether the reserved NAT address should be activate.
+     */
+    activate?: pulumi.Input<boolean>;
     /**
      * The Apigee instance associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
@@ -209,6 +282,10 @@ export interface NatAddressState {
  * The set of arguments for constructing a NatAddress resource.
  */
 export interface NatAddressArgs {
+    /**
+     * Flag that specifies whether the reserved NAT address should be activate.
+     */
+    activate?: pulumi.Input<boolean>;
     /**
      * The Apigee instance associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/instances/{{instance_name}}`.

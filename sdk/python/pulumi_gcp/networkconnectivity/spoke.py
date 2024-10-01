@@ -603,6 +603,161 @@ class Spoke(pulumi.CustomResource):
                     "ip_address": "10.0.0.2",
                 }],
                 "site_to_site_data_transfer": True,
+                "include_import_ranges": ["ALL_IPV4_RANGES"],
+            })
+        ```
+        ### Network Connectivity Spoke Vpn Tunnel Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic_hub = gcp.networkconnectivity.Hub("basic_hub",
+            name="basic-hub1",
+            description="A sample hub",
+            labels={
+                "label-two": "value-one",
+            })
+        network = gcp.compute.Network("network",
+            name="basic-network",
+            auto_create_subnetworks=False)
+        subnetwork = gcp.compute.Subnetwork("subnetwork",
+            name="basic-subnetwork",
+            ip_cidr_range="10.0.0.0/28",
+            region="us-central1",
+            network=network.self_link)
+        gateway = gcp.compute.HaVpnGateway("gateway",
+            name="vpn-gateway",
+            network=network.id)
+        external_vpn_gw = gcp.compute.ExternalVpnGateway("external_vpn_gw",
+            name="external-vpn-gateway",
+            redundancy_type="SINGLE_IP_INTERNALLY_REDUNDANT",
+            description="An externally managed VPN gateway",
+            interfaces=[{
+                "id": 0,
+                "ip_address": "8.8.8.8",
+            }])
+        router = gcp.compute.Router("router",
+            name="external-vpn-gateway",
+            region="us-central1",
+            network=network.name,
+            bgp={
+                "asn": 64514,
+            })
+        tunnel1 = gcp.compute.VPNTunnel("tunnel1",
+            name="tunnel1",
+            region="us-central1",
+            vpn_gateway=gateway.id,
+            peer_external_gateway=external_vpn_gw.id,
+            peer_external_gateway_interface=0,
+            shared_secret="a secret message",
+            router=router.id,
+            vpn_gateway_interface=0)
+        tunnel2 = gcp.compute.VPNTunnel("tunnel2",
+            name="tunnel2",
+            region="us-central1",
+            vpn_gateway=gateway.id,
+            peer_external_gateway=external_vpn_gw.id,
+            peer_external_gateway_interface=0,
+            shared_secret="a secret message",
+            router=router.id.apply(lambda id: f" {id}"),
+            vpn_gateway_interface=1)
+        router_interface1 = gcp.compute.RouterInterface("router_interface1",
+            name="router-interface1",
+            router=router.name,
+            region="us-central1",
+            ip_range="169.254.0.1/30",
+            vpn_tunnel=tunnel1.name)
+        router_peer1 = gcp.compute.RouterPeer("router_peer1",
+            name="router-peer1",
+            router=router.name,
+            region="us-central1",
+            peer_ip_address="169.254.0.2",
+            peer_asn=64515,
+            advertised_route_priority=100,
+            interface=router_interface1.name)
+        router_interface2 = gcp.compute.RouterInterface("router_interface2",
+            name="router-interface2",
+            router=router.name,
+            region="us-central1",
+            ip_range="169.254.1.1/30",
+            vpn_tunnel=tunnel2.name)
+        router_peer2 = gcp.compute.RouterPeer("router_peer2",
+            name="router-peer2",
+            router=router.name,
+            region="us-central1",
+            peer_ip_address="169.254.1.2",
+            peer_asn=64515,
+            advertised_route_priority=100,
+            interface=router_interface2.name)
+        tunnel1_spoke = gcp.networkconnectivity.Spoke("tunnel1",
+            name="vpn-tunnel-1-spoke",
+            location="us-central1",
+            description="A sample spoke with a linked VPN Tunnel",
+            labels={
+                "label-one": "value-one",
+            },
+            hub=basic_hub.id,
+            linked_vpn_tunnels={
+                "uris": [tunnel1.self_link],
+                "site_to_site_data_transfer": True,
+                "include_import_ranges": ["ALL_IPV4_RANGES"],
+            })
+        tunnel2_spoke = gcp.networkconnectivity.Spoke("tunnel2",
+            name="vpn-tunnel-2-spoke",
+            location="us-central1",
+            description="A sample spoke with a linked VPN Tunnel",
+            labels={
+                "label-one": "value-one",
+            },
+            hub=basic_hub.id,
+            linked_vpn_tunnels={
+                "uris": [tunnel2.self_link],
+                "site_to_site_data_transfer": True,
+                "include_import_ranges": ["ALL_IPV4_RANGES"],
+            })
+        ```
+        ### Network Connectivity Spoke Interconnect Attachment Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic_hub = gcp.networkconnectivity.Hub("basic_hub",
+            name="basic-hub1",
+            description="A sample hub",
+            labels={
+                "label-two": "value-one",
+            })
+        network = gcp.compute.Network("network",
+            name="basic-network",
+            auto_create_subnetworks=False)
+        router = gcp.compute.Router("router",
+            name="external-vpn-gateway",
+            region="us-central1",
+            network=network.name,
+            bgp={
+                "asn": 16550,
+            })
+        interconnect_attachment = gcp.compute.InterconnectAttachment("interconnect-attachment",
+            name="partner-interconnect1",
+            edge_availability_domain="AVAILABILITY_DOMAIN_1",
+            type="PARTNER",
+            router=router.id,
+            mtu="1500",
+            region="us-central1")
+        primary = gcp.networkconnectivity.Spoke("primary",
+            name="interconnect-attachment-spoke",
+            location="us-central1",
+            description="A sample spoke with a linked Interconnect Attachment",
+            labels={
+                "label-one": "value-one",
+            },
+            hub=basic_hub.id,
+            linked_interconnect_attachments={
+                "uris": [interconnect_attachment.self_link],
+                "site_to_site_data_transfer": True,
+                "include_import_ranges": ["ALL_IPV4_RANGES"],
             })
         ```
 
@@ -756,6 +911,161 @@ class Spoke(pulumi.CustomResource):
                     "ip_address": "10.0.0.2",
                 }],
                 "site_to_site_data_transfer": True,
+                "include_import_ranges": ["ALL_IPV4_RANGES"],
+            })
+        ```
+        ### Network Connectivity Spoke Vpn Tunnel Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic_hub = gcp.networkconnectivity.Hub("basic_hub",
+            name="basic-hub1",
+            description="A sample hub",
+            labels={
+                "label-two": "value-one",
+            })
+        network = gcp.compute.Network("network",
+            name="basic-network",
+            auto_create_subnetworks=False)
+        subnetwork = gcp.compute.Subnetwork("subnetwork",
+            name="basic-subnetwork",
+            ip_cidr_range="10.0.0.0/28",
+            region="us-central1",
+            network=network.self_link)
+        gateway = gcp.compute.HaVpnGateway("gateway",
+            name="vpn-gateway",
+            network=network.id)
+        external_vpn_gw = gcp.compute.ExternalVpnGateway("external_vpn_gw",
+            name="external-vpn-gateway",
+            redundancy_type="SINGLE_IP_INTERNALLY_REDUNDANT",
+            description="An externally managed VPN gateway",
+            interfaces=[{
+                "id": 0,
+                "ip_address": "8.8.8.8",
+            }])
+        router = gcp.compute.Router("router",
+            name="external-vpn-gateway",
+            region="us-central1",
+            network=network.name,
+            bgp={
+                "asn": 64514,
+            })
+        tunnel1 = gcp.compute.VPNTunnel("tunnel1",
+            name="tunnel1",
+            region="us-central1",
+            vpn_gateway=gateway.id,
+            peer_external_gateway=external_vpn_gw.id,
+            peer_external_gateway_interface=0,
+            shared_secret="a secret message",
+            router=router.id,
+            vpn_gateway_interface=0)
+        tunnel2 = gcp.compute.VPNTunnel("tunnel2",
+            name="tunnel2",
+            region="us-central1",
+            vpn_gateway=gateway.id,
+            peer_external_gateway=external_vpn_gw.id,
+            peer_external_gateway_interface=0,
+            shared_secret="a secret message",
+            router=router.id.apply(lambda id: f" {id}"),
+            vpn_gateway_interface=1)
+        router_interface1 = gcp.compute.RouterInterface("router_interface1",
+            name="router-interface1",
+            router=router.name,
+            region="us-central1",
+            ip_range="169.254.0.1/30",
+            vpn_tunnel=tunnel1.name)
+        router_peer1 = gcp.compute.RouterPeer("router_peer1",
+            name="router-peer1",
+            router=router.name,
+            region="us-central1",
+            peer_ip_address="169.254.0.2",
+            peer_asn=64515,
+            advertised_route_priority=100,
+            interface=router_interface1.name)
+        router_interface2 = gcp.compute.RouterInterface("router_interface2",
+            name="router-interface2",
+            router=router.name,
+            region="us-central1",
+            ip_range="169.254.1.1/30",
+            vpn_tunnel=tunnel2.name)
+        router_peer2 = gcp.compute.RouterPeer("router_peer2",
+            name="router-peer2",
+            router=router.name,
+            region="us-central1",
+            peer_ip_address="169.254.1.2",
+            peer_asn=64515,
+            advertised_route_priority=100,
+            interface=router_interface2.name)
+        tunnel1_spoke = gcp.networkconnectivity.Spoke("tunnel1",
+            name="vpn-tunnel-1-spoke",
+            location="us-central1",
+            description="A sample spoke with a linked VPN Tunnel",
+            labels={
+                "label-one": "value-one",
+            },
+            hub=basic_hub.id,
+            linked_vpn_tunnels={
+                "uris": [tunnel1.self_link],
+                "site_to_site_data_transfer": True,
+                "include_import_ranges": ["ALL_IPV4_RANGES"],
+            })
+        tunnel2_spoke = gcp.networkconnectivity.Spoke("tunnel2",
+            name="vpn-tunnel-2-spoke",
+            location="us-central1",
+            description="A sample spoke with a linked VPN Tunnel",
+            labels={
+                "label-one": "value-one",
+            },
+            hub=basic_hub.id,
+            linked_vpn_tunnels={
+                "uris": [tunnel2.self_link],
+                "site_to_site_data_transfer": True,
+                "include_import_ranges": ["ALL_IPV4_RANGES"],
+            })
+        ```
+        ### Network Connectivity Spoke Interconnect Attachment Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic_hub = gcp.networkconnectivity.Hub("basic_hub",
+            name="basic-hub1",
+            description="A sample hub",
+            labels={
+                "label-two": "value-one",
+            })
+        network = gcp.compute.Network("network",
+            name="basic-network",
+            auto_create_subnetworks=False)
+        router = gcp.compute.Router("router",
+            name="external-vpn-gateway",
+            region="us-central1",
+            network=network.name,
+            bgp={
+                "asn": 16550,
+            })
+        interconnect_attachment = gcp.compute.InterconnectAttachment("interconnect-attachment",
+            name="partner-interconnect1",
+            edge_availability_domain="AVAILABILITY_DOMAIN_1",
+            type="PARTNER",
+            router=router.id,
+            mtu="1500",
+            region="us-central1")
+        primary = gcp.networkconnectivity.Spoke("primary",
+            name="interconnect-attachment-spoke",
+            location="us-central1",
+            description="A sample spoke with a linked Interconnect Attachment",
+            labels={
+                "label-one": "value-one",
+            },
+            hub=basic_hub.id,
+            linked_interconnect_attachments={
+                "uris": [interconnect_attachment.self_link],
+                "site_to_site_data_transfer": True,
+                "include_import_ranges": ["ALL_IPV4_RANGES"],
             })
         ```
 

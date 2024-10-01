@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.container.inputs.NodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -32,6 +33,21 @@ public final class NodePoolNodeConfigLinuxNodeConfigArgs extends com.pulumi.reso
     }
 
     /**
+     * Amounts for 2M and 1G hugepages.
+     * 
+     */
+    @Import(name="hugepagesConfig")
+    private @Nullable Output<NodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs> hugepagesConfig;
+
+    /**
+     * @return Amounts for 2M and 1G hugepages.
+     * 
+     */
+    public Optional<Output<NodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs>> hugepagesConfig() {
+        return Optional.ofNullable(this.hugepagesConfig);
+    }
+
+    /**
      * The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
      * 
      */
@@ -50,6 +66,7 @@ public final class NodePoolNodeConfigLinuxNodeConfigArgs extends com.pulumi.reso
 
     private NodePoolNodeConfigLinuxNodeConfigArgs(NodePoolNodeConfigLinuxNodeConfigArgs $) {
         this.cgroupMode = $.cgroupMode;
+        this.hugepagesConfig = $.hugepagesConfig;
         this.sysctls = $.sysctls;
     }
 
@@ -90,6 +107,27 @@ public final class NodePoolNodeConfigLinuxNodeConfigArgs extends com.pulumi.reso
          */
         public Builder cgroupMode(String cgroupMode) {
             return cgroupMode(Output.of(cgroupMode));
+        }
+
+        /**
+         * @param hugepagesConfig Amounts for 2M and 1G hugepages.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hugepagesConfig(@Nullable Output<NodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs> hugepagesConfig) {
+            $.hugepagesConfig = hugepagesConfig;
+            return this;
+        }
+
+        /**
+         * @param hugepagesConfig Amounts for 2M and 1G hugepages.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hugepagesConfig(NodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs hugepagesConfig) {
+            return hugepagesConfig(Output.of(hugepagesConfig));
         }
 
         /**

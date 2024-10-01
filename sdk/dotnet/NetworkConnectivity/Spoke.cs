@@ -159,6 +159,263 @@ namespace Pulumi.Gcp.NetworkConnectivity
     ///                 },
     ///             },
     ///             SiteToSiteDataTransfer = true,
+    ///             IncludeImportRanges = new[]
+    ///             {
+    ///                 "ALL_IPV4_RANGES",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Network Connectivity Spoke Vpn Tunnel Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var basicHub = new Gcp.NetworkConnectivity.Hub("basic_hub", new()
+    ///     {
+    ///         Name = "basic-hub1",
+    ///         Description = "A sample hub",
+    ///         Labels = 
+    ///         {
+    ///             { "label-two", "value-one" },
+    ///         },
+    ///     });
+    /// 
+    ///     var network = new Gcp.Compute.Network("network", new()
+    ///     {
+    ///         Name = "basic-network",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var subnetwork = new Gcp.Compute.Subnetwork("subnetwork", new()
+    ///     {
+    ///         Name = "basic-subnetwork",
+    ///         IpCidrRange = "10.0.0.0/28",
+    ///         Region = "us-central1",
+    ///         Network = network.SelfLink,
+    ///     });
+    /// 
+    ///     var gateway = new Gcp.Compute.HaVpnGateway("gateway", new()
+    ///     {
+    ///         Name = "vpn-gateway",
+    ///         Network = network.Id,
+    ///     });
+    /// 
+    ///     var externalVpnGw = new Gcp.Compute.ExternalVpnGateway("external_vpn_gw", new()
+    ///     {
+    ///         Name = "external-vpn-gateway",
+    ///         RedundancyType = "SINGLE_IP_INTERNALLY_REDUNDANT",
+    ///         Description = "An externally managed VPN gateway",
+    ///         Interfaces = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.ExternalVpnGatewayInterfaceArgs
+    ///             {
+    ///                 Id = 0,
+    ///                 IpAddress = "8.8.8.8",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var router = new Gcp.Compute.Router("router", new()
+    ///     {
+    ///         Name = "external-vpn-gateway",
+    ///         Region = "us-central1",
+    ///         Network = network.Name,
+    ///         Bgp = new Gcp.Compute.Inputs.RouterBgpArgs
+    ///         {
+    ///             Asn = 64514,
+    ///         },
+    ///     });
+    /// 
+    ///     var tunnel1 = new Gcp.Compute.VPNTunnel("tunnel1", new()
+    ///     {
+    ///         Name = "tunnel1",
+    ///         Region = "us-central1",
+    ///         VpnGateway = gateway.Id,
+    ///         PeerExternalGateway = externalVpnGw.Id,
+    ///         PeerExternalGatewayInterface = 0,
+    ///         SharedSecret = "a secret message",
+    ///         Router = router.Id,
+    ///         VpnGatewayInterface = 0,
+    ///     });
+    /// 
+    ///     var tunnel2 = new Gcp.Compute.VPNTunnel("tunnel2", new()
+    ///     {
+    ///         Name = "tunnel2",
+    ///         Region = "us-central1",
+    ///         VpnGateway = gateway.Id,
+    ///         PeerExternalGateway = externalVpnGw.Id,
+    ///         PeerExternalGatewayInterface = 0,
+    ///         SharedSecret = "a secret message",
+    ///         Router = router.Id.Apply(id =&gt; $" {id}"),
+    ///         VpnGatewayInterface = 1,
+    ///     });
+    /// 
+    ///     var routerInterface1 = new Gcp.Compute.RouterInterface("router_interface1", new()
+    ///     {
+    ///         Name = "router-interface1",
+    ///         Router = router.Name,
+    ///         Region = "us-central1",
+    ///         IpRange = "169.254.0.1/30",
+    ///         VpnTunnel = tunnel1.Name,
+    ///     });
+    /// 
+    ///     var routerPeer1 = new Gcp.Compute.RouterPeer("router_peer1", new()
+    ///     {
+    ///         Name = "router-peer1",
+    ///         Router = router.Name,
+    ///         Region = "us-central1",
+    ///         PeerIpAddress = "169.254.0.2",
+    ///         PeerAsn = 64515,
+    ///         AdvertisedRoutePriority = 100,
+    ///         Interface = routerInterface1.Name,
+    ///     });
+    /// 
+    ///     var routerInterface2 = new Gcp.Compute.RouterInterface("router_interface2", new()
+    ///     {
+    ///         Name = "router-interface2",
+    ///         Router = router.Name,
+    ///         Region = "us-central1",
+    ///         IpRange = "169.254.1.1/30",
+    ///         VpnTunnel = tunnel2.Name,
+    ///     });
+    /// 
+    ///     var routerPeer2 = new Gcp.Compute.RouterPeer("router_peer2", new()
+    ///     {
+    ///         Name = "router-peer2",
+    ///         Router = router.Name,
+    ///         Region = "us-central1",
+    ///         PeerIpAddress = "169.254.1.2",
+    ///         PeerAsn = 64515,
+    ///         AdvertisedRoutePriority = 100,
+    ///         Interface = routerInterface2.Name,
+    ///     });
+    /// 
+    ///     var tunnel1Spoke = new Gcp.NetworkConnectivity.Spoke("tunnel1", new()
+    ///     {
+    ///         Name = "vpn-tunnel-1-spoke",
+    ///         Location = "us-central1",
+    ///         Description = "A sample spoke with a linked VPN Tunnel",
+    ///         Labels = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
+    ///         Hub = basicHub.Id,
+    ///         LinkedVpnTunnels = new Gcp.NetworkConnectivity.Inputs.SpokeLinkedVpnTunnelsArgs
+    ///         {
+    ///             Uris = new[]
+    ///             {
+    ///                 tunnel1.SelfLink,
+    ///             },
+    ///             SiteToSiteDataTransfer = true,
+    ///             IncludeImportRanges = new[]
+    ///             {
+    ///                 "ALL_IPV4_RANGES",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var tunnel2Spoke = new Gcp.NetworkConnectivity.Spoke("tunnel2", new()
+    ///     {
+    ///         Name = "vpn-tunnel-2-spoke",
+    ///         Location = "us-central1",
+    ///         Description = "A sample spoke with a linked VPN Tunnel",
+    ///         Labels = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
+    ///         Hub = basicHub.Id,
+    ///         LinkedVpnTunnels = new Gcp.NetworkConnectivity.Inputs.SpokeLinkedVpnTunnelsArgs
+    ///         {
+    ///             Uris = new[]
+    ///             {
+    ///                 tunnel2.SelfLink,
+    ///             },
+    ///             SiteToSiteDataTransfer = true,
+    ///             IncludeImportRanges = new[]
+    ///             {
+    ///                 "ALL_IPV4_RANGES",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Network Connectivity Spoke Interconnect Attachment Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var basicHub = new Gcp.NetworkConnectivity.Hub("basic_hub", new()
+    ///     {
+    ///         Name = "basic-hub1",
+    ///         Description = "A sample hub",
+    ///         Labels = 
+    ///         {
+    ///             { "label-two", "value-one" },
+    ///         },
+    ///     });
+    /// 
+    ///     var network = new Gcp.Compute.Network("network", new()
+    ///     {
+    ///         Name = "basic-network",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var router = new Gcp.Compute.Router("router", new()
+    ///     {
+    ///         Name = "external-vpn-gateway",
+    ///         Region = "us-central1",
+    ///         Network = network.Name,
+    ///         Bgp = new Gcp.Compute.Inputs.RouterBgpArgs
+    ///         {
+    ///             Asn = 16550,
+    ///         },
+    ///     });
+    /// 
+    ///     var interconnect_attachment = new Gcp.Compute.InterconnectAttachment("interconnect-attachment", new()
+    ///     {
+    ///         Name = "partner-interconnect1",
+    ///         EdgeAvailabilityDomain = "AVAILABILITY_DOMAIN_1",
+    ///         Type = "PARTNER",
+    ///         Router = router.Id,
+    ///         Mtu = "1500",
+    ///         Region = "us-central1",
+    ///     });
+    /// 
+    ///     var primary = new Gcp.NetworkConnectivity.Spoke("primary", new()
+    ///     {
+    ///         Name = "interconnect-attachment-spoke",
+    ///         Location = "us-central1",
+    ///         Description = "A sample spoke with a linked Interconnect Attachment",
+    ///         Labels = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
+    ///         Hub = basicHub.Id,
+    ///         LinkedInterconnectAttachments = new Gcp.NetworkConnectivity.Inputs.SpokeLinkedInterconnectAttachmentsArgs
+    ///         {
+    ///             Uris = new[]
+    ///             {
+    ///                 interconnect_attachment.SelfLink,
+    ///             },
+    ///             SiteToSiteDataTransfer = true,
+    ///             IncludeImportRanges = new[]
+    ///             {
+    ///                 "ALL_IPV4_RANGES",
+    ///             },
     ///         },
     ///     });
     /// 

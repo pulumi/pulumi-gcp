@@ -9,6 +9,7 @@ import com.pulumi.gcp.cloudrun.outputs.ServiceTemplateSpecVolume;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -28,6 +29,13 @@ public final class ServiceTemplateSpec {
      * 
      */
     private @Nullable List<ServiceTemplateSpecContainer> containers;
+    /**
+     * @return Node Selector describes the hardware requirements of the resources.
+     * Use the following node selector keys to configure features on a Revision:
+     * - `run.googleapis.com/accelerator` sets the [type of GPU](https://cloud.google.com/run/docs/configuring/services/gpu) required by the Revision to run.
+     * 
+     */
+    private @Nullable Map<String,String> nodeSelector;
     /**
      * @return Email address of the IAM service account associated with the revision of the
      * service. The service account represents the identity of the running revision,
@@ -80,6 +88,15 @@ public final class ServiceTemplateSpec {
      */
     public List<ServiceTemplateSpecContainer> containers() {
         return this.containers == null ? List.of() : this.containers;
+    }
+    /**
+     * @return Node Selector describes the hardware requirements of the resources.
+     * Use the following node selector keys to configure features on a Revision:
+     * - `run.googleapis.com/accelerator` sets the [type of GPU](https://cloud.google.com/run/docs/configuring/services/gpu) required by the Revision to run.
+     * 
+     */
+    public Map<String,String> nodeSelector() {
+        return this.nodeSelector == null ? Map.of() : this.nodeSelector;
     }
     /**
      * @return Email address of the IAM service account associated with the revision of the
@@ -135,6 +152,7 @@ public final class ServiceTemplateSpec {
     public static final class Builder {
         private @Nullable Integer containerConcurrency;
         private @Nullable List<ServiceTemplateSpecContainer> containers;
+        private @Nullable Map<String,String> nodeSelector;
         private @Nullable String serviceAccountName;
         private @Nullable String servingState;
         private @Nullable Integer timeoutSeconds;
@@ -144,6 +162,7 @@ public final class ServiceTemplateSpec {
     	      Objects.requireNonNull(defaults);
     	      this.containerConcurrency = defaults.containerConcurrency;
     	      this.containers = defaults.containers;
+    	      this.nodeSelector = defaults.nodeSelector;
     	      this.serviceAccountName = defaults.serviceAccountName;
     	      this.servingState = defaults.servingState;
     	      this.timeoutSeconds = defaults.timeoutSeconds;
@@ -164,6 +183,12 @@ public final class ServiceTemplateSpec {
         }
         public Builder containers(ServiceTemplateSpecContainer... containers) {
             return containers(List.of(containers));
+        }
+        @CustomType.Setter
+        public Builder nodeSelector(@Nullable Map<String,String> nodeSelector) {
+
+            this.nodeSelector = nodeSelector;
+            return this;
         }
         @CustomType.Setter
         public Builder serviceAccountName(@Nullable String serviceAccountName) {
@@ -196,6 +221,7 @@ public final class ServiceTemplateSpec {
             final var _resultValue = new ServiceTemplateSpec();
             _resultValue.containerConcurrency = containerConcurrency;
             _resultValue.containers = containers;
+            _resultValue.nodeSelector = nodeSelector;
             _resultValue.serviceAccountName = serviceAccountName;
             _resultValue.servingState = servingState;
             _resultValue.timeoutSeconds = timeoutSeconds;

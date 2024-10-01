@@ -75,6 +75,7 @@ export interface GetRouterNatResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly initialNatIps: string[];
     readonly logConfigs: outputs.compute.GetRouterNatLogConfig[];
     readonly maxPortsPerVm: number;
     readonly minPortsPerVm: number;

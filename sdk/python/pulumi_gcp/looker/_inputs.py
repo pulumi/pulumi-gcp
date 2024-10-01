@@ -35,6 +35,10 @@ __all__ = [
     'InstanceMaintenanceWindowStartTimeArgsDict',
     'InstanceOauthConfigArgs',
     'InstanceOauthConfigArgsDict',
+    'InstancePscConfigArgs',
+    'InstancePscConfigArgsDict',
+    'InstancePscConfigServiceAttachmentArgs',
+    'InstancePscConfigServiceAttachmentArgsDict',
     'InstanceUserMetadataArgs',
     'InstanceUserMetadataArgsDict',
 ]
@@ -746,6 +750,159 @@ class InstanceOauthConfigArgs:
     @client_secret.setter
     def client_secret(self, value: pulumi.Input[str]):
         pulumi.set(self, "client_secret", value)
+
+
+if not MYPY:
+    class InstancePscConfigArgsDict(TypedDict):
+        allowed_vpcs: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        List of VPCs that are allowed ingress into the Looker instance.
+        """
+        looker_service_attachment_uri: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        URI of the Looker service attachment.
+        """
+        service_attachments: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstancePscConfigServiceAttachmentArgsDict']]]]
+        """
+        List of egress service attachment configurations.
+        Structure is documented below.
+        """
+elif False:
+    InstancePscConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstancePscConfigArgs:
+    def __init__(__self__, *,
+                 allowed_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 looker_service_attachment_uri: Optional[pulumi.Input[str]] = None,
+                 service_attachments: Optional[pulumi.Input[Sequence[pulumi.Input['InstancePscConfigServiceAttachmentArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_vpcs: List of VPCs that are allowed ingress into the Looker instance.
+        :param pulumi.Input[str] looker_service_attachment_uri: (Output)
+               URI of the Looker service attachment.
+        :param pulumi.Input[Sequence[pulumi.Input['InstancePscConfigServiceAttachmentArgs']]] service_attachments: List of egress service attachment configurations.
+               Structure is documented below.
+        """
+        if allowed_vpcs is not None:
+            pulumi.set(__self__, "allowed_vpcs", allowed_vpcs)
+        if looker_service_attachment_uri is not None:
+            pulumi.set(__self__, "looker_service_attachment_uri", looker_service_attachment_uri)
+        if service_attachments is not None:
+            pulumi.set(__self__, "service_attachments", service_attachments)
+
+    @property
+    @pulumi.getter(name="allowedVpcs")
+    def allowed_vpcs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of VPCs that are allowed ingress into the Looker instance.
+        """
+        return pulumi.get(self, "allowed_vpcs")
+
+    @allowed_vpcs.setter
+    def allowed_vpcs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_vpcs", value)
+
+    @property
+    @pulumi.getter(name="lookerServiceAttachmentUri")
+    def looker_service_attachment_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        URI of the Looker service attachment.
+        """
+        return pulumi.get(self, "looker_service_attachment_uri")
+
+    @looker_service_attachment_uri.setter
+    def looker_service_attachment_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "looker_service_attachment_uri", value)
+
+    @property
+    @pulumi.getter(name="serviceAttachments")
+    def service_attachments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstancePscConfigServiceAttachmentArgs']]]]:
+        """
+        List of egress service attachment configurations.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "service_attachments")
+
+    @service_attachments.setter
+    def service_attachments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstancePscConfigServiceAttachmentArgs']]]]):
+        pulumi.set(self, "service_attachments", value)
+
+
+if not MYPY:
+    class InstancePscConfigServiceAttachmentArgsDict(TypedDict):
+        connection_status: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Status of the service attachment connection.
+        """
+        local_fqdn: NotRequired[pulumi.Input[str]]
+        """
+        Fully qualified domain name that will be used in the private DNS record created for the service attachment.
+        """
+        target_service_attachment_uri: NotRequired[pulumi.Input[str]]
+        """
+        URI of the service attachment to connect to.
+        """
+elif False:
+    InstancePscConfigServiceAttachmentArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstancePscConfigServiceAttachmentArgs:
+    def __init__(__self__, *,
+                 connection_status: Optional[pulumi.Input[str]] = None,
+                 local_fqdn: Optional[pulumi.Input[str]] = None,
+                 target_service_attachment_uri: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] connection_status: (Output)
+               Status of the service attachment connection.
+        :param pulumi.Input[str] local_fqdn: Fully qualified domain name that will be used in the private DNS record created for the service attachment.
+        :param pulumi.Input[str] target_service_attachment_uri: URI of the service attachment to connect to.
+        """
+        if connection_status is not None:
+            pulumi.set(__self__, "connection_status", connection_status)
+        if local_fqdn is not None:
+            pulumi.set(__self__, "local_fqdn", local_fqdn)
+        if target_service_attachment_uri is not None:
+            pulumi.set(__self__, "target_service_attachment_uri", target_service_attachment_uri)
+
+    @property
+    @pulumi.getter(name="connectionStatus")
+    def connection_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Status of the service attachment connection.
+        """
+        return pulumi.get(self, "connection_status")
+
+    @connection_status.setter
+    def connection_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connection_status", value)
+
+    @property
+    @pulumi.getter(name="localFqdn")
+    def local_fqdn(self) -> Optional[pulumi.Input[str]]:
+        """
+        Fully qualified domain name that will be used in the private DNS record created for the service attachment.
+        """
+        return pulumi.get(self, "local_fqdn")
+
+    @local_fqdn.setter
+    def local_fqdn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "local_fqdn", value)
+
+    @property
+    @pulumi.getter(name="targetServiceAttachmentUri")
+    def target_service_attachment_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        URI of the service attachment to connect to.
+        """
+        return pulumi.get(self, "target_service_attachment_uri")
+
+    @target_service_attachment_uri.setter
+    def target_service_attachment_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_service_attachment_uri", value)
 
 
 if not MYPY:

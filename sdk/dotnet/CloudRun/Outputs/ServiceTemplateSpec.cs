@@ -25,6 +25,12 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ServiceTemplateSpecContainer> Containers;
         /// <summary>
+        /// Node Selector describes the hardware requirements of the resources.
+        /// Use the following node selector keys to configure features on a Revision:
+        /// - `run.googleapis.com/accelerator` sets the [type of GPU](https://cloud.google.com/run/docs/configuring/services/gpu) required by the Revision to run.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string>? NodeSelector;
+        /// <summary>
         /// Email address of the IAM service account associated with the revision of the
         /// service. The service account represents the identity of the running revision,
         /// and determines what permissions the revision has. If not provided, the revision
@@ -57,6 +63,8 @@ namespace Pulumi.Gcp.CloudRun.Outputs
 
             ImmutableArray<Outputs.ServiceTemplateSpecContainer> containers,
 
+            ImmutableDictionary<string, string>? nodeSelector,
+
             string? serviceAccountName,
 
             string? servingState,
@@ -67,6 +75,7 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         {
             ContainerConcurrency = containerConcurrency;
             Containers = containers;
+            NodeSelector = nodeSelector;
             ServiceAccountName = serviceAccountName;
             ServingState = servingState;
             TimeoutSeconds = timeoutSeconds;

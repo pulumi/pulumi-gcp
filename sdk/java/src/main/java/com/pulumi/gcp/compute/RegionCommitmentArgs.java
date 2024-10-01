@@ -80,6 +80,21 @@ public final class RegionCommitmentArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Specifies the already existing reservations to attach to the Commitment.
+     * 
+     */
+    @Import(name="existingReservations")
+    private @Nullable Output<String> existingReservations;
+
+    /**
+     * @return Specifies the already existing reservations to attach to the Commitment.
+     * 
+     */
+    public Optional<Output<String>> existingReservations() {
+        return Optional.ofNullable(this.existingReservations);
+    }
+
+    /**
      * The license specification required as part of a license commitment.
      * Structure is documented below.
      * 
@@ -222,6 +237,7 @@ public final class RegionCommitmentArgs extends com.pulumi.resources.ResourceArg
         this.autoRenew = $.autoRenew;
         this.category = $.category;
         this.description = $.description;
+        this.existingReservations = $.existingReservations;
         this.licenseResource = $.licenseResource;
         this.name = $.name;
         this.plan = $.plan;
@@ -324,6 +340,27 @@ public final class RegionCommitmentArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param existingReservations Specifies the already existing reservations to attach to the Commitment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder existingReservations(@Nullable Output<String> existingReservations) {
+            $.existingReservations = existingReservations;
+            return this;
+        }
+
+        /**
+         * @param existingReservations Specifies the already existing reservations to attach to the Commitment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder existingReservations(String existingReservations) {
+            return existingReservations(Output.of(existingReservations));
         }
 
         /**

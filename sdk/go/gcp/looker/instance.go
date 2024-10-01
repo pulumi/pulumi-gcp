@@ -300,6 +300,45 @@ import (
 //	}
 //
 // ```
+// ### Looker Instance Psc
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/looker"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := looker.NewInstance(ctx, "looker-instance", &looker.InstanceArgs{
+//				Name:             pulumi.String("my-instance"),
+//				PlatformEdition:  pulumi.String("LOOKER_CORE_ENTERPRISE_ANNUAL"),
+//				Region:           pulumi.String("us-central1"),
+//				PrivateIpEnabled: pulumi.Bool(false),
+//				PublicIpEnabled:  pulumi.Bool(false),
+//				PscEnabled:       pulumi.Bool(true),
+//				OauthConfig: &looker.InstanceOauthConfigArgs{
+//					ClientId:     pulumi.String("my-client-id"),
+//					ClientSecret: pulumi.String("my-client-secret"),
+//				},
+//				PscConfig: &looker.InstancePscConfigArgs{
+//					AllowedVpcs: pulumi.StringArray{
+//						pulumi.String("projects/test-project/global/networks/test"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -393,6 +432,11 @@ type Instance struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// Information for Private Service Connect (PSC) setup for a Looker instance.
+	// Structure is documented below.
+	PscConfig InstancePscConfigPtrOutput `pulumi:"pscConfig"`
+	// Whether Public Service Connect (PSC) is enabled on the Looker instance
+	PscEnabled pulumi.BoolPtrOutput `pulumi:"pscEnabled"`
 	// Whether public IP is enabled on the Looker instance.
 	PublicIpEnabled pulumi.BoolPtrOutput `pulumi:"publicIpEnabled"`
 	// The name of the Looker region of the instance.
@@ -504,6 +548,11 @@ type instanceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Information for Private Service Connect (PSC) setup for a Looker instance.
+	// Structure is documented below.
+	PscConfig *InstancePscConfig `pulumi:"pscConfig"`
+	// Whether Public Service Connect (PSC) is enabled on the Looker instance
+	PscEnabled *bool `pulumi:"pscEnabled"`
 	// Whether public IP is enabled on the Looker instance.
 	PublicIpEnabled *bool `pulumi:"publicIpEnabled"`
 	// The name of the Looker region of the instance.
@@ -586,6 +635,11 @@ type InstanceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Information for Private Service Connect (PSC) setup for a Looker instance.
+	// Structure is documented below.
+	PscConfig InstancePscConfigPtrInput
+	// Whether Public Service Connect (PSC) is enabled on the Looker instance
+	PscEnabled pulumi.BoolPtrInput
 	// Whether public IP is enabled on the Looker instance.
 	PublicIpEnabled pulumi.BoolPtrInput
 	// The name of the Looker region of the instance.
@@ -659,6 +713,11 @@ type instanceArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Information for Private Service Connect (PSC) setup for a Looker instance.
+	// Structure is documented below.
+	PscConfig *InstancePscConfig `pulumi:"pscConfig"`
+	// Whether Public Service Connect (PSC) is enabled on the Looker instance
+	PscEnabled *bool `pulumi:"pscEnabled"`
 	// Whether public IP is enabled on the Looker instance.
 	PublicIpEnabled *bool `pulumi:"publicIpEnabled"`
 	// The name of the Looker region of the instance.
@@ -726,6 +785,11 @@ type InstanceArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Information for Private Service Connect (PSC) setup for a Looker instance.
+	// Structure is documented below.
+	PscConfig InstancePscConfigPtrInput
+	// Whether Public Service Connect (PSC) is enabled on the Looker instance
+	PscEnabled pulumi.BoolPtrInput
 	// Whether public IP is enabled on the Looker instance.
 	PublicIpEnabled pulumi.BoolPtrInput
 	// The name of the Looker region of the instance.
@@ -943,6 +1007,17 @@ func (o InstanceOutput) PrivateIpEnabled() pulumi.BoolPtrOutput {
 // If it is not provided, the provider project is used.
 func (o InstanceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Information for Private Service Connect (PSC) setup for a Looker instance.
+// Structure is documented below.
+func (o InstanceOutput) PscConfig() InstancePscConfigPtrOutput {
+	return o.ApplyT(func(v *Instance) InstancePscConfigPtrOutput { return v.PscConfig }).(InstancePscConfigPtrOutput)
+}
+
+// Whether Public Service Connect (PSC) is enabled on the Looker instance
+func (o InstanceOutput) PscEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.PscEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // Whether public IP is enabled on the Looker instance.

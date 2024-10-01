@@ -62,7 +62,7 @@ class InstanceFromMachineImageArgs:
                to create.
         :param pulumi.Input[bool] deletion_protection: Whether deletion protection is enabled on this instance.
         :param pulumi.Input[str] description: A brief description of the resource.
-        :param pulumi.Input[str] desired_status: Desired status of the instance. Either "RUNNING" or "TERMINATED".
+        :param pulumi.Input[str] desired_status: Desired status of the instance. Either "RUNNING", "SUSPENDED" or "TERMINATED".
         :param pulumi.Input[bool] enable_display: Whether the instance has virtual displays enabled.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageGuestAcceleratorArgs']]] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
         :param pulumi.Input[str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
@@ -246,7 +246,7 @@ class InstanceFromMachineImageArgs:
     @pulumi.getter(name="desiredStatus")
     def desired_status(self) -> Optional[pulumi.Input[str]]:
         """
-        Desired status of the instance. Either "RUNNING" or "TERMINATED".
+        Desired status of the instance. Either "RUNNING", "SUSPENDED" or "TERMINATED".
         """
         return pulumi.get(self, "desired_status")
 
@@ -579,7 +579,7 @@ class _InstanceFromMachineImageState:
                life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
         :param pulumi.Input[bool] deletion_protection: Whether deletion protection is enabled on this instance.
         :param pulumi.Input[str] description: A brief description of the resource.
-        :param pulumi.Input[str] desired_status: Desired status of the instance. Either "RUNNING" or "TERMINATED".
+        :param pulumi.Input[str] desired_status: Desired status of the instance. Either "RUNNING", "SUSPENDED" or "TERMINATED".
         :param pulumi.Input[bool] enable_display: Whether the instance has virtual displays enabled.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceFromMachineImageGuestAcceleratorArgs']]] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
         :param pulumi.Input[str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
@@ -834,7 +834,7 @@ class _InstanceFromMachineImageState:
     @pulumi.getter(name="desiredStatus")
     def desired_status(self) -> Optional[pulumi.Input[str]]:
         """
-        Desired status of the instance. Either "RUNNING" or "TERMINATED".
+        Desired status of the instance. Either "RUNNING", "SUSPENDED" or "TERMINATED".
         """
         return pulumi.get(self, "desired_status")
 
@@ -1286,7 +1286,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
                to create.
         :param pulumi.Input[bool] deletion_protection: Whether deletion protection is enabled on this instance.
         :param pulumi.Input[str] description: A brief description of the resource.
-        :param pulumi.Input[str] desired_status: Desired status of the instance. Either "RUNNING" or "TERMINATED".
+        :param pulumi.Input[str] desired_status: Desired status of the instance. Either "RUNNING", "SUSPENDED" or "TERMINATED".
         :param pulumi.Input[bool] enable_display: Whether the instance has virtual displays enabled.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceFromMachineImageGuestAcceleratorArgs', 'InstanceFromMachineImageGuestAcceleratorArgsDict']]]] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
         :param pulumi.Input[str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
@@ -1527,7 +1527,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
                life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
         :param pulumi.Input[bool] deletion_protection: Whether deletion protection is enabled on this instance.
         :param pulumi.Input[str] description: A brief description of the resource.
-        :param pulumi.Input[str] desired_status: Desired status of the instance. Either "RUNNING" or "TERMINATED".
+        :param pulumi.Input[str] desired_status: Desired status of the instance. Either "RUNNING", "SUSPENDED" or "TERMINATED".
         :param pulumi.Input[bool] enable_display: Whether the instance has virtual displays enabled.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceFromMachineImageGuestAcceleratorArgs', 'InstanceFromMachineImageGuestAcceleratorArgsDict']]]] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
         :param pulumi.Input[str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
@@ -1706,7 +1706,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
     @pulumi.getter(name="desiredStatus")
     def desired_status(self) -> pulumi.Output[str]:
         """
-        Desired status of the instance. Either "RUNNING" or "TERMINATED".
+        Desired status of the instance. Either "RUNNING", "SUSPENDED" or "TERMINATED".
         """
         return pulumi.get(self, "desired_status")
 

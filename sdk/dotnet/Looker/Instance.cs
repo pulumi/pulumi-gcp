@@ -275,6 +275,40 @@ namespace Pulumi.Gcp.Looker
     /// 
     /// });
     /// ```
+    /// ### Looker Instance Psc
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var looker_instance = new Gcp.Looker.Instance("looker-instance", new()
+    ///     {
+    ///         Name = "my-instance",
+    ///         PlatformEdition = "LOOKER_CORE_ENTERPRISE_ANNUAL",
+    ///         Region = "us-central1",
+    ///         PrivateIpEnabled = false,
+    ///         PublicIpEnabled = false,
+    ///         PscEnabled = true,
+    ///         OauthConfig = new Gcp.Looker.Inputs.InstanceOauthConfigArgs
+    ///         {
+    ///             ClientId = "my-client-id",
+    ///             ClientSecret = "my-client-secret",
+    ///         },
+    ///         PscConfig = new Gcp.Looker.Inputs.InstancePscConfigArgs
+    ///         {
+    ///             AllowedVpcs = new[]
+    ///             {
+    ///                 "projects/test-project/global/networks/test",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -441,6 +475,19 @@ namespace Pulumi.Gcp.Looker
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// Information for Private Service Connect (PSC) setup for a Looker instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("pscConfig")]
+        public Output<Outputs.InstancePscConfig?> PscConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether Public Service Connect (PSC) is enabled on the Looker instance
+        /// </summary>
+        [Output("pscEnabled")]
+        public Output<bool?> PscEnabled { get; private set; } = null!;
 
         /// <summary>
         /// Whether public IP is enabled on the Looker instance.
@@ -624,6 +671,19 @@ namespace Pulumi.Gcp.Looker
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// Information for Private Service Connect (PSC) setup for a Looker instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("pscConfig")]
+        public Input<Inputs.InstancePscConfigArgs>? PscConfig { get; set; }
+
+        /// <summary>
+        /// Whether Public Service Connect (PSC) is enabled on the Looker instance
+        /// </summary>
+        [Input("pscEnabled")]
+        public Input<bool>? PscEnabled { get; set; }
+
+        /// <summary>
         /// Whether public IP is enabled on the Looker instance.
         /// </summary>
         [Input("publicIpEnabled")]
@@ -795,6 +855,19 @@ namespace Pulumi.Gcp.Looker
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Information for Private Service Connect (PSC) setup for a Looker instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("pscConfig")]
+        public Input<Inputs.InstancePscConfigGetArgs>? PscConfig { get; set; }
+
+        /// <summary>
+        /// Whether Public Service Connect (PSC) is enabled on the Looker instance
+        /// </summary>
+        [Input("pscEnabled")]
+        public Input<bool>? PscEnabled { get; set; }
 
         /// <summary>
         /// Whether public IP is enabled on the Looker instance.

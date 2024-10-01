@@ -10,6 +10,11 @@ export type Entitlement = import("./entitlement").Entitlement;
 export const Entitlement: typeof import("./entitlement").Entitlement = null as any;
 utilities.lazyLoad(exports, ["Entitlement"], () => require("./entitlement"));
 
+export { GetEntitlementArgs, GetEntitlementResult, GetEntitlementOutputArgs } from "./getEntitlement";
+export const getEntitlement: typeof import("./getEntitlement").getEntitlement = null as any;
+export const getEntitlementOutput: typeof import("./getEntitlement").getEntitlementOutput = null as any;
+utilities.lazyLoad(exports, ["getEntitlement","getEntitlementOutput"], () => require("./getEntitlement"));
+
 
 const _module = {
     version: utilities.getVersion(),

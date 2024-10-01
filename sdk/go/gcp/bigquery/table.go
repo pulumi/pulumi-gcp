@@ -126,6 +126,8 @@ import (
 type Table struct {
 	pulumi.CustomResourceState
 
+	// Specifies the configuration of a BigLake managed table. Structure is documented below
+	BiglakeConfiguration TableBiglakeConfigurationPtrOutput `pulumi:"biglakeConfiguration"`
 	// Specifies column names to use for data clustering.
 	// Up to four top-level columns are allowed, and should be specified in
 	// descending priority order.
@@ -282,6 +284,8 @@ func GetTable(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Table resources.
 type tableState struct {
+	// Specifies the configuration of a BigLake managed table. Structure is documented below
+	BiglakeConfiguration *TableBiglakeConfiguration `pulumi:"biglakeConfiguration"`
 	// Specifies column names to use for data clustering.
 	// Up to four top-level columns are allowed, and should be specified in
 	// descending priority order.
@@ -398,6 +402,8 @@ type tableState struct {
 }
 
 type TableState struct {
+	// Specifies the configuration of a BigLake managed table. Structure is documented below
+	BiglakeConfiguration TableBiglakeConfigurationPtrInput
 	// Specifies column names to use for data clustering.
 	// Up to four top-level columns are allowed, and should be specified in
 	// descending priority order.
@@ -518,6 +524,8 @@ func (TableState) ElementType() reflect.Type {
 }
 
 type tableArgs struct {
+	// Specifies the configuration of a BigLake managed table. Structure is documented below
+	BiglakeConfiguration *TableBiglakeConfiguration `pulumi:"biglakeConfiguration"`
 	// Specifies column names to use for data clustering.
 	// Up to four top-level columns are allowed, and should be specified in
 	// descending priority order.
@@ -598,6 +606,8 @@ type tableArgs struct {
 
 // The set of arguments for constructing a Table resource.
 type TableArgs struct {
+	// Specifies the configuration of a BigLake managed table. Structure is documented below
+	BiglakeConfiguration TableBiglakeConfigurationPtrInput
 	// Specifies column names to use for data clustering.
 	// Up to four top-level columns are allowed, and should be specified in
 	// descending priority order.
@@ -761,6 +771,11 @@ func (o TableOutput) ToTableOutput() TableOutput {
 
 func (o TableOutput) ToTableOutputWithContext(ctx context.Context) TableOutput {
 	return o
+}
+
+// Specifies the configuration of a BigLake managed table. Structure is documented below
+func (o TableOutput) BiglakeConfiguration() TableBiglakeConfigurationPtrOutput {
+	return o.ApplyT(func(v *Table) TableBiglakeConfigurationPtrOutput { return v.BiglakeConfiguration }).(TableBiglakeConfigurationPtrOutput)
 }
 
 // Specifies column names to use for data clustering.

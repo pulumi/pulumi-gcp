@@ -180,6 +180,266 @@ import javax.annotation.Nullable;
  *                     .ipAddress("10.0.0.2")
  *                     .build())
  *                 .siteToSiteDataTransfer(true)
+ *                 .includeImportRanges("ALL_IPV4_RANGES")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Network Connectivity Spoke Vpn Tunnel Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.networkconnectivity.Hub;
+ * import com.pulumi.gcp.networkconnectivity.HubArgs;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.HaVpnGateway;
+ * import com.pulumi.gcp.compute.HaVpnGatewayArgs;
+ * import com.pulumi.gcp.compute.ExternalVpnGateway;
+ * import com.pulumi.gcp.compute.ExternalVpnGatewayArgs;
+ * import com.pulumi.gcp.compute.inputs.ExternalVpnGatewayInterfaceArgs;
+ * import com.pulumi.gcp.compute.Router;
+ * import com.pulumi.gcp.compute.RouterArgs;
+ * import com.pulumi.gcp.compute.inputs.RouterBgpArgs;
+ * import com.pulumi.gcp.compute.VPNTunnel;
+ * import com.pulumi.gcp.compute.VPNTunnelArgs;
+ * import com.pulumi.gcp.compute.RouterInterface;
+ * import com.pulumi.gcp.compute.RouterInterfaceArgs;
+ * import com.pulumi.gcp.compute.RouterPeer;
+ * import com.pulumi.gcp.compute.RouterPeerArgs;
+ * import com.pulumi.gcp.networkconnectivity.Spoke;
+ * import com.pulumi.gcp.networkconnectivity.SpokeArgs;
+ * import com.pulumi.gcp.networkconnectivity.inputs.SpokeLinkedVpnTunnelsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var basicHub = new Hub("basicHub", HubArgs.builder()
+ *             .name("basic-hub1")
+ *             .description("A sample hub")
+ *             .labels(Map.of("label-two", "value-one"))
+ *             .build());
+ * 
+ *         var network = new Network("network", NetworkArgs.builder()
+ *             .name("basic-network")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var subnetwork = new Subnetwork("subnetwork", SubnetworkArgs.builder()
+ *             .name("basic-subnetwork")
+ *             .ipCidrRange("10.0.0.0/28")
+ *             .region("us-central1")
+ *             .network(network.selfLink())
+ *             .build());
+ * 
+ *         var gateway = new HaVpnGateway("gateway", HaVpnGatewayArgs.builder()
+ *             .name("vpn-gateway")
+ *             .network(network.id())
+ *             .build());
+ * 
+ *         var externalVpnGw = new ExternalVpnGateway("externalVpnGw", ExternalVpnGatewayArgs.builder()
+ *             .name("external-vpn-gateway")
+ *             .redundancyType("SINGLE_IP_INTERNALLY_REDUNDANT")
+ *             .description("An externally managed VPN gateway")
+ *             .interfaces(ExternalVpnGatewayInterfaceArgs.builder()
+ *                 .id(0)
+ *                 .ipAddress("8.8.8.8")
+ *                 .build())
+ *             .build());
+ * 
+ *         var router = new Router("router", RouterArgs.builder()
+ *             .name("external-vpn-gateway")
+ *             .region("us-central1")
+ *             .network(network.name())
+ *             .bgp(RouterBgpArgs.builder()
+ *                 .asn(64514)
+ *                 .build())
+ *             .build());
+ * 
+ *         var tunnel1 = new VPNTunnel("tunnel1", VPNTunnelArgs.builder()
+ *             .name("tunnel1")
+ *             .region("us-central1")
+ *             .vpnGateway(gateway.id())
+ *             .peerExternalGateway(externalVpnGw.id())
+ *             .peerExternalGatewayInterface(0)
+ *             .sharedSecret("a secret message")
+ *             .router(router.id())
+ *             .vpnGatewayInterface(0)
+ *             .build());
+ * 
+ *         var tunnel2 = new VPNTunnel("tunnel2", VPNTunnelArgs.builder()
+ *             .name("tunnel2")
+ *             .region("us-central1")
+ *             .vpnGateway(gateway.id())
+ *             .peerExternalGateway(externalVpnGw.id())
+ *             .peerExternalGatewayInterface(0)
+ *             .sharedSecret("a secret message")
+ *             .router(router.id().applyValue(id -> String.format(" %s", id)))
+ *             .vpnGatewayInterface(1)
+ *             .build());
+ * 
+ *         var routerInterface1 = new RouterInterface("routerInterface1", RouterInterfaceArgs.builder()
+ *             .name("router-interface1")
+ *             .router(router.name())
+ *             .region("us-central1")
+ *             .ipRange("169.254.0.1/30")
+ *             .vpnTunnel(tunnel1.name())
+ *             .build());
+ * 
+ *         var routerPeer1 = new RouterPeer("routerPeer1", RouterPeerArgs.builder()
+ *             .name("router-peer1")
+ *             .router(router.name())
+ *             .region("us-central1")
+ *             .peerIpAddress("169.254.0.2")
+ *             .peerAsn(64515)
+ *             .advertisedRoutePriority(100)
+ *             .interface_(routerInterface1.name())
+ *             .build());
+ * 
+ *         var routerInterface2 = new RouterInterface("routerInterface2", RouterInterfaceArgs.builder()
+ *             .name("router-interface2")
+ *             .router(router.name())
+ *             .region("us-central1")
+ *             .ipRange("169.254.1.1/30")
+ *             .vpnTunnel(tunnel2.name())
+ *             .build());
+ * 
+ *         var routerPeer2 = new RouterPeer("routerPeer2", RouterPeerArgs.builder()
+ *             .name("router-peer2")
+ *             .router(router.name())
+ *             .region("us-central1")
+ *             .peerIpAddress("169.254.1.2")
+ *             .peerAsn(64515)
+ *             .advertisedRoutePriority(100)
+ *             .interface_(routerInterface2.name())
+ *             .build());
+ * 
+ *         var tunnel1Spoke = new Spoke("tunnel1Spoke", SpokeArgs.builder()
+ *             .name("vpn-tunnel-1-spoke")
+ *             .location("us-central1")
+ *             .description("A sample spoke with a linked VPN Tunnel")
+ *             .labels(Map.of("label-one", "value-one"))
+ *             .hub(basicHub.id())
+ *             .linkedVpnTunnels(SpokeLinkedVpnTunnelsArgs.builder()
+ *                 .uris(tunnel1.selfLink())
+ *                 .siteToSiteDataTransfer(true)
+ *                 .includeImportRanges("ALL_IPV4_RANGES")
+ *                 .build())
+ *             .build());
+ * 
+ *         var tunnel2Spoke = new Spoke("tunnel2Spoke", SpokeArgs.builder()
+ *             .name("vpn-tunnel-2-spoke")
+ *             .location("us-central1")
+ *             .description("A sample spoke with a linked VPN Tunnel")
+ *             .labels(Map.of("label-one", "value-one"))
+ *             .hub(basicHub.id())
+ *             .linkedVpnTunnels(SpokeLinkedVpnTunnelsArgs.builder()
+ *                 .uris(tunnel2.selfLink())
+ *                 .siteToSiteDataTransfer(true)
+ *                 .includeImportRanges("ALL_IPV4_RANGES")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Network Connectivity Spoke Interconnect Attachment Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.networkconnectivity.Hub;
+ * import com.pulumi.gcp.networkconnectivity.HubArgs;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Router;
+ * import com.pulumi.gcp.compute.RouterArgs;
+ * import com.pulumi.gcp.compute.inputs.RouterBgpArgs;
+ * import com.pulumi.gcp.compute.InterconnectAttachment;
+ * import com.pulumi.gcp.compute.InterconnectAttachmentArgs;
+ * import com.pulumi.gcp.networkconnectivity.Spoke;
+ * import com.pulumi.gcp.networkconnectivity.SpokeArgs;
+ * import com.pulumi.gcp.networkconnectivity.inputs.SpokeLinkedInterconnectAttachmentsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var basicHub = new Hub("basicHub", HubArgs.builder()
+ *             .name("basic-hub1")
+ *             .description("A sample hub")
+ *             .labels(Map.of("label-two", "value-one"))
+ *             .build());
+ * 
+ *         var network = new Network("network", NetworkArgs.builder()
+ *             .name("basic-network")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var router = new Router("router", RouterArgs.builder()
+ *             .name("external-vpn-gateway")
+ *             .region("us-central1")
+ *             .network(network.name())
+ *             .bgp(RouterBgpArgs.builder()
+ *                 .asn(16550)
+ *                 .build())
+ *             .build());
+ * 
+ *         var interconnect_attachment = new InterconnectAttachment("interconnect-attachment", InterconnectAttachmentArgs.builder()
+ *             .name("partner-interconnect1")
+ *             .edgeAvailabilityDomain("AVAILABILITY_DOMAIN_1")
+ *             .type("PARTNER")
+ *             .router(router.id())
+ *             .mtu(1500)
+ *             .region("us-central1")
+ *             .build());
+ * 
+ *         var primary = new Spoke("primary", SpokeArgs.builder()
+ *             .name("interconnect-attachment-spoke")
+ *             .location("us-central1")
+ *             .description("A sample spoke with a linked Interconnect Attachment")
+ *             .labels(Map.of("label-one", "value-one"))
+ *             .hub(basicHub.id())
+ *             .linkedInterconnectAttachments(SpokeLinkedInterconnectAttachmentsArgs.builder()
+ *                 .uris(interconnect_attachment.selfLink())
+ *                 .siteToSiteDataTransfer(true)
+ *                 .includeImportRanges("ALL_IPV4_RANGES")
  *                 .build())
  *             .build());
  * 

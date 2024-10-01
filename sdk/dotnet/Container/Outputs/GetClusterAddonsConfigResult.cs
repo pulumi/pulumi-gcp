@@ -30,7 +30,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigResult> GcePersistentDiskCsiDriverConfigs;
         /// <summary>
-        /// The status of the Filestore CSI driver addon, which allows the usage of filestore instance as volumes. Defaults to disabled; set enabled = true to enable.
+        /// The status of the Filestore CSI driver addon, which allows the usage of filestore instance as volumes. Defaults to disabled for Standard clusters; set enabled = true to enable. It is enabled by default for Autopilot clusters; set enabled = true to enable it explicitly.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterAddonsConfigGcpFilestoreCsiDriverConfigResult> GcpFilestoreCsiDriverConfigs;
         /// <summary>

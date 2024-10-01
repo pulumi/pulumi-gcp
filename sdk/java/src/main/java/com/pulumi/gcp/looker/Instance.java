@@ -16,6 +16,7 @@ import com.pulumi.gcp.looker.outputs.InstanceDenyMaintenancePeriod;
 import com.pulumi.gcp.looker.outputs.InstanceEncryptionConfig;
 import com.pulumi.gcp.looker.outputs.InstanceMaintenanceWindow;
 import com.pulumi.gcp.looker.outputs.InstanceOauthConfig;
+import com.pulumi.gcp.looker.outputs.InstancePscConfig;
 import com.pulumi.gcp.looker.outputs.InstanceUserMetadata;
 import java.lang.Boolean;
 import java.lang.String;
@@ -367,6 +368,54 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Looker Instance Psc
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.looker.Instance;
+ * import com.pulumi.gcp.looker.InstanceArgs;
+ * import com.pulumi.gcp.looker.inputs.InstanceOauthConfigArgs;
+ * import com.pulumi.gcp.looker.inputs.InstancePscConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var looker_instance = new Instance("looker-instance", InstanceArgs.builder()
+ *             .name("my-instance")
+ *             .platformEdition("LOOKER_CORE_ENTERPRISE_ANNUAL")
+ *             .region("us-central1")
+ *             .privateIpEnabled(false)
+ *             .publicIpEnabled(false)
+ *             .pscEnabled(true)
+ *             .oauthConfig(InstanceOauthConfigArgs.builder()
+ *                 .clientId("my-client-id")
+ *                 .clientSecret("my-client-secret")
+ *                 .build())
+ *             .pscConfig(InstancePscConfigArgs.builder()
+ *                 .allowedVpcs("projects/test-project/global/networks/test")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -700,6 +749,36 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * Information for Private Service Connect (PSC) setup for a Looker instance.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="pscConfig", refs={InstancePscConfig.class}, tree="[0]")
+    private Output</* @Nullable */ InstancePscConfig> pscConfig;
+
+    /**
+     * @return Information for Private Service Connect (PSC) setup for a Looker instance.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<InstancePscConfig>> pscConfig() {
+        return Codegen.optional(this.pscConfig);
+    }
+    /**
+     * Whether Public Service Connect (PSC) is enabled on the Looker instance
+     * 
+     */
+    @Export(name="pscEnabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> pscEnabled;
+
+    /**
+     * @return Whether Public Service Connect (PSC) is enabled on the Looker instance
+     * 
+     */
+    public Output<Optional<Boolean>> pscEnabled() {
+        return Codegen.optional(this.pscEnabled);
     }
     /**
      * Whether public IP is enabled on the Looker instance.

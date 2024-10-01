@@ -365,15 +365,15 @@ public class RouterNat extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="drainNatIps", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> drainNatIps;
+    private Output<List<String>> drainNatIps;
 
     /**
      * @return A list of URLs of the IP resources to be drained. These IPs must be
      * valid static external IPs that have been assigned to the NAT.
      * 
      */
-    public Output<Optional<List<String>>> drainNatIps() {
-        return Codegen.optional(this.drainNatIps);
+    public Output<List<String>> drainNatIps() {
+        return this.drainNatIps;
     }
     /**
      * Enable Dynamic Port Allocation.
@@ -448,6 +448,22 @@ public class RouterNat extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Integer>> icmpIdleTimeoutSec() {
         return Codegen.optional(this.icmpIdleTimeoutSec);
+    }
+    /**
+     * Self-links of NAT IPs to be used as initial value for creation alongside a RouterNatAddress resource.
+     * Conflicts with natIps and drainNatIps. Only valid if natIpAllocateOption is set to MANUAL_ONLY.
+     * 
+     */
+    @Export(name="initialNatIps", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> initialNatIps;
+
+    /**
+     * @return Self-links of NAT IPs to be used as initial value for creation alongside a RouterNatAddress resource.
+     * Conflicts with natIps and drainNatIps. Only valid if natIpAllocateOption is set to MANUAL_ONLY.
+     * 
+     */
+    public Output<Optional<List<String>>> initialNatIps() {
+        return Codegen.optional(this.initialNatIps);
     }
     /**
      * Configuration for logging on NAT
@@ -540,7 +556,7 @@ public class RouterNat extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="natIps", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> natIps;
+    private Output<List<String>> natIps;
 
     /**
      * @return Self-links of NAT IPs. Only valid if natIpAllocateOption
@@ -550,8 +566,8 @@ public class RouterNat extends com.pulumi.resources.CustomResource {
      * the number of resources can be increased/decreased without triggering the `resourceInUseByAnotherResource` error.
      * 
      */
-    public Output<Optional<List<String>>> natIps() {
-        return Codegen.optional(this.natIps);
+    public Output<List<String>> natIps() {
+        return this.natIps;
     }
     /**
      * The ID of the project in which the resource belongs.

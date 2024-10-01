@@ -42,23 +42,21 @@ public final class InterconnectArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Customer name, to put in the Letter of Authorization as the party authorized to request a
-     * crossconnect.
-     * 
-     * ***
+     * crossconnect. This field is required for Dedicated and Partner Interconnect, should not be specified
+     * for cross-cloud interconnect.
      * 
      */
-    @Import(name="customerName", required=true)
-    private Output<String> customerName;
+    @Import(name="customerName")
+    private @Nullable Output<String> customerName;
 
     /**
      * @return Customer name, to put in the Letter of Authorization as the party authorized to request a
-     * crossconnect.
-     * 
-     * ***
+     * crossconnect. This field is required for Dedicated and Partner Interconnect, should not be specified
+     * for cross-cloud interconnect.
      * 
      */
-    public Output<String> customerName() {
-        return this.customerName;
+    public Optional<Output<String>> customerName() {
+        return Optional.ofNullable(this.customerName);
     }
 
     /**
@@ -83,6 +81,8 @@ public final class InterconnectArgs extends com.pulumi.resources.ResourceArgs {
      * - DEDICATED: A dedicated physical interconnection with the customer.
      *   Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
      * 
+     * ***
+     * 
      */
     @Import(name="interconnectType", required=true)
     private Output<String> interconnectType;
@@ -93,6 +93,8 @@ public final class InterconnectArgs extends com.pulumi.resources.ResourceArgs {
      * - PARTNER: A partner-managed interconnection shared between customers though a partner.
      * - DEDICATED: A dedicated physical interconnection with the customer.
      *   Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
+     * 
+     * ***
      * 
      */
     public Output<String> interconnectType() {
@@ -147,17 +149,19 @@ public final class InterconnectArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+     * Specifies the location inside Google&#39;s Networks, should not be passed in case of cross-cloud interconnect.
      * 
      */
-    @Import(name="location", required=true)
-    private Output<String> location;
+    @Import(name="location")
+    private @Nullable Output<String> location;
 
     /**
      * @return URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+     * Specifies the location inside Google&#39;s Networks, should not be passed in case of cross-cloud interconnect.
      * 
      */
-    public Output<String> location() {
-        return this.location;
+    public Optional<Output<String>> location() {
+        return Optional.ofNullable(this.location);
     }
 
     /**
@@ -381,23 +385,21 @@ public final class InterconnectArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param customerName Customer name, to put in the Letter of Authorization as the party authorized to request a
-         * crossconnect.
-         * 
-         * ***
+         * crossconnect. This field is required for Dedicated and Partner Interconnect, should not be specified
+         * for cross-cloud interconnect.
          * 
          * @return builder
          * 
          */
-        public Builder customerName(Output<String> customerName) {
+        public Builder customerName(@Nullable Output<String> customerName) {
             $.customerName = customerName;
             return this;
         }
 
         /**
          * @param customerName Customer name, to put in the Letter of Authorization as the party authorized to request a
-         * crossconnect.
-         * 
-         * ***
+         * crossconnect. This field is required for Dedicated and Partner Interconnect, should not be specified
+         * for cross-cloud interconnect.
          * 
          * @return builder
          * 
@@ -434,6 +436,8 @@ public final class InterconnectArgs extends com.pulumi.resources.ResourceArgs {
          * - DEDICATED: A dedicated physical interconnection with the customer.
          *   Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -448,6 +452,8 @@ public final class InterconnectArgs extends com.pulumi.resources.ResourceArgs {
          * - PARTNER: A partner-managed interconnection shared between customers though a partner.
          * - DEDICATED: A dedicated physical interconnection with the customer.
          *   Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
+         * 
+         * ***
          * 
          * @return builder
          * 
@@ -516,17 +522,19 @@ public final class InterconnectArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+         * Specifies the location inside Google&#39;s Networks, should not be passed in case of cross-cloud interconnect.
          * 
          * @return builder
          * 
          */
-        public Builder location(Output<String> location) {
+        public Builder location(@Nullable Output<String> location) {
             $.location = location;
             return this;
         }
 
         /**
          * @param location URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+         * Specifies the location inside Google&#39;s Networks, should not be passed in case of cross-cloud interconnect.
          * 
          * @return builder
          * 
@@ -755,17 +763,11 @@ public final class InterconnectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public InterconnectArgs build() {
-            if ($.customerName == null) {
-                throw new MissingRequiredPropertyException("InterconnectArgs", "customerName");
-            }
             if ($.interconnectType == null) {
                 throw new MissingRequiredPropertyException("InterconnectArgs", "interconnectType");
             }
             if ($.linkType == null) {
                 throw new MissingRequiredPropertyException("InterconnectArgs", "linkType");
-            }
-            if ($.location == null) {
-                throw new MissingRequiredPropertyException("InterconnectArgs", "location");
             }
             if ($.requestedLinkCount == null) {
                 throw new MissingRequiredPropertyException("InterconnectArgs", "requestedLinkCount");

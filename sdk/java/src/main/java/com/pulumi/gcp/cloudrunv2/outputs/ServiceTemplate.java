@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudrunv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateContainer;
+import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateNodeSelector;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateScaling;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateServiceMesh;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateVolume;
@@ -59,6 +60,12 @@ public final class ServiceTemplate {
      * 
      */
     private @Nullable Integer maxInstanceRequestConcurrency;
+    /**
+     * @return Node Selector describes the hardware requirements of the resources.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable ServiceTemplateNodeSelector nodeSelector;
     /**
      * @return The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
      * 
@@ -158,6 +165,14 @@ public final class ServiceTemplate {
         return Optional.ofNullable(this.maxInstanceRequestConcurrency);
     }
     /**
+     * @return Node Selector describes the hardware requirements of the resources.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<ServiceTemplateNodeSelector> nodeSelector() {
+        return Optional.ofNullable(this.nodeSelector);
+    }
+    /**
      * @return The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
      * 
      */
@@ -234,6 +249,7 @@ public final class ServiceTemplate {
         private @Nullable String executionEnvironment;
         private @Nullable Map<String,String> labels;
         private @Nullable Integer maxInstanceRequestConcurrency;
+        private @Nullable ServiceTemplateNodeSelector nodeSelector;
         private @Nullable String revision;
         private @Nullable ServiceTemplateScaling scaling;
         private @Nullable String serviceAccount;
@@ -251,6 +267,7 @@ public final class ServiceTemplate {
     	      this.executionEnvironment = defaults.executionEnvironment;
     	      this.labels = defaults.labels;
     	      this.maxInstanceRequestConcurrency = defaults.maxInstanceRequestConcurrency;
+    	      this.nodeSelector = defaults.nodeSelector;
     	      this.revision = defaults.revision;
     	      this.scaling = defaults.scaling;
     	      this.serviceAccount = defaults.serviceAccount;
@@ -298,6 +315,12 @@ public final class ServiceTemplate {
         public Builder maxInstanceRequestConcurrency(@Nullable Integer maxInstanceRequestConcurrency) {
 
             this.maxInstanceRequestConcurrency = maxInstanceRequestConcurrency;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder nodeSelector(@Nullable ServiceTemplateNodeSelector nodeSelector) {
+
+            this.nodeSelector = nodeSelector;
             return this;
         }
         @CustomType.Setter
@@ -359,6 +382,7 @@ public final class ServiceTemplate {
             _resultValue.executionEnvironment = executionEnvironment;
             _resultValue.labels = labels;
             _resultValue.maxInstanceRequestConcurrency = maxInstanceRequestConcurrency;
+            _resultValue.nodeSelector = nodeSelector;
             _resultValue.revision = revision;
             _resultValue.scaling = scaling;
             _resultValue.serviceAccount = serviceAccount;

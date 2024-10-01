@@ -2959,6 +2959,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "compute/regionNetworkFirewallPolicyWithRules",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/regionNetworkFirewallPolicyWithRules:RegionNetworkFirewallPolicyWithRules": "RegionNetworkFirewallPolicyWithRules"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "compute/regionPerInstanceConfig",
   "fqn": "pulumi_gcp.compute",
   "classes": {
@@ -3083,6 +3091,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.compute",
   "classes": {
    "gcp:compute/routerNat:RouterNat": "RouterNat"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/routerNatAddress",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/routerNatAddress:RouterNatAddress": "RouterNatAddress"
   }
  },
  {
@@ -5851,6 +5867,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.logging",
   "classes": {
    "gcp:logging/linkedDataset:LinkedDataset": "LinkedDataset"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "logging/logScope",
+  "fqn": "pulumi_gcp.logging",
+  "classes": {
+   "gcp:logging/logScope:LogScope": "LogScope"
   }
  },
  {

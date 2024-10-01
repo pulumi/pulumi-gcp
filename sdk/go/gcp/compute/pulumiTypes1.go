@@ -13,6 +13,1845 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type SnapshotIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// SnapshotIamBindingConditionInput is an input type that accepts SnapshotIamBindingConditionArgs and SnapshotIamBindingConditionOutput values.
+// You can construct a concrete instance of `SnapshotIamBindingConditionInput` via:
+//
+//	SnapshotIamBindingConditionArgs{...}
+type SnapshotIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToSnapshotIamBindingConditionOutput() SnapshotIamBindingConditionOutput
+	ToSnapshotIamBindingConditionOutputWithContext(context.Context) SnapshotIamBindingConditionOutput
+}
+
+type SnapshotIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (SnapshotIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnapshotIamBindingCondition)(nil)).Elem()
+}
+
+func (i SnapshotIamBindingConditionArgs) ToSnapshotIamBindingConditionOutput() SnapshotIamBindingConditionOutput {
+	return i.ToSnapshotIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i SnapshotIamBindingConditionArgs) ToSnapshotIamBindingConditionOutputWithContext(ctx context.Context) SnapshotIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotIamBindingConditionOutput)
+}
+
+func (i SnapshotIamBindingConditionArgs) ToSnapshotIamBindingConditionPtrOutput() SnapshotIamBindingConditionPtrOutput {
+	return i.ToSnapshotIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i SnapshotIamBindingConditionArgs) ToSnapshotIamBindingConditionPtrOutputWithContext(ctx context.Context) SnapshotIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotIamBindingConditionOutput).ToSnapshotIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// SnapshotIamBindingConditionPtrInput is an input type that accepts SnapshotIamBindingConditionArgs, SnapshotIamBindingConditionPtr and SnapshotIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `SnapshotIamBindingConditionPtrInput` via:
+//
+//	        SnapshotIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type SnapshotIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToSnapshotIamBindingConditionPtrOutput() SnapshotIamBindingConditionPtrOutput
+	ToSnapshotIamBindingConditionPtrOutputWithContext(context.Context) SnapshotIamBindingConditionPtrOutput
+}
+
+type snapshotIamBindingConditionPtrType SnapshotIamBindingConditionArgs
+
+func SnapshotIamBindingConditionPtr(v *SnapshotIamBindingConditionArgs) SnapshotIamBindingConditionPtrInput {
+	return (*snapshotIamBindingConditionPtrType)(v)
+}
+
+func (*snapshotIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SnapshotIamBindingCondition)(nil)).Elem()
+}
+
+func (i *snapshotIamBindingConditionPtrType) ToSnapshotIamBindingConditionPtrOutput() SnapshotIamBindingConditionPtrOutput {
+	return i.ToSnapshotIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *snapshotIamBindingConditionPtrType) ToSnapshotIamBindingConditionPtrOutputWithContext(ctx context.Context) SnapshotIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotIamBindingConditionPtrOutput)
+}
+
+type SnapshotIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (SnapshotIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnapshotIamBindingCondition)(nil)).Elem()
+}
+
+func (o SnapshotIamBindingConditionOutput) ToSnapshotIamBindingConditionOutput() SnapshotIamBindingConditionOutput {
+	return o
+}
+
+func (o SnapshotIamBindingConditionOutput) ToSnapshotIamBindingConditionOutputWithContext(ctx context.Context) SnapshotIamBindingConditionOutput {
+	return o
+}
+
+func (o SnapshotIamBindingConditionOutput) ToSnapshotIamBindingConditionPtrOutput() SnapshotIamBindingConditionPtrOutput {
+	return o.ToSnapshotIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o SnapshotIamBindingConditionOutput) ToSnapshotIamBindingConditionPtrOutputWithContext(ctx context.Context) SnapshotIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SnapshotIamBindingCondition) *SnapshotIamBindingCondition {
+		return &v
+	}).(SnapshotIamBindingConditionPtrOutput)
+}
+
+func (o SnapshotIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SnapshotIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o SnapshotIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v SnapshotIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o SnapshotIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v SnapshotIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type SnapshotIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (SnapshotIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SnapshotIamBindingCondition)(nil)).Elem()
+}
+
+func (o SnapshotIamBindingConditionPtrOutput) ToSnapshotIamBindingConditionPtrOutput() SnapshotIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o SnapshotIamBindingConditionPtrOutput) ToSnapshotIamBindingConditionPtrOutputWithContext(ctx context.Context) SnapshotIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o SnapshotIamBindingConditionPtrOutput) Elem() SnapshotIamBindingConditionOutput {
+	return o.ApplyT(func(v *SnapshotIamBindingCondition) SnapshotIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret SnapshotIamBindingCondition
+		return ret
+	}).(SnapshotIamBindingConditionOutput)
+}
+
+func (o SnapshotIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SnapshotIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SnapshotIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SnapshotIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SnapshotIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SnapshotIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type SnapshotIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// SnapshotIamMemberConditionInput is an input type that accepts SnapshotIamMemberConditionArgs and SnapshotIamMemberConditionOutput values.
+// You can construct a concrete instance of `SnapshotIamMemberConditionInput` via:
+//
+//	SnapshotIamMemberConditionArgs{...}
+type SnapshotIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToSnapshotIamMemberConditionOutput() SnapshotIamMemberConditionOutput
+	ToSnapshotIamMemberConditionOutputWithContext(context.Context) SnapshotIamMemberConditionOutput
+}
+
+type SnapshotIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (SnapshotIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnapshotIamMemberCondition)(nil)).Elem()
+}
+
+func (i SnapshotIamMemberConditionArgs) ToSnapshotIamMemberConditionOutput() SnapshotIamMemberConditionOutput {
+	return i.ToSnapshotIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i SnapshotIamMemberConditionArgs) ToSnapshotIamMemberConditionOutputWithContext(ctx context.Context) SnapshotIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotIamMemberConditionOutput)
+}
+
+func (i SnapshotIamMemberConditionArgs) ToSnapshotIamMemberConditionPtrOutput() SnapshotIamMemberConditionPtrOutput {
+	return i.ToSnapshotIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i SnapshotIamMemberConditionArgs) ToSnapshotIamMemberConditionPtrOutputWithContext(ctx context.Context) SnapshotIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotIamMemberConditionOutput).ToSnapshotIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// SnapshotIamMemberConditionPtrInput is an input type that accepts SnapshotIamMemberConditionArgs, SnapshotIamMemberConditionPtr and SnapshotIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `SnapshotIamMemberConditionPtrInput` via:
+//
+//	        SnapshotIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type SnapshotIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToSnapshotIamMemberConditionPtrOutput() SnapshotIamMemberConditionPtrOutput
+	ToSnapshotIamMemberConditionPtrOutputWithContext(context.Context) SnapshotIamMemberConditionPtrOutput
+}
+
+type snapshotIamMemberConditionPtrType SnapshotIamMemberConditionArgs
+
+func SnapshotIamMemberConditionPtr(v *SnapshotIamMemberConditionArgs) SnapshotIamMemberConditionPtrInput {
+	return (*snapshotIamMemberConditionPtrType)(v)
+}
+
+func (*snapshotIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SnapshotIamMemberCondition)(nil)).Elem()
+}
+
+func (i *snapshotIamMemberConditionPtrType) ToSnapshotIamMemberConditionPtrOutput() SnapshotIamMemberConditionPtrOutput {
+	return i.ToSnapshotIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *snapshotIamMemberConditionPtrType) ToSnapshotIamMemberConditionPtrOutputWithContext(ctx context.Context) SnapshotIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotIamMemberConditionPtrOutput)
+}
+
+type SnapshotIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (SnapshotIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnapshotIamMemberCondition)(nil)).Elem()
+}
+
+func (o SnapshotIamMemberConditionOutput) ToSnapshotIamMemberConditionOutput() SnapshotIamMemberConditionOutput {
+	return o
+}
+
+func (o SnapshotIamMemberConditionOutput) ToSnapshotIamMemberConditionOutputWithContext(ctx context.Context) SnapshotIamMemberConditionOutput {
+	return o
+}
+
+func (o SnapshotIamMemberConditionOutput) ToSnapshotIamMemberConditionPtrOutput() SnapshotIamMemberConditionPtrOutput {
+	return o.ToSnapshotIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o SnapshotIamMemberConditionOutput) ToSnapshotIamMemberConditionPtrOutputWithContext(ctx context.Context) SnapshotIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SnapshotIamMemberCondition) *SnapshotIamMemberCondition {
+		return &v
+	}).(SnapshotIamMemberConditionPtrOutput)
+}
+
+func (o SnapshotIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SnapshotIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o SnapshotIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v SnapshotIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o SnapshotIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v SnapshotIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type SnapshotIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (SnapshotIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SnapshotIamMemberCondition)(nil)).Elem()
+}
+
+func (o SnapshotIamMemberConditionPtrOutput) ToSnapshotIamMemberConditionPtrOutput() SnapshotIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o SnapshotIamMemberConditionPtrOutput) ToSnapshotIamMemberConditionPtrOutputWithContext(ctx context.Context) SnapshotIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o SnapshotIamMemberConditionPtrOutput) Elem() SnapshotIamMemberConditionOutput {
+	return o.ApplyT(func(v *SnapshotIamMemberCondition) SnapshotIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret SnapshotIamMemberCondition
+		return ret
+	}).(SnapshotIamMemberConditionOutput)
+}
+
+func (o SnapshotIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SnapshotIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SnapshotIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SnapshotIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SnapshotIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SnapshotIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type SnapshotSnapshotEncryptionKey struct {
+	// The name of the encryption key that is stored in Google Cloud KMS.
+	KmsKeySelfLink *string `pulumi:"kmsKeySelfLink"`
+	// The service account used for the encryption request for the given KMS key.
+	// If absent, the Compute Engine Service Agent service account is used.
+	KmsKeyServiceAccount *string `pulumi:"kmsKeyServiceAccount"`
+	// Specifies a 256-bit customer-supplied encryption key, encoded in
+	// RFC 4648 base64 to either encrypt or decrypt this resource.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	RawKey *string `pulumi:"rawKey"`
+	// (Output)
+	// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+	// encryption key that protects this resource.
+	Sha256 *string `pulumi:"sha256"`
+}
+
+// SnapshotSnapshotEncryptionKeyInput is an input type that accepts SnapshotSnapshotEncryptionKeyArgs and SnapshotSnapshotEncryptionKeyOutput values.
+// You can construct a concrete instance of `SnapshotSnapshotEncryptionKeyInput` via:
+//
+//	SnapshotSnapshotEncryptionKeyArgs{...}
+type SnapshotSnapshotEncryptionKeyInput interface {
+	pulumi.Input
+
+	ToSnapshotSnapshotEncryptionKeyOutput() SnapshotSnapshotEncryptionKeyOutput
+	ToSnapshotSnapshotEncryptionKeyOutputWithContext(context.Context) SnapshotSnapshotEncryptionKeyOutput
+}
+
+type SnapshotSnapshotEncryptionKeyArgs struct {
+	// The name of the encryption key that is stored in Google Cloud KMS.
+	KmsKeySelfLink pulumi.StringPtrInput `pulumi:"kmsKeySelfLink"`
+	// The service account used for the encryption request for the given KMS key.
+	// If absent, the Compute Engine Service Agent service account is used.
+	KmsKeyServiceAccount pulumi.StringPtrInput `pulumi:"kmsKeyServiceAccount"`
+	// Specifies a 256-bit customer-supplied encryption key, encoded in
+	// RFC 4648 base64 to either encrypt or decrypt this resource.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	RawKey pulumi.StringPtrInput `pulumi:"rawKey"`
+	// (Output)
+	// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+	// encryption key that protects this resource.
+	Sha256 pulumi.StringPtrInput `pulumi:"sha256"`
+}
+
+func (SnapshotSnapshotEncryptionKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnapshotSnapshotEncryptionKey)(nil)).Elem()
+}
+
+func (i SnapshotSnapshotEncryptionKeyArgs) ToSnapshotSnapshotEncryptionKeyOutput() SnapshotSnapshotEncryptionKeyOutput {
+	return i.ToSnapshotSnapshotEncryptionKeyOutputWithContext(context.Background())
+}
+
+func (i SnapshotSnapshotEncryptionKeyArgs) ToSnapshotSnapshotEncryptionKeyOutputWithContext(ctx context.Context) SnapshotSnapshotEncryptionKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotSnapshotEncryptionKeyOutput)
+}
+
+func (i SnapshotSnapshotEncryptionKeyArgs) ToSnapshotSnapshotEncryptionKeyPtrOutput() SnapshotSnapshotEncryptionKeyPtrOutput {
+	return i.ToSnapshotSnapshotEncryptionKeyPtrOutputWithContext(context.Background())
+}
+
+func (i SnapshotSnapshotEncryptionKeyArgs) ToSnapshotSnapshotEncryptionKeyPtrOutputWithContext(ctx context.Context) SnapshotSnapshotEncryptionKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotSnapshotEncryptionKeyOutput).ToSnapshotSnapshotEncryptionKeyPtrOutputWithContext(ctx)
+}
+
+// SnapshotSnapshotEncryptionKeyPtrInput is an input type that accepts SnapshotSnapshotEncryptionKeyArgs, SnapshotSnapshotEncryptionKeyPtr and SnapshotSnapshotEncryptionKeyPtrOutput values.
+// You can construct a concrete instance of `SnapshotSnapshotEncryptionKeyPtrInput` via:
+//
+//	        SnapshotSnapshotEncryptionKeyArgs{...}
+//
+//	or:
+//
+//	        nil
+type SnapshotSnapshotEncryptionKeyPtrInput interface {
+	pulumi.Input
+
+	ToSnapshotSnapshotEncryptionKeyPtrOutput() SnapshotSnapshotEncryptionKeyPtrOutput
+	ToSnapshotSnapshotEncryptionKeyPtrOutputWithContext(context.Context) SnapshotSnapshotEncryptionKeyPtrOutput
+}
+
+type snapshotSnapshotEncryptionKeyPtrType SnapshotSnapshotEncryptionKeyArgs
+
+func SnapshotSnapshotEncryptionKeyPtr(v *SnapshotSnapshotEncryptionKeyArgs) SnapshotSnapshotEncryptionKeyPtrInput {
+	return (*snapshotSnapshotEncryptionKeyPtrType)(v)
+}
+
+func (*snapshotSnapshotEncryptionKeyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SnapshotSnapshotEncryptionKey)(nil)).Elem()
+}
+
+func (i *snapshotSnapshotEncryptionKeyPtrType) ToSnapshotSnapshotEncryptionKeyPtrOutput() SnapshotSnapshotEncryptionKeyPtrOutput {
+	return i.ToSnapshotSnapshotEncryptionKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *snapshotSnapshotEncryptionKeyPtrType) ToSnapshotSnapshotEncryptionKeyPtrOutputWithContext(ctx context.Context) SnapshotSnapshotEncryptionKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotSnapshotEncryptionKeyPtrOutput)
+}
+
+type SnapshotSnapshotEncryptionKeyOutput struct{ *pulumi.OutputState }
+
+func (SnapshotSnapshotEncryptionKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnapshotSnapshotEncryptionKey)(nil)).Elem()
+}
+
+func (o SnapshotSnapshotEncryptionKeyOutput) ToSnapshotSnapshotEncryptionKeyOutput() SnapshotSnapshotEncryptionKeyOutput {
+	return o
+}
+
+func (o SnapshotSnapshotEncryptionKeyOutput) ToSnapshotSnapshotEncryptionKeyOutputWithContext(ctx context.Context) SnapshotSnapshotEncryptionKeyOutput {
+	return o
+}
+
+func (o SnapshotSnapshotEncryptionKeyOutput) ToSnapshotSnapshotEncryptionKeyPtrOutput() SnapshotSnapshotEncryptionKeyPtrOutput {
+	return o.ToSnapshotSnapshotEncryptionKeyPtrOutputWithContext(context.Background())
+}
+
+func (o SnapshotSnapshotEncryptionKeyOutput) ToSnapshotSnapshotEncryptionKeyPtrOutputWithContext(ctx context.Context) SnapshotSnapshotEncryptionKeyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SnapshotSnapshotEncryptionKey) *SnapshotSnapshotEncryptionKey {
+		return &v
+	}).(SnapshotSnapshotEncryptionKeyPtrOutput)
+}
+
+// The name of the encryption key that is stored in Google Cloud KMS.
+func (o SnapshotSnapshotEncryptionKeyOutput) KmsKeySelfLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SnapshotSnapshotEncryptionKey) *string { return v.KmsKeySelfLink }).(pulumi.StringPtrOutput)
+}
+
+// The service account used for the encryption request for the given KMS key.
+// If absent, the Compute Engine Service Agent service account is used.
+func (o SnapshotSnapshotEncryptionKeyOutput) KmsKeyServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SnapshotSnapshotEncryptionKey) *string { return v.KmsKeyServiceAccount }).(pulumi.StringPtrOutput)
+}
+
+// Specifies a 256-bit customer-supplied encryption key, encoded in
+// RFC 4648 base64 to either encrypt or decrypt this resource.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o SnapshotSnapshotEncryptionKeyOutput) RawKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SnapshotSnapshotEncryptionKey) *string { return v.RawKey }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+// encryption key that protects this resource.
+func (o SnapshotSnapshotEncryptionKeyOutput) Sha256() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SnapshotSnapshotEncryptionKey) *string { return v.Sha256 }).(pulumi.StringPtrOutput)
+}
+
+type SnapshotSnapshotEncryptionKeyPtrOutput struct{ *pulumi.OutputState }
+
+func (SnapshotSnapshotEncryptionKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SnapshotSnapshotEncryptionKey)(nil)).Elem()
+}
+
+func (o SnapshotSnapshotEncryptionKeyPtrOutput) ToSnapshotSnapshotEncryptionKeyPtrOutput() SnapshotSnapshotEncryptionKeyPtrOutput {
+	return o
+}
+
+func (o SnapshotSnapshotEncryptionKeyPtrOutput) ToSnapshotSnapshotEncryptionKeyPtrOutputWithContext(ctx context.Context) SnapshotSnapshotEncryptionKeyPtrOutput {
+	return o
+}
+
+func (o SnapshotSnapshotEncryptionKeyPtrOutput) Elem() SnapshotSnapshotEncryptionKeyOutput {
+	return o.ApplyT(func(v *SnapshotSnapshotEncryptionKey) SnapshotSnapshotEncryptionKey {
+		if v != nil {
+			return *v
+		}
+		var ret SnapshotSnapshotEncryptionKey
+		return ret
+	}).(SnapshotSnapshotEncryptionKeyOutput)
+}
+
+// The name of the encryption key that is stored in Google Cloud KMS.
+func (o SnapshotSnapshotEncryptionKeyPtrOutput) KmsKeySelfLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SnapshotSnapshotEncryptionKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeySelfLink
+	}).(pulumi.StringPtrOutput)
+}
+
+// The service account used for the encryption request for the given KMS key.
+// If absent, the Compute Engine Service Agent service account is used.
+func (o SnapshotSnapshotEncryptionKeyPtrOutput) KmsKeyServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SnapshotSnapshotEncryptionKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyServiceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies a 256-bit customer-supplied encryption key, encoded in
+// RFC 4648 base64 to either encrypt or decrypt this resource.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o SnapshotSnapshotEncryptionKeyPtrOutput) RawKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SnapshotSnapshotEncryptionKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RawKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
+// encryption key that protects this resource.
+func (o SnapshotSnapshotEncryptionKeyPtrOutput) Sha256() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SnapshotSnapshotEncryptionKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Sha256
+	}).(pulumi.StringPtrOutput)
+}
+
+type SnapshotSourceDiskEncryptionKey struct {
+	// The service account used for the encryption request for the given KMS key.
+	// If absent, the Compute Engine Service Agent service account is used.
+	KmsKeyServiceAccount *string `pulumi:"kmsKeyServiceAccount"`
+	// Specifies a 256-bit customer-supplied encryption key, encoded in
+	// RFC 4648 base64 to either encrypt or decrypt this resource.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	RawKey *string `pulumi:"rawKey"`
+}
+
+// SnapshotSourceDiskEncryptionKeyInput is an input type that accepts SnapshotSourceDiskEncryptionKeyArgs and SnapshotSourceDiskEncryptionKeyOutput values.
+// You can construct a concrete instance of `SnapshotSourceDiskEncryptionKeyInput` via:
+//
+//	SnapshotSourceDiskEncryptionKeyArgs{...}
+type SnapshotSourceDiskEncryptionKeyInput interface {
+	pulumi.Input
+
+	ToSnapshotSourceDiskEncryptionKeyOutput() SnapshotSourceDiskEncryptionKeyOutput
+	ToSnapshotSourceDiskEncryptionKeyOutputWithContext(context.Context) SnapshotSourceDiskEncryptionKeyOutput
+}
+
+type SnapshotSourceDiskEncryptionKeyArgs struct {
+	// The service account used for the encryption request for the given KMS key.
+	// If absent, the Compute Engine Service Agent service account is used.
+	KmsKeyServiceAccount pulumi.StringPtrInput `pulumi:"kmsKeyServiceAccount"`
+	// Specifies a 256-bit customer-supplied encryption key, encoded in
+	// RFC 4648 base64 to either encrypt or decrypt this resource.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	RawKey pulumi.StringPtrInput `pulumi:"rawKey"`
+}
+
+func (SnapshotSourceDiskEncryptionKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnapshotSourceDiskEncryptionKey)(nil)).Elem()
+}
+
+func (i SnapshotSourceDiskEncryptionKeyArgs) ToSnapshotSourceDiskEncryptionKeyOutput() SnapshotSourceDiskEncryptionKeyOutput {
+	return i.ToSnapshotSourceDiskEncryptionKeyOutputWithContext(context.Background())
+}
+
+func (i SnapshotSourceDiskEncryptionKeyArgs) ToSnapshotSourceDiskEncryptionKeyOutputWithContext(ctx context.Context) SnapshotSourceDiskEncryptionKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotSourceDiskEncryptionKeyOutput)
+}
+
+func (i SnapshotSourceDiskEncryptionKeyArgs) ToSnapshotSourceDiskEncryptionKeyPtrOutput() SnapshotSourceDiskEncryptionKeyPtrOutput {
+	return i.ToSnapshotSourceDiskEncryptionKeyPtrOutputWithContext(context.Background())
+}
+
+func (i SnapshotSourceDiskEncryptionKeyArgs) ToSnapshotSourceDiskEncryptionKeyPtrOutputWithContext(ctx context.Context) SnapshotSourceDiskEncryptionKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotSourceDiskEncryptionKeyOutput).ToSnapshotSourceDiskEncryptionKeyPtrOutputWithContext(ctx)
+}
+
+// SnapshotSourceDiskEncryptionKeyPtrInput is an input type that accepts SnapshotSourceDiskEncryptionKeyArgs, SnapshotSourceDiskEncryptionKeyPtr and SnapshotSourceDiskEncryptionKeyPtrOutput values.
+// You can construct a concrete instance of `SnapshotSourceDiskEncryptionKeyPtrInput` via:
+//
+//	        SnapshotSourceDiskEncryptionKeyArgs{...}
+//
+//	or:
+//
+//	        nil
+type SnapshotSourceDiskEncryptionKeyPtrInput interface {
+	pulumi.Input
+
+	ToSnapshotSourceDiskEncryptionKeyPtrOutput() SnapshotSourceDiskEncryptionKeyPtrOutput
+	ToSnapshotSourceDiskEncryptionKeyPtrOutputWithContext(context.Context) SnapshotSourceDiskEncryptionKeyPtrOutput
+}
+
+type snapshotSourceDiskEncryptionKeyPtrType SnapshotSourceDiskEncryptionKeyArgs
+
+func SnapshotSourceDiskEncryptionKeyPtr(v *SnapshotSourceDiskEncryptionKeyArgs) SnapshotSourceDiskEncryptionKeyPtrInput {
+	return (*snapshotSourceDiskEncryptionKeyPtrType)(v)
+}
+
+func (*snapshotSourceDiskEncryptionKeyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SnapshotSourceDiskEncryptionKey)(nil)).Elem()
+}
+
+func (i *snapshotSourceDiskEncryptionKeyPtrType) ToSnapshotSourceDiskEncryptionKeyPtrOutput() SnapshotSourceDiskEncryptionKeyPtrOutput {
+	return i.ToSnapshotSourceDiskEncryptionKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *snapshotSourceDiskEncryptionKeyPtrType) ToSnapshotSourceDiskEncryptionKeyPtrOutputWithContext(ctx context.Context) SnapshotSourceDiskEncryptionKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotSourceDiskEncryptionKeyPtrOutput)
+}
+
+type SnapshotSourceDiskEncryptionKeyOutput struct{ *pulumi.OutputState }
+
+func (SnapshotSourceDiskEncryptionKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnapshotSourceDiskEncryptionKey)(nil)).Elem()
+}
+
+func (o SnapshotSourceDiskEncryptionKeyOutput) ToSnapshotSourceDiskEncryptionKeyOutput() SnapshotSourceDiskEncryptionKeyOutput {
+	return o
+}
+
+func (o SnapshotSourceDiskEncryptionKeyOutput) ToSnapshotSourceDiskEncryptionKeyOutputWithContext(ctx context.Context) SnapshotSourceDiskEncryptionKeyOutput {
+	return o
+}
+
+func (o SnapshotSourceDiskEncryptionKeyOutput) ToSnapshotSourceDiskEncryptionKeyPtrOutput() SnapshotSourceDiskEncryptionKeyPtrOutput {
+	return o.ToSnapshotSourceDiskEncryptionKeyPtrOutputWithContext(context.Background())
+}
+
+func (o SnapshotSourceDiskEncryptionKeyOutput) ToSnapshotSourceDiskEncryptionKeyPtrOutputWithContext(ctx context.Context) SnapshotSourceDiskEncryptionKeyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SnapshotSourceDiskEncryptionKey) *SnapshotSourceDiskEncryptionKey {
+		return &v
+	}).(SnapshotSourceDiskEncryptionKeyPtrOutput)
+}
+
+// The service account used for the encryption request for the given KMS key.
+// If absent, the Compute Engine Service Agent service account is used.
+func (o SnapshotSourceDiskEncryptionKeyOutput) KmsKeyServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SnapshotSourceDiskEncryptionKey) *string { return v.KmsKeyServiceAccount }).(pulumi.StringPtrOutput)
+}
+
+// Specifies a 256-bit customer-supplied encryption key, encoded in
+// RFC 4648 base64 to either encrypt or decrypt this resource.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o SnapshotSourceDiskEncryptionKeyOutput) RawKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SnapshotSourceDiskEncryptionKey) *string { return v.RawKey }).(pulumi.StringPtrOutput)
+}
+
+type SnapshotSourceDiskEncryptionKeyPtrOutput struct{ *pulumi.OutputState }
+
+func (SnapshotSourceDiskEncryptionKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SnapshotSourceDiskEncryptionKey)(nil)).Elem()
+}
+
+func (o SnapshotSourceDiskEncryptionKeyPtrOutput) ToSnapshotSourceDiskEncryptionKeyPtrOutput() SnapshotSourceDiskEncryptionKeyPtrOutput {
+	return o
+}
+
+func (o SnapshotSourceDiskEncryptionKeyPtrOutput) ToSnapshotSourceDiskEncryptionKeyPtrOutputWithContext(ctx context.Context) SnapshotSourceDiskEncryptionKeyPtrOutput {
+	return o
+}
+
+func (o SnapshotSourceDiskEncryptionKeyPtrOutput) Elem() SnapshotSourceDiskEncryptionKeyOutput {
+	return o.ApplyT(func(v *SnapshotSourceDiskEncryptionKey) SnapshotSourceDiskEncryptionKey {
+		if v != nil {
+			return *v
+		}
+		var ret SnapshotSourceDiskEncryptionKey
+		return ret
+	}).(SnapshotSourceDiskEncryptionKeyOutput)
+}
+
+// The service account used for the encryption request for the given KMS key.
+// If absent, the Compute Engine Service Agent service account is used.
+func (o SnapshotSourceDiskEncryptionKeyPtrOutput) KmsKeyServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SnapshotSourceDiskEncryptionKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyServiceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies a 256-bit customer-supplied encryption key, encoded in
+// RFC 4648 base64 to either encrypt or decrypt this resource.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o SnapshotSourceDiskEncryptionKeyPtrOutput) RawKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SnapshotSourceDiskEncryptionKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RawKey
+	}).(pulumi.StringPtrOutput)
+}
+
+type SubnetworkIAMBindingCondition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+	// consider it to be an entirely different resource and will treat it as such.
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
+}
+
+// SubnetworkIAMBindingConditionInput is an input type that accepts SubnetworkIAMBindingConditionArgs and SubnetworkIAMBindingConditionOutput values.
+// You can construct a concrete instance of `SubnetworkIAMBindingConditionInput` via:
+//
+//	SubnetworkIAMBindingConditionArgs{...}
+type SubnetworkIAMBindingConditionInput interface {
+	pulumi.Input
+
+	ToSubnetworkIAMBindingConditionOutput() SubnetworkIAMBindingConditionOutput
+	ToSubnetworkIAMBindingConditionOutputWithContext(context.Context) SubnetworkIAMBindingConditionOutput
+}
+
+type SubnetworkIAMBindingConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+	// consider it to be an entirely different resource and will treat it as such.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (SubnetworkIAMBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetworkIAMBindingCondition)(nil)).Elem()
+}
+
+func (i SubnetworkIAMBindingConditionArgs) ToSubnetworkIAMBindingConditionOutput() SubnetworkIAMBindingConditionOutput {
+	return i.ToSubnetworkIAMBindingConditionOutputWithContext(context.Background())
+}
+
+func (i SubnetworkIAMBindingConditionArgs) ToSubnetworkIAMBindingConditionOutputWithContext(ctx context.Context) SubnetworkIAMBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkIAMBindingConditionOutput)
+}
+
+func (i SubnetworkIAMBindingConditionArgs) ToSubnetworkIAMBindingConditionPtrOutput() SubnetworkIAMBindingConditionPtrOutput {
+	return i.ToSubnetworkIAMBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i SubnetworkIAMBindingConditionArgs) ToSubnetworkIAMBindingConditionPtrOutputWithContext(ctx context.Context) SubnetworkIAMBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkIAMBindingConditionOutput).ToSubnetworkIAMBindingConditionPtrOutputWithContext(ctx)
+}
+
+// SubnetworkIAMBindingConditionPtrInput is an input type that accepts SubnetworkIAMBindingConditionArgs, SubnetworkIAMBindingConditionPtr and SubnetworkIAMBindingConditionPtrOutput values.
+// You can construct a concrete instance of `SubnetworkIAMBindingConditionPtrInput` via:
+//
+//	        SubnetworkIAMBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type SubnetworkIAMBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToSubnetworkIAMBindingConditionPtrOutput() SubnetworkIAMBindingConditionPtrOutput
+	ToSubnetworkIAMBindingConditionPtrOutputWithContext(context.Context) SubnetworkIAMBindingConditionPtrOutput
+}
+
+type subnetworkIAMBindingConditionPtrType SubnetworkIAMBindingConditionArgs
+
+func SubnetworkIAMBindingConditionPtr(v *SubnetworkIAMBindingConditionArgs) SubnetworkIAMBindingConditionPtrInput {
+	return (*subnetworkIAMBindingConditionPtrType)(v)
+}
+
+func (*subnetworkIAMBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubnetworkIAMBindingCondition)(nil)).Elem()
+}
+
+func (i *subnetworkIAMBindingConditionPtrType) ToSubnetworkIAMBindingConditionPtrOutput() SubnetworkIAMBindingConditionPtrOutput {
+	return i.ToSubnetworkIAMBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *subnetworkIAMBindingConditionPtrType) ToSubnetworkIAMBindingConditionPtrOutputWithContext(ctx context.Context) SubnetworkIAMBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkIAMBindingConditionPtrOutput)
+}
+
+type SubnetworkIAMBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (SubnetworkIAMBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetworkIAMBindingCondition)(nil)).Elem()
+}
+
+func (o SubnetworkIAMBindingConditionOutput) ToSubnetworkIAMBindingConditionOutput() SubnetworkIAMBindingConditionOutput {
+	return o
+}
+
+func (o SubnetworkIAMBindingConditionOutput) ToSubnetworkIAMBindingConditionOutputWithContext(ctx context.Context) SubnetworkIAMBindingConditionOutput {
+	return o
+}
+
+func (o SubnetworkIAMBindingConditionOutput) ToSubnetworkIAMBindingConditionPtrOutput() SubnetworkIAMBindingConditionPtrOutput {
+	return o.ToSubnetworkIAMBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o SubnetworkIAMBindingConditionOutput) ToSubnetworkIAMBindingConditionPtrOutputWithContext(ctx context.Context) SubnetworkIAMBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubnetworkIAMBindingCondition) *SubnetworkIAMBindingCondition {
+		return &v
+	}).(SubnetworkIAMBindingConditionPtrOutput)
+}
+
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+// consider it to be an entirely different resource and will treat it as such.
+func (o SubnetworkIAMBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubnetworkIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o SubnetworkIAMBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v SubnetworkIAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o SubnetworkIAMBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v SubnetworkIAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type SubnetworkIAMBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (SubnetworkIAMBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubnetworkIAMBindingCondition)(nil)).Elem()
+}
+
+func (o SubnetworkIAMBindingConditionPtrOutput) ToSubnetworkIAMBindingConditionPtrOutput() SubnetworkIAMBindingConditionPtrOutput {
+	return o
+}
+
+func (o SubnetworkIAMBindingConditionPtrOutput) ToSubnetworkIAMBindingConditionPtrOutputWithContext(ctx context.Context) SubnetworkIAMBindingConditionPtrOutput {
+	return o
+}
+
+func (o SubnetworkIAMBindingConditionPtrOutput) Elem() SubnetworkIAMBindingConditionOutput {
+	return o.ApplyT(func(v *SubnetworkIAMBindingCondition) SubnetworkIAMBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret SubnetworkIAMBindingCondition
+		return ret
+	}).(SubnetworkIAMBindingConditionOutput)
+}
+
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+// consider it to be an entirely different resource and will treat it as such.
+func (o SubnetworkIAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetworkIAMBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o SubnetworkIAMBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetworkIAMBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o SubnetworkIAMBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetworkIAMBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type SubnetworkIAMMemberCondition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+	// consider it to be an entirely different resource and will treat it as such.
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
+}
+
+// SubnetworkIAMMemberConditionInput is an input type that accepts SubnetworkIAMMemberConditionArgs and SubnetworkIAMMemberConditionOutput values.
+// You can construct a concrete instance of `SubnetworkIAMMemberConditionInput` via:
+//
+//	SubnetworkIAMMemberConditionArgs{...}
+type SubnetworkIAMMemberConditionInput interface {
+	pulumi.Input
+
+	ToSubnetworkIAMMemberConditionOutput() SubnetworkIAMMemberConditionOutput
+	ToSubnetworkIAMMemberConditionOutputWithContext(context.Context) SubnetworkIAMMemberConditionOutput
+}
+
+type SubnetworkIAMMemberConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+	// consider it to be an entirely different resource and will treat it as such.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (SubnetworkIAMMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetworkIAMMemberCondition)(nil)).Elem()
+}
+
+func (i SubnetworkIAMMemberConditionArgs) ToSubnetworkIAMMemberConditionOutput() SubnetworkIAMMemberConditionOutput {
+	return i.ToSubnetworkIAMMemberConditionOutputWithContext(context.Background())
+}
+
+func (i SubnetworkIAMMemberConditionArgs) ToSubnetworkIAMMemberConditionOutputWithContext(ctx context.Context) SubnetworkIAMMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkIAMMemberConditionOutput)
+}
+
+func (i SubnetworkIAMMemberConditionArgs) ToSubnetworkIAMMemberConditionPtrOutput() SubnetworkIAMMemberConditionPtrOutput {
+	return i.ToSubnetworkIAMMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i SubnetworkIAMMemberConditionArgs) ToSubnetworkIAMMemberConditionPtrOutputWithContext(ctx context.Context) SubnetworkIAMMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkIAMMemberConditionOutput).ToSubnetworkIAMMemberConditionPtrOutputWithContext(ctx)
+}
+
+// SubnetworkIAMMemberConditionPtrInput is an input type that accepts SubnetworkIAMMemberConditionArgs, SubnetworkIAMMemberConditionPtr and SubnetworkIAMMemberConditionPtrOutput values.
+// You can construct a concrete instance of `SubnetworkIAMMemberConditionPtrInput` via:
+//
+//	        SubnetworkIAMMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type SubnetworkIAMMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToSubnetworkIAMMemberConditionPtrOutput() SubnetworkIAMMemberConditionPtrOutput
+	ToSubnetworkIAMMemberConditionPtrOutputWithContext(context.Context) SubnetworkIAMMemberConditionPtrOutput
+}
+
+type subnetworkIAMMemberConditionPtrType SubnetworkIAMMemberConditionArgs
+
+func SubnetworkIAMMemberConditionPtr(v *SubnetworkIAMMemberConditionArgs) SubnetworkIAMMemberConditionPtrInput {
+	return (*subnetworkIAMMemberConditionPtrType)(v)
+}
+
+func (*subnetworkIAMMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubnetworkIAMMemberCondition)(nil)).Elem()
+}
+
+func (i *subnetworkIAMMemberConditionPtrType) ToSubnetworkIAMMemberConditionPtrOutput() SubnetworkIAMMemberConditionPtrOutput {
+	return i.ToSubnetworkIAMMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *subnetworkIAMMemberConditionPtrType) ToSubnetworkIAMMemberConditionPtrOutputWithContext(ctx context.Context) SubnetworkIAMMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkIAMMemberConditionPtrOutput)
+}
+
+type SubnetworkIAMMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (SubnetworkIAMMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetworkIAMMemberCondition)(nil)).Elem()
+}
+
+func (o SubnetworkIAMMemberConditionOutput) ToSubnetworkIAMMemberConditionOutput() SubnetworkIAMMemberConditionOutput {
+	return o
+}
+
+func (o SubnetworkIAMMemberConditionOutput) ToSubnetworkIAMMemberConditionOutputWithContext(ctx context.Context) SubnetworkIAMMemberConditionOutput {
+	return o
+}
+
+func (o SubnetworkIAMMemberConditionOutput) ToSubnetworkIAMMemberConditionPtrOutput() SubnetworkIAMMemberConditionPtrOutput {
+	return o.ToSubnetworkIAMMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o SubnetworkIAMMemberConditionOutput) ToSubnetworkIAMMemberConditionPtrOutputWithContext(ctx context.Context) SubnetworkIAMMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubnetworkIAMMemberCondition) *SubnetworkIAMMemberCondition {
+		return &v
+	}).(SubnetworkIAMMemberConditionPtrOutput)
+}
+
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+// consider it to be an entirely different resource and will treat it as such.
+func (o SubnetworkIAMMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubnetworkIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o SubnetworkIAMMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v SubnetworkIAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o SubnetworkIAMMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v SubnetworkIAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type SubnetworkIAMMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (SubnetworkIAMMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubnetworkIAMMemberCondition)(nil)).Elem()
+}
+
+func (o SubnetworkIAMMemberConditionPtrOutput) ToSubnetworkIAMMemberConditionPtrOutput() SubnetworkIAMMemberConditionPtrOutput {
+	return o
+}
+
+func (o SubnetworkIAMMemberConditionPtrOutput) ToSubnetworkIAMMemberConditionPtrOutputWithContext(ctx context.Context) SubnetworkIAMMemberConditionPtrOutput {
+	return o
+}
+
+func (o SubnetworkIAMMemberConditionPtrOutput) Elem() SubnetworkIAMMemberConditionOutput {
+	return o.ApplyT(func(v *SubnetworkIAMMemberCondition) SubnetworkIAMMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret SubnetworkIAMMemberCondition
+		return ret
+	}).(SubnetworkIAMMemberConditionOutput)
+}
+
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+// consider it to be an entirely different resource and will treat it as such.
+func (o SubnetworkIAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetworkIAMMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o SubnetworkIAMMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetworkIAMMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o SubnetworkIAMMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetworkIAMMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type SubnetworkLogConfig struct {
+	// Can only be specified if VPC flow logging for this subnetwork is enabled.
+	// Toggles the aggregation interval for collecting flow logs. Increasing the
+	// interval time will reduce the amount of generated flow logs for long
+	// lasting connections. Default is an interval of 5 seconds per connection.
+	// Default value is `INTERVAL_5_SEC`.
+	// Possible values are: `INTERVAL_5_SEC`, `INTERVAL_30_SEC`, `INTERVAL_1_MIN`, `INTERVAL_5_MIN`, `INTERVAL_10_MIN`, `INTERVAL_15_MIN`.
+	AggregationInterval *string `pulumi:"aggregationInterval"`
+	// Export filter used to define which VPC flow logs should be logged, as as CEL expression. See
+	// https://cloud.google.com/vpc/docs/flow-logs#filtering for details on how to format this field.
+	// The default value is 'true', which evaluates to include everything.
+	FilterExpr *string `pulumi:"filterExpr"`
+	// Can only be specified if VPC flow logging for this subnetwork is enabled.
+	// The value of the field must be in [0, 1]. Set the sampling rate of VPC
+	// flow logs within the subnetwork where 1.0 means all collected logs are
+	// reported and 0.0 means no logs are reported. Default is 0.5 which means
+	// half of all collected logs are reported.
+	FlowSampling *float64 `pulumi:"flowSampling"`
+	// Can only be specified if VPC flow logging for this subnetwork is enabled.
+	// Configures whether metadata fields should be added to the reported VPC
+	// flow logs.
+	// Default value is `INCLUDE_ALL_METADATA`.
+	// Possible values are: `EXCLUDE_ALL_METADATA`, `INCLUDE_ALL_METADATA`, `CUSTOM_METADATA`.
+	Metadata *string `pulumi:"metadata"`
+	// List of metadata fields that should be added to reported logs.
+	// Can only be specified if VPC flow logs for this subnetwork is enabled and "metadata" is set to CUSTOM_METADATA.
+	MetadataFields []string `pulumi:"metadataFields"`
+}
+
+// SubnetworkLogConfigInput is an input type that accepts SubnetworkLogConfigArgs and SubnetworkLogConfigOutput values.
+// You can construct a concrete instance of `SubnetworkLogConfigInput` via:
+//
+//	SubnetworkLogConfigArgs{...}
+type SubnetworkLogConfigInput interface {
+	pulumi.Input
+
+	ToSubnetworkLogConfigOutput() SubnetworkLogConfigOutput
+	ToSubnetworkLogConfigOutputWithContext(context.Context) SubnetworkLogConfigOutput
+}
+
+type SubnetworkLogConfigArgs struct {
+	// Can only be specified if VPC flow logging for this subnetwork is enabled.
+	// Toggles the aggregation interval for collecting flow logs. Increasing the
+	// interval time will reduce the amount of generated flow logs for long
+	// lasting connections. Default is an interval of 5 seconds per connection.
+	// Default value is `INTERVAL_5_SEC`.
+	// Possible values are: `INTERVAL_5_SEC`, `INTERVAL_30_SEC`, `INTERVAL_1_MIN`, `INTERVAL_5_MIN`, `INTERVAL_10_MIN`, `INTERVAL_15_MIN`.
+	AggregationInterval pulumi.StringPtrInput `pulumi:"aggregationInterval"`
+	// Export filter used to define which VPC flow logs should be logged, as as CEL expression. See
+	// https://cloud.google.com/vpc/docs/flow-logs#filtering for details on how to format this field.
+	// The default value is 'true', which evaluates to include everything.
+	FilterExpr pulumi.StringPtrInput `pulumi:"filterExpr"`
+	// Can only be specified if VPC flow logging for this subnetwork is enabled.
+	// The value of the field must be in [0, 1]. Set the sampling rate of VPC
+	// flow logs within the subnetwork where 1.0 means all collected logs are
+	// reported and 0.0 means no logs are reported. Default is 0.5 which means
+	// half of all collected logs are reported.
+	FlowSampling pulumi.Float64PtrInput `pulumi:"flowSampling"`
+	// Can only be specified if VPC flow logging for this subnetwork is enabled.
+	// Configures whether metadata fields should be added to the reported VPC
+	// flow logs.
+	// Default value is `INCLUDE_ALL_METADATA`.
+	// Possible values are: `EXCLUDE_ALL_METADATA`, `INCLUDE_ALL_METADATA`, `CUSTOM_METADATA`.
+	Metadata pulumi.StringPtrInput `pulumi:"metadata"`
+	// List of metadata fields that should be added to reported logs.
+	// Can only be specified if VPC flow logs for this subnetwork is enabled and "metadata" is set to CUSTOM_METADATA.
+	MetadataFields pulumi.StringArrayInput `pulumi:"metadataFields"`
+}
+
+func (SubnetworkLogConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetworkLogConfig)(nil)).Elem()
+}
+
+func (i SubnetworkLogConfigArgs) ToSubnetworkLogConfigOutput() SubnetworkLogConfigOutput {
+	return i.ToSubnetworkLogConfigOutputWithContext(context.Background())
+}
+
+func (i SubnetworkLogConfigArgs) ToSubnetworkLogConfigOutputWithContext(ctx context.Context) SubnetworkLogConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkLogConfigOutput)
+}
+
+func (i SubnetworkLogConfigArgs) ToSubnetworkLogConfigPtrOutput() SubnetworkLogConfigPtrOutput {
+	return i.ToSubnetworkLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SubnetworkLogConfigArgs) ToSubnetworkLogConfigPtrOutputWithContext(ctx context.Context) SubnetworkLogConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkLogConfigOutput).ToSubnetworkLogConfigPtrOutputWithContext(ctx)
+}
+
+// SubnetworkLogConfigPtrInput is an input type that accepts SubnetworkLogConfigArgs, SubnetworkLogConfigPtr and SubnetworkLogConfigPtrOutput values.
+// You can construct a concrete instance of `SubnetworkLogConfigPtrInput` via:
+//
+//	        SubnetworkLogConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type SubnetworkLogConfigPtrInput interface {
+	pulumi.Input
+
+	ToSubnetworkLogConfigPtrOutput() SubnetworkLogConfigPtrOutput
+	ToSubnetworkLogConfigPtrOutputWithContext(context.Context) SubnetworkLogConfigPtrOutput
+}
+
+type subnetworkLogConfigPtrType SubnetworkLogConfigArgs
+
+func SubnetworkLogConfigPtr(v *SubnetworkLogConfigArgs) SubnetworkLogConfigPtrInput {
+	return (*subnetworkLogConfigPtrType)(v)
+}
+
+func (*subnetworkLogConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubnetworkLogConfig)(nil)).Elem()
+}
+
+func (i *subnetworkLogConfigPtrType) ToSubnetworkLogConfigPtrOutput() SubnetworkLogConfigPtrOutput {
+	return i.ToSubnetworkLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *subnetworkLogConfigPtrType) ToSubnetworkLogConfigPtrOutputWithContext(ctx context.Context) SubnetworkLogConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkLogConfigPtrOutput)
+}
+
+type SubnetworkLogConfigOutput struct{ *pulumi.OutputState }
+
+func (SubnetworkLogConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetworkLogConfig)(nil)).Elem()
+}
+
+func (o SubnetworkLogConfigOutput) ToSubnetworkLogConfigOutput() SubnetworkLogConfigOutput {
+	return o
+}
+
+func (o SubnetworkLogConfigOutput) ToSubnetworkLogConfigOutputWithContext(ctx context.Context) SubnetworkLogConfigOutput {
+	return o
+}
+
+func (o SubnetworkLogConfigOutput) ToSubnetworkLogConfigPtrOutput() SubnetworkLogConfigPtrOutput {
+	return o.ToSubnetworkLogConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SubnetworkLogConfigOutput) ToSubnetworkLogConfigPtrOutputWithContext(ctx context.Context) SubnetworkLogConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubnetworkLogConfig) *SubnetworkLogConfig {
+		return &v
+	}).(SubnetworkLogConfigPtrOutput)
+}
+
+// Can only be specified if VPC flow logging for this subnetwork is enabled.
+// Toggles the aggregation interval for collecting flow logs. Increasing the
+// interval time will reduce the amount of generated flow logs for long
+// lasting connections. Default is an interval of 5 seconds per connection.
+// Default value is `INTERVAL_5_SEC`.
+// Possible values are: `INTERVAL_5_SEC`, `INTERVAL_30_SEC`, `INTERVAL_1_MIN`, `INTERVAL_5_MIN`, `INTERVAL_10_MIN`, `INTERVAL_15_MIN`.
+func (o SubnetworkLogConfigOutput) AggregationInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubnetworkLogConfig) *string { return v.AggregationInterval }).(pulumi.StringPtrOutput)
+}
+
+// Export filter used to define which VPC flow logs should be logged, as as CEL expression. See
+// https://cloud.google.com/vpc/docs/flow-logs#filtering for details on how to format this field.
+// The default value is 'true', which evaluates to include everything.
+func (o SubnetworkLogConfigOutput) FilterExpr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubnetworkLogConfig) *string { return v.FilterExpr }).(pulumi.StringPtrOutput)
+}
+
+// Can only be specified if VPC flow logging for this subnetwork is enabled.
+// The value of the field must be in [0, 1]. Set the sampling rate of VPC
+// flow logs within the subnetwork where 1.0 means all collected logs are
+// reported and 0.0 means no logs are reported. Default is 0.5 which means
+// half of all collected logs are reported.
+func (o SubnetworkLogConfigOutput) FlowSampling() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SubnetworkLogConfig) *float64 { return v.FlowSampling }).(pulumi.Float64PtrOutput)
+}
+
+// Can only be specified if VPC flow logging for this subnetwork is enabled.
+// Configures whether metadata fields should be added to the reported VPC
+// flow logs.
+// Default value is `INCLUDE_ALL_METADATA`.
+// Possible values are: `EXCLUDE_ALL_METADATA`, `INCLUDE_ALL_METADATA`, `CUSTOM_METADATA`.
+func (o SubnetworkLogConfigOutput) Metadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubnetworkLogConfig) *string { return v.Metadata }).(pulumi.StringPtrOutput)
+}
+
+// List of metadata fields that should be added to reported logs.
+// Can only be specified if VPC flow logs for this subnetwork is enabled and "metadata" is set to CUSTOM_METADATA.
+func (o SubnetworkLogConfigOutput) MetadataFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SubnetworkLogConfig) []string { return v.MetadataFields }).(pulumi.StringArrayOutput)
+}
+
+type SubnetworkLogConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SubnetworkLogConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubnetworkLogConfig)(nil)).Elem()
+}
+
+func (o SubnetworkLogConfigPtrOutput) ToSubnetworkLogConfigPtrOutput() SubnetworkLogConfigPtrOutput {
+	return o
+}
+
+func (o SubnetworkLogConfigPtrOutput) ToSubnetworkLogConfigPtrOutputWithContext(ctx context.Context) SubnetworkLogConfigPtrOutput {
+	return o
+}
+
+func (o SubnetworkLogConfigPtrOutput) Elem() SubnetworkLogConfigOutput {
+	return o.ApplyT(func(v *SubnetworkLogConfig) SubnetworkLogConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SubnetworkLogConfig
+		return ret
+	}).(SubnetworkLogConfigOutput)
+}
+
+// Can only be specified if VPC flow logging for this subnetwork is enabled.
+// Toggles the aggregation interval for collecting flow logs. Increasing the
+// interval time will reduce the amount of generated flow logs for long
+// lasting connections. Default is an interval of 5 seconds per connection.
+// Default value is `INTERVAL_5_SEC`.
+// Possible values are: `INTERVAL_5_SEC`, `INTERVAL_30_SEC`, `INTERVAL_1_MIN`, `INTERVAL_5_MIN`, `INTERVAL_10_MIN`, `INTERVAL_15_MIN`.
+func (o SubnetworkLogConfigPtrOutput) AggregationInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetworkLogConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AggregationInterval
+	}).(pulumi.StringPtrOutput)
+}
+
+// Export filter used to define which VPC flow logs should be logged, as as CEL expression. See
+// https://cloud.google.com/vpc/docs/flow-logs#filtering for details on how to format this field.
+// The default value is 'true', which evaluates to include everything.
+func (o SubnetworkLogConfigPtrOutput) FilterExpr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetworkLogConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FilterExpr
+	}).(pulumi.StringPtrOutput)
+}
+
+// Can only be specified if VPC flow logging for this subnetwork is enabled.
+// The value of the field must be in [0, 1]. Set the sampling rate of VPC
+// flow logs within the subnetwork where 1.0 means all collected logs are
+// reported and 0.0 means no logs are reported. Default is 0.5 which means
+// half of all collected logs are reported.
+func (o SubnetworkLogConfigPtrOutput) FlowSampling() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *SubnetworkLogConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.FlowSampling
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Can only be specified if VPC flow logging for this subnetwork is enabled.
+// Configures whether metadata fields should be added to the reported VPC
+// flow logs.
+// Default value is `INCLUDE_ALL_METADATA`.
+// Possible values are: `EXCLUDE_ALL_METADATA`, `INCLUDE_ALL_METADATA`, `CUSTOM_METADATA`.
+func (o SubnetworkLogConfigPtrOutput) Metadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetworkLogConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Metadata
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of metadata fields that should be added to reported logs.
+// Can only be specified if VPC flow logs for this subnetwork is enabled and "metadata" is set to CUSTOM_METADATA.
+func (o SubnetworkLogConfigPtrOutput) MetadataFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SubnetworkLogConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.MetadataFields
+	}).(pulumi.StringArrayOutput)
+}
+
+type SubnetworkSecondaryIpRange struct {
+	// The range of IP addresses belonging to this subnetwork secondary
+	// range. Provide this property when you create the subnetwork.
+	// Ranges must be unique and non-overlapping with all primary and
+	// secondary IP ranges within a network. Only IPv4 is supported.
+	// Field is optional when `reservedInternalRange` is defined, otherwise required.
+	IpCidrRange *string `pulumi:"ipCidrRange"`
+	// The name associated with this subnetwork secondary range, used
+	// when adding an alias IP range to a VM instance. The name must
+	// be 1-63 characters long, and comply with RFC1035. The name
+	// must be unique within the subnetwork.
+	RangeName string `pulumi:"rangeName"`
+	// The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
+	// E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
+	ReservedInternalRange *string `pulumi:"reservedInternalRange"`
+}
+
+// SubnetworkSecondaryIpRangeInput is an input type that accepts SubnetworkSecondaryIpRangeArgs and SubnetworkSecondaryIpRangeOutput values.
+// You can construct a concrete instance of `SubnetworkSecondaryIpRangeInput` via:
+//
+//	SubnetworkSecondaryIpRangeArgs{...}
+type SubnetworkSecondaryIpRangeInput interface {
+	pulumi.Input
+
+	ToSubnetworkSecondaryIpRangeOutput() SubnetworkSecondaryIpRangeOutput
+	ToSubnetworkSecondaryIpRangeOutputWithContext(context.Context) SubnetworkSecondaryIpRangeOutput
+}
+
+type SubnetworkSecondaryIpRangeArgs struct {
+	// The range of IP addresses belonging to this subnetwork secondary
+	// range. Provide this property when you create the subnetwork.
+	// Ranges must be unique and non-overlapping with all primary and
+	// secondary IP ranges within a network. Only IPv4 is supported.
+	// Field is optional when `reservedInternalRange` is defined, otherwise required.
+	IpCidrRange pulumi.StringPtrInput `pulumi:"ipCidrRange"`
+	// The name associated with this subnetwork secondary range, used
+	// when adding an alias IP range to a VM instance. The name must
+	// be 1-63 characters long, and comply with RFC1035. The name
+	// must be unique within the subnetwork.
+	RangeName pulumi.StringInput `pulumi:"rangeName"`
+	// The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
+	// E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
+	ReservedInternalRange pulumi.StringPtrInput `pulumi:"reservedInternalRange"`
+}
+
+func (SubnetworkSecondaryIpRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetworkSecondaryIpRange)(nil)).Elem()
+}
+
+func (i SubnetworkSecondaryIpRangeArgs) ToSubnetworkSecondaryIpRangeOutput() SubnetworkSecondaryIpRangeOutput {
+	return i.ToSubnetworkSecondaryIpRangeOutputWithContext(context.Background())
+}
+
+func (i SubnetworkSecondaryIpRangeArgs) ToSubnetworkSecondaryIpRangeOutputWithContext(ctx context.Context) SubnetworkSecondaryIpRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkSecondaryIpRangeOutput)
+}
+
+// SubnetworkSecondaryIpRangeArrayInput is an input type that accepts SubnetworkSecondaryIpRangeArray and SubnetworkSecondaryIpRangeArrayOutput values.
+// You can construct a concrete instance of `SubnetworkSecondaryIpRangeArrayInput` via:
+//
+//	SubnetworkSecondaryIpRangeArray{ SubnetworkSecondaryIpRangeArgs{...} }
+type SubnetworkSecondaryIpRangeArrayInput interface {
+	pulumi.Input
+
+	ToSubnetworkSecondaryIpRangeArrayOutput() SubnetworkSecondaryIpRangeArrayOutput
+	ToSubnetworkSecondaryIpRangeArrayOutputWithContext(context.Context) SubnetworkSecondaryIpRangeArrayOutput
+}
+
+type SubnetworkSecondaryIpRangeArray []SubnetworkSecondaryIpRangeInput
+
+func (SubnetworkSecondaryIpRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SubnetworkSecondaryIpRange)(nil)).Elem()
+}
+
+func (i SubnetworkSecondaryIpRangeArray) ToSubnetworkSecondaryIpRangeArrayOutput() SubnetworkSecondaryIpRangeArrayOutput {
+	return i.ToSubnetworkSecondaryIpRangeArrayOutputWithContext(context.Background())
+}
+
+func (i SubnetworkSecondaryIpRangeArray) ToSubnetworkSecondaryIpRangeArrayOutputWithContext(ctx context.Context) SubnetworkSecondaryIpRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkSecondaryIpRangeArrayOutput)
+}
+
+type SubnetworkSecondaryIpRangeOutput struct{ *pulumi.OutputState }
+
+func (SubnetworkSecondaryIpRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetworkSecondaryIpRange)(nil)).Elem()
+}
+
+func (o SubnetworkSecondaryIpRangeOutput) ToSubnetworkSecondaryIpRangeOutput() SubnetworkSecondaryIpRangeOutput {
+	return o
+}
+
+func (o SubnetworkSecondaryIpRangeOutput) ToSubnetworkSecondaryIpRangeOutputWithContext(ctx context.Context) SubnetworkSecondaryIpRangeOutput {
+	return o
+}
+
+// The range of IP addresses belonging to this subnetwork secondary
+// range. Provide this property when you create the subnetwork.
+// Ranges must be unique and non-overlapping with all primary and
+// secondary IP ranges within a network. Only IPv4 is supported.
+// Field is optional when `reservedInternalRange` is defined, otherwise required.
+func (o SubnetworkSecondaryIpRangeOutput) IpCidrRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubnetworkSecondaryIpRange) *string { return v.IpCidrRange }).(pulumi.StringPtrOutput)
+}
+
+// The name associated with this subnetwork secondary range, used
+// when adding an alias IP range to a VM instance. The name must
+// be 1-63 characters long, and comply with RFC1035. The name
+// must be unique within the subnetwork.
+func (o SubnetworkSecondaryIpRangeOutput) RangeName() pulumi.StringOutput {
+	return o.ApplyT(func(v SubnetworkSecondaryIpRange) string { return v.RangeName }).(pulumi.StringOutput)
+}
+
+// The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
+// E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
+func (o SubnetworkSecondaryIpRangeOutput) ReservedInternalRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubnetworkSecondaryIpRange) *string { return v.ReservedInternalRange }).(pulumi.StringPtrOutput)
+}
+
+type SubnetworkSecondaryIpRangeArrayOutput struct{ *pulumi.OutputState }
+
+func (SubnetworkSecondaryIpRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SubnetworkSecondaryIpRange)(nil)).Elem()
+}
+
+func (o SubnetworkSecondaryIpRangeArrayOutput) ToSubnetworkSecondaryIpRangeArrayOutput() SubnetworkSecondaryIpRangeArrayOutput {
+	return o
+}
+
+func (o SubnetworkSecondaryIpRangeArrayOutput) ToSubnetworkSecondaryIpRangeArrayOutputWithContext(ctx context.Context) SubnetworkSecondaryIpRangeArrayOutput {
+	return o
+}
+
+func (o SubnetworkSecondaryIpRangeArrayOutput) Index(i pulumi.IntInput) SubnetworkSecondaryIpRangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SubnetworkSecondaryIpRange {
+		return vs[0].([]SubnetworkSecondaryIpRange)[vs[1].(int)]
+	}).(SubnetworkSecondaryIpRangeOutput)
+}
+
+type URLMapDefaultCustomErrorResponsePolicy struct {
+	// Specifies rules for returning error responses.
+	// In a given policy, if you specify rules for both a range of error codes as well as rules for specific error codes then rules with specific error codes have a higher priority.
+	// For example, assume that you configure a rule for 401 (Un-authorized) code, and another for all 4 series error codes (4XX).
+	// If the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.
+	// Structure is documented below.
+	ErrorResponseRules []URLMapDefaultCustomErrorResponsePolicyErrorResponseRule `pulumi:"errorResponseRules"`
+	// The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:
+	// https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket
+	// compute/v1/projects/project/global/backendBuckets/myBackendBucket
+	// global/backendBuckets/myBackendBucket
+	// If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService.
+	// If load balancer cannot reach the backendBucket, a simple Not Found Error will be returned, with the original response code (or overrideResponseCode if configured).
+	ErrorService *string `pulumi:"errorService"`
+}
+
+// URLMapDefaultCustomErrorResponsePolicyInput is an input type that accepts URLMapDefaultCustomErrorResponsePolicyArgs and URLMapDefaultCustomErrorResponsePolicyOutput values.
+// You can construct a concrete instance of `URLMapDefaultCustomErrorResponsePolicyInput` via:
+//
+//	URLMapDefaultCustomErrorResponsePolicyArgs{...}
+type URLMapDefaultCustomErrorResponsePolicyInput interface {
+	pulumi.Input
+
+	ToURLMapDefaultCustomErrorResponsePolicyOutput() URLMapDefaultCustomErrorResponsePolicyOutput
+	ToURLMapDefaultCustomErrorResponsePolicyOutputWithContext(context.Context) URLMapDefaultCustomErrorResponsePolicyOutput
+}
+
+type URLMapDefaultCustomErrorResponsePolicyArgs struct {
+	// Specifies rules for returning error responses.
+	// In a given policy, if you specify rules for both a range of error codes as well as rules for specific error codes then rules with specific error codes have a higher priority.
+	// For example, assume that you configure a rule for 401 (Un-authorized) code, and another for all 4 series error codes (4XX).
+	// If the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.
+	// Structure is documented below.
+	ErrorResponseRules URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArrayInput `pulumi:"errorResponseRules"`
+	// The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:
+	// https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket
+	// compute/v1/projects/project/global/backendBuckets/myBackendBucket
+	// global/backendBuckets/myBackendBucket
+	// If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService.
+	// If load balancer cannot reach the backendBucket, a simple Not Found Error will be returned, with the original response code (or overrideResponseCode if configured).
+	ErrorService pulumi.StringPtrInput `pulumi:"errorService"`
+}
+
+func (URLMapDefaultCustomErrorResponsePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapDefaultCustomErrorResponsePolicy)(nil)).Elem()
+}
+
+func (i URLMapDefaultCustomErrorResponsePolicyArgs) ToURLMapDefaultCustomErrorResponsePolicyOutput() URLMapDefaultCustomErrorResponsePolicyOutput {
+	return i.ToURLMapDefaultCustomErrorResponsePolicyOutputWithContext(context.Background())
+}
+
+func (i URLMapDefaultCustomErrorResponsePolicyArgs) ToURLMapDefaultCustomErrorResponsePolicyOutputWithContext(ctx context.Context) URLMapDefaultCustomErrorResponsePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultCustomErrorResponsePolicyOutput)
+}
+
+func (i URLMapDefaultCustomErrorResponsePolicyArgs) ToURLMapDefaultCustomErrorResponsePolicyPtrOutput() URLMapDefaultCustomErrorResponsePolicyPtrOutput {
+	return i.ToURLMapDefaultCustomErrorResponsePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapDefaultCustomErrorResponsePolicyArgs) ToURLMapDefaultCustomErrorResponsePolicyPtrOutputWithContext(ctx context.Context) URLMapDefaultCustomErrorResponsePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultCustomErrorResponsePolicyOutput).ToURLMapDefaultCustomErrorResponsePolicyPtrOutputWithContext(ctx)
+}
+
+// URLMapDefaultCustomErrorResponsePolicyPtrInput is an input type that accepts URLMapDefaultCustomErrorResponsePolicyArgs, URLMapDefaultCustomErrorResponsePolicyPtr and URLMapDefaultCustomErrorResponsePolicyPtrOutput values.
+// You can construct a concrete instance of `URLMapDefaultCustomErrorResponsePolicyPtrInput` via:
+//
+//	        URLMapDefaultCustomErrorResponsePolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapDefaultCustomErrorResponsePolicyPtrInput interface {
+	pulumi.Input
+
+	ToURLMapDefaultCustomErrorResponsePolicyPtrOutput() URLMapDefaultCustomErrorResponsePolicyPtrOutput
+	ToURLMapDefaultCustomErrorResponsePolicyPtrOutputWithContext(context.Context) URLMapDefaultCustomErrorResponsePolicyPtrOutput
+}
+
+type urlmapDefaultCustomErrorResponsePolicyPtrType URLMapDefaultCustomErrorResponsePolicyArgs
+
+func URLMapDefaultCustomErrorResponsePolicyPtr(v *URLMapDefaultCustomErrorResponsePolicyArgs) URLMapDefaultCustomErrorResponsePolicyPtrInput {
+	return (*urlmapDefaultCustomErrorResponsePolicyPtrType)(v)
+}
+
+func (*urlmapDefaultCustomErrorResponsePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapDefaultCustomErrorResponsePolicy)(nil)).Elem()
+}
+
+func (i *urlmapDefaultCustomErrorResponsePolicyPtrType) ToURLMapDefaultCustomErrorResponsePolicyPtrOutput() URLMapDefaultCustomErrorResponsePolicyPtrOutput {
+	return i.ToURLMapDefaultCustomErrorResponsePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapDefaultCustomErrorResponsePolicyPtrType) ToURLMapDefaultCustomErrorResponsePolicyPtrOutputWithContext(ctx context.Context) URLMapDefaultCustomErrorResponsePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultCustomErrorResponsePolicyPtrOutput)
+}
+
+type URLMapDefaultCustomErrorResponsePolicyOutput struct{ *pulumi.OutputState }
+
+func (URLMapDefaultCustomErrorResponsePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapDefaultCustomErrorResponsePolicy)(nil)).Elem()
+}
+
+func (o URLMapDefaultCustomErrorResponsePolicyOutput) ToURLMapDefaultCustomErrorResponsePolicyOutput() URLMapDefaultCustomErrorResponsePolicyOutput {
+	return o
+}
+
+func (o URLMapDefaultCustomErrorResponsePolicyOutput) ToURLMapDefaultCustomErrorResponsePolicyOutputWithContext(ctx context.Context) URLMapDefaultCustomErrorResponsePolicyOutput {
+	return o
+}
+
+func (o URLMapDefaultCustomErrorResponsePolicyOutput) ToURLMapDefaultCustomErrorResponsePolicyPtrOutput() URLMapDefaultCustomErrorResponsePolicyPtrOutput {
+	return o.ToURLMapDefaultCustomErrorResponsePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapDefaultCustomErrorResponsePolicyOutput) ToURLMapDefaultCustomErrorResponsePolicyPtrOutputWithContext(ctx context.Context) URLMapDefaultCustomErrorResponsePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapDefaultCustomErrorResponsePolicy) *URLMapDefaultCustomErrorResponsePolicy {
+		return &v
+	}).(URLMapDefaultCustomErrorResponsePolicyPtrOutput)
+}
+
+// Specifies rules for returning error responses.
+// In a given policy, if you specify rules for both a range of error codes as well as rules for specific error codes then rules with specific error codes have a higher priority.
+// For example, assume that you configure a rule for 401 (Un-authorized) code, and another for all 4 series error codes (4XX).
+// If the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.
+// Structure is documented below.
+func (o URLMapDefaultCustomErrorResponsePolicyOutput) ErrorResponseRules() URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArrayOutput {
+	return o.ApplyT(func(v URLMapDefaultCustomErrorResponsePolicy) []URLMapDefaultCustomErrorResponsePolicyErrorResponseRule {
+		return v.ErrorResponseRules
+	}).(URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArrayOutput)
+}
+
+// The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:
+// https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket
+// compute/v1/projects/project/global/backendBuckets/myBackendBucket
+// global/backendBuckets/myBackendBucket
+// If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService.
+// If load balancer cannot reach the backendBucket, a simple Not Found Error will be returned, with the original response code (or overrideResponseCode if configured).
+func (o URLMapDefaultCustomErrorResponsePolicyOutput) ErrorService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultCustomErrorResponsePolicy) *string { return v.ErrorService }).(pulumi.StringPtrOutput)
+}
+
+type URLMapDefaultCustomErrorResponsePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapDefaultCustomErrorResponsePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapDefaultCustomErrorResponsePolicy)(nil)).Elem()
+}
+
+func (o URLMapDefaultCustomErrorResponsePolicyPtrOutput) ToURLMapDefaultCustomErrorResponsePolicyPtrOutput() URLMapDefaultCustomErrorResponsePolicyPtrOutput {
+	return o
+}
+
+func (o URLMapDefaultCustomErrorResponsePolicyPtrOutput) ToURLMapDefaultCustomErrorResponsePolicyPtrOutputWithContext(ctx context.Context) URLMapDefaultCustomErrorResponsePolicyPtrOutput {
+	return o
+}
+
+func (o URLMapDefaultCustomErrorResponsePolicyPtrOutput) Elem() URLMapDefaultCustomErrorResponsePolicyOutput {
+	return o.ApplyT(func(v *URLMapDefaultCustomErrorResponsePolicy) URLMapDefaultCustomErrorResponsePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapDefaultCustomErrorResponsePolicy
+		return ret
+	}).(URLMapDefaultCustomErrorResponsePolicyOutput)
+}
+
+// Specifies rules for returning error responses.
+// In a given policy, if you specify rules for both a range of error codes as well as rules for specific error codes then rules with specific error codes have a higher priority.
+// For example, assume that you configure a rule for 401 (Un-authorized) code, and another for all 4 series error codes (4XX).
+// If the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.
+// Structure is documented below.
+func (o URLMapDefaultCustomErrorResponsePolicyPtrOutput) ErrorResponseRules() URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArrayOutput {
+	return o.ApplyT(func(v *URLMapDefaultCustomErrorResponsePolicy) []URLMapDefaultCustomErrorResponsePolicyErrorResponseRule {
+		if v == nil {
+			return nil
+		}
+		return v.ErrorResponseRules
+	}).(URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArrayOutput)
+}
+
+// The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:
+// https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket
+// compute/v1/projects/project/global/backendBuckets/myBackendBucket
+// global/backendBuckets/myBackendBucket
+// If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService.
+// If load balancer cannot reach the backendBucket, a simple Not Found Error will be returned, with the original response code (or overrideResponseCode if configured).
+func (o URLMapDefaultCustomErrorResponsePolicyPtrOutput) ErrorService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapDefaultCustomErrorResponsePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ErrorService
+	}).(pulumi.StringPtrOutput)
+}
+
+type URLMapDefaultCustomErrorResponsePolicyErrorResponseRule struct {
+	// Valid values include:
+	// - A number between 400 and 599: For example 401 or 503, in which case the load balancer applies the policy if the error code exactly matches this value.
+	// - 5xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 500 to 599.
+	// - 4xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 400 to 499.
+	//   Values must be unique within matchResponseCodes and across all errorResponseRules of CustomErrorResponsePolicy.
+	MatchResponseCodes []string `pulumi:"matchResponseCodes"`
+	// The HTTP status code returned with the response containing the custom error content.
+	// If overrideResponseCode is not supplied, the same response code returned by the original backend bucket or backend service is returned to the client.
+	OverrideResponseCode *int `pulumi:"overrideResponseCode"`
+	// The full path to a file within backendBucket. For example: /errors/defaultError.html
+	// path must start with a leading slash. path cannot have trailing slashes.
+	// If the file is not available in backendBucket or the load balancer cannot reach the BackendBucket, a simple Not Found Error is returned to the client.
+	// The value must be from 1 to 1024 characters.
+	Path *string `pulumi:"path"`
+}
+
+// URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleInput is an input type that accepts URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArgs and URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleOutput values.
+// You can construct a concrete instance of `URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleInput` via:
+//
+//	URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArgs{...}
+type URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleInput interface {
+	pulumi.Input
+
+	ToURLMapDefaultCustomErrorResponsePolicyErrorResponseRuleOutput() URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleOutput
+	ToURLMapDefaultCustomErrorResponsePolicyErrorResponseRuleOutputWithContext(context.Context) URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleOutput
+}
+
+type URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArgs struct {
+	// Valid values include:
+	// - A number between 400 and 599: For example 401 or 503, in which case the load balancer applies the policy if the error code exactly matches this value.
+	// - 5xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 500 to 599.
+	// - 4xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 400 to 499.
+	//   Values must be unique within matchResponseCodes and across all errorResponseRules of CustomErrorResponsePolicy.
+	MatchResponseCodes pulumi.StringArrayInput `pulumi:"matchResponseCodes"`
+	// The HTTP status code returned with the response containing the custom error content.
+	// If overrideResponseCode is not supplied, the same response code returned by the original backend bucket or backend service is returned to the client.
+	OverrideResponseCode pulumi.IntPtrInput `pulumi:"overrideResponseCode"`
+	// The full path to a file within backendBucket. For example: /errors/defaultError.html
+	// path must start with a leading slash. path cannot have trailing slashes.
+	// If the file is not available in backendBucket or the load balancer cannot reach the BackendBucket, a simple Not Found Error is returned to the client.
+	// The value must be from 1 to 1024 characters.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+}
+
+func (URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapDefaultCustomErrorResponsePolicyErrorResponseRule)(nil)).Elem()
+}
+
+func (i URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArgs) ToURLMapDefaultCustomErrorResponsePolicyErrorResponseRuleOutput() URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleOutput {
+	return i.ToURLMapDefaultCustomErrorResponsePolicyErrorResponseRuleOutputWithContext(context.Background())
+}
+
+func (i URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArgs) ToURLMapDefaultCustomErrorResponsePolicyErrorResponseRuleOutputWithContext(ctx context.Context) URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleOutput)
+}
+
+// URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArrayInput is an input type that accepts URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArray and URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArrayOutput values.
+// You can construct a concrete instance of `URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArrayInput` via:
+//
+//	URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArray{ URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArgs{...} }
+type URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArrayInput interface {
+	pulumi.Input
+
+	ToURLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArrayOutput() URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArrayOutput
+	ToURLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArrayOutputWithContext(context.Context) URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArrayOutput
+}
+
+type URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArray []URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleInput
+
+func (URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]URLMapDefaultCustomErrorResponsePolicyErrorResponseRule)(nil)).Elem()
+}
+
+func (i URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArray) ToURLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArrayOutput() URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArrayOutput {
+	return i.ToURLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArrayOutputWithContext(context.Background())
+}
+
+func (i URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArray) ToURLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArrayOutputWithContext(ctx context.Context) URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArrayOutput)
+}
+
+type URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleOutput struct{ *pulumi.OutputState }
+
+func (URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapDefaultCustomErrorResponsePolicyErrorResponseRule)(nil)).Elem()
+}
+
+func (o URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleOutput) ToURLMapDefaultCustomErrorResponsePolicyErrorResponseRuleOutput() URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleOutput {
+	return o
+}
+
+func (o URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleOutput) ToURLMapDefaultCustomErrorResponsePolicyErrorResponseRuleOutputWithContext(ctx context.Context) URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleOutput {
+	return o
+}
+
+// Valid values include:
+//   - A number between 400 and 599: For example 401 or 503, in which case the load balancer applies the policy if the error code exactly matches this value.
+//   - 5xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 500 to 599.
+//   - 4xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 400 to 499.
+//     Values must be unique within matchResponseCodes and across all errorResponseRules of CustomErrorResponsePolicy.
+func (o URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleOutput) MatchResponseCodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v URLMapDefaultCustomErrorResponsePolicyErrorResponseRule) []string { return v.MatchResponseCodes }).(pulumi.StringArrayOutput)
+}
+
+// The HTTP status code returned with the response containing the custom error content.
+// If overrideResponseCode is not supplied, the same response code returned by the original backend bucket or backend service is returned to the client.
+func (o URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleOutput) OverrideResponseCode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultCustomErrorResponsePolicyErrorResponseRule) *int { return v.OverrideResponseCode }).(pulumi.IntPtrOutput)
+}
+
+// The full path to a file within backendBucket. For example: /errors/defaultError.html
+// path must start with a leading slash. path cannot have trailing slashes.
+// If the file is not available in backendBucket or the load balancer cannot reach the BackendBucket, a simple Not Found Error is returned to the client.
+// The value must be from 1 to 1024 characters.
+func (o URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapDefaultCustomErrorResponsePolicyErrorResponseRule) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+type URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]URLMapDefaultCustomErrorResponsePolicyErrorResponseRule)(nil)).Elem()
+}
+
+func (o URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArrayOutput) ToURLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArrayOutput() URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArrayOutput {
+	return o
+}
+
+func (o URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArrayOutput) ToURLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArrayOutputWithContext(ctx context.Context) URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArrayOutput {
+	return o
+}
+
+func (o URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArrayOutput) Index(i pulumi.IntInput) URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) URLMapDefaultCustomErrorResponsePolicyErrorResponseRule {
+		return vs[0].([]URLMapDefaultCustomErrorResponsePolicyErrorResponseRule)[vs[1].(int)]
+	}).(URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleOutput)
+}
+
 type URLMapDefaultRouteAction struct {
 	// The specification for allowing client side cross-origin requests. Please see
 	// [W3C Recommendation for Cross Origin Resource Sharing](https://www.w3.org/TR/cors/)
@@ -27813,6 +29652,8 @@ type GetInstanceScheduling struct {
 	// Specifies if the instance should be
 	// restarted if it was terminated by Compute Engine (not a user).
 	AutomaticRestart bool `pulumi:"automaticRestart"`
+	// Beta Time in seconds for host error detection.
+	HostErrorTimeoutSeconds int `pulumi:"hostErrorTimeoutSeconds"`
 	// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
 	InstanceTerminationAction string `pulumi:"instanceTerminationAction"`
 	// Specifies the maximum amount of time a Local Ssd Vm should wait while
@@ -27854,6 +29695,8 @@ type GetInstanceSchedulingArgs struct {
 	// Specifies if the instance should be
 	// restarted if it was terminated by Compute Engine (not a user).
 	AutomaticRestart pulumi.BoolInput `pulumi:"automaticRestart"`
+	// Beta Time in seconds for host error detection.
+	HostErrorTimeoutSeconds pulumi.IntInput `pulumi:"hostErrorTimeoutSeconds"`
 	// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
 	InstanceTerminationAction pulumi.StringInput `pulumi:"instanceTerminationAction"`
 	// Specifies the maximum amount of time a Local Ssd Vm should wait while
@@ -27935,6 +29778,11 @@ func (o GetInstanceSchedulingOutput) ToGetInstanceSchedulingOutputWithContext(ct
 // restarted if it was terminated by Compute Engine (not a user).
 func (o GetInstanceSchedulingOutput) AutomaticRestart() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstanceScheduling) bool { return v.AutomaticRestart }).(pulumi.BoolOutput)
+}
+
+// Beta Time in seconds for host error detection.
+func (o GetInstanceSchedulingOutput) HostErrorTimeoutSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceScheduling) int { return v.HostErrorTimeoutSeconds }).(pulumi.IntOutput)
 }
 
 // Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
@@ -30790,6 +32638,8 @@ type GetInstanceTemplateScheduling struct {
 	// automatically restarted if it is terminated by Compute Engine (not
 	// terminated by a user). This defaults to true.
 	AutomaticRestart bool `pulumi:"automaticRestart"`
+	// Beta Time in seconds for host error detection.
+	HostErrorTimeoutSeconds int `pulumi:"hostErrorTimeoutSeconds"`
 	// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
 	InstanceTerminationAction string `pulumi:"instanceTerminationAction"`
 	// Specifies the maximum amount of time a Local Ssd Vm should wait while
@@ -30838,6 +32688,8 @@ type GetInstanceTemplateSchedulingArgs struct {
 	// automatically restarted if it is terminated by Compute Engine (not
 	// terminated by a user). This defaults to true.
 	AutomaticRestart pulumi.BoolInput `pulumi:"automaticRestart"`
+	// Beta Time in seconds for host error detection.
+	HostErrorTimeoutSeconds pulumi.IntInput `pulumi:"hostErrorTimeoutSeconds"`
 	// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
 	InstanceTerminationAction pulumi.StringInput `pulumi:"instanceTerminationAction"`
 	// Specifies the maximum amount of time a Local Ssd Vm should wait while
@@ -30926,6 +32778,11 @@ func (o GetInstanceTemplateSchedulingOutput) ToGetInstanceTemplateSchedulingOutp
 // terminated by a user). This defaults to true.
 func (o GetInstanceTemplateSchedulingOutput) AutomaticRestart() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstanceTemplateScheduling) bool { return v.AutomaticRestart }).(pulumi.BoolOutput)
+}
+
+// Beta Time in seconds for host error detection.
+func (o GetInstanceTemplateSchedulingOutput) HostErrorTimeoutSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceTemplateScheduling) int { return v.HostErrorTimeoutSeconds }).(pulumi.IntOutput)
 }
 
 // Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
@@ -32857,6 +34714,1890 @@ func (o GetRegionInstanceGroupInstanceNamedPortArrayOutput) Index(i pulumi.IntIn
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceGroupInstanceNamedPort {
 		return vs[0].([]GetRegionInstanceGroupInstanceNamedPort)[vs[1].(int)]
 	}).(GetRegionInstanceGroupInstanceNamedPortOutput)
+}
+
+type GetRegionInstanceGroupManagerAllInstancesConfig struct {
+	// The label key-value pairs that you want to patch onto the instance,
+	Labels map[string]string `pulumi:"labels"`
+	// The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata,
+	Metadata map[string]string `pulumi:"metadata"`
+}
+
+// GetRegionInstanceGroupManagerAllInstancesConfigInput is an input type that accepts GetRegionInstanceGroupManagerAllInstancesConfigArgs and GetRegionInstanceGroupManagerAllInstancesConfigOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerAllInstancesConfigInput` via:
+//
+//	GetRegionInstanceGroupManagerAllInstancesConfigArgs{...}
+type GetRegionInstanceGroupManagerAllInstancesConfigInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerAllInstancesConfigOutput() GetRegionInstanceGroupManagerAllInstancesConfigOutput
+	ToGetRegionInstanceGroupManagerAllInstancesConfigOutputWithContext(context.Context) GetRegionInstanceGroupManagerAllInstancesConfigOutput
+}
+
+type GetRegionInstanceGroupManagerAllInstancesConfigArgs struct {
+	// The label key-value pairs that you want to patch onto the instance,
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata,
+	Metadata pulumi.StringMapInput `pulumi:"metadata"`
+}
+
+func (GetRegionInstanceGroupManagerAllInstancesConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerAllInstancesConfig)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerAllInstancesConfigArgs) ToGetRegionInstanceGroupManagerAllInstancesConfigOutput() GetRegionInstanceGroupManagerAllInstancesConfigOutput {
+	return i.ToGetRegionInstanceGroupManagerAllInstancesConfigOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerAllInstancesConfigArgs) ToGetRegionInstanceGroupManagerAllInstancesConfigOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerAllInstancesConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerAllInstancesConfigOutput)
+}
+
+// GetRegionInstanceGroupManagerAllInstancesConfigArrayInput is an input type that accepts GetRegionInstanceGroupManagerAllInstancesConfigArray and GetRegionInstanceGroupManagerAllInstancesConfigArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerAllInstancesConfigArrayInput` via:
+//
+//	GetRegionInstanceGroupManagerAllInstancesConfigArray{ GetRegionInstanceGroupManagerAllInstancesConfigArgs{...} }
+type GetRegionInstanceGroupManagerAllInstancesConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerAllInstancesConfigArrayOutput() GetRegionInstanceGroupManagerAllInstancesConfigArrayOutput
+	ToGetRegionInstanceGroupManagerAllInstancesConfigArrayOutputWithContext(context.Context) GetRegionInstanceGroupManagerAllInstancesConfigArrayOutput
+}
+
+type GetRegionInstanceGroupManagerAllInstancesConfigArray []GetRegionInstanceGroupManagerAllInstancesConfigInput
+
+func (GetRegionInstanceGroupManagerAllInstancesConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerAllInstancesConfig)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerAllInstancesConfigArray) ToGetRegionInstanceGroupManagerAllInstancesConfigArrayOutput() GetRegionInstanceGroupManagerAllInstancesConfigArrayOutput {
+	return i.ToGetRegionInstanceGroupManagerAllInstancesConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerAllInstancesConfigArray) ToGetRegionInstanceGroupManagerAllInstancesConfigArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerAllInstancesConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerAllInstancesConfigArrayOutput)
+}
+
+type GetRegionInstanceGroupManagerAllInstancesConfigOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerAllInstancesConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerAllInstancesConfig)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerAllInstancesConfigOutput) ToGetRegionInstanceGroupManagerAllInstancesConfigOutput() GetRegionInstanceGroupManagerAllInstancesConfigOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerAllInstancesConfigOutput) ToGetRegionInstanceGroupManagerAllInstancesConfigOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerAllInstancesConfigOutput {
+	return o
+}
+
+// The label key-value pairs that you want to patch onto the instance,
+func (o GetRegionInstanceGroupManagerAllInstancesConfigOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerAllInstancesConfig) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata,
+func (o GetRegionInstanceGroupManagerAllInstancesConfigOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerAllInstancesConfig) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+type GetRegionInstanceGroupManagerAllInstancesConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerAllInstancesConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerAllInstancesConfig)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerAllInstancesConfigArrayOutput) ToGetRegionInstanceGroupManagerAllInstancesConfigArrayOutput() GetRegionInstanceGroupManagerAllInstancesConfigArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerAllInstancesConfigArrayOutput) ToGetRegionInstanceGroupManagerAllInstancesConfigArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerAllInstancesConfigArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerAllInstancesConfigArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceGroupManagerAllInstancesConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceGroupManagerAllInstancesConfig {
+		return vs[0].([]GetRegionInstanceGroupManagerAllInstancesConfig)[vs[1].(int)]
+	}).(GetRegionInstanceGroupManagerAllInstancesConfigOutput)
+}
+
+type GetRegionInstanceGroupManagerAutoHealingPolicy struct {
+	// The health check resource that signals autohealing.
+	HealthCheck string `pulumi:"healthCheck"`
+	// The number of seconds that the managed instance group waits before it applies autohealing policies to new instances or recently recreated instances. Between 0 and 3600.
+	InitialDelaySec int `pulumi:"initialDelaySec"`
+}
+
+// GetRegionInstanceGroupManagerAutoHealingPolicyInput is an input type that accepts GetRegionInstanceGroupManagerAutoHealingPolicyArgs and GetRegionInstanceGroupManagerAutoHealingPolicyOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerAutoHealingPolicyInput` via:
+//
+//	GetRegionInstanceGroupManagerAutoHealingPolicyArgs{...}
+type GetRegionInstanceGroupManagerAutoHealingPolicyInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerAutoHealingPolicyOutput() GetRegionInstanceGroupManagerAutoHealingPolicyOutput
+	ToGetRegionInstanceGroupManagerAutoHealingPolicyOutputWithContext(context.Context) GetRegionInstanceGroupManagerAutoHealingPolicyOutput
+}
+
+type GetRegionInstanceGroupManagerAutoHealingPolicyArgs struct {
+	// The health check resource that signals autohealing.
+	HealthCheck pulumi.StringInput `pulumi:"healthCheck"`
+	// The number of seconds that the managed instance group waits before it applies autohealing policies to new instances or recently recreated instances. Between 0 and 3600.
+	InitialDelaySec pulumi.IntInput `pulumi:"initialDelaySec"`
+}
+
+func (GetRegionInstanceGroupManagerAutoHealingPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerAutoHealingPolicy)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerAutoHealingPolicyArgs) ToGetRegionInstanceGroupManagerAutoHealingPolicyOutput() GetRegionInstanceGroupManagerAutoHealingPolicyOutput {
+	return i.ToGetRegionInstanceGroupManagerAutoHealingPolicyOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerAutoHealingPolicyArgs) ToGetRegionInstanceGroupManagerAutoHealingPolicyOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerAutoHealingPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerAutoHealingPolicyOutput)
+}
+
+// GetRegionInstanceGroupManagerAutoHealingPolicyArrayInput is an input type that accepts GetRegionInstanceGroupManagerAutoHealingPolicyArray and GetRegionInstanceGroupManagerAutoHealingPolicyArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerAutoHealingPolicyArrayInput` via:
+//
+//	GetRegionInstanceGroupManagerAutoHealingPolicyArray{ GetRegionInstanceGroupManagerAutoHealingPolicyArgs{...} }
+type GetRegionInstanceGroupManagerAutoHealingPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerAutoHealingPolicyArrayOutput() GetRegionInstanceGroupManagerAutoHealingPolicyArrayOutput
+	ToGetRegionInstanceGroupManagerAutoHealingPolicyArrayOutputWithContext(context.Context) GetRegionInstanceGroupManagerAutoHealingPolicyArrayOutput
+}
+
+type GetRegionInstanceGroupManagerAutoHealingPolicyArray []GetRegionInstanceGroupManagerAutoHealingPolicyInput
+
+func (GetRegionInstanceGroupManagerAutoHealingPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerAutoHealingPolicy)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerAutoHealingPolicyArray) ToGetRegionInstanceGroupManagerAutoHealingPolicyArrayOutput() GetRegionInstanceGroupManagerAutoHealingPolicyArrayOutput {
+	return i.ToGetRegionInstanceGroupManagerAutoHealingPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerAutoHealingPolicyArray) ToGetRegionInstanceGroupManagerAutoHealingPolicyArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerAutoHealingPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerAutoHealingPolicyArrayOutput)
+}
+
+type GetRegionInstanceGroupManagerAutoHealingPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerAutoHealingPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerAutoHealingPolicy)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerAutoHealingPolicyOutput) ToGetRegionInstanceGroupManagerAutoHealingPolicyOutput() GetRegionInstanceGroupManagerAutoHealingPolicyOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerAutoHealingPolicyOutput) ToGetRegionInstanceGroupManagerAutoHealingPolicyOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerAutoHealingPolicyOutput {
+	return o
+}
+
+// The health check resource that signals autohealing.
+func (o GetRegionInstanceGroupManagerAutoHealingPolicyOutput) HealthCheck() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerAutoHealingPolicy) string { return v.HealthCheck }).(pulumi.StringOutput)
+}
+
+// The number of seconds that the managed instance group waits before it applies autohealing policies to new instances or recently recreated instances. Between 0 and 3600.
+func (o GetRegionInstanceGroupManagerAutoHealingPolicyOutput) InitialDelaySec() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerAutoHealingPolicy) int { return v.InitialDelaySec }).(pulumi.IntOutput)
+}
+
+type GetRegionInstanceGroupManagerAutoHealingPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerAutoHealingPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerAutoHealingPolicy)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerAutoHealingPolicyArrayOutput) ToGetRegionInstanceGroupManagerAutoHealingPolicyArrayOutput() GetRegionInstanceGroupManagerAutoHealingPolicyArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerAutoHealingPolicyArrayOutput) ToGetRegionInstanceGroupManagerAutoHealingPolicyArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerAutoHealingPolicyArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerAutoHealingPolicyArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceGroupManagerAutoHealingPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceGroupManagerAutoHealingPolicy {
+		return vs[0].([]GetRegionInstanceGroupManagerAutoHealingPolicy)[vs[1].(int)]
+	}).(GetRegionInstanceGroupManagerAutoHealingPolicyOutput)
+}
+
+type GetRegionInstanceGroupManagerInstanceLifecyclePolicy struct {
+	// Default behavior for all instance or health check failures.
+	DefaultActionOnFailure string `pulumi:"defaultActionOnFailure"`
+	// Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: YES, NO. If YES and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If NO (default), then updates are applied in accordance with the group's update policy type.
+	ForceUpdateOnRepair string `pulumi:"forceUpdateOnRepair"`
+}
+
+// GetRegionInstanceGroupManagerInstanceLifecyclePolicyInput is an input type that accepts GetRegionInstanceGroupManagerInstanceLifecyclePolicyArgs and GetRegionInstanceGroupManagerInstanceLifecyclePolicyOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerInstanceLifecyclePolicyInput` via:
+//
+//	GetRegionInstanceGroupManagerInstanceLifecyclePolicyArgs{...}
+type GetRegionInstanceGroupManagerInstanceLifecyclePolicyInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerInstanceLifecyclePolicyOutput() GetRegionInstanceGroupManagerInstanceLifecyclePolicyOutput
+	ToGetRegionInstanceGroupManagerInstanceLifecyclePolicyOutputWithContext(context.Context) GetRegionInstanceGroupManagerInstanceLifecyclePolicyOutput
+}
+
+type GetRegionInstanceGroupManagerInstanceLifecyclePolicyArgs struct {
+	// Default behavior for all instance or health check failures.
+	DefaultActionOnFailure pulumi.StringInput `pulumi:"defaultActionOnFailure"`
+	// Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: YES, NO. If YES and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If NO (default), then updates are applied in accordance with the group's update policy type.
+	ForceUpdateOnRepair pulumi.StringInput `pulumi:"forceUpdateOnRepair"`
+}
+
+func (GetRegionInstanceGroupManagerInstanceLifecyclePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceLifecyclePolicy)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerInstanceLifecyclePolicyArgs) ToGetRegionInstanceGroupManagerInstanceLifecyclePolicyOutput() GetRegionInstanceGroupManagerInstanceLifecyclePolicyOutput {
+	return i.ToGetRegionInstanceGroupManagerInstanceLifecyclePolicyOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerInstanceLifecyclePolicyArgs) ToGetRegionInstanceGroupManagerInstanceLifecyclePolicyOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerInstanceLifecyclePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerInstanceLifecyclePolicyOutput)
+}
+
+// GetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayInput is an input type that accepts GetRegionInstanceGroupManagerInstanceLifecyclePolicyArray and GetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayInput` via:
+//
+//	GetRegionInstanceGroupManagerInstanceLifecyclePolicyArray{ GetRegionInstanceGroupManagerInstanceLifecyclePolicyArgs{...} }
+type GetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayOutput() GetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayOutput
+	ToGetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayOutputWithContext(context.Context) GetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayOutput
+}
+
+type GetRegionInstanceGroupManagerInstanceLifecyclePolicyArray []GetRegionInstanceGroupManagerInstanceLifecyclePolicyInput
+
+func (GetRegionInstanceGroupManagerInstanceLifecyclePolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerInstanceLifecyclePolicy)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerInstanceLifecyclePolicyArray) ToGetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayOutput() GetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayOutput {
+	return i.ToGetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerInstanceLifecyclePolicyArray) ToGetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayOutput)
+}
+
+type GetRegionInstanceGroupManagerInstanceLifecyclePolicyOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerInstanceLifecyclePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceLifecyclePolicy)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerInstanceLifecyclePolicyOutput) ToGetRegionInstanceGroupManagerInstanceLifecyclePolicyOutput() GetRegionInstanceGroupManagerInstanceLifecyclePolicyOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerInstanceLifecyclePolicyOutput) ToGetRegionInstanceGroupManagerInstanceLifecyclePolicyOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerInstanceLifecyclePolicyOutput {
+	return o
+}
+
+// Default behavior for all instance or health check failures.
+func (o GetRegionInstanceGroupManagerInstanceLifecyclePolicyOutput) DefaultActionOnFailure() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceLifecyclePolicy) string { return v.DefaultActionOnFailure }).(pulumi.StringOutput)
+}
+
+// Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: YES, NO. If YES and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If NO (default), then updates are applied in accordance with the group's update policy type.
+func (o GetRegionInstanceGroupManagerInstanceLifecyclePolicyOutput) ForceUpdateOnRepair() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerInstanceLifecyclePolicy) string { return v.ForceUpdateOnRepair }).(pulumi.StringOutput)
+}
+
+type GetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerInstanceLifecyclePolicy)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayOutput) ToGetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayOutput() GetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayOutput) ToGetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceGroupManagerInstanceLifecyclePolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceGroupManagerInstanceLifecyclePolicy {
+		return vs[0].([]GetRegionInstanceGroupManagerInstanceLifecyclePolicy)[vs[1].(int)]
+	}).(GetRegionInstanceGroupManagerInstanceLifecyclePolicyOutput)
+}
+
+type GetRegionInstanceGroupManagerNamedPort struct {
+	// The name of the instance group. Either `name` or `selfLink` must be provided.
+	Name string `pulumi:"name"`
+	// The port number.
+	Port int `pulumi:"port"`
+}
+
+// GetRegionInstanceGroupManagerNamedPortInput is an input type that accepts GetRegionInstanceGroupManagerNamedPortArgs and GetRegionInstanceGroupManagerNamedPortOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerNamedPortInput` via:
+//
+//	GetRegionInstanceGroupManagerNamedPortArgs{...}
+type GetRegionInstanceGroupManagerNamedPortInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerNamedPortOutput() GetRegionInstanceGroupManagerNamedPortOutput
+	ToGetRegionInstanceGroupManagerNamedPortOutputWithContext(context.Context) GetRegionInstanceGroupManagerNamedPortOutput
+}
+
+type GetRegionInstanceGroupManagerNamedPortArgs struct {
+	// The name of the instance group. Either `name` or `selfLink` must be provided.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The port number.
+	Port pulumi.IntInput `pulumi:"port"`
+}
+
+func (GetRegionInstanceGroupManagerNamedPortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerNamedPort)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerNamedPortArgs) ToGetRegionInstanceGroupManagerNamedPortOutput() GetRegionInstanceGroupManagerNamedPortOutput {
+	return i.ToGetRegionInstanceGroupManagerNamedPortOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerNamedPortArgs) ToGetRegionInstanceGroupManagerNamedPortOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerNamedPortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerNamedPortOutput)
+}
+
+// GetRegionInstanceGroupManagerNamedPortArrayInput is an input type that accepts GetRegionInstanceGroupManagerNamedPortArray and GetRegionInstanceGroupManagerNamedPortArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerNamedPortArrayInput` via:
+//
+//	GetRegionInstanceGroupManagerNamedPortArray{ GetRegionInstanceGroupManagerNamedPortArgs{...} }
+type GetRegionInstanceGroupManagerNamedPortArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerNamedPortArrayOutput() GetRegionInstanceGroupManagerNamedPortArrayOutput
+	ToGetRegionInstanceGroupManagerNamedPortArrayOutputWithContext(context.Context) GetRegionInstanceGroupManagerNamedPortArrayOutput
+}
+
+type GetRegionInstanceGroupManagerNamedPortArray []GetRegionInstanceGroupManagerNamedPortInput
+
+func (GetRegionInstanceGroupManagerNamedPortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerNamedPort)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerNamedPortArray) ToGetRegionInstanceGroupManagerNamedPortArrayOutput() GetRegionInstanceGroupManagerNamedPortArrayOutput {
+	return i.ToGetRegionInstanceGroupManagerNamedPortArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerNamedPortArray) ToGetRegionInstanceGroupManagerNamedPortArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerNamedPortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerNamedPortArrayOutput)
+}
+
+type GetRegionInstanceGroupManagerNamedPortOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerNamedPortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerNamedPort)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerNamedPortOutput) ToGetRegionInstanceGroupManagerNamedPortOutput() GetRegionInstanceGroupManagerNamedPortOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerNamedPortOutput) ToGetRegionInstanceGroupManagerNamedPortOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerNamedPortOutput {
+	return o
+}
+
+// The name of the instance group. Either `name` or `selfLink` must be provided.
+func (o GetRegionInstanceGroupManagerNamedPortOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerNamedPort) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The port number.
+func (o GetRegionInstanceGroupManagerNamedPortOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerNamedPort) int { return v.Port }).(pulumi.IntOutput)
+}
+
+type GetRegionInstanceGroupManagerNamedPortArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerNamedPortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerNamedPort)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerNamedPortArrayOutput) ToGetRegionInstanceGroupManagerNamedPortArrayOutput() GetRegionInstanceGroupManagerNamedPortArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerNamedPortArrayOutput) ToGetRegionInstanceGroupManagerNamedPortArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerNamedPortArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerNamedPortArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceGroupManagerNamedPortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceGroupManagerNamedPort {
+		return vs[0].([]GetRegionInstanceGroupManagerNamedPort)[vs[1].(int)]
+	}).(GetRegionInstanceGroupManagerNamedPortOutput)
+}
+
+type GetRegionInstanceGroupManagerParam struct {
+	// Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456.
+	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
+}
+
+// GetRegionInstanceGroupManagerParamInput is an input type that accepts GetRegionInstanceGroupManagerParamArgs and GetRegionInstanceGroupManagerParamOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerParamInput` via:
+//
+//	GetRegionInstanceGroupManagerParamArgs{...}
+type GetRegionInstanceGroupManagerParamInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerParamOutput() GetRegionInstanceGroupManagerParamOutput
+	ToGetRegionInstanceGroupManagerParamOutputWithContext(context.Context) GetRegionInstanceGroupManagerParamOutput
+}
+
+type GetRegionInstanceGroupManagerParamArgs struct {
+	// Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456.
+	ResourceManagerTags pulumi.StringMapInput `pulumi:"resourceManagerTags"`
+}
+
+func (GetRegionInstanceGroupManagerParamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerParam)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerParamArgs) ToGetRegionInstanceGroupManagerParamOutput() GetRegionInstanceGroupManagerParamOutput {
+	return i.ToGetRegionInstanceGroupManagerParamOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerParamArgs) ToGetRegionInstanceGroupManagerParamOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerParamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerParamOutput)
+}
+
+// GetRegionInstanceGroupManagerParamArrayInput is an input type that accepts GetRegionInstanceGroupManagerParamArray and GetRegionInstanceGroupManagerParamArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerParamArrayInput` via:
+//
+//	GetRegionInstanceGroupManagerParamArray{ GetRegionInstanceGroupManagerParamArgs{...} }
+type GetRegionInstanceGroupManagerParamArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerParamArrayOutput() GetRegionInstanceGroupManagerParamArrayOutput
+	ToGetRegionInstanceGroupManagerParamArrayOutputWithContext(context.Context) GetRegionInstanceGroupManagerParamArrayOutput
+}
+
+type GetRegionInstanceGroupManagerParamArray []GetRegionInstanceGroupManagerParamInput
+
+func (GetRegionInstanceGroupManagerParamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerParam)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerParamArray) ToGetRegionInstanceGroupManagerParamArrayOutput() GetRegionInstanceGroupManagerParamArrayOutput {
+	return i.ToGetRegionInstanceGroupManagerParamArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerParamArray) ToGetRegionInstanceGroupManagerParamArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerParamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerParamArrayOutput)
+}
+
+type GetRegionInstanceGroupManagerParamOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerParamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerParam)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerParamOutput) ToGetRegionInstanceGroupManagerParamOutput() GetRegionInstanceGroupManagerParamOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerParamOutput) ToGetRegionInstanceGroupManagerParamOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerParamOutput {
+	return o
+}
+
+// Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456.
+func (o GetRegionInstanceGroupManagerParamOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerParam) map[string]string { return v.ResourceManagerTags }).(pulumi.StringMapOutput)
+}
+
+type GetRegionInstanceGroupManagerParamArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerParamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerParam)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerParamArrayOutput) ToGetRegionInstanceGroupManagerParamArrayOutput() GetRegionInstanceGroupManagerParamArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerParamArrayOutput) ToGetRegionInstanceGroupManagerParamArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerParamArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerParamArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceGroupManagerParamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceGroupManagerParam {
+		return vs[0].([]GetRegionInstanceGroupManagerParam)[vs[1].(int)]
+	}).(GetRegionInstanceGroupManagerParamOutput)
+}
+
+type GetRegionInstanceGroupManagerStandbyPolicy struct {
+	// Specifies the number of seconds that the MIG should wait to suspend or stop a VM after that VM was created. The initial delay gives the initialization script the time to prepare your VM for a quick scale out. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
+	InitialDelaySec int `pulumi:"initialDelaySec"`
+	// Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. The default mode is "MANUAL".
+	Mode string `pulumi:"mode"`
+}
+
+// GetRegionInstanceGroupManagerStandbyPolicyInput is an input type that accepts GetRegionInstanceGroupManagerStandbyPolicyArgs and GetRegionInstanceGroupManagerStandbyPolicyOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerStandbyPolicyInput` via:
+//
+//	GetRegionInstanceGroupManagerStandbyPolicyArgs{...}
+type GetRegionInstanceGroupManagerStandbyPolicyInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerStandbyPolicyOutput() GetRegionInstanceGroupManagerStandbyPolicyOutput
+	ToGetRegionInstanceGroupManagerStandbyPolicyOutputWithContext(context.Context) GetRegionInstanceGroupManagerStandbyPolicyOutput
+}
+
+type GetRegionInstanceGroupManagerStandbyPolicyArgs struct {
+	// Specifies the number of seconds that the MIG should wait to suspend or stop a VM after that VM was created. The initial delay gives the initialization script the time to prepare your VM for a quick scale out. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
+	InitialDelaySec pulumi.IntInput `pulumi:"initialDelaySec"`
+	// Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. The default mode is "MANUAL".
+	Mode pulumi.StringInput `pulumi:"mode"`
+}
+
+func (GetRegionInstanceGroupManagerStandbyPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerStandbyPolicy)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerStandbyPolicyArgs) ToGetRegionInstanceGroupManagerStandbyPolicyOutput() GetRegionInstanceGroupManagerStandbyPolicyOutput {
+	return i.ToGetRegionInstanceGroupManagerStandbyPolicyOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerStandbyPolicyArgs) ToGetRegionInstanceGroupManagerStandbyPolicyOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStandbyPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerStandbyPolicyOutput)
+}
+
+// GetRegionInstanceGroupManagerStandbyPolicyArrayInput is an input type that accepts GetRegionInstanceGroupManagerStandbyPolicyArray and GetRegionInstanceGroupManagerStandbyPolicyArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerStandbyPolicyArrayInput` via:
+//
+//	GetRegionInstanceGroupManagerStandbyPolicyArray{ GetRegionInstanceGroupManagerStandbyPolicyArgs{...} }
+type GetRegionInstanceGroupManagerStandbyPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerStandbyPolicyArrayOutput() GetRegionInstanceGroupManagerStandbyPolicyArrayOutput
+	ToGetRegionInstanceGroupManagerStandbyPolicyArrayOutputWithContext(context.Context) GetRegionInstanceGroupManagerStandbyPolicyArrayOutput
+}
+
+type GetRegionInstanceGroupManagerStandbyPolicyArray []GetRegionInstanceGroupManagerStandbyPolicyInput
+
+func (GetRegionInstanceGroupManagerStandbyPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerStandbyPolicy)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerStandbyPolicyArray) ToGetRegionInstanceGroupManagerStandbyPolicyArrayOutput() GetRegionInstanceGroupManagerStandbyPolicyArrayOutput {
+	return i.ToGetRegionInstanceGroupManagerStandbyPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerStandbyPolicyArray) ToGetRegionInstanceGroupManagerStandbyPolicyArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStandbyPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerStandbyPolicyArrayOutput)
+}
+
+type GetRegionInstanceGroupManagerStandbyPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerStandbyPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerStandbyPolicy)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerStandbyPolicyOutput) ToGetRegionInstanceGroupManagerStandbyPolicyOutput() GetRegionInstanceGroupManagerStandbyPolicyOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStandbyPolicyOutput) ToGetRegionInstanceGroupManagerStandbyPolicyOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStandbyPolicyOutput {
+	return o
+}
+
+// Specifies the number of seconds that the MIG should wait to suspend or stop a VM after that VM was created. The initial delay gives the initialization script the time to prepare your VM for a quick scale out. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
+func (o GetRegionInstanceGroupManagerStandbyPolicyOutput) InitialDelaySec() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerStandbyPolicy) int { return v.InitialDelaySec }).(pulumi.IntOutput)
+}
+
+// Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. The default mode is "MANUAL".
+func (o GetRegionInstanceGroupManagerStandbyPolicyOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerStandbyPolicy) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+type GetRegionInstanceGroupManagerStandbyPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerStandbyPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerStandbyPolicy)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerStandbyPolicyArrayOutput) ToGetRegionInstanceGroupManagerStandbyPolicyArrayOutput() GetRegionInstanceGroupManagerStandbyPolicyArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStandbyPolicyArrayOutput) ToGetRegionInstanceGroupManagerStandbyPolicyArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStandbyPolicyArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStandbyPolicyArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceGroupManagerStandbyPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceGroupManagerStandbyPolicy {
+		return vs[0].([]GetRegionInstanceGroupManagerStandbyPolicy)[vs[1].(int)]
+	}).(GetRegionInstanceGroupManagerStandbyPolicyOutput)
+}
+
+type GetRegionInstanceGroupManagerStatefulDisk struct {
+	// A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the disk when the VM is deleted, but do not delete the disk. ON_PERMANENT_INSTANCE_DELETION will delete the stateful disk when the VM is permanently deleted from the instance group. The default is NEVER.
+	DeleteRule string `pulumi:"deleteRule"`
+	// The device name of the disk to be attached.
+	DeviceName string `pulumi:"deviceName"`
+}
+
+// GetRegionInstanceGroupManagerStatefulDiskInput is an input type that accepts GetRegionInstanceGroupManagerStatefulDiskArgs and GetRegionInstanceGroupManagerStatefulDiskOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerStatefulDiskInput` via:
+//
+//	GetRegionInstanceGroupManagerStatefulDiskArgs{...}
+type GetRegionInstanceGroupManagerStatefulDiskInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerStatefulDiskOutput() GetRegionInstanceGroupManagerStatefulDiskOutput
+	ToGetRegionInstanceGroupManagerStatefulDiskOutputWithContext(context.Context) GetRegionInstanceGroupManagerStatefulDiskOutput
+}
+
+type GetRegionInstanceGroupManagerStatefulDiskArgs struct {
+	// A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the disk when the VM is deleted, but do not delete the disk. ON_PERMANENT_INSTANCE_DELETION will delete the stateful disk when the VM is permanently deleted from the instance group. The default is NEVER.
+	DeleteRule pulumi.StringInput `pulumi:"deleteRule"`
+	// The device name of the disk to be attached.
+	DeviceName pulumi.StringInput `pulumi:"deviceName"`
+}
+
+func (GetRegionInstanceGroupManagerStatefulDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerStatefulDisk)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerStatefulDiskArgs) ToGetRegionInstanceGroupManagerStatefulDiskOutput() GetRegionInstanceGroupManagerStatefulDiskOutput {
+	return i.ToGetRegionInstanceGroupManagerStatefulDiskOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerStatefulDiskArgs) ToGetRegionInstanceGroupManagerStatefulDiskOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatefulDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerStatefulDiskOutput)
+}
+
+// GetRegionInstanceGroupManagerStatefulDiskArrayInput is an input type that accepts GetRegionInstanceGroupManagerStatefulDiskArray and GetRegionInstanceGroupManagerStatefulDiskArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerStatefulDiskArrayInput` via:
+//
+//	GetRegionInstanceGroupManagerStatefulDiskArray{ GetRegionInstanceGroupManagerStatefulDiskArgs{...} }
+type GetRegionInstanceGroupManagerStatefulDiskArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerStatefulDiskArrayOutput() GetRegionInstanceGroupManagerStatefulDiskArrayOutput
+	ToGetRegionInstanceGroupManagerStatefulDiskArrayOutputWithContext(context.Context) GetRegionInstanceGroupManagerStatefulDiskArrayOutput
+}
+
+type GetRegionInstanceGroupManagerStatefulDiskArray []GetRegionInstanceGroupManagerStatefulDiskInput
+
+func (GetRegionInstanceGroupManagerStatefulDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerStatefulDisk)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerStatefulDiskArray) ToGetRegionInstanceGroupManagerStatefulDiskArrayOutput() GetRegionInstanceGroupManagerStatefulDiskArrayOutput {
+	return i.ToGetRegionInstanceGroupManagerStatefulDiskArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerStatefulDiskArray) ToGetRegionInstanceGroupManagerStatefulDiskArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatefulDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerStatefulDiskArrayOutput)
+}
+
+type GetRegionInstanceGroupManagerStatefulDiskOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerStatefulDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerStatefulDisk)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerStatefulDiskOutput) ToGetRegionInstanceGroupManagerStatefulDiskOutput() GetRegionInstanceGroupManagerStatefulDiskOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStatefulDiskOutput) ToGetRegionInstanceGroupManagerStatefulDiskOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatefulDiskOutput {
+	return o
+}
+
+// A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the disk when the VM is deleted, but do not delete the disk. ON_PERMANENT_INSTANCE_DELETION will delete the stateful disk when the VM is permanently deleted from the instance group. The default is NEVER.
+func (o GetRegionInstanceGroupManagerStatefulDiskOutput) DeleteRule() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerStatefulDisk) string { return v.DeleteRule }).(pulumi.StringOutput)
+}
+
+// The device name of the disk to be attached.
+func (o GetRegionInstanceGroupManagerStatefulDiskOutput) DeviceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerStatefulDisk) string { return v.DeviceName }).(pulumi.StringOutput)
+}
+
+type GetRegionInstanceGroupManagerStatefulDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerStatefulDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerStatefulDisk)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerStatefulDiskArrayOutput) ToGetRegionInstanceGroupManagerStatefulDiskArrayOutput() GetRegionInstanceGroupManagerStatefulDiskArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStatefulDiskArrayOutput) ToGetRegionInstanceGroupManagerStatefulDiskArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatefulDiskArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStatefulDiskArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceGroupManagerStatefulDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceGroupManagerStatefulDisk {
+		return vs[0].([]GetRegionInstanceGroupManagerStatefulDisk)[vs[1].(int)]
+	}).(GetRegionInstanceGroupManagerStatefulDiskOutput)
+}
+
+type GetRegionInstanceGroupManagerStatefulExternalIp struct {
+	// A value that prescribes what should happen to an associated static Address resource when a VM instance is permanently deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the IP when the VM is deleted, but do not delete the address resource. ON_PERMANENT_INSTANCE_DELETION will delete the stateful address when the VM is permanently deleted from the instance group. The default is NEVER.
+	DeleteRule string `pulumi:"deleteRule"`
+	// The network interface name
+	InterfaceName string `pulumi:"interfaceName"`
+}
+
+// GetRegionInstanceGroupManagerStatefulExternalIpInput is an input type that accepts GetRegionInstanceGroupManagerStatefulExternalIpArgs and GetRegionInstanceGroupManagerStatefulExternalIpOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerStatefulExternalIpInput` via:
+//
+//	GetRegionInstanceGroupManagerStatefulExternalIpArgs{...}
+type GetRegionInstanceGroupManagerStatefulExternalIpInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerStatefulExternalIpOutput() GetRegionInstanceGroupManagerStatefulExternalIpOutput
+	ToGetRegionInstanceGroupManagerStatefulExternalIpOutputWithContext(context.Context) GetRegionInstanceGroupManagerStatefulExternalIpOutput
+}
+
+type GetRegionInstanceGroupManagerStatefulExternalIpArgs struct {
+	// A value that prescribes what should happen to an associated static Address resource when a VM instance is permanently deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the IP when the VM is deleted, but do not delete the address resource. ON_PERMANENT_INSTANCE_DELETION will delete the stateful address when the VM is permanently deleted from the instance group. The default is NEVER.
+	DeleteRule pulumi.StringInput `pulumi:"deleteRule"`
+	// The network interface name
+	InterfaceName pulumi.StringInput `pulumi:"interfaceName"`
+}
+
+func (GetRegionInstanceGroupManagerStatefulExternalIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerStatefulExternalIp)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerStatefulExternalIpArgs) ToGetRegionInstanceGroupManagerStatefulExternalIpOutput() GetRegionInstanceGroupManagerStatefulExternalIpOutput {
+	return i.ToGetRegionInstanceGroupManagerStatefulExternalIpOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerStatefulExternalIpArgs) ToGetRegionInstanceGroupManagerStatefulExternalIpOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatefulExternalIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerStatefulExternalIpOutput)
+}
+
+// GetRegionInstanceGroupManagerStatefulExternalIpArrayInput is an input type that accepts GetRegionInstanceGroupManagerStatefulExternalIpArray and GetRegionInstanceGroupManagerStatefulExternalIpArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerStatefulExternalIpArrayInput` via:
+//
+//	GetRegionInstanceGroupManagerStatefulExternalIpArray{ GetRegionInstanceGroupManagerStatefulExternalIpArgs{...} }
+type GetRegionInstanceGroupManagerStatefulExternalIpArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerStatefulExternalIpArrayOutput() GetRegionInstanceGroupManagerStatefulExternalIpArrayOutput
+	ToGetRegionInstanceGroupManagerStatefulExternalIpArrayOutputWithContext(context.Context) GetRegionInstanceGroupManagerStatefulExternalIpArrayOutput
+}
+
+type GetRegionInstanceGroupManagerStatefulExternalIpArray []GetRegionInstanceGroupManagerStatefulExternalIpInput
+
+func (GetRegionInstanceGroupManagerStatefulExternalIpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerStatefulExternalIp)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerStatefulExternalIpArray) ToGetRegionInstanceGroupManagerStatefulExternalIpArrayOutput() GetRegionInstanceGroupManagerStatefulExternalIpArrayOutput {
+	return i.ToGetRegionInstanceGroupManagerStatefulExternalIpArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerStatefulExternalIpArray) ToGetRegionInstanceGroupManagerStatefulExternalIpArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatefulExternalIpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerStatefulExternalIpArrayOutput)
+}
+
+type GetRegionInstanceGroupManagerStatefulExternalIpOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerStatefulExternalIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerStatefulExternalIp)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerStatefulExternalIpOutput) ToGetRegionInstanceGroupManagerStatefulExternalIpOutput() GetRegionInstanceGroupManagerStatefulExternalIpOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStatefulExternalIpOutput) ToGetRegionInstanceGroupManagerStatefulExternalIpOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatefulExternalIpOutput {
+	return o
+}
+
+// A value that prescribes what should happen to an associated static Address resource when a VM instance is permanently deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the IP when the VM is deleted, but do not delete the address resource. ON_PERMANENT_INSTANCE_DELETION will delete the stateful address when the VM is permanently deleted from the instance group. The default is NEVER.
+func (o GetRegionInstanceGroupManagerStatefulExternalIpOutput) DeleteRule() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerStatefulExternalIp) string { return v.DeleteRule }).(pulumi.StringOutput)
+}
+
+// The network interface name
+func (o GetRegionInstanceGroupManagerStatefulExternalIpOutput) InterfaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerStatefulExternalIp) string { return v.InterfaceName }).(pulumi.StringOutput)
+}
+
+type GetRegionInstanceGroupManagerStatefulExternalIpArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerStatefulExternalIpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerStatefulExternalIp)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerStatefulExternalIpArrayOutput) ToGetRegionInstanceGroupManagerStatefulExternalIpArrayOutput() GetRegionInstanceGroupManagerStatefulExternalIpArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStatefulExternalIpArrayOutput) ToGetRegionInstanceGroupManagerStatefulExternalIpArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatefulExternalIpArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStatefulExternalIpArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceGroupManagerStatefulExternalIpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceGroupManagerStatefulExternalIp {
+		return vs[0].([]GetRegionInstanceGroupManagerStatefulExternalIp)[vs[1].(int)]
+	}).(GetRegionInstanceGroupManagerStatefulExternalIpOutput)
+}
+
+type GetRegionInstanceGroupManagerStatefulInternalIp struct {
+	// A value that prescribes what should happen to an associated static Address resource when a VM instance is permanently deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the IP when the VM is deleted, but do not delete the address resource. ON_PERMANENT_INSTANCE_DELETION will delete the stateful address when the VM is permanently deleted from the instance group. The default is NEVER.
+	DeleteRule string `pulumi:"deleteRule"`
+	// The network interface name
+	InterfaceName string `pulumi:"interfaceName"`
+}
+
+// GetRegionInstanceGroupManagerStatefulInternalIpInput is an input type that accepts GetRegionInstanceGroupManagerStatefulInternalIpArgs and GetRegionInstanceGroupManagerStatefulInternalIpOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerStatefulInternalIpInput` via:
+//
+//	GetRegionInstanceGroupManagerStatefulInternalIpArgs{...}
+type GetRegionInstanceGroupManagerStatefulInternalIpInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerStatefulInternalIpOutput() GetRegionInstanceGroupManagerStatefulInternalIpOutput
+	ToGetRegionInstanceGroupManagerStatefulInternalIpOutputWithContext(context.Context) GetRegionInstanceGroupManagerStatefulInternalIpOutput
+}
+
+type GetRegionInstanceGroupManagerStatefulInternalIpArgs struct {
+	// A value that prescribes what should happen to an associated static Address resource when a VM instance is permanently deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the IP when the VM is deleted, but do not delete the address resource. ON_PERMANENT_INSTANCE_DELETION will delete the stateful address when the VM is permanently deleted from the instance group. The default is NEVER.
+	DeleteRule pulumi.StringInput `pulumi:"deleteRule"`
+	// The network interface name
+	InterfaceName pulumi.StringInput `pulumi:"interfaceName"`
+}
+
+func (GetRegionInstanceGroupManagerStatefulInternalIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerStatefulInternalIp)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerStatefulInternalIpArgs) ToGetRegionInstanceGroupManagerStatefulInternalIpOutput() GetRegionInstanceGroupManagerStatefulInternalIpOutput {
+	return i.ToGetRegionInstanceGroupManagerStatefulInternalIpOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerStatefulInternalIpArgs) ToGetRegionInstanceGroupManagerStatefulInternalIpOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatefulInternalIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerStatefulInternalIpOutput)
+}
+
+// GetRegionInstanceGroupManagerStatefulInternalIpArrayInput is an input type that accepts GetRegionInstanceGroupManagerStatefulInternalIpArray and GetRegionInstanceGroupManagerStatefulInternalIpArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerStatefulInternalIpArrayInput` via:
+//
+//	GetRegionInstanceGroupManagerStatefulInternalIpArray{ GetRegionInstanceGroupManagerStatefulInternalIpArgs{...} }
+type GetRegionInstanceGroupManagerStatefulInternalIpArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerStatefulInternalIpArrayOutput() GetRegionInstanceGroupManagerStatefulInternalIpArrayOutput
+	ToGetRegionInstanceGroupManagerStatefulInternalIpArrayOutputWithContext(context.Context) GetRegionInstanceGroupManagerStatefulInternalIpArrayOutput
+}
+
+type GetRegionInstanceGroupManagerStatefulInternalIpArray []GetRegionInstanceGroupManagerStatefulInternalIpInput
+
+func (GetRegionInstanceGroupManagerStatefulInternalIpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerStatefulInternalIp)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerStatefulInternalIpArray) ToGetRegionInstanceGroupManagerStatefulInternalIpArrayOutput() GetRegionInstanceGroupManagerStatefulInternalIpArrayOutput {
+	return i.ToGetRegionInstanceGroupManagerStatefulInternalIpArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerStatefulInternalIpArray) ToGetRegionInstanceGroupManagerStatefulInternalIpArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatefulInternalIpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerStatefulInternalIpArrayOutput)
+}
+
+type GetRegionInstanceGroupManagerStatefulInternalIpOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerStatefulInternalIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerStatefulInternalIp)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerStatefulInternalIpOutput) ToGetRegionInstanceGroupManagerStatefulInternalIpOutput() GetRegionInstanceGroupManagerStatefulInternalIpOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStatefulInternalIpOutput) ToGetRegionInstanceGroupManagerStatefulInternalIpOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatefulInternalIpOutput {
+	return o
+}
+
+// A value that prescribes what should happen to an associated static Address resource when a VM instance is permanently deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the IP when the VM is deleted, but do not delete the address resource. ON_PERMANENT_INSTANCE_DELETION will delete the stateful address when the VM is permanently deleted from the instance group. The default is NEVER.
+func (o GetRegionInstanceGroupManagerStatefulInternalIpOutput) DeleteRule() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerStatefulInternalIp) string { return v.DeleteRule }).(pulumi.StringOutput)
+}
+
+// The network interface name
+func (o GetRegionInstanceGroupManagerStatefulInternalIpOutput) InterfaceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerStatefulInternalIp) string { return v.InterfaceName }).(pulumi.StringOutput)
+}
+
+type GetRegionInstanceGroupManagerStatefulInternalIpArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerStatefulInternalIpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerStatefulInternalIp)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerStatefulInternalIpArrayOutput) ToGetRegionInstanceGroupManagerStatefulInternalIpArrayOutput() GetRegionInstanceGroupManagerStatefulInternalIpArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStatefulInternalIpArrayOutput) ToGetRegionInstanceGroupManagerStatefulInternalIpArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatefulInternalIpArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStatefulInternalIpArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceGroupManagerStatefulInternalIpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceGroupManagerStatefulInternalIp {
+		return vs[0].([]GetRegionInstanceGroupManagerStatefulInternalIp)[vs[1].(int)]
+	}).(GetRegionInstanceGroupManagerStatefulInternalIpOutput)
+}
+
+type GetRegionInstanceGroupManagerStatus struct {
+	// Status of all-instances configuration on the group.
+	AllInstancesConfigs []GetRegionInstanceGroupManagerStatusAllInstancesConfig `pulumi:"allInstancesConfigs"`
+	// A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
+	IsStable bool `pulumi:"isStable"`
+	// Stateful status of the given Instance Group Manager.
+	Statefuls []GetRegionInstanceGroupManagerStatusStateful `pulumi:"statefuls"`
+	// A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
+	VersionTargets []GetRegionInstanceGroupManagerStatusVersionTarget `pulumi:"versionTargets"`
+}
+
+// GetRegionInstanceGroupManagerStatusInput is an input type that accepts GetRegionInstanceGroupManagerStatusArgs and GetRegionInstanceGroupManagerStatusOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerStatusInput` via:
+//
+//	GetRegionInstanceGroupManagerStatusArgs{...}
+type GetRegionInstanceGroupManagerStatusInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerStatusOutput() GetRegionInstanceGroupManagerStatusOutput
+	ToGetRegionInstanceGroupManagerStatusOutputWithContext(context.Context) GetRegionInstanceGroupManagerStatusOutput
+}
+
+type GetRegionInstanceGroupManagerStatusArgs struct {
+	// Status of all-instances configuration on the group.
+	AllInstancesConfigs GetRegionInstanceGroupManagerStatusAllInstancesConfigArrayInput `pulumi:"allInstancesConfigs"`
+	// A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
+	IsStable pulumi.BoolInput `pulumi:"isStable"`
+	// Stateful status of the given Instance Group Manager.
+	Statefuls GetRegionInstanceGroupManagerStatusStatefulArrayInput `pulumi:"statefuls"`
+	// A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
+	VersionTargets GetRegionInstanceGroupManagerStatusVersionTargetArrayInput `pulumi:"versionTargets"`
+}
+
+func (GetRegionInstanceGroupManagerStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerStatus)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerStatusArgs) ToGetRegionInstanceGroupManagerStatusOutput() GetRegionInstanceGroupManagerStatusOutput {
+	return i.ToGetRegionInstanceGroupManagerStatusOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerStatusArgs) ToGetRegionInstanceGroupManagerStatusOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerStatusOutput)
+}
+
+// GetRegionInstanceGroupManagerStatusArrayInput is an input type that accepts GetRegionInstanceGroupManagerStatusArray and GetRegionInstanceGroupManagerStatusArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerStatusArrayInput` via:
+//
+//	GetRegionInstanceGroupManagerStatusArray{ GetRegionInstanceGroupManagerStatusArgs{...} }
+type GetRegionInstanceGroupManagerStatusArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerStatusArrayOutput() GetRegionInstanceGroupManagerStatusArrayOutput
+	ToGetRegionInstanceGroupManagerStatusArrayOutputWithContext(context.Context) GetRegionInstanceGroupManagerStatusArrayOutput
+}
+
+type GetRegionInstanceGroupManagerStatusArray []GetRegionInstanceGroupManagerStatusInput
+
+func (GetRegionInstanceGroupManagerStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerStatus)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerStatusArray) ToGetRegionInstanceGroupManagerStatusArrayOutput() GetRegionInstanceGroupManagerStatusArrayOutput {
+	return i.ToGetRegionInstanceGroupManagerStatusArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerStatusArray) ToGetRegionInstanceGroupManagerStatusArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerStatusArrayOutput)
+}
+
+type GetRegionInstanceGroupManagerStatusOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerStatus)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerStatusOutput) ToGetRegionInstanceGroupManagerStatusOutput() GetRegionInstanceGroupManagerStatusOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStatusOutput) ToGetRegionInstanceGroupManagerStatusOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatusOutput {
+	return o
+}
+
+// Status of all-instances configuration on the group.
+func (o GetRegionInstanceGroupManagerStatusOutput) AllInstancesConfigs() GetRegionInstanceGroupManagerStatusAllInstancesConfigArrayOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerStatus) []GetRegionInstanceGroupManagerStatusAllInstancesConfig {
+		return v.AllInstancesConfigs
+	}).(GetRegionInstanceGroupManagerStatusAllInstancesConfigArrayOutput)
+}
+
+// A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
+func (o GetRegionInstanceGroupManagerStatusOutput) IsStable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerStatus) bool { return v.IsStable }).(pulumi.BoolOutput)
+}
+
+// Stateful status of the given Instance Group Manager.
+func (o GetRegionInstanceGroupManagerStatusOutput) Statefuls() GetRegionInstanceGroupManagerStatusStatefulArrayOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerStatus) []GetRegionInstanceGroupManagerStatusStateful {
+		return v.Statefuls
+	}).(GetRegionInstanceGroupManagerStatusStatefulArrayOutput)
+}
+
+// A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
+func (o GetRegionInstanceGroupManagerStatusOutput) VersionTargets() GetRegionInstanceGroupManagerStatusVersionTargetArrayOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerStatus) []GetRegionInstanceGroupManagerStatusVersionTarget {
+		return v.VersionTargets
+	}).(GetRegionInstanceGroupManagerStatusVersionTargetArrayOutput)
+}
+
+type GetRegionInstanceGroupManagerStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerStatus)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerStatusArrayOutput) ToGetRegionInstanceGroupManagerStatusArrayOutput() GetRegionInstanceGroupManagerStatusArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStatusArrayOutput) ToGetRegionInstanceGroupManagerStatusArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatusArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStatusArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceGroupManagerStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceGroupManagerStatus {
+		return vs[0].([]GetRegionInstanceGroupManagerStatus)[vs[1].(int)]
+	}).(GetRegionInstanceGroupManagerStatusOutput)
+}
+
+type GetRegionInstanceGroupManagerStatusAllInstancesConfig struct {
+	// Current all-instances configuration revision. This value is in RFC3339 text format.
+	CurrentRevision string `pulumi:"currentRevision"`
+	// A bit indicating whether this configuration has been applied to all managed instances in the group.
+	Effective bool `pulumi:"effective"`
+}
+
+// GetRegionInstanceGroupManagerStatusAllInstancesConfigInput is an input type that accepts GetRegionInstanceGroupManagerStatusAllInstancesConfigArgs and GetRegionInstanceGroupManagerStatusAllInstancesConfigOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerStatusAllInstancesConfigInput` via:
+//
+//	GetRegionInstanceGroupManagerStatusAllInstancesConfigArgs{...}
+type GetRegionInstanceGroupManagerStatusAllInstancesConfigInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerStatusAllInstancesConfigOutput() GetRegionInstanceGroupManagerStatusAllInstancesConfigOutput
+	ToGetRegionInstanceGroupManagerStatusAllInstancesConfigOutputWithContext(context.Context) GetRegionInstanceGroupManagerStatusAllInstancesConfigOutput
+}
+
+type GetRegionInstanceGroupManagerStatusAllInstancesConfigArgs struct {
+	// Current all-instances configuration revision. This value is in RFC3339 text format.
+	CurrentRevision pulumi.StringInput `pulumi:"currentRevision"`
+	// A bit indicating whether this configuration has been applied to all managed instances in the group.
+	Effective pulumi.BoolInput `pulumi:"effective"`
+}
+
+func (GetRegionInstanceGroupManagerStatusAllInstancesConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerStatusAllInstancesConfig)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerStatusAllInstancesConfigArgs) ToGetRegionInstanceGroupManagerStatusAllInstancesConfigOutput() GetRegionInstanceGroupManagerStatusAllInstancesConfigOutput {
+	return i.ToGetRegionInstanceGroupManagerStatusAllInstancesConfigOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerStatusAllInstancesConfigArgs) ToGetRegionInstanceGroupManagerStatusAllInstancesConfigOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatusAllInstancesConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerStatusAllInstancesConfigOutput)
+}
+
+// GetRegionInstanceGroupManagerStatusAllInstancesConfigArrayInput is an input type that accepts GetRegionInstanceGroupManagerStatusAllInstancesConfigArray and GetRegionInstanceGroupManagerStatusAllInstancesConfigArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerStatusAllInstancesConfigArrayInput` via:
+//
+//	GetRegionInstanceGroupManagerStatusAllInstancesConfigArray{ GetRegionInstanceGroupManagerStatusAllInstancesConfigArgs{...} }
+type GetRegionInstanceGroupManagerStatusAllInstancesConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerStatusAllInstancesConfigArrayOutput() GetRegionInstanceGroupManagerStatusAllInstancesConfigArrayOutput
+	ToGetRegionInstanceGroupManagerStatusAllInstancesConfigArrayOutputWithContext(context.Context) GetRegionInstanceGroupManagerStatusAllInstancesConfigArrayOutput
+}
+
+type GetRegionInstanceGroupManagerStatusAllInstancesConfigArray []GetRegionInstanceGroupManagerStatusAllInstancesConfigInput
+
+func (GetRegionInstanceGroupManagerStatusAllInstancesConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerStatusAllInstancesConfig)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerStatusAllInstancesConfigArray) ToGetRegionInstanceGroupManagerStatusAllInstancesConfigArrayOutput() GetRegionInstanceGroupManagerStatusAllInstancesConfigArrayOutput {
+	return i.ToGetRegionInstanceGroupManagerStatusAllInstancesConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerStatusAllInstancesConfigArray) ToGetRegionInstanceGroupManagerStatusAllInstancesConfigArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatusAllInstancesConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerStatusAllInstancesConfigArrayOutput)
+}
+
+type GetRegionInstanceGroupManagerStatusAllInstancesConfigOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerStatusAllInstancesConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerStatusAllInstancesConfig)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerStatusAllInstancesConfigOutput) ToGetRegionInstanceGroupManagerStatusAllInstancesConfigOutput() GetRegionInstanceGroupManagerStatusAllInstancesConfigOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStatusAllInstancesConfigOutput) ToGetRegionInstanceGroupManagerStatusAllInstancesConfigOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatusAllInstancesConfigOutput {
+	return o
+}
+
+// Current all-instances configuration revision. This value is in RFC3339 text format.
+func (o GetRegionInstanceGroupManagerStatusAllInstancesConfigOutput) CurrentRevision() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerStatusAllInstancesConfig) string { return v.CurrentRevision }).(pulumi.StringOutput)
+}
+
+// A bit indicating whether this configuration has been applied to all managed instances in the group.
+func (o GetRegionInstanceGroupManagerStatusAllInstancesConfigOutput) Effective() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerStatusAllInstancesConfig) bool { return v.Effective }).(pulumi.BoolOutput)
+}
+
+type GetRegionInstanceGroupManagerStatusAllInstancesConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerStatusAllInstancesConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerStatusAllInstancesConfig)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerStatusAllInstancesConfigArrayOutput) ToGetRegionInstanceGroupManagerStatusAllInstancesConfigArrayOutput() GetRegionInstanceGroupManagerStatusAllInstancesConfigArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStatusAllInstancesConfigArrayOutput) ToGetRegionInstanceGroupManagerStatusAllInstancesConfigArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatusAllInstancesConfigArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStatusAllInstancesConfigArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceGroupManagerStatusAllInstancesConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceGroupManagerStatusAllInstancesConfig {
+		return vs[0].([]GetRegionInstanceGroupManagerStatusAllInstancesConfig)[vs[1].(int)]
+	}).(GetRegionInstanceGroupManagerStatusAllInstancesConfigOutput)
+}
+
+type GetRegionInstanceGroupManagerStatusStateful struct {
+	// A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
+	HasStatefulConfig bool `pulumi:"hasStatefulConfig"`
+	// Status of per-instance configs on the instances.
+	PerInstanceConfigs []GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfig `pulumi:"perInstanceConfigs"`
+}
+
+// GetRegionInstanceGroupManagerStatusStatefulInput is an input type that accepts GetRegionInstanceGroupManagerStatusStatefulArgs and GetRegionInstanceGroupManagerStatusStatefulOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerStatusStatefulInput` via:
+//
+//	GetRegionInstanceGroupManagerStatusStatefulArgs{...}
+type GetRegionInstanceGroupManagerStatusStatefulInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerStatusStatefulOutput() GetRegionInstanceGroupManagerStatusStatefulOutput
+	ToGetRegionInstanceGroupManagerStatusStatefulOutputWithContext(context.Context) GetRegionInstanceGroupManagerStatusStatefulOutput
+}
+
+type GetRegionInstanceGroupManagerStatusStatefulArgs struct {
+	// A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
+	HasStatefulConfig pulumi.BoolInput `pulumi:"hasStatefulConfig"`
+	// Status of per-instance configs on the instances.
+	PerInstanceConfigs GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayInput `pulumi:"perInstanceConfigs"`
+}
+
+func (GetRegionInstanceGroupManagerStatusStatefulArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerStatusStateful)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerStatusStatefulArgs) ToGetRegionInstanceGroupManagerStatusStatefulOutput() GetRegionInstanceGroupManagerStatusStatefulOutput {
+	return i.ToGetRegionInstanceGroupManagerStatusStatefulOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerStatusStatefulArgs) ToGetRegionInstanceGroupManagerStatusStatefulOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatusStatefulOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerStatusStatefulOutput)
+}
+
+// GetRegionInstanceGroupManagerStatusStatefulArrayInput is an input type that accepts GetRegionInstanceGroupManagerStatusStatefulArray and GetRegionInstanceGroupManagerStatusStatefulArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerStatusStatefulArrayInput` via:
+//
+//	GetRegionInstanceGroupManagerStatusStatefulArray{ GetRegionInstanceGroupManagerStatusStatefulArgs{...} }
+type GetRegionInstanceGroupManagerStatusStatefulArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerStatusStatefulArrayOutput() GetRegionInstanceGroupManagerStatusStatefulArrayOutput
+	ToGetRegionInstanceGroupManagerStatusStatefulArrayOutputWithContext(context.Context) GetRegionInstanceGroupManagerStatusStatefulArrayOutput
+}
+
+type GetRegionInstanceGroupManagerStatusStatefulArray []GetRegionInstanceGroupManagerStatusStatefulInput
+
+func (GetRegionInstanceGroupManagerStatusStatefulArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerStatusStateful)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerStatusStatefulArray) ToGetRegionInstanceGroupManagerStatusStatefulArrayOutput() GetRegionInstanceGroupManagerStatusStatefulArrayOutput {
+	return i.ToGetRegionInstanceGroupManagerStatusStatefulArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerStatusStatefulArray) ToGetRegionInstanceGroupManagerStatusStatefulArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatusStatefulArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerStatusStatefulArrayOutput)
+}
+
+type GetRegionInstanceGroupManagerStatusStatefulOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerStatusStatefulOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerStatusStateful)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerStatusStatefulOutput) ToGetRegionInstanceGroupManagerStatusStatefulOutput() GetRegionInstanceGroupManagerStatusStatefulOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStatusStatefulOutput) ToGetRegionInstanceGroupManagerStatusStatefulOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatusStatefulOutput {
+	return o
+}
+
+// A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
+func (o GetRegionInstanceGroupManagerStatusStatefulOutput) HasStatefulConfig() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerStatusStateful) bool { return v.HasStatefulConfig }).(pulumi.BoolOutput)
+}
+
+// Status of per-instance configs on the instances.
+func (o GetRegionInstanceGroupManagerStatusStatefulOutput) PerInstanceConfigs() GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerStatusStateful) []GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfig {
+		return v.PerInstanceConfigs
+	}).(GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput)
+}
+
+type GetRegionInstanceGroupManagerStatusStatefulArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerStatusStatefulArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerStatusStateful)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerStatusStatefulArrayOutput) ToGetRegionInstanceGroupManagerStatusStatefulArrayOutput() GetRegionInstanceGroupManagerStatusStatefulArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStatusStatefulArrayOutput) ToGetRegionInstanceGroupManagerStatusStatefulArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatusStatefulArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStatusStatefulArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceGroupManagerStatusStatefulOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceGroupManagerStatusStateful {
+		return vs[0].([]GetRegionInstanceGroupManagerStatusStateful)[vs[1].(int)]
+	}).(GetRegionInstanceGroupManagerStatusStatefulOutput)
+}
+
+type GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfig struct {
+	// A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status EFFECTIVE or there are no per-instance-configs.
+	AllEffective bool `pulumi:"allEffective"`
+}
+
+// GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigInput is an input type that accepts GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs and GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigInput` via:
+//
+//	GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs{...}
+type GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput() GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput
+	ToGetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutputWithContext(context.Context) GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput
+}
+
+type GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs struct {
+	// A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status EFFECTIVE or there are no per-instance-configs.
+	AllEffective pulumi.BoolInput `pulumi:"allEffective"`
+}
+
+func (GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfig)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs) ToGetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput() GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput {
+	return i.ToGetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs) ToGetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput)
+}
+
+// GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayInput is an input type that accepts GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArray and GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayInput` via:
+//
+//	GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArray{ GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs{...} }
+type GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput() GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput
+	ToGetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutputWithContext(context.Context) GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput
+}
+
+type GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArray []GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigInput
+
+func (GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfig)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArray) ToGetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput() GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput {
+	return i.ToGetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArray) ToGetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput)
+}
+
+type GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfig)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput) ToGetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput() GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput) ToGetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput {
+	return o
+}
+
+// A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status EFFECTIVE or there are no per-instance-configs.
+func (o GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput) AllEffective() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfig) bool { return v.AllEffective }).(pulumi.BoolOutput)
+}
+
+type GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfig)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput) ToGetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput() GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput) ToGetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfig {
+		return vs[0].([]GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfig)[vs[1].(int)]
+	}).(GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput)
+}
+
+type GetRegionInstanceGroupManagerStatusVersionTarget struct {
+	// A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+	IsReached bool `pulumi:"isReached"`
+}
+
+// GetRegionInstanceGroupManagerStatusVersionTargetInput is an input type that accepts GetRegionInstanceGroupManagerStatusVersionTargetArgs and GetRegionInstanceGroupManagerStatusVersionTargetOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerStatusVersionTargetInput` via:
+//
+//	GetRegionInstanceGroupManagerStatusVersionTargetArgs{...}
+type GetRegionInstanceGroupManagerStatusVersionTargetInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerStatusVersionTargetOutput() GetRegionInstanceGroupManagerStatusVersionTargetOutput
+	ToGetRegionInstanceGroupManagerStatusVersionTargetOutputWithContext(context.Context) GetRegionInstanceGroupManagerStatusVersionTargetOutput
+}
+
+type GetRegionInstanceGroupManagerStatusVersionTargetArgs struct {
+	// A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+	IsReached pulumi.BoolInput `pulumi:"isReached"`
+}
+
+func (GetRegionInstanceGroupManagerStatusVersionTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerStatusVersionTarget)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerStatusVersionTargetArgs) ToGetRegionInstanceGroupManagerStatusVersionTargetOutput() GetRegionInstanceGroupManagerStatusVersionTargetOutput {
+	return i.ToGetRegionInstanceGroupManagerStatusVersionTargetOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerStatusVersionTargetArgs) ToGetRegionInstanceGroupManagerStatusVersionTargetOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatusVersionTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerStatusVersionTargetOutput)
+}
+
+// GetRegionInstanceGroupManagerStatusVersionTargetArrayInput is an input type that accepts GetRegionInstanceGroupManagerStatusVersionTargetArray and GetRegionInstanceGroupManagerStatusVersionTargetArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerStatusVersionTargetArrayInput` via:
+//
+//	GetRegionInstanceGroupManagerStatusVersionTargetArray{ GetRegionInstanceGroupManagerStatusVersionTargetArgs{...} }
+type GetRegionInstanceGroupManagerStatusVersionTargetArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerStatusVersionTargetArrayOutput() GetRegionInstanceGroupManagerStatusVersionTargetArrayOutput
+	ToGetRegionInstanceGroupManagerStatusVersionTargetArrayOutputWithContext(context.Context) GetRegionInstanceGroupManagerStatusVersionTargetArrayOutput
+}
+
+type GetRegionInstanceGroupManagerStatusVersionTargetArray []GetRegionInstanceGroupManagerStatusVersionTargetInput
+
+func (GetRegionInstanceGroupManagerStatusVersionTargetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerStatusVersionTarget)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerStatusVersionTargetArray) ToGetRegionInstanceGroupManagerStatusVersionTargetArrayOutput() GetRegionInstanceGroupManagerStatusVersionTargetArrayOutput {
+	return i.ToGetRegionInstanceGroupManagerStatusVersionTargetArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerStatusVersionTargetArray) ToGetRegionInstanceGroupManagerStatusVersionTargetArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatusVersionTargetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerStatusVersionTargetArrayOutput)
+}
+
+type GetRegionInstanceGroupManagerStatusVersionTargetOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerStatusVersionTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerStatusVersionTarget)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerStatusVersionTargetOutput) ToGetRegionInstanceGroupManagerStatusVersionTargetOutput() GetRegionInstanceGroupManagerStatusVersionTargetOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStatusVersionTargetOutput) ToGetRegionInstanceGroupManagerStatusVersionTargetOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatusVersionTargetOutput {
+	return o
+}
+
+// A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+func (o GetRegionInstanceGroupManagerStatusVersionTargetOutput) IsReached() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerStatusVersionTarget) bool { return v.IsReached }).(pulumi.BoolOutput)
+}
+
+type GetRegionInstanceGroupManagerStatusVersionTargetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerStatusVersionTargetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerStatusVersionTarget)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerStatusVersionTargetArrayOutput) ToGetRegionInstanceGroupManagerStatusVersionTargetArrayOutput() GetRegionInstanceGroupManagerStatusVersionTargetArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStatusVersionTargetArrayOutput) ToGetRegionInstanceGroupManagerStatusVersionTargetArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerStatusVersionTargetArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerStatusVersionTargetArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceGroupManagerStatusVersionTargetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceGroupManagerStatusVersionTarget {
+		return vs[0].([]GetRegionInstanceGroupManagerStatusVersionTarget)[vs[1].(int)]
+	}).(GetRegionInstanceGroupManagerStatusVersionTargetOutput)
+}
+
+type GetRegionInstanceGroupManagerUpdatePolicy struct {
+	// The instance redistribution policy for regional managed instance groups. Valid values are: "PROACTIVE", "NONE". If PROACTIVE (default), the group attempts to maintain an even distribution of VM instances across zones in the region. If NONE, proactive redistribution is disabled.
+	InstanceRedistributionType string `pulumi:"instanceRedistributionType"`
+	// Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with max_surge_percent. Both cannot be 0
+	MaxSurgeFixed int `pulumi:"maxSurgeFixed"`
+	// Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with max_surge_fixed.
+	MaxSurgePercent int `pulumi:"maxSurgePercent"`
+	// Specifies a fixed number of VM instances. This must be a positive integer.
+	MaxUnavailableFixed int `pulumi:"maxUnavailableFixed"`
+	// Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%.
+	MaxUnavailablePercent int `pulumi:"maxUnavailablePercent"`
+	// Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600].
+	MinReadySec int `pulumi:"minReadySec"`
+	// Minimal action to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to update without stopping instances, RESTART to restart existing instances or REPLACE to delete and create new instances from the target template. If you specify a REFRESH, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+	MinimalAction string `pulumi:"minimalAction"`
+	// Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+	MostDisruptiveAllowedAction string `pulumi:"mostDisruptiveAllowedAction"`
+	// The instance replacement method for regional managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set maxUnavailableFixed or maxUnavailablePercent to be greater than 0.
+	ReplacementMethod string `pulumi:"replacementMethod"`
+	// The type of update process. You can specify either PROACTIVE so that the instance group manager proactively executes actions in order to bring instances to their target versions or OPPORTUNISTIC so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
+	Type string `pulumi:"type"`
+}
+
+// GetRegionInstanceGroupManagerUpdatePolicyInput is an input type that accepts GetRegionInstanceGroupManagerUpdatePolicyArgs and GetRegionInstanceGroupManagerUpdatePolicyOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerUpdatePolicyInput` via:
+//
+//	GetRegionInstanceGroupManagerUpdatePolicyArgs{...}
+type GetRegionInstanceGroupManagerUpdatePolicyInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerUpdatePolicyOutput() GetRegionInstanceGroupManagerUpdatePolicyOutput
+	ToGetRegionInstanceGroupManagerUpdatePolicyOutputWithContext(context.Context) GetRegionInstanceGroupManagerUpdatePolicyOutput
+}
+
+type GetRegionInstanceGroupManagerUpdatePolicyArgs struct {
+	// The instance redistribution policy for regional managed instance groups. Valid values are: "PROACTIVE", "NONE". If PROACTIVE (default), the group attempts to maintain an even distribution of VM instances across zones in the region. If NONE, proactive redistribution is disabled.
+	InstanceRedistributionType pulumi.StringInput `pulumi:"instanceRedistributionType"`
+	// Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with max_surge_percent. Both cannot be 0
+	MaxSurgeFixed pulumi.IntInput `pulumi:"maxSurgeFixed"`
+	// Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with max_surge_fixed.
+	MaxSurgePercent pulumi.IntInput `pulumi:"maxSurgePercent"`
+	// Specifies a fixed number of VM instances. This must be a positive integer.
+	MaxUnavailableFixed pulumi.IntInput `pulumi:"maxUnavailableFixed"`
+	// Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%.
+	MaxUnavailablePercent pulumi.IntInput `pulumi:"maxUnavailablePercent"`
+	// Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600].
+	MinReadySec pulumi.IntInput `pulumi:"minReadySec"`
+	// Minimal action to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to update without stopping instances, RESTART to restart existing instances or REPLACE to delete and create new instances from the target template. If you specify a REFRESH, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+	MinimalAction pulumi.StringInput `pulumi:"minimalAction"`
+	// Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+	MostDisruptiveAllowedAction pulumi.StringInput `pulumi:"mostDisruptiveAllowedAction"`
+	// The instance replacement method for regional managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set maxUnavailableFixed or maxUnavailablePercent to be greater than 0.
+	ReplacementMethod pulumi.StringInput `pulumi:"replacementMethod"`
+	// The type of update process. You can specify either PROACTIVE so that the instance group manager proactively executes actions in order to bring instances to their target versions or OPPORTUNISTIC so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetRegionInstanceGroupManagerUpdatePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerUpdatePolicy)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerUpdatePolicyArgs) ToGetRegionInstanceGroupManagerUpdatePolicyOutput() GetRegionInstanceGroupManagerUpdatePolicyOutput {
+	return i.ToGetRegionInstanceGroupManagerUpdatePolicyOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerUpdatePolicyArgs) ToGetRegionInstanceGroupManagerUpdatePolicyOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerUpdatePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerUpdatePolicyOutput)
+}
+
+// GetRegionInstanceGroupManagerUpdatePolicyArrayInput is an input type that accepts GetRegionInstanceGroupManagerUpdatePolicyArray and GetRegionInstanceGroupManagerUpdatePolicyArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerUpdatePolicyArrayInput` via:
+//
+//	GetRegionInstanceGroupManagerUpdatePolicyArray{ GetRegionInstanceGroupManagerUpdatePolicyArgs{...} }
+type GetRegionInstanceGroupManagerUpdatePolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerUpdatePolicyArrayOutput() GetRegionInstanceGroupManagerUpdatePolicyArrayOutput
+	ToGetRegionInstanceGroupManagerUpdatePolicyArrayOutputWithContext(context.Context) GetRegionInstanceGroupManagerUpdatePolicyArrayOutput
+}
+
+type GetRegionInstanceGroupManagerUpdatePolicyArray []GetRegionInstanceGroupManagerUpdatePolicyInput
+
+func (GetRegionInstanceGroupManagerUpdatePolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerUpdatePolicy)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerUpdatePolicyArray) ToGetRegionInstanceGroupManagerUpdatePolicyArrayOutput() GetRegionInstanceGroupManagerUpdatePolicyArrayOutput {
+	return i.ToGetRegionInstanceGroupManagerUpdatePolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerUpdatePolicyArray) ToGetRegionInstanceGroupManagerUpdatePolicyArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerUpdatePolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerUpdatePolicyArrayOutput)
+}
+
+type GetRegionInstanceGroupManagerUpdatePolicyOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerUpdatePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerUpdatePolicy)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerUpdatePolicyOutput) ToGetRegionInstanceGroupManagerUpdatePolicyOutput() GetRegionInstanceGroupManagerUpdatePolicyOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerUpdatePolicyOutput) ToGetRegionInstanceGroupManagerUpdatePolicyOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerUpdatePolicyOutput {
+	return o
+}
+
+// The instance redistribution policy for regional managed instance groups. Valid values are: "PROACTIVE", "NONE". If PROACTIVE (default), the group attempts to maintain an even distribution of VM instances across zones in the region. If NONE, proactive redistribution is disabled.
+func (o GetRegionInstanceGroupManagerUpdatePolicyOutput) InstanceRedistributionType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerUpdatePolicy) string { return v.InstanceRedistributionType }).(pulumi.StringOutput)
+}
+
+// Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with max_surge_percent. Both cannot be 0
+func (o GetRegionInstanceGroupManagerUpdatePolicyOutput) MaxSurgeFixed() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerUpdatePolicy) int { return v.MaxSurgeFixed }).(pulumi.IntOutput)
+}
+
+// Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with max_surge_fixed.
+func (o GetRegionInstanceGroupManagerUpdatePolicyOutput) MaxSurgePercent() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerUpdatePolicy) int { return v.MaxSurgePercent }).(pulumi.IntOutput)
+}
+
+// Specifies a fixed number of VM instances. This must be a positive integer.
+func (o GetRegionInstanceGroupManagerUpdatePolicyOutput) MaxUnavailableFixed() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerUpdatePolicy) int { return v.MaxUnavailableFixed }).(pulumi.IntOutput)
+}
+
+// Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%.
+func (o GetRegionInstanceGroupManagerUpdatePolicyOutput) MaxUnavailablePercent() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerUpdatePolicy) int { return v.MaxUnavailablePercent }).(pulumi.IntOutput)
+}
+
+// Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600].
+func (o GetRegionInstanceGroupManagerUpdatePolicyOutput) MinReadySec() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerUpdatePolicy) int { return v.MinReadySec }).(pulumi.IntOutput)
+}
+
+// Minimal action to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to update without stopping instances, RESTART to restart existing instances or REPLACE to delete and create new instances from the target template. If you specify a REFRESH, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+func (o GetRegionInstanceGroupManagerUpdatePolicyOutput) MinimalAction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerUpdatePolicy) string { return v.MinimalAction }).(pulumi.StringOutput)
+}
+
+// Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+func (o GetRegionInstanceGroupManagerUpdatePolicyOutput) MostDisruptiveAllowedAction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerUpdatePolicy) string { return v.MostDisruptiveAllowedAction }).(pulumi.StringOutput)
+}
+
+// The instance replacement method for regional managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set maxUnavailableFixed or maxUnavailablePercent to be greater than 0.
+func (o GetRegionInstanceGroupManagerUpdatePolicyOutput) ReplacementMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerUpdatePolicy) string { return v.ReplacementMethod }).(pulumi.StringOutput)
+}
+
+// The type of update process. You can specify either PROACTIVE so that the instance group manager proactively executes actions in order to bring instances to their target versions or OPPORTUNISTIC so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
+func (o GetRegionInstanceGroupManagerUpdatePolicyOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerUpdatePolicy) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetRegionInstanceGroupManagerUpdatePolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerUpdatePolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerUpdatePolicy)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerUpdatePolicyArrayOutput) ToGetRegionInstanceGroupManagerUpdatePolicyArrayOutput() GetRegionInstanceGroupManagerUpdatePolicyArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerUpdatePolicyArrayOutput) ToGetRegionInstanceGroupManagerUpdatePolicyArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerUpdatePolicyArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerUpdatePolicyArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceGroupManagerUpdatePolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceGroupManagerUpdatePolicy {
+		return vs[0].([]GetRegionInstanceGroupManagerUpdatePolicy)[vs[1].(int)]
+	}).(GetRegionInstanceGroupManagerUpdatePolicyOutput)
+}
+
+type GetRegionInstanceGroupManagerVersion struct {
+	// The full URL to an instance template from which all new instances of this version will be created.
+	InstanceTemplate string `pulumi:"instanceTemplate"`
+	// The name of the instance group. Either `name` or `selfLink` must be provided.
+	Name string `pulumi:"name"`
+	// The number of instances calculated as a fixed number or a percentage depending on the settings.
+	TargetSizes []GetRegionInstanceGroupManagerVersionTargetSize `pulumi:"targetSizes"`
+}
+
+// GetRegionInstanceGroupManagerVersionInput is an input type that accepts GetRegionInstanceGroupManagerVersionArgs and GetRegionInstanceGroupManagerVersionOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerVersionInput` via:
+//
+//	GetRegionInstanceGroupManagerVersionArgs{...}
+type GetRegionInstanceGroupManagerVersionInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerVersionOutput() GetRegionInstanceGroupManagerVersionOutput
+	ToGetRegionInstanceGroupManagerVersionOutputWithContext(context.Context) GetRegionInstanceGroupManagerVersionOutput
+}
+
+type GetRegionInstanceGroupManagerVersionArgs struct {
+	// The full URL to an instance template from which all new instances of this version will be created.
+	InstanceTemplate pulumi.StringInput `pulumi:"instanceTemplate"`
+	// The name of the instance group. Either `name` or `selfLink` must be provided.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The number of instances calculated as a fixed number or a percentage depending on the settings.
+	TargetSizes GetRegionInstanceGroupManagerVersionTargetSizeArrayInput `pulumi:"targetSizes"`
+}
+
+func (GetRegionInstanceGroupManagerVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerVersion)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerVersionArgs) ToGetRegionInstanceGroupManagerVersionOutput() GetRegionInstanceGroupManagerVersionOutput {
+	return i.ToGetRegionInstanceGroupManagerVersionOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerVersionArgs) ToGetRegionInstanceGroupManagerVersionOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerVersionOutput)
+}
+
+// GetRegionInstanceGroupManagerVersionArrayInput is an input type that accepts GetRegionInstanceGroupManagerVersionArray and GetRegionInstanceGroupManagerVersionArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerVersionArrayInput` via:
+//
+//	GetRegionInstanceGroupManagerVersionArray{ GetRegionInstanceGroupManagerVersionArgs{...} }
+type GetRegionInstanceGroupManagerVersionArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerVersionArrayOutput() GetRegionInstanceGroupManagerVersionArrayOutput
+	ToGetRegionInstanceGroupManagerVersionArrayOutputWithContext(context.Context) GetRegionInstanceGroupManagerVersionArrayOutput
+}
+
+type GetRegionInstanceGroupManagerVersionArray []GetRegionInstanceGroupManagerVersionInput
+
+func (GetRegionInstanceGroupManagerVersionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerVersion)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerVersionArray) ToGetRegionInstanceGroupManagerVersionArrayOutput() GetRegionInstanceGroupManagerVersionArrayOutput {
+	return i.ToGetRegionInstanceGroupManagerVersionArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerVersionArray) ToGetRegionInstanceGroupManagerVersionArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerVersionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerVersionArrayOutput)
+}
+
+type GetRegionInstanceGroupManagerVersionOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerVersion)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerVersionOutput) ToGetRegionInstanceGroupManagerVersionOutput() GetRegionInstanceGroupManagerVersionOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerVersionOutput) ToGetRegionInstanceGroupManagerVersionOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerVersionOutput {
+	return o
+}
+
+// The full URL to an instance template from which all new instances of this version will be created.
+func (o GetRegionInstanceGroupManagerVersionOutput) InstanceTemplate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerVersion) string { return v.InstanceTemplate }).(pulumi.StringOutput)
+}
+
+// The name of the instance group. Either `name` or `selfLink` must be provided.
+func (o GetRegionInstanceGroupManagerVersionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerVersion) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The number of instances calculated as a fixed number or a percentage depending on the settings.
+func (o GetRegionInstanceGroupManagerVersionOutput) TargetSizes() GetRegionInstanceGroupManagerVersionTargetSizeArrayOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerVersion) []GetRegionInstanceGroupManagerVersionTargetSize {
+		return v.TargetSizes
+	}).(GetRegionInstanceGroupManagerVersionTargetSizeArrayOutput)
+}
+
+type GetRegionInstanceGroupManagerVersionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerVersionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerVersion)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerVersionArrayOutput) ToGetRegionInstanceGroupManagerVersionArrayOutput() GetRegionInstanceGroupManagerVersionArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerVersionArrayOutput) ToGetRegionInstanceGroupManagerVersionArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerVersionArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerVersionArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceGroupManagerVersionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceGroupManagerVersion {
+		return vs[0].([]GetRegionInstanceGroupManagerVersion)[vs[1].(int)]
+	}).(GetRegionInstanceGroupManagerVersionOutput)
+}
+
+type GetRegionInstanceGroupManagerVersionTargetSize struct {
+	// The number of instances which are managed for this version. Conflicts with percent.
+	Fixed int `pulumi:"fixed"`
+	// The number of instances (calculated as percentage) which are managed for this version. Conflicts with fixed. Note that when using percent, rounding will be in favor of explicitly set targetSize values; a managed instance group with 2 instances and 2 versions, one of which has a target_size.percent of 60 will create 2 instances of that version.
+	Percent int `pulumi:"percent"`
+}
+
+// GetRegionInstanceGroupManagerVersionTargetSizeInput is an input type that accepts GetRegionInstanceGroupManagerVersionTargetSizeArgs and GetRegionInstanceGroupManagerVersionTargetSizeOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerVersionTargetSizeInput` via:
+//
+//	GetRegionInstanceGroupManagerVersionTargetSizeArgs{...}
+type GetRegionInstanceGroupManagerVersionTargetSizeInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerVersionTargetSizeOutput() GetRegionInstanceGroupManagerVersionTargetSizeOutput
+	ToGetRegionInstanceGroupManagerVersionTargetSizeOutputWithContext(context.Context) GetRegionInstanceGroupManagerVersionTargetSizeOutput
+}
+
+type GetRegionInstanceGroupManagerVersionTargetSizeArgs struct {
+	// The number of instances which are managed for this version. Conflicts with percent.
+	Fixed pulumi.IntInput `pulumi:"fixed"`
+	// The number of instances (calculated as percentage) which are managed for this version. Conflicts with fixed. Note that when using percent, rounding will be in favor of explicitly set targetSize values; a managed instance group with 2 instances and 2 versions, one of which has a target_size.percent of 60 will create 2 instances of that version.
+	Percent pulumi.IntInput `pulumi:"percent"`
+}
+
+func (GetRegionInstanceGroupManagerVersionTargetSizeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerVersionTargetSize)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerVersionTargetSizeArgs) ToGetRegionInstanceGroupManagerVersionTargetSizeOutput() GetRegionInstanceGroupManagerVersionTargetSizeOutput {
+	return i.ToGetRegionInstanceGroupManagerVersionTargetSizeOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerVersionTargetSizeArgs) ToGetRegionInstanceGroupManagerVersionTargetSizeOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerVersionTargetSizeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerVersionTargetSizeOutput)
+}
+
+// GetRegionInstanceGroupManagerVersionTargetSizeArrayInput is an input type that accepts GetRegionInstanceGroupManagerVersionTargetSizeArray and GetRegionInstanceGroupManagerVersionTargetSizeArrayOutput values.
+// You can construct a concrete instance of `GetRegionInstanceGroupManagerVersionTargetSizeArrayInput` via:
+//
+//	GetRegionInstanceGroupManagerVersionTargetSizeArray{ GetRegionInstanceGroupManagerVersionTargetSizeArgs{...} }
+type GetRegionInstanceGroupManagerVersionTargetSizeArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionInstanceGroupManagerVersionTargetSizeArrayOutput() GetRegionInstanceGroupManagerVersionTargetSizeArrayOutput
+	ToGetRegionInstanceGroupManagerVersionTargetSizeArrayOutputWithContext(context.Context) GetRegionInstanceGroupManagerVersionTargetSizeArrayOutput
+}
+
+type GetRegionInstanceGroupManagerVersionTargetSizeArray []GetRegionInstanceGroupManagerVersionTargetSizeInput
+
+func (GetRegionInstanceGroupManagerVersionTargetSizeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerVersionTargetSize)(nil)).Elem()
+}
+
+func (i GetRegionInstanceGroupManagerVersionTargetSizeArray) ToGetRegionInstanceGroupManagerVersionTargetSizeArrayOutput() GetRegionInstanceGroupManagerVersionTargetSizeArrayOutput {
+	return i.ToGetRegionInstanceGroupManagerVersionTargetSizeArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionInstanceGroupManagerVersionTargetSizeArray) ToGetRegionInstanceGroupManagerVersionTargetSizeArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerVersionTargetSizeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionInstanceGroupManagerVersionTargetSizeArrayOutput)
+}
+
+type GetRegionInstanceGroupManagerVersionTargetSizeOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerVersionTargetSizeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionInstanceGroupManagerVersionTargetSize)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerVersionTargetSizeOutput) ToGetRegionInstanceGroupManagerVersionTargetSizeOutput() GetRegionInstanceGroupManagerVersionTargetSizeOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerVersionTargetSizeOutput) ToGetRegionInstanceGroupManagerVersionTargetSizeOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerVersionTargetSizeOutput {
+	return o
+}
+
+// The number of instances which are managed for this version. Conflicts with percent.
+func (o GetRegionInstanceGroupManagerVersionTargetSizeOutput) Fixed() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerVersionTargetSize) int { return v.Fixed }).(pulumi.IntOutput)
+}
+
+// The number of instances (calculated as percentage) which are managed for this version. Conflicts with fixed. Note that when using percent, rounding will be in favor of explicitly set targetSize values; a managed instance group with 2 instances and 2 versions, one of which has a target_size.percent of 60 will create 2 instances of that version.
+func (o GetRegionInstanceGroupManagerVersionTargetSizeOutput) Percent() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionInstanceGroupManagerVersionTargetSize) int { return v.Percent }).(pulumi.IntOutput)
+}
+
+type GetRegionInstanceGroupManagerVersionTargetSizeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionInstanceGroupManagerVersionTargetSizeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionInstanceGroupManagerVersionTargetSize)(nil)).Elem()
+}
+
+func (o GetRegionInstanceGroupManagerVersionTargetSizeArrayOutput) ToGetRegionInstanceGroupManagerVersionTargetSizeArrayOutput() GetRegionInstanceGroupManagerVersionTargetSizeArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerVersionTargetSizeArrayOutput) ToGetRegionInstanceGroupManagerVersionTargetSizeArrayOutputWithContext(ctx context.Context) GetRegionInstanceGroupManagerVersionTargetSizeArrayOutput {
+	return o
+}
+
+func (o GetRegionInstanceGroupManagerVersionTargetSizeArrayOutput) Index(i pulumi.IntInput) GetRegionInstanceGroupManagerVersionTargetSizeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionInstanceGroupManagerVersionTargetSize {
+		return vs[0].([]GetRegionInstanceGroupManagerVersionTargetSize)[vs[1].(int)]
+	}).(GetRegionInstanceGroupManagerVersionTargetSizeOutput)
 }
 
 type GetRegionInstanceTemplateAdvancedMachineFeature struct {
@@ -34830,6 +38571,8 @@ type GetRegionInstanceTemplateScheduling struct {
 	// automatically restarted if it is terminated by Compute Engine (not
 	// terminated by a user). This defaults to true.
 	AutomaticRestart bool `pulumi:"automaticRestart"`
+	// Beta Time in seconds for host error detection.
+	HostErrorTimeoutSeconds int `pulumi:"hostErrorTimeoutSeconds"`
 	// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
 	InstanceTerminationAction string `pulumi:"instanceTerminationAction"`
 	// Specifies the maximum amount of time a Local Ssd Vm should wait while
@@ -34878,6 +38621,8 @@ type GetRegionInstanceTemplateSchedulingArgs struct {
 	// automatically restarted if it is terminated by Compute Engine (not
 	// terminated by a user). This defaults to true.
 	AutomaticRestart pulumi.BoolInput `pulumi:"automaticRestart"`
+	// Beta Time in seconds for host error detection.
+	HostErrorTimeoutSeconds pulumi.IntInput `pulumi:"hostErrorTimeoutSeconds"`
 	// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
 	InstanceTerminationAction pulumi.StringInput `pulumi:"instanceTerminationAction"`
 	// Specifies the maximum amount of time a Local Ssd Vm should wait while
@@ -34966,6 +38711,11 @@ func (o GetRegionInstanceTemplateSchedulingOutput) ToGetRegionInstanceTemplateSc
 // terminated by a user). This defaults to true.
 func (o GetRegionInstanceTemplateSchedulingOutput) AutomaticRestart() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateScheduling) bool { return v.AutomaticRestart }).(pulumi.BoolOutput)
+}
+
+// Beta Time in seconds for host error detection.
+func (o GetRegionInstanceTemplateSchedulingOutput) HostErrorTimeoutSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateScheduling) int { return v.HostErrorTimeoutSeconds }).(pulumi.IntOutput)
 }
 
 // Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
@@ -43488,6 +47238,26 @@ func (o GetSubnetworksSubnetworkArrayOutput) Index(i pulumi.IntInput) GetSubnetw
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotIamBindingConditionInput)(nil)).Elem(), SnapshotIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotIamBindingConditionPtrInput)(nil)).Elem(), SnapshotIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotIamMemberConditionInput)(nil)).Elem(), SnapshotIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotIamMemberConditionPtrInput)(nil)).Elem(), SnapshotIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotSnapshotEncryptionKeyInput)(nil)).Elem(), SnapshotSnapshotEncryptionKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotSnapshotEncryptionKeyPtrInput)(nil)).Elem(), SnapshotSnapshotEncryptionKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotSourceDiskEncryptionKeyInput)(nil)).Elem(), SnapshotSourceDiskEncryptionKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotSourceDiskEncryptionKeyPtrInput)(nil)).Elem(), SnapshotSourceDiskEncryptionKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkIAMBindingConditionInput)(nil)).Elem(), SubnetworkIAMBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkIAMBindingConditionPtrInput)(nil)).Elem(), SubnetworkIAMBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkIAMMemberConditionInput)(nil)).Elem(), SubnetworkIAMMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkIAMMemberConditionPtrInput)(nil)).Elem(), SubnetworkIAMMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkLogConfigInput)(nil)).Elem(), SubnetworkLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkLogConfigPtrInput)(nil)).Elem(), SubnetworkLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkSecondaryIpRangeInput)(nil)).Elem(), SubnetworkSecondaryIpRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), SubnetworkSecondaryIpRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultCustomErrorResponsePolicyInput)(nil)).Elem(), URLMapDefaultCustomErrorResponsePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultCustomErrorResponsePolicyPtrInput)(nil)).Elem(), URLMapDefaultCustomErrorResponsePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleInput)(nil)).Elem(), URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArrayInput)(nil)).Elem(), URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionInput)(nil)).Elem(), URLMapDefaultRouteActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionPtrInput)(nil)).Elem(), URLMapDefaultRouteActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapDefaultRouteActionCorsPolicyInput)(nil)).Elem(), URLMapDefaultRouteActionCorsPolicyArgs{})
@@ -43894,6 +47664,40 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupInstanceArrayInput)(nil)).Elem(), GetRegionInstanceGroupInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupInstanceNamedPortInput)(nil)).Elem(), GetRegionInstanceGroupInstanceNamedPortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupInstanceNamedPortArrayInput)(nil)).Elem(), GetRegionInstanceGroupInstanceNamedPortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerAllInstancesConfigInput)(nil)).Elem(), GetRegionInstanceGroupManagerAllInstancesConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerAllInstancesConfigArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerAllInstancesConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerAutoHealingPolicyInput)(nil)).Elem(), GetRegionInstanceGroupManagerAutoHealingPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerAutoHealingPolicyArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerAutoHealingPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceLifecyclePolicyInput)(nil)).Elem(), GetRegionInstanceGroupManagerInstanceLifecyclePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerInstanceLifecyclePolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerNamedPortInput)(nil)).Elem(), GetRegionInstanceGroupManagerNamedPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerNamedPortArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerNamedPortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerParamInput)(nil)).Elem(), GetRegionInstanceGroupManagerParamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerParamArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerParamArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerStandbyPolicyInput)(nil)).Elem(), GetRegionInstanceGroupManagerStandbyPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerStandbyPolicyArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerStandbyPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerStatefulDiskInput)(nil)).Elem(), GetRegionInstanceGroupManagerStatefulDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerStatefulDiskArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerStatefulDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerStatefulExternalIpInput)(nil)).Elem(), GetRegionInstanceGroupManagerStatefulExternalIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerStatefulExternalIpArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerStatefulExternalIpArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerStatefulInternalIpInput)(nil)).Elem(), GetRegionInstanceGroupManagerStatefulInternalIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerStatefulInternalIpArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerStatefulInternalIpArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerStatusInput)(nil)).Elem(), GetRegionInstanceGroupManagerStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerStatusArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerStatusAllInstancesConfigInput)(nil)).Elem(), GetRegionInstanceGroupManagerStatusAllInstancesConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerStatusAllInstancesConfigArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerStatusAllInstancesConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerStatusStatefulInput)(nil)).Elem(), GetRegionInstanceGroupManagerStatusStatefulArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerStatusStatefulArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerStatusStatefulArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigInput)(nil)).Elem(), GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerStatusVersionTargetInput)(nil)).Elem(), GetRegionInstanceGroupManagerStatusVersionTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerStatusVersionTargetArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerStatusVersionTargetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerUpdatePolicyInput)(nil)).Elem(), GetRegionInstanceGroupManagerUpdatePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerUpdatePolicyArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerUpdatePolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerVersionInput)(nil)).Elem(), GetRegionInstanceGroupManagerVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerVersionArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerVersionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerVersionTargetSizeInput)(nil)).Elem(), GetRegionInstanceGroupManagerVersionTargetSizeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupManagerVersionTargetSizeArrayInput)(nil)).Elem(), GetRegionInstanceGroupManagerVersionTargetSizeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateAdvancedMachineFeatureInput)(nil)).Elem(), GetRegionInstanceTemplateAdvancedMachineFeatureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateAdvancedMachineFeatureArrayInput)(nil)).Elem(), GetRegionInstanceTemplateAdvancedMachineFeatureArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceTemplateConfidentialInstanceConfigInput)(nil)).Elem(), GetRegionInstanceTemplateConfidentialInstanceConfigArgs{})
@@ -44058,6 +47862,26 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkInput)(nil)).Elem(), GetSubnetworksSubnetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkArrayInput)(nil)).Elem(), GetSubnetworksSubnetworkArray{})
+	pulumi.RegisterOutputType(SnapshotIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(SnapshotIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(SnapshotIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(SnapshotIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(SnapshotSnapshotEncryptionKeyOutput{})
+	pulumi.RegisterOutputType(SnapshotSnapshotEncryptionKeyPtrOutput{})
+	pulumi.RegisterOutputType(SnapshotSourceDiskEncryptionKeyOutput{})
+	pulumi.RegisterOutputType(SnapshotSourceDiskEncryptionKeyPtrOutput{})
+	pulumi.RegisterOutputType(SubnetworkIAMBindingConditionOutput{})
+	pulumi.RegisterOutputType(SubnetworkIAMBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(SubnetworkIAMMemberConditionOutput{})
+	pulumi.RegisterOutputType(SubnetworkIAMMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(SubnetworkLogConfigOutput{})
+	pulumi.RegisterOutputType(SubnetworkLogConfigPtrOutput{})
+	pulumi.RegisterOutputType(SubnetworkSecondaryIpRangeOutput{})
+	pulumi.RegisterOutputType(SubnetworkSecondaryIpRangeArrayOutput{})
+	pulumi.RegisterOutputType(URLMapDefaultCustomErrorResponsePolicyOutput{})
+	pulumi.RegisterOutputType(URLMapDefaultCustomErrorResponsePolicyPtrOutput{})
+	pulumi.RegisterOutputType(URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleOutput{})
+	pulumi.RegisterOutputType(URLMapDefaultCustomErrorResponsePolicyErrorResponseRuleArrayOutput{})
 	pulumi.RegisterOutputType(URLMapDefaultRouteActionOutput{})
 	pulumi.RegisterOutputType(URLMapDefaultRouteActionPtrOutput{})
 	pulumi.RegisterOutputType(URLMapDefaultRouteActionCorsPolicyOutput{})
@@ -44464,6 +48288,40 @@ func init() {
 	pulumi.RegisterOutputType(GetRegionInstanceGroupInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceGroupInstanceNamedPortOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceGroupInstanceNamedPortArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerAllInstancesConfigOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerAllInstancesConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerAutoHealingPolicyOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerAutoHealingPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerInstanceLifecyclePolicyOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerNamedPortOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerNamedPortArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerParamOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerParamArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerStandbyPolicyOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerStandbyPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerStatefulDiskOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerStatefulDiskArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerStatefulExternalIpOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerStatefulExternalIpArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerStatefulInternalIpOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerStatefulInternalIpArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerStatusOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerStatusArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerStatusAllInstancesConfigOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerStatusAllInstancesConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerStatusStatefulOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerStatusStatefulArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerStatusVersionTargetOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerStatusVersionTargetArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerUpdatePolicyOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerUpdatePolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerVersionOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerVersionArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerVersionTargetSizeOutput{})
+	pulumi.RegisterOutputType(GetRegionInstanceGroupManagerVersionTargetSizeArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceTemplateAdvancedMachineFeatureOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceTemplateAdvancedMachineFeatureArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceTemplateConfidentialInstanceConfigOutput{})

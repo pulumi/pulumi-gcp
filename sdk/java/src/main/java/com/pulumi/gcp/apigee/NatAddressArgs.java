@@ -6,6 +6,7 @@ package com.pulumi.gcp.apigee;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,6 +16,21 @@ import javax.annotation.Nullable;
 public final class NatAddressArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final NatAddressArgs Empty = new NatAddressArgs();
+
+    /**
+     * Flag that specifies whether the reserved NAT address should be activate.
+     * 
+     */
+    @Import(name="activate")
+    private @Nullable Output<Boolean> activate;
+
+    /**
+     * @return Flag that specifies whether the reserved NAT address should be activate.
+     * 
+     */
+    public Optional<Output<Boolean>> activate() {
+        return Optional.ofNullable(this.activate);
+    }
 
     /**
      * The Apigee instance associated with the Apigee environment,
@@ -55,6 +71,7 @@ public final class NatAddressArgs extends com.pulumi.resources.ResourceArgs {
     private NatAddressArgs() {}
 
     private NatAddressArgs(NatAddressArgs $) {
+        this.activate = $.activate;
         this.instanceId = $.instanceId;
         this.name = $.name;
     }
@@ -75,6 +92,27 @@ public final class NatAddressArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(NatAddressArgs defaults) {
             $ = new NatAddressArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param activate Flag that specifies whether the reserved NAT address should be activate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder activate(@Nullable Output<Boolean> activate) {
+            $.activate = activate;
+            return this;
+        }
+
+        /**
+         * @param activate Flag that specifies whether the reserved NAT address should be activate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder activate(Boolean activate) {
+            return activate(Output.of(activate));
         }
 
         /**

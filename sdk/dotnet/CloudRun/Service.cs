@@ -151,6 +151,65 @@ namespace Pulumi.Gcp.CloudRun
     /// 
     /// });
     /// ```
+    /// ### Cloud Run Service Gpu
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CloudRun.Service("default", new()
+    ///     {
+    ///         Name = "cloudrun-srv",
+    ///         Location = "us-central1",
+    ///         Metadata = new Gcp.CloudRun.Inputs.ServiceMetadataArgs
+    ///         {
+    ///             Annotations = 
+    ///             {
+    ///                 { "run.googleapis.com/launch-stage", "BETA" },
+    ///             },
+    ///         },
+    ///         Template = new Gcp.CloudRun.Inputs.ServiceTemplateArgs
+    ///         {
+    ///             Metadata = new Gcp.CloudRun.Inputs.ServiceTemplateMetadataArgs
+    ///             {
+    ///                 Annotations = 
+    ///                 {
+    ///                     { "autoscaling.knative.dev/maxScale", "1" },
+    ///                     { "run.googleapis.com/cpu-throttling", "false" },
+    ///                 },
+    ///             },
+    ///             Spec = new Gcp.CloudRun.Inputs.ServiceTemplateSpecArgs
+    ///             {
+    ///                 Containers = new[]
+    ///                 {
+    ///                     new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerArgs
+    ///                     {
+    ///                         Image = "gcr.io/cloudrun/hello",
+    ///                         Resources = new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerResourcesArgs
+    ///                         {
+    ///                             Limits = 
+    ///                             {
+    ///                                 { "cpu", "4" },
+    ///                                 { "memory", "16Gi" },
+    ///                                 { "nvidia.com/gpu", "1" },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 NodeSelector = 
+    ///                 {
+    ///                     { "run.googleapis.com/accelerator", "nvidia-l4" },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Cloud Run Service Sql
     /// 
     /// ```csharp

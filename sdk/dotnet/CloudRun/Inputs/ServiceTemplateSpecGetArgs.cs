@@ -33,6 +33,20 @@ namespace Pulumi.Gcp.CloudRun.Inputs
             set => _containers = value;
         }
 
+        [Input("nodeSelector")]
+        private InputMap<string>? _nodeSelector;
+
+        /// <summary>
+        /// Node Selector describes the hardware requirements of the resources.
+        /// Use the following node selector keys to configure features on a Revision:
+        /// - `run.googleapis.com/accelerator` sets the [type of GPU](https://cloud.google.com/run/docs/configuring/services/gpu) required by the Revision to run.
+        /// </summary>
+        public InputMap<string> NodeSelector
+        {
+            get => _nodeSelector ?? (_nodeSelector = new InputMap<string>());
+            set => _nodeSelector = value;
+        }
+
         /// <summary>
         /// Email address of the IAM service account associated with the revision of the
         /// service. The service account represents the identity of the running revision,

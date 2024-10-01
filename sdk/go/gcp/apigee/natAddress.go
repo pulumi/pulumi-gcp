@@ -13,7 +13,6 @@ import (
 )
 
 // Apigee NAT (network address translation) address. A NAT address is a static external IP address used for Internet egress traffic. This is not avaible for Apigee hybrid.
-// Apigee NAT addresses are not automatically activated because they might require explicit allow entries on the target systems first. See https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.instances.natAddresses/activate
 //
 // To get more information about NatAddress, see:
 //
@@ -138,6 +137,122 @@ import (
 //	}
 //
 // ```
+// ### Apigee Nat Address With Activate
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/apigee"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/servicenetworking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			current, err := organizations.GetClientConfig(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			apigeeNetwork, err := compute.NewNetwork(ctx, "apigee_network", &compute.NetworkArgs{
+//				Name: pulumi.String("apigee-network"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			apigeeRange, err := compute.NewGlobalAddress(ctx, "apigee_range", &compute.GlobalAddressArgs{
+//				Name:         pulumi.String("apigee-range"),
+//				Purpose:      pulumi.String("VPC_PEERING"),
+//				AddressType:  pulumi.String("INTERNAL"),
+//				PrefixLength: pulumi.Int(21),
+//				Network:      apigeeNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			apigeeVpcConnection, err := servicenetworking.NewConnection(ctx, "apigee_vpc_connection", &servicenetworking.ConnectionArgs{
+//				Network: apigeeNetwork.ID(),
+//				Service: pulumi.String("servicenetworking.googleapis.com"),
+//				ReservedPeeringRanges: pulumi.StringArray{
+//					apigeeRange.Name,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			apigeeKeyring, err := kms.NewKeyRing(ctx, "apigee_keyring", &kms.KeyRingArgs{
+//				Name:     pulumi.String("apigee-keyring"),
+//				Location: pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			apigeeKey, err := kms.NewCryptoKey(ctx, "apigee_key", &kms.CryptoKeyArgs{
+//				Name:    pulumi.String("apigee-key"),
+//				KeyRing: apigeeKeyring.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			apigeeSa, err := projects.NewServiceIdentity(ctx, "apigee_sa", &projects.ServiceIdentityArgs{
+//				Project: pulumi.Any(project.ProjectId),
+//				Service: pulumi.Any(apigee.Service),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			apigeeSaKeyuser, err := kms.NewCryptoKeyIAMMember(ctx, "apigee_sa_keyuser", &kms.CryptoKeyIAMMemberArgs{
+//				CryptoKeyId: apigeeKey.ID(),
+//				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
+//				Member:      apigeeSa.Member,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			apigeeOrg, err := apigee.NewOrganization(ctx, "apigee_org", &apigee.OrganizationArgs{
+//				AnalyticsRegion:                  pulumi.String("us-central1"),
+//				DisplayName:                      pulumi.String("apigee-org"),
+//				Description:                      pulumi.String("Terraform-provisioned Apigee Org."),
+//				ProjectId:                        pulumi.String(current.Project),
+//				AuthorizedNetwork:                apigeeNetwork.ID(),
+//				RuntimeDatabaseEncryptionKeyName: apigeeKey.ID(),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				apigeeVpcConnection,
+//				apigeeSaKeyuser,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			apigeeInstance, err := apigee.NewInstance(ctx, "apigee_instance", &apigee.InstanceArgs{
+//				Name:                  pulumi.String("apigee-instance"),
+//				Location:              pulumi.String("us-central1"),
+//				Description:           pulumi.String("Terraform-managed Apigee Runtime Instance"),
+//				DisplayName:           pulumi.String("apigee-instance"),
+//				OrgId:                 apigeeOrg.ID(),
+//				DiskEncryptionKeyName: apigeeKey.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = apigee.NewNatAddress(ctx, "apigee-nat", &apigee.NatAddressArgs{
+//				Name:       pulumi.String("my-nat-address"),
+//				Activate:   pulumi.Bool(true),
+//				InstanceId: apigeeInstance.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -159,6 +274,8 @@ import (
 type NatAddress struct {
 	pulumi.CustomResourceState
 
+	// Flag that specifies whether the reserved NAT address should be activate.
+	Activate pulumi.BoolPtrOutput `pulumi:"activate"`
 	// The Apigee instance associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
 	//
@@ -205,6 +322,8 @@ func GetNatAddress(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NatAddress resources.
 type natAddressState struct {
+	// Flag that specifies whether the reserved NAT address should be activate.
+	Activate *bool `pulumi:"activate"`
 	// The Apigee instance associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
 	//
@@ -219,6 +338,8 @@ type natAddressState struct {
 }
 
 type NatAddressState struct {
+	// Flag that specifies whether the reserved NAT address should be activate.
+	Activate pulumi.BoolPtrInput
 	// The Apigee instance associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
 	//
@@ -237,6 +358,8 @@ func (NatAddressState) ElementType() reflect.Type {
 }
 
 type natAddressArgs struct {
+	// Flag that specifies whether the reserved NAT address should be activate.
+	Activate *bool `pulumi:"activate"`
 	// The Apigee instance associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
 	//
@@ -248,6 +371,8 @@ type natAddressArgs struct {
 
 // The set of arguments for constructing a NatAddress resource.
 type NatAddressArgs struct {
+	// Flag that specifies whether the reserved NAT address should be activate.
+	Activate pulumi.BoolPtrInput
 	// The Apigee instance associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
 	//
@@ -342,6 +467,11 @@ func (o NatAddressOutput) ToNatAddressOutput() NatAddressOutput {
 
 func (o NatAddressOutput) ToNatAddressOutputWithContext(ctx context.Context) NatAddressOutput {
 	return o
+}
+
+// Flag that specifies whether the reserved NAT address should be activate.
+func (o NatAddressOutput) Activate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NatAddress) pulumi.BoolPtrOutput { return v.Activate }).(pulumi.BoolPtrOutput)
 }
 
 // The Apigee instance associated with the Apigee environment,

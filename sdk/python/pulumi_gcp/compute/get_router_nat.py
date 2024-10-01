@@ -27,7 +27,7 @@ class GetRouterNatResult:
     """
     A collection of values returned by getRouterNat.
     """
-    def __init__(__self__, auto_network_tier=None, drain_nat_ips=None, enable_dynamic_port_allocation=None, enable_endpoint_independent_mapping=None, endpoint_types=None, icmp_idle_timeout_sec=None, id=None, log_configs=None, max_ports_per_vm=None, min_ports_per_vm=None, name=None, nat_ip_allocate_option=None, nat_ips=None, project=None, region=None, router=None, rules=None, source_subnetwork_ip_ranges_to_nat=None, subnetworks=None, tcp_established_idle_timeout_sec=None, tcp_time_wait_timeout_sec=None, tcp_transitory_idle_timeout_sec=None, type=None, udp_idle_timeout_sec=None):
+    def __init__(__self__, auto_network_tier=None, drain_nat_ips=None, enable_dynamic_port_allocation=None, enable_endpoint_independent_mapping=None, endpoint_types=None, icmp_idle_timeout_sec=None, id=None, initial_nat_ips=None, log_configs=None, max_ports_per_vm=None, min_ports_per_vm=None, name=None, nat_ip_allocate_option=None, nat_ips=None, project=None, region=None, router=None, rules=None, source_subnetwork_ip_ranges_to_nat=None, subnetworks=None, tcp_established_idle_timeout_sec=None, tcp_time_wait_timeout_sec=None, tcp_transitory_idle_timeout_sec=None, type=None, udp_idle_timeout_sec=None):
         if auto_network_tier and not isinstance(auto_network_tier, str):
             raise TypeError("Expected argument 'auto_network_tier' to be a str")
         pulumi.set(__self__, "auto_network_tier", auto_network_tier)
@@ -49,6 +49,9 @@ class GetRouterNatResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if initial_nat_ips and not isinstance(initial_nat_ips, list):
+            raise TypeError("Expected argument 'initial_nat_ips' to be a list")
+        pulumi.set(__self__, "initial_nat_ips", initial_nat_ips)
         if log_configs and not isinstance(log_configs, list):
             raise TypeError("Expected argument 'log_configs' to be a list")
         pulumi.set(__self__, "log_configs", log_configs)
@@ -138,6 +141,11 @@ class GetRouterNatResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="initialNatIps")
+    def initial_nat_ips(self) -> Sequence[str]:
+        return pulumi.get(self, "initial_nat_ips")
 
     @property
     @pulumi.getter(name="logConfigs")
@@ -238,6 +246,7 @@ class AwaitableGetRouterNatResult(GetRouterNatResult):
             endpoint_types=self.endpoint_types,
             icmp_idle_timeout_sec=self.icmp_idle_timeout_sec,
             id=self.id,
+            initial_nat_ips=self.initial_nat_ips,
             log_configs=self.log_configs,
             max_ports_per_vm=self.max_ports_per_vm,
             min_ports_per_vm=self.min_ports_per_vm,
@@ -305,6 +314,7 @@ def get_router_nat(name: Optional[str] = None,
         endpoint_types=pulumi.get(__ret__, 'endpoint_types'),
         icmp_idle_timeout_sec=pulumi.get(__ret__, 'icmp_idle_timeout_sec'),
         id=pulumi.get(__ret__, 'id'),
+        initial_nat_ips=pulumi.get(__ret__, 'initial_nat_ips'),
         log_configs=pulumi.get(__ret__, 'log_configs'),
         max_ports_per_vm=pulumi.get(__ret__, 'max_ports_per_vm'),
         min_ports_per_vm=pulumi.get(__ret__, 'min_ports_per_vm'),

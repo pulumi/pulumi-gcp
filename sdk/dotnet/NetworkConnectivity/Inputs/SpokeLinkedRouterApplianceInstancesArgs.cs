@@ -12,6 +12,19 @@ namespace Pulumi.Gcp.NetworkConnectivity.Inputs
 
     public sealed class SpokeLinkedRouterApplianceInstancesArgs : global::Pulumi.ResourceArgs
     {
+        [Input("includeImportRanges")]
+        private InputList<string>? _includeImportRanges;
+
+        /// <summary>
+        /// IP ranges allowed to be included during import from hub (does not control transit connectivity).
+        /// The only allowed value for now is "ALL_IPV4_RANGES".
+        /// </summary>
+        public InputList<string> IncludeImportRanges
+        {
+            get => _includeImportRanges ?? (_includeImportRanges = new InputList<string>());
+            set => _includeImportRanges = value;
+        }
+
         [Input("instances", required: true)]
         private InputList<Inputs.SpokeLinkedRouterApplianceInstancesInstanceArgs>? _instances;
 

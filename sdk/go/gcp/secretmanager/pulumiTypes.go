@@ -2752,6 +2752,559 @@ func (o GetRegionalSecretVersionCustomerManagedEncryptionArrayOutput) Index(i pu
 	}).(GetRegionalSecretVersionCustomerManagedEncryptionOutput)
 }
 
+type GetRegionalSecretsSecret struct {
+	// Custom metadata about the regional secret.
+	Annotations map[string]string `pulumi:"annotations"`
+	// The time at which the regional secret was created.
+	CreateTime string `pulumi:"createTime"`
+	// Customer Managed Encryption for the regional secret.
+	// Structure is documented below.
+	CustomerManagedEncryptions []GetRegionalSecretsSecretCustomerManagedEncryption `pulumi:"customerManagedEncryptions"`
+	EffectiveAnnotations       map[string]string                                   `pulumi:"effectiveAnnotations"`
+	EffectiveLabels            map[string]string                                   `pulumi:"effectiveLabels"`
+	// Timestamp in UTC when the regional secret is scheduled to expire.
+	ExpireTime string `pulumi:"expireTime"`
+	// The labels assigned to this regional secret.
+	Labels map[string]string `pulumi:"labels"`
+	// The location of the regional secret.
+	Location string `pulumi:"location"`
+	// The resource name of the Pub/Sub topic that will be published to.
+	Name string `pulumi:"name"`
+	// The ID of the project.
+	Project string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	//  and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// The rotation time and period for a regional secret.
+	// Structure is documented below.
+	Rotations []GetRegionalSecretsSecretRotation `pulumi:"rotations"`
+	// The unique name of the resource.
+	SecretId string `pulumi:"secretId"`
+	// A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the regional secret or its versions.
+	// Structure is documented below.
+	Topics []GetRegionalSecretsSecretTopic `pulumi:"topics"`
+	// The TTL for the regional secret. A duration in seconds with up to nine fractional digits,
+	// terminated by 's'. Example: "3.5s". Only one of 'ttl' or 'expire_time' can be provided.
+	Ttl string `pulumi:"ttl"`
+	// Mapping from version alias to version name.
+	VersionAliases map[string]string `pulumi:"versionAliases"`
+	// The version destroy ttl for the regional secret version.
+	VersionDestroyTtl string `pulumi:"versionDestroyTtl"`
+}
+
+// GetRegionalSecretsSecretInput is an input type that accepts GetRegionalSecretsSecretArgs and GetRegionalSecretsSecretOutput values.
+// You can construct a concrete instance of `GetRegionalSecretsSecretInput` via:
+//
+//	GetRegionalSecretsSecretArgs{...}
+type GetRegionalSecretsSecretInput interface {
+	pulumi.Input
+
+	ToGetRegionalSecretsSecretOutput() GetRegionalSecretsSecretOutput
+	ToGetRegionalSecretsSecretOutputWithContext(context.Context) GetRegionalSecretsSecretOutput
+}
+
+type GetRegionalSecretsSecretArgs struct {
+	// Custom metadata about the regional secret.
+	Annotations pulumi.StringMapInput `pulumi:"annotations"`
+	// The time at which the regional secret was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Customer Managed Encryption for the regional secret.
+	// Structure is documented below.
+	CustomerManagedEncryptions GetRegionalSecretsSecretCustomerManagedEncryptionArrayInput `pulumi:"customerManagedEncryptions"`
+	EffectiveAnnotations       pulumi.StringMapInput                                       `pulumi:"effectiveAnnotations"`
+	EffectiveLabels            pulumi.StringMapInput                                       `pulumi:"effectiveLabels"`
+	// Timestamp in UTC when the regional secret is scheduled to expire.
+	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
+	// The labels assigned to this regional secret.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// The location of the regional secret.
+	Location pulumi.StringInput `pulumi:"location"`
+	// The resource name of the Pub/Sub topic that will be published to.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The ID of the project.
+	Project pulumi.StringInput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	//  and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput `pulumi:"pulumiLabels"`
+	// The rotation time and period for a regional secret.
+	// Structure is documented below.
+	Rotations GetRegionalSecretsSecretRotationArrayInput `pulumi:"rotations"`
+	// The unique name of the resource.
+	SecretId pulumi.StringInput `pulumi:"secretId"`
+	// A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the regional secret or its versions.
+	// Structure is documented below.
+	Topics GetRegionalSecretsSecretTopicArrayInput `pulumi:"topics"`
+	// The TTL for the regional secret. A duration in seconds with up to nine fractional digits,
+	// terminated by 's'. Example: "3.5s". Only one of 'ttl' or 'expire_time' can be provided.
+	Ttl pulumi.StringInput `pulumi:"ttl"`
+	// Mapping from version alias to version name.
+	VersionAliases pulumi.StringMapInput `pulumi:"versionAliases"`
+	// The version destroy ttl for the regional secret version.
+	VersionDestroyTtl pulumi.StringInput `pulumi:"versionDestroyTtl"`
+}
+
+func (GetRegionalSecretsSecretArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionalSecretsSecret)(nil)).Elem()
+}
+
+func (i GetRegionalSecretsSecretArgs) ToGetRegionalSecretsSecretOutput() GetRegionalSecretsSecretOutput {
+	return i.ToGetRegionalSecretsSecretOutputWithContext(context.Background())
+}
+
+func (i GetRegionalSecretsSecretArgs) ToGetRegionalSecretsSecretOutputWithContext(ctx context.Context) GetRegionalSecretsSecretOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionalSecretsSecretOutput)
+}
+
+// GetRegionalSecretsSecretArrayInput is an input type that accepts GetRegionalSecretsSecretArray and GetRegionalSecretsSecretArrayOutput values.
+// You can construct a concrete instance of `GetRegionalSecretsSecretArrayInput` via:
+//
+//	GetRegionalSecretsSecretArray{ GetRegionalSecretsSecretArgs{...} }
+type GetRegionalSecretsSecretArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionalSecretsSecretArrayOutput() GetRegionalSecretsSecretArrayOutput
+	ToGetRegionalSecretsSecretArrayOutputWithContext(context.Context) GetRegionalSecretsSecretArrayOutput
+}
+
+type GetRegionalSecretsSecretArray []GetRegionalSecretsSecretInput
+
+func (GetRegionalSecretsSecretArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionalSecretsSecret)(nil)).Elem()
+}
+
+func (i GetRegionalSecretsSecretArray) ToGetRegionalSecretsSecretArrayOutput() GetRegionalSecretsSecretArrayOutput {
+	return i.ToGetRegionalSecretsSecretArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionalSecretsSecretArray) ToGetRegionalSecretsSecretArrayOutputWithContext(ctx context.Context) GetRegionalSecretsSecretArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionalSecretsSecretArrayOutput)
+}
+
+type GetRegionalSecretsSecretOutput struct{ *pulumi.OutputState }
+
+func (GetRegionalSecretsSecretOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionalSecretsSecret)(nil)).Elem()
+}
+
+func (o GetRegionalSecretsSecretOutput) ToGetRegionalSecretsSecretOutput() GetRegionalSecretsSecretOutput {
+	return o
+}
+
+func (o GetRegionalSecretsSecretOutput) ToGetRegionalSecretsSecretOutputWithContext(ctx context.Context) GetRegionalSecretsSecretOutput {
+	return o
+}
+
+// Custom metadata about the regional secret.
+func (o GetRegionalSecretsSecretOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetRegionalSecretsSecret) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
+}
+
+// The time at which the regional secret was created.
+func (o GetRegionalSecretsSecretOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionalSecretsSecret) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Customer Managed Encryption for the regional secret.
+// Structure is documented below.
+func (o GetRegionalSecretsSecretOutput) CustomerManagedEncryptions() GetRegionalSecretsSecretCustomerManagedEncryptionArrayOutput {
+	return o.ApplyT(func(v GetRegionalSecretsSecret) []GetRegionalSecretsSecretCustomerManagedEncryption {
+		return v.CustomerManagedEncryptions
+	}).(GetRegionalSecretsSecretCustomerManagedEncryptionArrayOutput)
+}
+
+func (o GetRegionalSecretsSecretOutput) EffectiveAnnotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetRegionalSecretsSecret) map[string]string { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
+}
+
+func (o GetRegionalSecretsSecretOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetRegionalSecretsSecret) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
+// Timestamp in UTC when the regional secret is scheduled to expire.
+func (o GetRegionalSecretsSecretOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionalSecretsSecret) string { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+// The labels assigned to this regional secret.
+func (o GetRegionalSecretsSecretOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetRegionalSecretsSecret) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The location of the regional secret.
+func (o GetRegionalSecretsSecretOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionalSecretsSecret) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// The resource name of the Pub/Sub topic that will be published to.
+func (o GetRegionalSecretsSecretOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionalSecretsSecret) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ID of the project.
+func (o GetRegionalSecretsSecretOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionalSecretsSecret) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+//
+//	and default labels configured on the provider.
+func (o GetRegionalSecretsSecretOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetRegionalSecretsSecret) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
+// The rotation time and period for a regional secret.
+// Structure is documented below.
+func (o GetRegionalSecretsSecretOutput) Rotations() GetRegionalSecretsSecretRotationArrayOutput {
+	return o.ApplyT(func(v GetRegionalSecretsSecret) []GetRegionalSecretsSecretRotation { return v.Rotations }).(GetRegionalSecretsSecretRotationArrayOutput)
+}
+
+// The unique name of the resource.
+func (o GetRegionalSecretsSecretOutput) SecretId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionalSecretsSecret) string { return v.SecretId }).(pulumi.StringOutput)
+}
+
+// A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the regional secret or its versions.
+// Structure is documented below.
+func (o GetRegionalSecretsSecretOutput) Topics() GetRegionalSecretsSecretTopicArrayOutput {
+	return o.ApplyT(func(v GetRegionalSecretsSecret) []GetRegionalSecretsSecretTopic { return v.Topics }).(GetRegionalSecretsSecretTopicArrayOutput)
+}
+
+// The TTL for the regional secret. A duration in seconds with up to nine fractional digits,
+// terminated by 's'. Example: "3.5s". Only one of 'ttl' or 'expire_time' can be provided.
+func (o GetRegionalSecretsSecretOutput) Ttl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionalSecretsSecret) string { return v.Ttl }).(pulumi.StringOutput)
+}
+
+// Mapping from version alias to version name.
+func (o GetRegionalSecretsSecretOutput) VersionAliases() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetRegionalSecretsSecret) map[string]string { return v.VersionAliases }).(pulumi.StringMapOutput)
+}
+
+// The version destroy ttl for the regional secret version.
+func (o GetRegionalSecretsSecretOutput) VersionDestroyTtl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionalSecretsSecret) string { return v.VersionDestroyTtl }).(pulumi.StringOutput)
+}
+
+type GetRegionalSecretsSecretArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionalSecretsSecretArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionalSecretsSecret)(nil)).Elem()
+}
+
+func (o GetRegionalSecretsSecretArrayOutput) ToGetRegionalSecretsSecretArrayOutput() GetRegionalSecretsSecretArrayOutput {
+	return o
+}
+
+func (o GetRegionalSecretsSecretArrayOutput) ToGetRegionalSecretsSecretArrayOutputWithContext(ctx context.Context) GetRegionalSecretsSecretArrayOutput {
+	return o
+}
+
+func (o GetRegionalSecretsSecretArrayOutput) Index(i pulumi.IntInput) GetRegionalSecretsSecretOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionalSecretsSecret {
+		return vs[0].([]GetRegionalSecretsSecret)[vs[1].(int)]
+	}).(GetRegionalSecretsSecretOutput)
+}
+
+type GetRegionalSecretsSecretCustomerManagedEncryption struct {
+	// Describes the Cloud KMS encryption key that will be used to protect destination secret.
+	KmsKeyName string `pulumi:"kmsKeyName"`
+}
+
+// GetRegionalSecretsSecretCustomerManagedEncryptionInput is an input type that accepts GetRegionalSecretsSecretCustomerManagedEncryptionArgs and GetRegionalSecretsSecretCustomerManagedEncryptionOutput values.
+// You can construct a concrete instance of `GetRegionalSecretsSecretCustomerManagedEncryptionInput` via:
+//
+//	GetRegionalSecretsSecretCustomerManagedEncryptionArgs{...}
+type GetRegionalSecretsSecretCustomerManagedEncryptionInput interface {
+	pulumi.Input
+
+	ToGetRegionalSecretsSecretCustomerManagedEncryptionOutput() GetRegionalSecretsSecretCustomerManagedEncryptionOutput
+	ToGetRegionalSecretsSecretCustomerManagedEncryptionOutputWithContext(context.Context) GetRegionalSecretsSecretCustomerManagedEncryptionOutput
+}
+
+type GetRegionalSecretsSecretCustomerManagedEncryptionArgs struct {
+	// Describes the Cloud KMS encryption key that will be used to protect destination secret.
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+}
+
+func (GetRegionalSecretsSecretCustomerManagedEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionalSecretsSecretCustomerManagedEncryption)(nil)).Elem()
+}
+
+func (i GetRegionalSecretsSecretCustomerManagedEncryptionArgs) ToGetRegionalSecretsSecretCustomerManagedEncryptionOutput() GetRegionalSecretsSecretCustomerManagedEncryptionOutput {
+	return i.ToGetRegionalSecretsSecretCustomerManagedEncryptionOutputWithContext(context.Background())
+}
+
+func (i GetRegionalSecretsSecretCustomerManagedEncryptionArgs) ToGetRegionalSecretsSecretCustomerManagedEncryptionOutputWithContext(ctx context.Context) GetRegionalSecretsSecretCustomerManagedEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionalSecretsSecretCustomerManagedEncryptionOutput)
+}
+
+// GetRegionalSecretsSecretCustomerManagedEncryptionArrayInput is an input type that accepts GetRegionalSecretsSecretCustomerManagedEncryptionArray and GetRegionalSecretsSecretCustomerManagedEncryptionArrayOutput values.
+// You can construct a concrete instance of `GetRegionalSecretsSecretCustomerManagedEncryptionArrayInput` via:
+//
+//	GetRegionalSecretsSecretCustomerManagedEncryptionArray{ GetRegionalSecretsSecretCustomerManagedEncryptionArgs{...} }
+type GetRegionalSecretsSecretCustomerManagedEncryptionArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionalSecretsSecretCustomerManagedEncryptionArrayOutput() GetRegionalSecretsSecretCustomerManagedEncryptionArrayOutput
+	ToGetRegionalSecretsSecretCustomerManagedEncryptionArrayOutputWithContext(context.Context) GetRegionalSecretsSecretCustomerManagedEncryptionArrayOutput
+}
+
+type GetRegionalSecretsSecretCustomerManagedEncryptionArray []GetRegionalSecretsSecretCustomerManagedEncryptionInput
+
+func (GetRegionalSecretsSecretCustomerManagedEncryptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionalSecretsSecretCustomerManagedEncryption)(nil)).Elem()
+}
+
+func (i GetRegionalSecretsSecretCustomerManagedEncryptionArray) ToGetRegionalSecretsSecretCustomerManagedEncryptionArrayOutput() GetRegionalSecretsSecretCustomerManagedEncryptionArrayOutput {
+	return i.ToGetRegionalSecretsSecretCustomerManagedEncryptionArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionalSecretsSecretCustomerManagedEncryptionArray) ToGetRegionalSecretsSecretCustomerManagedEncryptionArrayOutputWithContext(ctx context.Context) GetRegionalSecretsSecretCustomerManagedEncryptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionalSecretsSecretCustomerManagedEncryptionArrayOutput)
+}
+
+type GetRegionalSecretsSecretCustomerManagedEncryptionOutput struct{ *pulumi.OutputState }
+
+func (GetRegionalSecretsSecretCustomerManagedEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionalSecretsSecretCustomerManagedEncryption)(nil)).Elem()
+}
+
+func (o GetRegionalSecretsSecretCustomerManagedEncryptionOutput) ToGetRegionalSecretsSecretCustomerManagedEncryptionOutput() GetRegionalSecretsSecretCustomerManagedEncryptionOutput {
+	return o
+}
+
+func (o GetRegionalSecretsSecretCustomerManagedEncryptionOutput) ToGetRegionalSecretsSecretCustomerManagedEncryptionOutputWithContext(ctx context.Context) GetRegionalSecretsSecretCustomerManagedEncryptionOutput {
+	return o
+}
+
+// Describes the Cloud KMS encryption key that will be used to protect destination secret.
+func (o GetRegionalSecretsSecretCustomerManagedEncryptionOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionalSecretsSecretCustomerManagedEncryption) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+type GetRegionalSecretsSecretCustomerManagedEncryptionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionalSecretsSecretCustomerManagedEncryptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionalSecretsSecretCustomerManagedEncryption)(nil)).Elem()
+}
+
+func (o GetRegionalSecretsSecretCustomerManagedEncryptionArrayOutput) ToGetRegionalSecretsSecretCustomerManagedEncryptionArrayOutput() GetRegionalSecretsSecretCustomerManagedEncryptionArrayOutput {
+	return o
+}
+
+func (o GetRegionalSecretsSecretCustomerManagedEncryptionArrayOutput) ToGetRegionalSecretsSecretCustomerManagedEncryptionArrayOutputWithContext(ctx context.Context) GetRegionalSecretsSecretCustomerManagedEncryptionArrayOutput {
+	return o
+}
+
+func (o GetRegionalSecretsSecretCustomerManagedEncryptionArrayOutput) Index(i pulumi.IntInput) GetRegionalSecretsSecretCustomerManagedEncryptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionalSecretsSecretCustomerManagedEncryption {
+		return vs[0].([]GetRegionalSecretsSecretCustomerManagedEncryption)[vs[1].(int)]
+	}).(GetRegionalSecretsSecretCustomerManagedEncryptionOutput)
+}
+
+type GetRegionalSecretsSecretRotation struct {
+	// Timestamp in UTC at which the secret is scheduled to rotate.
+	NextRotationTime string `pulumi:"nextRotationTime"`
+	// The Duration between rotation notifications.
+	RotationPeriod string `pulumi:"rotationPeriod"`
+}
+
+// GetRegionalSecretsSecretRotationInput is an input type that accepts GetRegionalSecretsSecretRotationArgs and GetRegionalSecretsSecretRotationOutput values.
+// You can construct a concrete instance of `GetRegionalSecretsSecretRotationInput` via:
+//
+//	GetRegionalSecretsSecretRotationArgs{...}
+type GetRegionalSecretsSecretRotationInput interface {
+	pulumi.Input
+
+	ToGetRegionalSecretsSecretRotationOutput() GetRegionalSecretsSecretRotationOutput
+	ToGetRegionalSecretsSecretRotationOutputWithContext(context.Context) GetRegionalSecretsSecretRotationOutput
+}
+
+type GetRegionalSecretsSecretRotationArgs struct {
+	// Timestamp in UTC at which the secret is scheduled to rotate.
+	NextRotationTime pulumi.StringInput `pulumi:"nextRotationTime"`
+	// The Duration between rotation notifications.
+	RotationPeriod pulumi.StringInput `pulumi:"rotationPeriod"`
+}
+
+func (GetRegionalSecretsSecretRotationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionalSecretsSecretRotation)(nil)).Elem()
+}
+
+func (i GetRegionalSecretsSecretRotationArgs) ToGetRegionalSecretsSecretRotationOutput() GetRegionalSecretsSecretRotationOutput {
+	return i.ToGetRegionalSecretsSecretRotationOutputWithContext(context.Background())
+}
+
+func (i GetRegionalSecretsSecretRotationArgs) ToGetRegionalSecretsSecretRotationOutputWithContext(ctx context.Context) GetRegionalSecretsSecretRotationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionalSecretsSecretRotationOutput)
+}
+
+// GetRegionalSecretsSecretRotationArrayInput is an input type that accepts GetRegionalSecretsSecretRotationArray and GetRegionalSecretsSecretRotationArrayOutput values.
+// You can construct a concrete instance of `GetRegionalSecretsSecretRotationArrayInput` via:
+//
+//	GetRegionalSecretsSecretRotationArray{ GetRegionalSecretsSecretRotationArgs{...} }
+type GetRegionalSecretsSecretRotationArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionalSecretsSecretRotationArrayOutput() GetRegionalSecretsSecretRotationArrayOutput
+	ToGetRegionalSecretsSecretRotationArrayOutputWithContext(context.Context) GetRegionalSecretsSecretRotationArrayOutput
+}
+
+type GetRegionalSecretsSecretRotationArray []GetRegionalSecretsSecretRotationInput
+
+func (GetRegionalSecretsSecretRotationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionalSecretsSecretRotation)(nil)).Elem()
+}
+
+func (i GetRegionalSecretsSecretRotationArray) ToGetRegionalSecretsSecretRotationArrayOutput() GetRegionalSecretsSecretRotationArrayOutput {
+	return i.ToGetRegionalSecretsSecretRotationArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionalSecretsSecretRotationArray) ToGetRegionalSecretsSecretRotationArrayOutputWithContext(ctx context.Context) GetRegionalSecretsSecretRotationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionalSecretsSecretRotationArrayOutput)
+}
+
+type GetRegionalSecretsSecretRotationOutput struct{ *pulumi.OutputState }
+
+func (GetRegionalSecretsSecretRotationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionalSecretsSecretRotation)(nil)).Elem()
+}
+
+func (o GetRegionalSecretsSecretRotationOutput) ToGetRegionalSecretsSecretRotationOutput() GetRegionalSecretsSecretRotationOutput {
+	return o
+}
+
+func (o GetRegionalSecretsSecretRotationOutput) ToGetRegionalSecretsSecretRotationOutputWithContext(ctx context.Context) GetRegionalSecretsSecretRotationOutput {
+	return o
+}
+
+// Timestamp in UTC at which the secret is scheduled to rotate.
+func (o GetRegionalSecretsSecretRotationOutput) NextRotationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionalSecretsSecretRotation) string { return v.NextRotationTime }).(pulumi.StringOutput)
+}
+
+// The Duration between rotation notifications.
+func (o GetRegionalSecretsSecretRotationOutput) RotationPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionalSecretsSecretRotation) string { return v.RotationPeriod }).(pulumi.StringOutput)
+}
+
+type GetRegionalSecretsSecretRotationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionalSecretsSecretRotationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionalSecretsSecretRotation)(nil)).Elem()
+}
+
+func (o GetRegionalSecretsSecretRotationArrayOutput) ToGetRegionalSecretsSecretRotationArrayOutput() GetRegionalSecretsSecretRotationArrayOutput {
+	return o
+}
+
+func (o GetRegionalSecretsSecretRotationArrayOutput) ToGetRegionalSecretsSecretRotationArrayOutputWithContext(ctx context.Context) GetRegionalSecretsSecretRotationArrayOutput {
+	return o
+}
+
+func (o GetRegionalSecretsSecretRotationArrayOutput) Index(i pulumi.IntInput) GetRegionalSecretsSecretRotationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionalSecretsSecretRotation {
+		return vs[0].([]GetRegionalSecretsSecretRotation)[vs[1].(int)]
+	}).(GetRegionalSecretsSecretRotationOutput)
+}
+
+type GetRegionalSecretsSecretTopic struct {
+	// The resource name of the Pub/Sub topic that will be published to.
+	Name string `pulumi:"name"`
+}
+
+// GetRegionalSecretsSecretTopicInput is an input type that accepts GetRegionalSecretsSecretTopicArgs and GetRegionalSecretsSecretTopicOutput values.
+// You can construct a concrete instance of `GetRegionalSecretsSecretTopicInput` via:
+//
+//	GetRegionalSecretsSecretTopicArgs{...}
+type GetRegionalSecretsSecretTopicInput interface {
+	pulumi.Input
+
+	ToGetRegionalSecretsSecretTopicOutput() GetRegionalSecretsSecretTopicOutput
+	ToGetRegionalSecretsSecretTopicOutputWithContext(context.Context) GetRegionalSecretsSecretTopicOutput
+}
+
+type GetRegionalSecretsSecretTopicArgs struct {
+	// The resource name of the Pub/Sub topic that will be published to.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetRegionalSecretsSecretTopicArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionalSecretsSecretTopic)(nil)).Elem()
+}
+
+func (i GetRegionalSecretsSecretTopicArgs) ToGetRegionalSecretsSecretTopicOutput() GetRegionalSecretsSecretTopicOutput {
+	return i.ToGetRegionalSecretsSecretTopicOutputWithContext(context.Background())
+}
+
+func (i GetRegionalSecretsSecretTopicArgs) ToGetRegionalSecretsSecretTopicOutputWithContext(ctx context.Context) GetRegionalSecretsSecretTopicOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionalSecretsSecretTopicOutput)
+}
+
+// GetRegionalSecretsSecretTopicArrayInput is an input type that accepts GetRegionalSecretsSecretTopicArray and GetRegionalSecretsSecretTopicArrayOutput values.
+// You can construct a concrete instance of `GetRegionalSecretsSecretTopicArrayInput` via:
+//
+//	GetRegionalSecretsSecretTopicArray{ GetRegionalSecretsSecretTopicArgs{...} }
+type GetRegionalSecretsSecretTopicArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionalSecretsSecretTopicArrayOutput() GetRegionalSecretsSecretTopicArrayOutput
+	ToGetRegionalSecretsSecretTopicArrayOutputWithContext(context.Context) GetRegionalSecretsSecretTopicArrayOutput
+}
+
+type GetRegionalSecretsSecretTopicArray []GetRegionalSecretsSecretTopicInput
+
+func (GetRegionalSecretsSecretTopicArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionalSecretsSecretTopic)(nil)).Elem()
+}
+
+func (i GetRegionalSecretsSecretTopicArray) ToGetRegionalSecretsSecretTopicArrayOutput() GetRegionalSecretsSecretTopicArrayOutput {
+	return i.ToGetRegionalSecretsSecretTopicArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionalSecretsSecretTopicArray) ToGetRegionalSecretsSecretTopicArrayOutputWithContext(ctx context.Context) GetRegionalSecretsSecretTopicArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionalSecretsSecretTopicArrayOutput)
+}
+
+type GetRegionalSecretsSecretTopicOutput struct{ *pulumi.OutputState }
+
+func (GetRegionalSecretsSecretTopicOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionalSecretsSecretTopic)(nil)).Elem()
+}
+
+func (o GetRegionalSecretsSecretTopicOutput) ToGetRegionalSecretsSecretTopicOutput() GetRegionalSecretsSecretTopicOutput {
+	return o
+}
+
+func (o GetRegionalSecretsSecretTopicOutput) ToGetRegionalSecretsSecretTopicOutputWithContext(ctx context.Context) GetRegionalSecretsSecretTopicOutput {
+	return o
+}
+
+// The resource name of the Pub/Sub topic that will be published to.
+func (o GetRegionalSecretsSecretTopicOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionalSecretsSecretTopic) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetRegionalSecretsSecretTopicArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionalSecretsSecretTopicArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionalSecretsSecretTopic)(nil)).Elem()
+}
+
+func (o GetRegionalSecretsSecretTopicArrayOutput) ToGetRegionalSecretsSecretTopicArrayOutput() GetRegionalSecretsSecretTopicArrayOutput {
+	return o
+}
+
+func (o GetRegionalSecretsSecretTopicArrayOutput) ToGetRegionalSecretsSecretTopicArrayOutputWithContext(ctx context.Context) GetRegionalSecretsSecretTopicArrayOutput {
+	return o
+}
+
+func (o GetRegionalSecretsSecretTopicArrayOutput) Index(i pulumi.IntInput) GetRegionalSecretsSecretTopicOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionalSecretsSecretTopic {
+		return vs[0].([]GetRegionalSecretsSecretTopic)[vs[1].(int)]
+	}).(GetRegionalSecretsSecretTopicOutput)
+}
+
 type GetSecretReplication struct {
 	// The Secret will automatically be replicated without any restrictions.
 	Autos []GetSecretReplicationAuto `pulumi:"autos"`
@@ -4698,6 +5251,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionalSecretTopicArrayInput)(nil)).Elem(), GetRegionalSecretTopicArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionalSecretVersionCustomerManagedEncryptionInput)(nil)).Elem(), GetRegionalSecretVersionCustomerManagedEncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionalSecretVersionCustomerManagedEncryptionArrayInput)(nil)).Elem(), GetRegionalSecretVersionCustomerManagedEncryptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionalSecretsSecretInput)(nil)).Elem(), GetRegionalSecretsSecretArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionalSecretsSecretArrayInput)(nil)).Elem(), GetRegionalSecretsSecretArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionalSecretsSecretCustomerManagedEncryptionInput)(nil)).Elem(), GetRegionalSecretsSecretCustomerManagedEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionalSecretsSecretCustomerManagedEncryptionArrayInput)(nil)).Elem(), GetRegionalSecretsSecretCustomerManagedEncryptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionalSecretsSecretRotationInput)(nil)).Elem(), GetRegionalSecretsSecretRotationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionalSecretsSecretRotationArrayInput)(nil)).Elem(), GetRegionalSecretsSecretRotationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionalSecretsSecretTopicInput)(nil)).Elem(), GetRegionalSecretsSecretTopicArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionalSecretsSecretTopicArrayInput)(nil)).Elem(), GetRegionalSecretsSecretTopicArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretReplicationInput)(nil)).Elem(), GetSecretReplicationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretReplicationArrayInput)(nil)).Elem(), GetSecretReplicationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretReplicationAutoInput)(nil)).Elem(), GetSecretReplicationAutoArgs{})
@@ -4772,6 +5333,14 @@ func init() {
 	pulumi.RegisterOutputType(GetRegionalSecretTopicArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionalSecretVersionCustomerManagedEncryptionOutput{})
 	pulumi.RegisterOutputType(GetRegionalSecretVersionCustomerManagedEncryptionArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionalSecretsSecretOutput{})
+	pulumi.RegisterOutputType(GetRegionalSecretsSecretArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionalSecretsSecretCustomerManagedEncryptionOutput{})
+	pulumi.RegisterOutputType(GetRegionalSecretsSecretCustomerManagedEncryptionArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionalSecretsSecretRotationOutput{})
+	pulumi.RegisterOutputType(GetRegionalSecretsSecretRotationArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionalSecretsSecretTopicOutput{})
+	pulumi.RegisterOutputType(GetRegionalSecretsSecretTopicArrayOutput{})
 	pulumi.RegisterOutputType(GetSecretReplicationOutput{})
 	pulumi.RegisterOutputType(GetSecretReplicationArrayOutput{})
 	pulumi.RegisterOutputType(GetSecretReplicationAutoOutput{})

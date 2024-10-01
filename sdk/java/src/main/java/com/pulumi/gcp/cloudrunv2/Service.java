@@ -382,6 +382,66 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Cloudrunv2 Service Gpu
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudrunv2.Service;
+ * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateNodeSelectorArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateScalingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Service("default", ServiceArgs.builder()
+ *             .name("cloudrun-service")
+ *             .location("us-central1")
+ *             .deletionProtection(false)
+ *             .ingress("INGRESS_TRAFFIC_ALL")
+ *             .launchStage("BETA")
+ *             .template(ServiceTemplateArgs.builder()
+ *                 .containers(ServiceTemplateContainerArgs.builder()
+ *                     .image("us-docker.pkg.dev/cloudrun/container/hello")
+ *                     .resources(ServiceTemplateContainerResourcesArgs.builder()
+ *                         .limits(Map.ofEntries(
+ *                             Map.entry("cpu", "4"),
+ *                             Map.entry("memory", "16Gi"),
+ *                             Map.entry("nvidia.com/gpu", "1")
+ *                         ))
+ *                         .startupCpuBoost(true)
+ *                         .build())
+ *                     .build())
+ *                 .nodeSelector(ServiceTemplateNodeSelectorArgs.builder()
+ *                     .accelerator("nvidia-l4")
+ *                     .build())
+ *                 .scaling(ServiceTemplateScalingArgs.builder()
+ *                     .maxInstanceCount(1)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Cloudrunv2 Service Probes
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

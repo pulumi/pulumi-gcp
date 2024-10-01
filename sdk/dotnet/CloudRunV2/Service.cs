@@ -328,6 +328,55 @@ namespace Pulumi.Gcp.CloudRunV2
     /// 
     /// });
     /// ```
+    /// ### Cloudrunv2 Service Gpu
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CloudRunV2.Service("default", new()
+    ///     {
+    ///         Name = "cloudrun-service",
+    ///         Location = "us-central1",
+    ///         DeletionProtection = false,
+    ///         Ingress = "INGRESS_TRAFFIC_ALL",
+    ///         LaunchStage = "BETA",
+    ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
+    ///         {
+    ///             Containers = new[]
+    ///             {
+    ///                 new Gcp.CloudRunV2.Inputs.ServiceTemplateContainerArgs
+    ///                 {
+    ///                     Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                     Resources = new Gcp.CloudRunV2.Inputs.ServiceTemplateContainerResourcesArgs
+    ///                     {
+    ///                         Limits = 
+    ///                         {
+    ///                             { "cpu", "4" },
+    ///                             { "memory", "16Gi" },
+    ///                             { "nvidia.com/gpu", "1" },
+    ///                         },
+    ///                         StartupCpuBoost = true,
+    ///                     },
+    ///                 },
+    ///             },
+    ///             NodeSelector = new Gcp.CloudRunV2.Inputs.ServiceTemplateNodeSelectorArgs
+    ///             {
+    ///                 Accelerator = "nvidia-l4",
+    ///             },
+    ///             Scaling = new Gcp.CloudRunV2.Inputs.ServiceTemplateScalingArgs
+    ///             {
+    ///                 MaxInstanceCount = 1,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Cloudrunv2 Service Probes
     /// 
     /// ```csharp

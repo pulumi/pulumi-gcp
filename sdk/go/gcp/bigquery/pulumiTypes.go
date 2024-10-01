@@ -11001,6 +11001,216 @@ func (o RoutineSparkOptionsPtrOutput) RuntimeVersion() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type TableBiglakeConfiguration struct {
+	// The connection specifying the credentials to be used to
+	// read and write to external storage, such as Cloud Storage. The connectionId can
+	// have the form "&lt;project\_id&gt;.&lt;location\_id&gt;.&lt;connection\_id&gt;" or
+	// projects/&lt;project\_id&gt;/locations/&lt;location\_id&gt;/connections/&lt;connection\_id&gt;".
+	ConnectionId string `pulumi:"connectionId"`
+	// The file format the table data is stored in.
+	FileFormat string `pulumi:"fileFormat"`
+	// The fully qualified location prefix of the external folder where table data
+	// is stored. The '*' wildcard character is not allowed. The URI should be in the format "gs://bucket/path_to_table/"
+	StorageUri string `pulumi:"storageUri"`
+	// The table format the metadata only snapshots are stored in.
+	TableFormat string `pulumi:"tableFormat"`
+}
+
+// TableBiglakeConfigurationInput is an input type that accepts TableBiglakeConfigurationArgs and TableBiglakeConfigurationOutput values.
+// You can construct a concrete instance of `TableBiglakeConfigurationInput` via:
+//
+//	TableBiglakeConfigurationArgs{...}
+type TableBiglakeConfigurationInput interface {
+	pulumi.Input
+
+	ToTableBiglakeConfigurationOutput() TableBiglakeConfigurationOutput
+	ToTableBiglakeConfigurationOutputWithContext(context.Context) TableBiglakeConfigurationOutput
+}
+
+type TableBiglakeConfigurationArgs struct {
+	// The connection specifying the credentials to be used to
+	// read and write to external storage, such as Cloud Storage. The connectionId can
+	// have the form "&lt;project\_id&gt;.&lt;location\_id&gt;.&lt;connection\_id&gt;" or
+	// projects/&lt;project\_id&gt;/locations/&lt;location\_id&gt;/connections/&lt;connection\_id&gt;".
+	ConnectionId pulumi.StringInput `pulumi:"connectionId"`
+	// The file format the table data is stored in.
+	FileFormat pulumi.StringInput `pulumi:"fileFormat"`
+	// The fully qualified location prefix of the external folder where table data
+	// is stored. The '*' wildcard character is not allowed. The URI should be in the format "gs://bucket/path_to_table/"
+	StorageUri pulumi.StringInput `pulumi:"storageUri"`
+	// The table format the metadata only snapshots are stored in.
+	TableFormat pulumi.StringInput `pulumi:"tableFormat"`
+}
+
+func (TableBiglakeConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableBiglakeConfiguration)(nil)).Elem()
+}
+
+func (i TableBiglakeConfigurationArgs) ToTableBiglakeConfigurationOutput() TableBiglakeConfigurationOutput {
+	return i.ToTableBiglakeConfigurationOutputWithContext(context.Background())
+}
+
+func (i TableBiglakeConfigurationArgs) ToTableBiglakeConfigurationOutputWithContext(ctx context.Context) TableBiglakeConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableBiglakeConfigurationOutput)
+}
+
+func (i TableBiglakeConfigurationArgs) ToTableBiglakeConfigurationPtrOutput() TableBiglakeConfigurationPtrOutput {
+	return i.ToTableBiglakeConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i TableBiglakeConfigurationArgs) ToTableBiglakeConfigurationPtrOutputWithContext(ctx context.Context) TableBiglakeConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableBiglakeConfigurationOutput).ToTableBiglakeConfigurationPtrOutputWithContext(ctx)
+}
+
+// TableBiglakeConfigurationPtrInput is an input type that accepts TableBiglakeConfigurationArgs, TableBiglakeConfigurationPtr and TableBiglakeConfigurationPtrOutput values.
+// You can construct a concrete instance of `TableBiglakeConfigurationPtrInput` via:
+//
+//	        TableBiglakeConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type TableBiglakeConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToTableBiglakeConfigurationPtrOutput() TableBiglakeConfigurationPtrOutput
+	ToTableBiglakeConfigurationPtrOutputWithContext(context.Context) TableBiglakeConfigurationPtrOutput
+}
+
+type tableBiglakeConfigurationPtrType TableBiglakeConfigurationArgs
+
+func TableBiglakeConfigurationPtr(v *TableBiglakeConfigurationArgs) TableBiglakeConfigurationPtrInput {
+	return (*tableBiglakeConfigurationPtrType)(v)
+}
+
+func (*tableBiglakeConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableBiglakeConfiguration)(nil)).Elem()
+}
+
+func (i *tableBiglakeConfigurationPtrType) ToTableBiglakeConfigurationPtrOutput() TableBiglakeConfigurationPtrOutput {
+	return i.ToTableBiglakeConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *tableBiglakeConfigurationPtrType) ToTableBiglakeConfigurationPtrOutputWithContext(ctx context.Context) TableBiglakeConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableBiglakeConfigurationPtrOutput)
+}
+
+type TableBiglakeConfigurationOutput struct{ *pulumi.OutputState }
+
+func (TableBiglakeConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableBiglakeConfiguration)(nil)).Elem()
+}
+
+func (o TableBiglakeConfigurationOutput) ToTableBiglakeConfigurationOutput() TableBiglakeConfigurationOutput {
+	return o
+}
+
+func (o TableBiglakeConfigurationOutput) ToTableBiglakeConfigurationOutputWithContext(ctx context.Context) TableBiglakeConfigurationOutput {
+	return o
+}
+
+func (o TableBiglakeConfigurationOutput) ToTableBiglakeConfigurationPtrOutput() TableBiglakeConfigurationPtrOutput {
+	return o.ToTableBiglakeConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o TableBiglakeConfigurationOutput) ToTableBiglakeConfigurationPtrOutputWithContext(ctx context.Context) TableBiglakeConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableBiglakeConfiguration) *TableBiglakeConfiguration {
+		return &v
+	}).(TableBiglakeConfigurationPtrOutput)
+}
+
+// The connection specifying the credentials to be used to
+// read and write to external storage, such as Cloud Storage. The connectionId can
+// have the form "&lt;project\_id&gt;.&lt;location\_id&gt;.&lt;connection\_id&gt;" or
+// projects/&lt;project\_id&gt;/locations/&lt;location\_id&gt;/connections/&lt;connection\_id&gt;".
+func (o TableBiglakeConfigurationOutput) ConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v TableBiglakeConfiguration) string { return v.ConnectionId }).(pulumi.StringOutput)
+}
+
+// The file format the table data is stored in.
+func (o TableBiglakeConfigurationOutput) FileFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v TableBiglakeConfiguration) string { return v.FileFormat }).(pulumi.StringOutput)
+}
+
+// The fully qualified location prefix of the external folder where table data
+// is stored. The '*' wildcard character is not allowed. The URI should be in the format "gs://bucket/path_to_table/"
+func (o TableBiglakeConfigurationOutput) StorageUri() pulumi.StringOutput {
+	return o.ApplyT(func(v TableBiglakeConfiguration) string { return v.StorageUri }).(pulumi.StringOutput)
+}
+
+// The table format the metadata only snapshots are stored in.
+func (o TableBiglakeConfigurationOutput) TableFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v TableBiglakeConfiguration) string { return v.TableFormat }).(pulumi.StringOutput)
+}
+
+type TableBiglakeConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (TableBiglakeConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableBiglakeConfiguration)(nil)).Elem()
+}
+
+func (o TableBiglakeConfigurationPtrOutput) ToTableBiglakeConfigurationPtrOutput() TableBiglakeConfigurationPtrOutput {
+	return o
+}
+
+func (o TableBiglakeConfigurationPtrOutput) ToTableBiglakeConfigurationPtrOutputWithContext(ctx context.Context) TableBiglakeConfigurationPtrOutput {
+	return o
+}
+
+func (o TableBiglakeConfigurationPtrOutput) Elem() TableBiglakeConfigurationOutput {
+	return o.ApplyT(func(v *TableBiglakeConfiguration) TableBiglakeConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret TableBiglakeConfiguration
+		return ret
+	}).(TableBiglakeConfigurationOutput)
+}
+
+// The connection specifying the credentials to be used to
+// read and write to external storage, such as Cloud Storage. The connectionId can
+// have the form "&lt;project\_id&gt;.&lt;location\_id&gt;.&lt;connection\_id&gt;" or
+// projects/&lt;project\_id&gt;/locations/&lt;location\_id&gt;/connections/&lt;connection\_id&gt;".
+func (o TableBiglakeConfigurationPtrOutput) ConnectionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableBiglakeConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConnectionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The file format the table data is stored in.
+func (o TableBiglakeConfigurationPtrOutput) FileFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableBiglakeConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.FileFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// The fully qualified location prefix of the external folder where table data
+// is stored. The '*' wildcard character is not allowed. The URI should be in the format "gs://bucket/path_to_table/"
+func (o TableBiglakeConfigurationPtrOutput) StorageUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableBiglakeConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StorageUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The table format the metadata only snapshots are stored in.
+func (o TableBiglakeConfigurationPtrOutput) TableFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableBiglakeConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TableFormat
+	}).(pulumi.StringPtrOutput)
+}
+
 type TableEncryptionConfiguration struct {
 	// The self link or full name of a key which should be used to
 	// encrypt this table.  Note that the default bigquery service account will need to have
@@ -16307,6 +16517,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineRemoteFunctionOptionsPtrInput)(nil)).Elem(), RoutineRemoteFunctionOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineSparkOptionsInput)(nil)).Elem(), RoutineSparkOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineSparkOptionsPtrInput)(nil)).Elem(), RoutineSparkOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableBiglakeConfigurationInput)(nil)).Elem(), TableBiglakeConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableBiglakeConfigurationPtrInput)(nil)).Elem(), TableBiglakeConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableEncryptionConfigurationInput)(nil)).Elem(), TableEncryptionConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableEncryptionConfigurationPtrInput)(nil)).Elem(), TableEncryptionConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableExternalDataConfigurationInput)(nil)).Elem(), TableExternalDataConfigurationArgs{})
@@ -16481,6 +16693,8 @@ func init() {
 	pulumi.RegisterOutputType(RoutineRemoteFunctionOptionsPtrOutput{})
 	pulumi.RegisterOutputType(RoutineSparkOptionsOutput{})
 	pulumi.RegisterOutputType(RoutineSparkOptionsPtrOutput{})
+	pulumi.RegisterOutputType(TableBiglakeConfigurationOutput{})
+	pulumi.RegisterOutputType(TableBiglakeConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(TableEncryptionConfigurationOutput{})
 	pulumi.RegisterOutputType(TableEncryptionConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(TableExternalDataConfigurationOutput{})

@@ -9,9 +9,16 @@ import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class SpokeLinkedVpnTunnels {
+    /**
+     * @return IP ranges allowed to be included during import from hub (does not control transit connectivity).
+     * The only allowed value for now is &#34;ALL_IPV4_RANGES&#34;.
+     * 
+     */
+    private @Nullable List<String> includeImportRanges;
     /**
      * @return A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
      * 
@@ -24,6 +31,14 @@ public final class SpokeLinkedVpnTunnels {
     private List<String> uris;
 
     private SpokeLinkedVpnTunnels() {}
+    /**
+     * @return IP ranges allowed to be included during import from hub (does not control transit connectivity).
+     * The only allowed value for now is &#34;ALL_IPV4_RANGES&#34;.
+     * 
+     */
+    public List<String> includeImportRanges() {
+        return this.includeImportRanges == null ? List.of() : this.includeImportRanges;
+    }
     /**
      * @return A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
      * 
@@ -48,15 +63,26 @@ public final class SpokeLinkedVpnTunnels {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<String> includeImportRanges;
         private Boolean siteToSiteDataTransfer;
         private List<String> uris;
         public Builder() {}
         public Builder(SpokeLinkedVpnTunnels defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.includeImportRanges = defaults.includeImportRanges;
     	      this.siteToSiteDataTransfer = defaults.siteToSiteDataTransfer;
     	      this.uris = defaults.uris;
         }
 
+        @CustomType.Setter
+        public Builder includeImportRanges(@Nullable List<String> includeImportRanges) {
+
+            this.includeImportRanges = includeImportRanges;
+            return this;
+        }
+        public Builder includeImportRanges(String... includeImportRanges) {
+            return includeImportRanges(List.of(includeImportRanges));
+        }
         @CustomType.Setter
         public Builder siteToSiteDataTransfer(Boolean siteToSiteDataTransfer) {
             if (siteToSiteDataTransfer == null) {
@@ -78,6 +104,7 @@ public final class SpokeLinkedVpnTunnels {
         }
         public SpokeLinkedVpnTunnels build() {
             final var _resultValue = new SpokeLinkedVpnTunnels();
+            _resultValue.includeImportRanges = includeImportRanges;
             _resultValue.siteToSiteDataTransfer = siteToSiteDataTransfer;
             _resultValue.uris = uris;
             return _resultValue;

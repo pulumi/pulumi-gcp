@@ -76,6 +76,13 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
         public Input<int>? MaxInstanceRequestConcurrency { get; set; }
 
         /// <summary>
+        /// Node Selector describes the hardware requirements of the resources.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("nodeSelector")]
+        public Input<Inputs.ServiceTemplateNodeSelectorArgs>? NodeSelector { get; set; }
+
+        /// <summary>
         /// The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
         /// </summary>
         [Input("revision")]

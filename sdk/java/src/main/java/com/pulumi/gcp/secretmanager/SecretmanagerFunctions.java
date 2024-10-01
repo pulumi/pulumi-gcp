@@ -12,8 +12,12 @@ import com.pulumi.gcp.secretmanager.inputs.GetRegionalSecretArgs;
 import com.pulumi.gcp.secretmanager.inputs.GetRegionalSecretIamPolicyArgs;
 import com.pulumi.gcp.secretmanager.inputs.GetRegionalSecretIamPolicyPlainArgs;
 import com.pulumi.gcp.secretmanager.inputs.GetRegionalSecretPlainArgs;
+import com.pulumi.gcp.secretmanager.inputs.GetRegionalSecretVersionAccessArgs;
+import com.pulumi.gcp.secretmanager.inputs.GetRegionalSecretVersionAccessPlainArgs;
 import com.pulumi.gcp.secretmanager.inputs.GetRegionalSecretVersionArgs;
 import com.pulumi.gcp.secretmanager.inputs.GetRegionalSecretVersionPlainArgs;
+import com.pulumi.gcp.secretmanager.inputs.GetRegionalSecretsArgs;
+import com.pulumi.gcp.secretmanager.inputs.GetRegionalSecretsPlainArgs;
 import com.pulumi.gcp.secretmanager.inputs.GetSecretArgs;
 import com.pulumi.gcp.secretmanager.inputs.GetSecretIamPolicyArgs;
 import com.pulumi.gcp.secretmanager.inputs.GetSecretIamPolicyPlainArgs;
@@ -26,7 +30,9 @@ import com.pulumi.gcp.secretmanager.inputs.GetSecretsArgs;
 import com.pulumi.gcp.secretmanager.inputs.GetSecretsPlainArgs;
 import com.pulumi.gcp.secretmanager.outputs.GetRegionalSecretIamPolicyResult;
 import com.pulumi.gcp.secretmanager.outputs.GetRegionalSecretResult;
+import com.pulumi.gcp.secretmanager.outputs.GetRegionalSecretVersionAccessResult;
 import com.pulumi.gcp.secretmanager.outputs.GetRegionalSecretVersionResult;
+import com.pulumi.gcp.secretmanager.outputs.GetRegionalSecretsResult;
 import com.pulumi.gcp.secretmanager.outputs.GetSecretIamPolicyResult;
 import com.pulumi.gcp.secretmanager.outputs.GetSecretResult;
 import com.pulumi.gcp.secretmanager.outputs.GetSecretVersionAccessResult;
@@ -384,7 +390,7 @@ public final class SecretmanagerFunctions {
         return Deployment.getInstance().invokeAsync("gcp:secretmanager/getRegionalSecretIamPolicy:getRegionalSecretIamPolicy", TypeShape.of(GetRegionalSecretIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get the value and metadata from a Secret Manager regional secret version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/regional-secrets-overview) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions). If you don&#39;t need the metadata (i.e., if you want to use a more limited role to access the regional secret version only), see also the google_secret_manager_regional_secret_version_access datasource.
+     * Get the value and metadata from a Secret Manager regional secret version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/regional-secrets-overview) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions). If you don&#39;t need the metadata (i.e., if you want to use a more limited role to access the regional secret version only), see also the gcp.secretmanager.getRegionalSecretVersionAccess datasource.
      * 
      * ## Example Usage
      * 
@@ -427,7 +433,7 @@ public final class SecretmanagerFunctions {
         return getRegionalSecretVersion(args, InvokeOptions.Empty);
     }
     /**
-     * Get the value and metadata from a Secret Manager regional secret version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/regional-secrets-overview) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions). If you don&#39;t need the metadata (i.e., if you want to use a more limited role to access the regional secret version only), see also the google_secret_manager_regional_secret_version_access datasource.
+     * Get the value and metadata from a Secret Manager regional secret version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/regional-secrets-overview) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions). If you don&#39;t need the metadata (i.e., if you want to use a more limited role to access the regional secret version only), see also the gcp.secretmanager.getRegionalSecretVersionAccess datasource.
      * 
      * ## Example Usage
      * 
@@ -470,7 +476,7 @@ public final class SecretmanagerFunctions {
         return getRegionalSecretVersionPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Get the value and metadata from a Secret Manager regional secret version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/regional-secrets-overview) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions). If you don&#39;t need the metadata (i.e., if you want to use a more limited role to access the regional secret version only), see also the google_secret_manager_regional_secret_version_access datasource.
+     * Get the value and metadata from a Secret Manager regional secret version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/regional-secrets-overview) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions). If you don&#39;t need the metadata (i.e., if you want to use a more limited role to access the regional secret version only), see also the gcp.secretmanager.getRegionalSecretVersionAccess datasource.
      * 
      * ## Example Usage
      * 
@@ -513,7 +519,7 @@ public final class SecretmanagerFunctions {
         return Deployment.getInstance().invoke("gcp:secretmanager/getRegionalSecretVersion:getRegionalSecretVersion", TypeShape.of(GetRegionalSecretVersionResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get the value and metadata from a Secret Manager regional secret version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/regional-secrets-overview) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions). If you don&#39;t need the metadata (i.e., if you want to use a more limited role to access the regional secret version only), see also the google_secret_manager_regional_secret_version_access datasource.
+     * Get the value and metadata from a Secret Manager regional secret version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/regional-secrets-overview) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions). If you don&#39;t need the metadata (i.e., if you want to use a more limited role to access the regional secret version only), see also the gcp.secretmanager.getRegionalSecretVersionAccess datasource.
      * 
      * ## Example Usage
      * 
@@ -554,6 +560,346 @@ public final class SecretmanagerFunctions {
      */
     public static CompletableFuture<GetRegionalSecretVersionResult> getRegionalSecretVersionPlain(GetRegionalSecretVersionPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:secretmanager/getRegionalSecretVersion:getRegionalSecretVersion", TypeShape.of(GetRegionalSecretVersionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get the value from a Secret Manager regional secret version. This is similar to the gcp.secretmanager.RegionalSecretVersion datasource, but it only requires the [Secret Manager Secret Accessor](https://cloud.google.com/secret-manager/docs/access-control#secretmanager.secretAccessor) role. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/regional-secrets-overview) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions/access).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.secretmanager.SecretmanagerFunctions;
+     * import com.pulumi.gcp.secretmanager.inputs.GetRegionalSecretVersionAccessArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var latest = SecretmanagerFunctions.getRegionalSecretVersionAccess(GetRegionalSecretVersionAccessArgs.builder()
+     *             .secret("my-secret")
+     *             .location("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRegionalSecretVersionAccessResult> getRegionalSecretVersionAccess(GetRegionalSecretVersionAccessArgs args) {
+        return getRegionalSecretVersionAccess(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get the value from a Secret Manager regional secret version. This is similar to the gcp.secretmanager.RegionalSecretVersion datasource, but it only requires the [Secret Manager Secret Accessor](https://cloud.google.com/secret-manager/docs/access-control#secretmanager.secretAccessor) role. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/regional-secrets-overview) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions/access).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.secretmanager.SecretmanagerFunctions;
+     * import com.pulumi.gcp.secretmanager.inputs.GetRegionalSecretVersionAccessArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var latest = SecretmanagerFunctions.getRegionalSecretVersionAccess(GetRegionalSecretVersionAccessArgs.builder()
+     *             .secret("my-secret")
+     *             .location("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetRegionalSecretVersionAccessResult> getRegionalSecretVersionAccessPlain(GetRegionalSecretVersionAccessPlainArgs args) {
+        return getRegionalSecretVersionAccessPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get the value from a Secret Manager regional secret version. This is similar to the gcp.secretmanager.RegionalSecretVersion datasource, but it only requires the [Secret Manager Secret Accessor](https://cloud.google.com/secret-manager/docs/access-control#secretmanager.secretAccessor) role. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/regional-secrets-overview) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions/access).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.secretmanager.SecretmanagerFunctions;
+     * import com.pulumi.gcp.secretmanager.inputs.GetRegionalSecretVersionAccessArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var latest = SecretmanagerFunctions.getRegionalSecretVersionAccess(GetRegionalSecretVersionAccessArgs.builder()
+     *             .secret("my-secret")
+     *             .location("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRegionalSecretVersionAccessResult> getRegionalSecretVersionAccess(GetRegionalSecretVersionAccessArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:secretmanager/getRegionalSecretVersionAccess:getRegionalSecretVersionAccess", TypeShape.of(GetRegionalSecretVersionAccessResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get the value from a Secret Manager regional secret version. This is similar to the gcp.secretmanager.RegionalSecretVersion datasource, but it only requires the [Secret Manager Secret Accessor](https://cloud.google.com/secret-manager/docs/access-control#secretmanager.secretAccessor) role. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/regional-secrets-overview) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions/access).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.secretmanager.SecretmanagerFunctions;
+     * import com.pulumi.gcp.secretmanager.inputs.GetRegionalSecretVersionAccessArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var latest = SecretmanagerFunctions.getRegionalSecretVersionAccess(GetRegionalSecretVersionAccessArgs.builder()
+     *             .secret("my-secret")
+     *             .location("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetRegionalSecretVersionAccessResult> getRegionalSecretVersionAccessPlain(GetRegionalSecretVersionAccessPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:secretmanager/getRegionalSecretVersionAccess:getRegionalSecretVersionAccess", TypeShape.of(GetRegionalSecretVersionAccessResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the Secret Manager Regional Secrets.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.secretmanager.SecretmanagerFunctions;
+     * import com.pulumi.gcp.secretmanager.inputs.GetRegionalSecretsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var secrets = SecretmanagerFunctions.getRegionalSecrets(GetRegionalSecretsArgs.builder()
+     *             .location("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRegionalSecretsResult> getRegionalSecrets(GetRegionalSecretsArgs args) {
+        return getRegionalSecrets(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list the Secret Manager Regional Secrets.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.secretmanager.SecretmanagerFunctions;
+     * import com.pulumi.gcp.secretmanager.inputs.GetRegionalSecretsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var secrets = SecretmanagerFunctions.getRegionalSecrets(GetRegionalSecretsArgs.builder()
+     *             .location("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetRegionalSecretsResult> getRegionalSecretsPlain(GetRegionalSecretsPlainArgs args) {
+        return getRegionalSecretsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to list the Secret Manager Regional Secrets.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.secretmanager.SecretmanagerFunctions;
+     * import com.pulumi.gcp.secretmanager.inputs.GetRegionalSecretsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var secrets = SecretmanagerFunctions.getRegionalSecrets(GetRegionalSecretsArgs.builder()
+     *             .location("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRegionalSecretsResult> getRegionalSecrets(GetRegionalSecretsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:secretmanager/getRegionalSecrets:getRegionalSecrets", TypeShape.of(GetRegionalSecretsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to list the Secret Manager Regional Secrets.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.secretmanager.SecretmanagerFunctions;
+     * import com.pulumi.gcp.secretmanager.inputs.GetRegionalSecretsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var secrets = SecretmanagerFunctions.getRegionalSecrets(GetRegionalSecretsArgs.builder()
+     *             .location("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetRegionalSecretsResult> getRegionalSecretsPlain(GetRegionalSecretsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:secretmanager/getRegionalSecrets:getRegionalSecrets", TypeShape.of(GetRegionalSecretsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to get information about a Secret Manager Secret

@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.NetworkConnectivity.Outputs
     public sealed class SpokeLinkedRouterApplianceInstances
     {
         /// <summary>
+        /// IP ranges allowed to be included during import from hub (does not control transit connectivity).
+        /// The only allowed value for now is "ALL_IPV4_RANGES".
+        /// </summary>
+        public readonly ImmutableArray<string> IncludeImportRanges;
+        /// <summary>
         /// The list of router appliance instances
         /// Structure is documented below.
         /// </summary>
@@ -25,10 +30,13 @@ namespace Pulumi.Gcp.NetworkConnectivity.Outputs
 
         [OutputConstructor]
         private SpokeLinkedRouterApplianceInstances(
+            ImmutableArray<string> includeImportRanges,
+
             ImmutableArray<Outputs.SpokeLinkedRouterApplianceInstancesInstance> instances,
 
             bool siteToSiteDataTransfer)
         {
+            IncludeImportRanges = includeImportRanges;
             Instances = instances;
             SiteToSiteDataTransfer = siteToSiteDataTransfer;
         }

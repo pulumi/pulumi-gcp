@@ -7,13 +7,39 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.InterconnectMacsecPreSharedKeyArgs;
+import java.lang.Boolean;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class InterconnectMacsecArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final InterconnectMacsecArgs Empty = new InterconnectMacsecArgs();
+
+    /**
+     * If set to true, the Interconnect connection is configured with a should-secure
+     * MACsec security policy, that allows the Google router to fallback to cleartext
+     * traffic if the MKA session cannot be established. By default, the Interconnect
+     * connection is configured with a must-secure security policy that drops all traffic
+     * if the MKA session cannot be established with your router.
+     * 
+     */
+    @Import(name="failOpen")
+    private @Nullable Output<Boolean> failOpen;
+
+    /**
+     * @return If set to true, the Interconnect connection is configured with a should-secure
+     * MACsec security policy, that allows the Google router to fallback to cleartext
+     * traffic if the MKA session cannot be established. By default, the Interconnect
+     * connection is configured with a must-secure security policy that drops all traffic
+     * if the MKA session cannot be established with your router.
+     * 
+     */
+    public Optional<Output<Boolean>> failOpen() {
+        return Optional.ofNullable(this.failOpen);
+    }
 
     /**
      * A keychain placeholder describing a set of named key objects along with their
@@ -41,6 +67,7 @@ public final class InterconnectMacsecArgs extends com.pulumi.resources.ResourceA
     private InterconnectMacsecArgs() {}
 
     private InterconnectMacsecArgs(InterconnectMacsecArgs $) {
+        this.failOpen = $.failOpen;
         this.preSharedKeys = $.preSharedKeys;
     }
 
@@ -60,6 +87,35 @@ public final class InterconnectMacsecArgs extends com.pulumi.resources.ResourceA
 
         public Builder(InterconnectMacsecArgs defaults) {
             $ = new InterconnectMacsecArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param failOpen If set to true, the Interconnect connection is configured with a should-secure
+         * MACsec security policy, that allows the Google router to fallback to cleartext
+         * traffic if the MKA session cannot be established. By default, the Interconnect
+         * connection is configured with a must-secure security policy that drops all traffic
+         * if the MKA session cannot be established with your router.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder failOpen(@Nullable Output<Boolean> failOpen) {
+            $.failOpen = failOpen;
+            return this;
+        }
+
+        /**
+         * @param failOpen If set to true, the Interconnect connection is configured with a should-secure
+         * MACsec security policy, that allows the Google router to fallback to cleartext
+         * traffic if the MKA session cannot be established. By default, the Interconnect
+         * connection is configured with a must-secure security policy that drops all traffic
+         * if the MKA session cannot be established with your router.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder failOpen(Boolean failOpen) {
+            return failOpen(Output.of(failOpen));
         }
 
         /**

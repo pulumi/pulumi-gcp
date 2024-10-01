@@ -6,11 +6,23 @@ package com.pulumi.gcp.compute.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.InterconnectMacsecPreSharedKey;
+import java.lang.Boolean;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class InterconnectMacsec {
+    /**
+     * @return If set to true, the Interconnect connection is configured with a should-secure
+     * MACsec security policy, that allows the Google router to fallback to cleartext
+     * traffic if the MKA session cannot be established. By default, the Interconnect
+     * connection is configured with a must-secure security policy that drops all traffic
+     * if the MKA session cannot be established with your router.
+     * 
+     */
+    private @Nullable Boolean failOpen;
     /**
      * @return A keychain placeholder describing a set of named key objects along with their
      * start times. A MACsec CKN/CAK is generated for each key in the key chain.
@@ -22,6 +34,17 @@ public final class InterconnectMacsec {
     private List<InterconnectMacsecPreSharedKey> preSharedKeys;
 
     private InterconnectMacsec() {}
+    /**
+     * @return If set to true, the Interconnect connection is configured with a should-secure
+     * MACsec security policy, that allows the Google router to fallback to cleartext
+     * traffic if the MKA session cannot be established. By default, the Interconnect
+     * connection is configured with a must-secure security policy that drops all traffic
+     * if the MKA session cannot be established with your router.
+     * 
+     */
+    public Optional<Boolean> failOpen() {
+        return Optional.ofNullable(this.failOpen);
+    }
     /**
      * @return A keychain placeholder describing a set of named key objects along with their
      * start times. A MACsec CKN/CAK is generated for each key in the key chain.
@@ -43,13 +66,21 @@ public final class InterconnectMacsec {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean failOpen;
         private List<InterconnectMacsecPreSharedKey> preSharedKeys;
         public Builder() {}
         public Builder(InterconnectMacsec defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.failOpen = defaults.failOpen;
     	      this.preSharedKeys = defaults.preSharedKeys;
         }
 
+        @CustomType.Setter
+        public Builder failOpen(@Nullable Boolean failOpen) {
+
+            this.failOpen = failOpen;
+            return this;
+        }
         @CustomType.Setter
         public Builder preSharedKeys(List<InterconnectMacsecPreSharedKey> preSharedKeys) {
             if (preSharedKeys == null) {
@@ -63,6 +94,7 @@ public final class InterconnectMacsec {
         }
         public InterconnectMacsec build() {
             final var _resultValue = new InterconnectMacsec();
+            _resultValue.failOpen = failOpen;
             _resultValue.preSharedKeys = preSharedKeys;
             return _resultValue;
         }

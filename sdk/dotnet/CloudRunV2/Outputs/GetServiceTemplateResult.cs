@@ -48,6 +48,10 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly int MaxInstanceRequestConcurrency;
         /// <summary>
+        /// Node Selector describes the hardware requirements of the resources.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceTemplateNodeSelectorResult> NodeSelectors;
+        /// <summary>
         /// The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
         /// </summary>
         public readonly string Revision;
@@ -96,6 +100,8 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
 
             int maxInstanceRequestConcurrency,
 
+            ImmutableArray<Outputs.GetServiceTemplateNodeSelectorResult> nodeSelectors,
+
             string revision,
 
             ImmutableArray<Outputs.GetServiceTemplateScalingResult> scalings,
@@ -118,6 +124,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
             ExecutionEnvironment = executionEnvironment;
             Labels = labels;
             MaxInstanceRequestConcurrency = maxInstanceRequestConcurrency;
+            NodeSelectors = nodeSelectors;
             Revision = revision;
             Scalings = scalings;
             ServiceAccount = serviceAccount;

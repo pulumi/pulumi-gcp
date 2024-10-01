@@ -21,14 +21,14 @@ __all__ = ['InterconnectArgs', 'Interconnect']
 @pulumi.input_type
 class InterconnectArgs:
     def __init__(__self__, *,
-                 customer_name: pulumi.Input[str],
                  interconnect_type: pulumi.Input[str],
                  link_type: pulumi.Input[str],
-                 location: pulumi.Input[str],
                  requested_link_count: pulumi.Input[int],
                  admin_enabled: Optional[pulumi.Input[bool]] = None,
+                 customer_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  macsec: Optional[pulumi.Input['InterconnectMacsecArgs']] = None,
                  macsec_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -38,32 +38,34 @@ class InterconnectArgs:
                  requested_features: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Interconnect resource.
-        :param pulumi.Input[str] customer_name: Customer name, to put in the Letter of Authorization as the party authorized to request a
-               crossconnect.
-               
-               
-               - - -
         :param pulumi.Input[str] interconnect_type: Type of interconnect. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
                Can take one of the following values:
                - PARTNER: A partner-managed interconnection shared between customers though a partner.
                - DEDICATED: A dedicated physical interconnection with the customer.
                Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
+               
+               
+               - - -
         :param pulumi.Input[str] link_type: Type of link requested. Note that this field indicates the speed of each of the links in the
                bundle, not the speed of the entire bundle. Can take one of the following values:
                - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics.
                - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics.
                Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`.
-        :param pulumi.Input[str] location: URL of the InterconnectLocation object that represents where this connection is to be provisioned.
         :param pulumi.Input[int] requested_link_count: Target number of physical links in the link bundle, as requested by the customer.
         :param pulumi.Input[bool] admin_enabled: Administrative status of the interconnect. When this is set to true, the Interconnect is
                functional and can carry traffic. When set to false, no packets can be carried over the
                interconnect and no BGP routes are exchanged over it. By default, the status is set to true.
+        :param pulumi.Input[str] customer_name: Customer name, to put in the Letter of Authorization as the party authorized to request a
+               crossconnect. This field is required for Dedicated and Partner Interconnect, should not be specified
+               for cross-cloud interconnect.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels
                method. Each label key/value pair must comply with RFC1035. Label values may be empty.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[str] location: URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+               Specifies the location inside Google's Networks, should not be passed in case of cross-cloud interconnect.
         :param pulumi.Input['InterconnectMacsecArgs'] macsec: Configuration that enables Media Access Control security (MACsec) on the Cloud
                Interconnect connection between Google and your on-premises router.
                Structure is documented below.
@@ -90,17 +92,19 @@ class InterconnectArgs:
                does not work with the API, and will be removed in an upcoming major version.
                Each value may be one of: `MACSEC`, `IF_MACSEC`.
         """
-        pulumi.set(__self__, "customer_name", customer_name)
         pulumi.set(__self__, "interconnect_type", interconnect_type)
         pulumi.set(__self__, "link_type", link_type)
-        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "requested_link_count", requested_link_count)
         if admin_enabled is not None:
             pulumi.set(__self__, "admin_enabled", admin_enabled)
+        if customer_name is not None:
+            pulumi.set(__self__, "customer_name", customer_name)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
         if macsec is not None:
             pulumi.set(__self__, "macsec", macsec)
         if macsec_enabled is not None:
@@ -117,22 +121,6 @@ class InterconnectArgs:
             pulumi.set(__self__, "requested_features", requested_features)
 
     @property
-    @pulumi.getter(name="customerName")
-    def customer_name(self) -> pulumi.Input[str]:
-        """
-        Customer name, to put in the Letter of Authorization as the party authorized to request a
-        crossconnect.
-
-
-        - - -
-        """
-        return pulumi.get(self, "customer_name")
-
-    @customer_name.setter
-    def customer_name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "customer_name", value)
-
-    @property
     @pulumi.getter(name="interconnectType")
     def interconnect_type(self) -> pulumi.Input[str]:
         """
@@ -141,6 +129,9 @@ class InterconnectArgs:
         - PARTNER: A partner-managed interconnection shared between customers though a partner.
         - DEDICATED: A dedicated physical interconnection with the customer.
         Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
+
+
+        - - -
         """
         return pulumi.get(self, "interconnect_type")
 
@@ -163,18 +154,6 @@ class InterconnectArgs:
     @link_type.setter
     def link_type(self, value: pulumi.Input[str]):
         pulumi.set(self, "link_type", value)
-
-    @property
-    @pulumi.getter
-    def location(self) -> pulumi.Input[str]:
-        """
-        URL of the InterconnectLocation object that represents where this connection is to be provisioned.
-        """
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: pulumi.Input[str]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="requestedLinkCount")
@@ -203,6 +182,20 @@ class InterconnectArgs:
         pulumi.set(self, "admin_enabled", value)
 
     @property
+    @pulumi.getter(name="customerName")
+    def customer_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Customer name, to put in the Letter of Authorization as the party authorized to request a
+        crossconnect. This field is required for Dedicated and Partner Interconnect, should not be specified
+        for cross-cloud interconnect.
+        """
+        return pulumi.get(self, "customer_name")
+
+    @customer_name.setter
+    def customer_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "customer_name", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -229,6 +222,19 @@ class InterconnectArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+        Specifies the location inside Google's Networks, should not be passed in case of cross-cloud interconnect.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -379,10 +385,8 @@ class _InterconnectState:
                Structure is documented below.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] customer_name: Customer name, to put in the Letter of Authorization as the party authorized to request a
-               crossconnect.
-               
-               
-               - - -
+               crossconnect. This field is required for Dedicated and Partner Interconnect, should not be specified
+               for cross-cloud interconnect.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input['InterconnectExpectedOutageArgs']]] expected_outages: A list of outages expected for this Interconnect.
@@ -397,6 +401,9 @@ class _InterconnectState:
                - PARTNER: A partner-managed interconnection shared between customers though a partner.
                - DEDICATED: A dedicated physical interconnection with the customer.
                Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
+               
+               
+               - - -
         :param pulumi.Input[str] label_fingerprint: A fingerprint for the labels being applied to this Interconnect, which is essentially a hash
                of the labels set used for optimistic locking. The fingerprint is initially generated by
                Compute Engine and changes after every request to modify or update labels.
@@ -413,6 +420,7 @@ class _InterconnectState:
                - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics.
                Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`.
         :param pulumi.Input[str] location: URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+               Specifies the location inside Google's Networks, should not be passed in case of cross-cloud interconnect.
         :param pulumi.Input['InterconnectMacsecArgs'] macsec: Configuration that enables Media Access Control security (MACsec) on the Cloud
                Interconnect connection between Google and your on-premises router.
                Structure is documented below.
@@ -582,10 +590,8 @@ class _InterconnectState:
     def customer_name(self) -> Optional[pulumi.Input[str]]:
         """
         Customer name, to put in the Letter of Authorization as the party authorized to request a
-        crossconnect.
-
-
-        - - -
+        crossconnect. This field is required for Dedicated and Partner Interconnect, should not be specified
+        for cross-cloud interconnect.
         """
         return pulumi.get(self, "customer_name")
 
@@ -677,6 +683,9 @@ class _InterconnectState:
         - PARTNER: A partner-managed interconnection shared between customers though a partner.
         - DEDICATED: A dedicated physical interconnection with the customer.
         Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
+
+
+        - - -
         """
         return pulumi.get(self, "interconnect_type")
 
@@ -737,6 +746,7 @@ class _InterconnectState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+        Specifies the location inside Google's Networks, should not be passed in case of cross-cloud interconnect.
         """
         return pulumi.get(self, "location")
 
@@ -1026,16 +1036,17 @@ class Interconnect(pulumi.CustomResource):
                functional and can carry traffic. When set to false, no packets can be carried over the
                interconnect and no BGP routes are exchanged over it. By default, the status is set to true.
         :param pulumi.Input[str] customer_name: Customer name, to put in the Letter of Authorization as the party authorized to request a
-               crossconnect.
-               
-               
-               - - -
+               crossconnect. This field is required for Dedicated and Partner Interconnect, should not be specified
+               for cross-cloud interconnect.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] interconnect_type: Type of interconnect. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
                Can take one of the following values:
                - PARTNER: A partner-managed interconnection shared between customers though a partner.
                - DEDICATED: A dedicated physical interconnection with the customer.
                Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
+               
+               
+               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels
                method. Each label key/value pair must comply with RFC1035. Label values may be empty.
                
@@ -1047,6 +1058,7 @@ class Interconnect(pulumi.CustomResource):
                - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics.
                Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`.
         :param pulumi.Input[str] location: URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+               Specifies the location inside Google's Networks, should not be passed in case of cross-cloud interconnect.
         :param pulumi.Input[Union['InterconnectMacsecArgs', 'InterconnectMacsecArgsDict']] macsec: Configuration that enables Media Access Control security (MACsec) on the Cloud
                Interconnect connection between Google and your on-premises router.
                Structure is documented below.
@@ -1172,8 +1184,6 @@ class Interconnect(pulumi.CustomResource):
             __props__ = InterconnectArgs.__new__(InterconnectArgs)
 
             __props__.__dict__["admin_enabled"] = admin_enabled
-            if customer_name is None and not opts.urn:
-                raise TypeError("Missing required property 'customer_name'")
             __props__.__dict__["customer_name"] = customer_name
             __props__.__dict__["description"] = description
             if interconnect_type is None and not opts.urn:
@@ -1183,8 +1193,6 @@ class Interconnect(pulumi.CustomResource):
             if link_type is None and not opts.urn:
                 raise TypeError("Missing required property 'link_type'")
             __props__.__dict__["link_type"] = link_type
-            if location is None and not opts.urn:
-                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["macsec"] = macsec
             __props__.__dict__["macsec_enabled"] = macsec_enabled
@@ -1271,10 +1279,8 @@ class Interconnect(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] customer_name: Customer name, to put in the Letter of Authorization as the party authorized to request a
-               crossconnect.
-               
-               
-               - - -
+               crossconnect. This field is required for Dedicated and Partner Interconnect, should not be specified
+               for cross-cloud interconnect.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InterconnectExpectedOutageArgs', 'InterconnectExpectedOutageArgsDict']]]] expected_outages: A list of outages expected for this Interconnect.
@@ -1289,6 +1295,9 @@ class Interconnect(pulumi.CustomResource):
                - PARTNER: A partner-managed interconnection shared between customers though a partner.
                - DEDICATED: A dedicated physical interconnection with the customer.
                Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
+               
+               
+               - - -
         :param pulumi.Input[str] label_fingerprint: A fingerprint for the labels being applied to this Interconnect, which is essentially a hash
                of the labels set used for optimistic locking. The fingerprint is initially generated by
                Compute Engine and changes after every request to modify or update labels.
@@ -1305,6 +1314,7 @@ class Interconnect(pulumi.CustomResource):
                - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics.
                Possible values are: `LINK_TYPE_ETHERNET_10G_LR`, `LINK_TYPE_ETHERNET_100G_LR`.
         :param pulumi.Input[str] location: URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+               Specifies the location inside Google's Networks, should not be passed in case of cross-cloud interconnect.
         :param pulumi.Input[Union['InterconnectMacsecArgs', 'InterconnectMacsecArgsDict']] macsec: Configuration that enables Media Access Control security (MACsec) on the Cloud
                Interconnect connection between Google and your on-premises router.
                Structure is documented below.
@@ -1430,13 +1440,11 @@ class Interconnect(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="customerName")
-    def customer_name(self) -> pulumi.Output[str]:
+    def customer_name(self) -> pulumi.Output[Optional[str]]:
         """
         Customer name, to put in the Letter of Authorization as the party authorized to request a
-        crossconnect.
-
-
-        - - -
+        crossconnect. This field is required for Dedicated and Partner Interconnect, should not be specified
+        for cross-cloud interconnect.
         """
         return pulumi.get(self, "customer_name")
 
@@ -1500,6 +1508,9 @@ class Interconnect(pulumi.CustomResource):
         - PARTNER: A partner-managed interconnection shared between customers though a partner.
         - DEDICATED: A dedicated physical interconnection with the customer.
         Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
+
+
+        - - -
         """
         return pulumi.get(self, "interconnect_type")
 
@@ -1541,9 +1552,10 @@ class Interconnect(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def location(self) -> pulumi.Output[str]:
+    def location(self) -> pulumi.Output[Optional[str]]:
         """
         URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+        Specifies the location inside Google's Networks, should not be passed in case of cross-cloud interconnect.
         """
         return pulumi.get(self, "location")
 

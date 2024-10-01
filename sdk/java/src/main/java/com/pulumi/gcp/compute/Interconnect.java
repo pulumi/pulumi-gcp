@@ -174,23 +174,21 @@ public class Interconnect extends com.pulumi.resources.CustomResource {
     }
     /**
      * Customer name, to put in the Letter of Authorization as the party authorized to request a
-     * crossconnect.
-     * 
-     * ***
+     * crossconnect. This field is required for Dedicated and Partner Interconnect, should not be specified
+     * for cross-cloud interconnect.
      * 
      */
     @Export(name="customerName", refs={String.class}, tree="[0]")
-    private Output<String> customerName;
+    private Output</* @Nullable */ String> customerName;
 
     /**
      * @return Customer name, to put in the Letter of Authorization as the party authorized to request a
-     * crossconnect.
-     * 
-     * ***
+     * crossconnect. This field is required for Dedicated and Partner Interconnect, should not be specified
+     * for cross-cloud interconnect.
      * 
      */
-    public Output<String> customerName() {
-        return this.customerName;
+    public Output<Optional<String>> customerName() {
+        return Codegen.optional(this.customerName);
     }
     /**
      * An optional description of this resource. Provide this property when you create the resource.
@@ -289,6 +287,8 @@ public class Interconnect extends com.pulumi.resources.CustomResource {
      * - DEDICATED: A dedicated physical interconnection with the customer.
      *   Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
      * 
+     * ***
+     * 
      */
     @Export(name="interconnectType", refs={String.class}, tree="[0]")
     private Output<String> interconnectType;
@@ -299,6 +299,8 @@ public class Interconnect extends com.pulumi.resources.CustomResource {
      * - PARTNER: A partner-managed interconnection shared between customers though a partner.
      * - DEDICATED: A dedicated physical interconnection with the customer.
      *   Possible values are: `DEDICATED`, `PARTNER`, `IT_PRIVATE`.
+     * 
+     * ***
      * 
      */
     public Output<String> interconnectType() {
@@ -372,17 +374,19 @@ public class Interconnect extends com.pulumi.resources.CustomResource {
     }
     /**
      * URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+     * Specifies the location inside Google&#39;s Networks, should not be passed in case of cross-cloud interconnect.
      * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
-    private Output<String> location;
+    private Output</* @Nullable */ String> location;
 
     /**
      * @return URL of the InterconnectLocation object that represents where this connection is to be provisioned.
+     * Specifies the location inside Google&#39;s Networks, should not be passed in case of cross-cloud interconnect.
      * 
      */
-    public Output<String> location() {
-        return this.location;
+    public Output<Optional<String>> location() {
+        return Codegen.optional(this.location);
     }
     /**
      * Configuration that enables Media Access Control security (MACsec) on the Cloud

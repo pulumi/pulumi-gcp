@@ -335,6 +335,16 @@ __all__ = [
     'RegionNetworkFirewallPolicyRuleMatchLayer4Config',
     'RegionNetworkFirewallPolicyRuleMatchSrcSecureTag',
     'RegionNetworkFirewallPolicyRuleTargetSecureTag',
+    'RegionNetworkFirewallPolicyWithRulesPredefinedRule',
+    'RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatch',
+    'RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchLayer4Config',
+    'RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTag',
+    'RegionNetworkFirewallPolicyWithRulesPredefinedRuleTargetSecureTag',
+    'RegionNetworkFirewallPolicyWithRulesRule',
+    'RegionNetworkFirewallPolicyWithRulesRuleMatch',
+    'RegionNetworkFirewallPolicyWithRulesRuleMatchLayer4Config',
+    'RegionNetworkFirewallPolicyWithRulesRuleMatchSrcSecureTag',
+    'RegionNetworkFirewallPolicyWithRulesRuleTargetSecureTag',
     'RegionPerInstanceConfigPreservedState',
     'RegionPerInstanceConfigPreservedStateDisk',
     'RegionPerInstanceConfigPreservedStateExternalIp',
@@ -719,6 +729,23 @@ __all__ = [
     'GetRegionDiskSourceSnapshotEncryptionKeyResult',
     'GetRegionInstanceGroupInstanceResult',
     'GetRegionInstanceGroupInstanceNamedPortResult',
+    'GetRegionInstanceGroupManagerAllInstancesConfigResult',
+    'GetRegionInstanceGroupManagerAutoHealingPolicyResult',
+    'GetRegionInstanceGroupManagerInstanceLifecyclePolicyResult',
+    'GetRegionInstanceGroupManagerNamedPortResult',
+    'GetRegionInstanceGroupManagerParamResult',
+    'GetRegionInstanceGroupManagerStandbyPolicyResult',
+    'GetRegionInstanceGroupManagerStatefulDiskResult',
+    'GetRegionInstanceGroupManagerStatefulExternalIpResult',
+    'GetRegionInstanceGroupManagerStatefulInternalIpResult',
+    'GetRegionInstanceGroupManagerStatusResult',
+    'GetRegionInstanceGroupManagerStatusAllInstancesConfigResult',
+    'GetRegionInstanceGroupManagerStatusStatefulResult',
+    'GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigResult',
+    'GetRegionInstanceGroupManagerStatusVersionTargetResult',
+    'GetRegionInstanceGroupManagerUpdatePolicyResult',
+    'GetRegionInstanceGroupManagerVersionResult',
+    'GetRegionInstanceGroupManagerVersionTargetSizeResult',
     'GetRegionInstanceTemplateAdvancedMachineFeatureResult',
     'GetRegionInstanceTemplateConfidentialInstanceConfigResult',
     'GetRegionInstanceTemplateDiskResult',
@@ -8815,6 +8842,8 @@ class InstanceFromMachineImageScheduling(dict):
         suggest = None
         if key == "automaticRestart":
             suggest = "automatic_restart"
+        elif key == "hostErrorTimeoutSeconds":
+            suggest = "host_error_timeout_seconds"
         elif key == "instanceTerminationAction":
             suggest = "instance_termination_action"
         elif key == "localSsdRecoveryTimeout":
@@ -8847,6 +8876,7 @@ class InstanceFromMachineImageScheduling(dict):
 
     def __init__(__self__, *,
                  automatic_restart: Optional[bool] = None,
+                 host_error_timeout_seconds: Optional[int] = None,
                  instance_termination_action: Optional[str] = None,
                  local_ssd_recovery_timeout: Optional['outputs.InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeout'] = None,
                  maintenance_interval: Optional[str] = None,
@@ -8859,6 +8889,7 @@ class InstanceFromMachineImageScheduling(dict):
                  provisioning_model: Optional[str] = None):
         """
         :param bool automatic_restart: Specifies if the instance should be restarted if it was terminated by Compute Engine (not a user).
+        :param int host_error_timeout_seconds: Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
         :param str instance_termination_action: Specifies the action GCE should take when SPOT VM is preempted.
         :param 'InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeoutArgs' local_ssd_recovery_timeout: Specifies the maximum amount of time a Local Ssd Vm should wait while
                  recovery of the Local Ssd state is attempted. Its value should be in
@@ -8874,6 +8905,8 @@ class InstanceFromMachineImageScheduling(dict):
         """
         if automatic_restart is not None:
             pulumi.set(__self__, "automatic_restart", automatic_restart)
+        if host_error_timeout_seconds is not None:
+            pulumi.set(__self__, "host_error_timeout_seconds", host_error_timeout_seconds)
         if instance_termination_action is not None:
             pulumi.set(__self__, "instance_termination_action", instance_termination_action)
         if local_ssd_recovery_timeout is not None:
@@ -8902,6 +8935,14 @@ class InstanceFromMachineImageScheduling(dict):
         Specifies if the instance should be restarted if it was terminated by Compute Engine (not a user).
         """
         return pulumi.get(self, "automatic_restart")
+
+    @property
+    @pulumi.getter(name="hostErrorTimeoutSeconds")
+    def host_error_timeout_seconds(self) -> Optional[int]:
+        """
+        Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+        """
+        return pulumi.get(self, "host_error_timeout_seconds")
 
     @property
     @pulumi.getter(name="instanceTerminationAction")
@@ -10449,6 +10490,8 @@ class InstanceFromTemplateScheduling(dict):
         suggest = None
         if key == "automaticRestart":
             suggest = "automatic_restart"
+        elif key == "hostErrorTimeoutSeconds":
+            suggest = "host_error_timeout_seconds"
         elif key == "instanceTerminationAction":
             suggest = "instance_termination_action"
         elif key == "localSsdRecoveryTimeout":
@@ -10481,6 +10524,7 @@ class InstanceFromTemplateScheduling(dict):
 
     def __init__(__self__, *,
                  automatic_restart: Optional[bool] = None,
+                 host_error_timeout_seconds: Optional[int] = None,
                  instance_termination_action: Optional[str] = None,
                  local_ssd_recovery_timeout: Optional['outputs.InstanceFromTemplateSchedulingLocalSsdRecoveryTimeout'] = None,
                  maintenance_interval: Optional[str] = None,
@@ -10493,6 +10537,7 @@ class InstanceFromTemplateScheduling(dict):
                  provisioning_model: Optional[str] = None):
         """
         :param bool automatic_restart: Specifies if the instance should be restarted if it was terminated by Compute Engine (not a user).
+        :param int host_error_timeout_seconds: Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
         :param str instance_termination_action: Specifies the action GCE should take when SPOT VM is preempted.
         :param 'InstanceFromTemplateSchedulingLocalSsdRecoveryTimeoutArgs' local_ssd_recovery_timeout: Specifies the maximum amount of time a Local Ssd Vm should wait while
                  recovery of the Local Ssd state is attempted. Its value should be in
@@ -10508,6 +10553,8 @@ class InstanceFromTemplateScheduling(dict):
         """
         if automatic_restart is not None:
             pulumi.set(__self__, "automatic_restart", automatic_restart)
+        if host_error_timeout_seconds is not None:
+            pulumi.set(__self__, "host_error_timeout_seconds", host_error_timeout_seconds)
         if instance_termination_action is not None:
             pulumi.set(__self__, "instance_termination_action", instance_termination_action)
         if local_ssd_recovery_timeout is not None:
@@ -10536,6 +10583,14 @@ class InstanceFromTemplateScheduling(dict):
         Specifies if the instance should be restarted if it was terminated by Compute Engine (not a user).
         """
         return pulumi.get(self, "automatic_restart")
+
+    @property
+    @pulumi.getter(name="hostErrorTimeoutSeconds")
+    def host_error_timeout_seconds(self) -> Optional[int]:
+        """
+        Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+        """
+        return pulumi.get(self, "host_error_timeout_seconds")
 
     @property
     @pulumi.getter(name="instanceTerminationAction")
@@ -12648,6 +12703,8 @@ class InstanceScheduling(dict):
         suggest = None
         if key == "automaticRestart":
             suggest = "automatic_restart"
+        elif key == "hostErrorTimeoutSeconds":
+            suggest = "host_error_timeout_seconds"
         elif key == "instanceTerminationAction":
             suggest = "instance_termination_action"
         elif key == "localSsdRecoveryTimeout":
@@ -12680,6 +12737,7 @@ class InstanceScheduling(dict):
 
     def __init__(__self__, *,
                  automatic_restart: Optional[bool] = None,
+                 host_error_timeout_seconds: Optional[int] = None,
                  instance_termination_action: Optional[str] = None,
                  local_ssd_recovery_timeout: Optional['outputs.InstanceSchedulingLocalSsdRecoveryTimeout'] = None,
                  maintenance_interval: Optional[str] = None,
@@ -12694,6 +12752,7 @@ class InstanceScheduling(dict):
         :param bool automatic_restart: Specifies if the instance should be
                restarted if it was terminated by Compute Engine (not a user).
                Defaults to true.
+        :param int host_error_timeout_seconds: Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
         :param str instance_termination_action: Describe the type of termination action for VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         :param 'InstanceSchedulingLocalSsdRecoveryTimeoutArgs' local_ssd_recovery_timeout: Specifies the maximum amount of time a Local Ssd Vm should wait while
                  recovery of the Local Ssd state is attempted. Its value should be in
@@ -12721,6 +12780,8 @@ class InstanceScheduling(dict):
         """
         if automatic_restart is not None:
             pulumi.set(__self__, "automatic_restart", automatic_restart)
+        if host_error_timeout_seconds is not None:
+            pulumi.set(__self__, "host_error_timeout_seconds", host_error_timeout_seconds)
         if instance_termination_action is not None:
             pulumi.set(__self__, "instance_termination_action", instance_termination_action)
         if local_ssd_recovery_timeout is not None:
@@ -12751,6 +12812,14 @@ class InstanceScheduling(dict):
         Defaults to true.
         """
         return pulumi.get(self, "automatic_restart")
+
+    @property
+    @pulumi.getter(name="hostErrorTimeoutSeconds")
+    def host_error_timeout_seconds(self) -> Optional[int]:
+        """
+        Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+        """
+        return pulumi.get(self, "host_error_timeout_seconds")
 
     @property
     @pulumi.getter(name="instanceTerminationAction")
@@ -14437,6 +14506,8 @@ class InstanceTemplateScheduling(dict):
         suggest = None
         if key == "automaticRestart":
             suggest = "automatic_restart"
+        elif key == "hostErrorTimeoutSeconds":
+            suggest = "host_error_timeout_seconds"
         elif key == "instanceTerminationAction":
             suggest = "instance_termination_action"
         elif key == "localSsdRecoveryTimeouts":
@@ -14469,6 +14540,7 @@ class InstanceTemplateScheduling(dict):
 
     def __init__(__self__, *,
                  automatic_restart: Optional[bool] = None,
+                 host_error_timeout_seconds: Optional[int] = None,
                  instance_termination_action: Optional[str] = None,
                  local_ssd_recovery_timeouts: Optional[Sequence['outputs.InstanceTemplateSchedulingLocalSsdRecoveryTimeout']] = None,
                  maintenance_interval: Optional[str] = None,
@@ -14483,6 +14555,7 @@ class InstanceTemplateScheduling(dict):
         :param bool automatic_restart: Specifies whether the instance should be
                automatically restarted if it is terminated by Compute Engine (not
                terminated by a user). This defaults to true.
+        :param int host_error_timeout_seconds: Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
         :param str instance_termination_action: Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         :param Sequence['InstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs'] local_ssd_recovery_timeouts: Specifies the maximum amount of time a Local Ssd Vm should wait while
                  recovery of the Local Ssd state is attempted. Its value should be in
@@ -14509,6 +14582,8 @@ class InstanceTemplateScheduling(dict):
         """
         if automatic_restart is not None:
             pulumi.set(__self__, "automatic_restart", automatic_restart)
+        if host_error_timeout_seconds is not None:
+            pulumi.set(__self__, "host_error_timeout_seconds", host_error_timeout_seconds)
         if instance_termination_action is not None:
             pulumi.set(__self__, "instance_termination_action", instance_termination_action)
         if local_ssd_recovery_timeouts is not None:
@@ -14539,6 +14614,14 @@ class InstanceTemplateScheduling(dict):
         terminated by a user). This defaults to true.
         """
         return pulumi.get(self, "automatic_restart")
+
+    @property
+    @pulumi.getter(name="hostErrorTimeoutSeconds")
+    def host_error_timeout_seconds(self) -> Optional[int]:
+        """
+        Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+        """
+        return pulumi.get(self, "host_error_timeout_seconds")
 
     @property
     @pulumi.getter(name="instanceTerminationAction")
@@ -15182,6 +15265,8 @@ class InterconnectMacsec(dict):
         suggest = None
         if key == "preSharedKeys":
             suggest = "pre_shared_keys"
+        elif key == "failOpen":
+            suggest = "fail_open"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in InterconnectMacsec. Access the value via the '{suggest}' property getter instead.")
@@ -15195,15 +15280,23 @@ class InterconnectMacsec(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 pre_shared_keys: Sequence['outputs.InterconnectMacsecPreSharedKey']):
+                 pre_shared_keys: Sequence['outputs.InterconnectMacsecPreSharedKey'],
+                 fail_open: Optional[bool] = None):
         """
         :param Sequence['InterconnectMacsecPreSharedKeyArgs'] pre_shared_keys: A keychain placeholder describing a set of named key objects along with their
                start times. A MACsec CKN/CAK is generated for each key in the key chain.
                Google router automatically picks the key with the most recent startTime when establishing
                or re-establishing a MACsec secure link.
                Structure is documented below.
+        :param bool fail_open: If set to true, the Interconnect connection is configured with a should-secure
+               MACsec security policy, that allows the Google router to fallback to cleartext
+               traffic if the MKA session cannot be established. By default, the Interconnect
+               connection is configured with a must-secure security policy that drops all traffic
+               if the MKA session cannot be established with your router.
         """
         pulumi.set(__self__, "pre_shared_keys", pre_shared_keys)
+        if fail_open is not None:
+            pulumi.set(__self__, "fail_open", fail_open)
 
     @property
     @pulumi.getter(name="preSharedKeys")
@@ -15216,6 +15309,18 @@ class InterconnectMacsec(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "pre_shared_keys")
+
+    @property
+    @pulumi.getter(name="failOpen")
+    def fail_open(self) -> Optional[bool]:
+        """
+        If set to true, the Interconnect connection is configured with a should-secure
+        MACsec security policy, that allows the Google router to fallback to cleartext
+        traffic if the MKA session cannot be established. By default, the Interconnect
+        connection is configured with a must-secure security policy that drops all traffic
+        if the MKA session cannot be established with your router.
+        """
+        return pulumi.get(self, "fail_open")
 
 
 @pulumi.output_type
@@ -15249,11 +15354,14 @@ class InterconnectMacsecPreSharedKey(dict):
                the regular expression `a-z?` which means the first character
                must be a lowercase letter, and all following characters must be a dash, lowercase
                letter, or digit, except the last character, which cannot be a dash.
-        :param bool fail_open: If set to true, the Interconnect connection is configured with a should-secure
+        :param bool fail_open: (Optional, Deprecated)
+               If set to true, the Interconnect connection is configured with a should-secure
                MACsec security policy, that allows the Google router to fallback to cleartext
                traffic if the MKA session cannot be established. By default, the Interconnect
                connection is configured with a must-secure security policy that drops all traffic
                if the MKA session cannot be established with your router.
+               
+               > **Warning:** `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead.
         :param str start_time: A RFC3339 timestamp on or after which the key is valid. startTime can be in the
                future. If the keychain has a single key, startTime can be omitted. If the keychain
                has multiple keys, startTime is mandatory for each key. The start times of keys must
@@ -15280,13 +15388,17 @@ class InterconnectMacsecPreSharedKey(dict):
 
     @property
     @pulumi.getter(name="failOpen")
+    @_utilities.deprecated("""`failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead.""")
     def fail_open(self) -> Optional[bool]:
         """
+        (Optional, Deprecated)
         If set to true, the Interconnect connection is configured with a should-secure
         MACsec security policy, that allows the Google router to fallback to cleartext
         traffic if the MKA session cannot be established. By default, the Interconnect
         connection is configured with a must-secure security policy that drops all traffic
         if the MKA session cannot be established with your router.
+
+        > **Warning:** `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead.
         """
         return pulumi.get(self, "fail_open")
 
@@ -24206,6 +24318,8 @@ class RegionInstanceTemplateScheduling(dict):
         suggest = None
         if key == "automaticRestart":
             suggest = "automatic_restart"
+        elif key == "hostErrorTimeoutSeconds":
+            suggest = "host_error_timeout_seconds"
         elif key == "instanceTerminationAction":
             suggest = "instance_termination_action"
         elif key == "localSsdRecoveryTimeouts":
@@ -24238,6 +24352,7 @@ class RegionInstanceTemplateScheduling(dict):
 
     def __init__(__self__, *,
                  automatic_restart: Optional[bool] = None,
+                 host_error_timeout_seconds: Optional[int] = None,
                  instance_termination_action: Optional[str] = None,
                  local_ssd_recovery_timeouts: Optional[Sequence['outputs.RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout']] = None,
                  maintenance_interval: Optional[str] = None,
@@ -24252,6 +24367,7 @@ class RegionInstanceTemplateScheduling(dict):
         :param bool automatic_restart: Specifies whether the instance should be
                automatically restarted if it is terminated by Compute Engine (not
                terminated by a user). This defaults to true.
+        :param int host_error_timeout_seconds: Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
         :param str instance_termination_action: Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         :param Sequence['RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs'] local_ssd_recovery_timeouts: Specifies the maximum amount of time a Local Ssd Vm should wait while
                  recovery of the Local Ssd state is attempted. Its value should be in
@@ -24278,6 +24394,8 @@ class RegionInstanceTemplateScheduling(dict):
         """
         if automatic_restart is not None:
             pulumi.set(__self__, "automatic_restart", automatic_restart)
+        if host_error_timeout_seconds is not None:
+            pulumi.set(__self__, "host_error_timeout_seconds", host_error_timeout_seconds)
         if instance_termination_action is not None:
             pulumi.set(__self__, "instance_termination_action", instance_termination_action)
         if local_ssd_recovery_timeouts is not None:
@@ -24308,6 +24426,14 @@ class RegionInstanceTemplateScheduling(dict):
         terminated by a user). This defaults to true.
         """
         return pulumi.get(self, "automatic_restart")
+
+    @property
+    @pulumi.getter(name="hostErrorTimeoutSeconds")
+    def host_error_timeout_seconds(self) -> Optional[int]:
+        """
+        Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+        """
+        return pulumi.get(self, "host_error_timeout_seconds")
 
     @property
     @pulumi.getter(name="instanceTerminationAction")
@@ -25278,6 +25404,1263 @@ class RegionNetworkFirewallPolicyRuleTargetSecureTag(dict):
     def state(self) -> Optional[str]:
         """
         [Output Only] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class RegionNetworkFirewallPolicyWithRulesPredefinedRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableLogging":
+            suggest = "enable_logging"
+        elif key == "ruleName":
+            suggest = "rule_name"
+        elif key == "securityProfileGroup":
+            suggest = "security_profile_group"
+        elif key == "targetSecureTags":
+            suggest = "target_secure_tags"
+        elif key == "targetServiceAccounts":
+            suggest = "target_service_accounts"
+        elif key == "tlsInspect":
+            suggest = "tls_inspect"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionNetworkFirewallPolicyWithRulesPredefinedRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionNetworkFirewallPolicyWithRulesPredefinedRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionNetworkFirewallPolicyWithRulesPredefinedRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 action: Optional[str] = None,
+                 description: Optional[str] = None,
+                 direction: Optional[str] = None,
+                 disabled: Optional[bool] = None,
+                 enable_logging: Optional[bool] = None,
+                 matches: Optional[Sequence['outputs.RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatch']] = None,
+                 priority: Optional[int] = None,
+                 rule_name: Optional[str] = None,
+                 security_profile_group: Optional[str] = None,
+                 target_secure_tags: Optional[Sequence['outputs.RegionNetworkFirewallPolicyWithRulesPredefinedRuleTargetSecureTag']] = None,
+                 target_service_accounts: Optional[Sequence[str]] = None,
+                 tls_inspect: Optional[bool] = None):
+        """
+        :param str action: (Output)
+               The Action to perform when the client connection triggers the rule. Can currently be either
+               "allow", "deny", "apply_security_profile_group" or "goto_next".
+        :param str description: (Output)
+               A description of the rule.
+        :param str direction: (Output)
+               The direction in which this rule applies. If unspecified an INGRESS rule is created.
+        :param bool disabled: (Output)
+               Denotes whether the firewall policy rule is disabled. When set to true,
+               the firewall policy rule is not enforced and traffic behaves as if it did
+               not exist. If this is unspecified, the firewall policy rule will be
+               enabled.
+        :param bool enable_logging: (Output)
+               Denotes whether to enable logging for a particular rule.
+               If logging is enabled, logs will be exported to the
+               configured export destination in Stackdriver.
+        :param Sequence['RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchArgs'] matches: (Output)
+               A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+               Structure is documented below.
+        :param int priority: (Output)
+               An integer indicating the priority of a rule in the list. The priority must be a value
+               between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
+               highest priority and 2147483647 is the lowest priority.
+        :param str rule_name: (Output)
+               An optional name for the rule. This field is not a unique identifier
+               and can be updated.
+        :param str security_profile_group: (Output)
+               A fully-qualified URL of a SecurityProfile resource instance.
+               Example:
+               https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+               Must be specified if action is 'apply_security_profile_group'.
+        :param Sequence['RegionNetworkFirewallPolicyWithRulesPredefinedRuleTargetSecureTagArgs'] target_secure_tags: (Output)
+               A list of secure tags that controls which instances the firewall rule
+               applies to. If <code>targetSecureTag</code> are specified, then the
+               firewall rule applies only to instances in the VPC network that have one
+               of those EFFECTIVE secure tags, if all the target_secure_tag are in
+               INEFFECTIVE state, then this rule will be ignored.
+               <code>targetSecureTag</code> may not be set at the same time as
+               <code>targetServiceAccounts</code>.
+               If neither <code>targetServiceAccounts</code> nor
+               <code>targetSecureTag</code> are specified, the firewall rule applies
+               to all instances on the specified network.
+               Maximum number of target label tags allowed is 256.
+               Structure is documented below.
+        :param Sequence[str] target_service_accounts: (Output)
+               A list of service accounts indicating the sets of
+               instances that are applied with this rule.
+        :param bool tls_inspect: (Output)
+               Boolean flag indicating if the traffic should be TLS decrypted.
+               It can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
+        """
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if enable_logging is not None:
+            pulumi.set(__self__, "enable_logging", enable_logging)
+        if matches is not None:
+            pulumi.set(__self__, "matches", matches)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+        if rule_name is not None:
+            pulumi.set(__self__, "rule_name", rule_name)
+        if security_profile_group is not None:
+            pulumi.set(__self__, "security_profile_group", security_profile_group)
+        if target_secure_tags is not None:
+            pulumi.set(__self__, "target_secure_tags", target_secure_tags)
+        if target_service_accounts is not None:
+            pulumi.set(__self__, "target_service_accounts", target_service_accounts)
+        if tls_inspect is not None:
+            pulumi.set(__self__, "tls_inspect", tls_inspect)
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional[str]:
+        """
+        (Output)
+        The Action to perform when the client connection triggers the rule. Can currently be either
+        "allow", "deny", "apply_security_profile_group" or "goto_next".
+        """
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        (Output)
+        A description of the rule.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        """
+        (Output)
+        The direction in which this rule applies. If unspecified an INGRESS rule is created.
+        """
+        return pulumi.get(self, "direction")
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[bool]:
+        """
+        (Output)
+        Denotes whether the firewall policy rule is disabled. When set to true,
+        the firewall policy rule is not enforced and traffic behaves as if it did
+        not exist. If this is unspecified, the firewall policy rule will be
+        enabled.
+        """
+        return pulumi.get(self, "disabled")
+
+    @property
+    @pulumi.getter(name="enableLogging")
+    def enable_logging(self) -> Optional[bool]:
+        """
+        (Output)
+        Denotes whether to enable logging for a particular rule.
+        If logging is enabled, logs will be exported to the
+        configured export destination in Stackdriver.
+        """
+        return pulumi.get(self, "enable_logging")
+
+    @property
+    @pulumi.getter
+    def matches(self) -> Optional[Sequence['outputs.RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatch']]:
+        """
+        (Output)
+        A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "matches")
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[int]:
+        """
+        (Output)
+        An integer indicating the priority of a rule in the list. The priority must be a value
+        between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
+        highest priority and 2147483647 is the lowest priority.
+        """
+        return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter(name="ruleName")
+    def rule_name(self) -> Optional[str]:
+        """
+        (Output)
+        An optional name for the rule. This field is not a unique identifier
+        and can be updated.
+        """
+        return pulumi.get(self, "rule_name")
+
+    @property
+    @pulumi.getter(name="securityProfileGroup")
+    def security_profile_group(self) -> Optional[str]:
+        """
+        (Output)
+        A fully-qualified URL of a SecurityProfile resource instance.
+        Example:
+        https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+        Must be specified if action is 'apply_security_profile_group'.
+        """
+        return pulumi.get(self, "security_profile_group")
+
+    @property
+    @pulumi.getter(name="targetSecureTags")
+    def target_secure_tags(self) -> Optional[Sequence['outputs.RegionNetworkFirewallPolicyWithRulesPredefinedRuleTargetSecureTag']]:
+        """
+        (Output)
+        A list of secure tags that controls which instances the firewall rule
+        applies to. If <code>targetSecureTag</code> are specified, then the
+        firewall rule applies only to instances in the VPC network that have one
+        of those EFFECTIVE secure tags, if all the target_secure_tag are in
+        INEFFECTIVE state, then this rule will be ignored.
+        <code>targetSecureTag</code> may not be set at the same time as
+        <code>targetServiceAccounts</code>.
+        If neither <code>targetServiceAccounts</code> nor
+        <code>targetSecureTag</code> are specified, the firewall rule applies
+        to all instances on the specified network.
+        Maximum number of target label tags allowed is 256.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "target_secure_tags")
+
+    @property
+    @pulumi.getter(name="targetServiceAccounts")
+    def target_service_accounts(self) -> Optional[Sequence[str]]:
+        """
+        (Output)
+        A list of service accounts indicating the sets of
+        instances that are applied with this rule.
+        """
+        return pulumi.get(self, "target_service_accounts")
+
+    @property
+    @pulumi.getter(name="tlsInspect")
+    def tls_inspect(self) -> Optional[bool]:
+        """
+        (Output)
+        Boolean flag indicating if the traffic should be TLS decrypted.
+        It can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
+        """
+        return pulumi.get(self, "tls_inspect")
+
+
+@pulumi.output_type
+class RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatch(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "destAddressGroups":
+            suggest = "dest_address_groups"
+        elif key == "destFqdns":
+            suggest = "dest_fqdns"
+        elif key == "destIpRanges":
+            suggest = "dest_ip_ranges"
+        elif key == "destRegionCodes":
+            suggest = "dest_region_codes"
+        elif key == "destThreatIntelligences":
+            suggest = "dest_threat_intelligences"
+        elif key == "layer4Configs":
+            suggest = "layer4_configs"
+        elif key == "srcAddressGroups":
+            suggest = "src_address_groups"
+        elif key == "srcFqdns":
+            suggest = "src_fqdns"
+        elif key == "srcIpRanges":
+            suggest = "src_ip_ranges"
+        elif key == "srcRegionCodes":
+            suggest = "src_region_codes"
+        elif key == "srcSecureTags":
+            suggest = "src_secure_tags"
+        elif key == "srcThreatIntelligences":
+            suggest = "src_threat_intelligences"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatch. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatch.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatch.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dest_address_groups: Optional[Sequence[str]] = None,
+                 dest_fqdns: Optional[Sequence[str]] = None,
+                 dest_ip_ranges: Optional[Sequence[str]] = None,
+                 dest_region_codes: Optional[Sequence[str]] = None,
+                 dest_threat_intelligences: Optional[Sequence[str]] = None,
+                 layer4_configs: Optional[Sequence['outputs.RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchLayer4Config']] = None,
+                 src_address_groups: Optional[Sequence[str]] = None,
+                 src_fqdns: Optional[Sequence[str]] = None,
+                 src_ip_ranges: Optional[Sequence[str]] = None,
+                 src_region_codes: Optional[Sequence[str]] = None,
+                 src_secure_tags: Optional[Sequence['outputs.RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTag']] = None,
+                 src_threat_intelligences: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] dest_address_groups: Address groups which should be matched against the traffic destination.
+               Maximum number of destination address groups is 10.
+        :param Sequence[str] dest_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against
+               traffic destination. Maximum number of destination fqdn allowed is 100.
+        :param Sequence[str] dest_ip_ranges: Destination IP address range in CIDR format. Required for
+               EGRESS rules.
+        :param Sequence[str] dest_region_codes: Region codes whose IP addresses will be used to match for destination
+               of traffic. Should be specified as 2 letter country code defined as per
+               ISO 3166 alpha-2 country codes. ex."US"
+               Maximum number of destination region codes allowed is 5000.
+        :param Sequence[str] dest_threat_intelligences: Names of Network Threat Intelligence lists.
+               The IPs in these lists will be matched against traffic destination.
+        :param Sequence['RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchLayer4ConfigArgs'] layer4_configs: Pairs of IP protocols and ports that the rule should match.
+               Structure is documented below.
+        :param Sequence[str] src_address_groups: Address groups which should be matched against the traffic source.
+               Maximum number of source address groups is 10.
+        :param Sequence[str] src_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against
+               traffic source. Maximum number of source fqdn allowed is 100.
+        :param Sequence[str] src_ip_ranges: Source IP address range in CIDR format. Required for
+               INGRESS rules.
+        :param Sequence[str] src_region_codes: Region codes whose IP addresses will be used to match for source
+               of traffic. Should be specified as 2 letter country code defined as per
+               ISO 3166 alpha-2 country codes. ex."US"
+               Maximum number of source region codes allowed is 5000.
+        :param Sequence['RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTagArgs'] src_secure_tags: List of secure tag values, which should be matched at the source
+               of the traffic.
+               For INGRESS rule, if all the <code>srcSecureTag</code> are INEFFECTIVE,
+               and there is no <code>srcIpRange</code>, this rule will be ignored.
+               Maximum number of source tag values allowed is 256.
+               Structure is documented below.
+               
+               
+               <a name="nested_layer4_config"></a>The `layer4_config` block supports:
+        :param Sequence[str] src_threat_intelligences: Names of Network Threat Intelligence lists.
+               The IPs in these lists will be matched against traffic source.
+        """
+        if dest_address_groups is not None:
+            pulumi.set(__self__, "dest_address_groups", dest_address_groups)
+        if dest_fqdns is not None:
+            pulumi.set(__self__, "dest_fqdns", dest_fqdns)
+        if dest_ip_ranges is not None:
+            pulumi.set(__self__, "dest_ip_ranges", dest_ip_ranges)
+        if dest_region_codes is not None:
+            pulumi.set(__self__, "dest_region_codes", dest_region_codes)
+        if dest_threat_intelligences is not None:
+            pulumi.set(__self__, "dest_threat_intelligences", dest_threat_intelligences)
+        if layer4_configs is not None:
+            pulumi.set(__self__, "layer4_configs", layer4_configs)
+        if src_address_groups is not None:
+            pulumi.set(__self__, "src_address_groups", src_address_groups)
+        if src_fqdns is not None:
+            pulumi.set(__self__, "src_fqdns", src_fqdns)
+        if src_ip_ranges is not None:
+            pulumi.set(__self__, "src_ip_ranges", src_ip_ranges)
+        if src_region_codes is not None:
+            pulumi.set(__self__, "src_region_codes", src_region_codes)
+        if src_secure_tags is not None:
+            pulumi.set(__self__, "src_secure_tags", src_secure_tags)
+        if src_threat_intelligences is not None:
+            pulumi.set(__self__, "src_threat_intelligences", src_threat_intelligences)
+
+    @property
+    @pulumi.getter(name="destAddressGroups")
+    def dest_address_groups(self) -> Optional[Sequence[str]]:
+        """
+        Address groups which should be matched against the traffic destination.
+        Maximum number of destination address groups is 10.
+        """
+        return pulumi.get(self, "dest_address_groups")
+
+    @property
+    @pulumi.getter(name="destFqdns")
+    def dest_fqdns(self) -> Optional[Sequence[str]]:
+        """
+        Fully Qualified Domain Name (FQDN) which should be matched against
+        traffic destination. Maximum number of destination fqdn allowed is 100.
+        """
+        return pulumi.get(self, "dest_fqdns")
+
+    @property
+    @pulumi.getter(name="destIpRanges")
+    def dest_ip_ranges(self) -> Optional[Sequence[str]]:
+        """
+        Destination IP address range in CIDR format. Required for
+        EGRESS rules.
+        """
+        return pulumi.get(self, "dest_ip_ranges")
+
+    @property
+    @pulumi.getter(name="destRegionCodes")
+    def dest_region_codes(self) -> Optional[Sequence[str]]:
+        """
+        Region codes whose IP addresses will be used to match for destination
+        of traffic. Should be specified as 2 letter country code defined as per
+        ISO 3166 alpha-2 country codes. ex."US"
+        Maximum number of destination region codes allowed is 5000.
+        """
+        return pulumi.get(self, "dest_region_codes")
+
+    @property
+    @pulumi.getter(name="destThreatIntelligences")
+    def dest_threat_intelligences(self) -> Optional[Sequence[str]]:
+        """
+        Names of Network Threat Intelligence lists.
+        The IPs in these lists will be matched against traffic destination.
+        """
+        return pulumi.get(self, "dest_threat_intelligences")
+
+    @property
+    @pulumi.getter(name="layer4Configs")
+    def layer4_configs(self) -> Optional[Sequence['outputs.RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchLayer4Config']]:
+        """
+        Pairs of IP protocols and ports that the rule should match.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "layer4_configs")
+
+    @property
+    @pulumi.getter(name="srcAddressGroups")
+    def src_address_groups(self) -> Optional[Sequence[str]]:
+        """
+        Address groups which should be matched against the traffic source.
+        Maximum number of source address groups is 10.
+        """
+        return pulumi.get(self, "src_address_groups")
+
+    @property
+    @pulumi.getter(name="srcFqdns")
+    def src_fqdns(self) -> Optional[Sequence[str]]:
+        """
+        Fully Qualified Domain Name (FQDN) which should be matched against
+        traffic source. Maximum number of source fqdn allowed is 100.
+        """
+        return pulumi.get(self, "src_fqdns")
+
+    @property
+    @pulumi.getter(name="srcIpRanges")
+    def src_ip_ranges(self) -> Optional[Sequence[str]]:
+        """
+        Source IP address range in CIDR format. Required for
+        INGRESS rules.
+        """
+        return pulumi.get(self, "src_ip_ranges")
+
+    @property
+    @pulumi.getter(name="srcRegionCodes")
+    def src_region_codes(self) -> Optional[Sequence[str]]:
+        """
+        Region codes whose IP addresses will be used to match for source
+        of traffic. Should be specified as 2 letter country code defined as per
+        ISO 3166 alpha-2 country codes. ex."US"
+        Maximum number of source region codes allowed is 5000.
+        """
+        return pulumi.get(self, "src_region_codes")
+
+    @property
+    @pulumi.getter(name="srcSecureTags")
+    def src_secure_tags(self) -> Optional[Sequence['outputs.RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTag']]:
+        """
+        List of secure tag values, which should be matched at the source
+        of the traffic.
+        For INGRESS rule, if all the <code>srcSecureTag</code> are INEFFECTIVE,
+        and there is no <code>srcIpRange</code>, this rule will be ignored.
+        Maximum number of source tag values allowed is 256.
+        Structure is documented below.
+
+
+        <a name="nested_layer4_config"></a>The `layer4_config` block supports:
+        """
+        return pulumi.get(self, "src_secure_tags")
+
+    @property
+    @pulumi.getter(name="srcThreatIntelligences")
+    def src_threat_intelligences(self) -> Optional[Sequence[str]]:
+        """
+        Names of Network Threat Intelligence lists.
+        The IPs in these lists will be matched against traffic source.
+        """
+        return pulumi.get(self, "src_threat_intelligences")
+
+
+@pulumi.output_type
+class RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchLayer4Config(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipProtocol":
+            suggest = "ip_protocol"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchLayer4Config. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchLayer4Config.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchLayer4Config.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ip_protocol: Optional[str] = None,
+                 ports: Optional[Sequence[str]] = None):
+        """
+        :param str ip_protocol: (Output)
+               The IP protocol to which this rule applies. The protocol
+               type is required when creating a firewall rule.
+               This value can either be one of the following well
+               known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp),
+               or the IP protocol number.
+        :param Sequence[str] ports: (Output)
+               An optional list of ports to which this rule applies. This field
+               is only applicable for UDP or TCP protocol. Each entry must be
+               either an integer or a range. If not specified, this rule
+               applies to connections through any port.
+               Example inputs include: ["22"], ["80","443"], and
+               ["12345-12349"].
+        """
+        if ip_protocol is not None:
+            pulumi.set(__self__, "ip_protocol", ip_protocol)
+        if ports is not None:
+            pulumi.set(__self__, "ports", ports)
+
+    @property
+    @pulumi.getter(name="ipProtocol")
+    def ip_protocol(self) -> Optional[str]:
+        """
+        (Output)
+        The IP protocol to which this rule applies. The protocol
+        type is required when creating a firewall rule.
+        This value can either be one of the following well
+        known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp),
+        or the IP protocol number.
+        """
+        return pulumi.get(self, "ip_protocol")
+
+    @property
+    @pulumi.getter
+    def ports(self) -> Optional[Sequence[str]]:
+        """
+        (Output)
+        An optional list of ports to which this rule applies. This field
+        is only applicable for UDP or TCP protocol. Each entry must be
+        either an integer or a range. If not specified, this rule
+        applies to connections through any port.
+        Example inputs include: ["22"], ["80","443"], and
+        ["12345-12349"].
+        """
+        return pulumi.get(self, "ports")
+
+
+@pulumi.output_type
+class RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTag(dict):
+    def __init__(__self__, *,
+                 name: Optional[str] = None,
+                 state: Optional[str] = None):
+        """
+        :param str name: Name of the secure tag, created with TagManager's TagValue API.
+               @pattern tagValues/[0-9]+
+        :param str state: (Output)
+               [Output Only] State of the secure tag, either `EFFECTIVE` or
+               `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
+               or its network is deleted.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name of the secure tag, created with TagManager's TagValue API.
+        @pattern tagValues/[0-9]+
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        """
+        (Output)
+        [Output Only] State of the secure tag, either `EFFECTIVE` or
+        `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
+        or its network is deleted.
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class RegionNetworkFirewallPolicyWithRulesPredefinedRuleTargetSecureTag(dict):
+    def __init__(__self__, *,
+                 name: Optional[str] = None,
+                 state: Optional[str] = None):
+        """
+        :param str name: Name of the secure tag, created with TagManager's TagValue API.
+               @pattern tagValues/[0-9]+
+        :param str state: (Output)
+               [Output Only] State of the secure tag, either `EFFECTIVE` or
+               `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
+               or its network is deleted.
+               
+               - - -
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name of the secure tag, created with TagManager's TagValue API.
+        @pattern tagValues/[0-9]+
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        """
+        (Output)
+        [Output Only] State of the secure tag, either `EFFECTIVE` or
+        `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
+        or its network is deleted.
+
+        - - -
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class RegionNetworkFirewallPolicyWithRulesRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableLogging":
+            suggest = "enable_logging"
+        elif key == "ruleName":
+            suggest = "rule_name"
+        elif key == "securityProfileGroup":
+            suggest = "security_profile_group"
+        elif key == "targetSecureTags":
+            suggest = "target_secure_tags"
+        elif key == "targetServiceAccounts":
+            suggest = "target_service_accounts"
+        elif key == "tlsInspect":
+            suggest = "tls_inspect"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionNetworkFirewallPolicyWithRulesRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionNetworkFirewallPolicyWithRulesRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionNetworkFirewallPolicyWithRulesRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 action: str,
+                 match: 'outputs.RegionNetworkFirewallPolicyWithRulesRuleMatch',
+                 priority: int,
+                 description: Optional[str] = None,
+                 direction: Optional[str] = None,
+                 disabled: Optional[bool] = None,
+                 enable_logging: Optional[bool] = None,
+                 rule_name: Optional[str] = None,
+                 security_profile_group: Optional[str] = None,
+                 target_secure_tags: Optional[Sequence['outputs.RegionNetworkFirewallPolicyWithRulesRuleTargetSecureTag']] = None,
+                 target_service_accounts: Optional[Sequence[str]] = None,
+                 tls_inspect: Optional[bool] = None):
+        """
+        :param str action: The Action to perform when the client connection triggers the rule. Can currently be either
+               "allow", "deny", "apply_security_profile_group" or "goto_next".
+        :param 'RegionNetworkFirewallPolicyWithRulesRuleMatchArgs' match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+               Structure is documented below.
+        :param int priority: An integer indicating the priority of a rule in the list. The priority must be a value
+               between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
+               highest priority and 2147483647 is the lowest priority.
+        :param str description: A description of the rule.
+        :param str direction: The direction in which this rule applies. If unspecified an INGRESS rule is created.
+               Possible values are: `INGRESS`, `EGRESS`.
+        :param bool disabled: Denotes whether the firewall policy rule is disabled. When set to true,
+               the firewall policy rule is not enforced and traffic behaves as if it did
+               not exist. If this is unspecified, the firewall policy rule will be
+               enabled.
+        :param bool enable_logging: Denotes whether to enable logging for a particular rule.
+               If logging is enabled, logs will be exported to the
+               configured export destination in Stackdriver.
+        :param str rule_name: An optional name for the rule. This field is not a unique identifier
+               and can be updated.
+        :param str security_profile_group: A fully-qualified URL of a SecurityProfile resource instance.
+               Example:
+               https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+               Must be specified if action is 'apply_security_profile_group'.
+        :param Sequence['RegionNetworkFirewallPolicyWithRulesRuleTargetSecureTagArgs'] target_secure_tags: A list of secure tags that controls which instances the firewall rule
+               applies to. If <code>targetSecureTag</code> are specified, then the
+               firewall rule applies only to instances in the VPC network that have one
+               of those EFFECTIVE secure tags, if all the target_secure_tag are in
+               INEFFECTIVE state, then this rule will be ignored.
+               <code>targetSecureTag</code> may not be set at the same time as
+               <code>targetServiceAccounts</code>.
+               If neither <code>targetServiceAccounts</code> nor
+               <code>targetSecureTag</code> are specified, the firewall rule applies
+               to all instances on the specified network.
+               Maximum number of target label tags allowed is 256.
+               Structure is documented below.
+        :param Sequence[str] target_service_accounts: A list of service accounts indicating the sets of
+               instances that are applied with this rule.
+        :param bool tls_inspect: Boolean flag indicating if the traffic should be TLS decrypted.
+               It can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "match", match)
+        pulumi.set(__self__, "priority", priority)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if enable_logging is not None:
+            pulumi.set(__self__, "enable_logging", enable_logging)
+        if rule_name is not None:
+            pulumi.set(__self__, "rule_name", rule_name)
+        if security_profile_group is not None:
+            pulumi.set(__self__, "security_profile_group", security_profile_group)
+        if target_secure_tags is not None:
+            pulumi.set(__self__, "target_secure_tags", target_secure_tags)
+        if target_service_accounts is not None:
+            pulumi.set(__self__, "target_service_accounts", target_service_accounts)
+        if tls_inspect is not None:
+            pulumi.set(__self__, "tls_inspect", tls_inspect)
+
+    @property
+    @pulumi.getter
+    def action(self) -> str:
+        """
+        The Action to perform when the client connection triggers the rule. Can currently be either
+        "allow", "deny", "apply_security_profile_group" or "goto_next".
+        """
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter
+    def match(self) -> 'outputs.RegionNetworkFirewallPolicyWithRulesRuleMatch':
+        """
+        A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "match")
+
+    @property
+    @pulumi.getter
+    def priority(self) -> int:
+        """
+        An integer indicating the priority of a rule in the list. The priority must be a value
+        between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the
+        highest priority and 2147483647 is the lowest priority.
+        """
+        return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        A description of the rule.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        """
+        The direction in which this rule applies. If unspecified an INGRESS rule is created.
+        Possible values are: `INGRESS`, `EGRESS`.
+        """
+        return pulumi.get(self, "direction")
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[bool]:
+        """
+        Denotes whether the firewall policy rule is disabled. When set to true,
+        the firewall policy rule is not enforced and traffic behaves as if it did
+        not exist. If this is unspecified, the firewall policy rule will be
+        enabled.
+        """
+        return pulumi.get(self, "disabled")
+
+    @property
+    @pulumi.getter(name="enableLogging")
+    def enable_logging(self) -> Optional[bool]:
+        """
+        Denotes whether to enable logging for a particular rule.
+        If logging is enabled, logs will be exported to the
+        configured export destination in Stackdriver.
+        """
+        return pulumi.get(self, "enable_logging")
+
+    @property
+    @pulumi.getter(name="ruleName")
+    def rule_name(self) -> Optional[str]:
+        """
+        An optional name for the rule. This field is not a unique identifier
+        and can be updated.
+        """
+        return pulumi.get(self, "rule_name")
+
+    @property
+    @pulumi.getter(name="securityProfileGroup")
+    def security_profile_group(self) -> Optional[str]:
+        """
+        A fully-qualified URL of a SecurityProfile resource instance.
+        Example:
+        https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+        Must be specified if action is 'apply_security_profile_group'.
+        """
+        return pulumi.get(self, "security_profile_group")
+
+    @property
+    @pulumi.getter(name="targetSecureTags")
+    def target_secure_tags(self) -> Optional[Sequence['outputs.RegionNetworkFirewallPolicyWithRulesRuleTargetSecureTag']]:
+        """
+        A list of secure tags that controls which instances the firewall rule
+        applies to. If <code>targetSecureTag</code> are specified, then the
+        firewall rule applies only to instances in the VPC network that have one
+        of those EFFECTIVE secure tags, if all the target_secure_tag are in
+        INEFFECTIVE state, then this rule will be ignored.
+        <code>targetSecureTag</code> may not be set at the same time as
+        <code>targetServiceAccounts</code>.
+        If neither <code>targetServiceAccounts</code> nor
+        <code>targetSecureTag</code> are specified, the firewall rule applies
+        to all instances on the specified network.
+        Maximum number of target label tags allowed is 256.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "target_secure_tags")
+
+    @property
+    @pulumi.getter(name="targetServiceAccounts")
+    def target_service_accounts(self) -> Optional[Sequence[str]]:
+        """
+        A list of service accounts indicating the sets of
+        instances that are applied with this rule.
+        """
+        return pulumi.get(self, "target_service_accounts")
+
+    @property
+    @pulumi.getter(name="tlsInspect")
+    def tls_inspect(self) -> Optional[bool]:
+        """
+        Boolean flag indicating if the traffic should be TLS decrypted.
+        It can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
+        """
+        return pulumi.get(self, "tls_inspect")
+
+
+@pulumi.output_type
+class RegionNetworkFirewallPolicyWithRulesRuleMatch(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "layer4Configs":
+            suggest = "layer4_configs"
+        elif key == "destAddressGroups":
+            suggest = "dest_address_groups"
+        elif key == "destFqdns":
+            suggest = "dest_fqdns"
+        elif key == "destIpRanges":
+            suggest = "dest_ip_ranges"
+        elif key == "destRegionCodes":
+            suggest = "dest_region_codes"
+        elif key == "destThreatIntelligences":
+            suggest = "dest_threat_intelligences"
+        elif key == "srcAddressGroups":
+            suggest = "src_address_groups"
+        elif key == "srcFqdns":
+            suggest = "src_fqdns"
+        elif key == "srcIpRanges":
+            suggest = "src_ip_ranges"
+        elif key == "srcRegionCodes":
+            suggest = "src_region_codes"
+        elif key == "srcSecureTags":
+            suggest = "src_secure_tags"
+        elif key == "srcThreatIntelligences":
+            suggest = "src_threat_intelligences"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionNetworkFirewallPolicyWithRulesRuleMatch. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionNetworkFirewallPolicyWithRulesRuleMatch.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionNetworkFirewallPolicyWithRulesRuleMatch.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 layer4_configs: Sequence['outputs.RegionNetworkFirewallPolicyWithRulesRuleMatchLayer4Config'],
+                 dest_address_groups: Optional[Sequence[str]] = None,
+                 dest_fqdns: Optional[Sequence[str]] = None,
+                 dest_ip_ranges: Optional[Sequence[str]] = None,
+                 dest_region_codes: Optional[Sequence[str]] = None,
+                 dest_threat_intelligences: Optional[Sequence[str]] = None,
+                 src_address_groups: Optional[Sequence[str]] = None,
+                 src_fqdns: Optional[Sequence[str]] = None,
+                 src_ip_ranges: Optional[Sequence[str]] = None,
+                 src_region_codes: Optional[Sequence[str]] = None,
+                 src_secure_tags: Optional[Sequence['outputs.RegionNetworkFirewallPolicyWithRulesRuleMatchSrcSecureTag']] = None,
+                 src_threat_intelligences: Optional[Sequence[str]] = None):
+        """
+        :param Sequence['RegionNetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArgs'] layer4_configs: Pairs of IP protocols and ports that the rule should match.
+               Structure is documented below.
+        :param Sequence[str] dest_address_groups: Address groups which should be matched against the traffic destination.
+               Maximum number of destination address groups is 10.
+        :param Sequence[str] dest_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against
+               traffic destination. Maximum number of destination fqdn allowed is 100.
+        :param Sequence[str] dest_ip_ranges: Destination IP address range in CIDR format. Required for
+               EGRESS rules.
+        :param Sequence[str] dest_region_codes: Region codes whose IP addresses will be used to match for destination
+               of traffic. Should be specified as 2 letter country code defined as per
+               ISO 3166 alpha-2 country codes. ex."US"
+               Maximum number of destination region codes allowed is 5000.
+        :param Sequence[str] dest_threat_intelligences: Names of Network Threat Intelligence lists.
+               The IPs in these lists will be matched against traffic destination.
+        :param Sequence[str] src_address_groups: Address groups which should be matched against the traffic source.
+               Maximum number of source address groups is 10.
+        :param Sequence[str] src_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against
+               traffic source. Maximum number of source fqdn allowed is 100.
+        :param Sequence[str] src_ip_ranges: Source IP address range in CIDR format. Required for
+               INGRESS rules.
+        :param Sequence[str] src_region_codes: Region codes whose IP addresses will be used to match for source
+               of traffic. Should be specified as 2 letter country code defined as per
+               ISO 3166 alpha-2 country codes. ex."US"
+               Maximum number of source region codes allowed is 5000.
+        :param Sequence['RegionNetworkFirewallPolicyWithRulesRuleMatchSrcSecureTagArgs'] src_secure_tags: List of secure tag values, which should be matched at the source
+               of the traffic.
+               For INGRESS rule, if all the <code>srcSecureTag</code> are INEFFECTIVE,
+               and there is no <code>srcIpRange</code>, this rule will be ignored.
+               Maximum number of source tag values allowed is 256.
+               Structure is documented below.
+               
+               
+               <a name="nested_layer4_config"></a>The `layer4_config` block supports:
+        :param Sequence[str] src_threat_intelligences: Names of Network Threat Intelligence lists.
+               The IPs in these lists will be matched against traffic source.
+        """
+        pulumi.set(__self__, "layer4_configs", layer4_configs)
+        if dest_address_groups is not None:
+            pulumi.set(__self__, "dest_address_groups", dest_address_groups)
+        if dest_fqdns is not None:
+            pulumi.set(__self__, "dest_fqdns", dest_fqdns)
+        if dest_ip_ranges is not None:
+            pulumi.set(__self__, "dest_ip_ranges", dest_ip_ranges)
+        if dest_region_codes is not None:
+            pulumi.set(__self__, "dest_region_codes", dest_region_codes)
+        if dest_threat_intelligences is not None:
+            pulumi.set(__self__, "dest_threat_intelligences", dest_threat_intelligences)
+        if src_address_groups is not None:
+            pulumi.set(__self__, "src_address_groups", src_address_groups)
+        if src_fqdns is not None:
+            pulumi.set(__self__, "src_fqdns", src_fqdns)
+        if src_ip_ranges is not None:
+            pulumi.set(__self__, "src_ip_ranges", src_ip_ranges)
+        if src_region_codes is not None:
+            pulumi.set(__self__, "src_region_codes", src_region_codes)
+        if src_secure_tags is not None:
+            pulumi.set(__self__, "src_secure_tags", src_secure_tags)
+        if src_threat_intelligences is not None:
+            pulumi.set(__self__, "src_threat_intelligences", src_threat_intelligences)
+
+    @property
+    @pulumi.getter(name="layer4Configs")
+    def layer4_configs(self) -> Sequence['outputs.RegionNetworkFirewallPolicyWithRulesRuleMatchLayer4Config']:
+        """
+        Pairs of IP protocols and ports that the rule should match.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "layer4_configs")
+
+    @property
+    @pulumi.getter(name="destAddressGroups")
+    def dest_address_groups(self) -> Optional[Sequence[str]]:
+        """
+        Address groups which should be matched against the traffic destination.
+        Maximum number of destination address groups is 10.
+        """
+        return pulumi.get(self, "dest_address_groups")
+
+    @property
+    @pulumi.getter(name="destFqdns")
+    def dest_fqdns(self) -> Optional[Sequence[str]]:
+        """
+        Fully Qualified Domain Name (FQDN) which should be matched against
+        traffic destination. Maximum number of destination fqdn allowed is 100.
+        """
+        return pulumi.get(self, "dest_fqdns")
+
+    @property
+    @pulumi.getter(name="destIpRanges")
+    def dest_ip_ranges(self) -> Optional[Sequence[str]]:
+        """
+        Destination IP address range in CIDR format. Required for
+        EGRESS rules.
+        """
+        return pulumi.get(self, "dest_ip_ranges")
+
+    @property
+    @pulumi.getter(name="destRegionCodes")
+    def dest_region_codes(self) -> Optional[Sequence[str]]:
+        """
+        Region codes whose IP addresses will be used to match for destination
+        of traffic. Should be specified as 2 letter country code defined as per
+        ISO 3166 alpha-2 country codes. ex."US"
+        Maximum number of destination region codes allowed is 5000.
+        """
+        return pulumi.get(self, "dest_region_codes")
+
+    @property
+    @pulumi.getter(name="destThreatIntelligences")
+    def dest_threat_intelligences(self) -> Optional[Sequence[str]]:
+        """
+        Names of Network Threat Intelligence lists.
+        The IPs in these lists will be matched against traffic destination.
+        """
+        return pulumi.get(self, "dest_threat_intelligences")
+
+    @property
+    @pulumi.getter(name="srcAddressGroups")
+    def src_address_groups(self) -> Optional[Sequence[str]]:
+        """
+        Address groups which should be matched against the traffic source.
+        Maximum number of source address groups is 10.
+        """
+        return pulumi.get(self, "src_address_groups")
+
+    @property
+    @pulumi.getter(name="srcFqdns")
+    def src_fqdns(self) -> Optional[Sequence[str]]:
+        """
+        Fully Qualified Domain Name (FQDN) which should be matched against
+        traffic source. Maximum number of source fqdn allowed is 100.
+        """
+        return pulumi.get(self, "src_fqdns")
+
+    @property
+    @pulumi.getter(name="srcIpRanges")
+    def src_ip_ranges(self) -> Optional[Sequence[str]]:
+        """
+        Source IP address range in CIDR format. Required for
+        INGRESS rules.
+        """
+        return pulumi.get(self, "src_ip_ranges")
+
+    @property
+    @pulumi.getter(name="srcRegionCodes")
+    def src_region_codes(self) -> Optional[Sequence[str]]:
+        """
+        Region codes whose IP addresses will be used to match for source
+        of traffic. Should be specified as 2 letter country code defined as per
+        ISO 3166 alpha-2 country codes. ex."US"
+        Maximum number of source region codes allowed is 5000.
+        """
+        return pulumi.get(self, "src_region_codes")
+
+    @property
+    @pulumi.getter(name="srcSecureTags")
+    def src_secure_tags(self) -> Optional[Sequence['outputs.RegionNetworkFirewallPolicyWithRulesRuleMatchSrcSecureTag']]:
+        """
+        List of secure tag values, which should be matched at the source
+        of the traffic.
+        For INGRESS rule, if all the <code>srcSecureTag</code> are INEFFECTIVE,
+        and there is no <code>srcIpRange</code>, this rule will be ignored.
+        Maximum number of source tag values allowed is 256.
+        Structure is documented below.
+
+
+        <a name="nested_layer4_config"></a>The `layer4_config` block supports:
+        """
+        return pulumi.get(self, "src_secure_tags")
+
+    @property
+    @pulumi.getter(name="srcThreatIntelligences")
+    def src_threat_intelligences(self) -> Optional[Sequence[str]]:
+        """
+        Names of Network Threat Intelligence lists.
+        The IPs in these lists will be matched against traffic source.
+        """
+        return pulumi.get(self, "src_threat_intelligences")
+
+
+@pulumi.output_type
+class RegionNetworkFirewallPolicyWithRulesRuleMatchLayer4Config(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipProtocol":
+            suggest = "ip_protocol"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionNetworkFirewallPolicyWithRulesRuleMatchLayer4Config. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionNetworkFirewallPolicyWithRulesRuleMatchLayer4Config.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionNetworkFirewallPolicyWithRulesRuleMatchLayer4Config.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ip_protocol: str,
+                 ports: Optional[Sequence[str]] = None):
+        """
+        :param str ip_protocol: (Output)
+               The IP protocol to which this rule applies. The protocol
+               type is required when creating a firewall rule.
+               This value can either be one of the following well
+               known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp),
+               or the IP protocol number.
+        :param Sequence[str] ports: (Output)
+               An optional list of ports to which this rule applies. This field
+               is only applicable for UDP or TCP protocol. Each entry must be
+               either an integer or a range. If not specified, this rule
+               applies to connections through any port.
+               Example inputs include: ["22"], ["80","443"], and
+               ["12345-12349"].
+        """
+        pulumi.set(__self__, "ip_protocol", ip_protocol)
+        if ports is not None:
+            pulumi.set(__self__, "ports", ports)
+
+    @property
+    @pulumi.getter(name="ipProtocol")
+    def ip_protocol(self) -> str:
+        """
+        (Output)
+        The IP protocol to which this rule applies. The protocol
+        type is required when creating a firewall rule.
+        This value can either be one of the following well
+        known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp),
+        or the IP protocol number.
+        """
+        return pulumi.get(self, "ip_protocol")
+
+    @property
+    @pulumi.getter
+    def ports(self) -> Optional[Sequence[str]]:
+        """
+        (Output)
+        An optional list of ports to which this rule applies. This field
+        is only applicable for UDP or TCP protocol. Each entry must be
+        either an integer or a range. If not specified, this rule
+        applies to connections through any port.
+        Example inputs include: ["22"], ["80","443"], and
+        ["12345-12349"].
+        """
+        return pulumi.get(self, "ports")
+
+
+@pulumi.output_type
+class RegionNetworkFirewallPolicyWithRulesRuleMatchSrcSecureTag(dict):
+    def __init__(__self__, *,
+                 name: Optional[str] = None,
+                 state: Optional[str] = None):
+        """
+        :param str name: Name of the secure tag, created with TagManager's TagValue API.
+               @pattern tagValues/[0-9]+
+        :param str state: (Output)
+               [Output Only] State of the secure tag, either `EFFECTIVE` or
+               `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
+               or its network is deleted.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name of the secure tag, created with TagManager's TagValue API.
+        @pattern tagValues/[0-9]+
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        """
+        (Output)
+        [Output Only] State of the secure tag, either `EFFECTIVE` or
+        `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
+        or its network is deleted.
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class RegionNetworkFirewallPolicyWithRulesRuleTargetSecureTag(dict):
+    def __init__(__self__, *,
+                 name: Optional[str] = None,
+                 state: Optional[str] = None):
+        """
+        :param str name: Name of the secure tag, created with TagManager's TagValue API.
+               @pattern tagValues/[0-9]+
+        :param str state: (Output)
+               [Output Only] State of the secure tag, either `EFFECTIVE` or
+               `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
+               or its network is deleted.
+               
+               - - -
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name of the secure tag, created with TagManager's TagValue API.
+        @pattern tagValues/[0-9]+
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        """
+        (Output)
+        [Output Only] State of the secure tag, either `EFFECTIVE` or
+        `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted
+        or its network is deleted.
+
+        - - -
         """
         return pulumi.get(self, "state")
 
@@ -49714,6 +51097,7 @@ class GetInstanceReservationAffinitySpecificReservationResult(dict):
 class GetInstanceSchedulingResult(dict):
     def __init__(__self__, *,
                  automatic_restart: bool,
+                 host_error_timeout_seconds: int,
                  instance_termination_action: str,
                  local_ssd_recovery_timeouts: Sequence['outputs.GetInstanceSchedulingLocalSsdRecoveryTimeoutResult'],
                  maintenance_interval: str,
@@ -49727,6 +51111,7 @@ class GetInstanceSchedulingResult(dict):
         """
         :param bool automatic_restart: Specifies if the instance should be
                restarted if it was terminated by Compute Engine (not a user).
+        :param int host_error_timeout_seconds: Beta Time in seconds for host error detection.
         :param str instance_termination_action: Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         :param Sequence['GetInstanceSchedulingLocalSsdRecoveryTimeoutArgs'] local_ssd_recovery_timeouts: Specifies the maximum amount of time a Local Ssd Vm should wait while
                  recovery of the Local Ssd state is attempted. Its value should be in
@@ -49743,6 +51128,7 @@ class GetInstanceSchedulingResult(dict):
         :param str provisioning_model: Describe the type of preemptible VM.
         """
         pulumi.set(__self__, "automatic_restart", automatic_restart)
+        pulumi.set(__self__, "host_error_timeout_seconds", host_error_timeout_seconds)
         pulumi.set(__self__, "instance_termination_action", instance_termination_action)
         pulumi.set(__self__, "local_ssd_recovery_timeouts", local_ssd_recovery_timeouts)
         pulumi.set(__self__, "maintenance_interval", maintenance_interval)
@@ -49762,6 +51148,14 @@ class GetInstanceSchedulingResult(dict):
         restarted if it was terminated by Compute Engine (not a user).
         """
         return pulumi.get(self, "automatic_restart")
+
+    @property
+    @pulumi.getter(name="hostErrorTimeoutSeconds")
+    def host_error_timeout_seconds(self) -> int:
+        """
+        Beta Time in seconds for host error detection.
+        """
+        return pulumi.get(self, "host_error_timeout_seconds")
 
     @property
     @pulumi.getter(name="instanceTerminationAction")
@@ -50978,6 +52372,7 @@ class GetInstanceTemplateReservationAffinitySpecificReservationResult(dict):
 class GetInstanceTemplateSchedulingResult(dict):
     def __init__(__self__, *,
                  automatic_restart: bool,
+                 host_error_timeout_seconds: int,
                  instance_termination_action: str,
                  local_ssd_recovery_timeouts: Sequence['outputs.GetInstanceTemplateSchedulingLocalSsdRecoveryTimeoutResult'],
                  maintenance_interval: str,
@@ -50992,6 +52387,7 @@ class GetInstanceTemplateSchedulingResult(dict):
         :param bool automatic_restart: Specifies whether the instance should be
                automatically restarted if it is terminated by Compute Engine (not
                terminated by a user). This defaults to true.
+        :param int host_error_timeout_seconds: Beta Time in seconds for host error detection.
         :param str instance_termination_action: Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         :param Sequence['GetInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs'] local_ssd_recovery_timeouts: Specifies the maximum amount of time a Local Ssd Vm should wait while
                  recovery of the Local Ssd state is attempted. Its value should be in
@@ -51014,6 +52410,7 @@ class GetInstanceTemplateSchedulingResult(dict):
         :param str provisioning_model: Describe the type of preemptible VM.
         """
         pulumi.set(__self__, "automatic_restart", automatic_restart)
+        pulumi.set(__self__, "host_error_timeout_seconds", host_error_timeout_seconds)
         pulumi.set(__self__, "instance_termination_action", instance_termination_action)
         pulumi.set(__self__, "local_ssd_recovery_timeouts", local_ssd_recovery_timeouts)
         pulumi.set(__self__, "maintenance_interval", maintenance_interval)
@@ -51034,6 +52431,14 @@ class GetInstanceTemplateSchedulingResult(dict):
         terminated by a user). This defaults to true.
         """
         return pulumi.get(self, "automatic_restart")
+
+    @property
+    @pulumi.getter(name="hostErrorTimeoutSeconds")
+    def host_error_timeout_seconds(self) -> int:
+        """
+        Beta Time in seconds for host error detection.
+        """
+        return pulumi.get(self, "host_error_timeout_seconds")
 
     @property
     @pulumi.getter(name="instanceTerminationAction")
@@ -51737,6 +53142,587 @@ class GetRegionInstanceGroupInstanceNamedPortResult(dict):
         Integer port number
         """
         return pulumi.get(self, "port")
+
+
+@pulumi.output_type
+class GetRegionInstanceGroupManagerAllInstancesConfigResult(dict):
+    def __init__(__self__, *,
+                 labels: Mapping[str, str],
+                 metadata: Mapping[str, str]):
+        """
+        :param Mapping[str, str] labels: The label key-value pairs that you want to patch onto the instance,
+        :param Mapping[str, str] metadata: The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata,
+        """
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "metadata", metadata)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        The label key-value pairs that you want to patch onto the instance,
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Mapping[str, str]:
+        """
+        The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata,
+        """
+        return pulumi.get(self, "metadata")
+
+
+@pulumi.output_type
+class GetRegionInstanceGroupManagerAutoHealingPolicyResult(dict):
+    def __init__(__self__, *,
+                 health_check: str,
+                 initial_delay_sec: int):
+        """
+        :param str health_check: The health check resource that signals autohealing.
+        :param int initial_delay_sec: The number of seconds that the managed instance group waits before it applies autohealing policies to new instances or recently recreated instances. Between 0 and 3600.
+        """
+        pulumi.set(__self__, "health_check", health_check)
+        pulumi.set(__self__, "initial_delay_sec", initial_delay_sec)
+
+    @property
+    @pulumi.getter(name="healthCheck")
+    def health_check(self) -> str:
+        """
+        The health check resource that signals autohealing.
+        """
+        return pulumi.get(self, "health_check")
+
+    @property
+    @pulumi.getter(name="initialDelaySec")
+    def initial_delay_sec(self) -> int:
+        """
+        The number of seconds that the managed instance group waits before it applies autohealing policies to new instances or recently recreated instances. Between 0 and 3600.
+        """
+        return pulumi.get(self, "initial_delay_sec")
+
+
+@pulumi.output_type
+class GetRegionInstanceGroupManagerInstanceLifecyclePolicyResult(dict):
+    def __init__(__self__, *,
+                 default_action_on_failure: str,
+                 force_update_on_repair: str):
+        """
+        :param str default_action_on_failure: Default behavior for all instance or health check failures.
+        :param str force_update_on_repair: Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: YES, NO. If YES and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If NO (default), then updates are applied in accordance with the group's update policy type.
+        """
+        pulumi.set(__self__, "default_action_on_failure", default_action_on_failure)
+        pulumi.set(__self__, "force_update_on_repair", force_update_on_repair)
+
+    @property
+    @pulumi.getter(name="defaultActionOnFailure")
+    def default_action_on_failure(self) -> str:
+        """
+        Default behavior for all instance or health check failures.
+        """
+        return pulumi.get(self, "default_action_on_failure")
+
+    @property
+    @pulumi.getter(name="forceUpdateOnRepair")
+    def force_update_on_repair(self) -> str:
+        """
+        Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: YES, NO. If YES and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If NO (default), then updates are applied in accordance with the group's update policy type.
+        """
+        return pulumi.get(self, "force_update_on_repair")
+
+
+@pulumi.output_type
+class GetRegionInstanceGroupManagerNamedPortResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 port: int):
+        """
+        :param str name: The name of the instance group. Either `name` or `self_link` must be provided.
+        :param int port: The port number.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the instance group. Either `name` or `self_link` must be provided.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        """
+        The port number.
+        """
+        return pulumi.get(self, "port")
+
+
+@pulumi.output_type
+class GetRegionInstanceGroupManagerParamResult(dict):
+    def __init__(__self__, *,
+                 resource_manager_tags: Mapping[str, str]):
+        """
+        :param Mapping[str, str] resource_manager_tags: Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456.
+        """
+        pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Mapping[str, str]:
+        """
+        Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456.
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+
+@pulumi.output_type
+class GetRegionInstanceGroupManagerStandbyPolicyResult(dict):
+    def __init__(__self__, *,
+                 initial_delay_sec: int,
+                 mode: str):
+        """
+        :param int initial_delay_sec: Specifies the number of seconds that the MIG should wait to suspend or stop a VM after that VM was created. The initial delay gives the initialization script the time to prepare your VM for a quick scale out. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
+        :param str mode: Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. The default mode is "MANUAL".
+        """
+        pulumi.set(__self__, "initial_delay_sec", initial_delay_sec)
+        pulumi.set(__self__, "mode", mode)
+
+    @property
+    @pulumi.getter(name="initialDelaySec")
+    def initial_delay_sec(self) -> int:
+        """
+        Specifies the number of seconds that the MIG should wait to suspend or stop a VM after that VM was created. The initial delay gives the initialization script the time to prepare your VM for a quick scale out. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.
+        """
+        return pulumi.get(self, "initial_delay_sec")
+
+    @property
+    @pulumi.getter
+    def mode(self) -> str:
+        """
+        Defines how a MIG resumes or starts VMs from a standby pool when the group scales out. The default mode is "MANUAL".
+        """
+        return pulumi.get(self, "mode")
+
+
+@pulumi.output_type
+class GetRegionInstanceGroupManagerStatefulDiskResult(dict):
+    def __init__(__self__, *,
+                 delete_rule: str,
+                 device_name: str):
+        """
+        :param str delete_rule: A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the disk when the VM is deleted, but do not delete the disk. ON_PERMANENT_INSTANCE_DELETION will delete the stateful disk when the VM is permanently deleted from the instance group. The default is NEVER.
+        :param str device_name: The device name of the disk to be attached.
+        """
+        pulumi.set(__self__, "delete_rule", delete_rule)
+        pulumi.set(__self__, "device_name", device_name)
+
+    @property
+    @pulumi.getter(name="deleteRule")
+    def delete_rule(self) -> str:
+        """
+        A value that prescribes what should happen to the stateful disk when the VM instance is deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the disk when the VM is deleted, but do not delete the disk. ON_PERMANENT_INSTANCE_DELETION will delete the stateful disk when the VM is permanently deleted from the instance group. The default is NEVER.
+        """
+        return pulumi.get(self, "delete_rule")
+
+    @property
+    @pulumi.getter(name="deviceName")
+    def device_name(self) -> str:
+        """
+        The device name of the disk to be attached.
+        """
+        return pulumi.get(self, "device_name")
+
+
+@pulumi.output_type
+class GetRegionInstanceGroupManagerStatefulExternalIpResult(dict):
+    def __init__(__self__, *,
+                 delete_rule: str,
+                 interface_name: str):
+        """
+        :param str delete_rule: A value that prescribes what should happen to an associated static Address resource when a VM instance is permanently deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the IP when the VM is deleted, but do not delete the address resource. ON_PERMANENT_INSTANCE_DELETION will delete the stateful address when the VM is permanently deleted from the instance group. The default is NEVER.
+        :param str interface_name: The network interface name
+        """
+        pulumi.set(__self__, "delete_rule", delete_rule)
+        pulumi.set(__self__, "interface_name", interface_name)
+
+    @property
+    @pulumi.getter(name="deleteRule")
+    def delete_rule(self) -> str:
+        """
+        A value that prescribes what should happen to an associated static Address resource when a VM instance is permanently deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the IP when the VM is deleted, but do not delete the address resource. ON_PERMANENT_INSTANCE_DELETION will delete the stateful address when the VM is permanently deleted from the instance group. The default is NEVER.
+        """
+        return pulumi.get(self, "delete_rule")
+
+    @property
+    @pulumi.getter(name="interfaceName")
+    def interface_name(self) -> str:
+        """
+        The network interface name
+        """
+        return pulumi.get(self, "interface_name")
+
+
+@pulumi.output_type
+class GetRegionInstanceGroupManagerStatefulInternalIpResult(dict):
+    def __init__(__self__, *,
+                 delete_rule: str,
+                 interface_name: str):
+        """
+        :param str delete_rule: A value that prescribes what should happen to an associated static Address resource when a VM instance is permanently deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the IP when the VM is deleted, but do not delete the address resource. ON_PERMANENT_INSTANCE_DELETION will delete the stateful address when the VM is permanently deleted from the instance group. The default is NEVER.
+        :param str interface_name: The network interface name
+        """
+        pulumi.set(__self__, "delete_rule", delete_rule)
+        pulumi.set(__self__, "interface_name", interface_name)
+
+    @property
+    @pulumi.getter(name="deleteRule")
+    def delete_rule(self) -> str:
+        """
+        A value that prescribes what should happen to an associated static Address resource when a VM instance is permanently deleted. The available options are NEVER and ON_PERMANENT_INSTANCE_DELETION. NEVER - detach the IP when the VM is deleted, but do not delete the address resource. ON_PERMANENT_INSTANCE_DELETION will delete the stateful address when the VM is permanently deleted from the instance group. The default is NEVER.
+        """
+        return pulumi.get(self, "delete_rule")
+
+    @property
+    @pulumi.getter(name="interfaceName")
+    def interface_name(self) -> str:
+        """
+        The network interface name
+        """
+        return pulumi.get(self, "interface_name")
+
+
+@pulumi.output_type
+class GetRegionInstanceGroupManagerStatusResult(dict):
+    def __init__(__self__, *,
+                 all_instances_configs: Sequence['outputs.GetRegionInstanceGroupManagerStatusAllInstancesConfigResult'],
+                 is_stable: bool,
+                 statefuls: Sequence['outputs.GetRegionInstanceGroupManagerStatusStatefulResult'],
+                 version_targets: Sequence['outputs.GetRegionInstanceGroupManagerStatusVersionTargetResult']):
+        """
+        :param Sequence['GetRegionInstanceGroupManagerStatusAllInstancesConfigArgs'] all_instances_configs: Status of all-instances configuration on the group.
+        :param bool is_stable: A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
+        :param Sequence['GetRegionInstanceGroupManagerStatusStatefulArgs'] statefuls: Stateful status of the given Instance Group Manager.
+        :param Sequence['GetRegionInstanceGroupManagerStatusVersionTargetArgs'] version_targets: A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
+        """
+        pulumi.set(__self__, "all_instances_configs", all_instances_configs)
+        pulumi.set(__self__, "is_stable", is_stable)
+        pulumi.set(__self__, "statefuls", statefuls)
+        pulumi.set(__self__, "version_targets", version_targets)
+
+    @property
+    @pulumi.getter(name="allInstancesConfigs")
+    def all_instances_configs(self) -> Sequence['outputs.GetRegionInstanceGroupManagerStatusAllInstancesConfigResult']:
+        """
+        Status of all-instances configuration on the group.
+        """
+        return pulumi.get(self, "all_instances_configs")
+
+    @property
+    @pulumi.getter(name="isStable")
+    def is_stable(self) -> bool:
+        """
+        A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
+        """
+        return pulumi.get(self, "is_stable")
+
+    @property
+    @pulumi.getter
+    def statefuls(self) -> Sequence['outputs.GetRegionInstanceGroupManagerStatusStatefulResult']:
+        """
+        Stateful status of the given Instance Group Manager.
+        """
+        return pulumi.get(self, "statefuls")
+
+    @property
+    @pulumi.getter(name="versionTargets")
+    def version_targets(self) -> Sequence['outputs.GetRegionInstanceGroupManagerStatusVersionTargetResult']:
+        """
+        A status of consistency of Instances' versions with their target version specified by version field on Instance Group Manager.
+        """
+        return pulumi.get(self, "version_targets")
+
+
+@pulumi.output_type
+class GetRegionInstanceGroupManagerStatusAllInstancesConfigResult(dict):
+    def __init__(__self__, *,
+                 current_revision: str,
+                 effective: bool):
+        """
+        :param str current_revision: Current all-instances configuration revision. This value is in RFC3339 text format.
+        :param bool effective: A bit indicating whether this configuration has been applied to all managed instances in the group.
+        """
+        pulumi.set(__self__, "current_revision", current_revision)
+        pulumi.set(__self__, "effective", effective)
+
+    @property
+    @pulumi.getter(name="currentRevision")
+    def current_revision(self) -> str:
+        """
+        Current all-instances configuration revision. This value is in RFC3339 text format.
+        """
+        return pulumi.get(self, "current_revision")
+
+    @property
+    @pulumi.getter
+    def effective(self) -> bool:
+        """
+        A bit indicating whether this configuration has been applied to all managed instances in the group.
+        """
+        return pulumi.get(self, "effective")
+
+
+@pulumi.output_type
+class GetRegionInstanceGroupManagerStatusStatefulResult(dict):
+    def __init__(__self__, *,
+                 has_stateful_config: bool,
+                 per_instance_configs: Sequence['outputs.GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigResult']):
+        """
+        :param bool has_stateful_config: A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
+        :param Sequence['GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigArgs'] per_instance_configs: Status of per-instance configs on the instances.
+        """
+        pulumi.set(__self__, "has_stateful_config", has_stateful_config)
+        pulumi.set(__self__, "per_instance_configs", per_instance_configs)
+
+    @property
+    @pulumi.getter(name="hasStatefulConfig")
+    def has_stateful_config(self) -> bool:
+        """
+        A bit indicating whether the managed instance group has stateful configuration, that is, if you have configured any items in a stateful policy or in per-instance configs. The group might report that it has no stateful config even when there is still some preserved state on a managed instance, for example, if you have deleted all PICs but not yet applied those deletions.
+        """
+        return pulumi.get(self, "has_stateful_config")
+
+    @property
+    @pulumi.getter(name="perInstanceConfigs")
+    def per_instance_configs(self) -> Sequence['outputs.GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigResult']:
+        """
+        Status of per-instance configs on the instances.
+        """
+        return pulumi.get(self, "per_instance_configs")
+
+
+@pulumi.output_type
+class GetRegionInstanceGroupManagerStatusStatefulPerInstanceConfigResult(dict):
+    def __init__(__self__, *,
+                 all_effective: bool):
+        """
+        :param bool all_effective: A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status EFFECTIVE or there are no per-instance-configs.
+        """
+        pulumi.set(__self__, "all_effective", all_effective)
+
+    @property
+    @pulumi.getter(name="allEffective")
+    def all_effective(self) -> bool:
+        """
+        A bit indicating if all of the group's per-instance configs (listed in the output of a listPerInstanceConfigs API call) have status EFFECTIVE or there are no per-instance-configs.
+        """
+        return pulumi.get(self, "all_effective")
+
+
+@pulumi.output_type
+class GetRegionInstanceGroupManagerStatusVersionTargetResult(dict):
+    def __init__(__self__, *,
+                 is_reached: bool):
+        """
+        :param bool is_reached: A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+        """
+        pulumi.set(__self__, "is_reached", is_reached)
+
+    @property
+    @pulumi.getter(name="isReached")
+    def is_reached(self) -> bool:
+        """
+        A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
+        """
+        return pulumi.get(self, "is_reached")
+
+
+@pulumi.output_type
+class GetRegionInstanceGroupManagerUpdatePolicyResult(dict):
+    def __init__(__self__, *,
+                 instance_redistribution_type: str,
+                 max_surge_fixed: int,
+                 max_surge_percent: int,
+                 max_unavailable_fixed: int,
+                 max_unavailable_percent: int,
+                 min_ready_sec: int,
+                 minimal_action: str,
+                 most_disruptive_allowed_action: str,
+                 replacement_method: str,
+                 type: str):
+        """
+        :param str instance_redistribution_type: The instance redistribution policy for regional managed instance groups. Valid values are: "PROACTIVE", "NONE". If PROACTIVE (default), the group attempts to maintain an even distribution of VM instances across zones in the region. If NONE, proactive redistribution is disabled.
+        :param int max_surge_fixed: Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with max_surge_percent. Both cannot be 0
+        :param int max_surge_percent: Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with max_surge_fixed.
+        :param int max_unavailable_fixed: Specifies a fixed number of VM instances. This must be a positive integer.
+        :param int max_unavailable_percent: Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%.
+        :param int min_ready_sec: Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600].
+        :param str minimal_action: Minimal action to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to update without stopping instances, RESTART to restart existing instances or REPLACE to delete and create new instances from the target template. If you specify a REFRESH, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+        :param str most_disruptive_allowed_action: Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+        :param str replacement_method: The instance replacement method for regional managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
+        :param str type: The type of update process. You can specify either PROACTIVE so that the instance group manager proactively executes actions in order to bring instances to their target versions or OPPORTUNISTIC so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
+        """
+        pulumi.set(__self__, "instance_redistribution_type", instance_redistribution_type)
+        pulumi.set(__self__, "max_surge_fixed", max_surge_fixed)
+        pulumi.set(__self__, "max_surge_percent", max_surge_percent)
+        pulumi.set(__self__, "max_unavailable_fixed", max_unavailable_fixed)
+        pulumi.set(__self__, "max_unavailable_percent", max_unavailable_percent)
+        pulumi.set(__self__, "min_ready_sec", min_ready_sec)
+        pulumi.set(__self__, "minimal_action", minimal_action)
+        pulumi.set(__self__, "most_disruptive_allowed_action", most_disruptive_allowed_action)
+        pulumi.set(__self__, "replacement_method", replacement_method)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="instanceRedistributionType")
+    def instance_redistribution_type(self) -> str:
+        """
+        The instance redistribution policy for regional managed instance groups. Valid values are: "PROACTIVE", "NONE". If PROACTIVE (default), the group attempts to maintain an even distribution of VM instances across zones in the region. If NONE, proactive redistribution is disabled.
+        """
+        return pulumi.get(self, "instance_redistribution_type")
+
+    @property
+    @pulumi.getter(name="maxSurgeFixed")
+    def max_surge_fixed(self) -> int:
+        """
+        Specifies a fixed number of VM instances. This must be a positive integer. Conflicts with max_surge_percent. Both cannot be 0
+        """
+        return pulumi.get(self, "max_surge_fixed")
+
+    @property
+    @pulumi.getter(name="maxSurgePercent")
+    def max_surge_percent(self) -> int:
+        """
+        Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%. Conflicts with max_surge_fixed.
+        """
+        return pulumi.get(self, "max_surge_percent")
+
+    @property
+    @pulumi.getter(name="maxUnavailableFixed")
+    def max_unavailable_fixed(self) -> int:
+        """
+        Specifies a fixed number of VM instances. This must be a positive integer.
+        """
+        return pulumi.get(self, "max_unavailable_fixed")
+
+    @property
+    @pulumi.getter(name="maxUnavailablePercent")
+    def max_unavailable_percent(self) -> int:
+        """
+        Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%.
+        """
+        return pulumi.get(self, "max_unavailable_percent")
+
+    @property
+    @pulumi.getter(name="minReadySec")
+    def min_ready_sec(self) -> int:
+        """
+        Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600].
+        """
+        return pulumi.get(self, "min_ready_sec")
+
+    @property
+    @pulumi.getter(name="minimalAction")
+    def minimal_action(self) -> str:
+        """
+        Minimal action to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to update without stopping instances, RESTART to restart existing instances or REPLACE to delete and create new instances from the target template. If you specify a REFRESH, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+        """
+        return pulumi.get(self, "minimal_action")
+
+    @property
+    @pulumi.getter(name="mostDisruptiveAllowedAction")
+    def most_disruptive_allowed_action(self) -> str:
+        """
+        Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+        """
+        return pulumi.get(self, "most_disruptive_allowed_action")
+
+    @property
+    @pulumi.getter(name="replacementMethod")
+    def replacement_method(self) -> str:
+        """
+        The instance replacement method for regional managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
+        """
+        return pulumi.get(self, "replacement_method")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of update process. You can specify either PROACTIVE so that the instance group manager proactively executes actions in order to bring instances to their target versions or OPPORTUNISTIC so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetRegionInstanceGroupManagerVersionResult(dict):
+    def __init__(__self__, *,
+                 instance_template: str,
+                 name: str,
+                 target_sizes: Sequence['outputs.GetRegionInstanceGroupManagerVersionTargetSizeResult']):
+        """
+        :param str instance_template: The full URL to an instance template from which all new instances of this version will be created.
+        :param str name: The name of the instance group. Either `name` or `self_link` must be provided.
+        :param Sequence['GetRegionInstanceGroupManagerVersionTargetSizeArgs'] target_sizes: The number of instances calculated as a fixed number or a percentage depending on the settings.
+        """
+        pulumi.set(__self__, "instance_template", instance_template)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "target_sizes", target_sizes)
+
+    @property
+    @pulumi.getter(name="instanceTemplate")
+    def instance_template(self) -> str:
+        """
+        The full URL to an instance template from which all new instances of this version will be created.
+        """
+        return pulumi.get(self, "instance_template")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the instance group. Either `name` or `self_link` must be provided.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="targetSizes")
+    def target_sizes(self) -> Sequence['outputs.GetRegionInstanceGroupManagerVersionTargetSizeResult']:
+        """
+        The number of instances calculated as a fixed number or a percentage depending on the settings.
+        """
+        return pulumi.get(self, "target_sizes")
+
+
+@pulumi.output_type
+class GetRegionInstanceGroupManagerVersionTargetSizeResult(dict):
+    def __init__(__self__, *,
+                 fixed: int,
+                 percent: int):
+        """
+        :param int fixed: The number of instances which are managed for this version. Conflicts with percent.
+        :param int percent: The number of instances (calculated as percentage) which are managed for this version. Conflicts with fixed. Note that when using percent, rounding will be in favor of explicitly set target_size values; a managed instance group with 2 instances and 2 versions, one of which has a target_size.percent of 60 will create 2 instances of that version.
+        """
+        pulumi.set(__self__, "fixed", fixed)
+        pulumi.set(__self__, "percent", percent)
+
+    @property
+    @pulumi.getter
+    def fixed(self) -> int:
+        """
+        The number of instances which are managed for this version. Conflicts with percent.
+        """
+        return pulumi.get(self, "fixed")
+
+    @property
+    @pulumi.getter
+    def percent(self) -> int:
+        """
+        The number of instances (calculated as percentage) which are managed for this version. Conflicts with fixed. Note that when using percent, rounding will be in favor of explicitly set target_size values; a managed instance group with 2 instances and 2 versions, one of which has a target_size.percent of 60 will create 2 instances of that version.
+        """
+        return pulumi.get(self, "percent")
 
 
 @pulumi.output_type
@@ -52617,6 +54603,7 @@ class GetRegionInstanceTemplateReservationAffinitySpecificReservationResult(dict
 class GetRegionInstanceTemplateSchedulingResult(dict):
     def __init__(__self__, *,
                  automatic_restart: bool,
+                 host_error_timeout_seconds: int,
                  instance_termination_action: str,
                  local_ssd_recovery_timeouts: Sequence['outputs.GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutResult'],
                  maintenance_interval: str,
@@ -52631,6 +54618,7 @@ class GetRegionInstanceTemplateSchedulingResult(dict):
         :param bool automatic_restart: Specifies whether the instance should be
                automatically restarted if it is terminated by Compute Engine (not
                terminated by a user). This defaults to true.
+        :param int host_error_timeout_seconds: Beta Time in seconds for host error detection.
         :param str instance_termination_action: Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         :param Sequence['GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs'] local_ssd_recovery_timeouts: Specifies the maximum amount of time a Local Ssd Vm should wait while
                  recovery of the Local Ssd state is attempted. Its value should be in
@@ -52653,6 +54641,7 @@ class GetRegionInstanceTemplateSchedulingResult(dict):
         :param str provisioning_model: Describe the type of preemptible VM.
         """
         pulumi.set(__self__, "automatic_restart", automatic_restart)
+        pulumi.set(__self__, "host_error_timeout_seconds", host_error_timeout_seconds)
         pulumi.set(__self__, "instance_termination_action", instance_termination_action)
         pulumi.set(__self__, "local_ssd_recovery_timeouts", local_ssd_recovery_timeouts)
         pulumi.set(__self__, "maintenance_interval", maintenance_interval)
@@ -52673,6 +54662,14 @@ class GetRegionInstanceTemplateSchedulingResult(dict):
         terminated by a user). This defaults to true.
         """
         return pulumi.get(self, "automatic_restart")
+
+    @property
+    @pulumi.getter(name="hostErrorTimeoutSeconds")
+    def host_error_timeout_seconds(self) -> int:
+        """
+        Beta Time in seconds for host error detection.
+        """
+        return pulumi.get(self, "host_error_timeout_seconds")
 
     @property
     @pulumi.getter(name="instanceTerminationAction")

@@ -5,6 +5,7 @@ package com.pulumi.gcp.apigee.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +15,21 @@ import javax.annotation.Nullable;
 public final class NatAddressState extends com.pulumi.resources.ResourceArgs {
 
     public static final NatAddressState Empty = new NatAddressState();
+
+    /**
+     * Flag that specifies whether the reserved NAT address should be activate.
+     * 
+     */
+    @Import(name="activate")
+    private @Nullable Output<Boolean> activate;
+
+    /**
+     * @return Flag that specifies whether the reserved NAT address should be activate.
+     * 
+     */
+    public Optional<Output<Boolean>> activate() {
+        return Optional.ofNullable(this.activate);
+    }
 
     /**
      * The Apigee instance associated with the Apigee environment,
@@ -84,6 +100,7 @@ public final class NatAddressState extends com.pulumi.resources.ResourceArgs {
     private NatAddressState() {}
 
     private NatAddressState(NatAddressState $) {
+        this.activate = $.activate;
         this.instanceId = $.instanceId;
         this.ipAddress = $.ipAddress;
         this.name = $.name;
@@ -106,6 +123,27 @@ public final class NatAddressState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(NatAddressState defaults) {
             $ = new NatAddressState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param activate Flag that specifies whether the reserved NAT address should be activate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder activate(@Nullable Output<Boolean> activate) {
+            $.activate = activate;
+            return this;
+        }
+
+        /**
+         * @param activate Flag that specifies whether the reserved NAT address should be activate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder activate(Boolean activate) {
+            return activate(Output.of(activate));
         }
 
         /**

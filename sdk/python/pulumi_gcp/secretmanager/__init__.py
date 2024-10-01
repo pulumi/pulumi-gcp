@@ -8,6 +8,8 @@ import typing
 from .get_regional_secret import *
 from .get_regional_secret_iam_policy import *
 from .get_regional_secret_version import *
+from .get_regional_secret_version_access import *
+from .get_regional_secrets import *
 from .get_secret import *
 from .get_secret_iam_policy import *
 from .get_secret_version import *

@@ -29,6 +29,7 @@ class RouterNatArgs:
                  enable_endpoint_independent_mapping: Optional[pulumi.Input[bool]] = None,
                  endpoint_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  icmp_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
+                 initial_nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  log_config: Optional[pulumi.Input['RouterNatLogConfigArgs']] = None,
                  max_ports_per_vm: Optional[pulumi.Input[int]] = None,
                  min_ports_per_vm: Optional[pulumi.Input[int]] = None,
@@ -80,6 +81,8 @@ class RouterNatArgs:
                `ENDPOINT_TYPE_VM`, `ENDPOINT_TYPE_SWG`,
                `ENDPOINT_TYPE_MANAGED_PROXY_LB`.
         :param pulumi.Input[int] icmp_idle_timeout_sec: Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] initial_nat_ips: Self-links of NAT IPs to be used as initial value for creation alongside a RouterNatAddress resource.
+               Conflicts with natIps and drainNatIps. Only valid if natIpAllocateOption is set to MANUAL_ONLY.
         :param pulumi.Input['RouterNatLogConfigArgs'] log_config: Configuration for logging on NAT
                Structure is documented below.
         :param pulumi.Input[int] max_ports_per_vm: Maximum number of ports allocated to a VM from this NAT.
@@ -132,6 +135,8 @@ class RouterNatArgs:
             pulumi.set(__self__, "endpoint_types", endpoint_types)
         if icmp_idle_timeout_sec is not None:
             pulumi.set(__self__, "icmp_idle_timeout_sec", icmp_idle_timeout_sec)
+        if initial_nat_ips is not None:
+            pulumi.set(__self__, "initial_nat_ips", initial_nat_ips)
         if log_config is not None:
             pulumi.set(__self__, "log_config", log_config)
         if max_ports_per_vm is not None:
@@ -284,6 +289,19 @@ class RouterNatArgs:
     @icmp_idle_timeout_sec.setter
     def icmp_idle_timeout_sec(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "icmp_idle_timeout_sec", value)
+
+    @property
+    @pulumi.getter(name="initialNatIps")
+    def initial_nat_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Self-links of NAT IPs to be used as initial value for creation alongside a RouterNatAddress resource.
+        Conflicts with natIps and drainNatIps. Only valid if natIpAllocateOption is set to MANUAL_ONLY.
+        """
+        return pulumi.get(self, "initial_nat_ips")
+
+    @initial_nat_ips.setter
+    def initial_nat_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "initial_nat_ips", value)
 
     @property
     @pulumi.getter(name="logConfig")
@@ -497,6 +515,7 @@ class _RouterNatState:
                  enable_endpoint_independent_mapping: Optional[pulumi.Input[bool]] = None,
                  endpoint_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  icmp_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
+                 initial_nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  log_config: Optional[pulumi.Input['RouterNatLogConfigArgs']] = None,
                  max_ports_per_vm: Optional[pulumi.Input[int]] = None,
                  min_ports_per_vm: Optional[pulumi.Input[int]] = None,
@@ -535,6 +554,8 @@ class _RouterNatState:
                `ENDPOINT_TYPE_VM`, `ENDPOINT_TYPE_SWG`,
                `ENDPOINT_TYPE_MANAGED_PROXY_LB`.
         :param pulumi.Input[int] icmp_idle_timeout_sec: Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] initial_nat_ips: Self-links of NAT IPs to be used as initial value for creation alongside a RouterNatAddress resource.
+               Conflicts with natIps and drainNatIps. Only valid if natIpAllocateOption is set to MANUAL_ONLY.
         :param pulumi.Input['RouterNatLogConfigArgs'] log_config: Configuration for logging on NAT
                Structure is documented below.
         :param pulumi.Input[int] max_ports_per_vm: Maximum number of ports allocated to a VM from this NAT.
@@ -600,6 +621,8 @@ class _RouterNatState:
             pulumi.set(__self__, "endpoint_types", endpoint_types)
         if icmp_idle_timeout_sec is not None:
             pulumi.set(__self__, "icmp_idle_timeout_sec", icmp_idle_timeout_sec)
+        if initial_nat_ips is not None:
+            pulumi.set(__self__, "initial_nat_ips", initial_nat_ips)
         if log_config is not None:
             pulumi.set(__self__, "log_config", log_config)
         if max_ports_per_vm is not None:
@@ -719,6 +742,19 @@ class _RouterNatState:
     @icmp_idle_timeout_sec.setter
     def icmp_idle_timeout_sec(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "icmp_idle_timeout_sec", value)
+
+    @property
+    @pulumi.getter(name="initialNatIps")
+    def initial_nat_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Self-links of NAT IPs to be used as initial value for creation alongside a RouterNatAddress resource.
+        Conflicts with natIps and drainNatIps. Only valid if natIpAllocateOption is set to MANUAL_ONLY.
+        """
+        return pulumi.get(self, "initial_nat_ips")
+
+    @initial_nat_ips.setter
+    def initial_nat_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "initial_nat_ips", value)
 
     @property
     @pulumi.getter(name="logConfig")
@@ -971,6 +1007,7 @@ class RouterNat(pulumi.CustomResource):
                  enable_endpoint_independent_mapping: Optional[pulumi.Input[bool]] = None,
                  endpoint_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  icmp_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
+                 initial_nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  log_config: Optional[pulumi.Input[Union['RouterNatLogConfigArgs', 'RouterNatLogConfigArgsDict']]] = None,
                  max_ports_per_vm: Optional[pulumi.Input[int]] = None,
                  min_ports_per_vm: Optional[pulumi.Input[int]] = None,
@@ -1190,6 +1227,8 @@ class RouterNat(pulumi.CustomResource):
                `ENDPOINT_TYPE_VM`, `ENDPOINT_TYPE_SWG`,
                `ENDPOINT_TYPE_MANAGED_PROXY_LB`.
         :param pulumi.Input[int] icmp_idle_timeout_sec: Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] initial_nat_ips: Self-links of NAT IPs to be used as initial value for creation alongside a RouterNatAddress resource.
+               Conflicts with natIps and drainNatIps. Only valid if natIpAllocateOption is set to MANUAL_ONLY.
         :param pulumi.Input[Union['RouterNatLogConfigArgs', 'RouterNatLogConfigArgsDict']] log_config: Configuration for logging on NAT
                Structure is documented below.
         :param pulumi.Input[int] max_ports_per_vm: Maximum number of ports allocated to a VM from this NAT.
@@ -1450,6 +1489,7 @@ class RouterNat(pulumi.CustomResource):
                  enable_endpoint_independent_mapping: Optional[pulumi.Input[bool]] = None,
                  endpoint_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  icmp_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
+                 initial_nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  log_config: Optional[pulumi.Input[Union['RouterNatLogConfigArgs', 'RouterNatLogConfigArgsDict']]] = None,
                  max_ports_per_vm: Optional[pulumi.Input[int]] = None,
                  min_ports_per_vm: Optional[pulumi.Input[int]] = None,
@@ -1482,6 +1522,7 @@ class RouterNat(pulumi.CustomResource):
             __props__.__dict__["enable_endpoint_independent_mapping"] = enable_endpoint_independent_mapping
             __props__.__dict__["endpoint_types"] = endpoint_types
             __props__.__dict__["icmp_idle_timeout_sec"] = icmp_idle_timeout_sec
+            __props__.__dict__["initial_nat_ips"] = initial_nat_ips
             __props__.__dict__["log_config"] = log_config
             __props__.__dict__["max_ports_per_vm"] = max_ports_per_vm
             __props__.__dict__["min_ports_per_vm"] = min_ports_per_vm
@@ -1519,6 +1560,7 @@ class RouterNat(pulumi.CustomResource):
             enable_endpoint_independent_mapping: Optional[pulumi.Input[bool]] = None,
             endpoint_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             icmp_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
+            initial_nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             log_config: Optional[pulumi.Input[Union['RouterNatLogConfigArgs', 'RouterNatLogConfigArgsDict']]] = None,
             max_ports_per_vm: Optional[pulumi.Input[int]] = None,
             min_ports_per_vm: Optional[pulumi.Input[int]] = None,
@@ -1562,6 +1604,8 @@ class RouterNat(pulumi.CustomResource):
                `ENDPOINT_TYPE_VM`, `ENDPOINT_TYPE_SWG`,
                `ENDPOINT_TYPE_MANAGED_PROXY_LB`.
         :param pulumi.Input[int] icmp_idle_timeout_sec: Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] initial_nat_ips: Self-links of NAT IPs to be used as initial value for creation alongside a RouterNatAddress resource.
+               Conflicts with natIps and drainNatIps. Only valid if natIpAllocateOption is set to MANUAL_ONLY.
         :param pulumi.Input[Union['RouterNatLogConfigArgs', 'RouterNatLogConfigArgsDict']] log_config: Configuration for logging on NAT
                Structure is documented below.
         :param pulumi.Input[int] max_ports_per_vm: Maximum number of ports allocated to a VM from this NAT.
@@ -1625,6 +1669,7 @@ class RouterNat(pulumi.CustomResource):
         __props__.__dict__["enable_endpoint_independent_mapping"] = enable_endpoint_independent_mapping
         __props__.__dict__["endpoint_types"] = endpoint_types
         __props__.__dict__["icmp_idle_timeout_sec"] = icmp_idle_timeout_sec
+        __props__.__dict__["initial_nat_ips"] = initial_nat_ips
         __props__.__dict__["log_config"] = log_config
         __props__.__dict__["max_ports_per_vm"] = max_ports_per_vm
         __props__.__dict__["min_ports_per_vm"] = min_ports_per_vm
@@ -1657,7 +1702,7 @@ class RouterNat(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="drainNatIps")
-    def drain_nat_ips(self) -> pulumi.Output[Optional[Sequence[str]]]:
+    def drain_nat_ips(self) -> pulumi.Output[Sequence[str]]:
         """
         A list of URLs of the IP resources to be drained. These IPs must be
         valid static external IPs that have been assigned to the NAT.
@@ -1704,6 +1749,15 @@ class RouterNat(pulumi.CustomResource):
         Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
         """
         return pulumi.get(self, "icmp_idle_timeout_sec")
+
+    @property
+    @pulumi.getter(name="initialNatIps")
+    def initial_nat_ips(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        Self-links of NAT IPs to be used as initial value for creation alongside a RouterNatAddress resource.
+        Conflicts with natIps and drainNatIps. Only valid if natIpAllocateOption is set to MANUAL_ONLY.
+        """
+        return pulumi.get(self, "initial_nat_ips")
 
     @property
     @pulumi.getter(name="logConfig")
@@ -1753,7 +1807,7 @@ class RouterNat(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="natIps")
-    def nat_ips(self) -> pulumi.Output[Optional[Sequence[str]]]:
+    def nat_ips(self) -> pulumi.Output[Sequence[str]]:
         """
         Self-links of NAT IPs. Only valid if natIpAllocateOption
         is set to MANUAL_ONLY.

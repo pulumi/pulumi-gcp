@@ -10,6 +10,7 @@ import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecVolumeArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -53,6 +54,25 @@ public final class ServiceTemplateSpecArgs extends com.pulumi.resources.Resource
      */
     public Optional<Output<List<ServiceTemplateSpecContainerArgs>>> containers() {
         return Optional.ofNullable(this.containers);
+    }
+
+    /**
+     * Node Selector describes the hardware requirements of the resources.
+     * Use the following node selector keys to configure features on a Revision:
+     * - `run.googleapis.com/accelerator` sets the [type of GPU](https://cloud.google.com/run/docs/configuring/services/gpu) required by the Revision to run.
+     * 
+     */
+    @Import(name="nodeSelector")
+    private @Nullable Output<Map<String,String>> nodeSelector;
+
+    /**
+     * @return Node Selector describes the hardware requirements of the resources.
+     * Use the following node selector keys to configure features on a Revision:
+     * - `run.googleapis.com/accelerator` sets the [type of GPU](https://cloud.google.com/run/docs/configuring/services/gpu) required by the Revision to run.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> nodeSelector() {
+        return Optional.ofNullable(this.nodeSelector);
     }
 
     /**
@@ -148,6 +168,7 @@ public final class ServiceTemplateSpecArgs extends com.pulumi.resources.Resource
     private ServiceTemplateSpecArgs(ServiceTemplateSpecArgs $) {
         this.containerConcurrency = $.containerConcurrency;
         this.containers = $.containers;
+        this.nodeSelector = $.nodeSelector;
         this.serviceAccountName = $.serviceAccountName;
         this.servingState = $.servingState;
         this.timeoutSeconds = $.timeoutSeconds;
@@ -229,6 +250,31 @@ public final class ServiceTemplateSpecArgs extends com.pulumi.resources.Resource
          */
         public Builder containers(ServiceTemplateSpecContainerArgs... containers) {
             return containers(List.of(containers));
+        }
+
+        /**
+         * @param nodeSelector Node Selector describes the hardware requirements of the resources.
+         * Use the following node selector keys to configure features on a Revision:
+         * - `run.googleapis.com/accelerator` sets the [type of GPU](https://cloud.google.com/run/docs/configuring/services/gpu) required by the Revision to run.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeSelector(@Nullable Output<Map<String,String>> nodeSelector) {
+            $.nodeSelector = nodeSelector;
+            return this;
+        }
+
+        /**
+         * @param nodeSelector Node Selector describes the hardware requirements of the resources.
+         * Use the following node selector keys to configure features on a Revision:
+         * - `run.googleapis.com/accelerator` sets the [type of GPU](https://cloud.google.com/run/docs/configuring/services/gpu) required by the Revision to run.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeSelector(Map<String,String> nodeSelector) {
+            return nodeSelector(Output.of(nodeSelector));
         }
 
         /**

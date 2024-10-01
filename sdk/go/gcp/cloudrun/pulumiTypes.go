@@ -2910,6 +2910,10 @@ type ServiceTemplateSpec struct {
 	// Containers defines the unit of execution for this Revision.
 	// Structure is documented below.
 	Containers []ServiceTemplateSpecContainer `pulumi:"containers"`
+	// Node Selector describes the hardware requirements of the resources.
+	// Use the following node selector keys to configure features on a Revision:
+	// - `run.googleapis.com/accelerator` sets the [type of GPU](https://cloud.google.com/run/docs/configuring/services/gpu) required by the Revision to run.
+	NodeSelector map[string]string `pulumi:"nodeSelector"`
 	// Email address of the IAM service account associated with the revision of the
 	// service. The service account represents the identity of the running revision,
 	// and determines what permissions the revision has. If not provided, the revision
@@ -2951,6 +2955,10 @@ type ServiceTemplateSpecArgs struct {
 	// Containers defines the unit of execution for this Revision.
 	// Structure is documented below.
 	Containers ServiceTemplateSpecContainerArrayInput `pulumi:"containers"`
+	// Node Selector describes the hardware requirements of the resources.
+	// Use the following node selector keys to configure features on a Revision:
+	// - `run.googleapis.com/accelerator` sets the [type of GPU](https://cloud.google.com/run/docs/configuring/services/gpu) required by the Revision to run.
+	NodeSelector pulumi.StringMapInput `pulumi:"nodeSelector"`
 	// Email address of the IAM service account associated with the revision of the
 	// service. The service account represents the identity of the running revision,
 	// and determines what permissions the revision has. If not provided, the revision
@@ -3063,6 +3071,13 @@ func (o ServiceTemplateSpecOutput) Containers() ServiceTemplateSpecContainerArra
 	return o.ApplyT(func(v ServiceTemplateSpec) []ServiceTemplateSpecContainer { return v.Containers }).(ServiceTemplateSpecContainerArrayOutput)
 }
 
+// Node Selector describes the hardware requirements of the resources.
+// Use the following node selector keys to configure features on a Revision:
+// - `run.googleapis.com/accelerator` sets the [type of GPU](https://cloud.google.com/run/docs/configuring/services/gpu) required by the Revision to run.
+func (o ServiceTemplateSpecOutput) NodeSelector() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ServiceTemplateSpec) map[string]string { return v.NodeSelector }).(pulumi.StringMapOutput)
+}
+
 // Email address of the IAM service account associated with the revision of the
 // service. The service account represents the identity of the running revision,
 // and determines what permissions the revision has. If not provided, the revision
@@ -3140,6 +3155,18 @@ func (o ServiceTemplateSpecPtrOutput) Containers() ServiceTemplateSpecContainerA
 		}
 		return v.Containers
 	}).(ServiceTemplateSpecContainerArrayOutput)
+}
+
+// Node Selector describes the hardware requirements of the resources.
+// Use the following node selector keys to configure features on a Revision:
+// - `run.googleapis.com/accelerator` sets the [type of GPU](https://cloud.google.com/run/docs/configuring/services/gpu) required by the Revision to run.
+func (o ServiceTemplateSpecPtrOutput) NodeSelector() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ServiceTemplateSpec) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.NodeSelector
+	}).(pulumi.StringMapOutput)
 }
 
 // Email address of the IAM service account associated with the revision of the
@@ -8838,6 +8865,10 @@ type GetServiceTemplateSpec struct {
 	ContainerConcurrency int `pulumi:"containerConcurrency"`
 	// Containers defines the unit of execution for this Revision.
 	Containers []GetServiceTemplateSpecContainer `pulumi:"containers"`
+	// Node Selector describes the hardware requirements of the resources.
+	// Use the following node selector keys to configure features on a Revision:
+	//   - 'run.googleapis.com/accelerator' sets the [type of GPU](https://cloud.google.com/run/docs/configuring/services/gpu) required by the Revision to run.
+	NodeSelector map[string]string `pulumi:"nodeSelector"`
 	// Email address of the IAM service account associated with the revision of the
 	// service. The service account represents the identity of the running revision,
 	// and determines what permissions the revision has. If not provided, the revision
@@ -8872,6 +8903,10 @@ type GetServiceTemplateSpecArgs struct {
 	ContainerConcurrency pulumi.IntInput `pulumi:"containerConcurrency"`
 	// Containers defines the unit of execution for this Revision.
 	Containers GetServiceTemplateSpecContainerArrayInput `pulumi:"containers"`
+	// Node Selector describes the hardware requirements of the resources.
+	// Use the following node selector keys to configure features on a Revision:
+	//   - 'run.googleapis.com/accelerator' sets the [type of GPU](https://cloud.google.com/run/docs/configuring/services/gpu) required by the Revision to run.
+	NodeSelector pulumi.StringMapInput `pulumi:"nodeSelector"`
 	// Email address of the IAM service account associated with the revision of the
 	// service. The service account represents the identity of the running revision,
 	// and determines what permissions the revision has. If not provided, the revision
@@ -8949,6 +8984,13 @@ func (o GetServiceTemplateSpecOutput) ContainerConcurrency() pulumi.IntOutput {
 // Containers defines the unit of execution for this Revision.
 func (o GetServiceTemplateSpecOutput) Containers() GetServiceTemplateSpecContainerArrayOutput {
 	return o.ApplyT(func(v GetServiceTemplateSpec) []GetServiceTemplateSpecContainer { return v.Containers }).(GetServiceTemplateSpecContainerArrayOutput)
+}
+
+// Node Selector describes the hardware requirements of the resources.
+// Use the following node selector keys to configure features on a Revision:
+//   - 'run.googleapis.com/accelerator' sets the [type of GPU](https://cloud.google.com/run/docs/configuring/services/gpu) required by the Revision to run.
+func (o GetServiceTemplateSpecOutput) NodeSelector() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetServiceTemplateSpec) map[string]string { return v.NodeSelector }).(pulumi.StringMapOutput)
 }
 
 // Email address of the IAM service account associated with the revision of the

@@ -37,6 +37,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &FolderSink{}
 	case "gcp:logging/linkedDataset:LinkedDataset":
 		r = &LinkedDataset{}
+	case "gcp:logging/logScope:LogScope":
+		r = &LogScope{}
 	case "gcp:logging/logView:LogView":
 		r = &LogView{}
 	case "gcp:logging/logViewIamBinding:LogViewIamBinding":
@@ -112,6 +114,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"logging/linkedDataset",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"logging/logScope",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

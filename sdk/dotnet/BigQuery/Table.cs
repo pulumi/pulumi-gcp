@@ -120,6 +120,12 @@ namespace Pulumi.Gcp.BigQuery
     public partial class Table : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Specifies the configuration of a BigLake managed table. Structure is documented below
+        /// </summary>
+        [Output("biglakeConfiguration")]
+        public Output<Outputs.TableBiglakeConfiguration?> BiglakeConfiguration { get; private set; } = null!;
+
+        /// <summary>
         /// Specifies column names to use for data clustering.
         /// Up to four top-level columns are allowed, and should be specified in
         /// descending priority order.
@@ -411,6 +417,12 @@ namespace Pulumi.Gcp.BigQuery
 
     public sealed class TableArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specifies the configuration of a BigLake managed table. Structure is documented below
+        /// </summary>
+        [Input("biglakeConfiguration")]
+        public Input<Inputs.TableBiglakeConfigurationArgs>? BiglakeConfiguration { get; set; }
+
         [Input("clusterings")]
         private InputList<string>? _clusterings;
 
@@ -597,6 +609,12 @@ namespace Pulumi.Gcp.BigQuery
 
     public sealed class TableState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specifies the configuration of a BigLake managed table. Structure is documented below
+        /// </summary>
+        [Input("biglakeConfiguration")]
+        public Input<Inputs.TableBiglakeConfigurationGetArgs>? BiglakeConfiguration { get; set; }
+
         [Input("clusterings")]
         private InputList<string>? _clusterings;
 

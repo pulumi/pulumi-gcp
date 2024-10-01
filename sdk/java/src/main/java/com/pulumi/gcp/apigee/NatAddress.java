@@ -10,12 +10,13 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.apigee.NatAddressArgs;
 import com.pulumi.gcp.apigee.inputs.NatAddressState;
+import java.lang.Boolean;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
  * Apigee NAT (network address translation) address. A NAT address is a static external IP address used for Internet egress traffic. This is not avaible for Apigee hybrid.
- * Apigee NAT addresses are not automatically activated because they might require explicit allow entries on the target systems first. See https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.instances.natAddresses/activate
  * 
  * To get more information about NatAddress, see:
  * 
@@ -143,6 +144,125 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Apigee Nat Address With Activate
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.GlobalAddress;
+ * import com.pulumi.gcp.compute.GlobalAddressArgs;
+ * import com.pulumi.gcp.servicenetworking.Connection;
+ * import com.pulumi.gcp.servicenetworking.ConnectionArgs;
+ * import com.pulumi.gcp.kms.KeyRing;
+ * import com.pulumi.gcp.kms.KeyRingArgs;
+ * import com.pulumi.gcp.kms.CryptoKey;
+ * import com.pulumi.gcp.kms.CryptoKeyArgs;
+ * import com.pulumi.gcp.projects.ServiceIdentity;
+ * import com.pulumi.gcp.projects.ServiceIdentityArgs;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
+ * import com.pulumi.gcp.apigee.Organization;
+ * import com.pulumi.gcp.apigee.OrganizationArgs;
+ * import com.pulumi.gcp.apigee.Instance;
+ * import com.pulumi.gcp.apigee.InstanceArgs;
+ * import com.pulumi.gcp.apigee.NatAddress;
+ * import com.pulumi.gcp.apigee.NatAddressArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var current = OrganizationsFunctions.getClientConfig();
+ * 
+ *         var apigeeNetwork = new Network("apigeeNetwork", NetworkArgs.builder()
+ *             .name("apigee-network")
+ *             .build());
+ * 
+ *         var apigeeRange = new GlobalAddress("apigeeRange", GlobalAddressArgs.builder()
+ *             .name("apigee-range")
+ *             .purpose("VPC_PEERING")
+ *             .addressType("INTERNAL")
+ *             .prefixLength(21)
+ *             .network(apigeeNetwork.id())
+ *             .build());
+ * 
+ *         var apigeeVpcConnection = new Connection("apigeeVpcConnection", ConnectionArgs.builder()
+ *             .network(apigeeNetwork.id())
+ *             .service("servicenetworking.googleapis.com")
+ *             .reservedPeeringRanges(apigeeRange.name())
+ *             .build());
+ * 
+ *         var apigeeKeyring = new KeyRing("apigeeKeyring", KeyRingArgs.builder()
+ *             .name("apigee-keyring")
+ *             .location("us-central1")
+ *             .build());
+ * 
+ *         var apigeeKey = new CryptoKey("apigeeKey", CryptoKeyArgs.builder()
+ *             .name("apigee-key")
+ *             .keyRing(apigeeKeyring.id())
+ *             .build());
+ * 
+ *         var apigeeSa = new ServiceIdentity("apigeeSa", ServiceIdentityArgs.builder()
+ *             .project(project.projectId())
+ *             .service(apigee.service())
+ *             .build());
+ * 
+ *         var apigeeSaKeyuser = new CryptoKeyIAMMember("apigeeSaKeyuser", CryptoKeyIAMMemberArgs.builder()
+ *             .cryptoKeyId(apigeeKey.id())
+ *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
+ *             .member(apigeeSa.member())
+ *             .build());
+ * 
+ *         var apigeeOrg = new Organization("apigeeOrg", OrganizationArgs.builder()
+ *             .analyticsRegion("us-central1")
+ *             .displayName("apigee-org")
+ *             .description("Terraform-provisioned Apigee Org.")
+ *             .projectId(current.applyValue(getClientConfigResult -> getClientConfigResult.project()))
+ *             .authorizedNetwork(apigeeNetwork.id())
+ *             .runtimeDatabaseEncryptionKeyName(apigeeKey.id())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     apigeeVpcConnection,
+ *                     apigeeSaKeyuser)
+ *                 .build());
+ * 
+ *         var apigeeInstance = new Instance("apigeeInstance", InstanceArgs.builder()
+ *             .name("apigee-instance")
+ *             .location("us-central1")
+ *             .description("Terraform-managed Apigee Runtime Instance")
+ *             .displayName("apigee-instance")
+ *             .orgId(apigeeOrg.id())
+ *             .diskEncryptionKeyName(apigeeKey.id())
+ *             .build());
+ * 
+ *         var apigee_nat = new NatAddress("apigee-nat", NatAddressArgs.builder()
+ *             .name("my-nat-address")
+ *             .activate("true")
+ *             .instanceId(apigeeInstance.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -165,6 +285,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:apigee/natAddress:NatAddress")
 public class NatAddress extends com.pulumi.resources.CustomResource {
+    /**
+     * Flag that specifies whether the reserved NAT address should be activate.
+     * 
+     */
+    @Export(name="activate", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> activate;
+
+    /**
+     * @return Flag that specifies whether the reserved NAT address should be activate.
+     * 
+     */
+    public Output<Optional<Boolean>> activate() {
+        return Codegen.optional(this.activate);
+    }
     /**
      * The Apigee instance associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/instances/{{instance_name}}`.

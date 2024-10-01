@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.container.outputs.NodePoolNodeConfigLinuxNodeConfigHugepagesConfig;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -18,6 +19,11 @@ public final class NodePoolNodeConfigLinuxNodeConfig {
      */
     private @Nullable String cgroupMode;
     /**
+     * @return Amounts for 2M and 1G hugepages.
+     * 
+     */
+    private @Nullable NodePoolNodeConfigLinuxNodeConfigHugepagesConfig hugepagesConfig;
+    /**
      * @return The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
      * 
      */
@@ -30,6 +36,13 @@ public final class NodePoolNodeConfigLinuxNodeConfig {
      */
     public Optional<String> cgroupMode() {
         return Optional.ofNullable(this.cgroupMode);
+    }
+    /**
+     * @return Amounts for 2M and 1G hugepages.
+     * 
+     */
+    public Optional<NodePoolNodeConfigLinuxNodeConfigHugepagesConfig> hugepagesConfig() {
+        return Optional.ofNullable(this.hugepagesConfig);
     }
     /**
      * @return The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
@@ -49,11 +62,13 @@ public final class NodePoolNodeConfigLinuxNodeConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String cgroupMode;
+        private @Nullable NodePoolNodeConfigLinuxNodeConfigHugepagesConfig hugepagesConfig;
         private @Nullable Map<String,String> sysctls;
         public Builder() {}
         public Builder(NodePoolNodeConfigLinuxNodeConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cgroupMode = defaults.cgroupMode;
+    	      this.hugepagesConfig = defaults.hugepagesConfig;
     	      this.sysctls = defaults.sysctls;
         }
 
@@ -61,6 +76,12 @@ public final class NodePoolNodeConfigLinuxNodeConfig {
         public Builder cgroupMode(@Nullable String cgroupMode) {
 
             this.cgroupMode = cgroupMode;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder hugepagesConfig(@Nullable NodePoolNodeConfigLinuxNodeConfigHugepagesConfig hugepagesConfig) {
+
+            this.hugepagesConfig = hugepagesConfig;
             return this;
         }
         @CustomType.Setter
@@ -72,6 +93,7 @@ public final class NodePoolNodeConfigLinuxNodeConfig {
         public NodePoolNodeConfigLinuxNodeConfig build() {
             final var _resultValue = new NodePoolNodeConfigLinuxNodeConfig();
             _resultValue.cgroupMode = cgroupMode;
+            _resultValue.hugepagesConfig = hugepagesConfig;
             _resultValue.sysctls = sysctls;
             return _resultValue;
         }

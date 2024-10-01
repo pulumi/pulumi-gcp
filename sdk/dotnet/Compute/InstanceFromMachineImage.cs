@@ -108,7 +108,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Desired status of the instance. Either "RUNNING" or "TERMINATED".
+        /// Desired status of the instance. Either "RUNNING", "SUSPENDED" or "TERMINATED".
         /// </summary>
         [Output("desiredStatus")]
         public Output<string> DesiredStatus { get; private set; } = null!;
@@ -393,7 +393,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Desired status of the instance. Either "RUNNING" or "TERMINATED".
+        /// Desired status of the instance. Either "RUNNING", "SUSPENDED" or "TERMINATED".
         /// </summary>
         [Input("desiredStatus")]
         public Input<string>? DesiredStatus { get; set; }
@@ -664,7 +664,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Desired status of the instance. Either "RUNNING" or "TERMINATED".
+        /// Desired status of the instance. Either "RUNNING", "SUSPENDED" or "TERMINATED".
         /// </summary>
         [Input("desiredStatus")]
         public Input<string>? DesiredStatus { get; set; }

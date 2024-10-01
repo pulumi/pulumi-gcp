@@ -36,6 +36,10 @@ __all__ = [
     'GetRegionalSecretRotationResult',
     'GetRegionalSecretTopicResult',
     'GetRegionalSecretVersionCustomerManagedEncryptionResult',
+    'GetRegionalSecretsSecretResult',
+    'GetRegionalSecretsSecretCustomerManagedEncryptionResult',
+    'GetRegionalSecretsSecretRotationResult',
+    'GetRegionalSecretsSecretTopicResult',
     'GetSecretReplicationResult',
     'GetSecretReplicationAutoResult',
     'GetSecretReplicationAutoCustomerManagedEncryptionResult',
@@ -768,6 +772,267 @@ class GetRegionalSecretVersionCustomerManagedEncryptionResult(dict):
         The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads.
         """
         return pulumi.get(self, "kms_key_version_name")
+
+
+@pulumi.output_type
+class GetRegionalSecretsSecretResult(dict):
+    def __init__(__self__, *,
+                 annotations: Mapping[str, str],
+                 create_time: str,
+                 customer_managed_encryptions: Sequence['outputs.GetRegionalSecretsSecretCustomerManagedEncryptionResult'],
+                 effective_annotations: Mapping[str, str],
+                 effective_labels: Mapping[str, str],
+                 expire_time: str,
+                 labels: Mapping[str, str],
+                 location: str,
+                 name: str,
+                 project: str,
+                 pulumi_labels: Mapping[str, str],
+                 rotations: Sequence['outputs.GetRegionalSecretsSecretRotationResult'],
+                 secret_id: str,
+                 topics: Sequence['outputs.GetRegionalSecretsSecretTopicResult'],
+                 ttl: str,
+                 version_aliases: Mapping[str, str],
+                 version_destroy_ttl: str):
+        """
+        :param Mapping[str, str] annotations: Custom metadata about the regional secret.
+        :param str create_time: The time at which the regional secret was created.
+        :param Sequence['GetRegionalSecretsSecretCustomerManagedEncryptionArgs'] customer_managed_encryptions: Customer Managed Encryption for the regional secret.
+               Structure is documented below.
+        :param str expire_time: Timestamp in UTC when the regional secret is scheduled to expire.
+        :param Mapping[str, str] labels: The labels assigned to this regional secret.
+        :param str location: The location of the regional secret.
+        :param str name: The resource name of the Pub/Sub topic that will be published to.
+        :param str project: The ID of the project.
+        :param Mapping[str, str] pulumi_labels: The combination of labels configured directly on the resource
+                and default labels configured on the provider.
+        :param Sequence['GetRegionalSecretsSecretRotationArgs'] rotations: The rotation time and period for a regional secret.
+               Structure is documented below.
+        :param str secret_id: The unique name of the resource.
+        :param Sequence['GetRegionalSecretsSecretTopicArgs'] topics: A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the regional secret or its versions.
+               Structure is documented below.
+        :param str ttl: The TTL for the regional secret. A duration in seconds with up to nine fractional digits,
+               terminated by 's'. Example: "3.5s". Only one of 'ttl' or 'expire_time' can be provided.
+        :param Mapping[str, str] version_aliases: Mapping from version alias to version name.
+        :param str version_destroy_ttl: The version destroy ttl for the regional secret version.
+        """
+        pulumi.set(__self__, "annotations", annotations)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "customer_managed_encryptions", customer_managed_encryptions)
+        pulumi.set(__self__, "effective_annotations", effective_annotations)
+        pulumi.set(__self__, "effective_labels", effective_labels)
+        pulumi.set(__self__, "expire_time", expire_time)
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "pulumi_labels", pulumi_labels)
+        pulumi.set(__self__, "rotations", rotations)
+        pulumi.set(__self__, "secret_id", secret_id)
+        pulumi.set(__self__, "topics", topics)
+        pulumi.set(__self__, "ttl", ttl)
+        pulumi.set(__self__, "version_aliases", version_aliases)
+        pulumi.set(__self__, "version_destroy_ttl", version_destroy_ttl)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Mapping[str, str]:
+        """
+        Custom metadata about the regional secret.
+        """
+        return pulumi.get(self, "annotations")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The time at which the regional secret was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="customerManagedEncryptions")
+    def customer_managed_encryptions(self) -> Sequence['outputs.GetRegionalSecretsSecretCustomerManagedEncryptionResult']:
+        """
+        Customer Managed Encryption for the regional secret.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "customer_managed_encryptions")
+
+    @property
+    @pulumi.getter(name="effectiveAnnotations")
+    def effective_annotations(self) -> Mapping[str, str]:
+        return pulumi.get(self, "effective_annotations")
+
+    @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "effective_labels")
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> str:
+        """
+        Timestamp in UTC when the regional secret is scheduled to expire.
+        """
+        return pulumi.get(self, "expire_time")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        The labels assigned to this regional secret.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        The location of the regional secret.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The resource name of the Pub/Sub topic that will be published to.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The ID of the project.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Mapping[str, str]:
+        """
+        The combination of labels configured directly on the resource
+         and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @property
+    @pulumi.getter
+    def rotations(self) -> Sequence['outputs.GetRegionalSecretsSecretRotationResult']:
+        """
+        The rotation time and period for a regional secret.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rotations")
+
+    @property
+    @pulumi.getter(name="secretId")
+    def secret_id(self) -> str:
+        """
+        The unique name of the resource.
+        """
+        return pulumi.get(self, "secret_id")
+
+    @property
+    @pulumi.getter
+    def topics(self) -> Sequence['outputs.GetRegionalSecretsSecretTopicResult']:
+        """
+        A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the regional secret or its versions.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "topics")
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> str:
+        """
+        The TTL for the regional secret. A duration in seconds with up to nine fractional digits,
+        terminated by 's'. Example: "3.5s". Only one of 'ttl' or 'expire_time' can be provided.
+        """
+        return pulumi.get(self, "ttl")
+
+    @property
+    @pulumi.getter(name="versionAliases")
+    def version_aliases(self) -> Mapping[str, str]:
+        """
+        Mapping from version alias to version name.
+        """
+        return pulumi.get(self, "version_aliases")
+
+    @property
+    @pulumi.getter(name="versionDestroyTtl")
+    def version_destroy_ttl(self) -> str:
+        """
+        The version destroy ttl for the regional secret version.
+        """
+        return pulumi.get(self, "version_destroy_ttl")
+
+
+@pulumi.output_type
+class GetRegionalSecretsSecretCustomerManagedEncryptionResult(dict):
+    def __init__(__self__, *,
+                 kms_key_name: str):
+        """
+        :param str kms_key_name: Describes the Cloud KMS encryption key that will be used to protect destination secret.
+        """
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> str:
+        """
+        Describes the Cloud KMS encryption key that will be used to protect destination secret.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+
+@pulumi.output_type
+class GetRegionalSecretsSecretRotationResult(dict):
+    def __init__(__self__, *,
+                 next_rotation_time: str,
+                 rotation_period: str):
+        """
+        :param str next_rotation_time: Timestamp in UTC at which the secret is scheduled to rotate.
+        :param str rotation_period: The Duration between rotation notifications.
+        """
+        pulumi.set(__self__, "next_rotation_time", next_rotation_time)
+        pulumi.set(__self__, "rotation_period", rotation_period)
+
+    @property
+    @pulumi.getter(name="nextRotationTime")
+    def next_rotation_time(self) -> str:
+        """
+        Timestamp in UTC at which the secret is scheduled to rotate.
+        """
+        return pulumi.get(self, "next_rotation_time")
+
+    @property
+    @pulumi.getter(name="rotationPeriod")
+    def rotation_period(self) -> str:
+        """
+        The Duration between rotation notifications.
+        """
+        return pulumi.get(self, "rotation_period")
+
+
+@pulumi.output_type
+class GetRegionalSecretsSecretTopicResult(dict):
+    def __init__(__self__, *,
+                 name: str):
+        """
+        :param str name: The resource name of the Pub/Sub topic that will be published to.
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The resource name of the Pub/Sub topic that will be published to.
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type

@@ -20,6 +20,16 @@ export const getRegionalSecretVersion: typeof import("./getRegionalSecretVersion
 export const getRegionalSecretVersionOutput: typeof import("./getRegionalSecretVersion").getRegionalSecretVersionOutput = null as any;
 utilities.lazyLoad(exports, ["getRegionalSecretVersion","getRegionalSecretVersionOutput"], () => require("./getRegionalSecretVersion"));
 
+export { GetRegionalSecretVersionAccessArgs, GetRegionalSecretVersionAccessResult, GetRegionalSecretVersionAccessOutputArgs } from "./getRegionalSecretVersionAccess";
+export const getRegionalSecretVersionAccess: typeof import("./getRegionalSecretVersionAccess").getRegionalSecretVersionAccess = null as any;
+export const getRegionalSecretVersionAccessOutput: typeof import("./getRegionalSecretVersionAccess").getRegionalSecretVersionAccessOutput = null as any;
+utilities.lazyLoad(exports, ["getRegionalSecretVersionAccess","getRegionalSecretVersionAccessOutput"], () => require("./getRegionalSecretVersionAccess"));
+
+export { GetRegionalSecretsArgs, GetRegionalSecretsResult, GetRegionalSecretsOutputArgs } from "./getRegionalSecrets";
+export const getRegionalSecrets: typeof import("./getRegionalSecrets").getRegionalSecrets = null as any;
+export const getRegionalSecretsOutput: typeof import("./getRegionalSecrets").getRegionalSecretsOutput = null as any;
+utilities.lazyLoad(exports, ["getRegionalSecrets","getRegionalSecretsOutput"], () => require("./getRegionalSecrets"));
+
 export { GetSecretArgs, GetSecretResult, GetSecretOutputArgs } from "./getSecret";
 export const getSecret: typeof import("./getSecret").getSecret = null as any;
 export const getSecretOutput: typeof import("./getSecret").getSecretOutput = null as any;

@@ -12,6 +12,16 @@ namespace Pulumi.Gcp.Compute.Inputs
 
     public sealed class InterconnectMacsecArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// If set to true, the Interconnect connection is configured with a should-secure
+        /// MACsec security policy, that allows the Google router to fallback to cleartext
+        /// traffic if the MKA session cannot be established. By default, the Interconnect
+        /// connection is configured with a must-secure security policy that drops all traffic
+        /// if the MKA session cannot be established with your router.
+        /// </summary>
+        [Input("failOpen")]
+        public Input<bool>? FailOpen { get; set; }
+
         [Input("preSharedKeys", required: true)]
         private InputList<Inputs.InterconnectMacsecPreSharedKeyArgs>? _preSharedKeys;
 

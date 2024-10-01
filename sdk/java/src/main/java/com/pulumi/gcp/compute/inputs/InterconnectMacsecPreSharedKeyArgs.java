@@ -18,24 +18,38 @@ public final class InterconnectMacsecPreSharedKeyArgs extends com.pulumi.resourc
     public static final InterconnectMacsecPreSharedKeyArgs Empty = new InterconnectMacsecPreSharedKeyArgs();
 
     /**
+     * (Optional, Deprecated)
      * If set to true, the Interconnect connection is configured with a should-secure
      * MACsec security policy, that allows the Google router to fallback to cleartext
      * traffic if the MKA session cannot be established. By default, the Interconnect
      * connection is configured with a must-secure security policy that drops all traffic
      * if the MKA session cannot be established with your router.
      * 
+     * &gt; **Warning:** `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead.
+     * 
+     * @deprecated
+     * `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead.
+     * 
      */
+    @Deprecated /* `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead. */
     @Import(name="failOpen")
     private @Nullable Output<Boolean> failOpen;
 
     /**
-     * @return If set to true, the Interconnect connection is configured with a should-secure
+     * @return (Optional, Deprecated)
+     * If set to true, the Interconnect connection is configured with a should-secure
      * MACsec security policy, that allows the Google router to fallback to cleartext
      * traffic if the MKA session cannot be established. By default, the Interconnect
      * connection is configured with a must-secure security policy that drops all traffic
      * if the MKA session cannot be established with your router.
      * 
+     * &gt; **Warning:** `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead.
+     * 
+     * @deprecated
+     * `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead.
+     * 
      */
+    @Deprecated /* `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead. */
     public Optional<Output<Boolean>> failOpen() {
         return Optional.ofNullable(this.failOpen);
     }
@@ -113,30 +127,44 @@ public final class InterconnectMacsecPreSharedKeyArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param failOpen If set to true, the Interconnect connection is configured with a should-secure
+         * @param failOpen (Optional, Deprecated)
+         * If set to true, the Interconnect connection is configured with a should-secure
          * MACsec security policy, that allows the Google router to fallback to cleartext
          * traffic if the MKA session cannot be established. By default, the Interconnect
          * connection is configured with a must-secure security policy that drops all traffic
          * if the MKA session cannot be established with your router.
          * 
+         * &gt; **Warning:** `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead.
+         * 
          * @return builder
          * 
+         * @deprecated
+         * `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead.
+         * 
          */
+        @Deprecated /* `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead. */
         public Builder failOpen(@Nullable Output<Boolean> failOpen) {
             $.failOpen = failOpen;
             return this;
         }
 
         /**
-         * @param failOpen If set to true, the Interconnect connection is configured with a should-secure
+         * @param failOpen (Optional, Deprecated)
+         * If set to true, the Interconnect connection is configured with a should-secure
          * MACsec security policy, that allows the Google router to fallback to cleartext
          * traffic if the MKA session cannot be established. By default, the Interconnect
          * connection is configured with a must-secure security policy that drops all traffic
          * if the MKA session cannot be established with your router.
          * 
+         * &gt; **Warning:** `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead.
+         * 
          * @return builder
          * 
+         * @deprecated
+         * `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead.
+         * 
          */
+        @Deprecated /* `failOpen` is deprecated and will be removed in a future major release. Use other `failOpen` instead. */
         public Builder failOpen(Boolean failOpen) {
             return failOpen(Output.of(failOpen));
         }

@@ -159,6 +159,7 @@ __all__ = [
     'ClusterNodeConfigHostMaintenancePolicy',
     'ClusterNodeConfigKubeletConfig',
     'ClusterNodeConfigLinuxNodeConfig',
+    'ClusterNodeConfigLinuxNodeConfigHugepagesConfig',
     'ClusterNodeConfigLocalNvmeSsdBlockConfig',
     'ClusterNodeConfigReservationAffinity',
     'ClusterNodeConfigSandboxConfig',
@@ -205,6 +206,7 @@ __all__ = [
     'ClusterNodePoolNodeConfigHostMaintenancePolicy',
     'ClusterNodePoolNodeConfigKubeletConfig',
     'ClusterNodePoolNodeConfigLinuxNodeConfig',
+    'ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig',
     'ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig',
     'ClusterNodePoolNodeConfigReservationAffinity',
     'ClusterNodePoolNodeConfigSandboxConfig',
@@ -263,6 +265,7 @@ __all__ = [
     'NodePoolNodeConfigHostMaintenancePolicy',
     'NodePoolNodeConfigKubeletConfig',
     'NodePoolNodeConfigLinuxNodeConfig',
+    'NodePoolNodeConfigLinuxNodeConfigHugepagesConfig',
     'NodePoolNodeConfigLocalNvmeSsdBlockConfig',
     'NodePoolNodeConfigReservationAffinity',
     'NodePoolNodeConfigSandboxConfig',
@@ -352,6 +355,7 @@ __all__ = [
     'GetClusterNodeConfigHostMaintenancePolicyResult',
     'GetClusterNodeConfigKubeletConfigResult',
     'GetClusterNodeConfigLinuxNodeConfigResult',
+    'GetClusterNodeConfigLinuxNodeConfigHugepagesConfigResult',
     'GetClusterNodeConfigLocalNvmeSsdBlockConfigResult',
     'GetClusterNodeConfigReservationAffinityResult',
     'GetClusterNodeConfigSandboxConfigResult',
@@ -398,6 +402,7 @@ __all__ = [
     'GetClusterNodePoolNodeConfigHostMaintenancePolicyResult',
     'GetClusterNodePoolNodeConfigKubeletConfigResult',
     'GetClusterNodePoolNodeConfigLinuxNodeConfigResult',
+    'GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigResult',
     'GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigResult',
     'GetClusterNodePoolNodeConfigReservationAffinityResult',
     'GetClusterNodePoolNodeConfigSandboxConfigResult',
@@ -8029,6 +8034,8 @@ class ClusterNodeConfigLinuxNodeConfig(dict):
         suggest = None
         if key == "cgroupMode":
             suggest = "cgroup_mode"
+        elif key == "hugepagesConfig":
+            suggest = "hugepages_config"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClusterNodeConfigLinuxNodeConfig. Access the value via the '{suggest}' property getter instead.")
@@ -8043,6 +8050,7 @@ class ClusterNodeConfigLinuxNodeConfig(dict):
 
     def __init__(__self__, *,
                  cgroup_mode: Optional[str] = None,
+                 hugepages_config: Optional['outputs.ClusterNodeConfigLinuxNodeConfigHugepagesConfig'] = None,
                  sysctls: Optional[Mapping[str, str]] = None):
         """
         :param str cgroup_mode: Possible cgroup modes that can be used.
@@ -8050,6 +8058,7 @@ class ClusterNodeConfigLinuxNodeConfig(dict):
                * `CGROUP_MODE_UNSPECIFIED`: CGROUP_MODE_UNSPECIFIED is when unspecified cgroup configuration is used. The default for the GKE node OS image will be used.
                * `CGROUP_MODE_V1`: CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
                * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
+        :param 'ClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs' hugepages_config: Amounts for 2M and 1G hugepages. Structure is documented below.
         :param Mapping[str, str] sysctls: The Linux kernel parameters to be applied to the nodes
                and all pods running on the nodes. Specified as a map from the key, such as
                `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
@@ -8057,6 +8066,8 @@ class ClusterNodeConfigLinuxNodeConfig(dict):
         """
         if cgroup_mode is not None:
             pulumi.set(__self__, "cgroup_mode", cgroup_mode)
+        if hugepages_config is not None:
+            pulumi.set(__self__, "hugepages_config", hugepages_config)
         if sysctls is not None:
             pulumi.set(__self__, "sysctls", sysctls)
 
@@ -8073,6 +8084,14 @@ class ClusterNodeConfigLinuxNodeConfig(dict):
         return pulumi.get(self, "cgroup_mode")
 
     @property
+    @pulumi.getter(name="hugepagesConfig")
+    def hugepages_config(self) -> Optional['outputs.ClusterNodeConfigLinuxNodeConfigHugepagesConfig']:
+        """
+        Amounts for 2M and 1G hugepages. Structure is documented below.
+        """
+        return pulumi.get(self, "hugepages_config")
+
+    @property
     @pulumi.getter
     def sysctls(self) -> Optional[Mapping[str, str]]:
         """
@@ -8082,6 +8101,56 @@ class ClusterNodeConfigLinuxNodeConfig(dict):
         Note that validations happen all server side. All attributes are optional.
         """
         return pulumi.get(self, "sysctls")
+
+
+@pulumi.output_type
+class ClusterNodeConfigLinuxNodeConfigHugepagesConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "hugepageSize1g":
+            suggest = "hugepage_size1g"
+        elif key == "hugepageSize2m":
+            suggest = "hugepage_size2m"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodeConfigLinuxNodeConfigHugepagesConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodeConfigLinuxNodeConfigHugepagesConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodeConfigLinuxNodeConfigHugepagesConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 hugepage_size1g: Optional[int] = None,
+                 hugepage_size2m: Optional[int] = None):
+        """
+        :param int hugepage_size1g: Amount of 1G hugepages.
+        :param int hugepage_size2m: Amount of 2M hugepages.
+        """
+        if hugepage_size1g is not None:
+            pulumi.set(__self__, "hugepage_size1g", hugepage_size1g)
+        if hugepage_size2m is not None:
+            pulumi.set(__self__, "hugepage_size2m", hugepage_size2m)
+
+    @property
+    @pulumi.getter(name="hugepageSize1g")
+    def hugepage_size1g(self) -> Optional[int]:
+        """
+        Amount of 1G hugepages.
+        """
+        return pulumi.get(self, "hugepage_size1g")
+
+    @property
+    @pulumi.getter(name="hugepageSize2m")
+    def hugepage_size2m(self) -> Optional[int]:
+        """
+        Amount of 2M hugepages.
+        """
+        return pulumi.get(self, "hugepage_size2m")
 
 
 @pulumi.output_type
@@ -11043,6 +11112,8 @@ class ClusterNodePoolNodeConfigLinuxNodeConfig(dict):
         suggest = None
         if key == "cgroupMode":
             suggest = "cgroup_mode"
+        elif key == "hugepagesConfig":
+            suggest = "hugepages_config"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolNodeConfigLinuxNodeConfig. Access the value via the '{suggest}' property getter instead.")
@@ -11057,6 +11128,7 @@ class ClusterNodePoolNodeConfigLinuxNodeConfig(dict):
 
     def __init__(__self__, *,
                  cgroup_mode: Optional[str] = None,
+                 hugepages_config: Optional['outputs.ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig'] = None,
                  sysctls: Optional[Mapping[str, str]] = None):
         """
         :param str cgroup_mode: Possible cgroup modes that can be used.
@@ -11064,6 +11136,7 @@ class ClusterNodePoolNodeConfigLinuxNodeConfig(dict):
                * `CGROUP_MODE_UNSPECIFIED`: CGROUP_MODE_UNSPECIFIED is when unspecified cgroup configuration is used. The default for the GKE node OS image will be used.
                * `CGROUP_MODE_V1`: CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
                * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
+        :param 'ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs' hugepages_config: Amounts for 2M and 1G hugepages. Structure is documented below.
         :param Mapping[str, str] sysctls: The Linux kernel parameters to be applied to the nodes
                and all pods running on the nodes. Specified as a map from the key, such as
                `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
@@ -11071,6 +11144,8 @@ class ClusterNodePoolNodeConfigLinuxNodeConfig(dict):
         """
         if cgroup_mode is not None:
             pulumi.set(__self__, "cgroup_mode", cgroup_mode)
+        if hugepages_config is not None:
+            pulumi.set(__self__, "hugepages_config", hugepages_config)
         if sysctls is not None:
             pulumi.set(__self__, "sysctls", sysctls)
 
@@ -11087,6 +11162,14 @@ class ClusterNodePoolNodeConfigLinuxNodeConfig(dict):
         return pulumi.get(self, "cgroup_mode")
 
     @property
+    @pulumi.getter(name="hugepagesConfig")
+    def hugepages_config(self) -> Optional['outputs.ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig']:
+        """
+        Amounts for 2M and 1G hugepages. Structure is documented below.
+        """
+        return pulumi.get(self, "hugepages_config")
+
+    @property
     @pulumi.getter
     def sysctls(self) -> Optional[Mapping[str, str]]:
         """
@@ -11096,6 +11179,56 @@ class ClusterNodePoolNodeConfigLinuxNodeConfig(dict):
         Note that validations happen all server side. All attributes are optional.
         """
         return pulumi.get(self, "sysctls")
+
+
+@pulumi.output_type
+class ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "hugepageSize1g":
+            suggest = "hugepage_size1g"
+        elif key == "hugepageSize2m":
+            suggest = "hugepage_size2m"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 hugepage_size1g: Optional[int] = None,
+                 hugepage_size2m: Optional[int] = None):
+        """
+        :param int hugepage_size1g: Amount of 1G hugepages.
+        :param int hugepage_size2m: Amount of 2M hugepages.
+        """
+        if hugepage_size1g is not None:
+            pulumi.set(__self__, "hugepage_size1g", hugepage_size1g)
+        if hugepage_size2m is not None:
+            pulumi.set(__self__, "hugepage_size2m", hugepage_size2m)
+
+    @property
+    @pulumi.getter(name="hugepageSize1g")
+    def hugepage_size1g(self) -> Optional[int]:
+        """
+        Amount of 1G hugepages.
+        """
+        return pulumi.get(self, "hugepage_size1g")
+
+    @property
+    @pulumi.getter(name="hugepageSize2m")
+    def hugepage_size2m(self) -> Optional[int]:
+        """
+        Amount of 2M hugepages.
+        """
+        return pulumi.get(self, "hugepage_size2m")
 
 
 @pulumi.output_type
@@ -14264,6 +14397,8 @@ class NodePoolNodeConfigLinuxNodeConfig(dict):
         suggest = None
         if key == "cgroupMode":
             suggest = "cgroup_mode"
+        elif key == "hugepagesConfig":
+            suggest = "hugepages_config"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in NodePoolNodeConfigLinuxNodeConfig. Access the value via the '{suggest}' property getter instead.")
@@ -14278,13 +14413,17 @@ class NodePoolNodeConfigLinuxNodeConfig(dict):
 
     def __init__(__self__, *,
                  cgroup_mode: Optional[str] = None,
+                 hugepages_config: Optional['outputs.NodePoolNodeConfigLinuxNodeConfigHugepagesConfig'] = None,
                  sysctls: Optional[Mapping[str, str]] = None):
         """
         :param str cgroup_mode: cgroupMode specifies the cgroup mode to be used on the node.
+        :param 'NodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs' hugepages_config: Amounts for 2M and 1G hugepages.
         :param Mapping[str, str] sysctls: The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
         """
         if cgroup_mode is not None:
             pulumi.set(__self__, "cgroup_mode", cgroup_mode)
+        if hugepages_config is not None:
+            pulumi.set(__self__, "hugepages_config", hugepages_config)
         if sysctls is not None:
             pulumi.set(__self__, "sysctls", sysctls)
 
@@ -14297,12 +14436,70 @@ class NodePoolNodeConfigLinuxNodeConfig(dict):
         return pulumi.get(self, "cgroup_mode")
 
     @property
+    @pulumi.getter(name="hugepagesConfig")
+    def hugepages_config(self) -> Optional['outputs.NodePoolNodeConfigLinuxNodeConfigHugepagesConfig']:
+        """
+        Amounts for 2M and 1G hugepages.
+        """
+        return pulumi.get(self, "hugepages_config")
+
+    @property
     @pulumi.getter
     def sysctls(self) -> Optional[Mapping[str, str]]:
         """
         The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
         """
         return pulumi.get(self, "sysctls")
+
+
+@pulumi.output_type
+class NodePoolNodeConfigLinuxNodeConfigHugepagesConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "hugepageSize1g":
+            suggest = "hugepage_size1g"
+        elif key == "hugepageSize2m":
+            suggest = "hugepage_size2m"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolNodeConfigLinuxNodeConfigHugepagesConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolNodeConfigLinuxNodeConfigHugepagesConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolNodeConfigLinuxNodeConfigHugepagesConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 hugepage_size1g: Optional[int] = None,
+                 hugepage_size2m: Optional[int] = None):
+        """
+        :param int hugepage_size1g: Amount of 1G hugepages.
+        :param int hugepage_size2m: Amount of 2M hugepages.
+        """
+        if hugepage_size1g is not None:
+            pulumi.set(__self__, "hugepage_size1g", hugepage_size1g)
+        if hugepage_size2m is not None:
+            pulumi.set(__self__, "hugepage_size2m", hugepage_size2m)
+
+    @property
+    @pulumi.getter(name="hugepageSize1g")
+    def hugepage_size1g(self) -> Optional[int]:
+        """
+        Amount of 1G hugepages.
+        """
+        return pulumi.get(self, "hugepage_size1g")
+
+    @property
+    @pulumi.getter(name="hugepageSize2m")
+    def hugepage_size2m(self) -> Optional[int]:
+        """
+        Amount of 2M hugepages.
+        """
+        return pulumi.get(self, "hugepage_size2m")
 
 
 @pulumi.output_type
@@ -14990,7 +15187,7 @@ class GetClusterAddonsConfigResult(dict):
         :param Sequence['GetClusterAddonsConfigConfigConnectorConfigArgs'] config_connector_configs: The of the Config Connector addon.
         :param Sequence['GetClusterAddonsConfigDnsCacheConfigArgs'] dns_cache_configs: The status of the NodeLocal DNSCache addon. It is disabled by default. Set enabled = true to enable.
         :param Sequence['GetClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs'] gce_persistent_disk_csi_driver_configs: Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Set enabled = true to enable. The Compute Engine persistent disk CSI Driver is enabled by default on newly created clusters for the following versions: Linux clusters: GKE version 1.18.10-gke.2100 or later, or 1.19.3-gke.2100 or later.
-        :param Sequence['GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs'] gcp_filestore_csi_driver_configs: The status of the Filestore CSI driver addon, which allows the usage of filestore instance as volumes. Defaults to disabled; set enabled = true to enable.
+        :param Sequence['GetClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs'] gcp_filestore_csi_driver_configs: The status of the Filestore CSI driver addon, which allows the usage of filestore instance as volumes. Defaults to disabled for Standard clusters; set enabled = true to enable. It is enabled by default for Autopilot clusters; set enabled = true to enable it explicitly.
         :param Sequence['GetClusterAddonsConfigGcsFuseCsiDriverConfigArgs'] gcs_fuse_csi_driver_configs: The status of the GCS Fuse CSI driver addon, which allows the usage of gcs bucket as volumes. Defaults to disabled; set enabled = true to enable.
         :param Sequence['GetClusterAddonsConfigGkeBackupAgentConfigArgs'] gke_backup_agent_configs: The status of the Backup for GKE Agent addon. It is disabled by default. Set enabled = true to enable.
         :param Sequence['GetClusterAddonsConfigHorizontalPodAutoscalingArgs'] horizontal_pod_autoscalings: The status of the Horizontal Pod Autoscaling addon, which increases or decreases the number of replica pods a replication controller has based on the resource usage of the existing pods. It ensures that a Heapster pod is running in the cluster, which is also used by the Cloud Monitoring service. It is enabled by default; set disabled = true to disable.
@@ -15052,7 +15249,7 @@ class GetClusterAddonsConfigResult(dict):
     @pulumi.getter(name="gcpFilestoreCsiDriverConfigs")
     def gcp_filestore_csi_driver_configs(self) -> Sequence['outputs.GetClusterAddonsConfigGcpFilestoreCsiDriverConfigResult']:
         """
-        The status of the Filestore CSI driver addon, which allows the usage of filestore instance as volumes. Defaults to disabled; set enabled = true to enable.
+        The status of the Filestore CSI driver addon, which allows the usage of filestore instance as volumes. Defaults to disabled for Standard clusters; set enabled = true to enable. It is enabled by default for Autopilot clusters; set enabled = true to enable it explicitly.
         """
         return pulumi.get(self, "gcp_filestore_csi_driver_configs")
 
@@ -17588,12 +17785,15 @@ class GetClusterNodeConfigKubeletConfigResult(dict):
 class GetClusterNodeConfigLinuxNodeConfigResult(dict):
     def __init__(__self__, *,
                  cgroup_mode: str,
+                 hugepages_configs: Sequence['outputs.GetClusterNodeConfigLinuxNodeConfigHugepagesConfigResult'],
                  sysctls: Mapping[str, str]):
         """
         :param str cgroup_mode: cgroupMode specifies the cgroup mode to be used on the node.
+        :param Sequence['GetClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs'] hugepages_configs: Amounts for 2M and 1G hugepages.
         :param Mapping[str, str] sysctls: The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
         """
         pulumi.set(__self__, "cgroup_mode", cgroup_mode)
+        pulumi.set(__self__, "hugepages_configs", hugepages_configs)
         pulumi.set(__self__, "sysctls", sysctls)
 
     @property
@@ -17605,12 +17805,49 @@ class GetClusterNodeConfigLinuxNodeConfigResult(dict):
         return pulumi.get(self, "cgroup_mode")
 
     @property
+    @pulumi.getter(name="hugepagesConfigs")
+    def hugepages_configs(self) -> Sequence['outputs.GetClusterNodeConfigLinuxNodeConfigHugepagesConfigResult']:
+        """
+        Amounts for 2M and 1G hugepages.
+        """
+        return pulumi.get(self, "hugepages_configs")
+
+    @property
     @pulumi.getter
     def sysctls(self) -> Mapping[str, str]:
         """
         The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
         """
         return pulumi.get(self, "sysctls")
+
+
+@pulumi.output_type
+class GetClusterNodeConfigLinuxNodeConfigHugepagesConfigResult(dict):
+    def __init__(__self__, *,
+                 hugepage_size1g: int,
+                 hugepage_size2m: int):
+        """
+        :param int hugepage_size1g: Amount of 1G hugepages.
+        :param int hugepage_size2m: Amount of 2M hugepages.
+        """
+        pulumi.set(__self__, "hugepage_size1g", hugepage_size1g)
+        pulumi.set(__self__, "hugepage_size2m", hugepage_size2m)
+
+    @property
+    @pulumi.getter(name="hugepageSize1g")
+    def hugepage_size1g(self) -> int:
+        """
+        Amount of 1G hugepages.
+        """
+        return pulumi.get(self, "hugepage_size1g")
+
+    @property
+    @pulumi.getter(name="hugepageSize2m")
+    def hugepage_size2m(self) -> int:
+        """
+        Amount of 2M hugepages.
+        """
+        return pulumi.get(self, "hugepage_size2m")
 
 
 @pulumi.output_type
@@ -19506,12 +19743,15 @@ class GetClusterNodePoolNodeConfigKubeletConfigResult(dict):
 class GetClusterNodePoolNodeConfigLinuxNodeConfigResult(dict):
     def __init__(__self__, *,
                  cgroup_mode: str,
+                 hugepages_configs: Sequence['outputs.GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigResult'],
                  sysctls: Mapping[str, str]):
         """
         :param str cgroup_mode: cgroupMode specifies the cgroup mode to be used on the node.
+        :param Sequence['GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs'] hugepages_configs: Amounts for 2M and 1G hugepages.
         :param Mapping[str, str] sysctls: The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
         """
         pulumi.set(__self__, "cgroup_mode", cgroup_mode)
+        pulumi.set(__self__, "hugepages_configs", hugepages_configs)
         pulumi.set(__self__, "sysctls", sysctls)
 
     @property
@@ -19523,12 +19763,49 @@ class GetClusterNodePoolNodeConfigLinuxNodeConfigResult(dict):
         return pulumi.get(self, "cgroup_mode")
 
     @property
+    @pulumi.getter(name="hugepagesConfigs")
+    def hugepages_configs(self) -> Sequence['outputs.GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigResult']:
+        """
+        Amounts for 2M and 1G hugepages.
+        """
+        return pulumi.get(self, "hugepages_configs")
+
+    @property
     @pulumi.getter
     def sysctls(self) -> Mapping[str, str]:
         """
         The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
         """
         return pulumi.get(self, "sysctls")
+
+
+@pulumi.output_type
+class GetClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigResult(dict):
+    def __init__(__self__, *,
+                 hugepage_size1g: int,
+                 hugepage_size2m: int):
+        """
+        :param int hugepage_size1g: Amount of 1G hugepages.
+        :param int hugepage_size2m: Amount of 2M hugepages.
+        """
+        pulumi.set(__self__, "hugepage_size1g", hugepage_size1g)
+        pulumi.set(__self__, "hugepage_size2m", hugepage_size2m)
+
+    @property
+    @pulumi.getter(name="hugepageSize1g")
+    def hugepage_size1g(self) -> int:
+        """
+        Amount of 1G hugepages.
+        """
+        return pulumi.get(self, "hugepage_size1g")
+
+    @property
+    @pulumi.getter(name="hugepageSize2m")
+    def hugepage_size2m(self) -> int:
+        """
+        Amount of 2M hugepages.
+        """
+        return pulumi.get(self, "hugepage_size2m")
 
 
 @pulumi.output_type

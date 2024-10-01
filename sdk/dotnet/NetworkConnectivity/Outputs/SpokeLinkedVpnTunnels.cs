@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.NetworkConnectivity.Outputs
     public sealed class SpokeLinkedVpnTunnels
     {
         /// <summary>
+        /// IP ranges allowed to be included during import from hub (does not control transit connectivity).
+        /// The only allowed value for now is "ALL_IPV4_RANGES".
+        /// </summary>
+        public readonly ImmutableArray<string> IncludeImportRanges;
+        /// <summary>
         /// A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
         /// </summary>
         public readonly bool SiteToSiteDataTransfer;
@@ -24,10 +29,13 @@ namespace Pulumi.Gcp.NetworkConnectivity.Outputs
 
         [OutputConstructor]
         private SpokeLinkedVpnTunnels(
+            ImmutableArray<string> includeImportRanges,
+
             bool siteToSiteDataTransfer,
 
             ImmutableArray<string> uris)
         {
+            IncludeImportRanges = includeImportRanges;
             SiteToSiteDataTransfer = siteToSiteDataTransfer;
             Uris = uris;
         }

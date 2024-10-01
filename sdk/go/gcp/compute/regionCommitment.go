@@ -154,6 +154,8 @@ type RegionCommitment struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Commitment end time in RFC3339 text format.
 	EndTimestamp pulumi.StringOutput `pulumi:"endTimestamp"`
+	// Specifies the already existing reservations to attach to the Commitment.
+	ExistingReservations pulumi.StringOutput `pulumi:"existingReservations"`
 	// The license specification required as part of a license commitment.
 	// Structure is documented below.
 	LicenseResource RegionCommitmentLicenseResourcePtrOutput `pulumi:"licenseResource"`
@@ -247,6 +249,8 @@ type regionCommitmentState struct {
 	Description *string `pulumi:"description"`
 	// Commitment end time in RFC3339 text format.
 	EndTimestamp *string `pulumi:"endTimestamp"`
+	// Specifies the already existing reservations to attach to the Commitment.
+	ExistingReservations *string `pulumi:"existingReservations"`
 	// The license specification required as part of a license commitment.
 	// Structure is documented below.
 	LicenseResource *RegionCommitmentLicenseResource `pulumi:"licenseResource"`
@@ -308,6 +312,8 @@ type RegionCommitmentState struct {
 	Description pulumi.StringPtrInput
 	// Commitment end time in RFC3339 text format.
 	EndTimestamp pulumi.StringPtrInput
+	// Specifies the already existing reservations to attach to the Commitment.
+	ExistingReservations pulumi.StringPtrInput
 	// The license specification required as part of a license commitment.
 	// Structure is documented below.
 	LicenseResource RegionCommitmentLicenseResourcePtrInput
@@ -367,6 +373,8 @@ type regionCommitmentArgs struct {
 	Category *string `pulumi:"category"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
+	// Specifies the already existing reservations to attach to the Commitment.
+	ExistingReservations *string `pulumi:"existingReservations"`
 	// The license specification required as part of a license commitment.
 	// Structure is documented below.
 	LicenseResource *RegionCommitmentLicenseResource `pulumi:"licenseResource"`
@@ -414,6 +422,8 @@ type RegionCommitmentArgs struct {
 	Category pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
+	// Specifies the already existing reservations to attach to the Commitment.
+	ExistingReservations pulumi.StringPtrInput
 	// The license specification required as part of a license commitment.
 	// Structure is documented below.
 	LicenseResource RegionCommitmentLicenseResourcePtrInput
@@ -568,6 +578,11 @@ func (o RegionCommitmentOutput) Description() pulumi.StringPtrOutput {
 // Commitment end time in RFC3339 text format.
 func (o RegionCommitmentOutput) EndTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionCommitment) pulumi.StringOutput { return v.EndTimestamp }).(pulumi.StringOutput)
+}
+
+// Specifies the already existing reservations to attach to the Commitment.
+func (o RegionCommitmentOutput) ExistingReservations() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionCommitment) pulumi.StringOutput { return v.ExistingReservations }).(pulumi.StringOutput)
 }
 
 // The license specification required as part of a license commitment.

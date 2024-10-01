@@ -138,6 +138,23 @@ public final class RouterNatState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Self-links of NAT IPs to be used as initial value for creation alongside a RouterNatAddress resource.
+     * Conflicts with natIps and drainNatIps. Only valid if natIpAllocateOption is set to MANUAL_ONLY.
+     * 
+     */
+    @Import(name="initialNatIps")
+    private @Nullable Output<List<String>> initialNatIps;
+
+    /**
+     * @return Self-links of NAT IPs to be used as initial value for creation alongside a RouterNatAddress resource.
+     * Conflicts with natIps and drainNatIps. Only valid if natIpAllocateOption is set to MANUAL_ONLY.
+     * 
+     */
+    public Optional<Output<List<String>>> initialNatIps() {
+        return Optional.ofNullable(this.initialNatIps);
+    }
+
+    /**
      * Configuration for logging on NAT
      * Structure is documented below.
      * 
@@ -469,6 +486,7 @@ public final class RouterNatState extends com.pulumi.resources.ResourceArgs {
         this.enableEndpointIndependentMapping = $.enableEndpointIndependentMapping;
         this.endpointTypes = $.endpointTypes;
         this.icmpIdleTimeoutSec = $.icmpIdleTimeoutSec;
+        this.initialNatIps = $.initialNatIps;
         this.logConfig = $.logConfig;
         this.maxPortsPerVm = $.maxPortsPerVm;
         this.minPortsPerVm = $.minPortsPerVm;
@@ -680,6 +698,40 @@ public final class RouterNatState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder icmpIdleTimeoutSec(Integer icmpIdleTimeoutSec) {
             return icmpIdleTimeoutSec(Output.of(icmpIdleTimeoutSec));
+        }
+
+        /**
+         * @param initialNatIps Self-links of NAT IPs to be used as initial value for creation alongside a RouterNatAddress resource.
+         * Conflicts with natIps and drainNatIps. Only valid if natIpAllocateOption is set to MANUAL_ONLY.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder initialNatIps(@Nullable Output<List<String>> initialNatIps) {
+            $.initialNatIps = initialNatIps;
+            return this;
+        }
+
+        /**
+         * @param initialNatIps Self-links of NAT IPs to be used as initial value for creation alongside a RouterNatAddress resource.
+         * Conflicts with natIps and drainNatIps. Only valid if natIpAllocateOption is set to MANUAL_ONLY.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder initialNatIps(List<String> initialNatIps) {
+            return initialNatIps(Output.of(initialNatIps));
+        }
+
+        /**
+         * @param initialNatIps Self-links of NAT IPs to be used as initial value for creation alongside a RouterNatAddress resource.
+         * Conflicts with natIps and drainNatIps. Only valid if natIpAllocateOption is set to MANUAL_ONLY.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder initialNatIps(String... initialNatIps) {
+            return initialNatIps(List.of(initialNatIps));
         }
 
         /**

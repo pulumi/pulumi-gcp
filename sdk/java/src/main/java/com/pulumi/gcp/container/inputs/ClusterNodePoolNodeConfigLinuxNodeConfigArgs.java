@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -40,6 +41,21 @@ public final class ClusterNodePoolNodeConfigLinuxNodeConfigArgs extends com.pulu
     }
 
     /**
+     * Amounts for 2M and 1G hugepages. Structure is documented below.
+     * 
+     */
+    @Import(name="hugepagesConfig")
+    private @Nullable Output<ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs> hugepagesConfig;
+
+    /**
+     * @return Amounts for 2M and 1G hugepages. Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs>> hugepagesConfig() {
+        return Optional.ofNullable(this.hugepagesConfig);
+    }
+
+    /**
      * The Linux kernel parameters to be applied to the nodes
      * and all pods running on the nodes. Specified as a map from the key, such as
      * `net.core.wmem_max`, to a string value. Currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
@@ -64,6 +80,7 @@ public final class ClusterNodePoolNodeConfigLinuxNodeConfigArgs extends com.pulu
 
     private ClusterNodePoolNodeConfigLinuxNodeConfigArgs(ClusterNodePoolNodeConfigLinuxNodeConfigArgs $) {
         this.cgroupMode = $.cgroupMode;
+        this.hugepagesConfig = $.hugepagesConfig;
         this.sysctls = $.sysctls;
     }
 
@@ -112,6 +129,27 @@ public final class ClusterNodePoolNodeConfigLinuxNodeConfigArgs extends com.pulu
          */
         public Builder cgroupMode(String cgroupMode) {
             return cgroupMode(Output.of(cgroupMode));
+        }
+
+        /**
+         * @param hugepagesConfig Amounts for 2M and 1G hugepages. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hugepagesConfig(@Nullable Output<ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs> hugepagesConfig) {
+            $.hugepagesConfig = hugepagesConfig;
+            return this;
+        }
+
+        /**
+         * @param hugepagesConfig Amounts for 2M and 1G hugepages. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hugepagesConfig(ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs hugepagesConfig) {
+            return hugepagesConfig(Output.of(hugepagesConfig));
         }
 
         /**

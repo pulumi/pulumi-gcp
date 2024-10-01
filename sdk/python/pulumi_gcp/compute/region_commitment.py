@@ -25,6 +25,7 @@ class RegionCommitmentArgs:
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  category: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 existing_reservations: Optional[pulumi.Input[str]] = None,
                  license_resource: Optional[pulumi.Input['RegionCommitmentLicenseResourceArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -49,6 +50,7 @@ class RegionCommitmentArgs:
                Note that only MACHINE commitments should have a Type specified.
                Possible values are: `LICENSE`, `MACHINE`.
         :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[str] existing_reservations: Specifies the already existing reservations to attach to the Commitment.
         :param pulumi.Input['RegionCommitmentLicenseResourceArgs'] license_resource: The license specification required as part of a license commitment.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long and match
@@ -75,6 +77,8 @@ class RegionCommitmentArgs:
             pulumi.set(__self__, "category", category)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if existing_reservations is not None:
+            pulumi.set(__self__, "existing_reservations", existing_reservations)
         if license_resource is not None:
             pulumi.set(__self__, "license_resource", license_resource)
         if name is not None:
@@ -147,6 +151,18 @@ class RegionCommitmentArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="existingReservations")
+    def existing_reservations(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the already existing reservations to attach to the Commitment.
+        """
+        return pulumi.get(self, "existing_reservations")
+
+    @existing_reservations.setter
+    def existing_reservations(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "existing_reservations", value)
 
     @property
     @pulumi.getter(name="licenseResource")
@@ -242,6 +258,7 @@ class _RegionCommitmentState:
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  end_timestamp: Optional[pulumi.Input[str]] = None,
+                 existing_reservations: Optional[pulumi.Input[str]] = None,
                  license_resource: Optional[pulumi.Input['RegionCommitmentLicenseResourceArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  plan: Optional[pulumi.Input[str]] = None,
@@ -268,6 +285,7 @@ class _RegionCommitmentState:
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] end_timestamp: Commitment end time in RFC3339 text format.
+        :param pulumi.Input[str] existing_reservations: Specifies the already existing reservations to attach to the Commitment.
         :param pulumi.Input['RegionCommitmentLicenseResourceArgs'] license_resource: The license specification required as part of a license commitment.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long and match
@@ -310,6 +328,8 @@ class _RegionCommitmentState:
             pulumi.set(__self__, "description", description)
         if end_timestamp is not None:
             pulumi.set(__self__, "end_timestamp", end_timestamp)
+        if existing_reservations is not None:
+            pulumi.set(__self__, "existing_reservations", existing_reservations)
         if license_resource is not None:
             pulumi.set(__self__, "license_resource", license_resource)
         if name is not None:
@@ -411,6 +431,18 @@ class _RegionCommitmentState:
     @end_timestamp.setter
     def end_timestamp(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "end_timestamp", value)
+
+    @property
+    @pulumi.getter(name="existingReservations")
+    def existing_reservations(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the already existing reservations to attach to the Commitment.
+        """
+        return pulumi.get(self, "existing_reservations")
+
+    @existing_reservations.setter
+    def existing_reservations(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "existing_reservations", value)
 
     @property
     @pulumi.getter(name="licenseResource")
@@ -571,6 +603,7 @@ class RegionCommitment(pulumi.CustomResource):
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  category: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 existing_reservations: Optional[pulumi.Input[str]] = None,
                  license_resource: Optional[pulumi.Input[Union['RegionCommitmentLicenseResourceArgs', 'RegionCommitmentLicenseResourceArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  plan: Optional[pulumi.Input[str]] = None,
@@ -681,6 +714,7 @@ class RegionCommitment(pulumi.CustomResource):
                Note that only MACHINE commitments should have a Type specified.
                Possible values are: `LICENSE`, `MACHINE`.
         :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[str] existing_reservations: Specifies the already existing reservations to attach to the Commitment.
         :param pulumi.Input[Union['RegionCommitmentLicenseResourceArgs', 'RegionCommitmentLicenseResourceArgsDict']] license_resource: The license specification required as part of a license commitment.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long and match
@@ -820,6 +854,7 @@ class RegionCommitment(pulumi.CustomResource):
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  category: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 existing_reservations: Optional[pulumi.Input[str]] = None,
                  license_resource: Optional[pulumi.Input[Union['RegionCommitmentLicenseResourceArgs', 'RegionCommitmentLicenseResourceArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  plan: Optional[pulumi.Input[str]] = None,
@@ -839,6 +874,7 @@ class RegionCommitment(pulumi.CustomResource):
             __props__.__dict__["auto_renew"] = auto_renew
             __props__.__dict__["category"] = category
             __props__.__dict__["description"] = description
+            __props__.__dict__["existing_reservations"] = existing_reservations
             __props__.__dict__["license_resource"] = license_resource
             __props__.__dict__["name"] = name
             if plan is None and not opts.urn:
@@ -871,6 +907,7 @@ class RegionCommitment(pulumi.CustomResource):
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             end_timestamp: Optional[pulumi.Input[str]] = None,
+            existing_reservations: Optional[pulumi.Input[str]] = None,
             license_resource: Optional[pulumi.Input[Union['RegionCommitmentLicenseResourceArgs', 'RegionCommitmentLicenseResourceArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             plan: Optional[pulumi.Input[str]] = None,
@@ -902,6 +939,7 @@ class RegionCommitment(pulumi.CustomResource):
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] end_timestamp: Commitment end time in RFC3339 text format.
+        :param pulumi.Input[str] existing_reservations: Specifies the already existing reservations to attach to the Commitment.
         :param pulumi.Input[Union['RegionCommitmentLicenseResourceArgs', 'RegionCommitmentLicenseResourceArgsDict']] license_resource: The license specification required as part of a license commitment.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long and match
@@ -942,6 +980,7 @@ class RegionCommitment(pulumi.CustomResource):
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["description"] = description
         __props__.__dict__["end_timestamp"] = end_timestamp
+        __props__.__dict__["existing_reservations"] = existing_reservations
         __props__.__dict__["license_resource"] = license_resource
         __props__.__dict__["name"] = name
         __props__.__dict__["plan"] = plan
@@ -1009,6 +1048,14 @@ class RegionCommitment(pulumi.CustomResource):
         Commitment end time in RFC3339 text format.
         """
         return pulumi.get(self, "end_timestamp")
+
+    @property
+    @pulumi.getter(name="existingReservations")
+    def existing_reservations(self) -> pulumi.Output[str]:
+        """
+        Specifies the already existing reservations to attach to the Commitment.
+        """
+        return pulumi.get(self, "existing_reservations")
 
     @property
     @pulumi.getter(name="licenseResource")

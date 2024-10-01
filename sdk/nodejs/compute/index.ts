@@ -325,6 +325,11 @@ export const getRegionInstanceGroup: typeof import("./getRegionInstanceGroup").g
 export const getRegionInstanceGroupOutput: typeof import("./getRegionInstanceGroup").getRegionInstanceGroupOutput = null as any;
 utilities.lazyLoad(exports, ["getRegionInstanceGroup","getRegionInstanceGroupOutput"], () => require("./getRegionInstanceGroup"));
 
+export { GetRegionInstanceGroupManagerArgs, GetRegionInstanceGroupManagerResult, GetRegionInstanceGroupManagerOutputArgs } from "./getRegionInstanceGroupManager";
+export const getRegionInstanceGroupManager: typeof import("./getRegionInstanceGroupManager").getRegionInstanceGroupManager = null as any;
+export const getRegionInstanceGroupManagerOutput: typeof import("./getRegionInstanceGroupManager").getRegionInstanceGroupManagerOutput = null as any;
+utilities.lazyLoad(exports, ["getRegionInstanceGroupManager","getRegionInstanceGroupManagerOutput"], () => require("./getRegionInstanceGroupManager"));
+
 export { GetRegionInstanceTemplateArgs, GetRegionInstanceTemplateResult, GetRegionInstanceTemplateOutputArgs } from "./getRegionInstanceTemplate";
 export const getRegionInstanceTemplate: typeof import("./getRegionInstanceTemplate").getRegionInstanceTemplate = null as any;
 export const getRegionInstanceTemplateOutput: typeof import("./getRegionInstanceTemplate").getRegionInstanceTemplateOutput = null as any;
@@ -795,6 +800,11 @@ export type RegionNetworkFirewallPolicyRule = import("./regionNetworkFirewallPol
 export const RegionNetworkFirewallPolicyRule: typeof import("./regionNetworkFirewallPolicyRule").RegionNetworkFirewallPolicyRule = null as any;
 utilities.lazyLoad(exports, ["RegionNetworkFirewallPolicyRule"], () => require("./regionNetworkFirewallPolicyRule"));
 
+export { RegionNetworkFirewallPolicyWithRulesArgs, RegionNetworkFirewallPolicyWithRulesState } from "./regionNetworkFirewallPolicyWithRules";
+export type RegionNetworkFirewallPolicyWithRules = import("./regionNetworkFirewallPolicyWithRules").RegionNetworkFirewallPolicyWithRules;
+export const RegionNetworkFirewallPolicyWithRules: typeof import("./regionNetworkFirewallPolicyWithRules").RegionNetworkFirewallPolicyWithRules = null as any;
+utilities.lazyLoad(exports, ["RegionNetworkFirewallPolicyWithRules"], () => require("./regionNetworkFirewallPolicyWithRules"));
+
 export { RegionPerInstanceConfigArgs, RegionPerInstanceConfigState } from "./regionPerInstanceConfig";
 export type RegionPerInstanceConfig = import("./regionPerInstanceConfig").RegionPerInstanceConfig;
 export const RegionPerInstanceConfig: typeof import("./regionPerInstanceConfig").RegionPerInstanceConfig = null as any;
@@ -874,6 +884,11 @@ export { RouterNatArgs, RouterNatState } from "./routerNat";
 export type RouterNat = import("./routerNat").RouterNat;
 export const RouterNat: typeof import("./routerNat").RouterNat = null as any;
 utilities.lazyLoad(exports, ["RouterNat"], () => require("./routerNat"));
+
+export { RouterNatAddressArgs, RouterNatAddressState } from "./routerNatAddress";
+export type RouterNatAddress = import("./routerNatAddress").RouterNatAddress;
+export const RouterNatAddress: typeof import("./routerNatAddress").RouterNatAddress = null as any;
+utilities.lazyLoad(exports, ["RouterNatAddress"], () => require("./routerNatAddress"));
 
 export { RouterPeerArgs, RouterPeerState } from "./routerPeer";
 export type RouterPeer = import("./routerPeer").RouterPeer;
@@ -1231,6 +1246,8 @@ const _module = {
                 return new RegionNetworkFirewallPolicyAssociation(name, <any>undefined, { urn })
             case "gcp:compute/regionNetworkFirewallPolicyRule:RegionNetworkFirewallPolicyRule":
                 return new RegionNetworkFirewallPolicyRule(name, <any>undefined, { urn })
+            case "gcp:compute/regionNetworkFirewallPolicyWithRules:RegionNetworkFirewallPolicyWithRules":
+                return new RegionNetworkFirewallPolicyWithRules(name, <any>undefined, { urn })
             case "gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig":
                 return new RegionPerInstanceConfig(name, <any>undefined, { urn })
             case "gcp:compute/regionSecurityPolicy:RegionSecurityPolicy":
@@ -1263,6 +1280,8 @@ const _module = {
                 return new RouterInterface(name, <any>undefined, { urn })
             case "gcp:compute/routerNat:RouterNat":
                 return new RouterNat(name, <any>undefined, { urn })
+            case "gcp:compute/routerNatAddress:RouterNatAddress":
+                return new RouterNatAddress(name, <any>undefined, { urn })
             case "gcp:compute/routerPeer:RouterPeer":
                 return new RouterPeer(name, <any>undefined, { urn })
             case "gcp:compute/routerRoutePolicy:RouterRoutePolicy":
@@ -1427,6 +1446,7 @@ pulumi.runtime.registerResourceModule("gcp", "compute/regionNetworkEndpointGroup
 pulumi.runtime.registerResourceModule("gcp", "compute/regionNetworkFirewallPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionNetworkFirewallPolicyAssociation", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionNetworkFirewallPolicyRule", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/regionNetworkFirewallPolicyWithRules", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionPerInstanceConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionSecurityPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionSecurityPolicyRule", _module)
@@ -1443,6 +1463,7 @@ pulumi.runtime.registerResourceModule("gcp", "compute/route", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/router", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/routerInterface", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/routerNat", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/routerNatAddress", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/routerPeer", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/routerRoutePolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/sSLCertificate", _module)
