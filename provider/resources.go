@@ -989,12 +989,31 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "compute_backend_service_signed_url_key.html.markdown",
 				},
 			},
-			"google_compute_disk":                          {Tok: gcpResource(gcpCompute, "Disk")},
-			"google_compute_firewall":                      {Tok: gcpResource(gcpCompute, "Firewall")},
-			"google_compute_firewall_policy":               {Tok: gcpResource(gcpCompute, "FirewallPolicy")},
-			"google_compute_firewall_policy_rule":          {Tok: gcpResource(gcpCompute, "FirewallPolicyRule")},
-			"google_compute_firewall_policy_association":   {Tok: gcpResource(gcpCompute, "FirewallPolicyAssociation")},
-			"google_compute_forwarding_rule":               {Tok: gcpResource(gcpCompute, "ForwardingRule")},
+			"google_compute_disk":                        {Tok: gcpResource(gcpCompute, "Disk")},
+			"google_compute_firewall":                    {Tok: gcpResource(gcpCompute, "Firewall")},
+			"google_compute_firewall_policy":             {Tok: gcpResource(gcpCompute, "FirewallPolicy")},
+			"google_compute_firewall_policy_rule":        {Tok: gcpResource(gcpCompute, "FirewallPolicyRule")},
+			"google_compute_firewall_policy_association": {Tok: gcpResource(gcpCompute, "FirewallPolicyAssociation")},
+			"google_compute_forwarding_rule": {
+				Tok: gcpResource(gcpCompute, "ForwardingRule"),
+				TransformFromState: func(_ context.Context, pMap resource.PropertyMap) (resource.PropertyMap, error) {
+					// The service_directory_registrations field changes from [] in v6 to an object in v7.
+					// It appears that on early versions of v7, upstream has state migrators; they are lost by v7.38
+					// of this provider. See https://github.com/pulumi/pulumi-gcp/issues/2471.
+					pValue := resource.NewProperty(pMap)
+					serviceDirRegistrationsPath := resource.PropertyPath{"serviceDirectoryRegistrations"}
+					val, ok := serviceDirRegistrationsPath.Get(pValue)
+					if ok && val.IsArray() {
+						if len(val.ArrayValue()) > 0 {
+							serviceDirRegistrationsPath.Set(pValue, val.ArrayValue()[0])
+						} else {
+							// When the default value is [] in v6, which we need to translate to null in v7.38.0.
+							serviceDirRegistrationsPath.Set(pValue, resource.NewObjectProperty(nil))
+						}
+					}
+					return pValue.ObjectValue(), nil
+				},
+			},
 			"google_compute_external_vpn_gateway":          {Tok: gcpResource(gcpCompute, "ExternalVpnGateway")},
 			"google_compute_global_address":                {Tok: gcpResource(gcpCompute, "GlobalAddress")},
 			"google_compute_global_forwarding_rule":        {Tok: gcpResource(gcpCompute, "GlobalForwardingRule")},
