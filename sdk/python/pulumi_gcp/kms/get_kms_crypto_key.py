@@ -235,9 +235,6 @@ def get_kms_crypto_key(key_ring: Optional[str] = None,
         rotation_period=pulumi.get(__ret__, 'rotation_period'),
         skip_initial_version_creation=pulumi.get(__ret__, 'skip_initial_version_creation'),
         version_templates=pulumi.get(__ret__, 'version_templates'))
-
-
-@_utilities.lift_output_func(get_kms_crypto_key)
 def get_kms_crypto_key_output(key_ring: Optional[pulumi.Input[str]] = None,
                               name: Optional[pulumi.Input[str]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKMSCryptoKeyResult]:
@@ -267,4 +264,24 @@ def get_kms_crypto_key_output(key_ring: Optional[pulumi.Input[str]] = None,
     :param str name: The CryptoKey's name.
            A CryptoKey’s name belonging to the specified Google Cloud Platform KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
     """
-    ...
+    __args__ = dict()
+    __args__['keyRing'] = key_ring
+    __args__['name'] = name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:kms/getKMSCryptoKey:getKMSCryptoKey', __args__, opts=opts, typ=GetKMSCryptoKeyResult)
+    return __ret__.apply(lambda __response__: GetKMSCryptoKeyResult(
+        crypto_key_backend=pulumi.get(__response__, 'crypto_key_backend'),
+        destroy_scheduled_duration=pulumi.get(__response__, 'destroy_scheduled_duration'),
+        effective_labels=pulumi.get(__response__, 'effective_labels'),
+        id=pulumi.get(__response__, 'id'),
+        import_only=pulumi.get(__response__, 'import_only'),
+        key_access_justifications_policies=pulumi.get(__response__, 'key_access_justifications_policies'),
+        key_ring=pulumi.get(__response__, 'key_ring'),
+        labels=pulumi.get(__response__, 'labels'),
+        name=pulumi.get(__response__, 'name'),
+        primaries=pulumi.get(__response__, 'primaries'),
+        pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
+        purpose=pulumi.get(__response__, 'purpose'),
+        rotation_period=pulumi.get(__response__, 'rotation_period'),
+        skip_initial_version_creation=pulumi.get(__response__, 'skip_initial_version_creation'),
+        version_templates=pulumi.get(__response__, 'version_templates')))
