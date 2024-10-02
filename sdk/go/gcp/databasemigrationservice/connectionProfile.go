@@ -40,7 +40,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -246,7 +246,7 @@ import (
 //					Username:                    pulumi.String("username"),
 //					Password:                    pulumi.String("password"),
 //					DatabaseService:             pulumi.String("dbprovider"),
-//					StaticServiceIpConnectivity: nil,
+//					StaticServiceIpConnectivity: &databasemigrationservice.ConnectionProfileOracleStaticServiceIpConnectivityArgs{},
 //				},
 //			})
 //			if err != nil {
@@ -274,7 +274,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := organizations.LookupProject(ctx, nil, nil)
+//			_, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -327,7 +327,7 @@ import (
 //							MachineConfig: &databasemigrationservice.ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigArgs{
 //								CpuCount: pulumi.Int(2),
 //							},
-//							DatabaseFlags: nil,
+//							DatabaseFlags: pulumi.StringMap{},
 //							Labels: pulumi.StringMap{
 //								"alloysinstfoo": pulumi.String("allowinstbar"),
 //							},
@@ -361,7 +361,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := organizations.LookupProject(ctx, nil, nil)
+//			_, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -414,7 +414,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := organizations.LookupProject(ctx, nil, nil)
+//			_, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -469,7 +469,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := organizations.LookupProject(ctx, nil, nil)
+//			_, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

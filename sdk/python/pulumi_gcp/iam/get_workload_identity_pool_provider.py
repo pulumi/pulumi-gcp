@@ -226,9 +226,6 @@ def get_workload_identity_pool_provider(project: Optional[str] = None,
         workload_identity_pool_id=pulumi.get(__ret__, 'workload_identity_pool_id'),
         workload_identity_pool_provider_id=pulumi.get(__ret__, 'workload_identity_pool_provider_id'),
         x509s=pulumi.get(__ret__, 'x509s'))
-
-
-@_utilities.lift_output_func(get_workload_identity_pool_provider)
 def get_workload_identity_pool_provider_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                                                workload_identity_pool_id: Optional[pulumi.Input[str]] = None,
                                                workload_identity_pool_provider_id: Optional[pulumi.Input[str]] = None,
@@ -256,4 +253,25 @@ def get_workload_identity_pool_provider_output(project: Optional[pulumi.Input[Op
            
            - - -
     """
-    ...
+    __args__ = dict()
+    __args__['project'] = project
+    __args__['workloadIdentityPoolId'] = workload_identity_pool_id
+    __args__['workloadIdentityPoolProviderId'] = workload_identity_pool_provider_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:iam/getWorkloadIdentityPoolProvider:getWorkloadIdentityPoolProvider', __args__, opts=opts, typ=GetWorkloadIdentityPoolProviderResult)
+    return __ret__.apply(lambda __response__: GetWorkloadIdentityPoolProviderResult(
+        attribute_condition=pulumi.get(__response__, 'attribute_condition'),
+        attribute_mapping=pulumi.get(__response__, 'attribute_mapping'),
+        aws=pulumi.get(__response__, 'aws'),
+        description=pulumi.get(__response__, 'description'),
+        disabled=pulumi.get(__response__, 'disabled'),
+        display_name=pulumi.get(__response__, 'display_name'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        oidcs=pulumi.get(__response__, 'oidcs'),
+        project=pulumi.get(__response__, 'project'),
+        samls=pulumi.get(__response__, 'samls'),
+        state=pulumi.get(__response__, 'state'),
+        workload_identity_pool_id=pulumi.get(__response__, 'workload_identity_pool_id'),
+        workload_identity_pool_provider_id=pulumi.get(__response__, 'workload_identity_pool_provider_id'),
+        x509s=pulumi.get(__response__, 'x509s')))

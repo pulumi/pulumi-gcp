@@ -161,9 +161,6 @@ def get_tag_value(parent: Optional[str] = None,
         parent=pulumi.get(__ret__, 'parent'),
         short_name=pulumi.get(__ret__, 'short_name'),
         update_time=pulumi.get(__ret__, 'update_time'))
-
-
-@_utilities.lift_output_func(get_tag_value)
 def get_tag_value_output(parent: Optional[pulumi.Input[str]] = None,
                          short_name: Optional[pulumi.Input[str]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTagValueResult]:
@@ -184,4 +181,17 @@ def get_tag_value_output(parent: Optional[pulumi.Input[str]] = None,
     :param str parent: The resource name of the parent tagKey in format `tagKey/{name}`.
     :param str short_name: The tag value's short_name.
     """
-    ...
+    __args__ = dict()
+    __args__['parent'] = parent
+    __args__['shortName'] = short_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:tags/getTagValue:getTagValue', __args__, opts=opts, typ=GetTagValueResult)
+    return __ret__.apply(lambda __response__: GetTagValueResult(
+        create_time=pulumi.get(__response__, 'create_time'),
+        description=pulumi.get(__response__, 'description'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        namespaced_name=pulumi.get(__response__, 'namespaced_name'),
+        parent=pulumi.get(__response__, 'parent'),
+        short_name=pulumi.get(__response__, 'short_name'),
+        update_time=pulumi.get(__response__, 'update_time')))

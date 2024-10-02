@@ -161,9 +161,6 @@ def get_organization_policy(constraint: Optional[str] = None,
         restore_policies=pulumi.get(__ret__, 'restore_policies'),
         update_time=pulumi.get(__ret__, 'update_time'),
         version=pulumi.get(__ret__, 'version'))
-
-
-@_utilities.lift_output_func(get_organization_policy)
 def get_organization_policy_output(constraint: Optional[pulumi.Input[str]] = None,
                                    folder: Optional[pulumi.Input[str]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOrganizationPolicyResult]:
@@ -187,4 +184,18 @@ def get_organization_policy_output(constraint: Optional[pulumi.Input[str]] = Non
     :param str constraint: (Required) The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
     :param str folder: The resource name of the folder to set the policy for. Its format is folders/{folder_id}.
     """
-    ...
+    __args__ = dict()
+    __args__['constraint'] = constraint
+    __args__['folder'] = folder
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:folder/getOrganizationPolicy:getOrganizationPolicy', __args__, opts=opts, typ=GetOrganizationPolicyResult)
+    return __ret__.apply(lambda __response__: GetOrganizationPolicyResult(
+        boolean_policies=pulumi.get(__response__, 'boolean_policies'),
+        constraint=pulumi.get(__response__, 'constraint'),
+        etag=pulumi.get(__response__, 'etag'),
+        folder=pulumi.get(__response__, 'folder'),
+        id=pulumi.get(__response__, 'id'),
+        list_policies=pulumi.get(__response__, 'list_policies'),
+        restore_policies=pulumi.get(__response__, 'restore_policies'),
+        update_time=pulumi.get(__response__, 'update_time'),
+        version=pulumi.get(__response__, 'version')))
