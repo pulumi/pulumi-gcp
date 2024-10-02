@@ -396,9 +396,6 @@ def get_region_instance_group_manager(name: Optional[str] = None,
         versions=pulumi.get(__ret__, 'versions'),
         wait_for_instances=pulumi.get(__ret__, 'wait_for_instances'),
         wait_for_instances_status=pulumi.get(__ret__, 'wait_for_instances_status'))
-
-
-@_utilities.lift_output_func(get_region_instance_group_manager)
 def get_region_instance_group_manager_output(name: Optional[pulumi.Input[Optional[str]]] = None,
                                              project: Optional[pulumi.Input[Optional[str]]] = None,
                                              region: Optional[pulumi.Input[Optional[str]]] = None,
@@ -435,4 +432,42 @@ def get_region_instance_group_manager_output(name: Optional[pulumi.Input[Optiona
            * `Region` - (Optional) The region where the managed instance group resides. If not provided, the provider region is used.
     :param str self_link: The self link of the instance group. Either `name` or `self_link` must be provided.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['project'] = project
+    __args__['region'] = region
+    __args__['selfLink'] = self_link
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:compute/getRegionInstanceGroupManager:getRegionInstanceGroupManager', __args__, opts=opts, typ=GetRegionInstanceGroupManagerResult)
+    return __ret__.apply(lambda __response__: GetRegionInstanceGroupManagerResult(
+        all_instances_configs=pulumi.get(__response__, 'all_instances_configs'),
+        auto_healing_policies=pulumi.get(__response__, 'auto_healing_policies'),
+        base_instance_name=pulumi.get(__response__, 'base_instance_name'),
+        creation_timestamp=pulumi.get(__response__, 'creation_timestamp'),
+        description=pulumi.get(__response__, 'description'),
+        distribution_policy_target_shape=pulumi.get(__response__, 'distribution_policy_target_shape'),
+        distribution_policy_zones=pulumi.get(__response__, 'distribution_policy_zones'),
+        fingerprint=pulumi.get(__response__, 'fingerprint'),
+        id=pulumi.get(__response__, 'id'),
+        instance_group=pulumi.get(__response__, 'instance_group'),
+        instance_lifecycle_policies=pulumi.get(__response__, 'instance_lifecycle_policies'),
+        list_managed_instances_results=pulumi.get(__response__, 'list_managed_instances_results'),
+        name=pulumi.get(__response__, 'name'),
+        named_ports=pulumi.get(__response__, 'named_ports'),
+        params=pulumi.get(__response__, 'params'),
+        project=pulumi.get(__response__, 'project'),
+        region=pulumi.get(__response__, 'region'),
+        self_link=pulumi.get(__response__, 'self_link'),
+        standby_policies=pulumi.get(__response__, 'standby_policies'),
+        stateful_disks=pulumi.get(__response__, 'stateful_disks'),
+        stateful_external_ips=pulumi.get(__response__, 'stateful_external_ips'),
+        stateful_internal_ips=pulumi.get(__response__, 'stateful_internal_ips'),
+        statuses=pulumi.get(__response__, 'statuses'),
+        target_pools=pulumi.get(__response__, 'target_pools'),
+        target_size=pulumi.get(__response__, 'target_size'),
+        target_stopped_size=pulumi.get(__response__, 'target_stopped_size'),
+        target_suspended_size=pulumi.get(__response__, 'target_suspended_size'),
+        update_policies=pulumi.get(__response__, 'update_policies'),
+        versions=pulumi.get(__response__, 'versions'),
+        wait_for_instances=pulumi.get(__response__, 'wait_for_instances'),
+        wait_for_instances_status=pulumi.get(__response__, 'wait_for_instances_status')))
