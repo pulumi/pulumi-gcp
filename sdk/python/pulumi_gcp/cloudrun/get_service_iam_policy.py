@@ -141,9 +141,6 @@ def get_service_iam_policy(location: Optional[str] = None,
         policy_data=pulumi.get(__ret__, 'policy_data'),
         project=pulumi.get(__ret__, 'project'),
         service=pulumi.get(__ret__, 'service'))
-
-
-@_utilities.lift_output_func(get_service_iam_policy)
 def get_service_iam_policy_output(location: Optional[pulumi.Input[Optional[str]]] = None,
                                   project: Optional[pulumi.Input[Optional[str]]] = None,
                                   service: Optional[pulumi.Input[str]] = None,
@@ -170,4 +167,16 @@ def get_service_iam_policy_output(location: Optional[pulumi.Input[Optional[str]]
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
     :param str service: Used to find the parent resource to bind the IAM policy to
     """
-    ...
+    __args__ = dict()
+    __args__['location'] = location
+    __args__['project'] = project
+    __args__['service'] = service
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:cloudrun/getServiceIamPolicy:getServiceIamPolicy', __args__, opts=opts, typ=GetServiceIamPolicyResult)
+    return __ret__.apply(lambda __response__: GetServiceIamPolicyResult(
+        etag=pulumi.get(__response__, 'etag'),
+        id=pulumi.get(__response__, 'id'),
+        location=pulumi.get(__response__, 'location'),
+        policy_data=pulumi.get(__response__, 'policy_data'),
+        project=pulumi.get(__response__, 'project'),
+        service=pulumi.get(__response__, 'service')))

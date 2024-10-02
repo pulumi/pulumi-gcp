@@ -67,7 +67,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := appengine.GetDefaultServiceAccount(ctx, nil, nil)
+//			_default, err := appengine.GetDefaultServiceAccount(ctx, &appengine.GetDefaultServiceAccountArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -218,7 +218,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

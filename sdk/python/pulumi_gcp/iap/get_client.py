@@ -118,9 +118,6 @@ def get_client(brand: Optional[str] = None,
         display_name=pulumi.get(__ret__, 'display_name'),
         id=pulumi.get(__ret__, 'id'),
         secret=pulumi.get(__ret__, 'secret'))
-
-
-@_utilities.lift_output_func(get_client)
 def get_client_output(brand: Optional[pulumi.Input[str]] = None,
                       client_id: Optional[pulumi.Input[str]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClientResult]:
@@ -142,4 +139,14 @@ def get_client_output(brand: Optional[pulumi.Input[str]] = None,
     :param str brand: The name of the brand.
     :param str client_id: The client_id of the brand.
     """
-    ...
+    __args__ = dict()
+    __args__['brand'] = brand
+    __args__['clientId'] = client_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:iap/getClient:getClient', __args__, opts=opts, typ=GetClientResult)
+    return __ret__.apply(lambda __response__: GetClientResult(
+        brand=pulumi.get(__response__, 'brand'),
+        client_id=pulumi.get(__response__, 'client_id'),
+        display_name=pulumi.get(__response__, 'display_name'),
+        id=pulumi.get(__response__, 'id'),
+        secret=pulumi.get(__response__, 'secret')))

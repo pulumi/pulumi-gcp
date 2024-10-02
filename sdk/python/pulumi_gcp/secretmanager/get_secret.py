@@ -237,9 +237,6 @@ def get_secret(project: Optional[str] = None,
         ttl=pulumi.get(__ret__, 'ttl'),
         version_aliases=pulumi.get(__ret__, 'version_aliases'),
         version_destroy_ttl=pulumi.get(__ret__, 'version_destroy_ttl'))
-
-
-@_utilities.lift_output_func(get_secret)
 def get_secret_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                       secret_id: Optional[pulumi.Input[str]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecretResult]:
@@ -259,4 +256,26 @@ def get_secret_output(project: Optional[pulumi.Input[Optional[str]]] = None,
     :param str project: The ID of the project in which the resource belongs.
     :param str secret_id: The name of the secret.
     """
-    ...
+    __args__ = dict()
+    __args__['project'] = project
+    __args__['secretId'] = secret_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:secretmanager/getSecret:getSecret', __args__, opts=opts, typ=GetSecretResult)
+    return __ret__.apply(lambda __response__: GetSecretResult(
+        annotations=pulumi.get(__response__, 'annotations'),
+        create_time=pulumi.get(__response__, 'create_time'),
+        effective_annotations=pulumi.get(__response__, 'effective_annotations'),
+        effective_labels=pulumi.get(__response__, 'effective_labels'),
+        expire_time=pulumi.get(__response__, 'expire_time'),
+        id=pulumi.get(__response__, 'id'),
+        labels=pulumi.get(__response__, 'labels'),
+        name=pulumi.get(__response__, 'name'),
+        project=pulumi.get(__response__, 'project'),
+        pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
+        replications=pulumi.get(__response__, 'replications'),
+        rotations=pulumi.get(__response__, 'rotations'),
+        secret_id=pulumi.get(__response__, 'secret_id'),
+        topics=pulumi.get(__response__, 'topics'),
+        ttl=pulumi.get(__response__, 'ttl'),
+        version_aliases=pulumi.get(__response__, 'version_aliases'),
+        version_destroy_ttl=pulumi.get(__response__, 'version_destroy_ttl')))

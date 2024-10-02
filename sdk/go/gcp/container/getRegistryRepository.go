@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			foo, err := container.GetRegistryRepository(ctx, nil, nil)
+//			foo, err := container.GetRegistryRepository(ctx, &container.GetRegistryRepositoryArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

@@ -48,11 +48,11 @@ import (
 //				ControlPlane: &gkeonprem.BareMetalClusterControlPlaneArgs{
 //					ControlPlaneNodePoolConfig: &gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs{
 //						NodePoolConfig: &gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs{
-//							Labels:          nil,
+//							Labels:          pulumi.StringMap{},
 //							OperatingSystem: pulumi.String("LINUX"),
 //							NodeConfigs: gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArray{
 //								&gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs{
-//									Labels: nil,
+//									Labels: pulumi.StringMap{},
 //									NodeIp: pulumi.String("10.200.0.9"),
 //								},
 //							},
@@ -165,11 +165,11 @@ import (
 //				ControlPlane: &gkeonprem.BareMetalClusterControlPlaneArgs{
 //					ControlPlaneNodePoolConfig: &gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs{
 //						NodePoolConfig: &gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs{
-//							Labels:          nil,
+//							Labels:          pulumi.StringMap{},
 //							OperatingSystem: pulumi.String("LINUX"),
 //							NodeConfigs: gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArray{
 //								&gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs{
-//									Labels: nil,
+//									Labels: pulumi.StringMap{},
 //									NodeIp: pulumi.String("10.200.0.9"),
 //								},
 //							},
@@ -234,14 +234,14 @@ import (
 //				DisplayName:      pulumi.String("test-name"),
 //				BareMetalCluster: default_full.Name,
 //				Location:         pulumi.String("us-west1"),
-//				Annotations:      nil,
+//				Annotations:      pulumi.StringMap{},
 //				NodePoolConfig: &gkeonprem.BareMetalNodePoolNodePoolConfigArgs{
 //					OperatingSystem: pulumi.String("LINUX"),
-//					Labels:          nil,
+//					Labels:          pulumi.StringMap{},
 //					NodeConfigs: gkeonprem.BareMetalNodePoolNodePoolConfigNodeConfigArray{
 //						&gkeonprem.BareMetalNodePoolNodePoolConfigNodeConfigArgs{
 //							NodeIp: pulumi.String("10.200.0.11"),
-//							Labels: nil,
+//							Labels: pulumi.StringMap{},
 //						},
 //					},
 //					Taints: gkeonprem.BareMetalNodePoolNodePoolConfigTaintArray{
