@@ -1,0 +1,235 @@
+{
+  "version": 3,
+  "deployment": {
+    "manifest": {
+      "time": "2024-10-02T11:12:00.283018-07:00",
+      "magic": "02b3a134bb70d23935c3c31b7124749636668925e1a74bb685b46037e077887d",
+      "version": "v3.134.1"
+    },
+    "secrets_providers": {
+      "type": "passphrase",
+      "state": {
+        "salt": "v1:5wrUKJN+OzU=:v1:WKQrtRd52qbat029:73VkYgmyc8/5HvtpVs1iJIM9H4M6og=="
+      }
+    },
+    "resources": [
+      {
+        "urn": "urn:pulumi:test::test::pulumi:pulumi:Stack::test-test",
+        "custom": false,
+        "type": "pulumi:pulumi:Stack",
+        "created": "2024-10-02T18:11:35.129388Z",
+        "modified": "2024-10-02T18:11:35.129388Z"
+      },
+      {
+        "urn": "urn:pulumi:test::test::pulumi:providers:gcp::default",
+        "custom": true,
+        "id": "90353d8b-2a7a-48b7-86e5-a55a03e55c10",
+        "type": "pulumi:providers:gcp",
+        "inputs": {
+          "project": "pulumi-development"
+        },
+        "outputs": {
+          "project": "pulumi-development"
+        },
+        "created": "2024-10-02T18:11:36.234152Z",
+        "modified": "2024-10-02T18:11:36.234152Z"
+      },
+      {
+        "urn": "urn:pulumi:test::test::gcp:compute/regionHealthCheck:RegionHealthCheck::hc",
+        "custom": true,
+        "id": "projects/pulumi-development/regions/us-central1/healthChecks/check-website-backend",
+        "type": "gcp:compute/regionHealthCheck:RegionHealthCheck",
+        "inputs": {
+          "__defaults": [
+            "healthyThreshold",
+            "unhealthyThreshold"
+          ],
+          "checkIntervalSec": 1,
+          "healthyThreshold": 2,
+          "name": "check-website-backend",
+          "region": "us-central1",
+          "tcpHealthCheck": {
+            "__defaults": [
+              "proxyHeader"
+            ],
+            "port": 80,
+            "proxyHeader": "NONE"
+          },
+          "timeoutSec": 1,
+          "unhealthyThreshold": 2
+        },
+        "outputs": {
+          "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":1200000000000,\"delete\":1200000000000,\"update\":1200000000000}}",
+          "checkIntervalSec": 1,
+          "creationTimestamp": "2024-10-02T11:11:36.759-07:00",
+          "description": "",
+          "grpcHealthCheck": null,
+          "healthyThreshold": 2,
+          "http2HealthCheck": null,
+          "httpHealthCheck": null,
+          "httpsHealthCheck": null,
+          "id": "projects/pulumi-development/regions/us-central1/healthChecks/check-website-backend",
+          "logConfig": {
+            "enable": false
+          },
+          "name": "check-website-backend",
+          "project": "pulumi-development",
+          "region": "us-central1",
+          "selfLink": "https://www.googleapis.com/compute/v1/projects/pulumi-development/regions/us-central1/healthChecks/check-website-backend",
+          "sslHealthCheck": null,
+          "tcpHealthCheck": {
+            "port": 80,
+            "portName": "",
+            "portSpecification": "",
+            "proxyHeader": "NONE",
+            "request": "",
+            "response": ""
+          },
+          "timeoutSec": 1,
+          "type": "TCP",
+          "unhealthyThreshold": 2
+        },
+        "parent": "urn:pulumi:test::test::pulumi:pulumi:Stack::test-test",
+        "provider": "urn:pulumi:test::test::pulumi:providers:gcp::default::90353d8b-2a7a-48b7-86e5-a55a03e55c10",
+        "propertyDependencies": {
+          "checkIntervalSec": [],
+          "name": [],
+          "region": [],
+          "tcpHealthCheck": [],
+          "timeoutSec": []
+        },
+        "created": "2024-10-02T18:11:38.01824Z",
+        "modified": "2024-10-02T18:11:38.01824Z"
+      },
+      {
+        "urn": "urn:pulumi:test::test::gcp:compute/regionBackendService:RegionBackendService::backend",
+        "custom": true,
+        "id": "projects/pulumi-development/regions/us-central1/backendServices/website-backend",
+        "type": "gcp:compute/regionBackendService:RegionBackendService",
+        "inputs": {
+          "__defaults": [
+            "connectionDrainingTimeoutSec"
+          ],
+          "connectionDrainingTimeoutSec": 0,
+          "healthChecks": "projects/pulumi-development/regions/us-central1/healthChecks/check-website-backend",
+          "loadBalancingScheme": "EXTERNAL",
+          "name": "website-backend",
+          "region": "us-central1"
+        },
+        "outputs": {
+          "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":1200000000000,\"delete\":1200000000000,\"update\":1200000000000},\"schema_version\":\"1\"}",
+          "affinityCookieTtlSec": 0,
+          "backends": [],
+          "cdnPolicy": null,
+          "circuitBreakers": null,
+          "connectionDrainingTimeoutSec": 0,
+          "connectionTrackingPolicy": null,
+          "consistentHash": null,
+          "creationTimestamp": "2024-10-02T11:11:38.452-07:00",
+          "description": "",
+          "enableCdn": false,
+          "failoverPolicy": null,
+          "fingerprint": "bGJGZKzICaI=",
+          "healthChecks": "https://www.googleapis.com/compute/v1/projects/pulumi-development/regions/us-central1/healthChecks/check-website-backend",
+          "iap": null,
+          "id": "projects/pulumi-development/regions/us-central1/backendServices/website-backend",
+          "loadBalancingScheme": "EXTERNAL",
+          "localityLbPolicy": "",
+          "logConfig": null,
+          "name": "website-backend",
+          "network": "",
+          "outlierDetection": null,
+          "portName": "http",
+          "project": "pulumi-development",
+          "protocol": "TCP",
+          "region": "us-central1",
+          "securityPolicy": "",
+          "selfLink": "https://www.googleapis.com/compute/v1/projects/pulumi-development/regions/us-central1/backendServices/website-backend",
+          "sessionAffinity": "NONE",
+          "subsetting": null,
+          "timeoutSec": 30
+        },
+        "parent": "urn:pulumi:test::test::pulumi:pulumi:Stack::test-test",
+        "dependencies": [
+          "urn:pulumi:test::test::gcp:compute/regionHealthCheck:RegionHealthCheck::hc"
+        ],
+        "provider": "urn:pulumi:test::test::pulumi:providers:gcp::default::90353d8b-2a7a-48b7-86e5-a55a03e55c10",
+        "propertyDependencies": {
+          "healthChecks": [
+            "urn:pulumi:test::test::gcp:compute/regionHealthCheck:RegionHealthCheck::hc"
+          ],
+          "loadBalancingScheme": [],
+          "name": [],
+          "region": []
+        },
+        "created": "2024-10-02T18:11:49.283889Z",
+        "modified": "2024-10-02T18:11:49.283889Z"
+      },
+      {
+        "urn": "urn:pulumi:test::test::gcp:compute/forwardingRule:ForwardingRule::default",
+        "custom": true,
+        "id": "projects/pulumi-development/regions/us-central1/forwardingRules/website-forwarding-rule",
+        "type": "gcp:compute/forwardingRule:ForwardingRule",
+        "inputs": {
+          "__defaults": [
+            "loadBalancingScheme"
+          ],
+          "backendService": "projects/pulumi-development/regions/us-central1/backendServices/website-backend",
+          "loadBalancingScheme": "EXTERNAL",
+          "name": "website-forwarding-rule",
+          "portRange": "80",
+          "region": "us-central1"
+        },
+        "outputs": {
+          "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":1200000000000,\"delete\":1200000000000,\"update\":1200000000000}}",
+          "allPorts": false,
+          "allowGlobalAccess": false,
+          "allowPscGlobalAccess": false,
+          "backendService": "https://www.googleapis.com/compute/v1/projects/pulumi-development/regions/us-central1/backendServices/website-backend",
+          "baseForwardingRule": "",
+          "creationTimestamp": "2024-10-02T11:11:49.594-07:00",
+          "description": "",
+          "id": "projects/pulumi-development/regions/us-central1/forwardingRules/website-forwarding-rule",
+          "ipAddress": "34.29.157.136",
+          "ipProtocol": "TCP",
+          "ipVersion": "",
+          "isMirroringCollector": false,
+          "labelFingerprint": "42WmSpB8rSM=",
+          "labels": {},
+          "loadBalancingScheme": "EXTERNAL",
+          "name": "website-forwarding-rule",
+          "network": "",
+          "networkTier": "PREMIUM",
+          "portRange": "80-80",
+          "ports": [],
+          "project": "pulumi-development",
+          "pscConnectionId": "",
+          "pscConnectionStatus": "",
+          "region": "us-central1",
+          "selfLink": "https://www.googleapis.com/compute/v1/projects/pulumi-development/regions/us-central1/forwardingRules/website-forwarding-rule",
+          "serviceDirectoryRegistrations": [],
+          "serviceLabel": "",
+          "serviceName": "",
+          "sourceIpRanges": [],
+          "subnetwork": "",
+          "target": ""
+        },
+        "parent": "urn:pulumi:test::test::pulumi:pulumi:Stack::test-test",
+        "dependencies": [
+          "urn:pulumi:test::test::gcp:compute/regionBackendService:RegionBackendService::backend"
+        ],
+        "provider": "urn:pulumi:test::test::pulumi:providers:gcp::default::90353d8b-2a7a-48b7-86e5-a55a03e55c10",
+        "propertyDependencies": {
+          "backendService": [
+            "urn:pulumi:test::test::gcp:compute/regionBackendService:RegionBackendService::backend"
+          ],
+          "name": [],
+          "portRange": [],
+          "region": []
+        },
+        "created": "2024-10-02T18:12:00.27718Z",
+        "modified": "2024-10-02T18:12:00.27718Z"
+      }
+    ]
+  }
+}
