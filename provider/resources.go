@@ -2095,6 +2095,9 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "privileged_access_manager_entitlement.html.markdown",
 				},
 			},
+			"google_bigquery_table": {
+				DeleteBeforeReplace: true,
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Access Approval
