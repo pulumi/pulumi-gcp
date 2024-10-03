@@ -384,7 +384,7 @@ func writeStackExport(path string, snapshot *apitype.UntypedDeployment, overwrit
 		return fmt.Errorf("stack export must not be nil")
 	}
 	dir := filepath.Dir(path)
-	err := os.MkdirAll(dir, 0755)
+	err := os.MkdirAll(dir, 0o755)
 	if err != nil {
 		return err
 	}
@@ -399,8 +399,9 @@ func writeStackExport(path string, snapshot *apitype.UntypedDeployment, overwrit
 	if pathExists && !overwrite {
 		return fmt.Errorf("stack export already exists at %s", path)
 	}
-	return os.WriteFile(path, stackBytes, 0600)
+	return os.WriteFile(path, stackBytes, 0o600)
 }
+
 func exists(filePath string) (bool, error) {
 	_, err := os.Stat(filePath)
 	switch {
@@ -1313,4 +1314,24 @@ Resources:
 
 	// We should expect that we refresh cleanly
 	pt.Preview(t, optpreview.ExpectNoChanges())
+}
+
+func TestBigqueryMaterializedViewReplace(t *testing.T) {
+	pt := pulumiTest(t, "test-programs/bigquery-table-materialized-view")
+	pt.SetConfig(t, "gcpProj", getProject())
+	query1 := "SELECT * FROM ${defaultTable.datasetId}.${defaultTable.tableId}"
+	query2 := "SELECT * FROM ${defaultTable.datasetId}.${defaultTable.tableId} WHERE " +
+		"${defaultTable.tableId}.state = 'value'"
+
+	pulumiYAMLContents := pt.ReadPulumiYaml(t)
+
+	// replace query manually to avoid issues with variable interpolation
+	pulumiYAMLContents1 := strings.ReplaceAll(pulumiYAMLContents, "<QUERY>", query1)
+	pt.WritePulumiYaml(t, pulumiYAMLContents1)
+	pt.Up(t)
+
+	// replace query manually to avoid issues with variable interpolation
+	pulumiYAMLContents2 := strings.ReplaceAll(pulumiYAMLContents, "<QUERY>", query2)
+	pt.WritePulumiYaml(t, pulumiYAMLContents2)
+	pt.Up(t)
 }
