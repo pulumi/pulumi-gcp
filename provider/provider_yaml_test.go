@@ -148,9 +148,9 @@ func TestRegress1874(t *testing.T) {
 		opttest.DownloadProviderVersion("random", "4.16.0"),
 	)
 
-	test.Up()
+	test.Up(t)
 	// We would always produce a diff and updating fails after.
-	test.Up()
+	test.Up(t)
 }
 
 func TestWrongRegionWarning(t *testing.T) {
@@ -166,8 +166,8 @@ func TestWrongRegionWarning(t *testing.T) {
 		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")))
 
 	proj := os.Getenv("GOOGLE_PROJECT")
-	test.SetConfig("gcp:project", proj)
-	res := test.Up()
+	test.SetConfig(t, "gcp:project", proj)
+	res := test.Up(t)
 	require.Contains(
 		t, res.StdOut,
 		"region \"westus\" is not available for project \""+proj,
@@ -186,8 +186,8 @@ func TestNoGlobalProjectWarning(t *testing.T) {
 	test := pulumitest.NewPulumiTest(t, "test-programs/project-bucket",
 		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")))
 
-	test.SetConfig("gcpProj", proj)
-	res := test.Up()
+	test.SetConfig(t, "gcpProj", proj)
+	res := test.Up(t)
 	require.Contains(
 		t, res.StdOut,
 		"unable to detect a global setting for GCP Project.",
@@ -290,12 +290,12 @@ runtime:
 			},
 		})
 
-		res := pulumiTest.Preview()
+		res := pulumiTest.Preview(t)
 		t.Logf("stdout: %s \n", res.StdOut)
 		t.Logf("stderr: %s \n", res.StdErr)
 		assertpreview.HasNoChanges(t, res)
 
-		upResult := pulumiTest.Up()
+		upResult := pulumiTest.Up(t)
 		t.Logf("stdout: %s \n", upResult.StdOut)
 		t.Logf("stderr: %s \n", upResult.StdErr)
 	})
@@ -331,18 +331,18 @@ func testProviderCodeChanges(t *testing.T, opts *testProviderCodeChangesOptions)
 
 	firstTest := pulumitest.NewPulumiTest(t, workdir, options...)
 	googleProj := getProject()
-	firstTest.SetConfig("gcp:config:project", googleProj)
+	firstTest.SetConfig(t, "gcp:config:project", googleProj)
 
 	var export *apitype.UntypedDeployment
 	export, err = tryReadStackExport(stackExportFile)
 	if err != nil {
-		firstTest.Up()
-		grptLog := firstTest.GrpcLog()
+		firstTest.Up(t)
+		grptLog := firstTest.GrpcLog(t)
 		grpcLogPath := filepath.Join(workdir, "grpc.json")
 		t.Logf("writing grpc log to %s", grpcLogPath)
 		err = grptLog.WriteTo(grpcLogPath)
 		assert.NoError(t, err)
-		e := firstTest.ExportStack()
+		e := firstTest.ExportStack(t)
 		export = &e
 		err = writeStackExport(stackExportFile, export, true)
 		assert.NoError(t, err)
@@ -357,8 +357,8 @@ func testProviderCodeChanges(t *testing.T, opts *testProviderCodeChangesOptions)
 	err = os.WriteFile(filepath.Join(workdir, "Pulumi.yaml"), opts.secondProgram, 0o600)
 	require.NoError(t, err)
 	secondTest := pulumitest.NewPulumiTest(t, workdir, secondOptions...)
-	secondTest.ImportStack(*export)
-	secondTest.SetConfig("gcp:config:project", googleProj)
+	secondTest.ImportStack(t, *export)
+	secondTest.SetConfig(t, "gcp:config:project", googleProj)
 
 	return secondTest
 }
@@ -757,10 +757,10 @@ func TestEnvTokenNotInState(t *testing.T) {
 		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
 	)
 	googleProj := getProject()
-	test.SetConfig("gcp:config:project", googleProj)
+	test.SetConfig(t, "gcp:config:project", googleProj)
 
-	test.Up()
-	stack := test.ExportStack()
+	test.Up(t)
+	stack := test.ExportStack(t)
 	data, err := stack.Deployment.MarshalJSON()
 	require.NoError(t, err)
 	var stateMap map[string]interface{}
@@ -1081,7 +1081,7 @@ func TestImport(t *testing.T) {
 			}
 			test := pulumiTest(t, tc.programPath)
 
-			res := test.Up()
+			res := test.Up(t)
 			resourceID := res.Outputs["resourceId"].Value.(string)
 			resourceUrn := res.Outputs["resourceUrn"].Value.(string)
 
@@ -1093,7 +1093,7 @@ func TestImport(t *testing.T) {
 			pulumiTestDeleteFromState(t, test, resourceUrn)
 			pulumiTestImport(t, test, tc.resourceType, "resource", resourceID, providerUrn)
 
-			prevResult := test.Preview()
+			prevResult := test.Preview(t)
 			assertpreview.HasNoChanges(t, prevResult)
 		})
 	}
@@ -1101,33 +1101,33 @@ func TestImport(t *testing.T) {
 
 func TestFirestoreBackupScheduleNoPermadiff(t *testing.T) {
 	pt := pulumiTest(t, "test-programs/firestore-backup-schedule")
-	pt.Up()
-	pt.Preview(optpreview.ExpectNoChanges())
+	pt.Up(t)
+	pt.Preview(t, optpreview.ExpectNoChanges())
 }
 
 func TestPAMEntitlementPermadiffRegress2167(t *testing.T) {
 	pt := pulumiTest(t, "test-programs/pam-entitlement", opttest.DownloadProviderVersion("random", "4.16.3"))
 
 	proj := getProject()
-	pt.SetConfig("gcpProj", proj)
-	pt.Up()
-	pt.Preview(optpreview.ExpectNoChanges())
+	pt.SetConfig(t, "gcpProj", proj)
+	pt.Up(t)
+	pt.Preview(t, optpreview.ExpectNoChanges())
 }
 
 func TestFirestoreFieldPermadiffRegress2166(t *testing.T) {
 	pt := pulumiTest(t, "test-programs/firestore-field")
 
 	proj := getProject()
-	pt.SetConfig("gcpProj", proj)
-	pt.Up()
-	pt.Preview(optpreview.ExpectNoChanges())
+	pt.SetConfig(t, "gcpProj", proj)
+	pt.Up(t)
+	pt.Preview(t, optpreview.ExpectNoChanges())
 }
 
 func TestFirestoreDatabaseAutoname(t *testing.T) {
 	pt := pulumiTest(t, "test-programs/firestore-db-autoname")
 	proj := getProject()
-	pt.SetConfig("gcpProj", proj)
-	pt.Up()
+	pt.SetConfig(t, "gcpProj", proj)
+	pt.Up(t)
 }
 
 func TestEmptyLabels(t *testing.T) {
@@ -1227,20 +1227,20 @@ func TestEmptyLabels(t *testing.T) {
 		t.Run(tt.program, func(t *testing.T) {
 			pt := pulumiTest(t, "test-programs/"+tt.program)
 			proj := getProject()
-			pt.SetConfig("gcpProj", proj)
+			pt.SetConfig(t, "gcpProj", proj)
 
-			upResult := pt.Up(optup.SuppressProgress())
+			upResult := pt.Up(t, optup.SuppressProgress())
 			tt.upOutputs.Equal(t, upResult.Outputs)
 
-			pt.Preview(optpreview.ExpectNoChanges())
+			pt.Preview(t, optpreview.ExpectNoChanges())
 
 			// Refresh against upstream labels
-			pt.Refresh()
+			pt.Refresh(t)
 
-			pt.Refresh(optrefresh.ExpectNoChanges())
+			pt.Refresh(t, optrefresh.ExpectNoChanges())
 
 			// We should expect that we refresh cleanly
-			pt.Preview(optpreview.ExpectNoChanges())
+			pt.Preview(t, optpreview.ExpectNoChanges())
 		})
 	}
 }
@@ -1258,9 +1258,9 @@ func TestEmptyLabels(t *testing.T) {
 func TestUnmanagedEmptyLabels(t *testing.T) {
 	pt := pulumiTest(t, "test-programs/empty-unmanaged-label")
 	proj := getProject()
-	pt.SetConfig("gcpProj", proj)
+	pt.SetConfig(t, "gcpProj", proj)
 
-	previewResult := pt.Preview(optpreview.SuppressProgress())
+	previewResult := pt.Preview(t, optpreview.SuppressProgress())
 	autogold.Expect(`Previewing update (test):
 
  +  pulumi:pulumi:Stack dev-yaml-test create
@@ -1276,7 +1276,7 @@ Resources:
 
 `).Equal(t, previewResult.StdOut)
 
-	upResult := pt.Up()
+	upResult := pt.Up(t)
 	autogold.Expect(auto.OutputMap{
 		"effectiveLabels": auto.OutputValue{
 			Value:  map[string]interface{}{"goog-pulumi-provisioned": "true"},
@@ -1289,12 +1289,12 @@ Resources:
 		},
 	}).Equal(t, upResult.Outputs)
 
-	pt.Preview(optpreview.ExpectNoChanges())
+	pt.Preview(t, optpreview.ExpectNoChanges())
 
 	// Refresh against upstream labels
-	pt.Refresh() // This doesn't actually include a diff, but it does change state.
+	pt.Refresh(t) // This doesn't actually include a diff, but it does change state.
 
-	upResult = pt.Up() // This changes state, even though it should refresh cleanly.
+	upResult = pt.Up(t) // This changes state, even though it should refresh cleanly.
 	autogold.Expect(auto.OutputMap{
 		"effectiveLabels": auto.OutputValue{
 			Value: map[string]interface{}{
@@ -1312,5 +1312,5 @@ Resources:
 	}).Equal(t, upResult.Outputs)
 
 	// We should expect that we refresh cleanly
-	pt.Preview(optpreview.ExpectNoChanges())
+	pt.Preview(t, optpreview.ExpectNoChanges())
 }
