@@ -103,9 +103,9 @@ func testProviderUpgradeWithConfig(
 		opts = append(opts, opttest.DownloadProviderVersion(prov, version))
 	}
 	test := pulumitest.NewPulumiTest(t, dir, opts...)
-	test.SetConfig("gcp:config:project", testProject)
+	test.SetConfig(t, "gcp:config:project", testProject)
 	for k, v := range config {
-		test.SetConfig(k, v)
+		test.SetConfig(t, k, v)
 	}
 	// The SetConfig above does not seem to be working here.
 	t.Setenv("PULUMI_GCP_SKIP_REGION_VALIDATION", "true")
@@ -150,6 +150,6 @@ func pulumiTest(t *testing.T, dir string, opts ...opttest.Option) *pulumitest.Pu
 	test := pulumitest.NewPulumiTest(t, dir, options...)
 
 	googleProj := getProject()
-	test.SetConfig("gcp:config:project", googleProj)
+	test.SetConfig(t, "gcp:config:project", googleProj)
 	return test
 }

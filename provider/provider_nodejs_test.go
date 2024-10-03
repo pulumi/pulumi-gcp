@@ -26,7 +26,7 @@ func TestExplicitProviderTokenNotPlainText(t *testing.T) {
 		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
 	)
 
-	res := test.Up()
+	res := test.Up(t)
 	tokenExport := res.Outputs["token"]
 	require.True(t, tokenExport.Secret, "token should be marked as secret")
 }
@@ -42,8 +42,8 @@ func TestCloudrunServicePanicRegress2155(t *testing.T) {
 		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
 	)
 
-	test.Up()
-	test.Up()
+	test.Up(t)
+	test.Up(t)
 }
 
 func TestCloudfunctionWrongType(t *testing.T) {
