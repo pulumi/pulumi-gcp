@@ -145,9 +145,6 @@ def get_resources_search_all(asset_types: Optional[Sequence[str]] = None,
         query=pulumi.get(__ret__, 'query'),
         results=pulumi.get(__ret__, 'results'),
         scope=pulumi.get(__ret__, 'scope'))
-
-
-@_utilities.lift_output_func(get_resources_search_all)
 def get_resources_search_all_output(asset_types: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                     query: Optional[pulumi.Input[Optional[str]]] = None,
                                     scope: Optional[pulumi.Input[str]] = None,
@@ -191,4 +188,15 @@ def get_resources_search_all_output(asset_types: Optional[pulumi.Input[Optional[
     :param str query: The query statement. See [how to construct a query](https://cloud.google.com/asset-inventory/docs/searching-resources#how_to_construct_a_query) for more information. If not specified or empty, it will search all the resources within the specified `scope` and `asset_types`.
     :param str scope: A scope can be a project, a folder, or an organization. The allowed value must be: organization number (such as "organizations/123"), folder number (such as "folders/1234"), project number (such as "projects/12345") or project id (such as "projects/abc")
     """
-    ...
+    __args__ = dict()
+    __args__['assetTypes'] = asset_types
+    __args__['query'] = query
+    __args__['scope'] = scope
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:cloudasset/getResourcesSearchAll:getResourcesSearchAll', __args__, opts=opts, typ=GetResourcesSearchAllResult)
+    return __ret__.apply(lambda __response__: GetResourcesSearchAllResult(
+        asset_types=pulumi.get(__response__, 'asset_types'),
+        id=pulumi.get(__response__, 'id'),
+        query=pulumi.get(__response__, 'query'),
+        results=pulumi.get(__response__, 'results'),
+        scope=pulumi.get(__response__, 'scope')))

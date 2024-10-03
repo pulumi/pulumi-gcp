@@ -109,7 +109,7 @@ import (
 //					IntegrationType: pulumi.String("SCORE"),
 //					AllowAllDomains: pulumi.Bool(true),
 //				},
-//				Labels: nil,
+//				Labels: pulumi.StringMap{},
 //			})
 //			if err != nil {
 //				return err
