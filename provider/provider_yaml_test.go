@@ -24,7 +24,6 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
-	"path"
 	"path/filepath"
 	"strings"
 	"testing"
@@ -1319,24 +1318,20 @@ Resources:
 
 func TestBigqueryMaterializedViewReplace(t *testing.T) {
 	pt := pulumiTest(t, "test-programs/bigquery-table-materialized-view")
-	pt.SetConfig("gcpProj", getProject())
+	pt.SetConfig(t, "gcpProj", getProject())
 	query1 := "SELECT * FROM ${defaultTable.datasetId}.${defaultTable.tableId}"
 	query2 := "SELECT * FROM ${defaultTable.datasetId}.${defaultTable.tableId} WHERE " +
 		"${defaultTable.tableId}.state = 'value'"
 
-	pulumiYAML := path.Join(pt.CurrentStack().Workspace().WorkDir(), "Pulumi.yaml")
-	pulumiYAMLContents, err := os.ReadFile(pulumiYAML)
-	require.NoError(t, err)
+	pulumiYAMLContents := pt.ReadPulumiYaml(t)
 
 	// replace query manually to avoid issues with variable interpolation
-	pulumiYAMLContents1 := bytes.ReplaceAll(pulumiYAMLContents, []byte("<QUERY>"), []byte(query1))
-	err = os.WriteFile(pulumiYAML, pulumiYAMLContents1, 0o600)
-	require.NoError(t, err)
-	pt.Up()
+	pulumiYAMLContents1 := strings.ReplaceAll(pulumiYAMLContents, "<QUERY>", query1)
+	pt.WritePulumiYaml(t, pulumiYAMLContents1)
+	pt.Up(t)
 
 	// replace query manually to avoid issues with variable interpolation
-	pulumiYAMLContents2 := bytes.ReplaceAll(pulumiYAMLContents, []byte("<QUERY>"), []byte(query2))
-	err = os.WriteFile(pulumiYAML, pulumiYAMLContents2, 0o600)
-	require.NoError(t, err)
-	pt.Up()
+	pulumiYAMLContents2 := strings.ReplaceAll(pulumiYAMLContents, "<QUERY>", query2)
+	pt.WritePulumiYaml(t, pulumiYAMLContents2)
+	pt.Up(t)
 }
