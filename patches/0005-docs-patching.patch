@@ -160,10 +160,10 @@ index ab54b615d..2ed6376e4 100644
  * `default_expiration` -
    (Optional)
 diff --git a/website/docs/r/bigquery_job.html.markdown b/website/docs/r/bigquery_job.html.markdown
-index e3f4654b4..5ebc3ee84 100644
+index 171bd1a29..7f53f8286 100644
 --- a/website/docs/r/bigquery_job.html.markdown
 +++ b/website/docs/r/bigquery_job.html.markdown
-@@ -721,8 +721,8 @@ The following arguments are supported:
+@@ -720,8 +720,8 @@ The following arguments are supported:
  
  * `null_marker` -
    (Optional)
@@ -388,7 +388,7 @@ index a68f58813..650247567 100644
    **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
    Please refer to the field `effective_annotations` for all of the annotations present on the resource.
 diff --git a/website/docs/r/cloud_run_service.html.markdown b/website/docs/r/cloud_run_service.html.markdown
-index 1397d5627..0fcdca361 100644
+index d0f703f9e..fa7466a76 100644
 --- a/website/docs/r/cloud_run_service.html.markdown
 +++ b/website/docs/r/cloud_run_service.html.markdown
 @@ -31,8 +31,63 @@ To get more information about Service, see:
@@ -465,7 +465,7 @@ index 1397d5627..0fcdca361 100644
        }
      }
    }
-@@ -383,7 +438,7 @@ The following arguments are supported:
+@@ -382,7 +437,7 @@ The following arguments are supported:
    may be set by external tools to store and retrieve arbitrary metadata.
    More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
    **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
@@ -474,7 +474,7 @@ index 1397d5627..0fcdca361 100644
    or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
    Annotations with `run.googleapis.com/` and `autoscaling.knative.dev` are restricted. Use the following annotation
    keys to configure features on a Revision template:
-@@ -539,7 +594,8 @@ The following arguments are supported:
+@@ -538,7 +593,8 @@ The following arguments are supported:
  
  * `liveness_probe` -
    (Optional)
@@ -484,7 +484,7 @@ index 1397d5627..0fcdca361 100644
    Structure is [documented below](#nested_liveness_probe).
  
  
-@@ -1042,7 +1098,7 @@ this field is set to false, the revision name will still autogenerate.)
+@@ -1041,7 +1097,7 @@ this field is set to false, the revision name will still autogenerate.)
    may be set by external tools to store and retrieve arbitrary metadata.
    More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
    **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
@@ -590,7 +590,7 @@ index 0a305240d..845f44993 100644
  ## Example Usage - Backend Bucket Signed Url Key
  
 diff --git a/website/docs/r/compute_backend_service.html.markdown b/website/docs/r/compute_backend_service.html.markdown
-index ed4537219..973c11834 100644
+index 6a4c84a9b..540444f37 100644
 --- a/website/docs/r/compute_backend_service.html.markdown
 +++ b/website/docs/r/compute_backend_service.html.markdown
 @@ -36,7 +36,6 @@ To get more information about BackendService, see:
@@ -682,7 +682,7 @@ index f9cad9040..243ba6fd0 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_instance.html.markdown b/website/docs/r/compute_instance.html.markdown
-index e1bea1efa..c5c69ad43 100644
+index ab0e0f752..21590348d 100644
 --- a/website/docs/r/compute_instance.html.markdown
 +++ b/website/docs/r/compute_instance.html.markdown
 @@ -138,7 +138,7 @@ The following arguments are supported:
@@ -839,7 +839,7 @@ index fe6888f17..64fce6636 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_instance_template.html.markdown b/website/docs/r/compute_instance_template.html.markdown
-index 009a38511..17141e4b0 100644
+index e02439fe1..8e715aedd 100644
 --- a/website/docs/r/compute_instance_template.html.markdown
 +++ b/website/docs/r/compute_instance_template.html.markdown
 @@ -183,12 +183,11 @@ resource "google_compute_instance_template" "foobar" {
@@ -1537,7 +1537,7 @@ index e96d17f09..bbd005a6a 100644
  resource "google_compute_ssl_certificate" "default" {
    name_prefix = "my-certificate-"
 diff --git a/website/docs/r/compute_subnetwork.html.markdown b/website/docs/r/compute_subnetwork.html.markdown
-index c68c72847..bdd8ac3d3 100644
+index 70ca4fdf5..b666f220d 100644
 --- a/website/docs/r/compute_subnetwork.html.markdown
 +++ b/website/docs/r/compute_subnetwork.html.markdown
 @@ -391,9 +391,6 @@ The following arguments are supported:
@@ -3261,7 +3261,7 @@ index 9a3a1f78f..6f8ccd37e 100644
    the sensitive_labels block, but cannot be configured in both places.
  
 diff --git a/website/docs/r/monitoring_slo.html.markdown b/website/docs/r/monitoring_slo.html.markdown
-index b01ea138a..adde89f07 100644
+index 364042a24..2559d9137 100644
 --- a/website/docs/r/monitoring_slo.html.markdown
 +++ b/website/docs/r/monitoring_slo.html.markdown
 @@ -53,7 +53,7 @@ resource "google_monitoring_slo" "appeng_slo" {
@@ -3522,7 +3522,7 @@ index 9b20a7b7a..66450ccd7 100644
  ```hcl
  data "google_iam_policy" "admin" {
 diff --git a/website/docs/r/service_usage_consumer_quota_override.html.markdown b/website/docs/r/service_usage_consumer_quota_override.html.markdown
-index 2a26be005..c4d37a97e 100644
+index bde87ca55..099c538b8 100644
 --- a/website/docs/r/service_usage_consumer_quota_override.html.markdown
 +++ b/website/docs/r/service_usage_consumer_quota_override.html.markdown
 @@ -23,9 +23,6 @@ A consumer override is applied to the consumer on its own authority to limit its
@@ -3533,8 +3533,8 @@ index 2a26be005..c4d37a97e 100644
 -See [Provider Versions](https://terraform.io/docs/providers/google/guides/provider_versions.html) for more details on beta resources.
 -
  To get more information about ConsumerQuotaOverride, see:
- 
  * How-to Guides
+     * [Managing Service Quota](https://cloud.google.com/service-usage/docs/manage-quota )
 diff --git a/website/docs/r/spanner_database.html.markdown b/website/docs/r/spanner_database.html.markdown
 index 2ac02739f..da87bdaae 100644
 --- a/website/docs/r/spanner_database.html.markdown
@@ -3819,15 +3819,15 @@ index 368f1e7fd..57ee39c9d 100644
  
  Only the arguments listed above are exposed as attributes.
 diff --git a/website/docs/r/tpu_node.html.markdown b/website/docs/r/tpu_node.html.markdown
-index 3420dc7dc..9af308f7c 100644
+index 30f363961..b204f2261 100644
 --- a/website/docs/r/tpu_node.html.markdown
 +++ b/website/docs/r/tpu_node.html.markdown
-@@ -66,7 +66,7 @@ resource "google_tpu_node" "tpu" {
+@@ -64,7 +64,7 @@ resource "google_tpu_node" "tpu" {
  
    tensorflow_version = data.google_tpu_tensorflow_versions.available.versions[0]
  
 -  description = "Terraform Google Provider test TPU"
 +  description = "Google Provider test TPU"
    use_service_networking = true
+ network = google_service_networking_connection.private_service_connection.network
  
-   network = google_service_networking_connection.private_service_connection.network

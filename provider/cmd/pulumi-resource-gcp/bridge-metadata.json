@@ -5426,6 +5426,16 @@
                                 }
                             }
                         }
+                    },
+                    "strong_session_affinity_cookie": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "ttl": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -7221,6 +7231,16 @@
                                     "maxItemsOne": true
                                 },
                                 "interval": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "strong_session_affinity_cookie": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "ttl": {
                                     "maxItemsOne": true
                                 }
                             }
@@ -10018,6 +10038,9 @@
                                 }
                             }
                         }
+                    },
+                    "kubelet_config": {
+                        "maxItemsOne": true
                     },
                     "management": {
                         "maxItemsOne": true
@@ -14307,6 +14330,125 @@
             "google_dataproc_autoscaling_policy_iam_policy": {
                 "current": "gcp:dataproc/autoscalingPolicyIamPolicy:AutoscalingPolicyIamPolicy",
                 "majorVersion": 8
+            },
+            "google_dataproc_batch": {
+                "current": "gcp:dataproc/batch:Batch",
+                "majorVersion": 8,
+                "fields": {
+                    "environment_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "execution_config": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "network_tags": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "peripherals_config": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "spark_history_server_config": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "pyspark_batch": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "archive_uris": {
+                                    "maxItemsOne": false
+                                },
+                                "args": {
+                                    "maxItemsOne": false
+                                },
+                                "file_uris": {
+                                    "maxItemsOne": false
+                                },
+                                "jar_file_uris": {
+                                    "maxItemsOne": false
+                                },
+                                "python_file_uris": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "runtime_config": {
+                        "maxItemsOne": true
+                    },
+                    "runtime_info": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "approximate_usage": {
+                                    "maxItemsOne": false
+                                },
+                                "current_usage": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "spark_batch": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "archive_uris": {
+                                    "maxItemsOne": false
+                                },
+                                "args": {
+                                    "maxItemsOne": false
+                                },
+                                "file_uris": {
+                                    "maxItemsOne": false
+                                },
+                                "jar_file_uris": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "spark_r_batch": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "archive_uris": {
+                                    "maxItemsOne": false
+                                },
+                                "args": {
+                                    "maxItemsOne": false
+                                },
+                                "file_uris": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "spark_sql_batch": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "jar_file_uris": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "state_history": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "google_dataproc_cluster": {
                 "current": "gcp:dataproc/cluster:Cluster",
@@ -19361,6 +19503,52 @@
             "google_healthcare_hl7_v2_store_iam_policy": {
                 "current": "gcp:healthcare/hl7StoreIamPolicy:Hl7StoreIamPolicy",
                 "majorVersion": 8
+            },
+            "google_healthcare_pipeline_job": {
+                "current": "gcp:healthcare/pipelineJob:PipelineJob",
+                "majorVersion": 8,
+                "fields": {
+                    "backfill_pipeline_job": {
+                        "maxItemsOne": true
+                    },
+                    "mapping_pipeline_job": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "fhir_streaming_source": {
+                                    "maxItemsOne": true
+                                },
+                                "mapping_config": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "whistle_config_source": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "reconciliation_pipeline_job": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "merge_config": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "whistle_config_source": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "google_healthcare_workspace": {
                 "current": "gcp:healthcare/workspace:Workspace",
@@ -24604,6 +24792,25 @@
                             "fields": {
                                 "aws_kinesis": {
                                     "maxItemsOne": true
+                                },
+                                "cloud_storage": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "avro_format": {
+                                                "maxItemsOne": true
+                                            },
+                                            "pubsub_avro_format": {
+                                                "maxItemsOne": true
+                                            },
+                                            "text_format": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
+                                "platform_logs_settings": {
+                                    "maxItemsOne": true
                                 }
                             }
                         }
@@ -25783,6 +25990,10 @@
             },
             "google_service_usage_consumer_quota_override": {
                 "current": "gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride",
+                "majorVersion": 8
+            },
+            "google_site_verification_owner": {
+                "current": "gcp:siteverification/owner:Owner",
                 "majorVersion": 8
             },
             "google_site_verification_web_resource": {
@@ -29182,6 +29393,16 @@
                                 }
                             }
                         }
+                    },
+                    "strong_session_affinity_cookie": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "ttl": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -32480,6 +32701,25 @@
                             "fields": {
                                 "aws_kinesis": {
                                     "maxItemsOne": false
+                                },
+                                "cloud_storage": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "avro_format": {
+                                                "maxItemsOne": false
+                                            },
+                                            "pubsub_avro_format": {
+                                                "maxItemsOne": false
+                                            },
+                                            "text_format": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "platform_logs_settings": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -33781,6 +34021,10 @@
                 "effective_labels",
                 "terraform_labels"
             ],
+            "google_dataproc_batch": [
+                "effective_labels",
+                "terraform_labels"
+            ],
             "google_dataproc_cluster": [
                 "effective_labels",
                 "terraform_labels"
@@ -33914,6 +34158,10 @@
                 "terraform_labels"
             ],
             "google_healthcare_hl7_v2_store": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_healthcare_pipeline_job": [
                 "effective_labels",
                 "terraform_labels"
             ],
@@ -34896,6 +35144,7 @@
             "gcp:dataproc/autoscalingPolicyIamBinding:AutoscalingPolicyIamBinding": 0,
             "gcp:dataproc/autoscalingPolicyIamMember:AutoscalingPolicyIamMember": 0,
             "gcp:dataproc/autoscalingPolicyIamPolicy:AutoscalingPolicyIamPolicy": 0,
+            "gcp:dataproc/batch:Batch": 0,
             "gcp:dataproc/cluster:Cluster": 0,
             "gcp:dataproc/clusterIAMBinding:ClusterIAMBinding": 0,
             "gcp:dataproc/clusterIAMMember:ClusterIAMMember": 0,
@@ -35052,6 +35301,7 @@
             "gcp:healthcare/hl7StoreIamBinding:Hl7StoreIamBinding": 0,
             "gcp:healthcare/hl7StoreIamMember:Hl7StoreIamMember": 0,
             "gcp:healthcare/hl7StoreIamPolicy:Hl7StoreIamPolicy": 0,
+            "gcp:healthcare/pipelineJob:PipelineJob": 0,
             "gcp:healthcare/workspace:Workspace": 0,
             "gcp:iam/accessBoundaryPolicy:AccessBoundaryPolicy": 0,
             "gcp:iam/denyPolicy:DenyPolicy": 0,
@@ -35342,6 +35592,7 @@
             "gcp:servicenetworking/peeredDnsDomain:PeeredDnsDomain": 0,
             "gcp:servicenetworking/vpcServiceControls:VpcServiceControls": 0,
             "gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride": 0,
+            "gcp:siteverification/owner:Owner": 0,
             "gcp:siteverification/webResource:WebResource": 0,
             "gcp:sourcerepo/repository:Repository": 0,
             "gcp:sourcerepo/repositoryIamBinding:RepositoryIamBinding": 0,
