@@ -32,6 +32,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
+	"github.com/pulumi/providertest/optproviderupgrade"
 	"github.com/pulumi/providertest/pulumitest"
 	"github.com/pulumi/providertest/pulumitest/assertpreview"
 	"github.com/pulumi/providertest/pulumitest/optnewstack"
@@ -45,55 +46,54 @@ import (
 )
 
 func TestDNSRecordSetUpgrade(t *testing.T) {
-	testProviderUpgrade(t, "test-programs/dns-recordset")
+	testUpgrade(t, "test-programs/dns-recordset")
 }
 
 func TestPubSubSubscriptionUpgrade(t *testing.T) {
-	testProviderUpgrade(t, "test-programs/pubsub-subscription")
+	testUpgrade(t, "test-programs/pubsub-subscription")
 }
 
 func TestPubSubTopicUpgrade(t *testing.T) {
-	testProviderUpgrade(t, "test-programs/pubsub-topic")
+	testUpgrade(t, "test-programs/pubsub-topic")
 }
 
 func TestStorageBucketUpgrade(t *testing.T) {
-	testProviderUpgrade(t, "test-programs/storage-bucket")
+	testUpgrade(t, "test-programs/storage-bucket")
 }
 
 func TestStorageBucketObjectUpgrade(t *testing.T) {
 	t.Skipf("TODO[pulumi/pulumi-gcp#1607] temporarily skipping failing test")
-	testProviderUpgrade(t, "test-programs/storage-bucketobject")
+	testUpgrade(t, "test-programs/storage-bucketobject")
 }
 
 func TestSecretManagerSecretUpgrade(t *testing.T) {
-	testProviderUpgrade(t, "test-programs/secretmanager-secret")
+	testUpgrade(t, "test-programs/secretmanager-secret")
 }
 
 func TestSqlUserUpgrade(t *testing.T) {
-	testProviderUpgrade(t, "test-programs/sql-user")
+	testUpgrade(t, "test-programs/sql-user")
 }
 
 func TestBigQueryTableUpgrade(t *testing.T) {
-	testProviderUpgrade(t, "test-programs/bigquery-table", WithConfig(map[string]string{
-		"datasetID": "dspitrunnerbigqueryt4b22ee25",
-	}))
+	testUpgrade(t, "test-programs/bigquery-table")
 }
 
 func TestComputeFirewallUpgrade(t *testing.T) {
-	testProviderUpgrade(t, "test-programs/compute-firewall")
+	testUpgrade(t, "test-programs/compute-firewall")
 }
 
 func TestCloudFunctionUpgrade(t *testing.T) {
-	testProviderUpgrade(t, "test-programs/cloudfunctions-function")
+	testUpgrade(t, "test-programs/cloudfunctions-function")
 }
 
 func TestNetworkUpgrade(t *testing.T) {
 	t.Skipf("Flakey: see https://github.com/pulumi/pulumi-gcp/issues/1655 for details")
-	testProviderUpgrade(t, "test-programs/network")
+	testUpgrade(t, "test-programs/network")
 }
 
 func TestClusterUpgrade(t *testing.T) {
-	testProviderUpgrade(t, "test-programs/cluster", WithBaselineVersion("7.2.1"))
+	testUpgrade(t, "test-programs/cluster",
+		optproviderupgrade.BaselineOpts(opttest.DownloadProviderVersion(providerName, "7.2.1")))
 }
 
 func skipIfNotCI(t *testing.T) {
@@ -105,46 +105,49 @@ func skipIfNotCI(t *testing.T) {
 func TestIamBinding(t *testing.T) {
 	skipIfNotCI(t)
 	// ServiceAccount requires 7.0
-	testProviderUpgrade(t, "test-programs/iam-binding", WithBaselineVersion("7.0.0"))
+	testUpgrade(t, "test-programs/iam-binding",
+		optproviderupgrade.BaselineOpts(opttest.DownloadProviderVersion(providerName, "7.0.0")))
 }
 
 func TestIamMember(t *testing.T) {
 	skipIfNotCI(t)
 	// ServiceAccount requires 7.0
-	testProviderUpgrade(t, "test-programs/iam-member", WithBaselineVersion("7.0.0"))
+	testUpgrade(t, "test-programs/iam-member",
+		optproviderupgrade.BaselineOpts(opttest.DownloadProviderVersion(providerName, "7.0.0")))
 }
 
 func TestLogSink(t *testing.T) {
 	skipIfNotCI(t)
 	// ServiceAccount requires 7.0
-	testProviderUpgrade(t, "test-programs/logsink", WithBaselineVersion("7.0.0"))
+	testUpgrade(t, "test-programs/logsink",
+		optproviderupgrade.BaselineOpts(opttest.DownloadProviderVersion(providerName, "7.0.0")))
 }
 
 func TestTopicIamBinding(t *testing.T) {
 	skipIfNotCI(t)
 	// ServiceAccount requires 7.0
-	testProviderUpgrade(t, "test-programs/topic-iam-binding", WithBaselineVersion("7.0.0"))
+	testUpgrade(t, "test-programs/topic-iam-binding",
+		optproviderupgrade.BaselineOpts(opttest.DownloadProviderVersion(providerName, "7.0.0")))
 }
 
 func TestConnectionProfileUpgrade(t *testing.T) {
-	testProviderUpgrade(t, "test-programs/connection-profile", WithAssertFunc(assertpreview.HasNoChanges),
-		WithAdditionalProvider("random", "4.16.0"))
+	res := testUpgrade(t, "test-programs/connection-profile",
+		optproviderupgrade.BaselineOpts(opttest.DownloadProviderVersion("random", "4.16.0")))
+	assertpreview.HasNoChanges(t, res)
 }
 
 func TestConnectionProfileUpgradev7(t *testing.T) {
-	testProviderUpgrade(t, "test-programs/connection-profile", WithAssertFunc(assertpreview.HasNoChanges),
-		WithBaselineVersion("7.17.0"), WithAdditionalProvider("random", "4.16.0"))
+	res := testUpgrade(t, "test-programs/connection-profile",
+		optproviderupgrade.BaselineOpts(
+			opttest.DownloadProviderVersion("random", "4.16.0"),
+			opttest.DownloadProviderVersion(providerName, "7.17.0")),
+	)
+	assertpreview.HasNoChanges(t, res)
 }
 
 // Regression test for https://github.com/pulumi/pulumi-gcp/issues/1874
 func TestRegress1874(t *testing.T) {
-	if testing.Short() {
-		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without GCP creds")
-	}
-	cwd, err := os.Getwd()
-	require.NoError(t, err)
-	test := pulumitest.NewPulumiTest(t, "test-programs/connection-profile",
-		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
+	test := pulumiTest(t, "test-programs/connection-profile",
 		opttest.DownloadProviderVersion("random", "4.16.0"),
 	)
 
@@ -219,7 +222,7 @@ func TestAutoExtractedProgramsUpgrade(t *testing.T) {
 		tc := tc
 		t.Run(tc.program, func(t *testing.T) {
 			d := filepath.Join("test-programs", tc.program)
-			testProviderUpgrade(t, d)
+			testUpgrade(t, d)
 		})
 	}
 }
@@ -752,13 +755,7 @@ func TestEnvTokenNotInState(t *testing.T) {
 		t.Fatal(string(errMsg))
 	}
 	t.Setenv("GOOGLE_OAUTH_ACCESS_TOKEN", outputStr)
-	cwd, err := os.Getwd()
-	require.NoError(t, err)
-	test := pulumitest.NewPulumiTest(t, filepath.Join("test-programs", "storage-bucket"),
-		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
-	)
-	googleProj := getProject()
-	test.SetConfig(t, "gcp:config:project", googleProj)
+	test := pulumiTest(t, filepath.Join("test-programs", "storage-bucket"))
 
 	test.Up(t)
 	stack := test.ExportStack(t)

@@ -1,9 +1,6 @@
 name: test
 runtime:
     name: yaml
-config:
-  datasetID:
-    type: string
 resources:
     provider:
         type: pulumi:providers:gcp
@@ -35,7 +32,7 @@ resources:
         options:
             provider: ${provider}
         properties:
-            datasetId: ${datasetID}
+            datasetId: dspitrunnerbigqueryt4b22ee25
             defaultTableExpirationMs: 3.6e+06
             description: This is a test description
             friendlyName: test
