@@ -12,8 +12,8 @@ require (
 	github.com/pulumi/providertest v0.1.3
 	github.com/pulumi/pulumi-terraform-bridge/pf v0.44.1
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.91.1
-	github.com/pulumi/pulumi/pkg/v3 v3.135.0
-	github.com/pulumi/pulumi/sdk/v3 v3.135.0
+	github.com/pulumi/pulumi/pkg/v3 v3.133.0
+	github.com/pulumi/pulumi/sdk/v3 v3.133.0
 	github.com/stretchr/testify v1.9.0
 	google.golang.org/api v0.193.0
 	sourcegraph.com/sourcegraph/appdash v0.0.0-20211028080628-e2786a622600
@@ -24,7 +24,7 @@ replace (
 	github.com/hashicorp/terraform-provider-google-beta => ../upstream
 	github.com/hashicorp/vault => github.com/hashicorp/vault v1.2.0
 	// Until we propagate this from the bridge, replace this here to fix a panic
-	github.com/pulumi/pulumi-terraform-bridge/x/muxer => github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.9
+	github.com/pulumi/pulumi-terraform-bridge/x/muxer => github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.10
 )
 
 require (
