@@ -86,13 +86,17 @@ func testUpgrade(t *testing.T, dir string, opts ...optproviderupgrade.PreviewPro
 	}
 
 	rpFactory := providers.ResourceProviderFactory(providerFactory)
-	cacheDir := providertest.GetUpgradeCacheDir(filepath.Base(dir), defaultBaselineVersion)
 	pt := pulumitest.NewPulumiTest(t, dir,
-		opttest.AttachProvider(providerName,
-			rpFactory.ReplayInvokes(filepath.Join(cacheDir, "grpc.json"), false /* allowLiveFallback */)))
+		opttest.AttachProvider(providerName, rpFactory))
 	googleProj := getProject()
 	pt.SetConfig(t, "gcp:config:project", googleProj)
-	previewResult := providertest.PreviewProviderUpgrade(t, pt, providerName, defaultBaselineVersion, opts...)
+
+	upgradeOpts := []optproviderupgrade.PreviewProviderUpgradeOpt{
+		optproviderupgrade.DisableAttach(),
+	}
+	upgradeOpts = append(upgradeOpts, opts...)
+	previewResult := providertest.PreviewProviderUpgrade(t, pt, providerName, defaultBaselineVersion, upgradeOpts...)
+
 	assertpreview.HasNoReplacements(t, previewResult)
 	assertpreview.HasNoDeletes(t, previewResult)
 	return previewResult
