@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			available, err := compute.GetRegions(ctx, nil, nil)
+//			available, err := compute.GetRegions(ctx, &compute.GetRegionsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

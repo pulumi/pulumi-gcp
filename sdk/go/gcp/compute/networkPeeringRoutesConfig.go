@@ -138,7 +138,7 @@ import (
 //					EnablePrivateNodes:    pulumi.Bool(true),
 //					MasterIpv4CidrBlock:   pulumi.String("10.42.0.0/28"),
 //				},
-//				MasterAuthorizedNetworksConfig: nil,
+//				MasterAuthorizedNetworksConfig: &container.ClusterMasterAuthorizedNetworksConfigArgs{},
 //				IpAllocationPolicy: &container.ClusterIpAllocationPolicyArgs{
 //					ClusterSecondaryRangeName: containerSubnetwork.SecondaryIpRanges.ApplyT(func(secondaryIpRanges []compute.SubnetworkSecondaryIpRange) (*string, error) {
 //						return &secondaryIpRanges[0].RangeName, nil
