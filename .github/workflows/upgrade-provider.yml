@@ -9,15 +9,26 @@ jobs:
     name: upgrade-provider
     runs-on: ubuntu-latest
     steps:
-    - name: Call upgrade provider action
-      uses: pulumi/pulumi-upgrade-provider-action@v0.0.12
-      with:
-        kind: all
-        email: bot@pulumi.com
-        username: pulumi-bot
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+      - name: Setup tools
+        uses: ./.github/actions/setup-tools
+        with:
+          tools: pulumictl, pulumicli, go, nodejs, dotnet, python, java
+      - name: Install upgrade-provider
+        run: go install github.com/pulumi/upgrade-provider@main
+        shell: bash
+      - name: "Set up git identity: name"
+        run: |
+          git config --global user.name 'bot@pulumi.com'
+          git config --global user.email 'bot@pulumi.com'
+        shell: bash
+      - name: Run upgrade-provider
+        run: upgrade-provider "${{ github.repository }}" --kind="all" 
+        shell: bash
 name: Upgrade provider
 on:
   issues:
     types:
-    - opened
+      - opened
   workflow_dispatch: {}
