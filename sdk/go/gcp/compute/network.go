@@ -102,6 +102,91 @@ import (
 //	}
 //
 // ```
+// ### Network Bgp Best Path Selection Mode
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewNetwork(ctx, "vpc_network", &compute.NetworkArgs{
+//				Project:     pulumi.String("my-project-name"),
+//				Name:        pulumi.String("vpc-network"),
+//				RoutingMode: pulumi.String("GLOBAL"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Network Bgp Best Path Selection Mode Standard
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewNetwork(ctx, "vpc_network", &compute.NetworkArgs{
+//				Project:                  pulumi.String("my-project-name"),
+//				Name:                     pulumi.String("vpc-network"),
+//				RoutingMode:              pulumi.String("GLOBAL"),
+//				BgpBestPathSelectionMode: pulumi.String("STANDARD"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Network Bgp Best Path Selection Mode Standard Custom Fields
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewNetwork(ctx, "vpc_network", &compute.NetworkArgs{
+//				Project:                  pulumi.String("my-project-name"),
+//				Name:                     pulumi.String("vpc-network"),
+//				RoutingMode:              pulumi.String("GLOBAL"),
+//				BgpBestPathSelectionMode: pulumi.String("STANDARD"),
+//				BgpAlwaysCompareMed:      pulumi.Bool(true),
+//				BgpInterRegionCost:       pulumi.String("ADD_COST_TO_MED"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -135,6 +220,15 @@ type Network struct {
 	// When set to `false`, the network is created in "custom subnet mode" so
 	// the user can explicitly connect subnetwork resources.
 	AutoCreateSubnetworks pulumi.BoolPtrOutput `pulumi:"autoCreateSubnetworks"`
+	// Enables/disables the comparison of MED across routes with different Neighbor ASNs.
+	// This value can only be set if the --bgp-best-path-selection-mode is STANDARD
+	BgpAlwaysCompareMed pulumi.BoolOutput `pulumi:"bgpAlwaysCompareMed"`
+	// The BGP best selection algorithm to be employed. MODE can be LEGACY or STANDARD.
+	// Possible values are: `LEGACY`, `STANDARD`.
+	BgpBestPathSelectionMode pulumi.StringOutput `pulumi:"bgpBestPathSelectionMode"`
+	// Choice of the behavior of inter-regional cost and MED in the BPS algorithm.
+	// Possible values are: `DEFAULT`, `ADD_COST_TO_MED`.
+	BgpInterRegionCost pulumi.StringOutput `pulumi:"bgpInterRegionCost"`
 	// If set to `true`, default routes (`0.0.0.0/0`) will be deleted
 	// immediately after network creation. Defaults to `false`.
 	DeleteDefaultRoutesOnCreate pulumi.BoolPtrOutput `pulumi:"deleteDefaultRoutesOnCreate"`
@@ -225,6 +319,15 @@ type networkState struct {
 	// When set to `false`, the network is created in "custom subnet mode" so
 	// the user can explicitly connect subnetwork resources.
 	AutoCreateSubnetworks *bool `pulumi:"autoCreateSubnetworks"`
+	// Enables/disables the comparison of MED across routes with different Neighbor ASNs.
+	// This value can only be set if the --bgp-best-path-selection-mode is STANDARD
+	BgpAlwaysCompareMed *bool `pulumi:"bgpAlwaysCompareMed"`
+	// The BGP best selection algorithm to be employed. MODE can be LEGACY or STANDARD.
+	// Possible values are: `LEGACY`, `STANDARD`.
+	BgpBestPathSelectionMode *string `pulumi:"bgpBestPathSelectionMode"`
+	// Choice of the behavior of inter-regional cost and MED in the BPS algorithm.
+	// Possible values are: `DEFAULT`, `ADD_COST_TO_MED`.
+	BgpInterRegionCost *string `pulumi:"bgpInterRegionCost"`
 	// If set to `true`, default routes (`0.0.0.0/0`) will be deleted
 	// immediately after network creation. Defaults to `false`.
 	DeleteDefaultRoutesOnCreate *bool `pulumi:"deleteDefaultRoutesOnCreate"`
@@ -286,6 +389,15 @@ type NetworkState struct {
 	// When set to `false`, the network is created in "custom subnet mode" so
 	// the user can explicitly connect subnetwork resources.
 	AutoCreateSubnetworks pulumi.BoolPtrInput
+	// Enables/disables the comparison of MED across routes with different Neighbor ASNs.
+	// This value can only be set if the --bgp-best-path-selection-mode is STANDARD
+	BgpAlwaysCompareMed pulumi.BoolPtrInput
+	// The BGP best selection algorithm to be employed. MODE can be LEGACY or STANDARD.
+	// Possible values are: `LEGACY`, `STANDARD`.
+	BgpBestPathSelectionMode pulumi.StringPtrInput
+	// Choice of the behavior of inter-regional cost and MED in the BPS algorithm.
+	// Possible values are: `DEFAULT`, `ADD_COST_TO_MED`.
+	BgpInterRegionCost pulumi.StringPtrInput
 	// If set to `true`, default routes (`0.0.0.0/0`) will be deleted
 	// immediately after network creation. Defaults to `false`.
 	DeleteDefaultRoutesOnCreate pulumi.BoolPtrInput
@@ -351,6 +463,15 @@ type networkArgs struct {
 	// When set to `false`, the network is created in "custom subnet mode" so
 	// the user can explicitly connect subnetwork resources.
 	AutoCreateSubnetworks *bool `pulumi:"autoCreateSubnetworks"`
+	// Enables/disables the comparison of MED across routes with different Neighbor ASNs.
+	// This value can only be set if the --bgp-best-path-selection-mode is STANDARD
+	BgpAlwaysCompareMed *bool `pulumi:"bgpAlwaysCompareMed"`
+	// The BGP best selection algorithm to be employed. MODE can be LEGACY or STANDARD.
+	// Possible values are: `LEGACY`, `STANDARD`.
+	BgpBestPathSelectionMode *string `pulumi:"bgpBestPathSelectionMode"`
+	// Choice of the behavior of inter-regional cost and MED in the BPS algorithm.
+	// Possible values are: `DEFAULT`, `ADD_COST_TO_MED`.
+	BgpInterRegionCost *string `pulumi:"bgpInterRegionCost"`
 	// If set to `true`, default routes (`0.0.0.0/0`) will be deleted
 	// immediately after network creation. Defaults to `false`.
 	DeleteDefaultRoutesOnCreate *bool `pulumi:"deleteDefaultRoutesOnCreate"`
@@ -406,6 +527,15 @@ type NetworkArgs struct {
 	// When set to `false`, the network is created in "custom subnet mode" so
 	// the user can explicitly connect subnetwork resources.
 	AutoCreateSubnetworks pulumi.BoolPtrInput
+	// Enables/disables the comparison of MED across routes with different Neighbor ASNs.
+	// This value can only be set if the --bgp-best-path-selection-mode is STANDARD
+	BgpAlwaysCompareMed pulumi.BoolPtrInput
+	// The BGP best selection algorithm to be employed. MODE can be LEGACY or STANDARD.
+	// Possible values are: `LEGACY`, `STANDARD`.
+	BgpBestPathSelectionMode pulumi.StringPtrInput
+	// Choice of the behavior of inter-regional cost and MED in the BPS algorithm.
+	// Possible values are: `DEFAULT`, `ADD_COST_TO_MED`.
+	BgpInterRegionCost pulumi.StringPtrInput
 	// If set to `true`, default routes (`0.0.0.0/0`) will be deleted
 	// immediately after network creation. Defaults to `false`.
 	DeleteDefaultRoutesOnCreate pulumi.BoolPtrInput
@@ -547,6 +677,24 @@ func (o NetworkOutput) ToNetworkOutputWithContext(ctx context.Context) NetworkOu
 // the user can explicitly connect subnetwork resources.
 func (o NetworkOutput) AutoCreateSubnetworks() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Network) pulumi.BoolPtrOutput { return v.AutoCreateSubnetworks }).(pulumi.BoolPtrOutput)
+}
+
+// Enables/disables the comparison of MED across routes with different Neighbor ASNs.
+// This value can only be set if the --bgp-best-path-selection-mode is STANDARD
+func (o NetworkOutput) BgpAlwaysCompareMed() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Network) pulumi.BoolOutput { return v.BgpAlwaysCompareMed }).(pulumi.BoolOutput)
+}
+
+// The BGP best selection algorithm to be employed. MODE can be LEGACY or STANDARD.
+// Possible values are: `LEGACY`, `STANDARD`.
+func (o NetworkOutput) BgpBestPathSelectionMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.BgpBestPathSelectionMode }).(pulumi.StringOutput)
+}
+
+// Choice of the behavior of inter-regional cost and MED in the BPS algorithm.
+// Possible values are: `DEFAULT`, `ADD_COST_TO_MED`.
+func (o NetworkOutput) BgpInterRegionCost() pulumi.StringOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.BgpInterRegionCost }).(pulumi.StringOutput)
 }
 
 // If set to `true`, default routes (`0.0.0.0/0`) will be deleted

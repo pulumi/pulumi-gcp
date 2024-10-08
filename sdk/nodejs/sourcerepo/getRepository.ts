@@ -49,6 +49,7 @@ export interface GetRepositoryArgs {
  * A collection of values returned by getRepository.
  */
 export interface GetRepositoryResult {
+    readonly createIgnoreAlreadyExists: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */

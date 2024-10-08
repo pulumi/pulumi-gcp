@@ -248,6 +248,33 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Backend Service Stateful Session Affinity
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const healthCheck = new gcp.compute.HealthCheck("health_check", {
+ *     name: "health-check",
+ *     httpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const _default = new gcp.compute.BackendService("default", {
+ *     name: "backend-service",
+ *     healthChecks: healthCheck.id,
+ *     loadBalancingScheme: "EXTERNAL_MANAGED",
+ *     localityLbPolicy: "RING_HASH",
+ *     sessionAffinity: "STRONG_COOKIE_AFFINITY",
+ *     strongSessionAffinityCookie: {
+ *         ttl: {
+ *             seconds: 11,
+ *             nanos: 1111,
+ *         },
+ *         name: "mycookie",
+ *     },
+ * });
+ * ```
  * ### Backend Service Network Endpoint
  *
  * ```typescript
@@ -580,9 +607,14 @@ export class BackendService extends pulumi.CustomResource {
     /**
      * Type of session affinity to use. The default is NONE. Session affinity is
      * not applicable if the protocol is UDP.
-     * Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
+     * Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `STRONG_COOKIE_AFFINITY`.
      */
     public readonly sessionAffinity!: pulumi.Output<string>;
+    /**
+     * Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
+     * Structure is documented below.
+     */
+    public readonly strongSessionAffinityCookie!: pulumi.Output<outputs.compute.BackendServiceStrongSessionAffinityCookie | undefined>;
     /**
      * The backend service timeout has a different meaning depending on the type of load balancer.
      * For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
@@ -635,6 +667,7 @@ export class BackendService extends pulumi.CustomResource {
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["serviceLbPolicy"] = state ? state.serviceLbPolicy : undefined;
             resourceInputs["sessionAffinity"] = state ? state.sessionAffinity : undefined;
+            resourceInputs["strongSessionAffinityCookie"] = state ? state.strongSessionAffinityCookie : undefined;
             resourceInputs["timeoutSec"] = state ? state.timeoutSec : undefined;
         } else {
             const args = argsOrState as BackendServiceArgs | undefined;
@@ -665,6 +698,7 @@ export class BackendService extends pulumi.CustomResource {
             resourceInputs["securitySettings"] = args ? args.securitySettings : undefined;
             resourceInputs["serviceLbPolicy"] = args ? args.serviceLbPolicy : undefined;
             resourceInputs["sessionAffinity"] = args ? args.sessionAffinity : undefined;
+            resourceInputs["strongSessionAffinityCookie"] = args ? args.strongSessionAffinityCookie : undefined;
             resourceInputs["timeoutSec"] = args ? args.timeoutSec : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
@@ -913,9 +947,14 @@ export interface BackendServiceState {
     /**
      * Type of session affinity to use. The default is NONE. Session affinity is
      * not applicable if the protocol is UDP.
-     * Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
+     * Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `STRONG_COOKIE_AFFINITY`.
      */
     sessionAffinity?: pulumi.Input<string>;
+    /**
+     * Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
+     * Structure is documented below.
+     */
+    strongSessionAffinityCookie?: pulumi.Input<inputs.compute.BackendServiceStrongSessionAffinityCookie>;
     /**
      * The backend service timeout has a different meaning depending on the type of load balancer.
      * For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
@@ -1145,9 +1184,14 @@ export interface BackendServiceArgs {
     /**
      * Type of session affinity to use. The default is NONE. Session affinity is
      * not applicable if the protocol is UDP.
-     * Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
+     * Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `STRONG_COOKIE_AFFINITY`.
      */
     sessionAffinity?: pulumi.Input<string>;
+    /**
+     * Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
+     * Structure is documented below.
+     */
+    strongSessionAffinityCookie?: pulumi.Input<inputs.compute.BackendServiceStrongSessionAffinityCookie>;
     /**
      * The backend service timeout has a different meaning depending on the type of load balancer.
      * For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).

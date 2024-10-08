@@ -210,6 +210,23 @@ public final class RouteState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance,
+     * distance, and available bandwidth between regions.
+     * 
+     */
+    @Import(name="nextHopInterRegionCost")
+    private @Nullable Output<String> nextHopInterRegionCost;
+
+    /**
+     * @return Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance,
+     * distance, and available bandwidth between regions.
+     * 
+     */
+    public Optional<Output<String>> nextHopInterRegionCost() {
+        return Optional.ofNullable(this.nextHopInterRegionCost);
+    }
+
+    /**
      * Network IP address of an instance that should handle matching packets.
      * 
      */
@@ -225,6 +242,21 @@ public final class RouteState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
+     * 
+     */
+    @Import(name="nextHopMed")
+    private @Nullable Output<String> nextHopMed;
+
+    /**
+     * @return Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
+     * 
+     */
+    public Optional<Output<String>> nextHopMed() {
+        return Optional.ofNullable(this.nextHopMed);
+    }
+
+    /**
      * URL to a Network that should handle matching packets.
      * 
      */
@@ -237,6 +269,23 @@ public final class RouteState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> nextHopNetwork() {
         return Optional.ofNullable(this.nextHopNetwork);
+    }
+
+    /**
+     * Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or
+     * INCOMPLETE.
+     * 
+     */
+    @Import(name="nextHopOrigin")
+    private @Nullable Output<String> nextHopOrigin;
+
+    /**
+     * @return Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or
+     * INCOMPLETE.
+     * 
+     */
+    public Optional<Output<String>> nextHopOrigin() {
+        return Optional.ofNullable(this.nextHopOrigin);
     }
 
     /**
@@ -335,8 +384,11 @@ public final class RouteState extends com.pulumi.resources.ResourceArgs {
         this.nextHopIlb = $.nextHopIlb;
         this.nextHopInstance = $.nextHopInstance;
         this.nextHopInstanceZone = $.nextHopInstanceZone;
+        this.nextHopInterRegionCost = $.nextHopInterRegionCost;
         this.nextHopIp = $.nextHopIp;
+        this.nextHopMed = $.nextHopMed;
         this.nextHopNetwork = $.nextHopNetwork;
+        this.nextHopOrigin = $.nextHopOrigin;
         this.nextHopVpnTunnel = $.nextHopVpnTunnel;
         this.priority = $.priority;
         this.project = $.project;
@@ -603,6 +655,29 @@ public final class RouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param nextHopInterRegionCost Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance,
+         * distance, and available bandwidth between regions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nextHopInterRegionCost(@Nullable Output<String> nextHopInterRegionCost) {
+            $.nextHopInterRegionCost = nextHopInterRegionCost;
+            return this;
+        }
+
+        /**
+         * @param nextHopInterRegionCost Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance,
+         * distance, and available bandwidth between regions.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nextHopInterRegionCost(String nextHopInterRegionCost) {
+            return nextHopInterRegionCost(Output.of(nextHopInterRegionCost));
+        }
+
+        /**
          * @param nextHopIp Network IP address of an instance that should handle matching packets.
          * 
          * @return builder
@@ -624,6 +699,27 @@ public final class RouteState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param nextHopMed Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nextHopMed(@Nullable Output<String> nextHopMed) {
+            $.nextHopMed = nextHopMed;
+            return this;
+        }
+
+        /**
+         * @param nextHopMed Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nextHopMed(String nextHopMed) {
+            return nextHopMed(Output.of(nextHopMed));
+        }
+
+        /**
          * @param nextHopNetwork URL to a Network that should handle matching packets.
          * 
          * @return builder
@@ -642,6 +738,29 @@ public final class RouteState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder nextHopNetwork(String nextHopNetwork) {
             return nextHopNetwork(Output.of(nextHopNetwork));
+        }
+
+        /**
+         * @param nextHopOrigin Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or
+         * INCOMPLETE.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nextHopOrigin(@Nullable Output<String> nextHopOrigin) {
+            $.nextHopOrigin = nextHopOrigin;
+            return this;
+        }
+
+        /**
+         * @param nextHopOrigin Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or
+         * INCOMPLETE.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nextHopOrigin(String nextHopOrigin) {
+            return nextHopOrigin(Output.of(nextHopOrigin));
         }
 
         /**

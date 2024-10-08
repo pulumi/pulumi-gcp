@@ -14,6 +14,7 @@ import com.pulumi.gcp.compute.outputs.GetBackendServiceLocalityLbPolicy;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceLogConfig;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceOutlierDetection;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceSecuritySetting;
+import com.pulumi.gcp.compute.outputs.GetBackendServiceStrongSessionAffinityCooky;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -104,6 +105,7 @@ public final class GetBackendServiceResult {
      * 
      */
     private String sessionAffinity;
+    private List<GetBackendServiceStrongSessionAffinityCooky> strongSessionAffinityCookies;
     /**
      * @return The number of seconds to wait for a backend to respond to a request before considering the request failed.
      * 
@@ -255,6 +257,9 @@ public final class GetBackendServiceResult {
     public String sessionAffinity() {
         return this.sessionAffinity;
     }
+    public List<GetBackendServiceStrongSessionAffinityCooky> strongSessionAffinityCookies() {
+        return this.strongSessionAffinityCookies;
+    }
     /**
      * @return The number of seconds to wait for a backend to respond to a request before considering the request failed.
      * 
@@ -304,6 +309,7 @@ public final class GetBackendServiceResult {
         private String selfLink;
         private String serviceLbPolicy;
         private String sessionAffinity;
+        private List<GetBackendServiceStrongSessionAffinityCooky> strongSessionAffinityCookies;
         private Integer timeoutSec;
         public Builder() {}
         public Builder(GetBackendServiceResult defaults) {
@@ -340,6 +346,7 @@ public final class GetBackendServiceResult {
     	      this.selfLink = defaults.selfLink;
     	      this.serviceLbPolicy = defaults.serviceLbPolicy;
     	      this.sessionAffinity = defaults.sessionAffinity;
+    	      this.strongSessionAffinityCookies = defaults.strongSessionAffinityCookies;
     	      this.timeoutSec = defaults.timeoutSec;
         }
 
@@ -634,6 +641,17 @@ public final class GetBackendServiceResult {
             return this;
         }
         @CustomType.Setter
+        public Builder strongSessionAffinityCookies(List<GetBackendServiceStrongSessionAffinityCooky> strongSessionAffinityCookies) {
+            if (strongSessionAffinityCookies == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceResult", "strongSessionAffinityCookies");
+            }
+            this.strongSessionAffinityCookies = strongSessionAffinityCookies;
+            return this;
+        }
+        public Builder strongSessionAffinityCookies(GetBackendServiceStrongSessionAffinityCooky... strongSessionAffinityCookies) {
+            return strongSessionAffinityCookies(List.of(strongSessionAffinityCookies));
+        }
+        @CustomType.Setter
         public Builder timeoutSec(Integer timeoutSec) {
             if (timeoutSec == null) {
               throw new MissingRequiredPropertyException("GetBackendServiceResult", "timeoutSec");
@@ -675,6 +693,7 @@ public final class GetBackendServiceResult {
             _resultValue.selfLink = selfLink;
             _resultValue.serviceLbPolicy = serviceLbPolicy;
             _resultValue.sessionAffinity = sessionAffinity;
+            _resultValue.strongSessionAffinityCookies = strongSessionAffinityCookies;
             _resultValue.timeoutSec = timeoutSec;
             return _resultValue;
         }

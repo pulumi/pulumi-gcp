@@ -429,9 +429,9 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_41819")
+        scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_22375")
         scope_rbac_role_binding = gcp.gkehub.ScopeRbacRoleBinding("scope_rbac_role_binding",
-            scope_rbac_role_binding_id="tf-test-scope-rbac-role-binding_75092",
+            scope_rbac_role_binding_id="tf-test-scope-rbac-role-binding_29439",
             scope_id=scope.scope_id,
             user="test-email@gmail.com",
             role={
@@ -504,9 +504,9 @@ class ScopeRbacRoleBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_41819")
+        scope = gcp.gkehub.Scope("scope", scope_id="tf-test-scope_22375")
         scope_rbac_role_binding = gcp.gkehub.ScopeRbacRoleBinding("scope_rbac_role_binding",
-            scope_rbac_role_binding_id="tf-test-scope-rbac-role-binding_75092",
+            scope_rbac_role_binding_id="tf-test-scope-rbac-role-binding_29439",
             scope_id=scope.scope_id,
             user="test-email@gmail.com",
             role={

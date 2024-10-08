@@ -6525,6 +6525,200 @@ func (o AwsNodePoolConfigTaintArrayOutput) Index(i pulumi.IntInput) AwsNodePoolC
 	}).(AwsNodePoolConfigTaintOutput)
 }
 
+type AwsNodePoolKubeletConfig struct {
+	// Whether or not to enable CPU CFS quota. Defaults to true.
+	CpuCfsQuota *bool `pulumi:"cpuCfsQuota"`
+	// Optional. The CPU CFS quota period to use for the node. Defaults to "100ms".
+	CpuCfsQuotaPeriod *string `pulumi:"cpuCfsQuotaPeriod"`
+	// The CpuManagerPolicy to use for the node. Defaults to "none".
+	CpuManagerPolicy *string `pulumi:"cpuManagerPolicy"`
+	// Optional. The maximum number of PIDs in each pod running on the node. The limit scales automatically based on underlying machine size if left unset.
+	PodPidsLimit *int `pulumi:"podPidsLimit"`
+}
+
+// AwsNodePoolKubeletConfigInput is an input type that accepts AwsNodePoolKubeletConfigArgs and AwsNodePoolKubeletConfigOutput values.
+// You can construct a concrete instance of `AwsNodePoolKubeletConfigInput` via:
+//
+//	AwsNodePoolKubeletConfigArgs{...}
+type AwsNodePoolKubeletConfigInput interface {
+	pulumi.Input
+
+	ToAwsNodePoolKubeletConfigOutput() AwsNodePoolKubeletConfigOutput
+	ToAwsNodePoolKubeletConfigOutputWithContext(context.Context) AwsNodePoolKubeletConfigOutput
+}
+
+type AwsNodePoolKubeletConfigArgs struct {
+	// Whether or not to enable CPU CFS quota. Defaults to true.
+	CpuCfsQuota pulumi.BoolPtrInput `pulumi:"cpuCfsQuota"`
+	// Optional. The CPU CFS quota period to use for the node. Defaults to "100ms".
+	CpuCfsQuotaPeriod pulumi.StringPtrInput `pulumi:"cpuCfsQuotaPeriod"`
+	// The CpuManagerPolicy to use for the node. Defaults to "none".
+	CpuManagerPolicy pulumi.StringPtrInput `pulumi:"cpuManagerPolicy"`
+	// Optional. The maximum number of PIDs in each pod running on the node. The limit scales automatically based on underlying machine size if left unset.
+	PodPidsLimit pulumi.IntPtrInput `pulumi:"podPidsLimit"`
+}
+
+func (AwsNodePoolKubeletConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsNodePoolKubeletConfig)(nil)).Elem()
+}
+
+func (i AwsNodePoolKubeletConfigArgs) ToAwsNodePoolKubeletConfigOutput() AwsNodePoolKubeletConfigOutput {
+	return i.ToAwsNodePoolKubeletConfigOutputWithContext(context.Background())
+}
+
+func (i AwsNodePoolKubeletConfigArgs) ToAwsNodePoolKubeletConfigOutputWithContext(ctx context.Context) AwsNodePoolKubeletConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsNodePoolKubeletConfigOutput)
+}
+
+func (i AwsNodePoolKubeletConfigArgs) ToAwsNodePoolKubeletConfigPtrOutput() AwsNodePoolKubeletConfigPtrOutput {
+	return i.ToAwsNodePoolKubeletConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AwsNodePoolKubeletConfigArgs) ToAwsNodePoolKubeletConfigPtrOutputWithContext(ctx context.Context) AwsNodePoolKubeletConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsNodePoolKubeletConfigOutput).ToAwsNodePoolKubeletConfigPtrOutputWithContext(ctx)
+}
+
+// AwsNodePoolKubeletConfigPtrInput is an input type that accepts AwsNodePoolKubeletConfigArgs, AwsNodePoolKubeletConfigPtr and AwsNodePoolKubeletConfigPtrOutput values.
+// You can construct a concrete instance of `AwsNodePoolKubeletConfigPtrInput` via:
+//
+//	        AwsNodePoolKubeletConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AwsNodePoolKubeletConfigPtrInput interface {
+	pulumi.Input
+
+	ToAwsNodePoolKubeletConfigPtrOutput() AwsNodePoolKubeletConfigPtrOutput
+	ToAwsNodePoolKubeletConfigPtrOutputWithContext(context.Context) AwsNodePoolKubeletConfigPtrOutput
+}
+
+type awsNodePoolKubeletConfigPtrType AwsNodePoolKubeletConfigArgs
+
+func AwsNodePoolKubeletConfigPtr(v *AwsNodePoolKubeletConfigArgs) AwsNodePoolKubeletConfigPtrInput {
+	return (*awsNodePoolKubeletConfigPtrType)(v)
+}
+
+func (*awsNodePoolKubeletConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsNodePoolKubeletConfig)(nil)).Elem()
+}
+
+func (i *awsNodePoolKubeletConfigPtrType) ToAwsNodePoolKubeletConfigPtrOutput() AwsNodePoolKubeletConfigPtrOutput {
+	return i.ToAwsNodePoolKubeletConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *awsNodePoolKubeletConfigPtrType) ToAwsNodePoolKubeletConfigPtrOutputWithContext(ctx context.Context) AwsNodePoolKubeletConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsNodePoolKubeletConfigPtrOutput)
+}
+
+type AwsNodePoolKubeletConfigOutput struct{ *pulumi.OutputState }
+
+func (AwsNodePoolKubeletConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsNodePoolKubeletConfig)(nil)).Elem()
+}
+
+func (o AwsNodePoolKubeletConfigOutput) ToAwsNodePoolKubeletConfigOutput() AwsNodePoolKubeletConfigOutput {
+	return o
+}
+
+func (o AwsNodePoolKubeletConfigOutput) ToAwsNodePoolKubeletConfigOutputWithContext(ctx context.Context) AwsNodePoolKubeletConfigOutput {
+	return o
+}
+
+func (o AwsNodePoolKubeletConfigOutput) ToAwsNodePoolKubeletConfigPtrOutput() AwsNodePoolKubeletConfigPtrOutput {
+	return o.ToAwsNodePoolKubeletConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AwsNodePoolKubeletConfigOutput) ToAwsNodePoolKubeletConfigPtrOutputWithContext(ctx context.Context) AwsNodePoolKubeletConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsNodePoolKubeletConfig) *AwsNodePoolKubeletConfig {
+		return &v
+	}).(AwsNodePoolKubeletConfigPtrOutput)
+}
+
+// Whether or not to enable CPU CFS quota. Defaults to true.
+func (o AwsNodePoolKubeletConfigOutput) CpuCfsQuota() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AwsNodePoolKubeletConfig) *bool { return v.CpuCfsQuota }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. The CPU CFS quota period to use for the node. Defaults to "100ms".
+func (o AwsNodePoolKubeletConfigOutput) CpuCfsQuotaPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsNodePoolKubeletConfig) *string { return v.CpuCfsQuotaPeriod }).(pulumi.StringPtrOutput)
+}
+
+// The CpuManagerPolicy to use for the node. Defaults to "none".
+func (o AwsNodePoolKubeletConfigOutput) CpuManagerPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsNodePoolKubeletConfig) *string { return v.CpuManagerPolicy }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The maximum number of PIDs in each pod running on the node. The limit scales automatically based on underlying machine size if left unset.
+func (o AwsNodePoolKubeletConfigOutput) PodPidsLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AwsNodePoolKubeletConfig) *int { return v.PodPidsLimit }).(pulumi.IntPtrOutput)
+}
+
+type AwsNodePoolKubeletConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsNodePoolKubeletConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsNodePoolKubeletConfig)(nil)).Elem()
+}
+
+func (o AwsNodePoolKubeletConfigPtrOutput) ToAwsNodePoolKubeletConfigPtrOutput() AwsNodePoolKubeletConfigPtrOutput {
+	return o
+}
+
+func (o AwsNodePoolKubeletConfigPtrOutput) ToAwsNodePoolKubeletConfigPtrOutputWithContext(ctx context.Context) AwsNodePoolKubeletConfigPtrOutput {
+	return o
+}
+
+func (o AwsNodePoolKubeletConfigPtrOutput) Elem() AwsNodePoolKubeletConfigOutput {
+	return o.ApplyT(func(v *AwsNodePoolKubeletConfig) AwsNodePoolKubeletConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AwsNodePoolKubeletConfig
+		return ret
+	}).(AwsNodePoolKubeletConfigOutput)
+}
+
+// Whether or not to enable CPU CFS quota. Defaults to true.
+func (o AwsNodePoolKubeletConfigPtrOutput) CpuCfsQuota() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AwsNodePoolKubeletConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CpuCfsQuota
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. The CPU CFS quota period to use for the node. Defaults to "100ms".
+func (o AwsNodePoolKubeletConfigPtrOutput) CpuCfsQuotaPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsNodePoolKubeletConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CpuCfsQuotaPeriod
+	}).(pulumi.StringPtrOutput)
+}
+
+// The CpuManagerPolicy to use for the node. Defaults to "none".
+func (o AwsNodePoolKubeletConfigPtrOutput) CpuManagerPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsNodePoolKubeletConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CpuManagerPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The maximum number of PIDs in each pod running on the node. The limit scales automatically based on underlying machine size if left unset.
+func (o AwsNodePoolKubeletConfigPtrOutput) PodPidsLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AwsNodePoolKubeletConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PodPidsLimit
+	}).(pulumi.IntPtrOutput)
+}
+
 type AwsNodePoolManagement struct {
 	// Optional. Whether or not the nodes will be automatically repaired.
 	AutoRepair *bool `pulumi:"autoRepair"`
@@ -61327,6 +61521,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolConfigSshConfigPtrInput)(nil)).Elem(), AwsNodePoolConfigSshConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolConfigTaintInput)(nil)).Elem(), AwsNodePoolConfigTaintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolConfigTaintArrayInput)(nil)).Elem(), AwsNodePoolConfigTaintArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolKubeletConfigInput)(nil)).Elem(), AwsNodePoolKubeletConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolKubeletConfigPtrInput)(nil)).Elem(), AwsNodePoolKubeletConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolManagementInput)(nil)).Elem(), AwsNodePoolManagementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolManagementPtrInput)(nil)).Elem(), AwsNodePoolManagementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsNodePoolMaxPodsConstraintInput)(nil)).Elem(), AwsNodePoolMaxPodsConstraintArgs{})
@@ -62161,6 +62357,8 @@ func init() {
 	pulumi.RegisterOutputType(AwsNodePoolConfigSshConfigPtrOutput{})
 	pulumi.RegisterOutputType(AwsNodePoolConfigTaintOutput{})
 	pulumi.RegisterOutputType(AwsNodePoolConfigTaintArrayOutput{})
+	pulumi.RegisterOutputType(AwsNodePoolKubeletConfigOutput{})
+	pulumi.RegisterOutputType(AwsNodePoolKubeletConfigPtrOutput{})
 	pulumi.RegisterOutputType(AwsNodePoolManagementOutput{})
 	pulumi.RegisterOutputType(AwsNodePoolManagementPtrOutput{})
 	pulumi.RegisterOutputType(AwsNodePoolMaxPodsConstraintOutput{})

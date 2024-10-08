@@ -75,13 +75,25 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string NextHopInstanceZone;
         /// <summary>
+        /// Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.
+        /// </summary>
+        public readonly string NextHopInterRegionCost;
+        /// <summary>
         /// Network IP address of an instance that should handle matching packets.
         /// </summary>
         public readonly string NextHopIp;
         /// <summary>
+        /// Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
+        /// </summary>
+        public readonly string NextHopMed;
+        /// <summary>
         /// URL to a Network that should handle matching packets.
         /// </summary>
         public readonly string NextHopNetwork;
+        /// <summary>
+        /// Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
+        /// </summary>
+        public readonly string NextHopOrigin;
         /// <summary>
         /// URL to a VpnTunnel that should handle matching packets.
         /// </summary>
@@ -125,9 +137,15 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string nextHopInstanceZone,
 
+            string nextHopInterRegionCost,
+
             string nextHopIp,
 
+            string nextHopMed,
+
             string nextHopNetwork,
+
+            string nextHopOrigin,
 
             string nextHopVpnTunnel,
 
@@ -147,8 +165,11 @@ namespace Pulumi.Gcp.Compute.Outputs
             NextHopIlb = nextHopIlb;
             NextHopInstance = nextHopInstance;
             NextHopInstanceZone = nextHopInstanceZone;
+            NextHopInterRegionCost = nextHopInterRegionCost;
             NextHopIp = nextHopIp;
+            NextHopMed = nextHopMed;
             NextHopNetwork = nextHopNetwork;
+            NextHopOrigin = nextHopOrigin;
             NextHopVpnTunnel = nextHopVpnTunnel;
             Priority = priority;
             Project = project;

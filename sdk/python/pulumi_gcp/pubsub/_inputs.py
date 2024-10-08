@@ -59,6 +59,16 @@ __all__ = [
     'TopicIngestionDataSourceSettingsArgsDict',
     'TopicIngestionDataSourceSettingsAwsKinesisArgs',
     'TopicIngestionDataSourceSettingsAwsKinesisArgsDict',
+    'TopicIngestionDataSourceSettingsCloudStorageArgs',
+    'TopicIngestionDataSourceSettingsCloudStorageArgsDict',
+    'TopicIngestionDataSourceSettingsCloudStorageAvroFormatArgs',
+    'TopicIngestionDataSourceSettingsCloudStorageAvroFormatArgsDict',
+    'TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatArgs',
+    'TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatArgsDict',
+    'TopicIngestionDataSourceSettingsCloudStorageTextFormatArgs',
+    'TopicIngestionDataSourceSettingsCloudStorageTextFormatArgsDict',
+    'TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs',
+    'TopicIngestionDataSourceSettingsPlatformLogsSettingsArgsDict',
     'TopicMessageStoragePolicyArgs',
     'TopicMessageStoragePolicyArgsDict',
     'TopicSchemaSettingsArgs',
@@ -1498,19 +1508,41 @@ if not MYPY:
         Settings for ingestion from Amazon Kinesis Data Streams.
         Structure is documented below.
         """
+        cloud_storage: NotRequired[pulumi.Input['TopicIngestionDataSourceSettingsCloudStorageArgsDict']]
+        """
+        Settings for ingestion from Cloud Storage.
+        Structure is documented below.
+        """
+        platform_logs_settings: NotRequired[pulumi.Input['TopicIngestionDataSourceSettingsPlatformLogsSettingsArgsDict']]
+        """
+        Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,
+        no Platform Logs will be generated.'
+        Structure is documented below.
+        """
 elif False:
     TopicIngestionDataSourceSettingsArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TopicIngestionDataSourceSettingsArgs:
     def __init__(__self__, *,
-                 aws_kinesis: Optional[pulumi.Input['TopicIngestionDataSourceSettingsAwsKinesisArgs']] = None):
+                 aws_kinesis: Optional[pulumi.Input['TopicIngestionDataSourceSettingsAwsKinesisArgs']] = None,
+                 cloud_storage: Optional[pulumi.Input['TopicIngestionDataSourceSettingsCloudStorageArgs']] = None,
+                 platform_logs_settings: Optional[pulumi.Input['TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs']] = None):
         """
         :param pulumi.Input['TopicIngestionDataSourceSettingsAwsKinesisArgs'] aws_kinesis: Settings for ingestion from Amazon Kinesis Data Streams.
+               Structure is documented below.
+        :param pulumi.Input['TopicIngestionDataSourceSettingsCloudStorageArgs'] cloud_storage: Settings for ingestion from Cloud Storage.
+               Structure is documented below.
+        :param pulumi.Input['TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs'] platform_logs_settings: Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,
+               no Platform Logs will be generated.'
                Structure is documented below.
         """
         if aws_kinesis is not None:
             pulumi.set(__self__, "aws_kinesis", aws_kinesis)
+        if cloud_storage is not None:
+            pulumi.set(__self__, "cloud_storage", cloud_storage)
+        if platform_logs_settings is not None:
+            pulumi.set(__self__, "platform_logs_settings", platform_logs_settings)
 
     @property
     @pulumi.getter(name="awsKinesis")
@@ -1524,6 +1556,33 @@ class TopicIngestionDataSourceSettingsArgs:
     @aws_kinesis.setter
     def aws_kinesis(self, value: Optional[pulumi.Input['TopicIngestionDataSourceSettingsAwsKinesisArgs']]):
         pulumi.set(self, "aws_kinesis", value)
+
+    @property
+    @pulumi.getter(name="cloudStorage")
+    def cloud_storage(self) -> Optional[pulumi.Input['TopicIngestionDataSourceSettingsCloudStorageArgs']]:
+        """
+        Settings for ingestion from Cloud Storage.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cloud_storage")
+
+    @cloud_storage.setter
+    def cloud_storage(self, value: Optional[pulumi.Input['TopicIngestionDataSourceSettingsCloudStorageArgs']]):
+        pulumi.set(self, "cloud_storage", value)
+
+    @property
+    @pulumi.getter(name="platformLogsSettings")
+    def platform_logs_settings(self) -> Optional[pulumi.Input['TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs']]:
+        """
+        Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,
+        no Platform Logs will be generated.'
+        Structure is documented below.
+        """
+        return pulumi.get(self, "platform_logs_settings")
+
+    @platform_logs_settings.setter
+    def platform_logs_settings(self, value: Optional[pulumi.Input['TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs']]):
+        pulumi.set(self, "platform_logs_settings", value)
 
 
 if not MYPY:
@@ -1633,6 +1692,279 @@ class TopicIngestionDataSourceSettingsAwsKinesisArgs:
     @stream_arn.setter
     def stream_arn(self, value: pulumi.Input[str]):
         pulumi.set(self, "stream_arn", value)
+
+
+if not MYPY:
+    class TopicIngestionDataSourceSettingsCloudStorageArgsDict(TypedDict):
+        bucket: pulumi.Input[str]
+        """
+        Cloud Storage bucket. The bucket name must be without any
+        prefix like "gs://". See the bucket naming requirements:
+        https://cloud.google.com/storage/docs/buckets#naming.
+        """
+        avro_format: NotRequired[pulumi.Input['TopicIngestionDataSourceSettingsCloudStorageAvroFormatArgsDict']]
+        """
+        Configuration for reading Cloud Storage data in Avro binary format. The
+        bytes of each object will be set to the `data` field of a Pub/Sub message.
+        """
+        match_glob: NotRequired[pulumi.Input[str]]
+        """
+        Glob pattern used to match objects that will be ingested. If unset, all
+        objects will be ingested. See the supported patterns:
+        https://cloud.google.com/storage/docs/json_api/v1/objects/list#list-objects-and-prefixes-using-glob
+        """
+        minimum_object_create_time: NotRequired[pulumi.Input[str]]
+        """
+        The timestamp set in RFC3339 text format. If set, only objects with a
+        larger or equal timestamp will be ingested. Unset by default, meaning
+        all objects will be ingested.
+        """
+        pubsub_avro_format: NotRequired[pulumi.Input['TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatArgsDict']]
+        """
+        Configuration for reading Cloud Storage data written via Cloud Storage
+        subscriptions(See https://cloud.google.com/pubsub/docs/cloudstorage). The
+        data and attributes fields of the originally exported Pub/Sub message
+        will be restored when publishing.
+        """
+        text_format: NotRequired[pulumi.Input['TopicIngestionDataSourceSettingsCloudStorageTextFormatArgsDict']]
+        """
+        Configuration for reading Cloud Storage data in text format. Each line of
+        text as specified by the delimiter will be set to the `data` field of a
+        Pub/Sub message.
+        Structure is documented below.
+        """
+elif False:
+    TopicIngestionDataSourceSettingsCloudStorageArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TopicIngestionDataSourceSettingsCloudStorageArgs:
+    def __init__(__self__, *,
+                 bucket: pulumi.Input[str],
+                 avro_format: Optional[pulumi.Input['TopicIngestionDataSourceSettingsCloudStorageAvroFormatArgs']] = None,
+                 match_glob: Optional[pulumi.Input[str]] = None,
+                 minimum_object_create_time: Optional[pulumi.Input[str]] = None,
+                 pubsub_avro_format: Optional[pulumi.Input['TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatArgs']] = None,
+                 text_format: Optional[pulumi.Input['TopicIngestionDataSourceSettingsCloudStorageTextFormatArgs']] = None):
+        """
+        :param pulumi.Input[str] bucket: Cloud Storage bucket. The bucket name must be without any
+               prefix like "gs://". See the bucket naming requirements:
+               https://cloud.google.com/storage/docs/buckets#naming.
+        :param pulumi.Input['TopicIngestionDataSourceSettingsCloudStorageAvroFormatArgs'] avro_format: Configuration for reading Cloud Storage data in Avro binary format. The
+               bytes of each object will be set to the `data` field of a Pub/Sub message.
+        :param pulumi.Input[str] match_glob: Glob pattern used to match objects that will be ingested. If unset, all
+               objects will be ingested. See the supported patterns:
+               https://cloud.google.com/storage/docs/json_api/v1/objects/list#list-objects-and-prefixes-using-glob
+        :param pulumi.Input[str] minimum_object_create_time: The timestamp set in RFC3339 text format. If set, only objects with a
+               larger or equal timestamp will be ingested. Unset by default, meaning
+               all objects will be ingested.
+        :param pulumi.Input['TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatArgs'] pubsub_avro_format: Configuration for reading Cloud Storage data written via Cloud Storage
+               subscriptions(See https://cloud.google.com/pubsub/docs/cloudstorage). The
+               data and attributes fields of the originally exported Pub/Sub message
+               will be restored when publishing.
+        :param pulumi.Input['TopicIngestionDataSourceSettingsCloudStorageTextFormatArgs'] text_format: Configuration for reading Cloud Storage data in text format. Each line of
+               text as specified by the delimiter will be set to the `data` field of a
+               Pub/Sub message.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        if avro_format is not None:
+            pulumi.set(__self__, "avro_format", avro_format)
+        if match_glob is not None:
+            pulumi.set(__self__, "match_glob", match_glob)
+        if minimum_object_create_time is not None:
+            pulumi.set(__self__, "minimum_object_create_time", minimum_object_create_time)
+        if pubsub_avro_format is not None:
+            pulumi.set(__self__, "pubsub_avro_format", pubsub_avro_format)
+        if text_format is not None:
+            pulumi.set(__self__, "text_format", text_format)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> pulumi.Input[str]:
+        """
+        Cloud Storage bucket. The bucket name must be without any
+        prefix like "gs://". See the bucket naming requirements:
+        https://cloud.google.com/storage/docs/buckets#naming.
+        """
+        return pulumi.get(self, "bucket")
+
+    @bucket.setter
+    def bucket(self, value: pulumi.Input[str]):
+        pulumi.set(self, "bucket", value)
+
+    @property
+    @pulumi.getter(name="avroFormat")
+    def avro_format(self) -> Optional[pulumi.Input['TopicIngestionDataSourceSettingsCloudStorageAvroFormatArgs']]:
+        """
+        Configuration for reading Cloud Storage data in Avro binary format. The
+        bytes of each object will be set to the `data` field of a Pub/Sub message.
+        """
+        return pulumi.get(self, "avro_format")
+
+    @avro_format.setter
+    def avro_format(self, value: Optional[pulumi.Input['TopicIngestionDataSourceSettingsCloudStorageAvroFormatArgs']]):
+        pulumi.set(self, "avro_format", value)
+
+    @property
+    @pulumi.getter(name="matchGlob")
+    def match_glob(self) -> Optional[pulumi.Input[str]]:
+        """
+        Glob pattern used to match objects that will be ingested. If unset, all
+        objects will be ingested. See the supported patterns:
+        https://cloud.google.com/storage/docs/json_api/v1/objects/list#list-objects-and-prefixes-using-glob
+        """
+        return pulumi.get(self, "match_glob")
+
+    @match_glob.setter
+    def match_glob(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "match_glob", value)
+
+    @property
+    @pulumi.getter(name="minimumObjectCreateTime")
+    def minimum_object_create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The timestamp set in RFC3339 text format. If set, only objects with a
+        larger or equal timestamp will be ingested. Unset by default, meaning
+        all objects will be ingested.
+        """
+        return pulumi.get(self, "minimum_object_create_time")
+
+    @minimum_object_create_time.setter
+    def minimum_object_create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "minimum_object_create_time", value)
+
+    @property
+    @pulumi.getter(name="pubsubAvroFormat")
+    def pubsub_avro_format(self) -> Optional[pulumi.Input['TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatArgs']]:
+        """
+        Configuration for reading Cloud Storage data written via Cloud Storage
+        subscriptions(See https://cloud.google.com/pubsub/docs/cloudstorage). The
+        data and attributes fields of the originally exported Pub/Sub message
+        will be restored when publishing.
+        """
+        return pulumi.get(self, "pubsub_avro_format")
+
+    @pubsub_avro_format.setter
+    def pubsub_avro_format(self, value: Optional[pulumi.Input['TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatArgs']]):
+        pulumi.set(self, "pubsub_avro_format", value)
+
+    @property
+    @pulumi.getter(name="textFormat")
+    def text_format(self) -> Optional[pulumi.Input['TopicIngestionDataSourceSettingsCloudStorageTextFormatArgs']]:
+        """
+        Configuration for reading Cloud Storage data in text format. Each line of
+        text as specified by the delimiter will be set to the `data` field of a
+        Pub/Sub message.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "text_format")
+
+    @text_format.setter
+    def text_format(self, value: Optional[pulumi.Input['TopicIngestionDataSourceSettingsCloudStorageTextFormatArgs']]):
+        pulumi.set(self, "text_format", value)
+
+
+if not MYPY:
+    class TopicIngestionDataSourceSettingsCloudStorageAvroFormatArgsDict(TypedDict):
+        pass
+elif False:
+    TopicIngestionDataSourceSettingsCloudStorageAvroFormatArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TopicIngestionDataSourceSettingsCloudStorageAvroFormatArgs:
+    def __init__(__self__):
+        pass
+
+
+if not MYPY:
+    class TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatArgsDict(TypedDict):
+        pass
+elif False:
+    TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatArgs:
+    def __init__(__self__):
+        pass
+
+
+if not MYPY:
+    class TopicIngestionDataSourceSettingsCloudStorageTextFormatArgsDict(TypedDict):
+        delimiter: NotRequired[pulumi.Input[str]]
+        """
+        The delimiter to use when using the 'text' format. Each line of text as
+        specified by the delimiter will be set to the 'data' field of a Pub/Sub
+        message. When unset, '\\n' is used.
+        """
+elif False:
+    TopicIngestionDataSourceSettingsCloudStorageTextFormatArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TopicIngestionDataSourceSettingsCloudStorageTextFormatArgs:
+    def __init__(__self__, *,
+                 delimiter: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] delimiter: The delimiter to use when using the 'text' format. Each line of text as
+               specified by the delimiter will be set to the 'data' field of a Pub/Sub
+               message. When unset, '\\n' is used.
+        """
+        if delimiter is not None:
+            pulumi.set(__self__, "delimiter", delimiter)
+
+    @property
+    @pulumi.getter
+    def delimiter(self) -> Optional[pulumi.Input[str]]:
+        """
+        The delimiter to use when using the 'text' format. Each line of text as
+        specified by the delimiter will be set to the 'data' field of a Pub/Sub
+        message. When unset, '\\n' is used.
+        """
+        return pulumi.get(self, "delimiter")
+
+    @delimiter.setter
+    def delimiter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "delimiter", value)
+
+
+if not MYPY:
+    class TopicIngestionDataSourceSettingsPlatformLogsSettingsArgsDict(TypedDict):
+        severity: NotRequired[pulumi.Input[str]]
+        """
+        The minimum severity level of Platform Logs that will be written. If unspecified,
+        no Platform Logs will be written.
+        Default value is `SEVERITY_UNSPECIFIED`.
+        Possible values are: `SEVERITY_UNSPECIFIED`, `DISABLED`, `DEBUG`, `INFO`, `WARNING`, `ERROR`.
+        """
+elif False:
+    TopicIngestionDataSourceSettingsPlatformLogsSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs:
+    def __init__(__self__, *,
+                 severity: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] severity: The minimum severity level of Platform Logs that will be written. If unspecified,
+               no Platform Logs will be written.
+               Default value is `SEVERITY_UNSPECIFIED`.
+               Possible values are: `SEVERITY_UNSPECIFIED`, `DISABLED`, `DEBUG`, `INFO`, `WARNING`, `ERROR`.
+        """
+        if severity is not None:
+            pulumi.set(__self__, "severity", severity)
+
+    @property
+    @pulumi.getter
+    def severity(self) -> Optional[pulumi.Input[str]]:
+        """
+        The minimum severity level of Platform Logs that will be written. If unspecified,
+        no Platform Logs will be written.
+        Default value is `SEVERITY_UNSPECIFIED`.
+        Possible values are: `SEVERITY_UNSPECIFIED`, `DISABLED`, `DEBUG`, `INFO`, `WARNING`, `ERROR`.
+        """
+        return pulumi.get(self, "severity")
+
+    @severity.setter
+    def severity(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "severity", value)
 
 
 if not MYPY:

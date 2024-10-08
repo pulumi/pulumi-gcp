@@ -9,6 +9,7 @@ from .autoscaling_policy import *
 from .autoscaling_policy_iam_binding import *
 from .autoscaling_policy_iam_member import *
 from .autoscaling_policy_iam_policy import *
+from .batch import *
 from .cluster import *
 from .cluster_iam_binding import *
 from .cluster_iam_member import *

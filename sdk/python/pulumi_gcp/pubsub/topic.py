@@ -534,6 +534,28 @@ class Topic(pulumi.CustomResource):
                 },
             })
         ```
+        ### Pubsub Topic Ingestion Cloud Storage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.pubsub.Topic("example",
+            name="example-topic",
+            ingestion_data_source_settings={
+                "cloud_storage": {
+                    "bucket": "test-bucket",
+                    "text_format": {
+                        "delimiter": " ",
+                    },
+                    "minimum_object_create_time": "2024-01-01T00:00:00Z",
+                    "match_glob": "foo/**",
+                },
+                "platform_logs_settings": {
+                    "severity": "WARNING",
+                },
+            })
+        ```
 
         ## Import
 
@@ -700,6 +722,28 @@ class Topic(pulumi.CustomResource):
                     "consumer_arn": "arn:aws:kinesis:us-west-2:111111111111:stream/fake-stream-name/consumer/consumer-1:1111111111",
                     "aws_role_arn": "arn:aws:iam::111111111111:role/fake-role-name",
                     "gcp_service_account": "fake-service-account@fake-gcp-project.iam.gserviceaccount.com",
+                },
+            })
+        ```
+        ### Pubsub Topic Ingestion Cloud Storage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.pubsub.Topic("example",
+            name="example-topic",
+            ingestion_data_source_settings={
+                "cloud_storage": {
+                    "bucket": "test-bucket",
+                    "text_format": {
+                        "delimiter": " ",
+                    },
+                    "minimum_object_create_time": "2024-01-01T00:00:00Z",
+                    "match_glob": "foo/**",
+                },
+                "platform_logs_settings": {
+                    "severity": "WARNING",
                 },
             })
         ```

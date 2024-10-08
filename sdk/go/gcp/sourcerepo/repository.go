@@ -114,6 +114,8 @@ import (
 type Repository struct {
 	pulumi.CustomResourceState
 
+	// If set to true, skip repository creation if a repository with the same name already exists.
+	CreateIgnoreAlreadyExists pulumi.BoolPtrOutput `pulumi:"createIgnoreAlreadyExists"`
 	// Resource name of the repository, of the form `{{repo}}`.
 	// The repo name may contain slashes. eg, `name/with/slash`
 	//
@@ -162,6 +164,8 @@ func GetRepository(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Repository resources.
 type repositoryState struct {
+	// If set to true, skip repository creation if a repository with the same name already exists.
+	CreateIgnoreAlreadyExists *bool `pulumi:"createIgnoreAlreadyExists"`
 	// Resource name of the repository, of the form `{{repo}}`.
 	// The repo name may contain slashes. eg, `name/with/slash`
 	//
@@ -181,6 +185,8 @@ type repositoryState struct {
 }
 
 type RepositoryState struct {
+	// If set to true, skip repository creation if a repository with the same name already exists.
+	CreateIgnoreAlreadyExists pulumi.BoolPtrInput
 	// Resource name of the repository, of the form `{{repo}}`.
 	// The repo name may contain slashes. eg, `name/with/slash`
 	//
@@ -204,6 +210,8 @@ func (RepositoryState) ElementType() reflect.Type {
 }
 
 type repositoryArgs struct {
+	// If set to true, skip repository creation if a repository with the same name already exists.
+	CreateIgnoreAlreadyExists *bool `pulumi:"createIgnoreAlreadyExists"`
 	// Resource name of the repository, of the form `{{repo}}`.
 	// The repo name may contain slashes. eg, `name/with/slash`
 	//
@@ -220,6 +228,8 @@ type repositoryArgs struct {
 
 // The set of arguments for constructing a Repository resource.
 type RepositoryArgs struct {
+	// If set to true, skip repository creation if a repository with the same name already exists.
+	CreateIgnoreAlreadyExists pulumi.BoolPtrInput
 	// Resource name of the repository, of the form `{{repo}}`.
 	// The repo name may contain slashes. eg, `name/with/slash`
 	//
@@ -319,6 +329,11 @@ func (o RepositoryOutput) ToRepositoryOutput() RepositoryOutput {
 
 func (o RepositoryOutput) ToRepositoryOutputWithContext(ctx context.Context) RepositoryOutput {
 	return o
+}
+
+// If set to true, skip repository creation if a repository with the same name already exists.
+func (o RepositoryOutput) CreateIgnoreAlreadyExists() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Repository) pulumi.BoolPtrOutput { return v.CreateIgnoreAlreadyExists }).(pulumi.BoolPtrOutput)
 }
 
 // Resource name of the repository, of the form `{{repo}}`.

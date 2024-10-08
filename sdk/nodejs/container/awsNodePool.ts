@@ -136,6 +136,12 @@ import * as utilities from "../utilities";
  *     management: {
  *         autoRepair: true,
  *     },
+ *     kubeletConfig: {
+ *         cpuManagerPolicy: "none",
+ *         cpuCfsQuota: true,
+ *         cpuCfsQuotaPeriod: "100ms",
+ *         podPidsLimit: 1024,
+ *     },
  *     project: "my-project-name",
  * });
  * ```
@@ -473,6 +479,10 @@ export class AwsNodePool extends pulumi.CustomResource {
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
+     * The kubelet configuration for the node pool.
+     */
+    public readonly kubeletConfig!: pulumi.Output<outputs.container.AwsNodePoolKubeletConfig>;
+    /**
      * The location for the resource
      */
     public readonly location!: pulumi.Output<string>;
@@ -541,6 +551,7 @@ export class AwsNodePool extends pulumi.CustomResource {
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["kubeletConfig"] = state ? state.kubeletConfig : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["management"] = state ? state.management : undefined;
             resourceInputs["maxPodsConstraint"] = state ? state.maxPodsConstraint : undefined;
@@ -580,6 +591,7 @@ export class AwsNodePool extends pulumi.CustomResource {
             resourceInputs["autoscaling"] = args ? args.autoscaling : undefined;
             resourceInputs["cluster"] = args ? args.cluster : undefined;
             resourceInputs["config"] = args ? args.config : undefined;
+            resourceInputs["kubeletConfig"] = args ? args.kubeletConfig : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["management"] = args ? args.management : undefined;
             resourceInputs["maxPodsConstraint"] = args ? args.maxPodsConstraint : undefined;
@@ -635,6 +647,10 @@ export interface AwsNodePoolState {
      * Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
     etag?: pulumi.Input<string>;
+    /**
+     * The kubelet configuration for the node pool.
+     */
+    kubeletConfig?: pulumi.Input<inputs.container.AwsNodePoolKubeletConfig>;
     /**
      * The location for the resource
      */
@@ -710,6 +726,10 @@ export interface AwsNodePoolArgs {
      * The configuration of the node pool.
      */
     config: pulumi.Input<inputs.container.AwsNodePoolConfig>;
+    /**
+     * The kubelet configuration for the node pool.
+     */
+    kubeletConfig?: pulumi.Input<inputs.container.AwsNodePoolKubeletConfig>;
     /**
      * The location for the resource
      */

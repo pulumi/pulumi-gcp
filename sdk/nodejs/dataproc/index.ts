@@ -25,6 +25,11 @@ export type AutoscalingPolicyIamPolicy = import("./autoscalingPolicyIamPolicy").
 export const AutoscalingPolicyIamPolicy: typeof import("./autoscalingPolicyIamPolicy").AutoscalingPolicyIamPolicy = null as any;
 utilities.lazyLoad(exports, ["AutoscalingPolicyIamPolicy"], () => require("./autoscalingPolicyIamPolicy"));
 
+export { BatchArgs, BatchState } from "./batch";
+export type Batch = import("./batch").Batch;
+export const Batch: typeof import("./batch").Batch = null as any;
+utilities.lazyLoad(exports, ["Batch"], () => require("./batch"));
+
 export { ClusterArgs, ClusterState } from "./cluster";
 export type Cluster = import("./cluster").Cluster;
 export const Cluster: typeof import("./cluster").Cluster = null as any;
@@ -153,6 +158,8 @@ const _module = {
                 return new AutoscalingPolicyIamMember(name, <any>undefined, { urn })
             case "gcp:dataproc/autoscalingPolicyIamPolicy:AutoscalingPolicyIamPolicy":
                 return new AutoscalingPolicyIamPolicy(name, <any>undefined, { urn })
+            case "gcp:dataproc/batch:Batch":
+                return new Batch(name, <any>undefined, { urn })
             case "gcp:dataproc/cluster:Cluster":
                 return new Cluster(name, <any>undefined, { urn })
             case "gcp:dataproc/clusterIAMBinding:ClusterIAMBinding":
@@ -196,6 +203,7 @@ pulumi.runtime.registerResourceModule("gcp", "dataproc/autoscalingPolicy", _modu
 pulumi.runtime.registerResourceModule("gcp", "dataproc/autoscalingPolicyIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataproc/autoscalingPolicyIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataproc/autoscalingPolicyIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataproc/batch", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataproc/cluster", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataproc/clusterIAMBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataproc/clusterIAMMember", _module)

@@ -97,6 +97,8 @@ __all__ = [
     'AwsNodePoolConfigSshConfigArgsDict',
     'AwsNodePoolConfigTaintArgs',
     'AwsNodePoolConfigTaintArgsDict',
+    'AwsNodePoolKubeletConfigArgs',
+    'AwsNodePoolKubeletConfigArgsDict',
     'AwsNodePoolManagementArgs',
     'AwsNodePoolManagementArgsDict',
     'AwsNodePoolMaxPodsConstraintArgs',
@@ -3044,6 +3046,98 @@ class AwsNodePoolConfigTaintArgs:
     @value.setter
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class AwsNodePoolKubeletConfigArgsDict(TypedDict):
+        cpu_cfs_quota: NotRequired[pulumi.Input[bool]]
+        """
+        Whether or not to enable CPU CFS quota. Defaults to true.
+        """
+        cpu_cfs_quota_period: NotRequired[pulumi.Input[str]]
+        """
+        Optional. The CPU CFS quota period to use for the node. Defaults to "100ms".
+        """
+        cpu_manager_policy: NotRequired[pulumi.Input[str]]
+        """
+        The CpuManagerPolicy to use for the node. Defaults to "none".
+        """
+        pod_pids_limit: NotRequired[pulumi.Input[int]]
+        """
+        Optional. The maximum number of PIDs in each pod running on the node. The limit scales automatically based on underlying machine size if left unset.
+        """
+elif False:
+    AwsNodePoolKubeletConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AwsNodePoolKubeletConfigArgs:
+    def __init__(__self__, *,
+                 cpu_cfs_quota: Optional[pulumi.Input[bool]] = None,
+                 cpu_cfs_quota_period: Optional[pulumi.Input[str]] = None,
+                 cpu_manager_policy: Optional[pulumi.Input[str]] = None,
+                 pod_pids_limit: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[bool] cpu_cfs_quota: Whether or not to enable CPU CFS quota. Defaults to true.
+        :param pulumi.Input[str] cpu_cfs_quota_period: Optional. The CPU CFS quota period to use for the node. Defaults to "100ms".
+        :param pulumi.Input[str] cpu_manager_policy: The CpuManagerPolicy to use for the node. Defaults to "none".
+        :param pulumi.Input[int] pod_pids_limit: Optional. The maximum number of PIDs in each pod running on the node. The limit scales automatically based on underlying machine size if left unset.
+        """
+        if cpu_cfs_quota is not None:
+            pulumi.set(__self__, "cpu_cfs_quota", cpu_cfs_quota)
+        if cpu_cfs_quota_period is not None:
+            pulumi.set(__self__, "cpu_cfs_quota_period", cpu_cfs_quota_period)
+        if cpu_manager_policy is not None:
+            pulumi.set(__self__, "cpu_manager_policy", cpu_manager_policy)
+        if pod_pids_limit is not None:
+            pulumi.set(__self__, "pod_pids_limit", pod_pids_limit)
+
+    @property
+    @pulumi.getter(name="cpuCfsQuota")
+    def cpu_cfs_quota(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not to enable CPU CFS quota. Defaults to true.
+        """
+        return pulumi.get(self, "cpu_cfs_quota")
+
+    @cpu_cfs_quota.setter
+    def cpu_cfs_quota(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "cpu_cfs_quota", value)
+
+    @property
+    @pulumi.getter(name="cpuCfsQuotaPeriod")
+    def cpu_cfs_quota_period(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The CPU CFS quota period to use for the node. Defaults to "100ms".
+        """
+        return pulumi.get(self, "cpu_cfs_quota_period")
+
+    @cpu_cfs_quota_period.setter
+    def cpu_cfs_quota_period(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cpu_cfs_quota_period", value)
+
+    @property
+    @pulumi.getter(name="cpuManagerPolicy")
+    def cpu_manager_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The CpuManagerPolicy to use for the node. Defaults to "none".
+        """
+        return pulumi.get(self, "cpu_manager_policy")
+
+    @cpu_manager_policy.setter
+    def cpu_manager_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cpu_manager_policy", value)
+
+    @property
+    @pulumi.getter(name="podPidsLimit")
+    def pod_pids_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. The maximum number of PIDs in each pod running on the node. The limit scales automatically based on underlying machine size if left unset.
+        """
+        return pulumi.get(self, "pod_pids_limit")
+
+    @pod_pids_limit.setter
+    def pod_pids_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "pod_pids_limit", value)
 
 
 if not MYPY:

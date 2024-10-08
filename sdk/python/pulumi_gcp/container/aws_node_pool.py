@@ -29,6 +29,7 @@ class AwsNodePoolArgs:
                  subnet_id: pulumi.Input[str],
                  version: pulumi.Input[str],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 kubelet_config: Optional[pulumi.Input['AwsNodePoolKubeletConfigArgs']] = None,
                  management: Optional[pulumi.Input['AwsNodePoolManagementArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -48,6 +49,7 @@ class AwsNodePoolArgs:
                alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between. **Note**: This field is
                non-authoritative, and will only manage the annotations present in your configuration. Please refer to the field
                `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input['AwsNodePoolKubeletConfigArgs'] kubelet_config: The kubelet configuration for the node pool.
         :param pulumi.Input['AwsNodePoolManagementArgs'] management: The Management configuration for this node pool.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[str] project: The project for the resource
@@ -62,6 +64,8 @@ class AwsNodePoolArgs:
         pulumi.set(__self__, "version", version)
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
+        if kubelet_config is not None:
+            pulumi.set(__self__, "kubelet_config", kubelet_config)
         if management is not None:
             pulumi.set(__self__, "management", management)
         if name is not None:
@@ -173,6 +177,18 @@ class AwsNodePoolArgs:
         pulumi.set(self, "annotations", value)
 
     @property
+    @pulumi.getter(name="kubeletConfig")
+    def kubelet_config(self) -> Optional[pulumi.Input['AwsNodePoolKubeletConfigArgs']]:
+        """
+        The kubelet configuration for the node pool.
+        """
+        return pulumi.get(self, "kubelet_config")
+
+    @kubelet_config.setter
+    def kubelet_config(self, value: Optional[pulumi.Input['AwsNodePoolKubeletConfigArgs']]):
+        pulumi.set(self, "kubelet_config", value)
+
+    @property
     @pulumi.getter
     def management(self) -> Optional[pulumi.Input['AwsNodePoolManagementArgs']]:
         """
@@ -231,6 +247,7 @@ class _AwsNodePoolState:
                  create_time: Optional[pulumi.Input[str]] = None,
                  effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
+                 kubelet_config: Optional[pulumi.Input['AwsNodePoolKubeletConfigArgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  management: Optional[pulumi.Input['AwsNodePoolManagementArgs']] = None,
                  max_pods_constraint: Optional[pulumi.Input['AwsNodePoolMaxPodsConstraintArgs']] = None,
@@ -256,6 +273,7 @@ class _AwsNodePoolState:
         :param pulumi.Input['AwsNodePoolConfigArgs'] config: The configuration of the node pool.
         :param pulumi.Input[str] create_time: Output only. The time at which this node pool was created.
         :param pulumi.Input[str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+        :param pulumi.Input['AwsNodePoolKubeletConfigArgs'] kubelet_config: The kubelet configuration for the node pool.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input['AwsNodePoolManagementArgs'] management: The Management configuration for this node pool.
         :param pulumi.Input['AwsNodePoolMaxPodsConstraintArgs'] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
@@ -283,6 +301,8 @@ class _AwsNodePoolState:
             pulumi.set(__self__, "effective_annotations", effective_annotations)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
+        if kubelet_config is not None:
+            pulumi.set(__self__, "kubelet_config", kubelet_config)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if management is not None:
@@ -393,6 +413,18 @@ class _AwsNodePoolState:
     @etag.setter
     def etag(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter(name="kubeletConfig")
+    def kubelet_config(self) -> Optional[pulumi.Input['AwsNodePoolKubeletConfigArgs']]:
+        """
+        The kubelet configuration for the node pool.
+        """
+        return pulumi.get(self, "kubelet_config")
+
+    @kubelet_config.setter
+    def kubelet_config(self, value: Optional[pulumi.Input['AwsNodePoolKubeletConfigArgs']]):
+        pulumi.set(self, "kubelet_config", value)
 
     @property
     @pulumi.getter
@@ -548,6 +580,7 @@ class AwsNodePool(pulumi.CustomResource):
                  autoscaling: Optional[pulumi.Input[Union['AwsNodePoolAutoscalingArgs', 'AwsNodePoolAutoscalingArgsDict']]] = None,
                  cluster: Optional[pulumi.Input[str]] = None,
                  config: Optional[pulumi.Input[Union['AwsNodePoolConfigArgs', 'AwsNodePoolConfigArgsDict']]] = None,
+                 kubelet_config: Optional[pulumi.Input[Union['AwsNodePoolKubeletConfigArgs', 'AwsNodePoolKubeletConfigArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  management: Optional[pulumi.Input[Union['AwsNodePoolManagementArgs', 'AwsNodePoolManagementArgsDict']]] = None,
                  max_pods_constraint: Optional[pulumi.Input[Union['AwsNodePoolMaxPodsConstraintArgs', 'AwsNodePoolMaxPodsConstraintArgsDict']]] = None,
@@ -683,6 +716,12 @@ class AwsNodePool(pulumi.CustomResource):
             },
             management={
                 "auto_repair": True,
+            },
+            kubelet_config={
+                "cpu_manager_policy": "none",
+                "cpu_cfs_quota": True,
+                "cpu_cfs_quota_period": "100ms",
+                "pod_pids_limit": 1024,
             },
             project="my-project-name")
         ```
@@ -964,6 +1003,7 @@ class AwsNodePool(pulumi.CustomResource):
         :param pulumi.Input[Union['AwsNodePoolAutoscalingArgs', 'AwsNodePoolAutoscalingArgsDict']] autoscaling: Autoscaler configuration for this node pool.
         :param pulumi.Input[str] cluster: The awsCluster for the resource
         :param pulumi.Input[Union['AwsNodePoolConfigArgs', 'AwsNodePoolConfigArgsDict']] config: The configuration of the node pool.
+        :param pulumi.Input[Union['AwsNodePoolKubeletConfigArgs', 'AwsNodePoolKubeletConfigArgsDict']] kubelet_config: The kubelet configuration for the node pool.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[Union['AwsNodePoolManagementArgs', 'AwsNodePoolManagementArgsDict']] management: The Management configuration for this node pool.
         :param pulumi.Input[Union['AwsNodePoolMaxPodsConstraintArgs', 'AwsNodePoolMaxPodsConstraintArgsDict']] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
@@ -1105,6 +1145,12 @@ class AwsNodePool(pulumi.CustomResource):
             },
             management={
                 "auto_repair": True,
+            },
+            kubelet_config={
+                "cpu_manager_policy": "none",
+                "cpu_cfs_quota": True,
+                "cpu_cfs_quota_period": "100ms",
+                "pod_pids_limit": 1024,
             },
             project="my-project-name")
         ```
@@ -1394,6 +1440,7 @@ class AwsNodePool(pulumi.CustomResource):
                  autoscaling: Optional[pulumi.Input[Union['AwsNodePoolAutoscalingArgs', 'AwsNodePoolAutoscalingArgsDict']]] = None,
                  cluster: Optional[pulumi.Input[str]] = None,
                  config: Optional[pulumi.Input[Union['AwsNodePoolConfigArgs', 'AwsNodePoolConfigArgsDict']]] = None,
+                 kubelet_config: Optional[pulumi.Input[Union['AwsNodePoolKubeletConfigArgs', 'AwsNodePoolKubeletConfigArgsDict']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  management: Optional[pulumi.Input[Union['AwsNodePoolManagementArgs', 'AwsNodePoolManagementArgsDict']]] = None,
                  max_pods_constraint: Optional[pulumi.Input[Union['AwsNodePoolMaxPodsConstraintArgs', 'AwsNodePoolMaxPodsConstraintArgsDict']]] = None,
@@ -1421,6 +1468,7 @@ class AwsNodePool(pulumi.CustomResource):
             if config is None and not opts.urn:
                 raise TypeError("Missing required property 'config'")
             __props__.__dict__["config"] = config
+            __props__.__dict__["kubelet_config"] = kubelet_config
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
@@ -1461,6 +1509,7 @@ class AwsNodePool(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
+            kubelet_config: Optional[pulumi.Input[Union['AwsNodePoolKubeletConfigArgs', 'AwsNodePoolKubeletConfigArgsDict']]] = None,
             location: Optional[pulumi.Input[str]] = None,
             management: Optional[pulumi.Input[Union['AwsNodePoolManagementArgs', 'AwsNodePoolManagementArgsDict']]] = None,
             max_pods_constraint: Optional[pulumi.Input[Union['AwsNodePoolMaxPodsConstraintArgs', 'AwsNodePoolMaxPodsConstraintArgsDict']]] = None,
@@ -1491,6 +1540,7 @@ class AwsNodePool(pulumi.CustomResource):
         :param pulumi.Input[Union['AwsNodePoolConfigArgs', 'AwsNodePoolConfigArgsDict']] config: The configuration of the node pool.
         :param pulumi.Input[str] create_time: Output only. The time at which this node pool was created.
         :param pulumi.Input[str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+        :param pulumi.Input[Union['AwsNodePoolKubeletConfigArgs', 'AwsNodePoolKubeletConfigArgsDict']] kubelet_config: The kubelet configuration for the node pool.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[Union['AwsNodePoolManagementArgs', 'AwsNodePoolManagementArgsDict']] management: The Management configuration for this node pool.
         :param pulumi.Input[Union['AwsNodePoolMaxPodsConstraintArgs', 'AwsNodePoolMaxPodsConstraintArgsDict']] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
@@ -1515,6 +1565,7 @@ class AwsNodePool(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["effective_annotations"] = effective_annotations
         __props__.__dict__["etag"] = etag
+        __props__.__dict__["kubelet_config"] = kubelet_config
         __props__.__dict__["location"] = location
         __props__.__dict__["management"] = management
         __props__.__dict__["max_pods_constraint"] = max_pods_constraint
@@ -1586,6 +1637,14 @@ class AwsNodePool(pulumi.CustomResource):
         Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         """
         return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter(name="kubeletConfig")
+    def kubelet_config(self) -> pulumi.Output['outputs.AwsNodePoolKubeletConfig']:
+        """
+        The kubelet configuration for the node pool.
+        """
+        return pulumi.get(self, "kubelet_config")
 
     @property
     @pulumi.getter

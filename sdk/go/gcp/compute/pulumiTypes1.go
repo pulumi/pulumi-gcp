@@ -13,6 +13,609 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type SecurityScanConfigAuthenticationGoogleAccount struct {
+	// The password of the Google account. The credential is stored encrypted
+	// in GCP.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	Password string `pulumi:"password"`
+	// The user name of the Google account.
+	Username string `pulumi:"username"`
+}
+
+// SecurityScanConfigAuthenticationGoogleAccountInput is an input type that accepts SecurityScanConfigAuthenticationGoogleAccountArgs and SecurityScanConfigAuthenticationGoogleAccountOutput values.
+// You can construct a concrete instance of `SecurityScanConfigAuthenticationGoogleAccountInput` via:
+//
+//	SecurityScanConfigAuthenticationGoogleAccountArgs{...}
+type SecurityScanConfigAuthenticationGoogleAccountInput interface {
+	pulumi.Input
+
+	ToSecurityScanConfigAuthenticationGoogleAccountOutput() SecurityScanConfigAuthenticationGoogleAccountOutput
+	ToSecurityScanConfigAuthenticationGoogleAccountOutputWithContext(context.Context) SecurityScanConfigAuthenticationGoogleAccountOutput
+}
+
+type SecurityScanConfigAuthenticationGoogleAccountArgs struct {
+	// The password of the Google account. The credential is stored encrypted
+	// in GCP.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	Password pulumi.StringInput `pulumi:"password"`
+	// The user name of the Google account.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (SecurityScanConfigAuthenticationGoogleAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityScanConfigAuthenticationGoogleAccount)(nil)).Elem()
+}
+
+func (i SecurityScanConfigAuthenticationGoogleAccountArgs) ToSecurityScanConfigAuthenticationGoogleAccountOutput() SecurityScanConfigAuthenticationGoogleAccountOutput {
+	return i.ToSecurityScanConfigAuthenticationGoogleAccountOutputWithContext(context.Background())
+}
+
+func (i SecurityScanConfigAuthenticationGoogleAccountArgs) ToSecurityScanConfigAuthenticationGoogleAccountOutputWithContext(ctx context.Context) SecurityScanConfigAuthenticationGoogleAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityScanConfigAuthenticationGoogleAccountOutput)
+}
+
+func (i SecurityScanConfigAuthenticationGoogleAccountArgs) ToSecurityScanConfigAuthenticationGoogleAccountPtrOutput() SecurityScanConfigAuthenticationGoogleAccountPtrOutput {
+	return i.ToSecurityScanConfigAuthenticationGoogleAccountPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityScanConfigAuthenticationGoogleAccountArgs) ToSecurityScanConfigAuthenticationGoogleAccountPtrOutputWithContext(ctx context.Context) SecurityScanConfigAuthenticationGoogleAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityScanConfigAuthenticationGoogleAccountOutput).ToSecurityScanConfigAuthenticationGoogleAccountPtrOutputWithContext(ctx)
+}
+
+// SecurityScanConfigAuthenticationGoogleAccountPtrInput is an input type that accepts SecurityScanConfigAuthenticationGoogleAccountArgs, SecurityScanConfigAuthenticationGoogleAccountPtr and SecurityScanConfigAuthenticationGoogleAccountPtrOutput values.
+// You can construct a concrete instance of `SecurityScanConfigAuthenticationGoogleAccountPtrInput` via:
+//
+//	        SecurityScanConfigAuthenticationGoogleAccountArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityScanConfigAuthenticationGoogleAccountPtrInput interface {
+	pulumi.Input
+
+	ToSecurityScanConfigAuthenticationGoogleAccountPtrOutput() SecurityScanConfigAuthenticationGoogleAccountPtrOutput
+	ToSecurityScanConfigAuthenticationGoogleAccountPtrOutputWithContext(context.Context) SecurityScanConfigAuthenticationGoogleAccountPtrOutput
+}
+
+type securityScanConfigAuthenticationGoogleAccountPtrType SecurityScanConfigAuthenticationGoogleAccountArgs
+
+func SecurityScanConfigAuthenticationGoogleAccountPtr(v *SecurityScanConfigAuthenticationGoogleAccountArgs) SecurityScanConfigAuthenticationGoogleAccountPtrInput {
+	return (*securityScanConfigAuthenticationGoogleAccountPtrType)(v)
+}
+
+func (*securityScanConfigAuthenticationGoogleAccountPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityScanConfigAuthenticationGoogleAccount)(nil)).Elem()
+}
+
+func (i *securityScanConfigAuthenticationGoogleAccountPtrType) ToSecurityScanConfigAuthenticationGoogleAccountPtrOutput() SecurityScanConfigAuthenticationGoogleAccountPtrOutput {
+	return i.ToSecurityScanConfigAuthenticationGoogleAccountPtrOutputWithContext(context.Background())
+}
+
+func (i *securityScanConfigAuthenticationGoogleAccountPtrType) ToSecurityScanConfigAuthenticationGoogleAccountPtrOutputWithContext(ctx context.Context) SecurityScanConfigAuthenticationGoogleAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityScanConfigAuthenticationGoogleAccountPtrOutput)
+}
+
+type SecurityScanConfigAuthenticationGoogleAccountOutput struct{ *pulumi.OutputState }
+
+func (SecurityScanConfigAuthenticationGoogleAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityScanConfigAuthenticationGoogleAccount)(nil)).Elem()
+}
+
+func (o SecurityScanConfigAuthenticationGoogleAccountOutput) ToSecurityScanConfigAuthenticationGoogleAccountOutput() SecurityScanConfigAuthenticationGoogleAccountOutput {
+	return o
+}
+
+func (o SecurityScanConfigAuthenticationGoogleAccountOutput) ToSecurityScanConfigAuthenticationGoogleAccountOutputWithContext(ctx context.Context) SecurityScanConfigAuthenticationGoogleAccountOutput {
+	return o
+}
+
+func (o SecurityScanConfigAuthenticationGoogleAccountOutput) ToSecurityScanConfigAuthenticationGoogleAccountPtrOutput() SecurityScanConfigAuthenticationGoogleAccountPtrOutput {
+	return o.ToSecurityScanConfigAuthenticationGoogleAccountPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityScanConfigAuthenticationGoogleAccountOutput) ToSecurityScanConfigAuthenticationGoogleAccountPtrOutputWithContext(ctx context.Context) SecurityScanConfigAuthenticationGoogleAccountPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityScanConfigAuthenticationGoogleAccount) *SecurityScanConfigAuthenticationGoogleAccount {
+		return &v
+	}).(SecurityScanConfigAuthenticationGoogleAccountPtrOutput)
+}
+
+// The password of the Google account. The credential is stored encrypted
+// in GCP.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o SecurityScanConfigAuthenticationGoogleAccountOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityScanConfigAuthenticationGoogleAccount) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// The user name of the Google account.
+func (o SecurityScanConfigAuthenticationGoogleAccountOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityScanConfigAuthenticationGoogleAccount) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type SecurityScanConfigAuthenticationGoogleAccountPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityScanConfigAuthenticationGoogleAccountPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityScanConfigAuthenticationGoogleAccount)(nil)).Elem()
+}
+
+func (o SecurityScanConfigAuthenticationGoogleAccountPtrOutput) ToSecurityScanConfigAuthenticationGoogleAccountPtrOutput() SecurityScanConfigAuthenticationGoogleAccountPtrOutput {
+	return o
+}
+
+func (o SecurityScanConfigAuthenticationGoogleAccountPtrOutput) ToSecurityScanConfigAuthenticationGoogleAccountPtrOutputWithContext(ctx context.Context) SecurityScanConfigAuthenticationGoogleAccountPtrOutput {
+	return o
+}
+
+func (o SecurityScanConfigAuthenticationGoogleAccountPtrOutput) Elem() SecurityScanConfigAuthenticationGoogleAccountOutput {
+	return o.ApplyT(func(v *SecurityScanConfigAuthenticationGoogleAccount) SecurityScanConfigAuthenticationGoogleAccount {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityScanConfigAuthenticationGoogleAccount
+		return ret
+	}).(SecurityScanConfigAuthenticationGoogleAccountOutput)
+}
+
+// The password of the Google account. The credential is stored encrypted
+// in GCP.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o SecurityScanConfigAuthenticationGoogleAccountPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityScanConfigAuthenticationGoogleAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// The user name of the Google account.
+func (o SecurityScanConfigAuthenticationGoogleAccountPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityScanConfigAuthenticationGoogleAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecurityScanConfigSchedule struct {
+	// The duration of time between executions in days
+	IntervalDurationDays int `pulumi:"intervalDurationDays"`
+	// A timestamp indicates when the next run will be scheduled. The value is refreshed
+	// by the server after each run. If unspecified, it will default to current server time,
+	// which means the scan will be scheduled to start immediately.
+	ScheduleTime *string `pulumi:"scheduleTime"`
+}
+
+// SecurityScanConfigScheduleInput is an input type that accepts SecurityScanConfigScheduleArgs and SecurityScanConfigScheduleOutput values.
+// You can construct a concrete instance of `SecurityScanConfigScheduleInput` via:
+//
+//	SecurityScanConfigScheduleArgs{...}
+type SecurityScanConfigScheduleInput interface {
+	pulumi.Input
+
+	ToSecurityScanConfigScheduleOutput() SecurityScanConfigScheduleOutput
+	ToSecurityScanConfigScheduleOutputWithContext(context.Context) SecurityScanConfigScheduleOutput
+}
+
+type SecurityScanConfigScheduleArgs struct {
+	// The duration of time between executions in days
+	IntervalDurationDays pulumi.IntInput `pulumi:"intervalDurationDays"`
+	// A timestamp indicates when the next run will be scheduled. The value is refreshed
+	// by the server after each run. If unspecified, it will default to current server time,
+	// which means the scan will be scheduled to start immediately.
+	ScheduleTime pulumi.StringPtrInput `pulumi:"scheduleTime"`
+}
+
+func (SecurityScanConfigScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityScanConfigSchedule)(nil)).Elem()
+}
+
+func (i SecurityScanConfigScheduleArgs) ToSecurityScanConfigScheduleOutput() SecurityScanConfigScheduleOutput {
+	return i.ToSecurityScanConfigScheduleOutputWithContext(context.Background())
+}
+
+func (i SecurityScanConfigScheduleArgs) ToSecurityScanConfigScheduleOutputWithContext(ctx context.Context) SecurityScanConfigScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityScanConfigScheduleOutput)
+}
+
+func (i SecurityScanConfigScheduleArgs) ToSecurityScanConfigSchedulePtrOutput() SecurityScanConfigSchedulePtrOutput {
+	return i.ToSecurityScanConfigSchedulePtrOutputWithContext(context.Background())
+}
+
+func (i SecurityScanConfigScheduleArgs) ToSecurityScanConfigSchedulePtrOutputWithContext(ctx context.Context) SecurityScanConfigSchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityScanConfigScheduleOutput).ToSecurityScanConfigSchedulePtrOutputWithContext(ctx)
+}
+
+// SecurityScanConfigSchedulePtrInput is an input type that accepts SecurityScanConfigScheduleArgs, SecurityScanConfigSchedulePtr and SecurityScanConfigSchedulePtrOutput values.
+// You can construct a concrete instance of `SecurityScanConfigSchedulePtrInput` via:
+//
+//	        SecurityScanConfigScheduleArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityScanConfigSchedulePtrInput interface {
+	pulumi.Input
+
+	ToSecurityScanConfigSchedulePtrOutput() SecurityScanConfigSchedulePtrOutput
+	ToSecurityScanConfigSchedulePtrOutputWithContext(context.Context) SecurityScanConfigSchedulePtrOutput
+}
+
+type securityScanConfigSchedulePtrType SecurityScanConfigScheduleArgs
+
+func SecurityScanConfigSchedulePtr(v *SecurityScanConfigScheduleArgs) SecurityScanConfigSchedulePtrInput {
+	return (*securityScanConfigSchedulePtrType)(v)
+}
+
+func (*securityScanConfigSchedulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityScanConfigSchedule)(nil)).Elem()
+}
+
+func (i *securityScanConfigSchedulePtrType) ToSecurityScanConfigSchedulePtrOutput() SecurityScanConfigSchedulePtrOutput {
+	return i.ToSecurityScanConfigSchedulePtrOutputWithContext(context.Background())
+}
+
+func (i *securityScanConfigSchedulePtrType) ToSecurityScanConfigSchedulePtrOutputWithContext(ctx context.Context) SecurityScanConfigSchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityScanConfigSchedulePtrOutput)
+}
+
+type SecurityScanConfigScheduleOutput struct{ *pulumi.OutputState }
+
+func (SecurityScanConfigScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityScanConfigSchedule)(nil)).Elem()
+}
+
+func (o SecurityScanConfigScheduleOutput) ToSecurityScanConfigScheduleOutput() SecurityScanConfigScheduleOutput {
+	return o
+}
+
+func (o SecurityScanConfigScheduleOutput) ToSecurityScanConfigScheduleOutputWithContext(ctx context.Context) SecurityScanConfigScheduleOutput {
+	return o
+}
+
+func (o SecurityScanConfigScheduleOutput) ToSecurityScanConfigSchedulePtrOutput() SecurityScanConfigSchedulePtrOutput {
+	return o.ToSecurityScanConfigSchedulePtrOutputWithContext(context.Background())
+}
+
+func (o SecurityScanConfigScheduleOutput) ToSecurityScanConfigSchedulePtrOutputWithContext(ctx context.Context) SecurityScanConfigSchedulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityScanConfigSchedule) *SecurityScanConfigSchedule {
+		return &v
+	}).(SecurityScanConfigSchedulePtrOutput)
+}
+
+// The duration of time between executions in days
+func (o SecurityScanConfigScheduleOutput) IntervalDurationDays() pulumi.IntOutput {
+	return o.ApplyT(func(v SecurityScanConfigSchedule) int { return v.IntervalDurationDays }).(pulumi.IntOutput)
+}
+
+// A timestamp indicates when the next run will be scheduled. The value is refreshed
+// by the server after each run. If unspecified, it will default to current server time,
+// which means the scan will be scheduled to start immediately.
+func (o SecurityScanConfigScheduleOutput) ScheduleTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityScanConfigSchedule) *string { return v.ScheduleTime }).(pulumi.StringPtrOutput)
+}
+
+type SecurityScanConfigSchedulePtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityScanConfigSchedulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityScanConfigSchedule)(nil)).Elem()
+}
+
+func (o SecurityScanConfigSchedulePtrOutput) ToSecurityScanConfigSchedulePtrOutput() SecurityScanConfigSchedulePtrOutput {
+	return o
+}
+
+func (o SecurityScanConfigSchedulePtrOutput) ToSecurityScanConfigSchedulePtrOutputWithContext(ctx context.Context) SecurityScanConfigSchedulePtrOutput {
+	return o
+}
+
+func (o SecurityScanConfigSchedulePtrOutput) Elem() SecurityScanConfigScheduleOutput {
+	return o.ApplyT(func(v *SecurityScanConfigSchedule) SecurityScanConfigSchedule {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityScanConfigSchedule
+		return ret
+	}).(SecurityScanConfigScheduleOutput)
+}
+
+// The duration of time between executions in days
+func (o SecurityScanConfigSchedulePtrOutput) IntervalDurationDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SecurityScanConfigSchedule) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.IntervalDurationDays
+	}).(pulumi.IntPtrOutput)
+}
+
+// A timestamp indicates when the next run will be scheduled. The value is refreshed
+// by the server after each run. If unspecified, it will default to current server time,
+// which means the scan will be scheduled to start immediately.
+func (o SecurityScanConfigSchedulePtrOutput) ScheduleTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityScanConfigSchedule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ScheduleTime
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceAttachmentConnectedEndpoint struct {
+	// (Output)
+	// The url of the consumer network.
+	ConsumerNetwork *string `pulumi:"consumerNetwork"`
+	// (Output)
+	// The URL of the consumer forwarding rule.
+	Endpoint *string `pulumi:"endpoint"`
+	// (Output, Beta)
+	// The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to.
+	PropagatedConnectionCount *int `pulumi:"propagatedConnectionCount"`
+	// (Output)
+	// The PSC connection id of the connected endpoint.
+	PscConnectionId *string `pulumi:"pscConnectionId"`
+	// (Output)
+	// The status of the connection from the consumer forwarding rule to
+	// this service attachment.
+	Status *string `pulumi:"status"`
+}
+
+// ServiceAttachmentConnectedEndpointInput is an input type that accepts ServiceAttachmentConnectedEndpointArgs and ServiceAttachmentConnectedEndpointOutput values.
+// You can construct a concrete instance of `ServiceAttachmentConnectedEndpointInput` via:
+//
+//	ServiceAttachmentConnectedEndpointArgs{...}
+type ServiceAttachmentConnectedEndpointInput interface {
+	pulumi.Input
+
+	ToServiceAttachmentConnectedEndpointOutput() ServiceAttachmentConnectedEndpointOutput
+	ToServiceAttachmentConnectedEndpointOutputWithContext(context.Context) ServiceAttachmentConnectedEndpointOutput
+}
+
+type ServiceAttachmentConnectedEndpointArgs struct {
+	// (Output)
+	// The url of the consumer network.
+	ConsumerNetwork pulumi.StringPtrInput `pulumi:"consumerNetwork"`
+	// (Output)
+	// The URL of the consumer forwarding rule.
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+	// (Output, Beta)
+	// The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to.
+	PropagatedConnectionCount pulumi.IntPtrInput `pulumi:"propagatedConnectionCount"`
+	// (Output)
+	// The PSC connection id of the connected endpoint.
+	PscConnectionId pulumi.StringPtrInput `pulumi:"pscConnectionId"`
+	// (Output)
+	// The status of the connection from the consumer forwarding rule to
+	// this service attachment.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (ServiceAttachmentConnectedEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceAttachmentConnectedEndpoint)(nil)).Elem()
+}
+
+func (i ServiceAttachmentConnectedEndpointArgs) ToServiceAttachmentConnectedEndpointOutput() ServiceAttachmentConnectedEndpointOutput {
+	return i.ToServiceAttachmentConnectedEndpointOutputWithContext(context.Background())
+}
+
+func (i ServiceAttachmentConnectedEndpointArgs) ToServiceAttachmentConnectedEndpointOutputWithContext(ctx context.Context) ServiceAttachmentConnectedEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceAttachmentConnectedEndpointOutput)
+}
+
+// ServiceAttachmentConnectedEndpointArrayInput is an input type that accepts ServiceAttachmentConnectedEndpointArray and ServiceAttachmentConnectedEndpointArrayOutput values.
+// You can construct a concrete instance of `ServiceAttachmentConnectedEndpointArrayInput` via:
+//
+//	ServiceAttachmentConnectedEndpointArray{ ServiceAttachmentConnectedEndpointArgs{...} }
+type ServiceAttachmentConnectedEndpointArrayInput interface {
+	pulumi.Input
+
+	ToServiceAttachmentConnectedEndpointArrayOutput() ServiceAttachmentConnectedEndpointArrayOutput
+	ToServiceAttachmentConnectedEndpointArrayOutputWithContext(context.Context) ServiceAttachmentConnectedEndpointArrayOutput
+}
+
+type ServiceAttachmentConnectedEndpointArray []ServiceAttachmentConnectedEndpointInput
+
+func (ServiceAttachmentConnectedEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceAttachmentConnectedEndpoint)(nil)).Elem()
+}
+
+func (i ServiceAttachmentConnectedEndpointArray) ToServiceAttachmentConnectedEndpointArrayOutput() ServiceAttachmentConnectedEndpointArrayOutput {
+	return i.ToServiceAttachmentConnectedEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceAttachmentConnectedEndpointArray) ToServiceAttachmentConnectedEndpointArrayOutputWithContext(ctx context.Context) ServiceAttachmentConnectedEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceAttachmentConnectedEndpointArrayOutput)
+}
+
+type ServiceAttachmentConnectedEndpointOutput struct{ *pulumi.OutputState }
+
+func (ServiceAttachmentConnectedEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceAttachmentConnectedEndpoint)(nil)).Elem()
+}
+
+func (o ServiceAttachmentConnectedEndpointOutput) ToServiceAttachmentConnectedEndpointOutput() ServiceAttachmentConnectedEndpointOutput {
+	return o
+}
+
+func (o ServiceAttachmentConnectedEndpointOutput) ToServiceAttachmentConnectedEndpointOutputWithContext(ctx context.Context) ServiceAttachmentConnectedEndpointOutput {
+	return o
+}
+
+// (Output)
+// The url of the consumer network.
+func (o ServiceAttachmentConnectedEndpointOutput) ConsumerNetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceAttachmentConnectedEndpoint) *string { return v.ConsumerNetwork }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The URL of the consumer forwarding rule.
+func (o ServiceAttachmentConnectedEndpointOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceAttachmentConnectedEndpoint) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+// (Output, Beta)
+// The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to.
+func (o ServiceAttachmentConnectedEndpointOutput) PropagatedConnectionCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceAttachmentConnectedEndpoint) *int { return v.PropagatedConnectionCount }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// The PSC connection id of the connected endpoint.
+func (o ServiceAttachmentConnectedEndpointOutput) PscConnectionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceAttachmentConnectedEndpoint) *string { return v.PscConnectionId }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The status of the connection from the consumer forwarding rule to
+// this service attachment.
+func (o ServiceAttachmentConnectedEndpointOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceAttachmentConnectedEndpoint) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type ServiceAttachmentConnectedEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceAttachmentConnectedEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceAttachmentConnectedEndpoint)(nil)).Elem()
+}
+
+func (o ServiceAttachmentConnectedEndpointArrayOutput) ToServiceAttachmentConnectedEndpointArrayOutput() ServiceAttachmentConnectedEndpointArrayOutput {
+	return o
+}
+
+func (o ServiceAttachmentConnectedEndpointArrayOutput) ToServiceAttachmentConnectedEndpointArrayOutputWithContext(ctx context.Context) ServiceAttachmentConnectedEndpointArrayOutput {
+	return o
+}
+
+func (o ServiceAttachmentConnectedEndpointArrayOutput) Index(i pulumi.IntInput) ServiceAttachmentConnectedEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceAttachmentConnectedEndpoint {
+		return vs[0].([]ServiceAttachmentConnectedEndpoint)[vs[1].(int)]
+	}).(ServiceAttachmentConnectedEndpointOutput)
+}
+
+type ServiceAttachmentConsumerAcceptList struct {
+	// The number of consumer forwarding rules the consumer project can
+	// create.
+	ConnectionLimit int `pulumi:"connectionLimit"`
+	// The network that is allowed to connect to this service attachment.
+	// Only one of projectIdOrNum and networkUrl may be set.
+	NetworkUrl *string `pulumi:"networkUrl"`
+	// A project that is allowed to connect to this service attachment.
+	// Only one of projectIdOrNum and networkUrl may be set.
+	ProjectIdOrNum *string `pulumi:"projectIdOrNum"`
+}
+
+// ServiceAttachmentConsumerAcceptListInput is an input type that accepts ServiceAttachmentConsumerAcceptListArgs and ServiceAttachmentConsumerAcceptListOutput values.
+// You can construct a concrete instance of `ServiceAttachmentConsumerAcceptListInput` via:
+//
+//	ServiceAttachmentConsumerAcceptListArgs{...}
+type ServiceAttachmentConsumerAcceptListInput interface {
+	pulumi.Input
+
+	ToServiceAttachmentConsumerAcceptListOutput() ServiceAttachmentConsumerAcceptListOutput
+	ToServiceAttachmentConsumerAcceptListOutputWithContext(context.Context) ServiceAttachmentConsumerAcceptListOutput
+}
+
+type ServiceAttachmentConsumerAcceptListArgs struct {
+	// The number of consumer forwarding rules the consumer project can
+	// create.
+	ConnectionLimit pulumi.IntInput `pulumi:"connectionLimit"`
+	// The network that is allowed to connect to this service attachment.
+	// Only one of projectIdOrNum and networkUrl may be set.
+	NetworkUrl pulumi.StringPtrInput `pulumi:"networkUrl"`
+	// A project that is allowed to connect to this service attachment.
+	// Only one of projectIdOrNum and networkUrl may be set.
+	ProjectIdOrNum pulumi.StringPtrInput `pulumi:"projectIdOrNum"`
+}
+
+func (ServiceAttachmentConsumerAcceptListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceAttachmentConsumerAcceptList)(nil)).Elem()
+}
+
+func (i ServiceAttachmentConsumerAcceptListArgs) ToServiceAttachmentConsumerAcceptListOutput() ServiceAttachmentConsumerAcceptListOutput {
+	return i.ToServiceAttachmentConsumerAcceptListOutputWithContext(context.Background())
+}
+
+func (i ServiceAttachmentConsumerAcceptListArgs) ToServiceAttachmentConsumerAcceptListOutputWithContext(ctx context.Context) ServiceAttachmentConsumerAcceptListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceAttachmentConsumerAcceptListOutput)
+}
+
+// ServiceAttachmentConsumerAcceptListArrayInput is an input type that accepts ServiceAttachmentConsumerAcceptListArray and ServiceAttachmentConsumerAcceptListArrayOutput values.
+// You can construct a concrete instance of `ServiceAttachmentConsumerAcceptListArrayInput` via:
+//
+//	ServiceAttachmentConsumerAcceptListArray{ ServiceAttachmentConsumerAcceptListArgs{...} }
+type ServiceAttachmentConsumerAcceptListArrayInput interface {
+	pulumi.Input
+
+	ToServiceAttachmentConsumerAcceptListArrayOutput() ServiceAttachmentConsumerAcceptListArrayOutput
+	ToServiceAttachmentConsumerAcceptListArrayOutputWithContext(context.Context) ServiceAttachmentConsumerAcceptListArrayOutput
+}
+
+type ServiceAttachmentConsumerAcceptListArray []ServiceAttachmentConsumerAcceptListInput
+
+func (ServiceAttachmentConsumerAcceptListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceAttachmentConsumerAcceptList)(nil)).Elem()
+}
+
+func (i ServiceAttachmentConsumerAcceptListArray) ToServiceAttachmentConsumerAcceptListArrayOutput() ServiceAttachmentConsumerAcceptListArrayOutput {
+	return i.ToServiceAttachmentConsumerAcceptListArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceAttachmentConsumerAcceptListArray) ToServiceAttachmentConsumerAcceptListArrayOutputWithContext(ctx context.Context) ServiceAttachmentConsumerAcceptListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceAttachmentConsumerAcceptListArrayOutput)
+}
+
+type ServiceAttachmentConsumerAcceptListOutput struct{ *pulumi.OutputState }
+
+func (ServiceAttachmentConsumerAcceptListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceAttachmentConsumerAcceptList)(nil)).Elem()
+}
+
+func (o ServiceAttachmentConsumerAcceptListOutput) ToServiceAttachmentConsumerAcceptListOutput() ServiceAttachmentConsumerAcceptListOutput {
+	return o
+}
+
+func (o ServiceAttachmentConsumerAcceptListOutput) ToServiceAttachmentConsumerAcceptListOutputWithContext(ctx context.Context) ServiceAttachmentConsumerAcceptListOutput {
+	return o
+}
+
+// The number of consumer forwarding rules the consumer project can
+// create.
+func (o ServiceAttachmentConsumerAcceptListOutput) ConnectionLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v ServiceAttachmentConsumerAcceptList) int { return v.ConnectionLimit }).(pulumi.IntOutput)
+}
+
+// The network that is allowed to connect to this service attachment.
+// Only one of projectIdOrNum and networkUrl may be set.
+func (o ServiceAttachmentConsumerAcceptListOutput) NetworkUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceAttachmentConsumerAcceptList) *string { return v.NetworkUrl }).(pulumi.StringPtrOutput)
+}
+
+// A project that is allowed to connect to this service attachment.
+// Only one of projectIdOrNum and networkUrl may be set.
+func (o ServiceAttachmentConsumerAcceptListOutput) ProjectIdOrNum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceAttachmentConsumerAcceptList) *string { return v.ProjectIdOrNum }).(pulumi.StringPtrOutput)
+}
+
+type ServiceAttachmentConsumerAcceptListArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceAttachmentConsumerAcceptListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceAttachmentConsumerAcceptList)(nil)).Elem()
+}
+
+func (o ServiceAttachmentConsumerAcceptListArrayOutput) ToServiceAttachmentConsumerAcceptListArrayOutput() ServiceAttachmentConsumerAcceptListArrayOutput {
+	return o
+}
+
+func (o ServiceAttachmentConsumerAcceptListArrayOutput) ToServiceAttachmentConsumerAcceptListArrayOutputWithContext(ctx context.Context) ServiceAttachmentConsumerAcceptListArrayOutput {
+	return o
+}
+
+func (o ServiceAttachmentConsumerAcceptListArrayOutput) Index(i pulumi.IntInput) ServiceAttachmentConsumerAcceptListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceAttachmentConsumerAcceptList {
+		return vs[0].([]ServiceAttachmentConsumerAcceptList)[vs[1].(int)]
+	}).(ServiceAttachmentConsumerAcceptListOutput)
+}
+
 type SnapshotIamBindingCondition struct {
 	Description *string `pulumi:"description"`
 	Expression  string  `pulumi:"expression"`
@@ -22103,6 +22706,247 @@ func (o GetBackendServiceSecuritySettingAwsV4AuthenticationArrayOutput) Index(i 
 	}).(GetBackendServiceSecuritySettingAwsV4AuthenticationOutput)
 }
 
+type GetBackendServiceStrongSessionAffinityCooky struct {
+	// The name of the Backend Service.
+	//
+	// ***
+	Name string `pulumi:"name"`
+	// Path to set for the cookie.
+	Path string `pulumi:"path"`
+	// Lifetime of the cookie.
+	Ttls []GetBackendServiceStrongSessionAffinityCookyTtl `pulumi:"ttls"`
+}
+
+// GetBackendServiceStrongSessionAffinityCookyInput is an input type that accepts GetBackendServiceStrongSessionAffinityCookyArgs and GetBackendServiceStrongSessionAffinityCookyOutput values.
+// You can construct a concrete instance of `GetBackendServiceStrongSessionAffinityCookyInput` via:
+//
+//	GetBackendServiceStrongSessionAffinityCookyArgs{...}
+type GetBackendServiceStrongSessionAffinityCookyInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceStrongSessionAffinityCookyOutput() GetBackendServiceStrongSessionAffinityCookyOutput
+	ToGetBackendServiceStrongSessionAffinityCookyOutputWithContext(context.Context) GetBackendServiceStrongSessionAffinityCookyOutput
+}
+
+type GetBackendServiceStrongSessionAffinityCookyArgs struct {
+	// The name of the Backend Service.
+	//
+	// ***
+	Name pulumi.StringInput `pulumi:"name"`
+	// Path to set for the cookie.
+	Path pulumi.StringInput `pulumi:"path"`
+	// Lifetime of the cookie.
+	Ttls GetBackendServiceStrongSessionAffinityCookyTtlArrayInput `pulumi:"ttls"`
+}
+
+func (GetBackendServiceStrongSessionAffinityCookyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceStrongSessionAffinityCooky)(nil)).Elem()
+}
+
+func (i GetBackendServiceStrongSessionAffinityCookyArgs) ToGetBackendServiceStrongSessionAffinityCookyOutput() GetBackendServiceStrongSessionAffinityCookyOutput {
+	return i.ToGetBackendServiceStrongSessionAffinityCookyOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceStrongSessionAffinityCookyArgs) ToGetBackendServiceStrongSessionAffinityCookyOutputWithContext(ctx context.Context) GetBackendServiceStrongSessionAffinityCookyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceStrongSessionAffinityCookyOutput)
+}
+
+// GetBackendServiceStrongSessionAffinityCookyArrayInput is an input type that accepts GetBackendServiceStrongSessionAffinityCookyArray and GetBackendServiceStrongSessionAffinityCookyArrayOutput values.
+// You can construct a concrete instance of `GetBackendServiceStrongSessionAffinityCookyArrayInput` via:
+//
+//	GetBackendServiceStrongSessionAffinityCookyArray{ GetBackendServiceStrongSessionAffinityCookyArgs{...} }
+type GetBackendServiceStrongSessionAffinityCookyArrayInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceStrongSessionAffinityCookyArrayOutput() GetBackendServiceStrongSessionAffinityCookyArrayOutput
+	ToGetBackendServiceStrongSessionAffinityCookyArrayOutputWithContext(context.Context) GetBackendServiceStrongSessionAffinityCookyArrayOutput
+}
+
+type GetBackendServiceStrongSessionAffinityCookyArray []GetBackendServiceStrongSessionAffinityCookyInput
+
+func (GetBackendServiceStrongSessionAffinityCookyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceStrongSessionAffinityCooky)(nil)).Elem()
+}
+
+func (i GetBackendServiceStrongSessionAffinityCookyArray) ToGetBackendServiceStrongSessionAffinityCookyArrayOutput() GetBackendServiceStrongSessionAffinityCookyArrayOutput {
+	return i.ToGetBackendServiceStrongSessionAffinityCookyArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceStrongSessionAffinityCookyArray) ToGetBackendServiceStrongSessionAffinityCookyArrayOutputWithContext(ctx context.Context) GetBackendServiceStrongSessionAffinityCookyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceStrongSessionAffinityCookyArrayOutput)
+}
+
+type GetBackendServiceStrongSessionAffinityCookyOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceStrongSessionAffinityCookyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceStrongSessionAffinityCooky)(nil)).Elem()
+}
+
+func (o GetBackendServiceStrongSessionAffinityCookyOutput) ToGetBackendServiceStrongSessionAffinityCookyOutput() GetBackendServiceStrongSessionAffinityCookyOutput {
+	return o
+}
+
+func (o GetBackendServiceStrongSessionAffinityCookyOutput) ToGetBackendServiceStrongSessionAffinityCookyOutputWithContext(ctx context.Context) GetBackendServiceStrongSessionAffinityCookyOutput {
+	return o
+}
+
+// The name of the Backend Service.
+//
+// ***
+func (o GetBackendServiceStrongSessionAffinityCookyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackendServiceStrongSessionAffinityCooky) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Path to set for the cookie.
+func (o GetBackendServiceStrongSessionAffinityCookyOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackendServiceStrongSessionAffinityCooky) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// Lifetime of the cookie.
+func (o GetBackendServiceStrongSessionAffinityCookyOutput) Ttls() GetBackendServiceStrongSessionAffinityCookyTtlArrayOutput {
+	return o.ApplyT(func(v GetBackendServiceStrongSessionAffinityCooky) []GetBackendServiceStrongSessionAffinityCookyTtl {
+		return v.Ttls
+	}).(GetBackendServiceStrongSessionAffinityCookyTtlArrayOutput)
+}
+
+type GetBackendServiceStrongSessionAffinityCookyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceStrongSessionAffinityCookyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceStrongSessionAffinityCooky)(nil)).Elem()
+}
+
+func (o GetBackendServiceStrongSessionAffinityCookyArrayOutput) ToGetBackendServiceStrongSessionAffinityCookyArrayOutput() GetBackendServiceStrongSessionAffinityCookyArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceStrongSessionAffinityCookyArrayOutput) ToGetBackendServiceStrongSessionAffinityCookyArrayOutputWithContext(ctx context.Context) GetBackendServiceStrongSessionAffinityCookyArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceStrongSessionAffinityCookyArrayOutput) Index(i pulumi.IntInput) GetBackendServiceStrongSessionAffinityCookyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceStrongSessionAffinityCooky {
+		return vs[0].([]GetBackendServiceStrongSessionAffinityCooky)[vs[1].(int)]
+	}).(GetBackendServiceStrongSessionAffinityCookyOutput)
+}
+
+type GetBackendServiceStrongSessionAffinityCookyTtl struct {
+	// Span of time that's a fraction of a second at nanosecond
+	// resolution. Durations less than one second are represented
+	// with a 0 seconds field and a positive nanos field. Must
+	// be from 0 to 999,999,999 inclusive.
+	Nanos int `pulumi:"nanos"`
+	// Span of time at a resolution of a second.
+	// Must be from 0 to 315,576,000,000 inclusive.
+	Seconds int `pulumi:"seconds"`
+}
+
+// GetBackendServiceStrongSessionAffinityCookyTtlInput is an input type that accepts GetBackendServiceStrongSessionAffinityCookyTtlArgs and GetBackendServiceStrongSessionAffinityCookyTtlOutput values.
+// You can construct a concrete instance of `GetBackendServiceStrongSessionAffinityCookyTtlInput` via:
+//
+//	GetBackendServiceStrongSessionAffinityCookyTtlArgs{...}
+type GetBackendServiceStrongSessionAffinityCookyTtlInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceStrongSessionAffinityCookyTtlOutput() GetBackendServiceStrongSessionAffinityCookyTtlOutput
+	ToGetBackendServiceStrongSessionAffinityCookyTtlOutputWithContext(context.Context) GetBackendServiceStrongSessionAffinityCookyTtlOutput
+}
+
+type GetBackendServiceStrongSessionAffinityCookyTtlArgs struct {
+	// Span of time that's a fraction of a second at nanosecond
+	// resolution. Durations less than one second are represented
+	// with a 0 seconds field and a positive nanos field. Must
+	// be from 0 to 999,999,999 inclusive.
+	Nanos pulumi.IntInput `pulumi:"nanos"`
+	// Span of time at a resolution of a second.
+	// Must be from 0 to 315,576,000,000 inclusive.
+	Seconds pulumi.IntInput `pulumi:"seconds"`
+}
+
+func (GetBackendServiceStrongSessionAffinityCookyTtlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceStrongSessionAffinityCookyTtl)(nil)).Elem()
+}
+
+func (i GetBackendServiceStrongSessionAffinityCookyTtlArgs) ToGetBackendServiceStrongSessionAffinityCookyTtlOutput() GetBackendServiceStrongSessionAffinityCookyTtlOutput {
+	return i.ToGetBackendServiceStrongSessionAffinityCookyTtlOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceStrongSessionAffinityCookyTtlArgs) ToGetBackendServiceStrongSessionAffinityCookyTtlOutputWithContext(ctx context.Context) GetBackendServiceStrongSessionAffinityCookyTtlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceStrongSessionAffinityCookyTtlOutput)
+}
+
+// GetBackendServiceStrongSessionAffinityCookyTtlArrayInput is an input type that accepts GetBackendServiceStrongSessionAffinityCookyTtlArray and GetBackendServiceStrongSessionAffinityCookyTtlArrayOutput values.
+// You can construct a concrete instance of `GetBackendServiceStrongSessionAffinityCookyTtlArrayInput` via:
+//
+//	GetBackendServiceStrongSessionAffinityCookyTtlArray{ GetBackendServiceStrongSessionAffinityCookyTtlArgs{...} }
+type GetBackendServiceStrongSessionAffinityCookyTtlArrayInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceStrongSessionAffinityCookyTtlArrayOutput() GetBackendServiceStrongSessionAffinityCookyTtlArrayOutput
+	ToGetBackendServiceStrongSessionAffinityCookyTtlArrayOutputWithContext(context.Context) GetBackendServiceStrongSessionAffinityCookyTtlArrayOutput
+}
+
+type GetBackendServiceStrongSessionAffinityCookyTtlArray []GetBackendServiceStrongSessionAffinityCookyTtlInput
+
+func (GetBackendServiceStrongSessionAffinityCookyTtlArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceStrongSessionAffinityCookyTtl)(nil)).Elem()
+}
+
+func (i GetBackendServiceStrongSessionAffinityCookyTtlArray) ToGetBackendServiceStrongSessionAffinityCookyTtlArrayOutput() GetBackendServiceStrongSessionAffinityCookyTtlArrayOutput {
+	return i.ToGetBackendServiceStrongSessionAffinityCookyTtlArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceStrongSessionAffinityCookyTtlArray) ToGetBackendServiceStrongSessionAffinityCookyTtlArrayOutputWithContext(ctx context.Context) GetBackendServiceStrongSessionAffinityCookyTtlArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceStrongSessionAffinityCookyTtlArrayOutput)
+}
+
+type GetBackendServiceStrongSessionAffinityCookyTtlOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceStrongSessionAffinityCookyTtlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceStrongSessionAffinityCookyTtl)(nil)).Elem()
+}
+
+func (o GetBackendServiceStrongSessionAffinityCookyTtlOutput) ToGetBackendServiceStrongSessionAffinityCookyTtlOutput() GetBackendServiceStrongSessionAffinityCookyTtlOutput {
+	return o
+}
+
+func (o GetBackendServiceStrongSessionAffinityCookyTtlOutput) ToGetBackendServiceStrongSessionAffinityCookyTtlOutputWithContext(ctx context.Context) GetBackendServiceStrongSessionAffinityCookyTtlOutput {
+	return o
+}
+
+// Span of time that's a fraction of a second at nanosecond
+// resolution. Durations less than one second are represented
+// with a 0 seconds field and a positive nanos field. Must
+// be from 0 to 999,999,999 inclusive.
+func (o GetBackendServiceStrongSessionAffinityCookyTtlOutput) Nanos() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBackendServiceStrongSessionAffinityCookyTtl) int { return v.Nanos }).(pulumi.IntOutput)
+}
+
+// Span of time at a resolution of a second.
+// Must be from 0 to 315,576,000,000 inclusive.
+func (o GetBackendServiceStrongSessionAffinityCookyTtlOutput) Seconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBackendServiceStrongSessionAffinityCookyTtl) int { return v.Seconds }).(pulumi.IntOutput)
+}
+
+type GetBackendServiceStrongSessionAffinityCookyTtlArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceStrongSessionAffinityCookyTtlArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceStrongSessionAffinityCookyTtl)(nil)).Elem()
+}
+
+func (o GetBackendServiceStrongSessionAffinityCookyTtlArrayOutput) ToGetBackendServiceStrongSessionAffinityCookyTtlArrayOutput() GetBackendServiceStrongSessionAffinityCookyTtlArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceStrongSessionAffinityCookyTtlArrayOutput) ToGetBackendServiceStrongSessionAffinityCookyTtlArrayOutputWithContext(ctx context.Context) GetBackendServiceStrongSessionAffinityCookyTtlArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceStrongSessionAffinityCookyTtlArrayOutput) Index(i pulumi.IntInput) GetBackendServiceStrongSessionAffinityCookyTtlOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceStrongSessionAffinityCookyTtl {
+		return vs[0].([]GetBackendServiceStrongSessionAffinityCookyTtl)[vs[1].(int)]
+	}).(GetBackendServiceStrongSessionAffinityCookyTtlOutput)
+}
+
 type GetDiskAsyncPrimaryDisk struct {
 	// Primary disk for asynchronous disk replication.
 	Disk string `pulumi:"disk"`
@@ -26431,7 +27275,7 @@ type GetInstanceConfidentialInstanceConfig struct {
 	// The confidential computing technology the instance uses.
 	// 								SEV is an AMD feature. TDX is an Intel feature. One of the following
 	// 								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, minCpuPlatform =
-	// 								"AMD Milan" is currently required. TDX is only available in beta.
+	// 								"AMD Milan" is currently required.
 	ConfidentialInstanceType string `pulumi:"confidentialInstanceType"`
 	// Defines whether the instance should have confidential compute enabled. Field will be deprecated in a future release
 	EnableConfidentialCompute bool `pulumi:"enableConfidentialCompute"`
@@ -26452,7 +27296,7 @@ type GetInstanceConfidentialInstanceConfigArgs struct {
 	// The confidential computing technology the instance uses.
 	// 								SEV is an AMD feature. TDX is an Intel feature. One of the following
 	// 								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, minCpuPlatform =
-	// 								"AMD Milan" is currently required. TDX is only available in beta.
+	// 								"AMD Milan" is currently required.
 	ConfidentialInstanceType pulumi.StringInput `pulumi:"confidentialInstanceType"`
 	// Defines whether the instance should have confidential compute enabled. Field will be deprecated in a future release
 	EnableConfidentialCompute pulumi.BoolInput `pulumi:"enableConfidentialCompute"`
@@ -26513,7 +27357,7 @@ func (o GetInstanceConfidentialInstanceConfigOutput) ToGetInstanceConfidentialIn
 //
 //	SEV is an AMD feature. TDX is an Intel feature. One of the following
 //	values is required: SEV, SEV_SNP, TDX. If SEV_SNP, minCpuPlatform =
-//	"AMD Milan" is currently required. TDX is only available in beta.
+//	"AMD Milan" is currently required.
 func (o GetInstanceConfidentialInstanceConfigOutput) ConfidentialInstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceConfidentialInstanceConfig) string { return v.ConfidentialInstanceType }).(pulumi.StringOutput)
 }
@@ -30761,7 +31605,7 @@ type GetInstanceTemplateConfidentialInstanceConfig struct {
 	// The confidential computing technology the instance uses.
 	// 								SEV is an AMD feature. TDX is an Intel feature. One of the following
 	// 								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, minCpuPlatform =
-	// 								"AMD Milan" is currently required. TDX is only available in beta.
+	// 								"AMD Milan" is currently required.
 	ConfidentialInstanceType string `pulumi:"confidentialInstanceType"`
 	// Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
 	EnableConfidentialCompute bool `pulumi:"enableConfidentialCompute"`
@@ -30782,7 +31626,7 @@ type GetInstanceTemplateConfidentialInstanceConfigArgs struct {
 	// The confidential computing technology the instance uses.
 	// 								SEV is an AMD feature. TDX is an Intel feature. One of the following
 	// 								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, minCpuPlatform =
-	// 								"AMD Milan" is currently required. TDX is only available in beta.
+	// 								"AMD Milan" is currently required.
 	ConfidentialInstanceType pulumi.StringInput `pulumi:"confidentialInstanceType"`
 	// Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
 	EnableConfidentialCompute pulumi.BoolInput `pulumi:"enableConfidentialCompute"`
@@ -30843,7 +31687,7 @@ func (o GetInstanceTemplateConfidentialInstanceConfigOutput) ToGetInstanceTempla
 //
 //	SEV is an AMD feature. TDX is an Intel feature. One of the following
 //	values is required: SEV, SEV_SNP, TDX. If SEV_SNP, minCpuPlatform =
-//	"AMD Milan" is currently required. TDX is only available in beta.
+//	"AMD Milan" is currently required.
 func (o GetInstanceTemplateConfidentialInstanceConfigOutput) ConfidentialInstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTemplateConfidentialInstanceConfig) string { return v.ConfidentialInstanceType }).(pulumi.StringOutput)
 }
@@ -43175,10 +44019,16 @@ type GetRouterStatusBestRoute struct {
 	NextHopInstance string `pulumi:"nextHopInstance"`
 	// The zone of the instance specified in next_hop_instance. Omit if nextHopInstance is specified as a URL.
 	NextHopInstanceZone string `pulumi:"nextHopInstanceZone"`
+	// Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.
+	NextHopInterRegionCost string `pulumi:"nextHopInterRegionCost"`
 	// Network IP address of an instance that should handle matching packets.
 	NextHopIp string `pulumi:"nextHopIp"`
+	// Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
+	NextHopMed string `pulumi:"nextHopMed"`
 	// URL to a Network that should handle matching packets.
 	NextHopNetwork string `pulumi:"nextHopNetwork"`
+	// Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
+	NextHopOrigin string `pulumi:"nextHopOrigin"`
 	// URL to a VpnTunnel that should handle matching packets.
 	NextHopVpnTunnel string `pulumi:"nextHopVpnTunnel"`
 	// The priority of this route. Priority is used to break ties in cases
@@ -43254,10 +44104,16 @@ type GetRouterStatusBestRouteArgs struct {
 	NextHopInstance pulumi.StringInput `pulumi:"nextHopInstance"`
 	// The zone of the instance specified in next_hop_instance. Omit if nextHopInstance is specified as a URL.
 	NextHopInstanceZone pulumi.StringInput `pulumi:"nextHopInstanceZone"`
+	// Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.
+	NextHopInterRegionCost pulumi.StringInput `pulumi:"nextHopInterRegionCost"`
 	// Network IP address of an instance that should handle matching packets.
 	NextHopIp pulumi.StringInput `pulumi:"nextHopIp"`
+	// Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
+	NextHopMed pulumi.StringInput `pulumi:"nextHopMed"`
 	// URL to a Network that should handle matching packets.
 	NextHopNetwork pulumi.StringInput `pulumi:"nextHopNetwork"`
+	// Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
+	NextHopOrigin pulumi.StringInput `pulumi:"nextHopOrigin"`
 	// URL to a VpnTunnel that should handle matching packets.
 	NextHopVpnTunnel pulumi.StringInput `pulumi:"nextHopVpnTunnel"`
 	// The priority of this route. Priority is used to break ties in cases
@@ -43396,14 +44252,29 @@ func (o GetRouterStatusBestRouteOutput) NextHopInstanceZone() pulumi.StringOutpu
 	return o.ApplyT(func(v GetRouterStatusBestRoute) string { return v.NextHopInstanceZone }).(pulumi.StringOutput)
 }
 
+// Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.
+func (o GetRouterStatusBestRouteOutput) NextHopInterRegionCost() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoute) string { return v.NextHopInterRegionCost }).(pulumi.StringOutput)
+}
+
 // Network IP address of an instance that should handle matching packets.
 func (o GetRouterStatusBestRouteOutput) NextHopIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouterStatusBestRoute) string { return v.NextHopIp }).(pulumi.StringOutput)
 }
 
+// Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
+func (o GetRouterStatusBestRouteOutput) NextHopMed() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoute) string { return v.NextHopMed }).(pulumi.StringOutput)
+}
+
 // URL to a Network that should handle matching packets.
 func (o GetRouterStatusBestRouteOutput) NextHopNetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouterStatusBestRoute) string { return v.NextHopNetwork }).(pulumi.StringOutput)
+}
+
+// Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
+func (o GetRouterStatusBestRouteOutput) NextHopOrigin() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoute) string { return v.NextHopOrigin }).(pulumi.StringOutput)
 }
 
 // URL to a VpnTunnel that should handle matching packets.
@@ -43503,10 +44374,16 @@ type GetRouterStatusBestRoutesForRouter struct {
 	NextHopInstance string `pulumi:"nextHopInstance"`
 	// The zone of the instance specified in next_hop_instance. Omit if nextHopInstance is specified as a URL.
 	NextHopInstanceZone string `pulumi:"nextHopInstanceZone"`
+	// Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.
+	NextHopInterRegionCost string `pulumi:"nextHopInterRegionCost"`
 	// Network IP address of an instance that should handle matching packets.
 	NextHopIp string `pulumi:"nextHopIp"`
+	// Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
+	NextHopMed string `pulumi:"nextHopMed"`
 	// URL to a Network that should handle matching packets.
 	NextHopNetwork string `pulumi:"nextHopNetwork"`
+	// Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
+	NextHopOrigin string `pulumi:"nextHopOrigin"`
 	// URL to a VpnTunnel that should handle matching packets.
 	NextHopVpnTunnel string `pulumi:"nextHopVpnTunnel"`
 	// The priority of this route. Priority is used to break ties in cases
@@ -43582,10 +44459,16 @@ type GetRouterStatusBestRoutesForRouterArgs struct {
 	NextHopInstance pulumi.StringInput `pulumi:"nextHopInstance"`
 	// The zone of the instance specified in next_hop_instance. Omit if nextHopInstance is specified as a URL.
 	NextHopInstanceZone pulumi.StringInput `pulumi:"nextHopInstanceZone"`
+	// Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.
+	NextHopInterRegionCost pulumi.StringInput `pulumi:"nextHopInterRegionCost"`
 	// Network IP address of an instance that should handle matching packets.
 	NextHopIp pulumi.StringInput `pulumi:"nextHopIp"`
+	// Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
+	NextHopMed pulumi.StringInput `pulumi:"nextHopMed"`
 	// URL to a Network that should handle matching packets.
 	NextHopNetwork pulumi.StringInput `pulumi:"nextHopNetwork"`
+	// Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
+	NextHopOrigin pulumi.StringInput `pulumi:"nextHopOrigin"`
 	// URL to a VpnTunnel that should handle matching packets.
 	NextHopVpnTunnel pulumi.StringInput `pulumi:"nextHopVpnTunnel"`
 	// The priority of this route. Priority is used to break ties in cases
@@ -43724,14 +44607,29 @@ func (o GetRouterStatusBestRoutesForRouterOutput) NextHopInstanceZone() pulumi.S
 	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.NextHopInstanceZone }).(pulumi.StringOutput)
 }
 
+// Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.
+func (o GetRouterStatusBestRoutesForRouterOutput) NextHopInterRegionCost() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.NextHopInterRegionCost }).(pulumi.StringOutput)
+}
+
 // Network IP address of an instance that should handle matching packets.
 func (o GetRouterStatusBestRoutesForRouterOutput) NextHopIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.NextHopIp }).(pulumi.StringOutput)
 }
 
+// Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
+func (o GetRouterStatusBestRoutesForRouterOutput) NextHopMed() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.NextHopMed }).(pulumi.StringOutput)
+}
+
 // URL to a Network that should handle matching packets.
 func (o GetRouterStatusBestRoutesForRouterOutput) NextHopNetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.NextHopNetwork }).(pulumi.StringOutput)
+}
+
+// Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
+func (o GetRouterStatusBestRoutesForRouterOutput) NextHopOrigin() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRouterStatusBestRoutesForRouter) string { return v.NextHopOrigin }).(pulumi.StringOutput)
 }
 
 // URL to a VpnTunnel that should handle matching packets.
@@ -47238,6 +48136,14 @@ func (o GetSubnetworksSubnetworkArrayOutput) Index(i pulumi.IntInput) GetSubnetw
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityScanConfigAuthenticationGoogleAccountInput)(nil)).Elem(), SecurityScanConfigAuthenticationGoogleAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityScanConfigAuthenticationGoogleAccountPtrInput)(nil)).Elem(), SecurityScanConfigAuthenticationGoogleAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityScanConfigScheduleInput)(nil)).Elem(), SecurityScanConfigScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityScanConfigSchedulePtrInput)(nil)).Elem(), SecurityScanConfigScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAttachmentConnectedEndpointInput)(nil)).Elem(), ServiceAttachmentConnectedEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAttachmentConnectedEndpointArrayInput)(nil)).Elem(), ServiceAttachmentConnectedEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAttachmentConsumerAcceptListInput)(nil)).Elem(), ServiceAttachmentConsumerAcceptListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAttachmentConsumerAcceptListArrayInput)(nil)).Elem(), ServiceAttachmentConsumerAcceptListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotIamBindingConditionInput)(nil)).Elem(), SnapshotIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotIamBindingConditionPtrInput)(nil)).Elem(), SnapshotIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotIamMemberConditionInput)(nil)).Elem(), SnapshotIamMemberConditionArgs{})
@@ -47484,6 +48390,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceSecuritySettingArrayInput)(nil)).Elem(), GetBackendServiceSecuritySettingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceSecuritySettingAwsV4AuthenticationInput)(nil)).Elem(), GetBackendServiceSecuritySettingAwsV4AuthenticationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceSecuritySettingAwsV4AuthenticationArrayInput)(nil)).Elem(), GetBackendServiceSecuritySettingAwsV4AuthenticationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceStrongSessionAffinityCookyInput)(nil)).Elem(), GetBackendServiceStrongSessionAffinityCookyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceStrongSessionAffinityCookyArrayInput)(nil)).Elem(), GetBackendServiceStrongSessionAffinityCookyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceStrongSessionAffinityCookyTtlInput)(nil)).Elem(), GetBackendServiceStrongSessionAffinityCookyTtlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackendServiceStrongSessionAffinityCookyTtlArrayInput)(nil)).Elem(), GetBackendServiceStrongSessionAffinityCookyTtlArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskAsyncPrimaryDiskInput)(nil)).Elem(), GetDiskAsyncPrimaryDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskAsyncPrimaryDiskArrayInput)(nil)).Elem(), GetDiskAsyncPrimaryDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskDiskEncryptionKeyInput)(nil)).Elem(), GetDiskDiskEncryptionKeyArgs{})
@@ -47862,6 +48772,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkInput)(nil)).Elem(), GetSubnetworksSubnetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkArrayInput)(nil)).Elem(), GetSubnetworksSubnetworkArray{})
+	pulumi.RegisterOutputType(SecurityScanConfigAuthenticationGoogleAccountOutput{})
+	pulumi.RegisterOutputType(SecurityScanConfigAuthenticationGoogleAccountPtrOutput{})
+	pulumi.RegisterOutputType(SecurityScanConfigScheduleOutput{})
+	pulumi.RegisterOutputType(SecurityScanConfigSchedulePtrOutput{})
+	pulumi.RegisterOutputType(ServiceAttachmentConnectedEndpointOutput{})
+	pulumi.RegisterOutputType(ServiceAttachmentConnectedEndpointArrayOutput{})
+	pulumi.RegisterOutputType(ServiceAttachmentConsumerAcceptListOutput{})
+	pulumi.RegisterOutputType(ServiceAttachmentConsumerAcceptListArrayOutput{})
 	pulumi.RegisterOutputType(SnapshotIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(SnapshotIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(SnapshotIamMemberConditionOutput{})
@@ -48108,6 +49026,10 @@ func init() {
 	pulumi.RegisterOutputType(GetBackendServiceSecuritySettingArrayOutput{})
 	pulumi.RegisterOutputType(GetBackendServiceSecuritySettingAwsV4AuthenticationOutput{})
 	pulumi.RegisterOutputType(GetBackendServiceSecuritySettingAwsV4AuthenticationArrayOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceStrongSessionAffinityCookyOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceStrongSessionAffinityCookyArrayOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceStrongSessionAffinityCookyTtlOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceStrongSessionAffinityCookyTtlArrayOutput{})
 	pulumi.RegisterOutputType(GetDiskAsyncPrimaryDiskOutput{})
 	pulumi.RegisterOutputType(GetDiskAsyncPrimaryDiskArrayOutput{})
 	pulumi.RegisterOutputType(GetDiskDiskEncryptionKeyOutput{})

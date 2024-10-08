@@ -15,7 +15,7 @@ public final class GetInstanceConfidentialInstanceConfig {
      * @return The confidential computing technology the instance uses.
      * 								SEV is an AMD feature. TDX is an Intel feature. One of the following
      * 								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =
-     * 								&#34;AMD Milan&#34; is currently required. TDX is only available in beta.
+     * 								&#34;AMD Milan&#34; is currently required.
      * 
      */
     private String confidentialInstanceType;
@@ -30,7 +30,7 @@ public final class GetInstanceConfidentialInstanceConfig {
      * @return The confidential computing technology the instance uses.
      * 								SEV is an AMD feature. TDX is an Intel feature. One of the following
      * 								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =
-     * 								&#34;AMD Milan&#34; is currently required. TDX is only available in beta.
+     * 								&#34;AMD Milan&#34; is currently required.
      * 
      */
     public String confidentialInstanceType() {

@@ -135,6 +135,118 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Network Bgp Best Path Selection Mode
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var vpcNetwork = new Network("vpcNetwork", NetworkArgs.builder()
+ *             .project("my-project-name")
+ *             .name("vpc-network")
+ *             .routingMode("GLOBAL")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Network Bgp Best Path Selection Mode Standard
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var vpcNetwork = new Network("vpcNetwork", NetworkArgs.builder()
+ *             .project("my-project-name")
+ *             .name("vpc-network")
+ *             .routingMode("GLOBAL")
+ *             .bgpBestPathSelectionMode("STANDARD")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Network Bgp Best Path Selection Mode Standard Custom Fields
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var vpcNetwork = new Network("vpcNetwork", NetworkArgs.builder()
+ *             .project("my-project-name")
+ *             .name("vpc-network")
+ *             .routingMode("GLOBAL")
+ *             .bgpBestPathSelectionMode("STANDARD")
+ *             .bgpAlwaysCompareMed(true)
+ *             .bgpInterRegionCost("ADD_COST_TO_MED")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -184,6 +296,54 @@ public class Network extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> autoCreateSubnetworks() {
         return Codegen.optional(this.autoCreateSubnetworks);
+    }
+    /**
+     * Enables/disables the comparison of MED across routes with different Neighbor ASNs.
+     * This value can only be set if the --bgp-best-path-selection-mode is STANDARD
+     * 
+     */
+    @Export(name="bgpAlwaysCompareMed", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> bgpAlwaysCompareMed;
+
+    /**
+     * @return Enables/disables the comparison of MED across routes with different Neighbor ASNs.
+     * This value can only be set if the --bgp-best-path-selection-mode is STANDARD
+     * 
+     */
+    public Output<Boolean> bgpAlwaysCompareMed() {
+        return this.bgpAlwaysCompareMed;
+    }
+    /**
+     * The BGP best selection algorithm to be employed. MODE can be LEGACY or STANDARD.
+     * Possible values are: `LEGACY`, `STANDARD`.
+     * 
+     */
+    @Export(name="bgpBestPathSelectionMode", refs={String.class}, tree="[0]")
+    private Output<String> bgpBestPathSelectionMode;
+
+    /**
+     * @return The BGP best selection algorithm to be employed. MODE can be LEGACY or STANDARD.
+     * Possible values are: `LEGACY`, `STANDARD`.
+     * 
+     */
+    public Output<String> bgpBestPathSelectionMode() {
+        return this.bgpBestPathSelectionMode;
+    }
+    /**
+     * Choice of the behavior of inter-regional cost and MED in the BPS algorithm.
+     * Possible values are: `DEFAULT`, `ADD_COST_TO_MED`.
+     * 
+     */
+    @Export(name="bgpInterRegionCost", refs={String.class}, tree="[0]")
+    private Output<String> bgpInterRegionCost;
+
+    /**
+     * @return Choice of the behavior of inter-regional cost and MED in the BPS algorithm.
+     * Possible values are: `DEFAULT`, `ADD_COST_TO_MED`.
+     * 
+     */
+    public Output<String> bgpInterRegionCost() {
+        return this.bgpInterRegionCost;
     }
     /**
      * If set to `true`, default routes (`0.0.0.0/0`) will be deleted

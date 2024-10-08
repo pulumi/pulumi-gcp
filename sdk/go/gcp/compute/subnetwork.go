@@ -387,7 +387,7 @@ import (
 //				return err
 //			}
 //			reserved, err := networkconnectivity.NewInternalRange(ctx, "reserved", &networkconnectivity.InternalRangeArgs{
-//				Name:         pulumi.String("reserved"),
+//				Name:         pulumi.String("reserved-primary"),
 //				Network:      _default.ID(),
 //				Usage:        pulumi.String("FOR_VPC"),
 //				Peering:      pulumi.String("FOR_SELF"),

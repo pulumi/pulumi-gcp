@@ -61,6 +61,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Hl7StoreIamMember{}
 	case "gcp:healthcare/hl7StoreIamPolicy:Hl7StoreIamPolicy":
 		r = &Hl7StoreIamPolicy{}
+	case "gcp:healthcare/pipelineJob:PipelineJob":
+		r = &PipelineJob{}
 	case "gcp:healthcare/workspace:Workspace":
 		r = &Workspace{}
 	default:
@@ -174,6 +176,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"healthcare/hl7StoreIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"healthcare/pipelineJob",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -21,11 +21,13 @@ __all__ = ['RepositoryArgs', 'Repository']
 @pulumi.input_type
 class RepositoryArgs:
     def __init__(__self__, *,
+                 create_ignore_already_exists: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pubsub_configs: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryPubsubConfigArgs']]]] = None):
         """
         The set of arguments for constructing a Repository resource.
+        :param pulumi.Input[bool] create_ignore_already_exists: If set to true, skip repository creation if a repository with the same name already exists.
         :param pulumi.Input[str] name: Resource name of the repository, of the form `{{repo}}`.
                The repo name may contain slashes. eg, `name/with/slash`
                
@@ -37,12 +39,26 @@ class RepositoryArgs:
                Keyed by the topic names.
                Structure is documented below.
         """
+        if create_ignore_already_exists is not None:
+            pulumi.set(__self__, "create_ignore_already_exists", create_ignore_already_exists)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if pubsub_configs is not None:
             pulumi.set(__self__, "pubsub_configs", pubsub_configs)
+
+    @property
+    @pulumi.getter(name="createIgnoreAlreadyExists")
+    def create_ignore_already_exists(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to true, skip repository creation if a repository with the same name already exists.
+        """
+        return pulumi.get(self, "create_ignore_already_exists")
+
+    @create_ignore_already_exists.setter
+    def create_ignore_already_exists(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "create_ignore_already_exists", value)
 
     @property
     @pulumi.getter
@@ -91,6 +107,7 @@ class RepositoryArgs:
 @pulumi.input_type
 class _RepositoryState:
     def __init__(__self__, *,
+                 create_ignore_already_exists: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pubsub_configs: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryPubsubConfigArgs']]]] = None,
@@ -98,6 +115,7 @@ class _RepositoryState:
                  url: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Repository resources.
+        :param pulumi.Input[bool] create_ignore_already_exists: If set to true, skip repository creation if a repository with the same name already exists.
         :param pulumi.Input[str] name: Resource name of the repository, of the form `{{repo}}`.
                The repo name may contain slashes. eg, `name/with/slash`
                
@@ -111,6 +129,8 @@ class _RepositoryState:
         :param pulumi.Input[int] size: The disk usage of the repo, in bytes.
         :param pulumi.Input[str] url: URL to clone the repository from Google Cloud Source Repositories.
         """
+        if create_ignore_already_exists is not None:
+            pulumi.set(__self__, "create_ignore_already_exists", create_ignore_already_exists)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -121,6 +141,18 @@ class _RepositoryState:
             pulumi.set(__self__, "size", size)
         if url is not None:
             pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter(name="createIgnoreAlreadyExists")
+    def create_ignore_already_exists(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to true, skip repository creation if a repository with the same name already exists.
+        """
+        return pulumi.get(self, "create_ignore_already_exists")
+
+    @create_ignore_already_exists.setter
+    def create_ignore_already_exists(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "create_ignore_already_exists", value)
 
     @property
     @pulumi.getter
@@ -195,6 +227,7 @@ class Repository(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 create_ignore_already_exists: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pubsub_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RepositoryPubsubConfigArgs', 'RepositoryPubsubConfigArgsDict']]]]] = None,
@@ -257,6 +290,7 @@ class Repository(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] create_ignore_already_exists: If set to true, skip repository creation if a repository with the same name already exists.
         :param pulumi.Input[str] name: Resource name of the repository, of the form `{{repo}}`.
                The repo name may contain slashes. eg, `name/with/slash`
                
@@ -345,6 +379,7 @@ class Repository(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 create_ignore_already_exists: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pubsub_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RepositoryPubsubConfigArgs', 'RepositoryPubsubConfigArgsDict']]]]] = None,
@@ -357,6 +392,7 @@ class Repository(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RepositoryArgs.__new__(RepositoryArgs)
 
+            __props__.__dict__["create_ignore_already_exists"] = create_ignore_already_exists
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["pubsub_configs"] = pubsub_configs
@@ -372,6 +408,7 @@ class Repository(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            create_ignore_already_exists: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pubsub_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RepositoryPubsubConfigArgs', 'RepositoryPubsubConfigArgsDict']]]]] = None,
@@ -384,6 +421,7 @@ class Repository(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] create_ignore_already_exists: If set to true, skip repository creation if a repository with the same name already exists.
         :param pulumi.Input[str] name: Resource name of the repository, of the form `{{repo}}`.
                The repo name may contain slashes. eg, `name/with/slash`
                
@@ -401,12 +439,21 @@ class Repository(pulumi.CustomResource):
 
         __props__ = _RepositoryState.__new__(_RepositoryState)
 
+        __props__.__dict__["create_ignore_already_exists"] = create_ignore_already_exists
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["pubsub_configs"] = pubsub_configs
         __props__.__dict__["size"] = size
         __props__.__dict__["url"] = url
         return Repository(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createIgnoreAlreadyExists")
+    def create_ignore_already_exists(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If set to true, skip repository creation if a repository with the same name already exists.
+        """
+        return pulumi.get(self, "create_ignore_already_exists")
 
     @property
     @pulumi.getter

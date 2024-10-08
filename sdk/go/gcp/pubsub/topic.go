@@ -212,6 +212,44 @@ import (
 //	}
 //
 // ```
+// ### Pubsub Topic Ingestion Cloud Storage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
+//				Name: pulumi.String("example-topic"),
+//				IngestionDataSourceSettings: &pubsub.TopicIngestionDataSourceSettingsArgs{
+//					CloudStorage: &pubsub.TopicIngestionDataSourceSettingsCloudStorageArgs{
+//						Bucket: pulumi.String("test-bucket"),
+//						TextFormat: &pubsub.TopicIngestionDataSourceSettingsCloudStorageTextFormatArgs{
+//							Delimiter: pulumi.String(" "),
+//						},
+//						MinimumObjectCreateTime: pulumi.String("2024-01-01T00:00:00Z"),
+//						MatchGlob:               pulumi.String("foo/**"),
+//					},
+//					PlatformLogsSettings: &pubsub.TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs{
+//						Severity: pulumi.String("WARNING"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

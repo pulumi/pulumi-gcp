@@ -130,6 +130,11 @@ export type Hl7StoreIamPolicy = import("./hl7StoreIamPolicy").Hl7StoreIamPolicy;
 export const Hl7StoreIamPolicy: typeof import("./hl7StoreIamPolicy").Hl7StoreIamPolicy = null as any;
 utilities.lazyLoad(exports, ["Hl7StoreIamPolicy"], () => require("./hl7StoreIamPolicy"));
 
+export { PipelineJobArgs, PipelineJobState } from "./pipelineJob";
+export type PipelineJob = import("./pipelineJob").PipelineJob;
+export const PipelineJob: typeof import("./pipelineJob").PipelineJob = null as any;
+utilities.lazyLoad(exports, ["PipelineJob"], () => require("./pipelineJob"));
+
 export { WorkspaceArgs, WorkspaceState } from "./workspace";
 export type Workspace = import("./workspace").Workspace;
 export const Workspace: typeof import("./workspace").Workspace = null as any;
@@ -180,6 +185,8 @@ const _module = {
                 return new Hl7StoreIamMember(name, <any>undefined, { urn })
             case "gcp:healthcare/hl7StoreIamPolicy:Hl7StoreIamPolicy":
                 return new Hl7StoreIamPolicy(name, <any>undefined, { urn })
+            case "gcp:healthcare/pipelineJob:PipelineJob":
+                return new PipelineJob(name, <any>undefined, { urn })
             case "gcp:healthcare/workspace:Workspace":
                 return new Workspace(name, <any>undefined, { urn })
             default:
@@ -207,4 +214,5 @@ pulumi.runtime.registerResourceModule("gcp", "healthcare/hl7Store", _module)
 pulumi.runtime.registerResourceModule("gcp", "healthcare/hl7StoreIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "healthcare/hl7StoreIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "healthcare/hl7StoreIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "healthcare/pipelineJob", _module)
 pulumi.runtime.registerResourceModule("gcp", "healthcare/workspace", _module)

@@ -97,6 +97,12 @@ namespace Pulumi.Gcp.SourceRepo
     public partial class Repository : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// If set to true, skip repository creation if a repository with the same name already exists.
+        /// </summary>
+        [Output("createIgnoreAlreadyExists")]
+        public Output<bool?> CreateIgnoreAlreadyExists { get; private set; } = null!;
+
+        /// <summary>
         /// Resource name of the repository, of the form `{{repo}}`.
         /// The repo name may contain slashes. eg, `name/with/slash`
         /// 
@@ -180,6 +186,12 @@ namespace Pulumi.Gcp.SourceRepo
     public sealed class RepositoryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// If set to true, skip repository creation if a repository with the same name already exists.
+        /// </summary>
+        [Input("createIgnoreAlreadyExists")]
+        public Input<bool>? CreateIgnoreAlreadyExists { get; set; }
+
+        /// <summary>
         /// Resource name of the repository, of the form `{{repo}}`.
         /// The repo name may contain slashes. eg, `name/with/slash`
         /// 
@@ -218,6 +230,12 @@ namespace Pulumi.Gcp.SourceRepo
 
     public sealed class RepositoryState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// If set to true, skip repository creation if a repository with the same name already exists.
+        /// </summary>
+        [Input("createIgnoreAlreadyExists")]
+        public Input<bool>? CreateIgnoreAlreadyExists { get; set; }
+
         /// <summary>
         /// Resource name of the repository, of the form `{{repo}}`.
         /// The repo name may contain slashes. eg, `name/with/slash`

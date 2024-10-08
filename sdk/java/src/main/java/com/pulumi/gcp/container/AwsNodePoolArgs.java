@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.inputs.AwsNodePoolAutoscalingArgs;
 import com.pulumi.gcp.container.inputs.AwsNodePoolConfigArgs;
+import com.pulumi.gcp.container.inputs.AwsNodePoolKubeletConfigArgs;
 import com.pulumi.gcp.container.inputs.AwsNodePoolManagementArgs;
 import com.pulumi.gcp.container.inputs.AwsNodePoolMaxPodsConstraintArgs;
 import com.pulumi.gcp.container.inputs.AwsNodePoolUpdateSettingsArgs;
@@ -90,6 +91,21 @@ public final class AwsNodePoolArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Output<AwsNodePoolConfigArgs> config() {
         return this.config;
+    }
+
+    /**
+     * The kubelet configuration for the node pool.
+     * 
+     */
+    @Import(name="kubeletConfig")
+    private @Nullable Output<AwsNodePoolKubeletConfigArgs> kubeletConfig;
+
+    /**
+     * @return The kubelet configuration for the node pool.
+     * 
+     */
+    public Optional<Output<AwsNodePoolKubeletConfigArgs>> kubeletConfig() {
+        return Optional.ofNullable(this.kubeletConfig);
     }
 
     /**
@@ -219,6 +235,7 @@ public final class AwsNodePoolArgs extends com.pulumi.resources.ResourceArgs {
         this.autoscaling = $.autoscaling;
         this.cluster = $.cluster;
         this.config = $.config;
+        this.kubeletConfig = $.kubeletConfig;
         this.location = $.location;
         this.management = $.management;
         this.maxPodsConstraint = $.maxPodsConstraint;
@@ -339,6 +356,27 @@ public final class AwsNodePoolArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder config(AwsNodePoolConfigArgs config) {
             return config(Output.of(config));
+        }
+
+        /**
+         * @param kubeletConfig The kubelet configuration for the node pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kubeletConfig(@Nullable Output<AwsNodePoolKubeletConfigArgs> kubeletConfig) {
+            $.kubeletConfig = kubeletConfig;
+            return this;
+        }
+
+        /**
+         * @param kubeletConfig The kubelet configuration for the node pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kubeletConfig(AwsNodePoolKubeletConfigArgs kubeletConfig) {
+            return kubeletConfig(Output.of(kubeletConfig));
         }
 
         /**

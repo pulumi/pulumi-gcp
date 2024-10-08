@@ -77,6 +77,67 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Network Bgp Best Path Selection Mode
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var vpcNetwork = new Gcp.Compute.Network("vpc_network", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Name = "vpc-network",
+    ///         RoutingMode = "GLOBAL",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Network Bgp Best Path Selection Mode Standard
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var vpcNetwork = new Gcp.Compute.Network("vpc_network", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Name = "vpc-network",
+    ///         RoutingMode = "GLOBAL",
+    ///         BgpBestPathSelectionMode = "STANDARD",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Network Bgp Best Path Selection Mode Standard Custom Fields
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var vpcNetwork = new Gcp.Compute.Network("vpc_network", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Name = "vpc-network",
+    ///         RoutingMode = "GLOBAL",
+    ///         BgpBestPathSelectionMode = "STANDARD",
+    ///         BgpAlwaysCompareMed = true,
+    ///         BgpInterRegionCost = "ADD_COST_TO_MED",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -114,6 +175,27 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("autoCreateSubnetworks")]
         public Output<bool?> AutoCreateSubnetworks { get; private set; } = null!;
+
+        /// <summary>
+        /// Enables/disables the comparison of MED across routes with different Neighbor ASNs.
+        /// This value can only be set if the --bgp-best-path-selection-mode is STANDARD
+        /// </summary>
+        [Output("bgpAlwaysCompareMed")]
+        public Output<bool> BgpAlwaysCompareMed { get; private set; } = null!;
+
+        /// <summary>
+        /// The BGP best selection algorithm to be employed. MODE can be LEGACY or STANDARD.
+        /// Possible values are: `LEGACY`, `STANDARD`.
+        /// </summary>
+        [Output("bgpBestPathSelectionMode")]
+        public Output<string> BgpBestPathSelectionMode { get; private set; } = null!;
+
+        /// <summary>
+        /// Choice of the behavior of inter-regional cost and MED in the BPS algorithm.
+        /// Possible values are: `DEFAULT`, `ADD_COST_TO_MED`.
+        /// </summary>
+        [Output("bgpInterRegionCost")]
+        public Output<string> BgpInterRegionCost { get; private set; } = null!;
 
         /// <summary>
         /// If set to `true`, default routes (`0.0.0.0/0`) will be deleted
@@ -273,6 +355,27 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? AutoCreateSubnetworks { get; set; }
 
         /// <summary>
+        /// Enables/disables the comparison of MED across routes with different Neighbor ASNs.
+        /// This value can only be set if the --bgp-best-path-selection-mode is STANDARD
+        /// </summary>
+        [Input("bgpAlwaysCompareMed")]
+        public Input<bool>? BgpAlwaysCompareMed { get; set; }
+
+        /// <summary>
+        /// The BGP best selection algorithm to be employed. MODE can be LEGACY or STANDARD.
+        /// Possible values are: `LEGACY`, `STANDARD`.
+        /// </summary>
+        [Input("bgpBestPathSelectionMode")]
+        public Input<string>? BgpBestPathSelectionMode { get; set; }
+
+        /// <summary>
+        /// Choice of the behavior of inter-regional cost and MED in the BPS algorithm.
+        /// Possible values are: `DEFAULT`, `ADD_COST_TO_MED`.
+        /// </summary>
+        [Input("bgpInterRegionCost")]
+        public Input<string>? BgpInterRegionCost { get; set; }
+
+        /// <summary>
         /// If set to `true`, default routes (`0.0.0.0/0`) will be deleted
         /// immediately after network creation. Defaults to `false`.
         /// </summary>
@@ -371,6 +474,27 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("autoCreateSubnetworks")]
         public Input<bool>? AutoCreateSubnetworks { get; set; }
+
+        /// <summary>
+        /// Enables/disables the comparison of MED across routes with different Neighbor ASNs.
+        /// This value can only be set if the --bgp-best-path-selection-mode is STANDARD
+        /// </summary>
+        [Input("bgpAlwaysCompareMed")]
+        public Input<bool>? BgpAlwaysCompareMed { get; set; }
+
+        /// <summary>
+        /// The BGP best selection algorithm to be employed. MODE can be LEGACY or STANDARD.
+        /// Possible values are: `LEGACY`, `STANDARD`.
+        /// </summary>
+        [Input("bgpBestPathSelectionMode")]
+        public Input<string>? BgpBestPathSelectionMode { get; set; }
+
+        /// <summary>
+        /// Choice of the behavior of inter-regional cost and MED in the BPS algorithm.
+        /// Possible values are: `DEFAULT`, `ADD_COST_TO_MED`.
+        /// </summary>
+        [Input("bgpInterRegionCost")]
+        public Input<string>? BgpInterRegionCost { get; set; }
 
         /// <summary>
         /// If set to `true`, default routes (`0.0.0.0/0`) will be deleted

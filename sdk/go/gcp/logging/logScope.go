@@ -74,7 +74,7 @@ type LogScope struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Describes this log scopes.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The location of the resource. The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.
+	// The location of the resource. The only supported location is global so far.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The resource name of the log scope. For example: \`projects/my-project/locations/global/logScopes/my-log-scope\`
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -125,7 +125,7 @@ type logScopeState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Describes this log scopes.
 	Description *string `pulumi:"description"`
-	// The location of the resource. The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.
+	// The location of the resource. The only supported location is global so far.
 	Location *string `pulumi:"location"`
 	// The resource name of the log scope. For example: \`projects/my-project/locations/global/logScopes/my-log-scope\`
 	Name *string `pulumi:"name"`
@@ -144,7 +144,7 @@ type LogScopeState struct {
 	CreateTime pulumi.StringPtrInput
 	// Describes this log scopes.
 	Description pulumi.StringPtrInput
-	// The location of the resource. The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.
+	// The location of the resource. The only supported location is global so far.
 	Location pulumi.StringPtrInput
 	// The resource name of the log scope. For example: \`projects/my-project/locations/global/logScopes/my-log-scope\`
 	Name pulumi.StringPtrInput
@@ -165,7 +165,7 @@ func (LogScopeState) ElementType() reflect.Type {
 type logScopeArgs struct {
 	// Describes this log scopes.
 	Description *string `pulumi:"description"`
-	// The location of the resource. The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.
+	// The location of the resource. The only supported location is global so far.
 	Location *string `pulumi:"location"`
 	// The resource name of the log scope. For example: \`projects/my-project/locations/global/logScopes/my-log-scope\`
 	Name *string `pulumi:"name"`
@@ -181,7 +181,7 @@ type logScopeArgs struct {
 type LogScopeArgs struct {
 	// Describes this log scopes.
 	Description pulumi.StringPtrInput
-	// The location of the resource. The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.
+	// The location of the resource. The only supported location is global so far.
 	Location pulumi.StringPtrInput
 	// The resource name of the log scope. For example: \`projects/my-project/locations/global/logScopes/my-log-scope\`
 	Name pulumi.StringPtrInput
@@ -290,7 +290,7 @@ func (o LogScopeOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogScope) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The location of the resource. The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.
+// The location of the resource. The only supported location is global so far.
 func (o LogScopeOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogScope) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AutoscalingPolicyIamMember{}
 	case "gcp:dataproc/autoscalingPolicyIamPolicy:AutoscalingPolicyIamPolicy":
 		r = &AutoscalingPolicyIamPolicy{}
+	case "gcp:dataproc/batch:Batch":
+		r = &Batch{}
 	case "gcp:dataproc/cluster:Cluster":
 		r = &Cluster{}
 	case "gcp:dataproc/clusterIAMBinding:ClusterIAMBinding":
@@ -94,6 +96,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"dataproc/autoscalingPolicyIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataproc/batch",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

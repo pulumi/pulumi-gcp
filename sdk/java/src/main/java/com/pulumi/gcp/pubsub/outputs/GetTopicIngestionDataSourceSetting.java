@@ -6,6 +6,8 @@ package com.pulumi.gcp.pubsub.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.pubsub.outputs.GetTopicIngestionDataSourceSettingAwsKinese;
+import com.pulumi.gcp.pubsub.outputs.GetTopicIngestionDataSourceSettingCloudStorage;
+import com.pulumi.gcp.pubsub.outputs.GetTopicIngestionDataSourceSettingPlatformLogsSetting;
 import java.util.List;
 import java.util.Objects;
 
@@ -16,6 +18,17 @@ public final class GetTopicIngestionDataSourceSetting {
      * 
      */
     private List<GetTopicIngestionDataSourceSettingAwsKinese> awsKineses;
+    /**
+     * @return Settings for ingestion from Cloud Storage.
+     * 
+     */
+    private List<GetTopicIngestionDataSourceSettingCloudStorage> cloudStorages;
+    /**
+     * @return Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,
+     * no Platform Logs will be generated.&#39;
+     * 
+     */
+    private List<GetTopicIngestionDataSourceSettingPlatformLogsSetting> platformLogsSettings;
 
     private GetTopicIngestionDataSourceSetting() {}
     /**
@@ -24,6 +37,21 @@ public final class GetTopicIngestionDataSourceSetting {
      */
     public List<GetTopicIngestionDataSourceSettingAwsKinese> awsKineses() {
         return this.awsKineses;
+    }
+    /**
+     * @return Settings for ingestion from Cloud Storage.
+     * 
+     */
+    public List<GetTopicIngestionDataSourceSettingCloudStorage> cloudStorages() {
+        return this.cloudStorages;
+    }
+    /**
+     * @return Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,
+     * no Platform Logs will be generated.&#39;
+     * 
+     */
+    public List<GetTopicIngestionDataSourceSettingPlatformLogsSetting> platformLogsSettings() {
+        return this.platformLogsSettings;
     }
 
     public static Builder builder() {
@@ -36,10 +64,14 @@ public final class GetTopicIngestionDataSourceSetting {
     @CustomType.Builder
     public static final class Builder {
         private List<GetTopicIngestionDataSourceSettingAwsKinese> awsKineses;
+        private List<GetTopicIngestionDataSourceSettingCloudStorage> cloudStorages;
+        private List<GetTopicIngestionDataSourceSettingPlatformLogsSetting> platformLogsSettings;
         public Builder() {}
         public Builder(GetTopicIngestionDataSourceSetting defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.awsKineses = defaults.awsKineses;
+    	      this.cloudStorages = defaults.cloudStorages;
+    	      this.platformLogsSettings = defaults.platformLogsSettings;
         }
 
         @CustomType.Setter
@@ -53,9 +85,33 @@ public final class GetTopicIngestionDataSourceSetting {
         public Builder awsKineses(GetTopicIngestionDataSourceSettingAwsKinese... awsKineses) {
             return awsKineses(List.of(awsKineses));
         }
+        @CustomType.Setter
+        public Builder cloudStorages(List<GetTopicIngestionDataSourceSettingCloudStorage> cloudStorages) {
+            if (cloudStorages == null) {
+              throw new MissingRequiredPropertyException("GetTopicIngestionDataSourceSetting", "cloudStorages");
+            }
+            this.cloudStorages = cloudStorages;
+            return this;
+        }
+        public Builder cloudStorages(GetTopicIngestionDataSourceSettingCloudStorage... cloudStorages) {
+            return cloudStorages(List.of(cloudStorages));
+        }
+        @CustomType.Setter
+        public Builder platformLogsSettings(List<GetTopicIngestionDataSourceSettingPlatformLogsSetting> platformLogsSettings) {
+            if (platformLogsSettings == null) {
+              throw new MissingRequiredPropertyException("GetTopicIngestionDataSourceSetting", "platformLogsSettings");
+            }
+            this.platformLogsSettings = platformLogsSettings;
+            return this;
+        }
+        public Builder platformLogsSettings(GetTopicIngestionDataSourceSettingPlatformLogsSetting... platformLogsSettings) {
+            return platformLogsSettings(List.of(platformLogsSettings));
+        }
         public GetTopicIngestionDataSourceSetting build() {
             final var _resultValue = new GetTopicIngestionDataSourceSetting();
             _resultValue.awsKineses = awsKineses;
+            _resultValue.cloudStorages = cloudStorages;
+            _resultValue.platformLogsSettings = platformLogsSettings;
             return _resultValue;
         }
     }

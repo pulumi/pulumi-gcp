@@ -189,6 +189,35 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Region Backend Service Ilb Stateful Session Affinity
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const healthCheck = new gcp.compute.HealthCheck("health_check", {
+ *     name: "rbs-health-check",
+ *     httpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const _default = new gcp.compute.RegionBackendService("default", {
+ *     region: "us-central1",
+ *     name: "region-service",
+ *     healthChecks: healthCheck.id,
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
+ *     localityLbPolicy: "RING_HASH",
+ *     sessionAffinity: "STRONG_COOKIE_AFFINITY",
+ *     protocol: "HTTP",
+ *     strongSessionAffinityCookie: {
+ *         ttl: {
+ *             seconds: 11,
+ *             nanos: 1111,
+ *         },
+ *         name: "mycookie",
+ *     },
+ * });
+ * ```
  * ### Region Backend Service Balancing Mode
  *
  * ```typescript
@@ -559,9 +588,14 @@ export class RegionBackendService extends pulumi.CustomResource {
     /**
      * Type of session affinity to use. The default is NONE. Session affinity is
      * not applicable if the protocol is UDP.
-     * Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
+     * Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`, `STRONG_COOKIE_AFFINITY`.
      */
     public readonly sessionAffinity!: pulumi.Output<string>;
+    /**
+     * Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
+     * Structure is documented below.
+     */
+    public readonly strongSessionAffinityCookie!: pulumi.Output<outputs.compute.RegionBackendServiceStrongSessionAffinityCookie | undefined>;
     /**
      * Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
      * Structure is documented below.
@@ -616,6 +650,7 @@ export class RegionBackendService extends pulumi.CustomResource {
             resourceInputs["securityPolicy"] = state ? state.securityPolicy : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["sessionAffinity"] = state ? state.sessionAffinity : undefined;
+            resourceInputs["strongSessionAffinityCookie"] = state ? state.strongSessionAffinityCookie : undefined;
             resourceInputs["subsetting"] = state ? state.subsetting : undefined;
             resourceInputs["timeoutSec"] = state ? state.timeoutSec : undefined;
         } else {
@@ -644,6 +679,7 @@ export class RegionBackendService extends pulumi.CustomResource {
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["securityPolicy"] = args ? args.securityPolicy : undefined;
             resourceInputs["sessionAffinity"] = args ? args.sessionAffinity : undefined;
+            resourceInputs["strongSessionAffinityCookie"] = args ? args.strongSessionAffinityCookie : undefined;
             resourceInputs["subsetting"] = args ? args.subsetting : undefined;
             resourceInputs["timeoutSec"] = args ? args.timeoutSec : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
@@ -873,9 +909,14 @@ export interface RegionBackendServiceState {
     /**
      * Type of session affinity to use. The default is NONE. Session affinity is
      * not applicable if the protocol is UDP.
-     * Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
+     * Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`, `STRONG_COOKIE_AFFINITY`.
      */
     sessionAffinity?: pulumi.Input<string>;
+    /**
+     * Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
+     * Structure is documented below.
+     */
+    strongSessionAffinityCookie?: pulumi.Input<inputs.compute.RegionBackendServiceStrongSessionAffinityCookie>;
     /**
      * Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
      * Structure is documented below.
@@ -1090,9 +1131,14 @@ export interface RegionBackendServiceArgs {
     /**
      * Type of session affinity to use. The default is NONE. Session affinity is
      * not applicable if the protocol is UDP.
-     * Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
+     * Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`, `STRONG_COOKIE_AFFINITY`.
      */
     sessionAffinity?: pulumi.Input<string>;
+    /**
+     * Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
+     * Structure is documented below.
+     */
+    strongSessionAffinityCookie?: pulumi.Input<inputs.compute.RegionBackendServiceStrongSessionAffinityCookie>;
     /**
      * Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
      * Structure is documented below.

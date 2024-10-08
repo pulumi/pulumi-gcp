@@ -22,6 +22,19 @@ __all__ = [
     'AutoscalingPolicyIamMemberCondition',
     'AutoscalingPolicySecondaryWorkerConfig',
     'AutoscalingPolicyWorkerConfig',
+    'BatchEnvironmentConfig',
+    'BatchEnvironmentConfigExecutionConfig',
+    'BatchEnvironmentConfigPeripheralsConfig',
+    'BatchEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig',
+    'BatchPysparkBatch',
+    'BatchRuntimeConfig',
+    'BatchRuntimeInfo',
+    'BatchRuntimeInfoApproximateUsage',
+    'BatchRuntimeInfoCurrentUsage',
+    'BatchSparkBatch',
+    'BatchSparkRBatch',
+    'BatchSparkSqlBatch',
+    'BatchStateHistory',
     'ClusterClusterConfig',
     'ClusterClusterConfigAutoscalingConfig',
     'ClusterClusterConfigAuxiliaryNodeGroup',
@@ -588,6 +601,1120 @@ class AutoscalingPolicyWorkerConfig(dict):
         only on primary workers, the cluster will use primary workers only and no secondary workers.
         """
         return pulumi.get(self, "weight")
+
+
+@pulumi.output_type
+class BatchEnvironmentConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "executionConfig":
+            suggest = "execution_config"
+        elif key == "peripheralsConfig":
+            suggest = "peripherals_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BatchEnvironmentConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BatchEnvironmentConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BatchEnvironmentConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 execution_config: Optional['outputs.BatchEnvironmentConfigExecutionConfig'] = None,
+                 peripherals_config: Optional['outputs.BatchEnvironmentConfigPeripheralsConfig'] = None):
+        """
+        :param 'BatchEnvironmentConfigExecutionConfigArgs' execution_config: Execution configuration for a workload.
+               Structure is documented below.
+        :param 'BatchEnvironmentConfigPeripheralsConfigArgs' peripherals_config: Peripherals configuration that workload has access to.
+               Structure is documented below.
+        """
+        if execution_config is not None:
+            pulumi.set(__self__, "execution_config", execution_config)
+        if peripherals_config is not None:
+            pulumi.set(__self__, "peripherals_config", peripherals_config)
+
+    @property
+    @pulumi.getter(name="executionConfig")
+    def execution_config(self) -> Optional['outputs.BatchEnvironmentConfigExecutionConfig']:
+        """
+        Execution configuration for a workload.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "execution_config")
+
+    @property
+    @pulumi.getter(name="peripheralsConfig")
+    def peripherals_config(self) -> Optional['outputs.BatchEnvironmentConfigPeripheralsConfig']:
+        """
+        Peripherals configuration that workload has access to.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "peripherals_config")
+
+
+@pulumi.output_type
+class BatchEnvironmentConfigExecutionConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKey":
+            suggest = "kms_key"
+        elif key == "networkTags":
+            suggest = "network_tags"
+        elif key == "networkUri":
+            suggest = "network_uri"
+        elif key == "serviceAccount":
+            suggest = "service_account"
+        elif key == "stagingBucket":
+            suggest = "staging_bucket"
+        elif key == "subnetworkUri":
+            suggest = "subnetwork_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BatchEnvironmentConfigExecutionConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BatchEnvironmentConfigExecutionConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BatchEnvironmentConfigExecutionConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key: Optional[str] = None,
+                 network_tags: Optional[Sequence[str]] = None,
+                 network_uri: Optional[str] = None,
+                 service_account: Optional[str] = None,
+                 staging_bucket: Optional[str] = None,
+                 subnetwork_uri: Optional[str] = None,
+                 ttl: Optional[str] = None):
+        """
+        :param str kms_key: The Cloud KMS key to use for encryption.
+        :param Sequence[str] network_tags: Tags used for network traffic control.
+        :param str network_uri: Network configuration for workload execution.
+        :param str service_account: Service account that used to execute workload.
+        :param str staging_bucket: A Cloud Storage bucket used to stage workload dependencies, config files, and store
+               workload output and other ephemeral data, such as Spark history files. If you do not specify a staging bucket,
+               Cloud Dataproc will determine a Cloud Storage location according to the region where your workload is running,
+               and then create and manage project-level, per-location staging and temporary buckets.
+               This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
+        :param str subnetwork_uri: Subnetwork configuration for workload execution.
+        :param str ttl: The duration after which the workload will be terminated.
+               When the workload exceeds this duration, it will be unconditionally terminated without waiting for ongoing
+               work to finish. If ttl is not specified for a batch workload, the workload will be allowed to run until it
+               exits naturally (or run forever without exiting). If ttl is not specified for an interactive session,
+               it defaults to 24 hours. If ttl is not specified for a batch that uses 2.1+ runtime version, it defaults to 4 hours.
+               Minimum value is 10 minutes; maximum value is 14 days. If both ttl and idleTtl are specified (for an interactive session),
+               the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idleTtl or
+               when ttl has been exceeded, whichever occurs first.
+        """
+        if kms_key is not None:
+            pulumi.set(__self__, "kms_key", kms_key)
+        if network_tags is not None:
+            pulumi.set(__self__, "network_tags", network_tags)
+        if network_uri is not None:
+            pulumi.set(__self__, "network_uri", network_uri)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
+        if staging_bucket is not None:
+            pulumi.set(__self__, "staging_bucket", staging_bucket)
+        if subnetwork_uri is not None:
+            pulumi.set(__self__, "subnetwork_uri", subnetwork_uri)
+        if ttl is not None:
+            pulumi.set(__self__, "ttl", ttl)
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> Optional[str]:
+        """
+        The Cloud KMS key to use for encryption.
+        """
+        return pulumi.get(self, "kms_key")
+
+    @property
+    @pulumi.getter(name="networkTags")
+    def network_tags(self) -> Optional[Sequence[str]]:
+        """
+        Tags used for network traffic control.
+        """
+        return pulumi.get(self, "network_tags")
+
+    @property
+    @pulumi.getter(name="networkUri")
+    def network_uri(self) -> Optional[str]:
+        """
+        Network configuration for workload execution.
+        """
+        return pulumi.get(self, "network_uri")
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[str]:
+        """
+        Service account that used to execute workload.
+        """
+        return pulumi.get(self, "service_account")
+
+    @property
+    @pulumi.getter(name="stagingBucket")
+    def staging_bucket(self) -> Optional[str]:
+        """
+        A Cloud Storage bucket used to stage workload dependencies, config files, and store
+        workload output and other ephemeral data, such as Spark history files. If you do not specify a staging bucket,
+        Cloud Dataproc will determine a Cloud Storage location according to the region where your workload is running,
+        and then create and manage project-level, per-location staging and temporary buckets.
+        This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
+        """
+        return pulumi.get(self, "staging_bucket")
+
+    @property
+    @pulumi.getter(name="subnetworkUri")
+    def subnetwork_uri(self) -> Optional[str]:
+        """
+        Subnetwork configuration for workload execution.
+        """
+        return pulumi.get(self, "subnetwork_uri")
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> Optional[str]:
+        """
+        The duration after which the workload will be terminated.
+        When the workload exceeds this duration, it will be unconditionally terminated without waiting for ongoing
+        work to finish. If ttl is not specified for a batch workload, the workload will be allowed to run until it
+        exits naturally (or run forever without exiting). If ttl is not specified for an interactive session,
+        it defaults to 24 hours. If ttl is not specified for a batch that uses 2.1+ runtime version, it defaults to 4 hours.
+        Minimum value is 10 minutes; maximum value is 14 days. If both ttl and idleTtl are specified (for an interactive session),
+        the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idleTtl or
+        when ttl has been exceeded, whichever occurs first.
+        """
+        return pulumi.get(self, "ttl")
+
+
+@pulumi.output_type
+class BatchEnvironmentConfigPeripheralsConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "metastoreService":
+            suggest = "metastore_service"
+        elif key == "sparkHistoryServerConfig":
+            suggest = "spark_history_server_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BatchEnvironmentConfigPeripheralsConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BatchEnvironmentConfigPeripheralsConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BatchEnvironmentConfigPeripheralsConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 metastore_service: Optional[str] = None,
+                 spark_history_server_config: Optional['outputs.BatchEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig'] = None):
+        """
+        :param str metastore_service: Resource name of an existing Dataproc Metastore service.
+        :param 'BatchEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgs' spark_history_server_config: The Spark History Server configuration for the workload.
+               Structure is documented below.
+        """
+        if metastore_service is not None:
+            pulumi.set(__self__, "metastore_service", metastore_service)
+        if spark_history_server_config is not None:
+            pulumi.set(__self__, "spark_history_server_config", spark_history_server_config)
+
+    @property
+    @pulumi.getter(name="metastoreService")
+    def metastore_service(self) -> Optional[str]:
+        """
+        Resource name of an existing Dataproc Metastore service.
+        """
+        return pulumi.get(self, "metastore_service")
+
+    @property
+    @pulumi.getter(name="sparkHistoryServerConfig")
+    def spark_history_server_config(self) -> Optional['outputs.BatchEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig']:
+        """
+        The Spark History Server configuration for the workload.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "spark_history_server_config")
+
+
+@pulumi.output_type
+class BatchEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataprocCluster":
+            suggest = "dataproc_cluster"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BatchEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BatchEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BatchEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dataproc_cluster: Optional[str] = None):
+        """
+        :param str dataproc_cluster: Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.
+        """
+        if dataproc_cluster is not None:
+            pulumi.set(__self__, "dataproc_cluster", dataproc_cluster)
+
+    @property
+    @pulumi.getter(name="dataprocCluster")
+    def dataproc_cluster(self) -> Optional[str]:
+        """
+        Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.
+        """
+        return pulumi.get(self, "dataproc_cluster")
+
+
+@pulumi.output_type
+class BatchPysparkBatch(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "archiveUris":
+            suggest = "archive_uris"
+        elif key == "fileUris":
+            suggest = "file_uris"
+        elif key == "jarFileUris":
+            suggest = "jar_file_uris"
+        elif key == "mainPythonFileUri":
+            suggest = "main_python_file_uri"
+        elif key == "pythonFileUris":
+            suggest = "python_file_uris"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BatchPysparkBatch. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BatchPysparkBatch.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BatchPysparkBatch.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 archive_uris: Optional[Sequence[str]] = None,
+                 args: Optional[Sequence[str]] = None,
+                 file_uris: Optional[Sequence[str]] = None,
+                 jar_file_uris: Optional[Sequence[str]] = None,
+                 main_python_file_uri: Optional[str] = None,
+                 python_file_uris: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] archive_uris: HCFS URIs of archives to be extracted into the working directory of each executor.
+               Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        :param Sequence[str] args: The arguments to pass to the driver. Do not include arguments that can be set as batch
+               properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
+        :param Sequence[str] file_uris: HCFS URIs of files to be placed in the working directory of each executor.
+        :param Sequence[str] jar_file_uris: HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
+        :param str main_python_file_uri: The HCFS URI of the main Python file to use as the Spark driver. Must be a .py file.
+        :param Sequence[str] python_file_uris: HCFS file URIs of Python files to pass to the PySpark framework.
+               Supported file types: .py, .egg, and .zip.
+        """
+        if archive_uris is not None:
+            pulumi.set(__self__, "archive_uris", archive_uris)
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if file_uris is not None:
+            pulumi.set(__self__, "file_uris", file_uris)
+        if jar_file_uris is not None:
+            pulumi.set(__self__, "jar_file_uris", jar_file_uris)
+        if main_python_file_uri is not None:
+            pulumi.set(__self__, "main_python_file_uri", main_python_file_uri)
+        if python_file_uris is not None:
+            pulumi.set(__self__, "python_file_uris", python_file_uris)
+
+    @property
+    @pulumi.getter(name="archiveUris")
+    def archive_uris(self) -> Optional[Sequence[str]]:
+        """
+        HCFS URIs of archives to be extracted into the working directory of each executor.
+        Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        """
+        return pulumi.get(self, "archive_uris")
+
+    @property
+    @pulumi.getter
+    def args(self) -> Optional[Sequence[str]]:
+        """
+        The arguments to pass to the driver. Do not include arguments that can be set as batch
+        properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
+        """
+        return pulumi.get(self, "args")
+
+    @property
+    @pulumi.getter(name="fileUris")
+    def file_uris(self) -> Optional[Sequence[str]]:
+        """
+        HCFS URIs of files to be placed in the working directory of each executor.
+        """
+        return pulumi.get(self, "file_uris")
+
+    @property
+    @pulumi.getter(name="jarFileUris")
+    def jar_file_uris(self) -> Optional[Sequence[str]]:
+        """
+        HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
+        """
+        return pulumi.get(self, "jar_file_uris")
+
+    @property
+    @pulumi.getter(name="mainPythonFileUri")
+    def main_python_file_uri(self) -> Optional[str]:
+        """
+        The HCFS URI of the main Python file to use as the Spark driver. Must be a .py file.
+        """
+        return pulumi.get(self, "main_python_file_uri")
+
+    @property
+    @pulumi.getter(name="pythonFileUris")
+    def python_file_uris(self) -> Optional[Sequence[str]]:
+        """
+        HCFS file URIs of Python files to pass to the PySpark framework.
+        Supported file types: .py, .egg, and .zip.
+        """
+        return pulumi.get(self, "python_file_uris")
+
+
+@pulumi.output_type
+class BatchRuntimeConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "containerImage":
+            suggest = "container_image"
+        elif key == "effectiveProperties":
+            suggest = "effective_properties"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BatchRuntimeConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BatchRuntimeConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BatchRuntimeConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 container_image: Optional[str] = None,
+                 effective_properties: Optional[Mapping[str, str]] = None,
+                 properties: Optional[Mapping[str, str]] = None,
+                 version: Optional[str] = None):
+        """
+        :param str container_image: Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
+        :param Mapping[str, str] effective_properties: (Output)
+               A mapping of property names to values, which are used to configure workload execution.
+        :param Mapping[str, str] properties: A mapping of property names to values, which are used to configure workload execution.
+        :param str version: Version of the batch runtime.
+        """
+        if container_image is not None:
+            pulumi.set(__self__, "container_image", container_image)
+        if effective_properties is not None:
+            pulumi.set(__self__, "effective_properties", effective_properties)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="containerImage")
+    def container_image(self) -> Optional[str]:
+        """
+        Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
+        """
+        return pulumi.get(self, "container_image")
+
+    @property
+    @pulumi.getter(name="effectiveProperties")
+    def effective_properties(self) -> Optional[Mapping[str, str]]:
+        """
+        (Output)
+        A mapping of property names to values, which are used to configure workload execution.
+        """
+        return pulumi.get(self, "effective_properties")
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Optional[Mapping[str, str]]:
+        """
+        A mapping of property names to values, which are used to configure workload execution.
+        """
+        return pulumi.get(self, "properties")
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[str]:
+        """
+        Version of the batch runtime.
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class BatchRuntimeInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "approximateUsages":
+            suggest = "approximate_usages"
+        elif key == "currentUsages":
+            suggest = "current_usages"
+        elif key == "diagnosticOutputUri":
+            suggest = "diagnostic_output_uri"
+        elif key == "outputUri":
+            suggest = "output_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BatchRuntimeInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BatchRuntimeInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BatchRuntimeInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 approximate_usages: Optional[Sequence['outputs.BatchRuntimeInfoApproximateUsage']] = None,
+                 current_usages: Optional[Sequence['outputs.BatchRuntimeInfoCurrentUsage']] = None,
+                 diagnostic_output_uri: Optional[str] = None,
+                 endpoints: Optional[Mapping[str, str]] = None,
+                 output_uri: Optional[str] = None):
+        """
+        :param Sequence['BatchRuntimeInfoApproximateUsageArgs'] approximate_usages: (Output)
+               Approximate workload resource usage, calculated when the workload completes(see [Dataproc Serverless pricing](https://cloud.google.com/dataproc-serverless/pricing))
+               Structure is documented below.
+        :param Sequence['BatchRuntimeInfoCurrentUsageArgs'] current_usages: (Output)
+               Snapshot of current workload resource usage(see [Dataproc Serverless pricing](https://cloud.google.com/dataproc-serverless/pricing))
+               Structure is documented below.
+        :param str diagnostic_output_uri: (Output)
+               A URI pointing to the location of the diagnostics tarball.
+        :param Mapping[str, str] endpoints: (Output)
+               Map of remote access endpoints (such as web interfaces and APIs) to their URIs.
+        :param str output_uri: (Output)
+               A URI pointing to the location of the stdout and stderr of the workload.
+        """
+        if approximate_usages is not None:
+            pulumi.set(__self__, "approximate_usages", approximate_usages)
+        if current_usages is not None:
+            pulumi.set(__self__, "current_usages", current_usages)
+        if diagnostic_output_uri is not None:
+            pulumi.set(__self__, "diagnostic_output_uri", diagnostic_output_uri)
+        if endpoints is not None:
+            pulumi.set(__self__, "endpoints", endpoints)
+        if output_uri is not None:
+            pulumi.set(__self__, "output_uri", output_uri)
+
+    @property
+    @pulumi.getter(name="approximateUsages")
+    def approximate_usages(self) -> Optional[Sequence['outputs.BatchRuntimeInfoApproximateUsage']]:
+        """
+        (Output)
+        Approximate workload resource usage, calculated when the workload completes(see [Dataproc Serverless pricing](https://cloud.google.com/dataproc-serverless/pricing))
+        Structure is documented below.
+        """
+        return pulumi.get(self, "approximate_usages")
+
+    @property
+    @pulumi.getter(name="currentUsages")
+    def current_usages(self) -> Optional[Sequence['outputs.BatchRuntimeInfoCurrentUsage']]:
+        """
+        (Output)
+        Snapshot of current workload resource usage(see [Dataproc Serverless pricing](https://cloud.google.com/dataproc-serverless/pricing))
+        Structure is documented below.
+        """
+        return pulumi.get(self, "current_usages")
+
+    @property
+    @pulumi.getter(name="diagnosticOutputUri")
+    def diagnostic_output_uri(self) -> Optional[str]:
+        """
+        (Output)
+        A URI pointing to the location of the diagnostics tarball.
+        """
+        return pulumi.get(self, "diagnostic_output_uri")
+
+    @property
+    @pulumi.getter
+    def endpoints(self) -> Optional[Mapping[str, str]]:
+        """
+        (Output)
+        Map of remote access endpoints (such as web interfaces and APIs) to their URIs.
+        """
+        return pulumi.get(self, "endpoints")
+
+    @property
+    @pulumi.getter(name="outputUri")
+    def output_uri(self) -> Optional[str]:
+        """
+        (Output)
+        A URI pointing to the location of the stdout and stderr of the workload.
+        """
+        return pulumi.get(self, "output_uri")
+
+
+@pulumi.output_type
+class BatchRuntimeInfoApproximateUsage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acceleratorType":
+            suggest = "accelerator_type"
+        elif key == "milliAcceleratorSeconds":
+            suggest = "milli_accelerator_seconds"
+        elif key == "milliDcuSeconds":
+            suggest = "milli_dcu_seconds"
+        elif key == "shuffleStorageGbSeconds":
+            suggest = "shuffle_storage_gb_seconds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BatchRuntimeInfoApproximateUsage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BatchRuntimeInfoApproximateUsage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BatchRuntimeInfoApproximateUsage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 accelerator_type: Optional[str] = None,
+                 milli_accelerator_seconds: Optional[str] = None,
+                 milli_dcu_seconds: Optional[str] = None,
+                 shuffle_storage_gb_seconds: Optional[str] = None):
+        """
+        :param str accelerator_type: (Output)
+               Accelerator type being used, if any.
+        :param str milli_accelerator_seconds: (Output)
+               Accelerator usage in (milliAccelerator x seconds)
+        :param str milli_dcu_seconds: (Output)
+               DCU (Dataproc Compute Units) usage in (milliDCU x seconds)
+        :param str shuffle_storage_gb_seconds: (Output)
+               Shuffle storage usage in (GB x seconds)
+        """
+        if accelerator_type is not None:
+            pulumi.set(__self__, "accelerator_type", accelerator_type)
+        if milli_accelerator_seconds is not None:
+            pulumi.set(__self__, "milli_accelerator_seconds", milli_accelerator_seconds)
+        if milli_dcu_seconds is not None:
+            pulumi.set(__self__, "milli_dcu_seconds", milli_dcu_seconds)
+        if shuffle_storage_gb_seconds is not None:
+            pulumi.set(__self__, "shuffle_storage_gb_seconds", shuffle_storage_gb_seconds)
+
+    @property
+    @pulumi.getter(name="acceleratorType")
+    def accelerator_type(self) -> Optional[str]:
+        """
+        (Output)
+        Accelerator type being used, if any.
+        """
+        return pulumi.get(self, "accelerator_type")
+
+    @property
+    @pulumi.getter(name="milliAcceleratorSeconds")
+    def milli_accelerator_seconds(self) -> Optional[str]:
+        """
+        (Output)
+        Accelerator usage in (milliAccelerator x seconds)
+        """
+        return pulumi.get(self, "milli_accelerator_seconds")
+
+    @property
+    @pulumi.getter(name="milliDcuSeconds")
+    def milli_dcu_seconds(self) -> Optional[str]:
+        """
+        (Output)
+        DCU (Dataproc Compute Units) usage in (milliDCU x seconds)
+        """
+        return pulumi.get(self, "milli_dcu_seconds")
+
+    @property
+    @pulumi.getter(name="shuffleStorageGbSeconds")
+    def shuffle_storage_gb_seconds(self) -> Optional[str]:
+        """
+        (Output)
+        Shuffle storage usage in (GB x seconds)
+        """
+        return pulumi.get(self, "shuffle_storage_gb_seconds")
+
+
+@pulumi.output_type
+class BatchRuntimeInfoCurrentUsage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acceleratorType":
+            suggest = "accelerator_type"
+        elif key == "milliAccelerator":
+            suggest = "milli_accelerator"
+        elif key == "milliDcu":
+            suggest = "milli_dcu"
+        elif key == "milliDcuPremium":
+            suggest = "milli_dcu_premium"
+        elif key == "shuffleStorageGb":
+            suggest = "shuffle_storage_gb"
+        elif key == "shuffleStorageGbPremium":
+            suggest = "shuffle_storage_gb_premium"
+        elif key == "snapshotTime":
+            suggest = "snapshot_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BatchRuntimeInfoCurrentUsage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BatchRuntimeInfoCurrentUsage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BatchRuntimeInfoCurrentUsage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 accelerator_type: Optional[str] = None,
+                 milli_accelerator: Optional[str] = None,
+                 milli_dcu: Optional[str] = None,
+                 milli_dcu_premium: Optional[str] = None,
+                 shuffle_storage_gb: Optional[str] = None,
+                 shuffle_storage_gb_premium: Optional[str] = None,
+                 snapshot_time: Optional[str] = None):
+        """
+        :param str accelerator_type: (Output)
+               Accelerator type being used, if any.
+        :param str milli_accelerator: (Output)
+               Milli (one-thousandth) accelerator..
+        :param str milli_dcu: (Output)
+               Milli (one-thousandth) Dataproc Compute Units (DCUs).
+        :param str milli_dcu_premium: (Output)
+               Milli (one-thousandth) Dataproc Compute Units (DCUs) charged at premium tier.
+        :param str shuffle_storage_gb: (Output)
+               Shuffle Storage in gigabytes (GB).
+        :param str shuffle_storage_gb_premium: (Output)
+               Shuffle Storage in gigabytes (GB) charged at premium tier.
+        :param str snapshot_time: (Output)
+               The timestamp of the usage snapshot.
+        """
+        if accelerator_type is not None:
+            pulumi.set(__self__, "accelerator_type", accelerator_type)
+        if milli_accelerator is not None:
+            pulumi.set(__self__, "milli_accelerator", milli_accelerator)
+        if milli_dcu is not None:
+            pulumi.set(__self__, "milli_dcu", milli_dcu)
+        if milli_dcu_premium is not None:
+            pulumi.set(__self__, "milli_dcu_premium", milli_dcu_premium)
+        if shuffle_storage_gb is not None:
+            pulumi.set(__self__, "shuffle_storage_gb", shuffle_storage_gb)
+        if shuffle_storage_gb_premium is not None:
+            pulumi.set(__self__, "shuffle_storage_gb_premium", shuffle_storage_gb_premium)
+        if snapshot_time is not None:
+            pulumi.set(__self__, "snapshot_time", snapshot_time)
+
+    @property
+    @pulumi.getter(name="acceleratorType")
+    def accelerator_type(self) -> Optional[str]:
+        """
+        (Output)
+        Accelerator type being used, if any.
+        """
+        return pulumi.get(self, "accelerator_type")
+
+    @property
+    @pulumi.getter(name="milliAccelerator")
+    def milli_accelerator(self) -> Optional[str]:
+        """
+        (Output)
+        Milli (one-thousandth) accelerator..
+        """
+        return pulumi.get(self, "milli_accelerator")
+
+    @property
+    @pulumi.getter(name="milliDcu")
+    def milli_dcu(self) -> Optional[str]:
+        """
+        (Output)
+        Milli (one-thousandth) Dataproc Compute Units (DCUs).
+        """
+        return pulumi.get(self, "milli_dcu")
+
+    @property
+    @pulumi.getter(name="milliDcuPremium")
+    def milli_dcu_premium(self) -> Optional[str]:
+        """
+        (Output)
+        Milli (one-thousandth) Dataproc Compute Units (DCUs) charged at premium tier.
+        """
+        return pulumi.get(self, "milli_dcu_premium")
+
+    @property
+    @pulumi.getter(name="shuffleStorageGb")
+    def shuffle_storage_gb(self) -> Optional[str]:
+        """
+        (Output)
+        Shuffle Storage in gigabytes (GB).
+        """
+        return pulumi.get(self, "shuffle_storage_gb")
+
+    @property
+    @pulumi.getter(name="shuffleStorageGbPremium")
+    def shuffle_storage_gb_premium(self) -> Optional[str]:
+        """
+        (Output)
+        Shuffle Storage in gigabytes (GB) charged at premium tier.
+        """
+        return pulumi.get(self, "shuffle_storage_gb_premium")
+
+    @property
+    @pulumi.getter(name="snapshotTime")
+    def snapshot_time(self) -> Optional[str]:
+        """
+        (Output)
+        The timestamp of the usage snapshot.
+        """
+        return pulumi.get(self, "snapshot_time")
+
+
+@pulumi.output_type
+class BatchSparkBatch(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "archiveUris":
+            suggest = "archive_uris"
+        elif key == "fileUris":
+            suggest = "file_uris"
+        elif key == "jarFileUris":
+            suggest = "jar_file_uris"
+        elif key == "mainClass":
+            suggest = "main_class"
+        elif key == "mainJarFileUri":
+            suggest = "main_jar_file_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BatchSparkBatch. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BatchSparkBatch.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BatchSparkBatch.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 archive_uris: Optional[Sequence[str]] = None,
+                 args: Optional[Sequence[str]] = None,
+                 file_uris: Optional[Sequence[str]] = None,
+                 jar_file_uris: Optional[Sequence[str]] = None,
+                 main_class: Optional[str] = None,
+                 main_jar_file_uri: Optional[str] = None):
+        """
+        :param Sequence[str] archive_uris: HCFS URIs of archives to be extracted into the working directory of each executor.
+               Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        :param Sequence[str] args: The arguments to pass to the driver. Do not include arguments that can be set as batch
+               properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
+        :param Sequence[str] file_uris: HCFS URIs of files to be placed in the working directory of each executor.
+        :param Sequence[str] jar_file_uris: HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
+        :param str main_class: The name of the driver main class. The jar file that contains the class must be in the
+               classpath or specified in jarFileUris.
+        :param str main_jar_file_uri: The HCFS URI of the jar file that contains the main class.
+        """
+        if archive_uris is not None:
+            pulumi.set(__self__, "archive_uris", archive_uris)
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if file_uris is not None:
+            pulumi.set(__self__, "file_uris", file_uris)
+        if jar_file_uris is not None:
+            pulumi.set(__self__, "jar_file_uris", jar_file_uris)
+        if main_class is not None:
+            pulumi.set(__self__, "main_class", main_class)
+        if main_jar_file_uri is not None:
+            pulumi.set(__self__, "main_jar_file_uri", main_jar_file_uri)
+
+    @property
+    @pulumi.getter(name="archiveUris")
+    def archive_uris(self) -> Optional[Sequence[str]]:
+        """
+        HCFS URIs of archives to be extracted into the working directory of each executor.
+        Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        """
+        return pulumi.get(self, "archive_uris")
+
+    @property
+    @pulumi.getter
+    def args(self) -> Optional[Sequence[str]]:
+        """
+        The arguments to pass to the driver. Do not include arguments that can be set as batch
+        properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
+        """
+        return pulumi.get(self, "args")
+
+    @property
+    @pulumi.getter(name="fileUris")
+    def file_uris(self) -> Optional[Sequence[str]]:
+        """
+        HCFS URIs of files to be placed in the working directory of each executor.
+        """
+        return pulumi.get(self, "file_uris")
+
+    @property
+    @pulumi.getter(name="jarFileUris")
+    def jar_file_uris(self) -> Optional[Sequence[str]]:
+        """
+        HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
+        """
+        return pulumi.get(self, "jar_file_uris")
+
+    @property
+    @pulumi.getter(name="mainClass")
+    def main_class(self) -> Optional[str]:
+        """
+        The name of the driver main class. The jar file that contains the class must be in the
+        classpath or specified in jarFileUris.
+        """
+        return pulumi.get(self, "main_class")
+
+    @property
+    @pulumi.getter(name="mainJarFileUri")
+    def main_jar_file_uri(self) -> Optional[str]:
+        """
+        The HCFS URI of the jar file that contains the main class.
+        """
+        return pulumi.get(self, "main_jar_file_uri")
+
+
+@pulumi.output_type
+class BatchSparkRBatch(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "archiveUris":
+            suggest = "archive_uris"
+        elif key == "fileUris":
+            suggest = "file_uris"
+        elif key == "mainRFileUri":
+            suggest = "main_r_file_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BatchSparkRBatch. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BatchSparkRBatch.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BatchSparkRBatch.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 archive_uris: Optional[Sequence[str]] = None,
+                 args: Optional[Sequence[str]] = None,
+                 file_uris: Optional[Sequence[str]] = None,
+                 main_r_file_uri: Optional[str] = None):
+        """
+        :param Sequence[str] archive_uris: HCFS URIs of archives to be extracted into the working directory of each executor.
+               Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        :param Sequence[str] args: The arguments to pass to the driver. Do not include arguments that can be set as batch
+               properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
+        :param Sequence[str] file_uris: HCFS URIs of files to be placed in the working directory of each executor.
+        :param str main_r_file_uri: The HCFS URI of the main R file to use as the driver. Must be a .R or .r file.
+        """
+        if archive_uris is not None:
+            pulumi.set(__self__, "archive_uris", archive_uris)
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if file_uris is not None:
+            pulumi.set(__self__, "file_uris", file_uris)
+        if main_r_file_uri is not None:
+            pulumi.set(__self__, "main_r_file_uri", main_r_file_uri)
+
+    @property
+    @pulumi.getter(name="archiveUris")
+    def archive_uris(self) -> Optional[Sequence[str]]:
+        """
+        HCFS URIs of archives to be extracted into the working directory of each executor.
+        Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        """
+        return pulumi.get(self, "archive_uris")
+
+    @property
+    @pulumi.getter
+    def args(self) -> Optional[Sequence[str]]:
+        """
+        The arguments to pass to the driver. Do not include arguments that can be set as batch
+        properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
+        """
+        return pulumi.get(self, "args")
+
+    @property
+    @pulumi.getter(name="fileUris")
+    def file_uris(self) -> Optional[Sequence[str]]:
+        """
+        HCFS URIs of files to be placed in the working directory of each executor.
+        """
+        return pulumi.get(self, "file_uris")
+
+    @property
+    @pulumi.getter(name="mainRFileUri")
+    def main_r_file_uri(self) -> Optional[str]:
+        """
+        The HCFS URI of the main R file to use as the driver. Must be a .R or .r file.
+        """
+        return pulumi.get(self, "main_r_file_uri")
+
+
+@pulumi.output_type
+class BatchSparkSqlBatch(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "jarFileUris":
+            suggest = "jar_file_uris"
+        elif key == "queryFileUri":
+            suggest = "query_file_uri"
+        elif key == "queryVariables":
+            suggest = "query_variables"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BatchSparkSqlBatch. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BatchSparkSqlBatch.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BatchSparkSqlBatch.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 jar_file_uris: Optional[Sequence[str]] = None,
+                 query_file_uri: Optional[str] = None,
+                 query_variables: Optional[Mapping[str, str]] = None):
+        """
+        :param Sequence[str] jar_file_uris: HCFS URIs of jar files to be added to the Spark CLASSPATH.
+        :param str query_file_uri: The HCFS URI of the script that contains Spark SQL queries to execute.
+        :param Mapping[str, str] query_variables: Mapping of query variable names to values (equivalent to the Spark SQL command: SET name="value";).
+        """
+        if jar_file_uris is not None:
+            pulumi.set(__self__, "jar_file_uris", jar_file_uris)
+        if query_file_uri is not None:
+            pulumi.set(__self__, "query_file_uri", query_file_uri)
+        if query_variables is not None:
+            pulumi.set(__self__, "query_variables", query_variables)
+
+    @property
+    @pulumi.getter(name="jarFileUris")
+    def jar_file_uris(self) -> Optional[Sequence[str]]:
+        """
+        HCFS URIs of jar files to be added to the Spark CLASSPATH.
+        """
+        return pulumi.get(self, "jar_file_uris")
+
+    @property
+    @pulumi.getter(name="queryFileUri")
+    def query_file_uri(self) -> Optional[str]:
+        """
+        The HCFS URI of the script that contains Spark SQL queries to execute.
+        """
+        return pulumi.get(self, "query_file_uri")
+
+    @property
+    @pulumi.getter(name="queryVariables")
+    def query_variables(self) -> Optional[Mapping[str, str]]:
+        """
+        Mapping of query variable names to values (equivalent to the Spark SQL command: SET name="value";).
+        """
+        return pulumi.get(self, "query_variables")
+
+
+@pulumi.output_type
+class BatchStateHistory(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "stateMessage":
+            suggest = "state_message"
+        elif key == "stateStartTime":
+            suggest = "state_start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BatchStateHistory. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BatchStateHistory.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BatchStateHistory.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 state: Optional[str] = None,
+                 state_message: Optional[str] = None,
+                 state_start_time: Optional[str] = None):
+        """
+        :param str state: (Output)
+               The state of the batch at this point in history. For possible values, see the [API documentation](https://cloud.google.com/dataproc-serverless/docs/reference/rest/v1/projects.locations.batches#State).
+        :param str state_message: (Output)
+               Details about the state at this point in history.
+        :param str state_start_time: (Output)
+               The time when the batch entered the historical state.
+        """
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if state_message is not None:
+            pulumi.set(__self__, "state_message", state_message)
+        if state_start_time is not None:
+            pulumi.set(__self__, "state_start_time", state_start_time)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        """
+        (Output)
+        The state of the batch at this point in history. For possible values, see the [API documentation](https://cloud.google.com/dataproc-serverless/docs/reference/rest/v1/projects.locations.batches#State).
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="stateMessage")
+    def state_message(self) -> Optional[str]:
+        """
+        (Output)
+        Details about the state at this point in history.
+        """
+        return pulumi.get(self, "state_message")
+
+    @property
+    @pulumi.getter(name="stateStartTime")
+    def state_start_time(self) -> Optional[str]:
+        """
+        (Output)
+        The time when the batch entered the historical state.
+        """
+        return pulumi.get(self, "state_start_time")
 
 
 @pulumi.output_type

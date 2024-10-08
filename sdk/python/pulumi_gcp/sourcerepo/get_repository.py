@@ -27,7 +27,10 @@ class GetRepositoryResult:
     """
     A collection of values returned by getRepository.
     """
-    def __init__(__self__, id=None, name=None, project=None, pubsub_configs=None, size=None, url=None):
+    def __init__(__self__, create_ignore_already_exists=None, id=None, name=None, project=None, pubsub_configs=None, size=None, url=None):
+        if create_ignore_already_exists and not isinstance(create_ignore_already_exists, bool):
+            raise TypeError("Expected argument 'create_ignore_already_exists' to be a bool")
+        pulumi.set(__self__, "create_ignore_already_exists", create_ignore_already_exists)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -46,6 +49,11 @@ class GetRepositoryResult:
         if url and not isinstance(url, str):
             raise TypeError("Expected argument 'url' to be a str")
         pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter(name="createIgnoreAlreadyExists")
+    def create_ignore_already_exists(self) -> bool:
+        return pulumi.get(self, "create_ignore_already_exists")
 
     @property
     @pulumi.getter
@@ -87,6 +95,7 @@ class AwaitableGetRepositoryResult(GetRepositoryResult):
         if False:
             yield self
         return GetRepositoryResult(
+            create_ignore_already_exists=self.create_ignore_already_exists,
             id=self.id,
             name=self.name,
             project=self.project,
@@ -124,6 +133,7 @@ def get_repository(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:sourcerepo/getRepository:getRepository', __args__, opts=opts, typ=GetRepositoryResult).value
 
     return AwaitableGetRepositoryResult(
+        create_ignore_already_exists=pulumi.get(__ret__, 'create_ignore_already_exists'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),

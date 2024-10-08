@@ -5,6 +5,8 @@ package com.pulumi.gcp.pubsub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.pubsub.outputs.TopicIngestionDataSourceSettingsAwsKinesis;
+import com.pulumi.gcp.pubsub.outputs.TopicIngestionDataSourceSettingsCloudStorage;
+import com.pulumi.gcp.pubsub.outputs.TopicIngestionDataSourceSettingsPlatformLogsSettings;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,6 +19,19 @@ public final class TopicIngestionDataSourceSettings {
      * 
      */
     private @Nullable TopicIngestionDataSourceSettingsAwsKinesis awsKinesis;
+    /**
+     * @return Settings for ingestion from Cloud Storage.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable TopicIngestionDataSourceSettingsCloudStorage cloudStorage;
+    /**
+     * @return Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,
+     * no Platform Logs will be generated.&#39;
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable TopicIngestionDataSourceSettingsPlatformLogsSettings platformLogsSettings;
 
     private TopicIngestionDataSourceSettings() {}
     /**
@@ -26,6 +41,23 @@ public final class TopicIngestionDataSourceSettings {
      */
     public Optional<TopicIngestionDataSourceSettingsAwsKinesis> awsKinesis() {
         return Optional.ofNullable(this.awsKinesis);
+    }
+    /**
+     * @return Settings for ingestion from Cloud Storage.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<TopicIngestionDataSourceSettingsCloudStorage> cloudStorage() {
+        return Optional.ofNullable(this.cloudStorage);
+    }
+    /**
+     * @return Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,
+     * no Platform Logs will be generated.&#39;
+     * Structure is documented below.
+     * 
+     */
+    public Optional<TopicIngestionDataSourceSettingsPlatformLogsSettings> platformLogsSettings() {
+        return Optional.ofNullable(this.platformLogsSettings);
     }
 
     public static Builder builder() {
@@ -38,10 +70,14 @@ public final class TopicIngestionDataSourceSettings {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable TopicIngestionDataSourceSettingsAwsKinesis awsKinesis;
+        private @Nullable TopicIngestionDataSourceSettingsCloudStorage cloudStorage;
+        private @Nullable TopicIngestionDataSourceSettingsPlatformLogsSettings platformLogsSettings;
         public Builder() {}
         public Builder(TopicIngestionDataSourceSettings defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.awsKinesis = defaults.awsKinesis;
+    	      this.cloudStorage = defaults.cloudStorage;
+    	      this.platformLogsSettings = defaults.platformLogsSettings;
         }
 
         @CustomType.Setter
@@ -50,9 +86,23 @@ public final class TopicIngestionDataSourceSettings {
             this.awsKinesis = awsKinesis;
             return this;
         }
+        @CustomType.Setter
+        public Builder cloudStorage(@Nullable TopicIngestionDataSourceSettingsCloudStorage cloudStorage) {
+
+            this.cloudStorage = cloudStorage;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder platformLogsSettings(@Nullable TopicIngestionDataSourceSettingsPlatformLogsSettings platformLogsSettings) {
+
+            this.platformLogsSettings = platformLogsSettings;
+            return this;
+        }
         public TopicIngestionDataSourceSettings build() {
             final var _resultValue = new TopicIngestionDataSourceSettings();
             _resultValue.awsKinesis = awsKinesis;
+            _resultValue.cloudStorage = cloudStorage;
+            _resultValue.platformLogsSettings = platformLogsSettings;
             return _resultValue;
         }
     }

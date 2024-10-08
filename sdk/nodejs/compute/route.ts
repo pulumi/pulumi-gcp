@@ -295,13 +295,27 @@ export class Route extends pulumi.CustomResource {
      */
     public readonly nextHopInstanceZone!: pulumi.Output<string>;
     /**
+     * Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance,
+     * distance, and available bandwidth between regions.
+     */
+    public /*out*/ readonly nextHopInterRegionCost!: pulumi.Output<string>;
+    /**
      * Network IP address of an instance that should handle matching packets.
      */
     public readonly nextHopIp!: pulumi.Output<string>;
     /**
+     * Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
+     */
+    public /*out*/ readonly nextHopMed!: pulumi.Output<string>;
+    /**
      * URL to a Network that should handle matching packets.
      */
     public /*out*/ readonly nextHopNetwork!: pulumi.Output<string>;
+    /**
+     * Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or
+     * INCOMPLETE.
+     */
+    public /*out*/ readonly nextHopOrigin!: pulumi.Output<string>;
     /**
      * URL to a VpnTunnel that should handle matching packets.
      */
@@ -349,8 +363,11 @@ export class Route extends pulumi.CustomResource {
             resourceInputs["nextHopIlb"] = state ? state.nextHopIlb : undefined;
             resourceInputs["nextHopInstance"] = state ? state.nextHopInstance : undefined;
             resourceInputs["nextHopInstanceZone"] = state ? state.nextHopInstanceZone : undefined;
+            resourceInputs["nextHopInterRegionCost"] = state ? state.nextHopInterRegionCost : undefined;
             resourceInputs["nextHopIp"] = state ? state.nextHopIp : undefined;
+            resourceInputs["nextHopMed"] = state ? state.nextHopMed : undefined;
             resourceInputs["nextHopNetwork"] = state ? state.nextHopNetwork : undefined;
+            resourceInputs["nextHopOrigin"] = state ? state.nextHopOrigin : undefined;
             resourceInputs["nextHopVpnTunnel"] = state ? state.nextHopVpnTunnel : undefined;
             resourceInputs["priority"] = state ? state.priority : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -377,7 +394,10 @@ export class Route extends pulumi.CustomResource {
             resourceInputs["priority"] = args ? args.priority : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["nextHopInterRegionCost"] = undefined /*out*/;
+            resourceInputs["nextHopMed"] = undefined /*out*/;
             resourceInputs["nextHopNetwork"] = undefined /*out*/;
+            resourceInputs["nextHopOrigin"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -459,13 +479,27 @@ export interface RouteState {
      */
     nextHopInstanceZone?: pulumi.Input<string>;
     /**
+     * Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance,
+     * distance, and available bandwidth between regions.
+     */
+    nextHopInterRegionCost?: pulumi.Input<string>;
+    /**
      * Network IP address of an instance that should handle matching packets.
      */
     nextHopIp?: pulumi.Input<string>;
     /**
+     * Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
+     */
+    nextHopMed?: pulumi.Input<string>;
+    /**
      * URL to a Network that should handle matching packets.
      */
     nextHopNetwork?: pulumi.Input<string>;
+    /**
+     * Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or
+     * INCOMPLETE.
+     */
+    nextHopOrigin?: pulumi.Input<string>;
     /**
      * URL to a VpnTunnel that should handle matching packets.
      */

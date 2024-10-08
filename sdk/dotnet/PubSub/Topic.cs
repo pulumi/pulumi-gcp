@@ -175,6 +175,40 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// });
     /// ```
+    /// ### Pubsub Topic Ingestion Cloud Storage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Gcp.PubSub.Topic("example", new()
+    ///     {
+    ///         Name = "example-topic",
+    ///         IngestionDataSourceSettings = new Gcp.PubSub.Inputs.TopicIngestionDataSourceSettingsArgs
+    ///         {
+    ///             CloudStorage = new Gcp.PubSub.Inputs.TopicIngestionDataSourceSettingsCloudStorageArgs
+    ///             {
+    ///                 Bucket = "test-bucket",
+    ///                 TextFormat = new Gcp.PubSub.Inputs.TopicIngestionDataSourceSettingsCloudStorageTextFormatArgs
+    ///                 {
+    ///                     Delimiter = " ",
+    ///                 },
+    ///                 MinimumObjectCreateTime = "2024-01-01T00:00:00Z",
+    ///                 MatchGlob = "foo/**",
+    ///             },
+    ///             PlatformLogsSettings = new Gcp.PubSub.Inputs.TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs
+    ///             {
+    ///                 Severity = "WARNING",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

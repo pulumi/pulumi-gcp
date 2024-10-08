@@ -122,6 +122,7 @@ export interface GetBackendServiceResult {
      * The Backend Service session stickiness configuration.
      */
     readonly sessionAffinity: string;
+    readonly strongSessionAffinityCookies: outputs.compute.GetBackendServiceStrongSessionAffinityCooky[];
     /**
      * The number of seconds to wait for a backend to respond to a request before considering the request failed.
      */

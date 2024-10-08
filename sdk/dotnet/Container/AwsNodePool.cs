@@ -195,6 +195,13 @@ namespace Pulumi.Gcp.Container
     ///         {
     ///             AutoRepair = true,
     ///         },
+    ///         KubeletConfig = new Gcp.Container.Inputs.AwsNodePoolKubeletConfigArgs
+    ///         {
+    ///             CpuManagerPolicy = "none",
+    ///             CpuCfsQuota = true,
+    ///             CpuCfsQuotaPeriod = "100ms",
+    ///             PodPidsLimit = 1024,
+    ///         },
     ///         Project = "my-project-name",
     ///     });
     /// 
@@ -638,6 +645,12 @@ namespace Pulumi.Gcp.Container
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
+        /// The kubelet configuration for the node pool.
+        /// </summary>
+        [Output("kubeletConfig")]
+        public Output<Outputs.AwsNodePoolKubeletConfig> KubeletConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The location for the resource
         /// </summary>
         [Output("location")]
@@ -791,6 +804,12 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.AwsNodePoolConfigArgs> Config { get; set; } = null!;
 
         /// <summary>
+        /// The kubelet configuration for the node pool.
+        /// </summary>
+        [Input("kubeletConfig")]
+        public Input<Inputs.AwsNodePoolKubeletConfigArgs>? KubeletConfig { get; set; }
+
+        /// <summary>
         /// The location for the resource
         /// </summary>
         [Input("location", required: true)]
@@ -900,6 +919,12 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
+
+        /// <summary>
+        /// The kubelet configuration for the node pool.
+        /// </summary>
+        [Input("kubeletConfig")]
+        public Input<Inputs.AwsNodePoolKubeletConfigGetArgs>? KubeletConfig { get; set; }
 
         /// <summary>
         /// The location for the resource

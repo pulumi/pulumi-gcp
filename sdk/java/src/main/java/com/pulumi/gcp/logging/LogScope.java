@@ -112,14 +112,14 @@ public class LogScope extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The location of the resource. The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.
+     * The location of the resource. The only supported location is global so far.
      * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
-     * @return The location of the resource. The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.
+     * @return The location of the resource. The only supported location is global so far.
      * 
      */
     public Output<String> location() {
