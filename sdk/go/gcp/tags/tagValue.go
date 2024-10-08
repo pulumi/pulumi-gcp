@@ -94,7 +94,7 @@ type TagValue struct {
 	// Input only. The resource name of the new TagValue's parent. Must be of the form tagKeys/{tag_key_id}.
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
-	// The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	// The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes ('), double quotes ("), backslashes (\\), and forward slashes (/).
 	//
 	// ***
 	ShortName pulumi.StringOutput `pulumi:"shortName"`
@@ -151,7 +151,7 @@ type tagValueState struct {
 	// Input only. The resource name of the new TagValue's parent. Must be of the form tagKeys/{tag_key_id}.
 	Parent *string `pulumi:"parent"`
 	// Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
-	// The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	// The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes ('), double quotes ("), backslashes (\\), and forward slashes (/).
 	//
 	// ***
 	ShortName *string `pulumi:"shortName"`
@@ -173,7 +173,7 @@ type TagValueState struct {
 	// Input only. The resource name of the new TagValue's parent. Must be of the form tagKeys/{tag_key_id}.
 	Parent pulumi.StringPtrInput
 	// Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
-	// The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	// The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes ('), double quotes ("), backslashes (\\), and forward slashes (/).
 	//
 	// ***
 	ShortName pulumi.StringPtrInput
@@ -192,7 +192,7 @@ type tagValueArgs struct {
 	// Input only. The resource name of the new TagValue's parent. Must be of the form tagKeys/{tag_key_id}.
 	Parent string `pulumi:"parent"`
 	// Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
-	// The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	// The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes ('), double quotes ("), backslashes (\\), and forward slashes (/).
 	//
 	// ***
 	ShortName string `pulumi:"shortName"`
@@ -205,7 +205,7 @@ type TagValueArgs struct {
 	// Input only. The resource name of the new TagValue's parent. Must be of the form tagKeys/{tag_key_id}.
 	Parent pulumi.StringInput
 	// Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
-	// The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+	// The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes ('), double quotes ("), backslashes (\\), and forward slashes (/).
 	//
 	// ***
 	ShortName pulumi.StringInput
@@ -325,7 +325,7 @@ func (o TagValueOutput) Parent() pulumi.StringOutput {
 }
 
 // Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
-// The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+// The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes ('), double quotes ("), backslashes (\\), and forward slashes (/).
 //
 // ***
 func (o TagValueOutput) ShortName() pulumi.StringOutput {

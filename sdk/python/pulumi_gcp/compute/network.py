@@ -20,6 +20,9 @@ __all__ = ['NetworkArgs', 'Network']
 class NetworkArgs:
     def __init__(__self__, *,
                  auto_create_subnetworks: Optional[pulumi.Input[bool]] = None,
+                 bgp_always_compare_med: Optional[pulumi.Input[bool]] = None,
+                 bgp_best_path_selection_mode: Optional[pulumi.Input[str]] = None,
+                 bgp_inter_region_cost: Optional[pulumi.Input[str]] = None,
                  delete_default_routes_on_create: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_ula_internal_ipv6: Optional[pulumi.Input[bool]] = None,
@@ -36,6 +39,12 @@ class NetworkArgs:
                `10.128.0.0/9` address range.
                When set to `false`, the network is created in "custom subnet mode" so
                the user can explicitly connect subnetwork resources.
+        :param pulumi.Input[bool] bgp_always_compare_med: Enables/disables the comparison of MED across routes with different Neighbor ASNs.
+               This value can only be set if the --bgp-best-path-selection-mode is STANDARD
+        :param pulumi.Input[str] bgp_best_path_selection_mode: The BGP best selection algorithm to be employed. MODE can be LEGACY or STANDARD.
+               Possible values are: `LEGACY`, `STANDARD`.
+        :param pulumi.Input[str] bgp_inter_region_cost: Choice of the behavior of inter-regional cost and MED in the BPS algorithm.
+               Possible values are: `DEFAULT`, `ADD_COST_TO_MED`.
         :param pulumi.Input[bool] delete_default_routes_on_create: If set to `true`, default routes (`0.0.0.0/0`) will be deleted
                immediately after network creation. Defaults to `false`.
         :param pulumi.Input[str] description: An optional description of this resource. The resource must be
@@ -76,6 +85,12 @@ class NetworkArgs:
         """
         if auto_create_subnetworks is not None:
             pulumi.set(__self__, "auto_create_subnetworks", auto_create_subnetworks)
+        if bgp_always_compare_med is not None:
+            pulumi.set(__self__, "bgp_always_compare_med", bgp_always_compare_med)
+        if bgp_best_path_selection_mode is not None:
+            pulumi.set(__self__, "bgp_best_path_selection_mode", bgp_best_path_selection_mode)
+        if bgp_inter_region_cost is not None:
+            pulumi.set(__self__, "bgp_inter_region_cost", bgp_inter_region_cost)
         if delete_default_routes_on_create is not None:
             pulumi.set(__self__, "delete_default_routes_on_create", delete_default_routes_on_create)
         if description is not None:
@@ -110,6 +125,45 @@ class NetworkArgs:
     @auto_create_subnetworks.setter
     def auto_create_subnetworks(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "auto_create_subnetworks", value)
+
+    @property
+    @pulumi.getter(name="bgpAlwaysCompareMed")
+    def bgp_always_compare_med(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enables/disables the comparison of MED across routes with different Neighbor ASNs.
+        This value can only be set if the --bgp-best-path-selection-mode is STANDARD
+        """
+        return pulumi.get(self, "bgp_always_compare_med")
+
+    @bgp_always_compare_med.setter
+    def bgp_always_compare_med(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "bgp_always_compare_med", value)
+
+    @property
+    @pulumi.getter(name="bgpBestPathSelectionMode")
+    def bgp_best_path_selection_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The BGP best selection algorithm to be employed. MODE can be LEGACY or STANDARD.
+        Possible values are: `LEGACY`, `STANDARD`.
+        """
+        return pulumi.get(self, "bgp_best_path_selection_mode")
+
+    @bgp_best_path_selection_mode.setter
+    def bgp_best_path_selection_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bgp_best_path_selection_mode", value)
+
+    @property
+    @pulumi.getter(name="bgpInterRegionCost")
+    def bgp_inter_region_cost(self) -> Optional[pulumi.Input[str]]:
+        """
+        Choice of the behavior of inter-regional cost and MED in the BPS algorithm.
+        Possible values are: `DEFAULT`, `ADD_COST_TO_MED`.
+        """
+        return pulumi.get(self, "bgp_inter_region_cost")
+
+    @bgp_inter_region_cost.setter
+    def bgp_inter_region_cost(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bgp_inter_region_cost", value)
 
     @property
     @pulumi.getter(name="deleteDefaultRoutesOnCreate")
@@ -252,6 +306,9 @@ class NetworkArgs:
 class _NetworkState:
     def __init__(__self__, *,
                  auto_create_subnetworks: Optional[pulumi.Input[bool]] = None,
+                 bgp_always_compare_med: Optional[pulumi.Input[bool]] = None,
+                 bgp_best_path_selection_mode: Optional[pulumi.Input[str]] = None,
+                 bgp_inter_region_cost: Optional[pulumi.Input[str]] = None,
                  delete_default_routes_on_create: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_ula_internal_ipv6: Optional[pulumi.Input[bool]] = None,
@@ -271,6 +328,12 @@ class _NetworkState:
                `10.128.0.0/9` address range.
                When set to `false`, the network is created in "custom subnet mode" so
                the user can explicitly connect subnetwork resources.
+        :param pulumi.Input[bool] bgp_always_compare_med: Enables/disables the comparison of MED across routes with different Neighbor ASNs.
+               This value can only be set if the --bgp-best-path-selection-mode is STANDARD
+        :param pulumi.Input[str] bgp_best_path_selection_mode: The BGP best selection algorithm to be employed. MODE can be LEGACY or STANDARD.
+               Possible values are: `LEGACY`, `STANDARD`.
+        :param pulumi.Input[str] bgp_inter_region_cost: Choice of the behavior of inter-regional cost and MED in the BPS algorithm.
+               Possible values are: `DEFAULT`, `ADD_COST_TO_MED`.
         :param pulumi.Input[bool] delete_default_routes_on_create: If set to `true`, default routes (`0.0.0.0/0`) will be deleted
                immediately after network creation. Defaults to `false`.
         :param pulumi.Input[str] description: An optional description of this resource. The resource must be
@@ -315,6 +378,12 @@ class _NetworkState:
         """
         if auto_create_subnetworks is not None:
             pulumi.set(__self__, "auto_create_subnetworks", auto_create_subnetworks)
+        if bgp_always_compare_med is not None:
+            pulumi.set(__self__, "bgp_always_compare_med", bgp_always_compare_med)
+        if bgp_best_path_selection_mode is not None:
+            pulumi.set(__self__, "bgp_best_path_selection_mode", bgp_best_path_selection_mode)
+        if bgp_inter_region_cost is not None:
+            pulumi.set(__self__, "bgp_inter_region_cost", bgp_inter_region_cost)
         if delete_default_routes_on_create is not None:
             pulumi.set(__self__, "delete_default_routes_on_create", delete_default_routes_on_create)
         if description is not None:
@@ -355,6 +424,45 @@ class _NetworkState:
     @auto_create_subnetworks.setter
     def auto_create_subnetworks(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "auto_create_subnetworks", value)
+
+    @property
+    @pulumi.getter(name="bgpAlwaysCompareMed")
+    def bgp_always_compare_med(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enables/disables the comparison of MED across routes with different Neighbor ASNs.
+        This value can only be set if the --bgp-best-path-selection-mode is STANDARD
+        """
+        return pulumi.get(self, "bgp_always_compare_med")
+
+    @bgp_always_compare_med.setter
+    def bgp_always_compare_med(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "bgp_always_compare_med", value)
+
+    @property
+    @pulumi.getter(name="bgpBestPathSelectionMode")
+    def bgp_best_path_selection_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The BGP best selection algorithm to be employed. MODE can be LEGACY or STANDARD.
+        Possible values are: `LEGACY`, `STANDARD`.
+        """
+        return pulumi.get(self, "bgp_best_path_selection_mode")
+
+    @bgp_best_path_selection_mode.setter
+    def bgp_best_path_selection_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bgp_best_path_selection_mode", value)
+
+    @property
+    @pulumi.getter(name="bgpInterRegionCost")
+    def bgp_inter_region_cost(self) -> Optional[pulumi.Input[str]]:
+        """
+        Choice of the behavior of inter-regional cost and MED in the BPS algorithm.
+        Possible values are: `DEFAULT`, `ADD_COST_TO_MED`.
+        """
+        return pulumi.get(self, "bgp_inter_region_cost")
+
+    @bgp_inter_region_cost.setter
+    def bgp_inter_region_cost(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bgp_inter_region_cost", value)
 
     @property
     @pulumi.getter(name="deleteDefaultRoutesOnCreate")
@@ -536,6 +644,9 @@ class Network(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_create_subnetworks: Optional[pulumi.Input[bool]] = None,
+                 bgp_always_compare_med: Optional[pulumi.Input[bool]] = None,
+                 bgp_best_path_selection_mode: Optional[pulumi.Input[str]] = None,
+                 bgp_inter_region_cost: Optional[pulumi.Input[str]] = None,
                  delete_default_routes_on_create: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_ula_internal_ipv6: Optional[pulumi.Input[bool]] = None,
@@ -589,6 +700,43 @@ class Network(pulumi.CustomResource):
             auto_create_subnetworks=True,
             network_firewall_policy_enforcement_order="BEFORE_CLASSIC_FIREWALL")
         ```
+        ### Network Bgp Best Path Selection Mode
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        vpc_network = gcp.compute.Network("vpc_network",
+            project="my-project-name",
+            name="vpc-network",
+            routing_mode="GLOBAL")
+        ```
+        ### Network Bgp Best Path Selection Mode Standard
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        vpc_network = gcp.compute.Network("vpc_network",
+            project="my-project-name",
+            name="vpc-network",
+            routing_mode="GLOBAL",
+            bgp_best_path_selection_mode="STANDARD")
+        ```
+        ### Network Bgp Best Path Selection Mode Standard Custom Fields
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        vpc_network = gcp.compute.Network("vpc_network",
+            project="my-project-name",
+            name="vpc-network",
+            routing_mode="GLOBAL",
+            bgp_best_path_selection_mode="STANDARD",
+            bgp_always_compare_med=True,
+            bgp_inter_region_cost="ADD_COST_TO_MED")
+        ```
 
         ## Import
 
@@ -621,6 +769,12 @@ class Network(pulumi.CustomResource):
                `10.128.0.0/9` address range.
                When set to `false`, the network is created in "custom subnet mode" so
                the user can explicitly connect subnetwork resources.
+        :param pulumi.Input[bool] bgp_always_compare_med: Enables/disables the comparison of MED across routes with different Neighbor ASNs.
+               This value can only be set if the --bgp-best-path-selection-mode is STANDARD
+        :param pulumi.Input[str] bgp_best_path_selection_mode: The BGP best selection algorithm to be employed. MODE can be LEGACY or STANDARD.
+               Possible values are: `LEGACY`, `STANDARD`.
+        :param pulumi.Input[str] bgp_inter_region_cost: Choice of the behavior of inter-regional cost and MED in the BPS algorithm.
+               Possible values are: `DEFAULT`, `ADD_COST_TO_MED`.
         :param pulumi.Input[bool] delete_default_routes_on_create: If set to `true`, default routes (`0.0.0.0/0`) will be deleted
                immediately after network creation. Defaults to `false`.
         :param pulumi.Input[str] description: An optional description of this resource. The resource must be
@@ -708,6 +862,43 @@ class Network(pulumi.CustomResource):
             auto_create_subnetworks=True,
             network_firewall_policy_enforcement_order="BEFORE_CLASSIC_FIREWALL")
         ```
+        ### Network Bgp Best Path Selection Mode
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        vpc_network = gcp.compute.Network("vpc_network",
+            project="my-project-name",
+            name="vpc-network",
+            routing_mode="GLOBAL")
+        ```
+        ### Network Bgp Best Path Selection Mode Standard
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        vpc_network = gcp.compute.Network("vpc_network",
+            project="my-project-name",
+            name="vpc-network",
+            routing_mode="GLOBAL",
+            bgp_best_path_selection_mode="STANDARD")
+        ```
+        ### Network Bgp Best Path Selection Mode Standard Custom Fields
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        vpc_network = gcp.compute.Network("vpc_network",
+            project="my-project-name",
+            name="vpc-network",
+            routing_mode="GLOBAL",
+            bgp_best_path_selection_mode="STANDARD",
+            bgp_always_compare_med=True,
+            bgp_inter_region_cost="ADD_COST_TO_MED")
+        ```
 
         ## Import
 
@@ -749,6 +940,9 @@ class Network(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_create_subnetworks: Optional[pulumi.Input[bool]] = None,
+                 bgp_always_compare_med: Optional[pulumi.Input[bool]] = None,
+                 bgp_best_path_selection_mode: Optional[pulumi.Input[str]] = None,
+                 bgp_inter_region_cost: Optional[pulumi.Input[str]] = None,
                  delete_default_routes_on_create: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_ula_internal_ipv6: Optional[pulumi.Input[bool]] = None,
@@ -768,6 +962,9 @@ class Network(pulumi.CustomResource):
             __props__ = NetworkArgs.__new__(NetworkArgs)
 
             __props__.__dict__["auto_create_subnetworks"] = auto_create_subnetworks
+            __props__.__dict__["bgp_always_compare_med"] = bgp_always_compare_med
+            __props__.__dict__["bgp_best_path_selection_mode"] = bgp_best_path_selection_mode
+            __props__.__dict__["bgp_inter_region_cost"] = bgp_inter_region_cost
             __props__.__dict__["delete_default_routes_on_create"] = delete_default_routes_on_create
             __props__.__dict__["description"] = description
             __props__.__dict__["enable_ula_internal_ipv6"] = enable_ula_internal_ipv6
@@ -791,6 +988,9 @@ class Network(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             auto_create_subnetworks: Optional[pulumi.Input[bool]] = None,
+            bgp_always_compare_med: Optional[pulumi.Input[bool]] = None,
+            bgp_best_path_selection_mode: Optional[pulumi.Input[str]] = None,
+            bgp_inter_region_cost: Optional[pulumi.Input[str]] = None,
             delete_default_routes_on_create: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
             enable_ula_internal_ipv6: Optional[pulumi.Input[bool]] = None,
@@ -815,6 +1015,12 @@ class Network(pulumi.CustomResource):
                `10.128.0.0/9` address range.
                When set to `false`, the network is created in "custom subnet mode" so
                the user can explicitly connect subnetwork resources.
+        :param pulumi.Input[bool] bgp_always_compare_med: Enables/disables the comparison of MED across routes with different Neighbor ASNs.
+               This value can only be set if the --bgp-best-path-selection-mode is STANDARD
+        :param pulumi.Input[str] bgp_best_path_selection_mode: The BGP best selection algorithm to be employed. MODE can be LEGACY or STANDARD.
+               Possible values are: `LEGACY`, `STANDARD`.
+        :param pulumi.Input[str] bgp_inter_region_cost: Choice of the behavior of inter-regional cost and MED in the BPS algorithm.
+               Possible values are: `DEFAULT`, `ADD_COST_TO_MED`.
         :param pulumi.Input[bool] delete_default_routes_on_create: If set to `true`, default routes (`0.0.0.0/0`) will be deleted
                immediately after network creation. Defaults to `false`.
         :param pulumi.Input[str] description: An optional description of this resource. The resource must be
@@ -862,6 +1068,9 @@ class Network(pulumi.CustomResource):
         __props__ = _NetworkState.__new__(_NetworkState)
 
         __props__.__dict__["auto_create_subnetworks"] = auto_create_subnetworks
+        __props__.__dict__["bgp_always_compare_med"] = bgp_always_compare_med
+        __props__.__dict__["bgp_best_path_selection_mode"] = bgp_best_path_selection_mode
+        __props__.__dict__["bgp_inter_region_cost"] = bgp_inter_region_cost
         __props__.__dict__["delete_default_routes_on_create"] = delete_default_routes_on_create
         __props__.__dict__["description"] = description
         __props__.__dict__["enable_ula_internal_ipv6"] = enable_ula_internal_ipv6
@@ -887,6 +1096,33 @@ class Network(pulumi.CustomResource):
         the user can explicitly connect subnetwork resources.
         """
         return pulumi.get(self, "auto_create_subnetworks")
+
+    @property
+    @pulumi.getter(name="bgpAlwaysCompareMed")
+    def bgp_always_compare_med(self) -> pulumi.Output[bool]:
+        """
+        Enables/disables the comparison of MED across routes with different Neighbor ASNs.
+        This value can only be set if the --bgp-best-path-selection-mode is STANDARD
+        """
+        return pulumi.get(self, "bgp_always_compare_med")
+
+    @property
+    @pulumi.getter(name="bgpBestPathSelectionMode")
+    def bgp_best_path_selection_mode(self) -> pulumi.Output[str]:
+        """
+        The BGP best selection algorithm to be employed. MODE can be LEGACY or STANDARD.
+        Possible values are: `LEGACY`, `STANDARD`.
+        """
+        return pulumi.get(self, "bgp_best_path_selection_mode")
+
+    @property
+    @pulumi.getter(name="bgpInterRegionCost")
+    def bgp_inter_region_cost(self) -> pulumi.Output[str]:
+        """
+        Choice of the behavior of inter-regional cost and MED in the BPS algorithm.
+        Possible values are: `DEFAULT`, `ADD_COST_TO_MED`.
+        """
+        return pulumi.get(self, "bgp_inter_region_cost")
 
     @property
     @pulumi.getter(name="deleteDefaultRoutesOnCreate")

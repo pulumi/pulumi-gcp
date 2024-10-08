@@ -53,6 +53,8 @@ __all__ = [
     'BackendServiceOutlierDetectionInterval',
     'BackendServiceSecuritySettings',
     'BackendServiceSecuritySettingsAwsV4Authentication',
+    'BackendServiceStrongSessionAffinityCookie',
+    'BackendServiceStrongSessionAffinityCookieTtl',
     'DiskAsyncPrimaryDisk',
     'DiskAsyncReplicationSecondaryDisk',
     'DiskDiskEncryptionKey',
@@ -273,6 +275,8 @@ __all__ = [
     'RegionBackendServiceOutlierDetection',
     'RegionBackendServiceOutlierDetectionBaseEjectionTime',
     'RegionBackendServiceOutlierDetectionInterval',
+    'RegionBackendServiceStrongSessionAffinityCookie',
+    'RegionBackendServiceStrongSessionAffinityCookieTtl',
     'RegionBackendServiceSubsetting',
     'RegionCommitmentLicenseResource',
     'RegionCommitmentResource',
@@ -639,6 +643,8 @@ __all__ = [
     'GetBackendServiceOutlierDetectionIntervalResult',
     'GetBackendServiceSecuritySettingResult',
     'GetBackendServiceSecuritySettingAwsV4AuthenticationResult',
+    'GetBackendServiceStrongSessionAffinityCookyResult',
+    'GetBackendServiceStrongSessionAffinityCookyTtlResult',
     'GetDiskAsyncPrimaryDiskResult',
     'GetDiskDiskEncryptionKeyResult',
     'GetDiskGuestOsFeatureResult',
@@ -3834,6 +3840,89 @@ class BackendServiceSecuritySettingsAwsV4Authentication(dict):
         For example, "us-east-1" for AWS or "us-ashburn-1" for OCI.
         """
         return pulumi.get(self, "origin_region")
+
+
+@pulumi.output_type
+class BackendServiceStrongSessionAffinityCookie(dict):
+    def __init__(__self__, *,
+                 name: Optional[str] = None,
+                 path: Optional[str] = None,
+                 ttl: Optional['outputs.BackendServiceStrongSessionAffinityCookieTtl'] = None):
+        """
+        :param str name: Name of the cookie.
+        :param str path: Path to set for the cookie.
+        :param 'BackendServiceStrongSessionAffinityCookieTtlArgs' ttl: Lifetime of the cookie.
+               Structure is documented below.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if ttl is not None:
+            pulumi.set(__self__, "ttl", ttl)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name of the cookie.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[str]:
+        """
+        Path to set for the cookie.
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> Optional['outputs.BackendServiceStrongSessionAffinityCookieTtl']:
+        """
+        Lifetime of the cookie.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ttl")
+
+
+@pulumi.output_type
+class BackendServiceStrongSessionAffinityCookieTtl(dict):
+    def __init__(__self__, *,
+                 seconds: int,
+                 nanos: Optional[int] = None):
+        """
+        :param int seconds: Span of time at a resolution of a second.
+               Must be from 0 to 315,576,000,000 inclusive.
+        :param int nanos: Span of time that's a fraction of a second at nanosecond
+               resolution. Durations less than one second are represented
+               with a 0 seconds field and a positive nanos field. Must
+               be from 0 to 999,999,999 inclusive.
+        """
+        pulumi.set(__self__, "seconds", seconds)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> int:
+        """
+        Span of time at a resolution of a second.
+        Must be from 0 to 315,576,000,000 inclusive.
+        """
+        return pulumi.get(self, "seconds")
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[int]:
+        """
+        Span of time that's a fraction of a second at nanosecond
+        resolution. Durations less than one second are represented
+        with a 0 seconds field and a positive nanos field. Must
+        be from 0 to 999,999,999 inclusive.
+        """
+        return pulumi.get(self, "nanos")
 
 
 @pulumi.output_type
@@ -7643,7 +7732,7 @@ class InstanceConfidentialInstanceConfig(dict):
                  confidential_instance_type: Optional[str] = None,
                  enable_confidential_compute: Optional[bool] = None):
         """
-        :param str confidential_instance_type: Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM. TDX is only available in beta.
+        :param str confidential_instance_type: Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM.
         :param bool enable_confidential_compute: Defines whether the instance should have confidential compute enabled with AMD SEV. If enabled, `on_host_maintenance` can be set to MIGRATE if `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
         """
         if confidential_instance_type is not None:
@@ -7655,7 +7744,7 @@ class InstanceConfidentialInstanceConfig(dict):
     @pulumi.getter(name="confidentialInstanceType")
     def confidential_instance_type(self) -> Optional[str]:
         """
-        Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM. TDX is only available in beta.
+        Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM.
         """
         return pulumi.get(self, "confidential_instance_type")
 
@@ -8157,7 +8246,7 @@ class InstanceFromMachineImageConfidentialInstanceConfig(dict):
         :param str confidential_instance_type: The confidential computing technology the instance uses.
                								SEV is an AMD feature. TDX is an Intel feature. One of the following
                								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =
-               								"AMD Milan" is currently required. TDX is only available in beta.
+               								"AMD Milan" is currently required.
         :param bool enable_confidential_compute: Defines whether the instance should have confidential compute enabled. Field will be deprecated in a future release
         """
         if confidential_instance_type is not None:
@@ -8172,7 +8261,7 @@ class InstanceFromMachineImageConfidentialInstanceConfig(dict):
         The confidential computing technology the instance uses.
         								SEV is an AMD feature. TDX is an Intel feature. One of the following
         								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =
-        								"AMD Milan" is currently required. TDX is only available in beta.
+        								"AMD Milan" is currently required.
         """
         return pulumi.get(self, "confidential_instance_type")
 
@@ -9805,7 +9894,7 @@ class InstanceFromTemplateConfidentialInstanceConfig(dict):
         :param str confidential_instance_type: The confidential computing technology the instance uses.
                								SEV is an AMD feature. TDX is an Intel feature. One of the following
                								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =
-               								"AMD Milan" is currently required. TDX is only available in beta.
+               								"AMD Milan" is currently required.
         :param bool enable_confidential_compute: Defines whether the instance should have confidential compute enabled. Field will be deprecated in a future release
         """
         if confidential_instance_type is not None:
@@ -9820,7 +9909,7 @@ class InstanceFromTemplateConfidentialInstanceConfig(dict):
         The confidential computing technology the instance uses.
         								SEV is an AMD feature. TDX is an Intel feature. One of the following
         								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =
-        								"AMD Milan" is currently required. TDX is only available in beta.
+        								"AMD Milan" is currently required.
         """
         return pulumi.get(self, "confidential_instance_type")
 
@@ -13347,7 +13436,7 @@ class InstanceTemplateConfidentialInstanceConfig(dict):
                  confidential_instance_type: Optional[str] = None,
                  enable_confidential_compute: Optional[bool] = None):
         """
-        :param str confidential_instance_type: Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM. TDX is only available in beta.
+        :param str confidential_instance_type: Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM.
         :param bool enable_confidential_compute: Defines whether the instance should have confidential compute enabled with AMD SEV. If enabled, `on_host_maintenance` can be set to MIGRATE if `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
         """
         if confidential_instance_type is not None:
@@ -13359,7 +13448,7 @@ class InstanceTemplateConfidentialInstanceConfig(dict):
     @pulumi.getter(name="confidentialInstanceType")
     def confidential_instance_type(self) -> Optional[str]:
         """
-        Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM. TDX is only available in beta.
+        Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM.
         """
         return pulumi.get(self, "confidential_instance_type")
 
@@ -20934,6 +21023,89 @@ class RegionBackendServiceOutlierDetectionInterval(dict):
 
 
 @pulumi.output_type
+class RegionBackendServiceStrongSessionAffinityCookie(dict):
+    def __init__(__self__, *,
+                 name: Optional[str] = None,
+                 path: Optional[str] = None,
+                 ttl: Optional['outputs.RegionBackendServiceStrongSessionAffinityCookieTtl'] = None):
+        """
+        :param str name: Name of the cookie.
+        :param str path: Path to set for the cookie.
+        :param 'RegionBackendServiceStrongSessionAffinityCookieTtlArgs' ttl: Lifetime of the cookie.
+               Structure is documented below.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if ttl is not None:
+            pulumi.set(__self__, "ttl", ttl)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name of the cookie.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[str]:
+        """
+        Path to set for the cookie.
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> Optional['outputs.RegionBackendServiceStrongSessionAffinityCookieTtl']:
+        """
+        Lifetime of the cookie.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ttl")
+
+
+@pulumi.output_type
+class RegionBackendServiceStrongSessionAffinityCookieTtl(dict):
+    def __init__(__self__, *,
+                 seconds: int,
+                 nanos: Optional[int] = None):
+        """
+        :param int seconds: Span of time at a resolution of a second.
+               Must be from 0 to 315,576,000,000 inclusive.
+        :param int nanos: Span of time that's a fraction of a second at nanosecond
+               resolution. Durations less than one second are represented
+               with a 0 seconds field and a positive nanos field. Must
+               be from 0 to 999,999,999 inclusive.
+        """
+        pulumi.set(__self__, "seconds", seconds)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> int:
+        """
+        Span of time at a resolution of a second.
+        Must be from 0 to 315,576,000,000 inclusive.
+        """
+        return pulumi.get(self, "seconds")
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[int]:
+        """
+        Span of time that's a fraction of a second at nanosecond
+        resolution. Durations less than one second are represented
+        with a 0 seconds field and a positive nanos field. Must
+        be from 0 to 999,999,999 inclusive.
+        """
+        return pulumi.get(self, "nanos")
+
+
+@pulumi.output_type
 class RegionBackendServiceSubsetting(dict):
     def __init__(__self__, *,
                  policy: str):
@@ -23191,7 +23363,7 @@ class RegionInstanceTemplateConfidentialInstanceConfig(dict):
                  confidential_instance_type: Optional[str] = None,
                  enable_confidential_compute: Optional[bool] = None):
         """
-        :param str confidential_instance_type: Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM. TDX is only available in beta.
+        :param str confidential_instance_type: Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM.
         :param bool enable_confidential_compute: Defines whether the instance should have confidential compute enabled with AMD SEV. If enabled, `on_host_maintenance` can be set to MIGRATE if `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
         """
         if confidential_instance_type is not None:
@@ -23203,7 +23375,7 @@ class RegionInstanceTemplateConfidentialInstanceConfig(dict):
     @pulumi.getter(name="confidentialInstanceType")
     def confidential_instance_type(self) -> Optional[str]:
         """
-        Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM. TDX is only available in beta.
+        Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM.
         """
         return pulumi.get(self, "confidential_instance_type")
 
@@ -36065,8 +36237,11 @@ class RouterStatusBestRouteResult(dict):
                  next_hop_ilb: str,
                  next_hop_instance: str,
                  next_hop_instance_zone: str,
+                 next_hop_inter_region_cost: str,
                  next_hop_ip: str,
+                 next_hop_med: str,
                  next_hop_network: str,
+                 next_hop_origin: str,
                  next_hop_vpn_tunnel: str,
                  priority: int,
                  project: str,
@@ -36110,8 +36285,11 @@ class RouterStatusBestRouteResult(dict):
                * 'zones/zone/instances/instance'
                * Just the instance name, with the zone in 'next_hop_instance_zone'.
         :param str next_hop_instance_zone: The zone of the instance specified in next_hop_instance. Omit if next_hop_instance is specified as a URL.
+        :param str next_hop_inter_region_cost: Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.
         :param str next_hop_ip: Network IP address of an instance that should handle matching packets.
+        :param str next_hop_med: Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
         :param str next_hop_network: URL to a Network that should handle matching packets.
+        :param str next_hop_origin: Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
         :param str next_hop_vpn_tunnel: URL to a VpnTunnel that should handle matching packets.
         :param int priority: The priority of this route. Priority is used to break ties in cases
                where there is more than one matching route of equal prefix length.
@@ -36132,8 +36310,11 @@ class RouterStatusBestRouteResult(dict):
         pulumi.set(__self__, "next_hop_ilb", next_hop_ilb)
         pulumi.set(__self__, "next_hop_instance", next_hop_instance)
         pulumi.set(__self__, "next_hop_instance_zone", next_hop_instance_zone)
+        pulumi.set(__self__, "next_hop_inter_region_cost", next_hop_inter_region_cost)
         pulumi.set(__self__, "next_hop_ip", next_hop_ip)
+        pulumi.set(__self__, "next_hop_med", next_hop_med)
         pulumi.set(__self__, "next_hop_network", next_hop_network)
+        pulumi.set(__self__, "next_hop_origin", next_hop_origin)
         pulumi.set(__self__, "next_hop_vpn_tunnel", next_hop_vpn_tunnel)
         pulumi.set(__self__, "priority", priority)
         pulumi.set(__self__, "project", project)
@@ -36234,6 +36415,14 @@ class RouterStatusBestRouteResult(dict):
         return pulumi.get(self, "next_hop_instance_zone")
 
     @property
+    @pulumi.getter(name="nextHopInterRegionCost")
+    def next_hop_inter_region_cost(self) -> str:
+        """
+        Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.
+        """
+        return pulumi.get(self, "next_hop_inter_region_cost")
+
+    @property
     @pulumi.getter(name="nextHopIp")
     def next_hop_ip(self) -> str:
         """
@@ -36242,12 +36431,28 @@ class RouterStatusBestRouteResult(dict):
         return pulumi.get(self, "next_hop_ip")
 
     @property
+    @pulumi.getter(name="nextHopMed")
+    def next_hop_med(self) -> str:
+        """
+        Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
+        """
+        return pulumi.get(self, "next_hop_med")
+
+    @property
     @pulumi.getter(name="nextHopNetwork")
     def next_hop_network(self) -> str:
         """
         URL to a Network that should handle matching packets.
         """
         return pulumi.get(self, "next_hop_network")
+
+    @property
+    @pulumi.getter(name="nextHopOrigin")
+    def next_hop_origin(self) -> str:
+        """
+        Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
+        """
+        return pulumi.get(self, "next_hop_origin")
 
     @property
     @pulumi.getter(name="nextHopVpnTunnel")
@@ -36305,8 +36510,11 @@ class RouterStatusBestRoutesForRouterResult(dict):
                  next_hop_ilb: str,
                  next_hop_instance: str,
                  next_hop_instance_zone: str,
+                 next_hop_inter_region_cost: str,
                  next_hop_ip: str,
+                 next_hop_med: str,
                  next_hop_network: str,
+                 next_hop_origin: str,
                  next_hop_vpn_tunnel: str,
                  priority: int,
                  project: str,
@@ -36350,8 +36558,11 @@ class RouterStatusBestRoutesForRouterResult(dict):
                * 'zones/zone/instances/instance'
                * Just the instance name, with the zone in 'next_hop_instance_zone'.
         :param str next_hop_instance_zone: The zone of the instance specified in next_hop_instance. Omit if next_hop_instance is specified as a URL.
+        :param str next_hop_inter_region_cost: Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.
         :param str next_hop_ip: Network IP address of an instance that should handle matching packets.
+        :param str next_hop_med: Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
         :param str next_hop_network: URL to a Network that should handle matching packets.
+        :param str next_hop_origin: Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
         :param str next_hop_vpn_tunnel: URL to a VpnTunnel that should handle matching packets.
         :param int priority: The priority of this route. Priority is used to break ties in cases
                where there is more than one matching route of equal prefix length.
@@ -36372,8 +36583,11 @@ class RouterStatusBestRoutesForRouterResult(dict):
         pulumi.set(__self__, "next_hop_ilb", next_hop_ilb)
         pulumi.set(__self__, "next_hop_instance", next_hop_instance)
         pulumi.set(__self__, "next_hop_instance_zone", next_hop_instance_zone)
+        pulumi.set(__self__, "next_hop_inter_region_cost", next_hop_inter_region_cost)
         pulumi.set(__self__, "next_hop_ip", next_hop_ip)
+        pulumi.set(__self__, "next_hop_med", next_hop_med)
         pulumi.set(__self__, "next_hop_network", next_hop_network)
+        pulumi.set(__self__, "next_hop_origin", next_hop_origin)
         pulumi.set(__self__, "next_hop_vpn_tunnel", next_hop_vpn_tunnel)
         pulumi.set(__self__, "priority", priority)
         pulumi.set(__self__, "project", project)
@@ -36474,6 +36688,14 @@ class RouterStatusBestRoutesForRouterResult(dict):
         return pulumi.get(self, "next_hop_instance_zone")
 
     @property
+    @pulumi.getter(name="nextHopInterRegionCost")
+    def next_hop_inter_region_cost(self) -> str:
+        """
+        Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.
+        """
+        return pulumi.get(self, "next_hop_inter_region_cost")
+
+    @property
     @pulumi.getter(name="nextHopIp")
     def next_hop_ip(self) -> str:
         """
@@ -36482,12 +36704,28 @@ class RouterStatusBestRoutesForRouterResult(dict):
         return pulumi.get(self, "next_hop_ip")
 
     @property
+    @pulumi.getter(name="nextHopMed")
+    def next_hop_med(self) -> str:
+        """
+        Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
+        """
+        return pulumi.get(self, "next_hop_med")
+
+    @property
     @pulumi.getter(name="nextHopNetwork")
     def next_hop_network(self) -> str:
         """
         URL to a Network that should handle matching packets.
         """
         return pulumi.get(self, "next_hop_network")
+
+    @property
+    @pulumi.getter(name="nextHopOrigin")
+    def next_hop_origin(self) -> str:
+        """
+        Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
+        """
+        return pulumi.get(self, "next_hop_origin")
 
     @property
     @pulumi.getter(name="nextHopVpnTunnel")
@@ -47665,6 +47903,87 @@ class GetBackendServiceSecuritySettingAwsV4AuthenticationResult(dict):
 
 
 @pulumi.output_type
+class GetBackendServiceStrongSessionAffinityCookyResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 path: str,
+                 ttls: Sequence['outputs.GetBackendServiceStrongSessionAffinityCookyTtlResult']):
+        """
+        :param str name: The name of the Backend Service.
+               
+               - - -
+        :param str path: Path to set for the cookie.
+        :param Sequence['GetBackendServiceStrongSessionAffinityCookyTtlArgs'] ttls: Lifetime of the cookie.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "ttls", ttls)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the Backend Service.
+
+        - - -
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        """
+        Path to set for the cookie.
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def ttls(self) -> Sequence['outputs.GetBackendServiceStrongSessionAffinityCookyTtlResult']:
+        """
+        Lifetime of the cookie.
+        """
+        return pulumi.get(self, "ttls")
+
+
+@pulumi.output_type
+class GetBackendServiceStrongSessionAffinityCookyTtlResult(dict):
+    def __init__(__self__, *,
+                 nanos: int,
+                 seconds: int):
+        """
+        :param int nanos: Span of time that's a fraction of a second at nanosecond
+               resolution. Durations less than one second are represented
+               with a 0 seconds field and a positive nanos field. Must
+               be from 0 to 999,999,999 inclusive.
+        :param int seconds: Span of time at a resolution of a second.
+               Must be from 0 to 315,576,000,000 inclusive.
+        """
+        pulumi.set(__self__, "nanos", nanos)
+        pulumi.set(__self__, "seconds", seconds)
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> int:
+        """
+        Span of time that's a fraction of a second at nanosecond
+        resolution. Durations less than one second are represented
+        with a 0 seconds field and a positive nanos field. Must
+        be from 0 to 999,999,999 inclusive.
+        """
+        return pulumi.get(self, "nanos")
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> int:
+        """
+        Span of time at a resolution of a second.
+        Must be from 0 to 315,576,000,000 inclusive.
+        """
+        return pulumi.get(self, "seconds")
+
+
+@pulumi.output_type
 class GetDiskAsyncPrimaryDiskResult(dict):
     def __init__(__self__, *,
                  disk: str):
@@ -50007,7 +50326,7 @@ class GetInstanceConfidentialInstanceConfigResult(dict):
         :param str confidential_instance_type: The confidential computing technology the instance uses.
                								SEV is an AMD feature. TDX is an Intel feature. One of the following
                								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =
-               								"AMD Milan" is currently required. TDX is only available in beta.
+               								"AMD Milan" is currently required.
         :param bool enable_confidential_compute: Defines whether the instance should have confidential compute enabled. Field will be deprecated in a future release
         """
         pulumi.set(__self__, "confidential_instance_type", confidential_instance_type)
@@ -50020,7 +50339,7 @@ class GetInstanceConfidentialInstanceConfigResult(dict):
         The confidential computing technology the instance uses.
         								SEV is an AMD feature. TDX is an Intel feature. One of the following
         								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =
-        								"AMD Milan" is currently required. TDX is only available in beta.
+        								"AMD Milan" is currently required.
         """
         return pulumi.get(self, "confidential_instance_type")
 
@@ -51518,7 +51837,7 @@ class GetInstanceTemplateConfidentialInstanceConfigResult(dict):
         :param str confidential_instance_type: The confidential computing technology the instance uses.
                								SEV is an AMD feature. TDX is an Intel feature. One of the following
                								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =
-               								"AMD Milan" is currently required. TDX is only available in beta.
+               								"AMD Milan" is currently required.
         :param bool enable_confidential_compute: Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
         """
         pulumi.set(__self__, "confidential_instance_type", confidential_instance_type)
@@ -51531,7 +51850,7 @@ class GetInstanceTemplateConfidentialInstanceConfigResult(dict):
         The confidential computing technology the instance uses.
         								SEV is an AMD feature. TDX is an Intel feature. One of the following
         								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =
-        								"AMD Milan" is currently required. TDX is only available in beta.
+        								"AMD Milan" is currently required.
         """
         return pulumi.get(self, "confidential_instance_type")
 
@@ -56282,8 +56601,11 @@ class GetRouterStatusBestRouteResult(dict):
                  next_hop_ilb: str,
                  next_hop_instance: str,
                  next_hop_instance_zone: str,
+                 next_hop_inter_region_cost: str,
                  next_hop_ip: str,
+                 next_hop_med: str,
                  next_hop_network: str,
+                 next_hop_origin: str,
                  next_hop_vpn_tunnel: str,
                  priority: int,
                  project: str,
@@ -56327,8 +56649,11 @@ class GetRouterStatusBestRouteResult(dict):
                * 'zones/zone/instances/instance'
                * Just the instance name, with the zone in 'next_hop_instance_zone'.
         :param str next_hop_instance_zone: The zone of the instance specified in next_hop_instance. Omit if next_hop_instance is specified as a URL.
+        :param str next_hop_inter_region_cost: Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.
         :param str next_hop_ip: Network IP address of an instance that should handle matching packets.
+        :param str next_hop_med: Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
         :param str next_hop_network: URL to a Network that should handle matching packets.
+        :param str next_hop_origin: Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
         :param str next_hop_vpn_tunnel: URL to a VpnTunnel that should handle matching packets.
         :param int priority: The priority of this route. Priority is used to break ties in cases
                where there is more than one matching route of equal prefix length.
@@ -56349,8 +56674,11 @@ class GetRouterStatusBestRouteResult(dict):
         pulumi.set(__self__, "next_hop_ilb", next_hop_ilb)
         pulumi.set(__self__, "next_hop_instance", next_hop_instance)
         pulumi.set(__self__, "next_hop_instance_zone", next_hop_instance_zone)
+        pulumi.set(__self__, "next_hop_inter_region_cost", next_hop_inter_region_cost)
         pulumi.set(__self__, "next_hop_ip", next_hop_ip)
+        pulumi.set(__self__, "next_hop_med", next_hop_med)
         pulumi.set(__self__, "next_hop_network", next_hop_network)
+        pulumi.set(__self__, "next_hop_origin", next_hop_origin)
         pulumi.set(__self__, "next_hop_vpn_tunnel", next_hop_vpn_tunnel)
         pulumi.set(__self__, "priority", priority)
         pulumi.set(__self__, "project", project)
@@ -56451,6 +56779,14 @@ class GetRouterStatusBestRouteResult(dict):
         return pulumi.get(self, "next_hop_instance_zone")
 
     @property
+    @pulumi.getter(name="nextHopInterRegionCost")
+    def next_hop_inter_region_cost(self) -> str:
+        """
+        Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.
+        """
+        return pulumi.get(self, "next_hop_inter_region_cost")
+
+    @property
     @pulumi.getter(name="nextHopIp")
     def next_hop_ip(self) -> str:
         """
@@ -56459,12 +56795,28 @@ class GetRouterStatusBestRouteResult(dict):
         return pulumi.get(self, "next_hop_ip")
 
     @property
+    @pulumi.getter(name="nextHopMed")
+    def next_hop_med(self) -> str:
+        """
+        Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
+        """
+        return pulumi.get(self, "next_hop_med")
+
+    @property
     @pulumi.getter(name="nextHopNetwork")
     def next_hop_network(self) -> str:
         """
         URL to a Network that should handle matching packets.
         """
         return pulumi.get(self, "next_hop_network")
+
+    @property
+    @pulumi.getter(name="nextHopOrigin")
+    def next_hop_origin(self) -> str:
+        """
+        Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
+        """
+        return pulumi.get(self, "next_hop_origin")
 
     @property
     @pulumi.getter(name="nextHopVpnTunnel")
@@ -56522,8 +56874,11 @@ class GetRouterStatusBestRoutesForRouterResult(dict):
                  next_hop_ilb: str,
                  next_hop_instance: str,
                  next_hop_instance_zone: str,
+                 next_hop_inter_region_cost: str,
                  next_hop_ip: str,
+                 next_hop_med: str,
                  next_hop_network: str,
+                 next_hop_origin: str,
                  next_hop_vpn_tunnel: str,
                  priority: int,
                  project: str,
@@ -56567,8 +56922,11 @@ class GetRouterStatusBestRoutesForRouterResult(dict):
                * 'zones/zone/instances/instance'
                * Just the instance name, with the zone in 'next_hop_instance_zone'.
         :param str next_hop_instance_zone: The zone of the instance specified in next_hop_instance. Omit if next_hop_instance is specified as a URL.
+        :param str next_hop_inter_region_cost: Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.
         :param str next_hop_ip: Network IP address of an instance that should handle matching packets.
+        :param str next_hop_med: Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
         :param str next_hop_network: URL to a Network that should handle matching packets.
+        :param str next_hop_origin: Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
         :param str next_hop_vpn_tunnel: URL to a VpnTunnel that should handle matching packets.
         :param int priority: The priority of this route. Priority is used to break ties in cases
                where there is more than one matching route of equal prefix length.
@@ -56589,8 +56947,11 @@ class GetRouterStatusBestRoutesForRouterResult(dict):
         pulumi.set(__self__, "next_hop_ilb", next_hop_ilb)
         pulumi.set(__self__, "next_hop_instance", next_hop_instance)
         pulumi.set(__self__, "next_hop_instance_zone", next_hop_instance_zone)
+        pulumi.set(__self__, "next_hop_inter_region_cost", next_hop_inter_region_cost)
         pulumi.set(__self__, "next_hop_ip", next_hop_ip)
+        pulumi.set(__self__, "next_hop_med", next_hop_med)
         pulumi.set(__self__, "next_hop_network", next_hop_network)
+        pulumi.set(__self__, "next_hop_origin", next_hop_origin)
         pulumi.set(__self__, "next_hop_vpn_tunnel", next_hop_vpn_tunnel)
         pulumi.set(__self__, "priority", priority)
         pulumi.set(__self__, "project", project)
@@ -56691,6 +57052,14 @@ class GetRouterStatusBestRoutesForRouterResult(dict):
         return pulumi.get(self, "next_hop_instance_zone")
 
     @property
+    @pulumi.getter(name="nextHopInterRegionCost")
+    def next_hop_inter_region_cost(self) -> str:
+        """
+        Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.
+        """
+        return pulumi.get(self, "next_hop_inter_region_cost")
+
+    @property
     @pulumi.getter(name="nextHopIp")
     def next_hop_ip(self) -> str:
         """
@@ -56699,12 +57068,28 @@ class GetRouterStatusBestRoutesForRouterResult(dict):
         return pulumi.get(self, "next_hop_ip")
 
     @property
+    @pulumi.getter(name="nextHopMed")
+    def next_hop_med(self) -> str:
+        """
+        Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
+        """
+        return pulumi.get(self, "next_hop_med")
+
+    @property
     @pulumi.getter(name="nextHopNetwork")
     def next_hop_network(self) -> str:
         """
         URL to a Network that should handle matching packets.
         """
         return pulumi.get(self, "next_hop_network")
+
+    @property
+    @pulumi.getter(name="nextHopOrigin")
+    def next_hop_origin(self) -> str:
+        """
+        Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
+        """
+        return pulumi.get(self, "next_hop_origin")
 
     @property
     @pulumi.getter(name="nextHopVpnTunnel")

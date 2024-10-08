@@ -47,14 +47,14 @@ public final class LogScopeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The location of the resource. The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.
+     * The location of the resource. The only supported location is global so far.
      * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
-     * @return The location of the resource. The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.
+     * @return The location of the resource. The only supported location is global so far.
      * 
      */
     public Optional<Output<String>> location() {
@@ -198,7 +198,7 @@ public final class LogScopeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location The location of the resource. The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.
+         * @param location The location of the resource. The only supported location is global so far.
          * 
          * @return builder
          * 
@@ -209,7 +209,7 @@ public final class LogScopeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location The location of the resource. The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.
+         * @param location The location of the resource. The only supported location is global so far.
          * 
          * @return builder
          * 

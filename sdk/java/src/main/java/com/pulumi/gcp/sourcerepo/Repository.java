@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.sourcerepo.RepositoryArgs;
 import com.pulumi.gcp.sourcerepo.inputs.RepositoryState;
 import com.pulumi.gcp.sourcerepo.outputs.RepositoryPubsubConfig;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -137,6 +138,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:sourcerepo/repository:Repository")
 public class Repository extends com.pulumi.resources.CustomResource {
+    /**
+     * If set to true, skip repository creation if a repository with the same name already exists.
+     * 
+     */
+    @Export(name="createIgnoreAlreadyExists", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> createIgnoreAlreadyExists;
+
+    /**
+     * @return If set to true, skip repository creation if a repository with the same name already exists.
+     * 
+     */
+    public Output<Optional<Boolean>> createIgnoreAlreadyExists() {
+        return Codegen.optional(this.createIgnoreAlreadyExists);
+    }
     /**
      * Resource name of the repository, of the form `{{repo}}`.
      * The repo name may contain slashes. eg, `name/with/slash`

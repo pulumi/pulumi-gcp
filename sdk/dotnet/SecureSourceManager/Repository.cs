@@ -13,7 +13,6 @@ namespace Pulumi.Gcp.SecureSourceManager
     /// Repositories store source code. It supports all Git SCM client commands and has built-in pull requests and issue tracking. Both HTTPS and SSH authentication are supported.
     /// 
     /// To get more information about Repository, see:
-    /// 
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/secure-source-manager/docs/overview)
     /// 

@@ -20,7 +20,7 @@ public final class InstanceFromTemplateConfidentialInstanceConfigArgs extends co
      * The confidential computing technology the instance uses.
      * 								SEV is an AMD feature. TDX is an Intel feature. One of the following
      * 								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =
-     * 								&#34;AMD Milan&#34; is currently required. TDX is only available in beta.
+     * 								&#34;AMD Milan&#34; is currently required.
      * 
      */
     @Import(name="confidentialInstanceType")
@@ -30,7 +30,7 @@ public final class InstanceFromTemplateConfidentialInstanceConfigArgs extends co
      * @return The confidential computing technology the instance uses.
      * 								SEV is an AMD feature. TDX is an Intel feature. One of the following
      * 								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =
-     * 								&#34;AMD Milan&#34; is currently required. TDX is only available in beta.
+     * 								&#34;AMD Milan&#34; is currently required.
      * 
      */
     public Optional<Output<String>> confidentialInstanceType() {
@@ -81,7 +81,7 @@ public final class InstanceFromTemplateConfidentialInstanceConfigArgs extends co
          * @param confidentialInstanceType The confidential computing technology the instance uses.
          * 								SEV is an AMD feature. TDX is an Intel feature. One of the following
          * 								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =
-         * 								&#34;AMD Milan&#34; is currently required. TDX is only available in beta.
+         * 								&#34;AMD Milan&#34; is currently required.
          * 
          * @return builder
          * 
@@ -95,7 +95,7 @@ public final class InstanceFromTemplateConfidentialInstanceConfigArgs extends co
          * @param confidentialInstanceType The confidential computing technology the instance uses.
          * 								SEV is an AMD feature. TDX is an Intel feature. One of the following
          * 								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =
-         * 								&#34;AMD Milan&#34; is currently required. TDX is only available in beta.
+         * 								&#34;AMD Milan&#34; is currently required.
          * 
          * @return builder
          * 

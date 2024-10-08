@@ -265,6 +265,57 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Pubsub Topic Ingestion Cloud Storage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.pubsub.TopicArgs;
+ * import com.pulumi.gcp.pubsub.inputs.TopicIngestionDataSourceSettingsArgs;
+ * import com.pulumi.gcp.pubsub.inputs.TopicIngestionDataSourceSettingsCloudStorageArgs;
+ * import com.pulumi.gcp.pubsub.inputs.TopicIngestionDataSourceSettingsCloudStorageTextFormatArgs;
+ * import com.pulumi.gcp.pubsub.inputs.TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Topic("example", TopicArgs.builder()
+ *             .name("example-topic")
+ *             .ingestionDataSourceSettings(TopicIngestionDataSourceSettingsArgs.builder()
+ *                 .cloudStorage(TopicIngestionDataSourceSettingsCloudStorageArgs.builder()
+ *                     .bucket("test-bucket")
+ *                     .textFormat(TopicIngestionDataSourceSettingsCloudStorageTextFormatArgs.builder()
+ *                         .delimiter(" ")
+ *                         .build())
+ *                     .minimumObjectCreateTime("2024-01-01T00:00:00Z")
+ *                     .matchGlob("foo/**")
+ *                     .build())
+ *                 .platformLogsSettings(TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs.builder()
+ *                     .severity("WARNING")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

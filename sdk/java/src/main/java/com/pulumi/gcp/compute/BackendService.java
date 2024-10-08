@@ -19,6 +19,7 @@ import com.pulumi.gcp.compute.outputs.BackendServiceLocalityLbPolicy;
 import com.pulumi.gcp.compute.outputs.BackendServiceLogConfig;
 import com.pulumi.gcp.compute.outputs.BackendServiceOutlierDetection;
 import com.pulumi.gcp.compute.outputs.BackendServiceSecuritySettings;
+import com.pulumi.gcp.compute.outputs.BackendServiceStrongSessionAffinityCookie;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -507,6 +508,63 @@ import javax.annotation.Nullable;
  *                 .successRateMinimumHosts(5)
  *                 .successRateRequestVolume(100)
  *                 .successRateStdevFactor(1900)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Backend Service Stateful Session Affinity
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckHttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.compute.inputs.BackendServiceStrongSessionAffinityCookieArgs;
+ * import com.pulumi.gcp.compute.inputs.BackendServiceStrongSessionAffinityCookieTtlArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var healthCheck = new HealthCheck("healthCheck", HealthCheckArgs.builder()
+ *             .name("health-check")
+ *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
+ *             .build());
+ * 
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()
+ *             .name("backend-service")
+ *             .healthChecks(healthCheck.id())
+ *             .loadBalancingScheme("EXTERNAL_MANAGED")
+ *             .localityLbPolicy("RING_HASH")
+ *             .sessionAffinity("STRONG_COOKIE_AFFINITY")
+ *             .strongSessionAffinityCookie(BackendServiceStrongSessionAffinityCookieArgs.builder()
+ *                 .ttl(BackendServiceStrongSessionAffinityCookieTtlArgs.builder()
+ *                     .seconds(11)
+ *                     .nanos(1111)
+ *                     .build())
+ *                 .name("mycookie")
  *                 .build())
  *             .build());
  * 
@@ -1289,7 +1347,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
     /**
      * Type of session affinity to use. The default is NONE. Session affinity is
      * not applicable if the protocol is UDP.
-     * Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
+     * Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `STRONG_COOKIE_AFFINITY`.
      * 
      */
     @Export(name="sessionAffinity", refs={String.class}, tree="[0]")
@@ -1298,11 +1356,27 @@ public class BackendService extends com.pulumi.resources.CustomResource {
     /**
      * @return Type of session affinity to use. The default is NONE. Session affinity is
      * not applicable if the protocol is UDP.
-     * Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
+     * Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `STRONG_COOKIE_AFFINITY`.
      * 
      */
     public Output<String> sessionAffinity() {
         return this.sessionAffinity;
+    }
+    /**
+     * Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="strongSessionAffinityCookie", refs={BackendServiceStrongSessionAffinityCookie.class}, tree="[0]")
+    private Output</* @Nullable */ BackendServiceStrongSessionAffinityCookie> strongSessionAffinityCookie;
+
+    /**
+     * @return Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<BackendServiceStrongSessionAffinityCookie>> strongSessionAffinityCookie() {
+        return Codegen.optional(this.strongSessionAffinityCookie);
     }
     /**
      * The backend service timeout has a different meaning depending on the type of load balancer.

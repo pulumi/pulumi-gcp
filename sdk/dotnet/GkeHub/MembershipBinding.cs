@@ -42,7 +42,7 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     ///     var membership = new Gcp.GkeHub.Membership("membership", new()
     ///     {
-    ///         MembershipId = "tf-test-membership_39249",
+    ///         MembershipId = "tf-test-membership_9106",
     ///         Endpoint = new Gcp.GkeHub.Inputs.MembershipEndpointArgs
     ///         {
     ///             GkeCluster = new Gcp.GkeHub.Inputs.MembershipEndpointGkeClusterArgs
@@ -60,12 +60,12 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     ///     var scope = new Gcp.GkeHub.Scope("scope", new()
     ///     {
-    ///         ScopeId = "tf-test-scope_74391",
+    ///         ScopeId = "tf-test-scope_27169",
     ///     });
     /// 
     ///     var membershipBinding = new Gcp.GkeHub.MembershipBinding("membership_binding", new()
     ///     {
-    ///         MembershipBindingId = "tf-test-membership-binding_16511",
+    ///         MembershipBindingId = "tf-test-membership-binding_75223",
     ///         Scope = scope.Name,
     ///         MembershipId = membership.MembershipId,
     ///         Location = "global",

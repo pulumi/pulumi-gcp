@@ -82,15 +82,30 @@ public final class RouterStatusBestRoutesForRouter {
      */
     private String nextHopInstanceZone;
     /**
+     * @return Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.
+     * 
+     */
+    private String nextHopInterRegionCost;
+    /**
      * @return Network IP address of an instance that should handle matching packets.
      * 
      */
     private String nextHopIp;
     /**
+     * @return Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
+     * 
+     */
+    private String nextHopMed;
+    /**
      * @return URL to a Network that should handle matching packets.
      * 
      */
     private String nextHopNetwork;
+    /**
+     * @return Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
+     * 
+     */
+    private String nextHopOrigin;
     /**
      * @return URL to a VpnTunnel that should handle matching packets.
      * 
@@ -207,6 +222,13 @@ public final class RouterStatusBestRoutesForRouter {
         return this.nextHopInstanceZone;
     }
     /**
+     * @return Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.
+     * 
+     */
+    public String nextHopInterRegionCost() {
+        return this.nextHopInterRegionCost;
+    }
+    /**
      * @return Network IP address of an instance that should handle matching packets.
      * 
      */
@@ -214,11 +236,25 @@ public final class RouterStatusBestRoutesForRouter {
         return this.nextHopIp;
     }
     /**
+     * @return Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
+     * 
+     */
+    public String nextHopMed() {
+        return this.nextHopMed;
+    }
+    /**
      * @return URL to a Network that should handle matching packets.
      * 
      */
     public String nextHopNetwork() {
         return this.nextHopNetwork;
+    }
+    /**
+     * @return Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
+     * 
+     */
+    public String nextHopOrigin() {
+        return this.nextHopOrigin;
     }
     /**
      * @return URL to a VpnTunnel that should handle matching packets.
@@ -276,8 +312,11 @@ public final class RouterStatusBestRoutesForRouter {
         private String nextHopIlb;
         private String nextHopInstance;
         private String nextHopInstanceZone;
+        private String nextHopInterRegionCost;
         private String nextHopIp;
+        private String nextHopMed;
         private String nextHopNetwork;
+        private String nextHopOrigin;
         private String nextHopVpnTunnel;
         private Integer priority;
         private String project;
@@ -294,8 +333,11 @@ public final class RouterStatusBestRoutesForRouter {
     	      this.nextHopIlb = defaults.nextHopIlb;
     	      this.nextHopInstance = defaults.nextHopInstance;
     	      this.nextHopInstanceZone = defaults.nextHopInstanceZone;
+    	      this.nextHopInterRegionCost = defaults.nextHopInterRegionCost;
     	      this.nextHopIp = defaults.nextHopIp;
+    	      this.nextHopMed = defaults.nextHopMed;
     	      this.nextHopNetwork = defaults.nextHopNetwork;
+    	      this.nextHopOrigin = defaults.nextHopOrigin;
     	      this.nextHopVpnTunnel = defaults.nextHopVpnTunnel;
     	      this.priority = defaults.priority;
     	      this.project = defaults.project;
@@ -368,6 +410,14 @@ public final class RouterStatusBestRoutesForRouter {
             return this;
         }
         @CustomType.Setter
+        public Builder nextHopInterRegionCost(String nextHopInterRegionCost) {
+            if (nextHopInterRegionCost == null) {
+              throw new MissingRequiredPropertyException("RouterStatusBestRoutesForRouter", "nextHopInterRegionCost");
+            }
+            this.nextHopInterRegionCost = nextHopInterRegionCost;
+            return this;
+        }
+        @CustomType.Setter
         public Builder nextHopIp(String nextHopIp) {
             if (nextHopIp == null) {
               throw new MissingRequiredPropertyException("RouterStatusBestRoutesForRouter", "nextHopIp");
@@ -376,11 +426,27 @@ public final class RouterStatusBestRoutesForRouter {
             return this;
         }
         @CustomType.Setter
+        public Builder nextHopMed(String nextHopMed) {
+            if (nextHopMed == null) {
+              throw new MissingRequiredPropertyException("RouterStatusBestRoutesForRouter", "nextHopMed");
+            }
+            this.nextHopMed = nextHopMed;
+            return this;
+        }
+        @CustomType.Setter
         public Builder nextHopNetwork(String nextHopNetwork) {
             if (nextHopNetwork == null) {
               throw new MissingRequiredPropertyException("RouterStatusBestRoutesForRouter", "nextHopNetwork");
             }
             this.nextHopNetwork = nextHopNetwork;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder nextHopOrigin(String nextHopOrigin) {
+            if (nextHopOrigin == null) {
+              throw new MissingRequiredPropertyException("RouterStatusBestRoutesForRouter", "nextHopOrigin");
+            }
+            this.nextHopOrigin = nextHopOrigin;
             return this;
         }
         @CustomType.Setter
@@ -436,8 +502,11 @@ public final class RouterStatusBestRoutesForRouter {
             _resultValue.nextHopIlb = nextHopIlb;
             _resultValue.nextHopInstance = nextHopInstance;
             _resultValue.nextHopInstanceZone = nextHopInstanceZone;
+            _resultValue.nextHopInterRegionCost = nextHopInterRegionCost;
             _resultValue.nextHopIp = nextHopIp;
+            _resultValue.nextHopMed = nextHopMed;
             _resultValue.nextHopNetwork = nextHopNetwork;
+            _resultValue.nextHopOrigin = nextHopOrigin;
             _resultValue.nextHopVpnTunnel = nextHopVpnTunnel;
             _resultValue.priority = priority;
             _resultValue.project = project;

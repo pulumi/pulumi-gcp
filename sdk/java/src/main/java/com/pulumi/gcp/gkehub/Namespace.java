@@ -56,11 +56,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var scope = new Scope("scope", ScopeArgs.builder()
- *             .scopeId("tf-test-scope_27169")
+ *             .scopeId("tf-test-scope_2605")
  *             .build());
  * 
  *         var namespace = new Namespace("namespace", NamespaceArgs.builder()
- *             .scopeNamespaceId("tf-test-namespace_75223")
+ *             .scopeNamespaceId("tf-test-namespace_34535")
  *             .scopeId(scope.scopeId())
  *             .scope(scope.name())
  *             .namespaceLabels(Map.ofEntries(

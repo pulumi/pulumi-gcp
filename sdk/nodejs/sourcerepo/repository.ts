@@ -93,6 +93,10 @@ export class Repository extends pulumi.CustomResource {
     }
 
     /**
+     * If set to true, skip repository creation if a repository with the same name already exists.
+     */
+    public readonly createIgnoreAlreadyExists!: pulumi.Output<boolean | undefined>;
+    /**
      * Resource name of the repository, of the form `{{repo}}`.
      * The repo name may contain slashes. eg, `name/with/slash`
      *
@@ -133,6 +137,7 @@ export class Repository extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RepositoryState | undefined;
+            resourceInputs["createIgnoreAlreadyExists"] = state ? state.createIgnoreAlreadyExists : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pubsubConfigs"] = state ? state.pubsubConfigs : undefined;
@@ -140,6 +145,7 @@ export class Repository extends pulumi.CustomResource {
             resourceInputs["url"] = state ? state.url : undefined;
         } else {
             const args = argsOrState as RepositoryArgs | undefined;
+            resourceInputs["createIgnoreAlreadyExists"] = args ? args.createIgnoreAlreadyExists : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["pubsubConfigs"] = args ? args.pubsubConfigs : undefined;
@@ -155,6 +161,10 @@ export class Repository extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Repository resources.
  */
 export interface RepositoryState {
+    /**
+     * If set to true, skip repository creation if a repository with the same name already exists.
+     */
+    createIgnoreAlreadyExists?: pulumi.Input<boolean>;
     /**
      * Resource name of the repository, of the form `{{repo}}`.
      * The repo name may contain slashes. eg, `name/with/slash`
@@ -188,6 +198,10 @@ export interface RepositoryState {
  * The set of arguments for constructing a Repository resource.
  */
 export interface RepositoryArgs {
+    /**
+     * If set to true, skip repository creation if a repository with the same name already exists.
+     */
+    createIgnoreAlreadyExists?: pulumi.Input<boolean>;
     /**
      * Resource name of the repository, of the form `{{repo}}`.
      * The repo name may contain slashes. eg, `name/with/slash`

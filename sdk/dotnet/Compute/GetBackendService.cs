@@ -193,6 +193,7 @@ namespace Pulumi.Gcp.Compute
         /// The Backend Service session stickiness configuration.
         /// </summary>
         public readonly string SessionAffinity;
+        public readonly ImmutableArray<Outputs.GetBackendServiceStrongSessionAffinityCookyResult> StrongSessionAffinityCookies;
         /// <summary>
         /// The number of seconds to wait for a backend to respond to a request before considering the request failed.
         /// </summary>
@@ -264,6 +265,8 @@ namespace Pulumi.Gcp.Compute
 
             string sessionAffinity,
 
+            ImmutableArray<Outputs.GetBackendServiceStrongSessionAffinityCookyResult> strongSessionAffinityCookies,
+
             int timeoutSec)
         {
             AffinityCookieTtlSec = affinityCookieTtlSec;
@@ -298,6 +301,7 @@ namespace Pulumi.Gcp.Compute
             SelfLink = selfLink;
             ServiceLbPolicy = serviceLbPolicy;
             SessionAffinity = sessionAffinity;
+            StrongSessionAffinityCookies = strongSessionAffinityCookies;
             TimeoutSec = timeoutSec;
         }
     }

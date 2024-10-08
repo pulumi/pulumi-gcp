@@ -304,7 +304,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var reserved = new Gcp.NetworkConnectivity.InternalRange("reserved", new()
     ///     {
-    ///         Name = "reserved",
+    ///         Name = "reserved-primary",
     ///         Network = @default.Id,
     ///         Usage = "FOR_VPC",
     ///         Peering = "FOR_SELF",

@@ -89,6 +89,10 @@ __all__ = [
     'BackendServiceSecuritySettingsArgsDict',
     'BackendServiceSecuritySettingsAwsV4AuthenticationArgs',
     'BackendServiceSecuritySettingsAwsV4AuthenticationArgsDict',
+    'BackendServiceStrongSessionAffinityCookieArgs',
+    'BackendServiceStrongSessionAffinityCookieArgsDict',
+    'BackendServiceStrongSessionAffinityCookieTtlArgs',
+    'BackendServiceStrongSessionAffinityCookieTtlArgsDict',
     'DiskAsyncPrimaryDiskArgs',
     'DiskAsyncPrimaryDiskArgsDict',
     'DiskAsyncReplicationSecondaryDiskArgs',
@@ -529,6 +533,10 @@ __all__ = [
     'RegionBackendServiceOutlierDetectionBaseEjectionTimeArgsDict',
     'RegionBackendServiceOutlierDetectionIntervalArgs',
     'RegionBackendServiceOutlierDetectionIntervalArgsDict',
+    'RegionBackendServiceStrongSessionAffinityCookieArgs',
+    'RegionBackendServiceStrongSessionAffinityCookieArgsDict',
+    'RegionBackendServiceStrongSessionAffinityCookieTtlArgs',
+    'RegionBackendServiceStrongSessionAffinityCookieTtlArgsDict',
     'RegionBackendServiceSubsettingArgs',
     'RegionBackendServiceSubsettingArgsDict',
     'RegionCommitmentLicenseResourceArgs',
@@ -5323,6 +5331,144 @@ class BackendServiceSecuritySettingsAwsV4AuthenticationArgs:
     @origin_region.setter
     def origin_region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "origin_region", value)
+
+
+if not MYPY:
+    class BackendServiceStrongSessionAffinityCookieArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the cookie.
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        Path to set for the cookie.
+        """
+        ttl: NotRequired[pulumi.Input['BackendServiceStrongSessionAffinityCookieTtlArgsDict']]
+        """
+        Lifetime of the cookie.
+        Structure is documented below.
+        """
+elif False:
+    BackendServiceStrongSessionAffinityCookieArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BackendServiceStrongSessionAffinityCookieArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 path: Optional[pulumi.Input[str]] = None,
+                 ttl: Optional[pulumi.Input['BackendServiceStrongSessionAffinityCookieTtlArgs']] = None):
+        """
+        :param pulumi.Input[str] name: Name of the cookie.
+        :param pulumi.Input[str] path: Path to set for the cookie.
+        :param pulumi.Input['BackendServiceStrongSessionAffinityCookieTtlArgs'] ttl: Lifetime of the cookie.
+               Structure is documented below.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if ttl is not None:
+            pulumi.set(__self__, "ttl", ttl)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the cookie.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path to set for the cookie.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> Optional[pulumi.Input['BackendServiceStrongSessionAffinityCookieTtlArgs']]:
+        """
+        Lifetime of the cookie.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ttl")
+
+    @ttl.setter
+    def ttl(self, value: Optional[pulumi.Input['BackendServiceStrongSessionAffinityCookieTtlArgs']]):
+        pulumi.set(self, "ttl", value)
+
+
+if not MYPY:
+    class BackendServiceStrongSessionAffinityCookieTtlArgsDict(TypedDict):
+        seconds: pulumi.Input[int]
+        """
+        Span of time at a resolution of a second.
+        Must be from 0 to 315,576,000,000 inclusive.
+        """
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond
+        resolution. Durations less than one second are represented
+        with a 0 seconds field and a positive nanos field. Must
+        be from 0 to 999,999,999 inclusive.
+        """
+elif False:
+    BackendServiceStrongSessionAffinityCookieTtlArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BackendServiceStrongSessionAffinityCookieTtlArgs:
+    def __init__(__self__, *,
+                 seconds: pulumi.Input[int],
+                 nanos: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] seconds: Span of time at a resolution of a second.
+               Must be from 0 to 315,576,000,000 inclusive.
+        :param pulumi.Input[int] nanos: Span of time that's a fraction of a second at nanosecond
+               resolution. Durations less than one second are represented
+               with a 0 seconds field and a positive nanos field. Must
+               be from 0 to 999,999,999 inclusive.
+        """
+        pulumi.set(__self__, "seconds", seconds)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> pulumi.Input[int]:
+        """
+        Span of time at a resolution of a second.
+        Must be from 0 to 315,576,000,000 inclusive.
+        """
+        return pulumi.get(self, "seconds")
+
+    @seconds.setter
+    def seconds(self, value: pulumi.Input[int]):
+        pulumi.set(self, "seconds", value)
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[pulumi.Input[int]]:
+        """
+        Span of time that's a fraction of a second at nanosecond
+        resolution. Durations less than one second are represented
+        with a 0 seconds field and a positive nanos field. Must
+        be from 0 to 999,999,999 inclusive.
+        """
+        return pulumi.get(self, "nanos")
+
+    @nanos.setter
+    def nanos(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "nanos", value)
 
 
 if not MYPY:
@@ -10509,7 +10655,7 @@ if not MYPY:
     class InstanceConfidentialInstanceConfigArgsDict(TypedDict):
         confidential_instance_type: NotRequired[pulumi.Input[str]]
         """
-        Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM. TDX is only available in beta.
+        Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM.
         """
         enable_confidential_compute: NotRequired[pulumi.Input[bool]]
         """
@@ -10524,7 +10670,7 @@ class InstanceConfidentialInstanceConfigArgs:
                  confidential_instance_type: Optional[pulumi.Input[str]] = None,
                  enable_confidential_compute: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] confidential_instance_type: Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM. TDX is only available in beta.
+        :param pulumi.Input[str] confidential_instance_type: Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM.
         :param pulumi.Input[bool] enable_confidential_compute: Defines whether the instance should have confidential compute enabled with AMD SEV. If enabled, `on_host_maintenance` can be set to MIGRATE if `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
         """
         if confidential_instance_type is not None:
@@ -10536,7 +10682,7 @@ class InstanceConfidentialInstanceConfigArgs:
     @pulumi.getter(name="confidentialInstanceType")
     def confidential_instance_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM. TDX is only available in beta.
+        Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM.
         """
         return pulumi.get(self, "confidential_instance_type")
 
@@ -11171,7 +11317,7 @@ if not MYPY:
         The confidential computing technology the instance uses.
         								SEV is an AMD feature. TDX is an Intel feature. One of the following
         								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =
-        								"AMD Milan" is currently required. TDX is only available in beta.
+        								"AMD Milan" is currently required.
         """
         enable_confidential_compute: NotRequired[pulumi.Input[bool]]
         """
@@ -11189,7 +11335,7 @@ class InstanceFromMachineImageConfidentialInstanceConfigArgs:
         :param pulumi.Input[str] confidential_instance_type: The confidential computing technology the instance uses.
                								SEV is an AMD feature. TDX is an Intel feature. One of the following
                								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =
-               								"AMD Milan" is currently required. TDX is only available in beta.
+               								"AMD Milan" is currently required.
         :param pulumi.Input[bool] enable_confidential_compute: Defines whether the instance should have confidential compute enabled. Field will be deprecated in a future release
         """
         if confidential_instance_type is not None:
@@ -11204,7 +11350,7 @@ class InstanceFromMachineImageConfidentialInstanceConfigArgs:
         The confidential computing technology the instance uses.
         								SEV is an AMD feature. TDX is an Intel feature. One of the following
         								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =
-        								"AMD Milan" is currently required. TDX is only available in beta.
+        								"AMD Milan" is currently required.
         """
         return pulumi.get(self, "confidential_instance_type")
 
@@ -13317,7 +13463,7 @@ if not MYPY:
         The confidential computing technology the instance uses.
         								SEV is an AMD feature. TDX is an Intel feature. One of the following
         								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =
-        								"AMD Milan" is currently required. TDX is only available in beta.
+        								"AMD Milan" is currently required.
         """
         enable_confidential_compute: NotRequired[pulumi.Input[bool]]
         """
@@ -13335,7 +13481,7 @@ class InstanceFromTemplateConfidentialInstanceConfigArgs:
         :param pulumi.Input[str] confidential_instance_type: The confidential computing technology the instance uses.
                								SEV is an AMD feature. TDX is an Intel feature. One of the following
                								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =
-               								"AMD Milan" is currently required. TDX is only available in beta.
+               								"AMD Milan" is currently required.
         :param pulumi.Input[bool] enable_confidential_compute: Defines whether the instance should have confidential compute enabled. Field will be deprecated in a future release
         """
         if confidential_instance_type is not None:
@@ -13350,7 +13496,7 @@ class InstanceFromTemplateConfidentialInstanceConfigArgs:
         The confidential computing technology the instance uses.
         								SEV is an AMD feature. TDX is an Intel feature. One of the following
         								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, min_cpu_platform =
-        								"AMD Milan" is currently required. TDX is only available in beta.
+        								"AMD Milan" is currently required.
         """
         return pulumi.get(self, "confidential_instance_type")
 
@@ -17884,7 +18030,7 @@ if not MYPY:
     class InstanceTemplateConfidentialInstanceConfigArgsDict(TypedDict):
         confidential_instance_type: NotRequired[pulumi.Input[str]]
         """
-        Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM. TDX is only available in beta.
+        Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM.
         """
         enable_confidential_compute: NotRequired[pulumi.Input[bool]]
         """
@@ -17899,7 +18045,7 @@ class InstanceTemplateConfidentialInstanceConfigArgs:
                  confidential_instance_type: Optional[pulumi.Input[str]] = None,
                  enable_confidential_compute: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] confidential_instance_type: Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM. TDX is only available in beta.
+        :param pulumi.Input[str] confidential_instance_type: Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM.
         :param pulumi.Input[bool] enable_confidential_compute: Defines whether the instance should have confidential compute enabled with AMD SEV. If enabled, `on_host_maintenance` can be set to MIGRATE if `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
         """
         if confidential_instance_type is not None:
@@ -17911,7 +18057,7 @@ class InstanceTemplateConfidentialInstanceConfigArgs:
     @pulumi.getter(name="confidentialInstanceType")
     def confidential_instance_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM. TDX is only available in beta.
+        Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM.
         """
         return pulumi.get(self, "confidential_instance_type")
 
@@ -28192,6 +28338,144 @@ class RegionBackendServiceOutlierDetectionIntervalArgs:
 
 
 if not MYPY:
+    class RegionBackendServiceStrongSessionAffinityCookieArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Name of the cookie.
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        Path to set for the cookie.
+        """
+        ttl: NotRequired[pulumi.Input['RegionBackendServiceStrongSessionAffinityCookieTtlArgsDict']]
+        """
+        Lifetime of the cookie.
+        Structure is documented below.
+        """
+elif False:
+    RegionBackendServiceStrongSessionAffinityCookieArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionBackendServiceStrongSessionAffinityCookieArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 path: Optional[pulumi.Input[str]] = None,
+                 ttl: Optional[pulumi.Input['RegionBackendServiceStrongSessionAffinityCookieTtlArgs']] = None):
+        """
+        :param pulumi.Input[str] name: Name of the cookie.
+        :param pulumi.Input[str] path: Path to set for the cookie.
+        :param pulumi.Input['RegionBackendServiceStrongSessionAffinityCookieTtlArgs'] ttl: Lifetime of the cookie.
+               Structure is documented below.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if ttl is not None:
+            pulumi.set(__self__, "ttl", ttl)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the cookie.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path to set for the cookie.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> Optional[pulumi.Input['RegionBackendServiceStrongSessionAffinityCookieTtlArgs']]:
+        """
+        Lifetime of the cookie.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ttl")
+
+    @ttl.setter
+    def ttl(self, value: Optional[pulumi.Input['RegionBackendServiceStrongSessionAffinityCookieTtlArgs']]):
+        pulumi.set(self, "ttl", value)
+
+
+if not MYPY:
+    class RegionBackendServiceStrongSessionAffinityCookieTtlArgsDict(TypedDict):
+        seconds: pulumi.Input[int]
+        """
+        Span of time at a resolution of a second.
+        Must be from 0 to 315,576,000,000 inclusive.
+        """
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond
+        resolution. Durations less than one second are represented
+        with a 0 seconds field and a positive nanos field. Must
+        be from 0 to 999,999,999 inclusive.
+        """
+elif False:
+    RegionBackendServiceStrongSessionAffinityCookieTtlArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionBackendServiceStrongSessionAffinityCookieTtlArgs:
+    def __init__(__self__, *,
+                 seconds: pulumi.Input[int],
+                 nanos: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] seconds: Span of time at a resolution of a second.
+               Must be from 0 to 315,576,000,000 inclusive.
+        :param pulumi.Input[int] nanos: Span of time that's a fraction of a second at nanosecond
+               resolution. Durations less than one second are represented
+               with a 0 seconds field and a positive nanos field. Must
+               be from 0 to 999,999,999 inclusive.
+        """
+        pulumi.set(__self__, "seconds", seconds)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> pulumi.Input[int]:
+        """
+        Span of time at a resolution of a second.
+        Must be from 0 to 315,576,000,000 inclusive.
+        """
+        return pulumi.get(self, "seconds")
+
+    @seconds.setter
+    def seconds(self, value: pulumi.Input[int]):
+        pulumi.set(self, "seconds", value)
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[pulumi.Input[int]]:
+        """
+        Span of time that's a fraction of a second at nanosecond
+        resolution. Durations less than one second are represented
+        with a 0 seconds field and a positive nanos field. Must
+        be from 0 to 999,999,999 inclusive.
+        """
+        return pulumi.get(self, "nanos")
+
+    @nanos.setter
+    def nanos(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "nanos", value)
+
+
+if not MYPY:
     class RegionBackendServiceSubsettingArgsDict(TypedDict):
         policy: pulumi.Input[str]
         """
@@ -31062,7 +31346,7 @@ if not MYPY:
     class RegionInstanceTemplateConfidentialInstanceConfigArgsDict(TypedDict):
         confidential_instance_type: NotRequired[pulumi.Input[str]]
         """
-        Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM. TDX is only available in beta.
+        Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM.
         """
         enable_confidential_compute: NotRequired[pulumi.Input[bool]]
         """
@@ -31077,7 +31361,7 @@ class RegionInstanceTemplateConfidentialInstanceConfigArgs:
                  confidential_instance_type: Optional[pulumi.Input[str]] = None,
                  enable_confidential_compute: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] confidential_instance_type: Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM. TDX is only available in beta.
+        :param pulumi.Input[str] confidential_instance_type: Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM.
         :param pulumi.Input[bool] enable_confidential_compute: Defines whether the instance should have confidential compute enabled with AMD SEV. If enabled, `on_host_maintenance` can be set to MIGRATE if `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
         """
         if confidential_instance_type is not None:
@@ -31089,7 +31373,7 @@ class RegionInstanceTemplateConfidentialInstanceConfigArgs:
     @pulumi.getter(name="confidentialInstanceType")
     def confidential_instance_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM. TDX is only available in beta.
+        Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `on_host_maintenance` can be set to MIGRATE if `confidential_instance_type` is set to `SEV` and `min_cpu_platform` is set to `"AMD Milan"`. Otherwise, `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `min_cpu_platform` has to be set to `"AMD Milan"` or this will fail to create the VM.
         """
         return pulumi.get(self, "confidential_instance_type")
 

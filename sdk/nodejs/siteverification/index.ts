@@ -10,6 +10,11 @@ export const getToken: typeof import("./getToken").getToken = null as any;
 export const getTokenOutput: typeof import("./getToken").getTokenOutput = null as any;
 utilities.lazyLoad(exports, ["getToken","getTokenOutput"], () => require("./getToken"));
 
+export { OwnerArgs, OwnerState } from "./owner";
+export type Owner = import("./owner").Owner;
+export const Owner: typeof import("./owner").Owner = null as any;
+utilities.lazyLoad(exports, ["Owner"], () => require("./owner"));
+
 export { WebResourceArgs, WebResourceState } from "./webResource";
 export type WebResource = import("./webResource").WebResource;
 export const WebResource: typeof import("./webResource").WebResource = null as any;
@@ -20,6 +25,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:siteverification/owner:Owner":
+                return new Owner(name, <any>undefined, { urn })
             case "gcp:siteverification/webResource:WebResource":
                 return new WebResource(name, <any>undefined, { urn })
             default:
@@ -27,4 +34,5 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "siteverification/owner", _module)
 pulumi.runtime.registerResourceModule("gcp", "siteverification/webResource", _module)

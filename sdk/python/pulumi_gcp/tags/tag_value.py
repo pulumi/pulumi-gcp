@@ -26,7 +26,7 @@ class TagValueArgs:
         The set of arguments for constructing a TagValue resource.
         :param pulumi.Input[str] parent: Input only. The resource name of the new TagValue's parent. Must be of the form tagKeys/{tag_key_id}.
         :param pulumi.Input[str] short_name: Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
-               The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes ('), double quotes ("), backslashes (\\\\), and forward slashes (/).
                
                
                - - -
@@ -54,7 +54,7 @@ class TagValueArgs:
     def short_name(self) -> pulumi.Input[str]:
         """
         Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
-        The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+        The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes ('), double quotes ("), backslashes (\\\\), and forward slashes (/).
 
 
         - - -
@@ -97,7 +97,7 @@ class _TagValueState:
         :param pulumi.Input[str] namespaced_name: Output only. Namespaced name of the TagValue. Will be in the format {parentNamespace}/{tagKeyShortName}/{shortName}.
         :param pulumi.Input[str] parent: Input only. The resource name of the new TagValue's parent. Must be of the form tagKeys/{tag_key_id}.
         :param pulumi.Input[str] short_name: Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
-               The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes ('), double quotes ("), backslashes (\\\\), and forward slashes (/).
                
                
                - - -
@@ -185,7 +185,7 @@ class _TagValueState:
     def short_name(self) -> Optional[pulumi.Input[str]]:
         """
         Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
-        The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+        The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes ('), double quotes ("), backslashes (\\\\), and forward slashes (/).
 
 
         - - -
@@ -269,7 +269,7 @@ class TagValue(pulumi.CustomResource):
         :param pulumi.Input[str] description: User-assigned description of the TagValue. Must not exceed 256 characters.
         :param pulumi.Input[str] parent: Input only. The resource name of the new TagValue's parent. Must be of the form tagKeys/{tag_key_id}.
         :param pulumi.Input[str] short_name: Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
-               The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes ('), double quotes ("), backslashes (\\\\), and forward slashes (/).
                
                
                - - -
@@ -394,7 +394,7 @@ class TagValue(pulumi.CustomResource):
         :param pulumi.Input[str] namespaced_name: Output only. Namespaced name of the TagValue. Will be in the format {parentNamespace}/{tagKeyShortName}/{shortName}.
         :param pulumi.Input[str] parent: Input only. The resource name of the new TagValue's parent. Must be of the form tagKeys/{tag_key_id}.
         :param pulumi.Input[str] short_name: Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
-               The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes ('), double quotes ("), backslashes (\\\\), and forward slashes (/).
                
                
                - - -
@@ -460,7 +460,7 @@ class TagValue(pulumi.CustomResource):
     def short_name(self) -> pulumi.Output[str]:
         """
         Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
-        The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+        The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes ('), double quotes ("), backslashes (\\\\), and forward slashes (/).
 
 
         - - -

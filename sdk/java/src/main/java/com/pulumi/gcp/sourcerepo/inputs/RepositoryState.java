@@ -6,6 +6,7 @@ package com.pulumi.gcp.sourcerepo.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.sourcerepo.inputs.RepositoryPubsubConfigArgs;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -17,6 +18,21 @@ import javax.annotation.Nullable;
 public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
 
     public static final RepositoryState Empty = new RepositoryState();
+
+    /**
+     * If set to true, skip repository creation if a repository with the same name already exists.
+     * 
+     */
+    @Import(name="createIgnoreAlreadyExists")
+    private @Nullable Output<Boolean> createIgnoreAlreadyExists;
+
+    /**
+     * @return If set to true, skip repository creation if a repository with the same name already exists.
+     * 
+     */
+    public Optional<Output<Boolean>> createIgnoreAlreadyExists() {
+        return Optional.ofNullable(this.createIgnoreAlreadyExists);
+    }
 
     /**
      * Resource name of the repository, of the form `{{repo}}`.
@@ -108,6 +124,7 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
     private RepositoryState() {}
 
     private RepositoryState(RepositoryState $) {
+        this.createIgnoreAlreadyExists = $.createIgnoreAlreadyExists;
         this.name = $.name;
         this.project = $.project;
         this.pubsubConfigs = $.pubsubConfigs;
@@ -131,6 +148,27 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(RepositoryState defaults) {
             $ = new RepositoryState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param createIgnoreAlreadyExists If set to true, skip repository creation if a repository with the same name already exists.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createIgnoreAlreadyExists(@Nullable Output<Boolean> createIgnoreAlreadyExists) {
+            $.createIgnoreAlreadyExists = createIgnoreAlreadyExists;
+            return this;
+        }
+
+        /**
+         * @param createIgnoreAlreadyExists If set to true, skip repository creation if a repository with the same name already exists.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createIgnoreAlreadyExists(Boolean createIgnoreAlreadyExists) {
+            return createIgnoreAlreadyExists(Output.of(createIgnoreAlreadyExists));
         }
 
         /**

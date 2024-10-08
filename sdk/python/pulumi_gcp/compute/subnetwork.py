@@ -1127,7 +1127,7 @@ class Subnetwork(pulumi.CustomResource):
             name="network-reserved-secondary-range",
             auto_create_subnetworks=False)
         reserved = gcp.networkconnectivity.InternalRange("reserved",
-            name="reserved",
+            name="reserved-primary",
             network=default.id,
             usage="FOR_VPC",
             peering="FOR_SELF",
@@ -1447,7 +1447,7 @@ class Subnetwork(pulumi.CustomResource):
             name="network-reserved-secondary-range",
             auto_create_subnetworks=False)
         reserved = gcp.networkconnectivity.InternalRange("reserved",
-            name="reserved",
+            name="reserved-primary",
             network=default.id,
             usage="FOR_VPC",
             peering="FOR_SELF",

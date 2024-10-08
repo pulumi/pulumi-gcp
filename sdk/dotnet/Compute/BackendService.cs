@@ -348,6 +348,45 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Backend Service Stateful Session Affinity
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var healthCheck = new Gcp.Compute.HealthCheck("health_check", new()
+    ///     {
+    ///         Name = "health-check",
+    ///         HttpHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpHealthCheckArgs
+    ///         {
+    ///             Port = 80,
+    ///         },
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.BackendService("default", new()
+    ///     {
+    ///         Name = "backend-service",
+    ///         HealthChecks = healthCheck.Id,
+    ///         LoadBalancingScheme = "EXTERNAL_MANAGED",
+    ///         LocalityLbPolicy = "RING_HASH",
+    ///         SessionAffinity = "STRONG_COOKIE_AFFINITY",
+    ///         StrongSessionAffinityCookie = new Gcp.Compute.Inputs.BackendServiceStrongSessionAffinityCookieArgs
+    ///         {
+    ///             Ttl = new Gcp.Compute.Inputs.BackendServiceStrongSessionAffinityCookieTtlArgs
+    ///             {
+    ///                 Seconds = 11,
+    ///                 Nanos = 1111,
+    ///             },
+    ///             Name = "mycookie",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Backend Service Network Endpoint
     /// 
     /// ```csharp
@@ -746,10 +785,17 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Type of session affinity to use. The default is NONE. Session affinity is
         /// not applicable if the protocol is UDP.
-        /// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
+        /// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `STRONG_COOKIE_AFFINITY`.
         /// </summary>
         [Output("sessionAffinity")]
         public Output<string> SessionAffinity { get; private set; } = null!;
+
+        /// <summary>
+        /// Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("strongSessionAffinityCookie")]
+        public Output<Outputs.BackendServiceStrongSessionAffinityCookie?> StrongSessionAffinityCookie { get; private set; } = null!;
 
         /// <summary>
         /// The backend service timeout has a different meaning depending on the type of load balancer.
@@ -1098,10 +1144,17 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Type of session affinity to use. The default is NONE. Session affinity is
         /// not applicable if the protocol is UDP.
-        /// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
+        /// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `STRONG_COOKIE_AFFINITY`.
         /// </summary>
         [Input("sessionAffinity")]
         public Input<string>? SessionAffinity { get; set; }
+
+        /// <summary>
+        /// Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("strongSessionAffinityCookie")]
+        public Input<Inputs.BackendServiceStrongSessionAffinityCookieArgs>? StrongSessionAffinityCookie { get; set; }
 
         /// <summary>
         /// The backend service timeout has a different meaning depending on the type of load balancer.
@@ -1437,10 +1490,17 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Type of session affinity to use. The default is NONE. Session affinity is
         /// not applicable if the protocol is UDP.
-        /// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
+        /// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `STRONG_COOKIE_AFFINITY`.
         /// </summary>
         [Input("sessionAffinity")]
         public Input<string>? SessionAffinity { get; set; }
+
+        /// <summary>
+        /// Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("strongSessionAffinityCookie")]
+        public Input<Inputs.BackendServiceStrongSessionAffinityCookieGetArgs>? StrongSessionAffinityCookie { get; set; }
 
         /// <summary>
         /// The backend service timeout has a different meaning depending on the type of load balancer.

@@ -4015,6 +4015,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "dataproc/batch",
+  "fqn": "pulumi_gcp.dataproc",
+  "classes": {
+   "gcp:dataproc/batch:Batch": "Batch"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "dataproc/cluster",
   "fqn": "pulumi_gcp.dataproc",
   "classes": {
@@ -5259,6 +5267,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.healthcare",
   "classes": {
    "gcp:healthcare/hl7StoreIamPolicy:Hl7StoreIamPolicy": "Hl7StoreIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "healthcare/pipelineJob",
+  "fqn": "pulumi_gcp.healthcare",
+  "classes": {
+   "gcp:healthcare/pipelineJob:PipelineJob": "PipelineJob"
   }
  },
  {
@@ -7579,6 +7595,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.serviceusage",
   "classes": {
    "gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride": "ConsumerQuotaOverride"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "siteverification/owner",
+  "fqn": "pulumi_gcp.siteverification",
+  "classes": {
+   "gcp:siteverification/owner:Owner": "Owner"
   }
  },
  {

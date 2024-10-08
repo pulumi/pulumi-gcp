@@ -16453,6 +16453,37 @@ export namespace compute {
         originRegion?: pulumi.Input<string>;
     }
 
+    export interface BackendServiceStrongSessionAffinityCookie {
+        /**
+         * Name of the cookie.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * Path to set for the cookie.
+         */
+        path?: pulumi.Input<string>;
+        /**
+         * Lifetime of the cookie.
+         * Structure is documented below.
+         */
+        ttl?: pulumi.Input<inputs.compute.BackendServiceStrongSessionAffinityCookieTtl>;
+    }
+
+    export interface BackendServiceStrongSessionAffinityCookieTtl {
+        /**
+         * Span of time that's a fraction of a second at nanosecond
+         * resolution. Durations less than one second are represented
+         * with a 0 seconds field and a positive nanos field. Must
+         * be from 0 to 999,999,999 inclusive.
+         */
+        nanos?: pulumi.Input<number>;
+        /**
+         * Span of time at a resolution of a second.
+         * Must be from 0 to 315,576,000,000 inclusive.
+         */
+        seconds: pulumi.Input<number>;
+    }
+
     export interface DiskAsyncPrimaryDisk {
         /**
          * Primary disk for asynchronous disk replication.
@@ -17662,7 +17693,7 @@ export namespace compute {
 
     export interface InstanceConfidentialInstanceConfig {
         /**
-         * Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `onHostMaintenance` can be set to MIGRATE if `confidentialInstanceType` is set to `SEV` and `minCpuPlatform` is set to `"AMD Milan"`. Otherwise, `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `minCpuPlatform` has to be set to `"AMD Milan"` or this will fail to create the VM. TDX is only available in beta.
+         * Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `onHostMaintenance` can be set to MIGRATE if `confidentialInstanceType` is set to `SEV` and `minCpuPlatform` is set to `"AMD Milan"`. Otherwise, `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `minCpuPlatform` has to be set to `"AMD Milan"` or this will fail to create the VM.
          */
         confidentialInstanceType?: pulumi.Input<string>;
         /**
@@ -17800,7 +17831,7 @@ export namespace compute {
          * The confidential computing technology the instance uses.
          * 								SEV is an AMD feature. TDX is an Intel feature. One of the following
          * 								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, minCpuPlatform =
-         * 								"AMD Milan" is currently required. TDX is only available in beta.
+         * 								"AMD Milan" is currently required.
          */
         confidentialInstanceType?: pulumi.Input<string>;
         /**
@@ -18246,7 +18277,7 @@ export namespace compute {
          * The confidential computing technology the instance uses.
          * 								SEV is an AMD feature. TDX is an Intel feature. One of the following
          * 								values is required: SEV, SEV_SNP, TDX. If SEV_SNP, minCpuPlatform =
-         * 								"AMD Milan" is currently required. TDX is only available in beta.
+         * 								"AMD Milan" is currently required.
          */
         confidentialInstanceType?: pulumi.Input<string>;
         /**
@@ -19234,7 +19265,7 @@ export namespace compute {
 
     export interface InstanceTemplateConfidentialInstanceConfig {
         /**
-         * Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `onHostMaintenance` can be set to MIGRATE if `confidentialInstanceType` is set to `SEV` and `minCpuPlatform` is set to `"AMD Milan"`. Otherwise, `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `minCpuPlatform` has to be set to `"AMD Milan"` or this will fail to create the VM. TDX is only available in beta.
+         * Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `onHostMaintenance` can be set to MIGRATE if `confidentialInstanceType` is set to `SEV` and `minCpuPlatform` is set to `"AMD Milan"`. Otherwise, `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `minCpuPlatform` has to be set to `"AMD Milan"` or this will fail to create the VM.
          */
         confidentialInstanceType?: pulumi.Input<string>;
         /**
@@ -21642,6 +21673,37 @@ export namespace compute {
         seconds: pulumi.Input<number>;
     }
 
+    export interface RegionBackendServiceStrongSessionAffinityCookie {
+        /**
+         * Name of the cookie.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * Path to set for the cookie.
+         */
+        path?: pulumi.Input<string>;
+        /**
+         * Lifetime of the cookie.
+         * Structure is documented below.
+         */
+        ttl?: pulumi.Input<inputs.compute.RegionBackendServiceStrongSessionAffinityCookieTtl>;
+    }
+
+    export interface RegionBackendServiceStrongSessionAffinityCookieTtl {
+        /**
+         * Span of time that's a fraction of a second at nanosecond
+         * resolution. Durations less than one second are represented
+         * with a 0 seconds field and a positive nanos field. Must
+         * be from 0 to 999,999,999 inclusive.
+         */
+        nanos?: pulumi.Input<number>;
+        /**
+         * Span of time at a resolution of a second.
+         * Must be from 0 to 315,576,000,000 inclusive.
+         */
+        seconds: pulumi.Input<number>;
+    }
+
     export interface RegionBackendServiceSubsetting {
         /**
          * The algorithm used for subsetting.
@@ -22291,7 +22353,7 @@ export namespace compute {
 
     export interface RegionInstanceTemplateConfidentialInstanceConfig {
         /**
-         * Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `onHostMaintenance` can be set to MIGRATE if `confidentialInstanceType` is set to `SEV` and `minCpuPlatform` is set to `"AMD Milan"`. Otherwise, `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `minCpuPlatform` has to be set to `"AMD Milan"` or this will fail to create the VM. TDX is only available in beta.
+         * Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `onHostMaintenance` can be set to MIGRATE if `confidentialInstanceType` is set to `SEV` and `minCpuPlatform` is set to `"AMD Milan"`. Otherwise, `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `minCpuPlatform` has to be set to `"AMD Milan"` or this will fail to create the VM.
          */
         confidentialInstanceType?: pulumi.Input<string>;
         /**
@@ -29643,6 +29705,25 @@ export namespace container {
          * Value for the taint.
          */
         value: pulumi.Input<string>;
+    }
+
+    export interface AwsNodePoolKubeletConfig {
+        /**
+         * Whether or not to enable CPU CFS quota. Defaults to true.
+         */
+        cpuCfsQuota?: pulumi.Input<boolean>;
+        /**
+         * Optional. The CPU CFS quota period to use for the node. Defaults to "100ms".
+         */
+        cpuCfsQuotaPeriod?: pulumi.Input<string>;
+        /**
+         * The CpuManagerPolicy to use for the node. Defaults to "none".
+         */
+        cpuManagerPolicy?: pulumi.Input<string>;
+        /**
+         * Optional. The maximum number of PIDs in each pod running on the node. The limit scales automatically based on underlying machine size if left unset.
+         */
+        podPidsLimit?: pulumi.Input<number>;
     }
 
     export interface AwsNodePoolManagement {
@@ -41381,6 +41462,305 @@ export namespace dataproc {
          * only on primary workers, the cluster will use primary workers only and no secondary workers.
          */
         weight?: pulumi.Input<number>;
+    }
+
+    export interface BatchEnvironmentConfig {
+        /**
+         * Execution configuration for a workload.
+         * Structure is documented below.
+         */
+        executionConfig?: pulumi.Input<inputs.dataproc.BatchEnvironmentConfigExecutionConfig>;
+        /**
+         * Peripherals configuration that workload has access to.
+         * Structure is documented below.
+         */
+        peripheralsConfig?: pulumi.Input<inputs.dataproc.BatchEnvironmentConfigPeripheralsConfig>;
+    }
+
+    export interface BatchEnvironmentConfigExecutionConfig {
+        /**
+         * The Cloud KMS key to use for encryption.
+         */
+        kmsKey?: pulumi.Input<string>;
+        /**
+         * Tags used for network traffic control.
+         */
+        networkTags?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Network configuration for workload execution.
+         */
+        networkUri?: pulumi.Input<string>;
+        /**
+         * Service account that used to execute workload.
+         */
+        serviceAccount?: pulumi.Input<string>;
+        /**
+         * A Cloud Storage bucket used to stage workload dependencies, config files, and store
+         * workload output and other ephemeral data, such as Spark history files. If you do not specify a staging bucket,
+         * Cloud Dataproc will determine a Cloud Storage location according to the region where your workload is running,
+         * and then create and manage project-level, per-location staging and temporary buckets.
+         * This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
+         */
+        stagingBucket?: pulumi.Input<string>;
+        /**
+         * Subnetwork configuration for workload execution.
+         */
+        subnetworkUri?: pulumi.Input<string>;
+        /**
+         * The duration after which the workload will be terminated.
+         * When the workload exceeds this duration, it will be unconditionally terminated without waiting for ongoing
+         * work to finish. If ttl is not specified for a batch workload, the workload will be allowed to run until it
+         * exits naturally (or run forever without exiting). If ttl is not specified for an interactive session,
+         * it defaults to 24 hours. If ttl is not specified for a batch that uses 2.1+ runtime version, it defaults to 4 hours.
+         * Minimum value is 10 minutes; maximum value is 14 days. If both ttl and idleTtl are specified (for an interactive session),
+         * the conditions are treated as OR conditions: the workload will be terminated when it has been idle for idleTtl or
+         * when ttl has been exceeded, whichever occurs first.
+         */
+        ttl?: pulumi.Input<string>;
+    }
+
+    export interface BatchEnvironmentConfigPeripheralsConfig {
+        /**
+         * Resource name of an existing Dataproc Metastore service.
+         */
+        metastoreService?: pulumi.Input<string>;
+        /**
+         * The Spark History Server configuration for the workload.
+         * Structure is documented below.
+         */
+        sparkHistoryServerConfig?: pulumi.Input<inputs.dataproc.BatchEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig>;
+    }
+
+    export interface BatchEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig {
+        /**
+         * Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.
+         */
+        dataprocCluster?: pulumi.Input<string>;
+    }
+
+    export interface BatchPysparkBatch {
+        /**
+         * HCFS URIs of archives to be extracted into the working directory of each executor.
+         * Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+         */
+        archiveUris?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The arguments to pass to the driver. Do not include arguments that can be set as batch
+         * properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
+         */
+        args?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * HCFS URIs of files to be placed in the working directory of each executor.
+         */
+        fileUris?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
+         */
+        jarFileUris?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The HCFS URI of the main Python file to use as the Spark driver. Must be a .py file.
+         */
+        mainPythonFileUri?: pulumi.Input<string>;
+        /**
+         * HCFS file URIs of Python files to pass to the PySpark framework.
+         * Supported file types: .py, .egg, and .zip.
+         */
+        pythonFileUris?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface BatchRuntimeConfig {
+        /**
+         * Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
+         */
+        containerImage?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * A mapping of property names to values, which are used to configure workload execution.
+         */
+        effectiveProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * A mapping of property names to values, which are used to configure workload execution.
+         */
+        properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Version of the batch runtime.
+         */
+        version?: pulumi.Input<string>;
+    }
+
+    export interface BatchRuntimeInfo {
+        /**
+         * (Output)
+         * Approximate workload resource usage, calculated when the workload completes(see [Dataproc Serverless pricing](https://cloud.google.com/dataproc-serverless/pricing))
+         * Structure is documented below.
+         */
+        approximateUsages?: pulumi.Input<pulumi.Input<inputs.dataproc.BatchRuntimeInfoApproximateUsage>[]>;
+        /**
+         * (Output)
+         * Snapshot of current workload resource usage(see [Dataproc Serverless pricing](https://cloud.google.com/dataproc-serverless/pricing))
+         * Structure is documented below.
+         */
+        currentUsages?: pulumi.Input<pulumi.Input<inputs.dataproc.BatchRuntimeInfoCurrentUsage>[]>;
+        /**
+         * (Output)
+         * A URI pointing to the location of the diagnostics tarball.
+         */
+        diagnosticOutputUri?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Map of remote access endpoints (such as web interfaces and APIs) to their URIs.
+         */
+        endpoints?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * (Output)
+         * A URI pointing to the location of the stdout and stderr of the workload.
+         */
+        outputUri?: pulumi.Input<string>;
+    }
+
+    export interface BatchRuntimeInfoApproximateUsage {
+        /**
+         * (Output)
+         * Accelerator type being used, if any.
+         */
+        acceleratorType?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Accelerator usage in (milliAccelerator x seconds)
+         */
+        milliAcceleratorSeconds?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * DCU (Dataproc Compute Units) usage in (milliDCU x seconds)
+         */
+        milliDcuSeconds?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Shuffle storage usage in (GB x seconds)
+         */
+        shuffleStorageGbSeconds?: pulumi.Input<string>;
+    }
+
+    export interface BatchRuntimeInfoCurrentUsage {
+        /**
+         * (Output)
+         * Accelerator type being used, if any.
+         */
+        acceleratorType?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Milli (one-thousandth) accelerator..
+         */
+        milliAccelerator?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Milli (one-thousandth) Dataproc Compute Units (DCUs).
+         */
+        milliDcu?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Milli (one-thousandth) Dataproc Compute Units (DCUs) charged at premium tier.
+         */
+        milliDcuPremium?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Shuffle Storage in gigabytes (GB).
+         */
+        shuffleStorageGb?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Shuffle Storage in gigabytes (GB) charged at premium tier.
+         */
+        shuffleStorageGbPremium?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The timestamp of the usage snapshot.
+         */
+        snapshotTime?: pulumi.Input<string>;
+    }
+
+    export interface BatchSparkBatch {
+        /**
+         * HCFS URIs of archives to be extracted into the working directory of each executor.
+         * Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+         */
+        archiveUris?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The arguments to pass to the driver. Do not include arguments that can be set as batch
+         * properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
+         */
+        args?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * HCFS URIs of files to be placed in the working directory of each executor.
+         */
+        fileUris?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
+         */
+        jarFileUris?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The name of the driver main class. The jar file that contains the class must be in the
+         * classpath or specified in jarFileUris.
+         */
+        mainClass?: pulumi.Input<string>;
+        /**
+         * The HCFS URI of the jar file that contains the main class.
+         */
+        mainJarFileUri?: pulumi.Input<string>;
+    }
+
+    export interface BatchSparkRBatch {
+        /**
+         * HCFS URIs of archives to be extracted into the working directory of each executor.
+         * Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+         */
+        archiveUris?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The arguments to pass to the driver. Do not include arguments that can be set as batch
+         * properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
+         */
+        args?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * HCFS URIs of files to be placed in the working directory of each executor.
+         */
+        fileUris?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The HCFS URI of the main R file to use as the driver. Must be a .R or .r file.
+         */
+        mainRFileUri?: pulumi.Input<string>;
+    }
+
+    export interface BatchSparkSqlBatch {
+        /**
+         * HCFS URIs of jar files to be added to the Spark CLASSPATH.
+         */
+        jarFileUris?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The HCFS URI of the script that contains Spark SQL queries to execute.
+         */
+        queryFileUri?: pulumi.Input<string>;
+        /**
+         * Mapping of query variable names to values (equivalent to the Spark SQL command: SET name="value";).
+         */
+        queryVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    }
+
+    export interface BatchStateHistory {
+        /**
+         * (Output)
+         * The state of the batch at this point in history. For possible values, see the [API documentation](https://cloud.google.com/dataproc-serverless/docs/reference/rest/v1/projects.locations.batches#State).
+         */
+        state?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Details about the state at this point in history.
+         */
+        stateMessage?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The time when the batch entered the historical state.
+         */
+        stateStartTime?: pulumi.Input<string>;
     }
 
     export interface ClusterClusterConfig {
@@ -53746,6 +54126,127 @@ export namespace healthcare {
         version?: pulumi.Input<string>;
     }
 
+    export interface PipelineJobBackfillPipelineJob {
+        /**
+         * Specifies the mapping pipeline job to backfill, the name format
+         * should follow: projects/{projectId}/locations/{locationId}/datasets/{datasetId}/pipelineJobs/{pipelineJobId}.
+         */
+        mappingPipelineJob?: pulumi.Input<string>;
+    }
+
+    export interface PipelineJobMappingPipelineJob {
+        /**
+         * If set, the mapping pipeline will write snapshots to this
+         * FHIR store without assigning stable IDs. You must
+         * grant your pipeline project's Cloud Healthcare Service
+         * Agent serviceaccount healthcare.fhirResources.executeBundle
+         * and healthcare.fhirResources.create permissions on the
+         * destination store. The destination store must set
+         * [disableReferentialIntegrity][FhirStore.disable_referential_integrity]
+         * to true. The destination store must use FHIR version R4.
+         * Format: project/{projectID}/locations/{locationID}/datasets/{datasetName}/fhirStores/{fhirStoreID}.
+         */
+        fhirStoreDestination?: pulumi.Input<string>;
+        /**
+         * A streaming FHIR data source.
+         * Structure is documented below.
+         */
+        fhirStreamingSource?: pulumi.Input<inputs.healthcare.PipelineJobMappingPipelineJobFhirStreamingSource>;
+        /**
+         * The location of the mapping configuration.
+         * Structure is documented below.
+         */
+        mappingConfig: pulumi.Input<inputs.healthcare.PipelineJobMappingPipelineJobMappingConfig>;
+        /**
+         * If set to true, a mapping pipeline will send output snapshots
+         * to the reconciliation pipeline in its dataset. A reconciliation
+         * pipeline must exist in this dataset before a mapping pipeline
+         * with a reconciliation destination can be created.
+         */
+        reconciliationDestination?: pulumi.Input<boolean>;
+    }
+
+    export interface PipelineJobMappingPipelineJobFhirStreamingSource {
+        /**
+         * Describes the streaming FHIR data source.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * The path to the FHIR store in the format projects/{projectId}/locations/{locationId}/datasets/{datasetId}/fhirStores/{fhirStoreId}.
+         */
+        fhirStore: pulumi.Input<string>;
+    }
+
+    export interface PipelineJobMappingPipelineJobMappingConfig {
+        /**
+         * Describes the mapping configuration.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * Specifies the path to the mapping configuration for harmonization pipeline.
+         * Structure is documented below.
+         */
+        whistleConfigSource?: pulumi.Input<inputs.healthcare.PipelineJobMappingPipelineJobMappingConfigWhistleConfigSource>;
+    }
+
+    export interface PipelineJobMappingPipelineJobMappingConfigWhistleConfigSource {
+        /**
+         * Directory path where all the Whistle files are located.
+         * Example: gs://{bucket-id}/{path/to/import-root/dir}
+         */
+        importUriPrefix: pulumi.Input<string>;
+        /**
+         * Main configuration file which has the entrypoint or the root function.
+         * Example: gs://{bucket-id}/{path/to/import-root/dir}/entrypoint-file-name.wstl.
+         */
+        uri: pulumi.Input<string>;
+    }
+
+    export interface PipelineJobReconciliationPipelineJob {
+        /**
+         * The harmonized FHIR store to write harmonized FHIR resources to,
+         * in the format of: project/{projectID}/locations/{locationID}/datasets/{datasetName}/fhirStores/{id}
+         */
+        fhirStoreDestination?: pulumi.Input<string>;
+        /**
+         * Specifies the top level directory of the matching configs used
+         * in all mapping pipelines, which extract properties for resources
+         * to be matched on.
+         * Example: gs://{bucket-id}/{path/to/matching/configs}
+         */
+        matchingUriPrefix: pulumi.Input<string>;
+        /**
+         * Specifies the location of the reconciliation configuration.
+         * Structure is documented below.
+         */
+        mergeConfig: pulumi.Input<inputs.healthcare.PipelineJobReconciliationPipelineJobMergeConfig>;
+    }
+
+    export interface PipelineJobReconciliationPipelineJobMergeConfig {
+        /**
+         * Describes the mapping configuration.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * Specifies the path to the mapping configuration for harmonization pipeline.
+         * Structure is documented below.
+         */
+        whistleConfigSource: pulumi.Input<inputs.healthcare.PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSource>;
+    }
+
+    export interface PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSource {
+        /**
+         * Directory path where all the Whistle files are located.
+         * Example: gs://{bucket-id}/{path/to/import-root/dir}
+         */
+        importUriPrefix: pulumi.Input<string>;
+        /**
+         * Main configuration file which has the entrypoint or the root function.
+         * Example: gs://{bucket-id}/{path/to/import-root/dir}/entrypoint-file-name.wstl.
+         */
+        uri: pulumi.Input<string>;
+    }
+
     export interface WorkspaceSettings {
         /**
          * Project IDs for data projects hosted in a workspace.
@@ -64384,6 +64885,17 @@ export namespace pubsub {
          * Structure is documented below.
          */
         awsKinesis?: pulumi.Input<inputs.pubsub.TopicIngestionDataSourceSettingsAwsKinesis>;
+        /**
+         * Settings for ingestion from Cloud Storage.
+         * Structure is documented below.
+         */
+        cloudStorage?: pulumi.Input<inputs.pubsub.TopicIngestionDataSourceSettingsCloudStorage>;
+        /**
+         * Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,
+         * no Platform Logs will be generated.'
+         * Structure is documented below.
+         */
+        platformLogsSettings?: pulumi.Input<inputs.pubsub.TopicIngestionDataSourceSettingsPlatformLogsSettings>;
     }
 
     export interface TopicIngestionDataSourceSettingsAwsKinesis {
@@ -64410,6 +64922,71 @@ export namespace pubsub {
          * The Kinesis stream ARN to ingest data from.
          */
         streamArn: pulumi.Input<string>;
+    }
+
+    export interface TopicIngestionDataSourceSettingsCloudStorage {
+        /**
+         * Configuration for reading Cloud Storage data in Avro binary format. The
+         * bytes of each object will be set to the `data` field of a Pub/Sub message.
+         */
+        avroFormat?: pulumi.Input<inputs.pubsub.TopicIngestionDataSourceSettingsCloudStorageAvroFormat>;
+        /**
+         * Cloud Storage bucket. The bucket name must be without any
+         * prefix like "gs://". See the bucket naming requirements:
+         * https://cloud.google.com/storage/docs/buckets#naming.
+         */
+        bucket: pulumi.Input<string>;
+        /**
+         * Glob pattern used to match objects that will be ingested. If unset, all
+         * objects will be ingested. See the supported patterns:
+         * https://cloud.google.com/storage/docs/json_api/v1/objects/list#list-objects-and-prefixes-using-glob
+         */
+        matchGlob?: pulumi.Input<string>;
+        /**
+         * The timestamp set in RFC3339 text format. If set, only objects with a
+         * larger or equal timestamp will be ingested. Unset by default, meaning
+         * all objects will be ingested.
+         */
+        minimumObjectCreateTime?: pulumi.Input<string>;
+        /**
+         * Configuration for reading Cloud Storage data written via Cloud Storage
+         * subscriptions(See https://cloud.google.com/pubsub/docs/cloudstorage). The
+         * data and attributes fields of the originally exported Pub/Sub message
+         * will be restored when publishing.
+         */
+        pubsubAvroFormat?: pulumi.Input<inputs.pubsub.TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormat>;
+        /**
+         * Configuration for reading Cloud Storage data in text format. Each line of
+         * text as specified by the delimiter will be set to the `data` field of a
+         * Pub/Sub message.
+         * Structure is documented below.
+         */
+        textFormat?: pulumi.Input<inputs.pubsub.TopicIngestionDataSourceSettingsCloudStorageTextFormat>;
+    }
+
+    export interface TopicIngestionDataSourceSettingsCloudStorageAvroFormat {
+    }
+
+    export interface TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormat {
+    }
+
+    export interface TopicIngestionDataSourceSettingsCloudStorageTextFormat {
+        /**
+         * The delimiter to use when using the 'text' format. Each line of text as
+         * specified by the delimiter will be set to the 'data' field of a Pub/Sub
+         * message. When unset, '\n' is used.
+         */
+        delimiter?: pulumi.Input<string>;
+    }
+
+    export interface TopicIngestionDataSourceSettingsPlatformLogsSettings {
+        /**
+         * The minimum severity level of Platform Logs that will be written. If unspecified,
+         * no Platform Logs will be written.
+         * Default value is `SEVERITY_UNSPECIFIED`.
+         * Possible values are: `SEVERITY_UNSPECIFIED`, `DISABLED`, `DEBUG`, `INFO`, `WARNING`, `ERROR`.
+         */
+        severity?: pulumi.Input<string>;
     }
 
     export interface TopicMessageStoragePolicy {

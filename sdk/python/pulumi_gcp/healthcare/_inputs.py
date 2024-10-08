@@ -59,6 +59,22 @@ __all__ = [
     'Hl7StoreNotificationConfigsArgsDict',
     'Hl7StoreParserConfigArgs',
     'Hl7StoreParserConfigArgsDict',
+    'PipelineJobBackfillPipelineJobArgs',
+    'PipelineJobBackfillPipelineJobArgsDict',
+    'PipelineJobMappingPipelineJobArgs',
+    'PipelineJobMappingPipelineJobArgsDict',
+    'PipelineJobMappingPipelineJobFhirStreamingSourceArgs',
+    'PipelineJobMappingPipelineJobFhirStreamingSourceArgsDict',
+    'PipelineJobMappingPipelineJobMappingConfigArgs',
+    'PipelineJobMappingPipelineJobMappingConfigArgsDict',
+    'PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceArgs',
+    'PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceArgsDict',
+    'PipelineJobReconciliationPipelineJobArgs',
+    'PipelineJobReconciliationPipelineJobArgsDict',
+    'PipelineJobReconciliationPipelineJobMergeConfigArgs',
+    'PipelineJobReconciliationPipelineJobMergeConfigArgsDict',
+    'PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceArgs',
+    'PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceArgsDict',
     'WorkspaceSettingsArgs',
     'WorkspaceSettingsArgsDict',
 ]
@@ -1338,6 +1354,528 @@ class Hl7StoreParserConfigArgs:
     @version.setter
     def version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "version", value)
+
+
+if not MYPY:
+    class PipelineJobBackfillPipelineJobArgsDict(TypedDict):
+        mapping_pipeline_job: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the mapping pipeline job to backfill, the name format
+        should follow: projects/{projectId}/locations/{locationId}/datasets/{datasetId}/pipelineJobs/{pipelineJobId}.
+        """
+elif False:
+    PipelineJobBackfillPipelineJobArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PipelineJobBackfillPipelineJobArgs:
+    def __init__(__self__, *,
+                 mapping_pipeline_job: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] mapping_pipeline_job: Specifies the mapping pipeline job to backfill, the name format
+               should follow: projects/{projectId}/locations/{locationId}/datasets/{datasetId}/pipelineJobs/{pipelineJobId}.
+        """
+        if mapping_pipeline_job is not None:
+            pulumi.set(__self__, "mapping_pipeline_job", mapping_pipeline_job)
+
+    @property
+    @pulumi.getter(name="mappingPipelineJob")
+    def mapping_pipeline_job(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the mapping pipeline job to backfill, the name format
+        should follow: projects/{projectId}/locations/{locationId}/datasets/{datasetId}/pipelineJobs/{pipelineJobId}.
+        """
+        return pulumi.get(self, "mapping_pipeline_job")
+
+    @mapping_pipeline_job.setter
+    def mapping_pipeline_job(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mapping_pipeline_job", value)
+
+
+if not MYPY:
+    class PipelineJobMappingPipelineJobArgsDict(TypedDict):
+        mapping_config: pulumi.Input['PipelineJobMappingPipelineJobMappingConfigArgsDict']
+        """
+        The location of the mapping configuration.
+        Structure is documented below.
+        """
+        fhir_store_destination: NotRequired[pulumi.Input[str]]
+        """
+        If set, the mapping pipeline will write snapshots to this
+        FHIR store without assigning stable IDs. You must
+        grant your pipeline project's Cloud Healthcare Service
+        Agent serviceaccount healthcare.fhirResources.executeBundle
+        and healthcare.fhirResources.create permissions on the
+        destination store. The destination store must set
+        [disableReferentialIntegrity][FhirStore.disable_referential_integrity]
+        to true. The destination store must use FHIR version R4.
+        Format: project/{projectID}/locations/{locationID}/datasets/{datasetName}/fhirStores/{fhirStoreID}.
+        """
+        fhir_streaming_source: NotRequired[pulumi.Input['PipelineJobMappingPipelineJobFhirStreamingSourceArgsDict']]
+        """
+        A streaming FHIR data source.
+        Structure is documented below.
+        """
+        reconciliation_destination: NotRequired[pulumi.Input[bool]]
+        """
+        If set to true, a mapping pipeline will send output snapshots
+        to the reconciliation pipeline in its dataset. A reconciliation
+        pipeline must exist in this dataset before a mapping pipeline
+        with a reconciliation destination can be created.
+        """
+elif False:
+    PipelineJobMappingPipelineJobArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PipelineJobMappingPipelineJobArgs:
+    def __init__(__self__, *,
+                 mapping_config: pulumi.Input['PipelineJobMappingPipelineJobMappingConfigArgs'],
+                 fhir_store_destination: Optional[pulumi.Input[str]] = None,
+                 fhir_streaming_source: Optional[pulumi.Input['PipelineJobMappingPipelineJobFhirStreamingSourceArgs']] = None,
+                 reconciliation_destination: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input['PipelineJobMappingPipelineJobMappingConfigArgs'] mapping_config: The location of the mapping configuration.
+               Structure is documented below.
+        :param pulumi.Input[str] fhir_store_destination: If set, the mapping pipeline will write snapshots to this
+               FHIR store without assigning stable IDs. You must
+               grant your pipeline project's Cloud Healthcare Service
+               Agent serviceaccount healthcare.fhirResources.executeBundle
+               and healthcare.fhirResources.create permissions on the
+               destination store. The destination store must set
+               [disableReferentialIntegrity][FhirStore.disable_referential_integrity]
+               to true. The destination store must use FHIR version R4.
+               Format: project/{projectID}/locations/{locationID}/datasets/{datasetName}/fhirStores/{fhirStoreID}.
+        :param pulumi.Input['PipelineJobMappingPipelineJobFhirStreamingSourceArgs'] fhir_streaming_source: A streaming FHIR data source.
+               Structure is documented below.
+        :param pulumi.Input[bool] reconciliation_destination: If set to true, a mapping pipeline will send output snapshots
+               to the reconciliation pipeline in its dataset. A reconciliation
+               pipeline must exist in this dataset before a mapping pipeline
+               with a reconciliation destination can be created.
+        """
+        pulumi.set(__self__, "mapping_config", mapping_config)
+        if fhir_store_destination is not None:
+            pulumi.set(__self__, "fhir_store_destination", fhir_store_destination)
+        if fhir_streaming_source is not None:
+            pulumi.set(__self__, "fhir_streaming_source", fhir_streaming_source)
+        if reconciliation_destination is not None:
+            pulumi.set(__self__, "reconciliation_destination", reconciliation_destination)
+
+    @property
+    @pulumi.getter(name="mappingConfig")
+    def mapping_config(self) -> pulumi.Input['PipelineJobMappingPipelineJobMappingConfigArgs']:
+        """
+        The location of the mapping configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mapping_config")
+
+    @mapping_config.setter
+    def mapping_config(self, value: pulumi.Input['PipelineJobMappingPipelineJobMappingConfigArgs']):
+        pulumi.set(self, "mapping_config", value)
+
+    @property
+    @pulumi.getter(name="fhirStoreDestination")
+    def fhir_store_destination(self) -> Optional[pulumi.Input[str]]:
+        """
+        If set, the mapping pipeline will write snapshots to this
+        FHIR store without assigning stable IDs. You must
+        grant your pipeline project's Cloud Healthcare Service
+        Agent serviceaccount healthcare.fhirResources.executeBundle
+        and healthcare.fhirResources.create permissions on the
+        destination store. The destination store must set
+        [disableReferentialIntegrity][FhirStore.disable_referential_integrity]
+        to true. The destination store must use FHIR version R4.
+        Format: project/{projectID}/locations/{locationID}/datasets/{datasetName}/fhirStores/{fhirStoreID}.
+        """
+        return pulumi.get(self, "fhir_store_destination")
+
+    @fhir_store_destination.setter
+    def fhir_store_destination(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fhir_store_destination", value)
+
+    @property
+    @pulumi.getter(name="fhirStreamingSource")
+    def fhir_streaming_source(self) -> Optional[pulumi.Input['PipelineJobMappingPipelineJobFhirStreamingSourceArgs']]:
+        """
+        A streaming FHIR data source.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "fhir_streaming_source")
+
+    @fhir_streaming_source.setter
+    def fhir_streaming_source(self, value: Optional[pulumi.Input['PipelineJobMappingPipelineJobFhirStreamingSourceArgs']]):
+        pulumi.set(self, "fhir_streaming_source", value)
+
+    @property
+    @pulumi.getter(name="reconciliationDestination")
+    def reconciliation_destination(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to true, a mapping pipeline will send output snapshots
+        to the reconciliation pipeline in its dataset. A reconciliation
+        pipeline must exist in this dataset before a mapping pipeline
+        with a reconciliation destination can be created.
+        """
+        return pulumi.get(self, "reconciliation_destination")
+
+    @reconciliation_destination.setter
+    def reconciliation_destination(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "reconciliation_destination", value)
+
+
+if not MYPY:
+    class PipelineJobMappingPipelineJobFhirStreamingSourceArgsDict(TypedDict):
+        fhir_store: pulumi.Input[str]
+        """
+        The path to the FHIR store in the format projects/{projectId}/locations/{locationId}/datasets/{datasetId}/fhirStores/{fhirStoreId}.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Describes the streaming FHIR data source.
+        """
+elif False:
+    PipelineJobMappingPipelineJobFhirStreamingSourceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PipelineJobMappingPipelineJobFhirStreamingSourceArgs:
+    def __init__(__self__, *,
+                 fhir_store: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] fhir_store: The path to the FHIR store in the format projects/{projectId}/locations/{locationId}/datasets/{datasetId}/fhirStores/{fhirStoreId}.
+        :param pulumi.Input[str] description: Describes the streaming FHIR data source.
+        """
+        pulumi.set(__self__, "fhir_store", fhir_store)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter(name="fhirStore")
+    def fhir_store(self) -> pulumi.Input[str]:
+        """
+        The path to the FHIR store in the format projects/{projectId}/locations/{locationId}/datasets/{datasetId}/fhirStores/{fhirStoreId}.
+        """
+        return pulumi.get(self, "fhir_store")
+
+    @fhir_store.setter
+    def fhir_store(self, value: pulumi.Input[str]):
+        pulumi.set(self, "fhir_store", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Describes the streaming FHIR data source.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class PipelineJobMappingPipelineJobMappingConfigArgsDict(TypedDict):
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Describes the mapping configuration.
+        """
+        whistle_config_source: NotRequired[pulumi.Input['PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceArgsDict']]
+        """
+        Specifies the path to the mapping configuration for harmonization pipeline.
+        Structure is documented below.
+        """
+elif False:
+    PipelineJobMappingPipelineJobMappingConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PipelineJobMappingPipelineJobMappingConfigArgs:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 whistle_config_source: Optional[pulumi.Input['PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceArgs']] = None):
+        """
+        :param pulumi.Input[str] description: Describes the mapping configuration.
+        :param pulumi.Input['PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceArgs'] whistle_config_source: Specifies the path to the mapping configuration for harmonization pipeline.
+               Structure is documented below.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if whistle_config_source is not None:
+            pulumi.set(__self__, "whistle_config_source", whistle_config_source)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Describes the mapping configuration.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="whistleConfigSource")
+    def whistle_config_source(self) -> Optional[pulumi.Input['PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceArgs']]:
+        """
+        Specifies the path to the mapping configuration for harmonization pipeline.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "whistle_config_source")
+
+    @whistle_config_source.setter
+    def whistle_config_source(self, value: Optional[pulumi.Input['PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceArgs']]):
+        pulumi.set(self, "whistle_config_source", value)
+
+
+if not MYPY:
+    class PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceArgsDict(TypedDict):
+        import_uri_prefix: pulumi.Input[str]
+        """
+        Directory path where all the Whistle files are located.
+        Example: gs://{bucket-id}/{path/to/import-root/dir}
+        """
+        uri: pulumi.Input[str]
+        """
+        Main configuration file which has the entrypoint or the root function.
+        Example: gs://{bucket-id}/{path/to/import-root/dir}/entrypoint-file-name.wstl.
+        """
+elif False:
+    PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceArgs:
+    def __init__(__self__, *,
+                 import_uri_prefix: pulumi.Input[str],
+                 uri: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] import_uri_prefix: Directory path where all the Whistle files are located.
+               Example: gs://{bucket-id}/{path/to/import-root/dir}
+        :param pulumi.Input[str] uri: Main configuration file which has the entrypoint or the root function.
+               Example: gs://{bucket-id}/{path/to/import-root/dir}/entrypoint-file-name.wstl.
+        """
+        pulumi.set(__self__, "import_uri_prefix", import_uri_prefix)
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter(name="importUriPrefix")
+    def import_uri_prefix(self) -> pulumi.Input[str]:
+        """
+        Directory path where all the Whistle files are located.
+        Example: gs://{bucket-id}/{path/to/import-root/dir}
+        """
+        return pulumi.get(self, "import_uri_prefix")
+
+    @import_uri_prefix.setter
+    def import_uri_prefix(self, value: pulumi.Input[str]):
+        pulumi.set(self, "import_uri_prefix", value)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> pulumi.Input[str]:
+        """
+        Main configuration file which has the entrypoint or the root function.
+        Example: gs://{bucket-id}/{path/to/import-root/dir}/entrypoint-file-name.wstl.
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "uri", value)
+
+
+if not MYPY:
+    class PipelineJobReconciliationPipelineJobArgsDict(TypedDict):
+        matching_uri_prefix: pulumi.Input[str]
+        """
+        Specifies the top level directory of the matching configs used
+        in all mapping pipelines, which extract properties for resources
+        to be matched on.
+        Example: gs://{bucket-id}/{path/to/matching/configs}
+        """
+        merge_config: pulumi.Input['PipelineJobReconciliationPipelineJobMergeConfigArgsDict']
+        """
+        Specifies the location of the reconciliation configuration.
+        Structure is documented below.
+        """
+        fhir_store_destination: NotRequired[pulumi.Input[str]]
+        """
+        The harmonized FHIR store to write harmonized FHIR resources to,
+        in the format of: project/{projectID}/locations/{locationID}/datasets/{datasetName}/fhirStores/{id}
+        """
+elif False:
+    PipelineJobReconciliationPipelineJobArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PipelineJobReconciliationPipelineJobArgs:
+    def __init__(__self__, *,
+                 matching_uri_prefix: pulumi.Input[str],
+                 merge_config: pulumi.Input['PipelineJobReconciliationPipelineJobMergeConfigArgs'],
+                 fhir_store_destination: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] matching_uri_prefix: Specifies the top level directory of the matching configs used
+               in all mapping pipelines, which extract properties for resources
+               to be matched on.
+               Example: gs://{bucket-id}/{path/to/matching/configs}
+        :param pulumi.Input['PipelineJobReconciliationPipelineJobMergeConfigArgs'] merge_config: Specifies the location of the reconciliation configuration.
+               Structure is documented below.
+        :param pulumi.Input[str] fhir_store_destination: The harmonized FHIR store to write harmonized FHIR resources to,
+               in the format of: project/{projectID}/locations/{locationID}/datasets/{datasetName}/fhirStores/{id}
+        """
+        pulumi.set(__self__, "matching_uri_prefix", matching_uri_prefix)
+        pulumi.set(__self__, "merge_config", merge_config)
+        if fhir_store_destination is not None:
+            pulumi.set(__self__, "fhir_store_destination", fhir_store_destination)
+
+    @property
+    @pulumi.getter(name="matchingUriPrefix")
+    def matching_uri_prefix(self) -> pulumi.Input[str]:
+        """
+        Specifies the top level directory of the matching configs used
+        in all mapping pipelines, which extract properties for resources
+        to be matched on.
+        Example: gs://{bucket-id}/{path/to/matching/configs}
+        """
+        return pulumi.get(self, "matching_uri_prefix")
+
+    @matching_uri_prefix.setter
+    def matching_uri_prefix(self, value: pulumi.Input[str]):
+        pulumi.set(self, "matching_uri_prefix", value)
+
+    @property
+    @pulumi.getter(name="mergeConfig")
+    def merge_config(self) -> pulumi.Input['PipelineJobReconciliationPipelineJobMergeConfigArgs']:
+        """
+        Specifies the location of the reconciliation configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "merge_config")
+
+    @merge_config.setter
+    def merge_config(self, value: pulumi.Input['PipelineJobReconciliationPipelineJobMergeConfigArgs']):
+        pulumi.set(self, "merge_config", value)
+
+    @property
+    @pulumi.getter(name="fhirStoreDestination")
+    def fhir_store_destination(self) -> Optional[pulumi.Input[str]]:
+        """
+        The harmonized FHIR store to write harmonized FHIR resources to,
+        in the format of: project/{projectID}/locations/{locationID}/datasets/{datasetName}/fhirStores/{id}
+        """
+        return pulumi.get(self, "fhir_store_destination")
+
+    @fhir_store_destination.setter
+    def fhir_store_destination(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fhir_store_destination", value)
+
+
+if not MYPY:
+    class PipelineJobReconciliationPipelineJobMergeConfigArgsDict(TypedDict):
+        whistle_config_source: pulumi.Input['PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceArgsDict']
+        """
+        Specifies the path to the mapping configuration for harmonization pipeline.
+        Structure is documented below.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Describes the mapping configuration.
+        """
+elif False:
+    PipelineJobReconciliationPipelineJobMergeConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PipelineJobReconciliationPipelineJobMergeConfigArgs:
+    def __init__(__self__, *,
+                 whistle_config_source: pulumi.Input['PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceArgs'],
+                 description: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input['PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceArgs'] whistle_config_source: Specifies the path to the mapping configuration for harmonization pipeline.
+               Structure is documented below.
+        :param pulumi.Input[str] description: Describes the mapping configuration.
+        """
+        pulumi.set(__self__, "whistle_config_source", whistle_config_source)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter(name="whistleConfigSource")
+    def whistle_config_source(self) -> pulumi.Input['PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceArgs']:
+        """
+        Specifies the path to the mapping configuration for harmonization pipeline.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "whistle_config_source")
+
+    @whistle_config_source.setter
+    def whistle_config_source(self, value: pulumi.Input['PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceArgs']):
+        pulumi.set(self, "whistle_config_source", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Describes the mapping configuration.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceArgsDict(TypedDict):
+        import_uri_prefix: pulumi.Input[str]
+        """
+        Directory path where all the Whistle files are located.
+        Example: gs://{bucket-id}/{path/to/import-root/dir}
+        """
+        uri: pulumi.Input[str]
+        """
+        Main configuration file which has the entrypoint or the root function.
+        Example: gs://{bucket-id}/{path/to/import-root/dir}/entrypoint-file-name.wstl.
+        """
+elif False:
+    PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceArgs:
+    def __init__(__self__, *,
+                 import_uri_prefix: pulumi.Input[str],
+                 uri: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] import_uri_prefix: Directory path where all the Whistle files are located.
+               Example: gs://{bucket-id}/{path/to/import-root/dir}
+        :param pulumi.Input[str] uri: Main configuration file which has the entrypoint or the root function.
+               Example: gs://{bucket-id}/{path/to/import-root/dir}/entrypoint-file-name.wstl.
+        """
+        pulumi.set(__self__, "import_uri_prefix", import_uri_prefix)
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter(name="importUriPrefix")
+    def import_uri_prefix(self) -> pulumi.Input[str]:
+        """
+        Directory path where all the Whistle files are located.
+        Example: gs://{bucket-id}/{path/to/import-root/dir}
+        """
+        return pulumi.get(self, "import_uri_prefix")
+
+    @import_uri_prefix.setter
+    def import_uri_prefix(self, value: pulumi.Input[str]):
+        pulumi.set(self, "import_uri_prefix", value)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> pulumi.Input[str]:
+        """
+        Main configuration file which has the entrypoint or the root function.
+        Example: gs://{bucket-id}/{path/to/import-root/dir}/entrypoint-file-name.wstl.
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "uri", value)
 
 
 if not MYPY:

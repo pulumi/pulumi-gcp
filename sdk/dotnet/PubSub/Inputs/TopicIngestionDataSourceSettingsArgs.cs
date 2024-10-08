@@ -19,6 +19,21 @@ namespace Pulumi.Gcp.PubSub.Inputs
         [Input("awsKinesis")]
         public Input<Inputs.TopicIngestionDataSourceSettingsAwsKinesisArgs>? AwsKinesis { get; set; }
 
+        /// <summary>
+        /// Settings for ingestion from Cloud Storage.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("cloudStorage")]
+        public Input<Inputs.TopicIngestionDataSourceSettingsCloudStorageArgs>? CloudStorage { get; set; }
+
+        /// <summary>
+        /// Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,
+        /// no Platform Logs will be generated.'
+        /// Structure is documented below.
+        /// </summary>
+        [Input("platformLogsSettings")]
+        public Input<Inputs.TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs>? PlatformLogsSettings { get; set; }
+
         public TopicIngestionDataSourceSettingsArgs()
         {
         }

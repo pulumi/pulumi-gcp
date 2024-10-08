@@ -349,16 +349,36 @@ namespace Pulumi.Gcp.Compute
         public Output<string> NextHopInstanceZone { get; private set; } = null!;
 
         /// <summary>
+        /// Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance,
+        /// distance, and available bandwidth between regions.
+        /// </summary>
+        [Output("nextHopInterRegionCost")]
+        public Output<string> NextHopInterRegionCost { get; private set; } = null!;
+
+        /// <summary>
         /// Network IP address of an instance that should handle matching packets.
         /// </summary>
         [Output("nextHopIp")]
         public Output<string> NextHopIp { get; private set; } = null!;
 
         /// <summary>
+        /// Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
+        /// </summary>
+        [Output("nextHopMed")]
+        public Output<string> NextHopMed { get; private set; } = null!;
+
+        /// <summary>
         /// URL to a Network that should handle matching packets.
         /// </summary>
         [Output("nextHopNetwork")]
         public Output<string> NextHopNetwork { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or
+        /// INCOMPLETE.
+        /// </summary>
+        [Output("nextHopOrigin")]
+        public Output<string> NextHopOrigin { get; private set; } = null!;
 
         /// <summary>
         /// URL to a VpnTunnel that should handle matching packets.
@@ -661,16 +681,36 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? NextHopInstanceZone { get; set; }
 
         /// <summary>
+        /// Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance,
+        /// distance, and available bandwidth between regions.
+        /// </summary>
+        [Input("nextHopInterRegionCost")]
+        public Input<string>? NextHopInterRegionCost { get; set; }
+
+        /// <summary>
         /// Network IP address of an instance that should handle matching packets.
         /// </summary>
         [Input("nextHopIp")]
         public Input<string>? NextHopIp { get; set; }
 
         /// <summary>
+        /// Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
+        /// </summary>
+        [Input("nextHopMed")]
+        public Input<string>? NextHopMed { get; set; }
+
+        /// <summary>
         /// URL to a Network that should handle matching packets.
         /// </summary>
         [Input("nextHopNetwork")]
         public Input<string>? NextHopNetwork { get; set; }
+
+        /// <summary>
+        /// Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or
+        /// INCOMPLETE.
+        /// </summary>
+        [Input("nextHopOrigin")]
+        public Input<string>? NextHopOrigin { get; set; }
 
         /// <summary>
         /// URL to a VpnTunnel that should handle matching packets.

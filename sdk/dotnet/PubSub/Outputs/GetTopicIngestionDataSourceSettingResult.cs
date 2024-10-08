@@ -17,11 +17,27 @@ namespace Pulumi.Gcp.PubSub.Outputs
         /// Settings for ingestion from Amazon Kinesis Data Streams.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetTopicIngestionDataSourceSettingAwsKineseResult> AwsKineses;
+        /// <summary>
+        /// Settings for ingestion from Cloud Storage.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetTopicIngestionDataSourceSettingCloudStorageResult> CloudStorages;
+        /// <summary>
+        /// Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,
+        /// no Platform Logs will be generated.'
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetTopicIngestionDataSourceSettingPlatformLogsSettingResult> PlatformLogsSettings;
 
         [OutputConstructor]
-        private GetTopicIngestionDataSourceSettingResult(ImmutableArray<Outputs.GetTopicIngestionDataSourceSettingAwsKineseResult> awsKineses)
+        private GetTopicIngestionDataSourceSettingResult(
+            ImmutableArray<Outputs.GetTopicIngestionDataSourceSettingAwsKineseResult> awsKineses,
+
+            ImmutableArray<Outputs.GetTopicIngestionDataSourceSettingCloudStorageResult> cloudStorages,
+
+            ImmutableArray<Outputs.GetTopicIngestionDataSourceSettingPlatformLogsSettingResult> platformLogsSettings)
         {
             AwsKineses = awsKineses;
+            CloudStorages = cloudStorages;
+            PlatformLogsSettings = platformLogsSettings;
         }
     }
 }

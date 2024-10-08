@@ -83,7 +83,7 @@ export class LogScope extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The location of the resource. The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.
+     * The location of the resource. The only supported location is global so far.
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -157,7 +157,7 @@ export interface LogScopeState {
      */
     description?: pulumi.Input<string>;
     /**
-     * The location of the resource. The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.
+     * The location of the resource. The only supported location is global so far.
      */
     location?: pulumi.Input<string>;
     /**
@@ -190,7 +190,7 @@ export interface LogScopeArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * The location of the resource. The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.
+     * The location of the resource. The only supported location is global so far.
      */
     location?: pulumi.Input<string>;
     /**

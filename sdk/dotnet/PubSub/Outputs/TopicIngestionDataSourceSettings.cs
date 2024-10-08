@@ -18,11 +18,29 @@ namespace Pulumi.Gcp.PubSub.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.TopicIngestionDataSourceSettingsAwsKinesis? AwsKinesis;
+        /// <summary>
+        /// Settings for ingestion from Cloud Storage.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.TopicIngestionDataSourceSettingsCloudStorage? CloudStorage;
+        /// <summary>
+        /// Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,
+        /// no Platform Logs will be generated.'
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.TopicIngestionDataSourceSettingsPlatformLogsSettings? PlatformLogsSettings;
 
         [OutputConstructor]
-        private TopicIngestionDataSourceSettings(Outputs.TopicIngestionDataSourceSettingsAwsKinesis? awsKinesis)
+        private TopicIngestionDataSourceSettings(
+            Outputs.TopicIngestionDataSourceSettingsAwsKinesis? awsKinesis,
+
+            Outputs.TopicIngestionDataSourceSettingsCloudStorage? cloudStorage,
+
+            Outputs.TopicIngestionDataSourceSettingsPlatformLogsSettings? platformLogsSettings)
         {
             AwsKinesis = awsKinesis;
+            CloudStorage = cloudStorage;
+            PlatformLogsSettings = platformLogsSettings;
         }
     }
 }

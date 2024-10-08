@@ -119,6 +119,29 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Pubsub Topic Ingestion Cloud Storage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example = new gcp.pubsub.Topic("example", {
+ *     name: "example-topic",
+ *     ingestionDataSourceSettings: {
+ *         cloudStorage: {
+ *             bucket: "test-bucket",
+ *             textFormat: {
+ *                 delimiter: " ",
+ *             },
+ *             minimumObjectCreateTime: "2024-01-01T00:00:00Z",
+ *             matchGlob: "foo/**",
+ *         },
+ *         platformLogsSettings: {
+ *             severity: "WARNING",
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

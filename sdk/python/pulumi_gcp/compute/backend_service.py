@@ -48,6 +48,7 @@ class BackendServiceArgs:
                  security_settings: Optional[pulumi.Input['BackendServiceSecuritySettingsArgs']] = None,
                  service_lb_policy: Optional[pulumi.Input[str]] = None,
                  session_affinity: Optional[pulumi.Input[str]] = None,
+                 strong_session_affinity_cookie: Optional[pulumi.Input['BackendServiceStrongSessionAffinityCookieArgs']] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a BackendService resource.
@@ -188,7 +189,9 @@ class BackendServiceArgs:
                Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
-               Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
+               Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `STRONG_COOKIE_AFFINITY`.
+        :param pulumi.Input['BackendServiceStrongSessionAffinityCookieArgs'] strong_session_affinity_cookie: Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
+               Structure is documented below.
         :param pulumi.Input[int] timeout_sec: The backend service timeout has a different meaning depending on the type of load balancer.
                For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
                The default is 30 seconds.
@@ -248,6 +251,8 @@ class BackendServiceArgs:
             pulumi.set(__self__, "service_lb_policy", service_lb_policy)
         if session_affinity is not None:
             pulumi.set(__self__, "session_affinity", session_affinity)
+        if strong_session_affinity_cookie is not None:
+            pulumi.set(__self__, "strong_session_affinity_cookie", strong_session_affinity_cookie)
         if timeout_sec is not None:
             pulumi.set(__self__, "timeout_sec", timeout_sec)
 
@@ -678,13 +683,26 @@ class BackendServiceArgs:
         """
         Type of session affinity to use. The default is NONE. Session affinity is
         not applicable if the protocol is UDP.
-        Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
+        Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `STRONG_COOKIE_AFFINITY`.
         """
         return pulumi.get(self, "session_affinity")
 
     @session_affinity.setter
     def session_affinity(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "session_affinity", value)
+
+    @property
+    @pulumi.getter(name="strongSessionAffinityCookie")
+    def strong_session_affinity_cookie(self) -> Optional[pulumi.Input['BackendServiceStrongSessionAffinityCookieArgs']]:
+        """
+        Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "strong_session_affinity_cookie")
+
+    @strong_session_affinity_cookie.setter
+    def strong_session_affinity_cookie(self, value: Optional[pulumi.Input['BackendServiceStrongSessionAffinityCookieArgs']]):
+        pulumi.set(self, "strong_session_affinity_cookie", value)
 
     @property
     @pulumi.getter(name="timeoutSec")
@@ -736,6 +754,7 @@ class _BackendServiceState:
                  self_link: Optional[pulumi.Input[str]] = None,
                  service_lb_policy: Optional[pulumi.Input[str]] = None,
                  session_affinity: Optional[pulumi.Input[str]] = None,
+                 strong_session_affinity_cookie: Optional[pulumi.Input['BackendServiceStrongSessionAffinityCookieArgs']] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering BackendService resources.
@@ -881,7 +900,9 @@ class _BackendServiceState:
                Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
-               Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
+               Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `STRONG_COOKIE_AFFINITY`.
+        :param pulumi.Input['BackendServiceStrongSessionAffinityCookieArgs'] strong_session_affinity_cookie: Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
+               Structure is documented below.
         :param pulumi.Input[int] timeout_sec: The backend service timeout has a different meaning depending on the type of load balancer.
                For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
                The default is 30 seconds.
@@ -949,6 +970,8 @@ class _BackendServiceState:
             pulumi.set(__self__, "service_lb_policy", service_lb_policy)
         if session_affinity is not None:
             pulumi.set(__self__, "session_affinity", session_affinity)
+        if strong_session_affinity_cookie is not None:
+            pulumi.set(__self__, "strong_session_affinity_cookie", strong_session_affinity_cookie)
         if timeout_sec is not None:
             pulumi.set(__self__, "timeout_sec", timeout_sec)
 
@@ -1428,13 +1451,26 @@ class _BackendServiceState:
         """
         Type of session affinity to use. The default is NONE. Session affinity is
         not applicable if the protocol is UDP.
-        Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
+        Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `STRONG_COOKIE_AFFINITY`.
         """
         return pulumi.get(self, "session_affinity")
 
     @session_affinity.setter
     def session_affinity(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "session_affinity", value)
+
+    @property
+    @pulumi.getter(name="strongSessionAffinityCookie")
+    def strong_session_affinity_cookie(self) -> Optional[pulumi.Input['BackendServiceStrongSessionAffinityCookieArgs']]:
+        """
+        Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "strong_session_affinity_cookie")
+
+    @strong_session_affinity_cookie.setter
+    def strong_session_affinity_cookie(self, value: Optional[pulumi.Input['BackendServiceStrongSessionAffinityCookieArgs']]):
+        pulumi.set(self, "strong_session_affinity_cookie", value)
 
     @property
     @pulumi.getter(name="timeoutSec")
@@ -1484,6 +1520,7 @@ class BackendService(pulumi.CustomResource):
                  security_settings: Optional[pulumi.Input[Union['BackendServiceSecuritySettingsArgs', 'BackendServiceSecuritySettingsArgsDict']]] = None,
                  service_lb_policy: Optional[pulumi.Input[str]] = None,
                  session_affinity: Optional[pulumi.Input[str]] = None,
+                 strong_session_affinity_cookie: Optional[pulumi.Input[Union['BackendServiceStrongSessionAffinityCookieArgs', 'BackendServiceStrongSessionAffinityCookieArgsDict']]] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
@@ -1713,6 +1750,31 @@ class BackendService(pulumi.CustomResource):
                 "success_rate_stdev_factor": 1900,
             })
         ```
+        ### Backend Service Stateful Session Affinity
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        health_check = gcp.compute.HealthCheck("health_check",
+            name="health-check",
+            http_health_check={
+                "port": 80,
+            })
+        default = gcp.compute.BackendService("default",
+            name="backend-service",
+            health_checks=health_check.id,
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            locality_lb_policy="RING_HASH",
+            session_affinity="STRONG_COOKIE_AFFINITY",
+            strong_session_affinity_cookie={
+                "ttl": {
+                    "seconds": 11,
+                    "nanos": 1111,
+                },
+                "name": "mycookie",
+            })
+        ```
         ### Backend Service Network Endpoint
 
         ```python
@@ -1918,7 +1980,9 @@ class BackendService(pulumi.CustomResource):
                Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
-               Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
+               Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `STRONG_COOKIE_AFFINITY`.
+        :param pulumi.Input[Union['BackendServiceStrongSessionAffinityCookieArgs', 'BackendServiceStrongSessionAffinityCookieArgsDict']] strong_session_affinity_cookie: Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
+               Structure is documented below.
         :param pulumi.Input[int] timeout_sec: The backend service timeout has a different meaning depending on the type of load balancer.
                For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
                The default is 30 seconds.
@@ -2157,6 +2221,31 @@ class BackendService(pulumi.CustomResource):
                 "success_rate_stdev_factor": 1900,
             })
         ```
+        ### Backend Service Stateful Session Affinity
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        health_check = gcp.compute.HealthCheck("health_check",
+            name="health-check",
+            http_health_check={
+                "port": 80,
+            })
+        default = gcp.compute.BackendService("default",
+            name="backend-service",
+            health_checks=health_check.id,
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            locality_lb_policy="RING_HASH",
+            session_affinity="STRONG_COOKIE_AFFINITY",
+            strong_session_affinity_cookie={
+                "ttl": {
+                    "seconds": 11,
+                    "nanos": 1111,
+                },
+                "name": "mycookie",
+            })
+        ```
         ### Backend Service Network Endpoint
 
         ```python
@@ -2265,6 +2354,7 @@ class BackendService(pulumi.CustomResource):
                  security_settings: Optional[pulumi.Input[Union['BackendServiceSecuritySettingsArgs', 'BackendServiceSecuritySettingsArgsDict']]] = None,
                  service_lb_policy: Optional[pulumi.Input[str]] = None,
                  session_affinity: Optional[pulumi.Input[str]] = None,
+                 strong_session_affinity_cookie: Optional[pulumi.Input[Union['BackendServiceStrongSessionAffinityCookieArgs', 'BackendServiceStrongSessionAffinityCookieArgsDict']]] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -2302,6 +2392,7 @@ class BackendService(pulumi.CustomResource):
             __props__.__dict__["security_settings"] = security_settings
             __props__.__dict__["service_lb_policy"] = service_lb_policy
             __props__.__dict__["session_affinity"] = session_affinity
+            __props__.__dict__["strong_session_affinity_cookie"] = strong_session_affinity_cookie
             __props__.__dict__["timeout_sec"] = timeout_sec
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["fingerprint"] = None
@@ -2348,6 +2439,7 @@ class BackendService(pulumi.CustomResource):
             self_link: Optional[pulumi.Input[str]] = None,
             service_lb_policy: Optional[pulumi.Input[str]] = None,
             session_affinity: Optional[pulumi.Input[str]] = None,
+            strong_session_affinity_cookie: Optional[pulumi.Input[Union['BackendServiceStrongSessionAffinityCookieArgs', 'BackendServiceStrongSessionAffinityCookieArgsDict']]] = None,
             timeout_sec: Optional[pulumi.Input[int]] = None) -> 'BackendService':
         """
         Get an existing BackendService resource's state with the given name, id, and optional extra
@@ -2498,7 +2590,9 @@ class BackendService(pulumi.CustomResource):
                Can only be set if load balancing scheme is EXTERNAL, EXTERNAL_MANAGED, INTERNAL_MANAGED or INTERNAL_SELF_MANAGED and the scope is global.
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
-               Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
+               Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `STRONG_COOKIE_AFFINITY`.
+        :param pulumi.Input[Union['BackendServiceStrongSessionAffinityCookieArgs', 'BackendServiceStrongSessionAffinityCookieArgsDict']] strong_session_affinity_cookie: Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
+               Structure is documented below.
         :param pulumi.Input[int] timeout_sec: The backend service timeout has a different meaning depending on the type of load balancer.
                For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
                The default is 30 seconds.
@@ -2539,6 +2633,7 @@ class BackendService(pulumi.CustomResource):
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["service_lb_policy"] = service_lb_policy
         __props__.__dict__["session_affinity"] = session_affinity
+        __props__.__dict__["strong_session_affinity_cookie"] = strong_session_affinity_cookie
         __props__.__dict__["timeout_sec"] = timeout_sec
         return BackendService(resource_name, opts=opts, __props__=__props__)
 
@@ -2898,9 +2993,18 @@ class BackendService(pulumi.CustomResource):
         """
         Type of session affinity to use. The default is NONE. Session affinity is
         not applicable if the protocol is UDP.
-        Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
+        Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `STRONG_COOKIE_AFFINITY`.
         """
         return pulumi.get(self, "session_affinity")
+
+    @property
+    @pulumi.getter(name="strongSessionAffinityCookie")
+    def strong_session_affinity_cookie(self) -> pulumi.Output[Optional['outputs.BackendServiceStrongSessionAffinityCookie']]:
+        """
+        Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "strong_session_affinity_cookie")
 
     @property
     @pulumi.getter(name="timeoutSec")

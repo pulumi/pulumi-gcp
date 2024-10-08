@@ -6,6 +6,8 @@ package com.pulumi.gcp.pubsub.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.pubsub.inputs.TopicIngestionDataSourceSettingsAwsKinesisArgs;
+import com.pulumi.gcp.pubsub.inputs.TopicIngestionDataSourceSettingsCloudStorageArgs;
+import com.pulumi.gcp.pubsub.inputs.TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -32,10 +34,48 @@ public final class TopicIngestionDataSourceSettingsArgs extends com.pulumi.resou
         return Optional.ofNullable(this.awsKinesis);
     }
 
+    /**
+     * Settings for ingestion from Cloud Storage.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="cloudStorage")
+    private @Nullable Output<TopicIngestionDataSourceSettingsCloudStorageArgs> cloudStorage;
+
+    /**
+     * @return Settings for ingestion from Cloud Storage.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<TopicIngestionDataSourceSettingsCloudStorageArgs>> cloudStorage() {
+        return Optional.ofNullable(this.cloudStorage);
+    }
+
+    /**
+     * Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,
+     * no Platform Logs will be generated.&#39;
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="platformLogsSettings")
+    private @Nullable Output<TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs> platformLogsSettings;
+
+    /**
+     * @return Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,
+     * no Platform Logs will be generated.&#39;
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs>> platformLogsSettings() {
+        return Optional.ofNullable(this.platformLogsSettings);
+    }
+
     private TopicIngestionDataSourceSettingsArgs() {}
 
     private TopicIngestionDataSourceSettingsArgs(TopicIngestionDataSourceSettingsArgs $) {
         this.awsKinesis = $.awsKinesis;
+        this.cloudStorage = $.cloudStorage;
+        this.platformLogsSettings = $.platformLogsSettings;
     }
 
     public static Builder builder() {
@@ -77,6 +117,54 @@ public final class TopicIngestionDataSourceSettingsArgs extends com.pulumi.resou
          */
         public Builder awsKinesis(TopicIngestionDataSourceSettingsAwsKinesisArgs awsKinesis) {
             return awsKinesis(Output.of(awsKinesis));
+        }
+
+        /**
+         * @param cloudStorage Settings for ingestion from Cloud Storage.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloudStorage(@Nullable Output<TopicIngestionDataSourceSettingsCloudStorageArgs> cloudStorage) {
+            $.cloudStorage = cloudStorage;
+            return this;
+        }
+
+        /**
+         * @param cloudStorage Settings for ingestion from Cloud Storage.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloudStorage(TopicIngestionDataSourceSettingsCloudStorageArgs cloudStorage) {
+            return cloudStorage(Output.of(cloudStorage));
+        }
+
+        /**
+         * @param platformLogsSettings Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,
+         * no Platform Logs will be generated.&#39;
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder platformLogsSettings(@Nullable Output<TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs> platformLogsSettings) {
+            $.platformLogsSettings = platformLogsSettings;
+            return this;
+        }
+
+        /**
+         * @param platformLogsSettings Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,
+         * no Platform Logs will be generated.&#39;
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder platformLogsSettings(TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs platformLogsSettings) {
+            return platformLogsSettings(Output.of(platformLogsSettings));
         }
 
         public TopicIngestionDataSourceSettingsArgs build() {

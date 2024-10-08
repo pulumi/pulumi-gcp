@@ -85,7 +85,7 @@ public final class TagKeyArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
-     * The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     * The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes (&#39;), double quotes (&#34;), backslashes (\\), and forward slashes (/).
      * 
      * ***
      * 
@@ -95,7 +95,7 @@ public final class TagKeyArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
-     * The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     * The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes (&#39;), double quotes (&#34;), backslashes (\\), and forward slashes (/).
      * 
      * ***
      * 
@@ -224,7 +224,7 @@ public final class TagKeyArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param shortName Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
-         * The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+         * The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes (&#39;), double quotes (&#34;), backslashes (\\), and forward slashes (/).
          * 
          * ***
          * 
@@ -238,7 +238,7 @@ public final class TagKeyArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param shortName Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
-         * The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+         * The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes (&#39;), double quotes (&#34;), backslashes (\\), and forward slashes (/).
          * 
          * ***
          * 

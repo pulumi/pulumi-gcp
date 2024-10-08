@@ -45,6 +45,7 @@ class RegionBackendServiceArgs:
                  region: Optional[pulumi.Input[str]] = None,
                  security_policy: Optional[pulumi.Input[str]] = None,
                  session_affinity: Optional[pulumi.Input[str]] = None,
+                 strong_session_affinity_cookie: Optional[pulumi.Input['RegionBackendServiceStrongSessionAffinityCookieArgs']] = None,
                  subsetting: Optional[pulumi.Input['RegionBackendServiceSubsettingArgs']] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None):
         """
@@ -175,7 +176,9 @@ class RegionBackendServiceArgs:
         :param pulumi.Input[str] security_policy: The security policy associated with this backend service.
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
-               Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
+               Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`, `STRONG_COOKIE_AFFINITY`.
+        :param pulumi.Input['RegionBackendServiceStrongSessionAffinityCookieArgs'] strong_session_affinity_cookie: Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
+               Structure is documented below.
         :param pulumi.Input['RegionBackendServiceSubsettingArgs'] subsetting: Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
                Structure is documented below.
         :param pulumi.Input[int] timeout_sec: The backend service timeout has a different meaning depending on the type of load balancer.
@@ -231,6 +234,8 @@ class RegionBackendServiceArgs:
             pulumi.set(__self__, "security_policy", security_policy)
         if session_affinity is not None:
             pulumi.set(__self__, "session_affinity", session_affinity)
+        if strong_session_affinity_cookie is not None:
+            pulumi.set(__self__, "strong_session_affinity_cookie", strong_session_affinity_cookie)
         if subsetting is not None:
             pulumi.set(__self__, "subsetting", subsetting)
         if timeout_sec is not None:
@@ -619,13 +624,26 @@ class RegionBackendServiceArgs:
         """
         Type of session affinity to use. The default is NONE. Session affinity is
         not applicable if the protocol is UDP.
-        Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
+        Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`, `STRONG_COOKIE_AFFINITY`.
         """
         return pulumi.get(self, "session_affinity")
 
     @session_affinity.setter
     def session_affinity(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "session_affinity", value)
+
+    @property
+    @pulumi.getter(name="strongSessionAffinityCookie")
+    def strong_session_affinity_cookie(self) -> Optional[pulumi.Input['RegionBackendServiceStrongSessionAffinityCookieArgs']]:
+        """
+        Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "strong_session_affinity_cookie")
+
+    @strong_session_affinity_cookie.setter
+    def strong_session_affinity_cookie(self, value: Optional[pulumi.Input['RegionBackendServiceStrongSessionAffinityCookieArgs']]):
+        pulumi.set(self, "strong_session_affinity_cookie", value)
 
     @property
     @pulumi.getter
@@ -687,6 +705,7 @@ class _RegionBackendServiceState:
                  security_policy: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  session_affinity: Optional[pulumi.Input[str]] = None,
+                 strong_session_affinity_cookie: Optional[pulumi.Input['RegionBackendServiceStrongSessionAffinityCookieArgs']] = None,
                  subsetting: Optional[pulumi.Input['RegionBackendServiceSubsettingArgs']] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None):
         """
@@ -822,7 +841,9 @@ class _RegionBackendServiceState:
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
-               Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
+               Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`, `STRONG_COOKIE_AFFINITY`.
+        :param pulumi.Input['RegionBackendServiceStrongSessionAffinityCookieArgs'] strong_session_affinity_cookie: Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
+               Structure is documented below.
         :param pulumi.Input['RegionBackendServiceSubsettingArgs'] subsetting: Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
                Structure is documented below.
         :param pulumi.Input[int] timeout_sec: The backend service timeout has a different meaning depending on the type of load balancer.
@@ -886,6 +907,8 @@ class _RegionBackendServiceState:
             pulumi.set(__self__, "self_link", self_link)
         if session_affinity is not None:
             pulumi.set(__self__, "session_affinity", session_affinity)
+        if strong_session_affinity_cookie is not None:
+            pulumi.set(__self__, "strong_session_affinity_cookie", strong_session_affinity_cookie)
         if subsetting is not None:
             pulumi.set(__self__, "subsetting", subsetting)
         if timeout_sec is not None:
@@ -1323,13 +1346,26 @@ class _RegionBackendServiceState:
         """
         Type of session affinity to use. The default is NONE. Session affinity is
         not applicable if the protocol is UDP.
-        Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
+        Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`, `STRONG_COOKIE_AFFINITY`.
         """
         return pulumi.get(self, "session_affinity")
 
     @session_affinity.setter
     def session_affinity(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "session_affinity", value)
+
+    @property
+    @pulumi.getter(name="strongSessionAffinityCookie")
+    def strong_session_affinity_cookie(self) -> Optional[pulumi.Input['RegionBackendServiceStrongSessionAffinityCookieArgs']]:
+        """
+        Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "strong_session_affinity_cookie")
+
+    @strong_session_affinity_cookie.setter
+    def strong_session_affinity_cookie(self, value: Optional[pulumi.Input['RegionBackendServiceStrongSessionAffinityCookieArgs']]):
+        pulumi.set(self, "strong_session_affinity_cookie", value)
 
     @property
     @pulumi.getter
@@ -1389,6 +1425,7 @@ class RegionBackendService(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  security_policy: Optional[pulumi.Input[str]] = None,
                  session_affinity: Optional[pulumi.Input[str]] = None,
+                 strong_session_affinity_cookie: Optional[pulumi.Input[Union['RegionBackendServiceStrongSessionAffinityCookieArgs', 'RegionBackendServiceStrongSessionAffinityCookieArgsDict']]] = None,
                  subsetting: Optional[pulumi.Input[Union['RegionBackendServiceSubsettingArgs', 'RegionBackendServiceSubsettingArgsDict']]] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -1560,6 +1597,33 @@ class RegionBackendService(pulumi.CustomResource):
             },
             outlier_detection={
                 "consecutive_errors": 2,
+            })
+        ```
+        ### Region Backend Service Ilb Stateful Session Affinity
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        health_check = gcp.compute.HealthCheck("health_check",
+            name="rbs-health-check",
+            http_health_check={
+                "port": 80,
+            })
+        default = gcp.compute.RegionBackendService("default",
+            region="us-central1",
+            name="region-service",
+            health_checks=health_check.id,
+            load_balancing_scheme="INTERNAL_MANAGED",
+            locality_lb_policy="RING_HASH",
+            session_affinity="STRONG_COOKIE_AFFINITY",
+            protocol="HTTP",
+            strong_session_affinity_cookie={
+                "ttl": {
+                    "seconds": 11,
+                    "nanos": 1111,
+                },
+                "name": "mycookie",
             })
         ```
         ### Region Backend Service Balancing Mode
@@ -1809,7 +1873,9 @@ class RegionBackendService(pulumi.CustomResource):
         :param pulumi.Input[str] security_policy: The security policy associated with this backend service.
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
-               Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
+               Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`, `STRONG_COOKIE_AFFINITY`.
+        :param pulumi.Input[Union['RegionBackendServiceStrongSessionAffinityCookieArgs', 'RegionBackendServiceStrongSessionAffinityCookieArgsDict']] strong_session_affinity_cookie: Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
+               Structure is documented below.
         :param pulumi.Input[Union['RegionBackendServiceSubsettingArgs', 'RegionBackendServiceSubsettingArgsDict']] subsetting: Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
                Structure is documented below.
         :param pulumi.Input[int] timeout_sec: The backend service timeout has a different meaning depending on the type of load balancer.
@@ -1993,6 +2059,33 @@ class RegionBackendService(pulumi.CustomResource):
                 "consecutive_errors": 2,
             })
         ```
+        ### Region Backend Service Ilb Stateful Session Affinity
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        health_check = gcp.compute.HealthCheck("health_check",
+            name="rbs-health-check",
+            http_health_check={
+                "port": 80,
+            })
+        default = gcp.compute.RegionBackendService("default",
+            region="us-central1",
+            name="region-service",
+            health_checks=health_check.id,
+            load_balancing_scheme="INTERNAL_MANAGED",
+            locality_lb_policy="RING_HASH",
+            session_affinity="STRONG_COOKIE_AFFINITY",
+            protocol="HTTP",
+            strong_session_affinity_cookie={
+                "ttl": {
+                    "seconds": 11,
+                    "nanos": 1111,
+                },
+                "name": "mycookie",
+            })
+        ```
         ### Region Backend Service Balancing Mode
 
         ```python
@@ -2151,6 +2244,7 @@ class RegionBackendService(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  security_policy: Optional[pulumi.Input[str]] = None,
                  session_affinity: Optional[pulumi.Input[str]] = None,
+                 strong_session_affinity_cookie: Optional[pulumi.Input[Union['RegionBackendServiceStrongSessionAffinityCookieArgs', 'RegionBackendServiceStrongSessionAffinityCookieArgsDict']]] = None,
                  subsetting: Optional[pulumi.Input[Union['RegionBackendServiceSubsettingArgs', 'RegionBackendServiceSubsettingArgsDict']]] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -2186,6 +2280,7 @@ class RegionBackendService(pulumi.CustomResource):
             __props__.__dict__["region"] = region
             __props__.__dict__["security_policy"] = security_policy
             __props__.__dict__["session_affinity"] = session_affinity
+            __props__.__dict__["strong_session_affinity_cookie"] = strong_session_affinity_cookie
             __props__.__dict__["subsetting"] = subsetting
             __props__.__dict__["timeout_sec"] = timeout_sec
             __props__.__dict__["creation_timestamp"] = None
@@ -2230,6 +2325,7 @@ class RegionBackendService(pulumi.CustomResource):
             security_policy: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             session_affinity: Optional[pulumi.Input[str]] = None,
+            strong_session_affinity_cookie: Optional[pulumi.Input[Union['RegionBackendServiceStrongSessionAffinityCookieArgs', 'RegionBackendServiceStrongSessionAffinityCookieArgsDict']]] = None,
             subsetting: Optional[pulumi.Input[Union['RegionBackendServiceSubsettingArgs', 'RegionBackendServiceSubsettingArgsDict']]] = None,
             timeout_sec: Optional[pulumi.Input[int]] = None) -> 'RegionBackendService':
         """
@@ -2370,7 +2466,9 @@ class RegionBackendService(pulumi.CustomResource):
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
-               Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
+               Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`, `STRONG_COOKIE_AFFINITY`.
+        :param pulumi.Input[Union['RegionBackendServiceStrongSessionAffinityCookieArgs', 'RegionBackendServiceStrongSessionAffinityCookieArgsDict']] strong_session_affinity_cookie: Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
+               Structure is documented below.
         :param pulumi.Input[Union['RegionBackendServiceSubsettingArgs', 'RegionBackendServiceSubsettingArgsDict']] subsetting: Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
                Structure is documented below.
         :param pulumi.Input[int] timeout_sec: The backend service timeout has a different meaning depending on the type of load balancer.
@@ -2410,6 +2508,7 @@ class RegionBackendService(pulumi.CustomResource):
         __props__.__dict__["security_policy"] = security_policy
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["session_affinity"] = session_affinity
+        __props__.__dict__["strong_session_affinity_cookie"] = strong_session_affinity_cookie
         __props__.__dict__["subsetting"] = subsetting
         __props__.__dict__["timeout_sec"] = timeout_sec
         return RegionBackendService(resource_name, opts=opts, __props__=__props__)
@@ -2738,9 +2837,18 @@ class RegionBackendService(pulumi.CustomResource):
         """
         Type of session affinity to use. The default is NONE. Session affinity is
         not applicable if the protocol is UDP.
-        Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
+        Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`, `STRONG_COOKIE_AFFINITY`.
         """
         return pulumi.get(self, "session_affinity")
+
+    @property
+    @pulumi.getter(name="strongSessionAffinityCookie")
+    def strong_session_affinity_cookie(self) -> pulumi.Output[Optional['outputs.RegionBackendServiceStrongSessionAffinityCookie']]:
+        """
+        Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "strong_session_affinity_cookie")
 
     @property
     @pulumi.getter

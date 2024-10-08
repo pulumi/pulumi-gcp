@@ -12,6 +12,7 @@ import com.pulumi.gcp.container.AwsNodePoolArgs;
 import com.pulumi.gcp.container.inputs.AwsNodePoolState;
 import com.pulumi.gcp.container.outputs.AwsNodePoolAutoscaling;
 import com.pulumi.gcp.container.outputs.AwsNodePoolConfig;
+import com.pulumi.gcp.container.outputs.AwsNodePoolKubeletConfig;
 import com.pulumi.gcp.container.outputs.AwsNodePoolManagement;
 import com.pulumi.gcp.container.outputs.AwsNodePoolMaxPodsConstraint;
 import com.pulumi.gcp.container.outputs.AwsNodePoolUpdateSettings;
@@ -63,6 +64,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.container.inputs.AwsNodePoolConfigSshConfigArgs;
  * import com.pulumi.gcp.container.inputs.AwsNodePoolMaxPodsConstraintArgs;
  * import com.pulumi.gcp.container.inputs.AwsNodePoolManagementArgs;
+ * import com.pulumi.gcp.container.inputs.AwsNodePoolKubeletConfigArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -184,6 +186,12 @@ import javax.annotation.Nullable;
  *             .annotations(Map.of("label-one", "value-one"))
  *             .management(AwsNodePoolManagementArgs.builder()
  *                 .autoRepair(true)
+ *                 .build())
+ *             .kubeletConfig(AwsNodePoolKubeletConfigArgs.builder()
+ *                 .cpuManagerPolicy("none")
+ *                 .cpuCfsQuota(true)
+ *                 .cpuCfsQuotaPeriod("100ms")
+ *                 .podPidsLimit(1024)
  *                 .build())
  *             .project("my-project-name")
  *             .build());
@@ -647,6 +655,20 @@ public class AwsNodePool extends com.pulumi.resources.CustomResource {
      */
     public Output<String> etag() {
         return this.etag;
+    }
+    /**
+     * The kubelet configuration for the node pool.
+     * 
+     */
+    @Export(name="kubeletConfig", refs={AwsNodePoolKubeletConfig.class}, tree="[0]")
+    private Output<AwsNodePoolKubeletConfig> kubeletConfig;
+
+    /**
+     * @return The kubelet configuration for the node pool.
+     * 
+     */
+    public Output<AwsNodePoolKubeletConfig> kubeletConfig() {
+        return this.kubeletConfig;
     }
     /**
      * The location for the resource

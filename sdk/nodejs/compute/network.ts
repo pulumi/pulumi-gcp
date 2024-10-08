@@ -49,6 +49,46 @@ import * as utilities from "../utilities";
  *     networkFirewallPolicyEnforcementOrder: "BEFORE_CLASSIC_FIREWALL",
  * });
  * ```
+ * ### Network Bgp Best Path Selection Mode
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const vpcNetwork = new gcp.compute.Network("vpc_network", {
+ *     project: "my-project-name",
+ *     name: "vpc-network",
+ *     routingMode: "GLOBAL",
+ * });
+ * ```
+ * ### Network Bgp Best Path Selection Mode Standard
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const vpcNetwork = new gcp.compute.Network("vpc_network", {
+ *     project: "my-project-name",
+ *     name: "vpc-network",
+ *     routingMode: "GLOBAL",
+ *     bgpBestPathSelectionMode: "STANDARD",
+ * });
+ * ```
+ * ### Network Bgp Best Path Selection Mode Standard Custom Fields
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const vpcNetwork = new gcp.compute.Network("vpc_network", {
+ *     project: "my-project-name",
+ *     name: "vpc-network",
+ *     routingMode: "GLOBAL",
+ *     bgpBestPathSelectionMode: "STANDARD",
+ *     bgpAlwaysCompareMed: true,
+ *     bgpInterRegionCost: "ADD_COST_TO_MED",
+ * });
+ * ```
  *
  * ## Import
  *
@@ -110,6 +150,21 @@ export class Network extends pulumi.CustomResource {
      * the user can explicitly connect subnetwork resources.
      */
     public readonly autoCreateSubnetworks!: pulumi.Output<boolean | undefined>;
+    /**
+     * Enables/disables the comparison of MED across routes with different Neighbor ASNs.
+     * This value can only be set if the --bgp-best-path-selection-mode is STANDARD
+     */
+    public readonly bgpAlwaysCompareMed!: pulumi.Output<boolean>;
+    /**
+     * The BGP best selection algorithm to be employed. MODE can be LEGACY or STANDARD.
+     * Possible values are: `LEGACY`, `STANDARD`.
+     */
+    public readonly bgpBestPathSelectionMode!: pulumi.Output<string>;
+    /**
+     * Choice of the behavior of inter-regional cost and MED in the BPS algorithm.
+     * Possible values are: `DEFAULT`, `ADD_COST_TO_MED`.
+     */
+    public readonly bgpInterRegionCost!: pulumi.Output<string>;
     /**
      * If set to `true`, default routes (`0.0.0.0/0`) will be deleted
      * immediately after network creation. Defaults to `false`.
@@ -202,6 +257,9 @@ export class Network extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as NetworkState | undefined;
             resourceInputs["autoCreateSubnetworks"] = state ? state.autoCreateSubnetworks : undefined;
+            resourceInputs["bgpAlwaysCompareMed"] = state ? state.bgpAlwaysCompareMed : undefined;
+            resourceInputs["bgpBestPathSelectionMode"] = state ? state.bgpBestPathSelectionMode : undefined;
+            resourceInputs["bgpInterRegionCost"] = state ? state.bgpInterRegionCost : undefined;
             resourceInputs["deleteDefaultRoutesOnCreate"] = state ? state.deleteDefaultRoutesOnCreate : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["enableUlaInternalIpv6"] = state ? state.enableUlaInternalIpv6 : undefined;
@@ -217,6 +275,9 @@ export class Network extends pulumi.CustomResource {
         } else {
             const args = argsOrState as NetworkArgs | undefined;
             resourceInputs["autoCreateSubnetworks"] = args ? args.autoCreateSubnetworks : undefined;
+            resourceInputs["bgpAlwaysCompareMed"] = args ? args.bgpAlwaysCompareMed : undefined;
+            resourceInputs["bgpBestPathSelectionMode"] = args ? args.bgpBestPathSelectionMode : undefined;
+            resourceInputs["bgpInterRegionCost"] = args ? args.bgpInterRegionCost : undefined;
             resourceInputs["deleteDefaultRoutesOnCreate"] = args ? args.deleteDefaultRoutesOnCreate : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["enableUlaInternalIpv6"] = args ? args.enableUlaInternalIpv6 : undefined;
@@ -247,6 +308,21 @@ export interface NetworkState {
      * the user can explicitly connect subnetwork resources.
      */
     autoCreateSubnetworks?: pulumi.Input<boolean>;
+    /**
+     * Enables/disables the comparison of MED across routes with different Neighbor ASNs.
+     * This value can only be set if the --bgp-best-path-selection-mode is STANDARD
+     */
+    bgpAlwaysCompareMed?: pulumi.Input<boolean>;
+    /**
+     * The BGP best selection algorithm to be employed. MODE can be LEGACY or STANDARD.
+     * Possible values are: `LEGACY`, `STANDARD`.
+     */
+    bgpBestPathSelectionMode?: pulumi.Input<string>;
+    /**
+     * Choice of the behavior of inter-regional cost and MED in the BPS algorithm.
+     * Possible values are: `DEFAULT`, `ADD_COST_TO_MED`.
+     */
+    bgpInterRegionCost?: pulumi.Input<string>;
     /**
      * If set to `true`, default routes (`0.0.0.0/0`) will be deleted
      * immediately after network creation. Defaults to `false`.
@@ -338,6 +414,21 @@ export interface NetworkArgs {
      * the user can explicitly connect subnetwork resources.
      */
     autoCreateSubnetworks?: pulumi.Input<boolean>;
+    /**
+     * Enables/disables the comparison of MED across routes with different Neighbor ASNs.
+     * This value can only be set if the --bgp-best-path-selection-mode is STANDARD
+     */
+    bgpAlwaysCompareMed?: pulumi.Input<boolean>;
+    /**
+     * The BGP best selection algorithm to be employed. MODE can be LEGACY or STANDARD.
+     * Possible values are: `LEGACY`, `STANDARD`.
+     */
+    bgpBestPathSelectionMode?: pulumi.Input<string>;
+    /**
+     * Choice of the behavior of inter-regional cost and MED in the BPS algorithm.
+     * Possible values are: `DEFAULT`, `ADD_COST_TO_MED`.
+     */
+    bgpInterRegionCost?: pulumi.Input<string>;
     /**
      * If set to `true`, default routes (`0.0.0.0/0`) will be deleted
      * immediately after network creation. Defaults to `false`.

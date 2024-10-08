@@ -6,6 +6,7 @@ package com.pulumi.gcp.sourcerepo.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.sourcerepo.outputs.GetRepositoryPubsubConfig;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -15,6 +16,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRepositoryResult {
+    private Boolean createIgnoreAlreadyExists;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -27,6 +29,9 @@ public final class GetRepositoryResult {
     private String url;
 
     private GetRepositoryResult() {}
+    public Boolean createIgnoreAlreadyExists() {
+        return this.createIgnoreAlreadyExists;
+    }
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -59,6 +64,7 @@ public final class GetRepositoryResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Boolean createIgnoreAlreadyExists;
         private String id;
         private String name;
         private @Nullable String project;
@@ -68,6 +74,7 @@ public final class GetRepositoryResult {
         public Builder() {}
         public Builder(GetRepositoryResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.createIgnoreAlreadyExists = defaults.createIgnoreAlreadyExists;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.project = defaults.project;
@@ -76,6 +83,14 @@ public final class GetRepositoryResult {
     	      this.url = defaults.url;
         }
 
+        @CustomType.Setter
+        public Builder createIgnoreAlreadyExists(Boolean createIgnoreAlreadyExists) {
+            if (createIgnoreAlreadyExists == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryResult", "createIgnoreAlreadyExists");
+            }
+            this.createIgnoreAlreadyExists = createIgnoreAlreadyExists;
+            return this;
+        }
         @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
@@ -127,6 +142,7 @@ public final class GetRepositoryResult {
         }
         public GetRepositoryResult build() {
             final var _resultValue = new GetRepositoryResult();
+            _resultValue.createIgnoreAlreadyExists = createIgnoreAlreadyExists;
             _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.project = project;

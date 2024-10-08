@@ -38,6 +38,14 @@ __all__ = [
     'Hl7StoreNotificationConfig',
     'Hl7StoreNotificationConfigs',
     'Hl7StoreParserConfig',
+    'PipelineJobBackfillPipelineJob',
+    'PipelineJobMappingPipelineJob',
+    'PipelineJobMappingPipelineJobFhirStreamingSource',
+    'PipelineJobMappingPipelineJobMappingConfig',
+    'PipelineJobMappingPipelineJobMappingConfigWhistleConfigSource',
+    'PipelineJobReconciliationPipelineJob',
+    'PipelineJobReconciliationPipelineJobMergeConfig',
+    'PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSource',
     'WorkspaceSettings',
 ]
 
@@ -1018,6 +1026,465 @@ class Hl7StoreParserConfig(dict):
         Possible values are: `V1`, `V2`, `V3`.
         """
         return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class PipelineJobBackfillPipelineJob(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mappingPipelineJob":
+            suggest = "mapping_pipeline_job"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineJobBackfillPipelineJob. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineJobBackfillPipelineJob.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineJobBackfillPipelineJob.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 mapping_pipeline_job: Optional[str] = None):
+        """
+        :param str mapping_pipeline_job: Specifies the mapping pipeline job to backfill, the name format
+               should follow: projects/{projectId}/locations/{locationId}/datasets/{datasetId}/pipelineJobs/{pipelineJobId}.
+        """
+        if mapping_pipeline_job is not None:
+            pulumi.set(__self__, "mapping_pipeline_job", mapping_pipeline_job)
+
+    @property
+    @pulumi.getter(name="mappingPipelineJob")
+    def mapping_pipeline_job(self) -> Optional[str]:
+        """
+        Specifies the mapping pipeline job to backfill, the name format
+        should follow: projects/{projectId}/locations/{locationId}/datasets/{datasetId}/pipelineJobs/{pipelineJobId}.
+        """
+        return pulumi.get(self, "mapping_pipeline_job")
+
+
+@pulumi.output_type
+class PipelineJobMappingPipelineJob(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mappingConfig":
+            suggest = "mapping_config"
+        elif key == "fhirStoreDestination":
+            suggest = "fhir_store_destination"
+        elif key == "fhirStreamingSource":
+            suggest = "fhir_streaming_source"
+        elif key == "reconciliationDestination":
+            suggest = "reconciliation_destination"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineJobMappingPipelineJob. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineJobMappingPipelineJob.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineJobMappingPipelineJob.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 mapping_config: 'outputs.PipelineJobMappingPipelineJobMappingConfig',
+                 fhir_store_destination: Optional[str] = None,
+                 fhir_streaming_source: Optional['outputs.PipelineJobMappingPipelineJobFhirStreamingSource'] = None,
+                 reconciliation_destination: Optional[bool] = None):
+        """
+        :param 'PipelineJobMappingPipelineJobMappingConfigArgs' mapping_config: The location of the mapping configuration.
+               Structure is documented below.
+        :param str fhir_store_destination: If set, the mapping pipeline will write snapshots to this
+               FHIR store without assigning stable IDs. You must
+               grant your pipeline project's Cloud Healthcare Service
+               Agent serviceaccount healthcare.fhirResources.executeBundle
+               and healthcare.fhirResources.create permissions on the
+               destination store. The destination store must set
+               [disableReferentialIntegrity][FhirStore.disable_referential_integrity]
+               to true. The destination store must use FHIR version R4.
+               Format: project/{projectID}/locations/{locationID}/datasets/{datasetName}/fhirStores/{fhirStoreID}.
+        :param 'PipelineJobMappingPipelineJobFhirStreamingSourceArgs' fhir_streaming_source: A streaming FHIR data source.
+               Structure is documented below.
+        :param bool reconciliation_destination: If set to true, a mapping pipeline will send output snapshots
+               to the reconciliation pipeline in its dataset. A reconciliation
+               pipeline must exist in this dataset before a mapping pipeline
+               with a reconciliation destination can be created.
+        """
+        pulumi.set(__self__, "mapping_config", mapping_config)
+        if fhir_store_destination is not None:
+            pulumi.set(__self__, "fhir_store_destination", fhir_store_destination)
+        if fhir_streaming_source is not None:
+            pulumi.set(__self__, "fhir_streaming_source", fhir_streaming_source)
+        if reconciliation_destination is not None:
+            pulumi.set(__self__, "reconciliation_destination", reconciliation_destination)
+
+    @property
+    @pulumi.getter(name="mappingConfig")
+    def mapping_config(self) -> 'outputs.PipelineJobMappingPipelineJobMappingConfig':
+        """
+        The location of the mapping configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mapping_config")
+
+    @property
+    @pulumi.getter(name="fhirStoreDestination")
+    def fhir_store_destination(self) -> Optional[str]:
+        """
+        If set, the mapping pipeline will write snapshots to this
+        FHIR store without assigning stable IDs. You must
+        grant your pipeline project's Cloud Healthcare Service
+        Agent serviceaccount healthcare.fhirResources.executeBundle
+        and healthcare.fhirResources.create permissions on the
+        destination store. The destination store must set
+        [disableReferentialIntegrity][FhirStore.disable_referential_integrity]
+        to true. The destination store must use FHIR version R4.
+        Format: project/{projectID}/locations/{locationID}/datasets/{datasetName}/fhirStores/{fhirStoreID}.
+        """
+        return pulumi.get(self, "fhir_store_destination")
+
+    @property
+    @pulumi.getter(name="fhirStreamingSource")
+    def fhir_streaming_source(self) -> Optional['outputs.PipelineJobMappingPipelineJobFhirStreamingSource']:
+        """
+        A streaming FHIR data source.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "fhir_streaming_source")
+
+    @property
+    @pulumi.getter(name="reconciliationDestination")
+    def reconciliation_destination(self) -> Optional[bool]:
+        """
+        If set to true, a mapping pipeline will send output snapshots
+        to the reconciliation pipeline in its dataset. A reconciliation
+        pipeline must exist in this dataset before a mapping pipeline
+        with a reconciliation destination can be created.
+        """
+        return pulumi.get(self, "reconciliation_destination")
+
+
+@pulumi.output_type
+class PipelineJobMappingPipelineJobFhirStreamingSource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fhirStore":
+            suggest = "fhir_store"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineJobMappingPipelineJobFhirStreamingSource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineJobMappingPipelineJobFhirStreamingSource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineJobMappingPipelineJobFhirStreamingSource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 fhir_store: str,
+                 description: Optional[str] = None):
+        """
+        :param str fhir_store: The path to the FHIR store in the format projects/{projectId}/locations/{locationId}/datasets/{datasetId}/fhirStores/{fhirStoreId}.
+        :param str description: Describes the streaming FHIR data source.
+        """
+        pulumi.set(__self__, "fhir_store", fhir_store)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter(name="fhirStore")
+    def fhir_store(self) -> str:
+        """
+        The path to the FHIR store in the format projects/{projectId}/locations/{locationId}/datasets/{datasetId}/fhirStores/{fhirStoreId}.
+        """
+        return pulumi.get(self, "fhir_store")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        Describes the streaming FHIR data source.
+        """
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class PipelineJobMappingPipelineJobMappingConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "whistleConfigSource":
+            suggest = "whistle_config_source"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineJobMappingPipelineJobMappingConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineJobMappingPipelineJobMappingConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineJobMappingPipelineJobMappingConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 description: Optional[str] = None,
+                 whistle_config_source: Optional['outputs.PipelineJobMappingPipelineJobMappingConfigWhistleConfigSource'] = None):
+        """
+        :param str description: Describes the mapping configuration.
+        :param 'PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceArgs' whistle_config_source: Specifies the path to the mapping configuration for harmonization pipeline.
+               Structure is documented below.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if whistle_config_source is not None:
+            pulumi.set(__self__, "whistle_config_source", whistle_config_source)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        Describes the mapping configuration.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="whistleConfigSource")
+    def whistle_config_source(self) -> Optional['outputs.PipelineJobMappingPipelineJobMappingConfigWhistleConfigSource']:
+        """
+        Specifies the path to the mapping configuration for harmonization pipeline.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "whistle_config_source")
+
+
+@pulumi.output_type
+class PipelineJobMappingPipelineJobMappingConfigWhistleConfigSource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "importUriPrefix":
+            suggest = "import_uri_prefix"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineJobMappingPipelineJobMappingConfigWhistleConfigSource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineJobMappingPipelineJobMappingConfigWhistleConfigSource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineJobMappingPipelineJobMappingConfigWhistleConfigSource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 import_uri_prefix: str,
+                 uri: str):
+        """
+        :param str import_uri_prefix: Directory path where all the Whistle files are located.
+               Example: gs://{bucket-id}/{path/to/import-root/dir}
+        :param str uri: Main configuration file which has the entrypoint or the root function.
+               Example: gs://{bucket-id}/{path/to/import-root/dir}/entrypoint-file-name.wstl.
+        """
+        pulumi.set(__self__, "import_uri_prefix", import_uri_prefix)
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter(name="importUriPrefix")
+    def import_uri_prefix(self) -> str:
+        """
+        Directory path where all the Whistle files are located.
+        Example: gs://{bucket-id}/{path/to/import-root/dir}
+        """
+        return pulumi.get(self, "import_uri_prefix")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        Main configuration file which has the entrypoint or the root function.
+        Example: gs://{bucket-id}/{path/to/import-root/dir}/entrypoint-file-name.wstl.
+        """
+        return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class PipelineJobReconciliationPipelineJob(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "matchingUriPrefix":
+            suggest = "matching_uri_prefix"
+        elif key == "mergeConfig":
+            suggest = "merge_config"
+        elif key == "fhirStoreDestination":
+            suggest = "fhir_store_destination"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineJobReconciliationPipelineJob. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineJobReconciliationPipelineJob.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineJobReconciliationPipelineJob.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 matching_uri_prefix: str,
+                 merge_config: 'outputs.PipelineJobReconciliationPipelineJobMergeConfig',
+                 fhir_store_destination: Optional[str] = None):
+        """
+        :param str matching_uri_prefix: Specifies the top level directory of the matching configs used
+               in all mapping pipelines, which extract properties for resources
+               to be matched on.
+               Example: gs://{bucket-id}/{path/to/matching/configs}
+        :param 'PipelineJobReconciliationPipelineJobMergeConfigArgs' merge_config: Specifies the location of the reconciliation configuration.
+               Structure is documented below.
+        :param str fhir_store_destination: The harmonized FHIR store to write harmonized FHIR resources to,
+               in the format of: project/{projectID}/locations/{locationID}/datasets/{datasetName}/fhirStores/{id}
+        """
+        pulumi.set(__self__, "matching_uri_prefix", matching_uri_prefix)
+        pulumi.set(__self__, "merge_config", merge_config)
+        if fhir_store_destination is not None:
+            pulumi.set(__self__, "fhir_store_destination", fhir_store_destination)
+
+    @property
+    @pulumi.getter(name="matchingUriPrefix")
+    def matching_uri_prefix(self) -> str:
+        """
+        Specifies the top level directory of the matching configs used
+        in all mapping pipelines, which extract properties for resources
+        to be matched on.
+        Example: gs://{bucket-id}/{path/to/matching/configs}
+        """
+        return pulumi.get(self, "matching_uri_prefix")
+
+    @property
+    @pulumi.getter(name="mergeConfig")
+    def merge_config(self) -> 'outputs.PipelineJobReconciliationPipelineJobMergeConfig':
+        """
+        Specifies the location of the reconciliation configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "merge_config")
+
+    @property
+    @pulumi.getter(name="fhirStoreDestination")
+    def fhir_store_destination(self) -> Optional[str]:
+        """
+        The harmonized FHIR store to write harmonized FHIR resources to,
+        in the format of: project/{projectID}/locations/{locationID}/datasets/{datasetName}/fhirStores/{id}
+        """
+        return pulumi.get(self, "fhir_store_destination")
+
+
+@pulumi.output_type
+class PipelineJobReconciliationPipelineJobMergeConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "whistleConfigSource":
+            suggest = "whistle_config_source"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineJobReconciliationPipelineJobMergeConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineJobReconciliationPipelineJobMergeConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineJobReconciliationPipelineJobMergeConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 whistle_config_source: 'outputs.PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSource',
+                 description: Optional[str] = None):
+        """
+        :param 'PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceArgs' whistle_config_source: Specifies the path to the mapping configuration for harmonization pipeline.
+               Structure is documented below.
+        :param str description: Describes the mapping configuration.
+        """
+        pulumi.set(__self__, "whistle_config_source", whistle_config_source)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter(name="whistleConfigSource")
+    def whistle_config_source(self) -> 'outputs.PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSource':
+        """
+        Specifies the path to the mapping configuration for harmonization pipeline.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "whistle_config_source")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        Describes the mapping configuration.
+        """
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "importUriPrefix":
+            suggest = "import_uri_prefix"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 import_uri_prefix: str,
+                 uri: str):
+        """
+        :param str import_uri_prefix: Directory path where all the Whistle files are located.
+               Example: gs://{bucket-id}/{path/to/import-root/dir}
+        :param str uri: Main configuration file which has the entrypoint or the root function.
+               Example: gs://{bucket-id}/{path/to/import-root/dir}/entrypoint-file-name.wstl.
+        """
+        pulumi.set(__self__, "import_uri_prefix", import_uri_prefix)
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter(name="importUriPrefix")
+    def import_uri_prefix(self) -> str:
+        """
+        Directory path where all the Whistle files are located.
+        Example: gs://{bucket-id}/{path/to/import-root/dir}
+        """
+        return pulumi.get(self, "import_uri_prefix")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        Main configuration file which has the entrypoint or the root function.
+        Example: gs://{bucket-id}/{path/to/import-root/dir}/entrypoint-file-name.wstl.
+        """
+        return pulumi.get(self, "uri")
 
 
 @pulumi.output_type

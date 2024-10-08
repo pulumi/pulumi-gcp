@@ -511,6 +511,22 @@ public class Route extends com.pulumi.resources.CustomResource {
         return this.nextHopInstanceZone;
     }
     /**
+     * Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance,
+     * distance, and available bandwidth between regions.
+     * 
+     */
+    @Export(name="nextHopInterRegionCost", refs={String.class}, tree="[0]")
+    private Output<String> nextHopInterRegionCost;
+
+    /**
+     * @return Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance,
+     * distance, and available bandwidth between regions.
+     * 
+     */
+    public Output<String> nextHopInterRegionCost() {
+        return this.nextHopInterRegionCost;
+    }
+    /**
      * Network IP address of an instance that should handle matching packets.
      * 
      */
@@ -525,6 +541,20 @@ public class Route extends com.pulumi.resources.CustomResource {
         return this.nextHopIp;
     }
     /**
+     * Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
+     * 
+     */
+    @Export(name="nextHopMed", refs={String.class}, tree="[0]")
+    private Output<String> nextHopMed;
+
+    /**
+     * @return Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
+     * 
+     */
+    public Output<String> nextHopMed() {
+        return this.nextHopMed;
+    }
+    /**
      * URL to a Network that should handle matching packets.
      * 
      */
@@ -537,6 +567,22 @@ public class Route extends com.pulumi.resources.CustomResource {
      */
     public Output<String> nextHopNetwork() {
         return this.nextHopNetwork;
+    }
+    /**
+     * Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or
+     * INCOMPLETE.
+     * 
+     */
+    @Export(name="nextHopOrigin", refs={String.class}, tree="[0]")
+    private Output<String> nextHopOrigin;
+
+    /**
+     * @return Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or
+     * INCOMPLETE.
+     * 
+     */
+    public Output<String> nextHopOrigin() {
+        return this.nextHopOrigin;
     }
     /**
      * URL to a VpnTunnel that should handle matching packets.

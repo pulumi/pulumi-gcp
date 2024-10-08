@@ -75,7 +75,7 @@ namespace Pulumi.Gcp.Logging
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The location of the resource. The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.
+        /// The location of the resource. The only supported location is global so far.
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -160,7 +160,7 @@ namespace Pulumi.Gcp.Logging
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The location of the resource. The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.
+        /// The location of the resource. The only supported location is global so far.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -213,7 +213,7 @@ namespace Pulumi.Gcp.Logging
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The location of the resource. The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.
+        /// The location of the resource. The only supported location is global so far.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

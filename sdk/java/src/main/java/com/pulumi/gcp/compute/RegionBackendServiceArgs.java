@@ -14,6 +14,7 @@ import com.pulumi.gcp.compute.inputs.RegionBackendServiceFailoverPolicyArgs;
 import com.pulumi.gcp.compute.inputs.RegionBackendServiceIapArgs;
 import com.pulumi.gcp.compute.inputs.RegionBackendServiceLogConfigArgs;
 import com.pulumi.gcp.compute.inputs.RegionBackendServiceOutlierDetectionArgs;
+import com.pulumi.gcp.compute.inputs.RegionBackendServiceStrongSessionAffinityCookieArgs;
 import com.pulumi.gcp.compute.inputs.RegionBackendServiceSubsettingArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -576,7 +577,7 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
     /**
      * Type of session affinity to use. The default is NONE. Session affinity is
      * not applicable if the protocol is UDP.
-     * Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
+     * Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`, `STRONG_COOKIE_AFFINITY`.
      * 
      */
     @Import(name="sessionAffinity")
@@ -585,11 +586,28 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
     /**
      * @return Type of session affinity to use. The default is NONE. Session affinity is
      * not applicable if the protocol is UDP.
-     * Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
+     * Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`, `STRONG_COOKIE_AFFINITY`.
      * 
      */
     public Optional<Output<String>> sessionAffinity() {
         return Optional.ofNullable(this.sessionAffinity);
+    }
+
+    /**
+     * Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="strongSessionAffinityCookie")
+    private @Nullable Output<RegionBackendServiceStrongSessionAffinityCookieArgs> strongSessionAffinityCookie;
+
+    /**
+     * @return Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<RegionBackendServiceStrongSessionAffinityCookieArgs>> strongSessionAffinityCookie() {
+        return Optional.ofNullable(this.strongSessionAffinityCookie);
     }
 
     /**
@@ -657,6 +675,7 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
         this.region = $.region;
         this.securityPolicy = $.securityPolicy;
         this.sessionAffinity = $.sessionAffinity;
+        this.strongSessionAffinityCookie = $.strongSessionAffinityCookie;
         this.subsetting = $.subsetting;
         this.timeoutSec = $.timeoutSec;
     }
@@ -1376,7 +1395,7 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
         /**
          * @param sessionAffinity Type of session affinity to use. The default is NONE. Session affinity is
          * not applicable if the protocol is UDP.
-         * Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
+         * Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`, `STRONG_COOKIE_AFFINITY`.
          * 
          * @return builder
          * 
@@ -1389,13 +1408,36 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
         /**
          * @param sessionAffinity Type of session affinity to use. The default is NONE. Session affinity is
          * not applicable if the protocol is UDP.
-         * Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
+         * Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`, `STRONG_COOKIE_AFFINITY`.
          * 
          * @return builder
          * 
          */
         public Builder sessionAffinity(String sessionAffinity) {
             return sessionAffinity(Output.of(sessionAffinity));
+        }
+
+        /**
+         * @param strongSessionAffinityCookie Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder strongSessionAffinityCookie(@Nullable Output<RegionBackendServiceStrongSessionAffinityCookieArgs> strongSessionAffinityCookie) {
+            $.strongSessionAffinityCookie = strongSessionAffinityCookie;
+            return this;
+        }
+
+        /**
+         * @param strongSessionAffinityCookie Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder strongSessionAffinityCookie(RegionBackendServiceStrongSessionAffinityCookieArgs strongSessionAffinityCookie) {
+            return strongSessionAffinityCookie(Output.of(strongSessionAffinityCookie));
         }
 
         /**

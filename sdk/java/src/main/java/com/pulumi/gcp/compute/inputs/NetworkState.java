@@ -41,6 +41,57 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Enables/disables the comparison of MED across routes with different Neighbor ASNs.
+     * This value can only be set if the --bgp-best-path-selection-mode is STANDARD
+     * 
+     */
+    @Import(name="bgpAlwaysCompareMed")
+    private @Nullable Output<Boolean> bgpAlwaysCompareMed;
+
+    /**
+     * @return Enables/disables the comparison of MED across routes with different Neighbor ASNs.
+     * This value can only be set if the --bgp-best-path-selection-mode is STANDARD
+     * 
+     */
+    public Optional<Output<Boolean>> bgpAlwaysCompareMed() {
+        return Optional.ofNullable(this.bgpAlwaysCompareMed);
+    }
+
+    /**
+     * The BGP best selection algorithm to be employed. MODE can be LEGACY or STANDARD.
+     * Possible values are: `LEGACY`, `STANDARD`.
+     * 
+     */
+    @Import(name="bgpBestPathSelectionMode")
+    private @Nullable Output<String> bgpBestPathSelectionMode;
+
+    /**
+     * @return The BGP best selection algorithm to be employed. MODE can be LEGACY or STANDARD.
+     * Possible values are: `LEGACY`, `STANDARD`.
+     * 
+     */
+    public Optional<Output<String>> bgpBestPathSelectionMode() {
+        return Optional.ofNullable(this.bgpBestPathSelectionMode);
+    }
+
+    /**
+     * Choice of the behavior of inter-regional cost and MED in the BPS algorithm.
+     * Possible values are: `DEFAULT`, `ADD_COST_TO_MED`.
+     * 
+     */
+    @Import(name="bgpInterRegionCost")
+    private @Nullable Output<String> bgpInterRegionCost;
+
+    /**
+     * @return Choice of the behavior of inter-regional cost and MED in the BPS algorithm.
+     * Possible values are: `DEFAULT`, `ADD_COST_TO_MED`.
+     * 
+     */
+    public Optional<Output<String>> bgpInterRegionCost() {
+        return Optional.ofNullable(this.bgpInterRegionCost);
+    }
+
+    /**
      * If set to `true`, default routes (`0.0.0.0/0`) will be deleted
      * immediately after network creation. Defaults to `false`.
      * 
@@ -280,6 +331,9 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
 
     private NetworkState(NetworkState $) {
         this.autoCreateSubnetworks = $.autoCreateSubnetworks;
+        this.bgpAlwaysCompareMed = $.bgpAlwaysCompareMed;
+        this.bgpBestPathSelectionMode = $.bgpBestPathSelectionMode;
+        this.bgpInterRegionCost = $.bgpInterRegionCost;
         this.deleteDefaultRoutesOnCreate = $.deleteDefaultRoutesOnCreate;
         this.description = $.description;
         this.enableUlaInternalIpv6 = $.enableUlaInternalIpv6;
@@ -339,6 +393,75 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder autoCreateSubnetworks(Boolean autoCreateSubnetworks) {
             return autoCreateSubnetworks(Output.of(autoCreateSubnetworks));
+        }
+
+        /**
+         * @param bgpAlwaysCompareMed Enables/disables the comparison of MED across routes with different Neighbor ASNs.
+         * This value can only be set if the --bgp-best-path-selection-mode is STANDARD
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bgpAlwaysCompareMed(@Nullable Output<Boolean> bgpAlwaysCompareMed) {
+            $.bgpAlwaysCompareMed = bgpAlwaysCompareMed;
+            return this;
+        }
+
+        /**
+         * @param bgpAlwaysCompareMed Enables/disables the comparison of MED across routes with different Neighbor ASNs.
+         * This value can only be set if the --bgp-best-path-selection-mode is STANDARD
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bgpAlwaysCompareMed(Boolean bgpAlwaysCompareMed) {
+            return bgpAlwaysCompareMed(Output.of(bgpAlwaysCompareMed));
+        }
+
+        /**
+         * @param bgpBestPathSelectionMode The BGP best selection algorithm to be employed. MODE can be LEGACY or STANDARD.
+         * Possible values are: `LEGACY`, `STANDARD`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bgpBestPathSelectionMode(@Nullable Output<String> bgpBestPathSelectionMode) {
+            $.bgpBestPathSelectionMode = bgpBestPathSelectionMode;
+            return this;
+        }
+
+        /**
+         * @param bgpBestPathSelectionMode The BGP best selection algorithm to be employed. MODE can be LEGACY or STANDARD.
+         * Possible values are: `LEGACY`, `STANDARD`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bgpBestPathSelectionMode(String bgpBestPathSelectionMode) {
+            return bgpBestPathSelectionMode(Output.of(bgpBestPathSelectionMode));
+        }
+
+        /**
+         * @param bgpInterRegionCost Choice of the behavior of inter-regional cost and MED in the BPS algorithm.
+         * Possible values are: `DEFAULT`, `ADD_COST_TO_MED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bgpInterRegionCost(@Nullable Output<String> bgpInterRegionCost) {
+            $.bgpInterRegionCost = bgpInterRegionCost;
+            return this;
+        }
+
+        /**
+         * @param bgpInterRegionCost Choice of the behavior of inter-regional cost and MED in the BPS algorithm.
+         * Possible values are: `DEFAULT`, `ADD_COST_TO_MED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bgpInterRegionCost(String bgpInterRegionCost) {
+            return bgpInterRegionCost(Output.of(bgpInterRegionCost));
         }
 
         /**

@@ -212,7 +212,7 @@ import * as utilities from "../utilities";
  *     autoCreateSubnetworks: false,
  * });
  * const reserved = new gcp.networkconnectivity.InternalRange("reserved", {
- *     name: "reserved",
+ *     name: "reserved-primary",
  *     network: _default.id,
  *     usage: "FOR_VPC",
  *     peering: "FOR_SELF",

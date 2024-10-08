@@ -325,8 +325,11 @@ class _RouteState:
                  next_hop_ilb: Optional[pulumi.Input[str]] = None,
                  next_hop_instance: Optional[pulumi.Input[str]] = None,
                  next_hop_instance_zone: Optional[pulumi.Input[str]] = None,
+                 next_hop_inter_region_cost: Optional[pulumi.Input[str]] = None,
                  next_hop_ip: Optional[pulumi.Input[str]] = None,
+                 next_hop_med: Optional[pulumi.Input[str]] = None,
                  next_hop_network: Optional[pulumi.Input[str]] = None,
+                 next_hop_origin: Optional[pulumi.Input[str]] = None,
                  next_hop_vpn_tunnel: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -379,8 +382,13 @@ class _RouteState:
                specified)  The zone of the instance specified in
                `next_hop_instance`.  Omit if `next_hop_instance` is specified as
                a URL.
+        :param pulumi.Input[str] next_hop_inter_region_cost: Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance,
+               distance, and available bandwidth between regions.
         :param pulumi.Input[str] next_hop_ip: Network IP address of an instance that should handle matching packets.
+        :param pulumi.Input[str] next_hop_med: Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
         :param pulumi.Input[str] next_hop_network: URL to a Network that should handle matching packets.
+        :param pulumi.Input[str] next_hop_origin: Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or
+               INCOMPLETE.
         :param pulumi.Input[str] next_hop_vpn_tunnel: URL to a VpnTunnel that should handle matching packets.
         :param pulumi.Input[int] priority: The priority of this route. Priority is used to break ties in cases
                where there is more than one matching route of equal prefix length.
@@ -408,10 +416,16 @@ class _RouteState:
             pulumi.set(__self__, "next_hop_instance", next_hop_instance)
         if next_hop_instance_zone is not None:
             pulumi.set(__self__, "next_hop_instance_zone", next_hop_instance_zone)
+        if next_hop_inter_region_cost is not None:
+            pulumi.set(__self__, "next_hop_inter_region_cost", next_hop_inter_region_cost)
         if next_hop_ip is not None:
             pulumi.set(__self__, "next_hop_ip", next_hop_ip)
+        if next_hop_med is not None:
+            pulumi.set(__self__, "next_hop_med", next_hop_med)
         if next_hop_network is not None:
             pulumi.set(__self__, "next_hop_network", next_hop_network)
+        if next_hop_origin is not None:
+            pulumi.set(__self__, "next_hop_origin", next_hop_origin)
         if next_hop_vpn_tunnel is not None:
             pulumi.set(__self__, "next_hop_vpn_tunnel", next_hop_vpn_tunnel)
         if priority is not None:
@@ -557,6 +571,19 @@ class _RouteState:
         pulumi.set(self, "next_hop_instance_zone", value)
 
     @property
+    @pulumi.getter(name="nextHopInterRegionCost")
+    def next_hop_inter_region_cost(self) -> Optional[pulumi.Input[str]]:
+        """
+        Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance,
+        distance, and available bandwidth between regions.
+        """
+        return pulumi.get(self, "next_hop_inter_region_cost")
+
+    @next_hop_inter_region_cost.setter
+    def next_hop_inter_region_cost(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "next_hop_inter_region_cost", value)
+
+    @property
     @pulumi.getter(name="nextHopIp")
     def next_hop_ip(self) -> Optional[pulumi.Input[str]]:
         """
@@ -569,6 +596,18 @@ class _RouteState:
         pulumi.set(self, "next_hop_ip", value)
 
     @property
+    @pulumi.getter(name="nextHopMed")
+    def next_hop_med(self) -> Optional[pulumi.Input[str]]:
+        """
+        Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
+        """
+        return pulumi.get(self, "next_hop_med")
+
+    @next_hop_med.setter
+    def next_hop_med(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "next_hop_med", value)
+
+    @property
     @pulumi.getter(name="nextHopNetwork")
     def next_hop_network(self) -> Optional[pulumi.Input[str]]:
         """
@@ -579,6 +618,19 @@ class _RouteState:
     @next_hop_network.setter
     def next_hop_network(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "next_hop_network", value)
+
+    @property
+    @pulumi.getter(name="nextHopOrigin")
+    def next_hop_origin(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or
+        INCOMPLETE.
+        """
+        return pulumi.get(self, "next_hop_origin")
+
+    @next_hop_origin.setter
+    def next_hop_origin(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "next_hop_origin", value)
 
     @property
     @pulumi.getter(name="nextHopVpnTunnel")
@@ -1133,7 +1185,10 @@ class Route(pulumi.CustomResource):
             __props__.__dict__["priority"] = priority
             __props__.__dict__["project"] = project
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["next_hop_inter_region_cost"] = None
+            __props__.__dict__["next_hop_med"] = None
             __props__.__dict__["next_hop_network"] = None
+            __props__.__dict__["next_hop_origin"] = None
             __props__.__dict__["self_link"] = None
         super(Route, __self__).__init__(
             'gcp:compute/route:Route',
@@ -1153,8 +1208,11 @@ class Route(pulumi.CustomResource):
             next_hop_ilb: Optional[pulumi.Input[str]] = None,
             next_hop_instance: Optional[pulumi.Input[str]] = None,
             next_hop_instance_zone: Optional[pulumi.Input[str]] = None,
+            next_hop_inter_region_cost: Optional[pulumi.Input[str]] = None,
             next_hop_ip: Optional[pulumi.Input[str]] = None,
+            next_hop_med: Optional[pulumi.Input[str]] = None,
             next_hop_network: Optional[pulumi.Input[str]] = None,
+            next_hop_origin: Optional[pulumi.Input[str]] = None,
             next_hop_vpn_tunnel: Optional[pulumi.Input[str]] = None,
             priority: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -1212,8 +1270,13 @@ class Route(pulumi.CustomResource):
                specified)  The zone of the instance specified in
                `next_hop_instance`.  Omit if `next_hop_instance` is specified as
                a URL.
+        :param pulumi.Input[str] next_hop_inter_region_cost: Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance,
+               distance, and available bandwidth between regions.
         :param pulumi.Input[str] next_hop_ip: Network IP address of an instance that should handle matching packets.
+        :param pulumi.Input[str] next_hop_med: Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
         :param pulumi.Input[str] next_hop_network: URL to a Network that should handle matching packets.
+        :param pulumi.Input[str] next_hop_origin: Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or
+               INCOMPLETE.
         :param pulumi.Input[str] next_hop_vpn_tunnel: URL to a VpnTunnel that should handle matching packets.
         :param pulumi.Input[int] priority: The priority of this route. Priority is used to break ties in cases
                where there is more than one matching route of equal prefix length.
@@ -1237,8 +1300,11 @@ class Route(pulumi.CustomResource):
         __props__.__dict__["next_hop_ilb"] = next_hop_ilb
         __props__.__dict__["next_hop_instance"] = next_hop_instance
         __props__.__dict__["next_hop_instance_zone"] = next_hop_instance_zone
+        __props__.__dict__["next_hop_inter_region_cost"] = next_hop_inter_region_cost
         __props__.__dict__["next_hop_ip"] = next_hop_ip
+        __props__.__dict__["next_hop_med"] = next_hop_med
         __props__.__dict__["next_hop_network"] = next_hop_network
+        __props__.__dict__["next_hop_origin"] = next_hop_origin
         __props__.__dict__["next_hop_vpn_tunnel"] = next_hop_vpn_tunnel
         __props__.__dict__["priority"] = priority
         __props__.__dict__["project"] = project
@@ -1348,6 +1414,15 @@ class Route(pulumi.CustomResource):
         return pulumi.get(self, "next_hop_instance_zone")
 
     @property
+    @pulumi.getter(name="nextHopInterRegionCost")
+    def next_hop_inter_region_cost(self) -> pulumi.Output[str]:
+        """
+        Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance,
+        distance, and available bandwidth between regions.
+        """
+        return pulumi.get(self, "next_hop_inter_region_cost")
+
+    @property
     @pulumi.getter(name="nextHopIp")
     def next_hop_ip(self) -> pulumi.Output[str]:
         """
@@ -1356,12 +1431,29 @@ class Route(pulumi.CustomResource):
         return pulumi.get(self, "next_hop_ip")
 
     @property
+    @pulumi.getter(name="nextHopMed")
+    def next_hop_med(self) -> pulumi.Output[str]:
+        """
+        Multi-Exit Discriminator, a BGP route metric that indicates the desirability of a particular route in a network.
+        """
+        return pulumi.get(self, "next_hop_med")
+
+    @property
     @pulumi.getter(name="nextHopNetwork")
     def next_hop_network(self) -> pulumi.Output[str]:
         """
         URL to a Network that should handle matching packets.
         """
         return pulumi.get(self, "next_hop_network")
+
+    @property
+    @pulumi.getter(name="nextHopOrigin")
+    def next_hop_origin(self) -> pulumi.Output[str]:
+        """
+        Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or
+        INCOMPLETE.
+        """
+        return pulumi.get(self, "next_hop_origin")
 
     @property
     @pulumi.getter(name="nextHopVpnTunnel")

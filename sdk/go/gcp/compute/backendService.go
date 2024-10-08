@@ -407,6 +407,51 @@ import (
 //	}
 //
 // ```
+// ### Backend Service Stateful Session Affinity
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			healthCheck, err := compute.NewHealthCheck(ctx, "health_check", &compute.HealthCheckArgs{
+//				Name: pulumi.String("health-check"),
+//				HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
+//					Port: pulumi.Int(80),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
+//				Name:                pulumi.String("backend-service"),
+//				HealthChecks:        healthCheck.ID(),
+//				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
+//				LocalityLbPolicy:    pulumi.String("RING_HASH"),
+//				SessionAffinity:     pulumi.String("STRONG_COOKIE_AFFINITY"),
+//				StrongSessionAffinityCookie: &compute.BackendServiceStrongSessionAffinityCookieArgs{
+//					Ttl: &compute.BackendServiceStrongSessionAffinityCookieTtlArgs{
+//						Seconds: pulumi.Int(11),
+//						Nanos:   pulumi.Int(1111),
+//					},
+//					Name: pulumi.String("mycookie"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Backend Service Network Endpoint
 //
 // ```go
@@ -700,8 +745,11 @@ type BackendService struct {
 	ServiceLbPolicy pulumi.StringPtrOutput `pulumi:"serviceLbPolicy"`
 	// Type of session affinity to use. The default is NONE. Session affinity is
 	// not applicable if the protocol is UDP.
-	// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
+	// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `STRONG_COOKIE_AFFINITY`.
 	SessionAffinity pulumi.StringOutput `pulumi:"sessionAffinity"`
+	// Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
+	// Structure is documented below.
+	StrongSessionAffinityCookie BackendServiceStrongSessionAffinityCookiePtrOutput `pulumi:"strongSessionAffinityCookie"`
 	// The backend service timeout has a different meaning depending on the type of load balancer.
 	// For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
 	// The default is 30 seconds.
@@ -910,8 +958,11 @@ type backendServiceState struct {
 	ServiceLbPolicy *string `pulumi:"serviceLbPolicy"`
 	// Type of session affinity to use. The default is NONE. Session affinity is
 	// not applicable if the protocol is UDP.
-	// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
+	// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `STRONG_COOKIE_AFFINITY`.
 	SessionAffinity *string `pulumi:"sessionAffinity"`
+	// Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
+	// Structure is documented below.
+	StrongSessionAffinityCookie *BackendServiceStrongSessionAffinityCookie `pulumi:"strongSessionAffinityCookie"`
 	// The backend service timeout has a different meaning depending on the type of load balancer.
 	// For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
 	// The default is 30 seconds.
@@ -1091,8 +1142,11 @@ type BackendServiceState struct {
 	ServiceLbPolicy pulumi.StringPtrInput
 	// Type of session affinity to use. The default is NONE. Session affinity is
 	// not applicable if the protocol is UDP.
-	// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
+	// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `STRONG_COOKIE_AFFINITY`.
 	SessionAffinity pulumi.StringPtrInput
+	// Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
+	// Structure is documented below.
+	StrongSessionAffinityCookie BackendServiceStrongSessionAffinityCookiePtrInput
 	// The backend service timeout has a different meaning depending on the type of load balancer.
 	// For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
 	// The default is 30 seconds.
@@ -1267,8 +1321,11 @@ type backendServiceArgs struct {
 	ServiceLbPolicy *string `pulumi:"serviceLbPolicy"`
 	// Type of session affinity to use. The default is NONE. Session affinity is
 	// not applicable if the protocol is UDP.
-	// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
+	// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `STRONG_COOKIE_AFFINITY`.
 	SessionAffinity *string `pulumi:"sessionAffinity"`
+	// Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
+	// Structure is documented below.
+	StrongSessionAffinityCookie *BackendServiceStrongSessionAffinityCookie `pulumi:"strongSessionAffinityCookie"`
 	// The backend service timeout has a different meaning depending on the type of load balancer.
 	// For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
 	// The default is 30 seconds.
@@ -1440,8 +1497,11 @@ type BackendServiceArgs struct {
 	ServiceLbPolicy pulumi.StringPtrInput
 	// Type of session affinity to use. The default is NONE. Session affinity is
 	// not applicable if the protocol is UDP.
-	// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
+	// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `STRONG_COOKIE_AFFINITY`.
 	SessionAffinity pulumi.StringPtrInput
+	// Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
+	// Structure is documented below.
+	StrongSessionAffinityCookie BackendServiceStrongSessionAffinityCookiePtrInput
 	// The backend service timeout has a different meaning depending on the type of load balancer.
 	// For more information see, [Backend service settings](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
 	// The default is 30 seconds.
@@ -1797,9 +1857,17 @@ func (o BackendServiceOutput) ServiceLbPolicy() pulumi.StringPtrOutput {
 
 // Type of session affinity to use. The default is NONE. Session affinity is
 // not applicable if the protocol is UDP.
-// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
+// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `STRONG_COOKIE_AFFINITY`.
 func (o BackendServiceOutput) SessionAffinity() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackendService) pulumi.StringOutput { return v.SessionAffinity }).(pulumi.StringOutput)
+}
+
+// Describes the HTTP cookie used for stateful session affinity. This field is applicable and required if the sessionAffinity is set to STRONG_COOKIE_AFFINITY.
+// Structure is documented below.
+func (o BackendServiceOutput) StrongSessionAffinityCookie() BackendServiceStrongSessionAffinityCookiePtrOutput {
+	return o.ApplyT(func(v *BackendService) BackendServiceStrongSessionAffinityCookiePtrOutput {
+		return v.StrongSessionAffinityCookie
+	}).(BackendServiceStrongSessionAffinityCookiePtrOutput)
 }
 
 // The backend service timeout has a different meaning depending on the type of load balancer.

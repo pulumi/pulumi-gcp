@@ -169,6 +169,12 @@ import (
 //				Management: &container.AwsNodePoolManagementArgs{
 //					AutoRepair: pulumi.Bool(true),
 //				},
+//				KubeletConfig: &container.AwsNodePoolKubeletConfigArgs{
+//					CpuManagerPolicy:  pulumi.String("none"),
+//					CpuCfsQuota:       pulumi.Bool(true),
+//					CpuCfsQuotaPeriod: pulumi.String("100ms"),
+//					PodPidsLimit:      pulumi.Int(1024),
+//				},
 //				Project: pulumi.String("my-project-name"),
 //			})
 //			if err != nil {
@@ -544,6 +550,8 @@ type AwsNodePool struct {
 	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
+	// The kubelet configuration for the node pool.
+	KubeletConfig AwsNodePoolKubeletConfigOutput `pulumi:"kubeletConfig"`
 	// The location for the resource
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The Management configuration for this node pool.
@@ -639,6 +647,8 @@ type awsNodePoolState struct {
 	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
+	// The kubelet configuration for the node pool.
+	KubeletConfig *AwsNodePoolKubeletConfig `pulumi:"kubeletConfig"`
 	// The location for the resource
 	Location *string `pulumi:"location"`
 	// The Management configuration for this node pool.
@@ -684,6 +694,8 @@ type AwsNodePoolState struct {
 	EffectiveAnnotations pulumi.StringMapInput
 	// Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
+	// The kubelet configuration for the node pool.
+	KubeletConfig AwsNodePoolKubeletConfigPtrInput
 	// The location for the resource
 	Location pulumi.StringPtrInput
 	// The Management configuration for this node pool.
@@ -728,6 +740,8 @@ type awsNodePoolArgs struct {
 	Cluster string `pulumi:"cluster"`
 	// The configuration of the node pool.
 	Config AwsNodePoolConfig `pulumi:"config"`
+	// The kubelet configuration for the node pool.
+	KubeletConfig *AwsNodePoolKubeletConfig `pulumi:"kubeletConfig"`
 	// The location for the resource
 	Location string `pulumi:"location"`
 	// The Management configuration for this node pool.
@@ -761,6 +775,8 @@ type AwsNodePoolArgs struct {
 	Cluster pulumi.StringInput
 	// The configuration of the node pool.
 	Config AwsNodePoolConfigInput
+	// The kubelet configuration for the node pool.
+	KubeletConfig AwsNodePoolKubeletConfigPtrInput
 	// The location for the resource
 	Location pulumi.StringInput
 	// The Management configuration for this node pool.
@@ -903,6 +919,11 @@ func (o AwsNodePoolOutput) EffectiveAnnotations() pulumi.StringMapOutput {
 // Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 func (o AwsNodePoolOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsNodePool) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// The kubelet configuration for the node pool.
+func (o AwsNodePoolOutput) KubeletConfig() AwsNodePoolKubeletConfigOutput {
+	return o.ApplyT(func(v *AwsNodePool) AwsNodePoolKubeletConfigOutput { return v.KubeletConfig }).(AwsNodePoolKubeletConfigOutput)
 }
 
 // The location for the resource

@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:siteverification/owner:Owner":
+		r = &Owner{}
 	case "gcp:siteverification/webResource:WebResource":
 		r = &WebResource{}
 	default:
@@ -36,6 +38,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"siteverification/owner",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"siteverification/webResource",

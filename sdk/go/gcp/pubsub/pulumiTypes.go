@@ -3669,6 +3669,13 @@ type TopicIngestionDataSourceSettings struct {
 	// Settings for ingestion from Amazon Kinesis Data Streams.
 	// Structure is documented below.
 	AwsKinesis *TopicIngestionDataSourceSettingsAwsKinesis `pulumi:"awsKinesis"`
+	// Settings for ingestion from Cloud Storage.
+	// Structure is documented below.
+	CloudStorage *TopicIngestionDataSourceSettingsCloudStorage `pulumi:"cloudStorage"`
+	// Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,
+	// no Platform Logs will be generated.'
+	// Structure is documented below.
+	PlatformLogsSettings *TopicIngestionDataSourceSettingsPlatformLogsSettings `pulumi:"platformLogsSettings"`
 }
 
 // TopicIngestionDataSourceSettingsInput is an input type that accepts TopicIngestionDataSourceSettingsArgs and TopicIngestionDataSourceSettingsOutput values.
@@ -3686,6 +3693,13 @@ type TopicIngestionDataSourceSettingsArgs struct {
 	// Settings for ingestion from Amazon Kinesis Data Streams.
 	// Structure is documented below.
 	AwsKinesis TopicIngestionDataSourceSettingsAwsKinesisPtrInput `pulumi:"awsKinesis"`
+	// Settings for ingestion from Cloud Storage.
+	// Structure is documented below.
+	CloudStorage TopicIngestionDataSourceSettingsCloudStoragePtrInput `pulumi:"cloudStorage"`
+	// Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,
+	// no Platform Logs will be generated.'
+	// Structure is documented below.
+	PlatformLogsSettings TopicIngestionDataSourceSettingsPlatformLogsSettingsPtrInput `pulumi:"platformLogsSettings"`
 }
 
 func (TopicIngestionDataSourceSettingsArgs) ElementType() reflect.Type {
@@ -3773,6 +3787,23 @@ func (o TopicIngestionDataSourceSettingsOutput) AwsKinesis() TopicIngestionDataS
 	}).(TopicIngestionDataSourceSettingsAwsKinesisPtrOutput)
 }
 
+// Settings for ingestion from Cloud Storage.
+// Structure is documented below.
+func (o TopicIngestionDataSourceSettingsOutput) CloudStorage() TopicIngestionDataSourceSettingsCloudStoragePtrOutput {
+	return o.ApplyT(func(v TopicIngestionDataSourceSettings) *TopicIngestionDataSourceSettingsCloudStorage {
+		return v.CloudStorage
+	}).(TopicIngestionDataSourceSettingsCloudStoragePtrOutput)
+}
+
+// Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,
+// no Platform Logs will be generated.'
+// Structure is documented below.
+func (o TopicIngestionDataSourceSettingsOutput) PlatformLogsSettings() TopicIngestionDataSourceSettingsPlatformLogsSettingsPtrOutput {
+	return o.ApplyT(func(v TopicIngestionDataSourceSettings) *TopicIngestionDataSourceSettingsPlatformLogsSettings {
+		return v.PlatformLogsSettings
+	}).(TopicIngestionDataSourceSettingsPlatformLogsSettingsPtrOutput)
+}
+
 type TopicIngestionDataSourceSettingsPtrOutput struct{ *pulumi.OutputState }
 
 func (TopicIngestionDataSourceSettingsPtrOutput) ElementType() reflect.Type {
@@ -3806,6 +3837,29 @@ func (o TopicIngestionDataSourceSettingsPtrOutput) AwsKinesis() TopicIngestionDa
 		}
 		return v.AwsKinesis
 	}).(TopicIngestionDataSourceSettingsAwsKinesisPtrOutput)
+}
+
+// Settings for ingestion from Cloud Storage.
+// Structure is documented below.
+func (o TopicIngestionDataSourceSettingsPtrOutput) CloudStorage() TopicIngestionDataSourceSettingsCloudStoragePtrOutput {
+	return o.ApplyT(func(v *TopicIngestionDataSourceSettings) *TopicIngestionDataSourceSettingsCloudStorage {
+		if v == nil {
+			return nil
+		}
+		return v.CloudStorage
+	}).(TopicIngestionDataSourceSettingsCloudStoragePtrOutput)
+}
+
+// Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,
+// no Platform Logs will be generated.'
+// Structure is documented below.
+func (o TopicIngestionDataSourceSettingsPtrOutput) PlatformLogsSettings() TopicIngestionDataSourceSettingsPlatformLogsSettingsPtrOutput {
+	return o.ApplyT(func(v *TopicIngestionDataSourceSettings) *TopicIngestionDataSourceSettingsPlatformLogsSettings {
+		if v == nil {
+			return nil
+		}
+		return v.PlatformLogsSettings
+	}).(TopicIngestionDataSourceSettingsPlatformLogsSettingsPtrOutput)
 }
 
 type TopicIngestionDataSourceSettingsAwsKinesis struct {
@@ -4027,6 +4081,826 @@ func (o TopicIngestionDataSourceSettingsAwsKinesisPtrOutput) StreamArn() pulumi.
 			return nil
 		}
 		return &v.StreamArn
+	}).(pulumi.StringPtrOutput)
+}
+
+type TopicIngestionDataSourceSettingsCloudStorage struct {
+	// Configuration for reading Cloud Storage data in Avro binary format. The
+	// bytes of each object will be set to the `data` field of a Pub/Sub message.
+	AvroFormat *TopicIngestionDataSourceSettingsCloudStorageAvroFormat `pulumi:"avroFormat"`
+	// Cloud Storage bucket. The bucket name must be without any
+	// prefix like "gs://". See the bucket naming requirements:
+	// https://cloud.google.com/storage/docs/buckets#naming.
+	Bucket string `pulumi:"bucket"`
+	// Glob pattern used to match objects that will be ingested. If unset, all
+	// objects will be ingested. See the supported patterns:
+	// https://cloud.google.com/storage/docs/json_api/v1/objects/list#list-objects-and-prefixes-using-glob
+	MatchGlob *string `pulumi:"matchGlob"`
+	// The timestamp set in RFC3339 text format. If set, only objects with a
+	// larger or equal timestamp will be ingested. Unset by default, meaning
+	// all objects will be ingested.
+	MinimumObjectCreateTime *string `pulumi:"minimumObjectCreateTime"`
+	// Configuration for reading Cloud Storage data written via Cloud Storage
+	// subscriptions(See https://cloud.google.com/pubsub/docs/cloudstorage). The
+	// data and attributes fields of the originally exported Pub/Sub message
+	// will be restored when publishing.
+	PubsubAvroFormat *TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormat `pulumi:"pubsubAvroFormat"`
+	// Configuration for reading Cloud Storage data in text format. Each line of
+	// text as specified by the delimiter will be set to the `data` field of a
+	// Pub/Sub message.
+	// Structure is documented below.
+	TextFormat *TopicIngestionDataSourceSettingsCloudStorageTextFormat `pulumi:"textFormat"`
+}
+
+// TopicIngestionDataSourceSettingsCloudStorageInput is an input type that accepts TopicIngestionDataSourceSettingsCloudStorageArgs and TopicIngestionDataSourceSettingsCloudStorageOutput values.
+// You can construct a concrete instance of `TopicIngestionDataSourceSettingsCloudStorageInput` via:
+//
+//	TopicIngestionDataSourceSettingsCloudStorageArgs{...}
+type TopicIngestionDataSourceSettingsCloudStorageInput interface {
+	pulumi.Input
+
+	ToTopicIngestionDataSourceSettingsCloudStorageOutput() TopicIngestionDataSourceSettingsCloudStorageOutput
+	ToTopicIngestionDataSourceSettingsCloudStorageOutputWithContext(context.Context) TopicIngestionDataSourceSettingsCloudStorageOutput
+}
+
+type TopicIngestionDataSourceSettingsCloudStorageArgs struct {
+	// Configuration for reading Cloud Storage data in Avro binary format. The
+	// bytes of each object will be set to the `data` field of a Pub/Sub message.
+	AvroFormat TopicIngestionDataSourceSettingsCloudStorageAvroFormatPtrInput `pulumi:"avroFormat"`
+	// Cloud Storage bucket. The bucket name must be without any
+	// prefix like "gs://". See the bucket naming requirements:
+	// https://cloud.google.com/storage/docs/buckets#naming.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// Glob pattern used to match objects that will be ingested. If unset, all
+	// objects will be ingested. See the supported patterns:
+	// https://cloud.google.com/storage/docs/json_api/v1/objects/list#list-objects-and-prefixes-using-glob
+	MatchGlob pulumi.StringPtrInput `pulumi:"matchGlob"`
+	// The timestamp set in RFC3339 text format. If set, only objects with a
+	// larger or equal timestamp will be ingested. Unset by default, meaning
+	// all objects will be ingested.
+	MinimumObjectCreateTime pulumi.StringPtrInput `pulumi:"minimumObjectCreateTime"`
+	// Configuration for reading Cloud Storage data written via Cloud Storage
+	// subscriptions(See https://cloud.google.com/pubsub/docs/cloudstorage). The
+	// data and attributes fields of the originally exported Pub/Sub message
+	// will be restored when publishing.
+	PubsubAvroFormat TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtrInput `pulumi:"pubsubAvroFormat"`
+	// Configuration for reading Cloud Storage data in text format. Each line of
+	// text as specified by the delimiter will be set to the `data` field of a
+	// Pub/Sub message.
+	// Structure is documented below.
+	TextFormat TopicIngestionDataSourceSettingsCloudStorageTextFormatPtrInput `pulumi:"textFormat"`
+}
+
+func (TopicIngestionDataSourceSettingsCloudStorageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicIngestionDataSourceSettingsCloudStorage)(nil)).Elem()
+}
+
+func (i TopicIngestionDataSourceSettingsCloudStorageArgs) ToTopicIngestionDataSourceSettingsCloudStorageOutput() TopicIngestionDataSourceSettingsCloudStorageOutput {
+	return i.ToTopicIngestionDataSourceSettingsCloudStorageOutputWithContext(context.Background())
+}
+
+func (i TopicIngestionDataSourceSettingsCloudStorageArgs) ToTopicIngestionDataSourceSettingsCloudStorageOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsCloudStorageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicIngestionDataSourceSettingsCloudStorageOutput)
+}
+
+func (i TopicIngestionDataSourceSettingsCloudStorageArgs) ToTopicIngestionDataSourceSettingsCloudStoragePtrOutput() TopicIngestionDataSourceSettingsCloudStoragePtrOutput {
+	return i.ToTopicIngestionDataSourceSettingsCloudStoragePtrOutputWithContext(context.Background())
+}
+
+func (i TopicIngestionDataSourceSettingsCloudStorageArgs) ToTopicIngestionDataSourceSettingsCloudStoragePtrOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsCloudStoragePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicIngestionDataSourceSettingsCloudStorageOutput).ToTopicIngestionDataSourceSettingsCloudStoragePtrOutputWithContext(ctx)
+}
+
+// TopicIngestionDataSourceSettingsCloudStoragePtrInput is an input type that accepts TopicIngestionDataSourceSettingsCloudStorageArgs, TopicIngestionDataSourceSettingsCloudStoragePtr and TopicIngestionDataSourceSettingsCloudStoragePtrOutput values.
+// You can construct a concrete instance of `TopicIngestionDataSourceSettingsCloudStoragePtrInput` via:
+//
+//	        TopicIngestionDataSourceSettingsCloudStorageArgs{...}
+//
+//	or:
+//
+//	        nil
+type TopicIngestionDataSourceSettingsCloudStoragePtrInput interface {
+	pulumi.Input
+
+	ToTopicIngestionDataSourceSettingsCloudStoragePtrOutput() TopicIngestionDataSourceSettingsCloudStoragePtrOutput
+	ToTopicIngestionDataSourceSettingsCloudStoragePtrOutputWithContext(context.Context) TopicIngestionDataSourceSettingsCloudStoragePtrOutput
+}
+
+type topicIngestionDataSourceSettingsCloudStoragePtrType TopicIngestionDataSourceSettingsCloudStorageArgs
+
+func TopicIngestionDataSourceSettingsCloudStoragePtr(v *TopicIngestionDataSourceSettingsCloudStorageArgs) TopicIngestionDataSourceSettingsCloudStoragePtrInput {
+	return (*topicIngestionDataSourceSettingsCloudStoragePtrType)(v)
+}
+
+func (*topicIngestionDataSourceSettingsCloudStoragePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicIngestionDataSourceSettingsCloudStorage)(nil)).Elem()
+}
+
+func (i *topicIngestionDataSourceSettingsCloudStoragePtrType) ToTopicIngestionDataSourceSettingsCloudStoragePtrOutput() TopicIngestionDataSourceSettingsCloudStoragePtrOutput {
+	return i.ToTopicIngestionDataSourceSettingsCloudStoragePtrOutputWithContext(context.Background())
+}
+
+func (i *topicIngestionDataSourceSettingsCloudStoragePtrType) ToTopicIngestionDataSourceSettingsCloudStoragePtrOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsCloudStoragePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicIngestionDataSourceSettingsCloudStoragePtrOutput)
+}
+
+type TopicIngestionDataSourceSettingsCloudStorageOutput struct{ *pulumi.OutputState }
+
+func (TopicIngestionDataSourceSettingsCloudStorageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicIngestionDataSourceSettingsCloudStorage)(nil)).Elem()
+}
+
+func (o TopicIngestionDataSourceSettingsCloudStorageOutput) ToTopicIngestionDataSourceSettingsCloudStorageOutput() TopicIngestionDataSourceSettingsCloudStorageOutput {
+	return o
+}
+
+func (o TopicIngestionDataSourceSettingsCloudStorageOutput) ToTopicIngestionDataSourceSettingsCloudStorageOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsCloudStorageOutput {
+	return o
+}
+
+func (o TopicIngestionDataSourceSettingsCloudStorageOutput) ToTopicIngestionDataSourceSettingsCloudStoragePtrOutput() TopicIngestionDataSourceSettingsCloudStoragePtrOutput {
+	return o.ToTopicIngestionDataSourceSettingsCloudStoragePtrOutputWithContext(context.Background())
+}
+
+func (o TopicIngestionDataSourceSettingsCloudStorageOutput) ToTopicIngestionDataSourceSettingsCloudStoragePtrOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsCloudStoragePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TopicIngestionDataSourceSettingsCloudStorage) *TopicIngestionDataSourceSettingsCloudStorage {
+		return &v
+	}).(TopicIngestionDataSourceSettingsCloudStoragePtrOutput)
+}
+
+// Configuration for reading Cloud Storage data in Avro binary format. The
+// bytes of each object will be set to the `data` field of a Pub/Sub message.
+func (o TopicIngestionDataSourceSettingsCloudStorageOutput) AvroFormat() TopicIngestionDataSourceSettingsCloudStorageAvroFormatPtrOutput {
+	return o.ApplyT(func(v TopicIngestionDataSourceSettingsCloudStorage) *TopicIngestionDataSourceSettingsCloudStorageAvroFormat {
+		return v.AvroFormat
+	}).(TopicIngestionDataSourceSettingsCloudStorageAvroFormatPtrOutput)
+}
+
+// Cloud Storage bucket. The bucket name must be without any
+// prefix like "gs://". See the bucket naming requirements:
+// https://cloud.google.com/storage/docs/buckets#naming.
+func (o TopicIngestionDataSourceSettingsCloudStorageOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v TopicIngestionDataSourceSettingsCloudStorage) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// Glob pattern used to match objects that will be ingested. If unset, all
+// objects will be ingested. See the supported patterns:
+// https://cloud.google.com/storage/docs/json_api/v1/objects/list#list-objects-and-prefixes-using-glob
+func (o TopicIngestionDataSourceSettingsCloudStorageOutput) MatchGlob() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TopicIngestionDataSourceSettingsCloudStorage) *string { return v.MatchGlob }).(pulumi.StringPtrOutput)
+}
+
+// The timestamp set in RFC3339 text format. If set, only objects with a
+// larger or equal timestamp will be ingested. Unset by default, meaning
+// all objects will be ingested.
+func (o TopicIngestionDataSourceSettingsCloudStorageOutput) MinimumObjectCreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TopicIngestionDataSourceSettingsCloudStorage) *string { return v.MinimumObjectCreateTime }).(pulumi.StringPtrOutput)
+}
+
+// Configuration for reading Cloud Storage data written via Cloud Storage
+// subscriptions(See https://cloud.google.com/pubsub/docs/cloudstorage). The
+// data and attributes fields of the originally exported Pub/Sub message
+// will be restored when publishing.
+func (o TopicIngestionDataSourceSettingsCloudStorageOutput) PubsubAvroFormat() TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtrOutput {
+	return o.ApplyT(func(v TopicIngestionDataSourceSettingsCloudStorage) *TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormat {
+		return v.PubsubAvroFormat
+	}).(TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtrOutput)
+}
+
+// Configuration for reading Cloud Storage data in text format. Each line of
+// text as specified by the delimiter will be set to the `data` field of a
+// Pub/Sub message.
+// Structure is documented below.
+func (o TopicIngestionDataSourceSettingsCloudStorageOutput) TextFormat() TopicIngestionDataSourceSettingsCloudStorageTextFormatPtrOutput {
+	return o.ApplyT(func(v TopicIngestionDataSourceSettingsCloudStorage) *TopicIngestionDataSourceSettingsCloudStorageTextFormat {
+		return v.TextFormat
+	}).(TopicIngestionDataSourceSettingsCloudStorageTextFormatPtrOutput)
+}
+
+type TopicIngestionDataSourceSettingsCloudStoragePtrOutput struct{ *pulumi.OutputState }
+
+func (TopicIngestionDataSourceSettingsCloudStoragePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicIngestionDataSourceSettingsCloudStorage)(nil)).Elem()
+}
+
+func (o TopicIngestionDataSourceSettingsCloudStoragePtrOutput) ToTopicIngestionDataSourceSettingsCloudStoragePtrOutput() TopicIngestionDataSourceSettingsCloudStoragePtrOutput {
+	return o
+}
+
+func (o TopicIngestionDataSourceSettingsCloudStoragePtrOutput) ToTopicIngestionDataSourceSettingsCloudStoragePtrOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsCloudStoragePtrOutput {
+	return o
+}
+
+func (o TopicIngestionDataSourceSettingsCloudStoragePtrOutput) Elem() TopicIngestionDataSourceSettingsCloudStorageOutput {
+	return o.ApplyT(func(v *TopicIngestionDataSourceSettingsCloudStorage) TopicIngestionDataSourceSettingsCloudStorage {
+		if v != nil {
+			return *v
+		}
+		var ret TopicIngestionDataSourceSettingsCloudStorage
+		return ret
+	}).(TopicIngestionDataSourceSettingsCloudStorageOutput)
+}
+
+// Configuration for reading Cloud Storage data in Avro binary format. The
+// bytes of each object will be set to the `data` field of a Pub/Sub message.
+func (o TopicIngestionDataSourceSettingsCloudStoragePtrOutput) AvroFormat() TopicIngestionDataSourceSettingsCloudStorageAvroFormatPtrOutput {
+	return o.ApplyT(func(v *TopicIngestionDataSourceSettingsCloudStorage) *TopicIngestionDataSourceSettingsCloudStorageAvroFormat {
+		if v == nil {
+			return nil
+		}
+		return v.AvroFormat
+	}).(TopicIngestionDataSourceSettingsCloudStorageAvroFormatPtrOutput)
+}
+
+// Cloud Storage bucket. The bucket name must be without any
+// prefix like "gs://". See the bucket naming requirements:
+// https://cloud.google.com/storage/docs/buckets#naming.
+func (o TopicIngestionDataSourceSettingsCloudStoragePtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicIngestionDataSourceSettingsCloudStorage) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// Glob pattern used to match objects that will be ingested. If unset, all
+// objects will be ingested. See the supported patterns:
+// https://cloud.google.com/storage/docs/json_api/v1/objects/list#list-objects-and-prefixes-using-glob
+func (o TopicIngestionDataSourceSettingsCloudStoragePtrOutput) MatchGlob() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicIngestionDataSourceSettingsCloudStorage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MatchGlob
+	}).(pulumi.StringPtrOutput)
+}
+
+// The timestamp set in RFC3339 text format. If set, only objects with a
+// larger or equal timestamp will be ingested. Unset by default, meaning
+// all objects will be ingested.
+func (o TopicIngestionDataSourceSettingsCloudStoragePtrOutput) MinimumObjectCreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicIngestionDataSourceSettingsCloudStorage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinimumObjectCreateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for reading Cloud Storage data written via Cloud Storage
+// subscriptions(See https://cloud.google.com/pubsub/docs/cloudstorage). The
+// data and attributes fields of the originally exported Pub/Sub message
+// will be restored when publishing.
+func (o TopicIngestionDataSourceSettingsCloudStoragePtrOutput) PubsubAvroFormat() TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtrOutput {
+	return o.ApplyT(func(v *TopicIngestionDataSourceSettingsCloudStorage) *TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormat {
+		if v == nil {
+			return nil
+		}
+		return v.PubsubAvroFormat
+	}).(TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtrOutput)
+}
+
+// Configuration for reading Cloud Storage data in text format. Each line of
+// text as specified by the delimiter will be set to the `data` field of a
+// Pub/Sub message.
+// Structure is documented below.
+func (o TopicIngestionDataSourceSettingsCloudStoragePtrOutput) TextFormat() TopicIngestionDataSourceSettingsCloudStorageTextFormatPtrOutput {
+	return o.ApplyT(func(v *TopicIngestionDataSourceSettingsCloudStorage) *TopicIngestionDataSourceSettingsCloudStorageTextFormat {
+		if v == nil {
+			return nil
+		}
+		return v.TextFormat
+	}).(TopicIngestionDataSourceSettingsCloudStorageTextFormatPtrOutput)
+}
+
+type TopicIngestionDataSourceSettingsCloudStorageAvroFormat struct {
+}
+
+// TopicIngestionDataSourceSettingsCloudStorageAvroFormatInput is an input type that accepts TopicIngestionDataSourceSettingsCloudStorageAvroFormatArgs and TopicIngestionDataSourceSettingsCloudStorageAvroFormatOutput values.
+// You can construct a concrete instance of `TopicIngestionDataSourceSettingsCloudStorageAvroFormatInput` via:
+//
+//	TopicIngestionDataSourceSettingsCloudStorageAvroFormatArgs{...}
+type TopicIngestionDataSourceSettingsCloudStorageAvroFormatInput interface {
+	pulumi.Input
+
+	ToTopicIngestionDataSourceSettingsCloudStorageAvroFormatOutput() TopicIngestionDataSourceSettingsCloudStorageAvroFormatOutput
+	ToTopicIngestionDataSourceSettingsCloudStorageAvroFormatOutputWithContext(context.Context) TopicIngestionDataSourceSettingsCloudStorageAvroFormatOutput
+}
+
+type TopicIngestionDataSourceSettingsCloudStorageAvroFormatArgs struct {
+}
+
+func (TopicIngestionDataSourceSettingsCloudStorageAvroFormatArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicIngestionDataSourceSettingsCloudStorageAvroFormat)(nil)).Elem()
+}
+
+func (i TopicIngestionDataSourceSettingsCloudStorageAvroFormatArgs) ToTopicIngestionDataSourceSettingsCloudStorageAvroFormatOutput() TopicIngestionDataSourceSettingsCloudStorageAvroFormatOutput {
+	return i.ToTopicIngestionDataSourceSettingsCloudStorageAvroFormatOutputWithContext(context.Background())
+}
+
+func (i TopicIngestionDataSourceSettingsCloudStorageAvroFormatArgs) ToTopicIngestionDataSourceSettingsCloudStorageAvroFormatOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsCloudStorageAvroFormatOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicIngestionDataSourceSettingsCloudStorageAvroFormatOutput)
+}
+
+func (i TopicIngestionDataSourceSettingsCloudStorageAvroFormatArgs) ToTopicIngestionDataSourceSettingsCloudStorageAvroFormatPtrOutput() TopicIngestionDataSourceSettingsCloudStorageAvroFormatPtrOutput {
+	return i.ToTopicIngestionDataSourceSettingsCloudStorageAvroFormatPtrOutputWithContext(context.Background())
+}
+
+func (i TopicIngestionDataSourceSettingsCloudStorageAvroFormatArgs) ToTopicIngestionDataSourceSettingsCloudStorageAvroFormatPtrOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsCloudStorageAvroFormatPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicIngestionDataSourceSettingsCloudStorageAvroFormatOutput).ToTopicIngestionDataSourceSettingsCloudStorageAvroFormatPtrOutputWithContext(ctx)
+}
+
+// TopicIngestionDataSourceSettingsCloudStorageAvroFormatPtrInput is an input type that accepts TopicIngestionDataSourceSettingsCloudStorageAvroFormatArgs, TopicIngestionDataSourceSettingsCloudStorageAvroFormatPtr and TopicIngestionDataSourceSettingsCloudStorageAvroFormatPtrOutput values.
+// You can construct a concrete instance of `TopicIngestionDataSourceSettingsCloudStorageAvroFormatPtrInput` via:
+//
+//	        TopicIngestionDataSourceSettingsCloudStorageAvroFormatArgs{...}
+//
+//	or:
+//
+//	        nil
+type TopicIngestionDataSourceSettingsCloudStorageAvroFormatPtrInput interface {
+	pulumi.Input
+
+	ToTopicIngestionDataSourceSettingsCloudStorageAvroFormatPtrOutput() TopicIngestionDataSourceSettingsCloudStorageAvroFormatPtrOutput
+	ToTopicIngestionDataSourceSettingsCloudStorageAvroFormatPtrOutputWithContext(context.Context) TopicIngestionDataSourceSettingsCloudStorageAvroFormatPtrOutput
+}
+
+type topicIngestionDataSourceSettingsCloudStorageAvroFormatPtrType TopicIngestionDataSourceSettingsCloudStorageAvroFormatArgs
+
+func TopicIngestionDataSourceSettingsCloudStorageAvroFormatPtr(v *TopicIngestionDataSourceSettingsCloudStorageAvroFormatArgs) TopicIngestionDataSourceSettingsCloudStorageAvroFormatPtrInput {
+	return (*topicIngestionDataSourceSettingsCloudStorageAvroFormatPtrType)(v)
+}
+
+func (*topicIngestionDataSourceSettingsCloudStorageAvroFormatPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicIngestionDataSourceSettingsCloudStorageAvroFormat)(nil)).Elem()
+}
+
+func (i *topicIngestionDataSourceSettingsCloudStorageAvroFormatPtrType) ToTopicIngestionDataSourceSettingsCloudStorageAvroFormatPtrOutput() TopicIngestionDataSourceSettingsCloudStorageAvroFormatPtrOutput {
+	return i.ToTopicIngestionDataSourceSettingsCloudStorageAvroFormatPtrOutputWithContext(context.Background())
+}
+
+func (i *topicIngestionDataSourceSettingsCloudStorageAvroFormatPtrType) ToTopicIngestionDataSourceSettingsCloudStorageAvroFormatPtrOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsCloudStorageAvroFormatPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicIngestionDataSourceSettingsCloudStorageAvroFormatPtrOutput)
+}
+
+type TopicIngestionDataSourceSettingsCloudStorageAvroFormatOutput struct{ *pulumi.OutputState }
+
+func (TopicIngestionDataSourceSettingsCloudStorageAvroFormatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicIngestionDataSourceSettingsCloudStorageAvroFormat)(nil)).Elem()
+}
+
+func (o TopicIngestionDataSourceSettingsCloudStorageAvroFormatOutput) ToTopicIngestionDataSourceSettingsCloudStorageAvroFormatOutput() TopicIngestionDataSourceSettingsCloudStorageAvroFormatOutput {
+	return o
+}
+
+func (o TopicIngestionDataSourceSettingsCloudStorageAvroFormatOutput) ToTopicIngestionDataSourceSettingsCloudStorageAvroFormatOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsCloudStorageAvroFormatOutput {
+	return o
+}
+
+func (o TopicIngestionDataSourceSettingsCloudStorageAvroFormatOutput) ToTopicIngestionDataSourceSettingsCloudStorageAvroFormatPtrOutput() TopicIngestionDataSourceSettingsCloudStorageAvroFormatPtrOutput {
+	return o.ToTopicIngestionDataSourceSettingsCloudStorageAvroFormatPtrOutputWithContext(context.Background())
+}
+
+func (o TopicIngestionDataSourceSettingsCloudStorageAvroFormatOutput) ToTopicIngestionDataSourceSettingsCloudStorageAvroFormatPtrOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsCloudStorageAvroFormatPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TopicIngestionDataSourceSettingsCloudStorageAvroFormat) *TopicIngestionDataSourceSettingsCloudStorageAvroFormat {
+		return &v
+	}).(TopicIngestionDataSourceSettingsCloudStorageAvroFormatPtrOutput)
+}
+
+type TopicIngestionDataSourceSettingsCloudStorageAvroFormatPtrOutput struct{ *pulumi.OutputState }
+
+func (TopicIngestionDataSourceSettingsCloudStorageAvroFormatPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicIngestionDataSourceSettingsCloudStorageAvroFormat)(nil)).Elem()
+}
+
+func (o TopicIngestionDataSourceSettingsCloudStorageAvroFormatPtrOutput) ToTopicIngestionDataSourceSettingsCloudStorageAvroFormatPtrOutput() TopicIngestionDataSourceSettingsCloudStorageAvroFormatPtrOutput {
+	return o
+}
+
+func (o TopicIngestionDataSourceSettingsCloudStorageAvroFormatPtrOutput) ToTopicIngestionDataSourceSettingsCloudStorageAvroFormatPtrOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsCloudStorageAvroFormatPtrOutput {
+	return o
+}
+
+func (o TopicIngestionDataSourceSettingsCloudStorageAvroFormatPtrOutput) Elem() TopicIngestionDataSourceSettingsCloudStorageAvroFormatOutput {
+	return o.ApplyT(func(v *TopicIngestionDataSourceSettingsCloudStorageAvroFormat) TopicIngestionDataSourceSettingsCloudStorageAvroFormat {
+		if v != nil {
+			return *v
+		}
+		var ret TopicIngestionDataSourceSettingsCloudStorageAvroFormat
+		return ret
+	}).(TopicIngestionDataSourceSettingsCloudStorageAvroFormatOutput)
+}
+
+type TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormat struct {
+}
+
+// TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatInput is an input type that accepts TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatArgs and TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatOutput values.
+// You can construct a concrete instance of `TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatInput` via:
+//
+//	TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatArgs{...}
+type TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatInput interface {
+	pulumi.Input
+
+	ToTopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatOutput() TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatOutput
+	ToTopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatOutputWithContext(context.Context) TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatOutput
+}
+
+type TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatArgs struct {
+}
+
+func (TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormat)(nil)).Elem()
+}
+
+func (i TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatArgs) ToTopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatOutput() TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatOutput {
+	return i.ToTopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatOutputWithContext(context.Background())
+}
+
+func (i TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatArgs) ToTopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatOutput)
+}
+
+func (i TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatArgs) ToTopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtrOutput() TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtrOutput {
+	return i.ToTopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtrOutputWithContext(context.Background())
+}
+
+func (i TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatArgs) ToTopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtrOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatOutput).ToTopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtrOutputWithContext(ctx)
+}
+
+// TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtrInput is an input type that accepts TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatArgs, TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtr and TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtrOutput values.
+// You can construct a concrete instance of `TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtrInput` via:
+//
+//	        TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatArgs{...}
+//
+//	or:
+//
+//	        nil
+type TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtrInput interface {
+	pulumi.Input
+
+	ToTopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtrOutput() TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtrOutput
+	ToTopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtrOutputWithContext(context.Context) TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtrOutput
+}
+
+type topicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtrType TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatArgs
+
+func TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtr(v *TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatArgs) TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtrInput {
+	return (*topicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtrType)(v)
+}
+
+func (*topicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormat)(nil)).Elem()
+}
+
+func (i *topicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtrType) ToTopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtrOutput() TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtrOutput {
+	return i.ToTopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtrOutputWithContext(context.Background())
+}
+
+func (i *topicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtrType) ToTopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtrOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtrOutput)
+}
+
+type TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatOutput struct{ *pulumi.OutputState }
+
+func (TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormat)(nil)).Elem()
+}
+
+func (o TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatOutput) ToTopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatOutput() TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatOutput {
+	return o
+}
+
+func (o TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatOutput) ToTopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatOutput {
+	return o
+}
+
+func (o TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatOutput) ToTopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtrOutput() TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtrOutput {
+	return o.ToTopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtrOutputWithContext(context.Background())
+}
+
+func (o TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatOutput) ToTopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtrOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormat) *TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormat {
+		return &v
+	}).(TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtrOutput)
+}
+
+type TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtrOutput struct{ *pulumi.OutputState }
+
+func (TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormat)(nil)).Elem()
+}
+
+func (o TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtrOutput) ToTopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtrOutput() TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtrOutput {
+	return o
+}
+
+func (o TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtrOutput) ToTopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtrOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtrOutput {
+	return o
+}
+
+func (o TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtrOutput) Elem() TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatOutput {
+	return o.ApplyT(func(v *TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormat) TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormat {
+		if v != nil {
+			return *v
+		}
+		var ret TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormat
+		return ret
+	}).(TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatOutput)
+}
+
+type TopicIngestionDataSourceSettingsCloudStorageTextFormat struct {
+	// The delimiter to use when using the 'text' format. Each line of text as
+	// specified by the delimiter will be set to the 'data' field of a Pub/Sub
+	// message. When unset, '\n' is used.
+	Delimiter *string `pulumi:"delimiter"`
+}
+
+// TopicIngestionDataSourceSettingsCloudStorageTextFormatInput is an input type that accepts TopicIngestionDataSourceSettingsCloudStorageTextFormatArgs and TopicIngestionDataSourceSettingsCloudStorageTextFormatOutput values.
+// You can construct a concrete instance of `TopicIngestionDataSourceSettingsCloudStorageTextFormatInput` via:
+//
+//	TopicIngestionDataSourceSettingsCloudStorageTextFormatArgs{...}
+type TopicIngestionDataSourceSettingsCloudStorageTextFormatInput interface {
+	pulumi.Input
+
+	ToTopicIngestionDataSourceSettingsCloudStorageTextFormatOutput() TopicIngestionDataSourceSettingsCloudStorageTextFormatOutput
+	ToTopicIngestionDataSourceSettingsCloudStorageTextFormatOutputWithContext(context.Context) TopicIngestionDataSourceSettingsCloudStorageTextFormatOutput
+}
+
+type TopicIngestionDataSourceSettingsCloudStorageTextFormatArgs struct {
+	// The delimiter to use when using the 'text' format. Each line of text as
+	// specified by the delimiter will be set to the 'data' field of a Pub/Sub
+	// message. When unset, '\n' is used.
+	Delimiter pulumi.StringPtrInput `pulumi:"delimiter"`
+}
+
+func (TopicIngestionDataSourceSettingsCloudStorageTextFormatArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicIngestionDataSourceSettingsCloudStorageTextFormat)(nil)).Elem()
+}
+
+func (i TopicIngestionDataSourceSettingsCloudStorageTextFormatArgs) ToTopicIngestionDataSourceSettingsCloudStorageTextFormatOutput() TopicIngestionDataSourceSettingsCloudStorageTextFormatOutput {
+	return i.ToTopicIngestionDataSourceSettingsCloudStorageTextFormatOutputWithContext(context.Background())
+}
+
+func (i TopicIngestionDataSourceSettingsCloudStorageTextFormatArgs) ToTopicIngestionDataSourceSettingsCloudStorageTextFormatOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsCloudStorageTextFormatOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicIngestionDataSourceSettingsCloudStorageTextFormatOutput)
+}
+
+func (i TopicIngestionDataSourceSettingsCloudStorageTextFormatArgs) ToTopicIngestionDataSourceSettingsCloudStorageTextFormatPtrOutput() TopicIngestionDataSourceSettingsCloudStorageTextFormatPtrOutput {
+	return i.ToTopicIngestionDataSourceSettingsCloudStorageTextFormatPtrOutputWithContext(context.Background())
+}
+
+func (i TopicIngestionDataSourceSettingsCloudStorageTextFormatArgs) ToTopicIngestionDataSourceSettingsCloudStorageTextFormatPtrOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsCloudStorageTextFormatPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicIngestionDataSourceSettingsCloudStorageTextFormatOutput).ToTopicIngestionDataSourceSettingsCloudStorageTextFormatPtrOutputWithContext(ctx)
+}
+
+// TopicIngestionDataSourceSettingsCloudStorageTextFormatPtrInput is an input type that accepts TopicIngestionDataSourceSettingsCloudStorageTextFormatArgs, TopicIngestionDataSourceSettingsCloudStorageTextFormatPtr and TopicIngestionDataSourceSettingsCloudStorageTextFormatPtrOutput values.
+// You can construct a concrete instance of `TopicIngestionDataSourceSettingsCloudStorageTextFormatPtrInput` via:
+//
+//	        TopicIngestionDataSourceSettingsCloudStorageTextFormatArgs{...}
+//
+//	or:
+//
+//	        nil
+type TopicIngestionDataSourceSettingsCloudStorageTextFormatPtrInput interface {
+	pulumi.Input
+
+	ToTopicIngestionDataSourceSettingsCloudStorageTextFormatPtrOutput() TopicIngestionDataSourceSettingsCloudStorageTextFormatPtrOutput
+	ToTopicIngestionDataSourceSettingsCloudStorageTextFormatPtrOutputWithContext(context.Context) TopicIngestionDataSourceSettingsCloudStorageTextFormatPtrOutput
+}
+
+type topicIngestionDataSourceSettingsCloudStorageTextFormatPtrType TopicIngestionDataSourceSettingsCloudStorageTextFormatArgs
+
+func TopicIngestionDataSourceSettingsCloudStorageTextFormatPtr(v *TopicIngestionDataSourceSettingsCloudStorageTextFormatArgs) TopicIngestionDataSourceSettingsCloudStorageTextFormatPtrInput {
+	return (*topicIngestionDataSourceSettingsCloudStorageTextFormatPtrType)(v)
+}
+
+func (*topicIngestionDataSourceSettingsCloudStorageTextFormatPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicIngestionDataSourceSettingsCloudStorageTextFormat)(nil)).Elem()
+}
+
+func (i *topicIngestionDataSourceSettingsCloudStorageTextFormatPtrType) ToTopicIngestionDataSourceSettingsCloudStorageTextFormatPtrOutput() TopicIngestionDataSourceSettingsCloudStorageTextFormatPtrOutput {
+	return i.ToTopicIngestionDataSourceSettingsCloudStorageTextFormatPtrOutputWithContext(context.Background())
+}
+
+func (i *topicIngestionDataSourceSettingsCloudStorageTextFormatPtrType) ToTopicIngestionDataSourceSettingsCloudStorageTextFormatPtrOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsCloudStorageTextFormatPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicIngestionDataSourceSettingsCloudStorageTextFormatPtrOutput)
+}
+
+type TopicIngestionDataSourceSettingsCloudStorageTextFormatOutput struct{ *pulumi.OutputState }
+
+func (TopicIngestionDataSourceSettingsCloudStorageTextFormatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicIngestionDataSourceSettingsCloudStorageTextFormat)(nil)).Elem()
+}
+
+func (o TopicIngestionDataSourceSettingsCloudStorageTextFormatOutput) ToTopicIngestionDataSourceSettingsCloudStorageTextFormatOutput() TopicIngestionDataSourceSettingsCloudStorageTextFormatOutput {
+	return o
+}
+
+func (o TopicIngestionDataSourceSettingsCloudStorageTextFormatOutput) ToTopicIngestionDataSourceSettingsCloudStorageTextFormatOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsCloudStorageTextFormatOutput {
+	return o
+}
+
+func (o TopicIngestionDataSourceSettingsCloudStorageTextFormatOutput) ToTopicIngestionDataSourceSettingsCloudStorageTextFormatPtrOutput() TopicIngestionDataSourceSettingsCloudStorageTextFormatPtrOutput {
+	return o.ToTopicIngestionDataSourceSettingsCloudStorageTextFormatPtrOutputWithContext(context.Background())
+}
+
+func (o TopicIngestionDataSourceSettingsCloudStorageTextFormatOutput) ToTopicIngestionDataSourceSettingsCloudStorageTextFormatPtrOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsCloudStorageTextFormatPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TopicIngestionDataSourceSettingsCloudStorageTextFormat) *TopicIngestionDataSourceSettingsCloudStorageTextFormat {
+		return &v
+	}).(TopicIngestionDataSourceSettingsCloudStorageTextFormatPtrOutput)
+}
+
+// The delimiter to use when using the 'text' format. Each line of text as
+// specified by the delimiter will be set to the 'data' field of a Pub/Sub
+// message. When unset, '\n' is used.
+func (o TopicIngestionDataSourceSettingsCloudStorageTextFormatOutput) Delimiter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TopicIngestionDataSourceSettingsCloudStorageTextFormat) *string { return v.Delimiter }).(pulumi.StringPtrOutput)
+}
+
+type TopicIngestionDataSourceSettingsCloudStorageTextFormatPtrOutput struct{ *pulumi.OutputState }
+
+func (TopicIngestionDataSourceSettingsCloudStorageTextFormatPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicIngestionDataSourceSettingsCloudStorageTextFormat)(nil)).Elem()
+}
+
+func (o TopicIngestionDataSourceSettingsCloudStorageTextFormatPtrOutput) ToTopicIngestionDataSourceSettingsCloudStorageTextFormatPtrOutput() TopicIngestionDataSourceSettingsCloudStorageTextFormatPtrOutput {
+	return o
+}
+
+func (o TopicIngestionDataSourceSettingsCloudStorageTextFormatPtrOutput) ToTopicIngestionDataSourceSettingsCloudStorageTextFormatPtrOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsCloudStorageTextFormatPtrOutput {
+	return o
+}
+
+func (o TopicIngestionDataSourceSettingsCloudStorageTextFormatPtrOutput) Elem() TopicIngestionDataSourceSettingsCloudStorageTextFormatOutput {
+	return o.ApplyT(func(v *TopicIngestionDataSourceSettingsCloudStorageTextFormat) TopicIngestionDataSourceSettingsCloudStorageTextFormat {
+		if v != nil {
+			return *v
+		}
+		var ret TopicIngestionDataSourceSettingsCloudStorageTextFormat
+		return ret
+	}).(TopicIngestionDataSourceSettingsCloudStorageTextFormatOutput)
+}
+
+// The delimiter to use when using the 'text' format. Each line of text as
+// specified by the delimiter will be set to the 'data' field of a Pub/Sub
+// message. When unset, '\n' is used.
+func (o TopicIngestionDataSourceSettingsCloudStorageTextFormatPtrOutput) Delimiter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicIngestionDataSourceSettingsCloudStorageTextFormat) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delimiter
+	}).(pulumi.StringPtrOutput)
+}
+
+type TopicIngestionDataSourceSettingsPlatformLogsSettings struct {
+	// The minimum severity level of Platform Logs that will be written. If unspecified,
+	// no Platform Logs will be written.
+	// Default value is `SEVERITY_UNSPECIFIED`.
+	// Possible values are: `SEVERITY_UNSPECIFIED`, `DISABLED`, `DEBUG`, `INFO`, `WARNING`, `ERROR`.
+	Severity *string `pulumi:"severity"`
+}
+
+// TopicIngestionDataSourceSettingsPlatformLogsSettingsInput is an input type that accepts TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs and TopicIngestionDataSourceSettingsPlatformLogsSettingsOutput values.
+// You can construct a concrete instance of `TopicIngestionDataSourceSettingsPlatformLogsSettingsInput` via:
+//
+//	TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs{...}
+type TopicIngestionDataSourceSettingsPlatformLogsSettingsInput interface {
+	pulumi.Input
+
+	ToTopicIngestionDataSourceSettingsPlatformLogsSettingsOutput() TopicIngestionDataSourceSettingsPlatformLogsSettingsOutput
+	ToTopicIngestionDataSourceSettingsPlatformLogsSettingsOutputWithContext(context.Context) TopicIngestionDataSourceSettingsPlatformLogsSettingsOutput
+}
+
+type TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs struct {
+	// The minimum severity level of Platform Logs that will be written. If unspecified,
+	// no Platform Logs will be written.
+	// Default value is `SEVERITY_UNSPECIFIED`.
+	// Possible values are: `SEVERITY_UNSPECIFIED`, `DISABLED`, `DEBUG`, `INFO`, `WARNING`, `ERROR`.
+	Severity pulumi.StringPtrInput `pulumi:"severity"`
+}
+
+func (TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicIngestionDataSourceSettingsPlatformLogsSettings)(nil)).Elem()
+}
+
+func (i TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs) ToTopicIngestionDataSourceSettingsPlatformLogsSettingsOutput() TopicIngestionDataSourceSettingsPlatformLogsSettingsOutput {
+	return i.ToTopicIngestionDataSourceSettingsPlatformLogsSettingsOutputWithContext(context.Background())
+}
+
+func (i TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs) ToTopicIngestionDataSourceSettingsPlatformLogsSettingsOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsPlatformLogsSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicIngestionDataSourceSettingsPlatformLogsSettingsOutput)
+}
+
+func (i TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs) ToTopicIngestionDataSourceSettingsPlatformLogsSettingsPtrOutput() TopicIngestionDataSourceSettingsPlatformLogsSettingsPtrOutput {
+	return i.ToTopicIngestionDataSourceSettingsPlatformLogsSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs) ToTopicIngestionDataSourceSettingsPlatformLogsSettingsPtrOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsPlatformLogsSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicIngestionDataSourceSettingsPlatformLogsSettingsOutput).ToTopicIngestionDataSourceSettingsPlatformLogsSettingsPtrOutputWithContext(ctx)
+}
+
+// TopicIngestionDataSourceSettingsPlatformLogsSettingsPtrInput is an input type that accepts TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs, TopicIngestionDataSourceSettingsPlatformLogsSettingsPtr and TopicIngestionDataSourceSettingsPlatformLogsSettingsPtrOutput values.
+// You can construct a concrete instance of `TopicIngestionDataSourceSettingsPlatformLogsSettingsPtrInput` via:
+//
+//	        TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type TopicIngestionDataSourceSettingsPlatformLogsSettingsPtrInput interface {
+	pulumi.Input
+
+	ToTopicIngestionDataSourceSettingsPlatformLogsSettingsPtrOutput() TopicIngestionDataSourceSettingsPlatformLogsSettingsPtrOutput
+	ToTopicIngestionDataSourceSettingsPlatformLogsSettingsPtrOutputWithContext(context.Context) TopicIngestionDataSourceSettingsPlatformLogsSettingsPtrOutput
+}
+
+type topicIngestionDataSourceSettingsPlatformLogsSettingsPtrType TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs
+
+func TopicIngestionDataSourceSettingsPlatformLogsSettingsPtr(v *TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs) TopicIngestionDataSourceSettingsPlatformLogsSettingsPtrInput {
+	return (*topicIngestionDataSourceSettingsPlatformLogsSettingsPtrType)(v)
+}
+
+func (*topicIngestionDataSourceSettingsPlatformLogsSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicIngestionDataSourceSettingsPlatformLogsSettings)(nil)).Elem()
+}
+
+func (i *topicIngestionDataSourceSettingsPlatformLogsSettingsPtrType) ToTopicIngestionDataSourceSettingsPlatformLogsSettingsPtrOutput() TopicIngestionDataSourceSettingsPlatformLogsSettingsPtrOutput {
+	return i.ToTopicIngestionDataSourceSettingsPlatformLogsSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *topicIngestionDataSourceSettingsPlatformLogsSettingsPtrType) ToTopicIngestionDataSourceSettingsPlatformLogsSettingsPtrOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsPlatformLogsSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicIngestionDataSourceSettingsPlatformLogsSettingsPtrOutput)
+}
+
+type TopicIngestionDataSourceSettingsPlatformLogsSettingsOutput struct{ *pulumi.OutputState }
+
+func (TopicIngestionDataSourceSettingsPlatformLogsSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicIngestionDataSourceSettingsPlatformLogsSettings)(nil)).Elem()
+}
+
+func (o TopicIngestionDataSourceSettingsPlatformLogsSettingsOutput) ToTopicIngestionDataSourceSettingsPlatformLogsSettingsOutput() TopicIngestionDataSourceSettingsPlatformLogsSettingsOutput {
+	return o
+}
+
+func (o TopicIngestionDataSourceSettingsPlatformLogsSettingsOutput) ToTopicIngestionDataSourceSettingsPlatformLogsSettingsOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsPlatformLogsSettingsOutput {
+	return o
+}
+
+func (o TopicIngestionDataSourceSettingsPlatformLogsSettingsOutput) ToTopicIngestionDataSourceSettingsPlatformLogsSettingsPtrOutput() TopicIngestionDataSourceSettingsPlatformLogsSettingsPtrOutput {
+	return o.ToTopicIngestionDataSourceSettingsPlatformLogsSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o TopicIngestionDataSourceSettingsPlatformLogsSettingsOutput) ToTopicIngestionDataSourceSettingsPlatformLogsSettingsPtrOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsPlatformLogsSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TopicIngestionDataSourceSettingsPlatformLogsSettings) *TopicIngestionDataSourceSettingsPlatformLogsSettings {
+		return &v
+	}).(TopicIngestionDataSourceSettingsPlatformLogsSettingsPtrOutput)
+}
+
+// The minimum severity level of Platform Logs that will be written. If unspecified,
+// no Platform Logs will be written.
+// Default value is `SEVERITY_UNSPECIFIED`.
+// Possible values are: `SEVERITY_UNSPECIFIED`, `DISABLED`, `DEBUG`, `INFO`, `WARNING`, `ERROR`.
+func (o TopicIngestionDataSourceSettingsPlatformLogsSettingsOutput) Severity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TopicIngestionDataSourceSettingsPlatformLogsSettings) *string { return v.Severity }).(pulumi.StringPtrOutput)
+}
+
+type TopicIngestionDataSourceSettingsPlatformLogsSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (TopicIngestionDataSourceSettingsPlatformLogsSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicIngestionDataSourceSettingsPlatformLogsSettings)(nil)).Elem()
+}
+
+func (o TopicIngestionDataSourceSettingsPlatformLogsSettingsPtrOutput) ToTopicIngestionDataSourceSettingsPlatformLogsSettingsPtrOutput() TopicIngestionDataSourceSettingsPlatformLogsSettingsPtrOutput {
+	return o
+}
+
+func (o TopicIngestionDataSourceSettingsPlatformLogsSettingsPtrOutput) ToTopicIngestionDataSourceSettingsPlatformLogsSettingsPtrOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsPlatformLogsSettingsPtrOutput {
+	return o
+}
+
+func (o TopicIngestionDataSourceSettingsPlatformLogsSettingsPtrOutput) Elem() TopicIngestionDataSourceSettingsPlatformLogsSettingsOutput {
+	return o.ApplyT(func(v *TopicIngestionDataSourceSettingsPlatformLogsSettings) TopicIngestionDataSourceSettingsPlatformLogsSettings {
+		if v != nil {
+			return *v
+		}
+		var ret TopicIngestionDataSourceSettingsPlatformLogsSettings
+		return ret
+	}).(TopicIngestionDataSourceSettingsPlatformLogsSettingsOutput)
+}
+
+// The minimum severity level of Platform Logs that will be written. If unspecified,
+// no Platform Logs will be written.
+// Default value is `SEVERITY_UNSPECIFIED`.
+// Possible values are: `SEVERITY_UNSPECIFIED`, `DISABLED`, `DEBUG`, `INFO`, `WARNING`, `ERROR`.
+func (o TopicIngestionDataSourceSettingsPlatformLogsSettingsPtrOutput) Severity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicIngestionDataSourceSettingsPlatformLogsSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Severity
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5655,6 +6529,11 @@ func (o GetSubscriptionRetryPolicyArrayOutput) Index(i pulumi.IntInput) GetSubsc
 type GetTopicIngestionDataSourceSetting struct {
 	// Settings for ingestion from Amazon Kinesis Data Streams.
 	AwsKineses []GetTopicIngestionDataSourceSettingAwsKinese `pulumi:"awsKineses"`
+	// Settings for ingestion from Cloud Storage.
+	CloudStorages []GetTopicIngestionDataSourceSettingCloudStorage `pulumi:"cloudStorages"`
+	// Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,
+	// no Platform Logs will be generated.'
+	PlatformLogsSettings []GetTopicIngestionDataSourceSettingPlatformLogsSetting `pulumi:"platformLogsSettings"`
 }
 
 // GetTopicIngestionDataSourceSettingInput is an input type that accepts GetTopicIngestionDataSourceSettingArgs and GetTopicIngestionDataSourceSettingOutput values.
@@ -5671,6 +6550,11 @@ type GetTopicIngestionDataSourceSettingInput interface {
 type GetTopicIngestionDataSourceSettingArgs struct {
 	// Settings for ingestion from Amazon Kinesis Data Streams.
 	AwsKineses GetTopicIngestionDataSourceSettingAwsKineseArrayInput `pulumi:"awsKineses"`
+	// Settings for ingestion from Cloud Storage.
+	CloudStorages GetTopicIngestionDataSourceSettingCloudStorageArrayInput `pulumi:"cloudStorages"`
+	// Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,
+	// no Platform Logs will be generated.'
+	PlatformLogsSettings GetTopicIngestionDataSourceSettingPlatformLogsSettingArrayInput `pulumi:"platformLogsSettings"`
 }
 
 func (GetTopicIngestionDataSourceSettingArgs) ElementType() reflect.Type {
@@ -5729,6 +6613,21 @@ func (o GetTopicIngestionDataSourceSettingOutput) AwsKineses() GetTopicIngestion
 	return o.ApplyT(func(v GetTopicIngestionDataSourceSetting) []GetTopicIngestionDataSourceSettingAwsKinese {
 		return v.AwsKineses
 	}).(GetTopicIngestionDataSourceSettingAwsKineseArrayOutput)
+}
+
+// Settings for ingestion from Cloud Storage.
+func (o GetTopicIngestionDataSourceSettingOutput) CloudStorages() GetTopicIngestionDataSourceSettingCloudStorageArrayOutput {
+	return o.ApplyT(func(v GetTopicIngestionDataSourceSetting) []GetTopicIngestionDataSourceSettingCloudStorage {
+		return v.CloudStorages
+	}).(GetTopicIngestionDataSourceSettingCloudStorageArrayOutput)
+}
+
+// Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,
+// no Platform Logs will be generated.'
+func (o GetTopicIngestionDataSourceSettingOutput) PlatformLogsSettings() GetTopicIngestionDataSourceSettingPlatformLogsSettingArrayOutput {
+	return o.ApplyT(func(v GetTopicIngestionDataSourceSetting) []GetTopicIngestionDataSourceSettingPlatformLogsSetting {
+		return v.PlatformLogsSettings
+	}).(GetTopicIngestionDataSourceSettingPlatformLogsSettingArrayOutput)
 }
 
 type GetTopicIngestionDataSourceSettingArrayOutput struct{ *pulumi.OutputState }
@@ -5894,6 +6793,569 @@ func (o GetTopicIngestionDataSourceSettingAwsKineseArrayOutput) Index(i pulumi.I
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTopicIngestionDataSourceSettingAwsKinese {
 		return vs[0].([]GetTopicIngestionDataSourceSettingAwsKinese)[vs[1].(int)]
 	}).(GetTopicIngestionDataSourceSettingAwsKineseOutput)
+}
+
+type GetTopicIngestionDataSourceSettingCloudStorage struct {
+	// Configuration for reading Cloud Storage data in Avro binary format. The
+	// bytes of each object will be set to the 'data' field of a Pub/Sub message.
+	AvroFormats []GetTopicIngestionDataSourceSettingCloudStorageAvroFormat `pulumi:"avroFormats"`
+	// Cloud Storage bucket. The bucket name must be without any
+	// prefix like "gs://". See the bucket naming requirements:
+	// https://cloud.google.com/storage/docs/buckets#naming.
+	Bucket string `pulumi:"bucket"`
+	// Glob pattern used to match objects that will be ingested. If unset, all
+	// objects will be ingested. See the supported patterns:
+	// https://cloud.google.com/storage/docs/json_api/v1/objects/list#list-objects-and-prefixes-using-glob
+	MatchGlob string `pulumi:"matchGlob"`
+	// The timestamp set in RFC3339 text format. If set, only objects with a
+	// larger or equal timestamp will be ingested. Unset by default, meaning
+	// all objects will be ingested.
+	MinimumObjectCreateTime string `pulumi:"minimumObjectCreateTime"`
+	// Configuration for reading Cloud Storage data written via Cloud Storage
+	// subscriptions(See https://cloud.google.com/pubsub/docs/cloudstorage). The
+	// data and attributes fields of the originally exported Pub/Sub message
+	// will be restored when publishing.
+	PubsubAvroFormats []GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormat `pulumi:"pubsubAvroFormats"`
+	// Configuration for reading Cloud Storage data in text format. Each line of
+	// text as specified by the delimiter will be set to the 'data' field of a
+	// Pub/Sub message.
+	TextFormats []GetTopicIngestionDataSourceSettingCloudStorageTextFormat `pulumi:"textFormats"`
+}
+
+// GetTopicIngestionDataSourceSettingCloudStorageInput is an input type that accepts GetTopicIngestionDataSourceSettingCloudStorageArgs and GetTopicIngestionDataSourceSettingCloudStorageOutput values.
+// You can construct a concrete instance of `GetTopicIngestionDataSourceSettingCloudStorageInput` via:
+//
+//	GetTopicIngestionDataSourceSettingCloudStorageArgs{...}
+type GetTopicIngestionDataSourceSettingCloudStorageInput interface {
+	pulumi.Input
+
+	ToGetTopicIngestionDataSourceSettingCloudStorageOutput() GetTopicIngestionDataSourceSettingCloudStorageOutput
+	ToGetTopicIngestionDataSourceSettingCloudStorageOutputWithContext(context.Context) GetTopicIngestionDataSourceSettingCloudStorageOutput
+}
+
+type GetTopicIngestionDataSourceSettingCloudStorageArgs struct {
+	// Configuration for reading Cloud Storage data in Avro binary format. The
+	// bytes of each object will be set to the 'data' field of a Pub/Sub message.
+	AvroFormats GetTopicIngestionDataSourceSettingCloudStorageAvroFormatArrayInput `pulumi:"avroFormats"`
+	// Cloud Storage bucket. The bucket name must be without any
+	// prefix like "gs://". See the bucket naming requirements:
+	// https://cloud.google.com/storage/docs/buckets#naming.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// Glob pattern used to match objects that will be ingested. If unset, all
+	// objects will be ingested. See the supported patterns:
+	// https://cloud.google.com/storage/docs/json_api/v1/objects/list#list-objects-and-prefixes-using-glob
+	MatchGlob pulumi.StringInput `pulumi:"matchGlob"`
+	// The timestamp set in RFC3339 text format. If set, only objects with a
+	// larger or equal timestamp will be ingested. Unset by default, meaning
+	// all objects will be ingested.
+	MinimumObjectCreateTime pulumi.StringInput `pulumi:"minimumObjectCreateTime"`
+	// Configuration for reading Cloud Storage data written via Cloud Storage
+	// subscriptions(See https://cloud.google.com/pubsub/docs/cloudstorage). The
+	// data and attributes fields of the originally exported Pub/Sub message
+	// will be restored when publishing.
+	PubsubAvroFormats GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatArrayInput `pulumi:"pubsubAvroFormats"`
+	// Configuration for reading Cloud Storage data in text format. Each line of
+	// text as specified by the delimiter will be set to the 'data' field of a
+	// Pub/Sub message.
+	TextFormats GetTopicIngestionDataSourceSettingCloudStorageTextFormatArrayInput `pulumi:"textFormats"`
+}
+
+func (GetTopicIngestionDataSourceSettingCloudStorageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTopicIngestionDataSourceSettingCloudStorage)(nil)).Elem()
+}
+
+func (i GetTopicIngestionDataSourceSettingCloudStorageArgs) ToGetTopicIngestionDataSourceSettingCloudStorageOutput() GetTopicIngestionDataSourceSettingCloudStorageOutput {
+	return i.ToGetTopicIngestionDataSourceSettingCloudStorageOutputWithContext(context.Background())
+}
+
+func (i GetTopicIngestionDataSourceSettingCloudStorageArgs) ToGetTopicIngestionDataSourceSettingCloudStorageOutputWithContext(ctx context.Context) GetTopicIngestionDataSourceSettingCloudStorageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTopicIngestionDataSourceSettingCloudStorageOutput)
+}
+
+// GetTopicIngestionDataSourceSettingCloudStorageArrayInput is an input type that accepts GetTopicIngestionDataSourceSettingCloudStorageArray and GetTopicIngestionDataSourceSettingCloudStorageArrayOutput values.
+// You can construct a concrete instance of `GetTopicIngestionDataSourceSettingCloudStorageArrayInput` via:
+//
+//	GetTopicIngestionDataSourceSettingCloudStorageArray{ GetTopicIngestionDataSourceSettingCloudStorageArgs{...} }
+type GetTopicIngestionDataSourceSettingCloudStorageArrayInput interface {
+	pulumi.Input
+
+	ToGetTopicIngestionDataSourceSettingCloudStorageArrayOutput() GetTopicIngestionDataSourceSettingCloudStorageArrayOutput
+	ToGetTopicIngestionDataSourceSettingCloudStorageArrayOutputWithContext(context.Context) GetTopicIngestionDataSourceSettingCloudStorageArrayOutput
+}
+
+type GetTopicIngestionDataSourceSettingCloudStorageArray []GetTopicIngestionDataSourceSettingCloudStorageInput
+
+func (GetTopicIngestionDataSourceSettingCloudStorageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTopicIngestionDataSourceSettingCloudStorage)(nil)).Elem()
+}
+
+func (i GetTopicIngestionDataSourceSettingCloudStorageArray) ToGetTopicIngestionDataSourceSettingCloudStorageArrayOutput() GetTopicIngestionDataSourceSettingCloudStorageArrayOutput {
+	return i.ToGetTopicIngestionDataSourceSettingCloudStorageArrayOutputWithContext(context.Background())
+}
+
+func (i GetTopicIngestionDataSourceSettingCloudStorageArray) ToGetTopicIngestionDataSourceSettingCloudStorageArrayOutputWithContext(ctx context.Context) GetTopicIngestionDataSourceSettingCloudStorageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTopicIngestionDataSourceSettingCloudStorageArrayOutput)
+}
+
+type GetTopicIngestionDataSourceSettingCloudStorageOutput struct{ *pulumi.OutputState }
+
+func (GetTopicIngestionDataSourceSettingCloudStorageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTopicIngestionDataSourceSettingCloudStorage)(nil)).Elem()
+}
+
+func (o GetTopicIngestionDataSourceSettingCloudStorageOutput) ToGetTopicIngestionDataSourceSettingCloudStorageOutput() GetTopicIngestionDataSourceSettingCloudStorageOutput {
+	return o
+}
+
+func (o GetTopicIngestionDataSourceSettingCloudStorageOutput) ToGetTopicIngestionDataSourceSettingCloudStorageOutputWithContext(ctx context.Context) GetTopicIngestionDataSourceSettingCloudStorageOutput {
+	return o
+}
+
+// Configuration for reading Cloud Storage data in Avro binary format. The
+// bytes of each object will be set to the 'data' field of a Pub/Sub message.
+func (o GetTopicIngestionDataSourceSettingCloudStorageOutput) AvroFormats() GetTopicIngestionDataSourceSettingCloudStorageAvroFormatArrayOutput {
+	return o.ApplyT(func(v GetTopicIngestionDataSourceSettingCloudStorage) []GetTopicIngestionDataSourceSettingCloudStorageAvroFormat {
+		return v.AvroFormats
+	}).(GetTopicIngestionDataSourceSettingCloudStorageAvroFormatArrayOutput)
+}
+
+// Cloud Storage bucket. The bucket name must be without any
+// prefix like "gs://". See the bucket naming requirements:
+// https://cloud.google.com/storage/docs/buckets#naming.
+func (o GetTopicIngestionDataSourceSettingCloudStorageOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTopicIngestionDataSourceSettingCloudStorage) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// Glob pattern used to match objects that will be ingested. If unset, all
+// objects will be ingested. See the supported patterns:
+// https://cloud.google.com/storage/docs/json_api/v1/objects/list#list-objects-and-prefixes-using-glob
+func (o GetTopicIngestionDataSourceSettingCloudStorageOutput) MatchGlob() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTopicIngestionDataSourceSettingCloudStorage) string { return v.MatchGlob }).(pulumi.StringOutput)
+}
+
+// The timestamp set in RFC3339 text format. If set, only objects with a
+// larger or equal timestamp will be ingested. Unset by default, meaning
+// all objects will be ingested.
+func (o GetTopicIngestionDataSourceSettingCloudStorageOutput) MinimumObjectCreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTopicIngestionDataSourceSettingCloudStorage) string { return v.MinimumObjectCreateTime }).(pulumi.StringOutput)
+}
+
+// Configuration for reading Cloud Storage data written via Cloud Storage
+// subscriptions(See https://cloud.google.com/pubsub/docs/cloudstorage). The
+// data and attributes fields of the originally exported Pub/Sub message
+// will be restored when publishing.
+func (o GetTopicIngestionDataSourceSettingCloudStorageOutput) PubsubAvroFormats() GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatArrayOutput {
+	return o.ApplyT(func(v GetTopicIngestionDataSourceSettingCloudStorage) []GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormat {
+		return v.PubsubAvroFormats
+	}).(GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatArrayOutput)
+}
+
+// Configuration for reading Cloud Storage data in text format. Each line of
+// text as specified by the delimiter will be set to the 'data' field of a
+// Pub/Sub message.
+func (o GetTopicIngestionDataSourceSettingCloudStorageOutput) TextFormats() GetTopicIngestionDataSourceSettingCloudStorageTextFormatArrayOutput {
+	return o.ApplyT(func(v GetTopicIngestionDataSourceSettingCloudStorage) []GetTopicIngestionDataSourceSettingCloudStorageTextFormat {
+		return v.TextFormats
+	}).(GetTopicIngestionDataSourceSettingCloudStorageTextFormatArrayOutput)
+}
+
+type GetTopicIngestionDataSourceSettingCloudStorageArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTopicIngestionDataSourceSettingCloudStorageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTopicIngestionDataSourceSettingCloudStorage)(nil)).Elem()
+}
+
+func (o GetTopicIngestionDataSourceSettingCloudStorageArrayOutput) ToGetTopicIngestionDataSourceSettingCloudStorageArrayOutput() GetTopicIngestionDataSourceSettingCloudStorageArrayOutput {
+	return o
+}
+
+func (o GetTopicIngestionDataSourceSettingCloudStorageArrayOutput) ToGetTopicIngestionDataSourceSettingCloudStorageArrayOutputWithContext(ctx context.Context) GetTopicIngestionDataSourceSettingCloudStorageArrayOutput {
+	return o
+}
+
+func (o GetTopicIngestionDataSourceSettingCloudStorageArrayOutput) Index(i pulumi.IntInput) GetTopicIngestionDataSourceSettingCloudStorageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTopicIngestionDataSourceSettingCloudStorage {
+		return vs[0].([]GetTopicIngestionDataSourceSettingCloudStorage)[vs[1].(int)]
+	}).(GetTopicIngestionDataSourceSettingCloudStorageOutput)
+}
+
+type GetTopicIngestionDataSourceSettingCloudStorageAvroFormat struct {
+}
+
+// GetTopicIngestionDataSourceSettingCloudStorageAvroFormatInput is an input type that accepts GetTopicIngestionDataSourceSettingCloudStorageAvroFormatArgs and GetTopicIngestionDataSourceSettingCloudStorageAvroFormatOutput values.
+// You can construct a concrete instance of `GetTopicIngestionDataSourceSettingCloudStorageAvroFormatInput` via:
+//
+//	GetTopicIngestionDataSourceSettingCloudStorageAvroFormatArgs{...}
+type GetTopicIngestionDataSourceSettingCloudStorageAvroFormatInput interface {
+	pulumi.Input
+
+	ToGetTopicIngestionDataSourceSettingCloudStorageAvroFormatOutput() GetTopicIngestionDataSourceSettingCloudStorageAvroFormatOutput
+	ToGetTopicIngestionDataSourceSettingCloudStorageAvroFormatOutputWithContext(context.Context) GetTopicIngestionDataSourceSettingCloudStorageAvroFormatOutput
+}
+
+type GetTopicIngestionDataSourceSettingCloudStorageAvroFormatArgs struct {
+}
+
+func (GetTopicIngestionDataSourceSettingCloudStorageAvroFormatArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTopicIngestionDataSourceSettingCloudStorageAvroFormat)(nil)).Elem()
+}
+
+func (i GetTopicIngestionDataSourceSettingCloudStorageAvroFormatArgs) ToGetTopicIngestionDataSourceSettingCloudStorageAvroFormatOutput() GetTopicIngestionDataSourceSettingCloudStorageAvroFormatOutput {
+	return i.ToGetTopicIngestionDataSourceSettingCloudStorageAvroFormatOutputWithContext(context.Background())
+}
+
+func (i GetTopicIngestionDataSourceSettingCloudStorageAvroFormatArgs) ToGetTopicIngestionDataSourceSettingCloudStorageAvroFormatOutputWithContext(ctx context.Context) GetTopicIngestionDataSourceSettingCloudStorageAvroFormatOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTopicIngestionDataSourceSettingCloudStorageAvroFormatOutput)
+}
+
+// GetTopicIngestionDataSourceSettingCloudStorageAvroFormatArrayInput is an input type that accepts GetTopicIngestionDataSourceSettingCloudStorageAvroFormatArray and GetTopicIngestionDataSourceSettingCloudStorageAvroFormatArrayOutput values.
+// You can construct a concrete instance of `GetTopicIngestionDataSourceSettingCloudStorageAvroFormatArrayInput` via:
+//
+//	GetTopicIngestionDataSourceSettingCloudStorageAvroFormatArray{ GetTopicIngestionDataSourceSettingCloudStorageAvroFormatArgs{...} }
+type GetTopicIngestionDataSourceSettingCloudStorageAvroFormatArrayInput interface {
+	pulumi.Input
+
+	ToGetTopicIngestionDataSourceSettingCloudStorageAvroFormatArrayOutput() GetTopicIngestionDataSourceSettingCloudStorageAvroFormatArrayOutput
+	ToGetTopicIngestionDataSourceSettingCloudStorageAvroFormatArrayOutputWithContext(context.Context) GetTopicIngestionDataSourceSettingCloudStorageAvroFormatArrayOutput
+}
+
+type GetTopicIngestionDataSourceSettingCloudStorageAvroFormatArray []GetTopicIngestionDataSourceSettingCloudStorageAvroFormatInput
+
+func (GetTopicIngestionDataSourceSettingCloudStorageAvroFormatArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTopicIngestionDataSourceSettingCloudStorageAvroFormat)(nil)).Elem()
+}
+
+func (i GetTopicIngestionDataSourceSettingCloudStorageAvroFormatArray) ToGetTopicIngestionDataSourceSettingCloudStorageAvroFormatArrayOutput() GetTopicIngestionDataSourceSettingCloudStorageAvroFormatArrayOutput {
+	return i.ToGetTopicIngestionDataSourceSettingCloudStorageAvroFormatArrayOutputWithContext(context.Background())
+}
+
+func (i GetTopicIngestionDataSourceSettingCloudStorageAvroFormatArray) ToGetTopicIngestionDataSourceSettingCloudStorageAvroFormatArrayOutputWithContext(ctx context.Context) GetTopicIngestionDataSourceSettingCloudStorageAvroFormatArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTopicIngestionDataSourceSettingCloudStorageAvroFormatArrayOutput)
+}
+
+type GetTopicIngestionDataSourceSettingCloudStorageAvroFormatOutput struct{ *pulumi.OutputState }
+
+func (GetTopicIngestionDataSourceSettingCloudStorageAvroFormatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTopicIngestionDataSourceSettingCloudStorageAvroFormat)(nil)).Elem()
+}
+
+func (o GetTopicIngestionDataSourceSettingCloudStorageAvroFormatOutput) ToGetTopicIngestionDataSourceSettingCloudStorageAvroFormatOutput() GetTopicIngestionDataSourceSettingCloudStorageAvroFormatOutput {
+	return o
+}
+
+func (o GetTopicIngestionDataSourceSettingCloudStorageAvroFormatOutput) ToGetTopicIngestionDataSourceSettingCloudStorageAvroFormatOutputWithContext(ctx context.Context) GetTopicIngestionDataSourceSettingCloudStorageAvroFormatOutput {
+	return o
+}
+
+type GetTopicIngestionDataSourceSettingCloudStorageAvroFormatArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTopicIngestionDataSourceSettingCloudStorageAvroFormatArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTopicIngestionDataSourceSettingCloudStorageAvroFormat)(nil)).Elem()
+}
+
+func (o GetTopicIngestionDataSourceSettingCloudStorageAvroFormatArrayOutput) ToGetTopicIngestionDataSourceSettingCloudStorageAvroFormatArrayOutput() GetTopicIngestionDataSourceSettingCloudStorageAvroFormatArrayOutput {
+	return o
+}
+
+func (o GetTopicIngestionDataSourceSettingCloudStorageAvroFormatArrayOutput) ToGetTopicIngestionDataSourceSettingCloudStorageAvroFormatArrayOutputWithContext(ctx context.Context) GetTopicIngestionDataSourceSettingCloudStorageAvroFormatArrayOutput {
+	return o
+}
+
+func (o GetTopicIngestionDataSourceSettingCloudStorageAvroFormatArrayOutput) Index(i pulumi.IntInput) GetTopicIngestionDataSourceSettingCloudStorageAvroFormatOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTopicIngestionDataSourceSettingCloudStorageAvroFormat {
+		return vs[0].([]GetTopicIngestionDataSourceSettingCloudStorageAvroFormat)[vs[1].(int)]
+	}).(GetTopicIngestionDataSourceSettingCloudStorageAvroFormatOutput)
+}
+
+type GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormat struct {
+}
+
+// GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatInput is an input type that accepts GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatArgs and GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatOutput values.
+// You can construct a concrete instance of `GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatInput` via:
+//
+//	GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatArgs{...}
+type GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatInput interface {
+	pulumi.Input
+
+	ToGetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatOutput() GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatOutput
+	ToGetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatOutputWithContext(context.Context) GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatOutput
+}
+
+type GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatArgs struct {
+}
+
+func (GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormat)(nil)).Elem()
+}
+
+func (i GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatArgs) ToGetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatOutput() GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatOutput {
+	return i.ToGetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatOutputWithContext(context.Background())
+}
+
+func (i GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatArgs) ToGetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatOutputWithContext(ctx context.Context) GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatOutput)
+}
+
+// GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatArrayInput is an input type that accepts GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatArray and GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatArrayOutput values.
+// You can construct a concrete instance of `GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatArrayInput` via:
+//
+//	GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatArray{ GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatArgs{...} }
+type GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatArrayInput interface {
+	pulumi.Input
+
+	ToGetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatArrayOutput() GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatArrayOutput
+	ToGetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatArrayOutputWithContext(context.Context) GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatArrayOutput
+}
+
+type GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatArray []GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatInput
+
+func (GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormat)(nil)).Elem()
+}
+
+func (i GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatArray) ToGetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatArrayOutput() GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatArrayOutput {
+	return i.ToGetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatArrayOutputWithContext(context.Background())
+}
+
+func (i GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatArray) ToGetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatArrayOutputWithContext(ctx context.Context) GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatArrayOutput)
+}
+
+type GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatOutput struct{ *pulumi.OutputState }
+
+func (GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormat)(nil)).Elem()
+}
+
+func (o GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatOutput) ToGetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatOutput() GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatOutput {
+	return o
+}
+
+func (o GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatOutput) ToGetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatOutputWithContext(ctx context.Context) GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatOutput {
+	return o
+}
+
+type GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormat)(nil)).Elem()
+}
+
+func (o GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatArrayOutput) ToGetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatArrayOutput() GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatArrayOutput {
+	return o
+}
+
+func (o GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatArrayOutput) ToGetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatArrayOutputWithContext(ctx context.Context) GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatArrayOutput {
+	return o
+}
+
+func (o GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatArrayOutput) Index(i pulumi.IntInput) GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormat {
+		return vs[0].([]GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormat)[vs[1].(int)]
+	}).(GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatOutput)
+}
+
+type GetTopicIngestionDataSourceSettingCloudStorageTextFormat struct {
+	// The delimiter to use when using the 'text' format. Each line of text as
+	// specified by the delimiter will be set to the 'data' field of a Pub/Sub
+	// message. When unset, '\n' is used.
+	Delimiter string `pulumi:"delimiter"`
+}
+
+// GetTopicIngestionDataSourceSettingCloudStorageTextFormatInput is an input type that accepts GetTopicIngestionDataSourceSettingCloudStorageTextFormatArgs and GetTopicIngestionDataSourceSettingCloudStorageTextFormatOutput values.
+// You can construct a concrete instance of `GetTopicIngestionDataSourceSettingCloudStorageTextFormatInput` via:
+//
+//	GetTopicIngestionDataSourceSettingCloudStorageTextFormatArgs{...}
+type GetTopicIngestionDataSourceSettingCloudStorageTextFormatInput interface {
+	pulumi.Input
+
+	ToGetTopicIngestionDataSourceSettingCloudStorageTextFormatOutput() GetTopicIngestionDataSourceSettingCloudStorageTextFormatOutput
+	ToGetTopicIngestionDataSourceSettingCloudStorageTextFormatOutputWithContext(context.Context) GetTopicIngestionDataSourceSettingCloudStorageTextFormatOutput
+}
+
+type GetTopicIngestionDataSourceSettingCloudStorageTextFormatArgs struct {
+	// The delimiter to use when using the 'text' format. Each line of text as
+	// specified by the delimiter will be set to the 'data' field of a Pub/Sub
+	// message. When unset, '\n' is used.
+	Delimiter pulumi.StringInput `pulumi:"delimiter"`
+}
+
+func (GetTopicIngestionDataSourceSettingCloudStorageTextFormatArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTopicIngestionDataSourceSettingCloudStorageTextFormat)(nil)).Elem()
+}
+
+func (i GetTopicIngestionDataSourceSettingCloudStorageTextFormatArgs) ToGetTopicIngestionDataSourceSettingCloudStorageTextFormatOutput() GetTopicIngestionDataSourceSettingCloudStorageTextFormatOutput {
+	return i.ToGetTopicIngestionDataSourceSettingCloudStorageTextFormatOutputWithContext(context.Background())
+}
+
+func (i GetTopicIngestionDataSourceSettingCloudStorageTextFormatArgs) ToGetTopicIngestionDataSourceSettingCloudStorageTextFormatOutputWithContext(ctx context.Context) GetTopicIngestionDataSourceSettingCloudStorageTextFormatOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTopicIngestionDataSourceSettingCloudStorageTextFormatOutput)
+}
+
+// GetTopicIngestionDataSourceSettingCloudStorageTextFormatArrayInput is an input type that accepts GetTopicIngestionDataSourceSettingCloudStorageTextFormatArray and GetTopicIngestionDataSourceSettingCloudStorageTextFormatArrayOutput values.
+// You can construct a concrete instance of `GetTopicIngestionDataSourceSettingCloudStorageTextFormatArrayInput` via:
+//
+//	GetTopicIngestionDataSourceSettingCloudStorageTextFormatArray{ GetTopicIngestionDataSourceSettingCloudStorageTextFormatArgs{...} }
+type GetTopicIngestionDataSourceSettingCloudStorageTextFormatArrayInput interface {
+	pulumi.Input
+
+	ToGetTopicIngestionDataSourceSettingCloudStorageTextFormatArrayOutput() GetTopicIngestionDataSourceSettingCloudStorageTextFormatArrayOutput
+	ToGetTopicIngestionDataSourceSettingCloudStorageTextFormatArrayOutputWithContext(context.Context) GetTopicIngestionDataSourceSettingCloudStorageTextFormatArrayOutput
+}
+
+type GetTopicIngestionDataSourceSettingCloudStorageTextFormatArray []GetTopicIngestionDataSourceSettingCloudStorageTextFormatInput
+
+func (GetTopicIngestionDataSourceSettingCloudStorageTextFormatArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTopicIngestionDataSourceSettingCloudStorageTextFormat)(nil)).Elem()
+}
+
+func (i GetTopicIngestionDataSourceSettingCloudStorageTextFormatArray) ToGetTopicIngestionDataSourceSettingCloudStorageTextFormatArrayOutput() GetTopicIngestionDataSourceSettingCloudStorageTextFormatArrayOutput {
+	return i.ToGetTopicIngestionDataSourceSettingCloudStorageTextFormatArrayOutputWithContext(context.Background())
+}
+
+func (i GetTopicIngestionDataSourceSettingCloudStorageTextFormatArray) ToGetTopicIngestionDataSourceSettingCloudStorageTextFormatArrayOutputWithContext(ctx context.Context) GetTopicIngestionDataSourceSettingCloudStorageTextFormatArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTopicIngestionDataSourceSettingCloudStorageTextFormatArrayOutput)
+}
+
+type GetTopicIngestionDataSourceSettingCloudStorageTextFormatOutput struct{ *pulumi.OutputState }
+
+func (GetTopicIngestionDataSourceSettingCloudStorageTextFormatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTopicIngestionDataSourceSettingCloudStorageTextFormat)(nil)).Elem()
+}
+
+func (o GetTopicIngestionDataSourceSettingCloudStorageTextFormatOutput) ToGetTopicIngestionDataSourceSettingCloudStorageTextFormatOutput() GetTopicIngestionDataSourceSettingCloudStorageTextFormatOutput {
+	return o
+}
+
+func (o GetTopicIngestionDataSourceSettingCloudStorageTextFormatOutput) ToGetTopicIngestionDataSourceSettingCloudStorageTextFormatOutputWithContext(ctx context.Context) GetTopicIngestionDataSourceSettingCloudStorageTextFormatOutput {
+	return o
+}
+
+// The delimiter to use when using the 'text' format. Each line of text as
+// specified by the delimiter will be set to the 'data' field of a Pub/Sub
+// message. When unset, '\n' is used.
+func (o GetTopicIngestionDataSourceSettingCloudStorageTextFormatOutput) Delimiter() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTopicIngestionDataSourceSettingCloudStorageTextFormat) string { return v.Delimiter }).(pulumi.StringOutput)
+}
+
+type GetTopicIngestionDataSourceSettingCloudStorageTextFormatArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTopicIngestionDataSourceSettingCloudStorageTextFormatArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTopicIngestionDataSourceSettingCloudStorageTextFormat)(nil)).Elem()
+}
+
+func (o GetTopicIngestionDataSourceSettingCloudStorageTextFormatArrayOutput) ToGetTopicIngestionDataSourceSettingCloudStorageTextFormatArrayOutput() GetTopicIngestionDataSourceSettingCloudStorageTextFormatArrayOutput {
+	return o
+}
+
+func (o GetTopicIngestionDataSourceSettingCloudStorageTextFormatArrayOutput) ToGetTopicIngestionDataSourceSettingCloudStorageTextFormatArrayOutputWithContext(ctx context.Context) GetTopicIngestionDataSourceSettingCloudStorageTextFormatArrayOutput {
+	return o
+}
+
+func (o GetTopicIngestionDataSourceSettingCloudStorageTextFormatArrayOutput) Index(i pulumi.IntInput) GetTopicIngestionDataSourceSettingCloudStorageTextFormatOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTopicIngestionDataSourceSettingCloudStorageTextFormat {
+		return vs[0].([]GetTopicIngestionDataSourceSettingCloudStorageTextFormat)[vs[1].(int)]
+	}).(GetTopicIngestionDataSourceSettingCloudStorageTextFormatOutput)
+}
+
+type GetTopicIngestionDataSourceSettingPlatformLogsSetting struct {
+	// The minimum severity level of Platform Logs that will be written. If unspecified,
+	// no Platform Logs will be written. Default value: "SEVERITY_UNSPECIFIED" Possible values: ["SEVERITY_UNSPECIFIED", "DISABLED", "DEBUG", "INFO", "WARNING", "ERROR"]
+	Severity string `pulumi:"severity"`
+}
+
+// GetTopicIngestionDataSourceSettingPlatformLogsSettingInput is an input type that accepts GetTopicIngestionDataSourceSettingPlatformLogsSettingArgs and GetTopicIngestionDataSourceSettingPlatformLogsSettingOutput values.
+// You can construct a concrete instance of `GetTopicIngestionDataSourceSettingPlatformLogsSettingInput` via:
+//
+//	GetTopicIngestionDataSourceSettingPlatformLogsSettingArgs{...}
+type GetTopicIngestionDataSourceSettingPlatformLogsSettingInput interface {
+	pulumi.Input
+
+	ToGetTopicIngestionDataSourceSettingPlatformLogsSettingOutput() GetTopicIngestionDataSourceSettingPlatformLogsSettingOutput
+	ToGetTopicIngestionDataSourceSettingPlatformLogsSettingOutputWithContext(context.Context) GetTopicIngestionDataSourceSettingPlatformLogsSettingOutput
+}
+
+type GetTopicIngestionDataSourceSettingPlatformLogsSettingArgs struct {
+	// The minimum severity level of Platform Logs that will be written. If unspecified,
+	// no Platform Logs will be written. Default value: "SEVERITY_UNSPECIFIED" Possible values: ["SEVERITY_UNSPECIFIED", "DISABLED", "DEBUG", "INFO", "WARNING", "ERROR"]
+	Severity pulumi.StringInput `pulumi:"severity"`
+}
+
+func (GetTopicIngestionDataSourceSettingPlatformLogsSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTopicIngestionDataSourceSettingPlatformLogsSetting)(nil)).Elem()
+}
+
+func (i GetTopicIngestionDataSourceSettingPlatformLogsSettingArgs) ToGetTopicIngestionDataSourceSettingPlatformLogsSettingOutput() GetTopicIngestionDataSourceSettingPlatformLogsSettingOutput {
+	return i.ToGetTopicIngestionDataSourceSettingPlatformLogsSettingOutputWithContext(context.Background())
+}
+
+func (i GetTopicIngestionDataSourceSettingPlatformLogsSettingArgs) ToGetTopicIngestionDataSourceSettingPlatformLogsSettingOutputWithContext(ctx context.Context) GetTopicIngestionDataSourceSettingPlatformLogsSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTopicIngestionDataSourceSettingPlatformLogsSettingOutput)
+}
+
+// GetTopicIngestionDataSourceSettingPlatformLogsSettingArrayInput is an input type that accepts GetTopicIngestionDataSourceSettingPlatformLogsSettingArray and GetTopicIngestionDataSourceSettingPlatformLogsSettingArrayOutput values.
+// You can construct a concrete instance of `GetTopicIngestionDataSourceSettingPlatformLogsSettingArrayInput` via:
+//
+//	GetTopicIngestionDataSourceSettingPlatformLogsSettingArray{ GetTopicIngestionDataSourceSettingPlatformLogsSettingArgs{...} }
+type GetTopicIngestionDataSourceSettingPlatformLogsSettingArrayInput interface {
+	pulumi.Input
+
+	ToGetTopicIngestionDataSourceSettingPlatformLogsSettingArrayOutput() GetTopicIngestionDataSourceSettingPlatformLogsSettingArrayOutput
+	ToGetTopicIngestionDataSourceSettingPlatformLogsSettingArrayOutputWithContext(context.Context) GetTopicIngestionDataSourceSettingPlatformLogsSettingArrayOutput
+}
+
+type GetTopicIngestionDataSourceSettingPlatformLogsSettingArray []GetTopicIngestionDataSourceSettingPlatformLogsSettingInput
+
+func (GetTopicIngestionDataSourceSettingPlatformLogsSettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTopicIngestionDataSourceSettingPlatformLogsSetting)(nil)).Elem()
+}
+
+func (i GetTopicIngestionDataSourceSettingPlatformLogsSettingArray) ToGetTopicIngestionDataSourceSettingPlatformLogsSettingArrayOutput() GetTopicIngestionDataSourceSettingPlatformLogsSettingArrayOutput {
+	return i.ToGetTopicIngestionDataSourceSettingPlatformLogsSettingArrayOutputWithContext(context.Background())
+}
+
+func (i GetTopicIngestionDataSourceSettingPlatformLogsSettingArray) ToGetTopicIngestionDataSourceSettingPlatformLogsSettingArrayOutputWithContext(ctx context.Context) GetTopicIngestionDataSourceSettingPlatformLogsSettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTopicIngestionDataSourceSettingPlatformLogsSettingArrayOutput)
+}
+
+type GetTopicIngestionDataSourceSettingPlatformLogsSettingOutput struct{ *pulumi.OutputState }
+
+func (GetTopicIngestionDataSourceSettingPlatformLogsSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTopicIngestionDataSourceSettingPlatformLogsSetting)(nil)).Elem()
+}
+
+func (o GetTopicIngestionDataSourceSettingPlatformLogsSettingOutput) ToGetTopicIngestionDataSourceSettingPlatformLogsSettingOutput() GetTopicIngestionDataSourceSettingPlatformLogsSettingOutput {
+	return o
+}
+
+func (o GetTopicIngestionDataSourceSettingPlatformLogsSettingOutput) ToGetTopicIngestionDataSourceSettingPlatformLogsSettingOutputWithContext(ctx context.Context) GetTopicIngestionDataSourceSettingPlatformLogsSettingOutput {
+	return o
+}
+
+// The minimum severity level of Platform Logs that will be written. If unspecified,
+// no Platform Logs will be written. Default value: "SEVERITY_UNSPECIFIED" Possible values: ["SEVERITY_UNSPECIFIED", "DISABLED", "DEBUG", "INFO", "WARNING", "ERROR"]
+func (o GetTopicIngestionDataSourceSettingPlatformLogsSettingOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTopicIngestionDataSourceSettingPlatformLogsSetting) string { return v.Severity }).(pulumi.StringOutput)
+}
+
+type GetTopicIngestionDataSourceSettingPlatformLogsSettingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTopicIngestionDataSourceSettingPlatformLogsSettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTopicIngestionDataSourceSettingPlatformLogsSetting)(nil)).Elem()
+}
+
+func (o GetTopicIngestionDataSourceSettingPlatformLogsSettingArrayOutput) ToGetTopicIngestionDataSourceSettingPlatformLogsSettingArrayOutput() GetTopicIngestionDataSourceSettingPlatformLogsSettingArrayOutput {
+	return o
+}
+
+func (o GetTopicIngestionDataSourceSettingPlatformLogsSettingArrayOutput) ToGetTopicIngestionDataSourceSettingPlatformLogsSettingArrayOutputWithContext(ctx context.Context) GetTopicIngestionDataSourceSettingPlatformLogsSettingArrayOutput {
+	return o
+}
+
+func (o GetTopicIngestionDataSourceSettingPlatformLogsSettingArrayOutput) Index(i pulumi.IntInput) GetTopicIngestionDataSourceSettingPlatformLogsSettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTopicIngestionDataSourceSettingPlatformLogsSetting {
+		return vs[0].([]GetTopicIngestionDataSourceSettingPlatformLogsSetting)[vs[1].(int)]
+	}).(GetTopicIngestionDataSourceSettingPlatformLogsSettingOutput)
 }
 
 type GetTopicMessageStoragePolicy struct {
@@ -6168,6 +7630,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicIngestionDataSourceSettingsPtrInput)(nil)).Elem(), TopicIngestionDataSourceSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicIngestionDataSourceSettingsAwsKinesisInput)(nil)).Elem(), TopicIngestionDataSourceSettingsAwsKinesisArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicIngestionDataSourceSettingsAwsKinesisPtrInput)(nil)).Elem(), TopicIngestionDataSourceSettingsAwsKinesisArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TopicIngestionDataSourceSettingsCloudStorageInput)(nil)).Elem(), TopicIngestionDataSourceSettingsCloudStorageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TopicIngestionDataSourceSettingsCloudStoragePtrInput)(nil)).Elem(), TopicIngestionDataSourceSettingsCloudStorageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TopicIngestionDataSourceSettingsCloudStorageAvroFormatInput)(nil)).Elem(), TopicIngestionDataSourceSettingsCloudStorageAvroFormatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TopicIngestionDataSourceSettingsCloudStorageAvroFormatPtrInput)(nil)).Elem(), TopicIngestionDataSourceSettingsCloudStorageAvroFormatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatInput)(nil)).Elem(), TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtrInput)(nil)).Elem(), TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TopicIngestionDataSourceSettingsCloudStorageTextFormatInput)(nil)).Elem(), TopicIngestionDataSourceSettingsCloudStorageTextFormatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TopicIngestionDataSourceSettingsCloudStorageTextFormatPtrInput)(nil)).Elem(), TopicIngestionDataSourceSettingsCloudStorageTextFormatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TopicIngestionDataSourceSettingsPlatformLogsSettingsInput)(nil)).Elem(), TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TopicIngestionDataSourceSettingsPlatformLogsSettingsPtrInput)(nil)).Elem(), TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicMessageStoragePolicyInput)(nil)).Elem(), TopicMessageStoragePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicMessageStoragePolicyPtrInput)(nil)).Elem(), TopicMessageStoragePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicSchemaSettingsInput)(nil)).Elem(), TopicSchemaSettingsArgs{})
@@ -6194,6 +7666,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicIngestionDataSourceSettingArrayInput)(nil)).Elem(), GetTopicIngestionDataSourceSettingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicIngestionDataSourceSettingAwsKineseInput)(nil)).Elem(), GetTopicIngestionDataSourceSettingAwsKineseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicIngestionDataSourceSettingAwsKineseArrayInput)(nil)).Elem(), GetTopicIngestionDataSourceSettingAwsKineseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicIngestionDataSourceSettingCloudStorageInput)(nil)).Elem(), GetTopicIngestionDataSourceSettingCloudStorageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicIngestionDataSourceSettingCloudStorageArrayInput)(nil)).Elem(), GetTopicIngestionDataSourceSettingCloudStorageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicIngestionDataSourceSettingCloudStorageAvroFormatInput)(nil)).Elem(), GetTopicIngestionDataSourceSettingCloudStorageAvroFormatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicIngestionDataSourceSettingCloudStorageAvroFormatArrayInput)(nil)).Elem(), GetTopicIngestionDataSourceSettingCloudStorageAvroFormatArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatInput)(nil)).Elem(), GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatArrayInput)(nil)).Elem(), GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicIngestionDataSourceSettingCloudStorageTextFormatInput)(nil)).Elem(), GetTopicIngestionDataSourceSettingCloudStorageTextFormatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicIngestionDataSourceSettingCloudStorageTextFormatArrayInput)(nil)).Elem(), GetTopicIngestionDataSourceSettingCloudStorageTextFormatArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicIngestionDataSourceSettingPlatformLogsSettingInput)(nil)).Elem(), GetTopicIngestionDataSourceSettingPlatformLogsSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicIngestionDataSourceSettingPlatformLogsSettingArrayInput)(nil)).Elem(), GetTopicIngestionDataSourceSettingPlatformLogsSettingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicMessageStoragePolicyInput)(nil)).Elem(), GetTopicMessageStoragePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicMessageStoragePolicyArrayInput)(nil)).Elem(), GetTopicMessageStoragePolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicSchemaSettingInput)(nil)).Elem(), GetTopicSchemaSettingArgs{})
@@ -6242,6 +7724,16 @@ func init() {
 	pulumi.RegisterOutputType(TopicIngestionDataSourceSettingsPtrOutput{})
 	pulumi.RegisterOutputType(TopicIngestionDataSourceSettingsAwsKinesisOutput{})
 	pulumi.RegisterOutputType(TopicIngestionDataSourceSettingsAwsKinesisPtrOutput{})
+	pulumi.RegisterOutputType(TopicIngestionDataSourceSettingsCloudStorageOutput{})
+	pulumi.RegisterOutputType(TopicIngestionDataSourceSettingsCloudStoragePtrOutput{})
+	pulumi.RegisterOutputType(TopicIngestionDataSourceSettingsCloudStorageAvroFormatOutput{})
+	pulumi.RegisterOutputType(TopicIngestionDataSourceSettingsCloudStorageAvroFormatPtrOutput{})
+	pulumi.RegisterOutputType(TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatOutput{})
+	pulumi.RegisterOutputType(TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatPtrOutput{})
+	pulumi.RegisterOutputType(TopicIngestionDataSourceSettingsCloudStorageTextFormatOutput{})
+	pulumi.RegisterOutputType(TopicIngestionDataSourceSettingsCloudStorageTextFormatPtrOutput{})
+	pulumi.RegisterOutputType(TopicIngestionDataSourceSettingsPlatformLogsSettingsOutput{})
+	pulumi.RegisterOutputType(TopicIngestionDataSourceSettingsPlatformLogsSettingsPtrOutput{})
 	pulumi.RegisterOutputType(TopicMessageStoragePolicyOutput{})
 	pulumi.RegisterOutputType(TopicMessageStoragePolicyPtrOutput{})
 	pulumi.RegisterOutputType(TopicSchemaSettingsOutput{})
@@ -6268,6 +7760,16 @@ func init() {
 	pulumi.RegisterOutputType(GetTopicIngestionDataSourceSettingArrayOutput{})
 	pulumi.RegisterOutputType(GetTopicIngestionDataSourceSettingAwsKineseOutput{})
 	pulumi.RegisterOutputType(GetTopicIngestionDataSourceSettingAwsKineseArrayOutput{})
+	pulumi.RegisterOutputType(GetTopicIngestionDataSourceSettingCloudStorageOutput{})
+	pulumi.RegisterOutputType(GetTopicIngestionDataSourceSettingCloudStorageArrayOutput{})
+	pulumi.RegisterOutputType(GetTopicIngestionDataSourceSettingCloudStorageAvroFormatOutput{})
+	pulumi.RegisterOutputType(GetTopicIngestionDataSourceSettingCloudStorageAvroFormatArrayOutput{})
+	pulumi.RegisterOutputType(GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatOutput{})
+	pulumi.RegisterOutputType(GetTopicIngestionDataSourceSettingCloudStoragePubsubAvroFormatArrayOutput{})
+	pulumi.RegisterOutputType(GetTopicIngestionDataSourceSettingCloudStorageTextFormatOutput{})
+	pulumi.RegisterOutputType(GetTopicIngestionDataSourceSettingCloudStorageTextFormatArrayOutput{})
+	pulumi.RegisterOutputType(GetTopicIngestionDataSourceSettingPlatformLogsSettingOutput{})
+	pulumi.RegisterOutputType(GetTopicIngestionDataSourceSettingPlatformLogsSettingArrayOutput{})
 	pulumi.RegisterOutputType(GetTopicMessageStoragePolicyOutput{})
 	pulumi.RegisterOutputType(GetTopicMessageStoragePolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetTopicSchemaSettingOutput{})

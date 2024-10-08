@@ -3366,6 +3366,1404 @@ func (o Hl7StoreParserConfigPtrOutput) Version() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type PipelineJobBackfillPipelineJob struct {
+	// Specifies the mapping pipeline job to backfill, the name format
+	// should follow: projects/{projectId}/locations/{locationId}/datasets/{datasetId}/pipelineJobs/{pipelineJobId}.
+	MappingPipelineJob *string `pulumi:"mappingPipelineJob"`
+}
+
+// PipelineJobBackfillPipelineJobInput is an input type that accepts PipelineJobBackfillPipelineJobArgs and PipelineJobBackfillPipelineJobOutput values.
+// You can construct a concrete instance of `PipelineJobBackfillPipelineJobInput` via:
+//
+//	PipelineJobBackfillPipelineJobArgs{...}
+type PipelineJobBackfillPipelineJobInput interface {
+	pulumi.Input
+
+	ToPipelineJobBackfillPipelineJobOutput() PipelineJobBackfillPipelineJobOutput
+	ToPipelineJobBackfillPipelineJobOutputWithContext(context.Context) PipelineJobBackfillPipelineJobOutput
+}
+
+type PipelineJobBackfillPipelineJobArgs struct {
+	// Specifies the mapping pipeline job to backfill, the name format
+	// should follow: projects/{projectId}/locations/{locationId}/datasets/{datasetId}/pipelineJobs/{pipelineJobId}.
+	MappingPipelineJob pulumi.StringPtrInput `pulumi:"mappingPipelineJob"`
+}
+
+func (PipelineJobBackfillPipelineJobArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineJobBackfillPipelineJob)(nil)).Elem()
+}
+
+func (i PipelineJobBackfillPipelineJobArgs) ToPipelineJobBackfillPipelineJobOutput() PipelineJobBackfillPipelineJobOutput {
+	return i.ToPipelineJobBackfillPipelineJobOutputWithContext(context.Background())
+}
+
+func (i PipelineJobBackfillPipelineJobArgs) ToPipelineJobBackfillPipelineJobOutputWithContext(ctx context.Context) PipelineJobBackfillPipelineJobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineJobBackfillPipelineJobOutput)
+}
+
+func (i PipelineJobBackfillPipelineJobArgs) ToPipelineJobBackfillPipelineJobPtrOutput() PipelineJobBackfillPipelineJobPtrOutput {
+	return i.ToPipelineJobBackfillPipelineJobPtrOutputWithContext(context.Background())
+}
+
+func (i PipelineJobBackfillPipelineJobArgs) ToPipelineJobBackfillPipelineJobPtrOutputWithContext(ctx context.Context) PipelineJobBackfillPipelineJobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineJobBackfillPipelineJobOutput).ToPipelineJobBackfillPipelineJobPtrOutputWithContext(ctx)
+}
+
+// PipelineJobBackfillPipelineJobPtrInput is an input type that accepts PipelineJobBackfillPipelineJobArgs, PipelineJobBackfillPipelineJobPtr and PipelineJobBackfillPipelineJobPtrOutput values.
+// You can construct a concrete instance of `PipelineJobBackfillPipelineJobPtrInput` via:
+//
+//	        PipelineJobBackfillPipelineJobArgs{...}
+//
+//	or:
+//
+//	        nil
+type PipelineJobBackfillPipelineJobPtrInput interface {
+	pulumi.Input
+
+	ToPipelineJobBackfillPipelineJobPtrOutput() PipelineJobBackfillPipelineJobPtrOutput
+	ToPipelineJobBackfillPipelineJobPtrOutputWithContext(context.Context) PipelineJobBackfillPipelineJobPtrOutput
+}
+
+type pipelineJobBackfillPipelineJobPtrType PipelineJobBackfillPipelineJobArgs
+
+func PipelineJobBackfillPipelineJobPtr(v *PipelineJobBackfillPipelineJobArgs) PipelineJobBackfillPipelineJobPtrInput {
+	return (*pipelineJobBackfillPipelineJobPtrType)(v)
+}
+
+func (*pipelineJobBackfillPipelineJobPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineJobBackfillPipelineJob)(nil)).Elem()
+}
+
+func (i *pipelineJobBackfillPipelineJobPtrType) ToPipelineJobBackfillPipelineJobPtrOutput() PipelineJobBackfillPipelineJobPtrOutput {
+	return i.ToPipelineJobBackfillPipelineJobPtrOutputWithContext(context.Background())
+}
+
+func (i *pipelineJobBackfillPipelineJobPtrType) ToPipelineJobBackfillPipelineJobPtrOutputWithContext(ctx context.Context) PipelineJobBackfillPipelineJobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineJobBackfillPipelineJobPtrOutput)
+}
+
+type PipelineJobBackfillPipelineJobOutput struct{ *pulumi.OutputState }
+
+func (PipelineJobBackfillPipelineJobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineJobBackfillPipelineJob)(nil)).Elem()
+}
+
+func (o PipelineJobBackfillPipelineJobOutput) ToPipelineJobBackfillPipelineJobOutput() PipelineJobBackfillPipelineJobOutput {
+	return o
+}
+
+func (o PipelineJobBackfillPipelineJobOutput) ToPipelineJobBackfillPipelineJobOutputWithContext(ctx context.Context) PipelineJobBackfillPipelineJobOutput {
+	return o
+}
+
+func (o PipelineJobBackfillPipelineJobOutput) ToPipelineJobBackfillPipelineJobPtrOutput() PipelineJobBackfillPipelineJobPtrOutput {
+	return o.ToPipelineJobBackfillPipelineJobPtrOutputWithContext(context.Background())
+}
+
+func (o PipelineJobBackfillPipelineJobOutput) ToPipelineJobBackfillPipelineJobPtrOutputWithContext(ctx context.Context) PipelineJobBackfillPipelineJobPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineJobBackfillPipelineJob) *PipelineJobBackfillPipelineJob {
+		return &v
+	}).(PipelineJobBackfillPipelineJobPtrOutput)
+}
+
+// Specifies the mapping pipeline job to backfill, the name format
+// should follow: projects/{projectId}/locations/{locationId}/datasets/{datasetId}/pipelineJobs/{pipelineJobId}.
+func (o PipelineJobBackfillPipelineJobOutput) MappingPipelineJob() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineJobBackfillPipelineJob) *string { return v.MappingPipelineJob }).(pulumi.StringPtrOutput)
+}
+
+type PipelineJobBackfillPipelineJobPtrOutput struct{ *pulumi.OutputState }
+
+func (PipelineJobBackfillPipelineJobPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineJobBackfillPipelineJob)(nil)).Elem()
+}
+
+func (o PipelineJobBackfillPipelineJobPtrOutput) ToPipelineJobBackfillPipelineJobPtrOutput() PipelineJobBackfillPipelineJobPtrOutput {
+	return o
+}
+
+func (o PipelineJobBackfillPipelineJobPtrOutput) ToPipelineJobBackfillPipelineJobPtrOutputWithContext(ctx context.Context) PipelineJobBackfillPipelineJobPtrOutput {
+	return o
+}
+
+func (o PipelineJobBackfillPipelineJobPtrOutput) Elem() PipelineJobBackfillPipelineJobOutput {
+	return o.ApplyT(func(v *PipelineJobBackfillPipelineJob) PipelineJobBackfillPipelineJob {
+		if v != nil {
+			return *v
+		}
+		var ret PipelineJobBackfillPipelineJob
+		return ret
+	}).(PipelineJobBackfillPipelineJobOutput)
+}
+
+// Specifies the mapping pipeline job to backfill, the name format
+// should follow: projects/{projectId}/locations/{locationId}/datasets/{datasetId}/pipelineJobs/{pipelineJobId}.
+func (o PipelineJobBackfillPipelineJobPtrOutput) MappingPipelineJob() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineJobBackfillPipelineJob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MappingPipelineJob
+	}).(pulumi.StringPtrOutput)
+}
+
+type PipelineJobMappingPipelineJob struct {
+	// If set, the mapping pipeline will write snapshots to this
+	// FHIR store without assigning stable IDs. You must
+	// grant your pipeline project's Cloud Healthcare Service
+	// Agent serviceaccount healthcare.fhirResources.executeBundle
+	// and healthcare.fhirResources.create permissions on the
+	// destination store. The destination store must set
+	// [disableReferentialIntegrity][FhirStore.disable_referential_integrity]
+	// to true. The destination store must use FHIR version R4.
+	// Format: project/{projectID}/locations/{locationID}/datasets/{datasetName}/fhirStores/{fhirStoreID}.
+	FhirStoreDestination *string `pulumi:"fhirStoreDestination"`
+	// A streaming FHIR data source.
+	// Structure is documented below.
+	FhirStreamingSource *PipelineJobMappingPipelineJobFhirStreamingSource `pulumi:"fhirStreamingSource"`
+	// The location of the mapping configuration.
+	// Structure is documented below.
+	MappingConfig PipelineJobMappingPipelineJobMappingConfig `pulumi:"mappingConfig"`
+	// If set to true, a mapping pipeline will send output snapshots
+	// to the reconciliation pipeline in its dataset. A reconciliation
+	// pipeline must exist in this dataset before a mapping pipeline
+	// with a reconciliation destination can be created.
+	ReconciliationDestination *bool `pulumi:"reconciliationDestination"`
+}
+
+// PipelineJobMappingPipelineJobInput is an input type that accepts PipelineJobMappingPipelineJobArgs and PipelineJobMappingPipelineJobOutput values.
+// You can construct a concrete instance of `PipelineJobMappingPipelineJobInput` via:
+//
+//	PipelineJobMappingPipelineJobArgs{...}
+type PipelineJobMappingPipelineJobInput interface {
+	pulumi.Input
+
+	ToPipelineJobMappingPipelineJobOutput() PipelineJobMappingPipelineJobOutput
+	ToPipelineJobMappingPipelineJobOutputWithContext(context.Context) PipelineJobMappingPipelineJobOutput
+}
+
+type PipelineJobMappingPipelineJobArgs struct {
+	// If set, the mapping pipeline will write snapshots to this
+	// FHIR store without assigning stable IDs. You must
+	// grant your pipeline project's Cloud Healthcare Service
+	// Agent serviceaccount healthcare.fhirResources.executeBundle
+	// and healthcare.fhirResources.create permissions on the
+	// destination store. The destination store must set
+	// [disableReferentialIntegrity][FhirStore.disable_referential_integrity]
+	// to true. The destination store must use FHIR version R4.
+	// Format: project/{projectID}/locations/{locationID}/datasets/{datasetName}/fhirStores/{fhirStoreID}.
+	FhirStoreDestination pulumi.StringPtrInput `pulumi:"fhirStoreDestination"`
+	// A streaming FHIR data source.
+	// Structure is documented below.
+	FhirStreamingSource PipelineJobMappingPipelineJobFhirStreamingSourcePtrInput `pulumi:"fhirStreamingSource"`
+	// The location of the mapping configuration.
+	// Structure is documented below.
+	MappingConfig PipelineJobMappingPipelineJobMappingConfigInput `pulumi:"mappingConfig"`
+	// If set to true, a mapping pipeline will send output snapshots
+	// to the reconciliation pipeline in its dataset. A reconciliation
+	// pipeline must exist in this dataset before a mapping pipeline
+	// with a reconciliation destination can be created.
+	ReconciliationDestination pulumi.BoolPtrInput `pulumi:"reconciliationDestination"`
+}
+
+func (PipelineJobMappingPipelineJobArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineJobMappingPipelineJob)(nil)).Elem()
+}
+
+func (i PipelineJobMappingPipelineJobArgs) ToPipelineJobMappingPipelineJobOutput() PipelineJobMappingPipelineJobOutput {
+	return i.ToPipelineJobMappingPipelineJobOutputWithContext(context.Background())
+}
+
+func (i PipelineJobMappingPipelineJobArgs) ToPipelineJobMappingPipelineJobOutputWithContext(ctx context.Context) PipelineJobMappingPipelineJobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineJobMappingPipelineJobOutput)
+}
+
+func (i PipelineJobMappingPipelineJobArgs) ToPipelineJobMappingPipelineJobPtrOutput() PipelineJobMappingPipelineJobPtrOutput {
+	return i.ToPipelineJobMappingPipelineJobPtrOutputWithContext(context.Background())
+}
+
+func (i PipelineJobMappingPipelineJobArgs) ToPipelineJobMappingPipelineJobPtrOutputWithContext(ctx context.Context) PipelineJobMappingPipelineJobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineJobMappingPipelineJobOutput).ToPipelineJobMappingPipelineJobPtrOutputWithContext(ctx)
+}
+
+// PipelineJobMappingPipelineJobPtrInput is an input type that accepts PipelineJobMappingPipelineJobArgs, PipelineJobMappingPipelineJobPtr and PipelineJobMappingPipelineJobPtrOutput values.
+// You can construct a concrete instance of `PipelineJobMappingPipelineJobPtrInput` via:
+//
+//	        PipelineJobMappingPipelineJobArgs{...}
+//
+//	or:
+//
+//	        nil
+type PipelineJobMappingPipelineJobPtrInput interface {
+	pulumi.Input
+
+	ToPipelineJobMappingPipelineJobPtrOutput() PipelineJobMappingPipelineJobPtrOutput
+	ToPipelineJobMappingPipelineJobPtrOutputWithContext(context.Context) PipelineJobMappingPipelineJobPtrOutput
+}
+
+type pipelineJobMappingPipelineJobPtrType PipelineJobMappingPipelineJobArgs
+
+func PipelineJobMappingPipelineJobPtr(v *PipelineJobMappingPipelineJobArgs) PipelineJobMappingPipelineJobPtrInput {
+	return (*pipelineJobMappingPipelineJobPtrType)(v)
+}
+
+func (*pipelineJobMappingPipelineJobPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineJobMappingPipelineJob)(nil)).Elem()
+}
+
+func (i *pipelineJobMappingPipelineJobPtrType) ToPipelineJobMappingPipelineJobPtrOutput() PipelineJobMappingPipelineJobPtrOutput {
+	return i.ToPipelineJobMappingPipelineJobPtrOutputWithContext(context.Background())
+}
+
+func (i *pipelineJobMappingPipelineJobPtrType) ToPipelineJobMappingPipelineJobPtrOutputWithContext(ctx context.Context) PipelineJobMappingPipelineJobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineJobMappingPipelineJobPtrOutput)
+}
+
+type PipelineJobMappingPipelineJobOutput struct{ *pulumi.OutputState }
+
+func (PipelineJobMappingPipelineJobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineJobMappingPipelineJob)(nil)).Elem()
+}
+
+func (o PipelineJobMappingPipelineJobOutput) ToPipelineJobMappingPipelineJobOutput() PipelineJobMappingPipelineJobOutput {
+	return o
+}
+
+func (o PipelineJobMappingPipelineJobOutput) ToPipelineJobMappingPipelineJobOutputWithContext(ctx context.Context) PipelineJobMappingPipelineJobOutput {
+	return o
+}
+
+func (o PipelineJobMappingPipelineJobOutput) ToPipelineJobMappingPipelineJobPtrOutput() PipelineJobMappingPipelineJobPtrOutput {
+	return o.ToPipelineJobMappingPipelineJobPtrOutputWithContext(context.Background())
+}
+
+func (o PipelineJobMappingPipelineJobOutput) ToPipelineJobMappingPipelineJobPtrOutputWithContext(ctx context.Context) PipelineJobMappingPipelineJobPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineJobMappingPipelineJob) *PipelineJobMappingPipelineJob {
+		return &v
+	}).(PipelineJobMappingPipelineJobPtrOutput)
+}
+
+// If set, the mapping pipeline will write snapshots to this
+// FHIR store without assigning stable IDs. You must
+// grant your pipeline project's Cloud Healthcare Service
+// Agent serviceaccount healthcare.fhirResources.executeBundle
+// and healthcare.fhirResources.create permissions on the
+// destination store. The destination store must set
+// [disableReferentialIntegrity][FhirStore.disable_referential_integrity]
+// to true. The destination store must use FHIR version R4.
+// Format: project/{projectID}/locations/{locationID}/datasets/{datasetName}/fhirStores/{fhirStoreID}.
+func (o PipelineJobMappingPipelineJobOutput) FhirStoreDestination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineJobMappingPipelineJob) *string { return v.FhirStoreDestination }).(pulumi.StringPtrOutput)
+}
+
+// A streaming FHIR data source.
+// Structure is documented below.
+func (o PipelineJobMappingPipelineJobOutput) FhirStreamingSource() PipelineJobMappingPipelineJobFhirStreamingSourcePtrOutput {
+	return o.ApplyT(func(v PipelineJobMappingPipelineJob) *PipelineJobMappingPipelineJobFhirStreamingSource {
+		return v.FhirStreamingSource
+	}).(PipelineJobMappingPipelineJobFhirStreamingSourcePtrOutput)
+}
+
+// The location of the mapping configuration.
+// Structure is documented below.
+func (o PipelineJobMappingPipelineJobOutput) MappingConfig() PipelineJobMappingPipelineJobMappingConfigOutput {
+	return o.ApplyT(func(v PipelineJobMappingPipelineJob) PipelineJobMappingPipelineJobMappingConfig {
+		return v.MappingConfig
+	}).(PipelineJobMappingPipelineJobMappingConfigOutput)
+}
+
+// If set to true, a mapping pipeline will send output snapshots
+// to the reconciliation pipeline in its dataset. A reconciliation
+// pipeline must exist in this dataset before a mapping pipeline
+// with a reconciliation destination can be created.
+func (o PipelineJobMappingPipelineJobOutput) ReconciliationDestination() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PipelineJobMappingPipelineJob) *bool { return v.ReconciliationDestination }).(pulumi.BoolPtrOutput)
+}
+
+type PipelineJobMappingPipelineJobPtrOutput struct{ *pulumi.OutputState }
+
+func (PipelineJobMappingPipelineJobPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineJobMappingPipelineJob)(nil)).Elem()
+}
+
+func (o PipelineJobMappingPipelineJobPtrOutput) ToPipelineJobMappingPipelineJobPtrOutput() PipelineJobMappingPipelineJobPtrOutput {
+	return o
+}
+
+func (o PipelineJobMappingPipelineJobPtrOutput) ToPipelineJobMappingPipelineJobPtrOutputWithContext(ctx context.Context) PipelineJobMappingPipelineJobPtrOutput {
+	return o
+}
+
+func (o PipelineJobMappingPipelineJobPtrOutput) Elem() PipelineJobMappingPipelineJobOutput {
+	return o.ApplyT(func(v *PipelineJobMappingPipelineJob) PipelineJobMappingPipelineJob {
+		if v != nil {
+			return *v
+		}
+		var ret PipelineJobMappingPipelineJob
+		return ret
+	}).(PipelineJobMappingPipelineJobOutput)
+}
+
+// If set, the mapping pipeline will write snapshots to this
+// FHIR store without assigning stable IDs. You must
+// grant your pipeline project's Cloud Healthcare Service
+// Agent serviceaccount healthcare.fhirResources.executeBundle
+// and healthcare.fhirResources.create permissions on the
+// destination store. The destination store must set
+// [disableReferentialIntegrity][FhirStore.disable_referential_integrity]
+// to true. The destination store must use FHIR version R4.
+// Format: project/{projectID}/locations/{locationID}/datasets/{datasetName}/fhirStores/{fhirStoreID}.
+func (o PipelineJobMappingPipelineJobPtrOutput) FhirStoreDestination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineJobMappingPipelineJob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FhirStoreDestination
+	}).(pulumi.StringPtrOutput)
+}
+
+// A streaming FHIR data source.
+// Structure is documented below.
+func (o PipelineJobMappingPipelineJobPtrOutput) FhirStreamingSource() PipelineJobMappingPipelineJobFhirStreamingSourcePtrOutput {
+	return o.ApplyT(func(v *PipelineJobMappingPipelineJob) *PipelineJobMappingPipelineJobFhirStreamingSource {
+		if v == nil {
+			return nil
+		}
+		return v.FhirStreamingSource
+	}).(PipelineJobMappingPipelineJobFhirStreamingSourcePtrOutput)
+}
+
+// The location of the mapping configuration.
+// Structure is documented below.
+func (o PipelineJobMappingPipelineJobPtrOutput) MappingConfig() PipelineJobMappingPipelineJobMappingConfigPtrOutput {
+	return o.ApplyT(func(v *PipelineJobMappingPipelineJob) *PipelineJobMappingPipelineJobMappingConfig {
+		if v == nil {
+			return nil
+		}
+		return &v.MappingConfig
+	}).(PipelineJobMappingPipelineJobMappingConfigPtrOutput)
+}
+
+// If set to true, a mapping pipeline will send output snapshots
+// to the reconciliation pipeline in its dataset. A reconciliation
+// pipeline must exist in this dataset before a mapping pipeline
+// with a reconciliation destination can be created.
+func (o PipelineJobMappingPipelineJobPtrOutput) ReconciliationDestination() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PipelineJobMappingPipelineJob) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ReconciliationDestination
+	}).(pulumi.BoolPtrOutput)
+}
+
+type PipelineJobMappingPipelineJobFhirStreamingSource struct {
+	// Describes the streaming FHIR data source.
+	Description *string `pulumi:"description"`
+	// The path to the FHIR store in the format projects/{projectId}/locations/{locationId}/datasets/{datasetId}/fhirStores/{fhirStoreId}.
+	FhirStore string `pulumi:"fhirStore"`
+}
+
+// PipelineJobMappingPipelineJobFhirStreamingSourceInput is an input type that accepts PipelineJobMappingPipelineJobFhirStreamingSourceArgs and PipelineJobMappingPipelineJobFhirStreamingSourceOutput values.
+// You can construct a concrete instance of `PipelineJobMappingPipelineJobFhirStreamingSourceInput` via:
+//
+//	PipelineJobMappingPipelineJobFhirStreamingSourceArgs{...}
+type PipelineJobMappingPipelineJobFhirStreamingSourceInput interface {
+	pulumi.Input
+
+	ToPipelineJobMappingPipelineJobFhirStreamingSourceOutput() PipelineJobMappingPipelineJobFhirStreamingSourceOutput
+	ToPipelineJobMappingPipelineJobFhirStreamingSourceOutputWithContext(context.Context) PipelineJobMappingPipelineJobFhirStreamingSourceOutput
+}
+
+type PipelineJobMappingPipelineJobFhirStreamingSourceArgs struct {
+	// Describes the streaming FHIR data source.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The path to the FHIR store in the format projects/{projectId}/locations/{locationId}/datasets/{datasetId}/fhirStores/{fhirStoreId}.
+	FhirStore pulumi.StringInput `pulumi:"fhirStore"`
+}
+
+func (PipelineJobMappingPipelineJobFhirStreamingSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineJobMappingPipelineJobFhirStreamingSource)(nil)).Elem()
+}
+
+func (i PipelineJobMappingPipelineJobFhirStreamingSourceArgs) ToPipelineJobMappingPipelineJobFhirStreamingSourceOutput() PipelineJobMappingPipelineJobFhirStreamingSourceOutput {
+	return i.ToPipelineJobMappingPipelineJobFhirStreamingSourceOutputWithContext(context.Background())
+}
+
+func (i PipelineJobMappingPipelineJobFhirStreamingSourceArgs) ToPipelineJobMappingPipelineJobFhirStreamingSourceOutputWithContext(ctx context.Context) PipelineJobMappingPipelineJobFhirStreamingSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineJobMappingPipelineJobFhirStreamingSourceOutput)
+}
+
+func (i PipelineJobMappingPipelineJobFhirStreamingSourceArgs) ToPipelineJobMappingPipelineJobFhirStreamingSourcePtrOutput() PipelineJobMappingPipelineJobFhirStreamingSourcePtrOutput {
+	return i.ToPipelineJobMappingPipelineJobFhirStreamingSourcePtrOutputWithContext(context.Background())
+}
+
+func (i PipelineJobMappingPipelineJobFhirStreamingSourceArgs) ToPipelineJobMappingPipelineJobFhirStreamingSourcePtrOutputWithContext(ctx context.Context) PipelineJobMappingPipelineJobFhirStreamingSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineJobMappingPipelineJobFhirStreamingSourceOutput).ToPipelineJobMappingPipelineJobFhirStreamingSourcePtrOutputWithContext(ctx)
+}
+
+// PipelineJobMappingPipelineJobFhirStreamingSourcePtrInput is an input type that accepts PipelineJobMappingPipelineJobFhirStreamingSourceArgs, PipelineJobMappingPipelineJobFhirStreamingSourcePtr and PipelineJobMappingPipelineJobFhirStreamingSourcePtrOutput values.
+// You can construct a concrete instance of `PipelineJobMappingPipelineJobFhirStreamingSourcePtrInput` via:
+//
+//	        PipelineJobMappingPipelineJobFhirStreamingSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type PipelineJobMappingPipelineJobFhirStreamingSourcePtrInput interface {
+	pulumi.Input
+
+	ToPipelineJobMappingPipelineJobFhirStreamingSourcePtrOutput() PipelineJobMappingPipelineJobFhirStreamingSourcePtrOutput
+	ToPipelineJobMappingPipelineJobFhirStreamingSourcePtrOutputWithContext(context.Context) PipelineJobMappingPipelineJobFhirStreamingSourcePtrOutput
+}
+
+type pipelineJobMappingPipelineJobFhirStreamingSourcePtrType PipelineJobMappingPipelineJobFhirStreamingSourceArgs
+
+func PipelineJobMappingPipelineJobFhirStreamingSourcePtr(v *PipelineJobMappingPipelineJobFhirStreamingSourceArgs) PipelineJobMappingPipelineJobFhirStreamingSourcePtrInput {
+	return (*pipelineJobMappingPipelineJobFhirStreamingSourcePtrType)(v)
+}
+
+func (*pipelineJobMappingPipelineJobFhirStreamingSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineJobMappingPipelineJobFhirStreamingSource)(nil)).Elem()
+}
+
+func (i *pipelineJobMappingPipelineJobFhirStreamingSourcePtrType) ToPipelineJobMappingPipelineJobFhirStreamingSourcePtrOutput() PipelineJobMappingPipelineJobFhirStreamingSourcePtrOutput {
+	return i.ToPipelineJobMappingPipelineJobFhirStreamingSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *pipelineJobMappingPipelineJobFhirStreamingSourcePtrType) ToPipelineJobMappingPipelineJobFhirStreamingSourcePtrOutputWithContext(ctx context.Context) PipelineJobMappingPipelineJobFhirStreamingSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineJobMappingPipelineJobFhirStreamingSourcePtrOutput)
+}
+
+type PipelineJobMappingPipelineJobFhirStreamingSourceOutput struct{ *pulumi.OutputState }
+
+func (PipelineJobMappingPipelineJobFhirStreamingSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineJobMappingPipelineJobFhirStreamingSource)(nil)).Elem()
+}
+
+func (o PipelineJobMappingPipelineJobFhirStreamingSourceOutput) ToPipelineJobMappingPipelineJobFhirStreamingSourceOutput() PipelineJobMappingPipelineJobFhirStreamingSourceOutput {
+	return o
+}
+
+func (o PipelineJobMappingPipelineJobFhirStreamingSourceOutput) ToPipelineJobMappingPipelineJobFhirStreamingSourceOutputWithContext(ctx context.Context) PipelineJobMappingPipelineJobFhirStreamingSourceOutput {
+	return o
+}
+
+func (o PipelineJobMappingPipelineJobFhirStreamingSourceOutput) ToPipelineJobMappingPipelineJobFhirStreamingSourcePtrOutput() PipelineJobMappingPipelineJobFhirStreamingSourcePtrOutput {
+	return o.ToPipelineJobMappingPipelineJobFhirStreamingSourcePtrOutputWithContext(context.Background())
+}
+
+func (o PipelineJobMappingPipelineJobFhirStreamingSourceOutput) ToPipelineJobMappingPipelineJobFhirStreamingSourcePtrOutputWithContext(ctx context.Context) PipelineJobMappingPipelineJobFhirStreamingSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineJobMappingPipelineJobFhirStreamingSource) *PipelineJobMappingPipelineJobFhirStreamingSource {
+		return &v
+	}).(PipelineJobMappingPipelineJobFhirStreamingSourcePtrOutput)
+}
+
+// Describes the streaming FHIR data source.
+func (o PipelineJobMappingPipelineJobFhirStreamingSourceOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineJobMappingPipelineJobFhirStreamingSource) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The path to the FHIR store in the format projects/{projectId}/locations/{locationId}/datasets/{datasetId}/fhirStores/{fhirStoreId}.
+func (o PipelineJobMappingPipelineJobFhirStreamingSourceOutput) FhirStore() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineJobMappingPipelineJobFhirStreamingSource) string { return v.FhirStore }).(pulumi.StringOutput)
+}
+
+type PipelineJobMappingPipelineJobFhirStreamingSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (PipelineJobMappingPipelineJobFhirStreamingSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineJobMappingPipelineJobFhirStreamingSource)(nil)).Elem()
+}
+
+func (o PipelineJobMappingPipelineJobFhirStreamingSourcePtrOutput) ToPipelineJobMappingPipelineJobFhirStreamingSourcePtrOutput() PipelineJobMappingPipelineJobFhirStreamingSourcePtrOutput {
+	return o
+}
+
+func (o PipelineJobMappingPipelineJobFhirStreamingSourcePtrOutput) ToPipelineJobMappingPipelineJobFhirStreamingSourcePtrOutputWithContext(ctx context.Context) PipelineJobMappingPipelineJobFhirStreamingSourcePtrOutput {
+	return o
+}
+
+func (o PipelineJobMappingPipelineJobFhirStreamingSourcePtrOutput) Elem() PipelineJobMappingPipelineJobFhirStreamingSourceOutput {
+	return o.ApplyT(func(v *PipelineJobMappingPipelineJobFhirStreamingSource) PipelineJobMappingPipelineJobFhirStreamingSource {
+		if v != nil {
+			return *v
+		}
+		var ret PipelineJobMappingPipelineJobFhirStreamingSource
+		return ret
+	}).(PipelineJobMappingPipelineJobFhirStreamingSourceOutput)
+}
+
+// Describes the streaming FHIR data source.
+func (o PipelineJobMappingPipelineJobFhirStreamingSourcePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineJobMappingPipelineJobFhirStreamingSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// The path to the FHIR store in the format projects/{projectId}/locations/{locationId}/datasets/{datasetId}/fhirStores/{fhirStoreId}.
+func (o PipelineJobMappingPipelineJobFhirStreamingSourcePtrOutput) FhirStore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineJobMappingPipelineJobFhirStreamingSource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.FhirStore
+	}).(pulumi.StringPtrOutput)
+}
+
+type PipelineJobMappingPipelineJobMappingConfig struct {
+	// Describes the mapping configuration.
+	Description *string `pulumi:"description"`
+	// Specifies the path to the mapping configuration for harmonization pipeline.
+	// Structure is documented below.
+	WhistleConfigSource *PipelineJobMappingPipelineJobMappingConfigWhistleConfigSource `pulumi:"whistleConfigSource"`
+}
+
+// PipelineJobMappingPipelineJobMappingConfigInput is an input type that accepts PipelineJobMappingPipelineJobMappingConfigArgs and PipelineJobMappingPipelineJobMappingConfigOutput values.
+// You can construct a concrete instance of `PipelineJobMappingPipelineJobMappingConfigInput` via:
+//
+//	PipelineJobMappingPipelineJobMappingConfigArgs{...}
+type PipelineJobMappingPipelineJobMappingConfigInput interface {
+	pulumi.Input
+
+	ToPipelineJobMappingPipelineJobMappingConfigOutput() PipelineJobMappingPipelineJobMappingConfigOutput
+	ToPipelineJobMappingPipelineJobMappingConfigOutputWithContext(context.Context) PipelineJobMappingPipelineJobMappingConfigOutput
+}
+
+type PipelineJobMappingPipelineJobMappingConfigArgs struct {
+	// Describes the mapping configuration.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Specifies the path to the mapping configuration for harmonization pipeline.
+	// Structure is documented below.
+	WhistleConfigSource PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtrInput `pulumi:"whistleConfigSource"`
+}
+
+func (PipelineJobMappingPipelineJobMappingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineJobMappingPipelineJobMappingConfig)(nil)).Elem()
+}
+
+func (i PipelineJobMappingPipelineJobMappingConfigArgs) ToPipelineJobMappingPipelineJobMappingConfigOutput() PipelineJobMappingPipelineJobMappingConfigOutput {
+	return i.ToPipelineJobMappingPipelineJobMappingConfigOutputWithContext(context.Background())
+}
+
+func (i PipelineJobMappingPipelineJobMappingConfigArgs) ToPipelineJobMappingPipelineJobMappingConfigOutputWithContext(ctx context.Context) PipelineJobMappingPipelineJobMappingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineJobMappingPipelineJobMappingConfigOutput)
+}
+
+func (i PipelineJobMappingPipelineJobMappingConfigArgs) ToPipelineJobMappingPipelineJobMappingConfigPtrOutput() PipelineJobMappingPipelineJobMappingConfigPtrOutput {
+	return i.ToPipelineJobMappingPipelineJobMappingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i PipelineJobMappingPipelineJobMappingConfigArgs) ToPipelineJobMappingPipelineJobMappingConfigPtrOutputWithContext(ctx context.Context) PipelineJobMappingPipelineJobMappingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineJobMappingPipelineJobMappingConfigOutput).ToPipelineJobMappingPipelineJobMappingConfigPtrOutputWithContext(ctx)
+}
+
+// PipelineJobMappingPipelineJobMappingConfigPtrInput is an input type that accepts PipelineJobMappingPipelineJobMappingConfigArgs, PipelineJobMappingPipelineJobMappingConfigPtr and PipelineJobMappingPipelineJobMappingConfigPtrOutput values.
+// You can construct a concrete instance of `PipelineJobMappingPipelineJobMappingConfigPtrInput` via:
+//
+//	        PipelineJobMappingPipelineJobMappingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type PipelineJobMappingPipelineJobMappingConfigPtrInput interface {
+	pulumi.Input
+
+	ToPipelineJobMappingPipelineJobMappingConfigPtrOutput() PipelineJobMappingPipelineJobMappingConfigPtrOutput
+	ToPipelineJobMappingPipelineJobMappingConfigPtrOutputWithContext(context.Context) PipelineJobMappingPipelineJobMappingConfigPtrOutput
+}
+
+type pipelineJobMappingPipelineJobMappingConfigPtrType PipelineJobMappingPipelineJobMappingConfigArgs
+
+func PipelineJobMappingPipelineJobMappingConfigPtr(v *PipelineJobMappingPipelineJobMappingConfigArgs) PipelineJobMappingPipelineJobMappingConfigPtrInput {
+	return (*pipelineJobMappingPipelineJobMappingConfigPtrType)(v)
+}
+
+func (*pipelineJobMappingPipelineJobMappingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineJobMappingPipelineJobMappingConfig)(nil)).Elem()
+}
+
+func (i *pipelineJobMappingPipelineJobMappingConfigPtrType) ToPipelineJobMappingPipelineJobMappingConfigPtrOutput() PipelineJobMappingPipelineJobMappingConfigPtrOutput {
+	return i.ToPipelineJobMappingPipelineJobMappingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *pipelineJobMappingPipelineJobMappingConfigPtrType) ToPipelineJobMappingPipelineJobMappingConfigPtrOutputWithContext(ctx context.Context) PipelineJobMappingPipelineJobMappingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineJobMappingPipelineJobMappingConfigPtrOutput)
+}
+
+type PipelineJobMappingPipelineJobMappingConfigOutput struct{ *pulumi.OutputState }
+
+func (PipelineJobMappingPipelineJobMappingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineJobMappingPipelineJobMappingConfig)(nil)).Elem()
+}
+
+func (o PipelineJobMappingPipelineJobMappingConfigOutput) ToPipelineJobMappingPipelineJobMappingConfigOutput() PipelineJobMappingPipelineJobMappingConfigOutput {
+	return o
+}
+
+func (o PipelineJobMappingPipelineJobMappingConfigOutput) ToPipelineJobMappingPipelineJobMappingConfigOutputWithContext(ctx context.Context) PipelineJobMappingPipelineJobMappingConfigOutput {
+	return o
+}
+
+func (o PipelineJobMappingPipelineJobMappingConfigOutput) ToPipelineJobMappingPipelineJobMappingConfigPtrOutput() PipelineJobMappingPipelineJobMappingConfigPtrOutput {
+	return o.ToPipelineJobMappingPipelineJobMappingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o PipelineJobMappingPipelineJobMappingConfigOutput) ToPipelineJobMappingPipelineJobMappingConfigPtrOutputWithContext(ctx context.Context) PipelineJobMappingPipelineJobMappingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineJobMappingPipelineJobMappingConfig) *PipelineJobMappingPipelineJobMappingConfig {
+		return &v
+	}).(PipelineJobMappingPipelineJobMappingConfigPtrOutput)
+}
+
+// Describes the mapping configuration.
+func (o PipelineJobMappingPipelineJobMappingConfigOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineJobMappingPipelineJobMappingConfig) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the path to the mapping configuration for harmonization pipeline.
+// Structure is documented below.
+func (o PipelineJobMappingPipelineJobMappingConfigOutput) WhistleConfigSource() PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtrOutput {
+	return o.ApplyT(func(v PipelineJobMappingPipelineJobMappingConfig) *PipelineJobMappingPipelineJobMappingConfigWhistleConfigSource {
+		return v.WhistleConfigSource
+	}).(PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtrOutput)
+}
+
+type PipelineJobMappingPipelineJobMappingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (PipelineJobMappingPipelineJobMappingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineJobMappingPipelineJobMappingConfig)(nil)).Elem()
+}
+
+func (o PipelineJobMappingPipelineJobMappingConfigPtrOutput) ToPipelineJobMappingPipelineJobMappingConfigPtrOutput() PipelineJobMappingPipelineJobMappingConfigPtrOutput {
+	return o
+}
+
+func (o PipelineJobMappingPipelineJobMappingConfigPtrOutput) ToPipelineJobMappingPipelineJobMappingConfigPtrOutputWithContext(ctx context.Context) PipelineJobMappingPipelineJobMappingConfigPtrOutput {
+	return o
+}
+
+func (o PipelineJobMappingPipelineJobMappingConfigPtrOutput) Elem() PipelineJobMappingPipelineJobMappingConfigOutput {
+	return o.ApplyT(func(v *PipelineJobMappingPipelineJobMappingConfig) PipelineJobMappingPipelineJobMappingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PipelineJobMappingPipelineJobMappingConfig
+		return ret
+	}).(PipelineJobMappingPipelineJobMappingConfigOutput)
+}
+
+// Describes the mapping configuration.
+func (o PipelineJobMappingPipelineJobMappingConfigPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineJobMappingPipelineJobMappingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the path to the mapping configuration for harmonization pipeline.
+// Structure is documented below.
+func (o PipelineJobMappingPipelineJobMappingConfigPtrOutput) WhistleConfigSource() PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtrOutput {
+	return o.ApplyT(func(v *PipelineJobMappingPipelineJobMappingConfig) *PipelineJobMappingPipelineJobMappingConfigWhistleConfigSource {
+		if v == nil {
+			return nil
+		}
+		return v.WhistleConfigSource
+	}).(PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtrOutput)
+}
+
+type PipelineJobMappingPipelineJobMappingConfigWhistleConfigSource struct {
+	// Directory path where all the Whistle files are located.
+	// Example: gs://{bucket-id}/{path/to/import-root/dir}
+	ImportUriPrefix string `pulumi:"importUriPrefix"`
+	// Main configuration file which has the entrypoint or the root function.
+	// Example: gs://{bucket-id}/{path/to/import-root/dir}/entrypoint-file-name.wstl.
+	Uri string `pulumi:"uri"`
+}
+
+// PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceInput is an input type that accepts PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceArgs and PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceOutput values.
+// You can construct a concrete instance of `PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceInput` via:
+//
+//	PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceArgs{...}
+type PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceInput interface {
+	pulumi.Input
+
+	ToPipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceOutput() PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceOutput
+	ToPipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceOutputWithContext(context.Context) PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceOutput
+}
+
+type PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceArgs struct {
+	// Directory path where all the Whistle files are located.
+	// Example: gs://{bucket-id}/{path/to/import-root/dir}
+	ImportUriPrefix pulumi.StringInput `pulumi:"importUriPrefix"`
+	// Main configuration file which has the entrypoint or the root function.
+	// Example: gs://{bucket-id}/{path/to/import-root/dir}/entrypoint-file-name.wstl.
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineJobMappingPipelineJobMappingConfigWhistleConfigSource)(nil)).Elem()
+}
+
+func (i PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceArgs) ToPipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceOutput() PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceOutput {
+	return i.ToPipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceOutputWithContext(context.Background())
+}
+
+func (i PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceArgs) ToPipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceOutputWithContext(ctx context.Context) PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceOutput)
+}
+
+func (i PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceArgs) ToPipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtrOutput() PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtrOutput {
+	return i.ToPipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtrOutputWithContext(context.Background())
+}
+
+func (i PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceArgs) ToPipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtrOutputWithContext(ctx context.Context) PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceOutput).ToPipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtrOutputWithContext(ctx)
+}
+
+// PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtrInput is an input type that accepts PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceArgs, PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtr and PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtrOutput values.
+// You can construct a concrete instance of `PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtrInput` via:
+//
+//	        PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtrInput interface {
+	pulumi.Input
+
+	ToPipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtrOutput() PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtrOutput
+	ToPipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtrOutputWithContext(context.Context) PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtrOutput
+}
+
+type pipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtrType PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceArgs
+
+func PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtr(v *PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceArgs) PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtrInput {
+	return (*pipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtrType)(v)
+}
+
+func (*pipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineJobMappingPipelineJobMappingConfigWhistleConfigSource)(nil)).Elem()
+}
+
+func (i *pipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtrType) ToPipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtrOutput() PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtrOutput {
+	return i.ToPipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *pipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtrType) ToPipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtrOutputWithContext(ctx context.Context) PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtrOutput)
+}
+
+type PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceOutput struct{ *pulumi.OutputState }
+
+func (PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineJobMappingPipelineJobMappingConfigWhistleConfigSource)(nil)).Elem()
+}
+
+func (o PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceOutput) ToPipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceOutput() PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceOutput {
+	return o
+}
+
+func (o PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceOutput) ToPipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceOutputWithContext(ctx context.Context) PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceOutput {
+	return o
+}
+
+func (o PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceOutput) ToPipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtrOutput() PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtrOutput {
+	return o.ToPipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtrOutputWithContext(context.Background())
+}
+
+func (o PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceOutput) ToPipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtrOutputWithContext(ctx context.Context) PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineJobMappingPipelineJobMappingConfigWhistleConfigSource) *PipelineJobMappingPipelineJobMappingConfigWhistleConfigSource {
+		return &v
+	}).(PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtrOutput)
+}
+
+// Directory path where all the Whistle files are located.
+// Example: gs://{bucket-id}/{path/to/import-root/dir}
+func (o PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceOutput) ImportUriPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineJobMappingPipelineJobMappingConfigWhistleConfigSource) string { return v.ImportUriPrefix }).(pulumi.StringOutput)
+}
+
+// Main configuration file which has the entrypoint or the root function.
+// Example: gs://{bucket-id}/{path/to/import-root/dir}/entrypoint-file-name.wstl.
+func (o PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineJobMappingPipelineJobMappingConfigWhistleConfigSource) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineJobMappingPipelineJobMappingConfigWhistleConfigSource)(nil)).Elem()
+}
+
+func (o PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtrOutput) ToPipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtrOutput() PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtrOutput {
+	return o
+}
+
+func (o PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtrOutput) ToPipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtrOutputWithContext(ctx context.Context) PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtrOutput {
+	return o
+}
+
+func (o PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtrOutput) Elem() PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceOutput {
+	return o.ApplyT(func(v *PipelineJobMappingPipelineJobMappingConfigWhistleConfigSource) PipelineJobMappingPipelineJobMappingConfigWhistleConfigSource {
+		if v != nil {
+			return *v
+		}
+		var ret PipelineJobMappingPipelineJobMappingConfigWhistleConfigSource
+		return ret
+	}).(PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceOutput)
+}
+
+// Directory path where all the Whistle files are located.
+// Example: gs://{bucket-id}/{path/to/import-root/dir}
+func (o PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtrOutput) ImportUriPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineJobMappingPipelineJobMappingConfigWhistleConfigSource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ImportUriPrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Main configuration file which has the entrypoint or the root function.
+// Example: gs://{bucket-id}/{path/to/import-root/dir}/entrypoint-file-name.wstl.
+func (o PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineJobMappingPipelineJobMappingConfigWhistleConfigSource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type PipelineJobReconciliationPipelineJob struct {
+	// The harmonized FHIR store to write harmonized FHIR resources to,
+	// in the format of: project/{projectID}/locations/{locationID}/datasets/{datasetName}/fhirStores/{id}
+	FhirStoreDestination *string `pulumi:"fhirStoreDestination"`
+	// Specifies the top level directory of the matching configs used
+	// in all mapping pipelines, which extract properties for resources
+	// to be matched on.
+	// Example: gs://{bucket-id}/{path/to/matching/configs}
+	MatchingUriPrefix string `pulumi:"matchingUriPrefix"`
+	// Specifies the location of the reconciliation configuration.
+	// Structure is documented below.
+	MergeConfig PipelineJobReconciliationPipelineJobMergeConfig `pulumi:"mergeConfig"`
+}
+
+// PipelineJobReconciliationPipelineJobInput is an input type that accepts PipelineJobReconciliationPipelineJobArgs and PipelineJobReconciliationPipelineJobOutput values.
+// You can construct a concrete instance of `PipelineJobReconciliationPipelineJobInput` via:
+//
+//	PipelineJobReconciliationPipelineJobArgs{...}
+type PipelineJobReconciliationPipelineJobInput interface {
+	pulumi.Input
+
+	ToPipelineJobReconciliationPipelineJobOutput() PipelineJobReconciliationPipelineJobOutput
+	ToPipelineJobReconciliationPipelineJobOutputWithContext(context.Context) PipelineJobReconciliationPipelineJobOutput
+}
+
+type PipelineJobReconciliationPipelineJobArgs struct {
+	// The harmonized FHIR store to write harmonized FHIR resources to,
+	// in the format of: project/{projectID}/locations/{locationID}/datasets/{datasetName}/fhirStores/{id}
+	FhirStoreDestination pulumi.StringPtrInput `pulumi:"fhirStoreDestination"`
+	// Specifies the top level directory of the matching configs used
+	// in all mapping pipelines, which extract properties for resources
+	// to be matched on.
+	// Example: gs://{bucket-id}/{path/to/matching/configs}
+	MatchingUriPrefix pulumi.StringInput `pulumi:"matchingUriPrefix"`
+	// Specifies the location of the reconciliation configuration.
+	// Structure is documented below.
+	MergeConfig PipelineJobReconciliationPipelineJobMergeConfigInput `pulumi:"mergeConfig"`
+}
+
+func (PipelineJobReconciliationPipelineJobArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineJobReconciliationPipelineJob)(nil)).Elem()
+}
+
+func (i PipelineJobReconciliationPipelineJobArgs) ToPipelineJobReconciliationPipelineJobOutput() PipelineJobReconciliationPipelineJobOutput {
+	return i.ToPipelineJobReconciliationPipelineJobOutputWithContext(context.Background())
+}
+
+func (i PipelineJobReconciliationPipelineJobArgs) ToPipelineJobReconciliationPipelineJobOutputWithContext(ctx context.Context) PipelineJobReconciliationPipelineJobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineJobReconciliationPipelineJobOutput)
+}
+
+func (i PipelineJobReconciliationPipelineJobArgs) ToPipelineJobReconciliationPipelineJobPtrOutput() PipelineJobReconciliationPipelineJobPtrOutput {
+	return i.ToPipelineJobReconciliationPipelineJobPtrOutputWithContext(context.Background())
+}
+
+func (i PipelineJobReconciliationPipelineJobArgs) ToPipelineJobReconciliationPipelineJobPtrOutputWithContext(ctx context.Context) PipelineJobReconciliationPipelineJobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineJobReconciliationPipelineJobOutput).ToPipelineJobReconciliationPipelineJobPtrOutputWithContext(ctx)
+}
+
+// PipelineJobReconciliationPipelineJobPtrInput is an input type that accepts PipelineJobReconciliationPipelineJobArgs, PipelineJobReconciliationPipelineJobPtr and PipelineJobReconciliationPipelineJobPtrOutput values.
+// You can construct a concrete instance of `PipelineJobReconciliationPipelineJobPtrInput` via:
+//
+//	        PipelineJobReconciliationPipelineJobArgs{...}
+//
+//	or:
+//
+//	        nil
+type PipelineJobReconciliationPipelineJobPtrInput interface {
+	pulumi.Input
+
+	ToPipelineJobReconciliationPipelineJobPtrOutput() PipelineJobReconciliationPipelineJobPtrOutput
+	ToPipelineJobReconciliationPipelineJobPtrOutputWithContext(context.Context) PipelineJobReconciliationPipelineJobPtrOutput
+}
+
+type pipelineJobReconciliationPipelineJobPtrType PipelineJobReconciliationPipelineJobArgs
+
+func PipelineJobReconciliationPipelineJobPtr(v *PipelineJobReconciliationPipelineJobArgs) PipelineJobReconciliationPipelineJobPtrInput {
+	return (*pipelineJobReconciliationPipelineJobPtrType)(v)
+}
+
+func (*pipelineJobReconciliationPipelineJobPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineJobReconciliationPipelineJob)(nil)).Elem()
+}
+
+func (i *pipelineJobReconciliationPipelineJobPtrType) ToPipelineJobReconciliationPipelineJobPtrOutput() PipelineJobReconciliationPipelineJobPtrOutput {
+	return i.ToPipelineJobReconciliationPipelineJobPtrOutputWithContext(context.Background())
+}
+
+func (i *pipelineJobReconciliationPipelineJobPtrType) ToPipelineJobReconciliationPipelineJobPtrOutputWithContext(ctx context.Context) PipelineJobReconciliationPipelineJobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineJobReconciliationPipelineJobPtrOutput)
+}
+
+type PipelineJobReconciliationPipelineJobOutput struct{ *pulumi.OutputState }
+
+func (PipelineJobReconciliationPipelineJobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineJobReconciliationPipelineJob)(nil)).Elem()
+}
+
+func (o PipelineJobReconciliationPipelineJobOutput) ToPipelineJobReconciliationPipelineJobOutput() PipelineJobReconciliationPipelineJobOutput {
+	return o
+}
+
+func (o PipelineJobReconciliationPipelineJobOutput) ToPipelineJobReconciliationPipelineJobOutputWithContext(ctx context.Context) PipelineJobReconciliationPipelineJobOutput {
+	return o
+}
+
+func (o PipelineJobReconciliationPipelineJobOutput) ToPipelineJobReconciliationPipelineJobPtrOutput() PipelineJobReconciliationPipelineJobPtrOutput {
+	return o.ToPipelineJobReconciliationPipelineJobPtrOutputWithContext(context.Background())
+}
+
+func (o PipelineJobReconciliationPipelineJobOutput) ToPipelineJobReconciliationPipelineJobPtrOutputWithContext(ctx context.Context) PipelineJobReconciliationPipelineJobPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineJobReconciliationPipelineJob) *PipelineJobReconciliationPipelineJob {
+		return &v
+	}).(PipelineJobReconciliationPipelineJobPtrOutput)
+}
+
+// The harmonized FHIR store to write harmonized FHIR resources to,
+// in the format of: project/{projectID}/locations/{locationID}/datasets/{datasetName}/fhirStores/{id}
+func (o PipelineJobReconciliationPipelineJobOutput) FhirStoreDestination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineJobReconciliationPipelineJob) *string { return v.FhirStoreDestination }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the top level directory of the matching configs used
+// in all mapping pipelines, which extract properties for resources
+// to be matched on.
+// Example: gs://{bucket-id}/{path/to/matching/configs}
+func (o PipelineJobReconciliationPipelineJobOutput) MatchingUriPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineJobReconciliationPipelineJob) string { return v.MatchingUriPrefix }).(pulumi.StringOutput)
+}
+
+// Specifies the location of the reconciliation configuration.
+// Structure is documented below.
+func (o PipelineJobReconciliationPipelineJobOutput) MergeConfig() PipelineJobReconciliationPipelineJobMergeConfigOutput {
+	return o.ApplyT(func(v PipelineJobReconciliationPipelineJob) PipelineJobReconciliationPipelineJobMergeConfig {
+		return v.MergeConfig
+	}).(PipelineJobReconciliationPipelineJobMergeConfigOutput)
+}
+
+type PipelineJobReconciliationPipelineJobPtrOutput struct{ *pulumi.OutputState }
+
+func (PipelineJobReconciliationPipelineJobPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineJobReconciliationPipelineJob)(nil)).Elem()
+}
+
+func (o PipelineJobReconciliationPipelineJobPtrOutput) ToPipelineJobReconciliationPipelineJobPtrOutput() PipelineJobReconciliationPipelineJobPtrOutput {
+	return o
+}
+
+func (o PipelineJobReconciliationPipelineJobPtrOutput) ToPipelineJobReconciliationPipelineJobPtrOutputWithContext(ctx context.Context) PipelineJobReconciliationPipelineJobPtrOutput {
+	return o
+}
+
+func (o PipelineJobReconciliationPipelineJobPtrOutput) Elem() PipelineJobReconciliationPipelineJobOutput {
+	return o.ApplyT(func(v *PipelineJobReconciliationPipelineJob) PipelineJobReconciliationPipelineJob {
+		if v != nil {
+			return *v
+		}
+		var ret PipelineJobReconciliationPipelineJob
+		return ret
+	}).(PipelineJobReconciliationPipelineJobOutput)
+}
+
+// The harmonized FHIR store to write harmonized FHIR resources to,
+// in the format of: project/{projectID}/locations/{locationID}/datasets/{datasetName}/fhirStores/{id}
+func (o PipelineJobReconciliationPipelineJobPtrOutput) FhirStoreDestination() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineJobReconciliationPipelineJob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FhirStoreDestination
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the top level directory of the matching configs used
+// in all mapping pipelines, which extract properties for resources
+// to be matched on.
+// Example: gs://{bucket-id}/{path/to/matching/configs}
+func (o PipelineJobReconciliationPipelineJobPtrOutput) MatchingUriPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineJobReconciliationPipelineJob) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MatchingUriPrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the location of the reconciliation configuration.
+// Structure is documented below.
+func (o PipelineJobReconciliationPipelineJobPtrOutput) MergeConfig() PipelineJobReconciliationPipelineJobMergeConfigPtrOutput {
+	return o.ApplyT(func(v *PipelineJobReconciliationPipelineJob) *PipelineJobReconciliationPipelineJobMergeConfig {
+		if v == nil {
+			return nil
+		}
+		return &v.MergeConfig
+	}).(PipelineJobReconciliationPipelineJobMergeConfigPtrOutput)
+}
+
+type PipelineJobReconciliationPipelineJobMergeConfig struct {
+	// Describes the mapping configuration.
+	Description *string `pulumi:"description"`
+	// Specifies the path to the mapping configuration for harmonization pipeline.
+	// Structure is documented below.
+	WhistleConfigSource PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSource `pulumi:"whistleConfigSource"`
+}
+
+// PipelineJobReconciliationPipelineJobMergeConfigInput is an input type that accepts PipelineJobReconciliationPipelineJobMergeConfigArgs and PipelineJobReconciliationPipelineJobMergeConfigOutput values.
+// You can construct a concrete instance of `PipelineJobReconciliationPipelineJobMergeConfigInput` via:
+//
+//	PipelineJobReconciliationPipelineJobMergeConfigArgs{...}
+type PipelineJobReconciliationPipelineJobMergeConfigInput interface {
+	pulumi.Input
+
+	ToPipelineJobReconciliationPipelineJobMergeConfigOutput() PipelineJobReconciliationPipelineJobMergeConfigOutput
+	ToPipelineJobReconciliationPipelineJobMergeConfigOutputWithContext(context.Context) PipelineJobReconciliationPipelineJobMergeConfigOutput
+}
+
+type PipelineJobReconciliationPipelineJobMergeConfigArgs struct {
+	// Describes the mapping configuration.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Specifies the path to the mapping configuration for harmonization pipeline.
+	// Structure is documented below.
+	WhistleConfigSource PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceInput `pulumi:"whistleConfigSource"`
+}
+
+func (PipelineJobReconciliationPipelineJobMergeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineJobReconciliationPipelineJobMergeConfig)(nil)).Elem()
+}
+
+func (i PipelineJobReconciliationPipelineJobMergeConfigArgs) ToPipelineJobReconciliationPipelineJobMergeConfigOutput() PipelineJobReconciliationPipelineJobMergeConfigOutput {
+	return i.ToPipelineJobReconciliationPipelineJobMergeConfigOutputWithContext(context.Background())
+}
+
+func (i PipelineJobReconciliationPipelineJobMergeConfigArgs) ToPipelineJobReconciliationPipelineJobMergeConfigOutputWithContext(ctx context.Context) PipelineJobReconciliationPipelineJobMergeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineJobReconciliationPipelineJobMergeConfigOutput)
+}
+
+func (i PipelineJobReconciliationPipelineJobMergeConfigArgs) ToPipelineJobReconciliationPipelineJobMergeConfigPtrOutput() PipelineJobReconciliationPipelineJobMergeConfigPtrOutput {
+	return i.ToPipelineJobReconciliationPipelineJobMergeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i PipelineJobReconciliationPipelineJobMergeConfigArgs) ToPipelineJobReconciliationPipelineJobMergeConfigPtrOutputWithContext(ctx context.Context) PipelineJobReconciliationPipelineJobMergeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineJobReconciliationPipelineJobMergeConfigOutput).ToPipelineJobReconciliationPipelineJobMergeConfigPtrOutputWithContext(ctx)
+}
+
+// PipelineJobReconciliationPipelineJobMergeConfigPtrInput is an input type that accepts PipelineJobReconciliationPipelineJobMergeConfigArgs, PipelineJobReconciliationPipelineJobMergeConfigPtr and PipelineJobReconciliationPipelineJobMergeConfigPtrOutput values.
+// You can construct a concrete instance of `PipelineJobReconciliationPipelineJobMergeConfigPtrInput` via:
+//
+//	        PipelineJobReconciliationPipelineJobMergeConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type PipelineJobReconciliationPipelineJobMergeConfigPtrInput interface {
+	pulumi.Input
+
+	ToPipelineJobReconciliationPipelineJobMergeConfigPtrOutput() PipelineJobReconciliationPipelineJobMergeConfigPtrOutput
+	ToPipelineJobReconciliationPipelineJobMergeConfigPtrOutputWithContext(context.Context) PipelineJobReconciliationPipelineJobMergeConfigPtrOutput
+}
+
+type pipelineJobReconciliationPipelineJobMergeConfigPtrType PipelineJobReconciliationPipelineJobMergeConfigArgs
+
+func PipelineJobReconciliationPipelineJobMergeConfigPtr(v *PipelineJobReconciliationPipelineJobMergeConfigArgs) PipelineJobReconciliationPipelineJobMergeConfigPtrInput {
+	return (*pipelineJobReconciliationPipelineJobMergeConfigPtrType)(v)
+}
+
+func (*pipelineJobReconciliationPipelineJobMergeConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineJobReconciliationPipelineJobMergeConfig)(nil)).Elem()
+}
+
+func (i *pipelineJobReconciliationPipelineJobMergeConfigPtrType) ToPipelineJobReconciliationPipelineJobMergeConfigPtrOutput() PipelineJobReconciliationPipelineJobMergeConfigPtrOutput {
+	return i.ToPipelineJobReconciliationPipelineJobMergeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *pipelineJobReconciliationPipelineJobMergeConfigPtrType) ToPipelineJobReconciliationPipelineJobMergeConfigPtrOutputWithContext(ctx context.Context) PipelineJobReconciliationPipelineJobMergeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineJobReconciliationPipelineJobMergeConfigPtrOutput)
+}
+
+type PipelineJobReconciliationPipelineJobMergeConfigOutput struct{ *pulumi.OutputState }
+
+func (PipelineJobReconciliationPipelineJobMergeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineJobReconciliationPipelineJobMergeConfig)(nil)).Elem()
+}
+
+func (o PipelineJobReconciliationPipelineJobMergeConfigOutput) ToPipelineJobReconciliationPipelineJobMergeConfigOutput() PipelineJobReconciliationPipelineJobMergeConfigOutput {
+	return o
+}
+
+func (o PipelineJobReconciliationPipelineJobMergeConfigOutput) ToPipelineJobReconciliationPipelineJobMergeConfigOutputWithContext(ctx context.Context) PipelineJobReconciliationPipelineJobMergeConfigOutput {
+	return o
+}
+
+func (o PipelineJobReconciliationPipelineJobMergeConfigOutput) ToPipelineJobReconciliationPipelineJobMergeConfigPtrOutput() PipelineJobReconciliationPipelineJobMergeConfigPtrOutput {
+	return o.ToPipelineJobReconciliationPipelineJobMergeConfigPtrOutputWithContext(context.Background())
+}
+
+func (o PipelineJobReconciliationPipelineJobMergeConfigOutput) ToPipelineJobReconciliationPipelineJobMergeConfigPtrOutputWithContext(ctx context.Context) PipelineJobReconciliationPipelineJobMergeConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineJobReconciliationPipelineJobMergeConfig) *PipelineJobReconciliationPipelineJobMergeConfig {
+		return &v
+	}).(PipelineJobReconciliationPipelineJobMergeConfigPtrOutput)
+}
+
+// Describes the mapping configuration.
+func (o PipelineJobReconciliationPipelineJobMergeConfigOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineJobReconciliationPipelineJobMergeConfig) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the path to the mapping configuration for harmonization pipeline.
+// Structure is documented below.
+func (o PipelineJobReconciliationPipelineJobMergeConfigOutput) WhistleConfigSource() PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceOutput {
+	return o.ApplyT(func(v PipelineJobReconciliationPipelineJobMergeConfig) PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSource {
+		return v.WhistleConfigSource
+	}).(PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceOutput)
+}
+
+type PipelineJobReconciliationPipelineJobMergeConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (PipelineJobReconciliationPipelineJobMergeConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineJobReconciliationPipelineJobMergeConfig)(nil)).Elem()
+}
+
+func (o PipelineJobReconciliationPipelineJobMergeConfigPtrOutput) ToPipelineJobReconciliationPipelineJobMergeConfigPtrOutput() PipelineJobReconciliationPipelineJobMergeConfigPtrOutput {
+	return o
+}
+
+func (o PipelineJobReconciliationPipelineJobMergeConfigPtrOutput) ToPipelineJobReconciliationPipelineJobMergeConfigPtrOutputWithContext(ctx context.Context) PipelineJobReconciliationPipelineJobMergeConfigPtrOutput {
+	return o
+}
+
+func (o PipelineJobReconciliationPipelineJobMergeConfigPtrOutput) Elem() PipelineJobReconciliationPipelineJobMergeConfigOutput {
+	return o.ApplyT(func(v *PipelineJobReconciliationPipelineJobMergeConfig) PipelineJobReconciliationPipelineJobMergeConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PipelineJobReconciliationPipelineJobMergeConfig
+		return ret
+	}).(PipelineJobReconciliationPipelineJobMergeConfigOutput)
+}
+
+// Describes the mapping configuration.
+func (o PipelineJobReconciliationPipelineJobMergeConfigPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineJobReconciliationPipelineJobMergeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the path to the mapping configuration for harmonization pipeline.
+// Structure is documented below.
+func (o PipelineJobReconciliationPipelineJobMergeConfigPtrOutput) WhistleConfigSource() PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourcePtrOutput {
+	return o.ApplyT(func(v *PipelineJobReconciliationPipelineJobMergeConfig) *PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSource {
+		if v == nil {
+			return nil
+		}
+		return &v.WhistleConfigSource
+	}).(PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourcePtrOutput)
+}
+
+type PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSource struct {
+	// Directory path where all the Whistle files are located.
+	// Example: gs://{bucket-id}/{path/to/import-root/dir}
+	ImportUriPrefix string `pulumi:"importUriPrefix"`
+	// Main configuration file which has the entrypoint or the root function.
+	// Example: gs://{bucket-id}/{path/to/import-root/dir}/entrypoint-file-name.wstl.
+	Uri string `pulumi:"uri"`
+}
+
+// PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceInput is an input type that accepts PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceArgs and PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceOutput values.
+// You can construct a concrete instance of `PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceInput` via:
+//
+//	PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceArgs{...}
+type PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceInput interface {
+	pulumi.Input
+
+	ToPipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceOutput() PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceOutput
+	ToPipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceOutputWithContext(context.Context) PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceOutput
+}
+
+type PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceArgs struct {
+	// Directory path where all the Whistle files are located.
+	// Example: gs://{bucket-id}/{path/to/import-root/dir}
+	ImportUriPrefix pulumi.StringInput `pulumi:"importUriPrefix"`
+	// Main configuration file which has the entrypoint or the root function.
+	// Example: gs://{bucket-id}/{path/to/import-root/dir}/entrypoint-file-name.wstl.
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSource)(nil)).Elem()
+}
+
+func (i PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceArgs) ToPipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceOutput() PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceOutput {
+	return i.ToPipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceOutputWithContext(context.Background())
+}
+
+func (i PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceArgs) ToPipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceOutputWithContext(ctx context.Context) PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceOutput)
+}
+
+func (i PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceArgs) ToPipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourcePtrOutput() PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourcePtrOutput {
+	return i.ToPipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourcePtrOutputWithContext(context.Background())
+}
+
+func (i PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceArgs) ToPipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourcePtrOutputWithContext(ctx context.Context) PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceOutput).ToPipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourcePtrOutputWithContext(ctx)
+}
+
+// PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourcePtrInput is an input type that accepts PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceArgs, PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourcePtr and PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourcePtrOutput values.
+// You can construct a concrete instance of `PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourcePtrInput` via:
+//
+//	        PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourcePtrInput interface {
+	pulumi.Input
+
+	ToPipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourcePtrOutput() PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourcePtrOutput
+	ToPipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourcePtrOutputWithContext(context.Context) PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourcePtrOutput
+}
+
+type pipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourcePtrType PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceArgs
+
+func PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourcePtr(v *PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceArgs) PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourcePtrInput {
+	return (*pipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourcePtrType)(v)
+}
+
+func (*pipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSource)(nil)).Elem()
+}
+
+func (i *pipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourcePtrType) ToPipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourcePtrOutput() PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourcePtrOutput {
+	return i.ToPipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *pipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourcePtrType) ToPipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourcePtrOutputWithContext(ctx context.Context) PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourcePtrOutput)
+}
+
+type PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceOutput struct{ *pulumi.OutputState }
+
+func (PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSource)(nil)).Elem()
+}
+
+func (o PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceOutput) ToPipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceOutput() PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceOutput {
+	return o
+}
+
+func (o PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceOutput) ToPipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceOutputWithContext(ctx context.Context) PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceOutput {
+	return o
+}
+
+func (o PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceOutput) ToPipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourcePtrOutput() PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourcePtrOutput {
+	return o.ToPipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourcePtrOutputWithContext(context.Background())
+}
+
+func (o PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceOutput) ToPipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourcePtrOutputWithContext(ctx context.Context) PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSource) *PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSource {
+		return &v
+	}).(PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourcePtrOutput)
+}
+
+// Directory path where all the Whistle files are located.
+// Example: gs://{bucket-id}/{path/to/import-root/dir}
+func (o PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceOutput) ImportUriPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSource) string {
+		return v.ImportUriPrefix
+	}).(pulumi.StringOutput)
+}
+
+// Main configuration file which has the entrypoint or the root function.
+// Example: gs://{bucket-id}/{path/to/import-root/dir}/entrypoint-file-name.wstl.
+func (o PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSource) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSource)(nil)).Elem()
+}
+
+func (o PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourcePtrOutput) ToPipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourcePtrOutput() PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourcePtrOutput {
+	return o
+}
+
+func (o PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourcePtrOutput) ToPipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourcePtrOutputWithContext(ctx context.Context) PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourcePtrOutput {
+	return o
+}
+
+func (o PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourcePtrOutput) Elem() PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceOutput {
+	return o.ApplyT(func(v *PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSource) PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSource {
+		if v != nil {
+			return *v
+		}
+		var ret PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSource
+		return ret
+	}).(PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceOutput)
+}
+
+// Directory path where all the Whistle files are located.
+// Example: gs://{bucket-id}/{path/to/import-root/dir}
+func (o PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourcePtrOutput) ImportUriPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ImportUriPrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Main configuration file which has the entrypoint or the root function.
+// Example: gs://{bucket-id}/{path/to/import-root/dir}/entrypoint-file-name.wstl.
+func (o PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourcePtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
 type WorkspaceSettings struct {
 	// Project IDs for data projects hosted in a workspace.
 	//
@@ -3554,6 +4952,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*Hl7StoreNotificationConfigsArrayInput)(nil)).Elem(), Hl7StoreNotificationConfigsArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Hl7StoreParserConfigInput)(nil)).Elem(), Hl7StoreParserConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Hl7StoreParserConfigPtrInput)(nil)).Elem(), Hl7StoreParserConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineJobBackfillPipelineJobInput)(nil)).Elem(), PipelineJobBackfillPipelineJobArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineJobBackfillPipelineJobPtrInput)(nil)).Elem(), PipelineJobBackfillPipelineJobArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineJobMappingPipelineJobInput)(nil)).Elem(), PipelineJobMappingPipelineJobArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineJobMappingPipelineJobPtrInput)(nil)).Elem(), PipelineJobMappingPipelineJobArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineJobMappingPipelineJobFhirStreamingSourceInput)(nil)).Elem(), PipelineJobMappingPipelineJobFhirStreamingSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineJobMappingPipelineJobFhirStreamingSourcePtrInput)(nil)).Elem(), PipelineJobMappingPipelineJobFhirStreamingSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineJobMappingPipelineJobMappingConfigInput)(nil)).Elem(), PipelineJobMappingPipelineJobMappingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineJobMappingPipelineJobMappingConfigPtrInput)(nil)).Elem(), PipelineJobMappingPipelineJobMappingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceInput)(nil)).Elem(), PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtrInput)(nil)).Elem(), PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineJobReconciliationPipelineJobInput)(nil)).Elem(), PipelineJobReconciliationPipelineJobArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineJobReconciliationPipelineJobPtrInput)(nil)).Elem(), PipelineJobReconciliationPipelineJobArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineJobReconciliationPipelineJobMergeConfigInput)(nil)).Elem(), PipelineJobReconciliationPipelineJobMergeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineJobReconciliationPipelineJobMergeConfigPtrInput)(nil)).Elem(), PipelineJobReconciliationPipelineJobMergeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceInput)(nil)).Elem(), PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourcePtrInput)(nil)).Elem(), PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkspaceSettingsInput)(nil)).Elem(), WorkspaceSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkspaceSettingsPtrInput)(nil)).Elem(), WorkspaceSettingsArgs{})
 	pulumi.RegisterOutputType(ConsentStoreIamBindingConditionOutput{})
@@ -3598,6 +5012,22 @@ func init() {
 	pulumi.RegisterOutputType(Hl7StoreNotificationConfigsArrayOutput{})
 	pulumi.RegisterOutputType(Hl7StoreParserConfigOutput{})
 	pulumi.RegisterOutputType(Hl7StoreParserConfigPtrOutput{})
+	pulumi.RegisterOutputType(PipelineJobBackfillPipelineJobOutput{})
+	pulumi.RegisterOutputType(PipelineJobBackfillPipelineJobPtrOutput{})
+	pulumi.RegisterOutputType(PipelineJobMappingPipelineJobOutput{})
+	pulumi.RegisterOutputType(PipelineJobMappingPipelineJobPtrOutput{})
+	pulumi.RegisterOutputType(PipelineJobMappingPipelineJobFhirStreamingSourceOutput{})
+	pulumi.RegisterOutputType(PipelineJobMappingPipelineJobFhirStreamingSourcePtrOutput{})
+	pulumi.RegisterOutputType(PipelineJobMappingPipelineJobMappingConfigOutput{})
+	pulumi.RegisterOutputType(PipelineJobMappingPipelineJobMappingConfigPtrOutput{})
+	pulumi.RegisterOutputType(PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceOutput{})
+	pulumi.RegisterOutputType(PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourcePtrOutput{})
+	pulumi.RegisterOutputType(PipelineJobReconciliationPipelineJobOutput{})
+	pulumi.RegisterOutputType(PipelineJobReconciliationPipelineJobPtrOutput{})
+	pulumi.RegisterOutputType(PipelineJobReconciliationPipelineJobMergeConfigOutput{})
+	pulumi.RegisterOutputType(PipelineJobReconciliationPipelineJobMergeConfigPtrOutput{})
+	pulumi.RegisterOutputType(PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourceOutput{})
+	pulumi.RegisterOutputType(PipelineJobReconciliationPipelineJobMergeConfigWhistleConfigSourcePtrOutput{})
 	pulumi.RegisterOutputType(WorkspaceSettingsOutput{})
 	pulumi.RegisterOutputType(WorkspaceSettingsPtrOutput{})
 }

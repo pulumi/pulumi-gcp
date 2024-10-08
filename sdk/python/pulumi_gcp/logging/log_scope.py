@@ -31,7 +31,7 @@ class LogScopeArgs:
                
                - - -
         :param pulumi.Input[str] description: Describes this log scopes.
-        :param pulumi.Input[str] location: The location of the resource. The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.
+        :param pulumi.Input[str] location: The location of the resource. The only supported location is global so far.
         :param pulumi.Input[str] name: The resource name of the log scope. For example: \\`projects/my-project/locations/global/logScopes/my-log-scope\\`
         :param pulumi.Input[str] parent: The parent of the resource.
         """
@@ -76,7 +76,7 @@ class LogScopeArgs:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
-        The location of the resource. The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.
+        The location of the resource. The only supported location is global so far.
         """
         return pulumi.get(self, "location")
 
@@ -123,7 +123,7 @@ class _LogScopeState:
         Input properties used for looking up and filtering LogScope resources.
         :param pulumi.Input[str] create_time: Output only. The creation timestamp of the log scopes.
         :param pulumi.Input[str] description: Describes this log scopes.
-        :param pulumi.Input[str] location: The location of the resource. The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.
+        :param pulumi.Input[str] location: The location of the resource. The only supported location is global so far.
         :param pulumi.Input[str] name: The resource name of the log scope. For example: \\`projects/my-project/locations/global/logScopes/my-log-scope\\`
         :param pulumi.Input[str] parent: The parent of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_names: Names of one or more parent resources : *  \\`projects/[PROJECT_ID]\\` May alternatively be one or more views : * \\`projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]\\` A log scope can include a maximum of 50 projects and a maximum of 100 resources in total.
@@ -175,7 +175,7 @@ class _LogScopeState:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
-        The location of the resource. The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.
+        The location of the resource. The only supported location is global so far.
         """
         return pulumi.get(self, "location")
 
@@ -290,7 +290,7 @@ class LogScope(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Describes this log scopes.
-        :param pulumi.Input[str] location: The location of the resource. The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.
+        :param pulumi.Input[str] location: The location of the resource. The only supported location is global so far.
         :param pulumi.Input[str] name: The resource name of the log scope. For example: \\`projects/my-project/locations/global/logScopes/my-log-scope\\`
         :param pulumi.Input[str] parent: The parent of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_names: Names of one or more parent resources : *  \\`projects/[PROJECT_ID]\\` May alternatively be one or more views : * \\`projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]\\` A log scope can include a maximum of 50 projects and a maximum of 100 resources in total.
@@ -409,7 +409,7 @@ class LogScope(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Output only. The creation timestamp of the log scopes.
         :param pulumi.Input[str] description: Describes this log scopes.
-        :param pulumi.Input[str] location: The location of the resource. The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.
+        :param pulumi.Input[str] location: The location of the resource. The only supported location is global so far.
         :param pulumi.Input[str] name: The resource name of the log scope. For example: \\`projects/my-project/locations/global/logScopes/my-log-scope\\`
         :param pulumi.Input[str] parent: The parent of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_names: Names of one or more parent resources : *  \\`projects/[PROJECT_ID]\\` May alternatively be one or more views : * \\`projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]\\` A log scope can include a maximum of 50 projects and a maximum of 100 resources in total.
@@ -451,7 +451,7 @@ class LogScope(pulumi.CustomResource):
     @pulumi.getter
     def location(self) -> pulumi.Output[str]:
         """
-        The location of the resource. The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.
+        The location of the resource. The only supported location is global so far.
         """
         return pulumi.get(self, "location")
 

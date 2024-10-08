@@ -28,7 +28,7 @@ class TagKeyArgs:
         The set of arguments for constructing a TagKey resource.
         :param pulumi.Input[str] parent: Input only. The resource name of the new TagKey's parent. Must be of the form organizations/{org_id} or projects/{project_id_or_number}.
         :param pulumi.Input[str] short_name: Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
-               The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes ('), double quotes ("), backslashes (\\\\), and forward slashes (/).
                
                
                - - -
@@ -65,7 +65,7 @@ class TagKeyArgs:
     def short_name(self) -> pulumi.Input[str]:
         """
         Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
-        The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+        The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes ('), double quotes ("), backslashes (\\\\), and forward slashes (/).
 
 
         - - -
@@ -142,7 +142,7 @@ class _TagKeyState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] purpose_data: Optional. Purpose data cannot be changed once set.
                Purpose data corresponds to the policy system that the tag is intended for. For example, the GCE_FIREWALL purpose expects data in the following format: `network = "<project-name>/<vpc-name>"`.
         :param pulumi.Input[str] short_name: Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
-               The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes ('), double quotes ("), backslashes (\\\\), and forward slashes (/).
                
                
                - - -
@@ -261,7 +261,7 @@ class _TagKeyState:
     def short_name(self) -> Optional[pulumi.Input[str]]:
         """
         Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
-        The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+        The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes ('), double quotes ("), backslashes (\\\\), and forward slashes (/).
 
 
         - - -
@@ -348,7 +348,7 @@ class TagKey(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] purpose_data: Optional. Purpose data cannot be changed once set.
                Purpose data corresponds to the policy system that the tag is intended for. For example, the GCE_FIREWALL purpose expects data in the following format: `network = "<project-name>/<vpc-name>"`.
         :param pulumi.Input[str] short_name: Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
-               The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes ('), double quotes ("), backslashes (\\\\), and forward slashes (/).
                
                
                - - -
@@ -480,7 +480,7 @@ class TagKey(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] purpose_data: Optional. Purpose data cannot be changed once set.
                Purpose data corresponds to the policy system that the tag is intended for. For example, the GCE_FIREWALL purpose expects data in the following format: `network = "<project-name>/<vpc-name>"`.
         :param pulumi.Input[str] short_name: Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
-               The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes ('), double quotes ("), backslashes (\\\\), and forward slashes (/).
                
                
                - - -
@@ -567,7 +567,7 @@ class TagKey(pulumi.CustomResource):
     def short_name(self) -> pulumi.Output[str]:
         """
         Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
-        The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+        The short name can have a maximum length of 256 characters. The permitted character set for the shortName includes all UTF-8 encoded Unicode characters except single quotes ('), double quotes ("), backslashes (\\\\), and forward slashes (/).
 
 
         - - -

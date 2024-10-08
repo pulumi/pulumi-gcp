@@ -57,6 +57,7 @@ __all__ = [
     'AwsNodePoolConfigSpotConfig',
     'AwsNodePoolConfigSshConfig',
     'AwsNodePoolConfigTaint',
+    'AwsNodePoolKubeletConfig',
     'AwsNodePoolManagement',
     'AwsNodePoolMaxPodsConstraint',
     'AwsNodePoolUpdateSettings',
@@ -2506,6 +2507,84 @@ class AwsNodePoolConfigTaint(dict):
         Value for the taint.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class AwsNodePoolKubeletConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cpuCfsQuota":
+            suggest = "cpu_cfs_quota"
+        elif key == "cpuCfsQuotaPeriod":
+            suggest = "cpu_cfs_quota_period"
+        elif key == "cpuManagerPolicy":
+            suggest = "cpu_manager_policy"
+        elif key == "podPidsLimit":
+            suggest = "pod_pids_limit"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AwsNodePoolKubeletConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AwsNodePoolKubeletConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AwsNodePoolKubeletConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cpu_cfs_quota: Optional[bool] = None,
+                 cpu_cfs_quota_period: Optional[str] = None,
+                 cpu_manager_policy: Optional[str] = None,
+                 pod_pids_limit: Optional[int] = None):
+        """
+        :param bool cpu_cfs_quota: Whether or not to enable CPU CFS quota. Defaults to true.
+        :param str cpu_cfs_quota_period: Optional. The CPU CFS quota period to use for the node. Defaults to "100ms".
+        :param str cpu_manager_policy: The CpuManagerPolicy to use for the node. Defaults to "none".
+        :param int pod_pids_limit: Optional. The maximum number of PIDs in each pod running on the node. The limit scales automatically based on underlying machine size if left unset.
+        """
+        if cpu_cfs_quota is not None:
+            pulumi.set(__self__, "cpu_cfs_quota", cpu_cfs_quota)
+        if cpu_cfs_quota_period is not None:
+            pulumi.set(__self__, "cpu_cfs_quota_period", cpu_cfs_quota_period)
+        if cpu_manager_policy is not None:
+            pulumi.set(__self__, "cpu_manager_policy", cpu_manager_policy)
+        if pod_pids_limit is not None:
+            pulumi.set(__self__, "pod_pids_limit", pod_pids_limit)
+
+    @property
+    @pulumi.getter(name="cpuCfsQuota")
+    def cpu_cfs_quota(self) -> Optional[bool]:
+        """
+        Whether or not to enable CPU CFS quota. Defaults to true.
+        """
+        return pulumi.get(self, "cpu_cfs_quota")
+
+    @property
+    @pulumi.getter(name="cpuCfsQuotaPeriod")
+    def cpu_cfs_quota_period(self) -> Optional[str]:
+        """
+        Optional. The CPU CFS quota period to use for the node. Defaults to "100ms".
+        """
+        return pulumi.get(self, "cpu_cfs_quota_period")
+
+    @property
+    @pulumi.getter(name="cpuManagerPolicy")
+    def cpu_manager_policy(self) -> Optional[str]:
+        """
+        The CpuManagerPolicy to use for the node. Defaults to "none".
+        """
+        return pulumi.get(self, "cpu_manager_policy")
+
+    @property
+    @pulumi.getter(name="podPidsLimit")
+    def pod_pids_limit(self) -> Optional[int]:
+        """
+        Optional. The maximum number of PIDs in each pod running on the node. The limit scales automatically based on underlying machine size if left unset.
+        """
+        return pulumi.get(self, "pod_pids_limit")
 
 
 @pulumi.output_type

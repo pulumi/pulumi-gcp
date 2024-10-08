@@ -470,7 +470,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var reserved = new InternalRange("reserved", InternalRangeArgs.builder()
- *             .name("reserved")
+ *             .name("reserved-primary")
  *             .network(default_.id())
  *             .usage("FOR_VPC")
  *             .peering("FOR_SELF")
