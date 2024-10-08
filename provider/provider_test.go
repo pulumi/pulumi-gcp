@@ -4,10 +4,11 @@ package gcp
 
 import (
 	"context"
-	_ "embed"
 	"os"
 	"path/filepath"
 	"testing"
+
+	_ "embed"
 
 	"github.com/stretchr/testify/require"
 
