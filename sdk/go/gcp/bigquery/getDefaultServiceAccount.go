@@ -38,7 +38,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			bqSa, err := bigquery.GetDefaultServiceAccount(ctx, nil, nil)
+//			bqSa, err := bigquery.GetDefaultServiceAccount(ctx, &bigquery.GetDefaultServiceAccountArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

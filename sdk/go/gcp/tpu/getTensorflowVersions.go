@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := tpu.GetTensorflowVersions(ctx, nil, nil)
+//			_, err := tpu.GetTensorflowVersions(ctx, &tpu.GetTensorflowVersionsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -51,7 +51,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			available, err := tpu.GetTensorflowVersions(ctx, nil, nil)
+//			available, err := tpu.GetTensorflowVersions(ctx, &tpu.GetTensorflowVersionsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
