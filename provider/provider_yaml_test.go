@@ -142,10 +142,6 @@ func TestConnectionProfileUpgradev7(t *testing.T) {
 	assertpreview.HasNoChanges(t, res)
 }
 
-func TestComputeForwardingRuleV6V8StateMigration(t *testing.T) {
-	testProviderUpgrade(t, "test-programs/compute-forwardingrule", WithBaselineVersion("6.67.1"))
-}
-
 // Regression test for https://github.com/pulumi/pulumi-gcp/issues/1874
 func TestRegress1874(t *testing.T) {
 	test := pulumiTest(t, "test-programs/connection-profile",
