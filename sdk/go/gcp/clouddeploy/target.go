@@ -33,7 +33,7 @@ import (
 //			_, err := clouddeploy.NewTarget(ctx, "primary", &clouddeploy.TargetArgs{
 //				Location:         pulumi.String("us-west1"),
 //				Name:             pulumi.String("target"),
-//				DeployParameters: nil,
+//				DeployParameters: pulumi.StringMap{},
 //				Description:      pulumi.String("multi-target description"),
 //				ExecutionConfigs: clouddeploy.TargetExecutionConfigArray{
 //					&clouddeploy.TargetExecutionConfigArgs{
@@ -86,7 +86,7 @@ import (
 //			_, err := clouddeploy.NewTarget(ctx, "primary", &clouddeploy.TargetArgs{
 //				Location:         pulumi.String("us-west1"),
 //				Name:             pulumi.String("target"),
-//				DeployParameters: nil,
+//				DeployParameters: pulumi.StringMap{},
 //				Description:      pulumi.String("basic description"),
 //				ExecutionConfigs: clouddeploy.TargetExecutionConfigArray{
 //					&clouddeploy.TargetExecutionConfigArgs{
