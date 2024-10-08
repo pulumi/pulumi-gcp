@@ -66,7 +66,7 @@ import (
 //			_, err := secretmanager.NewSecret(ctx, "github-token-secret", &secretmanager.SecretArgs{
 //				SecretId: pulumi.String("github-token-secret"),
 //				Replication: &secretmanager.SecretReplicationArgs{
-//					Auto: nil,
+//					Auto: &secretmanager.SecretReplicationAutoArgs{},
 //				},
 //			})
 //			if err != nil {

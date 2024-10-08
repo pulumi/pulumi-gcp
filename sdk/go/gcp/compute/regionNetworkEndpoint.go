@@ -165,7 +165,7 @@ import (
 //				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
 //					&compute.InstanceNetworkInterfaceArgs{
 //						AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
-//							nil,
+//							&compute.InstanceNetworkInterfaceAccessConfigArgs{},
 //						},
 //						Subnetwork: defaultSubnetwork.ID(),
 //					},
