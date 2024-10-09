@@ -206,9 +206,6 @@ def get_entitlement(entitlement_id: Optional[str] = None,
         requester_justification_configs=pulumi.get(__ret__, 'requester_justification_configs'),
         state=pulumi.get(__ret__, 'state'),
         update_time=pulumi.get(__ret__, 'update_time'))
-
-
-@_utilities.lift_output_func(get_entitlement)
 def get_entitlement_output(entitlement_id: Optional[pulumi.Input[Optional[str]]] = None,
                            location: Optional[pulumi.Input[Optional[str]]] = None,
                            parent: Optional[pulumi.Input[Optional[str]]] = None,
@@ -216,4 +213,25 @@ def get_entitlement_output(entitlement_id: Optional[pulumi.Input[Optional[str]]]
     """
     Use this data source to access information about an existing resource.
     """
-    ...
+    __args__ = dict()
+    __args__['entitlementId'] = entitlement_id
+    __args__['location'] = location
+    __args__['parent'] = parent
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:privilegedaccessmanager/getEntitlement:getEntitlement', __args__, opts=opts, typ=GetEntitlementResult)
+    return __ret__.apply(lambda __response__: GetEntitlementResult(
+        additional_notification_targets=pulumi.get(__response__, 'additional_notification_targets'),
+        approval_workflows=pulumi.get(__response__, 'approval_workflows'),
+        create_time=pulumi.get(__response__, 'create_time'),
+        eligible_users=pulumi.get(__response__, 'eligible_users'),
+        entitlement_id=pulumi.get(__response__, 'entitlement_id'),
+        etag=pulumi.get(__response__, 'etag'),
+        id=pulumi.get(__response__, 'id'),
+        location=pulumi.get(__response__, 'location'),
+        max_request_duration=pulumi.get(__response__, 'max_request_duration'),
+        name=pulumi.get(__response__, 'name'),
+        parent=pulumi.get(__response__, 'parent'),
+        privileged_accesses=pulumi.get(__response__, 'privileged_accesses'),
+        requester_justification_configs=pulumi.get(__response__, 'requester_justification_configs'),
+        state=pulumi.get(__response__, 'state'),
+        update_time=pulumi.get(__response__, 'update_time')))
