@@ -126,9 +126,6 @@ def get_consent_store_iam_policy(consent_store_id: Optional[str] = None,
         etag=pulumi.get(__ret__, 'etag'),
         id=pulumi.get(__ret__, 'id'),
         policy_data=pulumi.get(__ret__, 'policy_data'))
-
-
-@_utilities.lift_output_func(get_consent_store_iam_policy)
 def get_consent_store_iam_policy_output(consent_store_id: Optional[pulumi.Input[str]] = None,
                                         dataset: Optional[pulumi.Input[str]] = None,
                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConsentStoreIamPolicyResult]:
@@ -151,4 +148,14 @@ def get_consent_store_iam_policy_output(consent_store_id: Optional[pulumi.Input[
            'projects/{project}/locations/{location}/datasets/{dataset}'
            Used to find the parent resource to bind the IAM policy to
     """
-    ...
+    __args__ = dict()
+    __args__['consentStoreId'] = consent_store_id
+    __args__['dataset'] = dataset
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:healthcare/getConsentStoreIamPolicy:getConsentStoreIamPolicy', __args__, opts=opts, typ=GetConsentStoreIamPolicyResult)
+    return __ret__.apply(lambda __response__: GetConsentStoreIamPolicyResult(
+        consent_store_id=pulumi.get(__response__, 'consent_store_id'),
+        dataset=pulumi.get(__response__, 'dataset'),
+        etag=pulumi.get(__response__, 'etag'),
+        id=pulumi.get(__response__, 'id'),
+        policy_data=pulumi.get(__response__, 'policy_data')))

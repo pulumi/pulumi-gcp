@@ -226,9 +226,6 @@ def get_engine_versions(location: Optional[str] = None,
         valid_master_versions=pulumi.get(__ret__, 'valid_master_versions'),
         valid_node_versions=pulumi.get(__ret__, 'valid_node_versions'),
         version_prefix=pulumi.get(__ret__, 'version_prefix'))
-
-
-@_utilities.lift_output_func(get_engine_versions)
 def get_engine_versions_output(location: Optional[pulumi.Input[Optional[str]]] = None,
                                project: Optional[pulumi.Input[Optional[str]]] = None,
                                version_prefix: Optional[pulumi.Input[Optional[str]]] = None,
@@ -276,4 +273,21 @@ def get_engine_versions_output(location: Optional[pulumi.Input[Optional[str]]] =
            versions like `1.12.5-gke.10` accidentally. See [the docs on versioning schema](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#versioning_scheme)
            for full details on how version strings are formatted.
     """
-    ...
+    __args__ = dict()
+    __args__['location'] = location
+    __args__['project'] = project
+    __args__['versionPrefix'] = version_prefix
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:container/getEngineVersions:getEngineVersions', __args__, opts=opts, typ=GetEngineVersionsResult)
+    return __ret__.apply(lambda __response__: GetEngineVersionsResult(
+        default_cluster_version=pulumi.get(__response__, 'default_cluster_version'),
+        id=pulumi.get(__response__, 'id'),
+        latest_master_version=pulumi.get(__response__, 'latest_master_version'),
+        latest_node_version=pulumi.get(__response__, 'latest_node_version'),
+        location=pulumi.get(__response__, 'location'),
+        project=pulumi.get(__response__, 'project'),
+        release_channel_default_version=pulumi.get(__response__, 'release_channel_default_version'),
+        release_channel_latest_version=pulumi.get(__response__, 'release_channel_latest_version'),
+        valid_master_versions=pulumi.get(__response__, 'valid_master_versions'),
+        valid_node_versions=pulumi.get(__response__, 'valid_node_versions'),
+        version_prefix=pulumi.get(__response__, 'version_prefix')))

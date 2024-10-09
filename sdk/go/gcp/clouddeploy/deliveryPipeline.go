@@ -43,7 +43,7 @@ import (
 //									Values: pulumi.StringMap{
 //										"deployParameterKey": pulumi.String("deployParameterValue"),
 //									},
-//									MatchTargetLabels: nil,
+//									MatchTargetLabels: pulumi.StringMap{},
 //								},
 //							},
 //							Profiles: pulumi.StringArray{
@@ -102,7 +102,7 @@ import (
 //									Values: pulumi.StringMap{
 //										"deployParameterKey": pulumi.String("deployParameterValue"),
 //									},
-//									MatchTargetLabels: nil,
+//									MatchTargetLabels: pulumi.StringMap{},
 //								},
 //							},
 //							Profiles: pulumi.StringArray{
@@ -161,7 +161,7 @@ import (
 //									Values: pulumi.StringMap{
 //										"deployParameterKey": pulumi.String("deployParameterValue"),
 //									},
-//									MatchTargetLabels: nil,
+//									MatchTargetLabels: pulumi.StringMap{},
 //								},
 //							},
 //							Profiles: pulumi.StringArray{
@@ -220,7 +220,7 @@ import (
 //									Values: pulumi.StringMap{
 //										"deployParameterKey": pulumi.String("deployParameterValue"),
 //									},
-//									MatchTargetLabels: nil,
+//									MatchTargetLabels: pulumi.StringMap{},
 //								},
 //							},
 //							Profiles: pulumi.StringArray{
@@ -279,7 +279,7 @@ import (
 //									Values: pulumi.StringMap{
 //										"deployParameterKey": pulumi.String("deployParameterValue"),
 //									},
-//									MatchTargetLabels: nil,
+//									MatchTargetLabels: pulumi.StringMap{},
 //								},
 //							},
 //							Profiles: pulumi.StringArray{

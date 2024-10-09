@@ -52,7 +52,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			testProject, err := organizations.LookupProject(ctx, nil, nil)
+//			testProject, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
