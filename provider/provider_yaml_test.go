@@ -29,71 +29,68 @@ import (
 	"testing"
 
 	"github.com/hexops/autogold/v2"
-	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
+	"github.com/pulumi/providertest/optproviderupgrade"
 	"github.com/pulumi/providertest/pulumitest"
 	"github.com/pulumi/providertest/pulumitest/assertpreview"
-	"github.com/pulumi/providertest/pulumitest/optnewstack"
 	"github.com/pulumi/providertest/pulumitest/opttest"
 	"github.com/pulumi/providertest/replay"
 	"github.com/pulumi/pulumi/sdk/v3/go/auto"
 	"github.com/pulumi/pulumi/sdk/v3/go/auto/optpreview"
 	"github.com/pulumi/pulumi/sdk/v3/go/auto/optrefresh"
 	"github.com/pulumi/pulumi/sdk/v3/go/auto/optup"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/apitype"
 )
 
 func TestDNSRecordSetUpgrade(t *testing.T) {
-	testProviderUpgrade(t, "test-programs/dns-recordset")
+	testUpgrade(t, "test-programs/dns-recordset")
 }
 
 func TestPubSubSubscriptionUpgrade(t *testing.T) {
-	testProviderUpgrade(t, "test-programs/pubsub-subscription")
+	testUpgrade(t, "test-programs/pubsub-subscription")
 }
 
 func TestPubSubTopicUpgrade(t *testing.T) {
-	testProviderUpgrade(t, "test-programs/pubsub-topic")
+	testUpgrade(t, "test-programs/pubsub-topic")
 }
 
 func TestStorageBucketUpgrade(t *testing.T) {
-	testProviderUpgrade(t, "test-programs/storage-bucket")
+	testUpgrade(t, "test-programs/storage-bucket")
 }
 
 func TestStorageBucketObjectUpgrade(t *testing.T) {
 	t.Skipf("TODO[pulumi/pulumi-gcp#1607] temporarily skipping failing test")
-	testProviderUpgrade(t, "test-programs/storage-bucketobject")
+	testUpgrade(t, "test-programs/storage-bucketobject")
 }
 
 func TestSecretManagerSecretUpgrade(t *testing.T) {
-	testProviderUpgrade(t, "test-programs/secretmanager-secret")
+	testUpgrade(t, "test-programs/secretmanager-secret")
 }
 
 func TestSqlUserUpgrade(t *testing.T) {
-	testProviderUpgrade(t, "test-programs/sql-user")
+	testUpgrade(t, "test-programs/sql-user")
 }
 
 func TestBigQueryTableUpgrade(t *testing.T) {
-	testProviderUpgrade(t, "test-programs/bigquery-table", WithConfig(map[string]string{
-		"datasetID": "dspitrunnerbigqueryt4b22ee25",
-	}))
+	testUpgrade(t, "test-programs/bigquery-table")
 }
 
 func TestComputeFirewallUpgrade(t *testing.T) {
-	testProviderUpgrade(t, "test-programs/compute-firewall")
+	testUpgrade(t, "test-programs/compute-firewall")
 }
 
 func TestCloudFunctionUpgrade(t *testing.T) {
-	testProviderUpgrade(t, "test-programs/cloudfunctions-function")
+	testUpgrade(t, "test-programs/cloudfunctions-function")
 }
 
 func TestNetworkUpgrade(t *testing.T) {
 	t.Skipf("Flakey: see https://github.com/pulumi/pulumi-gcp/issues/1655 for details")
-	testProviderUpgrade(t, "test-programs/network")
+	testUpgrade(t, "test-programs/network")
 }
 
 func TestClusterUpgrade(t *testing.T) {
-	testProviderUpgrade(t, "test-programs/cluster", WithBaselineVersion("7.2.1"))
+	testUpgrade(t, "test-programs/cluster",
+		optproviderupgrade.BaselineOpts(opttest.DownloadProviderVersion(providerName, "7.2.1")))
 }
 
 func skipIfNotCI(t *testing.T) {
@@ -105,46 +102,49 @@ func skipIfNotCI(t *testing.T) {
 func TestIamBinding(t *testing.T) {
 	skipIfNotCI(t)
 	// ServiceAccount requires 7.0
-	testProviderUpgrade(t, "test-programs/iam-binding", WithBaselineVersion("7.0.0"))
+	testUpgrade(t, "test-programs/iam-binding",
+		optproviderupgrade.BaselineOpts(opttest.DownloadProviderVersion(providerName, "7.0.0")))
 }
 
 func TestIamMember(t *testing.T) {
 	skipIfNotCI(t)
 	// ServiceAccount requires 7.0
-	testProviderUpgrade(t, "test-programs/iam-member", WithBaselineVersion("7.0.0"))
+	testUpgrade(t, "test-programs/iam-member",
+		optproviderupgrade.BaselineOpts(opttest.DownloadProviderVersion(providerName, "7.0.0")))
 }
 
 func TestLogSink(t *testing.T) {
 	skipIfNotCI(t)
 	// ServiceAccount requires 7.0
-	testProviderUpgrade(t, "test-programs/logsink", WithBaselineVersion("7.0.0"))
+	testUpgrade(t, "test-programs/logsink",
+		optproviderupgrade.BaselineOpts(opttest.DownloadProviderVersion(providerName, "7.0.0")))
 }
 
 func TestTopicIamBinding(t *testing.T) {
 	skipIfNotCI(t)
 	// ServiceAccount requires 7.0
-	testProviderUpgrade(t, "test-programs/topic-iam-binding", WithBaselineVersion("7.0.0"))
+	testUpgrade(t, "test-programs/topic-iam-binding",
+		optproviderupgrade.BaselineOpts(opttest.DownloadProviderVersion(providerName, "7.0.0")))
 }
 
 func TestConnectionProfileUpgrade(t *testing.T) {
-	testProviderUpgrade(t, "test-programs/connection-profile", WithAssertFunc(assertpreview.HasNoChanges),
-		WithAdditionalProvider("random", "4.16.0"))
+	res := testUpgrade(t, "test-programs/connection-profile",
+		optproviderupgrade.BaselineOpts(opttest.DownloadProviderVersion("random", "4.16.0")))
+	assertpreview.HasNoChanges(t, res)
 }
 
 func TestConnectionProfileUpgradev7(t *testing.T) {
-	testProviderUpgrade(t, "test-programs/connection-profile", WithAssertFunc(assertpreview.HasNoChanges),
-		WithBaselineVersion("7.17.0"), WithAdditionalProvider("random", "4.16.0"))
+	res := testUpgrade(t, "test-programs/connection-profile",
+		optproviderupgrade.BaselineOpts(
+			opttest.DownloadProviderVersion("random", "4.16.0"),
+			opttest.DownloadProviderVersion(providerName, "7.17.0")),
+	)
+	assertpreview.HasNoChanges(t, res)
 }
 
 // Regression test for https://github.com/pulumi/pulumi-gcp/issues/1874
 func TestRegress1874(t *testing.T) {
-	if testing.Short() {
-		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without GCP creds")
-	}
-	cwd, err := os.Getwd()
-	require.NoError(t, err)
-	test := pulumitest.NewPulumiTest(t, "test-programs/connection-profile",
-		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
+	test := pulumiTest(t, "test-programs/connection-profile",
 		opttest.DownloadProviderVersion("random", "4.16.0"),
 	)
 
@@ -219,7 +219,7 @@ func TestAutoExtractedProgramsUpgrade(t *testing.T) {
 		tc := tc
 		t.Run(tc.program, func(t *testing.T) {
 			d := filepath.Join("test-programs", tc.program)
-			testProviderUpgrade(t, d)
+			testUpgrade(t, d)
 		})
 	}
 }
@@ -254,16 +254,7 @@ resources:
                       name: empty-dir-volume
         type: gcp:cloudrunv2:Service
 runtime:
-    name: yaml
-
-`
-
-	var (
-		providerName    = "gcp"
-		baselineVersion = "7.28.0"
-	)
-	cwd, err := os.Getwd()
-	assert.NoError(t, err)
+    name: yaml`
 
 	// Apply the relevant changes expected to upgrade successfully v7 -> v8:
 	// `ports` is now an Object, not a maxItemsOne list
@@ -277,140 +268,16 @@ runtime:
 		"\n            deletionProtection: false",
 		"ports:\n                        containerPort: 8080"),
 	)
-	// Test that we can upgrade from v7 to v8 with the changes applied to the program.
-	t.Run("upgrade-to-v8-shows-no-diffs-for-ports", func(t *testing.T) {
-		pulumiTest := testProviderCodeChanges(t, &testProviderCodeChangesOptions{
-			firstProgram: firstProgram,
-			firstProgramOptions: []opttest.Option{
-				opttest.DownloadProviderVersion(providerName, baselineVersion),
-			},
-			secondProgram: secondProgram,
-			secondProgramOptions: []opttest.Option{
-				opttest.LocalProviderPath("gcp", filepath.Join(cwd, "..", "bin")),
-			},
-		})
 
-		res := pulumiTest.Preview(t)
-		t.Logf("stdout: %s \n", res.StdOut)
-		t.Logf("stderr: %s \n", res.StdErr)
-		assertpreview.HasNoChanges(t, res)
-
-		upResult := pulumiTest.Up(t)
-		t.Logf("stdout: %s \n", upResult.StdOut)
-		t.Logf("stderr: %s \n", upResult.StdErr)
-	})
-}
-
-type testProviderCodeChangesOptions struct {
-	firstProgram         []byte
-	secondProgram        []byte
-	firstProgramOptions  []opttest.Option
-	secondProgramOptions []opttest.Option
-}
-
-// testProviderCodeChanges tests two different runs of a pulumi program. This allows you to run
-// pulumi up with an initial program, change the code of the program and then run another pulumi command
-func testProviderCodeChanges(t *testing.T, opts *testProviderCodeChangesOptions) *pulumitest.PulumiTest {
-	if testing.Short() {
-		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without credentials")
-	}
-	t.Parallel()
-	t.Helper()
-
-	workdir := t.TempDir()
-	stackExportFile := filepath.Join(workdir, "stack.json")
-
-	err := os.WriteFile(filepath.Join(workdir, "Pulumi.yaml"), opts.firstProgram, 0o600)
+	testDir := t.TempDir()
+	err := os.WriteFile(filepath.Join(testDir, "Pulumi.yaml"), firstProgram, 0o600)
 	require.NoError(t, err)
 
-	options := []opttest.Option{
-		opttest.SkipInstall(),
-		opttest.NewStackOptions(optnewstack.DisableAutoDestroy()),
-	}
-	options = append(options, opts.firstProgramOptions...)
-
-	firstTest := pulumitest.NewPulumiTest(t, workdir, options...)
-	googleProj := getProject()
-	firstTest.SetConfig(t, "gcp:config:project", googleProj)
-
-	var export *apitype.UntypedDeployment
-	export, err = tryReadStackExport(stackExportFile)
-	if err != nil {
-		firstTest.Up(t)
-		grptLog := firstTest.GrpcLog(t)
-		grpcLogPath := filepath.Join(workdir, "grpc.json")
-		t.Logf("writing grpc log to %s", grpcLogPath)
-		err = grptLog.WriteTo(grpcLogPath)
-		assert.NoError(t, err)
-		e := firstTest.ExportStack(t)
-		export = &e
-		err = writeStackExport(stackExportFile, export, true)
-		assert.NoError(t, err)
-	}
-
-	secondOptions := []opttest.Option{
-		opttest.SkipInstall(),
-		opttest.NewStackOptions(optnewstack.EnableAutoDestroy()),
-	}
-	secondOptions = append(secondOptions, opts.secondProgramOptions...)
-
-	err = os.WriteFile(filepath.Join(workdir, "Pulumi.yaml"), opts.secondProgram, 0o600)
+	secondTestDir := t.TempDir()
+	err = os.WriteFile(filepath.Join(secondTestDir, "Pulumi.yaml"), secondProgram, 0o600)
 	require.NoError(t, err)
-	secondTest := pulumitest.NewPulumiTest(t, workdir, secondOptions...)
-	secondTest.ImportStack(t, *export)
-	secondTest.SetConfig(t, "gcp:config:project", googleProj)
 
-	return secondTest
-}
-
-// tryReadStackExport reads a stack export from the given file path.
-// If the file does not exist, returns nil, nil.
-func tryReadStackExport(path string) (*apitype.UntypedDeployment, error) {
-	stackBytes, err := os.ReadFile(path)
-	if err != nil {
-		return nil, fmt.Errorf("failed to read stack export at %s: %v", path, err)
-	}
-	var stackExport apitype.UntypedDeployment
-	err = json.Unmarshal(stackBytes, &stackExport)
-	if err != nil {
-		return nil, fmt.Errorf("failed to unmarshal stack export at %s: %v", path, err)
-	}
-	return &stackExport, nil
-}
-
-// writeStackExport writes the stack export to the given path creating any directories needed.
-func writeStackExport(path string, snapshot *apitype.UntypedDeployment, overwrite bool) error {
-	if snapshot == nil {
-		return fmt.Errorf("stack export must not be nil")
-	}
-	dir := filepath.Dir(path)
-	err := os.MkdirAll(dir, 0o755)
-	if err != nil {
-		return err
-	}
-	stackBytes, err := json.MarshalIndent(snapshot, "", "  ")
-	if err != nil {
-		return err
-	}
-	pathExists, err := exists(path)
-	if err != nil {
-		return err
-	}
-	if pathExists && !overwrite {
-		return fmt.Errorf("stack export already exists at %s", path)
-	}
-	return os.WriteFile(path, stackBytes, 0o600)
-}
-
-func exists(filePath string) (bool, error) {
-	_, err := os.Stat(filePath)
-	switch {
-	case err == nil:
-		return true, nil
-	case !os.IsNotExist(err):
-		return false, err
-	}
-	return false, nil
+	testUpgrade(t, testDir, optproviderupgrade.NewSourcePath(secondTestDir))
 }
 
 // This used to panic in the Diff on unexpected bool label (expecting string), see
@@ -752,13 +619,7 @@ func TestEnvTokenNotInState(t *testing.T) {
 		t.Fatal(string(errMsg))
 	}
 	t.Setenv("GOOGLE_OAUTH_ACCESS_TOKEN", outputStr)
-	cwd, err := os.Getwd()
-	require.NoError(t, err)
-	test := pulumitest.NewPulumiTest(t, filepath.Join("test-programs", "storage-bucket"),
-		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
-	)
-	googleProj := getProject()
-	test.SetConfig(t, "gcp:config:project", googleProj)
+	test := pulumiTest(t, filepath.Join("test-programs", "storage-bucket"))
 
 	test.Up(t)
 	stack := test.ExportStack(t)
