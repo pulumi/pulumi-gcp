@@ -23,7 +23,7 @@ replace (
 	github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20240520223432-0c0bf0d65f10
 	github.com/hashicorp/terraform-provider-google-beta => ../upstream
 	github.com/hashicorp/vault => github.com/hashicorp/vault v1.2.0
-	// Until we propagate this from the bridge, replace this here to fix a panic
+	// Until we propagate this from the bridge, replace this here to fix a panic [pulumi/pulumi-terraform-bridge#2088]
 	github.com/pulumi/pulumi-terraform-bridge/x/muxer => github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.10
 )
 
