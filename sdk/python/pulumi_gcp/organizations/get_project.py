@@ -199,9 +199,6 @@ def get_project(project_id: Optional[str] = None,
         project_id=pulumi.get(__ret__, 'project_id'),
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         tags=pulumi.get(__ret__, 'tags'))
-
-
-@_utilities.lift_output_func(get_project)
 def get_project_output(project_id: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectResult]:
     """
@@ -222,4 +219,21 @@ def get_project_output(project_id: Optional[pulumi.Input[Optional[str]]] = None,
 
     :param str project_id: The project ID. If it is not provided, the provider project is used.
     """
-    ...
+    __args__ = dict()
+    __args__['projectId'] = project_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:organizations/getProject:getProject', __args__, opts=opts, typ=GetProjectResult)
+    return __ret__.apply(lambda __response__: GetProjectResult(
+        auto_create_network=pulumi.get(__response__, 'auto_create_network'),
+        billing_account=pulumi.get(__response__, 'billing_account'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
+        effective_labels=pulumi.get(__response__, 'effective_labels'),
+        folder_id=pulumi.get(__response__, 'folder_id'),
+        id=pulumi.get(__response__, 'id'),
+        labels=pulumi.get(__response__, 'labels'),
+        name=pulumi.get(__response__, 'name'),
+        number=pulumi.get(__response__, 'number'),
+        org_id=pulumi.get(__response__, 'org_id'),
+        project_id=pulumi.get(__response__, 'project_id'),
+        pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
+        tags=pulumi.get(__response__, 'tags')))

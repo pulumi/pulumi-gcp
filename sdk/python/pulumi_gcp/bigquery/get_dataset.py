@@ -311,9 +311,6 @@ def get_dataset(dataset_id: Optional[str] = None,
         resource_tags=pulumi.get(__ret__, 'resource_tags'),
         self_link=pulumi.get(__ret__, 'self_link'),
         storage_billing_model=pulumi.get(__ret__, 'storage_billing_model'))
-
-
-@_utilities.lift_output_func(get_dataset)
 def get_dataset_output(dataset_id: Optional[pulumi.Input[str]] = None,
                        project: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatasetResult]:
@@ -337,4 +334,33 @@ def get_dataset_output(dataset_id: Optional[pulumi.Input[str]] = None,
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the provider project is used.
     """
-    ...
+    __args__ = dict()
+    __args__['datasetId'] = dataset_id
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:bigquery/getDataset:getDataset', __args__, opts=opts, typ=GetDatasetResult)
+    return __ret__.apply(lambda __response__: GetDatasetResult(
+        accesses=pulumi.get(__response__, 'accesses'),
+        creation_time=pulumi.get(__response__, 'creation_time'),
+        dataset_id=pulumi.get(__response__, 'dataset_id'),
+        default_collation=pulumi.get(__response__, 'default_collation'),
+        default_encryption_configurations=pulumi.get(__response__, 'default_encryption_configurations'),
+        default_partition_expiration_ms=pulumi.get(__response__, 'default_partition_expiration_ms'),
+        default_table_expiration_ms=pulumi.get(__response__, 'default_table_expiration_ms'),
+        delete_contents_on_destroy=pulumi.get(__response__, 'delete_contents_on_destroy'),
+        description=pulumi.get(__response__, 'description'),
+        effective_labels=pulumi.get(__response__, 'effective_labels'),
+        etag=pulumi.get(__response__, 'etag'),
+        external_dataset_references=pulumi.get(__response__, 'external_dataset_references'),
+        friendly_name=pulumi.get(__response__, 'friendly_name'),
+        id=pulumi.get(__response__, 'id'),
+        is_case_insensitive=pulumi.get(__response__, 'is_case_insensitive'),
+        labels=pulumi.get(__response__, 'labels'),
+        last_modified_time=pulumi.get(__response__, 'last_modified_time'),
+        location=pulumi.get(__response__, 'location'),
+        max_time_travel_hours=pulumi.get(__response__, 'max_time_travel_hours'),
+        project=pulumi.get(__response__, 'project'),
+        pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
+        resource_tags=pulumi.get(__response__, 'resource_tags'),
+        self_link=pulumi.get(__response__, 'self_link'),
+        storage_billing_model=pulumi.get(__response__, 'storage_billing_model')))

@@ -36,7 +36,7 @@ import (
 //					"label": pulumi.String("my-label"),
 //				},
 //				Replication: &secretmanager.SecretReplicationArgs{
-//					Auto: nil,
+//					Auto: &secretmanager.SecretReplicationAutoArgs{},
 //				},
 //			})
 //			if err != nil {

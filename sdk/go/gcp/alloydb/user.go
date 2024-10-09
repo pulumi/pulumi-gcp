@@ -88,7 +88,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = organizations.LookupProject(ctx, nil, nil)
+//			_, err = organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -177,7 +177,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = organizations.LookupProject(ctx, nil, nil)
+//			_, err = organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

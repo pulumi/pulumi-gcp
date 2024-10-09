@@ -181,10 +181,10 @@ import (
 //								},
 //							},
 //							&dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs{
-//								AllInfoTypes: nil,
+//								AllInfoTypes: &dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllInfoTypesArgs{},
 //							},
 //							&dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs{
-//								AllText: nil,
+//								AllText: &dataloss.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllTextArgs{},
 //							},
 //						},
 //					},

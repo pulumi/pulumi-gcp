@@ -173,7 +173,7 @@ import (
 //						FieldPath: pulumi.String("description"),
 //						VectorConfig: &firestore.IndexFieldVectorConfigArgs{
 //							Dimension: pulumi.Int(128),
-//							Flat:      nil,
+//							Flat:      &firestore.IndexFieldVectorConfigFlatArgs{},
 //						},
 //					},
 //				},

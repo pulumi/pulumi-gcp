@@ -307,9 +307,6 @@ def get_snapshot(filter: Optional[str] = None,
         storage_bytes=pulumi.get(__ret__, 'storage_bytes'),
         storage_locations=pulumi.get(__ret__, 'storage_locations'),
         zone=pulumi.get(__ret__, 'zone'))
-
-
-@_utilities.lift_output_func(get_snapshot)
 def get_snapshot_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
                         most_recent: Optional[pulumi.Input[Optional[bool]]] = None,
                         name: Optional[pulumi.Input[Optional[str]]] = None,
@@ -347,4 +344,33 @@ def get_snapshot_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the provider project is used.
     """
-    ...
+    __args__ = dict()
+    __args__['filter'] = filter
+    __args__['mostRecent'] = most_recent
+    __args__['name'] = name
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:compute/getSnapshot:getSnapshot', __args__, opts=opts, typ=GetSnapshotResult)
+    return __ret__.apply(lambda __response__: GetSnapshotResult(
+        chain_name=pulumi.get(__response__, 'chain_name'),
+        creation_timestamp=pulumi.get(__response__, 'creation_timestamp'),
+        description=pulumi.get(__response__, 'description'),
+        disk_size_gb=pulumi.get(__response__, 'disk_size_gb'),
+        effective_labels=pulumi.get(__response__, 'effective_labels'),
+        filter=pulumi.get(__response__, 'filter'),
+        id=pulumi.get(__response__, 'id'),
+        label_fingerprint=pulumi.get(__response__, 'label_fingerprint'),
+        labels=pulumi.get(__response__, 'labels'),
+        licenses=pulumi.get(__response__, 'licenses'),
+        most_recent=pulumi.get(__response__, 'most_recent'),
+        name=pulumi.get(__response__, 'name'),
+        project=pulumi.get(__response__, 'project'),
+        pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
+        self_link=pulumi.get(__response__, 'self_link'),
+        snapshot_encryption_keys=pulumi.get(__response__, 'snapshot_encryption_keys'),
+        snapshot_id=pulumi.get(__response__, 'snapshot_id'),
+        source_disk=pulumi.get(__response__, 'source_disk'),
+        source_disk_encryption_keys=pulumi.get(__response__, 'source_disk_encryption_keys'),
+        storage_bytes=pulumi.get(__response__, 'storage_bytes'),
+        storage_locations=pulumi.get(__response__, 'storage_locations'),
+        zone=pulumi.get(__response__, 'zone')))

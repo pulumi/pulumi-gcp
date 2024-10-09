@@ -344,9 +344,6 @@ def get_metastore_service(location: Optional[str] = None,
         telemetry_configs=pulumi.get(__ret__, 'telemetry_configs'),
         tier=pulumi.get(__ret__, 'tier'),
         uid=pulumi.get(__ret__, 'uid'))
-
-
-@_utilities.lift_output_func(get_metastore_service)
 def get_metastore_service_output(location: Optional[pulumi.Input[str]] = None,
                                  project: Optional[pulumi.Input[Optional[str]]] = None,
                                  service_id: Optional[pulumi.Input[str]] = None,
@@ -372,4 +369,37 @@ def get_metastore_service_output(location: Optional[pulumi.Input[str]] = None,
            is not provided, the provider project is used.
     :param str service_id: The ID of the metastore service.
     """
-    ...
+    __args__ = dict()
+    __args__['location'] = location
+    __args__['project'] = project
+    __args__['serviceId'] = service_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:dataproc/getMetastoreService:getMetastoreService', __args__, opts=opts, typ=GetMetastoreServiceResult)
+    return __ret__.apply(lambda __response__: GetMetastoreServiceResult(
+        artifact_gcs_uri=pulumi.get(__response__, 'artifact_gcs_uri'),
+        database_type=pulumi.get(__response__, 'database_type'),
+        deletion_protection=pulumi.get(__response__, 'deletion_protection'),
+        effective_labels=pulumi.get(__response__, 'effective_labels'),
+        encryption_configs=pulumi.get(__response__, 'encryption_configs'),
+        endpoint_uri=pulumi.get(__response__, 'endpoint_uri'),
+        hive_metastore_configs=pulumi.get(__response__, 'hive_metastore_configs'),
+        id=pulumi.get(__response__, 'id'),
+        labels=pulumi.get(__response__, 'labels'),
+        location=pulumi.get(__response__, 'location'),
+        maintenance_windows=pulumi.get(__response__, 'maintenance_windows'),
+        metadata_integrations=pulumi.get(__response__, 'metadata_integrations'),
+        name=pulumi.get(__response__, 'name'),
+        network=pulumi.get(__response__, 'network'),
+        network_configs=pulumi.get(__response__, 'network_configs'),
+        port=pulumi.get(__response__, 'port'),
+        project=pulumi.get(__response__, 'project'),
+        pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
+        release_channel=pulumi.get(__response__, 'release_channel'),
+        scaling_configs=pulumi.get(__response__, 'scaling_configs'),
+        scheduled_backups=pulumi.get(__response__, 'scheduled_backups'),
+        service_id=pulumi.get(__response__, 'service_id'),
+        state=pulumi.get(__response__, 'state'),
+        state_message=pulumi.get(__response__, 'state_message'),
+        telemetry_configs=pulumi.get(__response__, 'telemetry_configs'),
+        tier=pulumi.get(__response__, 'tier'),
+        uid=pulumi.get(__response__, 'uid')))

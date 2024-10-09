@@ -99,9 +99,6 @@ def get_groups(parent: Optional[str] = None,
         groups=pulumi.get(__ret__, 'groups'),
         id=pulumi.get(__ret__, 'id'),
         parent=pulumi.get(__ret__, 'parent'))
-
-
-@_utilities.lift_output_func(get_groups)
 def get_groups_output(parent: Optional[pulumi.Input[str]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupsResult]:
     """
@@ -121,4 +118,11 @@ def get_groups_output(parent: Optional[pulumi.Input[str]] = None,
 
     :param str parent: The parent resource under which to list all Groups. Must be of the form identitysources/{identity_source_id} for external- identity-mapped groups or customers/{customer_id} for Google Groups.
     """
-    ...
+    __args__ = dict()
+    __args__['parent'] = parent
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:cloudidentity/getGroups:getGroups', __args__, opts=opts, typ=GetGroupsResult)
+    return __ret__.apply(lambda __response__: GetGroupsResult(
+        groups=pulumi.get(__response__, 'groups'),
+        id=pulumi.get(__response__, 'id'),
+        parent=pulumi.get(__response__, 'parent')))

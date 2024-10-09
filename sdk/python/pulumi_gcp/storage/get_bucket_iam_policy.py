@@ -110,9 +110,6 @@ def get_bucket_iam_policy(bucket: Optional[str] = None,
         etag=pulumi.get(__ret__, 'etag'),
         id=pulumi.get(__ret__, 'id'),
         policy_data=pulumi.get(__ret__, 'policy_data'))
-
-
-@_utilities.lift_output_func(get_bucket_iam_policy)
 def get_bucket_iam_policy_output(bucket: Optional[pulumi.Input[str]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBucketIamPolicyResult]:
     """
@@ -130,4 +127,12 @@ def get_bucket_iam_policy_output(bucket: Optional[pulumi.Input[str]] = None,
 
     :param str bucket: Used to find the parent resource to bind the IAM policy to
     """
-    ...
+    __args__ = dict()
+    __args__['bucket'] = bucket
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:storage/getBucketIamPolicy:getBucketIamPolicy', __args__, opts=opts, typ=GetBucketIamPolicyResult)
+    return __ret__.apply(lambda __response__: GetBucketIamPolicyResult(
+        bucket=pulumi.get(__response__, 'bucket'),
+        etag=pulumi.get(__response__, 'etag'),
+        id=pulumi.get(__response__, 'id'),
+        policy_data=pulumi.get(__response__, 'policy_data')))

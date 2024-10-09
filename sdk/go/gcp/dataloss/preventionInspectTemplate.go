@@ -280,7 +280,7 @@ import (
 //								Name: pulumi.String("MY_CUSTOM_TYPE"),
 //							},
 //							Likelihood:    pulumi.String("UNLIKELY"),
-//							SurrogateType: nil,
+//							SurrogateType: &dataloss.PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogateTypeArgs{},
 //						},
 //					},
 //					InfoTypes: dataloss.PreventionInspectTemplateInspectConfigInfoTypeArray{

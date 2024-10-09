@@ -97,9 +97,6 @@ def get_tag_values(parent: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         parent=pulumi.get(__ret__, 'parent'),
         values=pulumi.get(__ret__, 'values'))
-
-
-@_utilities.lift_output_func(get_tag_values)
 def get_tag_values_output(parent: Optional[pulumi.Input[str]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTagValuesResult]:
     """
@@ -117,4 +114,11 @@ def get_tag_values_output(parent: Optional[pulumi.Input[str]] = None,
 
     :param str parent: The resource name of the parent tagKey in format `tagKey/{name}`.
     """
-    ...
+    __args__ = dict()
+    __args__['parent'] = parent
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:tags/getTagValues:getTagValues', __args__, opts=opts, typ=GetTagValuesResult)
+    return __ret__.apply(lambda __response__: GetTagValuesResult(
+        id=pulumi.get(__response__, 'id'),
+        parent=pulumi.get(__response__, 'parent'),
+        values=pulumi.get(__response__, 'values')))

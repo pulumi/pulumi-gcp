@@ -110,9 +110,6 @@ def get_supported_database_flags(location: Optional[str] = None,
         location=pulumi.get(__ret__, 'location'),
         project=pulumi.get(__ret__, 'project'),
         supported_database_flags=pulumi.get(__ret__, 'supported_database_flags'))
-
-
-@_utilities.lift_output_func(get_supported_database_flags)
 def get_supported_database_flags_output(location: Optional[pulumi.Input[str]] = None,
                                         project: Optional[pulumi.Input[Optional[str]]] = None,
                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSupportedDatabaseFlagsResult]:
@@ -132,4 +129,13 @@ def get_supported_database_flags_output(location: Optional[pulumi.Input[str]] = 
     :param str location: The canonical id of the location. For example: `us-east1`.
     :param str project: The ID of the project.
     """
-    ...
+    __args__ = dict()
+    __args__['location'] = location
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:alloydb/getSupportedDatabaseFlags:getSupportedDatabaseFlags', __args__, opts=opts, typ=GetSupportedDatabaseFlagsResult)
+    return __ret__.apply(lambda __response__: GetSupportedDatabaseFlagsResult(
+        id=pulumi.get(__response__, 'id'),
+        location=pulumi.get(__response__, 'location'),
+        project=pulumi.get(__response__, 'project'),
+        supported_database_flags=pulumi.get(__response__, 'supported_database_flags')))

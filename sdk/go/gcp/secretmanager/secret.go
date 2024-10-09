@@ -87,7 +87,7 @@ import (
 //					"key5": pulumi.String("someval5"),
 //				},
 //				Replication: &secretmanager.SecretReplicationArgs{
-//					Auto: nil,
+//					Auto: &secretmanager.SecretReplicationAutoArgs{},
 //				},
 //			})
 //			if err != nil {
@@ -116,7 +116,7 @@ import (
 //				SecretId:          pulumi.String("secret"),
 //				VersionDestroyTtl: pulumi.String("2592000s"),
 //				Replication: &secretmanager.SecretReplicationArgs{
-//					Auto: nil,
+//					Auto: &secretmanager.SecretReplicationAutoArgs{},
 //				},
 //			})
 //			if err != nil {
@@ -145,7 +145,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

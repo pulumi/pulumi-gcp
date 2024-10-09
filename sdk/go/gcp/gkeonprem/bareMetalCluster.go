@@ -48,11 +48,11 @@ import (
 //				ControlPlane: &gkeonprem.BareMetalClusterControlPlaneArgs{
 //					ControlPlaneNodePoolConfig: &gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs{
 //						NodePoolConfig: &gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs{
-//							Labels:          nil,
+//							Labels:          pulumi.StringMap{},
 //							OperatingSystem: pulumi.String("LINUX"),
 //							NodeConfigs: gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArray{
 //								&gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs{
-//									Labels: nil,
+//									Labels: pulumi.StringMap{},
 //									NodeIp: pulumi.String("10.200.0.9"),
 //								},
 //							},
@@ -151,11 +151,11 @@ import (
 //				ControlPlane: &gkeonprem.BareMetalClusterControlPlaneArgs{
 //					ControlPlaneNodePoolConfig: &gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs{
 //						NodePoolConfig: &gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs{
-//							Labels:          nil,
+//							Labels:          pulumi.StringMap{},
 //							OperatingSystem: pulumi.String("LINUX"),
 //							NodeConfigs: gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArray{
 //								&gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs{
-//									Labels: nil,
+//									Labels: pulumi.StringMap{},
 //									NodeIp: pulumi.String("10.200.0.9"),
 //								},
 //							},
@@ -250,11 +250,11 @@ import (
 //				ControlPlane: &gkeonprem.BareMetalClusterControlPlaneArgs{
 //					ControlPlaneNodePoolConfig: &gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs{
 //						NodePoolConfig: &gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs{
-//							Labels:          nil,
+//							Labels:          pulumi.StringMap{},
 //							OperatingSystem: pulumi.String("LINUX"),
 //							NodeConfigs: gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArray{
 //								&gkeonprem.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs{
-//									Labels: nil,
+//									Labels: pulumi.StringMap{},
 //									NodeIp: pulumi.String("10.200.0.9"),
 //								},
 //							},
@@ -311,11 +311,11 @@ import (
 //						},
 //						LoadBalancerNodePoolConfig: &gkeonprem.BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs{
 //							NodePoolConfig: &gkeonprem.BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs{
-//								Labels:          nil,
+//								Labels:          pulumi.StringMap{},
 //								OperatingSystem: pulumi.String("LINUX"),
 //								NodeConfigs: gkeonprem.BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArray{
 //									&gkeonprem.BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs{
-//										Labels: nil,
+//										Labels: pulumi.StringMap{},
 //										NodeIp: pulumi.String("10.200.0.9"),
 //									},
 //								},

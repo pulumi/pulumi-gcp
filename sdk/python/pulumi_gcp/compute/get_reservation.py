@@ -190,9 +190,6 @@ def get_reservation(name: Optional[str] = None,
         specific_reservations=pulumi.get(__ret__, 'specific_reservations'),
         status=pulumi.get(__ret__, 'status'),
         zone=pulumi.get(__ret__, 'zone'))
-
-
-@_utilities.lift_output_func(get_reservation)
 def get_reservation_output(name: Optional[pulumi.Input[str]] = None,
                            project: Optional[pulumi.Input[Optional[str]]] = None,
                            zone: Optional[pulumi.Input[str]] = None,
@@ -214,4 +211,22 @@ def get_reservation_output(name: Optional[pulumi.Input[str]] = None,
     :param str project: Project from which to list the Compute Reservation. Defaults to project declared in the provider.
     :param str zone: Zone where the Compute Reservation resides.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['project'] = project
+    __args__['zone'] = zone
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:compute/getReservation:getReservation', __args__, opts=opts, typ=GetReservationResult)
+    return __ret__.apply(lambda __response__: GetReservationResult(
+        commitment=pulumi.get(__response__, 'commitment'),
+        creation_timestamp=pulumi.get(__response__, 'creation_timestamp'),
+        description=pulumi.get(__response__, 'description'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        project=pulumi.get(__response__, 'project'),
+        self_link=pulumi.get(__response__, 'self_link'),
+        share_settings=pulumi.get(__response__, 'share_settings'),
+        specific_reservation_required=pulumi.get(__response__, 'specific_reservation_required'),
+        specific_reservations=pulumi.get(__response__, 'specific_reservations'),
+        status=pulumi.get(__response__, 'status'),
+        zone=pulumi.get(__response__, 'zone')))

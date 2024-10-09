@@ -166,9 +166,6 @@ def get_service(location: Optional[str] = None,
         statuses=pulumi.get(__ret__, 'statuses'),
         templates=pulumi.get(__ret__, 'templates'),
         traffics=pulumi.get(__ret__, 'traffics'))
-
-
-@_utilities.lift_output_func(get_service)
 def get_service_output(location: Optional[pulumi.Input[str]] = None,
                        name: Optional[pulumi.Input[str]] = None,
                        project: Optional[pulumi.Input[Optional[str]]] = None,
@@ -196,4 +193,19 @@ def get_service_output(location: Optional[pulumi.Input[str]] = None,
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     """
-    ...
+    __args__ = dict()
+    __args__['location'] = location
+    __args__['name'] = name
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:cloudrun/getService:getService', __args__, opts=opts, typ=GetServiceResult)
+    return __ret__.apply(lambda __response__: GetServiceResult(
+        autogenerate_revision_name=pulumi.get(__response__, 'autogenerate_revision_name'),
+        id=pulumi.get(__response__, 'id'),
+        location=pulumi.get(__response__, 'location'),
+        metadatas=pulumi.get(__response__, 'metadatas'),
+        name=pulumi.get(__response__, 'name'),
+        project=pulumi.get(__response__, 'project'),
+        statuses=pulumi.get(__response__, 'statuses'),
+        templates=pulumi.get(__response__, 'templates'),
+        traffics=pulumi.get(__response__, 'traffics')))

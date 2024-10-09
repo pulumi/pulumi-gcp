@@ -170,9 +170,6 @@ def get_external_address(name: Optional[str] = None,
         state=pulumi.get(__ret__, 'state'),
         uid=pulumi.get(__ret__, 'uid'),
         update_time=pulumi.get(__ret__, 'update_time'))
-
-
-@_utilities.lift_output_func(get_external_address)
 def get_external_address_output(name: Optional[pulumi.Input[str]] = None,
                                 parent: Optional[pulumi.Input[str]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetExternalAddressResult]:
@@ -196,4 +193,19 @@ def get_external_address_output(name: Optional[pulumi.Input[str]] = None,
     :param str name: Name of the resource.
     :param str parent: The resource name of the private cloud that this cluster belongs.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['parent'] = parent
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:vmwareengine/getExternalAddress:getExternalAddress', __args__, opts=opts, typ=GetExternalAddressResult)
+    return __ret__.apply(lambda __response__: GetExternalAddressResult(
+        create_time=pulumi.get(__response__, 'create_time'),
+        description=pulumi.get(__response__, 'description'),
+        external_ip=pulumi.get(__response__, 'external_ip'),
+        id=pulumi.get(__response__, 'id'),
+        internal_ip=pulumi.get(__response__, 'internal_ip'),
+        name=pulumi.get(__response__, 'name'),
+        parent=pulumi.get(__response__, 'parent'),
+        state=pulumi.get(__response__, 'state'),
+        uid=pulumi.get(__response__, 'uid'),
+        update_time=pulumi.get(__response__, 'update_time')))

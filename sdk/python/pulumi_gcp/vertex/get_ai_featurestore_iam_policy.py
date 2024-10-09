@@ -129,9 +129,6 @@ def get_ai_featurestore_iam_policy(featurestore: Optional[str] = None,
         policy_data=pulumi.get(__ret__, 'policy_data'),
         project=pulumi.get(__ret__, 'project'),
         region=pulumi.get(__ret__, 'region'))
-
-
-@_utilities.lift_output_func(get_ai_featurestore_iam_policy)
 def get_ai_featurestore_iam_policy_output(featurestore: Optional[pulumi.Input[str]] = None,
                                           project: Optional[pulumi.Input[Optional[str]]] = None,
                                           region: Optional[pulumi.Input[Optional[str]]] = None,
@@ -146,4 +143,16 @@ def get_ai_featurestore_iam_policy_output(featurestore: Optional[pulumi.Input[st
            the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
            region is specified, it is taken from the provider configuration.
     """
-    ...
+    __args__ = dict()
+    __args__['featurestore'] = featurestore
+    __args__['project'] = project
+    __args__['region'] = region
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:vertex/getAiFeaturestoreIamPolicy:getAiFeaturestoreIamPolicy', __args__, opts=opts, typ=GetAiFeaturestoreIamPolicyResult)
+    return __ret__.apply(lambda __response__: GetAiFeaturestoreIamPolicyResult(
+        etag=pulumi.get(__response__, 'etag'),
+        featurestore=pulumi.get(__response__, 'featurestore'),
+        id=pulumi.get(__response__, 'id'),
+        policy_data=pulumi.get(__response__, 'policy_data'),
+        project=pulumi.get(__response__, 'project'),
+        region=pulumi.get(__response__, 'region')))

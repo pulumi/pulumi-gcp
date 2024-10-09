@@ -327,9 +327,6 @@ def get_database_instance(name: Optional[str] = None,
         server_ca_certs=pulumi.get(__ret__, 'server_ca_certs'),
         service_account_email_address=pulumi.get(__ret__, 'service_account_email_address'),
         settings=pulumi.get(__ret__, 'settings'))
-
-
-@_utilities.lift_output_func(get_database_instance)
 def get_database_instance_output(name: Optional[pulumi.Input[str]] = None,
                                  project: Optional[pulumi.Input[Optional[str]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabaseInstanceResult]:
@@ -349,4 +346,35 @@ def get_database_instance_output(name: Optional[pulumi.Input[str]] = None,
     :param str name: The name of the instance.
     :param str project: The ID of the project in which the resource belongs.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:sql/getDatabaseInstance:getDatabaseInstance', __args__, opts=opts, typ=GetDatabaseInstanceResult)
+    return __ret__.apply(lambda __response__: GetDatabaseInstanceResult(
+        available_maintenance_versions=pulumi.get(__response__, 'available_maintenance_versions'),
+        clones=pulumi.get(__response__, 'clones'),
+        connection_name=pulumi.get(__response__, 'connection_name'),
+        database_version=pulumi.get(__response__, 'database_version'),
+        deletion_protection=pulumi.get(__response__, 'deletion_protection'),
+        dns_name=pulumi.get(__response__, 'dns_name'),
+        encryption_key_name=pulumi.get(__response__, 'encryption_key_name'),
+        first_ip_address=pulumi.get(__response__, 'first_ip_address'),
+        id=pulumi.get(__response__, 'id'),
+        instance_type=pulumi.get(__response__, 'instance_type'),
+        ip_addresses=pulumi.get(__response__, 'ip_addresses'),
+        maintenance_version=pulumi.get(__response__, 'maintenance_version'),
+        master_instance_name=pulumi.get(__response__, 'master_instance_name'),
+        name=pulumi.get(__response__, 'name'),
+        private_ip_address=pulumi.get(__response__, 'private_ip_address'),
+        project=pulumi.get(__response__, 'project'),
+        psc_service_attachment_link=pulumi.get(__response__, 'psc_service_attachment_link'),
+        public_ip_address=pulumi.get(__response__, 'public_ip_address'),
+        region=pulumi.get(__response__, 'region'),
+        replica_configurations=pulumi.get(__response__, 'replica_configurations'),
+        restore_backup_contexts=pulumi.get(__response__, 'restore_backup_contexts'),
+        root_password=pulumi.get(__response__, 'root_password'),
+        self_link=pulumi.get(__response__, 'self_link'),
+        server_ca_certs=pulumi.get(__response__, 'server_ca_certs'),
+        service_account_email_address=pulumi.get(__response__, 'service_account_email_address'),
+        settings=pulumi.get(__response__, 'settings')))

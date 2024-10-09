@@ -102,9 +102,6 @@ def get_tiers(project: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         project=pulumi.get(__ret__, 'project'),
         tiers=pulumi.get(__ret__, 'tiers'))
-
-
-@_utilities.lift_output_func(get_tiers)
 def get_tiers_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTiersResult]:
     """
@@ -127,4 +124,11 @@ def get_tiers_output(project: Optional[pulumi.Input[Optional[str]]] = None,
 
     :param str project: The Project ID for which to list tiers. If `project` is not provided, the project defined within the default provider configuration is used.
     """
-    ...
+    __args__ = dict()
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:sql/getTiers:getTiers', __args__, opts=opts, typ=GetTiersResult)
+    return __ret__.apply(lambda __response__: GetTiersResult(
+        id=pulumi.get(__response__, 'id'),
+        project=pulumi.get(__response__, 'project'),
+        tiers=pulumi.get(__response__, 'tiers')))

@@ -120,9 +120,6 @@ def get_organization_service_account(organization_id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         organization_id=pulumi.get(__ret__, 'organization_id'))
-
-
-@_utilities.lift_output_func(get_organization_service_account)
 def get_organization_service_account_output(organization_id: Optional[pulumi.Input[str]] = None,
                                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOrganizationServiceAccountResult]:
     """
@@ -150,4 +147,12 @@ def get_organization_service_account_output(organization_id: Optional[pulumi.Inp
 
     :param str organization_id: The organization ID the service account was created for.
     """
-    ...
+    __args__ = dict()
+    __args__['organizationId'] = organization_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:accessapproval/getOrganizationServiceAccount:getOrganizationServiceAccount', __args__, opts=opts, typ=GetOrganizationServiceAccountResult)
+    return __ret__.apply(lambda __response__: GetOrganizationServiceAccountResult(
+        account_email=pulumi.get(__response__, 'account_email'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        organization_id=pulumi.get(__response__, 'organization_id')))

@@ -172,9 +172,6 @@ def get_kms_crypto_key_version(crypto_key: Optional[str] = None,
         public_keys=pulumi.get(__ret__, 'public_keys'),
         state=pulumi.get(__ret__, 'state'),
         version=pulumi.get(__ret__, 'version'))
-
-
-@_utilities.lift_output_func(get_kms_crypto_key_version)
 def get_kms_crypto_key_version_output(crypto_key: Optional[pulumi.Input[str]] = None,
                                       version: Optional[pulumi.Input[Optional[int]]] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKMSCryptoKeyVersionResult]:
@@ -204,4 +201,17 @@ def get_kms_crypto_key_version_output(crypto_key: Optional[pulumi.Input[str]] = 
            `kms.CryptoKey` resource/datasource.
     :param int version: The version number for this CryptoKeyVersion. Defaults to `1`.
     """
-    ...
+    __args__ = dict()
+    __args__['cryptoKey'] = crypto_key
+    __args__['version'] = version
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:kms/getKMSCryptoKeyVersion:getKMSCryptoKeyVersion', __args__, opts=opts, typ=GetKMSCryptoKeyVersionResult)
+    return __ret__.apply(lambda __response__: GetKMSCryptoKeyVersionResult(
+        algorithm=pulumi.get(__response__, 'algorithm'),
+        crypto_key=pulumi.get(__response__, 'crypto_key'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        protection_level=pulumi.get(__response__, 'protection_level'),
+        public_keys=pulumi.get(__response__, 'public_keys'),
+        state=pulumi.get(__response__, 'state'),
+        version=pulumi.get(__response__, 'version')))

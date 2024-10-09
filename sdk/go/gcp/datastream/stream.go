@@ -43,7 +43,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -312,7 +312,7 @@ import (
 //				DisplayName:         pulumi.String("BigQuery Destination"),
 //				Location:            pulumi.String("us-central1"),
 //				ConnectionProfileId: pulumi.String("destination-profile"),
-//				BigqueryProfile:     nil,
+//				BigqueryProfile:     &datastream.ConnectionProfileBigqueryProfileArgs{},
 //			})
 //			if err != nil {
 //				return err
@@ -436,7 +436,7 @@ import (
 //				DisplayName:         pulumi.String("BigQuery Destination"),
 //				Location:            pulumi.String("us-central1"),
 //				ConnectionProfileId: pulumi.String("destination-profile"),
-//				BigqueryProfile:     nil,
+//				BigqueryProfile:     &datastream.ConnectionProfileBigqueryProfileArgs{},
 //			})
 //			if err != nil {
 //				return err
@@ -485,7 +485,7 @@ import (
 //								},
 //							},
 //						},
-//						DropLargeObjects: nil,
+//						DropLargeObjects: &datastream.StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs{},
 //					},
 //				},
 //				DestinationConfig: &datastream.StreamDestinationConfigArgs{
@@ -610,7 +610,7 @@ import (
 //				DisplayName:         pulumi.String("BigQuery Destination"),
 //				Location:            pulumi.String("us-central1"),
 //				ConnectionProfileId: pulumi.String("destination-profile"),
-//				BigqueryProfile:     nil,
+//				BigqueryProfile:     &datastream.ConnectionProfileBigqueryProfileArgs{},
 //			})
 //			if err != nil {
 //				return err
@@ -634,7 +634,7 @@ import (
 //								},
 //							},
 //						},
-//						TransactionLogs: nil,
+//						TransactionLogs: &datastream.StreamSourceConfigSqlServerSourceConfigTransactionLogsArgs{},
 //					},
 //				},
 //				DestinationConfig: &datastream.StreamDestinationConfigArgs{
@@ -648,7 +648,7 @@ import (
 //						},
 //					},
 //				},
-//				BackfillNone: nil,
+//				BackfillNone: &datastream.StreamBackfillNoneArgs{},
 //			})
 //			if err != nil {
 //				return err
@@ -741,7 +741,7 @@ import (
 //				DisplayName:         pulumi.String("BigQuery Destination"),
 //				Location:            pulumi.String("us-central1"),
 //				ConnectionProfileId: pulumi.String("destination-profile"),
-//				BigqueryProfile:     nil,
+//				BigqueryProfile:     &datastream.ConnectionProfileBigqueryProfileArgs{},
 //			})
 //			if err != nil {
 //				return err
@@ -765,7 +765,7 @@ import (
 //								},
 //							},
 //						},
-//						ChangeTables: nil,
+//						ChangeTables: &datastream.StreamSourceConfigSqlServerSourceConfigChangeTablesArgs{},
 //					},
 //				},
 //				DestinationConfig: &datastream.StreamDestinationConfigArgs{
@@ -779,7 +779,7 @@ import (
 //						},
 //					},
 //				},
-//				BackfillNone: nil,
+//				BackfillNone: &datastream.StreamBackfillNoneArgs{},
 //			})
 //			if err != nil {
 //				return err
@@ -819,7 +819,7 @@ import (
 //				DisplayName:         pulumi.String("Connection profile"),
 //				Location:            pulumi.String("us-central1"),
 //				ConnectionProfileId: pulumi.String("dest-profile"),
-//				BigqueryProfile:     nil,
+//				BigqueryProfile:     &datastream.ConnectionProfileBigqueryProfileArgs{},
 //			})
 //			if err != nil {
 //				return err
@@ -894,7 +894,7 @@ import (
 //				StreamId:    pulumi.String("postgres-bigquery"),
 //				SourceConfig: &datastream.StreamSourceConfigArgs{
 //					SourceConnectionProfile: sourceConnectionProfile.ID(),
-//					MysqlSourceConfig:       nil,
+//					MysqlSourceConfig:       &datastream.StreamSourceConfigMysqlSourceConfigArgs{},
 //				},
 //				DestinationConfig: &datastream.StreamDestinationConfigArgs{
 //					DestinationConnectionProfile: destinationConnectionProfile2.ID(),
@@ -905,7 +905,7 @@ import (
 //						},
 //					},
 //				},
-//				BackfillAll: nil,
+//				BackfillAll: &datastream.StreamBackfillAllArgs{},
 //			})
 //			if err != nil {
 //				return err
@@ -943,7 +943,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := organizations.LookupProject(ctx, nil, nil)
+//			_, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -1018,7 +1018,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			bqSa, err := bigquery.GetDefaultServiceAccount(ctx, nil, nil)
+//			bqSa, err := bigquery.GetDefaultServiceAccount(ctx, &bigquery.GetDefaultServiceAccountArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -1034,7 +1034,7 @@ import (
 //				DisplayName:         pulumi.String("Connection profile"),
 //				Location:            pulumi.String("us-central1"),
 //				ConnectionProfileId: pulumi.String("destination-profile"),
-//				BigqueryProfile:     nil,
+//				BigqueryProfile:     &datastream.ConnectionProfileBigqueryProfileArgs{},
 //			})
 //			if err != nil {
 //				return err
@@ -1045,7 +1045,7 @@ import (
 //				DisplayName: pulumi.String("my stream"),
 //				SourceConfig: &datastream.StreamSourceConfigArgs{
 //					SourceConnectionProfile: sourceConnectionProfile.ID(),
-//					MysqlSourceConfig:       nil,
+//					MysqlSourceConfig:       &datastream.StreamSourceConfigMysqlSourceConfigArgs{},
 //				},
 //				DestinationConfig: &datastream.StreamDestinationConfigArgs{
 //					DestinationConnectionProfile: destinationConnectionProfile.ID(),
@@ -1058,7 +1058,7 @@ import (
 //						},
 //					},
 //				},
-//				BackfillNone: nil,
+//				BackfillNone: &datastream.StreamBackfillNoneArgs{},
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				bigqueryKeyUser,
 //			}))
@@ -1087,7 +1087,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := organizations.LookupProject(ctx, nil, nil)
+//			_, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -1166,7 +1166,7 @@ import (
 //				DisplayName:         pulumi.String("Connection profile"),
 //				Location:            pulumi.String("us-central1"),
 //				ConnectionProfileId: pulumi.String("destination-profile"),
-//				BigqueryProfile:     nil,
+//				BigqueryProfile:     &datastream.ConnectionProfileBigqueryProfileArgs{},
 //			})
 //			if err != nil {
 //				return err
@@ -1177,7 +1177,7 @@ import (
 //				DisplayName: pulumi.String("my stream"),
 //				SourceConfig: &datastream.StreamSourceConfigArgs{
 //					SourceConnectionProfile: sourceConnectionProfile.ID(),
-//					MysqlSourceConfig:       nil,
+//					MysqlSourceConfig:       &datastream.StreamSourceConfigMysqlSourceConfigArgs{},
 //				},
 //				DestinationConfig: &datastream.StreamDestinationConfigArgs{
 //					DestinationConnectionProfile: destinationConnectionProfile.ID(),
@@ -1187,10 +1187,10 @@ import (
 //								Location: pulumi.String("us-central1"),
 //							},
 //						},
-//						AppendOnly: nil,
+//						AppendOnly: &datastream.StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgs{},
 //					},
 //				},
-//				BackfillNone: nil,
+//				BackfillNone: &datastream.StreamBackfillNoneArgs{},
 //			})
 //			if err != nil {
 //				return err
