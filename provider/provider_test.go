@@ -86,6 +86,7 @@ func testUpgrade(t *testing.T, dir string, opts ...optproviderupgrade.PreviewPro
 		return auto.PreviewResult{}
 	}
 
+	// Provider factory allows the tests to run against an in-process provider.
 	rpFactory := providers.ResourceProviderFactory(providerFactory)
 	pt := pulumitest.NewPulumiTest(t, dir,
 		opttest.AttachProvider(providerName, rpFactory))
