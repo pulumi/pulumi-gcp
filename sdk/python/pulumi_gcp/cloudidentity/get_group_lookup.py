@@ -104,9 +104,6 @@ def get_group_lookup(group_key: Optional[Union['GetGroupLookupGroupKeyArgs', 'Ge
         group_key=pulumi.get(__ret__, 'group_key'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'))
-
-
-@_utilities.lift_output_func(get_group_lookup)
 def get_group_lookup_output(group_key: Optional[pulumi.Input[Union['GetGroupLookupGroupKeyArgs', 'GetGroupLookupGroupKeyArgsDict']]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupLookupResult]:
     """
@@ -130,4 +127,11 @@ def get_group_lookup_output(group_key: Optional[pulumi.Input[Union['GetGroupLook
            An entity can represent either a group with an optional namespace or a user without a namespace.
            The combination of id and namespace must be unique; however, the same id can be used with different namespaces. Structure is documented below.
     """
-    ...
+    __args__ = dict()
+    __args__['groupKey'] = group_key
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:cloudidentity/getGroupLookup:getGroupLookup', __args__, opts=opts, typ=GetGroupLookupResult)
+    return __ret__.apply(lambda __response__: GetGroupLookupResult(
+        group_key=pulumi.get(__response__, 'group_key'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name')))

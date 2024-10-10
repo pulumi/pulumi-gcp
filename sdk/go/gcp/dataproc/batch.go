@@ -94,11 +94,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = storage.GetProjectServiceAccount(ctx, nil, nil)
+//			_, err = storage.GetProjectServiceAccount(ctx, &storage.GetProjectServiceAccountArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

@@ -84,7 +84,7 @@ import (
 //				CreateAdvancedSiteSearch: pulumi.Bool(false),
 //				DocumentProcessingConfig: &discoveryengine.DataStoreDocumentProcessingConfigArgs{
 //					DefaultParsingConfig: &discoveryengine.DataStoreDocumentProcessingConfigDefaultParsingConfigArgs{
-//						DigitalParsingConfig: nil,
+//						DigitalParsingConfig: &discoveryengine.DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigArgs{},
 //					},
 //					ParsingConfigOverrides: discoveryengine.DataStoreDocumentProcessingConfigParsingConfigOverrideArray{
 //						&discoveryengine.DataStoreDocumentProcessingConfigParsingConfigOverrideArgs{
