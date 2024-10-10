@@ -149,12 +149,10 @@ func TestComputeForwardingRuleV6V8StateMigration(t *testing.T) {
 }
 
 func TestComputeForwardingRuleV6V8StateMigrationNoDefaults(t *testing.T) {
-	t.Parallel()
-	if testing.Short() {
-		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without credentials")
-	}
-
-	testUpgrade(t, "./test-programs/compute-forwardingrule-no-defaults", optproviderupgrade.NewSourcePath("./test-programs/compute-forwardingrule-no-defaults/v8"))
+	testUpgrade(t,
+		"./test-programs/compute-forwardingrule-no-defaults",
+		optproviderupgrade.NewSourcePath("./test-programs/compute-forwardingrule-no-defaults/v8"),
+	)
 }
 
 // Regression test for https://github.com/pulumi/pulumi-gcp/issues/1874
