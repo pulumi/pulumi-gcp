@@ -10,10 +10,17 @@ resources:
       permissions:
         - resourcemanager.projects.get
 
+  random-account-id:
+    type: random:RandomString
+    properties:
+      length: 10
+      special: false
+      upper: false
+      number: false
   serviceAccount:
     type: gcp:serviceaccount:Account
     properties:
-      accountId: service-id-iam-member
+      accountId: ${random-account-id.result}
 
   serviceAccountIAMMember:
     type: gcp:serviceaccount:IAMMember
