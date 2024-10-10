@@ -2,11 +2,17 @@ name: cluster
 runtime: yaml
 description: A minimal Google Cloud Pulumi YAML program
 resources:
+  random-account-id:
+    type: random:RandomString
+    properties:
+      length: 10
+      special: false
+      upper: false
+      number: false
   serviceAccount:
     type: gcp:serviceaccount:Account
     properties:
-      accountId: service-id-cluster-1
-      displayName: Service Account
+      accountId: ${random-account-id.result}
   primary:
     type: gcp:container:Cluster
     properties:
