@@ -12,8 +12,8 @@ resources:
       portRange: 80
       backendService: ${backend.id}
       serviceDirectoryRegistrations:
-        - namespace: ${sdnamespace.namespaceId}
-          service: ${sdservice.serviceId}
+        namespace: ${sdnamespace.namespaceId}
+        service: ${sdservice.serviceId}
   backend:
     type: gcp:compute:RegionBackendService
     properties:

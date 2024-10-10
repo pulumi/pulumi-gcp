@@ -2,14 +2,14 @@
   "version": 3,
   "deployment": {
     "manifest": {
-      "time": "2024-10-02T11:12:00.283018-07:00",
+      "time": "2024-10-09T17:20:04.828055-07:00",
       "magic": "02b3a134bb70d23935c3c31b7124749636668925e1a74bb685b46037e077887d",
       "version": "v3.134.1"
     },
     "secrets_providers": {
       "type": "passphrase",
       "state": {
-        "salt": "v1:5wrUKJN+OzU=:v1:WKQrtRd52qbat029:73VkYgmyc8/5HvtpVs1iJIM9H4M6og=="
+        "salt": "v1:lcbe9vIb+4I=:v1:IMHRKASXTBWXAJhz:ABWkRwO47RxYIef6Zlewp6KL9xYccA=="
       }
     },
     "resources": [
@@ -17,13 +17,13 @@
         "urn": "urn:pulumi:test::test::pulumi:pulumi:Stack::test-test",
         "custom": false,
         "type": "pulumi:pulumi:Stack",
-        "created": "2024-10-02T18:11:35.129388Z",
-        "modified": "2024-10-02T18:11:35.129388Z"
+        "created": "2024-10-10T00:19:30.538357Z",
+        "modified": "2024-10-10T00:19:30.538357Z"
       },
       {
         "urn": "urn:pulumi:test::test::pulumi:providers:gcp::default",
         "custom": true,
-        "id": "90353d8b-2a7a-48b7-86e5-a55a03e55c10",
+        "id": "5d1e3295-d351-4335-a173-250e95cf2142",
         "type": "pulumi:providers:gcp",
         "inputs": {
           "project": "pulumi-development"
@@ -31,8 +31,77 @@
         "outputs": {
           "project": "pulumi-development"
         },
-        "created": "2024-10-02T18:11:36.234152Z",
-        "modified": "2024-10-02T18:11:36.234152Z"
+        "created": "2024-10-10T00:19:31.558259Z",
+        "modified": "2024-10-10T00:19:31.558259Z"
+      },
+      {
+        "urn": "urn:pulumi:test::test::gcp:servicedirectory/namespace:Namespace::sdnamespace",
+        "custom": true,
+        "id": "projects/pulumi-development/locations/us-central1/namespaces/example-namespace",
+        "type": "gcp:servicedirectory/namespace:Namespace",
+        "inputs": {
+          "__defaults": [],
+          "location": "us-central1",
+          "namespaceId": "example-namespace"
+        },
+        "outputs": {
+          "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":1200000000000,\"delete\":1200000000000,\"update\":1200000000000}}",
+          "id": "projects/pulumi-development/locations/us-central1/namespaces/example-namespace",
+          "labels": {},
+          "location": "us-central1",
+          "name": "projects/pulumi-development/locations/us-central1/namespaces/example-namespace",
+          "namespaceId": "example-namespace",
+          "project": "pulumi-development"
+        },
+        "parent": "urn:pulumi:test::test::pulumi:pulumi:Stack::test-test",
+        "provider": "urn:pulumi:test::test::pulumi:providers:gcp::default::5d1e3295-d351-4335-a173-250e95cf2142",
+        "propertyDependencies": {
+          "location": [],
+          "namespaceId": []
+        },
+        "created": "2024-10-10T00:19:32.189632Z",
+        "modified": "2024-10-10T00:19:32.189632Z"
+      },
+      {
+        "urn": "urn:pulumi:test::test::gcp:servicedirectory/service:Service::example",
+        "custom": true,
+        "id": "projects/pulumi-development/locations/us-central1/namespaces/example-namespace/services/example-service",
+        "type": "gcp:servicedirectory/service:Service",
+        "inputs": {
+          "__defaults": [],
+          "metadata": {
+            "__defaults": [],
+            "region": "us-central1",
+            "stage": "prod"
+          },
+          "namespace": "projects/pulumi-development/locations/us-central1/namespaces/example-namespace",
+          "serviceId": "example-service"
+        },
+        "outputs": {
+          "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":1200000000000,\"delete\":1200000000000,\"update\":1200000000000}}",
+          "id": "projects/pulumi-development/locations/us-central1/namespaces/example-namespace/services/example-service",
+          "metadata": {
+            "region": "us-central1",
+            "stage": "prod"
+          },
+          "name": "projects/pulumi-development/locations/us-central1/namespaces/example-namespace/services/example-service",
+          "namespace": "projects/pulumi-development/locations/us-central1/namespaces/example-namespace",
+          "serviceId": "example-service"
+        },
+        "parent": "urn:pulumi:test::test::pulumi:pulumi:Stack::test-test",
+        "dependencies": [
+          "urn:pulumi:test::test::gcp:servicedirectory/namespace:Namespace::sdnamespace"
+        ],
+        "provider": "urn:pulumi:test::test::pulumi:providers:gcp::default::5d1e3295-d351-4335-a173-250e95cf2142",
+        "propertyDependencies": {
+          "metadata": [],
+          "namespace": [
+            "urn:pulumi:test::test::gcp:servicedirectory/namespace:Namespace::sdnamespace"
+          ],
+          "serviceId": []
+        },
+        "created": "2024-10-10T00:19:32.500735Z",
+        "modified": "2024-10-10T00:19:32.500735Z"
       },
       {
         "urn": "urn:pulumi:test::test::gcp:compute/regionHealthCheck:RegionHealthCheck::hc",
@@ -61,7 +130,7 @@
         "outputs": {
           "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":1200000000000,\"delete\":1200000000000,\"update\":1200000000000}}",
           "checkIntervalSec": 1,
-          "creationTimestamp": "2024-10-02T11:11:36.759-07:00",
+          "creationTimestamp": "2024-10-09T17:19:32.118-07:00",
           "description": "",
           "grpcHealthCheck": null,
           "healthyThreshold": 2,
@@ -90,7 +159,7 @@
           "unhealthyThreshold": 2
         },
         "parent": "urn:pulumi:test::test::pulumi:pulumi:Stack::test-test",
-        "provider": "urn:pulumi:test::test::pulumi:providers:gcp::default::90353d8b-2a7a-48b7-86e5-a55a03e55c10",
+        "provider": "urn:pulumi:test::test::pulumi:providers:gcp::default::5d1e3295-d351-4335-a173-250e95cf2142",
         "propertyDependencies": {
           "checkIntervalSec": [],
           "name": [],
@@ -98,8 +167,8 @@
           "tcpHealthCheck": [],
           "timeoutSec": []
         },
-        "created": "2024-10-02T18:11:38.01824Z",
-        "modified": "2024-10-02T18:11:38.01824Z"
+        "created": "2024-10-10T00:19:42.684873Z",
+        "modified": "2024-10-10T00:19:42.684873Z"
       },
       {
         "urn": "urn:pulumi:test::test::gcp:compute/regionBackendService:RegionBackendService::backend",
@@ -125,11 +194,11 @@
           "connectionDrainingTimeoutSec": 0,
           "connectionTrackingPolicy": null,
           "consistentHash": null,
-          "creationTimestamp": "2024-10-02T11:11:38.452-07:00",
+          "creationTimestamp": "2024-10-09T17:19:43.131-07:00",
           "description": "",
           "enableCdn": false,
           "failoverPolicy": null,
-          "fingerprint": "bGJGZKzICaI=",
+          "fingerprint": "td3izKtVWfw=",
           "healthChecks": "https://www.googleapis.com/compute/v1/projects/pulumi-development/regions/us-central1/healthChecks/check-website-backend",
           "iap": null,
           "id": "projects/pulumi-development/regions/us-central1/backendServices/website-backend",
@@ -153,7 +222,7 @@
         "dependencies": [
           "urn:pulumi:test::test::gcp:compute/regionHealthCheck:RegionHealthCheck::hc"
         ],
-        "provider": "urn:pulumi:test::test::pulumi:providers:gcp::default::90353d8b-2a7a-48b7-86e5-a55a03e55c10",
+        "provider": "urn:pulumi:test::test::pulumi:providers:gcp::default::5d1e3295-d351-4335-a173-250e95cf2142",
         "propertyDependencies": {
           "healthChecks": [
             "urn:pulumi:test::test::gcp:compute/regionHealthCheck:RegionHealthCheck::hc"
@@ -162,8 +231,8 @@
           "name": [],
           "region": []
         },
-        "created": "2024-10-02T18:11:49.283889Z",
-        "modified": "2024-10-02T18:11:49.283889Z"
+        "created": "2024-10-10T00:19:53.855072Z",
+        "modified": "2024-10-10T00:19:53.855072Z"
       },
       {
         "urn": "urn:pulumi:test::test::gcp:compute/forwardingRule:ForwardingRule::default",
@@ -178,7 +247,14 @@
           "loadBalancingScheme": "EXTERNAL",
           "name": "website-forwarding-rule",
           "portRange": "80",
-          "region": "us-central1"
+          "region": "us-central1",
+          "serviceDirectoryRegistrations": [
+            {
+              "__defaults": [],
+              "namespace": "example-namespace",
+              "service": "example-service"
+            }
+          ]
         },
         "outputs": {
           "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":1200000000000,\"delete\":1200000000000,\"update\":1200000000000}}",
@@ -187,10 +263,10 @@
           "allowPscGlobalAccess": false,
           "backendService": "https://www.googleapis.com/compute/v1/projects/pulumi-development/regions/us-central1/backendServices/website-backend",
           "baseForwardingRule": "",
-          "creationTimestamp": "2024-10-02T11:11:49.594-07:00",
+          "creationTimestamp": "2024-10-09T17:19:54.295-07:00",
           "description": "",
           "id": "projects/pulumi-development/regions/us-central1/forwardingRules/website-forwarding-rule",
-          "ipAddress": "34.29.157.136",
+          "ipAddress": "104.154.245.210",
           "ipProtocol": "TCP",
           "ipVersion": "",
           "isMirroringCollector": false,
@@ -207,7 +283,12 @@
           "pscConnectionStatus": "",
           "region": "us-central1",
           "selfLink": "https://www.googleapis.com/compute/v1/projects/pulumi-development/regions/us-central1/forwardingRules/website-forwarding-rule",
-          "serviceDirectoryRegistrations": [],
+          "serviceDirectoryRegistrations": [
+            {
+              "namespace": "example-namespace",
+              "service": "example-service"
+            }
+          ],
           "serviceLabel": "",
           "serviceName": "",
           "sourceIpRanges": [],
@@ -216,19 +297,25 @@
         },
         "parent": "urn:pulumi:test::test::pulumi:pulumi:Stack::test-test",
         "dependencies": [
-          "urn:pulumi:test::test::gcp:compute/regionBackendService:RegionBackendService::backend"
+          "urn:pulumi:test::test::gcp:compute/regionBackendService:RegionBackendService::backend",
+          "urn:pulumi:test::test::gcp:servicedirectory/namespace:Namespace::sdnamespace",
+          "urn:pulumi:test::test::gcp:servicedirectory/service:Service::example"
         ],
-        "provider": "urn:pulumi:test::test::pulumi:providers:gcp::default::90353d8b-2a7a-48b7-86e5-a55a03e55c10",
+        "provider": "urn:pulumi:test::test::pulumi:providers:gcp::default::5d1e3295-d351-4335-a173-250e95cf2142",
         "propertyDependencies": {
           "backendService": [
             "urn:pulumi:test::test::gcp:compute/regionBackendService:RegionBackendService::backend"
           ],
           "name": [],
           "portRange": [],
-          "region": []
+          "region": [],
+          "serviceDirectoryRegistrations": [
+            "urn:pulumi:test::test::gcp:servicedirectory/namespace:Namespace::sdnamespace",
+            "urn:pulumi:test::test::gcp:servicedirectory/service:Service::example"
+          ]
         },
-        "created": "2024-10-02T18:12:00.27718Z",
-        "modified": "2024-10-02T18:12:00.27718Z"
+        "created": "2024-10-10T00:20:04.821841Z",
+        "modified": "2024-10-10T00:20:04.821841Z"
       }
     ]
   }
