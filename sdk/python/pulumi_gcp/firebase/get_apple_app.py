@@ -180,9 +180,6 @@ def get_apple_app(app_id: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
         team_id=pulumi.get(__ret__, 'team_id'))
-
-
-@_utilities.lift_output_func(get_apple_app)
 def get_apple_app_output(app_id: Optional[pulumi.Input[str]] = None,
                          project: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAppleAppResult]:
@@ -196,4 +193,19 @@ def get_apple_app_output(app_id: Optional[pulumi.Input[str]] = None,
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the provider project is used.
     """
-    ...
+    __args__ = dict()
+    __args__['appId'] = app_id
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:firebase/getAppleApp:getAppleApp', __args__, opts=opts, typ=GetAppleAppResult)
+    return __ret__.apply(lambda __response__: GetAppleAppResult(
+        api_key_id=pulumi.get(__response__, 'api_key_id'),
+        app_id=pulumi.get(__response__, 'app_id'),
+        app_store_id=pulumi.get(__response__, 'app_store_id'),
+        bundle_id=pulumi.get(__response__, 'bundle_id'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
+        display_name=pulumi.get(__response__, 'display_name'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        project=pulumi.get(__response__, 'project'),
+        team_id=pulumi.get(__response__, 'team_id')))

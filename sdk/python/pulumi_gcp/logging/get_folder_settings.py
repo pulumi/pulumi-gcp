@@ -174,9 +174,6 @@ def get_folder_settings(folder: Optional[str] = None,
         logging_service_account_id=pulumi.get(__ret__, 'logging_service_account_id'),
         name=pulumi.get(__ret__, 'name'),
         storage_location=pulumi.get(__ret__, 'storage_location'))
-
-
-@_utilities.lift_output_func(get_folder_settings)
 def get_folder_settings_output(folder: Optional[pulumi.Input[str]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFolderSettingsResult]:
     """
@@ -201,4 +198,16 @@ def get_folder_settings_output(folder: Optional[pulumi.Input[str]] = None,
 
     :param str folder: The ID of the folder for which to retrieve settings.
     """
-    ...
+    __args__ = dict()
+    __args__['folder'] = folder
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:logging/getFolderSettings:getFolderSettings', __args__, opts=opts, typ=GetFolderSettingsResult)
+    return __ret__.apply(lambda __response__: GetFolderSettingsResult(
+        disable_default_sink=pulumi.get(__response__, 'disable_default_sink'),
+        folder=pulumi.get(__response__, 'folder'),
+        id=pulumi.get(__response__, 'id'),
+        kms_key_name=pulumi.get(__response__, 'kms_key_name'),
+        kms_service_account_id=pulumi.get(__response__, 'kms_service_account_id'),
+        logging_service_account_id=pulumi.get(__response__, 'logging_service_account_id'),
+        name=pulumi.get(__response__, 'name'),
+        storage_location=pulumi.get(__response__, 'storage_location')))

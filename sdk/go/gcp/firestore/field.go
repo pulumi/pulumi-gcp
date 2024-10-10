@@ -111,8 +111,8 @@ import (
 //				Database:    database.Name,
 //				Collection:  pulumi.String("chatrooms"),
 //				Field:       pulumi.String("timestamp"),
-//				TtlConfig:   nil,
-//				IndexConfig: nil,
+//				TtlConfig:   &firestore.FieldTtlConfigArgs{},
+//				IndexConfig: &firestore.FieldIndexConfigArgs{},
 //			})
 //			if err != nil {
 //				return err
