@@ -447,9 +447,6 @@ def get_instance(name: Optional[str] = None,
         server_ca_certs=pulumi.get(__ret__, 'server_ca_certs'),
         tier=pulumi.get(__ret__, 'tier'),
         transit_encryption_mode=pulumi.get(__ret__, 'transit_encryption_mode'))
-
-
-@_utilities.lift_output_func(get_instance)
 def get_instance_output(name: Optional[pulumi.Input[str]] = None,
                         project: Optional[pulumi.Input[Optional[str]]] = None,
                         region: Optional[pulumi.Input[Optional[str]]] = None,
@@ -478,4 +475,47 @@ def get_instance_output(name: Optional[pulumi.Input[str]] = None,
     :param str region: The region in which the resource belongs. If it
            is not provided, the provider region is used.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['project'] = project
+    __args__['region'] = region
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:redis/getInstance:getInstance', __args__, opts=opts, typ=GetInstanceResult)
+    return __ret__.apply(lambda __response__: GetInstanceResult(
+        alternative_location_id=pulumi.get(__response__, 'alternative_location_id'),
+        auth_enabled=pulumi.get(__response__, 'auth_enabled'),
+        auth_string=pulumi.get(__response__, 'auth_string'),
+        authorized_network=pulumi.get(__response__, 'authorized_network'),
+        connect_mode=pulumi.get(__response__, 'connect_mode'),
+        create_time=pulumi.get(__response__, 'create_time'),
+        current_location_id=pulumi.get(__response__, 'current_location_id'),
+        customer_managed_key=pulumi.get(__response__, 'customer_managed_key'),
+        display_name=pulumi.get(__response__, 'display_name'),
+        effective_labels=pulumi.get(__response__, 'effective_labels'),
+        host=pulumi.get(__response__, 'host'),
+        id=pulumi.get(__response__, 'id'),
+        labels=pulumi.get(__response__, 'labels'),
+        location_id=pulumi.get(__response__, 'location_id'),
+        maintenance_policies=pulumi.get(__response__, 'maintenance_policies'),
+        maintenance_schedules=pulumi.get(__response__, 'maintenance_schedules'),
+        maintenance_version=pulumi.get(__response__, 'maintenance_version'),
+        memory_size_gb=pulumi.get(__response__, 'memory_size_gb'),
+        name=pulumi.get(__response__, 'name'),
+        nodes=pulumi.get(__response__, 'nodes'),
+        persistence_configs=pulumi.get(__response__, 'persistence_configs'),
+        persistence_iam_identity=pulumi.get(__response__, 'persistence_iam_identity'),
+        port=pulumi.get(__response__, 'port'),
+        project=pulumi.get(__response__, 'project'),
+        pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
+        read_endpoint=pulumi.get(__response__, 'read_endpoint'),
+        read_endpoint_port=pulumi.get(__response__, 'read_endpoint_port'),
+        read_replicas_mode=pulumi.get(__response__, 'read_replicas_mode'),
+        redis_configs=pulumi.get(__response__, 'redis_configs'),
+        redis_version=pulumi.get(__response__, 'redis_version'),
+        region=pulumi.get(__response__, 'region'),
+        replica_count=pulumi.get(__response__, 'replica_count'),
+        reserved_ip_range=pulumi.get(__response__, 'reserved_ip_range'),
+        secondary_ip_range=pulumi.get(__response__, 'secondary_ip_range'),
+        server_ca_certs=pulumi.get(__response__, 'server_ca_certs'),
+        tier=pulumi.get(__response__, 'tier'),
+        transit_encryption_mode=pulumi.get(__response__, 'transit_encryption_mode')))

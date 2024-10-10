@@ -144,9 +144,6 @@ def get_account_jwt(delegates: Optional[Sequence[str]] = None,
         jwt=pulumi.get(__ret__, 'jwt'),
         payload=pulumi.get(__ret__, 'payload'),
         target_service_account=pulumi.get(__ret__, 'target_service_account'))
-
-
-@_utilities.lift_output_func(get_account_jwt)
 def get_account_jwt_output(delegates: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                            expires_in: Optional[pulumi.Input[Optional[int]]] = None,
                            payload: Optional[pulumi.Input[str]] = None,
@@ -179,4 +176,17 @@ def get_account_jwt_output(delegates: Optional[pulumi.Input[Optional[Sequence[st
     :param str payload: The JSON-encoded JWT claims set to include in the self-signed JWT.
     :param str target_service_account: The email of the service account that will sign the JWT.
     """
-    ...
+    __args__ = dict()
+    __args__['delegates'] = delegates
+    __args__['expiresIn'] = expires_in
+    __args__['payload'] = payload
+    __args__['targetServiceAccount'] = target_service_account
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:serviceaccount/getAccountJwt:getAccountJwt', __args__, opts=opts, typ=GetAccountJwtResult)
+    return __ret__.apply(lambda __response__: GetAccountJwtResult(
+        delegates=pulumi.get(__response__, 'delegates'),
+        expires_in=pulumi.get(__response__, 'expires_in'),
+        id=pulumi.get(__response__, 'id'),
+        jwt=pulumi.get(__response__, 'jwt'),
+        payload=pulumi.get(__response__, 'payload'),
+        target_service_account=pulumi.get(__response__, 'target_service_account')))

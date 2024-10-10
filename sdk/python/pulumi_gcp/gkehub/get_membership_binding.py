@@ -208,9 +208,6 @@ def get_membership_binding(location: Optional[str] = None,
         states=pulumi.get(__ret__, 'states'),
         uid=pulumi.get(__ret__, 'uid'),
         update_time=pulumi.get(__ret__, 'update_time'))
-
-
-@_utilities.lift_output_func(get_membership_binding)
 def get_membership_binding_output(location: Optional[pulumi.Input[str]] = None,
                                   membership_binding_id: Optional[pulumi.Input[str]] = None,
                                   membership_id: Optional[pulumi.Input[str]] = None,
@@ -219,4 +216,26 @@ def get_membership_binding_output(location: Optional[pulumi.Input[str]] = None,
     """
     Use this data source to access information about an existing resource.
     """
-    ...
+    __args__ = dict()
+    __args__['location'] = location
+    __args__['membershipBindingId'] = membership_binding_id
+    __args__['membershipId'] = membership_id
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:gkehub/getMembershipBinding:getMembershipBinding', __args__, opts=opts, typ=GetMembershipBindingResult)
+    return __ret__.apply(lambda __response__: GetMembershipBindingResult(
+        create_time=pulumi.get(__response__, 'create_time'),
+        delete_time=pulumi.get(__response__, 'delete_time'),
+        effective_labels=pulumi.get(__response__, 'effective_labels'),
+        id=pulumi.get(__response__, 'id'),
+        labels=pulumi.get(__response__, 'labels'),
+        location=pulumi.get(__response__, 'location'),
+        membership_binding_id=pulumi.get(__response__, 'membership_binding_id'),
+        membership_id=pulumi.get(__response__, 'membership_id'),
+        name=pulumi.get(__response__, 'name'),
+        project=pulumi.get(__response__, 'project'),
+        pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
+        scope=pulumi.get(__response__, 'scope'),
+        states=pulumi.get(__response__, 'states'),
+        uid=pulumi.get(__response__, 'uid'),
+        update_time=pulumi.get(__response__, 'update_time')))
