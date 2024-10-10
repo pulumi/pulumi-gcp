@@ -1103,15 +1103,15 @@ class Trigger(pulumi.CustomResource):
                     "newFeature",
                 ],
                 "substitutions": {
-                    "__foo": "bar",
-                    "__baz": "qux",
+                    "_FOO": "bar",
+                    "_BAZ": "qux",
                 },
                 "queue_ttl": "20s",
                 "logs_bucket": "gs://mybucket/logs",
                 "secrets": [{
                     "kms_key_name": "projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name",
                     "secret_env": {
-                        "password": "ZW5jcnlwdGVkLXBhc3N3b3JkCg==",
+                        "PASSWORD": "ZW5jcnlwdGVkLXBhc3N3b3JkCg==",
                     },
                 }],
                 "available_secrets": {
@@ -1472,15 +1472,15 @@ class Trigger(pulumi.CustomResource):
                     "newFeature",
                 ],
                 "substitutions": {
-                    "__foo": "bar",
-                    "__baz": "qux",
+                    "_FOO": "bar",
+                    "_BAZ": "qux",
                 },
                 "queue_ttl": "20s",
                 "logs_bucket": "gs://mybucket/logs",
                 "secrets": [{
                     "kms_key_name": "projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name",
                     "secret_env": {
-                        "password": "ZW5jcnlwdGVkLXBhc3N3b3JkCg==",
+                        "PASSWORD": "ZW5jcnlwdGVkLXBhc3N3b3JkCg==",
                     },
                 }],
                 "available_secrets": {
@@ -1551,15 +1551,15 @@ class Trigger(pulumi.CustomResource):
                     "newFeature",
                 ],
                 "substitutions": {
-                    "__foo": "bar",
-                    "__baz": "qux",
+                    "_FOO": "bar",
+                    "_BAZ": "qux",
                 },
                 "queue_ttl": "20s",
                 "logs_bucket": "gs://mybucket/logs",
                 "secrets": [{
                     "kms_key_name": "projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name",
                     "secret_env": {
-                        "password": "ZW5jcnlwdGVkLXBhc3N3b3JkCg==",
+                        "PASSWORD": "ZW5jcnlwdGVkLXBhc3N3b3JkCg==",
                     },
                 }],
                 "available_secrets": {
@@ -1817,15 +1817,15 @@ class Trigger(pulumi.CustomResource):
                     "newFeature",
                 ],
                 "substitutions": {
-                    "__foo": "bar",
-                    "__baz": "qux",
+                    "_FOO": "bar",
+                    "_BAZ": "qux",
                 },
                 "queue_ttl": "20s",
                 "logs_bucket": "gs://mybucket/logs",
                 "secrets": [{
                     "kms_key_name": "projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name",
                     "secret_env": {
-                        "password": "ZW5jcnlwdGVkLXBhc3N3b3JkCg==",
+                        "PASSWORD": "ZW5jcnlwdGVkLXBhc3N3b3JkCg==",
                     },
                 }],
                 "available_secrets": {
@@ -2186,15 +2186,15 @@ class Trigger(pulumi.CustomResource):
                     "newFeature",
                 ],
                 "substitutions": {
-                    "__foo": "bar",
-                    "__baz": "qux",
+                    "_FOO": "bar",
+                    "_BAZ": "qux",
                 },
                 "queue_ttl": "20s",
                 "logs_bucket": "gs://mybucket/logs",
                 "secrets": [{
                     "kms_key_name": "projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name",
                     "secret_env": {
-                        "password": "ZW5jcnlwdGVkLXBhc3N3b3JkCg==",
+                        "PASSWORD": "ZW5jcnlwdGVkLXBhc3N3b3JkCg==",
                     },
                 }],
                 "available_secrets": {
@@ -2265,15 +2265,15 @@ class Trigger(pulumi.CustomResource):
                     "newFeature",
                 ],
                 "substitutions": {
-                    "__foo": "bar",
-                    "__baz": "qux",
+                    "_FOO": "bar",
+                    "_BAZ": "qux",
                 },
                 "queue_ttl": "20s",
                 "logs_bucket": "gs://mybucket/logs",
                 "secrets": [{
                     "kms_key_name": "projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name",
                     "secret_env": {
-                        "password": "ZW5jcnlwdGVkLXBhc3N3b3JkCg==",
+                        "PASSWORD": "ZW5jcnlwdGVkLXBhc3N3b3JkCg==",
                     },
                 }],
                 "available_secrets": {

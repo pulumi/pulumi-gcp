@@ -105,9 +105,6 @@ def get_group_memberships(group: Optional[str] = None,
         group=pulumi.get(__ret__, 'group'),
         id=pulumi.get(__ret__, 'id'),
         memberships=pulumi.get(__ret__, 'memberships'))
-
-
-@_utilities.lift_output_func(get_group_memberships)
 def get_group_memberships_output(group: Optional[pulumi.Input[str]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupMembershipsResult]:
     """
@@ -133,4 +130,11 @@ def get_group_memberships_output(group: Optional[pulumi.Input[str]] = None,
 
     :param str group: The parent Group resource under which to lookup the Membership names. Must be of the form groups/{group_id}.
     """
-    ...
+    __args__ = dict()
+    __args__['group'] = group
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:cloudidentity/getGroupMemberships:getGroupMemberships', __args__, opts=opts, typ=GetGroupMembershipsResult)
+    return __ret__.apply(lambda __response__: GetGroupMembershipsResult(
+        group=pulumi.get(__response__, 'group'),
+        id=pulumi.get(__response__, 'id'),
+        memberships=pulumi.get(__response__, 'memberships')))

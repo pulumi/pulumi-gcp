@@ -731,7 +731,7 @@ class Routine(pulumi.CustomResource):
                 "name": "value",
                 "argument_kind": "FIXED_TYPE",
                 "data_type": json.dumps({
-                    "type_kind": "INT64",
+                    "typeKind": "INT64",
                 }),
             }],
             return_table_type=json.dumps({
@@ -834,8 +834,8 @@ class Routine(pulumi.CustomResource):
                 "main_class": "com.google.test.jar.MainClass",
                 "jar_uris": ["gs://test-bucket/uberjar_spark_spark3.jar"],
                 "properties": {
-                    "spark_dataproc_scaling_version": "2",
-                    "spark_reducer_fetch_migrated_shuffle_enabled": "true",
+                    "spark.dataproc.scaling.version": "2",
+                    "spark.reducer.fetchMigratedShuffle.enabled": "true",
                 },
             })
         ```
@@ -1026,7 +1026,7 @@ class Routine(pulumi.CustomResource):
                 "name": "value",
                 "argument_kind": "FIXED_TYPE",
                 "data_type": json.dumps({
-                    "type_kind": "INT64",
+                    "typeKind": "INT64",
                 }),
             }],
             return_table_type=json.dumps({
@@ -1129,8 +1129,8 @@ class Routine(pulumi.CustomResource):
                 "main_class": "com.google.test.jar.MainClass",
                 "jar_uris": ["gs://test-bucket/uberjar_spark_spark3.jar"],
                 "properties": {
-                    "spark_dataproc_scaling_version": "2",
-                    "spark_reducer_fetch_migrated_shuffle_enabled": "true",
+                    "spark.dataproc.scaling.version": "2",
+                    "spark.reducer.fetchMigratedShuffle.enabled": "true",
                 },
             })
         ```

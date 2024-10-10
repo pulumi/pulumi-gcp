@@ -75,7 +75,7 @@ import (
 //						Text: pulumi.String("0 12 * * *"),
 //					},
 //				},
-//				FullBackupSpec: nil,
+//				FullBackupSpec: &spanner.BackupScheduleFullBackupSpecArgs{},
 //			})
 //			if err != nil {
 //				return err
@@ -131,7 +131,7 @@ import (
 //						Text: pulumi.String("0 12 * * *"),
 //					},
 //				},
-//				IncrementalBackupSpec: nil,
+//				IncrementalBackupSpec: &spanner.BackupScheduleIncrementalBackupSpecArgs{},
 //			})
 //			if err != nil {
 //				return err

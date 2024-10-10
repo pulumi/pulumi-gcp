@@ -112,9 +112,6 @@ def get_dataset_iam_policy(dataset_id: Optional[str] = None,
         etag=pulumi.get(__ret__, 'etag'),
         id=pulumi.get(__ret__, 'id'),
         policy_data=pulumi.get(__ret__, 'policy_data'))
-
-
-@_utilities.lift_output_func(get_dataset_iam_policy)
 def get_dataset_iam_policy_output(dataset_id: Optional[pulumi.Input[str]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatasetIamPolicyResult]:
     """
@@ -135,4 +132,12 @@ def get_dataset_iam_policy_output(dataset_id: Optional[pulumi.Input[str]] = None
            `{location_name}/{dataset_name}`. In the second form, the provider's
            project setting will be used as a fallback.
     """
-    ...
+    __args__ = dict()
+    __args__['datasetId'] = dataset_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:healthcare/getDatasetIamPolicy:getDatasetIamPolicy', __args__, opts=opts, typ=GetDatasetIamPolicyResult)
+    return __ret__.apply(lambda __response__: GetDatasetIamPolicyResult(
+        dataset_id=pulumi.get(__response__, 'dataset_id'),
+        etag=pulumi.get(__response__, 'etag'),
+        id=pulumi.get(__response__, 'id'),
+        policy_data=pulumi.get(__response__, 'policy_data')))

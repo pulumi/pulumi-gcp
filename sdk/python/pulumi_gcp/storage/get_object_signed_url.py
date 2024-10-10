@@ -216,9 +216,6 @@ def get_object_signed_url(bucket: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         path=pulumi.get(__ret__, 'path'),
         signed_url=pulumi.get(__ret__, 'signed_url'))
-
-
-@_utilities.lift_output_func(get_object_signed_url)
 def get_object_signed_url_output(bucket: Optional[pulumi.Input[str]] = None,
                                  content_md5: Optional[pulumi.Input[Optional[str]]] = None,
                                  content_type: Optional[pulumi.Input[Optional[str]]] = None,
@@ -279,4 +276,25 @@ def get_object_signed_url_output(bucket: Optional[pulumi.Input[str]] = None,
     :param str http_method: What HTTP Method will the signed URL allow (defaults to `GET`)
     :param str path: The full path to the object inside the bucket
     """
-    ...
+    __args__ = dict()
+    __args__['bucket'] = bucket
+    __args__['contentMd5'] = content_md5
+    __args__['contentType'] = content_type
+    __args__['credentials'] = credentials
+    __args__['duration'] = duration
+    __args__['extensionHeaders'] = extension_headers
+    __args__['httpMethod'] = http_method
+    __args__['path'] = path
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:storage/getObjectSignedUrl:getObjectSignedUrl', __args__, opts=opts, typ=GetObjectSignedUrlResult)
+    return __ret__.apply(lambda __response__: GetObjectSignedUrlResult(
+        bucket=pulumi.get(__response__, 'bucket'),
+        content_md5=pulumi.get(__response__, 'content_md5'),
+        content_type=pulumi.get(__response__, 'content_type'),
+        credentials=pulumi.get(__response__, 'credentials'),
+        duration=pulumi.get(__response__, 'duration'),
+        extension_headers=pulumi.get(__response__, 'extension_headers'),
+        http_method=pulumi.get(__response__, 'http_method'),
+        id=pulumi.get(__response__, 'id'),
+        path=pulumi.get(__response__, 'path'),
+        signed_url=pulumi.get(__response__, 'signed_url')))

@@ -112,9 +112,6 @@ def get_static_ips(location: Optional[str] = None,
         location=pulumi.get(__ret__, 'location'),
         project=pulumi.get(__ret__, 'project'),
         static_ips=pulumi.get(__ret__, 'static_ips'))
-
-
-@_utilities.lift_output_func(get_static_ips)
 def get_static_ips_output(location: Optional[pulumi.Input[str]] = None,
                           project: Optional[pulumi.Input[Optional[str]]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetStaticIpsResult]:
@@ -137,4 +134,13 @@ def get_static_ips_output(location: Optional[pulumi.Input[str]] = None,
     :param str location: The location to list Datastream IPs for. For example: `us-east1`.
     :param str project: Project from which to list static IP addresses. Defaults to project declared in the provider.
     """
-    ...
+    __args__ = dict()
+    __args__['location'] = location
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:datastream/getStaticIps:getStaticIps', __args__, opts=opts, typ=GetStaticIpsResult)
+    return __ret__.apply(lambda __response__: GetStaticIpsResult(
+        id=pulumi.get(__response__, 'id'),
+        location=pulumi.get(__response__, 'location'),
+        project=pulumi.get(__response__, 'project'),
+        static_ips=pulumi.get(__response__, 'static_ips')))

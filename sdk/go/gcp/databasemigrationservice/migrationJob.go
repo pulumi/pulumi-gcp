@@ -39,7 +39,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := organizations.LookupProject(ctx, nil, nil)
+//			_, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -185,7 +185,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := organizations.LookupProject(ctx, nil, nil)
+//			_, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -282,7 +282,7 @@ import (
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
-//				StaticIpConnectivity: nil,
+//				StaticIpConnectivity: &databasemigrationservice.MigrationJobStaticIpConnectivityArgs{},
 //				Source:               sourceCp.Name,
 //				Destination:          destinationCp.Name,
 //				Type:                 pulumi.String("CONTINUOUS"),
@@ -314,7 +314,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := organizations.LookupProject(ctx, nil, nil)
+//			_, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -451,7 +451,7 @@ import (
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
-//				StaticIpConnectivity: nil,
+//				StaticIpConnectivity: &databasemigrationservice.MigrationJobStaticIpConnectivityArgs{},
 //				Source:               sourceCp.Name,
 //				Destination:          destinationCp.Name,
 //				Type:                 pulumi.String("CONTINUOUS"),

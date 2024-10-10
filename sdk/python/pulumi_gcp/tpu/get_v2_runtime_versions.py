@@ -124,9 +124,6 @@ def get_v2_runtime_versions(project: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'),
         versions=pulumi.get(__ret__, 'versions'),
         zone=pulumi.get(__ret__, 'zone'))
-
-
-@_utilities.lift_output_func(get_v2_runtime_versions)
 def get_v2_runtime_versions_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                                    zone: Optional[pulumi.Input[Optional[str]]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetV2RuntimeVersionsResult]:
@@ -161,4 +158,13 @@ def get_v2_runtime_versions_output(project: Optional[pulumi.Input[Optional[str]]
     :param str zone: The zone to list versions for. If it
            is not provided, the provider zone is used.
     """
-    ...
+    __args__ = dict()
+    __args__['project'] = project
+    __args__['zone'] = zone
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:tpu/getV2RuntimeVersions:getV2RuntimeVersions', __args__, opts=opts, typ=GetV2RuntimeVersionsResult)
+    return __ret__.apply(lambda __response__: GetV2RuntimeVersionsResult(
+        id=pulumi.get(__response__, 'id'),
+        project=pulumi.get(__response__, 'project'),
+        versions=pulumi.get(__response__, 'versions'),
+        zone=pulumi.get(__response__, 'zone')))

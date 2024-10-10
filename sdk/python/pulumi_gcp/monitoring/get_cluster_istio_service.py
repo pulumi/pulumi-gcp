@@ -223,9 +223,6 @@ def get_cluster_istio_service(cluster_name: Optional[str] = None,
         service_namespace=pulumi.get(__ret__, 'service_namespace'),
         telemetries=pulumi.get(__ret__, 'telemetries'),
         user_labels=pulumi.get(__ret__, 'user_labels'))
-
-
-@_utilities.lift_output_func(get_cluster_istio_service)
 def get_cluster_istio_service_output(cluster_name: Optional[pulumi.Input[str]] = None,
                                      location: Optional[pulumi.Input[str]] = None,
                                      project: Optional[pulumi.Input[Optional[str]]] = None,
@@ -278,4 +275,23 @@ def get_cluster_istio_service_output(cluster_name: Optional[pulumi.Input[str]] =
     :param str service_namespace: The namespace of the Istio service underlying this service.
            Corresponds to the destination_service_namespace metric label in Istio metrics.
     """
-    ...
+    __args__ = dict()
+    __args__['clusterName'] = cluster_name
+    __args__['location'] = location
+    __args__['project'] = project
+    __args__['serviceName'] = service_name
+    __args__['serviceNamespace'] = service_namespace
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:monitoring/getClusterIstioService:getClusterIstioService', __args__, opts=opts, typ=GetClusterIstioServiceResult)
+    return __ret__.apply(lambda __response__: GetClusterIstioServiceResult(
+        cluster_name=pulumi.get(__response__, 'cluster_name'),
+        display_name=pulumi.get(__response__, 'display_name'),
+        id=pulumi.get(__response__, 'id'),
+        location=pulumi.get(__response__, 'location'),
+        name=pulumi.get(__response__, 'name'),
+        project=pulumi.get(__response__, 'project'),
+        service_id=pulumi.get(__response__, 'service_id'),
+        service_name=pulumi.get(__response__, 'service_name'),
+        service_namespace=pulumi.get(__response__, 'service_namespace'),
+        telemetries=pulumi.get(__response__, 'telemetries'),
+        user_labels=pulumi.get(__response__, 'user_labels')))

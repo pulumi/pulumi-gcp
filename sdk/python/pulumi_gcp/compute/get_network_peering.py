@@ -194,9 +194,6 @@ def get_network_peering(name: Optional[str] = None,
         stack_type=pulumi.get(__ret__, 'stack_type'),
         state=pulumi.get(__ret__, 'state'),
         state_details=pulumi.get(__ret__, 'state_details'))
-
-
-@_utilities.lift_output_func(get_network_peering)
 def get_network_peering_output(name: Optional[pulumi.Input[str]] = None,
                                network: Optional[pulumi.Input[str]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworkPeeringResult]:
@@ -234,4 +231,20 @@ def get_network_peering_output(name: Optional[pulumi.Input[str]] = None,
     :param str name: Name of the peering.
     :param str network: The primary network of the peering.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['network'] = network
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:compute/getNetworkPeering:getNetworkPeering', __args__, opts=opts, typ=GetNetworkPeeringResult)
+    return __ret__.apply(lambda __response__: GetNetworkPeeringResult(
+        export_custom_routes=pulumi.get(__response__, 'export_custom_routes'),
+        export_subnet_routes_with_public_ip=pulumi.get(__response__, 'export_subnet_routes_with_public_ip'),
+        id=pulumi.get(__response__, 'id'),
+        import_custom_routes=pulumi.get(__response__, 'import_custom_routes'),
+        import_subnet_routes_with_public_ip=pulumi.get(__response__, 'import_subnet_routes_with_public_ip'),
+        name=pulumi.get(__response__, 'name'),
+        network=pulumi.get(__response__, 'network'),
+        peer_network=pulumi.get(__response__, 'peer_network'),
+        stack_type=pulumi.get(__response__, 'stack_type'),
+        state=pulumi.get(__response__, 'state'),
+        state_details=pulumi.get(__response__, 'state_details')))

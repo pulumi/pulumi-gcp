@@ -628,7 +628,7 @@ class Task(pulumi.CustomResource):
             execution_spec={
                 "service_account": f"{project.number}-compute@developer.gserviceaccount.com",
                 "args": {
-                    "tas_k__args": "--output_location,gs://spark-job/task-result, --output_format, json",
+                    "TASK_ARGS": "--output_location,gs://spark-job/task-result, --output_format, json",
                 },
             },
             spark={
@@ -684,7 +684,7 @@ class Task(pulumi.CustomResource):
             execution_spec={
                 "service_account": f"{project.number}-compute@developer.gserviceaccount.com",
                 "args": {
-                    "tas_k__args": "--output_location,gs://spark-job-jars-anrajitha/task-result, --output_format, json",
+                    "TASK_ARGS": "--output_location,gs://spark-job-jars-anrajitha/task-result, --output_format, json",
                 },
             },
             notebook={
@@ -838,7 +838,7 @@ class Task(pulumi.CustomResource):
             execution_spec={
                 "service_account": f"{project.number}-compute@developer.gserviceaccount.com",
                 "args": {
-                    "tas_k__args": "--output_location,gs://spark-job/task-result, --output_format, json",
+                    "TASK_ARGS": "--output_location,gs://spark-job/task-result, --output_format, json",
                 },
             },
             spark={
@@ -894,7 +894,7 @@ class Task(pulumi.CustomResource):
             execution_spec={
                 "service_account": f"{project.number}-compute@developer.gserviceaccount.com",
                 "args": {
-                    "tas_k__args": "--output_location,gs://spark-job-jars-anrajitha/task-result, --output_format, json",
+                    "TASK_ARGS": "--output_location,gs://spark-job-jars-anrajitha/task-result, --output_format, json",
                 },
             },
             notebook={

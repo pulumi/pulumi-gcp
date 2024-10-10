@@ -40,7 +40,7 @@ import (
 //				Location:      pulumi.String("US"),
 //				FriendlyName:  pulumi.String("👋"),
 //				Description:   pulumi.String("a riveting description"),
-//				CloudResource: nil,
+//				CloudResource: &bigquery.ConnectionCloudResourceArgs{},
 //			})
 //			if err != nil {
 //				return err
@@ -427,11 +427,11 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			bqSa, err := bigquery.GetDefaultServiceAccount(ctx, nil, nil)
+//			bqSa, err := bigquery.GetDefaultServiceAccount(ctx, &bigquery.GetDefaultServiceAccountArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

@@ -237,9 +237,6 @@ def get_connector(name: Optional[str] = None,
         self_link=pulumi.get(__ret__, 'self_link'),
         state=pulumi.get(__ret__, 'state'),
         subnets=pulumi.get(__ret__, 'subnets'))
-
-
-@_utilities.lift_output_func(get_connector)
 def get_connector_output(name: Optional[pulumi.Input[str]] = None,
                          project: Optional[pulumi.Input[Optional[str]]] = None,
                          region: Optional[pulumi.Input[Optional[str]]] = None,
@@ -278,4 +275,25 @@ def get_connector_output(name: Optional[pulumi.Input[str]] = None,
     :param str region: The region in which the resource belongs. If it
            is not provided, the provider region is used.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['project'] = project
+    __args__['region'] = region
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:vpcaccess/getConnector:getConnector', __args__, opts=opts, typ=GetConnectorResult)
+    return __ret__.apply(lambda __response__: GetConnectorResult(
+        connected_projects=pulumi.get(__response__, 'connected_projects'),
+        id=pulumi.get(__response__, 'id'),
+        ip_cidr_range=pulumi.get(__response__, 'ip_cidr_range'),
+        machine_type=pulumi.get(__response__, 'machine_type'),
+        max_instances=pulumi.get(__response__, 'max_instances'),
+        max_throughput=pulumi.get(__response__, 'max_throughput'),
+        min_instances=pulumi.get(__response__, 'min_instances'),
+        min_throughput=pulumi.get(__response__, 'min_throughput'),
+        name=pulumi.get(__response__, 'name'),
+        network=pulumi.get(__response__, 'network'),
+        project=pulumi.get(__response__, 'project'),
+        region=pulumi.get(__response__, 'region'),
+        self_link=pulumi.get(__response__, 'self_link'),
+        state=pulumi.get(__response__, 'state'),
+        subnets=pulumi.get(__response__, 'subnets')))

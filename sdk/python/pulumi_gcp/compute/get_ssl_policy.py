@@ -203,9 +203,6 @@ def get_ssl_policy(name: Optional[str] = None,
         profile=pulumi.get(__ret__, 'profile'),
         project=pulumi.get(__ret__, 'project'),
         self_link=pulumi.get(__ret__, 'self_link'))
-
-
-@_utilities.lift_output_func(get_ssl_policy)
 def get_ssl_policy_output(name: Optional[pulumi.Input[str]] = None,
                           project: Optional[pulumi.Input[Optional[str]]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSSLPolicyResult]:
@@ -229,4 +226,20 @@ def get_ssl_policy_output(name: Optional[pulumi.Input[str]] = None,
     :param str project: The ID of the project in which the resource belongs. If it
            is not provided, the provider project is used.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:compute/getSSLPolicy:getSSLPolicy', __args__, opts=opts, typ=GetSSLPolicyResult)
+    return __ret__.apply(lambda __response__: GetSSLPolicyResult(
+        creation_timestamp=pulumi.get(__response__, 'creation_timestamp'),
+        custom_features=pulumi.get(__response__, 'custom_features'),
+        description=pulumi.get(__response__, 'description'),
+        enabled_features=pulumi.get(__response__, 'enabled_features'),
+        fingerprint=pulumi.get(__response__, 'fingerprint'),
+        id=pulumi.get(__response__, 'id'),
+        min_tls_version=pulumi.get(__response__, 'min_tls_version'),
+        name=pulumi.get(__response__, 'name'),
+        profile=pulumi.get(__response__, 'profile'),
+        project=pulumi.get(__response__, 'project'),
+        self_link=pulumi.get(__response__, 'self_link')))

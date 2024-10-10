@@ -166,9 +166,6 @@ def get_backup_run(backup_id: Optional[int] = None,
         project=pulumi.get(__ret__, 'project'),
         start_time=pulumi.get(__ret__, 'start_time'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_backup_run)
 def get_backup_run_output(backup_id: Optional[pulumi.Input[Optional[int]]] = None,
                           instance: Optional[pulumi.Input[str]] = None,
                           most_recent: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -196,4 +193,19 @@ def get_backup_run_output(backup_id: Optional[pulumi.Input[Optional[int]]] = Non
     :param str project: The project to list instances for. If it
            is not provided, the provider project is used.
     """
-    ...
+    __args__ = dict()
+    __args__['backupId'] = backup_id
+    __args__['instance'] = instance
+    __args__['mostRecent'] = most_recent
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:sql/getBackupRun:getBackupRun', __args__, opts=opts, typ=GetBackupRunResult)
+    return __ret__.apply(lambda __response__: GetBackupRunResult(
+        backup_id=pulumi.get(__response__, 'backup_id'),
+        id=pulumi.get(__response__, 'id'),
+        instance=pulumi.get(__response__, 'instance'),
+        location=pulumi.get(__response__, 'location'),
+        most_recent=pulumi.get(__response__, 'most_recent'),
+        project=pulumi.get(__response__, 'project'),
+        start_time=pulumi.get(__response__, 'start_time'),
+        status=pulumi.get(__response__, 'status')))

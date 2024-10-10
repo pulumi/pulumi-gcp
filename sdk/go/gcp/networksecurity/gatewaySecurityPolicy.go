@@ -79,7 +79,7 @@ import (
 //							IsCa: pulumi.Bool(false),
 //						},
 //						KeyUsage: &certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageArgs{
-//							BaseKeyUsage: nil,
+//							BaseKeyUsage: &certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsageArgs{},
 //							ExtendedKeyUsage: &certificateauthority.CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsageArgs{
 //								ServerAuth: pulumi.Bool(true),
 //							},
@@ -128,7 +128,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

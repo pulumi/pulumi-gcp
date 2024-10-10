@@ -213,9 +213,6 @@ def get_subnet(name: Optional[str] = None,
         uid=pulumi.get(__ret__, 'uid'),
         update_time=pulumi.get(__ret__, 'update_time'),
         vlan_id=pulumi.get(__ret__, 'vlan_id'))
-
-
-@_utilities.lift_output_func(get_subnet)
 def get_subnet_output(name: Optional[pulumi.Input[str]] = None,
                       parent: Optional[pulumi.Input[str]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSubnetResult]:
@@ -241,4 +238,23 @@ def get_subnet_output(name: Optional[pulumi.Input[str]] = None,
            Management subnets have arbitary names including "vmotion", "vsan", "system-management" etc. More details about subnet names can be found on the cloud console.
     :param str parent: The resource name of the private cloud that this subnet belongs.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['parent'] = parent
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:vmwareengine/getSubnet:getSubnet', __args__, opts=opts, typ=GetSubnetResult)
+    return __ret__.apply(lambda __response__: GetSubnetResult(
+        create_time=pulumi.get(__response__, 'create_time'),
+        dhcp_address_ranges=pulumi.get(__response__, 'dhcp_address_ranges'),
+        gateway_id=pulumi.get(__response__, 'gateway_id'),
+        gateway_ip=pulumi.get(__response__, 'gateway_ip'),
+        id=pulumi.get(__response__, 'id'),
+        ip_cidr_range=pulumi.get(__response__, 'ip_cidr_range'),
+        name=pulumi.get(__response__, 'name'),
+        parent=pulumi.get(__response__, 'parent'),
+        standard_config=pulumi.get(__response__, 'standard_config'),
+        state=pulumi.get(__response__, 'state'),
+        type=pulumi.get(__response__, 'type'),
+        uid=pulumi.get(__response__, 'uid'),
+        update_time=pulumi.get(__response__, 'update_time'),
+        vlan_id=pulumi.get(__response__, 'vlan_id')))

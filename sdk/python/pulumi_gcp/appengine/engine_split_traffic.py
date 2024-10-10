@@ -237,8 +237,8 @@ class EngineSplitTraffic(pulumi.CustomResource):
                     liveappV1Version_id=liveapp_v1.version_id,
                     liveappV2Version_id=liveapp_v2.version_id
         ).apply(lambda resolved_outputs: {
-                    "": 0.75,
-                    "": 0.25,
+                    resolved_outputs['liveappV1Version_id']: 0.75,
+                    resolved_outputs['liveappV2Version_id']: 0.25,
                 })
         ,
             })
@@ -352,8 +352,8 @@ class EngineSplitTraffic(pulumi.CustomResource):
                     liveappV1Version_id=liveapp_v1.version_id,
                     liveappV2Version_id=liveapp_v2.version_id
         ).apply(lambda resolved_outputs: {
-                    "": 0.75,
-                    "": 0.25,
+                    resolved_outputs['liveappV1Version_id']: 0.75,
+                    resolved_outputs['liveappV2Version_id']: 0.25,
                 })
         ,
             })

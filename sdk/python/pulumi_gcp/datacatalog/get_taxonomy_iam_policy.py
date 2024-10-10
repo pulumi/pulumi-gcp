@@ -136,9 +136,6 @@ def get_taxonomy_iam_policy(project: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'),
         region=pulumi.get(__ret__, 'region'),
         taxonomy=pulumi.get(__ret__, 'taxonomy'))
-
-
-@_utilities.lift_output_func(get_taxonomy_iam_policy)
 def get_taxonomy_iam_policy_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                                    region: Optional[pulumi.Input[Optional[str]]] = None,
                                    taxonomy: Optional[pulumi.Input[str]] = None,
@@ -160,4 +157,16 @@ def get_taxonomy_iam_policy_output(project: Optional[pulumi.Input[Optional[str]]
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
     :param str taxonomy: Used to find the parent resource to bind the IAM policy to
     """
-    ...
+    __args__ = dict()
+    __args__['project'] = project
+    __args__['region'] = region
+    __args__['taxonomy'] = taxonomy
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:datacatalog/getTaxonomyIamPolicy:getTaxonomyIamPolicy', __args__, opts=opts, typ=GetTaxonomyIamPolicyResult)
+    return __ret__.apply(lambda __response__: GetTaxonomyIamPolicyResult(
+        etag=pulumi.get(__response__, 'etag'),
+        id=pulumi.get(__response__, 'id'),
+        policy_data=pulumi.get(__response__, 'policy_data'),
+        project=pulumi.get(__response__, 'project'),
+        region=pulumi.get(__response__, 'region'),
+        taxonomy=pulumi.get(__response__, 'taxonomy')))

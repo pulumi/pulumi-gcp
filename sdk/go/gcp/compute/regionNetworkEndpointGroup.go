@@ -262,7 +262,7 @@ import (
 //				Name:                pulumi.String("appengine-neg"),
 //				NetworkEndpointType: pulumi.String("SERVERLESS"),
 //				Region:              pulumi.String("us-central1"),
-//				AppEngine:           nil,
+//				AppEngine:           &compute.RegionNetworkEndpointGroupAppEngineArgs{},
 //			})
 //			if err != nil {
 //				return err

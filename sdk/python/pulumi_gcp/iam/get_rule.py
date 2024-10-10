@@ -121,9 +121,6 @@ def get_rule(name: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         stage=pulumi.get(__ret__, 'stage'),
         title=pulumi.get(__ret__, 'title'))
-
-
-@_utilities.lift_output_func(get_rule)
 def get_rule_output(name: Optional[pulumi.Input[str]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRuleResult]:
     """
@@ -140,4 +137,13 @@ def get_rule_output(name: Optional[pulumi.Input[str]] = None,
 
     :param str name: The name of the Role to lookup in the form `roles/{ROLE_NAME}`, `organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}` or `projects/{PROJECT_ID}/roles/{ROLE_NAME}`
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:iam/getRule:getRule', __args__, opts=opts, typ=GetRuleResult)
+    return __ret__.apply(lambda __response__: GetRuleResult(
+        id=pulumi.get(__response__, 'id'),
+        included_permissions=pulumi.get(__response__, 'included_permissions'),
+        name=pulumi.get(__response__, 'name'),
+        stage=pulumi.get(__response__, 'stage'),
+        title=pulumi.get(__response__, 'title')))

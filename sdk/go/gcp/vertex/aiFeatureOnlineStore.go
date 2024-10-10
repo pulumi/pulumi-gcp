@@ -72,7 +72,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -82,7 +82,7 @@ import (
 //					"foo": pulumi.String("bar"),
 //				},
 //				Region:    pulumi.String("us-central1"),
-//				Optimized: nil,
+//				Optimized: &vertex.AiFeatureOnlineStoreOptimizedArgs{},
 //				DedicatedServingEndpoint: &vertex.AiFeatureOnlineStoreDedicatedServingEndpointArgs{
 //					PrivateServiceConnectConfig: &vertex.AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs{
 //						EnablePrivateServiceConnect: pulumi.Bool(true),
@@ -136,7 +136,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = organizations.LookupProject(ctx, nil, nil)
+//			_, err = organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

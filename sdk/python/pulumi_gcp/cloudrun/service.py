@@ -387,7 +387,7 @@ class Service(pulumi.CustomResource):
                     "service_account_email": sa.email,
                 },
                 "attributes": {
-                    "x_goog_version": "v1",
+                    "x-goog-version": "v1",
                 },
             })
         ```
@@ -424,14 +424,14 @@ class Service(pulumi.CustomResource):
             location="us-central1",
             metadata={
                 "annotations": {
-                    "run_googleapis_com_launch_stage": "BETA",
+                    "run.googleapis.com/launch-stage": "BETA",
                 },
             },
             template={
                 "metadata": {
                     "annotations": {
-                        "autoscaling_knative_dev_max_scale": "1",
-                        "run_googleapis_com_cpu_throttling": "false",
+                        "autoscaling.knative.dev/maxScale": "1",
+                        "run.googleapis.com/cpu-throttling": "false",
                     },
                 },
                 "spec": {
@@ -441,12 +441,12 @@ class Service(pulumi.CustomResource):
                             "limits": {
                                 "cpu": "4",
                                 "memory": "16Gi",
-                                "nvidia_com_gpu": "1",
+                                "nvidia.com/gpu": "1",
                             },
                         },
                     }],
                     "node_selector": {
-                        "run_googleapis_com_accelerator": "nvidia-l4",
+                        "run.googleapis.com/accelerator": "nvidia-l4",
                     },
                 },
             })
@@ -476,9 +476,9 @@ class Service(pulumi.CustomResource):
                 },
                 "metadata": {
                     "annotations": {
-                        "autoscaling_knative_dev_max_scale": "1000",
-                        "run_googleapis_com_cloudsql_instances": instance.connection_name,
-                        "run_googleapis_com_client_name": "demo",
+                        "autoscaling.knative.dev/maxScale": "1000",
+                        "run.googleapis.com/cloudsql-instances": instance.connection_name,
+                        "run.googleapis.com/client-name": "demo",
                     },
                 },
             },
@@ -557,14 +557,14 @@ class Service(pulumi.CustomResource):
             location="us-central1",
             metadata={
                 "annotations": {
-                    "run_googleapis_com_launch_stage": "BETA",
+                    "run.googleapis.com/launch-stage": "BETA",
                 },
             },
             template={
                 "metadata": {
                     "annotations": {
-                        "run_googleapis_com_container_dependencies": json.dumps({
-                            "hello_1": ["hello-2"],
+                        "run.googleapis.com/container-dependencies": json.dumps({
+                            "hello-1": ["hello-2"],
                         }),
                     },
                 },
@@ -717,7 +717,7 @@ class Service(pulumi.CustomResource):
                     "service_account_email": sa.email,
                 },
                 "attributes": {
-                    "x_goog_version": "v1",
+                    "x-goog-version": "v1",
                 },
             })
         ```
@@ -754,14 +754,14 @@ class Service(pulumi.CustomResource):
             location="us-central1",
             metadata={
                 "annotations": {
-                    "run_googleapis_com_launch_stage": "BETA",
+                    "run.googleapis.com/launch-stage": "BETA",
                 },
             },
             template={
                 "metadata": {
                     "annotations": {
-                        "autoscaling_knative_dev_max_scale": "1",
-                        "run_googleapis_com_cpu_throttling": "false",
+                        "autoscaling.knative.dev/maxScale": "1",
+                        "run.googleapis.com/cpu-throttling": "false",
                     },
                 },
                 "spec": {
@@ -771,12 +771,12 @@ class Service(pulumi.CustomResource):
                             "limits": {
                                 "cpu": "4",
                                 "memory": "16Gi",
-                                "nvidia_com_gpu": "1",
+                                "nvidia.com/gpu": "1",
                             },
                         },
                     }],
                     "node_selector": {
-                        "run_googleapis_com_accelerator": "nvidia-l4",
+                        "run.googleapis.com/accelerator": "nvidia-l4",
                     },
                 },
             })
@@ -806,9 +806,9 @@ class Service(pulumi.CustomResource):
                 },
                 "metadata": {
                     "annotations": {
-                        "autoscaling_knative_dev_max_scale": "1000",
-                        "run_googleapis_com_cloudsql_instances": instance.connection_name,
-                        "run_googleapis_com_client_name": "demo",
+                        "autoscaling.knative.dev/maxScale": "1000",
+                        "run.googleapis.com/cloudsql-instances": instance.connection_name,
+                        "run.googleapis.com/client-name": "demo",
                     },
                 },
             },
@@ -887,14 +887,14 @@ class Service(pulumi.CustomResource):
             location="us-central1",
             metadata={
                 "annotations": {
-                    "run_googleapis_com_launch_stage": "BETA",
+                    "run.googleapis.com/launch-stage": "BETA",
                 },
             },
             template={
                 "metadata": {
                     "annotations": {
-                        "run_googleapis_com_container_dependencies": json.dumps({
-                            "hello_1": ["hello-2"],
+                        "run.googleapis.com/container-dependencies": json.dumps({
+                            "hello-1": ["hello-2"],
                         }),
                     },
                 },

@@ -602,7 +602,7 @@ class Job(pulumi.CustomResource):
                 "uri": "https://example.com/",
                 "body": std.base64encode(input="{\\"foo\\":\\"bar\\"}").result,
                 "headers": {
-                    "content__type": "application/json",
+                    "Content-Type": "application/json",
                 },
             })
         ```
@@ -628,7 +628,7 @@ class Job(pulumi.CustomResource):
                 "uri": "https://example.com/ping",
                 "body": std.base64encode(input="{\\"foo\\":\\"bar\\"}").result,
                 "headers": {
-                    "content__type": "application/json",
+                    "Content-Type": "application/json",
                 },
             })
         ```
@@ -829,7 +829,7 @@ class Job(pulumi.CustomResource):
                 "uri": "https://example.com/",
                 "body": std.base64encode(input="{\\"foo\\":\\"bar\\"}").result,
                 "headers": {
-                    "content__type": "application/json",
+                    "Content-Type": "application/json",
                 },
             })
         ```
@@ -855,7 +855,7 @@ class Job(pulumi.CustomResource):
                 "uri": "https://example.com/ping",
                 "body": std.base64encode(input="{\\"foo\\":\\"bar\\"}").result,
                 "headers": {
-                    "content__type": "application/json",
+                    "Content-Type": "application/json",
                 },
             })
         ```
