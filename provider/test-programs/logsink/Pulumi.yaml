@@ -2,11 +2,17 @@ name: logsink
 runtime: yaml
 description: A minimal Pulumi YAML program
 resources:
-  # Create a service account
+  random-account-id:
+    type: random:RandomString
+    properties:
+      length: 10
+      special: false
+      upper: false
+      number: false
   serviceAccount:
     type: gcp:serviceaccount:Account
     properties:
-      accountId: service-id-logsink
+      accountId: ${random-account-id.result}
 
   # Create a GCP storage bucket
   bucket:
