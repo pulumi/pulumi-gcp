@@ -149,9 +149,6 @@ def get_default_service_account(project: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
         unique_id=pulumi.get(__ret__, 'unique_id'))
-
-
-@_utilities.lift_output_func(get_default_service_account)
 def get_default_service_account_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDefaultServiceAccountResult]:
     """
@@ -170,4 +167,15 @@ def get_default_service_account_output(project: Optional[pulumi.Input[Optional[s
 
     :param str project: The project ID. If it is not provided, the provider project is used.
     """
-    ...
+    __args__ = dict()
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:appengine/getDefaultServiceAccount:getDefaultServiceAccount', __args__, opts=opts, typ=GetDefaultServiceAccountResult)
+    return __ret__.apply(lambda __response__: GetDefaultServiceAccountResult(
+        display_name=pulumi.get(__response__, 'display_name'),
+        email=pulumi.get(__response__, 'email'),
+        id=pulumi.get(__response__, 'id'),
+        member=pulumi.get(__response__, 'member'),
+        name=pulumi.get(__response__, 'name'),
+        project=pulumi.get(__response__, 'project'),
+        unique_id=pulumi.get(__response__, 'unique_id')))

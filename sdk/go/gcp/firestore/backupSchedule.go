@@ -58,7 +58,7 @@ import (
 //				Project:         pulumi.String("my-project-name"),
 //				Database:        database.Name,
 //				Retention:       pulumi.String("8467200s"),
-//				DailyRecurrence: nil,
+//				DailyRecurrence: &firestore.BackupScheduleDailyRecurrenceArgs{},
 //			})
 //			if err != nil {
 //				return err

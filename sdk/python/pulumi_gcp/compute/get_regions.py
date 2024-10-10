@@ -116,9 +116,6 @@ def get_regions(project: Optional[str] = None,
         names=pulumi.get(__ret__, 'names'),
         project=pulumi.get(__ret__, 'project'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_regions)
 def get_regions_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                        status: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionsResult]:
@@ -145,4 +142,13 @@ def get_regions_output(project: Optional[pulumi.Input[Optional[str]]] = None,
     :param str status: Allows to filter list of regions based on their current status. Status can be either `UP` or `DOWN`.
            Defaults to no filtering (all available regions - both `UP` and `DOWN`).
     """
-    ...
+    __args__ = dict()
+    __args__['project'] = project
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:compute/getRegions:getRegions', __args__, opts=opts, typ=GetRegionsResult)
+    return __ret__.apply(lambda __response__: GetRegionsResult(
+        id=pulumi.get(__response__, 'id'),
+        names=pulumi.get(__response__, 'names'),
+        project=pulumi.get(__response__, 'project'),
+        status=pulumi.get(__response__, 'status')))

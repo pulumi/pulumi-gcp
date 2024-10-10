@@ -150,9 +150,6 @@ def get_database(instance: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
         self_link=pulumi.get(__ret__, 'self_link'))
-
-
-@_utilities.lift_output_func(get_database)
 def get_database_output(instance: Optional[pulumi.Input[str]] = None,
                         name: Optional[pulumi.Input[str]] = None,
                         project: Optional[pulumi.Input[Optional[str]]] = None,
@@ -175,4 +172,18 @@ def get_database_output(instance: Optional[pulumi.Input[str]] = None,
     :param str name: The name of the database.
     :param str project: The ID of the project in which the instance belongs.
     """
-    ...
+    __args__ = dict()
+    __args__['instance'] = instance
+    __args__['name'] = name
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:sql/getDatabase:getDatabase', __args__, opts=opts, typ=GetDatabaseResult)
+    return __ret__.apply(lambda __response__: GetDatabaseResult(
+        charset=pulumi.get(__response__, 'charset'),
+        collation=pulumi.get(__response__, 'collation'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
+        id=pulumi.get(__response__, 'id'),
+        instance=pulumi.get(__response__, 'instance'),
+        name=pulumi.get(__response__, 'name'),
+        project=pulumi.get(__response__, 'project'),
+        self_link=pulumi.get(__response__, 'self_link')))

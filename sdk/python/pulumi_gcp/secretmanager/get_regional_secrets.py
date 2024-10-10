@@ -129,9 +129,6 @@ def get_regional_secrets(filter: Optional[str] = None,
         location=pulumi.get(__ret__, 'location'),
         project=pulumi.get(__ret__, 'project'),
         secrets=pulumi.get(__ret__, 'secrets'))
-
-
-@_utilities.lift_output_func(get_regional_secrets)
 def get_regional_secrets_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
                                 location: Optional[pulumi.Input[str]] = None,
                                 project: Optional[pulumi.Input[Optional[str]]] = None,
@@ -153,4 +150,15 @@ def get_regional_secrets_output(filter: Optional[pulumi.Input[Optional[str]]] = 
     :param str location: The location of the regional secret.
     :param str project: The ID of the project.
     """
-    ...
+    __args__ = dict()
+    __args__['filter'] = filter
+    __args__['location'] = location
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:secretmanager/getRegionalSecrets:getRegionalSecrets', __args__, opts=opts, typ=GetRegionalSecretsResult)
+    return __ret__.apply(lambda __response__: GetRegionalSecretsResult(
+        filter=pulumi.get(__response__, 'filter'),
+        id=pulumi.get(__response__, 'id'),
+        location=pulumi.get(__response__, 'location'),
+        project=pulumi.get(__response__, 'project'),
+        secrets=pulumi.get(__response__, 'secrets')))

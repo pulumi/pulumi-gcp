@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			all, err := composer.GetImageVersions(ctx, nil, nil)
+//			all, err := composer.GetImageVersions(ctx, &composer.GetImageVersionsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
