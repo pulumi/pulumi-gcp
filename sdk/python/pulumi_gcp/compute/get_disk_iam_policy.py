@@ -141,9 +141,6 @@ def get_disk_iam_policy(name: Optional[str] = None,
         policy_data=pulumi.get(__ret__, 'policy_data'),
         project=pulumi.get(__ret__, 'project'),
         zone=pulumi.get(__ret__, 'zone'))
-
-
-@_utilities.lift_output_func(get_disk_iam_policy)
 def get_disk_iam_policy_output(name: Optional[pulumi.Input[str]] = None,
                                project: Optional[pulumi.Input[Optional[str]]] = None,
                                zone: Optional[pulumi.Input[Optional[str]]] = None,
@@ -170,4 +167,16 @@ def get_disk_iam_policy_output(name: Optional[pulumi.Input[str]] = None,
            the value will be parsed from the identifier of the parent resource. If no zone is provided in the parent identifier and no
            zone is specified, it is taken from the provider configuration.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['project'] = project
+    __args__['zone'] = zone
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:compute/getDiskIamPolicy:getDiskIamPolicy', __args__, opts=opts, typ=GetDiskIamPolicyResult)
+    return __ret__.apply(lambda __response__: GetDiskIamPolicyResult(
+        etag=pulumi.get(__response__, 'etag'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        policy_data=pulumi.get(__response__, 'policy_data'),
+        project=pulumi.get(__response__, 'project'),
+        zone=pulumi.get(__response__, 'zone')))

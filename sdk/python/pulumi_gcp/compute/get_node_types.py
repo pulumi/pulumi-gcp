@@ -117,9 +117,6 @@ def get_node_types(project: Optional[str] = None,
         names=pulumi.get(__ret__, 'names'),
         project=pulumi.get(__ret__, 'project'),
         zone=pulumi.get(__ret__, 'zone'))
-
-
-@_utilities.lift_output_func(get_node_types)
 def get_node_types_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                           zone: Optional[pulumi.Input[Optional[str]]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNodeTypesResult]:
@@ -147,4 +144,13 @@ def get_node_types_output(project: Optional[pulumi.Input[Optional[str]]] = None,
     :param str zone: The zone to list node types for. Should be in zone of intended node groups and region of referencing node template. If `zone` is not specified, the provider-level zone must be set and is used
            instead.
     """
-    ...
+    __args__ = dict()
+    __args__['project'] = project
+    __args__['zone'] = zone
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:compute/getNodeTypes:getNodeTypes', __args__, opts=opts, typ=GetNodeTypesResult)
+    return __ret__.apply(lambda __response__: GetNodeTypesResult(
+        id=pulumi.get(__response__, 'id'),
+        names=pulumi.get(__response__, 'names'),
+        project=pulumi.get(__response__, 'project'),
+        zone=pulumi.get(__response__, 'zone')))

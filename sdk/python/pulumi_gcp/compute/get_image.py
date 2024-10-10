@@ -356,9 +356,6 @@ def get_image(family: Optional[str] = None,
         source_disk_id=pulumi.get(__ret__, 'source_disk_id'),
         source_image_id=pulumi.get(__ret__, 'source_image_id'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_image)
 def get_image_output(family: Optional[pulumi.Input[Optional[str]]] = None,
                      filter: Optional[pulumi.Input[Optional[str]]] = None,
                      most_recent: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -400,4 +397,33 @@ def get_image_output(family: Optional[pulumi.Input[Optional[str]]] = None,
            provided, the provider project is used. If you are using a
            [public base image][pubimg], be sure to specify the correct Image Project.
     """
-    ...
+    __args__ = dict()
+    __args__['family'] = family
+    __args__['filter'] = filter
+    __args__['mostRecent'] = most_recent
+    __args__['name'] = name
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:compute/getImage:getImage', __args__, opts=opts, typ=GetImageResult)
+    return __ret__.apply(lambda __response__: GetImageResult(
+        archive_size_bytes=pulumi.get(__response__, 'archive_size_bytes'),
+        creation_timestamp=pulumi.get(__response__, 'creation_timestamp'),
+        description=pulumi.get(__response__, 'description'),
+        disk_size_gb=pulumi.get(__response__, 'disk_size_gb'),
+        family=pulumi.get(__response__, 'family'),
+        filter=pulumi.get(__response__, 'filter'),
+        id=pulumi.get(__response__, 'id'),
+        image_encryption_key_sha256=pulumi.get(__response__, 'image_encryption_key_sha256'),
+        image_id=pulumi.get(__response__, 'image_id'),
+        label_fingerprint=pulumi.get(__response__, 'label_fingerprint'),
+        labels=pulumi.get(__response__, 'labels'),
+        licenses=pulumi.get(__response__, 'licenses'),
+        most_recent=pulumi.get(__response__, 'most_recent'),
+        name=pulumi.get(__response__, 'name'),
+        project=pulumi.get(__response__, 'project'),
+        self_link=pulumi.get(__response__, 'self_link'),
+        source_disk=pulumi.get(__response__, 'source_disk'),
+        source_disk_encryption_key_sha256=pulumi.get(__response__, 'source_disk_encryption_key_sha256'),
+        source_disk_id=pulumi.get(__response__, 'source_disk_id'),
+        source_image_id=pulumi.get(__response__, 'source_image_id'),
+        status=pulumi.get(__response__, 'status')))

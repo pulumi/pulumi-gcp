@@ -120,9 +120,6 @@ def get_image_versions(project: Optional[str] = None,
         image_versions=pulumi.get(__ret__, 'image_versions'),
         project=pulumi.get(__ret__, 'project'),
         region=pulumi.get(__ret__, 'region'))
-
-
-@_utilities.lift_output_func(get_image_versions)
 def get_image_versions_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                               region: Optional[pulumi.Input[Optional[str]]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetImageVersionsResult]:
@@ -152,4 +149,13 @@ def get_image_versions_output(project: Optional[pulumi.Input[Optional[str]]] = N
     :param str region: The location to list versions in.
            If it is not provider, the provider region is used.
     """
-    ...
+    __args__ = dict()
+    __args__['project'] = project
+    __args__['region'] = region
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:composer/getImageVersions:getImageVersions', __args__, opts=opts, typ=GetImageVersionsResult)
+    return __ret__.apply(lambda __response__: GetImageVersionsResult(
+        id=pulumi.get(__response__, 'id'),
+        image_versions=pulumi.get(__response__, 'image_versions'),
+        project=pulumi.get(__response__, 'project'),
+        region=pulumi.get(__response__, 'region')))

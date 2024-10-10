@@ -64,7 +64,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			gcsAccount, err := storage.GetProjectServiceAccount(ctx, nil, nil)
+//			gcsAccount, err := storage.GetProjectServiceAccount(ctx, &storage.GetProjectServiceAccountArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -101,7 +101,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			gcsAccount, err := storage.GetProjectServiceAccount(ctx, nil, nil)
+//			gcsAccount, err := storage.GetProjectServiceAccount(ctx, &storage.GetProjectServiceAccountArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

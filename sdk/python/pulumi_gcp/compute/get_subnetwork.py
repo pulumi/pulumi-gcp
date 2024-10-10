@@ -224,9 +224,6 @@ def get_subnetwork(name: Optional[str] = None,
         region=pulumi.get(__ret__, 'region'),
         secondary_ip_ranges=pulumi.get(__ret__, 'secondary_ip_ranges'),
         self_link=pulumi.get(__ret__, 'self_link'))
-
-
-@_utilities.lift_output_func(get_subnetwork)
 def get_subnetwork_output(name: Optional[pulumi.Input[Optional[str]]] = None,
                           project: Optional[pulumi.Input[Optional[str]]] = None,
                           region: Optional[pulumi.Input[Optional[str]]] = None,
@@ -255,4 +252,23 @@ def get_subnetwork_output(name: Optional[pulumi.Input[Optional[str]]] = None,
     :param str self_link: The self link of the subnetwork. If `self_link` is
            specified, `name`, `project`, and `region` are ignored.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['project'] = project
+    __args__['region'] = region
+    __args__['selfLink'] = self_link
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:compute/getSubnetwork:getSubnetwork', __args__, opts=opts, typ=GetSubnetworkResult)
+    return __ret__.apply(lambda __response__: GetSubnetworkResult(
+        description=pulumi.get(__response__, 'description'),
+        gateway_address=pulumi.get(__response__, 'gateway_address'),
+        id=pulumi.get(__response__, 'id'),
+        internal_ipv6_prefix=pulumi.get(__response__, 'internal_ipv6_prefix'),
+        ip_cidr_range=pulumi.get(__response__, 'ip_cidr_range'),
+        name=pulumi.get(__response__, 'name'),
+        network=pulumi.get(__response__, 'network'),
+        private_ip_google_access=pulumi.get(__response__, 'private_ip_google_access'),
+        project=pulumi.get(__response__, 'project'),
+        region=pulumi.get(__response__, 'region'),
+        secondary_ip_ranges=pulumi.get(__response__, 'secondary_ip_ranges'),
+        self_link=pulumi.get(__response__, 'self_link')))

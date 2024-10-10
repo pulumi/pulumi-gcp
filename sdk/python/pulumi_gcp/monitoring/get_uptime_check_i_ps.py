@@ -84,9 +84,6 @@ def get_uptime_check_i_ps(opts: Optional[pulumi.InvokeOptions] = None) -> Awaita
     return AwaitableGetUptimeCheckIPsResult(
         id=pulumi.get(__ret__, 'id'),
         uptime_check_ips=pulumi.get(__ret__, 'uptime_check_ips'))
-
-
-@_utilities.lift_output_func(get_uptime_check_i_ps)
 def get_uptime_check_i_ps_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUptimeCheckIPsResult]:
     """
     Returns the list of IP addresses that checkers run from. For more information see
@@ -102,4 +99,9 @@ def get_uptime_check_i_ps_output(opts: Optional[pulumi.InvokeOptions] = None) ->
     pulumi.export("ipList", ips.uptime_check_ips)
     ```
     """
-    ...
+    __args__ = dict()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:monitoring/getUptimeCheckIPs:getUptimeCheckIPs', __args__, opts=opts, typ=GetUptimeCheckIPsResult)
+    return __ret__.apply(lambda __response__: GetUptimeCheckIPsResult(
+        id=pulumi.get(__response__, 'id'),
+        uptime_check_ips=pulumi.get(__response__, 'uptime_check_ips')))

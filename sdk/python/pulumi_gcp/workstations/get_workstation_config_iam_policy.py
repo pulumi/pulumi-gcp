@@ -141,9 +141,6 @@ def get_workstation_config_iam_policy(location: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'),
         workstation_cluster_id=pulumi.get(__ret__, 'workstation_cluster_id'),
         workstation_config_id=pulumi.get(__ret__, 'workstation_config_id'))
-
-
-@_utilities.lift_output_func(get_workstation_config_iam_policy)
 def get_workstation_config_iam_policy_output(location: Optional[pulumi.Input[Optional[str]]] = None,
                                              project: Optional[pulumi.Input[Optional[str]]] = None,
                                              workstation_cluster_id: Optional[pulumi.Input[str]] = None,
@@ -159,4 +156,18 @@ def get_workstation_config_iam_policy_output(location: Optional[pulumi.Input[Opt
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
     """
-    ...
+    __args__ = dict()
+    __args__['location'] = location
+    __args__['project'] = project
+    __args__['workstationClusterId'] = workstation_cluster_id
+    __args__['workstationConfigId'] = workstation_config_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:workstations/getWorkstationConfigIamPolicy:getWorkstationConfigIamPolicy', __args__, opts=opts, typ=GetWorkstationConfigIamPolicyResult)
+    return __ret__.apply(lambda __response__: GetWorkstationConfigIamPolicyResult(
+        etag=pulumi.get(__response__, 'etag'),
+        id=pulumi.get(__response__, 'id'),
+        location=pulumi.get(__response__, 'location'),
+        policy_data=pulumi.get(__response__, 'policy_data'),
+        project=pulumi.get(__response__, 'project'),
+        workstation_cluster_id=pulumi.get(__response__, 'workstation_cluster_id'),
+        workstation_config_id=pulumi.get(__response__, 'workstation_config_id')))

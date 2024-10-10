@@ -117,9 +117,6 @@ def get_ca_certs(instance: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         instance=pulumi.get(__ret__, 'instance'),
         project=pulumi.get(__ret__, 'project'))
-
-
-@_utilities.lift_output_func(get_ca_certs)
 def get_ca_certs_output(instance: Optional[pulumi.Input[str]] = None,
                         project: Optional[pulumi.Input[Optional[str]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCaCertsResult]:
@@ -133,4 +130,14 @@ def get_ca_certs_output(instance: Optional[pulumi.Input[str]] = None,
     :param str instance: The name or self link of the instance.
     :param str project: The ID of the project in which the resource belongs. If `project` is not provided, the provider project is used.
     """
-    ...
+    __args__ = dict()
+    __args__['instance'] = instance
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:sql/getCaCerts:getCaCerts', __args__, opts=opts, typ=GetCaCertsResult)
+    return __ret__.apply(lambda __response__: GetCaCertsResult(
+        active_version=pulumi.get(__response__, 'active_version'),
+        certs=pulumi.get(__response__, 'certs'),
+        id=pulumi.get(__response__, 'id'),
+        instance=pulumi.get(__response__, 'instance'),
+        project=pulumi.get(__response__, 'project')))

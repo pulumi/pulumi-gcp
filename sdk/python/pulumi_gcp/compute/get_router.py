@@ -176,9 +176,6 @@ def get_router(name: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'),
         region=pulumi.get(__ret__, 'region'),
         self_link=pulumi.get(__ret__, 'self_link'))
-
-
-@_utilities.lift_output_func(get_router)
 def get_router_output(name: Optional[pulumi.Input[str]] = None,
                       network: Optional[pulumi.Input[str]] = None,
                       project: Optional[pulumi.Input[Optional[str]]] = None,
@@ -205,4 +202,21 @@ def get_router_output(name: Optional[pulumi.Input[str]] = None,
     :param str region: The region this router has been created in. If
            unspecified, this defaults to the region configured in the provider.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['network'] = network
+    __args__['project'] = project
+    __args__['region'] = region
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:compute/getRouter:getRouter', __args__, opts=opts, typ=GetRouterResult)
+    return __ret__.apply(lambda __response__: GetRouterResult(
+        bgps=pulumi.get(__response__, 'bgps'),
+        creation_timestamp=pulumi.get(__response__, 'creation_timestamp'),
+        description=pulumi.get(__response__, 'description'),
+        encrypted_interconnect_router=pulumi.get(__response__, 'encrypted_interconnect_router'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        network=pulumi.get(__response__, 'network'),
+        project=pulumi.get(__response__, 'project'),
+        region=pulumi.get(__response__, 'region'),
+        self_link=pulumi.get(__response__, 'self_link')))

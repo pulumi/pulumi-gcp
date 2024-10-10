@@ -181,9 +181,6 @@ def get_project_service_account(project: Optional[str] = None,
         member=pulumi.get(__ret__, 'member'),
         project=pulumi.get(__ret__, 'project'),
         user_project=pulumi.get(__ret__, 'user_project'))
-
-
-@_utilities.lift_output_func(get_project_service_account)
 def get_project_service_account_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                                        user_project: Optional[pulumi.Input[Optional[str]]] = None,
                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectServiceAccountResult]:
@@ -261,4 +258,14 @@ def get_project_service_account_output(project: Optional[pulumi.Input[Optional[s
     :param str user_project: The project the lookup originates from. This field is used if you are making the request
            from a different account than the one you are finding the service account for.
     """
-    ...
+    __args__ = dict()
+    __args__['project'] = project
+    __args__['userProject'] = user_project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:storage/getProjectServiceAccount:getProjectServiceAccount', __args__, opts=opts, typ=GetProjectServiceAccountResult)
+    return __ret__.apply(lambda __response__: GetProjectServiceAccountResult(
+        email_address=pulumi.get(__response__, 'email_address'),
+        id=pulumi.get(__response__, 'id'),
+        member=pulumi.get(__response__, 'member'),
+        project=pulumi.get(__response__, 'project'),
+        user_project=pulumi.get(__response__, 'user_project')))

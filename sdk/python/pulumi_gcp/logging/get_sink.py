@@ -186,9 +186,6 @@ def get_sink(id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         writer_identity=pulumi.get(__ret__, 'writer_identity'))
-
-
-@_utilities.lift_output_func(get_sink)
 def get_sink_output(id: Optional[pulumi.Input[str]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSinkResult]:
     """
@@ -217,4 +214,17 @@ def get_sink_output(id: Optional[pulumi.Input[str]] = None,
            -  `billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_NAME]`
            - `folders/[FOLDER_ID]/sinks/[SINK_NAME]`
     """
-    ...
+    __args__ = dict()
+    __args__['id'] = id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:logging/getSink:getSink', __args__, opts=opts, typ=GetSinkResult)
+    return __ret__.apply(lambda __response__: GetSinkResult(
+        bigquery_options=pulumi.get(__response__, 'bigquery_options'),
+        description=pulumi.get(__response__, 'description'),
+        destination=pulumi.get(__response__, 'destination'),
+        disabled=pulumi.get(__response__, 'disabled'),
+        exclusions=pulumi.get(__response__, 'exclusions'),
+        filter=pulumi.get(__response__, 'filter'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        writer_identity=pulumi.get(__response__, 'writer_identity')))

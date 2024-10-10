@@ -218,9 +218,6 @@ def get_global_address(name: Optional[str] = None,
         status=pulumi.get(__ret__, 'status'),
         subnetwork=pulumi.get(__ret__, 'subnetwork'),
         users=pulumi.get(__ret__, 'users'))
-
-
-@_utilities.lift_output_func(get_global_address)
 def get_global_address_output(name: Optional[pulumi.Input[str]] = None,
                               project: Optional[pulumi.Input[Optional[str]]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGlobalAddressResult]:
@@ -253,4 +250,22 @@ def get_global_address_output(name: Optional[pulumi.Input[str]] = None,
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:compute/getGlobalAddress:getGlobalAddress', __args__, opts=opts, typ=GetGlobalAddressResult)
+    return __ret__.apply(lambda __response__: GetGlobalAddressResult(
+        address=pulumi.get(__response__, 'address'),
+        address_type=pulumi.get(__response__, 'address_type'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        network=pulumi.get(__response__, 'network'),
+        network_tier=pulumi.get(__response__, 'network_tier'),
+        prefix_length=pulumi.get(__response__, 'prefix_length'),
+        project=pulumi.get(__response__, 'project'),
+        purpose=pulumi.get(__response__, 'purpose'),
+        self_link=pulumi.get(__response__, 'self_link'),
+        status=pulumi.get(__response__, 'status'),
+        subnetwork=pulumi.get(__response__, 'subnetwork'),
+        users=pulumi.get(__response__, 'users')))

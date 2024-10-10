@@ -123,9 +123,6 @@ def get_transfer_project_service_account(project: Optional[str] = None,
         member=pulumi.get(__ret__, 'member'),
         project=pulumi.get(__ret__, 'project'),
         subject_id=pulumi.get(__ret__, 'subject_id'))
-
-
-@_utilities.lift_output_func(get_transfer_project_service_account)
 def get_transfer_project_service_account_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTransferProjectServiceAccountResult]:
     """
@@ -144,4 +141,13 @@ def get_transfer_project_service_account_output(project: Optional[pulumi.Input[O
 
     :param str project: The project ID. If it is not provided, the provider project is used.
     """
-    ...
+    __args__ = dict()
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:storage/getTransferProjectServiceAccount:getTransferProjectServiceAccount', __args__, opts=opts, typ=GetTransferProjectServiceAccountResult)
+    return __ret__.apply(lambda __response__: GetTransferProjectServiceAccountResult(
+        email=pulumi.get(__response__, 'email'),
+        id=pulumi.get(__response__, 'id'),
+        member=pulumi.get(__response__, 'member'),
+        project=pulumi.get(__response__, 'project'),
+        subject_id=pulumi.get(__response__, 'subject_id')))

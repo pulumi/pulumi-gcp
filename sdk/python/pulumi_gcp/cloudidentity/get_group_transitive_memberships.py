@@ -82,12 +82,16 @@ def get_group_transitive_memberships(group: Optional[str] = None,
         group=pulumi.get(__ret__, 'group'),
         id=pulumi.get(__ret__, 'id'),
         memberships=pulumi.get(__ret__, 'memberships'))
-
-
-@_utilities.lift_output_func(get_group_transitive_memberships)
 def get_group_transitive_memberships_output(group: Optional[pulumi.Input[str]] = None,
                                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupTransitiveMembershipsResult]:
     """
     Use this data source to access information about an existing resource.
     """
-    ...
+    __args__ = dict()
+    __args__['group'] = group
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:cloudidentity/getGroupTransitiveMemberships:getGroupTransitiveMemberships', __args__, opts=opts, typ=GetGroupTransitiveMembershipsResult)
+    return __ret__.apply(lambda __response__: GetGroupTransitiveMembershipsResult(
+        group=pulumi.get(__response__, 'group'),
+        id=pulumi.get(__response__, 'id'),
+        memberships=pulumi.get(__response__, 'memberships')))

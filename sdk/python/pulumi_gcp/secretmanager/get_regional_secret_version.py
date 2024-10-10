@@ -207,9 +207,6 @@ def get_regional_secret_version(location: Optional[str] = None,
         secret=pulumi.get(__ret__, 'secret'),
         secret_data=pulumi.get(__ret__, 'secret_data'),
         version=pulumi.get(__ret__, 'version'))
-
-
-@_utilities.lift_output_func(get_regional_secret_version)
 def get_regional_secret_version_output(location: Optional[pulumi.Input[Optional[str]]] = None,
                                        project: Optional[pulumi.Input[Optional[str]]] = None,
                                        secret: Optional[pulumi.Input[str]] = None,
@@ -238,4 +235,22 @@ def get_regional_secret_version_output(location: Optional[pulumi.Input[Optional[
     :param str version: The version of the regional secret to get. If it
            is not provided, the latest version is retrieved.
     """
-    ...
+    __args__ = dict()
+    __args__['location'] = location
+    __args__['project'] = project
+    __args__['secret'] = secret
+    __args__['version'] = version
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:secretmanager/getRegionalSecretVersion:getRegionalSecretVersion', __args__, opts=opts, typ=GetRegionalSecretVersionResult)
+    return __ret__.apply(lambda __response__: GetRegionalSecretVersionResult(
+        create_time=pulumi.get(__response__, 'create_time'),
+        customer_managed_encryptions=pulumi.get(__response__, 'customer_managed_encryptions'),
+        destroy_time=pulumi.get(__response__, 'destroy_time'),
+        enabled=pulumi.get(__response__, 'enabled'),
+        id=pulumi.get(__response__, 'id'),
+        location=pulumi.get(__response__, 'location'),
+        name=pulumi.get(__response__, 'name'),
+        project=pulumi.get(__response__, 'project'),
+        secret=pulumi.get(__response__, 'secret'),
+        secret_data=pulumi.get(__response__, 'secret_data'),
+        version=pulumi.get(__response__, 'version')))

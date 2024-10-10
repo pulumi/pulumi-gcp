@@ -190,9 +190,6 @@ def get_instance_serial_port(instance: Optional[str] = None,
         port=pulumi.get(__ret__, 'port'),
         project=pulumi.get(__ret__, 'project'),
         zone=pulumi.get(__ret__, 'zone'))
-
-
-@_utilities.lift_output_func(get_instance_serial_port)
 def get_instance_serial_port_output(instance: Optional[pulumi.Input[str]] = None,
                                     port: Optional[pulumi.Input[int]] = None,
                                     project: Optional[pulumi.Input[Optional[str]]] = None,
@@ -271,4 +268,17 @@ def get_instance_serial_port_output(instance: Optional[pulumi.Input[str]] = None
     :param str zone: The zone in which the Compute Instance exists.
            If it is not provided, the provider zone is used.
     """
-    ...
+    __args__ = dict()
+    __args__['instance'] = instance
+    __args__['port'] = port
+    __args__['project'] = project
+    __args__['zone'] = zone
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:compute/getInstanceSerialPort:getInstanceSerialPort', __args__, opts=opts, typ=GetInstanceSerialPortResult)
+    return __ret__.apply(lambda __response__: GetInstanceSerialPortResult(
+        contents=pulumi.get(__response__, 'contents'),
+        id=pulumi.get(__response__, 'id'),
+        instance=pulumi.get(__response__, 'instance'),
+        port=pulumi.get(__response__, 'port'),
+        project=pulumi.get(__response__, 'project'),
+        zone=pulumi.get(__response__, 'zone')))

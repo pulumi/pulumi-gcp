@@ -159,9 +159,6 @@ def get_hosting_channel(channel_id: Optional[str] = None,
         retained_release_count=pulumi.get(__ret__, 'retained_release_count'),
         site_id=pulumi.get(__ret__, 'site_id'),
         ttl=pulumi.get(__ret__, 'ttl'))
-
-
-@_utilities.lift_output_func(get_hosting_channel)
 def get_hosting_channel_output(channel_id: Optional[pulumi.Input[str]] = None,
                                site_id: Optional[pulumi.Input[str]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHostingChannelResult]:
@@ -171,4 +168,19 @@ def get_hosting_channel_output(channel_id: Optional[pulumi.Input[str]] = None,
     :param str channel_id: The ID of the channel. Use `channel_id = "live"` for the default channel of a site.
     :param str site_id: The ID of the site this channel belongs to.
     """
-    ...
+    __args__ = dict()
+    __args__['channelId'] = channel_id
+    __args__['siteId'] = site_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:firebase/getHostingChannel:getHostingChannel', __args__, opts=opts, typ=GetHostingChannelResult)
+    return __ret__.apply(lambda __response__: GetHostingChannelResult(
+        channel_id=pulumi.get(__response__, 'channel_id'),
+        effective_labels=pulumi.get(__response__, 'effective_labels'),
+        expire_time=pulumi.get(__response__, 'expire_time'),
+        id=pulumi.get(__response__, 'id'),
+        labels=pulumi.get(__response__, 'labels'),
+        name=pulumi.get(__response__, 'name'),
+        pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
+        retained_release_count=pulumi.get(__response__, 'retained_release_count'),
+        site_id=pulumi.get(__response__, 'site_id'),
+        ttl=pulumi.get(__response__, 'ttl')))

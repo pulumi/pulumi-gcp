@@ -58,7 +58,7 @@ import (
 //				DataStoreIds: pulumi.StringArray{
 //					basic.DataStoreId,
 //				},
-//				SearchEngineConfig: nil,
+//				SearchEngineConfig: &discoveryengine.SearchEngineSearchEngineConfigArgs{},
 //			})
 //			if err != nil {
 //				return err

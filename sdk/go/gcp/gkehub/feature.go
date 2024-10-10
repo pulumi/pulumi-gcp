@@ -468,7 +468,7 @@ import (
 //					Policycontroller: &gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerArgs{
 //						PolicyControllerHubConfig: &gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs{
 //							InstallSpec:              pulumi.String("INSTALL_SPEC_ENABLED"),
-//							PolicyContent:            nil,
+//							PolicyContent:            &gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs{},
 //							ConstraintViolationLimit: pulumi.Int(50),
 //							ReferentialRulesEnabled:  pulumi.Bool(true),
 //							LogDeniesEnabled:         pulumi.Bool(true),
@@ -478,7 +478,7 @@ import (
 //									Component: pulumi.String("admission"),
 //								},
 //							},
-//							Monitoring: nil,
+//							Monitoring: &gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs{},
 //						},
 //					},
 //				},

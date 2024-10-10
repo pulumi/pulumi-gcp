@@ -102,9 +102,6 @@ def get_project(filter: Optional[str] = None,
         filter=pulumi.get(__ret__, 'filter'),
         id=pulumi.get(__ret__, 'id'),
         projects=pulumi.get(__ret__, 'projects'))
-
-
-@_utilities.lift_output_func(get_project)
 def get_project_output(filter: Optional[pulumi.Input[str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectResult]:
     """
@@ -127,4 +124,11 @@ def get_project_output(filter: Optional[pulumi.Input[str]] = None,
 
     :param str filter: A string filter as defined in the [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/list#query-parameters).
     """
-    ...
+    __args__ = dict()
+    __args__['filter'] = filter
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:projects/getProject:getProject', __args__, opts=opts, typ=GetProjectResult)
+    return __ret__.apply(lambda __response__: GetProjectResult(
+        filter=pulumi.get(__response__, 'filter'),
+        id=pulumi.get(__response__, 'id'),
+        projects=pulumi.get(__response__, 'projects')))

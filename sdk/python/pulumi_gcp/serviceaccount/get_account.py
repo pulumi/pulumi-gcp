@@ -191,9 +191,6 @@ def get_account(account_id: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
         unique_id=pulumi.get(__ret__, 'unique_id'))
-
-
-@_utilities.lift_output_func(get_account)
 def get_account_output(account_id: Optional[pulumi.Input[str]] = None,
                        project: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountResult]:
@@ -241,4 +238,17 @@ def get_account_output(account_id: Optional[pulumi.Input[str]] = None,
     :param str project: The ID of the project that the service account is present in.
            Defaults to the provider project configuration.
     """
-    ...
+    __args__ = dict()
+    __args__['accountId'] = account_id
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:serviceaccount/getAccount:getAccount', __args__, opts=opts, typ=GetAccountResult)
+    return __ret__.apply(lambda __response__: GetAccountResult(
+        account_id=pulumi.get(__response__, 'account_id'),
+        display_name=pulumi.get(__response__, 'display_name'),
+        email=pulumi.get(__response__, 'email'),
+        id=pulumi.get(__response__, 'id'),
+        member=pulumi.get(__response__, 'member'),
+        name=pulumi.get(__response__, 'name'),
+        project=pulumi.get(__response__, 'project'),
+        unique_id=pulumi.get(__response__, 'unique_id')))

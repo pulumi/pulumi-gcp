@@ -203,9 +203,6 @@ def get_network_policy(location: Optional[str] = None,
         update_time=pulumi.get(__ret__, 'update_time'),
         vmware_engine_network=pulumi.get(__ret__, 'vmware_engine_network'),
         vmware_engine_network_canonical=pulumi.get(__ret__, 'vmware_engine_network_canonical'))
-
-
-@_utilities.lift_output_func(get_network_policy)
 def get_network_policy_output(location: Optional[pulumi.Input[str]] = None,
                               name: Optional[pulumi.Input[str]] = None,
                               project: Optional[pulumi.Input[Optional[str]]] = None,
@@ -230,4 +227,23 @@ def get_network_policy_output(location: Optional[pulumi.Input[str]] = None,
     :param str location: Location of the resource.
     :param str name: Name of the resource.
     """
-    ...
+    __args__ = dict()
+    __args__['location'] = location
+    __args__['name'] = name
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:vmwareengine/getNetworkPolicy:getNetworkPolicy', __args__, opts=opts, typ=GetNetworkPolicyResult)
+    return __ret__.apply(lambda __response__: GetNetworkPolicyResult(
+        create_time=pulumi.get(__response__, 'create_time'),
+        description=pulumi.get(__response__, 'description'),
+        edge_services_cidr=pulumi.get(__response__, 'edge_services_cidr'),
+        external_ips=pulumi.get(__response__, 'external_ips'),
+        id=pulumi.get(__response__, 'id'),
+        internet_accesses=pulumi.get(__response__, 'internet_accesses'),
+        location=pulumi.get(__response__, 'location'),
+        name=pulumi.get(__response__, 'name'),
+        project=pulumi.get(__response__, 'project'),
+        uid=pulumi.get(__response__, 'uid'),
+        update_time=pulumi.get(__response__, 'update_time'),
+        vmware_engine_network=pulumi.get(__response__, 'vmware_engine_network'),
+        vmware_engine_network_canonical=pulumi.get(__response__, 'vmware_engine_network_canonical')))

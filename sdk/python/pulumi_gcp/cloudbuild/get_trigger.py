@@ -338,9 +338,6 @@ def get_trigger(location: Optional[str] = None,
         trigger_id=pulumi.get(__ret__, 'trigger_id'),
         trigger_templates=pulumi.get(__ret__, 'trigger_templates'),
         webhook_configs=pulumi.get(__ret__, 'webhook_configs'))
-
-
-@_utilities.lift_output_func(get_trigger)
 def get_trigger_output(location: Optional[pulumi.Input[str]] = None,
                        project: Optional[pulumi.Input[Optional[str]]] = None,
                        trigger_id: Optional[pulumi.Input[str]] = None,
@@ -370,4 +367,36 @@ def get_trigger_output(location: Optional[pulumi.Input[str]] = None,
     :param str project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
     :param str trigger_id: The unique identifier for the trigger..
     """
-    ...
+    __args__ = dict()
+    __args__['location'] = location
+    __args__['project'] = project
+    __args__['triggerId'] = trigger_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:cloudbuild/getTrigger:getTrigger', __args__, opts=opts, typ=GetTriggerResult)
+    return __ret__.apply(lambda __response__: GetTriggerResult(
+        approval_configs=pulumi.get(__response__, 'approval_configs'),
+        bitbucket_server_trigger_configs=pulumi.get(__response__, 'bitbucket_server_trigger_configs'),
+        builds=pulumi.get(__response__, 'builds'),
+        create_time=pulumi.get(__response__, 'create_time'),
+        description=pulumi.get(__response__, 'description'),
+        disabled=pulumi.get(__response__, 'disabled'),
+        filename=pulumi.get(__response__, 'filename'),
+        filter=pulumi.get(__response__, 'filter'),
+        git_file_sources=pulumi.get(__response__, 'git_file_sources'),
+        githubs=pulumi.get(__response__, 'githubs'),
+        id=pulumi.get(__response__, 'id'),
+        ignored_files=pulumi.get(__response__, 'ignored_files'),
+        include_build_logs=pulumi.get(__response__, 'include_build_logs'),
+        included_files=pulumi.get(__response__, 'included_files'),
+        location=pulumi.get(__response__, 'location'),
+        name=pulumi.get(__response__, 'name'),
+        project=pulumi.get(__response__, 'project'),
+        pubsub_configs=pulumi.get(__response__, 'pubsub_configs'),
+        repository_event_configs=pulumi.get(__response__, 'repository_event_configs'),
+        service_account=pulumi.get(__response__, 'service_account'),
+        source_to_builds=pulumi.get(__response__, 'source_to_builds'),
+        substitutions=pulumi.get(__response__, 'substitutions'),
+        tags=pulumi.get(__response__, 'tags'),
+        trigger_id=pulumi.get(__response__, 'trigger_id'),
+        trigger_templates=pulumi.get(__response__, 'trigger_templates'),
+        webhook_configs=pulumi.get(__response__, 'webhook_configs')))

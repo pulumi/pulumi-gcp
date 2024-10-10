@@ -166,9 +166,6 @@ def get_managed_zone(name: Optional[str] = None,
         name_servers=pulumi.get(__ret__, 'name_servers'),
         project=pulumi.get(__ret__, 'project'),
         visibility=pulumi.get(__ret__, 'visibility'))
-
-
-@_utilities.lift_output_func(get_managed_zone)
 def get_managed_zone_output(name: Optional[pulumi.Input[str]] = None,
                             project: Optional[pulumi.Input[Optional[str]]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetManagedZoneResult]:
@@ -196,4 +193,17 @@ def get_managed_zone_output(name: Optional[pulumi.Input[str]] = None,
     :param str name: A unique name for the resource.
     :param str project: The ID of the project for the Google Cloud DNS zone.  If this is not provided the default project will be used.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:dns/getManagedZone:getManagedZone', __args__, opts=opts, typ=GetManagedZoneResult)
+    return __ret__.apply(lambda __response__: GetManagedZoneResult(
+        description=pulumi.get(__response__, 'description'),
+        dns_name=pulumi.get(__response__, 'dns_name'),
+        id=pulumi.get(__response__, 'id'),
+        managed_zone_id=pulumi.get(__response__, 'managed_zone_id'),
+        name=pulumi.get(__response__, 'name'),
+        name_servers=pulumi.get(__response__, 'name_servers'),
+        project=pulumi.get(__response__, 'project'),
+        visibility=pulumi.get(__response__, 'visibility')))

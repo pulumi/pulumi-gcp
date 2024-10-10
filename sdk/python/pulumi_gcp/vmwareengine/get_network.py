@@ -166,9 +166,6 @@ def get_network(location: Optional[str] = None,
         type=pulumi.get(__ret__, 'type'),
         uid=pulumi.get(__ret__, 'uid'),
         vpc_networks=pulumi.get(__ret__, 'vpc_networks'))
-
-
-@_utilities.lift_output_func(get_network)
 def get_network_output(location: Optional[pulumi.Input[str]] = None,
                        name: Optional[pulumi.Input[str]] = None,
                        project: Optional[pulumi.Input[Optional[str]]] = None,
@@ -196,4 +193,19 @@ def get_network_output(location: Optional[pulumi.Input[str]] = None,
     :param str name: Name of the resource.
     :param str project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
     """
-    ...
+    __args__ = dict()
+    __args__['location'] = location
+    __args__['name'] = name
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:vmwareengine/getNetwork:getNetwork', __args__, opts=opts, typ=GetNetworkResult)
+    return __ret__.apply(lambda __response__: GetNetworkResult(
+        description=pulumi.get(__response__, 'description'),
+        id=pulumi.get(__response__, 'id'),
+        location=pulumi.get(__response__, 'location'),
+        name=pulumi.get(__response__, 'name'),
+        project=pulumi.get(__response__, 'project'),
+        state=pulumi.get(__response__, 'state'),
+        type=pulumi.get(__response__, 'type'),
+        uid=pulumi.get(__response__, 'uid'),
+        vpc_networks=pulumi.get(__response__, 'vpc_networks')))

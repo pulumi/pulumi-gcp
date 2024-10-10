@@ -196,9 +196,6 @@ def get_folder(folder: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         organization=pulumi.get(__ret__, 'organization'),
         parent=pulumi.get(__ret__, 'parent'))
-
-
-@_utilities.lift_output_func(get_folder)
 def get_folder_output(folder: Optional[pulumi.Input[str]] = None,
                       lookup_organization: Optional[pulumi.Input[Optional[bool]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFolderResult]:
@@ -220,4 +217,20 @@ def get_folder_output(folder: Optional[pulumi.Input[str]] = None,
     :param str folder: The name of the Folder in the form `{folder_id}` or `folders/{folder_id}`.
     :param bool lookup_organization: `true` to find the organization that the folder belongs, `false` to avoid the lookup. It searches up the tree. (defaults to `false`)
     """
-    ...
+    __args__ = dict()
+    __args__['folder'] = folder
+    __args__['lookupOrganization'] = lookup_organization
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:organizations/getFolder:getFolder', __args__, opts=opts, typ=GetFolderResult)
+    return __ret__.apply(lambda __response__: GetFolderResult(
+        create_time=pulumi.get(__response__, 'create_time'),
+        deletion_protection=pulumi.get(__response__, 'deletion_protection'),
+        display_name=pulumi.get(__response__, 'display_name'),
+        folder=pulumi.get(__response__, 'folder'),
+        folder_id=pulumi.get(__response__, 'folder_id'),
+        id=pulumi.get(__response__, 'id'),
+        lifecycle_state=pulumi.get(__response__, 'lifecycle_state'),
+        lookup_organization=pulumi.get(__response__, 'lookup_organization'),
+        name=pulumi.get(__response__, 'name'),
+        organization=pulumi.get(__response__, 'organization'),
+        parent=pulumi.get(__response__, 'parent')))

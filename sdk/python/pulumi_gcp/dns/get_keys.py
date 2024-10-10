@@ -140,9 +140,6 @@ def get_keys(managed_zone: Optional[str] = None,
         managed_zone=pulumi.get(__ret__, 'managed_zone'),
         project=pulumi.get(__ret__, 'project'),
         zone_signing_keys=pulumi.get(__ret__, 'zone_signing_keys'))
-
-
-@_utilities.lift_output_func(get_keys)
 def get_keys_output(managed_zone: Optional[pulumi.Input[str]] = None,
                     project: Optional[pulumi.Input[Optional[str]]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKeysResult]:
@@ -179,4 +176,14 @@ def get_keys_output(managed_zone: Optional[pulumi.Input[str]] = None,
     :param str managed_zone: The name or id of the Cloud DNS managed zone.
     :param str project: The ID of the project in which the resource belongs. If `project` is not provided, the provider project is used.
     """
-    ...
+    __args__ = dict()
+    __args__['managedZone'] = managed_zone
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:dns/getKeys:getKeys', __args__, opts=opts, typ=GetKeysResult)
+    return __ret__.apply(lambda __response__: GetKeysResult(
+        id=pulumi.get(__response__, 'id'),
+        key_signing_keys=pulumi.get(__response__, 'key_signing_keys'),
+        managed_zone=pulumi.get(__response__, 'managed_zone'),
+        project=pulumi.get(__response__, 'project'),
+        zone_signing_keys=pulumi.get(__response__, 'zone_signing_keys')))

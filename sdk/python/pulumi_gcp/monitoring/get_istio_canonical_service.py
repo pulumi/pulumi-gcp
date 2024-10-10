@@ -208,9 +208,6 @@ def get_istio_canonical_service(canonical_service: Optional[str] = None,
         service_id=pulumi.get(__ret__, 'service_id'),
         telemetries=pulumi.get(__ret__, 'telemetries'),
         user_labels=pulumi.get(__ret__, 'user_labels'))
-
-
-@_utilities.lift_output_func(get_istio_canonical_service)
 def get_istio_canonical_service_output(canonical_service: Optional[pulumi.Input[str]] = None,
                                        canonical_service_namespace: Optional[pulumi.Input[str]] = None,
                                        mesh_uid: Optional[pulumi.Input[str]] = None,
@@ -259,4 +256,21 @@ def get_istio_canonical_service_output(canonical_service: Optional[pulumi.Input[
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the provider project is used.
     """
-    ...
+    __args__ = dict()
+    __args__['canonicalService'] = canonical_service
+    __args__['canonicalServiceNamespace'] = canonical_service_namespace
+    __args__['meshUid'] = mesh_uid
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:monitoring/getIstioCanonicalService:getIstioCanonicalService', __args__, opts=opts, typ=GetIstioCanonicalServiceResult)
+    return __ret__.apply(lambda __response__: GetIstioCanonicalServiceResult(
+        canonical_service=pulumi.get(__response__, 'canonical_service'),
+        canonical_service_namespace=pulumi.get(__response__, 'canonical_service_namespace'),
+        display_name=pulumi.get(__response__, 'display_name'),
+        id=pulumi.get(__response__, 'id'),
+        mesh_uid=pulumi.get(__response__, 'mesh_uid'),
+        name=pulumi.get(__response__, 'name'),
+        project=pulumi.get(__response__, 'project'),
+        service_id=pulumi.get(__response__, 'service_id'),
+        telemetries=pulumi.get(__response__, 'telemetries'),
+        user_labels=pulumi.get(__response__, 'user_labels')))
