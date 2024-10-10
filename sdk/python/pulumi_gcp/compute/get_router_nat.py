@@ -332,9 +332,6 @@ def get_router_nat(name: Optional[str] = None,
         tcp_transitory_idle_timeout_sec=pulumi.get(__ret__, 'tcp_transitory_idle_timeout_sec'),
         type=pulumi.get(__ret__, 'type'),
         udp_idle_timeout_sec=pulumi.get(__ret__, 'udp_idle_timeout_sec'))
-
-
-@_utilities.lift_output_func(get_router_nat)
 def get_router_nat_output(name: Optional[pulumi.Input[str]] = None,
                           project: Optional[pulumi.Input[Optional[str]]] = None,
                           region: Optional[pulumi.Input[Optional[str]]] = None,
@@ -367,4 +364,36 @@ def get_router_nat_output(name: Optional[pulumi.Input[str]] = None,
            
            - - -
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['project'] = project
+    __args__['region'] = region
+    __args__['router'] = router
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:compute/getRouterNat:getRouterNat', __args__, opts=opts, typ=GetRouterNatResult)
+    return __ret__.apply(lambda __response__: GetRouterNatResult(
+        auto_network_tier=pulumi.get(__response__, 'auto_network_tier'),
+        drain_nat_ips=pulumi.get(__response__, 'drain_nat_ips'),
+        enable_dynamic_port_allocation=pulumi.get(__response__, 'enable_dynamic_port_allocation'),
+        enable_endpoint_independent_mapping=pulumi.get(__response__, 'enable_endpoint_independent_mapping'),
+        endpoint_types=pulumi.get(__response__, 'endpoint_types'),
+        icmp_idle_timeout_sec=pulumi.get(__response__, 'icmp_idle_timeout_sec'),
+        id=pulumi.get(__response__, 'id'),
+        initial_nat_ips=pulumi.get(__response__, 'initial_nat_ips'),
+        log_configs=pulumi.get(__response__, 'log_configs'),
+        max_ports_per_vm=pulumi.get(__response__, 'max_ports_per_vm'),
+        min_ports_per_vm=pulumi.get(__response__, 'min_ports_per_vm'),
+        name=pulumi.get(__response__, 'name'),
+        nat_ip_allocate_option=pulumi.get(__response__, 'nat_ip_allocate_option'),
+        nat_ips=pulumi.get(__response__, 'nat_ips'),
+        project=pulumi.get(__response__, 'project'),
+        region=pulumi.get(__response__, 'region'),
+        router=pulumi.get(__response__, 'router'),
+        rules=pulumi.get(__response__, 'rules'),
+        source_subnetwork_ip_ranges_to_nat=pulumi.get(__response__, 'source_subnetwork_ip_ranges_to_nat'),
+        subnetworks=pulumi.get(__response__, 'subnetworks'),
+        tcp_established_idle_timeout_sec=pulumi.get(__response__, 'tcp_established_idle_timeout_sec'),
+        tcp_time_wait_timeout_sec=pulumi.get(__response__, 'tcp_time_wait_timeout_sec'),
+        tcp_transitory_idle_timeout_sec=pulumi.get(__response__, 'tcp_transitory_idle_timeout_sec'),
+        type=pulumi.get(__response__, 'type'),
+        udp_idle_timeout_sec=pulumi.get(__response__, 'udp_idle_timeout_sec')))

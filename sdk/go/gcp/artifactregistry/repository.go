@@ -99,7 +99,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -387,14 +387,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = secretmanager.NewSecret(ctx, "example-remote-secret", &secretmanager.SecretArgs{
 //				SecretId: pulumi.String("example-secret"),
 //				Replication: &secretmanager.SecretReplicationArgs{
-//					Auto: nil,
+//					Auto: &secretmanager.SecretReplicationAutoArgs{},
 //				},
 //			})
 //			if err != nil {
@@ -461,14 +461,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = secretmanager.NewSecret(ctx, "example-remote-secret", &secretmanager.SecretArgs{
 //				SecretId: pulumi.String("example-secret"),
 //				Replication: &secretmanager.SecretReplicationArgs{
-//					Auto: nil,
+//					Auto: &secretmanager.SecretReplicationAutoArgs{},
 //				},
 //			})
 //			if err != nil {
@@ -537,14 +537,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = secretmanager.NewSecret(ctx, "example-remote-secret", &secretmanager.SecretArgs{
 //				SecretId: pulumi.String("example-secret"),
 //				Replication: &secretmanager.SecretReplicationArgs{
-//					Auto: nil,
+//					Auto: &secretmanager.SecretReplicationAutoArgs{},
 //				},
 //			})
 //			if err != nil {
@@ -613,14 +613,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = secretmanager.NewSecret(ctx, "example-remote-secret", &secretmanager.SecretArgs{
 //				SecretId: pulumi.String("example-secret"),
 //				Replication: &secretmanager.SecretReplicationArgs{
-//					Auto: nil,
+//					Auto: &secretmanager.SecretReplicationAutoArgs{},
 //				},
 //			})
 //			if err != nil {
@@ -689,14 +689,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = secretmanager.NewSecret(ctx, "example-remote-secret", &secretmanager.SecretArgs{
 //				SecretId: pulumi.String("example-secret"),
 //				Replication: &secretmanager.SecretReplicationArgs{
-//					Auto: nil,
+//					Auto: &secretmanager.SecretReplicationAutoArgs{},
 //				},
 //			})
 //			if err != nil {

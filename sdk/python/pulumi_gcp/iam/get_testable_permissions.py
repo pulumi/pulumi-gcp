@@ -132,9 +132,6 @@ def get_testable_permissions(custom_support_level: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         permissions=pulumi.get(__ret__, 'permissions'),
         stages=pulumi.get(__ret__, 'stages'))
-
-
-@_utilities.lift_output_func(get_testable_permissions)
 def get_testable_permissions_output(custom_support_level: Optional[pulumi.Input[Optional[str]]] = None,
                                     full_resource_name: Optional[pulumi.Input[str]] = None,
                                     stages: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -162,4 +159,15 @@ def get_testable_permissions_output(custom_support_level: Optional[pulumi.Input[
     :param str full_resource_name: See [full resource name documentation](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more detail.
     :param Sequence[str] stages: The acceptable release stages of the permission in the output. Note that `BETA` does not include permissions in `GA`, but you can specify both with `["GA", "BETA"]` for example. Can be a list of `"ALPHA"`, `"BETA"`, `"GA"`, `"DEPRECATED"`. Default is `["GA"]`.
     """
-    ...
+    __args__ = dict()
+    __args__['customSupportLevel'] = custom_support_level
+    __args__['fullResourceName'] = full_resource_name
+    __args__['stages'] = stages
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:iam/getTestablePermissions:getTestablePermissions', __args__, opts=opts, typ=GetTestablePermissionsResult)
+    return __ret__.apply(lambda __response__: GetTestablePermissionsResult(
+        custom_support_level=pulumi.get(__response__, 'custom_support_level'),
+        full_resource_name=pulumi.get(__response__, 'full_resource_name'),
+        id=pulumi.get(__response__, 'id'),
+        permissions=pulumi.get(__response__, 'permissions'),
+        stages=pulumi.get(__response__, 'stages')))

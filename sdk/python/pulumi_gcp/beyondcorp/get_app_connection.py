@@ -194,9 +194,6 @@ def get_app_connection(name: Optional[str] = None,
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         region=pulumi.get(__ret__, 'region'),
         type=pulumi.get(__ret__, 'type'))
-
-
-@_utilities.lift_output_func(get_app_connection)
 def get_app_connection_output(name: Optional[pulumi.Input[str]] = None,
                               project: Optional[pulumi.Input[Optional[str]]] = None,
                               region: Optional[pulumi.Input[Optional[str]]] = None,
@@ -222,4 +219,22 @@ def get_app_connection_output(name: Optional[pulumi.Input[str]] = None,
     :param str region: The region in which the resource belongs. If it
            is not provided, the provider region is used.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['project'] = project
+    __args__['region'] = region
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:beyondcorp/getAppConnection:getAppConnection', __args__, opts=opts, typ=GetAppConnectionResult)
+    return __ret__.apply(lambda __response__: GetAppConnectionResult(
+        application_endpoints=pulumi.get(__response__, 'application_endpoints'),
+        connectors=pulumi.get(__response__, 'connectors'),
+        display_name=pulumi.get(__response__, 'display_name'),
+        effective_labels=pulumi.get(__response__, 'effective_labels'),
+        gateways=pulumi.get(__response__, 'gateways'),
+        id=pulumi.get(__response__, 'id'),
+        labels=pulumi.get(__response__, 'labels'),
+        name=pulumi.get(__response__, 'name'),
+        project=pulumi.get(__response__, 'project'),
+        pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
+        region=pulumi.get(__response__, 'region'),
+        type=pulumi.get(__response__, 'type')))
