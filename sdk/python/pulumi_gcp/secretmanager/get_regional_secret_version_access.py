@@ -154,9 +154,6 @@ def get_regional_secret_version_access(location: Optional[str] = None,
         secret=pulumi.get(__ret__, 'secret'),
         secret_data=pulumi.get(__ret__, 'secret_data'),
         version=pulumi.get(__ret__, 'version'))
-
-
-@_utilities.lift_output_func(get_regional_secret_version_access)
 def get_regional_secret_version_access_output(location: Optional[pulumi.Input[Optional[str]]] = None,
                                               project: Optional[pulumi.Input[Optional[str]]] = None,
                                               secret: Optional[pulumi.Input[str]] = None,
@@ -185,4 +182,18 @@ def get_regional_secret_version_access_output(location: Optional[pulumi.Input[Op
     :param str version: The version of the regional secret to get. If it
            is not provided, the latest version is retrieved.
     """
-    ...
+    __args__ = dict()
+    __args__['location'] = location
+    __args__['project'] = project
+    __args__['secret'] = secret
+    __args__['version'] = version
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:secretmanager/getRegionalSecretVersionAccess:getRegionalSecretVersionAccess', __args__, opts=opts, typ=GetRegionalSecretVersionAccessResult)
+    return __ret__.apply(lambda __response__: GetRegionalSecretVersionAccessResult(
+        id=pulumi.get(__response__, 'id'),
+        location=pulumi.get(__response__, 'location'),
+        name=pulumi.get(__response__, 'name'),
+        project=pulumi.get(__response__, 'project'),
+        secret=pulumi.get(__response__, 'secret'),
+        secret_data=pulumi.get(__response__, 'secret_data'),
+        version=pulumi.get(__response__, 'version')))

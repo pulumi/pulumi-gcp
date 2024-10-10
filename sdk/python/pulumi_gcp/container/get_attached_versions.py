@@ -112,9 +112,6 @@ def get_attached_versions(location: Optional[str] = None,
         location=pulumi.get(__ret__, 'location'),
         project=pulumi.get(__ret__, 'project'),
         valid_versions=pulumi.get(__ret__, 'valid_versions'))
-
-
-@_utilities.lift_output_func(get_attached_versions)
 def get_attached_versions_output(location: Optional[pulumi.Input[str]] = None,
                                  project: Optional[pulumi.Input[str]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAttachedVersionsResult]:
@@ -137,4 +134,13 @@ def get_attached_versions_output(location: Optional[pulumi.Input[str]] = None,
     :param str project: ID of the project to list available platform versions for. Should match the project the cluster will be deployed to.
            Defaults to the project that the provider is authenticated with.
     """
-    ...
+    __args__ = dict()
+    __args__['location'] = location
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:container/getAttachedVersions:getAttachedVersions', __args__, opts=opts, typ=GetAttachedVersionsResult)
+    return __ret__.apply(lambda __response__: GetAttachedVersionsResult(
+        id=pulumi.get(__response__, 'id'),
+        location=pulumi.get(__response__, 'location'),
+        project=pulumi.get(__response__, 'project'),
+        valid_versions=pulumi.get(__response__, 'valid_versions')))
