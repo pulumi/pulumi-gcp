@@ -127,9 +127,6 @@ def get_bucket_objects(bucket: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         match_glob=pulumi.get(__ret__, 'match_glob'),
         prefix=pulumi.get(__ret__, 'prefix'))
-
-
-@_utilities.lift_output_func(get_bucket_objects)
 def get_bucket_objects_output(bucket: Optional[pulumi.Input[str]] = None,
                               match_glob: Optional[pulumi.Input[Optional[str]]] = None,
                               prefix: Optional[pulumi.Input[Optional[str]]] = None,
@@ -155,4 +152,15 @@ def get_bucket_objects_output(bucket: Optional[pulumi.Input[str]] = None,
     :param str match_glob: A glob pattern used to filter results (for example, `foo*bar`).
     :param str prefix: Filter results to include only objects whose names begin with this prefix.
     """
-    ...
+    __args__ = dict()
+    __args__['bucket'] = bucket
+    __args__['matchGlob'] = match_glob
+    __args__['prefix'] = prefix
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:storage/getBucketObjects:getBucketObjects', __args__, opts=opts, typ=GetBucketObjectsResult)
+    return __ret__.apply(lambda __response__: GetBucketObjectsResult(
+        bucket=pulumi.get(__response__, 'bucket'),
+        bucket_objects=pulumi.get(__response__, 'bucket_objects'),
+        id=pulumi.get(__response__, 'id'),
+        match_glob=pulumi.get(__response__, 'match_glob'),
+        prefix=pulumi.get(__response__, 'prefix')))

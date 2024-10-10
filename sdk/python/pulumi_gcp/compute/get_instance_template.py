@@ -540,9 +540,6 @@ def get_instance_template(filter: Optional[str] = None,
         shielded_instance_configs=pulumi.get(__ret__, 'shielded_instance_configs'),
         tags=pulumi.get(__ret__, 'tags'),
         tags_fingerprint=pulumi.get(__ret__, 'tags_fingerprint'))
-
-
-@_utilities.lift_output_func(get_instance_template)
 def get_instance_template_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
                                  most_recent: Optional[pulumi.Input[Optional[bool]]] = None,
                                  name: Optional[pulumi.Input[Optional[str]]] = None,
@@ -568,4 +565,48 @@ def get_instance_template_output(filter: Optional[pulumi.Input[Optional[str]]] =
            If `project` is not provided, the provider project is used.
     :param str self_link_unique: The self_link_unique URI of the instance template. One of `name`, `filter` or `self_link_unique` must be provided.
     """
-    ...
+    __args__ = dict()
+    __args__['filter'] = filter
+    __args__['mostRecent'] = most_recent
+    __args__['name'] = name
+    __args__['project'] = project
+    __args__['selfLinkUnique'] = self_link_unique
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:compute/getInstanceTemplate:getInstanceTemplate', __args__, opts=opts, typ=GetInstanceTemplateResult)
+    return __ret__.apply(lambda __response__: GetInstanceTemplateResult(
+        advanced_machine_features=pulumi.get(__response__, 'advanced_machine_features'),
+        can_ip_forward=pulumi.get(__response__, 'can_ip_forward'),
+        confidential_instance_configs=pulumi.get(__response__, 'confidential_instance_configs'),
+        description=pulumi.get(__response__, 'description'),
+        disks=pulumi.get(__response__, 'disks'),
+        effective_labels=pulumi.get(__response__, 'effective_labels'),
+        enable_display=pulumi.get(__response__, 'enable_display'),
+        filter=pulumi.get(__response__, 'filter'),
+        guest_accelerators=pulumi.get(__response__, 'guest_accelerators'),
+        id=pulumi.get(__response__, 'id'),
+        instance_description=pulumi.get(__response__, 'instance_description'),
+        labels=pulumi.get(__response__, 'labels'),
+        machine_type=pulumi.get(__response__, 'machine_type'),
+        metadata=pulumi.get(__response__, 'metadata'),
+        metadata_fingerprint=pulumi.get(__response__, 'metadata_fingerprint'),
+        metadata_startup_script=pulumi.get(__response__, 'metadata_startup_script'),
+        min_cpu_platform=pulumi.get(__response__, 'min_cpu_platform'),
+        most_recent=pulumi.get(__response__, 'most_recent'),
+        name=pulumi.get(__response__, 'name'),
+        name_prefix=pulumi.get(__response__, 'name_prefix'),
+        network_interfaces=pulumi.get(__response__, 'network_interfaces'),
+        network_performance_configs=pulumi.get(__response__, 'network_performance_configs'),
+        partner_metadata=pulumi.get(__response__, 'partner_metadata'),
+        project=pulumi.get(__response__, 'project'),
+        pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
+        region=pulumi.get(__response__, 'region'),
+        reservation_affinities=pulumi.get(__response__, 'reservation_affinities'),
+        resource_manager_tags=pulumi.get(__response__, 'resource_manager_tags'),
+        resource_policies=pulumi.get(__response__, 'resource_policies'),
+        schedulings=pulumi.get(__response__, 'schedulings'),
+        self_link=pulumi.get(__response__, 'self_link'),
+        self_link_unique=pulumi.get(__response__, 'self_link_unique'),
+        service_accounts=pulumi.get(__response__, 'service_accounts'),
+        shielded_instance_configs=pulumi.get(__response__, 'shielded_instance_configs'),
+        tags=pulumi.get(__response__, 'tags'),
+        tags_fingerprint=pulumi.get(__response__, 'tags_fingerprint')))
