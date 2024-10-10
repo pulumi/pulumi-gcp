@@ -190,9 +190,6 @@ def get_backend_bucket(name: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
         self_link=pulumi.get(__ret__, 'self_link'))
-
-
-@_utilities.lift_output_func(get_backend_bucket)
 def get_backend_bucket_output(name: Optional[pulumi.Input[str]] = None,
                               project: Optional[pulumi.Input[Optional[str]]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBackendBucketResult]:
@@ -215,4 +212,21 @@ def get_backend_bucket_output(name: Optional[pulumi.Input[str]] = None,
     :param str project: The ID of the project in which the resource belongs. If it
            is not provided, the provider project is used.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:compute/getBackendBucket:getBackendBucket', __args__, opts=opts, typ=GetBackendBucketResult)
+    return __ret__.apply(lambda __response__: GetBackendBucketResult(
+        bucket_name=pulumi.get(__response__, 'bucket_name'),
+        cdn_policies=pulumi.get(__response__, 'cdn_policies'),
+        compression_mode=pulumi.get(__response__, 'compression_mode'),
+        creation_timestamp=pulumi.get(__response__, 'creation_timestamp'),
+        custom_response_headers=pulumi.get(__response__, 'custom_response_headers'),
+        description=pulumi.get(__response__, 'description'),
+        edge_security_policy=pulumi.get(__response__, 'edge_security_policy'),
+        enable_cdn=pulumi.get(__response__, 'enable_cdn'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        project=pulumi.get(__response__, 'project'),
+        self_link=pulumi.get(__response__, 'self_link')))

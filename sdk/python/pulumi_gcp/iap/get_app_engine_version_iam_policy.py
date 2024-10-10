@@ -153,9 +153,6 @@ def get_app_engine_version_iam_policy(app_id: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'),
         service=pulumi.get(__ret__, 'service'),
         version_id=pulumi.get(__ret__, 'version_id'))
-
-
-@_utilities.lift_output_func(get_app_engine_version_iam_policy)
 def get_app_engine_version_iam_policy_output(app_id: Optional[pulumi.Input[str]] = None,
                                              project: Optional[pulumi.Input[Optional[str]]] = None,
                                              service: Optional[pulumi.Input[str]] = None,
@@ -183,4 +180,18 @@ def get_app_engine_version_iam_policy_output(app_id: Optional[pulumi.Input[str]]
     :param str service: Service id of the App Engine application Used to find the parent resource to bind the IAM policy to
     :param str version_id: Version id of the App Engine application Used to find the parent resource to bind the IAM policy to
     """
-    ...
+    __args__ = dict()
+    __args__['appId'] = app_id
+    __args__['project'] = project
+    __args__['service'] = service
+    __args__['versionId'] = version_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:iap/getAppEngineVersionIamPolicy:getAppEngineVersionIamPolicy', __args__, opts=opts, typ=GetAppEngineVersionIamPolicyResult)
+    return __ret__.apply(lambda __response__: GetAppEngineVersionIamPolicyResult(
+        app_id=pulumi.get(__response__, 'app_id'),
+        etag=pulumi.get(__response__, 'etag'),
+        id=pulumi.get(__response__, 'id'),
+        policy_data=pulumi.get(__response__, 'policy_data'),
+        project=pulumi.get(__response__, 'project'),
+        service=pulumi.get(__response__, 'service'),
+        version_id=pulumi.get(__response__, 'version_id')))

@@ -505,7 +505,7 @@ class Config(pulumi.CustomResource):
                 "phone_number": {
                     "enabled": True,
                     "test_phone_numbers": {
-                        "_11231231234": "000000",
+                        "+11231231234": "000000",
                     },
                 },
             },
@@ -645,7 +645,7 @@ class Config(pulumi.CustomResource):
                 "phone_number": {
                     "enabled": True,
                     "test_phone_numbers": {
-                        "_11231231234": "000000",
+                        "+11231231234": "000000",
                     },
                 },
             },

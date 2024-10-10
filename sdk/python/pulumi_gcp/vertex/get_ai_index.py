@@ -233,9 +233,6 @@ def get_ai_index(name: Optional[str] = None,
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         region=pulumi.get(__ret__, 'region'),
         update_time=pulumi.get(__ret__, 'update_time'))
-
-
-@_utilities.lift_output_func(get_ai_index)
 def get_ai_index_output(name: Optional[pulumi.Input[str]] = None,
                         project: Optional[pulumi.Input[Optional[str]]] = None,
                         region: Optional[pulumi.Input[str]] = None,
@@ -250,4 +247,27 @@ def get_ai_index_output(name: Optional[pulumi.Input[str]] = None,
            
            - - -
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['project'] = project
+    __args__['region'] = region
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:vertex/getAiIndex:getAiIndex', __args__, opts=opts, typ=GetAiIndexResult)
+    return __ret__.apply(lambda __response__: GetAiIndexResult(
+        create_time=pulumi.get(__response__, 'create_time'),
+        deployed_indexes=pulumi.get(__response__, 'deployed_indexes'),
+        description=pulumi.get(__response__, 'description'),
+        display_name=pulumi.get(__response__, 'display_name'),
+        effective_labels=pulumi.get(__response__, 'effective_labels'),
+        etag=pulumi.get(__response__, 'etag'),
+        id=pulumi.get(__response__, 'id'),
+        index_stats=pulumi.get(__response__, 'index_stats'),
+        index_update_method=pulumi.get(__response__, 'index_update_method'),
+        labels=pulumi.get(__response__, 'labels'),
+        metadata_schema_uri=pulumi.get(__response__, 'metadata_schema_uri'),
+        metadatas=pulumi.get(__response__, 'metadatas'),
+        name=pulumi.get(__response__, 'name'),
+        project=pulumi.get(__response__, 'project'),
+        pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
+        region=pulumi.get(__response__, 'region'),
+        update_time=pulumi.get(__response__, 'update_time')))

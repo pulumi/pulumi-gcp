@@ -679,7 +679,7 @@ class AwsNodePool(pulumi.CustomResource):
                 "iam_instance_profile": "my--1p-dev-nodepool",
                 "instance_type": "t3.medium",
                 "labels": {
-                    "label_one": "value-one",
+                    "label-one": "value-one",
                 },
                 "root_volume": {
                     "iops": 3000,
@@ -696,7 +696,7 @@ class AwsNodePool(pulumi.CustomResource):
                     "ec2_key_pair": "my--1p-dev-ssh",
                 },
                 "tags": {
-                    "tag_one": "value-one",
+                    "tag-one": "value-one",
                 },
                 "taints": [{
                     "effect": "PREFER_NO_SCHEDULE",
@@ -807,7 +807,7 @@ class AwsNodePool(pulumi.CustomResource):
                 "iam_instance_profile": "my--1p-dev-nodepool",
                 "instance_type": "t3.medium",
                 "labels": {
-                    "label_one": "value-one",
+                    "label-one": "value-one",
                 },
                 "root_volume": {
                     "iops": 3000,
@@ -824,7 +824,7 @@ class AwsNodePool(pulumi.CustomResource):
                     "ec2_key_pair": "my--1p-dev-ssh",
                 },
                 "tags": {
-                    "tag_one": "value-one",
+                    "tag-one": "value-one",
                 },
                 "taints": [{
                     "effect": "prefer_no_schedule",
@@ -926,7 +926,7 @@ class AwsNodePool(pulumi.CustomResource):
                 "iam_instance_profile": "my--1p-dev-nodepool",
                 "instance_type": "t3.medium",
                 "labels": {
-                    "label_one": "value-one",
+                    "label-one": "value-one",
                 },
                 "root_volume": {
                     "iops": 3000,
@@ -943,7 +943,7 @@ class AwsNodePool(pulumi.CustomResource):
                     "ec2_key_pair": "my--1p-dev-ssh",
                 },
                 "tags": {
-                    "tag_one": "value-one",
+                    "tag-one": "value-one",
                 },
                 "taints": [{
                     "effect": "prefer_no_schedule",
@@ -1108,7 +1108,7 @@ class AwsNodePool(pulumi.CustomResource):
                 "iam_instance_profile": "my--1p-dev-nodepool",
                 "instance_type": "t3.medium",
                 "labels": {
-                    "label_one": "value-one",
+                    "label-one": "value-one",
                 },
                 "root_volume": {
                     "iops": 3000,
@@ -1125,7 +1125,7 @@ class AwsNodePool(pulumi.CustomResource):
                     "ec2_key_pair": "my--1p-dev-ssh",
                 },
                 "tags": {
-                    "tag_one": "value-one",
+                    "tag-one": "value-one",
                 },
                 "taints": [{
                     "effect": "PREFER_NO_SCHEDULE",
@@ -1236,7 +1236,7 @@ class AwsNodePool(pulumi.CustomResource):
                 "iam_instance_profile": "my--1p-dev-nodepool",
                 "instance_type": "t3.medium",
                 "labels": {
-                    "label_one": "value-one",
+                    "label-one": "value-one",
                 },
                 "root_volume": {
                     "iops": 3000,
@@ -1253,7 +1253,7 @@ class AwsNodePool(pulumi.CustomResource):
                     "ec2_key_pair": "my--1p-dev-ssh",
                 },
                 "tags": {
-                    "tag_one": "value-one",
+                    "tag-one": "value-one",
                 },
                 "taints": [{
                     "effect": "prefer_no_schedule",
@@ -1355,7 +1355,7 @@ class AwsNodePool(pulumi.CustomResource):
                 "iam_instance_profile": "my--1p-dev-nodepool",
                 "instance_type": "t3.medium",
                 "labels": {
-                    "label_one": "value-one",
+                    "label-one": "value-one",
                 },
                 "root_volume": {
                     "iops": 3000,
@@ -1372,7 +1372,7 @@ class AwsNodePool(pulumi.CustomResource):
                     "ec2_key_pair": "my--1p-dev-ssh",
                 },
                 "tags": {
-                    "tag_one": "value-one",
+                    "tag-one": "value-one",
                 },
                 "taints": [{
                     "effect": "prefer_no_schedule",

@@ -129,9 +129,6 @@ def get_repository_iam_policy(project: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'),
         region=pulumi.get(__ret__, 'region'),
         repository=pulumi.get(__ret__, 'repository'))
-
-
-@_utilities.lift_output_func(get_repository_iam_policy)
 def get_repository_iam_policy_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                                      region: Optional[pulumi.Input[Optional[str]]] = None,
                                      repository: Optional[pulumi.Input[str]] = None,
@@ -146,4 +143,16 @@ def get_repository_iam_policy_output(project: Optional[pulumi.Input[Optional[str
            region is specified, it is taken from the provider configuration.
     :param str repository: Used to find the parent resource to bind the IAM policy to
     """
-    ...
+    __args__ = dict()
+    __args__['project'] = project
+    __args__['region'] = region
+    __args__['repository'] = repository
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:dataform/getRepositoryIamPolicy:getRepositoryIamPolicy', __args__, opts=opts, typ=GetRepositoryIamPolicyResult)
+    return __ret__.apply(lambda __response__: GetRepositoryIamPolicyResult(
+        etag=pulumi.get(__response__, 'etag'),
+        id=pulumi.get(__response__, 'id'),
+        policy_data=pulumi.get(__response__, 'policy_data'),
+        project=pulumi.get(__response__, 'project'),
+        region=pulumi.get(__response__, 'region'),
+        repository=pulumi.get(__response__, 'repository')))

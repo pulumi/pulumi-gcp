@@ -262,9 +262,6 @@ def get_subscription(name: Optional[str] = None,
         retain_acked_messages=pulumi.get(__ret__, 'retain_acked_messages'),
         retry_policies=pulumi.get(__ret__, 'retry_policies'),
         topic=pulumi.get(__ret__, 'topic'))
-
-
-@_utilities.lift_output_func(get_subscription)
 def get_subscription_output(name: Optional[pulumi.Input[str]] = None,
                             project: Optional[pulumi.Input[Optional[str]]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSubscriptionResult]:
@@ -289,4 +286,28 @@ def get_subscription_output(name: Optional[pulumi.Input[str]] = None,
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:pubsub/getSubscription:getSubscription', __args__, opts=opts, typ=GetSubscriptionResult)
+    return __ret__.apply(lambda __response__: GetSubscriptionResult(
+        ack_deadline_seconds=pulumi.get(__response__, 'ack_deadline_seconds'),
+        bigquery_configs=pulumi.get(__response__, 'bigquery_configs'),
+        cloud_storage_configs=pulumi.get(__response__, 'cloud_storage_configs'),
+        dead_letter_policies=pulumi.get(__response__, 'dead_letter_policies'),
+        effective_labels=pulumi.get(__response__, 'effective_labels'),
+        enable_exactly_once_delivery=pulumi.get(__response__, 'enable_exactly_once_delivery'),
+        enable_message_ordering=pulumi.get(__response__, 'enable_message_ordering'),
+        expiration_policies=pulumi.get(__response__, 'expiration_policies'),
+        filter=pulumi.get(__response__, 'filter'),
+        id=pulumi.get(__response__, 'id'),
+        labels=pulumi.get(__response__, 'labels'),
+        message_retention_duration=pulumi.get(__response__, 'message_retention_duration'),
+        name=pulumi.get(__response__, 'name'),
+        project=pulumi.get(__response__, 'project'),
+        pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
+        push_configs=pulumi.get(__response__, 'push_configs'),
+        retain_acked_messages=pulumi.get(__response__, 'retain_acked_messages'),
+        retry_policies=pulumi.get(__response__, 'retry_policies'),
+        topic=pulumi.get(__response__, 'topic')))

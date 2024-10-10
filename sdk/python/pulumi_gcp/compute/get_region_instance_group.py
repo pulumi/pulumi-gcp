@@ -159,9 +159,6 @@ def get_region_instance_group(name: Optional[str] = None,
         region=pulumi.get(__ret__, 'region'),
         self_link=pulumi.get(__ret__, 'self_link'),
         size=pulumi.get(__ret__, 'size'))
-
-
-@_utilities.lift_output_func(get_region_instance_group)
 def get_region_instance_group_output(name: Optional[pulumi.Input[Optional[str]]] = None,
                                      project: Optional[pulumi.Input[Optional[str]]] = None,
                                      region: Optional[pulumi.Input[Optional[str]]] = None,
@@ -192,4 +189,18 @@ def get_region_instance_group_output(name: Optional[pulumi.Input[Optional[str]]]
            
            - - -
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['project'] = project
+    __args__['region'] = region
+    __args__['selfLink'] = self_link
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup', __args__, opts=opts, typ=GetRegionInstanceGroupResult)
+    return __ret__.apply(lambda __response__: GetRegionInstanceGroupResult(
+        id=pulumi.get(__response__, 'id'),
+        instances=pulumi.get(__response__, 'instances'),
+        name=pulumi.get(__response__, 'name'),
+        project=pulumi.get(__response__, 'project'),
+        region=pulumi.get(__response__, 'region'),
+        self_link=pulumi.get(__response__, 'self_link'),
+        size=pulumi.get(__response__, 'size')))

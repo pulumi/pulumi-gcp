@@ -33,7 +33,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := artifactregistry.GetLocations(ctx, nil, nil)
+//			_, err := artifactregistry.GetLocations(ctx, &artifactregistry.GetLocationsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -57,7 +57,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			available, err := artifactregistry.GetLocations(ctx, nil, nil)
+//			available, err := artifactregistry.GetLocations(ctx, &artifactregistry.GetLocationsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

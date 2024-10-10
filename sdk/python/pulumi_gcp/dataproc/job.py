@@ -640,7 +640,7 @@ class Job(pulumi.CustomResource):
                 "jar_file_uris": ["file:///usr/lib/spark/examples/jars/spark-examples.jar"],
                 "args": ["1000"],
                 "properties": {
-                    "spark_log_conf": "true",
+                    "spark.logConf": "true",
                 },
                 "logging_config": {
                     "driver_log_levels": {
@@ -658,7 +658,7 @@ class Job(pulumi.CustomResource):
             pyspark_config={
                 "main_python_file_uri": "gs://dataproc-examples-2f10d78d114f6aaec76462e3c310f31f/src/pyspark/hello-world/hello-world.py",
                 "properties": {
-                    "spark_log_conf": "true",
+                    "spark.logConf": "true",
                 },
             })
         pulumi.export("sparkStatus", spark.statuses[0].state)
@@ -725,7 +725,7 @@ class Job(pulumi.CustomResource):
                 "jar_file_uris": ["file:///usr/lib/spark/examples/jars/spark-examples.jar"],
                 "args": ["1000"],
                 "properties": {
-                    "spark_log_conf": "true",
+                    "spark.logConf": "true",
                 },
                 "logging_config": {
                     "driver_log_levels": {
@@ -743,7 +743,7 @@ class Job(pulumi.CustomResource):
             pyspark_config={
                 "main_python_file_uri": "gs://dataproc-examples-2f10d78d114f6aaec76462e3c310f31f/src/pyspark/hello-world/hello-world.py",
                 "properties": {
-                    "spark_log_conf": "true",
+                    "spark.logConf": "true",
                 },
             })
         pulumi.export("sparkStatus", spark.statuses[0].state)

@@ -36,7 +36,7 @@ import (
 //				AdminClusterMembership: pulumi.String("projects/870316890899/locations/global/memberships/gkeonprem-terraform-test"),
 //				Description:            pulumi.String("test cluster"),
 //				OnPremVersion:          pulumi.String("1.13.1-gke.35"),
-//				Annotations:            nil,
+//				Annotations:            pulumi.StringMap{},
 //				NetworkConfig: &gkeonprem.VMwareClusterNetworkConfigArgs{
 //					ServiceAddressCidrBlocks: pulumi.StringArray{
 //						pulumi.String("10.96.0.0/12"),
@@ -108,7 +108,7 @@ import (
 //				AdminClusterMembership: pulumi.String("projects/870316890899/locations/global/memberships/gkeonprem-terraform-test"),
 //				Description:            pulumi.String("test cluster"),
 //				OnPremVersion:          pulumi.String("1.13.1-gke.35"),
-//				Annotations:            nil,
+//				Annotations:            pulumi.StringMap{},
 //				NetworkConfig: &gkeonprem.VMwareClusterNetworkConfigArgs{
 //					ServiceAddressCidrBlocks: pulumi.StringArray{
 //						pulumi.String("10.96.0.0/12"),
@@ -205,7 +205,7 @@ import (
 //				AdminClusterMembership: pulumi.String("projects/870316890899/locations/global/memberships/gkeonprem-terraform-test"),
 //				Description:            pulumi.String("test cluster"),
 //				OnPremVersion:          pulumi.String("1.13.1-gke.35"),
-//				Annotations:            nil,
+//				Annotations:            pulumi.StringMap{},
 //				NetworkConfig: &gkeonprem.VMwareClusterNetworkConfigArgs{
 //					ServiceAddressCidrBlocks: pulumi.StringArray{
 //						pulumi.String("10.96.0.0/12"),

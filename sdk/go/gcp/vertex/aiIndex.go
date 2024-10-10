@@ -141,7 +141,7 @@ import (
 //						DistanceMeasureType: pulumi.String("COSINE_DISTANCE"),
 //						FeatureNormType:     pulumi.String("UNIT_L2_NORM"),
 //						AlgorithmConfig: &vertex.AiIndexMetadataConfigAlgorithmConfigArgs{
-//							BruteForceConfig: nil,
+//							BruteForceConfig: &vertex.AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs{},
 //						},
 //					},
 //				},

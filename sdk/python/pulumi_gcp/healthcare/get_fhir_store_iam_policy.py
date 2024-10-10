@@ -112,9 +112,6 @@ def get_fhir_store_iam_policy(fhir_store_id: Optional[str] = None,
         fhir_store_id=pulumi.get(__ret__, 'fhir_store_id'),
         id=pulumi.get(__ret__, 'id'),
         policy_data=pulumi.get(__ret__, 'policy_data'))
-
-
-@_utilities.lift_output_func(get_fhir_store_iam_policy)
 def get_fhir_store_iam_policy_output(fhir_store_id: Optional[pulumi.Input[str]] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFhirStoreIamPolicyResult]:
     """
@@ -135,4 +132,12 @@ def get_fhir_store_iam_policy_output(fhir_store_id: Optional[pulumi.Input[str]] 
            `{location_name}/{dataset_name}/{fhir_store_name}`. In the second form, the provider's
            project setting will be used as a fallback.
     """
-    ...
+    __args__ = dict()
+    __args__['fhirStoreId'] = fhir_store_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:healthcare/getFhirStoreIamPolicy:getFhirStoreIamPolicy', __args__, opts=opts, typ=GetFhirStoreIamPolicyResult)
+    return __ret__.apply(lambda __response__: GetFhirStoreIamPolicyResult(
+        etag=pulumi.get(__response__, 'etag'),
+        fhir_store_id=pulumi.get(__response__, 'fhir_store_id'),
+        id=pulumi.get(__response__, 'id'),
+        policy_data=pulumi.get(__response__, 'policy_data')))

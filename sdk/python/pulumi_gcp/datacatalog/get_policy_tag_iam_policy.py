@@ -110,9 +110,6 @@ def get_policy_tag_iam_policy(policy_tag: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         policy_data=pulumi.get(__ret__, 'policy_data'),
         policy_tag=pulumi.get(__ret__, 'policy_tag'))
-
-
-@_utilities.lift_output_func(get_policy_tag_iam_policy)
 def get_policy_tag_iam_policy_output(policy_tag: Optional[pulumi.Input[str]] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPolicyTagIamPolicyResult]:
     """
@@ -130,4 +127,12 @@ def get_policy_tag_iam_policy_output(policy_tag: Optional[pulumi.Input[str]] = N
 
     :param str policy_tag: Used to find the parent resource to bind the IAM policy to
     """
-    ...
+    __args__ = dict()
+    __args__['policyTag'] = policy_tag
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:datacatalog/getPolicyTagIamPolicy:getPolicyTagIamPolicy', __args__, opts=opts, typ=GetPolicyTagIamPolicyResult)
+    return __ret__.apply(lambda __response__: GetPolicyTagIamPolicyResult(
+        etag=pulumi.get(__response__, 'etag'),
+        id=pulumi.get(__response__, 'id'),
+        policy_data=pulumi.get(__response__, 'policy_data'),
+        policy_tag=pulumi.get(__response__, 'policy_tag')))

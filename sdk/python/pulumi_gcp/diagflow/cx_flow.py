@@ -714,7 +714,7 @@ class CxFlow(pulumi.CustomResource):
                             "cases": json.dumps([
                                 {
                                     "condition": "$sys.func.RAND() < 0.5",
-                                    "case_content": [
+                                    "caseContent": [
                                         {
                                             "message": {
                                                 "text": {
@@ -815,7 +815,7 @@ class CxFlow(pulumi.CustomResource):
                         "cases": json.dumps([
                             {
                                 "condition": "$sys.func.RAND() < 0.5",
-                                "case_content": [
+                                "caseContent": [
                                     {
                                         "message": {
                                             "text": {
@@ -1142,7 +1142,7 @@ class CxFlow(pulumi.CustomResource):
                             "cases": json.dumps([
                                 {
                                     "condition": "$sys.func.RAND() < 0.5",
-                                    "case_content": [
+                                    "caseContent": [
                                         {
                                             "message": {
                                                 "text": {
@@ -1243,7 +1243,7 @@ class CxFlow(pulumi.CustomResource):
                         "cases": json.dumps([
                             {
                                 "condition": "$sys.func.RAND() < 0.5",
-                                "case_content": [
+                                "caseContent": [
                                     {
                                         "message": {
                                             "text": {

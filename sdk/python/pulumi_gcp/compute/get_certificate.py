@@ -182,9 +182,6 @@ def get_certificate(name: Optional[str] = None,
         private_key=pulumi.get(__ret__, 'private_key'),
         project=pulumi.get(__ret__, 'project'),
         self_link=pulumi.get(__ret__, 'self_link'))
-
-
-@_utilities.lift_output_func(get_certificate)
 def get_certificate_output(name: Optional[pulumi.Input[str]] = None,
                            project: Optional[pulumi.Input[Optional[str]]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCertificateResult]:
@@ -210,4 +207,20 @@ def get_certificate_output(name: Optional[pulumi.Input[str]] = None,
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:compute/getCertificate:getCertificate', __args__, opts=opts, typ=GetCertificateResult)
+    return __ret__.apply(lambda __response__: GetCertificateResult(
+        certificate=pulumi.get(__response__, 'certificate'),
+        certificate_id=pulumi.get(__response__, 'certificate_id'),
+        creation_timestamp=pulumi.get(__response__, 'creation_timestamp'),
+        description=pulumi.get(__response__, 'description'),
+        expire_time=pulumi.get(__response__, 'expire_time'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        name_prefix=pulumi.get(__response__, 'name_prefix'),
+        private_key=pulumi.get(__response__, 'private_key'),
+        project=pulumi.get(__response__, 'project'),
+        self_link=pulumi.get(__response__, 'self_link')))

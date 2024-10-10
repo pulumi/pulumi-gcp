@@ -143,9 +143,6 @@ def get_ekm_connection_iam_policy(location: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         policy_data=pulumi.get(__ret__, 'policy_data'),
         project=pulumi.get(__ret__, 'project'))
-
-
-@_utilities.lift_output_func(get_ekm_connection_iam_policy)
 def get_ekm_connection_iam_policy_output(location: Optional[pulumi.Input[Optional[str]]] = None,
                                          name: Optional[pulumi.Input[str]] = None,
                                          project: Optional[pulumi.Input[Optional[str]]] = None,
@@ -174,4 +171,16 @@ def get_ekm_connection_iam_policy_output(location: Optional[pulumi.Input[Optiona
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
     """
-    ...
+    __args__ = dict()
+    __args__['location'] = location
+    __args__['name'] = name
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:kms/getEkmConnectionIamPolicy:getEkmConnectionIamPolicy', __args__, opts=opts, typ=GetEkmConnectionIamPolicyResult)
+    return __ret__.apply(lambda __response__: GetEkmConnectionIamPolicyResult(
+        etag=pulumi.get(__response__, 'etag'),
+        id=pulumi.get(__response__, 'id'),
+        location=pulumi.get(__response__, 'location'),
+        name=pulumi.get(__response__, 'name'),
+        policy_data=pulumi.get(__response__, 'policy_data'),
+        project=pulumi.get(__response__, 'project')))

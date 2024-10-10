@@ -755,7 +755,7 @@ class EdgeCacheService(pulumi.CustomResource):
                                         "negative_caching": True,
                                         "signed_request_mode": "DISABLED",
                                         "negative_caching_policy": {
-                                            "_500": "3000s",
+                                            "500": "3000s",
                                         },
                                     },
                                     "url_rewrite": {
@@ -1188,7 +1188,7 @@ class EdgeCacheService(pulumi.CustomResource):
                                         "negative_caching": True,
                                         "signed_request_mode": "DISABLED",
                                         "negative_caching_policy": {
-                                            "_500": "3000s",
+                                            "500": "3000s",
                                         },
                                     },
                                     "url_rewrite": {

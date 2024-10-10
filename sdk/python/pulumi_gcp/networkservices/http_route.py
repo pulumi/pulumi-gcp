@@ -594,7 +594,7 @@ class HttpRoute(pulumi.CustomResource):
                             "type": "json",
                         },
                         "add": {
-                            "minor_version": "1",
+                            "minor-version": "1",
                         },
                         "removes": ["arg"],
                     },
@@ -604,7 +604,7 @@ class HttpRoute(pulumi.CustomResource):
                             "type": "json",
                         },
                         "add": {
-                            "minor_version": "1",
+                            "minor-version": "1",
                         },
                         "removes": ["removearg"],
                     },
@@ -879,7 +879,7 @@ class HttpRoute(pulumi.CustomResource):
                             "type": "json",
                         },
                         "add": {
-                            "minor_version": "1",
+                            "minor-version": "1",
                         },
                         "removes": ["arg"],
                     },
@@ -889,7 +889,7 @@ class HttpRoute(pulumi.CustomResource):
                             "type": "json",
                         },
                         "add": {
-                            "minor_version": "1",
+                            "minor-version": "1",
                         },
                         "removes": ["removearg"],
                     },

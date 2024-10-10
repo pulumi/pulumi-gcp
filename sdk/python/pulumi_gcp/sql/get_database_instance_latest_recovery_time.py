@@ -119,9 +119,6 @@ def get_database_instance_latest_recovery_time(instance: Optional[str] = None,
         instance=pulumi.get(__ret__, 'instance'),
         latest_recovery_time=pulumi.get(__ret__, 'latest_recovery_time'),
         project=pulumi.get(__ret__, 'project'))
-
-
-@_utilities.lift_output_func(get_database_instance_latest_recovery_time)
 def get_database_instance_latest_recovery_time_output(instance: Optional[pulumi.Input[str]] = None,
                                                       project: Optional[pulumi.Input[Optional[str]]] = None,
                                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabaseInstanceLatestRecoveryTimeResult]:
@@ -145,4 +142,13 @@ def get_database_instance_latest_recovery_time_output(instance: Optional[pulumi.
     :param str instance: The name of the instance.
     :param str project: The ID of the project in which the resource belongs.
     """
-    ...
+    __args__ = dict()
+    __args__['instance'] = instance
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:sql/getDatabaseInstanceLatestRecoveryTime:getDatabaseInstanceLatestRecoveryTime', __args__, opts=opts, typ=GetDatabaseInstanceLatestRecoveryTimeResult)
+    return __ret__.apply(lambda __response__: GetDatabaseInstanceLatestRecoveryTimeResult(
+        id=pulumi.get(__response__, 'id'),
+        instance=pulumi.get(__response__, 'instance'),
+        latest_recovery_time=pulumi.get(__response__, 'latest_recovery_time'),
+        project=pulumi.get(__response__, 'project')))

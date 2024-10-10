@@ -227,7 +227,7 @@ import (
 //					InspectTemplateName: pulumi.String("sample-inspect-template"),
 //					Actions: dataloss.PreventionJobTriggerInspectJobActionArray{
 //						&dataloss.PreventionJobTriggerInspectJobActionArgs{
-//							JobNotificationEmails: nil,
+//							JobNotificationEmails: &dataloss.PreventionJobTriggerInspectJobActionJobNotificationEmailsArgs{},
 //						},
 //					},
 //					StorageConfig: &dataloss.PreventionJobTriggerInspectJobStorageConfigArgs{
@@ -377,7 +377,7 @@ import (
 //				Parent: pulumi.String("projects/my-project-name"),
 //				Triggers: dataloss.PreventionJobTriggerTriggerArray{
 //					&dataloss.PreventionJobTriggerTriggerArgs{
-//						Manual: nil,
+//						Manual: &dataloss.PreventionJobTriggerTriggerManualArgs{},
 //					},
 //				},
 //				InspectJob: &dataloss.PreventionJobTriggerInspectJobArgs{
@@ -571,7 +571,7 @@ import (
 //					InspectTemplateName: pulumi.String("sample-inspect-template"),
 //					Actions: dataloss.PreventionJobTriggerInspectJobActionArray{
 //						&dataloss.PreventionJobTriggerInspectJobActionArgs{
-//							PublishToStackdriver: nil,
+//							PublishToStackdriver: &dataloss.PreventionJobTriggerInspectJobActionPublishToStackdriverArgs{},
 //						},
 //					},
 //					StorageConfig: &dataloss.PreventionJobTriggerInspectJobStorageConfigArgs{

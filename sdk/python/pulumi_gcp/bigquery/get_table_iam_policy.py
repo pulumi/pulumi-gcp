@@ -137,9 +137,6 @@ def get_table_iam_policy(dataset_id: Optional[str] = None,
         policy_data=pulumi.get(__ret__, 'policy_data'),
         project=pulumi.get(__ret__, 'project'),
         table_id=pulumi.get(__ret__, 'table_id'))
-
-
-@_utilities.lift_output_func(get_table_iam_policy)
 def get_table_iam_policy_output(dataset_id: Optional[pulumi.Input[str]] = None,
                                 project: Optional[pulumi.Input[Optional[str]]] = None,
                                 table_id: Optional[pulumi.Input[str]] = None,
@@ -162,4 +159,16 @@ def get_table_iam_policy_output(dataset_id: Optional[pulumi.Input[str]] = None,
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
     """
-    ...
+    __args__ = dict()
+    __args__['datasetId'] = dataset_id
+    __args__['project'] = project
+    __args__['tableId'] = table_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:bigquery/getTableIamPolicy:getTableIamPolicy', __args__, opts=opts, typ=GetTableIamPolicyResult)
+    return __ret__.apply(lambda __response__: GetTableIamPolicyResult(
+        dataset_id=pulumi.get(__response__, 'dataset_id'),
+        etag=pulumi.get(__response__, 'etag'),
+        id=pulumi.get(__response__, 'id'),
+        policy_data=pulumi.get(__response__, 'policy_data'),
+        project=pulumi.get(__response__, 'project'),
+        table_id=pulumi.get(__response__, 'table_id')))

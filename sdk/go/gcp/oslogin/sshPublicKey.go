@@ -38,7 +38,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			me, err := organizations.GetClientOpenIdUserInfo(ctx, nil, nil)
+//			me, err := organizations.GetClientOpenIdUserInfo(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}

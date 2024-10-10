@@ -238,9 +238,6 @@ def get_network_peering(name: Optional[str] = None,
         update_time=pulumi.get(__ret__, 'update_time'),
         vmware_engine_network=pulumi.get(__ret__, 'vmware_engine_network'),
         vmware_engine_network_canonical=pulumi.get(__ret__, 'vmware_engine_network_canonical'))
-
-
-@_utilities.lift_output_func(get_network_peering)
 def get_network_peering_output(name: Optional[pulumi.Input[str]] = None,
                                project: Optional[pulumi.Input[Optional[str]]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworkPeeringResult]:
@@ -262,4 +259,26 @@ def get_network_peering_output(name: Optional[pulumi.Input[str]] = None,
 
     :param str name: Name of the resource.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:vmwareengine/getNetworkPeering:getNetworkPeering', __args__, opts=opts, typ=GetNetworkPeeringResult)
+    return __ret__.apply(lambda __response__: GetNetworkPeeringResult(
+        create_time=pulumi.get(__response__, 'create_time'),
+        description=pulumi.get(__response__, 'description'),
+        export_custom_routes=pulumi.get(__response__, 'export_custom_routes'),
+        export_custom_routes_with_public_ip=pulumi.get(__response__, 'export_custom_routes_with_public_ip'),
+        id=pulumi.get(__response__, 'id'),
+        import_custom_routes=pulumi.get(__response__, 'import_custom_routes'),
+        import_custom_routes_with_public_ip=pulumi.get(__response__, 'import_custom_routes_with_public_ip'),
+        name=pulumi.get(__response__, 'name'),
+        peer_network=pulumi.get(__response__, 'peer_network'),
+        peer_network_type=pulumi.get(__response__, 'peer_network_type'),
+        project=pulumi.get(__response__, 'project'),
+        state=pulumi.get(__response__, 'state'),
+        state_details=pulumi.get(__response__, 'state_details'),
+        uid=pulumi.get(__response__, 'uid'),
+        update_time=pulumi.get(__response__, 'update_time'),
+        vmware_engine_network=pulumi.get(__response__, 'vmware_engine_network'),
+        vmware_engine_network_canonical=pulumi.get(__response__, 'vmware_engine_network_canonical')))

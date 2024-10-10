@@ -114,9 +114,6 @@ def get_crypto_keys(filter: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         key_ring=pulumi.get(__ret__, 'key_ring'),
         keys=pulumi.get(__ret__, 'keys'))
-
-
-@_utilities.lift_output_func(get_crypto_keys)
 def get_crypto_keys_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
                            key_ring: Optional[pulumi.Input[str]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCryptoKeysResult]:
@@ -140,4 +137,13 @@ def get_crypto_keys_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
            [See the documentation about using filters](https://cloud.google.com/kms/docs/sorting-and-filtering)
     :param str key_ring: The key ring that the keys belongs to. Format: 'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'.,
     """
-    ...
+    __args__ = dict()
+    __args__['filter'] = filter
+    __args__['keyRing'] = key_ring
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:kms/getCryptoKeys:getCryptoKeys', __args__, opts=opts, typ=GetCryptoKeysResult)
+    return __ret__.apply(lambda __response__: GetCryptoKeysResult(
+        filter=pulumi.get(__response__, 'filter'),
+        id=pulumi.get(__response__, 'id'),
+        key_ring=pulumi.get(__response__, 'key_ring'),
+        keys=pulumi.get(__response__, 'keys')))

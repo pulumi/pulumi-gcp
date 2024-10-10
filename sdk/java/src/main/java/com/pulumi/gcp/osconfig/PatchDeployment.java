@@ -276,6 +276,153 @@ import javax.annotation.Nullable;
  * ### Os Config Patch Deployment Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.osconfig.PatchDeployment;
+ * import com.pulumi.gcp.osconfig.PatchDeploymentArgs;
+ * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentInstanceFilterArgs;
+ * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentPatchConfigArgs;
+ * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentPatchConfigAptArgs;
+ * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentPatchConfigYumArgs;
+ * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentPatchConfigGooArgs;
+ * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentPatchConfigZypperArgs;
+ * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentPatchConfigWindowsUpdateArgs;
+ * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentPatchConfigPreStepArgs;
+ * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs;
+ * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgs;
+ * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentPatchConfigPostStepArgs;
+ * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgs;
+ * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArgs;
+ * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgs;
+ * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArgs;
+ * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentRecurringScheduleArgs;
+ * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentRecurringScheduleTimeZoneArgs;
+ * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentRecurringScheduleTimeOfDayArgs;
+ * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentRecurringScheduleMonthlyArgs;
+ * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs;
+ * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentRolloutArgs;
+ * import com.pulumi.gcp.osconfig.inputs.PatchDeploymentRolloutDisruptionBudgetArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var patch = new PatchDeployment("patch", PatchDeploymentArgs.builder()
+ *             .patchDeploymentId("patch-deploy")
+ *             .instanceFilter(PatchDeploymentInstanceFilterArgs.builder()
+ *                 .groupLabels(PatchDeploymentInstanceFilterGroupLabelArgs.builder()
+ *                     .labels(Map.ofEntries(
+ *                         Map.entry("env", "dev"),
+ *                         Map.entry("app", "web")
+ *                     ))
+ *                     .build())
+ *                 .instanceNamePrefixes("test-")
+ *                 .zones(                
+ *                     "us-central1-a",
+ *                     "us-central-1c")
+ *                 .build())
+ *             .patchConfig(PatchDeploymentPatchConfigArgs.builder()
+ *                 .migInstancesAllowed(true)
+ *                 .rebootConfig("ALWAYS")
+ *                 .apt(PatchDeploymentPatchConfigAptArgs.builder()
+ *                     .type("DIST")
+ *                     .excludes("python")
+ *                     .build())
+ *                 .yum(PatchDeploymentPatchConfigYumArgs.builder()
+ *                     .security(true)
+ *                     .minimal(true)
+ *                     .excludes("bash")
+ *                     .build())
+ *                 .goo(PatchDeploymentPatchConfigGooArgs.builder()
+ *                     .enabled(true)
+ *                     .build())
+ *                 .zypper(PatchDeploymentPatchConfigZypperArgs.builder()
+ *                     .categories("security")
+ *                     .build())
+ *                 .windowsUpdate(PatchDeploymentPatchConfigWindowsUpdateArgs.builder()
+ *                     .classifications(                    
+ *                         "CRITICAL",
+ *                         "SECURITY",
+ *                         "UPDATE")
+ *                     .excludes("5012170")
+ *                     .build())
+ *                 .preStep(PatchDeploymentPatchConfigPreStepArgs.builder()
+ *                     .linuxExecStepConfig(PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs.builder()
+ *                         .allowedSuccessCodes(                        
+ *                             0,
+ *                             3)
+ *                         .localPath("/tmp/pre_patch_script.sh")
+ *                         .build())
+ *                     .windowsExecStepConfig(PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgs.builder()
+ *                         .interpreter("SHELL")
+ *                         .allowedSuccessCodes(                        
+ *                             0,
+ *                             2)
+ *                         .localPath("C:\\Users\\user\\pre-patch-script.cmd")
+ *                         .build())
+ *                     .build())
+ *                 .postStep(PatchDeploymentPatchConfigPostStepArgs.builder()
+ *                     .linuxExecStepConfig(PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgs.builder()
+ *                         .gcsObject(PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArgs.builder()
+ *                             .bucket("my-patch-scripts")
+ *                             .generationNumber("1523477886880")
+ *                             .object("linux/post_patch_script")
+ *                             .build())
+ *                         .build())
+ *                     .windowsExecStepConfig(PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgs.builder()
+ *                         .interpreter("POWERSHELL")
+ *                         .gcsObject(PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArgs.builder()
+ *                             .bucket("my-patch-scripts")
+ *                             .generationNumber("135920493447")
+ *                             .object("windows/post_patch_script.ps1")
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .duration("10s")
+ *             .recurringSchedule(PatchDeploymentRecurringScheduleArgs.builder()
+ *                 .timeZone(PatchDeploymentRecurringScheduleTimeZoneArgs.builder()
+ *                     .id("America/New_York")
+ *                     .build())
+ *                 .timeOfDay(PatchDeploymentRecurringScheduleTimeOfDayArgs.builder()
+ *                     .hours(0)
+ *                     .minutes(30)
+ *                     .seconds(30)
+ *                     .nanos(20)
+ *                     .build())
+ *                 .monthly(PatchDeploymentRecurringScheduleMonthlyArgs.builder()
+ *                     .weekDayOfMonth(PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs.builder()
+ *                         .weekOrdinal(-1)
+ *                         .dayOfWeek("TUESDAY")
+ *                         .dayOffset(3)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .rollout(PatchDeploymentRolloutArgs.builder()
+ *                 .mode("ZONE_BY_ZONE")
+ *                 .disruptionBudget(PatchDeploymentRolloutDisruptionBudgetArgs.builder()
+ *                     .fixed(1)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

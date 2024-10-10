@@ -909,7 +909,7 @@ class Subscription(pulumi.CustomResource):
             push_config={
                 "push_endpoint": "https://example.com/push",
                 "attributes": {
-                    "x_goog_version": "v1",
+                    "x-goog-version": "v1",
                 },
             })
         ```
@@ -1373,7 +1373,7 @@ class Subscription(pulumi.CustomResource):
             push_config={
                 "push_endpoint": "https://example.com/push",
                 "attributes": {
-                    "x_goog_version": "v1",
+                    "x-goog-version": "v1",
                 },
             })
         ```
