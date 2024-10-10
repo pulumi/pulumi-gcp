@@ -39,7 +39,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			current, err := organizations.GetClientConfig(ctx, nil, nil)
+//			current, err := organizations.GetClientConfig(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -99,7 +99,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			current, err := organizations.GetClientConfig(ctx, nil, nil)
+//			current, err := organizations.GetClientConfig(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -136,7 +136,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			current, err := organizations.GetClientConfig(ctx, nil, nil)
+//			current, err := organizations.GetClientConfig(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -231,7 +231,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			current, err := organizations.GetClientConfig(ctx, nil, nil)
+//			current, err := organizations.GetClientConfig(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}

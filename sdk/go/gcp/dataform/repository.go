@@ -34,7 +34,7 @@ import (
 //			secret, err := secretmanager.NewSecret(ctx, "secret", &secretmanager.SecretArgs{
 //				SecretId: pulumi.String("my-secret"),
 //				Replication: &secretmanager.SecretReplicationArgs{
-//					Auto: nil,
+//					Auto: &secretmanager.SecretReplicationAutoArgs{},
 //				},
 //			})
 //			if err != nil {

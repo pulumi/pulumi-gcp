@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			netblock, err := compute.GetNetblockIPRanges(ctx, nil, nil)
+//			netblock, err := compute.GetNetblockIPRanges(ctx, &compute.GetNetblockIPRangesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
