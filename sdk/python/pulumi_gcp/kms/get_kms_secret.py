@@ -169,9 +169,6 @@ def get_kms_secret(additional_authenticated_data: Optional[str] = None,
         crypto_key=pulumi.get(__ret__, 'crypto_key'),
         id=pulumi.get(__ret__, 'id'),
         plaintext=pulumi.get(__ret__, 'plaintext'))
-
-
-@_utilities.lift_output_func(get_kms_secret)
 def get_kms_secret_output(additional_authenticated_data: Optional[pulumi.Input[Optional[str]]] = None,
                           ciphertext: Optional[pulumi.Input[str]] = None,
                           crypto_key: Optional[pulumi.Input[str]] = None,
@@ -240,4 +237,15 @@ def get_kms_secret_output(additional_authenticated_data: Optional[pulumi.Input[O
            decrypt the provided ciphertext. This is represented by the format
            `{projectId}/{location}/{keyRingName}/{cryptoKeyName}`.
     """
-    ...
+    __args__ = dict()
+    __args__['additionalAuthenticatedData'] = additional_authenticated_data
+    __args__['ciphertext'] = ciphertext
+    __args__['cryptoKey'] = crypto_key
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:kms/getKMSSecret:getKMSSecret', __args__, opts=opts, typ=GetKMSSecretResult)
+    return __ret__.apply(lambda __response__: GetKMSSecretResult(
+        additional_authenticated_data=pulumi.get(__response__, 'additional_authenticated_data'),
+        ciphertext=pulumi.get(__response__, 'ciphertext'),
+        crypto_key=pulumi.get(__response__, 'crypto_key'),
+        id=pulumi.get(__response__, 'id'),
+        plaintext=pulumi.get(__response__, 'plaintext')))

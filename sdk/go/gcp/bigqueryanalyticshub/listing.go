@@ -149,7 +149,7 @@ import (
 //				DisplayName:    pulumi.String("dcr_data_exchange"),
 //				Description:    pulumi.String("example dcr data exchange"),
 //				SharingEnvironmentConfig: &bigqueryanalyticshub.DataExchangeSharingEnvironmentConfigArgs{
-//					DcrExchangeConfig: nil,
+//					DcrExchangeConfig: &bigqueryanalyticshub.DataExchangeSharingEnvironmentConfigDcrExchangeConfigArgs{},
 //				},
 //			})
 //			if err != nil {

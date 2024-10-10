@@ -276,9 +276,6 @@ def get_repository(location: Optional[str] = None,
         repository_id=pulumi.get(__ret__, 'repository_id'),
         update_time=pulumi.get(__ret__, 'update_time'),
         virtual_repository_configs=pulumi.get(__ret__, 'virtual_repository_configs'))
-
-
-@_utilities.lift_output_func(get_repository)
 def get_repository_output(location: Optional[pulumi.Input[str]] = None,
                           project: Optional[pulumi.Input[Optional[str]]] = None,
                           repository_id: Optional[pulumi.Input[str]] = None,
@@ -306,4 +303,30 @@ def get_repository_output(location: Optional[pulumi.Input[str]] = None,
            is not provided, the provider project is used.
     :param str repository_id: The last part of the repository name.
     """
-    ...
+    __args__ = dict()
+    __args__['location'] = location
+    __args__['project'] = project
+    __args__['repositoryId'] = repository_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:artifactregistry/getRepository:getRepository', __args__, opts=opts, typ=GetRepositoryResult)
+    return __ret__.apply(lambda __response__: GetRepositoryResult(
+        cleanup_policies=pulumi.get(__response__, 'cleanup_policies'),
+        cleanup_policy_dry_run=pulumi.get(__response__, 'cleanup_policy_dry_run'),
+        create_time=pulumi.get(__response__, 'create_time'),
+        description=pulumi.get(__response__, 'description'),
+        docker_configs=pulumi.get(__response__, 'docker_configs'),
+        effective_labels=pulumi.get(__response__, 'effective_labels'),
+        format=pulumi.get(__response__, 'format'),
+        id=pulumi.get(__response__, 'id'),
+        kms_key_name=pulumi.get(__response__, 'kms_key_name'),
+        labels=pulumi.get(__response__, 'labels'),
+        location=pulumi.get(__response__, 'location'),
+        maven_configs=pulumi.get(__response__, 'maven_configs'),
+        mode=pulumi.get(__response__, 'mode'),
+        name=pulumi.get(__response__, 'name'),
+        project=pulumi.get(__response__, 'project'),
+        pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
+        remote_repository_configs=pulumi.get(__response__, 'remote_repository_configs'),
+        repository_id=pulumi.get(__response__, 'repository_id'),
+        update_time=pulumi.get(__response__, 'update_time'),
+        virtual_repository_configs=pulumi.get(__response__, 'virtual_repository_configs')))

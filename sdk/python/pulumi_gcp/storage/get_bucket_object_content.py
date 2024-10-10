@@ -322,9 +322,6 @@ def get_bucket_object_content(bucket: Optional[str] = None,
         source=pulumi.get(__ret__, 'source'),
         storage_class=pulumi.get(__ret__, 'storage_class'),
         temporary_hold=pulumi.get(__ret__, 'temporary_hold'))
-
-
-@_utilities.lift_output_func(get_bucket_object_content)
 def get_bucket_object_content_output(bucket: Optional[pulumi.Input[str]] = None,
                                      content: Optional[pulumi.Input[Optional[str]]] = None,
                                      name: Optional[pulumi.Input[str]] = None,
@@ -355,4 +352,34 @@ def get_bucket_object_content_output(bucket: Optional[pulumi.Input[str]] = None,
     :param str content: (Computed) [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object content.
     :param str name: The name of the object.
     """
-    ...
+    __args__ = dict()
+    __args__['bucket'] = bucket
+    __args__['content'] = content
+    __args__['name'] = name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:storage/getBucketObjectContent:getBucketObjectContent', __args__, opts=opts, typ=GetBucketObjectContentResult)
+    return __ret__.apply(lambda __response__: GetBucketObjectContentResult(
+        bucket=pulumi.get(__response__, 'bucket'),
+        cache_control=pulumi.get(__response__, 'cache_control'),
+        content=pulumi.get(__response__, 'content'),
+        content_disposition=pulumi.get(__response__, 'content_disposition'),
+        content_encoding=pulumi.get(__response__, 'content_encoding'),
+        content_language=pulumi.get(__response__, 'content_language'),
+        content_type=pulumi.get(__response__, 'content_type'),
+        crc32c=pulumi.get(__response__, 'crc32c'),
+        customer_encryptions=pulumi.get(__response__, 'customer_encryptions'),
+        detect_md5hash=pulumi.get(__response__, 'detect_md5hash'),
+        event_based_hold=pulumi.get(__response__, 'event_based_hold'),
+        generation=pulumi.get(__response__, 'generation'),
+        id=pulumi.get(__response__, 'id'),
+        kms_key_name=pulumi.get(__response__, 'kms_key_name'),
+        md5hash=pulumi.get(__response__, 'md5hash'),
+        media_link=pulumi.get(__response__, 'media_link'),
+        metadata=pulumi.get(__response__, 'metadata'),
+        name=pulumi.get(__response__, 'name'),
+        output_name=pulumi.get(__response__, 'output_name'),
+        retentions=pulumi.get(__response__, 'retentions'),
+        self_link=pulumi.get(__response__, 'self_link'),
+        source=pulumi.get(__response__, 'source'),
+        storage_class=pulumi.get(__response__, 'storage_class'),
+        temporary_hold=pulumi.get(__response__, 'temporary_hold')))

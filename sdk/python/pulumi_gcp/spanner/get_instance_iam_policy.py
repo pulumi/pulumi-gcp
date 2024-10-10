@@ -124,9 +124,6 @@ def get_instance_iam_policy(instance: Optional[str] = None,
         instance=pulumi.get(__ret__, 'instance'),
         policy_data=pulumi.get(__ret__, 'policy_data'),
         project=pulumi.get(__ret__, 'project'))
-
-
-@_utilities.lift_output_func(get_instance_iam_policy)
 def get_instance_iam_policy_output(instance: Optional[pulumi.Input[str]] = None,
                                    project: Optional[pulumi.Input[Optional[str]]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceIamPolicyResult]:
@@ -148,4 +145,14 @@ def get_instance_iam_policy_output(instance: Optional[pulumi.Input[str]] = None,
     :param str project: The ID of the project in which the resource belongs. If it
            is not provided, the provider project is used.
     """
-    ...
+    __args__ = dict()
+    __args__['instance'] = instance
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:spanner/getInstanceIamPolicy:getInstanceIamPolicy', __args__, opts=opts, typ=GetInstanceIamPolicyResult)
+    return __ret__.apply(lambda __response__: GetInstanceIamPolicyResult(
+        etag=pulumi.get(__response__, 'etag'),
+        id=pulumi.get(__response__, 'id'),
+        instance=pulumi.get(__response__, 'instance'),
+        policy_data=pulumi.get(__response__, 'policy_data'),
+        project=pulumi.get(__response__, 'project')))

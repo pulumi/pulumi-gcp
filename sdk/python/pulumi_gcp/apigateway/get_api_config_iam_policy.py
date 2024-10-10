@@ -127,9 +127,6 @@ def get_api_config_iam_policy(api: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         policy_data=pulumi.get(__ret__, 'policy_data'),
         project=pulumi.get(__ret__, 'project'))
-
-
-@_utilities.lift_output_func(get_api_config_iam_policy)
 def get_api_config_iam_policy_output(api: Optional[pulumi.Input[str]] = None,
                                      api_config: Optional[pulumi.Input[str]] = None,
                                      project: Optional[pulumi.Input[Optional[str]]] = None,
@@ -142,4 +139,16 @@ def get_api_config_iam_policy_output(api: Optional[pulumi.Input[str]] = None,
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
     """
-    ...
+    __args__ = dict()
+    __args__['api'] = api
+    __args__['apiConfig'] = api_config
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:apigateway/getApiConfigIamPolicy:getApiConfigIamPolicy', __args__, opts=opts, typ=GetApiConfigIamPolicyResult)
+    return __ret__.apply(lambda __response__: GetApiConfigIamPolicyResult(
+        api=pulumi.get(__response__, 'api'),
+        api_config=pulumi.get(__response__, 'api_config'),
+        etag=pulumi.get(__response__, 'etag'),
+        id=pulumi.get(__response__, 'id'),
+        policy_data=pulumi.get(__response__, 'policy_data'),
+        project=pulumi.get(__response__, 'project')))

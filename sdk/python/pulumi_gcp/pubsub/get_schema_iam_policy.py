@@ -125,9 +125,6 @@ def get_schema_iam_policy(project: Optional[str] = None,
         policy_data=pulumi.get(__ret__, 'policy_data'),
         project=pulumi.get(__ret__, 'project'),
         schema=pulumi.get(__ret__, 'schema'))
-
-
-@_utilities.lift_output_func(get_schema_iam_policy)
 def get_schema_iam_policy_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                                  schema: Optional[pulumi.Input[str]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSchemaIamPolicyResult]:
@@ -149,4 +146,14 @@ def get_schema_iam_policy_output(project: Optional[pulumi.Input[Optional[str]]] 
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
     :param str schema: Used to find the parent resource to bind the IAM policy to
     """
-    ...
+    __args__ = dict()
+    __args__['project'] = project
+    __args__['schema'] = schema
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:pubsub/getSchemaIamPolicy:getSchemaIamPolicy', __args__, opts=opts, typ=GetSchemaIamPolicyResult)
+    return __ret__.apply(lambda __response__: GetSchemaIamPolicyResult(
+        etag=pulumi.get(__response__, 'etag'),
+        id=pulumi.get(__response__, 'id'),
+        policy_data=pulumi.get(__response__, 'policy_data'),
+        project=pulumi.get(__response__, 'project'),
+        schema=pulumi.get(__response__, 'schema')))

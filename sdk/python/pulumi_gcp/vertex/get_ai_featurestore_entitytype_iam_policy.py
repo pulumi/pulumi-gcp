@@ -113,9 +113,6 @@ def get_ai_featurestore_entitytype_iam_policy(entitytype: Optional[str] = None,
         featurestore=pulumi.get(__ret__, 'featurestore'),
         id=pulumi.get(__ret__, 'id'),
         policy_data=pulumi.get(__ret__, 'policy_data'))
-
-
-@_utilities.lift_output_func(get_ai_featurestore_entitytype_iam_policy)
 def get_ai_featurestore_entitytype_iam_policy_output(entitytype: Optional[pulumi.Input[str]] = None,
                                                      featurestore: Optional[pulumi.Input[str]] = None,
                                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAiFeaturestoreEntitytypeIamPolicyResult]:
@@ -125,4 +122,14 @@ def get_ai_featurestore_entitytype_iam_policy_output(entitytype: Optional[pulumi
     :param str entitytype: Used to find the parent resource to bind the IAM policy to
     :param str featurestore: The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}. Used to find the parent resource to bind the IAM policy to
     """
-    ...
+    __args__ = dict()
+    __args__['entitytype'] = entitytype
+    __args__['featurestore'] = featurestore
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:vertex/getAiFeaturestoreEntitytypeIamPolicy:getAiFeaturestoreEntitytypeIamPolicy', __args__, opts=opts, typ=GetAiFeaturestoreEntitytypeIamPolicyResult)
+    return __ret__.apply(lambda __response__: GetAiFeaturestoreEntitytypeIamPolicyResult(
+        entitytype=pulumi.get(__response__, 'entitytype'),
+        etag=pulumi.get(__response__, 'etag'),
+        featurestore=pulumi.get(__response__, 'featurestore'),
+        id=pulumi.get(__response__, 'id'),
+        policy_data=pulumi.get(__response__, 'policy_data')))

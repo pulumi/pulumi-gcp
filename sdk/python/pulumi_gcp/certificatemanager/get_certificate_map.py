@@ -170,9 +170,6 @@ def get_certificate_map(name: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'),
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         update_time=pulumi.get(__ret__, 'update_time'))
-
-
-@_utilities.lift_output_func(get_certificate_map)
 def get_certificate_map_output(name: Optional[pulumi.Input[str]] = None,
                                project: Optional[pulumi.Input[Optional[str]]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCertificateMapResult]:
@@ -195,4 +192,19 @@ def get_certificate_map_output(name: Optional[pulumi.Input[str]] = None,
     :param str project: The ID of the project in which the resource belongs. If it
            is not provided, the provider project is used.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:certificatemanager/getCertificateMap:getCertificateMap', __args__, opts=opts, typ=GetCertificateMapResult)
+    return __ret__.apply(lambda __response__: GetCertificateMapResult(
+        create_time=pulumi.get(__response__, 'create_time'),
+        description=pulumi.get(__response__, 'description'),
+        effective_labels=pulumi.get(__response__, 'effective_labels'),
+        gclb_targets=pulumi.get(__response__, 'gclb_targets'),
+        id=pulumi.get(__response__, 'id'),
+        labels=pulumi.get(__response__, 'labels'),
+        name=pulumi.get(__response__, 'name'),
+        project=pulumi.get(__response__, 'project'),
+        pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
+        update_time=pulumi.get(__response__, 'update_time')))

@@ -232,9 +232,6 @@ def get_region_network_endpoint_group(name: Optional[str] = None,
         self_link=pulumi.get(__ret__, 'self_link'),
         serverless_deployments=pulumi.get(__ret__, 'serverless_deployments'),
         subnetwork=pulumi.get(__ret__, 'subnetwork'))
-
-
-@_utilities.lift_output_func(get_region_network_endpoint_group)
 def get_region_network_endpoint_group_output(name: Optional[pulumi.Input[Optional[str]]] = None,
                                              project: Optional[pulumi.Input[Optional[str]]] = None,
                                              region: Optional[pulumi.Input[Optional[str]]] = None,
@@ -262,4 +259,25 @@ def get_region_network_endpoint_group_output(name: Optional[pulumi.Input[Optiona
     :param str region: A reference to the region where the Serverless REGs Reside. Provide either this or a `self_link`.
     :param str self_link: The Network Endpoint Group self_link.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['project'] = project
+    __args__['region'] = region
+    __args__['selfLink'] = self_link
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:compute/getRegionNetworkEndpointGroup:getRegionNetworkEndpointGroup', __args__, opts=opts, typ=GetRegionNetworkEndpointGroupResult)
+    return __ret__.apply(lambda __response__: GetRegionNetworkEndpointGroupResult(
+        app_engines=pulumi.get(__response__, 'app_engines'),
+        cloud_functions=pulumi.get(__response__, 'cloud_functions'),
+        cloud_runs=pulumi.get(__response__, 'cloud_runs'),
+        description=pulumi.get(__response__, 'description'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        network=pulumi.get(__response__, 'network'),
+        network_endpoint_type=pulumi.get(__response__, 'network_endpoint_type'),
+        project=pulumi.get(__response__, 'project'),
+        psc_target_service=pulumi.get(__response__, 'psc_target_service'),
+        region=pulumi.get(__response__, 'region'),
+        self_link=pulumi.get(__response__, 'self_link'),
+        serverless_deployments=pulumi.get(__response__, 'serverless_deployments'),
+        subnetwork=pulumi.get(__response__, 'subnetwork')))

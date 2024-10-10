@@ -109,9 +109,6 @@ def get_crypto_key_iam_policy(crypto_key_id: Optional[str] = None,
         etag=pulumi.get(__ret__, 'etag'),
         id=pulumi.get(__ret__, 'id'),
         policy_data=pulumi.get(__ret__, 'policy_data'))
-
-
-@_utilities.lift_output_func(get_crypto_key_iam_policy)
 def get_crypto_key_iam_policy_output(crypto_key_id: Optional[pulumi.Input[str]] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCryptoKeyIamPolicyResult]:
     """
@@ -129,4 +126,12 @@ def get_crypto_key_iam_policy_output(crypto_key_id: Optional[pulumi.Input[str]] 
 
     :param str crypto_key_id: The crypto key ID, in the form
     """
-    ...
+    __args__ = dict()
+    __args__['cryptoKeyId'] = crypto_key_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:kms/getCryptoKeyIamPolicy:getCryptoKeyIamPolicy', __args__, opts=opts, typ=GetCryptoKeyIamPolicyResult)
+    return __ret__.apply(lambda __response__: GetCryptoKeyIamPolicyResult(
+        crypto_key_id=pulumi.get(__response__, 'crypto_key_id'),
+        etag=pulumi.get(__response__, 'etag'),
+        id=pulumi.get(__response__, 'id'),
+        policy_data=pulumi.get(__response__, 'policy_data')))

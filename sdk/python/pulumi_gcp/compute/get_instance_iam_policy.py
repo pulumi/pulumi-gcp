@@ -141,9 +141,6 @@ def get_instance_iam_policy(instance_name: Optional[str] = None,
         policy_data=pulumi.get(__ret__, 'policy_data'),
         project=pulumi.get(__ret__, 'project'),
         zone=pulumi.get(__ret__, 'zone'))
-
-
-@_utilities.lift_output_func(get_instance_iam_policy)
 def get_instance_iam_policy_output(instance_name: Optional[pulumi.Input[str]] = None,
                                    project: Optional[pulumi.Input[Optional[str]]] = None,
                                    zone: Optional[pulumi.Input[Optional[str]]] = None,
@@ -170,4 +167,16 @@ def get_instance_iam_policy_output(instance_name: Optional[pulumi.Input[str]] = 
            the value will be parsed from the identifier of the parent resource. If no zone is provided in the parent identifier and no
            zone is specified, it is taken from the provider configuration.
     """
-    ...
+    __args__ = dict()
+    __args__['instanceName'] = instance_name
+    __args__['project'] = project
+    __args__['zone'] = zone
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:compute/getInstanceIamPolicy:getInstanceIamPolicy', __args__, opts=opts, typ=GetInstanceIamPolicyResult)
+    return __ret__.apply(lambda __response__: GetInstanceIamPolicyResult(
+        etag=pulumi.get(__response__, 'etag'),
+        id=pulumi.get(__response__, 'id'),
+        instance_name=pulumi.get(__response__, 'instance_name'),
+        policy_data=pulumi.get(__response__, 'policy_data'),
+        project=pulumi.get(__response__, 'project'),
+        zone=pulumi.get(__response__, 'zone')))

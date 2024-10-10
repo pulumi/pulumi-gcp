@@ -57,7 +57,7 @@ import (
 //				Description: pulumi.String("Zone for DCL"),
 //				DisplayName: pulumi.String("Zone for DCL"),
 //				Project:     pulumi.String("my-project-name"),
-//				Labels:      nil,
+//				Labels:      pulumi.StringMap{},
 //			})
 //			if err != nil {
 //				return err

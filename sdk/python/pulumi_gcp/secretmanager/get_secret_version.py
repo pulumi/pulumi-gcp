@@ -177,9 +177,6 @@ def get_secret_version(project: Optional[str] = None,
         secret=pulumi.get(__ret__, 'secret'),
         secret_data=pulumi.get(__ret__, 'secret_data'),
         version=pulumi.get(__ret__, 'version'))
-
-
-@_utilities.lift_output_func(get_secret_version)
 def get_secret_version_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                               secret: Optional[pulumi.Input[str]] = None,
                               version: Optional[pulumi.Input[Optional[str]]] = None,
@@ -203,4 +200,19 @@ def get_secret_version_output(project: Optional[pulumi.Input[Optional[str]]] = N
     :param str version: The version of the secret to get. If it
            is not provided, the latest version is retrieved.
     """
-    ...
+    __args__ = dict()
+    __args__['project'] = project
+    __args__['secret'] = secret
+    __args__['version'] = version
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:secretmanager/getSecretVersion:getSecretVersion', __args__, opts=opts, typ=GetSecretVersionResult)
+    return __ret__.apply(lambda __response__: GetSecretVersionResult(
+        create_time=pulumi.get(__response__, 'create_time'),
+        destroy_time=pulumi.get(__response__, 'destroy_time'),
+        enabled=pulumi.get(__response__, 'enabled'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        project=pulumi.get(__response__, 'project'),
+        secret=pulumi.get(__response__, 'secret'),
+        secret_data=pulumi.get(__response__, 'secret_data'),
+        version=pulumi.get(__response__, 'version')))

@@ -115,9 +115,6 @@ def get_zones(project: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'),
         region=pulumi.get(__ret__, 'region'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_zones)
 def get_zones_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                      region: Optional[pulumi.Input[Optional[str]]] = None,
                      status: Optional[pulumi.Input[Optional[str]]] = None,
@@ -132,4 +129,15 @@ def get_zones_output(project: Optional[pulumi.Input[Optional[str]]] = None,
     :param str status: Allows to filter list of zones based on their current status. Status can be either `UP` or `DOWN`.
            Defaults to no filtering (all available zones - both `UP` and `DOWN`).
     """
-    ...
+    __args__ = dict()
+    __args__['project'] = project
+    __args__['region'] = region
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:compute/getZones:getZones', __args__, opts=opts, typ=GetZonesResult)
+    return __ret__.apply(lambda __response__: GetZonesResult(
+        id=pulumi.get(__response__, 'id'),
+        names=pulumi.get(__response__, 'names'),
+        project=pulumi.get(__response__, 'project'),
+        region=pulumi.get(__response__, 'region'),
+        status=pulumi.get(__response__, 'status')))

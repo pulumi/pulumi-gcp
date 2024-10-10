@@ -186,9 +186,6 @@ def get_security_policy(name: Optional[str] = None,
         rules=pulumi.get(__ret__, 'rules'),
         self_link=pulumi.get(__ret__, 'self_link'),
         type=pulumi.get(__ret__, 'type'))
-
-
-@_utilities.lift_output_func(get_security_policy)
 def get_security_policy_output(name: Optional[pulumi.Input[Optional[str]]] = None,
                                project: Optional[pulumi.Input[Optional[str]]] = None,
                                self_link: Optional[pulumi.Input[Optional[str]]] = None,
@@ -216,4 +213,21 @@ def get_security_policy_output(name: Optional[pulumi.Input[Optional[str]]] = Non
     :param str project: The project in which the resource belongs. If it is not provided, the provider project is used.
     :param str self_link: The self_link of the security policy. Provide either this or a `name`
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['project'] = project
+    __args__['selfLink'] = self_link
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:compute/getSecurityPolicy:getSecurityPolicy', __args__, opts=opts, typ=GetSecurityPolicyResult)
+    return __ret__.apply(lambda __response__: GetSecurityPolicyResult(
+        adaptive_protection_configs=pulumi.get(__response__, 'adaptive_protection_configs'),
+        advanced_options_configs=pulumi.get(__response__, 'advanced_options_configs'),
+        description=pulumi.get(__response__, 'description'),
+        fingerprint=pulumi.get(__response__, 'fingerprint'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        project=pulumi.get(__response__, 'project'),
+        recaptcha_options_configs=pulumi.get(__response__, 'recaptcha_options_configs'),
+        rules=pulumi.get(__response__, 'rules'),
+        self_link=pulumi.get(__response__, 'self_link'),
+        type=pulumi.get(__response__, 'type')))

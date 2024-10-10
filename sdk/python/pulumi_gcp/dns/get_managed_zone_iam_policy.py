@@ -125,9 +125,6 @@ def get_managed_zone_iam_policy(managed_zone: Optional[str] = None,
         managed_zone=pulumi.get(__ret__, 'managed_zone'),
         policy_data=pulumi.get(__ret__, 'policy_data'),
         project=pulumi.get(__ret__, 'project'))
-
-
-@_utilities.lift_output_func(get_managed_zone_iam_policy)
 def get_managed_zone_iam_policy_output(managed_zone: Optional[pulumi.Input[str]] = None,
                                        project: Optional[pulumi.Input[Optional[str]]] = None,
                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetManagedZoneIamPolicyResult]:
@@ -149,4 +146,14 @@ def get_managed_zone_iam_policy_output(managed_zone: Optional[pulumi.Input[str]]
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
     """
-    ...
+    __args__ = dict()
+    __args__['managedZone'] = managed_zone
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:dns/getManagedZoneIamPolicy:getManagedZoneIamPolicy', __args__, opts=opts, typ=GetManagedZoneIamPolicyResult)
+    return __ret__.apply(lambda __response__: GetManagedZoneIamPolicyResult(
+        etag=pulumi.get(__response__, 'etag'),
+        id=pulumi.get(__response__, 'id'),
+        managed_zone=pulumi.get(__response__, 'managed_zone'),
+        policy_data=pulumi.get(__response__, 'policy_data'),
+        project=pulumi.get(__response__, 'project')))

@@ -158,9 +158,6 @@ def get_token(identifier: Optional[str] = None,
         token=pulumi.get(__ret__, 'token'),
         type=pulumi.get(__ret__, 'type'),
         verification_method=pulumi.get(__ret__, 'verification_method'))
-
-
-@_utilities.lift_output_func(get_token)
 def get_token_output(identifier: Optional[pulumi.Input[str]] = None,
                      type: Optional[pulumi.Input[str]] = None,
                      verification_method: Optional[pulumi.Input[str]] = None,
@@ -218,4 +215,15 @@ def get_token_output(identifier: Optional[pulumi.Input[str]] = None,
            
            - - -
     """
-    ...
+    __args__ = dict()
+    __args__['identifier'] = identifier
+    __args__['type'] = type
+    __args__['verificationMethod'] = verification_method
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:siteverification/getToken:getToken', __args__, opts=opts, typ=GetTokenResult)
+    return __ret__.apply(lambda __response__: GetTokenResult(
+        id=pulumi.get(__response__, 'id'),
+        identifier=pulumi.get(__response__, 'identifier'),
+        token=pulumi.get(__response__, 'token'),
+        type=pulumi.get(__response__, 'type'),
+        verification_method=pulumi.get(__response__, 'verification_method')))

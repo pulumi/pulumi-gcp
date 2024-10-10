@@ -141,9 +141,6 @@ def get_cluster(name: Optional[str] = None,
         parent=pulumi.get(__ret__, 'parent'),
         state=pulumi.get(__ret__, 'state'),
         uid=pulumi.get(__ret__, 'uid'))
-
-
-@_utilities.lift_output_func(get_cluster)
 def get_cluster_output(name: Optional[pulumi.Input[str]] = None,
                        parent: Optional[pulumi.Input[str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterResult]:
@@ -167,4 +164,16 @@ def get_cluster_output(name: Optional[pulumi.Input[str]] = None,
     :param str name: Name of the resource.
     :param str parent: The resource name of the private cloud that this cluster belongs.
     """
-    ...
+    __args__ = dict()
+    __args__['name'] = name
+    __args__['parent'] = parent
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:vmwareengine/getCluster:getCluster', __args__, opts=opts, typ=GetClusterResult)
+    return __ret__.apply(lambda __response__: GetClusterResult(
+        id=pulumi.get(__response__, 'id'),
+        management=pulumi.get(__response__, 'management'),
+        name=pulumi.get(__response__, 'name'),
+        node_type_configs=pulumi.get(__response__, 'node_type_configs'),
+        parent=pulumi.get(__response__, 'parent'),
+        state=pulumi.get(__response__, 'state'),
+        uid=pulumi.get(__response__, 'uid')))

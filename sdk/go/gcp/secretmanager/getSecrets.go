@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := secretmanager.GetSecrets(ctx, nil, nil)
+//			_, err := secretmanager.GetSecrets(ctx, &secretmanager.GetSecretsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

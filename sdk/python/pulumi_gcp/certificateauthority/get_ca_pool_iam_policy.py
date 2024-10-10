@@ -141,9 +141,6 @@ def get_ca_pool_iam_policy(ca_pool: Optional[str] = None,
         location=pulumi.get(__ret__, 'location'),
         policy_data=pulumi.get(__ret__, 'policy_data'),
         project=pulumi.get(__ret__, 'project'))
-
-
-@_utilities.lift_output_func(get_ca_pool_iam_policy)
 def get_ca_pool_iam_policy_output(ca_pool: Optional[pulumi.Input[str]] = None,
                                   location: Optional[pulumi.Input[Optional[str]]] = None,
                                   project: Optional[pulumi.Input[Optional[str]]] = None,
@@ -170,4 +167,16 @@ def get_ca_pool_iam_policy_output(ca_pool: Optional[pulumi.Input[str]] = None,
     :param str project: The ID of the project in which the resource belongs.
            If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
     """
-    ...
+    __args__ = dict()
+    __args__['caPool'] = ca_pool
+    __args__['location'] = location
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:certificateauthority/getCaPoolIamPolicy:getCaPoolIamPolicy', __args__, opts=opts, typ=GetCaPoolIamPolicyResult)
+    return __ret__.apply(lambda __response__: GetCaPoolIamPolicyResult(
+        ca_pool=pulumi.get(__response__, 'ca_pool'),
+        etag=pulumi.get(__response__, 'etag'),
+        id=pulumi.get(__response__, 'id'),
+        location=pulumi.get(__response__, 'location'),
+        policy_data=pulumi.get(__response__, 'policy_data'),
+        project=pulumi.get(__response__, 'project')))

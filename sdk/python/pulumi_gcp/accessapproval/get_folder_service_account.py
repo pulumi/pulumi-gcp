@@ -120,9 +120,6 @@ def get_folder_service_account(folder_id: Optional[str] = None,
         folder_id=pulumi.get(__ret__, 'folder_id'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'))
-
-
-@_utilities.lift_output_func(get_folder_service_account)
 def get_folder_service_account_output(folder_id: Optional[pulumi.Input[str]] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFolderServiceAccountResult]:
     """
@@ -150,4 +147,12 @@ def get_folder_service_account_output(folder_id: Optional[pulumi.Input[str]] = N
 
     :param str folder_id: The folder ID the service account was created for.
     """
-    ...
+    __args__ = dict()
+    __args__['folderId'] = folder_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:accessapproval/getFolderServiceAccount:getFolderServiceAccount', __args__, opts=opts, typ=GetFolderServiceAccountResult)
+    return __ret__.apply(lambda __response__: GetFolderServiceAccountResult(
+        account_email=pulumi.get(__response__, 'account_email'),
+        folder_id=pulumi.get(__response__, 'folder_id'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name')))

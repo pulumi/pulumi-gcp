@@ -294,9 +294,6 @@ def get_s_quota_info(parent: Optional[str] = None,
         refresh_interval=pulumi.get(__ret__, 'refresh_interval'),
         service=pulumi.get(__ret__, 'service'),
         service_request_quota_uri=pulumi.get(__ret__, 'service_request_quota_uri'))
-
-
-@_utilities.lift_output_func(get_s_quota_info)
 def get_s_quota_info_output(parent: Optional[pulumi.Input[str]] = None,
                             quota_id: Optional[pulumi.Input[str]] = None,
                             service: Optional[pulumi.Input[str]] = None,
@@ -320,4 +317,28 @@ def get_s_quota_info_output(parent: Optional[pulumi.Input[str]] = None,
     :param str quota_id: The id of the quota, which is unique within the service.
     :param str service: The name of the service in which the quota is defined.
     """
-    ...
+    __args__ = dict()
+    __args__['parent'] = parent
+    __args__['quotaId'] = quota_id
+    __args__['service'] = service
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:cloudquota/getSQuotaInfo:getSQuotaInfo', __args__, opts=opts, typ=GetSQuotaInfoResult)
+    return __ret__.apply(lambda __response__: GetSQuotaInfoResult(
+        container_type=pulumi.get(__response__, 'container_type'),
+        dimensions=pulumi.get(__response__, 'dimensions'),
+        dimensions_infos=pulumi.get(__response__, 'dimensions_infos'),
+        id=pulumi.get(__response__, 'id'),
+        is_concurrent=pulumi.get(__response__, 'is_concurrent'),
+        is_fixed=pulumi.get(__response__, 'is_fixed'),
+        is_precise=pulumi.get(__response__, 'is_precise'),
+        metric=pulumi.get(__response__, 'metric'),
+        metric_display_name=pulumi.get(__response__, 'metric_display_name'),
+        metric_unit=pulumi.get(__response__, 'metric_unit'),
+        name=pulumi.get(__response__, 'name'),
+        parent=pulumi.get(__response__, 'parent'),
+        quota_display_name=pulumi.get(__response__, 'quota_display_name'),
+        quota_id=pulumi.get(__response__, 'quota_id'),
+        quota_increase_eligibilities=pulumi.get(__response__, 'quota_increase_eligibilities'),
+        refresh_interval=pulumi.get(__response__, 'refresh_interval'),
+        service=pulumi.get(__response__, 'service'),
+        service_request_quota_uri=pulumi.get(__response__, 'service_request_quota_uri')))

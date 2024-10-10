@@ -75,7 +75,7 @@ import (
 //			_, err := secretmanager.NewSecret(ctx, "secret-basic", &secretmanager.SecretArgs{
 //				SecretId: pulumi.String("secret-name"),
 //				Replication: &secretmanager.SecretReplicationArgs{
-//					Auto: nil,
+//					Auto: &secretmanager.SecretReplicationAutoArgs{},
 //				},
 //			})
 //			if err != nil {

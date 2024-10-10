@@ -153,9 +153,6 @@ def get_discovered_service(location: Optional[str] = None,
         service_properties=pulumi.get(__ret__, 'service_properties'),
         service_references=pulumi.get(__ret__, 'service_references'),
         service_uri=pulumi.get(__ret__, 'service_uri'))
-
-
-@_utilities.lift_output_func(get_discovered_service)
 def get_discovered_service_output(location: Optional[pulumi.Input[str]] = None,
                                   project: Optional[pulumi.Input[Optional[str]]] = None,
                                   service_uri: Optional[pulumi.Input[str]] = None,
@@ -178,4 +175,17 @@ def get_discovered_service_output(location: Optional[pulumi.Input[str]] = None,
     :param str project: The host project of the discovered service.
     :param str service_uri: The uri of the service.
     """
-    ...
+    __args__ = dict()
+    __args__['location'] = location
+    __args__['project'] = project
+    __args__['serviceUri'] = service_uri
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:apphub/getDiscoveredService:getDiscoveredService', __args__, opts=opts, typ=GetDiscoveredServiceResult)
+    return __ret__.apply(lambda __response__: GetDiscoveredServiceResult(
+        id=pulumi.get(__response__, 'id'),
+        location=pulumi.get(__response__, 'location'),
+        name=pulumi.get(__response__, 'name'),
+        project=pulumi.get(__response__, 'project'),
+        service_properties=pulumi.get(__response__, 'service_properties'),
+        service_references=pulumi.get(__response__, 'service_references'),
+        service_uri=pulumi.get(__response__, 'service_uri')))

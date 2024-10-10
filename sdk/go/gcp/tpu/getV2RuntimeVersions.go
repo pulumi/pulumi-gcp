@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := tpu.GetV2RuntimeVersions(ctx, nil, nil)
+//			_, err := tpu.GetV2RuntimeVersions(ctx, &tpu.GetV2RuntimeVersionsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -51,7 +51,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			available, err := tpu.GetV2RuntimeVersions(ctx, nil, nil)
+//			available, err := tpu.GetV2RuntimeVersions(ctx, &tpu.GetV2RuntimeVersionsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

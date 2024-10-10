@@ -236,9 +236,6 @@ def get_function(location: Optional[str] = None,
         state=pulumi.get(__ret__, 'state'),
         update_time=pulumi.get(__ret__, 'update_time'),
         url=pulumi.get(__ret__, 'url'))
-
-
-@_utilities.lift_output_func(get_function)
 def get_function_output(location: Optional[pulumi.Input[str]] = None,
                         name: Optional[pulumi.Input[str]] = None,
                         project: Optional[pulumi.Input[Optional[str]]] = None,
@@ -266,4 +263,26 @@ def get_function_output(location: Optional[pulumi.Input[str]] = None,
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     """
-    ...
+    __args__ = dict()
+    __args__['location'] = location
+    __args__['name'] = name
+    __args__['project'] = project
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:cloudfunctionsv2/getFunction:getFunction', __args__, opts=opts, typ=GetFunctionResult)
+    return __ret__.apply(lambda __response__: GetFunctionResult(
+        build_configs=pulumi.get(__response__, 'build_configs'),
+        description=pulumi.get(__response__, 'description'),
+        effective_labels=pulumi.get(__response__, 'effective_labels'),
+        environment=pulumi.get(__response__, 'environment'),
+        event_triggers=pulumi.get(__response__, 'event_triggers'),
+        id=pulumi.get(__response__, 'id'),
+        kms_key_name=pulumi.get(__response__, 'kms_key_name'),
+        labels=pulumi.get(__response__, 'labels'),
+        location=pulumi.get(__response__, 'location'),
+        name=pulumi.get(__response__, 'name'),
+        project=pulumi.get(__response__, 'project'),
+        pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
+        service_configs=pulumi.get(__response__, 'service_configs'),
+        state=pulumi.get(__response__, 'state'),
+        update_time=pulumi.get(__response__, 'update_time'),
+        url=pulumi.get(__response__, 'url')))

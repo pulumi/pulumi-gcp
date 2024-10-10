@@ -109,9 +109,6 @@ def get_iam_policy(folder: Optional[str] = None,
         folder=pulumi.get(__ret__, 'folder'),
         id=pulumi.get(__ret__, 'id'),
         policy_data=pulumi.get(__ret__, 'policy_data'))
-
-
-@_utilities.lift_output_func(get_iam_policy)
 def get_iam_policy_output(folder: Optional[pulumi.Input[str]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIamPolicyResult]:
     """
@@ -129,4 +126,12 @@ def get_iam_policy_output(folder: Optional[pulumi.Input[str]] = None,
 
     :param str folder: The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
     """
-    ...
+    __args__ = dict()
+    __args__['folder'] = folder
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:folder/getIamPolicy:getIamPolicy', __args__, opts=opts, typ=GetIamPolicyResult)
+    return __ret__.apply(lambda __response__: GetIamPolicyResult(
+        etag=pulumi.get(__response__, 'etag'),
+        folder=pulumi.get(__response__, 'folder'),
+        id=pulumi.get(__response__, 'id'),
+        policy_data=pulumi.get(__response__, 'policy_data')))

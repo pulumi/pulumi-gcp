@@ -141,9 +141,6 @@ def get_project_service(project: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         project=pulumi.get(__ret__, 'project'),
         service=pulumi.get(__ret__, 'service'))
-
-
-@_utilities.lift_output_func(get_project_service)
 def get_project_service_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                                service: Optional[pulumi.Input[str]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectServiceResult]:
@@ -178,4 +175,15 @@ def get_project_service_output(project: Optional[pulumi.Input[Optional[str]]] = 
            
            - - -
     """
-    ...
+    __args__ = dict()
+    __args__['project'] = project
+    __args__['service'] = service
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('gcp:projects/getProjectService:getProjectService', __args__, opts=opts, typ=GetProjectServiceResult)
+    return __ret__.apply(lambda __response__: GetProjectServiceResult(
+        check_if_service_has_usage_on_destroy=pulumi.get(__response__, 'check_if_service_has_usage_on_destroy'),
+        disable_dependent_services=pulumi.get(__response__, 'disable_dependent_services'),
+        disable_on_destroy=pulumi.get(__response__, 'disable_on_destroy'),
+        id=pulumi.get(__response__, 'id'),
+        project=pulumi.get(__response__, 'project'),
+        service=pulumi.get(__response__, 'service')))
