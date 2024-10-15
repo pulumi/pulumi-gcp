@@ -266,19 +266,6 @@ index c9b952fde..a17feabfb 100644
  `google_bigtable_instance` resource. If these values are changing, use a new
  `cluster_id`.
  
-diff --git a/website/docs/r/bigtable_instance_iam.html.markdown b/website/docs/r/bigtable_instance_iam.html.markdown
-index 17a16b9f2..34943f39b 100644
---- a/website/docs/r/bigtable_instance_iam.html.markdown
-+++ b/website/docs/r/bigtable_instance_iam.html.markdown
-@@ -84,7 +84,7 @@ For `google_bigtable_instance_iam_member` or `google_bigtable_instance_iam_bindi
- - - -
- 
- * `project` - (Optional) The project in which the instance belongs. If it
--    is not provided, Terraform will use the provider default.
-+    is not provided, a default will be supplied.
- 
- ## Attributes Reference
- 
 diff --git a/website/docs/r/bigtable_table.html.markdown b/website/docs/r/bigtable_table.html.markdown
 index 33185542a..1d8219fe6 100644
 --- a/website/docs/r/bigtable_table.html.markdown
@@ -682,7 +669,7 @@ index f9cad9040..243ba6fd0 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_instance.html.markdown b/website/docs/r/compute_instance.html.markdown
-index ab0e0f752..21590348d 100644
+index 9f51d2dfa..2e130da94 100644
 --- a/website/docs/r/compute_instance.html.markdown
 +++ b/website/docs/r/compute_instance.html.markdown
 @@ -138,7 +138,7 @@ The following arguments are supported:
@@ -839,7 +826,7 @@ index fe6888f17..64fce6636 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_instance_template.html.markdown b/website/docs/r/compute_instance_template.html.markdown
-index e02439fe1..8e715aedd 100644
+index afe75854b..6097d6cb3 100644
 --- a/website/docs/r/compute_instance_template.html.markdown
 +++ b/website/docs/r/compute_instance_template.html.markdown
 @@ -183,12 +183,11 @@ resource "google_compute_instance_template" "foobar" {
@@ -910,7 +897,7 @@ index e02439fe1..8e715aedd 100644
 -    not work unless you are running Terraform can send traffic to the instance's
 +    not work unless you can send traffic to the instance's
      network (e.g. via tunnel or because it is running on another cloud instance
-     on that network). This block can be repeated multiple times. Structure [documented below](#nested_access_config).
+     on that network). This block can be specified once per `network_interface`. Structure [documented below](#nested_access_config).
  
 diff --git a/website/docs/r/compute_machine_image.html.markdown b/website/docs/r/compute_machine_image.html.markdown
 index 9bfd222cc..14499f58d 100644
@@ -1595,7 +1582,7 @@ index f18c91533..924ad4cc0 100644
  <div class = "oics-button" style="float: right; margin: 0 0 -15px">
    <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md&cloudshell_working_dir=vpn_tunnel_basic&open_in_editor=main.tf" target="_blank">
 diff --git a/website/docs/r/container_cluster.html.markdown b/website/docs/r/container_cluster.html.markdown
-index 512283c15..9c53460c1 100644
+index cb9e51a02..e25c46c60 100644
 --- a/website/docs/r/container_cluster.html.markdown
 +++ b/website/docs/r/container_cluster.html.markdown
 @@ -13,15 +13,12 @@ To get more information about GKE clusters, see:

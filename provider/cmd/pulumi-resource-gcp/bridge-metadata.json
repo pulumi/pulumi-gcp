@@ -21661,6 +21661,9 @@
                 "current": "gcp:networkconnectivity/internalRange:InternalRange",
                 "majorVersion": 8,
                 "fields": {
+                    "migration": {
+                        "maxItemsOne": true
+                    },
                     "overlaps": {
                         "maxItemsOne": false
                     },
@@ -25573,6 +25576,10 @@
             },
             "google_secret_manager_secret_version": {
                 "current": "gcp:secretmanager/secretVersion:SecretVersion",
+                "majorVersion": 8
+            },
+            "google_secure_source_manager_branch_rule": {
+                "current": "gcp:securesourcemanager/branchRule:BranchRule",
                 "majorVersion": 8
             },
             "google_secure_source_manager_instance": {
@@ -35528,6 +35535,7 @@
             "gcp:secretmanager/secretIamMember:SecretIamMember": 0,
             "gcp:secretmanager/secretIamPolicy:SecretIamPolicy": 0,
             "gcp:secretmanager/secretVersion:SecretVersion": 0,
+            "gcp:securesourcemanager/branchRule:BranchRule": 0,
             "gcp:securesourcemanager/instance:Instance": 0,
             "gcp:securesourcemanager/instanceIamBinding:InstanceIamBinding": 0,
             "gcp:securesourcemanager/instanceIamMember:InstanceIamMember": 0,
