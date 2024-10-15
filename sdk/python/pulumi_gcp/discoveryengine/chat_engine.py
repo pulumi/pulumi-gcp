@@ -455,6 +455,38 @@ class ChatEngine(pulumi.CustomResource):
                 },
             })
         ```
+        ### Discoveryengine Chat Engine Existing Dialogflow Agent
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test_data_store = gcp.discoveryengine.DataStore("test_data_store",
+            location="global",
+            data_store_id="data-store",
+            display_name="Structured datastore",
+            industry_vertical="GENERIC",
+            content_config="NO_CONTENT",
+            solution_types=["SOLUTION_TYPE_CHAT"])
+        agent = gcp.diagflow.CxAgent("agent",
+            display_name="dialogflowcx-agent",
+            location="global",
+            default_language_code="en",
+            time_zone="America/Los_Angeles")
+        primary = gcp.discoveryengine.ChatEngine("primary",
+            engine_id="chat-engine-id",
+            collection_id="default_collection",
+            location=test_data_store.location,
+            display_name="Chat engine",
+            industry_vertical="GENERIC",
+            data_store_ids=[test_data_store.data_store_id],
+            common_config={
+                "company_name": "test-company",
+            },
+            chat_engine_config={
+                "dialogflow_agent_to_link": agent.id,
+            })
+        ```
 
         ## Import
 
@@ -549,6 +581,38 @@ class ChatEngine(pulumi.CustomResource):
                     "default_language_code": "en",
                     "time_zone": "America/Los_Angeles",
                 },
+            })
+        ```
+        ### Discoveryengine Chat Engine Existing Dialogflow Agent
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test_data_store = gcp.discoveryengine.DataStore("test_data_store",
+            location="global",
+            data_store_id="data-store",
+            display_name="Structured datastore",
+            industry_vertical="GENERIC",
+            content_config="NO_CONTENT",
+            solution_types=["SOLUTION_TYPE_CHAT"])
+        agent = gcp.diagflow.CxAgent("agent",
+            display_name="dialogflowcx-agent",
+            location="global",
+            default_language_code="en",
+            time_zone="America/Los_Angeles")
+        primary = gcp.discoveryengine.ChatEngine("primary",
+            engine_id="chat-engine-id",
+            collection_id="default_collection",
+            location=test_data_store.location,
+            display_name="Chat engine",
+            industry_vertical="GENERIC",
+            data_store_ids=[test_data_store.data_store_id],
+            common_config={
+                "company_name": "test-company",
+            },
+            chat_engine_config={
+                "dialogflow_agent_to_link": agent.id,
             })
         ```
 

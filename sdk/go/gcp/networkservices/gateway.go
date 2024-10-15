@@ -421,6 +421,9 @@ type Gateway struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	// The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
+	// Possible values are: `NEXT_HOP_ROUTING_MODE`.
+	RoutingMode pulumi.StringPtrOutput `pulumi:"routingMode"`
 	// Immutable. Scope determines how configuration across multiple Gateway instances are merged.
 	// The configuration for multiple Gateway instances with the same scope will be merged as presented as
 	// a single coniguration to the proxy/load balancer.
@@ -528,6 +531,9 @@ type gatewayState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
+	// Possible values are: `NEXT_HOP_ROUTING_MODE`.
+	RoutingMode *string `pulumi:"routingMode"`
 	// Immutable. Scope determines how configuration across multiple Gateway instances are merged.
 	// The configuration for multiple Gateway instances with the same scope will be merged as presented as
 	// a single coniguration to the proxy/load balancer.
@@ -595,6 +601,9 @@ type GatewayState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
+	// The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
+	// Possible values are: `NEXT_HOP_ROUTING_MODE`.
+	RoutingMode pulumi.StringPtrInput
 	// Immutable. Scope determines how configuration across multiple Gateway instances are merged.
 	// The configuration for multiple Gateway instances with the same scope will be merged as presented as
 	// a single coniguration to the proxy/load balancer.
@@ -659,6 +668,9 @@ type gatewayArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
+	// Possible values are: `NEXT_HOP_ROUTING_MODE`.
+	RoutingMode *string `pulumi:"routingMode"`
 	// Immutable. Scope determines how configuration across multiple Gateway instances are merged.
 	// The configuration for multiple Gateway instances with the same scope will be merged as presented as
 	// a single coniguration to the proxy/load balancer.
@@ -716,6 +728,9 @@ type GatewayArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
+	// Possible values are: `NEXT_HOP_ROUTING_MODE`.
+	RoutingMode pulumi.StringPtrInput
 	// Immutable. Scope determines how configuration across multiple Gateway instances are merged.
 	// The configuration for multiple Gateway instances with the same scope will be merged as presented as
 	// a single coniguration to the proxy/load balancer.
@@ -905,6 +920,12 @@ func (o GatewayOutput) Project() pulumi.StringOutput {
 // and default labels configured on the provider.
 func (o GatewayOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
+// The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
+// Possible values are: `NEXT_HOP_ROUTING_MODE`.
+func (o GatewayOutput) RoutingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringPtrOutput { return v.RoutingMode }).(pulumi.StringPtrOutput)
 }
 
 // Immutable. Scope determines how configuration across multiple Gateway instances are merged.

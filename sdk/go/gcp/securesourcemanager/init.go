@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:securesourcemanager/branchRule:BranchRule":
+		r = &BranchRule{}
 	case "gcp:securesourcemanager/instance:Instance":
 		r = &Instance{}
 	case "gcp:securesourcemanager/instanceIamBinding:InstanceIamBinding":
@@ -50,6 +52,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"securesourcemanager/branchRule",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"securesourcemanager/instance",

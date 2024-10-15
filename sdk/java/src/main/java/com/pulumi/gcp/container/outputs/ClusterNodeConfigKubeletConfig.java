@@ -31,6 +31,8 @@ public final class ClusterNodeConfigKubeletConfig {
      * @return The CPU management policy on the node. See
      * [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
      * One of `&#34;none&#34;` or `&#34;static&#34;`. If unset (or set to the empty string `&#34;&#34;`), the API will treat the field as if set to &#34;none&#34;.
+     * Prior to the 6.4.0 this field was marked as required. The workaround for the required field
+     * is setting the empty string `&#34;&#34;`, which will function identically to not setting this field.
      * 
      */
     private @Nullable String cpuManagerPolicy;
@@ -68,6 +70,8 @@ public final class ClusterNodeConfigKubeletConfig {
      * @return The CPU management policy on the node. See
      * [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
      * One of `&#34;none&#34;` or `&#34;static&#34;`. If unset (or set to the empty string `&#34;&#34;`), the API will treat the field as if set to &#34;none&#34;.
+     * Prior to the 6.4.0 this field was marked as required. The workaround for the required field
+     * is setting the empty string `&#34;&#34;`, which will function identically to not setting this field.
      * 
      */
     public Optional<String> cpuManagerPolicy() {

@@ -45,6 +45,8 @@ class ChatEngineChatEngineConfig(dict):
         suggest = None
         if key == "agentCreationConfig":
             suggest = "agent_creation_config"
+        elif key == "dialogflowAgentToLink":
+            suggest = "dialogflow_agent_to_link"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ChatEngineChatEngineConfig. Access the value via the '{suggest}' property getter instead.")
@@ -58,21 +60,38 @@ class ChatEngineChatEngineConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 agent_creation_config: 'outputs.ChatEngineChatEngineConfigAgentCreationConfig'):
+                 agent_creation_config: Optional['outputs.ChatEngineChatEngineConfigAgentCreationConfig'] = None,
+                 dialogflow_agent_to_link: Optional[str] = None):
         """
         :param 'ChatEngineChatEngineConfigAgentCreationConfigArgs' agent_creation_config: The configuration to generate the Dialogflow agent that is associated to this Engine.
+               Exactly one of `agent_creation_config` or `dialogflow_agent_to_link` must be set.
                Structure is documented below.
+        :param str dialogflow_agent_to_link: The resource name of an existing Dialogflow agent to link to this Chat Engine. Format: `projects/<Project_ID>/locations/<Location_ID>/agents/<Agent_ID>`.
+               Exactly one of `agent_creation_config` or `dialogflow_agent_to_link` must be set.
         """
-        pulumi.set(__self__, "agent_creation_config", agent_creation_config)
+        if agent_creation_config is not None:
+            pulumi.set(__self__, "agent_creation_config", agent_creation_config)
+        if dialogflow_agent_to_link is not None:
+            pulumi.set(__self__, "dialogflow_agent_to_link", dialogflow_agent_to_link)
 
     @property
     @pulumi.getter(name="agentCreationConfig")
-    def agent_creation_config(self) -> 'outputs.ChatEngineChatEngineConfigAgentCreationConfig':
+    def agent_creation_config(self) -> Optional['outputs.ChatEngineChatEngineConfigAgentCreationConfig']:
         """
         The configuration to generate the Dialogflow agent that is associated to this Engine.
+        Exactly one of `agent_creation_config` or `dialogflow_agent_to_link` must be set.
         Structure is documented below.
         """
         return pulumi.get(self, "agent_creation_config")
+
+    @property
+    @pulumi.getter(name="dialogflowAgentToLink")
+    def dialogflow_agent_to_link(self) -> Optional[str]:
+        """
+        The resource name of an existing Dialogflow agent to link to this Chat Engine. Format: `projects/<Project_ID>/locations/<Location_ID>/agents/<Agent_ID>`.
+        Exactly one of `agent_creation_config` or `dialogflow_agent_to_link` must be set.
+        """
+        return pulumi.get(self, "dialogflow_agent_to_link")
 
 
 @pulumi.output_type

@@ -205,6 +205,9 @@ namespace Pulumi.Gcp.BigTable
     [GcpResourceType("gcp:bigtable/instanceIamBinding:InstanceIamBinding")]
     public partial class InstanceIamBinding : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
+        /// </summary>
         [Output("condition")]
         public Output<Outputs.InstanceIamBindingCondition?> Condition { get; private set; } = null!;
 
@@ -235,10 +238,6 @@ namespace Pulumi.Gcp.BigTable
         [Output("members")]
         public Output<ImmutableArray<string>> Members { get; private set; } = null!;
 
-        /// <summary>
-        /// The project in which the instance belongs. If it
-        /// is not provided, a default will be supplied.
-        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -246,8 +245,6 @@ namespace Pulumi.Gcp.BigTable
         /// The role that should be applied. Only one
         /// `gcp.bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
         /// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
-        /// 
-        /// `gcp.bigtable.InstanceIamPolicy` only:
         /// </summary>
         [Output("role")]
         public Output<string> Role { get; private set; } = null!;
@@ -298,6 +295,9 @@ namespace Pulumi.Gcp.BigTable
 
     public sealed class InstanceIamBindingArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
+        /// </summary>
         [Input("condition")]
         public Input<Inputs.InstanceIamBindingConditionArgs>? Condition { get; set; }
 
@@ -328,10 +328,6 @@ namespace Pulumi.Gcp.BigTable
             set => _members = value;
         }
 
-        /// <summary>
-        /// The project in which the instance belongs. If it
-        /// is not provided, a default will be supplied.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -339,8 +335,6 @@ namespace Pulumi.Gcp.BigTable
         /// The role that should be applied. Only one
         /// `gcp.bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
         /// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
-        /// 
-        /// `gcp.bigtable.InstanceIamPolicy` only:
         /// </summary>
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
@@ -353,6 +347,9 @@ namespace Pulumi.Gcp.BigTable
 
     public sealed class InstanceIamBindingState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
+        /// </summary>
         [Input("condition")]
         public Input<Inputs.InstanceIamBindingConditionGetArgs>? Condition { get; set; }
 
@@ -389,10 +386,6 @@ namespace Pulumi.Gcp.BigTable
             set => _members = value;
         }
 
-        /// <summary>
-        /// The project in which the instance belongs. If it
-        /// is not provided, a default will be supplied.
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -400,8 +393,6 @@ namespace Pulumi.Gcp.BigTable
         /// The role that should be applied. Only one
         /// `gcp.bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
         /// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
-        /// 
-        /// `gcp.bigtable.InstanceIamPolicy` only:
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }

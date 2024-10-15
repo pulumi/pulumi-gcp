@@ -441,6 +441,13 @@ namespace Pulumi.Gcp.NetworkServices
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
+        /// The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
+        /// Possible values are: `NEXT_HOP_ROUTING_MODE`.
+        /// </summary>
+        [Output("routingMode")]
+        public Output<string?> RoutingMode { get; private set; } = null!;
+
+        /// <summary>
         /// Immutable. Scope determines how configuration across multiple Gateway instances are merged.
         /// The configuration for multiple Gateway instances with the same scope will be merged as presented as
         /// a single coniguration to the proxy/load balancer.
@@ -642,6 +649,13 @@ namespace Pulumi.Gcp.NetworkServices
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
+        /// Possible values are: `NEXT_HOP_ROUTING_MODE`.
+        /// </summary>
+        [Input("routingMode")]
+        public Input<string>? RoutingMode { get; set; }
+
+        /// <summary>
         /// Immutable. Scope determines how configuration across multiple Gateway instances are merged.
         /// The configuration for multiple Gateway instances with the same scope will be merged as presented as
         /// a single coniguration to the proxy/load balancer.
@@ -825,6 +839,13 @@ namespace Pulumi.Gcp.NetworkServices
                 _pulumiLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
+
+        /// <summary>
+        /// The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
+        /// Possible values are: `NEXT_HOP_ROUTING_MODE`.
+        /// </summary>
+        [Input("routingMode")]
+        public Input<string>? RoutingMode { get; set; }
 
         /// <summary>
         /// Immutable. Scope determines how configuration across multiple Gateway instances are merged.

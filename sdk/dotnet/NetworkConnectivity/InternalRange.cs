@@ -160,6 +160,49 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     /// });
     /// ```
+    /// ### Network Connectivity Internal Ranges Migration
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultNetwork = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "internal-ranges",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var source = new Gcp.Compute.Subnetwork("source", new()
+    ///     {
+    ///         Name = "source-subnet",
+    ///         IpCidrRange = "10.1.0.0/16",
+    ///         Region = "us-central1",
+    ///         Network = defaultNetwork.Name,
+    ///     });
+    /// 
+    ///     var targetProject = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var @default = new Gcp.NetworkConnectivity.InternalRange("default", new()
+    ///     {
+    ///         Name = "migration",
+    ///         Description = "Test internal range",
+    ///         Network = defaultNetwork.SelfLink,
+    ///         Usage = "FOR_MIGRATION",
+    ///         Peering = "FOR_SELF",
+    ///         IpCidrRange = "10.1.0.0/16",
+    ///         Migration = new Gcp.NetworkConnectivity.Inputs.InternalRangeMigrationArgs
+    ///         {
+    ///             Source = source.SelfLink,
+    ///             Target = $"projects/{targetProject.Apply(getProjectResult =&gt; getProjectResult.ProjectId)}/regions/us-central1/subnetworks/target-subnet",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -214,6 +257,13 @@ namespace Pulumi.Gcp.NetworkConnectivity
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// Specification for migration with source and target resource names.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("migration")]
+        public Output<Outputs.InternalRangeMigration?> Migration { get; private set; } = null!;
 
         /// <summary>
         /// The name of the policy based route.
@@ -274,7 +324,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
 
         /// <summary>
         /// The type of usage set for this InternalRange.
-        /// Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`.
+        /// Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`, `FOR_MIGRATION`.
         /// </summary>
         [Output("usage")]
         public Output<string> Usage { get; private set; } = null!;
@@ -366,6 +416,13 @@ namespace Pulumi.Gcp.NetworkConnectivity
         }
 
         /// <summary>
+        /// Specification for migration with source and target resource names.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("migration")]
+        public Input<Inputs.InternalRangeMigrationArgs>? Migration { get; set; }
+
+        /// <summary>
         /// The name of the policy based route.
         /// </summary>
         [Input("name")]
@@ -429,7 +486,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
 
         /// <summary>
         /// The type of usage set for this InternalRange.
-        /// Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`.
+        /// Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`, `FOR_MIGRATION`.
         /// </summary>
         [Input("usage", required: true)]
         public Input<string> Usage { get; set; } = null!;
@@ -484,6 +541,13 @@ namespace Pulumi.Gcp.NetworkConnectivity
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
+
+        /// <summary>
+        /// Specification for migration with source and target resource names.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("migration")]
+        public Input<Inputs.InternalRangeMigrationGetArgs>? Migration { get; set; }
 
         /// <summary>
         /// The name of the policy based route.
@@ -566,7 +630,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
 
         /// <summary>
         /// The type of usage set for this InternalRange.
-        /// Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`.
+        /// Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`, `FOR_MIGRATION`.
         /// </summary>
         [Input("usage")]
         public Input<string>? Usage { get; set; }

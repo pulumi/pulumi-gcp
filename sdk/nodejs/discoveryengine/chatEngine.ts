@@ -61,6 +61,41 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Discoveryengine Chat Engine Existing Dialogflow Agent
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const testDataStore = new gcp.discoveryengine.DataStore("test_data_store", {
+ *     location: "global",
+ *     dataStoreId: "data-store",
+ *     displayName: "Structured datastore",
+ *     industryVertical: "GENERIC",
+ *     contentConfig: "NO_CONTENT",
+ *     solutionTypes: ["SOLUTION_TYPE_CHAT"],
+ * });
+ * const agent = new gcp.diagflow.CxAgent("agent", {
+ *     displayName: "dialogflowcx-agent",
+ *     location: "global",
+ *     defaultLanguageCode: "en",
+ *     timeZone: "America/Los_Angeles",
+ * });
+ * const primary = new gcp.discoveryengine.ChatEngine("primary", {
+ *     engineId: "chat-engine-id",
+ *     collectionId: "default_collection",
+ *     location: testDataStore.location,
+ *     displayName: "Chat engine",
+ *     industryVertical: "GENERIC",
+ *     dataStoreIds: [testDataStore.dataStoreId],
+ *     commonConfig: {
+ *         companyName: "test-company",
+ *     },
+ *     chatEngineConfig: {
+ *         dialogflowAgentToLink: agent.id,
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

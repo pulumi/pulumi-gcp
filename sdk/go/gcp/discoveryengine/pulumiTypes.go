@@ -15,8 +15,12 @@ var _ = internal.GetEnvOrDefault
 
 type ChatEngineChatEngineConfig struct {
 	// The configuration to generate the Dialogflow agent that is associated to this Engine.
+	// Exactly one of `agentCreationConfig` or `dialogflowAgentToLink` must be set.
 	// Structure is documented below.
-	AgentCreationConfig ChatEngineChatEngineConfigAgentCreationConfig `pulumi:"agentCreationConfig"`
+	AgentCreationConfig *ChatEngineChatEngineConfigAgentCreationConfig `pulumi:"agentCreationConfig"`
+	// The resource name of an existing Dialogflow agent to link to this Chat Engine. Format: `projects/<Project_ID>/locations/<Location_ID>/agents/<Agent_ID>`.
+	// Exactly one of `agentCreationConfig` or `dialogflowAgentToLink` must be set.
+	DialogflowAgentToLink *string `pulumi:"dialogflowAgentToLink"`
 }
 
 // ChatEngineChatEngineConfigInput is an input type that accepts ChatEngineChatEngineConfigArgs and ChatEngineChatEngineConfigOutput values.
@@ -32,8 +36,12 @@ type ChatEngineChatEngineConfigInput interface {
 
 type ChatEngineChatEngineConfigArgs struct {
 	// The configuration to generate the Dialogflow agent that is associated to this Engine.
+	// Exactly one of `agentCreationConfig` or `dialogflowAgentToLink` must be set.
 	// Structure is documented below.
-	AgentCreationConfig ChatEngineChatEngineConfigAgentCreationConfigInput `pulumi:"agentCreationConfig"`
+	AgentCreationConfig ChatEngineChatEngineConfigAgentCreationConfigPtrInput `pulumi:"agentCreationConfig"`
+	// The resource name of an existing Dialogflow agent to link to this Chat Engine. Format: `projects/<Project_ID>/locations/<Location_ID>/agents/<Agent_ID>`.
+	// Exactly one of `agentCreationConfig` or `dialogflowAgentToLink` must be set.
+	DialogflowAgentToLink pulumi.StringPtrInput `pulumi:"dialogflowAgentToLink"`
 }
 
 func (ChatEngineChatEngineConfigArgs) ElementType() reflect.Type {
@@ -114,11 +122,18 @@ func (o ChatEngineChatEngineConfigOutput) ToChatEngineChatEngineConfigPtrOutputW
 }
 
 // The configuration to generate the Dialogflow agent that is associated to this Engine.
+// Exactly one of `agentCreationConfig` or `dialogflowAgentToLink` must be set.
 // Structure is documented below.
-func (o ChatEngineChatEngineConfigOutput) AgentCreationConfig() ChatEngineChatEngineConfigAgentCreationConfigOutput {
-	return o.ApplyT(func(v ChatEngineChatEngineConfig) ChatEngineChatEngineConfigAgentCreationConfig {
+func (o ChatEngineChatEngineConfigOutput) AgentCreationConfig() ChatEngineChatEngineConfigAgentCreationConfigPtrOutput {
+	return o.ApplyT(func(v ChatEngineChatEngineConfig) *ChatEngineChatEngineConfigAgentCreationConfig {
 		return v.AgentCreationConfig
-	}).(ChatEngineChatEngineConfigAgentCreationConfigOutput)
+	}).(ChatEngineChatEngineConfigAgentCreationConfigPtrOutput)
+}
+
+// The resource name of an existing Dialogflow agent to link to this Chat Engine. Format: `projects/<Project_ID>/locations/<Location_ID>/agents/<Agent_ID>`.
+// Exactly one of `agentCreationConfig` or `dialogflowAgentToLink` must be set.
+func (o ChatEngineChatEngineConfigOutput) DialogflowAgentToLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ChatEngineChatEngineConfig) *string { return v.DialogflowAgentToLink }).(pulumi.StringPtrOutput)
 }
 
 type ChatEngineChatEngineConfigPtrOutput struct{ *pulumi.OutputState }
@@ -146,14 +161,26 @@ func (o ChatEngineChatEngineConfigPtrOutput) Elem() ChatEngineChatEngineConfigOu
 }
 
 // The configuration to generate the Dialogflow agent that is associated to this Engine.
+// Exactly one of `agentCreationConfig` or `dialogflowAgentToLink` must be set.
 // Structure is documented below.
 func (o ChatEngineChatEngineConfigPtrOutput) AgentCreationConfig() ChatEngineChatEngineConfigAgentCreationConfigPtrOutput {
 	return o.ApplyT(func(v *ChatEngineChatEngineConfig) *ChatEngineChatEngineConfigAgentCreationConfig {
 		if v == nil {
 			return nil
 		}
-		return &v.AgentCreationConfig
+		return v.AgentCreationConfig
 	}).(ChatEngineChatEngineConfigAgentCreationConfigPtrOutput)
+}
+
+// The resource name of an existing Dialogflow agent to link to this Chat Engine. Format: `projects/<Project_ID>/locations/<Location_ID>/agents/<Agent_ID>`.
+// Exactly one of `agentCreationConfig` or `dialogflowAgentToLink` must be set.
+func (o ChatEngineChatEngineConfigPtrOutput) DialogflowAgentToLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ChatEngineChatEngineConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DialogflowAgentToLink
+	}).(pulumi.StringPtrOutput)
 }
 
 type ChatEngineChatEngineConfigAgentCreationConfig struct {

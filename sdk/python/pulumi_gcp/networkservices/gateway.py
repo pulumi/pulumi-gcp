@@ -31,6 +31,7 @@ class GatewayArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 routing_mode: Optional[pulumi.Input[str]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
                  server_tls_policy: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None):
@@ -66,6 +67,8 @@ class GatewayArgs:
                Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] routing_mode: The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
+               Possible values are: `NEXT_HOP_ROUTING_MODE`.
         :param pulumi.Input[str] scope: Immutable. Scope determines how configuration across multiple Gateway instances are merged.
                The configuration for multiple Gateway instances with the same scope will be merged as presented as
                a single coniguration to the proxy/load balancer.
@@ -98,6 +101,8 @@ class GatewayArgs:
             pulumi.set(__self__, "network", network)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if routing_mode is not None:
+            pulumi.set(__self__, "routing_mode", routing_mode)
         if scope is not None:
             pulumi.set(__self__, "scope", scope)
         if server_tls_policy is not None:
@@ -268,6 +273,19 @@ class GatewayArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="routingMode")
+    def routing_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
+        Possible values are: `NEXT_HOP_ROUTING_MODE`.
+        """
+        return pulumi.get(self, "routing_mode")
+
+    @routing_mode.setter
+    def routing_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "routing_mode", value)
+
+    @property
     @pulumi.getter
     def scope(self) -> Optional[pulumi.Input[str]]:
         """
@@ -327,6 +345,7 @@ class _GatewayState:
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 routing_mode: Optional[pulumi.Input[str]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  server_tls_policy: Optional[pulumi.Input[str]] = None,
@@ -367,6 +386,8 @@ class _GatewayState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input[str] routing_mode: The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
+               Possible values are: `NEXT_HOP_ROUTING_MODE`.
         :param pulumi.Input[str] scope: Immutable. Scope determines how configuration across multiple Gateway instances are merged.
                The configuration for multiple Gateway instances with the same scope will be merged as presented as
                a single coniguration to the proxy/load balancer.
@@ -409,6 +430,8 @@ class _GatewayState:
             pulumi.set(__self__, "project", project)
         if pulumi_labels is not None:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
+        if routing_mode is not None:
+            pulumi.set(__self__, "routing_mode", routing_mode)
         if scope is not None:
             pulumi.set(__self__, "scope", scope)
         if self_link is not None:
@@ -609,6 +632,19 @@ class _GatewayState:
         pulumi.set(self, "pulumi_labels", value)
 
     @property
+    @pulumi.getter(name="routingMode")
+    def routing_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
+        Possible values are: `NEXT_HOP_ROUTING_MODE`.
+        """
+        return pulumi.get(self, "routing_mode")
+
+    @routing_mode.setter
+    def routing_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "routing_mode", value)
+
+    @property
     @pulumi.getter
     def scope(self) -> Optional[pulumi.Input[str]]:
         """
@@ -704,6 +740,7 @@ class Gateway(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 routing_mode: Optional[pulumi.Input[str]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
                  server_tls_policy: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
@@ -931,6 +968,8 @@ class Gateway(pulumi.CustomResource):
                limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] routing_mode: The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
+               Possible values are: `NEXT_HOP_ROUTING_MODE`.
         :param pulumi.Input[str] scope: Immutable. Scope determines how configuration across multiple Gateway instances are merged.
                The configuration for multiple Gateway instances with the same scope will be merged as presented as
                a single coniguration to the proxy/load balancer.
@@ -1167,6 +1206,7 @@ class Gateway(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 routing_mode: Optional[pulumi.Input[str]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
                  server_tls_policy: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
@@ -1193,6 +1233,7 @@ class Gateway(pulumi.CustomResource):
                 raise TypeError("Missing required property 'ports'")
             __props__.__dict__["ports"] = ports
             __props__.__dict__["project"] = project
+            __props__.__dict__["routing_mode"] = routing_mode
             __props__.__dict__["scope"] = scope
             __props__.__dict__["server_tls_policy"] = server_tls_policy
             __props__.__dict__["subnetwork"] = subnetwork
@@ -1230,6 +1271,7 @@ class Gateway(pulumi.CustomResource):
             ports: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            routing_mode: Optional[pulumi.Input[str]] = None,
             scope: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             server_tls_policy: Optional[pulumi.Input[str]] = None,
@@ -1275,6 +1317,8 @@ class Gateway(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input[str] routing_mode: The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
+               Possible values are: `NEXT_HOP_ROUTING_MODE`.
         :param pulumi.Input[str] scope: Immutable. Scope determines how configuration across multiple Gateway instances are merged.
                The configuration for multiple Gateway instances with the same scope will be merged as presented as
                a single coniguration to the proxy/load balancer.
@@ -1307,6 +1351,7 @@ class Gateway(pulumi.CustomResource):
         __props__.__dict__["ports"] = ports
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
+        __props__.__dict__["routing_mode"] = routing_mode
         __props__.__dict__["scope"] = scope
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["server_tls_policy"] = server_tls_policy
@@ -1444,6 +1489,15 @@ class Gateway(pulumi.CustomResource):
         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
+
+    @property
+    @pulumi.getter(name="routingMode")
+    def routing_mode(self) -> pulumi.Output[Optional[str]]:
+        """
+        The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
+        Possible values are: `NEXT_HOP_ROUTING_MODE`.
+        """
+        return pulumi.get(self, "routing_mode")
 
     @property
     @pulumi.getter

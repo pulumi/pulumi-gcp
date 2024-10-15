@@ -433,6 +433,13 @@ class InstanceIamBindingCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
+        """
+        :param str expression: Textual representation of an expression in Common Expression Language syntax.
+        :param str title: A title for the expression, i.e. a short string describing its purpose.
+        :param str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               For `bigtable.InstanceIamPolicy` only:
+        """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -441,16 +448,27 @@ class InstanceIamBindingCondition(dict):
     @property
     @pulumi.getter
     def expression(self) -> str:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
         return pulumi.get(self, "expression")
 
     @property
     @pulumi.getter
     def title(self) -> str:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
         return pulumi.get(self, "title")
 
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        For `bigtable.InstanceIamPolicy` only:
+        """
         return pulumi.get(self, "description")
 
 
@@ -460,6 +478,13 @@ class InstanceIamMemberCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
+        """
+        :param str expression: Textual representation of an expression in Common Expression Language syntax.
+        :param str title: A title for the expression, i.e. a short string describing its purpose.
+        :param str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               For `bigtable.InstanceIamPolicy` only:
+        """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -468,16 +493,27 @@ class InstanceIamMemberCondition(dict):
     @property
     @pulumi.getter
     def expression(self) -> str:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
         return pulumi.get(self, "expression")
 
     @property
     @pulumi.getter
     def title(self) -> str:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
         return pulumi.get(self, "title")
 
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        For `bigtable.InstanceIamPolicy` only:
+        """
         return pulumi.get(self, "description")
 
 

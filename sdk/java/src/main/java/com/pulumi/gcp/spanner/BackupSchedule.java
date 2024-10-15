@@ -139,6 +139,7 @@ import javax.annotation.Nullable;
  *             .config("regional-europe-west1")
  *             .displayName("main-instance")
  *             .numNodes(1)
+ *             .edition("ENTERPRISE")
  *             .build());
  * 
  *         var database = new Database("database", DatabaseArgs.builder()

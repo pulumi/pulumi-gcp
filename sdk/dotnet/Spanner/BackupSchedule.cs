@@ -92,6 +92,7 @@ namespace Pulumi.Gcp.Spanner
     ///         Config = "regional-europe-west1",
     ///         DisplayName = "main-instance",
     ///         NumNodes = 1,
+    ///         Edition = "ENTERPRISE",
     ///     });
     /// 
     ///     var database = new Gcp.Spanner.Database("database", new()

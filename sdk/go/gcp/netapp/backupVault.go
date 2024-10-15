@@ -39,7 +39,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := netapp.NewBackupVault(ctx, "test_backup_vault", &netapp.BackupVaultArgs{
 //				Name:        pulumi.String("test-backup-vault"),
-//				Location:    pulumi.String("us-central1"),
+//				Location:    pulumi.String("us-west1"),
 //				Description: pulumi.String("Terraform created vault"),
 //				Labels: pulumi.StringMap{
 //					"creator": pulumi.String("testuser"),

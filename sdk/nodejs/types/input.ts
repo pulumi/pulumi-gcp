@@ -6932,14 +6932,36 @@ export namespace bigtable {
     }
 
     export interface InstanceIamBindingCondition {
+        /**
+         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         *
+         * For `gcp.bigtable.InstanceIamPolicy` only:
+         */
         description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
         expression: pulumi.Input<string>;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
         title: pulumi.Input<string>;
     }
 
     export interface InstanceIamMemberCondition {
+        /**
+         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         *
+         * For `gcp.bigtable.InstanceIamPolicy` only:
+         */
         description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
         expression: pulumi.Input<string>;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
         title: pulumi.Input<string>;
     }
 
@@ -19449,7 +19471,7 @@ export namespace compute {
          * is not accessible from the Internet (this means that ssh provisioners will
          * not work unless you can send traffic to the instance's
          * network (e.g. via tunnel or because it is running on another cloud instance
-         * on that network). This block can be repeated multiple times. Structure documented below.
+         * on that network). This block can be specified once per `networkInterface`. Structure documented below.
          */
         accessConfigs?: pulumi.Input<pulumi.Input<inputs.compute.InstanceTemplateNetworkInterfaceAccessConfig>[]>;
         /**
@@ -31241,6 +31263,8 @@ export namespace container {
          * The CPU management policy on the node. See
          * [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
          * One of `"none"` or `"static"`. If unset (or set to the empty string `""`), the API will treat the field as if set to "none".
+         * Prior to the 6.4.0 this field was marked as required. The workaround for the required field
+         * is setting the empty string `""`, which will function identically to not setting this field.
          */
         cpuManagerPolicy?: pulumi.Input<string>;
         /**
@@ -32105,6 +32129,8 @@ export namespace container {
          * The CPU management policy on the node. See
          * [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
          * One of `"none"` or `"static"`. If unset (or set to the empty string `""`), the API will treat the field as if set to "none".
+         * Prior to the 6.4.0 this field was marked as required. The workaround for the required field
+         * is setting the empty string `""`, which will function identically to not setting this field.
          */
         cpuManagerPolicy?: pulumi.Input<string>;
         /**
@@ -48026,9 +48052,15 @@ export namespace discoveryengine {
     export interface ChatEngineChatEngineConfig {
         /**
          * The configuration to generate the Dialogflow agent that is associated to this Engine.
+         * Exactly one of `agentCreationConfig` or `dialogflowAgentToLink` must be set.
          * Structure is documented below.
          */
-        agentCreationConfig: pulumi.Input<inputs.discoveryengine.ChatEngineChatEngineConfigAgentCreationConfig>;
+        agentCreationConfig?: pulumi.Input<inputs.discoveryengine.ChatEngineChatEngineConfigAgentCreationConfig>;
+        /**
+         * The resource name of an existing Dialogflow agent to link to this Chat Engine. Format: `projects/<Project_ID>/locations/<Location_ID>/agents/<Agent_ID>`.
+         * Exactly one of `agentCreationConfig` or `dialogflowAgentToLink` must be set.
+         */
+        dialogflowAgentToLink?: pulumi.Input<string>;
     }
 
     export interface ChatEngineChatEngineConfigAgentCreationConfig {
@@ -59324,6 +59356,23 @@ export namespace networkconnectivity {
          * The URI of the VPC network.
          */
         uri?: pulumi.Input<string>;
+    }
+
+    export interface InternalRangeMigration {
+        /**
+         * Resource path as an URI of the source resource, for example a subnet.
+         * The project for the source resource should match the project for the
+         * InternalRange.
+         * An example /projects/{project}/regions/{region}/subnetworks/{subnet}
+         */
+        source: pulumi.Input<string>;
+        /**
+         * Resource path of the target resource. The target project can be
+         * different, as in the cases when migrating to peer networks. The resource
+         * may not exist yet.
+         * For example /projects/{project}/regions/{region}/subnetworks/{subnet}
+         */
+        target: pulumi.Input<string>;
     }
 
     export interface PolicyBasedRouteFilter {

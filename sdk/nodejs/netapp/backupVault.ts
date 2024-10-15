@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *
  * const testBackupVault = new gcp.netapp.BackupVault("test_backup_vault", {
  *     name: "test-backup-vault",
- *     location: "us-central1",
+ *     location: "us-west1",
  *     description: "Terraform created vault",
  *     labels: {
  *         creator: "testuser",

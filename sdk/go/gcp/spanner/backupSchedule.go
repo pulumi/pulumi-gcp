@@ -104,6 +104,7 @@ import (
 //				Config:      pulumi.String("regional-europe-west1"),
 //				DisplayName: pulumi.String("main-instance"),
 //				NumNodes:    pulumi.Int(1),
+//				Edition:     pulumi.String("ENTERPRISE"),
 //			})
 //			if err != nil {
 //				return err

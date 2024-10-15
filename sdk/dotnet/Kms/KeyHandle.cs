@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Kms
     ///     // Create Folder in GCP Organization
     ///     var autokmsFolder = new Gcp.Organizations.Folder("autokms_folder", new()
     ///     {
-    ///         DisplayName = "folder-example",
+    ///         DisplayName = "my-folder",
     ///         Parent = "organizations/123456789",
     ///         DeletionProtection = false,
     ///     });
@@ -50,8 +50,8 @@ namespace Pulumi.Gcp.Kms
     ///     // Create the resource project
     ///     var resourceProject = new Gcp.Organizations.Project("resource_project", new()
     ///     {
-    ///         ProjectId = "resources",
-    ///         Name = "resources",
+    ///         ProjectId = "res-proj",
+    ///         Name = "res-proj",
     ///         FolderId = autokmsFolder.FolderId,
     ///         BillingAccount = "000000-0000000-0000000-000000",
     ///         DeletionPolicy = "DELETE",
@@ -168,7 +168,7 @@ namespace Pulumi.Gcp.Kms
     ///     var example_keyhandle = new Gcp.Kms.KeyHandle("example-keyhandle", new()
     ///     {
     ///         Project = resourceProject.ProjectId,
-    ///         Name = "example-key-handle",
+    ///         Name = "tf-test-key-handle",
     ///         Location = "global",
     ///         ResourceTypeSelector = "storage.googleapis.com/Bucket",
     ///     }, new CustomResourceOptions

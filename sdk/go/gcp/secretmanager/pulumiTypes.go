@@ -4162,11 +4162,7 @@ type GetSecretsSecret struct {
 	Ttl string `pulumi:"ttl"`
 	// Mapping from version alias to version name.
 	VersionAliases map[string]string `pulumi:"versionAliases"`
-	// Secret Version TTL after destruction request.
-	// This is a part of the delayed delete feature on Secret Version.
-	// For secret with versionDestroyTtl>0, version destruction doesn't happen immediately
-	// on calling destroy instead the version goes to a disabled state and
-	// the actual destruction happens after this TTL expires.
+	// The version destroy ttl for the secret version.
 	VersionDestroyTtl string `pulumi:"versionDestroyTtl"`
 }
 
@@ -4216,11 +4212,7 @@ type GetSecretsSecretArgs struct {
 	Ttl pulumi.StringInput `pulumi:"ttl"`
 	// Mapping from version alias to version name.
 	VersionAliases pulumi.StringMapInput `pulumi:"versionAliases"`
-	// Secret Version TTL after destruction request.
-	// This is a part of the delayed delete feature on Secret Version.
-	// For secret with versionDestroyTtl>0, version destruction doesn't happen immediately
-	// on calling destroy instead the version goes to a disabled state and
-	// the actual destruction happens after this TTL expires.
+	// The version destroy ttl for the secret version.
 	VersionDestroyTtl pulumi.StringInput `pulumi:"versionDestroyTtl"`
 }
 
@@ -4355,11 +4347,7 @@ func (o GetSecretsSecretOutput) VersionAliases() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetSecretsSecret) map[string]string { return v.VersionAliases }).(pulumi.StringMapOutput)
 }
 
-// Secret Version TTL after destruction request.
-// This is a part of the delayed delete feature on Secret Version.
-// For secret with versionDestroyTtl>0, version destruction doesn't happen immediately
-// on calling destroy instead the version goes to a disabled state and
-// the actual destruction happens after this TTL expires.
+// The version destroy ttl for the secret version.
 func (o GetSecretsSecretOutput) VersionDestroyTtl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretsSecret) string { return v.VersionDestroyTtl }).(pulumi.StringOutput)
 }

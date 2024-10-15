@@ -966,9 +966,14 @@ func (o InstanceClusterAutoscalingConfigPtrOutput) StorageTarget() pulumi.IntPtr
 }
 
 type InstanceIamBindingCondition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// For `bigtable.InstanceIamPolicy` only:
 	Description *string `pulumi:"description"`
-	Expression  string  `pulumi:"expression"`
-	Title       string  `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
 }
 
 // InstanceIamBindingConditionInput is an input type that accepts InstanceIamBindingConditionArgs and InstanceIamBindingConditionOutput values.
@@ -983,9 +988,14 @@ type InstanceIamBindingConditionInput interface {
 }
 
 type InstanceIamBindingConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// For `bigtable.InstanceIamPolicy` only:
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression  pulumi.StringInput    `pulumi:"expression"`
-	Title       pulumi.StringInput    `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
 }
 
 func (InstanceIamBindingConditionArgs) ElementType() reflect.Type {
@@ -1065,14 +1075,19 @@ func (o InstanceIamBindingConditionOutput) ToInstanceIamBindingConditionPtrOutpu
 	}).(InstanceIamBindingConditionPtrOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// For `bigtable.InstanceIamPolicy` only:
 func (o InstanceIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o InstanceIamBindingConditionOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o InstanceIamBindingConditionOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
@@ -1101,6 +1116,9 @@ func (o InstanceIamBindingConditionPtrOutput) Elem() InstanceIamBindingCondition
 	}).(InstanceIamBindingConditionOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// For `bigtable.InstanceIamPolicy` only:
 func (o InstanceIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceIamBindingCondition) *string {
 		if v == nil {
@@ -1110,6 +1128,7 @@ func (o InstanceIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o InstanceIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceIamBindingCondition) *string {
 		if v == nil {
@@ -1119,6 +1138,7 @@ func (o InstanceIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o InstanceIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceIamBindingCondition) *string {
 		if v == nil {
@@ -1129,9 +1149,14 @@ func (o InstanceIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 type InstanceIamMemberCondition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// For `bigtable.InstanceIamPolicy` only:
 	Description *string `pulumi:"description"`
-	Expression  string  `pulumi:"expression"`
-	Title       string  `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
 }
 
 // InstanceIamMemberConditionInput is an input type that accepts InstanceIamMemberConditionArgs and InstanceIamMemberConditionOutput values.
@@ -1146,9 +1171,14 @@ type InstanceIamMemberConditionInput interface {
 }
 
 type InstanceIamMemberConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// For `bigtable.InstanceIamPolicy` only:
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression  pulumi.StringInput    `pulumi:"expression"`
-	Title       pulumi.StringInput    `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
 }
 
 func (InstanceIamMemberConditionArgs) ElementType() reflect.Type {
@@ -1228,14 +1258,19 @@ func (o InstanceIamMemberConditionOutput) ToInstanceIamMemberConditionPtrOutputW
 	}).(InstanceIamMemberConditionPtrOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// For `bigtable.InstanceIamPolicy` only:
 func (o InstanceIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o InstanceIamMemberConditionOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o InstanceIamMemberConditionOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
@@ -1264,6 +1299,9 @@ func (o InstanceIamMemberConditionPtrOutput) Elem() InstanceIamMemberConditionOu
 	}).(InstanceIamMemberConditionOutput)
 }
 
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// For `bigtable.InstanceIamPolicy` only:
 func (o InstanceIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceIamMemberCondition) *string {
 		if v == nil {
@@ -1273,6 +1311,7 @@ func (o InstanceIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o InstanceIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceIamMemberCondition) *string {
 		if v == nil {
@@ -1282,6 +1321,7 @@ func (o InstanceIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o InstanceIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceIamMemberCondition) *string {
 		if v == nil {

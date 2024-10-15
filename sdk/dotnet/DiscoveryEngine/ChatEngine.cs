@@ -85,6 +85,60 @@ namespace Pulumi.Gcp.DiscoveryEngine
     /// 
     /// });
     /// ```
+    /// ### Discoveryengine Chat Engine Existing Dialogflow Agent
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var testDataStore = new Gcp.DiscoveryEngine.DataStore("test_data_store", new()
+    ///     {
+    ///         Location = "global",
+    ///         DataStoreId = "data-store",
+    ///         DisplayName = "Structured datastore",
+    ///         IndustryVertical = "GENERIC",
+    ///         ContentConfig = "NO_CONTENT",
+    ///         SolutionTypes = new[]
+    ///         {
+    ///             "SOLUTION_TYPE_CHAT",
+    ///         },
+    ///     });
+    /// 
+    ///     var agent = new Gcp.Diagflow.CxAgent("agent", new()
+    ///     {
+    ///         DisplayName = "dialogflowcx-agent",
+    ///         Location = "global",
+    ///         DefaultLanguageCode = "en",
+    ///         TimeZone = "America/Los_Angeles",
+    ///     });
+    /// 
+    ///     var primary = new Gcp.DiscoveryEngine.ChatEngine("primary", new()
+    ///     {
+    ///         EngineId = "chat-engine-id",
+    ///         CollectionId = "default_collection",
+    ///         Location = testDataStore.Location,
+    ///         DisplayName = "Chat engine",
+    ///         IndustryVertical = "GENERIC",
+    ///         DataStoreIds = new[]
+    ///         {
+    ///             testDataStore.DataStoreId,
+    ///         },
+    ///         CommonConfig = new Gcp.DiscoveryEngine.Inputs.ChatEngineCommonConfigArgs
+    ///         {
+    ///             CompanyName = "test-company",
+    ///         },
+    ///         ChatEngineConfig = new Gcp.DiscoveryEngine.Inputs.ChatEngineChatEngineConfigArgs
+    ///         {
+    ///             DialogflowAgentToLink = agent.Id,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

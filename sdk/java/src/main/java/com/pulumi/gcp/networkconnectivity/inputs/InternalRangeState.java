@@ -5,6 +5,7 @@ package com.pulumi.gcp.networkconnectivity.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.networkconnectivity.inputs.InternalRangeMigrationArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -82,6 +83,23 @@ public final class InternalRangeState extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<Map<String,String>>> labels() {
         return Optional.ofNullable(this.labels);
+    }
+
+    /**
+     * Specification for migration with source and target resource names.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="migration")
+    private @Nullable Output<InternalRangeMigrationArgs> migration;
+
+    /**
+     * @return Specification for migration with source and target resource names.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InternalRangeMigrationArgs>> migration() {
+        return Optional.ofNullable(this.migration);
     }
 
     /**
@@ -222,7 +240,7 @@ public final class InternalRangeState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * The type of usage set for this InternalRange.
-     * Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`.
+     * Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`, `FOR_MIGRATION`.
      * 
      */
     @Import(name="usage")
@@ -230,7 +248,7 @@ public final class InternalRangeState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return The type of usage set for this InternalRange.
-     * Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`.
+     * Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`, `FOR_MIGRATION`.
      * 
      */
     public Optional<Output<String>> usage() {
@@ -263,6 +281,7 @@ public final class InternalRangeState extends com.pulumi.resources.ResourceArgs 
         this.effectiveLabels = $.effectiveLabels;
         this.ipCidrRange = $.ipCidrRange;
         this.labels = $.labels;
+        this.migration = $.migration;
         this.name = $.name;
         this.network = $.network;
         this.overlaps = $.overlaps;
@@ -381,6 +400,29 @@ public final class InternalRangeState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder labels(Map<String,String> labels) {
             return labels(Output.of(labels));
+        }
+
+        /**
+         * @param migration Specification for migration with source and target resource names.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder migration(@Nullable Output<InternalRangeMigrationArgs> migration) {
+            $.migration = migration;
+            return this;
+        }
+
+        /**
+         * @param migration Specification for migration with source and target resource names.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder migration(InternalRangeMigrationArgs migration) {
+            return migration(Output.of(migration));
         }
 
         /**
@@ -591,7 +633,7 @@ public final class InternalRangeState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param usage The type of usage set for this InternalRange.
-         * Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`.
+         * Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`, `FOR_MIGRATION`.
          * 
          * @return builder
          * 
@@ -603,7 +645,7 @@ public final class InternalRangeState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param usage The type of usage set for this InternalRange.
-         * Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`.
+         * Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`, `FOR_MIGRATION`.
          * 
          * @return builder
          * 

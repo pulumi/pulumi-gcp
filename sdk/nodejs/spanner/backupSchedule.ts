@@ -70,6 +70,7 @@ import * as utilities from "../utilities";
  *     config: "regional-europe-west1",
  *     displayName: "main-instance",
  *     numNodes: 1,
+ *     edition: "ENTERPRISE",
  * });
  * const database = new gcp.spanner.Database("database", {
  *     instance: main.name,

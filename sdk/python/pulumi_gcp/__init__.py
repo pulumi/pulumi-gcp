@@ -7087,6 +7087,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "securesourcemanager/branchRule",
+  "fqn": "pulumi_gcp.securesourcemanager",
+  "classes": {
+   "gcp:securesourcemanager/branchRule:BranchRule": "BranchRule"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "securesourcemanager/instance",
   "fqn": "pulumi_gcp.securesourcemanager",
   "classes": {

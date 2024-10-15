@@ -264,6 +264,23 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
+     * Possible values are: `NEXT_HOP_ROUTING_MODE`.
+     * 
+     */
+    @Import(name="routingMode")
+    private @Nullable Output<String> routingMode;
+
+    /**
+     * @return The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
+     * Possible values are: `NEXT_HOP_ROUTING_MODE`.
+     * 
+     */
+    public Optional<Output<String>> routingMode() {
+        return Optional.ofNullable(this.routingMode);
+    }
+
+    /**
      * Immutable. Scope determines how configuration across multiple Gateway instances are merged.
      * The configuration for multiple Gateway instances with the same scope will be merged as presented as
      * a single coniguration to the proxy/load balancer.
@@ -384,6 +401,7 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         this.ports = $.ports;
         this.project = $.project;
         this.pulumiLabels = $.pulumiLabels;
+        this.routingMode = $.routingMode;
         this.scope = $.scope;
         this.selfLink = $.selfLink;
         this.serverTlsPolicy = $.serverTlsPolicy;
@@ -771,6 +789,29 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder pulumiLabels(Map<String,String> pulumiLabels) {
             return pulumiLabels(Output.of(pulumiLabels));
+        }
+
+        /**
+         * @param routingMode The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
+         * Possible values are: `NEXT_HOP_ROUTING_MODE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder routingMode(@Nullable Output<String> routingMode) {
+            $.routingMode = routingMode;
+            return this;
+        }
+
+        /**
+         * @param routingMode The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
+         * Possible values are: `NEXT_HOP_ROUTING_MODE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder routingMode(String routingMode) {
+            return routingMode(Output.of(routingMode));
         }
 
         /**

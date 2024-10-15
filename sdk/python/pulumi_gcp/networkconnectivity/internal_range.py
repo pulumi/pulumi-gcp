@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['InternalRangeArgs', 'InternalRange']
 
@@ -25,6 +27,7 @@ class InternalRangeArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 migration: Optional[pulumi.Input['InternalRangeMigrationArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  overlaps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  prefix_length: Optional[pulumi.Input[int]] = None,
@@ -39,13 +42,15 @@ class InternalRangeArgs:
                
                - - -
         :param pulumi.Input[str] usage: The type of usage set for this InternalRange.
-               Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`.
+               Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`, `FOR_MIGRATION`.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] ip_cidr_range: The IP range that this internal range defines.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input['InternalRangeMigrationArgs'] migration: Specification for migration with source and target resource names.
+               Structure is documented below.
         :param pulumi.Input[str] name: The name of the policy based route.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] overlaps: Optional. Types of resources that are allowed to overlap with the current internal range.
                Each value may be one of: `OVERLAP_ROUTE_RANGE`, `OVERLAP_EXISTING_SUBNET_RANGE`.
@@ -65,6 +70,8 @@ class InternalRangeArgs:
             pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if migration is not None:
+            pulumi.set(__self__, "migration", migration)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if overlaps is not None:
@@ -109,7 +116,7 @@ class InternalRangeArgs:
     def usage(self) -> pulumi.Input[str]:
         """
         The type of usage set for this InternalRange.
-        Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`.
+        Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`, `FOR_MIGRATION`.
         """
         return pulumi.get(self, "usage")
 
@@ -155,6 +162,19 @@ class InternalRangeArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def migration(self) -> Optional[pulumi.Input['InternalRangeMigrationArgs']]:
+        """
+        Specification for migration with source and target resource names.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "migration")
+
+    @migration.setter
+    def migration(self, value: Optional[pulumi.Input['InternalRangeMigrationArgs']]):
+        pulumi.set(self, "migration", value)
 
     @property
     @pulumi.getter
@@ -228,6 +248,7 @@ class _InternalRangeState:
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 migration: Optional[pulumi.Input['InternalRangeMigrationArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  overlaps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -247,6 +268,8 @@ class _InternalRangeState:
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input['InternalRangeMigrationArgs'] migration: Specification for migration with source and target resource names.
+               Structure is documented below.
         :param pulumi.Input[str] name: The name of the policy based route.
         :param pulumi.Input[str] network: Fully-qualified URL of the network that this route applies to, for example: projects/my-project/global/networks/my-network.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] overlaps: Optional. Types of resources that are allowed to overlap with the current internal range.
@@ -265,7 +288,7 @@ class _InternalRangeState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_cidr_ranges: Optional. Can be set to narrow down or pick a different address space while searching for a free range.
                If not set, defaults to the "10.0.0.0/8" address space. This can be used to search in other rfc-1918 address spaces like "172.16.0.0/12" and "192.168.0.0/16" or non-rfc-1918 address spaces used in the VPC.
         :param pulumi.Input[str] usage: The type of usage set for this InternalRange.
-               Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`.
+               Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`, `FOR_MIGRATION`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] users: Output only. The list of resources that refer to this internal range.
                Resources that use the internal range for their range allocation are referred to as users of the range.
                Other resources mark themselves as users while doing so by creating a reference to this internal range. Having a user, based on this reference, prevents deletion of the internal range referred to. Can be empty.
@@ -278,6 +301,8 @@ class _InternalRangeState:
             pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if migration is not None:
+            pulumi.set(__self__, "migration", migration)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if network is not None:
@@ -349,6 +374,19 @@ class _InternalRangeState:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def migration(self) -> Optional[pulumi.Input['InternalRangeMigrationArgs']]:
+        """
+        Specification for migration with source and target resource names.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "migration")
+
+    @migration.setter
+    def migration(self, value: Optional[pulumi.Input['InternalRangeMigrationArgs']]):
+        pulumi.set(self, "migration", value)
 
     @property
     @pulumi.getter
@@ -460,7 +498,7 @@ class _InternalRangeState:
     def usage(self) -> Optional[pulumi.Input[str]]:
         """
         The type of usage set for this InternalRange.
-        Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`.
+        Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`, `FOR_MIGRATION`.
         """
         return pulumi.get(self, "usage")
 
@@ -491,6 +529,7 @@ class InternalRange(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 migration: Optional[pulumi.Input[Union['InternalRangeMigrationArgs', 'InternalRangeMigrationArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  overlaps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -591,6 +630,33 @@ class InternalRange(pulumi.CustomResource):
             overlaps=["OVERLAP_EXISTING_SUBNET_RANGE"],
             opts = pulumi.ResourceOptions(depends_on=[default_subnetwork]))
         ```
+        ### Network Connectivity Internal Ranges Migration
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_network = gcp.compute.Network("default",
+            name="internal-ranges",
+            auto_create_subnetworks=False)
+        source = gcp.compute.Subnetwork("source",
+            name="source-subnet",
+            ip_cidr_range="10.1.0.0/16",
+            region="us-central1",
+            network=default_network.name)
+        target_project = gcp.organizations.get_project()
+        default = gcp.networkconnectivity.InternalRange("default",
+            name="migration",
+            description="Test internal range",
+            network=default_network.self_link,
+            usage="FOR_MIGRATION",
+            peering="FOR_SELF",
+            ip_cidr_range="10.1.0.0/16",
+            migration={
+                "source": source.self_link,
+                "target": f"projects/{target_project.project_id}/regions/us-central1/subnetworks/target-subnet",
+            })
+        ```
 
         ## Import
 
@@ -624,6 +690,8 @@ class InternalRange(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[Union['InternalRangeMigrationArgs', 'InternalRangeMigrationArgsDict']] migration: Specification for migration with source and target resource names.
+               Structure is documented below.
         :param pulumi.Input[str] name: The name of the policy based route.
         :param pulumi.Input[str] network: Fully-qualified URL of the network that this route applies to, for example: projects/my-project/global/networks/my-network.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] overlaps: Optional. Types of resources that are allowed to overlap with the current internal range.
@@ -640,7 +708,7 @@ class InternalRange(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_cidr_ranges: Optional. Can be set to narrow down or pick a different address space while searching for a free range.
                If not set, defaults to the "10.0.0.0/8" address space. This can be used to search in other rfc-1918 address spaces like "172.16.0.0/12" and "192.168.0.0/16" or non-rfc-1918 address spaces used in the VPC.
         :param pulumi.Input[str] usage: The type of usage set for this InternalRange.
-               Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`.
+               Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`, `FOR_MIGRATION`.
         """
         ...
     @overload
@@ -739,6 +807,33 @@ class InternalRange(pulumi.CustomResource):
             overlaps=["OVERLAP_EXISTING_SUBNET_RANGE"],
             opts = pulumi.ResourceOptions(depends_on=[default_subnetwork]))
         ```
+        ### Network Connectivity Internal Ranges Migration
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_network = gcp.compute.Network("default",
+            name="internal-ranges",
+            auto_create_subnetworks=False)
+        source = gcp.compute.Subnetwork("source",
+            name="source-subnet",
+            ip_cidr_range="10.1.0.0/16",
+            region="us-central1",
+            network=default_network.name)
+        target_project = gcp.organizations.get_project()
+        default = gcp.networkconnectivity.InternalRange("default",
+            name="migration",
+            description="Test internal range",
+            network=default_network.self_link,
+            usage="FOR_MIGRATION",
+            peering="FOR_SELF",
+            ip_cidr_range="10.1.0.0/16",
+            migration={
+                "source": source.self_link,
+                "target": f"projects/{target_project.project_id}/regions/us-central1/subnetworks/target-subnet",
+            })
+        ```
 
         ## Import
 
@@ -782,6 +877,7 @@ class InternalRange(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 migration: Optional[pulumi.Input[Union['InternalRangeMigrationArgs', 'InternalRangeMigrationArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  overlaps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -802,6 +898,7 @@ class InternalRange(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["ip_cidr_range"] = ip_cidr_range
             __props__.__dict__["labels"] = labels
+            __props__.__dict__["migration"] = migration
             __props__.__dict__["name"] = name
             if network is None and not opts.urn:
                 raise TypeError("Missing required property 'network'")
@@ -835,6 +932,7 @@ class InternalRange(pulumi.CustomResource):
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             ip_cidr_range: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            migration: Optional[pulumi.Input[Union['InternalRangeMigrationArgs', 'InternalRangeMigrationArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
             overlaps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -859,6 +957,8 @@ class InternalRange(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[Union['InternalRangeMigrationArgs', 'InternalRangeMigrationArgsDict']] migration: Specification for migration with source and target resource names.
+               Structure is documented below.
         :param pulumi.Input[str] name: The name of the policy based route.
         :param pulumi.Input[str] network: Fully-qualified URL of the network that this route applies to, for example: projects/my-project/global/networks/my-network.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] overlaps: Optional. Types of resources that are allowed to overlap with the current internal range.
@@ -877,7 +977,7 @@ class InternalRange(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_cidr_ranges: Optional. Can be set to narrow down or pick a different address space while searching for a free range.
                If not set, defaults to the "10.0.0.0/8" address space. This can be used to search in other rfc-1918 address spaces like "172.16.0.0/12" and "192.168.0.0/16" or non-rfc-1918 address spaces used in the VPC.
         :param pulumi.Input[str] usage: The type of usage set for this InternalRange.
-               Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`.
+               Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`, `FOR_MIGRATION`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] users: Output only. The list of resources that refer to this internal range.
                Resources that use the internal range for their range allocation are referred to as users of the range.
                Other resources mark themselves as users while doing so by creating a reference to this internal range. Having a user, based on this reference, prevents deletion of the internal range referred to. Can be empty.
@@ -890,6 +990,7 @@ class InternalRange(pulumi.CustomResource):
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["ip_cidr_range"] = ip_cidr_range
         __props__.__dict__["labels"] = labels
+        __props__.__dict__["migration"] = migration
         __props__.__dict__["name"] = name
         __props__.__dict__["network"] = network
         __props__.__dict__["overlaps"] = overlaps
@@ -936,6 +1037,15 @@ class InternalRange(pulumi.CustomResource):
         Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def migration(self) -> pulumi.Output[Optional['outputs.InternalRangeMigration']]:
+        """
+        Specification for migration with source and target resource names.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "migration")
 
     @property
     @pulumi.getter
@@ -1015,7 +1125,7 @@ class InternalRange(pulumi.CustomResource):
     def usage(self) -> pulumi.Output[str]:
         """
         The type of usage set for this InternalRange.
-        Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`.
+        Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`, `FOR_MIGRATION`.
         """
         return pulumi.get(self, "usage")
 

@@ -195,6 +195,64 @@ import (
 //	}
 //
 // ```
+// ### Network Connectivity Internal Ranges Migration
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultNetwork, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name:                  pulumi.String("internal-ranges"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			source, err := compute.NewSubnetwork(ctx, "source", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("source-subnet"),
+//				IpCidrRange: pulumi.String("10.1.0.0/16"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     defaultNetwork.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			targetProject, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networkconnectivity.NewInternalRange(ctx, "default", &networkconnectivity.InternalRangeArgs{
+//				Name:        pulumi.String("migration"),
+//				Description: pulumi.String("Test internal range"),
+//				Network:     defaultNetwork.SelfLink,
+//				Usage:       pulumi.String("FOR_MIGRATION"),
+//				Peering:     pulumi.String("FOR_SELF"),
+//				IpCidrRange: pulumi.String("10.1.0.0/16"),
+//				Migration: &networkconnectivity.InternalRangeMigrationArgs{
+//					Source: source.SelfLink,
+//					Target: pulumi.Sprintf("projects/%v/regions/us-central1/subnetworks/target-subnet", targetProject.ProjectId),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -233,6 +291,9 @@ type InternalRange struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// Specification for migration with source and target resource names.
+	// Structure is documented below.
+	Migration InternalRangeMigrationPtrOutput `pulumi:"migration"`
 	// The name of the policy based route.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Fully-qualified URL of the network that this route applies to, for example: projects/my-project/global/networks/my-network.
@@ -258,7 +319,7 @@ type InternalRange struct {
 	// If not set, defaults to the "10.0.0.0/8" address space. This can be used to search in other rfc-1918 address spaces like "172.16.0.0/12" and "192.168.0.0/16" or non-rfc-1918 address spaces used in the VPC.
 	TargetCidrRanges pulumi.StringArrayOutput `pulumi:"targetCidrRanges"`
 	// The type of usage set for this InternalRange.
-	// Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`.
+	// Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`, `FOR_MIGRATION`.
 	Usage pulumi.StringOutput `pulumi:"usage"`
 	// Output only. The list of resources that refer to this internal range.
 	// Resources that use the internal range for their range allocation are referred to as users of the range.
@@ -321,6 +382,9 @@ type internalRangeState struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
+	// Specification for migration with source and target resource names.
+	// Structure is documented below.
+	Migration *InternalRangeMigration `pulumi:"migration"`
 	// The name of the policy based route.
 	Name *string `pulumi:"name"`
 	// Fully-qualified URL of the network that this route applies to, for example: projects/my-project/global/networks/my-network.
@@ -346,7 +410,7 @@ type internalRangeState struct {
 	// If not set, defaults to the "10.0.0.0/8" address space. This can be used to search in other rfc-1918 address spaces like "172.16.0.0/12" and "192.168.0.0/16" or non-rfc-1918 address spaces used in the VPC.
 	TargetCidrRanges []string `pulumi:"targetCidrRanges"`
 	// The type of usage set for this InternalRange.
-	// Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`.
+	// Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`, `FOR_MIGRATION`.
 	Usage *string `pulumi:"usage"`
 	// Output only. The list of resources that refer to this internal range.
 	// Resources that use the internal range for their range allocation are referred to as users of the range.
@@ -366,6 +430,9 @@ type InternalRangeState struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
+	// Specification for migration with source and target resource names.
+	// Structure is documented below.
+	Migration InternalRangeMigrationPtrInput
 	// The name of the policy based route.
 	Name pulumi.StringPtrInput
 	// Fully-qualified URL of the network that this route applies to, for example: projects/my-project/global/networks/my-network.
@@ -391,7 +458,7 @@ type InternalRangeState struct {
 	// If not set, defaults to the "10.0.0.0/8" address space. This can be used to search in other rfc-1918 address spaces like "172.16.0.0/12" and "192.168.0.0/16" or non-rfc-1918 address spaces used in the VPC.
 	TargetCidrRanges pulumi.StringArrayInput
 	// The type of usage set for this InternalRange.
-	// Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`.
+	// Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`, `FOR_MIGRATION`.
 	Usage pulumi.StringPtrInput
 	// Output only. The list of resources that refer to this internal range.
 	// Resources that use the internal range for their range allocation are referred to as users of the range.
@@ -413,6 +480,9 @@ type internalRangeArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
+	// Specification for migration with source and target resource names.
+	// Structure is documented below.
+	Migration *InternalRangeMigration `pulumi:"migration"`
 	// The name of the policy based route.
 	Name *string `pulumi:"name"`
 	// Fully-qualified URL of the network that this route applies to, for example: projects/my-project/global/networks/my-network.
@@ -435,7 +505,7 @@ type internalRangeArgs struct {
 	// If not set, defaults to the "10.0.0.0/8" address space. This can be used to search in other rfc-1918 address spaces like "172.16.0.0/12" and "192.168.0.0/16" or non-rfc-1918 address spaces used in the VPC.
 	TargetCidrRanges []string `pulumi:"targetCidrRanges"`
 	// The type of usage set for this InternalRange.
-	// Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`.
+	// Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`, `FOR_MIGRATION`.
 	Usage string `pulumi:"usage"`
 }
 
@@ -450,6 +520,9 @@ type InternalRangeArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
+	// Specification for migration with source and target resource names.
+	// Structure is documented below.
+	Migration InternalRangeMigrationPtrInput
 	// The name of the policy based route.
 	Name pulumi.StringPtrInput
 	// Fully-qualified URL of the network that this route applies to, for example: projects/my-project/global/networks/my-network.
@@ -472,7 +545,7 @@ type InternalRangeArgs struct {
 	// If not set, defaults to the "10.0.0.0/8" address space. This can be used to search in other rfc-1918 address spaces like "172.16.0.0/12" and "192.168.0.0/16" or non-rfc-1918 address spaces used in the VPC.
 	TargetCidrRanges pulumi.StringArrayInput
 	// The type of usage set for this InternalRange.
-	// Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`.
+	// Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`, `FOR_MIGRATION`.
 	Usage pulumi.StringInput
 }
 
@@ -586,6 +659,12 @@ func (o InternalRangeOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *InternalRange) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+// Specification for migration with source and target resource names.
+// Structure is documented below.
+func (o InternalRangeOutput) Migration() InternalRangeMigrationPtrOutput {
+	return o.ApplyT(func(v *InternalRange) InternalRangeMigrationPtrOutput { return v.Migration }).(InternalRangeMigrationPtrOutput)
+}
+
 // The name of the policy based route.
 func (o InternalRangeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *InternalRange) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -635,7 +714,7 @@ func (o InternalRangeOutput) TargetCidrRanges() pulumi.StringArrayOutput {
 }
 
 // The type of usage set for this InternalRange.
-// Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`.
+// Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`, `FOR_MIGRATION`.
 func (o InternalRangeOutput) Usage() pulumi.StringOutput {
 	return o.ApplyT(func(v *InternalRange) pulumi.StringOutput { return v.Usage }).(pulumi.StringOutput)
 }

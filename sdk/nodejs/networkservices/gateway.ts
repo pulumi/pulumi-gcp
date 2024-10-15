@@ -327,6 +327,11 @@ export class Gateway extends pulumi.CustomResource {
      */
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
+     * The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
+     * Possible values are: `NEXT_HOP_ROUTING_MODE`.
+     */
+    public readonly routingMode!: pulumi.Output<string | undefined>;
+    /**
      * Immutable. Scope determines how configuration across multiple Gateway instances are merged.
      * The configuration for multiple Gateway instances with the same scope will be merged as presented as
      * a single coniguration to the proxy/load balancer.
@@ -385,6 +390,7 @@ export class Gateway extends pulumi.CustomResource {
             resourceInputs["ports"] = state ? state.ports : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
+            resourceInputs["routingMode"] = state ? state.routingMode : undefined;
             resourceInputs["scope"] = state ? state.scope : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["serverTlsPolicy"] = state ? state.serverTlsPolicy : undefined;
@@ -410,6 +416,7 @@ export class Gateway extends pulumi.CustomResource {
             resourceInputs["network"] = args ? args.network : undefined;
             resourceInputs["ports"] = args ? args.ports : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["routingMode"] = args ? args.routingMode : undefined;
             resourceInputs["scope"] = args ? args.scope : undefined;
             resourceInputs["serverTlsPolicy"] = args ? args.serverTlsPolicy : undefined;
             resourceInputs["subnetwork"] = args ? args.subnetwork : undefined;
@@ -505,6 +512,11 @@ export interface GatewayState {
      * and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
+     * Possible values are: `NEXT_HOP_ROUTING_MODE`.
+     */
+    routingMode?: pulumi.Input<string>;
     /**
      * Immutable. Scope determines how configuration across multiple Gateway instances are merged.
      * The configuration for multiple Gateway instances with the same scope will be merged as presented as
@@ -603,6 +615,11 @@ export interface GatewayArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
+     * Possible values are: `NEXT_HOP_ROUTING_MODE`.
+     */
+    routingMode?: pulumi.Input<string>;
     /**
      * Immutable. Scope determines how configuration across multiple Gateway instances are merged.
      * The configuration for multiple Gateway instances with the same scope will be merged as presented as

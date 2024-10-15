@@ -35,7 +35,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create Folder in GCP Organization
 //			autokmsFolder, err := organizations.NewFolder(ctx, "autokms_folder", &organizations.FolderArgs{
-//				DisplayName:        pulumi.String("folder-example"),
+//				DisplayName:        pulumi.String("my-folder"),
 //				Parent:             pulumi.String("organizations/123456789"),
 //				DeletionProtection: pulumi.Bool(false),
 //			})
@@ -57,8 +57,8 @@ import (
 //			}
 //			// Create the resource project
 //			resourceProject, err := organizations.NewProject(ctx, "resource_project", &organizations.ProjectArgs{
-//				ProjectId:      pulumi.String("resources"),
-//				Name:           pulumi.String("resources"),
+//				ProjectId:      pulumi.String("res-proj"),
+//				Name:           pulumi.String("res-proj"),
 //				FolderId:       autokmsFolder.FolderId,
 //				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
 //				DeletionPolicy: pulumi.String("DELETE"),
@@ -152,7 +152,7 @@ import (
 //			}
 //			_, err = kms.NewKeyHandle(ctx, "example-keyhandle", &kms.KeyHandleArgs{
 //				Project:              resourceProject.ProjectId,
-//				Name:                 pulumi.String("example-key-handle"),
+//				Name:                 pulumi.String("tf-test-key-handle"),
 //				Location:             pulumi.String("global"),
 //				ResourceTypeSelector: pulumi.String("storage.googleapis.com/Bucket"),
 //			}, pulumi.DependsOn([]pulumi.Resource{

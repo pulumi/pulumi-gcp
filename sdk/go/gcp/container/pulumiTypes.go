@@ -23322,6 +23322,8 @@ type ClusterNodeConfigKubeletConfig struct {
 	// The CPU management policy on the node. See
 	// [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
 	// One of `"none"` or `"static"`. If unset (or set to the empty string `""`), the API will treat the field as if set to "none".
+	// Prior to the 6.4.0 this field was marked as required. The workaround for the required field
+	// is setting the empty string `""`, which will function identically to not setting this field.
 	CpuManagerPolicy *string `pulumi:"cpuManagerPolicy"`
 	// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
 	InsecureKubeletReadonlyPortEnabled *string `pulumi:"insecureKubeletReadonlyPortEnabled"`
@@ -23352,6 +23354,8 @@ type ClusterNodeConfigKubeletConfigArgs struct {
 	// The CPU management policy on the node. See
 	// [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
 	// One of `"none"` or `"static"`. If unset (or set to the empty string `""`), the API will treat the field as if set to "none".
+	// Prior to the 6.4.0 this field was marked as required. The workaround for the required field
+	// is setting the empty string `""`, which will function identically to not setting this field.
 	CpuManagerPolicy pulumi.StringPtrInput `pulumi:"cpuManagerPolicy"`
 	// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
 	InsecureKubeletReadonlyPortEnabled pulumi.StringPtrInput `pulumi:"insecureKubeletReadonlyPortEnabled"`
@@ -23453,6 +23457,8 @@ func (o ClusterNodeConfigKubeletConfigOutput) CpuCfsQuotaPeriod() pulumi.StringP
 // The CPU management policy on the node. See
 // [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
 // One of `"none"` or `"static"`. If unset (or set to the empty string `""`), the API will treat the field as if set to "none".
+// Prior to the 6.4.0 this field was marked as required. The workaround for the required field
+// is setting the empty string `""`, which will function identically to not setting this field.
 func (o ClusterNodeConfigKubeletConfigOutput) CpuManagerPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfigKubeletConfig) *string { return v.CpuManagerPolicy }).(pulumi.StringPtrOutput)
 }
@@ -23518,6 +23524,8 @@ func (o ClusterNodeConfigKubeletConfigPtrOutput) CpuCfsQuotaPeriod() pulumi.Stri
 // The CPU management policy on the node. See
 // [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
 // One of `"none"` or `"static"`. If unset (or set to the empty string `""`), the API will treat the field as if set to "none".
+// Prior to the 6.4.0 this field was marked as required. The workaround for the required field
+// is setting the empty string `""`, which will function identically to not setting this field.
 func (o ClusterNodeConfigKubeletConfigPtrOutput) CpuManagerPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfigKubeletConfig) *string {
 		if v == nil {
@@ -31349,6 +31357,8 @@ type ClusterNodePoolNodeConfigKubeletConfig struct {
 	// The CPU management policy on the node. See
 	// [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
 	// One of `"none"` or `"static"`. If unset (or set to the empty string `""`), the API will treat the field as if set to "none".
+	// Prior to the 6.4.0 this field was marked as required. The workaround for the required field
+	// is setting the empty string `""`, which will function identically to not setting this field.
 	CpuManagerPolicy *string `pulumi:"cpuManagerPolicy"`
 	// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
 	InsecureKubeletReadonlyPortEnabled *string `pulumi:"insecureKubeletReadonlyPortEnabled"`
@@ -31379,6 +31389,8 @@ type ClusterNodePoolNodeConfigKubeletConfigArgs struct {
 	// The CPU management policy on the node. See
 	// [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
 	// One of `"none"` or `"static"`. If unset (or set to the empty string `""`), the API will treat the field as if set to "none".
+	// Prior to the 6.4.0 this field was marked as required. The workaround for the required field
+	// is setting the empty string `""`, which will function identically to not setting this field.
 	CpuManagerPolicy pulumi.StringPtrInput `pulumi:"cpuManagerPolicy"`
 	// Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
 	InsecureKubeletReadonlyPortEnabled pulumi.StringPtrInput `pulumi:"insecureKubeletReadonlyPortEnabled"`
@@ -31480,6 +31492,8 @@ func (o ClusterNodePoolNodeConfigKubeletConfigOutput) CpuCfsQuotaPeriod() pulumi
 // The CPU management policy on the node. See
 // [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
 // One of `"none"` or `"static"`. If unset (or set to the empty string `""`), the API will treat the field as if set to "none".
+// Prior to the 6.4.0 this field was marked as required. The workaround for the required field
+// is setting the empty string `""`, which will function identically to not setting this field.
 func (o ClusterNodePoolNodeConfigKubeletConfigOutput) CpuManagerPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigKubeletConfig) *string { return v.CpuManagerPolicy }).(pulumi.StringPtrOutput)
 }
@@ -31545,6 +31559,8 @@ func (o ClusterNodePoolNodeConfigKubeletConfigPtrOutput) CpuCfsQuotaPeriod() pul
 // The CPU management policy on the node. See
 // [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
 // One of `"none"` or `"static"`. If unset (or set to the empty string `""`), the API will treat the field as if set to "none".
+// Prior to the 6.4.0 this field was marked as required. The workaround for the required field
+// is setting the empty string `""`, which will function identically to not setting this field.
 func (o ClusterNodePoolNodeConfigKubeletConfigPtrOutput) CpuManagerPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfigKubeletConfig) *string {
 		if v == nil {

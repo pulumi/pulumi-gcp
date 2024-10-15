@@ -110,6 +110,186 @@ func (o HubRoutingVpcArrayOutput) Index(i pulumi.IntInput) HubRoutingVpcOutput {
 	}).(HubRoutingVpcOutput)
 }
 
+type InternalRangeMigration struct {
+	// Resource path as an URI of the source resource, for example a subnet.
+	// The project for the source resource should match the project for the
+	// InternalRange.
+	// An example /projects/{project}/regions/{region}/subnetworks/{subnet}
+	Source string `pulumi:"source"`
+	// Resource path of the target resource. The target project can be
+	// different, as in the cases when migrating to peer networks. The resource
+	// may not exist yet.
+	// For example /projects/{project}/regions/{region}/subnetworks/{subnet}
+	Target string `pulumi:"target"`
+}
+
+// InternalRangeMigrationInput is an input type that accepts InternalRangeMigrationArgs and InternalRangeMigrationOutput values.
+// You can construct a concrete instance of `InternalRangeMigrationInput` via:
+//
+//	InternalRangeMigrationArgs{...}
+type InternalRangeMigrationInput interface {
+	pulumi.Input
+
+	ToInternalRangeMigrationOutput() InternalRangeMigrationOutput
+	ToInternalRangeMigrationOutputWithContext(context.Context) InternalRangeMigrationOutput
+}
+
+type InternalRangeMigrationArgs struct {
+	// Resource path as an URI of the source resource, for example a subnet.
+	// The project for the source resource should match the project for the
+	// InternalRange.
+	// An example /projects/{project}/regions/{region}/subnetworks/{subnet}
+	Source pulumi.StringInput `pulumi:"source"`
+	// Resource path of the target resource. The target project can be
+	// different, as in the cases when migrating to peer networks. The resource
+	// may not exist yet.
+	// For example /projects/{project}/regions/{region}/subnetworks/{subnet}
+	Target pulumi.StringInput `pulumi:"target"`
+}
+
+func (InternalRangeMigrationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InternalRangeMigration)(nil)).Elem()
+}
+
+func (i InternalRangeMigrationArgs) ToInternalRangeMigrationOutput() InternalRangeMigrationOutput {
+	return i.ToInternalRangeMigrationOutputWithContext(context.Background())
+}
+
+func (i InternalRangeMigrationArgs) ToInternalRangeMigrationOutputWithContext(ctx context.Context) InternalRangeMigrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InternalRangeMigrationOutput)
+}
+
+func (i InternalRangeMigrationArgs) ToInternalRangeMigrationPtrOutput() InternalRangeMigrationPtrOutput {
+	return i.ToInternalRangeMigrationPtrOutputWithContext(context.Background())
+}
+
+func (i InternalRangeMigrationArgs) ToInternalRangeMigrationPtrOutputWithContext(ctx context.Context) InternalRangeMigrationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InternalRangeMigrationOutput).ToInternalRangeMigrationPtrOutputWithContext(ctx)
+}
+
+// InternalRangeMigrationPtrInput is an input type that accepts InternalRangeMigrationArgs, InternalRangeMigrationPtr and InternalRangeMigrationPtrOutput values.
+// You can construct a concrete instance of `InternalRangeMigrationPtrInput` via:
+//
+//	        InternalRangeMigrationArgs{...}
+//
+//	or:
+//
+//	        nil
+type InternalRangeMigrationPtrInput interface {
+	pulumi.Input
+
+	ToInternalRangeMigrationPtrOutput() InternalRangeMigrationPtrOutput
+	ToInternalRangeMigrationPtrOutputWithContext(context.Context) InternalRangeMigrationPtrOutput
+}
+
+type internalRangeMigrationPtrType InternalRangeMigrationArgs
+
+func InternalRangeMigrationPtr(v *InternalRangeMigrationArgs) InternalRangeMigrationPtrInput {
+	return (*internalRangeMigrationPtrType)(v)
+}
+
+func (*internalRangeMigrationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InternalRangeMigration)(nil)).Elem()
+}
+
+func (i *internalRangeMigrationPtrType) ToInternalRangeMigrationPtrOutput() InternalRangeMigrationPtrOutput {
+	return i.ToInternalRangeMigrationPtrOutputWithContext(context.Background())
+}
+
+func (i *internalRangeMigrationPtrType) ToInternalRangeMigrationPtrOutputWithContext(ctx context.Context) InternalRangeMigrationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InternalRangeMigrationPtrOutput)
+}
+
+type InternalRangeMigrationOutput struct{ *pulumi.OutputState }
+
+func (InternalRangeMigrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InternalRangeMigration)(nil)).Elem()
+}
+
+func (o InternalRangeMigrationOutput) ToInternalRangeMigrationOutput() InternalRangeMigrationOutput {
+	return o
+}
+
+func (o InternalRangeMigrationOutput) ToInternalRangeMigrationOutputWithContext(ctx context.Context) InternalRangeMigrationOutput {
+	return o
+}
+
+func (o InternalRangeMigrationOutput) ToInternalRangeMigrationPtrOutput() InternalRangeMigrationPtrOutput {
+	return o.ToInternalRangeMigrationPtrOutputWithContext(context.Background())
+}
+
+func (o InternalRangeMigrationOutput) ToInternalRangeMigrationPtrOutputWithContext(ctx context.Context) InternalRangeMigrationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InternalRangeMigration) *InternalRangeMigration {
+		return &v
+	}).(InternalRangeMigrationPtrOutput)
+}
+
+// Resource path as an URI of the source resource, for example a subnet.
+// The project for the source resource should match the project for the
+// InternalRange.
+// An example /projects/{project}/regions/{region}/subnetworks/{subnet}
+func (o InternalRangeMigrationOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v InternalRangeMigration) string { return v.Source }).(pulumi.StringOutput)
+}
+
+// Resource path of the target resource. The target project can be
+// different, as in the cases when migrating to peer networks. The resource
+// may not exist yet.
+// For example /projects/{project}/regions/{region}/subnetworks/{subnet}
+func (o InternalRangeMigrationOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v InternalRangeMigration) string { return v.Target }).(pulumi.StringOutput)
+}
+
+type InternalRangeMigrationPtrOutput struct{ *pulumi.OutputState }
+
+func (InternalRangeMigrationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InternalRangeMigration)(nil)).Elem()
+}
+
+func (o InternalRangeMigrationPtrOutput) ToInternalRangeMigrationPtrOutput() InternalRangeMigrationPtrOutput {
+	return o
+}
+
+func (o InternalRangeMigrationPtrOutput) ToInternalRangeMigrationPtrOutputWithContext(ctx context.Context) InternalRangeMigrationPtrOutput {
+	return o
+}
+
+func (o InternalRangeMigrationPtrOutput) Elem() InternalRangeMigrationOutput {
+	return o.ApplyT(func(v *InternalRangeMigration) InternalRangeMigration {
+		if v != nil {
+			return *v
+		}
+		var ret InternalRangeMigration
+		return ret
+	}).(InternalRangeMigrationOutput)
+}
+
+// Resource path as an URI of the source resource, for example a subnet.
+// The project for the source resource should match the project for the
+// InternalRange.
+// An example /projects/{project}/regions/{region}/subnetworks/{subnet}
+func (o InternalRangeMigrationPtrOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InternalRangeMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Source
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource path of the target resource. The target project can be
+// different, as in the cases when migrating to peer networks. The resource
+// may not exist yet.
+// For example /projects/{project}/regions/{region}/subnetworks/{subnet}
+func (o InternalRangeMigrationPtrOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InternalRangeMigration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Target
+	}).(pulumi.StringPtrOutput)
+}
+
 type PolicyBasedRouteFilter struct {
 	// The destination IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
 	//
@@ -2239,6 +2419,8 @@ func (o SpokeLinkedVpnTunnelsPtrOutput) Uris() pulumi.StringArrayOutput {
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HubRoutingVpcInput)(nil)).Elem(), HubRoutingVpcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HubRoutingVpcArrayInput)(nil)).Elem(), HubRoutingVpcArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InternalRangeMigrationInput)(nil)).Elem(), InternalRangeMigrationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InternalRangeMigrationPtrInput)(nil)).Elem(), InternalRangeMigrationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyBasedRouteFilterInput)(nil)).Elem(), PolicyBasedRouteFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyBasedRouteFilterPtrInput)(nil)).Elem(), PolicyBasedRouteFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyBasedRouteInterconnectAttachmentInput)(nil)).Elem(), PolicyBasedRouteInterconnectAttachmentArgs{})
@@ -2267,6 +2449,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SpokeLinkedVpnTunnelsPtrInput)(nil)).Elem(), SpokeLinkedVpnTunnelsArgs{})
 	pulumi.RegisterOutputType(HubRoutingVpcOutput{})
 	pulumi.RegisterOutputType(HubRoutingVpcArrayOutput{})
+	pulumi.RegisterOutputType(InternalRangeMigrationOutput{})
+	pulumi.RegisterOutputType(InternalRangeMigrationPtrOutput{})
 	pulumi.RegisterOutputType(PolicyBasedRouteFilterOutput{})
 	pulumi.RegisterOutputType(PolicyBasedRouteFilterPtrOutput{})
 	pulumi.RegisterOutputType(PolicyBasedRouteInterconnectAttachmentOutput{})

@@ -17,6 +17,7 @@ from . import outputs
 
 __all__ = [
     'HubRoutingVpc',
+    'InternalRangeMigration',
     'PolicyBasedRouteFilter',
     'PolicyBasedRouteInterconnectAttachment',
     'PolicyBasedRouteVirtualMachine',
@@ -49,6 +50,47 @@ class HubRoutingVpc(dict):
         The URI of the VPC network.
         """
         return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class InternalRangeMigration(dict):
+    def __init__(__self__, *,
+                 source: str,
+                 target: str):
+        """
+        :param str source: Resource path as an URI of the source resource, for example a subnet.
+               The project for the source resource should match the project for the
+               InternalRange.
+               An example /projects/{project}/regions/{region}/subnetworks/{subnet}
+        :param str target: Resource path of the target resource. The target project can be
+               different, as in the cases when migrating to peer networks. The resource
+               may not exist yet.
+               For example /projects/{project}/regions/{region}/subnetworks/{subnet}
+        """
+        pulumi.set(__self__, "source", source)
+        pulumi.set(__self__, "target", target)
+
+    @property
+    @pulumi.getter
+    def source(self) -> str:
+        """
+        Resource path as an URI of the source resource, for example a subnet.
+        The project for the source resource should match the project for the
+        InternalRange.
+        An example /projects/{project}/regions/{region}/subnetworks/{subnet}
+        """
+        return pulumi.get(self, "source")
+
+    @property
+    @pulumi.getter
+    def target(self) -> str:
+        """
+        Resource path of the target resource. The target project can be
+        different, as in the cases when migrating to peer networks. The resource
+        may not exist yet.
+        For example /projects/{project}/regions/{region}/subnetworks/{subnet}
+        """
+        return pulumi.get(self, "target")
 
 
 @pulumi.output_type
