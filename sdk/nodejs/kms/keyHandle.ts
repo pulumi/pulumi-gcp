@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  *
  * // Create Folder in GCP Organization
  * const autokmsFolder = new gcp.organizations.Folder("autokms_folder", {
- *     displayName: "folder-example",
+ *     displayName: "my-folder",
  *     parent: "organizations/123456789",
  *     deletionProtection: false,
  * });
@@ -32,8 +32,8 @@ import * as utilities from "../utilities";
  * });
  * // Create the resource project
  * const resourceProject = new gcp.organizations.Project("resource_project", {
- *     projectId: "resources",
- *     name: "resources",
+ *     projectId: "res-proj",
+ *     name: "res-proj",
  *     folderId: autokmsFolder.folderId,
  *     billingAccount: "000000-0000000-0000000-000000",
  *     deletionPolicy: "DELETE",
@@ -88,7 +88,7 @@ import * as utilities from "../utilities";
  * });
  * const example_keyhandle = new gcp.kms.KeyHandle("example-keyhandle", {
  *     project: resourceProject.projectId,
- *     name: "example-key-handle",
+ *     name: "tf-test-key-handle",
  *     location: "global",
  *     resourceTypeSelector: "storage.googleapis.com/Bucket",
  * }, {

@@ -161,6 +161,9 @@ export class InstanceIamBinding extends pulumi.CustomResource {
         return obj['__pulumiType'] === InstanceIamBinding.__pulumiType;
     }
 
+    /**
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
+     */
     public readonly condition!: pulumi.Output<outputs.bigtable.InstanceIamBindingCondition | undefined>;
     /**
      * (Computed) The etag of the instances's IAM policy.
@@ -183,17 +186,11 @@ export class InstanceIamBinding extends pulumi.CustomResource {
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
     public readonly members!: pulumi.Output<string[]>;
-    /**
-     * The project in which the instance belongs. If it
-     * is not provided, a default will be supplied.
-     */
     public readonly project!: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
-     *
-     * `gcp.bigtable.InstanceIamPolicy` only:
      */
     public readonly role!: pulumi.Output<string>;
 
@@ -243,6 +240,9 @@ export class InstanceIamBinding extends pulumi.CustomResource {
  * Input properties used for looking up and filtering InstanceIamBinding resources.
  */
 export interface InstanceIamBindingState {
+    /**
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
+     */
     condition?: pulumi.Input<inputs.bigtable.InstanceIamBindingCondition>;
     /**
      * (Computed) The etag of the instances's IAM policy.
@@ -265,17 +265,11 @@ export interface InstanceIamBindingState {
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
     members?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The project in which the instance belongs. If it
-     * is not provided, a default will be supplied.
-     */
     project?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
-     *
-     * `gcp.bigtable.InstanceIamPolicy` only:
      */
     role?: pulumi.Input<string>;
 }
@@ -284,6 +278,9 @@ export interface InstanceIamBindingState {
  * The set of arguments for constructing a InstanceIamBinding resource.
  */
 export interface InstanceIamBindingArgs {
+    /**
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
+     */
     condition?: pulumi.Input<inputs.bigtable.InstanceIamBindingCondition>;
     /**
      * The name or relative resource id of the instance to manage IAM policies for.
@@ -302,17 +299,11 @@ export interface InstanceIamBindingArgs {
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
     members: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The project in which the instance belongs. If it
-     * is not provided, a default will be supplied.
-     */
     project?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
      * `gcp.bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
-     *
-     * `gcp.bigtable.InstanceIamPolicy` only:
      */
     role: pulumi.Input<string>;
 }

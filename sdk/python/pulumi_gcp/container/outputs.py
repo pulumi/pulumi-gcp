@@ -8045,6 +8045,8 @@ class ClusterNodeConfigKubeletConfig(dict):
         :param str cpu_manager_policy: The CPU management policy on the node. See
                [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
                One of `"none"` or `"static"`. If unset (or set to the empty string `""`), the API will treat the field as if set to "none".
+               Prior to the 6.4.0 this field was marked as required. The workaround for the required field
+               is setting the empty string `""`, which will function identically to not setting this field.
         :param str insecure_kubelet_readonly_port_enabled: Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
         :param int pod_pids_limit: Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
         """
@@ -8086,6 +8088,8 @@ class ClusterNodeConfigKubeletConfig(dict):
         The CPU management policy on the node. See
         [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
         One of `"none"` or `"static"`. If unset (or set to the empty string `""`), the API will treat the field as if set to "none".
+        Prior to the 6.4.0 this field was marked as required. The workaround for the required field
+        is setting the empty string `""`, which will function identically to not setting this field.
         """
         return pulumi.get(self, "cpu_manager_policy")
 
@@ -11123,6 +11127,8 @@ class ClusterNodePoolNodeConfigKubeletConfig(dict):
         :param str cpu_manager_policy: The CPU management policy on the node. See
                [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
                One of `"none"` or `"static"`. If unset (or set to the empty string `""`), the API will treat the field as if set to "none".
+               Prior to the 6.4.0 this field was marked as required. The workaround for the required field
+               is setting the empty string `""`, which will function identically to not setting this field.
         :param str insecure_kubelet_readonly_port_enabled: Controls whether the kubelet read-only port is enabled. It is strongly recommended to set this to `FALSE`. Possible values: `TRUE`, `FALSE`.
         :param int pod_pids_limit: Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
         """
@@ -11164,6 +11170,8 @@ class ClusterNodePoolNodeConfigKubeletConfig(dict):
         The CPU management policy on the node. See
         [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
         One of `"none"` or `"static"`. If unset (or set to the empty string `""`), the API will treat the field as if set to "none".
+        Prior to the 6.4.0 this field was marked as required. The workaround for the required field
+        is setting the empty string `""`, which will function identically to not setting this field.
         """
         return pulumi.get(self, "cpu_manager_policy")
 

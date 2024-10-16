@@ -18809,7 +18809,7 @@ if not MYPY:
         is not accessible from the Internet (this means that ssh provisioners will
         not work unless you can send traffic to the instance's
         network (e.g. via tunnel or because it is running on another cloud instance
-        on that network). This block can be repeated multiple times. Structure documented below.
+        on that network). This block can be specified once per `network_interface`. Structure documented below.
         """
         alias_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceAliasIpRangeArgsDict']]]]
         """
@@ -18905,7 +18905,7 @@ class InstanceTemplateNetworkInterfaceArgs:
                is not accessible from the Internet (this means that ssh provisioners will
                not work unless you can send traffic to the instance's
                network (e.g. via tunnel or because it is running on another cloud instance
-               on that network). This block can be repeated multiple times. Structure documented below.
+               on that network). This block can be specified once per `network_interface`. Structure documented below.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceAliasIpRangeArgs']]] alias_ip_ranges: An
                array of alias IP ranges for this network interface. Can only be specified for network
                interfaces on subnet-mode networks. Structure documented below.
@@ -18972,7 +18972,7 @@ class InstanceTemplateNetworkInterfaceArgs:
         is not accessible from the Internet (this means that ssh provisioners will
         not work unless you can send traffic to the instance's
         network (e.g. via tunnel or because it is running on another cloud instance
-        on that network). This block can be repeated multiple times. Structure documented below.
+        on that network). This block can be specified once per `network_interface`. Structure documented below.
         """
         return pulumi.get(self, "access_configs")
 

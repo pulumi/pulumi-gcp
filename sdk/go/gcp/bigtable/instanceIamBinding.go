@@ -250,6 +250,7 @@ import (
 type InstanceIamBinding struct {
 	pulumi.CustomResourceState
 
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
 	Condition InstanceIamBindingConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the instances's IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
@@ -266,14 +267,10 @@ type InstanceIamBinding struct {
 	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Members pulumi.StringArrayOutput `pulumi:"members"`
-	// The project in which the instance belongs. If it
-	// is not provided, a default will be supplied.
-	Project pulumi.StringOutput `pulumi:"project"`
+	Project pulumi.StringOutput      `pulumi:"project"`
 	// The role that should be applied. Only one
 	// `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
-	//
-	// `bigtable.InstanceIamPolicy` only:
 	Role pulumi.StringOutput `pulumi:"role"`
 }
 
@@ -316,6 +313,7 @@ func GetInstanceIamBinding(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering InstanceIamBinding resources.
 type instanceIamBindingState struct {
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
 	Condition *InstanceIamBindingCondition `pulumi:"condition"`
 	// (Computed) The etag of the instances's IAM policy.
 	Etag *string `pulumi:"etag"`
@@ -332,18 +330,15 @@ type instanceIamBindingState struct {
 	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Members []string `pulumi:"members"`
-	// The project in which the instance belongs. If it
-	// is not provided, a default will be supplied.
-	Project *string `pulumi:"project"`
+	Project *string  `pulumi:"project"`
 	// The role that should be applied. Only one
 	// `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
-	//
-	// `bigtable.InstanceIamPolicy` only:
 	Role *string `pulumi:"role"`
 }
 
 type InstanceIamBindingState struct {
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
 	Condition InstanceIamBindingConditionPtrInput
 	// (Computed) The etag of the instances's IAM policy.
 	Etag pulumi.StringPtrInput
@@ -360,14 +355,10 @@ type InstanceIamBindingState struct {
 	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Members pulumi.StringArrayInput
-	// The project in which the instance belongs. If it
-	// is not provided, a default will be supplied.
 	Project pulumi.StringPtrInput
 	// The role that should be applied. Only one
 	// `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
-	//
-	// `bigtable.InstanceIamPolicy` only:
 	Role pulumi.StringPtrInput
 }
 
@@ -376,6 +367,7 @@ func (InstanceIamBindingState) ElementType() reflect.Type {
 }
 
 type instanceIamBindingArgs struct {
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
 	Condition *InstanceIamBindingCondition `pulumi:"condition"`
 	// The name or relative resource id of the instance to manage IAM policies for.
 	//
@@ -390,19 +382,16 @@ type instanceIamBindingArgs struct {
 	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Members []string `pulumi:"members"`
-	// The project in which the instance belongs. If it
-	// is not provided, a default will be supplied.
-	Project *string `pulumi:"project"`
+	Project *string  `pulumi:"project"`
 	// The role that should be applied. Only one
 	// `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
-	//
-	// `bigtable.InstanceIamPolicy` only:
 	Role string `pulumi:"role"`
 }
 
 // The set of arguments for constructing a InstanceIamBinding resource.
 type InstanceIamBindingArgs struct {
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
 	Condition InstanceIamBindingConditionPtrInput
 	// The name or relative resource id of the instance to manage IAM policies for.
 	//
@@ -417,14 +406,10 @@ type InstanceIamBindingArgs struct {
 	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Members pulumi.StringArrayInput
-	// The project in which the instance belongs. If it
-	// is not provided, a default will be supplied.
 	Project pulumi.StringPtrInput
 	// The role that should be applied. Only one
 	// `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
-	//
-	// `bigtable.InstanceIamPolicy` only:
 	Role pulumi.StringInput
 }
 
@@ -515,6 +500,7 @@ func (o InstanceIamBindingOutput) ToInstanceIamBindingOutputWithContext(ctx cont
 	return o
 }
 
+// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
 func (o InstanceIamBindingOutput) Condition() InstanceIamBindingConditionPtrOutput {
 	return o.ApplyT(func(v *InstanceIamBinding) InstanceIamBindingConditionPtrOutput { return v.Condition }).(InstanceIamBindingConditionPtrOutput)
 }
@@ -543,8 +529,6 @@ func (o InstanceIamBindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *InstanceIamBinding) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// The project in which the instance belongs. If it
-// is not provided, a default will be supplied.
 func (o InstanceIamBindingOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceIamBinding) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
@@ -552,8 +536,6 @@ func (o InstanceIamBindingOutput) Project() pulumi.StringOutput {
 // The role that should be applied. Only one
 // `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
-//
-// `bigtable.InstanceIamPolicy` only:
 func (o InstanceIamBindingOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceIamBinding) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }

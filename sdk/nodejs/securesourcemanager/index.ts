@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { BranchRuleArgs, BranchRuleState } from "./branchRule";
+export type BranchRule = import("./branchRule").BranchRule;
+export const BranchRule: typeof import("./branchRule").BranchRule = null as any;
+utilities.lazyLoad(exports, ["BranchRule"], () => require("./branchRule"));
+
 export { GetInstanceIamPolicyArgs, GetInstanceIamPolicyResult, GetInstanceIamPolicyOutputArgs } from "./getInstanceIamPolicy";
 export const getInstanceIamPolicy: typeof import("./getInstanceIamPolicy").getInstanceIamPolicy = null as any;
 export const getInstanceIamPolicyOutput: typeof import("./getInstanceIamPolicy").getInstanceIamPolicyOutput = null as any;
@@ -60,6 +65,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:securesourcemanager/branchRule:BranchRule":
+                return new BranchRule(name, <any>undefined, { urn })
             case "gcp:securesourcemanager/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
             case "gcp:securesourcemanager/instanceIamBinding:InstanceIamBinding":
@@ -81,6 +88,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "securesourcemanager/branchRule", _module)
 pulumi.runtime.registerResourceModule("gcp", "securesourcemanager/instance", _module)
 pulumi.runtime.registerResourceModule("gcp", "securesourcemanager/instanceIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "securesourcemanager/instanceIamMember", _module)

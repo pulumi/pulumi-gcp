@@ -32,6 +32,8 @@ namespace Pulumi.Gcp.Container.Inputs
         /// The CPU management policy on the node. See
         /// [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
         /// One of `"none"` or `"static"`. If unset (or set to the empty string `""`), the API will treat the field as if set to "none".
+        /// Prior to the 6.4.0 this field was marked as required. The workaround for the required field
+        /// is setting the empty string `""`, which will function identically to not setting this field.
         /// </summary>
         [Input("cpuManagerPolicy")]
         public Input<string>? CpuManagerPolicy { get; set; }

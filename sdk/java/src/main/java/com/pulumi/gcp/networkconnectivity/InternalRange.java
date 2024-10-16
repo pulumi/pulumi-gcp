@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.networkconnectivity.InternalRangeArgs;
 import com.pulumi.gcp.networkconnectivity.inputs.InternalRangeState;
+import com.pulumi.gcp.networkconnectivity.outputs.InternalRangeMigration;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -226,6 +227,70 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Network Connectivity Internal Ranges Migration
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.networkconnectivity.InternalRange;
+ * import com.pulumi.gcp.networkconnectivity.InternalRangeArgs;
+ * import com.pulumi.gcp.networkconnectivity.inputs.InternalRangeMigrationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .name("internal-ranges")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var source = new Subnetwork("source", SubnetworkArgs.builder()
+ *             .name("source-subnet")
+ *             .ipCidrRange("10.1.0.0/16")
+ *             .region("us-central1")
+ *             .network(defaultNetwork.name())
+ *             .build());
+ * 
+ *         final var targetProject = OrganizationsFunctions.getProject();
+ * 
+ *         var default_ = new InternalRange("default", InternalRangeArgs.builder()
+ *             .name("migration")
+ *             .description("Test internal range")
+ *             .network(defaultNetwork.selfLink())
+ *             .usage("FOR_MIGRATION")
+ *             .peering("FOR_SELF")
+ *             .ipCidrRange("10.1.0.0/16")
+ *             .migration(InternalRangeMigrationArgs.builder()
+ *                 .source(source.selfLink())
+ *                 .target(String.format("projects/%s/regions/us-central1/subnetworks/target-subnet", targetProject.applyValue(getProjectResult -> getProjectResult.projectId())))
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -315,6 +380,22 @@ public class InternalRange extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Map<String,String>>> labels() {
         return Codegen.optional(this.labels);
+    }
+    /**
+     * Specification for migration with source and target resource names.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="migration", refs={InternalRangeMigration.class}, tree="[0]")
+    private Output</* @Nullable */ InternalRangeMigration> migration;
+
+    /**
+     * @return Specification for migration with source and target resource names.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<InternalRangeMigration>> migration() {
+        return Codegen.optional(this.migration);
     }
     /**
      * The name of the policy based route.
@@ -446,7 +527,7 @@ public class InternalRange extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type of usage set for this InternalRange.
-     * Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`.
+     * Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`, `FOR_MIGRATION`.
      * 
      */
     @Export(name="usage", refs={String.class}, tree="[0]")
@@ -454,7 +535,7 @@ public class InternalRange extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of usage set for this InternalRange.
-     * Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`.
+     * Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`, `FOR_MIGRATION`.
      * 
      */
     public Output<String> usage() {

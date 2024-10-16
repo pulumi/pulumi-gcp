@@ -61,10 +61,16 @@ MYPY = False
 
 if not MYPY:
     class ChatEngineChatEngineConfigArgsDict(TypedDict):
-        agent_creation_config: pulumi.Input['ChatEngineChatEngineConfigAgentCreationConfigArgsDict']
+        agent_creation_config: NotRequired[pulumi.Input['ChatEngineChatEngineConfigAgentCreationConfigArgsDict']]
         """
         The configuration to generate the Dialogflow agent that is associated to this Engine.
+        Exactly one of `agent_creation_config` or `dialogflow_agent_to_link` must be set.
         Structure is documented below.
+        """
+        dialogflow_agent_to_link: NotRequired[pulumi.Input[str]]
+        """
+        The resource name of an existing Dialogflow agent to link to this Chat Engine. Format: `projects/<Project_ID>/locations/<Location_ID>/agents/<Agent_ID>`.
+        Exactly one of `agent_creation_config` or `dialogflow_agent_to_link` must be set.
         """
 elif False:
     ChatEngineChatEngineConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -72,25 +78,46 @@ elif False:
 @pulumi.input_type
 class ChatEngineChatEngineConfigArgs:
     def __init__(__self__, *,
-                 agent_creation_config: pulumi.Input['ChatEngineChatEngineConfigAgentCreationConfigArgs']):
+                 agent_creation_config: Optional[pulumi.Input['ChatEngineChatEngineConfigAgentCreationConfigArgs']] = None,
+                 dialogflow_agent_to_link: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input['ChatEngineChatEngineConfigAgentCreationConfigArgs'] agent_creation_config: The configuration to generate the Dialogflow agent that is associated to this Engine.
+               Exactly one of `agent_creation_config` or `dialogflow_agent_to_link` must be set.
                Structure is documented below.
+        :param pulumi.Input[str] dialogflow_agent_to_link: The resource name of an existing Dialogflow agent to link to this Chat Engine. Format: `projects/<Project_ID>/locations/<Location_ID>/agents/<Agent_ID>`.
+               Exactly one of `agent_creation_config` or `dialogflow_agent_to_link` must be set.
         """
-        pulumi.set(__self__, "agent_creation_config", agent_creation_config)
+        if agent_creation_config is not None:
+            pulumi.set(__self__, "agent_creation_config", agent_creation_config)
+        if dialogflow_agent_to_link is not None:
+            pulumi.set(__self__, "dialogflow_agent_to_link", dialogflow_agent_to_link)
 
     @property
     @pulumi.getter(name="agentCreationConfig")
-    def agent_creation_config(self) -> pulumi.Input['ChatEngineChatEngineConfigAgentCreationConfigArgs']:
+    def agent_creation_config(self) -> Optional[pulumi.Input['ChatEngineChatEngineConfigAgentCreationConfigArgs']]:
         """
         The configuration to generate the Dialogflow agent that is associated to this Engine.
+        Exactly one of `agent_creation_config` or `dialogflow_agent_to_link` must be set.
         Structure is documented below.
         """
         return pulumi.get(self, "agent_creation_config")
 
     @agent_creation_config.setter
-    def agent_creation_config(self, value: pulumi.Input['ChatEngineChatEngineConfigAgentCreationConfigArgs']):
+    def agent_creation_config(self, value: Optional[pulumi.Input['ChatEngineChatEngineConfigAgentCreationConfigArgs']]):
         pulumi.set(self, "agent_creation_config", value)
+
+    @property
+    @pulumi.getter(name="dialogflowAgentToLink")
+    def dialogflow_agent_to_link(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name of an existing Dialogflow agent to link to this Chat Engine. Format: `projects/<Project_ID>/locations/<Location_ID>/agents/<Agent_ID>`.
+        Exactly one of `agent_creation_config` or `dialogflow_agent_to_link` must be set.
+        """
+        return pulumi.get(self, "dialogflow_agent_to_link")
+
+    @dialogflow_agent_to_link.setter
+    def dialogflow_agent_to_link(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dialogflow_agent_to_link", value)
 
 
 if not MYPY:

@@ -1219,6 +1219,7 @@
         "secretmanager/secretIamMember.ts",
         "secretmanager/secretIamPolicy.ts",
         "secretmanager/secretVersion.ts",
+        "securesourcemanager/branchRule.ts",
         "securesourcemanager/getInstanceIamPolicy.ts",
         "securesourcemanager/getRepositoryIamPolicy.ts",
         "securesourcemanager/index.ts",

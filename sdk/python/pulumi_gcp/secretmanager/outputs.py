@@ -1261,11 +1261,7 @@ class GetSecretsSecretResult(dict):
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
                Only one of 'ttl' or 'expire_time' can be provided.
         :param Mapping[str, str] version_aliases: Mapping from version alias to version name.
-        :param str version_destroy_ttl: Secret Version TTL after destruction request.
-               This is a part of the delayed delete feature on Secret Version.
-               For secret with versionDestroyTtl>0, version destruction doesn't happen immediately
-               on calling destroy instead the version goes to a disabled state and
-               the actual destruction happens after this TTL expires.
+        :param str version_destroy_ttl: The version destroy ttl for the secret version.
         """
         pulumi.set(__self__, "annotations", annotations)
         pulumi.set(__self__, "create_time", create_time)
@@ -1408,11 +1404,7 @@ class GetSecretsSecretResult(dict):
     @pulumi.getter(name="versionDestroyTtl")
     def version_destroy_ttl(self) -> str:
         """
-        Secret Version TTL after destruction request.
-        This is a part of the delayed delete feature on Secret Version.
-        For secret with versionDestroyTtl>0, version destruction doesn't happen immediately
-        on calling destroy instead the version goes to a disabled state and
-        the actual destruction happens after this TTL expires.
+        The version destroy ttl for the secret version.
         """
         return pulumi.get(self, "version_destroy_ttl")
 

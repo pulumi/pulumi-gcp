@@ -14,10 +14,18 @@ namespace Pulumi.Gcp.DiscoveryEngine.Inputs
     {
         /// <summary>
         /// The configuration to generate the Dialogflow agent that is associated to this Engine.
+        /// Exactly one of `agent_creation_config` or `dialogflow_agent_to_link` must be set.
         /// Structure is documented below.
         /// </summary>
-        [Input("agentCreationConfig", required: true)]
-        public Input<Inputs.ChatEngineChatEngineConfigAgentCreationConfigArgs> AgentCreationConfig { get; set; } = null!;
+        [Input("agentCreationConfig")]
+        public Input<Inputs.ChatEngineChatEngineConfigAgentCreationConfigArgs>? AgentCreationConfig { get; set; }
+
+        /// <summary>
+        /// The resource name of an existing Dialogflow agent to link to this Chat Engine. Format: `projects/&lt;Project_ID&gt;/locations/&lt;Location_ID&gt;/agents/&lt;Agent_ID&gt;`.
+        /// Exactly one of `agent_creation_config` or `dialogflow_agent_to_link` must be set.
+        /// </summary>
+        [Input("dialogflowAgentToLink")]
+        public Input<string>? DialogflowAgentToLink { get; set; }
 
         public ChatEngineChatEngineConfigArgs()
         {

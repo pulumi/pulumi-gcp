@@ -316,7 +316,7 @@ class BackupVault(pulumi.CustomResource):
 
         test_backup_vault = gcp.netapp.BackupVault("test_backup_vault",
             name="test-backup-vault",
-            location="us-central1",
+            location="us-west1",
             description="Terraform created vault",
             labels={
                 "creator": "testuser",
@@ -388,7 +388,7 @@ class BackupVault(pulumi.CustomResource):
 
         test_backup_vault = gcp.netapp.BackupVault("test_backup_vault",
             name="test-backup-vault",
-            location="us-central1",
+            location="us-west1",
             description="Terraform created vault",
             labels={
                 "creator": "testuser",

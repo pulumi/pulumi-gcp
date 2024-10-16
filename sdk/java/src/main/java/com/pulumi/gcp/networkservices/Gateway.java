@@ -601,6 +601,22 @@ public class Gateway extends com.pulumi.resources.CustomResource {
         return this.pulumiLabels;
     }
     /**
+     * The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
+     * Possible values are: `NEXT_HOP_ROUTING_MODE`.
+     * 
+     */
+    @Export(name="routingMode", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> routingMode;
+
+    /**
+     * @return The routing mode of the Gateway. This field is configurable only for gateways of type SECURE_WEB_GATEWAY. This field is required for gateways of type SECURE_WEB_GATEWAY.
+     * Possible values are: `NEXT_HOP_ROUTING_MODE`.
+     * 
+     */
+    public Output<Optional<String>> routingMode() {
+        return Codegen.optional(this.routingMode);
+    }
+    /**
      * Immutable. Scope determines how configuration across multiple Gateway instances are merged.
      * The configuration for multiple Gateway instances with the same scope will be merged as presented as
      * a single coniguration to the proxy/load balancer.

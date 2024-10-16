@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.Netapp
     ///     var testBackupVault = new Gcp.Netapp.BackupVault("test_backup_vault", new()
     ///     {
     ///         Name = "test-backup-vault",
-    ///         Location = "us-central1",
+    ///         Location = "us-west1",
     ///         Description = "Terraform created vault",
     ///         Labels = 
     ///         {

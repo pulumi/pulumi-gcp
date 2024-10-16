@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) }{{@code
  *         // Create Folder in GCP Organization
  *         var autokmsFolder = new Folder("autokmsFolder", FolderArgs.builder()
- *             .displayName("folder-example")
+ *             .displayName("my-folder")
  *             .parent("organizations/123456789")
  *             .deletionProtection(false)
  *             .build());
@@ -76,8 +76,8 @@ import javax.annotation.Nullable;
  * 
  *         // Create the resource project
  *         var resourceProject = new Project("resourceProject", ProjectArgs.builder()
- *             .projectId("resources")
- *             .name("resources")
+ *             .projectId("res-proj")
+ *             .name("res-proj")
  *             .folderId(autokmsFolder.folderId())
  *             .billingAccount("000000-0000000-0000000-000000")
  *             .deletionPolicy("DELETE")
@@ -149,7 +149,7 @@ import javax.annotation.Nullable;
  * 
  *         var example_keyhandle = new KeyHandle("example-keyhandle", KeyHandleArgs.builder()
  *             .project(resourceProject.projectId())
- *             .name("example-key-handle")
+ *             .name("tf-test-key-handle")
  *             .location("global")
  *             .resourceTypeSelector("storage.googleapis.com/Bucket")
  *             .build(), CustomResourceOptions.builder()

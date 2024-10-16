@@ -103,6 +103,73 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Discoveryengine Chat Engine Existing Dialogflow Agent
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.discoveryengine.DataStore;
+ * import com.pulumi.gcp.discoveryengine.DataStoreArgs;
+ * import com.pulumi.gcp.diagflow.CxAgent;
+ * import com.pulumi.gcp.diagflow.CxAgentArgs;
+ * import com.pulumi.gcp.discoveryengine.ChatEngine;
+ * import com.pulumi.gcp.discoveryengine.ChatEngineArgs;
+ * import com.pulumi.gcp.discoveryengine.inputs.ChatEngineCommonConfigArgs;
+ * import com.pulumi.gcp.discoveryengine.inputs.ChatEngineChatEngineConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var testDataStore = new DataStore("testDataStore", DataStoreArgs.builder()
+ *             .location("global")
+ *             .dataStoreId("data-store")
+ *             .displayName("Structured datastore")
+ *             .industryVertical("GENERIC")
+ *             .contentConfig("NO_CONTENT")
+ *             .solutionTypes("SOLUTION_TYPE_CHAT")
+ *             .build());
+ * 
+ *         var agent = new CxAgent("agent", CxAgentArgs.builder()
+ *             .displayName("dialogflowcx-agent")
+ *             .location("global")
+ *             .defaultLanguageCode("en")
+ *             .timeZone("America/Los_Angeles")
+ *             .build());
+ * 
+ *         var primary = new ChatEngine("primary", ChatEngineArgs.builder()
+ *             .engineId("chat-engine-id")
+ *             .collectionId("default_collection")
+ *             .location(testDataStore.location())
+ *             .displayName("Chat engine")
+ *             .industryVertical("GENERIC")
+ *             .dataStoreIds(testDataStore.dataStoreId())
+ *             .commonConfig(ChatEngineCommonConfigArgs.builder()
+ *                 .companyName("test-company")
+ *                 .build())
+ *             .chatEngineConfig(ChatEngineChatEngineConfigArgs.builder()
+ *                 .dialogflowAgentToLink(agent.id())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

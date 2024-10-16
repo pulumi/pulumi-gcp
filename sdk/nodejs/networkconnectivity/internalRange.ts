@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -105,6 +107,36 @@ import * as utilities from "../utilities";
  *     dependsOn: [defaultSubnetwork],
  * });
  * ```
+ * ### Network Connectivity Internal Ranges Migration
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultNetwork = new gcp.compute.Network("default", {
+ *     name: "internal-ranges",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const source = new gcp.compute.Subnetwork("source", {
+ *     name: "source-subnet",
+ *     ipCidrRange: "10.1.0.0/16",
+ *     region: "us-central1",
+ *     network: defaultNetwork.name,
+ * });
+ * const targetProject = gcp.organizations.getProject({});
+ * const _default = new gcp.networkconnectivity.InternalRange("default", {
+ *     name: "migration",
+ *     description: "Test internal range",
+ *     network: defaultNetwork.selfLink,
+ *     usage: "FOR_MIGRATION",
+ *     peering: "FOR_SELF",
+ *     ipCidrRange: "10.1.0.0/16",
+ *     migration: {
+ *         source: source.selfLink,
+ *         target: targetProject.then(targetProject => `projects/${targetProject.projectId}/regions/us-central1/subnetworks/target-subnet`),
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -178,6 +210,11 @@ export class InternalRange extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
+     * Specification for migration with source and target resource names.
+     * Structure is documented below.
+     */
+    public readonly migration!: pulumi.Output<outputs.networkconnectivity.InternalRangeMigration | undefined>;
+    /**
      * The name of the policy based route.
      */
     public readonly name!: pulumi.Output<string>;
@@ -220,7 +257,7 @@ export class InternalRange extends pulumi.CustomResource {
     public readonly targetCidrRanges!: pulumi.Output<string[] | undefined>;
     /**
      * The type of usage set for this InternalRange.
-     * Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`.
+     * Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`, `FOR_MIGRATION`.
      */
     public readonly usage!: pulumi.Output<string>;
     /**
@@ -247,6 +284,7 @@ export class InternalRange extends pulumi.CustomResource {
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["ipCidrRange"] = state ? state.ipCidrRange : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["migration"] = state ? state.migration : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["network"] = state ? state.network : undefined;
             resourceInputs["overlaps"] = state ? state.overlaps : undefined;
@@ -271,6 +309,7 @@ export class InternalRange extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["ipCidrRange"] = args ? args.ipCidrRange : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["migration"] = args ? args.migration : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["network"] = args ? args.network : undefined;
             resourceInputs["overlaps"] = args ? args.overlaps : undefined;
@@ -314,6 +353,11 @@ export interface InternalRangeState {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * Specification for migration with source and target resource names.
+     * Structure is documented below.
+     */
+    migration?: pulumi.Input<inputs.networkconnectivity.InternalRangeMigration>;
+    /**
      * The name of the policy based route.
      */
     name?: pulumi.Input<string>;
@@ -356,7 +400,7 @@ export interface InternalRangeState {
     targetCidrRanges?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The type of usage set for this InternalRange.
-     * Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`.
+     * Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`, `FOR_MIGRATION`.
      */
     usage?: pulumi.Input<string>;
     /**
@@ -386,6 +430,11 @@ export interface InternalRangeArgs {
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Specification for migration with source and target resource names.
+     * Structure is documented below.
+     */
+    migration?: pulumi.Input<inputs.networkconnectivity.InternalRangeMigration>;
     /**
      * The name of the policy based route.
      */
@@ -424,7 +473,7 @@ export interface InternalRangeArgs {
     targetCidrRanges?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The type of usage set for this InternalRange.
-     * Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`.
+     * Possible values are: `FOR_VPC`, `EXTERNAL_TO_VPC`, `FOR_MIGRATION`.
      */
     usage: pulumi.Input<string>;
 }

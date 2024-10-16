@@ -17,6 +17,8 @@ from .. import _utilities
 __all__ = [
     'HubRoutingVpcArgs',
     'HubRoutingVpcArgsDict',
+    'InternalRangeMigrationArgs',
+    'InternalRangeMigrationArgsDict',
     'PolicyBasedRouteFilterArgs',
     'PolicyBasedRouteFilterArgsDict',
     'PolicyBasedRouteInterconnectAttachmentArgs',
@@ -77,6 +79,74 @@ class HubRoutingVpcArgs:
     @uri.setter
     def uri(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "uri", value)
+
+
+if not MYPY:
+    class InternalRangeMigrationArgsDict(TypedDict):
+        source: pulumi.Input[str]
+        """
+        Resource path as an URI of the source resource, for example a subnet.
+        The project for the source resource should match the project for the
+        InternalRange.
+        An example /projects/{project}/regions/{region}/subnetworks/{subnet}
+        """
+        target: pulumi.Input[str]
+        """
+        Resource path of the target resource. The target project can be
+        different, as in the cases when migrating to peer networks. The resource
+        may not exist yet.
+        For example /projects/{project}/regions/{region}/subnetworks/{subnet}
+        """
+elif False:
+    InternalRangeMigrationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InternalRangeMigrationArgs:
+    def __init__(__self__, *,
+                 source: pulumi.Input[str],
+                 target: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] source: Resource path as an URI of the source resource, for example a subnet.
+               The project for the source resource should match the project for the
+               InternalRange.
+               An example /projects/{project}/regions/{region}/subnetworks/{subnet}
+        :param pulumi.Input[str] target: Resource path of the target resource. The target project can be
+               different, as in the cases when migrating to peer networks. The resource
+               may not exist yet.
+               For example /projects/{project}/regions/{region}/subnetworks/{subnet}
+        """
+        pulumi.set(__self__, "source", source)
+        pulumi.set(__self__, "target", target)
+
+    @property
+    @pulumi.getter
+    def source(self) -> pulumi.Input[str]:
+        """
+        Resource path as an URI of the source resource, for example a subnet.
+        The project for the source resource should match the project for the
+        InternalRange.
+        An example /projects/{project}/regions/{region}/subnetworks/{subnet}
+        """
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: pulumi.Input[str]):
+        pulumi.set(self, "source", value)
+
+    @property
+    @pulumi.getter
+    def target(self) -> pulumi.Input[str]:
+        """
+        Resource path of the target resource. The target project can be
+        different, as in the cases when migrating to peer networks. The resource
+        may not exist yet.
+        For example /projects/{project}/regions/{region}/subnetworks/{subnet}
+        """
+        return pulumi.get(self, "target")
+
+    @target.setter
+    def target(self, value: pulumi.Input[str]):
+        pulumi.set(self, "target", value)
 
 
 if not MYPY:

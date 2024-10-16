@@ -26,7 +26,7 @@ public final class InstanceTemplateNetworkInterfaceArgs extends com.pulumi.resou
      * is not accessible from the Internet (this means that ssh provisioners will
      * not work unless you can send traffic to the instance&#39;s
      * network (e.g. via tunnel or because it is running on another cloud instance
-     * on that network). This block can be repeated multiple times. Structure documented below.
+     * on that network). This block can be specified once per `network_interface`. Structure documented below.
      * 
      */
     @Import(name="accessConfigs")
@@ -38,7 +38,7 @@ public final class InstanceTemplateNetworkInterfaceArgs extends com.pulumi.resou
      * is not accessible from the Internet (this means that ssh provisioners will
      * not work unless you can send traffic to the instance&#39;s
      * network (e.g. via tunnel or because it is running on another cloud instance
-     * on that network). This block can be repeated multiple times. Structure documented below.
+     * on that network). This block can be specified once per `network_interface`. Structure documented below.
      * 
      */
     public Optional<Output<List<InstanceTemplateNetworkInterfaceAccessConfigArgs>>> accessConfigs() {
@@ -321,7 +321,7 @@ public final class InstanceTemplateNetworkInterfaceArgs extends com.pulumi.resou
          * is not accessible from the Internet (this means that ssh provisioners will
          * not work unless you can send traffic to the instance&#39;s
          * network (e.g. via tunnel or because it is running on another cloud instance
-         * on that network). This block can be repeated multiple times. Structure documented below.
+         * on that network). This block can be specified once per `network_interface`. Structure documented below.
          * 
          * @return builder
          * 
@@ -337,7 +337,7 @@ public final class InstanceTemplateNetworkInterfaceArgs extends com.pulumi.resou
          * is not accessible from the Internet (this means that ssh provisioners will
          * not work unless you can send traffic to the instance&#39;s
          * network (e.g. via tunnel or because it is running on another cloud instance
-         * on that network). This block can be repeated multiple times. Structure documented below.
+         * on that network). This block can be specified once per `network_interface`. Structure documented below.
          * 
          * @return builder
          * 
@@ -352,7 +352,7 @@ public final class InstanceTemplateNetworkInterfaceArgs extends com.pulumi.resou
          * is not accessible from the Internet (this means that ssh provisioners will
          * not work unless you can send traffic to the instance&#39;s
          * network (e.g. via tunnel or because it is running on another cloud instance
-         * on that network). This block can be repeated multiple times. Structure documented below.
+         * on that network). This block can be specified once per `network_interface`. Structure documented below.
          * 
          * @return builder
          * 

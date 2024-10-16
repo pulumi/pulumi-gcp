@@ -89,11 +89,7 @@ public final class GetSecretsSecret {
      */
     private Map<String,String> versionAliases;
     /**
-     * @return Secret Version TTL after destruction request.
-     * This is a part of the delayed delete feature on Secret Version.
-     * For secret with versionDestroyTtl&gt;0, version destruction doesn&#39;t happen immediately
-     * on calling destroy instead the version goes to a disabled state and
-     * the actual destruction happens after this TTL expires.
+     * @return The version destroy ttl for the secret version.
      * 
      */
     private String versionDestroyTtl;
@@ -203,11 +199,7 @@ public final class GetSecretsSecret {
         return this.versionAliases;
     }
     /**
-     * @return Secret Version TTL after destruction request.
-     * This is a part of the delayed delete feature on Secret Version.
-     * For secret with versionDestroyTtl&gt;0, version destruction doesn&#39;t happen immediately
-     * on calling destroy instead the version goes to a disabled state and
-     * the actual destruction happens after this TTL expires.
+     * @return The version destroy ttl for the secret version.
      * 
      */
     public String versionDestroyTtl() {

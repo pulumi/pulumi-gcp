@@ -295,9 +295,17 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:bigtable/instanceIamMember:InstanceIamMember")
 public class InstanceIamMember extends com.pulumi.resources.CustomResource {
+    /**
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
+     * 
+     */
     @Export(name="condition", refs={InstanceIamMemberCondition.class}, tree="[0]")
     private Output</* @Nullable */ InstanceIamMemberCondition> condition;
 
+    /**
+     * @return An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
+     * 
+     */
     public Output<Optional<InstanceIamMemberCondition>> condition() {
         return Codegen.optional(this.condition);
     }
@@ -361,19 +369,9 @@ public class InstanceIamMember extends com.pulumi.resources.CustomResource {
     public Output<String> member() {
         return this.member;
     }
-    /**
-     * The project in which the instance belongs. If it
-     * is not provided, a default will be supplied.
-     * 
-     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
-    /**
-     * @return The project in which the instance belongs. If it
-     * is not provided, a default will be supplied.
-     * 
-     */
     public Output<String> project() {
         return this.project;
     }
@@ -381,8 +379,6 @@ public class InstanceIamMember extends com.pulumi.resources.CustomResource {
      * The role that should be applied. Only one
      * `gcp.bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
-     * 
-     * `gcp.bigtable.InstanceIamPolicy` only:
      * 
      */
     @Export(name="role", refs={String.class}, tree="[0]")
@@ -392,8 +388,6 @@ public class InstanceIamMember extends com.pulumi.resources.CustomResource {
      * @return The role that should be applied. Only one
      * `gcp.bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
-     * 
-     * `gcp.bigtable.InstanceIamPolicy` only:
      * 
      */
     public Output<String> role() {

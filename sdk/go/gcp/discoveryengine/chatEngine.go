@@ -91,6 +91,67 @@ import (
 //	}
 //
 // ```
+// ### Discoveryengine Chat Engine Existing Dialogflow Agent
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/diagflow"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/discoveryengine"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			testDataStore, err := discoveryengine.NewDataStore(ctx, "test_data_store", &discoveryengine.DataStoreArgs{
+//				Location:         pulumi.String("global"),
+//				DataStoreId:      pulumi.String("data-store"),
+//				DisplayName:      pulumi.String("Structured datastore"),
+//				IndustryVertical: pulumi.String("GENERIC"),
+//				ContentConfig:    pulumi.String("NO_CONTENT"),
+//				SolutionTypes: pulumi.StringArray{
+//					pulumi.String("SOLUTION_TYPE_CHAT"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			agent, err := diagflow.NewCxAgent(ctx, "agent", &diagflow.CxAgentArgs{
+//				DisplayName:         pulumi.String("dialogflowcx-agent"),
+//				Location:            pulumi.String("global"),
+//				DefaultLanguageCode: pulumi.String("en"),
+//				TimeZone:            pulumi.String("America/Los_Angeles"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = discoveryengine.NewChatEngine(ctx, "primary", &discoveryengine.ChatEngineArgs{
+//				EngineId:         pulumi.String("chat-engine-id"),
+//				CollectionId:     pulumi.String("default_collection"),
+//				Location:         testDataStore.Location,
+//				DisplayName:      pulumi.String("Chat engine"),
+//				IndustryVertical: pulumi.String("GENERIC"),
+//				DataStoreIds: pulumi.StringArray{
+//					testDataStore.DataStoreId,
+//				},
+//				CommonConfig: &discoveryengine.ChatEngineCommonConfigArgs{
+//					CompanyName: pulumi.String("test-company"),
+//				},
+//				ChatEngineConfig: &discoveryengine.ChatEngineChatEngineConfigArgs{
+//					DialogflowAgentToLink: agent.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

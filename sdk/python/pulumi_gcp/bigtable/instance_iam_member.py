@@ -42,10 +42,7 @@ class InstanceIamMemberArgs:
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
-               
-               `bigtable.InstanceIamPolicy` only:
-        :param pulumi.Input[str] project: The project in which the instance belongs. If it
-               is not provided, a default will be supplied.
+        :param pulumi.Input['InstanceIamMemberConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
         """
         pulumi.set(__self__, "instance", instance)
         pulumi.set(__self__, "member", member)
@@ -95,8 +92,6 @@ class InstanceIamMemberArgs:
         The role that should be applied. Only one
         `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
         `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
-
-        `bigtable.InstanceIamPolicy` only:
         """
         return pulumi.get(self, "role")
 
@@ -107,6 +102,9 @@ class InstanceIamMemberArgs:
     @property
     @pulumi.getter
     def condition(self) -> Optional[pulumi.Input['InstanceIamMemberConditionArgs']]:
+        """
+        An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
+        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -116,10 +114,6 @@ class InstanceIamMemberArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The project in which the instance belongs. If it
-        is not provided, a default will be supplied.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -138,6 +132,7 @@ class _InstanceIamMemberState:
                  role: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering InstanceIamMember resources.
+        :param pulumi.Input['InstanceIamMemberConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the instances's IAM policy.
         :param pulumi.Input[str] instance: The name or relative resource id of the instance to manage IAM policies for.
                
@@ -150,13 +145,9 @@ class _InstanceIamMemberState:
                * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
                * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-        :param pulumi.Input[str] project: The project in which the instance belongs. If it
-               is not provided, a default will be supplied.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
-               
-               `bigtable.InstanceIamPolicy` only:
         """
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
@@ -174,6 +165,9 @@ class _InstanceIamMemberState:
     @property
     @pulumi.getter
     def condition(self) -> Optional[pulumi.Input['InstanceIamMemberConditionArgs']]:
+        """
+        An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
+        """
         return pulumi.get(self, "condition")
 
     @condition.setter
@@ -228,10 +222,6 @@ class _InstanceIamMemberState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        The project in which the instance belongs. If it
-        is not provided, a default will be supplied.
-        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -245,8 +235,6 @@ class _InstanceIamMemberState:
         The role that should be applied. Only one
         `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
         `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
-
-        `bigtable.InstanceIamPolicy` only:
         """
         return pulumi.get(self, "role")
 
@@ -385,6 +373,7 @@ class InstanceIamMember(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['InstanceIamMemberConditionArgs', 'InstanceIamMemberConditionArgsDict']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
         :param pulumi.Input[str] instance: The name or relative resource id of the instance to manage IAM policies for.
                
                For `bigtable.InstanceIamMember` or `bigtable.InstanceIamBinding`:
@@ -396,13 +385,9 @@ class InstanceIamMember(pulumi.CustomResource):
                * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
                * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-        :param pulumi.Input[str] project: The project in which the instance belongs. If it
-               is not provided, a default will be supplied.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
-               
-               `bigtable.InstanceIamPolicy` only:
         """
         ...
     @overload
@@ -591,6 +576,7 @@ class InstanceIamMember(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['InstanceIamMemberConditionArgs', 'InstanceIamMemberConditionArgsDict']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the instances's IAM policy.
         :param pulumi.Input[str] instance: The name or relative resource id of the instance to manage IAM policies for.
                
@@ -603,13 +589,9 @@ class InstanceIamMember(pulumi.CustomResource):
                * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
                * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-        :param pulumi.Input[str] project: The project in which the instance belongs. If it
-               is not provided, a default will be supplied.
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
-               
-               `bigtable.InstanceIamPolicy` only:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -626,6 +608,9 @@ class InstanceIamMember(pulumi.CustomResource):
     @property
     @pulumi.getter
     def condition(self) -> pulumi.Output[Optional['outputs.InstanceIamMemberCondition']]:
+        """
+        An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
+        """
         return pulumi.get(self, "condition")
 
     @property
@@ -664,10 +649,6 @@ class InstanceIamMember(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
-        """
-        The project in which the instance belongs. If it
-        is not provided, a default will be supplied.
-        """
         return pulumi.get(self, "project")
 
     @property
@@ -677,8 +658,6 @@ class InstanceIamMember(pulumi.CustomResource):
         The role that should be applied. Only one
         `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
         `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
-
-        `bigtable.InstanceIamPolicy` only:
         """
         return pulumi.get(self, "role")
 

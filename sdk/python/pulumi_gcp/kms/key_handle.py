@@ -224,7 +224,7 @@ class KeyHandle(pulumi.CustomResource):
 
         # Create Folder in GCP Organization
         autokms_folder = gcp.organizations.Folder("autokms_folder",
-            display_name="folder-example",
+            display_name="my-folder",
             parent="organizations/123456789",
             deletion_protection=False)
         # Create the key project
@@ -237,8 +237,8 @@ class KeyHandle(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[autokms_folder]))
         # Create the resource project
         resource_project = gcp.organizations.Project("resource_project",
-            project_id="resources",
-            name="resources",
+            project_id="res-proj",
+            name="res-proj",
             folder_id=autokms_folder.folder_id,
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE",
@@ -279,7 +279,7 @@ class KeyHandle(pulumi.CustomResource):
         opts = pulumi.ResourceOptions(depends_on=[autokey_config]))
         example_keyhandle = gcp.kms.KeyHandle("example-keyhandle",
             project=resource_project.project_id,
-            name="example-key-handle",
+            name="tf-test-key-handle",
             location="global",
             resource_type_selector="storage.googleapis.com/Bucket",
             opts = pulumi.ResourceOptions(depends_on=[wait_autokey_config]))
@@ -340,7 +340,7 @@ class KeyHandle(pulumi.CustomResource):
 
         # Create Folder in GCP Organization
         autokms_folder = gcp.organizations.Folder("autokms_folder",
-            display_name="folder-example",
+            display_name="my-folder",
             parent="organizations/123456789",
             deletion_protection=False)
         # Create the key project
@@ -353,8 +353,8 @@ class KeyHandle(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[autokms_folder]))
         # Create the resource project
         resource_project = gcp.organizations.Project("resource_project",
-            project_id="resources",
-            name="resources",
+            project_id="res-proj",
+            name="res-proj",
             folder_id=autokms_folder.folder_id,
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE",
@@ -395,7 +395,7 @@ class KeyHandle(pulumi.CustomResource):
         opts = pulumi.ResourceOptions(depends_on=[autokey_config]))
         example_keyhandle = gcp.kms.KeyHandle("example-keyhandle",
             project=resource_project.project_id,
-            name="example-key-handle",
+            name="tf-test-key-handle",
             location="global",
             resource_type_selector="storage.googleapis.com/Bucket",
             opts = pulumi.ResourceOptions(depends_on=[wait_autokey_config]))

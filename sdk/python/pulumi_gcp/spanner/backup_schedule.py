@@ -393,7 +393,8 @@ class BackupSchedule(pulumi.CustomResource):
             name="instance-id",
             config="regional-europe-west1",
             display_name="main-instance",
-            num_nodes=1)
+            num_nodes=1,
+            edition="ENTERPRISE")
         database = gcp.spanner.Database("database",
             instance=main.name,
             name="database-id",
@@ -525,7 +526,8 @@ class BackupSchedule(pulumi.CustomResource):
             name="instance-id",
             config="regional-europe-west1",
             display_name="main-instance",
-            num_nodes=1)
+            num_nodes=1,
+            edition="ENTERPRISE")
         database = gcp.spanner.Database("database",
             instance=main.name,
             name="database-id",

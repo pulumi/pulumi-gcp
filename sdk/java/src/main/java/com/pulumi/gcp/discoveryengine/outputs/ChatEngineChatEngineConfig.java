@@ -4,27 +4,45 @@
 package com.pulumi.gcp.discoveryengine.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.discoveryengine.outputs.ChatEngineChatEngineConfigAgentCreationConfig;
+import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ChatEngineChatEngineConfig {
     /**
      * @return The configuration to generate the Dialogflow agent that is associated to this Engine.
+     * Exactly one of `agent_creation_config` or `dialogflow_agent_to_link` must be set.
      * Structure is documented below.
      * 
      */
-    private ChatEngineChatEngineConfigAgentCreationConfig agentCreationConfig;
+    private @Nullable ChatEngineChatEngineConfigAgentCreationConfig agentCreationConfig;
+    /**
+     * @return The resource name of an existing Dialogflow agent to link to this Chat Engine. Format: `projects/&lt;Project_ID&gt;/locations/&lt;Location_ID&gt;/agents/&lt;Agent_ID&gt;`.
+     * Exactly one of `agent_creation_config` or `dialogflow_agent_to_link` must be set.
+     * 
+     */
+    private @Nullable String dialogflowAgentToLink;
 
     private ChatEngineChatEngineConfig() {}
     /**
      * @return The configuration to generate the Dialogflow agent that is associated to this Engine.
+     * Exactly one of `agent_creation_config` or `dialogflow_agent_to_link` must be set.
      * Structure is documented below.
      * 
      */
-    public ChatEngineChatEngineConfigAgentCreationConfig agentCreationConfig() {
-        return this.agentCreationConfig;
+    public Optional<ChatEngineChatEngineConfigAgentCreationConfig> agentCreationConfig() {
+        return Optional.ofNullable(this.agentCreationConfig);
+    }
+    /**
+     * @return The resource name of an existing Dialogflow agent to link to this Chat Engine. Format: `projects/&lt;Project_ID&gt;/locations/&lt;Location_ID&gt;/agents/&lt;Agent_ID&gt;`.
+     * Exactly one of `agent_creation_config` or `dialogflow_agent_to_link` must be set.
+     * 
+     */
+    public Optional<String> dialogflowAgentToLink() {
+        return Optional.ofNullable(this.dialogflowAgentToLink);
     }
 
     public static Builder builder() {
@@ -36,24 +54,31 @@ public final class ChatEngineChatEngineConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private ChatEngineChatEngineConfigAgentCreationConfig agentCreationConfig;
+        private @Nullable ChatEngineChatEngineConfigAgentCreationConfig agentCreationConfig;
+        private @Nullable String dialogflowAgentToLink;
         public Builder() {}
         public Builder(ChatEngineChatEngineConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.agentCreationConfig = defaults.agentCreationConfig;
+    	      this.dialogflowAgentToLink = defaults.dialogflowAgentToLink;
         }
 
         @CustomType.Setter
-        public Builder agentCreationConfig(ChatEngineChatEngineConfigAgentCreationConfig agentCreationConfig) {
-            if (agentCreationConfig == null) {
-              throw new MissingRequiredPropertyException("ChatEngineChatEngineConfig", "agentCreationConfig");
-            }
+        public Builder agentCreationConfig(@Nullable ChatEngineChatEngineConfigAgentCreationConfig agentCreationConfig) {
+
             this.agentCreationConfig = agentCreationConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dialogflowAgentToLink(@Nullable String dialogflowAgentToLink) {
+
+            this.dialogflowAgentToLink = dialogflowAgentToLink;
             return this;
         }
         public ChatEngineChatEngineConfig build() {
             final var _resultValue = new ChatEngineChatEngineConfig();
             _resultValue.agentCreationConfig = agentCreationConfig;
+            _resultValue.dialogflowAgentToLink = dialogflowAgentToLink;
             return _resultValue;
         }
     }
