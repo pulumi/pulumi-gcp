@@ -1218,7 +1218,7 @@ class Service(pulumi.CustomResource):
                         "limits": {
                             "cpu": "4",
                             "memory": "16Gi",
-                            "nvidia_com_gpu": "1",
+                            "nvidia.com/gpu": "1",
                         },
                         "startup_cpu_boost": True,
                     },
@@ -1741,7 +1741,7 @@ class Service(pulumi.CustomResource):
                         "limits": {
                             "cpu": "4",
                             "memory": "16Gi",
-                            "nvidia_com_gpu": "1",
+                            "nvidia.com/gpu": "1",
                         },
                         "startup_cpu_boost": True,
                     },

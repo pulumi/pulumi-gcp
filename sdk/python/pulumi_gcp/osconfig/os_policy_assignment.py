@@ -498,12 +498,12 @@ class OsPolicyAssignment(pulumi.CustomResource):
                 "all": False,
                 "exclusion_labels": [{
                     "labels": {
-                        "label_two": "value-two",
+                        "label-two": "value-two",
                     },
                 }],
                 "inclusion_labels": [{
                     "labels": {
-                        "label_one": "value-one",
+                        "label-one": "value-one",
                     },
                 }],
                 "inventories": [{
@@ -648,12 +648,12 @@ class OsPolicyAssignment(pulumi.CustomResource):
                 "all": False,
                 "exclusion_labels": [{
                     "labels": {
-                        "label_two": "value-two",
+                        "label-two": "value-two",
                     },
                 }],
                 "inclusion_labels": [{
                     "labels": {
-                        "label_one": "value-one",
+                        "label-one": "value-one",
                     },
                 }],
                 "inventories": [{
