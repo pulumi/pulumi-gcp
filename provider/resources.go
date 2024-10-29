@@ -131,6 +131,7 @@ const (
 	gcpNetworkSecurity          = "NetworkSecurity"          // Network Security resources
 	gcpNetworkServices          = "NetworkServices"          // Network Services resources
 	gcpNotebooks                = "Notebooks"                // Notebooks resources
+	gcpOracleDatabase           = "OracleDatabase"           // Oracle Database
 	gcpOrgPolicy                = "OrgPolicy"                // Org Policy
 	gcpOrganization             = "Organizations"            // Organization resources
 	gcpOsConfig                 = "OsConfig"                 // OsConfig resources
@@ -158,6 +159,7 @@ const (
 	gcpStorage                  = "Storage"                  // Storage resources
 	gcpTPU                      = "Tpu"                      // Tensor Processing Units
 	gcpTags                     = "Tags"                     // Tags
+	gcpTranscoder               = "Transcoder"               // Transcoder
 	gcpVMwareEngine             = "VMwareEngine"             // VMWare Engine
 	gcpVertex                   = "Vertex"                   // Vertex
 	gcpVpcAccess                = "VpcAccess"                // VPC Access
@@ -260,6 +262,7 @@ var moduleMapping = map[string]string{
 	"network_services":           gcpNetworkServices,
 	"notebooks":                  gcpNotebooks,
 	"org_policy":                 gcpOrgPolicy,
+	"oracle_database":            gcpOracleDatabase,
 	"organization":               gcpOrganization,
 	"os_config":                  gcpOsConfig,
 	"os_login":                   gcpOsLogin,
@@ -287,6 +290,7 @@ var moduleMapping = map[string]string{
 	"sql":                        gcpSQL,
 	"storage":                    gcpStorage,
 	"tags":                       gcpTags,
+	"transcoder":                 gcpTranscoder,
 	"tpu":                        gcpTPU,
 	"vertex":                     gcpVertex,
 	"vmwareengine":               gcpVMwareEngine,

@@ -160,10 +160,10 @@ index ab54b615d..2ed6376e4 100644
  * `default_expiration` -
    (Optional)
 diff --git a/website/docs/r/bigquery_job.html.markdown b/website/docs/r/bigquery_job.html.markdown
-index 171bd1a29..7f53f8286 100644
+index 8eeb84614..4d5284637 100644
 --- a/website/docs/r/bigquery_job.html.markdown
 +++ b/website/docs/r/bigquery_job.html.markdown
-@@ -720,8 +720,8 @@ The following arguments are supported:
+@@ -721,8 +721,8 @@ The following arguments are supported:
  
  * `null_marker` -
    (Optional)
@@ -494,7 +494,7 @@ index c3e738686..4ab0fb25d 100644
  * `project` - (Optional) The ID of the project in which the resource belongs.
      If it is not provided, the provider project is used.
 diff --git a/website/docs/r/composer_environment.html.markdown b/website/docs/r/composer_environment.html.markdown
-index 0e7437591..4766f2d48 100644
+index e82b80921..24473920a 100644
 --- a/website/docs/r/composer_environment.html.markdown
 +++ b/website/docs/r/composer_environment.html.markdown
 @@ -31,24 +31,21 @@ To get more information about Environments, see:
@@ -577,7 +577,7 @@ index 0a305240d..845f44993 100644
  ## Example Usage - Backend Bucket Signed Url Key
  
 diff --git a/website/docs/r/compute_backend_service.html.markdown b/website/docs/r/compute_backend_service.html.markdown
-index 6a4c84a9b..540444f37 100644
+index 7edeae294..f411c61a5 100644
 --- a/website/docs/r/compute_backend_service.html.markdown
 +++ b/website/docs/r/compute_backend_service.html.markdown
 @@ -36,7 +36,6 @@ To get more information about BackendService, see:
@@ -669,10 +669,10 @@ index f9cad9040..243ba6fd0 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_instance.html.markdown b/website/docs/r/compute_instance.html.markdown
-index 9f51d2dfa..2e130da94 100644
+index 369f11e5b..011c0de51 100644
 --- a/website/docs/r/compute_instance.html.markdown
 +++ b/website/docs/r/compute_instance.html.markdown
-@@ -138,7 +138,7 @@ The following arguments are supported:
+@@ -140,7 +140,7 @@ The following arguments are supported:
  
  - - -
  
@@ -681,7 +681,7 @@ index 9f51d2dfa..2e130da94 100644
    If you try to update a property that requires stopping the instance without setting this field, the update will fail.
  
  * `attached_disk` - (Optional) Additional disks to attach to the instance. Can be repeated multiple times for multiple disks. Structure is [documented below](#nested_attached_disk).
-@@ -153,7 +153,7 @@ The following arguments are supported:
+@@ -155,7 +155,7 @@ The following arguments are supported:
  `"RUNNING"`, `"SUSPENDED"` or `"TERMINATED"`.
  
  * `deletion_protection` - (Optional) Enable deletion protection on this instance. Defaults to false.
@@ -690,7 +690,7 @@ index 9f51d2dfa..2e130da94 100644
  
  * `hostname` - (Optional) A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
    Valid format is a series of labels 1-63 characters long matching the regular expression `[a-z]([-a-z0-9]*[a-z0-9])`, concatenated with periods.
-@@ -161,11 +161,6 @@ The following arguments are supported:
+@@ -163,11 +163,6 @@ The following arguments are supported:
  
  * `guest_accelerator` - (Optional) List of the type and count of accelerator cards attached to the instance. Structure [documented below](#nested_guest_accelerator).
      **Note:** GPU accelerators can only be used with [`on_host_maintenance`](#on_host_maintenance) option set to TERMINATE.
@@ -702,7 +702,7 @@ index 9f51d2dfa..2e130da94 100644
  
  * `labels` - (Optional) A map of key/value label pairs to assign to the instance.
      **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-@@ -200,8 +195,7 @@ only distinction is that this separate attribute will cause a recreate on
+@@ -202,8 +197,7 @@ only distinction is that this separate attribute will cause a recreate on
  modification.  On import, `metadata_startup_script` will not be set - if you
  choose to specify it you will see a diff immediately after import causing a
  destroy/recreate operation. If importing an instance and specifying this value
@@ -826,7 +826,7 @@ index fe6888f17..64fce6636 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_instance_template.html.markdown b/website/docs/r/compute_instance_template.html.markdown
-index afe75854b..6097d6cb3 100644
+index 1d65214ae..83d9a6cf7 100644
 --- a/website/docs/r/compute_instance_template.html.markdown
 +++ b/website/docs/r/compute_instance_template.html.markdown
 @@ -183,12 +183,11 @@ resource "google_compute_instance_template" "foobar" {
@@ -890,7 +890,7 @@ index afe75854b..6097d6cb3 100644
  
  * `name_prefix` - (Optional) Creates a unique name beginning with the specified
    prefix. Conflicts with `name`. Max length is 54 characters.
-@@ -551,7 +551,7 @@ The following arguments are supported:
+@@ -553,7 +553,7 @@ The following arguments are supported:
  * `access_config` - (Optional) Access configurations, i.e. IPs via which this
      instance can be accessed via the Internet. Omit to ensure that the instance
      is not accessible from the Internet (this means that ssh provisioners will
@@ -1145,7 +1145,7 @@ index cdc4e9963..0f0c5cb65 100644
  
  * `wait_for_instances_status` - (Optional) When used with `wait_for_instances` it specifies the status to wait for.
 diff --git a/website/docs/r/compute_region_network_endpoint_group.html.markdown b/website/docs/r/compute_region_network_endpoint_group.html.markdown
-index 4041ee9b5..db7ec64f1 100644
+index d3bc3d4d0..c3ac4fa42 100644
 --- a/website/docs/r/compute_region_network_endpoint_group.html.markdown
 +++ b/website/docs/r/compute_region_network_endpoint_group.html.markdown
 @@ -23,11 +23,6 @@ description: |-
@@ -2302,7 +2302,7 @@ index 3ee7bcb3d..752a8ebbb 100644
  
  ## Attributes Reference
 diff --git a/website/docs/r/google_folder.html.markdown b/website/docs/r/google_folder.html.markdown
-index 8d977035e..b92f93979 100644
+index 404437cbe..b2a41d19e 100644
 --- a/website/docs/r/google_folder.html.markdown
 +++ b/website/docs/r/google_folder.html.markdown
 @@ -15,7 +15,7 @@ A folder can contain projects, other folders, or a combination of both. You can
@@ -2678,7 +2678,7 @@ index 1e419d9e4..16c9465d2 100644
  ## Example Usage
  
 diff --git a/website/docs/r/google_project.html.markdown b/website/docs/r/google_project.html.markdown
-index fea020389..e8792e772 100644
+index cfddb1839..b05298e7b 100644
 --- a/website/docs/r/google_project.html.markdown
 +++ b/website/docs/r/google_project.html.markdown
 @@ -11,7 +11,7 @@ Allows creation and management of a Google Cloud Platform project.
@@ -3523,7 +3523,7 @@ index bde87ca55..099c538b8 100644
  * How-to Guides
      * [Managing Service Quota](https://cloud.google.com/service-usage/docs/manage-quota )
 diff --git a/website/docs/r/spanner_database.html.markdown b/website/docs/r/spanner_database.html.markdown
-index 2ac02739f..da87bdaae 100644
+index da83c6829..cd1223aa8 100644
 --- a/website/docs/r/spanner_database.html.markdown
 +++ b/website/docs/r/spanner_database.html.markdown
 @@ -29,12 +29,10 @@ To get more information about Database, see:
@@ -3557,7 +3557,7 @@ index 2ac02739f..da87bdaae 100644
  
  <a name="nested_encryption_config"></a>The `encryption_config` block supports:
 diff --git a/website/docs/r/sql_database_instance.html.markdown b/website/docs/r/sql_database_instance.html.markdown
-index dfc63b30e..0a86fd348 100644
+index 70435988d..a1a0a47f0 100644
 --- a/website/docs/r/sql_database_instance.html.markdown
 +++ b/website/docs/r/sql_database_instance.html.markdown
 @@ -10,12 +10,12 @@ Creates a new Google SQL Database Instance. For more information, see the [offic
@@ -3668,7 +3668,7 @@ index 21e3d32cd..5fc2cc98d 100644
  ## Example Usage
  
 diff --git a/website/docs/r/sql_user.html.markdown b/website/docs/r/sql_user.html.markdown
-index 9f2c3cde4..d350e3336 100644
+index e6847a79f..3e2ad5aa7 100644
 --- a/website/docs/r/sql_user.html.markdown
 +++ b/website/docs/r/sql_user.html.markdown
 @@ -9,8 +9,6 @@ description: |-
@@ -3681,10 +3681,10 @@ index 9f2c3cde4..d350e3336 100644
  ## Example Usage
  
 diff --git a/website/docs/r/storage_bucket.html.markdown b/website/docs/r/storage_bucket.html.markdown
-index db1b5e7e8..ed954e41f 100644
+index a509e780d..0a44f8676 100644
 --- a/website/docs/r/storage_bucket.html.markdown
 +++ b/website/docs/r/storage_bucket.html.markdown
-@@ -115,7 +115,7 @@ The following arguments are supported:
+@@ -129,7 +129,7 @@ The following arguments are supported:
  
  * `force_destroy` - (Optional, Default: false) When deleting a bucket, this
      boolean option will delete all contained objects. If you try to delete a
@@ -3693,7 +3693,7 @@ index db1b5e7e8..ed954e41f 100644
  
  * `project` - (Optional) The ID of the project in which the resource belongs. If it
      is not provided, the provider project is used.
-@@ -255,9 +255,9 @@ The following arguments are supported:
+@@ -271,9 +271,9 @@ The following arguments are supported:
    until a relevant action has occurred which triggers its creation.
    You should use the [`google_storage_project_service_account`](/docs/providers/google/d/storage_project_service_account.html) data source to obtain the email
    address for the service account when configuring IAM policy on the Cloud KMS key.
