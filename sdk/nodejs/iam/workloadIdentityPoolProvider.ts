@@ -56,6 +56,35 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Iam Workload Identity Pool Provider Github Actions
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const pool = new gcp.iam.WorkloadIdentityPool("pool", {workloadIdentityPoolId: "example-pool"});
+ * const example = new gcp.iam.WorkloadIdentityPoolProvider("example", {
+ *     workloadIdentityPoolId: pool.workloadIdentityPoolId,
+ *     workloadIdentityPoolProviderId: "example-prvdr",
+ *     displayName: "Name of provider",
+ *     description: "GitHub Actions identity pool provider for automated test",
+ *     disabled: true,
+ *     attributeCondition: `    assertion.repository_owner_id == "123456789" &&
+ *     attribute.repository == "gh-org/gh-repo" &&
+ *     assertion.ref == "refs/heads/main" &&
+ *     assertion.ref_type == "branch"
+ * `,
+ *     attributeMapping: {
+ *         "google.subject": "assertion.sub",
+ *         "attribute.actor": "assertion.actor",
+ *         "attribute.aud": "assertion.aud",
+ *         "attribute.repository": "assertion.repository",
+ *     },
+ *     oidc: {
+ *         issuerUri: "https://token.actions.githubusercontent.com",
+ *     },
+ * });
+ * ```
  * ### Iam Workload Identity Pool Provider Oidc Basic
  *
  * ```typescript

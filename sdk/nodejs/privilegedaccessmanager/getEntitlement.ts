@@ -6,6 +6,28 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Use this data source to get information about a Google Cloud Privileged Access Manager Entitlement.
+ *
+ * To get more information about Privileged Access Manager, see:
+ *
+ * * [API Documentation](https://cloud.google.com/iam/docs/reference/pam/rest)
+ * * How-to guides
+ *   * [Official documentation](https://cloud.google.com/iam/docs/pam-overview)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my-entitlement = gcp.privilegedaccessmanager.getEntitlement({
+ *     parent: "projects/my-project",
+ *     location: "global",
+ *     entitlementId: "my-entitlement",
+ * });
+ * ```
+ */
 export function getEntitlement(args?: GetEntitlementArgs, opts?: pulumi.InvokeOptions): Promise<GetEntitlementResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -20,8 +42,17 @@ export function getEntitlement(args?: GetEntitlementArgs, opts?: pulumi.InvokeOp
  * A collection of arguments for invoking getEntitlement.
  */
 export interface GetEntitlementArgs {
+    /**
+     * ID of the Entitlement resource. This is the last part of the Entitlement's full name which is of the format `{parent}/locations/{location}/entitlements/{entitlement_id}`.
+     */
     entitlementId?: string;
+    /**
+     * The region of the Entitlement resource.
+     */
     location?: string;
+    /**
+     * The project or folder or organization that contains the resource. Format: projects/{project-id|project-number} or folders/{folder-number}  or organizations/{organization-number}
+     */
     parent?: string;
 }
 
@@ -48,6 +79,28 @@ export interface GetEntitlementResult {
     readonly state: string;
     readonly updateTime: string;
 }
+/**
+ * Use this data source to get information about a Google Cloud Privileged Access Manager Entitlement.
+ *
+ * To get more information about Privileged Access Manager, see:
+ *
+ * * [API Documentation](https://cloud.google.com/iam/docs/reference/pam/rest)
+ * * How-to guides
+ *   * [Official documentation](https://cloud.google.com/iam/docs/pam-overview)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my-entitlement = gcp.privilegedaccessmanager.getEntitlement({
+ *     parent: "projects/my-project",
+ *     location: "global",
+ *     entitlementId: "my-entitlement",
+ * });
+ * ```
+ */
 export function getEntitlementOutput(args?: GetEntitlementOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEntitlementResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -62,7 +115,16 @@ export function getEntitlementOutput(args?: GetEntitlementOutputArgs, opts?: pul
  * A collection of arguments for invoking getEntitlement.
  */
 export interface GetEntitlementOutputArgs {
+    /**
+     * ID of the Entitlement resource. This is the last part of the Entitlement's full name which is of the format `{parent}/locations/{location}/entitlements/{entitlement_id}`.
+     */
     entitlementId?: pulumi.Input<string>;
+    /**
+     * The region of the Entitlement resource.
+     */
     location?: pulumi.Input<string>;
+    /**
+     * The project or folder or organization that contains the resource. Format: projects/{project-id|project-number} or folders/{folder-number}  or organizations/{organization-number}
+     */
     parent?: pulumi.Input<string>;
 }

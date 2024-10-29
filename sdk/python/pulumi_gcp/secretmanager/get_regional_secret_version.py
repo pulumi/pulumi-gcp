@@ -27,7 +27,7 @@ class GetRegionalSecretVersionResult:
     """
     A collection of values returned by getRegionalSecretVersion.
     """
-    def __init__(__self__, create_time=None, customer_managed_encryptions=None, destroy_time=None, enabled=None, id=None, location=None, name=None, project=None, secret=None, secret_data=None, version=None):
+    def __init__(__self__, create_time=None, customer_managed_encryptions=None, destroy_time=None, enabled=None, id=None, is_secret_data_base64=None, location=None, name=None, project=None, secret=None, secret_data=None, version=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -43,6 +43,9 @@ class GetRegionalSecretVersionResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if is_secret_data_base64 and not isinstance(is_secret_data_base64, bool):
+            raise TypeError("Expected argument 'is_secret_data_base64' to be a bool")
+        pulumi.set(__self__, "is_secret_data_base64", is_secret_data_base64)
         if location and not isinstance(location, str):
             raise TypeError("Expected argument 'location' to be a str")
         pulumi.set(__self__, "location", location)
@@ -103,6 +106,11 @@ class GetRegionalSecretVersionResult:
         return pulumi.get(self, "id")
 
     @property
+    @pulumi.getter(name="isSecretDataBase64")
+    def is_secret_data_base64(self) -> Optional[bool]:
+        return pulumi.get(self, "is_secret_data_base64")
+
+    @property
     @pulumi.getter
     def location(self) -> str:
         return pulumi.get(self, "location")
@@ -151,6 +159,7 @@ class AwaitableGetRegionalSecretVersionResult(GetRegionalSecretVersionResult):
             destroy_time=self.destroy_time,
             enabled=self.enabled,
             id=self.id,
+            is_secret_data_base64=self.is_secret_data_base64,
             location=self.location,
             name=self.name,
             project=self.project,
@@ -159,13 +168,14 @@ class AwaitableGetRegionalSecretVersionResult(GetRegionalSecretVersionResult):
             version=self.version)
 
 
-def get_regional_secret_version(location: Optional[str] = None,
+def get_regional_secret_version(is_secret_data_base64: Optional[bool] = None,
+                                location: Optional[str] = None,
                                 project: Optional[str] = None,
                                 secret: Optional[str] = None,
                                 version: Optional[str] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegionalSecretVersionResult:
     """
-    Get the value and metadata from a Secret Manager regional secret version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/regional-secrets-overview) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions). If you don't need the metadata (i.e., if you want to use a more limited role to access the regional secret version only), see also the secretmanager_get_regional_secret_version_access datasource.
+    Get the value and metadata from a Secret Manager regional secret version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/regional-secrets-overview) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.locations.secrets.versions). If you don't need the metadata (i.e., if you want to use a more limited role to access the regional secret version only), see also the secretmanager_get_regional_secret_version_access datasource.
 
     ## Example Usage
 
@@ -178,6 +188,8 @@ def get_regional_secret_version(location: Optional[str] = None,
     ```
 
 
+    :param bool is_secret_data_base64: If set to 'true', the secret data is
+           expected to be base64-encoded string.
     :param str location: Location of Secret Manager regional secret resource.
            It must be provided when the `secret` field provided consists of only the name of the regional secret.
     :param str project: The project to get the secret version for. If it
@@ -188,6 +200,7 @@ def get_regional_secret_version(location: Optional[str] = None,
            is not provided, the latest version is retrieved.
     """
     __args__ = dict()
+    __args__['isSecretDataBase64'] = is_secret_data_base64
     __args__['location'] = location
     __args__['project'] = project
     __args__['secret'] = secret
@@ -201,19 +214,21 @@ def get_regional_secret_version(location: Optional[str] = None,
         destroy_time=pulumi.get(__ret__, 'destroy_time'),
         enabled=pulumi.get(__ret__, 'enabled'),
         id=pulumi.get(__ret__, 'id'),
+        is_secret_data_base64=pulumi.get(__ret__, 'is_secret_data_base64'),
         location=pulumi.get(__ret__, 'location'),
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
         secret=pulumi.get(__ret__, 'secret'),
         secret_data=pulumi.get(__ret__, 'secret_data'),
         version=pulumi.get(__ret__, 'version'))
-def get_regional_secret_version_output(location: Optional[pulumi.Input[Optional[str]]] = None,
+def get_regional_secret_version_output(is_secret_data_base64: Optional[pulumi.Input[Optional[bool]]] = None,
+                                       location: Optional[pulumi.Input[Optional[str]]] = None,
                                        project: Optional[pulumi.Input[Optional[str]]] = None,
                                        secret: Optional[pulumi.Input[str]] = None,
                                        version: Optional[pulumi.Input[Optional[str]]] = None,
                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionalSecretVersionResult]:
     """
-    Get the value and metadata from a Secret Manager regional secret version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/regional-secrets-overview) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions). If you don't need the metadata (i.e., if you want to use a more limited role to access the regional secret version only), see also the secretmanager_get_regional_secret_version_access datasource.
+    Get the value and metadata from a Secret Manager regional secret version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/regional-secrets-overview) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.locations.secrets.versions). If you don't need the metadata (i.e., if you want to use a more limited role to access the regional secret version only), see also the secretmanager_get_regional_secret_version_access datasource.
 
     ## Example Usage
 
@@ -226,6 +241,8 @@ def get_regional_secret_version_output(location: Optional[pulumi.Input[Optional[
     ```
 
 
+    :param bool is_secret_data_base64: If set to 'true', the secret data is
+           expected to be base64-encoded string.
     :param str location: Location of Secret Manager regional secret resource.
            It must be provided when the `secret` field provided consists of only the name of the regional secret.
     :param str project: The project to get the secret version for. If it
@@ -236,6 +253,7 @@ def get_regional_secret_version_output(location: Optional[pulumi.Input[Optional[
            is not provided, the latest version is retrieved.
     """
     __args__ = dict()
+    __args__['isSecretDataBase64'] = is_secret_data_base64
     __args__['location'] = location
     __args__['project'] = project
     __args__['secret'] = secret
@@ -248,6 +266,7 @@ def get_regional_secret_version_output(location: Optional[pulumi.Input[Optional[
         destroy_time=pulumi.get(__response__, 'destroy_time'),
         enabled=pulumi.get(__response__, 'enabled'),
         id=pulumi.get(__response__, 'id'),
+        is_secret_data_base64=pulumi.get(__response__, 'is_secret_data_base64'),
         location=pulumi.get(__response__, 'location'),
         name=pulumi.get(__response__, 'name'),
         project=pulumi.get(__response__, 'project'),

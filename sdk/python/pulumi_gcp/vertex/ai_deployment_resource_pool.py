@@ -230,7 +230,7 @@ class AiDeploymentResourcePool(pulumi.CustomResource):
             dedicated_resources={
                 "machine_spec": {
                     "machine_type": "n1-standard-4",
-                    "accelerator_type": "NVIDIA_TESLA_K80",
+                    "accelerator_type": "NVIDIA_TESLA_P4",
                     "accelerator_count": 1,
                 },
                 "min_replica_count": 1,
@@ -312,7 +312,7 @@ class AiDeploymentResourcePool(pulumi.CustomResource):
             dedicated_resources={
                 "machine_spec": {
                     "machine_type": "n1-standard-4",
-                    "accelerator_type": "NVIDIA_TESLA_K80",
+                    "accelerator_type": "NVIDIA_TESLA_P4",
                     "accelerator_count": 1,
                 },
                 "min_replica_count": 1,

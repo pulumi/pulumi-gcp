@@ -86,6 +86,8 @@ type LookupRegionInstanceTemplateResult struct {
 	CanIpForward bool `pulumi:"canIpForward"`
 	// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
 	ConfidentialInstanceConfigs []GetRegionInstanceTemplateConfidentialInstanceConfig `pulumi:"confidentialInstanceConfigs"`
+	// Creation timestamp in RFC3339 text format.
+	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// A brief description of this resource.
 	Description string `pulumi:"description"`
 	// Disks to attach to instances created from this template.
@@ -104,6 +106,8 @@ type LookupRegionInstanceTemplateResult struct {
 	// A brief description to use for instances
 	// created from this template.
 	InstanceDescription string `pulumi:"instanceDescription"`
+	// Action to be taken when a customer's encryption key is revoked.
+	KeyRevocationActionType string `pulumi:"keyRevocationActionType"`
 	// (Optional) A set of ket/value label pairs to assign to disk created from
 	// this template
 	Labels map[string]string `pulumi:"labels"`
@@ -235,6 +239,11 @@ func (o LookupRegionInstanceTemplateResultOutput) ConfidentialInstanceConfigs() 
 	}).(GetRegionInstanceTemplateConfidentialInstanceConfigArrayOutput)
 }
 
+// Creation timestamp in RFC3339 text format.
+func (o LookupRegionInstanceTemplateResultOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionInstanceTemplateResult) string { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
 // A brief description of this resource.
 func (o LookupRegionInstanceTemplateResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionInstanceTemplateResult) string { return v.Description }).(pulumi.StringOutput)
@@ -277,6 +286,11 @@ func (o LookupRegionInstanceTemplateResultOutput) Id() pulumi.StringOutput {
 // created from this template.
 func (o LookupRegionInstanceTemplateResultOutput) InstanceDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionInstanceTemplateResult) string { return v.InstanceDescription }).(pulumi.StringOutput)
+}
+
+// Action to be taken when a customer's encryption key is revoked.
+func (o LookupRegionInstanceTemplateResultOutput) KeyRevocationActionType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionInstanceTemplateResult) string { return v.KeyRevocationActionType }).(pulumi.StringOutput)
 }
 
 // (Optional) A set of ket/value label pairs to assign to disk created from

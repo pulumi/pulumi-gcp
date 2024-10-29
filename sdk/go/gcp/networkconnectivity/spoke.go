@@ -451,6 +451,93 @@ import (
 //	}
 //
 // ```
+// ### Network Connectivity Spoke Linked Producer Vpc Network Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/servicenetworking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
+//				Name:                  pulumi.String("net-spoke"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			address, err := compute.NewGlobalAddress(ctx, "address", &compute.GlobalAddressArgs{
+//				Name:         pulumi.String("test-address"),
+//				Purpose:      pulumi.String("VPC_PEERING"),
+//				AddressType:  pulumi.String("INTERNAL"),
+//				PrefixLength: pulumi.Int(16),
+//				Network:      network.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			peering, err := servicenetworking.NewConnection(ctx, "peering", &servicenetworking.ConnectionArgs{
+//				Network: network.ID(),
+//				Service: pulumi.String("servicenetworking.googleapis.com"),
+//				ReservedPeeringRanges: pulumi.StringArray{
+//					address.Name,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			basicHub, err := networkconnectivity.NewHub(ctx, "basic_hub", &networkconnectivity.HubArgs{
+//				Name: pulumi.String("hub-basic"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			linkedVpcSpoke, err := networkconnectivity.NewSpoke(ctx, "linked_vpc_spoke", &networkconnectivity.SpokeArgs{
+//				Name:     pulumi.String("vpc-spoke"),
+//				Location: pulumi.String("global"),
+//				Hub:      basicHub.ID(),
+//				LinkedVpcNetwork: &networkconnectivity.SpokeLinkedVpcNetworkArgs{
+//					Uri: network.SelfLink,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networkconnectivity.NewSpoke(ctx, "primary", &networkconnectivity.SpokeArgs{
+//				Name:        pulumi.String("producer-spoke"),
+//				Location:    pulumi.String("global"),
+//				Description: pulumi.String("A sample spoke with a linked router appliance instance"),
+//				Labels: pulumi.StringMap{
+//					"label-one": pulumi.String("value-one"),
+//				},
+//				Hub: basicHub.ID(),
+//				LinkedProducerVpcNetwork: &networkconnectivity.SpokeLinkedProducerVpcNetworkArgs{
+//					Network: network.Name,
+//					Peering: peering.Peering,
+//					ExcludeExportRanges: pulumi.StringArray{
+//						pulumi.String("198.51.100.0/24"),
+//						pulumi.String("10.10.0.0/16"),
+//					},
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				linkedVpcSpoke,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -493,6 +580,9 @@ type Spoke struct {
 	// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
 	// Structure is documented below.
 	LinkedInterconnectAttachments SpokeLinkedInterconnectAttachmentsPtrOutput `pulumi:"linkedInterconnectAttachments"`
+	// Producer VPC network that is associated with the spoke.
+	// Structure is documented below.
+	LinkedProducerVpcNetwork SpokeLinkedProducerVpcNetworkPtrOutput `pulumi:"linkedProducerVpcNetwork"`
 	// The URIs of linked Router appliance resources
 	// Structure is documented below.
 	LinkedRouterApplianceInstances SpokeLinkedRouterApplianceInstancesPtrOutput `pulumi:"linkedRouterApplianceInstances"`
@@ -578,6 +668,9 @@ type spokeState struct {
 	// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
 	// Structure is documented below.
 	LinkedInterconnectAttachments *SpokeLinkedInterconnectAttachments `pulumi:"linkedInterconnectAttachments"`
+	// Producer VPC network that is associated with the spoke.
+	// Structure is documented below.
+	LinkedProducerVpcNetwork *SpokeLinkedProducerVpcNetwork `pulumi:"linkedProducerVpcNetwork"`
 	// The URIs of linked Router appliance resources
 	// Structure is documented below.
 	LinkedRouterApplianceInstances *SpokeLinkedRouterApplianceInstances `pulumi:"linkedRouterApplianceInstances"`
@@ -623,6 +716,9 @@ type SpokeState struct {
 	// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
 	// Structure is documented below.
 	LinkedInterconnectAttachments SpokeLinkedInterconnectAttachmentsPtrInput
+	// Producer VPC network that is associated with the spoke.
+	// Structure is documented below.
+	LinkedProducerVpcNetwork SpokeLinkedProducerVpcNetworkPtrInput
 	// The URIs of linked Router appliance resources
 	// Structure is documented below.
 	LinkedRouterApplianceInstances SpokeLinkedRouterApplianceInstancesPtrInput
@@ -668,6 +764,9 @@ type spokeArgs struct {
 	// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
 	// Structure is documented below.
 	LinkedInterconnectAttachments *SpokeLinkedInterconnectAttachments `pulumi:"linkedInterconnectAttachments"`
+	// Producer VPC network that is associated with the spoke.
+	// Structure is documented below.
+	LinkedProducerVpcNetwork *SpokeLinkedProducerVpcNetwork `pulumi:"linkedProducerVpcNetwork"`
 	// The URIs of linked Router appliance resources
 	// Structure is documented below.
 	LinkedRouterApplianceInstances *SpokeLinkedRouterApplianceInstances `pulumi:"linkedRouterApplianceInstances"`
@@ -701,6 +800,9 @@ type SpokeArgs struct {
 	// A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
 	// Structure is documented below.
 	LinkedInterconnectAttachments SpokeLinkedInterconnectAttachmentsPtrInput
+	// Producer VPC network that is associated with the spoke.
+	// Structure is documented below.
+	LinkedProducerVpcNetwork SpokeLinkedProducerVpcNetworkPtrInput
 	// The URIs of linked Router appliance resources
 	// Structure is documented below.
 	LinkedRouterApplianceInstances SpokeLinkedRouterApplianceInstancesPtrInput
@@ -839,6 +941,12 @@ func (o SpokeOutput) Labels() pulumi.StringMapOutput {
 // Structure is documented below.
 func (o SpokeOutput) LinkedInterconnectAttachments() SpokeLinkedInterconnectAttachmentsPtrOutput {
 	return o.ApplyT(func(v *Spoke) SpokeLinkedInterconnectAttachmentsPtrOutput { return v.LinkedInterconnectAttachments }).(SpokeLinkedInterconnectAttachmentsPtrOutput)
+}
+
+// Producer VPC network that is associated with the spoke.
+// Structure is documented below.
+func (o SpokeOutput) LinkedProducerVpcNetwork() SpokeLinkedProducerVpcNetworkPtrOutput {
+	return o.ApplyT(func(v *Spoke) SpokeLinkedProducerVpcNetworkPtrOutput { return v.LinkedProducerVpcNetwork }).(SpokeLinkedProducerVpcNetworkPtrOutput)
 }
 
 // The URIs of linked Router appliance resources

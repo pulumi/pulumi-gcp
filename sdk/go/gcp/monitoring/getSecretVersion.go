@@ -52,6 +52,9 @@ func GetSecretVersion(ctx *pulumi.Context, args *GetSecretVersionArgs, opts ...p
 
 // A collection of arguments for invoking getSecretVersion.
 type GetSecretVersionArgs struct {
+	// If set to 'true', the secret data is
+	// expected to be base64-encoded string.
+	IsSecretDataBase64 *bool `pulumi:"isSecretDataBase64"`
 	// The project to get the secret version for. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -71,7 +74,8 @@ type GetSecretVersionResult struct {
 	// True if the current state of the SecretVersion is enabled.
 	Enabled bool `pulumi:"enabled"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id                 string `pulumi:"id"`
+	IsSecretDataBase64 *bool  `pulumi:"isSecretDataBase64"`
 	// The resource name of the SecretVersion. Format:
 	// `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
 	Name    string `pulumi:"name"`
@@ -103,6 +107,9 @@ func GetSecretVersionOutput(ctx *pulumi.Context, args GetSecretVersionOutputArgs
 
 // A collection of arguments for invoking getSecretVersion.
 type GetSecretVersionOutputArgs struct {
+	// If set to 'true', the secret data is
+	// expected to be base64-encoded string.
+	IsSecretDataBase64 pulumi.BoolPtrInput `pulumi:"isSecretDataBase64"`
 	// The project to get the secret version for. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput `pulumi:"project"`
@@ -150,6 +157,10 @@ func (o GetSecretVersionResultOutput) Enabled() pulumi.BoolOutput {
 // The provider-assigned unique ID for this managed resource.
 func (o GetSecretVersionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretVersionResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetSecretVersionResultOutput) IsSecretDataBase64() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetSecretVersionResult) *bool { return v.IsSecretDataBase64 }).(pulumi.BoolPtrOutput)
 }
 
 // The resource name of the SecretVersion. Format:

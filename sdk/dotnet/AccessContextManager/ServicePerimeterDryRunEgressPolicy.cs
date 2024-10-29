@@ -26,6 +26,8 @@ namespace Pulumi.Gcp.AccessContextManager
     /// To get more information about ServicePerimeterDryRunEgressPolicy, see:
     /// 
     /// * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.servicePerimeters#egresspolicy)
+    /// * How-to Guides
+    ///     * [Guide to Ingress and Egress Rules](https://cloud.google.com/vpc-service-controls/docs/ingress-egress-rules)
     /// 
     /// ## Example Usage
     /// </summary>

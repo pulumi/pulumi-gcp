@@ -58,7 +58,7 @@ public final class GetInstanceBootDisk {
      */
     private String mode;
     /**
-     * @return The name or self_link of the disk attached to this instance.
+     * @return The self_link of the disk attached to this instance.
      * 
      */
     private String source;
@@ -125,7 +125,7 @@ public final class GetInstanceBootDisk {
         return this.mode;
     }
     /**
-     * @return The name or self_link of the disk attached to this instance.
+     * @return The self_link of the disk attached to this instance.
      * 
      */
     public String source() {

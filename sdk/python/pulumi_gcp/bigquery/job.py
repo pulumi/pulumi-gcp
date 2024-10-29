@@ -661,9 +661,9 @@ class Job(pulumi.CustomResource):
         source = []
         for range in [{"value": i} for i in range(0, count)]:
             source.append(gcp.bigquery.Table(f"source-{range['value']}",
-                deletion_protection=False,
                 dataset_id=source_dataset[range["value"]].dataset_id,
                 table_id=f"job_copy_{range['value']}_table",
+                deletion_protection=False,
                 schema=\"\"\"[
           {
             "name": "name",
@@ -694,8 +694,8 @@ class Job(pulumi.CustomResource):
             name="example-key",
             key_ring=key_ring.id)
         project = gcp.organizations.get_project(project_id="my-project-name")
-        encrypt_role = gcp.projects.IAMMember("encrypt_role",
-            project=project.project_id,
+        encrypt_role = gcp.kms.CryptoKeyIAMMember("encrypt_role",
+            crypto_key_id=crypto_key.id,
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:bq-{project.number}@bigquery-encryption.iam.gserviceaccount.com")
         dest = gcp.bigquery.Table("dest",
@@ -1097,9 +1097,9 @@ class Job(pulumi.CustomResource):
         source = []
         for range in [{"value": i} for i in range(0, count)]:
             source.append(gcp.bigquery.Table(f"source-{range['value']}",
-                deletion_protection=False,
                 dataset_id=source_dataset[range["value"]].dataset_id,
                 table_id=f"job_copy_{range['value']}_table",
+                deletion_protection=False,
                 schema=\"\"\"[
           {
             "name": "name",
@@ -1130,8 +1130,8 @@ class Job(pulumi.CustomResource):
             name="example-key",
             key_ring=key_ring.id)
         project = gcp.organizations.get_project(project_id="my-project-name")
-        encrypt_role = gcp.projects.IAMMember("encrypt_role",
-            project=project.project_id,
+        encrypt_role = gcp.kms.CryptoKeyIAMMember("encrypt_role",
+            crypto_key_id=crypto_key.id,
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:bq-{project.number}@bigquery-encryption.iam.gserviceaccount.com")
         dest = gcp.bigquery.Table("dest",

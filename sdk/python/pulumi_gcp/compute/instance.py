@@ -35,6 +35,7 @@ class InstanceArgs:
                  enable_display: Optional[pulumi.Input[bool]] = None,
                  guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGuestAcceleratorArgs']]]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
+                 key_revocation_action_type: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  metadata_startup_script: Optional[pulumi.Input[str]] = None,
@@ -61,6 +62,8 @@ class InstanceArgs:
                **Note:** If you want to update this value (resize the VM) after initial creation, you must set `allow_stopping_for_update` to `true`.
                
                [Custom machine types](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
+               Because of current API limitations some custom machine types may get converted to different machine types (such as an equivalent standard type) and cause non-empty plans in your configuration. Use
+               `lifecycle.ignore_changes` on `machine_type` in these cases.
                
                There is a limit of 6.5 GB per CPU unless you add [extended memory](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#extendedmemory). You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceArgs']]] network_interfaces: Networks to attach to the instance. This can
@@ -87,6 +90,7 @@ class InstanceArgs:
         :param pulumi.Input[str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
                Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
                The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] key_revocation_action_type: Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value label pairs to assign to the instance.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field 'effective_labels' for all of the labels present on the resource.
@@ -170,6 +174,8 @@ class InstanceArgs:
             pulumi.set(__self__, "guest_accelerators", guest_accelerators)
         if hostname is not None:
             pulumi.set(__self__, "hostname", hostname)
+        if key_revocation_action_type is not None:
+            pulumi.set(__self__, "key_revocation_action_type", key_revocation_action_type)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if metadata is not None:
@@ -227,6 +233,8 @@ class InstanceArgs:
         **Note:** If you want to update this value (resize the VM) after initial creation, you must set `allow_stopping_for_update` to `true`.
 
         [Custom machine types](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
+        Because of current API limitations some custom machine types may get converted to different machine types (such as an equivalent standard type) and cause non-empty plans in your configuration. Use
+        `lifecycle.ignore_changes` on `machine_type` in these cases.
 
         There is a limit of 6.5 GB per CPU unless you add [extended memory](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#extendedmemory). You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
         """
@@ -391,6 +399,18 @@ class InstanceArgs:
     @hostname.setter
     def hostname(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "hostname", value)
+
+    @property
+    @pulumi.getter(name="keyRevocationActionType")
+    def key_revocation_action_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
+        """
+        return pulumi.get(self, "key_revocation_action_type")
+
+    @key_revocation_action_type.setter
+    def key_revocation_action_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_revocation_action_type", value)
 
     @property
     @pulumi.getter
@@ -647,6 +667,7 @@ class _InstanceState:
                  can_ip_forward: Optional[pulumi.Input[bool]] = None,
                  confidential_instance_config: Optional[pulumi.Input['InstanceConfidentialInstanceConfigArgs']] = None,
                  cpu_platform: Optional[pulumi.Input[str]] = None,
+                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  current_status: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -656,6 +677,7 @@ class _InstanceState:
                  guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGuestAcceleratorArgs']]]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
+                 key_revocation_action_type: Optional[pulumi.Input[str]] = None,
                  label_fingerprint: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
@@ -693,6 +715,7 @@ class _InstanceState:
                This defaults to false.
         :param pulumi.Input['InstanceConfidentialInstanceConfigArgs'] confidential_instance_config: Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
         :param pulumi.Input[str] cpu_platform: The CPU platform used by this instance.
+        :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] current_status: The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
         :param pulumi.Input[bool] deletion_protection: Enable deletion protection on this instance. Defaults to false.
                **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
@@ -708,6 +731,7 @@ class _InstanceState:
                Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
                The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
         :param pulumi.Input[str] instance_id: The server-assigned unique identifier of this instance.
+        :param pulumi.Input[str] key_revocation_action_type: Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
         :param pulumi.Input[str] label_fingerprint: The unique fingerprint of the labels.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value label pairs to assign to the instance.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -717,6 +741,8 @@ class _InstanceState:
                **Note:** If you want to update this value (resize the VM) after initial creation, you must set `allow_stopping_for_update` to `true`.
                
                [Custom machine types](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
+               Because of current API limitations some custom machine types may get converted to different machine types (such as an equivalent standard type) and cause non-empty plans in your configuration. Use
+               `lifecycle.ignore_changes` on `machine_type` in these cases.
                
                There is a limit of 6.5 GB per CPU unless you add [extended memory](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#extendedmemory). You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata key/value pairs to make available from
@@ -796,6 +822,8 @@ class _InstanceState:
             pulumi.set(__self__, "confidential_instance_config", confidential_instance_config)
         if cpu_platform is not None:
             pulumi.set(__self__, "cpu_platform", cpu_platform)
+        if creation_timestamp is not None:
+            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if current_status is not None:
             pulumi.set(__self__, "current_status", current_status)
         if deletion_protection is not None:
@@ -814,6 +842,8 @@ class _InstanceState:
             pulumi.set(__self__, "hostname", hostname)
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
+        if key_revocation_action_type is not None:
+            pulumi.set(__self__, "key_revocation_action_type", key_revocation_action_type)
         if label_fingerprint is not None:
             pulumi.set(__self__, "label_fingerprint", label_fingerprint)
         if labels is not None:
@@ -952,6 +982,18 @@ class _InstanceState:
         pulumi.set(self, "cpu_platform", value)
 
     @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> Optional[pulumi.Input[str]]:
+        """
+        Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @creation_timestamp.setter
+    def creation_timestamp(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "creation_timestamp", value)
+
+    @property
     @pulumi.getter(name="currentStatus")
     def current_status(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1066,6 +1108,18 @@ class _InstanceState:
         pulumi.set(self, "instance_id", value)
 
     @property
+    @pulumi.getter(name="keyRevocationActionType")
+    def key_revocation_action_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
+        """
+        return pulumi.get(self, "key_revocation_action_type")
+
+    @key_revocation_action_type.setter
+    def key_revocation_action_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_revocation_action_type", value)
+
+    @property
     @pulumi.getter(name="labelFingerprint")
     def label_fingerprint(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1100,6 +1154,8 @@ class _InstanceState:
         **Note:** If you want to update this value (resize the VM) after initial creation, you must set `allow_stopping_for_update` to `true`.
 
         [Custom machine types](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
+        Because of current API limitations some custom machine types may get converted to different machine types (such as an equivalent standard type) and cause non-empty plans in your configuration. Use
+        `lifecycle.ignore_changes` on `machine_type` in these cases.
 
         There is a limit of 6.5 GB per CPU unless you add [extended memory](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#extendedmemory). You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
         """
@@ -1420,6 +1476,7 @@ class Instance(pulumi.CustomResource):
                  enable_display: Optional[pulumi.Input[bool]] = None,
                  guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceGuestAcceleratorArgs', 'InstanceGuestAcceleratorArgsDict']]]]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
+                 key_revocation_action_type: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1577,6 +1634,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
                Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
                The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] key_revocation_action_type: Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value label pairs to assign to the instance.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field 'effective_labels' for all of the labels present on the resource.
@@ -1585,6 +1643,8 @@ class Instance(pulumi.CustomResource):
                **Note:** If you want to update this value (resize the VM) after initial creation, you must set `allow_stopping_for_update` to `true`.
                
                [Custom machine types](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
+               Because of current API limitations some custom machine types may get converted to different machine types (such as an equivalent standard type) and cause non-empty plans in your configuration. Use
+               `lifecycle.ignore_changes` on `machine_type` in these cases.
                
                There is a limit of 6.5 GB per CPU unless you add [extended memory](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#extendedmemory). You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata key/value pairs to make available from
@@ -1792,6 +1852,7 @@ class Instance(pulumi.CustomResource):
                  enable_display: Optional[pulumi.Input[bool]] = None,
                  guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceGuestAcceleratorArgs', 'InstanceGuestAcceleratorArgsDict']]]]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
+                 key_revocation_action_type: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1834,6 +1895,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["enable_display"] = enable_display
             __props__.__dict__["guest_accelerators"] = guest_accelerators
             __props__.__dict__["hostname"] = hostname
+            __props__.__dict__["key_revocation_action_type"] = key_revocation_action_type
             __props__.__dict__["labels"] = labels
             if machine_type is None and not opts.urn:
                 raise TypeError("Missing required property 'machine_type'")
@@ -1858,6 +1920,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["tags"] = tags
             __props__.__dict__["zone"] = zone
             __props__.__dict__["cpu_platform"] = None
+            __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["current_status"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["instance_id"] = None
@@ -1885,6 +1948,7 @@ class Instance(pulumi.CustomResource):
             can_ip_forward: Optional[pulumi.Input[bool]] = None,
             confidential_instance_config: Optional[pulumi.Input[Union['InstanceConfidentialInstanceConfigArgs', 'InstanceConfidentialInstanceConfigArgsDict']]] = None,
             cpu_platform: Optional[pulumi.Input[str]] = None,
+            creation_timestamp: Optional[pulumi.Input[str]] = None,
             current_status: Optional[pulumi.Input[str]] = None,
             deletion_protection: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -1894,6 +1958,7 @@ class Instance(pulumi.CustomResource):
             guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceGuestAcceleratorArgs', 'InstanceGuestAcceleratorArgsDict']]]]] = None,
             hostname: Optional[pulumi.Input[str]] = None,
             instance_id: Optional[pulumi.Input[str]] = None,
+            key_revocation_action_type: Optional[pulumi.Input[str]] = None,
             label_fingerprint: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             machine_type: Optional[pulumi.Input[str]] = None,
@@ -1936,6 +2001,7 @@ class Instance(pulumi.CustomResource):
                This defaults to false.
         :param pulumi.Input[Union['InstanceConfidentialInstanceConfigArgs', 'InstanceConfidentialInstanceConfigArgsDict']] confidential_instance_config: Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
         :param pulumi.Input[str] cpu_platform: The CPU platform used by this instance.
+        :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] current_status: The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
         :param pulumi.Input[bool] deletion_protection: Enable deletion protection on this instance. Defaults to false.
                **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
@@ -1951,6 +2017,7 @@ class Instance(pulumi.CustomResource):
                Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
                The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
         :param pulumi.Input[str] instance_id: The server-assigned unique identifier of this instance.
+        :param pulumi.Input[str] key_revocation_action_type: Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
         :param pulumi.Input[str] label_fingerprint: The unique fingerprint of the labels.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value label pairs to assign to the instance.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -1960,6 +2027,8 @@ class Instance(pulumi.CustomResource):
                **Note:** If you want to update this value (resize the VM) after initial creation, you must set `allow_stopping_for_update` to `true`.
                
                [Custom machine types](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
+               Because of current API limitations some custom machine types may get converted to different machine types (such as an equivalent standard type) and cause non-empty plans in your configuration. Use
+               `lifecycle.ignore_changes` on `machine_type` in these cases.
                
                There is a limit of 6.5 GB per CPU unless you add [extended memory](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#extendedmemory). You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Metadata key/value pairs to make available from
@@ -2036,6 +2105,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["can_ip_forward"] = can_ip_forward
         __props__.__dict__["confidential_instance_config"] = confidential_instance_config
         __props__.__dict__["cpu_platform"] = cpu_platform
+        __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["current_status"] = current_status
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["description"] = description
@@ -2045,6 +2115,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["guest_accelerators"] = guest_accelerators
         __props__.__dict__["hostname"] = hostname
         __props__.__dict__["instance_id"] = instance_id
+        __props__.__dict__["key_revocation_action_type"] = key_revocation_action_type
         __props__.__dict__["label_fingerprint"] = label_fingerprint
         __props__.__dict__["labels"] = labels
         __props__.__dict__["machine_type"] = machine_type
@@ -2132,6 +2203,14 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "cpu_platform")
 
     @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> pulumi.Output[str]:
+        """
+        Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @property
     @pulumi.getter(name="currentStatus")
     def current_status(self) -> pulumi.Output[str]:
         """
@@ -2210,6 +2289,14 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "instance_id")
 
     @property
+    @pulumi.getter(name="keyRevocationActionType")
+    def key_revocation_action_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
+        """
+        return pulumi.get(self, "key_revocation_action_type")
+
+    @property
     @pulumi.getter(name="labelFingerprint")
     def label_fingerprint(self) -> pulumi.Output[str]:
         """
@@ -2236,6 +2323,8 @@ class Instance(pulumi.CustomResource):
         **Note:** If you want to update this value (resize the VM) after initial creation, you must set `allow_stopping_for_update` to `true`.
 
         [Custom machine types](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
+        Because of current API limitations some custom machine types may get converted to different machine types (such as an equivalent standard type) and cause non-empty plans in your configuration. Use
+        `lifecycle.ignore_changes` on `machine_type` in these cases.
 
         There is a limit of 6.5 GB per CPU unless you add [extended memory](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#extendedmemory). You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
         """

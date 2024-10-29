@@ -27,7 +27,7 @@ class GetServiceResult:
     """
     A collection of values returned by getService.
     """
-    def __init__(__self__, annotations=None, binary_authorizations=None, client=None, client_version=None, conditions=None, create_time=None, creator=None, custom_audiences=None, default_uri_disabled=None, delete_time=None, deletion_protection=None, description=None, effective_annotations=None, effective_labels=None, etag=None, expire_time=None, generation=None, id=None, ingress=None, labels=None, last_modifier=None, latest_created_revision=None, latest_ready_revision=None, launch_stage=None, location=None, name=None, observed_generation=None, project=None, pulumi_labels=None, reconciling=None, scalings=None, templates=None, terminal_conditions=None, traffic_statuses=None, traffics=None, uid=None, update_time=None, uri=None):
+    def __init__(__self__, annotations=None, binary_authorizations=None, client=None, client_version=None, conditions=None, create_time=None, creator=None, custom_audiences=None, default_uri_disabled=None, delete_time=None, deletion_protection=None, description=None, effective_annotations=None, effective_labels=None, etag=None, expire_time=None, generation=None, id=None, ingress=None, invoker_iam_disabled=None, labels=None, last_modifier=None, latest_created_revision=None, latest_ready_revision=None, launch_stage=None, location=None, name=None, observed_generation=None, project=None, pulumi_labels=None, reconciling=None, scalings=None, templates=None, terminal_conditions=None, traffic_statuses=None, traffics=None, uid=None, update_time=None, uri=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -85,6 +85,9 @@ class GetServiceResult:
         if ingress and not isinstance(ingress, str):
             raise TypeError("Expected argument 'ingress' to be a str")
         pulumi.set(__self__, "ingress", ingress)
+        if invoker_iam_disabled and not isinstance(invoker_iam_disabled, bool):
+            raise TypeError("Expected argument 'invoker_iam_disabled' to be a bool")
+        pulumi.set(__self__, "invoker_iam_disabled", invoker_iam_disabled)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
@@ -242,6 +245,11 @@ class GetServiceResult:
         return pulumi.get(self, "ingress")
 
     @property
+    @pulumi.getter(name="invokerIamDisabled")
+    def invoker_iam_disabled(self) -> bool:
+        return pulumi.get(self, "invoker_iam_disabled")
+
+    @property
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         return pulumi.get(self, "labels")
@@ -362,6 +370,7 @@ class AwaitableGetServiceResult(GetServiceResult):
             generation=self.generation,
             id=self.id,
             ingress=self.ingress,
+            invoker_iam_disabled=self.invoker_iam_disabled,
             labels=self.labels,
             last_modifier=self.last_modifier,
             latest_created_revision=self.latest_created_revision,
@@ -437,6 +446,7 @@ def get_service(location: Optional[str] = None,
         generation=pulumi.get(__ret__, 'generation'),
         id=pulumi.get(__ret__, 'id'),
         ingress=pulumi.get(__ret__, 'ingress'),
+        invoker_iam_disabled=pulumi.get(__ret__, 'invoker_iam_disabled'),
         labels=pulumi.get(__ret__, 'labels'),
         last_modifier=pulumi.get(__ret__, 'last_modifier'),
         latest_created_revision=pulumi.get(__ret__, 'latest_created_revision'),
@@ -509,6 +519,7 @@ def get_service_output(location: Optional[pulumi.Input[Optional[str]]] = None,
         generation=pulumi.get(__response__, 'generation'),
         id=pulumi.get(__response__, 'id'),
         ingress=pulumi.get(__response__, 'ingress'),
+        invoker_iam_disabled=pulumi.get(__response__, 'invoker_iam_disabled'),
         labels=pulumi.get(__response__, 'labels'),
         last_modifier=pulumi.get(__response__, 'last_modifier'),
         latest_created_revision=pulumi.get(__response__, 'latest_created_revision'),

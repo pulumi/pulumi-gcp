@@ -76,7 +76,6 @@ import javax.annotation.Nullable;
  *                     .resourceLink(cluster.id().applyValue(id -> String.format("//container.googleapis.com/%s", id)))
  *                     .build())
  *                 .build())
- *             .description("Membership")
  *             .build());
  * 
  *         var feature = new Feature("feature", FeatureArgs.builder()

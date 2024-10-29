@@ -50,6 +50,9 @@ func LookupSecretVersion(ctx *pulumi.Context, args *LookupSecretVersionArgs, opt
 
 // A collection of arguments for invoking getSecretVersion.
 type LookupSecretVersionArgs struct {
+	// If set to 'true', the secret data is
+	// expected to be base64-encoded string.
+	IsSecretDataBase64 *bool `pulumi:"isSecretDataBase64"`
 	// The project to get the secret version for. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -69,7 +72,8 @@ type LookupSecretVersionResult struct {
 	// True if the current state of the SecretVersion is enabled.
 	Enabled bool `pulumi:"enabled"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id                 string `pulumi:"id"`
+	IsSecretDataBase64 *bool  `pulumi:"isSecretDataBase64"`
 	// The resource name of the SecretVersion. Format:
 	// `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
 	Name    string `pulumi:"name"`
@@ -101,6 +105,9 @@ func LookupSecretVersionOutput(ctx *pulumi.Context, args LookupSecretVersionOutp
 
 // A collection of arguments for invoking getSecretVersion.
 type LookupSecretVersionOutputArgs struct {
+	// If set to 'true', the secret data is
+	// expected to be base64-encoded string.
+	IsSecretDataBase64 pulumi.BoolPtrInput `pulumi:"isSecretDataBase64"`
 	// The project to get the secret version for. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput `pulumi:"project"`
@@ -148,6 +155,10 @@ func (o LookupSecretVersionResultOutput) Enabled() pulumi.BoolOutput {
 // The provider-assigned unique ID for this managed resource.
 func (o LookupSecretVersionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecretVersionResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupSecretVersionResultOutput) IsSecretDataBase64() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupSecretVersionResult) *bool { return v.IsSecretDataBase64 }).(pulumi.BoolPtrOutput)
 }
 
 // The resource name of the SecretVersion. Format:

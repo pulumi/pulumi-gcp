@@ -520,6 +520,46 @@ import (
 //	}
 //
 // ```
+// ### Region Backend Service Ip Address Selection Policy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			healthCheck, err := compute.NewRegionHealthCheck(ctx, "health_check", &compute.RegionHealthCheckArgs{
+//				Name:   pulumi.String("rbs-health-check"),
+//				Region: pulumi.String("us-central1"),
+//				TcpHealthCheck: &compute.RegionHealthCheckTcpHealthCheckArgs{
+//					Port: pulumi.Int(80),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewRegionBackendService(ctx, "default", &compute.RegionBackendServiceArgs{
+//				Name:                     pulumi.String("region-service"),
+//				Region:                   pulumi.String("us-central1"),
+//				HealthChecks:             healthCheck.ID(),
+//				LoadBalancingScheme:      pulumi.String("EXTERNAL_MANAGED"),
+//				Protocol:                 pulumi.String("HTTP"),
+//				IpAddressSelectionPolicy: pulumi.String("IPV6_ONLY"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -609,6 +649,9 @@ type RegionBackendService struct {
 	// Settings for enabling Cloud Identity Aware Proxy
 	// Structure is documented below.
 	Iap RegionBackendServiceIapOutput `pulumi:"iap"`
+	// Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
+	// Possible values are: `IPV4_ONLY`, `PREFER_IPV6`, `IPV6_ONLY`.
+	IpAddressSelectionPolicy pulumi.StringPtrOutput `pulumi:"ipAddressSelectionPolicy"`
 	// Indicates what kind of load balancing this regional backend service
 	// will be used for. A backend service created for one type of load
 	// balancing cannot be used with the other(s). For more information, refer to
@@ -811,6 +854,9 @@ type regionBackendServiceState struct {
 	// Settings for enabling Cloud Identity Aware Proxy
 	// Structure is documented below.
 	Iap *RegionBackendServiceIap `pulumi:"iap"`
+	// Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
+	// Possible values are: `IPV4_ONLY`, `PREFER_IPV6`, `IPV6_ONLY`.
+	IpAddressSelectionPolicy *string `pulumi:"ipAddressSelectionPolicy"`
 	// Indicates what kind of load balancing this regional backend service
 	// will be used for. A backend service created for one type of load
 	// balancing cannot be used with the other(s). For more information, refer to
@@ -984,6 +1030,9 @@ type RegionBackendServiceState struct {
 	// Settings for enabling Cloud Identity Aware Proxy
 	// Structure is documented below.
 	Iap RegionBackendServiceIapPtrInput
+	// Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
+	// Possible values are: `IPV4_ONLY`, `PREFER_IPV6`, `IPV6_ONLY`.
+	IpAddressSelectionPolicy pulumi.StringPtrInput
 	// Indicates what kind of load balancing this regional backend service
 	// will be used for. A backend service created for one type of load
 	// balancing cannot be used with the other(s). For more information, refer to
@@ -1154,6 +1203,9 @@ type regionBackendServiceArgs struct {
 	// Settings for enabling Cloud Identity Aware Proxy
 	// Structure is documented below.
 	Iap *RegionBackendServiceIap `pulumi:"iap"`
+	// Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
+	// Possible values are: `IPV4_ONLY`, `PREFER_IPV6`, `IPV6_ONLY`.
+	IpAddressSelectionPolicy *string `pulumi:"ipAddressSelectionPolicy"`
 	// Indicates what kind of load balancing this regional backend service
 	// will be used for. A backend service created for one type of load
 	// balancing cannot be used with the other(s). For more information, refer to
@@ -1319,6 +1371,9 @@ type RegionBackendServiceArgs struct {
 	// Settings for enabling Cloud Identity Aware Proxy
 	// Structure is documented below.
 	Iap RegionBackendServiceIapPtrInput
+	// Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
+	// Possible values are: `IPV4_ONLY`, `PREFER_IPV6`, `IPV6_ONLY`.
+	IpAddressSelectionPolicy pulumi.StringPtrInput
 	// Indicates what kind of load balancing this regional backend service
 	// will be used for. A backend service created for one type of load
 	// balancing cannot be used with the other(s). For more information, refer to
@@ -1621,6 +1676,12 @@ func (o RegionBackendServiceOutput) HealthChecks() pulumi.StringPtrOutput {
 // Structure is documented below.
 func (o RegionBackendServiceOutput) Iap() RegionBackendServiceIapOutput {
 	return o.ApplyT(func(v *RegionBackendService) RegionBackendServiceIapOutput { return v.Iap }).(RegionBackendServiceIapOutput)
+}
+
+// Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
+// Possible values are: `IPV4_ONLY`, `PREFER_IPV6`, `IPV6_ONLY`.
+func (o RegionBackendServiceOutput) IpAddressSelectionPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionBackendService) pulumi.StringPtrOutput { return v.IpAddressSelectionPolicy }).(pulumi.StringPtrOutput)
 }
 
 // Indicates what kind of load balancing this regional backend service

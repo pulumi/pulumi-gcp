@@ -16,6 +16,47 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// 
         /// &gt; **Note**
         /// Requires one of the following OAuth scopes: `https://www.googleapis.com/auth/cloud-platform` or `https://www.googleapis.com/auth/cloud-platform.read-only`.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myRepo = new Gcp.ArtifactRegistry.Repository("my_repo", new()
+        ///     {
+        ///         Location = "us-west1",
+        ///         RepositoryId = "my-repository",
+        ///         Format = "DOCKER",
+        ///     });
+        /// 
+        ///     var myImage = Gcp.ArtifactRegistry.GetDockerImage.Invoke(new()
+        ///     {
+        ///         Location = myRepo.Location,
+        ///         RepositoryId = myRepo.RepositoryId,
+        ///         ImageName = "my-image:my-tag",
+        ///     });
+        /// 
+        ///     var @default = new Gcp.CloudRunV2.Service("default", new()
+        ///     {
+        ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
+        ///         {
+        ///             Containers = new[]
+        ///             {
+        ///                 new Gcp.CloudRunV2.Inputs.ServiceTemplateContainerArgs
+        ///                 {
+        ///                     Image = myImage.Apply(getDockerImageResult =&gt; getDockerImageResult.SelfLink),
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetDockerImageResult> InvokeAsync(GetDockerImageArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDockerImageResult>("gcp:artifactregistry/getDockerImage:getDockerImage", args ?? new GetDockerImageArgs(), options.WithDefaults());
@@ -25,6 +66,47 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// 
         /// &gt; **Note**
         /// Requires one of the following OAuth scopes: `https://www.googleapis.com/auth/cloud-platform` or `https://www.googleapis.com/auth/cloud-platform.read-only`.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myRepo = new Gcp.ArtifactRegistry.Repository("my_repo", new()
+        ///     {
+        ///         Location = "us-west1",
+        ///         RepositoryId = "my-repository",
+        ///         Format = "DOCKER",
+        ///     });
+        /// 
+        ///     var myImage = Gcp.ArtifactRegistry.GetDockerImage.Invoke(new()
+        ///     {
+        ///         Location = myRepo.Location,
+        ///         RepositoryId = myRepo.RepositoryId,
+        ///         ImageName = "my-image:my-tag",
+        ///     });
+        /// 
+        ///     var @default = new Gcp.CloudRunV2.Service("default", new()
+        ///     {
+        ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
+        ///         {
+        ///             Containers = new[]
+        ///             {
+        ///                 new Gcp.CloudRunV2.Inputs.ServiceTemplateContainerArgs
+        ///                 {
+        ///                     Image = myImage.Apply(getDockerImageResult =&gt; getDockerImageResult.SelfLink),
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetDockerImageResult> Invoke(GetDockerImageInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDockerImageResult>("gcp:artifactregistry/getDockerImage:getDockerImage", args ?? new GetDockerImageInvokeArgs(), options.WithDefaults());

@@ -134,6 +134,10 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceTemplateConfidentialInstanceConfigResult> ConfidentialInstanceConfigs;
         /// <summary>
+        /// Creation timestamp in RFC3339 text format.
+        /// </summary>
+        public readonly string CreationTimestamp;
+        /// <summary>
         /// A brief description of this resource.
         /// </summary>
         public readonly string Description;
@@ -163,6 +167,10 @@ namespace Pulumi.Gcp.Compute
         /// created from this template.
         /// </summary>
         public readonly string InstanceDescription;
+        /// <summary>
+        /// Action to be taken when a customer's encryption key is revoked.
+        /// </summary>
+        public readonly string KeyRevocationActionType;
         /// <summary>
         /// (Optional) A set of ket/value label pairs to assign to disk created from
         /// this template
@@ -275,6 +283,8 @@ namespace Pulumi.Gcp.Compute
 
             ImmutableArray<Outputs.GetInstanceTemplateConfidentialInstanceConfigResult> confidentialInstanceConfigs,
 
+            string creationTimestamp,
+
             string description,
 
             ImmutableArray<Outputs.GetInstanceTemplateDiskResult> disks,
@@ -290,6 +300,8 @@ namespace Pulumi.Gcp.Compute
             string id,
 
             string instanceDescription,
+
+            string keyRevocationActionType,
 
             ImmutableDictionary<string, string> labels,
 
@@ -344,6 +356,7 @@ namespace Pulumi.Gcp.Compute
             AdvancedMachineFeatures = advancedMachineFeatures;
             CanIpForward = canIpForward;
             ConfidentialInstanceConfigs = confidentialInstanceConfigs;
+            CreationTimestamp = creationTimestamp;
             Description = description;
             Disks = disks;
             EffectiveLabels = effectiveLabels;
@@ -352,6 +365,7 @@ namespace Pulumi.Gcp.Compute
             GuestAccelerators = guestAccelerators;
             Id = id;
             InstanceDescription = instanceDescription;
+            KeyRevocationActionType = keyRevocationActionType;
             Labels = labels;
             MachineType = machineType;
             Metadata = metadata;

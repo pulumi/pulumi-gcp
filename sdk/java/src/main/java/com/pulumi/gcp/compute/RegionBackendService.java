@@ -642,6 +642,56 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Region Backend Service Ip Address Selection Policy
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionHealthCheck;
+ * import com.pulumi.gcp.compute.RegionHealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionHealthCheckTcpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.RegionBackendService;
+ * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var healthCheck = new RegionHealthCheck("healthCheck", RegionHealthCheckArgs.builder()
+ *             .name("rbs-health-check")
+ *             .region("us-central1")
+ *             .tcpHealthCheck(RegionHealthCheckTcpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
+ *             .build());
+ * 
+ *         var default_ = new RegionBackendService("default", RegionBackendServiceArgs.builder()
+ *             .name("region-service")
+ *             .region("us-central1")
+ *             .healthChecks(healthCheck.id())
+ *             .loadBalancingScheme("EXTERNAL_MANAGED")
+ *             .protocol("HTTP")
+ *             .ipAddressSelectionPolicy("IPV6_ONLY")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -937,6 +987,22 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
      */
     public Output<RegionBackendServiceIap> iap() {
         return this.iap;
+    }
+    /**
+     * Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
+     * Possible values are: `IPV4_ONLY`, `PREFER_IPV6`, `IPV6_ONLY`.
+     * 
+     */
+    @Export(name="ipAddressSelectionPolicy", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> ipAddressSelectionPolicy;
+
+    /**
+     * @return Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
+     * Possible values are: `IPV4_ONLY`, `PREFER_IPV6`, `IPV6_ONLY`.
+     * 
+     */
+    public Output<Optional<String>> ipAddressSelectionPolicy() {
+        return Codegen.optional(this.ipAddressSelectionPolicy);
     }
     /**
      * Indicates what kind of load balancing this regional backend service

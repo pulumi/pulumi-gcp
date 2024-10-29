@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { GroupArgs, GroupState } from "./group";
+export type Group = import("./group").Group;
+export const Group: typeof import("./group").Group = null as any;
+utilities.lazyLoad(exports, ["Group"], () => require("./group"));
+
 export { HubArgs, HubState } from "./hub";
 export type Hub = import("./hub").Hub;
 export const Hub: typeof import("./hub").Hub = null as any;
@@ -40,6 +45,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:networkconnectivity/group:Group":
+                return new Group(name, <any>undefined, { urn })
             case "gcp:networkconnectivity/hub:Hub":
                 return new Hub(name, <any>undefined, { urn })
             case "gcp:networkconnectivity/internalRange:InternalRange":
@@ -57,6 +64,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "networkconnectivity/group", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkconnectivity/hub", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkconnectivity/internalRange", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkconnectivity/policyBasedRoute", _module)

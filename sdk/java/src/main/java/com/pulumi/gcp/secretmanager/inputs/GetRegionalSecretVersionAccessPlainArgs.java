@@ -5,6 +5,7 @@ package com.pulumi.gcp.secretmanager.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +15,23 @@ import javax.annotation.Nullable;
 public final class GetRegionalSecretVersionAccessPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetRegionalSecretVersionAccessPlainArgs Empty = new GetRegionalSecretVersionAccessPlainArgs();
+
+    /**
+     * If set to &#39;true&#39;, the secret data is
+     * expected to be base64-encoded string.
+     * 
+     */
+    @Import(name="isSecretDataBase64")
+    private @Nullable Boolean isSecretDataBase64;
+
+    /**
+     * @return If set to &#39;true&#39;, the secret data is
+     * expected to be base64-encoded string.
+     * 
+     */
+    public Optional<Boolean> isSecretDataBase64() {
+        return Optional.ofNullable(this.isSecretDataBase64);
+    }
 
     /**
      * Location of Secret Manager regional secret resource.
@@ -86,6 +104,7 @@ public final class GetRegionalSecretVersionAccessPlainArgs extends com.pulumi.re
     private GetRegionalSecretVersionAccessPlainArgs() {}
 
     private GetRegionalSecretVersionAccessPlainArgs(GetRegionalSecretVersionAccessPlainArgs $) {
+        this.isSecretDataBase64 = $.isSecretDataBase64;
         this.location = $.location;
         this.project = $.project;
         this.secret = $.secret;
@@ -108,6 +127,18 @@ public final class GetRegionalSecretVersionAccessPlainArgs extends com.pulumi.re
 
         public Builder(GetRegionalSecretVersionAccessPlainArgs defaults) {
             $ = new GetRegionalSecretVersionAccessPlainArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param isSecretDataBase64 If set to &#39;true&#39;, the secret data is
+         * expected to be base64-encoded string.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isSecretDataBase64(@Nullable Boolean isSecretDataBase64) {
+            $.isSecretDataBase64 = isSecretDataBase64;
+            return this;
         }
 
         /**

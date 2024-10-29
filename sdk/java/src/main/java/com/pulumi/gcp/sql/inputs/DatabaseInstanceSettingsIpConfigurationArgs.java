@@ -114,14 +114,14 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
     }
 
     /**
-     * Specify how the server certificate&#39;s Certificate Authority is hosted. Supported value is `GOOGLE_MANAGED_INTERNAL_CA`.
+     * Specify how the server certificate&#39;s Certificate Authority is hosted. Supported values are `GOOGLE_MANAGED_INTERNAL_CA` and `GOOGLE_MANAGED_CAS_CA`.
      * 
      */
     @Import(name="serverCaMode")
     private @Nullable Output<String> serverCaMode;
 
     /**
-     * @return Specify how the server certificate&#39;s Certificate Authority is hosted. Supported value is `GOOGLE_MANAGED_INTERNAL_CA`.
+     * @return Specify how the server certificate&#39;s Certificate Authority is hosted. Supported values are `GOOGLE_MANAGED_INTERNAL_CA` and `GOOGLE_MANAGED_CAS_CA`.
      * 
      */
     public Optional<Output<String>> serverCaMode() {
@@ -129,14 +129,14 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
     }
 
     /**
-     * Specify how SSL connection should be enforced in DB connections.
+     * Specify how SSL connection should be enforced in DB connections. Supported values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, and `TRUSTED_CLIENT_CERTIFICATE_REQUIRED` (not supported for SQL Server). See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
      * 
      */
     @Import(name="sslMode")
     private @Nullable Output<String> sslMode;
 
     /**
-     * @return Specify how SSL connection should be enforced in DB connections.
+     * @return Specify how SSL connection should be enforced in DB connections. Supported values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, and `TRUSTED_CLIENT_CERTIFICATE_REQUIRED` (not supported for SQL Server). See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
      * 
      */
     public Optional<Output<String>> sslMode() {
@@ -315,7 +315,7 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
         }
 
         /**
-         * @param serverCaMode Specify how the server certificate&#39;s Certificate Authority is hosted. Supported value is `GOOGLE_MANAGED_INTERNAL_CA`.
+         * @param serverCaMode Specify how the server certificate&#39;s Certificate Authority is hosted. Supported values are `GOOGLE_MANAGED_INTERNAL_CA` and `GOOGLE_MANAGED_CAS_CA`.
          * 
          * @return builder
          * 
@@ -326,7 +326,7 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
         }
 
         /**
-         * @param serverCaMode Specify how the server certificate&#39;s Certificate Authority is hosted. Supported value is `GOOGLE_MANAGED_INTERNAL_CA`.
+         * @param serverCaMode Specify how the server certificate&#39;s Certificate Authority is hosted. Supported values are `GOOGLE_MANAGED_INTERNAL_CA` and `GOOGLE_MANAGED_CAS_CA`.
          * 
          * @return builder
          * 
@@ -336,7 +336,7 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
         }
 
         /**
-         * @param sslMode Specify how SSL connection should be enforced in DB connections.
+         * @param sslMode Specify how SSL connection should be enforced in DB connections. Supported values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, and `TRUSTED_CLIENT_CERTIFICATE_REQUIRED` (not supported for SQL Server). See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
          * 
          * @return builder
          * 
@@ -347,7 +347,7 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
         }
 
         /**
-         * @param sslMode Specify how SSL connection should be enforced in DB connections.
+         * @param sslMode Specify how SSL connection should be enforced in DB connections. Supported values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, and `TRUSTED_CLIENT_CERTIFICATE_REQUIRED` (not supported for SQL Server). See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
          * 
          * @return builder
          * 

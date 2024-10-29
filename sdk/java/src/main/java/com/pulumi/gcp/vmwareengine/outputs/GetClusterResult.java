@@ -5,6 +5,7 @@ package com.pulumi.gcp.vmwareengine.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.vmwareengine.outputs.GetClusterAutoscalingSetting;
 import com.pulumi.gcp.vmwareengine.outputs.GetClusterNodeTypeConfig;
 import java.lang.Boolean;
 import java.lang.String;
@@ -13,6 +14,7 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterResult {
+    private List<GetClusterAutoscalingSetting> autoscalingSettings;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -26,6 +28,9 @@ public final class GetClusterResult {
     private String uid;
 
     private GetClusterResult() {}
+    public List<GetClusterAutoscalingSetting> autoscalingSettings() {
+        return this.autoscalingSettings;
+    }
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -61,6 +66,7 @@ public final class GetClusterResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetClusterAutoscalingSetting> autoscalingSettings;
         private String id;
         private Boolean management;
         private String name;
@@ -71,6 +77,7 @@ public final class GetClusterResult {
         public Builder() {}
         public Builder(GetClusterResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.autoscalingSettings = defaults.autoscalingSettings;
     	      this.id = defaults.id;
     	      this.management = defaults.management;
     	      this.name = defaults.name;
@@ -80,6 +87,17 @@ public final class GetClusterResult {
     	      this.uid = defaults.uid;
         }
 
+        @CustomType.Setter
+        public Builder autoscalingSettings(List<GetClusterAutoscalingSetting> autoscalingSettings) {
+            if (autoscalingSettings == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "autoscalingSettings");
+            }
+            this.autoscalingSettings = autoscalingSettings;
+            return this;
+        }
+        public Builder autoscalingSettings(GetClusterAutoscalingSetting... autoscalingSettings) {
+            return autoscalingSettings(List.of(autoscalingSettings));
+        }
         @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
@@ -141,6 +159,7 @@ public final class GetClusterResult {
         }
         public GetClusterResult build() {
             final var _resultValue = new GetClusterResult();
+            _resultValue.autoscalingSettings = autoscalingSettings;
             _resultValue.id = id;
             _resultValue.management = management;
             _resultValue.name = name;

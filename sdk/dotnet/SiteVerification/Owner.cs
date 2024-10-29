@@ -10,14 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.SiteVerification
 {
     /// <summary>
-    /// ## subcategory: "Site Verification"
-    /// 
-    /// description: |-
-    ///   Manages additional owners on verified web resources.
-    /// ---
-    /// 
-    /// # gcp.siteverification.Owner
-    /// 
     /// An owner is an additional user that may manage a verified web site in the
     /// [Google Search Console](https://www.google.com/webmasters/tools/). There
     /// are two types of web resource owners:

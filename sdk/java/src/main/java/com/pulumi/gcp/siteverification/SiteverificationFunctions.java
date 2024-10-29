@@ -15,14 +15,6 @@ import java.util.concurrent.CompletableFuture;
 
 public final class SiteverificationFunctions {
     /**
-     * ## subcategory: &#34;Site Verification&#34;
-     * 
-     * description: |-
-     *   A verification token is used to demonstrate ownership of a website or domain.
-     * ---
-     * 
-     * # gcp.siteverification.getToken
-     * 
      * A verification token is used to demonstrate ownership of a website or domain.
      * 
      * To get more information about Token, see:
@@ -112,14 +104,6 @@ public final class SiteverificationFunctions {
         return getToken(args, InvokeOptions.Empty);
     }
     /**
-     * ## subcategory: &#34;Site Verification&#34;
-     * 
-     * description: |-
-     *   A verification token is used to demonstrate ownership of a website or domain.
-     * ---
-     * 
-     * # gcp.siteverification.getToken
-     * 
      * A verification token is used to demonstrate ownership of a website or domain.
      * 
      * To get more information about Token, see:
@@ -209,14 +193,6 @@ public final class SiteverificationFunctions {
         return getTokenPlain(args, InvokeOptions.Empty);
     }
     /**
-     * ## subcategory: &#34;Site Verification&#34;
-     * 
-     * description: |-
-     *   A verification token is used to demonstrate ownership of a website or domain.
-     * ---
-     * 
-     * # gcp.siteverification.getToken
-     * 
      * A verification token is used to demonstrate ownership of a website or domain.
      * 
      * To get more information about Token, see:
@@ -306,14 +282,6 @@ public final class SiteverificationFunctions {
         return Deployment.getInstance().invoke("gcp:siteverification/getToken:getToken", TypeShape.of(GetTokenResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * ## subcategory: &#34;Site Verification&#34;
-     * 
-     * description: |-
-     *   A verification token is used to demonstrate ownership of a website or domain.
-     * ---
-     * 
-     * # gcp.siteverification.getToken
-     * 
      * A verification token is used to demonstrate ownership of a website or domain.
      * 
      * To get more information about Token, see:

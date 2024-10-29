@@ -181,7 +181,29 @@ def get_entitlement(entitlement_id: Optional[str] = None,
                     parent: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEntitlementResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get information about a Google Cloud Privileged Access Manager Entitlement.
+
+    To get more information about Privileged Access Manager, see:
+
+    * [API Documentation](https://cloud.google.com/iam/docs/reference/pam/rest)
+    * How-to guides
+      * [Official documentation](https://cloud.google.com/iam/docs/pam-overview)
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_entitlement = gcp.privilegedaccessmanager.get_entitlement(parent="projects/my-project",
+        location="global",
+        entitlement_id="my-entitlement")
+    ```
+
+
+    :param str entitlement_id: ID of the Entitlement resource. This is the last part of the Entitlement's full name which is of the format `{parent}/locations/{location}/entitlements/{entitlement_id}`.
+    :param str location: The region of the Entitlement resource.
+    :param str parent: The project or folder or organization that contains the resource. Format: projects/{project-id|project-number} or folders/{folder-number}  or organizations/{organization-number}
     """
     __args__ = dict()
     __args__['entitlementId'] = entitlement_id
@@ -211,7 +233,29 @@ def get_entitlement_output(entitlement_id: Optional[pulumi.Input[Optional[str]]]
                            parent: Optional[pulumi.Input[Optional[str]]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEntitlementResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to get information about a Google Cloud Privileged Access Manager Entitlement.
+
+    To get more information about Privileged Access Manager, see:
+
+    * [API Documentation](https://cloud.google.com/iam/docs/reference/pam/rest)
+    * How-to guides
+      * [Official documentation](https://cloud.google.com/iam/docs/pam-overview)
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_entitlement = gcp.privilegedaccessmanager.get_entitlement(parent="projects/my-project",
+        location="global",
+        entitlement_id="my-entitlement")
+    ```
+
+
+    :param str entitlement_id: ID of the Entitlement resource. This is the last part of the Entitlement's full name which is of the format `{parent}/locations/{location}/entitlements/{entitlement_id}`.
+    :param str location: The region of the Entitlement resource.
+    :param str parent: The project or folder or organization that contains the resource. Format: projects/{project-id|project-number} or folders/{folder-number}  or organizations/{organization-number}
     """
     __args__ = dict()
     __args__['entitlementId'] = entitlement_id

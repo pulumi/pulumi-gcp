@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
 export function getSecretVersionAccess(args: GetSecretVersionAccessArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretVersionAccessResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:secretmanager/getSecretVersionAccess:getSecretVersionAccess", {
+        "isSecretDataBase64": args.isSecretDataBase64,
         "project": args.project,
         "secret": args.secret,
         "version": args.version,
@@ -31,6 +32,11 @@ export function getSecretVersionAccess(args: GetSecretVersionAccessArgs, opts?: 
  * A collection of arguments for invoking getSecretVersionAccess.
  */
 export interface GetSecretVersionAccessArgs {
+    /**
+     * If set to 'true', the secret data is
+     * expected to be base64-encoded string.
+     */
+    isSecretDataBase64?: boolean;
     /**
      * The project to get the secret version for. If it
      * is not provided, the provider project is used.
@@ -55,6 +61,7 @@ export interface GetSecretVersionAccessResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly isSecretDataBase64?: boolean;
     /**
      * The resource name of the SecretVersion. Format:
      * `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
@@ -85,6 +92,7 @@ export interface GetSecretVersionAccessResult {
 export function getSecretVersionAccessOutput(args: GetSecretVersionAccessOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretVersionAccessResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:secretmanager/getSecretVersionAccess:getSecretVersionAccess", {
+        "isSecretDataBase64": args.isSecretDataBase64,
         "project": args.project,
         "secret": args.secret,
         "version": args.version,
@@ -95,6 +103,11 @@ export function getSecretVersionAccessOutput(args: GetSecretVersionAccessOutputA
  * A collection of arguments for invoking getSecretVersionAccess.
  */
 export interface GetSecretVersionAccessOutputArgs {
+    /**
+     * If set to 'true', the secret data is
+     * expected to be base64-encoded string.
+     */
+    isSecretDataBase64?: pulumi.Input<boolean>;
     /**
      * The project to get the secret version for. If it
      * is not provided, the provider project is used.

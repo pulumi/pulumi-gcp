@@ -6,6 +6,7 @@ package com.pulumi.gcp.monitoring.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,6 +16,23 @@ import javax.annotation.Nullable;
 public final class GetSecretVersionArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetSecretVersionArgs Empty = new GetSecretVersionArgs();
+
+    /**
+     * If set to &#39;true&#39;, the secret data is
+     * expected to be base64-encoded string.
+     * 
+     */
+    @Import(name="isSecretDataBase64")
+    private @Nullable Output<Boolean> isSecretDataBase64;
+
+    /**
+     * @return If set to &#39;true&#39;, the secret data is
+     * expected to be base64-encoded string.
+     * 
+     */
+    public Optional<Output<Boolean>> isSecretDataBase64() {
+        return Optional.ofNullable(this.isSecretDataBase64);
+    }
 
     /**
      * The project to get the secret version for. If it
@@ -68,6 +86,7 @@ public final class GetSecretVersionArgs extends com.pulumi.resources.InvokeArgs 
     private GetSecretVersionArgs() {}
 
     private GetSecretVersionArgs(GetSecretVersionArgs $) {
+        this.isSecretDataBase64 = $.isSecretDataBase64;
         this.project = $.project;
         this.secret = $.secret;
         this.version = $.version;
@@ -89,6 +108,29 @@ public final class GetSecretVersionArgs extends com.pulumi.resources.InvokeArgs 
 
         public Builder(GetSecretVersionArgs defaults) {
             $ = new GetSecretVersionArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param isSecretDataBase64 If set to &#39;true&#39;, the secret data is
+         * expected to be base64-encoded string.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isSecretDataBase64(@Nullable Output<Boolean> isSecretDataBase64) {
+            $.isSecretDataBase64 = isSecretDataBase64;
+            return this;
+        }
+
+        /**
+         * @param isSecretDataBase64 If set to &#39;true&#39;, the secret data is
+         * expected to be base64-encoded string.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isSecretDataBase64(Boolean isSecretDataBase64) {
+            return isSecretDataBase64(Output.of(isSecretDataBase64));
         }
 
         /**

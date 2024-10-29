@@ -85,6 +85,10 @@ export interface GetInstanceResult {
      */
     readonly cpuPlatform: string;
     /**
+     * Creation timestamp in RFC3339 text format.
+     */
+    readonly creationTimestamp: string;
+    /**
      * The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
      */
     readonly currentStatus: string;
@@ -115,6 +119,10 @@ export interface GetInstanceResult {
      * The server-assigned unique identifier of this instance.
      */
     readonly instanceId: string;
+    /**
+     * Action to be taken when a customer's encryption key is revoked.
+     */
+    readonly keyRevocationActionType: string;
     /**
      * The unique fingerprint of the labels.
      */

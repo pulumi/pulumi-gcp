@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.networkconnectivity.SpokeArgs;
 import com.pulumi.gcp.networkconnectivity.inputs.SpokeState;
 import com.pulumi.gcp.networkconnectivity.outputs.SpokeLinkedInterconnectAttachments;
+import com.pulumi.gcp.networkconnectivity.outputs.SpokeLinkedProducerVpcNetwork;
 import com.pulumi.gcp.networkconnectivity.outputs.SpokeLinkedRouterApplianceInstances;
 import com.pulumi.gcp.networkconnectivity.outputs.SpokeLinkedVpcNetwork;
 import com.pulumi.gcp.networkconnectivity.outputs.SpokeLinkedVpnTunnels;
@@ -448,6 +449,96 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Network Connectivity Spoke Linked Producer Vpc Network Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.GlobalAddress;
+ * import com.pulumi.gcp.compute.GlobalAddressArgs;
+ * import com.pulumi.gcp.servicenetworking.Connection;
+ * import com.pulumi.gcp.servicenetworking.ConnectionArgs;
+ * import com.pulumi.gcp.networkconnectivity.Hub;
+ * import com.pulumi.gcp.networkconnectivity.HubArgs;
+ * import com.pulumi.gcp.networkconnectivity.Spoke;
+ * import com.pulumi.gcp.networkconnectivity.SpokeArgs;
+ * import com.pulumi.gcp.networkconnectivity.inputs.SpokeLinkedVpcNetworkArgs;
+ * import com.pulumi.gcp.networkconnectivity.inputs.SpokeLinkedProducerVpcNetworkArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var network = new Network("network", NetworkArgs.builder()
+ *             .name("net-spoke")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var address = new GlobalAddress("address", GlobalAddressArgs.builder()
+ *             .name("test-address")
+ *             .purpose("VPC_PEERING")
+ *             .addressType("INTERNAL")
+ *             .prefixLength(16)
+ *             .network(network.id())
+ *             .build());
+ * 
+ *         var peering = new Connection("peering", ConnectionArgs.builder()
+ *             .network(network.id())
+ *             .service("servicenetworking.googleapis.com")
+ *             .reservedPeeringRanges(address.name())
+ *             .build());
+ * 
+ *         var basicHub = new Hub("basicHub", HubArgs.builder()
+ *             .name("hub-basic")
+ *             .build());
+ * 
+ *         var linkedVpcSpoke = new Spoke("linkedVpcSpoke", SpokeArgs.builder()
+ *             .name("vpc-spoke")
+ *             .location("global")
+ *             .hub(basicHub.id())
+ *             .linkedVpcNetwork(SpokeLinkedVpcNetworkArgs.builder()
+ *                 .uri(network.selfLink())
+ *                 .build())
+ *             .build());
+ * 
+ *         var primary = new Spoke("primary", SpokeArgs.builder()
+ *             .name("producer-spoke")
+ *             .location("global")
+ *             .description("A sample spoke with a linked router appliance instance")
+ *             .labels(Map.of("label-one", "value-one"))
+ *             .hub(basicHub.id())
+ *             .linkedProducerVpcNetwork(SpokeLinkedProducerVpcNetworkArgs.builder()
+ *                 .network(network.name())
+ *                 .peering(peering.peering())
+ *                 .excludeExportRanges(                
+ *                     "198.51.100.0/24",
+ *                     "10.10.0.0/16")
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(linkedVpcSpoke)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -565,6 +656,22 @@ public class Spoke extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<SpokeLinkedInterconnectAttachments>> linkedInterconnectAttachments() {
         return Codegen.optional(this.linkedInterconnectAttachments);
+    }
+    /**
+     * Producer VPC network that is associated with the spoke.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="linkedProducerVpcNetwork", refs={SpokeLinkedProducerVpcNetwork.class}, tree="[0]")
+    private Output</* @Nullable */ SpokeLinkedProducerVpcNetwork> linkedProducerVpcNetwork;
+
+    /**
+     * @return Producer VPC network that is associated with the spoke.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<SpokeLinkedProducerVpcNetwork>> linkedProducerVpcNetwork() {
+        return Codegen.optional(this.linkedProducerVpcNetwork);
     }
     /**
      * The URIs of linked Router appliance resources

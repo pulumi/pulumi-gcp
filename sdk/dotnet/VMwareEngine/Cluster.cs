@@ -132,6 +132,36 @@ namespace Pulumi.Gcp.VMwareEngine
     ///                 CustomCoreCount = 32,
     ///             },
     ///         },
+    ///         AutoscalingSettings = new Gcp.VMwareEngine.Inputs.ClusterAutoscalingSettingsArgs
+    ///         {
+    ///             AutoscalingPolicies = new[]
+    ///             {
+    ///                 new Gcp.VMwareEngine.Inputs.ClusterAutoscalingSettingsAutoscalingPolicyArgs
+    ///                 {
+    ///                     AutoscalePolicyId = "autoscaling-policy",
+    ///                     NodeTypeId = "standard-72",
+    ///                     ScaleOutSize = 1,
+    ///                     CpuThresholds = new Gcp.VMwareEngine.Inputs.ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs
+    ///                     {
+    ///                         ScaleOut = 80,
+    ///                         ScaleIn = 15,
+    ///                     },
+    ///                     ConsumedMemoryThresholds = new Gcp.VMwareEngine.Inputs.ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs
+    ///                     {
+    ///                         ScaleOut = 75,
+    ///                         ScaleIn = 20,
+    ///                     },
+    ///                     StorageThresholds = new Gcp.VMwareEngine.Inputs.ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs
+    ///                     {
+    ///                         ScaleOut = 80,
+    ///                         ScaleIn = 20,
+    ///                     },
+    ///                 },
+    ///             },
+    ///             MinClusterNodeCount = 3,
+    ///             MaxClusterNodeCount = 8,
+    ///             CoolDownPeriod = "1800s",
+    ///         },
     ///     });
     /// 
     /// });
@@ -152,6 +182,13 @@ namespace Pulumi.Gcp.VMwareEngine
     [GcpResourceType("gcp:vmwareengine/cluster:Cluster")]
     public partial class Cluster : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Configuration of the autoscaling applied to this cluster
+        /// Structure is documented below.
+        /// </summary>
+        [Output("autoscalingSettings")]
+        public Output<Outputs.ClusterAutoscalingSettings?> AutoscalingSettings { get; private set; } = null!;
+
         /// <summary>
         /// True if the cluster is a management cluster; false otherwise.
         /// There can only be one management cluster in a private cloud and it has to be the first one.
@@ -243,6 +280,13 @@ namespace Pulumi.Gcp.VMwareEngine
     public sealed class ClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Configuration of the autoscaling applied to this cluster
+        /// Structure is documented below.
+        /// </summary>
+        [Input("autoscalingSettings")]
+        public Input<Inputs.ClusterAutoscalingSettingsArgs>? AutoscalingSettings { get; set; }
+
+        /// <summary>
         /// The ID of the Cluster.
         /// 
         /// 
@@ -281,6 +325,13 @@ namespace Pulumi.Gcp.VMwareEngine
 
     public sealed class ClusterState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Configuration of the autoscaling applied to this cluster
+        /// Structure is documented below.
+        /// </summary>
+        [Input("autoscalingSettings")]
+        public Input<Inputs.ClusterAutoscalingSettingsGetArgs>? AutoscalingSettings { get; set; }
+
         /// <summary>
         /// True if the cluster is a management cluster; false otherwise.
         /// There can only be one management cluster in a private cloud and it has to be the first one.

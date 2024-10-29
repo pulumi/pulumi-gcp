@@ -188,6 +188,8 @@ if typing.TYPE_CHECKING:
     networkservices = __networkservices
     import pulumi_gcp.notebooks as __notebooks
     notebooks = __notebooks
+    import pulumi_gcp.oracledatabase as __oracledatabase
+    oracledatabase = __oracledatabase
     import pulumi_gcp.organizations as __organizations
     organizations = __organizations
     import pulumi_gcp.orgpolicy as __orgpolicy
@@ -242,6 +244,8 @@ if typing.TYPE_CHECKING:
     tags = __tags
     import pulumi_gcp.tpu as __tpu
     tpu = __tpu
+    import pulumi_gcp.transcoder as __transcoder
+    transcoder = __transcoder
     import pulumi_gcp.vertex as __vertex
     vertex = __vertex
     import pulumi_gcp.vmwareengine as __vmwareengine
@@ -344,6 +348,7 @@ else:
     networksecurity = _utilities.lazy_import('pulumi_gcp.networksecurity')
     networkservices = _utilities.lazy_import('pulumi_gcp.networkservices')
     notebooks = _utilities.lazy_import('pulumi_gcp.notebooks')
+    oracledatabase = _utilities.lazy_import('pulumi_gcp.oracledatabase')
     organizations = _utilities.lazy_import('pulumi_gcp.organizations')
     orgpolicy = _utilities.lazy_import('pulumi_gcp.orgpolicy')
     osconfig = _utilities.lazy_import('pulumi_gcp.osconfig')
@@ -371,6 +376,7 @@ else:
     storage = _utilities.lazy_import('pulumi_gcp.storage')
     tags = _utilities.lazy_import('pulumi_gcp.tags')
     tpu = _utilities.lazy_import('pulumi_gcp.tpu')
+    transcoder = _utilities.lazy_import('pulumi_gcp.transcoder')
     vertex = _utilities.lazy_import('pulumi_gcp.vertex')
     vmwareengine = _utilities.lazy_import('pulumi_gcp.vmwareengine')
     vpcaccess = _utilities.lazy_import('pulumi_gcp.vpcaccess')
@@ -691,6 +697,22 @@ _utilities.register(
   "fqn": "pulumi_gcp.apigee",
   "classes": {
    "gcp:apigee/addonsConfig:AddonsConfig": "AddonsConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "apigee/appGroup",
+  "fqn": "pulumi_gcp.apigee",
+  "classes": {
+   "gcp:apigee/appGroup:AppGroup": "AppGroup"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "apigee/developer",
+  "fqn": "pulumi_gcp.apigee",
+  "classes": {
+   "gcp:apigee/developer:Developer": "Developer"
   }
  },
  {
@@ -6207,6 +6229,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "networkconnectivity/group",
+  "fqn": "pulumi_gcp.networkconnectivity",
+  "classes": {
+   "gcp:networkconnectivity/group:Group": "Group"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "networkconnectivity/hub",
   "fqn": "pulumi_gcp.networkconnectivity",
   "classes": {
@@ -6571,6 +6601,30 @@ _utilities.register(
   "fqn": "pulumi_gcp.notebooks",
   "classes": {
    "gcp:notebooks/runtimeIamPolicy:RuntimeIamPolicy": "RuntimeIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "oracledatabase/autonomousDatabase",
+  "fqn": "pulumi_gcp.oracledatabase",
+  "classes": {
+   "gcp:oracledatabase/autonomousDatabase:AutonomousDatabase": "AutonomousDatabase"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "oracledatabase/cloudExadataInfrastructure",
+  "fqn": "pulumi_gcp.oracledatabase",
+  "classes": {
+   "gcp:oracledatabase/cloudExadataInfrastructure:CloudExadataInfrastructure": "CloudExadataInfrastructure"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "oracledatabase/cloudVmCluster",
+  "fqn": "pulumi_gcp.oracledatabase",
+  "classes": {
+   "gcp:oracledatabase/cloudVmCluster:CloudVmCluster": "CloudVmCluster"
   }
  },
  {
@@ -8027,6 +8081,22 @@ _utilities.register(
   "fqn": "pulumi_gcp.tpu",
   "classes": {
    "gcp:tpu/v2Vm:V2Vm": "V2Vm"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "transcoder/job",
+  "fqn": "pulumi_gcp.transcoder",
+  "classes": {
+   "gcp:transcoder/job:Job": "Job"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "transcoder/jobTemplate",
+  "fqn": "pulumi_gcp.transcoder",
+  "classes": {
+   "gcp:transcoder/jobTemplate:JobTemplate": "JobTemplate"
   }
  },
  {

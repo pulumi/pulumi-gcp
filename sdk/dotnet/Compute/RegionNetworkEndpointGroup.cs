@@ -137,6 +137,7 @@ namespace Pulumi.Gcp.Compute
     ///     {
     ///         Name = "appengine-neg",
     ///         Location = "US",
+    ///         UniformBucketLevelAccess = true,
     ///     });
     /// 
     ///     var appengineNegBucketObject = new Gcp.Storage.BucketObject("appengine_neg", new()
@@ -149,7 +150,7 @@ namespace Pulumi.Gcp.Compute
     ///     var appengineNegFlexibleAppVersion = new Gcp.AppEngine.FlexibleAppVersion("appengine_neg", new()
     ///     {
     ///         VersionId = "v1",
-    ///         Service = "appengine-network-endpoint-group",
+    ///         Service = "appengine-neg",
     ///         Runtime = "nodejs",
     ///         FlexibleRuntimeSettings = new Gcp.AppEngine.Inputs.FlexibleAppVersionFlexibleRuntimeSettingsArgs
     ///         {

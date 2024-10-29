@@ -30,6 +30,7 @@ class InstanceTemplateArgs:
                  enable_display: Optional[pulumi.Input[bool]] = None,
                  guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateGuestAcceleratorArgs']]]] = None,
                  instance_description: Optional[pulumi.Input[str]] = None,
+                 key_revocation_action_type: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  metadata_startup_script: Optional[pulumi.Input[str]] = None,
@@ -68,6 +69,7 @@ class InstanceTemplateArgs:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceTemplateGuestAcceleratorArgs']]] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
         :param pulumi.Input[str] instance_description: A brief description to use for instances
                created from this template.
+        :param pulumi.Input[str] key_revocation_action_type: Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to instances
                created from this template.
                
@@ -137,6 +139,8 @@ class InstanceTemplateArgs:
             pulumi.set(__self__, "guest_accelerators", guest_accelerators)
         if instance_description is not None:
             pulumi.set(__self__, "instance_description", instance_description)
+        if key_revocation_action_type is not None:
+            pulumi.set(__self__, "key_revocation_action_type", key_revocation_action_type)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if metadata is not None:
@@ -290,6 +294,18 @@ class InstanceTemplateArgs:
     @instance_description.setter
     def instance_description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "instance_description", value)
+
+    @property
+    @pulumi.getter(name="keyRevocationActionType")
+    def key_revocation_action_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
+        """
+        return pulumi.get(self, "key_revocation_action_type")
+
+    @key_revocation_action_type.setter
+    def key_revocation_action_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_revocation_action_type", value)
 
     @property
     @pulumi.getter
@@ -548,12 +564,14 @@ class _InstanceTemplateState:
                  advanced_machine_features: Optional[pulumi.Input['InstanceTemplateAdvancedMachineFeaturesArgs']] = None,
                  can_ip_forward: Optional[pulumi.Input[bool]] = None,
                  confidential_instance_config: Optional[pulumi.Input['InstanceTemplateConfidentialInstanceConfigArgs']] = None,
+                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateDiskArgs']]]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  enable_display: Optional[pulumi.Input[bool]] = None,
                  guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateGuestAcceleratorArgs']]]] = None,
                  instance_description: Optional[pulumi.Input[str]] = None,
+                 key_revocation_action_type: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -584,6 +602,7 @@ class _InstanceTemplateState:
         :param pulumi.Input[bool] can_ip_forward: Whether to allow sending and receiving of
                packets with non-matching source or destination IPs. This defaults to false.
         :param pulumi.Input['InstanceTemplateConfidentialInstanceConfigArgs'] confidential_instance_config: Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
+        :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: A brief description of this resource.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceTemplateDiskArgs']]] disks: Disks to attach to instances created from this template.
                This can be specified multiple times for multiple disks. Structure is
@@ -594,6 +613,7 @@ class _InstanceTemplateState:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceTemplateGuestAcceleratorArgs']]] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
         :param pulumi.Input[str] instance_description: A brief description to use for instances
                created from this template.
+        :param pulumi.Input[str] key_revocation_action_type: Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to instances
                created from this template.
                
@@ -664,6 +684,8 @@ class _InstanceTemplateState:
             pulumi.set(__self__, "can_ip_forward", can_ip_forward)
         if confidential_instance_config is not None:
             pulumi.set(__self__, "confidential_instance_config", confidential_instance_config)
+        if creation_timestamp is not None:
+            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disks is not None:
@@ -676,6 +698,8 @@ class _InstanceTemplateState:
             pulumi.set(__self__, "guest_accelerators", guest_accelerators)
         if instance_description is not None:
             pulumi.set(__self__, "instance_description", instance_description)
+        if key_revocation_action_type is not None:
+            pulumi.set(__self__, "key_revocation_action_type", key_revocation_action_type)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if machine_type is not None:
@@ -763,6 +787,18 @@ class _InstanceTemplateState:
         pulumi.set(self, "confidential_instance_config", value)
 
     @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> Optional[pulumi.Input[str]]:
+        """
+        Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @creation_timestamp.setter
+    def creation_timestamp(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "creation_timestamp", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -837,6 +873,18 @@ class _InstanceTemplateState:
     @instance_description.setter
     def instance_description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "instance_description", value)
+
+    @property
+    @pulumi.getter(name="keyRevocationActionType")
+    def key_revocation_action_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
+        """
+        return pulumi.get(self, "key_revocation_action_type")
+
+    @key_revocation_action_type.setter
+    def key_revocation_action_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_revocation_action_type", value)
 
     @property
     @pulumi.getter
@@ -1179,6 +1227,7 @@ class InstanceTemplate(pulumi.CustomResource):
                  enable_display: Optional[pulumi.Input[bool]] = None,
                  guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceTemplateGuestAcceleratorArgs', 'InstanceTemplateGuestAcceleratorArgsDict']]]]] = None,
                  instance_description: Optional[pulumi.Input[str]] = None,
+                 key_revocation_action_type: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1469,6 +1518,7 @@ class InstanceTemplate(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceTemplateGuestAcceleratorArgs', 'InstanceTemplateGuestAcceleratorArgsDict']]]] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
         :param pulumi.Input[str] instance_description: A brief description to use for instances
                created from this template.
+        :param pulumi.Input[str] key_revocation_action_type: Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to instances
                created from this template.
                
@@ -1811,6 +1861,7 @@ class InstanceTemplate(pulumi.CustomResource):
                  enable_display: Optional[pulumi.Input[bool]] = None,
                  guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceTemplateGuestAcceleratorArgs', 'InstanceTemplateGuestAcceleratorArgsDict']]]]] = None,
                  instance_description: Optional[pulumi.Input[str]] = None,
+                 key_revocation_action_type: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1849,6 +1900,7 @@ class InstanceTemplate(pulumi.CustomResource):
             __props__.__dict__["enable_display"] = enable_display
             __props__.__dict__["guest_accelerators"] = guest_accelerators
             __props__.__dict__["instance_description"] = instance_description
+            __props__.__dict__["key_revocation_action_type"] = key_revocation_action_type
             __props__.__dict__["labels"] = labels
             if machine_type is None and not opts.urn:
                 raise TypeError("Missing required property 'machine_type'")
@@ -1870,6 +1922,7 @@ class InstanceTemplate(pulumi.CustomResource):
             __props__.__dict__["service_account"] = service_account
             __props__.__dict__["shielded_instance_config"] = shielded_instance_config
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["metadata_fingerprint"] = None
             __props__.__dict__["pulumi_labels"] = None
@@ -1891,12 +1944,14 @@ class InstanceTemplate(pulumi.CustomResource):
             advanced_machine_features: Optional[pulumi.Input[Union['InstanceTemplateAdvancedMachineFeaturesArgs', 'InstanceTemplateAdvancedMachineFeaturesArgsDict']]] = None,
             can_ip_forward: Optional[pulumi.Input[bool]] = None,
             confidential_instance_config: Optional[pulumi.Input[Union['InstanceTemplateConfidentialInstanceConfigArgs', 'InstanceTemplateConfidentialInstanceConfigArgsDict']]] = None,
+            creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceTemplateDiskArgs', 'InstanceTemplateDiskArgsDict']]]]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             enable_display: Optional[pulumi.Input[bool]] = None,
             guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceTemplateGuestAcceleratorArgs', 'InstanceTemplateGuestAcceleratorArgsDict']]]]] = None,
             instance_description: Optional[pulumi.Input[str]] = None,
+            key_revocation_action_type: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             machine_type: Optional[pulumi.Input[str]] = None,
             metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1932,6 +1987,7 @@ class InstanceTemplate(pulumi.CustomResource):
         :param pulumi.Input[bool] can_ip_forward: Whether to allow sending and receiving of
                packets with non-matching source or destination IPs. This defaults to false.
         :param pulumi.Input[Union['InstanceTemplateConfidentialInstanceConfigArgs', 'InstanceTemplateConfidentialInstanceConfigArgsDict']] confidential_instance_config: Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
+        :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: A brief description of this resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceTemplateDiskArgs', 'InstanceTemplateDiskArgsDict']]]] disks: Disks to attach to instances created from this template.
                This can be specified multiple times for multiple disks. Structure is
@@ -1942,6 +1998,7 @@ class InstanceTemplate(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceTemplateGuestAcceleratorArgs', 'InstanceTemplateGuestAcceleratorArgsDict']]]] guest_accelerators: List of the type and count of accelerator cards attached to the instance. Structure documented below.
         :param pulumi.Input[str] instance_description: A brief description to use for instances
                created from this template.
+        :param pulumi.Input[str] key_revocation_action_type: Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to instances
                created from this template.
                
@@ -2013,12 +2070,14 @@ class InstanceTemplate(pulumi.CustomResource):
         __props__.__dict__["advanced_machine_features"] = advanced_machine_features
         __props__.__dict__["can_ip_forward"] = can_ip_forward
         __props__.__dict__["confidential_instance_config"] = confidential_instance_config
+        __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["description"] = description
         __props__.__dict__["disks"] = disks
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["enable_display"] = enable_display
         __props__.__dict__["guest_accelerators"] = guest_accelerators
         __props__.__dict__["instance_description"] = instance_description
+        __props__.__dict__["key_revocation_action_type"] = key_revocation_action_type
         __props__.__dict__["labels"] = labels
         __props__.__dict__["machine_type"] = machine_type
         __props__.__dict__["metadata"] = metadata
@@ -2071,6 +2130,14 @@ class InstanceTemplate(pulumi.CustomResource):
         return pulumi.get(self, "confidential_instance_config")
 
     @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> pulumi.Output[str]:
+        """
+        Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
@@ -2121,6 +2188,14 @@ class InstanceTemplate(pulumi.CustomResource):
         created from this template.
         """
         return pulumi.get(self, "instance_description")
+
+    @property
+    @pulumi.getter(name="keyRevocationActionType")
+    def key_revocation_action_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
+        """
+        return pulumi.get(self, "key_revocation_action_type")
 
     @property
     @pulumi.getter

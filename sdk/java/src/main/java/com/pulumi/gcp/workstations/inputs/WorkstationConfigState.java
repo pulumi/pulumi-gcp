@@ -5,6 +5,7 @@ package com.pulumi.gcp.workstations.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.workstations.inputs.WorkstationConfigAllowedPortArgs;
 import com.pulumi.gcp.workstations.inputs.WorkstationConfigConditionArgs;
 import com.pulumi.gcp.workstations.inputs.WorkstationConfigContainerArgs;
 import com.pulumi.gcp.workstations.inputs.WorkstationConfigEncryptionKeyArgs;
@@ -13,6 +14,7 @@ import com.pulumi.gcp.workstations.inputs.WorkstationConfigHostArgs;
 import com.pulumi.gcp.workstations.inputs.WorkstationConfigPersistentDirectoryArgs;
 import com.pulumi.gcp.workstations.inputs.WorkstationConfigReadinessCheckArgs;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -24,6 +26,23 @@ import javax.annotation.Nullable;
 public final class WorkstationConfigState extends com.pulumi.resources.ResourceArgs {
 
     public static final WorkstationConfigState Empty = new WorkstationConfigState();
+
+    /**
+     * A list of port ranges specifying single ports or ranges of ports that are externally accessible in the workstation. Allowed ports must be one of 22, 80, or within range 1024-65535. If not specified defaults to ports 22, 80, and ports 1024-65535.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="allowedPorts")
+    private @Nullable Output<List<WorkstationConfigAllowedPortArgs>> allowedPorts;
+
+    /**
+     * @return A list of port ranges specifying single ports or ranges of ports that are externally accessible in the workstation. Allowed ports must be one of 22, 80, or within range 1024-65535. If not specified defaults to ports 22, 80, and ports 1024-65535.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<WorkstationConfigAllowedPortArgs>>> allowedPorts() {
+        return Optional.ofNullable(this.allowedPorts);
+    }
 
     /**
      * Client-specified annotations. This is distinct from labels.
@@ -305,6 +324,21 @@ public final class WorkstationConfigState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Maximum number of workstations under this configuration a user can have workstations.workstation.use permission on. Only enforced on CreateWorkstation API calls on the user issuing the API request.
+     * 
+     */
+    @Import(name="maxUsableWorkstations")
+    private @Nullable Output<Integer> maxUsableWorkstations;
+
+    /**
+     * @return Maximum number of workstations under this configuration a user can have workstations.workstation.use permission on. Only enforced on CreateWorkstation API calls on the user issuing the API request.
+     * 
+     */
+    public Optional<Output<Integer>> maxUsableWorkstations() {
+        return Optional.ofNullable(this.maxUsableWorkstations);
+    }
+
+    /**
      * Full name of this resource.
      * 
      */
@@ -469,6 +503,7 @@ public final class WorkstationConfigState extends com.pulumi.resources.ResourceA
     private WorkstationConfigState() {}
 
     private WorkstationConfigState(WorkstationConfigState $) {
+        this.allowedPorts = $.allowedPorts;
         this.annotations = $.annotations;
         this.conditions = $.conditions;
         this.container = $.container;
@@ -486,6 +521,7 @@ public final class WorkstationConfigState extends com.pulumi.resources.ResourceA
         this.idleTimeout = $.idleTimeout;
         this.labels = $.labels;
         this.location = $.location;
+        this.maxUsableWorkstations = $.maxUsableWorkstations;
         this.name = $.name;
         this.persistentDirectories = $.persistentDirectories;
         this.project = $.project;
@@ -514,6 +550,40 @@ public final class WorkstationConfigState extends com.pulumi.resources.ResourceA
 
         public Builder(WorkstationConfigState defaults) {
             $ = new WorkstationConfigState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param allowedPorts A list of port ranges specifying single ports or ranges of ports that are externally accessible in the workstation. Allowed ports must be one of 22, 80, or within range 1024-65535. If not specified defaults to ports 22, 80, and ports 1024-65535.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedPorts(@Nullable Output<List<WorkstationConfigAllowedPortArgs>> allowedPorts) {
+            $.allowedPorts = allowedPorts;
+            return this;
+        }
+
+        /**
+         * @param allowedPorts A list of port ranges specifying single ports or ranges of ports that are externally accessible in the workstation. Allowed ports must be one of 22, 80, or within range 1024-65535. If not specified defaults to ports 22, 80, and ports 1024-65535.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedPorts(List<WorkstationConfigAllowedPortArgs> allowedPorts) {
+            return allowedPorts(Output.of(allowedPorts));
+        }
+
+        /**
+         * @param allowedPorts A list of port ranges specifying single ports or ranges of ports that are externally accessible in the workstation. Allowed ports must be one of 22, 80, or within range 1024-65535. If not specified defaults to ports 22, 80, and ports 1024-65535.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedPorts(WorkstationConfigAllowedPortArgs... allowedPorts) {
+            return allowedPorts(List.of(allowedPorts));
         }
 
         /**
@@ -913,6 +983,27 @@ public final class WorkstationConfigState extends com.pulumi.resources.ResourceA
          */
         public Builder location(String location) {
             return location(Output.of(location));
+        }
+
+        /**
+         * @param maxUsableWorkstations Maximum number of workstations under this configuration a user can have workstations.workstation.use permission on. Only enforced on CreateWorkstation API calls on the user issuing the API request.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxUsableWorkstations(@Nullable Output<Integer> maxUsableWorkstations) {
+            $.maxUsableWorkstations = maxUsableWorkstations;
+            return this;
+        }
+
+        /**
+         * @param maxUsableWorkstations Maximum number of workstations under this configuration a user can have workstations.workstation.use permission on. Only enforced on CreateWorkstation API calls on the user issuing the API request.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxUsableWorkstations(Integer maxUsableWorkstations) {
+            return maxUsableWorkstations(Output.of(maxUsableWorkstations));
         }
 
         /**

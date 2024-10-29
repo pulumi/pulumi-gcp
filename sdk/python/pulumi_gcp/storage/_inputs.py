@@ -23,6 +23,8 @@ __all__ = [
     'BucketCustomPlacementConfigArgsDict',
     'BucketEncryptionArgs',
     'BucketEncryptionArgsDict',
+    'BucketHierarchicalNamespaceArgs',
+    'BucketHierarchicalNamespaceArgsDict',
     'BucketIAMBindingConditionArgs',
     'BucketIAMBindingConditionArgsDict',
     'BucketIAMMemberConditionArgs',
@@ -353,6 +355,40 @@ class BucketEncryptionArgs:
     @default_kms_key_name.setter
     def default_kms_key_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "default_kms_key_name", value)
+
+
+if not MYPY:
+    class BucketHierarchicalNamespaceArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Enable hierarchical namespace for the bucket. 
+        To use this flag, you must also use --uniform-bucket-level-access
+        """
+elif False:
+    BucketHierarchicalNamespaceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BucketHierarchicalNamespaceArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool]):
+        """
+        :param pulumi.Input[bool] enabled: Enable hierarchical namespace for the bucket. 
+               To use this flag, you must also use --uniform-bucket-level-access
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Enable hierarchical namespace for the bucket. 
+        To use this flag, you must also use --uniform-bucket-level-access
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
 
 
 if not MYPY:

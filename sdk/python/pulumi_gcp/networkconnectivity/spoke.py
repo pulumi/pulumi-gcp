@@ -26,6 +26,7 @@ class SpokeArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  linked_interconnect_attachments: Optional[pulumi.Input['SpokeLinkedInterconnectAttachmentsArgs']] = None,
+                 linked_producer_vpc_network: Optional[pulumi.Input['SpokeLinkedProducerVpcNetworkArgs']] = None,
                  linked_router_appliance_instances: Optional[pulumi.Input['SpokeLinkedRouterApplianceInstancesArgs']] = None,
                  linked_vpc_network: Optional[pulumi.Input['SpokeLinkedVpcNetworkArgs']] = None,
                  linked_vpn_tunnels: Optional[pulumi.Input['SpokeLinkedVpnTunnelsArgs']] = None,
@@ -43,6 +44,8 @@ class SpokeArgs:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input['SpokeLinkedInterconnectAttachmentsArgs'] linked_interconnect_attachments: A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
+               Structure is documented below.
+        :param pulumi.Input['SpokeLinkedProducerVpcNetworkArgs'] linked_producer_vpc_network: Producer VPC network that is associated with the spoke.
                Structure is documented below.
         :param pulumi.Input['SpokeLinkedRouterApplianceInstancesArgs'] linked_router_appliance_instances: The URIs of linked Router appliance resources
                Structure is documented below.
@@ -62,6 +65,8 @@ class SpokeArgs:
             pulumi.set(__self__, "labels", labels)
         if linked_interconnect_attachments is not None:
             pulumi.set(__self__, "linked_interconnect_attachments", linked_interconnect_attachments)
+        if linked_producer_vpc_network is not None:
+            pulumi.set(__self__, "linked_producer_vpc_network", linked_producer_vpc_network)
         if linked_router_appliance_instances is not None:
             pulumi.set(__self__, "linked_router_appliance_instances", linked_router_appliance_instances)
         if linked_vpc_network is not None:
@@ -140,6 +145,19 @@ class SpokeArgs:
         pulumi.set(self, "linked_interconnect_attachments", value)
 
     @property
+    @pulumi.getter(name="linkedProducerVpcNetwork")
+    def linked_producer_vpc_network(self) -> Optional[pulumi.Input['SpokeLinkedProducerVpcNetworkArgs']]:
+        """
+        Producer VPC network that is associated with the spoke.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "linked_producer_vpc_network")
+
+    @linked_producer_vpc_network.setter
+    def linked_producer_vpc_network(self, value: Optional[pulumi.Input['SpokeLinkedProducerVpcNetworkArgs']]):
+        pulumi.set(self, "linked_producer_vpc_network", value)
+
+    @property
     @pulumi.getter(name="linkedRouterApplianceInstances")
     def linked_router_appliance_instances(self) -> Optional[pulumi.Input['SpokeLinkedRouterApplianceInstancesArgs']]:
         """
@@ -213,6 +231,7 @@ class _SpokeState:
                  hub: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  linked_interconnect_attachments: Optional[pulumi.Input['SpokeLinkedInterconnectAttachmentsArgs']] = None,
+                 linked_producer_vpc_network: Optional[pulumi.Input['SpokeLinkedProducerVpcNetworkArgs']] = None,
                  linked_router_appliance_instances: Optional[pulumi.Input['SpokeLinkedRouterApplianceInstancesArgs']] = None,
                  linked_vpc_network: Optional[pulumi.Input['SpokeLinkedVpcNetworkArgs']] = None,
                  linked_vpn_tunnels: Optional[pulumi.Input['SpokeLinkedVpnTunnelsArgs']] = None,
@@ -233,6 +252,8 @@ class _SpokeState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input['SpokeLinkedInterconnectAttachmentsArgs'] linked_interconnect_attachments: A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
+               Structure is documented below.
+        :param pulumi.Input['SpokeLinkedProducerVpcNetworkArgs'] linked_producer_vpc_network: Producer VPC network that is associated with the spoke.
                Structure is documented below.
         :param pulumi.Input['SpokeLinkedRouterApplianceInstancesArgs'] linked_router_appliance_instances: The URIs of linked Router appliance resources
                Structure is documented below.
@@ -265,6 +286,8 @@ class _SpokeState:
             pulumi.set(__self__, "labels", labels)
         if linked_interconnect_attachments is not None:
             pulumi.set(__self__, "linked_interconnect_attachments", linked_interconnect_attachments)
+        if linked_producer_vpc_network is not None:
+            pulumi.set(__self__, "linked_producer_vpc_network", linked_producer_vpc_network)
         if linked_router_appliance_instances is not None:
             pulumi.set(__self__, "linked_router_appliance_instances", linked_router_appliance_instances)
         if linked_vpc_network is not None:
@@ -360,6 +383,19 @@ class _SpokeState:
     @linked_interconnect_attachments.setter
     def linked_interconnect_attachments(self, value: Optional[pulumi.Input['SpokeLinkedInterconnectAttachmentsArgs']]):
         pulumi.set(self, "linked_interconnect_attachments", value)
+
+    @property
+    @pulumi.getter(name="linkedProducerVpcNetwork")
+    def linked_producer_vpc_network(self) -> Optional[pulumi.Input['SpokeLinkedProducerVpcNetworkArgs']]:
+        """
+        Producer VPC network that is associated with the spoke.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "linked_producer_vpc_network")
+
+    @linked_producer_vpc_network.setter
+    def linked_producer_vpc_network(self, value: Optional[pulumi.Input['SpokeLinkedProducerVpcNetworkArgs']]):
+        pulumi.set(self, "linked_producer_vpc_network", value)
 
     @property
     @pulumi.getter(name="linkedRouterApplianceInstances")
@@ -499,6 +535,7 @@ class Spoke(pulumi.CustomResource):
                  hub: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  linked_interconnect_attachments: Optional[pulumi.Input[Union['SpokeLinkedInterconnectAttachmentsArgs', 'SpokeLinkedInterconnectAttachmentsArgsDict']]] = None,
+                 linked_producer_vpc_network: Optional[pulumi.Input[Union['SpokeLinkedProducerVpcNetworkArgs', 'SpokeLinkedProducerVpcNetworkArgsDict']]] = None,
                  linked_router_appliance_instances: Optional[pulumi.Input[Union['SpokeLinkedRouterApplianceInstancesArgs', 'SpokeLinkedRouterApplianceInstancesArgsDict']]] = None,
                  linked_vpc_network: Optional[pulumi.Input[Union['SpokeLinkedVpcNetworkArgs', 'SpokeLinkedVpcNetworkArgsDict']]] = None,
                  linked_vpn_tunnels: Optional[pulumi.Input[Union['SpokeLinkedVpnTunnelsArgs', 'SpokeLinkedVpnTunnelsArgsDict']]] = None,
@@ -760,6 +797,51 @@ class Spoke(pulumi.CustomResource):
                 "include_import_ranges": ["ALL_IPV4_RANGES"],
             })
         ```
+        ### Network Connectivity Spoke Linked Producer Vpc Network Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network = gcp.compute.Network("network",
+            name="net-spoke",
+            auto_create_subnetworks=False)
+        address = gcp.compute.GlobalAddress("address",
+            name="test-address",
+            purpose="VPC_PEERING",
+            address_type="INTERNAL",
+            prefix_length=16,
+            network=network.id)
+        peering = gcp.servicenetworking.Connection("peering",
+            network=network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[address.name])
+        basic_hub = gcp.networkconnectivity.Hub("basic_hub", name="hub-basic")
+        linked_vpc_spoke = gcp.networkconnectivity.Spoke("linked_vpc_spoke",
+            name="vpc-spoke",
+            location="global",
+            hub=basic_hub.id,
+            linked_vpc_network={
+                "uri": network.self_link,
+            })
+        primary = gcp.networkconnectivity.Spoke("primary",
+            name="producer-spoke",
+            location="global",
+            description="A sample spoke with a linked router appliance instance",
+            labels={
+                "label-one": "value-one",
+            },
+            hub=basic_hub.id,
+            linked_producer_vpc_network={
+                "network": network.name,
+                "peering": peering.peering,
+                "exclude_export_ranges": [
+                    "198.51.100.0/24",
+                    "10.10.0.0/16",
+                ],
+            },
+            opts = pulumi.ResourceOptions(depends_on=[linked_vpc_spoke]))
+        ```
 
         ## Import
 
@@ -793,6 +875,8 @@ class Spoke(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[Union['SpokeLinkedInterconnectAttachmentsArgs', 'SpokeLinkedInterconnectAttachmentsArgsDict']] linked_interconnect_attachments: A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
+               Structure is documented below.
+        :param pulumi.Input[Union['SpokeLinkedProducerVpcNetworkArgs', 'SpokeLinkedProducerVpcNetworkArgsDict']] linked_producer_vpc_network: Producer VPC network that is associated with the spoke.
                Structure is documented below.
         :param pulumi.Input[Union['SpokeLinkedRouterApplianceInstancesArgs', 'SpokeLinkedRouterApplianceInstancesArgsDict']] linked_router_appliance_instances: The URIs of linked Router appliance resources
                Structure is documented below.
@@ -1068,6 +1152,51 @@ class Spoke(pulumi.CustomResource):
                 "include_import_ranges": ["ALL_IPV4_RANGES"],
             })
         ```
+        ### Network Connectivity Spoke Linked Producer Vpc Network Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network = gcp.compute.Network("network",
+            name="net-spoke",
+            auto_create_subnetworks=False)
+        address = gcp.compute.GlobalAddress("address",
+            name="test-address",
+            purpose="VPC_PEERING",
+            address_type="INTERNAL",
+            prefix_length=16,
+            network=network.id)
+        peering = gcp.servicenetworking.Connection("peering",
+            network=network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[address.name])
+        basic_hub = gcp.networkconnectivity.Hub("basic_hub", name="hub-basic")
+        linked_vpc_spoke = gcp.networkconnectivity.Spoke("linked_vpc_spoke",
+            name="vpc-spoke",
+            location="global",
+            hub=basic_hub.id,
+            linked_vpc_network={
+                "uri": network.self_link,
+            })
+        primary = gcp.networkconnectivity.Spoke("primary",
+            name="producer-spoke",
+            location="global",
+            description="A sample spoke with a linked router appliance instance",
+            labels={
+                "label-one": "value-one",
+            },
+            hub=basic_hub.id,
+            linked_producer_vpc_network={
+                "network": network.name,
+                "peering": peering.peering,
+                "exclude_export_ranges": [
+                    "198.51.100.0/24",
+                    "10.10.0.0/16",
+                ],
+            },
+            opts = pulumi.ResourceOptions(depends_on=[linked_vpc_spoke]))
+        ```
 
         ## Import
 
@@ -1112,6 +1241,7 @@ class Spoke(pulumi.CustomResource):
                  hub: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  linked_interconnect_attachments: Optional[pulumi.Input[Union['SpokeLinkedInterconnectAttachmentsArgs', 'SpokeLinkedInterconnectAttachmentsArgsDict']]] = None,
+                 linked_producer_vpc_network: Optional[pulumi.Input[Union['SpokeLinkedProducerVpcNetworkArgs', 'SpokeLinkedProducerVpcNetworkArgsDict']]] = None,
                  linked_router_appliance_instances: Optional[pulumi.Input[Union['SpokeLinkedRouterApplianceInstancesArgs', 'SpokeLinkedRouterApplianceInstancesArgsDict']]] = None,
                  linked_vpc_network: Optional[pulumi.Input[Union['SpokeLinkedVpcNetworkArgs', 'SpokeLinkedVpcNetworkArgsDict']]] = None,
                  linked_vpn_tunnels: Optional[pulumi.Input[Union['SpokeLinkedVpnTunnelsArgs', 'SpokeLinkedVpnTunnelsArgsDict']]] = None,
@@ -1133,6 +1263,7 @@ class Spoke(pulumi.CustomResource):
             __props__.__dict__["hub"] = hub
             __props__.__dict__["labels"] = labels
             __props__.__dict__["linked_interconnect_attachments"] = linked_interconnect_attachments
+            __props__.__dict__["linked_producer_vpc_network"] = linked_producer_vpc_network
             __props__.__dict__["linked_router_appliance_instances"] = linked_router_appliance_instances
             __props__.__dict__["linked_vpc_network"] = linked_vpc_network
             __props__.__dict__["linked_vpn_tunnels"] = linked_vpn_tunnels
@@ -1165,6 +1296,7 @@ class Spoke(pulumi.CustomResource):
             hub: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             linked_interconnect_attachments: Optional[pulumi.Input[Union['SpokeLinkedInterconnectAttachmentsArgs', 'SpokeLinkedInterconnectAttachmentsArgsDict']]] = None,
+            linked_producer_vpc_network: Optional[pulumi.Input[Union['SpokeLinkedProducerVpcNetworkArgs', 'SpokeLinkedProducerVpcNetworkArgsDict']]] = None,
             linked_router_appliance_instances: Optional[pulumi.Input[Union['SpokeLinkedRouterApplianceInstancesArgs', 'SpokeLinkedRouterApplianceInstancesArgsDict']]] = None,
             linked_vpc_network: Optional[pulumi.Input[Union['SpokeLinkedVpcNetworkArgs', 'SpokeLinkedVpcNetworkArgsDict']]] = None,
             linked_vpn_tunnels: Optional[pulumi.Input[Union['SpokeLinkedVpnTunnelsArgs', 'SpokeLinkedVpnTunnelsArgsDict']]] = None,
@@ -1190,6 +1322,8 @@ class Spoke(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[Union['SpokeLinkedInterconnectAttachmentsArgs', 'SpokeLinkedInterconnectAttachmentsArgsDict']] linked_interconnect_attachments: A collection of VLAN attachment resources. These resources should be redundant attachments that all advertise the same prefixes to Google Cloud. Alternatively, in active/passive configurations, all attachments should be capable of advertising the same prefixes.
+               Structure is documented below.
+        :param pulumi.Input[Union['SpokeLinkedProducerVpcNetworkArgs', 'SpokeLinkedProducerVpcNetworkArgsDict']] linked_producer_vpc_network: Producer VPC network that is associated with the spoke.
                Structure is documented below.
         :param pulumi.Input[Union['SpokeLinkedRouterApplianceInstancesArgs', 'SpokeLinkedRouterApplianceInstancesArgsDict']] linked_router_appliance_instances: The URIs of linked Router appliance resources
                Structure is documented below.
@@ -1220,6 +1354,7 @@ class Spoke(pulumi.CustomResource):
         __props__.__dict__["hub"] = hub
         __props__.__dict__["labels"] = labels
         __props__.__dict__["linked_interconnect_attachments"] = linked_interconnect_attachments
+        __props__.__dict__["linked_producer_vpc_network"] = linked_producer_vpc_network
         __props__.__dict__["linked_router_appliance_instances"] = linked_router_appliance_instances
         __props__.__dict__["linked_vpc_network"] = linked_vpc_network
         __props__.__dict__["linked_vpn_tunnels"] = linked_vpn_tunnels
@@ -1282,6 +1417,15 @@ class Spoke(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "linked_interconnect_attachments")
+
+    @property
+    @pulumi.getter(name="linkedProducerVpcNetwork")
+    def linked_producer_vpc_network(self) -> pulumi.Output[Optional['outputs.SpokeLinkedProducerVpcNetwork']]:
+        """
+        Producer VPC network that is associated with the spoke.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "linked_producer_vpc_network")
 
     @property
     @pulumi.getter(name="linkedRouterApplianceInstances")

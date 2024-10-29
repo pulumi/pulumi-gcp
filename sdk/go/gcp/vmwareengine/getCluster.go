@@ -62,6 +62,7 @@ type LookupClusterArgs struct {
 
 // A collection of values returned by getCluster.
 type LookupClusterResult struct {
+	AutoscalingSettings []GetClusterAutoscalingSetting `pulumi:"autoscalingSettings"`
 	// The provider-assigned unique ID for this managed resource.
 	Id              string                     `pulumi:"id"`
 	Management      bool                       `pulumi:"management"`
@@ -116,6 +117,10 @@ func (o LookupClusterResultOutput) ToLookupClusterResultOutput() LookupClusterRe
 
 func (o LookupClusterResultOutput) ToLookupClusterResultOutputWithContext(ctx context.Context) LookupClusterResultOutput {
 	return o
+}
+
+func (o LookupClusterResultOutput) AutoscalingSettings() GetClusterAutoscalingSettingArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterAutoscalingSetting { return v.AutoscalingSettings }).(GetClusterAutoscalingSettingArrayOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

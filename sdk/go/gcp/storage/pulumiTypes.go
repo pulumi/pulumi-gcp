@@ -619,6 +619,147 @@ func (o BucketEncryptionPtrOutput) DefaultKmsKeyName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type BucketHierarchicalNamespace struct {
+	// Enable hierarchical namespace for the bucket.
+	// To use this flag, you must also use --uniform-bucket-level-access
+	Enabled bool `pulumi:"enabled"`
+}
+
+// BucketHierarchicalNamespaceInput is an input type that accepts BucketHierarchicalNamespaceArgs and BucketHierarchicalNamespaceOutput values.
+// You can construct a concrete instance of `BucketHierarchicalNamespaceInput` via:
+//
+//	BucketHierarchicalNamespaceArgs{...}
+type BucketHierarchicalNamespaceInput interface {
+	pulumi.Input
+
+	ToBucketHierarchicalNamespaceOutput() BucketHierarchicalNamespaceOutput
+	ToBucketHierarchicalNamespaceOutputWithContext(context.Context) BucketHierarchicalNamespaceOutput
+}
+
+type BucketHierarchicalNamespaceArgs struct {
+	// Enable hierarchical namespace for the bucket.
+	// To use this flag, you must also use --uniform-bucket-level-access
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (BucketHierarchicalNamespaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketHierarchicalNamespace)(nil)).Elem()
+}
+
+func (i BucketHierarchicalNamespaceArgs) ToBucketHierarchicalNamespaceOutput() BucketHierarchicalNamespaceOutput {
+	return i.ToBucketHierarchicalNamespaceOutputWithContext(context.Background())
+}
+
+func (i BucketHierarchicalNamespaceArgs) ToBucketHierarchicalNamespaceOutputWithContext(ctx context.Context) BucketHierarchicalNamespaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketHierarchicalNamespaceOutput)
+}
+
+func (i BucketHierarchicalNamespaceArgs) ToBucketHierarchicalNamespacePtrOutput() BucketHierarchicalNamespacePtrOutput {
+	return i.ToBucketHierarchicalNamespacePtrOutputWithContext(context.Background())
+}
+
+func (i BucketHierarchicalNamespaceArgs) ToBucketHierarchicalNamespacePtrOutputWithContext(ctx context.Context) BucketHierarchicalNamespacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketHierarchicalNamespaceOutput).ToBucketHierarchicalNamespacePtrOutputWithContext(ctx)
+}
+
+// BucketHierarchicalNamespacePtrInput is an input type that accepts BucketHierarchicalNamespaceArgs, BucketHierarchicalNamespacePtr and BucketHierarchicalNamespacePtrOutput values.
+// You can construct a concrete instance of `BucketHierarchicalNamespacePtrInput` via:
+//
+//	        BucketHierarchicalNamespaceArgs{...}
+//
+//	or:
+//
+//	        nil
+type BucketHierarchicalNamespacePtrInput interface {
+	pulumi.Input
+
+	ToBucketHierarchicalNamespacePtrOutput() BucketHierarchicalNamespacePtrOutput
+	ToBucketHierarchicalNamespacePtrOutputWithContext(context.Context) BucketHierarchicalNamespacePtrOutput
+}
+
+type bucketHierarchicalNamespacePtrType BucketHierarchicalNamespaceArgs
+
+func BucketHierarchicalNamespacePtr(v *BucketHierarchicalNamespaceArgs) BucketHierarchicalNamespacePtrInput {
+	return (*bucketHierarchicalNamespacePtrType)(v)
+}
+
+func (*bucketHierarchicalNamespacePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketHierarchicalNamespace)(nil)).Elem()
+}
+
+func (i *bucketHierarchicalNamespacePtrType) ToBucketHierarchicalNamespacePtrOutput() BucketHierarchicalNamespacePtrOutput {
+	return i.ToBucketHierarchicalNamespacePtrOutputWithContext(context.Background())
+}
+
+func (i *bucketHierarchicalNamespacePtrType) ToBucketHierarchicalNamespacePtrOutputWithContext(ctx context.Context) BucketHierarchicalNamespacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketHierarchicalNamespacePtrOutput)
+}
+
+type BucketHierarchicalNamespaceOutput struct{ *pulumi.OutputState }
+
+func (BucketHierarchicalNamespaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketHierarchicalNamespace)(nil)).Elem()
+}
+
+func (o BucketHierarchicalNamespaceOutput) ToBucketHierarchicalNamespaceOutput() BucketHierarchicalNamespaceOutput {
+	return o
+}
+
+func (o BucketHierarchicalNamespaceOutput) ToBucketHierarchicalNamespaceOutputWithContext(ctx context.Context) BucketHierarchicalNamespaceOutput {
+	return o
+}
+
+func (o BucketHierarchicalNamespaceOutput) ToBucketHierarchicalNamespacePtrOutput() BucketHierarchicalNamespacePtrOutput {
+	return o.ToBucketHierarchicalNamespacePtrOutputWithContext(context.Background())
+}
+
+func (o BucketHierarchicalNamespaceOutput) ToBucketHierarchicalNamespacePtrOutputWithContext(ctx context.Context) BucketHierarchicalNamespacePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketHierarchicalNamespace) *BucketHierarchicalNamespace {
+		return &v
+	}).(BucketHierarchicalNamespacePtrOutput)
+}
+
+// Enable hierarchical namespace for the bucket.
+// To use this flag, you must also use --uniform-bucket-level-access
+func (o BucketHierarchicalNamespaceOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v BucketHierarchicalNamespace) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type BucketHierarchicalNamespacePtrOutput struct{ *pulumi.OutputState }
+
+func (BucketHierarchicalNamespacePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketHierarchicalNamespace)(nil)).Elem()
+}
+
+func (o BucketHierarchicalNamespacePtrOutput) ToBucketHierarchicalNamespacePtrOutput() BucketHierarchicalNamespacePtrOutput {
+	return o
+}
+
+func (o BucketHierarchicalNamespacePtrOutput) ToBucketHierarchicalNamespacePtrOutputWithContext(ctx context.Context) BucketHierarchicalNamespacePtrOutput {
+	return o
+}
+
+func (o BucketHierarchicalNamespacePtrOutput) Elem() BucketHierarchicalNamespaceOutput {
+	return o.ApplyT(func(v *BucketHierarchicalNamespace) BucketHierarchicalNamespace {
+		if v != nil {
+			return *v
+		}
+		var ret BucketHierarchicalNamespace
+		return ret
+	}).(BucketHierarchicalNamespaceOutput)
+}
+
+// Enable hierarchical namespace for the bucket.
+// To use this flag, you must also use --uniform-bucket-level-access
+func (o BucketHierarchicalNamespacePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BucketHierarchicalNamespace) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type BucketIAMBindingCondition struct {
 	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	//
@@ -8062,6 +8203,103 @@ func (o GetBucketEncryptionArrayOutput) Index(i pulumi.IntInput) GetBucketEncryp
 	}).(GetBucketEncryptionOutput)
 }
 
+type GetBucketHierarchicalNamespace struct {
+	// Set this enabled flag to true when folders with logical files structure. Default value is false.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetBucketHierarchicalNamespaceInput is an input type that accepts GetBucketHierarchicalNamespaceArgs and GetBucketHierarchicalNamespaceOutput values.
+// You can construct a concrete instance of `GetBucketHierarchicalNamespaceInput` via:
+//
+//	GetBucketHierarchicalNamespaceArgs{...}
+type GetBucketHierarchicalNamespaceInput interface {
+	pulumi.Input
+
+	ToGetBucketHierarchicalNamespaceOutput() GetBucketHierarchicalNamespaceOutput
+	ToGetBucketHierarchicalNamespaceOutputWithContext(context.Context) GetBucketHierarchicalNamespaceOutput
+}
+
+type GetBucketHierarchicalNamespaceArgs struct {
+	// Set this enabled flag to true when folders with logical files structure. Default value is false.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetBucketHierarchicalNamespaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketHierarchicalNamespace)(nil)).Elem()
+}
+
+func (i GetBucketHierarchicalNamespaceArgs) ToGetBucketHierarchicalNamespaceOutput() GetBucketHierarchicalNamespaceOutput {
+	return i.ToGetBucketHierarchicalNamespaceOutputWithContext(context.Background())
+}
+
+func (i GetBucketHierarchicalNamespaceArgs) ToGetBucketHierarchicalNamespaceOutputWithContext(ctx context.Context) GetBucketHierarchicalNamespaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketHierarchicalNamespaceOutput)
+}
+
+// GetBucketHierarchicalNamespaceArrayInput is an input type that accepts GetBucketHierarchicalNamespaceArray and GetBucketHierarchicalNamespaceArrayOutput values.
+// You can construct a concrete instance of `GetBucketHierarchicalNamespaceArrayInput` via:
+//
+//	GetBucketHierarchicalNamespaceArray{ GetBucketHierarchicalNamespaceArgs{...} }
+type GetBucketHierarchicalNamespaceArrayInput interface {
+	pulumi.Input
+
+	ToGetBucketHierarchicalNamespaceArrayOutput() GetBucketHierarchicalNamespaceArrayOutput
+	ToGetBucketHierarchicalNamespaceArrayOutputWithContext(context.Context) GetBucketHierarchicalNamespaceArrayOutput
+}
+
+type GetBucketHierarchicalNamespaceArray []GetBucketHierarchicalNamespaceInput
+
+func (GetBucketHierarchicalNamespaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketHierarchicalNamespace)(nil)).Elem()
+}
+
+func (i GetBucketHierarchicalNamespaceArray) ToGetBucketHierarchicalNamespaceArrayOutput() GetBucketHierarchicalNamespaceArrayOutput {
+	return i.ToGetBucketHierarchicalNamespaceArrayOutputWithContext(context.Background())
+}
+
+func (i GetBucketHierarchicalNamespaceArray) ToGetBucketHierarchicalNamespaceArrayOutputWithContext(ctx context.Context) GetBucketHierarchicalNamespaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBucketHierarchicalNamespaceArrayOutput)
+}
+
+type GetBucketHierarchicalNamespaceOutput struct{ *pulumi.OutputState }
+
+func (GetBucketHierarchicalNamespaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBucketHierarchicalNamespace)(nil)).Elem()
+}
+
+func (o GetBucketHierarchicalNamespaceOutput) ToGetBucketHierarchicalNamespaceOutput() GetBucketHierarchicalNamespaceOutput {
+	return o
+}
+
+func (o GetBucketHierarchicalNamespaceOutput) ToGetBucketHierarchicalNamespaceOutputWithContext(ctx context.Context) GetBucketHierarchicalNamespaceOutput {
+	return o
+}
+
+// Set this enabled flag to true when folders with logical files structure. Default value is false.
+func (o GetBucketHierarchicalNamespaceOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBucketHierarchicalNamespace) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetBucketHierarchicalNamespaceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBucketHierarchicalNamespaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBucketHierarchicalNamespace)(nil)).Elem()
+}
+
+func (o GetBucketHierarchicalNamespaceArrayOutput) ToGetBucketHierarchicalNamespaceArrayOutput() GetBucketHierarchicalNamespaceArrayOutput {
+	return o
+}
+
+func (o GetBucketHierarchicalNamespaceArrayOutput) ToGetBucketHierarchicalNamespaceArrayOutputWithContext(ctx context.Context) GetBucketHierarchicalNamespaceArrayOutput {
+	return o
+}
+
+func (o GetBucketHierarchicalNamespaceArrayOutput) Index(i pulumi.IntInput) GetBucketHierarchicalNamespaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBucketHierarchicalNamespace {
+		return vs[0].([]GetBucketHierarchicalNamespace)[vs[1].(int)]
+	}).(GetBucketHierarchicalNamespaceOutput)
+}
+
 type GetBucketLifecycleRule struct {
 	// The Lifecycle Rule's action configuration. A single block of this type is supported.
 	Actions []GetBucketLifecycleRuleAction `pulumi:"actions"`
@@ -9721,6 +9959,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketCustomPlacementConfigPtrInput)(nil)).Elem(), BucketCustomPlacementConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketEncryptionInput)(nil)).Elem(), BucketEncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketEncryptionPtrInput)(nil)).Elem(), BucketEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketHierarchicalNamespaceInput)(nil)).Elem(), BucketHierarchicalNamespaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketHierarchicalNamespacePtrInput)(nil)).Elem(), BucketHierarchicalNamespaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketIAMBindingConditionInput)(nil)).Elem(), BucketIAMBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketIAMBindingConditionPtrInput)(nil)).Elem(), BucketIAMBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketIAMMemberConditionInput)(nil)).Elem(), BucketIAMMemberConditionArgs{})
@@ -9811,6 +10051,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketCustomPlacementConfigArrayInput)(nil)).Elem(), GetBucketCustomPlacementConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketEncryptionInput)(nil)).Elem(), GetBucketEncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketEncryptionArrayInput)(nil)).Elem(), GetBucketEncryptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketHierarchicalNamespaceInput)(nil)).Elem(), GetBucketHierarchicalNamespaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketHierarchicalNamespaceArrayInput)(nil)).Elem(), GetBucketHierarchicalNamespaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketLifecycleRuleInput)(nil)).Elem(), GetBucketLifecycleRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketLifecycleRuleArrayInput)(nil)).Elem(), GetBucketLifecycleRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketLifecycleRuleActionInput)(nil)).Elem(), GetBucketLifecycleRuleActionArgs{})
@@ -9847,6 +10089,8 @@ func init() {
 	pulumi.RegisterOutputType(BucketCustomPlacementConfigPtrOutput{})
 	pulumi.RegisterOutputType(BucketEncryptionOutput{})
 	pulumi.RegisterOutputType(BucketEncryptionPtrOutput{})
+	pulumi.RegisterOutputType(BucketHierarchicalNamespaceOutput{})
+	pulumi.RegisterOutputType(BucketHierarchicalNamespacePtrOutput{})
 	pulumi.RegisterOutputType(BucketIAMBindingConditionOutput{})
 	pulumi.RegisterOutputType(BucketIAMBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(BucketIAMMemberConditionOutput{})
@@ -9937,6 +10181,8 @@ func init() {
 	pulumi.RegisterOutputType(GetBucketCustomPlacementConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetBucketEncryptionOutput{})
 	pulumi.RegisterOutputType(GetBucketEncryptionArrayOutput{})
+	pulumi.RegisterOutputType(GetBucketHierarchicalNamespaceOutput{})
+	pulumi.RegisterOutputType(GetBucketHierarchicalNamespaceArrayOutput{})
 	pulumi.RegisterOutputType(GetBucketLifecycleRuleOutput{})
 	pulumi.RegisterOutputType(GetBucketLifecycleRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetBucketLifecycleRuleActionOutput{})

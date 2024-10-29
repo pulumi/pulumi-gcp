@@ -32,6 +32,7 @@ import * as utilities from "../utilities";
  *         clientId: "my-client-id",
  *         clientSecret: "my-client-secret",
  *     },
+ *     deletionPolicy: "DEFAULT",
  * });
  * ```
  * ### Looker Instance Full
@@ -214,6 +215,23 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Looker Instance Force Delete
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const looker_instance = new gcp.looker.Instance("looker-instance", {
+ *     name: "my-instance",
+ *     platformEdition: "LOOKER_CORE_STANDARD_ANNUAL",
+ *     region: "us-central1",
+ *     oauthConfig: {
+ *         clientId: "my-client-id",
+ *         clientSecret: "my-client-secret",
+ *     },
+ *     deletionPolicy: "FORCE",
+ * });
+ * ```
  *
  * ## Import
  *
@@ -294,6 +312,13 @@ export class Instance extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly customDomain!: pulumi.Output<outputs.looker.InstanceCustomDomain | undefined>;
+    /**
+     * Policy to determine if the cluster should be deleted forcefully.
+     * If setting deletionPolicy = "FORCE", the Looker instance will be deleted regardless
+     * of its nested resources. If set to "DEFAULT", Looker instances that still have
+     * nested resources will return an error. Possible values: DEFAULT, FORCE
+     */
+    public readonly deletionPolicy!: pulumi.Output<string | undefined>;
     /**
      * Maintenance denial period for this instance.
      * You must allow at least 14 days of maintenance availability
@@ -426,6 +451,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["consumerNetwork"] = state ? state.consumerNetwork : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["customDomain"] = state ? state.customDomain : undefined;
+            resourceInputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
             resourceInputs["denyMaintenancePeriod"] = state ? state.denyMaintenancePeriod : undefined;
             resourceInputs["egressPublicIp"] = state ? state.egressPublicIp : undefined;
             resourceInputs["encryptionConfig"] = state ? state.encryptionConfig : undefined;
@@ -452,6 +478,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["adminSettings"] = args ? args.adminSettings : undefined;
             resourceInputs["consumerNetwork"] = args ? args.consumerNetwork : undefined;
             resourceInputs["customDomain"] = args ? args.customDomain : undefined;
+            resourceInputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
             resourceInputs["denyMaintenancePeriod"] = args ? args.denyMaintenancePeriod : undefined;
             resourceInputs["encryptionConfig"] = args ? args.encryptionConfig : undefined;
             resourceInputs["fipsEnabled"] = args ? args.fipsEnabled : undefined;
@@ -505,6 +532,13 @@ export interface InstanceState {
      * Structure is documented below.
      */
     customDomain?: pulumi.Input<inputs.looker.InstanceCustomDomain>;
+    /**
+     * Policy to determine if the cluster should be deleted forcefully.
+     * If setting deletionPolicy = "FORCE", the Looker instance will be deleted regardless
+     * of its nested resources. If set to "DEFAULT", Looker instances that still have
+     * nested resources will return an error. Possible values: DEFAULT, FORCE
+     */
+    deletionPolicy?: pulumi.Input<string>;
     /**
      * Maintenance denial period for this instance.
      * You must allow at least 14 days of maintenance availability
@@ -641,6 +675,13 @@ export interface InstanceArgs {
      * Structure is documented below.
      */
     customDomain?: pulumi.Input<inputs.looker.InstanceCustomDomain>;
+    /**
+     * Policy to determine if the cluster should be deleted forcefully.
+     * If setting deletionPolicy = "FORCE", the Looker instance will be deleted regardless
+     * of its nested resources. If set to "DEFAULT", Looker instances that still have
+     * nested resources will return an error. Possible values: DEFAULT, FORCE
+     */
+    deletionPolicy?: pulumi.Input<string>;
     /**
      * Maintenance denial period for this instance.
      * You must allow at least 14 days of maintenance availability

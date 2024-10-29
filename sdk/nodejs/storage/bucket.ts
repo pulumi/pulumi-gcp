@@ -208,6 +208,10 @@ export class Bucket extends pulumi.CustomResource {
      */
     public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
     /**
+     * The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below.
+     */
+    public readonly hierarchicalNamespace!: pulumi.Output<outputs.storage.BucketHierarchicalNamespace | undefined>;
+    /**
      * A map of key/value label pairs to assign to the bucket.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
@@ -309,6 +313,7 @@ export class Bucket extends pulumi.CustomResource {
             resourceInputs["enableObjectRetention"] = state ? state.enableObjectRetention : undefined;
             resourceInputs["encryption"] = state ? state.encryption : undefined;
             resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
+            resourceInputs["hierarchicalNamespace"] = state ? state.hierarchicalNamespace : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["lifecycleRules"] = state ? state.lifecycleRules : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
@@ -340,6 +345,7 @@ export class Bucket extends pulumi.CustomResource {
             resourceInputs["enableObjectRetention"] = args ? args.enableObjectRetention : undefined;
             resourceInputs["encryption"] = args ? args.encryption : undefined;
             resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
+            resourceInputs["hierarchicalNamespace"] = args ? args.hierarchicalNamespace : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["lifecycleRules"] = args ? args.lifecycleRules : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
@@ -403,6 +409,10 @@ export interface BucketState {
      * bucket that contains objects, the provider will fail that run.
      */
     forceDestroy?: pulumi.Input<boolean>;
+    /**
+     * The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below.
+     */
+    hierarchicalNamespace?: pulumi.Input<inputs.storage.BucketHierarchicalNamespace>;
     /**
      * A map of key/value label pairs to assign to the bucket.
      */
@@ -519,6 +529,10 @@ export interface BucketArgs {
      * bucket that contains objects, the provider will fail that run.
      */
     forceDestroy?: pulumi.Input<boolean>;
+    /**
+     * The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below.
+     */
+    hierarchicalNamespace?: pulumi.Input<inputs.storage.BucketHierarchicalNamespace>;
     /**
      * A map of key/value label pairs to assign to the bucket.
      */

@@ -213,7 +213,7 @@ import * as utilities from "../utilities";
  *     connectionProfileId: "source-profile",
  *     postgresqlProfile: {
  *         hostname: "hostname",
- *         port: 3306,
+ *         port: 5432,
  *         username: "user",
  *         password: "pass",
  *         database: "postgres",

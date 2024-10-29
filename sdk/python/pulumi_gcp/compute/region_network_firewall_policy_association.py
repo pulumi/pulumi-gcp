@@ -27,13 +27,13 @@ class RegionNetworkFirewallPolicyAssociationArgs:
         """
         The set of arguments for constructing a RegionNetworkFirewallPolicyAssociation resource.
         :param pulumi.Input[str] attachment_target: The target that the firewall policy is attached to.
-        :param pulumi.Input[str] firewall_policy: The firewall policy ID of the association.
-        :param pulumi.Input[str] name: The name for an association.
-               
+        :param pulumi.Input[str] firewall_policy: The firewall policy of the resource.
                
                
                - - -
-        :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input[str] name: The name for an association.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The location of this resource.
         """
         pulumi.set(__self__, "attachment_target", attachment_target)
@@ -61,7 +61,10 @@ class RegionNetworkFirewallPolicyAssociationArgs:
     @pulumi.getter(name="firewallPolicy")
     def firewall_policy(self) -> pulumi.Input[str]:
         """
-        The firewall policy ID of the association.
+        The firewall policy of the resource.
+
+
+        - - -
         """
         return pulumi.get(self, "firewall_policy")
 
@@ -74,10 +77,6 @@ class RegionNetworkFirewallPolicyAssociationArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name for an association.
-
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -89,7 +88,8 @@ class RegionNetworkFirewallPolicyAssociationArgs:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The project for the resource
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 
@@ -122,13 +122,13 @@ class _RegionNetworkFirewallPolicyAssociationState:
         """
         Input properties used for looking up and filtering RegionNetworkFirewallPolicyAssociation resources.
         :param pulumi.Input[str] attachment_target: The target that the firewall policy is attached to.
-        :param pulumi.Input[str] firewall_policy: The firewall policy ID of the association.
-        :param pulumi.Input[str] name: The name for an association.
-               
+        :param pulumi.Input[str] firewall_policy: The firewall policy of the resource.
                
                
                - - -
-        :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input[str] name: The name for an association.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The location of this resource.
         :param pulumi.Input[str] short_name: The short name of the firewall policy of the association.
         """
@@ -161,7 +161,10 @@ class _RegionNetworkFirewallPolicyAssociationState:
     @pulumi.getter(name="firewallPolicy")
     def firewall_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        The firewall policy ID of the association.
+        The firewall policy of the resource.
+
+
+        - - -
         """
         return pulumi.get(self, "firewall_policy")
 
@@ -174,10 +177,6 @@ class _RegionNetworkFirewallPolicyAssociationState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name for an association.
-
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -189,7 +188,8 @@ class _RegionNetworkFirewallPolicyAssociationState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The project for the resource
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 
@@ -236,36 +236,49 @@ class RegionNetworkFirewallPolicyAssociation(pulumi.CustomResource):
         """
         The Compute NetworkFirewallPolicyAssociation resource
 
+        To get more information about RegionNetworkFirewallPolicyAssociation, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionNetworkFirewallPolicies/addAssociation)
+
         ## Example Usage
 
-        ### Regional
+        ### Region Network Firewall Policy Association
+
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        basic_regional_network_firewall_policy = gcp.compute.RegionNetworkFirewallPolicy("basic_regional_network_firewall_policy",
-            name="policy",
+        policy = gcp.compute.RegionNetworkFirewallPolicy("policy",
+            name="my-policy",
             project="my-project-name",
             description="Sample global network firewall policy",
             region="us-west1")
-        basic_network = gcp.compute.Network("basic_network", name="network")
-        primary = gcp.compute.RegionNetworkFirewallPolicyAssociation("primary",
-            name="association",
-            attachment_target=basic_network.id,
-            firewall_policy=basic_regional_network_firewall_policy.name,
+        network = gcp.compute.Network("network",
+            name="my-network",
+            auto_create_subnetworks=False)
+        default = gcp.compute.RegionNetworkFirewallPolicyAssociation("default",
+            name="my-association",
             project="my-project-name",
+            attachment_target=network.id,
+            firewall_policy=policy.id,
             region="us-west1")
         ```
 
         ## Import
 
-        NetworkFirewallPolicyAssociation can be imported using any of these accepted formats:
+        RegionNetworkFirewallPolicyAssociation can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/firewallPolicies/{{firewall_policy}}/associations/{{name}}`
 
         * `{{project}}/{{region}}/{{firewall_policy}}/{{name}}`
 
-        When using the `pulumi import` command, NetworkFirewallPolicyAssociation can be imported using one of the formats above. For example:
+        * `{{region}}/{{firewall_policy}}/{{name}}`
+
+        * `{{project}}/{{firewall_policy}}/{{name}}`
+
+        * `{{firewall_policy}}/{{name}}`
+
+        When using the `pulumi import` command, RegionNetworkFirewallPolicyAssociation can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation default projects/{{project}}/regions/{{region}}/firewallPolicies/{{firewall_policy}}/associations/{{name}}
@@ -275,16 +288,28 @@ class RegionNetworkFirewallPolicyAssociation(pulumi.CustomResource):
         $ pulumi import gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation default {{project}}/{{region}}/{{firewall_policy}}/{{name}}
         ```
 
+        ```sh
+        $ pulumi import gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation default {{region}}/{{firewall_policy}}/{{name}}
+        ```
+
+        ```sh
+        $ pulumi import gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation default {{project}}/{{firewall_policy}}/{{name}}
+        ```
+
+        ```sh
+        $ pulumi import gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation default {{firewall_policy}}/{{name}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] attachment_target: The target that the firewall policy is attached to.
-        :param pulumi.Input[str] firewall_policy: The firewall policy ID of the association.
-        :param pulumi.Input[str] name: The name for an association.
-               
+        :param pulumi.Input[str] firewall_policy: The firewall policy of the resource.
                
                
                - - -
-        :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input[str] name: The name for an association.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The location of this resource.
         """
         ...
@@ -296,36 +321,49 @@ class RegionNetworkFirewallPolicyAssociation(pulumi.CustomResource):
         """
         The Compute NetworkFirewallPolicyAssociation resource
 
+        To get more information about RegionNetworkFirewallPolicyAssociation, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionNetworkFirewallPolicies/addAssociation)
+
         ## Example Usage
 
-        ### Regional
+        ### Region Network Firewall Policy Association
+
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        basic_regional_network_firewall_policy = gcp.compute.RegionNetworkFirewallPolicy("basic_regional_network_firewall_policy",
-            name="policy",
+        policy = gcp.compute.RegionNetworkFirewallPolicy("policy",
+            name="my-policy",
             project="my-project-name",
             description="Sample global network firewall policy",
             region="us-west1")
-        basic_network = gcp.compute.Network("basic_network", name="network")
-        primary = gcp.compute.RegionNetworkFirewallPolicyAssociation("primary",
-            name="association",
-            attachment_target=basic_network.id,
-            firewall_policy=basic_regional_network_firewall_policy.name,
+        network = gcp.compute.Network("network",
+            name="my-network",
+            auto_create_subnetworks=False)
+        default = gcp.compute.RegionNetworkFirewallPolicyAssociation("default",
+            name="my-association",
             project="my-project-name",
+            attachment_target=network.id,
+            firewall_policy=policy.id,
             region="us-west1")
         ```
 
         ## Import
 
-        NetworkFirewallPolicyAssociation can be imported using any of these accepted formats:
+        RegionNetworkFirewallPolicyAssociation can be imported using any of these accepted formats:
 
         * `projects/{{project}}/regions/{{region}}/firewallPolicies/{{firewall_policy}}/associations/{{name}}`
 
         * `{{project}}/{{region}}/{{firewall_policy}}/{{name}}`
 
-        When using the `pulumi import` command, NetworkFirewallPolicyAssociation can be imported using one of the formats above. For example:
+        * `{{region}}/{{firewall_policy}}/{{name}}`
+
+        * `{{project}}/{{firewall_policy}}/{{name}}`
+
+        * `{{firewall_policy}}/{{name}}`
+
+        When using the `pulumi import` command, RegionNetworkFirewallPolicyAssociation can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation default projects/{{project}}/regions/{{region}}/firewallPolicies/{{firewall_policy}}/associations/{{name}}
@@ -333,6 +371,18 @@ class RegionNetworkFirewallPolicyAssociation(pulumi.CustomResource):
 
         ```sh
         $ pulumi import gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation default {{project}}/{{region}}/{{firewall_policy}}/{{name}}
+        ```
+
+        ```sh
+        $ pulumi import gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation default {{region}}/{{firewall_policy}}/{{name}}
+        ```
+
+        ```sh
+        $ pulumi import gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation default {{project}}/{{firewall_policy}}/{{name}}
+        ```
+
+        ```sh
+        $ pulumi import gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation default {{firewall_policy}}/{{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -398,13 +448,13 @@ class RegionNetworkFirewallPolicyAssociation(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] attachment_target: The target that the firewall policy is attached to.
-        :param pulumi.Input[str] firewall_policy: The firewall policy ID of the association.
-        :param pulumi.Input[str] name: The name for an association.
-               
+        :param pulumi.Input[str] firewall_policy: The firewall policy of the resource.
                
                
                - - -
-        :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input[str] name: The name for an association.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The location of this resource.
         :param pulumi.Input[str] short_name: The short name of the firewall policy of the association.
         """
@@ -432,7 +482,10 @@ class RegionNetworkFirewallPolicyAssociation(pulumi.CustomResource):
     @pulumi.getter(name="firewallPolicy")
     def firewall_policy(self) -> pulumi.Output[str]:
         """
-        The firewall policy ID of the association.
+        The firewall policy of the resource.
+
+
+        - - -
         """
         return pulumi.get(self, "firewall_policy")
 
@@ -441,10 +494,6 @@ class RegionNetworkFirewallPolicyAssociation(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         The name for an association.
-
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -452,7 +501,8 @@ class RegionNetworkFirewallPolicyAssociation(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        The project for the resource
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 

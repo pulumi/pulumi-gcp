@@ -259,6 +259,8 @@ networkServicesCustomEndpoint: Optional[str]
 
 notebooksCustomEndpoint: Optional[str]
 
+oracleDatabaseCustomEndpoint: Optional[str]
+
 orgPolicyCustomEndpoint: Optional[str]
 
 osConfigCustomEndpoint: Optional[str]
@@ -348,6 +350,8 @@ tagsLocationCustomEndpoint: Optional[str]
 tpuCustomEndpoint: Optional[str]
 
 tpuV2CustomEndpoint: Optional[str]
+
+transcoderCustomEndpoint: Optional[str]
 
 universeDomain: Optional[str]
 

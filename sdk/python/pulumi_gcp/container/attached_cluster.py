@@ -98,6 +98,9 @@ class AttachedClusterArgs:
         if proxy_config is not None:
             pulumi.set(__self__, "proxy_config", proxy_config)
         if security_posture_config is not None:
+            warnings.warn("""`security_posture_config` is deprecated and will be removed in a future major release.""", DeprecationWarning)
+            pulumi.log.warn("""security_posture_config is deprecated: `security_posture_config` is deprecated and will be removed in a future major release.""")
+        if security_posture_config is not None:
             pulumi.set(__self__, "security_posture_config", security_posture_config)
 
     @property
@@ -296,6 +299,7 @@ class AttachedClusterArgs:
 
     @property
     @pulumi.getter(name="securityPostureConfig")
+    @_utilities.deprecated("""`security_posture_config` is deprecated and will be removed in a future major release.""")
     def security_posture_config(self) -> Optional[pulumi.Input['AttachedClusterSecurityPostureConfigArgs']]:
         """
         Enable/Disable Security Posture API features for the cluster.
@@ -428,6 +432,9 @@ class _AttachedClusterState:
             pulumi.set(__self__, "proxy_config", proxy_config)
         if reconciling is not None:
             pulumi.set(__self__, "reconciling", reconciling)
+        if security_posture_config is not None:
+            warnings.warn("""`security_posture_config` is deprecated and will be removed in a future major release.""", DeprecationWarning)
+            pulumi.log.warn("""security_posture_config is deprecated: `security_posture_config` is deprecated and will be removed in a future major release.""")
         if security_posture_config is not None:
             pulumi.set(__self__, "security_posture_config", security_posture_config)
         if state is not None:
@@ -707,6 +714,7 @@ class _AttachedClusterState:
 
     @property
     @pulumi.getter(name="securityPostureConfig")
+    @_utilities.deprecated("""`security_posture_config` is deprecated and will be removed in a future major release.""")
     def security_posture_config(self) -> Optional[pulumi.Input['AttachedClusterSecurityPostureConfigArgs']]:
         """
         Enable/Disable Security Posture API features for the cluster.
@@ -884,9 +892,6 @@ class AttachedCluster(pulumi.CustomResource):
                     "name": "proxy-config",
                     "namespace": "default",
                 },
-            },
-            security_posture_config={
-                "vulnerability_mode": "VULNERABILITY_ENTERPRISE",
             })
         ```
         ### Container Attached Cluster Ignore Errors
@@ -1072,9 +1077,6 @@ class AttachedCluster(pulumi.CustomResource):
                     "name": "proxy-config",
                     "namespace": "default",
                 },
-            },
-            security_posture_config={
-                "vulnerability_mode": "VULNERABILITY_ENTERPRISE",
             })
         ```
         ### Container Attached Cluster Ignore Errors
@@ -1509,6 +1511,7 @@ class AttachedCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="securityPostureConfig")
+    @_utilities.deprecated("""`security_posture_config` is deprecated and will be removed in a future major release.""")
     def security_posture_config(self) -> pulumi.Output['outputs.AttachedClusterSecurityPostureConfig']:
         """
         Enable/Disable Security Posture API features for the cluster.

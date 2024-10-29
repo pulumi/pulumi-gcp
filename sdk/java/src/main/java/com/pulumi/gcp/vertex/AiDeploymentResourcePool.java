@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *             .dedicatedResources(AiDeploymentResourcePoolDedicatedResourcesArgs.builder()
  *                 .machineSpec(AiDeploymentResourcePoolDedicatedResourcesMachineSpecArgs.builder()
  *                     .machineType("n1-standard-4")
- *                     .acceleratorType("NVIDIA_TESLA_K80")
+ *                     .acceleratorType("NVIDIA_TESLA_P4")
  *                     .acceleratorCount(1)
  *                     .build())
  *                 .minReplicaCount(1)

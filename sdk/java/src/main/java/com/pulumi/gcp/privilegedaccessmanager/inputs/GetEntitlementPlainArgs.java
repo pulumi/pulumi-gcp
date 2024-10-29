@@ -14,23 +14,47 @@ public final class GetEntitlementPlainArgs extends com.pulumi.resources.InvokeAr
 
     public static final GetEntitlementPlainArgs Empty = new GetEntitlementPlainArgs();
 
+    /**
+     * ID of the Entitlement resource. This is the last part of the Entitlement&#39;s full name which is of the format `{parent}/locations/{location}/entitlements/{entitlement_id}`.
+     * 
+     */
     @Import(name="entitlementId")
     private @Nullable String entitlementId;
 
+    /**
+     * @return ID of the Entitlement resource. This is the last part of the Entitlement&#39;s full name which is of the format `{parent}/locations/{location}/entitlements/{entitlement_id}`.
+     * 
+     */
     public Optional<String> entitlementId() {
         return Optional.ofNullable(this.entitlementId);
     }
 
+    /**
+     * The region of the Entitlement resource.
+     * 
+     */
     @Import(name="location")
     private @Nullable String location;
 
+    /**
+     * @return The region of the Entitlement resource.
+     * 
+     */
     public Optional<String> location() {
         return Optional.ofNullable(this.location);
     }
 
+    /**
+     * The project or folder or organization that contains the resource. Format: projects/{project-id|project-number} or folders/{folder-number}  or organizations/{organization-number}
+     * 
+     */
     @Import(name="parent")
     private @Nullable String parent;
 
+    /**
+     * @return The project or folder or organization that contains the resource. Format: projects/{project-id|project-number} or folders/{folder-number}  or organizations/{organization-number}
+     * 
+     */
     public Optional<String> parent() {
         return Optional.ofNullable(this.parent);
     }
@@ -61,16 +85,34 @@ public final class GetEntitlementPlainArgs extends com.pulumi.resources.InvokeAr
             $ = new GetEntitlementPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param entitlementId ID of the Entitlement resource. This is the last part of the Entitlement&#39;s full name which is of the format `{parent}/locations/{location}/entitlements/{entitlement_id}`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder entitlementId(@Nullable String entitlementId) {
             $.entitlementId = entitlementId;
             return this;
         }
 
+        /**
+         * @param location The region of the Entitlement resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder location(@Nullable String location) {
             $.location = location;
             return this;
         }
 
+        /**
+         * @param parent The project or folder or organization that contains the resource. Format: projects/{project-id|project-number} or folders/{folder-number}  or organizations/{organization-number}
+         * 
+         * @return builder
+         * 
+         */
         public Builder parent(@Nullable String parent) {
             $.parent = parent;
             return this;

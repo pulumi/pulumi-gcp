@@ -96,6 +96,7 @@ export interface GetBackendServiceResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly ipAddressSelectionPolicy: string;
     readonly loadBalancingScheme: string;
     readonly localityLbPolicies: outputs.compute.GetBackendServiceLocalityLbPolicy[];
     readonly localityLbPolicy: string;

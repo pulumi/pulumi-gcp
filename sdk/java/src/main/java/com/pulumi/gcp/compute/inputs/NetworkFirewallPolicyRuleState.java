@@ -36,6 +36,21 @@ public final class NetworkFirewallPolicyRuleState extends com.pulumi.resources.R
     }
 
     /**
+     * Creation timestamp in RFC3339 text format.
+     * 
+     */
+    @Import(name="creationTimestamp")
+    private @Nullable Output<String> creationTimestamp;
+
+    /**
+     * @return Creation timestamp in RFC3339 text format.
+     * 
+     */
+    public Optional<Output<String>> creationTimestamp() {
+        return Optional.ofNullable(this.creationTimestamp);
+    }
+
+    /**
      * An optional description for this resource.
      * 
      */
@@ -51,14 +66,16 @@ public final class NetworkFirewallPolicyRuleState extends com.pulumi.resources.R
     }
 
     /**
-     * The direction in which this rule applies. Possible values: INGRESS, EGRESS
+     * The direction in which this rule applies.
+     * Possible values are: `INGRESS`, `EGRESS`.
      * 
      */
     @Import(name="direction")
     private @Nullable Output<String> direction;
 
     /**
-     * @return The direction in which this rule applies. Possible values: INGRESS, EGRESS
+     * @return The direction in which this rule applies.
+     * Possible values are: `INGRESS`, `EGRESS`.
      * 
      */
     public Optional<Output<String>> direction() {
@@ -133,6 +150,7 @@ public final class NetworkFirewallPolicyRuleState extends com.pulumi.resources.R
 
     /**
      * A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding &#39;action&#39; is enforced.
+     * Structure is documented below.
      * 
      */
     @Import(name="match")
@@ -140,6 +158,7 @@ public final class NetworkFirewallPolicyRuleState extends com.pulumi.resources.R
 
     /**
      * @return A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding &#39;action&#39; is enforced.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<NetworkFirewallPolicyRuleMatchArgs>> match() {
@@ -147,31 +166,27 @@ public final class NetworkFirewallPolicyRuleState extends com.pulumi.resources.R
     }
 
     /**
-     * An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
+     * An integer indicating the priority of a rule in the list.
+     * The priority must be a positive value between 0 and 2147483647.
+     * Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
      * 
      */
     @Import(name="priority")
     private @Nullable Output<Integer> priority;
 
     /**
-     * @return An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
+     * @return An integer indicating the priority of a rule in the list.
+     * The priority must be a positive value between 0 and 2147483647.
+     * Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
      * 
      */
     public Optional<Output<Integer>> priority() {
         return Optional.ofNullable(this.priority);
     }
 
-    /**
-     * The project for the resource
-     * 
-     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
-    /**
-     * @return The project for the resource
-     * 
-     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -207,18 +222,18 @@ public final class NetworkFirewallPolicyRuleState extends com.pulumi.resources.R
     }
 
     /**
-     * A fully-qualified URL of a SecurityProfileGroup resource. Example:
-     * https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
-     * It must be specified if action = &#39;apply_security_profile_group&#39; and cannot be specified for other actions.
+     * A fully-qualified URL of a SecurityProfile resource instance. Example:
+     * https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+     * Must be specified if action = &#39;apply_security_profile_group&#39; and cannot be specified for other actions.
      * 
      */
     @Import(name="securityProfileGroup")
     private @Nullable Output<String> securityProfileGroup;
 
     /**
-     * @return A fully-qualified URL of a SecurityProfileGroup resource. Example:
-     * https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
-     * It must be specified if action = &#39;apply_security_profile_group&#39; and cannot be specified for other actions.
+     * @return A fully-qualified URL of a SecurityProfile resource instance. Example:
+     * https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+     * Must be specified if action = &#39;apply_security_profile_group&#39; and cannot be specified for other actions.
      * 
      */
     public Optional<Output<String>> securityProfileGroup() {
@@ -226,24 +241,22 @@ public final class NetworkFirewallPolicyRuleState extends com.pulumi.resources.R
     }
 
     /**
-     * A list of secure tags that controls which instances the firewall rule applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are
-     * specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure
-     * tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored.
-     * &lt;code&gt;targetSecureTag&lt;/code&gt; may not be set at the same time as &lt;code&gt;targetServiceAccounts&lt;/code&gt;. If neither
-     * &lt;code&gt;targetServiceAccounts&lt;/code&gt; nor &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, the firewall rule applies to all
-     * instances on the specified network. Maximum number of target label tags allowed is 256.
+     * A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
+     * the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
+     * targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
+     * time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
+     * applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
      * 
      */
     @Import(name="targetSecureTags")
     private @Nullable Output<List<NetworkFirewallPolicyRuleTargetSecureTagArgs>> targetSecureTags;
 
     /**
-     * @return A list of secure tags that controls which instances the firewall rule applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are
-     * specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure
-     * tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored.
-     * &lt;code&gt;targetSecureTag&lt;/code&gt; may not be set at the same time as &lt;code&gt;targetServiceAccounts&lt;/code&gt;. If neither
-     * &lt;code&gt;targetServiceAccounts&lt;/code&gt; nor &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, the firewall rule applies to all
-     * instances on the specified network. Maximum number of target label tags allowed is 256.
+     * @return A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
+     * the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
+     * targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
+     * time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
+     * applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
      * 
      */
     public Optional<Output<List<NetworkFirewallPolicyRuleTargetSecureTagArgs>>> targetSecureTags() {
@@ -266,7 +279,7 @@ public final class NetworkFirewallPolicyRuleState extends com.pulumi.resources.R
     }
 
     /**
-     * Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+     * Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
      * &#39;apply_security_profile_group&#39; and cannot be set for other actions.
      * 
      */
@@ -274,7 +287,7 @@ public final class NetworkFirewallPolicyRuleState extends com.pulumi.resources.R
     private @Nullable Output<Boolean> tlsInspect;
 
     /**
-     * @return Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+     * @return Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
      * &#39;apply_security_profile_group&#39; and cannot be set for other actions.
      * 
      */
@@ -286,6 +299,7 @@ public final class NetworkFirewallPolicyRuleState extends com.pulumi.resources.R
 
     private NetworkFirewallPolicyRuleState(NetworkFirewallPolicyRuleState $) {
         this.action = $.action;
+        this.creationTimestamp = $.creationTimestamp;
         this.description = $.description;
         this.direction = $.direction;
         this.disabled = $.disabled;
@@ -343,6 +357,27 @@ public final class NetworkFirewallPolicyRuleState extends com.pulumi.resources.R
         }
 
         /**
+         * @param creationTimestamp Creation timestamp in RFC3339 text format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder creationTimestamp(@Nullable Output<String> creationTimestamp) {
+            $.creationTimestamp = creationTimestamp;
+            return this;
+        }
+
+        /**
+         * @param creationTimestamp Creation timestamp in RFC3339 text format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder creationTimestamp(String creationTimestamp) {
+            return creationTimestamp(Output.of(creationTimestamp));
+        }
+
+        /**
          * @param description An optional description for this resource.
          * 
          * @return builder
@@ -364,7 +399,8 @@ public final class NetworkFirewallPolicyRuleState extends com.pulumi.resources.R
         }
 
         /**
-         * @param direction The direction in which this rule applies. Possible values: INGRESS, EGRESS
+         * @param direction The direction in which this rule applies.
+         * Possible values are: `INGRESS`, `EGRESS`.
          * 
          * @return builder
          * 
@@ -375,7 +411,8 @@ public final class NetworkFirewallPolicyRuleState extends com.pulumi.resources.R
         }
 
         /**
-         * @param direction The direction in which this rule applies. Possible values: INGRESS, EGRESS
+         * @param direction The direction in which this rule applies.
+         * Possible values are: `INGRESS`, `EGRESS`.
          * 
          * @return builder
          * 
@@ -476,6 +513,7 @@ public final class NetworkFirewallPolicyRuleState extends com.pulumi.resources.R
 
         /**
          * @param match A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding &#39;action&#39; is enforced.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -487,6 +525,7 @@ public final class NetworkFirewallPolicyRuleState extends com.pulumi.resources.R
 
         /**
          * @param match A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding &#39;action&#39; is enforced.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -496,7 +535,9 @@ public final class NetworkFirewallPolicyRuleState extends com.pulumi.resources.R
         }
 
         /**
-         * @param priority An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
+         * @param priority An integer indicating the priority of a rule in the list.
+         * The priority must be a positive value between 0 and 2147483647.
+         * Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
          * 
          * @return builder
          * 
@@ -507,7 +548,9 @@ public final class NetworkFirewallPolicyRuleState extends com.pulumi.resources.R
         }
 
         /**
-         * @param priority An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
+         * @param priority An integer indicating the priority of a rule in the list.
+         * The priority must be a positive value between 0 and 2147483647.
+         * Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
          * 
          * @return builder
          * 
@@ -516,23 +559,11 @@ public final class NetworkFirewallPolicyRuleState extends com.pulumi.resources.R
             return priority(Output.of(priority));
         }
 
-        /**
-         * @param project The project for the resource
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
-        /**
-         * @param project The project for the resource
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
@@ -580,9 +611,9 @@ public final class NetworkFirewallPolicyRuleState extends com.pulumi.resources.R
         }
 
         /**
-         * @param securityProfileGroup A fully-qualified URL of a SecurityProfileGroup resource. Example:
-         * https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
-         * It must be specified if action = &#39;apply_security_profile_group&#39; and cannot be specified for other actions.
+         * @param securityProfileGroup A fully-qualified URL of a SecurityProfile resource instance. Example:
+         * https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+         * Must be specified if action = &#39;apply_security_profile_group&#39; and cannot be specified for other actions.
          * 
          * @return builder
          * 
@@ -593,9 +624,9 @@ public final class NetworkFirewallPolicyRuleState extends com.pulumi.resources.R
         }
 
         /**
-         * @param securityProfileGroup A fully-qualified URL of a SecurityProfileGroup resource. Example:
-         * https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
-         * It must be specified if action = &#39;apply_security_profile_group&#39; and cannot be specified for other actions.
+         * @param securityProfileGroup A fully-qualified URL of a SecurityProfile resource instance. Example:
+         * https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+         * Must be specified if action = &#39;apply_security_profile_group&#39; and cannot be specified for other actions.
          * 
          * @return builder
          * 
@@ -605,12 +636,11 @@ public final class NetworkFirewallPolicyRuleState extends com.pulumi.resources.R
         }
 
         /**
-         * @param targetSecureTags A list of secure tags that controls which instances the firewall rule applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are
-         * specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure
-         * tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored.
-         * &lt;code&gt;targetSecureTag&lt;/code&gt; may not be set at the same time as &lt;code&gt;targetServiceAccounts&lt;/code&gt;. If neither
-         * &lt;code&gt;targetServiceAccounts&lt;/code&gt; nor &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, the firewall rule applies to all
-         * instances on the specified network. Maximum number of target label tags allowed is 256.
+         * @param targetSecureTags A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
+         * the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
+         * targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
+         * time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
+         * applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
          * 
          * @return builder
          * 
@@ -621,12 +651,11 @@ public final class NetworkFirewallPolicyRuleState extends com.pulumi.resources.R
         }
 
         /**
-         * @param targetSecureTags A list of secure tags that controls which instances the firewall rule applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are
-         * specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure
-         * tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored.
-         * &lt;code&gt;targetSecureTag&lt;/code&gt; may not be set at the same time as &lt;code&gt;targetServiceAccounts&lt;/code&gt;. If neither
-         * &lt;code&gt;targetServiceAccounts&lt;/code&gt; nor &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, the firewall rule applies to all
-         * instances on the specified network. Maximum number of target label tags allowed is 256.
+         * @param targetSecureTags A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
+         * the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
+         * targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
+         * time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
+         * applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
          * 
          * @return builder
          * 
@@ -636,12 +665,11 @@ public final class NetworkFirewallPolicyRuleState extends com.pulumi.resources.R
         }
 
         /**
-         * @param targetSecureTags A list of secure tags that controls which instances the firewall rule applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are
-         * specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure
-         * tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored.
-         * &lt;code&gt;targetSecureTag&lt;/code&gt; may not be set at the same time as &lt;code&gt;targetServiceAccounts&lt;/code&gt;. If neither
-         * &lt;code&gt;targetServiceAccounts&lt;/code&gt; nor &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, the firewall rule applies to all
-         * instances on the specified network. Maximum number of target label tags allowed is 256.
+         * @param targetSecureTags A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
+         * the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
+         * targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
+         * time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
+         * applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
          * 
          * @return builder
          * 
@@ -682,7 +710,7 @@ public final class NetworkFirewallPolicyRuleState extends com.pulumi.resources.R
         }
 
         /**
-         * @param tlsInspect Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+         * @param tlsInspect Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
          * &#39;apply_security_profile_group&#39; and cannot be set for other actions.
          * 
          * @return builder
@@ -694,7 +722,7 @@ public final class NetworkFirewallPolicyRuleState extends com.pulumi.resources.R
         }
 
         /**
-         * @param tlsInspect Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+         * @param tlsInspect Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
          * &#39;apply_security_profile_group&#39; and cannot be set for other actions.
          * 
          * @return builder

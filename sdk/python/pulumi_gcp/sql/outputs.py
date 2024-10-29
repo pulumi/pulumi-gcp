@@ -1492,8 +1492,8 @@ class DatabaseInstanceSettingsIpConfiguration(dict):
                At least `ipv4_enabled` must be enabled or a `private_network` must be configured.
                This setting can be updated, but it cannot be removed after it is set.
         :param Sequence['DatabaseInstanceSettingsIpConfigurationPscConfigArgs'] psc_configs: PSC settings for a Cloud SQL instance.
-        :param str server_ca_mode: Specify how the server certificate's Certificate Authority is hosted. Supported value is `GOOGLE_MANAGED_INTERNAL_CA`.
-        :param str ssl_mode: Specify how SSL connection should be enforced in DB connections.
+        :param str server_ca_mode: Specify how the server certificate's Certificate Authority is hosted. Supported values are `GOOGLE_MANAGED_INTERNAL_CA` and `GOOGLE_MANAGED_CAS_CA`.
+        :param str ssl_mode: Specify how SSL connection should be enforced in DB connections. Supported values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, and `TRUSTED_CLIENT_CERTIFICATE_REQUIRED` (not supported for SQL Server). See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
         """
         if allocated_ip_range is not None:
             pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
@@ -1567,7 +1567,7 @@ class DatabaseInstanceSettingsIpConfiguration(dict):
     @pulumi.getter(name="serverCaMode")
     def server_ca_mode(self) -> Optional[str]:
         """
-        Specify how the server certificate's Certificate Authority is hosted. Supported value is `GOOGLE_MANAGED_INTERNAL_CA`.
+        Specify how the server certificate's Certificate Authority is hosted. Supported values are `GOOGLE_MANAGED_INTERNAL_CA` and `GOOGLE_MANAGED_CAS_CA`.
         """
         return pulumi.get(self, "server_ca_mode")
 
@@ -1575,7 +1575,7 @@ class DatabaseInstanceSettingsIpConfiguration(dict):
     @pulumi.getter(name="sslMode")
     def ssl_mode(self) -> Optional[str]:
         """
-        Specify how SSL connection should be enforced in DB connections.
+        Specify how SSL connection should be enforced in DB connections. Supported values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, and `TRUSTED_CLIENT_CERTIFICATE_REQUIRED` (not supported for SQL Server). See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
         """
         return pulumi.get(self, "ssl_mode")
 

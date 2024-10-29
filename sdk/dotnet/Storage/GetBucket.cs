@@ -121,6 +121,7 @@ namespace Pulumi.Gcp.Storage
         public readonly bool EnableObjectRetention;
         public readonly ImmutableArray<Outputs.GetBucketEncryptionResult> Encryptions;
         public readonly bool ForceDestroy;
+        public readonly ImmutableArray<Outputs.GetBucketHierarchicalNamespaceResult> HierarchicalNamespaces;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -162,6 +163,8 @@ namespace Pulumi.Gcp.Storage
             ImmutableArray<Outputs.GetBucketEncryptionResult> encryptions,
 
             bool forceDestroy,
+
+            ImmutableArray<Outputs.GetBucketHierarchicalNamespaceResult> hierarchicalNamespaces,
 
             string id,
 
@@ -211,6 +214,7 @@ namespace Pulumi.Gcp.Storage
             EnableObjectRetention = enableObjectRetention;
             Encryptions = encryptions;
             ForceDestroy = forceDestroy;
+            HierarchicalNamespaces = hierarchicalNamespaces;
             Id = id;
             Labels = labels;
             LifecycleRules = lifecycleRules;

@@ -79,6 +79,7 @@ export interface GetServiceResult {
      */
     readonly id: string;
     readonly ingress: string;
+    readonly invokerIamDisabled: boolean;
     readonly labels: {[key: string]: string};
     readonly lastModifier: string;
     readonly latestCreatedRevision: string;

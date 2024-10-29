@@ -5,6 +5,7 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .group import *
 from .hub import *
 from .internal_range import *
 from .policy_based_route import *

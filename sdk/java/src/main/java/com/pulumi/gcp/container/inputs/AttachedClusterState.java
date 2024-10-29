@@ -370,14 +370,22 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
     /**
      * Enable/Disable Security Posture API features for the cluster.
      * 
+     * @deprecated
+     * `security_posture_config` is deprecated and will be removed in a future major release.
+     * 
      */
+    @Deprecated /* `security_posture_config` is deprecated and will be removed in a future major release. */
     @Import(name="securityPostureConfig")
     private @Nullable Output<AttachedClusterSecurityPostureConfigArgs> securityPostureConfig;
 
     /**
      * @return Enable/Disable Security Posture API features for the cluster.
      * 
+     * @deprecated
+     * `security_posture_config` is deprecated and will be removed in a future major release.
+     * 
      */
+    @Deprecated /* `security_posture_config` is deprecated and will be removed in a future major release. */
     public Optional<Output<AttachedClusterSecurityPostureConfigArgs>> securityPostureConfig() {
         return Optional.ofNullable(this.securityPostureConfig);
     }
@@ -970,7 +978,11 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
          * 
          * @return builder
          * 
+         * @deprecated
+         * `security_posture_config` is deprecated and will be removed in a future major release.
+         * 
          */
+        @Deprecated /* `security_posture_config` is deprecated and will be removed in a future major release. */
         public Builder securityPostureConfig(@Nullable Output<AttachedClusterSecurityPostureConfigArgs> securityPostureConfig) {
             $.securityPostureConfig = securityPostureConfig;
             return this;
@@ -981,7 +993,11 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
          * 
          * @return builder
          * 
+         * @deprecated
+         * `security_posture_config` is deprecated and will be removed in a future major release.
+         * 
          */
+        @Deprecated /* `security_posture_config` is deprecated and will be removed in a future major release. */
         public Builder securityPostureConfig(AttachedClusterSecurityPostureConfigArgs securityPostureConfig) {
             return securityPostureConfig(Output.of(securityPostureConfig));
         }

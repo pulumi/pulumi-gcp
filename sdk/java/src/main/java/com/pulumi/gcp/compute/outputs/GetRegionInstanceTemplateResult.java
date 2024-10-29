@@ -38,6 +38,11 @@ public final class GetRegionInstanceTemplateResult {
      */
     private List<GetRegionInstanceTemplateConfidentialInstanceConfig> confidentialInstanceConfigs;
     /**
+     * @return Creation timestamp in RFC3339 text format.
+     * 
+     */
+    private String creationTimestamp;
+    /**
      * @return A brief description of this resource.
      * 
      */
@@ -73,6 +78,11 @@ public final class GetRegionInstanceTemplateResult {
      * 
      */
     private String instanceDescription;
+    /**
+     * @return Action to be taken when a customer&#39;s encryption key is revoked.
+     * 
+     */
+    private String keyRevocationActionType;
     /**
      * @return (Optional) A set of ket/value label pairs to assign to disk created from
      * this template
@@ -199,6 +209,13 @@ public final class GetRegionInstanceTemplateResult {
         return this.confidentialInstanceConfigs;
     }
     /**
+     * @return Creation timestamp in RFC3339 text format.
+     * 
+     */
+    public String creationTimestamp() {
+        return this.creationTimestamp;
+    }
+    /**
      * @return A brief description of this resource.
      * 
      */
@@ -249,6 +266,13 @@ public final class GetRegionInstanceTemplateResult {
      */
     public String instanceDescription() {
         return this.instanceDescription;
+    }
+    /**
+     * @return Action to be taken when a customer&#39;s encryption key is revoked.
+     * 
+     */
+    public String keyRevocationActionType() {
+        return this.keyRevocationActionType;
     }
     /**
      * @return (Optional) A set of ket/value label pairs to assign to disk created from
@@ -416,6 +440,7 @@ public final class GetRegionInstanceTemplateResult {
         private List<GetRegionInstanceTemplateAdvancedMachineFeature> advancedMachineFeatures;
         private Boolean canIpForward;
         private List<GetRegionInstanceTemplateConfidentialInstanceConfig> confidentialInstanceConfigs;
+        private String creationTimestamp;
         private String description;
         private List<GetRegionInstanceTemplateDisk> disks;
         private Map<String,String> effectiveLabels;
@@ -424,6 +449,7 @@ public final class GetRegionInstanceTemplateResult {
         private List<GetRegionInstanceTemplateGuestAccelerator> guestAccelerators;
         private String id;
         private String instanceDescription;
+        private String keyRevocationActionType;
         private Map<String,String> labels;
         private String machineType;
         private Map<String,String> metadata;
@@ -454,6 +480,7 @@ public final class GetRegionInstanceTemplateResult {
     	      this.advancedMachineFeatures = defaults.advancedMachineFeatures;
     	      this.canIpForward = defaults.canIpForward;
     	      this.confidentialInstanceConfigs = defaults.confidentialInstanceConfigs;
+    	      this.creationTimestamp = defaults.creationTimestamp;
     	      this.description = defaults.description;
     	      this.disks = defaults.disks;
     	      this.effectiveLabels = defaults.effectiveLabels;
@@ -462,6 +489,7 @@ public final class GetRegionInstanceTemplateResult {
     	      this.guestAccelerators = defaults.guestAccelerators;
     	      this.id = defaults.id;
     	      this.instanceDescription = defaults.instanceDescription;
+    	      this.keyRevocationActionType = defaults.keyRevocationActionType;
     	      this.labels = defaults.labels;
     	      this.machineType = defaults.machineType;
     	      this.metadata = defaults.metadata;
@@ -517,6 +545,14 @@ public final class GetRegionInstanceTemplateResult {
         }
         public Builder confidentialInstanceConfigs(GetRegionInstanceTemplateConfidentialInstanceConfig... confidentialInstanceConfigs) {
             return confidentialInstanceConfigs(List.of(confidentialInstanceConfigs));
+        }
+        @CustomType.Setter
+        public Builder creationTimestamp(String creationTimestamp) {
+            if (creationTimestamp == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateResult", "creationTimestamp");
+            }
+            this.creationTimestamp = creationTimestamp;
+            return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
@@ -584,6 +620,14 @@ public final class GetRegionInstanceTemplateResult {
               throw new MissingRequiredPropertyException("GetRegionInstanceTemplateResult", "instanceDescription");
             }
             this.instanceDescription = instanceDescription;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder keyRevocationActionType(String keyRevocationActionType) {
+            if (keyRevocationActionType == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateResult", "keyRevocationActionType");
+            }
+            this.keyRevocationActionType = keyRevocationActionType;
             return this;
         }
         @CustomType.Setter
@@ -799,6 +843,7 @@ public final class GetRegionInstanceTemplateResult {
             _resultValue.advancedMachineFeatures = advancedMachineFeatures;
             _resultValue.canIpForward = canIpForward;
             _resultValue.confidentialInstanceConfigs = confidentialInstanceConfigs;
+            _resultValue.creationTimestamp = creationTimestamp;
             _resultValue.description = description;
             _resultValue.disks = disks;
             _resultValue.effectiveLabels = effectiveLabels;
@@ -807,6 +852,7 @@ public final class GetRegionInstanceTemplateResult {
             _resultValue.guestAccelerators = guestAccelerators;
             _resultValue.id = id;
             _resultValue.instanceDescription = instanceDescription;
+            _resultValue.keyRevocationActionType = keyRevocationActionType;
             _resultValue.labels = labels;
             _resultValue.machineType = machineType;
             _resultValue.metadata = metadata;

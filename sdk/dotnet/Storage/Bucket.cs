@@ -255,6 +255,12 @@ namespace Pulumi.Gcp.Storage
         public Output<bool?> ForceDestroy { get; private set; } = null!;
 
         /// <summary>
+        /// The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below.
+        /// </summary>
+        [Output("hierarchicalNamespace")]
+        public Output<Outputs.BucketHierarchicalNamespace?> HierarchicalNamespace { get; private set; } = null!;
+
+        /// <summary>
         /// A map of key/value label pairs to assign to the bucket.
         /// </summary>
         [Output("labels")]
@@ -473,6 +479,12 @@ namespace Pulumi.Gcp.Storage
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
 
+        /// <summary>
+        /// The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below.
+        /// </summary>
+        [Input("hierarchicalNamespace")]
+        public Input<Inputs.BucketHierarchicalNamespaceArgs>? HierarchicalNamespace { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -648,6 +660,12 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
+
+        /// <summary>
+        /// The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below.
+        /// </summary>
+        [Input("hierarchicalNamespace")]
+        public Input<Inputs.BucketHierarchicalNamespaceGetArgs>? HierarchicalNamespace { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

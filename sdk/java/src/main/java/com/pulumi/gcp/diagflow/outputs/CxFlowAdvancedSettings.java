@@ -6,6 +6,8 @@ package com.pulumi.gcp.diagflow.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.diagflow.outputs.CxFlowAdvancedSettingsAudioExportGcsDestination;
 import com.pulumi.gcp.diagflow.outputs.CxFlowAdvancedSettingsDtmfSettings;
+import com.pulumi.gcp.diagflow.outputs.CxFlowAdvancedSettingsLoggingSettings;
+import com.pulumi.gcp.diagflow.outputs.CxFlowAdvancedSettingsSpeechSettings;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -30,6 +32,23 @@ public final class CxFlowAdvancedSettings {
      * 
      */
     private @Nullable CxFlowAdvancedSettingsDtmfSettings dtmfSettings;
+    /**
+     * @return Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
+     * * Agent level
+     *   Structure is documented below.
+     * 
+     */
+    private @Nullable CxFlowAdvancedSettingsLoggingSettings loggingSettings;
+    /**
+     * @return Settings for speech to text detection. Exposed at the following levels:
+     * * Agent level
+     * * Flow level
+     * * Page level
+     * * Parameter level
+     *   Structure is documented below.
+     * 
+     */
+    private @Nullable CxFlowAdvancedSettingsSpeechSettings speechSettings;
 
     private CxFlowAdvancedSettings() {}
     /**
@@ -54,6 +73,27 @@ public final class CxFlowAdvancedSettings {
     public Optional<CxFlowAdvancedSettingsDtmfSettings> dtmfSettings() {
         return Optional.ofNullable(this.dtmfSettings);
     }
+    /**
+     * @return Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
+     * * Agent level
+     *   Structure is documented below.
+     * 
+     */
+    public Optional<CxFlowAdvancedSettingsLoggingSettings> loggingSettings() {
+        return Optional.ofNullable(this.loggingSettings);
+    }
+    /**
+     * @return Settings for speech to text detection. Exposed at the following levels:
+     * * Agent level
+     * * Flow level
+     * * Page level
+     * * Parameter level
+     *   Structure is documented below.
+     * 
+     */
+    public Optional<CxFlowAdvancedSettingsSpeechSettings> speechSettings() {
+        return Optional.ofNullable(this.speechSettings);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -66,11 +106,15 @@ public final class CxFlowAdvancedSettings {
     public static final class Builder {
         private @Nullable CxFlowAdvancedSettingsAudioExportGcsDestination audioExportGcsDestination;
         private @Nullable CxFlowAdvancedSettingsDtmfSettings dtmfSettings;
+        private @Nullable CxFlowAdvancedSettingsLoggingSettings loggingSettings;
+        private @Nullable CxFlowAdvancedSettingsSpeechSettings speechSettings;
         public Builder() {}
         public Builder(CxFlowAdvancedSettings defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.audioExportGcsDestination = defaults.audioExportGcsDestination;
     	      this.dtmfSettings = defaults.dtmfSettings;
+    	      this.loggingSettings = defaults.loggingSettings;
+    	      this.speechSettings = defaults.speechSettings;
         }
 
         @CustomType.Setter
@@ -85,10 +129,24 @@ public final class CxFlowAdvancedSettings {
             this.dtmfSettings = dtmfSettings;
             return this;
         }
+        @CustomType.Setter
+        public Builder loggingSettings(@Nullable CxFlowAdvancedSettingsLoggingSettings loggingSettings) {
+
+            this.loggingSettings = loggingSettings;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder speechSettings(@Nullable CxFlowAdvancedSettingsSpeechSettings speechSettings) {
+
+            this.speechSettings = speechSettings;
+            return this;
+        }
         public CxFlowAdvancedSettings build() {
             final var _resultValue = new CxFlowAdvancedSettings();
             _resultValue.audioExportGcsDestination = audioExportGcsDestination;
             _resultValue.dtmfSettings = dtmfSettings;
+            _resultValue.loggingSettings = loggingSettings;
+            _resultValue.speechSettings = speechSettings;
             return _resultValue;
         }
     }

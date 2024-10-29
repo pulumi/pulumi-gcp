@@ -10,11 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute
 {
     /// <summary>
-    /// The Compute NetworkFirewallPolicyRule resource
+    /// Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
+    /// 
+    /// To get more information about RegionNetworkFirewallPolicyRule, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionNetworkFirewallPolicies/addRule)
     /// 
     /// ## Example Usage
     /// 
-    /// ### Regional
+    /// ### Region Network Firewall Policy Rule
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -25,7 +30,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var basicRegionalNetworksecurityAddressGroup = new Gcp.NetworkSecurity.AddressGroup("basic_regional_networksecurity_address_group", new()
     ///     {
-    ///         Name = "policy",
+    ///         Name = "address",
     ///         Parent = "projects/my-project-name",
     ///         Description = "Sample regional networksecurity_address_group",
     ///         Location = "us-west1",
@@ -128,7 +133,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ## Import
     /// 
-    /// NetworkFirewallPolicyRule can be imported using any of these accepted formats:
+    /// RegionNetworkFirewallPolicyRule can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/regions/{{region}}/firewallPolicies/{{firewall_policy}}/{{priority}}`
     /// 
@@ -138,7 +143,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// * `{{firewall_policy}}/{{priority}}`
     /// 
-    /// When using the `pulumi import` command, NetworkFirewallPolicyRule can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, RegionNetworkFirewallPolicyRule can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:compute/regionNetworkFirewallPolicyRule:RegionNetworkFirewallPolicyRule default projects/{{project}}/regions/{{region}}/firewallPolicies/{{firewall_policy}}/{{priority}}
@@ -166,13 +171,20 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Action { get; private set; } = null!;
 
         /// <summary>
+        /// Creation timestamp in RFC3339 text format.
+        /// </summary>
+        [Output("creationTimestamp")]
+        public Output<string> CreationTimestamp { get; private set; } = null!;
+
+        /// <summary>
         /// An optional description for this resource.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The direction in which this rule applies. Possible values: INGRESS, EGRESS
+        /// The direction in which this rule applies.
+        /// Possible values are: `INGRESS`, `EGRESS`.
         /// </summary>
         [Output("direction")]
         public Output<string> Direction { get; private set; } = null!;
@@ -206,19 +218,19 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+        /// Structure is documented below.
         /// </summary>
         [Output("match")]
         public Output<Outputs.RegionNetworkFirewallPolicyRuleMatch> Match { get; private set; } = null!;
 
         /// <summary>
-        /// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
+        /// An integer indicating the priority of a rule in the list.
+        /// The priority must be a positive value between 0 and 2147483647.
+        /// Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
         /// </summary>
         [Output("priority")]
         public Output<int> Priority { get; private set; } = null!;
 
-        /// <summary>
-        /// The project for the resource
-        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -241,20 +253,20 @@ namespace Pulumi.Gcp.Compute
         public Output<int> RuleTupleCount { get; private set; } = null!;
 
         /// <summary>
-        /// A fully-qualified URL of a SecurityProfileGroup resource. Example:
-        /// https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
-        /// It must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
+        /// A fully-qualified URL of a SecurityProfile resource instance. Example:
+        /// https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+        /// Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions. Security Profile
+        /// Group and Firewall Policy Rule must be in the same scope.
         /// </summary>
         [Output("securityProfileGroup")]
         public Output<string?> SecurityProfileGroup { get; private set; } = null!;
 
         /// <summary>
-        /// A list of secure tags that controls which instances the firewall rule applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are
-        /// specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure
-        /// tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored.
-        /// &lt;code&gt;targetSecureTag&lt;/code&gt; may not be set at the same time as &lt;code&gt;targetServiceAccounts&lt;/code&gt;. If neither
-        /// &lt;code&gt;targetServiceAccounts&lt;/code&gt; nor &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, the firewall rule applies to all
-        /// instances on the specified network. Maximum number of target label tags allowed is 256.
+        /// A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
+        /// the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
+        /// targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
+        /// time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
+        /// applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
         /// </summary>
         [Output("targetSecureTags")]
         public Output<ImmutableArray<Outputs.RegionNetworkFirewallPolicyRuleTargetSecureTag>> TargetSecureTags { get; private set; } = null!;
@@ -266,7 +278,7 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableArray<string>> TargetServiceAccounts { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+        /// Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
         /// 'apply_security_profile_group' and cannot be set for other actions.
         /// </summary>
         [Output("tlsInspect")]
@@ -331,7 +343,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The direction in which this rule applies. Possible values: INGRESS, EGRESS
+        /// The direction in which this rule applies.
+        /// Possible values are: `INGRESS`, `EGRESS`.
         /// </summary>
         [Input("direction", required: true)]
         public Input<string> Direction { get; set; } = null!;
@@ -359,19 +372,19 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+        /// Structure is documented below.
         /// </summary>
         [Input("match", required: true)]
         public Input<Inputs.RegionNetworkFirewallPolicyRuleMatchArgs> Match { get; set; } = null!;
 
         /// <summary>
-        /// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
+        /// An integer indicating the priority of a rule in the list.
+        /// The priority must be a positive value between 0 and 2147483647.
+        /// Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
         /// </summary>
         [Input("priority", required: true)]
         public Input<int> Priority { get; set; } = null!;
 
-        /// <summary>
-        /// The project for the resource
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -388,9 +401,10 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? RuleName { get; set; }
 
         /// <summary>
-        /// A fully-qualified URL of a SecurityProfileGroup resource. Example:
-        /// https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
-        /// It must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
+        /// A fully-qualified URL of a SecurityProfile resource instance. Example:
+        /// https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+        /// Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions. Security Profile
+        /// Group and Firewall Policy Rule must be in the same scope.
         /// </summary>
         [Input("securityProfileGroup")]
         public Input<string>? SecurityProfileGroup { get; set; }
@@ -399,12 +413,11 @@ namespace Pulumi.Gcp.Compute
         private InputList<Inputs.RegionNetworkFirewallPolicyRuleTargetSecureTagArgs>? _targetSecureTags;
 
         /// <summary>
-        /// A list of secure tags that controls which instances the firewall rule applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are
-        /// specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure
-        /// tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored.
-        /// &lt;code&gt;targetSecureTag&lt;/code&gt; may not be set at the same time as &lt;code&gt;targetServiceAccounts&lt;/code&gt;. If neither
-        /// &lt;code&gt;targetServiceAccounts&lt;/code&gt; nor &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, the firewall rule applies to all
-        /// instances on the specified network. Maximum number of target label tags allowed is 256.
+        /// A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
+        /// the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
+        /// targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
+        /// time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
+        /// applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
         /// </summary>
         public InputList<Inputs.RegionNetworkFirewallPolicyRuleTargetSecureTagArgs> TargetSecureTags
         {
@@ -425,7 +438,7 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+        /// Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
         /// 'apply_security_profile_group' and cannot be set for other actions.
         /// </summary>
         [Input("tlsInspect")]
@@ -446,13 +459,20 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Action { get; set; }
 
         /// <summary>
+        /// Creation timestamp in RFC3339 text format.
+        /// </summary>
+        [Input("creationTimestamp")]
+        public Input<string>? CreationTimestamp { get; set; }
+
+        /// <summary>
         /// An optional description for this resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The direction in which this rule applies. Possible values: INGRESS, EGRESS
+        /// The direction in which this rule applies.
+        /// Possible values are: `INGRESS`, `EGRESS`.
         /// </summary>
         [Input("direction")]
         public Input<string>? Direction { get; set; }
@@ -486,19 +506,19 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+        /// Structure is documented below.
         /// </summary>
         [Input("match")]
         public Input<Inputs.RegionNetworkFirewallPolicyRuleMatchGetArgs>? Match { get; set; }
 
         /// <summary>
-        /// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
+        /// An integer indicating the priority of a rule in the list.
+        /// The priority must be a positive value between 0 and 2147483647.
+        /// Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }
 
-        /// <summary>
-        /// The project for the resource
-        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -521,9 +541,10 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? RuleTupleCount { get; set; }
 
         /// <summary>
-        /// A fully-qualified URL of a SecurityProfileGroup resource. Example:
-        /// https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
-        /// It must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
+        /// A fully-qualified URL of a SecurityProfile resource instance. Example:
+        /// https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+        /// Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions. Security Profile
+        /// Group and Firewall Policy Rule must be in the same scope.
         /// </summary>
         [Input("securityProfileGroup")]
         public Input<string>? SecurityProfileGroup { get; set; }
@@ -532,12 +553,11 @@ namespace Pulumi.Gcp.Compute
         private InputList<Inputs.RegionNetworkFirewallPolicyRuleTargetSecureTagGetArgs>? _targetSecureTags;
 
         /// <summary>
-        /// A list of secure tags that controls which instances the firewall rule applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are
-        /// specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure
-        /// tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored.
-        /// &lt;code&gt;targetSecureTag&lt;/code&gt; may not be set at the same time as &lt;code&gt;targetServiceAccounts&lt;/code&gt;. If neither
-        /// &lt;code&gt;targetServiceAccounts&lt;/code&gt; nor &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, the firewall rule applies to all
-        /// instances on the specified network. Maximum number of target label tags allowed is 256.
+        /// A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
+        /// the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
+        /// targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
+        /// time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
+        /// applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
         /// </summary>
         public InputList<Inputs.RegionNetworkFirewallPolicyRuleTargetSecureTagGetArgs> TargetSecureTags
         {
@@ -558,7 +578,7 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+        /// Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
         /// 'apply_security_profile_group' and cannot be set for other actions.
         /// </summary>
         [Input("tlsInspect")]

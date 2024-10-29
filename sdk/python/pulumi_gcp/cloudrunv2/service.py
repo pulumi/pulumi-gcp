@@ -32,6 +32,7 @@ class ServiceArgs:
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ingress: Optional[pulumi.Input[str]] = None,
+                 invoker_iam_disabled: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  launch_stage: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -61,6 +62,8 @@ class ServiceArgs:
         :param pulumi.Input[str] ingress: Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or
                INGRESS_TRAFFIC_UNSPECIFIED if no revision is active. Possible values: ["INGRESS_TRAFFIC_ALL",
                "INGRESS_TRAFFIC_INTERNAL_ONLY", "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"]
+        :param pulumi.Input[bool] invoker_iam_disabled: Disables IAM permission check for run.routes.invoke for callers of this service. This feature is available by invitation
+               only. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
                Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment,
                state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
@@ -100,6 +103,8 @@ class ServiceArgs:
             pulumi.set(__self__, "description", description)
         if ingress is not None:
             pulumi.set(__self__, "ingress", ingress)
+        if invoker_iam_disabled is not None:
+            pulumi.set(__self__, "invoker_iam_disabled", invoker_iam_disabled)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if launch_stage is not None:
@@ -254,6 +259,19 @@ class ServiceArgs:
         pulumi.set(self, "ingress", value)
 
     @property
+    @pulumi.getter(name="invokerIamDisabled")
+    def invoker_iam_disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disables IAM permission check for run.routes.invoke for callers of this service. This feature is available by invitation
+        only. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
+        """
+        return pulumi.get(self, "invoker_iam_disabled")
+
+    @invoker_iam_disabled.setter
+    def invoker_iam_disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "invoker_iam_disabled", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -357,6 +375,7 @@ class _ServiceState:
                  expire_time: Optional[pulumi.Input[str]] = None,
                  generation: Optional[pulumi.Input[str]] = None,
                  ingress: Optional[pulumi.Input[str]] = None,
+                 invoker_iam_disabled: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  last_modifier: Optional[pulumi.Input[str]] = None,
                  latest_created_revision: Optional[pulumi.Input[str]] = None,
@@ -405,6 +424,8 @@ class _ServiceState:
         :param pulumi.Input[str] ingress: Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or
                INGRESS_TRAFFIC_UNSPECIFIED if no revision is active. Possible values: ["INGRESS_TRAFFIC_ALL",
                "INGRESS_TRAFFIC_INTERNAL_ONLY", "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"]
+        :param pulumi.Input[bool] invoker_iam_disabled: Disables IAM permission check for run.routes.invoke for callers of this service. This feature is available by invitation
+               only. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
                Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment,
                state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
@@ -481,6 +502,8 @@ class _ServiceState:
             pulumi.set(__self__, "generation", generation)
         if ingress is not None:
             pulumi.set(__self__, "ingress", ingress)
+        if invoker_iam_disabled is not None:
+            pulumi.set(__self__, "invoker_iam_disabled", invoker_iam_disabled)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if last_modifier is not None:
@@ -740,6 +763,19 @@ class _ServiceState:
     @ingress.setter
     def ingress(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ingress", value)
+
+    @property
+    @pulumi.getter(name="invokerIamDisabled")
+    def invoker_iam_disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disables IAM permission check for run.routes.invoke for callers of this service. This feature is available by invitation
+        only. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
+        """
+        return pulumi.get(self, "invoker_iam_disabled")
+
+    @invoker_iam_disabled.setter
+    def invoker_iam_disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "invoker_iam_disabled", value)
 
     @property
     @pulumi.getter
@@ -1002,6 +1038,7 @@ class Service(pulumi.CustomResource):
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ingress: Optional[pulumi.Input[str]] = None,
+                 invoker_iam_disabled: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  launch_stage: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -1461,6 +1498,25 @@ class Service(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[wait_for_mesh]))
         ```
+        ### Cloudrunv2 Service Invokeriam
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.Service("default",
+            name="cloudrun-service",
+            location="us-central1",
+            deletion_protection=False,
+            invoker_iam_disabled=True,
+            description="The serving URL of this service will not perform any IAM check when invoked",
+            ingress="INGRESS_TRAFFIC_ALL",
+            template={
+                "containers": [{
+                    "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                }],
+            })
+        ```
 
         ## Import
 
@@ -1506,6 +1562,8 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] ingress: Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or
                INGRESS_TRAFFIC_UNSPECIFIED if no revision is active. Possible values: ["INGRESS_TRAFFIC_ALL",
                "INGRESS_TRAFFIC_INTERNAL_ONLY", "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"]
+        :param pulumi.Input[bool] invoker_iam_disabled: Disables IAM permission check for run.routes.invoke for callers of this service. This feature is available by invitation
+               only. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
                Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment,
                state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
@@ -1984,6 +2042,25 @@ class Service(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[wait_for_mesh]))
         ```
+        ### Cloudrunv2 Service Invokeriam
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.Service("default",
+            name="cloudrun-service",
+            location="us-central1",
+            deletion_protection=False,
+            invoker_iam_disabled=True,
+            description="The serving URL of this service will not perform any IAM check when invoked",
+            ingress="INGRESS_TRAFFIC_ALL",
+            template={
+                "containers": [{
+                    "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                }],
+            })
+        ```
 
         ## Import
 
@@ -2033,6 +2110,7 @@ class Service(pulumi.CustomResource):
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ingress: Optional[pulumi.Input[str]] = None,
+                 invoker_iam_disabled: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  launch_stage: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -2059,6 +2137,7 @@ class Service(pulumi.CustomResource):
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["description"] = description
             __props__.__dict__["ingress"] = ingress
+            __props__.__dict__["invoker_iam_disabled"] = invoker_iam_disabled
             __props__.__dict__["labels"] = labels
             __props__.__dict__["launch_stage"] = launch_stage
             if location is None and not opts.urn:
@@ -2121,6 +2200,7 @@ class Service(pulumi.CustomResource):
             expire_time: Optional[pulumi.Input[str]] = None,
             generation: Optional[pulumi.Input[str]] = None,
             ingress: Optional[pulumi.Input[str]] = None,
+            invoker_iam_disabled: Optional[pulumi.Input[bool]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             last_modifier: Optional[pulumi.Input[str]] = None,
             latest_created_revision: Optional[pulumi.Input[str]] = None,
@@ -2174,6 +2254,8 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] ingress: Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or
                INGRESS_TRAFFIC_UNSPECIFIED if no revision is active. Possible values: ["INGRESS_TRAFFIC_ALL",
                "INGRESS_TRAFFIC_INTERNAL_ONLY", "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"]
+        :param pulumi.Input[bool] invoker_iam_disabled: Disables IAM permission check for run.routes.invoke for callers of this service. This feature is available by invitation
+               only. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
                Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment,
                state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
@@ -2236,6 +2318,7 @@ class Service(pulumi.CustomResource):
         __props__.__dict__["expire_time"] = expire_time
         __props__.__dict__["generation"] = generation
         __props__.__dict__["ingress"] = ingress
+        __props__.__dict__["invoker_iam_disabled"] = invoker_iam_disabled
         __props__.__dict__["labels"] = labels
         __props__.__dict__["last_modifier"] = last_modifier
         __props__.__dict__["latest_created_revision"] = latest_created_revision
@@ -2405,6 +2488,15 @@ class Service(pulumi.CustomResource):
         "INGRESS_TRAFFIC_INTERNAL_ONLY", "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"]
         """
         return pulumi.get(self, "ingress")
+
+    @property
+    @pulumi.getter(name="invokerIamDisabled")
+    def invoker_iam_disabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Disables IAM permission check for run.routes.invoke for callers of this service. This feature is available by invitation
+        only. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
+        """
+        return pulumi.get(self, "invoker_iam_disabled")
 
     @property
     @pulumi.getter

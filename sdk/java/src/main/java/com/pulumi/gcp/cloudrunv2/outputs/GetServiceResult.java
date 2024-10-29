@@ -45,6 +45,7 @@ public final class GetServiceResult {
      */
     private String id;
     private String ingress;
+    private Boolean invokerIamDisabled;
     private Map<String,String> labels;
     private String lastModifier;
     private String latestCreatedRevision;
@@ -126,6 +127,9 @@ public final class GetServiceResult {
     }
     public String ingress() {
         return this.ingress;
+    }
+    public Boolean invokerIamDisabled() {
+        return this.invokerIamDisabled;
     }
     public Map<String,String> labels() {
         return this.labels;
@@ -213,6 +217,7 @@ public final class GetServiceResult {
         private String generation;
         private String id;
         private String ingress;
+        private Boolean invokerIamDisabled;
         private Map<String,String> labels;
         private String lastModifier;
         private String latestCreatedRevision;
@@ -254,6 +259,7 @@ public final class GetServiceResult {
     	      this.generation = defaults.generation;
     	      this.id = defaults.id;
     	      this.ingress = defaults.ingress;
+    	      this.invokerIamDisabled = defaults.invokerIamDisabled;
     	      this.labels = defaults.labels;
     	      this.lastModifier = defaults.lastModifier;
     	      this.latestCreatedRevision = defaults.latestCreatedRevision;
@@ -434,6 +440,14 @@ public final class GetServiceResult {
               throw new MissingRequiredPropertyException("GetServiceResult", "ingress");
             }
             this.ingress = ingress;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder invokerIamDisabled(Boolean invokerIamDisabled) {
+            if (invokerIamDisabled == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "invokerIamDisabled");
+            }
+            this.invokerIamDisabled = invokerIamDisabled;
             return this;
         }
         @CustomType.Setter
@@ -620,6 +634,7 @@ public final class GetServiceResult {
             _resultValue.generation = generation;
             _resultValue.id = id;
             _resultValue.ingress = ingress;
+            _resultValue.invokerIamDisabled = invokerIamDisabled;
             _resultValue.labels = labels;
             _resultValue.lastModifier = lastModifier;
             _resultValue.latestCreatedRevision = latestCreatedRevision;

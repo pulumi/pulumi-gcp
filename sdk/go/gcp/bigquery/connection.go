@@ -381,7 +381,7 @@ import (
 //	}
 //
 // ```
-// ### Bigquery Connection Kms
+// ### Bigquery Connection Sql With Cmek
 //
 // ```go
 // package main
@@ -391,8 +391,7 @@ import (
 //	"fmt"
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigquery"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/kms"
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/sql"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -402,8 +401,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			instance, err := sql.NewDatabaseInstance(ctx, "instance", &sql.DatabaseInstanceArgs{
 //				Name:            pulumi.String("my-database-instance"),
-//				DatabaseVersion: pulumi.String("POSTGRES_11"),
 //				Region:          pulumi.String("us-central1"),
+//				DatabaseVersion: pulumi.String("POSTGRES_11"),
 //				Settings: &sql.DatabaseInstanceSettingsArgs{
 //					Tier: pulumi.String("db-f1-micro"),
 //				},
@@ -431,14 +430,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = projects.NewIAMMember(ctx, "key_sa_user", &projects.IAMMemberArgs{
-//				Project: pulumi.String(project.ProjectId),
-//				Role:    pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
-//				Member:  pulumi.Sprintf("serviceAccount:%v", bqSa.Email),
+//			keySaUser, err := kms.NewCryptoKeyIAMMember(ctx, "key_sa_user", &kms.CryptoKeyIAMMemberArgs{
+//				CryptoKeyId: pulumi.String("projects/project/locations/us-central1/keyRings/us-central1/cryptoKeys/bq-key"),
+//				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
+//				Member:      pulumi.Sprintf("serviceAccount:%v", bqSa.Email),
 //			})
 //			if err != nil {
 //				return err
@@ -457,7 +452,9 @@ import (
 //						Password: user.Password,
 //					},
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				keySaUser,
+//			}))
 //			if err != nil {
 //				return err
 //			}

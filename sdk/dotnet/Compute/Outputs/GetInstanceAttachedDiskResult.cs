@@ -37,7 +37,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string Mode;
         /// <summary>
-        /// The name or self_link of the disk attached to this instance.
+        /// The self_link of the disk attached to this instance.
         /// </summary>
         public readonly string Source;
 

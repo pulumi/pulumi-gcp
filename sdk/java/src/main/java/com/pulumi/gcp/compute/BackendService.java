@@ -678,6 +678,42 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Backend Service Ip Address Selection Policy
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new BackendService("default", BackendServiceArgs.builder()
+ *             .name("backend-service")
+ *             .loadBalancingScheme("EXTERNAL_MANAGED")
+ *             .ipAddressSelectionPolicy("IPV6_ONLY")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -997,6 +1033,22 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      */
     public Output<BackendServiceIap> iap() {
         return this.iap;
+    }
+    /**
+     * Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
+     * Possible values are: `IPV4_ONLY`, `PREFER_IPV6`, `IPV6_ONLY`.
+     * 
+     */
+    @Export(name="ipAddressSelectionPolicy", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> ipAddressSelectionPolicy;
+
+    /**
+     * @return Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
+     * Possible values are: `IPV4_ONLY`, `PREFER_IPV6`, `IPV6_ONLY`.
+     * 
+     */
+    public Output<Optional<String>> ipAddressSelectionPolicy() {
+        return Codegen.optional(this.ipAddressSelectionPolicy);
     }
     /**
      * Indicates whether the backend service will be used with internal or

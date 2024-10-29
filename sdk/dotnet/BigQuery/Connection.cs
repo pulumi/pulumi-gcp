@@ -322,7 +322,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
-    /// ### Bigquery Connection Kms
+    /// ### Bigquery Connection Sql With Cmek
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -335,8 +335,8 @@ namespace Pulumi.Gcp.BigQuery
     ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
     ///     {
     ///         Name = "my-database-instance",
-    ///         DatabaseVersion = "POSTGRES_11",
     ///         Region = "us-central1",
+    ///         DatabaseVersion = "POSTGRES_11",
     ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
     ///         {
     ///             Tier = "db-f1-micro",
@@ -359,11 +359,9 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     ///     var bqSa = Gcp.BigQuery.GetDefaultServiceAccount.Invoke();
     /// 
-    ///     var project = Gcp.Organizations.GetProject.Invoke();
-    /// 
-    ///     var keySaUser = new Gcp.Projects.IAMMember("key_sa_user", new()
+    ///     var keySaUser = new Gcp.Kms.CryptoKeyIAMMember("key_sa_user", new()
     ///     {
-    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
+    ///         CryptoKeyId = "projects/project/locations/us-central1/keyRings/us-central1/cryptoKeys/bq-key",
     ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
     ///         Member = $"serviceAccount:{bqSa.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult.Email)}",
     ///     });
@@ -384,6 +382,12 @@ namespace Pulumi.Gcp.BigQuery
     ///                 Username = user.Name,
     ///                 Password = user.Password,
     ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             keySaUser,
     ///         },
     ///     });
     /// 

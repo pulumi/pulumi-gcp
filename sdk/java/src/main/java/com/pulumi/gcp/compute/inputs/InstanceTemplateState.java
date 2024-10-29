@@ -76,6 +76,21 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Creation timestamp in RFC3339 text format.
+     * 
+     */
+    @Import(name="creationTimestamp")
+    private @Nullable Output<String> creationTimestamp;
+
+    /**
+     * @return Creation timestamp in RFC3339 text format.
+     * 
+     */
+    public Optional<Output<String>> creationTimestamp() {
+        return Optional.ofNullable(this.creationTimestamp);
+    }
+
+    /**
      * A brief description of this resource.
      * 
      */
@@ -171,6 +186,21 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<String>> instanceDescription() {
         return Optional.ofNullable(this.instanceDescription);
+    }
+
+    /**
+     * Action to be taken when a customer&#39;s encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
+     * 
+     */
+    @Import(name="keyRevocationActionType")
+    private @Nullable Output<String> keyRevocationActionType;
+
+    /**
+     * @return Action to be taken when a customer&#39;s encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
+     * 
+     */
+    public Optional<Output<String>> keyRevocationActionType() {
+        return Optional.ofNullable(this.keyRevocationActionType);
     }
 
     /**
@@ -617,12 +647,14 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
         this.advancedMachineFeatures = $.advancedMachineFeatures;
         this.canIpForward = $.canIpForward;
         this.confidentialInstanceConfig = $.confidentialInstanceConfig;
+        this.creationTimestamp = $.creationTimestamp;
         this.description = $.description;
         this.disks = $.disks;
         this.effectiveLabels = $.effectiveLabels;
         this.enableDisplay = $.enableDisplay;
         this.guestAccelerators = $.guestAccelerators;
         this.instanceDescription = $.instanceDescription;
+        this.keyRevocationActionType = $.keyRevocationActionType;
         this.labels = $.labels;
         this.machineType = $.machineType;
         this.metadata = $.metadata;
@@ -730,6 +762,27 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
          */
         public Builder confidentialInstanceConfig(InstanceTemplateConfidentialInstanceConfigArgs confidentialInstanceConfig) {
             return confidentialInstanceConfig(Output.of(confidentialInstanceConfig));
+        }
+
+        /**
+         * @param creationTimestamp Creation timestamp in RFC3339 text format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder creationTimestamp(@Nullable Output<String> creationTimestamp) {
+            $.creationTimestamp = creationTimestamp;
+            return this;
+        }
+
+        /**
+         * @param creationTimestamp Creation timestamp in RFC3339 text format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder creationTimestamp(String creationTimestamp) {
+            return creationTimestamp(Output.of(creationTimestamp));
         }
 
         /**
@@ -886,6 +939,27 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
          */
         public Builder instanceDescription(String instanceDescription) {
             return instanceDescription(Output.of(instanceDescription));
+        }
+
+        /**
+         * @param keyRevocationActionType Action to be taken when a customer&#39;s encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keyRevocationActionType(@Nullable Output<String> keyRevocationActionType) {
+            $.keyRevocationActionType = keyRevocationActionType;
+            return this;
+        }
+
+        /**
+         * @param keyRevocationActionType Action to be taken when a customer&#39;s encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keyRevocationActionType(String keyRevocationActionType) {
+            return keyRevocationActionType(Output.of(keyRevocationActionType));
         }
 
         /**

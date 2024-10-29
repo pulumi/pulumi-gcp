@@ -510,6 +510,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('notebooksCustomEndpoint')
 
     @property
+    def oracle_database_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('oracleDatabaseCustomEndpoint')
+
+    @property
     def org_policy_custom_endpoint(self) -> Optional[str]:
         return __config__.get('orgPolicyCustomEndpoint')
 
@@ -688,6 +692,10 @@ class _ExportableConfig(types.ModuleType):
     @property
     def tpu_v2_custom_endpoint(self) -> Optional[str]:
         return __config__.get('tpuV2CustomEndpoint')
+
+    @property
+    def transcoder_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('transcoderCustomEndpoint')
 
     @property
     def universe_domain(self) -> Optional[str]:

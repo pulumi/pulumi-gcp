@@ -101,6 +101,51 @@ import (
 //	}
 //
 // ```
+// ### Iam Workload Identity Pool Provider Github Actions
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/iam"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			pool, err := iam.NewWorkloadIdentityPool(ctx, "pool", &iam.WorkloadIdentityPoolArgs{
+//				WorkloadIdentityPoolId: pulumi.String("example-pool"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = iam.NewWorkloadIdentityPoolProvider(ctx, "example", &iam.WorkloadIdentityPoolProviderArgs{
+//				WorkloadIdentityPoolId:         pool.WorkloadIdentityPoolId,
+//				WorkloadIdentityPoolProviderId: pulumi.String("example-prvdr"),
+//				DisplayName:                    pulumi.String("Name of provider"),
+//				Description:                    pulumi.String("GitHub Actions identity pool provider for automated test"),
+//				Disabled:                       pulumi.Bool(true),
+//				AttributeCondition:             pulumi.String("    assertion.repository_owner_id == \"123456789\" &&\n    attribute.repository == \"gh-org/gh-repo\" &&\n    assertion.ref == \"refs/heads/main\" &&\n    assertion.ref_type == \"branch\"\n"),
+//				AttributeMapping: pulumi.StringMap{
+//					"google.subject":       pulumi.String("assertion.sub"),
+//					"attribute.actor":      pulumi.String("assertion.actor"),
+//					"attribute.aud":        pulumi.String("assertion.aud"),
+//					"attribute.repository": pulumi.String("assertion.repository"),
+//				},
+//				Oidc: &iam.WorkloadIdentityPoolProviderOidcArgs{
+//					IssuerUri: pulumi.String("https://token.actions.githubusercontent.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Iam Workload Identity Pool Provider Oidc Basic
 //
 // ```go

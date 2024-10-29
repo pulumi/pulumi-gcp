@@ -7,38 +7,52 @@ import * as utilities from "../utilities";
 /**
  * The Compute NetworkFirewallPolicyAssociation resource
  *
+ * To get more information about RegionNetworkFirewallPolicyAssociation, see:
+ *
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionNetworkFirewallPolicies/addAssociation)
+ *
  * ## Example Usage
  *
- * ### Regional
+ * ### Region Network Firewall Policy Association
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const basicRegionalNetworkFirewallPolicy = new gcp.compute.RegionNetworkFirewallPolicy("basic_regional_network_firewall_policy", {
- *     name: "policy",
+ * const policy = new gcp.compute.RegionNetworkFirewallPolicy("policy", {
+ *     name: "my-policy",
  *     project: "my-project-name",
  *     description: "Sample global network firewall policy",
  *     region: "us-west1",
  * });
- * const basicNetwork = new gcp.compute.Network("basic_network", {name: "network"});
- * const primary = new gcp.compute.RegionNetworkFirewallPolicyAssociation("primary", {
- *     name: "association",
- *     attachmentTarget: basicNetwork.id,
- *     firewallPolicy: basicRegionalNetworkFirewallPolicy.name,
+ * const network = new gcp.compute.Network("network", {
+ *     name: "my-network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const _default = new gcp.compute.RegionNetworkFirewallPolicyAssociation("default", {
+ *     name: "my-association",
  *     project: "my-project-name",
+ *     attachmentTarget: network.id,
+ *     firewallPolicy: policy.id,
  *     region: "us-west1",
  * });
  * ```
  *
  * ## Import
  *
- * NetworkFirewallPolicyAssociation can be imported using any of these accepted formats:
+ * RegionNetworkFirewallPolicyAssociation can be imported using any of these accepted formats:
  *
  * * `projects/{{project}}/regions/{{region}}/firewallPolicies/{{firewall_policy}}/associations/{{name}}`
  *
  * * `{{project}}/{{region}}/{{firewall_policy}}/{{name}}`
  *
- * When using the `pulumi import` command, NetworkFirewallPolicyAssociation can be imported using one of the formats above. For example:
+ * * `{{region}}/{{firewall_policy}}/{{name}}`
+ *
+ * * `{{project}}/{{firewall_policy}}/{{name}}`
+ *
+ * * `{{firewall_policy}}/{{name}}`
+ *
+ * When using the `pulumi import` command, RegionNetworkFirewallPolicyAssociation can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation default projects/{{project}}/regions/{{region}}/firewallPolicies/{{firewall_policy}}/associations/{{name}}
@@ -46,6 +60,18 @@ import * as utilities from "../utilities";
  *
  * ```sh
  * $ pulumi import gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation default {{project}}/{{region}}/{{firewall_policy}}/{{name}}
+ * ```
+ *
+ * ```sh
+ * $ pulumi import gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation default {{region}}/{{firewall_policy}}/{{name}}
+ * ```
+ *
+ * ```sh
+ * $ pulumi import gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation default {{project}}/{{firewall_policy}}/{{name}}
+ * ```
+ *
+ * ```sh
+ * $ pulumi import gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation default {{firewall_policy}}/{{name}}
  * ```
  */
 export class RegionNetworkFirewallPolicyAssociation extends pulumi.CustomResource {
@@ -81,19 +107,19 @@ export class RegionNetworkFirewallPolicyAssociation extends pulumi.CustomResourc
      */
     public readonly attachmentTarget!: pulumi.Output<string>;
     /**
-     * The firewall policy ID of the association.
-     */
-    public readonly firewallPolicy!: pulumi.Output<string>;
-    /**
-     * The name for an association.
-     *
+     * The firewall policy of the resource.
      *
      *
      * - - -
      */
+    public readonly firewallPolicy!: pulumi.Output<string>;
+    /**
+     * The name for an association.
+     */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -153,19 +179,19 @@ export interface RegionNetworkFirewallPolicyAssociationState {
      */
     attachmentTarget?: pulumi.Input<string>;
     /**
-     * The firewall policy ID of the association.
-     */
-    firewallPolicy?: pulumi.Input<string>;
-    /**
-     * The name for an association.
-     *
+     * The firewall policy of the resource.
      *
      *
      * - - -
      */
+    firewallPolicy?: pulumi.Input<string>;
+    /**
+     * The name for an association.
+     */
     name?: pulumi.Input<string>;
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
     /**
@@ -187,19 +213,19 @@ export interface RegionNetworkFirewallPolicyAssociationArgs {
      */
     attachmentTarget: pulumi.Input<string>;
     /**
-     * The firewall policy ID of the association.
-     */
-    firewallPolicy: pulumi.Input<string>;
-    /**
-     * The name for an association.
-     *
+     * The firewall policy of the resource.
      *
      *
      * - - -
      */
+    firewallPolicy: pulumi.Input<string>;
+    /**
+     * The name for an association.
+     */
     name?: pulumi.Input<string>;
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
     /**

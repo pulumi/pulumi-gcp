@@ -73,6 +73,10 @@ export class RegionInstanceTemplate extends pulumi.CustomResource {
      */
     public readonly confidentialInstanceConfig!: pulumi.Output<outputs.compute.RegionInstanceTemplateConfidentialInstanceConfig>;
     /**
+     * Creation timestamp in RFC3339 text format.
+     */
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    /**
      * A brief description of this resource.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -100,6 +104,10 @@ export class RegionInstanceTemplate extends pulumi.CustomResource {
      * created from this template.
      */
     public readonly instanceDescription!: pulumi.Output<string | undefined>;
+    /**
+     * Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
+     */
+    public readonly keyRevocationActionType!: pulumi.Output<string | undefined>;
     /**
      * A set of key/value label pairs to assign to instances
      * created from this template.
@@ -239,12 +247,14 @@ export class RegionInstanceTemplate extends pulumi.CustomResource {
             resourceInputs["advancedMachineFeatures"] = state ? state.advancedMachineFeatures : undefined;
             resourceInputs["canIpForward"] = state ? state.canIpForward : undefined;
             resourceInputs["confidentialInstanceConfig"] = state ? state.confidentialInstanceConfig : undefined;
+            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["disks"] = state ? state.disks : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["enableDisplay"] = state ? state.enableDisplay : undefined;
             resourceInputs["guestAccelerators"] = state ? state.guestAccelerators : undefined;
             resourceInputs["instanceDescription"] = state ? state.instanceDescription : undefined;
+            resourceInputs["keyRevocationActionType"] = state ? state.keyRevocationActionType : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["machineType"] = state ? state.machineType : undefined;
             resourceInputs["metadata"] = state ? state.metadata : undefined;
@@ -284,6 +294,7 @@ export class RegionInstanceTemplate extends pulumi.CustomResource {
             resourceInputs["enableDisplay"] = args ? args.enableDisplay : undefined;
             resourceInputs["guestAccelerators"] = args ? args.guestAccelerators : undefined;
             resourceInputs["instanceDescription"] = args ? args.instanceDescription : undefined;
+            resourceInputs["keyRevocationActionType"] = args ? args.keyRevocationActionType : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["machineType"] = args ? args.machineType : undefined;
             resourceInputs["metadata"] = args ? args.metadata : undefined;
@@ -303,6 +314,7 @@ export class RegionInstanceTemplate extends pulumi.CustomResource {
             resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
             resourceInputs["shieldedInstanceConfig"] = args ? args.shieldedInstanceConfig : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["metadataFingerprint"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
@@ -334,6 +346,10 @@ export interface RegionInstanceTemplateState {
      */
     confidentialInstanceConfig?: pulumi.Input<inputs.compute.RegionInstanceTemplateConfidentialInstanceConfig>;
     /**
+     * Creation timestamp in RFC3339 text format.
+     */
+    creationTimestamp?: pulumi.Input<string>;
+    /**
      * A brief description of this resource.
      */
     description?: pulumi.Input<string>;
@@ -361,6 +377,10 @@ export interface RegionInstanceTemplateState {
      * created from this template.
      */
     instanceDescription?: pulumi.Input<string>;
+    /**
+     * Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
+     */
+    keyRevocationActionType?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs to assign to instances
      * created from this template.
@@ -526,6 +546,10 @@ export interface RegionInstanceTemplateArgs {
      * created from this template.
      */
     instanceDescription?: pulumi.Input<string>;
+    /**
+     * Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
+     */
+    keyRevocationActionType?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs to assign to instances
      * created from this template.

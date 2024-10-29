@@ -417,6 +417,8 @@ type InstanceTemplate struct {
 	CanIpForward pulumi.BoolPtrOutput `pulumi:"canIpForward"`
 	// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
 	ConfidentialInstanceConfig InstanceTemplateConfidentialInstanceConfigOutput `pulumi:"confidentialInstanceConfig"`
+	// Creation timestamp in RFC3339 text format.
+	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// A brief description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Disks to attach to instances created from this template.
@@ -433,6 +435,8 @@ type InstanceTemplate struct {
 	// A brief description to use for instances
 	// created from this template.
 	InstanceDescription pulumi.StringPtrOutput `pulumi:"instanceDescription"`
+	// Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
+	KeyRevocationActionType pulumi.StringPtrOutput `pulumi:"keyRevocationActionType"`
 	// A set of key/value label pairs to assign to instances
 	// created from this template.
 	//
@@ -570,6 +574,8 @@ type instanceTemplateState struct {
 	CanIpForward *bool `pulumi:"canIpForward"`
 	// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
 	ConfidentialInstanceConfig *InstanceTemplateConfidentialInstanceConfig `pulumi:"confidentialInstanceConfig"`
+	// Creation timestamp in RFC3339 text format.
+	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// A brief description of this resource.
 	Description *string `pulumi:"description"`
 	// Disks to attach to instances created from this template.
@@ -586,6 +592,8 @@ type instanceTemplateState struct {
 	// A brief description to use for instances
 	// created from this template.
 	InstanceDescription *string `pulumi:"instanceDescription"`
+	// Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
+	KeyRevocationActionType *string `pulumi:"keyRevocationActionType"`
 	// A set of key/value label pairs to assign to instances
 	// created from this template.
 	//
@@ -683,6 +691,8 @@ type InstanceTemplateState struct {
 	CanIpForward pulumi.BoolPtrInput
 	// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
 	ConfidentialInstanceConfig InstanceTemplateConfidentialInstanceConfigPtrInput
+	// Creation timestamp in RFC3339 text format.
+	CreationTimestamp pulumi.StringPtrInput
 	// A brief description of this resource.
 	Description pulumi.StringPtrInput
 	// Disks to attach to instances created from this template.
@@ -699,6 +709,8 @@ type InstanceTemplateState struct {
 	// A brief description to use for instances
 	// created from this template.
 	InstanceDescription pulumi.StringPtrInput
+	// Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
+	KeyRevocationActionType pulumi.StringPtrInput
 	// A set of key/value label pairs to assign to instances
 	// created from this template.
 	//
@@ -814,6 +826,8 @@ type instanceTemplateArgs struct {
 	// A brief description to use for instances
 	// created from this template.
 	InstanceDescription *string `pulumi:"instanceDescription"`
+	// Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
+	KeyRevocationActionType *string `pulumi:"keyRevocationActionType"`
 	// A set of key/value label pairs to assign to instances
 	// created from this template.
 	//
@@ -915,6 +929,8 @@ type InstanceTemplateArgs struct {
 	// A brief description to use for instances
 	// created from this template.
 	InstanceDescription pulumi.StringPtrInput
+	// Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
+	KeyRevocationActionType pulumi.StringPtrInput
 	// A set of key/value label pairs to assign to instances
 	// created from this template.
 	//
@@ -1100,6 +1116,11 @@ func (o InstanceTemplateOutput) ConfidentialInstanceConfig() InstanceTemplateCon
 	}).(InstanceTemplateConfidentialInstanceConfigOutput)
 }
 
+// Creation timestamp in RFC3339 text format.
+func (o InstanceTemplateOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceTemplate) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
 // A brief description of this resource.
 func (o InstanceTemplateOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceTemplate) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -1132,6 +1153,11 @@ func (o InstanceTemplateOutput) GuestAccelerators() InstanceTemplateGuestAcceler
 // created from this template.
 func (o InstanceTemplateOutput) InstanceDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceTemplate) pulumi.StringPtrOutput { return v.InstanceDescription }).(pulumi.StringPtrOutput)
+}
+
+// Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
+func (o InstanceTemplateOutput) KeyRevocationActionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceTemplate) pulumi.StringPtrOutput { return v.KeyRevocationActionType }).(pulumi.StringPtrOutput)
 }
 
 // A set of key/value label pairs to assign to instances

@@ -27,7 +27,7 @@ class GetInstanceTemplateResult:
     """
     A collection of values returned by getInstanceTemplate.
     """
-    def __init__(__self__, advanced_machine_features=None, can_ip_forward=None, confidential_instance_configs=None, description=None, disks=None, effective_labels=None, enable_display=None, filter=None, guest_accelerators=None, id=None, instance_description=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, most_recent=None, name=None, name_prefix=None, network_interfaces=None, network_performance_configs=None, partner_metadata=None, project=None, pulumi_labels=None, region=None, reservation_affinities=None, resource_manager_tags=None, resource_policies=None, schedulings=None, self_link=None, self_link_unique=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None):
+    def __init__(__self__, advanced_machine_features=None, can_ip_forward=None, confidential_instance_configs=None, creation_timestamp=None, description=None, disks=None, effective_labels=None, enable_display=None, filter=None, guest_accelerators=None, id=None, instance_description=None, key_revocation_action_type=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, most_recent=None, name=None, name_prefix=None, network_interfaces=None, network_performance_configs=None, partner_metadata=None, project=None, pulumi_labels=None, region=None, reservation_affinities=None, resource_manager_tags=None, resource_policies=None, schedulings=None, self_link=None, self_link_unique=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None):
         if advanced_machine_features and not isinstance(advanced_machine_features, list):
             raise TypeError("Expected argument 'advanced_machine_features' to be a list")
         pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
@@ -37,6 +37,9 @@ class GetInstanceTemplateResult:
         if confidential_instance_configs and not isinstance(confidential_instance_configs, list):
             raise TypeError("Expected argument 'confidential_instance_configs' to be a list")
         pulumi.set(__self__, "confidential_instance_configs", confidential_instance_configs)
+        if creation_timestamp and not isinstance(creation_timestamp, str):
+            raise TypeError("Expected argument 'creation_timestamp' to be a str")
+        pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -61,6 +64,9 @@ class GetInstanceTemplateResult:
         if instance_description and not isinstance(instance_description, str):
             raise TypeError("Expected argument 'instance_description' to be a str")
         pulumi.set(__self__, "instance_description", instance_description)
+        if key_revocation_action_type and not isinstance(key_revocation_action_type, str):
+            raise TypeError("Expected argument 'key_revocation_action_type' to be a str")
+        pulumi.set(__self__, "key_revocation_action_type", key_revocation_action_type)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
@@ -160,6 +166,14 @@ class GetInstanceTemplateResult:
         return pulumi.get(self, "confidential_instance_configs")
 
     @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> str:
+        """
+        Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @property
     @pulumi.getter
     def description(self) -> str:
         """
@@ -220,6 +234,14 @@ class GetInstanceTemplateResult:
         created from this template.
         """
         return pulumi.get(self, "instance_description")
+
+    @property
+    @pulumi.getter(name="keyRevocationActionType")
+    def key_revocation_action_type(self) -> str:
+        """
+        Action to be taken when a customer's encryption key is revoked.
+        """
+        return pulumi.get(self, "key_revocation_action_type")
 
     @property
     @pulumi.getter
@@ -434,6 +456,7 @@ class AwaitableGetInstanceTemplateResult(GetInstanceTemplateResult):
             advanced_machine_features=self.advanced_machine_features,
             can_ip_forward=self.can_ip_forward,
             confidential_instance_configs=self.confidential_instance_configs,
+            creation_timestamp=self.creation_timestamp,
             description=self.description,
             disks=self.disks,
             effective_labels=self.effective_labels,
@@ -442,6 +465,7 @@ class AwaitableGetInstanceTemplateResult(GetInstanceTemplateResult):
             guest_accelerators=self.guest_accelerators,
             id=self.id,
             instance_description=self.instance_description,
+            key_revocation_action_type=self.key_revocation_action_type,
             labels=self.labels,
             machine_type=self.machine_type,
             metadata=self.metadata,
@@ -507,6 +531,7 @@ def get_instance_template(filter: Optional[str] = None,
         advanced_machine_features=pulumi.get(__ret__, 'advanced_machine_features'),
         can_ip_forward=pulumi.get(__ret__, 'can_ip_forward'),
         confidential_instance_configs=pulumi.get(__ret__, 'confidential_instance_configs'),
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
         description=pulumi.get(__ret__, 'description'),
         disks=pulumi.get(__ret__, 'disks'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
@@ -515,6 +540,7 @@ def get_instance_template(filter: Optional[str] = None,
         guest_accelerators=pulumi.get(__ret__, 'guest_accelerators'),
         id=pulumi.get(__ret__, 'id'),
         instance_description=pulumi.get(__ret__, 'instance_description'),
+        key_revocation_action_type=pulumi.get(__ret__, 'key_revocation_action_type'),
         labels=pulumi.get(__ret__, 'labels'),
         machine_type=pulumi.get(__ret__, 'machine_type'),
         metadata=pulumi.get(__ret__, 'metadata'),
@@ -577,6 +603,7 @@ def get_instance_template_output(filter: Optional[pulumi.Input[Optional[str]]] =
         advanced_machine_features=pulumi.get(__response__, 'advanced_machine_features'),
         can_ip_forward=pulumi.get(__response__, 'can_ip_forward'),
         confidential_instance_configs=pulumi.get(__response__, 'confidential_instance_configs'),
+        creation_timestamp=pulumi.get(__response__, 'creation_timestamp'),
         description=pulumi.get(__response__, 'description'),
         disks=pulumi.get(__response__, 'disks'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),
@@ -585,6 +612,7 @@ def get_instance_template_output(filter: Optional[pulumi.Input[Optional[str]]] =
         guest_accelerators=pulumi.get(__response__, 'guest_accelerators'),
         id=pulumi.get(__response__, 'id'),
         instance_description=pulumi.get(__response__, 'instance_description'),
+        key_revocation_action_type=pulumi.get(__response__, 'key_revocation_action_type'),
         labels=pulumi.get(__response__, 'labels'),
         machine_type=pulumi.get(__response__, 'machine_type'),
         metadata=pulumi.get(__response__, 'metadata'),

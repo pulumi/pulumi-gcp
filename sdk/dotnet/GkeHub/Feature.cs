@@ -47,7 +47,6 @@ namespace Pulumi.Gcp.GkeHub
     ///                 ResourceLink = cluster.Id.Apply(id =&gt; $"//container.googleapis.com/{id}"),
     ///             },
     ///         },
-    ///         Description = "Membership",
     ///     });
     /// 
     ///     var feature = new Gcp.GkeHub.Feature("feature", new()

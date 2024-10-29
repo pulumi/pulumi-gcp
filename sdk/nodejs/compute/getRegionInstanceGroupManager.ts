@@ -7,15 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * ## subcategory: "Compute Engine"
- *
- * page_title: "Google: gcp.compute.RegionInstanceGroupManager"
- * description: |-
- * Get a Compute Region Instance Group within GCE.
- * ---
- *
- * # google\_compute\_region\_instance\_group\_manager
- *
  * Get a Compute Region Instance Group Manager within GCE.
  * For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups)
  * and [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceGroupManagers)
@@ -104,15 +95,6 @@ export interface GetRegionInstanceGroupManagerResult {
     readonly waitForInstancesStatus: string;
 }
 /**
- * ## subcategory: "Compute Engine"
- *
- * page_title: "Google: gcp.compute.RegionInstanceGroupManager"
- * description: |-
- * Get a Compute Region Instance Group within GCE.
- * ---
- *
- * # google\_compute\_region\_instance\_group\_manager
- *
  * Get a Compute Region Instance Group Manager within GCE.
  * For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups)
  * and [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceGroupManagers)

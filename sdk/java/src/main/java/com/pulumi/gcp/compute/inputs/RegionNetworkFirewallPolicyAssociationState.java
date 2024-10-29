@@ -31,14 +31,18 @@ public final class RegionNetworkFirewallPolicyAssociationState extends com.pulum
     }
 
     /**
-     * The firewall policy ID of the association.
+     * The firewall policy of the resource.
+     * 
+     * ***
      * 
      */
     @Import(name="firewallPolicy")
     private @Nullable Output<String> firewallPolicy;
 
     /**
-     * @return The firewall policy ID of the association.
+     * @return The firewall policy of the resource.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> firewallPolicy() {
@@ -48,8 +52,6 @@ public final class RegionNetworkFirewallPolicyAssociationState extends com.pulum
     /**
      * The name for an association.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
@@ -57,22 +59,22 @@ public final class RegionNetworkFirewallPolicyAssociationState extends com.pulum
     /**
      * @return The name for an association.
      * 
-     * ***
-     * 
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return The project for the resource
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     public Optional<Output<String>> project() {
@@ -160,7 +162,9 @@ public final class RegionNetworkFirewallPolicyAssociationState extends com.pulum
         }
 
         /**
-         * @param firewallPolicy The firewall policy ID of the association.
+         * @param firewallPolicy The firewall policy of the resource.
+         * 
+         * ***
          * 
          * @return builder
          * 
@@ -171,7 +175,9 @@ public final class RegionNetworkFirewallPolicyAssociationState extends com.pulum
         }
 
         /**
-         * @param firewallPolicy The firewall policy ID of the association.
+         * @param firewallPolicy The firewall policy of the resource.
+         * 
+         * ***
          * 
          * @return builder
          * 
@@ -182,8 +188,6 @@ public final class RegionNetworkFirewallPolicyAssociationState extends com.pulum
 
         /**
          * @param name The name for an association.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -196,8 +200,6 @@ public final class RegionNetworkFirewallPolicyAssociationState extends com.pulum
         /**
          * @param name The name for an association.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -206,7 +208,8 @@ public final class RegionNetworkFirewallPolicyAssociationState extends com.pulum
         }
 
         /**
-         * @param project The project for the resource
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
          * 
          * @return builder
          * 
@@ -217,7 +220,8 @@ public final class RegionNetworkFirewallPolicyAssociationState extends com.pulum
         }
 
         /**
-         * @param project The project for the resource
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
          * 
          * @return builder
          * 

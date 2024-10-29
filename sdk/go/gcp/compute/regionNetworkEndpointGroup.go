@@ -159,8 +159,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			appengineNegBucket, err := storage.NewBucket(ctx, "appengine_neg", &storage.BucketArgs{
-//				Name:     pulumi.String("appengine-neg"),
-//				Location: pulumi.String("US"),
+//				Name:                     pulumi.String("appengine-neg"),
+//				Location:                 pulumi.String("US"),
+//				UniformBucketLevelAccess: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -175,7 +176,7 @@ import (
 //			}
 //			appengineNegFlexibleAppVersion, err := appengine.NewFlexibleAppVersion(ctx, "appengine_neg", &appengine.FlexibleAppVersionArgs{
 //				VersionId: pulumi.String("v1"),
-//				Service:   pulumi.String("appengine-network-endpoint-group"),
+//				Service:   pulumi.String("appengine-neg"),
 //				Runtime:   pulumi.String("nodejs"),
 //				FlexibleRuntimeSettings: &appengine.FlexibleAppVersionFlexibleRuntimeSettingsArgs{
 //					OperatingSystem: pulumi.String("ubuntu22"),

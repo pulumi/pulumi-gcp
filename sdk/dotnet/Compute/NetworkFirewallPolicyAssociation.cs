@@ -12,9 +12,14 @@ namespace Pulumi.Gcp.Compute
     /// <summary>
     /// The Compute NetworkFirewallPolicyAssociation resource
     /// 
+    /// To get more information about NetworkFirewallPolicyAssociation, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/networkFirewallPolicies/addAssociation)
+    /// 
     /// ## Example Usage
     /// 
-    /// ### Global
+    /// ### Network Firewall Policy Association
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -23,24 +28,25 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var networkFirewallPolicy = new Gcp.Compute.NetworkFirewallPolicy("network_firewall_policy", new()
+    ///     var policy = new Gcp.Compute.NetworkFirewallPolicy("policy", new()
     ///     {
-    ///         Name = "policy",
+    ///         Name = "my-policy",
     ///         Project = "my-project-name",
     ///         Description = "Sample global network firewall policy",
     ///     });
     /// 
     ///     var network = new Gcp.Compute.Network("network", new()
     ///     {
-    ///         Name = "network",
+    ///         Name = "my-network",
+    ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
-    ///     var primary = new Gcp.Compute.NetworkFirewallPolicyAssociation("primary", new()
+    ///     var @default = new Gcp.Compute.NetworkFirewallPolicyAssociation("default", new()
     ///     {
-    ///         Name = "association",
-    ///         AttachmentTarget = network.Id,
-    ///         FirewallPolicy = networkFirewallPolicy.Name,
+    ///         Name = "my-association",
     ///         Project = "my-project-name",
+    ///         AttachmentTarget = network.Id,
+    ///         FirewallPolicy = policy.Id,
     ///     });
     /// 
     /// });
@@ -54,6 +60,8 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// * `{{project}}/{{firewall_policy}}/{{name}}`
     /// 
+    /// * `{{firewall_policy}}/{{name}}`
+    /// 
     /// When using the `pulumi import` command, NetworkFirewallPolicyAssociation can be imported using one of the formats above. For example:
     /// 
     /// ```sh
@@ -62,6 +70,10 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ```sh
     /// $ pulumi import gcp:compute/networkFirewallPolicyAssociation:NetworkFirewallPolicyAssociation default {{project}}/{{firewall_policy}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    /// $ pulumi import gcp:compute/networkFirewallPolicyAssociation:NetworkFirewallPolicyAssociation default {{firewall_policy}}/{{name}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/networkFirewallPolicyAssociation:NetworkFirewallPolicyAssociation")]
@@ -74,23 +86,23 @@ namespace Pulumi.Gcp.Compute
         public Output<string> AttachmentTarget { get; private set; } = null!;
 
         /// <summary>
-        /// The firewall policy ID of the association.
+        /// The firewall policy of the resource.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("firewallPolicy")]
         public Output<string> FirewallPolicy { get; private set; } = null!;
 
         /// <summary>
         /// The name for an association.
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The project for the resource
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -154,23 +166,23 @@ namespace Pulumi.Gcp.Compute
         public Input<string> AttachmentTarget { get; set; } = null!;
 
         /// <summary>
-        /// The firewall policy ID of the association.
+        /// The firewall policy of the resource.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("firewallPolicy", required: true)]
         public Input<string> FirewallPolicy { get; set; } = null!;
 
         /// <summary>
         /// The name for an association.
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The project for the resource
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -190,23 +202,23 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? AttachmentTarget { get; set; }
 
         /// <summary>
-        /// The firewall policy ID of the association.
+        /// The firewall policy of the resource.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("firewallPolicy")]
         public Input<string>? FirewallPolicy { get; set; }
 
         /// <summary>
         /// The name for an association.
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The project for the resource
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }

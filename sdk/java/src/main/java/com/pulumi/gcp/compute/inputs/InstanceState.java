@@ -145,6 +145,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Creation timestamp in RFC3339 text format.
+     * 
+     */
+    @Import(name="creationTimestamp")
+    private @Nullable Output<String> creationTimestamp;
+
+    /**
+     * @return Creation timestamp in RFC3339 text format.
+     * 
+     */
+    public Optional<Output<String>> creationTimestamp() {
+        return Optional.ofNullable(this.creationTimestamp);
+    }
+
+    /**
      * The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
      * 
      */
@@ -292,6 +307,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Action to be taken when a customer&#39;s encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
+     * 
+     */
+    @Import(name="keyRevocationActionType")
+    private @Nullable Output<String> keyRevocationActionType;
+
+    /**
+     * @return Action to be taken when a customer&#39;s encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
+     * 
+     */
+    public Optional<Output<String>> keyRevocationActionType() {
+        return Optional.ofNullable(this.keyRevocationActionType);
+    }
+
+    /**
      * The unique fingerprint of the labels.
      * 
      */
@@ -331,6 +361,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * **Note:** If you want to update this value (resize the VM) after initial creation, you must set `allow_stopping_for_update` to `true`.
      * 
      * [Custom machine types](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
+     * Because of current API limitations some custom machine types may get converted to different machine types (such as an equivalent standard type) and cause non-empty plans in your configuration. Use
+     * `lifecycle.ignore_changes` on `machine_type` in these cases.
      * 
      * There is a limit of 6.5 GB per CPU unless you add [extended memory](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#extendedmemory). You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
      * 
@@ -344,6 +376,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * **Note:** If you want to update this value (resize the VM) after initial creation, you must set `allow_stopping_for_update` to `true`.
      * 
      * [Custom machine types](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
+     * Because of current API limitations some custom machine types may get converted to different machine types (such as an equivalent standard type) and cause non-empty plans in your configuration. Use
+     * `lifecycle.ignore_changes` on `machine_type` in these cases.
      * 
      * There is a limit of 6.5 GB per CPU unless you add [extended memory](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#extendedmemory). You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
      * 
@@ -759,6 +793,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.canIpForward = $.canIpForward;
         this.confidentialInstanceConfig = $.confidentialInstanceConfig;
         this.cpuPlatform = $.cpuPlatform;
+        this.creationTimestamp = $.creationTimestamp;
         this.currentStatus = $.currentStatus;
         this.deletionProtection = $.deletionProtection;
         this.description = $.description;
@@ -768,6 +803,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.guestAccelerators = $.guestAccelerators;
         this.hostname = $.hostname;
         this.instanceId = $.instanceId;
+        this.keyRevocationActionType = $.keyRevocationActionType;
         this.labelFingerprint = $.labelFingerprint;
         this.labels = $.labels;
         this.machineType = $.machineType;
@@ -975,6 +1011,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder cpuPlatform(String cpuPlatform) {
             return cpuPlatform(Output.of(cpuPlatform));
+        }
+
+        /**
+         * @param creationTimestamp Creation timestamp in RFC3339 text format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder creationTimestamp(@Nullable Output<String> creationTimestamp) {
+            $.creationTimestamp = creationTimestamp;
+            return this;
+        }
+
+        /**
+         * @param creationTimestamp Creation timestamp in RFC3339 text format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder creationTimestamp(String creationTimestamp) {
+            return creationTimestamp(Output.of(creationTimestamp));
         }
 
         /**
@@ -1190,6 +1247,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param keyRevocationActionType Action to be taken when a customer&#39;s encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keyRevocationActionType(@Nullable Output<String> keyRevocationActionType) {
+            $.keyRevocationActionType = keyRevocationActionType;
+            return this;
+        }
+
+        /**
+         * @param keyRevocationActionType Action to be taken when a customer&#39;s encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keyRevocationActionType(String keyRevocationActionType) {
+            return keyRevocationActionType(Output.of(keyRevocationActionType));
+        }
+
+        /**
          * @param labelFingerprint The unique fingerprint of the labels.
          * 
          * @return builder
@@ -1241,6 +1319,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * **Note:** If you want to update this value (resize the VM) after initial creation, you must set `allow_stopping_for_update` to `true`.
          * 
          * [Custom machine types](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
+         * Because of current API limitations some custom machine types may get converted to different machine types (such as an equivalent standard type) and cause non-empty plans in your configuration. Use
+         * `lifecycle.ignore_changes` on `machine_type` in these cases.
          * 
          * There is a limit of 6.5 GB per CPU unless you add [extended memory](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#extendedmemory). You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
          * 
@@ -1258,6 +1338,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * **Note:** If you want to update this value (resize the VM) after initial creation, you must set `allow_stopping_for_update` to `true`.
          * 
          * [Custom machine types](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
+         * Because of current API limitations some custom machine types may get converted to different machine types (such as an equivalent standard type) and cause non-empty plans in your configuration. Use
+         * `lifecycle.ignore_changes` on `machine_type` in these cases.
          * 
          * There is a limit of 6.5 GB per CPU unless you add [extended memory](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#extendedmemory). You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
          * 

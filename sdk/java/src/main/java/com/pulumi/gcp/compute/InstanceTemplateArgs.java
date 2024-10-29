@@ -160,6 +160,21 @@ public final class InstanceTemplateArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Action to be taken when a customer&#39;s encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
+     * 
+     */
+    @Import(name="keyRevocationActionType")
+    private @Nullable Output<String> keyRevocationActionType;
+
+    /**
+     * @return Action to be taken when a customer&#39;s encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
+     * 
+     */
+    public Optional<Output<String>> keyRevocationActionType() {
+        return Optional.ofNullable(this.keyRevocationActionType);
+    }
+
+    /**
      * A set of key/value label pairs to assign to instances
      * created from this template.
      * 
@@ -531,6 +546,7 @@ public final class InstanceTemplateArgs extends com.pulumi.resources.ResourceArg
         this.enableDisplay = $.enableDisplay;
         this.guestAccelerators = $.guestAccelerators;
         this.instanceDescription = $.instanceDescription;
+        this.keyRevocationActionType = $.keyRevocationActionType;
         this.labels = $.labels;
         this.machineType = $.machineType;
         this.metadata = $.metadata;
@@ -768,6 +784,27 @@ public final class InstanceTemplateArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder instanceDescription(String instanceDescription) {
             return instanceDescription(Output.of(instanceDescription));
+        }
+
+        /**
+         * @param keyRevocationActionType Action to be taken when a customer&#39;s encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keyRevocationActionType(@Nullable Output<String> keyRevocationActionType) {
+            $.keyRevocationActionType = keyRevocationActionType;
+            return this;
+        }
+
+        /**
+         * @param keyRevocationActionType Action to be taken when a customer&#39;s encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keyRevocationActionType(String keyRevocationActionType) {
+            return keyRevocationActionType(Output.of(keyRevocationActionType));
         }
 
         /**

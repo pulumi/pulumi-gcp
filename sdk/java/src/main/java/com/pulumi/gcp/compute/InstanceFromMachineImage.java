@@ -174,6 +174,20 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
         return this.cpuPlatform;
     }
     /**
+     * Creation timestamp in RFC3339 text format.
+     * 
+     */
+    @Export(name="creationTimestamp", refs={String.class}, tree="[0]")
+    private Output<String> creationTimestamp;
+
+    /**
+     * @return Creation timestamp in RFC3339 text format.
+     * 
+     */
+    public Output<String> creationTimestamp() {
+        return this.creationTimestamp;
+    }
+    /**
      * Current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING,
      * SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance
      * life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
@@ -298,6 +312,22 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
      */
     public Output<String> instanceId() {
         return this.instanceId;
+    }
+    /**
+     * Action to be taken when a customer&#39;s encryption key is revoked. Supports &#34;STOP&#34; and &#34;NONE&#34;, with &#34;NONE&#34; being the
+     * default.
+     * 
+     */
+    @Export(name="keyRevocationActionType", refs={String.class}, tree="[0]")
+    private Output<String> keyRevocationActionType;
+
+    /**
+     * @return Action to be taken when a customer&#39;s encryption key is revoked. Supports &#34;STOP&#34; and &#34;NONE&#34;, with &#34;NONE&#34; being the
+     * default.
+     * 
+     */
+    public Output<String> keyRevocationActionType() {
+        return this.keyRevocationActionType;
     }
     /**
      * The unique fingerprint of the labels.

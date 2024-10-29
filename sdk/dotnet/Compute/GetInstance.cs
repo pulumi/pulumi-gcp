@@ -165,6 +165,10 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public readonly string CpuPlatform;
         /// <summary>
+        /// Creation timestamp in RFC3339 text format.
+        /// </summary>
+        public readonly string CreationTimestamp;
+        /// <summary>
         /// The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
         /// </summary>
         public readonly string CurrentStatus;
@@ -195,6 +199,10 @@ namespace Pulumi.Gcp.Compute
         /// The server-assigned unique identifier of this instance.
         /// </summary>
         public readonly string InstanceId;
+        /// <summary>
+        /// Action to be taken when a customer's encryption key is revoked.
+        /// </summary>
+        public readonly string KeyRevocationActionType;
         /// <summary>
         /// The unique fingerprint of the labels.
         /// </summary>
@@ -284,6 +292,8 @@ namespace Pulumi.Gcp.Compute
 
             string cpuPlatform,
 
+            string creationTimestamp,
+
             string currentStatus,
 
             bool deletionProtection,
@@ -303,6 +313,8 @@ namespace Pulumi.Gcp.Compute
             string id,
 
             string instanceId,
+
+            string keyRevocationActionType,
 
             string labelFingerprint,
 
@@ -359,6 +371,7 @@ namespace Pulumi.Gcp.Compute
             CanIpForward = canIpForward;
             ConfidentialInstanceConfigs = confidentialInstanceConfigs;
             CpuPlatform = cpuPlatform;
+            CreationTimestamp = creationTimestamp;
             CurrentStatus = currentStatus;
             DeletionProtection = deletionProtection;
             Description = description;
@@ -369,6 +382,7 @@ namespace Pulumi.Gcp.Compute
             Hostname = hostname;
             Id = id;
             InstanceId = instanceId;
+            KeyRevocationActionType = keyRevocationActionType;
             LabelFingerprint = labelFingerprint;
             Labels = labels;
             MachineType = machineType;

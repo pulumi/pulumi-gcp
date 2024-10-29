@@ -81,6 +81,8 @@ type LookupInstanceResult struct {
 	ConfidentialInstanceConfigs []GetInstanceConfidentialInstanceConfig `pulumi:"confidentialInstanceConfigs"`
 	// The CPU platform used by this instance.
 	CpuPlatform string `pulumi:"cpuPlatform"`
+	// Creation timestamp in RFC3339 text format.
+	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
 	CurrentStatus string `pulumi:"currentStatus"`
 	// Whether deletion protection is enabled on this instance.
@@ -98,6 +100,8 @@ type LookupInstanceResult struct {
 	Id string `pulumi:"id"`
 	// The server-assigned unique identifier of this instance.
 	InstanceId string `pulumi:"instanceId"`
+	// Action to be taken when a customer's encryption key is revoked.
+	KeyRevocationActionType string `pulumi:"keyRevocationActionType"`
 	// The unique fingerprint of the labels.
 	LabelFingerprint string `pulumi:"labelFingerprint"`
 	// A set of key/value label pairs assigned to the disk.
@@ -228,6 +232,11 @@ func (o LookupInstanceResultOutput) CpuPlatform() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.CpuPlatform }).(pulumi.StringOutput)
 }
 
+// Creation timestamp in RFC3339 text format.
+func (o LookupInstanceResultOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
 // The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
 func (o LookupInstanceResultOutput) CurrentStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.CurrentStatus }).(pulumi.StringOutput)
@@ -273,6 +282,11 @@ func (o LookupInstanceResultOutput) Id() pulumi.StringOutput {
 // The server-assigned unique identifier of this instance.
 func (o LookupInstanceResultOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// Action to be taken when a customer's encryption key is revoked.
+func (o LookupInstanceResultOutput) KeyRevocationActionType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.KeyRevocationActionType }).(pulumi.StringOutput)
 }
 
 // The unique fingerprint of the labels.

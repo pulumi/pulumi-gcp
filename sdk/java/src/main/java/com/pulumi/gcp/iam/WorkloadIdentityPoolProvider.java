@@ -130,6 +130,66 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Iam Workload Identity Pool Provider Github Actions
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.iam.WorkloadIdentityPool;
+ * import com.pulumi.gcp.iam.WorkloadIdentityPoolArgs;
+ * import com.pulumi.gcp.iam.WorkloadIdentityPoolProvider;
+ * import com.pulumi.gcp.iam.WorkloadIdentityPoolProviderArgs;
+ * import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolProviderOidcArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var pool = new WorkloadIdentityPool("pool", WorkloadIdentityPoolArgs.builder()
+ *             .workloadIdentityPoolId("example-pool")
+ *             .build());
+ * 
+ *         var example = new WorkloadIdentityPoolProvider("example", WorkloadIdentityPoolProviderArgs.builder()
+ *             .workloadIdentityPoolId(pool.workloadIdentityPoolId())
+ *             .workloadIdentityPoolProviderId("example-prvdr")
+ *             .displayName("Name of provider")
+ *             .description("GitHub Actions identity pool provider for automated test")
+ *             .disabled(true)
+ *             .attributeCondition("""
+ *     assertion.repository_owner_id == "123456789" &&
+ *     attribute.repository == "gh-org/gh-repo" &&
+ *     assertion.ref == "refs/heads/main" &&
+ *     assertion.ref_type == "branch"
+ *             """)
+ *             .attributeMapping(Map.ofEntries(
+ *                 Map.entry("google.subject", "assertion.sub"),
+ *                 Map.entry("attribute.actor", "assertion.actor"),
+ *                 Map.entry("attribute.aud", "assertion.aud"),
+ *                 Map.entry("attribute.repository", "assertion.repository")
+ *             ))
+ *             .oidc(WorkloadIdentityPoolProviderOidcArgs.builder()
+ *                 .issuerUri("https://token.actions.githubusercontent.com")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Iam Workload Identity Pool Provider Oidc Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

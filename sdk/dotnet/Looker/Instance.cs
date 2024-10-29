@@ -41,6 +41,7 @@ namespace Pulumi.Gcp.Looker
     ///             ClientId = "my-client-id",
     ///             ClientSecret = "my-client-secret",
     ///         },
+    ///         DeletionPolicy = "DEFAULT",
     ///     });
     /// 
     /// });
@@ -309,6 +310,31 @@ namespace Pulumi.Gcp.Looker
     /// 
     /// });
     /// ```
+    /// ### Looker Instance Force Delete
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var looker_instance = new Gcp.Looker.Instance("looker-instance", new()
+    ///     {
+    ///         Name = "my-instance",
+    ///         PlatformEdition = "LOOKER_CORE_STANDARD_ANNUAL",
+    ///         Region = "us-central1",
+    ///         OauthConfig = new Gcp.Looker.Inputs.InstanceOauthConfigArgs
+    ///         {
+    ///             ClientId = "my-client-id",
+    ///             ClientSecret = "my-client-secret",
+    ///         },
+    ///         DeletionPolicy = "FORCE",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -371,6 +397,15 @@ namespace Pulumi.Gcp.Looker
         /// </summary>
         [Output("customDomain")]
         public Output<Outputs.InstanceCustomDomain?> CustomDomain { get; private set; } = null!;
+
+        /// <summary>
+        /// Policy to determine if the cluster should be deleted forcefully.
+        /// If setting deletion_policy = "FORCE", the Looker instance will be deleted regardless
+        /// of its nested resources. If set to "DEFAULT", Looker instances that still have
+        /// nested resources will return an error. Possible values: DEFAULT, FORCE
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string?> DeletionPolicy { get; private set; } = null!;
 
         /// <summary>
         /// Maintenance denial period for this instance.
@@ -597,6 +632,15 @@ namespace Pulumi.Gcp.Looker
         public Input<Inputs.InstanceCustomDomainArgs>? CustomDomain { get; set; }
 
         /// <summary>
+        /// Policy to determine if the cluster should be deleted forcefully.
+        /// If setting deletion_policy = "FORCE", the Looker instance will be deleted regardless
+        /// of its nested resources. If set to "DEFAULT", Looker instances that still have
+        /// nested resources will return an error. Possible values: DEFAULT, FORCE
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// Maintenance denial period for this instance.
         /// You must allow at least 14 days of maintenance availability
         /// between any two deny maintenance periods.
@@ -751,6 +795,15 @@ namespace Pulumi.Gcp.Looker
         /// </summary>
         [Input("customDomain")]
         public Input<Inputs.InstanceCustomDomainGetArgs>? CustomDomain { get; set; }
+
+        /// <summary>
+        /// Policy to determine if the cluster should be deleted forcefully.
+        /// If setting deletion_policy = "FORCE", the Looker instance will be deleted regardless
+        /// of its nested resources. If set to "DEFAULT", Looker instances that still have
+        /// nested resources will return an error. Possible values: DEFAULT, FORCE
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// Maintenance denial period for this instance.

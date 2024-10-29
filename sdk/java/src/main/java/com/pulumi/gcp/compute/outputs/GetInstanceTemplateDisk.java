@@ -89,6 +89,11 @@ public final class GetInstanceTemplateDisk {
      */
     private Integer provisionedIops;
     /**
+     * @return Indicates how much throughput to provision for the disk, in MB/s. This sets the amount of data that can be read or written from the disk per second. Values must greater than or equal to 1. For more details, see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
+     * 
+     */
+    private Integer provisionedThroughput;
+    /**
      * @return A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
      * 
      */
@@ -242,6 +247,13 @@ public final class GetInstanceTemplateDisk {
         return this.provisionedIops;
     }
     /**
+     * @return Indicates how much throughput to provision for the disk, in MB/s. This sets the amount of data that can be read or written from the disk per second. Values must greater than or equal to 1. For more details, see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
+     * 
+     */
+    public Integer provisionedThroughput() {
+        return this.provisionedThroughput;
+    }
+    /**
      * @return A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
      * 
      */
@@ -336,6 +348,7 @@ public final class GetInstanceTemplateDisk {
         private Map<String,String> labels;
         private String mode;
         private Integer provisionedIops;
+        private Integer provisionedThroughput;
         private Map<String,String> resourceManagerTags;
         private List<String> resourcePolicies;
         private String source;
@@ -358,6 +371,7 @@ public final class GetInstanceTemplateDisk {
     	      this.labels = defaults.labels;
     	      this.mode = defaults.mode;
     	      this.provisionedIops = defaults.provisionedIops;
+    	      this.provisionedThroughput = defaults.provisionedThroughput;
     	      this.resourceManagerTags = defaults.resourceManagerTags;
     	      this.resourcePolicies = defaults.resourcePolicies;
     	      this.source = defaults.source;
@@ -460,6 +474,14 @@ public final class GetInstanceTemplateDisk {
             return this;
         }
         @CustomType.Setter
+        public Builder provisionedThroughput(Integer provisionedThroughput) {
+            if (provisionedThroughput == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateDisk", "provisionedThroughput");
+            }
+            this.provisionedThroughput = provisionedThroughput;
+            return this;
+        }
+        @CustomType.Setter
         public Builder resourceManagerTags(Map<String,String> resourceManagerTags) {
             if (resourceManagerTags == null) {
               throw new MissingRequiredPropertyException("GetInstanceTemplateDisk", "resourceManagerTags");
@@ -545,6 +567,7 @@ public final class GetInstanceTemplateDisk {
             _resultValue.labels = labels;
             _resultValue.mode = mode;
             _resultValue.provisionedIops = provisionedIops;
+            _resultValue.provisionedThroughput = provisionedThroughput;
             _resultValue.resourceManagerTags = resourceManagerTags;
             _resultValue.resourcePolicies = resourcePolicies;
             _resultValue.source = source;

@@ -475,7 +475,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Bigquery Connection Kms
+ * ### Bigquery Connection Sql With Cmek
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -494,14 +494,13 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.sql.UserArgs;
  * import com.pulumi.gcp.bigquery.BigqueryFunctions;
  * import com.pulumi.gcp.bigquery.inputs.GetDefaultServiceAccountArgs;
- * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
- * import com.pulumi.gcp.projects.IAMMember;
- * import com.pulumi.gcp.projects.IAMMemberArgs;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
  * import com.pulumi.gcp.bigquery.Connection;
  * import com.pulumi.gcp.bigquery.ConnectionArgs;
  * import com.pulumi.gcp.bigquery.inputs.ConnectionCloudSqlArgs;
  * import com.pulumi.gcp.bigquery.inputs.ConnectionCloudSqlCredentialArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -517,8 +516,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()
  *             .name("my-database-instance")
- *             .databaseVersion("POSTGRES_11")
  *             .region("us-central1")
+ *             .databaseVersion("POSTGRES_11")
  *             .settings(DatabaseInstanceSettingsArgs.builder()
  *                 .tier("db-f1-micro")
  *                 .build())
@@ -538,10 +537,8 @@ import javax.annotation.Nullable;
  * 
  *         final var bqSa = BigqueryFunctions.getDefaultServiceAccount();
  * 
- *         final var project = OrganizationsFunctions.getProject();
- * 
- *         var keySaUser = new IAMMember("keySaUser", IAMMemberArgs.builder()
- *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *         var keySaUser = new CryptoKeyIAMMember("keySaUser", CryptoKeyIAMMemberArgs.builder()
+ *             .cryptoKeyId("projects/project/locations/us-central1/keyRings/us-central1/cryptoKeys/bq-key")
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
  *             .member(String.format("serviceAccount:%s", bqSa.applyValue(getDefaultServiceAccountResult -> getDefaultServiceAccountResult.email())))
  *             .build());
@@ -560,7 +557,9 @@ import javax.annotation.Nullable;
  *                     .password(user.password())
  *                     .build())
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(keySaUser)
+ *                 .build());
  * 
  *     }
  * }

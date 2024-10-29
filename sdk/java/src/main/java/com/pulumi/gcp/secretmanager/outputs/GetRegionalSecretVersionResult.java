@@ -10,6 +10,8 @@ import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRegionalSecretVersionResult {
@@ -38,6 +40,7 @@ public final class GetRegionalSecretVersionResult {
      * 
      */
     private String id;
+    private @Nullable Boolean isSecretDataBase64;
     private String location;
     /**
      * @return The resource name of the regional SecretVersion. Format:
@@ -90,6 +93,9 @@ public final class GetRegionalSecretVersionResult {
     public String id() {
         return this.id;
     }
+    public Optional<Boolean> isSecretDataBase64() {
+        return Optional.ofNullable(this.isSecretDataBase64);
+    }
     public String location() {
         return this.location;
     }
@@ -132,6 +138,7 @@ public final class GetRegionalSecretVersionResult {
         private String destroyTime;
         private Boolean enabled;
         private String id;
+        private @Nullable Boolean isSecretDataBase64;
         private String location;
         private String name;
         private String project;
@@ -146,6 +153,7 @@ public final class GetRegionalSecretVersionResult {
     	      this.destroyTime = defaults.destroyTime;
     	      this.enabled = defaults.enabled;
     	      this.id = defaults.id;
+    	      this.isSecretDataBase64 = defaults.isSecretDataBase64;
     	      this.location = defaults.location;
     	      this.name = defaults.name;
     	      this.project = defaults.project;
@@ -195,6 +203,12 @@ public final class GetRegionalSecretVersionResult {
               throw new MissingRequiredPropertyException("GetRegionalSecretVersionResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder isSecretDataBase64(@Nullable Boolean isSecretDataBase64) {
+
+            this.isSecretDataBase64 = isSecretDataBase64;
             return this;
         }
         @CustomType.Setter
@@ -252,6 +266,7 @@ public final class GetRegionalSecretVersionResult {
             _resultValue.destroyTime = destroyTime;
             _resultValue.enabled = enabled;
             _resultValue.id = id;
+            _resultValue.isSecretDataBase64 = isSecretDataBase64;
             _resultValue.location = location;
             _resultValue.name = name;
             _resultValue.project = project;

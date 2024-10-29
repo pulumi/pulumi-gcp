@@ -15,6 +15,54 @@ import (
 //
 // > **Note**
 // Requires one of the following OAuth scopes: `https://www.googleapis.com/auth/cloud-platform` or `https://www.googleapis.com/auth/cloud-platform.read-only`.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/artifactregistry"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myRepo, err := artifactregistry.NewRepository(ctx, "my_repo", &artifactregistry.RepositoryArgs{
+//				Location:     pulumi.String("us-west1"),
+//				RepositoryId: pulumi.String("my-repository"),
+//				Format:       pulumi.String("DOCKER"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myImage := artifactregistry.GetDockerImageOutput(ctx, artifactregistry.GetDockerImageOutputArgs{
+//				Location:     myRepo.Location,
+//				RepositoryId: myRepo.RepositoryId,
+//				ImageName:    pulumi.String("my-image:my-tag"),
+//			}, nil)
+//			_, err = cloudrunv2.NewService(ctx, "default", &cloudrunv2.ServiceArgs{
+//				Template: &cloudrunv2.ServiceTemplateArgs{
+//					Containers: cloudrunv2.ServiceTemplateContainerArray{
+//						&cloudrunv2.ServiceTemplateContainerArgs{
+//							Image: myImage.ApplyT(func(myImage artifactregistry.GetDockerImageResult) (*string, error) {
+//								return &myImage.SelfLink, nil
+//							}).(pulumi.StringPtrOutput),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetDockerImage(ctx *pulumi.Context, args *GetDockerImageArgs, opts ...pulumi.InvokeOption) (*GetDockerImageResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDockerImageResult

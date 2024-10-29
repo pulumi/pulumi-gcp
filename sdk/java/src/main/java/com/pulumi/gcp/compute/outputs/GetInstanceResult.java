@@ -52,6 +52,11 @@ public final class GetInstanceResult {
      */
     private String cpuPlatform;
     /**
+     * @return Creation timestamp in RFC3339 text format.
+     * 
+     */
+    private String creationTimestamp;
+    /**
      * @return The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
      * 
      */
@@ -89,6 +94,11 @@ public final class GetInstanceResult {
      * 
      */
     private String instanceId;
+    /**
+     * @return Action to be taken when a customer&#39;s encryption key is revoked.
+     * 
+     */
+    private String keyRevocationActionType;
     /**
      * @return The unique fingerprint of the labels.
      * 
@@ -217,6 +227,13 @@ public final class GetInstanceResult {
         return this.cpuPlatform;
     }
     /**
+     * @return Creation timestamp in RFC3339 text format.
+     * 
+     */
+    public String creationTimestamp() {
+        return this.creationTimestamp;
+    }
+    /**
      * @return The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
      * 
      */
@@ -273,6 +290,13 @@ public final class GetInstanceResult {
      */
     public String instanceId() {
         return this.instanceId;
+    }
+    /**
+     * @return Action to be taken when a customer&#39;s encryption key is revoked.
+     * 
+     */
+    public String keyRevocationActionType() {
+        return this.keyRevocationActionType;
     }
     /**
      * @return The unique fingerprint of the labels.
@@ -427,6 +451,7 @@ public final class GetInstanceResult {
         private Boolean canIpForward;
         private List<GetInstanceConfidentialInstanceConfig> confidentialInstanceConfigs;
         private String cpuPlatform;
+        private String creationTimestamp;
         private String currentStatus;
         private Boolean deletionProtection;
         private String description;
@@ -437,6 +462,7 @@ public final class GetInstanceResult {
         private String hostname;
         private String id;
         private String instanceId;
+        private String keyRevocationActionType;
         private String labelFingerprint;
         private Map<String,String> labels;
         private String machineType;
@@ -471,6 +497,7 @@ public final class GetInstanceResult {
     	      this.canIpForward = defaults.canIpForward;
     	      this.confidentialInstanceConfigs = defaults.confidentialInstanceConfigs;
     	      this.cpuPlatform = defaults.cpuPlatform;
+    	      this.creationTimestamp = defaults.creationTimestamp;
     	      this.currentStatus = defaults.currentStatus;
     	      this.deletionProtection = defaults.deletionProtection;
     	      this.description = defaults.description;
@@ -481,6 +508,7 @@ public final class GetInstanceResult {
     	      this.hostname = defaults.hostname;
     	      this.id = defaults.id;
     	      this.instanceId = defaults.instanceId;
+    	      this.keyRevocationActionType = defaults.keyRevocationActionType;
     	      this.labelFingerprint = defaults.labelFingerprint;
     	      this.labels = defaults.labels;
     	      this.machineType = defaults.machineType;
@@ -576,6 +604,14 @@ public final class GetInstanceResult {
             return this;
         }
         @CustomType.Setter
+        public Builder creationTimestamp(String creationTimestamp) {
+            if (creationTimestamp == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "creationTimestamp");
+            }
+            this.creationTimestamp = creationTimestamp;
+            return this;
+        }
+        @CustomType.Setter
         public Builder currentStatus(String currentStatus) {
             if (currentStatus == null) {
               throw new MissingRequiredPropertyException("GetInstanceResult", "currentStatus");
@@ -656,6 +692,14 @@ public final class GetInstanceResult {
               throw new MissingRequiredPropertyException("GetInstanceResult", "instanceId");
             }
             this.instanceId = instanceId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder keyRevocationActionType(String keyRevocationActionType) {
+            if (keyRevocationActionType == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "keyRevocationActionType");
+            }
+            this.keyRevocationActionType = keyRevocationActionType;
             return this;
         }
         @CustomType.Setter
@@ -881,6 +925,7 @@ public final class GetInstanceResult {
             _resultValue.canIpForward = canIpForward;
             _resultValue.confidentialInstanceConfigs = confidentialInstanceConfigs;
             _resultValue.cpuPlatform = cpuPlatform;
+            _resultValue.creationTimestamp = creationTimestamp;
             _resultValue.currentStatus = currentStatus;
             _resultValue.deletionProtection = deletionProtection;
             _resultValue.description = description;
@@ -891,6 +936,7 @@ public final class GetInstanceResult {
             _resultValue.hostname = hostname;
             _resultValue.id = id;
             _resultValue.instanceId = instanceId;
+            _resultValue.keyRevocationActionType = keyRevocationActionType;
             _resultValue.labelFingerprint = labelFingerprint;
             _resultValue.labels = labels;
             _resultValue.machineType = machineType;

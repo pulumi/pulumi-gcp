@@ -227,7 +227,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Bigquery Connection Kms
+ * ### Bigquery Connection Sql With Cmek
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -235,8 +235,8 @@ import * as utilities from "../utilities";
  *
  * const instance = new gcp.sql.DatabaseInstance("instance", {
  *     name: "my-database-instance",
- *     databaseVersion: "POSTGRES_11",
  *     region: "us-central1",
+ *     databaseVersion: "POSTGRES_11",
  *     settings: {
  *         tier: "db-f1-micro",
  *     },
@@ -252,9 +252,8 @@ import * as utilities from "../utilities";
  *     password: "tf-test-my-password_77884",
  * });
  * const bqSa = gcp.bigquery.getDefaultServiceAccount({});
- * const project = gcp.organizations.getProject({});
- * const keySaUser = new gcp.projects.IAMMember("key_sa_user", {
- *     project: project.then(project => project.projectId),
+ * const keySaUser = new gcp.kms.CryptoKeyIAMMember("key_sa_user", {
+ *     cryptoKeyId: "projects/project/locations/us-central1/keyRings/us-central1/cryptoKeys/bq-key",
  *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
  *     member: bqSa.then(bqSa => `serviceAccount:${bqSa.email}`),
  * });
@@ -272,6 +271,8 @@ import * as utilities from "../utilities";
  *             password: user.password,
  *         },
  *     },
+ * }, {
+ *     dependsOn: [keySaUser],
  * });
  * ```
  *

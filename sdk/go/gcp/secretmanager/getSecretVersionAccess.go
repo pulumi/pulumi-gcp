@@ -50,6 +50,9 @@ func GetSecretVersionAccess(ctx *pulumi.Context, args *GetSecretVersionAccessArg
 
 // A collection of arguments for invoking getSecretVersionAccess.
 type GetSecretVersionAccessArgs struct {
+	// If set to 'true', the secret data is
+	// expected to be base64-encoded string.
+	IsSecretDataBase64 *bool `pulumi:"isSecretDataBase64"`
 	// The project to get the secret version for. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -63,7 +66,8 @@ type GetSecretVersionAccessArgs struct {
 // A collection of values returned by getSecretVersionAccess.
 type GetSecretVersionAccessResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id                 string `pulumi:"id"`
+	IsSecretDataBase64 *bool  `pulumi:"isSecretDataBase64"`
 	// The resource name of the SecretVersion. Format:
 	// `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
 	Name    string `pulumi:"name"`
@@ -95,6 +99,9 @@ func GetSecretVersionAccessOutput(ctx *pulumi.Context, args GetSecretVersionAcce
 
 // A collection of arguments for invoking getSecretVersionAccess.
 type GetSecretVersionAccessOutputArgs struct {
+	// If set to 'true', the secret data is
+	// expected to be base64-encoded string.
+	IsSecretDataBase64 pulumi.BoolPtrInput `pulumi:"isSecretDataBase64"`
 	// The project to get the secret version for. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput `pulumi:"project"`
@@ -127,6 +134,10 @@ func (o GetSecretVersionAccessResultOutput) ToGetSecretVersionAccessResultOutput
 // The provider-assigned unique ID for this managed resource.
 func (o GetSecretVersionAccessResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretVersionAccessResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetSecretVersionAccessResultOutput) IsSecretDataBase64() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetSecretVersionAccessResult) *bool { return v.IsSecretDataBase64 }).(pulumi.BoolPtrOutput)
 }
 
 // The resource name of the SecretVersion. Format:

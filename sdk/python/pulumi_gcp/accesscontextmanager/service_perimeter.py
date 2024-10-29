@@ -497,6 +497,7 @@ class ServicePerimeter(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.servicePerimeters)
         * How-to Guides
+            * [Guide to Ingress and Egress Rules](https://cloud.google.com/vpc-service-controls/docs/ingress-egress-rules)
             * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
 
         > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
@@ -754,6 +755,7 @@ class ServicePerimeter(pulumi.CustomResource):
 
         * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.servicePerimeters)
         * How-to Guides
+            * [Guide to Ingress and Egress Rules](https://cloud.google.com/vpc-service-controls/docs/ingress-egress-rules)
             * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
 
         > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,

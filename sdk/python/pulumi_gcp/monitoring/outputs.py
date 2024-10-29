@@ -91,6 +91,8 @@ class AlertPolicyAlertStrategy(dict):
             suggest = "auto_close"
         elif key == "notificationChannelStrategies":
             suggest = "notification_channel_strategies"
+        elif key == "notificationPrompts":
+            suggest = "notification_prompts"
         elif key == "notificationRateLimit":
             suggest = "notification_rate_limit"
 
@@ -108,12 +110,15 @@ class AlertPolicyAlertStrategy(dict):
     def __init__(__self__, *,
                  auto_close: Optional[str] = None,
                  notification_channel_strategies: Optional[Sequence['outputs.AlertPolicyAlertStrategyNotificationChannelStrategy']] = None,
+                 notification_prompts: Optional[Sequence[str]] = None,
                  notification_rate_limit: Optional['outputs.AlertPolicyAlertStrategyNotificationRateLimit'] = None):
         """
         :param str auto_close: If an alert policy that was active has no data for this long, any open incidents will close.
         :param Sequence['AlertPolicyAlertStrategyNotificationChannelStrategyArgs'] notification_channel_strategies: Control over how the notification channels in `notification_channels`
                are notified when this alert fires, on a per-channel basis.
                Structure is documented below.
+        :param Sequence[str] notification_prompts: Control when notifications will be sent out.
+               Each value may be one of: `NOTIFICATION_PROMPT_UNSPECIFIED`, `OPENED`, `CLOSED`.
         :param 'AlertPolicyAlertStrategyNotificationRateLimitArgs' notification_rate_limit: Required for alert policies with a LogMatch condition.
                This limit is not implemented for alert policies that are not log-based.
                Structure is documented below.
@@ -122,6 +127,8 @@ class AlertPolicyAlertStrategy(dict):
             pulumi.set(__self__, "auto_close", auto_close)
         if notification_channel_strategies is not None:
             pulumi.set(__self__, "notification_channel_strategies", notification_channel_strategies)
+        if notification_prompts is not None:
+            pulumi.set(__self__, "notification_prompts", notification_prompts)
         if notification_rate_limit is not None:
             pulumi.set(__self__, "notification_rate_limit", notification_rate_limit)
 
@@ -142,6 +149,15 @@ class AlertPolicyAlertStrategy(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "notification_channel_strategies")
+
+    @property
+    @pulumi.getter(name="notificationPrompts")
+    def notification_prompts(self) -> Optional[Sequence[str]]:
+        """
+        Control when notifications will be sent out.
+        Each value may be one of: `NOTIFICATION_PROMPT_UNSPECIFIED`, `OPENED`, `CLOSED`.
+        """
+        return pulumi.get(self, "notification_prompts")
 
     @property
     @pulumi.getter(name="notificationRateLimit")

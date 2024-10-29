@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  *     dedicatedResources: {
  *         machineSpec: {
  *             machineType: "n1-standard-4",
- *             acceleratorType: "NVIDIA_TESLA_K80",
+ *             acceleratorType: "NVIDIA_TESLA_P4",
  *             acceleratorCount: 1,
  *         },
  *         minReplicaCount: 1,

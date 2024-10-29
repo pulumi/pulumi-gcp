@@ -240,6 +240,8 @@ type Bucket struct {
 	// boolean option will delete all contained objects. If you try to delete a
 	// bucket that contains objects, the provider will fail that run.
 	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
+	// The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below.
+	HierarchicalNamespace BucketHierarchicalNamespacePtrOutput `pulumi:"hierarchicalNamespace"`
 	// A map of key/value label pairs to assign to the bucket.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
@@ -339,6 +341,8 @@ type bucketState struct {
 	// boolean option will delete all contained objects. If you try to delete a
 	// bucket that contains objects, the provider will fail that run.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
+	// The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below.
+	HierarchicalNamespace *BucketHierarchicalNamespace `pulumi:"hierarchicalNamespace"`
 	// A map of key/value label pairs to assign to the bucket.
 	Labels map[string]string `pulumi:"labels"`
 	// The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
@@ -401,6 +405,8 @@ type BucketState struct {
 	// boolean option will delete all contained objects. If you try to delete a
 	// bucket that contains objects, the provider will fail that run.
 	ForceDestroy pulumi.BoolPtrInput
+	// The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below.
+	HierarchicalNamespace BucketHierarchicalNamespacePtrInput
 	// A map of key/value label pairs to assign to the bucket.
 	Labels pulumi.StringMapInput
 	// The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
@@ -466,6 +472,8 @@ type bucketArgs struct {
 	// boolean option will delete all contained objects. If you try to delete a
 	// bucket that contains objects, the provider will fail that run.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
+	// The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below.
+	HierarchicalNamespace *BucketHierarchicalNamespace `pulumi:"hierarchicalNamespace"`
 	// A map of key/value label pairs to assign to the bucket.
 	Labels map[string]string `pulumi:"labels"`
 	// The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
@@ -520,6 +528,8 @@ type BucketArgs struct {
 	// boolean option will delete all contained objects. If you try to delete a
 	// bucket that contains objects, the provider will fail that run.
 	ForceDestroy pulumi.BoolPtrInput
+	// The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below.
+	HierarchicalNamespace BucketHierarchicalNamespacePtrInput
 	// A map of key/value label pairs to assign to the bucket.
 	Labels pulumi.StringMapInput
 	// The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
@@ -682,6 +692,11 @@ func (o BucketOutput) Encryption() BucketEncryptionPtrOutput {
 // bucket that contains objects, the provider will fail that run.
 func (o BucketOutput) ForceDestroy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Bucket) pulumi.BoolPtrOutput { return v.ForceDestroy }).(pulumi.BoolPtrOutput)
+}
+
+// The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below.
+func (o BucketOutput) HierarchicalNamespace() BucketHierarchicalNamespacePtrOutput {
+	return o.ApplyT(func(v *Bucket) BucketHierarchicalNamespacePtrOutput { return v.HierarchicalNamespace }).(BucketHierarchicalNamespacePtrOutput)
 }
 
 // A map of key/value label pairs to assign to the bucket.

@@ -167,6 +167,7 @@ namespace Pulumi.Gcp.Compute
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string IpAddressSelectionPolicy;
         public readonly string LoadBalancingScheme;
         public readonly ImmutableArray<Outputs.GetBackendServiceLocalityLbPolicyResult> LocalityLbPolicies;
         public readonly string LocalityLbPolicy;
@@ -237,6 +238,8 @@ namespace Pulumi.Gcp.Compute
 
             string id,
 
+            string ipAddressSelectionPolicy,
+
             string loadBalancingScheme,
 
             ImmutableArray<Outputs.GetBackendServiceLocalityLbPolicyResult> localityLbPolicies,
@@ -287,6 +290,7 @@ namespace Pulumi.Gcp.Compute
             HealthChecks = healthChecks;
             Iaps = iaps;
             Id = id;
+            IpAddressSelectionPolicy = ipAddressSelectionPolicy;
             LoadBalancingScheme = loadBalancingScheme;
             LocalityLbPolicies = localityLbPolicies;
             LocalityLbPolicy = localityLbPolicy;

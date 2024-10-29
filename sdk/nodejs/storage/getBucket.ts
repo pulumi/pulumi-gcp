@@ -57,6 +57,7 @@ export interface GetBucketResult {
     readonly enableObjectRetention: boolean;
     readonly encryptions: outputs.storage.GetBucketEncryption[];
     readonly forceDestroy: boolean;
+    readonly hierarchicalNamespaces: outputs.storage.GetBucketHierarchicalNamespace[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */

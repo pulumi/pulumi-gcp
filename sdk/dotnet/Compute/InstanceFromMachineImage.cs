@@ -88,6 +88,12 @@ namespace Pulumi.Gcp.Compute
         public Output<string> CpuPlatform { get; private set; } = null!;
 
         /// <summary>
+        /// Creation timestamp in RFC3339 text format.
+        /// </summary>
+        [Output("creationTimestamp")]
+        public Output<string> CreationTimestamp { get; private set; } = null!;
+
+        /// <summary>
         /// Current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING,
         /// SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance
         /// life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
@@ -141,6 +147,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
+
+        /// <summary>
+        /// Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
+        /// default.
+        /// </summary>
+        [Output("keyRevocationActionType")]
+        public Output<string> KeyRevocationActionType { get; private set; } = null!;
 
         /// <summary>
         /// The unique fingerprint of the labels.
@@ -424,6 +437,13 @@ namespace Pulumi.Gcp.Compute
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
 
+        /// <summary>
+        /// Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
+        /// default.
+        /// </summary>
+        [Input("keyRevocationActionType")]
+        public Input<string>? KeyRevocationActionType { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -644,6 +664,12 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? CpuPlatform { get; set; }
 
         /// <summary>
+        /// Creation timestamp in RFC3339 text format.
+        /// </summary>
+        [Input("creationTimestamp")]
+        public Input<string>? CreationTimestamp { get; set; }
+
+        /// <summary>
         /// Current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING,
         /// SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance
         /// life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
@@ -712,6 +738,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
+
+        /// <summary>
+        /// Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
+        /// default.
+        /// </summary>
+        [Input("keyRevocationActionType")]
+        public Input<string>? KeyRevocationActionType { get; set; }
 
         /// <summary>
         /// The unique fingerprint of the labels.

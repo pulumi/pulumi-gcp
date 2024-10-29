@@ -299,7 +299,7 @@ import (
 //				ConnectionProfileId: pulumi.String("source-profile"),
 //				PostgresqlProfile: &datastream.ConnectionProfilePostgresqlProfileArgs{
 //					Hostname: pulumi.String("hostname"),
-//					Port:     pulumi.Int(3306),
+//					Port:     pulumi.Int(5432),
 //					Username: pulumi.String("user"),
 //					Password: pulumi.String("pass"),
 //					Database: pulumi.String("postgres"),

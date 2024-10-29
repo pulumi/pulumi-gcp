@@ -69,6 +69,7 @@ import javax.annotation.Nullable;
  *                 .clientId("my-client-id")
  *                 .clientSecret("my-client-secret")
  *                 .build())
+ *             .deletionPolicy("DEFAULT")
  *             .build());
  * 
  *     }
@@ -416,6 +417,48 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Looker Instance Force Delete
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.looker.Instance;
+ * import com.pulumi.gcp.looker.InstanceArgs;
+ * import com.pulumi.gcp.looker.inputs.InstanceOauthConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var looker_instance = new Instance("looker-instance", InstanceArgs.builder()
+ *             .name("my-instance")
+ *             .platformEdition("LOOKER_CORE_STANDARD_ANNUAL")
+ *             .region("us-central1")
+ *             .oauthConfig(InstanceOauthConfigArgs.builder()
+ *                 .clientId("my-client-id")
+ *                 .clientSecret("my-client-secret")
+ *                 .build())
+ *             .deletionPolicy("FORCE")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -515,6 +558,26 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<InstanceCustomDomain>> customDomain() {
         return Codegen.optional(this.customDomain);
+    }
+    /**
+     * Policy to determine if the cluster should be deleted forcefully.
+     * If setting deletion_policy = &#34;FORCE&#34;, the Looker instance will be deleted regardless
+     * of its nested resources. If set to &#34;DEFAULT&#34;, Looker instances that still have
+     * nested resources will return an error. Possible values: DEFAULT, FORCE
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> deletionPolicy;
+
+    /**
+     * @return Policy to determine if the cluster should be deleted forcefully.
+     * If setting deletion_policy = &#34;FORCE&#34;, the Looker instance will be deleted regardless
+     * of its nested resources. If set to &#34;DEFAULT&#34;, Looker instances that still have
+     * nested resources will return an error. Possible values: DEFAULT, FORCE
+     * 
+     */
+    public Output<Optional<String>> deletionPolicy() {
+        return Codegen.optional(this.deletionPolicy);
     }
     /**
      * Maintenance denial period for this instance.

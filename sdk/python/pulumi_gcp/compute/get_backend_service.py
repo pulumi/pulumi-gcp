@@ -27,7 +27,7 @@ class GetBackendServiceResult:
     """
     A collection of values returned by getBackendService.
     """
-    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policies=None, circuit_breakers=None, compression_mode=None, connection_draining_timeout_sec=None, consistent_hash=None, creation_timestamp=None, custom_request_headers=None, custom_response_headers=None, description=None, edge_security_policy=None, enable_cdn=None, fingerprint=None, generated_id=None, health_checks=None, iaps=None, id=None, load_balancing_scheme=None, locality_lb_policies=None, locality_lb_policy=None, log_configs=None, name=None, outlier_detections=None, port_name=None, project=None, protocol=None, security_policy=None, security_settings=None, self_link=None, service_lb_policy=None, session_affinity=None, strong_session_affinity_cookies=None, timeout_sec=None):
+    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policies=None, circuit_breakers=None, compression_mode=None, connection_draining_timeout_sec=None, consistent_hash=None, creation_timestamp=None, custom_request_headers=None, custom_response_headers=None, description=None, edge_security_policy=None, enable_cdn=None, fingerprint=None, generated_id=None, health_checks=None, iaps=None, id=None, ip_address_selection_policy=None, load_balancing_scheme=None, locality_lb_policies=None, locality_lb_policy=None, log_configs=None, name=None, outlier_detections=None, port_name=None, project=None, protocol=None, security_policy=None, security_settings=None, self_link=None, service_lb_policy=None, session_affinity=None, strong_session_affinity_cookies=None, timeout_sec=None):
         if affinity_cookie_ttl_sec and not isinstance(affinity_cookie_ttl_sec, int):
             raise TypeError("Expected argument 'affinity_cookie_ttl_sec' to be a int")
         pulumi.set(__self__, "affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
@@ -82,6 +82,9 @@ class GetBackendServiceResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if ip_address_selection_policy and not isinstance(ip_address_selection_policy, str):
+            raise TypeError("Expected argument 'ip_address_selection_policy' to be a str")
+        pulumi.set(__self__, "ip_address_selection_policy", ip_address_selection_policy)
         if load_balancing_scheme and not isinstance(load_balancing_scheme, str):
             raise TypeError("Expected argument 'load_balancing_scheme' to be a str")
         pulumi.set(__self__, "load_balancing_scheme", load_balancing_scheme)
@@ -246,6 +249,11 @@ class GetBackendServiceResult:
         return pulumi.get(self, "id")
 
     @property
+    @pulumi.getter(name="ipAddressSelectionPolicy")
+    def ip_address_selection_policy(self) -> str:
+        return pulumi.get(self, "ip_address_selection_policy")
+
+    @property
     @pulumi.getter(name="loadBalancingScheme")
     def load_balancing_scheme(self) -> str:
         return pulumi.get(self, "load_balancing_scheme")
@@ -365,6 +373,7 @@ class AwaitableGetBackendServiceResult(GetBackendServiceResult):
             health_checks=self.health_checks,
             iaps=self.iaps,
             id=self.id,
+            ip_address_selection_policy=self.ip_address_selection_policy,
             load_balancing_scheme=self.load_balancing_scheme,
             locality_lb_policies=self.locality_lb_policies,
             locality_lb_policy=self.locality_lb_policy,
@@ -434,6 +443,7 @@ def get_backend_service(name: Optional[str] = None,
         health_checks=pulumi.get(__ret__, 'health_checks'),
         iaps=pulumi.get(__ret__, 'iaps'),
         id=pulumi.get(__ret__, 'id'),
+        ip_address_selection_policy=pulumi.get(__ret__, 'ip_address_selection_policy'),
         load_balancing_scheme=pulumi.get(__ret__, 'load_balancing_scheme'),
         locality_lb_policies=pulumi.get(__ret__, 'locality_lb_policies'),
         locality_lb_policy=pulumi.get(__ret__, 'locality_lb_policy'),
@@ -500,6 +510,7 @@ def get_backend_service_output(name: Optional[pulumi.Input[str]] = None,
         health_checks=pulumi.get(__response__, 'health_checks'),
         iaps=pulumi.get(__response__, 'iaps'),
         id=pulumi.get(__response__, 'id'),
+        ip_address_selection_policy=pulumi.get(__response__, 'ip_address_selection_policy'),
         load_balancing_scheme=pulumi.get(__response__, 'load_balancing_scheme'),
         locality_lb_policies=pulumi.get(__response__, 'locality_lb_policies'),
         locality_lb_policy=pulumi.get(__response__, 'locality_lb_policy'),

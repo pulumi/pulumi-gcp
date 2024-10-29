@@ -315,6 +315,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.cpuPlatform;
     }
     /**
+     * Creation timestamp in RFC3339 text format.
+     * 
+     */
+    @Export(name="creationTimestamp", refs={String.class}, tree="[0]")
+    private Output<String> creationTimestamp;
+
+    /**
+     * @return Creation timestamp in RFC3339 text format.
+     * 
+     */
+    public Output<String> creationTimestamp() {
+        return this.creationTimestamp;
+    }
+    /**
      * The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
      * 
      */
@@ -453,6 +467,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.instanceId;
     }
     /**
+     * Action to be taken when a customer&#39;s encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
+     * 
+     */
+    @Export(name="keyRevocationActionType", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> keyRevocationActionType;
+
+    /**
+     * @return Action to be taken when a customer&#39;s encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
+     * 
+     */
+    public Output<Optional<String>> keyRevocationActionType() {
+        return Codegen.optional(this.keyRevocationActionType);
+    }
+    /**
      * The unique fingerprint of the labels.
      * 
      */
@@ -490,6 +518,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * **Note:** If you want to update this value (resize the VM) after initial creation, you must set `allow_stopping_for_update` to `true`.
      * 
      * [Custom machine types](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
+     * Because of current API limitations some custom machine types may get converted to different machine types (such as an equivalent standard type) and cause non-empty plans in your configuration. Use
+     * `lifecycle.ignore_changes` on `machine_type` in these cases.
      * 
      * There is a limit of 6.5 GB per CPU unless you add [extended memory](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#extendedmemory). You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
      * 
@@ -503,6 +533,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * **Note:** If you want to update this value (resize the VM) after initial creation, you must set `allow_stopping_for_update` to `true`.
      * 
      * [Custom machine types](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
+     * Because of current API limitations some custom machine types may get converted to different machine types (such as an equivalent standard type) and cause non-empty plans in your configuration. Use
+     * `lifecycle.ignore_changes` on `machine_type` in these cases.
      * 
      * There is a limit of 6.5 GB per CPU unless you add [extended memory](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#extendedmemory). You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
      * 

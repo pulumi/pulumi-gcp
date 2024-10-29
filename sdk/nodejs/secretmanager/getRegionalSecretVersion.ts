@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Get the value and metadata from a Secret Manager regional secret version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/regional-secrets-overview) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions). If you don't need the metadata (i.e., if you want to use a more limited role to access the regional secret version only), see also the gcp.secretmanager.getRegionalSecretVersionAccess datasource.
+ * Get the value and metadata from a Secret Manager regional secret version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/regional-secrets-overview) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.locations.secrets.versions). If you don't need the metadata (i.e., if you want to use a more limited role to access the regional secret version only), see also the gcp.secretmanager.getRegionalSecretVersionAccess datasource.
  *
  * ## Example Usage
  *
@@ -24,6 +24,7 @@ import * as utilities from "../utilities";
 export function getRegionalSecretVersion(args: GetRegionalSecretVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionalSecretVersionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:secretmanager/getRegionalSecretVersion:getRegionalSecretVersion", {
+        "isSecretDataBase64": args.isSecretDataBase64,
         "location": args.location,
         "project": args.project,
         "secret": args.secret,
@@ -35,6 +36,11 @@ export function getRegionalSecretVersion(args: GetRegionalSecretVersionArgs, opt
  * A collection of arguments for invoking getRegionalSecretVersion.
  */
 export interface GetRegionalSecretVersionArgs {
+    /**
+     * If set to 'true', the secret data is
+     * expected to be base64-encoded string.
+     */
+    isSecretDataBase64?: boolean;
     /**
      * Location of Secret Manager regional secret resource.
      * It must be provided when the `secret` field provided consists of only the name of the regional secret.
@@ -81,6 +87,7 @@ export interface GetRegionalSecretVersionResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly isSecretDataBase64?: boolean;
     readonly location: string;
     /**
      * The resource name of the regional SecretVersion. Format:
@@ -96,7 +103,7 @@ export interface GetRegionalSecretVersionResult {
     readonly version: string;
 }
 /**
- * Get the value and metadata from a Secret Manager regional secret version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/regional-secrets-overview) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions). If you don't need the metadata (i.e., if you want to use a more limited role to access the regional secret version only), see also the gcp.secretmanager.getRegionalSecretVersionAccess datasource.
+ * Get the value and metadata from a Secret Manager regional secret version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/regional-secrets-overview) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.locations.secrets.versions). If you don't need the metadata (i.e., if you want to use a more limited role to access the regional secret version only), see also the gcp.secretmanager.getRegionalSecretVersionAccess datasource.
  *
  * ## Example Usage
  *
@@ -113,6 +120,7 @@ export interface GetRegionalSecretVersionResult {
 export function getRegionalSecretVersionOutput(args: GetRegionalSecretVersionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionalSecretVersionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:secretmanager/getRegionalSecretVersion:getRegionalSecretVersion", {
+        "isSecretDataBase64": args.isSecretDataBase64,
         "location": args.location,
         "project": args.project,
         "secret": args.secret,
@@ -124,6 +132,11 @@ export function getRegionalSecretVersionOutput(args: GetRegionalSecretVersionOut
  * A collection of arguments for invoking getRegionalSecretVersion.
  */
 export interface GetRegionalSecretVersionOutputArgs {
+    /**
+     * If set to 'true', the secret data is
+     * expected to be base64-encoded string.
+     */
+    isSecretDataBase64?: pulumi.Input<boolean>;
     /**
      * Location of Secret Manager regional secret resource.
      * It must be provided when the `secret` field provided consists of only the name of the regional secret.

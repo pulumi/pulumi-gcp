@@ -75,6 +75,7 @@ public final class GetBackendServiceResult {
      * 
      */
     private String id;
+    private String ipAddressSelectionPolicy;
     private String loadBalancingScheme;
     private List<GetBackendServiceLocalityLbPolicy> localityLbPolicies;
     private String localityLbPolicy;
@@ -199,6 +200,9 @@ public final class GetBackendServiceResult {
     public String id() {
         return this.id;
     }
+    public String ipAddressSelectionPolicy() {
+        return this.ipAddressSelectionPolicy;
+    }
     public String loadBalancingScheme() {
         return this.loadBalancingScheme;
     }
@@ -295,6 +299,7 @@ public final class GetBackendServiceResult {
         private List<String> healthChecks;
         private List<GetBackendServiceIap> iaps;
         private String id;
+        private String ipAddressSelectionPolicy;
         private String loadBalancingScheme;
         private List<GetBackendServiceLocalityLbPolicy> localityLbPolicies;
         private String localityLbPolicy;
@@ -332,6 +337,7 @@ public final class GetBackendServiceResult {
     	      this.healthChecks = defaults.healthChecks;
     	      this.iaps = defaults.iaps;
     	      this.id = defaults.id;
+    	      this.ipAddressSelectionPolicy = defaults.ipAddressSelectionPolicy;
     	      this.loadBalancingScheme = defaults.loadBalancingScheme;
     	      this.localityLbPolicies = defaults.localityLbPolicies;
     	      this.localityLbPolicy = defaults.localityLbPolicy;
@@ -519,6 +525,14 @@ public final class GetBackendServiceResult {
             return this;
         }
         @CustomType.Setter
+        public Builder ipAddressSelectionPolicy(String ipAddressSelectionPolicy) {
+            if (ipAddressSelectionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceResult", "ipAddressSelectionPolicy");
+            }
+            this.ipAddressSelectionPolicy = ipAddressSelectionPolicy;
+            return this;
+        }
+        @CustomType.Setter
         public Builder loadBalancingScheme(String loadBalancingScheme) {
             if (loadBalancingScheme == null) {
               throw new MissingRequiredPropertyException("GetBackendServiceResult", "loadBalancingScheme");
@@ -679,6 +693,7 @@ public final class GetBackendServiceResult {
             _resultValue.healthChecks = healthChecks;
             _resultValue.iaps = iaps;
             _resultValue.id = id;
+            _resultValue.ipAddressSelectionPolicy = ipAddressSelectionPolicy;
             _resultValue.loadBalancingScheme = loadBalancingScheme;
             _resultValue.localityLbPolicies = localityLbPolicies;
             _resultValue.localityLbPolicy = localityLbPolicy;

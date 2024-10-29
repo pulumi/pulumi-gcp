@@ -56,7 +56,6 @@ import (
 //						}).(pulumi.StringOutput),
 //					},
 //				},
-//				Description: pulumi.String("Membership"),
 //			})
 //			if err != nil {
 //				return err

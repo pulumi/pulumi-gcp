@@ -95,6 +95,7 @@ import * as utilities from "../utilities";
  * const appengineNegBucket = new gcp.storage.Bucket("appengine_neg", {
  *     name: "appengine-neg",
  *     location: "US",
+ *     uniformBucketLevelAccess: true,
  * });
  * const appengineNegBucketObject = new gcp.storage.BucketObject("appengine_neg", {
  *     name: "hello-world.zip",
@@ -103,7 +104,7 @@ import * as utilities from "../utilities";
  * });
  * const appengineNegFlexibleAppVersion = new gcp.appengine.FlexibleAppVersion("appengine_neg", {
  *     versionId: "v1",
- *     service: "appengine-network-endpoint-group",
+ *     service: "appengine-neg",
  *     runtime: "nodejs",
  *     flexibleRuntimeSettings: {
  *         operatingSystem: "ubuntu22",

@@ -730,7 +730,7 @@ class Connection(pulumi.CustomResource):
                 },
             })
         ```
-        ### Bigquery Connection Kms
+        ### Bigquery Connection Sql With Cmek
 
         ```python
         import pulumi
@@ -738,8 +738,8 @@ class Connection(pulumi.CustomResource):
 
         instance = gcp.sql.DatabaseInstance("instance",
             name="my-database-instance",
-            database_version="POSTGRES_11",
             region="us-central1",
+            database_version="POSTGRES_11",
             settings={
                 "tier": "db-f1-micro",
             },
@@ -752,9 +752,8 @@ class Connection(pulumi.CustomResource):
             instance=instance.name,
             password="tf-test-my-password_77884")
         bq_sa = gcp.bigquery.get_default_service_account()
-        project = gcp.organizations.get_project()
-        key_sa_user = gcp.projects.IAMMember("key_sa_user",
-            project=project.project_id,
+        key_sa_user = gcp.kms.CryptoKeyIAMMember("key_sa_user",
+            crypto_key_id="projects/project/locations/us-central1/keyRings/us-central1/cryptoKeys/bq-key",
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:{bq_sa.email}")
         bq_connection_cmek = gcp.bigquery.Connection("bq-connection-cmek",
@@ -770,7 +769,8 @@ class Connection(pulumi.CustomResource):
                     "username": user.name,
                     "password": user.password,
                 },
-            })
+            },
+            opts = pulumi.ResourceOptions(depends_on=[key_sa_user]))
         ```
 
         ## Import
@@ -1036,7 +1036,7 @@ class Connection(pulumi.CustomResource):
                 },
             })
         ```
-        ### Bigquery Connection Kms
+        ### Bigquery Connection Sql With Cmek
 
         ```python
         import pulumi
@@ -1044,8 +1044,8 @@ class Connection(pulumi.CustomResource):
 
         instance = gcp.sql.DatabaseInstance("instance",
             name="my-database-instance",
-            database_version="POSTGRES_11",
             region="us-central1",
+            database_version="POSTGRES_11",
             settings={
                 "tier": "db-f1-micro",
             },
@@ -1058,9 +1058,8 @@ class Connection(pulumi.CustomResource):
             instance=instance.name,
             password="tf-test-my-password_77884")
         bq_sa = gcp.bigquery.get_default_service_account()
-        project = gcp.organizations.get_project()
-        key_sa_user = gcp.projects.IAMMember("key_sa_user",
-            project=project.project_id,
+        key_sa_user = gcp.kms.CryptoKeyIAMMember("key_sa_user",
+            crypto_key_id="projects/project/locations/us-central1/keyRings/us-central1/cryptoKeys/bq-key",
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:{bq_sa.email}")
         bq_connection_cmek = gcp.bigquery.Connection("bq-connection-cmek",
@@ -1076,7 +1075,8 @@ class Connection(pulumi.CustomResource):
                     "username": user.name,
                     "password": user.password,
                 },
-            })
+            },
+            opts = pulumi.ResourceOptions(depends_on=[key_sa_user]))
         ```
 
         ## Import

@@ -71,6 +71,10 @@ export interface GetInstanceTemplateResult {
      */
     readonly confidentialInstanceConfigs: outputs.compute.GetInstanceTemplateConfidentialInstanceConfig[];
     /**
+     * Creation timestamp in RFC3339 text format.
+     */
+    readonly creationTimestamp: string;
+    /**
      * A brief description of this resource.
      */
     readonly description: string;
@@ -100,6 +104,10 @@ export interface GetInstanceTemplateResult {
      * created from this template.
      */
     readonly instanceDescription: string;
+    /**
+     * Action to be taken when a customer's encryption key is revoked.
+     */
+    readonly keyRevocationActionType: string;
     /**
      * (Optional) A set of ket/value label pairs to assign to disk created from
      * this template

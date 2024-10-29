@@ -12,15 +12,6 @@ namespace Pulumi.Gcp.Compute
     public static class GetRegionInstanceGroupManager
     {
         /// <summary>
-        /// ## subcategory: "Compute Engine"
-        /// 
-        /// page_title: "Google: gcp.compute.RegionInstanceGroupManager"
-        /// description: |-
-        /// Get a Compute Region Instance Group within GCE.
-        /// ---
-        /// 
-        /// # google\_compute\_region\_instance\_group\_manager
-        /// 
         /// Get a Compute Region Instance Group Manager within GCE.
         /// For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups)
         /// and [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceGroupManagers)
@@ -48,15 +39,6 @@ namespace Pulumi.Gcp.Compute
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionInstanceGroupManagerResult>("gcp:compute/getRegionInstanceGroupManager:getRegionInstanceGroupManager", args ?? new GetRegionInstanceGroupManagerArgs(), options.WithDefaults());
 
         /// <summary>
-        /// ## subcategory: "Compute Engine"
-        /// 
-        /// page_title: "Google: gcp.compute.RegionInstanceGroupManager"
-        /// description: |-
-        /// Get a Compute Region Instance Group within GCE.
-        /// ---
-        /// 
-        /// # google\_compute\_region\_instance\_group\_manager
-        /// 
         /// Get a Compute Region Instance Group Manager within GCE.
         /// For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups)
         /// and [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceGroupManagers)

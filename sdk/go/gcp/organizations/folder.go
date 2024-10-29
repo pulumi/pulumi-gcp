@@ -64,7 +64,7 @@ type Folder struct {
 	// The resource name of the parent Folder or Organization.
 	// Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
 	Parent pulumi.StringOutput `pulumi:"parent"`
-	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when  mutated.
+	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when  mutated. This field is only set at create time and modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the `tags.TagValue` resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
@@ -120,7 +120,7 @@ type folderState struct {
 	// The resource name of the parent Folder or Organization.
 	// Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
 	Parent *string `pulumi:"parent"`
-	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when  mutated.
+	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when  mutated. This field is only set at create time and modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the `tags.TagValue` resource.
 	Tags map[string]string `pulumi:"tags"`
 }
 
@@ -141,7 +141,7 @@ type FolderState struct {
 	// The resource name of the parent Folder or Organization.
 	// Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
 	Parent pulumi.StringPtrInput
-	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when  mutated.
+	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when  mutated. This field is only set at create time and modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the `tags.TagValue` resource.
 	Tags pulumi.StringMapInput
 }
 
@@ -157,7 +157,7 @@ type folderArgs struct {
 	// The resource name of the parent Folder or Organization.
 	// Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
 	Parent string `pulumi:"parent"`
-	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when  mutated.
+	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when  mutated. This field is only set at create time and modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the `tags.TagValue` resource.
 	Tags map[string]string `pulumi:"tags"`
 }
 
@@ -170,7 +170,7 @@ type FolderArgs struct {
 	// The resource name of the parent Folder or Organization.
 	// Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
 	Parent pulumi.StringInput
-	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when  mutated.
+	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when  mutated. This field is only set at create time and modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the `tags.TagValue` resource.
 	Tags pulumi.StringMapInput
 }
 
@@ -298,7 +298,7 @@ func (o FolderOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v *Folder) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }
 
-// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when  mutated.
+// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when  mutated. This field is only set at create time and modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the `tags.TagValue` resource.
 func (o FolderOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Folder) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }

@@ -987,6 +987,218 @@ func (o AddonsConfigAddonsConfigMonetizationConfigPtrOutput) Enabled() pulumi.Bo
 	}).(pulumi.BoolPtrOutput)
 }
 
+type AppGroupAttribute struct {
+	// Key of the attribute
+	Name *string `pulumi:"name"`
+	// Value of the attribute
+	Value *string `pulumi:"value"`
+}
+
+// AppGroupAttributeInput is an input type that accepts AppGroupAttributeArgs and AppGroupAttributeOutput values.
+// You can construct a concrete instance of `AppGroupAttributeInput` via:
+//
+//	AppGroupAttributeArgs{...}
+type AppGroupAttributeInput interface {
+	pulumi.Input
+
+	ToAppGroupAttributeOutput() AppGroupAttributeOutput
+	ToAppGroupAttributeOutputWithContext(context.Context) AppGroupAttributeOutput
+}
+
+type AppGroupAttributeArgs struct {
+	// Key of the attribute
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Value of the attribute
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (AppGroupAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppGroupAttribute)(nil)).Elem()
+}
+
+func (i AppGroupAttributeArgs) ToAppGroupAttributeOutput() AppGroupAttributeOutput {
+	return i.ToAppGroupAttributeOutputWithContext(context.Background())
+}
+
+func (i AppGroupAttributeArgs) ToAppGroupAttributeOutputWithContext(ctx context.Context) AppGroupAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppGroupAttributeOutput)
+}
+
+// AppGroupAttributeArrayInput is an input type that accepts AppGroupAttributeArray and AppGroupAttributeArrayOutput values.
+// You can construct a concrete instance of `AppGroupAttributeArrayInput` via:
+//
+//	AppGroupAttributeArray{ AppGroupAttributeArgs{...} }
+type AppGroupAttributeArrayInput interface {
+	pulumi.Input
+
+	ToAppGroupAttributeArrayOutput() AppGroupAttributeArrayOutput
+	ToAppGroupAttributeArrayOutputWithContext(context.Context) AppGroupAttributeArrayOutput
+}
+
+type AppGroupAttributeArray []AppGroupAttributeInput
+
+func (AppGroupAttributeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppGroupAttribute)(nil)).Elem()
+}
+
+func (i AppGroupAttributeArray) ToAppGroupAttributeArrayOutput() AppGroupAttributeArrayOutput {
+	return i.ToAppGroupAttributeArrayOutputWithContext(context.Background())
+}
+
+func (i AppGroupAttributeArray) ToAppGroupAttributeArrayOutputWithContext(ctx context.Context) AppGroupAttributeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppGroupAttributeArrayOutput)
+}
+
+type AppGroupAttributeOutput struct{ *pulumi.OutputState }
+
+func (AppGroupAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppGroupAttribute)(nil)).Elem()
+}
+
+func (o AppGroupAttributeOutput) ToAppGroupAttributeOutput() AppGroupAttributeOutput {
+	return o
+}
+
+func (o AppGroupAttributeOutput) ToAppGroupAttributeOutputWithContext(ctx context.Context) AppGroupAttributeOutput {
+	return o
+}
+
+// Key of the attribute
+func (o AppGroupAttributeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppGroupAttribute) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Value of the attribute
+func (o AppGroupAttributeOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppGroupAttribute) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type AppGroupAttributeArrayOutput struct{ *pulumi.OutputState }
+
+func (AppGroupAttributeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppGroupAttribute)(nil)).Elem()
+}
+
+func (o AppGroupAttributeArrayOutput) ToAppGroupAttributeArrayOutput() AppGroupAttributeArrayOutput {
+	return o
+}
+
+func (o AppGroupAttributeArrayOutput) ToAppGroupAttributeArrayOutputWithContext(ctx context.Context) AppGroupAttributeArrayOutput {
+	return o
+}
+
+func (o AppGroupAttributeArrayOutput) Index(i pulumi.IntInput) AppGroupAttributeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppGroupAttribute {
+		return vs[0].([]AppGroupAttribute)[vs[1].(int)]
+	}).(AppGroupAttributeOutput)
+}
+
+type DeveloperAttribute struct {
+	// Key of the attribute
+	Name *string `pulumi:"name"`
+	// Value of the attribute
+	Value *string `pulumi:"value"`
+}
+
+// DeveloperAttributeInput is an input type that accepts DeveloperAttributeArgs and DeveloperAttributeOutput values.
+// You can construct a concrete instance of `DeveloperAttributeInput` via:
+//
+//	DeveloperAttributeArgs{...}
+type DeveloperAttributeInput interface {
+	pulumi.Input
+
+	ToDeveloperAttributeOutput() DeveloperAttributeOutput
+	ToDeveloperAttributeOutputWithContext(context.Context) DeveloperAttributeOutput
+}
+
+type DeveloperAttributeArgs struct {
+	// Key of the attribute
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Value of the attribute
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (DeveloperAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeveloperAttribute)(nil)).Elem()
+}
+
+func (i DeveloperAttributeArgs) ToDeveloperAttributeOutput() DeveloperAttributeOutput {
+	return i.ToDeveloperAttributeOutputWithContext(context.Background())
+}
+
+func (i DeveloperAttributeArgs) ToDeveloperAttributeOutputWithContext(ctx context.Context) DeveloperAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeveloperAttributeOutput)
+}
+
+// DeveloperAttributeArrayInput is an input type that accepts DeveloperAttributeArray and DeveloperAttributeArrayOutput values.
+// You can construct a concrete instance of `DeveloperAttributeArrayInput` via:
+//
+//	DeveloperAttributeArray{ DeveloperAttributeArgs{...} }
+type DeveloperAttributeArrayInput interface {
+	pulumi.Input
+
+	ToDeveloperAttributeArrayOutput() DeveloperAttributeArrayOutput
+	ToDeveloperAttributeArrayOutputWithContext(context.Context) DeveloperAttributeArrayOutput
+}
+
+type DeveloperAttributeArray []DeveloperAttributeInput
+
+func (DeveloperAttributeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeveloperAttribute)(nil)).Elem()
+}
+
+func (i DeveloperAttributeArray) ToDeveloperAttributeArrayOutput() DeveloperAttributeArrayOutput {
+	return i.ToDeveloperAttributeArrayOutputWithContext(context.Background())
+}
+
+func (i DeveloperAttributeArray) ToDeveloperAttributeArrayOutputWithContext(ctx context.Context) DeveloperAttributeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeveloperAttributeArrayOutput)
+}
+
+type DeveloperAttributeOutput struct{ *pulumi.OutputState }
+
+func (DeveloperAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeveloperAttribute)(nil)).Elem()
+}
+
+func (o DeveloperAttributeOutput) ToDeveloperAttributeOutput() DeveloperAttributeOutput {
+	return o
+}
+
+func (o DeveloperAttributeOutput) ToDeveloperAttributeOutputWithContext(ctx context.Context) DeveloperAttributeOutput {
+	return o
+}
+
+// Key of the attribute
+func (o DeveloperAttributeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeveloperAttribute) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Value of the attribute
+func (o DeveloperAttributeOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeveloperAttribute) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type DeveloperAttributeArrayOutput struct{ *pulumi.OutputState }
+
+func (DeveloperAttributeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeveloperAttribute)(nil)).Elem()
+}
+
+func (o DeveloperAttributeArrayOutput) ToDeveloperAttributeArrayOutput() DeveloperAttributeArrayOutput {
+	return o
+}
+
+func (o DeveloperAttributeArrayOutput) ToDeveloperAttributeArrayOutputWithContext(ctx context.Context) DeveloperAttributeArrayOutput {
+	return o
+}
+
+func (o DeveloperAttributeArrayOutput) Index(i pulumi.IntInput) DeveloperAttributeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeveloperAttribute {
+		return vs[0].([]DeveloperAttribute)[vs[1].(int)]
+	}).(DeveloperAttributeOutput)
+}
+
 type EnvironmentIamBindingCondition struct {
 	Description *string `pulumi:"description"`
 	Expression  string  `pulumi:"expression"`
@@ -3758,6 +3970,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AddonsConfigAddonsConfigIntegrationConfigPtrInput)(nil)).Elem(), AddonsConfigAddonsConfigIntegrationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AddonsConfigAddonsConfigMonetizationConfigInput)(nil)).Elem(), AddonsConfigAddonsConfigMonetizationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AddonsConfigAddonsConfigMonetizationConfigPtrInput)(nil)).Elem(), AddonsConfigAddonsConfigMonetizationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppGroupAttributeInput)(nil)).Elem(), AppGroupAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppGroupAttributeArrayInput)(nil)).Elem(), AppGroupAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeveloperAttributeInput)(nil)).Elem(), DeveloperAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeveloperAttributeArrayInput)(nil)).Elem(), DeveloperAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentIamBindingConditionInput)(nil)).Elem(), EnvironmentIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentIamBindingConditionPtrInput)(nil)).Elem(), EnvironmentIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentIamMemberConditionInput)(nil)).Elem(), EnvironmentIamMemberConditionArgs{})
@@ -3802,6 +4018,10 @@ func init() {
 	pulumi.RegisterOutputType(AddonsConfigAddonsConfigIntegrationConfigPtrOutput{})
 	pulumi.RegisterOutputType(AddonsConfigAddonsConfigMonetizationConfigOutput{})
 	pulumi.RegisterOutputType(AddonsConfigAddonsConfigMonetizationConfigPtrOutput{})
+	pulumi.RegisterOutputType(AppGroupAttributeOutput{})
+	pulumi.RegisterOutputType(AppGroupAttributeArrayOutput{})
+	pulumi.RegisterOutputType(DeveloperAttributeOutput{})
+	pulumi.RegisterOutputType(DeveloperAttributeArrayOutput{})
 	pulumi.RegisterOutputType(EnvironmentIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(EnvironmentIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentIamMemberConditionOutput{})

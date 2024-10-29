@@ -64,11 +64,29 @@ namespace Pulumi.Gcp.Diagflow
     ///             {
     ///                 Uri = bucket.Url.Apply(url =&gt; $"{url}/prefix-"),
     ///             },
+    ///             SpeechSettings = new Gcp.Diagflow.Inputs.CxAgentAdvancedSettingsSpeechSettingsArgs
+    ///             {
+    ///                 EndpointerSensitivity = 30,
+    ///                 NoSpeechTimeout = "3.500s",
+    ///                 UseTimeoutBasedEndpointing = true,
+    ///                 Models = 
+    ///                 {
+    ///                     { "name", "wrench" },
+    ///                     { "mass", "1.3kg" },
+    ///                     { "count", "3" },
+    ///                 },
+    ///             },
     ///             DtmfSettings = new Gcp.Diagflow.Inputs.CxAgentAdvancedSettingsDtmfSettingsArgs
     ///             {
     ///                 Enabled = true,
     ///                 MaxDigits = 1,
     ///                 FinishDigit = "#",
+    ///             },
+    ///             LoggingSettings = new Gcp.Diagflow.Inputs.CxAgentAdvancedSettingsLoggingSettingsArgs
+    ///             {
+    ///                 EnableStackdriverLogging = true,
+    ///                 EnableInteractionLogging = true,
+    ///                 EnableConsentBasedRedaction = true,
     ///             },
     ///         },
     ///         GitIntegrationSettings = new Gcp.Diagflow.Inputs.CxAgentGitIntegrationSettingsArgs
@@ -177,7 +195,10 @@ namespace Pulumi.Gcp.Diagflow
         public Output<bool?> EnableSpellCorrection { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// Determines whether this agent should log conversation queries.
+        /// 
+        /// &gt; **Warning:** `enable_stackdriver_logging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
         /// </summary>
         [Output("enableStackdriverLogging")]
         public Output<bool?> EnableStackdriverLogging { get; private set; } = null!;
@@ -339,7 +360,10 @@ namespace Pulumi.Gcp.Diagflow
         public Input<bool>? EnableSpellCorrection { get; set; }
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// Determines whether this agent should log conversation queries.
+        /// 
+        /// &gt; **Warning:** `enable_stackdriver_logging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
         /// </summary>
         [Input("enableStackdriverLogging")]
         public Input<bool>? EnableStackdriverLogging { get; set; }
@@ -457,7 +481,10 @@ namespace Pulumi.Gcp.Diagflow
         public Input<bool>? EnableSpellCorrection { get; set; }
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// Determines whether this agent should log conversation queries.
+        /// 
+        /// &gt; **Warning:** `enable_stackdriver_logging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
         /// </summary>
         [Input("enableStackdriverLogging")]
         public Input<bool>? EnableStackdriverLogging { get; set; }

@@ -20,11 +20,16 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The Compute NetworkFirewallPolicyRule resource
+ * Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
+ * 
+ * To get more information about NetworkFirewallPolicyRule, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/networkFirewallPolicies/addRule)
  * 
  * ## Example Usage
  * 
- * ### Global
+ * ### Network Firewall Policy Rule
+ * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
@@ -60,7 +65,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var basicGlobalNetworksecurityAddressGroup = new AddressGroup("basicGlobalNetworksecurityAddressGroup", AddressGroupArgs.builder()
- *             .name("policy")
+ *             .name("address")
  *             .parent("projects/my-project-name")
  *             .description("Sample global networksecurity_address_group")
  *             .location("global")
@@ -166,6 +171,20 @@ public class NetworkFirewallPolicyRule extends com.pulumi.resources.CustomResour
         return this.action;
     }
     /**
+     * Creation timestamp in RFC3339 text format.
+     * 
+     */
+    @Export(name="creationTimestamp", refs={String.class}, tree="[0]")
+    private Output<String> creationTimestamp;
+
+    /**
+     * @return Creation timestamp in RFC3339 text format.
+     * 
+     */
+    public Output<String> creationTimestamp() {
+        return this.creationTimestamp;
+    }
+    /**
      * An optional description for this resource.
      * 
      */
@@ -180,14 +199,16 @@ public class NetworkFirewallPolicyRule extends com.pulumi.resources.CustomResour
         return Codegen.optional(this.description);
     }
     /**
-     * The direction in which this rule applies. Possible values: INGRESS, EGRESS
+     * The direction in which this rule applies.
+     * Possible values are: `INGRESS`, `EGRESS`.
      * 
      */
     @Export(name="direction", refs={String.class}, tree="[0]")
     private Output<String> direction;
 
     /**
-     * @return The direction in which this rule applies. Possible values: INGRESS, EGRESS
+     * @return The direction in which this rule applies.
+     * Possible values are: `INGRESS`, `EGRESS`.
      * 
      */
     public Output<String> direction() {
@@ -257,6 +278,7 @@ public class NetworkFirewallPolicyRule extends com.pulumi.resources.CustomResour
     }
     /**
      * A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding &#39;action&#39; is enforced.
+     * Structure is documented below.
      * 
      */
     @Export(name="match", refs={NetworkFirewallPolicyRuleMatch.class}, tree="[0]")
@@ -264,36 +286,33 @@ public class NetworkFirewallPolicyRule extends com.pulumi.resources.CustomResour
 
     /**
      * @return A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding &#39;action&#39; is enforced.
+     * Structure is documented below.
      * 
      */
     public Output<NetworkFirewallPolicyRuleMatch> match() {
         return this.match;
     }
     /**
-     * An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
+     * An integer indicating the priority of a rule in the list.
+     * The priority must be a positive value between 0 and 2147483647.
+     * Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
      * 
      */
     @Export(name="priority", refs={Integer.class}, tree="[0]")
     private Output<Integer> priority;
 
     /**
-     * @return An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
+     * @return An integer indicating the priority of a rule in the list.
+     * The priority must be a positive value between 0 and 2147483647.
+     * Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
      * 
      */
     public Output<Integer> priority() {
         return this.priority;
     }
-    /**
-     * The project for the resource
-     * 
-     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
-    /**
-     * @return The project for the resource
-     * 
-     */
     public Output<String> project() {
         return this.project;
     }
@@ -326,42 +345,40 @@ public class NetworkFirewallPolicyRule extends com.pulumi.resources.CustomResour
         return this.ruleTupleCount;
     }
     /**
-     * A fully-qualified URL of a SecurityProfileGroup resource. Example:
-     * https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
-     * It must be specified if action = &#39;apply_security_profile_group&#39; and cannot be specified for other actions.
+     * A fully-qualified URL of a SecurityProfile resource instance. Example:
+     * https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+     * Must be specified if action = &#39;apply_security_profile_group&#39; and cannot be specified for other actions.
      * 
      */
     @Export(name="securityProfileGroup", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> securityProfileGroup;
 
     /**
-     * @return A fully-qualified URL of a SecurityProfileGroup resource. Example:
-     * https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
-     * It must be specified if action = &#39;apply_security_profile_group&#39; and cannot be specified for other actions.
+     * @return A fully-qualified URL of a SecurityProfile resource instance. Example:
+     * https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+     * Must be specified if action = &#39;apply_security_profile_group&#39; and cannot be specified for other actions.
      * 
      */
     public Output<Optional<String>> securityProfileGroup() {
         return Codegen.optional(this.securityProfileGroup);
     }
     /**
-     * A list of secure tags that controls which instances the firewall rule applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are
-     * specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure
-     * tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored.
-     * &lt;code&gt;targetSecureTag&lt;/code&gt; may not be set at the same time as &lt;code&gt;targetServiceAccounts&lt;/code&gt;. If neither
-     * &lt;code&gt;targetServiceAccounts&lt;/code&gt; nor &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, the firewall rule applies to all
-     * instances on the specified network. Maximum number of target label tags allowed is 256.
+     * A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
+     * the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
+     * targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
+     * time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
+     * applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
      * 
      */
     @Export(name="targetSecureTags", refs={List.class,NetworkFirewallPolicyRuleTargetSecureTag.class}, tree="[0,1]")
     private Output</* @Nullable */ List<NetworkFirewallPolicyRuleTargetSecureTag>> targetSecureTags;
 
     /**
-     * @return A list of secure tags that controls which instances the firewall rule applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are
-     * specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure
-     * tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored.
-     * &lt;code&gt;targetSecureTag&lt;/code&gt; may not be set at the same time as &lt;code&gt;targetServiceAccounts&lt;/code&gt;. If neither
-     * &lt;code&gt;targetServiceAccounts&lt;/code&gt; nor &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, the firewall rule applies to all
-     * instances on the specified network. Maximum number of target label tags allowed is 256.
+     * @return A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
+     * the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
+     * targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
+     * time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
+     * applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
      * 
      */
     public Output<Optional<List<NetworkFirewallPolicyRuleTargetSecureTag>>> targetSecureTags() {
@@ -382,7 +399,7 @@ public class NetworkFirewallPolicyRule extends com.pulumi.resources.CustomResour
         return Codegen.optional(this.targetServiceAccounts);
     }
     /**
-     * Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+     * Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
      * &#39;apply_security_profile_group&#39; and cannot be set for other actions.
      * 
      */
@@ -390,7 +407,7 @@ public class NetworkFirewallPolicyRule extends com.pulumi.resources.CustomResour
     private Output</* @Nullable */ Boolean> tlsInspect;
 
     /**
-     * @return Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+     * @return Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
      * &#39;apply_security_profile_group&#39; and cannot be set for other actions.
      * 
      */

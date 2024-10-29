@@ -235,6 +235,21 @@ public final class InstanceTemplateDiskArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Indicates how much throughput to provision for the disk, in MB/s. This sets the amount of data that can be read or written from the disk per second. Values must greater than or equal to 1. For more details, see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
+     * 
+     */
+    @Import(name="provisionedThroughput")
+    private @Nullable Output<Integer> provisionedThroughput;
+
+    /**
+     * @return Indicates how much throughput to provision for the disk, in MB/s. This sets the amount of data that can be read or written from the disk per second. Values must greater than or equal to 1. For more details, see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
+     * 
+     */
+    public Optional<Output<Integer>> provisionedThroughput() {
+        return Optional.ofNullable(this.provisionedThroughput);
+    }
+
+    /**
      * A set of key/value resource manager tag pairs to bind to this disk. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
      * 
      */
@@ -406,6 +421,7 @@ public final class InstanceTemplateDiskArgs extends com.pulumi.resources.Resourc
         this.labels = $.labels;
         this.mode = $.mode;
         this.provisionedIops = $.provisionedIops;
+        this.provisionedThroughput = $.provisionedThroughput;
         this.resourceManagerTags = $.resourceManagerTags;
         this.resourcePolicies = $.resourcePolicies;
         this.source = $.source;
@@ -711,6 +727,27 @@ public final class InstanceTemplateDiskArgs extends com.pulumi.resources.Resourc
          */
         public Builder provisionedIops(Integer provisionedIops) {
             return provisionedIops(Output.of(provisionedIops));
+        }
+
+        /**
+         * @param provisionedThroughput Indicates how much throughput to provision for the disk, in MB/s. This sets the amount of data that can be read or written from the disk per second. Values must greater than or equal to 1. For more details, see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provisionedThroughput(@Nullable Output<Integer> provisionedThroughput) {
+            $.provisionedThroughput = provisionedThroughput;
+            return this;
+        }
+
+        /**
+         * @param provisionedThroughput Indicates how much throughput to provision for the disk, in MB/s. This sets the amount of data that can be read or written from the disk per second. Values must greater than or equal to 1. For more details, see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provisionedThroughput(Integer provisionedThroughput) {
+            return provisionedThroughput(Output.of(provisionedThroughput));
         }
 
         /**

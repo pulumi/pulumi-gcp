@@ -32,6 +32,25 @@ namespace Pulumi.Gcp.Diagflow.Inputs
         [Input("dtmfSettings")]
         public Input<Inputs.CxAgentAdvancedSettingsDtmfSettingsArgs>? DtmfSettings { get; set; }
 
+        /// <summary>
+        /// Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
+        /// * Agent level
+        /// Structure is documented below.
+        /// </summary>
+        [Input("loggingSettings")]
+        public Input<Inputs.CxAgentAdvancedSettingsLoggingSettingsArgs>? LoggingSettings { get; set; }
+
+        /// <summary>
+        /// Settings for speech to text detection. Exposed at the following levels:
+        /// * Agent level
+        /// * Flow level
+        /// * Page level
+        /// * Parameter level
+        /// Structure is documented below.
+        /// </summary>
+        [Input("speechSettings")]
+        public Input<Inputs.CxAgentAdvancedSettingsSpeechSettingsArgs>? SpeechSettings { get; set; }
+
         public CxAgentAdvancedSettingsArgs()
         {
         }

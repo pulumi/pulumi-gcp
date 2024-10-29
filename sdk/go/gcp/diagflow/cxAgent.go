@@ -87,10 +87,25 @@ import (
 //							return fmt.Sprintf("%v/prefix-", url), nil
 //						}).(pulumi.StringOutput),
 //					},
+//					SpeechSettings: &diagflow.CxAgentAdvancedSettingsSpeechSettingsArgs{
+//						EndpointerSensitivity:      pulumi.Int(30),
+//						NoSpeechTimeout:            pulumi.String("3.500s"),
+//						UseTimeoutBasedEndpointing: pulumi.Bool(true),
+//						Models: pulumi.StringMap{
+//							"name":  pulumi.String("wrench"),
+//							"mass":  pulumi.String("1.3kg"),
+//							"count": pulumi.String("3"),
+//						},
+//					},
 //					DtmfSettings: &diagflow.CxAgentAdvancedSettingsDtmfSettingsArgs{
 //						Enabled:     pulumi.Bool(true),
 //						MaxDigits:   pulumi.Int(1),
 //						FinishDigit: pulumi.String("#"),
+//					},
+//					LoggingSettings: &diagflow.CxAgentAdvancedSettingsLoggingSettingsArgs{
+//						EnableStackdriverLogging:    pulumi.Bool(true),
+//						EnableInteractionLogging:    pulumi.Bool(true),
+//						EnableConsentBasedRedaction: pulumi.Bool(true),
 //					},
 //				},
 //				GitIntegrationSettings: &diagflow.CxAgentGitIntegrationSettingsArgs{
@@ -158,7 +173,12 @@ type CxAgent struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Indicates if automatic spell correction is enabled in detect intent requests.
 	EnableSpellCorrection pulumi.BoolPtrOutput `pulumi:"enableSpellCorrection"`
+	// (Optional, Deprecated)
 	// Determines whether this agent should log conversation queries.
+	//
+	// > **Warning:** `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
+	//
+	// Deprecated: `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
 	EnableStackdriverLogging pulumi.BoolPtrOutput `pulumi:"enableStackdriverLogging"`
 	// Git integration settings for this agent.
 	// Structure is documented below.
@@ -249,7 +269,12 @@ type cxAgentState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Indicates if automatic spell correction is enabled in detect intent requests.
 	EnableSpellCorrection *bool `pulumi:"enableSpellCorrection"`
+	// (Optional, Deprecated)
 	// Determines whether this agent should log conversation queries.
+	//
+	// > **Warning:** `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
+	//
+	// Deprecated: `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
 	EnableStackdriverLogging *bool `pulumi:"enableStackdriverLogging"`
 	// Git integration settings for this agent.
 	// Structure is documented below.
@@ -299,7 +324,12 @@ type CxAgentState struct {
 	DisplayName pulumi.StringPtrInput
 	// Indicates if automatic spell correction is enabled in detect intent requests.
 	EnableSpellCorrection pulumi.BoolPtrInput
+	// (Optional, Deprecated)
 	// Determines whether this agent should log conversation queries.
+	//
+	// > **Warning:** `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
+	//
+	// Deprecated: `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
 	EnableStackdriverLogging pulumi.BoolPtrInput
 	// Git integration settings for this agent.
 	// Structure is documented below.
@@ -353,7 +383,12 @@ type cxAgentArgs struct {
 	DisplayName string `pulumi:"displayName"`
 	// Indicates if automatic spell correction is enabled in detect intent requests.
 	EnableSpellCorrection *bool `pulumi:"enableSpellCorrection"`
+	// (Optional, Deprecated)
 	// Determines whether this agent should log conversation queries.
+	//
+	// > **Warning:** `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
+	//
+	// Deprecated: `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
 	EnableStackdriverLogging *bool `pulumi:"enableStackdriverLogging"`
 	// Git integration settings for this agent.
 	// Structure is documented below.
@@ -400,7 +435,12 @@ type CxAgentArgs struct {
 	DisplayName pulumi.StringInput
 	// Indicates if automatic spell correction is enabled in detect intent requests.
 	EnableSpellCorrection pulumi.BoolPtrInput
+	// (Optional, Deprecated)
 	// Determines whether this agent should log conversation queries.
+	//
+	// > **Warning:** `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
+	//
+	// Deprecated: `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
 	EnableStackdriverLogging pulumi.BoolPtrInput
 	// Git integration settings for this agent.
 	// Structure is documented below.
@@ -550,7 +590,12 @@ func (o CxAgentOutput) EnableSpellCorrection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CxAgent) pulumi.BoolPtrOutput { return v.EnableSpellCorrection }).(pulumi.BoolPtrOutput)
 }
 
+// (Optional, Deprecated)
 // Determines whether this agent should log conversation queries.
+//
+// > **Warning:** `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
+//
+// Deprecated: `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
 func (o CxAgentOutput) EnableStackdriverLogging() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CxAgent) pulumi.BoolPtrOutput { return v.EnableStackdriverLogging }).(pulumi.BoolPtrOutput)
 }

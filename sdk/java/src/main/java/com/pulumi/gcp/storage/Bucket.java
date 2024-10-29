@@ -14,6 +14,7 @@ import com.pulumi.gcp.storage.outputs.BucketAutoclass;
 import com.pulumi.gcp.storage.outputs.BucketCor;
 import com.pulumi.gcp.storage.outputs.BucketCustomPlacementConfig;
 import com.pulumi.gcp.storage.outputs.BucketEncryption;
+import com.pulumi.gcp.storage.outputs.BucketHierarchicalNamespace;
 import com.pulumi.gcp.storage.outputs.BucketLifecycleRule;
 import com.pulumi.gcp.storage.outputs.BucketLogging;
 import com.pulumi.gcp.storage.outputs.BucketRetentionPolicy;
@@ -382,6 +383,20 @@ public class Bucket extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> forceDestroy() {
         return Codegen.optional(this.forceDestroy);
+    }
+    /**
+     * The bucket&#39;s hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below.
+     * 
+     */
+    @Export(name="hierarchicalNamespace", refs={BucketHierarchicalNamespace.class}, tree="[0]")
+    private Output</* @Nullable */ BucketHierarchicalNamespace> hierarchicalNamespace;
+
+    /**
+     * @return The bucket&#39;s hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below.
+     * 
+     */
+    public Output<Optional<BucketHierarchicalNamespace>> hierarchicalNamespace() {
+        return Codegen.optional(this.hierarchicalNamespace);
     }
     /**
      * A map of key/value label pairs to assign to the bucket.

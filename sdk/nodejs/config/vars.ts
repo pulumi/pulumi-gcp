@@ -985,6 +985,14 @@ Object.defineProperty(exports, "notebooksCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const oracleDatabaseCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "oracleDatabaseCustomEndpoint", {
+    get() {
+        return __config.get("oracleDatabaseCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const orgPolicyCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "orgPolicyCustomEndpoint", {
     get() {
@@ -1341,6 +1349,14 @@ export declare const tpuV2CustomEndpoint: string | undefined;
 Object.defineProperty(exports, "tpuV2CustomEndpoint", {
     get() {
         return __config.get("tpuV2CustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const transcoderCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "transcoderCustomEndpoint", {
+    get() {
+        return __config.get("transcoderCustomEndpoint");
     },
     enumerable: true,
 });

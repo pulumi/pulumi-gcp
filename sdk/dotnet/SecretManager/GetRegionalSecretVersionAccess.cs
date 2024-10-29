@@ -12,7 +12,7 @@ namespace Pulumi.Gcp.SecretManager
     public static class GetRegionalSecretVersionAccess
     {
         /// <summary>
-        /// Get the value from a Secret Manager regional secret version. This is similar to the gcp.secretmanager.RegionalSecretVersion datasource, but it only requires the [Secret Manager Secret Accessor](https://cloud.google.com/secret-manager/docs/access-control#secretmanager.secretAccessor) role. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/regional-secrets-overview) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions/access).
+        /// Get the value from a Secret Manager regional secret version. This is similar to the gcp.secretmanager.RegionalSecretVersion datasource, but it only requires the [Secret Manager Secret Accessor](https://cloud.google.com/secret-manager/docs/access-control#secretmanager.secretAccessor) role. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/regional-secrets-overview) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.locations.secrets.versions/access).
         /// 
         /// ## Example Usage
         /// 
@@ -37,7 +37,7 @@ namespace Pulumi.Gcp.SecretManager
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionalSecretVersionAccessResult>("gcp:secretmanager/getRegionalSecretVersionAccess:getRegionalSecretVersionAccess", args ?? new GetRegionalSecretVersionAccessArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Get the value from a Secret Manager regional secret version. This is similar to the gcp.secretmanager.RegionalSecretVersion datasource, but it only requires the [Secret Manager Secret Accessor](https://cloud.google.com/secret-manager/docs/access-control#secretmanager.secretAccessor) role. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/regional-secrets-overview) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions/access).
+        /// Get the value from a Secret Manager regional secret version. This is similar to the gcp.secretmanager.RegionalSecretVersion datasource, but it only requires the [Secret Manager Secret Accessor](https://cloud.google.com/secret-manager/docs/access-control#secretmanager.secretAccessor) role. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/regional-secrets-overview) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.locations.secrets.versions/access).
         /// 
         /// ## Example Usage
         /// 
@@ -65,6 +65,13 @@ namespace Pulumi.Gcp.SecretManager
 
     public sealed class GetRegionalSecretVersionAccessArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// If set to 'true', the secret data is
+        /// expected to be base64-encoded string.
+        /// </summary>
+        [Input("isSecretDataBase64")]
+        public bool? IsSecretDataBase64 { get; set; }
+
         /// <summary>
         /// Location of Secret Manager regional secret resource.
         /// It must be provided when the `secret` field provided consists of only the name of the regional secret.
@@ -101,6 +108,13 @@ namespace Pulumi.Gcp.SecretManager
 
     public sealed class GetRegionalSecretVersionAccessInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// If set to 'true', the secret data is
+        /// expected to be base64-encoded string.
+        /// </summary>
+        [Input("isSecretDataBase64")]
+        public Input<bool>? IsSecretDataBase64 { get; set; }
+
         /// <summary>
         /// Location of Secret Manager regional secret resource.
         /// It must be provided when the `secret` field provided consists of only the name of the regional secret.
@@ -143,6 +157,7 @@ namespace Pulumi.Gcp.SecretManager
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly bool? IsSecretDataBase64;
         public readonly string Location;
         /// <summary>
         /// The resource name of the regional SecretVersion. Format:
@@ -161,6 +176,8 @@ namespace Pulumi.Gcp.SecretManager
         private GetRegionalSecretVersionAccessResult(
             string id,
 
+            bool? isSecretDataBase64,
+
             string location,
 
             string name,
@@ -174,6 +191,7 @@ namespace Pulumi.Gcp.SecretManager
             string version)
         {
             Id = id;
+            IsSecretDataBase64 = isSecretDataBase64;
             Location = location;
             Name = name;
             Project = project;

@@ -20,6 +20,9 @@ type AlertPolicyAlertStrategy struct {
 	// are notified when this alert fires, on a per-channel basis.
 	// Structure is documented below.
 	NotificationChannelStrategies []AlertPolicyAlertStrategyNotificationChannelStrategy `pulumi:"notificationChannelStrategies"`
+	// Control when notifications will be sent out.
+	// Each value may be one of: `NOTIFICATION_PROMPT_UNSPECIFIED`, `OPENED`, `CLOSED`.
+	NotificationPrompts []string `pulumi:"notificationPrompts"`
 	// Required for alert policies with a LogMatch condition.
 	// This limit is not implemented for alert policies that are not log-based.
 	// Structure is documented below.
@@ -44,6 +47,9 @@ type AlertPolicyAlertStrategyArgs struct {
 	// are notified when this alert fires, on a per-channel basis.
 	// Structure is documented below.
 	NotificationChannelStrategies AlertPolicyAlertStrategyNotificationChannelStrategyArrayInput `pulumi:"notificationChannelStrategies"`
+	// Control when notifications will be sent out.
+	// Each value may be one of: `NOTIFICATION_PROMPT_UNSPECIFIED`, `OPENED`, `CLOSED`.
+	NotificationPrompts pulumi.StringArrayInput `pulumi:"notificationPrompts"`
 	// Required for alert policies with a LogMatch condition.
 	// This limit is not implemented for alert policies that are not log-based.
 	// Structure is documented below.
@@ -141,6 +147,12 @@ func (o AlertPolicyAlertStrategyOutput) NotificationChannelStrategies() AlertPol
 	}).(AlertPolicyAlertStrategyNotificationChannelStrategyArrayOutput)
 }
 
+// Control when notifications will be sent out.
+// Each value may be one of: `NOTIFICATION_PROMPT_UNSPECIFIED`, `OPENED`, `CLOSED`.
+func (o AlertPolicyAlertStrategyOutput) NotificationPrompts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AlertPolicyAlertStrategy) []string { return v.NotificationPrompts }).(pulumi.StringArrayOutput)
+}
+
 // Required for alert policies with a LogMatch condition.
 // This limit is not implemented for alert policies that are not log-based.
 // Structure is documented below.
@@ -194,6 +206,17 @@ func (o AlertPolicyAlertStrategyPtrOutput) NotificationChannelStrategies() Alert
 		}
 		return v.NotificationChannelStrategies
 	}).(AlertPolicyAlertStrategyNotificationChannelStrategyArrayOutput)
+}
+
+// Control when notifications will be sent out.
+// Each value may be one of: `NOTIFICATION_PROMPT_UNSPECIFIED`, `OPENED`, `CLOSED`.
+func (o AlertPolicyAlertStrategyPtrOutput) NotificationPrompts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AlertPolicyAlertStrategy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.NotificationPrompts
+	}).(pulumi.StringArrayOutput)
 }
 
 // Required for alert policies with a LogMatch condition.

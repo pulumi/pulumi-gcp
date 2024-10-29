@@ -144,6 +144,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly networkSecurityCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly networkServicesCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly notebooksCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly oracleDatabaseCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly orgPolicyCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly osConfigCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly osLoginCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -187,6 +188,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly tagsLocationCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly tpuCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly tpuV2CustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly transcoderCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly universeDomain!: pulumi.Output<string | undefined>;
     public readonly vertexAiCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly vmwareengineCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -329,6 +331,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["networkSecurityCustomEndpoint"] = args ? args.networkSecurityCustomEndpoint : undefined;
             resourceInputs["networkServicesCustomEndpoint"] = args ? args.networkServicesCustomEndpoint : undefined;
             resourceInputs["notebooksCustomEndpoint"] = args ? args.notebooksCustomEndpoint : undefined;
+            resourceInputs["oracleDatabaseCustomEndpoint"] = args ? args.oracleDatabaseCustomEndpoint : undefined;
             resourceInputs["orgPolicyCustomEndpoint"] = args ? args.orgPolicyCustomEndpoint : undefined;
             resourceInputs["osConfigCustomEndpoint"] = args ? args.osConfigCustomEndpoint : undefined;
             resourceInputs["osLoginCustomEndpoint"] = args ? args.osLoginCustomEndpoint : undefined;
@@ -373,6 +376,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["tagsLocationCustomEndpoint"] = args ? args.tagsLocationCustomEndpoint : undefined;
             resourceInputs["tpuCustomEndpoint"] = args ? args.tpuCustomEndpoint : undefined;
             resourceInputs["tpuV2CustomEndpoint"] = args ? args.tpuV2CustomEndpoint : undefined;
+            resourceInputs["transcoderCustomEndpoint"] = args ? args.transcoderCustomEndpoint : undefined;
             resourceInputs["universeDomain"] = args ? args.universeDomain : undefined;
             resourceInputs["userProjectOverride"] = pulumi.output(args ? args.userProjectOverride : undefined).apply(JSON.stringify);
             resourceInputs["vertexAiCustomEndpoint"] = args ? args.vertexAiCustomEndpoint : undefined;
@@ -516,6 +520,7 @@ export interface ProviderArgs {
     networkSecurityCustomEndpoint?: pulumi.Input<string>;
     networkServicesCustomEndpoint?: pulumi.Input<string>;
     notebooksCustomEndpoint?: pulumi.Input<string>;
+    oracleDatabaseCustomEndpoint?: pulumi.Input<string>;
     orgPolicyCustomEndpoint?: pulumi.Input<string>;
     osConfigCustomEndpoint?: pulumi.Input<string>;
     osLoginCustomEndpoint?: pulumi.Input<string>;
@@ -560,6 +565,7 @@ export interface ProviderArgs {
     tagsLocationCustomEndpoint?: pulumi.Input<string>;
     tpuCustomEndpoint?: pulumi.Input<string>;
     tpuV2CustomEndpoint?: pulumi.Input<string>;
+    transcoderCustomEndpoint?: pulumi.Input<string>;
     universeDomain?: pulumi.Input<string>;
     userProjectOverride?: pulumi.Input<boolean>;
     vertexAiCustomEndpoint?: pulumi.Input<string>;

@@ -12,11 +12,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Compute NetworkFirewallPolicyRule resource
+// Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
+//
+// To get more information about NetworkFirewallPolicyRule, see:
+//
+// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/networkFirewallPolicies/addRule)
 //
 // ## Example Usage
 //
-// ### Global
+// ### Network Firewall Policy Rule
+//
 // ```go
 // package main
 //
@@ -34,7 +39,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			basicGlobalNetworksecurityAddressGroup, err := networksecurity.NewAddressGroup(ctx, "basic_global_networksecurity_address_group", &networksecurity.AddressGroupArgs{
-//				Name:        pulumi.String("policy"),
+//				Name:        pulumi.String("address"),
 //				Parent:      pulumi.String("projects/my-project-name"),
 //				Description: pulumi.String("Sample global networksecurity_address_group"),
 //				Location:    pulumi.String("global"),
@@ -164,9 +169,12 @@ type NetworkFirewallPolicyRule struct {
 
 	// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "gotoNext" and "applySecurityProfileGroup".
 	Action pulumi.StringOutput `pulumi:"action"`
+	// Creation timestamp in RFC3339 text format.
+	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description for this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The direction in which this rule applies. Possible values: INGRESS, EGRESS
+	// The direction in which this rule applies.
+	// Possible values are: `INGRESS`, `EGRESS`.
 	Direction pulumi.StringOutput `pulumi:"direction"`
 	// Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and
 	// traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
@@ -180,29 +188,30 @@ type NetworkFirewallPolicyRule struct {
 	// Type of the resource. Always `compute#firewallPolicyRule` for firewall policy rules
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+	// Structure is documented below.
 	Match NetworkFirewallPolicyRuleMatchOutput `pulumi:"match"`
-	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
-	Priority pulumi.IntOutput `pulumi:"priority"`
-	// The project for the resource
-	Project pulumi.StringOutput `pulumi:"project"`
+	// An integer indicating the priority of a rule in the list.
+	// The priority must be a positive value between 0 and 2147483647.
+	// Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
+	Priority pulumi.IntOutput    `pulumi:"priority"`
+	Project  pulumi.StringOutput `pulumi:"project"`
 	// An optional name for the rule. This field is not a unique identifier and can be updated.
 	RuleName pulumi.StringPtrOutput `pulumi:"ruleName"`
 	// Calculation of the complexity of a single firewall policy rule.
 	RuleTupleCount pulumi.IntOutput `pulumi:"ruleTupleCount"`
-	// A fully-qualified URL of a SecurityProfileGroup resource. Example:
-	// https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
-	// It must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
+	// A fully-qualified URL of a SecurityProfile resource instance. Example:
+	// https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+	// Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
 	SecurityProfileGroup pulumi.StringPtrOutput `pulumi:"securityProfileGroup"`
-	// A list of secure tags that controls which instances the firewall rule applies to. If <code>targetSecureTag</code> are
-	// specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure
-	// tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. <code>targetSecureTag</code>
-	// may not be set at the same time as <code>targetServiceAccounts</code>. If neither <code>targetServiceAccounts</code> nor
-	// <code>targetSecureTag</code> are specified, the firewall rule applies to all instances on the specified network. Maximum
-	// number of target label tags allowed is 256.
+	// A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
+	// the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
+	// targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
+	// time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
+	// applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
 	TargetSecureTags NetworkFirewallPolicyRuleTargetSecureTagArrayOutput `pulumi:"targetSecureTags"`
 	// A list of service accounts indicating the sets of instances that are applied with this rule.
 	TargetServiceAccounts pulumi.StringArrayOutput `pulumi:"targetServiceAccounts"`
-	// Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+	// Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
 	// 'apply_security_profile_group' and cannot be set for other actions.
 	TlsInspect pulumi.BoolPtrOutput `pulumi:"tlsInspect"`
 }
@@ -254,9 +263,12 @@ func GetNetworkFirewallPolicyRule(ctx *pulumi.Context,
 type networkFirewallPolicyRuleState struct {
 	// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "gotoNext" and "applySecurityProfileGroup".
 	Action *string `pulumi:"action"`
+	// Creation timestamp in RFC3339 text format.
+	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description for this resource.
 	Description *string `pulumi:"description"`
-	// The direction in which this rule applies. Possible values: INGRESS, EGRESS
+	// The direction in which this rule applies.
+	// Possible values are: `INGRESS`, `EGRESS`.
 	Direction *string `pulumi:"direction"`
 	// Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and
 	// traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
@@ -270,29 +282,30 @@ type networkFirewallPolicyRuleState struct {
 	// Type of the resource. Always `compute#firewallPolicyRule` for firewall policy rules
 	Kind *string `pulumi:"kind"`
 	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+	// Structure is documented below.
 	Match *NetworkFirewallPolicyRuleMatch `pulumi:"match"`
-	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
-	Priority *int `pulumi:"priority"`
-	// The project for the resource
-	Project *string `pulumi:"project"`
+	// An integer indicating the priority of a rule in the list.
+	// The priority must be a positive value between 0 and 2147483647.
+	// Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
+	Priority *int    `pulumi:"priority"`
+	Project  *string `pulumi:"project"`
 	// An optional name for the rule. This field is not a unique identifier and can be updated.
 	RuleName *string `pulumi:"ruleName"`
 	// Calculation of the complexity of a single firewall policy rule.
 	RuleTupleCount *int `pulumi:"ruleTupleCount"`
-	// A fully-qualified URL of a SecurityProfileGroup resource. Example:
-	// https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
-	// It must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
+	// A fully-qualified URL of a SecurityProfile resource instance. Example:
+	// https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+	// Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
 	SecurityProfileGroup *string `pulumi:"securityProfileGroup"`
-	// A list of secure tags that controls which instances the firewall rule applies to. If <code>targetSecureTag</code> are
-	// specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure
-	// tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. <code>targetSecureTag</code>
-	// may not be set at the same time as <code>targetServiceAccounts</code>. If neither <code>targetServiceAccounts</code> nor
-	// <code>targetSecureTag</code> are specified, the firewall rule applies to all instances on the specified network. Maximum
-	// number of target label tags allowed is 256.
+	// A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
+	// the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
+	// targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
+	// time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
+	// applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
 	TargetSecureTags []NetworkFirewallPolicyRuleTargetSecureTag `pulumi:"targetSecureTags"`
 	// A list of service accounts indicating the sets of instances that are applied with this rule.
 	TargetServiceAccounts []string `pulumi:"targetServiceAccounts"`
-	// Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+	// Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
 	// 'apply_security_profile_group' and cannot be set for other actions.
 	TlsInspect *bool `pulumi:"tlsInspect"`
 }
@@ -300,9 +313,12 @@ type networkFirewallPolicyRuleState struct {
 type NetworkFirewallPolicyRuleState struct {
 	// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "gotoNext" and "applySecurityProfileGroup".
 	Action pulumi.StringPtrInput
+	// Creation timestamp in RFC3339 text format.
+	CreationTimestamp pulumi.StringPtrInput
 	// An optional description for this resource.
 	Description pulumi.StringPtrInput
-	// The direction in which this rule applies. Possible values: INGRESS, EGRESS
+	// The direction in which this rule applies.
+	// Possible values are: `INGRESS`, `EGRESS`.
 	Direction pulumi.StringPtrInput
 	// Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and
 	// traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
@@ -316,29 +332,30 @@ type NetworkFirewallPolicyRuleState struct {
 	// Type of the resource. Always `compute#firewallPolicyRule` for firewall policy rules
 	Kind pulumi.StringPtrInput
 	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+	// Structure is documented below.
 	Match NetworkFirewallPolicyRuleMatchPtrInput
-	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
+	// An integer indicating the priority of a rule in the list.
+	// The priority must be a positive value between 0 and 2147483647.
+	// Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
 	Priority pulumi.IntPtrInput
-	// The project for the resource
-	Project pulumi.StringPtrInput
+	Project  pulumi.StringPtrInput
 	// An optional name for the rule. This field is not a unique identifier and can be updated.
 	RuleName pulumi.StringPtrInput
 	// Calculation of the complexity of a single firewall policy rule.
 	RuleTupleCount pulumi.IntPtrInput
-	// A fully-qualified URL of a SecurityProfileGroup resource. Example:
-	// https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
-	// It must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
+	// A fully-qualified URL of a SecurityProfile resource instance. Example:
+	// https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+	// Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
 	SecurityProfileGroup pulumi.StringPtrInput
-	// A list of secure tags that controls which instances the firewall rule applies to. If <code>targetSecureTag</code> are
-	// specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure
-	// tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. <code>targetSecureTag</code>
-	// may not be set at the same time as <code>targetServiceAccounts</code>. If neither <code>targetServiceAccounts</code> nor
-	// <code>targetSecureTag</code> are specified, the firewall rule applies to all instances on the specified network. Maximum
-	// number of target label tags allowed is 256.
+	// A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
+	// the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
+	// targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
+	// time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
+	// applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
 	TargetSecureTags NetworkFirewallPolicyRuleTargetSecureTagArrayInput
 	// A list of service accounts indicating the sets of instances that are applied with this rule.
 	TargetServiceAccounts pulumi.StringArrayInput
-	// Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+	// Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
 	// 'apply_security_profile_group' and cannot be set for other actions.
 	TlsInspect pulumi.BoolPtrInput
 }
@@ -352,7 +369,8 @@ type networkFirewallPolicyRuleArgs struct {
 	Action string `pulumi:"action"`
 	// An optional description for this resource.
 	Description *string `pulumi:"description"`
-	// The direction in which this rule applies. Possible values: INGRESS, EGRESS
+	// The direction in which this rule applies.
+	// Possible values are: `INGRESS`, `EGRESS`.
 	Direction string `pulumi:"direction"`
 	// Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and
 	// traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
@@ -364,27 +382,28 @@ type networkFirewallPolicyRuleArgs struct {
 	// The firewall policy of the resource.
 	FirewallPolicy string `pulumi:"firewallPolicy"`
 	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+	// Structure is documented below.
 	Match NetworkFirewallPolicyRuleMatch `pulumi:"match"`
-	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
-	Priority int `pulumi:"priority"`
-	// The project for the resource
-	Project *string `pulumi:"project"`
+	// An integer indicating the priority of a rule in the list.
+	// The priority must be a positive value between 0 and 2147483647.
+	// Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
+	Priority int     `pulumi:"priority"`
+	Project  *string `pulumi:"project"`
 	// An optional name for the rule. This field is not a unique identifier and can be updated.
 	RuleName *string `pulumi:"ruleName"`
-	// A fully-qualified URL of a SecurityProfileGroup resource. Example:
-	// https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
-	// It must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
+	// A fully-qualified URL of a SecurityProfile resource instance. Example:
+	// https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+	// Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
 	SecurityProfileGroup *string `pulumi:"securityProfileGroup"`
-	// A list of secure tags that controls which instances the firewall rule applies to. If <code>targetSecureTag</code> are
-	// specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure
-	// tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. <code>targetSecureTag</code>
-	// may not be set at the same time as <code>targetServiceAccounts</code>. If neither <code>targetServiceAccounts</code> nor
-	// <code>targetSecureTag</code> are specified, the firewall rule applies to all instances on the specified network. Maximum
-	// number of target label tags allowed is 256.
+	// A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
+	// the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
+	// targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
+	// time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
+	// applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
 	TargetSecureTags []NetworkFirewallPolicyRuleTargetSecureTag `pulumi:"targetSecureTags"`
 	// A list of service accounts indicating the sets of instances that are applied with this rule.
 	TargetServiceAccounts []string `pulumi:"targetServiceAccounts"`
-	// Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+	// Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
 	// 'apply_security_profile_group' and cannot be set for other actions.
 	TlsInspect *bool `pulumi:"tlsInspect"`
 }
@@ -395,7 +414,8 @@ type NetworkFirewallPolicyRuleArgs struct {
 	Action pulumi.StringInput
 	// An optional description for this resource.
 	Description pulumi.StringPtrInput
-	// The direction in which this rule applies. Possible values: INGRESS, EGRESS
+	// The direction in which this rule applies.
+	// Possible values are: `INGRESS`, `EGRESS`.
 	Direction pulumi.StringInput
 	// Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and
 	// traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
@@ -407,27 +427,28 @@ type NetworkFirewallPolicyRuleArgs struct {
 	// The firewall policy of the resource.
 	FirewallPolicy pulumi.StringInput
 	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+	// Structure is documented below.
 	Match NetworkFirewallPolicyRuleMatchInput
-	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
+	// An integer indicating the priority of a rule in the list.
+	// The priority must be a positive value between 0 and 2147483647.
+	// Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
 	Priority pulumi.IntInput
-	// The project for the resource
-	Project pulumi.StringPtrInput
+	Project  pulumi.StringPtrInput
 	// An optional name for the rule. This field is not a unique identifier and can be updated.
 	RuleName pulumi.StringPtrInput
-	// A fully-qualified URL of a SecurityProfileGroup resource. Example:
-	// https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
-	// It must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
+	// A fully-qualified URL of a SecurityProfile resource instance. Example:
+	// https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+	// Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
 	SecurityProfileGroup pulumi.StringPtrInput
-	// A list of secure tags that controls which instances the firewall rule applies to. If <code>targetSecureTag</code> are
-	// specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure
-	// tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. <code>targetSecureTag</code>
-	// may not be set at the same time as <code>targetServiceAccounts</code>. If neither <code>targetServiceAccounts</code> nor
-	// <code>targetSecureTag</code> are specified, the firewall rule applies to all instances on the specified network. Maximum
-	// number of target label tags allowed is 256.
+	// A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
+	// the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
+	// targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
+	// time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
+	// applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
 	TargetSecureTags NetworkFirewallPolicyRuleTargetSecureTagArrayInput
 	// A list of service accounts indicating the sets of instances that are applied with this rule.
 	TargetServiceAccounts pulumi.StringArrayInput
-	// Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+	// Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
 	// 'apply_security_profile_group' and cannot be set for other actions.
 	TlsInspect pulumi.BoolPtrInput
 }
@@ -524,12 +545,18 @@ func (o NetworkFirewallPolicyRuleOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkFirewallPolicyRule) pulumi.StringOutput { return v.Action }).(pulumi.StringOutput)
 }
 
+// Creation timestamp in RFC3339 text format.
+func (o NetworkFirewallPolicyRuleOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkFirewallPolicyRule) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
 // An optional description for this resource.
 func (o NetworkFirewallPolicyRuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkFirewallPolicyRule) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The direction in which this rule applies. Possible values: INGRESS, EGRESS
+// The direction in which this rule applies.
+// Possible values are: `INGRESS`, `EGRESS`.
 func (o NetworkFirewallPolicyRuleOutput) Direction() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkFirewallPolicyRule) pulumi.StringOutput { return v.Direction }).(pulumi.StringOutput)
 }
@@ -558,16 +585,18 @@ func (o NetworkFirewallPolicyRuleOutput) Kind() pulumi.StringOutput {
 }
 
 // A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+// Structure is documented below.
 func (o NetworkFirewallPolicyRuleOutput) Match() NetworkFirewallPolicyRuleMatchOutput {
 	return o.ApplyT(func(v *NetworkFirewallPolicyRule) NetworkFirewallPolicyRuleMatchOutput { return v.Match }).(NetworkFirewallPolicyRuleMatchOutput)
 }
 
-// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
+// An integer indicating the priority of a rule in the list.
+// The priority must be a positive value between 0 and 2147483647.
+// Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
 func (o NetworkFirewallPolicyRuleOutput) Priority() pulumi.IntOutput {
 	return o.ApplyT(func(v *NetworkFirewallPolicyRule) pulumi.IntOutput { return v.Priority }).(pulumi.IntOutput)
 }
 
-// The project for the resource
 func (o NetworkFirewallPolicyRuleOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkFirewallPolicyRule) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
@@ -582,19 +611,18 @@ func (o NetworkFirewallPolicyRuleOutput) RuleTupleCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *NetworkFirewallPolicyRule) pulumi.IntOutput { return v.RuleTupleCount }).(pulumi.IntOutput)
 }
 
-// A fully-qualified URL of a SecurityProfileGroup resource. Example:
-// https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
-// It must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
+// A fully-qualified URL of a SecurityProfile resource instance. Example:
+// https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+// Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
 func (o NetworkFirewallPolicyRuleOutput) SecurityProfileGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkFirewallPolicyRule) pulumi.StringPtrOutput { return v.SecurityProfileGroup }).(pulumi.StringPtrOutput)
 }
 
-// A list of secure tags that controls which instances the firewall rule applies to. If <code>targetSecureTag</code> are
-// specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure
-// tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. <code>targetSecureTag</code>
-// may not be set at the same time as <code>targetServiceAccounts</code>. If neither <code>targetServiceAccounts</code> nor
-// <code>targetSecureTag</code> are specified, the firewall rule applies to all instances on the specified network. Maximum
-// number of target label tags allowed is 256.
+// A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then
+// the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the
+// targetSecureTag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same
+// time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule
+// applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
 func (o NetworkFirewallPolicyRuleOutput) TargetSecureTags() NetworkFirewallPolicyRuleTargetSecureTagArrayOutput {
 	return o.ApplyT(func(v *NetworkFirewallPolicyRule) NetworkFirewallPolicyRuleTargetSecureTagArrayOutput {
 		return v.TargetSecureTags
@@ -606,7 +634,7 @@ func (o NetworkFirewallPolicyRuleOutput) TargetServiceAccounts() pulumi.StringAr
 	return o.ApplyT(func(v *NetworkFirewallPolicyRule) pulumi.StringArrayOutput { return v.TargetServiceAccounts }).(pulumi.StringArrayOutput)
 }
 
-// Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+// Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
 // 'apply_security_profile_group' and cannot be set for other actions.
 func (o NetworkFirewallPolicyRuleOutput) TlsInspect() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NetworkFirewallPolicyRule) pulumi.BoolPtrOutput { return v.TlsInspect }).(pulumi.BoolPtrOutput)

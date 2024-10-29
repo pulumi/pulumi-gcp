@@ -24,6 +24,11 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.AlertPolicyAlertStrategyNotificationChannelStrategy> NotificationChannelStrategies;
         /// <summary>
+        /// Control when notifications will be sent out.
+        /// Each value may be one of: `NOTIFICATION_PROMPT_UNSPECIFIED`, `OPENED`, `CLOSED`.
+        /// </summary>
+        public readonly ImmutableArray<string> NotificationPrompts;
+        /// <summary>
         /// Required for alert policies with a LogMatch condition.
         /// This limit is not implemented for alert policies that are not log-based.
         /// Structure is documented below.
@@ -36,10 +41,13 @@ namespace Pulumi.Gcp.Monitoring.Outputs
 
             ImmutableArray<Outputs.AlertPolicyAlertStrategyNotificationChannelStrategy> notificationChannelStrategies,
 
+            ImmutableArray<string> notificationPrompts,
+
             Outputs.AlertPolicyAlertStrategyNotificationRateLimit? notificationRateLimit)
         {
             AutoClose = autoClose;
             NotificationChannelStrategies = notificationChannelStrategies;
+            NotificationPrompts = notificationPrompts;
             NotificationRateLimit = notificationRateLimit;
         }
     }

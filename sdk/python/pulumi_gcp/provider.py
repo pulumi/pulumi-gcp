@@ -142,6 +142,7 @@ class ProviderArgs:
                  network_security_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  network_services_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  notebooks_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 oracle_database_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  org_policy_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  os_config_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  os_login_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -186,6 +187,7 @@ class ProviderArgs:
                  tags_location_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  tpu_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  tpu_v2_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 transcoder_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  universe_domain: Optional[pulumi.Input[str]] = None,
                  user_project_override: Optional[pulumi.Input[bool]] = None,
                  vertex_ai_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -442,6 +444,8 @@ class ProviderArgs:
             pulumi.set(__self__, "network_services_custom_endpoint", network_services_custom_endpoint)
         if notebooks_custom_endpoint is not None:
             pulumi.set(__self__, "notebooks_custom_endpoint", notebooks_custom_endpoint)
+        if oracle_database_custom_endpoint is not None:
+            pulumi.set(__self__, "oracle_database_custom_endpoint", oracle_database_custom_endpoint)
         if org_policy_custom_endpoint is not None:
             pulumi.set(__self__, "org_policy_custom_endpoint", org_policy_custom_endpoint)
         if os_config_custom_endpoint is not None:
@@ -534,6 +538,8 @@ class ProviderArgs:
             pulumi.set(__self__, "tpu_custom_endpoint", tpu_custom_endpoint)
         if tpu_v2_custom_endpoint is not None:
             pulumi.set(__self__, "tpu_v2_custom_endpoint", tpu_v2_custom_endpoint)
+        if transcoder_custom_endpoint is not None:
+            pulumi.set(__self__, "transcoder_custom_endpoint", transcoder_custom_endpoint)
         if universe_domain is not None:
             pulumi.set(__self__, "universe_domain", universe_domain)
         if user_project_override is not None:
@@ -1654,6 +1660,15 @@ class ProviderArgs:
         pulumi.set(self, "notebooks_custom_endpoint", value)
 
     @property
+    @pulumi.getter(name="oracleDatabaseCustomEndpoint")
+    def oracle_database_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "oracle_database_custom_endpoint")
+
+    @oracle_database_custom_endpoint.setter
+    def oracle_database_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "oracle_database_custom_endpoint", value)
+
+    @property
     @pulumi.getter(name="orgPolicyCustomEndpoint")
     def org_policy_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "org_policy_custom_endpoint")
@@ -2050,6 +2065,15 @@ class ProviderArgs:
         pulumi.set(self, "tpu_v2_custom_endpoint", value)
 
     @property
+    @pulumi.getter(name="transcoderCustomEndpoint")
+    def transcoder_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "transcoder_custom_endpoint")
+
+    @transcoder_custom_endpoint.setter
+    def transcoder_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "transcoder_custom_endpoint", value)
+
+    @property
     @pulumi.getter(name="universeDomain")
     def universe_domain(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "universe_domain")
@@ -2258,6 +2282,7 @@ class Provider(pulumi.ProviderResource):
                  network_security_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  network_services_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  notebooks_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 oracle_database_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  org_policy_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  os_config_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  os_login_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2302,6 +2327,7 @@ class Provider(pulumi.ProviderResource):
                  tags_location_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  tpu_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  tpu_v2_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 transcoder_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  universe_domain: Optional[pulumi.Input[str]] = None,
                  user_project_override: Optional[pulumi.Input[bool]] = None,
                  vertex_ai_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2470,6 +2496,7 @@ class Provider(pulumi.ProviderResource):
                  network_security_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  network_services_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  notebooks_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 oracle_database_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  org_policy_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  os_config_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  os_login_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2514,6 +2541,7 @@ class Provider(pulumi.ProviderResource):
                  tags_location_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  tpu_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  tpu_v2_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 transcoder_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  universe_domain: Optional[pulumi.Input[str]] = None,
                  user_project_override: Optional[pulumi.Input[bool]] = None,
                  vertex_ai_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2654,6 +2682,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["network_security_custom_endpoint"] = network_security_custom_endpoint
             __props__.__dict__["network_services_custom_endpoint"] = network_services_custom_endpoint
             __props__.__dict__["notebooks_custom_endpoint"] = notebooks_custom_endpoint
+            __props__.__dict__["oracle_database_custom_endpoint"] = oracle_database_custom_endpoint
             __props__.__dict__["org_policy_custom_endpoint"] = org_policy_custom_endpoint
             __props__.__dict__["os_config_custom_endpoint"] = os_config_custom_endpoint
             __props__.__dict__["os_login_custom_endpoint"] = os_login_custom_endpoint
@@ -2702,6 +2731,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["tags_location_custom_endpoint"] = tags_location_custom_endpoint
             __props__.__dict__["tpu_custom_endpoint"] = tpu_custom_endpoint
             __props__.__dict__["tpu_v2_custom_endpoint"] = tpu_v2_custom_endpoint
+            __props__.__dict__["transcoder_custom_endpoint"] = transcoder_custom_endpoint
             __props__.__dict__["universe_domain"] = universe_domain
             __props__.__dict__["user_project_override"] = pulumi.Output.from_input(user_project_override).apply(pulumi.runtime.to_json) if user_project_override is not None else None
             __props__.__dict__["vertex_ai_custom_endpoint"] = vertex_ai_custom_endpoint
@@ -3307,6 +3337,11 @@ class Provider(pulumi.ProviderResource):
         return pulumi.get(self, "notebooks_custom_endpoint")
 
     @property
+    @pulumi.getter(name="oracleDatabaseCustomEndpoint")
+    def oracle_database_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "oracle_database_custom_endpoint")
+
+    @property
     @pulumi.getter(name="orgPolicyCustomEndpoint")
     def org_policy_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "org_policy_custom_endpoint")
@@ -3520,6 +3555,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="tpuV2CustomEndpoint")
     def tpu_v2_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "tpu_v2_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="transcoderCustomEndpoint")
+    def transcoder_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "transcoder_custom_endpoint")
 
     @property
     @pulumi.getter(name="universeDomain")

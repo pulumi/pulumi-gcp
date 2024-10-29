@@ -377,9 +377,9 @@ namespace Pulumi.Gcp.BigQuery
     ///         var range = new { Value = rangeIndex };
     ///         source.Add(new Gcp.BigQuery.Table($"source-{range.Value}", new()
     ///         {
-    ///             DeletionProtection = false,
     ///             DatasetId = sourceDataset[range.Value].DatasetId,
     ///             TableId = $"job_copy_{range.Value}_table",
+    ///             DeletionProtection = false,
     ///             Schema = @"[
     ///   {
     ///     ""name"": ""name"",
@@ -425,9 +425,9 @@ namespace Pulumi.Gcp.BigQuery
     ///         ProjectId = "my-project-name",
     ///     });
     /// 
-    ///     var encryptRole = new Gcp.Projects.IAMMember("encrypt_role", new()
+    ///     var encryptRole = new Gcp.Kms.CryptoKeyIAMMember("encrypt_role", new()
     ///     {
-    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
+    ///         CryptoKeyId = cryptoKey.Id,
     ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
     ///         Member = $"serviceAccount:bq-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@bigquery-encryption.iam.gserviceaccount.com",
     ///     });

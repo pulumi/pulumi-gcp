@@ -316,6 +316,28 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Region Backend Service Ip Address Selection Policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const healthCheck = new gcp.compute.RegionHealthCheck("health_check", {
+ *     name: "rbs-health-check",
+ *     region: "us-central1",
+ *     tcpHealthCheck: {
+ *         port: 80,
+ *     },
+ * });
+ * const _default = new gcp.compute.RegionBackendService("default", {
+ *     name: "region-service",
+ *     region: "us-central1",
+ *     healthChecks: healthCheck.id,
+ *     loadBalancingScheme: "EXTERNAL_MANAGED",
+ *     protocol: "HTTP",
+ *     ipAddressSelectionPolicy: "IPV6_ONLY",
+ * });
+ * ```
  *
  * ## Import
  *
@@ -461,6 +483,11 @@ export class RegionBackendService extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly iap!: pulumi.Output<outputs.compute.RegionBackendServiceIap>;
+    /**
+     * Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
+     * Possible values are: `IPV4_ONLY`, `PREFER_IPV6`, `IPV6_ONLY`.
+     */
+    public readonly ipAddressSelectionPolicy!: pulumi.Output<string | undefined>;
     /**
      * Indicates what kind of load balancing this regional backend service
      * will be used for. A backend service created for one type of load
@@ -637,6 +664,7 @@ export class RegionBackendService extends pulumi.CustomResource {
             resourceInputs["generatedId"] = state ? state.generatedId : undefined;
             resourceInputs["healthChecks"] = state ? state.healthChecks : undefined;
             resourceInputs["iap"] = state ? state.iap : undefined;
+            resourceInputs["ipAddressSelectionPolicy"] = state ? state.ipAddressSelectionPolicy : undefined;
             resourceInputs["loadBalancingScheme"] = state ? state.loadBalancingScheme : undefined;
             resourceInputs["localityLbPolicy"] = state ? state.localityLbPolicy : undefined;
             resourceInputs["logConfig"] = state ? state.logConfig : undefined;
@@ -667,6 +695,7 @@ export class RegionBackendService extends pulumi.CustomResource {
             resourceInputs["failoverPolicy"] = args ? args.failoverPolicy : undefined;
             resourceInputs["healthChecks"] = args ? args.healthChecks : undefined;
             resourceInputs["iap"] = args ? args.iap : undefined;
+            resourceInputs["ipAddressSelectionPolicy"] = args ? args.ipAddressSelectionPolicy : undefined;
             resourceInputs["loadBalancingScheme"] = args ? args.loadBalancingScheme : undefined;
             resourceInputs["localityLbPolicy"] = args ? args.localityLbPolicy : undefined;
             resourceInputs["logConfig"] = args ? args.logConfig : undefined;
@@ -782,6 +811,11 @@ export interface RegionBackendServiceState {
      * Structure is documented below.
      */
     iap?: pulumi.Input<inputs.compute.RegionBackendServiceIap>;
+    /**
+     * Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
+     * Possible values are: `IPV4_ONLY`, `PREFER_IPV6`, `IPV6_ONLY`.
+     */
+    ipAddressSelectionPolicy?: pulumi.Input<string>;
     /**
      * Indicates what kind of load balancing this regional backend service
      * will be used for. A backend service created for one type of load
@@ -1008,6 +1042,11 @@ export interface RegionBackendServiceArgs {
      * Structure is documented below.
      */
     iap?: pulumi.Input<inputs.compute.RegionBackendServiceIap>;
+    /**
+     * Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
+     * Possible values are: `IPV4_ONLY`, `PREFER_IPV6`, `IPV6_ONLY`.
+     */
+    ipAddressSelectionPolicy?: pulumi.Input<string>;
     /**
      * Indicates what kind of load balancing this regional backend service
      * will be used for. A backend service created for one type of load

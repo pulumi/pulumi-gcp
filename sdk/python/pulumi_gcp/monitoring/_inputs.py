@@ -147,6 +147,11 @@ if not MYPY:
         are notified when this alert fires, on a per-channel basis.
         Structure is documented below.
         """
+        notification_prompts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Control when notifications will be sent out.
+        Each value may be one of: `NOTIFICATION_PROMPT_UNSPECIFIED`, `OPENED`, `CLOSED`.
+        """
         notification_rate_limit: NotRequired[pulumi.Input['AlertPolicyAlertStrategyNotificationRateLimitArgsDict']]
         """
         Required for alert policies with a LogMatch condition.
@@ -161,12 +166,15 @@ class AlertPolicyAlertStrategyArgs:
     def __init__(__self__, *,
                  auto_close: Optional[pulumi.Input[str]] = None,
                  notification_channel_strategies: Optional[pulumi.Input[Sequence[pulumi.Input['AlertPolicyAlertStrategyNotificationChannelStrategyArgs']]]] = None,
+                 notification_prompts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  notification_rate_limit: Optional[pulumi.Input['AlertPolicyAlertStrategyNotificationRateLimitArgs']] = None):
         """
         :param pulumi.Input[str] auto_close: If an alert policy that was active has no data for this long, any open incidents will close.
         :param pulumi.Input[Sequence[pulumi.Input['AlertPolicyAlertStrategyNotificationChannelStrategyArgs']]] notification_channel_strategies: Control over how the notification channels in `notification_channels`
                are notified when this alert fires, on a per-channel basis.
                Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_prompts: Control when notifications will be sent out.
+               Each value may be one of: `NOTIFICATION_PROMPT_UNSPECIFIED`, `OPENED`, `CLOSED`.
         :param pulumi.Input['AlertPolicyAlertStrategyNotificationRateLimitArgs'] notification_rate_limit: Required for alert policies with a LogMatch condition.
                This limit is not implemented for alert policies that are not log-based.
                Structure is documented below.
@@ -175,6 +183,8 @@ class AlertPolicyAlertStrategyArgs:
             pulumi.set(__self__, "auto_close", auto_close)
         if notification_channel_strategies is not None:
             pulumi.set(__self__, "notification_channel_strategies", notification_channel_strategies)
+        if notification_prompts is not None:
+            pulumi.set(__self__, "notification_prompts", notification_prompts)
         if notification_rate_limit is not None:
             pulumi.set(__self__, "notification_rate_limit", notification_rate_limit)
 
@@ -203,6 +213,19 @@ class AlertPolicyAlertStrategyArgs:
     @notification_channel_strategies.setter
     def notification_channel_strategies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlertPolicyAlertStrategyNotificationChannelStrategyArgs']]]]):
         pulumi.set(self, "notification_channel_strategies", value)
+
+    @property
+    @pulumi.getter(name="notificationPrompts")
+    def notification_prompts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Control when notifications will be sent out.
+        Each value may be one of: `NOTIFICATION_PROMPT_UNSPECIFIED`, `OPENED`, `CLOSED`.
+        """
+        return pulumi.get(self, "notification_prompts")
+
+    @notification_prompts.setter
+    def notification_prompts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "notification_prompts", value)
 
     @property
     @pulumi.getter(name="notificationRateLimit")

@@ -11,16 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## subcategory: "Site Verification"
-//
-// description: |-
-//
-//	A verification token is used to demonstrate ownership of a website or domain.
-//
-// ---
-//
-// # siteverification.getToken
-//
 // A verification token is used to demonstrate ownership of a website or domain.
 //
 // To get more information about Token, see:

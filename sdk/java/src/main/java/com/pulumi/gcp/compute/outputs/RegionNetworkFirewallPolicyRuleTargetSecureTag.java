@@ -4,7 +4,6 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -13,26 +12,28 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RegionNetworkFirewallPolicyRuleTargetSecureTag {
     /**
-     * @return Name of the secure tag, created with TagManager&#39;s TagValue API. {@literal @}pattern tagValues/[0-9]+
+     * @return Name of the secure tag, created with TagManager&#39;s TagValue API.
      * 
      */
-    private String name;
+    private @Nullable String name;
     /**
-     * @return [Output Only] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
+     * @return (Output)
+     * State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
      * 
      */
     private @Nullable String state;
 
     private RegionNetworkFirewallPolicyRuleTargetSecureTag() {}
     /**
-     * @return Name of the secure tag, created with TagManager&#39;s TagValue API. {@literal @}pattern tagValues/[0-9]+
+     * @return Name of the secure tag, created with TagManager&#39;s TagValue API.
      * 
      */
-    public String name() {
-        return this.name;
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
     }
     /**
-     * @return [Output Only] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
+     * @return (Output)
+     * State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
      * 
      */
     public Optional<String> state() {
@@ -48,7 +49,7 @@ public final class RegionNetworkFirewallPolicyRuleTargetSecureTag {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String name;
+        private @Nullable String name;
         private @Nullable String state;
         public Builder() {}
         public Builder(RegionNetworkFirewallPolicyRuleTargetSecureTag defaults) {
@@ -58,10 +59,8 @@ public final class RegionNetworkFirewallPolicyRuleTargetSecureTag {
         }
 
         @CustomType.Setter
-        public Builder name(String name) {
-            if (name == null) {
-              throw new MissingRequiredPropertyException("RegionNetworkFirewallPolicyRuleTargetSecureTag", "name");
-            }
+        public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }

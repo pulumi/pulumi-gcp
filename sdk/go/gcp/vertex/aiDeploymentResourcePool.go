@@ -40,7 +40,7 @@ import (
 //				DedicatedResources: &vertex.AiDeploymentResourcePoolDedicatedResourcesArgs{
 //					MachineSpec: &vertex.AiDeploymentResourcePoolDedicatedResourcesMachineSpecArgs{
 //						MachineType:      pulumi.String("n1-standard-4"),
-//						AcceleratorType:  pulumi.String("NVIDIA_TESLA_K80"),
+//						AcceleratorType:  pulumi.String("NVIDIA_TESLA_P4"),
 //						AcceleratorCount: pulumi.Int(1),
 //					},
 //					MinReplicaCount: pulumi.Int(1),

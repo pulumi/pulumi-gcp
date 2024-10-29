@@ -135,6 +135,7 @@ type Provider struct {
 	NetworkSecurityCustomEndpoint          pulumi.StringPtrOutput `pulumi:"networkSecurityCustomEndpoint"`
 	NetworkServicesCustomEndpoint          pulumi.StringPtrOutput `pulumi:"networkServicesCustomEndpoint"`
 	NotebooksCustomEndpoint                pulumi.StringPtrOutput `pulumi:"notebooksCustomEndpoint"`
+	OracleDatabaseCustomEndpoint           pulumi.StringPtrOutput `pulumi:"oracleDatabaseCustomEndpoint"`
 	OrgPolicyCustomEndpoint                pulumi.StringPtrOutput `pulumi:"orgPolicyCustomEndpoint"`
 	OsConfigCustomEndpoint                 pulumi.StringPtrOutput `pulumi:"osConfigCustomEndpoint"`
 	OsLoginCustomEndpoint                  pulumi.StringPtrOutput `pulumi:"osLoginCustomEndpoint"`
@@ -178,6 +179,7 @@ type Provider struct {
 	TagsLocationCustomEndpoint             pulumi.StringPtrOutput `pulumi:"tagsLocationCustomEndpoint"`
 	TpuCustomEndpoint                      pulumi.StringPtrOutput `pulumi:"tpuCustomEndpoint"`
 	TpuV2CustomEndpoint                    pulumi.StringPtrOutput `pulumi:"tpuV2CustomEndpoint"`
+	TranscoderCustomEndpoint               pulumi.StringPtrOutput `pulumi:"transcoderCustomEndpoint"`
 	UniverseDomain                         pulumi.StringPtrOutput `pulumi:"universeDomain"`
 	VertexAiCustomEndpoint                 pulumi.StringPtrOutput `pulumi:"vertexAiCustomEndpoint"`
 	VmwareengineCustomEndpoint             pulumi.StringPtrOutput `pulumi:"vmwareengineCustomEndpoint"`
@@ -349,6 +351,7 @@ type providerArgs struct {
 	NetworkSecurityCustomEndpoint          *string           `pulumi:"networkSecurityCustomEndpoint"`
 	NetworkServicesCustomEndpoint          *string           `pulumi:"networkServicesCustomEndpoint"`
 	NotebooksCustomEndpoint                *string           `pulumi:"notebooksCustomEndpoint"`
+	OracleDatabaseCustomEndpoint           *string           `pulumi:"oracleDatabaseCustomEndpoint"`
 	OrgPolicyCustomEndpoint                *string           `pulumi:"orgPolicyCustomEndpoint"`
 	OsConfigCustomEndpoint                 *string           `pulumi:"osConfigCustomEndpoint"`
 	OsLoginCustomEndpoint                  *string           `pulumi:"osLoginCustomEndpoint"`
@@ -393,6 +396,7 @@ type providerArgs struct {
 	TagsLocationCustomEndpoint             *string           `pulumi:"tagsLocationCustomEndpoint"`
 	TpuCustomEndpoint                      *string           `pulumi:"tpuCustomEndpoint"`
 	TpuV2CustomEndpoint                    *string           `pulumi:"tpuV2CustomEndpoint"`
+	TranscoderCustomEndpoint               *string           `pulumi:"transcoderCustomEndpoint"`
 	UniverseDomain                         *string           `pulumi:"universeDomain"`
 	UserProjectOverride                    *bool             `pulumi:"userProjectOverride"`
 	VertexAiCustomEndpoint                 *string           `pulumi:"vertexAiCustomEndpoint"`
@@ -528,6 +532,7 @@ type ProviderArgs struct {
 	NetworkSecurityCustomEndpoint          pulumi.StringPtrInput
 	NetworkServicesCustomEndpoint          pulumi.StringPtrInput
 	NotebooksCustomEndpoint                pulumi.StringPtrInput
+	OracleDatabaseCustomEndpoint           pulumi.StringPtrInput
 	OrgPolicyCustomEndpoint                pulumi.StringPtrInput
 	OsConfigCustomEndpoint                 pulumi.StringPtrInput
 	OsLoginCustomEndpoint                  pulumi.StringPtrInput
@@ -572,6 +577,7 @@ type ProviderArgs struct {
 	TagsLocationCustomEndpoint             pulumi.StringPtrInput
 	TpuCustomEndpoint                      pulumi.StringPtrInput
 	TpuV2CustomEndpoint                    pulumi.StringPtrInput
+	TranscoderCustomEndpoint               pulumi.StringPtrInput
 	UniverseDomain                         pulumi.StringPtrInput
 	UserProjectOverride                    pulumi.BoolPtrInput
 	VertexAiCustomEndpoint                 pulumi.StringPtrInput
@@ -1088,6 +1094,10 @@ func (o ProviderOutput) NotebooksCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.NotebooksCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderOutput) OracleDatabaseCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.OracleDatabaseCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderOutput) OrgPolicyCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.OrgPolicyCustomEndpoint }).(pulumi.StringPtrOutput)
 }
@@ -1258,6 +1268,10 @@ func (o ProviderOutput) TpuCustomEndpoint() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) TpuV2CustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.TpuV2CustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) TranscoderCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.TranscoderCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) UniverseDomain() pulumi.StringPtrOutput {

@@ -11,6 +11,41 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this data source to get information about a Google Cloud Privileged Access Manager Entitlement.
+//
+// To get more information about Privileged Access Manager, see:
+//
+// * [API Documentation](https://cloud.google.com/iam/docs/reference/pam/rest)
+// * How-to guides
+//   - [Official documentation](https://cloud.google.com/iam/docs/pam-overview)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/privilegedaccessmanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := privilegedaccessmanager.LookupEntitlement(ctx, &privilegedaccessmanager.LookupEntitlementArgs{
+//				Parent:        pulumi.StringRef("projects/my-project"),
+//				Location:      pulumi.StringRef("global"),
+//				EntitlementId: pulumi.StringRef("my-entitlement"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupEntitlement(ctx *pulumi.Context, args *LookupEntitlementArgs, opts ...pulumi.InvokeOption) (*LookupEntitlementResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupEntitlementResult
@@ -23,9 +58,12 @@ func LookupEntitlement(ctx *pulumi.Context, args *LookupEntitlementArgs, opts ..
 
 // A collection of arguments for invoking getEntitlement.
 type LookupEntitlementArgs struct {
+	// ID of the Entitlement resource. This is the last part of the Entitlement's full name which is of the format `{parent}/locations/{location}/entitlements/{entitlement_id}`.
 	EntitlementId *string `pulumi:"entitlementId"`
-	Location      *string `pulumi:"location"`
-	Parent        *string `pulumi:"parent"`
+	// The region of the Entitlement resource.
+	Location *string `pulumi:"location"`
+	// The project or folder or organization that contains the resource. Format: projects/{project-id|project-number} or folders/{folder-number}  or organizations/{organization-number}
+	Parent *string `pulumi:"parent"`
 }
 
 // A collection of values returned by getEntitlement.
@@ -69,9 +107,12 @@ func LookupEntitlementOutput(ctx *pulumi.Context, args LookupEntitlementOutputAr
 
 // A collection of arguments for invoking getEntitlement.
 type LookupEntitlementOutputArgs struct {
+	// ID of the Entitlement resource. This is the last part of the Entitlement's full name which is of the format `{parent}/locations/{location}/entitlements/{entitlement_id}`.
 	EntitlementId pulumi.StringPtrInput `pulumi:"entitlementId"`
-	Location      pulumi.StringPtrInput `pulumi:"location"`
-	Parent        pulumi.StringPtrInput `pulumi:"parent"`
+	// The region of the Entitlement resource.
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// The project or folder or organization that contains the resource. Format: projects/{project-id|project-number} or folders/{folder-number}  or organizations/{organization-number}
+	Parent pulumi.StringPtrInput `pulumi:"parent"`
 }
 
 func (LookupEntitlementOutputArgs) ElementType() reflect.Type {

@@ -22,6 +22,7 @@ __all__ = ['ClusterArgs', 'Cluster']
 class ClusterArgs:
     def __init__(__self__, *,
                  parent: pulumi.Input[str],
+                 autoscaling_settings: Optional[pulumi.Input['ClusterAutoscalingSettingsArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeTypeConfigArgs']]]] = None):
         """
@@ -29,6 +30,8 @@ class ClusterArgs:
         :param pulumi.Input[str] parent: The resource name of the private cloud to create a new cluster in.
                Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
                For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
+        :param pulumi.Input['ClusterAutoscalingSettingsArgs'] autoscaling_settings: Configuration of the autoscaling applied to this cluster
+               Structure is documented below.
         :param pulumi.Input[str] name: The ID of the Cluster.
                
                
@@ -38,6 +41,8 @@ class ClusterArgs:
                Structure is documented below.
         """
         pulumi.set(__self__, "parent", parent)
+        if autoscaling_settings is not None:
+            pulumi.set(__self__, "autoscaling_settings", autoscaling_settings)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if node_type_configs is not None:
@@ -56,6 +61,19 @@ class ClusterArgs:
     @parent.setter
     def parent(self, value: pulumi.Input[str]):
         pulumi.set(self, "parent", value)
+
+    @property
+    @pulumi.getter(name="autoscalingSettings")
+    def autoscaling_settings(self) -> Optional[pulumi.Input['ClusterAutoscalingSettingsArgs']]:
+        """
+        Configuration of the autoscaling applied to this cluster
+        Structure is documented below.
+        """
+        return pulumi.get(self, "autoscaling_settings")
+
+    @autoscaling_settings.setter
+    def autoscaling_settings(self, value: Optional[pulumi.Input['ClusterAutoscalingSettingsArgs']]):
+        pulumi.set(self, "autoscaling_settings", value)
 
     @property
     @pulumi.getter
@@ -90,6 +108,7 @@ class ClusterArgs:
 @pulumi.input_type
 class _ClusterState:
     def __init__(__self__, *,
+                 autoscaling_settings: Optional[pulumi.Input['ClusterAutoscalingSettingsArgs']] = None,
                  management: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeTypeConfigArgs']]]] = None,
@@ -98,6 +117,8 @@ class _ClusterState:
                  uid: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
+        :param pulumi.Input['ClusterAutoscalingSettingsArgs'] autoscaling_settings: Configuration of the autoscaling applied to this cluster
+               Structure is documented below.
         :param pulumi.Input[bool] management: True if the cluster is a management cluster; false otherwise.
                There can only be one management cluster in a private cloud and it has to be the first one.
         :param pulumi.Input[str] name: The ID of the Cluster.
@@ -113,6 +134,8 @@ class _ClusterState:
         :param pulumi.Input[str] state: State of the Cluster.
         :param pulumi.Input[str] uid: System-generated unique identifier for the resource.
         """
+        if autoscaling_settings is not None:
+            pulumi.set(__self__, "autoscaling_settings", autoscaling_settings)
         if management is not None:
             pulumi.set(__self__, "management", management)
         if name is not None:
@@ -125,6 +148,19 @@ class _ClusterState:
             pulumi.set(__self__, "state", state)
         if uid is not None:
             pulumi.set(__self__, "uid", uid)
+
+    @property
+    @pulumi.getter(name="autoscalingSettings")
+    def autoscaling_settings(self) -> Optional[pulumi.Input['ClusterAutoscalingSettingsArgs']]:
+        """
+        Configuration of the autoscaling applied to this cluster
+        Structure is documented below.
+        """
+        return pulumi.get(self, "autoscaling_settings")
+
+    @autoscaling_settings.setter
+    def autoscaling_settings(self, value: Optional[pulumi.Input['ClusterAutoscalingSettingsArgs']]):
+        pulumi.set(self, "autoscaling_settings", value)
 
     @property
     @pulumi.getter
@@ -212,6 +248,7 @@ class Cluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 autoscaling_settings: Optional[pulumi.Input[Union['ClusterAutoscalingSettingsArgs', 'ClusterAutoscalingSettingsArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeTypeConfigArgs', 'ClusterNodeTypeConfigArgsDict']]]]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
@@ -293,7 +330,29 @@ class Cluster(pulumi.CustomResource):
                 "node_type_id": "standard-72",
                 "node_count": 3,
                 "custom_core_count": 32,
-            }])
+            }],
+            autoscaling_settings={
+                "autoscaling_policies": [{
+                    "autoscale_policy_id": "autoscaling-policy",
+                    "node_type_id": "standard-72",
+                    "scale_out_size": 1,
+                    "cpu_thresholds": {
+                        "scale_out": 80,
+                        "scale_in": 15,
+                    },
+                    "consumed_memory_thresholds": {
+                        "scale_out": 75,
+                        "scale_in": 20,
+                    },
+                    "storage_thresholds": {
+                        "scale_out": 80,
+                        "scale_in": 20,
+                    },
+                }],
+                "min_cluster_node_count": 3,
+                "max_cluster_node_count": 8,
+                "cool_down_period": "1800s",
+            })
         ```
 
         ## Import
@@ -310,6 +369,8 @@ class Cluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['ClusterAutoscalingSettingsArgs', 'ClusterAutoscalingSettingsArgsDict']] autoscaling_settings: Configuration of the autoscaling applied to this cluster
+               Structure is documented below.
         :param pulumi.Input[str] name: The ID of the Cluster.
                
                
@@ -404,7 +465,29 @@ class Cluster(pulumi.CustomResource):
                 "node_type_id": "standard-72",
                 "node_count": 3,
                 "custom_core_count": 32,
-            }])
+            }],
+            autoscaling_settings={
+                "autoscaling_policies": [{
+                    "autoscale_policy_id": "autoscaling-policy",
+                    "node_type_id": "standard-72",
+                    "scale_out_size": 1,
+                    "cpu_thresholds": {
+                        "scale_out": 80,
+                        "scale_in": 15,
+                    },
+                    "consumed_memory_thresholds": {
+                        "scale_out": 75,
+                        "scale_in": 20,
+                    },
+                    "storage_thresholds": {
+                        "scale_out": 80,
+                        "scale_in": 20,
+                    },
+                }],
+                "min_cluster_node_count": 3,
+                "max_cluster_node_count": 8,
+                "cool_down_period": "1800s",
+            })
         ```
 
         ## Import
@@ -434,6 +517,7 @@ class Cluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 autoscaling_settings: Optional[pulumi.Input[Union['ClusterAutoscalingSettingsArgs', 'ClusterAutoscalingSettingsArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeTypeConfigArgs', 'ClusterNodeTypeConfigArgsDict']]]]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
@@ -446,6 +530,7 @@ class Cluster(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ClusterArgs.__new__(ClusterArgs)
 
+            __props__.__dict__["autoscaling_settings"] = autoscaling_settings
             __props__.__dict__["name"] = name
             __props__.__dict__["node_type_configs"] = node_type_configs
             if parent is None and not opts.urn:
@@ -464,6 +549,7 @@ class Cluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            autoscaling_settings: Optional[pulumi.Input[Union['ClusterAutoscalingSettingsArgs', 'ClusterAutoscalingSettingsArgsDict']]] = None,
             management: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             node_type_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeTypeConfigArgs', 'ClusterNodeTypeConfigArgsDict']]]]] = None,
@@ -477,6 +563,8 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['ClusterAutoscalingSettingsArgs', 'ClusterAutoscalingSettingsArgsDict']] autoscaling_settings: Configuration of the autoscaling applied to this cluster
+               Structure is documented below.
         :param pulumi.Input[bool] management: True if the cluster is a management cluster; false otherwise.
                There can only be one management cluster in a private cloud and it has to be the first one.
         :param pulumi.Input[str] name: The ID of the Cluster.
@@ -496,6 +584,7 @@ class Cluster(pulumi.CustomResource):
 
         __props__ = _ClusterState.__new__(_ClusterState)
 
+        __props__.__dict__["autoscaling_settings"] = autoscaling_settings
         __props__.__dict__["management"] = management
         __props__.__dict__["name"] = name
         __props__.__dict__["node_type_configs"] = node_type_configs
@@ -503,6 +592,15 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         __props__.__dict__["uid"] = uid
         return Cluster(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="autoscalingSettings")
+    def autoscaling_settings(self) -> pulumi.Output[Optional['outputs.ClusterAutoscalingSettings']]:
+        """
+        Configuration of the autoscaling applied to this cluster
+        Structure is documented below.
+        """
+        return pulumi.get(self, "autoscaling_settings")
 
     @property
     @pulumi.getter

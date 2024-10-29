@@ -707,7 +707,7 @@ class Stream(pulumi.CustomResource):
             connection_profile_id="source-profile",
             postgresql_profile={
                 "hostname": "hostname",
-                "port": 3306,
+                "port": 5432,
                 "username": "user",
                 "password": "pass",
                 "database": "postgres",
@@ -1545,7 +1545,7 @@ class Stream(pulumi.CustomResource):
             connection_profile_id="source-profile",
             postgresql_profile={
                 "hostname": "hostname",
-                "port": 3306,
+                "port": 5432,
                 "username": "user",
                 "password": "pass",
                 "database": "postgres",

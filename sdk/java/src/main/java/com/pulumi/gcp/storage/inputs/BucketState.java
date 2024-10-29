@@ -9,6 +9,7 @@ import com.pulumi.gcp.storage.inputs.BucketAutoclassArgs;
 import com.pulumi.gcp.storage.inputs.BucketCorArgs;
 import com.pulumi.gcp.storage.inputs.BucketCustomPlacementConfigArgs;
 import com.pulumi.gcp.storage.inputs.BucketEncryptionArgs;
+import com.pulumi.gcp.storage.inputs.BucketHierarchicalNamespaceArgs;
 import com.pulumi.gcp.storage.inputs.BucketLifecycleRuleArgs;
 import com.pulumi.gcp.storage.inputs.BucketLoggingArgs;
 import com.pulumi.gcp.storage.inputs.BucketRetentionPolicyArgs;
@@ -143,6 +144,21 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> forceDestroy() {
         return Optional.ofNullable(this.forceDestroy);
+    }
+
+    /**
+     * The bucket&#39;s hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below.
+     * 
+     */
+    @Import(name="hierarchicalNamespace")
+    private @Nullable Output<BucketHierarchicalNamespaceArgs> hierarchicalNamespace;
+
+    /**
+     * @return The bucket&#39;s hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below.
+     * 
+     */
+    public Optional<Output<BucketHierarchicalNamespaceArgs>> hierarchicalNamespace() {
+        return Optional.ofNullable(this.hierarchicalNamespace);
     }
 
     /**
@@ -449,6 +465,7 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
         this.enableObjectRetention = $.enableObjectRetention;
         this.encryption = $.encryption;
         this.forceDestroy = $.forceDestroy;
+        this.hierarchicalNamespace = $.hierarchicalNamespace;
         this.labels = $.labels;
         this.lifecycleRules = $.lifecycleRules;
         this.location = $.location;
@@ -656,6 +673,27 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder forceDestroy(Boolean forceDestroy) {
             return forceDestroy(Output.of(forceDestroy));
+        }
+
+        /**
+         * @param hierarchicalNamespace The bucket&#39;s hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hierarchicalNamespace(@Nullable Output<BucketHierarchicalNamespaceArgs> hierarchicalNamespace) {
+            $.hierarchicalNamespace = hierarchicalNamespace;
+            return this;
+        }
+
+        /**
+         * @param hierarchicalNamespace The bucket&#39;s hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hierarchicalNamespace(BucketHierarchicalNamespaceArgs hierarchicalNamespace) {
+            return hierarchicalNamespace(Output.of(hierarchicalNamespace));
         }
 
         /**

@@ -363,10 +363,25 @@ import * as utilities from "../utilities";
  *         audioExportGcsDestination: {
  *             uri: pulumi.interpolate`${bucket.url}/prefix-`,
  *         },
+ *         speechSettings: {
+ *             endpointerSensitivity: 30,
+ *             noSpeechTimeout: "3.500s",
+ *             useTimeoutBasedEndpointing: true,
+ *             models: {
+ *                 name: "wrench",
+ *                 mass: "1.3kg",
+ *                 count: "3",
+ *             },
+ *         },
  *         dtmfSettings: {
  *             enabled: true,
  *             maxDigits: 1,
  *             finishDigit: "#",
+ *         },
+ *         loggingSettings: {
+ *             enableStackdriverLogging: true,
+ *             enableInteractionLogging: true,
+ *             enableConsentBasedRedaction: true,
  *         },
  *     },
  * });

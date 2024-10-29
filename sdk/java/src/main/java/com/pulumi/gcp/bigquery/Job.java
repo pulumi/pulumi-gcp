@@ -447,8 +447,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.kms.CryptoKeyArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
- * import com.pulumi.gcp.projects.IAMMember;
- * import com.pulumi.gcp.projects.IAMMemberArgs;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
  * import com.pulumi.gcp.bigquery.inputs.TableEncryptionConfigurationArgs;
  * import com.pulumi.gcp.bigquery.Job;
  * import com.pulumi.gcp.bigquery.JobArgs;
@@ -484,9 +484,9 @@ import javax.annotation.Nullable;
  * }}{@code
  *         for (var i = 0; i < count; i++) }{{@code
  *             new Table("source-" + i, TableArgs.builder()
- *                 .deletionProtection(false)
  *                 .datasetId(sourceDataset[range.value()].datasetId())
  *                 .tableId(String.format("job_copy_%s_table", range.value()))
+ *                 .deletionProtection(false)
  *                 .schema("""
  * [
  *   }{{@code
@@ -531,8 +531,8 @@ import javax.annotation.Nullable;
  *             .projectId("my-project-name")
  *             .build());
  * 
- *         var encryptRole = new IAMMember("encryptRole", IAMMemberArgs.builder()
- *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
+ *         var encryptRole = new CryptoKeyIAMMember("encryptRole", CryptoKeyIAMMemberArgs.builder()
+ *             .cryptoKeyId(cryptoKey.id())
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
  *             .member(String.format("serviceAccount:bq-%s}{@literal @}{@code bigquery-encryption.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());

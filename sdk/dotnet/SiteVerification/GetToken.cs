@@ -12,14 +12,6 @@ namespace Pulumi.Gcp.SiteVerification
     public static class GetToken
     {
         /// <summary>
-        /// ## subcategory: "Site Verification"
-        /// 
-        /// description: |-
-        ///   A verification token is used to demonstrate ownership of a website or domain.
-        /// ---
-        /// 
-        /// # gcp.siteverification.getToken
-        /// 
         /// A verification token is used to demonstrate ownership of a website or domain.
         /// 
         /// 
@@ -76,14 +68,6 @@ namespace Pulumi.Gcp.SiteVerification
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTokenResult>("gcp:siteverification/getToken:getToken", args ?? new GetTokenArgs(), options.WithDefaults());
 
         /// <summary>
-        /// ## subcategory: "Site Verification"
-        /// 
-        /// description: |-
-        ///   A verification token is used to demonstrate ownership of a website or domain.
-        /// ---
-        /// 
-        /// # gcp.siteverification.getToken
-        /// 
         /// A verification token is used to demonstrate ownership of a website or domain.
         /// 
         /// 

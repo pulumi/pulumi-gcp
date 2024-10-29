@@ -20,14 +20,14 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
     public static final RegionNetworkFirewallPolicyRuleMatchArgs Empty = new RegionNetworkFirewallPolicyRuleMatchArgs();
 
     /**
-     * Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
+     * Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
      * 
      */
     @Import(name="destAddressGroups")
     private @Nullable Output<List<String>> destAddressGroups;
 
     /**
-     * @return Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
+     * @return Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
      * 
      */
     public Optional<Output<List<String>>> destAddressGroups() {
@@ -35,14 +35,14 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
     }
 
     /**
-     * Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
+     * Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
      * 
      */
     @Import(name="destFqdns")
     private @Nullable Output<List<String>> destFqdns;
 
     /**
-     * @return Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
+     * @return Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
      * 
      */
     public Optional<Output<List<String>>> destFqdns() {
@@ -65,14 +65,14 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
     }
 
     /**
-     * The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is egress.
+     * Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex.&#34;US&#34; Maximum number of dest region codes allowed is 5000.
      * 
      */
     @Import(name="destRegionCodes")
     private @Nullable Output<List<String>> destRegionCodes;
 
     /**
-     * @return The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is egress.
+     * @return Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex.&#34;US&#34; Maximum number of dest region codes allowed is 5000.
      * 
      */
     public Optional<Output<List<String>>> destRegionCodes() {
@@ -80,14 +80,14 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
     }
 
     /**
-     * Name of the Google Cloud Threat Intelligence list.
+     * Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
      * 
      */
     @Import(name="destThreatIntelligences")
     private @Nullable Output<List<String>> destThreatIntelligences;
 
     /**
-     * @return Name of the Google Cloud Threat Intelligence list.
+     * @return Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
      * 
      */
     public Optional<Output<List<String>>> destThreatIntelligences() {
@@ -96,6 +96,7 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
 
     /**
      * Pairs of IP protocols and ports that the rule should match.
+     * Structure is documented below.
      * 
      */
     @Import(name="layer4Configs", required=true)
@@ -103,6 +104,7 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
 
     /**
      * @return Pairs of IP protocols and ports that the rule should match.
+     * Structure is documented below.
      * 
      */
     public Output<List<RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs>> layer4Configs() {
@@ -110,14 +112,14 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
     }
 
     /**
-     * Address groups which should be matched against the traffic source. Maximum number of source address groups is 10. Source address groups is only supported in Ingress rules.
+     * Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
      * 
      */
     @Import(name="srcAddressGroups")
     private @Nullable Output<List<String>> srcAddressGroups;
 
     /**
-     * @return Address groups which should be matched against the traffic source. Maximum number of source address groups is 10. Source address groups is only supported in Ingress rules.
+     * @return Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
      * 
      */
     public Optional<Output<List<String>>> srcAddressGroups() {
@@ -125,14 +127,14 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
     }
 
     /**
-     * Domain names that will be used to match against the resolved domain name of source of traffic. Can only be specified if DIRECTION is ingress.
+     * Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
      * 
      */
     @Import(name="srcFqdns")
     private @Nullable Output<List<String>> srcFqdns;
 
     /**
-     * @return Domain names that will be used to match against the resolved domain name of source of traffic. Can only be specified if DIRECTION is ingress.
+     * @return Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
      * 
      */
     public Optional<Output<List<String>>> srcFqdns() {
@@ -155,14 +157,14 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
     }
 
     /**
-     * The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
+     * Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex.&#34;US&#34; Maximum number of source region codes allowed is 5000.
      * 
      */
     @Import(name="srcRegionCodes")
     private @Nullable Output<List<String>> srcRegionCodes;
 
     /**
-     * @return The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
+     * @return Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex.&#34;US&#34; Maximum number of source region codes allowed is 5000.
      * 
      */
     public Optional<Output<List<String>>> srcRegionCodes() {
@@ -170,14 +172,16 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
     }
 
     /**
-     * List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the &lt;code&gt;srcSecureTag&lt;/code&gt; are INEFFECTIVE, and there is no &lt;code&gt;srcIpRange&lt;/code&gt;, this rule will be ignored. Maximum number of source tag values allowed is 256.
+     * List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
+     * Structure is documented below.
      * 
      */
     @Import(name="srcSecureTags")
     private @Nullable Output<List<RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgs>> srcSecureTags;
 
     /**
-     * @return List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the &lt;code&gt;srcSecureTag&lt;/code&gt; are INEFFECTIVE, and there is no &lt;code&gt;srcIpRange&lt;/code&gt;, this rule will be ignored. Maximum number of source tag values allowed is 256.
+     * @return List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgs>>> srcSecureTags() {
@@ -185,18 +189,18 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
     }
 
     /**
-     * Name of the Google Cloud Threat Intelligence list.
+     * Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
      * 
-     * The `layer4_configs` block supports:
+     * &lt;a name=&#34;nested_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
      * 
      */
     @Import(name="srcThreatIntelligences")
     private @Nullable Output<List<String>> srcThreatIntelligences;
 
     /**
-     * @return Name of the Google Cloud Threat Intelligence list.
+     * @return Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
      * 
-     * The `layer4_configs` block supports:
+     * &lt;a name=&#34;nested_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
      * 
      */
     public Optional<Output<List<String>>> srcThreatIntelligences() {
@@ -239,7 +243,7 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
         }
 
         /**
-         * @param destAddressGroups Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
+         * @param destAddressGroups Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
          * 
          * @return builder
          * 
@@ -250,7 +254,7 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
         }
 
         /**
-         * @param destAddressGroups Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
+         * @param destAddressGroups Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
          * 
          * @return builder
          * 
@@ -260,7 +264,7 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
         }
 
         /**
-         * @param destAddressGroups Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
+         * @param destAddressGroups Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
          * 
          * @return builder
          * 
@@ -270,7 +274,7 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
         }
 
         /**
-         * @param destFqdns Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
+         * @param destFqdns Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
          * 
          * @return builder
          * 
@@ -281,7 +285,7 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
         }
 
         /**
-         * @param destFqdns Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
+         * @param destFqdns Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
          * 
          * @return builder
          * 
@@ -291,7 +295,7 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
         }
 
         /**
-         * @param destFqdns Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
+         * @param destFqdns Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
          * 
          * @return builder
          * 
@@ -332,7 +336,7 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
         }
 
         /**
-         * @param destRegionCodes The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is egress.
+         * @param destRegionCodes Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex.&#34;US&#34; Maximum number of dest region codes allowed is 5000.
          * 
          * @return builder
          * 
@@ -343,7 +347,7 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
         }
 
         /**
-         * @param destRegionCodes The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is egress.
+         * @param destRegionCodes Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex.&#34;US&#34; Maximum number of dest region codes allowed is 5000.
          * 
          * @return builder
          * 
@@ -353,7 +357,7 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
         }
 
         /**
-         * @param destRegionCodes The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is egress.
+         * @param destRegionCodes Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex.&#34;US&#34; Maximum number of dest region codes allowed is 5000.
          * 
          * @return builder
          * 
@@ -363,7 +367,7 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
         }
 
         /**
-         * @param destThreatIntelligences Name of the Google Cloud Threat Intelligence list.
+         * @param destThreatIntelligences Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
          * 
          * @return builder
          * 
@@ -374,7 +378,7 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
         }
 
         /**
-         * @param destThreatIntelligences Name of the Google Cloud Threat Intelligence list.
+         * @param destThreatIntelligences Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
          * 
          * @return builder
          * 
@@ -384,7 +388,7 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
         }
 
         /**
-         * @param destThreatIntelligences Name of the Google Cloud Threat Intelligence list.
+         * @param destThreatIntelligences Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
          * 
          * @return builder
          * 
@@ -395,6 +399,7 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
 
         /**
          * @param layer4Configs Pairs of IP protocols and ports that the rule should match.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -406,6 +411,7 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
 
         /**
          * @param layer4Configs Pairs of IP protocols and ports that the rule should match.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -416,6 +422,7 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
 
         /**
          * @param layer4Configs Pairs of IP protocols and ports that the rule should match.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -425,7 +432,7 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
         }
 
         /**
-         * @param srcAddressGroups Address groups which should be matched against the traffic source. Maximum number of source address groups is 10. Source address groups is only supported in Ingress rules.
+         * @param srcAddressGroups Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
          * 
          * @return builder
          * 
@@ -436,7 +443,7 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
         }
 
         /**
-         * @param srcAddressGroups Address groups which should be matched against the traffic source. Maximum number of source address groups is 10. Source address groups is only supported in Ingress rules.
+         * @param srcAddressGroups Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
          * 
          * @return builder
          * 
@@ -446,7 +453,7 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
         }
 
         /**
-         * @param srcAddressGroups Address groups which should be matched against the traffic source. Maximum number of source address groups is 10. Source address groups is only supported in Ingress rules.
+         * @param srcAddressGroups Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
          * 
          * @return builder
          * 
@@ -456,7 +463,7 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
         }
 
         /**
-         * @param srcFqdns Domain names that will be used to match against the resolved domain name of source of traffic. Can only be specified if DIRECTION is ingress.
+         * @param srcFqdns Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
          * 
          * @return builder
          * 
@@ -467,7 +474,7 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
         }
 
         /**
-         * @param srcFqdns Domain names that will be used to match against the resolved domain name of source of traffic. Can only be specified if DIRECTION is ingress.
+         * @param srcFqdns Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
          * 
          * @return builder
          * 
@@ -477,7 +484,7 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
         }
 
         /**
-         * @param srcFqdns Domain names that will be used to match against the resolved domain name of source of traffic. Can only be specified if DIRECTION is ingress.
+         * @param srcFqdns Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
          * 
          * @return builder
          * 
@@ -518,7 +525,7 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
         }
 
         /**
-         * @param srcRegionCodes The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
+         * @param srcRegionCodes Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex.&#34;US&#34; Maximum number of source region codes allowed is 5000.
          * 
          * @return builder
          * 
@@ -529,7 +536,7 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
         }
 
         /**
-         * @param srcRegionCodes The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
+         * @param srcRegionCodes Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex.&#34;US&#34; Maximum number of source region codes allowed is 5000.
          * 
          * @return builder
          * 
@@ -539,7 +546,7 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
         }
 
         /**
-         * @param srcRegionCodes The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
+         * @param srcRegionCodes Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex.&#34;US&#34; Maximum number of source region codes allowed is 5000.
          * 
          * @return builder
          * 
@@ -549,7 +556,8 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
         }
 
         /**
-         * @param srcSecureTags List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the &lt;code&gt;srcSecureTag&lt;/code&gt; are INEFFECTIVE, and there is no &lt;code&gt;srcIpRange&lt;/code&gt;, this rule will be ignored. Maximum number of source tag values allowed is 256.
+         * @param srcSecureTags List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -560,7 +568,8 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
         }
 
         /**
-         * @param srcSecureTags List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the &lt;code&gt;srcSecureTag&lt;/code&gt; are INEFFECTIVE, and there is no &lt;code&gt;srcIpRange&lt;/code&gt;, this rule will be ignored. Maximum number of source tag values allowed is 256.
+         * @param srcSecureTags List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -570,7 +579,8 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
         }
 
         /**
-         * @param srcSecureTags List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the &lt;code&gt;srcSecureTag&lt;/code&gt; are INEFFECTIVE, and there is no &lt;code&gt;srcIpRange&lt;/code&gt;, this rule will be ignored. Maximum number of source tag values allowed is 256.
+         * @param srcSecureTags List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -580,9 +590,9 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
         }
 
         /**
-         * @param srcThreatIntelligences Name of the Google Cloud Threat Intelligence list.
+         * @param srcThreatIntelligences Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
          * 
-         * The `layer4_configs` block supports:
+         * &lt;a name=&#34;nested_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
          * 
          * @return builder
          * 
@@ -593,9 +603,9 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
         }
 
         /**
-         * @param srcThreatIntelligences Name of the Google Cloud Threat Intelligence list.
+         * @param srcThreatIntelligences Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
          * 
-         * The `layer4_configs` block supports:
+         * &lt;a name=&#34;nested_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
          * 
          * @return builder
          * 
@@ -605,9 +615,9 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
         }
 
         /**
-         * @param srcThreatIntelligences Name of the Google Cloud Threat Intelligence list.
+         * @param srcThreatIntelligences Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
          * 
-         * The `layer4_configs` block supports:
+         * &lt;a name=&#34;nested_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
          * 
          * @return builder
          * 

@@ -498,10 +498,25 @@ import (
 //							return fmt.Sprintf("%v/prefix-", url), nil
 //						}).(pulumi.StringOutput),
 //					},
+//					SpeechSettings: &diagflow.CxFlowAdvancedSettingsSpeechSettingsArgs{
+//						EndpointerSensitivity:      pulumi.Int(30),
+//						NoSpeechTimeout:            pulumi.String("3.500s"),
+//						UseTimeoutBasedEndpointing: pulumi.Bool(true),
+//						Models: pulumi.StringMap{
+//							"name":  pulumi.String("wrench"),
+//							"mass":  pulumi.String("1.3kg"),
+//							"count": pulumi.String("3"),
+//						},
+//					},
 //					DtmfSettings: &diagflow.CxFlowAdvancedSettingsDtmfSettingsArgs{
 //						Enabled:     pulumi.Bool(true),
 //						MaxDigits:   pulumi.Int(1),
 //						FinishDigit: pulumi.String("#"),
+//					},
+//					LoggingSettings: &diagflow.CxFlowAdvancedSettingsLoggingSettingsArgs{
+//						EnableStackdriverLogging:    pulumi.Bool(true),
+//						EnableInteractionLogging:    pulumi.Bool(true),
+//						EnableConsentBasedRedaction: pulumi.Bool(true),
 //					},
 //				},
 //			})

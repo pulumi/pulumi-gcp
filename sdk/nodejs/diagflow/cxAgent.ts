@@ -49,10 +49,25 @@ import * as utilities from "../utilities";
  *         audioExportGcsDestination: {
  *             uri: pulumi.interpolate`${bucket.url}/prefix-`,
  *         },
+ *         speechSettings: {
+ *             endpointerSensitivity: 30,
+ *             noSpeechTimeout: "3.500s",
+ *             useTimeoutBasedEndpointing: true,
+ *             models: {
+ *                 name: "wrench",
+ *                 mass: "1.3kg",
+ *                 count: "3",
+ *             },
+ *         },
  *         dtmfSettings: {
  *             enabled: true,
  *             maxDigits: 1,
  *             finishDigit: "#",
+ *         },
+ *         loggingSettings: {
+ *             enableStackdriverLogging: true,
+ *             enableInteractionLogging: true,
+ *             enableConsentBasedRedaction: true,
  *         },
  *     },
  *     gitIntegrationSettings: {
@@ -161,7 +176,12 @@ export class CxAgent extends pulumi.CustomResource {
      */
     public readonly enableSpellCorrection!: pulumi.Output<boolean | undefined>;
     /**
+     * (Optional, Deprecated)
      * Determines whether this agent should log conversation queries.
+     *
+     * > **Warning:** `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
+     *
+     * @deprecated `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
      */
     public readonly enableStackdriverLogging!: pulumi.Output<boolean | undefined>;
     /**
@@ -315,7 +335,12 @@ export interface CxAgentState {
      */
     enableSpellCorrection?: pulumi.Input<boolean>;
     /**
+     * (Optional, Deprecated)
      * Determines whether this agent should log conversation queries.
+     *
+     * > **Warning:** `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
+     *
+     * @deprecated `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
      */
     enableStackdriverLogging?: pulumi.Input<boolean>;
     /**
@@ -403,7 +428,12 @@ export interface CxAgentArgs {
      */
     enableSpellCorrection?: pulumi.Input<boolean>;
     /**
+     * (Optional, Deprecated)
      * Determines whether this agent should log conversation queries.
+     *
+     * > **Warning:** `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
+     *
+     * @deprecated `enableStackdriverLogging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
      */
     enableStackdriverLogging?: pulumi.Input<boolean>;
     /**

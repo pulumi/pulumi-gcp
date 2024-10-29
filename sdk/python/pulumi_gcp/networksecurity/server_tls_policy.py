@@ -419,7 +419,7 @@ class ServerTlsPolicy(pulumi.CustomResource):
                  server_certificate: Optional[pulumi.Input[Union['ServerTlsPolicyServerCertificateArgs', 'ServerTlsPolicyServerCertificateArgsDict']]] = None,
                  __props__=None):
         """
-        ClientTlsPolicy is a resource that specifies how a client should authenticate connections to backends of a service. This resource itself does not affect configuration unless it is attached to a backend service resource.
+        ServerTlsPolicy is a resource that specifies how a server should authenticate incoming requests. This resource itself does not affect configuration unless it is attached to a target HTTPS proxy or endpoint config selector resource.
 
         To get more information about ServerTlsPolicy, see:
 
@@ -582,7 +582,7 @@ class ServerTlsPolicy(pulumi.CustomResource):
                  args: Optional[ServerTlsPolicyArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ClientTlsPolicy is a resource that specifies how a client should authenticate connections to backends of a service. This resource itself does not affect configuration unless it is attached to a backend service resource.
+        ServerTlsPolicy is a resource that specifies how a server should authenticate incoming requests. This resource itself does not affect configuration unless it is attached to a target HTTPS proxy or endpoint config selector resource.
 
         To get more information about ServerTlsPolicy, see:
 

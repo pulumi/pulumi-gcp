@@ -11,9 +11,67 @@ namespace Pulumi.Gcp.PrivilegedAccessManager
 {
     public static class GetEntitlement
     {
+        /// <summary>
+        /// Use this data source to get information about a Google Cloud Privileged Access Manager Entitlement.
+        /// 
+        /// To get more information about Privileged Access Manager, see:
+        /// 
+        /// * [API Documentation](https://cloud.google.com/iam/docs/reference/pam/rest)
+        /// * How-to guides
+        ///   * [Official documentation](https://cloud.google.com/iam/docs/pam-overview)
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_entitlement = Gcp.PrivilegedAccessManager.GetEntitlement.Invoke(new()
+        ///     {
+        ///         Parent = "projects/my-project",
+        ///         Location = "global",
+        ///         EntitlementId = "my-entitlement",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetEntitlementResult> InvokeAsync(GetEntitlementArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEntitlementResult>("gcp:privilegedaccessmanager/getEntitlement:getEntitlement", args ?? new GetEntitlementArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to get information about a Google Cloud Privileged Access Manager Entitlement.
+        /// 
+        /// To get more information about Privileged Access Manager, see:
+        /// 
+        /// * [API Documentation](https://cloud.google.com/iam/docs/reference/pam/rest)
+        /// * How-to guides
+        ///   * [Official documentation](https://cloud.google.com/iam/docs/pam-overview)
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_entitlement = Gcp.PrivilegedAccessManager.GetEntitlement.Invoke(new()
+        ///     {
+        ///         Parent = "projects/my-project",
+        ///         Location = "global",
+        ///         EntitlementId = "my-entitlement",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetEntitlementResult> Invoke(GetEntitlementInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEntitlementResult>("gcp:privilegedaccessmanager/getEntitlement:getEntitlement", args ?? new GetEntitlementInvokeArgs(), options.WithDefaults());
     }
@@ -21,12 +79,21 @@ namespace Pulumi.Gcp.PrivilegedAccessManager
 
     public sealed class GetEntitlementArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// ID of the Entitlement resource. This is the last part of the Entitlement's full name which is of the format `{parent}/locations/{location}/entitlements/{entitlement_id}`.
+        /// </summary>
         [Input("entitlementId")]
         public string? EntitlementId { get; set; }
 
+        /// <summary>
+        /// The region of the Entitlement resource.
+        /// </summary>
         [Input("location")]
         public string? Location { get; set; }
 
+        /// <summary>
+        /// The project or folder or organization that contains the resource. Format: projects/{project-id|project-number} or folders/{folder-number}  or organizations/{organization-number}
+        /// </summary>
         [Input("parent")]
         public string? Parent { get; set; }
 
@@ -38,12 +105,21 @@ namespace Pulumi.Gcp.PrivilegedAccessManager
 
     public sealed class GetEntitlementInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// ID of the Entitlement resource. This is the last part of the Entitlement's full name which is of the format `{parent}/locations/{location}/entitlements/{entitlement_id}`.
+        /// </summary>
         [Input("entitlementId")]
         public Input<string>? EntitlementId { get; set; }
 
+        /// <summary>
+        /// The region of the Entitlement resource.
+        /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 
+        /// <summary>
+        /// The project or folder or organization that contains the resource. Format: projects/{project-id|project-number} or folders/{folder-number}  or organizations/{organization-number}
+        /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }
 

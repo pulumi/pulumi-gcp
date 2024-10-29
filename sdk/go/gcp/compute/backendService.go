@@ -547,6 +547,33 @@ import (
 //	}
 //
 // ```
+// ### Backend Service Ip Address Selection Policy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
+//				Name:                     pulumi.String("backend-service"),
+//				LoadBalancingScheme:      pulumi.String("EXTERNAL_MANAGED"),
+//				IpAddressSelectionPolicy: pulumi.String("IPV6_ONLY"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -635,6 +662,9 @@ type BackendService struct {
 	// Settings for enabling Cloud Identity Aware Proxy
 	// Structure is documented below.
 	Iap BackendServiceIapOutput `pulumi:"iap"`
+	// Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
+	// Possible values are: `IPV4_ONLY`, `PREFER_IPV6`, `IPV6_ONLY`.
+	IpAddressSelectionPolicy pulumi.StringPtrOutput `pulumi:"ipAddressSelectionPolicy"`
 	// Indicates whether the backend service will be used with internal or
 	// external load balancing. A backend service created for one type of
 	// load balancing cannot be used with the other. For more information, refer to
@@ -848,6 +878,9 @@ type backendServiceState struct {
 	// Settings for enabling Cloud Identity Aware Proxy
 	// Structure is documented below.
 	Iap *BackendServiceIap `pulumi:"iap"`
+	// Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
+	// Possible values are: `IPV4_ONLY`, `PREFER_IPV6`, `IPV6_ONLY`.
+	IpAddressSelectionPolicy *string `pulumi:"ipAddressSelectionPolicy"`
 	// Indicates whether the backend service will be used with internal or
 	// external load balancing. A backend service created for one type of
 	// load balancing cannot be used with the other. For more information, refer to
@@ -1032,6 +1065,9 @@ type BackendServiceState struct {
 	// Settings for enabling Cloud Identity Aware Proxy
 	// Structure is documented below.
 	Iap BackendServiceIapPtrInput
+	// Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
+	// Possible values are: `IPV4_ONLY`, `PREFER_IPV6`, `IPV6_ONLY`.
+	IpAddressSelectionPolicy pulumi.StringPtrInput
 	// Indicates whether the backend service will be used with internal or
 	// external load balancing. A backend service created for one type of
 	// load balancing cannot be used with the other. For more information, refer to
@@ -1213,6 +1249,9 @@ type backendServiceArgs struct {
 	// Settings for enabling Cloud Identity Aware Proxy
 	// Structure is documented below.
 	Iap *BackendServiceIap `pulumi:"iap"`
+	// Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
+	// Possible values are: `IPV4_ONLY`, `PREFER_IPV6`, `IPV6_ONLY`.
+	IpAddressSelectionPolicy *string `pulumi:"ipAddressSelectionPolicy"`
 	// Indicates whether the backend service will be used with internal or
 	// external load balancing. A backend service created for one type of
 	// load balancing cannot be used with the other. For more information, refer to
@@ -1389,6 +1428,9 @@ type BackendServiceArgs struct {
 	// Settings for enabling Cloud Identity Aware Proxy
 	// Structure is documented below.
 	Iap BackendServiceIapPtrInput
+	// Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
+	// Possible values are: `IPV4_ONLY`, `PREFER_IPV6`, `IPV6_ONLY`.
+	IpAddressSelectionPolicy pulumi.StringPtrInput
 	// Indicates whether the backend service will be used with internal or
 	// external load balancing. A backend service created for one type of
 	// load balancing cannot be used with the other. For more information, refer to
@@ -1706,6 +1748,12 @@ func (o BackendServiceOutput) HealthChecks() pulumi.StringPtrOutput {
 // Structure is documented below.
 func (o BackendServiceOutput) Iap() BackendServiceIapOutput {
 	return o.ApplyT(func(v *BackendService) BackendServiceIapOutput { return v.Iap }).(BackendServiceIapOutput)
+}
+
+// Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
+// Possible values are: `IPV4_ONLY`, `PREFER_IPV6`, `IPV6_ONLY`.
+func (o BackendServiceOutput) IpAddressSelectionPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackendService) pulumi.StringPtrOutput { return v.IpAddressSelectionPolicy }).(pulumi.StringPtrOutput)
 }
 
 // Indicates whether the backend service will be used with internal or

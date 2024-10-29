@@ -27,7 +27,10 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, id=None, management=None, name=None, node_type_configs=None, parent=None, state=None, uid=None):
+    def __init__(__self__, autoscaling_settings=None, id=None, management=None, name=None, node_type_configs=None, parent=None, state=None, uid=None):
+        if autoscaling_settings and not isinstance(autoscaling_settings, list):
+            raise TypeError("Expected argument 'autoscaling_settings' to be a list")
+        pulumi.set(__self__, "autoscaling_settings", autoscaling_settings)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -49,6 +52,11 @@ class GetClusterResult:
         if uid and not isinstance(uid, str):
             raise TypeError("Expected argument 'uid' to be a str")
         pulumi.set(__self__, "uid", uid)
+
+    @property
+    @pulumi.getter(name="autoscalingSettings")
+    def autoscaling_settings(self) -> Sequence['outputs.GetClusterAutoscalingSettingResult']:
+        return pulumi.get(self, "autoscaling_settings")
 
     @property
     @pulumi.getter
@@ -95,6 +103,7 @@ class AwaitableGetClusterResult(GetClusterResult):
         if False:
             yield self
         return GetClusterResult(
+            autoscaling_settings=self.autoscaling_settings,
             id=self.id,
             management=self.management,
             name=self.name,
@@ -134,6 +143,7 @@ def get_cluster(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:vmwareengine/getCluster:getCluster', __args__, opts=opts, typ=GetClusterResult).value
 
     return AwaitableGetClusterResult(
+        autoscaling_settings=pulumi.get(__ret__, 'autoscaling_settings'),
         id=pulumi.get(__ret__, 'id'),
         management=pulumi.get(__ret__, 'management'),
         name=pulumi.get(__ret__, 'name'),
@@ -170,6 +180,7 @@ def get_cluster_output(name: Optional[pulumi.Input[str]] = None,
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:vmwareengine/getCluster:getCluster', __args__, opts=opts, typ=GetClusterResult)
     return __ret__.apply(lambda __response__: GetClusterResult(
+        autoscaling_settings=pulumi.get(__response__, 'autoscaling_settings'),
         id=pulumi.get(__response__, 'id'),
         management=pulumi.get(__response__, 'management'),
         name=pulumi.get(__response__, 'name'),

@@ -210,6 +210,7 @@ import javax.annotation.Nullable;
  *         var appengineNegBucket = new Bucket("appengineNegBucket", BucketArgs.builder()
  *             .name("appengine-neg")
  *             .location("US")
+ *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
  *         var appengineNegBucketObject = new BucketObject("appengineNegBucketObject", BucketObjectArgs.builder()
@@ -220,7 +221,7 @@ import javax.annotation.Nullable;
  * 
  *         var appengineNegFlexibleAppVersion = new FlexibleAppVersion("appengineNegFlexibleAppVersion", FlexibleAppVersionArgs.builder()
  *             .versionId("v1")
- *             .service("appengine-network-endpoint-group")
+ *             .service("appengine-neg")
  *             .runtime("nodejs")
  *             .flexibleRuntimeSettings(FlexibleAppVersionFlexibleRuntimeSettingsArgs.builder()
  *                 .operatingSystem("ubuntu22")
