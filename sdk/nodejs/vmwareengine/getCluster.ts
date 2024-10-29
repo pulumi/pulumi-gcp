@@ -50,6 +50,7 @@ export interface GetClusterArgs {
  * A collection of values returned by getCluster.
  */
 export interface GetClusterResult {
+    readonly autoscalingSettings: outputs.vmwareengine.GetClusterAutoscalingSetting[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */

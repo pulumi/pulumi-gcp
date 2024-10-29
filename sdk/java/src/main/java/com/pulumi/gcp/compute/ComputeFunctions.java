@@ -8272,15 +8272,6 @@ public final class ComputeFunctions {
         return Deployment.getInstance().invokeAsync("gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup", TypeShape.of(GetRegionInstanceGroupResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * ## subcategory: &#34;Compute Engine&#34;
-     * 
-     * page_title: &#34;Google: gcp.compute.RegionInstanceGroupManager&#34;
-     * description: |-
-     * Get a Compute Region Instance Group within GCE.
-     * ---
-     * 
-     * # google\_compute\_region\_instance\_group\_manager
-     * 
      * Get a Compute Region Instance Group Manager within GCE.
      * For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups)
      * and [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceGroupManagers)
@@ -8326,15 +8317,6 @@ public final class ComputeFunctions {
         return getRegionInstanceGroupManager(GetRegionInstanceGroupManagerArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * ## subcategory: &#34;Compute Engine&#34;
-     * 
-     * page_title: &#34;Google: gcp.compute.RegionInstanceGroupManager&#34;
-     * description: |-
-     * Get a Compute Region Instance Group within GCE.
-     * ---
-     * 
-     * # google\_compute\_region\_instance\_group\_manager
-     * 
      * Get a Compute Region Instance Group Manager within GCE.
      * For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups)
      * and [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceGroupManagers)
@@ -8380,15 +8362,6 @@ public final class ComputeFunctions {
         return getRegionInstanceGroupManagerPlain(GetRegionInstanceGroupManagerPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * ## subcategory: &#34;Compute Engine&#34;
-     * 
-     * page_title: &#34;Google: gcp.compute.RegionInstanceGroupManager&#34;
-     * description: |-
-     * Get a Compute Region Instance Group within GCE.
-     * ---
-     * 
-     * # google\_compute\_region\_instance\_group\_manager
-     * 
      * Get a Compute Region Instance Group Manager within GCE.
      * For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups)
      * and [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceGroupManagers)
@@ -8434,15 +8407,6 @@ public final class ComputeFunctions {
         return getRegionInstanceGroupManager(args, InvokeOptions.Empty);
     }
     /**
-     * ## subcategory: &#34;Compute Engine&#34;
-     * 
-     * page_title: &#34;Google: gcp.compute.RegionInstanceGroupManager&#34;
-     * description: |-
-     * Get a Compute Region Instance Group within GCE.
-     * ---
-     * 
-     * # google\_compute\_region\_instance\_group\_manager
-     * 
      * Get a Compute Region Instance Group Manager within GCE.
      * For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups)
      * and [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceGroupManagers)
@@ -8488,15 +8452,6 @@ public final class ComputeFunctions {
         return getRegionInstanceGroupManagerPlain(args, InvokeOptions.Empty);
     }
     /**
-     * ## subcategory: &#34;Compute Engine&#34;
-     * 
-     * page_title: &#34;Google: gcp.compute.RegionInstanceGroupManager&#34;
-     * description: |-
-     * Get a Compute Region Instance Group within GCE.
-     * ---
-     * 
-     * # google\_compute\_region\_instance\_group\_manager
-     * 
      * Get a Compute Region Instance Group Manager within GCE.
      * For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups)
      * and [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceGroupManagers)
@@ -8542,15 +8497,6 @@ public final class ComputeFunctions {
         return Deployment.getInstance().invoke("gcp:compute/getRegionInstanceGroupManager:getRegionInstanceGroupManager", TypeShape.of(GetRegionInstanceGroupManagerResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * ## subcategory: &#34;Compute Engine&#34;
-     * 
-     * page_title: &#34;Google: gcp.compute.RegionInstanceGroupManager&#34;
-     * description: |-
-     * Get a Compute Region Instance Group within GCE.
-     * ---
-     * 
-     * # google\_compute\_region\_instance\_group\_manager
-     * 
      * Get a Compute Region Instance Group Manager within GCE.
      * For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups)
      * and [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceGroupManagers)

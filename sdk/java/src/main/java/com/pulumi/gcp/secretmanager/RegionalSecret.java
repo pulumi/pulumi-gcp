@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * 
  * To get more information about RegionalSecret, see:
  * 
- * * [API documentation](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets)
+ * * [API documentation](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.locations.secrets)
  * 
  * ## Example Usage
  * 

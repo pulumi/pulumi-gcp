@@ -8,6 +8,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSecretVersionResult {
@@ -31,6 +33,7 @@ public final class GetSecretVersionResult {
      * 
      */
     private String id;
+    private @Nullable Boolean isSecretDataBase64;
     /**
      * @return The resource name of the SecretVersion. Format:
      * `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
@@ -75,6 +78,9 @@ public final class GetSecretVersionResult {
     public String id() {
         return this.id;
     }
+    public Optional<Boolean> isSecretDataBase64() {
+        return Optional.ofNullable(this.isSecretDataBase64);
+    }
     /**
      * @return The resource name of the SecretVersion. Format:
      * `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
@@ -113,6 +119,7 @@ public final class GetSecretVersionResult {
         private String destroyTime;
         private Boolean enabled;
         private String id;
+        private @Nullable Boolean isSecretDataBase64;
         private String name;
         private String project;
         private String secret;
@@ -125,6 +132,7 @@ public final class GetSecretVersionResult {
     	      this.destroyTime = defaults.destroyTime;
     	      this.enabled = defaults.enabled;
     	      this.id = defaults.id;
+    	      this.isSecretDataBase64 = defaults.isSecretDataBase64;
     	      this.name = defaults.name;
     	      this.project = defaults.project;
     	      this.secret = defaults.secret;
@@ -162,6 +170,12 @@ public final class GetSecretVersionResult {
               throw new MissingRequiredPropertyException("GetSecretVersionResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder isSecretDataBase64(@Nullable Boolean isSecretDataBase64) {
+
+            this.isSecretDataBase64 = isSecretDataBase64;
             return this;
         }
         @CustomType.Setter
@@ -210,6 +224,7 @@ public final class GetSecretVersionResult {
             _resultValue.destroyTime = destroyTime;
             _resultValue.enabled = enabled;
             _resultValue.id = id;
+            _resultValue.isSecretDataBase64 = isSecretDataBase64;
             _resultValue.name = name;
             _resultValue.project = project;
             _resultValue.secret = secret;

@@ -93,14 +93,6 @@ def get_token(identifier: Optional[str] = None,
               verification_method: Optional[str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTokenResult:
     """
-    ## subcategory: "Site Verification"
-
-    description: |-
-      A verification token is used to demonstrate ownership of a website or domain.
-    ---
-
-    # siteverification_get_token
-
     A verification token is used to demonstrate ownership of a website or domain.
 
     To get more information about Token, see:
@@ -163,14 +155,6 @@ def get_token_output(identifier: Optional[pulumi.Input[str]] = None,
                      verification_method: Optional[pulumi.Input[str]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTokenResult]:
     """
-    ## subcategory: "Site Verification"
-
-    description: |-
-      A verification token is used to demonstrate ownership of a website or domain.
-    ---
-
-    # siteverification_get_token
-
     A verification token is used to demonstrate ownership of a website or domain.
 
     To get more information about Token, see:

@@ -48,7 +48,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.diagflow.inputs.CxAgentSpeechToTextSettingsArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxAgentAdvancedSettingsArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxAgentAdvancedSettingsAudioExportGcsDestinationArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxAgentAdvancedSettingsSpeechSettingsArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxAgentAdvancedSettingsDtmfSettingsArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxAgentAdvancedSettingsLoggingSettingsArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxAgentGitIntegrationSettingsArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxAgentGitIntegrationSettingsGithubSettingsArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxAgentTextToSpeechSettingsArgs;
@@ -92,10 +94,25 @@ import javax.annotation.Nullable;
  *                 .audioExportGcsDestination(CxAgentAdvancedSettingsAudioExportGcsDestinationArgs.builder()
  *                     .uri(bucket.url().applyValue(url -> String.format("%s/prefix-", url)))
  *                     .build())
+ *                 .speechSettings(CxAgentAdvancedSettingsSpeechSettingsArgs.builder()
+ *                     .endpointerSensitivity(30)
+ *                     .noSpeechTimeout("3.500s")
+ *                     .useTimeoutBasedEndpointing(true)
+ *                     .models(Map.ofEntries(
+ *                         Map.entry("name", "wrench"),
+ *                         Map.entry("mass", "1.3kg"),
+ *                         Map.entry("count", "3")
+ *                     ))
+ *                     .build())
  *                 .dtmfSettings(CxAgentAdvancedSettingsDtmfSettingsArgs.builder()
  *                     .enabled(true)
  *                     .maxDigits(1)
  *                     .finishDigit("#")
+ *                     .build())
+ *                 .loggingSettings(CxAgentAdvancedSettingsLoggingSettingsArgs.builder()
+ *                     .enableStackdriverLogging(true)
+ *                     .enableInteractionLogging(true)
+ *                     .enableConsentBasedRedaction(true)
  *                     .build())
  *                 .build())
  *             .gitIntegrationSettings(CxAgentGitIntegrationSettingsArgs.builder()
@@ -248,14 +265,24 @@ public class CxAgent extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enableSpellCorrection);
     }
     /**
+     * (Optional, Deprecated)
      * Determines whether this agent should log conversation queries.
      * 
+     * &gt; **Warning:** `enable_stackdriver_logging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
+     * 
+     * @deprecated
+     * `enable_stackdriver_logging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
+     * 
      */
+    @Deprecated /* `enable_stackdriver_logging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead. */
     @Export(name="enableStackdriverLogging", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableStackdriverLogging;
 
     /**
-     * @return Determines whether this agent should log conversation queries.
+     * @return (Optional, Deprecated)
+     * Determines whether this agent should log conversation queries.
+     * 
+     * &gt; **Warning:** `enable_stackdriver_logging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
      * 
      */
     public Output<Optional<Boolean>> enableStackdriverLogging() {

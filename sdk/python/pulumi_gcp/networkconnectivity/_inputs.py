@@ -15,6 +15,8 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'GroupAutoAcceptArgs',
+    'GroupAutoAcceptArgsDict',
     'HubRoutingVpcArgs',
     'HubRoutingVpcArgsDict',
     'InternalRangeMigrationArgs',
@@ -37,6 +39,8 @@ __all__ = [
     'ServiceConnectionPolicyPscConnectionErrorInfoArgsDict',
     'SpokeLinkedInterconnectAttachmentsArgs',
     'SpokeLinkedInterconnectAttachmentsArgsDict',
+    'SpokeLinkedProducerVpcNetworkArgs',
+    'SpokeLinkedProducerVpcNetworkArgsDict',
     'SpokeLinkedRouterApplianceInstancesArgs',
     'SpokeLinkedRouterApplianceInstancesArgsDict',
     'SpokeLinkedRouterApplianceInstancesInstanceArgs',
@@ -48,6 +52,37 @@ __all__ = [
 ]
 
 MYPY = False
+
+if not MYPY:
+    class GroupAutoAcceptArgsDict(TypedDict):
+        auto_accept_projects: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        A list of project ids or project numbers for which you want to enable auto-accept. The auto-accept setting is applied to spokes being created or updated in these projects.
+        """
+elif False:
+    GroupAutoAcceptArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GroupAutoAcceptArgs:
+    def __init__(__self__, *,
+                 auto_accept_projects: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] auto_accept_projects: A list of project ids or project numbers for which you want to enable auto-accept. The auto-accept setting is applied to spokes being created or updated in these projects.
+        """
+        pulumi.set(__self__, "auto_accept_projects", auto_accept_projects)
+
+    @property
+    @pulumi.getter(name="autoAcceptProjects")
+    def auto_accept_projects(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        A list of project ids or project numbers for which you want to enable auto-accept. The auto-accept setting is applied to spokes being created or updated in these projects.
+        """
+        return pulumi.get(self, "auto_accept_projects")
+
+    @auto_accept_projects.setter
+    def auto_accept_projects(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "auto_accept_projects", value)
+
 
 if not MYPY:
     class HubRoutingVpcArgsDict(TypedDict):
@@ -868,6 +903,119 @@ class SpokeLinkedInterconnectAttachmentsArgs:
     @include_import_ranges.setter
     def include_import_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "include_import_ranges", value)
+
+
+if not MYPY:
+    class SpokeLinkedProducerVpcNetworkArgsDict(TypedDict):
+        network: pulumi.Input[str]
+        """
+        The URI of the Service Consumer VPC that the Producer VPC is peered with.
+        """
+        peering: pulumi.Input[str]
+        """
+        The name of the VPC peering between the Service Consumer VPC and the Producer VPC (defined in the Tenant project) which is added to the NCC hub. This peering must be in ACTIVE state.
+        """
+        exclude_export_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        IP ranges encompassing the subnets to be excluded from peering.
+        """
+        include_export_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        IP ranges allowed to be included from peering.
+        """
+        producer_network: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The URI of the Producer VPC.
+        """
+elif False:
+    SpokeLinkedProducerVpcNetworkArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SpokeLinkedProducerVpcNetworkArgs:
+    def __init__(__self__, *,
+                 network: pulumi.Input[str],
+                 peering: pulumi.Input[str],
+                 exclude_export_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 include_export_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 producer_network: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] network: The URI of the Service Consumer VPC that the Producer VPC is peered with.
+        :param pulumi.Input[str] peering: The name of the VPC peering between the Service Consumer VPC and the Producer VPC (defined in the Tenant project) which is added to the NCC hub. This peering must be in ACTIVE state.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_export_ranges: IP ranges encompassing the subnets to be excluded from peering.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] include_export_ranges: IP ranges allowed to be included from peering.
+        :param pulumi.Input[str] producer_network: (Output)
+               The URI of the Producer VPC.
+        """
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "peering", peering)
+        if exclude_export_ranges is not None:
+            pulumi.set(__self__, "exclude_export_ranges", exclude_export_ranges)
+        if include_export_ranges is not None:
+            pulumi.set(__self__, "include_export_ranges", include_export_ranges)
+        if producer_network is not None:
+            pulumi.set(__self__, "producer_network", producer_network)
+
+    @property
+    @pulumi.getter
+    def network(self) -> pulumi.Input[str]:
+        """
+        The URI of the Service Consumer VPC that the Producer VPC is peered with.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter
+    def peering(self) -> pulumi.Input[str]:
+        """
+        The name of the VPC peering between the Service Consumer VPC and the Producer VPC (defined in the Tenant project) which is added to the NCC hub. This peering must be in ACTIVE state.
+        """
+        return pulumi.get(self, "peering")
+
+    @peering.setter
+    def peering(self, value: pulumi.Input[str]):
+        pulumi.set(self, "peering", value)
+
+    @property
+    @pulumi.getter(name="excludeExportRanges")
+    def exclude_export_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        IP ranges encompassing the subnets to be excluded from peering.
+        """
+        return pulumi.get(self, "exclude_export_ranges")
+
+    @exclude_export_ranges.setter
+    def exclude_export_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "exclude_export_ranges", value)
+
+    @property
+    @pulumi.getter(name="includeExportRanges")
+    def include_export_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        IP ranges allowed to be included from peering.
+        """
+        return pulumi.get(self, "include_export_ranges")
+
+    @include_export_ranges.setter
+    def include_export_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "include_export_ranges", value)
+
+    @property
+    @pulumi.getter(name="producerNetwork")
+    def producer_network(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The URI of the Producer VPC.
+        """
+        return pulumi.get(self, "producer_network")
+
+    @producer_network.setter
+    def producer_network(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "producer_network", value)
 
 
 if not MYPY:

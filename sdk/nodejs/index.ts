@@ -102,6 +102,7 @@ import * as networkmanagement from "./networkmanagement";
 import * as networksecurity from "./networksecurity";
 import * as networkservices from "./networkservices";
 import * as notebooks from "./notebooks";
+import * as oracledatabase from "./oracledatabase";
 import * as organizations from "./organizations";
 import * as orgpolicy from "./orgpolicy";
 import * as osconfig from "./osconfig";
@@ -129,6 +130,7 @@ import * as sql from "./sql";
 import * as storage from "./storage";
 import * as tags from "./tags";
 import * as tpu from "./tpu";
+import * as transcoder from "./transcoder";
 import * as types from "./types";
 import * as vertex from "./vertex";
 import * as vmwareengine from "./vmwareengine";
@@ -227,6 +229,7 @@ export {
     networksecurity,
     networkservices,
     notebooks,
+    oracledatabase,
     organizations,
     orgpolicy,
     osconfig,
@@ -254,6 +257,7 @@ export {
     storage,
     tags,
     tpu,
+    transcoder,
     types,
     vertex,
     vmwareengine,

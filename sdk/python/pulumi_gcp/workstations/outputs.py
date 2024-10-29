@@ -19,6 +19,7 @@ __all__ = [
     'WorkstationClusterCondition',
     'WorkstationClusterDomainConfig',
     'WorkstationClusterPrivateClusterConfig',
+    'WorkstationConfigAllowedPort',
     'WorkstationConfigCondition',
     'WorkstationConfigContainer',
     'WorkstationConfigEncryptionKey',
@@ -196,6 +197,37 @@ class WorkstationClusterPrivateClusterConfig(dict):
         To access workstations in the cluster, configure access to the managed service using (Private Service Connect)[https://cloud.google.com/vpc/docs/configure-private-service-connect-services].
         """
         return pulumi.get(self, "service_attachment_uri")
+
+
+@pulumi.output_type
+class WorkstationConfigAllowedPort(dict):
+    def __init__(__self__, *,
+                 first: Optional[int] = None,
+                 last: Optional[int] = None):
+        """
+        :param int first: Starting port number for the current range of ports. Valid ports are 22, 80, and ports within the range 1024-65535.
+        :param int last: Ending port number for the current range of ports. Valid ports are 22, 80, and ports within the range 1024-65535.
+        """
+        if first is not None:
+            pulumi.set(__self__, "first", first)
+        if last is not None:
+            pulumi.set(__self__, "last", last)
+
+    @property
+    @pulumi.getter
+    def first(self) -> Optional[int]:
+        """
+        Starting port number for the current range of ports. Valid ports are 22, 80, and ports within the range 1024-65535.
+        """
+        return pulumi.get(self, "first")
+
+    @property
+    @pulumi.getter
+    def last(self) -> Optional[int]:
+        """
+        Ending port number for the current range of ports. Valid ports are 22, 80, and ports within the range 1024-65535.
+        """
+        return pulumi.get(self, "last")
 
 
 @pulumi.output_type

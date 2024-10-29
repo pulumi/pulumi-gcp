@@ -6,6 +6,8 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .addons_config import *
+from .app_group import *
+from .developer import *
 from .endpoint_attachment import *
 from .env_group import *
 from .env_group_attachment import *

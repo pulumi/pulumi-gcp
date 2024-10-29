@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Get the value from a Secret Manager regional secret version. This is similar to the gcp.secretmanager.RegionalSecretVersion datasource, but it only requires the [Secret Manager Secret Accessor](https://cloud.google.com/secret-manager/docs/access-control#secretmanager.secretAccessor) role. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/regional-secrets-overview) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions/access).
+ * Get the value from a Secret Manager regional secret version. This is similar to the gcp.secretmanager.RegionalSecretVersion datasource, but it only requires the [Secret Manager Secret Accessor](https://cloud.google.com/secret-manager/docs/access-control#secretmanager.secretAccessor) role. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/regional-secrets-overview) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.locations.secrets.versions/access).
  *
  * ## Example Usage
  *
@@ -22,6 +22,7 @@ import * as utilities from "../utilities";
 export function getRegionalSecretVersionAccess(args: GetRegionalSecretVersionAccessArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionalSecretVersionAccessResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:secretmanager/getRegionalSecretVersionAccess:getRegionalSecretVersionAccess", {
+        "isSecretDataBase64": args.isSecretDataBase64,
         "location": args.location,
         "project": args.project,
         "secret": args.secret,
@@ -33,6 +34,11 @@ export function getRegionalSecretVersionAccess(args: GetRegionalSecretVersionAcc
  * A collection of arguments for invoking getRegionalSecretVersionAccess.
  */
 export interface GetRegionalSecretVersionAccessArgs {
+    /**
+     * If set to 'true', the secret data is
+     * expected to be base64-encoded string.
+     */
+    isSecretDataBase64?: boolean;
     /**
      * Location of Secret Manager regional secret resource.
      * It must be provided when the `secret` field provided consists of only the name of the regional secret.
@@ -63,6 +69,7 @@ export interface GetRegionalSecretVersionAccessResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly isSecretDataBase64?: boolean;
     readonly location: string;
     /**
      * The resource name of the regional SecretVersion. Format:
@@ -78,7 +85,7 @@ export interface GetRegionalSecretVersionAccessResult {
     readonly version: string;
 }
 /**
- * Get the value from a Secret Manager regional secret version. This is similar to the gcp.secretmanager.RegionalSecretVersion datasource, but it only requires the [Secret Manager Secret Accessor](https://cloud.google.com/secret-manager/docs/access-control#secretmanager.secretAccessor) role. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/regional-secrets-overview) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions/access).
+ * Get the value from a Secret Manager regional secret version. This is similar to the gcp.secretmanager.RegionalSecretVersion datasource, but it only requires the [Secret Manager Secret Accessor](https://cloud.google.com/secret-manager/docs/access-control#secretmanager.secretAccessor) role. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/regional-secrets-overview) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.locations.secrets.versions/access).
  *
  * ## Example Usage
  *
@@ -95,6 +102,7 @@ export interface GetRegionalSecretVersionAccessResult {
 export function getRegionalSecretVersionAccessOutput(args: GetRegionalSecretVersionAccessOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionalSecretVersionAccessResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:secretmanager/getRegionalSecretVersionAccess:getRegionalSecretVersionAccess", {
+        "isSecretDataBase64": args.isSecretDataBase64,
         "location": args.location,
         "project": args.project,
         "secret": args.secret,
@@ -106,6 +114,11 @@ export function getRegionalSecretVersionAccessOutput(args: GetRegionalSecretVers
  * A collection of arguments for invoking getRegionalSecretVersionAccess.
  */
 export interface GetRegionalSecretVersionAccessOutputArgs {
+    /**
+     * If set to 'true', the secret data is
+     * expected to be base64-encoded string.
+     */
+    isSecretDataBase64?: pulumi.Input<boolean>;
     /**
      * Location of Secret Manager regional secret resource.
      * It must be provided when the `secret` field provided consists of only the name of the regional secret.

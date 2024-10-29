@@ -24,6 +24,7 @@ class WorkstationConfigArgs:
                  location: pulumi.Input[str],
                  workstation_cluster_id: pulumi.Input[str],
                  workstation_config_id: pulumi.Input[str],
+                 allowed_ports: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigAllowedPortArgs']]]] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  container: Optional[pulumi.Input['WorkstationConfigContainerArgs']] = None,
                  disable_tcp_connections: Optional[pulumi.Input[bool]] = None,
@@ -34,6 +35,7 @@ class WorkstationConfigArgs:
                  host: Optional[pulumi.Input['WorkstationConfigHostArgs']] = None,
                  idle_timeout: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 max_usable_workstations: Optional[pulumi.Input[int]] = None,
                  persistent_directories: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigPersistentDirectoryArgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  readiness_checks: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigReadinessCheckArgs']]]] = None,
@@ -47,6 +49,8 @@ class WorkstationConfigArgs:
                - - -
         :param pulumi.Input[str] workstation_cluster_id: The ID of the parent workstation cluster.
         :param pulumi.Input[str] workstation_config_id: The ID to be assigned to the workstation cluster config.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkstationConfigAllowedPortArgs']]] allowed_ports: A list of port ranges specifying single ports or ranges of ports that are externally accessible in the workstation. Allowed ports must be one of 22, 80, or within range 1024-65535. If not specified defaults to ports 22, 80, and ports 1024-65535.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Client-specified annotations. This is distinct from labels.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -69,6 +73,7 @@ class WorkstationConfigArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[int] max_usable_workstations: Maximum number of workstations under this configuration a user can have workstations.workstation.use permission on. Only enforced on CreateWorkstation API calls on the user issuing the API request.
         :param pulumi.Input[Sequence[pulumi.Input['WorkstationConfigPersistentDirectoryArgs']]] persistent_directories: Directories to persist across workstation sessions.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -83,6 +88,8 @@ class WorkstationConfigArgs:
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "workstation_cluster_id", workstation_cluster_id)
         pulumi.set(__self__, "workstation_config_id", workstation_config_id)
+        if allowed_ports is not None:
+            pulumi.set(__self__, "allowed_ports", allowed_ports)
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
         if container is not None:
@@ -103,6 +110,8 @@ class WorkstationConfigArgs:
             pulumi.set(__self__, "idle_timeout", idle_timeout)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if max_usable_workstations is not None:
+            pulumi.set(__self__, "max_usable_workstations", max_usable_workstations)
         if persistent_directories is not None:
             pulumi.set(__self__, "persistent_directories", persistent_directories)
         if project is not None:
@@ -152,6 +161,19 @@ class WorkstationConfigArgs:
     @workstation_config_id.setter
     def workstation_config_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "workstation_config_id", value)
+
+    @property
+    @pulumi.getter(name="allowedPorts")
+    def allowed_ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigAllowedPortArgs']]]]:
+        """
+        A list of port ranges specifying single ports or ranges of ports that are externally accessible in the workstation. Allowed ports must be one of 22, 80, or within range 1024-65535. If not specified defaults to ports 22, 80, and ports 1024-65535.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "allowed_ports")
+
+    @allowed_ports.setter
+    def allowed_ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigAllowedPortArgs']]]]):
+        pulumi.set(self, "allowed_ports", value)
 
     @property
     @pulumi.getter
@@ -286,6 +308,18 @@ class WorkstationConfigArgs:
         pulumi.set(self, "labels", value)
 
     @property
+    @pulumi.getter(name="maxUsableWorkstations")
+    def max_usable_workstations(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of workstations under this configuration a user can have workstations.workstation.use permission on. Only enforced on CreateWorkstation API calls on the user issuing the API request.
+        """
+        return pulumi.get(self, "max_usable_workstations")
+
+    @max_usable_workstations.setter
+    def max_usable_workstations(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_usable_workstations", value)
+
+    @property
     @pulumi.getter(name="persistentDirectories")
     def persistent_directories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigPersistentDirectoryArgs']]]]:
         """
@@ -354,6 +388,7 @@ class WorkstationConfigArgs:
 @pulumi.input_type
 class _WorkstationConfigState:
     def __init__(__self__, *,
+                 allowed_ports: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigAllowedPortArgs']]]] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigConditionArgs']]]] = None,
                  container: Optional[pulumi.Input['WorkstationConfigContainerArgs']] = None,
@@ -371,6 +406,7 @@ class _WorkstationConfigState:
                  idle_timeout: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 max_usable_workstations: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  persistent_directories: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigPersistentDirectoryArgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -383,6 +419,8 @@ class _WorkstationConfigState:
                  workstation_config_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering WorkstationConfig resources.
+        :param pulumi.Input[Sequence[pulumi.Input['WorkstationConfigAllowedPortArgs']]] allowed_ports: A list of port ranges specifying single ports or ranges of ports that are externally accessible in the workstation. Allowed ports must be one of 22, 80, or within range 1024-65535. If not specified defaults to ports 22, 80, and ports 1024-65535.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Client-specified annotations. This is distinct from labels.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -416,6 +454,7 @@ class _WorkstationConfigState:
                
                
                - - -
+        :param pulumi.Input[int] max_usable_workstations: Maximum number of workstations under this configuration a user can have workstations.workstation.use permission on. Only enforced on CreateWorkstation API calls on the user issuing the API request.
         :param pulumi.Input[str] name: Full name of this resource.
         :param pulumi.Input[Sequence[pulumi.Input['WorkstationConfigPersistentDirectoryArgs']]] persistent_directories: Directories to persist across workstation sessions.
                Structure is documented below.
@@ -433,6 +472,8 @@ class _WorkstationConfigState:
         :param pulumi.Input[str] workstation_cluster_id: The ID of the parent workstation cluster.
         :param pulumi.Input[str] workstation_config_id: The ID to be assigned to the workstation cluster config.
         """
+        if allowed_ports is not None:
+            pulumi.set(__self__, "allowed_ports", allowed_ports)
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
         if conditions is not None:
@@ -467,6 +508,8 @@ class _WorkstationConfigState:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if max_usable_workstations is not None:
+            pulumi.set(__self__, "max_usable_workstations", max_usable_workstations)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if persistent_directories is not None:
@@ -487,6 +530,19 @@ class _WorkstationConfigState:
             pulumi.set(__self__, "workstation_cluster_id", workstation_cluster_id)
         if workstation_config_id is not None:
             pulumi.set(__self__, "workstation_config_id", workstation_config_id)
+
+    @property
+    @pulumi.getter(name="allowedPorts")
+    def allowed_ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigAllowedPortArgs']]]]:
+        """
+        A list of port ranges specifying single ports or ranges of ports that are externally accessible in the workstation. Allowed ports must be one of 22, 80, or within range 1024-65535. If not specified defaults to ports 22, 80, and ports 1024-65535.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "allowed_ports")
+
+    @allowed_ports.setter
+    def allowed_ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigAllowedPortArgs']]]]):
+        pulumi.set(self, "allowed_ports", value)
 
     @property
     @pulumi.getter
@@ -707,6 +763,18 @@ class _WorkstationConfigState:
         pulumi.set(self, "location", value)
 
     @property
+    @pulumi.getter(name="maxUsableWorkstations")
+    def max_usable_workstations(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of workstations under this configuration a user can have workstations.workstation.use permission on. Only enforced on CreateWorkstation API calls on the user issuing the API request.
+        """
+        return pulumi.get(self, "max_usable_workstations")
+
+    @max_usable_workstations.setter
+    def max_usable_workstations(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_usable_workstations", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -838,6 +906,7 @@ class WorkstationConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allowed_ports: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkstationConfigAllowedPortArgs', 'WorkstationConfigAllowedPortArgsDict']]]]] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  container: Optional[pulumi.Input[Union['WorkstationConfigContainerArgs', 'WorkstationConfigContainerArgsDict']]] = None,
                  disable_tcp_connections: Optional[pulumi.Input[bool]] = None,
@@ -849,6 +918,7 @@ class WorkstationConfig(pulumi.CustomResource):
                  idle_timeout: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 max_usable_workstations: Optional[pulumi.Input[int]] = None,
                  persistent_directories: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkstationConfigPersistentDirectoryArgs', 'WorkstationConfigPersistentDirectoryArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  readiness_checks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkstationConfigReadinessCheckArgs', 'WorkstationConfigReadinessCheckArgsDict']]]]] = None,
@@ -907,6 +977,7 @@ class WorkstationConfig(pulumi.CustomResource):
             labels={
                 "label": "key",
             },
+            max_usable_workstations=1,
             host={
                 "gce_instance": {
                     "machine_type": "e2-standard-4",
@@ -1248,6 +1319,57 @@ class WorkstationConfig(pulumi.CustomResource):
                 "kms_key_service_account": default_account.email,
             })
         ```
+        ### Workstation Config Allowed Ports
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default",
+            name="workstation-cluster",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="workstation-cluster",
+            ip_cidr_range="10.0.0.0/24",
+            region="us-central1",
+            network=default.name)
+        default_workstation_cluster = gcp.workstations.WorkstationCluster("default",
+            workstation_cluster_id="workstation-cluster",
+            network=default.id,
+            subnetwork=default_subnetwork.id,
+            location="us-central1",
+            labels={
+                "label": "key",
+            },
+            annotations={
+                "label-one": "value-one",
+            })
+        default_workstation_config = gcp.workstations.WorkstationConfig("default",
+            workstation_config_id="workstation-config",
+            workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
+            location="us-central1",
+            host={
+                "gce_instance": {
+                    "machine_type": "e2-standard-4",
+                    "boot_disk_size_gb": 35,
+                    "disable_public_ip_addresses": True,
+                },
+            },
+            allowed_ports=[
+                {
+                    "first": 80,
+                    "last": 80,
+                },
+                {
+                    "first": 22,
+                    "last": 22,
+                },
+                {
+                    "first": 1024,
+                    "last": 65535,
+                },
+            ])
+        ```
 
         ## Import
 
@@ -1275,6 +1397,8 @@ class WorkstationConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkstationConfigAllowedPortArgs', 'WorkstationConfigAllowedPortArgsDict']]]] allowed_ports: A list of port ranges specifying single ports or ranges of ports that are externally accessible in the workstation. Allowed ports must be one of 22, 80, or within range 1024-65535. If not specified defaults to ports 22, 80, and ports 1024-65535.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Client-specified annotations. This is distinct from labels.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -1301,6 +1425,7 @@ class WorkstationConfig(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[int] max_usable_workstations: Maximum number of workstations under this configuration a user can have workstations.workstation.use permission on. Only enforced on CreateWorkstation API calls on the user issuing the API request.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkstationConfigPersistentDirectoryArgs', 'WorkstationConfigPersistentDirectoryArgsDict']]]] persistent_directories: Directories to persist across workstation sessions.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -1370,6 +1495,7 @@ class WorkstationConfig(pulumi.CustomResource):
             labels={
                 "label": "key",
             },
+            max_usable_workstations=1,
             host={
                 "gce_instance": {
                     "machine_type": "e2-standard-4",
@@ -1711,6 +1837,57 @@ class WorkstationConfig(pulumi.CustomResource):
                 "kms_key_service_account": default_account.email,
             })
         ```
+        ### Workstation Config Allowed Ports
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default",
+            name="workstation-cluster",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="workstation-cluster",
+            ip_cidr_range="10.0.0.0/24",
+            region="us-central1",
+            network=default.name)
+        default_workstation_cluster = gcp.workstations.WorkstationCluster("default",
+            workstation_cluster_id="workstation-cluster",
+            network=default.id,
+            subnetwork=default_subnetwork.id,
+            location="us-central1",
+            labels={
+                "label": "key",
+            },
+            annotations={
+                "label-one": "value-one",
+            })
+        default_workstation_config = gcp.workstations.WorkstationConfig("default",
+            workstation_config_id="workstation-config",
+            workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
+            location="us-central1",
+            host={
+                "gce_instance": {
+                    "machine_type": "e2-standard-4",
+                    "boot_disk_size_gb": 35,
+                    "disable_public_ip_addresses": True,
+                },
+            },
+            allowed_ports=[
+                {
+                    "first": 80,
+                    "last": 80,
+                },
+                {
+                    "first": 22,
+                    "last": 22,
+                },
+                {
+                    "first": 1024,
+                    "last": 65535,
+                },
+            ])
+        ```
 
         ## Import
 
@@ -1751,6 +1928,7 @@ class WorkstationConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allowed_ports: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkstationConfigAllowedPortArgs', 'WorkstationConfigAllowedPortArgsDict']]]]] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  container: Optional[pulumi.Input[Union['WorkstationConfigContainerArgs', 'WorkstationConfigContainerArgsDict']]] = None,
                  disable_tcp_connections: Optional[pulumi.Input[bool]] = None,
@@ -1762,6 +1940,7 @@ class WorkstationConfig(pulumi.CustomResource):
                  idle_timeout: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 max_usable_workstations: Optional[pulumi.Input[int]] = None,
                  persistent_directories: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkstationConfigPersistentDirectoryArgs', 'WorkstationConfigPersistentDirectoryArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  readiness_checks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkstationConfigReadinessCheckArgs', 'WorkstationConfigReadinessCheckArgsDict']]]]] = None,
@@ -1778,6 +1957,7 @@ class WorkstationConfig(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = WorkstationConfigArgs.__new__(WorkstationConfigArgs)
 
+            __props__.__dict__["allowed_ports"] = allowed_ports
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["container"] = container
             __props__.__dict__["disable_tcp_connections"] = disable_tcp_connections
@@ -1791,6 +1971,7 @@ class WorkstationConfig(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
+            __props__.__dict__["max_usable_workstations"] = max_usable_workstations
             __props__.__dict__["persistent_directories"] = persistent_directories
             __props__.__dict__["project"] = project
             __props__.__dict__["readiness_checks"] = readiness_checks
@@ -1823,6 +2004,7 @@ class WorkstationConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            allowed_ports: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkstationConfigAllowedPortArgs', 'WorkstationConfigAllowedPortArgsDict']]]]] = None,
             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkstationConfigConditionArgs', 'WorkstationConfigConditionArgsDict']]]]] = None,
             container: Optional[pulumi.Input[Union['WorkstationConfigContainerArgs', 'WorkstationConfigContainerArgsDict']]] = None,
@@ -1840,6 +2022,7 @@ class WorkstationConfig(pulumi.CustomResource):
             idle_timeout: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
+            max_usable_workstations: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             persistent_directories: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkstationConfigPersistentDirectoryArgs', 'WorkstationConfigPersistentDirectoryArgsDict']]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -1857,6 +2040,8 @@ class WorkstationConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['WorkstationConfigAllowedPortArgs', 'WorkstationConfigAllowedPortArgsDict']]]] allowed_ports: A list of port ranges specifying single ports or ranges of ports that are externally accessible in the workstation. Allowed ports must be one of 22, 80, or within range 1024-65535. If not specified defaults to ports 22, 80, and ports 1024-65535.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Client-specified annotations. This is distinct from labels.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
@@ -1890,6 +2075,7 @@ class WorkstationConfig(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[int] max_usable_workstations: Maximum number of workstations under this configuration a user can have workstations.workstation.use permission on. Only enforced on CreateWorkstation API calls on the user issuing the API request.
         :param pulumi.Input[str] name: Full name of this resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkstationConfigPersistentDirectoryArgs', 'WorkstationConfigPersistentDirectoryArgsDict']]]] persistent_directories: Directories to persist across workstation sessions.
                Structure is documented below.
@@ -1911,6 +2097,7 @@ class WorkstationConfig(pulumi.CustomResource):
 
         __props__ = _WorkstationConfigState.__new__(_WorkstationConfigState)
 
+        __props__.__dict__["allowed_ports"] = allowed_ports
         __props__.__dict__["annotations"] = annotations
         __props__.__dict__["conditions"] = conditions
         __props__.__dict__["container"] = container
@@ -1928,6 +2115,7 @@ class WorkstationConfig(pulumi.CustomResource):
         __props__.__dict__["idle_timeout"] = idle_timeout
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
+        __props__.__dict__["max_usable_workstations"] = max_usable_workstations
         __props__.__dict__["name"] = name
         __props__.__dict__["persistent_directories"] = persistent_directories
         __props__.__dict__["project"] = project
@@ -1939,6 +2127,15 @@ class WorkstationConfig(pulumi.CustomResource):
         __props__.__dict__["workstation_cluster_id"] = workstation_cluster_id
         __props__.__dict__["workstation_config_id"] = workstation_config_id
         return WorkstationConfig(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="allowedPorts")
+    def allowed_ports(self) -> pulumi.Output[Sequence['outputs.WorkstationConfigAllowedPort']]:
+        """
+        A list of port ranges specifying single ports or ranges of ports that are externally accessible in the workstation. Allowed ports must be one of 22, 80, or within range 1024-65535. If not specified defaults to ports 22, 80, and ports 1024-65535.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "allowed_ports")
 
     @property
     @pulumi.getter
@@ -2089,6 +2286,14 @@ class WorkstationConfig(pulumi.CustomResource):
         - - -
         """
         return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="maxUsableWorkstations")
+    def max_usable_workstations(self) -> pulumi.Output[int]:
+        """
+        Maximum number of workstations under this configuration a user can have workstations.workstation.use permission on. Only enforced on CreateWorkstation API calls on the user issuing the API request.
+        """
+        return pulumi.get(self, "max_usable_workstations")
 
     @property
     @pulumi.getter

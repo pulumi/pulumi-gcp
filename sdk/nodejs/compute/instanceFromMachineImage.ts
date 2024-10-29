@@ -88,6 +88,10 @@ export class InstanceFromMachineImage extends pulumi.CustomResource {
      */
     public /*out*/ readonly cpuPlatform!: pulumi.Output<string>;
     /**
+     * Creation timestamp in RFC3339 text format.
+     */
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    /**
      * Current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING,
      * SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance
      * life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
@@ -124,6 +128,11 @@ export class InstanceFromMachineImage extends pulumi.CustomResource {
      * The server-assigned unique identifier of this instance.
      */
     public /*out*/ readonly instanceId!: pulumi.Output<string>;
+    /**
+     * Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
+     * default.
+     */
+    public readonly keyRevocationActionType!: pulumi.Output<string>;
     /**
      * The unique fingerprint of the labels.
      */
@@ -260,6 +269,7 @@ export class InstanceFromMachineImage extends pulumi.CustomResource {
             resourceInputs["canIpForward"] = state ? state.canIpForward : undefined;
             resourceInputs["confidentialInstanceConfig"] = state ? state.confidentialInstanceConfig : undefined;
             resourceInputs["cpuPlatform"] = state ? state.cpuPlatform : undefined;
+            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             resourceInputs["currentStatus"] = state ? state.currentStatus : undefined;
             resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -269,6 +279,7 @@ export class InstanceFromMachineImage extends pulumi.CustomResource {
             resourceInputs["guestAccelerators"] = state ? state.guestAccelerators : undefined;
             resourceInputs["hostname"] = state ? state.hostname : undefined;
             resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["keyRevocationActionType"] = state ? state.keyRevocationActionType : undefined;
             resourceInputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["machineType"] = state ? state.machineType : undefined;
@@ -309,6 +320,7 @@ export class InstanceFromMachineImage extends pulumi.CustomResource {
             resourceInputs["enableDisplay"] = args ? args.enableDisplay : undefined;
             resourceInputs["guestAccelerators"] = args ? args.guestAccelerators : undefined;
             resourceInputs["hostname"] = args ? args.hostname : undefined;
+            resourceInputs["keyRevocationActionType"] = args ? args.keyRevocationActionType : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["machineType"] = args ? args.machineType : undefined;
             resourceInputs["metadata"] = args ? args.metadata : undefined;
@@ -331,6 +343,7 @@ export class InstanceFromMachineImage extends pulumi.CustomResource {
             resourceInputs["attachedDisks"] = undefined /*out*/;
             resourceInputs["bootDisks"] = undefined /*out*/;
             resourceInputs["cpuPlatform"] = undefined /*out*/;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["currentStatus"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["instanceId"] = undefined /*out*/;
@@ -379,6 +392,10 @@ export interface InstanceFromMachineImageState {
      */
     cpuPlatform?: pulumi.Input<string>;
     /**
+     * Creation timestamp in RFC3339 text format.
+     */
+    creationTimestamp?: pulumi.Input<string>;
+    /**
      * Current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING,
      * SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance
      * life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
@@ -415,6 +432,11 @@ export interface InstanceFromMachineImageState {
      * The server-assigned unique identifier of this instance.
      */
     instanceId?: pulumi.Input<string>;
+    /**
+     * Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
+     * default.
+     */
+    keyRevocationActionType?: pulumi.Input<string>;
     /**
      * The unique fingerprint of the labels.
      */
@@ -576,6 +598,11 @@ export interface InstanceFromMachineImageArgs {
      * exceed 253 characters. Changing this forces a new resource to be created.
      */
     hostname?: pulumi.Input<string>;
+    /**
+     * Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
+     * default.
+     */
+    keyRevocationActionType?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
      * the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on

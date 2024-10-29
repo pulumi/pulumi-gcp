@@ -27,6 +27,10 @@ __all__ = [
     'AddonsConfigAddonsConfigIntegrationConfigArgsDict',
     'AddonsConfigAddonsConfigMonetizationConfigArgs',
     'AddonsConfigAddonsConfigMonetizationConfigArgsDict',
+    'AppGroupAttributeArgs',
+    'AppGroupAttributeArgsDict',
+    'DeveloperAttributeArgs',
+    'DeveloperAttributeArgsDict',
     'EnvironmentIamBindingConditionArgs',
     'EnvironmentIamBindingConditionArgsDict',
     'EnvironmentIamMemberConditionArgs',
@@ -394,6 +398,110 @@ class AddonsConfigAddonsConfigMonetizationConfigArgs:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
+
+
+if not MYPY:
+    class AppGroupAttributeArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Key of the attribute
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        Value of the attribute
+        """
+elif False:
+    AppGroupAttributeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AppGroupAttributeArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Key of the attribute
+        :param pulumi.Input[str] value: Value of the attribute
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Key of the attribute
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Value of the attribute
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class DeveloperAttributeArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Key of the attribute
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        Value of the attribute
+        """
+elif False:
+    DeveloperAttributeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DeveloperAttributeArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Key of the attribute
+        :param pulumi.Input[str] value: Value of the attribute
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Key of the attribute
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Value of the attribute
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
 
 
 if not MYPY:

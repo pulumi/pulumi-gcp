@@ -69,6 +69,7 @@ type LookupBucketResult struct {
 	EnableObjectRetention  bool                             `pulumi:"enableObjectRetention"`
 	Encryptions            []GetBucketEncryption            `pulumi:"encryptions"`
 	ForceDestroy           bool                             `pulumi:"forceDestroy"`
+	HierarchicalNamespaces []GetBucketHierarchicalNamespace `pulumi:"hierarchicalNamespaces"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                       string                      `pulumi:"id"`
 	Labels                   map[string]string           `pulumi:"labels"`
@@ -168,6 +169,10 @@ func (o LookupBucketResultOutput) Encryptions() GetBucketEncryptionArrayOutput {
 
 func (o LookupBucketResultOutput) ForceDestroy() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupBucketResult) bool { return v.ForceDestroy }).(pulumi.BoolOutput)
+}
+
+func (o LookupBucketResultOutput) HierarchicalNamespaces() GetBucketHierarchicalNamespaceArrayOutput {
+	return o.ApplyT(func(v LookupBucketResult) []GetBucketHierarchicalNamespace { return v.HierarchicalNamespaces }).(GetBucketHierarchicalNamespaceArrayOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

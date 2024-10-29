@@ -24,6 +24,7 @@ class InstanceArgs:
                  admin_settings: Optional[pulumi.Input['InstanceAdminSettingsArgs']] = None,
                  consumer_network: Optional[pulumi.Input[str]] = None,
                  custom_domain: Optional[pulumi.Input['InstanceCustomDomainArgs']] = None,
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
                  deny_maintenance_period: Optional[pulumi.Input['InstanceDenyMaintenancePeriodArgs']] = None,
                  encryption_config: Optional[pulumi.Input['InstanceEncryptionConfigArgs']] = None,
                  fips_enabled: Optional[pulumi.Input[bool]] = None,
@@ -48,6 +49,10 @@ class InstanceArgs:
                project that is hosting the Looker Instance.
         :param pulumi.Input['InstanceCustomDomainArgs'] custom_domain: Custom domain settings for a Looker instance.
                Structure is documented below.
+        :param pulumi.Input[str] deletion_policy: Policy to determine if the cluster should be deleted forcefully.
+               If setting deletion_policy = "FORCE", the Looker instance will be deleted regardless
+               of its nested resources. If set to "DEFAULT", Looker instances that still have
+               nested resources will return an error. Possible values: DEFAULT, FORCE
         :param pulumi.Input['InstanceDenyMaintenancePeriodArgs'] deny_maintenance_period: Maintenance denial period for this instance.
                You must allow at least 14 days of maintenance availability
                between any two deny maintenance periods.
@@ -99,6 +104,8 @@ class InstanceArgs:
             pulumi.set(__self__, "consumer_network", consumer_network)
         if custom_domain is not None:
             pulumi.set(__self__, "custom_domain", custom_domain)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deny_maintenance_period is not None:
             pulumi.set(__self__, "deny_maintenance_period", deny_maintenance_period)
         if encryption_config is not None:
@@ -169,6 +176,21 @@ class InstanceArgs:
     @custom_domain.setter
     def custom_domain(self, value: Optional[pulumi.Input['InstanceCustomDomainArgs']]):
         pulumi.set(self, "custom_domain", value)
+
+    @property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Policy to determine if the cluster should be deleted forcefully.
+        If setting deletion_policy = "FORCE", the Looker instance will be deleted regardless
+        of its nested resources. If set to "DEFAULT", Looker instances that still have
+        nested resources will return an error. Possible values: DEFAULT, FORCE
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @property
     @pulumi.getter(name="denyMaintenancePeriod")
@@ -387,6 +409,7 @@ class _InstanceState:
                  consumer_network: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  custom_domain: Optional[pulumi.Input['InstanceCustomDomainArgs']] = None,
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
                  deny_maintenance_period: Optional[pulumi.Input['InstanceDenyMaintenancePeriodArgs']] = None,
                  egress_public_ip: Optional[pulumi.Input[str]] = None,
                  encryption_config: Optional[pulumi.Input['InstanceEncryptionConfigArgs']] = None,
@@ -419,6 +442,10 @@ class _InstanceState:
                accurate to nanoseconds.
         :param pulumi.Input['InstanceCustomDomainArgs'] custom_domain: Custom domain settings for a Looker instance.
                Structure is documented below.
+        :param pulumi.Input[str] deletion_policy: Policy to determine if the cluster should be deleted forcefully.
+               If setting deletion_policy = "FORCE", the Looker instance will be deleted regardless
+               of its nested resources. If set to "DEFAULT", Looker instances that still have
+               nested resources will return an error. Possible values: DEFAULT, FORCE
         :param pulumi.Input['InstanceDenyMaintenancePeriodArgs'] deny_maintenance_period: Maintenance denial period for this instance.
                You must allow at least 14 days of maintenance availability
                between any two deny maintenance periods.
@@ -479,6 +506,8 @@ class _InstanceState:
             pulumi.set(__self__, "create_time", create_time)
         if custom_domain is not None:
             pulumi.set(__self__, "custom_domain", custom_domain)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deny_maintenance_period is not None:
             pulumi.set(__self__, "deny_maintenance_period", deny_maintenance_period)
         if egress_public_ip is not None:
@@ -574,6 +603,21 @@ class _InstanceState:
     @custom_domain.setter
     def custom_domain(self, value: Optional[pulumi.Input['InstanceCustomDomainArgs']]):
         pulumi.set(self, "custom_domain", value)
+
+    @property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Policy to determine if the cluster should be deleted forcefully.
+        If setting deletion_policy = "FORCE", the Looker instance will be deleted regardless
+        of its nested resources. If set to "DEFAULT", Looker instances that still have
+        nested resources will return an error. Possible values: DEFAULT, FORCE
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @property
     @pulumi.getter(name="denyMaintenancePeriod")
@@ -866,6 +910,7 @@ class Instance(pulumi.CustomResource):
                  admin_settings: Optional[pulumi.Input[Union['InstanceAdminSettingsArgs', 'InstanceAdminSettingsArgsDict']]] = None,
                  consumer_network: Optional[pulumi.Input[str]] = None,
                  custom_domain: Optional[pulumi.Input[Union['InstanceCustomDomainArgs', 'InstanceCustomDomainArgsDict']]] = None,
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
                  deny_maintenance_period: Optional[pulumi.Input[Union['InstanceDenyMaintenancePeriodArgs', 'InstanceDenyMaintenancePeriodArgsDict']]] = None,
                  encryption_config: Optional[pulumi.Input[Union['InstanceEncryptionConfigArgs', 'InstanceEncryptionConfigArgsDict']]] = None,
                  fips_enabled: Optional[pulumi.Input[bool]] = None,
@@ -907,7 +952,8 @@ class Instance(pulumi.CustomResource):
             oauth_config={
                 "client_id": "my-client-id",
                 "client_secret": "my-client-secret",
-            })
+            },
+            deletion_policy="DEFAULT")
         ```
         ### Looker Instance Full
 
@@ -1080,6 +1126,22 @@ class Instance(pulumi.CustomResource):
                 "allowed_vpcs": ["projects/test-project/global/networks/test"],
             })
         ```
+        ### Looker Instance Force Delete
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        looker_instance = gcp.looker.Instance("looker-instance",
+            name="my-instance",
+            platform_edition="LOOKER_CORE_STANDARD_ANNUAL",
+            region="us-central1",
+            oauth_config={
+                "client_id": "my-client-id",
+                "client_secret": "my-client-secret",
+            },
+            deletion_policy="FORCE")
+        ```
 
         ## Import
 
@@ -1120,6 +1182,10 @@ class Instance(pulumi.CustomResource):
                project that is hosting the Looker Instance.
         :param pulumi.Input[Union['InstanceCustomDomainArgs', 'InstanceCustomDomainArgsDict']] custom_domain: Custom domain settings for a Looker instance.
                Structure is documented below.
+        :param pulumi.Input[str] deletion_policy: Policy to determine if the cluster should be deleted forcefully.
+               If setting deletion_policy = "FORCE", the Looker instance will be deleted regardless
+               of its nested resources. If set to "DEFAULT", Looker instances that still have
+               nested resources will return an error. Possible values: DEFAULT, FORCE
         :param pulumi.Input[Union['InstanceDenyMaintenancePeriodArgs', 'InstanceDenyMaintenancePeriodArgsDict']] deny_maintenance_period: Maintenance denial period for this instance.
                You must allow at least 14 days of maintenance availability
                between any two deny maintenance periods.
@@ -1196,7 +1262,8 @@ class Instance(pulumi.CustomResource):
             oauth_config={
                 "client_id": "my-client-id",
                 "client_secret": "my-client-secret",
-            })
+            },
+            deletion_policy="DEFAULT")
         ```
         ### Looker Instance Full
 
@@ -1369,6 +1436,22 @@ class Instance(pulumi.CustomResource):
                 "allowed_vpcs": ["projects/test-project/global/networks/test"],
             })
         ```
+        ### Looker Instance Force Delete
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        looker_instance = gcp.looker.Instance("looker-instance",
+            name="my-instance",
+            platform_edition="LOOKER_CORE_STANDARD_ANNUAL",
+            region="us-central1",
+            oauth_config={
+                "client_id": "my-client-id",
+                "client_secret": "my-client-secret",
+            },
+            deletion_policy="FORCE")
+        ```
 
         ## Import
 
@@ -1418,6 +1501,7 @@ class Instance(pulumi.CustomResource):
                  admin_settings: Optional[pulumi.Input[Union['InstanceAdminSettingsArgs', 'InstanceAdminSettingsArgsDict']]] = None,
                  consumer_network: Optional[pulumi.Input[str]] = None,
                  custom_domain: Optional[pulumi.Input[Union['InstanceCustomDomainArgs', 'InstanceCustomDomainArgsDict']]] = None,
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
                  deny_maintenance_period: Optional[pulumi.Input[Union['InstanceDenyMaintenancePeriodArgs', 'InstanceDenyMaintenancePeriodArgsDict']]] = None,
                  encryption_config: Optional[pulumi.Input[Union['InstanceEncryptionConfigArgs', 'InstanceEncryptionConfigArgsDict']]] = None,
                  fips_enabled: Optional[pulumi.Input[bool]] = None,
@@ -1445,6 +1529,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["admin_settings"] = admin_settings
             __props__.__dict__["consumer_network"] = consumer_network
             __props__.__dict__["custom_domain"] = custom_domain
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["deny_maintenance_period"] = deny_maintenance_period
             __props__.__dict__["encryption_config"] = encryption_config
             __props__.__dict__["fips_enabled"] = fips_enabled
@@ -1481,6 +1566,7 @@ class Instance(pulumi.CustomResource):
             consumer_network: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             custom_domain: Optional[pulumi.Input[Union['InstanceCustomDomainArgs', 'InstanceCustomDomainArgsDict']]] = None,
+            deletion_policy: Optional[pulumi.Input[str]] = None,
             deny_maintenance_period: Optional[pulumi.Input[Union['InstanceDenyMaintenancePeriodArgs', 'InstanceDenyMaintenancePeriodArgsDict']]] = None,
             egress_public_ip: Optional[pulumi.Input[str]] = None,
             encryption_config: Optional[pulumi.Input[Union['InstanceEncryptionConfigArgs', 'InstanceEncryptionConfigArgsDict']]] = None,
@@ -1518,6 +1604,10 @@ class Instance(pulumi.CustomResource):
                accurate to nanoseconds.
         :param pulumi.Input[Union['InstanceCustomDomainArgs', 'InstanceCustomDomainArgsDict']] custom_domain: Custom domain settings for a Looker instance.
                Structure is documented below.
+        :param pulumi.Input[str] deletion_policy: Policy to determine if the cluster should be deleted forcefully.
+               If setting deletion_policy = "FORCE", the Looker instance will be deleted regardless
+               of its nested resources. If set to "DEFAULT", Looker instances that still have
+               nested resources will return an error. Possible values: DEFAULT, FORCE
         :param pulumi.Input[Union['InstanceDenyMaintenancePeriodArgs', 'InstanceDenyMaintenancePeriodArgsDict']] deny_maintenance_period: Maintenance denial period for this instance.
                You must allow at least 14 days of maintenance availability
                between any two deny maintenance periods.
@@ -1578,6 +1668,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["consumer_network"] = consumer_network
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["custom_domain"] = custom_domain
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["deny_maintenance_period"] = deny_maintenance_period
         __props__.__dict__["egress_public_ip"] = egress_public_ip
         __props__.__dict__["encryption_config"] = encryption_config
@@ -1637,6 +1728,17 @@ class Instance(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "custom_domain")
+
+    @property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[Optional[str]]:
+        """
+        Policy to determine if the cluster should be deleted forcefully.
+        If setting deletion_policy = "FORCE", the Looker instance will be deleted regardless
+        of its nested resources. If set to "DEFAULT", Looker instances that still have
+        nested resources will return an error. Possible values: DEFAULT, FORCE
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @property
     @pulumi.getter(name="denyMaintenancePeriod")

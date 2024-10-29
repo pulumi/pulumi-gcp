@@ -312,7 +312,7 @@ namespace Pulumi.Gcp.Datastream
     ///         PostgresqlProfile = new Gcp.Datastream.Inputs.ConnectionProfilePostgresqlProfileArgs
     ///         {
     ///             Hostname = "hostname",
-    ///             Port = 3306,
+    ///             Port = 5432,
     ///             Username = "user",
     ///             Password = "pass",
     ///             Database = "postgres",

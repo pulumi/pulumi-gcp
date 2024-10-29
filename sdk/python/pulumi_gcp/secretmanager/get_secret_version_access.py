@@ -26,10 +26,13 @@ class GetSecretVersionAccessResult:
     """
     A collection of values returned by getSecretVersionAccess.
     """
-    def __init__(__self__, id=None, name=None, project=None, secret=None, secret_data=None, version=None):
+    def __init__(__self__, id=None, is_secret_data_base64=None, name=None, project=None, secret=None, secret_data=None, version=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if is_secret_data_base64 and not isinstance(is_secret_data_base64, bool):
+            raise TypeError("Expected argument 'is_secret_data_base64' to be a bool")
+        pulumi.set(__self__, "is_secret_data_base64", is_secret_data_base64)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -53,6 +56,11 @@ class GetSecretVersionAccessResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="isSecretDataBase64")
+    def is_secret_data_base64(self) -> Optional[bool]:
+        return pulumi.get(self, "is_secret_data_base64")
 
     @property
     @pulumi.getter
@@ -94,6 +102,7 @@ class AwaitableGetSecretVersionAccessResult(GetSecretVersionAccessResult):
             yield self
         return GetSecretVersionAccessResult(
             id=self.id,
+            is_secret_data_base64=self.is_secret_data_base64,
             name=self.name,
             project=self.project,
             secret=self.secret,
@@ -101,7 +110,8 @@ class AwaitableGetSecretVersionAccessResult(GetSecretVersionAccessResult):
             version=self.version)
 
 
-def get_secret_version_access(project: Optional[str] = None,
+def get_secret_version_access(is_secret_data_base64: Optional[bool] = None,
+                              project: Optional[str] = None,
                               secret: Optional[str] = None,
                               version: Optional[str] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSecretVersionAccessResult:
@@ -118,6 +128,8 @@ def get_secret_version_access(project: Optional[str] = None,
     ```
 
 
+    :param bool is_secret_data_base64: If set to 'true', the secret data is
+           expected to be base64-encoded string.
     :param str project: The project to get the secret version for. If it
            is not provided, the provider project is used.
     :param str secret: The secret to get the secret version for.
@@ -125,6 +137,7 @@ def get_secret_version_access(project: Optional[str] = None,
            is not provided, the latest version is retrieved.
     """
     __args__ = dict()
+    __args__['isSecretDataBase64'] = is_secret_data_base64
     __args__['project'] = project
     __args__['secret'] = secret
     __args__['version'] = version
@@ -133,12 +146,14 @@ def get_secret_version_access(project: Optional[str] = None,
 
     return AwaitableGetSecretVersionAccessResult(
         id=pulumi.get(__ret__, 'id'),
+        is_secret_data_base64=pulumi.get(__ret__, 'is_secret_data_base64'),
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
         secret=pulumi.get(__ret__, 'secret'),
         secret_data=pulumi.get(__ret__, 'secret_data'),
         version=pulumi.get(__ret__, 'version'))
-def get_secret_version_access_output(project: Optional[pulumi.Input[Optional[str]]] = None,
+def get_secret_version_access_output(is_secret_data_base64: Optional[pulumi.Input[Optional[bool]]] = None,
+                                     project: Optional[pulumi.Input[Optional[str]]] = None,
                                      secret: Optional[pulumi.Input[str]] = None,
                                      version: Optional[pulumi.Input[Optional[str]]] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecretVersionAccessResult]:
@@ -155,6 +170,8 @@ def get_secret_version_access_output(project: Optional[pulumi.Input[Optional[str
     ```
 
 
+    :param bool is_secret_data_base64: If set to 'true', the secret data is
+           expected to be base64-encoded string.
     :param str project: The project to get the secret version for. If it
            is not provided, the provider project is used.
     :param str secret: The secret to get the secret version for.
@@ -162,6 +179,7 @@ def get_secret_version_access_output(project: Optional[pulumi.Input[Optional[str
            is not provided, the latest version is retrieved.
     """
     __args__ = dict()
+    __args__['isSecretDataBase64'] = is_secret_data_base64
     __args__['project'] = project
     __args__['secret'] = secret
     __args__['version'] = version
@@ -169,6 +187,7 @@ def get_secret_version_access_output(project: Optional[pulumi.Input[Optional[str
     __ret__ = pulumi.runtime.invoke_output('gcp:secretmanager/getSecretVersionAccess:getSecretVersionAccess', __args__, opts=opts, typ=GetSecretVersionAccessResult)
     return __ret__.apply(lambda __response__: GetSecretVersionAccessResult(
         id=pulumi.get(__response__, 'id'),
+        is_secret_data_base64=pulumi.get(__response__, 'is_secret_data_base64'),
         name=pulumi.get(__response__, 'name'),
         project=pulumi.get(__response__, 'project'),
         secret=pulumi.get(__response__, 'secret'),

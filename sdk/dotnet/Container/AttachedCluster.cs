@@ -145,10 +145,6 @@ namespace Pulumi.Gcp.Container
     ///                 Namespace = "default",
     ///             },
     ///         },
-    ///         SecurityPostureConfig = new Gcp.Container.Inputs.AttachedClusterSecurityPostureConfigArgs
-    ///         {
-    ///             VulnerabilityMode = "VULNERABILITY_ENTERPRISE",
-    ///         },
     ///     });
     /// 
     /// });

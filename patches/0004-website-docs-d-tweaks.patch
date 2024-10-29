@@ -37,7 +37,7 @@ index d2ae162e1..c435027aa 100644
 -See [google_compute_forwarding_rule](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_forwarding_rule) resource for details of the available attributes.
 +See google_compute_forwarding_rule resource for details of the available attributes.
 diff --git a/website/docs/d/compute_global_forwarding_rule.html.markdown b/website/docs/d/compute_global_forwarding_rule.html.markdown
-index 50f04270d..87cb31d7c 100644
+index e8abc6b59..bef58b1da 100644
 --- a/website/docs/d/compute_global_forwarding_rule.html.markdown
 +++ b/website/docs/d/compute_global_forwarding_rule.html.markdown
 @@ -28,4 +28,4 @@ The following arguments are supported:
@@ -47,7 +47,7 @@ index 50f04270d..87cb31d7c 100644
 -See [google_compute_global_forwarding_rule](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_global_forwarding_rule) resource for details of the available attributes.
 +See google_compute_global_forwarding_rule resource for details of the available attributes.
 diff --git a/website/docs/d/compute_instance.html.markdown b/website/docs/d/compute_instance.html.markdown
-index 743fc9f1a..4b1ae7d5f 100644
+index b2a64d881..7b7fdf30f 100644
 --- a/website/docs/d/compute_instance.html.markdown
 +++ b/website/docs/d/compute_instance.html.markdown
 @@ -11,7 +11,6 @@ Get information about a VM instance resource within GCE. For more information se
@@ -58,7 +58,7 @@ index 743fc9f1a..4b1ae7d5f 100644
  ## Example Usage
  
  ```hcl
-@@ -97,15 +96,15 @@ The following arguments are supported:
+@@ -99,15 +98,15 @@ The following arguments are supported:
  
  * `attached_disk.0.disk_encryption_key_sha256` - The [RFC 4648 base64](https://tools.ietf.org/html/rfc4648#section-4)
      encoded SHA-256 hash of the [customer-supplied encryption key]
@@ -75,9 +75,9 @@ index 743fc9f1a..4b1ae7d5f 100644
 -    (https://cloud.google.com/compute/docs/disks/customer-supplied-encryption) that protects this resource.
 +    (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption>) that protects this resource.
  
- ---
+ * `key_revocation_action_type` - Action to be taken when a customer's encryption key is revoked.
  
-@@ -150,9 +149,9 @@ The following arguments are supported:
+@@ -154,9 +153,9 @@ The following arguments are supported:
  
  * `network` - The name or self_link of the network attached to this interface.
  
@@ -89,7 +89,7 @@ index 743fc9f1a..4b1ae7d5f 100644
  
  * `network_ip` - The private IP address assigned to the instance.
  
-@@ -201,7 +200,7 @@ The following arguments are supported:
+@@ -205,7 +204,7 @@ The following arguments are supported:
      
  * `provisioning_model` - Describe the type of preemptible VM.
  
@@ -99,7 +99,7 @@ index 743fc9f1a..4b1ae7d5f 100644
  <a name="nested_guest_accelerator"></a>The `guest_accelerator` block supports:
  
 diff --git a/website/docs/d/compute_instance_template.html.markdown b/website/docs/d/compute_instance_template.html.markdown
-index 08be6b15f..829134670 100644
+index 7d6ced023..54ca22935 100644
 --- a/website/docs/d/compute_instance_template.html.markdown
 +++ b/website/docs/d/compute_instance_template.html.markdown
 @@ -65,7 +65,7 @@ The following arguments are supported:
@@ -111,7 +111,7 @@ index 08be6b15f..829134670 100644
  
  * `name_prefix` - Creates a unique name beginning with the specified
    prefix. Conflicts with `name`.
-@@ -215,7 +215,7 @@ The `disk_encryption_key` block supports:
+@@ -217,7 +217,7 @@ The `disk_encryption_key` block supports:
  * `access_config` - Access configurations, i.e. IPs via which this
      instance can be accessed via the Internet. Omit to ensure that the instance
      is not accessible from the Internet (this means that ssh provisioners will

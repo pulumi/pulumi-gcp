@@ -388,7 +388,6 @@ import (
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigquery"
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/kms"
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/projects"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -416,9 +415,9 @@ import (
 //				key0 := index
 //				val0 := index
 //				__res, err := bigquery.NewTable(ctx, fmt.Sprintf("source-%v", key0), &bigquery.TableArgs{
-//					DeletionProtection: pulumi.Bool(false),
 //					DatasetId:          sourceDataset[val0].DatasetId,
 //					TableId:            pulumi.Sprintf("job_copy_%v_table", val0),
+//					DeletionProtection: pulumi.Bool(false),
 //					Schema: pulumi.String(`[
 //	  {
 //	    "name": "name",
@@ -474,10 +473,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			encryptRole, err := projects.NewIAMMember(ctx, "encrypt_role", &projects.IAMMemberArgs{
-//				Project: pulumi.String(project.ProjectId),
-//				Role:    pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
-//				Member:  pulumi.Sprintf("serviceAccount:bq-%v@bigquery-encryption.iam.gserviceaccount.com", project.Number),
+//			encryptRole, err := kms.NewCryptoKeyIAMMember(ctx, "encrypt_role", &kms.CryptoKeyIAMMemberArgs{
+//				CryptoKeyId: cryptoKey.ID(),
+//				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
+//				Member:      pulumi.Sprintf("serviceAccount:bq-%v@bigquery-encryption.iam.gserviceaccount.com", project.Number),
 //			})
 //			if err != nil {
 //				return err

@@ -421,6 +421,87 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     /// });
     /// ```
+    /// ### Network Connectivity Spoke Linked Producer Vpc Network Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var network = new Gcp.Compute.Network("network", new()
+    ///     {
+    ///         Name = "net-spoke",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var address = new Gcp.Compute.GlobalAddress("address", new()
+    ///     {
+    ///         Name = "test-address",
+    ///         Purpose = "VPC_PEERING",
+    ///         AddressType = "INTERNAL",
+    ///         PrefixLength = 16,
+    ///         Network = network.Id,
+    ///     });
+    /// 
+    ///     var peering = new Gcp.ServiceNetworking.Connection("peering", new()
+    ///     {
+    ///         Network = network.Id,
+    ///         Service = "servicenetworking.googleapis.com",
+    ///         ReservedPeeringRanges = new[]
+    ///         {
+    ///             address.Name,
+    ///         },
+    ///     });
+    /// 
+    ///     var basicHub = new Gcp.NetworkConnectivity.Hub("basic_hub", new()
+    ///     {
+    ///         Name = "hub-basic",
+    ///     });
+    /// 
+    ///     var linkedVpcSpoke = new Gcp.NetworkConnectivity.Spoke("linked_vpc_spoke", new()
+    ///     {
+    ///         Name = "vpc-spoke",
+    ///         Location = "global",
+    ///         Hub = basicHub.Id,
+    ///         LinkedVpcNetwork = new Gcp.NetworkConnectivity.Inputs.SpokeLinkedVpcNetworkArgs
+    ///         {
+    ///             Uri = network.SelfLink,
+    ///         },
+    ///     });
+    /// 
+    ///     var primary = new Gcp.NetworkConnectivity.Spoke("primary", new()
+    ///     {
+    ///         Name = "producer-spoke",
+    ///         Location = "global",
+    ///         Description = "A sample spoke with a linked router appliance instance",
+    ///         Labels = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
+    ///         Hub = basicHub.Id,
+    ///         LinkedProducerVpcNetwork = new Gcp.NetworkConnectivity.Inputs.SpokeLinkedProducerVpcNetworkArgs
+    ///         {
+    ///             Network = network.Name,
+    ///             Peering = peering.Peering,
+    ///             ExcludeExportRanges = new[]
+    ///             {
+    ///                 "198.51.100.0/24",
+    ///                 "10.10.0.0/16",
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             linkedVpcSpoke,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -487,6 +568,13 @@ namespace Pulumi.Gcp.NetworkConnectivity
         /// </summary>
         [Output("linkedInterconnectAttachments")]
         public Output<Outputs.SpokeLinkedInterconnectAttachments?> LinkedInterconnectAttachments { get; private set; } = null!;
+
+        /// <summary>
+        /// Producer VPC network that is associated with the spoke.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("linkedProducerVpcNetwork")]
+        public Output<Outputs.SpokeLinkedProducerVpcNetwork?> LinkedProducerVpcNetwork { get; private set; } = null!;
 
         /// <summary>
         /// The URIs of linked Router appliance resources
@@ -641,6 +729,13 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public Input<Inputs.SpokeLinkedInterconnectAttachmentsArgs>? LinkedInterconnectAttachments { get; set; }
 
         /// <summary>
+        /// Producer VPC network that is associated with the spoke.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("linkedProducerVpcNetwork")]
+        public Input<Inputs.SpokeLinkedProducerVpcNetworkArgs>? LinkedProducerVpcNetwork { get; set; }
+
+        /// <summary>
         /// The URIs of linked Router appliance resources
         /// Structure is documented below.
         /// </summary>
@@ -745,6 +840,13 @@ namespace Pulumi.Gcp.NetworkConnectivity
         /// </summary>
         [Input("linkedInterconnectAttachments")]
         public Input<Inputs.SpokeLinkedInterconnectAttachmentsGetArgs>? LinkedInterconnectAttachments { get; set; }
+
+        /// <summary>
+        /// Producer VPC network that is associated with the spoke.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("linkedProducerVpcNetwork")]
+        public Input<Inputs.SpokeLinkedProducerVpcNetworkGetArgs>? LinkedProducerVpcNetwork { get; set; }
 
         /// <summary>
         /// The URIs of linked Router appliance resources

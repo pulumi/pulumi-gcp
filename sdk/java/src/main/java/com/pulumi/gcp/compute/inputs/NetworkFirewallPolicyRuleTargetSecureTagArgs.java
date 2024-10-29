@@ -5,7 +5,6 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,29 +16,31 @@ public final class NetworkFirewallPolicyRuleTargetSecureTagArgs extends com.pulu
     public static final NetworkFirewallPolicyRuleTargetSecureTagArgs Empty = new NetworkFirewallPolicyRuleTargetSecureTagArgs();
 
     /**
-     * Name of the secure tag, created with TagManager&#39;s TagValue API. {@literal @}pattern tagValues/[0-9]+
+     * Name of the secure tag, created with TagManager&#39;s TagValue API.
      * 
      */
-    @Import(name="name", required=true)
-    private Output<String> name;
+    @Import(name="name")
+    private @Nullable Output<String> name;
 
     /**
-     * @return Name of the secure tag, created with TagManager&#39;s TagValue API. {@literal @}pattern tagValues/[0-9]+
+     * @return Name of the secure tag, created with TagManager&#39;s TagValue API.
      * 
      */
-    public Output<String> name() {
-        return this.name;
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
     }
 
     /**
-     * [Output Only] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
+     * (Output)
+     * State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return [Output Only] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
+     * @return (Output)
+     * State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
      * 
      */
     public Optional<Output<String>> state() {
@@ -72,18 +73,18 @@ public final class NetworkFirewallPolicyRuleTargetSecureTagArgs extends com.pulu
         }
 
         /**
-         * @param name Name of the secure tag, created with TagManager&#39;s TagValue API. {@literal @}pattern tagValues/[0-9]+
+         * @param name Name of the secure tag, created with TagManager&#39;s TagValue API.
          * 
          * @return builder
          * 
          */
-        public Builder name(Output<String> name) {
+        public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name Name of the secure tag, created with TagManager&#39;s TagValue API. {@literal @}pattern tagValues/[0-9]+
+         * @param name Name of the secure tag, created with TagManager&#39;s TagValue API.
          * 
          * @return builder
          * 
@@ -93,7 +94,8 @@ public final class NetworkFirewallPolicyRuleTargetSecureTagArgs extends com.pulu
         }
 
         /**
-         * @param state [Output Only] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
+         * @param state (Output)
+         * State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
          * 
          * @return builder
          * 
@@ -104,7 +106,8 @@ public final class NetworkFirewallPolicyRuleTargetSecureTagArgs extends com.pulu
         }
 
         /**
-         * @param state [Output Only] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
+         * @param state (Output)
+         * State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
          * 
          * @return builder
          * 
@@ -114,9 +117,6 @@ public final class NetworkFirewallPolicyRuleTargetSecureTagArgs extends com.pulu
         }
 
         public NetworkFirewallPolicyRuleTargetSecureTagArgs build() {
-            if ($.name == null) {
-                throw new MissingRequiredPropertyException("NetworkFirewallPolicyRuleTargetSecureTagArgs", "name");
-            }
             return $;
         }
     }

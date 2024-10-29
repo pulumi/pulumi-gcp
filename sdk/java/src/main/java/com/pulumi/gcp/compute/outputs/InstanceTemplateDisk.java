@@ -97,6 +97,11 @@ public final class InstanceTemplateDisk {
      */
     private @Nullable Integer provisionedIops;
     /**
+     * @return Indicates how much throughput to provision for the disk, in MB/s. This sets the amount of data that can be read or written from the disk per second. Values must greater than or equal to 1. For more details, see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
+     * 
+     */
+    private @Nullable Integer provisionedThroughput;
+    /**
      * @return A set of key/value resource manager tag pairs to bind to this disk. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
      * 
      */
@@ -259,6 +264,13 @@ public final class InstanceTemplateDisk {
         return Optional.ofNullable(this.provisionedIops);
     }
     /**
+     * @return Indicates how much throughput to provision for the disk, in MB/s. This sets the amount of data that can be read or written from the disk per second. Values must greater than or equal to 1. For more details, see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
+     * 
+     */
+    public Optional<Integer> provisionedThroughput() {
+        return Optional.ofNullable(this.provisionedThroughput);
+    }
+    /**
      * @return A set of key/value resource manager tag pairs to bind to this disk. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
      * 
      */
@@ -354,6 +366,7 @@ public final class InstanceTemplateDisk {
         private @Nullable Map<String,String> labels;
         private @Nullable String mode;
         private @Nullable Integer provisionedIops;
+        private @Nullable Integer provisionedThroughput;
         private @Nullable Map<String,String> resourceManagerTags;
         private @Nullable String resourcePolicies;
         private @Nullable String source;
@@ -376,6 +389,7 @@ public final class InstanceTemplateDisk {
     	      this.labels = defaults.labels;
     	      this.mode = defaults.mode;
     	      this.provisionedIops = defaults.provisionedIops;
+    	      this.provisionedThroughput = defaults.provisionedThroughput;
     	      this.resourceManagerTags = defaults.resourceManagerTags;
     	      this.resourcePolicies = defaults.resourcePolicies;
     	      this.source = defaults.source;
@@ -453,6 +467,12 @@ public final class InstanceTemplateDisk {
             return this;
         }
         @CustomType.Setter
+        public Builder provisionedThroughput(@Nullable Integer provisionedThroughput) {
+
+            this.provisionedThroughput = provisionedThroughput;
+            return this;
+        }
+        @CustomType.Setter
         public Builder resourceManagerTags(@Nullable Map<String,String> resourceManagerTags) {
 
             this.resourceManagerTags = resourceManagerTags;
@@ -513,6 +533,7 @@ public final class InstanceTemplateDisk {
             _resultValue.labels = labels;
             _resultValue.mode = mode;
             _resultValue.provisionedIops = provisionedIops;
+            _resultValue.provisionedThroughput = provisionedThroughput;
             _resultValue.resourceManagerTags = resourceManagerTags;
             _resultValue.resourcePolicies = resourcePolicies;
             _resultValue.source = source;

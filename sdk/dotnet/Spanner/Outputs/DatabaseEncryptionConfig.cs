@@ -17,12 +17,21 @@ namespace Pulumi.Gcp.Spanner.Outputs
         /// Fully qualified name of the KMS key to use to encrypt this database. This key must exist
         /// in the same location as the Spanner Database.
         /// </summary>
-        public readonly string KmsKeyName;
+        public readonly string? KmsKeyName;
+        /// <summary>
+        /// Fully qualified name of the KMS keys to use to encrypt this database. The keys must exist
+        /// in the same locations as the Spanner Database.
+        /// </summary>
+        public readonly ImmutableArray<string> KmsKeyNames;
 
         [OutputConstructor]
-        private DatabaseEncryptionConfig(string kmsKeyName)
+        private DatabaseEncryptionConfig(
+            string? kmsKeyName,
+
+            ImmutableArray<string> kmsKeyNames)
         {
             KmsKeyName = kmsKeyName;
+            KmsKeyNames = kmsKeyNames;
         }
     }
 }

@@ -27,7 +27,7 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, advanced_machine_features=None, allow_stopping_for_update=None, attached_disks=None, boot_disks=None, can_ip_forward=None, confidential_instance_configs=None, cpu_platform=None, current_status=None, deletion_protection=None, description=None, desired_status=None, effective_labels=None, enable_display=None, guest_accelerators=None, hostname=None, id=None, instance_id=None, label_fingerprint=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, network_performance_configs=None, params=None, partner_metadata=None, project=None, pulumi_labels=None, reservation_affinities=None, resource_policies=None, schedulings=None, scratch_disks=None, self_link=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None, zone=None):
+    def __init__(__self__, advanced_machine_features=None, allow_stopping_for_update=None, attached_disks=None, boot_disks=None, can_ip_forward=None, confidential_instance_configs=None, cpu_platform=None, creation_timestamp=None, current_status=None, deletion_protection=None, description=None, desired_status=None, effective_labels=None, enable_display=None, guest_accelerators=None, hostname=None, id=None, instance_id=None, key_revocation_action_type=None, label_fingerprint=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, name=None, network_interfaces=None, network_performance_configs=None, params=None, partner_metadata=None, project=None, pulumi_labels=None, reservation_affinities=None, resource_policies=None, schedulings=None, scratch_disks=None, self_link=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None, zone=None):
         if advanced_machine_features and not isinstance(advanced_machine_features, list):
             raise TypeError("Expected argument 'advanced_machine_features' to be a list")
         pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
@@ -49,6 +49,9 @@ class GetInstanceResult:
         if cpu_platform and not isinstance(cpu_platform, str):
             raise TypeError("Expected argument 'cpu_platform' to be a str")
         pulumi.set(__self__, "cpu_platform", cpu_platform)
+        if creation_timestamp and not isinstance(creation_timestamp, str):
+            raise TypeError("Expected argument 'creation_timestamp' to be a str")
+        pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if current_status and not isinstance(current_status, str):
             raise TypeError("Expected argument 'current_status' to be a str")
         pulumi.set(__self__, "current_status", current_status)
@@ -79,6 +82,9 @@ class GetInstanceResult:
         if instance_id and not isinstance(instance_id, str):
             raise TypeError("Expected argument 'instance_id' to be a str")
         pulumi.set(__self__, "instance_id", instance_id)
+        if key_revocation_action_type and not isinstance(key_revocation_action_type, str):
+            raise TypeError("Expected argument 'key_revocation_action_type' to be a str")
+        pulumi.set(__self__, "key_revocation_action_type", key_revocation_action_type)
         if label_fingerprint and not isinstance(label_fingerprint, str):
             raise TypeError("Expected argument 'label_fingerprint' to be a str")
         pulumi.set(__self__, "label_fingerprint", label_fingerprint)
@@ -200,6 +206,14 @@ class GetInstanceResult:
         return pulumi.get(self, "cpu_platform")
 
     @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> str:
+        """
+        Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @property
     @pulumi.getter(name="currentStatus")
     def current_status(self) -> str:
         """
@@ -269,6 +283,14 @@ class GetInstanceResult:
         The server-assigned unique identifier of this instance.
         """
         return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="keyRevocationActionType")
+    def key_revocation_action_type(self) -> str:
+        """
+        Action to be taken when a customer's encryption key is revoked.
+        """
+        return pulumi.get(self, "key_revocation_action_type")
 
     @property
     @pulumi.getter(name="labelFingerprint")
@@ -452,6 +474,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             can_ip_forward=self.can_ip_forward,
             confidential_instance_configs=self.confidential_instance_configs,
             cpu_platform=self.cpu_platform,
+            creation_timestamp=self.creation_timestamp,
             current_status=self.current_status,
             deletion_protection=self.deletion_protection,
             description=self.description,
@@ -462,6 +485,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             hostname=self.hostname,
             id=self.id,
             instance_id=self.instance_id,
+            key_revocation_action_type=self.key_revocation_action_type,
             label_fingerprint=self.label_fingerprint,
             labels=self.labels,
             machine_type=self.machine_type,
@@ -535,6 +559,7 @@ def get_instance(name: Optional[str] = None,
         can_ip_forward=pulumi.get(__ret__, 'can_ip_forward'),
         confidential_instance_configs=pulumi.get(__ret__, 'confidential_instance_configs'),
         cpu_platform=pulumi.get(__ret__, 'cpu_platform'),
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
         current_status=pulumi.get(__ret__, 'current_status'),
         deletion_protection=pulumi.get(__ret__, 'deletion_protection'),
         description=pulumi.get(__ret__, 'description'),
@@ -545,6 +570,7 @@ def get_instance(name: Optional[str] = None,
         hostname=pulumi.get(__ret__, 'hostname'),
         id=pulumi.get(__ret__, 'id'),
         instance_id=pulumi.get(__ret__, 'instance_id'),
+        key_revocation_action_type=pulumi.get(__ret__, 'key_revocation_action_type'),
         label_fingerprint=pulumi.get(__ret__, 'label_fingerprint'),
         labels=pulumi.get(__ret__, 'labels'),
         machine_type=pulumi.get(__ret__, 'machine_type'),
@@ -615,6 +641,7 @@ def get_instance_output(name: Optional[pulumi.Input[Optional[str]]] = None,
         can_ip_forward=pulumi.get(__response__, 'can_ip_forward'),
         confidential_instance_configs=pulumi.get(__response__, 'confidential_instance_configs'),
         cpu_platform=pulumi.get(__response__, 'cpu_platform'),
+        creation_timestamp=pulumi.get(__response__, 'creation_timestamp'),
         current_status=pulumi.get(__response__, 'current_status'),
         deletion_protection=pulumi.get(__response__, 'deletion_protection'),
         description=pulumi.get(__response__, 'description'),
@@ -625,6 +652,7 @@ def get_instance_output(name: Optional[pulumi.Input[Optional[str]]] = None,
         hostname=pulumi.get(__response__, 'hostname'),
         id=pulumi.get(__response__, 'id'),
         instance_id=pulumi.get(__response__, 'instance_id'),
+        key_revocation_action_type=pulumi.get(__response__, 'key_revocation_action_type'),
         label_fingerprint=pulumi.get(__response__, 'label_fingerprint'),
         labels=pulumi.get(__response__, 'labels'),
         machine_type=pulumi.get(__response__, 'machine_type'),

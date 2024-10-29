@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.vmwareengine.ClusterArgs;
 import com.pulumi.gcp.vmwareengine.inputs.ClusterState;
+import com.pulumi.gcp.vmwareengine.outputs.ClusterAutoscalingSettings;
 import com.pulumi.gcp.vmwareengine.outputs.ClusterNodeTypeConfig;
 import java.lang.Boolean;
 import java.lang.String;
@@ -115,6 +116,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.vmwareengine.Cluster;
  * import com.pulumi.gcp.vmwareengine.ClusterArgs;
  * import com.pulumi.gcp.vmwareengine.inputs.ClusterNodeTypeConfigArgs;
+ * import com.pulumi.gcp.vmwareengine.inputs.ClusterAutoscalingSettingsArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -161,6 +163,28 @@ import javax.annotation.Nullable;
  *                 .nodeCount(3)
  *                 .customCoreCount(32)
  *                 .build())
+ *             .autoscalingSettings(ClusterAutoscalingSettingsArgs.builder()
+ *                 .autoscalingPolicies(ClusterAutoscalingSettingsAutoscalingPolicyArgs.builder()
+ *                     .autoscalePolicyId("autoscaling-policy")
+ *                     .nodeTypeId("standard-72")
+ *                     .scaleOutSize(1)
+ *                     .cpuThresholds(ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs.builder()
+ *                         .scaleOut(80)
+ *                         .scaleIn(15)
+ *                         .build())
+ *                     .consumedMemoryThresholds(ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs.builder()
+ *                         .scaleOut(75)
+ *                         .scaleIn(20)
+ *                         .build())
+ *                     .storageThresholds(ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs.builder()
+ *                         .scaleOut(80)
+ *                         .scaleIn(20)
+ *                         .build())
+ *                     .build())
+ *                 .minClusterNodeCount(3)
+ *                 .maxClusterNodeCount(8)
+ *                 .coolDownPeriod("1800s")
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -184,6 +208,22 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:vmwareengine/cluster:Cluster")
 public class Cluster extends com.pulumi.resources.CustomResource {
+    /**
+     * Configuration of the autoscaling applied to this cluster
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="autoscalingSettings", refs={ClusterAutoscalingSettings.class}, tree="[0]")
+    private Output</* @Nullable */ ClusterAutoscalingSettings> autoscalingSettings;
+
+    /**
+     * @return Configuration of the autoscaling applied to this cluster
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ClusterAutoscalingSettings>> autoscalingSettings() {
+        return Codegen.optional(this.autoscalingSettings);
+    }
     /**
      * True if the cluster is a management cluster; false otherwise.
      * There can only be one management cluster in a private cloud and it has to be the first one.

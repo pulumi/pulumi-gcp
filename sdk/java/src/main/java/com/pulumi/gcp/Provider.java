@@ -725,6 +725,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> notebooksCustomEndpoint() {
         return Codegen.optional(this.notebooksCustomEndpoint);
     }
+    @Export(name="oracleDatabaseCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> oracleDatabaseCustomEndpoint;
+
+    public Output<Optional<String>> oracleDatabaseCustomEndpoint() {
+        return Codegen.optional(this.oracleDatabaseCustomEndpoint);
+    }
     @Export(name="orgPolicyCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> orgPolicyCustomEndpoint;
 
@@ -982,6 +988,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
 
     public Output<Optional<String>> tpuV2CustomEndpoint() {
         return Codegen.optional(this.tpuV2CustomEndpoint);
+    }
+    @Export(name="transcoderCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> transcoderCustomEndpoint;
+
+    public Output<Optional<String>> transcoderCustomEndpoint() {
+        return Codegen.optional(this.transcoderCustomEndpoint);
     }
     @Export(name="universeDomain", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> universeDomain;

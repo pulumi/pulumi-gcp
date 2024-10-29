@@ -255,9 +255,9 @@ import * as utilities from "../utilities";
  * const source: gcp.bigquery.Table[] = [];
  * for (const range = {value: 0}; range.value < count; range.value++) {
  *     source.push(new gcp.bigquery.Table(`source-${range.value}`, {
- *         deletionProtection: false,
  *         datasetId: sourceDataset[range.value].datasetId,
  *         tableId: `job_copy_${range.value}_table`,
+ *         deletionProtection: false,
  *         schema: `[
  *   {
  *     "name": "name",
@@ -295,8 +295,8 @@ import * as utilities from "../utilities";
  * const project = gcp.organizations.getProject({
  *     projectId: "my-project-name",
  * });
- * const encryptRole = new gcp.projects.IAMMember("encrypt_role", {
- *     project: project.then(project => project.projectId),
+ * const encryptRole = new gcp.kms.CryptoKeyIAMMember("encrypt_role", {
+ *     cryptoKeyId: cryptoKey.id,
  *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
  *     member: project.then(project => `serviceAccount:bq-${project.number}@bigquery-encryption.iam.gserviceaccount.com`),
  * });

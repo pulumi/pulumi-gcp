@@ -157,9 +157,6 @@ import (
 //						Namespace: pulumi.String("default"),
 //					},
 //				},
-//				SecurityPostureConfig: &container.AttachedClusterSecurityPostureConfigArgs{
-//					VulnerabilityMode: pulumi.String("VULNERABILITY_ENTERPRISE"),
-//				},
 //			})
 //			if err != nil {
 //				return err
@@ -308,6 +305,8 @@ type AttachedCluster struct {
 	// If set, there are currently changes in flight to the cluster.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
 	// Enable/Disable Security Posture API features for the cluster.
+	//
+	// Deprecated: `securityPostureConfig` is deprecated and will be removed in a future major release.
 	SecurityPostureConfig AttachedClusterSecurityPostureConfigOutput `pulumi:"securityPostureConfig"`
 	// The current state of the cluster. Possible values:
 	// STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR,
@@ -428,6 +427,8 @@ type attachedClusterState struct {
 	// If set, there are currently changes in flight to the cluster.
 	Reconciling *bool `pulumi:"reconciling"`
 	// Enable/Disable Security Posture API features for the cluster.
+	//
+	// Deprecated: `securityPostureConfig` is deprecated and will be removed in a future major release.
 	SecurityPostureConfig *AttachedClusterSecurityPostureConfig `pulumi:"securityPostureConfig"`
 	// The current state of the cluster. Possible values:
 	// STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR,
@@ -504,6 +505,8 @@ type AttachedClusterState struct {
 	// If set, there are currently changes in flight to the cluster.
 	Reconciling pulumi.BoolPtrInput
 	// Enable/Disable Security Posture API features for the cluster.
+	//
+	// Deprecated: `securityPostureConfig` is deprecated and will be removed in a future major release.
 	SecurityPostureConfig AttachedClusterSecurityPostureConfigPtrInput
 	// The current state of the cluster. Possible values:
 	// STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR,
@@ -570,6 +573,8 @@ type attachedClusterArgs struct {
 	// Support for proxy configuration.
 	ProxyConfig *AttachedClusterProxyConfig `pulumi:"proxyConfig"`
 	// Enable/Disable Security Posture API features for the cluster.
+	//
+	// Deprecated: `securityPostureConfig` is deprecated and will be removed in a future major release.
 	SecurityPostureConfig *AttachedClusterSecurityPostureConfig `pulumi:"securityPostureConfig"`
 }
 
@@ -622,6 +627,8 @@ type AttachedClusterArgs struct {
 	// Support for proxy configuration.
 	ProxyConfig AttachedClusterProxyConfigPtrInput
 	// Enable/Disable Security Posture API features for the cluster.
+	//
+	// Deprecated: `securityPostureConfig` is deprecated and will be removed in a future major release.
 	SecurityPostureConfig AttachedClusterSecurityPostureConfigPtrInput
 }
 
@@ -836,6 +843,8 @@ func (o AttachedClusterOutput) Reconciling() pulumi.BoolOutput {
 }
 
 // Enable/Disable Security Posture API features for the cluster.
+//
+// Deprecated: `securityPostureConfig` is deprecated and will be removed in a future major release.
 func (o AttachedClusterOutput) SecurityPostureConfig() AttachedClusterSecurityPostureConfigOutput {
 	return o.ApplyT(func(v *AttachedCluster) AttachedClusterSecurityPostureConfigOutput { return v.SecurityPostureConfig }).(AttachedClusterSecurityPostureConfigOutput)
 }

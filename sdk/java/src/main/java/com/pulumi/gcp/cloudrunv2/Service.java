@@ -871,6 +871,51 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Cloudrunv2 Service Invokeriam
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudrunv2.Service;
+ * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Service("default", ServiceArgs.builder()
+ *             .name("cloudrun-service")
+ *             .location("us-central1")
+ *             .deletionProtection(false)
+ *             .invokerIamDisabled(true)
+ *             .description("The serving URL of this service will not perform any IAM check when invoked")
+ *             .ingress("INGRESS_TRAFFIC_ALL")
+ *             .template(ServiceTemplateArgs.builder()
+ *                 .containers(ServiceTemplateContainerArgs.builder()
+ *                     .image("us-docker.pkg.dev/cloudrun/container/hello")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -1156,6 +1201,22 @@ public class Service extends com.pulumi.resources.CustomResource {
      */
     public Output<String> ingress() {
         return this.ingress;
+    }
+    /**
+     * Disables IAM permission check for run.routes.invoke for callers of this service. This feature is available by invitation
+     * only. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
+     * 
+     */
+    @Export(name="invokerIamDisabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> invokerIamDisabled;
+
+    /**
+     * @return Disables IAM permission check for run.routes.invoke for callers of this service. This feature is available by invitation
+     * only. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
+     * 
+     */
+    public Output<Optional<Boolean>> invokerIamDisabled() {
+        return Codegen.optional(this.invokerIamDisabled);
     }
     /**
      * Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with

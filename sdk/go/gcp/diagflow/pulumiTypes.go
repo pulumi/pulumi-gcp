@@ -26,6 +26,17 @@ type CxAgentAdvancedSettings struct {
 	// * Parameter level
 	//   Structure is documented below.
 	DtmfSettings *CxAgentAdvancedSettingsDtmfSettings `pulumi:"dtmfSettings"`
+	// Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
+	// * Agent level
+	//   Structure is documented below.
+	LoggingSettings *CxAgentAdvancedSettingsLoggingSettings `pulumi:"loggingSettings"`
+	// Settings for speech to text detection. Exposed at the following levels:
+	// * Agent level
+	// * Flow level
+	// * Page level
+	// * Parameter level
+	//   Structure is documented below.
+	SpeechSettings *CxAgentAdvancedSettingsSpeechSettings `pulumi:"speechSettings"`
 }
 
 // CxAgentAdvancedSettingsInput is an input type that accepts CxAgentAdvancedSettingsArgs and CxAgentAdvancedSettingsOutput values.
@@ -52,6 +63,17 @@ type CxAgentAdvancedSettingsArgs struct {
 	// * Parameter level
 	//   Structure is documented below.
 	DtmfSettings CxAgentAdvancedSettingsDtmfSettingsPtrInput `pulumi:"dtmfSettings"`
+	// Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
+	// * Agent level
+	//   Structure is documented below.
+	LoggingSettings CxAgentAdvancedSettingsLoggingSettingsPtrInput `pulumi:"loggingSettings"`
+	// Settings for speech to text detection. Exposed at the following levels:
+	// * Agent level
+	// * Flow level
+	// * Page level
+	// * Parameter level
+	//   Structure is documented below.
+	SpeechSettings CxAgentAdvancedSettingsSpeechSettingsPtrInput `pulumi:"speechSettings"`
 }
 
 func (CxAgentAdvancedSettingsArgs) ElementType() reflect.Type {
@@ -151,6 +173,23 @@ func (o CxAgentAdvancedSettingsOutput) DtmfSettings() CxAgentAdvancedSettingsDtm
 	return o.ApplyT(func(v CxAgentAdvancedSettings) *CxAgentAdvancedSettingsDtmfSettings { return v.DtmfSettings }).(CxAgentAdvancedSettingsDtmfSettingsPtrOutput)
 }
 
+// Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
+//   - Agent level
+//     Structure is documented below.
+func (o CxAgentAdvancedSettingsOutput) LoggingSettings() CxAgentAdvancedSettingsLoggingSettingsPtrOutput {
+	return o.ApplyT(func(v CxAgentAdvancedSettings) *CxAgentAdvancedSettingsLoggingSettings { return v.LoggingSettings }).(CxAgentAdvancedSettingsLoggingSettingsPtrOutput)
+}
+
+// Settings for speech to text detection. Exposed at the following levels:
+//   - Agent level
+//   - Flow level
+//   - Page level
+//   - Parameter level
+//     Structure is documented below.
+func (o CxAgentAdvancedSettingsOutput) SpeechSettings() CxAgentAdvancedSettingsSpeechSettingsPtrOutput {
+	return o.ApplyT(func(v CxAgentAdvancedSettings) *CxAgentAdvancedSettingsSpeechSettings { return v.SpeechSettings }).(CxAgentAdvancedSettingsSpeechSettingsPtrOutput)
+}
+
 type CxAgentAdvancedSettingsPtrOutput struct{ *pulumi.OutputState }
 
 func (CxAgentAdvancedSettingsPtrOutput) ElementType() reflect.Type {
@@ -201,6 +240,33 @@ func (o CxAgentAdvancedSettingsPtrOutput) DtmfSettings() CxAgentAdvancedSettings
 		}
 		return v.DtmfSettings
 	}).(CxAgentAdvancedSettingsDtmfSettingsPtrOutput)
+}
+
+// Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
+//   - Agent level
+//     Structure is documented below.
+func (o CxAgentAdvancedSettingsPtrOutput) LoggingSettings() CxAgentAdvancedSettingsLoggingSettingsPtrOutput {
+	return o.ApplyT(func(v *CxAgentAdvancedSettings) *CxAgentAdvancedSettingsLoggingSettings {
+		if v == nil {
+			return nil
+		}
+		return v.LoggingSettings
+	}).(CxAgentAdvancedSettingsLoggingSettingsPtrOutput)
+}
+
+// Settings for speech to text detection. Exposed at the following levels:
+//   - Agent level
+//   - Flow level
+//   - Page level
+//   - Parameter level
+//     Structure is documented below.
+func (o CxAgentAdvancedSettingsPtrOutput) SpeechSettings() CxAgentAdvancedSettingsSpeechSettingsPtrOutput {
+	return o.ApplyT(func(v *CxAgentAdvancedSettings) *CxAgentAdvancedSettingsSpeechSettings {
+		if v == nil {
+			return nil
+		}
+		return v.SpeechSettings
+	}).(CxAgentAdvancedSettingsSpeechSettingsPtrOutput)
 }
 
 type CxAgentAdvancedSettingsAudioExportGcsDestination struct {
@@ -517,6 +583,383 @@ func (o CxAgentAdvancedSettingsDtmfSettingsPtrOutput) MaxDigits() pulumi.IntPtrO
 		}
 		return v.MaxDigits
 	}).(pulumi.IntPtrOutput)
+}
+
+type CxAgentAdvancedSettingsLoggingSettings struct {
+	// Enables consent-based end-user input redaction, if true, a pre-defined session parameter **$session.params.conversation-redaction** will be used to determine if the utterance should be redacted.
+	EnableConsentBasedRedaction *bool `pulumi:"enableConsentBasedRedaction"`
+	// Enables DF Interaction logging.
+	EnableInteractionLogging *bool `pulumi:"enableInteractionLogging"`
+	// Enables Google Cloud Logging.
+	EnableStackdriverLogging *bool `pulumi:"enableStackdriverLogging"`
+}
+
+// CxAgentAdvancedSettingsLoggingSettingsInput is an input type that accepts CxAgentAdvancedSettingsLoggingSettingsArgs and CxAgentAdvancedSettingsLoggingSettingsOutput values.
+// You can construct a concrete instance of `CxAgentAdvancedSettingsLoggingSettingsInput` via:
+//
+//	CxAgentAdvancedSettingsLoggingSettingsArgs{...}
+type CxAgentAdvancedSettingsLoggingSettingsInput interface {
+	pulumi.Input
+
+	ToCxAgentAdvancedSettingsLoggingSettingsOutput() CxAgentAdvancedSettingsLoggingSettingsOutput
+	ToCxAgentAdvancedSettingsLoggingSettingsOutputWithContext(context.Context) CxAgentAdvancedSettingsLoggingSettingsOutput
+}
+
+type CxAgentAdvancedSettingsLoggingSettingsArgs struct {
+	// Enables consent-based end-user input redaction, if true, a pre-defined session parameter **$session.params.conversation-redaction** will be used to determine if the utterance should be redacted.
+	EnableConsentBasedRedaction pulumi.BoolPtrInput `pulumi:"enableConsentBasedRedaction"`
+	// Enables DF Interaction logging.
+	EnableInteractionLogging pulumi.BoolPtrInput `pulumi:"enableInteractionLogging"`
+	// Enables Google Cloud Logging.
+	EnableStackdriverLogging pulumi.BoolPtrInput `pulumi:"enableStackdriverLogging"`
+}
+
+func (CxAgentAdvancedSettingsLoggingSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxAgentAdvancedSettingsLoggingSettings)(nil)).Elem()
+}
+
+func (i CxAgentAdvancedSettingsLoggingSettingsArgs) ToCxAgentAdvancedSettingsLoggingSettingsOutput() CxAgentAdvancedSettingsLoggingSettingsOutput {
+	return i.ToCxAgentAdvancedSettingsLoggingSettingsOutputWithContext(context.Background())
+}
+
+func (i CxAgentAdvancedSettingsLoggingSettingsArgs) ToCxAgentAdvancedSettingsLoggingSettingsOutputWithContext(ctx context.Context) CxAgentAdvancedSettingsLoggingSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxAgentAdvancedSettingsLoggingSettingsOutput)
+}
+
+func (i CxAgentAdvancedSettingsLoggingSettingsArgs) ToCxAgentAdvancedSettingsLoggingSettingsPtrOutput() CxAgentAdvancedSettingsLoggingSettingsPtrOutput {
+	return i.ToCxAgentAdvancedSettingsLoggingSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i CxAgentAdvancedSettingsLoggingSettingsArgs) ToCxAgentAdvancedSettingsLoggingSettingsPtrOutputWithContext(ctx context.Context) CxAgentAdvancedSettingsLoggingSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxAgentAdvancedSettingsLoggingSettingsOutput).ToCxAgentAdvancedSettingsLoggingSettingsPtrOutputWithContext(ctx)
+}
+
+// CxAgentAdvancedSettingsLoggingSettingsPtrInput is an input type that accepts CxAgentAdvancedSettingsLoggingSettingsArgs, CxAgentAdvancedSettingsLoggingSettingsPtr and CxAgentAdvancedSettingsLoggingSettingsPtrOutput values.
+// You can construct a concrete instance of `CxAgentAdvancedSettingsLoggingSettingsPtrInput` via:
+//
+//	        CxAgentAdvancedSettingsLoggingSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxAgentAdvancedSettingsLoggingSettingsPtrInput interface {
+	pulumi.Input
+
+	ToCxAgentAdvancedSettingsLoggingSettingsPtrOutput() CxAgentAdvancedSettingsLoggingSettingsPtrOutput
+	ToCxAgentAdvancedSettingsLoggingSettingsPtrOutputWithContext(context.Context) CxAgentAdvancedSettingsLoggingSettingsPtrOutput
+}
+
+type cxAgentAdvancedSettingsLoggingSettingsPtrType CxAgentAdvancedSettingsLoggingSettingsArgs
+
+func CxAgentAdvancedSettingsLoggingSettingsPtr(v *CxAgentAdvancedSettingsLoggingSettingsArgs) CxAgentAdvancedSettingsLoggingSettingsPtrInput {
+	return (*cxAgentAdvancedSettingsLoggingSettingsPtrType)(v)
+}
+
+func (*cxAgentAdvancedSettingsLoggingSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxAgentAdvancedSettingsLoggingSettings)(nil)).Elem()
+}
+
+func (i *cxAgentAdvancedSettingsLoggingSettingsPtrType) ToCxAgentAdvancedSettingsLoggingSettingsPtrOutput() CxAgentAdvancedSettingsLoggingSettingsPtrOutput {
+	return i.ToCxAgentAdvancedSettingsLoggingSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *cxAgentAdvancedSettingsLoggingSettingsPtrType) ToCxAgentAdvancedSettingsLoggingSettingsPtrOutputWithContext(ctx context.Context) CxAgentAdvancedSettingsLoggingSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxAgentAdvancedSettingsLoggingSettingsPtrOutput)
+}
+
+type CxAgentAdvancedSettingsLoggingSettingsOutput struct{ *pulumi.OutputState }
+
+func (CxAgentAdvancedSettingsLoggingSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxAgentAdvancedSettingsLoggingSettings)(nil)).Elem()
+}
+
+func (o CxAgentAdvancedSettingsLoggingSettingsOutput) ToCxAgentAdvancedSettingsLoggingSettingsOutput() CxAgentAdvancedSettingsLoggingSettingsOutput {
+	return o
+}
+
+func (o CxAgentAdvancedSettingsLoggingSettingsOutput) ToCxAgentAdvancedSettingsLoggingSettingsOutputWithContext(ctx context.Context) CxAgentAdvancedSettingsLoggingSettingsOutput {
+	return o
+}
+
+func (o CxAgentAdvancedSettingsLoggingSettingsOutput) ToCxAgentAdvancedSettingsLoggingSettingsPtrOutput() CxAgentAdvancedSettingsLoggingSettingsPtrOutput {
+	return o.ToCxAgentAdvancedSettingsLoggingSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o CxAgentAdvancedSettingsLoggingSettingsOutput) ToCxAgentAdvancedSettingsLoggingSettingsPtrOutputWithContext(ctx context.Context) CxAgentAdvancedSettingsLoggingSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxAgentAdvancedSettingsLoggingSettings) *CxAgentAdvancedSettingsLoggingSettings {
+		return &v
+	}).(CxAgentAdvancedSettingsLoggingSettingsPtrOutput)
+}
+
+// Enables consent-based end-user input redaction, if true, a pre-defined session parameter **$session.params.conversation-redaction** will be used to determine if the utterance should be redacted.
+func (o CxAgentAdvancedSettingsLoggingSettingsOutput) EnableConsentBasedRedaction() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxAgentAdvancedSettingsLoggingSettings) *bool { return v.EnableConsentBasedRedaction }).(pulumi.BoolPtrOutput)
+}
+
+// Enables DF Interaction logging.
+func (o CxAgentAdvancedSettingsLoggingSettingsOutput) EnableInteractionLogging() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxAgentAdvancedSettingsLoggingSettings) *bool { return v.EnableInteractionLogging }).(pulumi.BoolPtrOutput)
+}
+
+// Enables Google Cloud Logging.
+func (o CxAgentAdvancedSettingsLoggingSettingsOutput) EnableStackdriverLogging() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxAgentAdvancedSettingsLoggingSettings) *bool { return v.EnableStackdriverLogging }).(pulumi.BoolPtrOutput)
+}
+
+type CxAgentAdvancedSettingsLoggingSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (CxAgentAdvancedSettingsLoggingSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxAgentAdvancedSettingsLoggingSettings)(nil)).Elem()
+}
+
+func (o CxAgentAdvancedSettingsLoggingSettingsPtrOutput) ToCxAgentAdvancedSettingsLoggingSettingsPtrOutput() CxAgentAdvancedSettingsLoggingSettingsPtrOutput {
+	return o
+}
+
+func (o CxAgentAdvancedSettingsLoggingSettingsPtrOutput) ToCxAgentAdvancedSettingsLoggingSettingsPtrOutputWithContext(ctx context.Context) CxAgentAdvancedSettingsLoggingSettingsPtrOutput {
+	return o
+}
+
+func (o CxAgentAdvancedSettingsLoggingSettingsPtrOutput) Elem() CxAgentAdvancedSettingsLoggingSettingsOutput {
+	return o.ApplyT(func(v *CxAgentAdvancedSettingsLoggingSettings) CxAgentAdvancedSettingsLoggingSettings {
+		if v != nil {
+			return *v
+		}
+		var ret CxAgentAdvancedSettingsLoggingSettings
+		return ret
+	}).(CxAgentAdvancedSettingsLoggingSettingsOutput)
+}
+
+// Enables consent-based end-user input redaction, if true, a pre-defined session parameter **$session.params.conversation-redaction** will be used to determine if the utterance should be redacted.
+func (o CxAgentAdvancedSettingsLoggingSettingsPtrOutput) EnableConsentBasedRedaction() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxAgentAdvancedSettingsLoggingSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableConsentBasedRedaction
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enables DF Interaction logging.
+func (o CxAgentAdvancedSettingsLoggingSettingsPtrOutput) EnableInteractionLogging() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxAgentAdvancedSettingsLoggingSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableInteractionLogging
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enables Google Cloud Logging.
+func (o CxAgentAdvancedSettingsLoggingSettingsPtrOutput) EnableStackdriverLogging() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxAgentAdvancedSettingsLoggingSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableStackdriverLogging
+	}).(pulumi.BoolPtrOutput)
+}
+
+type CxAgentAdvancedSettingsSpeechSettings struct {
+	// Sensitivity of the speech model that detects the end of speech. Scale from 0 to 100.
+	EndpointerSensitivity *int `pulumi:"endpointerSensitivity"`
+	// Mapping from language to Speech-to-Text model. The mapped Speech-to-Text model will be selected for requests from its corresponding language. For more information, see [Speech models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
+	// An object containing a list of **"key": value** pairs. Example: **{ "name": "wrench", "mass": "1.3kg", "count": "3" }**.
+	Models map[string]string `pulumi:"models"`
+	// Timeout before detecting no speech.
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+	NoSpeechTimeout *string `pulumi:"noSpeechTimeout"`
+	// Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+	UseTimeoutBasedEndpointing *bool `pulumi:"useTimeoutBasedEndpointing"`
+}
+
+// CxAgentAdvancedSettingsSpeechSettingsInput is an input type that accepts CxAgentAdvancedSettingsSpeechSettingsArgs and CxAgentAdvancedSettingsSpeechSettingsOutput values.
+// You can construct a concrete instance of `CxAgentAdvancedSettingsSpeechSettingsInput` via:
+//
+//	CxAgentAdvancedSettingsSpeechSettingsArgs{...}
+type CxAgentAdvancedSettingsSpeechSettingsInput interface {
+	pulumi.Input
+
+	ToCxAgentAdvancedSettingsSpeechSettingsOutput() CxAgentAdvancedSettingsSpeechSettingsOutput
+	ToCxAgentAdvancedSettingsSpeechSettingsOutputWithContext(context.Context) CxAgentAdvancedSettingsSpeechSettingsOutput
+}
+
+type CxAgentAdvancedSettingsSpeechSettingsArgs struct {
+	// Sensitivity of the speech model that detects the end of speech. Scale from 0 to 100.
+	EndpointerSensitivity pulumi.IntPtrInput `pulumi:"endpointerSensitivity"`
+	// Mapping from language to Speech-to-Text model. The mapped Speech-to-Text model will be selected for requests from its corresponding language. For more information, see [Speech models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
+	// An object containing a list of **"key": value** pairs. Example: **{ "name": "wrench", "mass": "1.3kg", "count": "3" }**.
+	Models pulumi.StringMapInput `pulumi:"models"`
+	// Timeout before detecting no speech.
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+	NoSpeechTimeout pulumi.StringPtrInput `pulumi:"noSpeechTimeout"`
+	// Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+	UseTimeoutBasedEndpointing pulumi.BoolPtrInput `pulumi:"useTimeoutBasedEndpointing"`
+}
+
+func (CxAgentAdvancedSettingsSpeechSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxAgentAdvancedSettingsSpeechSettings)(nil)).Elem()
+}
+
+func (i CxAgentAdvancedSettingsSpeechSettingsArgs) ToCxAgentAdvancedSettingsSpeechSettingsOutput() CxAgentAdvancedSettingsSpeechSettingsOutput {
+	return i.ToCxAgentAdvancedSettingsSpeechSettingsOutputWithContext(context.Background())
+}
+
+func (i CxAgentAdvancedSettingsSpeechSettingsArgs) ToCxAgentAdvancedSettingsSpeechSettingsOutputWithContext(ctx context.Context) CxAgentAdvancedSettingsSpeechSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxAgentAdvancedSettingsSpeechSettingsOutput)
+}
+
+func (i CxAgentAdvancedSettingsSpeechSettingsArgs) ToCxAgentAdvancedSettingsSpeechSettingsPtrOutput() CxAgentAdvancedSettingsSpeechSettingsPtrOutput {
+	return i.ToCxAgentAdvancedSettingsSpeechSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i CxAgentAdvancedSettingsSpeechSettingsArgs) ToCxAgentAdvancedSettingsSpeechSettingsPtrOutputWithContext(ctx context.Context) CxAgentAdvancedSettingsSpeechSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxAgentAdvancedSettingsSpeechSettingsOutput).ToCxAgentAdvancedSettingsSpeechSettingsPtrOutputWithContext(ctx)
+}
+
+// CxAgentAdvancedSettingsSpeechSettingsPtrInput is an input type that accepts CxAgentAdvancedSettingsSpeechSettingsArgs, CxAgentAdvancedSettingsSpeechSettingsPtr and CxAgentAdvancedSettingsSpeechSettingsPtrOutput values.
+// You can construct a concrete instance of `CxAgentAdvancedSettingsSpeechSettingsPtrInput` via:
+//
+//	        CxAgentAdvancedSettingsSpeechSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxAgentAdvancedSettingsSpeechSettingsPtrInput interface {
+	pulumi.Input
+
+	ToCxAgentAdvancedSettingsSpeechSettingsPtrOutput() CxAgentAdvancedSettingsSpeechSettingsPtrOutput
+	ToCxAgentAdvancedSettingsSpeechSettingsPtrOutputWithContext(context.Context) CxAgentAdvancedSettingsSpeechSettingsPtrOutput
+}
+
+type cxAgentAdvancedSettingsSpeechSettingsPtrType CxAgentAdvancedSettingsSpeechSettingsArgs
+
+func CxAgentAdvancedSettingsSpeechSettingsPtr(v *CxAgentAdvancedSettingsSpeechSettingsArgs) CxAgentAdvancedSettingsSpeechSettingsPtrInput {
+	return (*cxAgentAdvancedSettingsSpeechSettingsPtrType)(v)
+}
+
+func (*cxAgentAdvancedSettingsSpeechSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxAgentAdvancedSettingsSpeechSettings)(nil)).Elem()
+}
+
+func (i *cxAgentAdvancedSettingsSpeechSettingsPtrType) ToCxAgentAdvancedSettingsSpeechSettingsPtrOutput() CxAgentAdvancedSettingsSpeechSettingsPtrOutput {
+	return i.ToCxAgentAdvancedSettingsSpeechSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *cxAgentAdvancedSettingsSpeechSettingsPtrType) ToCxAgentAdvancedSettingsSpeechSettingsPtrOutputWithContext(ctx context.Context) CxAgentAdvancedSettingsSpeechSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxAgentAdvancedSettingsSpeechSettingsPtrOutput)
+}
+
+type CxAgentAdvancedSettingsSpeechSettingsOutput struct{ *pulumi.OutputState }
+
+func (CxAgentAdvancedSettingsSpeechSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxAgentAdvancedSettingsSpeechSettings)(nil)).Elem()
+}
+
+func (o CxAgentAdvancedSettingsSpeechSettingsOutput) ToCxAgentAdvancedSettingsSpeechSettingsOutput() CxAgentAdvancedSettingsSpeechSettingsOutput {
+	return o
+}
+
+func (o CxAgentAdvancedSettingsSpeechSettingsOutput) ToCxAgentAdvancedSettingsSpeechSettingsOutputWithContext(ctx context.Context) CxAgentAdvancedSettingsSpeechSettingsOutput {
+	return o
+}
+
+func (o CxAgentAdvancedSettingsSpeechSettingsOutput) ToCxAgentAdvancedSettingsSpeechSettingsPtrOutput() CxAgentAdvancedSettingsSpeechSettingsPtrOutput {
+	return o.ToCxAgentAdvancedSettingsSpeechSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o CxAgentAdvancedSettingsSpeechSettingsOutput) ToCxAgentAdvancedSettingsSpeechSettingsPtrOutputWithContext(ctx context.Context) CxAgentAdvancedSettingsSpeechSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxAgentAdvancedSettingsSpeechSettings) *CxAgentAdvancedSettingsSpeechSettings {
+		return &v
+	}).(CxAgentAdvancedSettingsSpeechSettingsPtrOutput)
+}
+
+// Sensitivity of the speech model that detects the end of speech. Scale from 0 to 100.
+func (o CxAgentAdvancedSettingsSpeechSettingsOutput) EndpointerSensitivity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CxAgentAdvancedSettingsSpeechSettings) *int { return v.EndpointerSensitivity }).(pulumi.IntPtrOutput)
+}
+
+// Mapping from language to Speech-to-Text model. The mapped Speech-to-Text model will be selected for requests from its corresponding language. For more information, see [Speech models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
+// An object containing a list of **"key": value** pairs. Example: **{ "name": "wrench", "mass": "1.3kg", "count": "3" }**.
+func (o CxAgentAdvancedSettingsSpeechSettingsOutput) Models() pulumi.StringMapOutput {
+	return o.ApplyT(func(v CxAgentAdvancedSettingsSpeechSettings) map[string]string { return v.Models }).(pulumi.StringMapOutput)
+}
+
+// Timeout before detecting no speech.
+// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+func (o CxAgentAdvancedSettingsSpeechSettingsOutput) NoSpeechTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxAgentAdvancedSettingsSpeechSettings) *string { return v.NoSpeechTimeout }).(pulumi.StringPtrOutput)
+}
+
+// Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+func (o CxAgentAdvancedSettingsSpeechSettingsOutput) UseTimeoutBasedEndpointing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxAgentAdvancedSettingsSpeechSettings) *bool { return v.UseTimeoutBasedEndpointing }).(pulumi.BoolPtrOutput)
+}
+
+type CxAgentAdvancedSettingsSpeechSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (CxAgentAdvancedSettingsSpeechSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxAgentAdvancedSettingsSpeechSettings)(nil)).Elem()
+}
+
+func (o CxAgentAdvancedSettingsSpeechSettingsPtrOutput) ToCxAgentAdvancedSettingsSpeechSettingsPtrOutput() CxAgentAdvancedSettingsSpeechSettingsPtrOutput {
+	return o
+}
+
+func (o CxAgentAdvancedSettingsSpeechSettingsPtrOutput) ToCxAgentAdvancedSettingsSpeechSettingsPtrOutputWithContext(ctx context.Context) CxAgentAdvancedSettingsSpeechSettingsPtrOutput {
+	return o
+}
+
+func (o CxAgentAdvancedSettingsSpeechSettingsPtrOutput) Elem() CxAgentAdvancedSettingsSpeechSettingsOutput {
+	return o.ApplyT(func(v *CxAgentAdvancedSettingsSpeechSettings) CxAgentAdvancedSettingsSpeechSettings {
+		if v != nil {
+			return *v
+		}
+		var ret CxAgentAdvancedSettingsSpeechSettings
+		return ret
+	}).(CxAgentAdvancedSettingsSpeechSettingsOutput)
+}
+
+// Sensitivity of the speech model that detects the end of speech. Scale from 0 to 100.
+func (o CxAgentAdvancedSettingsSpeechSettingsPtrOutput) EndpointerSensitivity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CxAgentAdvancedSettingsSpeechSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.EndpointerSensitivity
+	}).(pulumi.IntPtrOutput)
+}
+
+// Mapping from language to Speech-to-Text model. The mapped Speech-to-Text model will be selected for requests from its corresponding language. For more information, see [Speech models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
+// An object containing a list of **"key": value** pairs. Example: **{ "name": "wrench", "mass": "1.3kg", "count": "3" }**.
+func (o CxAgentAdvancedSettingsSpeechSettingsPtrOutput) Models() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CxAgentAdvancedSettingsSpeechSettings) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Models
+	}).(pulumi.StringMapOutput)
+}
+
+// Timeout before detecting no speech.
+// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+func (o CxAgentAdvancedSettingsSpeechSettingsPtrOutput) NoSpeechTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxAgentAdvancedSettingsSpeechSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NoSpeechTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+func (o CxAgentAdvancedSettingsSpeechSettingsPtrOutput) UseTimeoutBasedEndpointing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxAgentAdvancedSettingsSpeechSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseTimeoutBasedEndpointing
+	}).(pulumi.BoolPtrOutput)
 }
 
 type CxAgentGitIntegrationSettings struct {
@@ -1499,6 +1942,17 @@ type CxFlowAdvancedSettings struct {
 	// * Parameter level
 	//   Structure is documented below.
 	DtmfSettings *CxFlowAdvancedSettingsDtmfSettings `pulumi:"dtmfSettings"`
+	// Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
+	// * Agent level
+	//   Structure is documented below.
+	LoggingSettings *CxFlowAdvancedSettingsLoggingSettings `pulumi:"loggingSettings"`
+	// Settings for speech to text detection. Exposed at the following levels:
+	// * Agent level
+	// * Flow level
+	// * Page level
+	// * Parameter level
+	//   Structure is documented below.
+	SpeechSettings *CxFlowAdvancedSettingsSpeechSettings `pulumi:"speechSettings"`
 }
 
 // CxFlowAdvancedSettingsInput is an input type that accepts CxFlowAdvancedSettingsArgs and CxFlowAdvancedSettingsOutput values.
@@ -1525,6 +1979,17 @@ type CxFlowAdvancedSettingsArgs struct {
 	// * Parameter level
 	//   Structure is documented below.
 	DtmfSettings CxFlowAdvancedSettingsDtmfSettingsPtrInput `pulumi:"dtmfSettings"`
+	// Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
+	// * Agent level
+	//   Structure is documented below.
+	LoggingSettings CxFlowAdvancedSettingsLoggingSettingsPtrInput `pulumi:"loggingSettings"`
+	// Settings for speech to text detection. Exposed at the following levels:
+	// * Agent level
+	// * Flow level
+	// * Page level
+	// * Parameter level
+	//   Structure is documented below.
+	SpeechSettings CxFlowAdvancedSettingsSpeechSettingsPtrInput `pulumi:"speechSettings"`
 }
 
 func (CxFlowAdvancedSettingsArgs) ElementType() reflect.Type {
@@ -1624,6 +2089,23 @@ func (o CxFlowAdvancedSettingsOutput) DtmfSettings() CxFlowAdvancedSettingsDtmfS
 	return o.ApplyT(func(v CxFlowAdvancedSettings) *CxFlowAdvancedSettingsDtmfSettings { return v.DtmfSettings }).(CxFlowAdvancedSettingsDtmfSettingsPtrOutput)
 }
 
+// Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
+//   - Agent level
+//     Structure is documented below.
+func (o CxFlowAdvancedSettingsOutput) LoggingSettings() CxFlowAdvancedSettingsLoggingSettingsPtrOutput {
+	return o.ApplyT(func(v CxFlowAdvancedSettings) *CxFlowAdvancedSettingsLoggingSettings { return v.LoggingSettings }).(CxFlowAdvancedSettingsLoggingSettingsPtrOutput)
+}
+
+// Settings for speech to text detection. Exposed at the following levels:
+//   - Agent level
+//   - Flow level
+//   - Page level
+//   - Parameter level
+//     Structure is documented below.
+func (o CxFlowAdvancedSettingsOutput) SpeechSettings() CxFlowAdvancedSettingsSpeechSettingsPtrOutput {
+	return o.ApplyT(func(v CxFlowAdvancedSettings) *CxFlowAdvancedSettingsSpeechSettings { return v.SpeechSettings }).(CxFlowAdvancedSettingsSpeechSettingsPtrOutput)
+}
+
 type CxFlowAdvancedSettingsPtrOutput struct{ *pulumi.OutputState }
 
 func (CxFlowAdvancedSettingsPtrOutput) ElementType() reflect.Type {
@@ -1674,6 +2156,33 @@ func (o CxFlowAdvancedSettingsPtrOutput) DtmfSettings() CxFlowAdvancedSettingsDt
 		}
 		return v.DtmfSettings
 	}).(CxFlowAdvancedSettingsDtmfSettingsPtrOutput)
+}
+
+// Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
+//   - Agent level
+//     Structure is documented below.
+func (o CxFlowAdvancedSettingsPtrOutput) LoggingSettings() CxFlowAdvancedSettingsLoggingSettingsPtrOutput {
+	return o.ApplyT(func(v *CxFlowAdvancedSettings) *CxFlowAdvancedSettingsLoggingSettings {
+		if v == nil {
+			return nil
+		}
+		return v.LoggingSettings
+	}).(CxFlowAdvancedSettingsLoggingSettingsPtrOutput)
+}
+
+// Settings for speech to text detection. Exposed at the following levels:
+//   - Agent level
+//   - Flow level
+//   - Page level
+//   - Parameter level
+//     Structure is documented below.
+func (o CxFlowAdvancedSettingsPtrOutput) SpeechSettings() CxFlowAdvancedSettingsSpeechSettingsPtrOutput {
+	return o.ApplyT(func(v *CxFlowAdvancedSettings) *CxFlowAdvancedSettingsSpeechSettings {
+		if v == nil {
+			return nil
+		}
+		return v.SpeechSettings
+	}).(CxFlowAdvancedSettingsSpeechSettingsPtrOutput)
 }
 
 type CxFlowAdvancedSettingsAudioExportGcsDestination struct {
@@ -1990,6 +2499,383 @@ func (o CxFlowAdvancedSettingsDtmfSettingsPtrOutput) MaxDigits() pulumi.IntPtrOu
 		}
 		return v.MaxDigits
 	}).(pulumi.IntPtrOutput)
+}
+
+type CxFlowAdvancedSettingsLoggingSettings struct {
+	// Enables consent-based end-user input redaction, if true, a pre-defined session parameter **$session.params.conversation-redaction** will be used to determine if the utterance should be redacted.
+	EnableConsentBasedRedaction *bool `pulumi:"enableConsentBasedRedaction"`
+	// Enables DF Interaction logging.
+	EnableInteractionLogging *bool `pulumi:"enableInteractionLogging"`
+	// Enables Google Cloud Logging.
+	EnableStackdriverLogging *bool `pulumi:"enableStackdriverLogging"`
+}
+
+// CxFlowAdvancedSettingsLoggingSettingsInput is an input type that accepts CxFlowAdvancedSettingsLoggingSettingsArgs and CxFlowAdvancedSettingsLoggingSettingsOutput values.
+// You can construct a concrete instance of `CxFlowAdvancedSettingsLoggingSettingsInput` via:
+//
+//	CxFlowAdvancedSettingsLoggingSettingsArgs{...}
+type CxFlowAdvancedSettingsLoggingSettingsInput interface {
+	pulumi.Input
+
+	ToCxFlowAdvancedSettingsLoggingSettingsOutput() CxFlowAdvancedSettingsLoggingSettingsOutput
+	ToCxFlowAdvancedSettingsLoggingSettingsOutputWithContext(context.Context) CxFlowAdvancedSettingsLoggingSettingsOutput
+}
+
+type CxFlowAdvancedSettingsLoggingSettingsArgs struct {
+	// Enables consent-based end-user input redaction, if true, a pre-defined session parameter **$session.params.conversation-redaction** will be used to determine if the utterance should be redacted.
+	EnableConsentBasedRedaction pulumi.BoolPtrInput `pulumi:"enableConsentBasedRedaction"`
+	// Enables DF Interaction logging.
+	EnableInteractionLogging pulumi.BoolPtrInput `pulumi:"enableInteractionLogging"`
+	// Enables Google Cloud Logging.
+	EnableStackdriverLogging pulumi.BoolPtrInput `pulumi:"enableStackdriverLogging"`
+}
+
+func (CxFlowAdvancedSettingsLoggingSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowAdvancedSettingsLoggingSettings)(nil)).Elem()
+}
+
+func (i CxFlowAdvancedSettingsLoggingSettingsArgs) ToCxFlowAdvancedSettingsLoggingSettingsOutput() CxFlowAdvancedSettingsLoggingSettingsOutput {
+	return i.ToCxFlowAdvancedSettingsLoggingSettingsOutputWithContext(context.Background())
+}
+
+func (i CxFlowAdvancedSettingsLoggingSettingsArgs) ToCxFlowAdvancedSettingsLoggingSettingsOutputWithContext(ctx context.Context) CxFlowAdvancedSettingsLoggingSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowAdvancedSettingsLoggingSettingsOutput)
+}
+
+func (i CxFlowAdvancedSettingsLoggingSettingsArgs) ToCxFlowAdvancedSettingsLoggingSettingsPtrOutput() CxFlowAdvancedSettingsLoggingSettingsPtrOutput {
+	return i.ToCxFlowAdvancedSettingsLoggingSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i CxFlowAdvancedSettingsLoggingSettingsArgs) ToCxFlowAdvancedSettingsLoggingSettingsPtrOutputWithContext(ctx context.Context) CxFlowAdvancedSettingsLoggingSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowAdvancedSettingsLoggingSettingsOutput).ToCxFlowAdvancedSettingsLoggingSettingsPtrOutputWithContext(ctx)
+}
+
+// CxFlowAdvancedSettingsLoggingSettingsPtrInput is an input type that accepts CxFlowAdvancedSettingsLoggingSettingsArgs, CxFlowAdvancedSettingsLoggingSettingsPtr and CxFlowAdvancedSettingsLoggingSettingsPtrOutput values.
+// You can construct a concrete instance of `CxFlowAdvancedSettingsLoggingSettingsPtrInput` via:
+//
+//	        CxFlowAdvancedSettingsLoggingSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxFlowAdvancedSettingsLoggingSettingsPtrInput interface {
+	pulumi.Input
+
+	ToCxFlowAdvancedSettingsLoggingSettingsPtrOutput() CxFlowAdvancedSettingsLoggingSettingsPtrOutput
+	ToCxFlowAdvancedSettingsLoggingSettingsPtrOutputWithContext(context.Context) CxFlowAdvancedSettingsLoggingSettingsPtrOutput
+}
+
+type cxFlowAdvancedSettingsLoggingSettingsPtrType CxFlowAdvancedSettingsLoggingSettingsArgs
+
+func CxFlowAdvancedSettingsLoggingSettingsPtr(v *CxFlowAdvancedSettingsLoggingSettingsArgs) CxFlowAdvancedSettingsLoggingSettingsPtrInput {
+	return (*cxFlowAdvancedSettingsLoggingSettingsPtrType)(v)
+}
+
+func (*cxFlowAdvancedSettingsLoggingSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowAdvancedSettingsLoggingSettings)(nil)).Elem()
+}
+
+func (i *cxFlowAdvancedSettingsLoggingSettingsPtrType) ToCxFlowAdvancedSettingsLoggingSettingsPtrOutput() CxFlowAdvancedSettingsLoggingSettingsPtrOutput {
+	return i.ToCxFlowAdvancedSettingsLoggingSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *cxFlowAdvancedSettingsLoggingSettingsPtrType) ToCxFlowAdvancedSettingsLoggingSettingsPtrOutputWithContext(ctx context.Context) CxFlowAdvancedSettingsLoggingSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowAdvancedSettingsLoggingSettingsPtrOutput)
+}
+
+type CxFlowAdvancedSettingsLoggingSettingsOutput struct{ *pulumi.OutputState }
+
+func (CxFlowAdvancedSettingsLoggingSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowAdvancedSettingsLoggingSettings)(nil)).Elem()
+}
+
+func (o CxFlowAdvancedSettingsLoggingSettingsOutput) ToCxFlowAdvancedSettingsLoggingSettingsOutput() CxFlowAdvancedSettingsLoggingSettingsOutput {
+	return o
+}
+
+func (o CxFlowAdvancedSettingsLoggingSettingsOutput) ToCxFlowAdvancedSettingsLoggingSettingsOutputWithContext(ctx context.Context) CxFlowAdvancedSettingsLoggingSettingsOutput {
+	return o
+}
+
+func (o CxFlowAdvancedSettingsLoggingSettingsOutput) ToCxFlowAdvancedSettingsLoggingSettingsPtrOutput() CxFlowAdvancedSettingsLoggingSettingsPtrOutput {
+	return o.ToCxFlowAdvancedSettingsLoggingSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o CxFlowAdvancedSettingsLoggingSettingsOutput) ToCxFlowAdvancedSettingsLoggingSettingsPtrOutputWithContext(ctx context.Context) CxFlowAdvancedSettingsLoggingSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowAdvancedSettingsLoggingSettings) *CxFlowAdvancedSettingsLoggingSettings {
+		return &v
+	}).(CxFlowAdvancedSettingsLoggingSettingsPtrOutput)
+}
+
+// Enables consent-based end-user input redaction, if true, a pre-defined session parameter **$session.params.conversation-redaction** will be used to determine if the utterance should be redacted.
+func (o CxFlowAdvancedSettingsLoggingSettingsOutput) EnableConsentBasedRedaction() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxFlowAdvancedSettingsLoggingSettings) *bool { return v.EnableConsentBasedRedaction }).(pulumi.BoolPtrOutput)
+}
+
+// Enables DF Interaction logging.
+func (o CxFlowAdvancedSettingsLoggingSettingsOutput) EnableInteractionLogging() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxFlowAdvancedSettingsLoggingSettings) *bool { return v.EnableInteractionLogging }).(pulumi.BoolPtrOutput)
+}
+
+// Enables Google Cloud Logging.
+func (o CxFlowAdvancedSettingsLoggingSettingsOutput) EnableStackdriverLogging() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxFlowAdvancedSettingsLoggingSettings) *bool { return v.EnableStackdriverLogging }).(pulumi.BoolPtrOutput)
+}
+
+type CxFlowAdvancedSettingsLoggingSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (CxFlowAdvancedSettingsLoggingSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowAdvancedSettingsLoggingSettings)(nil)).Elem()
+}
+
+func (o CxFlowAdvancedSettingsLoggingSettingsPtrOutput) ToCxFlowAdvancedSettingsLoggingSettingsPtrOutput() CxFlowAdvancedSettingsLoggingSettingsPtrOutput {
+	return o
+}
+
+func (o CxFlowAdvancedSettingsLoggingSettingsPtrOutput) ToCxFlowAdvancedSettingsLoggingSettingsPtrOutputWithContext(ctx context.Context) CxFlowAdvancedSettingsLoggingSettingsPtrOutput {
+	return o
+}
+
+func (o CxFlowAdvancedSettingsLoggingSettingsPtrOutput) Elem() CxFlowAdvancedSettingsLoggingSettingsOutput {
+	return o.ApplyT(func(v *CxFlowAdvancedSettingsLoggingSettings) CxFlowAdvancedSettingsLoggingSettings {
+		if v != nil {
+			return *v
+		}
+		var ret CxFlowAdvancedSettingsLoggingSettings
+		return ret
+	}).(CxFlowAdvancedSettingsLoggingSettingsOutput)
+}
+
+// Enables consent-based end-user input redaction, if true, a pre-defined session parameter **$session.params.conversation-redaction** will be used to determine if the utterance should be redacted.
+func (o CxFlowAdvancedSettingsLoggingSettingsPtrOutput) EnableConsentBasedRedaction() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxFlowAdvancedSettingsLoggingSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableConsentBasedRedaction
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enables DF Interaction logging.
+func (o CxFlowAdvancedSettingsLoggingSettingsPtrOutput) EnableInteractionLogging() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxFlowAdvancedSettingsLoggingSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableInteractionLogging
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enables Google Cloud Logging.
+func (o CxFlowAdvancedSettingsLoggingSettingsPtrOutput) EnableStackdriverLogging() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxFlowAdvancedSettingsLoggingSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableStackdriverLogging
+	}).(pulumi.BoolPtrOutput)
+}
+
+type CxFlowAdvancedSettingsSpeechSettings struct {
+	// Sensitivity of the speech model that detects the end of speech. Scale from 0 to 100.
+	EndpointerSensitivity *int `pulumi:"endpointerSensitivity"`
+	// Mapping from language to Speech-to-Text model. The mapped Speech-to-Text model will be selected for requests from its corresponding language. For more information, see [Speech models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
+	// An object containing a list of **"key": value** pairs. Example: **{ "name": "wrench", "mass": "1.3kg", "count": "3" }**.
+	Models map[string]string `pulumi:"models"`
+	// Timeout before detecting no speech.
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+	NoSpeechTimeout *string `pulumi:"noSpeechTimeout"`
+	// Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+	UseTimeoutBasedEndpointing *bool `pulumi:"useTimeoutBasedEndpointing"`
+}
+
+// CxFlowAdvancedSettingsSpeechSettingsInput is an input type that accepts CxFlowAdvancedSettingsSpeechSettingsArgs and CxFlowAdvancedSettingsSpeechSettingsOutput values.
+// You can construct a concrete instance of `CxFlowAdvancedSettingsSpeechSettingsInput` via:
+//
+//	CxFlowAdvancedSettingsSpeechSettingsArgs{...}
+type CxFlowAdvancedSettingsSpeechSettingsInput interface {
+	pulumi.Input
+
+	ToCxFlowAdvancedSettingsSpeechSettingsOutput() CxFlowAdvancedSettingsSpeechSettingsOutput
+	ToCxFlowAdvancedSettingsSpeechSettingsOutputWithContext(context.Context) CxFlowAdvancedSettingsSpeechSettingsOutput
+}
+
+type CxFlowAdvancedSettingsSpeechSettingsArgs struct {
+	// Sensitivity of the speech model that detects the end of speech. Scale from 0 to 100.
+	EndpointerSensitivity pulumi.IntPtrInput `pulumi:"endpointerSensitivity"`
+	// Mapping from language to Speech-to-Text model. The mapped Speech-to-Text model will be selected for requests from its corresponding language. For more information, see [Speech models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
+	// An object containing a list of **"key": value** pairs. Example: **{ "name": "wrench", "mass": "1.3kg", "count": "3" }**.
+	Models pulumi.StringMapInput `pulumi:"models"`
+	// Timeout before detecting no speech.
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+	NoSpeechTimeout pulumi.StringPtrInput `pulumi:"noSpeechTimeout"`
+	// Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+	UseTimeoutBasedEndpointing pulumi.BoolPtrInput `pulumi:"useTimeoutBasedEndpointing"`
+}
+
+func (CxFlowAdvancedSettingsSpeechSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowAdvancedSettingsSpeechSettings)(nil)).Elem()
+}
+
+func (i CxFlowAdvancedSettingsSpeechSettingsArgs) ToCxFlowAdvancedSettingsSpeechSettingsOutput() CxFlowAdvancedSettingsSpeechSettingsOutput {
+	return i.ToCxFlowAdvancedSettingsSpeechSettingsOutputWithContext(context.Background())
+}
+
+func (i CxFlowAdvancedSettingsSpeechSettingsArgs) ToCxFlowAdvancedSettingsSpeechSettingsOutputWithContext(ctx context.Context) CxFlowAdvancedSettingsSpeechSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowAdvancedSettingsSpeechSettingsOutput)
+}
+
+func (i CxFlowAdvancedSettingsSpeechSettingsArgs) ToCxFlowAdvancedSettingsSpeechSettingsPtrOutput() CxFlowAdvancedSettingsSpeechSettingsPtrOutput {
+	return i.ToCxFlowAdvancedSettingsSpeechSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i CxFlowAdvancedSettingsSpeechSettingsArgs) ToCxFlowAdvancedSettingsSpeechSettingsPtrOutputWithContext(ctx context.Context) CxFlowAdvancedSettingsSpeechSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowAdvancedSettingsSpeechSettingsOutput).ToCxFlowAdvancedSettingsSpeechSettingsPtrOutputWithContext(ctx)
+}
+
+// CxFlowAdvancedSettingsSpeechSettingsPtrInput is an input type that accepts CxFlowAdvancedSettingsSpeechSettingsArgs, CxFlowAdvancedSettingsSpeechSettingsPtr and CxFlowAdvancedSettingsSpeechSettingsPtrOutput values.
+// You can construct a concrete instance of `CxFlowAdvancedSettingsSpeechSettingsPtrInput` via:
+//
+//	        CxFlowAdvancedSettingsSpeechSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxFlowAdvancedSettingsSpeechSettingsPtrInput interface {
+	pulumi.Input
+
+	ToCxFlowAdvancedSettingsSpeechSettingsPtrOutput() CxFlowAdvancedSettingsSpeechSettingsPtrOutput
+	ToCxFlowAdvancedSettingsSpeechSettingsPtrOutputWithContext(context.Context) CxFlowAdvancedSettingsSpeechSettingsPtrOutput
+}
+
+type cxFlowAdvancedSettingsSpeechSettingsPtrType CxFlowAdvancedSettingsSpeechSettingsArgs
+
+func CxFlowAdvancedSettingsSpeechSettingsPtr(v *CxFlowAdvancedSettingsSpeechSettingsArgs) CxFlowAdvancedSettingsSpeechSettingsPtrInput {
+	return (*cxFlowAdvancedSettingsSpeechSettingsPtrType)(v)
+}
+
+func (*cxFlowAdvancedSettingsSpeechSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowAdvancedSettingsSpeechSettings)(nil)).Elem()
+}
+
+func (i *cxFlowAdvancedSettingsSpeechSettingsPtrType) ToCxFlowAdvancedSettingsSpeechSettingsPtrOutput() CxFlowAdvancedSettingsSpeechSettingsPtrOutput {
+	return i.ToCxFlowAdvancedSettingsSpeechSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *cxFlowAdvancedSettingsSpeechSettingsPtrType) ToCxFlowAdvancedSettingsSpeechSettingsPtrOutputWithContext(ctx context.Context) CxFlowAdvancedSettingsSpeechSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowAdvancedSettingsSpeechSettingsPtrOutput)
+}
+
+type CxFlowAdvancedSettingsSpeechSettingsOutput struct{ *pulumi.OutputState }
+
+func (CxFlowAdvancedSettingsSpeechSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowAdvancedSettingsSpeechSettings)(nil)).Elem()
+}
+
+func (o CxFlowAdvancedSettingsSpeechSettingsOutput) ToCxFlowAdvancedSettingsSpeechSettingsOutput() CxFlowAdvancedSettingsSpeechSettingsOutput {
+	return o
+}
+
+func (o CxFlowAdvancedSettingsSpeechSettingsOutput) ToCxFlowAdvancedSettingsSpeechSettingsOutputWithContext(ctx context.Context) CxFlowAdvancedSettingsSpeechSettingsOutput {
+	return o
+}
+
+func (o CxFlowAdvancedSettingsSpeechSettingsOutput) ToCxFlowAdvancedSettingsSpeechSettingsPtrOutput() CxFlowAdvancedSettingsSpeechSettingsPtrOutput {
+	return o.ToCxFlowAdvancedSettingsSpeechSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o CxFlowAdvancedSettingsSpeechSettingsOutput) ToCxFlowAdvancedSettingsSpeechSettingsPtrOutputWithContext(ctx context.Context) CxFlowAdvancedSettingsSpeechSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowAdvancedSettingsSpeechSettings) *CxFlowAdvancedSettingsSpeechSettings {
+		return &v
+	}).(CxFlowAdvancedSettingsSpeechSettingsPtrOutput)
+}
+
+// Sensitivity of the speech model that detects the end of speech. Scale from 0 to 100.
+func (o CxFlowAdvancedSettingsSpeechSettingsOutput) EndpointerSensitivity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CxFlowAdvancedSettingsSpeechSettings) *int { return v.EndpointerSensitivity }).(pulumi.IntPtrOutput)
+}
+
+// Mapping from language to Speech-to-Text model. The mapped Speech-to-Text model will be selected for requests from its corresponding language. For more information, see [Speech models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
+// An object containing a list of **"key": value** pairs. Example: **{ "name": "wrench", "mass": "1.3kg", "count": "3" }**.
+func (o CxFlowAdvancedSettingsSpeechSettingsOutput) Models() pulumi.StringMapOutput {
+	return o.ApplyT(func(v CxFlowAdvancedSettingsSpeechSettings) map[string]string { return v.Models }).(pulumi.StringMapOutput)
+}
+
+// Timeout before detecting no speech.
+// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+func (o CxFlowAdvancedSettingsSpeechSettingsOutput) NoSpeechTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowAdvancedSettingsSpeechSettings) *string { return v.NoSpeechTimeout }).(pulumi.StringPtrOutput)
+}
+
+// Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+func (o CxFlowAdvancedSettingsSpeechSettingsOutput) UseTimeoutBasedEndpointing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxFlowAdvancedSettingsSpeechSettings) *bool { return v.UseTimeoutBasedEndpointing }).(pulumi.BoolPtrOutput)
+}
+
+type CxFlowAdvancedSettingsSpeechSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (CxFlowAdvancedSettingsSpeechSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowAdvancedSettingsSpeechSettings)(nil)).Elem()
+}
+
+func (o CxFlowAdvancedSettingsSpeechSettingsPtrOutput) ToCxFlowAdvancedSettingsSpeechSettingsPtrOutput() CxFlowAdvancedSettingsSpeechSettingsPtrOutput {
+	return o
+}
+
+func (o CxFlowAdvancedSettingsSpeechSettingsPtrOutput) ToCxFlowAdvancedSettingsSpeechSettingsPtrOutputWithContext(ctx context.Context) CxFlowAdvancedSettingsSpeechSettingsPtrOutput {
+	return o
+}
+
+func (o CxFlowAdvancedSettingsSpeechSettingsPtrOutput) Elem() CxFlowAdvancedSettingsSpeechSettingsOutput {
+	return o.ApplyT(func(v *CxFlowAdvancedSettingsSpeechSettings) CxFlowAdvancedSettingsSpeechSettings {
+		if v != nil {
+			return *v
+		}
+		var ret CxFlowAdvancedSettingsSpeechSettings
+		return ret
+	}).(CxFlowAdvancedSettingsSpeechSettingsOutput)
+}
+
+// Sensitivity of the speech model that detects the end of speech. Scale from 0 to 100.
+func (o CxFlowAdvancedSettingsSpeechSettingsPtrOutput) EndpointerSensitivity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CxFlowAdvancedSettingsSpeechSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.EndpointerSensitivity
+	}).(pulumi.IntPtrOutput)
+}
+
+// Mapping from language to Speech-to-Text model. The mapped Speech-to-Text model will be selected for requests from its corresponding language. For more information, see [Speech models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
+// An object containing a list of **"key": value** pairs. Example: **{ "name": "wrench", "mass": "1.3kg", "count": "3" }**.
+func (o CxFlowAdvancedSettingsSpeechSettingsPtrOutput) Models() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CxFlowAdvancedSettingsSpeechSettings) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Models
+	}).(pulumi.StringMapOutput)
+}
+
+// Timeout before detecting no speech.
+// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+func (o CxFlowAdvancedSettingsSpeechSettingsPtrOutput) NoSpeechTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxFlowAdvancedSettingsSpeechSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NoSpeechTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+func (o CxFlowAdvancedSettingsSpeechSettingsPtrOutput) UseTimeoutBasedEndpointing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxFlowAdvancedSettingsSpeechSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseTimeoutBasedEndpointing
+	}).(pulumi.BoolPtrOutput)
 }
 
 type CxFlowEventHandler struct {
@@ -21085,6 +21971,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentAdvancedSettingsAudioExportGcsDestinationPtrInput)(nil)).Elem(), CxAgentAdvancedSettingsAudioExportGcsDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentAdvancedSettingsDtmfSettingsInput)(nil)).Elem(), CxAgentAdvancedSettingsDtmfSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentAdvancedSettingsDtmfSettingsPtrInput)(nil)).Elem(), CxAgentAdvancedSettingsDtmfSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentAdvancedSettingsLoggingSettingsInput)(nil)).Elem(), CxAgentAdvancedSettingsLoggingSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentAdvancedSettingsLoggingSettingsPtrInput)(nil)).Elem(), CxAgentAdvancedSettingsLoggingSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentAdvancedSettingsSpeechSettingsInput)(nil)).Elem(), CxAgentAdvancedSettingsSpeechSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentAdvancedSettingsSpeechSettingsPtrInput)(nil)).Elem(), CxAgentAdvancedSettingsSpeechSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentGitIntegrationSettingsInput)(nil)).Elem(), CxAgentGitIntegrationSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentGitIntegrationSettingsPtrInput)(nil)).Elem(), CxAgentGitIntegrationSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxAgentGitIntegrationSettingsGithubSettingsInput)(nil)).Elem(), CxAgentGitIntegrationSettingsGithubSettingsArgs{})
@@ -21105,6 +21995,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowAdvancedSettingsAudioExportGcsDestinationPtrInput)(nil)).Elem(), CxFlowAdvancedSettingsAudioExportGcsDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowAdvancedSettingsDtmfSettingsInput)(nil)).Elem(), CxFlowAdvancedSettingsDtmfSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowAdvancedSettingsDtmfSettingsPtrInput)(nil)).Elem(), CxFlowAdvancedSettingsDtmfSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowAdvancedSettingsLoggingSettingsInput)(nil)).Elem(), CxFlowAdvancedSettingsLoggingSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowAdvancedSettingsLoggingSettingsPtrInput)(nil)).Elem(), CxFlowAdvancedSettingsLoggingSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowAdvancedSettingsSpeechSettingsInput)(nil)).Elem(), CxFlowAdvancedSettingsSpeechSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowAdvancedSettingsSpeechSettingsPtrInput)(nil)).Elem(), CxFlowAdvancedSettingsSpeechSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowEventHandlerInput)(nil)).Elem(), CxFlowEventHandlerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowEventHandlerArrayInput)(nil)).Elem(), CxFlowEventHandlerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowEventHandlerTriggerFulfillmentInput)(nil)).Elem(), CxFlowEventHandlerTriggerFulfillmentArgs{})
@@ -21351,6 +22245,10 @@ func init() {
 	pulumi.RegisterOutputType(CxAgentAdvancedSettingsAudioExportGcsDestinationPtrOutput{})
 	pulumi.RegisterOutputType(CxAgentAdvancedSettingsDtmfSettingsOutput{})
 	pulumi.RegisterOutputType(CxAgentAdvancedSettingsDtmfSettingsPtrOutput{})
+	pulumi.RegisterOutputType(CxAgentAdvancedSettingsLoggingSettingsOutput{})
+	pulumi.RegisterOutputType(CxAgentAdvancedSettingsLoggingSettingsPtrOutput{})
+	pulumi.RegisterOutputType(CxAgentAdvancedSettingsSpeechSettingsOutput{})
+	pulumi.RegisterOutputType(CxAgentAdvancedSettingsSpeechSettingsPtrOutput{})
 	pulumi.RegisterOutputType(CxAgentGitIntegrationSettingsOutput{})
 	pulumi.RegisterOutputType(CxAgentGitIntegrationSettingsPtrOutput{})
 	pulumi.RegisterOutputType(CxAgentGitIntegrationSettingsGithubSettingsOutput{})
@@ -21371,6 +22269,10 @@ func init() {
 	pulumi.RegisterOutputType(CxFlowAdvancedSettingsAudioExportGcsDestinationPtrOutput{})
 	pulumi.RegisterOutputType(CxFlowAdvancedSettingsDtmfSettingsOutput{})
 	pulumi.RegisterOutputType(CxFlowAdvancedSettingsDtmfSettingsPtrOutput{})
+	pulumi.RegisterOutputType(CxFlowAdvancedSettingsLoggingSettingsOutput{})
+	pulumi.RegisterOutputType(CxFlowAdvancedSettingsLoggingSettingsPtrOutput{})
+	pulumi.RegisterOutputType(CxFlowAdvancedSettingsSpeechSettingsOutput{})
+	pulumi.RegisterOutputType(CxFlowAdvancedSettingsSpeechSettingsPtrOutput{})
 	pulumi.RegisterOutputType(CxFlowEventHandlerOutput{})
 	pulumi.RegisterOutputType(CxFlowEventHandlerArrayOutput{})
 	pulumi.RegisterOutputType(CxFlowEventHandlerTriggerFulfillmentOutput{})

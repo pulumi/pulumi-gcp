@@ -39,7 +39,7 @@ public final class GetInstanceAttachedDisk {
      */
     private String mode;
     /**
-     * @return The name or self_link of the disk attached to this instance.
+     * @return The self_link of the disk attached to this instance.
      * 
      */
     private String source;
@@ -84,7 +84,7 @@ public final class GetInstanceAttachedDisk {
         return this.mode;
     }
     /**
-     * @return The name or self_link of the disk attached to this instance.
+     * @return The self_link of the disk attached to this instance.
      * 
      */
     public String source() {

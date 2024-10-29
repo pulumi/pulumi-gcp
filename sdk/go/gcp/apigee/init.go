@@ -23,6 +23,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:apigee/addonsConfig:AddonsConfig":
 		r = &AddonsConfig{}
+	case "gcp:apigee/appGroup:AppGroup":
+		r = &AppGroup{}
+	case "gcp:apigee/developer:Developer":
+		r = &Developer{}
 	case "gcp:apigee/endpointAttachment:EndpointAttachment":
 		r = &EndpointAttachment{}
 	case "gcp:apigee/envGroup:EnvGroup":
@@ -85,6 +89,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"apigee/addonsConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"apigee/appGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"apigee/developer",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

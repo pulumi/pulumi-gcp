@@ -570,7 +570,10 @@ func (o BackupScheduleSpecCronSpecPtrOutput) Text() pulumi.StringPtrOutput {
 type DatabaseEncryptionConfig struct {
 	// Fully qualified name of the KMS key to use to encrypt this database. This key must exist
 	// in the same location as the Spanner Database.
-	KmsKeyName string `pulumi:"kmsKeyName"`
+	KmsKeyName *string `pulumi:"kmsKeyName"`
+	// Fully qualified name of the KMS keys to use to encrypt this database. The keys must exist
+	// in the same locations as the Spanner Database.
+	KmsKeyNames []string `pulumi:"kmsKeyNames"`
 }
 
 // DatabaseEncryptionConfigInput is an input type that accepts DatabaseEncryptionConfigArgs and DatabaseEncryptionConfigOutput values.
@@ -587,7 +590,10 @@ type DatabaseEncryptionConfigInput interface {
 type DatabaseEncryptionConfigArgs struct {
 	// Fully qualified name of the KMS key to use to encrypt this database. This key must exist
 	// in the same location as the Spanner Database.
-	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
+	// Fully qualified name of the KMS keys to use to encrypt this database. The keys must exist
+	// in the same locations as the Spanner Database.
+	KmsKeyNames pulumi.StringArrayInput `pulumi:"kmsKeyNames"`
 }
 
 func (DatabaseEncryptionConfigArgs) ElementType() reflect.Type {
@@ -669,8 +675,14 @@ func (o DatabaseEncryptionConfigOutput) ToDatabaseEncryptionConfigPtrOutputWithC
 
 // Fully qualified name of the KMS key to use to encrypt this database. This key must exist
 // in the same location as the Spanner Database.
-func (o DatabaseEncryptionConfigOutput) KmsKeyName() pulumi.StringOutput {
-	return o.ApplyT(func(v DatabaseEncryptionConfig) string { return v.KmsKeyName }).(pulumi.StringOutput)
+func (o DatabaseEncryptionConfigOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseEncryptionConfig) *string { return v.KmsKeyName }).(pulumi.StringPtrOutput)
+}
+
+// Fully qualified name of the KMS keys to use to encrypt this database. The keys must exist
+// in the same locations as the Spanner Database.
+func (o DatabaseEncryptionConfigOutput) KmsKeyNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DatabaseEncryptionConfig) []string { return v.KmsKeyNames }).(pulumi.StringArrayOutput)
 }
 
 type DatabaseEncryptionConfigPtrOutput struct{ *pulumi.OutputState }
@@ -704,8 +716,19 @@ func (o DatabaseEncryptionConfigPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.KmsKeyName
+		return v.KmsKeyName
 	}).(pulumi.StringPtrOutput)
+}
+
+// Fully qualified name of the KMS keys to use to encrypt this database. The keys must exist
+// in the same locations as the Spanner Database.
+func (o DatabaseEncryptionConfigPtrOutput) KmsKeyNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DatabaseEncryptionConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyNames
+	}).(pulumi.StringArrayOutput)
 }
 
 type DatabaseIAMBindingCondition struct {

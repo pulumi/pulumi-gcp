@@ -5,6 +5,7 @@ package com.pulumi.gcp.vmwareengine.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.vmwareengine.inputs.ClusterAutoscalingSettingsArgs;
 import com.pulumi.gcp.vmwareengine.inputs.ClusterNodeTypeConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -17,6 +18,23 @@ import javax.annotation.Nullable;
 public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
     public static final ClusterState Empty = new ClusterState();
+
+    /**
+     * Configuration of the autoscaling applied to this cluster
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="autoscalingSettings")
+    private @Nullable Output<ClusterAutoscalingSettingsArgs> autoscalingSettings;
+
+    /**
+     * @return Configuration of the autoscaling applied to this cluster
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterAutoscalingSettingsArgs>> autoscalingSettings() {
+        return Optional.ofNullable(this.autoscalingSettings);
+    }
 
     /**
      * True if the cluster is a management cluster; false otherwise.
@@ -125,6 +143,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     private ClusterState() {}
 
     private ClusterState(ClusterState $) {
+        this.autoscalingSettings = $.autoscalingSettings;
         this.management = $.management;
         this.name = $.name;
         this.nodeTypeConfigs = $.nodeTypeConfigs;
@@ -149,6 +168,29 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ClusterState defaults) {
             $ = new ClusterState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param autoscalingSettings Configuration of the autoscaling applied to this cluster
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoscalingSettings(@Nullable Output<ClusterAutoscalingSettingsArgs> autoscalingSettings) {
+            $.autoscalingSettings = autoscalingSettings;
+            return this;
+        }
+
+        /**
+         * @param autoscalingSettings Configuration of the autoscaling applied to this cluster
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoscalingSettings(ClusterAutoscalingSettingsArgs autoscalingSettings) {
+            return autoscalingSettings(Output.of(autoscalingSettings));
         }
 
         /**

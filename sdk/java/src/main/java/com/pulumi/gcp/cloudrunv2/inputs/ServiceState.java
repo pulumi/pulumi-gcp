@@ -302,6 +302,23 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Disables IAM permission check for run.routes.invoke for callers of this service. This feature is available by invitation
+     * only. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
+     * 
+     */
+    @Import(name="invokerIamDisabled")
+    private @Nullable Output<Boolean> invokerIamDisabled;
+
+    /**
+     * @return Disables IAM permission check for run.routes.invoke for callers of this service. This feature is available by invitation
+     * only. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
+     * 
+     */
+    public Optional<Output<Boolean>> invokerIamDisabled() {
+        return Optional.ofNullable(this.invokerIamDisabled);
+    }
+
+    /**
      * Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
      * Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment,
      * state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
@@ -641,6 +658,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         this.expireTime = $.expireTime;
         this.generation = $.generation;
         this.ingress = $.ingress;
+        this.invokerIamDisabled = $.invokerIamDisabled;
         this.labels = $.labels;
         this.lastModifier = $.lastModifier;
         this.latestCreatedRevision = $.latestCreatedRevision;
@@ -1077,6 +1095,29 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder ingress(String ingress) {
             return ingress(Output.of(ingress));
+        }
+
+        /**
+         * @param invokerIamDisabled Disables IAM permission check for run.routes.invoke for callers of this service. This feature is available by invitation
+         * only. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder invokerIamDisabled(@Nullable Output<Boolean> invokerIamDisabled) {
+            $.invokerIamDisabled = invokerIamDisabled;
+            return this;
+        }
+
+        /**
+         * @param invokerIamDisabled Disables IAM permission check for run.routes.invoke for callers of this service. This feature is available by invitation
+         * only. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder invokerIamDisabled(Boolean invokerIamDisabled) {
+            return invokerIamDisabled(Output.of(invokerIamDisabled));
         }
 
         /**

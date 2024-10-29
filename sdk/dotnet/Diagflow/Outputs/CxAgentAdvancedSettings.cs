@@ -29,15 +29,36 @@ namespace Pulumi.Gcp.Diagflow.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.CxAgentAdvancedSettingsDtmfSettings? DtmfSettings;
+        /// <summary>
+        /// Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
+        /// * Agent level
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.CxAgentAdvancedSettingsLoggingSettings? LoggingSettings;
+        /// <summary>
+        /// Settings for speech to text detection. Exposed at the following levels:
+        /// * Agent level
+        /// * Flow level
+        /// * Page level
+        /// * Parameter level
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.CxAgentAdvancedSettingsSpeechSettings? SpeechSettings;
 
         [OutputConstructor]
         private CxAgentAdvancedSettings(
             Outputs.CxAgentAdvancedSettingsAudioExportGcsDestination? audioExportGcsDestination,
 
-            Outputs.CxAgentAdvancedSettingsDtmfSettings? dtmfSettings)
+            Outputs.CxAgentAdvancedSettingsDtmfSettings? dtmfSettings,
+
+            Outputs.CxAgentAdvancedSettingsLoggingSettings? loggingSettings,
+
+            Outputs.CxAgentAdvancedSettingsSpeechSettings? speechSettings)
         {
             AudioExportGcsDestination = audioExportGcsDestination;
             DtmfSettings = dtmfSettings;
+            LoggingSettings = loggingSettings;
+            SpeechSettings = speechSettings;
         }
     }
 }

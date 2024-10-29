@@ -498,6 +498,20 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
         return this.confidentialInstanceConfig;
     }
     /**
+     * Creation timestamp in RFC3339 text format.
+     * 
+     */
+    @Export(name="creationTimestamp", refs={String.class}, tree="[0]")
+    private Output<String> creationTimestamp;
+
+    /**
+     * @return Creation timestamp in RFC3339 text format.
+     * 
+     */
+    public Output<String> creationTimestamp() {
+        return this.creationTimestamp;
+    }
+    /**
      * A brief description of this resource.
      * 
      */
@@ -588,6 +602,20 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> instanceDescription() {
         return Codegen.optional(this.instanceDescription);
+    }
+    /**
+     * Action to be taken when a customer&#39;s encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
+     * 
+     */
+    @Export(name="keyRevocationActionType", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> keyRevocationActionType;
+
+    /**
+     * @return Action to be taken when a customer&#39;s encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
+     * 
+     */
+    public Output<Optional<String>> keyRevocationActionType() {
+        return Codegen.optional(this.keyRevocationActionType);
     }
     /**
      * A set of key/value label pairs to assign to instances

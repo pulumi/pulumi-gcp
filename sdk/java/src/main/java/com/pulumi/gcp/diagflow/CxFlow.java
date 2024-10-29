@@ -153,7 +153,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.diagflow.inputs.CxFlowTransitionRouteTriggerFulfillmentArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxFlowAdvancedSettingsArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxFlowAdvancedSettingsAudioExportGcsDestinationArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxFlowAdvancedSettingsSpeechSettingsArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxFlowAdvancedSettingsDtmfSettingsArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxFlowAdvancedSettingsLoggingSettingsArgs;
  * import static com.pulumi.codegen.internal.Serialization.*;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -457,10 +459,25 @@ import javax.annotation.Nullable;
  *                 .audioExportGcsDestination(CxFlowAdvancedSettingsAudioExportGcsDestinationArgs.builder()
  *                     .uri(bucket.url().applyValue(url -> String.format("%s/prefix-", url)))
  *                     .build())
+ *                 .speechSettings(CxFlowAdvancedSettingsSpeechSettingsArgs.builder()
+ *                     .endpointerSensitivity(30)
+ *                     .noSpeechTimeout("3.500s")
+ *                     .useTimeoutBasedEndpointing(true)
+ *                     .models(Map.ofEntries(
+ *                         Map.entry("name", "wrench"),
+ *                         Map.entry("mass", "1.3kg"),
+ *                         Map.entry("count", "3")
+ *                     ))
+ *                     .build())
  *                 .dtmfSettings(CxFlowAdvancedSettingsDtmfSettingsArgs.builder()
  *                     .enabled(true)
  *                     .maxDigits(1)
  *                     .finishDigit("#")
+ *                     .build())
+ *                 .loggingSettings(CxFlowAdvancedSettingsLoggingSettingsArgs.builder()
+ *                     .enableStackdriverLogging(true)
+ *                     .enableInteractionLogging(true)
+ *                     .enableConsentBasedRedaction(true)
  *                     .build())
  *                 .build())
  *             .build());

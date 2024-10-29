@@ -800,6 +800,34 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 "account_id": "999999999999",
             })
         ```
+        ### Iam Workload Identity Pool Provider Github Actions
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        pool = gcp.iam.WorkloadIdentityPool("pool", workload_identity_pool_id="example-pool")
+        example = gcp.iam.WorkloadIdentityPoolProvider("example",
+            workload_identity_pool_id=pool.workload_identity_pool_id,
+            workload_identity_pool_provider_id="example-prvdr",
+            display_name="Name of provider",
+            description="GitHub Actions identity pool provider for automated test",
+            disabled=True,
+            attribute_condition=\"\"\"    assertion.repository_owner_id == "123456789" &&
+            attribute.repository == "gh-org/gh-repo" &&
+            assertion.ref == "refs/heads/main" &&
+            assertion.ref_type == "branch"
+        \"\"\",
+            attribute_mapping={
+                "google.subject": "assertion.sub",
+                "attribute.actor": "assertion.actor",
+                "attribute.aud": "assertion.aud",
+                "attribute.repository": "assertion.repository",
+            },
+            oidc={
+                "issuer_uri": "https://token.actions.githubusercontent.com",
+            })
+        ```
         ### Iam Workload Identity Pool Provider Oidc Basic
 
         ```python
@@ -1133,6 +1161,34 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
             },
             aws={
                 "account_id": "999999999999",
+            })
+        ```
+        ### Iam Workload Identity Pool Provider Github Actions
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        pool = gcp.iam.WorkloadIdentityPool("pool", workload_identity_pool_id="example-pool")
+        example = gcp.iam.WorkloadIdentityPoolProvider("example",
+            workload_identity_pool_id=pool.workload_identity_pool_id,
+            workload_identity_pool_provider_id="example-prvdr",
+            display_name="Name of provider",
+            description="GitHub Actions identity pool provider for automated test",
+            disabled=True,
+            attribute_condition=\"\"\"    assertion.repository_owner_id == "123456789" &&
+            attribute.repository == "gh-org/gh-repo" &&
+            assertion.ref == "refs/heads/main" &&
+            assertion.ref_type == "branch"
+        \"\"\",
+            attribute_mapping={
+                "google.subject": "assertion.sub",
+                "attribute.actor": "assertion.actor",
+                "attribute.aud": "assertion.aud",
+                "attribute.repository": "assertion.repository",
+            },
+            oidc={
+                "issuer_uri": "https://token.actions.githubusercontent.com",
             })
         ```
         ### Iam Workload Identity Pool Provider Oidc Basic

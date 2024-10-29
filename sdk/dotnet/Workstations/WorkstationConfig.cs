@@ -84,6 +84,7 @@ namespace Pulumi.Gcp.Workstations
     ///         {
     ///             { "label", "key" },
     ///         },
+    ///         MaxUsableWorkstations = 1,
     ///         Host = new Gcp.Workstations.Inputs.WorkstationConfigHostArgs
     ///         {
     ///             GceInstance = new Gcp.Workstations.Inputs.WorkstationConfigHostGceInstanceArgs
@@ -617,6 +618,82 @@ namespace Pulumi.Gcp.Workstations
     /// 
     /// });
     /// ```
+    /// ### Workstation Config Allowed Ports
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "workstation-cluster",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
+    ///     {
+    ///         Name = "workstation-cluster",
+    ///         IpCidrRange = "10.0.0.0/24",
+    ///         Region = "us-central1",
+    ///         Network = @default.Name,
+    ///     });
+    /// 
+    ///     var defaultWorkstationCluster = new Gcp.Workstations.WorkstationCluster("default", new()
+    ///     {
+    ///         WorkstationClusterId = "workstation-cluster",
+    ///         Network = @default.Id,
+    ///         Subnetwork = defaultSubnetwork.Id,
+    ///         Location = "us-central1",
+    ///         Labels = 
+    ///         {
+    ///             { "label", "key" },
+    ///         },
+    ///         Annotations = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultWorkstationConfig = new Gcp.Workstations.WorkstationConfig("default", new()
+    ///     {
+    ///         WorkstationConfigId = "workstation-config",
+    ///         WorkstationClusterId = defaultWorkstationCluster.WorkstationClusterId,
+    ///         Location = "us-central1",
+    ///         Host = new Gcp.Workstations.Inputs.WorkstationConfigHostArgs
+    ///         {
+    ///             GceInstance = new Gcp.Workstations.Inputs.WorkstationConfigHostGceInstanceArgs
+    ///             {
+    ///                 MachineType = "e2-standard-4",
+    ///                 BootDiskSizeGb = 35,
+    ///                 DisablePublicIpAddresses = true,
+    ///             },
+    ///         },
+    ///         AllowedPorts = new[]
+    ///         {
+    ///             new Gcp.Workstations.Inputs.WorkstationConfigAllowedPortArgs
+    ///             {
+    ///                 First = 80,
+    ///                 Last = 80,
+    ///             },
+    ///             new Gcp.Workstations.Inputs.WorkstationConfigAllowedPortArgs
+    ///             {
+    ///                 First = 22,
+    ///                 Last = 22,
+    ///             },
+    ///             new Gcp.Workstations.Inputs.WorkstationConfigAllowedPortArgs
+    ///             {
+    ///                 First = 1024,
+    ///                 Last = 65535,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -645,6 +722,13 @@ namespace Pulumi.Gcp.Workstations
     [GcpResourceType("gcp:workstations/workstationConfig:WorkstationConfig")]
     public partial class WorkstationConfig : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// A list of port ranges specifying single ports or ranges of ports that are externally accessible in the workstation. Allowed ports must be one of 22, 80, or within range 1024-65535. If not specified defaults to ports 22, 80, and ports 1024-65535.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("allowedPorts")]
+        public Output<ImmutableArray<Outputs.WorkstationConfigAllowedPort>> AllowedPorts { get; private set; } = null!;
+
         /// <summary>
         /// Client-specified annotations. This is distinct from labels.
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -760,6 +844,12 @@ namespace Pulumi.Gcp.Workstations
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
+
+        /// <summary>
+        /// Maximum number of workstations under this configuration a user can have workstations.workstation.use permission on. Only enforced on CreateWorkstation API calls on the user issuing the API request.
+        /// </summary>
+        [Output("maxUsableWorkstations")]
+        public Output<int> MaxUsableWorkstations { get; private set; } = null!;
 
         /// <summary>
         /// Full name of this resource.
@@ -878,6 +968,19 @@ namespace Pulumi.Gcp.Workstations
 
     public sealed class WorkstationConfigArgs : global::Pulumi.ResourceArgs
     {
+        [Input("allowedPorts")]
+        private InputList<Inputs.WorkstationConfigAllowedPortArgs>? _allowedPorts;
+
+        /// <summary>
+        /// A list of port ranges specifying single ports or ranges of ports that are externally accessible in the workstation. Allowed ports must be one of 22, 80, or within range 1024-65535. If not specified defaults to ports 22, 80, and ports 1024-65535.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.WorkstationConfigAllowedPortArgs> AllowedPorts
+        {
+            get => _allowedPorts ?? (_allowedPorts = new InputList<Inputs.WorkstationConfigAllowedPortArgs>());
+            set => _allowedPorts = value;
+        }
+
         [Input("annotations")]
         private InputMap<string>? _annotations;
 
@@ -977,6 +1080,12 @@ namespace Pulumi.Gcp.Workstations
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
+        /// <summary>
+        /// Maximum number of workstations under this configuration a user can have workstations.workstation.use permission on. Only enforced on CreateWorkstation API calls on the user issuing the API request.
+        /// </summary>
+        [Input("maxUsableWorkstations")]
+        public Input<int>? MaxUsableWorkstations { get; set; }
+
         [Input("persistentDirectories")]
         private InputList<Inputs.WorkstationConfigPersistentDirectoryArgs>? _persistentDirectories;
 
@@ -1050,6 +1159,19 @@ namespace Pulumi.Gcp.Workstations
 
     public sealed class WorkstationConfigState : global::Pulumi.ResourceArgs
     {
+        [Input("allowedPorts")]
+        private InputList<Inputs.WorkstationConfigAllowedPortGetArgs>? _allowedPorts;
+
+        /// <summary>
+        /// A list of port ranges specifying single ports or ranges of ports that are externally accessible in the workstation. Allowed ports must be one of 22, 80, or within range 1024-65535. If not specified defaults to ports 22, 80, and ports 1024-65535.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.WorkstationConfigAllowedPortGetArgs> AllowedPorts
+        {
+            get => _allowedPorts ?? (_allowedPorts = new InputList<Inputs.WorkstationConfigAllowedPortGetArgs>());
+            set => _allowedPorts = value;
+        }
+
         [Input("annotations")]
         private InputMap<string>? _annotations;
 
@@ -1204,6 +1326,12 @@ namespace Pulumi.Gcp.Workstations
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// Maximum number of workstations under this configuration a user can have workstations.workstation.use permission on. Only enforced on CreateWorkstation API calls on the user issuing the API request.
+        /// </summary>
+        [Input("maxUsableWorkstations")]
+        public Input<int>? MaxUsableWorkstations { get; set; }
 
         /// <summary>
         /// Full name of this resource.

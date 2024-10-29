@@ -5,9 +5,11 @@ package com.pulumi.gcp.spanner.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class DatabaseEncryptionConfigArgs extends com.pulumi.resources.ResourceArgs {
@@ -19,22 +21,40 @@ public final class DatabaseEncryptionConfigArgs extends com.pulumi.resources.Res
      * in the same location as the Spanner Database.
      * 
      */
-    @Import(name="kmsKeyName", required=true)
-    private Output<String> kmsKeyName;
+    @Import(name="kmsKeyName")
+    private @Nullable Output<String> kmsKeyName;
 
     /**
      * @return Fully qualified name of the KMS key to use to encrypt this database. This key must exist
      * in the same location as the Spanner Database.
      * 
      */
-    public Output<String> kmsKeyName() {
-        return this.kmsKeyName;
+    public Optional<Output<String>> kmsKeyName() {
+        return Optional.ofNullable(this.kmsKeyName);
+    }
+
+    /**
+     * Fully qualified name of the KMS keys to use to encrypt this database. The keys must exist
+     * in the same locations as the Spanner Database.
+     * 
+     */
+    @Import(name="kmsKeyNames")
+    private @Nullable Output<List<String>> kmsKeyNames;
+
+    /**
+     * @return Fully qualified name of the KMS keys to use to encrypt this database. The keys must exist
+     * in the same locations as the Spanner Database.
+     * 
+     */
+    public Optional<Output<List<String>>> kmsKeyNames() {
+        return Optional.ofNullable(this.kmsKeyNames);
     }
 
     private DatabaseEncryptionConfigArgs() {}
 
     private DatabaseEncryptionConfigArgs(DatabaseEncryptionConfigArgs $) {
         this.kmsKeyName = $.kmsKeyName;
+        this.kmsKeyNames = $.kmsKeyNames;
     }
 
     public static Builder builder() {
@@ -62,7 +82,7 @@ public final class DatabaseEncryptionConfigArgs extends com.pulumi.resources.Res
          * @return builder
          * 
          */
-        public Builder kmsKeyName(Output<String> kmsKeyName) {
+        public Builder kmsKeyName(@Nullable Output<String> kmsKeyName) {
             $.kmsKeyName = kmsKeyName;
             return this;
         }
@@ -78,10 +98,41 @@ public final class DatabaseEncryptionConfigArgs extends com.pulumi.resources.Res
             return kmsKeyName(Output.of(kmsKeyName));
         }
 
+        /**
+         * @param kmsKeyNames Fully qualified name of the KMS keys to use to encrypt this database. The keys must exist
+         * in the same locations as the Spanner Database.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKeyNames(@Nullable Output<List<String>> kmsKeyNames) {
+            $.kmsKeyNames = kmsKeyNames;
+            return this;
+        }
+
+        /**
+         * @param kmsKeyNames Fully qualified name of the KMS keys to use to encrypt this database. The keys must exist
+         * in the same locations as the Spanner Database.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKeyNames(List<String> kmsKeyNames) {
+            return kmsKeyNames(Output.of(kmsKeyNames));
+        }
+
+        /**
+         * @param kmsKeyNames Fully qualified name of the KMS keys to use to encrypt this database. The keys must exist
+         * in the same locations as the Spanner Database.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKeyNames(String... kmsKeyNames) {
+            return kmsKeyNames(List.of(kmsKeyNames));
+        }
+
         public DatabaseEncryptionConfigArgs build() {
-            if ($.kmsKeyName == null) {
-                throw new MissingRequiredPropertyException("DatabaseEncryptionConfigArgs", "kmsKeyName");
-            }
             return $;
         }
     }

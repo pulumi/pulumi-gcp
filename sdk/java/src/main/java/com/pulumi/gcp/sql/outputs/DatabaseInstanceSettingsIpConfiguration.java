@@ -48,12 +48,12 @@ public final class DatabaseInstanceSettingsIpConfiguration {
      */
     private @Nullable List<DatabaseInstanceSettingsIpConfigurationPscConfig> pscConfigs;
     /**
-     * @return Specify how the server certificate&#39;s Certificate Authority is hosted. Supported value is `GOOGLE_MANAGED_INTERNAL_CA`.
+     * @return Specify how the server certificate&#39;s Certificate Authority is hosted. Supported values are `GOOGLE_MANAGED_INTERNAL_CA` and `GOOGLE_MANAGED_CAS_CA`.
      * 
      */
     private @Nullable String serverCaMode;
     /**
-     * @return Specify how SSL connection should be enforced in DB connections.
+     * @return Specify how SSL connection should be enforced in DB connections. Supported values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, and `TRUSTED_CLIENT_CERTIFICATE_REQUIRED` (not supported for SQL Server). See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
      * 
      */
     private @Nullable String sslMode;
@@ -104,14 +104,14 @@ public final class DatabaseInstanceSettingsIpConfiguration {
         return this.pscConfigs == null ? List.of() : this.pscConfigs;
     }
     /**
-     * @return Specify how the server certificate&#39;s Certificate Authority is hosted. Supported value is `GOOGLE_MANAGED_INTERNAL_CA`.
+     * @return Specify how the server certificate&#39;s Certificate Authority is hosted. Supported values are `GOOGLE_MANAGED_INTERNAL_CA` and `GOOGLE_MANAGED_CAS_CA`.
      * 
      */
     public Optional<String> serverCaMode() {
         return Optional.ofNullable(this.serverCaMode);
     }
     /**
-     * @return Specify how SSL connection should be enforced in DB connections.
+     * @return Specify how SSL connection should be enforced in DB connections. Supported values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, and `TRUSTED_CLIENT_CERTIFICATE_REQUIRED` (not supported for SQL Server). See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
      * 
      */
     public Optional<String> sslMode() {

@@ -15,23 +15,47 @@ public final class GetEntitlementArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetEntitlementArgs Empty = new GetEntitlementArgs();
 
+    /**
+     * ID of the Entitlement resource. This is the last part of the Entitlement&#39;s full name which is of the format `{parent}/locations/{location}/entitlements/{entitlement_id}`.
+     * 
+     */
     @Import(name="entitlementId")
     private @Nullable Output<String> entitlementId;
 
+    /**
+     * @return ID of the Entitlement resource. This is the last part of the Entitlement&#39;s full name which is of the format `{parent}/locations/{location}/entitlements/{entitlement_id}`.
+     * 
+     */
     public Optional<Output<String>> entitlementId() {
         return Optional.ofNullable(this.entitlementId);
     }
 
+    /**
+     * The region of the Entitlement resource.
+     * 
+     */
     @Import(name="location")
     private @Nullable Output<String> location;
 
+    /**
+     * @return The region of the Entitlement resource.
+     * 
+     */
     public Optional<Output<String>> location() {
         return Optional.ofNullable(this.location);
     }
 
+    /**
+     * The project or folder or organization that contains the resource. Format: projects/{project-id|project-number} or folders/{folder-number}  or organizations/{organization-number}
+     * 
+     */
     @Import(name="parent")
     private @Nullable Output<String> parent;
 
+    /**
+     * @return The project or folder or organization that contains the resource. Format: projects/{project-id|project-number} or folders/{folder-number}  or organizations/{organization-number}
+     * 
+     */
     public Optional<Output<String>> parent() {
         return Optional.ofNullable(this.parent);
     }
@@ -62,29 +86,65 @@ public final class GetEntitlementArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetEntitlementArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param entitlementId ID of the Entitlement resource. This is the last part of the Entitlement&#39;s full name which is of the format `{parent}/locations/{location}/entitlements/{entitlement_id}`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder entitlementId(@Nullable Output<String> entitlementId) {
             $.entitlementId = entitlementId;
             return this;
         }
 
+        /**
+         * @param entitlementId ID of the Entitlement resource. This is the last part of the Entitlement&#39;s full name which is of the format `{parent}/locations/{location}/entitlements/{entitlement_id}`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder entitlementId(String entitlementId) {
             return entitlementId(Output.of(entitlementId));
         }
 
+        /**
+         * @param location The region of the Entitlement resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder location(@Nullable Output<String> location) {
             $.location = location;
             return this;
         }
 
+        /**
+         * @param location The region of the Entitlement resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder location(String location) {
             return location(Output.of(location));
         }
 
+        /**
+         * @param parent The project or folder or organization that contains the resource. Format: projects/{project-id|project-number} or folders/{folder-number}  or organizations/{organization-number}
+         * 
+         * @return builder
+         * 
+         */
         public Builder parent(@Nullable Output<String> parent) {
             $.parent = parent;
             return this;
         }
 
+        /**
+         * @param parent The project or folder or organization that contains the resource. Format: projects/{project-id|project-number} or folders/{folder-number}  or organizations/{organization-number}
+         * 
+         * @return builder
+         * 
+         */
         public Builder parent(String parent) {
             return parent(Output.of(parent));
         }

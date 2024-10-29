@@ -11,15 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## subcategory: "Compute Engine"
-//
-// page_title: "Google: compute.RegionInstanceGroupManager"
-// description: |-
-// Get a Compute Region Instance Group within GCE.
-// ---
-//
-// # google\_compute\_region\_instance\_group\_manager
-//
 // Get a Compute Region Instance Group Manager within GCE.
 // For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups)
 // and [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceGroupManagers)

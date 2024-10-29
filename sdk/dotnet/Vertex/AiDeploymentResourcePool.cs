@@ -38,7 +38,7 @@ namespace Pulumi.Gcp.Vertex
     ///             MachineSpec = new Gcp.Vertex.Inputs.AiDeploymentResourcePoolDedicatedResourcesMachineSpecArgs
     ///             {
     ///                 MachineType = "n1-standard-4",
-    ///                 AcceleratorType = "NVIDIA_TESLA_K80",
+    ///                 AcceleratorType = "NVIDIA_TESLA_P4",
     ///                 AcceleratorCount = 1,
     ///             },
     ///             MinReplicaCount = 1,

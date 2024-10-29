@@ -16534,7 +16534,7 @@ class GetClusterLoggingConfigResult(dict):
     def __init__(__self__, *,
                  enable_components: Sequence[str]):
         """
-        :param Sequence[str] enable_components: GKE components exposing logs. Valid values include SYSTEM_COMPONENTS, APISERVER, CONTROLLER_MANAGER, SCHEDULER, and WORKLOADS.
+        :param Sequence[str] enable_components: GKE components exposing logs. Valid values include SYSTEM_COMPONENTS, APISERVER, CONTROLLER_MANAGER, KCP_CONNECTION, KCP_SSHD, SCHEDULER, and WORKLOADS.
         """
         pulumi.set(__self__, "enable_components", enable_components)
 
@@ -16542,7 +16542,7 @@ class GetClusterLoggingConfigResult(dict):
     @pulumi.getter(name="enableComponents")
     def enable_components(self) -> Sequence[str]:
         """
-        GKE components exposing logs. Valid values include SYSTEM_COMPONENTS, APISERVER, CONTROLLER_MANAGER, SCHEDULER, and WORKLOADS.
+        GKE components exposing logs. Valid values include SYSTEM_COMPONENTS, APISERVER, CONTROLLER_MANAGER, KCP_CONNECTION, KCP_SSHD, SCHEDULER, and WORKLOADS.
         """
         return pulumi.get(self, "enable_components")
 

@@ -107,9 +107,6 @@ import * as utilities from "../utilities";
  *             namespace: "default",
  *         },
  *     },
- *     securityPostureConfig: {
- *         vulnerabilityMode: "VULNERABILITY_ENTERPRISE",
- *     },
  * });
  * ```
  * ### Container Attached Cluster Ignore Errors
@@ -292,6 +289,8 @@ export class AttachedCluster extends pulumi.CustomResource {
     public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
     /**
      * Enable/Disable Security Posture API features for the cluster.
+     *
+     * @deprecated `securityPostureConfig` is deprecated and will be removed in a future major release.
      */
     public readonly securityPostureConfig!: pulumi.Output<outputs.container.AttachedClusterSecurityPostureConfig>;
     /**
@@ -506,6 +505,8 @@ export interface AttachedClusterState {
     reconciling?: pulumi.Input<boolean>;
     /**
      * Enable/Disable Security Posture API features for the cluster.
+     *
+     * @deprecated `securityPostureConfig` is deprecated and will be removed in a future major release.
      */
     securityPostureConfig?: pulumi.Input<inputs.container.AttachedClusterSecurityPostureConfig>;
     /**
@@ -609,6 +610,8 @@ export interface AttachedClusterArgs {
     proxyConfig?: pulumi.Input<inputs.container.AttachedClusterProxyConfig>;
     /**
      * Enable/Disable Security Posture API features for the cluster.
+     *
+     * @deprecated `securityPostureConfig` is deprecated and will be removed in a future major release.
      */
     securityPostureConfig?: pulumi.Input<inputs.container.AttachedClusterSecurityPostureConfig>;
 }

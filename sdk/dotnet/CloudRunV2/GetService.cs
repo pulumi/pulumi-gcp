@@ -151,6 +151,7 @@ namespace Pulumi.Gcp.CloudRunV2
         /// </summary>
         public readonly string Id;
         public readonly string Ingress;
+        public readonly bool InvokerIamDisabled;
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly string LastModifier;
         public readonly string LatestCreatedRevision;
@@ -211,6 +212,8 @@ namespace Pulumi.Gcp.CloudRunV2
 
             string ingress,
 
+            bool invokerIamDisabled,
+
             ImmutableDictionary<string, string> labels,
 
             string lastModifier,
@@ -268,6 +271,7 @@ namespace Pulumi.Gcp.CloudRunV2
             Generation = generation;
             Id = id;
             Ingress = ingress;
+            InvokerIamDisabled = invokerIamDisabled;
             Labels = labels;
             LastModifier = lastModifier;
             LatestCreatedRevision = latestCreatedRevision;

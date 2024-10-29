@@ -13480,6 +13480,8 @@ class InstanceTemplateDisk(dict):
             suggest = "disk_type"
         elif key == "provisionedIops":
             suggest = "provisioned_iops"
+        elif key == "provisionedThroughput":
+            suggest = "provisioned_throughput"
         elif key == "resourceManagerTags":
             suggest = "resource_manager_tags"
         elif key == "resourcePolicies":
@@ -13516,6 +13518,7 @@ class InstanceTemplateDisk(dict):
                  labels: Optional[Mapping[str, str]] = None,
                  mode: Optional[str] = None,
                  provisioned_iops: Optional[int] = None,
+                 provisioned_throughput: Optional[int] = None,
                  resource_manager_tags: Optional[Mapping[str, str]] = None,
                  resource_policies: Optional[str] = None,
                  source: Optional[str] = None,
@@ -13560,6 +13563,7 @@ class InstanceTemplateDisk(dict):
                sets the number of I/O operations per second that the disk can handle.
                Values must be between 10,000 and 120,000. For more details, see the
                [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+        :param int provisioned_throughput: Indicates how much throughput to provision for the disk, in MB/s. This sets the amount of data that can be read or written from the disk per second. Values must greater than or equal to 1. For more details, see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
         :param Mapping[str, str] resource_manager_tags: A set of key/value resource manager tag pairs to bind to this disk. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
         :param str resource_policies: - A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
         :param str source: The name (**not self_link**)
@@ -13610,6 +13614,8 @@ class InstanceTemplateDisk(dict):
             pulumi.set(__self__, "mode", mode)
         if provisioned_iops is not None:
             pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        if provisioned_throughput is not None:
+            pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
         if resource_manager_tags is not None:
             pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         if resource_policies is not None:
@@ -13738,6 +13744,14 @@ class InstanceTemplateDisk(dict):
         [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
         """
         return pulumi.get(self, "provisioned_iops")
+
+    @property
+    @pulumi.getter(name="provisionedThroughput")
+    def provisioned_throughput(self) -> Optional[int]:
+        """
+        Indicates how much throughput to provision for the disk, in MB/s. This sets the amount of data that can be read or written from the disk per second. Values must greater than or equal to 1. For more details, see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
+        """
+        return pulumi.get(self, "provisioned_throughput")
 
     @property
     @pulumi.getter(name="resourceManagerTags")
@@ -15935,19 +15949,22 @@ class NetworkFirewallPolicyRuleMatch(dict):
                  src_threat_intelligences: Optional[Sequence[str]] = None):
         """
         :param Sequence['NetworkFirewallPolicyRuleMatchLayer4ConfigArgs'] layer4_configs: Pairs of IP protocols and ports that the rule should match.
-        :param Sequence[str] dest_address_groups: Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
-        :param Sequence[str] dest_fqdns: Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
+               Structure is documented below.
+        :param Sequence[str] dest_address_groups: Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
+        :param Sequence[str] dest_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
         :param Sequence[str] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
-        :param Sequence[str] dest_region_codes: The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is egress.
-        :param Sequence[str] dest_threat_intelligences: Name of the Google Cloud Threat Intelligence list.
-        :param Sequence[str] src_address_groups: Address groups which should be matched against the traffic source. Maximum number of source address groups is 10. Source address groups is only supported in Ingress rules.
-        :param Sequence[str] src_fqdns: Domain names that will be used to match against the resolved domain name of source of traffic. Can only be specified if DIRECTION is ingress.
+        :param Sequence[str] dest_region_codes: Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
+        :param Sequence[str] dest_threat_intelligences: Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
+        :param Sequence[str] src_address_groups: Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
+        :param Sequence[str] src_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
         :param Sequence[str] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
-        :param Sequence[str] src_region_codes: The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
-        :param Sequence['NetworkFirewallPolicyRuleMatchSrcSecureTagArgs'] src_secure_tags: List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the <code>srcSecureTag</code> are INEFFECTIVE, and there is no <code>srcIpRange</code>, this rule will be ignored. Maximum number of source tag values allowed is 256.
-        :param Sequence[str] src_threat_intelligences: Name of the Google Cloud Threat Intelligence list.
+        :param Sequence[str] src_region_codes: Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
+        :param Sequence['NetworkFirewallPolicyRuleMatchSrcSecureTagArgs'] src_secure_tags: List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
+               Structure is documented below.
+        :param Sequence[str] src_threat_intelligences: Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
                
-               The `layer4_configs` block supports:
+               
+               <a name="nested_layer4_configs"></a>The `layer4_configs` block supports:
         """
         pulumi.set(__self__, "layer4_configs", layer4_configs)
         if dest_address_groups is not None:
@@ -15978,6 +15995,7 @@ class NetworkFirewallPolicyRuleMatch(dict):
     def layer4_configs(self) -> Sequence['outputs.NetworkFirewallPolicyRuleMatchLayer4Config']:
         """
         Pairs of IP protocols and ports that the rule should match.
+        Structure is documented below.
         """
         return pulumi.get(self, "layer4_configs")
 
@@ -15985,7 +16003,7 @@ class NetworkFirewallPolicyRuleMatch(dict):
     @pulumi.getter(name="destAddressGroups")
     def dest_address_groups(self) -> Optional[Sequence[str]]:
         """
-        Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
+        Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
         """
         return pulumi.get(self, "dest_address_groups")
 
@@ -15993,7 +16011,7 @@ class NetworkFirewallPolicyRuleMatch(dict):
     @pulumi.getter(name="destFqdns")
     def dest_fqdns(self) -> Optional[Sequence[str]]:
         """
-        Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
+        Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
         """
         return pulumi.get(self, "dest_fqdns")
 
@@ -16009,7 +16027,7 @@ class NetworkFirewallPolicyRuleMatch(dict):
     @pulumi.getter(name="destRegionCodes")
     def dest_region_codes(self) -> Optional[Sequence[str]]:
         """
-        The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is egress.
+        Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
         """
         return pulumi.get(self, "dest_region_codes")
 
@@ -16017,7 +16035,7 @@ class NetworkFirewallPolicyRuleMatch(dict):
     @pulumi.getter(name="destThreatIntelligences")
     def dest_threat_intelligences(self) -> Optional[Sequence[str]]:
         """
-        Name of the Google Cloud Threat Intelligence list.
+        Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
         """
         return pulumi.get(self, "dest_threat_intelligences")
 
@@ -16025,7 +16043,7 @@ class NetworkFirewallPolicyRuleMatch(dict):
     @pulumi.getter(name="srcAddressGroups")
     def src_address_groups(self) -> Optional[Sequence[str]]:
         """
-        Address groups which should be matched against the traffic source. Maximum number of source address groups is 10. Source address groups is only supported in Ingress rules.
+        Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
         """
         return pulumi.get(self, "src_address_groups")
 
@@ -16033,7 +16051,7 @@ class NetworkFirewallPolicyRuleMatch(dict):
     @pulumi.getter(name="srcFqdns")
     def src_fqdns(self) -> Optional[Sequence[str]]:
         """
-        Domain names that will be used to match against the resolved domain name of source of traffic. Can only be specified if DIRECTION is ingress.
+        Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
         """
         return pulumi.get(self, "src_fqdns")
 
@@ -16049,7 +16067,7 @@ class NetworkFirewallPolicyRuleMatch(dict):
     @pulumi.getter(name="srcRegionCodes")
     def src_region_codes(self) -> Optional[Sequence[str]]:
         """
-        The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
+        Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
         """
         return pulumi.get(self, "src_region_codes")
 
@@ -16057,7 +16075,8 @@ class NetworkFirewallPolicyRuleMatch(dict):
     @pulumi.getter(name="srcSecureTags")
     def src_secure_tags(self) -> Optional[Sequence['outputs.NetworkFirewallPolicyRuleMatchSrcSecureTag']]:
         """
-        List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the <code>srcSecureTag</code> are INEFFECTIVE, and there is no <code>srcIpRange</code>, this rule will be ignored. Maximum number of source tag values allowed is 256.
+        List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
+        Structure is documented below.
         """
         return pulumi.get(self, "src_secure_tags")
 
@@ -16065,9 +16084,10 @@ class NetworkFirewallPolicyRuleMatch(dict):
     @pulumi.getter(name="srcThreatIntelligences")
     def src_threat_intelligences(self) -> Optional[Sequence[str]]:
         """
-        Name of the Google Cloud Threat Intelligence list.
+        Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
 
-        The `layer4_configs` block supports:
+
+        <a name="nested_layer4_configs"></a>The `layer4_configs` block supports:
         """
         return pulumi.get(self, "src_threat_intelligences")
 
@@ -16095,8 +16115,10 @@ class NetworkFirewallPolicyRuleMatchLayer4Config(dict):
                  ip_protocol: str,
                  ports: Optional[Sequence[str]] = None):
         """
-        :param str ip_protocol: The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (`tcp`, `udp`, `icmp`, `esp`, `ah`, `ipip`, `sctp`), or the IP protocol number.
-        :param Sequence[str] ports: An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
+        :param str ip_protocol: The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule.
+               This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
+        :param Sequence[str] ports: An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+               Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
         """
         pulumi.set(__self__, "ip_protocol", ip_protocol)
         if ports is not None:
@@ -16106,7 +16128,8 @@ class NetworkFirewallPolicyRuleMatchLayer4Config(dict):
     @pulumi.getter(name="ipProtocol")
     def ip_protocol(self) -> str:
         """
-        The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (`tcp`, `udp`, `icmp`, `esp`, `ah`, `ipip`, `sctp`), or the IP protocol number.
+        The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule.
+        This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
         """
         return pulumi.get(self, "ip_protocol")
 
@@ -16114,7 +16137,8 @@ class NetworkFirewallPolicyRuleMatchLayer4Config(dict):
     @pulumi.getter
     def ports(self) -> Optional[Sequence[str]]:
         """
-        An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
+        An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+        Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
         """
         return pulumi.get(self, "ports")
 
@@ -16122,21 +16146,25 @@ class NetworkFirewallPolicyRuleMatchLayer4Config(dict):
 @pulumi.output_type
 class NetworkFirewallPolicyRuleMatchSrcSecureTag(dict):
     def __init__(__self__, *,
-                 name: str,
+                 name: Optional[str] = None,
                  state: Optional[str] = None):
         """
-        :param str name: Name of the secure tag, created with TagManager's TagValue API. @pattern tagValues/[0-9]+
-        :param str state: [Output Only] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
+        :param str name: Name of the secure tag, created with TagManager's TagValue API.
+        :param str state: (Output)
+               State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
+               
+               - - -
         """
-        pulumi.set(__self__, "name", name)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if state is not None:
             pulumi.set(__self__, "state", state)
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> Optional[str]:
         """
-        Name of the secure tag, created with TagManager's TagValue API. @pattern tagValues/[0-9]+
+        Name of the secure tag, created with TagManager's TagValue API.
         """
         return pulumi.get(self, "name")
 
@@ -16144,7 +16172,10 @@ class NetworkFirewallPolicyRuleMatchSrcSecureTag(dict):
     @pulumi.getter
     def state(self) -> Optional[str]:
         """
-        [Output Only] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
+        (Output)
+        State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
+
+        - - -
         """
         return pulumi.get(self, "state")
 
@@ -16152,21 +16183,23 @@ class NetworkFirewallPolicyRuleMatchSrcSecureTag(dict):
 @pulumi.output_type
 class NetworkFirewallPolicyRuleTargetSecureTag(dict):
     def __init__(__self__, *,
-                 name: str,
+                 name: Optional[str] = None,
                  state: Optional[str] = None):
         """
-        :param str name: Name of the secure tag, created with TagManager's TagValue API. @pattern tagValues/[0-9]+
-        :param str state: [Output Only] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
+        :param str name: Name of the secure tag, created with TagManager's TagValue API.
+        :param str state: (Output)
+               State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
         """
-        pulumi.set(__self__, "name", name)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if state is not None:
             pulumi.set(__self__, "state", state)
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> Optional[str]:
         """
-        Name of the secure tag, created with TagManager's TagValue API. @pattern tagValues/[0-9]+
+        Name of the secure tag, created with TagManager's TagValue API.
         """
         return pulumi.get(self, "name")
 
@@ -16174,7 +16207,8 @@ class NetworkFirewallPolicyRuleTargetSecureTag(dict):
     @pulumi.getter
     def state(self) -> Optional[str]:
         """
-        [Output Only] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
+        (Output)
+        State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
         """
         return pulumi.get(self, "state")
 
@@ -23407,6 +23441,8 @@ class RegionInstanceTemplateDisk(dict):
             suggest = "disk_type"
         elif key == "provisionedIops":
             suggest = "provisioned_iops"
+        elif key == "provisionedThroughput":
+            suggest = "provisioned_throughput"
         elif key == "resourceManagerTags":
             suggest = "resource_manager_tags"
         elif key == "resourcePolicies":
@@ -23443,6 +23479,7 @@ class RegionInstanceTemplateDisk(dict):
                  labels: Optional[Mapping[str, str]] = None,
                  mode: Optional[str] = None,
                  provisioned_iops: Optional[int] = None,
+                 provisioned_throughput: Optional[int] = None,
                  resource_manager_tags: Optional[Mapping[str, str]] = None,
                  resource_policies: Optional[str] = None,
                  source: Optional[str] = None,
@@ -23487,6 +23524,7 @@ class RegionInstanceTemplateDisk(dict):
                sets the number of I/O operations per second that the disk can handle.
                Values must be between 10,000 and 120,000. For more details, see the
                [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+        :param int provisioned_throughput: Indicates how much throughput to provision for the disk, in MB/s. This sets the amount of data that can be read or written from the disk per second. Values must greater than or equal to 1. For more details, see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
         :param Mapping[str, str] resource_manager_tags: A set of key/value resource manager tag pairs to bind to this disk. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
         :param str resource_policies: - A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
         :param str source: The name (**not self_link**)
@@ -23537,6 +23575,8 @@ class RegionInstanceTemplateDisk(dict):
             pulumi.set(__self__, "mode", mode)
         if provisioned_iops is not None:
             pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        if provisioned_throughput is not None:
+            pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
         if resource_manager_tags is not None:
             pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         if resource_policies is not None:
@@ -23665,6 +23705,14 @@ class RegionInstanceTemplateDisk(dict):
         [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
         """
         return pulumi.get(self, "provisioned_iops")
+
+    @property
+    @pulumi.getter(name="provisionedThroughput")
+    def provisioned_throughput(self) -> Optional[int]:
+        """
+        Indicates how much throughput to provision for the disk, in MB/s. This sets the amount of data that can be read or written from the disk per second. Values must greater than or equal to 1. For more details, see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
+        """
+        return pulumi.get(self, "provisioned_throughput")
 
     @property
     @pulumi.getter(name="resourceManagerTags")
@@ -25336,19 +25384,22 @@ class RegionNetworkFirewallPolicyRuleMatch(dict):
                  src_threat_intelligences: Optional[Sequence[str]] = None):
         """
         :param Sequence['RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs'] layer4_configs: Pairs of IP protocols and ports that the rule should match.
-        :param Sequence[str] dest_address_groups: Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
-        :param Sequence[str] dest_fqdns: Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
+               Structure is documented below.
+        :param Sequence[str] dest_address_groups: Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
+        :param Sequence[str] dest_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
         :param Sequence[str] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
-        :param Sequence[str] dest_region_codes: The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is egress.
-        :param Sequence[str] dest_threat_intelligences: Name of the Google Cloud Threat Intelligence list.
-        :param Sequence[str] src_address_groups: Address groups which should be matched against the traffic source. Maximum number of source address groups is 10. Source address groups is only supported in Ingress rules.
-        :param Sequence[str] src_fqdns: Domain names that will be used to match against the resolved domain name of source of traffic. Can only be specified if DIRECTION is ingress.
+        :param Sequence[str] dest_region_codes: Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
+        :param Sequence[str] dest_threat_intelligences: Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
+        :param Sequence[str] src_address_groups: Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
+        :param Sequence[str] src_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
         :param Sequence[str] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
-        :param Sequence[str] src_region_codes: The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
-        :param Sequence['RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgs'] src_secure_tags: List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the <code>srcSecureTag</code> are INEFFECTIVE, and there is no <code>srcIpRange</code>, this rule will be ignored. Maximum number of source tag values allowed is 256.
-        :param Sequence[str] src_threat_intelligences: Name of the Google Cloud Threat Intelligence list.
+        :param Sequence[str] src_region_codes: Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
+        :param Sequence['RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgs'] src_secure_tags: List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
+               Structure is documented below.
+        :param Sequence[str] src_threat_intelligences: Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
                
-               The `layer4_configs` block supports:
+               
+               <a name="nested_layer4_configs"></a>The `layer4_configs` block supports:
         """
         pulumi.set(__self__, "layer4_configs", layer4_configs)
         if dest_address_groups is not None:
@@ -25379,6 +25430,7 @@ class RegionNetworkFirewallPolicyRuleMatch(dict):
     def layer4_configs(self) -> Sequence['outputs.RegionNetworkFirewallPolicyRuleMatchLayer4Config']:
         """
         Pairs of IP protocols and ports that the rule should match.
+        Structure is documented below.
         """
         return pulumi.get(self, "layer4_configs")
 
@@ -25386,7 +25438,7 @@ class RegionNetworkFirewallPolicyRuleMatch(dict):
     @pulumi.getter(name="destAddressGroups")
     def dest_address_groups(self) -> Optional[Sequence[str]]:
         """
-        Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
+        Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
         """
         return pulumi.get(self, "dest_address_groups")
 
@@ -25394,7 +25446,7 @@ class RegionNetworkFirewallPolicyRuleMatch(dict):
     @pulumi.getter(name="destFqdns")
     def dest_fqdns(self) -> Optional[Sequence[str]]:
         """
-        Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
+        Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
         """
         return pulumi.get(self, "dest_fqdns")
 
@@ -25410,7 +25462,7 @@ class RegionNetworkFirewallPolicyRuleMatch(dict):
     @pulumi.getter(name="destRegionCodes")
     def dest_region_codes(self) -> Optional[Sequence[str]]:
         """
-        The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is egress.
+        Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
         """
         return pulumi.get(self, "dest_region_codes")
 
@@ -25418,7 +25470,7 @@ class RegionNetworkFirewallPolicyRuleMatch(dict):
     @pulumi.getter(name="destThreatIntelligences")
     def dest_threat_intelligences(self) -> Optional[Sequence[str]]:
         """
-        Name of the Google Cloud Threat Intelligence list.
+        Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
         """
         return pulumi.get(self, "dest_threat_intelligences")
 
@@ -25426,7 +25478,7 @@ class RegionNetworkFirewallPolicyRuleMatch(dict):
     @pulumi.getter(name="srcAddressGroups")
     def src_address_groups(self) -> Optional[Sequence[str]]:
         """
-        Address groups which should be matched against the traffic source. Maximum number of source address groups is 10. Source address groups is only supported in Ingress rules.
+        Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
         """
         return pulumi.get(self, "src_address_groups")
 
@@ -25434,7 +25486,7 @@ class RegionNetworkFirewallPolicyRuleMatch(dict):
     @pulumi.getter(name="srcFqdns")
     def src_fqdns(self) -> Optional[Sequence[str]]:
         """
-        Domain names that will be used to match against the resolved domain name of source of traffic. Can only be specified if DIRECTION is ingress.
+        Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
         """
         return pulumi.get(self, "src_fqdns")
 
@@ -25450,7 +25502,7 @@ class RegionNetworkFirewallPolicyRuleMatch(dict):
     @pulumi.getter(name="srcRegionCodes")
     def src_region_codes(self) -> Optional[Sequence[str]]:
         """
-        The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
+        Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
         """
         return pulumi.get(self, "src_region_codes")
 
@@ -25458,7 +25510,8 @@ class RegionNetworkFirewallPolicyRuleMatch(dict):
     @pulumi.getter(name="srcSecureTags")
     def src_secure_tags(self) -> Optional[Sequence['outputs.RegionNetworkFirewallPolicyRuleMatchSrcSecureTag']]:
         """
-        List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the <code>srcSecureTag</code> are INEFFECTIVE, and there is no <code>srcIpRange</code>, this rule will be ignored. Maximum number of source tag values allowed is 256.
+        List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
+        Structure is documented below.
         """
         return pulumi.get(self, "src_secure_tags")
 
@@ -25466,9 +25519,10 @@ class RegionNetworkFirewallPolicyRuleMatch(dict):
     @pulumi.getter(name="srcThreatIntelligences")
     def src_threat_intelligences(self) -> Optional[Sequence[str]]:
         """
-        Name of the Google Cloud Threat Intelligence list.
+        Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
 
-        The `layer4_configs` block supports:
+
+        <a name="nested_layer4_configs"></a>The `layer4_configs` block supports:
         """
         return pulumi.get(self, "src_threat_intelligences")
 
@@ -25496,8 +25550,10 @@ class RegionNetworkFirewallPolicyRuleMatchLayer4Config(dict):
                  ip_protocol: str,
                  ports: Optional[Sequence[str]] = None):
         """
-        :param str ip_protocol: The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (`tcp`, `udp`, `icmp`, `esp`, `ah`, `ipip`, `sctp`), or the IP protocol number.
-        :param Sequence[str] ports: An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
+        :param str ip_protocol: The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule.
+               This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
+        :param Sequence[str] ports: An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+               Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
         """
         pulumi.set(__self__, "ip_protocol", ip_protocol)
         if ports is not None:
@@ -25507,7 +25563,8 @@ class RegionNetworkFirewallPolicyRuleMatchLayer4Config(dict):
     @pulumi.getter(name="ipProtocol")
     def ip_protocol(self) -> str:
         """
-        The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (`tcp`, `udp`, `icmp`, `esp`, `ah`, `ipip`, `sctp`), or the IP protocol number.
+        The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule.
+        This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
         """
         return pulumi.get(self, "ip_protocol")
 
@@ -25515,7 +25572,8 @@ class RegionNetworkFirewallPolicyRuleMatchLayer4Config(dict):
     @pulumi.getter
     def ports(self) -> Optional[Sequence[str]]:
         """
-        An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
+        An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+        Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
         """
         return pulumi.get(self, "ports")
 
@@ -25523,21 +25581,25 @@ class RegionNetworkFirewallPolicyRuleMatchLayer4Config(dict):
 @pulumi.output_type
 class RegionNetworkFirewallPolicyRuleMatchSrcSecureTag(dict):
     def __init__(__self__, *,
-                 name: str,
+                 name: Optional[str] = None,
                  state: Optional[str] = None):
         """
-        :param str name: Name of the secure tag, created with TagManager's TagValue API. @pattern tagValues/[0-9]+
-        :param str state: [Output Only] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
+        :param str name: Name of the secure tag, created with TagManager's TagValue API.
+        :param str state: (Output)
+               State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
+               
+               - - -
         """
-        pulumi.set(__self__, "name", name)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if state is not None:
             pulumi.set(__self__, "state", state)
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> Optional[str]:
         """
-        Name of the secure tag, created with TagManager's TagValue API. @pattern tagValues/[0-9]+
+        Name of the secure tag, created with TagManager's TagValue API.
         """
         return pulumi.get(self, "name")
 
@@ -25545,7 +25607,10 @@ class RegionNetworkFirewallPolicyRuleMatchSrcSecureTag(dict):
     @pulumi.getter
     def state(self) -> Optional[str]:
         """
-        [Output Only] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
+        (Output)
+        State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
+
+        - - -
         """
         return pulumi.get(self, "state")
 
@@ -25553,21 +25618,23 @@ class RegionNetworkFirewallPolicyRuleMatchSrcSecureTag(dict):
 @pulumi.output_type
 class RegionNetworkFirewallPolicyRuleTargetSecureTag(dict):
     def __init__(__self__, *,
-                 name: str,
+                 name: Optional[str] = None,
                  state: Optional[str] = None):
         """
-        :param str name: Name of the secure tag, created with TagManager's TagValue API. @pattern tagValues/[0-9]+
-        :param str state: [Output Only] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
+        :param str name: Name of the secure tag, created with TagManager's TagValue API.
+        :param str state: (Output)
+               State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
         """
-        pulumi.set(__self__, "name", name)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if state is not None:
             pulumi.set(__self__, "state", state)
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> Optional[str]:
         """
-        Name of the secure tag, created with TagManager's TagValue API. @pattern tagValues/[0-9]+
+        Name of the secure tag, created with TagManager's TagValue API.
         """
         return pulumi.get(self, "name")
 
@@ -25575,7 +25642,8 @@ class RegionNetworkFirewallPolicyRuleTargetSecureTag(dict):
     @pulumi.getter
     def state(self) -> Optional[str]:
         """
-        [Output Only] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
+        (Output)
+        State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
         """
         return pulumi.get(self, "state")
 
@@ -50025,7 +50093,7 @@ class GetInstanceAttachedDiskResult(dict):
                (<https://cloud.google.com/compute/docs/disks/customer-supplied-encryption>) that protects this resource.
         :param str kms_key_self_link: The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
         :param str mode: Read/write mode for the disk. One of `"READ_ONLY"` or `"READ_WRITE"`.
-        :param str source: The name or self_link of the disk attached to this instance.
+        :param str source: The self_link of the disk attached to this instance.
         """
         pulumi.set(__self__, "device_name", device_name)
         pulumi.set(__self__, "disk_encryption_key_raw", disk_encryption_key_raw)
@@ -50081,7 +50149,7 @@ class GetInstanceAttachedDiskResult(dict):
     @pulumi.getter
     def source(self) -> str:
         """
-        The name or self_link of the disk attached to this instance.
+        The self_link of the disk attached to this instance.
         """
         return pulumi.get(self, "source")
 
@@ -50111,7 +50179,7 @@ class GetInstanceBootDiskResult(dict):
         :param str interface: The disk interface used for attaching this disk. One of `SCSI` or `NVME`.
         :param str kms_key_self_link: The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link and disk_encryption_key_raw may be set.
         :param str mode: Read/write mode for the disk. One of `"READ_ONLY"` or `"READ_WRITE"`.
-        :param str source: The name or self_link of the disk attached to this instance.
+        :param str source: The self_link of the disk attached to this instance.
         """
         pulumi.set(__self__, "auto_delete", auto_delete)
         pulumi.set(__self__, "device_name", device_name)
@@ -50195,7 +50263,7 @@ class GetInstanceBootDiskResult(dict):
     @pulumi.getter
     def source(self) -> str:
         """
-        The name or self_link of the disk attached to this instance.
+        The self_link of the disk attached to this instance.
         """
         return pulumi.get(self, "source")
 
@@ -51877,6 +51945,7 @@ class GetInstanceTemplateDiskResult(dict):
                  labels: Mapping[str, str],
                  mode: str,
                  provisioned_iops: int,
+                 provisioned_throughput: int,
                  resource_manager_tags: Mapping[str, str],
                  resource_policies: Sequence[str],
                  source: str,
@@ -51913,6 +51982,7 @@ class GetInstanceTemplateDiskResult(dict):
                sets the number of I/O operations per second that the disk can handle.
                Values must be between 10,000 and 120,000. For more details, see the
                [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+        :param int provisioned_throughput: Indicates how much throughput to provision for the disk, in MB/s. This sets the amount of data that can be read or written from the disk per second. Values must greater than or equal to 1. For more details, see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
         :param Mapping[str, str] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         :param Sequence[str] resource_policies: (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
         :param str source: The name (**not self_link**)
@@ -51951,6 +52021,7 @@ class GetInstanceTemplateDiskResult(dict):
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "mode", mode)
         pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
         pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         pulumi.set(__self__, "resource_policies", resource_policies)
         pulumi.set(__self__, "source", source)
@@ -52063,6 +52134,14 @@ class GetInstanceTemplateDiskResult(dict):
         [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
         """
         return pulumi.get(self, "provisioned_iops")
+
+    @property
+    @pulumi.getter(name="provisionedThroughput")
+    def provisioned_throughput(self) -> int:
+        """
+        Indicates how much throughput to provision for the disk, in MB/s. This sets the amount of data that can be read or written from the disk per second. Values must greater than or equal to 1. For more details, see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
+        """
+        return pulumi.get(self, "provisioned_throughput")
 
     @property
     @pulumi.getter(name="resourceManagerTags")
@@ -54133,6 +54212,7 @@ class GetRegionInstanceTemplateDiskResult(dict):
                  labels: Mapping[str, str],
                  mode: str,
                  provisioned_iops: int,
+                 provisioned_throughput: int,
                  resource_manager_tags: Mapping[str, str],
                  resource_policies: Sequence[str],
                  source: str,
@@ -54169,6 +54249,7 @@ class GetRegionInstanceTemplateDiskResult(dict):
                sets the number of I/O operations per second that the disk can handle.
                Values must be between 10,000 and 120,000. For more details, see the
                [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+        :param int provisioned_throughput: Indicates how much throughput to provision for the disk, in MB/s. This sets the amount of data that can be read or written from the disk per second. Values must greater than or equal to 1. For more details, see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
         :param Mapping[str, str] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         :param Sequence[str] resource_policies: (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
         :param str source: The name (**not self_link**)
@@ -54207,6 +54288,7 @@ class GetRegionInstanceTemplateDiskResult(dict):
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "mode", mode)
         pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
         pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         pulumi.set(__self__, "resource_policies", resource_policies)
         pulumi.set(__self__, "source", source)
@@ -54319,6 +54401,14 @@ class GetRegionInstanceTemplateDiskResult(dict):
         [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
         """
         return pulumi.get(self, "provisioned_iops")
+
+    @property
+    @pulumi.getter(name="provisionedThroughput")
+    def provisioned_throughput(self) -> int:
+        """
+        Indicates how much throughput to provision for the disk, in MB/s. This sets the amount of data that can be read or written from the disk per second. Values must greater than or equal to 1. For more details, see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
+        """
+        return pulumi.get(self, "provisioned_throughput")
 
     @property
     @pulumi.getter(name="resourceManagerTags")

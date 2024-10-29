@@ -54,7 +54,7 @@ class ProjectArgs:
                this forces the project to be migrated to the newly specified
                organization.
         :param pulumi.Input[str] project_id: The project ID. Changing this forces a new project to be created.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when mutated.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the `tags.TagValue` resource.
         """
         if auto_create_network is not None:
             pulumi.set(__self__, "auto_create_network", auto_create_network)
@@ -189,7 +189,7 @@ class ProjectArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when mutated.
+        A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the `tags.TagValue` resource.
         """
         return pulumi.get(self, "tags")
 
@@ -242,7 +242,7 @@ class _ProjectState:
                organization.
         :param pulumi.Input[str] project_id: The project ID. Changing this forces a new project to be created.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when mutated.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the `tags.TagValue` resource.
         """
         if auto_create_network is not None:
             pulumi.set(__self__, "auto_create_network", auto_create_network)
@@ -419,7 +419,7 @@ class _ProjectState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when mutated.
+        A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the `tags.TagValue` resource.
         """
         return pulumi.get(self, "tags")
 
@@ -546,7 +546,7 @@ class Project(pulumi.CustomResource):
                this forces the project to be migrated to the newly specified
                organization.
         :param pulumi.Input[str] project_id: The project ID. Changing this forces a new project to be created.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when mutated.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the `tags.TagValue` resource.
         """
         ...
     @overload
@@ -734,7 +734,7 @@ class Project(pulumi.CustomResource):
                organization.
         :param pulumi.Input[str] project_id: The project ID. Changing this forces a new project to be created.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when mutated.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the `tags.TagValue` resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -860,7 +860,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when mutated.
+        A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the `tags.TagValue` resource.
         """
         return pulumi.get(self, "tags")
 

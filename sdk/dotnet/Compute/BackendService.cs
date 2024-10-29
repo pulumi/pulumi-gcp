@@ -464,6 +464,25 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Backend Service Ip Address Selection Policy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.BackendService("default", new()
+    ///     {
+    ///         Name = "backend-service",
+    ///         LoadBalancingScheme = "EXTERNAL_MANAGED",
+    ///         IpAddressSelectionPolicy = "IPV6_ONLY",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -620,6 +639,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("iap")]
         public Output<Outputs.BackendServiceIap> Iap { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
+        /// Possible values are: `IPV4_ONLY`, `PREFER_IPV6`, `IPV6_ONLY`.
+        /// </summary>
+        [Output("ipAddressSelectionPolicy")]
+        public Output<string?> IpAddressSelectionPolicy { get; private set; } = null!;
 
         /// <summary>
         /// Indicates whether the backend service will be used with internal or
@@ -981,6 +1007,13 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.BackendServiceIapArgs>? Iap { get; set; }
 
         /// <summary>
+        /// Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
+        /// Possible values are: `IPV4_ONLY`, `PREFER_IPV6`, `IPV6_ONLY`.
+        /// </summary>
+        [Input("ipAddressSelectionPolicy")]
+        public Input<string>? IpAddressSelectionPolicy { get; set; }
+
+        /// <summary>
         /// Indicates whether the backend service will be used with internal or
         /// external load balancing. A backend service created for one type of
         /// load balancing cannot be used with the other. For more information, refer to
@@ -1319,6 +1352,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("iap")]
         public Input<Inputs.BackendServiceIapGetArgs>? Iap { get; set; }
+
+        /// <summary>
+        /// Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
+        /// Possible values are: `IPV4_ONLY`, `PREFER_IPV6`, `IPV6_ONLY`.
+        /// </summary>
+        [Input("ipAddressSelectionPolicy")]
+        public Input<string>? IpAddressSelectionPolicy { get; set; }
 
         /// <summary>
         /// Indicates whether the backend service will be used with internal or

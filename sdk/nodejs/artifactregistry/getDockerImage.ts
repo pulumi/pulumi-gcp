@@ -9,6 +9,29 @@ import * as utilities from "../utilities";
  *
  * > **Note**
  * Requires one of the following OAuth scopes: `https://www.googleapis.com/auth/cloud-platform` or `https://www.googleapis.com/auth/cloud-platform.read-only`.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myRepo = new gcp.artifactregistry.Repository("my_repo", {
+ *     location: "us-west1",
+ *     repositoryId: "my-repository",
+ *     format: "DOCKER",
+ * });
+ * const myImage = gcp.artifactregistry.getDockerImageOutput({
+ *     location: myRepo.location,
+ *     repositoryId: myRepo.repositoryId,
+ *     imageName: "my-image:my-tag",
+ * });
+ * const _default = new gcp.cloudrunv2.Service("default", {template: {
+ *     containers: [{
+ *         image: myImage.apply(myImage => myImage.selfLink),
+ *     }],
+ * }});
+ * ```
  */
 export function getDockerImage(args: GetDockerImageArgs, opts?: pulumi.InvokeOptions): Promise<GetDockerImageResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -98,6 +121,29 @@ export interface GetDockerImageResult {
  *
  * > **Note**
  * Requires one of the following OAuth scopes: `https://www.googleapis.com/auth/cloud-platform` or `https://www.googleapis.com/auth/cloud-platform.read-only`.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myRepo = new gcp.artifactregistry.Repository("my_repo", {
+ *     location: "us-west1",
+ *     repositoryId: "my-repository",
+ *     format: "DOCKER",
+ * });
+ * const myImage = gcp.artifactregistry.getDockerImageOutput({
+ *     location: myRepo.location,
+ *     repositoryId: myRepo.repositoryId,
+ *     imageName: "my-image:my-tag",
+ * });
+ * const _default = new gcp.cloudrunv2.Service("default", {template: {
+ *     containers: [{
+ *         image: myImage.apply(myImage => myImage.selfLink),
+ *     }],
+ * }});
+ * ```
  */
 export function getDockerImageOutput(args: GetDockerImageOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDockerImageResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -27,7 +27,7 @@ class GetBucketResult:
     """
     A collection of values returned by getBucket.
     """
-    def __init__(__self__, autoclasses=None, cors=None, custom_placement_configs=None, default_event_based_hold=None, effective_labels=None, enable_object_retention=None, encryptions=None, force_destroy=None, id=None, labels=None, lifecycle_rules=None, location=None, loggings=None, name=None, project=None, project_number=None, public_access_prevention=None, pulumi_labels=None, requester_pays=None, retention_policies=None, rpo=None, self_link=None, soft_delete_policies=None, storage_class=None, uniform_bucket_level_access=None, url=None, versionings=None, websites=None):
+    def __init__(__self__, autoclasses=None, cors=None, custom_placement_configs=None, default_event_based_hold=None, effective_labels=None, enable_object_retention=None, encryptions=None, force_destroy=None, hierarchical_namespaces=None, id=None, labels=None, lifecycle_rules=None, location=None, loggings=None, name=None, project=None, project_number=None, public_access_prevention=None, pulumi_labels=None, requester_pays=None, retention_policies=None, rpo=None, self_link=None, soft_delete_policies=None, storage_class=None, uniform_bucket_level_access=None, url=None, versionings=None, websites=None):
         if autoclasses and not isinstance(autoclasses, list):
             raise TypeError("Expected argument 'autoclasses' to be a list")
         pulumi.set(__self__, "autoclasses", autoclasses)
@@ -52,6 +52,9 @@ class GetBucketResult:
         if force_destroy and not isinstance(force_destroy, bool):
             raise TypeError("Expected argument 'force_destroy' to be a bool")
         pulumi.set(__self__, "force_destroy", force_destroy)
+        if hierarchical_namespaces and not isinstance(hierarchical_namespaces, list):
+            raise TypeError("Expected argument 'hierarchical_namespaces' to be a list")
+        pulumi.set(__self__, "hierarchical_namespaces", hierarchical_namespaces)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -152,6 +155,11 @@ class GetBucketResult:
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> bool:
         return pulumi.get(self, "force_destroy")
+
+    @property
+    @pulumi.getter(name="hierarchicalNamespaces")
+    def hierarchical_namespaces(self) -> Sequence['outputs.GetBucketHierarchicalNamespaceResult']:
+        return pulumi.get(self, "hierarchical_namespaces")
 
     @property
     @pulumi.getter
@@ -271,6 +279,7 @@ class AwaitableGetBucketResult(GetBucketResult):
             enable_object_retention=self.enable_object_retention,
             encryptions=self.encryptions,
             force_destroy=self.force_destroy,
+            hierarchical_namespaces=self.hierarchical_namespaces,
             id=self.id,
             labels=self.labels,
             lifecycle_rules=self.lifecycle_rules,
@@ -330,6 +339,7 @@ def get_bucket(name: Optional[str] = None,
         enable_object_retention=pulumi.get(__ret__, 'enable_object_retention'),
         encryptions=pulumi.get(__ret__, 'encryptions'),
         force_destroy=pulumi.get(__ret__, 'force_destroy'),
+        hierarchical_namespaces=pulumi.get(__ret__, 'hierarchical_namespaces'),
         id=pulumi.get(__ret__, 'id'),
         labels=pulumi.get(__ret__, 'labels'),
         lifecycle_rules=pulumi.get(__ret__, 'lifecycle_rules'),
@@ -386,6 +396,7 @@ def get_bucket_output(name: Optional[pulumi.Input[str]] = None,
         enable_object_retention=pulumi.get(__response__, 'enable_object_retention'),
         encryptions=pulumi.get(__response__, 'encryptions'),
         force_destroy=pulumi.get(__response__, 'force_destroy'),
+        hierarchical_namespaces=pulumi.get(__response__, 'hierarchical_namespaces'),
         id=pulumi.get(__response__, 'id'),
         labels=pulumi.get(__response__, 'labels'),
         lifecycle_rules=pulumi.get(__response__, 'lifecycle_rules'),

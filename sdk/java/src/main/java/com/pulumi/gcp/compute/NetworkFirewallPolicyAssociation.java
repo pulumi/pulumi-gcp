@@ -16,9 +16,14 @@ import javax.annotation.Nullable;
 /**
  * The Compute NetworkFirewallPolicyAssociation resource
  * 
+ * To get more information about NetworkFirewallPolicyAssociation, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/networkFirewallPolicies/addAssociation)
+ * 
  * ## Example Usage
  * 
- * ### Global
+ * ### Network Firewall Policy Association
+ * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
@@ -46,21 +51,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var networkFirewallPolicy = new NetworkFirewallPolicy("networkFirewallPolicy", NetworkFirewallPolicyArgs.builder()
- *             .name("policy")
+ *         var policy = new NetworkFirewallPolicy("policy", NetworkFirewallPolicyArgs.builder()
+ *             .name("my-policy")
  *             .project("my-project-name")
  *             .description("Sample global network firewall policy")
  *             .build());
  * 
  *         var network = new Network("network", NetworkArgs.builder()
- *             .name("network")
+ *             .name("my-network")
+ *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var primary = new NetworkFirewallPolicyAssociation("primary", NetworkFirewallPolicyAssociationArgs.builder()
- *             .name("association")
- *             .attachmentTarget(network.id())
- *             .firewallPolicy(networkFirewallPolicy.name())
+ *         var default_ = new NetworkFirewallPolicyAssociation("default", NetworkFirewallPolicyAssociationArgs.builder()
+ *             .name("my-association")
  *             .project("my-project-name")
+ *             .attachmentTarget(network.id())
+ *             .firewallPolicy(policy.id())
  *             .build());
  * 
  *     }
@@ -77,6 +83,8 @@ import javax.annotation.Nullable;
  * 
  * * `{{project}}/{{firewall_policy}}/{{name}}`
  * 
+ * * `{{firewall_policy}}/{{name}}`
+ * 
  * When using the `pulumi import` command, NetworkFirewallPolicyAssociation can be imported using one of the formats above. For example:
  * 
  * ```sh
@@ -85,6 +93,10 @@ import javax.annotation.Nullable;
  * 
  * ```sh
  * $ pulumi import gcp:compute/networkFirewallPolicyAssociation:NetworkFirewallPolicyAssociation default {{project}}/{{firewall_policy}}/{{name}}
+ * ```
+ * 
+ * ```sh
+ * $ pulumi import gcp:compute/networkFirewallPolicyAssociation:NetworkFirewallPolicyAssociation default {{firewall_policy}}/{{name}}
  * ```
  * 
  */
@@ -105,14 +117,18 @@ public class NetworkFirewallPolicyAssociation extends com.pulumi.resources.Custo
         return this.attachmentTarget;
     }
     /**
-     * The firewall policy ID of the association.
+     * The firewall policy of the resource.
+     * 
+     * ***
      * 
      */
     @Export(name="firewallPolicy", refs={String.class}, tree="[0]")
     private Output<String> firewallPolicy;
 
     /**
-     * @return The firewall policy ID of the association.
+     * @return The firewall policy of the resource.
+     * 
+     * ***
      * 
      */
     public Output<String> firewallPolicy() {
@@ -121,8 +137,6 @@ public class NetworkFirewallPolicyAssociation extends com.pulumi.resources.Custo
     /**
      * The name for an association.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -130,21 +144,21 @@ public class NetworkFirewallPolicyAssociation extends com.pulumi.resources.Custo
     /**
      * @return The name for an association.
      * 
-     * ***
-     * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return The project for the resource
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     public Output<String> project() {

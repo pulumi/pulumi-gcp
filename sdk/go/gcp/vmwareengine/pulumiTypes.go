@@ -13,6 +13,894 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type ClusterAutoscalingSettings struct {
+	// The map with autoscaling policies applied to the cluster.
+	// The key is the identifier of the policy.
+	// It must meet the following requirements:
+	// * Only contains 1-63 alphanumeric characters and hyphens
+	// * Begins with an alphabetical character
+	// * Ends with a non-hyphen character
+	// * Not formatted as a UUID
+	// * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+	//   Currently the map must contain only one element
+	//   that describes the autoscaling policy for compute nodes.
+	//   Structure is documented below.
+	AutoscalingPolicies []ClusterAutoscalingSettingsAutoscalingPolicy `pulumi:"autoscalingPolicies"`
+	// The minimum duration between consecutive autoscale operations.
+	// It starts once addition or removal of nodes is fully completed.
+	// Minimum cool down period is 30m.
+	// Cool down period must be in whole minutes (for example, 30m, 31m, 50m).
+	// Mandatory for successful addition of autoscaling settings in cluster.
+	CoolDownPeriod *string `pulumi:"coolDownPeriod"`
+	// Maximum number of nodes of any type in a cluster.
+	// Mandatory for successful addition of autoscaling settings in cluster.
+	MaxClusterNodeCount *int `pulumi:"maxClusterNodeCount"`
+	// Minimum number of nodes of any type in a cluster.
+	// Mandatory for successful addition of autoscaling settings in cluster.
+	MinClusterNodeCount *int `pulumi:"minClusterNodeCount"`
+}
+
+// ClusterAutoscalingSettingsInput is an input type that accepts ClusterAutoscalingSettingsArgs and ClusterAutoscalingSettingsOutput values.
+// You can construct a concrete instance of `ClusterAutoscalingSettingsInput` via:
+//
+//	ClusterAutoscalingSettingsArgs{...}
+type ClusterAutoscalingSettingsInput interface {
+	pulumi.Input
+
+	ToClusterAutoscalingSettingsOutput() ClusterAutoscalingSettingsOutput
+	ToClusterAutoscalingSettingsOutputWithContext(context.Context) ClusterAutoscalingSettingsOutput
+}
+
+type ClusterAutoscalingSettingsArgs struct {
+	// The map with autoscaling policies applied to the cluster.
+	// The key is the identifier of the policy.
+	// It must meet the following requirements:
+	// * Only contains 1-63 alphanumeric characters and hyphens
+	// * Begins with an alphabetical character
+	// * Ends with a non-hyphen character
+	// * Not formatted as a UUID
+	// * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+	//   Currently the map must contain only one element
+	//   that describes the autoscaling policy for compute nodes.
+	//   Structure is documented below.
+	AutoscalingPolicies ClusterAutoscalingSettingsAutoscalingPolicyArrayInput `pulumi:"autoscalingPolicies"`
+	// The minimum duration between consecutive autoscale operations.
+	// It starts once addition or removal of nodes is fully completed.
+	// Minimum cool down period is 30m.
+	// Cool down period must be in whole minutes (for example, 30m, 31m, 50m).
+	// Mandatory for successful addition of autoscaling settings in cluster.
+	CoolDownPeriod pulumi.StringPtrInput `pulumi:"coolDownPeriod"`
+	// Maximum number of nodes of any type in a cluster.
+	// Mandatory for successful addition of autoscaling settings in cluster.
+	MaxClusterNodeCount pulumi.IntPtrInput `pulumi:"maxClusterNodeCount"`
+	// Minimum number of nodes of any type in a cluster.
+	// Mandatory for successful addition of autoscaling settings in cluster.
+	MinClusterNodeCount pulumi.IntPtrInput `pulumi:"minClusterNodeCount"`
+}
+
+func (ClusterAutoscalingSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAutoscalingSettings)(nil)).Elem()
+}
+
+func (i ClusterAutoscalingSettingsArgs) ToClusterAutoscalingSettingsOutput() ClusterAutoscalingSettingsOutput {
+	return i.ToClusterAutoscalingSettingsOutputWithContext(context.Background())
+}
+
+func (i ClusterAutoscalingSettingsArgs) ToClusterAutoscalingSettingsOutputWithContext(ctx context.Context) ClusterAutoscalingSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAutoscalingSettingsOutput)
+}
+
+func (i ClusterAutoscalingSettingsArgs) ToClusterAutoscalingSettingsPtrOutput() ClusterAutoscalingSettingsPtrOutput {
+	return i.ToClusterAutoscalingSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterAutoscalingSettingsArgs) ToClusterAutoscalingSettingsPtrOutputWithContext(ctx context.Context) ClusterAutoscalingSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAutoscalingSettingsOutput).ToClusterAutoscalingSettingsPtrOutputWithContext(ctx)
+}
+
+// ClusterAutoscalingSettingsPtrInput is an input type that accepts ClusterAutoscalingSettingsArgs, ClusterAutoscalingSettingsPtr and ClusterAutoscalingSettingsPtrOutput values.
+// You can construct a concrete instance of `ClusterAutoscalingSettingsPtrInput` via:
+//
+//	        ClusterAutoscalingSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterAutoscalingSettingsPtrInput interface {
+	pulumi.Input
+
+	ToClusterAutoscalingSettingsPtrOutput() ClusterAutoscalingSettingsPtrOutput
+	ToClusterAutoscalingSettingsPtrOutputWithContext(context.Context) ClusterAutoscalingSettingsPtrOutput
+}
+
+type clusterAutoscalingSettingsPtrType ClusterAutoscalingSettingsArgs
+
+func ClusterAutoscalingSettingsPtr(v *ClusterAutoscalingSettingsArgs) ClusterAutoscalingSettingsPtrInput {
+	return (*clusterAutoscalingSettingsPtrType)(v)
+}
+
+func (*clusterAutoscalingSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAutoscalingSettings)(nil)).Elem()
+}
+
+func (i *clusterAutoscalingSettingsPtrType) ToClusterAutoscalingSettingsPtrOutput() ClusterAutoscalingSettingsPtrOutput {
+	return i.ToClusterAutoscalingSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterAutoscalingSettingsPtrType) ToClusterAutoscalingSettingsPtrOutputWithContext(ctx context.Context) ClusterAutoscalingSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAutoscalingSettingsPtrOutput)
+}
+
+type ClusterAutoscalingSettingsOutput struct{ *pulumi.OutputState }
+
+func (ClusterAutoscalingSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAutoscalingSettings)(nil)).Elem()
+}
+
+func (o ClusterAutoscalingSettingsOutput) ToClusterAutoscalingSettingsOutput() ClusterAutoscalingSettingsOutput {
+	return o
+}
+
+func (o ClusterAutoscalingSettingsOutput) ToClusterAutoscalingSettingsOutputWithContext(ctx context.Context) ClusterAutoscalingSettingsOutput {
+	return o
+}
+
+func (o ClusterAutoscalingSettingsOutput) ToClusterAutoscalingSettingsPtrOutput() ClusterAutoscalingSettingsPtrOutput {
+	return o.ToClusterAutoscalingSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterAutoscalingSettingsOutput) ToClusterAutoscalingSettingsPtrOutputWithContext(ctx context.Context) ClusterAutoscalingSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterAutoscalingSettings) *ClusterAutoscalingSettings {
+		return &v
+	}).(ClusterAutoscalingSettingsPtrOutput)
+}
+
+// The map with autoscaling policies applied to the cluster.
+// The key is the identifier of the policy.
+// It must meet the following requirements:
+//   - Only contains 1-63 alphanumeric characters and hyphens
+//   - Begins with an alphabetical character
+//   - Ends with a non-hyphen character
+//   - Not formatted as a UUID
+//   - Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+//     Currently the map must contain only one element
+//     that describes the autoscaling policy for compute nodes.
+//     Structure is documented below.
+func (o ClusterAutoscalingSettingsOutput) AutoscalingPolicies() ClusterAutoscalingSettingsAutoscalingPolicyArrayOutput {
+	return o.ApplyT(func(v ClusterAutoscalingSettings) []ClusterAutoscalingSettingsAutoscalingPolicy {
+		return v.AutoscalingPolicies
+	}).(ClusterAutoscalingSettingsAutoscalingPolicyArrayOutput)
+}
+
+// The minimum duration between consecutive autoscale operations.
+// It starts once addition or removal of nodes is fully completed.
+// Minimum cool down period is 30m.
+// Cool down period must be in whole minutes (for example, 30m, 31m, 50m).
+// Mandatory for successful addition of autoscaling settings in cluster.
+func (o ClusterAutoscalingSettingsOutput) CoolDownPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterAutoscalingSettings) *string { return v.CoolDownPeriod }).(pulumi.StringPtrOutput)
+}
+
+// Maximum number of nodes of any type in a cluster.
+// Mandatory for successful addition of autoscaling settings in cluster.
+func (o ClusterAutoscalingSettingsOutput) MaxClusterNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterAutoscalingSettings) *int { return v.MaxClusterNodeCount }).(pulumi.IntPtrOutput)
+}
+
+// Minimum number of nodes of any type in a cluster.
+// Mandatory for successful addition of autoscaling settings in cluster.
+func (o ClusterAutoscalingSettingsOutput) MinClusterNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterAutoscalingSettings) *int { return v.MinClusterNodeCount }).(pulumi.IntPtrOutput)
+}
+
+type ClusterAutoscalingSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterAutoscalingSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAutoscalingSettings)(nil)).Elem()
+}
+
+func (o ClusterAutoscalingSettingsPtrOutput) ToClusterAutoscalingSettingsPtrOutput() ClusterAutoscalingSettingsPtrOutput {
+	return o
+}
+
+func (o ClusterAutoscalingSettingsPtrOutput) ToClusterAutoscalingSettingsPtrOutputWithContext(ctx context.Context) ClusterAutoscalingSettingsPtrOutput {
+	return o
+}
+
+func (o ClusterAutoscalingSettingsPtrOutput) Elem() ClusterAutoscalingSettingsOutput {
+	return o.ApplyT(func(v *ClusterAutoscalingSettings) ClusterAutoscalingSettings {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterAutoscalingSettings
+		return ret
+	}).(ClusterAutoscalingSettingsOutput)
+}
+
+// The map with autoscaling policies applied to the cluster.
+// The key is the identifier of the policy.
+// It must meet the following requirements:
+//   - Only contains 1-63 alphanumeric characters and hyphens
+//   - Begins with an alphabetical character
+//   - Ends with a non-hyphen character
+//   - Not formatted as a UUID
+//   - Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+//     Currently the map must contain only one element
+//     that describes the autoscaling policy for compute nodes.
+//     Structure is documented below.
+func (o ClusterAutoscalingSettingsPtrOutput) AutoscalingPolicies() ClusterAutoscalingSettingsAutoscalingPolicyArrayOutput {
+	return o.ApplyT(func(v *ClusterAutoscalingSettings) []ClusterAutoscalingSettingsAutoscalingPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.AutoscalingPolicies
+	}).(ClusterAutoscalingSettingsAutoscalingPolicyArrayOutput)
+}
+
+// The minimum duration between consecutive autoscale operations.
+// It starts once addition or removal of nodes is fully completed.
+// Minimum cool down period is 30m.
+// Cool down period must be in whole minutes (for example, 30m, 31m, 50m).
+// Mandatory for successful addition of autoscaling settings in cluster.
+func (o ClusterAutoscalingSettingsPtrOutput) CoolDownPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterAutoscalingSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CoolDownPeriod
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maximum number of nodes of any type in a cluster.
+// Mandatory for successful addition of autoscaling settings in cluster.
+func (o ClusterAutoscalingSettingsPtrOutput) MaxClusterNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterAutoscalingSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxClusterNodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minimum number of nodes of any type in a cluster.
+// Mandatory for successful addition of autoscaling settings in cluster.
+func (o ClusterAutoscalingSettingsPtrOutput) MinClusterNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterAutoscalingSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinClusterNodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+type ClusterAutoscalingSettingsAutoscalingPolicy struct {
+	// The identifier for this object. Format specified above.
+	AutoscalePolicyId string `pulumi:"autoscalePolicyId"`
+	// Utilization thresholds pertaining to amount of consumed memory.
+	// Structure is documented below.
+	ConsumedMemoryThresholds *ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholds `pulumi:"consumedMemoryThresholds"`
+	// Utilization thresholds pertaining to CPU utilization.
+	// Structure is documented below.
+	CpuThresholds *ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds `pulumi:"cpuThresholds"`
+	// The canonical identifier of the node type to add or remove.
+	NodeTypeId string `pulumi:"nodeTypeId"`
+	// Number of nodes to add to a cluster during a scale-out operation.
+	// Must be divisible by 2 for stretched clusters.
+	ScaleOutSize int `pulumi:"scaleOutSize"`
+	// Utilization thresholds pertaining to amount of consumed storage.
+	// Structure is documented below.
+	StorageThresholds *ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds `pulumi:"storageThresholds"`
+}
+
+// ClusterAutoscalingSettingsAutoscalingPolicyInput is an input type that accepts ClusterAutoscalingSettingsAutoscalingPolicyArgs and ClusterAutoscalingSettingsAutoscalingPolicyOutput values.
+// You can construct a concrete instance of `ClusterAutoscalingSettingsAutoscalingPolicyInput` via:
+//
+//	ClusterAutoscalingSettingsAutoscalingPolicyArgs{...}
+type ClusterAutoscalingSettingsAutoscalingPolicyInput interface {
+	pulumi.Input
+
+	ToClusterAutoscalingSettingsAutoscalingPolicyOutput() ClusterAutoscalingSettingsAutoscalingPolicyOutput
+	ToClusterAutoscalingSettingsAutoscalingPolicyOutputWithContext(context.Context) ClusterAutoscalingSettingsAutoscalingPolicyOutput
+}
+
+type ClusterAutoscalingSettingsAutoscalingPolicyArgs struct {
+	// The identifier for this object. Format specified above.
+	AutoscalePolicyId pulumi.StringInput `pulumi:"autoscalePolicyId"`
+	// Utilization thresholds pertaining to amount of consumed memory.
+	// Structure is documented below.
+	ConsumedMemoryThresholds ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrInput `pulumi:"consumedMemoryThresholds"`
+	// Utilization thresholds pertaining to CPU utilization.
+	// Structure is documented below.
+	CpuThresholds ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrInput `pulumi:"cpuThresholds"`
+	// The canonical identifier of the node type to add or remove.
+	NodeTypeId pulumi.StringInput `pulumi:"nodeTypeId"`
+	// Number of nodes to add to a cluster during a scale-out operation.
+	// Must be divisible by 2 for stretched clusters.
+	ScaleOutSize pulumi.IntInput `pulumi:"scaleOutSize"`
+	// Utilization thresholds pertaining to amount of consumed storage.
+	// Structure is documented below.
+	StorageThresholds ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrInput `pulumi:"storageThresholds"`
+}
+
+func (ClusterAutoscalingSettingsAutoscalingPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAutoscalingSettingsAutoscalingPolicy)(nil)).Elem()
+}
+
+func (i ClusterAutoscalingSettingsAutoscalingPolicyArgs) ToClusterAutoscalingSettingsAutoscalingPolicyOutput() ClusterAutoscalingSettingsAutoscalingPolicyOutput {
+	return i.ToClusterAutoscalingSettingsAutoscalingPolicyOutputWithContext(context.Background())
+}
+
+func (i ClusterAutoscalingSettingsAutoscalingPolicyArgs) ToClusterAutoscalingSettingsAutoscalingPolicyOutputWithContext(ctx context.Context) ClusterAutoscalingSettingsAutoscalingPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAutoscalingSettingsAutoscalingPolicyOutput)
+}
+
+// ClusterAutoscalingSettingsAutoscalingPolicyArrayInput is an input type that accepts ClusterAutoscalingSettingsAutoscalingPolicyArray and ClusterAutoscalingSettingsAutoscalingPolicyArrayOutput values.
+// You can construct a concrete instance of `ClusterAutoscalingSettingsAutoscalingPolicyArrayInput` via:
+//
+//	ClusterAutoscalingSettingsAutoscalingPolicyArray{ ClusterAutoscalingSettingsAutoscalingPolicyArgs{...} }
+type ClusterAutoscalingSettingsAutoscalingPolicyArrayInput interface {
+	pulumi.Input
+
+	ToClusterAutoscalingSettingsAutoscalingPolicyArrayOutput() ClusterAutoscalingSettingsAutoscalingPolicyArrayOutput
+	ToClusterAutoscalingSettingsAutoscalingPolicyArrayOutputWithContext(context.Context) ClusterAutoscalingSettingsAutoscalingPolicyArrayOutput
+}
+
+type ClusterAutoscalingSettingsAutoscalingPolicyArray []ClusterAutoscalingSettingsAutoscalingPolicyInput
+
+func (ClusterAutoscalingSettingsAutoscalingPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterAutoscalingSettingsAutoscalingPolicy)(nil)).Elem()
+}
+
+func (i ClusterAutoscalingSettingsAutoscalingPolicyArray) ToClusterAutoscalingSettingsAutoscalingPolicyArrayOutput() ClusterAutoscalingSettingsAutoscalingPolicyArrayOutput {
+	return i.ToClusterAutoscalingSettingsAutoscalingPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterAutoscalingSettingsAutoscalingPolicyArray) ToClusterAutoscalingSettingsAutoscalingPolicyArrayOutputWithContext(ctx context.Context) ClusterAutoscalingSettingsAutoscalingPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAutoscalingSettingsAutoscalingPolicyArrayOutput)
+}
+
+type ClusterAutoscalingSettingsAutoscalingPolicyOutput struct{ *pulumi.OutputState }
+
+func (ClusterAutoscalingSettingsAutoscalingPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAutoscalingSettingsAutoscalingPolicy)(nil)).Elem()
+}
+
+func (o ClusterAutoscalingSettingsAutoscalingPolicyOutput) ToClusterAutoscalingSettingsAutoscalingPolicyOutput() ClusterAutoscalingSettingsAutoscalingPolicyOutput {
+	return o
+}
+
+func (o ClusterAutoscalingSettingsAutoscalingPolicyOutput) ToClusterAutoscalingSettingsAutoscalingPolicyOutputWithContext(ctx context.Context) ClusterAutoscalingSettingsAutoscalingPolicyOutput {
+	return o
+}
+
+// The identifier for this object. Format specified above.
+func (o ClusterAutoscalingSettingsAutoscalingPolicyOutput) AutoscalePolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterAutoscalingSettingsAutoscalingPolicy) string { return v.AutoscalePolicyId }).(pulumi.StringOutput)
+}
+
+// Utilization thresholds pertaining to amount of consumed memory.
+// Structure is documented below.
+func (o ClusterAutoscalingSettingsAutoscalingPolicyOutput) ConsumedMemoryThresholds() ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput {
+	return o.ApplyT(func(v ClusterAutoscalingSettingsAutoscalingPolicy) *ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholds {
+		return v.ConsumedMemoryThresholds
+	}).(ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput)
+}
+
+// Utilization thresholds pertaining to CPU utilization.
+// Structure is documented below.
+func (o ClusterAutoscalingSettingsAutoscalingPolicyOutput) CpuThresholds() ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput {
+	return o.ApplyT(func(v ClusterAutoscalingSettingsAutoscalingPolicy) *ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds {
+		return v.CpuThresholds
+	}).(ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput)
+}
+
+// The canonical identifier of the node type to add or remove.
+func (o ClusterAutoscalingSettingsAutoscalingPolicyOutput) NodeTypeId() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterAutoscalingSettingsAutoscalingPolicy) string { return v.NodeTypeId }).(pulumi.StringOutput)
+}
+
+// Number of nodes to add to a cluster during a scale-out operation.
+// Must be divisible by 2 for stretched clusters.
+func (o ClusterAutoscalingSettingsAutoscalingPolicyOutput) ScaleOutSize() pulumi.IntOutput {
+	return o.ApplyT(func(v ClusterAutoscalingSettingsAutoscalingPolicy) int { return v.ScaleOutSize }).(pulumi.IntOutput)
+}
+
+// Utilization thresholds pertaining to amount of consumed storage.
+// Structure is documented below.
+func (o ClusterAutoscalingSettingsAutoscalingPolicyOutput) StorageThresholds() ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput {
+	return o.ApplyT(func(v ClusterAutoscalingSettingsAutoscalingPolicy) *ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds {
+		return v.StorageThresholds
+	}).(ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput)
+}
+
+type ClusterAutoscalingSettingsAutoscalingPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterAutoscalingSettingsAutoscalingPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterAutoscalingSettingsAutoscalingPolicy)(nil)).Elem()
+}
+
+func (o ClusterAutoscalingSettingsAutoscalingPolicyArrayOutput) ToClusterAutoscalingSettingsAutoscalingPolicyArrayOutput() ClusterAutoscalingSettingsAutoscalingPolicyArrayOutput {
+	return o
+}
+
+func (o ClusterAutoscalingSettingsAutoscalingPolicyArrayOutput) ToClusterAutoscalingSettingsAutoscalingPolicyArrayOutputWithContext(ctx context.Context) ClusterAutoscalingSettingsAutoscalingPolicyArrayOutput {
+	return o
+}
+
+func (o ClusterAutoscalingSettingsAutoscalingPolicyArrayOutput) Index(i pulumi.IntInput) ClusterAutoscalingSettingsAutoscalingPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterAutoscalingSettingsAutoscalingPolicy {
+		return vs[0].([]ClusterAutoscalingSettingsAutoscalingPolicy)[vs[1].(int)]
+	}).(ClusterAutoscalingSettingsAutoscalingPolicyOutput)
+}
+
+type ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholds struct {
+	// The utilization triggering the scale-in operation in percent.
+	ScaleIn int `pulumi:"scaleIn"`
+	// The utilization triggering the scale-out operation in percent.
+	ScaleOut int `pulumi:"scaleOut"`
+}
+
+// ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsInput is an input type that accepts ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs and ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutput values.
+// You can construct a concrete instance of `ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsInput` via:
+//
+//	ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs{...}
+type ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsInput interface {
+	pulumi.Input
+
+	ToClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutput() ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutput
+	ToClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutputWithContext(context.Context) ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutput
+}
+
+type ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs struct {
+	// The utilization triggering the scale-in operation in percent.
+	ScaleIn pulumi.IntInput `pulumi:"scaleIn"`
+	// The utilization triggering the scale-out operation in percent.
+	ScaleOut pulumi.IntInput `pulumi:"scaleOut"`
+}
+
+func (ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholds)(nil)).Elem()
+}
+
+func (i ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs) ToClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutput() ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutput {
+	return i.ToClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutputWithContext(context.Background())
+}
+
+func (i ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs) ToClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutputWithContext(ctx context.Context) ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutput)
+}
+
+func (i ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs) ToClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput() ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput {
+	return i.ToClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs) ToClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutputWithContext(ctx context.Context) ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutput).ToClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutputWithContext(ctx)
+}
+
+// ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrInput is an input type that accepts ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs, ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtr and ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput values.
+// You can construct a concrete instance of `ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrInput` via:
+//
+//	        ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrInput interface {
+	pulumi.Input
+
+	ToClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput() ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput
+	ToClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutputWithContext(context.Context) ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput
+}
+
+type clusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrType ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs
+
+func ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtr(v *ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs) ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrInput {
+	return (*clusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrType)(v)
+}
+
+func (*clusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholds)(nil)).Elem()
+}
+
+func (i *clusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrType) ToClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput() ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput {
+	return i.ToClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrType) ToClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutputWithContext(ctx context.Context) ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput)
+}
+
+type ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutput struct{ *pulumi.OutputState }
+
+func (ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholds)(nil)).Elem()
+}
+
+func (o ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutput) ToClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutput() ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutput {
+	return o
+}
+
+func (o ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutput) ToClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutputWithContext(ctx context.Context) ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutput {
+	return o
+}
+
+func (o ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutput) ToClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput() ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput {
+	return o.ToClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutput) ToClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutputWithContext(ctx context.Context) ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholds) *ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholds {
+		return &v
+	}).(ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput)
+}
+
+// The utilization triggering the scale-in operation in percent.
+func (o ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutput) ScaleIn() pulumi.IntOutput {
+	return o.ApplyT(func(v ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholds) int { return v.ScaleIn }).(pulumi.IntOutput)
+}
+
+// The utilization triggering the scale-out operation in percent.
+func (o ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutput) ScaleOut() pulumi.IntOutput {
+	return o.ApplyT(func(v ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholds) int { return v.ScaleOut }).(pulumi.IntOutput)
+}
+
+type ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholds)(nil)).Elem()
+}
+
+func (o ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput) ToClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput() ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput {
+	return o
+}
+
+func (o ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput) ToClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutputWithContext(ctx context.Context) ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput {
+	return o
+}
+
+func (o ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput) Elem() ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutput {
+	return o.ApplyT(func(v *ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholds) ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholds {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholds
+		return ret
+	}).(ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutput)
+}
+
+// The utilization triggering the scale-in operation in percent.
+func (o ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput) ScaleIn() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholds) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.ScaleIn
+	}).(pulumi.IntPtrOutput)
+}
+
+// The utilization triggering the scale-out operation in percent.
+func (o ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput) ScaleOut() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholds) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.ScaleOut
+	}).(pulumi.IntPtrOutput)
+}
+
+type ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds struct {
+	// The utilization triggering the scale-in operation in percent.
+	ScaleIn int `pulumi:"scaleIn"`
+	// The utilization triggering the scale-out operation in percent.
+	ScaleOut int `pulumi:"scaleOut"`
+}
+
+// ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsInput is an input type that accepts ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs and ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutput values.
+// You can construct a concrete instance of `ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsInput` via:
+//
+//	ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs{...}
+type ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsInput interface {
+	pulumi.Input
+
+	ToClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutput() ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutput
+	ToClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutputWithContext(context.Context) ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutput
+}
+
+type ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs struct {
+	// The utilization triggering the scale-in operation in percent.
+	ScaleIn pulumi.IntInput `pulumi:"scaleIn"`
+	// The utilization triggering the scale-out operation in percent.
+	ScaleOut pulumi.IntInput `pulumi:"scaleOut"`
+}
+
+func (ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds)(nil)).Elem()
+}
+
+func (i ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs) ToClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutput() ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutput {
+	return i.ToClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutputWithContext(context.Background())
+}
+
+func (i ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs) ToClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutputWithContext(ctx context.Context) ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutput)
+}
+
+func (i ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs) ToClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput() ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput {
+	return i.ToClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs) ToClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutputWithContext(ctx context.Context) ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutput).ToClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutputWithContext(ctx)
+}
+
+// ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrInput is an input type that accepts ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs, ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtr and ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput values.
+// You can construct a concrete instance of `ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrInput` via:
+//
+//	        ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrInput interface {
+	pulumi.Input
+
+	ToClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput() ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput
+	ToClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutputWithContext(context.Context) ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput
+}
+
+type clusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrType ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs
+
+func ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtr(v *ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs) ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrInput {
+	return (*clusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrType)(v)
+}
+
+func (*clusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds)(nil)).Elem()
+}
+
+func (i *clusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrType) ToClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput() ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput {
+	return i.ToClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrType) ToClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutputWithContext(ctx context.Context) ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput)
+}
+
+type ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutput struct{ *pulumi.OutputState }
+
+func (ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds)(nil)).Elem()
+}
+
+func (o ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutput) ToClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutput() ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutput {
+	return o
+}
+
+func (o ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutput) ToClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutputWithContext(ctx context.Context) ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutput {
+	return o
+}
+
+func (o ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutput) ToClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput() ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput {
+	return o.ToClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutput) ToClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutputWithContext(ctx context.Context) ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds) *ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds {
+		return &v
+	}).(ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput)
+}
+
+// The utilization triggering the scale-in operation in percent.
+func (o ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutput) ScaleIn() pulumi.IntOutput {
+	return o.ApplyT(func(v ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds) int { return v.ScaleIn }).(pulumi.IntOutput)
+}
+
+// The utilization triggering the scale-out operation in percent.
+func (o ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutput) ScaleOut() pulumi.IntOutput {
+	return o.ApplyT(func(v ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds) int { return v.ScaleOut }).(pulumi.IntOutput)
+}
+
+type ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds)(nil)).Elem()
+}
+
+func (o ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput) ToClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput() ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput {
+	return o
+}
+
+func (o ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput) ToClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutputWithContext(ctx context.Context) ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput {
+	return o
+}
+
+func (o ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput) Elem() ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutput {
+	return o.ApplyT(func(v *ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds) ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds
+		return ret
+	}).(ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutput)
+}
+
+// The utilization triggering the scale-in operation in percent.
+func (o ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput) ScaleIn() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.ScaleIn
+	}).(pulumi.IntPtrOutput)
+}
+
+// The utilization triggering the scale-out operation in percent.
+func (o ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput) ScaleOut() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.ScaleOut
+	}).(pulumi.IntPtrOutput)
+}
+
+type ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds struct {
+	// The utilization triggering the scale-in operation in percent.
+	ScaleIn int `pulumi:"scaleIn"`
+	// The utilization triggering the scale-out operation in percent.
+	ScaleOut int `pulumi:"scaleOut"`
+}
+
+// ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsInput is an input type that accepts ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs and ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutput values.
+// You can construct a concrete instance of `ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsInput` via:
+//
+//	ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs{...}
+type ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsInput interface {
+	pulumi.Input
+
+	ToClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutput() ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutput
+	ToClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutputWithContext(context.Context) ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutput
+}
+
+type ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs struct {
+	// The utilization triggering the scale-in operation in percent.
+	ScaleIn pulumi.IntInput `pulumi:"scaleIn"`
+	// The utilization triggering the scale-out operation in percent.
+	ScaleOut pulumi.IntInput `pulumi:"scaleOut"`
+}
+
+func (ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds)(nil)).Elem()
+}
+
+func (i ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs) ToClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutput() ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutput {
+	return i.ToClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutputWithContext(context.Background())
+}
+
+func (i ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs) ToClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutputWithContext(ctx context.Context) ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutput)
+}
+
+func (i ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs) ToClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput() ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput {
+	return i.ToClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs) ToClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutputWithContext(ctx context.Context) ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutput).ToClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutputWithContext(ctx)
+}
+
+// ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrInput is an input type that accepts ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs, ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtr and ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput values.
+// You can construct a concrete instance of `ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrInput` via:
+//
+//	        ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrInput interface {
+	pulumi.Input
+
+	ToClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput() ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput
+	ToClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutputWithContext(context.Context) ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput
+}
+
+type clusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrType ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs
+
+func ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtr(v *ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs) ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrInput {
+	return (*clusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrType)(v)
+}
+
+func (*clusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds)(nil)).Elem()
+}
+
+func (i *clusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrType) ToClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput() ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput {
+	return i.ToClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrType) ToClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutputWithContext(ctx context.Context) ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput)
+}
+
+type ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutput struct{ *pulumi.OutputState }
+
+func (ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds)(nil)).Elem()
+}
+
+func (o ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutput) ToClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutput() ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutput {
+	return o
+}
+
+func (o ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutput) ToClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutputWithContext(ctx context.Context) ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutput {
+	return o
+}
+
+func (o ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutput) ToClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput() ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput {
+	return o.ToClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutput) ToClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutputWithContext(ctx context.Context) ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds) *ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds {
+		return &v
+	}).(ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput)
+}
+
+// The utilization triggering the scale-in operation in percent.
+func (o ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutput) ScaleIn() pulumi.IntOutput {
+	return o.ApplyT(func(v ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds) int { return v.ScaleIn }).(pulumi.IntOutput)
+}
+
+// The utilization triggering the scale-out operation in percent.
+func (o ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutput) ScaleOut() pulumi.IntOutput {
+	return o.ApplyT(func(v ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds) int { return v.ScaleOut }).(pulumi.IntOutput)
+}
+
+type ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds)(nil)).Elem()
+}
+
+func (o ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput) ToClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput() ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput {
+	return o
+}
+
+func (o ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput) ToClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutputWithContext(ctx context.Context) ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput {
+	return o
+}
+
+func (o ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput) Elem() ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutput {
+	return o.ApplyT(func(v *ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds) ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds
+		return ret
+	}).(ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutput)
+}
+
+// The utilization triggering the scale-in operation in percent.
+func (o ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput) ScaleIn() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.ScaleIn
+	}).(pulumi.IntPtrOutput)
+}
+
+// The utilization triggering the scale-out operation in percent.
+func (o ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput) ScaleOut() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.ScaleOut
+	}).(pulumi.IntPtrOutput)
+}
+
 type ClusterNodeTypeConfig struct {
 	// Customized number of cores available to each node of the type.
 	// This number must always be one of `nodeType.availableCustomCoreCounts`.
@@ -2039,6 +2927,646 @@ func (o SubnetDhcpAddressRangeArrayOutput) Index(i pulumi.IntInput) SubnetDhcpAd
 	}).(SubnetDhcpAddressRangeOutput)
 }
 
+type GetClusterAutoscalingSetting struct {
+	// The map with autoscaling policies applied to the cluster.
+	// The key is the identifier of the policy.
+	// It must meet the following requirements:
+	//   * Only contains 1-63 alphanumeric characters and hyphens
+	//   * Begins with an alphabetical character
+	//   * Ends with a non-hyphen character
+	//   * Not formatted as a UUID
+	//   * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+	//
+	// Currently the map must contain only one element
+	// that describes the autoscaling policy for compute nodes.
+	AutoscalingPolicies []GetClusterAutoscalingSettingAutoscalingPolicy `pulumi:"autoscalingPolicies"`
+	// The minimum duration between consecutive autoscale operations.
+	// It starts once addition or removal of nodes is fully completed.
+	// Minimum cool down period is 30m.
+	// Cool down period must be in whole minutes (for example, 30m, 31m, 50m).
+	// Mandatory for successful addition of autoscaling settings in cluster.
+	CoolDownPeriod string `pulumi:"coolDownPeriod"`
+	// Maximum number of nodes of any type in a cluster.
+	// Mandatory for successful addition of autoscaling settings in cluster.
+	MaxClusterNodeCount int `pulumi:"maxClusterNodeCount"`
+	// Minimum number of nodes of any type in a cluster.
+	// Mandatory for successful addition of autoscaling settings in cluster.
+	MinClusterNodeCount int `pulumi:"minClusterNodeCount"`
+}
+
+// GetClusterAutoscalingSettingInput is an input type that accepts GetClusterAutoscalingSettingArgs and GetClusterAutoscalingSettingOutput values.
+// You can construct a concrete instance of `GetClusterAutoscalingSettingInput` via:
+//
+//	GetClusterAutoscalingSettingArgs{...}
+type GetClusterAutoscalingSettingInput interface {
+	pulumi.Input
+
+	ToGetClusterAutoscalingSettingOutput() GetClusterAutoscalingSettingOutput
+	ToGetClusterAutoscalingSettingOutputWithContext(context.Context) GetClusterAutoscalingSettingOutput
+}
+
+type GetClusterAutoscalingSettingArgs struct {
+	// The map with autoscaling policies applied to the cluster.
+	// The key is the identifier of the policy.
+	// It must meet the following requirements:
+	//   * Only contains 1-63 alphanumeric characters and hyphens
+	//   * Begins with an alphabetical character
+	//   * Ends with a non-hyphen character
+	//   * Not formatted as a UUID
+	//   * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+	//
+	// Currently the map must contain only one element
+	// that describes the autoscaling policy for compute nodes.
+	AutoscalingPolicies GetClusterAutoscalingSettingAutoscalingPolicyArrayInput `pulumi:"autoscalingPolicies"`
+	// The minimum duration between consecutive autoscale operations.
+	// It starts once addition or removal of nodes is fully completed.
+	// Minimum cool down period is 30m.
+	// Cool down period must be in whole minutes (for example, 30m, 31m, 50m).
+	// Mandatory for successful addition of autoscaling settings in cluster.
+	CoolDownPeriod pulumi.StringInput `pulumi:"coolDownPeriod"`
+	// Maximum number of nodes of any type in a cluster.
+	// Mandatory for successful addition of autoscaling settings in cluster.
+	MaxClusterNodeCount pulumi.IntInput `pulumi:"maxClusterNodeCount"`
+	// Minimum number of nodes of any type in a cluster.
+	// Mandatory for successful addition of autoscaling settings in cluster.
+	MinClusterNodeCount pulumi.IntInput `pulumi:"minClusterNodeCount"`
+}
+
+func (GetClusterAutoscalingSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAutoscalingSetting)(nil)).Elem()
+}
+
+func (i GetClusterAutoscalingSettingArgs) ToGetClusterAutoscalingSettingOutput() GetClusterAutoscalingSettingOutput {
+	return i.ToGetClusterAutoscalingSettingOutputWithContext(context.Background())
+}
+
+func (i GetClusterAutoscalingSettingArgs) ToGetClusterAutoscalingSettingOutputWithContext(ctx context.Context) GetClusterAutoscalingSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAutoscalingSettingOutput)
+}
+
+// GetClusterAutoscalingSettingArrayInput is an input type that accepts GetClusterAutoscalingSettingArray and GetClusterAutoscalingSettingArrayOutput values.
+// You can construct a concrete instance of `GetClusterAutoscalingSettingArrayInput` via:
+//
+//	GetClusterAutoscalingSettingArray{ GetClusterAutoscalingSettingArgs{...} }
+type GetClusterAutoscalingSettingArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterAutoscalingSettingArrayOutput() GetClusterAutoscalingSettingArrayOutput
+	ToGetClusterAutoscalingSettingArrayOutputWithContext(context.Context) GetClusterAutoscalingSettingArrayOutput
+}
+
+type GetClusterAutoscalingSettingArray []GetClusterAutoscalingSettingInput
+
+func (GetClusterAutoscalingSettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAutoscalingSetting)(nil)).Elem()
+}
+
+func (i GetClusterAutoscalingSettingArray) ToGetClusterAutoscalingSettingArrayOutput() GetClusterAutoscalingSettingArrayOutput {
+	return i.ToGetClusterAutoscalingSettingArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterAutoscalingSettingArray) ToGetClusterAutoscalingSettingArrayOutputWithContext(ctx context.Context) GetClusterAutoscalingSettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAutoscalingSettingArrayOutput)
+}
+
+type GetClusterAutoscalingSettingOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAutoscalingSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAutoscalingSetting)(nil)).Elem()
+}
+
+func (o GetClusterAutoscalingSettingOutput) ToGetClusterAutoscalingSettingOutput() GetClusterAutoscalingSettingOutput {
+	return o
+}
+
+func (o GetClusterAutoscalingSettingOutput) ToGetClusterAutoscalingSettingOutputWithContext(ctx context.Context) GetClusterAutoscalingSettingOutput {
+	return o
+}
+
+// The map with autoscaling policies applied to the cluster.
+// The key is the identifier of the policy.
+// It must meet the following requirements:
+//   - Only contains 1-63 alphanumeric characters and hyphens
+//   - Begins with an alphabetical character
+//   - Ends with a non-hyphen character
+//   - Not formatted as a UUID
+//   - Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+//
+// Currently the map must contain only one element
+// that describes the autoscaling policy for compute nodes.
+func (o GetClusterAutoscalingSettingOutput) AutoscalingPolicies() GetClusterAutoscalingSettingAutoscalingPolicyArrayOutput {
+	return o.ApplyT(func(v GetClusterAutoscalingSetting) []GetClusterAutoscalingSettingAutoscalingPolicy {
+		return v.AutoscalingPolicies
+	}).(GetClusterAutoscalingSettingAutoscalingPolicyArrayOutput)
+}
+
+// The minimum duration between consecutive autoscale operations.
+// It starts once addition or removal of nodes is fully completed.
+// Minimum cool down period is 30m.
+// Cool down period must be in whole minutes (for example, 30m, 31m, 50m).
+// Mandatory for successful addition of autoscaling settings in cluster.
+func (o GetClusterAutoscalingSettingOutput) CoolDownPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterAutoscalingSetting) string { return v.CoolDownPeriod }).(pulumi.StringOutput)
+}
+
+// Maximum number of nodes of any type in a cluster.
+// Mandatory for successful addition of autoscaling settings in cluster.
+func (o GetClusterAutoscalingSettingOutput) MaxClusterNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterAutoscalingSetting) int { return v.MaxClusterNodeCount }).(pulumi.IntOutput)
+}
+
+// Minimum number of nodes of any type in a cluster.
+// Mandatory for successful addition of autoscaling settings in cluster.
+func (o GetClusterAutoscalingSettingOutput) MinClusterNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterAutoscalingSetting) int { return v.MinClusterNodeCount }).(pulumi.IntOutput)
+}
+
+type GetClusterAutoscalingSettingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAutoscalingSettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAutoscalingSetting)(nil)).Elem()
+}
+
+func (o GetClusterAutoscalingSettingArrayOutput) ToGetClusterAutoscalingSettingArrayOutput() GetClusterAutoscalingSettingArrayOutput {
+	return o
+}
+
+func (o GetClusterAutoscalingSettingArrayOutput) ToGetClusterAutoscalingSettingArrayOutputWithContext(ctx context.Context) GetClusterAutoscalingSettingArrayOutput {
+	return o
+}
+
+func (o GetClusterAutoscalingSettingArrayOutput) Index(i pulumi.IntInput) GetClusterAutoscalingSettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAutoscalingSetting {
+		return vs[0].([]GetClusterAutoscalingSetting)[vs[1].(int)]
+	}).(GetClusterAutoscalingSettingOutput)
+}
+
+type GetClusterAutoscalingSettingAutoscalingPolicy struct {
+	AutoscalePolicyId string `pulumi:"autoscalePolicyId"`
+	// Utilization thresholds pertaining to amount of consumed memory.
+	ConsumedMemoryThresholds []GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold `pulumi:"consumedMemoryThresholds"`
+	// Utilization thresholds pertaining to CPU utilization.
+	CpuThresholds []GetClusterAutoscalingSettingAutoscalingPolicyCpuThreshold `pulumi:"cpuThresholds"`
+	// The canonical identifier of the node type to add or remove.
+	NodeTypeId string `pulumi:"nodeTypeId"`
+	// Number of nodes to add to a cluster during a scale-out operation.
+	// Must be divisible by 2 for stretched clusters.
+	ScaleOutSize int `pulumi:"scaleOutSize"`
+	// Utilization thresholds pertaining to amount of consumed storage.
+	StorageThresholds []GetClusterAutoscalingSettingAutoscalingPolicyStorageThreshold `pulumi:"storageThresholds"`
+}
+
+// GetClusterAutoscalingSettingAutoscalingPolicyInput is an input type that accepts GetClusterAutoscalingSettingAutoscalingPolicyArgs and GetClusterAutoscalingSettingAutoscalingPolicyOutput values.
+// You can construct a concrete instance of `GetClusterAutoscalingSettingAutoscalingPolicyInput` via:
+//
+//	GetClusterAutoscalingSettingAutoscalingPolicyArgs{...}
+type GetClusterAutoscalingSettingAutoscalingPolicyInput interface {
+	pulumi.Input
+
+	ToGetClusterAutoscalingSettingAutoscalingPolicyOutput() GetClusterAutoscalingSettingAutoscalingPolicyOutput
+	ToGetClusterAutoscalingSettingAutoscalingPolicyOutputWithContext(context.Context) GetClusterAutoscalingSettingAutoscalingPolicyOutput
+}
+
+type GetClusterAutoscalingSettingAutoscalingPolicyArgs struct {
+	AutoscalePolicyId pulumi.StringInput `pulumi:"autoscalePolicyId"`
+	// Utilization thresholds pertaining to amount of consumed memory.
+	ConsumedMemoryThresholds GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayInput `pulumi:"consumedMemoryThresholds"`
+	// Utilization thresholds pertaining to CPU utilization.
+	CpuThresholds GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayInput `pulumi:"cpuThresholds"`
+	// The canonical identifier of the node type to add or remove.
+	NodeTypeId pulumi.StringInput `pulumi:"nodeTypeId"`
+	// Number of nodes to add to a cluster during a scale-out operation.
+	// Must be divisible by 2 for stretched clusters.
+	ScaleOutSize pulumi.IntInput `pulumi:"scaleOutSize"`
+	// Utilization thresholds pertaining to amount of consumed storage.
+	StorageThresholds GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayInput `pulumi:"storageThresholds"`
+}
+
+func (GetClusterAutoscalingSettingAutoscalingPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAutoscalingSettingAutoscalingPolicy)(nil)).Elem()
+}
+
+func (i GetClusterAutoscalingSettingAutoscalingPolicyArgs) ToGetClusterAutoscalingSettingAutoscalingPolicyOutput() GetClusterAutoscalingSettingAutoscalingPolicyOutput {
+	return i.ToGetClusterAutoscalingSettingAutoscalingPolicyOutputWithContext(context.Background())
+}
+
+func (i GetClusterAutoscalingSettingAutoscalingPolicyArgs) ToGetClusterAutoscalingSettingAutoscalingPolicyOutputWithContext(ctx context.Context) GetClusterAutoscalingSettingAutoscalingPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAutoscalingSettingAutoscalingPolicyOutput)
+}
+
+// GetClusterAutoscalingSettingAutoscalingPolicyArrayInput is an input type that accepts GetClusterAutoscalingSettingAutoscalingPolicyArray and GetClusterAutoscalingSettingAutoscalingPolicyArrayOutput values.
+// You can construct a concrete instance of `GetClusterAutoscalingSettingAutoscalingPolicyArrayInput` via:
+//
+//	GetClusterAutoscalingSettingAutoscalingPolicyArray{ GetClusterAutoscalingSettingAutoscalingPolicyArgs{...} }
+type GetClusterAutoscalingSettingAutoscalingPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterAutoscalingSettingAutoscalingPolicyArrayOutput() GetClusterAutoscalingSettingAutoscalingPolicyArrayOutput
+	ToGetClusterAutoscalingSettingAutoscalingPolicyArrayOutputWithContext(context.Context) GetClusterAutoscalingSettingAutoscalingPolicyArrayOutput
+}
+
+type GetClusterAutoscalingSettingAutoscalingPolicyArray []GetClusterAutoscalingSettingAutoscalingPolicyInput
+
+func (GetClusterAutoscalingSettingAutoscalingPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAutoscalingSettingAutoscalingPolicy)(nil)).Elem()
+}
+
+func (i GetClusterAutoscalingSettingAutoscalingPolicyArray) ToGetClusterAutoscalingSettingAutoscalingPolicyArrayOutput() GetClusterAutoscalingSettingAutoscalingPolicyArrayOutput {
+	return i.ToGetClusterAutoscalingSettingAutoscalingPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterAutoscalingSettingAutoscalingPolicyArray) ToGetClusterAutoscalingSettingAutoscalingPolicyArrayOutputWithContext(ctx context.Context) GetClusterAutoscalingSettingAutoscalingPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAutoscalingSettingAutoscalingPolicyArrayOutput)
+}
+
+type GetClusterAutoscalingSettingAutoscalingPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAutoscalingSettingAutoscalingPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAutoscalingSettingAutoscalingPolicy)(nil)).Elem()
+}
+
+func (o GetClusterAutoscalingSettingAutoscalingPolicyOutput) ToGetClusterAutoscalingSettingAutoscalingPolicyOutput() GetClusterAutoscalingSettingAutoscalingPolicyOutput {
+	return o
+}
+
+func (o GetClusterAutoscalingSettingAutoscalingPolicyOutput) ToGetClusterAutoscalingSettingAutoscalingPolicyOutputWithContext(ctx context.Context) GetClusterAutoscalingSettingAutoscalingPolicyOutput {
+	return o
+}
+
+func (o GetClusterAutoscalingSettingAutoscalingPolicyOutput) AutoscalePolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterAutoscalingSettingAutoscalingPolicy) string { return v.AutoscalePolicyId }).(pulumi.StringOutput)
+}
+
+// Utilization thresholds pertaining to amount of consumed memory.
+func (o GetClusterAutoscalingSettingAutoscalingPolicyOutput) ConsumedMemoryThresholds() GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayOutput {
+	return o.ApplyT(func(v GetClusterAutoscalingSettingAutoscalingPolicy) []GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold {
+		return v.ConsumedMemoryThresholds
+	}).(GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayOutput)
+}
+
+// Utilization thresholds pertaining to CPU utilization.
+func (o GetClusterAutoscalingSettingAutoscalingPolicyOutput) CpuThresholds() GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayOutput {
+	return o.ApplyT(func(v GetClusterAutoscalingSettingAutoscalingPolicy) []GetClusterAutoscalingSettingAutoscalingPolicyCpuThreshold {
+		return v.CpuThresholds
+	}).(GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayOutput)
+}
+
+// The canonical identifier of the node type to add or remove.
+func (o GetClusterAutoscalingSettingAutoscalingPolicyOutput) NodeTypeId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterAutoscalingSettingAutoscalingPolicy) string { return v.NodeTypeId }).(pulumi.StringOutput)
+}
+
+// Number of nodes to add to a cluster during a scale-out operation.
+// Must be divisible by 2 for stretched clusters.
+func (o GetClusterAutoscalingSettingAutoscalingPolicyOutput) ScaleOutSize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterAutoscalingSettingAutoscalingPolicy) int { return v.ScaleOutSize }).(pulumi.IntOutput)
+}
+
+// Utilization thresholds pertaining to amount of consumed storage.
+func (o GetClusterAutoscalingSettingAutoscalingPolicyOutput) StorageThresholds() GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayOutput {
+	return o.ApplyT(func(v GetClusterAutoscalingSettingAutoscalingPolicy) []GetClusterAutoscalingSettingAutoscalingPolicyStorageThreshold {
+		return v.StorageThresholds
+	}).(GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayOutput)
+}
+
+type GetClusterAutoscalingSettingAutoscalingPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAutoscalingSettingAutoscalingPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAutoscalingSettingAutoscalingPolicy)(nil)).Elem()
+}
+
+func (o GetClusterAutoscalingSettingAutoscalingPolicyArrayOutput) ToGetClusterAutoscalingSettingAutoscalingPolicyArrayOutput() GetClusterAutoscalingSettingAutoscalingPolicyArrayOutput {
+	return o
+}
+
+func (o GetClusterAutoscalingSettingAutoscalingPolicyArrayOutput) ToGetClusterAutoscalingSettingAutoscalingPolicyArrayOutputWithContext(ctx context.Context) GetClusterAutoscalingSettingAutoscalingPolicyArrayOutput {
+	return o
+}
+
+func (o GetClusterAutoscalingSettingAutoscalingPolicyArrayOutput) Index(i pulumi.IntInput) GetClusterAutoscalingSettingAutoscalingPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAutoscalingSettingAutoscalingPolicy {
+		return vs[0].([]GetClusterAutoscalingSettingAutoscalingPolicy)[vs[1].(int)]
+	}).(GetClusterAutoscalingSettingAutoscalingPolicyOutput)
+}
+
+type GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold struct {
+	// The utilization triggering the scale-in operation in percent.
+	ScaleIn int `pulumi:"scaleIn"`
+	// The utilization triggering the scale-out operation in percent.
+	ScaleOut int `pulumi:"scaleOut"`
+}
+
+// GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdInput is an input type that accepts GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArgs and GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdOutput values.
+// You can construct a concrete instance of `GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdInput` via:
+//
+//	GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArgs{...}
+type GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdInput interface {
+	pulumi.Input
+
+	ToGetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdOutput() GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdOutput
+	ToGetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdOutputWithContext(context.Context) GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdOutput
+}
+
+type GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArgs struct {
+	// The utilization triggering the scale-in operation in percent.
+	ScaleIn pulumi.IntInput `pulumi:"scaleIn"`
+	// The utilization triggering the scale-out operation in percent.
+	ScaleOut pulumi.IntInput `pulumi:"scaleOut"`
+}
+
+func (GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold)(nil)).Elem()
+}
+
+func (i GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArgs) ToGetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdOutput() GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdOutput {
+	return i.ToGetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdOutputWithContext(context.Background())
+}
+
+func (i GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArgs) ToGetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdOutputWithContext(ctx context.Context) GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdOutput)
+}
+
+// GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayInput is an input type that accepts GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArray and GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayOutput values.
+// You can construct a concrete instance of `GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayInput` via:
+//
+//	GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArray{ GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArgs{...} }
+type GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayOutput() GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayOutput
+	ToGetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayOutputWithContext(context.Context) GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayOutput
+}
+
+type GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArray []GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdInput
+
+func (GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold)(nil)).Elem()
+}
+
+func (i GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArray) ToGetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayOutput() GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayOutput {
+	return i.ToGetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArray) ToGetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayOutputWithContext(ctx context.Context) GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayOutput)
+}
+
+type GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold)(nil)).Elem()
+}
+
+func (o GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdOutput) ToGetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdOutput() GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdOutput {
+	return o
+}
+
+func (o GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdOutput) ToGetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdOutputWithContext(ctx context.Context) GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdOutput {
+	return o
+}
+
+// The utilization triggering the scale-in operation in percent.
+func (o GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdOutput) ScaleIn() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold) int { return v.ScaleIn }).(pulumi.IntOutput)
+}
+
+// The utilization triggering the scale-out operation in percent.
+func (o GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdOutput) ScaleOut() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold) int { return v.ScaleOut }).(pulumi.IntOutput)
+}
+
+type GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold)(nil)).Elem()
+}
+
+func (o GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayOutput) ToGetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayOutput() GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayOutput {
+	return o
+}
+
+func (o GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayOutput) ToGetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayOutputWithContext(ctx context.Context) GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayOutput {
+	return o
+}
+
+func (o GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayOutput) Index(i pulumi.IntInput) GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold {
+		return vs[0].([]GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold)[vs[1].(int)]
+	}).(GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdOutput)
+}
+
+type GetClusterAutoscalingSettingAutoscalingPolicyCpuThreshold struct {
+	// The utilization triggering the scale-in operation in percent.
+	ScaleIn int `pulumi:"scaleIn"`
+	// The utilization triggering the scale-out operation in percent.
+	ScaleOut int `pulumi:"scaleOut"`
+}
+
+// GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdInput is an input type that accepts GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArgs and GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdOutput values.
+// You can construct a concrete instance of `GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdInput` via:
+//
+//	GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArgs{...}
+type GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdInput interface {
+	pulumi.Input
+
+	ToGetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdOutput() GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdOutput
+	ToGetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdOutputWithContext(context.Context) GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdOutput
+}
+
+type GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArgs struct {
+	// The utilization triggering the scale-in operation in percent.
+	ScaleIn pulumi.IntInput `pulumi:"scaleIn"`
+	// The utilization triggering the scale-out operation in percent.
+	ScaleOut pulumi.IntInput `pulumi:"scaleOut"`
+}
+
+func (GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAutoscalingSettingAutoscalingPolicyCpuThreshold)(nil)).Elem()
+}
+
+func (i GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArgs) ToGetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdOutput() GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdOutput {
+	return i.ToGetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdOutputWithContext(context.Background())
+}
+
+func (i GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArgs) ToGetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdOutputWithContext(ctx context.Context) GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdOutput)
+}
+
+// GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayInput is an input type that accepts GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArray and GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayOutput values.
+// You can construct a concrete instance of `GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayInput` via:
+//
+//	GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArray{ GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArgs{...} }
+type GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayOutput() GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayOutput
+	ToGetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayOutputWithContext(context.Context) GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayOutput
+}
+
+type GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArray []GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdInput
+
+func (GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAutoscalingSettingAutoscalingPolicyCpuThreshold)(nil)).Elem()
+}
+
+func (i GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArray) ToGetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayOutput() GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayOutput {
+	return i.ToGetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArray) ToGetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayOutputWithContext(ctx context.Context) GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayOutput)
+}
+
+type GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAutoscalingSettingAutoscalingPolicyCpuThreshold)(nil)).Elem()
+}
+
+func (o GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdOutput) ToGetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdOutput() GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdOutput {
+	return o
+}
+
+func (o GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdOutput) ToGetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdOutputWithContext(ctx context.Context) GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdOutput {
+	return o
+}
+
+// The utilization triggering the scale-in operation in percent.
+func (o GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdOutput) ScaleIn() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterAutoscalingSettingAutoscalingPolicyCpuThreshold) int { return v.ScaleIn }).(pulumi.IntOutput)
+}
+
+// The utilization triggering the scale-out operation in percent.
+func (o GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdOutput) ScaleOut() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterAutoscalingSettingAutoscalingPolicyCpuThreshold) int { return v.ScaleOut }).(pulumi.IntOutput)
+}
+
+type GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAutoscalingSettingAutoscalingPolicyCpuThreshold)(nil)).Elem()
+}
+
+func (o GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayOutput) ToGetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayOutput() GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayOutput {
+	return o
+}
+
+func (o GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayOutput) ToGetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayOutputWithContext(ctx context.Context) GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayOutput {
+	return o
+}
+
+func (o GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayOutput) Index(i pulumi.IntInput) GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAutoscalingSettingAutoscalingPolicyCpuThreshold {
+		return vs[0].([]GetClusterAutoscalingSettingAutoscalingPolicyCpuThreshold)[vs[1].(int)]
+	}).(GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdOutput)
+}
+
+type GetClusterAutoscalingSettingAutoscalingPolicyStorageThreshold struct {
+	// The utilization triggering the scale-in operation in percent.
+	ScaleIn int `pulumi:"scaleIn"`
+	// The utilization triggering the scale-out operation in percent.
+	ScaleOut int `pulumi:"scaleOut"`
+}
+
+// GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdInput is an input type that accepts GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArgs and GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdOutput values.
+// You can construct a concrete instance of `GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdInput` via:
+//
+//	GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArgs{...}
+type GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdInput interface {
+	pulumi.Input
+
+	ToGetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdOutput() GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdOutput
+	ToGetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdOutputWithContext(context.Context) GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdOutput
+}
+
+type GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArgs struct {
+	// The utilization triggering the scale-in operation in percent.
+	ScaleIn pulumi.IntInput `pulumi:"scaleIn"`
+	// The utilization triggering the scale-out operation in percent.
+	ScaleOut pulumi.IntInput `pulumi:"scaleOut"`
+}
+
+func (GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAutoscalingSettingAutoscalingPolicyStorageThreshold)(nil)).Elem()
+}
+
+func (i GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArgs) ToGetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdOutput() GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdOutput {
+	return i.ToGetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdOutputWithContext(context.Background())
+}
+
+func (i GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArgs) ToGetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdOutputWithContext(ctx context.Context) GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdOutput)
+}
+
+// GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayInput is an input type that accepts GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArray and GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayOutput values.
+// You can construct a concrete instance of `GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayInput` via:
+//
+//	GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArray{ GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArgs{...} }
+type GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayOutput() GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayOutput
+	ToGetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayOutputWithContext(context.Context) GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayOutput
+}
+
+type GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArray []GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdInput
+
+func (GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAutoscalingSettingAutoscalingPolicyStorageThreshold)(nil)).Elem()
+}
+
+func (i GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArray) ToGetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayOutput() GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayOutput {
+	return i.ToGetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArray) ToGetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayOutputWithContext(ctx context.Context) GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayOutput)
+}
+
+type GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAutoscalingSettingAutoscalingPolicyStorageThreshold)(nil)).Elem()
+}
+
+func (o GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdOutput) ToGetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdOutput() GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdOutput {
+	return o
+}
+
+func (o GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdOutput) ToGetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdOutputWithContext(ctx context.Context) GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdOutput {
+	return o
+}
+
+// The utilization triggering the scale-in operation in percent.
+func (o GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdOutput) ScaleIn() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterAutoscalingSettingAutoscalingPolicyStorageThreshold) int { return v.ScaleIn }).(pulumi.IntOutput)
+}
+
+// The utilization triggering the scale-out operation in percent.
+func (o GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdOutput) ScaleOut() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterAutoscalingSettingAutoscalingPolicyStorageThreshold) int { return v.ScaleOut }).(pulumi.IntOutput)
+}
+
+type GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAutoscalingSettingAutoscalingPolicyStorageThreshold)(nil)).Elem()
+}
+
+func (o GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayOutput) ToGetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayOutput() GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayOutput {
+	return o
+}
+
+func (o GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayOutput) ToGetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayOutputWithContext(ctx context.Context) GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayOutput {
+	return o
+}
+
+func (o GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayOutput) Index(i pulumi.IntInput) GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAutoscalingSettingAutoscalingPolicyStorageThreshold {
+		return vs[0].([]GetClusterAutoscalingSettingAutoscalingPolicyStorageThreshold)[vs[1].(int)]
+	}).(GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdOutput)
+}
+
 type GetClusterNodeTypeConfig struct {
 	// Customized number of cores available to each node of the type.
 	// This number must always be one of 'nodeType.availableCustomCoreCounts'.
@@ -3693,6 +5221,16 @@ func (o GetSubnetDhcpAddressRangeArrayOutput) Index(i pulumi.IntInput) GetSubnet
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutoscalingSettingsInput)(nil)).Elem(), ClusterAutoscalingSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutoscalingSettingsPtrInput)(nil)).Elem(), ClusterAutoscalingSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutoscalingSettingsAutoscalingPolicyInput)(nil)).Elem(), ClusterAutoscalingSettingsAutoscalingPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutoscalingSettingsAutoscalingPolicyArrayInput)(nil)).Elem(), ClusterAutoscalingSettingsAutoscalingPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsInput)(nil)).Elem(), ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrInput)(nil)).Elem(), ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsInput)(nil)).Elem(), ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrInput)(nil)).Elem(), ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsInput)(nil)).Elem(), ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrInput)(nil)).Elem(), ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeTypeConfigInput)(nil)).Elem(), ClusterNodeTypeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeTypeConfigArrayInput)(nil)).Elem(), ClusterNodeTypeConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExternalAccessRuleDestinationIpRangeInput)(nil)).Elem(), ExternalAccessRuleDestinationIpRangeArgs{})
@@ -3721,6 +5259,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudVcenterArrayInput)(nil)).Elem(), PrivateCloudVcenterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubnetDhcpAddressRangeInput)(nil)).Elem(), SubnetDhcpAddressRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubnetDhcpAddressRangeArrayInput)(nil)).Elem(), SubnetDhcpAddressRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAutoscalingSettingInput)(nil)).Elem(), GetClusterAutoscalingSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAutoscalingSettingArrayInput)(nil)).Elem(), GetClusterAutoscalingSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAutoscalingSettingAutoscalingPolicyInput)(nil)).Elem(), GetClusterAutoscalingSettingAutoscalingPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAutoscalingSettingAutoscalingPolicyArrayInput)(nil)).Elem(), GetClusterAutoscalingSettingAutoscalingPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdInput)(nil)).Elem(), GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayInput)(nil)).Elem(), GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdInput)(nil)).Elem(), GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayInput)(nil)).Elem(), GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdInput)(nil)).Elem(), GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayInput)(nil)).Elem(), GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeTypeConfigInput)(nil)).Elem(), GetClusterNodeTypeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeTypeConfigArrayInput)(nil)).Elem(), GetClusterNodeTypeConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetExternalAccessRuleDestinationIpRangeInput)(nil)).Elem(), GetExternalAccessRuleDestinationIpRangeArgs{})
@@ -3749,6 +5297,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudVcenterArrayInput)(nil)).Elem(), GetPrivateCloudVcenterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetDhcpAddressRangeInput)(nil)).Elem(), GetSubnetDhcpAddressRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetDhcpAddressRangeArrayInput)(nil)).Elem(), GetSubnetDhcpAddressRangeArray{})
+	pulumi.RegisterOutputType(ClusterAutoscalingSettingsOutput{})
+	pulumi.RegisterOutputType(ClusterAutoscalingSettingsPtrOutput{})
+	pulumi.RegisterOutputType(ClusterAutoscalingSettingsAutoscalingPolicyOutput{})
+	pulumi.RegisterOutputType(ClusterAutoscalingSettingsAutoscalingPolicyArrayOutput{})
+	pulumi.RegisterOutputType(ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutput{})
+	pulumi.RegisterOutputType(ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput{})
+	pulumi.RegisterOutputType(ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutput{})
+	pulumi.RegisterOutputType(ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput{})
+	pulumi.RegisterOutputType(ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutput{})
+	pulumi.RegisterOutputType(ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeTypeConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodeTypeConfigArrayOutput{})
 	pulumi.RegisterOutputType(ExternalAccessRuleDestinationIpRangeOutput{})
@@ -3777,6 +5335,16 @@ func init() {
 	pulumi.RegisterOutputType(PrivateCloudVcenterArrayOutput{})
 	pulumi.RegisterOutputType(SubnetDhcpAddressRangeOutput{})
 	pulumi.RegisterOutputType(SubnetDhcpAddressRangeArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterAutoscalingSettingOutput{})
+	pulumi.RegisterOutputType(GetClusterAutoscalingSettingArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterAutoscalingSettingAutoscalingPolicyOutput{})
+	pulumi.RegisterOutputType(GetClusterAutoscalingSettingAutoscalingPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdOutput{})
+	pulumi.RegisterOutputType(GetClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdOutput{})
+	pulumi.RegisterOutputType(GetClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdOutput{})
+	pulumi.RegisterOutputType(GetClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeTypeConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeTypeConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetExternalAccessRuleDestinationIpRangeOutput{})

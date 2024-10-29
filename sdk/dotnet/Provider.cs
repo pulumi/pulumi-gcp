@@ -369,6 +369,9 @@ namespace Pulumi.Gcp
         [Output("notebooksCustomEndpoint")]
         public Output<string?> NotebooksCustomEndpoint { get; private set; } = null!;
 
+        [Output("oracleDatabaseCustomEndpoint")]
+        public Output<string?> OracleDatabaseCustomEndpoint { get; private set; } = null!;
+
         [Output("orgPolicyCustomEndpoint")]
         public Output<string?> OrgPolicyCustomEndpoint { get; private set; } = null!;
 
@@ -497,6 +500,9 @@ namespace Pulumi.Gcp
 
         [Output("tpuV2CustomEndpoint")]
         public Output<string?> TpuV2CustomEndpoint { get; private set; } = null!;
+
+        [Output("transcoderCustomEndpoint")]
+        public Output<string?> TranscoderCustomEndpoint { get; private set; } = null!;
 
         [Output("universeDomain")]
         public Output<string?> UniverseDomain { get; private set; } = null!;
@@ -939,6 +945,9 @@ namespace Pulumi.Gcp
         [Input("notebooksCustomEndpoint")]
         public Input<string>? NotebooksCustomEndpoint { get; set; }
 
+        [Input("oracleDatabaseCustomEndpoint")]
+        public Input<string>? OracleDatabaseCustomEndpoint { get; set; }
+
         [Input("orgPolicyCustomEndpoint")]
         public Input<string>? OrgPolicyCustomEndpoint { get; set; }
 
@@ -1075,6 +1084,9 @@ namespace Pulumi.Gcp
 
         [Input("tpuV2CustomEndpoint")]
         public Input<string>? TpuV2CustomEndpoint { get; set; }
+
+        [Input("transcoderCustomEndpoint")]
+        public Input<string>? TranscoderCustomEndpoint { get; set; }
 
         [Input("universeDomain")]
         public Input<string>? UniverseDomain { get; set; }

@@ -89,6 +89,28 @@ import * as utilities from "../utilities";
  *         nodeCount: 3,
  *         customCoreCount: 32,
  *     }],
+ *     autoscalingSettings: {
+ *         autoscalingPolicies: [{
+ *             autoscalePolicyId: "autoscaling-policy",
+ *             nodeTypeId: "standard-72",
+ *             scaleOutSize: 1,
+ *             cpuThresholds: {
+ *                 scaleOut: 80,
+ *                 scaleIn: 15,
+ *             },
+ *             consumedMemoryThresholds: {
+ *                 scaleOut: 75,
+ *                 scaleIn: 20,
+ *             },
+ *             storageThresholds: {
+ *                 scaleOut: 80,
+ *                 scaleIn: 20,
+ *             },
+ *         }],
+ *         minClusterNodeCount: 3,
+ *         maxClusterNodeCount: 8,
+ *         coolDownPeriod: "1800s",
+ *     },
  * });
  * ```
  *
@@ -132,6 +154,11 @@ export class Cluster extends pulumi.CustomResource {
         return obj['__pulumiType'] === Cluster.__pulumiType;
     }
 
+    /**
+     * Configuration of the autoscaling applied to this cluster
+     * Structure is documented below.
+     */
+    public readonly autoscalingSettings!: pulumi.Output<outputs.vmwareengine.ClusterAutoscalingSettings | undefined>;
     /**
      * True if the cluster is a management cluster; false otherwise.
      * There can only be one management cluster in a private cloud and it has to be the first one.
@@ -178,6 +205,7 @@ export class Cluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
+            resourceInputs["autoscalingSettings"] = state ? state.autoscalingSettings : undefined;
             resourceInputs["management"] = state ? state.management : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["nodeTypeConfigs"] = state ? state.nodeTypeConfigs : undefined;
@@ -189,6 +217,7 @@ export class Cluster extends pulumi.CustomResource {
             if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
+            resourceInputs["autoscalingSettings"] = args ? args.autoscalingSettings : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["nodeTypeConfigs"] = args ? args.nodeTypeConfigs : undefined;
             resourceInputs["parent"] = args ? args.parent : undefined;
@@ -205,6 +234,11 @@ export class Cluster extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Cluster resources.
  */
 export interface ClusterState {
+    /**
+     * Configuration of the autoscaling applied to this cluster
+     * Structure is documented below.
+     */
+    autoscalingSettings?: pulumi.Input<inputs.vmwareengine.ClusterAutoscalingSettings>;
     /**
      * True if the cluster is a management cluster; false otherwise.
      * There can only be one management cluster in a private cloud and it has to be the first one.
@@ -243,6 +277,11 @@ export interface ClusterState {
  * The set of arguments for constructing a Cluster resource.
  */
 export interface ClusterArgs {
+    /**
+     * Configuration of the autoscaling applied to this cluster
+     * Structure is documented below.
+     */
+    autoscalingSettings?: pulumi.Input<inputs.vmwareengine.ClusterAutoscalingSettings>;
     /**
      * The ID of the Cluster.
      *

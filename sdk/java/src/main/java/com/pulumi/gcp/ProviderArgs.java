@@ -874,6 +874,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.notebooksCustomEndpoint);
     }
 
+    @Import(name="oracleDatabaseCustomEndpoint")
+    private @Nullable Output<String> oracleDatabaseCustomEndpoint;
+
+    public Optional<Output<String>> oracleDatabaseCustomEndpoint() {
+        return Optional.ofNullable(this.oracleDatabaseCustomEndpoint);
+    }
+
     @Import(name="orgPolicyCustomEndpoint")
     private @Nullable Output<String> orgPolicyCustomEndpoint;
 
@@ -1182,6 +1189,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tpuV2CustomEndpoint);
     }
 
+    @Import(name="transcoderCustomEndpoint")
+    private @Nullable Output<String> transcoderCustomEndpoint;
+
+    public Optional<Output<String>> transcoderCustomEndpoint() {
+        return Optional.ofNullable(this.transcoderCustomEndpoint);
+    }
+
     @Import(name="universeDomain")
     private @Nullable Output<String> universeDomain;
 
@@ -1370,6 +1384,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.networkSecurityCustomEndpoint = $.networkSecurityCustomEndpoint;
         this.networkServicesCustomEndpoint = $.networkServicesCustomEndpoint;
         this.notebooksCustomEndpoint = $.notebooksCustomEndpoint;
+        this.oracleDatabaseCustomEndpoint = $.oracleDatabaseCustomEndpoint;
         this.orgPolicyCustomEndpoint = $.orgPolicyCustomEndpoint;
         this.osConfigCustomEndpoint = $.osConfigCustomEndpoint;
         this.osLoginCustomEndpoint = $.osLoginCustomEndpoint;
@@ -1414,6 +1429,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.tagsLocationCustomEndpoint = $.tagsLocationCustomEndpoint;
         this.tpuCustomEndpoint = $.tpuCustomEndpoint;
         this.tpuV2CustomEndpoint = $.tpuV2CustomEndpoint;
+        this.transcoderCustomEndpoint = $.transcoderCustomEndpoint;
         this.universeDomain = $.universeDomain;
         this.userProjectOverride = $.userProjectOverride;
         this.vertexAiCustomEndpoint = $.vertexAiCustomEndpoint;
@@ -2545,6 +2561,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             return notebooksCustomEndpoint(Output.of(notebooksCustomEndpoint));
         }
 
+        public Builder oracleDatabaseCustomEndpoint(@Nullable Output<String> oracleDatabaseCustomEndpoint) {
+            $.oracleDatabaseCustomEndpoint = oracleDatabaseCustomEndpoint;
+            return this;
+        }
+
+        public Builder oracleDatabaseCustomEndpoint(String oracleDatabaseCustomEndpoint) {
+            return oracleDatabaseCustomEndpoint(Output.of(oracleDatabaseCustomEndpoint));
+        }
+
         public Builder orgPolicyCustomEndpoint(@Nullable Output<String> orgPolicyCustomEndpoint) {
             $.orgPolicyCustomEndpoint = orgPolicyCustomEndpoint;
             return this;
@@ -2943,6 +2968,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder tpuV2CustomEndpoint(String tpuV2CustomEndpoint) {
             return tpuV2CustomEndpoint(Output.of(tpuV2CustomEndpoint));
+        }
+
+        public Builder transcoderCustomEndpoint(@Nullable Output<String> transcoderCustomEndpoint) {
+            $.transcoderCustomEndpoint = transcoderCustomEndpoint;
+            return this;
+        }
+
+        public Builder transcoderCustomEndpoint(String transcoderCustomEndpoint) {
+            return transcoderCustomEndpoint(Output.of(transcoderCustomEndpoint));
         }
 
         public Builder universeDomain(@Nullable Output<String> universeDomain) {

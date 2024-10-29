@@ -202,6 +202,8 @@ type Instance struct {
 	ConfidentialInstanceConfig InstanceConfidentialInstanceConfigOutput `pulumi:"confidentialInstanceConfig"`
 	// The CPU platform used by this instance.
 	CpuPlatform pulumi.StringOutput `pulumi:"cpuPlatform"`
+	// Creation timestamp in RFC3339 text format.
+	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
 	CurrentStatus pulumi.StringOutput `pulumi:"currentStatus"`
 	// Enable deletion protection on this instance. Defaults to false.
@@ -226,6 +228,8 @@ type Instance struct {
 	Hostname pulumi.StringPtrOutput `pulumi:"hostname"`
 	// The server-assigned unique identifier of this instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
+	// Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
+	KeyRevocationActionType pulumi.StringPtrOutput `pulumi:"keyRevocationActionType"`
 	// The unique fingerprint of the labels.
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
 	// A map of key/value label pairs to assign to the instance.
@@ -237,6 +241,8 @@ type Instance struct {
 	// **Note:** If you want to update this value (resize the VM) after initial creation, you must set `allowStoppingForUpdate` to `true`.
 	//
 	// [Custom machine types](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
+	// Because of current API limitations some custom machine types may get converted to different machine types (such as an equivalent standard type) and cause non-empty plans in your configuration. Use
+	// `lifecycle.ignore_changes` on `machineType` in these cases.
 	//
 	// There is a limit of 6.5 GB per CPU unless you add [extended memory](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#extendedmemory). You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
 	MachineType pulumi.StringOutput `pulumi:"machineType"`
@@ -387,6 +393,8 @@ type instanceState struct {
 	ConfidentialInstanceConfig *InstanceConfidentialInstanceConfig `pulumi:"confidentialInstanceConfig"`
 	// The CPU platform used by this instance.
 	CpuPlatform *string `pulumi:"cpuPlatform"`
+	// Creation timestamp in RFC3339 text format.
+	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
 	CurrentStatus *string `pulumi:"currentStatus"`
 	// Enable deletion protection on this instance. Defaults to false.
@@ -411,6 +419,8 @@ type instanceState struct {
 	Hostname *string `pulumi:"hostname"`
 	// The server-assigned unique identifier of this instance.
 	InstanceId *string `pulumi:"instanceId"`
+	// Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
+	KeyRevocationActionType *string `pulumi:"keyRevocationActionType"`
 	// The unique fingerprint of the labels.
 	LabelFingerprint *string `pulumi:"labelFingerprint"`
 	// A map of key/value label pairs to assign to the instance.
@@ -422,6 +432,8 @@ type instanceState struct {
 	// **Note:** If you want to update this value (resize the VM) after initial creation, you must set `allowStoppingForUpdate` to `true`.
 	//
 	// [Custom machine types](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
+	// Because of current API limitations some custom machine types may get converted to different machine types (such as an equivalent standard type) and cause non-empty plans in your configuration. Use
+	// `lifecycle.ignore_changes` on `machineType` in these cases.
 	//
 	// There is a limit of 6.5 GB per CPU unless you add [extended memory](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#extendedmemory). You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
 	MachineType *string `pulumi:"machineType"`
@@ -529,6 +541,8 @@ type InstanceState struct {
 	ConfidentialInstanceConfig InstanceConfidentialInstanceConfigPtrInput
 	// The CPU platform used by this instance.
 	CpuPlatform pulumi.StringPtrInput
+	// Creation timestamp in RFC3339 text format.
+	CreationTimestamp pulumi.StringPtrInput
 	// The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
 	CurrentStatus pulumi.StringPtrInput
 	// Enable deletion protection on this instance. Defaults to false.
@@ -553,6 +567,8 @@ type InstanceState struct {
 	Hostname pulumi.StringPtrInput
 	// The server-assigned unique identifier of this instance.
 	InstanceId pulumi.StringPtrInput
+	// Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
+	KeyRevocationActionType pulumi.StringPtrInput
 	// The unique fingerprint of the labels.
 	LabelFingerprint pulumi.StringPtrInput
 	// A map of key/value label pairs to assign to the instance.
@@ -564,6 +580,8 @@ type InstanceState struct {
 	// **Note:** If you want to update this value (resize the VM) after initial creation, you must set `allowStoppingForUpdate` to `true`.
 	//
 	// [Custom machine types](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
+	// Because of current API limitations some custom machine types may get converted to different machine types (such as an equivalent standard type) and cause non-empty plans in your configuration. Use
+	// `lifecycle.ignore_changes` on `machineType` in these cases.
 	//
 	// There is a limit of 6.5 GB per CPU unless you add [extended memory](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#extendedmemory). You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
 	MachineType pulumi.StringPtrInput
@@ -691,6 +709,8 @@ type instanceArgs struct {
 	// Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
 	// The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
 	Hostname *string `pulumi:"hostname"`
+	// Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
+	KeyRevocationActionType *string `pulumi:"keyRevocationActionType"`
 	// A map of key/value label pairs to assign to the instance.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
@@ -700,6 +720,8 @@ type instanceArgs struct {
 	// **Note:** If you want to update this value (resize the VM) after initial creation, you must set `allowStoppingForUpdate` to `true`.
 	//
 	// [Custom machine types](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
+	// Because of current API limitations some custom machine types may get converted to different machine types (such as an equivalent standard type) and cause non-empty plans in your configuration. Use
+	// `lifecycle.ignore_changes` on `machineType` in these cases.
 	//
 	// There is a limit of 6.5 GB per CPU unless you add [extended memory](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#extendedmemory). You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
 	MachineType string `pulumi:"machineType"`
@@ -816,6 +838,8 @@ type InstanceArgs struct {
 	// Valid format is a series of labels 1-63 characters long matching the regular expression `a-z`, concatenated with periods.
 	// The entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
 	Hostname pulumi.StringPtrInput
+	// Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
+	KeyRevocationActionType pulumi.StringPtrInput
 	// A map of key/value label pairs to assign to the instance.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field 'effective_labels' for all of the labels present on the resource.
@@ -825,6 +849,8 @@ type InstanceArgs struct {
 	// **Note:** If you want to update this value (resize the VM) after initial creation, you must set `allowStoppingForUpdate` to `true`.
 	//
 	// [Custom machine types](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
+	// Because of current API limitations some custom machine types may get converted to different machine types (such as an equivalent standard type) and cause non-empty plans in your configuration. Use
+	// `lifecycle.ignore_changes` on `machineType` in these cases.
 	//
 	// There is a limit of 6.5 GB per CPU unless you add [extended memory](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#extendedmemory). You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
 	MachineType pulumi.StringInput
@@ -1031,6 +1057,11 @@ func (o InstanceOutput) CpuPlatform() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CpuPlatform }).(pulumi.StringOutput)
 }
 
+// Creation timestamp in RFC3339 text format.
+func (o InstanceOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
 // The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
 func (o InstanceOutput) CurrentStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CurrentStatus }).(pulumi.StringOutput)
@@ -1082,6 +1113,11 @@ func (o InstanceOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
+// Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
+func (o InstanceOutput) KeyRevocationActionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.KeyRevocationActionType }).(pulumi.StringPtrOutput)
+}
+
 // The unique fingerprint of the labels.
 func (o InstanceOutput) LabelFingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.LabelFingerprint }).(pulumi.StringOutput)
@@ -1099,6 +1135,8 @@ func (o InstanceOutput) Labels() pulumi.StringMapOutput {
 // **Note:** If you want to update this value (resize the VM) after initial creation, you must set `allowStoppingForUpdate` to `true`.
 //
 // [Custom machine types](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
+// Because of current API limitations some custom machine types may get converted to different machine types (such as an equivalent standard type) and cause non-empty plans in your configuration. Use
+// `lifecycle.ignore_changes` on `machineType` in these cases.
 //
 // There is a limit of 6.5 GB per CPU unless you add [extended memory](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#extendedmemory). You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
 func (o InstanceOutput) MachineType() pulumi.StringOutput {

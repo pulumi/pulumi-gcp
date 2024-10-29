@@ -886,6 +886,13 @@ namespace Pulumi.Gcp
             set => _notebooksCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _oracleDatabaseCustomEndpoint = new __Value<string?>(() => __config.Get("oracleDatabaseCustomEndpoint"));
+        public static string? OracleDatabaseCustomEndpoint
+        {
+            get => _oracleDatabaseCustomEndpoint.Get();
+            set => _oracleDatabaseCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _orgPolicyCustomEndpoint = new __Value<string?>(() => __config.Get("orgPolicyCustomEndpoint"));
         public static string? OrgPolicyCustomEndpoint
         {
@@ -1199,6 +1206,13 @@ namespace Pulumi.Gcp
         {
             get => _tpuV2CustomEndpoint.Get();
             set => _tpuV2CustomEndpoint.Set(value);
+        }
+
+        private static readonly __Value<string?> _transcoderCustomEndpoint = new __Value<string?>(() => __config.Get("transcoderCustomEndpoint"));
+        public static string? TranscoderCustomEndpoint
+        {
+            get => _transcoderCustomEndpoint.Get();
+            set => _transcoderCustomEndpoint.Set(value);
         }
 
         private static readonly __Value<string?> _universeDomain = new __Value<string?>(() => __config.Get("universeDomain"));

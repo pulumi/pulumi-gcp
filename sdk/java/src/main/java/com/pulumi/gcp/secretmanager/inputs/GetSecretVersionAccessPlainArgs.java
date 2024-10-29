@@ -5,6 +5,7 @@ package com.pulumi.gcp.secretmanager.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +15,23 @@ import javax.annotation.Nullable;
 public final class GetSecretVersionAccessPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetSecretVersionAccessPlainArgs Empty = new GetSecretVersionAccessPlainArgs();
+
+    /**
+     * If set to &#39;true&#39;, the secret data is
+     * expected to be base64-encoded string.
+     * 
+     */
+    @Import(name="isSecretDataBase64")
+    private @Nullable Boolean isSecretDataBase64;
+
+    /**
+     * @return If set to &#39;true&#39;, the secret data is
+     * expected to be base64-encoded string.
+     * 
+     */
+    public Optional<Boolean> isSecretDataBase64() {
+        return Optional.ofNullable(this.isSecretDataBase64);
+    }
 
     /**
      * The project to get the secret version for. If it
@@ -67,6 +85,7 @@ public final class GetSecretVersionAccessPlainArgs extends com.pulumi.resources.
     private GetSecretVersionAccessPlainArgs() {}
 
     private GetSecretVersionAccessPlainArgs(GetSecretVersionAccessPlainArgs $) {
+        this.isSecretDataBase64 = $.isSecretDataBase64;
         this.project = $.project;
         this.secret = $.secret;
         this.version = $.version;
@@ -88,6 +107,18 @@ public final class GetSecretVersionAccessPlainArgs extends com.pulumi.resources.
 
         public Builder(GetSecretVersionAccessPlainArgs defaults) {
             $ = new GetSecretVersionAccessPlainArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param isSecretDataBase64 If set to &#39;true&#39;, the secret data is
+         * expected to be base64-encoded string.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isSecretDataBase64(@Nullable Boolean isSecretDataBase64) {
+            $.isSecretDataBase64 = isSecretDataBase64;
+            return this;
         }
 
         /**

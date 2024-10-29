@@ -13,6 +13,143 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GroupAutoAccept struct {
+	// A list of project ids or project numbers for which you want to enable auto-accept. The auto-accept setting is applied to spokes being created or updated in these projects.
+	AutoAcceptProjects []string `pulumi:"autoAcceptProjects"`
+}
+
+// GroupAutoAcceptInput is an input type that accepts GroupAutoAcceptArgs and GroupAutoAcceptOutput values.
+// You can construct a concrete instance of `GroupAutoAcceptInput` via:
+//
+//	GroupAutoAcceptArgs{...}
+type GroupAutoAcceptInput interface {
+	pulumi.Input
+
+	ToGroupAutoAcceptOutput() GroupAutoAcceptOutput
+	ToGroupAutoAcceptOutputWithContext(context.Context) GroupAutoAcceptOutput
+}
+
+type GroupAutoAcceptArgs struct {
+	// A list of project ids or project numbers for which you want to enable auto-accept. The auto-accept setting is applied to spokes being created or updated in these projects.
+	AutoAcceptProjects pulumi.StringArrayInput `pulumi:"autoAcceptProjects"`
+}
+
+func (GroupAutoAcceptArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupAutoAccept)(nil)).Elem()
+}
+
+func (i GroupAutoAcceptArgs) ToGroupAutoAcceptOutput() GroupAutoAcceptOutput {
+	return i.ToGroupAutoAcceptOutputWithContext(context.Background())
+}
+
+func (i GroupAutoAcceptArgs) ToGroupAutoAcceptOutputWithContext(ctx context.Context) GroupAutoAcceptOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupAutoAcceptOutput)
+}
+
+func (i GroupAutoAcceptArgs) ToGroupAutoAcceptPtrOutput() GroupAutoAcceptPtrOutput {
+	return i.ToGroupAutoAcceptPtrOutputWithContext(context.Background())
+}
+
+func (i GroupAutoAcceptArgs) ToGroupAutoAcceptPtrOutputWithContext(ctx context.Context) GroupAutoAcceptPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupAutoAcceptOutput).ToGroupAutoAcceptPtrOutputWithContext(ctx)
+}
+
+// GroupAutoAcceptPtrInput is an input type that accepts GroupAutoAcceptArgs, GroupAutoAcceptPtr and GroupAutoAcceptPtrOutput values.
+// You can construct a concrete instance of `GroupAutoAcceptPtrInput` via:
+//
+//	        GroupAutoAcceptArgs{...}
+//
+//	or:
+//
+//	        nil
+type GroupAutoAcceptPtrInput interface {
+	pulumi.Input
+
+	ToGroupAutoAcceptPtrOutput() GroupAutoAcceptPtrOutput
+	ToGroupAutoAcceptPtrOutputWithContext(context.Context) GroupAutoAcceptPtrOutput
+}
+
+type groupAutoAcceptPtrType GroupAutoAcceptArgs
+
+func GroupAutoAcceptPtr(v *GroupAutoAcceptArgs) GroupAutoAcceptPtrInput {
+	return (*groupAutoAcceptPtrType)(v)
+}
+
+func (*groupAutoAcceptPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupAutoAccept)(nil)).Elem()
+}
+
+func (i *groupAutoAcceptPtrType) ToGroupAutoAcceptPtrOutput() GroupAutoAcceptPtrOutput {
+	return i.ToGroupAutoAcceptPtrOutputWithContext(context.Background())
+}
+
+func (i *groupAutoAcceptPtrType) ToGroupAutoAcceptPtrOutputWithContext(ctx context.Context) GroupAutoAcceptPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupAutoAcceptPtrOutput)
+}
+
+type GroupAutoAcceptOutput struct{ *pulumi.OutputState }
+
+func (GroupAutoAcceptOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupAutoAccept)(nil)).Elem()
+}
+
+func (o GroupAutoAcceptOutput) ToGroupAutoAcceptOutput() GroupAutoAcceptOutput {
+	return o
+}
+
+func (o GroupAutoAcceptOutput) ToGroupAutoAcceptOutputWithContext(ctx context.Context) GroupAutoAcceptOutput {
+	return o
+}
+
+func (o GroupAutoAcceptOutput) ToGroupAutoAcceptPtrOutput() GroupAutoAcceptPtrOutput {
+	return o.ToGroupAutoAcceptPtrOutputWithContext(context.Background())
+}
+
+func (o GroupAutoAcceptOutput) ToGroupAutoAcceptPtrOutputWithContext(ctx context.Context) GroupAutoAcceptPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GroupAutoAccept) *GroupAutoAccept {
+		return &v
+	}).(GroupAutoAcceptPtrOutput)
+}
+
+// A list of project ids or project numbers for which you want to enable auto-accept. The auto-accept setting is applied to spokes being created or updated in these projects.
+func (o GroupAutoAcceptOutput) AutoAcceptProjects() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GroupAutoAccept) []string { return v.AutoAcceptProjects }).(pulumi.StringArrayOutput)
+}
+
+type GroupAutoAcceptPtrOutput struct{ *pulumi.OutputState }
+
+func (GroupAutoAcceptPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupAutoAccept)(nil)).Elem()
+}
+
+func (o GroupAutoAcceptPtrOutput) ToGroupAutoAcceptPtrOutput() GroupAutoAcceptPtrOutput {
+	return o
+}
+
+func (o GroupAutoAcceptPtrOutput) ToGroupAutoAcceptPtrOutputWithContext(ctx context.Context) GroupAutoAcceptPtrOutput {
+	return o
+}
+
+func (o GroupAutoAcceptPtrOutput) Elem() GroupAutoAcceptOutput {
+	return o.ApplyT(func(v *GroupAutoAccept) GroupAutoAccept {
+		if v != nil {
+			return *v
+		}
+		var ret GroupAutoAccept
+		return ret
+	}).(GroupAutoAcceptOutput)
+}
+
+// A list of project ids or project numbers for which you want to enable auto-accept. The auto-accept setting is applied to spokes being created or updated in these projects.
+func (o GroupAutoAcceptPtrOutput) AutoAcceptProjects() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GroupAutoAccept) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AutoAcceptProjects
+	}).(pulumi.StringArrayOutput)
+}
+
 type HubRoutingVpc struct {
 	// The URI of the VPC network.
 	Uri *string `pulumi:"uri"`
@@ -1771,6 +1908,223 @@ func (o SpokeLinkedInterconnectAttachmentsPtrOutput) Uris() pulumi.StringArrayOu
 	}).(pulumi.StringArrayOutput)
 }
 
+type SpokeLinkedProducerVpcNetwork struct {
+	// IP ranges encompassing the subnets to be excluded from peering.
+	ExcludeExportRanges []string `pulumi:"excludeExportRanges"`
+	// IP ranges allowed to be included from peering.
+	IncludeExportRanges []string `pulumi:"includeExportRanges"`
+	// The URI of the Service Consumer VPC that the Producer VPC is peered with.
+	Network string `pulumi:"network"`
+	// The name of the VPC peering between the Service Consumer VPC and the Producer VPC (defined in the Tenant project) which is added to the NCC hub. This peering must be in ACTIVE state.
+	Peering string `pulumi:"peering"`
+	// (Output)
+	// The URI of the Producer VPC.
+	ProducerNetwork *string `pulumi:"producerNetwork"`
+}
+
+// SpokeLinkedProducerVpcNetworkInput is an input type that accepts SpokeLinkedProducerVpcNetworkArgs and SpokeLinkedProducerVpcNetworkOutput values.
+// You can construct a concrete instance of `SpokeLinkedProducerVpcNetworkInput` via:
+//
+//	SpokeLinkedProducerVpcNetworkArgs{...}
+type SpokeLinkedProducerVpcNetworkInput interface {
+	pulumi.Input
+
+	ToSpokeLinkedProducerVpcNetworkOutput() SpokeLinkedProducerVpcNetworkOutput
+	ToSpokeLinkedProducerVpcNetworkOutputWithContext(context.Context) SpokeLinkedProducerVpcNetworkOutput
+}
+
+type SpokeLinkedProducerVpcNetworkArgs struct {
+	// IP ranges encompassing the subnets to be excluded from peering.
+	ExcludeExportRanges pulumi.StringArrayInput `pulumi:"excludeExportRanges"`
+	// IP ranges allowed to be included from peering.
+	IncludeExportRanges pulumi.StringArrayInput `pulumi:"includeExportRanges"`
+	// The URI of the Service Consumer VPC that the Producer VPC is peered with.
+	Network pulumi.StringInput `pulumi:"network"`
+	// The name of the VPC peering between the Service Consumer VPC and the Producer VPC (defined in the Tenant project) which is added to the NCC hub. This peering must be in ACTIVE state.
+	Peering pulumi.StringInput `pulumi:"peering"`
+	// (Output)
+	// The URI of the Producer VPC.
+	ProducerNetwork pulumi.StringPtrInput `pulumi:"producerNetwork"`
+}
+
+func (SpokeLinkedProducerVpcNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpokeLinkedProducerVpcNetwork)(nil)).Elem()
+}
+
+func (i SpokeLinkedProducerVpcNetworkArgs) ToSpokeLinkedProducerVpcNetworkOutput() SpokeLinkedProducerVpcNetworkOutput {
+	return i.ToSpokeLinkedProducerVpcNetworkOutputWithContext(context.Background())
+}
+
+func (i SpokeLinkedProducerVpcNetworkArgs) ToSpokeLinkedProducerVpcNetworkOutputWithContext(ctx context.Context) SpokeLinkedProducerVpcNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpokeLinkedProducerVpcNetworkOutput)
+}
+
+func (i SpokeLinkedProducerVpcNetworkArgs) ToSpokeLinkedProducerVpcNetworkPtrOutput() SpokeLinkedProducerVpcNetworkPtrOutput {
+	return i.ToSpokeLinkedProducerVpcNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i SpokeLinkedProducerVpcNetworkArgs) ToSpokeLinkedProducerVpcNetworkPtrOutputWithContext(ctx context.Context) SpokeLinkedProducerVpcNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpokeLinkedProducerVpcNetworkOutput).ToSpokeLinkedProducerVpcNetworkPtrOutputWithContext(ctx)
+}
+
+// SpokeLinkedProducerVpcNetworkPtrInput is an input type that accepts SpokeLinkedProducerVpcNetworkArgs, SpokeLinkedProducerVpcNetworkPtr and SpokeLinkedProducerVpcNetworkPtrOutput values.
+// You can construct a concrete instance of `SpokeLinkedProducerVpcNetworkPtrInput` via:
+//
+//	        SpokeLinkedProducerVpcNetworkArgs{...}
+//
+//	or:
+//
+//	        nil
+type SpokeLinkedProducerVpcNetworkPtrInput interface {
+	pulumi.Input
+
+	ToSpokeLinkedProducerVpcNetworkPtrOutput() SpokeLinkedProducerVpcNetworkPtrOutput
+	ToSpokeLinkedProducerVpcNetworkPtrOutputWithContext(context.Context) SpokeLinkedProducerVpcNetworkPtrOutput
+}
+
+type spokeLinkedProducerVpcNetworkPtrType SpokeLinkedProducerVpcNetworkArgs
+
+func SpokeLinkedProducerVpcNetworkPtr(v *SpokeLinkedProducerVpcNetworkArgs) SpokeLinkedProducerVpcNetworkPtrInput {
+	return (*spokeLinkedProducerVpcNetworkPtrType)(v)
+}
+
+func (*spokeLinkedProducerVpcNetworkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SpokeLinkedProducerVpcNetwork)(nil)).Elem()
+}
+
+func (i *spokeLinkedProducerVpcNetworkPtrType) ToSpokeLinkedProducerVpcNetworkPtrOutput() SpokeLinkedProducerVpcNetworkPtrOutput {
+	return i.ToSpokeLinkedProducerVpcNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i *spokeLinkedProducerVpcNetworkPtrType) ToSpokeLinkedProducerVpcNetworkPtrOutputWithContext(ctx context.Context) SpokeLinkedProducerVpcNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpokeLinkedProducerVpcNetworkPtrOutput)
+}
+
+type SpokeLinkedProducerVpcNetworkOutput struct{ *pulumi.OutputState }
+
+func (SpokeLinkedProducerVpcNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpokeLinkedProducerVpcNetwork)(nil)).Elem()
+}
+
+func (o SpokeLinkedProducerVpcNetworkOutput) ToSpokeLinkedProducerVpcNetworkOutput() SpokeLinkedProducerVpcNetworkOutput {
+	return o
+}
+
+func (o SpokeLinkedProducerVpcNetworkOutput) ToSpokeLinkedProducerVpcNetworkOutputWithContext(ctx context.Context) SpokeLinkedProducerVpcNetworkOutput {
+	return o
+}
+
+func (o SpokeLinkedProducerVpcNetworkOutput) ToSpokeLinkedProducerVpcNetworkPtrOutput() SpokeLinkedProducerVpcNetworkPtrOutput {
+	return o.ToSpokeLinkedProducerVpcNetworkPtrOutputWithContext(context.Background())
+}
+
+func (o SpokeLinkedProducerVpcNetworkOutput) ToSpokeLinkedProducerVpcNetworkPtrOutputWithContext(ctx context.Context) SpokeLinkedProducerVpcNetworkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SpokeLinkedProducerVpcNetwork) *SpokeLinkedProducerVpcNetwork {
+		return &v
+	}).(SpokeLinkedProducerVpcNetworkPtrOutput)
+}
+
+// IP ranges encompassing the subnets to be excluded from peering.
+func (o SpokeLinkedProducerVpcNetworkOutput) ExcludeExportRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SpokeLinkedProducerVpcNetwork) []string { return v.ExcludeExportRanges }).(pulumi.StringArrayOutput)
+}
+
+// IP ranges allowed to be included from peering.
+func (o SpokeLinkedProducerVpcNetworkOutput) IncludeExportRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SpokeLinkedProducerVpcNetwork) []string { return v.IncludeExportRanges }).(pulumi.StringArrayOutput)
+}
+
+// The URI of the Service Consumer VPC that the Producer VPC is peered with.
+func (o SpokeLinkedProducerVpcNetworkOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v SpokeLinkedProducerVpcNetwork) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// The name of the VPC peering between the Service Consumer VPC and the Producer VPC (defined in the Tenant project) which is added to the NCC hub. This peering must be in ACTIVE state.
+func (o SpokeLinkedProducerVpcNetworkOutput) Peering() pulumi.StringOutput {
+	return o.ApplyT(func(v SpokeLinkedProducerVpcNetwork) string { return v.Peering }).(pulumi.StringOutput)
+}
+
+// (Output)
+// The URI of the Producer VPC.
+func (o SpokeLinkedProducerVpcNetworkOutput) ProducerNetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SpokeLinkedProducerVpcNetwork) *string { return v.ProducerNetwork }).(pulumi.StringPtrOutput)
+}
+
+type SpokeLinkedProducerVpcNetworkPtrOutput struct{ *pulumi.OutputState }
+
+func (SpokeLinkedProducerVpcNetworkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SpokeLinkedProducerVpcNetwork)(nil)).Elem()
+}
+
+func (o SpokeLinkedProducerVpcNetworkPtrOutput) ToSpokeLinkedProducerVpcNetworkPtrOutput() SpokeLinkedProducerVpcNetworkPtrOutput {
+	return o
+}
+
+func (o SpokeLinkedProducerVpcNetworkPtrOutput) ToSpokeLinkedProducerVpcNetworkPtrOutputWithContext(ctx context.Context) SpokeLinkedProducerVpcNetworkPtrOutput {
+	return o
+}
+
+func (o SpokeLinkedProducerVpcNetworkPtrOutput) Elem() SpokeLinkedProducerVpcNetworkOutput {
+	return o.ApplyT(func(v *SpokeLinkedProducerVpcNetwork) SpokeLinkedProducerVpcNetwork {
+		if v != nil {
+			return *v
+		}
+		var ret SpokeLinkedProducerVpcNetwork
+		return ret
+	}).(SpokeLinkedProducerVpcNetworkOutput)
+}
+
+// IP ranges encompassing the subnets to be excluded from peering.
+func (o SpokeLinkedProducerVpcNetworkPtrOutput) ExcludeExportRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SpokeLinkedProducerVpcNetwork) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeExportRanges
+	}).(pulumi.StringArrayOutput)
+}
+
+// IP ranges allowed to be included from peering.
+func (o SpokeLinkedProducerVpcNetworkPtrOutput) IncludeExportRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SpokeLinkedProducerVpcNetwork) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeExportRanges
+	}).(pulumi.StringArrayOutput)
+}
+
+// The URI of the Service Consumer VPC that the Producer VPC is peered with.
+func (o SpokeLinkedProducerVpcNetworkPtrOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SpokeLinkedProducerVpcNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Network
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the VPC peering between the Service Consumer VPC and the Producer VPC (defined in the Tenant project) which is added to the NCC hub. This peering must be in ACTIVE state.
+func (o SpokeLinkedProducerVpcNetworkPtrOutput) Peering() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SpokeLinkedProducerVpcNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Peering
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The URI of the Producer VPC.
+func (o SpokeLinkedProducerVpcNetworkPtrOutput) ProducerNetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SpokeLinkedProducerVpcNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProducerNetwork
+	}).(pulumi.StringPtrOutput)
+}
+
 type SpokeLinkedRouterApplianceInstances struct {
 	// IP ranges allowed to be included during import from hub (does not control transit connectivity).
 	// The only allowed value for now is "ALL_IPV4_RANGES".
@@ -2417,6 +2771,8 @@ func (o SpokeLinkedVpnTunnelsPtrOutput) Uris() pulumi.StringArrayOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupAutoAcceptInput)(nil)).Elem(), GroupAutoAcceptArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupAutoAcceptPtrInput)(nil)).Elem(), GroupAutoAcceptArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HubRoutingVpcInput)(nil)).Elem(), HubRoutingVpcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HubRoutingVpcArrayInput)(nil)).Elem(), HubRoutingVpcArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InternalRangeMigrationInput)(nil)).Elem(), InternalRangeMigrationArgs{})
@@ -2439,6 +2795,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceConnectionPolicyPscConnectionErrorInfoPtrInput)(nil)).Elem(), ServiceConnectionPolicyPscConnectionErrorInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpokeLinkedInterconnectAttachmentsInput)(nil)).Elem(), SpokeLinkedInterconnectAttachmentsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpokeLinkedInterconnectAttachmentsPtrInput)(nil)).Elem(), SpokeLinkedInterconnectAttachmentsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpokeLinkedProducerVpcNetworkInput)(nil)).Elem(), SpokeLinkedProducerVpcNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpokeLinkedProducerVpcNetworkPtrInput)(nil)).Elem(), SpokeLinkedProducerVpcNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpokeLinkedRouterApplianceInstancesInput)(nil)).Elem(), SpokeLinkedRouterApplianceInstancesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpokeLinkedRouterApplianceInstancesPtrInput)(nil)).Elem(), SpokeLinkedRouterApplianceInstancesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpokeLinkedRouterApplianceInstancesInstanceInput)(nil)).Elem(), SpokeLinkedRouterApplianceInstancesInstanceArgs{})
@@ -2447,6 +2805,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SpokeLinkedVpcNetworkPtrInput)(nil)).Elem(), SpokeLinkedVpcNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpokeLinkedVpnTunnelsInput)(nil)).Elem(), SpokeLinkedVpnTunnelsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpokeLinkedVpnTunnelsPtrInput)(nil)).Elem(), SpokeLinkedVpnTunnelsArgs{})
+	pulumi.RegisterOutputType(GroupAutoAcceptOutput{})
+	pulumi.RegisterOutputType(GroupAutoAcceptPtrOutput{})
 	pulumi.RegisterOutputType(HubRoutingVpcOutput{})
 	pulumi.RegisterOutputType(HubRoutingVpcArrayOutput{})
 	pulumi.RegisterOutputType(InternalRangeMigrationOutput{})
@@ -2469,6 +2829,8 @@ func init() {
 	pulumi.RegisterOutputType(ServiceConnectionPolicyPscConnectionErrorInfoPtrOutput{})
 	pulumi.RegisterOutputType(SpokeLinkedInterconnectAttachmentsOutput{})
 	pulumi.RegisterOutputType(SpokeLinkedInterconnectAttachmentsPtrOutput{})
+	pulumi.RegisterOutputType(SpokeLinkedProducerVpcNetworkOutput{})
+	pulumi.RegisterOutputType(SpokeLinkedProducerVpcNetworkPtrOutput{})
 	pulumi.RegisterOutputType(SpokeLinkedRouterApplianceInstancesOutput{})
 	pulumi.RegisterOutputType(SpokeLinkedRouterApplianceInstancesPtrOutput{})
 	pulumi.RegisterOutputType(SpokeLinkedRouterApplianceInstancesInstanceOutput{})

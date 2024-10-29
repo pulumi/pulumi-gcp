@@ -598,11 +598,29 @@ namespace Pulumi.Gcp.Diagflow
     ///             {
     ///                 Uri = bucket.Url.Apply(url =&gt; $"{url}/prefix-"),
     ///             },
+    ///             SpeechSettings = new Gcp.Diagflow.Inputs.CxFlowAdvancedSettingsSpeechSettingsArgs
+    ///             {
+    ///                 EndpointerSensitivity = 30,
+    ///                 NoSpeechTimeout = "3.500s",
+    ///                 UseTimeoutBasedEndpointing = true,
+    ///                 Models = 
+    ///                 {
+    ///                     { "name", "wrench" },
+    ///                     { "mass", "1.3kg" },
+    ///                     { "count", "3" },
+    ///                 },
+    ///             },
     ///             DtmfSettings = new Gcp.Diagflow.Inputs.CxFlowAdvancedSettingsDtmfSettingsArgs
     ///             {
     ///                 Enabled = true,
     ///                 MaxDigits = 1,
     ///                 FinishDigit = "#",
+    ///             },
+    ///             LoggingSettings = new Gcp.Diagflow.Inputs.CxFlowAdvancedSettingsLoggingSettingsArgs
+    ///             {
+    ///                 EnableStackdriverLogging = true,
+    ///                 EnableInteractionLogging = true,
+    ///                 EnableConsentBasedRedaction = true,
     ///             },
     ///         },
     ///     });

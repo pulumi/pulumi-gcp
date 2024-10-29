@@ -18,14 +18,16 @@ public final class NetworkFirewallPolicyRuleMatchLayer4ConfigArgs extends com.pu
     public static final NetworkFirewallPolicyRuleMatchLayer4ConfigArgs Empty = new NetworkFirewallPolicyRuleMatchLayer4ConfigArgs();
 
     /**
-     * The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (`tcp`, `udp`, `icmp`, `esp`, `ah`, `ipip`, `sctp`), or the IP protocol number.
+     * The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule.
+     * This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
      * 
      */
     @Import(name="ipProtocol", required=true)
     private Output<String> ipProtocol;
 
     /**
-     * @return The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (`tcp`, `udp`, `icmp`, `esp`, `ah`, `ipip`, `sctp`), or the IP protocol number.
+     * @return The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule.
+     * This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
      * 
      */
     public Output<String> ipProtocol() {
@@ -33,14 +35,16 @@ public final class NetworkFirewallPolicyRuleMatchLayer4ConfigArgs extends com.pu
     }
 
     /**
-     * An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
+     * An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+     * Example inputs include: [&#34;22&#34;], [&#34;80&#34;,&#34;443&#34;], and [&#34;12345-12349&#34;].
      * 
      */
     @Import(name="ports")
     private @Nullable Output<List<String>> ports;
 
     /**
-     * @return An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
+     * @return An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+     * Example inputs include: [&#34;22&#34;], [&#34;80&#34;,&#34;443&#34;], and [&#34;12345-12349&#34;].
      * 
      */
     public Optional<Output<List<String>>> ports() {
@@ -73,7 +77,8 @@ public final class NetworkFirewallPolicyRuleMatchLayer4ConfigArgs extends com.pu
         }
 
         /**
-         * @param ipProtocol The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (`tcp`, `udp`, `icmp`, `esp`, `ah`, `ipip`, `sctp`), or the IP protocol number.
+         * @param ipProtocol The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule.
+         * This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
          * 
          * @return builder
          * 
@@ -84,7 +89,8 @@ public final class NetworkFirewallPolicyRuleMatchLayer4ConfigArgs extends com.pu
         }
 
         /**
-         * @param ipProtocol The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (`tcp`, `udp`, `icmp`, `esp`, `ah`, `ipip`, `sctp`), or the IP protocol number.
+         * @param ipProtocol The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule.
+         * This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
          * 
          * @return builder
          * 
@@ -94,7 +100,8 @@ public final class NetworkFirewallPolicyRuleMatchLayer4ConfigArgs extends com.pu
         }
 
         /**
-         * @param ports An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
+         * @param ports An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+         * Example inputs include: [&#34;22&#34;], [&#34;80&#34;,&#34;443&#34;], and [&#34;12345-12349&#34;].
          * 
          * @return builder
          * 
@@ -105,7 +112,8 @@ public final class NetworkFirewallPolicyRuleMatchLayer4ConfigArgs extends com.pu
         }
 
         /**
-         * @param ports An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
+         * @param ports An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+         * Example inputs include: [&#34;22&#34;], [&#34;80&#34;,&#34;443&#34;], and [&#34;12345-12349&#34;].
          * 
          * @return builder
          * 
@@ -115,7 +123,8 @@ public final class NetworkFirewallPolicyRuleMatchLayer4ConfigArgs extends com.pu
         }
 
         /**
-         * @param ports An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
+         * @param ports An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+         * Example inputs include: [&#34;22&#34;], [&#34;80&#34;,&#34;443&#34;], and [&#34;12345-12349&#34;].
          * 
          * @return builder
          * 

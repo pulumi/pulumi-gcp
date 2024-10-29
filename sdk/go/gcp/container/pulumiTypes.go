@@ -48393,7 +48393,7 @@ func (o GetClusterIpAllocationPolicyPodCidrOverprovisionConfigArrayOutput) Index
 }
 
 type GetClusterLoggingConfig struct {
-	// GKE components exposing logs. Valid values include SYSTEM_COMPONENTS, APISERVER, CONTROLLER_MANAGER, SCHEDULER, and WORKLOADS.
+	// GKE components exposing logs. Valid values include SYSTEM_COMPONENTS, APISERVER, CONTROLLER_MANAGER, KCP_CONNECTION, KCP_SSHD, SCHEDULER, and WORKLOADS.
 	EnableComponents []string `pulumi:"enableComponents"`
 }
 
@@ -48409,7 +48409,7 @@ type GetClusterLoggingConfigInput interface {
 }
 
 type GetClusterLoggingConfigArgs struct {
-	// GKE components exposing logs. Valid values include SYSTEM_COMPONENTS, APISERVER, CONTROLLER_MANAGER, SCHEDULER, and WORKLOADS.
+	// GKE components exposing logs. Valid values include SYSTEM_COMPONENTS, APISERVER, CONTROLLER_MANAGER, KCP_CONNECTION, KCP_SSHD, SCHEDULER, and WORKLOADS.
 	EnableComponents pulumi.StringArrayInput `pulumi:"enableComponents"`
 }
 
@@ -48464,7 +48464,7 @@ func (o GetClusterLoggingConfigOutput) ToGetClusterLoggingConfigOutputWithContex
 	return o
 }
 
-// GKE components exposing logs. Valid values include SYSTEM_COMPONENTS, APISERVER, CONTROLLER_MANAGER, SCHEDULER, and WORKLOADS.
+// GKE components exposing logs. Valid values include SYSTEM_COMPONENTS, APISERVER, CONTROLLER_MANAGER, KCP_CONNECTION, KCP_SSHD, SCHEDULER, and WORKLOADS.
 func (o GetClusterLoggingConfigOutput) EnableComponents() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetClusterLoggingConfig) []string { return v.EnableComponents }).(pulumi.StringArrayOutput)
 }

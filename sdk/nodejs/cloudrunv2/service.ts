@@ -486,6 +486,26 @@ import * as utilities from "../utilities";
  *     dependsOn: [waitForMesh],
  * });
  * ```
+ * ### Cloudrunv2 Service Invokeriam
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.cloudrunv2.Service("default", {
+ *     name: "cloudrun-service",
+ *     location: "us-central1",
+ *     deletionProtection: false,
+ *     invokerIamDisabled: true,
+ *     description: "The serving URL of this service will not perform any IAM check when invoked",
+ *     ingress: "INGRESS_TRAFFIC_ALL",
+ *     template: {
+ *         containers: [{
+ *             image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *         }],
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -617,6 +637,11 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly ingress!: pulumi.Output<string>;
     /**
+     * Disables IAM permission check for run.routes.invoke for callers of this service. This feature is available by invitation
+     * only. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
+     */
+    public readonly invokerIamDisabled!: pulumi.Output<boolean | undefined>;
+    /**
      * Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
      * Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment,
      * state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
@@ -742,6 +767,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["expireTime"] = state ? state.expireTime : undefined;
             resourceInputs["generation"] = state ? state.generation : undefined;
             resourceInputs["ingress"] = state ? state.ingress : undefined;
+            resourceInputs["invokerIamDisabled"] = state ? state.invokerIamDisabled : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["lastModifier"] = state ? state.lastModifier : undefined;
             resourceInputs["latestCreatedRevision"] = state ? state.latestCreatedRevision : undefined;
@@ -778,6 +804,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["ingress"] = args ? args.ingress : undefined;
+            resourceInputs["invokerIamDisabled"] = args ? args.invokerIamDisabled : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["launchStage"] = args ? args.launchStage : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
@@ -895,6 +922,11 @@ export interface ServiceState {
      * "INGRESS_TRAFFIC_INTERNAL_ONLY", "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"]
      */
     ingress?: pulumi.Input<string>;
+    /**
+     * Disables IAM permission check for run.routes.invoke for callers of this service. This feature is available by invitation
+     * only. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
+     */
+    invokerIamDisabled?: pulumi.Input<boolean>;
     /**
      * Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
      * Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment,
@@ -1038,6 +1070,11 @@ export interface ServiceArgs {
      * "INGRESS_TRAFFIC_INTERNAL_ONLY", "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"]
      */
     ingress?: pulumi.Input<string>;
+    /**
+     * Disables IAM permission check for run.routes.invoke for callers of this service. This feature is available by invitation
+     * only. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
+     */
+    invokerIamDisabled?: pulumi.Input<boolean>;
     /**
      * Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
      * Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment,

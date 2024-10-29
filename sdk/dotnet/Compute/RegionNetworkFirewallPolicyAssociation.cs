@@ -12,9 +12,14 @@ namespace Pulumi.Gcp.Compute
     /// <summary>
     /// The Compute NetworkFirewallPolicyAssociation resource
     /// 
+    /// To get more information about RegionNetworkFirewallPolicyAssociation, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionNetworkFirewallPolicies/addAssociation)
+    /// 
     /// ## Example Usage
     /// 
-    /// ### Regional
+    /// ### Region Network Firewall Policy Association
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -23,25 +28,26 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var basicRegionalNetworkFirewallPolicy = new Gcp.Compute.RegionNetworkFirewallPolicy("basic_regional_network_firewall_policy", new()
+    ///     var policy = new Gcp.Compute.RegionNetworkFirewallPolicy("policy", new()
     ///     {
-    ///         Name = "policy",
+    ///         Name = "my-policy",
     ///         Project = "my-project-name",
     ///         Description = "Sample global network firewall policy",
     ///         Region = "us-west1",
     ///     });
     /// 
-    ///     var basicNetwork = new Gcp.Compute.Network("basic_network", new()
+    ///     var network = new Gcp.Compute.Network("network", new()
     ///     {
-    ///         Name = "network",
+    ///         Name = "my-network",
+    ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
-    ///     var primary = new Gcp.Compute.RegionNetworkFirewallPolicyAssociation("primary", new()
+    ///     var @default = new Gcp.Compute.RegionNetworkFirewallPolicyAssociation("default", new()
     ///     {
-    ///         Name = "association",
-    ///         AttachmentTarget = basicNetwork.Id,
-    ///         FirewallPolicy = basicRegionalNetworkFirewallPolicy.Name,
+    ///         Name = "my-association",
     ///         Project = "my-project-name",
+    ///         AttachmentTarget = network.Id,
+    ///         FirewallPolicy = policy.Id,
     ///         Region = "us-west1",
     ///     });
     /// 
@@ -50,13 +56,19 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ## Import
     /// 
-    /// NetworkFirewallPolicyAssociation can be imported using any of these accepted formats:
+    /// RegionNetworkFirewallPolicyAssociation can be imported using any of these accepted formats:
     /// 
     /// * `projects/{{project}}/regions/{{region}}/firewallPolicies/{{firewall_policy}}/associations/{{name}}`
     /// 
     /// * `{{project}}/{{region}}/{{firewall_policy}}/{{name}}`
     /// 
-    /// When using the `pulumi import` command, NetworkFirewallPolicyAssociation can be imported using one of the formats above. For example:
+    /// * `{{region}}/{{firewall_policy}}/{{name}}`
+    /// 
+    /// * `{{project}}/{{firewall_policy}}/{{name}}`
+    /// 
+    /// * `{{firewall_policy}}/{{name}}`
+    /// 
+    /// When using the `pulumi import` command, RegionNetworkFirewallPolicyAssociation can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation default projects/{{project}}/regions/{{region}}/firewallPolicies/{{firewall_policy}}/associations/{{name}}
@@ -64,6 +76,18 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ```sh
     /// $ pulumi import gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation default {{project}}/{{region}}/{{firewall_policy}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    /// $ pulumi import gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation default {{region}}/{{firewall_policy}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    /// $ pulumi import gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation default {{project}}/{{firewall_policy}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    /// $ pulumi import gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation default {{firewall_policy}}/{{name}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation")]
@@ -76,23 +100,23 @@ namespace Pulumi.Gcp.Compute
         public Output<string> AttachmentTarget { get; private set; } = null!;
 
         /// <summary>
-        /// The firewall policy ID of the association.
+        /// The firewall policy of the resource.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("firewallPolicy")]
         public Output<string> FirewallPolicy { get; private set; } = null!;
 
         /// <summary>
         /// The name for an association.
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The project for the resource
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -162,23 +186,23 @@ namespace Pulumi.Gcp.Compute
         public Input<string> AttachmentTarget { get; set; } = null!;
 
         /// <summary>
-        /// The firewall policy ID of the association.
+        /// The firewall policy of the resource.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("firewallPolicy", required: true)]
         public Input<string> FirewallPolicy { get; set; } = null!;
 
         /// <summary>
         /// The name for an association.
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The project for the resource
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -204,23 +228,23 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? AttachmentTarget { get; set; }
 
         /// <summary>
-        /// The firewall policy ID of the association.
+        /// The firewall policy of the resource.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("firewallPolicy")]
         public Input<string>? FirewallPolicy { get; set; }
 
         /// <summary>
         /// The name for an association.
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The project for the resource
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }

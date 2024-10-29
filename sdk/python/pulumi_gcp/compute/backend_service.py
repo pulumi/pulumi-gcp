@@ -35,6 +35,7 @@ class BackendServiceArgs:
                  enable_cdn: Optional[pulumi.Input[bool]] = None,
                  health_checks: Optional[pulumi.Input[str]] = None,
                  iap: Optional[pulumi.Input['BackendServiceIapArgs']] = None,
+                 ip_address_selection_policy: Optional[pulumi.Input[str]] = None,
                  load_balancing_scheme: Optional[pulumi.Input[str]] = None,
                  locality_lb_policies: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceLocalityLbPolicyArgs']]]] = None,
                  locality_lb_policy: Optional[pulumi.Input[str]] = None,
@@ -92,6 +93,8 @@ class BackendServiceArgs:
                For internal load balancing, a URL to a HealthCheck resource must be specified instead.
         :param pulumi.Input['BackendServiceIapArgs'] iap: Settings for enabling Cloud Identity Aware Proxy
                Structure is documented below.
+        :param pulumi.Input[str] ip_address_selection_policy: Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
+               Possible values are: `IPV4_ONLY`, `PREFER_IPV6`, `IPV6_ONLY`.
         :param pulumi.Input[str] load_balancing_scheme: Indicates whether the backend service will be used with internal or
                external load balancing. A backend service created for one type of
                load balancing cannot be used with the other. For more information, refer to
@@ -225,6 +228,8 @@ class BackendServiceArgs:
             pulumi.set(__self__, "health_checks", health_checks)
         if iap is not None:
             pulumi.set(__self__, "iap", iap)
+        if ip_address_selection_policy is not None:
+            pulumi.set(__self__, "ip_address_selection_policy", ip_address_selection_policy)
         if load_balancing_scheme is not None:
             pulumi.set(__self__, "load_balancing_scheme", load_balancing_scheme)
         if locality_lb_policies is not None:
@@ -449,6 +454,19 @@ class BackendServiceArgs:
     @iap.setter
     def iap(self, value: Optional[pulumi.Input['BackendServiceIapArgs']]):
         pulumi.set(self, "iap", value)
+
+    @property
+    @pulumi.getter(name="ipAddressSelectionPolicy")
+    def ip_address_selection_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
+        Possible values are: `IPV4_ONLY`, `PREFER_IPV6`, `IPV6_ONLY`.
+        """
+        return pulumi.get(self, "ip_address_selection_policy")
+
+    @ip_address_selection_policy.setter
+    def ip_address_selection_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_address_selection_policy", value)
 
     @property
     @pulumi.getter(name="loadBalancingScheme")
@@ -740,6 +758,7 @@ class _BackendServiceState:
                  generated_id: Optional[pulumi.Input[int]] = None,
                  health_checks: Optional[pulumi.Input[str]] = None,
                  iap: Optional[pulumi.Input['BackendServiceIapArgs']] = None,
+                 ip_address_selection_policy: Optional[pulumi.Input[str]] = None,
                  load_balancing_scheme: Optional[pulumi.Input[str]] = None,
                  locality_lb_policies: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceLocalityLbPolicyArgs']]]] = None,
                  locality_lb_policy: Optional[pulumi.Input[str]] = None,
@@ -802,6 +821,8 @@ class _BackendServiceState:
                For internal load balancing, a URL to a HealthCheck resource must be specified instead.
         :param pulumi.Input['BackendServiceIapArgs'] iap: Settings for enabling Cloud Identity Aware Proxy
                Structure is documented below.
+        :param pulumi.Input[str] ip_address_selection_policy: Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
+               Possible values are: `IPV4_ONLY`, `PREFER_IPV6`, `IPV6_ONLY`.
         :param pulumi.Input[str] load_balancing_scheme: Indicates whether the backend service will be used with internal or
                external load balancing. A backend service created for one type of
                load balancing cannot be used with the other. For more information, refer to
@@ -942,6 +963,8 @@ class _BackendServiceState:
             pulumi.set(__self__, "health_checks", health_checks)
         if iap is not None:
             pulumi.set(__self__, "iap", iap)
+        if ip_address_selection_policy is not None:
+            pulumi.set(__self__, "ip_address_selection_policy", ip_address_selection_policy)
         if load_balancing_scheme is not None:
             pulumi.set(__self__, "load_balancing_scheme", load_balancing_scheme)
         if locality_lb_policies is not None:
@@ -1205,6 +1228,19 @@ class _BackendServiceState:
     @iap.setter
     def iap(self, value: Optional[pulumi.Input['BackendServiceIapArgs']]):
         pulumi.set(self, "iap", value)
+
+    @property
+    @pulumi.getter(name="ipAddressSelectionPolicy")
+    def ip_address_selection_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
+        Possible values are: `IPV4_ONLY`, `PREFER_IPV6`, `IPV6_ONLY`.
+        """
+        return pulumi.get(self, "ip_address_selection_policy")
+
+    @ip_address_selection_policy.setter
+    def ip_address_selection_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_address_selection_policy", value)
 
     @property
     @pulumi.getter(name="loadBalancingScheme")
@@ -1507,6 +1543,7 @@ class BackendService(pulumi.CustomResource):
                  enable_cdn: Optional[pulumi.Input[bool]] = None,
                  health_checks: Optional[pulumi.Input[str]] = None,
                  iap: Optional[pulumi.Input[Union['BackendServiceIapArgs', 'BackendServiceIapArgsDict']]] = None,
+                 ip_address_selection_policy: Optional[pulumi.Input[str]] = None,
                  load_balancing_scheme: Optional[pulumi.Input[str]] = None,
                  locality_lb_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BackendServiceLocalityLbPolicyArgs', 'BackendServiceLocalityLbPolicyArgsDict']]]]] = None,
                  locality_lb_policy: Optional[pulumi.Input[str]] = None,
@@ -1816,6 +1853,17 @@ class BackendService(pulumi.CustomResource):
             health_checks=default_health_check.id,
             load_balancing_scheme="EXTERNAL_MANAGED")
         ```
+        ### Backend Service Ip Address Selection Policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.BackendService("default",
+            name="backend-service",
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            ip_address_selection_policy="IPV6_ONLY")
+        ```
 
         ## Import
 
@@ -1883,6 +1931,8 @@ class BackendService(pulumi.CustomResource):
                For internal load balancing, a URL to a HealthCheck resource must be specified instead.
         :param pulumi.Input[Union['BackendServiceIapArgs', 'BackendServiceIapArgsDict']] iap: Settings for enabling Cloud Identity Aware Proxy
                Structure is documented below.
+        :param pulumi.Input[str] ip_address_selection_policy: Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
+               Possible values are: `IPV4_ONLY`, `PREFER_IPV6`, `IPV6_ONLY`.
         :param pulumi.Input[str] load_balancing_scheme: Indicates whether the backend service will be used with internal or
                external load balancing. A backend service created for one type of
                load balancing cannot be used with the other. For more information, refer to
@@ -2287,6 +2337,17 @@ class BackendService(pulumi.CustomResource):
             health_checks=default_health_check.id,
             load_balancing_scheme="EXTERNAL_MANAGED")
         ```
+        ### Backend Service Ip Address Selection Policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.BackendService("default",
+            name="backend-service",
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            ip_address_selection_policy="IPV6_ONLY")
+        ```
 
         ## Import
 
@@ -2341,6 +2402,7 @@ class BackendService(pulumi.CustomResource):
                  enable_cdn: Optional[pulumi.Input[bool]] = None,
                  health_checks: Optional[pulumi.Input[str]] = None,
                  iap: Optional[pulumi.Input[Union['BackendServiceIapArgs', 'BackendServiceIapArgsDict']]] = None,
+                 ip_address_selection_policy: Optional[pulumi.Input[str]] = None,
                  load_balancing_scheme: Optional[pulumi.Input[str]] = None,
                  locality_lb_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BackendServiceLocalityLbPolicyArgs', 'BackendServiceLocalityLbPolicyArgsDict']]]]] = None,
                  locality_lb_policy: Optional[pulumi.Input[str]] = None,
@@ -2379,6 +2441,7 @@ class BackendService(pulumi.CustomResource):
             __props__.__dict__["enable_cdn"] = enable_cdn
             __props__.__dict__["health_checks"] = health_checks
             __props__.__dict__["iap"] = iap
+            __props__.__dict__["ip_address_selection_policy"] = ip_address_selection_policy
             __props__.__dict__["load_balancing_scheme"] = load_balancing_scheme
             __props__.__dict__["locality_lb_policies"] = locality_lb_policies
             __props__.__dict__["locality_lb_policy"] = locality_lb_policy
@@ -2425,6 +2488,7 @@ class BackendService(pulumi.CustomResource):
             generated_id: Optional[pulumi.Input[int]] = None,
             health_checks: Optional[pulumi.Input[str]] = None,
             iap: Optional[pulumi.Input[Union['BackendServiceIapArgs', 'BackendServiceIapArgsDict']]] = None,
+            ip_address_selection_policy: Optional[pulumi.Input[str]] = None,
             load_balancing_scheme: Optional[pulumi.Input[str]] = None,
             locality_lb_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BackendServiceLocalityLbPolicyArgs', 'BackendServiceLocalityLbPolicyArgsDict']]]]] = None,
             locality_lb_policy: Optional[pulumi.Input[str]] = None,
@@ -2492,6 +2556,8 @@ class BackendService(pulumi.CustomResource):
                For internal load balancing, a URL to a HealthCheck resource must be specified instead.
         :param pulumi.Input[Union['BackendServiceIapArgs', 'BackendServiceIapArgsDict']] iap: Settings for enabling Cloud Identity Aware Proxy
                Structure is documented below.
+        :param pulumi.Input[str] ip_address_selection_policy: Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
+               Possible values are: `IPV4_ONLY`, `PREFER_IPV6`, `IPV6_ONLY`.
         :param pulumi.Input[str] load_balancing_scheme: Indicates whether the backend service will be used with internal or
                external load balancing. A backend service created for one type of
                load balancing cannot be used with the other. For more information, refer to
@@ -2619,6 +2685,7 @@ class BackendService(pulumi.CustomResource):
         __props__.__dict__["generated_id"] = generated_id
         __props__.__dict__["health_checks"] = health_checks
         __props__.__dict__["iap"] = iap
+        __props__.__dict__["ip_address_selection_policy"] = ip_address_selection_policy
         __props__.__dict__["load_balancing_scheme"] = load_balancing_scheme
         __props__.__dict__["locality_lb_policies"] = locality_lb_policies
         __props__.__dict__["locality_lb_policy"] = locality_lb_policy
@@ -2799,6 +2866,15 @@ class BackendService(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "iap")
+
+    @property
+    @pulumi.getter(name="ipAddressSelectionPolicy")
+    def ip_address_selection_policy(self) -> pulumi.Output[Optional[str]]:
+        """
+        Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
+        Possible values are: `IPV4_ONLY`, `PREFER_IPV6`, `IPV6_ONLY`.
+        """
+        return pulumi.get(self, "ip_address_selection_policy")
 
     @property
     @pulumi.getter(name="loadBalancingScheme")

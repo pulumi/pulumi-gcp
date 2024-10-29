@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Get the value and metadata from a Secret Manager regional secret version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/regional-secrets-overview) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions). If you don't need the metadata (i.e., if you want to use a more limited role to access the regional secret version only), see also the secretmanager.getRegionalSecretVersionAccess datasource.
+// Get the value and metadata from a Secret Manager regional secret version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/regional-secrets-overview) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.locations.secrets.versions). If you don't need the metadata (i.e., if you want to use a more limited role to access the regional secret version only), see also the secretmanager.getRegionalSecretVersionAccess datasource.
 //
 // ## Example Usage
 //
@@ -51,6 +51,9 @@ func LookupRegionalSecretVersion(ctx *pulumi.Context, args *LookupRegionalSecret
 
 // A collection of arguments for invoking getRegionalSecretVersion.
 type LookupRegionalSecretVersionArgs struct {
+	// If set to 'true', the secret data is
+	// expected to be base64-encoded string.
+	IsSecretDataBase64 *bool `pulumi:"isSecretDataBase64"`
 	// Location of Secret Manager regional secret resource.
 	// It must be provided when the `secret` field provided consists of only the name of the regional secret.
 	Location *string `pulumi:"location"`
@@ -76,8 +79,9 @@ type LookupRegionalSecretVersionResult struct {
 	// True if the current state of the regional SecretVersion is enabled.
 	Enabled bool `pulumi:"enabled"`
 	// The provider-assigned unique ID for this managed resource.
-	Id       string `pulumi:"id"`
-	Location string `pulumi:"location"`
+	Id                 string `pulumi:"id"`
+	IsSecretDataBase64 *bool  `pulumi:"isSecretDataBase64"`
+	Location           string `pulumi:"location"`
 	// The resource name of the regional SecretVersion. Format:
 	// `projects/{{project}}/locations/{{location}}/secrets/{{secret_id}}/versions/{{version}}`
 	Name    string `pulumi:"name"`
@@ -109,6 +113,9 @@ func LookupRegionalSecretVersionOutput(ctx *pulumi.Context, args LookupRegionalS
 
 // A collection of arguments for invoking getRegionalSecretVersion.
 type LookupRegionalSecretVersionOutputArgs struct {
+	// If set to 'true', the secret data is
+	// expected to be base64-encoded string.
+	IsSecretDataBase64 pulumi.BoolPtrInput `pulumi:"isSecretDataBase64"`
 	// Location of Secret Manager regional secret resource.
 	// It must be provided when the `secret` field provided consists of only the name of the regional secret.
 	Location pulumi.StringPtrInput `pulumi:"location"`
@@ -167,6 +174,10 @@ func (o LookupRegionalSecretVersionResultOutput) Enabled() pulumi.BoolOutput {
 // The provider-assigned unique ID for this managed resource.
 func (o LookupRegionalSecretVersionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionalSecretVersionResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupRegionalSecretVersionResultOutput) IsSecretDataBase64() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupRegionalSecretVersionResult) *bool { return v.IsSecretDataBase64 }).(pulumi.BoolPtrOutput)
 }
 
 func (o LookupRegionalSecretVersionResultOutput) Location() pulumi.StringOutput {

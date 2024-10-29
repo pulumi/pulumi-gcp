@@ -418,8 +418,7 @@ class Feature(pulumi.CustomResource):
                 "gke_cluster": {
                     "resource_link": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
                 },
-            },
-            description="Membership")
+            })
         feature = gcp.gkehub.Feature("feature",
             name="multiclusteringress",
             location="global",
@@ -765,8 +764,7 @@ class Feature(pulumi.CustomResource):
                 "gke_cluster": {
                     "resource_link": cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
                 },
-            },
-            description="Membership")
+            })
         feature = gcp.gkehub.Feature("feature",
             name="multiclusteringress",
             location="global",

@@ -34,6 +34,7 @@ class InstanceFromTemplateArgs:
                  enable_display: Optional[pulumi.Input[bool]] = None,
                  guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateGuestAcceleratorArgs']]]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
+                 key_revocation_action_type: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -74,6 +75,8 @@ class InstanceFromTemplateArgs:
         :param pulumi.Input[str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
                labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
                exceed 253 characters. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] key_revocation_action_type: Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
+               default.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
                the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
                the resource.
@@ -129,6 +132,8 @@ class InstanceFromTemplateArgs:
             pulumi.set(__self__, "guest_accelerators", guest_accelerators)
         if hostname is not None:
             pulumi.set(__self__, "hostname", hostname)
+        if key_revocation_action_type is not None:
+            pulumi.set(__self__, "key_revocation_action_type", key_revocation_action_type)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if machine_type is not None:
@@ -327,6 +332,19 @@ class InstanceFromTemplateArgs:
     @hostname.setter
     def hostname(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "hostname", value)
+
+    @property
+    @pulumi.getter(name="keyRevocationActionType")
+    def key_revocation_action_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
+        default.
+        """
+        return pulumi.get(self, "key_revocation_action_type")
+
+    @key_revocation_action_type.setter
+    def key_revocation_action_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_revocation_action_type", value)
 
     @property
     @pulumi.getter
@@ -577,6 +595,7 @@ class _InstanceFromTemplateState:
                  can_ip_forward: Optional[pulumi.Input[bool]] = None,
                  confidential_instance_config: Optional[pulumi.Input['InstanceFromTemplateConfidentialInstanceConfigArgs']] = None,
                  cpu_platform: Optional[pulumi.Input[str]] = None,
+                 creation_timestamp: Optional[pulumi.Input[str]] = None,
                  current_status: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -586,6 +605,7 @@ class _InstanceFromTemplateState:
                  guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceFromTemplateGuestAcceleratorArgs']]]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
+                 key_revocation_action_type: Optional[pulumi.Input[str]] = None,
                  label_fingerprint: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
@@ -620,6 +640,7 @@ class _InstanceFromTemplateState:
         :param pulumi.Input['InstanceFromTemplateConfidentialInstanceConfigArgs'] confidential_instance_config: The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
                to create.
         :param pulumi.Input[str] cpu_platform: The CPU platform used by this instance.
+        :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] current_status: Current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING,
                SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance
                life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
@@ -632,6 +653,8 @@ class _InstanceFromTemplateState:
                labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
                exceed 253 characters. Changing this forces a new resource to be created.
         :param pulumi.Input[str] instance_id: The server-assigned unique identifier of this instance.
+        :param pulumi.Input[str] key_revocation_action_type: Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
+               default.
         :param pulumi.Input[str] label_fingerprint: The unique fingerprint of the labels.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
                the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
@@ -686,6 +709,8 @@ class _InstanceFromTemplateState:
             pulumi.set(__self__, "confidential_instance_config", confidential_instance_config)
         if cpu_platform is not None:
             pulumi.set(__self__, "cpu_platform", cpu_platform)
+        if creation_timestamp is not None:
+            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if current_status is not None:
             pulumi.set(__self__, "current_status", current_status)
         if deletion_protection is not None:
@@ -704,6 +729,8 @@ class _InstanceFromTemplateState:
             pulumi.set(__self__, "hostname", hostname)
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
+        if key_revocation_action_type is not None:
+            pulumi.set(__self__, "key_revocation_action_type", key_revocation_action_type)
         if label_fingerprint is not None:
             pulumi.set(__self__, "label_fingerprint", label_fingerprint)
         if labels is not None:
@@ -838,6 +865,18 @@ class _InstanceFromTemplateState:
         pulumi.set(self, "cpu_platform", value)
 
     @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> Optional[pulumi.Input[str]]:
+        """
+        Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @creation_timestamp.setter
+    def creation_timestamp(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "creation_timestamp", value)
+
+    @property
     @pulumi.getter(name="currentStatus")
     def current_status(self) -> Optional[pulumi.Input[str]]:
         """
@@ -945,6 +984,19 @@ class _InstanceFromTemplateState:
     @instance_id.setter
     def instance_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "instance_id", value)
+
+    @property
+    @pulumi.getter(name="keyRevocationActionType")
+    def key_revocation_action_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
+        default.
+        """
+        return pulumi.get(self, "key_revocation_action_type")
+
+    @key_revocation_action_type.setter
+    def key_revocation_action_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_revocation_action_type", value)
 
     @property
     @pulumi.getter(name="labelFingerprint")
@@ -1278,6 +1330,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
                  enable_display: Optional[pulumi.Input[bool]] = None,
                  guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceFromTemplateGuestAcceleratorArgs', 'InstanceFromTemplateGuestAcceleratorArgsDict']]]]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
+                 key_revocation_action_type: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1361,6 +1414,8 @@ class InstanceFromTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] hostname: A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid. Valid format is a series of
                labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
                exceed 253 characters. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] key_revocation_action_type: Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
+               default.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
                the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
                the resource.
@@ -1475,6 +1530,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
                  enable_display: Optional[pulumi.Input[bool]] = None,
                  guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceFromTemplateGuestAcceleratorArgs', 'InstanceFromTemplateGuestAcceleratorArgsDict']]]]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
+                 key_revocation_action_type: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1516,6 +1572,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
             __props__.__dict__["enable_display"] = enable_display
             __props__.__dict__["guest_accelerators"] = guest_accelerators
             __props__.__dict__["hostname"] = hostname
+            __props__.__dict__["key_revocation_action_type"] = key_revocation_action_type
             __props__.__dict__["labels"] = labels
             __props__.__dict__["machine_type"] = machine_type
             __props__.__dict__["metadata"] = metadata
@@ -1539,6 +1596,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
             __props__.__dict__["tags"] = tags
             __props__.__dict__["zone"] = zone
             __props__.__dict__["cpu_platform"] = None
+            __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["current_status"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["instance_id"] = None
@@ -1566,6 +1624,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
             can_ip_forward: Optional[pulumi.Input[bool]] = None,
             confidential_instance_config: Optional[pulumi.Input[Union['InstanceFromTemplateConfidentialInstanceConfigArgs', 'InstanceFromTemplateConfidentialInstanceConfigArgsDict']]] = None,
             cpu_platform: Optional[pulumi.Input[str]] = None,
+            creation_timestamp: Optional[pulumi.Input[str]] = None,
             current_status: Optional[pulumi.Input[str]] = None,
             deletion_protection: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -1575,6 +1634,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
             guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceFromTemplateGuestAcceleratorArgs', 'InstanceFromTemplateGuestAcceleratorArgsDict']]]]] = None,
             hostname: Optional[pulumi.Input[str]] = None,
             instance_id: Optional[pulumi.Input[str]] = None,
+            key_revocation_action_type: Optional[pulumi.Input[str]] = None,
             label_fingerprint: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             machine_type: Optional[pulumi.Input[str]] = None,
@@ -1614,6 +1674,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
         :param pulumi.Input[Union['InstanceFromTemplateConfidentialInstanceConfigArgs', 'InstanceFromTemplateConfidentialInstanceConfigArgsDict']] confidential_instance_config: The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
                to create.
         :param pulumi.Input[str] cpu_platform: The CPU platform used by this instance.
+        :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] current_status: Current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING,
                SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance
                life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
@@ -1626,6 +1687,8 @@ class InstanceFromTemplate(pulumi.CustomResource):
                labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
                exceed 253 characters. Changing this forces a new resource to be created.
         :param pulumi.Input[str] instance_id: The server-assigned unique identifier of this instance.
+        :param pulumi.Input[str] key_revocation_action_type: Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
+               default.
         :param pulumi.Input[str] label_fingerprint: The unique fingerprint of the labels.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
                the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
@@ -1677,6 +1740,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
         __props__.__dict__["can_ip_forward"] = can_ip_forward
         __props__.__dict__["confidential_instance_config"] = confidential_instance_config
         __props__.__dict__["cpu_platform"] = cpu_platform
+        __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["current_status"] = current_status
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["description"] = description
@@ -1686,6 +1750,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
         __props__.__dict__["guest_accelerators"] = guest_accelerators
         __props__.__dict__["hostname"] = hostname
         __props__.__dict__["instance_id"] = instance_id
+        __props__.__dict__["key_revocation_action_type"] = key_revocation_action_type
         __props__.__dict__["label_fingerprint"] = label_fingerprint
         __props__.__dict__["labels"] = labels
         __props__.__dict__["machine_type"] = machine_type
@@ -1768,6 +1833,14 @@ class InstanceFromTemplate(pulumi.CustomResource):
         return pulumi.get(self, "cpu_platform")
 
     @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> pulumi.Output[str]:
+        """
+        Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @property
     @pulumi.getter(name="currentStatus")
     def current_status(self) -> pulumi.Output[str]:
         """
@@ -1839,6 +1912,15 @@ class InstanceFromTemplate(pulumi.CustomResource):
         The server-assigned unique identifier of this instance.
         """
         return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="keyRevocationActionType")
+    def key_revocation_action_type(self) -> pulumi.Output[str]:
+        """
+        Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
+        default.
+        """
+        return pulumi.get(self, "key_revocation_action_type")
 
     @property
     @pulumi.getter(name="labelFingerprint")

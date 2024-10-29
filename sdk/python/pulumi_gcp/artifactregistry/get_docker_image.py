@@ -198,6 +198,26 @@ def get_docker_image(image_name: Optional[str] = None,
     > **Note**
     Requires one of the following OAuth scopes: `https://www.googleapis.com/auth/cloud-platform` or `https://www.googleapis.com/auth/cloud-platform.read-only`.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_repo = gcp.artifactregistry.Repository("my_repo",
+        location="us-west1",
+        repository_id="my-repository",
+        format="DOCKER")
+    my_image = gcp.artifactregistry.get_docker_image_output(location=my_repo.location,
+        repository_id=my_repo.repository_id,
+        image_name="my-image:my-tag")
+    default = gcp.cloudrunv2.Service("default", template={
+        "containers": [{
+            "image": my_image.self_link,
+        }],
+    })
+    ```
+
 
     :param str image_name: The image name to fetch. If no digest or tag is provided, then the latest modified image will be used.
     :param str location: The location of the artifact registry.
@@ -236,6 +256,26 @@ def get_docker_image_output(image_name: Optional[pulumi.Input[str]] = None,
 
     > **Note**
     Requires one of the following OAuth scopes: `https://www.googleapis.com/auth/cloud-platform` or `https://www.googleapis.com/auth/cloud-platform.read-only`.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_repo = gcp.artifactregistry.Repository("my_repo",
+        location="us-west1",
+        repository_id="my-repository",
+        format="DOCKER")
+    my_image = gcp.artifactregistry.get_docker_image_output(location=my_repo.location,
+        repository_id=my_repo.repository_id,
+        image_name="my-image:my-tag")
+    default = gcp.cloudrunv2.Service("default", template={
+        "containers": [{
+            "image": my_image.self_link,
+        }],
+    })
+    ```
 
 
     :param str image_name: The image name to fetch. If no digest or tag is provided, then the latest modified image will be used.

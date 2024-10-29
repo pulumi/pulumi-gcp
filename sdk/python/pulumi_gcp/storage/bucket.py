@@ -29,6 +29,7 @@ class BucketArgs:
                  enable_object_retention: Optional[pulumi.Input[bool]] = None,
                  encryption: Optional[pulumi.Input['BucketEncryptionArgs']] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
+                 hierarchical_namespace: Optional[pulumi.Input['BucketHierarchicalNamespaceArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]]] = None,
                  logging: Optional[pulumi.Input['BucketLoggingArgs']] = None,
@@ -57,6 +58,7 @@ class BucketArgs:
         :param pulumi.Input[bool] force_destroy: When deleting a bucket, this
                boolean option will delete all contained objects. If you try to delete a
                bucket that contains objects, the provider will fail that run.
+        :param pulumi.Input['BucketHierarchicalNamespaceArgs'] hierarchical_namespace: The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value label pairs to assign to the bucket.
         :param pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]] lifecycle_rules: The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input['BucketLoggingArgs'] logging: The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
@@ -89,6 +91,8 @@ class BucketArgs:
             pulumi.set(__self__, "encryption", encryption)
         if force_destroy is not None:
             pulumi.set(__self__, "force_destroy", force_destroy)
+        if hierarchical_namespace is not None:
+            pulumi.set(__self__, "hierarchical_namespace", hierarchical_namespace)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if lifecycle_rules is not None:
@@ -217,6 +221,18 @@ class BucketArgs:
     @force_destroy.setter
     def force_destroy(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "force_destroy", value)
+
+    @property
+    @pulumi.getter(name="hierarchicalNamespace")
+    def hierarchical_namespace(self) -> Optional[pulumi.Input['BucketHierarchicalNamespaceArgs']]:
+        """
+        The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below.
+        """
+        return pulumi.get(self, "hierarchical_namespace")
+
+    @hierarchical_namespace.setter
+    def hierarchical_namespace(self, value: Optional[pulumi.Input['BucketHierarchicalNamespaceArgs']]):
+        pulumi.set(self, "hierarchical_namespace", value)
 
     @property
     @pulumi.getter
@@ -400,6 +416,7 @@ class _BucketState:
                  enable_object_retention: Optional[pulumi.Input[bool]] = None,
                  encryption: Optional[pulumi.Input['BucketEncryptionArgs']] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
+                 hierarchical_namespace: Optional[pulumi.Input['BucketHierarchicalNamespaceArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -430,6 +447,7 @@ class _BucketState:
         :param pulumi.Input[bool] force_destroy: When deleting a bucket, this
                boolean option will delete all contained objects. If you try to delete a
                bucket that contains objects, the provider will fail that run.
+        :param pulumi.Input['BucketHierarchicalNamespaceArgs'] hierarchical_namespace: The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value label pairs to assign to the bucket.
         :param pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]] lifecycle_rules: The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input[str] location: The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
@@ -470,6 +488,8 @@ class _BucketState:
             pulumi.set(__self__, "encryption", encryption)
         if force_destroy is not None:
             pulumi.set(__self__, "force_destroy", force_destroy)
+        if hierarchical_namespace is not None:
+            pulumi.set(__self__, "hierarchical_namespace", hierarchical_namespace)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if lifecycle_rules is not None:
@@ -603,6 +623,18 @@ class _BucketState:
     @force_destroy.setter
     def force_destroy(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "force_destroy", value)
+
+    @property
+    @pulumi.getter(name="hierarchicalNamespace")
+    def hierarchical_namespace(self) -> Optional[pulumi.Input['BucketHierarchicalNamespaceArgs']]:
+        """
+        The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below.
+        """
+        return pulumi.get(self, "hierarchical_namespace")
+
+    @hierarchical_namespace.setter
+    def hierarchical_namespace(self, value: Optional[pulumi.Input['BucketHierarchicalNamespaceArgs']]):
+        pulumi.set(self, "hierarchical_namespace", value)
 
     @property
     @pulumi.getter
@@ -849,6 +881,7 @@ class Bucket(pulumi.CustomResource):
                  enable_object_retention: Optional[pulumi.Input[bool]] = None,
                  encryption: Optional[pulumi.Input[Union['BucketEncryptionArgs', 'BucketEncryptionArgsDict']]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
+                 hierarchical_namespace: Optional[pulumi.Input[Union['BucketHierarchicalNamespaceArgs', 'BucketHierarchicalNamespaceArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BucketLifecycleRuleArgs', 'BucketLifecycleRuleArgsDict']]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -1014,6 +1047,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[bool] force_destroy: When deleting a bucket, this
                boolean option will delete all contained objects. If you try to delete a
                bucket that contains objects, the provider will fail that run.
+        :param pulumi.Input[Union['BucketHierarchicalNamespaceArgs', 'BucketHierarchicalNamespaceArgsDict']] hierarchical_namespace: The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value label pairs to assign to the bucket.
         :param pulumi.Input[Sequence[pulumi.Input[Union['BucketLifecycleRuleArgs', 'BucketLifecycleRuleArgsDict']]]] lifecycle_rules: The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input[str] location: The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
@@ -1200,6 +1234,7 @@ class Bucket(pulumi.CustomResource):
                  enable_object_retention: Optional[pulumi.Input[bool]] = None,
                  encryption: Optional[pulumi.Input[Union['BucketEncryptionArgs', 'BucketEncryptionArgsDict']]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
+                 hierarchical_namespace: Optional[pulumi.Input[Union['BucketHierarchicalNamespaceArgs', 'BucketHierarchicalNamespaceArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BucketLifecycleRuleArgs', 'BucketLifecycleRuleArgsDict']]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -1231,6 +1266,7 @@ class Bucket(pulumi.CustomResource):
             __props__.__dict__["enable_object_retention"] = enable_object_retention
             __props__.__dict__["encryption"] = encryption
             __props__.__dict__["force_destroy"] = force_destroy
+            __props__.__dict__["hierarchical_namespace"] = hierarchical_namespace
             __props__.__dict__["labels"] = labels
             __props__.__dict__["lifecycle_rules"] = lifecycle_rules
             if location is None and not opts.urn:
@@ -1273,6 +1309,7 @@ class Bucket(pulumi.CustomResource):
             enable_object_retention: Optional[pulumi.Input[bool]] = None,
             encryption: Optional[pulumi.Input[Union['BucketEncryptionArgs', 'BucketEncryptionArgsDict']]] = None,
             force_destroy: Optional[pulumi.Input[bool]] = None,
+            hierarchical_namespace: Optional[pulumi.Input[Union['BucketHierarchicalNamespaceArgs', 'BucketHierarchicalNamespaceArgsDict']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BucketLifecycleRuleArgs', 'BucketLifecycleRuleArgsDict']]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
@@ -1308,6 +1345,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[bool] force_destroy: When deleting a bucket, this
                boolean option will delete all contained objects. If you try to delete a
                bucket that contains objects, the provider will fail that run.
+        :param pulumi.Input[Union['BucketHierarchicalNamespaceArgs', 'BucketHierarchicalNamespaceArgsDict']] hierarchical_namespace: The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value label pairs to assign to the bucket.
         :param pulumi.Input[Sequence[pulumi.Input[Union['BucketLifecycleRuleArgs', 'BucketLifecycleRuleArgsDict']]]] lifecycle_rules: The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input[str] location: The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
@@ -1344,6 +1382,7 @@ class Bucket(pulumi.CustomResource):
         __props__.__dict__["enable_object_retention"] = enable_object_retention
         __props__.__dict__["encryption"] = encryption
         __props__.__dict__["force_destroy"] = force_destroy
+        __props__.__dict__["hierarchical_namespace"] = hierarchical_namespace
         __props__.__dict__["labels"] = labels
         __props__.__dict__["lifecycle_rules"] = lifecycle_rules
         __props__.__dict__["location"] = location
@@ -1427,6 +1466,14 @@ class Bucket(pulumi.CustomResource):
         bucket that contains objects, the provider will fail that run.
         """
         return pulumi.get(self, "force_destroy")
+
+    @property
+    @pulumi.getter(name="hierarchicalNamespace")
+    def hierarchical_namespace(self) -> pulumi.Output[Optional['outputs.BucketHierarchicalNamespace']]:
+        """
+        The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below.
+        """
+        return pulumi.get(self, "hierarchical_namespace")
 
     @property
     @pulumi.getter

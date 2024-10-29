@@ -356,9 +356,10 @@ public class User extends com.pulumi.resources.CustomResource {
     /**
      * The user type. It determines the method to authenticate the
      * user during login. The default is the database&#39;s built-in user type. Flags
-     * include &#34;BUILT_IN&#34;, &#34;CLOUD_IAM_USER&#34;, and &#34;CLOUD_IAM_SERVICE_ACCOUNT&#34; for both
-     * [Postgres](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/users#sqlusertype) and [MySQL](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/users#sqlusertype).
-     * MySQL also includes &#34;CLOUD_IAM_GROUP&#34;, &#34;CLOUD_IAM_GROUP_USER&#34; and &#34;CLOUD_IAM_GROUP_SERVICE_ACCOUNT&#34;.
+     * include &#34;BUILT_IN&#34;, &#34;CLOUD_IAM_USER&#34;, &#34;CLOUD_IAM_SERVICE_ACCOUNT&#34;, &#34;CLOUD_IAM_GROUP&#34;,
+     * &#34;CLOUD_IAM_GROUP_USER&#34; and &#34;CLOUD_IAM_GROUP_SERVICE_ACCOUNT&#34; for
+     * [Postgres](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/users#sqlusertype)
+     * and [MySQL](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/users#sqlusertype).
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
@@ -367,9 +368,10 @@ public class User extends com.pulumi.resources.CustomResource {
     /**
      * @return The user type. It determines the method to authenticate the
      * user during login. The default is the database&#39;s built-in user type. Flags
-     * include &#34;BUILT_IN&#34;, &#34;CLOUD_IAM_USER&#34;, and &#34;CLOUD_IAM_SERVICE_ACCOUNT&#34; for both
-     * [Postgres](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/users#sqlusertype) and [MySQL](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/users#sqlusertype).
-     * MySQL also includes &#34;CLOUD_IAM_GROUP&#34;, &#34;CLOUD_IAM_GROUP_USER&#34; and &#34;CLOUD_IAM_GROUP_SERVICE_ACCOUNT&#34;.
+     * include &#34;BUILT_IN&#34;, &#34;CLOUD_IAM_USER&#34;, &#34;CLOUD_IAM_SERVICE_ACCOUNT&#34;, &#34;CLOUD_IAM_GROUP&#34;,
+     * &#34;CLOUD_IAM_GROUP_USER&#34; and &#34;CLOUD_IAM_GROUP_SERVICE_ACCOUNT&#34; for
+     * [Postgres](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/users#sqlusertype)
+     * and [MySQL](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/users#sqlusertype).
      * 
      */
     public Output<Optional<String>> type() {

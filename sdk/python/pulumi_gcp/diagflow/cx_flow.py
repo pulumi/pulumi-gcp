@@ -857,10 +857,25 @@ class CxFlow(pulumi.CustomResource):
                 "audio_export_gcs_destination": {
                     "uri": bucket.url.apply(lambda url: f"{url}/prefix-"),
                 },
+                "speech_settings": {
+                    "endpointer_sensitivity": 30,
+                    "no_speech_timeout": "3.500s",
+                    "use_timeout_based_endpointing": True,
+                    "models": {
+                        "name": "wrench",
+                        "mass": "1.3kg",
+                        "count": "3",
+                    },
+                },
                 "dtmf_settings": {
                     "enabled": True,
                     "max_digits": 1,
                     "finish_digit": "#",
+                },
+                "logging_settings": {
+                    "enable_stackdriver_logging": True,
+                    "enable_interaction_logging": True,
+                    "enable_consent_based_redaction": True,
                 },
             })
         ```
@@ -1285,10 +1300,25 @@ class CxFlow(pulumi.CustomResource):
                 "audio_export_gcs_destination": {
                     "uri": bucket.url.apply(lambda url: f"{url}/prefix-"),
                 },
+                "speech_settings": {
+                    "endpointer_sensitivity": 30,
+                    "no_speech_timeout": "3.500s",
+                    "use_timeout_based_endpointing": True,
+                    "models": {
+                        "name": "wrench",
+                        "mass": "1.3kg",
+                        "count": "3",
+                    },
+                },
                 "dtmf_settings": {
                     "enabled": True,
                     "max_digits": 1,
                     "finish_digit": "#",
+                },
+                "logging_settings": {
+                    "enable_stackdriver_logging": True,
+                    "enable_interaction_logging": True,
+                    "enable_consent_based_redaction": True,
                 },
             })
         ```

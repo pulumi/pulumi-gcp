@@ -84,6 +84,48 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
+    /// ### Iam Workload Identity Pool Provider Github Actions
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var pool = new Gcp.Iam.WorkloadIdentityPool("pool", new()
+    ///     {
+    ///         WorkloadIdentityPoolId = "example-pool",
+    ///     });
+    /// 
+    ///     var example = new Gcp.Iam.WorkloadIdentityPoolProvider("example", new()
+    ///     {
+    ///         WorkloadIdentityPoolId = pool.WorkloadIdentityPoolId,
+    ///         WorkloadIdentityPoolProviderId = "example-prvdr",
+    ///         DisplayName = "Name of provider",
+    ///         Description = "GitHub Actions identity pool provider for automated test",
+    ///         Disabled = true,
+    ///         AttributeCondition = @"    assertion.repository_owner_id == ""123456789"" &amp;&amp;
+    ///     attribute.repository == ""gh-org/gh-repo"" &amp;&amp;
+    ///     assertion.ref == ""refs/heads/main"" &amp;&amp;
+    ///     assertion.ref_type == ""branch""
+    /// ",
+    ///         AttributeMapping = 
+    ///         {
+    ///             { "google.subject", "assertion.sub" },
+    ///             { "attribute.actor", "assertion.actor" },
+    ///             { "attribute.aud", "assertion.aud" },
+    ///             { "attribute.repository", "assertion.repository" },
+    ///         },
+    ///         Oidc = new Gcp.Iam.Inputs.WorkloadIdentityPoolProviderOidcArgs
+    ///         {
+    ///             IssuerUri = "https://token.actions.githubusercontent.com",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Iam Workload Identity Pool Provider Oidc Basic
     /// 
     /// ```csharp

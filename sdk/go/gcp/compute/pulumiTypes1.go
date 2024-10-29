@@ -26775,7 +26775,7 @@ type GetInstanceAttachedDisk struct {
 	KmsKeySelfLink string `pulumi:"kmsKeySelfLink"`
 	// Read/write mode for the disk. One of `"READ_ONLY"` or `"READ_WRITE"`.
 	Mode string `pulumi:"mode"`
-	// The name or selfLink of the disk attached to this instance.
+	// The selfLink of the disk attached to this instance.
 	Source string `pulumi:"source"`
 }
 
@@ -26804,7 +26804,7 @@ type GetInstanceAttachedDiskArgs struct {
 	KmsKeySelfLink pulumi.StringInput `pulumi:"kmsKeySelfLink"`
 	// Read/write mode for the disk. One of `"READ_ONLY"` or `"READ_WRITE"`.
 	Mode pulumi.StringInput `pulumi:"mode"`
-	// The name or selfLink of the disk attached to this instance.
+	// The selfLink of the disk attached to this instance.
 	Source pulumi.StringInput `pulumi:"source"`
 }
 
@@ -26887,7 +26887,7 @@ func (o GetInstanceAttachedDiskOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceAttachedDisk) string { return v.Mode }).(pulumi.StringOutput)
 }
 
-// The name or selfLink of the disk attached to this instance.
+// The selfLink of the disk attached to this instance.
 func (o GetInstanceAttachedDiskOutput) Source() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceAttachedDisk) string { return v.Source }).(pulumi.StringOutput)
 }
@@ -26933,7 +26933,7 @@ type GetInstanceBootDisk struct {
 	KmsKeySelfLink string `pulumi:"kmsKeySelfLink"`
 	// Read/write mode for the disk. One of `"READ_ONLY"` or `"READ_WRITE"`.
 	Mode string `pulumi:"mode"`
-	// The name or selfLink of the disk attached to this instance.
+	// The selfLink of the disk attached to this instance.
 	Source string `pulumi:"source"`
 }
 
@@ -26969,7 +26969,7 @@ type GetInstanceBootDiskArgs struct {
 	KmsKeySelfLink pulumi.StringInput `pulumi:"kmsKeySelfLink"`
 	// Read/write mode for the disk. One of `"READ_ONLY"` or `"READ_WRITE"`.
 	Mode pulumi.StringInput `pulumi:"mode"`
-	// The name or selfLink of the disk attached to this instance.
+	// The selfLink of the disk attached to this instance.
 	Source pulumi.StringInput `pulumi:"source"`
 }
 
@@ -27068,7 +27068,7 @@ func (o GetInstanceBootDiskOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceBootDisk) string { return v.Mode }).(pulumi.StringOutput)
 }
 
-// The name or selfLink of the disk attached to this instance.
+// The selfLink of the disk attached to this instance.
 func (o GetInstanceBootDiskOutput) Source() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceBootDisk) string { return v.Source }).(pulumi.StringOutput)
 }
@@ -31756,6 +31756,8 @@ type GetInstanceTemplateDisk struct {
 	// Values must be between 10,000 and 120,000. For more details, see the
 	// [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
 	ProvisionedIops int `pulumi:"provisionedIops"`
+	// Indicates how much throughput to provision for the disk, in MB/s. This sets the amount of data that can be read or written from the disk per second. Values must greater than or equal to 1. For more details, see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
+	ProvisionedThroughput int `pulumi:"provisionedThroughput"`
 	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
 	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
 	// (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
@@ -31842,6 +31844,8 @@ type GetInstanceTemplateDiskArgs struct {
 	// Values must be between 10,000 and 120,000. For more details, see the
 	// [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
 	ProvisionedIops pulumi.IntInput `pulumi:"provisionedIops"`
+	// Indicates how much throughput to provision for the disk, in MB/s. This sets the amount of data that can be read or written from the disk per second. Values must greater than or equal to 1. For more details, see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
+	ProvisionedThroughput pulumi.IntInput `pulumi:"provisionedThroughput"`
 	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
 	ResourceManagerTags pulumi.StringMapInput `pulumi:"resourceManagerTags"`
 	// (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
@@ -32000,6 +32004,11 @@ func (o GetInstanceTemplateDiskOutput) Mode() pulumi.StringOutput {
 // [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
 func (o GetInstanceTemplateDiskOutput) ProvisionedIops() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceTemplateDisk) int { return v.ProvisionedIops }).(pulumi.IntOutput)
+}
+
+// Indicates how much throughput to provision for the disk, in MB/s. This sets the amount of data that can be read or written from the disk per second. Values must greater than or equal to 1. For more details, see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
+func (o GetInstanceTemplateDiskOutput) ProvisionedThroughput() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceTemplateDisk) int { return v.ProvisionedThroughput }).(pulumi.IntOutput)
 }
 
 // A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
@@ -37714,6 +37723,8 @@ type GetRegionInstanceTemplateDisk struct {
 	// Values must be between 10,000 and 120,000. For more details, see the
 	// [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
 	ProvisionedIops int `pulumi:"provisionedIops"`
+	// Indicates how much throughput to provision for the disk, in MB/s. This sets the amount of data that can be read or written from the disk per second. Values must greater than or equal to 1. For more details, see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
+	ProvisionedThroughput int `pulumi:"provisionedThroughput"`
 	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
 	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
 	// (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
@@ -37800,6 +37811,8 @@ type GetRegionInstanceTemplateDiskArgs struct {
 	// Values must be between 10,000 and 120,000. For more details, see the
 	// [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
 	ProvisionedIops pulumi.IntInput `pulumi:"provisionedIops"`
+	// Indicates how much throughput to provision for the disk, in MB/s. This sets the amount of data that can be read or written from the disk per second. Values must greater than or equal to 1. For more details, see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
+	ProvisionedThroughput pulumi.IntInput `pulumi:"provisionedThroughput"`
 	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
 	ResourceManagerTags pulumi.StringMapInput `pulumi:"resourceManagerTags"`
 	// (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
@@ -37958,6 +37971,11 @@ func (o GetRegionInstanceTemplateDiskOutput) Mode() pulumi.StringOutput {
 // [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
 func (o GetRegionInstanceTemplateDiskOutput) ProvisionedIops() pulumi.IntOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateDisk) int { return v.ProvisionedIops }).(pulumi.IntOutput)
+}
+
+// Indicates how much throughput to provision for the disk, in MB/s. This sets the amount of data that can be read or written from the disk per second. Values must greater than or equal to 1. For more details, see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
+func (o GetRegionInstanceTemplateDiskOutput) ProvisionedThroughput() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateDisk) int { return v.ProvisionedThroughput }).(pulumi.IntOutput)
 }
 
 // A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.

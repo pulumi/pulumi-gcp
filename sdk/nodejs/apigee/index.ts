@@ -10,6 +10,16 @@ export type AddonsConfig = import("./addonsConfig").AddonsConfig;
 export const AddonsConfig: typeof import("./addonsConfig").AddonsConfig = null as any;
 utilities.lazyLoad(exports, ["AddonsConfig"], () => require("./addonsConfig"));
 
+export { AppGroupArgs, AppGroupState } from "./appGroup";
+export type AppGroup = import("./appGroup").AppGroup;
+export const AppGroup: typeof import("./appGroup").AppGroup = null as any;
+utilities.lazyLoad(exports, ["AppGroup"], () => require("./appGroup"));
+
+export { DeveloperArgs, DeveloperState } from "./developer";
+export type Developer = import("./developer").Developer;
+export const Developer: typeof import("./developer").Developer = null as any;
+utilities.lazyLoad(exports, ["Developer"], () => require("./developer"));
+
 export { EndpointAttachmentArgs, EndpointAttachmentState } from "./endpointAttachment";
 export type EndpointAttachment = import("./endpointAttachment").EndpointAttachment;
 export const EndpointAttachment: typeof import("./endpointAttachment").EndpointAttachment = null as any;
@@ -137,6 +147,10 @@ const _module = {
         switch (type) {
             case "gcp:apigee/addonsConfig:AddonsConfig":
                 return new AddonsConfig(name, <any>undefined, { urn })
+            case "gcp:apigee/appGroup:AppGroup":
+                return new AppGroup(name, <any>undefined, { urn })
+            case "gcp:apigee/developer:Developer":
+                return new Developer(name, <any>undefined, { urn })
             case "gcp:apigee/endpointAttachment:EndpointAttachment":
                 return new EndpointAttachment(name, <any>undefined, { urn })
             case "gcp:apigee/envGroup:EnvGroup":
@@ -189,6 +203,8 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "apigee/addonsConfig", _module)
+pulumi.runtime.registerResourceModule("gcp", "apigee/appGroup", _module)
+pulumi.runtime.registerResourceModule("gcp", "apigee/developer", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/endpointAttachment", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/envGroup", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/envGroupAttachment", _module)

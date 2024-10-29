@@ -56,7 +56,10 @@ class CxAgentArgs:
         :param pulumi.Input[str] avatar_uri: The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted Web Demo integration.
         :param pulumi.Input[str] description: The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[bool] enable_spell_correction: Indicates if automatic spell correction is enabled in detect intent requests.
-        :param pulumi.Input[bool] enable_stackdriver_logging: Determines whether this agent should log conversation queries.
+        :param pulumi.Input[bool] enable_stackdriver_logging: (Optional, Deprecated)
+               Determines whether this agent should log conversation queries.
+               
+               > **Warning:** `enable_stackdriver_logging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
         :param pulumi.Input['CxAgentGitIntegrationSettingsArgs'] git_integration_settings: Git integration settings for this agent.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -80,6 +83,9 @@ class CxAgentArgs:
             pulumi.set(__self__, "description", description)
         if enable_spell_correction is not None:
             pulumi.set(__self__, "enable_spell_correction", enable_spell_correction)
+        if enable_stackdriver_logging is not None:
+            warnings.warn("""`enable_stackdriver_logging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.""", DeprecationWarning)
+            pulumi.log.warn("""enable_stackdriver_logging is deprecated: `enable_stackdriver_logging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.""")
         if enable_stackdriver_logging is not None:
             pulumi.set(__self__, "enable_stackdriver_logging", enable_stackdriver_logging)
         if git_integration_settings is not None:
@@ -203,9 +209,13 @@ class CxAgentArgs:
 
     @property
     @pulumi.getter(name="enableStackdriverLogging")
+    @_utilities.deprecated("""`enable_stackdriver_logging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.""")
     def enable_stackdriver_logging(self) -> Optional[pulumi.Input[bool]]:
         """
+        (Optional, Deprecated)
         Determines whether this agent should log conversation queries.
+
+        > **Warning:** `enable_stackdriver_logging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
         """
         return pulumi.get(self, "enable_stackdriver_logging")
 
@@ -321,7 +331,10 @@ class _CxAgentState:
         :param pulumi.Input[str] description: The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[str] display_name: The human-readable name of the agent, unique within the location.
         :param pulumi.Input[bool] enable_spell_correction: Indicates if automatic spell correction is enabled in detect intent requests.
-        :param pulumi.Input[bool] enable_stackdriver_logging: Determines whether this agent should log conversation queries.
+        :param pulumi.Input[bool] enable_stackdriver_logging: (Optional, Deprecated)
+               Determines whether this agent should log conversation queries.
+               
+               > **Warning:** `enable_stackdriver_logging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
         :param pulumi.Input['CxAgentGitIntegrationSettingsArgs'] git_integration_settings: Git integration settings for this agent.
                Structure is documented below.
         :param pulumi.Input[str] location: The name of the location this agent is located in.
@@ -356,6 +369,9 @@ class _CxAgentState:
             pulumi.set(__self__, "display_name", display_name)
         if enable_spell_correction is not None:
             pulumi.set(__self__, "enable_spell_correction", enable_spell_correction)
+        if enable_stackdriver_logging is not None:
+            warnings.warn("""`enable_stackdriver_logging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.""", DeprecationWarning)
+            pulumi.log.warn("""enable_stackdriver_logging is deprecated: `enable_stackdriver_logging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.""")
         if enable_stackdriver_logging is not None:
             pulumi.set(__self__, "enable_stackdriver_logging", enable_stackdriver_logging)
         if git_integration_settings is not None:
@@ -456,9 +472,13 @@ class _CxAgentState:
 
     @property
     @pulumi.getter(name="enableStackdriverLogging")
+    @_utilities.deprecated("""`enable_stackdriver_logging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.""")
     def enable_stackdriver_logging(self) -> Optional[pulumi.Input[bool]]:
         """
+        (Optional, Deprecated)
         Determines whether this agent should log conversation queries.
+
+        > **Warning:** `enable_stackdriver_logging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
         """
         return pulumi.get(self, "enable_stackdriver_logging")
 
@@ -662,10 +682,25 @@ class CxAgent(pulumi.CustomResource):
                 "audio_export_gcs_destination": {
                     "uri": bucket.url.apply(lambda url: f"{url}/prefix-"),
                 },
+                "speech_settings": {
+                    "endpointer_sensitivity": 30,
+                    "no_speech_timeout": "3.500s",
+                    "use_timeout_based_endpointing": True,
+                    "models": {
+                        "name": "wrench",
+                        "mass": "1.3kg",
+                        "count": "3",
+                    },
+                },
                 "dtmf_settings": {
                     "enabled": True,
                     "max_digits": 1,
                     "finish_digit": "#",
+                },
+                "logging_settings": {
+                    "enable_stackdriver_logging": True,
+                    "enable_interaction_logging": True,
+                    "enable_consent_based_redaction": True,
                 },
             },
             git_integration_settings={
@@ -728,7 +763,10 @@ class CxAgent(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[str] display_name: The human-readable name of the agent, unique within the location.
         :param pulumi.Input[bool] enable_spell_correction: Indicates if automatic spell correction is enabled in detect intent requests.
-        :param pulumi.Input[bool] enable_stackdriver_logging: Determines whether this agent should log conversation queries.
+        :param pulumi.Input[bool] enable_stackdriver_logging: (Optional, Deprecated)
+               Determines whether this agent should log conversation queries.
+               
+               > **Warning:** `enable_stackdriver_logging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
         :param pulumi.Input[Union['CxAgentGitIntegrationSettingsArgs', 'CxAgentGitIntegrationSettingsArgsDict']] git_integration_settings: Git integration settings for this agent.
                Structure is documented below.
         :param pulumi.Input[str] location: The name of the location this agent is located in.
@@ -798,10 +836,25 @@ class CxAgent(pulumi.CustomResource):
                 "audio_export_gcs_destination": {
                     "uri": bucket.url.apply(lambda url: f"{url}/prefix-"),
                 },
+                "speech_settings": {
+                    "endpointer_sensitivity": 30,
+                    "no_speech_timeout": "3.500s",
+                    "use_timeout_based_endpointing": True,
+                    "models": {
+                        "name": "wrench",
+                        "mass": "1.3kg",
+                        "count": "3",
+                    },
+                },
                 "dtmf_settings": {
                     "enabled": True,
                     "max_digits": 1,
                     "finish_digit": "#",
+                },
+                "logging_settings": {
+                    "enable_stackdriver_logging": True,
+                    "enable_interaction_logging": True,
+                    "enable_consent_based_redaction": True,
                 },
             },
             git_integration_settings={
@@ -960,7 +1013,10 @@ class CxAgent(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[str] display_name: The human-readable name of the agent, unique within the location.
         :param pulumi.Input[bool] enable_spell_correction: Indicates if automatic spell correction is enabled in detect intent requests.
-        :param pulumi.Input[bool] enable_stackdriver_logging: Determines whether this agent should log conversation queries.
+        :param pulumi.Input[bool] enable_stackdriver_logging: (Optional, Deprecated)
+               Determines whether this agent should log conversation queries.
+               
+               > **Warning:** `enable_stackdriver_logging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
         :param pulumi.Input[Union['CxAgentGitIntegrationSettingsArgs', 'CxAgentGitIntegrationSettingsArgsDict']] git_integration_settings: Git integration settings for this agent.
                Structure is documented below.
         :param pulumi.Input[str] location: The name of the location this agent is located in.
@@ -1059,9 +1115,13 @@ class CxAgent(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableStackdriverLogging")
+    @_utilities.deprecated("""`enable_stackdriver_logging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.""")
     def enable_stackdriver_logging(self) -> pulumi.Output[Optional[bool]]:
         """
+        (Optional, Deprecated)
         Determines whether this agent should log conversation queries.
+
+        > **Warning:** `enable_stackdriver_logging` is deprecated and will be removed in a future major release. Please use `advanced_settings.logging_settings.enable_stackdriver_logging`instead.
         """
         return pulumi.get(self, "enable_stackdriver_logging")
 

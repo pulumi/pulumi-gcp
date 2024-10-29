@@ -14,11 +14,11 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class RegionNetworkFirewallPolicyRuleMatch
     {
         /// <summary>
-        /// Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
+        /// Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
         /// </summary>
         public readonly ImmutableArray<string> DestAddressGroups;
         /// <summary>
-        /// Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
+        /// Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
         /// </summary>
         public readonly ImmutableArray<string> DestFqdns;
         /// <summary>
@@ -26,23 +26,24 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly ImmutableArray<string> DestIpRanges;
         /// <summary>
-        /// The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is egress.
+        /// Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
         /// </summary>
         public readonly ImmutableArray<string> DestRegionCodes;
         /// <summary>
-        /// Name of the Google Cloud Threat Intelligence list.
+        /// Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
         /// </summary>
         public readonly ImmutableArray<string> DestThreatIntelligences;
         /// <summary>
         /// Pairs of IP protocols and ports that the rule should match.
+        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.RegionNetworkFirewallPolicyRuleMatchLayer4Config> Layer4Configs;
         /// <summary>
-        /// Address groups which should be matched against the traffic source. Maximum number of source address groups is 10. Source address groups is only supported in Ingress rules.
+        /// Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
         /// </summary>
         public readonly ImmutableArray<string> SrcAddressGroups;
         /// <summary>
-        /// Domain names that will be used to match against the resolved domain name of source of traffic. Can only be specified if DIRECTION is ingress.
+        /// Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
         /// </summary>
         public readonly ImmutableArray<string> SrcFqdns;
         /// <summary>
@@ -50,17 +51,19 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly ImmutableArray<string> SrcIpRanges;
         /// <summary>
-        /// The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
+        /// Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
         /// </summary>
         public readonly ImmutableArray<string> SrcRegionCodes;
         /// <summary>
-        /// List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the &lt;code&gt;srcSecureTag&lt;/code&gt; are INEFFECTIVE, and there is no &lt;code&gt;srcIpRange&lt;/code&gt;, this rule will be ignored. Maximum number of source tag values allowed is 256.
+        /// List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
+        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.RegionNetworkFirewallPolicyRuleMatchSrcSecureTag> SrcSecureTags;
         /// <summary>
-        /// Name of the Google Cloud Threat Intelligence list.
+        /// Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
         /// 
-        /// The `layer4_configs` block supports:
+        /// 
+        /// &lt;a name="nested_layer4_configs"&gt;&lt;/a&gt;The `layer4_configs` block supports:
         /// </summary>
         public readonly ImmutableArray<string> SrcThreatIntelligences;
 

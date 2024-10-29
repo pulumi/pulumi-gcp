@@ -64,6 +64,13 @@ namespace Pulumi.Gcp.SecretManager
     public sealed class GetSecretVersionArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// If set to 'true', the secret data is
+        /// expected to be base64-encoded string.
+        /// </summary>
+        [Input("isSecretDataBase64")]
+        public bool? IsSecretDataBase64 { get; set; }
+
+        /// <summary>
         /// The project to get the secret version for. If it
         /// is not provided, the provider project is used.
         /// </summary>
@@ -91,6 +98,13 @@ namespace Pulumi.Gcp.SecretManager
 
     public sealed class GetSecretVersionInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// If set to 'true', the secret data is
+        /// expected to be base64-encoded string.
+        /// </summary>
+        [Input("isSecretDataBase64")]
+        public Input<bool>? IsSecretDataBase64 { get; set; }
+
         /// <summary>
         /// The project to get the secret version for. If it
         /// is not provided, the provider project is used.
@@ -137,6 +151,7 @@ namespace Pulumi.Gcp.SecretManager
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly bool? IsSecretDataBase64;
         /// <summary>
         /// The resource name of the SecretVersion. Format:
         /// `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
@@ -160,6 +175,8 @@ namespace Pulumi.Gcp.SecretManager
 
             string id,
 
+            bool? isSecretDataBase64,
+
             string name,
 
             string project,
@@ -174,6 +191,7 @@ namespace Pulumi.Gcp.SecretManager
             DestroyTime = destroyTime;
             Enabled = enabled;
             Id = id;
+            IsSecretDataBase64 = isSecretDataBase64;
             Name = name;
             Project = project;
             Secret = secret;

@@ -13,13 +13,16 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class NetworkFirewallPolicyRuleMatchSrcSecureTagArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of the secure tag, created with TagManager's TagValue API. @pattern tagValues/[0-9]+
+        /// Name of the secure tag, created with TagManager's TagValue API.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// [Output Only] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
+        /// (Output)
+        /// State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
+        /// 
+        /// - - -
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

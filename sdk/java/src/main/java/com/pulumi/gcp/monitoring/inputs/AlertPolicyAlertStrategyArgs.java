@@ -53,6 +53,23 @@ public final class AlertPolicyAlertStrategyArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * Control when notifications will be sent out.
+     * Each value may be one of: `NOTIFICATION_PROMPT_UNSPECIFIED`, `OPENED`, `CLOSED`.
+     * 
+     */
+    @Import(name="notificationPrompts")
+    private @Nullable Output<List<String>> notificationPrompts;
+
+    /**
+     * @return Control when notifications will be sent out.
+     * Each value may be one of: `NOTIFICATION_PROMPT_UNSPECIFIED`, `OPENED`, `CLOSED`.
+     * 
+     */
+    public Optional<Output<List<String>>> notificationPrompts() {
+        return Optional.ofNullable(this.notificationPrompts);
+    }
+
+    /**
      * Required for alert policies with a LogMatch condition.
      * This limit is not implemented for alert policies that are not log-based.
      * Structure is documented below.
@@ -76,6 +93,7 @@ public final class AlertPolicyAlertStrategyArgs extends com.pulumi.resources.Res
     private AlertPolicyAlertStrategyArgs(AlertPolicyAlertStrategyArgs $) {
         this.autoClose = $.autoClose;
         this.notificationChannelStrategies = $.notificationChannelStrategies;
+        this.notificationPrompts = $.notificationPrompts;
         this.notificationRateLimit = $.notificationRateLimit;
     }
 
@@ -153,6 +171,40 @@ public final class AlertPolicyAlertStrategyArgs extends com.pulumi.resources.Res
          */
         public Builder notificationChannelStrategies(AlertPolicyAlertStrategyNotificationChannelStrategyArgs... notificationChannelStrategies) {
             return notificationChannelStrategies(List.of(notificationChannelStrategies));
+        }
+
+        /**
+         * @param notificationPrompts Control when notifications will be sent out.
+         * Each value may be one of: `NOTIFICATION_PROMPT_UNSPECIFIED`, `OPENED`, `CLOSED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notificationPrompts(@Nullable Output<List<String>> notificationPrompts) {
+            $.notificationPrompts = notificationPrompts;
+            return this;
+        }
+
+        /**
+         * @param notificationPrompts Control when notifications will be sent out.
+         * Each value may be one of: `NOTIFICATION_PROMPT_UNSPECIFIED`, `OPENED`, `CLOSED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notificationPrompts(List<String> notificationPrompts) {
+            return notificationPrompts(Output.of(notificationPrompts));
+        }
+
+        /**
+         * @param notificationPrompts Control when notifications will be sent out.
+         * Each value may be one of: `NOTIFICATION_PROMPT_UNSPECIFIED`, `OPENED`, `CLOSED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notificationPrompts(String... notificationPrompts) {
+            return notificationPrompts(List.of(notificationPrompts));
         }
 
         /**

@@ -57,6 +57,12 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.RegionInstanceTemplateConfidentialInstanceConfig> ConfidentialInstanceConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Creation timestamp in RFC3339 text format.
+        /// </summary>
+        [Output("creationTimestamp")]
+        public Output<string> CreationTimestamp { get; private set; } = null!;
+
+        /// <summary>
         /// A brief description of this resource.
         /// </summary>
         [Output("description")]
@@ -95,6 +101,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("instanceDescription")]
         public Output<string?> InstanceDescription { get; private set; } = null!;
+
+        /// <summary>
+        /// Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
+        /// </summary>
+        [Output("keyRevocationActionType")]
+        public Output<string?> KeyRevocationActionType { get; private set; } = null!;
 
         /// <summary>
         /// A set of key/value label pairs to assign to instances
@@ -380,6 +392,12 @@ namespace Pulumi.Gcp.Compute
         [Input("instanceDescription")]
         public Input<string>? InstanceDescription { get; set; }
 
+        /// <summary>
+        /// Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
+        /// </summary>
+        [Input("keyRevocationActionType")]
+        public Input<string>? KeyRevocationActionType { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -588,6 +606,12 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.RegionInstanceTemplateConfidentialInstanceConfigGetArgs>? ConfidentialInstanceConfig { get; set; }
 
         /// <summary>
+        /// Creation timestamp in RFC3339 text format.
+        /// </summary>
+        [Input("creationTimestamp")]
+        public Input<string>? CreationTimestamp { get; set; }
+
+        /// <summary>
         /// A brief description of this resource.
         /// </summary>
         [Input("description")]
@@ -648,6 +672,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("instanceDescription")]
         public Input<string>? InstanceDescription { get; set; }
+
+        /// <summary>
+        /// Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
+        /// </summary>
+        [Input("keyRevocationActionType")]
+        public Input<string>? KeyRevocationActionType { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

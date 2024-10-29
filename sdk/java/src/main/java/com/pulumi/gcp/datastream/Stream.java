@@ -325,7 +325,7 @@ import javax.annotation.Nullable;
  *             .connectionProfileId("source-profile")
  *             .postgresqlProfile(ConnectionProfilePostgresqlProfileArgs.builder()
  *                 .hostname("hostname")
- *                 .port(3306)
+ *                 .port(5432)
  *                 .username("user")
  *                 .password("pass")
  *                 .database("postgres")

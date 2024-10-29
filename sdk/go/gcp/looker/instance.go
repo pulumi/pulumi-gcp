@@ -44,6 +44,7 @@ import (
 //					ClientId:     pulumi.String("my-client-id"),
 //					ClientSecret: pulumi.String("my-client-secret"),
 //				},
+//				DeletionPolicy: pulumi.String("DEFAULT"),
 //			})
 //			if err != nil {
 //				return err
@@ -339,6 +340,38 @@ import (
 //	}
 //
 // ```
+// ### Looker Instance Force Delete
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/looker"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := looker.NewInstance(ctx, "looker-instance", &looker.InstanceArgs{
+//				Name:            pulumi.String("my-instance"),
+//				PlatformEdition: pulumi.String("LOOKER_CORE_STANDARD_ANNUAL"),
+//				Region:          pulumi.String("us-central1"),
+//				OauthConfig: &looker.InstanceOauthConfigArgs{
+//					ClientId:     pulumi.String("my-client-id"),
+//					ClientSecret: pulumi.String("my-client-secret"),
+//				},
+//				DeletionPolicy: pulumi.String("FORCE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -385,6 +418,11 @@ type Instance struct {
 	// Custom domain settings for a Looker instance.
 	// Structure is documented below.
 	CustomDomain InstanceCustomDomainPtrOutput `pulumi:"customDomain"`
+	// Policy to determine if the cluster should be deleted forcefully.
+	// If setting deletionPolicy = "FORCE", the Looker instance will be deleted regardless
+	// of its nested resources. If set to "DEFAULT", Looker instances that still have
+	// nested resources will return an error. Possible values: DEFAULT, FORCE
+	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
 	// Maintenance denial period for this instance.
 	// You must allow at least 14 days of maintenance availability
 	// between any two deny maintenance periods.
@@ -501,6 +539,11 @@ type instanceState struct {
 	// Custom domain settings for a Looker instance.
 	// Structure is documented below.
 	CustomDomain *InstanceCustomDomain `pulumi:"customDomain"`
+	// Policy to determine if the cluster should be deleted forcefully.
+	// If setting deletionPolicy = "FORCE", the Looker instance will be deleted regardless
+	// of its nested resources. If set to "DEFAULT", Looker instances that still have
+	// nested resources will return an error. Possible values: DEFAULT, FORCE
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Maintenance denial period for this instance.
 	// You must allow at least 14 days of maintenance availability
 	// between any two deny maintenance periods.
@@ -588,6 +631,11 @@ type InstanceState struct {
 	// Custom domain settings for a Looker instance.
 	// Structure is documented below.
 	CustomDomain InstanceCustomDomainPtrInput
+	// Policy to determine if the cluster should be deleted forcefully.
+	// If setting deletionPolicy = "FORCE", the Looker instance will be deleted regardless
+	// of its nested resources. If set to "DEFAULT", Looker instances that still have
+	// nested resources will return an error. Possible values: DEFAULT, FORCE
+	DeletionPolicy pulumi.StringPtrInput
 	// Maintenance denial period for this instance.
 	// You must allow at least 14 days of maintenance availability
 	// between any two deny maintenance periods.
@@ -676,6 +724,11 @@ type instanceArgs struct {
 	// Custom domain settings for a Looker instance.
 	// Structure is documented below.
 	CustomDomain *InstanceCustomDomain `pulumi:"customDomain"`
+	// Policy to determine if the cluster should be deleted forcefully.
+	// If setting deletionPolicy = "FORCE", the Looker instance will be deleted regardless
+	// of its nested resources. If set to "DEFAULT", Looker instances that still have
+	// nested resources will return an error. Possible values: DEFAULT, FORCE
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Maintenance denial period for this instance.
 	// You must allow at least 14 days of maintenance availability
 	// between any two deny maintenance periods.
@@ -748,6 +801,11 @@ type InstanceArgs struct {
 	// Custom domain settings for a Looker instance.
 	// Structure is documented below.
 	CustomDomain InstanceCustomDomainPtrInput
+	// Policy to determine if the cluster should be deleted forcefully.
+	// If setting deletionPolicy = "FORCE", the Looker instance will be deleted regardless
+	// of its nested resources. If set to "DEFAULT", Looker instances that still have
+	// nested resources will return an error. Possible values: DEFAULT, FORCE
+	DeletionPolicy pulumi.StringPtrInput
 	// Maintenance denial period for this instance.
 	// You must allow at least 14 days of maintenance availability
 	// between any two deny maintenance periods.
@@ -918,6 +976,14 @@ func (o InstanceOutput) CreateTime() pulumi.StringOutput {
 // Structure is documented below.
 func (o InstanceOutput) CustomDomain() InstanceCustomDomainPtrOutput {
 	return o.ApplyT(func(v *Instance) InstanceCustomDomainPtrOutput { return v.CustomDomain }).(InstanceCustomDomainPtrOutput)
+}
+
+// Policy to determine if the cluster should be deleted forcefully.
+// If setting deletionPolicy = "FORCE", the Looker instance will be deleted regardless
+// of its nested resources. If set to "DEFAULT", Looker instances that still have
+// nested resources will return an error. Possible values: DEFAULT, FORCE
+func (o InstanceOutput) DeletionPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
 }
 
 // Maintenance denial period for this instance.

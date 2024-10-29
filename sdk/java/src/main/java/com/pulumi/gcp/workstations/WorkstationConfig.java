@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.workstations.WorkstationConfigArgs;
 import com.pulumi.gcp.workstations.inputs.WorkstationConfigState;
+import com.pulumi.gcp.workstations.outputs.WorkstationConfigAllowedPort;
 import com.pulumi.gcp.workstations.outputs.WorkstationConfigCondition;
 import com.pulumi.gcp.workstations.outputs.WorkstationConfigContainer;
 import com.pulumi.gcp.workstations.outputs.WorkstationConfigEncryptionKey;
@@ -18,6 +19,7 @@ import com.pulumi.gcp.workstations.outputs.WorkstationConfigHost;
 import com.pulumi.gcp.workstations.outputs.WorkstationConfigPersistentDirectory;
 import com.pulumi.gcp.workstations.outputs.WorkstationConfigReadinessCheck;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -106,6 +108,7 @@ import javax.annotation.Nullable;
  *                 "us-central1-b")
  *             .annotations(Map.of("label-one", "value-one"))
  *             .labels(Map.of("label", "key"))
+ *             .maxUsableWorkstations(1)
  *             .host(WorkstationConfigHostArgs.builder()
  *                 .gceInstance(WorkstationConfigHostGceInstanceArgs.builder()
  *                     .machineType("e2-standard-4")
@@ -726,6 +729,92 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Workstation Config Allowed Ports
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.workstations.WorkstationCluster;
+ * import com.pulumi.gcp.workstations.WorkstationClusterArgs;
+ * import com.pulumi.gcp.workstations.WorkstationConfig;
+ * import com.pulumi.gcp.workstations.WorkstationConfigArgs;
+ * import com.pulumi.gcp.workstations.inputs.WorkstationConfigHostArgs;
+ * import com.pulumi.gcp.workstations.inputs.WorkstationConfigHostGceInstanceArgs;
+ * import com.pulumi.gcp.workstations.inputs.WorkstationConfigAllowedPortArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Network("default", NetworkArgs.builder()
+ *             .name("workstation-cluster")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
+ *             .name("workstation-cluster")
+ *             .ipCidrRange("10.0.0.0/24")
+ *             .region("us-central1")
+ *             .network(default_.name())
+ *             .build());
+ * 
+ *         var defaultWorkstationCluster = new WorkstationCluster("defaultWorkstationCluster", WorkstationClusterArgs.builder()
+ *             .workstationClusterId("workstation-cluster")
+ *             .network(default_.id())
+ *             .subnetwork(defaultSubnetwork.id())
+ *             .location("us-central1")
+ *             .labels(Map.of("label", "key"))
+ *             .annotations(Map.of("label-one", "value-one"))
+ *             .build());
+ * 
+ *         var defaultWorkstationConfig = new WorkstationConfig("defaultWorkstationConfig", WorkstationConfigArgs.builder()
+ *             .workstationConfigId("workstation-config")
+ *             .workstationClusterId(defaultWorkstationCluster.workstationClusterId())
+ *             .location("us-central1")
+ *             .host(WorkstationConfigHostArgs.builder()
+ *                 .gceInstance(WorkstationConfigHostGceInstanceArgs.builder()
+ *                     .machineType("e2-standard-4")
+ *                     .bootDiskSizeGb(35)
+ *                     .disablePublicIpAddresses(true)
+ *                     .build())
+ *                 .build())
+ *             .allowedPorts(            
+ *                 WorkstationConfigAllowedPortArgs.builder()
+ *                     .first(80)
+ *                     .last(80)
+ *                     .build(),
+ *                 WorkstationConfigAllowedPortArgs.builder()
+ *                     .first(22)
+ *                     .last(22)
+ *                     .build(),
+ *                 WorkstationConfigAllowedPortArgs.builder()
+ *                     .first(1024)
+ *                     .last(65535)
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -754,6 +843,22 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:workstations/workstationConfig:WorkstationConfig")
 public class WorkstationConfig extends com.pulumi.resources.CustomResource {
+    /**
+     * A list of port ranges specifying single ports or ranges of ports that are externally accessible in the workstation. Allowed ports must be one of 22, 80, or within range 1024-65535. If not specified defaults to ports 22, 80, and ports 1024-65535.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="allowedPorts", refs={List.class,WorkstationConfigAllowedPort.class}, tree="[0,1]")
+    private Output<List<WorkstationConfigAllowedPort>> allowedPorts;
+
+    /**
+     * @return A list of port ranges specifying single ports or ranges of ports that are externally accessible in the workstation. Allowed ports must be one of 22, 80, or within range 1024-65535. If not specified defaults to ports 22, 80, and ports 1024-65535.
+     * Structure is documented below.
+     * 
+     */
+    public Output<List<WorkstationConfigAllowedPort>> allowedPorts() {
+        return this.allowedPorts;
+    }
     /**
      * Client-specified annotations. This is distinct from labels.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -1015,6 +1120,20 @@ public class WorkstationConfig extends com.pulumi.resources.CustomResource {
      */
     public Output<String> location() {
         return this.location;
+    }
+    /**
+     * Maximum number of workstations under this configuration a user can have workstations.workstation.use permission on. Only enforced on CreateWorkstation API calls on the user issuing the API request.
+     * 
+     */
+    @Export(name="maxUsableWorkstations", refs={Integer.class}, tree="[0]")
+    private Output<Integer> maxUsableWorkstations;
+
+    /**
+     * @return Maximum number of workstations under this configuration a user can have workstations.workstation.use permission on. Only enforced on CreateWorkstation API calls on the user issuing the API request.
+     * 
+     */
+    public Output<Integer> maxUsableWorkstations() {
+        return this.maxUsableWorkstations;
     }
     /**
      * Full name of this resource.

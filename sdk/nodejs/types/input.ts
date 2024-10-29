@@ -2660,6 +2660,28 @@ export namespace apigee {
         enabled?: pulumi.Input<boolean>;
     }
 
+    export interface AppGroupAttribute {
+        /**
+         * Key of the attribute
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * Value of the attribute
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface DeveloperAttribute {
+        /**
+         * Key of the attribute
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * Value of the attribute
+         */
+        value?: pulumi.Input<string>;
+    }
+
     export interface EnvironmentIamBindingCondition {
         description?: pulumi.Input<string>;
         expression: pulumi.Input<string>;
@@ -19366,6 +19388,10 @@ export namespace compute {
          */
         provisionedIops?: pulumi.Input<number>;
         /**
+         * Indicates how much throughput to provision for the disk, in MB/s. This sets the amount of data that can be read or written from the disk per second. Values must greater than or equal to 1. For more details, see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
+         */
+        provisionedThroughput?: pulumi.Input<number>;
+        /**
          * A set of key/value resource manager tag pairs to bind to this disk. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
          */
         resourceManagerTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -20046,11 +20072,11 @@ export namespace compute {
 
     export interface NetworkFirewallPolicyRuleMatch {
         /**
-         * Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
+         * Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
          */
         destAddressGroups?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
+         * Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
          */
         destFqdns?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -20058,23 +20084,24 @@ export namespace compute {
          */
         destIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is egress.
+         * Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
          */
         destRegionCodes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Name of the Google Cloud Threat Intelligence list.
+         * Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
          */
         destThreatIntelligences?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Pairs of IP protocols and ports that the rule should match.
+         * Structure is documented below.
          */
         layer4Configs: pulumi.Input<pulumi.Input<inputs.compute.NetworkFirewallPolicyRuleMatchLayer4Config>[]>;
         /**
-         * Address groups which should be matched against the traffic source. Maximum number of source address groups is 10. Source address groups is only supported in Ingress rules.
+         * Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
          */
         srcAddressGroups?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Domain names that will be used to match against the resolved domain name of source of traffic. Can only be specified if DIRECTION is ingress.
+         * Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
          */
         srcFqdns?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -20082,50 +20109,58 @@ export namespace compute {
          */
         srcIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
+         * Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
          */
         srcRegionCodes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the <code>srcSecureTag</code> are INEFFECTIVE, and there is no <code>srcIpRange</code>, this rule will be ignored. Maximum number of source tag values allowed is 256.
+         * List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
+         * Structure is documented below.
          */
         srcSecureTags?: pulumi.Input<pulumi.Input<inputs.compute.NetworkFirewallPolicyRuleMatchSrcSecureTag>[]>;
         /**
-         * Name of the Google Cloud Threat Intelligence list.
+         * Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
          *
-         * The `layer4Configs` block supports:
+         *
+         * <a name="nestedLayer4Configs"></a>The `layer4Configs` block supports:
          */
         srcThreatIntelligences?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface NetworkFirewallPolicyRuleMatchLayer4Config {
         /**
-         * The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (`tcp`, `udp`, `icmp`, `esp`, `ah`, `ipip`, `sctp`), or the IP protocol number.
+         * The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule.
+         * This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
          */
         ipProtocol: pulumi.Input<string>;
         /**
-         * An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
+         * An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+         * Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
          */
         ports?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface NetworkFirewallPolicyRuleMatchSrcSecureTag {
         /**
-         * Name of the secure tag, created with TagManager's TagValue API. @pattern tagValues/[0-9]+
+         * Name of the secure tag, created with TagManager's TagValue API.
          */
-        name: pulumi.Input<string>;
+        name?: pulumi.Input<string>;
         /**
-         * [Output Only] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
+         * (Output)
+         * State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
+         *
+         * - - -
          */
         state?: pulumi.Input<string>;
     }
 
     export interface NetworkFirewallPolicyRuleTargetSecureTag {
         /**
-         * Name of the secure tag, created with TagManager's TagValue API. @pattern tagValues/[0-9]+
+         * Name of the secure tag, created with TagManager's TagValue API.
          */
-        name: pulumi.Input<string>;
+        name?: pulumi.Input<string>;
         /**
-         * [Output Only] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
+         * (Output)
+         * State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
          */
         state?: pulumi.Input<string>;
     }
@@ -22454,6 +22489,10 @@ export namespace compute {
          */
         provisionedIops?: pulumi.Input<number>;
         /**
+         * Indicates how much throughput to provision for the disk, in MB/s. This sets the amount of data that can be read or written from the disk per second. Values must greater than or equal to 1. For more details, see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
+         */
+        provisionedThroughput?: pulumi.Input<number>;
+        /**
          * A set of key/value resource manager tag pairs to bind to this disk. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
          */
         resourceManagerTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -22958,11 +22997,11 @@ export namespace compute {
 
     export interface RegionNetworkFirewallPolicyRuleMatch {
         /**
-         * Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
+         * Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
          */
         destAddressGroups?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
+         * Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
          */
         destFqdns?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -22970,23 +23009,24 @@ export namespace compute {
          */
         destIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is egress.
+         * Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
          */
         destRegionCodes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Name of the Google Cloud Threat Intelligence list.
+         * Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
          */
         destThreatIntelligences?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Pairs of IP protocols and ports that the rule should match.
+         * Structure is documented below.
          */
         layer4Configs: pulumi.Input<pulumi.Input<inputs.compute.RegionNetworkFirewallPolicyRuleMatchLayer4Config>[]>;
         /**
-         * Address groups which should be matched against the traffic source. Maximum number of source address groups is 10. Source address groups is only supported in Ingress rules.
+         * Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
          */
         srcAddressGroups?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Domain names that will be used to match against the resolved domain name of source of traffic. Can only be specified if DIRECTION is ingress.
+         * Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
          */
         srcFqdns?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -22994,50 +23034,58 @@ export namespace compute {
          */
         srcIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
+         * Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
          */
         srcRegionCodes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the <code>srcSecureTag</code> are INEFFECTIVE, and there is no <code>srcIpRange</code>, this rule will be ignored. Maximum number of source tag values allowed is 256.
+         * List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
+         * Structure is documented below.
          */
         srcSecureTags?: pulumi.Input<pulumi.Input<inputs.compute.RegionNetworkFirewallPolicyRuleMatchSrcSecureTag>[]>;
         /**
-         * Name of the Google Cloud Threat Intelligence list.
+         * Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
          *
-         * The `layer4Configs` block supports:
+         *
+         * <a name="nestedLayer4Configs"></a>The `layer4Configs` block supports:
          */
         srcThreatIntelligences?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface RegionNetworkFirewallPolicyRuleMatchLayer4Config {
         /**
-         * The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (`tcp`, `udp`, `icmp`, `esp`, `ah`, `ipip`, `sctp`), or the IP protocol number.
+         * The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule.
+         * This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
          */
         ipProtocol: pulumi.Input<string>;
         /**
-         * An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
+         * An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+         * Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
          */
         ports?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface RegionNetworkFirewallPolicyRuleMatchSrcSecureTag {
         /**
-         * Name of the secure tag, created with TagManager's TagValue API. @pattern tagValues/[0-9]+
+         * Name of the secure tag, created with TagManager's TagValue API.
          */
-        name: pulumi.Input<string>;
+        name?: pulumi.Input<string>;
         /**
-         * [Output Only] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
+         * (Output)
+         * State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
+         *
+         * - - -
          */
         state?: pulumi.Input<string>;
     }
 
     export interface RegionNetworkFirewallPolicyRuleTargetSecureTag {
         /**
-         * Name of the secure tag, created with TagManager's TagValue API. @pattern tagValues/[0-9]+
+         * Name of the secure tag, created with TagManager's TagValue API.
          */
-        name: pulumi.Input<string>;
+        name?: pulumi.Input<string>;
         /**
-         * [Output Only] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
+         * (Output)
+         * State of the secure tag, either EFFECTIVE or INEFFECTIVE. A secure tag is INEFFECTIVE when it is deleted or its network is deleted.
          */
         state?: pulumi.Input<string>;
     }
@@ -45921,6 +45969,21 @@ export namespace diagflow {
          * Structure is documented below.
          */
         dtmfSettings?: pulumi.Input<inputs.diagflow.CxAgentAdvancedSettingsDtmfSettings>;
+        /**
+         * Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
+         * * Agent level
+         * Structure is documented below.
+         */
+        loggingSettings?: pulumi.Input<inputs.diagflow.CxAgentAdvancedSettingsLoggingSettings>;
+        /**
+         * Settings for speech to text detection. Exposed at the following levels:
+         * * Agent level
+         * * Flow level
+         * * Page level
+         * * Parameter level
+         * Structure is documented below.
+         */
+        speechSettings?: pulumi.Input<inputs.diagflow.CxAgentAdvancedSettingsSpeechSettings>;
     }
 
     export interface CxAgentAdvancedSettingsAudioExportGcsDestination {
@@ -45944,6 +46007,42 @@ export namespace diagflow {
          * Max length of DTMF digits.
          */
         maxDigits?: pulumi.Input<number>;
+    }
+
+    export interface CxAgentAdvancedSettingsLoggingSettings {
+        /**
+         * Enables consent-based end-user input redaction, if true, a pre-defined session parameter **$session.params.conversation-redaction** will be used to determine if the utterance should be redacted.
+         */
+        enableConsentBasedRedaction?: pulumi.Input<boolean>;
+        /**
+         * Enables DF Interaction logging.
+         */
+        enableInteractionLogging?: pulumi.Input<boolean>;
+        /**
+         * Enables Google Cloud Logging.
+         */
+        enableStackdriverLogging?: pulumi.Input<boolean>;
+    }
+
+    export interface CxAgentAdvancedSettingsSpeechSettings {
+        /**
+         * Sensitivity of the speech model that detects the end of speech. Scale from 0 to 100.
+         */
+        endpointerSensitivity?: pulumi.Input<number>;
+        /**
+         * Mapping from language to Speech-to-Text model. The mapped Speech-to-Text model will be selected for requests from its corresponding language. For more information, see [Speech models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
+         * An object containing a list of **"key": value** pairs. Example: **{ "name": "wrench", "mass": "1.3kg", "count": "3" }**.
+         */
+        models?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Timeout before detecting no speech.
+         * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+         */
+        noSpeechTimeout?: pulumi.Input<string>;
+        /**
+         * Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+         */
+        useTimeoutBasedEndpointing?: pulumi.Input<boolean>;
     }
 
     export interface CxAgentGitIntegrationSettings {
@@ -46044,6 +46143,21 @@ export namespace diagflow {
          * Structure is documented below.
          */
         dtmfSettings?: pulumi.Input<inputs.diagflow.CxFlowAdvancedSettingsDtmfSettings>;
+        /**
+         * Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
+         * * Agent level
+         * Structure is documented below.
+         */
+        loggingSettings?: pulumi.Input<inputs.diagflow.CxFlowAdvancedSettingsLoggingSettings>;
+        /**
+         * Settings for speech to text detection. Exposed at the following levels:
+         * * Agent level
+         * * Flow level
+         * * Page level
+         * * Parameter level
+         * Structure is documented below.
+         */
+        speechSettings?: pulumi.Input<inputs.diagflow.CxFlowAdvancedSettingsSpeechSettings>;
     }
 
     export interface CxFlowAdvancedSettingsAudioExportGcsDestination {
@@ -46067,6 +46181,42 @@ export namespace diagflow {
          * Max length of DTMF digits.
          */
         maxDigits?: pulumi.Input<number>;
+    }
+
+    export interface CxFlowAdvancedSettingsLoggingSettings {
+        /**
+         * Enables consent-based end-user input redaction, if true, a pre-defined session parameter **$session.params.conversation-redaction** will be used to determine if the utterance should be redacted.
+         */
+        enableConsentBasedRedaction?: pulumi.Input<boolean>;
+        /**
+         * Enables DF Interaction logging.
+         */
+        enableInteractionLogging?: pulumi.Input<boolean>;
+        /**
+         * Enables Google Cloud Logging.
+         */
+        enableStackdriverLogging?: pulumi.Input<boolean>;
+    }
+
+    export interface CxFlowAdvancedSettingsSpeechSettings {
+        /**
+         * Sensitivity of the speech model that detects the end of speech. Scale from 0 to 100.
+         */
+        endpointerSensitivity?: pulumi.Input<number>;
+        /**
+         * Mapping from language to Speech-to-Text model. The mapped Speech-to-Text model will be selected for requests from its corresponding language. For more information, see [Speech models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
+         * An object containing a list of **"key": value** pairs. Example: **{ "name": "wrench", "mass": "1.3kg", "count": "3" }**.
+         */
+        models?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Timeout before detecting no speech.
+         * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+         */
+        noSpeechTimeout?: pulumi.Input<string>;
+        /**
+         * Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+         */
+        useTimeoutBasedEndpointing?: pulumi.Input<boolean>;
     }
 
     export interface CxFlowEventHandler {
@@ -57600,6 +57750,11 @@ export namespace monitoring {
          */
         notificationChannelStrategies?: pulumi.Input<pulumi.Input<inputs.monitoring.AlertPolicyAlertStrategyNotificationChannelStrategy>[]>;
         /**
+         * Control when notifications will be sent out.
+         * Each value may be one of: `NOTIFICATION_PROMPT_UNSPECIFIED`, `OPENED`, `CLOSED`.
+         */
+        notificationPrompts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
          * Required for alert policies with a LogMatch condition.
          * This limit is not implemented for alert policies that are not log-based.
          * Structure is documented below.
@@ -59351,6 +59506,13 @@ export namespace netapp {
 }
 
 export namespace networkconnectivity {
+    export interface GroupAutoAccept {
+        /**
+         * A list of project ids or project numbers for which you want to enable auto-accept. The auto-accept setting is applied to spokes being created or updated in these projects.
+         */
+        autoAcceptProjects: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
     export interface HubRoutingVpc {
         /**
          * The URI of the VPC network.
@@ -59529,6 +59691,30 @@ export namespace networkconnectivity {
          * The URIs of linked interconnect attachment resources
          */
         uris: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface SpokeLinkedProducerVpcNetwork {
+        /**
+         * IP ranges encompassing the subnets to be excluded from peering.
+         */
+        excludeExportRanges?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * IP ranges allowed to be included from peering.
+         */
+        includeExportRanges?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The URI of the Service Consumer VPC that the Producer VPC is peered with.
+         */
+        network: pulumi.Input<string>;
+        /**
+         * The name of the VPC peering between the Service Consumer VPC and the Producer VPC (defined in the Tenant project) which is added to the NCC hub. This peering must be in ACTIVE state.
+         */
+        peering: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The URI of the Producer VPC.
+         */
+        producerNetwork?: pulumi.Input<string>;
     }
 
     export interface SpokeLinkedRouterApplianceInstances {
@@ -61976,6 +62162,1099 @@ export namespace notebooks {
     }
 }
 
+export namespace oracledatabase {
+    export interface AutonomousDatabaseProperties {
+        /**
+         * (Output)
+         * The amount of storage currently being used for user and system data, in
+         * terabytes.
+         */
+        actualUsedDataStorageSizeTb?: pulumi.Input<number>;
+        /**
+         * (Output)
+         * The amount of storage currently allocated for the database tables and
+         * billed for, rounded up in terabytes.
+         */
+        allocatedStorageSizeTb?: pulumi.Input<number>;
+        /**
+         * (Output)
+         * Oracle APEX Application Development.
+         * https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/AutonomousDatabaseApex
+         * Structure is documented below.
+         */
+        apexDetails?: pulumi.Input<pulumi.Input<inputs.oracledatabase.AutonomousDatabasePropertiesApexDetail>[]>;
+        /**
+         * (Output)
+         * This field indicates the status of Data Guard and Access control for the
+         * Autonomous Database. The field's value is null if Data Guard is disabled
+         * or Access Control is disabled. The field's value is TRUE if both Data Guard
+         * and Access Control are enabled, and the Autonomous Database is using
+         * primary IP access control list (ACL) for standby. The field's value is
+         * FALSE if both Data Guard and Access Control are enabled, and the Autonomous
+         * Database is using a different IP access control list (ACL) for standby
+         * compared to primary.
+         */
+        arePrimaryAllowlistedIpsUsed?: pulumi.Input<boolean>;
+        /**
+         * (Output)
+         * The Autonomous Container Database OCID.
+         */
+        autonomousContainerDatabaseId?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The list of available Oracle Database upgrade versions for an Autonomous
+         * Database.
+         */
+        availableUpgradeVersions?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The retention period for the Autonomous Database. This field is specified
+         * in days, can range from 1 day to 60 days, and has a default value of
+         * 60 days.
+         */
+        backupRetentionPeriodDays?: pulumi.Input<number>;
+        /**
+         * The character set for the Autonomous Database. The default is AL32UTF8.
+         */
+        characterSet?: pulumi.Input<string>;
+        /**
+         * The number of compute servers for the Autonomous Database.
+         */
+        computeCount?: pulumi.Input<number>;
+        /**
+         * (Output)
+         * The connection string used to connect to the Autonomous Database.
+         * https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/AutonomousDatabaseConnectionStrings
+         * Structure is documented below.
+         */
+        connectionStrings?: pulumi.Input<pulumi.Input<inputs.oracledatabase.AutonomousDatabasePropertiesConnectionString>[]>;
+        /**
+         * (Output)
+         * The URLs for accessing Oracle Application Express (APEX) and SQL Developer
+         * Web with a browser from a Compute instance.
+         * https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/AutonomousDatabaseConnectionUrls
+         * Structure is documented below.
+         */
+        connectionUrls?: pulumi.Input<pulumi.Input<inputs.oracledatabase.AutonomousDatabasePropertiesConnectionUrl>[]>;
+        /**
+         * The list of customer contacts.
+         * Structure is documented below.
+         */
+        customerContacts?: pulumi.Input<pulumi.Input<inputs.oracledatabase.AutonomousDatabasePropertiesCustomerContact>[]>;
+        /**
+         * (Output)
+         * The current state of the Data Safe registration for the
+         * Autonomous Database.
+         * Possible values:
+         * DATA_SAFE_STATE_UNSPECIFIED
+         * REGISTERING
+         * REGISTERED
+         * DEREGISTERING
+         * NOT_REGISTERED
+         * FAILED
+         */
+        dataSafeState?: pulumi.Input<string>;
+        /**
+         * The size of the data stored in the database, in gigabytes.
+         */
+        dataStorageSizeGb?: pulumi.Input<number>;
+        /**
+         * The size of the data stored in the database, in terabytes.
+         */
+        dataStorageSizeTb?: pulumi.Input<number>;
+        /**
+         * (Output)
+         * The current state of database management for the Autonomous Database.
+         * Possible values:
+         * DATABASE_MANAGEMENT_STATE_UNSPECIFIED
+         * ENABLING
+         * ENABLED
+         * DISABLING
+         * NOT_ENABLED
+         * FAILED_ENABLING
+         * FAILED_DISABLING
+         */
+        databaseManagementState?: pulumi.Input<string>;
+        /**
+         * The edition of the Autonomous Databases.
+         * Possible values:
+         * DATABASE_EDITION_UNSPECIFIED
+         * STANDARD_EDITION
+         * ENTERPRISE_EDITION
+         */
+        dbEdition?: pulumi.Input<string>;
+        /**
+         * The Oracle Database version for the Autonomous Database.
+         */
+        dbVersion?: pulumi.Input<string>;
+        /**
+         * Possible values:
+         * DB_WORKLOAD_UNSPECIFIED
+         * OLTP
+         * DW
+         * AJD
+         * APEX
+         */
+        dbWorkload: pulumi.Input<string>;
+        /**
+         * (Output)
+         * This field indicates the number of seconds of data loss during a Data
+         * Guard failover.
+         */
+        failedDataRecoveryDuration?: pulumi.Input<string>;
+        /**
+         * This field indicates if auto scaling is enabled for the Autonomous Database
+         * CPU core count.
+         */
+        isAutoScalingEnabled?: pulumi.Input<boolean>;
+        /**
+         * (Output)
+         * This field indicates whether the Autonomous Database has local (in-region)
+         * Data Guard enabled.
+         */
+        isLocalDataGuardEnabled?: pulumi.Input<boolean>;
+        /**
+         * This field indicates if auto scaling is enabled for the Autonomous Database
+         * storage.
+         */
+        isStorageAutoScalingEnabled?: pulumi.Input<boolean>;
+        /**
+         * The license type used for the Autonomous Database.
+         * Possible values:
+         * LICENSE_TYPE_UNSPECIFIED
+         * LICENSE_INCLUDED
+         * BRING_YOUR_OWN_LICENSE
+         */
+        licenseType: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The details of the current lifestyle state of the Autonomous Database.
+         */
+        lifecycleDetails?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * This field indicates the maximum data loss limit for an Autonomous
+         * Database, in seconds.
+         */
+        localAdgAutoFailoverMaxDataLossLimit?: pulumi.Input<number>;
+        /**
+         * (Output)
+         * This field indicates the local disaster recovery (DR) type of an
+         * Autonomous Database.
+         * Possible values:
+         * LOCAL_DISASTER_RECOVERY_TYPE_UNSPECIFIED
+         * ADG
+         * BACKUP_BASED
+         */
+        localDisasterRecoveryType?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Autonomous Data Guard standby database details.
+         * https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/AutonomousDatabaseStandbySummary
+         * Structure is documented below.
+         */
+        localStandbyDbs?: pulumi.Input<pulumi.Input<inputs.oracledatabase.AutonomousDatabasePropertiesLocalStandbyDb>[]>;
+        /**
+         * (Output)
+         * The date and time when maintenance will begin.
+         */
+        maintenanceBeginTime?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The date and time when maintenance will end.
+         */
+        maintenanceEndTime?: pulumi.Input<string>;
+        /**
+         * The maintenance schedule of the Autonomous Database.
+         * Possible values:
+         * MAINTENANCE_SCHEDULE_TYPE_UNSPECIFIED
+         * EARLY
+         * REGULAR
+         */
+        maintenanceScheduleType?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The amount of memory enabled per ECPU, in gigabytes.
+         */
+        memoryPerOracleComputeUnitGbs?: pulumi.Input<number>;
+        /**
+         * (Output)
+         * The memory assigned to in-memory tables in an Autonomous Database.
+         */
+        memoryTableGbs?: pulumi.Input<number>;
+        /**
+         * This field specifies if the Autonomous Database requires mTLS connections.
+         */
+        mtlsConnectionRequired?: pulumi.Input<boolean>;
+        /**
+         * The national character set for the Autonomous Database. The default is
+         * AL16UTF16.
+         */
+        nCharacterSet?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The long term backup schedule of the Autonomous Database.
+         */
+        nextLongTermBackupTime?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The Oracle Cloud Infrastructure link for the Autonomous Database.
+         */
+        ociUrl?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * OCID of the Autonomous Database.
+         * https://docs.oracle.com/en-us/iaas/Content/General/Concepts/identifiers.htm#Oracle
+         */
+        ocid?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * This field indicates the current mode of the Autonomous Database.
+         * Possible values:
+         * OPEN_MODE_UNSPECIFIED
+         * READ_ONLY
+         * READ_WRITE
+         */
+        openMode?: pulumi.Input<string>;
+        /**
+         * Possible values:
+         * OPERATIONS_INSIGHTS_STATE_UNSPECIFIED
+         * ENABLING
+         * ENABLED
+         * DISABLING
+         * NOT_ENABLED
+         * FAILED_ENABLING
+         * FAILED_DISABLING
+         */
+        operationsInsightsState?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The list of OCIDs of standby databases located in Autonomous Data Guard
+         * remote regions that are associated with the source database.
+         */
+        peerDbIds?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * (Output)
+         * The permission level of the Autonomous Database.
+         * Possible values:
+         * PERMISSION_LEVEL_UNSPECIFIED
+         * RESTRICTED
+         * UNRESTRICTED
+         */
+        permissionLevel?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The private endpoint for the Autonomous Database.
+         */
+        privateEndpoint?: pulumi.Input<string>;
+        /**
+         * The private endpoint IP address for the Autonomous Database.
+         */
+        privateEndpointIp?: pulumi.Input<string>;
+        /**
+         * The private endpoint label for the Autonomous Database.
+         */
+        privateEndpointLabel?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The refresh mode of the cloned Autonomous Database.
+         * Possible values:
+         * REFRESHABLE_MODE_UNSPECIFIED
+         * AUTOMATIC
+         * MANUAL
+         */
+        refreshableMode?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The refresh State of the clone.
+         * Possible values:
+         * REFRESHABLE_STATE_UNSPECIFIED
+         * REFRESHING
+         * NOT_REFRESHING
+         */
+        refreshableState?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The Data Guard role of the Autonomous Database.
+         * Possible values:
+         * ROLE_UNSPECIFIED
+         * PRIMARY
+         * STANDBY
+         * DISABLED_STANDBY
+         * BACKUP_COPY
+         * SNAPSHOT_STANDBY
+         */
+        role?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The list and details of the scheduled operations of the Autonomous
+         * Database.
+         * Structure is documented below.
+         */
+        scheduledOperationDetails?: pulumi.Input<pulumi.Input<inputs.oracledatabase.AutonomousDatabasePropertiesScheduledOperationDetail>[]>;
+        /**
+         * (Output)
+         * The SQL Web Developer URL for the Autonomous Database.
+         */
+        sqlWebDeveloperUrl?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Possible values:
+         * STATE_UNSPECIFIED
+         * PROVISIONING
+         * AVAILABLE
+         * STOPPING
+         * STOPPED
+         * STARTING
+         * TERMINATING
+         * TERMINATED
+         * UNAVAILABLE
+         * RESTORE_IN_PROGRESS
+         * RESTORE_FAILED
+         * BACKUP_IN_PROGRESS
+         * SCALE_IN_PROGRESS
+         * AVAILABLE_NEEDS_ATTENTION
+         * UPDATING
+         * MAINTENANCE_IN_PROGRESS
+         * RESTARTING
+         * RECREATING
+         * ROLE_CHANGE_IN_PROGRESS
+         * UPGRADING
+         * INACCESSIBLE
+         * STANDBY
+         */
+        state?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The list of available regions that can be used to create a clone for the
+         * Autonomous Database.
+         */
+        supportedCloneRegions?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * (Output)
+         * The storage space used by automatic backups of Autonomous Database, in
+         * gigabytes.
+         */
+        totalAutoBackupStorageSizeGbs?: pulumi.Input<number>;
+        /**
+         * (Output)
+         * The storage space used by Autonomous Database, in gigabytes.
+         */
+        usedDataStorageSizeTbs?: pulumi.Input<number>;
+    }
+
+    export interface AutonomousDatabasePropertiesApexDetail {
+        /**
+         * The Oracle APEX Application Development version.
+         */
+        apexVersion?: pulumi.Input<string>;
+        /**
+         * The Oracle REST Data Services (ORDS) version.
+         */
+        ordsVersion?: pulumi.Input<string>;
+    }
+
+    export interface AutonomousDatabasePropertiesConnectionString {
+        /**
+         * A list of all connection strings that can be used to connect to the
+         * Autonomous Database.
+         */
+        allConnectionStrings?: pulumi.Input<pulumi.Input<inputs.oracledatabase.AutonomousDatabasePropertiesConnectionStringAllConnectionString>[]>;
+        /**
+         * The database service provides the least level of resources to each SQL
+         * statement, but supports the most number of concurrent SQL statements.
+         */
+        dedicated?: pulumi.Input<string>;
+        /**
+         * The database service provides the highest level of resources to each SQL
+         * statement.
+         */
+        high?: pulumi.Input<string>;
+        /**
+         * The database service provides the least level of resources to each SQL
+         * statement.
+         */
+        low?: pulumi.Input<string>;
+        /**
+         * The database service provides a lower level of resources to each SQL
+         * statement.
+         */
+        medium?: pulumi.Input<string>;
+        /**
+         * A list of connection string profiles to allow clients to group, filter, and
+         * select values based on the structured metadata.
+         */
+        profiles?: pulumi.Input<pulumi.Input<inputs.oracledatabase.AutonomousDatabasePropertiesConnectionStringProfile>[]>;
+    }
+
+    export interface AutonomousDatabasePropertiesConnectionStringAllConnectionString {
+        /**
+         * The database service provides the highest level of resources to each SQL
+         * statement.
+         */
+        high?: pulumi.Input<string>;
+        /**
+         * The database service provides the least level of resources to each SQL
+         * statement.
+         */
+        low?: pulumi.Input<string>;
+        /**
+         * The database service provides a lower level of resources to each SQL
+         * statement.
+         */
+        medium?: pulumi.Input<string>;
+    }
+
+    export interface AutonomousDatabasePropertiesConnectionStringProfile {
+        /**
+         * The current consumer group being used by the connection. 
+         *  Possible values:
+         *  CONSUMER_GROUP_UNSPECIFIED
+         * HIGH
+         * MEDIUM
+         * LOW
+         * TP
+         * TPURGENT
+         */
+        consumerGroup?: pulumi.Input<string>;
+        /**
+         * The display name for the database connection.
+         */
+        displayName?: pulumi.Input<string>;
+        /**
+         * The host name format being currently used in connection string. 
+         *  Possible values:
+         *  HOST_FORMAT_UNSPECIFIED
+         * FQDN
+         * IP
+         */
+        hostFormat?: pulumi.Input<string>;
+        /**
+         * This field indicates if the connection string is regional and is only
+         * applicable for cross-region Data Guard.
+         */
+        isRegional?: pulumi.Input<boolean>;
+        /**
+         * The protocol being used by the connection. 
+         *  Possible values:
+         *  PROTOCOL_UNSPECIFIED
+         * TCP
+         * TCPS
+         */
+        protocol?: pulumi.Input<string>;
+        /**
+         * The current session mode of the connection. 
+         *  Possible values:
+         *  SESSION_MODE_UNSPECIFIED
+         * DIRECT
+         * INDIRECT
+         */
+        sessionMode?: pulumi.Input<string>;
+        /**
+         * The syntax of the connection string. 
+         *  Possible values:
+         *  SYNTAX_FORMAT_UNSPECIFIED
+         * LONG
+         * EZCONNECT
+         * EZCONNECTPLUS
+         */
+        syntaxFormat?: pulumi.Input<string>;
+        /**
+         * This field indicates the TLS authentication type of the connection. 
+         *  Possible values:
+         *  TLS_AUTHENTICATION_UNSPECIFIED
+         * SERVER
+         * MUTUAL
+         */
+        tlsAuthentication?: pulumi.Input<string>;
+        /**
+         * The value of the connection string.
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface AutonomousDatabasePropertiesConnectionUrl {
+        /**
+         * Oracle Application Express (APEX) URL.
+         */
+        apexUri?: pulumi.Input<string>;
+        /**
+         * The URL of the Database Transforms for the Autonomous Database.
+         */
+        databaseTransformsUri?: pulumi.Input<string>;
+        /**
+         * The URL of the Graph Studio for the Autonomous Database.
+         */
+        graphStudioUri?: pulumi.Input<string>;
+        /**
+         * The URL of the Oracle Machine Learning (OML) Notebook for the Autonomous
+         * Database.
+         */
+        machineLearningNotebookUri?: pulumi.Input<string>;
+        /**
+         * The URL of Machine Learning user management the Autonomous Database.
+         */
+        machineLearningUserManagementUri?: pulumi.Input<string>;
+        /**
+         * The URL of the MongoDB API for the Autonomous Database.
+         */
+        mongoDbUri?: pulumi.Input<string>;
+        /**
+         * The Oracle REST Data Services (ORDS) URL of the Web Access for the
+         * Autonomous Database.
+         */
+        ordsUri?: pulumi.Input<string>;
+        /**
+         * The URL of the Oracle SQL Developer Web for the Autonomous Database.
+         */
+        sqlDevWebUri?: pulumi.Input<string>;
+    }
+
+    export interface AutonomousDatabasePropertiesCustomerContact {
+        /**
+         * The email address used by Oracle to send notifications regarding databases
+         * and infrastructure.
+         *
+         * <a name="nestedApexDetails"></a>The `apexDetails` block contains:
+         */
+        email: pulumi.Input<string>;
+    }
+
+    export interface AutonomousDatabasePropertiesLocalStandbyDb {
+        /**
+         * The date and time the Autonomous Data Guard role was switched for the
+         * standby Autonomous Database.
+         */
+        dataGuardRoleChangedTime?: pulumi.Input<string>;
+        /**
+         * The date and time the Disaster Recovery role was switched for the standby
+         * Autonomous Database.
+         */
+        disasterRecoveryRoleChangedTime?: pulumi.Input<string>;
+        /**
+         * The amount of time, in seconds, that the data of the standby database lags
+         * in comparison to the data of the primary database.
+         */
+        lagTimeDuration?: pulumi.Input<string>;
+        /**
+         * The additional details about the current lifecycle state of the
+         * Autonomous Database.
+         */
+        lifecycleDetails?: pulumi.Input<string>;
+        /**
+         * Possible values:
+         *  STATE_UNSPECIFIED
+         * PROVISIONING
+         * AVAILABLE
+         * STOPPING
+         * STOPPED
+         * STARTING
+         * TERMINATING
+         * TERMINATED
+         * UNAVAILABLE
+         * RESTORE_IN_PROGRESS
+         * RESTORE_FAILED
+         * BACKUP_IN_PROGRESS
+         * SCALE_IN_PROGRESS
+         * AVAILABLE_NEEDS_ATTENTION
+         * UPDATING
+         * MAINTENANCE_IN_PROGRESS
+         * RESTARTING
+         * RECREATING
+         * ROLE_CHANGE_IN_PROGRESS
+         * UPGRADING
+         * INACCESSIBLE
+         * STANDBY
+         */
+        state?: pulumi.Input<string>;
+    }
+
+    export interface AutonomousDatabasePropertiesScheduledOperationDetail {
+        /**
+         * Possible values:
+         *  DAY_OF_WEEK_UNSPECIFIED
+         * MONDAY
+         * TUESDAY
+         * WEDNESDAY
+         * THURSDAY
+         * FRIDAY
+         * SATURDAY
+         * SUNDAY
+         */
+        dayOfWeek?: pulumi.Input<string>;
+        /**
+         * Represents a time of day. The date and time zone are either not significant
+         * or are specified elsewhere. An API may choose to allow leap seconds. Related
+         * types are google.type.Date and 'google.protobuf.Timestamp'.
+         */
+        startTimes?: pulumi.Input<pulumi.Input<inputs.oracledatabase.AutonomousDatabasePropertiesScheduledOperationDetailStartTime>[]>;
+        /**
+         * Represents a time of day. The date and time zone are either not significant
+         * or are specified elsewhere. An API may choose to allow leap seconds. Related
+         * types are google.type.Date and 'google.protobuf.Timestamp'.
+         */
+        stopTimes?: pulumi.Input<pulumi.Input<inputs.oracledatabase.AutonomousDatabasePropertiesScheduledOperationDetailStopTime>[]>;
+    }
+
+    export interface AutonomousDatabasePropertiesScheduledOperationDetailStartTime {
+        /**
+         * Hours of day in 24 hour format. Should be from 0 to 23. An API may choose
+         * to allow the value "24:00:00" for scenarios like business closing time.
+         */
+        hours?: pulumi.Input<number>;
+        /**
+         * Minutes of hour of day. Must be from 0 to 59.
+         */
+        minutes?: pulumi.Input<number>;
+        /**
+         * Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+         */
+        nanos?: pulumi.Input<number>;
+        /**
+         * Seconds of minutes of the time. Must normally be from 0 to 59. An API may
+         * allow the value 60 if it allows leap-seconds.
+         */
+        seconds?: pulumi.Input<number>;
+    }
+
+    export interface AutonomousDatabasePropertiesScheduledOperationDetailStopTime {
+        /**
+         * Hours of day in 24 hour format. Should be from 0 to 23. An API may choose
+         * to allow the value "24:00:00" for scenarios like business closing time.
+         */
+        hours?: pulumi.Input<number>;
+        /**
+         * Minutes of hour of day. Must be from 0 to 59.
+         */
+        minutes?: pulumi.Input<number>;
+        /**
+         * Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+         */
+        nanos?: pulumi.Input<number>;
+        /**
+         * Seconds of minutes of the time. Must normally be from 0 to 59. An API may
+         * allow the value 60 if it allows leap-seconds.
+         */
+        seconds?: pulumi.Input<number>;
+    }
+
+    export interface CloudExadataInfrastructureProperties {
+        /**
+         * (Output)
+         * The requested number of additional storage servers activated for the
+         * Exadata Infrastructure.
+         */
+        activatedStorageCount?: pulumi.Input<number>;
+        /**
+         * (Output)
+         * The requested number of additional storage servers for the Exadata
+         * Infrastructure.
+         */
+        additionalStorageCount?: pulumi.Input<number>;
+        /**
+         * (Output)
+         * The available storage can be allocated to the Exadata Infrastructure
+         * resource, in gigabytes (GB).
+         */
+        availableStorageSizeGb?: pulumi.Input<number>;
+        /**
+         * The number of compute servers for the Exadata Infrastructure.
+         */
+        computeCount?: pulumi.Input<number>;
+        /**
+         * (Output)
+         * The number of enabled CPU cores.
+         */
+        cpuCount?: pulumi.Input<number>;
+        /**
+         * The list of customer contacts.
+         * Structure is documented below.
+         */
+        customerContacts?: pulumi.Input<pulumi.Input<inputs.oracledatabase.CloudExadataInfrastructurePropertiesCustomerContact>[]>;
+        /**
+         * (Output)
+         * Size, in terabytes, of the DATA disk group.
+         */
+        dataStorageSizeTb?: pulumi.Input<number>;
+        /**
+         * (Output)
+         * The local node storage allocated in GBs.
+         */
+        dbNodeStorageSizeGb?: pulumi.Input<number>;
+        /**
+         * (Output)
+         * The software version of the database servers (dom0) in the Exadata
+         * Infrastructure.
+         */
+        dbServerVersion?: pulumi.Input<string>;
+        /**
+         * Maintenance window as defined by Oracle.
+         * https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/MaintenanceWindow
+         * Structure is documented below.
+         */
+        maintenanceWindow?: pulumi.Input<inputs.oracledatabase.CloudExadataInfrastructurePropertiesMaintenanceWindow>;
+        /**
+         * (Output)
+         * The total number of CPU cores available.
+         */
+        maxCpuCount?: pulumi.Input<number>;
+        /**
+         * (Output)
+         * The total available DATA disk group size.
+         */
+        maxDataStorageTb?: pulumi.Input<number>;
+        /**
+         * (Output)
+         * The total local node storage available in GBs.
+         */
+        maxDbNodeStorageSizeGb?: pulumi.Input<number>;
+        /**
+         * (Output)
+         * The total memory available in GBs.
+         */
+        maxMemoryGb?: pulumi.Input<number>;
+        /**
+         * (Output)
+         * The memory allocated in GBs.
+         */
+        memorySizeGb?: pulumi.Input<number>;
+        /**
+         * (Output)
+         * The monthly software version of the database servers (dom0)
+         * in the Exadata Infrastructure. Example: 20.1.15
+         */
+        monthlyDbServerVersion?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The monthly software version of the storage servers (cells)
+         * in the Exadata Infrastructure. Example: 20.1.15
+         */
+        monthlyStorageServerVersion?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The OCID of the next maintenance run.
+         */
+        nextMaintenanceRunId?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The time when the next maintenance run will occur.
+         */
+        nextMaintenanceRunTime?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The time when the next security maintenance run will occur.
+         */
+        nextSecurityMaintenanceRunTime?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Deep link to the OCI console to view this resource.
+         */
+        ociUrl?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * OCID of created infra.
+         * https://docs.oracle.com/en-us/iaas/Content/General/Concepts/identifiers.htm#Oracle
+         */
+        ocid?: pulumi.Input<string>;
+        /**
+         * The shape of the Exadata Infrastructure. The shape determines the
+         * amount of CPU, storage, and memory resources allocated to the instance.
+         */
+        shape: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The current lifecycle state of the Exadata Infrastructure.
+         * Possible values:
+         * STATE_UNSPECIFIED
+         * PROVISIONING
+         * AVAILABLE
+         * UPDATING
+         * TERMINATING
+         * TERMINATED
+         * FAILED
+         * MAINTENANCE_IN_PROGRESS
+         */
+        state?: pulumi.Input<string>;
+        /**
+         * The number of Cloud Exadata storage servers for the Exadata Infrastructure.
+         */
+        storageCount?: pulumi.Input<number>;
+        /**
+         * (Output)
+         * The software version of the storage servers (cells) in the Exadata
+         * Infrastructure.
+         */
+        storageServerVersion?: pulumi.Input<string>;
+        /**
+         * The total storage allocated to the Exadata Infrastructure
+         * resource, in gigabytes (GB).
+         */
+        totalStorageSizeGb?: pulumi.Input<number>;
+    }
+
+    export interface CloudExadataInfrastructurePropertiesCustomerContact {
+        /**
+         * The email address used by Oracle to send notifications regarding databases
+         * and infrastructure.
+         */
+        email: pulumi.Input<string>;
+    }
+
+    export interface CloudExadataInfrastructurePropertiesMaintenanceWindow {
+        /**
+         * Determines the amount of time the system will wait before the start of each
+         * database server patching operation. Custom action timeout is in minutes and
+         * valid value is between 15 to 120 (inclusive).
+         */
+        customActionTimeoutMins?: pulumi.Input<number>;
+        /**
+         * Days during the week when maintenance should be performed.
+         */
+        daysOfWeeks?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The window of hours during the day when maintenance should be performed.
+         * The window is a 4 hour slot. Valid values are:
+         * 0 - represents time slot 0:00 - 3:59 UTC
+         * 4 - represents time slot 4:00 - 7:59 UTC
+         * 8 - represents time slot 8:00 - 11:59 UTC
+         * 12 - represents time slot 12:00 - 15:59 UTC
+         * 16 - represents time slot 16:00 - 19:59 UTC
+         * 20 - represents time slot 20:00 - 23:59 UTC
+         */
+        hoursOfDays?: pulumi.Input<pulumi.Input<number>[]>;
+        /**
+         * If true, enables the configuration of a custom action timeout (waiting
+         * period) between database server patching operations.
+         */
+        isCustomActionTimeoutEnabled?: pulumi.Input<boolean>;
+        /**
+         * Lead time window allows user to set a lead time to prepare for a down time.
+         * The lead time is in weeks and valid value is between 1 to 4.
+         */
+        leadTimeWeek?: pulumi.Input<number>;
+        /**
+         * Months during the year when maintenance should be performed.
+         */
+        months?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Cloud CloudExadataInfrastructure node patching method, either "ROLLING"
+         * or "NONROLLING". Default value is ROLLING.
+         * Possible values:
+         * PATCHING_MODE_UNSPECIFIED
+         * ROLLING
+         * NON_ROLLING
+         */
+        patchingMode?: pulumi.Input<string>;
+        /**
+         * The maintenance window scheduling preference.
+         * Possible values:
+         * MAINTENANCE_WINDOW_PREFERENCE_UNSPECIFIED
+         * CUSTOM_PREFERENCE
+         * NO_PREFERENCE
+         */
+        preference?: pulumi.Input<string>;
+        /**
+         * Weeks during the month when maintenance should be performed. Weeks start on
+         * the 1st, 8th, 15th, and 22nd days of the month, and have a duration of 7
+         * days. Weeks start and end based on calendar dates, not days of the week.
+         */
+        weeksOfMonths?: pulumi.Input<pulumi.Input<number>[]>;
+    }
+
+    export interface CloudVmClusterProperties {
+        /**
+         * OCI Cluster name.
+         */
+        clusterName?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Compartment ID of cluster.
+         */
+        compartmentId?: pulumi.Input<string>;
+        /**
+         * Number of enabled CPU cores.
+         */
+        cpuCoreCount: pulumi.Input<number>;
+        /**
+         * The data disk group size to be allocated in TBs.
+         */
+        dataStorageSizeTb?: pulumi.Input<number>;
+        /**
+         * Local storage per VM
+         */
+        dbNodeStorageSizeGb?: pulumi.Input<number>;
+        /**
+         * OCID of database servers.
+         */
+        dbServerOcids?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Data collection options for diagnostics.
+         * Structure is documented below.
+         */
+        diagnosticsDataCollectionOptions?: pulumi.Input<inputs.oracledatabase.CloudVmClusterPropertiesDiagnosticsDataCollectionOptions>;
+        /**
+         * The type of redundancy.
+         * Possible values:
+         * DISK_REDUNDANCY_UNSPECIFIED
+         * HIGH
+         * NORMAL
+         */
+        diskRedundancy?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * DNS listener IP.
+         */
+        dnsListenerIp?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Parent DNS domain where SCAN DNS and hosts names are qualified.
+         * ex: ocispdelegated.ocisp10jvnet.oraclevcn.com
+         */
+        domain?: pulumi.Input<string>;
+        /**
+         * Grid Infrastructure Version.
+         */
+        giVersion?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * host name without domain.
+         * format: "-" with some suffix.
+         * ex: sp2-yi0xq where "sp2" is the hostname_prefix.
+         */
+        hostname?: pulumi.Input<string>;
+        /**
+         * Prefix for VM cluster host names.
+         */
+        hostnamePrefix?: pulumi.Input<string>;
+        /**
+         * License type of VM Cluster.
+         * Possible values:
+         * LICENSE_TYPE_UNSPECIFIED
+         * LICENSE_INCLUDED
+         * BRING_YOUR_OWN_LICENSE
+         */
+        licenseType: pulumi.Input<string>;
+        /**
+         * Use local backup.
+         */
+        localBackupEnabled?: pulumi.Input<boolean>;
+        /**
+         * Memory allocated in GBs.
+         */
+        memorySizeGb?: pulumi.Input<number>;
+        /**
+         * Number of database servers.
+         */
+        nodeCount?: pulumi.Input<number>;
+        /**
+         * (Output)
+         * Deep link to the OCI console to view this resource.
+         */
+        ociUrl?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Oracle Cloud Infrastructure ID of VM Cluster.
+         */
+        ocid?: pulumi.Input<string>;
+        /**
+         * OCPU count per VM. Minimum is 0.1.
+         */
+        ocpuCount?: pulumi.Input<number>;
+        /**
+         * (Output)
+         * SCAN DNS name.
+         * ex: sp2-yi0xq-scan.ocispdelegated.ocisp10jvnet.oraclevcn.com
+         */
+        scanDns?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * OCID of scan DNS record.
+         */
+        scanDnsRecordId?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * OCIDs of scan IPs.
+         */
+        scanIpIds?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * (Output)
+         * SCAN listener port - TCP
+         */
+        scanListenerPortTcp?: pulumi.Input<number>;
+        /**
+         * (Output)
+         * SCAN listener port - TLS
+         */
+        scanListenerPortTcpSsl?: pulumi.Input<number>;
+        /**
+         * (Output)
+         * Shape of VM Cluster.
+         */
+        shape?: pulumi.Input<string>;
+        /**
+         * Use exadata sparse snapshots.
+         */
+        sparseDiskgroupEnabled?: pulumi.Input<boolean>;
+        /**
+         * SSH public keys to be stored with cluster.
+         */
+        sshPublicKeys?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * (Output)
+         * State of the cluster.
+         * Possible values:
+         * STATE_UNSPECIFIED
+         * PROVISIONING
+         * AVAILABLE
+         * UPDATING
+         * TERMINATING
+         * TERMINATED
+         * FAILED
+         * MAINTENANCE_IN_PROGRESS
+         */
+        state?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The storage allocation for the disk group, in gigabytes (GB).
+         */
+        storageSizeGb?: pulumi.Input<number>;
+        /**
+         * (Output)
+         * Operating system version of the image.
+         */
+        systemVersion?: pulumi.Input<string>;
+        /**
+         * Represents a time zone from the
+         * [IANA Time Zone Database](https://www.iana.org/time-zones).
+         * Structure is documented below.
+         */
+        timeZone?: pulumi.Input<inputs.oracledatabase.CloudVmClusterPropertiesTimeZone>;
+    }
+
+    export interface CloudVmClusterPropertiesDiagnosticsDataCollectionOptions {
+        /**
+         * Indicates whether diagnostic collection is enabled for the VM cluster
+         */
+        diagnosticsEventsEnabled?: pulumi.Input<boolean>;
+        /**
+         * Indicates whether health monitoring is enabled for the VM cluster
+         */
+        healthMonitoringEnabled?: pulumi.Input<boolean>;
+        /**
+         * Indicates whether incident logs and trace collection are enabled for the VM
+         * cluster
+         */
+        incidentLogsEnabled?: pulumi.Input<boolean>;
+    }
+
+    export interface CloudVmClusterPropertiesTimeZone {
+        /**
+         * IANA Time Zone Database time zone, e.g. "America/New_York".
+         */
+        id?: pulumi.Input<string>;
+    }
+
+}
+
 export namespace organizations {
     export interface AccessApprovalSettingsEnrolledService {
         /**
@@ -62321,7 +63600,7 @@ export namespace orgpolicy {
          */
         reset?: pulumi.Input<boolean>;
         /**
-         * Up to 10 PolicyRules are allowed. In Policies for boolean constraints, the following requirements apply: - There must be one and only one PolicyRule where condition is unset. - BooleanPolicyRules with conditions must set `enforced` to the opposite of the PolicyRule without a condition. - During policy evaluation, PolicyRules with conditions that are true for a target resource take precedence.
+         * In Policies for boolean constraints, the following requirements apply: - There must be one and only one PolicyRule where condition is unset. - BooleanPolicyRules with conditions must set `enforced` to the opposite of the PolicyRule without a condition. - During policy evaluation, PolicyRules with conditions that are true for a target resource take precedence.
          * Structure is documented below.
          */
         rules?: pulumi.Input<pulumi.Input<inputs.orgpolicy.PolicySpecRule>[]>;
@@ -67221,7 +68500,12 @@ export namespace spanner {
          * Fully qualified name of the KMS key to use to encrypt this database. This key must exist
          * in the same location as the Spanner Database.
          */
-        kmsKeyName: pulumi.Input<string>;
+        kmsKeyName?: pulumi.Input<string>;
+        /**
+         * Fully qualified name of the KMS keys to use to encrypt this database. The keys must exist
+         * in the same locations as the Spanner Database.
+         */
+        kmsKeyNames?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface DatabaseIAMBindingCondition {
@@ -67725,11 +69009,11 @@ export namespace sql {
          */
         pscConfigs?: pulumi.Input<pulumi.Input<inputs.sql.DatabaseInstanceSettingsIpConfigurationPscConfig>[]>;
         /**
-         * Specify how the server certificate's Certificate Authority is hosted. Supported value is `GOOGLE_MANAGED_INTERNAL_CA`.
+         * Specify how the server certificate's Certificate Authority is hosted. Supported values are `GOOGLE_MANAGED_INTERNAL_CA` and `GOOGLE_MANAGED_CAS_CA`.
          */
         serverCaMode?: pulumi.Input<string>;
         /**
-         * Specify how SSL connection should be enforced in DB connections.
+         * Specify how SSL connection should be enforced in DB connections. Supported values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, and `TRUSTED_CLIENT_CERTIFICATE_REQUIRED` (not supported for SQL Server). See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
          */
         sslMode?: pulumi.Input<string>;
     }
@@ -67936,6 +69220,14 @@ export namespace storage {
          * You should take care for race conditions when the same provider manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
          */
         defaultKmsKeyName: pulumi.Input<string>;
+    }
+
+    export interface BucketHierarchicalNamespace {
+        /**
+         * Enable hierarchical namespace for the bucket. 
+         * To use this flag, you must also use --uniform-bucket-level-access
+         */
+        enabled: pulumi.Input<boolean>;
     }
 
     export interface BucketIAMBindingCondition {
@@ -68777,6 +70069,842 @@ export namespace tpu {
     }
 }
 
+export namespace transcoder {
+    export interface JobConfig {
+        /**
+         * Ad break.
+         * Structure is documented below.
+         */
+        adBreaks?: pulumi.Input<pulumi.Input<inputs.transcoder.JobConfigAdBreak>[]>;
+        /**
+         * List of input assets stored in Cloud Storage.
+         * Structure is documented below.
+         */
+        editLists?: pulumi.Input<pulumi.Input<inputs.transcoder.JobConfigEditList>[]>;
+        /**
+         * List of input assets stored in Cloud Storage.
+         * Structure is documented below.
+         */
+        elementaryStreams?: pulumi.Input<pulumi.Input<inputs.transcoder.JobConfigElementaryStream>[]>;
+        /**
+         * List of encryption configurations for the content.
+         * Structure is documented below.
+         */
+        encryptions?: pulumi.Input<pulumi.Input<inputs.transcoder.JobConfigEncryption>[]>;
+        /**
+         * List of input assets stored in Cloud Storage.
+         * Structure is documented below.
+         */
+        inputs?: pulumi.Input<pulumi.Input<inputs.transcoder.JobConfigInput>[]>;
+        /**
+         * Manifest configuration.
+         * Structure is documented below.
+         */
+        manifests?: pulumi.Input<pulumi.Input<inputs.transcoder.JobConfigManifest>[]>;
+        /**
+         * Multiplexing settings for output stream.
+         * Structure is documented below.
+         */
+        muxStreams?: pulumi.Input<pulumi.Input<inputs.transcoder.JobConfigMuxStream>[]>;
+        /**
+         * Location of output file(s) in a Cloud Storage bucket.
+         * Structure is documented below.
+         */
+        output?: pulumi.Input<inputs.transcoder.JobConfigOutput>;
+        /**
+         * List of overlays on the output video, in descending Z-order.
+         * Structure is documented below.
+         */
+        overlays?: pulumi.Input<pulumi.Input<inputs.transcoder.JobConfigOverlay>[]>;
+        /**
+         * Pub/Sub destination.
+         * Structure is documented below.
+         */
+        pubsubDestination?: pulumi.Input<inputs.transcoder.JobConfigPubsubDestination>;
+    }
+
+    export interface JobConfigAdBreak {
+        /**
+         * Start time in seconds for the ad break, relative to the output file timeline
+         */
+        startTimeOffset?: pulumi.Input<string>;
+    }
+
+    export interface JobConfigEditList {
+        /**
+         * List of values identifying files that should be used in this atom.
+         */
+        inputs?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * A unique key for this atom.
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * Start time in seconds for the atom, relative to the input file timeline. The default is `0s`.
+         */
+        startTimeOffset?: pulumi.Input<string>;
+    }
+
+    export interface JobConfigElementaryStream {
+        /**
+         * Encoding of an audio stream.
+         * Structure is documented below.
+         */
+        audioStream?: pulumi.Input<inputs.transcoder.JobConfigElementaryStreamAudioStream>;
+        /**
+         * A unique key for this atom.
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * Encoding of a video stream.
+         * Structure is documented below.
+         */
+        videoStream?: pulumi.Input<inputs.transcoder.JobConfigElementaryStreamVideoStream>;
+    }
+
+    export interface JobConfigElementaryStreamAudioStream {
+        /**
+         * Audio bitrate in bits per second.
+         */
+        bitrateBps: pulumi.Input<number>;
+        /**
+         * Number of audio channels. The default is `2`.
+         */
+        channelCount?: pulumi.Input<number>;
+        /**
+         * A list of channel names specifying layout of the audio channels. The default is ["fl", "fr"].
+         */
+        channelLayouts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The codec for this audio stream. The default is `aac`.
+         */
+        codec?: pulumi.Input<string>;
+        /**
+         * The audio sample rate in Hertz. The default is `48000`.
+         */
+        sampleRateHertz?: pulumi.Input<number>;
+    }
+
+    export interface JobConfigElementaryStreamVideoStream {
+        /**
+         * H264 codec settings
+         * Structure is documented below.
+         *
+         *
+         * <a name="nestedH264"></a>The `h264` block supports:
+         */
+        h264?: pulumi.Input<inputs.transcoder.JobConfigElementaryStreamVideoStreamH264>;
+    }
+
+    export interface JobConfigElementaryStreamVideoStreamH264 {
+        /**
+         * The video bitrate in bits per second.
+         */
+        bitrateBps: pulumi.Input<number>;
+        /**
+         * Target CRF level. The default is '21'.
+         */
+        crfLevel?: pulumi.Input<number>;
+        /**
+         * The entropy coder to use. The default is 'cabac'.
+         */
+        entropyCoder?: pulumi.Input<string>;
+        /**
+         * The target video frame rate in frames per second (FPS).
+         */
+        frameRate: pulumi.Input<number>;
+        /**
+         * Select the GOP size based on the specified duration. The default is '3s'.
+         */
+        gopDuration?: pulumi.Input<string>;
+        /**
+         * The height of the video in pixels.
+         */
+        heightPixels?: pulumi.Input<number>;
+        /**
+         * HLG color format setting for H264.
+         */
+        hlg?: pulumi.Input<inputs.transcoder.JobConfigElementaryStreamVideoStreamH264Hlg>;
+        /**
+         * Pixel format to use. The default is 'yuv420p'.
+         */
+        pixelFormat?: pulumi.Input<string>;
+        /**
+         * Enforces the specified codec preset. The default is 'veryfast'.
+         */
+        preset?: pulumi.Input<string>;
+        /**
+         * Enforces the specified codec profile.
+         */
+        profile?: pulumi.Input<string>;
+        /**
+         * Specify the mode. The default is 'vbr'.
+         */
+        rateControlMode?: pulumi.Input<string>;
+        /**
+         * SDR color format setting for H264.
+         */
+        sdr?: pulumi.Input<inputs.transcoder.JobConfigElementaryStreamVideoStreamH264Sdr>;
+        /**
+         * Initial fullness of the Video Buffering Verifier (VBV) buffer in bits.
+         */
+        vbvFullnessBits?: pulumi.Input<number>;
+        /**
+         * Size of the Video Buffering Verifier (VBV) buffer in bits.
+         */
+        vbvSizeBits?: pulumi.Input<number>;
+        /**
+         * The width of the video in pixels.
+         */
+        widthPixels?: pulumi.Input<number>;
+    }
+
+    export interface JobConfigElementaryStreamVideoStreamH264Hlg {
+    }
+
+    export interface JobConfigElementaryStreamVideoStreamH264Sdr {
+    }
+
+    export interface JobConfigEncryption {
+        /**
+         * Configuration for AES-128 encryption.
+         */
+        aes128?: pulumi.Input<inputs.transcoder.JobConfigEncryptionAes128>;
+        /**
+         * DRM system(s) to use; at least one must be specified. If a DRM system is omitted, it is considered disabled.
+         * Structure is documented below.
+         */
+        drmSystems?: pulumi.Input<inputs.transcoder.JobConfigEncryptionDrmSystems>;
+        /**
+         * Identifier for this set of encryption options.
+         */
+        id: pulumi.Input<string>;
+        /**
+         * Configuration for MPEG Common Encryption (MPEG-CENC).
+         * Structure is documented below.
+         */
+        mpegCenc?: pulumi.Input<inputs.transcoder.JobConfigEncryptionMpegCenc>;
+        /**
+         * Configuration for SAMPLE-AES encryption.
+         */
+        sampleAes?: pulumi.Input<inputs.transcoder.JobConfigEncryptionSampleAes>;
+        /**
+         * Configuration for secrets stored in Google Secret Manager.
+         * Structure is documented below.
+         */
+        secretManagerKeySource?: pulumi.Input<inputs.transcoder.JobConfigEncryptionSecretManagerKeySource>;
+    }
+
+    export interface JobConfigEncryptionAes128 {
+    }
+
+    export interface JobConfigEncryptionDrmSystems {
+        /**
+         * Clearkey configuration.
+         */
+        clearkey?: pulumi.Input<inputs.transcoder.JobConfigEncryptionDrmSystemsClearkey>;
+        /**
+         * Fairplay configuration.
+         */
+        fairplay?: pulumi.Input<inputs.transcoder.JobConfigEncryptionDrmSystemsFairplay>;
+        /**
+         * Playready configuration.
+         */
+        playready?: pulumi.Input<inputs.transcoder.JobConfigEncryptionDrmSystemsPlayready>;
+        /**
+         * Widevine configuration.
+         */
+        widevine?: pulumi.Input<inputs.transcoder.JobConfigEncryptionDrmSystemsWidevine>;
+    }
+
+    export interface JobConfigEncryptionDrmSystemsClearkey {
+    }
+
+    export interface JobConfigEncryptionDrmSystemsFairplay {
+    }
+
+    export interface JobConfigEncryptionDrmSystemsPlayready {
+    }
+
+    export interface JobConfigEncryptionDrmSystemsWidevine {
+    }
+
+    export interface JobConfigEncryptionMpegCenc {
+        /**
+         * Specify the encryption scheme.
+         */
+        scheme: pulumi.Input<string>;
+    }
+
+    export interface JobConfigEncryptionSampleAes {
+    }
+
+    export interface JobConfigEncryptionSecretManagerKeySource {
+        /**
+         * The name of the Secret Version containing the encryption key in the following format: projects/{project}/secrets/{secret_id}/versions/{version_number}.
+         */
+        secretVersion: pulumi.Input<string>;
+    }
+
+    export interface JobConfigInput {
+        /**
+         * A unique key for this input. Must be specified when using advanced mapping and edit lists.
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, gs://bucket/inputs/file.mp4).
+         * If empty, the value is populated from Job.input_uri.
+         */
+        uri?: pulumi.Input<string>;
+    }
+
+    export interface JobConfigManifest {
+        /**
+         * The name of the generated file. The default is `manifest`.
+         */
+        fileName?: pulumi.Input<string>;
+        /**
+         * List of user supplied MuxStream.key values that should appear in this manifest.
+         */
+        muxStreams?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Type of the manifest.
+         * Possible values are: `MANIFEST_TYPE_UNSPECIFIED`, `HLS`, `DASH`.
+         */
+        type?: pulumi.Input<string>;
+    }
+
+    export interface JobConfigMuxStream {
+        /**
+         * The container format. The default is `mp4`.
+         */
+        container?: pulumi.Input<string>;
+        /**
+         * List of ElementaryStream.key values multiplexed in this stream.
+         */
+        elementaryStreams?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Identifier of the encryption configuration to use.
+         */
+        encryptionId?: pulumi.Input<string>;
+        /**
+         * The name of the generated file.
+         */
+        fileName?: pulumi.Input<string>;
+        /**
+         * A unique key for this multiplexed stream.
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * Segment settings for ts, fmp4 and vtt.
+         * Structure is documented below.
+         */
+        segmentSettings?: pulumi.Input<inputs.transcoder.JobConfigMuxStreamSegmentSettings>;
+    }
+
+    export interface JobConfigMuxStreamSegmentSettings {
+        /**
+         * Duration of the segments in seconds. The default is `6.0s`.
+         */
+        segmentDuration?: pulumi.Input<string>;
+    }
+
+    export interface JobConfigOutput {
+        /**
+         * URI for the output file(s). For example, gs://my-bucket/outputs/.
+         */
+        uri?: pulumi.Input<string>;
+    }
+
+    export interface JobConfigOverlay {
+        /**
+         * List of animations. The list should be chronological, without any time overlap.
+         * Structure is documented below.
+         */
+        animations?: pulumi.Input<pulumi.Input<inputs.transcoder.JobConfigOverlayAnimation>[]>;
+        /**
+         * Image overlay.
+         * Structure is documented below.
+         */
+        image?: pulumi.Input<inputs.transcoder.JobConfigOverlayImage>;
+    }
+
+    export interface JobConfigOverlayAnimation {
+        /**
+         * Display overlay object with fade animation.
+         * Structure is documented below.
+         */
+        animationFade?: pulumi.Input<inputs.transcoder.JobConfigOverlayAnimationAnimationFade>;
+    }
+
+    export interface JobConfigOverlayAnimationAnimationFade {
+        /**
+         * The time to end the fade animation, in seconds.
+         */
+        endTimeOffset?: pulumi.Input<string>;
+        /**
+         * Required. Type of fade animation: `FADE_IN` or `FADE_OUT`.
+         * The possible values are:
+         * * `FADE_TYPE_UNSPECIFIED`: The fade type is not specified.
+         * * `FADE_IN`: Fade the overlay object into view.
+         * * `FADE_OUT`: Fade the overlay object out of view.
+         * Possible values are: `FADE_TYPE_UNSPECIFIED`, `FADE_IN`, `FADE_OUT`.
+         */
+        fadeType: pulumi.Input<string>;
+        /**
+         * The time to start the fade animation, in seconds.
+         */
+        startTimeOffset?: pulumi.Input<string>;
+        /**
+         * Normalized coordinates based on output video resolution.
+         * Structure is documented below.
+         */
+        xy?: pulumi.Input<inputs.transcoder.JobConfigOverlayAnimationAnimationFadeXy>;
+    }
+
+    export interface JobConfigOverlayAnimationAnimationFadeXy {
+        /**
+         * Normalized x coordinate.
+         */
+        x?: pulumi.Input<number>;
+        /**
+         * Normalized y coordinate.
+         */
+        y?: pulumi.Input<number>;
+    }
+
+    export interface JobConfigOverlayImage {
+        /**
+         * URI of the image in Cloud Storage. For example, gs://bucket/inputs/image.png.
+         */
+        uri: pulumi.Input<string>;
+    }
+
+    export interface JobConfigPubsubDestination {
+        /**
+         * The name of the Pub/Sub topic to publish job completion notification to. For example: projects/{project}/topics/{topic}.
+         */
+        topic?: pulumi.Input<string>;
+    }
+
+    export interface JobTemplateConfig {
+        /**
+         * Ad break.
+         * Structure is documented below.
+         */
+        adBreaks?: pulumi.Input<pulumi.Input<inputs.transcoder.JobTemplateConfigAdBreak>[]>;
+        /**
+         * List of input assets stored in Cloud Storage.
+         * Structure is documented below.
+         */
+        editLists?: pulumi.Input<pulumi.Input<inputs.transcoder.JobTemplateConfigEditList>[]>;
+        /**
+         * List of input assets stored in Cloud Storage.
+         * Structure is documented below.
+         */
+        elementaryStreams?: pulumi.Input<pulumi.Input<inputs.transcoder.JobTemplateConfigElementaryStream>[]>;
+        /**
+         * List of encryption configurations for the content.
+         * Structure is documented below.
+         */
+        encryptions?: pulumi.Input<pulumi.Input<inputs.transcoder.JobTemplateConfigEncryption>[]>;
+        /**
+         * List of input assets stored in Cloud Storage.
+         * Structure is documented below.
+         */
+        inputs?: pulumi.Input<pulumi.Input<inputs.transcoder.JobTemplateConfigInput>[]>;
+        /**
+         * Manifest configuration.
+         * Structure is documented below.
+         */
+        manifests?: pulumi.Input<pulumi.Input<inputs.transcoder.JobTemplateConfigManifest>[]>;
+        /**
+         * Multiplexing settings for output stream.
+         * Structure is documented below.
+         */
+        muxStreams?: pulumi.Input<pulumi.Input<inputs.transcoder.JobTemplateConfigMuxStream>[]>;
+        /**
+         * Location of output file(s) in a Cloud Storage bucket.
+         * Structure is documented below.
+         */
+        output?: pulumi.Input<inputs.transcoder.JobTemplateConfigOutput>;
+        /**
+         * List of overlays on the output video, in descending Z-order.
+         * Structure is documented below.
+         */
+        overlays?: pulumi.Input<pulumi.Input<inputs.transcoder.JobTemplateConfigOverlay>[]>;
+        /**
+         * Pub/Sub destination.
+         * Structure is documented below.
+         */
+        pubsubDestination?: pulumi.Input<inputs.transcoder.JobTemplateConfigPubsubDestination>;
+    }
+
+    export interface JobTemplateConfigAdBreak {
+        /**
+         * Start time in seconds for the ad break, relative to the output file timeline
+         */
+        startTimeOffset?: pulumi.Input<string>;
+    }
+
+    export interface JobTemplateConfigEditList {
+        /**
+         * List of values identifying files that should be used in this atom.
+         */
+        inputs?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * A unique key for this atom.
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * Start time in seconds for the atom, relative to the input file timeline.  The default is `0s`.
+         */
+        startTimeOffset?: pulumi.Input<string>;
+    }
+
+    export interface JobTemplateConfigElementaryStream {
+        /**
+         * Encoding of an audio stream.
+         * Structure is documented below.
+         */
+        audioStream?: pulumi.Input<inputs.transcoder.JobTemplateConfigElementaryStreamAudioStream>;
+        /**
+         * A unique key for this atom.
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * Encoding of a video stream.
+         * Structure is documented below.
+         */
+        videoStream?: pulumi.Input<inputs.transcoder.JobTemplateConfigElementaryStreamVideoStream>;
+    }
+
+    export interface JobTemplateConfigElementaryStreamAudioStream {
+        /**
+         * Audio bitrate in bits per second.
+         */
+        bitrateBps: pulumi.Input<number>;
+        /**
+         * Number of audio channels. The default is `2`.
+         */
+        channelCount?: pulumi.Input<number>;
+        /**
+         * A list of channel names specifying layout of the audio channels.  The default is ["fl", "fr"].
+         */
+        channelLayouts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The codec for this audio stream. The default is `aac`.
+         */
+        codec?: pulumi.Input<string>;
+        /**
+         * The audio sample rate in Hertz. The default is `48000`.
+         */
+        sampleRateHertz?: pulumi.Input<number>;
+    }
+
+    export interface JobTemplateConfigElementaryStreamVideoStream {
+        /**
+         * H264 codec settings
+         * Structure is documented below.
+         *
+         *
+         * <a name="nestedH264"></a>The `h264` block supports:
+         */
+        h264?: pulumi.Input<inputs.transcoder.JobTemplateConfigElementaryStreamVideoStreamH264>;
+    }
+
+    export interface JobTemplateConfigElementaryStreamVideoStreamH264 {
+        /**
+         * The video bitrate in bits per second.
+         */
+        bitrateBps: pulumi.Input<number>;
+        /**
+         * Target CRF level. The default is '21'.
+         */
+        crfLevel?: pulumi.Input<number>;
+        /**
+         * The entropy coder to use. The default is 'cabac'.
+         */
+        entropyCoder?: pulumi.Input<string>;
+        /**
+         * The target video frame rate in frames per second (FPS).
+         */
+        frameRate: pulumi.Input<number>;
+        /**
+         * Select the GOP size based on the specified duration. The default is '3s'.
+         */
+        gopDuration?: pulumi.Input<string>;
+        /**
+         * The height of the video in pixels.
+         */
+        heightPixels?: pulumi.Input<number>;
+        /**
+         * HLG color format setting for H264.
+         */
+        hlg?: pulumi.Input<inputs.transcoder.JobTemplateConfigElementaryStreamVideoStreamH264Hlg>;
+        /**
+         * Pixel format to use. The default is 'yuv420p'.
+         */
+        pixelFormat?: pulumi.Input<string>;
+        /**
+         * Enforces the specified codec preset. The default is 'veryfast'.
+         */
+        preset?: pulumi.Input<string>;
+        /**
+         * Enforces the specified codec profile.
+         */
+        profile?: pulumi.Input<string>;
+        /**
+         * Specify the mode. The default is 'vbr'.
+         */
+        rateControlMode?: pulumi.Input<string>;
+        /**
+         * SDR color format setting for H264.
+         */
+        sdr?: pulumi.Input<inputs.transcoder.JobTemplateConfigElementaryStreamVideoStreamH264Sdr>;
+        /**
+         * Initial fullness of the Video Buffering Verifier (VBV) buffer in bits.
+         */
+        vbvFullnessBits?: pulumi.Input<number>;
+        /**
+         * Size of the Video Buffering Verifier (VBV) buffer in bits.
+         */
+        vbvSizeBits?: pulumi.Input<number>;
+        /**
+         * The width of the video in pixels.
+         */
+        widthPixels?: pulumi.Input<number>;
+    }
+
+    export interface JobTemplateConfigElementaryStreamVideoStreamH264Hlg {
+    }
+
+    export interface JobTemplateConfigElementaryStreamVideoStreamH264Sdr {
+    }
+
+    export interface JobTemplateConfigEncryption {
+        /**
+         * Configuration for AES-128 encryption.
+         */
+        aes128?: pulumi.Input<inputs.transcoder.JobTemplateConfigEncryptionAes128>;
+        /**
+         * DRM system(s) to use; at least one must be specified. If a DRM system is omitted, it is considered disabled.
+         * Structure is documented below.
+         */
+        drmSystems?: pulumi.Input<inputs.transcoder.JobTemplateConfigEncryptionDrmSystems>;
+        /**
+         * Identifier for this set of encryption options.
+         */
+        id: pulumi.Input<string>;
+        /**
+         * Configuration for MPEG Common Encryption (MPEG-CENC).
+         * Structure is documented below.
+         */
+        mpegCenc?: pulumi.Input<inputs.transcoder.JobTemplateConfigEncryptionMpegCenc>;
+        /**
+         * Configuration for SAMPLE-AES encryption.
+         */
+        sampleAes?: pulumi.Input<inputs.transcoder.JobTemplateConfigEncryptionSampleAes>;
+        /**
+         * Configuration for secrets stored in Google Secret Manager.
+         * Structure is documented below.
+         */
+        secretManagerKeySource?: pulumi.Input<inputs.transcoder.JobTemplateConfigEncryptionSecretManagerKeySource>;
+    }
+
+    export interface JobTemplateConfigEncryptionAes128 {
+    }
+
+    export interface JobTemplateConfigEncryptionDrmSystems {
+        /**
+         * Clearkey configuration.
+         */
+        clearkey?: pulumi.Input<inputs.transcoder.JobTemplateConfigEncryptionDrmSystemsClearkey>;
+        /**
+         * Fairplay configuration.
+         */
+        fairplay?: pulumi.Input<inputs.transcoder.JobTemplateConfigEncryptionDrmSystemsFairplay>;
+        /**
+         * Playready configuration.
+         */
+        playready?: pulumi.Input<inputs.transcoder.JobTemplateConfigEncryptionDrmSystemsPlayready>;
+        /**
+         * Widevine configuration.
+         */
+        widevine?: pulumi.Input<inputs.transcoder.JobTemplateConfigEncryptionDrmSystemsWidevine>;
+    }
+
+    export interface JobTemplateConfigEncryptionDrmSystemsClearkey {
+    }
+
+    export interface JobTemplateConfigEncryptionDrmSystemsFairplay {
+    }
+
+    export interface JobTemplateConfigEncryptionDrmSystemsPlayready {
+    }
+
+    export interface JobTemplateConfigEncryptionDrmSystemsWidevine {
+    }
+
+    export interface JobTemplateConfigEncryptionMpegCenc {
+        /**
+         * Specify the encryption scheme.
+         */
+        scheme: pulumi.Input<string>;
+    }
+
+    export interface JobTemplateConfigEncryptionSampleAes {
+    }
+
+    export interface JobTemplateConfigEncryptionSecretManagerKeySource {
+        /**
+         * The name of the Secret Version containing the encryption key in the following format: projects/{project}/secrets/{secret_id}/versions/{version_number}.
+         */
+        secretVersion: pulumi.Input<string>;
+    }
+
+    export interface JobTemplateConfigInput {
+        /**
+         * A unique key for this input. Must be specified when using advanced mapping and edit lists.
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, gs://bucket/inputs/file.mp4).
+         * If empty, the value is populated from Job.input_uri.
+         */
+        uri?: pulumi.Input<string>;
+    }
+
+    export interface JobTemplateConfigManifest {
+        /**
+         * The name of the generated file. The default is `manifest`.
+         */
+        fileName?: pulumi.Input<string>;
+        /**
+         * List of user supplied MuxStream.key values that should appear in this manifest.
+         */
+        muxStreams?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Type of the manifest.
+         * Possible values are: `MANIFEST_TYPE_UNSPECIFIED`, `HLS`, `DASH`.
+         */
+        type?: pulumi.Input<string>;
+    }
+
+    export interface JobTemplateConfigMuxStream {
+        /**
+         * The container format. The default is `mp4`.
+         */
+        container?: pulumi.Input<string>;
+        /**
+         * List of ElementaryStream.key values multiplexed in this stream.
+         */
+        elementaryStreams?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Identifier of the encryption configuration to use.
+         */
+        encryptionId?: pulumi.Input<string>;
+        /**
+         * The name of the generated file.
+         */
+        fileName?: pulumi.Input<string>;
+        /**
+         * A unique key for this multiplexed stream.
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * Segment settings for ts, fmp4 and vtt.
+         * Structure is documented below.
+         */
+        segmentSettings?: pulumi.Input<inputs.transcoder.JobTemplateConfigMuxStreamSegmentSettings>;
+    }
+
+    export interface JobTemplateConfigMuxStreamSegmentSettings {
+        /**
+         * Duration of the segments in seconds. The default is `6.0s`.
+         */
+        segmentDuration?: pulumi.Input<string>;
+    }
+
+    export interface JobTemplateConfigOutput {
+        /**
+         * URI for the output file(s). For example, gs://my-bucket/outputs/.
+         */
+        uri?: pulumi.Input<string>;
+    }
+
+    export interface JobTemplateConfigOverlay {
+        /**
+         * List of animations. The list should be chronological, without any time overlap.
+         * Structure is documented below.
+         */
+        animations?: pulumi.Input<pulumi.Input<inputs.transcoder.JobTemplateConfigOverlayAnimation>[]>;
+        /**
+         * Image overlay.
+         * Structure is documented below.
+         */
+        image?: pulumi.Input<inputs.transcoder.JobTemplateConfigOverlayImage>;
+    }
+
+    export interface JobTemplateConfigOverlayAnimation {
+        /**
+         * Display overlay object with fade animation.
+         * Structure is documented below.
+         */
+        animationFade?: pulumi.Input<inputs.transcoder.JobTemplateConfigOverlayAnimationAnimationFade>;
+    }
+
+    export interface JobTemplateConfigOverlayAnimationAnimationFade {
+        /**
+         * The time to end the fade animation, in seconds.
+         */
+        endTimeOffset?: pulumi.Input<string>;
+        /**
+         * Required. Type of fade animation: `FADE_IN` or `FADE_OUT`.
+         * The possible values are:
+         * * `FADE_TYPE_UNSPECIFIED`: The fade type is not specified.
+         * * `FADE_IN`: Fade the overlay object into view.
+         * * `FADE_OUT`: Fade the overlay object out of view.
+         * Possible values are: `FADE_TYPE_UNSPECIFIED`, `FADE_IN`, `FADE_OUT`.
+         */
+        fadeType: pulumi.Input<string>;
+        /**
+         * The time to start the fade animation, in seconds.
+         */
+        startTimeOffset?: pulumi.Input<string>;
+        /**
+         * Normalized coordinates based on output video resolution.
+         * Structure is documented below.
+         */
+        xy?: pulumi.Input<inputs.transcoder.JobTemplateConfigOverlayAnimationAnimationFadeXy>;
+    }
+
+    export interface JobTemplateConfigOverlayAnimationAnimationFadeXy {
+        /**
+         * Normalized x coordinate.
+         */
+        x?: pulumi.Input<number>;
+        /**
+         * Normalized y coordinate.
+         */
+        y?: pulumi.Input<number>;
+    }
+
+    export interface JobTemplateConfigOverlayImage {
+        /**
+         * URI of the image in Cloud Storage. For example, gs://bucket/inputs/image.png.
+         */
+        uri: pulumi.Input<string>;
+    }
+
+    export interface JobTemplateConfigPubsubDestination {
+        /**
+         * The name of the Pub/Sub topic to publish job completion notification to. For example: projects/{project}/topics/{topic}.
+         */
+        topic?: pulumi.Input<string>;
+    }
+}
+
 export namespace vertex {
     export interface AiDatasetEncryptionSpec {
         /**
@@ -69560,6 +71688,105 @@ export namespace vertex {
 }
 
 export namespace vmwareengine {
+    export interface ClusterAutoscalingSettings {
+        /**
+         * The map with autoscaling policies applied to the cluster.
+         * The key is the identifier of the policy.
+         * It must meet the following requirements:
+         * * Only contains 1-63 alphanumeric characters and hyphens
+         * * Begins with an alphabetical character
+         * * Ends with a non-hyphen character
+         * * Not formatted as a UUID
+         * * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+         * Currently the map must contain only one element
+         * that describes the autoscaling policy for compute nodes.
+         * Structure is documented below.
+         */
+        autoscalingPolicies: pulumi.Input<pulumi.Input<inputs.vmwareengine.ClusterAutoscalingSettingsAutoscalingPolicy>[]>;
+        /**
+         * The minimum duration between consecutive autoscale operations.
+         * It starts once addition or removal of nodes is fully completed.
+         * Minimum cool down period is 30m.
+         * Cool down period must be in whole minutes (for example, 30m, 31m, 50m).
+         * Mandatory for successful addition of autoscaling settings in cluster.
+         */
+        coolDownPeriod?: pulumi.Input<string>;
+        /**
+         * Maximum number of nodes of any type in a cluster.
+         * Mandatory for successful addition of autoscaling settings in cluster.
+         */
+        maxClusterNodeCount?: pulumi.Input<number>;
+        /**
+         * Minimum number of nodes of any type in a cluster.
+         * Mandatory for successful addition of autoscaling settings in cluster.
+         */
+        minClusterNodeCount?: pulumi.Input<number>;
+    }
+
+    export interface ClusterAutoscalingSettingsAutoscalingPolicy {
+        /**
+         * The identifier for this object. Format specified above.
+         */
+        autoscalePolicyId: pulumi.Input<string>;
+        /**
+         * Utilization thresholds pertaining to amount of consumed memory.
+         * Structure is documented below.
+         */
+        consumedMemoryThresholds?: pulumi.Input<inputs.vmwareengine.ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholds>;
+        /**
+         * Utilization thresholds pertaining to CPU utilization.
+         * Structure is documented below.
+         */
+        cpuThresholds?: pulumi.Input<inputs.vmwareengine.ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds>;
+        /**
+         * The canonical identifier of the node type to add or remove.
+         */
+        nodeTypeId: pulumi.Input<string>;
+        /**
+         * Number of nodes to add to a cluster during a scale-out operation.
+         * Must be divisible by 2 for stretched clusters.
+         */
+        scaleOutSize: pulumi.Input<number>;
+        /**
+         * Utilization thresholds pertaining to amount of consumed storage.
+         * Structure is documented below.
+         */
+        storageThresholds?: pulumi.Input<inputs.vmwareengine.ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds>;
+    }
+
+    export interface ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholds {
+        /**
+         * The utilization triggering the scale-in operation in percent.
+         */
+        scaleIn: pulumi.Input<number>;
+        /**
+         * The utilization triggering the scale-out operation in percent.
+         */
+        scaleOut: pulumi.Input<number>;
+    }
+
+    export interface ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds {
+        /**
+         * The utilization triggering the scale-in operation in percent.
+         */
+        scaleIn: pulumi.Input<number>;
+        /**
+         * The utilization triggering the scale-out operation in percent.
+         */
+        scaleOut: pulumi.Input<number>;
+    }
+
+    export interface ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds {
+        /**
+         * The utilization triggering the scale-in operation in percent.
+         */
+        scaleIn: pulumi.Input<number>;
+        /**
+         * The utilization triggering the scale-out operation in percent.
+         */
+        scaleOut: pulumi.Input<number>;
+    }
+
     export interface ClusterNodeTypeConfig {
         /**
          * Customized number of cores available to each node of the type.
@@ -70160,6 +72387,17 @@ export namespace workstations {
          * To access workstations in the cluster, configure access to the managed service using (Private Service Connect)[https://cloud.google.com/vpc/docs/configure-private-service-connect-services].
          */
         serviceAttachmentUri?: pulumi.Input<string>;
+    }
+
+    export interface WorkstationConfigAllowedPort {
+        /**
+         * Starting port number for the current range of ports. Valid ports are 22, 80, and ports within the range 1024-65535.
+         */
+        first?: pulumi.Input<number>;
+        /**
+         * Ending port number for the current range of ports. Valid ports are 22, 80, and ports within the range 1024-65535.
+         */
+        last?: pulumi.Input<number>;
     }
 
     export interface WorkstationConfigCondition {

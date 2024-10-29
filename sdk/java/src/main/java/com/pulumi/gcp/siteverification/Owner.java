@@ -14,14 +14,6 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * ## subcategory: &#34;Site Verification&#34;
- * 
- * description: |-
- *   Manages additional owners on verified web resources.
- * ---
- * 
- * # gcp.siteverification.Owner
- * 
  * An owner is an additional user that may manage a verified web site in the
  * [Google Search Console](https://www.google.com/webmasters/tools/). There
  * are two types of web resource owners:

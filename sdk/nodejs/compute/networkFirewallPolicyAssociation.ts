@@ -7,24 +7,32 @@ import * as utilities from "../utilities";
 /**
  * The Compute NetworkFirewallPolicyAssociation resource
  *
+ * To get more information about NetworkFirewallPolicyAssociation, see:
+ *
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/networkFirewallPolicies/addAssociation)
+ *
  * ## Example Usage
  *
- * ### Global
+ * ### Network Firewall Policy Association
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const networkFirewallPolicy = new gcp.compute.NetworkFirewallPolicy("network_firewall_policy", {
- *     name: "policy",
+ * const policy = new gcp.compute.NetworkFirewallPolicy("policy", {
+ *     name: "my-policy",
  *     project: "my-project-name",
  *     description: "Sample global network firewall policy",
  * });
- * const network = new gcp.compute.Network("network", {name: "network"});
- * const primary = new gcp.compute.NetworkFirewallPolicyAssociation("primary", {
- *     name: "association",
- *     attachmentTarget: network.id,
- *     firewallPolicy: networkFirewallPolicy.name,
+ * const network = new gcp.compute.Network("network", {
+ *     name: "my-network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const _default = new gcp.compute.NetworkFirewallPolicyAssociation("default", {
+ *     name: "my-association",
  *     project: "my-project-name",
+ *     attachmentTarget: network.id,
+ *     firewallPolicy: policy.id,
  * });
  * ```
  *
@@ -36,6 +44,8 @@ import * as utilities from "../utilities";
  *
  * * `{{project}}/{{firewall_policy}}/{{name}}`
  *
+ * * `{{firewall_policy}}/{{name}}`
+ *
  * When using the `pulumi import` command, NetworkFirewallPolicyAssociation can be imported using one of the formats above. For example:
  *
  * ```sh
@@ -44,6 +54,10 @@ import * as utilities from "../utilities";
  *
  * ```sh
  * $ pulumi import gcp:compute/networkFirewallPolicyAssociation:NetworkFirewallPolicyAssociation default {{project}}/{{firewall_policy}}/{{name}}
+ * ```
+ *
+ * ```sh
+ * $ pulumi import gcp:compute/networkFirewallPolicyAssociation:NetworkFirewallPolicyAssociation default {{firewall_policy}}/{{name}}
  * ```
  */
 export class NetworkFirewallPolicyAssociation extends pulumi.CustomResource {
@@ -79,19 +93,19 @@ export class NetworkFirewallPolicyAssociation extends pulumi.CustomResource {
      */
     public readonly attachmentTarget!: pulumi.Output<string>;
     /**
-     * The firewall policy ID of the association.
-     */
-    public readonly firewallPolicy!: pulumi.Output<string>;
-    /**
-     * The name for an association.
-     *
+     * The firewall policy of the resource.
      *
      *
      * - - -
      */
+    public readonly firewallPolicy!: pulumi.Output<string>;
+    /**
+     * The name for an association.
+     */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -145,19 +159,19 @@ export interface NetworkFirewallPolicyAssociationState {
      */
     attachmentTarget?: pulumi.Input<string>;
     /**
-     * The firewall policy ID of the association.
-     */
-    firewallPolicy?: pulumi.Input<string>;
-    /**
-     * The name for an association.
-     *
+     * The firewall policy of the resource.
      *
      *
      * - - -
      */
+    firewallPolicy?: pulumi.Input<string>;
+    /**
+     * The name for an association.
+     */
     name?: pulumi.Input<string>;
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
     /**
@@ -175,19 +189,19 @@ export interface NetworkFirewallPolicyAssociationArgs {
      */
     attachmentTarget: pulumi.Input<string>;
     /**
-     * The firewall policy ID of the association.
-     */
-    firewallPolicy: pulumi.Input<string>;
-    /**
-     * The name for an association.
-     *
+     * The firewall policy of the resource.
      *
      *
      * - - -
      */
+    firewallPolicy: pulumi.Input<string>;
+    /**
+     * The name for an association.
+     */
     name?: pulumi.Input<string>;
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
 }

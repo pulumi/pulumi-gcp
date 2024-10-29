@@ -68,7 +68,7 @@ public final class ArtifactregistryFunctions {
      *         final var myImage = ArtifactregistryFunctions.getDockerImage(GetDockerImageArgs.builder()
      *             .location(myRepo.location())
      *             .repositoryId(myRepo.repositoryId())
-     *             .image("my-image:my-tag")
+     *             .imageName("my-image:my-tag")
      *             .build());
      * 
      *         var default_ = new Service("default", ServiceArgs.builder()
@@ -134,7 +134,7 @@ public final class ArtifactregistryFunctions {
      *         final var myImage = ArtifactregistryFunctions.getDockerImage(GetDockerImageArgs.builder()
      *             .location(myRepo.location())
      *             .repositoryId(myRepo.repositoryId())
-     *             .image("my-image:my-tag")
+     *             .imageName("my-image:my-tag")
      *             .build());
      * 
      *         var default_ = new Service("default", ServiceArgs.builder()
@@ -200,7 +200,7 @@ public final class ArtifactregistryFunctions {
      *         final var myImage = ArtifactregistryFunctions.getDockerImage(GetDockerImageArgs.builder()
      *             .location(myRepo.location())
      *             .repositoryId(myRepo.repositoryId())
-     *             .image("my-image:my-tag")
+     *             .imageName("my-image:my-tag")
      *             .build());
      * 
      *         var default_ = new Service("default", ServiceArgs.builder()
@@ -266,7 +266,7 @@ public final class ArtifactregistryFunctions {
      *         final var myImage = ArtifactregistryFunctions.getDockerImage(GetDockerImageArgs.builder()
      *             .location(myRepo.location())
      *             .repositoryId(myRepo.repositoryId())
-     *             .image("my-image:my-tag")
+     *             .imageName("my-image:my-tag")
      *             .build());
      * 
      *         var default_ = new Service("default", ServiceArgs.builder()

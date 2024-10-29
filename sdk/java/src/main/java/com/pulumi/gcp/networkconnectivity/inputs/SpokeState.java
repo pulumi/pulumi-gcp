@@ -6,6 +6,7 @@ package com.pulumi.gcp.networkconnectivity.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.networkconnectivity.inputs.SpokeLinkedInterconnectAttachmentsArgs;
+import com.pulumi.gcp.networkconnectivity.inputs.SpokeLinkedProducerVpcNetworkArgs;
 import com.pulumi.gcp.networkconnectivity.inputs.SpokeLinkedRouterApplianceInstancesArgs;
 import com.pulumi.gcp.networkconnectivity.inputs.SpokeLinkedVpcNetworkArgs;
 import com.pulumi.gcp.networkconnectivity.inputs.SpokeLinkedVpnTunnelsArgs;
@@ -114,6 +115,23 @@ public final class SpokeState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<SpokeLinkedInterconnectAttachmentsArgs>> linkedInterconnectAttachments() {
         return Optional.ofNullable(this.linkedInterconnectAttachments);
+    }
+
+    /**
+     * Producer VPC network that is associated with the spoke.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="linkedProducerVpcNetwork")
+    private @Nullable Output<SpokeLinkedProducerVpcNetworkArgs> linkedProducerVpcNetwork;
+
+    /**
+     * @return Producer VPC network that is associated with the spoke.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<SpokeLinkedProducerVpcNetworkArgs>> linkedProducerVpcNetwork() {
+        return Optional.ofNullable(this.linkedProducerVpcNetwork);
     }
 
     /**
@@ -289,6 +307,7 @@ public final class SpokeState extends com.pulumi.resources.ResourceArgs {
         this.hub = $.hub;
         this.labels = $.labels;
         this.linkedInterconnectAttachments = $.linkedInterconnectAttachments;
+        this.linkedProducerVpcNetwork = $.linkedProducerVpcNetwork;
         this.linkedRouterApplianceInstances = $.linkedRouterApplianceInstances;
         this.linkedVpcNetwork = $.linkedVpcNetwork;
         this.linkedVpnTunnels = $.linkedVpnTunnels;
@@ -449,6 +468,29 @@ public final class SpokeState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder linkedInterconnectAttachments(SpokeLinkedInterconnectAttachmentsArgs linkedInterconnectAttachments) {
             return linkedInterconnectAttachments(Output.of(linkedInterconnectAttachments));
+        }
+
+        /**
+         * @param linkedProducerVpcNetwork Producer VPC network that is associated with the spoke.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder linkedProducerVpcNetwork(@Nullable Output<SpokeLinkedProducerVpcNetworkArgs> linkedProducerVpcNetwork) {
+            $.linkedProducerVpcNetwork = linkedProducerVpcNetwork;
+            return this;
+        }
+
+        /**
+         * @param linkedProducerVpcNetwork Producer VPC network that is associated with the spoke.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder linkedProducerVpcNetwork(SpokeLinkedProducerVpcNetworkArgs linkedProducerVpcNetwork) {
+            return linkedProducerVpcNetwork(Output.of(linkedProducerVpcNetwork));
         }
 
         /**

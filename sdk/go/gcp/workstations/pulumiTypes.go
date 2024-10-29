@@ -496,6 +496,112 @@ func (o WorkstationClusterPrivateClusterConfigPtrOutput) ServiceAttachmentUri() 
 	}).(pulumi.StringPtrOutput)
 }
 
+type WorkstationConfigAllowedPort struct {
+	// Starting port number for the current range of ports. Valid ports are 22, 80, and ports within the range 1024-65535.
+	First *int `pulumi:"first"`
+	// Ending port number for the current range of ports. Valid ports are 22, 80, and ports within the range 1024-65535.
+	Last *int `pulumi:"last"`
+}
+
+// WorkstationConfigAllowedPortInput is an input type that accepts WorkstationConfigAllowedPortArgs and WorkstationConfigAllowedPortOutput values.
+// You can construct a concrete instance of `WorkstationConfigAllowedPortInput` via:
+//
+//	WorkstationConfigAllowedPortArgs{...}
+type WorkstationConfigAllowedPortInput interface {
+	pulumi.Input
+
+	ToWorkstationConfigAllowedPortOutput() WorkstationConfigAllowedPortOutput
+	ToWorkstationConfigAllowedPortOutputWithContext(context.Context) WorkstationConfigAllowedPortOutput
+}
+
+type WorkstationConfigAllowedPortArgs struct {
+	// Starting port number for the current range of ports. Valid ports are 22, 80, and ports within the range 1024-65535.
+	First pulumi.IntPtrInput `pulumi:"first"`
+	// Ending port number for the current range of ports. Valid ports are 22, 80, and ports within the range 1024-65535.
+	Last pulumi.IntPtrInput `pulumi:"last"`
+}
+
+func (WorkstationConfigAllowedPortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkstationConfigAllowedPort)(nil)).Elem()
+}
+
+func (i WorkstationConfigAllowedPortArgs) ToWorkstationConfigAllowedPortOutput() WorkstationConfigAllowedPortOutput {
+	return i.ToWorkstationConfigAllowedPortOutputWithContext(context.Background())
+}
+
+func (i WorkstationConfigAllowedPortArgs) ToWorkstationConfigAllowedPortOutputWithContext(ctx context.Context) WorkstationConfigAllowedPortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigAllowedPortOutput)
+}
+
+// WorkstationConfigAllowedPortArrayInput is an input type that accepts WorkstationConfigAllowedPortArray and WorkstationConfigAllowedPortArrayOutput values.
+// You can construct a concrete instance of `WorkstationConfigAllowedPortArrayInput` via:
+//
+//	WorkstationConfigAllowedPortArray{ WorkstationConfigAllowedPortArgs{...} }
+type WorkstationConfigAllowedPortArrayInput interface {
+	pulumi.Input
+
+	ToWorkstationConfigAllowedPortArrayOutput() WorkstationConfigAllowedPortArrayOutput
+	ToWorkstationConfigAllowedPortArrayOutputWithContext(context.Context) WorkstationConfigAllowedPortArrayOutput
+}
+
+type WorkstationConfigAllowedPortArray []WorkstationConfigAllowedPortInput
+
+func (WorkstationConfigAllowedPortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkstationConfigAllowedPort)(nil)).Elem()
+}
+
+func (i WorkstationConfigAllowedPortArray) ToWorkstationConfigAllowedPortArrayOutput() WorkstationConfigAllowedPortArrayOutput {
+	return i.ToWorkstationConfigAllowedPortArrayOutputWithContext(context.Background())
+}
+
+func (i WorkstationConfigAllowedPortArray) ToWorkstationConfigAllowedPortArrayOutputWithContext(ctx context.Context) WorkstationConfigAllowedPortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigAllowedPortArrayOutput)
+}
+
+type WorkstationConfigAllowedPortOutput struct{ *pulumi.OutputState }
+
+func (WorkstationConfigAllowedPortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkstationConfigAllowedPort)(nil)).Elem()
+}
+
+func (o WorkstationConfigAllowedPortOutput) ToWorkstationConfigAllowedPortOutput() WorkstationConfigAllowedPortOutput {
+	return o
+}
+
+func (o WorkstationConfigAllowedPortOutput) ToWorkstationConfigAllowedPortOutputWithContext(ctx context.Context) WorkstationConfigAllowedPortOutput {
+	return o
+}
+
+// Starting port number for the current range of ports. Valid ports are 22, 80, and ports within the range 1024-65535.
+func (o WorkstationConfigAllowedPortOutput) First() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkstationConfigAllowedPort) *int { return v.First }).(pulumi.IntPtrOutput)
+}
+
+// Ending port number for the current range of ports. Valid ports are 22, 80, and ports within the range 1024-65535.
+func (o WorkstationConfigAllowedPortOutput) Last() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v WorkstationConfigAllowedPort) *int { return v.Last }).(pulumi.IntPtrOutput)
+}
+
+type WorkstationConfigAllowedPortArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkstationConfigAllowedPortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkstationConfigAllowedPort)(nil)).Elem()
+}
+
+func (o WorkstationConfigAllowedPortArrayOutput) ToWorkstationConfigAllowedPortArrayOutput() WorkstationConfigAllowedPortArrayOutput {
+	return o
+}
+
+func (o WorkstationConfigAllowedPortArrayOutput) ToWorkstationConfigAllowedPortArrayOutputWithContext(ctx context.Context) WorkstationConfigAllowedPortArrayOutput {
+	return o
+}
+
+func (o WorkstationConfigAllowedPortArrayOutput) Index(i pulumi.IntInput) WorkstationConfigAllowedPortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkstationConfigAllowedPort {
+		return vs[0].([]WorkstationConfigAllowedPort)[vs[1].(int)]
+	}).(WorkstationConfigAllowedPortOutput)
+}
+
 type WorkstationConfigCondition struct {
 	// (Output)
 	// The status code, which should be an enum value of google.rpc.Code.
@@ -3691,6 +3797,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationClusterDomainConfigPtrInput)(nil)).Elem(), WorkstationClusterDomainConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationClusterPrivateClusterConfigInput)(nil)).Elem(), WorkstationClusterPrivateClusterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationClusterPrivateClusterConfigPtrInput)(nil)).Elem(), WorkstationClusterPrivateClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigAllowedPortInput)(nil)).Elem(), WorkstationConfigAllowedPortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigAllowedPortArrayInput)(nil)).Elem(), WorkstationConfigAllowedPortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigConditionInput)(nil)).Elem(), WorkstationConfigConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigConditionArrayInput)(nil)).Elem(), WorkstationConfigConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigContainerInput)(nil)).Elem(), WorkstationConfigContainerArgs{})
@@ -3735,6 +3843,8 @@ func init() {
 	pulumi.RegisterOutputType(WorkstationClusterDomainConfigPtrOutput{})
 	pulumi.RegisterOutputType(WorkstationClusterPrivateClusterConfigOutput{})
 	pulumi.RegisterOutputType(WorkstationClusterPrivateClusterConfigPtrOutput{})
+	pulumi.RegisterOutputType(WorkstationConfigAllowedPortOutput{})
+	pulumi.RegisterOutputType(WorkstationConfigAllowedPortArrayOutput{})
 	pulumi.RegisterOutputType(WorkstationConfigConditionOutput{})
 	pulumi.RegisterOutputType(WorkstationConfigConditionArrayOutput{})
 	pulumi.RegisterOutputType(WorkstationConfigContainerOutput{})

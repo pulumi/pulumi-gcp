@@ -95,6 +95,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Policy to determine if the cluster should be deleted forcefully.
+     * If setting deletion_policy = &#34;FORCE&#34;, the Looker instance will be deleted regardless
+     * of its nested resources. If set to &#34;DEFAULT&#34;, Looker instances that still have
+     * nested resources will return an error. Possible values: DEFAULT, FORCE
+     * 
+     */
+    @Import(name="deletionPolicy")
+    private @Nullable Output<String> deletionPolicy;
+
+    /**
+     * @return Policy to determine if the cluster should be deleted forcefully.
+     * If setting deletion_policy = &#34;FORCE&#34;, the Looker instance will be deleted regardless
+     * of its nested resources. If set to &#34;DEFAULT&#34;, Looker instances that still have
+     * nested resources will return an error. Possible values: DEFAULT, FORCE
+     * 
+     */
+    public Optional<Output<String>> deletionPolicy() {
+        return Optional.ofNullable(this.deletionPolicy);
+    }
+
+    /**
      * Maintenance denial period for this instance.
      * You must allow at least 14 days of maintenance availability
      * between any two deny maintenance periods.
@@ -474,6 +495,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.consumerNetwork = $.consumerNetwork;
         this.createTime = $.createTime;
         this.customDomain = $.customDomain;
+        this.deletionPolicy = $.deletionPolicy;
         this.denyMaintenancePeriod = $.denyMaintenancePeriod;
         this.egressPublicIp = $.egressPublicIp;
         this.encryptionConfig = $.encryptionConfig;
@@ -607,6 +629,33 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder customDomain(InstanceCustomDomainArgs customDomain) {
             return customDomain(Output.of(customDomain));
+        }
+
+        /**
+         * @param deletionPolicy Policy to determine if the cluster should be deleted forcefully.
+         * If setting deletion_policy = &#34;FORCE&#34;, the Looker instance will be deleted regardless
+         * of its nested resources. If set to &#34;DEFAULT&#34;, Looker instances that still have
+         * nested resources will return an error. Possible values: DEFAULT, FORCE
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
+            $.deletionPolicy = deletionPolicy;
+            return this;
+        }
+
+        /**
+         * @param deletionPolicy Policy to determine if the cluster should be deleted forcefully.
+         * If setting deletion_policy = &#34;FORCE&#34;, the Looker instance will be deleted regardless
+         * of its nested resources. If set to &#34;DEFAULT&#34;, Looker instances that still have
+         * nested resources will return an error. Possible values: DEFAULT, FORCE
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(String deletionPolicy) {
+            return deletionPolicy(Output.of(deletionPolicy));
         }
 
         /**

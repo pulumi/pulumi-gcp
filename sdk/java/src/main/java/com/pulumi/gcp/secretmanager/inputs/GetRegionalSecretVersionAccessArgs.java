@@ -6,6 +6,7 @@ package com.pulumi.gcp.secretmanager.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,6 +16,23 @@ import javax.annotation.Nullable;
 public final class GetRegionalSecretVersionAccessArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetRegionalSecretVersionAccessArgs Empty = new GetRegionalSecretVersionAccessArgs();
+
+    /**
+     * If set to &#39;true&#39;, the secret data is
+     * expected to be base64-encoded string.
+     * 
+     */
+    @Import(name="isSecretDataBase64")
+    private @Nullable Output<Boolean> isSecretDataBase64;
+
+    /**
+     * @return If set to &#39;true&#39;, the secret data is
+     * expected to be base64-encoded string.
+     * 
+     */
+    public Optional<Output<Boolean>> isSecretDataBase64() {
+        return Optional.ofNullable(this.isSecretDataBase64);
+    }
 
     /**
      * Location of Secret Manager regional secret resource.
@@ -87,6 +105,7 @@ public final class GetRegionalSecretVersionAccessArgs extends com.pulumi.resourc
     private GetRegionalSecretVersionAccessArgs() {}
 
     private GetRegionalSecretVersionAccessArgs(GetRegionalSecretVersionAccessArgs $) {
+        this.isSecretDataBase64 = $.isSecretDataBase64;
         this.location = $.location;
         this.project = $.project;
         this.secret = $.secret;
@@ -109,6 +128,29 @@ public final class GetRegionalSecretVersionAccessArgs extends com.pulumi.resourc
 
         public Builder(GetRegionalSecretVersionAccessArgs defaults) {
             $ = new GetRegionalSecretVersionAccessArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param isSecretDataBase64 If set to &#39;true&#39;, the secret data is
+         * expected to be base64-encoded string.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isSecretDataBase64(@Nullable Output<Boolean> isSecretDataBase64) {
+            $.isSecretDataBase64 = isSecretDataBase64;
+            return this;
+        }
+
+        /**
+         * @param isSecretDataBase64 If set to &#39;true&#39;, the secret data is
+         * expected to be base64-encoded string.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isSecretDataBase64(Boolean isSecretDataBase64) {
+            return isSecretDataBase64(Output.of(isSecretDataBase64));
         }
 
         /**

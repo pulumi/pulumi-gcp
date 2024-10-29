@@ -108,6 +108,12 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("provisionedIops")]
         public Input<int>? ProvisionedIops { get; set; }
 
+        /// <summary>
+        /// Indicates how much throughput to provision for the disk, in MB/s. This sets the amount of data that can be read or written from the disk per second. Values must greater than or equal to 1. For more details, see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
+        /// </summary>
+        [Input("provisionedThroughput")]
+        public Input<int>? ProvisionedThroughput { get; set; }
+
         [Input("resourceManagerTags")]
         private InputMap<string>? _resourceManagerTags;
 

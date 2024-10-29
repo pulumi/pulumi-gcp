@@ -184,6 +184,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly cpuPlatform!: pulumi.Output<string>;
     /**
+     * Creation timestamp in RFC3339 text format.
+     */
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    /**
      * The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
      */
     public /*out*/ readonly currentStatus!: pulumi.Output<string>;
@@ -226,6 +230,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly instanceId!: pulumi.Output<string>;
     /**
+     * Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
+     */
+    public readonly keyRevocationActionType!: pulumi.Output<string | undefined>;
+    /**
      * The unique fingerprint of the labels.
      */
     public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
@@ -241,6 +249,8 @@ export class Instance extends pulumi.CustomResource {
      * **Note:** If you want to update this value (resize the VM) after initial creation, you must set `allowStoppingForUpdate` to `true`.
      *
      * [Custom machine types](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
+     * Because of current API limitations some custom machine types may get converted to different machine types (such as an equivalent standard type) and cause non-empty plans in your configuration. Use
+     * `lifecycle.ignore_changes` on `machineType` in these cases.
      *
      * There is a limit of 6.5 GB per CPU unless you add [extended memory](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#extendedmemory). You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
      */
@@ -391,6 +401,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["canIpForward"] = state ? state.canIpForward : undefined;
             resourceInputs["confidentialInstanceConfig"] = state ? state.confidentialInstanceConfig : undefined;
             resourceInputs["cpuPlatform"] = state ? state.cpuPlatform : undefined;
+            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             resourceInputs["currentStatus"] = state ? state.currentStatus : undefined;
             resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -400,6 +411,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["guestAccelerators"] = state ? state.guestAccelerators : undefined;
             resourceInputs["hostname"] = state ? state.hostname : undefined;
             resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["keyRevocationActionType"] = state ? state.keyRevocationActionType : undefined;
             resourceInputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["machineType"] = state ? state.machineType : undefined;
@@ -447,6 +459,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["enableDisplay"] = args ? args.enableDisplay : undefined;
             resourceInputs["guestAccelerators"] = args ? args.guestAccelerators : undefined;
             resourceInputs["hostname"] = args ? args.hostname : undefined;
+            resourceInputs["keyRevocationActionType"] = args ? args.keyRevocationActionType : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["machineType"] = args ? args.machineType : undefined;
             resourceInputs["metadata"] = args ? args.metadata : undefined;
@@ -467,6 +480,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
             resourceInputs["cpuPlatform"] = undefined /*out*/;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["currentStatus"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["instanceId"] = undefined /*out*/;
@@ -520,6 +534,10 @@ export interface InstanceState {
      */
     cpuPlatform?: pulumi.Input<string>;
     /**
+     * Creation timestamp in RFC3339 text format.
+     */
+    creationTimestamp?: pulumi.Input<string>;
+    /**
      * The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
      */
     currentStatus?: pulumi.Input<string>;
@@ -562,6 +580,10 @@ export interface InstanceState {
      */
     instanceId?: pulumi.Input<string>;
     /**
+     * Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
+     */
+    keyRevocationActionType?: pulumi.Input<string>;
+    /**
      * The unique fingerprint of the labels.
      */
     labelFingerprint?: pulumi.Input<string>;
@@ -577,6 +599,8 @@ export interface InstanceState {
      * **Note:** If you want to update this value (resize the VM) after initial creation, you must set `allowStoppingForUpdate` to `true`.
      *
      * [Custom machine types](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
+     * Because of current API limitations some custom machine types may get converted to different machine types (such as an equivalent standard type) and cause non-empty plans in your configuration. Use
+     * `lifecycle.ignore_changes` on `machineType` in these cases.
      *
      * There is a limit of 6.5 GB per CPU unless you add [extended memory](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#extendedmemory). You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
      */
@@ -771,6 +795,10 @@ export interface InstanceArgs {
      */
     hostname?: pulumi.Input<string>;
     /**
+     * Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
+     */
+    keyRevocationActionType?: pulumi.Input<string>;
+    /**
      * A map of key/value label pairs to assign to the instance.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field 'effective_labels' for all of the labels present on the resource.
@@ -782,6 +810,8 @@ export interface InstanceArgs {
      * **Note:** If you want to update this value (resize the VM) after initial creation, you must set `allowStoppingForUpdate` to `true`.
      *
      * [Custom machine types](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
+     * Because of current API limitations some custom machine types may get converted to different machine types (such as an equivalent standard type) and cause non-empty plans in your configuration. Use
+     * `lifecycle.ignore_changes` on `machineType` in these cases.
      *
      * There is a limit of 6.5 GB per CPU unless you add [extended memory](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#extendedmemory). You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
      */

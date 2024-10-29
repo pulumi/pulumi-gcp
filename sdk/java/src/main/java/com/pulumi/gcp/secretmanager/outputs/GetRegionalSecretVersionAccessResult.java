@@ -5,8 +5,11 @@ package com.pulumi.gcp.secretmanager.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRegionalSecretVersionAccessResult {
@@ -15,6 +18,7 @@ public final class GetRegionalSecretVersionAccessResult {
      * 
      */
     private String id;
+    private @Nullable Boolean isSecretDataBase64;
     private String location;
     /**
      * @return The resource name of the regional SecretVersion. Format:
@@ -38,6 +42,9 @@ public final class GetRegionalSecretVersionAccessResult {
      */
     public String id() {
         return this.id;
+    }
+    public Optional<Boolean> isSecretDataBase64() {
+        return Optional.ofNullable(this.isSecretDataBase64);
     }
     public String location() {
         return this.location;
@@ -77,6 +84,7 @@ public final class GetRegionalSecretVersionAccessResult {
     @CustomType.Builder
     public static final class Builder {
         private String id;
+        private @Nullable Boolean isSecretDataBase64;
         private String location;
         private String name;
         private String project;
@@ -87,6 +95,7 @@ public final class GetRegionalSecretVersionAccessResult {
         public Builder(GetRegionalSecretVersionAccessResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
+    	      this.isSecretDataBase64 = defaults.isSecretDataBase64;
     	      this.location = defaults.location;
     	      this.name = defaults.name;
     	      this.project = defaults.project;
@@ -101,6 +110,12 @@ public final class GetRegionalSecretVersionAccessResult {
               throw new MissingRequiredPropertyException("GetRegionalSecretVersionAccessResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder isSecretDataBase64(@Nullable Boolean isSecretDataBase64) {
+
+            this.isSecretDataBase64 = isSecretDataBase64;
             return this;
         }
         @CustomType.Setter
@@ -154,6 +169,7 @@ public final class GetRegionalSecretVersionAccessResult {
         public GetRegionalSecretVersionAccessResult build() {
             final var _resultValue = new GetRegionalSecretVersionAccessResult();
             _resultValue.id = id;
+            _resultValue.isSecretDataBase64 = isSecretDataBase64;
             _resultValue.location = location;
             _resultValue.name = name;
             _resultValue.project = project;

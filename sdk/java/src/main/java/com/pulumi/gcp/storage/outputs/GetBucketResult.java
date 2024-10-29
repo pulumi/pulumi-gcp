@@ -9,6 +9,7 @@ import com.pulumi.gcp.storage.outputs.GetBucketAutoclass;
 import com.pulumi.gcp.storage.outputs.GetBucketCor;
 import com.pulumi.gcp.storage.outputs.GetBucketCustomPlacementConfig;
 import com.pulumi.gcp.storage.outputs.GetBucketEncryption;
+import com.pulumi.gcp.storage.outputs.GetBucketHierarchicalNamespace;
 import com.pulumi.gcp.storage.outputs.GetBucketLifecycleRule;
 import com.pulumi.gcp.storage.outputs.GetBucketLogging;
 import com.pulumi.gcp.storage.outputs.GetBucketRetentionPolicy;
@@ -34,6 +35,7 @@ public final class GetBucketResult {
     private Boolean enableObjectRetention;
     private List<GetBucketEncryption> encryptions;
     private Boolean forceDestroy;
+    private List<GetBucketHierarchicalNamespace> hierarchicalNamespaces;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -83,6 +85,9 @@ public final class GetBucketResult {
     }
     public Boolean forceDestroy() {
         return this.forceDestroy;
+    }
+    public List<GetBucketHierarchicalNamespace> hierarchicalNamespaces() {
+        return this.hierarchicalNamespaces;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -166,6 +171,7 @@ public final class GetBucketResult {
         private Boolean enableObjectRetention;
         private List<GetBucketEncryption> encryptions;
         private Boolean forceDestroy;
+        private List<GetBucketHierarchicalNamespace> hierarchicalNamespaces;
         private String id;
         private Map<String,String> labels;
         private List<GetBucketLifecycleRule> lifecycleRules;
@@ -197,6 +203,7 @@ public final class GetBucketResult {
     	      this.enableObjectRetention = defaults.enableObjectRetention;
     	      this.encryptions = defaults.encryptions;
     	      this.forceDestroy = defaults.forceDestroy;
+    	      this.hierarchicalNamespaces = defaults.hierarchicalNamespaces;
     	      this.id = defaults.id;
     	      this.labels = defaults.labels;
     	      this.lifecycleRules = defaults.lifecycleRules;
@@ -294,6 +301,17 @@ public final class GetBucketResult {
             }
             this.forceDestroy = forceDestroy;
             return this;
+        }
+        @CustomType.Setter
+        public Builder hierarchicalNamespaces(List<GetBucketHierarchicalNamespace> hierarchicalNamespaces) {
+            if (hierarchicalNamespaces == null) {
+              throw new MissingRequiredPropertyException("GetBucketResult", "hierarchicalNamespaces");
+            }
+            this.hierarchicalNamespaces = hierarchicalNamespaces;
+            return this;
+        }
+        public Builder hierarchicalNamespaces(GetBucketHierarchicalNamespace... hierarchicalNamespaces) {
+            return hierarchicalNamespaces(List.of(hierarchicalNamespaces));
         }
         @CustomType.Setter
         public Builder id(String id) {
@@ -481,6 +499,7 @@ public final class GetBucketResult {
             _resultValue.enableObjectRetention = enableObjectRetention;
             _resultValue.encryptions = encryptions;
             _resultValue.forceDestroy = forceDestroy;
+            _resultValue.hierarchicalNamespaces = hierarchicalNamespaces;
             _resultValue.id = id;
             _resultValue.labels = labels;
             _resultValue.lifecycleRules = lifecycleRules;

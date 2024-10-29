@@ -7,6 +7,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.diagflow.inputs.CxFlowAdvancedSettingsAudioExportGcsDestinationArgs;
 import com.pulumi.gcp.diagflow.inputs.CxFlowAdvancedSettingsDtmfSettingsArgs;
+import com.pulumi.gcp.diagflow.inputs.CxFlowAdvancedSettingsLoggingSettingsArgs;
+import com.pulumi.gcp.diagflow.inputs.CxFlowAdvancedSettingsSpeechSettingsArgs;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -62,11 +64,57 @@ public final class CxFlowAdvancedSettingsArgs extends com.pulumi.resources.Resou
         return Optional.ofNullable(this.dtmfSettings);
     }
 
+    /**
+     * Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
+     * * Agent level
+     *   Structure is documented below.
+     * 
+     */
+    @Import(name="loggingSettings")
+    private @Nullable Output<CxFlowAdvancedSettingsLoggingSettingsArgs> loggingSettings;
+
+    /**
+     * @return Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
+     * * Agent level
+     *   Structure is documented below.
+     * 
+     */
+    public Optional<Output<CxFlowAdvancedSettingsLoggingSettingsArgs>> loggingSettings() {
+        return Optional.ofNullable(this.loggingSettings);
+    }
+
+    /**
+     * Settings for speech to text detection. Exposed at the following levels:
+     * * Agent level
+     * * Flow level
+     * * Page level
+     * * Parameter level
+     *   Structure is documented below.
+     * 
+     */
+    @Import(name="speechSettings")
+    private @Nullable Output<CxFlowAdvancedSettingsSpeechSettingsArgs> speechSettings;
+
+    /**
+     * @return Settings for speech to text detection. Exposed at the following levels:
+     * * Agent level
+     * * Flow level
+     * * Page level
+     * * Parameter level
+     *   Structure is documented below.
+     * 
+     */
+    public Optional<Output<CxFlowAdvancedSettingsSpeechSettingsArgs>> speechSettings() {
+        return Optional.ofNullable(this.speechSettings);
+    }
+
     private CxFlowAdvancedSettingsArgs() {}
 
     private CxFlowAdvancedSettingsArgs(CxFlowAdvancedSettingsArgs $) {
         this.audioExportGcsDestination = $.audioExportGcsDestination;
         this.dtmfSettings = $.dtmfSettings;
+        this.loggingSettings = $.loggingSettings;
+        this.speechSettings = $.speechSettings;
     }
 
     public static Builder builder() {
@@ -143,6 +191,62 @@ public final class CxFlowAdvancedSettingsArgs extends com.pulumi.resources.Resou
          */
         public Builder dtmfSettings(CxFlowAdvancedSettingsDtmfSettingsArgs dtmfSettings) {
             return dtmfSettings(Output.of(dtmfSettings));
+        }
+
+        /**
+         * @param loggingSettings Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
+         * * Agent level
+         *   Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder loggingSettings(@Nullable Output<CxFlowAdvancedSettingsLoggingSettingsArgs> loggingSettings) {
+            $.loggingSettings = loggingSettings;
+            return this;
+        }
+
+        /**
+         * @param loggingSettings Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
+         * * Agent level
+         *   Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder loggingSettings(CxFlowAdvancedSettingsLoggingSettingsArgs loggingSettings) {
+            return loggingSettings(Output.of(loggingSettings));
+        }
+
+        /**
+         * @param speechSettings Settings for speech to text detection. Exposed at the following levels:
+         * * Agent level
+         * * Flow level
+         * * Page level
+         * * Parameter level
+         *   Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder speechSettings(@Nullable Output<CxFlowAdvancedSettingsSpeechSettingsArgs> speechSettings) {
+            $.speechSettings = speechSettings;
+            return this;
+        }
+
+        /**
+         * @param speechSettings Settings for speech to text detection. Exposed at the following levels:
+         * * Agent level
+         * * Flow level
+         * * Page level
+         * * Parameter level
+         *   Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder speechSettings(CxFlowAdvancedSettingsSpeechSettingsArgs speechSettings) {
+            return speechSettings(Output.of(speechSettings));
         }
 
         public CxFlowAdvancedSettingsArgs build() {

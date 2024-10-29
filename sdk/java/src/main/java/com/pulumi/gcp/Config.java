@@ -381,6 +381,9 @@ public final class Config {
     public Optional<String> notebooksCustomEndpoint() {
         return Codegen.stringProp("notebooksCustomEndpoint").config(config).get();
     }
+    public Optional<String> oracleDatabaseCustomEndpoint() {
+        return Codegen.stringProp("oracleDatabaseCustomEndpoint").config(config).get();
+    }
     public Optional<String> orgPolicyCustomEndpoint() {
         return Codegen.stringProp("orgPolicyCustomEndpoint").config(config).get();
     }
@@ -515,6 +518,9 @@ public final class Config {
     }
     public Optional<String> tpuV2CustomEndpoint() {
         return Codegen.stringProp("tpuV2CustomEndpoint").config(config).get();
+    }
+    public Optional<String> transcoderCustomEndpoint() {
+        return Codegen.stringProp("transcoderCustomEndpoint").config(config).get();
     }
     public Optional<String> universeDomain() {
         return Codegen.stringProp("universeDomain").config(config).get();

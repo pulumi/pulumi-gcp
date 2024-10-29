@@ -94,6 +94,7 @@ import (
 // Labels: pulumi.StringMap{
 // "label": pulumi.String("key"),
 // },
+// MaxUsableWorkstations: pulumi.Int(1),
 // Host: &workstations.WorkstationConfigHostArgs{
 // GceInstance: &workstations.WorkstationConfigHostGceInstanceArgs{
 // MachineType: pulumi.String("e2-standard-4"),
@@ -675,6 +676,86 @@ import (
 //	}
 //
 // ```
+// ### Workstation Config Allowed Ports
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/workstations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name:                  pulumi.String("workstation-cluster"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("workstation-cluster"),
+//				IpCidrRange: pulumi.String("10.0.0.0/24"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     _default.Name,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultWorkstationCluster, err := workstations.NewWorkstationCluster(ctx, "default", &workstations.WorkstationClusterArgs{
+//				WorkstationClusterId: pulumi.String("workstation-cluster"),
+//				Network:              _default.ID(),
+//				Subnetwork:           defaultSubnetwork.ID(),
+//				Location:             pulumi.String("us-central1"),
+//				Labels: pulumi.StringMap{
+//					"label": pulumi.String("key"),
+//				},
+//				Annotations: pulumi.StringMap{
+//					"label-one": pulumi.String("value-one"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = workstations.NewWorkstationConfig(ctx, "default", &workstations.WorkstationConfigArgs{
+//				WorkstationConfigId:  pulumi.String("workstation-config"),
+//				WorkstationClusterId: defaultWorkstationCluster.WorkstationClusterId,
+//				Location:             pulumi.String("us-central1"),
+//				Host: &workstations.WorkstationConfigHostArgs{
+//					GceInstance: &workstations.WorkstationConfigHostGceInstanceArgs{
+//						MachineType:              pulumi.String("e2-standard-4"),
+//						BootDiskSizeGb:           pulumi.Int(35),
+//						DisablePublicIpAddresses: pulumi.Bool(true),
+//					},
+//				},
+//				AllowedPorts: workstations.WorkstationConfigAllowedPortArray{
+//					&workstations.WorkstationConfigAllowedPortArgs{
+//						First: pulumi.Int(80),
+//						Last:  pulumi.Int(80),
+//					},
+//					&workstations.WorkstationConfigAllowedPortArgs{
+//						First: pulumi.Int(22),
+//						Last:  pulumi.Int(22),
+//					},
+//					&workstations.WorkstationConfigAllowedPortArgs{
+//						First: pulumi.Int(1024),
+//						Last:  pulumi.Int(65535),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -702,6 +783,9 @@ import (
 type WorkstationConfig struct {
 	pulumi.CustomResourceState
 
+	// A list of port ranges specifying single ports or ranges of ports that are externally accessible in the workstation. Allowed ports must be one of 22, 80, or within range 1024-65535. If not specified defaults to ports 22, 80, and ports 1024-65535.
+	// Structure is documented below.
+	AllowedPorts WorkstationConfigAllowedPortArrayOutput `pulumi:"allowedPorts"`
 	// Client-specified annotations. This is distinct from labels.
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
@@ -751,6 +835,8 @@ type WorkstationConfig struct {
 	//
 	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
+	// Maximum number of workstations under this configuration a user can have workstations.workstation.use permission on. Only enforced on CreateWorkstation API calls on the user issuing the API request.
+	MaxUsableWorkstations pulumi.IntOutput `pulumi:"maxUsableWorkstations"`
 	// Full name of this resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Directories to persist across workstation sessions.
@@ -823,6 +909,9 @@ func GetWorkstationConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkstationConfig resources.
 type workstationConfigState struct {
+	// A list of port ranges specifying single ports or ranges of ports that are externally accessible in the workstation. Allowed ports must be one of 22, 80, or within range 1024-65535. If not specified defaults to ports 22, 80, and ports 1024-65535.
+	// Structure is documented below.
+	AllowedPorts []WorkstationConfigAllowedPort `pulumi:"allowedPorts"`
 	// Client-specified annotations. This is distinct from labels.
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
@@ -872,6 +961,8 @@ type workstationConfigState struct {
 	//
 	// ***
 	Location *string `pulumi:"location"`
+	// Maximum number of workstations under this configuration a user can have workstations.workstation.use permission on. Only enforced on CreateWorkstation API calls on the user issuing the API request.
+	MaxUsableWorkstations *int `pulumi:"maxUsableWorkstations"`
 	// Full name of this resource.
 	Name *string `pulumi:"name"`
 	// Directories to persist across workstation sessions.
@@ -901,6 +992,9 @@ type workstationConfigState struct {
 }
 
 type WorkstationConfigState struct {
+	// A list of port ranges specifying single ports or ranges of ports that are externally accessible in the workstation. Allowed ports must be one of 22, 80, or within range 1024-65535. If not specified defaults to ports 22, 80, and ports 1024-65535.
+	// Structure is documented below.
+	AllowedPorts WorkstationConfigAllowedPortArrayInput
 	// Client-specified annotations. This is distinct from labels.
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
@@ -950,6 +1044,8 @@ type WorkstationConfigState struct {
 	//
 	// ***
 	Location pulumi.StringPtrInput
+	// Maximum number of workstations under this configuration a user can have workstations.workstation.use permission on. Only enforced on CreateWorkstation API calls on the user issuing the API request.
+	MaxUsableWorkstations pulumi.IntPtrInput
 	// Full name of this resource.
 	Name pulumi.StringPtrInput
 	// Directories to persist across workstation sessions.
@@ -983,6 +1079,9 @@ func (WorkstationConfigState) ElementType() reflect.Type {
 }
 
 type workstationConfigArgs struct {
+	// A list of port ranges specifying single ports or ranges of ports that are externally accessible in the workstation. Allowed ports must be one of 22, 80, or within range 1024-65535. If not specified defaults to ports 22, 80, and ports 1024-65535.
+	// Structure is documented below.
+	AllowedPorts []WorkstationConfigAllowedPort `pulumi:"allowedPorts"`
 	// Client-specified annotations. This is distinct from labels.
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
@@ -1019,6 +1118,8 @@ type workstationConfigArgs struct {
 	//
 	// ***
 	Location string `pulumi:"location"`
+	// Maximum number of workstations under this configuration a user can have workstations.workstation.use permission on. Only enforced on CreateWorkstation API calls on the user issuing the API request.
+	MaxUsableWorkstations *int `pulumi:"maxUsableWorkstations"`
 	// Directories to persist across workstation sessions.
 	// Structure is documented below.
 	PersistentDirectories []WorkstationConfigPersistentDirectory `pulumi:"persistentDirectories"`
@@ -1042,6 +1143,9 @@ type workstationConfigArgs struct {
 
 // The set of arguments for constructing a WorkstationConfig resource.
 type WorkstationConfigArgs struct {
+	// A list of port ranges specifying single ports or ranges of ports that are externally accessible in the workstation. Allowed ports must be one of 22, 80, or within range 1024-65535. If not specified defaults to ports 22, 80, and ports 1024-65535.
+	// Structure is documented below.
+	AllowedPorts WorkstationConfigAllowedPortArrayInput
 	// Client-specified annotations. This is distinct from labels.
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
@@ -1078,6 +1182,8 @@ type WorkstationConfigArgs struct {
 	//
 	// ***
 	Location pulumi.StringInput
+	// Maximum number of workstations under this configuration a user can have workstations.workstation.use permission on. Only enforced on CreateWorkstation API calls on the user issuing the API request.
+	MaxUsableWorkstations pulumi.IntPtrInput
 	// Directories to persist across workstation sessions.
 	// Structure is documented below.
 	PersistentDirectories WorkstationConfigPersistentDirectoryArrayInput
@@ -1186,6 +1292,12 @@ func (o WorkstationConfigOutput) ToWorkstationConfigOutputWithContext(ctx contex
 	return o
 }
 
+// A list of port ranges specifying single ports or ranges of ports that are externally accessible in the workstation. Allowed ports must be one of 22, 80, or within range 1024-65535. If not specified defaults to ports 22, 80, and ports 1024-65535.
+// Structure is documented below.
+func (o WorkstationConfigOutput) AllowedPorts() WorkstationConfigAllowedPortArrayOutput {
+	return o.ApplyT(func(v *WorkstationConfig) WorkstationConfigAllowedPortArrayOutput { return v.AllowedPorts }).(WorkstationConfigAllowedPortArrayOutput)
+}
+
 // Client-specified annotations. This is distinct from labels.
 // **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 // Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
@@ -1286,6 +1398,11 @@ func (o WorkstationConfigOutput) Labels() pulumi.StringMapOutput {
 // ***
 func (o WorkstationConfigOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationConfig) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// Maximum number of workstations under this configuration a user can have workstations.workstation.use permission on. Only enforced on CreateWorkstation API calls on the user issuing the API request.
+func (o WorkstationConfigOutput) MaxUsableWorkstations() pulumi.IntOutput {
+	return o.ApplyT(func(v *WorkstationConfig) pulumi.IntOutput { return v.MaxUsableWorkstations }).(pulumi.IntOutput)
 }
 
 // Full name of this resource.

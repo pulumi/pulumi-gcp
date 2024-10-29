@@ -735,7 +735,7 @@ type PolicySpec struct {
 	InheritFromParent *bool `pulumi:"inheritFromParent"`
 	// Ignores policies set above this resource and restores the `constraintDefault` enforcement behavior of the specific `Constraint` at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inheritFromParent` must be set to false.
 	Reset *bool `pulumi:"reset"`
-	// Up to 10 PolicyRules are allowed. In Policies for boolean constraints, the following requirements apply: - There must be one and only one PolicyRule where condition is unset. - BooleanPolicyRules with conditions must set `enforced` to the opposite of the PolicyRule without a condition. - During policy evaluation, PolicyRules with conditions that are true for a target resource take precedence.
+	// In Policies for boolean constraints, the following requirements apply: - There must be one and only one PolicyRule where condition is unset. - BooleanPolicyRules with conditions must set `enforced` to the opposite of the PolicyRule without a condition. - During policy evaluation, PolicyRules with conditions that are true for a target resource take precedence.
 	// Structure is documented below.
 	Rules []PolicySpecRule `pulumi:"rules"`
 	// (Output)
@@ -762,7 +762,7 @@ type PolicySpecArgs struct {
 	InheritFromParent pulumi.BoolPtrInput `pulumi:"inheritFromParent"`
 	// Ignores policies set above this resource and restores the `constraintDefault` enforcement behavior of the specific `Constraint` at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inheritFromParent` must be set to false.
 	Reset pulumi.BoolPtrInput `pulumi:"reset"`
-	// Up to 10 PolicyRules are allowed. In Policies for boolean constraints, the following requirements apply: - There must be one and only one PolicyRule where condition is unset. - BooleanPolicyRules with conditions must set `enforced` to the opposite of the PolicyRule without a condition. - During policy evaluation, PolicyRules with conditions that are true for a target resource take precedence.
+	// In Policies for boolean constraints, the following requirements apply: - There must be one and only one PolicyRule where condition is unset. - BooleanPolicyRules with conditions must set `enforced` to the opposite of the PolicyRule without a condition. - During policy evaluation, PolicyRules with conditions that are true for a target resource take precedence.
 	// Structure is documented below.
 	Rules PolicySpecRuleArrayInput `pulumi:"rules"`
 	// (Output)
@@ -863,7 +863,7 @@ func (o PolicySpecOutput) Reset() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v PolicySpec) *bool { return v.Reset }).(pulumi.BoolPtrOutput)
 }
 
-// Up to 10 PolicyRules are allowed. In Policies for boolean constraints, the following requirements apply: - There must be one and only one PolicyRule where condition is unset. - BooleanPolicyRules with conditions must set `enforced` to the opposite of the PolicyRule without a condition. - During policy evaluation, PolicyRules with conditions that are true for a target resource take precedence.
+// In Policies for boolean constraints, the following requirements apply: - There must be one and only one PolicyRule where condition is unset. - BooleanPolicyRules with conditions must set `enforced` to the opposite of the PolicyRule without a condition. - During policy evaluation, PolicyRules with conditions that are true for a target resource take precedence.
 // Structure is documented below.
 func (o PolicySpecOutput) Rules() PolicySpecRuleArrayOutput {
 	return o.ApplyT(func(v PolicySpec) []PolicySpecRule { return v.Rules }).(PolicySpecRuleArrayOutput)
@@ -930,7 +930,7 @@ func (o PolicySpecPtrOutput) Reset() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Up to 10 PolicyRules are allowed. In Policies for boolean constraints, the following requirements apply: - There must be one and only one PolicyRule where condition is unset. - BooleanPolicyRules with conditions must set `enforced` to the opposite of the PolicyRule without a condition. - During policy evaluation, PolicyRules with conditions that are true for a target resource take precedence.
+// In Policies for boolean constraints, the following requirements apply: - There must be one and only one PolicyRule where condition is unset. - BooleanPolicyRules with conditions must set `enforced` to the opposite of the PolicyRule without a condition. - During policy evaluation, PolicyRules with conditions that are true for a target resource take precedence.
 // Structure is documented below.
 func (o PolicySpecPtrOutput) Rules() PolicySpecRuleArrayOutput {
 	return o.ApplyT(func(v *PolicySpec) []PolicySpecRule {

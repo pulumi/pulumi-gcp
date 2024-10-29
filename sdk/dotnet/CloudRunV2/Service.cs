@@ -797,6 +797,38 @@ namespace Pulumi.Gcp.CloudRunV2
     /// 
     /// });
     /// ```
+    /// ### Cloudrunv2 Service Invokeriam
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CloudRunV2.Service("default", new()
+    ///     {
+    ///         Name = "cloudrun-service",
+    ///         Location = "us-central1",
+    ///         DeletionProtection = false,
+    ///         InvokerIamDisabled = true,
+    ///         Description = "The serving URL of this service will not perform any IAM check when invoked",
+    ///         Ingress = "INGRESS_TRAFFIC_ALL",
+    ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
+    ///         {
+    ///             Containers = new[]
+    ///             {
+    ///                 new Gcp.CloudRunV2.Inputs.ServiceTemplateContainerArgs
+    ///                 {
+    ///                     Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -937,6 +969,13 @@ namespace Pulumi.Gcp.CloudRunV2
         /// </summary>
         [Output("ingress")]
         public Output<string> Ingress { get; private set; } = null!;
+
+        /// <summary>
+        /// Disables IAM permission check for run.routes.invoke for callers of this service. This feature is available by invitation
+        /// only. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
+        /// </summary>
+        [Output("invokerIamDisabled")]
+        public Output<bool?> InvokerIamDisabled { get; private set; } = null!;
 
         /// <summary>
         /// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
@@ -1194,6 +1233,13 @@ namespace Pulumi.Gcp.CloudRunV2
         [Input("ingress")]
         public Input<string>? Ingress { get; set; }
 
+        /// <summary>
+        /// Disables IAM permission check for run.routes.invoke for callers of this service. This feature is available by invitation
+        /// only. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
+        /// </summary>
+        [Input("invokerIamDisabled")]
+        public Input<bool>? InvokerIamDisabled { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -1418,6 +1464,13 @@ namespace Pulumi.Gcp.CloudRunV2
         /// </summary>
         [Input("ingress")]
         public Input<string>? Ingress { get; set; }
+
+        /// <summary>
+        /// Disables IAM permission check for run.routes.invoke for callers of this service. This feature is available by invitation
+        /// only. For more information, visit https://cloud.google.com/run/docs/securing/managing-access#invoker_check.
+        /// </summary>
+        [Input("invokerIamDisabled")]
+        public Input<bool>? InvokerIamDisabled { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

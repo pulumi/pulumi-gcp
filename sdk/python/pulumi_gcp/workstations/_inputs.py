@@ -21,6 +21,8 @@ __all__ = [
     'WorkstationClusterDomainConfigArgsDict',
     'WorkstationClusterPrivateClusterConfigArgs',
     'WorkstationClusterPrivateClusterConfigArgsDict',
+    'WorkstationConfigAllowedPortArgs',
+    'WorkstationConfigAllowedPortArgsDict',
     'WorkstationConfigConditionArgs',
     'WorkstationConfigConditionArgsDict',
     'WorkstationConfigContainerArgs',
@@ -285,6 +287,58 @@ class WorkstationClusterPrivateClusterConfigArgs:
     @service_attachment_uri.setter
     def service_attachment_uri(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "service_attachment_uri", value)
+
+
+if not MYPY:
+    class WorkstationConfigAllowedPortArgsDict(TypedDict):
+        first: NotRequired[pulumi.Input[int]]
+        """
+        Starting port number for the current range of ports. Valid ports are 22, 80, and ports within the range 1024-65535.
+        """
+        last: NotRequired[pulumi.Input[int]]
+        """
+        Ending port number for the current range of ports. Valid ports are 22, 80, and ports within the range 1024-65535.
+        """
+elif False:
+    WorkstationConfigAllowedPortArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkstationConfigAllowedPortArgs:
+    def __init__(__self__, *,
+                 first: Optional[pulumi.Input[int]] = None,
+                 last: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] first: Starting port number for the current range of ports. Valid ports are 22, 80, and ports within the range 1024-65535.
+        :param pulumi.Input[int] last: Ending port number for the current range of ports. Valid ports are 22, 80, and ports within the range 1024-65535.
+        """
+        if first is not None:
+            pulumi.set(__self__, "first", first)
+        if last is not None:
+            pulumi.set(__self__, "last", last)
+
+    @property
+    @pulumi.getter
+    def first(self) -> Optional[pulumi.Input[int]]:
+        """
+        Starting port number for the current range of ports. Valid ports are 22, 80, and ports within the range 1024-65535.
+        """
+        return pulumi.get(self, "first")
+
+    @first.setter
+    def first(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "first", value)
+
+    @property
+    @pulumi.getter
+    def last(self) -> Optional[pulumi.Input[int]]:
+        """
+        Ending port number for the current range of ports. Valid ports are 22, 80, and ports within the range 1024-65535.
+        """
+        return pulumi.get(self, "last")
+
+    @last.setter
+    def last(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "last", value)
 
 
 if not MYPY:

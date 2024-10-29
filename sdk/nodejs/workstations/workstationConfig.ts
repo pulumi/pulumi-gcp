@@ -61,6 +61,7 @@ import * as utilities from "../utilities";
  *     labels: {
  *         label: "key",
  *     },
+ *     maxUsableWorkstations: 1,
  *     host: {
  *         gceInstance: {
  *             machineType: "e2-standard-4",
@@ -432,6 +433,61 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Workstation Config Allowed Ports
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.Network("default", {
+ *     name: "workstation-cluster",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
+ *     name: "workstation-cluster",
+ *     ipCidrRange: "10.0.0.0/24",
+ *     region: "us-central1",
+ *     network: _default.name,
+ * });
+ * const defaultWorkstationCluster = new gcp.workstations.WorkstationCluster("default", {
+ *     workstationClusterId: "workstation-cluster",
+ *     network: _default.id,
+ *     subnetwork: defaultSubnetwork.id,
+ *     location: "us-central1",
+ *     labels: {
+ *         label: "key",
+ *     },
+ *     annotations: {
+ *         "label-one": "value-one",
+ *     },
+ * });
+ * const defaultWorkstationConfig = new gcp.workstations.WorkstationConfig("default", {
+ *     workstationConfigId: "workstation-config",
+ *     workstationClusterId: defaultWorkstationCluster.workstationClusterId,
+ *     location: "us-central1",
+ *     host: {
+ *         gceInstance: {
+ *             machineType: "e2-standard-4",
+ *             bootDiskSizeGb: 35,
+ *             disablePublicIpAddresses: true,
+ *         },
+ *     },
+ *     allowedPorts: [
+ *         {
+ *             first: 80,
+ *             last: 80,
+ *         },
+ *         {
+ *             first: 22,
+ *             last: 22,
+ *         },
+ *         {
+ *             first: 1024,
+ *             last: 65535,
+ *         },
+ *     ],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -485,6 +541,11 @@ export class WorkstationConfig extends pulumi.CustomResource {
         return obj['__pulumiType'] === WorkstationConfig.__pulumiType;
     }
 
+    /**
+     * A list of port ranges specifying single ports or ranges of ports that are externally accessible in the workstation. Allowed ports must be one of 22, 80, or within range 1024-65535. If not specified defaults to ports 22, 80, and ports 1024-65535.
+     * Structure is documented below.
+     */
+    public readonly allowedPorts!: pulumi.Output<outputs.workstations.WorkstationConfigAllowedPort[]>;
     /**
      * Client-specified annotations. This is distinct from labels.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -568,6 +629,10 @@ export class WorkstationConfig extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
+     * Maximum number of workstations under this configuration a user can have workstations.workstation.use permission on. Only enforced on CreateWorkstation API calls on the user issuing the API request.
+     */
+    public readonly maxUsableWorkstations!: pulumi.Output<number>;
+    /**
      * Full name of this resource.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
@@ -627,6 +692,7 @@ export class WorkstationConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkstationConfigState | undefined;
+            resourceInputs["allowedPorts"] = state ? state.allowedPorts : undefined;
             resourceInputs["annotations"] = state ? state.annotations : undefined;
             resourceInputs["conditions"] = state ? state.conditions : undefined;
             resourceInputs["container"] = state ? state.container : undefined;
@@ -644,6 +710,7 @@ export class WorkstationConfig extends pulumi.CustomResource {
             resourceInputs["idleTimeout"] = state ? state.idleTimeout : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["maxUsableWorkstations"] = state ? state.maxUsableWorkstations : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["persistentDirectories"] = state ? state.persistentDirectories : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -665,6 +732,7 @@ export class WorkstationConfig extends pulumi.CustomResource {
             if ((!args || args.workstationConfigId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workstationConfigId'");
             }
+            resourceInputs["allowedPorts"] = args ? args.allowedPorts : undefined;
             resourceInputs["annotations"] = args ? args.annotations : undefined;
             resourceInputs["container"] = args ? args.container : undefined;
             resourceInputs["disableTcpConnections"] = args ? args.disableTcpConnections : undefined;
@@ -676,6 +744,7 @@ export class WorkstationConfig extends pulumi.CustomResource {
             resourceInputs["idleTimeout"] = args ? args.idleTimeout : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["maxUsableWorkstations"] = args ? args.maxUsableWorkstations : undefined;
             resourceInputs["persistentDirectories"] = args ? args.persistentDirectories : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["readinessChecks"] = args ? args.readinessChecks : undefined;
@@ -704,6 +773,11 @@ export class WorkstationConfig extends pulumi.CustomResource {
  * Input properties used for looking up and filtering WorkstationConfig resources.
  */
 export interface WorkstationConfigState {
+    /**
+     * A list of port ranges specifying single ports or ranges of ports that are externally accessible in the workstation. Allowed ports must be one of 22, 80, or within range 1024-65535. If not specified defaults to ports 22, 80, and ports 1024-65535.
+     * Structure is documented below.
+     */
+    allowedPorts?: pulumi.Input<pulumi.Input<inputs.workstations.WorkstationConfigAllowedPort>[]>;
     /**
      * Client-specified annotations. This is distinct from labels.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -787,6 +861,10 @@ export interface WorkstationConfigState {
      */
     location?: pulumi.Input<string>;
     /**
+     * Maximum number of workstations under this configuration a user can have workstations.workstation.use permission on. Only enforced on CreateWorkstation API calls on the user issuing the API request.
+     */
+    maxUsableWorkstations?: pulumi.Input<number>;
+    /**
      * Full name of this resource.
      */
     name?: pulumi.Input<string>;
@@ -838,6 +916,11 @@ export interface WorkstationConfigState {
  * The set of arguments for constructing a WorkstationConfig resource.
  */
 export interface WorkstationConfigArgs {
+    /**
+     * A list of port ranges specifying single ports or ranges of ports that are externally accessible in the workstation. Allowed ports must be one of 22, 80, or within range 1024-65535. If not specified defaults to ports 22, 80, and ports 1024-65535.
+     * Structure is documented below.
+     */
+    allowedPorts?: pulumi.Input<pulumi.Input<inputs.workstations.WorkstationConfigAllowedPort>[]>;
     /**
      * Client-specified annotations. This is distinct from labels.
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
@@ -897,6 +980,10 @@ export interface WorkstationConfigArgs {
      * - - -
      */
     location: pulumi.Input<string>;
+    /**
+     * Maximum number of workstations under this configuration a user can have workstations.workstation.use permission on. Only enforced on CreateWorkstation API calls on the user issuing the API request.
+     */
+    maxUsableWorkstations?: pulumi.Input<number>;
     /**
      * Directories to persist across workstation sessions.
      * Structure is documented below.

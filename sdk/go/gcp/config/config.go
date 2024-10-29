@@ -377,6 +377,9 @@ func GetNetworkServicesCustomEndpoint(ctx *pulumi.Context) string {
 func GetNotebooksCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:notebooksCustomEndpoint")
 }
+func GetOracleDatabaseCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:oracleDatabaseCustomEndpoint")
+}
 func GetOrgPolicyCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:orgPolicyCustomEndpoint")
 }
@@ -535,6 +538,9 @@ func GetTpuCustomEndpoint(ctx *pulumi.Context) string {
 }
 func GetTpuV2CustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:tpuV2CustomEndpoint")
+}
+func GetTranscoderCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:transcoderCustomEndpoint")
 }
 func GetUniverseDomain(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:universeDomain")

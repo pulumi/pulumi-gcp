@@ -86,6 +86,7 @@ type LookupServiceResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id                    string                        `pulumi:"id"`
 	Ingress               string                        `pulumi:"ingress"`
+	InvokerIamDisabled    bool                          `pulumi:"invokerIamDisabled"`
 	Labels                map[string]string             `pulumi:"labels"`
 	LastModifier          string                        `pulumi:"lastModifier"`
 	LatestCreatedRevision string                        `pulumi:"latestCreatedRevision"`
@@ -233,6 +234,10 @@ func (o LookupServiceResultOutput) Id() pulumi.StringOutput {
 
 func (o LookupServiceResultOutput) Ingress() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.Ingress }).(pulumi.StringOutput)
+}
+
+func (o LookupServiceResultOutput) InvokerIamDisabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupServiceResult) bool { return v.InvokerIamDisabled }).(pulumi.BoolOutput)
 }
 
 func (o LookupServiceResultOutput) Labels() pulumi.StringMapOutput {

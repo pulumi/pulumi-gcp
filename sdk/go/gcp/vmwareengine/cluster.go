@@ -137,6 +137,30 @@ import (
 //						CustomCoreCount: pulumi.Int(32),
 //					},
 //				},
+//				AutoscalingSettings: &vmwareengine.ClusterAutoscalingSettingsArgs{
+//					AutoscalingPolicies: vmwareengine.ClusterAutoscalingSettingsAutoscalingPolicyArray{
+//						&vmwareengine.ClusterAutoscalingSettingsAutoscalingPolicyArgs{
+//							AutoscalePolicyId: pulumi.String("autoscaling-policy"),
+//							NodeTypeId:        pulumi.String("standard-72"),
+//							ScaleOutSize:      pulumi.Int(1),
+//							CpuThresholds: &vmwareengine.ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs{
+//								ScaleOut: pulumi.Int(80),
+//								ScaleIn:  pulumi.Int(15),
+//							},
+//							ConsumedMemoryThresholds: &vmwareengine.ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs{
+//								ScaleOut: pulumi.Int(75),
+//								ScaleIn:  pulumi.Int(20),
+//							},
+//							StorageThresholds: &vmwareengine.ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs{
+//								ScaleOut: pulumi.Int(80),
+//								ScaleIn:  pulumi.Int(20),
+//							},
+//						},
+//					},
+//					MinClusterNodeCount: pulumi.Int(3),
+//					MaxClusterNodeCount: pulumi.Int(8),
+//					CoolDownPeriod:      pulumi.String("1800s"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -161,6 +185,9 @@ import (
 type Cluster struct {
 	pulumi.CustomResourceState
 
+	// Configuration of the autoscaling applied to this cluster
+	// Structure is documented below.
+	AutoscalingSettings ClusterAutoscalingSettingsPtrOutput `pulumi:"autoscalingSettings"`
 	// True if the cluster is a management cluster; false otherwise.
 	// There can only be one management cluster in a private cloud and it has to be the first one.
 	Management pulumi.BoolOutput `pulumi:"management"`
@@ -215,6 +242,9 @@ func GetCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Cluster resources.
 type clusterState struct {
+	// Configuration of the autoscaling applied to this cluster
+	// Structure is documented below.
+	AutoscalingSettings *ClusterAutoscalingSettings `pulumi:"autoscalingSettings"`
 	// True if the cluster is a management cluster; false otherwise.
 	// There can only be one management cluster in a private cloud and it has to be the first one.
 	Management *bool `pulumi:"management"`
@@ -237,6 +267,9 @@ type clusterState struct {
 }
 
 type ClusterState struct {
+	// Configuration of the autoscaling applied to this cluster
+	// Structure is documented below.
+	AutoscalingSettings ClusterAutoscalingSettingsPtrInput
 	// True if the cluster is a management cluster; false otherwise.
 	// There can only be one management cluster in a private cloud and it has to be the first one.
 	Management pulumi.BoolPtrInput
@@ -263,6 +296,9 @@ func (ClusterState) ElementType() reflect.Type {
 }
 
 type clusterArgs struct {
+	// Configuration of the autoscaling applied to this cluster
+	// Structure is documented below.
+	AutoscalingSettings *ClusterAutoscalingSettings `pulumi:"autoscalingSettings"`
 	// The ID of the Cluster.
 	//
 	// ***
@@ -279,6 +315,9 @@ type clusterArgs struct {
 
 // The set of arguments for constructing a Cluster resource.
 type ClusterArgs struct {
+	// Configuration of the autoscaling applied to this cluster
+	// Structure is documented below.
+	AutoscalingSettings ClusterAutoscalingSettingsPtrInput
 	// The ID of the Cluster.
 	//
 	// ***
@@ -378,6 +417,12 @@ func (o ClusterOutput) ToClusterOutput() ClusterOutput {
 
 func (o ClusterOutput) ToClusterOutputWithContext(ctx context.Context) ClusterOutput {
 	return o
+}
+
+// Configuration of the autoscaling applied to this cluster
+// Structure is documented below.
+func (o ClusterOutput) AutoscalingSettings() ClusterAutoscalingSettingsPtrOutput {
+	return o.ApplyT(func(v *Cluster) ClusterAutoscalingSettingsPtrOutput { return v.AutoscalingSettings }).(ClusterAutoscalingSettingsPtrOutput)
 }
 
 // True if the cluster is a management cluster; false otherwise.

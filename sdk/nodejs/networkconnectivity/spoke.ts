@@ -287,6 +287,57 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Network Connectivity Spoke Linked Producer Vpc Network Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const network = new gcp.compute.Network("network", {
+ *     name: "net-spoke",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const address = new gcp.compute.GlobalAddress("address", {
+ *     name: "test-address",
+ *     purpose: "VPC_PEERING",
+ *     addressType: "INTERNAL",
+ *     prefixLength: 16,
+ *     network: network.id,
+ * });
+ * const peering = new gcp.servicenetworking.Connection("peering", {
+ *     network: network.id,
+ *     service: "servicenetworking.googleapis.com",
+ *     reservedPeeringRanges: [address.name],
+ * });
+ * const basicHub = new gcp.networkconnectivity.Hub("basic_hub", {name: "hub-basic"});
+ * const linkedVpcSpoke = new gcp.networkconnectivity.Spoke("linked_vpc_spoke", {
+ *     name: "vpc-spoke",
+ *     location: "global",
+ *     hub: basicHub.id,
+ *     linkedVpcNetwork: {
+ *         uri: network.selfLink,
+ *     },
+ * });
+ * const primary = new gcp.networkconnectivity.Spoke("primary", {
+ *     name: "producer-spoke",
+ *     location: "global",
+ *     description: "A sample spoke with a linked router appliance instance",
+ *     labels: {
+ *         "label-one": "value-one",
+ *     },
+ *     hub: basicHub.id,
+ *     linkedProducerVpcNetwork: {
+ *         network: network.name,
+ *         peering: peering.peering,
+ *         excludeExportRanges: [
+ *             "198.51.100.0/24",
+ *             "10.10.0.0/16",
+ *         ],
+ *     },
+ * }, {
+ *     dependsOn: [linkedVpcSpoke],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -368,6 +419,11 @@ export class Spoke extends pulumi.CustomResource {
      */
     public readonly linkedInterconnectAttachments!: pulumi.Output<outputs.networkconnectivity.SpokeLinkedInterconnectAttachments | undefined>;
     /**
+     * Producer VPC network that is associated with the spoke.
+     * Structure is documented below.
+     */
+    public readonly linkedProducerVpcNetwork!: pulumi.Output<outputs.networkconnectivity.SpokeLinkedProducerVpcNetwork | undefined>;
+    /**
      * The URIs of linked Router appliance resources
      * Structure is documented below.
      */
@@ -435,6 +491,7 @@ export class Spoke extends pulumi.CustomResource {
             resourceInputs["hub"] = state ? state.hub : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["linkedInterconnectAttachments"] = state ? state.linkedInterconnectAttachments : undefined;
+            resourceInputs["linkedProducerVpcNetwork"] = state ? state.linkedProducerVpcNetwork : undefined;
             resourceInputs["linkedRouterApplianceInstances"] = state ? state.linkedRouterApplianceInstances : undefined;
             resourceInputs["linkedVpcNetwork"] = state ? state.linkedVpcNetwork : undefined;
             resourceInputs["linkedVpnTunnels"] = state ? state.linkedVpnTunnels : undefined;
@@ -457,6 +514,7 @@ export class Spoke extends pulumi.CustomResource {
             resourceInputs["hub"] = args ? args.hub : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["linkedInterconnectAttachments"] = args ? args.linkedInterconnectAttachments : undefined;
+            resourceInputs["linkedProducerVpcNetwork"] = args ? args.linkedProducerVpcNetwork : undefined;
             resourceInputs["linkedRouterApplianceInstances"] = args ? args.linkedRouterApplianceInstances : undefined;
             resourceInputs["linkedVpcNetwork"] = args ? args.linkedVpcNetwork : undefined;
             resourceInputs["linkedVpnTunnels"] = args ? args.linkedVpnTunnels : undefined;
@@ -508,6 +566,11 @@ export interface SpokeState {
      * Structure is documented below.
      */
     linkedInterconnectAttachments?: pulumi.Input<inputs.networkconnectivity.SpokeLinkedInterconnectAttachments>;
+    /**
+     * Producer VPC network that is associated with the spoke.
+     * Structure is documented below.
+     */
+    linkedProducerVpcNetwork?: pulumi.Input<inputs.networkconnectivity.SpokeLinkedProducerVpcNetwork>;
     /**
      * The URIs of linked Router appliance resources
      * Structure is documented below.
@@ -581,6 +644,11 @@ export interface SpokeArgs {
      * Structure is documented below.
      */
     linkedInterconnectAttachments?: pulumi.Input<inputs.networkconnectivity.SpokeLinkedInterconnectAttachments>;
+    /**
+     * Producer VPC network that is associated with the spoke.
+     * Structure is documented below.
+     */
+    linkedProducerVpcNetwork?: pulumi.Input<inputs.networkconnectivity.SpokeLinkedProducerVpcNetwork>;
     /**
      * The URIs of linked Router appliance resources
      * Structure is documented below.

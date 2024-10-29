@@ -260,6 +260,23 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
+     * Possible values are: `IPV4_ONLY`, `PREFER_IPV6`, `IPV6_ONLY`.
+     * 
+     */
+    @Import(name="ipAddressSelectionPolicy")
+    private @Nullable Output<String> ipAddressSelectionPolicy;
+
+    /**
+     * @return Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
+     * Possible values are: `IPV4_ONLY`, `PREFER_IPV6`, `IPV6_ONLY`.
+     * 
+     */
+    public Optional<Output<String>> ipAddressSelectionPolicy() {
+        return Optional.ofNullable(this.ipAddressSelectionPolicy);
+    }
+
+    /**
      * Indicates what kind of load balancing this regional backend service
      * will be used for. A backend service created for one type of load
      * balancing cannot be used with the other(s). For more information, refer to
@@ -663,6 +680,7 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
         this.failoverPolicy = $.failoverPolicy;
         this.healthChecks = $.healthChecks;
         this.iap = $.iap;
+        this.ipAddressSelectionPolicy = $.ipAddressSelectionPolicy;
         this.loadBalancingScheme = $.loadBalancingScheme;
         this.localityLbPolicy = $.localityLbPolicy;
         this.logConfig = $.logConfig;
@@ -1009,6 +1027,29 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
          */
         public Builder iap(RegionBackendServiceIapArgs iap) {
             return iap(Output.of(iap));
+        }
+
+        /**
+         * @param ipAddressSelectionPolicy Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
+         * Possible values are: `IPV4_ONLY`, `PREFER_IPV6`, `IPV6_ONLY`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipAddressSelectionPolicy(@Nullable Output<String> ipAddressSelectionPolicy) {
+            $.ipAddressSelectionPolicy = ipAddressSelectionPolicy;
+            return this;
+        }
+
+        /**
+         * @param ipAddressSelectionPolicy Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC).
+         * Possible values are: `IPV4_ONLY`, `PREFER_IPV6`, `IPV6_ONLY`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipAddressSelectionPolicy(String ipAddressSelectionPolicy) {
+            return ipAddressSelectionPolicy(Output.of(ipAddressSelectionPolicy));
         }
 
         /**

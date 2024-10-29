@@ -82,6 +82,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly int? ProvisionedIops;
         /// <summary>
+        /// Indicates how much throughput to provision for the disk, in MB/s. This sets the amount of data that can be read or written from the disk per second. Values must greater than or equal to 1. For more details, see the [Hyperdisk documentation](https://cloud.google.com/compute/docs/disks/hyperdisks).
+        /// </summary>
+        public readonly int? ProvisionedThroughput;
+        /// <summary>
         /// A set of key/value resource manager tag pairs to bind to this disk. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? ResourceManagerTags;
@@ -157,6 +161,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             int? provisionedIops,
 
+            int? provisionedThroughput,
+
             ImmutableDictionary<string, string>? resourceManagerTags,
 
             string? resourcePolicies,
@@ -184,6 +190,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             Labels = labels;
             Mode = mode;
             ProvisionedIops = provisionedIops;
+            ProvisionedThroughput = provisionedThroughput;
             ResourceManagerTags = resourceManagerTags;
             ResourcePolicies = resourcePolicies;
             Source = source;

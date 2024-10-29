@@ -27,6 +27,12 @@ public final class AlertPolicyAlertStrategy {
      */
     private @Nullable List<AlertPolicyAlertStrategyNotificationChannelStrategy> notificationChannelStrategies;
     /**
+     * @return Control when notifications will be sent out.
+     * Each value may be one of: `NOTIFICATION_PROMPT_UNSPECIFIED`, `OPENED`, `CLOSED`.
+     * 
+     */
+    private @Nullable List<String> notificationPrompts;
+    /**
      * @return Required for alert policies with a LogMatch condition.
      * This limit is not implemented for alert policies that are not log-based.
      * Structure is documented below.
@@ -52,6 +58,14 @@ public final class AlertPolicyAlertStrategy {
         return this.notificationChannelStrategies == null ? List.of() : this.notificationChannelStrategies;
     }
     /**
+     * @return Control when notifications will be sent out.
+     * Each value may be one of: `NOTIFICATION_PROMPT_UNSPECIFIED`, `OPENED`, `CLOSED`.
+     * 
+     */
+    public List<String> notificationPrompts() {
+        return this.notificationPrompts == null ? List.of() : this.notificationPrompts;
+    }
+    /**
      * @return Required for alert policies with a LogMatch condition.
      * This limit is not implemented for alert policies that are not log-based.
      * Structure is documented below.
@@ -72,12 +86,14 @@ public final class AlertPolicyAlertStrategy {
     public static final class Builder {
         private @Nullable String autoClose;
         private @Nullable List<AlertPolicyAlertStrategyNotificationChannelStrategy> notificationChannelStrategies;
+        private @Nullable List<String> notificationPrompts;
         private @Nullable AlertPolicyAlertStrategyNotificationRateLimit notificationRateLimit;
         public Builder() {}
         public Builder(AlertPolicyAlertStrategy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoClose = defaults.autoClose;
     	      this.notificationChannelStrategies = defaults.notificationChannelStrategies;
+    	      this.notificationPrompts = defaults.notificationPrompts;
     	      this.notificationRateLimit = defaults.notificationRateLimit;
         }
 
@@ -97,6 +113,15 @@ public final class AlertPolicyAlertStrategy {
             return notificationChannelStrategies(List.of(notificationChannelStrategies));
         }
         @CustomType.Setter
+        public Builder notificationPrompts(@Nullable List<String> notificationPrompts) {
+
+            this.notificationPrompts = notificationPrompts;
+            return this;
+        }
+        public Builder notificationPrompts(String... notificationPrompts) {
+            return notificationPrompts(List.of(notificationPrompts));
+        }
+        @CustomType.Setter
         public Builder notificationRateLimit(@Nullable AlertPolicyAlertStrategyNotificationRateLimit notificationRateLimit) {
 
             this.notificationRateLimit = notificationRateLimit;
@@ -106,6 +131,7 @@ public final class AlertPolicyAlertStrategy {
             final var _resultValue = new AlertPolicyAlertStrategy();
             _resultValue.autoClose = autoClose;
             _resultValue.notificationChannelStrategies = notificationChannelStrategies;
+            _resultValue.notificationPrompts = notificationPrompts;
             _resultValue.notificationRateLimit = notificationRateLimit;
             return _resultValue;
         }

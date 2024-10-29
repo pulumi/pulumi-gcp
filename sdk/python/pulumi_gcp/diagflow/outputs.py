@@ -19,6 +19,8 @@ __all__ = [
     'CxAgentAdvancedSettings',
     'CxAgentAdvancedSettingsAudioExportGcsDestination',
     'CxAgentAdvancedSettingsDtmfSettings',
+    'CxAgentAdvancedSettingsLoggingSettings',
+    'CxAgentAdvancedSettingsSpeechSettings',
     'CxAgentGitIntegrationSettings',
     'CxAgentGitIntegrationSettingsGithubSettings',
     'CxAgentSpeechToTextSettings',
@@ -29,6 +31,8 @@ __all__ = [
     'CxFlowAdvancedSettings',
     'CxFlowAdvancedSettingsAudioExportGcsDestination',
     'CxFlowAdvancedSettingsDtmfSettings',
+    'CxFlowAdvancedSettingsLoggingSettings',
+    'CxFlowAdvancedSettingsSpeechSettings',
     'CxFlowEventHandler',
     'CxFlowEventHandlerTriggerFulfillment',
     'CxFlowEventHandlerTriggerFulfillmentConditionalCase',
@@ -160,6 +164,10 @@ class CxAgentAdvancedSettings(dict):
             suggest = "audio_export_gcs_destination"
         elif key == "dtmfSettings":
             suggest = "dtmf_settings"
+        elif key == "loggingSettings":
+            suggest = "logging_settings"
+        elif key == "speechSettings":
+            suggest = "speech_settings"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in CxAgentAdvancedSettings. Access the value via the '{suggest}' property getter instead.")
@@ -174,7 +182,9 @@ class CxAgentAdvancedSettings(dict):
 
     def __init__(__self__, *,
                  audio_export_gcs_destination: Optional['outputs.CxAgentAdvancedSettingsAudioExportGcsDestination'] = None,
-                 dtmf_settings: Optional['outputs.CxAgentAdvancedSettingsDtmfSettings'] = None):
+                 dtmf_settings: Optional['outputs.CxAgentAdvancedSettingsDtmfSettings'] = None,
+                 logging_settings: Optional['outputs.CxAgentAdvancedSettingsLoggingSettings'] = None,
+                 speech_settings: Optional['outputs.CxAgentAdvancedSettingsSpeechSettings'] = None):
         """
         :param 'CxAgentAdvancedSettingsAudioExportGcsDestinationArgs' audio_export_gcs_destination: If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination. Exposed at the following levels:
                * Agent level
@@ -186,11 +196,24 @@ class CxAgentAdvancedSettings(dict):
                * Page level
                * Parameter level
                Structure is documented below.
+        :param 'CxAgentAdvancedSettingsLoggingSettingsArgs' logging_settings: Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
+               * Agent level
+               Structure is documented below.
+        :param 'CxAgentAdvancedSettingsSpeechSettingsArgs' speech_settings: Settings for speech to text detection. Exposed at the following levels:
+               * Agent level
+               * Flow level
+               * Page level
+               * Parameter level
+               Structure is documented below.
         """
         if audio_export_gcs_destination is not None:
             pulumi.set(__self__, "audio_export_gcs_destination", audio_export_gcs_destination)
         if dtmf_settings is not None:
             pulumi.set(__self__, "dtmf_settings", dtmf_settings)
+        if logging_settings is not None:
+            pulumi.set(__self__, "logging_settings", logging_settings)
+        if speech_settings is not None:
+            pulumi.set(__self__, "speech_settings", speech_settings)
 
     @property
     @pulumi.getter(name="audioExportGcsDestination")
@@ -215,6 +238,29 @@ class CxAgentAdvancedSettings(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "dtmf_settings")
+
+    @property
+    @pulumi.getter(name="loggingSettings")
+    def logging_settings(self) -> Optional['outputs.CxAgentAdvancedSettingsLoggingSettings']:
+        """
+        Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
+        * Agent level
+        Structure is documented below.
+        """
+        return pulumi.get(self, "logging_settings")
+
+    @property
+    @pulumi.getter(name="speechSettings")
+    def speech_settings(self) -> Optional['outputs.CxAgentAdvancedSettingsSpeechSettings']:
+        """
+        Settings for speech to text detection. Exposed at the following levels:
+        * Agent level
+        * Flow level
+        * Page level
+        * Parameter level
+        Structure is documented below.
+        """
+        return pulumi.get(self, "speech_settings")
 
 
 @pulumi.output_type
@@ -298,6 +344,150 @@ class CxAgentAdvancedSettingsDtmfSettings(dict):
         Max length of DTMF digits.
         """
         return pulumi.get(self, "max_digits")
+
+
+@pulumi.output_type
+class CxAgentAdvancedSettingsLoggingSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableConsentBasedRedaction":
+            suggest = "enable_consent_based_redaction"
+        elif key == "enableInteractionLogging":
+            suggest = "enable_interaction_logging"
+        elif key == "enableStackdriverLogging":
+            suggest = "enable_stackdriver_logging"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxAgentAdvancedSettingsLoggingSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxAgentAdvancedSettingsLoggingSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxAgentAdvancedSettingsLoggingSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_consent_based_redaction: Optional[bool] = None,
+                 enable_interaction_logging: Optional[bool] = None,
+                 enable_stackdriver_logging: Optional[bool] = None):
+        """
+        :param bool enable_consent_based_redaction: Enables consent-based end-user input redaction, if true, a pre-defined session parameter **$session.params.conversation-redaction** will be used to determine if the utterance should be redacted.
+        :param bool enable_interaction_logging: Enables DF Interaction logging.
+        :param bool enable_stackdriver_logging: Enables Google Cloud Logging.
+        """
+        if enable_consent_based_redaction is not None:
+            pulumi.set(__self__, "enable_consent_based_redaction", enable_consent_based_redaction)
+        if enable_interaction_logging is not None:
+            pulumi.set(__self__, "enable_interaction_logging", enable_interaction_logging)
+        if enable_stackdriver_logging is not None:
+            pulumi.set(__self__, "enable_stackdriver_logging", enable_stackdriver_logging)
+
+    @property
+    @pulumi.getter(name="enableConsentBasedRedaction")
+    def enable_consent_based_redaction(self) -> Optional[bool]:
+        """
+        Enables consent-based end-user input redaction, if true, a pre-defined session parameter **$session.params.conversation-redaction** will be used to determine if the utterance should be redacted.
+        """
+        return pulumi.get(self, "enable_consent_based_redaction")
+
+    @property
+    @pulumi.getter(name="enableInteractionLogging")
+    def enable_interaction_logging(self) -> Optional[bool]:
+        """
+        Enables DF Interaction logging.
+        """
+        return pulumi.get(self, "enable_interaction_logging")
+
+    @property
+    @pulumi.getter(name="enableStackdriverLogging")
+    def enable_stackdriver_logging(self) -> Optional[bool]:
+        """
+        Enables Google Cloud Logging.
+        """
+        return pulumi.get(self, "enable_stackdriver_logging")
+
+
+@pulumi.output_type
+class CxAgentAdvancedSettingsSpeechSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endpointerSensitivity":
+            suggest = "endpointer_sensitivity"
+        elif key == "noSpeechTimeout":
+            suggest = "no_speech_timeout"
+        elif key == "useTimeoutBasedEndpointing":
+            suggest = "use_timeout_based_endpointing"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxAgentAdvancedSettingsSpeechSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxAgentAdvancedSettingsSpeechSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxAgentAdvancedSettingsSpeechSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 endpointer_sensitivity: Optional[int] = None,
+                 models: Optional[Mapping[str, str]] = None,
+                 no_speech_timeout: Optional[str] = None,
+                 use_timeout_based_endpointing: Optional[bool] = None):
+        """
+        :param int endpointer_sensitivity: Sensitivity of the speech model that detects the end of speech. Scale from 0 to 100.
+        :param Mapping[str, str] models: Mapping from language to Speech-to-Text model. The mapped Speech-to-Text model will be selected for requests from its corresponding language. For more information, see [Speech models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
+               An object containing a list of **"key": value** pairs. Example: **{ "name": "wrench", "mass": "1.3kg", "count": "3" }**.
+        :param str no_speech_timeout: Timeout before detecting no speech.
+               A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        :param bool use_timeout_based_endpointing: Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+        """
+        if endpointer_sensitivity is not None:
+            pulumi.set(__self__, "endpointer_sensitivity", endpointer_sensitivity)
+        if models is not None:
+            pulumi.set(__self__, "models", models)
+        if no_speech_timeout is not None:
+            pulumi.set(__self__, "no_speech_timeout", no_speech_timeout)
+        if use_timeout_based_endpointing is not None:
+            pulumi.set(__self__, "use_timeout_based_endpointing", use_timeout_based_endpointing)
+
+    @property
+    @pulumi.getter(name="endpointerSensitivity")
+    def endpointer_sensitivity(self) -> Optional[int]:
+        """
+        Sensitivity of the speech model that detects the end of speech. Scale from 0 to 100.
+        """
+        return pulumi.get(self, "endpointer_sensitivity")
+
+    @property
+    @pulumi.getter
+    def models(self) -> Optional[Mapping[str, str]]:
+        """
+        Mapping from language to Speech-to-Text model. The mapped Speech-to-Text model will be selected for requests from its corresponding language. For more information, see [Speech models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
+        An object containing a list of **"key": value** pairs. Example: **{ "name": "wrench", "mass": "1.3kg", "count": "3" }**.
+        """
+        return pulumi.get(self, "models")
+
+    @property
+    @pulumi.getter(name="noSpeechTimeout")
+    def no_speech_timeout(self) -> Optional[str]:
+        """
+        Timeout before detecting no speech.
+        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "no_speech_timeout")
+
+    @property
+    @pulumi.getter(name="useTimeoutBasedEndpointing")
+    def use_timeout_based_endpointing(self) -> Optional[bool]:
+        """
+        Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+        """
+        return pulumi.get(self, "use_timeout_based_endpointing")
 
 
 @pulumi.output_type
@@ -599,6 +789,10 @@ class CxFlowAdvancedSettings(dict):
             suggest = "audio_export_gcs_destination"
         elif key == "dtmfSettings":
             suggest = "dtmf_settings"
+        elif key == "loggingSettings":
+            suggest = "logging_settings"
+        elif key == "speechSettings":
+            suggest = "speech_settings"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in CxFlowAdvancedSettings. Access the value via the '{suggest}' property getter instead.")
@@ -613,7 +807,9 @@ class CxFlowAdvancedSettings(dict):
 
     def __init__(__self__, *,
                  audio_export_gcs_destination: Optional['outputs.CxFlowAdvancedSettingsAudioExportGcsDestination'] = None,
-                 dtmf_settings: Optional['outputs.CxFlowAdvancedSettingsDtmfSettings'] = None):
+                 dtmf_settings: Optional['outputs.CxFlowAdvancedSettingsDtmfSettings'] = None,
+                 logging_settings: Optional['outputs.CxFlowAdvancedSettingsLoggingSettings'] = None,
+                 speech_settings: Optional['outputs.CxFlowAdvancedSettingsSpeechSettings'] = None):
         """
         :param 'CxFlowAdvancedSettingsAudioExportGcsDestinationArgs' audio_export_gcs_destination: If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination. Exposed at the following levels:
                * Agent level
@@ -625,11 +821,24 @@ class CxFlowAdvancedSettings(dict):
                * Page level
                * Parameter level
                Structure is documented below.
+        :param 'CxFlowAdvancedSettingsLoggingSettingsArgs' logging_settings: Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
+               * Agent level
+               Structure is documented below.
+        :param 'CxFlowAdvancedSettingsSpeechSettingsArgs' speech_settings: Settings for speech to text detection. Exposed at the following levels:
+               * Agent level
+               * Flow level
+               * Page level
+               * Parameter level
+               Structure is documented below.
         """
         if audio_export_gcs_destination is not None:
             pulumi.set(__self__, "audio_export_gcs_destination", audio_export_gcs_destination)
         if dtmf_settings is not None:
             pulumi.set(__self__, "dtmf_settings", dtmf_settings)
+        if logging_settings is not None:
+            pulumi.set(__self__, "logging_settings", logging_settings)
+        if speech_settings is not None:
+            pulumi.set(__self__, "speech_settings", speech_settings)
 
     @property
     @pulumi.getter(name="audioExportGcsDestination")
@@ -654,6 +863,29 @@ class CxFlowAdvancedSettings(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "dtmf_settings")
+
+    @property
+    @pulumi.getter(name="loggingSettings")
+    def logging_settings(self) -> Optional['outputs.CxFlowAdvancedSettingsLoggingSettings']:
+        """
+        Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
+        * Agent level
+        Structure is documented below.
+        """
+        return pulumi.get(self, "logging_settings")
+
+    @property
+    @pulumi.getter(name="speechSettings")
+    def speech_settings(self) -> Optional['outputs.CxFlowAdvancedSettingsSpeechSettings']:
+        """
+        Settings for speech to text detection. Exposed at the following levels:
+        * Agent level
+        * Flow level
+        * Page level
+        * Parameter level
+        Structure is documented below.
+        """
+        return pulumi.get(self, "speech_settings")
 
 
 @pulumi.output_type
@@ -737,6 +969,150 @@ class CxFlowAdvancedSettingsDtmfSettings(dict):
         Max length of DTMF digits.
         """
         return pulumi.get(self, "max_digits")
+
+
+@pulumi.output_type
+class CxFlowAdvancedSettingsLoggingSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableConsentBasedRedaction":
+            suggest = "enable_consent_based_redaction"
+        elif key == "enableInteractionLogging":
+            suggest = "enable_interaction_logging"
+        elif key == "enableStackdriverLogging":
+            suggest = "enable_stackdriver_logging"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxFlowAdvancedSettingsLoggingSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxFlowAdvancedSettingsLoggingSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxFlowAdvancedSettingsLoggingSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_consent_based_redaction: Optional[bool] = None,
+                 enable_interaction_logging: Optional[bool] = None,
+                 enable_stackdriver_logging: Optional[bool] = None):
+        """
+        :param bool enable_consent_based_redaction: Enables consent-based end-user input redaction, if true, a pre-defined session parameter **$session.params.conversation-redaction** will be used to determine if the utterance should be redacted.
+        :param bool enable_interaction_logging: Enables DF Interaction logging.
+        :param bool enable_stackdriver_logging: Enables Google Cloud Logging.
+        """
+        if enable_consent_based_redaction is not None:
+            pulumi.set(__self__, "enable_consent_based_redaction", enable_consent_based_redaction)
+        if enable_interaction_logging is not None:
+            pulumi.set(__self__, "enable_interaction_logging", enable_interaction_logging)
+        if enable_stackdriver_logging is not None:
+            pulumi.set(__self__, "enable_stackdriver_logging", enable_stackdriver_logging)
+
+    @property
+    @pulumi.getter(name="enableConsentBasedRedaction")
+    def enable_consent_based_redaction(self) -> Optional[bool]:
+        """
+        Enables consent-based end-user input redaction, if true, a pre-defined session parameter **$session.params.conversation-redaction** will be used to determine if the utterance should be redacted.
+        """
+        return pulumi.get(self, "enable_consent_based_redaction")
+
+    @property
+    @pulumi.getter(name="enableInteractionLogging")
+    def enable_interaction_logging(self) -> Optional[bool]:
+        """
+        Enables DF Interaction logging.
+        """
+        return pulumi.get(self, "enable_interaction_logging")
+
+    @property
+    @pulumi.getter(name="enableStackdriverLogging")
+    def enable_stackdriver_logging(self) -> Optional[bool]:
+        """
+        Enables Google Cloud Logging.
+        """
+        return pulumi.get(self, "enable_stackdriver_logging")
+
+
+@pulumi.output_type
+class CxFlowAdvancedSettingsSpeechSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endpointerSensitivity":
+            suggest = "endpointer_sensitivity"
+        elif key == "noSpeechTimeout":
+            suggest = "no_speech_timeout"
+        elif key == "useTimeoutBasedEndpointing":
+            suggest = "use_timeout_based_endpointing"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CxFlowAdvancedSettingsSpeechSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CxFlowAdvancedSettingsSpeechSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CxFlowAdvancedSettingsSpeechSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 endpointer_sensitivity: Optional[int] = None,
+                 models: Optional[Mapping[str, str]] = None,
+                 no_speech_timeout: Optional[str] = None,
+                 use_timeout_based_endpointing: Optional[bool] = None):
+        """
+        :param int endpointer_sensitivity: Sensitivity of the speech model that detects the end of speech. Scale from 0 to 100.
+        :param Mapping[str, str] models: Mapping from language to Speech-to-Text model. The mapped Speech-to-Text model will be selected for requests from its corresponding language. For more information, see [Speech models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
+               An object containing a list of **"key": value** pairs. Example: **{ "name": "wrench", "mass": "1.3kg", "count": "3" }**.
+        :param str no_speech_timeout: Timeout before detecting no speech.
+               A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        :param bool use_timeout_based_endpointing: Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+        """
+        if endpointer_sensitivity is not None:
+            pulumi.set(__self__, "endpointer_sensitivity", endpointer_sensitivity)
+        if models is not None:
+            pulumi.set(__self__, "models", models)
+        if no_speech_timeout is not None:
+            pulumi.set(__self__, "no_speech_timeout", no_speech_timeout)
+        if use_timeout_based_endpointing is not None:
+            pulumi.set(__self__, "use_timeout_based_endpointing", use_timeout_based_endpointing)
+
+    @property
+    @pulumi.getter(name="endpointerSensitivity")
+    def endpointer_sensitivity(self) -> Optional[int]:
+        """
+        Sensitivity of the speech model that detects the end of speech. Scale from 0 to 100.
+        """
+        return pulumi.get(self, "endpointer_sensitivity")
+
+    @property
+    @pulumi.getter
+    def models(self) -> Optional[Mapping[str, str]]:
+        """
+        Mapping from language to Speech-to-Text model. The mapped Speech-to-Text model will be selected for requests from its corresponding language. For more information, see [Speech models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
+        An object containing a list of **"key": value** pairs. Example: **{ "name": "wrench", "mass": "1.3kg", "count": "3" }**.
+        """
+        return pulumi.get(self, "models")
+
+    @property
+    @pulumi.getter(name="noSpeechTimeout")
+    def no_speech_timeout(self) -> Optional[str]:
+        """
+        Timeout before detecting no speech.
+        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "no_speech_timeout")
+
+    @property
+    @pulumi.getter(name="useTimeoutBasedEndpointing")
+    def use_timeout_based_endpointing(self) -> Optional[bool]:
+        """
+        Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+        """
+        return pulumi.get(self, "use_timeout_based_endpointing")
 
 
 @pulumi.output_type

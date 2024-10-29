@@ -5,14 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * ## subcategory: "Site Verification"
- *
- * description: |-
- *   A verification token is used to demonstrate ownership of a website or domain.
- * ---
- *
- * # gcp.siteverification.getToken
- *
  * A verification token is used to demonstrate ownership of a website or domain.
  *
  * To get more information about Token, see:
@@ -100,14 +92,6 @@ export interface GetTokenResult {
     readonly verificationMethod: string;
 }
 /**
- * ## subcategory: "Site Verification"
- *
- * description: |-
- *   A verification token is used to demonstrate ownership of a website or domain.
- * ---
- *
- * # gcp.siteverification.getToken
- *
  * A verification token is used to demonstrate ownership of a website or domain.
  *
  * To get more information about Token, see:

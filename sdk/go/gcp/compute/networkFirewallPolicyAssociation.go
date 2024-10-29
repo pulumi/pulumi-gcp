@@ -14,9 +14,14 @@ import (
 
 // The Compute NetworkFirewallPolicyAssociation resource
 //
+// To get more information about NetworkFirewallPolicyAssociation, see:
+//
+// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/networkFirewallPolicies/addAssociation)
+//
 // ## Example Usage
 //
-// ### Global
+// ### Network Firewall Policy Association
+//
 // ```go
 // package main
 //
@@ -29,8 +34,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			networkFirewallPolicy, err := compute.NewNetworkFirewallPolicy(ctx, "network_firewall_policy", &compute.NetworkFirewallPolicyArgs{
-//				Name:        pulumi.String("policy"),
+//			policy, err := compute.NewNetworkFirewallPolicy(ctx, "policy", &compute.NetworkFirewallPolicyArgs{
+//				Name:        pulumi.String("my-policy"),
 //				Project:     pulumi.String("my-project-name"),
 //				Description: pulumi.String("Sample global network firewall policy"),
 //			})
@@ -38,16 +43,17 @@ import (
 //				return err
 //			}
 //			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
-//				Name: pulumi.String("network"),
+//				Name:                  pulumi.String("my-network"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewNetworkFirewallPolicyAssociation(ctx, "primary", &compute.NetworkFirewallPolicyAssociationArgs{
-//				Name:             pulumi.String("association"),
-//				AttachmentTarget: network.ID(),
-//				FirewallPolicy:   networkFirewallPolicy.Name,
+//			_, err = compute.NewNetworkFirewallPolicyAssociation(ctx, "default", &compute.NetworkFirewallPolicyAssociationArgs{
+//				Name:             pulumi.String("my-association"),
 //				Project:          pulumi.String("my-project-name"),
+//				AttachmentTarget: network.ID(),
+//				FirewallPolicy:   policy.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -66,6 +72,8 @@ import (
 //
 // * `{{project}}/{{firewall_policy}}/{{name}}`
 //
+// * `{{firewall_policy}}/{{name}}`
+//
 // When using the `pulumi import` command, NetworkFirewallPolicyAssociation can be imported using one of the formats above. For example:
 //
 // ```sh
@@ -75,18 +83,23 @@ import (
 // ```sh
 // $ pulumi import gcp:compute/networkFirewallPolicyAssociation:NetworkFirewallPolicyAssociation default {{project}}/{{firewall_policy}}/{{name}}
 // ```
+//
+// ```sh
+// $ pulumi import gcp:compute/networkFirewallPolicyAssociation:NetworkFirewallPolicyAssociation default {{firewall_policy}}/{{name}}
+// ```
 type NetworkFirewallPolicyAssociation struct {
 	pulumi.CustomResourceState
 
 	// The target that the firewall policy is attached to.
 	AttachmentTarget pulumi.StringOutput `pulumi:"attachmentTarget"`
-	// The firewall policy ID of the association.
-	FirewallPolicy pulumi.StringOutput `pulumi:"firewallPolicy"`
-	// The name for an association.
+	// The firewall policy of the resource.
 	//
 	// ***
+	FirewallPolicy pulumi.StringOutput `pulumi:"firewallPolicy"`
+	// The name for an association.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The project for the resource
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The short name of the firewall policy of the association.
 	ShortName pulumi.StringOutput `pulumi:"shortName"`
@@ -130,13 +143,14 @@ func GetNetworkFirewallPolicyAssociation(ctx *pulumi.Context,
 type networkFirewallPolicyAssociationState struct {
 	// The target that the firewall policy is attached to.
 	AttachmentTarget *string `pulumi:"attachmentTarget"`
-	// The firewall policy ID of the association.
-	FirewallPolicy *string `pulumi:"firewallPolicy"`
-	// The name for an association.
+	// The firewall policy of the resource.
 	//
 	// ***
+	FirewallPolicy *string `pulumi:"firewallPolicy"`
+	// The name for an association.
 	Name *string `pulumi:"name"`
-	// The project for the resource
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The short name of the firewall policy of the association.
 	ShortName *string `pulumi:"shortName"`
@@ -145,13 +159,14 @@ type networkFirewallPolicyAssociationState struct {
 type NetworkFirewallPolicyAssociationState struct {
 	// The target that the firewall policy is attached to.
 	AttachmentTarget pulumi.StringPtrInput
-	// The firewall policy ID of the association.
-	FirewallPolicy pulumi.StringPtrInput
-	// The name for an association.
+	// The firewall policy of the resource.
 	//
 	// ***
+	FirewallPolicy pulumi.StringPtrInput
+	// The name for an association.
 	Name pulumi.StringPtrInput
-	// The project for the resource
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The short name of the firewall policy of the association.
 	ShortName pulumi.StringPtrInput
@@ -164,13 +179,14 @@ func (NetworkFirewallPolicyAssociationState) ElementType() reflect.Type {
 type networkFirewallPolicyAssociationArgs struct {
 	// The target that the firewall policy is attached to.
 	AttachmentTarget string `pulumi:"attachmentTarget"`
-	// The firewall policy ID of the association.
-	FirewallPolicy string `pulumi:"firewallPolicy"`
-	// The name for an association.
+	// The firewall policy of the resource.
 	//
 	// ***
+	FirewallPolicy string `pulumi:"firewallPolicy"`
+	// The name for an association.
 	Name *string `pulumi:"name"`
-	// The project for the resource
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 }
 
@@ -178,13 +194,14 @@ type networkFirewallPolicyAssociationArgs struct {
 type NetworkFirewallPolicyAssociationArgs struct {
 	// The target that the firewall policy is attached to.
 	AttachmentTarget pulumi.StringInput
-	// The firewall policy ID of the association.
-	FirewallPolicy pulumi.StringInput
-	// The name for an association.
+	// The firewall policy of the resource.
 	//
 	// ***
+	FirewallPolicy pulumi.StringInput
+	// The name for an association.
 	Name pulumi.StringPtrInput
-	// The project for the resource
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 }
 
@@ -280,19 +297,20 @@ func (o NetworkFirewallPolicyAssociationOutput) AttachmentTarget() pulumi.String
 	return o.ApplyT(func(v *NetworkFirewallPolicyAssociation) pulumi.StringOutput { return v.AttachmentTarget }).(pulumi.StringOutput)
 }
 
-// The firewall policy ID of the association.
+// The firewall policy of the resource.
+//
+// ***
 func (o NetworkFirewallPolicyAssociationOutput) FirewallPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkFirewallPolicyAssociation) pulumi.StringOutput { return v.FirewallPolicy }).(pulumi.StringOutput)
 }
 
 // The name for an association.
-//
-// ***
 func (o NetworkFirewallPolicyAssociationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkFirewallPolicyAssociation) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The project for the resource
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o NetworkFirewallPolicyAssociationOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkFirewallPolicyAssociation) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

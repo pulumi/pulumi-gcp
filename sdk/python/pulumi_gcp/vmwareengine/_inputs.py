@@ -15,6 +15,16 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'ClusterAutoscalingSettingsArgs',
+    'ClusterAutoscalingSettingsArgsDict',
+    'ClusterAutoscalingSettingsAutoscalingPolicyArgs',
+    'ClusterAutoscalingSettingsAutoscalingPolicyArgsDict',
+    'ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs',
+    'ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgsDict',
+    'ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs',
+    'ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgsDict',
+    'ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs',
+    'ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgsDict',
     'ClusterNodeTypeConfigArgs',
     'ClusterNodeTypeConfigArgsDict',
     'ExternalAccessRuleDestinationIpRangeArgs',
@@ -46,6 +56,436 @@ __all__ = [
 ]
 
 MYPY = False
+
+if not MYPY:
+    class ClusterAutoscalingSettingsArgsDict(TypedDict):
+        autoscaling_policies: pulumi.Input[Sequence[pulumi.Input['ClusterAutoscalingSettingsAutoscalingPolicyArgsDict']]]
+        """
+        The map with autoscaling policies applied to the cluster.
+        The key is the identifier of the policy.
+        It must meet the following requirements:
+        * Only contains 1-63 alphanumeric characters and hyphens
+        * Begins with an alphabetical character
+        * Ends with a non-hyphen character
+        * Not formatted as a UUID
+        * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+        Currently the map must contain only one element
+        that describes the autoscaling policy for compute nodes.
+        Structure is documented below.
+        """
+        cool_down_period: NotRequired[pulumi.Input[str]]
+        """
+        The minimum duration between consecutive autoscale operations.
+        It starts once addition or removal of nodes is fully completed.
+        Minimum cool down period is 30m.
+        Cool down period must be in whole minutes (for example, 30m, 31m, 50m).
+        Mandatory for successful addition of autoscaling settings in cluster.
+        """
+        max_cluster_node_count: NotRequired[pulumi.Input[int]]
+        """
+        Maximum number of nodes of any type in a cluster.
+        Mandatory for successful addition of autoscaling settings in cluster.
+        """
+        min_cluster_node_count: NotRequired[pulumi.Input[int]]
+        """
+        Minimum number of nodes of any type in a cluster.
+        Mandatory for successful addition of autoscaling settings in cluster.
+        """
+elif False:
+    ClusterAutoscalingSettingsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterAutoscalingSettingsArgs:
+    def __init__(__self__, *,
+                 autoscaling_policies: pulumi.Input[Sequence[pulumi.Input['ClusterAutoscalingSettingsAutoscalingPolicyArgs']]],
+                 cool_down_period: Optional[pulumi.Input[str]] = None,
+                 max_cluster_node_count: Optional[pulumi.Input[int]] = None,
+                 min_cluster_node_count: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterAutoscalingSettingsAutoscalingPolicyArgs']]] autoscaling_policies: The map with autoscaling policies applied to the cluster.
+               The key is the identifier of the policy.
+               It must meet the following requirements:
+               * Only contains 1-63 alphanumeric characters and hyphens
+               * Begins with an alphabetical character
+               * Ends with a non-hyphen character
+               * Not formatted as a UUID
+               * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+               Currently the map must contain only one element
+               that describes the autoscaling policy for compute nodes.
+               Structure is documented below.
+        :param pulumi.Input[str] cool_down_period: The minimum duration between consecutive autoscale operations.
+               It starts once addition or removal of nodes is fully completed.
+               Minimum cool down period is 30m.
+               Cool down period must be in whole minutes (for example, 30m, 31m, 50m).
+               Mandatory for successful addition of autoscaling settings in cluster.
+        :param pulumi.Input[int] max_cluster_node_count: Maximum number of nodes of any type in a cluster.
+               Mandatory for successful addition of autoscaling settings in cluster.
+        :param pulumi.Input[int] min_cluster_node_count: Minimum number of nodes of any type in a cluster.
+               Mandatory for successful addition of autoscaling settings in cluster.
+        """
+        pulumi.set(__self__, "autoscaling_policies", autoscaling_policies)
+        if cool_down_period is not None:
+            pulumi.set(__self__, "cool_down_period", cool_down_period)
+        if max_cluster_node_count is not None:
+            pulumi.set(__self__, "max_cluster_node_count", max_cluster_node_count)
+        if min_cluster_node_count is not None:
+            pulumi.set(__self__, "min_cluster_node_count", min_cluster_node_count)
+
+    @property
+    @pulumi.getter(name="autoscalingPolicies")
+    def autoscaling_policies(self) -> pulumi.Input[Sequence[pulumi.Input['ClusterAutoscalingSettingsAutoscalingPolicyArgs']]]:
+        """
+        The map with autoscaling policies applied to the cluster.
+        The key is the identifier of the policy.
+        It must meet the following requirements:
+        * Only contains 1-63 alphanumeric characters and hyphens
+        * Begins with an alphabetical character
+        * Ends with a non-hyphen character
+        * Not formatted as a UUID
+        * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+        Currently the map must contain only one element
+        that describes the autoscaling policy for compute nodes.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "autoscaling_policies")
+
+    @autoscaling_policies.setter
+    def autoscaling_policies(self, value: pulumi.Input[Sequence[pulumi.Input['ClusterAutoscalingSettingsAutoscalingPolicyArgs']]]):
+        pulumi.set(self, "autoscaling_policies", value)
+
+    @property
+    @pulumi.getter(name="coolDownPeriod")
+    def cool_down_period(self) -> Optional[pulumi.Input[str]]:
+        """
+        The minimum duration between consecutive autoscale operations.
+        It starts once addition or removal of nodes is fully completed.
+        Minimum cool down period is 30m.
+        Cool down period must be in whole minutes (for example, 30m, 31m, 50m).
+        Mandatory for successful addition of autoscaling settings in cluster.
+        """
+        return pulumi.get(self, "cool_down_period")
+
+    @cool_down_period.setter
+    def cool_down_period(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cool_down_period", value)
+
+    @property
+    @pulumi.getter(name="maxClusterNodeCount")
+    def max_cluster_node_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of nodes of any type in a cluster.
+        Mandatory for successful addition of autoscaling settings in cluster.
+        """
+        return pulumi.get(self, "max_cluster_node_count")
+
+    @max_cluster_node_count.setter
+    def max_cluster_node_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_cluster_node_count", value)
+
+    @property
+    @pulumi.getter(name="minClusterNodeCount")
+    def min_cluster_node_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minimum number of nodes of any type in a cluster.
+        Mandatory for successful addition of autoscaling settings in cluster.
+        """
+        return pulumi.get(self, "min_cluster_node_count")
+
+    @min_cluster_node_count.setter
+    def min_cluster_node_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_cluster_node_count", value)
+
+
+if not MYPY:
+    class ClusterAutoscalingSettingsAutoscalingPolicyArgsDict(TypedDict):
+        autoscale_policy_id: pulumi.Input[str]
+        """
+        The identifier for this object. Format specified above.
+        """
+        node_type_id: pulumi.Input[str]
+        """
+        The canonical identifier of the node type to add or remove.
+        """
+        scale_out_size: pulumi.Input[int]
+        """
+        Number of nodes to add to a cluster during a scale-out operation.
+        Must be divisible by 2 for stretched clusters.
+        """
+        consumed_memory_thresholds: NotRequired[pulumi.Input['ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgsDict']]
+        """
+        Utilization thresholds pertaining to amount of consumed memory.
+        Structure is documented below.
+        """
+        cpu_thresholds: NotRequired[pulumi.Input['ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgsDict']]
+        """
+        Utilization thresholds pertaining to CPU utilization.
+        Structure is documented below.
+        """
+        storage_thresholds: NotRequired[pulumi.Input['ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgsDict']]
+        """
+        Utilization thresholds pertaining to amount of consumed storage.
+        Structure is documented below.
+        """
+elif False:
+    ClusterAutoscalingSettingsAutoscalingPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterAutoscalingSettingsAutoscalingPolicyArgs:
+    def __init__(__self__, *,
+                 autoscale_policy_id: pulumi.Input[str],
+                 node_type_id: pulumi.Input[str],
+                 scale_out_size: pulumi.Input[int],
+                 consumed_memory_thresholds: Optional[pulumi.Input['ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs']] = None,
+                 cpu_thresholds: Optional[pulumi.Input['ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs']] = None,
+                 storage_thresholds: Optional[pulumi.Input['ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs']] = None):
+        """
+        :param pulumi.Input[str] autoscale_policy_id: The identifier for this object. Format specified above.
+        :param pulumi.Input[str] node_type_id: The canonical identifier of the node type to add or remove.
+        :param pulumi.Input[int] scale_out_size: Number of nodes to add to a cluster during a scale-out operation.
+               Must be divisible by 2 for stretched clusters.
+        :param pulumi.Input['ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs'] consumed_memory_thresholds: Utilization thresholds pertaining to amount of consumed memory.
+               Structure is documented below.
+        :param pulumi.Input['ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs'] cpu_thresholds: Utilization thresholds pertaining to CPU utilization.
+               Structure is documented below.
+        :param pulumi.Input['ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs'] storage_thresholds: Utilization thresholds pertaining to amount of consumed storage.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "autoscale_policy_id", autoscale_policy_id)
+        pulumi.set(__self__, "node_type_id", node_type_id)
+        pulumi.set(__self__, "scale_out_size", scale_out_size)
+        if consumed_memory_thresholds is not None:
+            pulumi.set(__self__, "consumed_memory_thresholds", consumed_memory_thresholds)
+        if cpu_thresholds is not None:
+            pulumi.set(__self__, "cpu_thresholds", cpu_thresholds)
+        if storage_thresholds is not None:
+            pulumi.set(__self__, "storage_thresholds", storage_thresholds)
+
+    @property
+    @pulumi.getter(name="autoscalePolicyId")
+    def autoscale_policy_id(self) -> pulumi.Input[str]:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "autoscale_policy_id")
+
+    @autoscale_policy_id.setter
+    def autoscale_policy_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "autoscale_policy_id", value)
+
+    @property
+    @pulumi.getter(name="nodeTypeId")
+    def node_type_id(self) -> pulumi.Input[str]:
+        """
+        The canonical identifier of the node type to add or remove.
+        """
+        return pulumi.get(self, "node_type_id")
+
+    @node_type_id.setter
+    def node_type_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "node_type_id", value)
+
+    @property
+    @pulumi.getter(name="scaleOutSize")
+    def scale_out_size(self) -> pulumi.Input[int]:
+        """
+        Number of nodes to add to a cluster during a scale-out operation.
+        Must be divisible by 2 for stretched clusters.
+        """
+        return pulumi.get(self, "scale_out_size")
+
+    @scale_out_size.setter
+    def scale_out_size(self, value: pulumi.Input[int]):
+        pulumi.set(self, "scale_out_size", value)
+
+    @property
+    @pulumi.getter(name="consumedMemoryThresholds")
+    def consumed_memory_thresholds(self) -> Optional[pulumi.Input['ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs']]:
+        """
+        Utilization thresholds pertaining to amount of consumed memory.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "consumed_memory_thresholds")
+
+    @consumed_memory_thresholds.setter
+    def consumed_memory_thresholds(self, value: Optional[pulumi.Input['ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs']]):
+        pulumi.set(self, "consumed_memory_thresholds", value)
+
+    @property
+    @pulumi.getter(name="cpuThresholds")
+    def cpu_thresholds(self) -> Optional[pulumi.Input['ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs']]:
+        """
+        Utilization thresholds pertaining to CPU utilization.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cpu_thresholds")
+
+    @cpu_thresholds.setter
+    def cpu_thresholds(self, value: Optional[pulumi.Input['ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs']]):
+        pulumi.set(self, "cpu_thresholds", value)
+
+    @property
+    @pulumi.getter(name="storageThresholds")
+    def storage_thresholds(self) -> Optional[pulumi.Input['ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs']]:
+        """
+        Utilization thresholds pertaining to amount of consumed storage.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "storage_thresholds")
+
+    @storage_thresholds.setter
+    def storage_thresholds(self, value: Optional[pulumi.Input['ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs']]):
+        pulumi.set(self, "storage_thresholds", value)
+
+
+if not MYPY:
+    class ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgsDict(TypedDict):
+        scale_in: pulumi.Input[int]
+        """
+        The utilization triggering the scale-in operation in percent.
+        """
+        scale_out: pulumi.Input[int]
+        """
+        The utilization triggering the scale-out operation in percent.
+        """
+elif False:
+    ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs:
+    def __init__(__self__, *,
+                 scale_in: pulumi.Input[int],
+                 scale_out: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] scale_in: The utilization triggering the scale-in operation in percent.
+        :param pulumi.Input[int] scale_out: The utilization triggering the scale-out operation in percent.
+        """
+        pulumi.set(__self__, "scale_in", scale_in)
+        pulumi.set(__self__, "scale_out", scale_out)
+
+    @property
+    @pulumi.getter(name="scaleIn")
+    def scale_in(self) -> pulumi.Input[int]:
+        """
+        The utilization triggering the scale-in operation in percent.
+        """
+        return pulumi.get(self, "scale_in")
+
+    @scale_in.setter
+    def scale_in(self, value: pulumi.Input[int]):
+        pulumi.set(self, "scale_in", value)
+
+    @property
+    @pulumi.getter(name="scaleOut")
+    def scale_out(self) -> pulumi.Input[int]:
+        """
+        The utilization triggering the scale-out operation in percent.
+        """
+        return pulumi.get(self, "scale_out")
+
+    @scale_out.setter
+    def scale_out(self, value: pulumi.Input[int]):
+        pulumi.set(self, "scale_out", value)
+
+
+if not MYPY:
+    class ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgsDict(TypedDict):
+        scale_in: pulumi.Input[int]
+        """
+        The utilization triggering the scale-in operation in percent.
+        """
+        scale_out: pulumi.Input[int]
+        """
+        The utilization triggering the scale-out operation in percent.
+        """
+elif False:
+    ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs:
+    def __init__(__self__, *,
+                 scale_in: pulumi.Input[int],
+                 scale_out: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] scale_in: The utilization triggering the scale-in operation in percent.
+        :param pulumi.Input[int] scale_out: The utilization triggering the scale-out operation in percent.
+        """
+        pulumi.set(__self__, "scale_in", scale_in)
+        pulumi.set(__self__, "scale_out", scale_out)
+
+    @property
+    @pulumi.getter(name="scaleIn")
+    def scale_in(self) -> pulumi.Input[int]:
+        """
+        The utilization triggering the scale-in operation in percent.
+        """
+        return pulumi.get(self, "scale_in")
+
+    @scale_in.setter
+    def scale_in(self, value: pulumi.Input[int]):
+        pulumi.set(self, "scale_in", value)
+
+    @property
+    @pulumi.getter(name="scaleOut")
+    def scale_out(self) -> pulumi.Input[int]:
+        """
+        The utilization triggering the scale-out operation in percent.
+        """
+        return pulumi.get(self, "scale_out")
+
+    @scale_out.setter
+    def scale_out(self, value: pulumi.Input[int]):
+        pulumi.set(self, "scale_out", value)
+
+
+if not MYPY:
+    class ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgsDict(TypedDict):
+        scale_in: pulumi.Input[int]
+        """
+        The utilization triggering the scale-in operation in percent.
+        """
+        scale_out: pulumi.Input[int]
+        """
+        The utilization triggering the scale-out operation in percent.
+        """
+elif False:
+    ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs:
+    def __init__(__self__, *,
+                 scale_in: pulumi.Input[int],
+                 scale_out: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] scale_in: The utilization triggering the scale-in operation in percent.
+        :param pulumi.Input[int] scale_out: The utilization triggering the scale-out operation in percent.
+        """
+        pulumi.set(__self__, "scale_in", scale_in)
+        pulumi.set(__self__, "scale_out", scale_out)
+
+    @property
+    @pulumi.getter(name="scaleIn")
+    def scale_in(self) -> pulumi.Input[int]:
+        """
+        The utilization triggering the scale-in operation in percent.
+        """
+        return pulumi.get(self, "scale_in")
+
+    @scale_in.setter
+    def scale_in(self, value: pulumi.Input[int]):
+        pulumi.set(self, "scale_in", value)
+
+    @property
+    @pulumi.getter(name="scaleOut")
+    def scale_out(self) -> pulumi.Input[int]:
+        """
+        The utilization triggering the scale-out operation in percent.
+        """
+        return pulumi.get(self, "scale_out")
+
+    @scale_out.setter
+    def scale_out(self, value: pulumi.Input[int]):
+        pulumi.set(self, "scale_out", value)
+
 
 if not MYPY:
     class ClusterNodeTypeConfigArgsDict(TypedDict):

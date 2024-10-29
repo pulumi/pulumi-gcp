@@ -20,6 +20,7 @@ __all__ = [
     'BucketCor',
     'BucketCustomPlacementConfig',
     'BucketEncryption',
+    'BucketHierarchicalNamespace',
     'BucketIAMBindingCondition',
     'BucketIAMMemberCondition',
     'BucketLifecycleRule',
@@ -66,6 +67,7 @@ __all__ = [
     'GetBucketCorResult',
     'GetBucketCustomPlacementConfigResult',
     'GetBucketEncryptionResult',
+    'GetBucketHierarchicalNamespaceResult',
     'GetBucketLifecycleRuleResult',
     'GetBucketLifecycleRuleActionResult',
     'GetBucketLifecycleRuleConditionResult',
@@ -297,6 +299,26 @@ class BucketEncryption(dict):
         You should take care for race conditions when the same provider manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
         """
         return pulumi.get(self, "default_kms_key_name")
+
+
+@pulumi.output_type
+class BucketHierarchicalNamespace(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        :param bool enabled: Enable hierarchical namespace for the bucket. 
+               To use this flag, you must also use --uniform-bucket-level-access
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Enable hierarchical namespace for the bucket. 
+        To use this flag, you must also use --uniform-bucket-level-access
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -2836,6 +2858,24 @@ class GetBucketEncryptionResult(dict):
         A Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified. You must pay attention to whether the crypto key is available in the location that this bucket is created in. See the docs for more details.
         """
         return pulumi.get(self, "default_kms_key_name")
+
+
+@pulumi.output_type
+class GetBucketHierarchicalNamespaceResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        :param bool enabled: Set this enabled flag to true when folders with logical files structure. Default value is false.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Set this enabled flag to true when folders with logical files structure. Default value is false.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type

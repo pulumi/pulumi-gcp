@@ -22,6 +22,8 @@ __all__ = [
     'AddonsConfigAddonsConfigConnectorsPlatformConfig',
     'AddonsConfigAddonsConfigIntegrationConfig',
     'AddonsConfigAddonsConfigMonetizationConfig',
+    'AppGroupAttribute',
+    'DeveloperAttribute',
     'EnvironmentIamBindingCondition',
     'EnvironmentIamMemberCondition',
     'EnvironmentNodeConfig',
@@ -297,6 +299,68 @@ class AddonsConfigAddonsConfigMonetizationConfig(dict):
         Flag that specifies whether the Advanced API Ops add-on is enabled.
         """
         return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class AppGroupAttribute(dict):
+    def __init__(__self__, *,
+                 name: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str name: Key of the attribute
+        :param str value: Value of the attribute
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Key of the attribute
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        Value of the attribute
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class DeveloperAttribute(dict):
+    def __init__(__self__, *,
+                 name: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str name: Key of the attribute
+        :param str value: Value of the attribute
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Key of the attribute
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        Value of the attribute
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type

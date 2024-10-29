@@ -16,9 +16,14 @@ import javax.annotation.Nullable;
 /**
  * The Compute NetworkFirewallPolicyAssociation resource
  * 
+ * To get more information about RegionNetworkFirewallPolicyAssociation, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionNetworkFirewallPolicies/addAssociation)
+ * 
  * ## Example Usage
  * 
- * ### Regional
+ * ### Region Network Firewall Policy Association
+ * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
@@ -46,22 +51,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var basicRegionalNetworkFirewallPolicy = new RegionNetworkFirewallPolicy("basicRegionalNetworkFirewallPolicy", RegionNetworkFirewallPolicyArgs.builder()
- *             .name("policy")
+ *         var policy = new RegionNetworkFirewallPolicy("policy", RegionNetworkFirewallPolicyArgs.builder()
+ *             .name("my-policy")
  *             .project("my-project-name")
  *             .description("Sample global network firewall policy")
  *             .region("us-west1")
  *             .build());
  * 
- *         var basicNetwork = new Network("basicNetwork", NetworkArgs.builder()
- *             .name("network")
+ *         var network = new Network("network", NetworkArgs.builder()
+ *             .name("my-network")
+ *             .autoCreateSubnetworks(false)
  *             .build());
  * 
- *         var primary = new RegionNetworkFirewallPolicyAssociation("primary", RegionNetworkFirewallPolicyAssociationArgs.builder()
- *             .name("association")
- *             .attachmentTarget(basicNetwork.id())
- *             .firewallPolicy(basicRegionalNetworkFirewallPolicy.name())
+ *         var default_ = new RegionNetworkFirewallPolicyAssociation("default", RegionNetworkFirewallPolicyAssociationArgs.builder()
+ *             .name("my-association")
  *             .project("my-project-name")
+ *             .attachmentTarget(network.id())
+ *             .firewallPolicy(policy.id())
  *             .region("us-west1")
  *             .build());
  * 
@@ -73,13 +79,19 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * NetworkFirewallPolicyAssociation can be imported using any of these accepted formats:
+ * RegionNetworkFirewallPolicyAssociation can be imported using any of these accepted formats:
  * 
  * * `projects/{{project}}/regions/{{region}}/firewallPolicies/{{firewall_policy}}/associations/{{name}}`
  * 
  * * `{{project}}/{{region}}/{{firewall_policy}}/{{name}}`
  * 
- * When using the `pulumi import` command, NetworkFirewallPolicyAssociation can be imported using one of the formats above. For example:
+ * * `{{region}}/{{firewall_policy}}/{{name}}`
+ * 
+ * * `{{project}}/{{firewall_policy}}/{{name}}`
+ * 
+ * * `{{firewall_policy}}/{{name}}`
+ * 
+ * When using the `pulumi import` command, RegionNetworkFirewallPolicyAssociation can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation default projects/{{project}}/regions/{{region}}/firewallPolicies/{{firewall_policy}}/associations/{{name}}
@@ -87,6 +99,18 @@ import javax.annotation.Nullable;
  * 
  * ```sh
  * $ pulumi import gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation default {{project}}/{{region}}/{{firewall_policy}}/{{name}}
+ * ```
+ * 
+ * ```sh
+ * $ pulumi import gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation default {{region}}/{{firewall_policy}}/{{name}}
+ * ```
+ * 
+ * ```sh
+ * $ pulumi import gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation default {{project}}/{{firewall_policy}}/{{name}}
+ * ```
+ * 
+ * ```sh
+ * $ pulumi import gcp:compute/regionNetworkFirewallPolicyAssociation:RegionNetworkFirewallPolicyAssociation default {{firewall_policy}}/{{name}}
  * ```
  * 
  */
@@ -107,14 +131,18 @@ public class RegionNetworkFirewallPolicyAssociation extends com.pulumi.resources
         return this.attachmentTarget;
     }
     /**
-     * The firewall policy ID of the association.
+     * The firewall policy of the resource.
+     * 
+     * ***
      * 
      */
     @Export(name="firewallPolicy", refs={String.class}, tree="[0]")
     private Output<String> firewallPolicy;
 
     /**
-     * @return The firewall policy ID of the association.
+     * @return The firewall policy of the resource.
+     * 
+     * ***
      * 
      */
     public Output<String> firewallPolicy() {
@@ -123,8 +151,6 @@ public class RegionNetworkFirewallPolicyAssociation extends com.pulumi.resources
     /**
      * The name for an association.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -132,21 +158,21 @@ public class RegionNetworkFirewallPolicyAssociation extends com.pulumi.resources
     /**
      * @return The name for an association.
      * 
-     * ***
-     * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return The project for the resource
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     public Output<String> project() {

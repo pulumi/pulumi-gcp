@@ -131,6 +131,21 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
     }
 
     /**
+     * Creation timestamp in RFC3339 text format.
+     * 
+     */
+    @Import(name="creationTimestamp")
+    private @Nullable Output<String> creationTimestamp;
+
+    /**
+     * @return Creation timestamp in RFC3339 text format.
+     * 
+     */
+    public Optional<Output<String>> creationTimestamp() {
+        return Optional.ofNullable(this.creationTimestamp);
+    }
+
+    /**
      * Current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING,
      * SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance
      * life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
@@ -263,6 +278,23 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
      */
     public Optional<Output<String>> instanceId() {
         return Optional.ofNullable(this.instanceId);
+    }
+
+    /**
+     * Action to be taken when a customer&#39;s encryption key is revoked. Supports &#34;STOP&#34; and &#34;NONE&#34;, with &#34;NONE&#34; being the
+     * default.
+     * 
+     */
+    @Import(name="keyRevocationActionType")
+    private @Nullable Output<String> keyRevocationActionType;
+
+    /**
+     * @return Action to be taken when a customer&#39;s encryption key is revoked. Supports &#34;STOP&#34; and &#34;NONE&#34;, with &#34;NONE&#34; being the
+     * default.
+     * 
+     */
+    public Optional<Output<String>> keyRevocationActionType() {
+        return Optional.ofNullable(this.keyRevocationActionType);
     }
 
     /**
@@ -678,6 +710,7 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
         this.canIpForward = $.canIpForward;
         this.confidentialInstanceConfig = $.confidentialInstanceConfig;
         this.cpuPlatform = $.cpuPlatform;
+        this.creationTimestamp = $.creationTimestamp;
         this.currentStatus = $.currentStatus;
         this.deletionProtection = $.deletionProtection;
         this.description = $.description;
@@ -687,6 +720,7 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
         this.guestAccelerators = $.guestAccelerators;
         this.hostname = $.hostname;
         this.instanceId = $.instanceId;
+        this.keyRevocationActionType = $.keyRevocationActionType;
         this.labelFingerprint = $.labelFingerprint;
         this.labels = $.labels;
         this.machineType = $.machineType;
@@ -877,6 +911,27 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
          */
         public Builder cpuPlatform(String cpuPlatform) {
             return cpuPlatform(Output.of(cpuPlatform));
+        }
+
+        /**
+         * @param creationTimestamp Creation timestamp in RFC3339 text format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder creationTimestamp(@Nullable Output<String> creationTimestamp) {
+            $.creationTimestamp = creationTimestamp;
+            return this;
+        }
+
+        /**
+         * @param creationTimestamp Creation timestamp in RFC3339 text format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder creationTimestamp(String creationTimestamp) {
+            return creationTimestamp(Output.of(creationTimestamp));
         }
 
         /**
@@ -1072,6 +1127,29 @@ public final class InstanceFromTemplateState extends com.pulumi.resources.Resour
          */
         public Builder instanceId(String instanceId) {
             return instanceId(Output.of(instanceId));
+        }
+
+        /**
+         * @param keyRevocationActionType Action to be taken when a customer&#39;s encryption key is revoked. Supports &#34;STOP&#34; and &#34;NONE&#34;, with &#34;NONE&#34; being the
+         * default.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keyRevocationActionType(@Nullable Output<String> keyRevocationActionType) {
+            $.keyRevocationActionType = keyRevocationActionType;
+            return this;
+        }
+
+        /**
+         * @param keyRevocationActionType Action to be taken when a customer&#39;s encryption key is revoked. Supports &#34;STOP&#34; and &#34;NONE&#34;, with &#34;NONE&#34; being the
+         * default.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keyRevocationActionType(String keyRevocationActionType) {
+            return keyRevocationActionType(Output.of(keyRevocationActionType));
         }
 
         /**

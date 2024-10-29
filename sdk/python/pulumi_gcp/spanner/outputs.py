@@ -130,6 +130,8 @@ class DatabaseEncryptionConfig(dict):
         suggest = None
         if key == "kmsKeyName":
             suggest = "kms_key_name"
+        elif key == "kmsKeyNames":
+            suggest = "kms_key_names"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in DatabaseEncryptionConfig. Access the value via the '{suggest}' property getter instead.")
@@ -143,21 +145,36 @@ class DatabaseEncryptionConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 kms_key_name: str):
+                 kms_key_name: Optional[str] = None,
+                 kms_key_names: Optional[Sequence[str]] = None):
         """
         :param str kms_key_name: Fully qualified name of the KMS key to use to encrypt this database. This key must exist
                in the same location as the Spanner Database.
+        :param Sequence[str] kms_key_names: Fully qualified name of the KMS keys to use to encrypt this database. The keys must exist
+               in the same locations as the Spanner Database.
         """
-        pulumi.set(__self__, "kms_key_name", kms_key_name)
+        if kms_key_name is not None:
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
+        if kms_key_names is not None:
+            pulumi.set(__self__, "kms_key_names", kms_key_names)
 
     @property
     @pulumi.getter(name="kmsKeyName")
-    def kms_key_name(self) -> str:
+    def kms_key_name(self) -> Optional[str]:
         """
         Fully qualified name of the KMS key to use to encrypt this database. This key must exist
         in the same location as the Spanner Database.
         """
         return pulumi.get(self, "kms_key_name")
+
+    @property
+    @pulumi.getter(name="kmsKeyNames")
+    def kms_key_names(self) -> Optional[Sequence[str]]:
+        """
+        Fully qualified name of the KMS keys to use to encrypt this database. The keys must exist
+        in the same locations as the Spanner Database.
+        """
+        return pulumi.get(self, "kms_key_names")
 
 
 @pulumi.output_type

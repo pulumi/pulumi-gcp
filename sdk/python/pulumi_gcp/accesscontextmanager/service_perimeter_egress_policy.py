@@ -179,6 +179,8 @@ class ServicePerimeterEgressPolicy(pulumi.CustomResource):
         To get more information about ServicePerimeterEgressPolicy, see:
 
         * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.servicePerimeters#egresspolicy)
+        * How-to Guides
+            * [Guide to Ingress and Egress Rules](https://cloud.google.com/vpc-service-controls/docs/ingress-egress-rules)
 
         ## Example Usage
 
@@ -217,6 +219,8 @@ class ServicePerimeterEgressPolicy(pulumi.CustomResource):
         To get more information about ServicePerimeterEgressPolicy, see:
 
         * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.servicePerimeters#egresspolicy)
+        * How-to Guides
+            * [Guide to Ingress and Egress Rules](https://cloud.google.com/vpc-service-controls/docs/ingress-egress-rules)
 
         ## Example Usage
 

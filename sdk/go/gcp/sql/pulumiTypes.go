@@ -3072,9 +3072,9 @@ type DatabaseInstanceSettingsIpConfiguration struct {
 	PrivateNetwork *string `pulumi:"privateNetwork"`
 	// PSC settings for a Cloud SQL instance.
 	PscConfigs []DatabaseInstanceSettingsIpConfigurationPscConfig `pulumi:"pscConfigs"`
-	// Specify how the server certificate's Certificate Authority is hosted. Supported value is `GOOGLE_MANAGED_INTERNAL_CA`.
+	// Specify how the server certificate's Certificate Authority is hosted. Supported values are `GOOGLE_MANAGED_INTERNAL_CA` and `GOOGLE_MANAGED_CAS_CA`.
 	ServerCaMode *string `pulumi:"serverCaMode"`
-	// Specify how SSL connection should be enforced in DB connections.
+	// Specify how SSL connection should be enforced in DB connections. Supported values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, and `TRUSTED_CLIENT_CERTIFICATE_REQUIRED` (not supported for SQL Server). See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
 	SslMode *string `pulumi:"sslMode"`
 }
 
@@ -3107,9 +3107,9 @@ type DatabaseInstanceSettingsIpConfigurationArgs struct {
 	PrivateNetwork pulumi.StringPtrInput `pulumi:"privateNetwork"`
 	// PSC settings for a Cloud SQL instance.
 	PscConfigs DatabaseInstanceSettingsIpConfigurationPscConfigArrayInput `pulumi:"pscConfigs"`
-	// Specify how the server certificate's Certificate Authority is hosted. Supported value is `GOOGLE_MANAGED_INTERNAL_CA`.
+	// Specify how the server certificate's Certificate Authority is hosted. Supported values are `GOOGLE_MANAGED_INTERNAL_CA` and `GOOGLE_MANAGED_CAS_CA`.
 	ServerCaMode pulumi.StringPtrInput `pulumi:"serverCaMode"`
-	// Specify how SSL connection should be enforced in DB connections.
+	// Specify how SSL connection should be enforced in DB connections. Supported values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, and `TRUSTED_CLIENT_CERTIFICATE_REQUIRED` (not supported for SQL Server). See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
 	SslMode pulumi.StringPtrInput `pulumi:"sslMode"`
 }
 
@@ -3231,12 +3231,12 @@ func (o DatabaseInstanceSettingsIpConfigurationOutput) PscConfigs() DatabaseInst
 	}).(DatabaseInstanceSettingsIpConfigurationPscConfigArrayOutput)
 }
 
-// Specify how the server certificate's Certificate Authority is hosted. Supported value is `GOOGLE_MANAGED_INTERNAL_CA`.
+// Specify how the server certificate's Certificate Authority is hosted. Supported values are `GOOGLE_MANAGED_INTERNAL_CA` and `GOOGLE_MANAGED_CAS_CA`.
 func (o DatabaseInstanceSettingsIpConfigurationOutput) ServerCaMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfiguration) *string { return v.ServerCaMode }).(pulumi.StringPtrOutput)
 }
 
-// Specify how SSL connection should be enforced in DB connections.
+// Specify how SSL connection should be enforced in DB connections. Supported values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, and `TRUSTED_CLIENT_CERTIFICATE_REQUIRED` (not supported for SQL Server). See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
 func (o DatabaseInstanceSettingsIpConfigurationOutput) SslMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfiguration) *string { return v.SslMode }).(pulumi.StringPtrOutput)
 }
@@ -3330,7 +3330,7 @@ func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) PscConfigs() DatabaseI
 	}).(DatabaseInstanceSettingsIpConfigurationPscConfigArrayOutput)
 }
 
-// Specify how the server certificate's Certificate Authority is hosted. Supported value is `GOOGLE_MANAGED_INTERNAL_CA`.
+// Specify how the server certificate's Certificate Authority is hosted. Supported values are `GOOGLE_MANAGED_INTERNAL_CA` and `GOOGLE_MANAGED_CAS_CA`.
 func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) ServerCaMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettingsIpConfiguration) *string {
 		if v == nil {
@@ -3340,7 +3340,7 @@ func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) ServerCaMode() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specify how SSL connection should be enforced in DB connections.
+// Specify how SSL connection should be enforced in DB connections. Supported values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, and `TRUSTED_CLIENT_CERTIFICATE_REQUIRED` (not supported for SQL Server). See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
 func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) SslMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettingsIpConfiguration) *string {
 		if v == nil {

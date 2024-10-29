@@ -97,6 +97,8 @@ type InstanceFromTemplate struct {
 	ConfidentialInstanceConfig InstanceFromTemplateConfidentialInstanceConfigOutput `pulumi:"confidentialInstanceConfig"`
 	// The CPU platform used by this instance.
 	CpuPlatform pulumi.StringOutput `pulumi:"cpuPlatform"`
+	// Creation timestamp in RFC3339 text format.
+	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// Current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING,
 	// SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance
 	// life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
@@ -118,6 +120,9 @@ type InstanceFromTemplate struct {
 	Hostname pulumi.StringOutput `pulumi:"hostname"`
 	// The server-assigned unique identifier of this instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
+	// Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
+	// default.
+	KeyRevocationActionType pulumi.StringOutput `pulumi:"keyRevocationActionType"`
 	// The unique fingerprint of the labels.
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
 	// A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
@@ -236,6 +241,8 @@ type instanceFromTemplateState struct {
 	ConfidentialInstanceConfig *InstanceFromTemplateConfidentialInstanceConfig `pulumi:"confidentialInstanceConfig"`
 	// The CPU platform used by this instance.
 	CpuPlatform *string `pulumi:"cpuPlatform"`
+	// Creation timestamp in RFC3339 text format.
+	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// Current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING,
 	// SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance
 	// life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
@@ -257,6 +264,9 @@ type instanceFromTemplateState struct {
 	Hostname *string `pulumi:"hostname"`
 	// The server-assigned unique identifier of this instance.
 	InstanceId *string `pulumi:"instanceId"`
+	// Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
+	// default.
+	KeyRevocationActionType *string `pulumi:"keyRevocationActionType"`
 	// The unique fingerprint of the labels.
 	LabelFingerprint *string `pulumi:"labelFingerprint"`
 	// A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
@@ -338,6 +348,8 @@ type InstanceFromTemplateState struct {
 	ConfidentialInstanceConfig InstanceFromTemplateConfidentialInstanceConfigPtrInput
 	// The CPU platform used by this instance.
 	CpuPlatform pulumi.StringPtrInput
+	// Creation timestamp in RFC3339 text format.
+	CreationTimestamp pulumi.StringPtrInput
 	// Current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING,
 	// SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance
 	// life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
@@ -359,6 +371,9 @@ type InstanceFromTemplateState struct {
 	Hostname pulumi.StringPtrInput
 	// The server-assigned unique identifier of this instance.
 	InstanceId pulumi.StringPtrInput
+	// Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
+	// default.
+	KeyRevocationActionType pulumi.StringPtrInput
 	// The unique fingerprint of the labels.
 	LabelFingerprint pulumi.StringPtrInput
 	// A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
@@ -456,6 +471,9 @@ type instanceFromTemplateArgs struct {
 	// labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
 	// exceed 253 characters. Changing this forces a new resource to be created.
 	Hostname *string `pulumi:"hostname"`
+	// Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
+	// default.
+	KeyRevocationActionType *string `pulumi:"keyRevocationActionType"`
 	// A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
 	// the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
 	// the resource.
@@ -540,6 +558,9 @@ type InstanceFromTemplateArgs struct {
 	// labels 1-63 characters long matching the regular expression a-z, concatenated with periods. The entire hostname must not
 	// exceed 253 characters. Changing this forces a new resource to be created.
 	Hostname pulumi.StringPtrInput
+	// Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
+	// default.
+	KeyRevocationActionType pulumi.StringPtrInput
 	// A set of key/value label pairs assigned to the instance. **Note**: This field is non-authoritative, and will only manage
 	// the labels present in your configuration. Please refer to the field 'effective_labels' for all of the labels present on
 	// the resource.
@@ -722,6 +743,11 @@ func (o InstanceFromTemplateOutput) CpuPlatform() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceFromTemplate) pulumi.StringOutput { return v.CpuPlatform }).(pulumi.StringOutput)
 }
 
+// Creation timestamp in RFC3339 text format.
+func (o InstanceFromTemplateOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceFromTemplate) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
 // Current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING,
 // SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance
 // life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
@@ -770,6 +796,12 @@ func (o InstanceFromTemplateOutput) Hostname() pulumi.StringOutput {
 // The server-assigned unique identifier of this instance.
 func (o InstanceFromTemplateOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceFromTemplate) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// Action to be taken when a customer's encryption key is revoked. Supports "STOP" and "NONE", with "NONE" being the
+// default.
+func (o InstanceFromTemplateOutput) KeyRevocationActionType() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceFromTemplate) pulumi.StringOutput { return v.KeyRevocationActionType }).(pulumi.StringOutput)
 }
 
 // The unique fingerprint of the labels.

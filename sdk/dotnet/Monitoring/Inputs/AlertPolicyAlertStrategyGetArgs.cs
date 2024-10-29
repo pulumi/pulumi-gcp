@@ -32,6 +32,19 @@ namespace Pulumi.Gcp.Monitoring.Inputs
             set => _notificationChannelStrategies = value;
         }
 
+        [Input("notificationPrompts")]
+        private InputList<string>? _notificationPrompts;
+
+        /// <summary>
+        /// Control when notifications will be sent out.
+        /// Each value may be one of: `NOTIFICATION_PROMPT_UNSPECIFIED`, `OPENED`, `CLOSED`.
+        /// </summary>
+        public InputList<string> NotificationPrompts
+        {
+            get => _notificationPrompts ?? (_notificationPrompts = new InputList<string>());
+            set => _notificationPrompts = value;
+        }
+
         /// <summary>
         /// Required for alert policies with a LogMatch condition.
         /// This limit is not implemented for alert policies that are not log-based.

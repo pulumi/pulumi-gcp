@@ -233,6 +233,12 @@ namespace Pulumi.Gcp.Compute
         public Output<string> CpuPlatform { get; private set; } = null!;
 
         /// <summary>
+        /// Creation timestamp in RFC3339 text format.
+        /// </summary>
+        [Output("creationTimestamp")]
+        public Output<string> CreationTimestamp { get; private set; } = null!;
+
+        /// <summary>
         /// The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
         /// </summary>
         [Output("currentStatus")]
@@ -293,6 +299,12 @@ namespace Pulumi.Gcp.Compute
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
+        /// Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
+        /// </summary>
+        [Output("keyRevocationActionType")]
+        public Output<string?> KeyRevocationActionType { get; private set; } = null!;
+
+        /// <summary>
         /// The unique fingerprint of the labels.
         /// </summary>
         [Output("labelFingerprint")]
@@ -312,6 +324,8 @@ namespace Pulumi.Gcp.Compute
         /// **Note:** If you want to update this value (resize the VM) after initial creation, you must set `allow_stopping_for_update` to `true`.
         /// 
         /// [Custom machine types](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
+        /// Because of current API limitations some custom machine types may get converted to different machine types (such as an equivalent standard type) and cause non-empty plans in your configuration. Use
+        /// `lifecycle.ignore_changes` on `machine_type` in these cases.
         /// 
         /// There is a limit of 6.5 GB per CPU unless you add [extended memory](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#extendedmemory). You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
         /// </summary>
@@ -630,6 +644,12 @@ namespace Pulumi.Gcp.Compute
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
 
+        /// <summary>
+        /// Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
+        /// </summary>
+        [Input("keyRevocationActionType")]
+        public Input<string>? KeyRevocationActionType { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -650,6 +670,8 @@ namespace Pulumi.Gcp.Compute
         /// **Note:** If you want to update this value (resize the VM) after initial creation, you must set `allow_stopping_for_update` to `true`.
         /// 
         /// [Custom machine types](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
+        /// Because of current API limitations some custom machine types may get converted to different machine types (such as an equivalent standard type) and cause non-empty plans in your configuration. Use
+        /// `lifecycle.ignore_changes` on `machine_type` in these cases.
         /// 
         /// There is a limit of 6.5 GB per CPU unless you add [extended memory](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#extendedmemory). You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
         /// </summary>
@@ -890,6 +912,12 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? CpuPlatform { get; set; }
 
         /// <summary>
+        /// Creation timestamp in RFC3339 text format.
+        /// </summary>
+        [Input("creationTimestamp")]
+        public Input<string>? CreationTimestamp { get; set; }
+
+        /// <summary>
         /// The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
         /// </summary>
         [Input("currentStatus")]
@@ -966,6 +994,12 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
+        /// Action to be taken when a customer's encryption key is revoked. Supports `STOP` and `NONE`, with `NONE` being the default.
+        /// </summary>
+        [Input("keyRevocationActionType")]
+        public Input<string>? KeyRevocationActionType { get; set; }
+
+        /// <summary>
         /// The unique fingerprint of the labels.
         /// </summary>
         [Input("labelFingerprint")]
@@ -991,6 +1025,8 @@ namespace Pulumi.Gcp.Compute
         /// **Note:** If you want to update this value (resize the VM) after initial creation, you must set `allow_stopping_for_update` to `true`.
         /// 
         /// [Custom machine types](https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types) can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
+        /// Because of current API limitations some custom machine types may get converted to different machine types (such as an equivalent standard type) and cause non-empty plans in your configuration. Use
+        /// `lifecycle.ignore_changes` on `machine_type` in these cases.
         /// 
         /// There is a limit of 6.5 GB per CPU unless you add [extended memory](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#extendedmemory). You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
         /// </summary>

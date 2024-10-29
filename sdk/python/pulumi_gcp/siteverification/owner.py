@@ -115,14 +115,6 @@ class Owner(pulumi.CustomResource):
                  web_resource_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## subcategory: "Site Verification"
-
-        description: |-
-          Manages additional owners on verified web resources.
-        ---
-
-        # siteverification.Owner
-
         An owner is an additional user that may manage a verified web site in the
         [Google Search Console](https://www.google.com/webmasters/tools/). There
         are two types of web resource owners:
@@ -221,14 +213,6 @@ class Owner(pulumi.CustomResource):
                  args: OwnerArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## subcategory: "Site Verification"
-
-        description: |-
-          Manages additional owners on verified web resources.
-        ---
-
-        # siteverification.Owner
-
         An owner is an additional user that may manage a verified web site in the
         [Google Search Console](https://www.google.com/webmasters/tools/). There
         are two types of web resource owners:

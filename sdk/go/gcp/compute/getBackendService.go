@@ -94,13 +94,14 @@ type LookupBackendServiceResult struct {
 	HealthChecks []string               `pulumi:"healthChecks"`
 	Iaps         []GetBackendServiceIap `pulumi:"iaps"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                  string                              `pulumi:"id"`
-	LoadBalancingScheme string                              `pulumi:"loadBalancingScheme"`
-	LocalityLbPolicies  []GetBackendServiceLocalityLbPolicy `pulumi:"localityLbPolicies"`
-	LocalityLbPolicy    string                              `pulumi:"localityLbPolicy"`
-	LogConfigs          []GetBackendServiceLogConfig        `pulumi:"logConfigs"`
-	Name                string                              `pulumi:"name"`
-	OutlierDetections   []GetBackendServiceOutlierDetection `pulumi:"outlierDetections"`
+	Id                       string                              `pulumi:"id"`
+	IpAddressSelectionPolicy string                              `pulumi:"ipAddressSelectionPolicy"`
+	LoadBalancingScheme      string                              `pulumi:"loadBalancingScheme"`
+	LocalityLbPolicies       []GetBackendServiceLocalityLbPolicy `pulumi:"localityLbPolicies"`
+	LocalityLbPolicy         string                              `pulumi:"localityLbPolicy"`
+	LogConfigs               []GetBackendServiceLogConfig        `pulumi:"logConfigs"`
+	Name                     string                              `pulumi:"name"`
+	OutlierDetections        []GetBackendServiceOutlierDetection `pulumi:"outlierDetections"`
 	// The name of a service that has been added to an instance group in this backend.
 	PortName string  `pulumi:"portName"`
 	Project  *string `pulumi:"project"`
@@ -244,6 +245,10 @@ func (o LookupBackendServiceResultOutput) Iaps() GetBackendServiceIapArrayOutput
 // The provider-assigned unique ID for this managed resource.
 func (o LookupBackendServiceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackendServiceResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupBackendServiceResultOutput) IpAddressSelectionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackendServiceResult) string { return v.IpAddressSelectionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupBackendServiceResultOutput) LoadBalancingScheme() pulumi.StringOutput {

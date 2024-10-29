@@ -168,10 +168,15 @@ class BackupScheduleSpecCronSpecArgs:
 
 if not MYPY:
     class DatabaseEncryptionConfigArgsDict(TypedDict):
-        kms_key_name: pulumi.Input[str]
+        kms_key_name: NotRequired[pulumi.Input[str]]
         """
         Fully qualified name of the KMS key to use to encrypt this database. This key must exist
         in the same location as the Spanner Database.
+        """
+        kms_key_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Fully qualified name of the KMS keys to use to encrypt this database. The keys must exist
+        in the same locations as the Spanner Database.
         """
 elif False:
     DatabaseEncryptionConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -179,16 +184,22 @@ elif False:
 @pulumi.input_type
 class DatabaseEncryptionConfigArgs:
     def __init__(__self__, *,
-                 kms_key_name: pulumi.Input[str]):
+                 kms_key_name: Optional[pulumi.Input[str]] = None,
+                 kms_key_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] kms_key_name: Fully qualified name of the KMS key to use to encrypt this database. This key must exist
                in the same location as the Spanner Database.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] kms_key_names: Fully qualified name of the KMS keys to use to encrypt this database. The keys must exist
+               in the same locations as the Spanner Database.
         """
-        pulumi.set(__self__, "kms_key_name", kms_key_name)
+        if kms_key_name is not None:
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
+        if kms_key_names is not None:
+            pulumi.set(__self__, "kms_key_names", kms_key_names)
 
     @property
     @pulumi.getter(name="kmsKeyName")
-    def kms_key_name(self) -> pulumi.Input[str]:
+    def kms_key_name(self) -> Optional[pulumi.Input[str]]:
         """
         Fully qualified name of the KMS key to use to encrypt this database. This key must exist
         in the same location as the Spanner Database.
@@ -196,8 +207,21 @@ class DatabaseEncryptionConfigArgs:
         return pulumi.get(self, "kms_key_name")
 
     @kms_key_name.setter
-    def kms_key_name(self, value: pulumi.Input[str]):
+    def kms_key_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "kms_key_name", value)
+
+    @property
+    @pulumi.getter(name="kmsKeyNames")
+    def kms_key_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Fully qualified name of the KMS keys to use to encrypt this database. The keys must exist
+        in the same locations as the Spanner Database.
+        """
+        return pulumi.get(self, "kms_key_names")
+
+    @kms_key_names.setter
+    def kms_key_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "kms_key_names", value)
 
 
 if not MYPY:

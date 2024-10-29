@@ -35,7 +35,6 @@ import * as utilities from "../utilities";
  *             resourceLink: pulumi.interpolate`//container.googleapis.com/${cluster.id}`,
  *         },
  *     },
- *     description: "Membership",
  * });
  * const feature = new gcp.gkehub.Feature("feature", {
  *     name: "multiclusteringress",
