@@ -561,7 +561,7 @@ class Function(pulumi.CustomResource):
                 "runtime": "nodejs16",
                 "entry_point": "helloPubSub",
                 "environment_variables": {
-                    "buil_d__confi_g__test": "build_test",
+                    "BUILD_CONFIG_TEST": "build_test",
                 },
                 "source": {
                     "storage_source": {
@@ -578,8 +578,8 @@ class Function(pulumi.CustomResource):
                 "max_instance_request_concurrency": 80,
                 "available_cpu": "4",
                 "environment_variables": {
-                    "servic_e__confi_g__test": "config_test",
-                    "servic_e__confi_g__dif_f__test": account.email,
+                    "SERVICE_CONFIG_TEST": "config_test",
+                    "SERVICE_CONFIG_DIFF_TEST": account.email,
                 },
                 "ingress_settings": "ALLOW_INTERNAL_ONLY",
                 "all_traffic_on_latest_revision": True,
@@ -709,7 +709,7 @@ class Function(pulumi.CustomResource):
                 "runtime": "nodejs12",
                 "entry_point": "entryPoint",
                 "environment_variables": {
-                    "buil_d__confi_g__test": "build_test",
+                    "BUILD_CONFIG_TEST": "build_test",
                 },
                 "source": {
                     "storage_source": {
@@ -724,7 +724,7 @@ class Function(pulumi.CustomResource):
                 "available_memory": "256M",
                 "timeout_seconds": 60,
                 "environment_variables": {
-                    "servic_e__confi_g__test": "config_test",
+                    "SERVICE_CONFIG_TEST": "config_test",
                 },
                 "ingress_settings": "ALLOW_INTERNAL_ONLY",
                 "all_traffic_on_latest_revision": True,
@@ -795,7 +795,7 @@ class Function(pulumi.CustomResource):
                 "runtime": "nodejs12",
                 "entry_point": "entryPoint",
                 "environment_variables": {
-                    "buil_d__confi_g__test": "build_test",
+                    "BUILD_CONFIG_TEST": "build_test",
                 },
                 "source": {
                     "storage_source": {
@@ -810,7 +810,7 @@ class Function(pulumi.CustomResource):
                 "available_memory": "256M",
                 "timeout_seconds": 60,
                 "environment_variables": {
-                    "servic_e__confi_g__test": "config_test",
+                    "SERVICE_CONFIG_TEST": "config_test",
                 },
                 "ingress_settings": "ALLOW_INTERNAL_ONLY",
                 "all_traffic_on_latest_revision": True,
@@ -1150,7 +1150,7 @@ class Function(pulumi.CustomResource):
                 "runtime": "nodejs16",
                 "entry_point": "helloPubSub",
                 "environment_variables": {
-                    "buil_d__confi_g__test": "build_test",
+                    "BUILD_CONFIG_TEST": "build_test",
                 },
                 "source": {
                     "storage_source": {
@@ -1168,7 +1168,7 @@ class Function(pulumi.CustomResource):
                 "max_instance_request_concurrency": 80,
                 "available_cpu": "4",
                 "environment_variables": {
-                    "servic_e__confi_g__test": "config_test",
+                    "SERVICE_CONFIG_TEST": "config_test",
                 },
                 "ingress_settings": "ALLOW_INTERNAL_ONLY",
                 "all_traffic_on_latest_revision": True,
@@ -1208,7 +1208,7 @@ class Function(pulumi.CustomResource):
                 "runtime": "nodejs16",
                 "entry_point": "helloPubSub",
                 "environment_variables": {
-                    "buil_d__confi_g__test": "build_test",
+                    "BUILD_CONFIG_TEST": "build_test",
                 },
                 "source": {
                     "storage_source": {
@@ -1226,7 +1226,7 @@ class Function(pulumi.CustomResource):
                 "max_instance_request_concurrency": 80,
                 "available_cpu": "4",
                 "environment_variables": {
-                    "servic_e__confi_g__test": "config_test",
+                    "SERVICE_CONFIG_TEST": "config_test",
                 },
                 "ingress_settings": "ALLOW_INTERNAL_ONLY",
                 "all_traffic_on_latest_revision": True,
@@ -1367,7 +1367,7 @@ class Function(pulumi.CustomResource):
                 "runtime": "nodejs16",
                 "entry_point": "helloPubSub",
                 "environment_variables": {
-                    "buil_d__confi_g__test": "build_test",
+                    "BUILD_CONFIG_TEST": "build_test",
                 },
                 "source": {
                     "storage_source": {
@@ -1384,8 +1384,8 @@ class Function(pulumi.CustomResource):
                 "max_instance_request_concurrency": 80,
                 "available_cpu": "4",
                 "environment_variables": {
-                    "servic_e__confi_g__test": "config_test",
-                    "servic_e__confi_g__dif_f__test": account.email,
+                    "SERVICE_CONFIG_TEST": "config_test",
+                    "SERVICE_CONFIG_DIFF_TEST": account.email,
                 },
                 "ingress_settings": "ALLOW_INTERNAL_ONLY",
                 "all_traffic_on_latest_revision": True,
@@ -1515,7 +1515,7 @@ class Function(pulumi.CustomResource):
                 "runtime": "nodejs12",
                 "entry_point": "entryPoint",
                 "environment_variables": {
-                    "buil_d__confi_g__test": "build_test",
+                    "BUILD_CONFIG_TEST": "build_test",
                 },
                 "source": {
                     "storage_source": {
@@ -1530,7 +1530,7 @@ class Function(pulumi.CustomResource):
                 "available_memory": "256M",
                 "timeout_seconds": 60,
                 "environment_variables": {
-                    "servic_e__confi_g__test": "config_test",
+                    "SERVICE_CONFIG_TEST": "config_test",
                 },
                 "ingress_settings": "ALLOW_INTERNAL_ONLY",
                 "all_traffic_on_latest_revision": True,
@@ -1601,7 +1601,7 @@ class Function(pulumi.CustomResource):
                 "runtime": "nodejs12",
                 "entry_point": "entryPoint",
                 "environment_variables": {
-                    "buil_d__confi_g__test": "build_test",
+                    "BUILD_CONFIG_TEST": "build_test",
                 },
                 "source": {
                     "storage_source": {
@@ -1616,7 +1616,7 @@ class Function(pulumi.CustomResource):
                 "available_memory": "256M",
                 "timeout_seconds": 60,
                 "environment_variables": {
-                    "servic_e__confi_g__test": "config_test",
+                    "SERVICE_CONFIG_TEST": "config_test",
                 },
                 "ingress_settings": "ALLOW_INTERNAL_ONLY",
                 "all_traffic_on_latest_revision": True,
@@ -1956,7 +1956,7 @@ class Function(pulumi.CustomResource):
                 "runtime": "nodejs16",
                 "entry_point": "helloPubSub",
                 "environment_variables": {
-                    "buil_d__confi_g__test": "build_test",
+                    "BUILD_CONFIG_TEST": "build_test",
                 },
                 "source": {
                     "storage_source": {
@@ -1974,7 +1974,7 @@ class Function(pulumi.CustomResource):
                 "max_instance_request_concurrency": 80,
                 "available_cpu": "4",
                 "environment_variables": {
-                    "servic_e__confi_g__test": "config_test",
+                    "SERVICE_CONFIG_TEST": "config_test",
                 },
                 "ingress_settings": "ALLOW_INTERNAL_ONLY",
                 "all_traffic_on_latest_revision": True,
@@ -2014,7 +2014,7 @@ class Function(pulumi.CustomResource):
                 "runtime": "nodejs16",
                 "entry_point": "helloPubSub",
                 "environment_variables": {
-                    "buil_d__confi_g__test": "build_test",
+                    "BUILD_CONFIG_TEST": "build_test",
                 },
                 "source": {
                     "storage_source": {
@@ -2032,7 +2032,7 @@ class Function(pulumi.CustomResource):
                 "max_instance_request_concurrency": 80,
                 "available_cpu": "4",
                 "environment_variables": {
-                    "servic_e__confi_g__test": "config_test",
+                    "SERVICE_CONFIG_TEST": "config_test",
                 },
                 "ingress_settings": "ALLOW_INTERNAL_ONLY",
                 "all_traffic_on_latest_revision": True,
