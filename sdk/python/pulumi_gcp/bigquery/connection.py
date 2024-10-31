@@ -708,7 +708,7 @@ class Connection(pulumi.CustomResource):
             cluster_config={
                 "software_config": {
                     "override_properties": {
-                        "dataproc_dataproc_allow_zero_workers": "true",
+                        "dataproc:dataproc.allow.zero.workers": "true",
                     },
                 },
                 "master_config": {
@@ -1014,7 +1014,7 @@ class Connection(pulumi.CustomResource):
             cluster_config={
                 "software_config": {
                     "override_properties": {
-                        "dataproc_dataproc_allow_zero_workers": "true",
+                        "dataproc:dataproc.allow.zero.workers": "true",
                     },
                 },
                 "master_config": {
