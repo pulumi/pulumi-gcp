@@ -10,10 +10,10 @@ require (
 	github.com/hashicorp/terraform-provider-google-beta v0.0.0
 	github.com/hexops/autogold/v2 v2.2.1
 	github.com/pulumi/providertest v0.1.3
-	github.com/pulumi/pulumi-terraform-bridge/pf v0.46.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.93.1
-	github.com/pulumi/pulumi/pkg/v3 v3.136.1
-	github.com/pulumi/pulumi/sdk/v3 v3.136.1
+	github.com/pulumi/pulumi-terraform-bridge/pf v0.47.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.94.0
+	github.com/pulumi/pulumi/pkg/v3 v3.137.0
+	github.com/pulumi/pulumi/sdk/v3 v3.137.0
 	github.com/stretchr/testify v1.9.0
 	google.golang.org/api v0.201.0
 	sourcegraph.com/sourcegraph/appdash v0.0.0-20211028080628-e2786a622600
@@ -136,7 +136,7 @@ require (
 	github.com/hashicorp/go-getter v1.7.5 // indirect
 	github.com/hashicorp/go-hclog v1.6.3 // indirect
 	github.com/hashicorp/go-multierror v1.1.1 // indirect
-	github.com/hashicorp/go-plugin v1.6.1 // indirect
+	github.com/hashicorp/go-plugin v1.6.2 // indirect
 	github.com/hashicorp/go-retryablehttp v0.7.7 // indirect
 	github.com/hashicorp/go-rootcerts v1.0.2 // indirect
 	github.com/hashicorp/go-safetemp v1.0.0 // indirect
@@ -154,8 +154,9 @@ require (
 	github.com/hashicorp/terraform-json v0.22.1 // indirect
 	github.com/hashicorp/terraform-plugin-framework v1.12.0 // indirect
 	github.com/hashicorp/terraform-plugin-framework-validators v0.12.0 // indirect
-	github.com/hashicorp/terraform-plugin-go v0.24.0 // indirect
+	github.com/hashicorp/terraform-plugin-go v0.25.0 // indirect
 	github.com/hashicorp/terraform-plugin-log v0.9.0 // indirect
+	github.com/hashicorp/terraform-plugin-mux v0.17.0 // indirect
 	github.com/hashicorp/terraform-plugin-testing v1.5.1 // indirect
 	github.com/hashicorp/terraform-registry-address v0.2.3 // indirect
 	github.com/hashicorp/terraform-svchost v0.1.1 // indirect
@@ -212,7 +213,7 @@ require (
 	github.com/pulumi/esc v0.10.0 // indirect
 	github.com/pulumi/inflector v0.1.1 // indirect
 	github.com/pulumi/pulumi-java/pkg v0.16.1 // indirect
-	github.com/pulumi/pulumi-yaml v1.10.3 // indirect
+	github.com/pulumi/pulumi-yaml v1.11.1 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.2 // indirect
 	github.com/rivo/uniseg v0.4.4 // indirect
@@ -281,3 +282,7 @@ require (
 	lukechampine.com/frand v1.4.2 // indirect
 	mvdan.cc/gofumpt v0.5.0 // indirect
 )
+
+replace github.com/pulumi/pulumi/pkg/v3 => github.com/pulumi/pulumi/pkg/v3 v3.137.1-0.20241031143109-36aa5f17c20c
+
+replace github.com/pulumi/pulumi/sdk/v3 => github.com/pulumi/pulumi/sdk/v3 v3.137.1-0.20241031143109-36aa5f17c20c
