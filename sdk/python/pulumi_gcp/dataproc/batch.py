@@ -642,8 +642,8 @@ class Batch(pulumi.CustomResource):
             },
             runtime_config={
                 "properties": {
-                    "spark_dynamic_allocation_enabled": "false",
-                    "spark_executor_instances": "2",
+                    "spark.dynamicAllocation.enabled": "false",
+                    "spark.executor.instances": "2",
                 },
             },
             environment_config={
@@ -701,8 +701,8 @@ class Batch(pulumi.CustomResource):
             cluster_config={
                 "software_config": {
                     "override_properties": {
-                        "dataproc_dataproc_allow_zero_workers": "true",
-                        "spark_spark_history_fs_log_directory": bucket.name.apply(lambda name: f"gs://{name}/*/spark-job-history"),
+                        "dataproc:dataproc.allow.zero.workers": "true",
+                        "spark:spark.history.fs.logDirectory": bucket.name.apply(lambda name: f"gs://{name}/*/spark-job-history"),
                     },
                 },
                 "endpoint_config": {
@@ -727,8 +727,8 @@ class Batch(pulumi.CustomResource):
             },
             runtime_config={
                 "properties": {
-                    "spark_dynamic_allocation_enabled": "false",
-                    "spark_executor_instances": "2",
+                    "spark.dynamicAllocation.enabled": "false",
+                    "spark.executor.instances": "2",
                 },
                 "version": "2.2",
             },
@@ -766,8 +766,8 @@ class Batch(pulumi.CustomResource):
             location="us-central1",
             runtime_config={
                 "properties": {
-                    "spark_dynamic_allocation_enabled": "false",
-                    "spark_executor_instances": "2",
+                    "spark.dynamicAllocation.enabled": "false",
+                    "spark.executor.instances": "2",
                 },
             },
             environment_config={
@@ -794,8 +794,8 @@ class Batch(pulumi.CustomResource):
             location="us-central1",
             runtime_config={
                 "properties": {
-                    "spark_dynamic_allocation_enabled": "false",
-                    "spark_executor_instances": "2",
+                    "spark.dynamicAllocation.enabled": "false",
+                    "spark.executor.instances": "2",
                 },
             },
             environment_config={
@@ -830,8 +830,8 @@ class Batch(pulumi.CustomResource):
             },
             runtime_config={
                 "properties": {
-                    "spark_dynamic_allocation_enabled": "false",
-                    "spark_executor_instances": "2",
+                    "spark.dynamicAllocation.enabled": "false",
+                    "spark.executor.instances": "2",
                 },
             },
             environment_config={
@@ -927,8 +927,8 @@ class Batch(pulumi.CustomResource):
             },
             runtime_config={
                 "properties": {
-                    "spark_dynamic_allocation_enabled": "false",
-                    "spark_executor_instances": "2",
+                    "spark.dynamicAllocation.enabled": "false",
+                    "spark.executor.instances": "2",
                 },
             },
             environment_config={
@@ -986,8 +986,8 @@ class Batch(pulumi.CustomResource):
             cluster_config={
                 "software_config": {
                     "override_properties": {
-                        "dataproc_dataproc_allow_zero_workers": "true",
-                        "spark_spark_history_fs_log_directory": bucket.name.apply(lambda name: f"gs://{name}/*/spark-job-history"),
+                        "dataproc:dataproc.allow.zero.workers": "true",
+                        "spark:spark.history.fs.logDirectory": bucket.name.apply(lambda name: f"gs://{name}/*/spark-job-history"),
                     },
                 },
                 "endpoint_config": {
@@ -1012,8 +1012,8 @@ class Batch(pulumi.CustomResource):
             },
             runtime_config={
                 "properties": {
-                    "spark_dynamic_allocation_enabled": "false",
-                    "spark_executor_instances": "2",
+                    "spark.dynamicAllocation.enabled": "false",
+                    "spark.executor.instances": "2",
                 },
                 "version": "2.2",
             },
@@ -1051,8 +1051,8 @@ class Batch(pulumi.CustomResource):
             location="us-central1",
             runtime_config={
                 "properties": {
-                    "spark_dynamic_allocation_enabled": "false",
-                    "spark_executor_instances": "2",
+                    "spark.dynamicAllocation.enabled": "false",
+                    "spark.executor.instances": "2",
                 },
             },
             environment_config={
@@ -1079,8 +1079,8 @@ class Batch(pulumi.CustomResource):
             location="us-central1",
             runtime_config={
                 "properties": {
-                    "spark_dynamic_allocation_enabled": "false",
-                    "spark_executor_instances": "2",
+                    "spark.dynamicAllocation.enabled": "false",
+                    "spark.executor.instances": "2",
                 },
             },
             environment_config={
@@ -1115,8 +1115,8 @@ class Batch(pulumi.CustomResource):
             },
             runtime_config={
                 "properties": {
-                    "spark_dynamic_allocation_enabled": "false",
-                    "spark_executor_instances": "2",
+                    "spark.dynamicAllocation.enabled": "false",
+                    "spark.executor.instances": "2",
                 },
             },
             environment_config={
