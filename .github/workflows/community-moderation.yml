@@ -9,6 +9,8 @@ jobs:
     steps:
     - name: Checkout Repo
       uses: actions/checkout@v4
+      with:
+        persist-credentials: false
     - id: schema_changed
       name: Check for diff in schema
       uses: dorny/paths-filter@v2

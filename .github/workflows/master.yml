@@ -64,6 +64,8 @@ jobs:
         swap-storage: false
     - name: Checkout Repo
       uses: actions/checkout@v4
+      with:
+        persist-credentials: false
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v4
       with:
@@ -144,6 +146,8 @@ jobs:
     steps:
     - name: Checkout Repo
       uses: actions/checkout@v4
+      with:
+        persist-credentials: false
     - name: Setup tools
       uses: ./.github/actions/setup-tools
       with:

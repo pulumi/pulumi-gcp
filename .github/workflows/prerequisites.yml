@@ -52,6 +52,8 @@ jobs:
     steps:
     - name: Checkout Repo
       uses: actions/checkout@v4
+      with:
+        persist-credentials: false
     - uses: pulumi/provider-version-action@v1
       id: provider-version
       with:
@@ -84,7 +86,7 @@ jobs:
         EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
         {
           echo "SCHEMA_CHANGES<<$EOF";
-          schema-tools compare -r github://api.github.com/pulumi -p gcp -o ${{ inputs.default_branch }} -n --local-path=provider/cmd/pulumi-resource-gcp/schema.json;
+          schema-tools compare -r github://api.github.com/pulumi -p gcp -o "${{ inputs.default_branch }}" -n --local-path=provider/cmd/pulumi-resource-gcp/schema.json;
           echo "$EOF";
         } >> "$GITHUB_ENV"
     - if: inputs.is_pr && inputs.is_automated == false
