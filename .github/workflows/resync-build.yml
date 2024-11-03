@@ -34,11 +34,15 @@ jobs:
     steps:
     - name: Checkout Repo
       uses: actions/checkout@v4
+      with:
+        # Persist credentials so we can push a new branch.
+        persist-credentials: true
     - name: Checkout repo
       uses: actions/checkout@v4
       with:
         path: ci-mgmt
         repository: pulumi/ci-mgmt
+        persist-credentials: false
     - id: run-url
       name: Create URL to the run output
       run:  echo "run-url=https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" >> "$GITHUB_OUTPUT"

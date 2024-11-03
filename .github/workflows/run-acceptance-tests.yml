@@ -138,6 +138,7 @@ jobs:
       uses: actions/checkout@v4
       with:
         ref: ${{ env.PR_COMMIT_SHA }}
+        persist-credentials: false
     - name: Checkout p/examples
       if: matrix.testTarget == 'pulumiExamples'
       uses: actions/checkout@v4

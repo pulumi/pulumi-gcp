@@ -55,6 +55,8 @@ jobs:
       run: echo "Can't skip Go SDK for stable releases. This is likely a bug in the calling workflow." && exit 1
     - name: Checkout Repo
       uses: actions/checkout@v4
+      with:
+        persist-credentials: false
     - name: Setup tools
       uses: ./.github/actions/setup-tools
       with:
@@ -80,7 +82,7 @@ jobs:
         merge-multiple: true
     - name: Calculate checksums
       working-directory: dist
-      run: shasum ./*.tar.gz > pulumi-gcp_${{ inputs.version }}_checksums.txt
+      run: shasum ./*.tar.gz > "pulumi-gcp_${{ inputs.version }}_checksums.txt"
     - name: Get Schema Change Summary
       id: schema-summary
       shell: bash
@@ -117,6 +119,9 @@ jobs:
     steps:
     - name: Checkout Repo
       uses: actions/checkout@v4
+      with:
+        # Persist credentials so we can push back to the repo
+        persist-credentials: true
     - name: Setup tools
       uses: ./.github/actions/setup-tools
       with:
@@ -174,6 +179,8 @@ jobs:
     steps:
     - name: Checkout Repo
       uses: actions/checkout@v4
+      with:
+        persist-credentials: false
     - name: Clean up release labels
       uses: pulumi/action-release-by-pr-label@main
       with:
