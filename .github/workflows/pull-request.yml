@@ -33,6 +33,8 @@ jobs:
     steps:
     - name: Checkout Repo
       uses: actions/checkout@v4
+      with:
+        persist-credentials: false
     - name: Comment PR
       uses: thollander/actions-comment-pull-request@v2
       with:
