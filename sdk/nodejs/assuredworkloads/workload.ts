@@ -42,6 +42,9 @@ import * as utilities from "../utilities";
  *         },
  *     ],
  *     violationNotificationsEnabled: true,
+ *     workloadOptions: {
+ *         kajEnrollmentType: "KEY_ACCESS_TRANSPARENCY_OFF",
+ *     },
  *     labels: {
  *         "label-one": "value-one",
  *     },
@@ -268,6 +271,10 @@ export class Workload extends pulumi.CustomResource {
      * Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
      */
     public readonly violationNotificationsEnabled!: pulumi.Output<boolean>;
+    /**
+     * Optional. Used to specify certain options for a workload during workload creation - currently only supporting KAT Optionality for Regional Controls workloads.
+     */
+    public readonly workloadOptions!: pulumi.Output<outputs.assuredworkloads.WorkloadWorkloadOptions | undefined>;
 
     /**
      * Create a Workload resource with the given unique name, arguments, and options.
@@ -306,6 +313,7 @@ export class Workload extends pulumi.CustomResource {
             resourceInputs["resources"] = state ? state.resources : undefined;
             resourceInputs["saaEnrollmentResponses"] = state ? state.saaEnrollmentResponses : undefined;
             resourceInputs["violationNotificationsEnabled"] = state ? state.violationNotificationsEnabled : undefined;
+            resourceInputs["workloadOptions"] = state ? state.workloadOptions : undefined;
         } else {
             const args = argsOrState as WorkloadArgs | undefined;
             if ((!args || args.complianceRegime === undefined) && !opts.urn) {
@@ -334,6 +342,7 @@ export class Workload extends pulumi.CustomResource {
             resourceInputs["provisionedResourcesParent"] = args ? args.provisionedResourcesParent : undefined;
             resourceInputs["resourceSettings"] = args ? args.resourceSettings : undefined;
             resourceInputs["violationNotificationsEnabled"] = args ? args.violationNotificationsEnabled : undefined;
+            resourceInputs["workloadOptions"] = args ? args.workloadOptions : undefined;
             resourceInputs["complianceStatuses"] = undefined /*out*/;
             resourceInputs["compliantButDisallowedServices"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -459,6 +468,10 @@ export interface WorkloadState {
      * Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
      */
     violationNotificationsEnabled?: pulumi.Input<boolean>;
+    /**
+     * Optional. Used to specify certain options for a workload during workload creation - currently only supporting KAT Optionality for Regional Controls workloads.
+     */
+    workloadOptions?: pulumi.Input<inputs.assuredworkloads.WorkloadWorkloadOptions>;
 }
 
 /**
@@ -528,4 +541,8 @@ export interface WorkloadArgs {
      * Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
      */
     violationNotificationsEnabled?: pulumi.Input<boolean>;
+    /**
+     * Optional. Used to specify certain options for a workload during workload creation - currently only supporting KAT Optionality for Regional Controls workloads.
+     */
+    workloadOptions?: pulumi.Input<inputs.assuredworkloads.WorkloadWorkloadOptions>;
 }

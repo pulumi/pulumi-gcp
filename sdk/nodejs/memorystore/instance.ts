@@ -97,6 +97,7 @@ import * as utilities from "../utilities";
  *     },
  *     engineVersion: "VALKEY_7_2",
  *     deletionProtectionEnabled: false,
+ *     mode: "CLUSTER",
  *     persistenceConfig: {
  *         mode: "RDB",
  *         rdbConfig: {
@@ -239,6 +240,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
+     * Endpoints for the instance.
+     */
+    public /*out*/ readonly endpoints!: pulumi.Output<any[][]>;
+    /**
      * Optional. User-provided engine configurations for the instance.
      */
     public readonly engineConfigs!: pulumi.Output<{[key: string]: string} | undefined>;
@@ -270,6 +275,14 @@ export class Instance extends pulumi.CustomResource {
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `memorystore.googleapis.com/CertificateAuthority`.
      */
     public readonly location!: pulumi.Output<string>;
+    /**
+     * Optional. Standalone or cluster.
+     * Possible values:
+     * CLUSTER
+     * STANDALONE
+     * Possible values are: `CLUSTER`, `STANDALONE`.
+     */
+    public readonly mode!: pulumi.Output<string>;
     /**
      * Identifier. Unique name of the instance.
      * Format: projects/{project}/locations/{location}/instances/{instance}
@@ -371,11 +384,13 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["desiredPscAutoConnections"] = state ? state.desiredPscAutoConnections : undefined;
             resourceInputs["discoveryEndpoints"] = state ? state.discoveryEndpoints : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
+            resourceInputs["endpoints"] = state ? state.endpoints : undefined;
             resourceInputs["engineConfigs"] = state ? state.engineConfigs : undefined;
             resourceInputs["engineVersion"] = state ? state.engineVersion : undefined;
             resourceInputs["instanceId"] = state ? state.instanceId : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["mode"] = state ? state.mode : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["nodeConfigs"] = state ? state.nodeConfigs : undefined;
             resourceInputs["nodeType"] = state ? state.nodeType : undefined;
@@ -413,6 +428,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["mode"] = args ? args.mode : undefined;
             resourceInputs["nodeType"] = args ? args.nodeType : undefined;
             resourceInputs["persistenceConfig"] = args ? args.persistenceConfig : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -423,6 +439,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["discoveryEndpoints"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["endpoints"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["nodeConfigs"] = undefined /*out*/;
             resourceInputs["pscAutoConnections"] = undefined /*out*/;
@@ -472,6 +489,10 @@ export interface InstanceState {
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * Endpoints for the instance.
+     */
+    endpoints?: pulumi.Input<pulumi.Input<any[]>[]>;
+    /**
      * Optional. User-provided engine configurations for the instance.
      */
     engineConfigs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -503,6 +524,14 @@ export interface InstanceState {
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `memorystore.googleapis.com/CertificateAuthority`.
      */
     location?: pulumi.Input<string>;
+    /**
+     * Optional. Standalone or cluster.
+     * Possible values:
+     * CLUSTER
+     * STANDALONE
+     * Possible values are: `CLUSTER`, `STANDALONE`.
+     */
+    mode?: pulumi.Input<string>;
     /**
      * Identifier. Unique name of the instance.
      * Format: projects/{project}/locations/{location}/instances/{instance}
@@ -636,6 +665,14 @@ export interface InstanceArgs {
      * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `memorystore.googleapis.com/CertificateAuthority`.
      */
     location: pulumi.Input<string>;
+    /**
+     * Optional. Standalone or cluster.
+     * Possible values:
+     * CLUSTER
+     * STANDALONE
+     * Possible values are: `CLUSTER`, `STANDALONE`.
+     */
+    mode?: pulumi.Input<string>;
     /**
      * Optional. Immutable. Machine type for individual nodes of the instance.
      * Possible values:

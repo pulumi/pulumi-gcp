@@ -61,6 +61,7 @@ export interface GetDatasetResult {
     readonly description: string;
     readonly effectiveLabels: {[key: string]: string};
     readonly etag: string;
+    readonly externalCatalogDatasetOptions: outputs.bigquery.GetDatasetExternalCatalogDatasetOption[];
     readonly externalDatasetReferences: outputs.bigquery.GetDatasetExternalDatasetReference[];
     readonly friendlyName: string;
     /**

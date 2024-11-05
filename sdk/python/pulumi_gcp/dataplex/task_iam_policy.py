@@ -396,7 +396,7 @@ class TaskIamPolicy(pulumi.CustomResource):
         $ pulumi import gcp:dataplex/taskIamPolicy:TaskIamPolicy editor projects/{{project}}/locations/{{location}}/lakes/{{lake}}/tasks/{{task_id}}
         ```
 
-        -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
@@ -583,7 +583,7 @@ class TaskIamPolicy(pulumi.CustomResource):
         $ pulumi import gcp:dataplex/taskIamPolicy:TaskIamPolicy editor projects/{{project}}/locations/{{location}}/lakes/{{lake}}/tasks/{{task_id}}
         ```
 
-        -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 

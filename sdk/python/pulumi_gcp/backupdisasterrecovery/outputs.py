@@ -100,8 +100,6 @@ class ManagementServerNetwork(dict):
         :param str peering_mode: Type of Network peeringMode
                Default value is `PRIVATE_SERVICE_ACCESS`.
                Possible values are: `PRIVATE_SERVICE_ACCESS`.
-               
-               - - -
         """
         pulumi.set(__self__, "network", network)
         if peering_mode is not None:
@@ -122,8 +120,6 @@ class ManagementServerNetwork(dict):
         Type of Network peeringMode
         Default value is `PRIVATE_SERVICE_ACCESS`.
         Possible values are: `PRIVATE_SERVICE_ACCESS`.
-
-        - - -
         """
         return pulumi.get(self, "peering_mode")
 

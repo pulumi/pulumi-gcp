@@ -53,12 +53,16 @@ public final class ManagementServerState extends com.pulumi.resources.ResourceAr
     /**
      * The name of management server (management console)
      * 
+     * ***
+     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return The name of management server (management console)
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -97,22 +101,36 @@ public final class ManagementServerState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.oauth2ClientId);
     }
 
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
 
     /**
-     * The type of management server (management console). Default value: &#34;BACKUP_RESTORE&#34; Possible values: [&#34;BACKUP_RESTORE&#34;]
+     * The type of management server (management console).
+     * Default value is `BACKUP_RESTORE`.
+     * Possible values are: `BACKUP_RESTORE`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The type of management server (management console). Default value: &#34;BACKUP_RESTORE&#34; Possible values: [&#34;BACKUP_RESTORE&#34;]
+     * @return The type of management server (management console).
+     * Default value is `BACKUP_RESTORE`.
+     * Possible values are: `BACKUP_RESTORE`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -207,6 +225,8 @@ public final class ManagementServerState extends com.pulumi.resources.ResourceAr
         /**
          * @param name The name of management server (management console)
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -217,6 +237,8 @@ public final class ManagementServerState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param name The name of management server (management console)
+         * 
+         * ***
          * 
          * @return builder
          * 
@@ -280,17 +302,33 @@ public final class ManagementServerState extends com.pulumi.resources.ResourceAr
             return oauth2ClientId(Output.of(oauth2ClientId));
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
 
         /**
-         * @param type The type of management server (management console). Default value: &#34;BACKUP_RESTORE&#34; Possible values: [&#34;BACKUP_RESTORE&#34;]
+         * @param type The type of management server (management console).
+         * Default value is `BACKUP_RESTORE`.
+         * Possible values are: `BACKUP_RESTORE`.
          * 
          * @return builder
          * 
@@ -301,7 +339,9 @@ public final class ManagementServerState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param type The type of management server (management console). Default value: &#34;BACKUP_RESTORE&#34; Possible values: [&#34;BACKUP_RESTORE&#34;]
+         * @param type The type of management server (management console).
+         * Default value is `BACKUP_RESTORE`.
+         * Possible values are: `BACKUP_RESTORE`.
          * 
          * @return builder
          * 

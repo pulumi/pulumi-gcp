@@ -81,7 +81,7 @@ import javax.annotation.Nullable;
  *             .ddls(            
  *                 "CREATE TABLE t1 (t1 INT64 NOT NULL,) PRIMARY KEY(t1)",
  *                 "CREATE TABLE t2 (t2 INT64 NOT NULL,) PRIMARY KEY(t2)")
- *             .deletionProtection("true")
+ *             .deletionProtection(true)
  *             .build());
  * 
  *         var full_backup = new BackupSchedule("full-backup", BackupScheduleArgs.builder()
@@ -149,7 +149,7 @@ import javax.annotation.Nullable;
  *             .ddls(            
  *                 "CREATE TABLE t1 (t1 INT64 NOT NULL,) PRIMARY KEY(t1)",
  *                 "CREATE TABLE t2 (t2 INT64 NOT NULL,) PRIMARY KEY(t2)")
- *             .deletionProtection("true")
+ *             .deletionProtection(true)
  *             .build());
  * 
  *         var incremental_backup = new BackupSchedule("incremental-backup", BackupScheduleArgs.builder()

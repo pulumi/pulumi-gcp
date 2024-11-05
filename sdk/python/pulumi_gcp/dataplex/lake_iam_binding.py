@@ -445,7 +445,7 @@ class LakeIamBinding(pulumi.CustomResource):
         $ pulumi import gcp:dataplex/lakeIamBinding:LakeIamBinding editor projects/{{project}}/locations/{{location}}/lakes/{{lake}}
         ```
 
-        -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
@@ -633,7 +633,7 @@ class LakeIamBinding(pulumi.CustomResource):
         $ pulumi import gcp:dataplex/lakeIamBinding:LakeIamBinding editor projects/{{project}}/locations/{{location}}/lakes/{{lake}}
         ```
 
-        -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 

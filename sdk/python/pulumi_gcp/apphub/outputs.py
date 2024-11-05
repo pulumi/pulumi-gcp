@@ -339,7 +339,8 @@ class ApplicationScope(dict):
         :param str type: Required. Scope Type.
                Possible values:
                REGIONAL
-               Possible values are: `REGIONAL`.
+               GLOBAL
+               Possible values are: `REGIONAL`, `GLOBAL`.
                
                - - -
         """
@@ -352,7 +353,8 @@ class ApplicationScope(dict):
         Required. Scope Type.
         Possible values:
         REGIONAL
-        Possible values are: `REGIONAL`.
+        GLOBAL
+        Possible values are: `REGIONAL`, `GLOBAL`.
 
         - - -
         """
@@ -1281,7 +1283,8 @@ class GetApplicationScopeResult(dict):
         """
         :param str type: Required. Scope Type. 
                 Possible values:
-               REGIONAL Possible values: ["REGIONAL"]
+               REGIONAL
+               GLOBAL Possible values: ["REGIONAL", "GLOBAL"]
         """
         pulumi.set(__self__, "type", type)
 
@@ -1291,7 +1294,8 @@ class GetApplicationScopeResult(dict):
         """
         Required. Scope Type. 
          Possible values:
-        REGIONAL Possible values: ["REGIONAL"]
+        REGIONAL
+        GLOBAL Possible values: ["REGIONAL", "GLOBAL"]
         """
         return pulumi.get(self, "type")
 

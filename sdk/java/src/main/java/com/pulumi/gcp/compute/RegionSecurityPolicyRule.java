@@ -152,6 +152,76 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Region Security Policy Rule Default Rule
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionSecurityPolicy;
+ * import com.pulumi.gcp.compute.RegionSecurityPolicyArgs;
+ * import com.pulumi.gcp.compute.RegionSecurityPolicyRule;
+ * import com.pulumi.gcp.compute.RegionSecurityPolicyRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRuleMatchArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRuleMatchConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new RegionSecurityPolicy("default", RegionSecurityPolicyArgs.builder()
+ *             .region("us-west2")
+ *             .name("policywithdefaultrule")
+ *             .description("basic region security policy")
+ *             .type("CLOUD_ARMOR")
+ *             .build());
+ * 
+ *         var defaultRule = new RegionSecurityPolicyRule("defaultRule", RegionSecurityPolicyRuleArgs.builder()
+ *             .region("us-west2")
+ *             .securityPolicy(default_.name())
+ *             .description("new rule")
+ *             .action("deny")
+ *             .priority("2147483647")
+ *             .match(RegionSecurityPolicyRuleMatchArgs.builder()
+ *                 .versionedExpr("SRC_IPS_V1")
+ *                 .config(RegionSecurityPolicyRuleMatchConfigArgs.builder()
+ *                     .srcIpRanges("*")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var policyRule = new RegionSecurityPolicyRule("policyRule", RegionSecurityPolicyRuleArgs.builder()
+ *             .region("us-west2")
+ *             .securityPolicy(default_.name())
+ *             .description("new rule")
+ *             .priority(100)
+ *             .match(RegionSecurityPolicyRuleMatchArgs.builder()
+ *                 .versionedExpr("SRC_IPS_V1")
+ *                 .config(RegionSecurityPolicyRuleMatchConfigArgs.builder()
+ *                     .srcIpRanges("10.10.0.0/16")
+ *                     .build())
+ *                 .build())
+ *             .action("allow")
+ *             .preview(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Region Security Policy Rule With Preconfigured Waf Config
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

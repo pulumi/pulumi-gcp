@@ -286,7 +286,7 @@ import javax.annotation.Nullable;
  *                 .clusterSecondaryRangeName(subnetwork_1.secondaryIpRanges().applyValue(secondaryIpRanges -> secondaryIpRanges[0].rangeName()))
  *                 .servicesSecondaryRangeName(subnetwork_1.secondaryIpRanges().applyValue(secondaryIpRanges -> secondaryIpRanges[1].rangeName()))
  *                 .build())
- *             .deletionProtection("true")
+ *             .deletionProtection(true)
  *             .build());
  * 
  *         var private_zone_gke = new ManagedZone("private-zone-gke", ManagedZoneArgs.builder()

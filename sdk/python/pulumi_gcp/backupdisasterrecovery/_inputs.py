@@ -92,8 +92,6 @@ if not MYPY:
         Type of Network peeringMode
         Default value is `PRIVATE_SERVICE_ACCESS`.
         Possible values are: `PRIVATE_SERVICE_ACCESS`.
-
-        - - -
         """
 elif False:
     ManagementServerNetworkArgsDict: TypeAlias = Mapping[str, Any]
@@ -108,8 +106,6 @@ class ManagementServerNetworkArgs:
         :param pulumi.Input[str] peering_mode: Type of Network peeringMode
                Default value is `PRIVATE_SERVICE_ACCESS`.
                Possible values are: `PRIVATE_SERVICE_ACCESS`.
-               
-               - - -
         """
         pulumi.set(__self__, "network", network)
         if peering_mode is not None:
@@ -134,8 +130,6 @@ class ManagementServerNetworkArgs:
         Type of Network peeringMode
         Default value is `PRIVATE_SERVICE_ACCESS`.
         Possible values are: `PRIVATE_SERVICE_ACCESS`.
-
-        - - -
         """
         return pulumi.get(self, "peering_mode")
 

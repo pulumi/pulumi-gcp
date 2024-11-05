@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -47,6 +48,21 @@ public final class RegionInstanceTemplateAdvancedMachineFeaturesArgs extends com
     }
 
     /**
+     * Turbo frequency mode to use for the instance. Supported modes are currently either `ALL_CORE_MAX` or unset (default).
+     * 
+     */
+    @Import(name="turboMode")
+    private @Nullable Output<String> turboMode;
+
+    /**
+     * @return Turbo frequency mode to use for the instance. Supported modes are currently either `ALL_CORE_MAX` or unset (default).
+     * 
+     */
+    public Optional<Output<String>> turboMode() {
+        return Optional.ofNullable(this.turboMode);
+    }
+
+    /**
      * The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
      * 
      */
@@ -66,6 +82,7 @@ public final class RegionInstanceTemplateAdvancedMachineFeaturesArgs extends com
     private RegionInstanceTemplateAdvancedMachineFeaturesArgs(RegionInstanceTemplateAdvancedMachineFeaturesArgs $) {
         this.enableNestedVirtualization = $.enableNestedVirtualization;
         this.threadsPerCore = $.threadsPerCore;
+        this.turboMode = $.turboMode;
         this.visibleCoreCount = $.visibleCoreCount;
     }
 
@@ -127,6 +144,27 @@ public final class RegionInstanceTemplateAdvancedMachineFeaturesArgs extends com
          */
         public Builder threadsPerCore(Integer threadsPerCore) {
             return threadsPerCore(Output.of(threadsPerCore));
+        }
+
+        /**
+         * @param turboMode Turbo frequency mode to use for the instance. Supported modes are currently either `ALL_CORE_MAX` or unset (default).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder turboMode(@Nullable Output<String> turboMode) {
+            $.turboMode = turboMode;
+            return this;
+        }
+
+        /**
+         * @param turboMode Turbo frequency mode to use for the instance. Supported modes are currently either `ALL_CORE_MAX` or unset (default).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder turboMode(String turboMode) {
+            return turboMode(Output.of(turboMode));
         }
 
         /**

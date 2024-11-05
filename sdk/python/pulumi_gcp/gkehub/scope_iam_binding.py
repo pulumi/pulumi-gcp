@@ -404,7 +404,7 @@ class ScopeIamBinding(pulumi.CustomResource):
         $ pulumi import gcp:gkehub/scopeIamBinding:ScopeIamBinding editor projects/{{project}}/locations/global/scopes/{{scope_id}}
         ```
 
-        -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
@@ -583,7 +583,7 @@ class ScopeIamBinding(pulumi.CustomResource):
         $ pulumi import gcp:gkehub/scopeIamBinding:ScopeIamBinding editor projects/{{project}}/locations/global/scopes/{{scope_id}}
         ```
 
-        -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 

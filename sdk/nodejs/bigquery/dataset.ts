@@ -186,6 +186,25 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Bigquery Dataset External Catalog Dataset Options
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const dataset = new gcp.bigquery.Dataset("dataset", {
+ *     datasetId: "example_dataset",
+ *     friendlyName: "test",
+ *     description: "This is a test description",
+ *     location: "US",
+ *     externalCatalogDatasetOptions: {
+ *         parameters: {
+ *             dataset_owner: "test_dataset_owner",
+ *         },
+ *         defaultStorageLocationUri: "gs://test_dataset/tables",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -326,6 +345,12 @@ export class Dataset extends pulumi.CustomResource {
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
+     * Options defining open source compatible datasets living in the BigQuery catalog. Contains
+     * metadata of open source database, schema or namespace represented by the current dataset.
+     * Structure is documented below.
+     */
+    public readonly externalCatalogDatasetOptions!: pulumi.Output<outputs.bigquery.DatasetExternalCatalogDatasetOptions | undefined>;
+    /**
      * Information about the external metadata storage where the dataset is defined.
      * Structure is documented below.
      */
@@ -422,6 +447,7 @@ export class Dataset extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["externalCatalogDatasetOptions"] = state ? state.externalCatalogDatasetOptions : undefined;
             resourceInputs["externalDatasetReference"] = state ? state.externalDatasetReference : undefined;
             resourceInputs["friendlyName"] = state ? state.friendlyName : undefined;
             resourceInputs["isCaseInsensitive"] = state ? state.isCaseInsensitive : undefined;
@@ -447,6 +473,7 @@ export class Dataset extends pulumi.CustomResource {
             resourceInputs["defaultTableExpirationMs"] = args ? args.defaultTableExpirationMs : undefined;
             resourceInputs["deleteContentsOnDestroy"] = args ? args.deleteContentsOnDestroy : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["externalCatalogDatasetOptions"] = args ? args.externalCatalogDatasetOptions : undefined;
             resourceInputs["externalDatasetReference"] = args ? args.externalDatasetReference : undefined;
             resourceInputs["friendlyName"] = args ? args.friendlyName : undefined;
             resourceInputs["isCaseInsensitive"] = args ? args.isCaseInsensitive : undefined;
@@ -560,6 +587,12 @@ export interface DatasetState {
      * A hash of the resource.
      */
     etag?: pulumi.Input<string>;
+    /**
+     * Options defining open source compatible datasets living in the BigQuery catalog. Contains
+     * metadata of open source database, schema or namespace represented by the current dataset.
+     * Structure is documented below.
+     */
+    externalCatalogDatasetOptions?: pulumi.Input<inputs.bigquery.DatasetExternalCatalogDatasetOptions>;
     /**
      * Information about the external metadata storage where the dataset is defined.
      * Structure is documented below.
@@ -711,6 +744,12 @@ export interface DatasetArgs {
      * A user-friendly description of the dataset
      */
     description?: pulumi.Input<string>;
+    /**
+     * Options defining open source compatible datasets living in the BigQuery catalog. Contains
+     * metadata of open source database, schema or namespace represented by the current dataset.
+     * Structure is documented below.
+     */
+    externalCatalogDatasetOptions?: pulumi.Input<inputs.bigquery.DatasetExternalCatalogDatasetOptions>;
     /**
      * Information about the external metadata storage where the dataset is defined.
      * Structure is documented below.

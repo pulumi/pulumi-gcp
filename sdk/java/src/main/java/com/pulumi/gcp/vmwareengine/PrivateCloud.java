@@ -105,6 +105,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.vmwareengine.PrivateCloudArgs;
  * import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudNetworkConfigArgs;
  * import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudManagementClusterArgs;
+ * import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudManagementClusterAutoscalingSettingsArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -140,6 +141,28 @@ import javax.annotation.Nullable;
  *                     .nodeTypeId("standard-72")
  *                     .nodeCount(1)
  *                     .customCoreCount(32)
+ *                     .build())
+ *                 .autoscalingSettings(PrivateCloudManagementClusterAutoscalingSettingsArgs.builder()
+ *                     .autoscalingPolicies(PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArgs.builder()
+ *                         .autoscalePolicyId("autoscaling-policy")
+ *                         .nodeTypeId("standard-72")
+ *                         .scaleOutSize(1)
+ *                         .cpuThresholds(PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs.builder()
+ *                             .scaleOut(80)
+ *                             .scaleIn(15)
+ *                             .build())
+ *                         .consumedMemoryThresholds(PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs.builder()
+ *                             .scaleOut(75)
+ *                             .scaleIn(20)
+ *                             .build())
+ *                         .storageThresholds(PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs.builder()
+ *                             .scaleOut(80)
+ *                             .scaleIn(20)
+ *                             .build())
+ *                         .build())
+ *                     .minClusterNodeCount(3)
+ *                     .maxClusterNodeCount(8)
+ *                     .coolDownPeriod("1800s")
  *                     .build())
  *                 .build())
  *             .deletionDelayHours(0)

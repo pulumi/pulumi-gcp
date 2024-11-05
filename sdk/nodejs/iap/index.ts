@@ -100,6 +100,11 @@ export const getWebTypeComputeIamPolicy: typeof import("./getWebTypeComputeIamPo
 export const getWebTypeComputeIamPolicyOutput: typeof import("./getWebTypeComputeIamPolicy").getWebTypeComputeIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getWebTypeComputeIamPolicy","getWebTypeComputeIamPolicyOutput"], () => require("./getWebTypeComputeIamPolicy"));
 
+export { SettingsArgs, SettingsState } from "./settings";
+export type Settings = import("./settings").Settings;
+export const Settings: typeof import("./settings").Settings = null as any;
+utilities.lazyLoad(exports, ["Settings"], () => require("./settings"));
+
 export { TunnelDestGroupArgs, TunnelDestGroupState } from "./tunnelDestGroup";
 export type TunnelDestGroup = import("./tunnelDestGroup").TunnelDestGroup;
 export const TunnelDestGroup: typeof import("./tunnelDestGroup").TunnelDestGroup = null as any;
@@ -246,6 +251,8 @@ const _module = {
                 return new Brand(name, <any>undefined, { urn })
             case "gcp:iap/client:Client":
                 return new Client(name, <any>undefined, { urn })
+            case "gcp:iap/settings:Settings":
+                return new Settings(name, <any>undefined, { urn })
             case "gcp:iap/tunnelDestGroup:TunnelDestGroup":
                 return new TunnelDestGroup(name, <any>undefined, { urn })
             case "gcp:iap/tunnelDestGroupIamBinding:TunnelDestGroupIamBinding":
@@ -309,6 +316,7 @@ pulumi.runtime.registerResourceModule("gcp", "iap/appEngineVersionIamMember", _m
 pulumi.runtime.registerResourceModule("gcp", "iap/appEngineVersionIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/brand", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/client", _module)
+pulumi.runtime.registerResourceModule("gcp", "iap/settings", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/tunnelDestGroup", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/tunnelDestGroupIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/tunnelDestGroupIamMember", _module)

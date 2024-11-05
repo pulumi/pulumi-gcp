@@ -24,12 +24,20 @@ __all__ = [
     'DatabaseIAMBindingCondition',
     'DatabaseIAMMemberCondition',
     'InstanceAutoscalingConfig',
+    'InstanceAutoscalingConfigAsymmetricAutoscalingOption',
+    'InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides',
+    'InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits',
+    'InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection',
     'InstanceAutoscalingConfigAutoscalingLimits',
     'InstanceAutoscalingConfigAutoscalingTargets',
     'InstanceConfigReplica',
     'InstanceIAMBindingCondition',
     'InstanceIAMMemberCondition',
     'GetInstanceAutoscalingConfigResult',
+    'GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionResult',
+    'GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideResult',
+    'GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitResult',
+    'GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionResult',
     'GetInstanceAutoscalingConfigAutoscalingLimitResult',
     'GetInstanceAutoscalingConfigAutoscalingTargetResult',
 ]
@@ -256,7 +264,9 @@ class InstanceAutoscalingConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "autoscalingLimits":
+        if key == "asymmetricAutoscalingOptions":
+            suggest = "asymmetric_autoscaling_options"
+        elif key == "autoscalingLimits":
             suggest = "autoscaling_limits"
         elif key == "autoscalingTargets":
             suggest = "autoscaling_targets"
@@ -273,9 +283,12 @@ class InstanceAutoscalingConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 asymmetric_autoscaling_options: Optional[Sequence['outputs.InstanceAutoscalingConfigAsymmetricAutoscalingOption']] = None,
                  autoscaling_limits: Optional['outputs.InstanceAutoscalingConfigAutoscalingLimits'] = None,
                  autoscaling_targets: Optional['outputs.InstanceAutoscalingConfigAutoscalingTargets'] = None):
         """
+        :param Sequence['InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs'] asymmetric_autoscaling_options: Asymmetric autoscaling options for specific replicas.
+               Structure is documented below.
         :param 'InstanceAutoscalingConfigAutoscalingLimitsArgs' autoscaling_limits: Defines scale in controls to reduce the risk of response latency
                and outages due to abrupt scale-in events. Users can define the minimum and
                maximum compute capacity allocated to the instance, and the autoscaler will
@@ -287,10 +300,21 @@ class InstanceAutoscalingConfig(dict):
                and outages due to abrupt scale-in events
                Structure is documented below.
         """
+        if asymmetric_autoscaling_options is not None:
+            pulumi.set(__self__, "asymmetric_autoscaling_options", asymmetric_autoscaling_options)
         if autoscaling_limits is not None:
             pulumi.set(__self__, "autoscaling_limits", autoscaling_limits)
         if autoscaling_targets is not None:
             pulumi.set(__self__, "autoscaling_targets", autoscaling_targets)
+
+    @property
+    @pulumi.getter(name="asymmetricAutoscalingOptions")
+    def asymmetric_autoscaling_options(self) -> Optional[Sequence['outputs.InstanceAutoscalingConfigAsymmetricAutoscalingOption']]:
+        """
+        Asymmetric autoscaling options for specific replicas.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "asymmetric_autoscaling_options")
 
     @property
     @pulumi.getter(name="autoscalingLimits")
@@ -315,6 +339,159 @@ class InstanceAutoscalingConfig(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "autoscaling_targets")
+
+
+@pulumi.output_type
+class InstanceAutoscalingConfigAsymmetricAutoscalingOption(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "replicaSelection":
+            suggest = "replica_selection"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceAutoscalingConfigAsymmetricAutoscalingOption. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceAutoscalingConfigAsymmetricAutoscalingOption.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceAutoscalingConfigAsymmetricAutoscalingOption.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 overrides: 'outputs.InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides',
+                 replica_selection: 'outputs.InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection'):
+        """
+        :param 'InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgs' overrides: A nested object resource
+               Structure is documented below.
+        :param 'InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArgs' replica_selection: A nested object resource
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "overrides", overrides)
+        pulumi.set(__self__, "replica_selection", replica_selection)
+
+    @property
+    @pulumi.getter
+    def overrides(self) -> 'outputs.InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides':
+        """
+        A nested object resource
+        Structure is documented below.
+        """
+        return pulumi.get(self, "overrides")
+
+    @property
+    @pulumi.getter(name="replicaSelection")
+    def replica_selection(self) -> 'outputs.InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection':
+        """
+        A nested object resource
+        Structure is documented below.
+        """
+        return pulumi.get(self, "replica_selection")
+
+
+@pulumi.output_type
+class InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoscalingLimits":
+            suggest = "autoscaling_limits"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 autoscaling_limits: 'outputs.InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits'):
+        """
+        :param 'InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs' autoscaling_limits: A nested object resource
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "autoscaling_limits", autoscaling_limits)
+
+    @property
+    @pulumi.getter(name="autoscalingLimits")
+    def autoscaling_limits(self) -> 'outputs.InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits':
+        """
+        A nested object resource
+        Structure is documented below.
+        """
+        return pulumi.get(self, "autoscaling_limits")
+
+
+@pulumi.output_type
+class InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxNodes":
+            suggest = "max_nodes"
+        elif key == "minNodes":
+            suggest = "min_nodes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_nodes: int,
+                 min_nodes: int):
+        """
+        :param int max_nodes: The maximum number of nodes for this specific replica.
+        :param int min_nodes: The minimum number of nodes for this specific replica.
+        """
+        pulumi.set(__self__, "max_nodes", max_nodes)
+        pulumi.set(__self__, "min_nodes", min_nodes)
+
+    @property
+    @pulumi.getter(name="maxNodes")
+    def max_nodes(self) -> int:
+        """
+        The maximum number of nodes for this specific replica.
+        """
+        return pulumi.get(self, "max_nodes")
+
+    @property
+    @pulumi.getter(name="minNodes")
+    def min_nodes(self) -> int:
+        """
+        The minimum number of nodes for this specific replica.
+        """
+        return pulumi.get(self, "min_nodes")
+
+
+@pulumi.output_type
+class InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection(dict):
+    def __init__(__self__, *,
+                 location: str):
+        """
+        :param str location: The location of the replica to apply asymmetric autoscaling options.
+        """
+        pulumi.set(__self__, "location", location)
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        The location of the replica to apply asymmetric autoscaling options.
+        """
+        return pulumi.get(self, "location")
 
 
 @pulumi.output_type
@@ -348,13 +525,11 @@ class InstanceAutoscalingConfigAutoscalingLimits(dict):
                  min_nodes: Optional[int] = None,
                  min_processing_units: Optional[int] = None):
         """
-        :param int max_nodes: Specifies maximum number of nodes allocated to the instance. If set, this number
-               should be greater than or equal to min_nodes.
+        :param int max_nodes: The maximum number of nodes for this specific replica.
         :param int max_processing_units: Specifies maximum number of processing units allocated to the instance.
                If set, this number should be multiples of 1000 and be greater than or equal to
                min_processing_units.
-        :param int min_nodes: Specifies number of nodes allocated to the instance. If set, this number
-               should be greater than or equal to 1.
+        :param int min_nodes: The minimum number of nodes for this specific replica.
         :param int min_processing_units: Specifies minimum number of processing units allocated to the instance.
                If set, this number should be multiples of 1000.
         """
@@ -371,8 +546,7 @@ class InstanceAutoscalingConfigAutoscalingLimits(dict):
     @pulumi.getter(name="maxNodes")
     def max_nodes(self) -> Optional[int]:
         """
-        Specifies maximum number of nodes allocated to the instance. If set, this number
-        should be greater than or equal to min_nodes.
+        The maximum number of nodes for this specific replica.
         """
         return pulumi.get(self, "max_nodes")
 
@@ -390,8 +564,7 @@ class InstanceAutoscalingConfigAutoscalingLimits(dict):
     @pulumi.getter(name="minNodes")
     def min_nodes(self) -> Optional[int]:
         """
-        Specifies number of nodes allocated to the instance. If set, this number
-        should be greater than or equal to 1.
+        The minimum number of nodes for this specific replica.
         """
         return pulumi.get(self, "min_nodes")
 
@@ -592,9 +765,11 @@ class InstanceIAMMemberCondition(dict):
 @pulumi.output_type
 class GetInstanceAutoscalingConfigResult(dict):
     def __init__(__self__, *,
+                 asymmetric_autoscaling_options: Sequence['outputs.GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionResult'],
                  autoscaling_limits: Sequence['outputs.GetInstanceAutoscalingConfigAutoscalingLimitResult'],
                  autoscaling_targets: Sequence['outputs.GetInstanceAutoscalingConfigAutoscalingTargetResult']):
         """
+        :param Sequence['GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs'] asymmetric_autoscaling_options: Asymmetric autoscaling options for specific replicas.
         :param Sequence['GetInstanceAutoscalingConfigAutoscalingLimitArgs'] autoscaling_limits: Defines scale in controls to reduce the risk of response latency
                and outages due to abrupt scale-in events. Users can define the minimum and
                maximum compute capacity allocated to the instance, and the autoscaler will
@@ -604,8 +779,17 @@ class GetInstanceAutoscalingConfigResult(dict):
         :param Sequence['GetInstanceAutoscalingConfigAutoscalingTargetArgs'] autoscaling_targets: Defines scale in controls to reduce the risk of response latency
                and outages due to abrupt scale-in events
         """
+        pulumi.set(__self__, "asymmetric_autoscaling_options", asymmetric_autoscaling_options)
         pulumi.set(__self__, "autoscaling_limits", autoscaling_limits)
         pulumi.set(__self__, "autoscaling_targets", autoscaling_targets)
+
+    @property
+    @pulumi.getter(name="asymmetricAutoscalingOptions")
+    def asymmetric_autoscaling_options(self) -> Sequence['outputs.GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionResult']:
+        """
+        Asymmetric autoscaling options for specific replicas.
+        """
+        return pulumi.get(self, "asymmetric_autoscaling_options")
 
     @property
     @pulumi.getter(name="autoscalingLimits")
@@ -628,6 +812,100 @@ class GetInstanceAutoscalingConfigResult(dict):
         and outages due to abrupt scale-in events
         """
         return pulumi.get(self, "autoscaling_targets")
+
+
+@pulumi.output_type
+class GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionResult(dict):
+    def __init__(__self__, *,
+                 overrides: Sequence['outputs.GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideResult'],
+                 replica_selections: Sequence['outputs.GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionResult']):
+        """
+        :param Sequence['GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArgs'] overrides: A nested object resource
+        :param Sequence['GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArgs'] replica_selections: A nested object resource
+        """
+        pulumi.set(__self__, "overrides", overrides)
+        pulumi.set(__self__, "replica_selections", replica_selections)
+
+    @property
+    @pulumi.getter
+    def overrides(self) -> Sequence['outputs.GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideResult']:
+        """
+        A nested object resource
+        """
+        return pulumi.get(self, "overrides")
+
+    @property
+    @pulumi.getter(name="replicaSelections")
+    def replica_selections(self) -> Sequence['outputs.GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionResult']:
+        """
+        A nested object resource
+        """
+        return pulumi.get(self, "replica_selections")
+
+
+@pulumi.output_type
+class GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideResult(dict):
+    def __init__(__self__, *,
+                 autoscaling_limits: Sequence['outputs.GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitResult']):
+        """
+        :param Sequence['GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArgs'] autoscaling_limits: A nested object resource
+        """
+        pulumi.set(__self__, "autoscaling_limits", autoscaling_limits)
+
+    @property
+    @pulumi.getter(name="autoscalingLimits")
+    def autoscaling_limits(self) -> Sequence['outputs.GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitResult']:
+        """
+        A nested object resource
+        """
+        return pulumi.get(self, "autoscaling_limits")
+
+
+@pulumi.output_type
+class GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitResult(dict):
+    def __init__(__self__, *,
+                 max_nodes: int,
+                 min_nodes: int):
+        """
+        :param int max_nodes: The maximum number of nodes for this specific replica.
+        :param int min_nodes: The minimum number of nodes for this specific replica.
+        """
+        pulumi.set(__self__, "max_nodes", max_nodes)
+        pulumi.set(__self__, "min_nodes", min_nodes)
+
+    @property
+    @pulumi.getter(name="maxNodes")
+    def max_nodes(self) -> int:
+        """
+        The maximum number of nodes for this specific replica.
+        """
+        return pulumi.get(self, "max_nodes")
+
+    @property
+    @pulumi.getter(name="minNodes")
+    def min_nodes(self) -> int:
+        """
+        The minimum number of nodes for this specific replica.
+        """
+        return pulumi.get(self, "min_nodes")
+
+
+@pulumi.output_type
+class GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionResult(dict):
+    def __init__(__self__, *,
+                 location: str):
+        """
+        :param str location: The location of the replica to apply asymmetric autoscaling options.
+        """
+        pulumi.set(__self__, "location", location)
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        The location of the replica to apply asymmetric autoscaling options.
+        """
+        return pulumi.get(self, "location")
 
 
 @pulumi.output_type

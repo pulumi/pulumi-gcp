@@ -19,6 +19,7 @@ import com.pulumi.gcp.memorystore.outputs.InstanceStateInfo;
 import com.pulumi.gcp.memorystore.outputs.InstanceZoneDistributionConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -190,6 +191,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .engineVersion("VALKEY_7_2")
  *             .deletionProtectionEnabled(false)
+ *             .mode("CLUSTER")
  *             .persistenceConfig(InstancePersistenceConfigArgs.builder()
  *                 .mode("RDB")
  *                 .rdbConfig(InstancePersistenceConfigRdbConfigArgs.builder()
@@ -415,6 +417,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.effectiveLabels;
     }
     /**
+     * Endpoints for the instance.
+     * 
+     */
+    @Export(name="endpoints", refs={List.class,Object.class}, tree="[0,[0,1]]")
+    private Output<List<List<Object>>> endpoints;
+
+    /**
+     * @return Endpoints for the instance.
+     * 
+     */
+    public Output<List<List<Object>>> endpoints() {
+        return this.endpoints;
+    }
+    /**
      * Optional. User-provided engine configurations for the instance.
      * 
      */
@@ -505,6 +521,28 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> location() {
         return this.location;
+    }
+    /**
+     * Optional. Standalone or cluster.
+     * Possible values:
+     * CLUSTER
+     * STANDALONE
+     * Possible values are: `CLUSTER`, `STANDALONE`.
+     * 
+     */
+    @Export(name="mode", refs={String.class}, tree="[0]")
+    private Output<String> mode;
+
+    /**
+     * @return Optional. Standalone or cluster.
+     * Possible values:
+     * CLUSTER
+     * STANDALONE
+     * Possible values are: `CLUSTER`, `STANDALONE`.
+     * 
+     */
+    public Output<String> mode() {
+        return this.mode;
     }
     /**
      * Identifier. Unique name of the instance.

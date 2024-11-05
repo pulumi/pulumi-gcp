@@ -53,15 +53,10 @@ import * as utilities from "../utilities";
  *     description: "basic global security policy",
  *     type: "CLOUD_ARMOR",
  * });
- * // A default rule is generated when creating the security_policy resource, import is needed to patch it
- * // import {
- * //   id = "projects//global/securityPolicies/policyruletest/priority/2147483647"
- * //   to = google_compute_security_policy_rule.default_rule
- * // }
  * const defaultRule = new gcp.compute.SecurityPolicyRule("default_rule", {
  *     securityPolicy: _default.name,
  *     description: "default rule",
- *     action: "allow",
+ *     action: "deny",
  *     priority: 2147483647,
  *     match: {
  *         versionedExpr: "SRC_IPS_V1",
@@ -192,6 +187,11 @@ export class SecurityPolicyRule extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+     * Structure is documented below.
+     */
+    public readonly headerAction!: pulumi.Output<outputs.compute.SecurityPolicyRuleHeaderAction | undefined>;
+    /**
      * A match condition that incoming traffic is evaluated against.
      * If it evaluates to true, the corresponding 'action' is enforced.
      * Structure is documented below.
@@ -224,6 +224,11 @@ export class SecurityPolicyRule extends pulumi.CustomResource {
      */
     public readonly rateLimitOptions!: pulumi.Output<outputs.compute.SecurityPolicyRuleRateLimitOptions | undefined>;
     /**
+     * Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+     * Structure is documented below.
+     */
+    public readonly redirectOptions!: pulumi.Output<outputs.compute.SecurityPolicyRuleRedirectOptions | undefined>;
+    /**
      * The name of the security policy this rule belongs to.
      *
      *
@@ -246,12 +251,14 @@ export class SecurityPolicyRule extends pulumi.CustomResource {
             const state = argsOrState as SecurityPolicyRuleState | undefined;
             resourceInputs["action"] = state ? state.action : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["headerAction"] = state ? state.headerAction : undefined;
             resourceInputs["match"] = state ? state.match : undefined;
             resourceInputs["preconfiguredWafConfig"] = state ? state.preconfiguredWafConfig : undefined;
             resourceInputs["preview"] = state ? state.preview : undefined;
             resourceInputs["priority"] = state ? state.priority : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["rateLimitOptions"] = state ? state.rateLimitOptions : undefined;
+            resourceInputs["redirectOptions"] = state ? state.redirectOptions : undefined;
             resourceInputs["securityPolicy"] = state ? state.securityPolicy : undefined;
         } else {
             const args = argsOrState as SecurityPolicyRuleArgs | undefined;
@@ -266,12 +273,14 @@ export class SecurityPolicyRule extends pulumi.CustomResource {
             }
             resourceInputs["action"] = args ? args.action : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["headerAction"] = args ? args.headerAction : undefined;
             resourceInputs["match"] = args ? args.match : undefined;
             resourceInputs["preconfiguredWafConfig"] = args ? args.preconfiguredWafConfig : undefined;
             resourceInputs["preview"] = args ? args.preview : undefined;
             resourceInputs["priority"] = args ? args.priority : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["rateLimitOptions"] = args ? args.rateLimitOptions : undefined;
+            resourceInputs["redirectOptions"] = args ? args.redirectOptions : undefined;
             resourceInputs["securityPolicy"] = args ? args.securityPolicy : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -296,6 +305,11 @@ export interface SecurityPolicyRuleState {
      * An optional description of this resource. Provide this property when you create the resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+     * Structure is documented below.
+     */
+    headerAction?: pulumi.Input<inputs.compute.SecurityPolicyRuleHeaderAction>;
     /**
      * A match condition that incoming traffic is evaluated against.
      * If it evaluates to true, the corresponding 'action' is enforced.
@@ -329,6 +343,11 @@ export interface SecurityPolicyRuleState {
      */
     rateLimitOptions?: pulumi.Input<inputs.compute.SecurityPolicyRuleRateLimitOptions>;
     /**
+     * Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+     * Structure is documented below.
+     */
+    redirectOptions?: pulumi.Input<inputs.compute.SecurityPolicyRuleRedirectOptions>;
+    /**
      * The name of the security policy this rule belongs to.
      *
      *
@@ -354,6 +373,11 @@ export interface SecurityPolicyRuleArgs {
      * An optional description of this resource. Provide this property when you create the resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+     * Structure is documented below.
+     */
+    headerAction?: pulumi.Input<inputs.compute.SecurityPolicyRuleHeaderAction>;
     /**
      * A match condition that incoming traffic is evaluated against.
      * If it evaluates to true, the corresponding 'action' is enforced.
@@ -386,6 +410,11 @@ export interface SecurityPolicyRuleArgs {
      * Structure is documented below.
      */
     rateLimitOptions?: pulumi.Input<inputs.compute.SecurityPolicyRuleRateLimitOptions>;
+    /**
+     * Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+     * Structure is documented below.
+     */
+    redirectOptions?: pulumi.Input<inputs.compute.SecurityPolicyRuleRedirectOptions>;
     /**
      * The name of the security policy this rule belongs to.
      *

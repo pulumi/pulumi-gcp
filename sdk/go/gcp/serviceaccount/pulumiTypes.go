@@ -395,13 +395,174 @@ func (o IAMMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetSAccount struct {
+	// The Google service account ID (the part before the `@` sign in the `email`)
+	AccountId string `pulumi:"accountId"`
+	// Whether a service account is disabled or not.
+	Disabled bool `pulumi:"disabled"`
+	// The display name for the service account.
+	DisplayName string `pulumi:"displayName"`
+	// The e-mail address of the service account. This value
+	// should be referenced from any `organizations.getIAMPolicy` data sources
+	// that would grant the service account privileges.
+	Email string `pulumi:"email"`
+	// The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
+	Member string `pulumi:"member"`
+	// The fully-qualified name of the service account.
+	Name string `pulumi:"name"`
+	// The unique id of the service account.
+	UniqueId string `pulumi:"uniqueId"`
+}
+
+// GetSAccountInput is an input type that accepts GetSAccountArgs and GetSAccountOutput values.
+// You can construct a concrete instance of `GetSAccountInput` via:
+//
+//	GetSAccountArgs{...}
+type GetSAccountInput interface {
+	pulumi.Input
+
+	ToGetSAccountOutput() GetSAccountOutput
+	ToGetSAccountOutputWithContext(context.Context) GetSAccountOutput
+}
+
+type GetSAccountArgs struct {
+	// The Google service account ID (the part before the `@` sign in the `email`)
+	AccountId pulumi.StringInput `pulumi:"accountId"`
+	// Whether a service account is disabled or not.
+	Disabled pulumi.BoolInput `pulumi:"disabled"`
+	// The display name for the service account.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// The e-mail address of the service account. This value
+	// should be referenced from any `organizations.getIAMPolicy` data sources
+	// that would grant the service account privileges.
+	Email pulumi.StringInput `pulumi:"email"`
+	// The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
+	Member pulumi.StringInput `pulumi:"member"`
+	// The fully-qualified name of the service account.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The unique id of the service account.
+	UniqueId pulumi.StringInput `pulumi:"uniqueId"`
+}
+
+func (GetSAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSAccount)(nil)).Elem()
+}
+
+func (i GetSAccountArgs) ToGetSAccountOutput() GetSAccountOutput {
+	return i.ToGetSAccountOutputWithContext(context.Background())
+}
+
+func (i GetSAccountArgs) ToGetSAccountOutputWithContext(ctx context.Context) GetSAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSAccountOutput)
+}
+
+// GetSAccountArrayInput is an input type that accepts GetSAccountArray and GetSAccountArrayOutput values.
+// You can construct a concrete instance of `GetSAccountArrayInput` via:
+//
+//	GetSAccountArray{ GetSAccountArgs{...} }
+type GetSAccountArrayInput interface {
+	pulumi.Input
+
+	ToGetSAccountArrayOutput() GetSAccountArrayOutput
+	ToGetSAccountArrayOutputWithContext(context.Context) GetSAccountArrayOutput
+}
+
+type GetSAccountArray []GetSAccountInput
+
+func (GetSAccountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSAccount)(nil)).Elem()
+}
+
+func (i GetSAccountArray) ToGetSAccountArrayOutput() GetSAccountArrayOutput {
+	return i.ToGetSAccountArrayOutputWithContext(context.Background())
+}
+
+func (i GetSAccountArray) ToGetSAccountArrayOutputWithContext(ctx context.Context) GetSAccountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSAccountArrayOutput)
+}
+
+type GetSAccountOutput struct{ *pulumi.OutputState }
+
+func (GetSAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSAccount)(nil)).Elem()
+}
+
+func (o GetSAccountOutput) ToGetSAccountOutput() GetSAccountOutput {
+	return o
+}
+
+func (o GetSAccountOutput) ToGetSAccountOutputWithContext(ctx context.Context) GetSAccountOutput {
+	return o
+}
+
+// The Google service account ID (the part before the `@` sign in the `email`)
+func (o GetSAccountOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSAccount) string { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// Whether a service account is disabled or not.
+func (o GetSAccountOutput) Disabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSAccount) bool { return v.Disabled }).(pulumi.BoolOutput)
+}
+
+// The display name for the service account.
+func (o GetSAccountOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSAccount) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The e-mail address of the service account. This value
+// should be referenced from any `organizations.getIAMPolicy` data sources
+// that would grant the service account privileges.
+func (o GetSAccountOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSAccount) string { return v.Email }).(pulumi.StringOutput)
+}
+
+// The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
+func (o GetSAccountOutput) Member() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSAccount) string { return v.Member }).(pulumi.StringOutput)
+}
+
+// The fully-qualified name of the service account.
+func (o GetSAccountOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSAccount) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The unique id of the service account.
+func (o GetSAccountOutput) UniqueId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSAccount) string { return v.UniqueId }).(pulumi.StringOutput)
+}
+
+type GetSAccountArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSAccountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSAccount)(nil)).Elem()
+}
+
+func (o GetSAccountArrayOutput) ToGetSAccountArrayOutput() GetSAccountArrayOutput {
+	return o
+}
+
+func (o GetSAccountArrayOutput) ToGetSAccountArrayOutputWithContext(ctx context.Context) GetSAccountArrayOutput {
+	return o
+}
+
+func (o GetSAccountArrayOutput) Index(i pulumi.IntInput) GetSAccountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSAccount {
+		return vs[0].([]GetSAccount)[vs[1].(int)]
+	}).(GetSAccountOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*IAMBindingConditionInput)(nil)).Elem(), IAMBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IAMBindingConditionPtrInput)(nil)).Elem(), IAMBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IAMMemberConditionInput)(nil)).Elem(), IAMMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IAMMemberConditionPtrInput)(nil)).Elem(), IAMMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSAccountInput)(nil)).Elem(), GetSAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSAccountArrayInput)(nil)).Elem(), GetSAccountArray{})
 	pulumi.RegisterOutputType(IAMBindingConditionOutput{})
 	pulumi.RegisterOutputType(IAMBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(IAMMemberConditionOutput{})
 	pulumi.RegisterOutputType(IAMMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(GetSAccountOutput{})
+	pulumi.RegisterOutputType(GetSAccountArrayOutput{})
 }

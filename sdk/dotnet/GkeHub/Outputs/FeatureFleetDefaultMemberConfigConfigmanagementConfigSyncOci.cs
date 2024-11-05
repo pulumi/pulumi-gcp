@@ -35,9 +35,9 @@ namespace Pulumi.Gcp.GkeHub.Outputs
         public readonly string? SyncWaitSecs;
         /// <summary>
         /// (Optional, Deprecated)
-        /// Version of ACM installed
+        /// Version of Config Sync installed
         /// 
-        /// &gt; **Warning:** The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.
+        /// &gt; **Warning:** The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of Config Sync installed instead.
         /// </summary>
         public readonly string? Version;
 

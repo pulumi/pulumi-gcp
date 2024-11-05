@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// <summary>
         /// The name of the header to set.
         /// </summary>
-        public readonly string HeaderName;
+        public readonly string? HeaderName;
         /// <summary>
         /// The value to set the named header to.
         /// </summary>
@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.Compute.Outputs
 
         [OutputConstructor]
         private SecurityPolicyRuleHeaderActionRequestHeadersToAdd(
-            string headerName,
+            string? headerName,
 
             string? headerValue)
         {

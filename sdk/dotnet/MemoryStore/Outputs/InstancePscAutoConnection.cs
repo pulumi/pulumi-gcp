@@ -15,6 +15,15 @@ namespace Pulumi.Gcp.MemoryStore.Outputs
     {
         /// <summary>
         /// (Output)
+        /// Output Only. Type of a PSC Connection.
+        /// Possible values:
+        /// CONNECTION_TYPE_DISCOVERY
+        /// CONNECTION_TYPE_PRIMARY
+        /// CONNECTION_TYPE_READER
+        /// </summary>
+        public readonly string? ConnectionType;
+        /// <summary>
+        /// (Output)
         /// Output only. The URI of the consumer side forwarding rule.
         /// Format:
         /// projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
@@ -33,6 +42,11 @@ namespace Pulumi.Gcp.MemoryStore.Outputs
         public readonly string? Network;
         /// <summary>
         /// (Output)
+        /// Output only. Ports of the exposed endpoint.
+        /// </summary>
+        public readonly int? Port;
+        /// <summary>
+        /// (Output)
         /// Output only. The consumer project_id where the forwarding rule is created from.
         /// </summary>
         public readonly string? ProjectId;
@@ -42,24 +56,49 @@ namespace Pulumi.Gcp.MemoryStore.Outputs
         /// service attachment.
         /// </summary>
         public readonly string? PscConnectionId;
+        /// <summary>
+        /// (Output)
+        /// Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists.
+        /// Possible values:
+        /// ACTIVE
+        /// NOT_FOUND
+        /// </summary>
+        public readonly string? PscConnectionStatus;
+        /// <summary>
+        /// (Output)
+        /// Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+        /// </summary>
+        public readonly string? ServiceAttachment;
 
         [OutputConstructor]
         private InstancePscAutoConnection(
+            string? connectionType,
+
             string? forwardingRule,
 
             string? ipAddress,
 
             string? network,
 
+            int? port,
+
             string? projectId,
 
-            string? pscConnectionId)
+            string? pscConnectionId,
+
+            string? pscConnectionStatus,
+
+            string? serviceAttachment)
         {
+            ConnectionType = connectionType;
             ForwardingRule = forwardingRule;
             IpAddress = ipAddress;
             Network = network;
+            Port = port;
             ProjectId = projectId;
             PscConnectionId = pscConnectionId;
+            PscConnectionStatus = pscConnectionStatus;
+            ServiceAttachment = serviceAttachment;
         }
     }
 }

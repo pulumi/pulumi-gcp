@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *             .name("basic-cluster")
  *             .location("us-central1-a")
  *             .initialNodeCount(1)
- *             .deletionProtection("true")
+ *             .deletionProtection(true)
  *             .network("default")
  *             .subnetwork("default")
  *             .build());

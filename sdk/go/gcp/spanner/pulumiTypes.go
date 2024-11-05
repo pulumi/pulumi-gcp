@@ -1074,6 +1074,9 @@ func (o DatabaseIAMMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 type InstanceAutoscalingConfig struct {
+	// Asymmetric autoscaling options for specific replicas.
+	// Structure is documented below.
+	AsymmetricAutoscalingOptions []InstanceAutoscalingConfigAsymmetricAutoscalingOption `pulumi:"asymmetricAutoscalingOptions"`
 	// Defines scale in controls to reduce the risk of response latency
 	// and outages due to abrupt scale-in events. Users can define the minimum and
 	// maximum compute capacity allocated to the instance, and the autoscaler will
@@ -1100,6 +1103,9 @@ type InstanceAutoscalingConfigInput interface {
 }
 
 type InstanceAutoscalingConfigArgs struct {
+	// Asymmetric autoscaling options for specific replicas.
+	// Structure is documented below.
+	AsymmetricAutoscalingOptions InstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayInput `pulumi:"asymmetricAutoscalingOptions"`
 	// Defines scale in controls to reduce the risk of response latency
 	// and outages due to abrupt scale-in events. Users can define the minimum and
 	// maximum compute capacity allocated to the instance, and the autoscaler will
@@ -1191,6 +1197,14 @@ func (o InstanceAutoscalingConfigOutput) ToInstanceAutoscalingConfigPtrOutputWit
 	}).(InstanceAutoscalingConfigPtrOutput)
 }
 
+// Asymmetric autoscaling options for specific replicas.
+// Structure is documented below.
+func (o InstanceAutoscalingConfigOutput) AsymmetricAutoscalingOptions() InstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutput {
+	return o.ApplyT(func(v InstanceAutoscalingConfig) []InstanceAutoscalingConfigAsymmetricAutoscalingOption {
+		return v.AsymmetricAutoscalingOptions
+	}).(InstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutput)
+}
+
 // Defines scale in controls to reduce the risk of response latency
 // and outages due to abrupt scale-in events. Users can define the minimum and
 // maximum compute capacity allocated to the instance, and the autoscaler will
@@ -1237,6 +1251,17 @@ func (o InstanceAutoscalingConfigPtrOutput) Elem() InstanceAutoscalingConfigOutp
 	}).(InstanceAutoscalingConfigOutput)
 }
 
+// Asymmetric autoscaling options for specific replicas.
+// Structure is documented below.
+func (o InstanceAutoscalingConfigPtrOutput) AsymmetricAutoscalingOptions() InstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutput {
+	return o.ApplyT(func(v *InstanceAutoscalingConfig) []InstanceAutoscalingConfigAsymmetricAutoscalingOption {
+		if v == nil {
+			return nil
+		}
+		return v.AsymmetricAutoscalingOptions
+	}).(InstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutput)
+}
+
 // Defines scale in controls to reduce the risk of response latency
 // and outages due to abrupt scale-in events. Users can define the minimum and
 // maximum compute capacity allocated to the instance, and the autoscaler will
@@ -1265,16 +1290,304 @@ func (o InstanceAutoscalingConfigPtrOutput) AutoscalingTargets() InstanceAutosca
 	}).(InstanceAutoscalingConfigAutoscalingTargetsPtrOutput)
 }
 
+type InstanceAutoscalingConfigAsymmetricAutoscalingOption struct {
+	// A nested object resource
+	// Structure is documented below.
+	Overrides InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides `pulumi:"overrides"`
+	// A nested object resource
+	// Structure is documented below.
+	ReplicaSelection InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection `pulumi:"replicaSelection"`
+}
+
+// InstanceAutoscalingConfigAsymmetricAutoscalingOptionInput is an input type that accepts InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs and InstanceAutoscalingConfigAsymmetricAutoscalingOptionOutput values.
+// You can construct a concrete instance of `InstanceAutoscalingConfigAsymmetricAutoscalingOptionInput` via:
+//
+//	InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs{...}
+type InstanceAutoscalingConfigAsymmetricAutoscalingOptionInput interface {
+	pulumi.Input
+
+	ToInstanceAutoscalingConfigAsymmetricAutoscalingOptionOutput() InstanceAutoscalingConfigAsymmetricAutoscalingOptionOutput
+	ToInstanceAutoscalingConfigAsymmetricAutoscalingOptionOutputWithContext(context.Context) InstanceAutoscalingConfigAsymmetricAutoscalingOptionOutput
+}
+
+type InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs struct {
+	// A nested object resource
+	// Structure is documented below.
+	Overrides InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesInput `pulumi:"overrides"`
+	// A nested object resource
+	// Structure is documented below.
+	ReplicaSelection InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionInput `pulumi:"replicaSelection"`
+}
+
+func (InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceAutoscalingConfigAsymmetricAutoscalingOption)(nil)).Elem()
+}
+
+func (i InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs) ToInstanceAutoscalingConfigAsymmetricAutoscalingOptionOutput() InstanceAutoscalingConfigAsymmetricAutoscalingOptionOutput {
+	return i.ToInstanceAutoscalingConfigAsymmetricAutoscalingOptionOutputWithContext(context.Background())
+}
+
+func (i InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs) ToInstanceAutoscalingConfigAsymmetricAutoscalingOptionOutputWithContext(ctx context.Context) InstanceAutoscalingConfigAsymmetricAutoscalingOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceAutoscalingConfigAsymmetricAutoscalingOptionOutput)
+}
+
+// InstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayInput is an input type that accepts InstanceAutoscalingConfigAsymmetricAutoscalingOptionArray and InstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutput values.
+// You can construct a concrete instance of `InstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayInput` via:
+//
+//	InstanceAutoscalingConfigAsymmetricAutoscalingOptionArray{ InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs{...} }
+type InstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayInput interface {
+	pulumi.Input
+
+	ToInstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutput() InstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutput
+	ToInstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutputWithContext(context.Context) InstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutput
+}
+
+type InstanceAutoscalingConfigAsymmetricAutoscalingOptionArray []InstanceAutoscalingConfigAsymmetricAutoscalingOptionInput
+
+func (InstanceAutoscalingConfigAsymmetricAutoscalingOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceAutoscalingConfigAsymmetricAutoscalingOption)(nil)).Elem()
+}
+
+func (i InstanceAutoscalingConfigAsymmetricAutoscalingOptionArray) ToInstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutput() InstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutput {
+	return i.ToInstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceAutoscalingConfigAsymmetricAutoscalingOptionArray) ToInstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutputWithContext(ctx context.Context) InstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutput)
+}
+
+type InstanceAutoscalingConfigAsymmetricAutoscalingOptionOutput struct{ *pulumi.OutputState }
+
+func (InstanceAutoscalingConfigAsymmetricAutoscalingOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceAutoscalingConfigAsymmetricAutoscalingOption)(nil)).Elem()
+}
+
+func (o InstanceAutoscalingConfigAsymmetricAutoscalingOptionOutput) ToInstanceAutoscalingConfigAsymmetricAutoscalingOptionOutput() InstanceAutoscalingConfigAsymmetricAutoscalingOptionOutput {
+	return o
+}
+
+func (o InstanceAutoscalingConfigAsymmetricAutoscalingOptionOutput) ToInstanceAutoscalingConfigAsymmetricAutoscalingOptionOutputWithContext(ctx context.Context) InstanceAutoscalingConfigAsymmetricAutoscalingOptionOutput {
+	return o
+}
+
+// A nested object resource
+// Structure is documented below.
+func (o InstanceAutoscalingConfigAsymmetricAutoscalingOptionOutput) Overrides() InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesOutput {
+	return o.ApplyT(func(v InstanceAutoscalingConfigAsymmetricAutoscalingOption) InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides {
+		return v.Overrides
+	}).(InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesOutput)
+}
+
+// A nested object resource
+// Structure is documented below.
+func (o InstanceAutoscalingConfigAsymmetricAutoscalingOptionOutput) ReplicaSelection() InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionOutput {
+	return o.ApplyT(func(v InstanceAutoscalingConfigAsymmetricAutoscalingOption) InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection {
+		return v.ReplicaSelection
+	}).(InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionOutput)
+}
+
+type InstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceAutoscalingConfigAsymmetricAutoscalingOption)(nil)).Elem()
+}
+
+func (o InstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutput) ToInstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutput() InstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutput {
+	return o
+}
+
+func (o InstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutput) ToInstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutputWithContext(ctx context.Context) InstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutput {
+	return o
+}
+
+func (o InstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutput) Index(i pulumi.IntInput) InstanceAutoscalingConfigAsymmetricAutoscalingOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceAutoscalingConfigAsymmetricAutoscalingOption {
+		return vs[0].([]InstanceAutoscalingConfigAsymmetricAutoscalingOption)[vs[1].(int)]
+	}).(InstanceAutoscalingConfigAsymmetricAutoscalingOptionOutput)
+}
+
+type InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides struct {
+	// A nested object resource
+	// Structure is documented below.
+	AutoscalingLimits InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits `pulumi:"autoscalingLimits"`
+}
+
+// InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesInput is an input type that accepts InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgs and InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesOutput values.
+// You can construct a concrete instance of `InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesInput` via:
+//
+//	InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgs{...}
+type InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesInput interface {
+	pulumi.Input
+
+	ToInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesOutput() InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesOutput
+	ToInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesOutputWithContext(context.Context) InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesOutput
+}
+
+type InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgs struct {
+	// A nested object resource
+	// Structure is documented below.
+	AutoscalingLimits InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsInput `pulumi:"autoscalingLimits"`
+}
+
+func (InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides)(nil)).Elem()
+}
+
+func (i InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgs) ToInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesOutput() InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesOutput {
+	return i.ToInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesOutputWithContext(context.Background())
+}
+
+func (i InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgs) ToInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesOutputWithContext(ctx context.Context) InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesOutput)
+}
+
+type InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesOutput struct{ *pulumi.OutputState }
+
+func (InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides)(nil)).Elem()
+}
+
+func (o InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesOutput) ToInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesOutput() InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesOutput {
+	return o
+}
+
+func (o InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesOutput) ToInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesOutputWithContext(ctx context.Context) InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesOutput {
+	return o
+}
+
+// A nested object resource
+// Structure is documented below.
+func (o InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesOutput) AutoscalingLimits() InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsOutput {
+	return o.ApplyT(func(v InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides) InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits {
+		return v.AutoscalingLimits
+	}).(InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsOutput)
+}
+
+type InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits struct {
+	// The maximum number of nodes for this specific replica.
+	MaxNodes int `pulumi:"maxNodes"`
+	// The minimum number of nodes for this specific replica.
+	MinNodes int `pulumi:"minNodes"`
+}
+
+// InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsInput is an input type that accepts InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs and InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsOutput values.
+// You can construct a concrete instance of `InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsInput` via:
+//
+//	InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs{...}
+type InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsInput interface {
+	pulumi.Input
+
+	ToInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsOutput() InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsOutput
+	ToInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsOutputWithContext(context.Context) InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsOutput
+}
+
+type InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs struct {
+	// The maximum number of nodes for this specific replica.
+	MaxNodes pulumi.IntInput `pulumi:"maxNodes"`
+	// The minimum number of nodes for this specific replica.
+	MinNodes pulumi.IntInput `pulumi:"minNodes"`
+}
+
+func (InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits)(nil)).Elem()
+}
+
+func (i InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs) ToInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsOutput() InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsOutput {
+	return i.ToInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsOutputWithContext(context.Background())
+}
+
+func (i InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs) ToInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsOutputWithContext(ctx context.Context) InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsOutput)
+}
+
+type InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsOutput struct{ *pulumi.OutputState }
+
+func (InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits)(nil)).Elem()
+}
+
+func (o InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsOutput) ToInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsOutput() InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsOutput {
+	return o
+}
+
+func (o InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsOutput) ToInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsOutputWithContext(ctx context.Context) InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsOutput {
+	return o
+}
+
+// The maximum number of nodes for this specific replica.
+func (o InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsOutput) MaxNodes() pulumi.IntOutput {
+	return o.ApplyT(func(v InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits) int {
+		return v.MaxNodes
+	}).(pulumi.IntOutput)
+}
+
+// The minimum number of nodes for this specific replica.
+func (o InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsOutput) MinNodes() pulumi.IntOutput {
+	return o.ApplyT(func(v InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits) int {
+		return v.MinNodes
+	}).(pulumi.IntOutput)
+}
+
+type InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection struct {
+	// The location of the replica to apply asymmetric autoscaling options.
+	Location string `pulumi:"location"`
+}
+
+// InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionInput is an input type that accepts InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArgs and InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionOutput values.
+// You can construct a concrete instance of `InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionInput` via:
+//
+//	InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArgs{...}
+type InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionInput interface {
+	pulumi.Input
+
+	ToInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionOutput() InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionOutput
+	ToInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionOutputWithContext(context.Context) InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionOutput
+}
+
+type InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArgs struct {
+	// The location of the replica to apply asymmetric autoscaling options.
+	Location pulumi.StringInput `pulumi:"location"`
+}
+
+func (InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection)(nil)).Elem()
+}
+
+func (i InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArgs) ToInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionOutput() InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionOutput {
+	return i.ToInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionOutputWithContext(context.Background())
+}
+
+func (i InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArgs) ToInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionOutputWithContext(ctx context.Context) InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionOutput)
+}
+
+type InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionOutput struct{ *pulumi.OutputState }
+
+func (InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection)(nil)).Elem()
+}
+
+func (o InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionOutput) ToInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionOutput() InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionOutput {
+	return o
+}
+
+func (o InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionOutput) ToInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionOutputWithContext(ctx context.Context) InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionOutput {
+	return o
+}
+
+// The location of the replica to apply asymmetric autoscaling options.
+func (o InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection) string { return v.Location }).(pulumi.StringOutput)
+}
+
 type InstanceAutoscalingConfigAutoscalingLimits struct {
-	// Specifies maximum number of nodes allocated to the instance. If set, this number
-	// should be greater than or equal to min_nodes.
+	// The maximum number of nodes for this specific replica.
 	MaxNodes *int `pulumi:"maxNodes"`
 	// Specifies maximum number of processing units allocated to the instance.
 	// If set, this number should be multiples of 1000 and be greater than or equal to
 	// min_processing_units.
 	MaxProcessingUnits *int `pulumi:"maxProcessingUnits"`
-	// Specifies number of nodes allocated to the instance. If set, this number
-	// should be greater than or equal to 1.
+	// The minimum number of nodes for this specific replica.
 	MinNodes *int `pulumi:"minNodes"`
 	// Specifies minimum number of processing units allocated to the instance.
 	// If set, this number should be multiples of 1000.
@@ -1293,15 +1606,13 @@ type InstanceAutoscalingConfigAutoscalingLimitsInput interface {
 }
 
 type InstanceAutoscalingConfigAutoscalingLimitsArgs struct {
-	// Specifies maximum number of nodes allocated to the instance. If set, this number
-	// should be greater than or equal to min_nodes.
+	// The maximum number of nodes for this specific replica.
 	MaxNodes pulumi.IntPtrInput `pulumi:"maxNodes"`
 	// Specifies maximum number of processing units allocated to the instance.
 	// If set, this number should be multiples of 1000 and be greater than or equal to
 	// min_processing_units.
 	MaxProcessingUnits pulumi.IntPtrInput `pulumi:"maxProcessingUnits"`
-	// Specifies number of nodes allocated to the instance. If set, this number
-	// should be greater than or equal to 1.
+	// The minimum number of nodes for this specific replica.
 	MinNodes pulumi.IntPtrInput `pulumi:"minNodes"`
 	// Specifies minimum number of processing units allocated to the instance.
 	// If set, this number should be multiples of 1000.
@@ -1385,8 +1696,7 @@ func (o InstanceAutoscalingConfigAutoscalingLimitsOutput) ToInstanceAutoscalingC
 	}).(InstanceAutoscalingConfigAutoscalingLimitsPtrOutput)
 }
 
-// Specifies maximum number of nodes allocated to the instance. If set, this number
-// should be greater than or equal to min_nodes.
+// The maximum number of nodes for this specific replica.
 func (o InstanceAutoscalingConfigAutoscalingLimitsOutput) MaxNodes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceAutoscalingConfigAutoscalingLimits) *int { return v.MaxNodes }).(pulumi.IntPtrOutput)
 }
@@ -1398,8 +1708,7 @@ func (o InstanceAutoscalingConfigAutoscalingLimitsOutput) MaxProcessingUnits() p
 	return o.ApplyT(func(v InstanceAutoscalingConfigAutoscalingLimits) *int { return v.MaxProcessingUnits }).(pulumi.IntPtrOutput)
 }
 
-// Specifies number of nodes allocated to the instance. If set, this number
-// should be greater than or equal to 1.
+// The minimum number of nodes for this specific replica.
 func (o InstanceAutoscalingConfigAutoscalingLimitsOutput) MinNodes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceAutoscalingConfigAutoscalingLimits) *int { return v.MinNodes }).(pulumi.IntPtrOutput)
 }
@@ -1434,8 +1743,7 @@ func (o InstanceAutoscalingConfigAutoscalingLimitsPtrOutput) Elem() InstanceAuto
 	}).(InstanceAutoscalingConfigAutoscalingLimitsOutput)
 }
 
-// Specifies maximum number of nodes allocated to the instance. If set, this number
-// should be greater than or equal to min_nodes.
+// The maximum number of nodes for this specific replica.
 func (o InstanceAutoscalingConfigAutoscalingLimitsPtrOutput) MaxNodes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceAutoscalingConfigAutoscalingLimits) *int {
 		if v == nil {
@@ -1457,8 +1765,7 @@ func (o InstanceAutoscalingConfigAutoscalingLimitsPtrOutput) MaxProcessingUnits(
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies number of nodes allocated to the instance. If set, this number
-// should be greater than or equal to 1.
+// The minimum number of nodes for this specific replica.
 func (o InstanceAutoscalingConfigAutoscalingLimitsPtrOutput) MinNodes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceAutoscalingConfigAutoscalingLimits) *int {
 		if v == nil {
@@ -2111,6 +2418,8 @@ func (o InstanceIAMMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 type GetInstanceAutoscalingConfig struct {
+	// Asymmetric autoscaling options for specific replicas.
+	AsymmetricAutoscalingOptions []GetInstanceAutoscalingConfigAsymmetricAutoscalingOption `pulumi:"asymmetricAutoscalingOptions"`
 	// Defines scale in controls to reduce the risk of response latency
 	// and outages due to abrupt scale-in events. Users can define the minimum and
 	// maximum compute capacity allocated to the instance, and the autoscaler will
@@ -2135,6 +2444,8 @@ type GetInstanceAutoscalingConfigInput interface {
 }
 
 type GetInstanceAutoscalingConfigArgs struct {
+	// Asymmetric autoscaling options for specific replicas.
+	AsymmetricAutoscalingOptions GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayInput `pulumi:"asymmetricAutoscalingOptions"`
 	// Defines scale in controls to reduce the risk of response latency
 	// and outages due to abrupt scale-in events. Users can define the minimum and
 	// maximum compute capacity allocated to the instance, and the autoscaler will
@@ -2198,6 +2509,13 @@ func (o GetInstanceAutoscalingConfigOutput) ToGetInstanceAutoscalingConfigOutput
 	return o
 }
 
+// Asymmetric autoscaling options for specific replicas.
+func (o GetInstanceAutoscalingConfigOutput) AsymmetricAutoscalingOptions() GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutput {
+	return o.ApplyT(func(v GetInstanceAutoscalingConfig) []GetInstanceAutoscalingConfigAsymmetricAutoscalingOption {
+		return v.AsymmetricAutoscalingOptions
+	}).(GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutput)
+}
+
 // Defines scale in controls to reduce the risk of response latency
 // and outages due to abrupt scale-in events. Users can define the minimum and
 // maximum compute capacity allocated to the instance, and the autoscaler will
@@ -2236,6 +2554,424 @@ func (o GetInstanceAutoscalingConfigArrayOutput) Index(i pulumi.IntInput) GetIns
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceAutoscalingConfig {
 		return vs[0].([]GetInstanceAutoscalingConfig)[vs[1].(int)]
 	}).(GetInstanceAutoscalingConfigOutput)
+}
+
+type GetInstanceAutoscalingConfigAsymmetricAutoscalingOption struct {
+	// A nested object resource
+	Overrides []GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverride `pulumi:"overrides"`
+	// A nested object resource
+	ReplicaSelections []GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection `pulumi:"replicaSelections"`
+}
+
+// GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionInput is an input type that accepts GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs and GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOutput values.
+// You can construct a concrete instance of `GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionInput` via:
+//
+//	GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs{...}
+type GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionInput interface {
+	pulumi.Input
+
+	ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOutput() GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOutput
+	ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOutputWithContext(context.Context) GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOutput
+}
+
+type GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs struct {
+	// A nested object resource
+	Overrides GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArrayInput `pulumi:"overrides"`
+	// A nested object resource
+	ReplicaSelections GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArrayInput `pulumi:"replicaSelections"`
+}
+
+func (GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceAutoscalingConfigAsymmetricAutoscalingOption)(nil)).Elem()
+}
+
+func (i GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs) ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOutput() GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOutput {
+	return i.ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOutputWithContext(context.Background())
+}
+
+func (i GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs) ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOutputWithContext(ctx context.Context) GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOutput)
+}
+
+// GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayInput is an input type that accepts GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionArray and GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutput values.
+// You can construct a concrete instance of `GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayInput` via:
+//
+//	GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionArray{ GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs{...} }
+type GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutput() GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutput
+	ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutputWithContext(context.Context) GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutput
+}
+
+type GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionArray []GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionInput
+
+func (GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceAutoscalingConfigAsymmetricAutoscalingOption)(nil)).Elem()
+}
+
+func (i GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionArray) ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutput() GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutput {
+	return i.ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionArray) ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutputWithContext(ctx context.Context) GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutput)
+}
+
+type GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceAutoscalingConfigAsymmetricAutoscalingOption)(nil)).Elem()
+}
+
+func (o GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOutput) ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOutput() GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOutput {
+	return o
+}
+
+func (o GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOutput) ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOutputWithContext(ctx context.Context) GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOutput {
+	return o
+}
+
+// A nested object resource
+func (o GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOutput) Overrides() GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArrayOutput {
+	return o.ApplyT(func(v GetInstanceAutoscalingConfigAsymmetricAutoscalingOption) []GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverride {
+		return v.Overrides
+	}).(GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArrayOutput)
+}
+
+// A nested object resource
+func (o GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOutput) ReplicaSelections() GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArrayOutput {
+	return o.ApplyT(func(v GetInstanceAutoscalingConfigAsymmetricAutoscalingOption) []GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection {
+		return v.ReplicaSelections
+	}).(GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArrayOutput)
+}
+
+type GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceAutoscalingConfigAsymmetricAutoscalingOption)(nil)).Elem()
+}
+
+func (o GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutput) ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutput() GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutput {
+	return o
+}
+
+func (o GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutput) ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutputWithContext(ctx context.Context) GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutput {
+	return o
+}
+
+func (o GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutput) Index(i pulumi.IntInput) GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceAutoscalingConfigAsymmetricAutoscalingOption {
+		return vs[0].([]GetInstanceAutoscalingConfigAsymmetricAutoscalingOption)[vs[1].(int)]
+	}).(GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOutput)
+}
+
+type GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverride struct {
+	// A nested object resource
+	AutoscalingLimits []GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimit `pulumi:"autoscalingLimits"`
+}
+
+// GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideInput is an input type that accepts GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArgs and GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideOutput values.
+// You can construct a concrete instance of `GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideInput` via:
+//
+//	GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArgs{...}
+type GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideInput interface {
+	pulumi.Input
+
+	ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideOutput() GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideOutput
+	ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideOutputWithContext(context.Context) GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideOutput
+}
+
+type GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArgs struct {
+	// A nested object resource
+	AutoscalingLimits GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArrayInput `pulumi:"autoscalingLimits"`
+}
+
+func (GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverride)(nil)).Elem()
+}
+
+func (i GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArgs) ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideOutput() GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideOutput {
+	return i.ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideOutputWithContext(context.Background())
+}
+
+func (i GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArgs) ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideOutputWithContext(ctx context.Context) GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideOutput)
+}
+
+// GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArrayInput is an input type that accepts GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArray and GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArrayOutput values.
+// You can construct a concrete instance of `GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArrayInput` via:
+//
+//	GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArray{ GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArgs{...} }
+type GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArrayOutput() GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArrayOutput
+	ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArrayOutputWithContext(context.Context) GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArrayOutput
+}
+
+type GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArray []GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideInput
+
+func (GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverride)(nil)).Elem()
+}
+
+func (i GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArray) ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArrayOutput() GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArrayOutput {
+	return i.ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArray) ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArrayOutputWithContext(ctx context.Context) GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArrayOutput)
+}
+
+type GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverride)(nil)).Elem()
+}
+
+func (o GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideOutput) ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideOutput() GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideOutput {
+	return o
+}
+
+func (o GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideOutput) ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideOutputWithContext(ctx context.Context) GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideOutput {
+	return o
+}
+
+// A nested object resource
+func (o GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideOutput) AutoscalingLimits() GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArrayOutput {
+	return o.ApplyT(func(v GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverride) []GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimit {
+		return v.AutoscalingLimits
+	}).(GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArrayOutput)
+}
+
+type GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverride)(nil)).Elem()
+}
+
+func (o GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArrayOutput) ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArrayOutput() GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArrayOutput {
+	return o
+}
+
+func (o GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArrayOutput) ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArrayOutputWithContext(ctx context.Context) GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArrayOutput {
+	return o
+}
+
+func (o GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArrayOutput) Index(i pulumi.IntInput) GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverride {
+		return vs[0].([]GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverride)[vs[1].(int)]
+	}).(GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideOutput)
+}
+
+type GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimit struct {
+	// The maximum number of nodes for this specific replica.
+	MaxNodes int `pulumi:"maxNodes"`
+	// The minimum number of nodes for this specific replica.
+	MinNodes int `pulumi:"minNodes"`
+}
+
+// GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitInput is an input type that accepts GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArgs and GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitOutput values.
+// You can construct a concrete instance of `GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitInput` via:
+//
+//	GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArgs{...}
+type GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitInput interface {
+	pulumi.Input
+
+	ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitOutput() GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitOutput
+	ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitOutputWithContext(context.Context) GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitOutput
+}
+
+type GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArgs struct {
+	// The maximum number of nodes for this specific replica.
+	MaxNodes pulumi.IntInput `pulumi:"maxNodes"`
+	// The minimum number of nodes for this specific replica.
+	MinNodes pulumi.IntInput `pulumi:"minNodes"`
+}
+
+func (GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimit)(nil)).Elem()
+}
+
+func (i GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArgs) ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitOutput() GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitOutput {
+	return i.ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitOutputWithContext(context.Background())
+}
+
+func (i GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArgs) ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitOutputWithContext(ctx context.Context) GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitOutput)
+}
+
+// GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArrayInput is an input type that accepts GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArray and GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArrayOutput values.
+// You can construct a concrete instance of `GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArrayInput` via:
+//
+//	GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArray{ GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArgs{...} }
+type GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArrayOutput() GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArrayOutput
+	ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArrayOutputWithContext(context.Context) GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArrayOutput
+}
+
+type GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArray []GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitInput
+
+func (GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimit)(nil)).Elem()
+}
+
+func (i GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArray) ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArrayOutput() GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArrayOutput {
+	return i.ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArray) ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArrayOutputWithContext(ctx context.Context) GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArrayOutput)
+}
+
+type GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimit)(nil)).Elem()
+}
+
+func (o GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitOutput) ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitOutput() GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitOutput {
+	return o
+}
+
+func (o GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitOutput) ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitOutputWithContext(ctx context.Context) GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitOutput {
+	return o
+}
+
+// The maximum number of nodes for this specific replica.
+func (o GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitOutput) MaxNodes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimit) int {
+		return v.MaxNodes
+	}).(pulumi.IntOutput)
+}
+
+// The minimum number of nodes for this specific replica.
+func (o GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitOutput) MinNodes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimit) int {
+		return v.MinNodes
+	}).(pulumi.IntOutput)
+}
+
+type GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimit)(nil)).Elem()
+}
+
+func (o GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArrayOutput) ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArrayOutput() GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArrayOutput {
+	return o
+}
+
+func (o GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArrayOutput) ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArrayOutputWithContext(ctx context.Context) GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArrayOutput {
+	return o
+}
+
+func (o GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArrayOutput) Index(i pulumi.IntInput) GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimit {
+		return vs[0].([]GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimit)[vs[1].(int)]
+	}).(GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitOutput)
+}
+
+type GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection struct {
+	// The location of the replica to apply asymmetric autoscaling options.
+	Location string `pulumi:"location"`
+}
+
+// GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionInput is an input type that accepts GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArgs and GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionOutput values.
+// You can construct a concrete instance of `GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionInput` via:
+//
+//	GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArgs{...}
+type GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionInput interface {
+	pulumi.Input
+
+	ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionOutput() GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionOutput
+	ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionOutputWithContext(context.Context) GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionOutput
+}
+
+type GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArgs struct {
+	// The location of the replica to apply asymmetric autoscaling options.
+	Location pulumi.StringInput `pulumi:"location"`
+}
+
+func (GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection)(nil)).Elem()
+}
+
+func (i GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArgs) ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionOutput() GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionOutput {
+	return i.ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionOutputWithContext(context.Background())
+}
+
+func (i GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArgs) ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionOutputWithContext(ctx context.Context) GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionOutput)
+}
+
+// GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArrayInput is an input type that accepts GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArray and GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArrayOutput values.
+// You can construct a concrete instance of `GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArrayInput` via:
+//
+//	GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArray{ GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArgs{...} }
+type GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArrayOutput() GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArrayOutput
+	ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArrayOutputWithContext(context.Context) GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArrayOutput
+}
+
+type GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArray []GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionInput
+
+func (GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection)(nil)).Elem()
+}
+
+func (i GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArray) ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArrayOutput() GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArrayOutput {
+	return i.ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArray) ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArrayOutputWithContext(ctx context.Context) GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArrayOutput)
+}
+
+type GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection)(nil)).Elem()
+}
+
+func (o GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionOutput) ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionOutput() GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionOutput {
+	return o
+}
+
+func (o GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionOutput) ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionOutputWithContext(ctx context.Context) GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionOutput {
+	return o
+}
+
+// The location of the replica to apply asymmetric autoscaling options.
+func (o GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection) string {
+		return v.Location
+	}).(pulumi.StringOutput)
+}
+
+type GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection)(nil)).Elem()
+}
+
+func (o GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArrayOutput) ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArrayOutput() GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArrayOutput {
+	return o
+}
+
+func (o GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArrayOutput) ToGetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArrayOutputWithContext(ctx context.Context) GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArrayOutput {
+	return o
+}
+
+func (o GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArrayOutput) Index(i pulumi.IntInput) GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection {
+		return vs[0].([]GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection)[vs[1].(int)]
+	}).(GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionOutput)
 }
 
 type GetInstanceAutoscalingConfigAutoscalingLimit struct {
@@ -2512,6 +3248,11 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseIAMMemberConditionPtrInput)(nil)).Elem(), DatabaseIAMMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAutoscalingConfigInput)(nil)).Elem(), InstanceAutoscalingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAutoscalingConfigPtrInput)(nil)).Elem(), InstanceAutoscalingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAutoscalingConfigAsymmetricAutoscalingOptionInput)(nil)).Elem(), InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayInput)(nil)).Elem(), InstanceAutoscalingConfigAsymmetricAutoscalingOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesInput)(nil)).Elem(), InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsInput)(nil)).Elem(), InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionInput)(nil)).Elem(), InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAutoscalingConfigAutoscalingLimitsInput)(nil)).Elem(), InstanceAutoscalingConfigAutoscalingLimitsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAutoscalingConfigAutoscalingLimitsPtrInput)(nil)).Elem(), InstanceAutoscalingConfigAutoscalingLimitsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceAutoscalingConfigAutoscalingTargetsInput)(nil)).Elem(), InstanceAutoscalingConfigAutoscalingTargetsArgs{})
@@ -2524,6 +3265,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIAMMemberConditionPtrInput)(nil)).Elem(), InstanceIAMMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAutoscalingConfigInput)(nil)).Elem(), GetInstanceAutoscalingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAutoscalingConfigArrayInput)(nil)).Elem(), GetInstanceAutoscalingConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionInput)(nil)).Elem(), GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayInput)(nil)).Elem(), GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideInput)(nil)).Elem(), GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArrayInput)(nil)).Elem(), GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitInput)(nil)).Elem(), GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArrayInput)(nil)).Elem(), GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionInput)(nil)).Elem(), GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArrayInput)(nil)).Elem(), GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAutoscalingConfigAutoscalingLimitInput)(nil)).Elem(), GetInstanceAutoscalingConfigAutoscalingLimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAutoscalingConfigAutoscalingLimitArrayInput)(nil)).Elem(), GetInstanceAutoscalingConfigAutoscalingLimitArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAutoscalingConfigAutoscalingTargetInput)(nil)).Elem(), GetInstanceAutoscalingConfigAutoscalingTargetArgs{})
@@ -2544,6 +3293,11 @@ func init() {
 	pulumi.RegisterOutputType(DatabaseIAMMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(InstanceAutoscalingConfigOutput{})
 	pulumi.RegisterOutputType(InstanceAutoscalingConfigPtrOutput{})
+	pulumi.RegisterOutputType(InstanceAutoscalingConfigAsymmetricAutoscalingOptionOutput{})
+	pulumi.RegisterOutputType(InstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutput{})
+	pulumi.RegisterOutputType(InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesOutput{})
+	pulumi.RegisterOutputType(InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsOutput{})
+	pulumi.RegisterOutputType(InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionOutput{})
 	pulumi.RegisterOutputType(InstanceAutoscalingConfigAutoscalingLimitsOutput{})
 	pulumi.RegisterOutputType(InstanceAutoscalingConfigAutoscalingLimitsPtrOutput{})
 	pulumi.RegisterOutputType(InstanceAutoscalingConfigAutoscalingTargetsOutput{})
@@ -2556,6 +3310,14 @@ func init() {
 	pulumi.RegisterOutputType(InstanceIAMMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(GetInstanceAutoscalingConfigOutput{})
 	pulumi.RegisterOutputType(GetInstanceAutoscalingConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOutput{})
+	pulumi.RegisterOutputType(GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideOutput{})
+	pulumi.RegisterOutputType(GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitOutput{})
+	pulumi.RegisterOutputType(GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionOutput{})
+	pulumi.RegisterOutputType(GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceAutoscalingConfigAutoscalingLimitOutput{})
 	pulumi.RegisterOutputType(GetInstanceAutoscalingConfigAutoscalingLimitArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceAutoscalingConfigAutoscalingTargetOutput{})

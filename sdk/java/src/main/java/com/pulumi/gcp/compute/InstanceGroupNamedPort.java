@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  *                 .clusterIpv4CidrBlock("/19")
  *                 .servicesIpv4CidrBlock("/22")
  *                 .build())
- *             .deletionProtection("true")
+ *             .deletionProtection(true)
  *             .build());
  * 
  *         var myPort = new InstanceGroupNamedPort("myPort", InstanceGroupNamedPortArgs.builder()

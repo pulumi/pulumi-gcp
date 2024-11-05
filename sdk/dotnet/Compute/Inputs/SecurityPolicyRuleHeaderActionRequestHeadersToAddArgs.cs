@@ -15,8 +15,8 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// <summary>
         /// The name of the header to set.
         /// </summary>
-        [Input("headerName", required: true)]
-        public Input<string> HeaderName { get; set; } = null!;
+        [Input("headerName")]
+        public Input<string>? HeaderName { get; set; }
 
         /// <summary>
         /// The value to set the named header to.

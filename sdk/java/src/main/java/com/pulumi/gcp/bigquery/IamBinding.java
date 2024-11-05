@@ -334,7 +334,7 @@ import javax.annotation.Nullable;
  * $ pulumi import gcp:bigquery/iamBinding:IamBinding editor projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}
  * ```
  * 
- * -&gt; **Custom Roles**: If you&#39;re importing a IAM resource with a custom role, make sure to use the
+ * -&gt; **Custom Roles** If you&#39;re importing a IAM resource with a custom role, make sure to use the
  * 
  *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  * 

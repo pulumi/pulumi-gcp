@@ -27,7 +27,7 @@ class GetDatasetResult:
     """
     A collection of values returned by getDataset.
     """
-    def __init__(__self__, accesses=None, creation_time=None, dataset_id=None, default_collation=None, default_encryption_configurations=None, default_partition_expiration_ms=None, default_table_expiration_ms=None, delete_contents_on_destroy=None, description=None, effective_labels=None, etag=None, external_dataset_references=None, friendly_name=None, id=None, is_case_insensitive=None, labels=None, last_modified_time=None, location=None, max_time_travel_hours=None, project=None, pulumi_labels=None, resource_tags=None, self_link=None, storage_billing_model=None):
+    def __init__(__self__, accesses=None, creation_time=None, dataset_id=None, default_collation=None, default_encryption_configurations=None, default_partition_expiration_ms=None, default_table_expiration_ms=None, delete_contents_on_destroy=None, description=None, effective_labels=None, etag=None, external_catalog_dataset_options=None, external_dataset_references=None, friendly_name=None, id=None, is_case_insensitive=None, labels=None, last_modified_time=None, location=None, max_time_travel_hours=None, project=None, pulumi_labels=None, resource_tags=None, self_link=None, storage_billing_model=None):
         if accesses and not isinstance(accesses, list):
             raise TypeError("Expected argument 'accesses' to be a list")
         pulumi.set(__self__, "accesses", accesses)
@@ -61,6 +61,9 @@ class GetDatasetResult:
         if etag and not isinstance(etag, str):
             raise TypeError("Expected argument 'etag' to be a str")
         pulumi.set(__self__, "etag", etag)
+        if external_catalog_dataset_options and not isinstance(external_catalog_dataset_options, list):
+            raise TypeError("Expected argument 'external_catalog_dataset_options' to be a list")
+        pulumi.set(__self__, "external_catalog_dataset_options", external_catalog_dataset_options)
         if external_dataset_references and not isinstance(external_dataset_references, list):
             raise TypeError("Expected argument 'external_dataset_references' to be a list")
         pulumi.set(__self__, "external_dataset_references", external_dataset_references)
@@ -157,6 +160,11 @@ class GetDatasetResult:
         return pulumi.get(self, "etag")
 
     @property
+    @pulumi.getter(name="externalCatalogDatasetOptions")
+    def external_catalog_dataset_options(self) -> Sequence['outputs.GetDatasetExternalCatalogDatasetOptionResult']:
+        return pulumi.get(self, "external_catalog_dataset_options")
+
+    @property
     @pulumi.getter(name="externalDatasetReferences")
     def external_dataset_references(self) -> Sequence['outputs.GetDatasetExternalDatasetReferenceResult']:
         return pulumi.get(self, "external_dataset_references")
@@ -242,6 +250,7 @@ class AwaitableGetDatasetResult(GetDatasetResult):
             description=self.description,
             effective_labels=self.effective_labels,
             etag=self.etag,
+            external_catalog_dataset_options=self.external_catalog_dataset_options,
             external_dataset_references=self.external_dataset_references,
             friendly_name=self.friendly_name,
             id=self.id,
@@ -298,6 +307,7 @@ def get_dataset(dataset_id: Optional[str] = None,
         description=pulumi.get(__ret__, 'description'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
         etag=pulumi.get(__ret__, 'etag'),
+        external_catalog_dataset_options=pulumi.get(__ret__, 'external_catalog_dataset_options'),
         external_dataset_references=pulumi.get(__ret__, 'external_dataset_references'),
         friendly_name=pulumi.get(__ret__, 'friendly_name'),
         id=pulumi.get(__ret__, 'id'),
@@ -351,6 +361,7 @@ def get_dataset_output(dataset_id: Optional[pulumi.Input[str]] = None,
         description=pulumi.get(__response__, 'description'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),
         etag=pulumi.get(__response__, 'etag'),
+        external_catalog_dataset_options=pulumi.get(__response__, 'external_catalog_dataset_options'),
         external_dataset_references=pulumi.get(__response__, 'external_dataset_references'),
         friendly_name=pulumi.get(__response__, 'friendly_name'),
         id=pulumi.get(__response__, 'id'),

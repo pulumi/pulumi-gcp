@@ -169,6 +169,57 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## gcp.bigquery.DatasetIamPolicy
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigquery.DatasetIamPolicy;
+ * import com.pulumi.gcp.bigquery.DatasetIamPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var owner = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role("roles/bigquery.dataOwner")
+ *                 .members("user:jane}{@literal @}{@code example.com")
+ *                 .build())
+ *             .build());
+ * 
+ *         var datasetDataset = new Dataset("datasetDataset", DatasetArgs.builder()
+ *             .datasetId("example_dataset")
+ *             .build());
+ * 
+ *         var dataset = new DatasetIamPolicy("dataset", DatasetIamPolicyArgs.builder()
+ *             .datasetId(datasetDataset.datasetId())
+ *             .policyData(owner.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## gcp.bigquery.DatasetIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

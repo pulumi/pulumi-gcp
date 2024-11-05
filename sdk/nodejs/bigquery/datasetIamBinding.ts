@@ -72,6 +72,25 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ## gcp.bigquery.DatasetIamPolicy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const owner = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/bigquery.dataOwner",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const datasetDataset = new gcp.bigquery.Dataset("dataset", {datasetId: "example_dataset"});
+ * const dataset = new gcp.bigquery.DatasetIamPolicy("dataset", {
+ *     datasetId: datasetDataset.datasetId,
+ *     policyData: owner.then(owner => owner.policyData),
+ * });
+ * ```
+ *
  * ## gcp.bigquery.DatasetIamBinding
  *
  * ```typescript
@@ -171,6 +190,9 @@ export class DatasetIamBinding extends pulumi.CustomResource {
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
      * * **iamMember:{principal}**: Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group. This is used for example for workload/workforce federated identities (principal, principalSet).
+     * * **projectOwners**: A special identifier that represents the Owners of the project of the dataset.
+     * * **projectReaders**: A special identifier that represents the Viewers of the project of the dataset.
+     * * **projectWriters**: A special identifier that represents the Editors of the project of the dataset.
      * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
      * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
      */
@@ -250,6 +272,9 @@ export interface DatasetIamBindingState {
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
      * * **iamMember:{principal}**: Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group. This is used for example for workload/workforce federated identities (principal, principalSet).
+     * * **projectOwners**: A special identifier that represents the Owners of the project of the dataset.
+     * * **projectReaders**: A special identifier that represents the Viewers of the project of the dataset.
+     * * **projectWriters**: A special identifier that represents the Editors of the project of the dataset.
      * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
      * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
      */
@@ -284,6 +309,9 @@ export interface DatasetIamBindingArgs {
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
      * * **iamMember:{principal}**: Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group. This is used for example for workload/workforce federated identities (principal, principalSet).
+     * * **projectOwners**: A special identifier that represents the Owners of the project of the dataset.
+     * * **projectReaders**: A special identifier that represents the Viewers of the project of the dataset.
+     * * **projectWriters**: A special identifier that represents the Editors of the project of the dataset.
      * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
      * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
      */

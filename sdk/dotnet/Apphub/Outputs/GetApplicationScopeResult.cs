@@ -16,7 +16,8 @@ namespace Pulumi.Gcp.Apphub.Outputs
         /// <summary>
         /// Required. Scope Type. 
         ///  Possible values:
-        /// REGIONAL Possible values: ["REGIONAL"]
+        /// REGIONAL
+        /// GLOBAL Possible values: ["REGIONAL", "GLOBAL"]
         /// </summary>
         public readonly string Type;
 

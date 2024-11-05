@@ -14,8 +14,7 @@ namespace Pulumi.Gcp.Spanner.Outputs
     public sealed class InstanceAutoscalingConfigAutoscalingLimits
     {
         /// <summary>
-        /// Specifies maximum number of nodes allocated to the instance. If set, this number
-        /// should be greater than or equal to min_nodes.
+        /// The maximum number of nodes for this specific replica.
         /// </summary>
         public readonly int? MaxNodes;
         /// <summary>
@@ -25,8 +24,7 @@ namespace Pulumi.Gcp.Spanner.Outputs
         /// </summary>
         public readonly int? MaxProcessingUnits;
         /// <summary>
-        /// Specifies number of nodes allocated to the instance. If set, this number
-        /// should be greater than or equal to 1.
+        /// The minimum number of nodes for this specific replica.
         /// </summary>
         public readonly int? MinNodes;
         /// <summary>

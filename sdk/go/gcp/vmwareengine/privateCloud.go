@@ -110,6 +110,30 @@ import (
 //							CustomCoreCount: pulumi.Int(32),
 //						},
 //					},
+//					AutoscalingSettings: &vmwareengine.PrivateCloudManagementClusterAutoscalingSettingsArgs{
+//						AutoscalingPolicies: vmwareengine.PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArray{
+//							&vmwareengine.PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArgs{
+//								AutoscalePolicyId: pulumi.String("autoscaling-policy"),
+//								NodeTypeId:        pulumi.String("standard-72"),
+//								ScaleOutSize:      pulumi.Int(1),
+//								CpuThresholds: &vmwareengine.PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs{
+//									ScaleOut: pulumi.Int(80),
+//									ScaleIn:  pulumi.Int(15),
+//								},
+//								ConsumedMemoryThresholds: &vmwareengine.PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs{
+//									ScaleOut: pulumi.Int(75),
+//									ScaleIn:  pulumi.Int(20),
+//								},
+//								StorageThresholds: &vmwareengine.PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs{
+//									ScaleOut: pulumi.Int(80),
+//									ScaleIn:  pulumi.Int(20),
+//								},
+//							},
+//						},
+//						MinClusterNodeCount: pulumi.Int(3),
+//						MaxClusterNodeCount: pulumi.Int(8),
+//						CoolDownPeriod:      pulumi.String("1800s"),
+//					},
 //				},
 //				DeletionDelayHours:           pulumi.Int(0),
 //				SendDeletionDelayHoursIfZero: pulumi.Bool(true),

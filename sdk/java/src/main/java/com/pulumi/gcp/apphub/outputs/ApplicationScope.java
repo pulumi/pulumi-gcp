@@ -14,7 +14,8 @@ public final class ApplicationScope {
      * @return Required. Scope Type.
      * Possible values:
      * REGIONAL
-     * Possible values are: `REGIONAL`.
+     * GLOBAL
+     * Possible values are: `REGIONAL`, `GLOBAL`.
      * 
      * ***
      * 
@@ -26,7 +27,8 @@ public final class ApplicationScope {
      * @return Required. Scope Type.
      * Possible values:
      * REGIONAL
-     * Possible values are: `REGIONAL`.
+     * GLOBAL
+     * Possible values are: `REGIONAL`, `GLOBAL`.
      * 
      * ***
      * 

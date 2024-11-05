@@ -131,8 +131,6 @@ type ManagementServerNetwork struct {
 	// Type of Network peeringMode
 	// Default value is `PRIVATE_SERVICE_ACCESS`.
 	// Possible values are: `PRIVATE_SERVICE_ACCESS`.
-	//
-	// ***
 	PeeringMode *string `pulumi:"peeringMode"`
 }
 
@@ -153,8 +151,6 @@ type ManagementServerNetworkArgs struct {
 	// Type of Network peeringMode
 	// Default value is `PRIVATE_SERVICE_ACCESS`.
 	// Possible values are: `PRIVATE_SERVICE_ACCESS`.
-	//
-	// ***
 	PeeringMode pulumi.StringPtrInput `pulumi:"peeringMode"`
 }
 
@@ -217,8 +213,6 @@ func (o ManagementServerNetworkOutput) Network() pulumi.StringOutput {
 // Type of Network peeringMode
 // Default value is `PRIVATE_SERVICE_ACCESS`.
 // Possible values are: `PRIVATE_SERVICE_ACCESS`.
-//
-// ***
 func (o ManagementServerNetworkOutput) PeeringMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagementServerNetwork) *string { return v.PeeringMode }).(pulumi.StringPtrOutput)
 }

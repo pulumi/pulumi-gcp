@@ -361,7 +361,7 @@ class Application(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Application Basic
+        ### Apphub Application Basic
 
         ```python
         import pulumi
@@ -374,7 +374,20 @@ class Application(pulumi.CustomResource):
                 "type": "REGIONAL",
             })
         ```
-        ### Application Full
+        ### Apphub Application Global Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.apphub.Application("example",
+            location="global",
+            application_id="example-application",
+            scope={
+                "type": "GLOBAL",
+            })
+        ```
+        ### Apphub Application Full
 
         ```python
         import pulumi
@@ -455,7 +468,7 @@ class Application(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Application Basic
+        ### Apphub Application Basic
 
         ```python
         import pulumi
@@ -468,7 +481,20 @@ class Application(pulumi.CustomResource):
                 "type": "REGIONAL",
             })
         ```
-        ### Application Full
+        ### Apphub Application Global Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.apphub.Application("example",
+            location="global",
+            application_id="example-application",
+            scope={
+                "type": "GLOBAL",
+            })
+        ```
+        ### Apphub Application Full
 
         ```python
         import pulumi

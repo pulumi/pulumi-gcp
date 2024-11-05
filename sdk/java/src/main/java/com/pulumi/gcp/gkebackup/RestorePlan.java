@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  *                     .enabled(true)
  *                     .build())
  *                 .build())
- *             .deletionProtection("")
+ *             .deletionProtection(true)
  *             .network("default")
  *             .subnetwork("default")
  *             .build());
@@ -160,7 +160,7 @@ import javax.annotation.Nullable;
  *                     .enabled(true)
  *                     .build())
  *                 .build())
- *             .deletionProtection("")
+ *             .deletionProtection(true)
  *             .network("default")
  *             .subnetwork("default")
  *             .build());
@@ -255,7 +255,7 @@ import javax.annotation.Nullable;
  *                     .enabled(true)
  *                     .build())
  *                 .build())
- *             .deletionProtection("")
+ *             .deletionProtection(true)
  *             .network("default")
  *             .subnetwork("default")
  *             .build());
@@ -343,7 +343,7 @@ import javax.annotation.Nullable;
  *                     .enabled(true)
  *                     .build())
  *                 .build())
- *             .deletionProtection("")
+ *             .deletionProtection(true)
  *             .network("default")
  *             .subnetwork("default")
  *             .build());
@@ -427,7 +427,7 @@ import javax.annotation.Nullable;
  *                     .enabled(true)
  *                     .build())
  *                 .build())
- *             .deletionProtection("")
+ *             .deletionProtection(true)
  *             .network("default")
  *             .subnetwork("default")
  *             .build());
@@ -539,7 +539,7 @@ import javax.annotation.Nullable;
  *                     .enabled(true)
  *                     .build())
  *                 .build())
- *             .deletionProtection("")
+ *             .deletionProtection(true)
  *             .network("default")
  *             .subnetwork("default")
  *             .build());
@@ -645,7 +645,7 @@ import javax.annotation.Nullable;
  *                     .enabled(true)
  *                     .build())
  *                 .build())
- *             .deletionProtection("")
+ *             .deletionProtection(true)
  *             .network("default")
  *             .subnetwork("default")
  *             .build());
@@ -730,7 +730,7 @@ import javax.annotation.Nullable;
  *                     .enabled(true)
  *                     .build())
  *                 .build())
- *             .deletionProtection("")
+ *             .deletionProtection(true)
  *             .network("default")
  *             .subnetwork("default")
  *             .build());
@@ -837,7 +837,7 @@ import javax.annotation.Nullable;
  *                     .enabled(true)
  *                     .build())
  *                 .build())
- *             .deletionProtection("")
+ *             .deletionProtection(true)
  *             .network("default")
  *             .subnetwork("default")
  *             .build());

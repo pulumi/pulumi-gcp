@@ -462,7 +462,7 @@ class FeatureIamBinding(pulumi.CustomResource):
         $ pulumi import gcp:gkehub/featureIamBinding:FeatureIamBinding editor projects/{{project}}/locations/{{location}}/features/{{feature}}
         ```
 
-        -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
@@ -653,7 +653,7 @@ class FeatureIamBinding(pulumi.CustomResource):
         $ pulumi import gcp:gkehub/featureIamBinding:FeatureIamBinding editor projects/{{project}}/locations/{{location}}/features/{{feature}}
         ```
 
-        -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 

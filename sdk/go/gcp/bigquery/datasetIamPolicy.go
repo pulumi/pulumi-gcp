@@ -147,6 +147,53 @@ import (
 //
 // ```
 //
+// ## bigquery.DatasetIamPolicy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			owner, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/bigquery.dataOwner",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			datasetDataset, err := bigquery.NewDataset(ctx, "dataset", &bigquery.DatasetArgs{
+//				DatasetId: pulumi.String("example_dataset"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigquery.NewDatasetIamPolicy(ctx, "dataset", &bigquery.DatasetIamPolicyArgs{
+//				DatasetId:  datasetDataset.DatasetId,
+//				PolicyData: pulumi.String(owner.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## bigquery.DatasetIamBinding
 //
 // ```go

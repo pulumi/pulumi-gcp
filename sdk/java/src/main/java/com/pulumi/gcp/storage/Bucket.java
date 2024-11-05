@@ -385,14 +385,14 @@ public class Bucket extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.forceDestroy);
     }
     /**
-     * The bucket&#39;s hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below.
+     * The bucket&#39;s hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniform_bucket_level_access` must be enabled on bucket.
      * 
      */
     @Export(name="hierarchicalNamespace", refs={BucketHierarchicalNamespace.class}, tree="[0]")
     private Output</* @Nullable */ BucketHierarchicalNamespace> hierarchicalNamespace;
 
     /**
-     * @return The bucket&#39;s hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below.
+     * @return The bucket&#39;s hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniform_bucket_level_access` must be enabled on bucket.
      * 
      */
     public Output<Optional<BucketHierarchicalNamespace>> hierarchicalNamespace() {

@@ -909,7 +909,7 @@ class Subscription(pulumi.CustomResource):
             push_config={
                 "push_endpoint": "https://example.com/push",
                 "attributes": {
-                    "x_goog_version": "v1",
+                    "x-goog-version": "v1",
                 },
             })
         ```
@@ -978,18 +978,8 @@ class Subscription(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example = gcp.pubsub.Topic("example", name="example-topic")
-        project = gcp.organizations.get_project()
-        viewer = gcp.projects.IAMMember("viewer",
-            project=project.project_id,
-            role="roles/bigquery.metadataViewer",
-            member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
-        editor = gcp.projects.IAMMember("editor",
-            project=project.project_id,
-            role="roles/bigquery.dataEditor",
-            member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
         test = gcp.bigquery.Dataset("test", dataset_id="example_dataset")
         test_table = gcp.bigquery.Table("test",
-            deletion_protection=False,
             table_id="example_table",
             dataset_id=test.dataset_id,
             schema=\"\"\"[
@@ -1000,7 +990,8 @@ class Subscription(pulumi.CustomResource):
             "description": "The data"
           }
         ]
-        \"\"\")
+        \"\"\",
+            deletion_protection=False)
         example_subscription = gcp.pubsub.Subscription("example",
             name="example-subscription",
             topic=example.id,
@@ -1011,11 +1002,8 @@ class Subscription(pulumi.CustomResource):
                     table_id=test_table.table_id
         ).apply(lambda resolved_outputs: f"{resolved_outputs['project']}.{resolved_outputs['dataset_id']}.{resolved_outputs['table_id']}")
         ,
-            },
-            opts = pulumi.ResourceOptions(depends_on=[
-                    viewer,
-                    editor,
-                ]))
+            })
+        project = gcp.organizations.get_project()
         ```
         ### Pubsub Subscription Push Bq Table Schema
 
@@ -1024,18 +1012,8 @@ class Subscription(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example = gcp.pubsub.Topic("example", name="example-topic")
-        project = gcp.organizations.get_project()
-        viewer = gcp.projects.IAMMember("viewer",
-            project=project.project_id,
-            role="roles/bigquery.metadataViewer",
-            member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
-        editor = gcp.projects.IAMMember("editor",
-            project=project.project_id,
-            role="roles/bigquery.dataEditor",
-            member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
         test = gcp.bigquery.Dataset("test", dataset_id="example_dataset")
         test_table = gcp.bigquery.Table("test",
-            deletion_protection=False,
             table_id="example_table",
             dataset_id=test.dataset_id,
             schema=\"\"\"[
@@ -1046,7 +1024,8 @@ class Subscription(pulumi.CustomResource):
             "description": "The data"
           }
         ]
-        \"\"\")
+        \"\"\",
+            deletion_protection=False)
         example_subscription = gcp.pubsub.Subscription("example",
             name="example-subscription",
             topic=example.id,
@@ -1058,11 +1037,8 @@ class Subscription(pulumi.CustomResource):
         ).apply(lambda resolved_outputs: f"{resolved_outputs['project']}.{resolved_outputs['dataset_id']}.{resolved_outputs['table_id']}")
         ,
                 "use_table_schema": True,
-            },
-            opts = pulumi.ResourceOptions(depends_on=[
-                    viewer,
-                    editor,
-                ]))
+            })
+        project = gcp.organizations.get_project()
         ```
         ### Pubsub Subscription Push Bq Service Account
 
@@ -1373,7 +1349,7 @@ class Subscription(pulumi.CustomResource):
             push_config={
                 "push_endpoint": "https://example.com/push",
                 "attributes": {
-                    "x_goog_version": "v1",
+                    "x-goog-version": "v1",
                 },
             })
         ```
@@ -1442,18 +1418,8 @@ class Subscription(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example = gcp.pubsub.Topic("example", name="example-topic")
-        project = gcp.organizations.get_project()
-        viewer = gcp.projects.IAMMember("viewer",
-            project=project.project_id,
-            role="roles/bigquery.metadataViewer",
-            member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
-        editor = gcp.projects.IAMMember("editor",
-            project=project.project_id,
-            role="roles/bigquery.dataEditor",
-            member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
         test = gcp.bigquery.Dataset("test", dataset_id="example_dataset")
         test_table = gcp.bigquery.Table("test",
-            deletion_protection=False,
             table_id="example_table",
             dataset_id=test.dataset_id,
             schema=\"\"\"[
@@ -1464,7 +1430,8 @@ class Subscription(pulumi.CustomResource):
             "description": "The data"
           }
         ]
-        \"\"\")
+        \"\"\",
+            deletion_protection=False)
         example_subscription = gcp.pubsub.Subscription("example",
             name="example-subscription",
             topic=example.id,
@@ -1475,11 +1442,8 @@ class Subscription(pulumi.CustomResource):
                     table_id=test_table.table_id
         ).apply(lambda resolved_outputs: f"{resolved_outputs['project']}.{resolved_outputs['dataset_id']}.{resolved_outputs['table_id']}")
         ,
-            },
-            opts = pulumi.ResourceOptions(depends_on=[
-                    viewer,
-                    editor,
-                ]))
+            })
+        project = gcp.organizations.get_project()
         ```
         ### Pubsub Subscription Push Bq Table Schema
 
@@ -1488,18 +1452,8 @@ class Subscription(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example = gcp.pubsub.Topic("example", name="example-topic")
-        project = gcp.organizations.get_project()
-        viewer = gcp.projects.IAMMember("viewer",
-            project=project.project_id,
-            role="roles/bigquery.metadataViewer",
-            member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
-        editor = gcp.projects.IAMMember("editor",
-            project=project.project_id,
-            role="roles/bigquery.dataEditor",
-            member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
         test = gcp.bigquery.Dataset("test", dataset_id="example_dataset")
         test_table = gcp.bigquery.Table("test",
-            deletion_protection=False,
             table_id="example_table",
             dataset_id=test.dataset_id,
             schema=\"\"\"[
@@ -1510,7 +1464,8 @@ class Subscription(pulumi.CustomResource):
             "description": "The data"
           }
         ]
-        \"\"\")
+        \"\"\",
+            deletion_protection=False)
         example_subscription = gcp.pubsub.Subscription("example",
             name="example-subscription",
             topic=example.id,
@@ -1522,11 +1477,8 @@ class Subscription(pulumi.CustomResource):
         ).apply(lambda resolved_outputs: f"{resolved_outputs['project']}.{resolved_outputs['dataset_id']}.{resolved_outputs['table_id']}")
         ,
                 "use_table_schema": True,
-            },
-            opts = pulumi.ResourceOptions(depends_on=[
-                    viewer,
-                    editor,
-                ]))
+            })
+        project = gcp.organizations.get_project()
         ```
         ### Pubsub Subscription Push Bq Service Account
 

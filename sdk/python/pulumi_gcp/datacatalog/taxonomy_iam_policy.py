@@ -330,7 +330,7 @@ class TaxonomyIamPolicy(pulumi.CustomResource):
         $ pulumi import gcp:datacatalog/taxonomyIamPolicy:TaxonomyIamPolicy editor projects/{{project}}/locations/{{region}}/taxonomies/{{taxonomy}}
         ```
 
-        -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
@@ -494,7 +494,7 @@ class TaxonomyIamPolicy(pulumi.CustomResource):
         $ pulumi import gcp:datacatalog/taxonomyIamPolicy:TaxonomyIamPolicy editor projects/{{project}}/locations/{{region}}/taxonomies/{{taxonomy}}
         ```
 
-        -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 

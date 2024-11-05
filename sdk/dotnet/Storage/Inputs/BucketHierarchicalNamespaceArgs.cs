@@ -13,8 +13,7 @@ namespace Pulumi.Gcp.Storage.Inputs
     public sealed class BucketHierarchicalNamespaceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable hierarchical namespace for the bucket. 
-        /// To use this flag, you must also use --uniform-bucket-level-access
+        /// Enables hierarchical namespace for the bucket.
         /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;

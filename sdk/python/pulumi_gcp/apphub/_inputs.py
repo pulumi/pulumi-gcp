@@ -420,7 +420,8 @@ if not MYPY:
         Required. Scope Type.
         Possible values:
         REGIONAL
-        Possible values are: `REGIONAL`.
+        GLOBAL
+        Possible values are: `REGIONAL`, `GLOBAL`.
 
         - - -
         """
@@ -435,7 +436,8 @@ class ApplicationScopeArgs:
         :param pulumi.Input[str] type: Required. Scope Type.
                Possible values:
                REGIONAL
-               Possible values are: `REGIONAL`.
+               GLOBAL
+               Possible values are: `REGIONAL`, `GLOBAL`.
                
                - - -
         """
@@ -448,7 +450,8 @@ class ApplicationScopeArgs:
         Required. Scope Type.
         Possible values:
         REGIONAL
-        Possible values are: `REGIONAL`.
+        GLOBAL
+        Possible values are: `REGIONAL`, `GLOBAL`.
 
         - - -
         """

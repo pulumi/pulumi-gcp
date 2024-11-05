@@ -1039,7 +1039,7 @@ import (
 //							MatchResponseCodes: pulumi.StringArray{
 //								pulumi.String("5xx"),
 //							},
-//							Path:                 pulumi.String("/*"),
+//							Path:                 pulumi.String("/internal_error.html"),
 //							OverrideResponseCode: pulumi.Int(502),
 //						},
 //					},
@@ -1064,14 +1064,14 @@ import (
 //										pulumi.String("4xx"),
 //										pulumi.String("5xx"),
 //									},
-//									Path:                 pulumi.String("/login"),
+//									Path:                 pulumi.String("/login_error.html"),
 //									OverrideResponseCode: pulumi.Int(404),
 //								},
 //								&compute.URLMapPathMatcherDefaultCustomErrorResponsePolicyErrorResponseRuleArgs{
 //									MatchResponseCodes: pulumi.StringArray{
 //										pulumi.String("503"),
 //									},
-//									Path:                 pulumi.String("/example"),
+//									Path:                 pulumi.String("/bad_gateway.html"),
 //									OverrideResponseCode: pulumi.Int(502),
 //								},
 //							},
@@ -1080,7 +1080,7 @@ import (
 //						PathRules: compute.URLMapPathMatcherPathRuleArray{
 //							&compute.URLMapPathMatcherPathRuleArgs{
 //								Paths: pulumi.StringArray{
-//									pulumi.String("/*"),
+//									pulumi.String("/private/*"),
 //								},
 //								Service: example.ID(),
 //								CustomErrorResponsePolicy: &compute.URLMapPathMatcherPathRuleCustomErrorResponsePolicyArgs{
@@ -1089,7 +1089,7 @@ import (
 //											MatchResponseCodes: pulumi.StringArray{
 //												pulumi.String("4xx"),
 //											},
-//											Path:                 pulumi.String("/register"),
+//											Path:                 pulumi.String("/login.html"),
 //											OverrideResponseCode: pulumi.Int(401),
 //										},
 //									},

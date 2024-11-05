@@ -40,6 +40,11 @@ export const getIamPolicy: typeof import("./getIamPolicy").getIamPolicy = null a
 export const getIamPolicyOutput: typeof import("./getIamPolicy").getIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getIamPolicy","getIamPolicyOutput"], () => require("./getIamPolicy"));
 
+export { GetSArgs, GetSResult, GetSOutputArgs } from "./getS";
+export const getS: typeof import("./getS").getS = null as any;
+export const getSOutput: typeof import("./getS").getSOutput = null as any;
+utilities.lazyLoad(exports, ["getS","getSOutput"], () => require("./getS"));
+
 export { IAMBindingArgs, IAMBindingState } from "./iambinding";
 export type IAMBinding = import("./iambinding").IAMBinding;
 export const IAMBinding: typeof import("./iambinding").IAMBinding = null as any;

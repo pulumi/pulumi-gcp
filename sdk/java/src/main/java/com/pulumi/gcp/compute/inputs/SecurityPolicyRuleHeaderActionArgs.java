@@ -5,10 +5,11 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class SecurityPolicyRuleHeaderActionArgs extends com.pulumi.resources.ResourceArgs {
@@ -16,18 +17,20 @@ public final class SecurityPolicyRuleHeaderActionArgs extends com.pulumi.resourc
     public static final SecurityPolicyRuleHeaderActionArgs Empty = new SecurityPolicyRuleHeaderActionArgs();
 
     /**
-     * The list of request headers to add or overwrite if they&#39;re already present. Structure is documented below.
+     * The list of request headers to add or overwrite if they&#39;re already present.
+     * Structure is documented below.
      * 
      */
-    @Import(name="requestHeadersToAdds", required=true)
-    private Output<List<SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs>> requestHeadersToAdds;
+    @Import(name="requestHeadersToAdds")
+    private @Nullable Output<List<SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs>> requestHeadersToAdds;
 
     /**
-     * @return The list of request headers to add or overwrite if they&#39;re already present. Structure is documented below.
+     * @return The list of request headers to add or overwrite if they&#39;re already present.
+     * Structure is documented below.
      * 
      */
-    public Output<List<SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs>> requestHeadersToAdds() {
-        return this.requestHeadersToAdds;
+    public Optional<Output<List<SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs>>> requestHeadersToAdds() {
+        return Optional.ofNullable(this.requestHeadersToAdds);
     }
 
     private SecurityPolicyRuleHeaderActionArgs() {}
@@ -55,18 +58,20 @@ public final class SecurityPolicyRuleHeaderActionArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param requestHeadersToAdds The list of request headers to add or overwrite if they&#39;re already present. Structure is documented below.
+         * @param requestHeadersToAdds The list of request headers to add or overwrite if they&#39;re already present.
+         * Structure is documented below.
          * 
          * @return builder
          * 
          */
-        public Builder requestHeadersToAdds(Output<List<SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs>> requestHeadersToAdds) {
+        public Builder requestHeadersToAdds(@Nullable Output<List<SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs>> requestHeadersToAdds) {
             $.requestHeadersToAdds = requestHeadersToAdds;
             return this;
         }
 
         /**
-         * @param requestHeadersToAdds The list of request headers to add or overwrite if they&#39;re already present. Structure is documented below.
+         * @param requestHeadersToAdds The list of request headers to add or overwrite if they&#39;re already present.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -76,7 +81,8 @@ public final class SecurityPolicyRuleHeaderActionArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param requestHeadersToAdds The list of request headers to add or overwrite if they&#39;re already present. Structure is documented below.
+         * @param requestHeadersToAdds The list of request headers to add or overwrite if they&#39;re already present.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -86,9 +92,6 @@ public final class SecurityPolicyRuleHeaderActionArgs extends com.pulumi.resourc
         }
 
         public SecurityPolicyRuleHeaderActionArgs build() {
-            if ($.requestHeadersToAdds == null) {
-                throw new MissingRequiredPropertyException("SecurityPolicyRuleHeaderActionArgs", "requestHeadersToAdds");
-            }
             return $;
         }
     }

@@ -4,7 +4,6 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,7 +15,7 @@ public final class SecurityPolicyRuleHeaderActionRequestHeadersToAdd {
      * @return The name of the header to set.
      * 
      */
-    private String headerName;
+    private @Nullable String headerName;
     /**
      * @return The value to set the named header to.
      * 
@@ -28,8 +27,8 @@ public final class SecurityPolicyRuleHeaderActionRequestHeadersToAdd {
      * @return The name of the header to set.
      * 
      */
-    public String headerName() {
-        return this.headerName;
+    public Optional<String> headerName() {
+        return Optional.ofNullable(this.headerName);
     }
     /**
      * @return The value to set the named header to.
@@ -48,7 +47,7 @@ public final class SecurityPolicyRuleHeaderActionRequestHeadersToAdd {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String headerName;
+        private @Nullable String headerName;
         private @Nullable String headerValue;
         public Builder() {}
         public Builder(SecurityPolicyRuleHeaderActionRequestHeadersToAdd defaults) {
@@ -58,10 +57,8 @@ public final class SecurityPolicyRuleHeaderActionRequestHeadersToAdd {
         }
 
         @CustomType.Setter
-        public Builder headerName(String headerName) {
-            if (headerName == null) {
-              throw new MissingRequiredPropertyException("SecurityPolicyRuleHeaderActionRequestHeadersToAdd", "headerName");
-            }
+        public Builder headerName(@Nullable String headerName) {
+
             this.headerName = headerName;
             return this;
         }

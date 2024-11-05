@@ -12,6 +12,7 @@ import com.pulumi.gcp.assuredworkloads.inputs.WorkloadPartnerPermissionsArgs;
 import com.pulumi.gcp.assuredworkloads.inputs.WorkloadResourceArgs;
 import com.pulumi.gcp.assuredworkloads.inputs.WorkloadResourceSettingArgs;
 import com.pulumi.gcp.assuredworkloads.inputs.WorkloadSaaEnrollmentResponseArgs;
+import com.pulumi.gcp.assuredworkloads.inputs.WorkloadWorkloadOptionsArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -395,6 +396,21 @@ public final class WorkloadState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.violationNotificationsEnabled);
     }
 
+    /**
+     * Optional. Used to specify certain options for a workload during workload creation - currently only supporting KAT Optionality for Regional Controls workloads.
+     * 
+     */
+    @Import(name="workloadOptions")
+    private @Nullable Output<WorkloadWorkloadOptionsArgs> workloadOptions;
+
+    /**
+     * @return Optional. Used to specify certain options for a workload during workload creation - currently only supporting KAT Optionality for Regional Controls workloads.
+     * 
+     */
+    public Optional<Output<WorkloadWorkloadOptionsArgs>> workloadOptions() {
+        return Optional.ofNullable(this.workloadOptions);
+    }
+
     private WorkloadState() {}
 
     private WorkloadState(WorkloadState $) {
@@ -422,6 +438,7 @@ public final class WorkloadState extends com.pulumi.resources.ResourceArgs {
         this.resources = $.resources;
         this.saaEnrollmentResponses = $.saaEnrollmentResponses;
         this.violationNotificationsEnabled = $.violationNotificationsEnabled;
+        this.workloadOptions = $.workloadOptions;
     }
 
     public static Builder builder() {
@@ -1014,6 +1031,27 @@ public final class WorkloadState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder violationNotificationsEnabled(Boolean violationNotificationsEnabled) {
             return violationNotificationsEnabled(Output.of(violationNotificationsEnabled));
+        }
+
+        /**
+         * @param workloadOptions Optional. Used to specify certain options for a workload during workload creation - currently only supporting KAT Optionality for Regional Controls workloads.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workloadOptions(@Nullable Output<WorkloadWorkloadOptionsArgs> workloadOptions) {
+            $.workloadOptions = workloadOptions;
+            return this;
+        }
+
+        /**
+         * @param workloadOptions Optional. Used to specify certain options for a workload during workload creation - currently only supporting KAT Optionality for Regional Controls workloads.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workloadOptions(WorkloadWorkloadOptionsArgs workloadOptions) {
+            return workloadOptions(Output.of(workloadOptions));
         }
 
         public WorkloadState build() {

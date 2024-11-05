@@ -64,7 +64,7 @@ public final class FeatureMembershipConfigmanagementConfigSyncArgs extends com.p
     }
 
     /**
-     * (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+     * (Optional) Supported from Config Sync versions 1.12.0 onwards. Structure is documented below.
      * 
      * Use either `git` or `oci` config option.
      * 
@@ -73,7 +73,7 @@ public final class FeatureMembershipConfigmanagementConfigSyncArgs extends com.p
     private @Nullable Output<FeatureMembershipConfigmanagementConfigSyncOciArgs> oci;
 
     /**
-     * @return (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+     * @return (Optional) Supported from Config Sync versions 1.12.0 onwards. Structure is documented below.
      * 
      * Use either `git` or `oci` config option.
      * 
@@ -83,14 +83,14 @@ public final class FeatureMembershipConfigmanagementConfigSyncArgs extends com.p
     }
 
     /**
-     * Supported from ACM versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to &#34;false&#34;, disables the Config Sync admission webhook and does not prevent drifts.
+     * Supported from Config Sync versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to &#34;false&#34;, disables the Config Sync admission webhook and does not prevent drifts.
      * 
      */
     @Import(name="preventDrift")
     private @Nullable Output<Boolean> preventDrift;
 
     /**
-     * @return Supported from ACM versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to &#34;false&#34;, disables the Config Sync admission webhook and does not prevent drifts.
+     * @return Supported from Config Sync versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to &#34;false&#34;, disables the Config Sync admission webhook and does not prevent drifts.
      * 
      */
     public Optional<Output<Boolean>> preventDrift() {
@@ -205,7 +205,7 @@ public final class FeatureMembershipConfigmanagementConfigSyncArgs extends com.p
         }
 
         /**
-         * @param oci (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+         * @param oci (Optional) Supported from Config Sync versions 1.12.0 onwards. Structure is documented below.
          * 
          * Use either `git` or `oci` config option.
          * 
@@ -218,7 +218,7 @@ public final class FeatureMembershipConfigmanagementConfigSyncArgs extends com.p
         }
 
         /**
-         * @param oci (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+         * @param oci (Optional) Supported from Config Sync versions 1.12.0 onwards. Structure is documented below.
          * 
          * Use either `git` or `oci` config option.
          * 
@@ -230,7 +230,7 @@ public final class FeatureMembershipConfigmanagementConfigSyncArgs extends com.p
         }
 
         /**
-         * @param preventDrift Supported from ACM versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to &#34;false&#34;, disables the Config Sync admission webhook and does not prevent drifts.
+         * @param preventDrift Supported from Config Sync versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to &#34;false&#34;, disables the Config Sync admission webhook and does not prevent drifts.
          * 
          * @return builder
          * 
@@ -241,7 +241,7 @@ public final class FeatureMembershipConfigmanagementConfigSyncArgs extends com.p
         }
 
         /**
-         * @param preventDrift Supported from ACM versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to &#34;false&#34;, disables the Config Sync admission webhook and does not prevent drifts.
+         * @param preventDrift Supported from Config Sync versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to &#34;false&#34;, disables the Config Sync admission webhook and does not prevent drifts.
          * 
          * @return builder
          * 

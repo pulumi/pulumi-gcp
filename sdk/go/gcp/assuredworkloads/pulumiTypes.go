@@ -892,6 +892,143 @@ func (o WorkloadSaaEnrollmentResponseArrayOutput) Index(i pulumi.IntInput) Workl
 	}).(WorkloadSaaEnrollmentResponseOutput)
 }
 
+type WorkloadWorkloadOptions struct {
+	// Indicates type of KAJ enrollment for the workload. Currently, only specifiying KEY_ACCESS_TRANSPARENCY_OFF is implemented to not enroll in KAT-level KAJ enrollment for Regional Controls workloads. Possible values: KAJ_ENROLLMENT_TYPE_UNSPECIFIED, FULL_KAJ, EKM_ONLY, KEY_ACCESS_TRANSPARENCY_OFF
+	KajEnrollmentType *string `pulumi:"kajEnrollmentType"`
+}
+
+// WorkloadWorkloadOptionsInput is an input type that accepts WorkloadWorkloadOptionsArgs and WorkloadWorkloadOptionsOutput values.
+// You can construct a concrete instance of `WorkloadWorkloadOptionsInput` via:
+//
+//	WorkloadWorkloadOptionsArgs{...}
+type WorkloadWorkloadOptionsInput interface {
+	pulumi.Input
+
+	ToWorkloadWorkloadOptionsOutput() WorkloadWorkloadOptionsOutput
+	ToWorkloadWorkloadOptionsOutputWithContext(context.Context) WorkloadWorkloadOptionsOutput
+}
+
+type WorkloadWorkloadOptionsArgs struct {
+	// Indicates type of KAJ enrollment for the workload. Currently, only specifiying KEY_ACCESS_TRANSPARENCY_OFF is implemented to not enroll in KAT-level KAJ enrollment for Regional Controls workloads. Possible values: KAJ_ENROLLMENT_TYPE_UNSPECIFIED, FULL_KAJ, EKM_ONLY, KEY_ACCESS_TRANSPARENCY_OFF
+	KajEnrollmentType pulumi.StringPtrInput `pulumi:"kajEnrollmentType"`
+}
+
+func (WorkloadWorkloadOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadWorkloadOptions)(nil)).Elem()
+}
+
+func (i WorkloadWorkloadOptionsArgs) ToWorkloadWorkloadOptionsOutput() WorkloadWorkloadOptionsOutput {
+	return i.ToWorkloadWorkloadOptionsOutputWithContext(context.Background())
+}
+
+func (i WorkloadWorkloadOptionsArgs) ToWorkloadWorkloadOptionsOutputWithContext(ctx context.Context) WorkloadWorkloadOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadWorkloadOptionsOutput)
+}
+
+func (i WorkloadWorkloadOptionsArgs) ToWorkloadWorkloadOptionsPtrOutput() WorkloadWorkloadOptionsPtrOutput {
+	return i.ToWorkloadWorkloadOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i WorkloadWorkloadOptionsArgs) ToWorkloadWorkloadOptionsPtrOutputWithContext(ctx context.Context) WorkloadWorkloadOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadWorkloadOptionsOutput).ToWorkloadWorkloadOptionsPtrOutputWithContext(ctx)
+}
+
+// WorkloadWorkloadOptionsPtrInput is an input type that accepts WorkloadWorkloadOptionsArgs, WorkloadWorkloadOptionsPtr and WorkloadWorkloadOptionsPtrOutput values.
+// You can construct a concrete instance of `WorkloadWorkloadOptionsPtrInput` via:
+//
+//	        WorkloadWorkloadOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkloadWorkloadOptionsPtrInput interface {
+	pulumi.Input
+
+	ToWorkloadWorkloadOptionsPtrOutput() WorkloadWorkloadOptionsPtrOutput
+	ToWorkloadWorkloadOptionsPtrOutputWithContext(context.Context) WorkloadWorkloadOptionsPtrOutput
+}
+
+type workloadWorkloadOptionsPtrType WorkloadWorkloadOptionsArgs
+
+func WorkloadWorkloadOptionsPtr(v *WorkloadWorkloadOptionsArgs) WorkloadWorkloadOptionsPtrInput {
+	return (*workloadWorkloadOptionsPtrType)(v)
+}
+
+func (*workloadWorkloadOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkloadWorkloadOptions)(nil)).Elem()
+}
+
+func (i *workloadWorkloadOptionsPtrType) ToWorkloadWorkloadOptionsPtrOutput() WorkloadWorkloadOptionsPtrOutput {
+	return i.ToWorkloadWorkloadOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *workloadWorkloadOptionsPtrType) ToWorkloadWorkloadOptionsPtrOutputWithContext(ctx context.Context) WorkloadWorkloadOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadWorkloadOptionsPtrOutput)
+}
+
+type WorkloadWorkloadOptionsOutput struct{ *pulumi.OutputState }
+
+func (WorkloadWorkloadOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadWorkloadOptions)(nil)).Elem()
+}
+
+func (o WorkloadWorkloadOptionsOutput) ToWorkloadWorkloadOptionsOutput() WorkloadWorkloadOptionsOutput {
+	return o
+}
+
+func (o WorkloadWorkloadOptionsOutput) ToWorkloadWorkloadOptionsOutputWithContext(ctx context.Context) WorkloadWorkloadOptionsOutput {
+	return o
+}
+
+func (o WorkloadWorkloadOptionsOutput) ToWorkloadWorkloadOptionsPtrOutput() WorkloadWorkloadOptionsPtrOutput {
+	return o.ToWorkloadWorkloadOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o WorkloadWorkloadOptionsOutput) ToWorkloadWorkloadOptionsPtrOutputWithContext(ctx context.Context) WorkloadWorkloadOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkloadWorkloadOptions) *WorkloadWorkloadOptions {
+		return &v
+	}).(WorkloadWorkloadOptionsPtrOutput)
+}
+
+// Indicates type of KAJ enrollment for the workload. Currently, only specifiying KEY_ACCESS_TRANSPARENCY_OFF is implemented to not enroll in KAT-level KAJ enrollment for Regional Controls workloads. Possible values: KAJ_ENROLLMENT_TYPE_UNSPECIFIED, FULL_KAJ, EKM_ONLY, KEY_ACCESS_TRANSPARENCY_OFF
+func (o WorkloadWorkloadOptionsOutput) KajEnrollmentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkloadWorkloadOptions) *string { return v.KajEnrollmentType }).(pulumi.StringPtrOutput)
+}
+
+type WorkloadWorkloadOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkloadWorkloadOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkloadWorkloadOptions)(nil)).Elem()
+}
+
+func (o WorkloadWorkloadOptionsPtrOutput) ToWorkloadWorkloadOptionsPtrOutput() WorkloadWorkloadOptionsPtrOutput {
+	return o
+}
+
+func (o WorkloadWorkloadOptionsPtrOutput) ToWorkloadWorkloadOptionsPtrOutputWithContext(ctx context.Context) WorkloadWorkloadOptionsPtrOutput {
+	return o
+}
+
+func (o WorkloadWorkloadOptionsPtrOutput) Elem() WorkloadWorkloadOptionsOutput {
+	return o.ApplyT(func(v *WorkloadWorkloadOptions) WorkloadWorkloadOptions {
+		if v != nil {
+			return *v
+		}
+		var ret WorkloadWorkloadOptions
+		return ret
+	}).(WorkloadWorkloadOptionsOutput)
+}
+
+// Indicates type of KAJ enrollment for the workload. Currently, only specifiying KEY_ACCESS_TRANSPARENCY_OFF is implemented to not enroll in KAT-level KAJ enrollment for Regional Controls workloads. Possible values: KAJ_ENROLLMENT_TYPE_UNSPECIFIED, FULL_KAJ, EKM_ONLY, KEY_ACCESS_TRANSPARENCY_OFF
+func (o WorkloadWorkloadOptionsPtrOutput) KajEnrollmentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkloadWorkloadOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KajEnrollmentType
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadComplianceStatusInput)(nil)).Elem(), WorkloadComplianceStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadComplianceStatusArrayInput)(nil)).Elem(), WorkloadComplianceStatusArray{})
@@ -907,6 +1044,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadResourceSettingArrayInput)(nil)).Elem(), WorkloadResourceSettingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadSaaEnrollmentResponseInput)(nil)).Elem(), WorkloadSaaEnrollmentResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadSaaEnrollmentResponseArrayInput)(nil)).Elem(), WorkloadSaaEnrollmentResponseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadWorkloadOptionsInput)(nil)).Elem(), WorkloadWorkloadOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadWorkloadOptionsPtrInput)(nil)).Elem(), WorkloadWorkloadOptionsArgs{})
 	pulumi.RegisterOutputType(WorkloadComplianceStatusOutput{})
 	pulumi.RegisterOutputType(WorkloadComplianceStatusArrayOutput{})
 	pulumi.RegisterOutputType(WorkloadEkmProvisioningResponseOutput{})
@@ -921,4 +1060,6 @@ func init() {
 	pulumi.RegisterOutputType(WorkloadResourceSettingArrayOutput{})
 	pulumi.RegisterOutputType(WorkloadSaaEnrollmentResponseOutput{})
 	pulumi.RegisterOutputType(WorkloadSaaEnrollmentResponseArrayOutput{})
+	pulumi.RegisterOutputType(WorkloadWorkloadOptionsOutput{})
+	pulumi.RegisterOutputType(WorkloadWorkloadOptionsPtrOutput{})
 }

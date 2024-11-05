@@ -620,7 +620,7 @@ import javax.annotation.Nullable;
  * $ pulumi import gcp:iap/tunnelInstanceIAMBinding:TunnelInstanceIAMBinding editor projects/{{project}}/iap_tunnel/zones/{{zone}}/instances/{{tunnel_instance}}
  * ```
  * 
- * -&gt; **Custom Roles**: If you&#39;re importing a IAM resource with a custom role, make sure to use the
+ * -&gt; **Custom Roles** If you&#39;re importing a IAM resource with a custom role, make sure to use the
  * 
  *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  * 

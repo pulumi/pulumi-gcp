@@ -208,7 +208,7 @@ export class Bucket extends pulumi.CustomResource {
      */
     public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
     /**
-     * The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below.
+     * The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniformBucketLevelAccess` must be enabled on bucket.
      */
     public readonly hierarchicalNamespace!: pulumi.Output<outputs.storage.BucketHierarchicalNamespace | undefined>;
     /**
@@ -410,7 +410,7 @@ export interface BucketState {
      */
     forceDestroy?: pulumi.Input<boolean>;
     /**
-     * The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below.
+     * The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniformBucketLevelAccess` must be enabled on bucket.
      */
     hierarchicalNamespace?: pulumi.Input<inputs.storage.BucketHierarchicalNamespace>;
     /**
@@ -530,7 +530,7 @@ export interface BucketArgs {
      */
     forceDestroy?: pulumi.Input<boolean>;
     /**
-     * The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below.
+     * The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniformBucketLevelAccess` must be enabled on bucket.
      */
     hierarchicalNamespace?: pulumi.Input<inputs.storage.BucketHierarchicalNamespace>;
     /**

@@ -29,7 +29,7 @@ namespace Pulumi.Gcp.MemoryStore.Inputs
 
         /// <summary>
         /// (Output)
-        /// Output only. The port number of the exposed endpoint.
+        /// Output only. Ports of the exposed endpoint.
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }

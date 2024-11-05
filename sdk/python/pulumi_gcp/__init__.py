@@ -5421,6 +5421,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "iap/settings",
+  "fqn": "pulumi_gcp.iap",
+  "classes": {
+   "gcp:iap/settings:Settings": "Settings"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "iap/tunnelDestGroup",
   "fqn": "pulumi_gcp.iap",
   "classes": {

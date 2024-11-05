@@ -124,6 +124,7 @@ namespace Pulumi.Gcp.BigQuery
         public readonly string Description;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly string Etag;
+        public readonly ImmutableArray<Outputs.GetDatasetExternalCatalogDatasetOptionResult> ExternalCatalogDatasetOptions;
         public readonly ImmutableArray<Outputs.GetDatasetExternalDatasetReferenceResult> ExternalDatasetReferences;
         public readonly string FriendlyName;
         /// <summary>
@@ -165,6 +166,8 @@ namespace Pulumi.Gcp.BigQuery
 
             string etag,
 
+            ImmutableArray<Outputs.GetDatasetExternalCatalogDatasetOptionResult> externalCatalogDatasetOptions,
+
             ImmutableArray<Outputs.GetDatasetExternalDatasetReferenceResult> externalDatasetReferences,
 
             string friendlyName,
@@ -202,6 +205,7 @@ namespace Pulumi.Gcp.BigQuery
             Description = description;
             EffectiveLabels = effectiveLabels;
             Etag = etag;
+            ExternalCatalogDatasetOptions = externalCatalogDatasetOptions;
             ExternalDatasetReferences = externalDatasetReferences;
             FriendlyName = friendlyName;
             Id = id;

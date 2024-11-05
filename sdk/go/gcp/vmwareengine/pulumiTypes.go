@@ -1806,6 +1806,10 @@ func (o PrivateCloudHcxArrayOutput) Index(i pulumi.IntInput) PrivateCloudHcxOutp
 }
 
 type PrivateCloudManagementCluster struct {
+	// Configuration of the autoscaling applied to this cluster
+	// Private cloud must have a minimum of 3 nodes to add autoscale settings
+	// Structure is documented below.
+	AutoscalingSettings *PrivateCloudManagementClusterAutoscalingSettings `pulumi:"autoscalingSettings"`
 	// The user-provided identifier of the new Cluster. The identifier must meet the following requirements:
 	// * Only contains 1-63 alphanumeric characters and hyphens
 	// * Begins with an alphabetical character
@@ -1834,6 +1838,10 @@ type PrivateCloudManagementClusterInput interface {
 }
 
 type PrivateCloudManagementClusterArgs struct {
+	// Configuration of the autoscaling applied to this cluster
+	// Private cloud must have a minimum of 3 nodes to add autoscale settings
+	// Structure is documented below.
+	AutoscalingSettings PrivateCloudManagementClusterAutoscalingSettingsPtrInput `pulumi:"autoscalingSettings"`
 	// The user-provided identifier of the new Cluster. The identifier must meet the following requirements:
 	// * Only contains 1-63 alphanumeric characters and hyphens
 	// * Begins with an alphabetical character
@@ -1927,6 +1935,15 @@ func (o PrivateCloudManagementClusterOutput) ToPrivateCloudManagementClusterPtrO
 	}).(PrivateCloudManagementClusterPtrOutput)
 }
 
+// Configuration of the autoscaling applied to this cluster
+// Private cloud must have a minimum of 3 nodes to add autoscale settings
+// Structure is documented below.
+func (o PrivateCloudManagementClusterOutput) AutoscalingSettings() PrivateCloudManagementClusterAutoscalingSettingsPtrOutput {
+	return o.ApplyT(func(v PrivateCloudManagementCluster) *PrivateCloudManagementClusterAutoscalingSettings {
+		return v.AutoscalingSettings
+	}).(PrivateCloudManagementClusterAutoscalingSettingsPtrOutput)
+}
+
 // The user-provided identifier of the new Cluster. The identifier must meet the following requirements:
 // * Only contains 1-63 alphanumeric characters and hyphens
 // * Begins with an alphabetical character
@@ -1978,6 +1995,18 @@ func (o PrivateCloudManagementClusterPtrOutput) Elem() PrivateCloudManagementClu
 	}).(PrivateCloudManagementClusterOutput)
 }
 
+// Configuration of the autoscaling applied to this cluster
+// Private cloud must have a minimum of 3 nodes to add autoscale settings
+// Structure is documented below.
+func (o PrivateCloudManagementClusterPtrOutput) AutoscalingSettings() PrivateCloudManagementClusterAutoscalingSettingsPtrOutput {
+	return o.ApplyT(func(v *PrivateCloudManagementCluster) *PrivateCloudManagementClusterAutoscalingSettings {
+		if v == nil {
+			return nil
+		}
+		return v.AutoscalingSettings
+	}).(PrivateCloudManagementClusterAutoscalingSettingsPtrOutput)
+}
+
 // The user-provided identifier of the new Cluster. The identifier must meet the following requirements:
 // * Only contains 1-63 alphanumeric characters and hyphens
 // * Begins with an alphabetical character
@@ -2014,6 +2043,916 @@ func (o PrivateCloudManagementClusterPtrOutput) StretchedClusterConfig() Private
 		}
 		return v.StretchedClusterConfig
 	}).(PrivateCloudManagementClusterStretchedClusterConfigPtrOutput)
+}
+
+type PrivateCloudManagementClusterAutoscalingSettings struct {
+	// The map with autoscaling policies applied to the cluster.
+	// The key is the identifier of the policy.
+	// It must meet the following requirements:
+	// * Only contains 1-63 alphanumeric characters and hyphens
+	// * Begins with an alphabetical character
+	// * Ends with a non-hyphen character
+	// * Not formatted as a UUID
+	// * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+	//   Currently the map must contain only one element
+	//   that describes the autoscaling policy for compute nodes.
+	//   Structure is documented below.
+	AutoscalingPolicies []PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicy `pulumi:"autoscalingPolicies"`
+	// The minimum duration between consecutive autoscale operations.
+	// It starts once addition or removal of nodes is fully completed.
+	// Minimum cool down period is 30m.
+	// Cool down period must be in whole minutes (for example, 30m, 31m, 50m).
+	// Mandatory for successful addition of autoscaling settings in cluster.
+	CoolDownPeriod *string `pulumi:"coolDownPeriod"`
+	// Maximum number of nodes of any type in a cluster.
+	// Mandatory for successful addition of autoscaling settings in cluster.
+	MaxClusterNodeCount *int `pulumi:"maxClusterNodeCount"`
+	// Minimum number of nodes of any type in a cluster.
+	// Mandatory for successful addition of autoscaling settings in cluster.
+	MinClusterNodeCount *int `pulumi:"minClusterNodeCount"`
+}
+
+// PrivateCloudManagementClusterAutoscalingSettingsInput is an input type that accepts PrivateCloudManagementClusterAutoscalingSettingsArgs and PrivateCloudManagementClusterAutoscalingSettingsOutput values.
+// You can construct a concrete instance of `PrivateCloudManagementClusterAutoscalingSettingsInput` via:
+//
+//	PrivateCloudManagementClusterAutoscalingSettingsArgs{...}
+type PrivateCloudManagementClusterAutoscalingSettingsInput interface {
+	pulumi.Input
+
+	ToPrivateCloudManagementClusterAutoscalingSettingsOutput() PrivateCloudManagementClusterAutoscalingSettingsOutput
+	ToPrivateCloudManagementClusterAutoscalingSettingsOutputWithContext(context.Context) PrivateCloudManagementClusterAutoscalingSettingsOutput
+}
+
+type PrivateCloudManagementClusterAutoscalingSettingsArgs struct {
+	// The map with autoscaling policies applied to the cluster.
+	// The key is the identifier of the policy.
+	// It must meet the following requirements:
+	// * Only contains 1-63 alphanumeric characters and hyphens
+	// * Begins with an alphabetical character
+	// * Ends with a non-hyphen character
+	// * Not formatted as a UUID
+	// * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+	//   Currently the map must contain only one element
+	//   that describes the autoscaling policy for compute nodes.
+	//   Structure is documented below.
+	AutoscalingPolicies PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArrayInput `pulumi:"autoscalingPolicies"`
+	// The minimum duration between consecutive autoscale operations.
+	// It starts once addition or removal of nodes is fully completed.
+	// Minimum cool down period is 30m.
+	// Cool down period must be in whole minutes (for example, 30m, 31m, 50m).
+	// Mandatory for successful addition of autoscaling settings in cluster.
+	CoolDownPeriod pulumi.StringPtrInput `pulumi:"coolDownPeriod"`
+	// Maximum number of nodes of any type in a cluster.
+	// Mandatory for successful addition of autoscaling settings in cluster.
+	MaxClusterNodeCount pulumi.IntPtrInput `pulumi:"maxClusterNodeCount"`
+	// Minimum number of nodes of any type in a cluster.
+	// Mandatory for successful addition of autoscaling settings in cluster.
+	MinClusterNodeCount pulumi.IntPtrInput `pulumi:"minClusterNodeCount"`
+}
+
+func (PrivateCloudManagementClusterAutoscalingSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateCloudManagementClusterAutoscalingSettings)(nil)).Elem()
+}
+
+func (i PrivateCloudManagementClusterAutoscalingSettingsArgs) ToPrivateCloudManagementClusterAutoscalingSettingsOutput() PrivateCloudManagementClusterAutoscalingSettingsOutput {
+	return i.ToPrivateCloudManagementClusterAutoscalingSettingsOutputWithContext(context.Background())
+}
+
+func (i PrivateCloudManagementClusterAutoscalingSettingsArgs) ToPrivateCloudManagementClusterAutoscalingSettingsOutputWithContext(ctx context.Context) PrivateCloudManagementClusterAutoscalingSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudManagementClusterAutoscalingSettingsOutput)
+}
+
+func (i PrivateCloudManagementClusterAutoscalingSettingsArgs) ToPrivateCloudManagementClusterAutoscalingSettingsPtrOutput() PrivateCloudManagementClusterAutoscalingSettingsPtrOutput {
+	return i.ToPrivateCloudManagementClusterAutoscalingSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i PrivateCloudManagementClusterAutoscalingSettingsArgs) ToPrivateCloudManagementClusterAutoscalingSettingsPtrOutputWithContext(ctx context.Context) PrivateCloudManagementClusterAutoscalingSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudManagementClusterAutoscalingSettingsOutput).ToPrivateCloudManagementClusterAutoscalingSettingsPtrOutputWithContext(ctx)
+}
+
+// PrivateCloudManagementClusterAutoscalingSettingsPtrInput is an input type that accepts PrivateCloudManagementClusterAutoscalingSettingsArgs, PrivateCloudManagementClusterAutoscalingSettingsPtr and PrivateCloudManagementClusterAutoscalingSettingsPtrOutput values.
+// You can construct a concrete instance of `PrivateCloudManagementClusterAutoscalingSettingsPtrInput` via:
+//
+//	        PrivateCloudManagementClusterAutoscalingSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type PrivateCloudManagementClusterAutoscalingSettingsPtrInput interface {
+	pulumi.Input
+
+	ToPrivateCloudManagementClusterAutoscalingSettingsPtrOutput() PrivateCloudManagementClusterAutoscalingSettingsPtrOutput
+	ToPrivateCloudManagementClusterAutoscalingSettingsPtrOutputWithContext(context.Context) PrivateCloudManagementClusterAutoscalingSettingsPtrOutput
+}
+
+type privateCloudManagementClusterAutoscalingSettingsPtrType PrivateCloudManagementClusterAutoscalingSettingsArgs
+
+func PrivateCloudManagementClusterAutoscalingSettingsPtr(v *PrivateCloudManagementClusterAutoscalingSettingsArgs) PrivateCloudManagementClusterAutoscalingSettingsPtrInput {
+	return (*privateCloudManagementClusterAutoscalingSettingsPtrType)(v)
+}
+
+func (*privateCloudManagementClusterAutoscalingSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateCloudManagementClusterAutoscalingSettings)(nil)).Elem()
+}
+
+func (i *privateCloudManagementClusterAutoscalingSettingsPtrType) ToPrivateCloudManagementClusterAutoscalingSettingsPtrOutput() PrivateCloudManagementClusterAutoscalingSettingsPtrOutput {
+	return i.ToPrivateCloudManagementClusterAutoscalingSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *privateCloudManagementClusterAutoscalingSettingsPtrType) ToPrivateCloudManagementClusterAutoscalingSettingsPtrOutputWithContext(ctx context.Context) PrivateCloudManagementClusterAutoscalingSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudManagementClusterAutoscalingSettingsPtrOutput)
+}
+
+type PrivateCloudManagementClusterAutoscalingSettingsOutput struct{ *pulumi.OutputState }
+
+func (PrivateCloudManagementClusterAutoscalingSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateCloudManagementClusterAutoscalingSettings)(nil)).Elem()
+}
+
+func (o PrivateCloudManagementClusterAutoscalingSettingsOutput) ToPrivateCloudManagementClusterAutoscalingSettingsOutput() PrivateCloudManagementClusterAutoscalingSettingsOutput {
+	return o
+}
+
+func (o PrivateCloudManagementClusterAutoscalingSettingsOutput) ToPrivateCloudManagementClusterAutoscalingSettingsOutputWithContext(ctx context.Context) PrivateCloudManagementClusterAutoscalingSettingsOutput {
+	return o
+}
+
+func (o PrivateCloudManagementClusterAutoscalingSettingsOutput) ToPrivateCloudManagementClusterAutoscalingSettingsPtrOutput() PrivateCloudManagementClusterAutoscalingSettingsPtrOutput {
+	return o.ToPrivateCloudManagementClusterAutoscalingSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o PrivateCloudManagementClusterAutoscalingSettingsOutput) ToPrivateCloudManagementClusterAutoscalingSettingsPtrOutputWithContext(ctx context.Context) PrivateCloudManagementClusterAutoscalingSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateCloudManagementClusterAutoscalingSettings) *PrivateCloudManagementClusterAutoscalingSettings {
+		return &v
+	}).(PrivateCloudManagementClusterAutoscalingSettingsPtrOutput)
+}
+
+// The map with autoscaling policies applied to the cluster.
+// The key is the identifier of the policy.
+// It must meet the following requirements:
+//   - Only contains 1-63 alphanumeric characters and hyphens
+//   - Begins with an alphabetical character
+//   - Ends with a non-hyphen character
+//   - Not formatted as a UUID
+//   - Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+//     Currently the map must contain only one element
+//     that describes the autoscaling policy for compute nodes.
+//     Structure is documented below.
+func (o PrivateCloudManagementClusterAutoscalingSettingsOutput) AutoscalingPolicies() PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArrayOutput {
+	return o.ApplyT(func(v PrivateCloudManagementClusterAutoscalingSettings) []PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicy {
+		return v.AutoscalingPolicies
+	}).(PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArrayOutput)
+}
+
+// The minimum duration between consecutive autoscale operations.
+// It starts once addition or removal of nodes is fully completed.
+// Minimum cool down period is 30m.
+// Cool down period must be in whole minutes (for example, 30m, 31m, 50m).
+// Mandatory for successful addition of autoscaling settings in cluster.
+func (o PrivateCloudManagementClusterAutoscalingSettingsOutput) CoolDownPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateCloudManagementClusterAutoscalingSettings) *string { return v.CoolDownPeriod }).(pulumi.StringPtrOutput)
+}
+
+// Maximum number of nodes of any type in a cluster.
+// Mandatory for successful addition of autoscaling settings in cluster.
+func (o PrivateCloudManagementClusterAutoscalingSettingsOutput) MaxClusterNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PrivateCloudManagementClusterAutoscalingSettings) *int { return v.MaxClusterNodeCount }).(pulumi.IntPtrOutput)
+}
+
+// Minimum number of nodes of any type in a cluster.
+// Mandatory for successful addition of autoscaling settings in cluster.
+func (o PrivateCloudManagementClusterAutoscalingSettingsOutput) MinClusterNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PrivateCloudManagementClusterAutoscalingSettings) *int { return v.MinClusterNodeCount }).(pulumi.IntPtrOutput)
+}
+
+type PrivateCloudManagementClusterAutoscalingSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (PrivateCloudManagementClusterAutoscalingSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateCloudManagementClusterAutoscalingSettings)(nil)).Elem()
+}
+
+func (o PrivateCloudManagementClusterAutoscalingSettingsPtrOutput) ToPrivateCloudManagementClusterAutoscalingSettingsPtrOutput() PrivateCloudManagementClusterAutoscalingSettingsPtrOutput {
+	return o
+}
+
+func (o PrivateCloudManagementClusterAutoscalingSettingsPtrOutput) ToPrivateCloudManagementClusterAutoscalingSettingsPtrOutputWithContext(ctx context.Context) PrivateCloudManagementClusterAutoscalingSettingsPtrOutput {
+	return o
+}
+
+func (o PrivateCloudManagementClusterAutoscalingSettingsPtrOutput) Elem() PrivateCloudManagementClusterAutoscalingSettingsOutput {
+	return o.ApplyT(func(v *PrivateCloudManagementClusterAutoscalingSettings) PrivateCloudManagementClusterAutoscalingSettings {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateCloudManagementClusterAutoscalingSettings
+		return ret
+	}).(PrivateCloudManagementClusterAutoscalingSettingsOutput)
+}
+
+// The map with autoscaling policies applied to the cluster.
+// The key is the identifier of the policy.
+// It must meet the following requirements:
+//   - Only contains 1-63 alphanumeric characters and hyphens
+//   - Begins with an alphabetical character
+//   - Ends with a non-hyphen character
+//   - Not formatted as a UUID
+//   - Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+//     Currently the map must contain only one element
+//     that describes the autoscaling policy for compute nodes.
+//     Structure is documented below.
+func (o PrivateCloudManagementClusterAutoscalingSettingsPtrOutput) AutoscalingPolicies() PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArrayOutput {
+	return o.ApplyT(func(v *PrivateCloudManagementClusterAutoscalingSettings) []PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.AutoscalingPolicies
+	}).(PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArrayOutput)
+}
+
+// The minimum duration between consecutive autoscale operations.
+// It starts once addition or removal of nodes is fully completed.
+// Minimum cool down period is 30m.
+// Cool down period must be in whole minutes (for example, 30m, 31m, 50m).
+// Mandatory for successful addition of autoscaling settings in cluster.
+func (o PrivateCloudManagementClusterAutoscalingSettingsPtrOutput) CoolDownPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateCloudManagementClusterAutoscalingSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CoolDownPeriod
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maximum number of nodes of any type in a cluster.
+// Mandatory for successful addition of autoscaling settings in cluster.
+func (o PrivateCloudManagementClusterAutoscalingSettingsPtrOutput) MaxClusterNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PrivateCloudManagementClusterAutoscalingSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxClusterNodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minimum number of nodes of any type in a cluster.
+// Mandatory for successful addition of autoscaling settings in cluster.
+func (o PrivateCloudManagementClusterAutoscalingSettingsPtrOutput) MinClusterNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PrivateCloudManagementClusterAutoscalingSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinClusterNodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+type PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicy struct {
+	// The identifier for this object. Format specified above.
+	AutoscalePolicyId string `pulumi:"autoscalePolicyId"`
+	// Utilization thresholds pertaining to amount of consumed memory.
+	// Structure is documented below.
+	ConsumedMemoryThresholds *PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholds `pulumi:"consumedMemoryThresholds"`
+	// Utilization thresholds pertaining to CPU utilization.
+	// Structure is documented below.
+	CpuThresholds *PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds `pulumi:"cpuThresholds"`
+	// The canonical identifier of the node type to add or remove.
+	NodeTypeId string `pulumi:"nodeTypeId"`
+	// Number of nodes to add to a cluster during a scale-out operation.
+	// Must be divisible by 2 for stretched clusters.
+	ScaleOutSize int `pulumi:"scaleOutSize"`
+	// Utilization thresholds pertaining to amount of consumed storage.
+	// Structure is documented below.
+	StorageThresholds *PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds `pulumi:"storageThresholds"`
+}
+
+// PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyInput is an input type that accepts PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArgs and PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyOutput values.
+// You can construct a concrete instance of `PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyInput` via:
+//
+//	PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArgs{...}
+type PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyInput interface {
+	pulumi.Input
+
+	ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyOutput() PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyOutput
+	ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyOutputWithContext(context.Context) PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyOutput
+}
+
+type PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArgs struct {
+	// The identifier for this object. Format specified above.
+	AutoscalePolicyId pulumi.StringInput `pulumi:"autoscalePolicyId"`
+	// Utilization thresholds pertaining to amount of consumed memory.
+	// Structure is documented below.
+	ConsumedMemoryThresholds PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrInput `pulumi:"consumedMemoryThresholds"`
+	// Utilization thresholds pertaining to CPU utilization.
+	// Structure is documented below.
+	CpuThresholds PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrInput `pulumi:"cpuThresholds"`
+	// The canonical identifier of the node type to add or remove.
+	NodeTypeId pulumi.StringInput `pulumi:"nodeTypeId"`
+	// Number of nodes to add to a cluster during a scale-out operation.
+	// Must be divisible by 2 for stretched clusters.
+	ScaleOutSize pulumi.IntInput `pulumi:"scaleOutSize"`
+	// Utilization thresholds pertaining to amount of consumed storage.
+	// Structure is documented below.
+	StorageThresholds PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrInput `pulumi:"storageThresholds"`
+}
+
+func (PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicy)(nil)).Elem()
+}
+
+func (i PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArgs) ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyOutput() PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyOutput {
+	return i.ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyOutputWithContext(context.Background())
+}
+
+func (i PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArgs) ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyOutputWithContext(ctx context.Context) PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyOutput)
+}
+
+// PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArrayInput is an input type that accepts PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArray and PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArrayOutput values.
+// You can construct a concrete instance of `PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArrayInput` via:
+//
+//	PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArray{ PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArgs{...} }
+type PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArrayInput interface {
+	pulumi.Input
+
+	ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArrayOutput() PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArrayOutput
+	ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArrayOutputWithContext(context.Context) PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArrayOutput
+}
+
+type PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArray []PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyInput
+
+func (PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicy)(nil)).Elem()
+}
+
+func (i PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArray) ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArrayOutput() PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArrayOutput {
+	return i.ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArray) ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArrayOutputWithContext(ctx context.Context) PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArrayOutput)
+}
+
+type PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyOutput struct{ *pulumi.OutputState }
+
+func (PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicy)(nil)).Elem()
+}
+
+func (o PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyOutput) ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyOutput() PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyOutput {
+	return o
+}
+
+func (o PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyOutput) ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyOutputWithContext(ctx context.Context) PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyOutput {
+	return o
+}
+
+// The identifier for this object. Format specified above.
+func (o PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyOutput) AutoscalePolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicy) string {
+		return v.AutoscalePolicyId
+	}).(pulumi.StringOutput)
+}
+
+// Utilization thresholds pertaining to amount of consumed memory.
+// Structure is documented below.
+func (o PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyOutput) ConsumedMemoryThresholds() PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput {
+	return o.ApplyT(func(v PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicy) *PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholds {
+		return v.ConsumedMemoryThresholds
+	}).(PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput)
+}
+
+// Utilization thresholds pertaining to CPU utilization.
+// Structure is documented below.
+func (o PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyOutput) CpuThresholds() PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput {
+	return o.ApplyT(func(v PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicy) *PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds {
+		return v.CpuThresholds
+	}).(PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput)
+}
+
+// The canonical identifier of the node type to add or remove.
+func (o PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyOutput) NodeTypeId() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicy) string { return v.NodeTypeId }).(pulumi.StringOutput)
+}
+
+// Number of nodes to add to a cluster during a scale-out operation.
+// Must be divisible by 2 for stretched clusters.
+func (o PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyOutput) ScaleOutSize() pulumi.IntOutput {
+	return o.ApplyT(func(v PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicy) int { return v.ScaleOutSize }).(pulumi.IntOutput)
+}
+
+// Utilization thresholds pertaining to amount of consumed storage.
+// Structure is documented below.
+func (o PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyOutput) StorageThresholds() PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput {
+	return o.ApplyT(func(v PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicy) *PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds {
+		return v.StorageThresholds
+	}).(PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput)
+}
+
+type PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicy)(nil)).Elem()
+}
+
+func (o PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArrayOutput) ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArrayOutput() PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArrayOutput {
+	return o
+}
+
+func (o PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArrayOutput) ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArrayOutputWithContext(ctx context.Context) PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArrayOutput {
+	return o
+}
+
+func (o PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArrayOutput) Index(i pulumi.IntInput) PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicy {
+		return vs[0].([]PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicy)[vs[1].(int)]
+	}).(PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyOutput)
+}
+
+type PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholds struct {
+	// The utilization triggering the scale-in operation in percent.
+	ScaleIn int `pulumi:"scaleIn"`
+	// The utilization triggering the scale-out operation in percent.
+	ScaleOut int `pulumi:"scaleOut"`
+}
+
+// PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsInput is an input type that accepts PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs and PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutput values.
+// You can construct a concrete instance of `PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsInput` via:
+//
+//	PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs{...}
+type PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsInput interface {
+	pulumi.Input
+
+	ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutput() PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutput
+	ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutputWithContext(context.Context) PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutput
+}
+
+type PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs struct {
+	// The utilization triggering the scale-in operation in percent.
+	ScaleIn pulumi.IntInput `pulumi:"scaleIn"`
+	// The utilization triggering the scale-out operation in percent.
+	ScaleOut pulumi.IntInput `pulumi:"scaleOut"`
+}
+
+func (PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholds)(nil)).Elem()
+}
+
+func (i PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs) ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutput() PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutput {
+	return i.ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutputWithContext(context.Background())
+}
+
+func (i PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs) ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutputWithContext(ctx context.Context) PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutput)
+}
+
+func (i PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs) ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput() PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput {
+	return i.ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutputWithContext(context.Background())
+}
+
+func (i PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs) ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutputWithContext(ctx context.Context) PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutput).ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutputWithContext(ctx)
+}
+
+// PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrInput is an input type that accepts PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs, PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtr and PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput values.
+// You can construct a concrete instance of `PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrInput` via:
+//
+//	        PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs{...}
+//
+//	or:
+//
+//	        nil
+type PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrInput interface {
+	pulumi.Input
+
+	ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput() PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput
+	ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutputWithContext(context.Context) PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput
+}
+
+type privateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrType PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs
+
+func PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtr(v *PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs) PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrInput {
+	return (*privateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrType)(v)
+}
+
+func (*privateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholds)(nil)).Elem()
+}
+
+func (i *privateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrType) ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput() PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput {
+	return i.ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutputWithContext(context.Background())
+}
+
+func (i *privateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrType) ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutputWithContext(ctx context.Context) PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput)
+}
+
+type PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutput struct{ *pulumi.OutputState }
+
+func (PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholds)(nil)).Elem()
+}
+
+func (o PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutput) ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutput() PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutput {
+	return o
+}
+
+func (o PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutput) ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutputWithContext(ctx context.Context) PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutput {
+	return o
+}
+
+func (o PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutput) ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput() PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput {
+	return o.ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutputWithContext(context.Background())
+}
+
+func (o PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutput) ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutputWithContext(ctx context.Context) PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholds) *PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholds {
+		return &v
+	}).(PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput)
+}
+
+// The utilization triggering the scale-in operation in percent.
+func (o PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutput) ScaleIn() pulumi.IntOutput {
+	return o.ApplyT(func(v PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholds) int {
+		return v.ScaleIn
+	}).(pulumi.IntOutput)
+}
+
+// The utilization triggering the scale-out operation in percent.
+func (o PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutput) ScaleOut() pulumi.IntOutput {
+	return o.ApplyT(func(v PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholds) int {
+		return v.ScaleOut
+	}).(pulumi.IntOutput)
+}
+
+type PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput struct{ *pulumi.OutputState }
+
+func (PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholds)(nil)).Elem()
+}
+
+func (o PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput) ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput() PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput {
+	return o
+}
+
+func (o PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput) ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutputWithContext(ctx context.Context) PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput {
+	return o
+}
+
+func (o PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput) Elem() PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutput {
+	return o.ApplyT(func(v *PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholds) PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholds {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholds
+		return ret
+	}).(PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutput)
+}
+
+// The utilization triggering the scale-in operation in percent.
+func (o PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput) ScaleIn() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholds) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.ScaleIn
+	}).(pulumi.IntPtrOutput)
+}
+
+// The utilization triggering the scale-out operation in percent.
+func (o PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput) ScaleOut() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholds) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.ScaleOut
+	}).(pulumi.IntPtrOutput)
+}
+
+type PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds struct {
+	// The utilization triggering the scale-in operation in percent.
+	ScaleIn int `pulumi:"scaleIn"`
+	// The utilization triggering the scale-out operation in percent.
+	ScaleOut int `pulumi:"scaleOut"`
+}
+
+// PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsInput is an input type that accepts PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs and PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutput values.
+// You can construct a concrete instance of `PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsInput` via:
+//
+//	PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs{...}
+type PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsInput interface {
+	pulumi.Input
+
+	ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutput() PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutput
+	ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutputWithContext(context.Context) PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutput
+}
+
+type PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs struct {
+	// The utilization triggering the scale-in operation in percent.
+	ScaleIn pulumi.IntInput `pulumi:"scaleIn"`
+	// The utilization triggering the scale-out operation in percent.
+	ScaleOut pulumi.IntInput `pulumi:"scaleOut"`
+}
+
+func (PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds)(nil)).Elem()
+}
+
+func (i PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs) ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutput() PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutput {
+	return i.ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutputWithContext(context.Background())
+}
+
+func (i PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs) ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutputWithContext(ctx context.Context) PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutput)
+}
+
+func (i PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs) ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput() PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput {
+	return i.ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutputWithContext(context.Background())
+}
+
+func (i PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs) ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutputWithContext(ctx context.Context) PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutput).ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutputWithContext(ctx)
+}
+
+// PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrInput is an input type that accepts PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs, PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtr and PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput values.
+// You can construct a concrete instance of `PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrInput` via:
+//
+//	        PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs{...}
+//
+//	or:
+//
+//	        nil
+type PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrInput interface {
+	pulumi.Input
+
+	ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput() PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput
+	ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutputWithContext(context.Context) PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput
+}
+
+type privateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrType PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs
+
+func PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtr(v *PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs) PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrInput {
+	return (*privateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrType)(v)
+}
+
+func (*privateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds)(nil)).Elem()
+}
+
+func (i *privateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrType) ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput() PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput {
+	return i.ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutputWithContext(context.Background())
+}
+
+func (i *privateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrType) ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutputWithContext(ctx context.Context) PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput)
+}
+
+type PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutput struct{ *pulumi.OutputState }
+
+func (PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds)(nil)).Elem()
+}
+
+func (o PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutput) ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutput() PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutput {
+	return o
+}
+
+func (o PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutput) ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutputWithContext(ctx context.Context) PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutput {
+	return o
+}
+
+func (o PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutput) ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput() PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput {
+	return o.ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutputWithContext(context.Background())
+}
+
+func (o PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutput) ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutputWithContext(ctx context.Context) PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds) *PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds {
+		return &v
+	}).(PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput)
+}
+
+// The utilization triggering the scale-in operation in percent.
+func (o PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutput) ScaleIn() pulumi.IntOutput {
+	return o.ApplyT(func(v PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds) int {
+		return v.ScaleIn
+	}).(pulumi.IntOutput)
+}
+
+// The utilization triggering the scale-out operation in percent.
+func (o PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutput) ScaleOut() pulumi.IntOutput {
+	return o.ApplyT(func(v PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds) int {
+		return v.ScaleOut
+	}).(pulumi.IntOutput)
+}
+
+type PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput struct{ *pulumi.OutputState }
+
+func (PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds)(nil)).Elem()
+}
+
+func (o PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput) ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput() PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput {
+	return o
+}
+
+func (o PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput) ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutputWithContext(ctx context.Context) PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput {
+	return o
+}
+
+func (o PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput) Elem() PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutput {
+	return o.ApplyT(func(v *PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds) PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds
+		return ret
+	}).(PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutput)
+}
+
+// The utilization triggering the scale-in operation in percent.
+func (o PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput) ScaleIn() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.ScaleIn
+	}).(pulumi.IntPtrOutput)
+}
+
+// The utilization triggering the scale-out operation in percent.
+func (o PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput) ScaleOut() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.ScaleOut
+	}).(pulumi.IntPtrOutput)
+}
+
+type PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds struct {
+	// The utilization triggering the scale-in operation in percent.
+	//
+	// ***
+	ScaleIn int `pulumi:"scaleIn"`
+	// The utilization triggering the scale-out operation in percent.
+	ScaleOut int `pulumi:"scaleOut"`
+}
+
+// PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsInput is an input type that accepts PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs and PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutput values.
+// You can construct a concrete instance of `PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsInput` via:
+//
+//	PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs{...}
+type PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsInput interface {
+	pulumi.Input
+
+	ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutput() PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutput
+	ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutputWithContext(context.Context) PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutput
+}
+
+type PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs struct {
+	// The utilization triggering the scale-in operation in percent.
+	//
+	// ***
+	ScaleIn pulumi.IntInput `pulumi:"scaleIn"`
+	// The utilization triggering the scale-out operation in percent.
+	ScaleOut pulumi.IntInput `pulumi:"scaleOut"`
+}
+
+func (PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds)(nil)).Elem()
+}
+
+func (i PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs) ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutput() PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutput {
+	return i.ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutputWithContext(context.Background())
+}
+
+func (i PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs) ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutputWithContext(ctx context.Context) PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutput)
+}
+
+func (i PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs) ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput() PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput {
+	return i.ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutputWithContext(context.Background())
+}
+
+func (i PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs) ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutputWithContext(ctx context.Context) PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutput).ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutputWithContext(ctx)
+}
+
+// PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrInput is an input type that accepts PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs, PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtr and PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput values.
+// You can construct a concrete instance of `PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrInput` via:
+//
+//	        PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs{...}
+//
+//	or:
+//
+//	        nil
+type PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrInput interface {
+	pulumi.Input
+
+	ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput() PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput
+	ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutputWithContext(context.Context) PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput
+}
+
+type privateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrType PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs
+
+func PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtr(v *PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs) PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrInput {
+	return (*privateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrType)(v)
+}
+
+func (*privateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds)(nil)).Elem()
+}
+
+func (i *privateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrType) ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput() PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput {
+	return i.ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutputWithContext(context.Background())
+}
+
+func (i *privateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrType) ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutputWithContext(ctx context.Context) PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput)
+}
+
+type PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutput struct{ *pulumi.OutputState }
+
+func (PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds)(nil)).Elem()
+}
+
+func (o PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutput) ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutput() PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutput {
+	return o
+}
+
+func (o PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutput) ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutputWithContext(ctx context.Context) PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutput {
+	return o
+}
+
+func (o PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutput) ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput() PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput {
+	return o.ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutputWithContext(context.Background())
+}
+
+func (o PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutput) ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutputWithContext(ctx context.Context) PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds) *PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds {
+		return &v
+	}).(PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput)
+}
+
+// The utilization triggering the scale-in operation in percent.
+//
+// ***
+func (o PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutput) ScaleIn() pulumi.IntOutput {
+	return o.ApplyT(func(v PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds) int {
+		return v.ScaleIn
+	}).(pulumi.IntOutput)
+}
+
+// The utilization triggering the scale-out operation in percent.
+func (o PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutput) ScaleOut() pulumi.IntOutput {
+	return o.ApplyT(func(v PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds) int {
+		return v.ScaleOut
+	}).(pulumi.IntOutput)
+}
+
+type PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput struct{ *pulumi.OutputState }
+
+func (PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds)(nil)).Elem()
+}
+
+func (o PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput) ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput() PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput {
+	return o
+}
+
+func (o PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput) ToPrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutputWithContext(ctx context.Context) PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput {
+	return o
+}
+
+func (o PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput) Elem() PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutput {
+	return o.ApplyT(func(v *PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds) PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds
+		return ret
+	}).(PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutput)
+}
+
+// The utilization triggering the scale-in operation in percent.
+//
+// ***
+func (o PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput) ScaleIn() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.ScaleIn
+	}).(pulumi.IntPtrOutput)
+}
+
+// The utilization triggering the scale-out operation in percent.
+func (o PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput) ScaleOut() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.ScaleOut
+	}).(pulumi.IntPtrOutput)
 }
 
 type PrivateCloudManagementClusterNodeTypeConfig struct {
@@ -2144,8 +3083,6 @@ type PrivateCloudManagementClusterStretchedClusterConfig struct {
 	// Zone that will remain operational when connection between the two zones is lost.
 	PreferredLocation *string `pulumi:"preferredLocation"`
 	// Additional zone for a higher level of availability and load balancing.
-	//
-	// ***
 	SecondaryLocation *string `pulumi:"secondaryLocation"`
 }
 
@@ -2164,8 +3101,6 @@ type PrivateCloudManagementClusterStretchedClusterConfigArgs struct {
 	// Zone that will remain operational when connection between the two zones is lost.
 	PreferredLocation pulumi.StringPtrInput `pulumi:"preferredLocation"`
 	// Additional zone for a higher level of availability and load balancing.
-	//
-	// ***
 	SecondaryLocation pulumi.StringPtrInput `pulumi:"secondaryLocation"`
 }
 
@@ -2252,8 +3187,6 @@ func (o PrivateCloudManagementClusterStretchedClusterConfigOutput) PreferredLoca
 }
 
 // Additional zone for a higher level of availability and load balancing.
-//
-// ***
 func (o PrivateCloudManagementClusterStretchedClusterConfigOutput) SecondaryLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateCloudManagementClusterStretchedClusterConfig) *string { return v.SecondaryLocation }).(pulumi.StringPtrOutput)
 }
@@ -2293,8 +3226,6 @@ func (o PrivateCloudManagementClusterStretchedClusterConfigPtrOutput) PreferredL
 }
 
 // Additional zone for a higher level of availability and load balancing.
-//
-// ***
 func (o PrivateCloudManagementClusterStretchedClusterConfigPtrOutput) SecondaryLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrivateCloudManagementClusterStretchedClusterConfig) *string {
 		if v == nil {
@@ -4346,6 +5277,9 @@ func (o GetPrivateCloudHcxArrayOutput) Index(i pulumi.IntInput) GetPrivateCloudH
 }
 
 type GetPrivateCloudManagementCluster struct {
+	// Configuration of the autoscaling applied to this cluster
+	// Private cloud must have a minimum of 3 nodes to add autoscale settings
+	AutoscalingSettings []GetPrivateCloudManagementClusterAutoscalingSetting `pulumi:"autoscalingSettings"`
 	// The user-provided identifier of the new Cluster. The identifier must meet the following requirements:
 	//   * Only contains 1-63 alphanumeric characters and hyphens
 	//   * Begins with an alphabetical character
@@ -4372,6 +5306,9 @@ type GetPrivateCloudManagementClusterInput interface {
 }
 
 type GetPrivateCloudManagementClusterArgs struct {
+	// Configuration of the autoscaling applied to this cluster
+	// Private cloud must have a minimum of 3 nodes to add autoscale settings
+	AutoscalingSettings GetPrivateCloudManagementClusterAutoscalingSettingArrayInput `pulumi:"autoscalingSettings"`
 	// The user-provided identifier of the new Cluster. The identifier must meet the following requirements:
 	//   * Only contains 1-63 alphanumeric characters and hyphens
 	//   * Begins with an alphabetical character
@@ -4437,6 +5374,14 @@ func (o GetPrivateCloudManagementClusterOutput) ToGetPrivateCloudManagementClust
 	return o
 }
 
+// Configuration of the autoscaling applied to this cluster
+// Private cloud must have a minimum of 3 nodes to add autoscale settings
+func (o GetPrivateCloudManagementClusterOutput) AutoscalingSettings() GetPrivateCloudManagementClusterAutoscalingSettingArrayOutput {
+	return o.ApplyT(func(v GetPrivateCloudManagementCluster) []GetPrivateCloudManagementClusterAutoscalingSetting {
+		return v.AutoscalingSettings
+	}).(GetPrivateCloudManagementClusterAutoscalingSettingArrayOutput)
+}
+
 // The user-provided identifier of the new Cluster. The identifier must meet the following requirements:
 //   - Only contains 1-63 alphanumeric characters and hyphens
 //   - Begins with an alphabetical character
@@ -4480,6 +5425,662 @@ func (o GetPrivateCloudManagementClusterArrayOutput) Index(i pulumi.IntInput) Ge
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrivateCloudManagementCluster {
 		return vs[0].([]GetPrivateCloudManagementCluster)[vs[1].(int)]
 	}).(GetPrivateCloudManagementClusterOutput)
+}
+
+type GetPrivateCloudManagementClusterAutoscalingSetting struct {
+	// The map with autoscaling policies applied to the cluster.
+	// The key is the identifier of the policy.
+	// It must meet the following requirements:
+	//  * Only contains 1-63 alphanumeric characters and hyphens
+	//  * Begins with an alphabetical character
+	//  * Ends with a non-hyphen character
+	//  * Not formatted as a UUID
+	//  * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+	//
+	// Currently the map must contain only one element
+	// that describes the autoscaling policy for compute nodes.
+	AutoscalingPolicies []GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicy `pulumi:"autoscalingPolicies"`
+	// The minimum duration between consecutive autoscale operations.
+	// It starts once addition or removal of nodes is fully completed.
+	// Minimum cool down period is 30m.
+	// Cool down period must be in whole minutes (for example, 30m, 31m, 50m).
+	// Mandatory for successful addition of autoscaling settings in cluster.
+	CoolDownPeriod string `pulumi:"coolDownPeriod"`
+	// Maximum number of nodes of any type in a cluster.
+	// Mandatory for successful addition of autoscaling settings in cluster.
+	MaxClusterNodeCount int `pulumi:"maxClusterNodeCount"`
+	// Minimum number of nodes of any type in a cluster.
+	// Mandatory for successful addition of autoscaling settings in cluster.
+	MinClusterNodeCount int `pulumi:"minClusterNodeCount"`
+}
+
+// GetPrivateCloudManagementClusterAutoscalingSettingInput is an input type that accepts GetPrivateCloudManagementClusterAutoscalingSettingArgs and GetPrivateCloudManagementClusterAutoscalingSettingOutput values.
+// You can construct a concrete instance of `GetPrivateCloudManagementClusterAutoscalingSettingInput` via:
+//
+//	GetPrivateCloudManagementClusterAutoscalingSettingArgs{...}
+type GetPrivateCloudManagementClusterAutoscalingSettingInput interface {
+	pulumi.Input
+
+	ToGetPrivateCloudManagementClusterAutoscalingSettingOutput() GetPrivateCloudManagementClusterAutoscalingSettingOutput
+	ToGetPrivateCloudManagementClusterAutoscalingSettingOutputWithContext(context.Context) GetPrivateCloudManagementClusterAutoscalingSettingOutput
+}
+
+type GetPrivateCloudManagementClusterAutoscalingSettingArgs struct {
+	// The map with autoscaling policies applied to the cluster.
+	// The key is the identifier of the policy.
+	// It must meet the following requirements:
+	//  * Only contains 1-63 alphanumeric characters and hyphens
+	//  * Begins with an alphabetical character
+	//  * Ends with a non-hyphen character
+	//  * Not formatted as a UUID
+	//  * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+	//
+	// Currently the map must contain only one element
+	// that describes the autoscaling policy for compute nodes.
+	AutoscalingPolicies GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyArrayInput `pulumi:"autoscalingPolicies"`
+	// The minimum duration between consecutive autoscale operations.
+	// It starts once addition or removal of nodes is fully completed.
+	// Minimum cool down period is 30m.
+	// Cool down period must be in whole minutes (for example, 30m, 31m, 50m).
+	// Mandatory for successful addition of autoscaling settings in cluster.
+	CoolDownPeriod pulumi.StringInput `pulumi:"coolDownPeriod"`
+	// Maximum number of nodes of any type in a cluster.
+	// Mandatory for successful addition of autoscaling settings in cluster.
+	MaxClusterNodeCount pulumi.IntInput `pulumi:"maxClusterNodeCount"`
+	// Minimum number of nodes of any type in a cluster.
+	// Mandatory for successful addition of autoscaling settings in cluster.
+	MinClusterNodeCount pulumi.IntInput `pulumi:"minClusterNodeCount"`
+}
+
+func (GetPrivateCloudManagementClusterAutoscalingSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrivateCloudManagementClusterAutoscalingSetting)(nil)).Elem()
+}
+
+func (i GetPrivateCloudManagementClusterAutoscalingSettingArgs) ToGetPrivateCloudManagementClusterAutoscalingSettingOutput() GetPrivateCloudManagementClusterAutoscalingSettingOutput {
+	return i.ToGetPrivateCloudManagementClusterAutoscalingSettingOutputWithContext(context.Background())
+}
+
+func (i GetPrivateCloudManagementClusterAutoscalingSettingArgs) ToGetPrivateCloudManagementClusterAutoscalingSettingOutputWithContext(ctx context.Context) GetPrivateCloudManagementClusterAutoscalingSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateCloudManagementClusterAutoscalingSettingOutput)
+}
+
+// GetPrivateCloudManagementClusterAutoscalingSettingArrayInput is an input type that accepts GetPrivateCloudManagementClusterAutoscalingSettingArray and GetPrivateCloudManagementClusterAutoscalingSettingArrayOutput values.
+// You can construct a concrete instance of `GetPrivateCloudManagementClusterAutoscalingSettingArrayInput` via:
+//
+//	GetPrivateCloudManagementClusterAutoscalingSettingArray{ GetPrivateCloudManagementClusterAutoscalingSettingArgs{...} }
+type GetPrivateCloudManagementClusterAutoscalingSettingArrayInput interface {
+	pulumi.Input
+
+	ToGetPrivateCloudManagementClusterAutoscalingSettingArrayOutput() GetPrivateCloudManagementClusterAutoscalingSettingArrayOutput
+	ToGetPrivateCloudManagementClusterAutoscalingSettingArrayOutputWithContext(context.Context) GetPrivateCloudManagementClusterAutoscalingSettingArrayOutput
+}
+
+type GetPrivateCloudManagementClusterAutoscalingSettingArray []GetPrivateCloudManagementClusterAutoscalingSettingInput
+
+func (GetPrivateCloudManagementClusterAutoscalingSettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrivateCloudManagementClusterAutoscalingSetting)(nil)).Elem()
+}
+
+func (i GetPrivateCloudManagementClusterAutoscalingSettingArray) ToGetPrivateCloudManagementClusterAutoscalingSettingArrayOutput() GetPrivateCloudManagementClusterAutoscalingSettingArrayOutput {
+	return i.ToGetPrivateCloudManagementClusterAutoscalingSettingArrayOutputWithContext(context.Background())
+}
+
+func (i GetPrivateCloudManagementClusterAutoscalingSettingArray) ToGetPrivateCloudManagementClusterAutoscalingSettingArrayOutputWithContext(ctx context.Context) GetPrivateCloudManagementClusterAutoscalingSettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateCloudManagementClusterAutoscalingSettingArrayOutput)
+}
+
+type GetPrivateCloudManagementClusterAutoscalingSettingOutput struct{ *pulumi.OutputState }
+
+func (GetPrivateCloudManagementClusterAutoscalingSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrivateCloudManagementClusterAutoscalingSetting)(nil)).Elem()
+}
+
+func (o GetPrivateCloudManagementClusterAutoscalingSettingOutput) ToGetPrivateCloudManagementClusterAutoscalingSettingOutput() GetPrivateCloudManagementClusterAutoscalingSettingOutput {
+	return o
+}
+
+func (o GetPrivateCloudManagementClusterAutoscalingSettingOutput) ToGetPrivateCloudManagementClusterAutoscalingSettingOutputWithContext(ctx context.Context) GetPrivateCloudManagementClusterAutoscalingSettingOutput {
+	return o
+}
+
+// The map with autoscaling policies applied to the cluster.
+// The key is the identifier of the policy.
+// It must meet the following requirements:
+//   - Only contains 1-63 alphanumeric characters and hyphens
+//   - Begins with an alphabetical character
+//   - Ends with a non-hyphen character
+//   - Not formatted as a UUID
+//   - Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+//
+// Currently the map must contain only one element
+// that describes the autoscaling policy for compute nodes.
+func (o GetPrivateCloudManagementClusterAutoscalingSettingOutput) AutoscalingPolicies() GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyArrayOutput {
+	return o.ApplyT(func(v GetPrivateCloudManagementClusterAutoscalingSetting) []GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicy {
+		return v.AutoscalingPolicies
+	}).(GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyArrayOutput)
+}
+
+// The minimum duration between consecutive autoscale operations.
+// It starts once addition or removal of nodes is fully completed.
+// Minimum cool down period is 30m.
+// Cool down period must be in whole minutes (for example, 30m, 31m, 50m).
+// Mandatory for successful addition of autoscaling settings in cluster.
+func (o GetPrivateCloudManagementClusterAutoscalingSettingOutput) CoolDownPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateCloudManagementClusterAutoscalingSetting) string { return v.CoolDownPeriod }).(pulumi.StringOutput)
+}
+
+// Maximum number of nodes of any type in a cluster.
+// Mandatory for successful addition of autoscaling settings in cluster.
+func (o GetPrivateCloudManagementClusterAutoscalingSettingOutput) MaxClusterNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPrivateCloudManagementClusterAutoscalingSetting) int { return v.MaxClusterNodeCount }).(pulumi.IntOutput)
+}
+
+// Minimum number of nodes of any type in a cluster.
+// Mandatory for successful addition of autoscaling settings in cluster.
+func (o GetPrivateCloudManagementClusterAutoscalingSettingOutput) MinClusterNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPrivateCloudManagementClusterAutoscalingSetting) int { return v.MinClusterNodeCount }).(pulumi.IntOutput)
+}
+
+type GetPrivateCloudManagementClusterAutoscalingSettingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPrivateCloudManagementClusterAutoscalingSettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrivateCloudManagementClusterAutoscalingSetting)(nil)).Elem()
+}
+
+func (o GetPrivateCloudManagementClusterAutoscalingSettingArrayOutput) ToGetPrivateCloudManagementClusterAutoscalingSettingArrayOutput() GetPrivateCloudManagementClusterAutoscalingSettingArrayOutput {
+	return o
+}
+
+func (o GetPrivateCloudManagementClusterAutoscalingSettingArrayOutput) ToGetPrivateCloudManagementClusterAutoscalingSettingArrayOutputWithContext(ctx context.Context) GetPrivateCloudManagementClusterAutoscalingSettingArrayOutput {
+	return o
+}
+
+func (o GetPrivateCloudManagementClusterAutoscalingSettingArrayOutput) Index(i pulumi.IntInput) GetPrivateCloudManagementClusterAutoscalingSettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrivateCloudManagementClusterAutoscalingSetting {
+		return vs[0].([]GetPrivateCloudManagementClusterAutoscalingSetting)[vs[1].(int)]
+	}).(GetPrivateCloudManagementClusterAutoscalingSettingOutput)
+}
+
+type GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicy struct {
+	AutoscalePolicyId string `pulumi:"autoscalePolicyId"`
+	// Utilization thresholds pertaining to amount of consumed memory.
+	ConsumedMemoryThresholds []GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold `pulumi:"consumedMemoryThresholds"`
+	// Utilization thresholds pertaining to CPU utilization.
+	CpuThresholds []GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThreshold `pulumi:"cpuThresholds"`
+	// The canonical identifier of the node type to add or remove.
+	NodeTypeId string `pulumi:"nodeTypeId"`
+	// Number of nodes to add to a cluster during a scale-out operation.
+	// Must be divisible by 2 for stretched clusters.
+	ScaleOutSize int `pulumi:"scaleOutSize"`
+	// Utilization thresholds pertaining to amount of consumed storage.
+	StorageThresholds []GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThreshold `pulumi:"storageThresholds"`
+}
+
+// GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyInput is an input type that accepts GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyArgs and GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyOutput values.
+// You can construct a concrete instance of `GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyInput` via:
+//
+//	GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyArgs{...}
+type GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyInput interface {
+	pulumi.Input
+
+	ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyOutput() GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyOutput
+	ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyOutputWithContext(context.Context) GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyOutput
+}
+
+type GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyArgs struct {
+	AutoscalePolicyId pulumi.StringInput `pulumi:"autoscalePolicyId"`
+	// Utilization thresholds pertaining to amount of consumed memory.
+	ConsumedMemoryThresholds GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayInput `pulumi:"consumedMemoryThresholds"`
+	// Utilization thresholds pertaining to CPU utilization.
+	CpuThresholds GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayInput `pulumi:"cpuThresholds"`
+	// The canonical identifier of the node type to add or remove.
+	NodeTypeId pulumi.StringInput `pulumi:"nodeTypeId"`
+	// Number of nodes to add to a cluster during a scale-out operation.
+	// Must be divisible by 2 for stretched clusters.
+	ScaleOutSize pulumi.IntInput `pulumi:"scaleOutSize"`
+	// Utilization thresholds pertaining to amount of consumed storage.
+	StorageThresholds GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayInput `pulumi:"storageThresholds"`
+}
+
+func (GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicy)(nil)).Elem()
+}
+
+func (i GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyArgs) ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyOutput() GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyOutput {
+	return i.ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyOutputWithContext(context.Background())
+}
+
+func (i GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyArgs) ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyOutputWithContext(ctx context.Context) GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyOutput)
+}
+
+// GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyArrayInput is an input type that accepts GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyArray and GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyArrayOutput values.
+// You can construct a concrete instance of `GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyArrayInput` via:
+//
+//	GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyArray{ GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyArgs{...} }
+type GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyArrayOutput() GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyArrayOutput
+	ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyArrayOutputWithContext(context.Context) GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyArrayOutput
+}
+
+type GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyArray []GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyInput
+
+func (GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicy)(nil)).Elem()
+}
+
+func (i GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyArray) ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyArrayOutput() GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyArrayOutput {
+	return i.ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyArray) ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyArrayOutputWithContext(ctx context.Context) GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyArrayOutput)
+}
+
+type GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicy)(nil)).Elem()
+}
+
+func (o GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyOutput) ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyOutput() GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyOutput {
+	return o
+}
+
+func (o GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyOutput) ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyOutputWithContext(ctx context.Context) GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyOutput {
+	return o
+}
+
+func (o GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyOutput) AutoscalePolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicy) string {
+		return v.AutoscalePolicyId
+	}).(pulumi.StringOutput)
+}
+
+// Utilization thresholds pertaining to amount of consumed memory.
+func (o GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyOutput) ConsumedMemoryThresholds() GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayOutput {
+	return o.ApplyT(func(v GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicy) []GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold {
+		return v.ConsumedMemoryThresholds
+	}).(GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayOutput)
+}
+
+// Utilization thresholds pertaining to CPU utilization.
+func (o GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyOutput) CpuThresholds() GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayOutput {
+	return o.ApplyT(func(v GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicy) []GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThreshold {
+		return v.CpuThresholds
+	}).(GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayOutput)
+}
+
+// The canonical identifier of the node type to add or remove.
+func (o GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyOutput) NodeTypeId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicy) string {
+		return v.NodeTypeId
+	}).(pulumi.StringOutput)
+}
+
+// Number of nodes to add to a cluster during a scale-out operation.
+// Must be divisible by 2 for stretched clusters.
+func (o GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyOutput) ScaleOutSize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicy) int { return v.ScaleOutSize }).(pulumi.IntOutput)
+}
+
+// Utilization thresholds pertaining to amount of consumed storage.
+func (o GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyOutput) StorageThresholds() GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayOutput {
+	return o.ApplyT(func(v GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicy) []GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThreshold {
+		return v.StorageThresholds
+	}).(GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayOutput)
+}
+
+type GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicy)(nil)).Elem()
+}
+
+func (o GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyArrayOutput) ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyArrayOutput() GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyArrayOutput {
+	return o
+}
+
+func (o GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyArrayOutput) ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyArrayOutputWithContext(ctx context.Context) GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyArrayOutput {
+	return o
+}
+
+func (o GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyArrayOutput) Index(i pulumi.IntInput) GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicy {
+		return vs[0].([]GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicy)[vs[1].(int)]
+	}).(GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyOutput)
+}
+
+type GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold struct {
+	// The utilization triggering the scale-in operation in percent.
+	ScaleIn int `pulumi:"scaleIn"`
+	// The utilization triggering the scale-out operation in percent.
+	ScaleOut int `pulumi:"scaleOut"`
+}
+
+// GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdInput is an input type that accepts GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArgs and GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdOutput values.
+// You can construct a concrete instance of `GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdInput` via:
+//
+//	GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArgs{...}
+type GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdInput interface {
+	pulumi.Input
+
+	ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdOutput() GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdOutput
+	ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdOutputWithContext(context.Context) GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdOutput
+}
+
+type GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArgs struct {
+	// The utilization triggering the scale-in operation in percent.
+	ScaleIn pulumi.IntInput `pulumi:"scaleIn"`
+	// The utilization triggering the scale-out operation in percent.
+	ScaleOut pulumi.IntInput `pulumi:"scaleOut"`
+}
+
+func (GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold)(nil)).Elem()
+}
+
+func (i GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArgs) ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdOutput() GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdOutput {
+	return i.ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdOutputWithContext(context.Background())
+}
+
+func (i GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArgs) ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdOutputWithContext(ctx context.Context) GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdOutput)
+}
+
+// GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayInput is an input type that accepts GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArray and GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayOutput values.
+// You can construct a concrete instance of `GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayInput` via:
+//
+//	GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArray{ GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArgs{...} }
+type GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayInput interface {
+	pulumi.Input
+
+	ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayOutput() GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayOutput
+	ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayOutputWithContext(context.Context) GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayOutput
+}
+
+type GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArray []GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdInput
+
+func (GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold)(nil)).Elem()
+}
+
+func (i GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArray) ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayOutput() GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayOutput {
+	return i.ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayOutputWithContext(context.Background())
+}
+
+func (i GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArray) ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayOutputWithContext(ctx context.Context) GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayOutput)
+}
+
+type GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdOutput struct{ *pulumi.OutputState }
+
+func (GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold)(nil)).Elem()
+}
+
+func (o GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdOutput) ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdOutput() GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdOutput {
+	return o
+}
+
+func (o GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdOutput) ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdOutputWithContext(ctx context.Context) GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdOutput {
+	return o
+}
+
+// The utilization triggering the scale-in operation in percent.
+func (o GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdOutput) ScaleIn() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold) int {
+		return v.ScaleIn
+	}).(pulumi.IntOutput)
+}
+
+// The utilization triggering the scale-out operation in percent.
+func (o GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdOutput) ScaleOut() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold) int {
+		return v.ScaleOut
+	}).(pulumi.IntOutput)
+}
+
+type GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold)(nil)).Elem()
+}
+
+func (o GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayOutput) ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayOutput() GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayOutput {
+	return o
+}
+
+func (o GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayOutput) ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayOutputWithContext(ctx context.Context) GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayOutput {
+	return o
+}
+
+func (o GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayOutput) Index(i pulumi.IntInput) GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold {
+		return vs[0].([]GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold)[vs[1].(int)]
+	}).(GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdOutput)
+}
+
+type GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThreshold struct {
+	// The utilization triggering the scale-in operation in percent.
+	ScaleIn int `pulumi:"scaleIn"`
+	// The utilization triggering the scale-out operation in percent.
+	ScaleOut int `pulumi:"scaleOut"`
+}
+
+// GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdInput is an input type that accepts GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArgs and GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdOutput values.
+// You can construct a concrete instance of `GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdInput` via:
+//
+//	GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArgs{...}
+type GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdInput interface {
+	pulumi.Input
+
+	ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdOutput() GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdOutput
+	ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdOutputWithContext(context.Context) GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdOutput
+}
+
+type GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArgs struct {
+	// The utilization triggering the scale-in operation in percent.
+	ScaleIn pulumi.IntInput `pulumi:"scaleIn"`
+	// The utilization triggering the scale-out operation in percent.
+	ScaleOut pulumi.IntInput `pulumi:"scaleOut"`
+}
+
+func (GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThreshold)(nil)).Elem()
+}
+
+func (i GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArgs) ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdOutput() GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdOutput {
+	return i.ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdOutputWithContext(context.Background())
+}
+
+func (i GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArgs) ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdOutputWithContext(ctx context.Context) GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdOutput)
+}
+
+// GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayInput is an input type that accepts GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArray and GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayOutput values.
+// You can construct a concrete instance of `GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayInput` via:
+//
+//	GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArray{ GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArgs{...} }
+type GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayInput interface {
+	pulumi.Input
+
+	ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayOutput() GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayOutput
+	ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayOutputWithContext(context.Context) GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayOutput
+}
+
+type GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArray []GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdInput
+
+func (GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThreshold)(nil)).Elem()
+}
+
+func (i GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArray) ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayOutput() GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayOutput {
+	return i.ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayOutputWithContext(context.Background())
+}
+
+func (i GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArray) ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayOutputWithContext(ctx context.Context) GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayOutput)
+}
+
+type GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdOutput struct{ *pulumi.OutputState }
+
+func (GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThreshold)(nil)).Elem()
+}
+
+func (o GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdOutput) ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdOutput() GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdOutput {
+	return o
+}
+
+func (o GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdOutput) ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdOutputWithContext(ctx context.Context) GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdOutput {
+	return o
+}
+
+// The utilization triggering the scale-in operation in percent.
+func (o GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdOutput) ScaleIn() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThreshold) int {
+		return v.ScaleIn
+	}).(pulumi.IntOutput)
+}
+
+// The utilization triggering the scale-out operation in percent.
+func (o GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdOutput) ScaleOut() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThreshold) int {
+		return v.ScaleOut
+	}).(pulumi.IntOutput)
+}
+
+type GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThreshold)(nil)).Elem()
+}
+
+func (o GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayOutput) ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayOutput() GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayOutput {
+	return o
+}
+
+func (o GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayOutput) ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayOutputWithContext(ctx context.Context) GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayOutput {
+	return o
+}
+
+func (o GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayOutput) Index(i pulumi.IntInput) GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThreshold {
+		return vs[0].([]GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThreshold)[vs[1].(int)]
+	}).(GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdOutput)
+}
+
+type GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThreshold struct {
+	// The utilization triggering the scale-in operation in percent.
+	ScaleIn int `pulumi:"scaleIn"`
+	// The utilization triggering the scale-out operation in percent.
+	ScaleOut int `pulumi:"scaleOut"`
+}
+
+// GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdInput is an input type that accepts GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArgs and GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdOutput values.
+// You can construct a concrete instance of `GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdInput` via:
+//
+//	GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArgs{...}
+type GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdInput interface {
+	pulumi.Input
+
+	ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdOutput() GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdOutput
+	ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdOutputWithContext(context.Context) GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdOutput
+}
+
+type GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArgs struct {
+	// The utilization triggering the scale-in operation in percent.
+	ScaleIn pulumi.IntInput `pulumi:"scaleIn"`
+	// The utilization triggering the scale-out operation in percent.
+	ScaleOut pulumi.IntInput `pulumi:"scaleOut"`
+}
+
+func (GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThreshold)(nil)).Elem()
+}
+
+func (i GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArgs) ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdOutput() GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdOutput {
+	return i.ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdOutputWithContext(context.Background())
+}
+
+func (i GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArgs) ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdOutputWithContext(ctx context.Context) GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdOutput)
+}
+
+// GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayInput is an input type that accepts GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArray and GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayOutput values.
+// You can construct a concrete instance of `GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayInput` via:
+//
+//	GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArray{ GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArgs{...} }
+type GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayInput interface {
+	pulumi.Input
+
+	ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayOutput() GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayOutput
+	ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayOutputWithContext(context.Context) GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayOutput
+}
+
+type GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArray []GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdInput
+
+func (GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThreshold)(nil)).Elem()
+}
+
+func (i GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArray) ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayOutput() GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayOutput {
+	return i.ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayOutputWithContext(context.Background())
+}
+
+func (i GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArray) ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayOutputWithContext(ctx context.Context) GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayOutput)
+}
+
+type GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdOutput struct{ *pulumi.OutputState }
+
+func (GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThreshold)(nil)).Elem()
+}
+
+func (o GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdOutput) ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdOutput() GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdOutput {
+	return o
+}
+
+func (o GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdOutput) ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdOutputWithContext(ctx context.Context) GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdOutput {
+	return o
+}
+
+// The utilization triggering the scale-in operation in percent.
+func (o GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdOutput) ScaleIn() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThreshold) int {
+		return v.ScaleIn
+	}).(pulumi.IntOutput)
+}
+
+// The utilization triggering the scale-out operation in percent.
+func (o GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdOutput) ScaleOut() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThreshold) int {
+		return v.ScaleOut
+	}).(pulumi.IntOutput)
+}
+
+type GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThreshold)(nil)).Elem()
+}
+
+func (o GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayOutput) ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayOutput() GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayOutput {
+	return o
+}
+
+func (o GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayOutput) ToGetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayOutputWithContext(ctx context.Context) GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayOutput {
+	return o
+}
+
+func (o GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayOutput) Index(i pulumi.IntInput) GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThreshold {
+		return vs[0].([]GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThreshold)[vs[1].(int)]
+	}).(GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdOutput)
 }
 
 type GetPrivateCloudManagementClusterNodeTypeConfig struct {
@@ -5247,6 +6848,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudHcxArrayInput)(nil)).Elem(), PrivateCloudHcxArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudManagementClusterInput)(nil)).Elem(), PrivateCloudManagementClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudManagementClusterPtrInput)(nil)).Elem(), PrivateCloudManagementClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudManagementClusterAutoscalingSettingsInput)(nil)).Elem(), PrivateCloudManagementClusterAutoscalingSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudManagementClusterAutoscalingSettingsPtrInput)(nil)).Elem(), PrivateCloudManagementClusterAutoscalingSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyInput)(nil)).Elem(), PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArrayInput)(nil)).Elem(), PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsInput)(nil)).Elem(), PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrInput)(nil)).Elem(), PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsInput)(nil)).Elem(), PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrInput)(nil)).Elem(), PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsInput)(nil)).Elem(), PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrInput)(nil)).Elem(), PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudManagementClusterNodeTypeConfigInput)(nil)).Elem(), PrivateCloudManagementClusterNodeTypeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudManagementClusterNodeTypeConfigArrayInput)(nil)).Elem(), PrivateCloudManagementClusterNodeTypeConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudManagementClusterStretchedClusterConfigInput)(nil)).Elem(), PrivateCloudManagementClusterStretchedClusterConfigArgs{})
@@ -5285,6 +6896,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudHcxArrayInput)(nil)).Elem(), GetPrivateCloudHcxArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudManagementClusterInput)(nil)).Elem(), GetPrivateCloudManagementClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudManagementClusterArrayInput)(nil)).Elem(), GetPrivateCloudManagementClusterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudManagementClusterAutoscalingSettingInput)(nil)).Elem(), GetPrivateCloudManagementClusterAutoscalingSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudManagementClusterAutoscalingSettingArrayInput)(nil)).Elem(), GetPrivateCloudManagementClusterAutoscalingSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyInput)(nil)).Elem(), GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyArrayInput)(nil)).Elem(), GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdInput)(nil)).Elem(), GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayInput)(nil)).Elem(), GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdInput)(nil)).Elem(), GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayInput)(nil)).Elem(), GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdInput)(nil)).Elem(), GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayInput)(nil)).Elem(), GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudManagementClusterNodeTypeConfigInput)(nil)).Elem(), GetPrivateCloudManagementClusterNodeTypeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudManagementClusterNodeTypeConfigArrayInput)(nil)).Elem(), GetPrivateCloudManagementClusterNodeTypeConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudManagementClusterStretchedClusterConfigInput)(nil)).Elem(), GetPrivateCloudManagementClusterStretchedClusterConfigArgs{})
@@ -5323,6 +6944,16 @@ func init() {
 	pulumi.RegisterOutputType(PrivateCloudHcxArrayOutput{})
 	pulumi.RegisterOutputType(PrivateCloudManagementClusterOutput{})
 	pulumi.RegisterOutputType(PrivateCloudManagementClusterPtrOutput{})
+	pulumi.RegisterOutputType(PrivateCloudManagementClusterAutoscalingSettingsOutput{})
+	pulumi.RegisterOutputType(PrivateCloudManagementClusterAutoscalingSettingsPtrOutput{})
+	pulumi.RegisterOutputType(PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyOutput{})
+	pulumi.RegisterOutputType(PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArrayOutput{})
+	pulumi.RegisterOutputType(PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsOutput{})
+	pulumi.RegisterOutputType(PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsPtrOutput{})
+	pulumi.RegisterOutputType(PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsOutput{})
+	pulumi.RegisterOutputType(PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsPtrOutput{})
+	pulumi.RegisterOutputType(PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsOutput{})
+	pulumi.RegisterOutputType(PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsPtrOutput{})
 	pulumi.RegisterOutputType(PrivateCloudManagementClusterNodeTypeConfigOutput{})
 	pulumi.RegisterOutputType(PrivateCloudManagementClusterNodeTypeConfigArrayOutput{})
 	pulumi.RegisterOutputType(PrivateCloudManagementClusterStretchedClusterConfigOutput{})
@@ -5361,6 +6992,16 @@ func init() {
 	pulumi.RegisterOutputType(GetPrivateCloudHcxArrayOutput{})
 	pulumi.RegisterOutputType(GetPrivateCloudManagementClusterOutput{})
 	pulumi.RegisterOutputType(GetPrivateCloudManagementClusterArrayOutput{})
+	pulumi.RegisterOutputType(GetPrivateCloudManagementClusterAutoscalingSettingOutput{})
+	pulumi.RegisterOutputType(GetPrivateCloudManagementClusterAutoscalingSettingArrayOutput{})
+	pulumi.RegisterOutputType(GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyOutput{})
+	pulumi.RegisterOutputType(GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdOutput{})
+	pulumi.RegisterOutputType(GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThresholdArrayOutput{})
+	pulumi.RegisterOutputType(GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdOutput{})
+	pulumi.RegisterOutputType(GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThresholdArrayOutput{})
+	pulumi.RegisterOutputType(GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdOutput{})
+	pulumi.RegisterOutputType(GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThresholdArrayOutput{})
 	pulumi.RegisterOutputType(GetPrivateCloudManagementClusterNodeTypeConfigOutput{})
 	pulumi.RegisterOutputType(GetPrivateCloudManagementClusterNodeTypeConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetPrivateCloudManagementClusterStretchedClusterConfigOutput{})

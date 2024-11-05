@@ -618,7 +618,7 @@ import javax.annotation.Nullable;
  * $ pulumi import gcp:compute/subnetworkIAMBinding:SubnetworkIAMBinding editor projects/{{project}}/regions/{{region}}/subnetworks/{{subnetwork}}
  * ```
  * 
- * -&gt; **Custom Roles**: If you&#39;re importing a IAM resource with a custom role, make sure to use the
+ * -&gt; **Custom Roles** If you&#39;re importing a IAM resource with a custom role, make sure to use the
  * 
  *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  * 

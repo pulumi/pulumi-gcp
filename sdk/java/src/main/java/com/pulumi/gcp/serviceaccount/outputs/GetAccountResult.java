@@ -5,6 +5,7 @@ package com.pulumi.gcp.serviceaccount.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -13,6 +14,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAccountResult {
     private String accountId;
+    /**
+     * @return Whether a service account is disabled or not.
+     * 
+     */
+    private Boolean disabled;
     /**
      * @return The display name for the service account.
      * 
@@ -50,6 +56,13 @@ public final class GetAccountResult {
     private GetAccountResult() {}
     public String accountId() {
         return this.accountId;
+    }
+    /**
+     * @return Whether a service account is disabled or not.
+     * 
+     */
+    public Boolean disabled() {
+        return this.disabled;
     }
     /**
      * @return The display name for the service account.
@@ -109,6 +122,7 @@ public final class GetAccountResult {
     @CustomType.Builder
     public static final class Builder {
         private String accountId;
+        private Boolean disabled;
         private String displayName;
         private String email;
         private String id;
@@ -120,6 +134,7 @@ public final class GetAccountResult {
         public Builder(GetAccountResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
+    	      this.disabled = defaults.disabled;
     	      this.displayName = defaults.displayName;
     	      this.email = defaults.email;
     	      this.id = defaults.id;
@@ -135,6 +150,14 @@ public final class GetAccountResult {
               throw new MissingRequiredPropertyException("GetAccountResult", "accountId");
             }
             this.accountId = accountId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder disabled(Boolean disabled) {
+            if (disabled == null) {
+              throw new MissingRequiredPropertyException("GetAccountResult", "disabled");
+            }
+            this.disabled = disabled;
             return this;
         }
         @CustomType.Setter
@@ -194,6 +217,7 @@ public final class GetAccountResult {
         public GetAccountResult build() {
             final var _resultValue = new GetAccountResult();
             _resultValue.accountId = accountId;
+            _resultValue.disabled = disabled;
             _resultValue.displayName = displayName;
             _resultValue.email = email;
             _resultValue.id = id;

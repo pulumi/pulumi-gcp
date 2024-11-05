@@ -14,6 +14,7 @@ import com.pulumi.gcp.memorystore.inputs.InstanceStateInfoArgs;
 import com.pulumi.gcp.memorystore.inputs.InstanceZoneDistributionConfigArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -125,6 +126,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Endpoints for the instance.
+     * 
+     */
+    @Import(name="endpoints")
+    private @Nullable Output<List<List<Object>>> endpoints;
+
+    /**
+     * @return Endpoints for the instance.
+     * 
+     */
+    public Optional<Output<List<List<Object>>>> endpoints() {
+        return Optional.ofNullable(this.endpoints);
+    }
+
+    /**
      * Optional. User-provided engine configurations for the instance.
      * 
      */
@@ -219,6 +235,29 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> location() {
         return Optional.ofNullable(this.location);
+    }
+
+    /**
+     * Optional. Standalone or cluster.
+     * Possible values:
+     * CLUSTER
+     * STANDALONE
+     * Possible values are: `CLUSTER`, `STANDALONE`.
+     * 
+     */
+    @Import(name="mode")
+    private @Nullable Output<String> mode;
+
+    /**
+     * @return Optional. Standalone or cluster.
+     * Possible values:
+     * CLUSTER
+     * STANDALONE
+     * Possible values are: `CLUSTER`, `STANDALONE`.
+     * 
+     */
+    public Optional<Output<String>> mode() {
+        return Optional.ofNullable(this.mode);
     }
 
     /**
@@ -497,11 +536,13 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.desiredPscAutoConnections = $.desiredPscAutoConnections;
         this.discoveryEndpoints = $.discoveryEndpoints;
         this.effectiveLabels = $.effectiveLabels;
+        this.endpoints = $.endpoints;
         this.engineConfigs = $.engineConfigs;
         this.engineVersion = $.engineVersion;
         this.instanceId = $.instanceId;
         this.labels = $.labels;
         this.location = $.location;
+        this.mode = $.mode;
         this.name = $.name;
         this.nodeConfigs = $.nodeConfigs;
         this.nodeType = $.nodeType;
@@ -694,6 +735,37 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param endpoints Endpoints for the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endpoints(@Nullable Output<List<List<Object>>> endpoints) {
+            $.endpoints = endpoints;
+            return this;
+        }
+
+        /**
+         * @param endpoints Endpoints for the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endpoints(List<List<Object>> endpoints) {
+            return endpoints(Output.of(endpoints));
+        }
+
+        /**
+         * @param endpoints Endpoints for the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endpoints(List<Object>... endpoints) {
+            return endpoints(List.of(endpoints));
+        }
+
+        /**
          * @param engineConfigs Optional. User-provided engine configurations for the instance.
          * 
          * @return builder
@@ -818,6 +890,35 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder location(String location) {
             return location(Output.of(location));
+        }
+
+        /**
+         * @param mode Optional. Standalone or cluster.
+         * Possible values:
+         * CLUSTER
+         * STANDALONE
+         * Possible values are: `CLUSTER`, `STANDALONE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mode(@Nullable Output<String> mode) {
+            $.mode = mode;
+            return this;
+        }
+
+        /**
+         * @param mode Optional. Standalone or cluster.
+         * Possible values:
+         * CLUSTER
+         * STANDALONE
+         * Possible values are: `CLUSTER`, `STANDALONE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mode(String mode) {
+            return mode(Output.of(mode));
         }
 
         /**

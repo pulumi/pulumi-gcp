@@ -170,6 +170,29 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Optional. Standalone or cluster.
+     * Possible values:
+     * CLUSTER
+     * STANDALONE
+     * Possible values are: `CLUSTER`, `STANDALONE`.
+     * 
+     */
+    @Import(name="mode")
+    private @Nullable Output<String> mode;
+
+    /**
+     * @return Optional. Standalone or cluster.
+     * Possible values:
+     * CLUSTER
+     * STANDALONE
+     * Possible values are: `CLUSTER`, `STANDALONE`.
+     * 
+     */
+    public Optional<Output<String>> mode() {
+        return Optional.ofNullable(this.mode);
+    }
+
+    /**
      * Optional. Immutable. Machine type for individual nodes of the instance.
      * Possible values:
      * SHARED_CORE_NANO
@@ -307,6 +330,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.instanceId = $.instanceId;
         this.labels = $.labels;
         this.location = $.location;
+        this.mode = $.mode;
         this.nodeType = $.nodeType;
         this.persistenceConfig = $.persistenceConfig;
         this.project = $.project;
@@ -536,6 +560,35 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder location(String location) {
             return location(Output.of(location));
+        }
+
+        /**
+         * @param mode Optional. Standalone or cluster.
+         * Possible values:
+         * CLUSTER
+         * STANDALONE
+         * Possible values are: `CLUSTER`, `STANDALONE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mode(@Nullable Output<String> mode) {
+            $.mode = mode;
+            return this;
+        }
+
+        /**
+         * @param mode Optional. Standalone or cluster.
+         * Possible values:
+         * CLUSTER
+         * STANDALONE
+         * Possible values are: `CLUSTER`, `STANDALONE`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mode(String mode) {
+            return mode(Output.of(mode));
         }
 
         /**

@@ -103,6 +103,36 @@ namespace Pulumi.Gcp.VMwareEngine
     ///                     CustomCoreCount = 32,
     ///                 },
     ///             },
+    ///             AutoscalingSettings = new Gcp.VMwareEngine.Inputs.PrivateCloudManagementClusterAutoscalingSettingsArgs
+    ///             {
+    ///                 AutoscalingPolicies = new[]
+    ///                 {
+    ///                     new Gcp.VMwareEngine.Inputs.PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArgs
+    ///                     {
+    ///                         AutoscalePolicyId = "autoscaling-policy",
+    ///                         NodeTypeId = "standard-72",
+    ///                         ScaleOutSize = 1,
+    ///                         CpuThresholds = new Gcp.VMwareEngine.Inputs.PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs
+    ///                         {
+    ///                             ScaleOut = 80,
+    ///                             ScaleIn = 15,
+    ///                         },
+    ///                         ConsumedMemoryThresholds = new Gcp.VMwareEngine.Inputs.PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs
+    ///                         {
+    ///                             ScaleOut = 75,
+    ///                             ScaleIn = 20,
+    ///                         },
+    ///                         StorageThresholds = new Gcp.VMwareEngine.Inputs.PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs
+    ///                         {
+    ///                             ScaleOut = 80,
+    ///                             ScaleIn = 20,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 MinClusterNodeCount = 3,
+    ///                 MaxClusterNodeCount = 8,
+    ///                 CoolDownPeriod = "1800s",
+    ///             },
     ///         },
     ///         DeletionDelayHours = 0,
     ///         SendDeletionDelayHoursIfZero = true,

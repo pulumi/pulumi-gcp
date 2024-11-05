@@ -419,7 +419,7 @@ class RestorePlan(pulumi.CustomResource):
                     "enabled": True,
                 },
             },
-            deletion_protection="",
+            deletion_protection=True,
             network="default",
             subnetwork="default")
         basic = gcp.gkebackup.BackupPlan("basic",
@@ -464,7 +464,7 @@ class RestorePlan(pulumi.CustomResource):
                     "enabled": True,
                 },
             },
-            deletion_protection="",
+            deletion_protection=True,
             network="default",
             subnetwork="default")
         basic = gcp.gkebackup.BackupPlan("basic",
@@ -520,7 +520,7 @@ class RestorePlan(pulumi.CustomResource):
                     "enabled": True,
                 },
             },
-            deletion_protection="",
+            deletion_protection=True,
             network="default",
             subnetwork="default")
         basic = gcp.gkebackup.BackupPlan("basic",
@@ -569,7 +569,7 @@ class RestorePlan(pulumi.CustomResource):
                     "enabled": True,
                 },
             },
-            deletion_protection="",
+            deletion_protection=True,
             network="default",
             subnetwork="default")
         basic = gcp.gkebackup.BackupPlan("basic",
@@ -613,7 +613,7 @@ class RestorePlan(pulumi.CustomResource):
                     "enabled": True,
                 },
             },
-            deletion_protection="",
+            deletion_protection=True,
             network="default",
             subnetwork="default")
         basic = gcp.gkebackup.BackupPlan("basic",
@@ -686,7 +686,7 @@ class RestorePlan(pulumi.CustomResource):
                     "enabled": True,
                 },
             },
-            deletion_protection="",
+            deletion_protection=True,
             network="default",
             subnetwork="default")
         basic = gcp.gkebackup.BackupPlan("basic",
@@ -755,7 +755,7 @@ class RestorePlan(pulumi.CustomResource):
                     "enabled": True,
                 },
             },
-            deletion_protection="",
+            deletion_protection=True,
             network="default",
             subnetwork="default")
         basic = gcp.gkebackup.BackupPlan("basic",
@@ -800,7 +800,7 @@ class RestorePlan(pulumi.CustomResource):
                     "enabled": True,
                 },
             },
-            deletion_protection="",
+            deletion_protection=True,
             network="default",
             subnetwork="default")
         basic = gcp.gkebackup.BackupPlan("basic",
@@ -869,7 +869,7 @@ class RestorePlan(pulumi.CustomResource):
                     "enabled": True,
                 },
             },
-            deletion_protection="",
+            deletion_protection=True,
             network="default",
             subnetwork="default")
         basic = gcp.gkebackup.BackupPlan("basic",
@@ -974,7 +974,7 @@ class RestorePlan(pulumi.CustomResource):
                     "enabled": True,
                 },
             },
-            deletion_protection="",
+            deletion_protection=True,
             network="default",
             subnetwork="default")
         basic = gcp.gkebackup.BackupPlan("basic",
@@ -1019,7 +1019,7 @@ class RestorePlan(pulumi.CustomResource):
                     "enabled": True,
                 },
             },
-            deletion_protection="",
+            deletion_protection=True,
             network="default",
             subnetwork="default")
         basic = gcp.gkebackup.BackupPlan("basic",
@@ -1075,7 +1075,7 @@ class RestorePlan(pulumi.CustomResource):
                     "enabled": True,
                 },
             },
-            deletion_protection="",
+            deletion_protection=True,
             network="default",
             subnetwork="default")
         basic = gcp.gkebackup.BackupPlan("basic",
@@ -1124,7 +1124,7 @@ class RestorePlan(pulumi.CustomResource):
                     "enabled": True,
                 },
             },
-            deletion_protection="",
+            deletion_protection=True,
             network="default",
             subnetwork="default")
         basic = gcp.gkebackup.BackupPlan("basic",
@@ -1168,7 +1168,7 @@ class RestorePlan(pulumi.CustomResource):
                     "enabled": True,
                 },
             },
-            deletion_protection="",
+            deletion_protection=True,
             network="default",
             subnetwork="default")
         basic = gcp.gkebackup.BackupPlan("basic",
@@ -1241,7 +1241,7 @@ class RestorePlan(pulumi.CustomResource):
                     "enabled": True,
                 },
             },
-            deletion_protection="",
+            deletion_protection=True,
             network="default",
             subnetwork="default")
         basic = gcp.gkebackup.BackupPlan("basic",
@@ -1310,7 +1310,7 @@ class RestorePlan(pulumi.CustomResource):
                     "enabled": True,
                 },
             },
-            deletion_protection="",
+            deletion_protection=True,
             network="default",
             subnetwork="default")
         basic = gcp.gkebackup.BackupPlan("basic",
@@ -1355,7 +1355,7 @@ class RestorePlan(pulumi.CustomResource):
                     "enabled": True,
                 },
             },
-            deletion_protection="",
+            deletion_protection=True,
             network="default",
             subnetwork="default")
         basic = gcp.gkebackup.BackupPlan("basic",
@@ -1424,7 +1424,7 @@ class RestorePlan(pulumi.CustomResource):
                     "enabled": True,
                 },
             },
-            deletion_protection="",
+            deletion_protection=True,
             network="default",
             subnetwork="default")
         basic = gcp.gkebackup.BackupPlan("basic",

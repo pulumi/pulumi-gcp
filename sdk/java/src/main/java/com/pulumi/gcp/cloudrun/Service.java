@@ -279,7 +279,7 @@ import javax.annotation.Nullable;
  *             .settings(DatabaseInstanceSettingsArgs.builder()
  *                 .tier("db-f1-micro")
  *                 .build())
- *             .deletionProtection("true")
+ *             .deletionProtection(true)
  *             .build());
  * 
  *         var default_ = new Service("default", ServiceArgs.builder()

@@ -32,10 +32,6 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     name: "ms-console",
  *     type: "BACKUP_RESTORE",
- *     networks: [{
- *         network: _default.id,
- *         peeringMode: "PRIVATE_SERVICE_ACCESS",
- *     }],
  * }, {
  *     dependsOn: [defaultConnection],
  * });
@@ -104,20 +100,29 @@ export class ManagementServer extends pulumi.CustomResource {
     public /*out*/ readonly managementUris!: pulumi.Output<outputs.backupdisasterrecovery.ManagementServerManagementUri[]>;
     /**
      * The name of management server (management console)
+     *
+     *
+     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
      * Network details to create management server (management console).
      * Structure is documented below.
      */
-    public readonly networks!: pulumi.Output<outputs.backupdisasterrecovery.ManagementServerNetwork[]>;
+    public readonly networks!: pulumi.Output<outputs.backupdisasterrecovery.ManagementServerNetwork[] | undefined>;
     /**
      * The oauth2ClientId of management console.
      */
     public /*out*/ readonly oauth2ClientId!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The type of management server (management console). Default value: "BACKUP_RESTORE" Possible values: ["BACKUP_RESTORE"]
+     * The type of management server (management console).
+     * Default value is `BACKUP_RESTORE`.
+     * Possible values are: `BACKUP_RESTORE`.
      */
     public readonly type!: pulumi.Output<string | undefined>;
 
@@ -145,9 +150,6 @@ export class ManagementServer extends pulumi.CustomResource {
             const args = argsOrState as ManagementServerArgs | undefined;
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
-            }
-            if ((!args || args.networks === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'networks'");
             }
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -177,6 +179,9 @@ export interface ManagementServerState {
     managementUris?: pulumi.Input<pulumi.Input<inputs.backupdisasterrecovery.ManagementServerManagementUri>[]>;
     /**
      * The name of management server (management console)
+     *
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -188,9 +193,15 @@ export interface ManagementServerState {
      * The oauth2ClientId of management console.
      */
     oauth2ClientId?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
-     * The type of management server (management console). Default value: "BACKUP_RESTORE" Possible values: ["BACKUP_RESTORE"]
+     * The type of management server (management console).
+     * Default value is `BACKUP_RESTORE`.
+     * Possible values are: `BACKUP_RESTORE`.
      */
     type?: pulumi.Input<string>;
 }
@@ -205,16 +216,25 @@ export interface ManagementServerArgs {
     location: pulumi.Input<string>;
     /**
      * The name of management server (management console)
+     *
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**
      * Network details to create management server (management console).
      * Structure is documented below.
      */
-    networks: pulumi.Input<pulumi.Input<inputs.backupdisasterrecovery.ManagementServerNetwork>[]>;
+    networks?: pulumi.Input<pulumi.Input<inputs.backupdisasterrecovery.ManagementServerNetwork>[]>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     */
     project?: pulumi.Input<string>;
     /**
-     * The type of management server (management console). Default value: "BACKUP_RESTORE" Possible values: ["BACKUP_RESTORE"]
+     * The type of management server (management console).
+     * Default value is `BACKUP_RESTORE`.
+     * Possible values are: `BACKUP_RESTORE`.
      */
     type?: pulumi.Input<string>;
 }

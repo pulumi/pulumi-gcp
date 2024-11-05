@@ -25,11 +25,13 @@ class SecurityPolicyRuleInitArgs:
                  priority: pulumi.Input[int],
                  security_policy: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
+                 header_action: Optional[pulumi.Input['SecurityPolicyRuleHeaderActionArgs']] = None,
                  match: Optional[pulumi.Input['SecurityPolicyRuleMatchArgs']] = None,
                  preconfigured_waf_config: Optional[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigArgs']] = None,
                  preview: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rate_limit_options: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsArgs']] = None):
+                 rate_limit_options: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsArgs']] = None,
+                 redirect_options: Optional[pulumi.Input['SecurityPolicyRuleRedirectOptionsArgs']] = None):
         """
         The set of arguments for constructing a SecurityPolicyRule resource.
         :param pulumi.Input[str] action: The Action to perform when the rule is matched. The following are the valid actions:
@@ -46,6 +48,8 @@ class SecurityPolicyRuleInitArgs:
                
                - - -
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
+        :param pulumi.Input['SecurityPolicyRuleHeaderActionArgs'] header_action: Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+               Structure is documented below.
         :param pulumi.Input['SecurityPolicyRuleMatchArgs'] match: A match condition that incoming traffic is evaluated against.
                If it evaluates to true, the corresponding 'action' is enforced.
                Structure is documented below.
@@ -57,12 +61,16 @@ class SecurityPolicyRuleInitArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsArgs'] rate_limit_options: Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
                Structure is documented below.
+        :param pulumi.Input['SecurityPolicyRuleRedirectOptionsArgs'] redirect_options: Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+               Structure is documented below.
         """
         pulumi.set(__self__, "action", action)
         pulumi.set(__self__, "priority", priority)
         pulumi.set(__self__, "security_policy", security_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if header_action is not None:
+            pulumi.set(__self__, "header_action", header_action)
         if match is not None:
             pulumi.set(__self__, "match", match)
         if preconfigured_waf_config is not None:
@@ -73,6 +81,8 @@ class SecurityPolicyRuleInitArgs:
             pulumi.set(__self__, "project", project)
         if rate_limit_options is not None:
             pulumi.set(__self__, "rate_limit_options", rate_limit_options)
+        if redirect_options is not None:
+            pulumi.set(__self__, "redirect_options", redirect_options)
 
     @property
     @pulumi.getter
@@ -131,6 +141,19 @@ class SecurityPolicyRuleInitArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="headerAction")
+    def header_action(self) -> Optional[pulumi.Input['SecurityPolicyRuleHeaderActionArgs']]:
+        """
+        Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "header_action")
+
+    @header_action.setter
+    def header_action(self, value: Optional[pulumi.Input['SecurityPolicyRuleHeaderActionArgs']]):
+        pulumi.set(self, "header_action", value)
 
     @property
     @pulumi.getter
@@ -198,18 +221,33 @@ class SecurityPolicyRuleInitArgs:
     def rate_limit_options(self, value: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsArgs']]):
         pulumi.set(self, "rate_limit_options", value)
 
+    @property
+    @pulumi.getter(name="redirectOptions")
+    def redirect_options(self) -> Optional[pulumi.Input['SecurityPolicyRuleRedirectOptionsArgs']]:
+        """
+        Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "redirect_options")
+
+    @redirect_options.setter
+    def redirect_options(self, value: Optional[pulumi.Input['SecurityPolicyRuleRedirectOptionsArgs']]):
+        pulumi.set(self, "redirect_options", value)
+
 
 @pulumi.input_type
 class _SecurityPolicyRuleState:
     def __init__(__self__, *,
                  action: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 header_action: Optional[pulumi.Input['SecurityPolicyRuleHeaderActionArgs']] = None,
                  match: Optional[pulumi.Input['SecurityPolicyRuleMatchArgs']] = None,
                  preconfigured_waf_config: Optional[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigArgs']] = None,
                  preview: Optional[pulumi.Input[bool]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  rate_limit_options: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsArgs']] = None,
+                 redirect_options: Optional[pulumi.Input['SecurityPolicyRuleRedirectOptionsArgs']] = None,
                  security_policy: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SecurityPolicyRule resources.
@@ -220,6 +258,8 @@ class _SecurityPolicyRuleState:
                * redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR.
                * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
+        :param pulumi.Input['SecurityPolicyRuleHeaderActionArgs'] header_action: Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+               Structure is documented below.
         :param pulumi.Input['SecurityPolicyRuleMatchArgs'] match: A match condition that incoming traffic is evaluated against.
                If it evaluates to true, the corresponding 'action' is enforced.
                Structure is documented below.
@@ -234,6 +274,8 @@ class _SecurityPolicyRuleState:
                If it is not provided, the provider project is used.
         :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsArgs'] rate_limit_options: Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
                Structure is documented below.
+        :param pulumi.Input['SecurityPolicyRuleRedirectOptionsArgs'] redirect_options: Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+               Structure is documented below.
         :param pulumi.Input[str] security_policy: The name of the security policy this rule belongs to.
                
                
@@ -243,6 +285,8 @@ class _SecurityPolicyRuleState:
             pulumi.set(__self__, "action", action)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if header_action is not None:
+            pulumi.set(__self__, "header_action", header_action)
         if match is not None:
             pulumi.set(__self__, "match", match)
         if preconfigured_waf_config is not None:
@@ -255,6 +299,8 @@ class _SecurityPolicyRuleState:
             pulumi.set(__self__, "project", project)
         if rate_limit_options is not None:
             pulumi.set(__self__, "rate_limit_options", rate_limit_options)
+        if redirect_options is not None:
+            pulumi.set(__self__, "redirect_options", redirect_options)
         if security_policy is not None:
             pulumi.set(__self__, "security_policy", security_policy)
 
@@ -286,6 +332,19 @@ class _SecurityPolicyRuleState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="headerAction")
+    def header_action(self) -> Optional[pulumi.Input['SecurityPolicyRuleHeaderActionArgs']]:
+        """
+        Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "header_action")
+
+    @header_action.setter
+    def header_action(self, value: Optional[pulumi.Input['SecurityPolicyRuleHeaderActionArgs']]):
+        pulumi.set(self, "header_action", value)
 
     @property
     @pulumi.getter
@@ -368,6 +427,19 @@ class _SecurityPolicyRuleState:
         pulumi.set(self, "rate_limit_options", value)
 
     @property
+    @pulumi.getter(name="redirectOptions")
+    def redirect_options(self) -> Optional[pulumi.Input['SecurityPolicyRuleRedirectOptionsArgs']]:
+        """
+        Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "redirect_options")
+
+    @redirect_options.setter
+    def redirect_options(self, value: Optional[pulumi.Input['SecurityPolicyRuleRedirectOptionsArgs']]):
+        pulumi.set(self, "redirect_options", value)
+
+    @property
     @pulumi.getter(name="securityPolicy")
     def security_policy(self) -> Optional[pulumi.Input[str]]:
         """
@@ -390,12 +462,14 @@ class SecurityPolicyRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 header_action: Optional[pulumi.Input[Union['SecurityPolicyRuleHeaderActionArgs', 'SecurityPolicyRuleHeaderActionArgsDict']]] = None,
                  match: Optional[pulumi.Input[Union['SecurityPolicyRuleMatchArgs', 'SecurityPolicyRuleMatchArgsDict']]] = None,
                  preconfigured_waf_config: Optional[pulumi.Input[Union['SecurityPolicyRulePreconfiguredWafConfigArgs', 'SecurityPolicyRulePreconfiguredWafConfigArgsDict']]] = None,
                  preview: Optional[pulumi.Input[bool]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  rate_limit_options: Optional[pulumi.Input[Union['SecurityPolicyRuleRateLimitOptionsArgs', 'SecurityPolicyRuleRateLimitOptionsArgsDict']]] = None,
+                 redirect_options: Optional[pulumi.Input[Union['SecurityPolicyRuleRedirectOptionsArgs', 'SecurityPolicyRuleRedirectOptionsArgsDict']]] = None,
                  security_policy: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -442,15 +516,10 @@ class SecurityPolicyRule(pulumi.CustomResource):
             name="policyruletest",
             description="basic global security policy",
             type="CLOUD_ARMOR")
-        # A default rule is generated when creating the security_policy resource, import is needed to patch it
-        # import {
-        #   id = "projects//global/securityPolicies/policyruletest/priority/2147483647"
-        #   to = google_compute_security_policy_rule.default_rule
-        # }
         default_rule = gcp.compute.SecurityPolicyRule("default_rule",
             security_policy=default.name,
             description="default rule",
-            action="allow",
+            action="deny",
             priority=2147483647,
             match={
                 "versioned_expr": "SRC_IPS_V1",
@@ -543,6 +612,8 @@ class SecurityPolicyRule(pulumi.CustomResource):
                * redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR.
                * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
+        :param pulumi.Input[Union['SecurityPolicyRuleHeaderActionArgs', 'SecurityPolicyRuleHeaderActionArgsDict']] header_action: Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+               Structure is documented below.
         :param pulumi.Input[Union['SecurityPolicyRuleMatchArgs', 'SecurityPolicyRuleMatchArgsDict']] match: A match condition that incoming traffic is evaluated against.
                If it evaluates to true, the corresponding 'action' is enforced.
                Structure is documented below.
@@ -556,6 +627,8 @@ class SecurityPolicyRule(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Union['SecurityPolicyRuleRateLimitOptionsArgs', 'SecurityPolicyRuleRateLimitOptionsArgsDict']] rate_limit_options: Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+               Structure is documented below.
+        :param pulumi.Input[Union['SecurityPolicyRuleRedirectOptionsArgs', 'SecurityPolicyRuleRedirectOptionsArgsDict']] redirect_options: Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
                Structure is documented below.
         :param pulumi.Input[str] security_policy: The name of the security policy this rule belongs to.
                
@@ -612,15 +685,10 @@ class SecurityPolicyRule(pulumi.CustomResource):
             name="policyruletest",
             description="basic global security policy",
             type="CLOUD_ARMOR")
-        # A default rule is generated when creating the security_policy resource, import is needed to patch it
-        # import {
-        #   id = "projects//global/securityPolicies/policyruletest/priority/2147483647"
-        #   to = google_compute_security_policy_rule.default_rule
-        # }
         default_rule = gcp.compute.SecurityPolicyRule("default_rule",
             security_policy=default.name,
             description="default rule",
-            action="allow",
+            action="deny",
             priority=2147483647,
             match={
                 "versioned_expr": "SRC_IPS_V1",
@@ -721,12 +789,14 @@ class SecurityPolicyRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 header_action: Optional[pulumi.Input[Union['SecurityPolicyRuleHeaderActionArgs', 'SecurityPolicyRuleHeaderActionArgsDict']]] = None,
                  match: Optional[pulumi.Input[Union['SecurityPolicyRuleMatchArgs', 'SecurityPolicyRuleMatchArgsDict']]] = None,
                  preconfigured_waf_config: Optional[pulumi.Input[Union['SecurityPolicyRulePreconfiguredWafConfigArgs', 'SecurityPolicyRulePreconfiguredWafConfigArgsDict']]] = None,
                  preview: Optional[pulumi.Input[bool]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  rate_limit_options: Optional[pulumi.Input[Union['SecurityPolicyRuleRateLimitOptionsArgs', 'SecurityPolicyRuleRateLimitOptionsArgsDict']]] = None,
+                 redirect_options: Optional[pulumi.Input[Union['SecurityPolicyRuleRedirectOptionsArgs', 'SecurityPolicyRuleRedirectOptionsArgsDict']]] = None,
                  security_policy: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -741,6 +811,7 @@ class SecurityPolicyRule(pulumi.CustomResource):
                 raise TypeError("Missing required property 'action'")
             __props__.__dict__["action"] = action
             __props__.__dict__["description"] = description
+            __props__.__dict__["header_action"] = header_action
             __props__.__dict__["match"] = match
             __props__.__dict__["preconfigured_waf_config"] = preconfigured_waf_config
             __props__.__dict__["preview"] = preview
@@ -749,6 +820,7 @@ class SecurityPolicyRule(pulumi.CustomResource):
             __props__.__dict__["priority"] = priority
             __props__.__dict__["project"] = project
             __props__.__dict__["rate_limit_options"] = rate_limit_options
+            __props__.__dict__["redirect_options"] = redirect_options
             if security_policy is None and not opts.urn:
                 raise TypeError("Missing required property 'security_policy'")
             __props__.__dict__["security_policy"] = security_policy
@@ -764,12 +836,14 @@ class SecurityPolicyRule(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             action: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            header_action: Optional[pulumi.Input[Union['SecurityPolicyRuleHeaderActionArgs', 'SecurityPolicyRuleHeaderActionArgsDict']]] = None,
             match: Optional[pulumi.Input[Union['SecurityPolicyRuleMatchArgs', 'SecurityPolicyRuleMatchArgsDict']]] = None,
             preconfigured_waf_config: Optional[pulumi.Input[Union['SecurityPolicyRulePreconfiguredWafConfigArgs', 'SecurityPolicyRulePreconfiguredWafConfigArgsDict']]] = None,
             preview: Optional[pulumi.Input[bool]] = None,
             priority: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
             rate_limit_options: Optional[pulumi.Input[Union['SecurityPolicyRuleRateLimitOptionsArgs', 'SecurityPolicyRuleRateLimitOptionsArgsDict']]] = None,
+            redirect_options: Optional[pulumi.Input[Union['SecurityPolicyRuleRedirectOptionsArgs', 'SecurityPolicyRuleRedirectOptionsArgsDict']]] = None,
             security_policy: Optional[pulumi.Input[str]] = None) -> 'SecurityPolicyRule':
         """
         Get an existing SecurityPolicyRule resource's state with the given name, id, and optional extra
@@ -785,6 +859,8 @@ class SecurityPolicyRule(pulumi.CustomResource):
                * redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR.
                * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
+        :param pulumi.Input[Union['SecurityPolicyRuleHeaderActionArgs', 'SecurityPolicyRuleHeaderActionArgsDict']] header_action: Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+               Structure is documented below.
         :param pulumi.Input[Union['SecurityPolicyRuleMatchArgs', 'SecurityPolicyRuleMatchArgsDict']] match: A match condition that incoming traffic is evaluated against.
                If it evaluates to true, the corresponding 'action' is enforced.
                Structure is documented below.
@@ -799,6 +875,8 @@ class SecurityPolicyRule(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Union['SecurityPolicyRuleRateLimitOptionsArgs', 'SecurityPolicyRuleRateLimitOptionsArgsDict']] rate_limit_options: Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
                Structure is documented below.
+        :param pulumi.Input[Union['SecurityPolicyRuleRedirectOptionsArgs', 'SecurityPolicyRuleRedirectOptionsArgsDict']] redirect_options: Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+               Structure is documented below.
         :param pulumi.Input[str] security_policy: The name of the security policy this rule belongs to.
                
                
@@ -810,12 +888,14 @@ class SecurityPolicyRule(pulumi.CustomResource):
 
         __props__.__dict__["action"] = action
         __props__.__dict__["description"] = description
+        __props__.__dict__["header_action"] = header_action
         __props__.__dict__["match"] = match
         __props__.__dict__["preconfigured_waf_config"] = preconfigured_waf_config
         __props__.__dict__["preview"] = preview
         __props__.__dict__["priority"] = priority
         __props__.__dict__["project"] = project
         __props__.__dict__["rate_limit_options"] = rate_limit_options
+        __props__.__dict__["redirect_options"] = redirect_options
         __props__.__dict__["security_policy"] = security_policy
         return SecurityPolicyRule(resource_name, opts=opts, __props__=__props__)
 
@@ -839,6 +919,15 @@ class SecurityPolicyRule(pulumi.CustomResource):
         An optional description of this resource. Provide this property when you create the resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="headerAction")
+    def header_action(self) -> pulumi.Output[Optional['outputs.SecurityPolicyRuleHeaderAction']]:
+        """
+        Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "header_action")
 
     @property
     @pulumi.getter
@@ -895,6 +984,15 @@ class SecurityPolicyRule(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "rate_limit_options")
+
+    @property
+    @pulumi.getter(name="redirectOptions")
+    def redirect_options(self) -> pulumi.Output[Optional['outputs.SecurityPolicyRuleRedirectOptions']]:
+        """
+        Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "redirect_options")
 
     @property
     @pulumi.getter(name="securityPolicy")

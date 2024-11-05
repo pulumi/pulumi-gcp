@@ -688,6 +688,7 @@ __all__ = [
     'GetInstanceGroupManagerVersionTargetSizeResult',
     'GetInstanceGroupNamedPortResult',
     'GetInstanceGuestAcceleratorResult',
+    'GetInstanceGuestAttributesQueryValueResult',
     'GetInstanceNetworkInterfaceResult',
     'GetInstanceNetworkInterfaceAccessConfigResult',
     'GetInstanceNetworkInterfaceAliasIpRangeResult',
@@ -4354,6 +4355,8 @@ class ExternalVpnGatewayInterface(dict):
         suggest = None
         if key == "ipAddress":
             suggest = "ip_address"
+        elif key == "ipv6Address":
+            suggest = "ipv6_address"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ExternalVpnGatewayInterface. Access the value via the '{suggest}' property getter instead.")
@@ -4368,7 +4371,8 @@ class ExternalVpnGatewayInterface(dict):
 
     def __init__(__self__, *,
                  id: Optional[int] = None,
-                 ip_address: Optional[str] = None):
+                 ip_address: Optional[str] = None,
+                 ipv6_address: Optional[str] = None):
         """
         :param int id: The numeric ID for this interface. Allowed values are based on the redundancy type
                of this external VPN gateway
@@ -4379,11 +4383,19 @@ class ExternalVpnGatewayInterface(dict):
                Only IPv4 is supported. This IP address can be either from
                your on-premise gateway or another Cloud provider's VPN gateway,
                it cannot be an IP address from Google Compute Engine.
+        :param str ipv6_address: IPv6 address of the interface in the external VPN gateway. This IPv6
+               address can be either from your on-premise gateway or another Cloud
+               provider's VPN gateway, it cannot be an IP address from Google Compute
+               Engine. Must specify an IPv6 address (not IPV4-mapped) using any format
+               described in RFC 4291 (e.g. 2001:db8:0:0:2d9:51:0:0). The output format
+               is RFC 5952 format (e.g. 2001:db8::2d9:51:0:0).
         """
         if id is not None:
             pulumi.set(__self__, "id", id)
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
+        if ipv6_address is not None:
+            pulumi.set(__self__, "ipv6_address", ipv6_address)
 
     @property
     @pulumi.getter
@@ -4407,6 +4419,19 @@ class ExternalVpnGatewayInterface(dict):
         it cannot be an IP address from Google Compute Engine.
         """
         return pulumi.get(self, "ip_address")
+
+    @property
+    @pulumi.getter(name="ipv6Address")
+    def ipv6_address(self) -> Optional[str]:
+        """
+        IPv6 address of the interface in the external VPN gateway. This IPv6
+        address can be either from your on-premise gateway or another Cloud
+        provider's VPN gateway, it cannot be an IP address from Google Compute
+        Engine. Must specify an IPv6 address (not IPV4-mapped) using any format
+        described in RFC 4291 (e.g. 2001:db8:0:0:2d9:51:0:0). The output format
+        is RFC 5952 format (e.g. 2001:db8::2d9:51:0:0).
+        """
+        return pulumi.get(self, "ipv6_address")
 
 
 @pulumi.output_type
@@ -7151,6 +7176,8 @@ class InstanceAdvancedMachineFeatures(dict):
             suggest = "enable_nested_virtualization"
         elif key == "threadsPerCore":
             suggest = "threads_per_core"
+        elif key == "turboMode":
+            suggest = "turbo_mode"
         elif key == "visibleCoreCount":
             suggest = "visible_core_count"
 
@@ -7168,16 +7195,20 @@ class InstanceAdvancedMachineFeatures(dict):
     def __init__(__self__, *,
                  enable_nested_virtualization: Optional[bool] = None,
                  threads_per_core: Optional[int] = None,
+                 turbo_mode: Optional[str] = None,
                  visible_core_count: Optional[int] = None):
         """
         :param bool enable_nested_virtualization: Defines whether the instance should have nested virtualization  enabled. Defaults to false.
-        :param int threads_per_core: he number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
+        :param int threads_per_core: The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
+        :param str turbo_mode: Turbo frequency mode to use for the instance. Supported modes are currently either `ALL_CORE_MAX` or unset (default).
         :param int visible_core_count: The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
         """
         if enable_nested_virtualization is not None:
             pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
         if threads_per_core is not None:
             pulumi.set(__self__, "threads_per_core", threads_per_core)
+        if turbo_mode is not None:
+            pulumi.set(__self__, "turbo_mode", turbo_mode)
         if visible_core_count is not None:
             pulumi.set(__self__, "visible_core_count", visible_core_count)
 
@@ -7193,9 +7224,17 @@ class InstanceAdvancedMachineFeatures(dict):
     @pulumi.getter(name="threadsPerCore")
     def threads_per_core(self) -> Optional[int]:
         """
-        he number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
+        The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
         """
         return pulumi.get(self, "threads_per_core")
+
+    @property
+    @pulumi.getter(name="turboMode")
+    def turbo_mode(self) -> Optional[str]:
+        """
+        Turbo frequency mode to use for the instance. Supported modes are currently either `ALL_CORE_MAX` or unset (default).
+        """
+        return pulumi.get(self, "turbo_mode")
 
     @property
     @pulumi.getter(name="visibleCoreCount")
@@ -7766,6 +7805,8 @@ class InstanceFromMachineImageAdvancedMachineFeatures(dict):
             suggest = "enable_nested_virtualization"
         elif key == "threadsPerCore":
             suggest = "threads_per_core"
+        elif key == "turboMode":
+            suggest = "turbo_mode"
         elif key == "visibleCoreCount":
             suggest = "visible_core_count"
 
@@ -7783,16 +7824,20 @@ class InstanceFromMachineImageAdvancedMachineFeatures(dict):
     def __init__(__self__, *,
                  enable_nested_virtualization: Optional[bool] = None,
                  threads_per_core: Optional[int] = None,
+                 turbo_mode: Optional[str] = None,
                  visible_core_count: Optional[int] = None):
         """
         :param bool enable_nested_virtualization: Whether to enable nested virtualization or not.
         :param int threads_per_core: The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+        :param str turbo_mode: Turbo frequency mode to use for the instance. Currently supported modes is "ALL_CORE_MAX".
         :param int visible_core_count: The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\\'s nominal CPU count and the underlying platform\\'s SMT width.
         """
         if enable_nested_virtualization is not None:
             pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
         if threads_per_core is not None:
             pulumi.set(__self__, "threads_per_core", threads_per_core)
+        if turbo_mode is not None:
+            pulumi.set(__self__, "turbo_mode", turbo_mode)
         if visible_core_count is not None:
             pulumi.set(__self__, "visible_core_count", visible_core_count)
 
@@ -7811,6 +7856,14 @@ class InstanceFromMachineImageAdvancedMachineFeatures(dict):
         The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
         """
         return pulumi.get(self, "threads_per_core")
+
+    @property
+    @pulumi.getter(name="turboMode")
+    def turbo_mode(self) -> Optional[str]:
+        """
+        Turbo frequency mode to use for the instance. Currently supported modes is "ALL_CORE_MAX".
+        """
+        return pulumi.get(self, "turbo_mode")
 
     @property
     @pulumi.getter(name="visibleCoreCount")
@@ -9414,6 +9467,8 @@ class InstanceFromTemplateAdvancedMachineFeatures(dict):
             suggest = "enable_nested_virtualization"
         elif key == "threadsPerCore":
             suggest = "threads_per_core"
+        elif key == "turboMode":
+            suggest = "turbo_mode"
         elif key == "visibleCoreCount":
             suggest = "visible_core_count"
 
@@ -9431,16 +9486,20 @@ class InstanceFromTemplateAdvancedMachineFeatures(dict):
     def __init__(__self__, *,
                  enable_nested_virtualization: Optional[bool] = None,
                  threads_per_core: Optional[int] = None,
+                 turbo_mode: Optional[str] = None,
                  visible_core_count: Optional[int] = None):
         """
         :param bool enable_nested_virtualization: Whether to enable nested virtualization or not.
         :param int threads_per_core: The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+        :param str turbo_mode: Turbo frequency mode to use for the instance. Currently supported modes is "ALL_CORE_MAX".
         :param int visible_core_count: The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\\'s nominal CPU count and the underlying platform\\'s SMT width.
         """
         if enable_nested_virtualization is not None:
             pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
         if threads_per_core is not None:
             pulumi.set(__self__, "threads_per_core", threads_per_core)
+        if turbo_mode is not None:
+            pulumi.set(__self__, "turbo_mode", turbo_mode)
         if visible_core_count is not None:
             pulumi.set(__self__, "visible_core_count", visible_core_count)
 
@@ -9459,6 +9518,14 @@ class InstanceFromTemplateAdvancedMachineFeatures(dict):
         The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
         """
         return pulumi.get(self, "threads_per_core")
+
+    @property
+    @pulumi.getter(name="turboMode")
+    def turbo_mode(self) -> Optional[str]:
+        """
+        Turbo frequency mode to use for the instance. Currently supported modes is "ALL_CORE_MAX".
+        """
+        return pulumi.get(self, "turbo_mode")
 
     @property
     @pulumi.getter(name="visibleCoreCount")
@@ -13356,6 +13423,8 @@ class InstanceTemplateAdvancedMachineFeatures(dict):
             suggest = "enable_nested_virtualization"
         elif key == "threadsPerCore":
             suggest = "threads_per_core"
+        elif key == "turboMode":
+            suggest = "turbo_mode"
         elif key == "visibleCoreCount":
             suggest = "visible_core_count"
 
@@ -13373,16 +13442,20 @@ class InstanceTemplateAdvancedMachineFeatures(dict):
     def __init__(__self__, *,
                  enable_nested_virtualization: Optional[bool] = None,
                  threads_per_core: Optional[int] = None,
+                 turbo_mode: Optional[str] = None,
                  visible_core_count: Optional[int] = None):
         """
         :param bool enable_nested_virtualization: Defines whether the instance should have nested virtualization enabled. Defaults to false.
         :param int threads_per_core: The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
+        :param str turbo_mode: Turbo frequency mode to use for the instance. Supported modes are currently either `ALL_CORE_MAX` or unset (default).
         :param int visible_core_count: The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
         """
         if enable_nested_virtualization is not None:
             pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
         if threads_per_core is not None:
             pulumi.set(__self__, "threads_per_core", threads_per_core)
+        if turbo_mode is not None:
+            pulumi.set(__self__, "turbo_mode", turbo_mode)
         if visible_core_count is not None:
             pulumi.set(__self__, "visible_core_count", visible_core_count)
 
@@ -13401,6 +13474,14 @@ class InstanceTemplateAdvancedMachineFeatures(dict):
         The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
         """
         return pulumi.get(self, "threads_per_core")
+
+    @property
+    @pulumi.getter(name="turboMode")
+    def turbo_mode(self) -> Optional[str]:
+        """
+        Turbo frequency mode to use for the instance. Supported modes are currently either `ALL_CORE_MAX` or unset (default).
+        """
+        return pulumi.get(self, "turbo_mode")
 
     @property
     @pulumi.getter(name="visibleCoreCount")
@@ -23317,6 +23398,8 @@ class RegionInstanceTemplateAdvancedMachineFeatures(dict):
             suggest = "enable_nested_virtualization"
         elif key == "threadsPerCore":
             suggest = "threads_per_core"
+        elif key == "turboMode":
+            suggest = "turbo_mode"
         elif key == "visibleCoreCount":
             suggest = "visible_core_count"
 
@@ -23334,16 +23417,20 @@ class RegionInstanceTemplateAdvancedMachineFeatures(dict):
     def __init__(__self__, *,
                  enable_nested_virtualization: Optional[bool] = None,
                  threads_per_core: Optional[int] = None,
+                 turbo_mode: Optional[str] = None,
                  visible_core_count: Optional[int] = None):
         """
         :param bool enable_nested_virtualization: Defines whether the instance should have nested virtualization enabled. Defaults to false.
         :param int threads_per_core: The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
+        :param str turbo_mode: Turbo frequency mode to use for the instance. Supported modes are currently either `ALL_CORE_MAX` or unset (default).
         :param int visible_core_count: The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
         """
         if enable_nested_virtualization is not None:
             pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
         if threads_per_core is not None:
             pulumi.set(__self__, "threads_per_core", threads_per_core)
+        if turbo_mode is not None:
+            pulumi.set(__self__, "turbo_mode", turbo_mode)
         if visible_core_count is not None:
             pulumi.set(__self__, "visible_core_count", visible_core_count)
 
@@ -23362,6 +23449,14 @@ class RegionInstanceTemplateAdvancedMachineFeatures(dict):
         The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
         """
         return pulumi.get(self, "threads_per_core")
+
+    @property
+    @pulumi.getter(name="turboMode")
+    def turbo_mode(self) -> Optional[str]:
+        """
+        Turbo frequency mode to use for the instance. Supported modes are currently either `ALL_CORE_MAX` or unset (default).
+        """
+        return pulumi.get(self, "turbo_mode")
 
     @property
     @pulumi.getter(name="visibleCoreCount")
@@ -37347,17 +37442,20 @@ class SecurityPolicyRuleHeaderAction(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 request_headers_to_adds: Sequence['outputs.SecurityPolicyRuleHeaderActionRequestHeadersToAdd']):
+                 request_headers_to_adds: Optional[Sequence['outputs.SecurityPolicyRuleHeaderActionRequestHeadersToAdd']] = None):
         """
-        :param Sequence['SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs'] request_headers_to_adds: The list of request headers to add or overwrite if they're already present. Structure is documented below.
+        :param Sequence['SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs'] request_headers_to_adds: The list of request headers to add or overwrite if they're already present.
+               Structure is documented below.
         """
-        pulumi.set(__self__, "request_headers_to_adds", request_headers_to_adds)
+        if request_headers_to_adds is not None:
+            pulumi.set(__self__, "request_headers_to_adds", request_headers_to_adds)
 
     @property
     @pulumi.getter(name="requestHeadersToAdds")
-    def request_headers_to_adds(self) -> Sequence['outputs.SecurityPolicyRuleHeaderActionRequestHeadersToAdd']:
+    def request_headers_to_adds(self) -> Optional[Sequence['outputs.SecurityPolicyRuleHeaderActionRequestHeadersToAdd']]:
         """
-        The list of request headers to add or overwrite if they're already present. Structure is documented below.
+        The list of request headers to add or overwrite if they're already present.
+        Structure is documented below.
         """
         return pulumi.get(self, "request_headers_to_adds")
 
@@ -37384,19 +37482,20 @@ class SecurityPolicyRuleHeaderActionRequestHeadersToAdd(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 header_name: str,
+                 header_name: Optional[str] = None,
                  header_value: Optional[str] = None):
         """
         :param str header_name: The name of the header to set.
         :param str header_value: The value to set the named header to.
         """
-        pulumi.set(__self__, "header_name", header_name)
+        if header_name is not None:
+            pulumi.set(__self__, "header_name", header_name)
         if header_value is not None:
             pulumi.set(__self__, "header_value", header_value)
 
     @property
     @pulumi.getter(name="headerName")
-    def header_name(self) -> str:
+    def header_name(self) -> Optional[str]:
         """
         The name of the header to set.
         """
@@ -38354,37 +38453,32 @@ class SecurityPolicyRuleRateLimitOptionsRateLimitThreshold(dict):
 @pulumi.output_type
 class SecurityPolicyRuleRedirectOptions(dict):
     def __init__(__self__, *,
-                 type: str,
-                 target: Optional[str] = None):
+                 target: Optional[str] = None,
+                 type: Optional[str] = None):
         """
-        :param str type: Type of redirect action.
-               
-               * `EXTERNAL_302`: Redirect to an external address, configured in `target`.
-               * `GOOGLE_RECAPTCHA`: Redirect to Google reCAPTCHA.
-        :param str target: External redirection target when `EXTERNAL_302` is set in `type`.
+        :param str target: Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
+        :param str type: Type of the redirect action.
         """
-        pulumi.set(__self__, "type", type)
         if target is not None:
             pulumi.set(__self__, "target", target)
-
-    @property
-    @pulumi.getter
-    def type(self) -> str:
-        """
-        Type of redirect action.
-
-        * `EXTERNAL_302`: Redirect to an external address, configured in `target`.
-        * `GOOGLE_RECAPTCHA`: Redirect to Google reCAPTCHA.
-        """
-        return pulumi.get(self, "type")
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
     def target(self) -> Optional[str]:
         """
-        External redirection target when `EXTERNAL_302` is set in `type`.
+        Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
         """
         return pulumi.get(self, "target")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        Type of the redirect action.
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
@@ -38622,7 +38716,7 @@ class ServiceAttachmentConnectedEndpoint(dict):
                The url of the consumer network.
         :param str endpoint: (Output)
                The URL of the consumer forwarding rule.
-        :param int propagated_connection_count: (Output, Beta)
+        :param int propagated_connection_count: (Output)
                The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to.
         :param str psc_connection_id: (Output)
                The PSC connection id of the connected endpoint.
@@ -38663,7 +38757,7 @@ class ServiceAttachmentConnectedEndpoint(dict):
     @pulumi.getter(name="propagatedConnectionCount")
     def propagated_connection_count(self) -> Optional[int]:
         """
-        (Output, Beta)
+        (Output)
         The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to.
         """
         return pulumi.get(self, "propagated_connection_count")
@@ -50040,14 +50134,17 @@ class GetInstanceAdvancedMachineFeatureResult(dict):
     def __init__(__self__, *,
                  enable_nested_virtualization: bool,
                  threads_per_core: int,
+                 turbo_mode: str,
                  visible_core_count: int):
         """
         :param bool enable_nested_virtualization: Whether to enable nested virtualization or not.
         :param int threads_per_core: The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+        :param str turbo_mode: Turbo frequency mode to use for the instance. Currently supported modes is "ALL_CORE_MAX".
         :param int visible_core_count: The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\\'s nominal CPU count and the underlying platform\\'s SMT width.
         """
         pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
         pulumi.set(__self__, "threads_per_core", threads_per_core)
+        pulumi.set(__self__, "turbo_mode", turbo_mode)
         pulumi.set(__self__, "visible_core_count", visible_core_count)
 
     @property
@@ -50065,6 +50162,14 @@ class GetInstanceAdvancedMachineFeatureResult(dict):
         The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
         """
         return pulumi.get(self, "threads_per_core")
+
+    @property
+    @pulumi.getter(name="turboMode")
+    def turbo_mode(self) -> str:
+        """
+        Turbo frequency mode to use for the instance. Currently supported modes is "ALL_CORE_MAX".
+        """
+        return pulumi.get(self, "turbo_mode")
 
     @property
     @pulumi.getter(name="visibleCoreCount")
@@ -51045,6 +51150,46 @@ class GetInstanceGuestAcceleratorResult(dict):
 
 
 @pulumi.output_type
+class GetInstanceGuestAttributesQueryValueResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 namespace: str,
+                 value: str):
+        """
+        :param str key: Key of the guest_attribute.
+        :param str namespace: Namespace of the guest_attribute.
+        :param str value: Value of the guest_attribute.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "namespace", namespace)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Key of the guest_attribute.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> str:
+        """
+        Namespace of the guest_attribute.
+        """
+        return pulumi.get(self, "namespace")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        Value of the guest_attribute.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
 class GetInstanceNetworkInterfaceResult(dict):
     def __init__(__self__, *,
                  access_configs: Sequence['outputs.GetInstanceNetworkInterfaceAccessConfigResult'],
@@ -51861,14 +52006,17 @@ class GetInstanceTemplateAdvancedMachineFeatureResult(dict):
     def __init__(__self__, *,
                  enable_nested_virtualization: bool,
                  threads_per_core: int,
+                 turbo_mode: str,
                  visible_core_count: int):
         """
         :param bool enable_nested_virtualization: Whether to enable nested virtualization or not.
         :param int threads_per_core: The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+        :param str turbo_mode: Turbo frequency mode to use for the instance. Currently supported modes is "ALL_CORE_MAX".
         :param int visible_core_count: The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\\'s nominal CPU count and the underlying platform\\'s SMT width.
         """
         pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
         pulumi.set(__self__, "threads_per_core", threads_per_core)
+        pulumi.set(__self__, "turbo_mode", turbo_mode)
         pulumi.set(__self__, "visible_core_count", visible_core_count)
 
     @property
@@ -51886,6 +52034,14 @@ class GetInstanceTemplateAdvancedMachineFeatureResult(dict):
         The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
         """
         return pulumi.get(self, "threads_per_core")
+
+    @property
+    @pulumi.getter(name="turboMode")
+    def turbo_mode(self) -> str:
+        """
+        Turbo frequency mode to use for the instance. Currently supported modes is "ALL_CORE_MAX".
+        """
+        return pulumi.get(self, "turbo_mode")
 
     @property
     @pulumi.getter(name="visibleCoreCount")
@@ -54128,14 +54284,17 @@ class GetRegionInstanceTemplateAdvancedMachineFeatureResult(dict):
     def __init__(__self__, *,
                  enable_nested_virtualization: bool,
                  threads_per_core: int,
+                 turbo_mode: str,
                  visible_core_count: int):
         """
         :param bool enable_nested_virtualization: Whether to enable nested virtualization or not.
         :param int threads_per_core: The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+        :param str turbo_mode: Turbo frequency mode to use for the instance. Currently supported modes is "ALL_CORE_MAX".
         :param int visible_core_count: The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\\'s nominal CPU count and the underlying platform\\'s SMT width.
         """
         pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
         pulumi.set(__self__, "threads_per_core", threads_per_core)
+        pulumi.set(__self__, "turbo_mode", turbo_mode)
         pulumi.set(__self__, "visible_core_count", visible_core_count)
 
     @property
@@ -54153,6 +54312,14 @@ class GetRegionInstanceTemplateAdvancedMachineFeatureResult(dict):
         The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
         """
         return pulumi.get(self, "threads_per_core")
+
+    @property
+    @pulumi.getter(name="turboMode")
+    def turbo_mode(self) -> str:
+        """
+        Turbo frequency mode to use for the instance. Currently supported modes is "ALL_CORE_MAX".
+        """
+        return pulumi.get(self, "turbo_mode")
 
     @property
     @pulumi.getter(name="visibleCoreCount")

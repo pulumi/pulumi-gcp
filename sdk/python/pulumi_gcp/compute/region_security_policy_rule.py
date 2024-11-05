@@ -564,6 +564,43 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
             action="allow",
             preview=True)
         ```
+        ### Region Security Policy Rule Default Rule
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.RegionSecurityPolicy("default",
+            region="us-west2",
+            name="policywithdefaultrule",
+            description="basic region security policy",
+            type="CLOUD_ARMOR")
+        default_rule = gcp.compute.RegionSecurityPolicyRule("default_rule",
+            region="us-west2",
+            security_policy=default.name,
+            description="new rule",
+            action="deny",
+            priority=2147483647,
+            match={
+                "versioned_expr": "SRC_IPS_V1",
+                "config": {
+                    "src_ip_ranges": ["*"],
+                },
+            })
+        policy_rule = gcp.compute.RegionSecurityPolicyRule("policy_rule",
+            region="us-west2",
+            security_policy=default.name,
+            description="new rule",
+            priority=100,
+            match={
+                "versioned_expr": "SRC_IPS_V1",
+                "config": {
+                    "src_ip_ranges": ["10.10.0.0/16"],
+                },
+            },
+            action="allow",
+            preview=True)
+        ```
         ### Region Security Policy Rule With Preconfigured Waf Config
 
         ```python
@@ -809,6 +846,43 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
                         "192.168.0.0/16",
                         "10.0.0.0/8",
                     ],
+                },
+            },
+            action="allow",
+            preview=True)
+        ```
+        ### Region Security Policy Rule Default Rule
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.RegionSecurityPolicy("default",
+            region="us-west2",
+            name="policywithdefaultrule",
+            description="basic region security policy",
+            type="CLOUD_ARMOR")
+        default_rule = gcp.compute.RegionSecurityPolicyRule("default_rule",
+            region="us-west2",
+            security_policy=default.name,
+            description="new rule",
+            action="deny",
+            priority=2147483647,
+            match={
+                "versioned_expr": "SRC_IPS_V1",
+                "config": {
+                    "src_ip_ranges": ["*"],
+                },
+            })
+        policy_rule = gcp.compute.RegionSecurityPolicyRule("policy_rule",
+            region="us-west2",
+            security_policy=default.name,
+            description="new rule",
+            priority=100,
+            match={
+                "versioned_expr": "SRC_IPS_V1",
+                "config": {
+                    "src_ip_ranges": ["10.10.0.0/16"],
                 },
             },
             action="allow",

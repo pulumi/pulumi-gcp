@@ -6,6 +6,7 @@ package com.pulumi.gcp.vmwareengine.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudManagementClusterAutoscalingSettingsArgs;
 import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudManagementClusterNodeTypeConfigArgs;
 import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudManagementClusterStretchedClusterConfigArgs;
 import java.lang.String;
@@ -18,6 +19,25 @@ import javax.annotation.Nullable;
 public final class PrivateCloudManagementClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PrivateCloudManagementClusterArgs Empty = new PrivateCloudManagementClusterArgs();
+
+    /**
+     * Configuration of the autoscaling applied to this cluster
+     * Private cloud must have a minimum of 3 nodes to add autoscale settings
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="autoscalingSettings")
+    private @Nullable Output<PrivateCloudManagementClusterAutoscalingSettingsArgs> autoscalingSettings;
+
+    /**
+     * @return Configuration of the autoscaling applied to this cluster
+     * Private cloud must have a minimum of 3 nodes to add autoscale settings
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<PrivateCloudManagementClusterAutoscalingSettingsArgs>> autoscalingSettings() {
+        return Optional.ofNullable(this.autoscalingSettings);
+    }
 
     /**
      * The user-provided identifier of the new Cluster. The identifier must meet the following requirements:
@@ -83,6 +103,7 @@ public final class PrivateCloudManagementClusterArgs extends com.pulumi.resource
     private PrivateCloudManagementClusterArgs() {}
 
     private PrivateCloudManagementClusterArgs(PrivateCloudManagementClusterArgs $) {
+        this.autoscalingSettings = $.autoscalingSettings;
         this.clusterId = $.clusterId;
         this.nodeTypeConfigs = $.nodeTypeConfigs;
         this.stretchedClusterConfig = $.stretchedClusterConfig;
@@ -104,6 +125,31 @@ public final class PrivateCloudManagementClusterArgs extends com.pulumi.resource
 
         public Builder(PrivateCloudManagementClusterArgs defaults) {
             $ = new PrivateCloudManagementClusterArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param autoscalingSettings Configuration of the autoscaling applied to this cluster
+         * Private cloud must have a minimum of 3 nodes to add autoscale settings
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoscalingSettings(@Nullable Output<PrivateCloudManagementClusterAutoscalingSettingsArgs> autoscalingSettings) {
+            $.autoscalingSettings = autoscalingSettings;
+            return this;
+        }
+
+        /**
+         * @param autoscalingSettings Configuration of the autoscaling applied to this cluster
+         * Private cloud must have a minimum of 3 nodes to add autoscale settings
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoscalingSettings(PrivateCloudManagementClusterAutoscalingSettingsArgs autoscalingSettings) {
+            return autoscalingSettings(Output.of(autoscalingSettings));
         }
 
         /**

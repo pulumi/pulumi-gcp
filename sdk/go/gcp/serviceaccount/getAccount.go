@@ -118,6 +118,8 @@ type LookupAccountArgs struct {
 // A collection of values returned by getAccount.
 type LookupAccountResult struct {
 	AccountId string `pulumi:"accountId"`
+	// Whether a service account is disabled or not.
+	Disabled bool `pulumi:"disabled"`
 	// The display name for the service account.
 	DisplayName string `pulumi:"displayName"`
 	// The e-mail address of the service account. This value
@@ -192,6 +194,11 @@ func (o LookupAccountResultOutput) ToLookupAccountResultOutputWithContext(ctx co
 
 func (o LookupAccountResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// Whether a service account is disabled or not.
+func (o LookupAccountResultOutput) Disabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupAccountResult) bool { return v.Disabled }).(pulumi.BoolOutput)
 }
 
 // The display name for the service account.

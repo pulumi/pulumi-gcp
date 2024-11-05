@@ -42,7 +42,7 @@ namespace Pulumi.Gcp.GkeHub.Outputs
         /// </summary>
         public readonly Outputs.FeatureMembershipConfigmanagementPolicyController? PolicyController;
         /// <summary>
-        /// Version of ACM installed.
+        /// Version of Config Sync installed.
         /// </summary>
         public readonly string? Version;
 

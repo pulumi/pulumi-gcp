@@ -34,7 +34,8 @@ class WorkloadArgs:
                  partner_services_billing_account: Optional[pulumi.Input[str]] = None,
                  provisioned_resources_parent: Optional[pulumi.Input[str]] = None,
                  resource_settings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadResourceSettingArgs']]]] = None,
-                 violation_notifications_enabled: Optional[pulumi.Input[bool]] = None):
+                 violation_notifications_enabled: Optional[pulumi.Input[bool]] = None,
+                 workload_options: Optional[pulumi.Input['WorkloadWorkloadOptionsArgs']] = None):
         """
         The set of arguments for constructing a Workload resource.
         :param pulumi.Input[str] compliance_regime: Required. Immutable. Compliance Regime associated with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED, IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS, HIPAA, HITRUST, EU_REGIONS_AND_SUPPORT, CA_REGIONS_AND_SUPPORT, ITAR, AU_REGIONS_AND_US_SUPPORT, ASSURED_WORKLOADS_FOR_PARTNERS, ISR_REGIONS, ISR_REGIONS_AND_SUPPORT, CA_PROTECTED_B, IL5, IL2, JP_REGIONS_AND_SUPPORT, KSA_REGIONS_AND_SUPPORT_WITH_SOVEREIGNTY_CONTROLS, REGIONAL_CONTROLS, HEALTHCARE_AND_LIFE_SCIENCES_CONTROLS, HEALTHCARE_AND_LIFE_SCIENCES_CONTROLS_WITH_US_SUPPORT
@@ -58,6 +59,7 @@ class WorkloadArgs:
         :param pulumi.Input[str] provisioned_resources_parent: Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
         :param pulumi.Input[Sequence[pulumi.Input['WorkloadResourceSettingArgs']]] resource_settings: Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
         :param pulumi.Input[bool] violation_notifications_enabled: Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
+        :param pulumi.Input['WorkloadWorkloadOptionsArgs'] workload_options: Optional. Used to specify certain options for a workload during workload creation - currently only supporting KAT Optionality for Regional Controls workloads.
         """
         pulumi.set(__self__, "compliance_regime", compliance_regime)
         pulumi.set(__self__, "display_name", display_name)
@@ -83,6 +85,8 @@ class WorkloadArgs:
             pulumi.set(__self__, "resource_settings", resource_settings)
         if violation_notifications_enabled is not None:
             pulumi.set(__self__, "violation_notifications_enabled", violation_notifications_enabled)
+        if workload_options is not None:
+            pulumi.set(__self__, "workload_options", workload_options)
 
     @property
     @pulumi.getter(name="complianceRegime")
@@ -259,6 +263,18 @@ class WorkloadArgs:
     def violation_notifications_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "violation_notifications_enabled", value)
 
+    @property
+    @pulumi.getter(name="workloadOptions")
+    def workload_options(self) -> Optional[pulumi.Input['WorkloadWorkloadOptionsArgs']]:
+        """
+        Optional. Used to specify certain options for a workload during workload creation - currently only supporting KAT Optionality for Regional Controls workloads.
+        """
+        return pulumi.get(self, "workload_options")
+
+    @workload_options.setter
+    def workload_options(self, value: Optional[pulumi.Input['WorkloadWorkloadOptionsArgs']]):
+        pulumi.set(self, "workload_options", value)
+
 
 @pulumi.input_type
 class _WorkloadState:
@@ -286,7 +302,8 @@ class _WorkloadState:
                  resource_settings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadResourceSettingArgs']]]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadResourceArgs']]]] = None,
                  saa_enrollment_responses: Optional[pulumi.Input[Sequence[pulumi.Input['WorkloadSaaEnrollmentResponseArgs']]]] = None,
-                 violation_notifications_enabled: Optional[pulumi.Input[bool]] = None):
+                 violation_notifications_enabled: Optional[pulumi.Input[bool]] = None,
+                 workload_options: Optional[pulumi.Input['WorkloadWorkloadOptionsArgs']] = None):
         """
         Input properties used for looking up and filtering Workload resources.
         :param pulumi.Input[str] billing_account: Optional. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
@@ -320,6 +337,7 @@ class _WorkloadState:
         :param pulumi.Input[Sequence[pulumi.Input['WorkloadResourceArgs']]] resources: Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
         :param pulumi.Input[Sequence[pulumi.Input['WorkloadSaaEnrollmentResponseArgs']]] saa_enrollment_responses: Output only. Represents the SAA enrollment response of the given workload. SAA enrollment response is queried during workloads.get call. In failure cases, user friendly error message is shown in SAA details page.
         :param pulumi.Input[bool] violation_notifications_enabled: Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
+        :param pulumi.Input['WorkloadWorkloadOptionsArgs'] workload_options: Optional. Used to specify certain options for a workload during workload creation - currently only supporting KAT Optionality for Regional Controls workloads.
         """
         if billing_account is not None:
             pulumi.set(__self__, "billing_account", billing_account)
@@ -369,6 +387,8 @@ class _WorkloadState:
             pulumi.set(__self__, "saa_enrollment_responses", saa_enrollment_responses)
         if violation_notifications_enabled is not None:
             pulumi.set(__self__, "violation_notifications_enabled", violation_notifications_enabled)
+        if workload_options is not None:
+            pulumi.set(__self__, "workload_options", workload_options)
 
     @property
     @pulumi.getter(name="billingAccount")
@@ -665,6 +685,18 @@ class _WorkloadState:
     def violation_notifications_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "violation_notifications_enabled", value)
 
+    @property
+    @pulumi.getter(name="workloadOptions")
+    def workload_options(self) -> Optional[pulumi.Input['WorkloadWorkloadOptionsArgs']]:
+        """
+        Optional. Used to specify certain options for a workload during workload creation - currently only supporting KAT Optionality for Regional Controls workloads.
+        """
+        return pulumi.get(self, "workload_options")
+
+    @workload_options.setter
+    def workload_options(self, value: Optional[pulumi.Input['WorkloadWorkloadOptionsArgs']]):
+        pulumi.set(self, "workload_options", value)
+
 
 class Workload(pulumi.CustomResource):
     @overload
@@ -685,6 +717,7 @@ class Workload(pulumi.CustomResource):
                  provisioned_resources_parent: Optional[pulumi.Input[str]] = None,
                  resource_settings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkloadResourceSettingArgs', 'WorkloadResourceSettingArgsDict']]]]] = None,
                  violation_notifications_enabled: Optional[pulumi.Input[bool]] = None,
+                 workload_options: Optional[pulumi.Input[Union['WorkloadWorkloadOptionsArgs', 'WorkloadWorkloadOptionsArgsDict']]] = None,
                  __props__=None):
         """
         The AssuredWorkloads Workload resource
@@ -722,6 +755,9 @@ class Workload(pulumi.CustomResource):
                 },
             ],
             violation_notifications_enabled=True,
+            workload_options={
+                "kaj_enrollment_type": "KEY_ACCESS_TRANSPARENCY_OFF",
+            },
             labels={
                 "label-one": "value-one",
             })
@@ -837,6 +873,7 @@ class Workload(pulumi.CustomResource):
         :param pulumi.Input[str] provisioned_resources_parent: Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkloadResourceSettingArgs', 'WorkloadResourceSettingArgsDict']]]] resource_settings: Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
         :param pulumi.Input[bool] violation_notifications_enabled: Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
+        :param pulumi.Input[Union['WorkloadWorkloadOptionsArgs', 'WorkloadWorkloadOptionsArgsDict']] workload_options: Optional. Used to specify certain options for a workload during workload creation - currently only supporting KAT Optionality for Regional Controls workloads.
         """
         ...
     @overload
@@ -880,6 +917,9 @@ class Workload(pulumi.CustomResource):
                 },
             ],
             violation_notifications_enabled=True,
+            workload_options={
+                "kaj_enrollment_type": "KEY_ACCESS_TRANSPARENCY_OFF",
+            },
             labels={
                 "label-one": "value-one",
             })
@@ -1001,6 +1041,7 @@ class Workload(pulumi.CustomResource):
                  provisioned_resources_parent: Optional[pulumi.Input[str]] = None,
                  resource_settings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkloadResourceSettingArgs', 'WorkloadResourceSettingArgsDict']]]]] = None,
                  violation_notifications_enabled: Optional[pulumi.Input[bool]] = None,
+                 workload_options: Optional[pulumi.Input[Union['WorkloadWorkloadOptionsArgs', 'WorkloadWorkloadOptionsArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1032,6 +1073,7 @@ class Workload(pulumi.CustomResource):
             __props__.__dict__["provisioned_resources_parent"] = provisioned_resources_parent
             __props__.__dict__["resource_settings"] = resource_settings
             __props__.__dict__["violation_notifications_enabled"] = violation_notifications_enabled
+            __props__.__dict__["workload_options"] = workload_options
             __props__.__dict__["compliance_statuses"] = None
             __props__.__dict__["compliant_but_disallowed_services"] = None
             __props__.__dict__["create_time"] = None
@@ -1077,7 +1119,8 @@ class Workload(pulumi.CustomResource):
             resource_settings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkloadResourceSettingArgs', 'WorkloadResourceSettingArgsDict']]]]] = None,
             resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkloadResourceArgs', 'WorkloadResourceArgsDict']]]]] = None,
             saa_enrollment_responses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkloadSaaEnrollmentResponseArgs', 'WorkloadSaaEnrollmentResponseArgsDict']]]]] = None,
-            violation_notifications_enabled: Optional[pulumi.Input[bool]] = None) -> 'Workload':
+            violation_notifications_enabled: Optional[pulumi.Input[bool]] = None,
+            workload_options: Optional[pulumi.Input[Union['WorkloadWorkloadOptionsArgs', 'WorkloadWorkloadOptionsArgsDict']]] = None) -> 'Workload':
         """
         Get an existing Workload resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1116,6 +1159,7 @@ class Workload(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkloadResourceArgs', 'WorkloadResourceArgsDict']]]] resources: Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkloadSaaEnrollmentResponseArgs', 'WorkloadSaaEnrollmentResponseArgsDict']]]] saa_enrollment_responses: Output only. Represents the SAA enrollment response of the given workload. SAA enrollment response is queried during workloads.get call. In failure cases, user friendly error message is shown in SAA details page.
         :param pulumi.Input[bool] violation_notifications_enabled: Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
+        :param pulumi.Input[Union['WorkloadWorkloadOptionsArgs', 'WorkloadWorkloadOptionsArgsDict']] workload_options: Optional. Used to specify certain options for a workload during workload creation - currently only supporting KAT Optionality for Regional Controls workloads.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1145,6 +1189,7 @@ class Workload(pulumi.CustomResource):
         __props__.__dict__["resources"] = resources
         __props__.__dict__["saa_enrollment_responses"] = saa_enrollment_responses
         __props__.__dict__["violation_notifications_enabled"] = violation_notifications_enabled
+        __props__.__dict__["workload_options"] = workload_options
         return Workload(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1345,4 +1390,12 @@ class Workload(pulumi.CustomResource):
         Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
         """
         return pulumi.get(self, "violation_notifications_enabled")
+
+    @property
+    @pulumi.getter(name="workloadOptions")
+    def workload_options(self) -> pulumi.Output[Optional['outputs.WorkloadWorkloadOptions']]:
+        """
+        Optional. Used to specify certain options for a workload during workload creation - currently only supporting KAT Optionality for Regional Controls workloads.
+        """
+        return pulumi.get(self, "workload_options")
 

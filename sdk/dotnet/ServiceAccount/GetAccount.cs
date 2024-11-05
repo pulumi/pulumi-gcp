@@ -207,6 +207,10 @@ namespace Pulumi.Gcp.ServiceAccount
     {
         public readonly string AccountId;
         /// <summary>
+        /// Whether a service account is disabled or not.
+        /// </summary>
+        public readonly bool Disabled;
+        /// <summary>
         /// The display name for the service account.
         /// </summary>
         public readonly string DisplayName;
@@ -238,6 +242,8 @@ namespace Pulumi.Gcp.ServiceAccount
         private GetAccountResult(
             string accountId,
 
+            bool disabled,
+
             string displayName,
 
             string email,
@@ -253,6 +259,7 @@ namespace Pulumi.Gcp.ServiceAccount
             string uniqueId)
         {
             AccountId = accountId;
+            Disabled = disabled;
             DisplayName = displayName;
             Email = email;
             Id = id;

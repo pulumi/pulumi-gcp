@@ -30,14 +30,14 @@ public final class FeatureMembershipConfigmanagementConfigSync {
      */
     private @Nullable String metricsGcpServiceAccountEmail;
     /**
-     * @return (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+     * @return (Optional) Supported from Config Sync versions 1.12.0 onwards. Structure is documented below.
      * 
      * Use either `git` or `oci` config option.
      * 
      */
     private @Nullable FeatureMembershipConfigmanagementConfigSyncOci oci;
     /**
-     * @return Supported from ACM versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to &#34;false&#34;, disables the Config Sync admission webhook and does not prevent drifts.
+     * @return Supported from Config Sync versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to &#34;false&#34;, disables the Config Sync admission webhook and does not prevent drifts.
      * 
      */
     private @Nullable Boolean preventDrift;
@@ -70,7 +70,7 @@ public final class FeatureMembershipConfigmanagementConfigSync {
         return Optional.ofNullable(this.metricsGcpServiceAccountEmail);
     }
     /**
-     * @return (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+     * @return (Optional) Supported from Config Sync versions 1.12.0 onwards. Structure is documented below.
      * 
      * Use either `git` or `oci` config option.
      * 
@@ -79,7 +79,7 @@ public final class FeatureMembershipConfigmanagementConfigSync {
         return Optional.ofNullable(this.oci);
     }
     /**
-     * @return Supported from ACM versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to &#34;false&#34;, disables the Config Sync admission webhook and does not prevent drifts.
+     * @return Supported from Config Sync versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to &#34;false&#34;, disables the Config Sync admission webhook and does not prevent drifts.
      * 
      */
     public Optional<Boolean> preventDrift() {

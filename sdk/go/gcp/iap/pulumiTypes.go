@@ -777,6 +777,2293 @@ func (o AppEngineVersionIamMemberConditionPtrOutput) Title() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+type SettingsAccessSettings struct {
+	// Settings to configure and enable allowed domains.
+	// Structure is documented below.
+	AllowedDomainsSettings *SettingsAccessSettingsAllowedDomainsSettings `pulumi:"allowedDomainsSettings"`
+	// Configuration to allow cross-origin requests via IAP.
+	// Structure is documented below.
+	CorsSettings *SettingsAccessSettingsCorsSettings `pulumi:"corsSettings"`
+	// GCIP claims and endpoint configurations for 3p identity providers.
+	// Structure is documented below.
+	GcipSettings *SettingsAccessSettingsGcipSettings `pulumi:"gcipSettings"`
+	// Identity sources that IAP can use to authenticate the end user. Only one identity source
+	// can be configured. The possible values are:
+	// * `WORKFORCE_IDENTITY_FEDERATION`: Use external identities set up on Google Cloud Workforce
+	//   Identity Federation.
+	//   Each value may be one of: `WORKFORCE_IDENTITY_FEDERATION`.
+	IdentitySources []string `pulumi:"identitySources"`
+	// Settings to configure IAP's OAuth behavior.
+	// Structure is documented below.
+	OauthSettings *SettingsAccessSettingsOauthSettings `pulumi:"oauthSettings"`
+	// Settings to configure reauthentication policies in IAP.
+	// Structure is documented below.
+	ReauthSettings *SettingsAccessSettingsReauthSettings `pulumi:"reauthSettings"`
+	// Settings to configure the workforce identity federation, including workforce pools
+	// and OAuth 2.0 settings.
+	// Structure is documented below.
+	WorkforceIdentitySettings *SettingsAccessSettingsWorkforceIdentitySettings `pulumi:"workforceIdentitySettings"`
+}
+
+// SettingsAccessSettingsInput is an input type that accepts SettingsAccessSettingsArgs and SettingsAccessSettingsOutput values.
+// You can construct a concrete instance of `SettingsAccessSettingsInput` via:
+//
+//	SettingsAccessSettingsArgs{...}
+type SettingsAccessSettingsInput interface {
+	pulumi.Input
+
+	ToSettingsAccessSettingsOutput() SettingsAccessSettingsOutput
+	ToSettingsAccessSettingsOutputWithContext(context.Context) SettingsAccessSettingsOutput
+}
+
+type SettingsAccessSettingsArgs struct {
+	// Settings to configure and enable allowed domains.
+	// Structure is documented below.
+	AllowedDomainsSettings SettingsAccessSettingsAllowedDomainsSettingsPtrInput `pulumi:"allowedDomainsSettings"`
+	// Configuration to allow cross-origin requests via IAP.
+	// Structure is documented below.
+	CorsSettings SettingsAccessSettingsCorsSettingsPtrInput `pulumi:"corsSettings"`
+	// GCIP claims and endpoint configurations for 3p identity providers.
+	// Structure is documented below.
+	GcipSettings SettingsAccessSettingsGcipSettingsPtrInput `pulumi:"gcipSettings"`
+	// Identity sources that IAP can use to authenticate the end user. Only one identity source
+	// can be configured. The possible values are:
+	// * `WORKFORCE_IDENTITY_FEDERATION`: Use external identities set up on Google Cloud Workforce
+	//   Identity Federation.
+	//   Each value may be one of: `WORKFORCE_IDENTITY_FEDERATION`.
+	IdentitySources pulumi.StringArrayInput `pulumi:"identitySources"`
+	// Settings to configure IAP's OAuth behavior.
+	// Structure is documented below.
+	OauthSettings SettingsAccessSettingsOauthSettingsPtrInput `pulumi:"oauthSettings"`
+	// Settings to configure reauthentication policies in IAP.
+	// Structure is documented below.
+	ReauthSettings SettingsAccessSettingsReauthSettingsPtrInput `pulumi:"reauthSettings"`
+	// Settings to configure the workforce identity federation, including workforce pools
+	// and OAuth 2.0 settings.
+	// Structure is documented below.
+	WorkforceIdentitySettings SettingsAccessSettingsWorkforceIdentitySettingsPtrInput `pulumi:"workforceIdentitySettings"`
+}
+
+func (SettingsAccessSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingsAccessSettings)(nil)).Elem()
+}
+
+func (i SettingsAccessSettingsArgs) ToSettingsAccessSettingsOutput() SettingsAccessSettingsOutput {
+	return i.ToSettingsAccessSettingsOutputWithContext(context.Background())
+}
+
+func (i SettingsAccessSettingsArgs) ToSettingsAccessSettingsOutputWithContext(ctx context.Context) SettingsAccessSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsAccessSettingsOutput)
+}
+
+func (i SettingsAccessSettingsArgs) ToSettingsAccessSettingsPtrOutput() SettingsAccessSettingsPtrOutput {
+	return i.ToSettingsAccessSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i SettingsAccessSettingsArgs) ToSettingsAccessSettingsPtrOutputWithContext(ctx context.Context) SettingsAccessSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsAccessSettingsOutput).ToSettingsAccessSettingsPtrOutputWithContext(ctx)
+}
+
+// SettingsAccessSettingsPtrInput is an input type that accepts SettingsAccessSettingsArgs, SettingsAccessSettingsPtr and SettingsAccessSettingsPtrOutput values.
+// You can construct a concrete instance of `SettingsAccessSettingsPtrInput` via:
+//
+//	        SettingsAccessSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SettingsAccessSettingsPtrInput interface {
+	pulumi.Input
+
+	ToSettingsAccessSettingsPtrOutput() SettingsAccessSettingsPtrOutput
+	ToSettingsAccessSettingsPtrOutputWithContext(context.Context) SettingsAccessSettingsPtrOutput
+}
+
+type settingsAccessSettingsPtrType SettingsAccessSettingsArgs
+
+func SettingsAccessSettingsPtr(v *SettingsAccessSettingsArgs) SettingsAccessSettingsPtrInput {
+	return (*settingsAccessSettingsPtrType)(v)
+}
+
+func (*settingsAccessSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingsAccessSettings)(nil)).Elem()
+}
+
+func (i *settingsAccessSettingsPtrType) ToSettingsAccessSettingsPtrOutput() SettingsAccessSettingsPtrOutput {
+	return i.ToSettingsAccessSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *settingsAccessSettingsPtrType) ToSettingsAccessSettingsPtrOutputWithContext(ctx context.Context) SettingsAccessSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsAccessSettingsPtrOutput)
+}
+
+type SettingsAccessSettingsOutput struct{ *pulumi.OutputState }
+
+func (SettingsAccessSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingsAccessSettings)(nil)).Elem()
+}
+
+func (o SettingsAccessSettingsOutput) ToSettingsAccessSettingsOutput() SettingsAccessSettingsOutput {
+	return o
+}
+
+func (o SettingsAccessSettingsOutput) ToSettingsAccessSettingsOutputWithContext(ctx context.Context) SettingsAccessSettingsOutput {
+	return o
+}
+
+func (o SettingsAccessSettingsOutput) ToSettingsAccessSettingsPtrOutput() SettingsAccessSettingsPtrOutput {
+	return o.ToSettingsAccessSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o SettingsAccessSettingsOutput) ToSettingsAccessSettingsPtrOutputWithContext(ctx context.Context) SettingsAccessSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SettingsAccessSettings) *SettingsAccessSettings {
+		return &v
+	}).(SettingsAccessSettingsPtrOutput)
+}
+
+// Settings to configure and enable allowed domains.
+// Structure is documented below.
+func (o SettingsAccessSettingsOutput) AllowedDomainsSettings() SettingsAccessSettingsAllowedDomainsSettingsPtrOutput {
+	return o.ApplyT(func(v SettingsAccessSettings) *SettingsAccessSettingsAllowedDomainsSettings {
+		return v.AllowedDomainsSettings
+	}).(SettingsAccessSettingsAllowedDomainsSettingsPtrOutput)
+}
+
+// Configuration to allow cross-origin requests via IAP.
+// Structure is documented below.
+func (o SettingsAccessSettingsOutput) CorsSettings() SettingsAccessSettingsCorsSettingsPtrOutput {
+	return o.ApplyT(func(v SettingsAccessSettings) *SettingsAccessSettingsCorsSettings { return v.CorsSettings }).(SettingsAccessSettingsCorsSettingsPtrOutput)
+}
+
+// GCIP claims and endpoint configurations for 3p identity providers.
+// Structure is documented below.
+func (o SettingsAccessSettingsOutput) GcipSettings() SettingsAccessSettingsGcipSettingsPtrOutput {
+	return o.ApplyT(func(v SettingsAccessSettings) *SettingsAccessSettingsGcipSettings { return v.GcipSettings }).(SettingsAccessSettingsGcipSettingsPtrOutput)
+}
+
+// Identity sources that IAP can use to authenticate the end user. Only one identity source
+// can be configured. The possible values are:
+//   - `WORKFORCE_IDENTITY_FEDERATION`: Use external identities set up on Google Cloud Workforce
+//     Identity Federation.
+//     Each value may be one of: `WORKFORCE_IDENTITY_FEDERATION`.
+func (o SettingsAccessSettingsOutput) IdentitySources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SettingsAccessSettings) []string { return v.IdentitySources }).(pulumi.StringArrayOutput)
+}
+
+// Settings to configure IAP's OAuth behavior.
+// Structure is documented below.
+func (o SettingsAccessSettingsOutput) OauthSettings() SettingsAccessSettingsOauthSettingsPtrOutput {
+	return o.ApplyT(func(v SettingsAccessSettings) *SettingsAccessSettingsOauthSettings { return v.OauthSettings }).(SettingsAccessSettingsOauthSettingsPtrOutput)
+}
+
+// Settings to configure reauthentication policies in IAP.
+// Structure is documented below.
+func (o SettingsAccessSettingsOutput) ReauthSettings() SettingsAccessSettingsReauthSettingsPtrOutput {
+	return o.ApplyT(func(v SettingsAccessSettings) *SettingsAccessSettingsReauthSettings { return v.ReauthSettings }).(SettingsAccessSettingsReauthSettingsPtrOutput)
+}
+
+// Settings to configure the workforce identity federation, including workforce pools
+// and OAuth 2.0 settings.
+// Structure is documented below.
+func (o SettingsAccessSettingsOutput) WorkforceIdentitySettings() SettingsAccessSettingsWorkforceIdentitySettingsPtrOutput {
+	return o.ApplyT(func(v SettingsAccessSettings) *SettingsAccessSettingsWorkforceIdentitySettings {
+		return v.WorkforceIdentitySettings
+	}).(SettingsAccessSettingsWorkforceIdentitySettingsPtrOutput)
+}
+
+type SettingsAccessSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (SettingsAccessSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingsAccessSettings)(nil)).Elem()
+}
+
+func (o SettingsAccessSettingsPtrOutput) ToSettingsAccessSettingsPtrOutput() SettingsAccessSettingsPtrOutput {
+	return o
+}
+
+func (o SettingsAccessSettingsPtrOutput) ToSettingsAccessSettingsPtrOutputWithContext(ctx context.Context) SettingsAccessSettingsPtrOutput {
+	return o
+}
+
+func (o SettingsAccessSettingsPtrOutput) Elem() SettingsAccessSettingsOutput {
+	return o.ApplyT(func(v *SettingsAccessSettings) SettingsAccessSettings {
+		if v != nil {
+			return *v
+		}
+		var ret SettingsAccessSettings
+		return ret
+	}).(SettingsAccessSettingsOutput)
+}
+
+// Settings to configure and enable allowed domains.
+// Structure is documented below.
+func (o SettingsAccessSettingsPtrOutput) AllowedDomainsSettings() SettingsAccessSettingsAllowedDomainsSettingsPtrOutput {
+	return o.ApplyT(func(v *SettingsAccessSettings) *SettingsAccessSettingsAllowedDomainsSettings {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedDomainsSettings
+	}).(SettingsAccessSettingsAllowedDomainsSettingsPtrOutput)
+}
+
+// Configuration to allow cross-origin requests via IAP.
+// Structure is documented below.
+func (o SettingsAccessSettingsPtrOutput) CorsSettings() SettingsAccessSettingsCorsSettingsPtrOutput {
+	return o.ApplyT(func(v *SettingsAccessSettings) *SettingsAccessSettingsCorsSettings {
+		if v == nil {
+			return nil
+		}
+		return v.CorsSettings
+	}).(SettingsAccessSettingsCorsSettingsPtrOutput)
+}
+
+// GCIP claims and endpoint configurations for 3p identity providers.
+// Structure is documented below.
+func (o SettingsAccessSettingsPtrOutput) GcipSettings() SettingsAccessSettingsGcipSettingsPtrOutput {
+	return o.ApplyT(func(v *SettingsAccessSettings) *SettingsAccessSettingsGcipSettings {
+		if v == nil {
+			return nil
+		}
+		return v.GcipSettings
+	}).(SettingsAccessSettingsGcipSettingsPtrOutput)
+}
+
+// Identity sources that IAP can use to authenticate the end user. Only one identity source
+// can be configured. The possible values are:
+//   - `WORKFORCE_IDENTITY_FEDERATION`: Use external identities set up on Google Cloud Workforce
+//     Identity Federation.
+//     Each value may be one of: `WORKFORCE_IDENTITY_FEDERATION`.
+func (o SettingsAccessSettingsPtrOutput) IdentitySources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SettingsAccessSettings) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentitySources
+	}).(pulumi.StringArrayOutput)
+}
+
+// Settings to configure IAP's OAuth behavior.
+// Structure is documented below.
+func (o SettingsAccessSettingsPtrOutput) OauthSettings() SettingsAccessSettingsOauthSettingsPtrOutput {
+	return o.ApplyT(func(v *SettingsAccessSettings) *SettingsAccessSettingsOauthSettings {
+		if v == nil {
+			return nil
+		}
+		return v.OauthSettings
+	}).(SettingsAccessSettingsOauthSettingsPtrOutput)
+}
+
+// Settings to configure reauthentication policies in IAP.
+// Structure is documented below.
+func (o SettingsAccessSettingsPtrOutput) ReauthSettings() SettingsAccessSettingsReauthSettingsPtrOutput {
+	return o.ApplyT(func(v *SettingsAccessSettings) *SettingsAccessSettingsReauthSettings {
+		if v == nil {
+			return nil
+		}
+		return v.ReauthSettings
+	}).(SettingsAccessSettingsReauthSettingsPtrOutput)
+}
+
+// Settings to configure the workforce identity federation, including workforce pools
+// and OAuth 2.0 settings.
+// Structure is documented below.
+func (o SettingsAccessSettingsPtrOutput) WorkforceIdentitySettings() SettingsAccessSettingsWorkforceIdentitySettingsPtrOutput {
+	return o.ApplyT(func(v *SettingsAccessSettings) *SettingsAccessSettingsWorkforceIdentitySettings {
+		if v == nil {
+			return nil
+		}
+		return v.WorkforceIdentitySettings
+	}).(SettingsAccessSettingsWorkforceIdentitySettingsPtrOutput)
+}
+
+type SettingsAccessSettingsAllowedDomainsSettings struct {
+	// List of trusted domains.
+	Domains []string `pulumi:"domains"`
+	// Configuration for customers to opt in for the feature.
+	Enable *bool `pulumi:"enable"`
+}
+
+// SettingsAccessSettingsAllowedDomainsSettingsInput is an input type that accepts SettingsAccessSettingsAllowedDomainsSettingsArgs and SettingsAccessSettingsAllowedDomainsSettingsOutput values.
+// You can construct a concrete instance of `SettingsAccessSettingsAllowedDomainsSettingsInput` via:
+//
+//	SettingsAccessSettingsAllowedDomainsSettingsArgs{...}
+type SettingsAccessSettingsAllowedDomainsSettingsInput interface {
+	pulumi.Input
+
+	ToSettingsAccessSettingsAllowedDomainsSettingsOutput() SettingsAccessSettingsAllowedDomainsSettingsOutput
+	ToSettingsAccessSettingsAllowedDomainsSettingsOutputWithContext(context.Context) SettingsAccessSettingsAllowedDomainsSettingsOutput
+}
+
+type SettingsAccessSettingsAllowedDomainsSettingsArgs struct {
+	// List of trusted domains.
+	Domains pulumi.StringArrayInput `pulumi:"domains"`
+	// Configuration for customers to opt in for the feature.
+	Enable pulumi.BoolPtrInput `pulumi:"enable"`
+}
+
+func (SettingsAccessSettingsAllowedDomainsSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingsAccessSettingsAllowedDomainsSettings)(nil)).Elem()
+}
+
+func (i SettingsAccessSettingsAllowedDomainsSettingsArgs) ToSettingsAccessSettingsAllowedDomainsSettingsOutput() SettingsAccessSettingsAllowedDomainsSettingsOutput {
+	return i.ToSettingsAccessSettingsAllowedDomainsSettingsOutputWithContext(context.Background())
+}
+
+func (i SettingsAccessSettingsAllowedDomainsSettingsArgs) ToSettingsAccessSettingsAllowedDomainsSettingsOutputWithContext(ctx context.Context) SettingsAccessSettingsAllowedDomainsSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsAccessSettingsAllowedDomainsSettingsOutput)
+}
+
+func (i SettingsAccessSettingsAllowedDomainsSettingsArgs) ToSettingsAccessSettingsAllowedDomainsSettingsPtrOutput() SettingsAccessSettingsAllowedDomainsSettingsPtrOutput {
+	return i.ToSettingsAccessSettingsAllowedDomainsSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i SettingsAccessSettingsAllowedDomainsSettingsArgs) ToSettingsAccessSettingsAllowedDomainsSettingsPtrOutputWithContext(ctx context.Context) SettingsAccessSettingsAllowedDomainsSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsAccessSettingsAllowedDomainsSettingsOutput).ToSettingsAccessSettingsAllowedDomainsSettingsPtrOutputWithContext(ctx)
+}
+
+// SettingsAccessSettingsAllowedDomainsSettingsPtrInput is an input type that accepts SettingsAccessSettingsAllowedDomainsSettingsArgs, SettingsAccessSettingsAllowedDomainsSettingsPtr and SettingsAccessSettingsAllowedDomainsSettingsPtrOutput values.
+// You can construct a concrete instance of `SettingsAccessSettingsAllowedDomainsSettingsPtrInput` via:
+//
+//	        SettingsAccessSettingsAllowedDomainsSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SettingsAccessSettingsAllowedDomainsSettingsPtrInput interface {
+	pulumi.Input
+
+	ToSettingsAccessSettingsAllowedDomainsSettingsPtrOutput() SettingsAccessSettingsAllowedDomainsSettingsPtrOutput
+	ToSettingsAccessSettingsAllowedDomainsSettingsPtrOutputWithContext(context.Context) SettingsAccessSettingsAllowedDomainsSettingsPtrOutput
+}
+
+type settingsAccessSettingsAllowedDomainsSettingsPtrType SettingsAccessSettingsAllowedDomainsSettingsArgs
+
+func SettingsAccessSettingsAllowedDomainsSettingsPtr(v *SettingsAccessSettingsAllowedDomainsSettingsArgs) SettingsAccessSettingsAllowedDomainsSettingsPtrInput {
+	return (*settingsAccessSettingsAllowedDomainsSettingsPtrType)(v)
+}
+
+func (*settingsAccessSettingsAllowedDomainsSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingsAccessSettingsAllowedDomainsSettings)(nil)).Elem()
+}
+
+func (i *settingsAccessSettingsAllowedDomainsSettingsPtrType) ToSettingsAccessSettingsAllowedDomainsSettingsPtrOutput() SettingsAccessSettingsAllowedDomainsSettingsPtrOutput {
+	return i.ToSettingsAccessSettingsAllowedDomainsSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *settingsAccessSettingsAllowedDomainsSettingsPtrType) ToSettingsAccessSettingsAllowedDomainsSettingsPtrOutputWithContext(ctx context.Context) SettingsAccessSettingsAllowedDomainsSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsAccessSettingsAllowedDomainsSettingsPtrOutput)
+}
+
+type SettingsAccessSettingsAllowedDomainsSettingsOutput struct{ *pulumi.OutputState }
+
+func (SettingsAccessSettingsAllowedDomainsSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingsAccessSettingsAllowedDomainsSettings)(nil)).Elem()
+}
+
+func (o SettingsAccessSettingsAllowedDomainsSettingsOutput) ToSettingsAccessSettingsAllowedDomainsSettingsOutput() SettingsAccessSettingsAllowedDomainsSettingsOutput {
+	return o
+}
+
+func (o SettingsAccessSettingsAllowedDomainsSettingsOutput) ToSettingsAccessSettingsAllowedDomainsSettingsOutputWithContext(ctx context.Context) SettingsAccessSettingsAllowedDomainsSettingsOutput {
+	return o
+}
+
+func (o SettingsAccessSettingsAllowedDomainsSettingsOutput) ToSettingsAccessSettingsAllowedDomainsSettingsPtrOutput() SettingsAccessSettingsAllowedDomainsSettingsPtrOutput {
+	return o.ToSettingsAccessSettingsAllowedDomainsSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o SettingsAccessSettingsAllowedDomainsSettingsOutput) ToSettingsAccessSettingsAllowedDomainsSettingsPtrOutputWithContext(ctx context.Context) SettingsAccessSettingsAllowedDomainsSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SettingsAccessSettingsAllowedDomainsSettings) *SettingsAccessSettingsAllowedDomainsSettings {
+		return &v
+	}).(SettingsAccessSettingsAllowedDomainsSettingsPtrOutput)
+}
+
+// List of trusted domains.
+func (o SettingsAccessSettingsAllowedDomainsSettingsOutput) Domains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SettingsAccessSettingsAllowedDomainsSettings) []string { return v.Domains }).(pulumi.StringArrayOutput)
+}
+
+// Configuration for customers to opt in for the feature.
+func (o SettingsAccessSettingsAllowedDomainsSettingsOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingsAccessSettingsAllowedDomainsSettings) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
+}
+
+type SettingsAccessSettingsAllowedDomainsSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (SettingsAccessSettingsAllowedDomainsSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingsAccessSettingsAllowedDomainsSettings)(nil)).Elem()
+}
+
+func (o SettingsAccessSettingsAllowedDomainsSettingsPtrOutput) ToSettingsAccessSettingsAllowedDomainsSettingsPtrOutput() SettingsAccessSettingsAllowedDomainsSettingsPtrOutput {
+	return o
+}
+
+func (o SettingsAccessSettingsAllowedDomainsSettingsPtrOutput) ToSettingsAccessSettingsAllowedDomainsSettingsPtrOutputWithContext(ctx context.Context) SettingsAccessSettingsAllowedDomainsSettingsPtrOutput {
+	return o
+}
+
+func (o SettingsAccessSettingsAllowedDomainsSettingsPtrOutput) Elem() SettingsAccessSettingsAllowedDomainsSettingsOutput {
+	return o.ApplyT(func(v *SettingsAccessSettingsAllowedDomainsSettings) SettingsAccessSettingsAllowedDomainsSettings {
+		if v != nil {
+			return *v
+		}
+		var ret SettingsAccessSettingsAllowedDomainsSettings
+		return ret
+	}).(SettingsAccessSettingsAllowedDomainsSettingsOutput)
+}
+
+// List of trusted domains.
+func (o SettingsAccessSettingsAllowedDomainsSettingsPtrOutput) Domains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SettingsAccessSettingsAllowedDomainsSettings) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Domains
+	}).(pulumi.StringArrayOutput)
+}
+
+// Configuration for customers to opt in for the feature.
+func (o SettingsAccessSettingsAllowedDomainsSettingsPtrOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingsAccessSettingsAllowedDomainsSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enable
+	}).(pulumi.BoolPtrOutput)
+}
+
+type SettingsAccessSettingsCorsSettings struct {
+	// Configuration to allow HTTP OPTIONS calls to skip authorization.
+	// If undefined, IAP will not apply any special logic to OPTIONS requests.
+	AllowHttpOptions *bool `pulumi:"allowHttpOptions"`
+}
+
+// SettingsAccessSettingsCorsSettingsInput is an input type that accepts SettingsAccessSettingsCorsSettingsArgs and SettingsAccessSettingsCorsSettingsOutput values.
+// You can construct a concrete instance of `SettingsAccessSettingsCorsSettingsInput` via:
+//
+//	SettingsAccessSettingsCorsSettingsArgs{...}
+type SettingsAccessSettingsCorsSettingsInput interface {
+	pulumi.Input
+
+	ToSettingsAccessSettingsCorsSettingsOutput() SettingsAccessSettingsCorsSettingsOutput
+	ToSettingsAccessSettingsCorsSettingsOutputWithContext(context.Context) SettingsAccessSettingsCorsSettingsOutput
+}
+
+type SettingsAccessSettingsCorsSettingsArgs struct {
+	// Configuration to allow HTTP OPTIONS calls to skip authorization.
+	// If undefined, IAP will not apply any special logic to OPTIONS requests.
+	AllowHttpOptions pulumi.BoolPtrInput `pulumi:"allowHttpOptions"`
+}
+
+func (SettingsAccessSettingsCorsSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingsAccessSettingsCorsSettings)(nil)).Elem()
+}
+
+func (i SettingsAccessSettingsCorsSettingsArgs) ToSettingsAccessSettingsCorsSettingsOutput() SettingsAccessSettingsCorsSettingsOutput {
+	return i.ToSettingsAccessSettingsCorsSettingsOutputWithContext(context.Background())
+}
+
+func (i SettingsAccessSettingsCorsSettingsArgs) ToSettingsAccessSettingsCorsSettingsOutputWithContext(ctx context.Context) SettingsAccessSettingsCorsSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsAccessSettingsCorsSettingsOutput)
+}
+
+func (i SettingsAccessSettingsCorsSettingsArgs) ToSettingsAccessSettingsCorsSettingsPtrOutput() SettingsAccessSettingsCorsSettingsPtrOutput {
+	return i.ToSettingsAccessSettingsCorsSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i SettingsAccessSettingsCorsSettingsArgs) ToSettingsAccessSettingsCorsSettingsPtrOutputWithContext(ctx context.Context) SettingsAccessSettingsCorsSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsAccessSettingsCorsSettingsOutput).ToSettingsAccessSettingsCorsSettingsPtrOutputWithContext(ctx)
+}
+
+// SettingsAccessSettingsCorsSettingsPtrInput is an input type that accepts SettingsAccessSettingsCorsSettingsArgs, SettingsAccessSettingsCorsSettingsPtr and SettingsAccessSettingsCorsSettingsPtrOutput values.
+// You can construct a concrete instance of `SettingsAccessSettingsCorsSettingsPtrInput` via:
+//
+//	        SettingsAccessSettingsCorsSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SettingsAccessSettingsCorsSettingsPtrInput interface {
+	pulumi.Input
+
+	ToSettingsAccessSettingsCorsSettingsPtrOutput() SettingsAccessSettingsCorsSettingsPtrOutput
+	ToSettingsAccessSettingsCorsSettingsPtrOutputWithContext(context.Context) SettingsAccessSettingsCorsSettingsPtrOutput
+}
+
+type settingsAccessSettingsCorsSettingsPtrType SettingsAccessSettingsCorsSettingsArgs
+
+func SettingsAccessSettingsCorsSettingsPtr(v *SettingsAccessSettingsCorsSettingsArgs) SettingsAccessSettingsCorsSettingsPtrInput {
+	return (*settingsAccessSettingsCorsSettingsPtrType)(v)
+}
+
+func (*settingsAccessSettingsCorsSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingsAccessSettingsCorsSettings)(nil)).Elem()
+}
+
+func (i *settingsAccessSettingsCorsSettingsPtrType) ToSettingsAccessSettingsCorsSettingsPtrOutput() SettingsAccessSettingsCorsSettingsPtrOutput {
+	return i.ToSettingsAccessSettingsCorsSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *settingsAccessSettingsCorsSettingsPtrType) ToSettingsAccessSettingsCorsSettingsPtrOutputWithContext(ctx context.Context) SettingsAccessSettingsCorsSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsAccessSettingsCorsSettingsPtrOutput)
+}
+
+type SettingsAccessSettingsCorsSettingsOutput struct{ *pulumi.OutputState }
+
+func (SettingsAccessSettingsCorsSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingsAccessSettingsCorsSettings)(nil)).Elem()
+}
+
+func (o SettingsAccessSettingsCorsSettingsOutput) ToSettingsAccessSettingsCorsSettingsOutput() SettingsAccessSettingsCorsSettingsOutput {
+	return o
+}
+
+func (o SettingsAccessSettingsCorsSettingsOutput) ToSettingsAccessSettingsCorsSettingsOutputWithContext(ctx context.Context) SettingsAccessSettingsCorsSettingsOutput {
+	return o
+}
+
+func (o SettingsAccessSettingsCorsSettingsOutput) ToSettingsAccessSettingsCorsSettingsPtrOutput() SettingsAccessSettingsCorsSettingsPtrOutput {
+	return o.ToSettingsAccessSettingsCorsSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o SettingsAccessSettingsCorsSettingsOutput) ToSettingsAccessSettingsCorsSettingsPtrOutputWithContext(ctx context.Context) SettingsAccessSettingsCorsSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SettingsAccessSettingsCorsSettings) *SettingsAccessSettingsCorsSettings {
+		return &v
+	}).(SettingsAccessSettingsCorsSettingsPtrOutput)
+}
+
+// Configuration to allow HTTP OPTIONS calls to skip authorization.
+// If undefined, IAP will not apply any special logic to OPTIONS requests.
+func (o SettingsAccessSettingsCorsSettingsOutput) AllowHttpOptions() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingsAccessSettingsCorsSettings) *bool { return v.AllowHttpOptions }).(pulumi.BoolPtrOutput)
+}
+
+type SettingsAccessSettingsCorsSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (SettingsAccessSettingsCorsSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingsAccessSettingsCorsSettings)(nil)).Elem()
+}
+
+func (o SettingsAccessSettingsCorsSettingsPtrOutput) ToSettingsAccessSettingsCorsSettingsPtrOutput() SettingsAccessSettingsCorsSettingsPtrOutput {
+	return o
+}
+
+func (o SettingsAccessSettingsCorsSettingsPtrOutput) ToSettingsAccessSettingsCorsSettingsPtrOutputWithContext(ctx context.Context) SettingsAccessSettingsCorsSettingsPtrOutput {
+	return o
+}
+
+func (o SettingsAccessSettingsCorsSettingsPtrOutput) Elem() SettingsAccessSettingsCorsSettingsOutput {
+	return o.ApplyT(func(v *SettingsAccessSettingsCorsSettings) SettingsAccessSettingsCorsSettings {
+		if v != nil {
+			return *v
+		}
+		var ret SettingsAccessSettingsCorsSettings
+		return ret
+	}).(SettingsAccessSettingsCorsSettingsOutput)
+}
+
+// Configuration to allow HTTP OPTIONS calls to skip authorization.
+// If undefined, IAP will not apply any special logic to OPTIONS requests.
+func (o SettingsAccessSettingsCorsSettingsPtrOutput) AllowHttpOptions() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingsAccessSettingsCorsSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowHttpOptions
+	}).(pulumi.BoolPtrOutput)
+}
+
+type SettingsAccessSettingsGcipSettings struct {
+	// Login page URI associated with the GCIP tenants. Typically, all resources within
+	// the same project share the same login page, though it could be overridden at the
+	// sub resource level.
+	LoginPageUri *string `pulumi:"loginPageUri"`
+	// GCIP tenant ids that are linked to the IAP resource. tenantIds could be a string
+	// beginning with a number character to indicate authenticating with GCIP tenant flow,
+	// or in the format of _ to indicate authenticating with GCIP agent flow. If agent flow
+	// is used, tenantIds should only contain one single element, while for tenant flow,
+	// tenantIds can contain multiple elements.
+	TenantIds []string `pulumi:"tenantIds"`
+}
+
+// SettingsAccessSettingsGcipSettingsInput is an input type that accepts SettingsAccessSettingsGcipSettingsArgs and SettingsAccessSettingsGcipSettingsOutput values.
+// You can construct a concrete instance of `SettingsAccessSettingsGcipSettingsInput` via:
+//
+//	SettingsAccessSettingsGcipSettingsArgs{...}
+type SettingsAccessSettingsGcipSettingsInput interface {
+	pulumi.Input
+
+	ToSettingsAccessSettingsGcipSettingsOutput() SettingsAccessSettingsGcipSettingsOutput
+	ToSettingsAccessSettingsGcipSettingsOutputWithContext(context.Context) SettingsAccessSettingsGcipSettingsOutput
+}
+
+type SettingsAccessSettingsGcipSettingsArgs struct {
+	// Login page URI associated with the GCIP tenants. Typically, all resources within
+	// the same project share the same login page, though it could be overridden at the
+	// sub resource level.
+	LoginPageUri pulumi.StringPtrInput `pulumi:"loginPageUri"`
+	// GCIP tenant ids that are linked to the IAP resource. tenantIds could be a string
+	// beginning with a number character to indicate authenticating with GCIP tenant flow,
+	// or in the format of _ to indicate authenticating with GCIP agent flow. If agent flow
+	// is used, tenantIds should only contain one single element, while for tenant flow,
+	// tenantIds can contain multiple elements.
+	TenantIds pulumi.StringArrayInput `pulumi:"tenantIds"`
+}
+
+func (SettingsAccessSettingsGcipSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingsAccessSettingsGcipSettings)(nil)).Elem()
+}
+
+func (i SettingsAccessSettingsGcipSettingsArgs) ToSettingsAccessSettingsGcipSettingsOutput() SettingsAccessSettingsGcipSettingsOutput {
+	return i.ToSettingsAccessSettingsGcipSettingsOutputWithContext(context.Background())
+}
+
+func (i SettingsAccessSettingsGcipSettingsArgs) ToSettingsAccessSettingsGcipSettingsOutputWithContext(ctx context.Context) SettingsAccessSettingsGcipSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsAccessSettingsGcipSettingsOutput)
+}
+
+func (i SettingsAccessSettingsGcipSettingsArgs) ToSettingsAccessSettingsGcipSettingsPtrOutput() SettingsAccessSettingsGcipSettingsPtrOutput {
+	return i.ToSettingsAccessSettingsGcipSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i SettingsAccessSettingsGcipSettingsArgs) ToSettingsAccessSettingsGcipSettingsPtrOutputWithContext(ctx context.Context) SettingsAccessSettingsGcipSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsAccessSettingsGcipSettingsOutput).ToSettingsAccessSettingsGcipSettingsPtrOutputWithContext(ctx)
+}
+
+// SettingsAccessSettingsGcipSettingsPtrInput is an input type that accepts SettingsAccessSettingsGcipSettingsArgs, SettingsAccessSettingsGcipSettingsPtr and SettingsAccessSettingsGcipSettingsPtrOutput values.
+// You can construct a concrete instance of `SettingsAccessSettingsGcipSettingsPtrInput` via:
+//
+//	        SettingsAccessSettingsGcipSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SettingsAccessSettingsGcipSettingsPtrInput interface {
+	pulumi.Input
+
+	ToSettingsAccessSettingsGcipSettingsPtrOutput() SettingsAccessSettingsGcipSettingsPtrOutput
+	ToSettingsAccessSettingsGcipSettingsPtrOutputWithContext(context.Context) SettingsAccessSettingsGcipSettingsPtrOutput
+}
+
+type settingsAccessSettingsGcipSettingsPtrType SettingsAccessSettingsGcipSettingsArgs
+
+func SettingsAccessSettingsGcipSettingsPtr(v *SettingsAccessSettingsGcipSettingsArgs) SettingsAccessSettingsGcipSettingsPtrInput {
+	return (*settingsAccessSettingsGcipSettingsPtrType)(v)
+}
+
+func (*settingsAccessSettingsGcipSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingsAccessSettingsGcipSettings)(nil)).Elem()
+}
+
+func (i *settingsAccessSettingsGcipSettingsPtrType) ToSettingsAccessSettingsGcipSettingsPtrOutput() SettingsAccessSettingsGcipSettingsPtrOutput {
+	return i.ToSettingsAccessSettingsGcipSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *settingsAccessSettingsGcipSettingsPtrType) ToSettingsAccessSettingsGcipSettingsPtrOutputWithContext(ctx context.Context) SettingsAccessSettingsGcipSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsAccessSettingsGcipSettingsPtrOutput)
+}
+
+type SettingsAccessSettingsGcipSettingsOutput struct{ *pulumi.OutputState }
+
+func (SettingsAccessSettingsGcipSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingsAccessSettingsGcipSettings)(nil)).Elem()
+}
+
+func (o SettingsAccessSettingsGcipSettingsOutput) ToSettingsAccessSettingsGcipSettingsOutput() SettingsAccessSettingsGcipSettingsOutput {
+	return o
+}
+
+func (o SettingsAccessSettingsGcipSettingsOutput) ToSettingsAccessSettingsGcipSettingsOutputWithContext(ctx context.Context) SettingsAccessSettingsGcipSettingsOutput {
+	return o
+}
+
+func (o SettingsAccessSettingsGcipSettingsOutput) ToSettingsAccessSettingsGcipSettingsPtrOutput() SettingsAccessSettingsGcipSettingsPtrOutput {
+	return o.ToSettingsAccessSettingsGcipSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o SettingsAccessSettingsGcipSettingsOutput) ToSettingsAccessSettingsGcipSettingsPtrOutputWithContext(ctx context.Context) SettingsAccessSettingsGcipSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SettingsAccessSettingsGcipSettings) *SettingsAccessSettingsGcipSettings {
+		return &v
+	}).(SettingsAccessSettingsGcipSettingsPtrOutput)
+}
+
+// Login page URI associated with the GCIP tenants. Typically, all resources within
+// the same project share the same login page, though it could be overridden at the
+// sub resource level.
+func (o SettingsAccessSettingsGcipSettingsOutput) LoginPageUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingsAccessSettingsGcipSettings) *string { return v.LoginPageUri }).(pulumi.StringPtrOutput)
+}
+
+// GCIP tenant ids that are linked to the IAP resource. tenantIds could be a string
+// beginning with a number character to indicate authenticating with GCIP tenant flow,
+// or in the format of _ to indicate authenticating with GCIP agent flow. If agent flow
+// is used, tenantIds should only contain one single element, while for tenant flow,
+// tenantIds can contain multiple elements.
+func (o SettingsAccessSettingsGcipSettingsOutput) TenantIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SettingsAccessSettingsGcipSettings) []string { return v.TenantIds }).(pulumi.StringArrayOutput)
+}
+
+type SettingsAccessSettingsGcipSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (SettingsAccessSettingsGcipSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingsAccessSettingsGcipSettings)(nil)).Elem()
+}
+
+func (o SettingsAccessSettingsGcipSettingsPtrOutput) ToSettingsAccessSettingsGcipSettingsPtrOutput() SettingsAccessSettingsGcipSettingsPtrOutput {
+	return o
+}
+
+func (o SettingsAccessSettingsGcipSettingsPtrOutput) ToSettingsAccessSettingsGcipSettingsPtrOutputWithContext(ctx context.Context) SettingsAccessSettingsGcipSettingsPtrOutput {
+	return o
+}
+
+func (o SettingsAccessSettingsGcipSettingsPtrOutput) Elem() SettingsAccessSettingsGcipSettingsOutput {
+	return o.ApplyT(func(v *SettingsAccessSettingsGcipSettings) SettingsAccessSettingsGcipSettings {
+		if v != nil {
+			return *v
+		}
+		var ret SettingsAccessSettingsGcipSettings
+		return ret
+	}).(SettingsAccessSettingsGcipSettingsOutput)
+}
+
+// Login page URI associated with the GCIP tenants. Typically, all resources within
+// the same project share the same login page, though it could be overridden at the
+// sub resource level.
+func (o SettingsAccessSettingsGcipSettingsPtrOutput) LoginPageUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingsAccessSettingsGcipSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LoginPageUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// GCIP tenant ids that are linked to the IAP resource. tenantIds could be a string
+// beginning with a number character to indicate authenticating with GCIP tenant flow,
+// or in the format of _ to indicate authenticating with GCIP agent flow. If agent flow
+// is used, tenantIds should only contain one single element, while for tenant flow,
+// tenantIds can contain multiple elements.
+func (o SettingsAccessSettingsGcipSettingsPtrOutput) TenantIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SettingsAccessSettingsGcipSettings) []string {
+		if v == nil {
+			return nil
+		}
+		return v.TenantIds
+	}).(pulumi.StringArrayOutput)
+}
+
+type SettingsAccessSettingsOauthSettings struct {
+	// Domain hint to send as hd=? parameter in OAuth request flow.
+	// Enables redirect to primary IDP by skipping Google's login screen.
+	// (https://developers.google.com/identity/protocols/OpenIDConnect#hd-param)
+	// Note: IAP does not verify that the id token's hd claim matches this value
+	// since access behavior is managed by IAM policies.
+	LoginHint *string `pulumi:"loginHint"`
+	// List of client ids allowed to use IAP programmatically.
+	ProgrammaticClients []string `pulumi:"programmaticClients"`
+}
+
+// SettingsAccessSettingsOauthSettingsInput is an input type that accepts SettingsAccessSettingsOauthSettingsArgs and SettingsAccessSettingsOauthSettingsOutput values.
+// You can construct a concrete instance of `SettingsAccessSettingsOauthSettingsInput` via:
+//
+//	SettingsAccessSettingsOauthSettingsArgs{...}
+type SettingsAccessSettingsOauthSettingsInput interface {
+	pulumi.Input
+
+	ToSettingsAccessSettingsOauthSettingsOutput() SettingsAccessSettingsOauthSettingsOutput
+	ToSettingsAccessSettingsOauthSettingsOutputWithContext(context.Context) SettingsAccessSettingsOauthSettingsOutput
+}
+
+type SettingsAccessSettingsOauthSettingsArgs struct {
+	// Domain hint to send as hd=? parameter in OAuth request flow.
+	// Enables redirect to primary IDP by skipping Google's login screen.
+	// (https://developers.google.com/identity/protocols/OpenIDConnect#hd-param)
+	// Note: IAP does not verify that the id token's hd claim matches this value
+	// since access behavior is managed by IAM policies.
+	LoginHint pulumi.StringPtrInput `pulumi:"loginHint"`
+	// List of client ids allowed to use IAP programmatically.
+	ProgrammaticClients pulumi.StringArrayInput `pulumi:"programmaticClients"`
+}
+
+func (SettingsAccessSettingsOauthSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingsAccessSettingsOauthSettings)(nil)).Elem()
+}
+
+func (i SettingsAccessSettingsOauthSettingsArgs) ToSettingsAccessSettingsOauthSettingsOutput() SettingsAccessSettingsOauthSettingsOutput {
+	return i.ToSettingsAccessSettingsOauthSettingsOutputWithContext(context.Background())
+}
+
+func (i SettingsAccessSettingsOauthSettingsArgs) ToSettingsAccessSettingsOauthSettingsOutputWithContext(ctx context.Context) SettingsAccessSettingsOauthSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsAccessSettingsOauthSettingsOutput)
+}
+
+func (i SettingsAccessSettingsOauthSettingsArgs) ToSettingsAccessSettingsOauthSettingsPtrOutput() SettingsAccessSettingsOauthSettingsPtrOutput {
+	return i.ToSettingsAccessSettingsOauthSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i SettingsAccessSettingsOauthSettingsArgs) ToSettingsAccessSettingsOauthSettingsPtrOutputWithContext(ctx context.Context) SettingsAccessSettingsOauthSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsAccessSettingsOauthSettingsOutput).ToSettingsAccessSettingsOauthSettingsPtrOutputWithContext(ctx)
+}
+
+// SettingsAccessSettingsOauthSettingsPtrInput is an input type that accepts SettingsAccessSettingsOauthSettingsArgs, SettingsAccessSettingsOauthSettingsPtr and SettingsAccessSettingsOauthSettingsPtrOutput values.
+// You can construct a concrete instance of `SettingsAccessSettingsOauthSettingsPtrInput` via:
+//
+//	        SettingsAccessSettingsOauthSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SettingsAccessSettingsOauthSettingsPtrInput interface {
+	pulumi.Input
+
+	ToSettingsAccessSettingsOauthSettingsPtrOutput() SettingsAccessSettingsOauthSettingsPtrOutput
+	ToSettingsAccessSettingsOauthSettingsPtrOutputWithContext(context.Context) SettingsAccessSettingsOauthSettingsPtrOutput
+}
+
+type settingsAccessSettingsOauthSettingsPtrType SettingsAccessSettingsOauthSettingsArgs
+
+func SettingsAccessSettingsOauthSettingsPtr(v *SettingsAccessSettingsOauthSettingsArgs) SettingsAccessSettingsOauthSettingsPtrInput {
+	return (*settingsAccessSettingsOauthSettingsPtrType)(v)
+}
+
+func (*settingsAccessSettingsOauthSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingsAccessSettingsOauthSettings)(nil)).Elem()
+}
+
+func (i *settingsAccessSettingsOauthSettingsPtrType) ToSettingsAccessSettingsOauthSettingsPtrOutput() SettingsAccessSettingsOauthSettingsPtrOutput {
+	return i.ToSettingsAccessSettingsOauthSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *settingsAccessSettingsOauthSettingsPtrType) ToSettingsAccessSettingsOauthSettingsPtrOutputWithContext(ctx context.Context) SettingsAccessSettingsOauthSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsAccessSettingsOauthSettingsPtrOutput)
+}
+
+type SettingsAccessSettingsOauthSettingsOutput struct{ *pulumi.OutputState }
+
+func (SettingsAccessSettingsOauthSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingsAccessSettingsOauthSettings)(nil)).Elem()
+}
+
+func (o SettingsAccessSettingsOauthSettingsOutput) ToSettingsAccessSettingsOauthSettingsOutput() SettingsAccessSettingsOauthSettingsOutput {
+	return o
+}
+
+func (o SettingsAccessSettingsOauthSettingsOutput) ToSettingsAccessSettingsOauthSettingsOutputWithContext(ctx context.Context) SettingsAccessSettingsOauthSettingsOutput {
+	return o
+}
+
+func (o SettingsAccessSettingsOauthSettingsOutput) ToSettingsAccessSettingsOauthSettingsPtrOutput() SettingsAccessSettingsOauthSettingsPtrOutput {
+	return o.ToSettingsAccessSettingsOauthSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o SettingsAccessSettingsOauthSettingsOutput) ToSettingsAccessSettingsOauthSettingsPtrOutputWithContext(ctx context.Context) SettingsAccessSettingsOauthSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SettingsAccessSettingsOauthSettings) *SettingsAccessSettingsOauthSettings {
+		return &v
+	}).(SettingsAccessSettingsOauthSettingsPtrOutput)
+}
+
+// Domain hint to send as hd=? parameter in OAuth request flow.
+// Enables redirect to primary IDP by skipping Google's login screen.
+// (https://developers.google.com/identity/protocols/OpenIDConnect#hd-param)
+// Note: IAP does not verify that the id token's hd claim matches this value
+// since access behavior is managed by IAM policies.
+func (o SettingsAccessSettingsOauthSettingsOutput) LoginHint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingsAccessSettingsOauthSettings) *string { return v.LoginHint }).(pulumi.StringPtrOutput)
+}
+
+// List of client ids allowed to use IAP programmatically.
+func (o SettingsAccessSettingsOauthSettingsOutput) ProgrammaticClients() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SettingsAccessSettingsOauthSettings) []string { return v.ProgrammaticClients }).(pulumi.StringArrayOutput)
+}
+
+type SettingsAccessSettingsOauthSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (SettingsAccessSettingsOauthSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingsAccessSettingsOauthSettings)(nil)).Elem()
+}
+
+func (o SettingsAccessSettingsOauthSettingsPtrOutput) ToSettingsAccessSettingsOauthSettingsPtrOutput() SettingsAccessSettingsOauthSettingsPtrOutput {
+	return o
+}
+
+func (o SettingsAccessSettingsOauthSettingsPtrOutput) ToSettingsAccessSettingsOauthSettingsPtrOutputWithContext(ctx context.Context) SettingsAccessSettingsOauthSettingsPtrOutput {
+	return o
+}
+
+func (o SettingsAccessSettingsOauthSettingsPtrOutput) Elem() SettingsAccessSettingsOauthSettingsOutput {
+	return o.ApplyT(func(v *SettingsAccessSettingsOauthSettings) SettingsAccessSettingsOauthSettings {
+		if v != nil {
+			return *v
+		}
+		var ret SettingsAccessSettingsOauthSettings
+		return ret
+	}).(SettingsAccessSettingsOauthSettingsOutput)
+}
+
+// Domain hint to send as hd=? parameter in OAuth request flow.
+// Enables redirect to primary IDP by skipping Google's login screen.
+// (https://developers.google.com/identity/protocols/OpenIDConnect#hd-param)
+// Note: IAP does not verify that the id token's hd claim matches this value
+// since access behavior is managed by IAM policies.
+func (o SettingsAccessSettingsOauthSettingsPtrOutput) LoginHint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingsAccessSettingsOauthSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LoginHint
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of client ids allowed to use IAP programmatically.
+func (o SettingsAccessSettingsOauthSettingsPtrOutput) ProgrammaticClients() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SettingsAccessSettingsOauthSettings) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ProgrammaticClients
+	}).(pulumi.StringArrayOutput)
+}
+
+type SettingsAccessSettingsReauthSettings struct {
+	// Reauth session lifetime, how long before a user has to reauthenticate again.
+	// A duration in seconds with up to nine fractional digits, ending with 's'.
+	// Example: "3.5s".
+	MaxAge string `pulumi:"maxAge"`
+	// Reauth method requested. The possible values are:
+	// * `LOGIN`: Prompts the user to log in again.
+	// * `SECURE_KEY`: User must use their secure key 2nd factor device.
+	// * `ENROLLED_SECOND_FACTORS`: User can use any enabled 2nd factor.
+	//   Possible values are: `LOGIN`, `SECURE_KEY`, `ENROLLED_SECOND_FACTORS`.
+	Method string `pulumi:"method"`
+	// How IAP determines the effective policy in cases of hierarchical policies.
+	// Policies are merged from higher in the hierarchy to lower in the hierarchy.
+	// The possible values are:
+	// * `MINIMUM`: This policy acts as a minimum to other policies, lower in the hierarchy.
+	//   Effective policy may only be the same or stricter.
+	// * `DEFAULT`: This policy acts as a default if no other reauth policy is set.
+	//   Possible values are: `MINIMUM`, `DEFAULT`.
+	PolicyType string `pulumi:"policyType"`
+}
+
+// SettingsAccessSettingsReauthSettingsInput is an input type that accepts SettingsAccessSettingsReauthSettingsArgs and SettingsAccessSettingsReauthSettingsOutput values.
+// You can construct a concrete instance of `SettingsAccessSettingsReauthSettingsInput` via:
+//
+//	SettingsAccessSettingsReauthSettingsArgs{...}
+type SettingsAccessSettingsReauthSettingsInput interface {
+	pulumi.Input
+
+	ToSettingsAccessSettingsReauthSettingsOutput() SettingsAccessSettingsReauthSettingsOutput
+	ToSettingsAccessSettingsReauthSettingsOutputWithContext(context.Context) SettingsAccessSettingsReauthSettingsOutput
+}
+
+type SettingsAccessSettingsReauthSettingsArgs struct {
+	// Reauth session lifetime, how long before a user has to reauthenticate again.
+	// A duration in seconds with up to nine fractional digits, ending with 's'.
+	// Example: "3.5s".
+	MaxAge pulumi.StringInput `pulumi:"maxAge"`
+	// Reauth method requested. The possible values are:
+	// * `LOGIN`: Prompts the user to log in again.
+	// * `SECURE_KEY`: User must use their secure key 2nd factor device.
+	// * `ENROLLED_SECOND_FACTORS`: User can use any enabled 2nd factor.
+	//   Possible values are: `LOGIN`, `SECURE_KEY`, `ENROLLED_SECOND_FACTORS`.
+	Method pulumi.StringInput `pulumi:"method"`
+	// How IAP determines the effective policy in cases of hierarchical policies.
+	// Policies are merged from higher in the hierarchy to lower in the hierarchy.
+	// The possible values are:
+	// * `MINIMUM`: This policy acts as a minimum to other policies, lower in the hierarchy.
+	//   Effective policy may only be the same or stricter.
+	// * `DEFAULT`: This policy acts as a default if no other reauth policy is set.
+	//   Possible values are: `MINIMUM`, `DEFAULT`.
+	PolicyType pulumi.StringInput `pulumi:"policyType"`
+}
+
+func (SettingsAccessSettingsReauthSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingsAccessSettingsReauthSettings)(nil)).Elem()
+}
+
+func (i SettingsAccessSettingsReauthSettingsArgs) ToSettingsAccessSettingsReauthSettingsOutput() SettingsAccessSettingsReauthSettingsOutput {
+	return i.ToSettingsAccessSettingsReauthSettingsOutputWithContext(context.Background())
+}
+
+func (i SettingsAccessSettingsReauthSettingsArgs) ToSettingsAccessSettingsReauthSettingsOutputWithContext(ctx context.Context) SettingsAccessSettingsReauthSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsAccessSettingsReauthSettingsOutput)
+}
+
+func (i SettingsAccessSettingsReauthSettingsArgs) ToSettingsAccessSettingsReauthSettingsPtrOutput() SettingsAccessSettingsReauthSettingsPtrOutput {
+	return i.ToSettingsAccessSettingsReauthSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i SettingsAccessSettingsReauthSettingsArgs) ToSettingsAccessSettingsReauthSettingsPtrOutputWithContext(ctx context.Context) SettingsAccessSettingsReauthSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsAccessSettingsReauthSettingsOutput).ToSettingsAccessSettingsReauthSettingsPtrOutputWithContext(ctx)
+}
+
+// SettingsAccessSettingsReauthSettingsPtrInput is an input type that accepts SettingsAccessSettingsReauthSettingsArgs, SettingsAccessSettingsReauthSettingsPtr and SettingsAccessSettingsReauthSettingsPtrOutput values.
+// You can construct a concrete instance of `SettingsAccessSettingsReauthSettingsPtrInput` via:
+//
+//	        SettingsAccessSettingsReauthSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SettingsAccessSettingsReauthSettingsPtrInput interface {
+	pulumi.Input
+
+	ToSettingsAccessSettingsReauthSettingsPtrOutput() SettingsAccessSettingsReauthSettingsPtrOutput
+	ToSettingsAccessSettingsReauthSettingsPtrOutputWithContext(context.Context) SettingsAccessSettingsReauthSettingsPtrOutput
+}
+
+type settingsAccessSettingsReauthSettingsPtrType SettingsAccessSettingsReauthSettingsArgs
+
+func SettingsAccessSettingsReauthSettingsPtr(v *SettingsAccessSettingsReauthSettingsArgs) SettingsAccessSettingsReauthSettingsPtrInput {
+	return (*settingsAccessSettingsReauthSettingsPtrType)(v)
+}
+
+func (*settingsAccessSettingsReauthSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingsAccessSettingsReauthSettings)(nil)).Elem()
+}
+
+func (i *settingsAccessSettingsReauthSettingsPtrType) ToSettingsAccessSettingsReauthSettingsPtrOutput() SettingsAccessSettingsReauthSettingsPtrOutput {
+	return i.ToSettingsAccessSettingsReauthSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *settingsAccessSettingsReauthSettingsPtrType) ToSettingsAccessSettingsReauthSettingsPtrOutputWithContext(ctx context.Context) SettingsAccessSettingsReauthSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsAccessSettingsReauthSettingsPtrOutput)
+}
+
+type SettingsAccessSettingsReauthSettingsOutput struct{ *pulumi.OutputState }
+
+func (SettingsAccessSettingsReauthSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingsAccessSettingsReauthSettings)(nil)).Elem()
+}
+
+func (o SettingsAccessSettingsReauthSettingsOutput) ToSettingsAccessSettingsReauthSettingsOutput() SettingsAccessSettingsReauthSettingsOutput {
+	return o
+}
+
+func (o SettingsAccessSettingsReauthSettingsOutput) ToSettingsAccessSettingsReauthSettingsOutputWithContext(ctx context.Context) SettingsAccessSettingsReauthSettingsOutput {
+	return o
+}
+
+func (o SettingsAccessSettingsReauthSettingsOutput) ToSettingsAccessSettingsReauthSettingsPtrOutput() SettingsAccessSettingsReauthSettingsPtrOutput {
+	return o.ToSettingsAccessSettingsReauthSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o SettingsAccessSettingsReauthSettingsOutput) ToSettingsAccessSettingsReauthSettingsPtrOutputWithContext(ctx context.Context) SettingsAccessSettingsReauthSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SettingsAccessSettingsReauthSettings) *SettingsAccessSettingsReauthSettings {
+		return &v
+	}).(SettingsAccessSettingsReauthSettingsPtrOutput)
+}
+
+// Reauth session lifetime, how long before a user has to reauthenticate again.
+// A duration in seconds with up to nine fractional digits, ending with 's'.
+// Example: "3.5s".
+func (o SettingsAccessSettingsReauthSettingsOutput) MaxAge() pulumi.StringOutput {
+	return o.ApplyT(func(v SettingsAccessSettingsReauthSettings) string { return v.MaxAge }).(pulumi.StringOutput)
+}
+
+// Reauth method requested. The possible values are:
+//   - `LOGIN`: Prompts the user to log in again.
+//   - `SECURE_KEY`: User must use their secure key 2nd factor device.
+//   - `ENROLLED_SECOND_FACTORS`: User can use any enabled 2nd factor.
+//     Possible values are: `LOGIN`, `SECURE_KEY`, `ENROLLED_SECOND_FACTORS`.
+func (o SettingsAccessSettingsReauthSettingsOutput) Method() pulumi.StringOutput {
+	return o.ApplyT(func(v SettingsAccessSettingsReauthSettings) string { return v.Method }).(pulumi.StringOutput)
+}
+
+// How IAP determines the effective policy in cases of hierarchical policies.
+// Policies are merged from higher in the hierarchy to lower in the hierarchy.
+// The possible values are:
+//   - `MINIMUM`: This policy acts as a minimum to other policies, lower in the hierarchy.
+//     Effective policy may only be the same or stricter.
+//   - `DEFAULT`: This policy acts as a default if no other reauth policy is set.
+//     Possible values are: `MINIMUM`, `DEFAULT`.
+func (o SettingsAccessSettingsReauthSettingsOutput) PolicyType() pulumi.StringOutput {
+	return o.ApplyT(func(v SettingsAccessSettingsReauthSettings) string { return v.PolicyType }).(pulumi.StringOutput)
+}
+
+type SettingsAccessSettingsReauthSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (SettingsAccessSettingsReauthSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingsAccessSettingsReauthSettings)(nil)).Elem()
+}
+
+func (o SettingsAccessSettingsReauthSettingsPtrOutput) ToSettingsAccessSettingsReauthSettingsPtrOutput() SettingsAccessSettingsReauthSettingsPtrOutput {
+	return o
+}
+
+func (o SettingsAccessSettingsReauthSettingsPtrOutput) ToSettingsAccessSettingsReauthSettingsPtrOutputWithContext(ctx context.Context) SettingsAccessSettingsReauthSettingsPtrOutput {
+	return o
+}
+
+func (o SettingsAccessSettingsReauthSettingsPtrOutput) Elem() SettingsAccessSettingsReauthSettingsOutput {
+	return o.ApplyT(func(v *SettingsAccessSettingsReauthSettings) SettingsAccessSettingsReauthSettings {
+		if v != nil {
+			return *v
+		}
+		var ret SettingsAccessSettingsReauthSettings
+		return ret
+	}).(SettingsAccessSettingsReauthSettingsOutput)
+}
+
+// Reauth session lifetime, how long before a user has to reauthenticate again.
+// A duration in seconds with up to nine fractional digits, ending with 's'.
+// Example: "3.5s".
+func (o SettingsAccessSettingsReauthSettingsPtrOutput) MaxAge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingsAccessSettingsReauthSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxAge
+	}).(pulumi.StringPtrOutput)
+}
+
+// Reauth method requested. The possible values are:
+//   - `LOGIN`: Prompts the user to log in again.
+//   - `SECURE_KEY`: User must use their secure key 2nd factor device.
+//   - `ENROLLED_SECOND_FACTORS`: User can use any enabled 2nd factor.
+//     Possible values are: `LOGIN`, `SECURE_KEY`, `ENROLLED_SECOND_FACTORS`.
+func (o SettingsAccessSettingsReauthSettingsPtrOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingsAccessSettingsReauthSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Method
+	}).(pulumi.StringPtrOutput)
+}
+
+// How IAP determines the effective policy in cases of hierarchical policies.
+// Policies are merged from higher in the hierarchy to lower in the hierarchy.
+// The possible values are:
+//   - `MINIMUM`: This policy acts as a minimum to other policies, lower in the hierarchy.
+//     Effective policy may only be the same or stricter.
+//   - `DEFAULT`: This policy acts as a default if no other reauth policy is set.
+//     Possible values are: `MINIMUM`, `DEFAULT`.
+func (o SettingsAccessSettingsReauthSettingsPtrOutput) PolicyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingsAccessSettingsReauthSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PolicyType
+	}).(pulumi.StringPtrOutput)
+}
+
+type SettingsAccessSettingsWorkforceIdentitySettings struct {
+	// OAuth 2.0 settings for IAP to perform OIDC flow with workforce identity
+	// federation services.
+	// Structure is documented below.
+	//
+	// <a name="nestedOauth2"></a>The `oauth2` block supports:
+	Oauth2 *SettingsAccessSettingsWorkforceIdentitySettingsOauth2 `pulumi:"oauth2"`
+	// The workforce pool resources. Only one workforce pool is accepted.
+	WorkforcePools *string `pulumi:"workforcePools"`
+}
+
+// SettingsAccessSettingsWorkforceIdentitySettingsInput is an input type that accepts SettingsAccessSettingsWorkforceIdentitySettingsArgs and SettingsAccessSettingsWorkforceIdentitySettingsOutput values.
+// You can construct a concrete instance of `SettingsAccessSettingsWorkforceIdentitySettingsInput` via:
+//
+//	SettingsAccessSettingsWorkforceIdentitySettingsArgs{...}
+type SettingsAccessSettingsWorkforceIdentitySettingsInput interface {
+	pulumi.Input
+
+	ToSettingsAccessSettingsWorkforceIdentitySettingsOutput() SettingsAccessSettingsWorkforceIdentitySettingsOutput
+	ToSettingsAccessSettingsWorkforceIdentitySettingsOutputWithContext(context.Context) SettingsAccessSettingsWorkforceIdentitySettingsOutput
+}
+
+type SettingsAccessSettingsWorkforceIdentitySettingsArgs struct {
+	// OAuth 2.0 settings for IAP to perform OIDC flow with workforce identity
+	// federation services.
+	// Structure is documented below.
+	//
+	// <a name="nestedOauth2"></a>The `oauth2` block supports:
+	Oauth2 SettingsAccessSettingsWorkforceIdentitySettingsOauth2PtrInput `pulumi:"oauth2"`
+	// The workforce pool resources. Only one workforce pool is accepted.
+	WorkforcePools pulumi.StringPtrInput `pulumi:"workforcePools"`
+}
+
+func (SettingsAccessSettingsWorkforceIdentitySettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingsAccessSettingsWorkforceIdentitySettings)(nil)).Elem()
+}
+
+func (i SettingsAccessSettingsWorkforceIdentitySettingsArgs) ToSettingsAccessSettingsWorkforceIdentitySettingsOutput() SettingsAccessSettingsWorkforceIdentitySettingsOutput {
+	return i.ToSettingsAccessSettingsWorkforceIdentitySettingsOutputWithContext(context.Background())
+}
+
+func (i SettingsAccessSettingsWorkforceIdentitySettingsArgs) ToSettingsAccessSettingsWorkforceIdentitySettingsOutputWithContext(ctx context.Context) SettingsAccessSettingsWorkforceIdentitySettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsAccessSettingsWorkforceIdentitySettingsOutput)
+}
+
+func (i SettingsAccessSettingsWorkforceIdentitySettingsArgs) ToSettingsAccessSettingsWorkforceIdentitySettingsPtrOutput() SettingsAccessSettingsWorkforceIdentitySettingsPtrOutput {
+	return i.ToSettingsAccessSettingsWorkforceIdentitySettingsPtrOutputWithContext(context.Background())
+}
+
+func (i SettingsAccessSettingsWorkforceIdentitySettingsArgs) ToSettingsAccessSettingsWorkforceIdentitySettingsPtrOutputWithContext(ctx context.Context) SettingsAccessSettingsWorkforceIdentitySettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsAccessSettingsWorkforceIdentitySettingsOutput).ToSettingsAccessSettingsWorkforceIdentitySettingsPtrOutputWithContext(ctx)
+}
+
+// SettingsAccessSettingsWorkforceIdentitySettingsPtrInput is an input type that accepts SettingsAccessSettingsWorkforceIdentitySettingsArgs, SettingsAccessSettingsWorkforceIdentitySettingsPtr and SettingsAccessSettingsWorkforceIdentitySettingsPtrOutput values.
+// You can construct a concrete instance of `SettingsAccessSettingsWorkforceIdentitySettingsPtrInput` via:
+//
+//	        SettingsAccessSettingsWorkforceIdentitySettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SettingsAccessSettingsWorkforceIdentitySettingsPtrInput interface {
+	pulumi.Input
+
+	ToSettingsAccessSettingsWorkforceIdentitySettingsPtrOutput() SettingsAccessSettingsWorkforceIdentitySettingsPtrOutput
+	ToSettingsAccessSettingsWorkforceIdentitySettingsPtrOutputWithContext(context.Context) SettingsAccessSettingsWorkforceIdentitySettingsPtrOutput
+}
+
+type settingsAccessSettingsWorkforceIdentitySettingsPtrType SettingsAccessSettingsWorkforceIdentitySettingsArgs
+
+func SettingsAccessSettingsWorkforceIdentitySettingsPtr(v *SettingsAccessSettingsWorkforceIdentitySettingsArgs) SettingsAccessSettingsWorkforceIdentitySettingsPtrInput {
+	return (*settingsAccessSettingsWorkforceIdentitySettingsPtrType)(v)
+}
+
+func (*settingsAccessSettingsWorkforceIdentitySettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingsAccessSettingsWorkforceIdentitySettings)(nil)).Elem()
+}
+
+func (i *settingsAccessSettingsWorkforceIdentitySettingsPtrType) ToSettingsAccessSettingsWorkforceIdentitySettingsPtrOutput() SettingsAccessSettingsWorkforceIdentitySettingsPtrOutput {
+	return i.ToSettingsAccessSettingsWorkforceIdentitySettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *settingsAccessSettingsWorkforceIdentitySettingsPtrType) ToSettingsAccessSettingsWorkforceIdentitySettingsPtrOutputWithContext(ctx context.Context) SettingsAccessSettingsWorkforceIdentitySettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsAccessSettingsWorkforceIdentitySettingsPtrOutput)
+}
+
+type SettingsAccessSettingsWorkforceIdentitySettingsOutput struct{ *pulumi.OutputState }
+
+func (SettingsAccessSettingsWorkforceIdentitySettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingsAccessSettingsWorkforceIdentitySettings)(nil)).Elem()
+}
+
+func (o SettingsAccessSettingsWorkforceIdentitySettingsOutput) ToSettingsAccessSettingsWorkforceIdentitySettingsOutput() SettingsAccessSettingsWorkforceIdentitySettingsOutput {
+	return o
+}
+
+func (o SettingsAccessSettingsWorkforceIdentitySettingsOutput) ToSettingsAccessSettingsWorkforceIdentitySettingsOutputWithContext(ctx context.Context) SettingsAccessSettingsWorkforceIdentitySettingsOutput {
+	return o
+}
+
+func (o SettingsAccessSettingsWorkforceIdentitySettingsOutput) ToSettingsAccessSettingsWorkforceIdentitySettingsPtrOutput() SettingsAccessSettingsWorkforceIdentitySettingsPtrOutput {
+	return o.ToSettingsAccessSettingsWorkforceIdentitySettingsPtrOutputWithContext(context.Background())
+}
+
+func (o SettingsAccessSettingsWorkforceIdentitySettingsOutput) ToSettingsAccessSettingsWorkforceIdentitySettingsPtrOutputWithContext(ctx context.Context) SettingsAccessSettingsWorkforceIdentitySettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SettingsAccessSettingsWorkforceIdentitySettings) *SettingsAccessSettingsWorkforceIdentitySettings {
+		return &v
+	}).(SettingsAccessSettingsWorkforceIdentitySettingsPtrOutput)
+}
+
+// OAuth 2.0 settings for IAP to perform OIDC flow with workforce identity
+// federation services.
+// Structure is documented below.
+//
+// <a name="nestedOauth2"></a>The `oauth2` block supports:
+func (o SettingsAccessSettingsWorkforceIdentitySettingsOutput) Oauth2() SettingsAccessSettingsWorkforceIdentitySettingsOauth2PtrOutput {
+	return o.ApplyT(func(v SettingsAccessSettingsWorkforceIdentitySettings) *SettingsAccessSettingsWorkforceIdentitySettingsOauth2 {
+		return v.Oauth2
+	}).(SettingsAccessSettingsWorkforceIdentitySettingsOauth2PtrOutput)
+}
+
+// The workforce pool resources. Only one workforce pool is accepted.
+func (o SettingsAccessSettingsWorkforceIdentitySettingsOutput) WorkforcePools() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingsAccessSettingsWorkforceIdentitySettings) *string { return v.WorkforcePools }).(pulumi.StringPtrOutput)
+}
+
+type SettingsAccessSettingsWorkforceIdentitySettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (SettingsAccessSettingsWorkforceIdentitySettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingsAccessSettingsWorkforceIdentitySettings)(nil)).Elem()
+}
+
+func (o SettingsAccessSettingsWorkforceIdentitySettingsPtrOutput) ToSettingsAccessSettingsWorkforceIdentitySettingsPtrOutput() SettingsAccessSettingsWorkforceIdentitySettingsPtrOutput {
+	return o
+}
+
+func (o SettingsAccessSettingsWorkforceIdentitySettingsPtrOutput) ToSettingsAccessSettingsWorkforceIdentitySettingsPtrOutputWithContext(ctx context.Context) SettingsAccessSettingsWorkforceIdentitySettingsPtrOutput {
+	return o
+}
+
+func (o SettingsAccessSettingsWorkforceIdentitySettingsPtrOutput) Elem() SettingsAccessSettingsWorkforceIdentitySettingsOutput {
+	return o.ApplyT(func(v *SettingsAccessSettingsWorkforceIdentitySettings) SettingsAccessSettingsWorkforceIdentitySettings {
+		if v != nil {
+			return *v
+		}
+		var ret SettingsAccessSettingsWorkforceIdentitySettings
+		return ret
+	}).(SettingsAccessSettingsWorkforceIdentitySettingsOutput)
+}
+
+// OAuth 2.0 settings for IAP to perform OIDC flow with workforce identity
+// federation services.
+// Structure is documented below.
+//
+// <a name="nestedOauth2"></a>The `oauth2` block supports:
+func (o SettingsAccessSettingsWorkforceIdentitySettingsPtrOutput) Oauth2() SettingsAccessSettingsWorkforceIdentitySettingsOauth2PtrOutput {
+	return o.ApplyT(func(v *SettingsAccessSettingsWorkforceIdentitySettings) *SettingsAccessSettingsWorkforceIdentitySettingsOauth2 {
+		if v == nil {
+			return nil
+		}
+		return v.Oauth2
+	}).(SettingsAccessSettingsWorkforceIdentitySettingsOauth2PtrOutput)
+}
+
+// The workforce pool resources. Only one workforce pool is accepted.
+func (o SettingsAccessSettingsWorkforceIdentitySettingsPtrOutput) WorkforcePools() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingsAccessSettingsWorkforceIdentitySettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkforcePools
+	}).(pulumi.StringPtrOutput)
+}
+
+type SettingsAccessSettingsWorkforceIdentitySettingsOauth2 struct {
+	// The OAuth 2.0 client ID registered in the workforce identity
+	// federation OAuth 2.0 Server.
+	ClientId *string `pulumi:"clientId"`
+	// Input only. The OAuth 2.0 client secret created while registering
+	// the client ID.
+	ClientSecret *string `pulumi:"clientSecret"`
+	// Output only. SHA256 hash value for the client secret. This field
+	// is returned by IAP when the settings are retrieved.
+	ClientSecretSha256 *string `pulumi:"clientSecretSha256"`
+}
+
+// SettingsAccessSettingsWorkforceIdentitySettingsOauth2Input is an input type that accepts SettingsAccessSettingsWorkforceIdentitySettingsOauth2Args and SettingsAccessSettingsWorkforceIdentitySettingsOauth2Output values.
+// You can construct a concrete instance of `SettingsAccessSettingsWorkforceIdentitySettingsOauth2Input` via:
+//
+//	SettingsAccessSettingsWorkforceIdentitySettingsOauth2Args{...}
+type SettingsAccessSettingsWorkforceIdentitySettingsOauth2Input interface {
+	pulumi.Input
+
+	ToSettingsAccessSettingsWorkforceIdentitySettingsOauth2Output() SettingsAccessSettingsWorkforceIdentitySettingsOauth2Output
+	ToSettingsAccessSettingsWorkforceIdentitySettingsOauth2OutputWithContext(context.Context) SettingsAccessSettingsWorkforceIdentitySettingsOauth2Output
+}
+
+type SettingsAccessSettingsWorkforceIdentitySettingsOauth2Args struct {
+	// The OAuth 2.0 client ID registered in the workforce identity
+	// federation OAuth 2.0 Server.
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// Input only. The OAuth 2.0 client secret created while registering
+	// the client ID.
+	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
+	// Output only. SHA256 hash value for the client secret. This field
+	// is returned by IAP when the settings are retrieved.
+	ClientSecretSha256 pulumi.StringPtrInput `pulumi:"clientSecretSha256"`
+}
+
+func (SettingsAccessSettingsWorkforceIdentitySettingsOauth2Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingsAccessSettingsWorkforceIdentitySettingsOauth2)(nil)).Elem()
+}
+
+func (i SettingsAccessSettingsWorkforceIdentitySettingsOauth2Args) ToSettingsAccessSettingsWorkforceIdentitySettingsOauth2Output() SettingsAccessSettingsWorkforceIdentitySettingsOauth2Output {
+	return i.ToSettingsAccessSettingsWorkforceIdentitySettingsOauth2OutputWithContext(context.Background())
+}
+
+func (i SettingsAccessSettingsWorkforceIdentitySettingsOauth2Args) ToSettingsAccessSettingsWorkforceIdentitySettingsOauth2OutputWithContext(ctx context.Context) SettingsAccessSettingsWorkforceIdentitySettingsOauth2Output {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsAccessSettingsWorkforceIdentitySettingsOauth2Output)
+}
+
+func (i SettingsAccessSettingsWorkforceIdentitySettingsOauth2Args) ToSettingsAccessSettingsWorkforceIdentitySettingsOauth2PtrOutput() SettingsAccessSettingsWorkforceIdentitySettingsOauth2PtrOutput {
+	return i.ToSettingsAccessSettingsWorkforceIdentitySettingsOauth2PtrOutputWithContext(context.Background())
+}
+
+func (i SettingsAccessSettingsWorkforceIdentitySettingsOauth2Args) ToSettingsAccessSettingsWorkforceIdentitySettingsOauth2PtrOutputWithContext(ctx context.Context) SettingsAccessSettingsWorkforceIdentitySettingsOauth2PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsAccessSettingsWorkforceIdentitySettingsOauth2Output).ToSettingsAccessSettingsWorkforceIdentitySettingsOauth2PtrOutputWithContext(ctx)
+}
+
+// SettingsAccessSettingsWorkforceIdentitySettingsOauth2PtrInput is an input type that accepts SettingsAccessSettingsWorkforceIdentitySettingsOauth2Args, SettingsAccessSettingsWorkforceIdentitySettingsOauth2Ptr and SettingsAccessSettingsWorkforceIdentitySettingsOauth2PtrOutput values.
+// You can construct a concrete instance of `SettingsAccessSettingsWorkforceIdentitySettingsOauth2PtrInput` via:
+//
+//	        SettingsAccessSettingsWorkforceIdentitySettingsOauth2Args{...}
+//
+//	or:
+//
+//	        nil
+type SettingsAccessSettingsWorkforceIdentitySettingsOauth2PtrInput interface {
+	pulumi.Input
+
+	ToSettingsAccessSettingsWorkforceIdentitySettingsOauth2PtrOutput() SettingsAccessSettingsWorkforceIdentitySettingsOauth2PtrOutput
+	ToSettingsAccessSettingsWorkforceIdentitySettingsOauth2PtrOutputWithContext(context.Context) SettingsAccessSettingsWorkforceIdentitySettingsOauth2PtrOutput
+}
+
+type settingsAccessSettingsWorkforceIdentitySettingsOauth2PtrType SettingsAccessSettingsWorkforceIdentitySettingsOauth2Args
+
+func SettingsAccessSettingsWorkforceIdentitySettingsOauth2Ptr(v *SettingsAccessSettingsWorkforceIdentitySettingsOauth2Args) SettingsAccessSettingsWorkforceIdentitySettingsOauth2PtrInput {
+	return (*settingsAccessSettingsWorkforceIdentitySettingsOauth2PtrType)(v)
+}
+
+func (*settingsAccessSettingsWorkforceIdentitySettingsOauth2PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingsAccessSettingsWorkforceIdentitySettingsOauth2)(nil)).Elem()
+}
+
+func (i *settingsAccessSettingsWorkforceIdentitySettingsOauth2PtrType) ToSettingsAccessSettingsWorkforceIdentitySettingsOauth2PtrOutput() SettingsAccessSettingsWorkforceIdentitySettingsOauth2PtrOutput {
+	return i.ToSettingsAccessSettingsWorkforceIdentitySettingsOauth2PtrOutputWithContext(context.Background())
+}
+
+func (i *settingsAccessSettingsWorkforceIdentitySettingsOauth2PtrType) ToSettingsAccessSettingsWorkforceIdentitySettingsOauth2PtrOutputWithContext(ctx context.Context) SettingsAccessSettingsWorkforceIdentitySettingsOauth2PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsAccessSettingsWorkforceIdentitySettingsOauth2PtrOutput)
+}
+
+type SettingsAccessSettingsWorkforceIdentitySettingsOauth2Output struct{ *pulumi.OutputState }
+
+func (SettingsAccessSettingsWorkforceIdentitySettingsOauth2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingsAccessSettingsWorkforceIdentitySettingsOauth2)(nil)).Elem()
+}
+
+func (o SettingsAccessSettingsWorkforceIdentitySettingsOauth2Output) ToSettingsAccessSettingsWorkforceIdentitySettingsOauth2Output() SettingsAccessSettingsWorkforceIdentitySettingsOauth2Output {
+	return o
+}
+
+func (o SettingsAccessSettingsWorkforceIdentitySettingsOauth2Output) ToSettingsAccessSettingsWorkforceIdentitySettingsOauth2OutputWithContext(ctx context.Context) SettingsAccessSettingsWorkforceIdentitySettingsOauth2Output {
+	return o
+}
+
+func (o SettingsAccessSettingsWorkforceIdentitySettingsOauth2Output) ToSettingsAccessSettingsWorkforceIdentitySettingsOauth2PtrOutput() SettingsAccessSettingsWorkforceIdentitySettingsOauth2PtrOutput {
+	return o.ToSettingsAccessSettingsWorkforceIdentitySettingsOauth2PtrOutputWithContext(context.Background())
+}
+
+func (o SettingsAccessSettingsWorkforceIdentitySettingsOauth2Output) ToSettingsAccessSettingsWorkforceIdentitySettingsOauth2PtrOutputWithContext(ctx context.Context) SettingsAccessSettingsWorkforceIdentitySettingsOauth2PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SettingsAccessSettingsWorkforceIdentitySettingsOauth2) *SettingsAccessSettingsWorkforceIdentitySettingsOauth2 {
+		return &v
+	}).(SettingsAccessSettingsWorkforceIdentitySettingsOauth2PtrOutput)
+}
+
+// The OAuth 2.0 client ID registered in the workforce identity
+// federation OAuth 2.0 Server.
+func (o SettingsAccessSettingsWorkforceIdentitySettingsOauth2Output) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingsAccessSettingsWorkforceIdentitySettingsOauth2) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// Input only. The OAuth 2.0 client secret created while registering
+// the client ID.
+func (o SettingsAccessSettingsWorkforceIdentitySettingsOauth2Output) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingsAccessSettingsWorkforceIdentitySettingsOauth2) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
+}
+
+// Output only. SHA256 hash value for the client secret. This field
+// is returned by IAP when the settings are retrieved.
+func (o SettingsAccessSettingsWorkforceIdentitySettingsOauth2Output) ClientSecretSha256() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingsAccessSettingsWorkforceIdentitySettingsOauth2) *string { return v.ClientSecretSha256 }).(pulumi.StringPtrOutput)
+}
+
+type SettingsAccessSettingsWorkforceIdentitySettingsOauth2PtrOutput struct{ *pulumi.OutputState }
+
+func (SettingsAccessSettingsWorkforceIdentitySettingsOauth2PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingsAccessSettingsWorkforceIdentitySettingsOauth2)(nil)).Elem()
+}
+
+func (o SettingsAccessSettingsWorkforceIdentitySettingsOauth2PtrOutput) ToSettingsAccessSettingsWorkforceIdentitySettingsOauth2PtrOutput() SettingsAccessSettingsWorkforceIdentitySettingsOauth2PtrOutput {
+	return o
+}
+
+func (o SettingsAccessSettingsWorkforceIdentitySettingsOauth2PtrOutput) ToSettingsAccessSettingsWorkforceIdentitySettingsOauth2PtrOutputWithContext(ctx context.Context) SettingsAccessSettingsWorkforceIdentitySettingsOauth2PtrOutput {
+	return o
+}
+
+func (o SettingsAccessSettingsWorkforceIdentitySettingsOauth2PtrOutput) Elem() SettingsAccessSettingsWorkforceIdentitySettingsOauth2Output {
+	return o.ApplyT(func(v *SettingsAccessSettingsWorkforceIdentitySettingsOauth2) SettingsAccessSettingsWorkforceIdentitySettingsOauth2 {
+		if v != nil {
+			return *v
+		}
+		var ret SettingsAccessSettingsWorkforceIdentitySettingsOauth2
+		return ret
+	}).(SettingsAccessSettingsWorkforceIdentitySettingsOauth2Output)
+}
+
+// The OAuth 2.0 client ID registered in the workforce identity
+// federation OAuth 2.0 Server.
+func (o SettingsAccessSettingsWorkforceIdentitySettingsOauth2PtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingsAccessSettingsWorkforceIdentitySettingsOauth2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The OAuth 2.0 client secret created while registering
+// the client ID.
+func (o SettingsAccessSettingsWorkforceIdentitySettingsOauth2PtrOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingsAccessSettingsWorkforceIdentitySettingsOauth2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// Output only. SHA256 hash value for the client secret. This field
+// is returned by IAP when the settings are retrieved.
+func (o SettingsAccessSettingsWorkforceIdentitySettingsOauth2PtrOutput) ClientSecretSha256() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingsAccessSettingsWorkforceIdentitySettingsOauth2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientSecretSha256
+	}).(pulumi.StringPtrOutput)
+}
+
+type SettingsApplicationSettings struct {
+	// Customization for Access Denied page. IAP allows customers to define a custom URI
+	// to use as the error page when access is denied to users. If IAP prevents access
+	// to this page, the default IAP error page will be displayed instead.
+	// Structure is documented below.
+	AccessDeniedPageSettings *SettingsApplicationSettingsAccessDeniedPageSettings `pulumi:"accessDeniedPageSettings"`
+	// Settings to configure attribute propagation.
+	// Structure is documented below.
+	AttributePropagationSettings *SettingsApplicationSettingsAttributePropagationSettings `pulumi:"attributePropagationSettings"`
+	// The Domain value to set for cookies generated by IAP. This value is not validated by the API,
+	// but will be ignored at runtime if invalid.
+	CookieDomain *string `pulumi:"cookieDomain"`
+	// Settings to configure IAP's behavior for a service mesh.
+	// Structure is documented below.
+	CsmSettings *SettingsApplicationSettingsCsmSettings `pulumi:"csmSettings"`
+}
+
+// SettingsApplicationSettingsInput is an input type that accepts SettingsApplicationSettingsArgs and SettingsApplicationSettingsOutput values.
+// You can construct a concrete instance of `SettingsApplicationSettingsInput` via:
+//
+//	SettingsApplicationSettingsArgs{...}
+type SettingsApplicationSettingsInput interface {
+	pulumi.Input
+
+	ToSettingsApplicationSettingsOutput() SettingsApplicationSettingsOutput
+	ToSettingsApplicationSettingsOutputWithContext(context.Context) SettingsApplicationSettingsOutput
+}
+
+type SettingsApplicationSettingsArgs struct {
+	// Customization for Access Denied page. IAP allows customers to define a custom URI
+	// to use as the error page when access is denied to users. If IAP prevents access
+	// to this page, the default IAP error page will be displayed instead.
+	// Structure is documented below.
+	AccessDeniedPageSettings SettingsApplicationSettingsAccessDeniedPageSettingsPtrInput `pulumi:"accessDeniedPageSettings"`
+	// Settings to configure attribute propagation.
+	// Structure is documented below.
+	AttributePropagationSettings SettingsApplicationSettingsAttributePropagationSettingsPtrInput `pulumi:"attributePropagationSettings"`
+	// The Domain value to set for cookies generated by IAP. This value is not validated by the API,
+	// but will be ignored at runtime if invalid.
+	CookieDomain pulumi.StringPtrInput `pulumi:"cookieDomain"`
+	// Settings to configure IAP's behavior for a service mesh.
+	// Structure is documented below.
+	CsmSettings SettingsApplicationSettingsCsmSettingsPtrInput `pulumi:"csmSettings"`
+}
+
+func (SettingsApplicationSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingsApplicationSettings)(nil)).Elem()
+}
+
+func (i SettingsApplicationSettingsArgs) ToSettingsApplicationSettingsOutput() SettingsApplicationSettingsOutput {
+	return i.ToSettingsApplicationSettingsOutputWithContext(context.Background())
+}
+
+func (i SettingsApplicationSettingsArgs) ToSettingsApplicationSettingsOutputWithContext(ctx context.Context) SettingsApplicationSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsApplicationSettingsOutput)
+}
+
+func (i SettingsApplicationSettingsArgs) ToSettingsApplicationSettingsPtrOutput() SettingsApplicationSettingsPtrOutput {
+	return i.ToSettingsApplicationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i SettingsApplicationSettingsArgs) ToSettingsApplicationSettingsPtrOutputWithContext(ctx context.Context) SettingsApplicationSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsApplicationSettingsOutput).ToSettingsApplicationSettingsPtrOutputWithContext(ctx)
+}
+
+// SettingsApplicationSettingsPtrInput is an input type that accepts SettingsApplicationSettingsArgs, SettingsApplicationSettingsPtr and SettingsApplicationSettingsPtrOutput values.
+// You can construct a concrete instance of `SettingsApplicationSettingsPtrInput` via:
+//
+//	        SettingsApplicationSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SettingsApplicationSettingsPtrInput interface {
+	pulumi.Input
+
+	ToSettingsApplicationSettingsPtrOutput() SettingsApplicationSettingsPtrOutput
+	ToSettingsApplicationSettingsPtrOutputWithContext(context.Context) SettingsApplicationSettingsPtrOutput
+}
+
+type settingsApplicationSettingsPtrType SettingsApplicationSettingsArgs
+
+func SettingsApplicationSettingsPtr(v *SettingsApplicationSettingsArgs) SettingsApplicationSettingsPtrInput {
+	return (*settingsApplicationSettingsPtrType)(v)
+}
+
+func (*settingsApplicationSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingsApplicationSettings)(nil)).Elem()
+}
+
+func (i *settingsApplicationSettingsPtrType) ToSettingsApplicationSettingsPtrOutput() SettingsApplicationSettingsPtrOutput {
+	return i.ToSettingsApplicationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *settingsApplicationSettingsPtrType) ToSettingsApplicationSettingsPtrOutputWithContext(ctx context.Context) SettingsApplicationSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsApplicationSettingsPtrOutput)
+}
+
+type SettingsApplicationSettingsOutput struct{ *pulumi.OutputState }
+
+func (SettingsApplicationSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingsApplicationSettings)(nil)).Elem()
+}
+
+func (o SettingsApplicationSettingsOutput) ToSettingsApplicationSettingsOutput() SettingsApplicationSettingsOutput {
+	return o
+}
+
+func (o SettingsApplicationSettingsOutput) ToSettingsApplicationSettingsOutputWithContext(ctx context.Context) SettingsApplicationSettingsOutput {
+	return o
+}
+
+func (o SettingsApplicationSettingsOutput) ToSettingsApplicationSettingsPtrOutput() SettingsApplicationSettingsPtrOutput {
+	return o.ToSettingsApplicationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o SettingsApplicationSettingsOutput) ToSettingsApplicationSettingsPtrOutputWithContext(ctx context.Context) SettingsApplicationSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SettingsApplicationSettings) *SettingsApplicationSettings {
+		return &v
+	}).(SettingsApplicationSettingsPtrOutput)
+}
+
+// Customization for Access Denied page. IAP allows customers to define a custom URI
+// to use as the error page when access is denied to users. If IAP prevents access
+// to this page, the default IAP error page will be displayed instead.
+// Structure is documented below.
+func (o SettingsApplicationSettingsOutput) AccessDeniedPageSettings() SettingsApplicationSettingsAccessDeniedPageSettingsPtrOutput {
+	return o.ApplyT(func(v SettingsApplicationSettings) *SettingsApplicationSettingsAccessDeniedPageSettings {
+		return v.AccessDeniedPageSettings
+	}).(SettingsApplicationSettingsAccessDeniedPageSettingsPtrOutput)
+}
+
+// Settings to configure attribute propagation.
+// Structure is documented below.
+func (o SettingsApplicationSettingsOutput) AttributePropagationSettings() SettingsApplicationSettingsAttributePropagationSettingsPtrOutput {
+	return o.ApplyT(func(v SettingsApplicationSettings) *SettingsApplicationSettingsAttributePropagationSettings {
+		return v.AttributePropagationSettings
+	}).(SettingsApplicationSettingsAttributePropagationSettingsPtrOutput)
+}
+
+// The Domain value to set for cookies generated by IAP. This value is not validated by the API,
+// but will be ignored at runtime if invalid.
+func (o SettingsApplicationSettingsOutput) CookieDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingsApplicationSettings) *string { return v.CookieDomain }).(pulumi.StringPtrOutput)
+}
+
+// Settings to configure IAP's behavior for a service mesh.
+// Structure is documented below.
+func (o SettingsApplicationSettingsOutput) CsmSettings() SettingsApplicationSettingsCsmSettingsPtrOutput {
+	return o.ApplyT(func(v SettingsApplicationSettings) *SettingsApplicationSettingsCsmSettings { return v.CsmSettings }).(SettingsApplicationSettingsCsmSettingsPtrOutput)
+}
+
+type SettingsApplicationSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (SettingsApplicationSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingsApplicationSettings)(nil)).Elem()
+}
+
+func (o SettingsApplicationSettingsPtrOutput) ToSettingsApplicationSettingsPtrOutput() SettingsApplicationSettingsPtrOutput {
+	return o
+}
+
+func (o SettingsApplicationSettingsPtrOutput) ToSettingsApplicationSettingsPtrOutputWithContext(ctx context.Context) SettingsApplicationSettingsPtrOutput {
+	return o
+}
+
+func (o SettingsApplicationSettingsPtrOutput) Elem() SettingsApplicationSettingsOutput {
+	return o.ApplyT(func(v *SettingsApplicationSettings) SettingsApplicationSettings {
+		if v != nil {
+			return *v
+		}
+		var ret SettingsApplicationSettings
+		return ret
+	}).(SettingsApplicationSettingsOutput)
+}
+
+// Customization for Access Denied page. IAP allows customers to define a custom URI
+// to use as the error page when access is denied to users. If IAP prevents access
+// to this page, the default IAP error page will be displayed instead.
+// Structure is documented below.
+func (o SettingsApplicationSettingsPtrOutput) AccessDeniedPageSettings() SettingsApplicationSettingsAccessDeniedPageSettingsPtrOutput {
+	return o.ApplyT(func(v *SettingsApplicationSettings) *SettingsApplicationSettingsAccessDeniedPageSettings {
+		if v == nil {
+			return nil
+		}
+		return v.AccessDeniedPageSettings
+	}).(SettingsApplicationSettingsAccessDeniedPageSettingsPtrOutput)
+}
+
+// Settings to configure attribute propagation.
+// Structure is documented below.
+func (o SettingsApplicationSettingsPtrOutput) AttributePropagationSettings() SettingsApplicationSettingsAttributePropagationSettingsPtrOutput {
+	return o.ApplyT(func(v *SettingsApplicationSettings) *SettingsApplicationSettingsAttributePropagationSettings {
+		if v == nil {
+			return nil
+		}
+		return v.AttributePropagationSettings
+	}).(SettingsApplicationSettingsAttributePropagationSettingsPtrOutput)
+}
+
+// The Domain value to set for cookies generated by IAP. This value is not validated by the API,
+// but will be ignored at runtime if invalid.
+func (o SettingsApplicationSettingsPtrOutput) CookieDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingsApplicationSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CookieDomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Settings to configure IAP's behavior for a service mesh.
+// Structure is documented below.
+func (o SettingsApplicationSettingsPtrOutput) CsmSettings() SettingsApplicationSettingsCsmSettingsPtrOutput {
+	return o.ApplyT(func(v *SettingsApplicationSettings) *SettingsApplicationSettingsCsmSettings {
+		if v == nil {
+			return nil
+		}
+		return v.CsmSettings
+	}).(SettingsApplicationSettingsCsmSettingsPtrOutput)
+}
+
+type SettingsApplicationSettingsAccessDeniedPageSettings struct {
+	// The URI to be redirected to when access is denied.
+	AccessDeniedPageUri *string `pulumi:"accessDeniedPageUri"`
+	// Whether to generate a troubleshooting URL on access denied events to this application.
+	GenerateTroubleshootingUri *bool `pulumi:"generateTroubleshootingUri"`
+	// Whether to generate remediation token on access denied events to this application.
+	RemediationTokenGenerationEnabled *bool `pulumi:"remediationTokenGenerationEnabled"`
+}
+
+// SettingsApplicationSettingsAccessDeniedPageSettingsInput is an input type that accepts SettingsApplicationSettingsAccessDeniedPageSettingsArgs and SettingsApplicationSettingsAccessDeniedPageSettingsOutput values.
+// You can construct a concrete instance of `SettingsApplicationSettingsAccessDeniedPageSettingsInput` via:
+//
+//	SettingsApplicationSettingsAccessDeniedPageSettingsArgs{...}
+type SettingsApplicationSettingsAccessDeniedPageSettingsInput interface {
+	pulumi.Input
+
+	ToSettingsApplicationSettingsAccessDeniedPageSettingsOutput() SettingsApplicationSettingsAccessDeniedPageSettingsOutput
+	ToSettingsApplicationSettingsAccessDeniedPageSettingsOutputWithContext(context.Context) SettingsApplicationSettingsAccessDeniedPageSettingsOutput
+}
+
+type SettingsApplicationSettingsAccessDeniedPageSettingsArgs struct {
+	// The URI to be redirected to when access is denied.
+	AccessDeniedPageUri pulumi.StringPtrInput `pulumi:"accessDeniedPageUri"`
+	// Whether to generate a troubleshooting URL on access denied events to this application.
+	GenerateTroubleshootingUri pulumi.BoolPtrInput `pulumi:"generateTroubleshootingUri"`
+	// Whether to generate remediation token on access denied events to this application.
+	RemediationTokenGenerationEnabled pulumi.BoolPtrInput `pulumi:"remediationTokenGenerationEnabled"`
+}
+
+func (SettingsApplicationSettingsAccessDeniedPageSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingsApplicationSettingsAccessDeniedPageSettings)(nil)).Elem()
+}
+
+func (i SettingsApplicationSettingsAccessDeniedPageSettingsArgs) ToSettingsApplicationSettingsAccessDeniedPageSettingsOutput() SettingsApplicationSettingsAccessDeniedPageSettingsOutput {
+	return i.ToSettingsApplicationSettingsAccessDeniedPageSettingsOutputWithContext(context.Background())
+}
+
+func (i SettingsApplicationSettingsAccessDeniedPageSettingsArgs) ToSettingsApplicationSettingsAccessDeniedPageSettingsOutputWithContext(ctx context.Context) SettingsApplicationSettingsAccessDeniedPageSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsApplicationSettingsAccessDeniedPageSettingsOutput)
+}
+
+func (i SettingsApplicationSettingsAccessDeniedPageSettingsArgs) ToSettingsApplicationSettingsAccessDeniedPageSettingsPtrOutput() SettingsApplicationSettingsAccessDeniedPageSettingsPtrOutput {
+	return i.ToSettingsApplicationSettingsAccessDeniedPageSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i SettingsApplicationSettingsAccessDeniedPageSettingsArgs) ToSettingsApplicationSettingsAccessDeniedPageSettingsPtrOutputWithContext(ctx context.Context) SettingsApplicationSettingsAccessDeniedPageSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsApplicationSettingsAccessDeniedPageSettingsOutput).ToSettingsApplicationSettingsAccessDeniedPageSettingsPtrOutputWithContext(ctx)
+}
+
+// SettingsApplicationSettingsAccessDeniedPageSettingsPtrInput is an input type that accepts SettingsApplicationSettingsAccessDeniedPageSettingsArgs, SettingsApplicationSettingsAccessDeniedPageSettingsPtr and SettingsApplicationSettingsAccessDeniedPageSettingsPtrOutput values.
+// You can construct a concrete instance of `SettingsApplicationSettingsAccessDeniedPageSettingsPtrInput` via:
+//
+//	        SettingsApplicationSettingsAccessDeniedPageSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SettingsApplicationSettingsAccessDeniedPageSettingsPtrInput interface {
+	pulumi.Input
+
+	ToSettingsApplicationSettingsAccessDeniedPageSettingsPtrOutput() SettingsApplicationSettingsAccessDeniedPageSettingsPtrOutput
+	ToSettingsApplicationSettingsAccessDeniedPageSettingsPtrOutputWithContext(context.Context) SettingsApplicationSettingsAccessDeniedPageSettingsPtrOutput
+}
+
+type settingsApplicationSettingsAccessDeniedPageSettingsPtrType SettingsApplicationSettingsAccessDeniedPageSettingsArgs
+
+func SettingsApplicationSettingsAccessDeniedPageSettingsPtr(v *SettingsApplicationSettingsAccessDeniedPageSettingsArgs) SettingsApplicationSettingsAccessDeniedPageSettingsPtrInput {
+	return (*settingsApplicationSettingsAccessDeniedPageSettingsPtrType)(v)
+}
+
+func (*settingsApplicationSettingsAccessDeniedPageSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingsApplicationSettingsAccessDeniedPageSettings)(nil)).Elem()
+}
+
+func (i *settingsApplicationSettingsAccessDeniedPageSettingsPtrType) ToSettingsApplicationSettingsAccessDeniedPageSettingsPtrOutput() SettingsApplicationSettingsAccessDeniedPageSettingsPtrOutput {
+	return i.ToSettingsApplicationSettingsAccessDeniedPageSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *settingsApplicationSettingsAccessDeniedPageSettingsPtrType) ToSettingsApplicationSettingsAccessDeniedPageSettingsPtrOutputWithContext(ctx context.Context) SettingsApplicationSettingsAccessDeniedPageSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsApplicationSettingsAccessDeniedPageSettingsPtrOutput)
+}
+
+type SettingsApplicationSettingsAccessDeniedPageSettingsOutput struct{ *pulumi.OutputState }
+
+func (SettingsApplicationSettingsAccessDeniedPageSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingsApplicationSettingsAccessDeniedPageSettings)(nil)).Elem()
+}
+
+func (o SettingsApplicationSettingsAccessDeniedPageSettingsOutput) ToSettingsApplicationSettingsAccessDeniedPageSettingsOutput() SettingsApplicationSettingsAccessDeniedPageSettingsOutput {
+	return o
+}
+
+func (o SettingsApplicationSettingsAccessDeniedPageSettingsOutput) ToSettingsApplicationSettingsAccessDeniedPageSettingsOutputWithContext(ctx context.Context) SettingsApplicationSettingsAccessDeniedPageSettingsOutput {
+	return o
+}
+
+func (o SettingsApplicationSettingsAccessDeniedPageSettingsOutput) ToSettingsApplicationSettingsAccessDeniedPageSettingsPtrOutput() SettingsApplicationSettingsAccessDeniedPageSettingsPtrOutput {
+	return o.ToSettingsApplicationSettingsAccessDeniedPageSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o SettingsApplicationSettingsAccessDeniedPageSettingsOutput) ToSettingsApplicationSettingsAccessDeniedPageSettingsPtrOutputWithContext(ctx context.Context) SettingsApplicationSettingsAccessDeniedPageSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SettingsApplicationSettingsAccessDeniedPageSettings) *SettingsApplicationSettingsAccessDeniedPageSettings {
+		return &v
+	}).(SettingsApplicationSettingsAccessDeniedPageSettingsPtrOutput)
+}
+
+// The URI to be redirected to when access is denied.
+func (o SettingsApplicationSettingsAccessDeniedPageSettingsOutput) AccessDeniedPageUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingsApplicationSettingsAccessDeniedPageSettings) *string { return v.AccessDeniedPageUri }).(pulumi.StringPtrOutput)
+}
+
+// Whether to generate a troubleshooting URL on access denied events to this application.
+func (o SettingsApplicationSettingsAccessDeniedPageSettingsOutput) GenerateTroubleshootingUri() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingsApplicationSettingsAccessDeniedPageSettings) *bool { return v.GenerateTroubleshootingUri }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to generate remediation token on access denied events to this application.
+func (o SettingsApplicationSettingsAccessDeniedPageSettingsOutput) RemediationTokenGenerationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingsApplicationSettingsAccessDeniedPageSettings) *bool {
+		return v.RemediationTokenGenerationEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type SettingsApplicationSettingsAccessDeniedPageSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (SettingsApplicationSettingsAccessDeniedPageSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingsApplicationSettingsAccessDeniedPageSettings)(nil)).Elem()
+}
+
+func (o SettingsApplicationSettingsAccessDeniedPageSettingsPtrOutput) ToSettingsApplicationSettingsAccessDeniedPageSettingsPtrOutput() SettingsApplicationSettingsAccessDeniedPageSettingsPtrOutput {
+	return o
+}
+
+func (o SettingsApplicationSettingsAccessDeniedPageSettingsPtrOutput) ToSettingsApplicationSettingsAccessDeniedPageSettingsPtrOutputWithContext(ctx context.Context) SettingsApplicationSettingsAccessDeniedPageSettingsPtrOutput {
+	return o
+}
+
+func (o SettingsApplicationSettingsAccessDeniedPageSettingsPtrOutput) Elem() SettingsApplicationSettingsAccessDeniedPageSettingsOutput {
+	return o.ApplyT(func(v *SettingsApplicationSettingsAccessDeniedPageSettings) SettingsApplicationSettingsAccessDeniedPageSettings {
+		if v != nil {
+			return *v
+		}
+		var ret SettingsApplicationSettingsAccessDeniedPageSettings
+		return ret
+	}).(SettingsApplicationSettingsAccessDeniedPageSettingsOutput)
+}
+
+// The URI to be redirected to when access is denied.
+func (o SettingsApplicationSettingsAccessDeniedPageSettingsPtrOutput) AccessDeniedPageUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingsApplicationSettingsAccessDeniedPageSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessDeniedPageUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to generate a troubleshooting URL on access denied events to this application.
+func (o SettingsApplicationSettingsAccessDeniedPageSettingsPtrOutput) GenerateTroubleshootingUri() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingsApplicationSettingsAccessDeniedPageSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.GenerateTroubleshootingUri
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to generate remediation token on access denied events to this application.
+func (o SettingsApplicationSettingsAccessDeniedPageSettingsPtrOutput) RemediationTokenGenerationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingsApplicationSettingsAccessDeniedPageSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RemediationTokenGenerationEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type SettingsApplicationSettingsAttributePropagationSettings struct {
+	// Whether the provided attribute propagation settings should be evaluated on user requests.
+	// If set to true, attributes returned from the expression will be propagated in the set output credentials.
+	Enable *bool `pulumi:"enable"`
+	// Raw string CEL expression. Must return a list of attributes. A maximum of 45 attributes can
+	// be selected. Expressions can select different attribute types from attributes:
+	// attributes.saml_attributes, attributes.iap_attributes.
+	Expression *string `pulumi:"expression"`
+	// Which output credentials attributes selected by the CEL expression should be propagated in.
+	// All attributes will be fully duplicated in each selected output credential.
+	// Possible values are:
+	// * `HEADER`: Propagate attributes in the headers with "x-goog-iap-attr-" prefix.
+	// * `JWT`: Propagate attributes in the JWT of the form:
+	//   "additionalClaims": { "myAttribute": ["value1", "value2"] }
+	// * `RCTOKEN`: Propagate attributes in the RCToken of the form: "
+	//   additionalClaims": { "myAttribute": ["value1", "value2"] }
+	//   Each value may be one of: `HEADER`, `JWT`, `RCTOKEN`.
+	OutputCredentials []string `pulumi:"outputCredentials"`
+}
+
+// SettingsApplicationSettingsAttributePropagationSettingsInput is an input type that accepts SettingsApplicationSettingsAttributePropagationSettingsArgs and SettingsApplicationSettingsAttributePropagationSettingsOutput values.
+// You can construct a concrete instance of `SettingsApplicationSettingsAttributePropagationSettingsInput` via:
+//
+//	SettingsApplicationSettingsAttributePropagationSettingsArgs{...}
+type SettingsApplicationSettingsAttributePropagationSettingsInput interface {
+	pulumi.Input
+
+	ToSettingsApplicationSettingsAttributePropagationSettingsOutput() SettingsApplicationSettingsAttributePropagationSettingsOutput
+	ToSettingsApplicationSettingsAttributePropagationSettingsOutputWithContext(context.Context) SettingsApplicationSettingsAttributePropagationSettingsOutput
+}
+
+type SettingsApplicationSettingsAttributePropagationSettingsArgs struct {
+	// Whether the provided attribute propagation settings should be evaluated on user requests.
+	// If set to true, attributes returned from the expression will be propagated in the set output credentials.
+	Enable pulumi.BoolPtrInput `pulumi:"enable"`
+	// Raw string CEL expression. Must return a list of attributes. A maximum of 45 attributes can
+	// be selected. Expressions can select different attribute types from attributes:
+	// attributes.saml_attributes, attributes.iap_attributes.
+	Expression pulumi.StringPtrInput `pulumi:"expression"`
+	// Which output credentials attributes selected by the CEL expression should be propagated in.
+	// All attributes will be fully duplicated in each selected output credential.
+	// Possible values are:
+	// * `HEADER`: Propagate attributes in the headers with "x-goog-iap-attr-" prefix.
+	// * `JWT`: Propagate attributes in the JWT of the form:
+	//   "additionalClaims": { "myAttribute": ["value1", "value2"] }
+	// * `RCTOKEN`: Propagate attributes in the RCToken of the form: "
+	//   additionalClaims": { "myAttribute": ["value1", "value2"] }
+	//   Each value may be one of: `HEADER`, `JWT`, `RCTOKEN`.
+	OutputCredentials pulumi.StringArrayInput `pulumi:"outputCredentials"`
+}
+
+func (SettingsApplicationSettingsAttributePropagationSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingsApplicationSettingsAttributePropagationSettings)(nil)).Elem()
+}
+
+func (i SettingsApplicationSettingsAttributePropagationSettingsArgs) ToSettingsApplicationSettingsAttributePropagationSettingsOutput() SettingsApplicationSettingsAttributePropagationSettingsOutput {
+	return i.ToSettingsApplicationSettingsAttributePropagationSettingsOutputWithContext(context.Background())
+}
+
+func (i SettingsApplicationSettingsAttributePropagationSettingsArgs) ToSettingsApplicationSettingsAttributePropagationSettingsOutputWithContext(ctx context.Context) SettingsApplicationSettingsAttributePropagationSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsApplicationSettingsAttributePropagationSettingsOutput)
+}
+
+func (i SettingsApplicationSettingsAttributePropagationSettingsArgs) ToSettingsApplicationSettingsAttributePropagationSettingsPtrOutput() SettingsApplicationSettingsAttributePropagationSettingsPtrOutput {
+	return i.ToSettingsApplicationSettingsAttributePropagationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i SettingsApplicationSettingsAttributePropagationSettingsArgs) ToSettingsApplicationSettingsAttributePropagationSettingsPtrOutputWithContext(ctx context.Context) SettingsApplicationSettingsAttributePropagationSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsApplicationSettingsAttributePropagationSettingsOutput).ToSettingsApplicationSettingsAttributePropagationSettingsPtrOutputWithContext(ctx)
+}
+
+// SettingsApplicationSettingsAttributePropagationSettingsPtrInput is an input type that accepts SettingsApplicationSettingsAttributePropagationSettingsArgs, SettingsApplicationSettingsAttributePropagationSettingsPtr and SettingsApplicationSettingsAttributePropagationSettingsPtrOutput values.
+// You can construct a concrete instance of `SettingsApplicationSettingsAttributePropagationSettingsPtrInput` via:
+//
+//	        SettingsApplicationSettingsAttributePropagationSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SettingsApplicationSettingsAttributePropagationSettingsPtrInput interface {
+	pulumi.Input
+
+	ToSettingsApplicationSettingsAttributePropagationSettingsPtrOutput() SettingsApplicationSettingsAttributePropagationSettingsPtrOutput
+	ToSettingsApplicationSettingsAttributePropagationSettingsPtrOutputWithContext(context.Context) SettingsApplicationSettingsAttributePropagationSettingsPtrOutput
+}
+
+type settingsApplicationSettingsAttributePropagationSettingsPtrType SettingsApplicationSettingsAttributePropagationSettingsArgs
+
+func SettingsApplicationSettingsAttributePropagationSettingsPtr(v *SettingsApplicationSettingsAttributePropagationSettingsArgs) SettingsApplicationSettingsAttributePropagationSettingsPtrInput {
+	return (*settingsApplicationSettingsAttributePropagationSettingsPtrType)(v)
+}
+
+func (*settingsApplicationSettingsAttributePropagationSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingsApplicationSettingsAttributePropagationSettings)(nil)).Elem()
+}
+
+func (i *settingsApplicationSettingsAttributePropagationSettingsPtrType) ToSettingsApplicationSettingsAttributePropagationSettingsPtrOutput() SettingsApplicationSettingsAttributePropagationSettingsPtrOutput {
+	return i.ToSettingsApplicationSettingsAttributePropagationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *settingsApplicationSettingsAttributePropagationSettingsPtrType) ToSettingsApplicationSettingsAttributePropagationSettingsPtrOutputWithContext(ctx context.Context) SettingsApplicationSettingsAttributePropagationSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsApplicationSettingsAttributePropagationSettingsPtrOutput)
+}
+
+type SettingsApplicationSettingsAttributePropagationSettingsOutput struct{ *pulumi.OutputState }
+
+func (SettingsApplicationSettingsAttributePropagationSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingsApplicationSettingsAttributePropagationSettings)(nil)).Elem()
+}
+
+func (o SettingsApplicationSettingsAttributePropagationSettingsOutput) ToSettingsApplicationSettingsAttributePropagationSettingsOutput() SettingsApplicationSettingsAttributePropagationSettingsOutput {
+	return o
+}
+
+func (o SettingsApplicationSettingsAttributePropagationSettingsOutput) ToSettingsApplicationSettingsAttributePropagationSettingsOutputWithContext(ctx context.Context) SettingsApplicationSettingsAttributePropagationSettingsOutput {
+	return o
+}
+
+func (o SettingsApplicationSettingsAttributePropagationSettingsOutput) ToSettingsApplicationSettingsAttributePropagationSettingsPtrOutput() SettingsApplicationSettingsAttributePropagationSettingsPtrOutput {
+	return o.ToSettingsApplicationSettingsAttributePropagationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o SettingsApplicationSettingsAttributePropagationSettingsOutput) ToSettingsApplicationSettingsAttributePropagationSettingsPtrOutputWithContext(ctx context.Context) SettingsApplicationSettingsAttributePropagationSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SettingsApplicationSettingsAttributePropagationSettings) *SettingsApplicationSettingsAttributePropagationSettings {
+		return &v
+	}).(SettingsApplicationSettingsAttributePropagationSettingsPtrOutput)
+}
+
+// Whether the provided attribute propagation settings should be evaluated on user requests.
+// If set to true, attributes returned from the expression will be propagated in the set output credentials.
+func (o SettingsApplicationSettingsAttributePropagationSettingsOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SettingsApplicationSettingsAttributePropagationSettings) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
+}
+
+// Raw string CEL expression. Must return a list of attributes. A maximum of 45 attributes can
+// be selected. Expressions can select different attribute types from attributes:
+// attributes.saml_attributes, attributes.iap_attributes.
+func (o SettingsApplicationSettingsAttributePropagationSettingsOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingsApplicationSettingsAttributePropagationSettings) *string { return v.Expression }).(pulumi.StringPtrOutput)
+}
+
+// Which output credentials attributes selected by the CEL expression should be propagated in.
+// All attributes will be fully duplicated in each selected output credential.
+// Possible values are:
+//   - `HEADER`: Propagate attributes in the headers with "x-goog-iap-attr-" prefix.
+//   - `JWT`: Propagate attributes in the JWT of the form:
+//     "additionalClaims": { "myAttribute": ["value1", "value2"] }
+//   - `RCTOKEN`: Propagate attributes in the RCToken of the form: "
+//     additionalClaims": { "myAttribute": ["value1", "value2"] }
+//     Each value may be one of: `HEADER`, `JWT`, `RCTOKEN`.
+func (o SettingsApplicationSettingsAttributePropagationSettingsOutput) OutputCredentials() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SettingsApplicationSettingsAttributePropagationSettings) []string { return v.OutputCredentials }).(pulumi.StringArrayOutput)
+}
+
+type SettingsApplicationSettingsAttributePropagationSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (SettingsApplicationSettingsAttributePropagationSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingsApplicationSettingsAttributePropagationSettings)(nil)).Elem()
+}
+
+func (o SettingsApplicationSettingsAttributePropagationSettingsPtrOutput) ToSettingsApplicationSettingsAttributePropagationSettingsPtrOutput() SettingsApplicationSettingsAttributePropagationSettingsPtrOutput {
+	return o
+}
+
+func (o SettingsApplicationSettingsAttributePropagationSettingsPtrOutput) ToSettingsApplicationSettingsAttributePropagationSettingsPtrOutputWithContext(ctx context.Context) SettingsApplicationSettingsAttributePropagationSettingsPtrOutput {
+	return o
+}
+
+func (o SettingsApplicationSettingsAttributePropagationSettingsPtrOutput) Elem() SettingsApplicationSettingsAttributePropagationSettingsOutput {
+	return o.ApplyT(func(v *SettingsApplicationSettingsAttributePropagationSettings) SettingsApplicationSettingsAttributePropagationSettings {
+		if v != nil {
+			return *v
+		}
+		var ret SettingsApplicationSettingsAttributePropagationSettings
+		return ret
+	}).(SettingsApplicationSettingsAttributePropagationSettingsOutput)
+}
+
+// Whether the provided attribute propagation settings should be evaluated on user requests.
+// If set to true, attributes returned from the expression will be propagated in the set output credentials.
+func (o SettingsApplicationSettingsAttributePropagationSettingsPtrOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SettingsApplicationSettingsAttributePropagationSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Raw string CEL expression. Must return a list of attributes. A maximum of 45 attributes can
+// be selected. Expressions can select different attribute types from attributes:
+// attributes.saml_attributes, attributes.iap_attributes.
+func (o SettingsApplicationSettingsAttributePropagationSettingsPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingsApplicationSettingsAttributePropagationSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// Which output credentials attributes selected by the CEL expression should be propagated in.
+// All attributes will be fully duplicated in each selected output credential.
+// Possible values are:
+//   - `HEADER`: Propagate attributes in the headers with "x-goog-iap-attr-" prefix.
+//   - `JWT`: Propagate attributes in the JWT of the form:
+//     "additionalClaims": { "myAttribute": ["value1", "value2"] }
+//   - `RCTOKEN`: Propagate attributes in the RCToken of the form: "
+//     additionalClaims": { "myAttribute": ["value1", "value2"] }
+//     Each value may be one of: `HEADER`, `JWT`, `RCTOKEN`.
+func (o SettingsApplicationSettingsAttributePropagationSettingsPtrOutput) OutputCredentials() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SettingsApplicationSettingsAttributePropagationSettings) []string {
+		if v == nil {
+			return nil
+		}
+		return v.OutputCredentials
+	}).(pulumi.StringArrayOutput)
+}
+
+type SettingsApplicationSettingsCsmSettings struct {
+	// Audience claim set in the generated RCToken. This value is not validated by IAP.
+	RctokenAud *string `pulumi:"rctokenAud"`
+}
+
+// SettingsApplicationSettingsCsmSettingsInput is an input type that accepts SettingsApplicationSettingsCsmSettingsArgs and SettingsApplicationSettingsCsmSettingsOutput values.
+// You can construct a concrete instance of `SettingsApplicationSettingsCsmSettingsInput` via:
+//
+//	SettingsApplicationSettingsCsmSettingsArgs{...}
+type SettingsApplicationSettingsCsmSettingsInput interface {
+	pulumi.Input
+
+	ToSettingsApplicationSettingsCsmSettingsOutput() SettingsApplicationSettingsCsmSettingsOutput
+	ToSettingsApplicationSettingsCsmSettingsOutputWithContext(context.Context) SettingsApplicationSettingsCsmSettingsOutput
+}
+
+type SettingsApplicationSettingsCsmSettingsArgs struct {
+	// Audience claim set in the generated RCToken. This value is not validated by IAP.
+	RctokenAud pulumi.StringPtrInput `pulumi:"rctokenAud"`
+}
+
+func (SettingsApplicationSettingsCsmSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingsApplicationSettingsCsmSettings)(nil)).Elem()
+}
+
+func (i SettingsApplicationSettingsCsmSettingsArgs) ToSettingsApplicationSettingsCsmSettingsOutput() SettingsApplicationSettingsCsmSettingsOutput {
+	return i.ToSettingsApplicationSettingsCsmSettingsOutputWithContext(context.Background())
+}
+
+func (i SettingsApplicationSettingsCsmSettingsArgs) ToSettingsApplicationSettingsCsmSettingsOutputWithContext(ctx context.Context) SettingsApplicationSettingsCsmSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsApplicationSettingsCsmSettingsOutput)
+}
+
+func (i SettingsApplicationSettingsCsmSettingsArgs) ToSettingsApplicationSettingsCsmSettingsPtrOutput() SettingsApplicationSettingsCsmSettingsPtrOutput {
+	return i.ToSettingsApplicationSettingsCsmSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i SettingsApplicationSettingsCsmSettingsArgs) ToSettingsApplicationSettingsCsmSettingsPtrOutputWithContext(ctx context.Context) SettingsApplicationSettingsCsmSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsApplicationSettingsCsmSettingsOutput).ToSettingsApplicationSettingsCsmSettingsPtrOutputWithContext(ctx)
+}
+
+// SettingsApplicationSettingsCsmSettingsPtrInput is an input type that accepts SettingsApplicationSettingsCsmSettingsArgs, SettingsApplicationSettingsCsmSettingsPtr and SettingsApplicationSettingsCsmSettingsPtrOutput values.
+// You can construct a concrete instance of `SettingsApplicationSettingsCsmSettingsPtrInput` via:
+//
+//	        SettingsApplicationSettingsCsmSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SettingsApplicationSettingsCsmSettingsPtrInput interface {
+	pulumi.Input
+
+	ToSettingsApplicationSettingsCsmSettingsPtrOutput() SettingsApplicationSettingsCsmSettingsPtrOutput
+	ToSettingsApplicationSettingsCsmSettingsPtrOutputWithContext(context.Context) SettingsApplicationSettingsCsmSettingsPtrOutput
+}
+
+type settingsApplicationSettingsCsmSettingsPtrType SettingsApplicationSettingsCsmSettingsArgs
+
+func SettingsApplicationSettingsCsmSettingsPtr(v *SettingsApplicationSettingsCsmSettingsArgs) SettingsApplicationSettingsCsmSettingsPtrInput {
+	return (*settingsApplicationSettingsCsmSettingsPtrType)(v)
+}
+
+func (*settingsApplicationSettingsCsmSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingsApplicationSettingsCsmSettings)(nil)).Elem()
+}
+
+func (i *settingsApplicationSettingsCsmSettingsPtrType) ToSettingsApplicationSettingsCsmSettingsPtrOutput() SettingsApplicationSettingsCsmSettingsPtrOutput {
+	return i.ToSettingsApplicationSettingsCsmSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *settingsApplicationSettingsCsmSettingsPtrType) ToSettingsApplicationSettingsCsmSettingsPtrOutputWithContext(ctx context.Context) SettingsApplicationSettingsCsmSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SettingsApplicationSettingsCsmSettingsPtrOutput)
+}
+
+type SettingsApplicationSettingsCsmSettingsOutput struct{ *pulumi.OutputState }
+
+func (SettingsApplicationSettingsCsmSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingsApplicationSettingsCsmSettings)(nil)).Elem()
+}
+
+func (o SettingsApplicationSettingsCsmSettingsOutput) ToSettingsApplicationSettingsCsmSettingsOutput() SettingsApplicationSettingsCsmSettingsOutput {
+	return o
+}
+
+func (o SettingsApplicationSettingsCsmSettingsOutput) ToSettingsApplicationSettingsCsmSettingsOutputWithContext(ctx context.Context) SettingsApplicationSettingsCsmSettingsOutput {
+	return o
+}
+
+func (o SettingsApplicationSettingsCsmSettingsOutput) ToSettingsApplicationSettingsCsmSettingsPtrOutput() SettingsApplicationSettingsCsmSettingsPtrOutput {
+	return o.ToSettingsApplicationSettingsCsmSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o SettingsApplicationSettingsCsmSettingsOutput) ToSettingsApplicationSettingsCsmSettingsPtrOutputWithContext(ctx context.Context) SettingsApplicationSettingsCsmSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SettingsApplicationSettingsCsmSettings) *SettingsApplicationSettingsCsmSettings {
+		return &v
+	}).(SettingsApplicationSettingsCsmSettingsPtrOutput)
+}
+
+// Audience claim set in the generated RCToken. This value is not validated by IAP.
+func (o SettingsApplicationSettingsCsmSettingsOutput) RctokenAud() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SettingsApplicationSettingsCsmSettings) *string { return v.RctokenAud }).(pulumi.StringPtrOutput)
+}
+
+type SettingsApplicationSettingsCsmSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (SettingsApplicationSettingsCsmSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingsApplicationSettingsCsmSettings)(nil)).Elem()
+}
+
+func (o SettingsApplicationSettingsCsmSettingsPtrOutput) ToSettingsApplicationSettingsCsmSettingsPtrOutput() SettingsApplicationSettingsCsmSettingsPtrOutput {
+	return o
+}
+
+func (o SettingsApplicationSettingsCsmSettingsPtrOutput) ToSettingsApplicationSettingsCsmSettingsPtrOutputWithContext(ctx context.Context) SettingsApplicationSettingsCsmSettingsPtrOutput {
+	return o
+}
+
+func (o SettingsApplicationSettingsCsmSettingsPtrOutput) Elem() SettingsApplicationSettingsCsmSettingsOutput {
+	return o.ApplyT(func(v *SettingsApplicationSettingsCsmSettings) SettingsApplicationSettingsCsmSettings {
+		if v != nil {
+			return *v
+		}
+		var ret SettingsApplicationSettingsCsmSettings
+		return ret
+	}).(SettingsApplicationSettingsCsmSettingsOutput)
+}
+
+// Audience claim set in the generated RCToken. This value is not validated by IAP.
+func (o SettingsApplicationSettingsCsmSettingsPtrOutput) RctokenAud() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SettingsApplicationSettingsCsmSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RctokenAud
+	}).(pulumi.StringPtrOutput)
+}
+
 type TunnelDestGroupIamBindingCondition struct {
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
@@ -3730,6 +6017,30 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineVersionIamBindingConditionPtrInput)(nil)).Elem(), AppEngineVersionIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineVersionIamMemberConditionInput)(nil)).Elem(), AppEngineVersionIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineVersionIamMemberConditionPtrInput)(nil)).Elem(), AppEngineVersionIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingsAccessSettingsInput)(nil)).Elem(), SettingsAccessSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingsAccessSettingsPtrInput)(nil)).Elem(), SettingsAccessSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingsAccessSettingsAllowedDomainsSettingsInput)(nil)).Elem(), SettingsAccessSettingsAllowedDomainsSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingsAccessSettingsAllowedDomainsSettingsPtrInput)(nil)).Elem(), SettingsAccessSettingsAllowedDomainsSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingsAccessSettingsCorsSettingsInput)(nil)).Elem(), SettingsAccessSettingsCorsSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingsAccessSettingsCorsSettingsPtrInput)(nil)).Elem(), SettingsAccessSettingsCorsSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingsAccessSettingsGcipSettingsInput)(nil)).Elem(), SettingsAccessSettingsGcipSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingsAccessSettingsGcipSettingsPtrInput)(nil)).Elem(), SettingsAccessSettingsGcipSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingsAccessSettingsOauthSettingsInput)(nil)).Elem(), SettingsAccessSettingsOauthSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingsAccessSettingsOauthSettingsPtrInput)(nil)).Elem(), SettingsAccessSettingsOauthSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingsAccessSettingsReauthSettingsInput)(nil)).Elem(), SettingsAccessSettingsReauthSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingsAccessSettingsReauthSettingsPtrInput)(nil)).Elem(), SettingsAccessSettingsReauthSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingsAccessSettingsWorkforceIdentitySettingsInput)(nil)).Elem(), SettingsAccessSettingsWorkforceIdentitySettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingsAccessSettingsWorkforceIdentitySettingsPtrInput)(nil)).Elem(), SettingsAccessSettingsWorkforceIdentitySettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingsAccessSettingsWorkforceIdentitySettingsOauth2Input)(nil)).Elem(), SettingsAccessSettingsWorkforceIdentitySettingsOauth2Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingsAccessSettingsWorkforceIdentitySettingsOauth2PtrInput)(nil)).Elem(), SettingsAccessSettingsWorkforceIdentitySettingsOauth2Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingsApplicationSettingsInput)(nil)).Elem(), SettingsApplicationSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingsApplicationSettingsPtrInput)(nil)).Elem(), SettingsApplicationSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingsApplicationSettingsAccessDeniedPageSettingsInput)(nil)).Elem(), SettingsApplicationSettingsAccessDeniedPageSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingsApplicationSettingsAccessDeniedPageSettingsPtrInput)(nil)).Elem(), SettingsApplicationSettingsAccessDeniedPageSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingsApplicationSettingsAttributePropagationSettingsInput)(nil)).Elem(), SettingsApplicationSettingsAttributePropagationSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingsApplicationSettingsAttributePropagationSettingsPtrInput)(nil)).Elem(), SettingsApplicationSettingsAttributePropagationSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingsApplicationSettingsCsmSettingsInput)(nil)).Elem(), SettingsApplicationSettingsCsmSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingsApplicationSettingsCsmSettingsPtrInput)(nil)).Elem(), SettingsApplicationSettingsCsmSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TunnelDestGroupIamBindingConditionInput)(nil)).Elem(), TunnelDestGroupIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TunnelDestGroupIamBindingConditionPtrInput)(nil)).Elem(), TunnelDestGroupIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TunnelDestGroupIamMemberConditionInput)(nil)).Elem(), TunnelDestGroupIamMemberConditionArgs{})
@@ -3770,6 +6081,30 @@ func init() {
 	pulumi.RegisterOutputType(AppEngineVersionIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(AppEngineVersionIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(AppEngineVersionIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(SettingsAccessSettingsOutput{})
+	pulumi.RegisterOutputType(SettingsAccessSettingsPtrOutput{})
+	pulumi.RegisterOutputType(SettingsAccessSettingsAllowedDomainsSettingsOutput{})
+	pulumi.RegisterOutputType(SettingsAccessSettingsAllowedDomainsSettingsPtrOutput{})
+	pulumi.RegisterOutputType(SettingsAccessSettingsCorsSettingsOutput{})
+	pulumi.RegisterOutputType(SettingsAccessSettingsCorsSettingsPtrOutput{})
+	pulumi.RegisterOutputType(SettingsAccessSettingsGcipSettingsOutput{})
+	pulumi.RegisterOutputType(SettingsAccessSettingsGcipSettingsPtrOutput{})
+	pulumi.RegisterOutputType(SettingsAccessSettingsOauthSettingsOutput{})
+	pulumi.RegisterOutputType(SettingsAccessSettingsOauthSettingsPtrOutput{})
+	pulumi.RegisterOutputType(SettingsAccessSettingsReauthSettingsOutput{})
+	pulumi.RegisterOutputType(SettingsAccessSettingsReauthSettingsPtrOutput{})
+	pulumi.RegisterOutputType(SettingsAccessSettingsWorkforceIdentitySettingsOutput{})
+	pulumi.RegisterOutputType(SettingsAccessSettingsWorkforceIdentitySettingsPtrOutput{})
+	pulumi.RegisterOutputType(SettingsAccessSettingsWorkforceIdentitySettingsOauth2Output{})
+	pulumi.RegisterOutputType(SettingsAccessSettingsWorkforceIdentitySettingsOauth2PtrOutput{})
+	pulumi.RegisterOutputType(SettingsApplicationSettingsOutput{})
+	pulumi.RegisterOutputType(SettingsApplicationSettingsPtrOutput{})
+	pulumi.RegisterOutputType(SettingsApplicationSettingsAccessDeniedPageSettingsOutput{})
+	pulumi.RegisterOutputType(SettingsApplicationSettingsAccessDeniedPageSettingsPtrOutput{})
+	pulumi.RegisterOutputType(SettingsApplicationSettingsAttributePropagationSettingsOutput{})
+	pulumi.RegisterOutputType(SettingsApplicationSettingsAttributePropagationSettingsPtrOutput{})
+	pulumi.RegisterOutputType(SettingsApplicationSettingsCsmSettingsOutput{})
+	pulumi.RegisterOutputType(SettingsApplicationSettingsCsmSettingsPtrOutput{})
 	pulumi.RegisterOutputType(TunnelDestGroupIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(TunnelDestGroupIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(TunnelDestGroupIamMemberConditionOutput{})

@@ -289,7 +289,7 @@ import (
 // $ pulumi import gcp:cloudfunctions/functionIamPolicy:FunctionIamPolicy editor projects/{{project}}/locations/{{region}}/functions/{{cloud_function}}
 // ```
 //
-// -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+// -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 //
 //	full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type FunctionIamPolicy struct {

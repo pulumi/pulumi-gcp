@@ -620,8 +620,7 @@ func (o BucketEncryptionPtrOutput) DefaultKmsKeyName() pulumi.StringPtrOutput {
 }
 
 type BucketHierarchicalNamespace struct {
-	// Enable hierarchical namespace for the bucket.
-	// To use this flag, you must also use --uniform-bucket-level-access
+	// Enables hierarchical namespace for the bucket.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -637,8 +636,7 @@ type BucketHierarchicalNamespaceInput interface {
 }
 
 type BucketHierarchicalNamespaceArgs struct {
-	// Enable hierarchical namespace for the bucket.
-	// To use this flag, you must also use --uniform-bucket-level-access
+	// Enables hierarchical namespace for the bucket.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -719,8 +717,7 @@ func (o BucketHierarchicalNamespaceOutput) ToBucketHierarchicalNamespacePtrOutpu
 	}).(BucketHierarchicalNamespacePtrOutput)
 }
 
-// Enable hierarchical namespace for the bucket.
-// To use this flag, you must also use --uniform-bucket-level-access
+// Enables hierarchical namespace for the bucket.
 func (o BucketHierarchicalNamespaceOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v BucketHierarchicalNamespace) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -749,8 +746,7 @@ func (o BucketHierarchicalNamespacePtrOutput) Elem() BucketHierarchicalNamespace
 	}).(BucketHierarchicalNamespaceOutput)
 }
 
-// Enable hierarchical namespace for the bucket.
-// To use this flag, you must also use --uniform-bucket-level-access
+// Enables hierarchical namespace for the bucket.
 func (o BucketHierarchicalNamespacePtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BucketHierarchicalNamespace) *bool {
 		if v == nil {
@@ -8204,7 +8200,7 @@ func (o GetBucketEncryptionArrayOutput) Index(i pulumi.IntInput) GetBucketEncryp
 }
 
 type GetBucketHierarchicalNamespace struct {
-	// Set this enabled flag to true when folders with logical files structure. Default value is false.
+	// Set this field true to organize bucket with logical file system structure.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -8220,7 +8216,7 @@ type GetBucketHierarchicalNamespaceInput interface {
 }
 
 type GetBucketHierarchicalNamespaceArgs struct {
-	// Set this enabled flag to true when folders with logical files structure. Default value is false.
+	// Set this field true to organize bucket with logical file system structure.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -8275,7 +8271,7 @@ func (o GetBucketHierarchicalNamespaceOutput) ToGetBucketHierarchicalNamespaceOu
 	return o
 }
 
-// Set this enabled flag to true when folders with logical files structure. Default value is false.
+// Set this field true to organize bucket with logical file system structure.
 func (o GetBucketHierarchicalNamespaceOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetBucketHierarchicalNamespace) bool { return v.Enabled }).(pulumi.BoolOutput)
 }

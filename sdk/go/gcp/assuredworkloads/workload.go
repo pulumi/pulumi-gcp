@@ -55,6 +55,9 @@ import (
 //					},
 //				},
 //				ViolationNotificationsEnabled: pulumi.Bool(true),
+//				WorkloadOptions: &assuredworkloads.WorkloadWorkloadOptionsArgs{
+//					KajEnrollmentType: pulumi.String("KEY_ACCESS_TRANSPARENCY_OFF"),
+//				},
 //				Labels: pulumi.StringMap{
 //					"label-one": pulumi.String("value-one"),
 //				},
@@ -242,6 +245,8 @@ type Workload struct {
 	SaaEnrollmentResponses WorkloadSaaEnrollmentResponseArrayOutput `pulumi:"saaEnrollmentResponses"`
 	// Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
 	ViolationNotificationsEnabled pulumi.BoolOutput `pulumi:"violationNotificationsEnabled"`
+	// Optional. Used to specify certain options for a workload during workload creation - currently only supporting KAT Optionality for Regional Controls workloads.
+	WorkloadOptions WorkloadWorkloadOptionsPtrOutput `pulumi:"workloadOptions"`
 }
 
 // NewWorkload registers a new resource with the given unique name, arguments, and options.
@@ -344,6 +349,8 @@ type workloadState struct {
 	SaaEnrollmentResponses []WorkloadSaaEnrollmentResponse `pulumi:"saaEnrollmentResponses"`
 	// Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
 	ViolationNotificationsEnabled *bool `pulumi:"violationNotificationsEnabled"`
+	// Optional. Used to specify certain options for a workload during workload creation - currently only supporting KAT Optionality for Regional Controls workloads.
+	WorkloadOptions *WorkloadWorkloadOptions `pulumi:"workloadOptions"`
 }
 
 type WorkloadState struct {
@@ -400,6 +407,8 @@ type WorkloadState struct {
 	SaaEnrollmentResponses WorkloadSaaEnrollmentResponseArrayInput
 	// Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
 	ViolationNotificationsEnabled pulumi.BoolPtrInput
+	// Optional. Used to specify certain options for a workload during workload creation - currently only supporting KAT Optionality for Regional Controls workloads.
+	WorkloadOptions WorkloadWorkloadOptionsPtrInput
 }
 
 func (WorkloadState) ElementType() reflect.Type {
@@ -440,6 +449,8 @@ type workloadArgs struct {
 	ResourceSettings []WorkloadResourceSetting `pulumi:"resourceSettings"`
 	// Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
 	ViolationNotificationsEnabled *bool `pulumi:"violationNotificationsEnabled"`
+	// Optional. Used to specify certain options for a workload during workload creation - currently only supporting KAT Optionality for Regional Controls workloads.
+	WorkloadOptions *WorkloadWorkloadOptions `pulumi:"workloadOptions"`
 }
 
 // The set of arguments for constructing a Workload resource.
@@ -477,6 +488,8 @@ type WorkloadArgs struct {
 	ResourceSettings WorkloadResourceSettingArrayInput
 	// Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
 	ViolationNotificationsEnabled pulumi.BoolPtrInput
+	// Optional. Used to specify certain options for a workload during workload creation - currently only supporting KAT Optionality for Regional Controls workloads.
+	WorkloadOptions WorkloadWorkloadOptionsPtrInput
 }
 
 func (WorkloadArgs) ElementType() reflect.Type {
@@ -689,6 +702,11 @@ func (o WorkloadOutput) SaaEnrollmentResponses() WorkloadSaaEnrollmentResponseAr
 // Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value will be by default True, and if not present will be considered as true. This should only be updated via updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will always be true while creating the workload.
 func (o WorkloadOutput) ViolationNotificationsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Workload) pulumi.BoolOutput { return v.ViolationNotificationsEnabled }).(pulumi.BoolOutput)
+}
+
+// Optional. Used to specify certain options for a workload during workload creation - currently only supporting KAT Optionality for Regional Controls workloads.
+func (o WorkloadOutput) WorkloadOptions() WorkloadWorkloadOptionsPtrOutput {
+	return o.ApplyT(func(v *Workload) WorkloadWorkloadOptionsPtrOutput { return v.WorkloadOptions }).(WorkloadWorkloadOptionsPtrOutput)
 }
 
 type WorkloadArrayOutput struct{ *pulumi.OutputState }

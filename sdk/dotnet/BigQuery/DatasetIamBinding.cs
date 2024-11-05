@@ -120,6 +120,45 @@ namespace Pulumi.Gcp.BigQuery
     /// });
     /// ```
     /// 
+    /// ## gcp.bigquery.DatasetIamPolicy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var owner = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/bigquery.dataOwner",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var datasetDataset = new Gcp.BigQuery.Dataset("dataset", new()
+    ///     {
+    ///         DatasetId = "example_dataset",
+    ///     });
+    /// 
+    ///     var dataset = new Gcp.BigQuery.DatasetIamPolicy("dataset", new()
+    ///     {
+    ///         DatasetId = datasetDataset.DatasetId,
+    ///         PolicyData = owner.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## gcp.bigquery.DatasetIamBinding
     /// 
     /// ```csharp
@@ -225,6 +264,9 @@ namespace Pulumi.Gcp.BigQuery
         /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
         /// * **iamMember:{principal}**: Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group. This is used for example for workload/workforce federated identities (principal, principalSet).
+        /// * **projectOwners**: A special identifier that represents the Owners of the project of the dataset.
+        /// * **projectReaders**: A special identifier that represents the Viewers of the project of the dataset.
+        /// * **projectWriters**: A special identifier that represents the Editors of the project of the dataset.
         /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
         /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
         /// </summary>
@@ -312,6 +354,9 @@ namespace Pulumi.Gcp.BigQuery
         /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
         /// * **iamMember:{principal}**: Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group. This is used for example for workload/workforce federated identities (principal, principalSet).
+        /// * **projectOwners**: A special identifier that represents the Owners of the project of the dataset.
+        /// * **projectReaders**: A special identifier that represents the Viewers of the project of the dataset.
+        /// * **projectWriters**: A special identifier that represents the Editors of the project of the dataset.
         /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
         /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
         /// </summary>
@@ -370,6 +415,9 @@ namespace Pulumi.Gcp.BigQuery
         /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
         /// * **iamMember:{principal}**: Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group. This is used for example for workload/workforce federated identities (principal, principalSet).
+        /// * **projectOwners**: A special identifier that represents the Owners of the project of the dataset.
+        /// * **projectReaders**: A special identifier that represents the Viewers of the project of the dataset.
+        /// * **projectWriters**: A special identifier that represents the Editors of the project of the dataset.
         /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
         /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
         /// </summary>

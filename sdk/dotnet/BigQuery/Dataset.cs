@@ -279,6 +279,34 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// ### Bigquery Dataset External Catalog Dataset Options
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var dataset = new Gcp.BigQuery.Dataset("dataset", new()
+    ///     {
+    ///         DatasetId = "example_dataset",
+    ///         FriendlyName = "test",
+    ///         Description = "This is a test description",
+    ///         Location = "US",
+    ///         ExternalCatalogDatasetOptions = new Gcp.BigQuery.Inputs.DatasetExternalCatalogDatasetOptionsArgs
+    ///         {
+    ///             Parameters = 
+    ///             {
+    ///                 { "dataset_owner", "test_dataset_owner" },
+    ///             },
+    ///             DefaultStorageLocationUri = "gs://test_dataset/tables",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -414,6 +442,14 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
+
+        /// <summary>
+        /// Options defining open source compatible datasets living in the BigQuery catalog. Contains
+        /// metadata of open source database, schema or namespace represented by the current dataset.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("externalCatalogDatasetOptions")]
+        public Output<Outputs.DatasetExternalCatalogDatasetOptions?> ExternalCatalogDatasetOptions { get; private set; } = null!;
 
         /// <summary>
         /// Information about the external metadata storage where the dataset is defined.
@@ -658,6 +694,14 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Options defining open source compatible datasets living in the BigQuery catalog. Contains
+        /// metadata of open source database, schema or namespace represented by the current dataset.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("externalCatalogDatasetOptions")]
+        public Input<Inputs.DatasetExternalCatalogDatasetOptionsArgs>? ExternalCatalogDatasetOptions { get; set; }
+
+        /// <summary>
         /// Information about the external metadata storage where the dataset is defined.
         /// Structure is documented below.
         /// </summary>
@@ -876,6 +920,14 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
+
+        /// <summary>
+        /// Options defining open source compatible datasets living in the BigQuery catalog. Contains
+        /// metadata of open source database, schema or namespace represented by the current dataset.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("externalCatalogDatasetOptions")]
+        public Input<Inputs.DatasetExternalCatalogDatasetOptionsGetArgs>? ExternalCatalogDatasetOptions { get; set; }
 
         /// <summary>
         /// Information about the external metadata storage where the dataset is defined.

@@ -16,16 +16,14 @@ public final class InstanceAutoscalingConfigAutoscalingLimitsArgs extends com.pu
     public static final InstanceAutoscalingConfigAutoscalingLimitsArgs Empty = new InstanceAutoscalingConfigAutoscalingLimitsArgs();
 
     /**
-     * Specifies maximum number of nodes allocated to the instance. If set, this number
-     * should be greater than or equal to min_nodes.
+     * The maximum number of nodes for this specific replica.
      * 
      */
     @Import(name="maxNodes")
     private @Nullable Output<Integer> maxNodes;
 
     /**
-     * @return Specifies maximum number of nodes allocated to the instance. If set, this number
-     * should be greater than or equal to min_nodes.
+     * @return The maximum number of nodes for this specific replica.
      * 
      */
     public Optional<Output<Integer>> maxNodes() {
@@ -52,16 +50,14 @@ public final class InstanceAutoscalingConfigAutoscalingLimitsArgs extends com.pu
     }
 
     /**
-     * Specifies number of nodes allocated to the instance. If set, this number
-     * should be greater than or equal to 1.
+     * The minimum number of nodes for this specific replica.
      * 
      */
     @Import(name="minNodes")
     private @Nullable Output<Integer> minNodes;
 
     /**
-     * @return Specifies number of nodes allocated to the instance. If set, this number
-     * should be greater than or equal to 1.
+     * @return The minimum number of nodes for this specific replica.
      * 
      */
     public Optional<Output<Integer>> minNodes() {
@@ -113,8 +109,7 @@ public final class InstanceAutoscalingConfigAutoscalingLimitsArgs extends com.pu
         }
 
         /**
-         * @param maxNodes Specifies maximum number of nodes allocated to the instance. If set, this number
-         * should be greater than or equal to min_nodes.
+         * @param maxNodes The maximum number of nodes for this specific replica.
          * 
          * @return builder
          * 
@@ -125,8 +120,7 @@ public final class InstanceAutoscalingConfigAutoscalingLimitsArgs extends com.pu
         }
 
         /**
-         * @param maxNodes Specifies maximum number of nodes allocated to the instance. If set, this number
-         * should be greater than or equal to min_nodes.
+         * @param maxNodes The maximum number of nodes for this specific replica.
          * 
          * @return builder
          * 
@@ -161,8 +155,7 @@ public final class InstanceAutoscalingConfigAutoscalingLimitsArgs extends com.pu
         }
 
         /**
-         * @param minNodes Specifies number of nodes allocated to the instance. If set, this number
-         * should be greater than or equal to 1.
+         * @param minNodes The minimum number of nodes for this specific replica.
          * 
          * @return builder
          * 
@@ -173,8 +166,7 @@ public final class InstanceAutoscalingConfigAutoscalingLimitsArgs extends com.pu
         }
 
         /**
-         * @param minNodes Specifies number of nodes allocated to the instance. If set, this number
-         * should be greater than or equal to 1.
+         * @param minNodes The minimum number of nodes for this specific replica.
          * 
          * @return builder
          * 

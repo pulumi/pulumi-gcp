@@ -76,16 +76,11 @@ namespace Pulumi.Gcp.Compute
     ///         Type = "CLOUD_ARMOR",
     ///     });
     /// 
-    ///     // A default rule is generated when creating the security_policy resource, import is needed to patch it
-    ///     // import {
-    ///     //   id = "projects//global/securityPolicies/policyruletest/priority/2147483647"
-    ///     //   to = google_compute_security_policy_rule.default_rule
-    ///     // }
     ///     var defaultRule = new Gcp.Compute.SecurityPolicyRule("default_rule", new()
     ///     {
     ///         SecurityPolicy = @default.Name,
     ///         Description = "default rule",
-    ///         Action = "allow",
+    ///         Action = "deny",
     ///         Priority = 2147483647,
     ///         Match = new Gcp.Compute.Inputs.SecurityPolicyRuleMatchArgs
     ///         {
@@ -228,6 +223,13 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("headerAction")]
+        public Output<Outputs.SecurityPolicyRuleHeaderAction?> HeaderAction { get; private set; } = null!;
+
+        /// <summary>
         /// A match condition that incoming traffic is evaluated against.
         /// If it evaluates to true, the corresponding 'action' is enforced.
         /// Structure is documented below.
@@ -270,6 +272,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("rateLimitOptions")]
         public Output<Outputs.SecurityPolicyRuleRateLimitOptions?> RateLimitOptions { get; private set; } = null!;
+
+        /// <summary>
+        /// Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("redirectOptions")]
+        public Output<Outputs.SecurityPolicyRuleRedirectOptions?> RedirectOptions { get; private set; } = null!;
 
         /// <summary>
         /// The name of the security policy this rule belongs to.
@@ -344,6 +353,13 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("headerAction")]
+        public Input<Inputs.SecurityPolicyRuleHeaderActionArgs>? HeaderAction { get; set; }
+
+        /// <summary>
         /// A match condition that incoming traffic is evaluated against.
         /// If it evaluates to true, the corresponding 'action' is enforced.
         /// Structure is documented below.
@@ -388,6 +404,13 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.SecurityPolicyRuleRateLimitOptionsArgs>? RateLimitOptions { get; set; }
 
         /// <summary>
+        /// Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("redirectOptions")]
+        public Input<Inputs.SecurityPolicyRuleRedirectOptionsArgs>? RedirectOptions { get; set; }
+
+        /// <summary>
         /// The name of the security policy this rule belongs to.
         /// 
         /// 
@@ -420,6 +443,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("headerAction")]
+        public Input<Inputs.SecurityPolicyRuleHeaderActionGetArgs>? HeaderAction { get; set; }
 
         /// <summary>
         /// A match condition that incoming traffic is evaluated against.
@@ -464,6 +494,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("rateLimitOptions")]
         public Input<Inputs.SecurityPolicyRuleRateLimitOptionsGetArgs>? RateLimitOptions { get; set; }
+
+        /// <summary>
+        /// Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("redirectOptions")]
+        public Input<Inputs.SecurityPolicyRuleRedirectOptionsGetArgs>? RedirectOptions { get; set; }
 
         /// <summary>
         /// The name of the security policy this rule belongs to.

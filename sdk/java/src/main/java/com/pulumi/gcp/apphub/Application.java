@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * ### Application Basic
+ * ### Apphub Application Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -60,7 +60,46 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Application Full
+ * ### Apphub Application Global Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.apphub.Application;
+ * import com.pulumi.gcp.apphub.ApplicationArgs;
+ * import com.pulumi.gcp.apphub.inputs.ApplicationScopeArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Application("example", ApplicationArgs.builder()
+ *             .location("global")
+ *             .applicationId("example-application")
+ *             .scope(ApplicationScopeArgs.builder()
+ *                 .type("GLOBAL")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Apphub Application Full
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>

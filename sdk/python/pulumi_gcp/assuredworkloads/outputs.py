@@ -22,6 +22,7 @@ __all__ = [
     'WorkloadResource',
     'WorkloadResourceSetting',
     'WorkloadSaaEnrollmentResponse',
+    'WorkloadWorkloadOptions',
 ]
 
 @pulumi.output_type
@@ -412,5 +413,41 @@ class WorkloadSaaEnrollmentResponse(dict):
         Indicates SAA enrollment status of a given workload. Possible values: SETUP_STATE_UNSPECIFIED, STATUS_PENDING, STATUS_COMPLETE
         """
         return pulumi.get(self, "setup_status")
+
+
+@pulumi.output_type
+class WorkloadWorkloadOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kajEnrollmentType":
+            suggest = "kaj_enrollment_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkloadWorkloadOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkloadWorkloadOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkloadWorkloadOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kaj_enrollment_type: Optional[str] = None):
+        """
+        :param str kaj_enrollment_type: Indicates type of KAJ enrollment for the workload. Currently, only specifiying KEY_ACCESS_TRANSPARENCY_OFF is implemented to not enroll in KAT-level KAJ enrollment for Regional Controls workloads. Possible values: KAJ_ENROLLMENT_TYPE_UNSPECIFIED, FULL_KAJ, EKM_ONLY, KEY_ACCESS_TRANSPARENCY_OFF
+        """
+        if kaj_enrollment_type is not None:
+            pulumi.set(__self__, "kaj_enrollment_type", kaj_enrollment_type)
+
+    @property
+    @pulumi.getter(name="kajEnrollmentType")
+    def kaj_enrollment_type(self) -> Optional[str]:
+        """
+        Indicates type of KAJ enrollment for the workload. Currently, only specifiying KEY_ACCESS_TRANSPARENCY_OFF is implemented to not enroll in KAT-level KAJ enrollment for Regional Controls workloads. Possible values: KAJ_ENROLLMENT_TYPE_UNSPECIFIED, FULL_KAJ, EKM_ONLY, KEY_ACCESS_TRANSPARENCY_OFF
+        """
+        return pulumi.get(self, "kaj_enrollment_type")
 
 

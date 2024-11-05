@@ -26,13 +26,13 @@ namespace Pulumi.Gcp.GkeHub.Outputs
         /// </summary>
         public readonly string? MetricsGcpServiceAccountEmail;
         /// <summary>
-        /// (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+        /// (Optional) Supported from Config Sync versions 1.12.0 onwards. Structure is documented below.
         /// 
         /// Use either `git` or `oci` config option.
         /// </summary>
         public readonly Outputs.FeatureMembershipConfigmanagementConfigSyncOci? Oci;
         /// <summary>
-        /// Supported from ACM versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
+        /// Supported from Config Sync versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
         /// </summary>
         public readonly bool? PreventDrift;
         /// <summary>

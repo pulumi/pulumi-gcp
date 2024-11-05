@@ -56,9 +56,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.ComputeFunctions;
+ * import com.pulumi.gcp.compute.inputs.GetImageArgs;
+ * import com.pulumi.gcp.compute.Disk;
+ * import com.pulumi.gcp.compute.DiskArgs;
  * import com.pulumi.gcp.compute.Image;
  * import com.pulumi.gcp.compute.ImageArgs;
- * import com.pulumi.gcp.compute.inputs.ImageRawDiskArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -72,11 +75,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var debian = ComputeFunctions.getImage(GetImageArgs.builder()
+ *             .family("debian-12")
+ *             .project("debian-cloud")
+ *             .build());
+ * 
+ *         var persistent = new Disk("persistent", DiskArgs.builder()
+ *             .name("example-disk")
+ *             .image(debian.applyValue(getImageResult -> getImageResult.selfLink()))
+ *             .size(10)
+ *             .type("pd-ssd")
+ *             .zone("us-central1-a")
+ *             .build());
+ * 
  *         var example = new Image("example", ImageArgs.builder()
  *             .name("example-image")
- *             .rawDisk(ImageRawDiskArgs.builder()
- *                 .source("https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz")
- *                 .build())
+ *             .sourceDisk(persistent.id())
  *             .build());
  * 
  *     }
@@ -94,9 +108,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.ComputeFunctions;
+ * import com.pulumi.gcp.compute.inputs.GetImageArgs;
+ * import com.pulumi.gcp.compute.Disk;
+ * import com.pulumi.gcp.compute.DiskArgs;
  * import com.pulumi.gcp.compute.Image;
  * import com.pulumi.gcp.compute.ImageArgs;
- * import com.pulumi.gcp.compute.inputs.ImageRawDiskArgs;
  * import com.pulumi.gcp.compute.inputs.ImageGuestOsFeatureArgs;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -111,17 +128,37 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var debian = ComputeFunctions.getImage(GetImageArgs.builder()
+ *             .family("debian-12")
+ *             .project("debian-cloud")
+ *             .build());
+ * 
+ *         var persistent = new Disk("persistent", DiskArgs.builder()
+ *             .name("example-disk")
+ *             .image(debian.applyValue(getImageResult -> getImageResult.selfLink()))
+ *             .size(10)
+ *             .type("pd-ssd")
+ *             .zone("us-central1-a")
+ *             .build());
+ * 
  *         var example = new Image("example", ImageArgs.builder()
  *             .name("example-image")
- *             .rawDisk(ImageRawDiskArgs.builder()
- *                 .source("https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz")
- *                 .build())
+ *             .sourceDisk(persistent.id())
  *             .guestOsFeatures(            
  *                 ImageGuestOsFeatureArgs.builder()
- *                     .type("SECURE_BOOT")
+ *                     .type("UEFI_COMPATIBLE")
  *                     .build(),
  *                 ImageGuestOsFeatureArgs.builder()
- *                     .type("MULTI_IP_SUBNET")
+ *                     .type("VIRTIO_SCSI_MULTIQUEUE")
+ *                     .build(),
+ *                 ImageGuestOsFeatureArgs.builder()
+ *                     .type("GVNIC")
+ *                     .build(),
+ *                 ImageGuestOsFeatureArgs.builder()
+ *                     .type("SEV_CAPABLE")
+ *                     .build(),
+ *                 ImageGuestOsFeatureArgs.builder()
+ *                     .type("SEV_LIVE_MIGRATABLE_V2")
  *                     .build())
  *             .build());
  * 
@@ -140,9 +177,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.ComputeFunctions;
+ * import com.pulumi.gcp.compute.inputs.GetImageArgs;
+ * import com.pulumi.gcp.compute.Disk;
+ * import com.pulumi.gcp.compute.DiskArgs;
  * import com.pulumi.gcp.compute.Image;
  * import com.pulumi.gcp.compute.ImageArgs;
- * import com.pulumi.gcp.compute.inputs.ImageRawDiskArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -156,11 +196,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var debian = ComputeFunctions.getImage(GetImageArgs.builder()
+ *             .family("debian-12")
+ *             .project("debian-cloud")
+ *             .build());
+ * 
+ *         var persistent = new Disk("persistent", DiskArgs.builder()
+ *             .name("example-disk")
+ *             .image(debian.applyValue(getImageResult -> getImageResult.selfLink()))
+ *             .size(10)
+ *             .type("pd-ssd")
+ *             .zone("us-central1-a")
+ *             .build());
+ * 
  *         var example = new Image("example", ImageArgs.builder()
  *             .name("example-sl-image")
- *             .rawDisk(ImageRawDiskArgs.builder()
- *                 .source("https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz")
- *                 .build())
+ *             .sourceDisk(persistent.id())
  *             .storageLocations("us-central1")
  *             .build());
  * 

@@ -245,6 +245,11 @@ export const getInstanceGroupManager: typeof import("./getInstanceGroupManager")
 export const getInstanceGroupManagerOutput: typeof import("./getInstanceGroupManager").getInstanceGroupManagerOutput = null as any;
 utilities.lazyLoad(exports, ["getInstanceGroupManager","getInstanceGroupManagerOutput"], () => require("./getInstanceGroupManager"));
 
+export { GetInstanceGuestAttributesArgs, GetInstanceGuestAttributesResult, GetInstanceGuestAttributesOutputArgs } from "./getInstanceGuestAttributes";
+export const getInstanceGuestAttributes: typeof import("./getInstanceGuestAttributes").getInstanceGuestAttributes = null as any;
+export const getInstanceGuestAttributesOutput: typeof import("./getInstanceGuestAttributes").getInstanceGuestAttributesOutput = null as any;
+utilities.lazyLoad(exports, ["getInstanceGuestAttributes","getInstanceGuestAttributesOutput"], () => require("./getInstanceGuestAttributes"));
+
 export { GetInstanceIamPolicyArgs, GetInstanceIamPolicyResult, GetInstanceIamPolicyOutputArgs } from "./getInstanceIamPolicy";
 export const getInstanceIamPolicy: typeof import("./getInstanceIamPolicy").getInstanceIamPolicy = null as any;
 export const getInstanceIamPolicyOutput: typeof import("./getInstanceIamPolicy").getInstanceIamPolicyOutput = null as any;

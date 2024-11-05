@@ -306,8 +306,7 @@ class BucketHierarchicalNamespace(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
-        :param bool enabled: Enable hierarchical namespace for the bucket. 
-               To use this flag, you must also use --uniform-bucket-level-access
+        :param bool enabled: Enables hierarchical namespace for the bucket.
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -315,8 +314,7 @@ class BucketHierarchicalNamespace(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Enable hierarchical namespace for the bucket. 
-        To use this flag, you must also use --uniform-bucket-level-access
+        Enables hierarchical namespace for the bucket.
         """
         return pulumi.get(self, "enabled")
 
@@ -2865,7 +2863,7 @@ class GetBucketHierarchicalNamespaceResult(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
-        :param bool enabled: Set this enabled flag to true when folders with logical files structure. Default value is false.
+        :param bool enabled: Set this field true to organize bucket with logical file system structure.
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -2873,7 +2871,7 @@ class GetBucketHierarchicalNamespaceResult(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Set this enabled flag to true when folders with logical files structure. Default value is false.
+        Set this field true to organize bucket with logical file system structure.
         """
         return pulumi.get(self, "enabled")
 

@@ -159,7 +159,7 @@ import javax.annotation.Nullable;
  *                             .build())
  *                     .build())
  *                 .build())
- *             .deletionProtection("true")
+ *             .deletionProtection(true)
  *             .build());
  * 
  *         var db = new Database("db", DatabaseArgs.builder()
@@ -308,7 +308,7 @@ import javax.annotation.Nullable;
  *                             .build())
  *                     .build())
  *                 .build())
- *             .deletionProtection("true")
+ *             .deletionProtection(true)
  *             .build());
  * 
  *         var db = new Database("db", DatabaseArgs.builder()
@@ -383,7 +383,7 @@ import javax.annotation.Nullable;
  *             .databaseVersion("SQLSERVER_2019_STANDARD")
  *             .region("us-central1")
  *             .rootPassword("root-password")
- *             .deletionProtection("true")
+ *             .deletionProtection(true)
  *             .settings(DatabaseInstanceSettingsArgs.builder()
  *                 .tier("db-custom-2-4096")
  *                 .ipConfiguration(DatabaseInstanceSettingsIpConfigurationArgs.builder()

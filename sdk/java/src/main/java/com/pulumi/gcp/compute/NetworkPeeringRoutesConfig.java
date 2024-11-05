@@ -166,7 +166,7 @@ import javax.annotation.Nullable;
  *                 .clusterSecondaryRangeName(containerSubnetwork.secondaryIpRanges().applyValue(secondaryIpRanges -> secondaryIpRanges[0].rangeName()))
  *                 .servicesSecondaryRangeName(containerSubnetwork.secondaryIpRanges().applyValue(secondaryIpRanges -> secondaryIpRanges[1].rangeName()))
  *                 .build())
- *             .deletionProtection("true")
+ *             .deletionProtection(true)
  *             .build());
  * 
  *         var peeringGkeRoutes = new NetworkPeeringRoutesConfig("peeringGkeRoutes", NetworkPeeringRoutesConfigArgs.builder()

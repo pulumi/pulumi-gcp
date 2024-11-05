@@ -137,7 +137,7 @@ type InstanceDiscoveryEndpoint struct {
 	// projects/{project_id}/global/networks/{network_id}.
 	Network *string `pulumi:"network"`
 	// (Output)
-	// Output only. The port number of the exposed endpoint.
+	// Output only. Ports of the exposed endpoint.
 	Port *int `pulumi:"port"`
 }
 
@@ -161,7 +161,7 @@ type InstanceDiscoveryEndpointArgs struct {
 	// projects/{project_id}/global/networks/{network_id}.
 	Network pulumi.StringPtrInput `pulumi:"network"`
 	// (Output)
-	// Output only. The port number of the exposed endpoint.
+	// Output only. Ports of the exposed endpoint.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 }
 
@@ -230,7 +230,7 @@ func (o InstanceDiscoveryEndpointOutput) Network() pulumi.StringPtrOutput {
 }
 
 // (Output)
-// Output only. The port number of the exposed endpoint.
+// Output only. Ports of the exposed endpoint.
 func (o InstanceDiscoveryEndpointOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceDiscoveryEndpoint) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -897,6 +897,13 @@ func (o InstancePersistenceConfigRdbConfigPtrOutput) RdbSnapshotStartTime() pulu
 
 type InstancePscAutoConnection struct {
 	// (Output)
+	// Output Only. Type of a PSC Connection.
+	// Possible values:
+	// CONNECTION_TYPE_DISCOVERY
+	// CONNECTION_TYPE_PRIMARY
+	// CONNECTION_TYPE_READER
+	ConnectionType *string `pulumi:"connectionType"`
+	// (Output)
 	// Output only. The URI of the consumer side forwarding rule.
 	// Format:
 	// projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
@@ -909,12 +916,24 @@ type InstancePscAutoConnection struct {
 	// projects/{project_id}/global/networks/{network_id}.
 	Network *string `pulumi:"network"`
 	// (Output)
+	// Output only. Ports of the exposed endpoint.
+	Port *int `pulumi:"port"`
+	// (Output)
 	// Output only. The consumer projectId where the forwarding rule is created from.
 	ProjectId *string `pulumi:"projectId"`
 	// (Output)
 	// Output only. The PSC connection id of the forwarding rule connected to the
 	// service attachment.
 	PscConnectionId *string `pulumi:"pscConnectionId"`
+	// (Output)
+	// Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists.
+	// Possible values:
+	// ACTIVE
+	// NOT_FOUND
+	PscConnectionStatus *string `pulumi:"pscConnectionStatus"`
+	// (Output)
+	// Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+	ServiceAttachment *string `pulumi:"serviceAttachment"`
 }
 
 // InstancePscAutoConnectionInput is an input type that accepts InstancePscAutoConnectionArgs and InstancePscAutoConnectionOutput values.
@@ -930,6 +949,13 @@ type InstancePscAutoConnectionInput interface {
 
 type InstancePscAutoConnectionArgs struct {
 	// (Output)
+	// Output Only. Type of a PSC Connection.
+	// Possible values:
+	// CONNECTION_TYPE_DISCOVERY
+	// CONNECTION_TYPE_PRIMARY
+	// CONNECTION_TYPE_READER
+	ConnectionType pulumi.StringPtrInput `pulumi:"connectionType"`
+	// (Output)
 	// Output only. The URI of the consumer side forwarding rule.
 	// Format:
 	// projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
@@ -942,12 +968,24 @@ type InstancePscAutoConnectionArgs struct {
 	// projects/{project_id}/global/networks/{network_id}.
 	Network pulumi.StringPtrInput `pulumi:"network"`
 	// (Output)
+	// Output only. Ports of the exposed endpoint.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// (Output)
 	// Output only. The consumer projectId where the forwarding rule is created from.
 	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 	// (Output)
 	// Output only. The PSC connection id of the forwarding rule connected to the
 	// service attachment.
 	PscConnectionId pulumi.StringPtrInput `pulumi:"pscConnectionId"`
+	// (Output)
+	// Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists.
+	// Possible values:
+	// ACTIVE
+	// NOT_FOUND
+	PscConnectionStatus pulumi.StringPtrInput `pulumi:"pscConnectionStatus"`
+	// (Output)
+	// Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+	ServiceAttachment pulumi.StringPtrInput `pulumi:"serviceAttachment"`
 }
 
 func (InstancePscAutoConnectionArgs) ElementType() reflect.Type {
@@ -1002,6 +1040,16 @@ func (o InstancePscAutoConnectionOutput) ToInstancePscAutoConnectionOutputWithCo
 }
 
 // (Output)
+// Output Only. Type of a PSC Connection.
+// Possible values:
+// CONNECTION_TYPE_DISCOVERY
+// CONNECTION_TYPE_PRIMARY
+// CONNECTION_TYPE_READER
+func (o InstancePscAutoConnectionOutput) ConnectionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstancePscAutoConnection) *string { return v.ConnectionType }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
 // Output only. The URI of the consumer side forwarding rule.
 // Format:
 // projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
@@ -1023,6 +1071,12 @@ func (o InstancePscAutoConnectionOutput) Network() pulumi.StringPtrOutput {
 }
 
 // (Output)
+// Output only. Ports of the exposed endpoint.
+func (o InstancePscAutoConnectionOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstancePscAutoConnection) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
 // Output only. The consumer projectId where the forwarding rule is created from.
 func (o InstancePscAutoConnectionOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstancePscAutoConnection) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
@@ -1033,6 +1087,21 @@ func (o InstancePscAutoConnectionOutput) ProjectId() pulumi.StringPtrOutput {
 // service attachment.
 func (o InstancePscAutoConnectionOutput) PscConnectionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstancePscAutoConnection) *string { return v.PscConnectionId }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists.
+// Possible values:
+// ACTIVE
+// NOT_FOUND
+func (o InstancePscAutoConnectionOutput) PscConnectionStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstancePscAutoConnection) *string { return v.PscConnectionStatus }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+func (o InstancePscAutoConnectionOutput) ServiceAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstancePscAutoConnection) *string { return v.ServiceAttachment }).(pulumi.StringPtrOutput)
 }
 
 type InstancePscAutoConnectionArrayOutput struct{ *pulumi.OutputState }

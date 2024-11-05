@@ -46,7 +46,7 @@ namespace Pulumi.Gcp.GkeBackup
     ///                 Enabled = true,
     ///             },
     ///         },
-    ///         DeletionProtection = "",
+    ///         DeletionProtection = true,
     ///         Network = "default",
     ///         Subnetwork = "default",
     ///     });
@@ -111,7 +111,7 @@ namespace Pulumi.Gcp.GkeBackup
     ///                 Enabled = true,
     ///             },
     ///         },
-    ///         DeletionProtection = "",
+    ///         DeletionProtection = true,
     ///         Network = "default",
     ///         Subnetwork = "default",
     ///     });
@@ -194,7 +194,7 @@ namespace Pulumi.Gcp.GkeBackup
     ///                 Enabled = true,
     ///             },
     ///         },
-    ///         DeletionProtection = "",
+    ///         DeletionProtection = true,
     ///         Network = "default",
     ///         Subnetwork = "default",
     ///     });
@@ -268,7 +268,7 @@ namespace Pulumi.Gcp.GkeBackup
     ///                 Enabled = true,
     ///             },
     ///         },
-    ///         DeletionProtection = "",
+    ///         DeletionProtection = true,
     ///         Network = "default",
     ///         Subnetwork = "default",
     ///     });
@@ -332,7 +332,7 @@ namespace Pulumi.Gcp.GkeBackup
     ///                 Enabled = true,
     ///             },
     ///         },
-    ///         DeletionProtection = "",
+    ///         DeletionProtection = true,
     ///         Network = "default",
     ///         Subnetwork = "default",
     ///     });
@@ -449,7 +449,7 @@ namespace Pulumi.Gcp.GkeBackup
     ///                 Enabled = true,
     ///             },
     ///         },
-    ///         DeletionProtection = "",
+    ///         DeletionProtection = true,
     ///         Network = "default",
     ///         Subnetwork = "default",
     ///     });
@@ -560,7 +560,7 @@ namespace Pulumi.Gcp.GkeBackup
     ///                 Enabled = true,
     ///             },
     ///         },
-    ///         DeletionProtection = "",
+    ///         DeletionProtection = true,
     ///         Network = "default",
     ///         Subnetwork = "default",
     ///     });
@@ -625,7 +625,7 @@ namespace Pulumi.Gcp.GkeBackup
     ///                 Enabled = true,
     ///             },
     ///         },
-    ///         DeletionProtection = "",
+    ///         DeletionProtection = true,
     ///         Network = "default",
     ///         Subnetwork = "default",
     ///     });
@@ -722,7 +722,7 @@ namespace Pulumi.Gcp.GkeBackup
     ///                 Enabled = true,
     ///             },
     ///         },
-    ///         DeletionProtection = "",
+    ///         DeletionProtection = true,
     ///         Network = "default",
     ///         Subnetwork = "default",
     ///     });

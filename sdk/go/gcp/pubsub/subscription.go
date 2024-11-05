@@ -203,7 +203,6 @@ import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigquery"
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/projects"
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/pubsub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -217,26 +216,6 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			viewer, err := projects.NewIAMMember(ctx, "viewer", &projects.IAMMemberArgs{
-//				Project: pulumi.String(project.ProjectId),
-//				Role:    pulumi.String("roles/bigquery.metadataViewer"),
-//				Member:  pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-pubsub.iam.gserviceaccount.com", project.Number),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			editor, err := projects.NewIAMMember(ctx, "editor", &projects.IAMMemberArgs{
-//				Project: pulumi.String(project.ProjectId),
-//				Role:    pulumi.String("roles/bigquery.dataEditor"),
-//				Member:  pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-pubsub.iam.gserviceaccount.com", project.Number),
-//			})
-//			if err != nil {
-//				return err
-//			}
 //			test, err := bigquery.NewDataset(ctx, "test", &bigquery.DatasetArgs{
 //				DatasetId: pulumi.String("example_dataset"),
 //			})
@@ -244,9 +223,8 @@ import (
 //				return err
 //			}
 //			testTable, err := bigquery.NewTable(ctx, "test", &bigquery.TableArgs{
-//				DeletionProtection: pulumi.Bool(false),
-//				TableId:            pulumi.String("example_table"),
-//				DatasetId:          test.DatasetId,
+//				TableId:   pulumi.String("example_table"),
+//				DatasetId: test.DatasetId,
 //				Schema: pulumi.String(`[
 //	  {
 //	    "name": "data",
@@ -258,6 +236,7 @@ import (
 // ]
 // `),
 //
+//				DeletionProtection: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
@@ -273,10 +252,11 @@ import (
 //						return fmt.Sprintf("%v.%v.%v", project, datasetId, tableId), nil
 //					}).(pulumi.StringOutput),
 //				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				viewer,
-//				editor,
-//			}))
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -296,7 +276,6 @@ import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigquery"
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/projects"
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/pubsub"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -310,26 +289,6 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			viewer, err := projects.NewIAMMember(ctx, "viewer", &projects.IAMMemberArgs{
-//				Project: pulumi.String(project.ProjectId),
-//				Role:    pulumi.String("roles/bigquery.metadataViewer"),
-//				Member:  pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-pubsub.iam.gserviceaccount.com", project.Number),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			editor, err := projects.NewIAMMember(ctx, "editor", &projects.IAMMemberArgs{
-//				Project: pulumi.String(project.ProjectId),
-//				Role:    pulumi.String("roles/bigquery.dataEditor"),
-//				Member:  pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-pubsub.iam.gserviceaccount.com", project.Number),
-//			})
-//			if err != nil {
-//				return err
-//			}
 //			test, err := bigquery.NewDataset(ctx, "test", &bigquery.DatasetArgs{
 //				DatasetId: pulumi.String("example_dataset"),
 //			})
@@ -337,9 +296,8 @@ import (
 //				return err
 //			}
 //			testTable, err := bigquery.NewTable(ctx, "test", &bigquery.TableArgs{
-//				DeletionProtection: pulumi.Bool(false),
-//				TableId:            pulumi.String("example_table"),
-//				DatasetId:          test.DatasetId,
+//				TableId:   pulumi.String("example_table"),
+//				DatasetId: test.DatasetId,
 //				Schema: pulumi.String(`[
 //	  {
 //	    "name": "data",
@@ -351,6 +309,7 @@ import (
 // ]
 // `),
 //
+//				DeletionProtection: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
@@ -367,10 +326,11 @@ import (
 //					}).(pulumi.StringOutput),
 //					UseTableSchema: pulumi.Bool(true),
 //				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				viewer,
-//				editor,
-//			}))
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

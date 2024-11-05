@@ -38,7 +38,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.servicenetworking.ConnectionArgs;
  * import com.pulumi.gcp.backupdisasterrecovery.ManagementServer;
  * import com.pulumi.gcp.backupdisasterrecovery.ManagementServerArgs;
- * import com.pulumi.gcp.backupdisasterrecovery.inputs.ManagementServerNetworkArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -75,10 +74,6 @@ import javax.annotation.Nullable;
  *             .location("us-central1")
  *             .name("ms-console")
  *             .type("BACKUP_RESTORE")
- *             .networks(ManagementServerNetworkArgs.builder()
- *                 .network(default_.id())
- *                 .peeringMode("PRIVATE_SERVICE_ACCESS")
- *                 .build())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(defaultConnection)
  *                 .build());
@@ -149,12 +144,16 @@ public class ManagementServer extends com.pulumi.resources.CustomResource {
     /**
      * The name of management server (management console)
      * 
+     * ***
+     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return The name of management server (management console)
+     * 
+     * ***
      * 
      */
     public Output<String> name() {
@@ -166,15 +165,15 @@ public class ManagementServer extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="networks", refs={List.class,ManagementServerNetwork.class}, tree="[0,1]")
-    private Output<List<ManagementServerNetwork>> networks;
+    private Output</* @Nullable */ List<ManagementServerNetwork>> networks;
 
     /**
      * @return Network details to create management server (management console).
      * Structure is documented below.
      * 
      */
-    public Output<List<ManagementServerNetwork>> networks() {
-        return this.networks;
+    public Output<Optional<List<ManagementServerNetwork>>> networks() {
+        return Codegen.optional(this.networks);
     }
     /**
      * The oauth2ClientId of management console.
@@ -190,21 +189,35 @@ public class ManagementServer extends com.pulumi.resources.CustomResource {
     public Output<String> oauth2ClientId() {
         return this.oauth2ClientId;
     }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * The type of management server (management console). Default value: &#34;BACKUP_RESTORE&#34; Possible values: [&#34;BACKUP_RESTORE&#34;]
+     * The type of management server (management console).
+     * Default value is `BACKUP_RESTORE`.
+     * Possible values are: `BACKUP_RESTORE`.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**
-     * @return The type of management server (management console). Default value: &#34;BACKUP_RESTORE&#34; Possible values: [&#34;BACKUP_RESTORE&#34;]
+     * @return The type of management server (management console).
+     * Default value is `BACKUP_RESTORE`.
+     * Possible values are: `BACKUP_RESTORE`.
      * 
      */
     public Output<Optional<String>> type() {

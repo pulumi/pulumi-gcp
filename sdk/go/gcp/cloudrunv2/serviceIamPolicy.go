@@ -289,7 +289,7 @@ import (
 // $ pulumi import gcp:cloudrunv2/serviceIamPolicy:ServiceIamPolicy editor projects/{{project}}/locations/{{location}}/services/{{service}}
 // ```
 //
-// -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+// -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 //
 //	full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type ServiceIamPolicy struct {

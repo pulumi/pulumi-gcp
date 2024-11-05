@@ -850,7 +850,8 @@ type ApplicationScope struct {
 	// Required. Scope Type.
 	// Possible values:
 	// REGIONAL
-	// Possible values are: `REGIONAL`.
+	// GLOBAL
+	// Possible values are: `REGIONAL`, `GLOBAL`.
 	//
 	// ***
 	Type string `pulumi:"type"`
@@ -871,7 +872,8 @@ type ApplicationScopeArgs struct {
 	// Required. Scope Type.
 	// Possible values:
 	// REGIONAL
-	// Possible values are: `REGIONAL`.
+	// GLOBAL
+	// Possible values are: `REGIONAL`, `GLOBAL`.
 	//
 	// ***
 	Type pulumi.StringInput `pulumi:"type"`
@@ -957,7 +959,8 @@ func (o ApplicationScopeOutput) ToApplicationScopePtrOutputWithContext(ctx conte
 // Required. Scope Type.
 // Possible values:
 // REGIONAL
-// Possible values are: `REGIONAL`.
+// GLOBAL
+// Possible values are: `REGIONAL`, `GLOBAL`.
 //
 // ***
 func (o ApplicationScopeOutput) Type() pulumi.StringOutput {
@@ -991,7 +994,8 @@ func (o ApplicationScopePtrOutput) Elem() ApplicationScopeOutput {
 // Required. Scope Type.
 // Possible values:
 // REGIONAL
-// Possible values are: `REGIONAL`.
+// GLOBAL
+// Possible values are: `REGIONAL`, `GLOBAL`.
 //
 // ***
 func (o ApplicationScopePtrOutput) Type() pulumi.StringPtrOutput {
@@ -3762,7 +3766,8 @@ func (o GetApplicationAttributeOperatorOwnerArrayOutput) Index(i pulumi.IntInput
 type GetApplicationScope struct {
 	// Required. Scope Type.
 	//  Possible values:
-	// REGIONAL Possible values: ["REGIONAL"]
+	// REGIONAL
+	// GLOBAL Possible values: ["REGIONAL", "GLOBAL"]
 	Type string `pulumi:"type"`
 }
 
@@ -3780,7 +3785,8 @@ type GetApplicationScopeInput interface {
 type GetApplicationScopeArgs struct {
 	// Required. Scope Type.
 	//  Possible values:
-	// REGIONAL Possible values: ["REGIONAL"]
+	// REGIONAL
+	// GLOBAL Possible values: ["REGIONAL", "GLOBAL"]
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -3839,7 +3845,8 @@ func (o GetApplicationScopeOutput) ToGetApplicationScopeOutputWithContext(ctx co
 //
 //	Possible values:
 //
-// REGIONAL Possible values: ["REGIONAL"]
+// REGIONAL
+// GLOBAL Possible values: ["REGIONAL", "GLOBAL"]
 func (o GetApplicationScopeOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationScope) string { return v.Type }).(pulumi.StringOutput)
 }

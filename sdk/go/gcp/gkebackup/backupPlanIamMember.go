@@ -289,7 +289,7 @@ import (
 // $ pulumi import gcp:gkebackup/backupPlanIamMember:BackupPlanIamMember editor projects/{{project}}/locations/{{location}}/backupPlans/{{backup_plan}}
 // ```
 //
-// -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+// -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 //
 //	full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type BackupPlanIamMember struct {

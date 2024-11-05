@@ -1220,7 +1220,7 @@ class URLMap(pulumi.CustomResource):
             default_custom_error_response_policy={
                 "error_response_rules": [{
                     "match_response_codes": ["5xx"],
-                    "path": "/*",
+                    "path": "/internal_error.html",
                     "override_response_code": 502,
                 }],
                 "error_service": error.id,
@@ -1239,24 +1239,24 @@ class URLMap(pulumi.CustomResource):
                                 "4xx",
                                 "5xx",
                             ],
-                            "path": "/login",
+                            "path": "/login_error.html",
                             "override_response_code": 404,
                         },
                         {
                             "match_response_codes": ["503"],
-                            "path": "/example",
+                            "path": "/bad_gateway.html",
                             "override_response_code": 502,
                         },
                     ],
                     "error_service": error.id,
                 },
                 "path_rules": [{
-                    "paths": ["/*"],
+                    "paths": ["/private/*"],
                     "service": example.id,
                     "custom_error_response_policy": {
                         "error_response_rules": [{
                             "match_response_codes": ["4xx"],
-                            "path": "/register",
+                            "path": "/login.html",
                             "override_response_code": 401,
                         }],
                         "error_service": error.id,
@@ -1958,7 +1958,7 @@ class URLMap(pulumi.CustomResource):
             default_custom_error_response_policy={
                 "error_response_rules": [{
                     "match_response_codes": ["5xx"],
-                    "path": "/*",
+                    "path": "/internal_error.html",
                     "override_response_code": 502,
                 }],
                 "error_service": error.id,
@@ -1977,24 +1977,24 @@ class URLMap(pulumi.CustomResource):
                                 "4xx",
                                 "5xx",
                             ],
-                            "path": "/login",
+                            "path": "/login_error.html",
                             "override_response_code": 404,
                         },
                         {
                             "match_response_codes": ["503"],
-                            "path": "/example",
+                            "path": "/bad_gateway.html",
                             "override_response_code": 502,
                         },
                     ],
                     "error_service": error.id,
                 },
                 "path_rules": [{
-                    "paths": ["/*"],
+                    "paths": ["/private/*"],
                     "service": example.id,
                     "custom_error_response_policy": {
                         "error_response_rules": [{
                             "match_response_codes": ["4xx"],
-                            "path": "/register",
+                            "path": "/login.html",
                             "override_response_code": 401,
                         }],
                         "error_service": error.id,

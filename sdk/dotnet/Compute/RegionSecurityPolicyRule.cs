@@ -116,6 +116,67 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Region Security Policy Rule Default Rule
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.RegionSecurityPolicy("default", new()
+    ///     {
+    ///         Region = "us-west2",
+    ///         Name = "policywithdefaultrule",
+    ///         Description = "basic region security policy",
+    ///         Type = "CLOUD_ARMOR",
+    ///     });
+    /// 
+    ///     var defaultRule = new Gcp.Compute.RegionSecurityPolicyRule("default_rule", new()
+    ///     {
+    ///         Region = "us-west2",
+    ///         SecurityPolicy = @default.Name,
+    ///         Description = "new rule",
+    ///         Action = "deny",
+    ///         Priority = 2147483647,
+    ///         Match = new Gcp.Compute.Inputs.RegionSecurityPolicyRuleMatchArgs
+    ///         {
+    ///             VersionedExpr = "SRC_IPS_V1",
+    ///             Config = new Gcp.Compute.Inputs.RegionSecurityPolicyRuleMatchConfigArgs
+    ///             {
+    ///                 SrcIpRanges = new[]
+    ///                 {
+    ///                     "*",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var policyRule = new Gcp.Compute.RegionSecurityPolicyRule("policy_rule", new()
+    ///     {
+    ///         Region = "us-west2",
+    ///         SecurityPolicy = @default.Name,
+    ///         Description = "new rule",
+    ///         Priority = 100,
+    ///         Match = new Gcp.Compute.Inputs.RegionSecurityPolicyRuleMatchArgs
+    ///         {
+    ///             VersionedExpr = "SRC_IPS_V1",
+    ///             Config = new Gcp.Compute.Inputs.RegionSecurityPolicyRuleMatchConfigArgs
+    ///             {
+    ///                 SrcIpRanges = new[]
+    ///                 {
+    ///                     "10.10.0.0/16",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Action = "allow",
+    ///         Preview = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Region Security Policy Rule With Preconfigured Waf Config
     /// 
     /// ```csharp

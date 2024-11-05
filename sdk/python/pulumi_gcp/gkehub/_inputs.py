@@ -258,7 +258,7 @@ if not MYPY:
         """
         version: NotRequired[pulumi.Input[str]]
         """
-        Version of ACM installed
+        Version of Config Sync installed
         """
 elif False:
     FeatureFleetDefaultMemberConfigConfigmanagementArgsDict: TypeAlias = Mapping[str, Any]
@@ -274,7 +274,7 @@ class FeatureFleetDefaultMemberConfigConfigmanagementArgs:
                Structure is documented below.
         :param pulumi.Input[str] management: Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
                Possible values are: `MANAGEMENT_UNSPECIFIED`, `MANAGEMENT_AUTOMATIC`, `MANAGEMENT_MANUAL`.
-        :param pulumi.Input[str] version: Version of ACM installed
+        :param pulumi.Input[str] version: Version of Config Sync installed
         """
         if config_sync is not None:
             pulumi.set(__self__, "config_sync", config_sync)
@@ -313,7 +313,7 @@ class FeatureFleetDefaultMemberConfigConfigmanagementArgs:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
         """
-        Version of ACM installed
+        Version of Config Sync installed
         """
         return pulumi.get(self, "version")
 
@@ -636,9 +636,9 @@ if not MYPY:
         version: NotRequired[pulumi.Input[str]]
         """
         (Optional, Deprecated)
-        Version of ACM installed
+        Version of Config Sync installed
 
-        > **Warning:** The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.
+        > **Warning:** The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of Config Sync installed instead.
         """
 elif False:
     FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgsDict: TypeAlias = Mapping[str, Any]
@@ -659,9 +659,9 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs:
         :param pulumi.Input[str] sync_repo: The OCI image repository URL for the package to sync from
         :param pulumi.Input[str] sync_wait_secs: Period in seconds between consecutive syncs. Default: 15
         :param pulumi.Input[str] version: (Optional, Deprecated)
-               Version of ACM installed
+               Version of Config Sync installed
                
-               > **Warning:** The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.
+               > **Warning:** The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of Config Sync installed instead.
         """
         pulumi.set(__self__, "secret_type", secret_type)
         if gcp_service_account_email is not None:
@@ -673,8 +673,8 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs:
         if sync_wait_secs is not None:
             pulumi.set(__self__, "sync_wait_secs", sync_wait_secs)
         if version is not None:
-            warnings.warn("""The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.""", DeprecationWarning)
-            pulumi.log.warn("""version is deprecated: The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.""")
+            warnings.warn("""The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of Config Sync installed instead.""", DeprecationWarning)
+            pulumi.log.warn("""version is deprecated: The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of Config Sync installed instead.""")
         if version is not None:
             pulumi.set(__self__, "version", version)
 
@@ -740,13 +740,13 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs:
 
     @property
     @pulumi.getter
-    @_utilities.deprecated("""The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.""")
+    @_utilities.deprecated("""The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of Config Sync installed instead.""")
     def version(self) -> Optional[pulumi.Input[str]]:
         """
         (Optional, Deprecated)
-        Version of ACM installed
+        Version of Config Sync installed
 
-        > **Warning:** The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.
+        > **Warning:** The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of Config Sync installed instead.
         """
         return pulumi.get(self, "version")
 
@@ -1745,7 +1745,7 @@ if not MYPY:
         """
         version: NotRequired[pulumi.Input[str]]
         """
-        Version of ACM installed.
+        Version of Config Sync installed.
         """
 elif False:
     FeatureMembershipConfigmanagementArgsDict: TypeAlias = Mapping[str, Any]
@@ -1773,7 +1773,7 @@ class FeatureMembershipConfigmanagementArgs:
         :param pulumi.Input['FeatureMembershipConfigmanagementPolicyControllerArgs'] policy_controller: Policy Controller configuration for the cluster. Structure is documented below.
                Configuring Policy Controller through the configmanagement feature is no longer recommended.
                Use the policycontroller feature instead.
-        :param pulumi.Input[str] version: Version of ACM installed.
+        :param pulumi.Input[str] version: Version of Config Sync installed.
         """
         if binauthz is not None:
             pulumi.set(__self__, "binauthz", binauthz)
@@ -1860,7 +1860,7 @@ class FeatureMembershipConfigmanagementArgs:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
         """
-        Version of ACM installed.
+        Version of Config Sync installed.
         """
         return pulumi.get(self, "version")
 
@@ -1917,13 +1917,13 @@ if not MYPY:
         """
         oci: NotRequired[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncOciArgsDict']]
         """
-        (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+        (Optional) Supported from Config Sync versions 1.12.0 onwards. Structure is documented below.
 
         Use either `git` or `oci` config option.
         """
         prevent_drift: NotRequired[pulumi.Input[bool]]
         """
-        Supported from ACM versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
+        Supported from Config Sync versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
         """
         source_format: NotRequired[pulumi.Input[str]]
         """
@@ -1945,10 +1945,10 @@ class FeatureMembershipConfigmanagementConfigSyncArgs:
         :param pulumi.Input[bool] enabled: Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
         :param pulumi.Input['FeatureMembershipConfigmanagementConfigSyncGitArgs'] git: (Optional) Structure is documented below.
         :param pulumi.Input[str] metrics_gcp_service_account_email: The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
-        :param pulumi.Input['FeatureMembershipConfigmanagementConfigSyncOciArgs'] oci: (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+        :param pulumi.Input['FeatureMembershipConfigmanagementConfigSyncOciArgs'] oci: (Optional) Supported from Config Sync versions 1.12.0 onwards. Structure is documented below.
                
                Use either `git` or `oci` config option.
-        :param pulumi.Input[bool] prevent_drift: Supported from ACM versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
+        :param pulumi.Input[bool] prevent_drift: Supported from Config Sync versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
         :param pulumi.Input[str] source_format: Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
         """
         if enabled is not None:
@@ -2004,7 +2004,7 @@ class FeatureMembershipConfigmanagementConfigSyncArgs:
     @pulumi.getter
     def oci(self) -> Optional[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncOciArgs']]:
         """
-        (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+        (Optional) Supported from Config Sync versions 1.12.0 onwards. Structure is documented below.
 
         Use either `git` or `oci` config option.
         """
@@ -2018,7 +2018,7 @@ class FeatureMembershipConfigmanagementConfigSyncArgs:
     @pulumi.getter(name="preventDrift")
     def prevent_drift(self) -> Optional[pulumi.Input[bool]]:
         """
-        Supported from ACM versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
+        Supported from Config Sync versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
         """
         return pulumi.get(self, "prevent_drift")
 

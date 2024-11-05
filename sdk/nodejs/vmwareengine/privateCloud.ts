@@ -72,6 +72,28 @@ import * as utilities from "../utilities";
  *             nodeCount: 1,
  *             customCoreCount: 32,
  *         }],
+ *         autoscalingSettings: {
+ *             autoscalingPolicies: [{
+ *                 autoscalePolicyId: "autoscaling-policy",
+ *                 nodeTypeId: "standard-72",
+ *                 scaleOutSize: 1,
+ *                 cpuThresholds: {
+ *                     scaleOut: 80,
+ *                     scaleIn: 15,
+ *                 },
+ *                 consumedMemoryThresholds: {
+ *                     scaleOut: 75,
+ *                     scaleIn: 20,
+ *                 },
+ *                 storageThresholds: {
+ *                     scaleOut: 80,
+ *                     scaleIn: 20,
+ *                 },
+ *             }],
+ *             minClusterNodeCount: 3,
+ *             maxClusterNodeCount: 8,
+ *             coolDownPeriod: "1800s",
+ *         },
  *     },
  *     deletionDelayHours: 0,
  *     sendDeletionDelayHoursIfZero: true,

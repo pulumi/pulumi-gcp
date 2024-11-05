@@ -163,6 +163,7 @@ import (
 //				},
 //				EngineVersion:             pulumi.String("VALKEY_7_2"),
 //				DeletionProtectionEnabled: pulumi.Bool(false),
+//				Mode:                      pulumi.String("CLUSTER"),
 //				PersistenceConfig: &memorystore.InstancePersistenceConfigArgs{
 //					Mode: pulumi.String("RDB"),
 //					RdbConfig: &memorystore.InstancePersistenceConfigRdbConfigArgs{
@@ -307,6 +308,8 @@ type Instance struct {
 	DiscoveryEndpoints InstanceDiscoveryEndpointArrayOutput `pulumi:"discoveryEndpoints"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
+	// Endpoints for the instance.
+	Endpoints pulumi.ArrayArrayOutput `pulumi:"endpoints"`
 	// Optional. User-provided engine configurations for the instance.
 	EngineConfigs pulumi.StringMapOutput `pulumi:"engineConfigs"`
 	// Optional. Immutable. Engine version of the instance.
@@ -328,6 +331,12 @@ type Instance struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `memorystore.googleapis.com/CertificateAuthority`.
 	Location pulumi.StringOutput `pulumi:"location"`
+	// Optional. Standalone or cluster.
+	// Possible values:
+	// CLUSTER
+	// STANDALONE
+	// Possible values are: `CLUSTER`, `STANDALONE`.
+	Mode pulumi.StringOutput `pulumi:"mode"`
 	// Identifier. Unique name of the instance.
 	// Format: projects/{project}/locations/{location}/instances/{instance}
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -444,6 +453,8 @@ type instanceState struct {
 	DiscoveryEndpoints []InstanceDiscoveryEndpoint `pulumi:"discoveryEndpoints"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	// Endpoints for the instance.
+	Endpoints [][]interface{} `pulumi:"endpoints"`
 	// Optional. User-provided engine configurations for the instance.
 	EngineConfigs map[string]string `pulumi:"engineConfigs"`
 	// Optional. Immutable. Engine version of the instance.
@@ -465,6 +476,12 @@ type instanceState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `memorystore.googleapis.com/CertificateAuthority`.
 	Location *string `pulumi:"location"`
+	// Optional. Standalone or cluster.
+	// Possible values:
+	// CLUSTER
+	// STANDALONE
+	// Possible values are: `CLUSTER`, `STANDALONE`.
+	Mode *string `pulumi:"mode"`
 	// Identifier. Unique name of the instance.
 	// Format: projects/{project}/locations/{location}/instances/{instance}
 	Name *string `pulumi:"name"`
@@ -535,6 +552,8 @@ type InstanceState struct {
 	DiscoveryEndpoints InstanceDiscoveryEndpointArrayInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
+	// Endpoints for the instance.
+	Endpoints pulumi.ArrayArrayInput
 	// Optional. User-provided engine configurations for the instance.
 	EngineConfigs pulumi.StringMapInput
 	// Optional. Immutable. Engine version of the instance.
@@ -556,6 +575,12 @@ type InstanceState struct {
 	Labels pulumi.StringMapInput
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `memorystore.googleapis.com/CertificateAuthority`.
 	Location pulumi.StringPtrInput
+	// Optional. Standalone or cluster.
+	// Possible values:
+	// CLUSTER
+	// STANDALONE
+	// Possible values are: `CLUSTER`, `STANDALONE`.
+	Mode pulumi.StringPtrInput
 	// Identifier. Unique name of the instance.
 	// Format: projects/{project}/locations/{location}/instances/{instance}
 	Name pulumi.StringPtrInput
@@ -643,6 +668,12 @@ type instanceArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `memorystore.googleapis.com/CertificateAuthority`.
 	Location string `pulumi:"location"`
+	// Optional. Standalone or cluster.
+	// Possible values:
+	// CLUSTER
+	// STANDALONE
+	// Possible values are: `CLUSTER`, `STANDALONE`.
+	Mode *string `pulumi:"mode"`
 	// Optional. Immutable. Machine type for individual nodes of the instance.
 	// Possible values:
 	// SHARED_CORE_NANO
@@ -701,6 +732,12 @@ type InstanceArgs struct {
 	Labels pulumi.StringMapInput
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `memorystore.googleapis.com/CertificateAuthority`.
 	Location pulumi.StringInput
+	// Optional. Standalone or cluster.
+	// Possible values:
+	// CLUSTER
+	// STANDALONE
+	// Possible values are: `CLUSTER`, `STANDALONE`.
+	Mode pulumi.StringPtrInput
 	// Optional. Immutable. Machine type for individual nodes of the instance.
 	// Possible values:
 	// SHARED_CORE_NANO
@@ -849,6 +886,11 @@ func (o InstanceOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
+// Endpoints for the instance.
+func (o InstanceOutput) Endpoints() pulumi.ArrayArrayOutput {
+	return o.ApplyT(func(v *Instance) pulumi.ArrayArrayOutput { return v.Endpoints }).(pulumi.ArrayArrayOutput)
+}
+
 // Optional. User-provided engine configurations for the instance.
 func (o InstanceOutput) EngineConfigs() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.EngineConfigs }).(pulumi.StringMapOutput)
@@ -883,6 +925,15 @@ func (o InstanceOutput) Labels() pulumi.StringMapOutput {
 // Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `memorystore.googleapis.com/CertificateAuthority`.
 func (o InstanceOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// Optional. Standalone or cluster.
+// Possible values:
+// CLUSTER
+// STANDALONE
+// Possible values are: `CLUSTER`, `STANDALONE`.
+func (o InstanceOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Mode }).(pulumi.StringOutput)
 }
 
 // Identifier. Unique name of the instance.

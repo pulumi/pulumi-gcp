@@ -6,6 +6,7 @@ package com.pulumi.gcp.compute.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -22,6 +23,11 @@ public final class InstanceFromMachineImageAdvancedMachineFeatures {
      * 
      */
     private @Nullable Integer threadsPerCore;
+    /**
+     * @return Turbo frequency mode to use for the instance. Currently supported modes is &#34;ALL_CORE_MAX&#34;.
+     * 
+     */
+    private @Nullable String turboMode;
     /**
      * @return The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\&#39;s nominal CPU count and the underlying platform\&#39;s SMT width.
      * 
@@ -44,6 +50,13 @@ public final class InstanceFromMachineImageAdvancedMachineFeatures {
         return Optional.ofNullable(this.threadsPerCore);
     }
     /**
+     * @return Turbo frequency mode to use for the instance. Currently supported modes is &#34;ALL_CORE_MAX&#34;.
+     * 
+     */
+    public Optional<String> turboMode() {
+        return Optional.ofNullable(this.turboMode);
+    }
+    /**
      * @return The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\&#39;s nominal CPU count and the underlying platform\&#39;s SMT width.
      * 
      */
@@ -62,12 +75,14 @@ public final class InstanceFromMachineImageAdvancedMachineFeatures {
     public static final class Builder {
         private @Nullable Boolean enableNestedVirtualization;
         private @Nullable Integer threadsPerCore;
+        private @Nullable String turboMode;
         private @Nullable Integer visibleCoreCount;
         public Builder() {}
         public Builder(InstanceFromMachineImageAdvancedMachineFeatures defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableNestedVirtualization = defaults.enableNestedVirtualization;
     	      this.threadsPerCore = defaults.threadsPerCore;
+    	      this.turboMode = defaults.turboMode;
     	      this.visibleCoreCount = defaults.visibleCoreCount;
         }
 
@@ -84,6 +99,12 @@ public final class InstanceFromMachineImageAdvancedMachineFeatures {
             return this;
         }
         @CustomType.Setter
+        public Builder turboMode(@Nullable String turboMode) {
+
+            this.turboMode = turboMode;
+            return this;
+        }
+        @CustomType.Setter
         public Builder visibleCoreCount(@Nullable Integer visibleCoreCount) {
 
             this.visibleCoreCount = visibleCoreCount;
@@ -93,6 +114,7 @@ public final class InstanceFromMachineImageAdvancedMachineFeatures {
             final var _resultValue = new InstanceFromMachineImageAdvancedMachineFeatures();
             _resultValue.enableNestedVirtualization = enableNestedVirtualization;
             _resultValue.threadsPerCore = threadsPerCore;
+            _resultValue.turboMode = turboMode;
             _resultValue.visibleCoreCount = visibleCoreCount;
             return _resultValue;
         }

@@ -79,6 +79,10 @@ export interface GetAccountArgs {
 export interface GetAccountResult {
     readonly accountId: string;
     /**
+     * Whether a service account is disabled or not.
+     */
+    readonly disabled: boolean;
+    /**
      * The display name for the service account.
      */
     readonly displayName: string;
