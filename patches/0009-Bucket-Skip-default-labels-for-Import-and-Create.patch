@@ -5,7 +5,7 @@ Subject: [PATCH] Bucket: Skip default labels for Import and Create
 
 
 diff --git a/google-beta/services/storage/resource_storage_bucket.go b/google-beta/services/storage/resource_storage_bucket.go
-index 607d608d0..694867515 100644
+index 6531cb26e..d8d5486b6 100644
 --- a/google-beta/services/storage/resource_storage_bucket.go
 +++ b/google-beta/services/storage/resource_storage_bucket.go
 @@ -1904,10 +1904,10 @@ func setStorageBucket(d *schema.ResourceData, config *transport_tpg.Config, res

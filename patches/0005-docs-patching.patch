@@ -33,7 +33,7 @@ index 13bcdcdb5..f4915524a 100644
  
  * [API documentation](https://cloud.google.com/api-gateway/docs/reference/rest/v1beta/projects.locations.apis.configs)
 diff --git a/website/docs/r/api_gateway_api_config_iam.html.markdown b/website/docs/r/api_gateway_api_config_iam.html.markdown
-index fa8defec3..6def388f2 100644
+index 87ea4237a..cb2b87d1d 100644
 --- a/website/docs/r/api_gateway_api_config_iam.html.markdown
 +++ b/website/docs/r/api_gateway_api_config_iam.html.markdown
 @@ -33,10 +33,8 @@ A data source can be used to retrieve policy data in advent you do not need crea
@@ -49,7 +49,7 @@ index fa8defec3..6def388f2 100644
  ```hcl
  data "google_iam_policy" "admin" {
 diff --git a/website/docs/r/api_gateway_api_iam.html.markdown b/website/docs/r/api_gateway_api_iam.html.markdown
-index e02be94bb..c1a3fc2e7 100644
+index bb79d7924..6ad68fff2 100644
 --- a/website/docs/r/api_gateway_api_iam.html.markdown
 +++ b/website/docs/r/api_gateway_api_iam.html.markdown
 @@ -33,10 +33,8 @@ A data source can be used to retrieve policy data in advent you do not need crea
@@ -79,7 +79,7 @@ index 1f39293c7..0df7c81f2 100644
  
  * [API documentation](https://cloud.google.com/api-gateway/docs/reference/rest/v1beta/projects.locations.apis)
 diff --git a/website/docs/r/api_gateway_gateway_iam.html.markdown b/website/docs/r/api_gateway_gateway_iam.html.markdown
-index 02f68ce79..07ddfeefe 100644
+index 41578cab0..72e0d916d 100644
 --- a/website/docs/r/api_gateway_gateway_iam.html.markdown
 +++ b/website/docs/r/api_gateway_gateway_iam.html.markdown
 @@ -33,10 +33,7 @@ A data source can be used to retrieve policy data in advent you do not need crea
@@ -175,7 +175,7 @@ index 8eeb84614..4d5284637 100644
    an empty value.
  
 diff --git a/website/docs/r/bigquery_table.html.markdown b/website/docs/r/bigquery_table.html.markdown
-index c844a4974..3f1d7e5a7 100644
+index 5fe162032..41205bbec 100644
 --- a/website/docs/r/bigquery_table.html.markdown
 +++ b/website/docs/r/bigquery_table.html.markdown
 @@ -11,7 +11,7 @@ Creates a table resource in a dataset for Google BigQuery. For more information
@@ -200,7 +200,7 @@ index c844a4974..3f1d7e5a7 100644
  
  * `table_constraints` - (Optional) Defines the primary key and foreign keys. 
      Structure is [documented below](#nested_table_constraints).
-@@ -283,8 +281,8 @@ The following arguments are supported:
+@@ -275,8 +273,8 @@ The following arguments are supported:
      CSV file. If your data does not contain quoted sections, set the
      property value to an empty string. If your data contains quoted newline
      characters, you must also set the `allow_quoted_newlines` property to true.
@@ -293,7 +293,7 @@ index 33185542a..1d8219fe6 100644
  
  * `column_family` - (Optional) A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
 diff --git a/website/docs/r/bigtable_table_iam.html.markdown b/website/docs/r/bigtable_table_iam.html.markdown
-index 78a591547..bbb602499 100644
+index 7007e82bb..3051111fd 100644
 --- a/website/docs/r/bigtable_table_iam.html.markdown
 +++ b/website/docs/r/bigtable_table_iam.html.markdown
 @@ -89,7 +89,7 @@ For `google_bigtable_table_iam_member` or `google_bigtable_table_iam_binding`:
@@ -375,7 +375,7 @@ index a68f58813..650247567 100644
    **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
    Please refer to the field `effective_annotations` for all of the annotations present on the resource.
 diff --git a/website/docs/r/cloud_run_service.html.markdown b/website/docs/r/cloud_run_service.html.markdown
-index d0f703f9e..fa7466a76 100644
+index 78167878c..a7e143ddc 100644
 --- a/website/docs/r/cloud_run_service.html.markdown
 +++ b/website/docs/r/cloud_run_service.html.markdown
 @@ -31,8 +31,63 @@ To get more information about Service, see:
@@ -654,7 +654,7 @@ index 0202e53d0..670ae1307 100644
  
  ```hcl
 diff --git a/website/docs/r/compute_image_iam.html.markdown b/website/docs/r/compute_image_iam.html.markdown
-index f9cad9040..243ba6fd0 100644
+index df91843c5..40b452e03 100644
 --- a/website/docs/r/compute_image_iam.html.markdown
 +++ b/website/docs/r/compute_image_iam.html.markdown
 @@ -178,8 +178,8 @@ The `condition` block supports:
@@ -669,7 +669,7 @@ index f9cad9040..243ba6fd0 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_instance.html.markdown b/website/docs/r/compute_instance.html.markdown
-index 369f11e5b..011c0de51 100644
+index 0ca4bb31c..95e4223f4 100644
 --- a/website/docs/r/compute_instance.html.markdown
 +++ b/website/docs/r/compute_instance.html.markdown
 @@ -140,7 +140,7 @@ The following arguments are supported:
@@ -811,7 +811,7 @@ index 4492397f2..26ec08096 100644
  
  * `wait_for_instances_status` - (Optional) When used with `wait_for_instances` it specifies the status to wait for.
 diff --git a/website/docs/r/compute_instance_iam.html.markdown b/website/docs/r/compute_instance_iam.html.markdown
-index fe6888f17..64fce6636 100644
+index c7a253e6d..fd7c0580c 100644
 --- a/website/docs/r/compute_instance_iam.html.markdown
 +++ b/website/docs/r/compute_instance_iam.html.markdown
 @@ -187,8 +187,8 @@ The `condition` block supports:
@@ -826,7 +826,7 @@ index fe6888f17..64fce6636 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_instance_template.html.markdown b/website/docs/r/compute_instance_template.html.markdown
-index 1d65214ae..83d9a6cf7 100644
+index a2621e9d9..011ad3702 100644
 --- a/website/docs/r/compute_instance_template.html.markdown
 +++ b/website/docs/r/compute_instance_template.html.markdown
 @@ -183,12 +183,11 @@ resource "google_compute_instance_template" "foobar" {
@@ -914,7 +914,7 @@ index 9bfd222cc..14499f58d 100644
  
  * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/machineImages)
 diff --git a/website/docs/r/compute_machine_image_iam.html.markdown b/website/docs/r/compute_machine_image_iam.html.markdown
-index e139e72db..03ed5698e 100644
+index 1b32e0b70..05d184bdf 100644
 --- a/website/docs/r/compute_machine_image_iam.html.markdown
 +++ b/website/docs/r/compute_machine_image_iam.html.markdown
 @@ -33,11 +33,7 @@ A data source can be used to retrieve policy data in advent you do not need crea
@@ -1538,7 +1538,7 @@ index 70ca4fdf5..b666f220d 100644
  
  * `private_ip_google_access` -
 diff --git a/website/docs/r/compute_subnetwork_iam.html.markdown b/website/docs/r/compute_subnetwork_iam.html.markdown
-index 362e13fa8..a54371147 100644
+index 740046bff..1d7e44b7d 100644
 --- a/website/docs/r/compute_subnetwork_iam.html.markdown
 +++ b/website/docs/r/compute_subnetwork_iam.html.markdown
 @@ -188,8 +188,8 @@ The `condition` block supports:
@@ -2004,7 +2004,7 @@ index 926e19d6d..66820e009 100644
  * `disk_config` (Optional) Disk Config
  
 diff --git a/website/docs/r/dataproc_cluster_iam.html.markdown b/website/docs/r/dataproc_cluster_iam.html.markdown
-index 3a1f2ec08..a62e4c644 100644
+index 4782b48c5..121b22eae 100644
 --- a/website/docs/r/dataproc_cluster_iam.html.markdown
 +++ b/website/docs/r/dataproc_cluster_iam.html.markdown
 @@ -85,10 +85,10 @@ For `google_dataproc_cluster_iam_member` or `google_dataproc_cluster_iam_binding
@@ -2021,7 +2021,7 @@ index 3a1f2ec08..a62e4c644 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/dataproc_job_iam.html.markdown b/website/docs/r/dataproc_job_iam.html.markdown
-index 1003cb991..4a7743379 100644
+index 7789b05fe..cd5d853c0 100644
 --- a/website/docs/r/dataproc_job_iam.html.markdown
 +++ b/website/docs/r/dataproc_job_iam.html.markdown
 @@ -85,10 +85,10 @@ For `google_dataproc_job_iam_member` or `google_dataproc_job_iam_binding`:
@@ -2084,7 +2084,7 @@ index 234941e92..cbecd2912 100644
  * `project` - (Optional) The ID of the project in which the resource belongs.
      If it is not provided, the provider project is used.
 diff --git a/website/docs/r/dns_managed_zone.html.markdown b/website/docs/r/dns_managed_zone.html.markdown
-index 41d23333f..f024d253f 100644
+index 653f2afc5..e650f5a15 100644
 --- a/website/docs/r/dns_managed_zone.html.markdown
 +++ b/website/docs/r/dns_managed_zone.html.markdown
 @@ -42,16 +42,12 @@ To get more information about ManagedZone, see:
@@ -2315,7 +2315,7 @@ index 404437cbe..b2a41d19e 100644
  [Access Control for Folders Using IAM](https://cloud.google.com/resource-manager/docs/access-control-folders)
  doc for more information.
 diff --git a/website/docs/r/google_folder_iam.html.markdown b/website/docs/r/google_folder_iam.html.markdown
-index 1f7bbf703..3fbebe90a 100644
+index 40ed479ea..23574ccc1 100644
 --- a/website/docs/r/google_folder_iam.html.markdown
 +++ b/website/docs/r/google_folder_iam.html.markdown
 @@ -28,7 +28,7 @@ Four different resources help you manage your IAM policy for a folder. Each of t
@@ -2504,7 +2504,7 @@ index f72591b15..97be8937b 100644
  
  ## Attributes Reference
 diff --git a/website/docs/r/google_organization_iam.html.markdown b/website/docs/r/google_organization_iam.html.markdown
-index 260ef68c7..cb2949587 100644
+index 621d350e4..a8370e2af 100644
 --- a/website/docs/r/google_organization_iam.html.markdown
 +++ b/website/docs/r/google_organization_iam.html.markdown
 @@ -26,9 +26,10 @@ Four different resources help you manage your IAM policy for a organization. Eac
@@ -2702,7 +2702,7 @@ index cfddb1839..b05298e7b 100644
      for more details.
  
 diff --git a/website/docs/r/google_project_iam.html.markdown b/website/docs/r/google_project_iam.html.markdown
-index 46cae09f8..69b15c96e 100644
+index 88028b788..268940de8 100644
 --- a/website/docs/r/google_project_iam.html.markdown
 +++ b/website/docs/r/google_project_iam.html.markdown
 @@ -27,7 +27,7 @@ Four different resources help you manage your IAM policy for a project. Each of
@@ -2768,7 +2768,7 @@ index c261555e7..58ee607b3 100644
  ## Example Usage
  
 diff --git a/website/docs/r/google_service_account_iam.html.markdown b/website/docs/r/google_service_account_iam.html.markdown
-index 3414df981..81818cda2 100644
+index 574e4b9be..cb3fd5e82 100644
 --- a/website/docs/r/google_service_account_iam.html.markdown
 +++ b/website/docs/r/google_service_account_iam.html.markdown
 @@ -18,7 +18,9 @@ Three different resources help you manage your IAM policy for a service account.
@@ -2837,7 +2837,7 @@ index 3414df981..81818cda2 100644
 \ No newline at end of file
 +```
 diff --git a/website/docs/r/healthcare_dataset_iam.html.markdown b/website/docs/r/healthcare_dataset_iam.html.markdown
-index c0f23d5a6..29628a52b 100644
+index 08a496e8f..b0024ba21 100644
 --- a/website/docs/r/healthcare_dataset_iam.html.markdown
 +++ b/website/docs/r/healthcare_dataset_iam.html.markdown
 @@ -6,9 +6,6 @@ description: |-
@@ -2851,7 +2851,7 @@ index c0f23d5a6..29628a52b 100644
  
  * `google_healthcare_dataset_iam_policy`: Authoritative. Sets the IAM policy for the dataset and replaces any existing policy already attached.
 diff --git a/website/docs/r/healthcare_dicom_store_iam.html.markdown b/website/docs/r/healthcare_dicom_store_iam.html.markdown
-index aa95b1cda..da206a776 100644
+index e60f4bd69..3ff703739 100644
 --- a/website/docs/r/healthcare_dicom_store_iam.html.markdown
 +++ b/website/docs/r/healthcare_dicom_store_iam.html.markdown
 @@ -6,9 +6,6 @@ description: |-
@@ -2865,7 +2865,7 @@ index aa95b1cda..da206a776 100644
  
  * `google_healthcare_dicom_store_iam_policy`: Authoritative. Sets the IAM policy for the DICOM store and replaces any existing policy already attached.
 diff --git a/website/docs/r/healthcare_fhir_store_iam.html.markdown b/website/docs/r/healthcare_fhir_store_iam.html.markdown
-index 724a3b06e..ad7aabb27 100644
+index 41a8e1bf3..81a3ca926 100644
 --- a/website/docs/r/healthcare_fhir_store_iam.html.markdown
 +++ b/website/docs/r/healthcare_fhir_store_iam.html.markdown
 @@ -6,9 +6,6 @@ description: |-
@@ -2879,7 +2879,7 @@ index 724a3b06e..ad7aabb27 100644
  
  * `google_healthcare_fhir_store_iam_policy`: Authoritative. Sets the IAM policy for the FHIR store and replaces any existing policy already attached.
 diff --git a/website/docs/r/healthcare_hl7_v2_store_iam.html.markdown b/website/docs/r/healthcare_hl7_v2_store_iam.html.markdown
-index ed8a8ee2b..ba05e7611 100644
+index 0ec070b1b..b011edd3a 100644
 --- a/website/docs/r/healthcare_hl7_v2_store_iam.html.markdown
 +++ b/website/docs/r/healthcare_hl7_v2_store_iam.html.markdown
 @@ -6,9 +6,6 @@ description: |-
@@ -2893,7 +2893,7 @@ index ed8a8ee2b..ba05e7611 100644
  
  * `google_healthcare_hl7_v2_store_iam_policy`: Authoritative. Sets the IAM policy for the HL7v2 store and replaces any existing policy already attached.
 diff --git a/website/docs/r/iap_app_engine_service_iam.html.markdown b/website/docs/r/iap_app_engine_service_iam.html.markdown
-index 8f6425363..c61526ee0 100644
+index 57bc130a2..65a3fd030 100644
 --- a/website/docs/r/iap_app_engine_service_iam.html.markdown
 +++ b/website/docs/r/iap_app_engine_service_iam.html.markdown
 @@ -185,8 +185,8 @@ The `condition` block supports:
@@ -2908,7 +2908,7 @@ index 8f6425363..c61526ee0 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/iap_app_engine_version_iam.html.markdown b/website/docs/r/iap_app_engine_version_iam.html.markdown
-index 81f5c0d39..5fa16e061 100644
+index f719b7cff..85470633d 100644
 --- a/website/docs/r/iap_app_engine_version_iam.html.markdown
 +++ b/website/docs/r/iap_app_engine_version_iam.html.markdown
 @@ -192,8 +192,8 @@ The `condition` block supports:
@@ -2951,7 +2951,7 @@ index 96ac11270..6a92b5b1e 100644
  ## Example Usage - Iap Client
  
 diff --git a/website/docs/r/iap_tunnel_iam.html.markdown b/website/docs/r/iap_tunnel_iam.html.markdown
-index 846022f52..0c24b2e30 100644
+index 663b346e3..32655a8ce 100644
 --- a/website/docs/r/iap_tunnel_iam.html.markdown
 +++ b/website/docs/r/iap_tunnel_iam.html.markdown
 @@ -172,9 +172,6 @@ The `condition` block supports:
@@ -2965,7 +2965,7 @@ index 846022f52..0c24b2e30 100644
  
  In addition to the arguments listed above, the following computed attributes are
 diff --git a/website/docs/r/iap_tunnel_instance_iam.html.markdown b/website/docs/r/iap_tunnel_instance_iam.html.markdown
-index da8c26328..d84e8080e 100644
+index 5297bdacc..a5bd13e0d 100644
 --- a/website/docs/r/iap_tunnel_instance_iam.html.markdown
 +++ b/website/docs/r/iap_tunnel_instance_iam.html.markdown
 @@ -184,8 +184,8 @@ The `condition` block supports:
@@ -2980,7 +2980,7 @@ index da8c26328..d84e8080e 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/iap_web_backend_service_iam.html.markdown b/website/docs/r/iap_web_backend_service_iam.html.markdown
-index 750bdaf49..896b3516b 100644
+index 3f7302a8d..b03967a70 100644
 --- a/website/docs/r/iap_web_backend_service_iam.html.markdown
 +++ b/website/docs/r/iap_web_backend_service_iam.html.markdown
 @@ -178,8 +178,8 @@ The `condition` block supports:
@@ -2995,7 +2995,7 @@ index 750bdaf49..896b3516b 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/iap_web_iam.html.markdown b/website/docs/r/iap_web_iam.html.markdown
-index 379a03e40..af2c82a65 100644
+index 5a9914512..b8fddfe53 100644
 --- a/website/docs/r/iap_web_iam.html.markdown
 +++ b/website/docs/r/iap_web_iam.html.markdown
 @@ -171,8 +171,8 @@ The `condition` block supports:
@@ -3010,7 +3010,7 @@ index 379a03e40..af2c82a65 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/iap_web_type_app_engine_iam.html.markdown b/website/docs/r/iap_web_type_app_engine_iam.html.markdown
-index 5b0ba506d..b544d60ac 100644
+index 818987557..9eff34dcb 100644
 --- a/website/docs/r/iap_web_type_app_engine_iam.html.markdown
 +++ b/website/docs/r/iap_web_type_app_engine_iam.html.markdown
 @@ -178,8 +178,8 @@ The `condition` block supports:
@@ -3025,7 +3025,7 @@ index 5b0ba506d..b544d60ac 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/iap_web_type_compute_iam.html.markdown b/website/docs/r/iap_web_type_compute_iam.html.markdown
-index 3eff57c07..662d642d1 100644
+index 9f9d93f34..2e0a3e2ba 100644
 --- a/website/docs/r/iap_web_type_compute_iam.html.markdown
 +++ b/website/docs/r/iap_web_type_compute_iam.html.markdown
 @@ -171,8 +171,8 @@ The `condition` block supports:
@@ -3461,7 +3461,7 @@ index 049e16566..1f47cc70d 100644
  
  * [API documentation](https://cloud.google.com/service-directory/docs/reference/rest/v1beta1/projects.locations.namespaces)
 diff --git a/website/docs/r/service_directory_namespace_iam.html.markdown b/website/docs/r/service_directory_namespace_iam.html.markdown
-index d703c63e4..3a9c0bd64 100644
+index dd1003e4d..aef4e0ebe 100644
 --- a/website/docs/r/service_directory_namespace_iam.html.markdown
 +++ b/website/docs/r/service_directory_namespace_iam.html.markdown
 @@ -32,11 +32,7 @@ A data source can be used to retrieve policy data in advent you do not need crea
@@ -3492,7 +3492,7 @@ index 26593865c..252cbf025 100644
  
  * [API documentation](https://cloud.google.com/service-directory/docs/reference/rest/v1beta1/projects.locations.namespaces.services)
 diff --git a/website/docs/r/service_directory_service_iam.html.markdown b/website/docs/r/service_directory_service_iam.html.markdown
-index 9b20a7b7a..66450ccd7 100644
+index ffec3499f..ff7dfbf28 100644
 --- a/website/docs/r/service_directory_service_iam.html.markdown
 +++ b/website/docs/r/service_directory_service_iam.html.markdown
 @@ -32,11 +32,7 @@ A data source can be used to retrieve policy data in advent you do not need crea
@@ -3557,7 +3557,7 @@ index da83c6829..cd1223aa8 100644
  
  <a name="nested_encryption_config"></a>The `encryption_config` block supports:
 diff --git a/website/docs/r/sql_database_instance.html.markdown b/website/docs/r/sql_database_instance.html.markdown
-index 70435988d..a1a0a47f0 100644
+index 6469d2373..44c3849bf 100644
 --- a/website/docs/r/sql_database_instance.html.markdown
 +++ b/website/docs/r/sql_database_instance.html.markdown
 @@ -10,12 +10,12 @@ Creates a new Google SQL Database Instance. For more information, see the [offic
@@ -3619,7 +3619,7 @@ index 70435988d..a1a0a47f0 100644
      configuration is detailed below.
  
  The `settings` block supports:
-@@ -499,7 +495,7 @@ The optional `clone` block supports:
+@@ -505,7 +501,7 @@ The optional `clone` block supports:
  * `allocated_ip_range` -  (Optional) The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])?.
  
  The optional `restore_backup_context` block supports:
@@ -3628,7 +3628,7 @@ index 70435988d..a1a0a47f0 100644
  block during resource creation/update will trigger the restore action after the resource is created/updated.
  
  * `backup_run_id` - (Required) The ID of the backup run to restore from.
-@@ -537,21 +533,13 @@ instance.
+@@ -543,21 +539,13 @@ instance.
  
    * A `PRIVATE` address is an address for an instance which has been configured to use private networking see: [Private IP](https://cloud.google.com/sql/docs/mysql/private-ip).
  
@@ -3681,7 +3681,7 @@ index e6847a79f..3e2ad5aa7 100644
  ## Example Usage
  
 diff --git a/website/docs/r/storage_bucket.html.markdown b/website/docs/r/storage_bucket.html.markdown
-index a509e780d..0a44f8676 100644
+index 958029498..6c8c65e89 100644
 --- a/website/docs/r/storage_bucket.html.markdown
 +++ b/website/docs/r/storage_bucket.html.markdown
 @@ -129,7 +129,7 @@ The following arguments are supported:
@@ -3733,7 +3733,7 @@ index e5ae8ba87..937c973b6 100644
  Permissions can be granted either by ACLs or Cloud IAM policies. In general, permissions granted by Cloud IAM policies do not appear in ACLs, and permissions granted by ACLs do not appear in Cloud IAM policies. The only exception is for ACLs applied directly on a bucket and certain bucket-level Cloud IAM policies, as described in [Cloud IAM relation to ACLs](https://cloud.google.com/storage/docs/access-control/iam#acls).
  
 diff --git a/website/docs/r/storage_bucket_iam.html.markdown b/website/docs/r/storage_bucket_iam.html.markdown
-index 762e52b5f..e0fd45e24 100644
+index 91dc27f01..89f1e371b 100644
 --- a/website/docs/r/storage_bucket_iam.html.markdown
 +++ b/website/docs/r/storage_bucket_iam.html.markdown
 @@ -169,8 +169,8 @@ The `condition` block supports:
