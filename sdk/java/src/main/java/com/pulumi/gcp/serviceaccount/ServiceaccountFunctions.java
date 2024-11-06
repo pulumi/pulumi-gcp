@@ -71,56 +71,6 @@ public final class ServiceaccountFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Save Key In Kubernetes Secret
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
-     * import com.pulumi.gcp.serviceaccount.inputs.GetAccountArgs;
-     * import com.pulumi.gcp.serviceaccount.Key;
-     * import com.pulumi.gcp.serviceaccount.KeyArgs;
-     * import com.pulumi.kubernetes.core_v1.Secret;
-     * import com.pulumi.kubernetes.core_v1.SecretArgs;
-     * import com.pulumi.kubernetes.meta_v1.inputs.ObjectMetaArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var myaccount = ServiceaccountFunctions.getAccount(GetAccountArgs.builder()
-     *             .accountId("myaccount-id")
-     *             .build());
-     * 
-     *         var mykey = new Key("mykey", KeyArgs.builder()
-     *             .serviceAccountId(myaccount.applyValue(getAccountResult -> getAccountResult.name()))
-     *             .build());
-     * 
-     *         var google_application_credentials = new Secret("google-application-credentials", SecretArgs.builder()
-     *             .metadata(ObjectMetaArgs.builder()
-     *                 .name("google-application-credentials")
-     *                 .build())
-     *             .data(Map.of("json", StdFunctions.base64decode().applyValue(invoke -> invoke.result())))
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static Output<GetAccountResult> getAccount(GetAccountArgs args) {
         return getAccount(args, InvokeOptions.Empty);
@@ -156,56 +106,6 @@ public final class ServiceaccountFunctions {
      *     public static void stack(Context ctx) {
      *         final var objectViewer = ServiceaccountFunctions.getAccount(GetAccountArgs.builder()
      *             .accountId("object-viewer")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     * ### Save Key In Kubernetes Secret
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
-     * import com.pulumi.gcp.serviceaccount.inputs.GetAccountArgs;
-     * import com.pulumi.gcp.serviceaccount.Key;
-     * import com.pulumi.gcp.serviceaccount.KeyArgs;
-     * import com.pulumi.kubernetes.core_v1.Secret;
-     * import com.pulumi.kubernetes.core_v1.SecretArgs;
-     * import com.pulumi.kubernetes.meta_v1.inputs.ObjectMetaArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var myaccount = ServiceaccountFunctions.getAccount(GetAccountArgs.builder()
-     *             .accountId("myaccount-id")
-     *             .build());
-     * 
-     *         var mykey = new Key("mykey", KeyArgs.builder()
-     *             .serviceAccountId(myaccount.applyValue(getAccountResult -> getAccountResult.name()))
-     *             .build());
-     * 
-     *         var google_application_credentials = new Secret("google-application-credentials", SecretArgs.builder()
-     *             .metadata(ObjectMetaArgs.builder()
-     *                 .name("google-application-credentials")
-     *                 .build())
-     *             .data(Map.of("json", StdFunctions.base64decode().applyValue(invoke -> invoke.result())))
      *             .build());
      * 
      *     }
@@ -257,56 +157,6 @@ public final class ServiceaccountFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Save Key In Kubernetes Secret
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
-     * import com.pulumi.gcp.serviceaccount.inputs.GetAccountArgs;
-     * import com.pulumi.gcp.serviceaccount.Key;
-     * import com.pulumi.gcp.serviceaccount.KeyArgs;
-     * import com.pulumi.kubernetes.core_v1.Secret;
-     * import com.pulumi.kubernetes.core_v1.SecretArgs;
-     * import com.pulumi.kubernetes.meta_v1.inputs.ObjectMetaArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var myaccount = ServiceaccountFunctions.getAccount(GetAccountArgs.builder()
-     *             .accountId("myaccount-id")
-     *             .build());
-     * 
-     *         var mykey = new Key("mykey", KeyArgs.builder()
-     *             .serviceAccountId(myaccount.applyValue(getAccountResult -> getAccountResult.name()))
-     *             .build());
-     * 
-     *         var google_application_credentials = new Secret("google-application-credentials", SecretArgs.builder()
-     *             .metadata(ObjectMetaArgs.builder()
-     *                 .name("google-application-credentials")
-     *                 .build())
-     *             .data(Map.of("json", StdFunctions.base64decode().applyValue(invoke -> invoke.result())))
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static Output<GetAccountResult> getAccount(GetAccountArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:serviceaccount/getAccount:getAccount", TypeShape.of(GetAccountResult.class), args, Utilities.withVersion(options));
@@ -342,56 +192,6 @@ public final class ServiceaccountFunctions {
      *     public static void stack(Context ctx) {
      *         final var objectViewer = ServiceaccountFunctions.getAccount(GetAccountArgs.builder()
      *             .accountId("object-viewer")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     * ### Save Key In Kubernetes Secret
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
-     * import com.pulumi.gcp.serviceaccount.inputs.GetAccountArgs;
-     * import com.pulumi.gcp.serviceaccount.Key;
-     * import com.pulumi.gcp.serviceaccount.KeyArgs;
-     * import com.pulumi.kubernetes.core_v1.Secret;
-     * import com.pulumi.kubernetes.core_v1.SecretArgs;
-     * import com.pulumi.kubernetes.meta_v1.inputs.ObjectMetaArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var myaccount = ServiceaccountFunctions.getAccount(GetAccountArgs.builder()
-     *             .accountId("myaccount-id")
-     *             .build());
-     * 
-     *         var mykey = new Key("mykey", KeyArgs.builder()
-     *             .serviceAccountId(myaccount.applyValue(getAccountResult -> getAccountResult.name()))
-     *             .build());
-     * 
-     *         var google_application_credentials = new Secret("google-application-credentials", SecretArgs.builder()
-     *             .metadata(ObjectMetaArgs.builder()
-     *                 .name("google-application-credentials")
-     *                 .build())
-     *             .data(Map.of("json", StdFunctions.base64decode().applyValue(invoke -> invoke.result())))
      *             .build());
      * 
      *     }
@@ -902,51 +702,6 @@ public final class ServiceaccountFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Invoking Cloud Run Endpoint
-     * 
-     *   The following configuration will invoke [Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service) endpoint where the service account for the provider has been granted `roles/run.invoker` role previously.
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
-     * import com.pulumi.gcp.serviceaccount.inputs.GetAccountIdTokenArgs;
-     * import com.pulumi.http.HttpFunctions;
-     * import com.pulumi.http.inputs.GetHttpArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var oidc = ServiceaccountFunctions.getAccountIdToken(GetAccountIdTokenArgs.builder()
-     *             .targetAudience("https://your.cloud.run.app/")
-     *             .build());
-     * 
-     *         final var cloudrun = HttpFunctions.getHttp(GetHttpArgs.builder()
-     *             .url("https://your.cloud.run.app/")
-     *             .requestHeaders(Map.of("Authorization", String.format("Bearer %s", oidc.applyValue(getAccountIdTokenResult -> getAccountIdTokenResult.idToken()))))
-     *             .build());
-     * 
-     *         ctx.export("cloudRunResponse", cloudrun.applyValue(getHttpResult -> getHttpResult.body()));
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static Output<GetAccountIdTokenResult> getAccountIdToken(GetAccountIdTokenArgs args) {
         return getAccountIdToken(args, InvokeOptions.Empty);
@@ -1045,51 +800,6 @@ public final class ServiceaccountFunctions {
      *         ctx.export("oidcToken", oidc.applyValue(getAccountIdTokenResult -> getAccountIdTokenResult.idToken()));
      *     }}{@code
      * }}{@code
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     * ### Invoking Cloud Run Endpoint
-     * 
-     *   The following configuration will invoke [Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service) endpoint where the service account for the provider has been granted `roles/run.invoker` role previously.
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
-     * import com.pulumi.gcp.serviceaccount.inputs.GetAccountIdTokenArgs;
-     * import com.pulumi.http.HttpFunctions;
-     * import com.pulumi.http.inputs.GetHttpArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var oidc = ServiceaccountFunctions.getAccountIdToken(GetAccountIdTokenArgs.builder()
-     *             .targetAudience("https://your.cloud.run.app/")
-     *             .build());
-     * 
-     *         final var cloudrun = HttpFunctions.getHttp(GetHttpArgs.builder()
-     *             .url("https://your.cloud.run.app/")
-     *             .requestHeaders(Map.of("Authorization", String.format("Bearer %s", oidc.applyValue(getAccountIdTokenResult -> getAccountIdTokenResult.idToken()))))
-     *             .build());
-     * 
-     *         ctx.export("cloudRunResponse", cloudrun.applyValue(getHttpResult -> getHttpResult.body()));
-     *     }
-     * }
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -1196,51 +906,6 @@ public final class ServiceaccountFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ### Invoking Cloud Run Endpoint
-     * 
-     *   The following configuration will invoke [Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service) endpoint where the service account for the provider has been granted `roles/run.invoker` role previously.
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
-     * import com.pulumi.gcp.serviceaccount.inputs.GetAccountIdTokenArgs;
-     * import com.pulumi.http.HttpFunctions;
-     * import com.pulumi.http.inputs.GetHttpArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var oidc = ServiceaccountFunctions.getAccountIdToken(GetAccountIdTokenArgs.builder()
-     *             .targetAudience("https://your.cloud.run.app/")
-     *             .build());
-     * 
-     *         final var cloudrun = HttpFunctions.getHttp(GetHttpArgs.builder()
-     *             .url("https://your.cloud.run.app/")
-     *             .requestHeaders(Map.of("Authorization", String.format("Bearer %s", oidc.applyValue(getAccountIdTokenResult -> getAccountIdTokenResult.idToken()))))
-     *             .build());
-     * 
-     *         ctx.export("cloudRunResponse", cloudrun.applyValue(getHttpResult -> getHttpResult.body()));
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static Output<GetAccountIdTokenResult> getAccountIdToken(GetAccountIdTokenArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:serviceaccount/getAccountIdToken:getAccountIdToken", TypeShape.of(GetAccountIdTokenResult.class), args, Utilities.withVersion(options));
@@ -1339,51 +1004,6 @@ public final class ServiceaccountFunctions {
      *         ctx.export("oidcToken", oidc.applyValue(getAccountIdTokenResult -> getAccountIdTokenResult.idToken()));
      *     }}{@code
      * }}{@code
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     * ### Invoking Cloud Run Endpoint
-     * 
-     *   The following configuration will invoke [Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service) endpoint where the service account for the provider has been granted `roles/run.invoker` role previously.
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
-     * import com.pulumi.gcp.serviceaccount.inputs.GetAccountIdTokenArgs;
-     * import com.pulumi.http.HttpFunctions;
-     * import com.pulumi.http.inputs.GetHttpArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var oidc = ServiceaccountFunctions.getAccountIdToken(GetAccountIdTokenArgs.builder()
-     *             .targetAudience("https://your.cloud.run.app/")
-     *             .build());
-     * 
-     *         final var cloudrun = HttpFunctions.getHttp(GetHttpArgs.builder()
-     *             .url("https://your.cloud.run.app/")
-     *             .requestHeaders(Map.of("Authorization", String.format("Bearer %s", oidc.applyValue(getAccountIdTokenResult -> getAccountIdTokenResult.idToken()))))
-     *             .build());
-     * 
-     *         ctx.export("cloudRunResponse", cloudrun.applyValue(getHttpResult -> getHttpResult.body()));
-     *     }
-     * }
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;

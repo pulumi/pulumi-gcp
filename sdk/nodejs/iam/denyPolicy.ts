@@ -17,59 +17,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * ### Iam Deny Policy Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * import * as std from "@pulumi/std";
- *
- * const project = new gcp.organizations.Project("project", {
- *     projectId: "my-project",
- *     name: "my-project",
- *     orgId: "123456789",
- *     billingAccount: "000000-0000000-0000000-000000",
- *     deletionPolicy: "DELETE",
- * });
- * const test_account = new gcp.serviceaccount.Account("test-account", {
- *     accountId: "svc-acc",
- *     displayName: "Test Service Account",
- *     project: project.projectId,
- * });
- * const example = new gcp.iam.DenyPolicy("example", {
- *     parent: std.urlencodeOutput({
- *         input: pulumi.interpolate`cloudresourcemanager.googleapis.com/projects/${project.projectId}`,
- *     }).apply(invoke => invoke.result),
- *     name: "my-deny-policy",
- *     displayName: "A deny rule",
- *     rules: [
- *         {
- *             description: "First rule",
- *             denyRule: {
- *                 deniedPrincipals: ["principalSet://goog/public:all"],
- *                 denialCondition: {
- *                     title: "Some expr",
- *                     expression: "!resource.matchTag('12345678/env', 'test')",
- *                 },
- *                 deniedPermissions: ["cloudresourcemanager.googleapis.com/projects.update"],
- *             },
- *         },
- *         {
- *             description: "Second rule",
- *             denyRule: {
- *                 deniedPrincipals: ["principalSet://goog/public:all"],
- *                 denialCondition: {
- *                     title: "Some expr",
- *                     expression: "!resource.matchTag('12345678/env', 'test')",
- *                 },
- *                 deniedPermissions: ["cloudresourcemanager.googleapis.com/projects.update"],
- *                 exceptionPrincipals: [pulumi.interpolate`principal://iam.googleapis.com/projects/-/serviceAccounts/${test_account.email}`],
- *             },
- *         },
- *     ],
- * });
- * ```
- *
  * ## Import
  *
  * DenyPolicy can be imported using any of these accepted formats:

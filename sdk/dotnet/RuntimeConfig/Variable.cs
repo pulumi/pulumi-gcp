@@ -43,34 +43,6 @@ namespace Pulumi.Gcp.RuntimeConfig
     /// 
     /// Example of using the `value` argument.
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// using Std = Pulumi.Std;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var my_runtime_config = new Gcp.RuntimeConfig.Config("my-runtime-config", new()
-    ///     {
-    ///         Name = "my-service-runtime-config",
-    ///         Description = "Runtime configuration values for my service",
-    ///     });
-    /// 
-    ///     var my_secret = new Gcp.RuntimeConfig.Variable("my-secret", new()
-    ///     {
-    ///         Parent = my_runtime_config.Name,
-    ///         Name = "secret",
-    ///         Value = Std.Filebase64.Invoke(new()
-    ///         {
-    ///             Input = "my-encrypted-secret.dat",
-    ///         }).Apply(invoke =&gt; invoke.Result),
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Runtime Config Variables can be imported using the `name` or full variable name, e.g.

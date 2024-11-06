@@ -26,25 +26,6 @@ import * as utilities from "../utilities";
  *     secretData: "secret-data",
  * });
  * ```
- * ### Regional Secret Version With Base64 Data
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * import * as std from "@pulumi/std";
- *
- * const secret_basic = new gcp.secretmanager.RegionalSecret("secret-basic", {
- *     secretId: "secret-version",
- *     location: "us-central1",
- * });
- * const regionalSecretVersionBase64 = new gcp.secretmanager.RegionalSecretVersion("regional_secret_version_base64", {
- *     secret: secret_basic.id,
- *     secretData: std.filebase64({
- *         input: "secret-data.pfx",
- *     }).then(invoke => invoke.result),
- *     isSecretDataBase64: true,
- * });
- * ```
  * ### Regional Secret Version Disabled
  *
  * ```typescript

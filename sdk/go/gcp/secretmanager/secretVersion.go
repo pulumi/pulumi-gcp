@@ -138,56 +138,6 @@ import (
 //	}
 //
 // ```
-// ### Secret Version With Base64 String Secret Data
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/secretmanager"
-//	"github.com/pulumi/pulumi-std/sdk/go/std"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := secretmanager.NewSecret(ctx, "secret-basic", &secretmanager.SecretArgs{
-//				SecretId: pulumi.String("secret-version"),
-//				Replication: &secretmanager.SecretReplicationArgs{
-//					UserManaged: &secretmanager.SecretReplicationUserManagedArgs{
-//						Replicas: secretmanager.SecretReplicationUserManagedReplicaArray{
-//							&secretmanager.SecretReplicationUserManagedReplicaArgs{
-//								Location: pulumi.String("us-central1"),
-//							},
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			invokeFilebase64, err := std.Filebase64(ctx, &std.Filebase64Args{
-//				Input: "secret-data.pfx",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = secretmanager.NewSecretVersion(ctx, "secret-version-base64", &secretmanager.SecretVersionArgs{
-//				Secret:             secret_basic.ID(),
-//				IsSecretDataBase64: pulumi.Bool(true),
-//				SecretData:         pulumi.String(invokeFilebase64.Result),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // SecretVersion can be imported using any of these accepted formats:

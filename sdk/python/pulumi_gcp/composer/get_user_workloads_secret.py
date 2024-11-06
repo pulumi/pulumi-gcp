@@ -102,30 +102,6 @@ def get_user_workloads_secret(environment: Optional[str] = None,
     """
     ## Example Usage
 
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-    import pulumi_std as std
-
-    example_environment = gcp.composer.Environment("example",
-        name="example-environment",
-        config={
-            "software_config": {
-                "image_version": "composer-3-airflow-2",
-            },
-        })
-    example_user_workloads_secret = gcp.composer.UserWorkloadsSecret("example",
-        environment=example_environment.name,
-        name="example-secret",
-        data={
-            "username": std.base64encode(input="username").result,
-            "password": std.base64encode(input="password").result,
-        })
-    example = example_environment.name.apply(lambda name: gcp.composer.get_user_workloads_secret_output(environment=name,
-        name=google_composer_user_workloads_secret["example"]["name"]))
-    pulumi.export("debug", example)
-    ```
-
 
     :param str environment: Environment where the Secret is stored.
     :param str name: Name of the Secret.
@@ -155,30 +131,6 @@ def get_user_workloads_secret_output(environment: Optional[pulumi.Input[str]] = 
                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserWorkloadsSecretResult]:
     """
     ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-    import pulumi_std as std
-
-    example_environment = gcp.composer.Environment("example",
-        name="example-environment",
-        config={
-            "software_config": {
-                "image_version": "composer-3-airflow-2",
-            },
-        })
-    example_user_workloads_secret = gcp.composer.UserWorkloadsSecret("example",
-        environment=example_environment.name,
-        name="example-secret",
-        data={
-            "username": std.base64encode(input="username").result,
-            "password": std.base64encode(input="password").result,
-        })
-    example = example_environment.name.apply(lambda name: gcp.composer.get_user_workloads_secret_output(environment=name,
-        name=google_composer_user_workloads_secret["example"]["name"]))
-    pulumi.export("debug", example)
-    ```
 
 
     :param str environment: Environment where the Secret is stored.

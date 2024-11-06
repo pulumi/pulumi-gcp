@@ -39,37 +39,6 @@ namespace Pulumi.Gcp.Storage
         /// 
         /// });
         /// ```
-        /// 
-        /// ## Full Example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// using Std = Pulumi.Std;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var getUrl = Gcp.Storage.GetObjectSignedUrl.Invoke(new()
-        ///     {
-        ///         Bucket = "fried_chicken",
-        ///         Path = "path/to/file",
-        ///         ContentMd5 = "pRviqwS4c4OTJRTe03FD1w==",
-        ///         ContentType = "text/plain",
-        ///         Duration = "2d",
-        ///         Credentials = Std.File.Invoke(new()
-        ///         {
-        ///             Input = "path/to/credentials.json",
-        ///         }).Result,
-        ///         ExtensionHeaders = 
-        ///         {
-        ///             { "x-goog-if-generation-match", "1" },
-        ///         },
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetObjectSignedUrlResult> InvokeAsync(GetObjectSignedUrlArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetObjectSignedUrlResult>("gcp:storage/getObjectSignedUrl:getObjectSignedUrl", args ?? new GetObjectSignedUrlArgs(), options.WithDefaults());
@@ -98,37 +67,6 @@ namespace Pulumi.Gcp.Storage
         ///     var vm = new Gcp.Compute.Instance("vm", new()
         ///     {
         ///         Name = "vm",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// 
-        /// ## Full Example
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// using Std = Pulumi.Std;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var getUrl = Gcp.Storage.GetObjectSignedUrl.Invoke(new()
-        ///     {
-        ///         Bucket = "fried_chicken",
-        ///         Path = "path/to/file",
-        ///         ContentMd5 = "pRviqwS4c4OTJRTe03FD1w==",
-        ///         ContentType = "text/plain",
-        ///         Duration = "2d",
-        ///         Credentials = Std.File.Invoke(new()
-        ///         {
-        ///             Input = "path/to/credentials.json",
-        ///         }).Result,
-        ///         ExtensionHeaders = 
-        ///         {
-        ///             { "x-goog-if-generation-match", "1" },
-        ///         },
         ///     });
         /// 
         /// });

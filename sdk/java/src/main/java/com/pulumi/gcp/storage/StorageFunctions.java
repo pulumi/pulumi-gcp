@@ -1403,49 +1403,6 @@ public final class StorageFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ## Full Example
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.storage.StorageFunctions;
-     * import com.pulumi.gcp.storage.inputs.GetObjectSignedUrlArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var getUrl = StorageFunctions.getObjectSignedUrl(GetObjectSignedUrlArgs.builder()
-     *             .bucket("fried_chicken")
-     *             .path("path/to/file")
-     *             .contentMd5("pRviqwS4c4OTJRTe03FD1w==")
-     *             .contentType("text/plain")
-     *             .duration("2d")
-     *             .credentials(StdFunctions.file(FileArgs.builder()
-     *                 .input("path/to/credentials.json")
-     *                 .build()).result())
-     *             .extensionHeaders(Map.of("x-goog-if-generation-match", 1))
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static Output<GetObjectSignedUrlResult> getObjectSignedUrl(GetObjectSignedUrlArgs args) {
         return getObjectSignedUrl(args, InvokeOptions.Empty);
@@ -1489,49 +1446,6 @@ public final class StorageFunctions {
      * 
      *         var vm = new Instance("vm", InstanceArgs.builder()
      *             .name("vm")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     * ## Full Example
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.storage.StorageFunctions;
-     * import com.pulumi.gcp.storage.inputs.GetObjectSignedUrlArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var getUrl = StorageFunctions.getObjectSignedUrl(GetObjectSignedUrlArgs.builder()
-     *             .bucket("fried_chicken")
-     *             .path("path/to/file")
-     *             .contentMd5("pRviqwS4c4OTJRTe03FD1w==")
-     *             .contentType("text/plain")
-     *             .duration("2d")
-     *             .credentials(StdFunctions.file(FileArgs.builder()
-     *                 .input("path/to/credentials.json")
-     *                 .build()).result())
-     *             .extensionHeaders(Map.of("x-goog-if-generation-match", 1))
      *             .build());
      * 
      *     }
@@ -1591,49 +1505,6 @@ public final class StorageFunctions {
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
-     * ## Full Example
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.storage.StorageFunctions;
-     * import com.pulumi.gcp.storage.inputs.GetObjectSignedUrlArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var getUrl = StorageFunctions.getObjectSignedUrl(GetObjectSignedUrlArgs.builder()
-     *             .bucket("fried_chicken")
-     *             .path("path/to/file")
-     *             .contentMd5("pRviqwS4c4OTJRTe03FD1w==")
-     *             .contentType("text/plain")
-     *             .duration("2d")
-     *             .credentials(StdFunctions.file(FileArgs.builder()
-     *                 .input("path/to/credentials.json")
-     *                 .build()).result())
-     *             .extensionHeaders(Map.of("x-goog-if-generation-match", 1))
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static Output<GetObjectSignedUrlResult> getObjectSignedUrl(GetObjectSignedUrlArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:storage/getObjectSignedUrl:getObjectSignedUrl", TypeShape.of(GetObjectSignedUrlResult.class), args, Utilities.withVersion(options));
@@ -1677,49 +1548,6 @@ public final class StorageFunctions {
      * 
      *         var vm = new Instance("vm", InstanceArgs.builder()
      *             .name("vm")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
-     * ## Full Example
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.storage.StorageFunctions;
-     * import com.pulumi.gcp.storage.inputs.GetObjectSignedUrlArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var getUrl = StorageFunctions.getObjectSignedUrl(GetObjectSignedUrlArgs.builder()
-     *             .bucket("fried_chicken")
-     *             .path("path/to/file")
-     *             .contentMd5("pRviqwS4c4OTJRTe03FD1w==")
-     *             .contentType("text/plain")
-     *             .duration("2d")
-     *             .credentials(StdFunctions.file(FileArgs.builder()
-     *                 .input("path/to/credentials.json")
-     *                 .build()).result())
-     *             .extensionHeaders(Map.of("x-goog-if-generation-match", 1))
      *             .build());
      * 
      *     }

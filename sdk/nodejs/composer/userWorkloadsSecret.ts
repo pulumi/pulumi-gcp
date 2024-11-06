@@ -7,37 +7,6 @@ import * as utilities from "../utilities";
 /**
  * ## Example Usage
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * import * as std from "@pulumi/std";
- *
- * const example = new gcp.composer.Environment("example", {
- *     name: "example-environment",
- *     project: "example-project",
- *     region: "us-central1",
- *     config: {
- *         softwareConfig: {
- *             imageVersion: "example-image-version",
- *         },
- *     },
- * });
- * const exampleUserWorkloadsSecret = new gcp.composer.UserWorkloadsSecret("example", {
- *     name: "example-secret",
- *     project: "example-project",
- *     region: "us-central1",
- *     environment: example.name,
- *     data: {
- *         email: std.base64encode({
- *             input: "example-email",
- *         }).then(invoke => invoke.result),
- *         password: std.base64encode({
- *             input: "example-password",
- *         }).then(invoke => invoke.result),
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * Secret can be imported using any of these accepted formats:

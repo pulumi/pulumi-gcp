@@ -54,46 +54,6 @@ import (
 //
 // Example of using the `value` argument.
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/runtimeconfig"
-//	"github.com/pulumi/pulumi-std/sdk/go/std"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := runtimeconfig.NewConfig(ctx, "my-runtime-config", &runtimeconfig.ConfigArgs{
-//				Name:        pulumi.String("my-service-runtime-config"),
-//				Description: pulumi.String("Runtime configuration values for my service"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			invokeFilebase64, err := std.Filebase64(ctx, &std.Filebase64Args{
-//				Input: "my-encrypted-secret.dat",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = runtimeconfig.NewVariable(ctx, "my-secret", &runtimeconfig.VariableArgs{
-//				Parent: my_runtime_config.Name,
-//				Name:   pulumi.String("secret"),
-//				Value:  pulumi.String(invokeFilebase64.Result),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Runtime Config Variables can be imported using the `name` or full variable name, e.g.

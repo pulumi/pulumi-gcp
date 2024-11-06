@@ -28,49 +28,6 @@ import (
 //
 // ## Example Usage
 //
-// ### Deployment Manager Deployment Basic
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/deploymentmanager"
-//	"github.com/pulumi/pulumi-std/sdk/go/std"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			invokeFile, err := std.File(ctx, &std.FileArgs{
-//				Input: "path/to/config.yml",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = deploymentmanager.NewDeployment(ctx, "deployment", &deploymentmanager.DeploymentArgs{
-//				Name: pulumi.String("my-deployment"),
-//				Target: &deploymentmanager.DeploymentTargetArgs{
-//					Config: &deploymentmanager.DeploymentTargetConfigArgs{
-//						Content: pulumi.String(invokeFile.Result),
-//					},
-//				},
-//				Labels: deploymentmanager.DeploymentLabelArray{
-//					&deploymentmanager.DeploymentLabelArgs{
-//						Key:   pulumi.String("foo"),
-//						Value: pulumi.String("bar"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 // ## Import
 //
 // Deployment can be imported using any of these accepted formats:

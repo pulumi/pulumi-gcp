@@ -26,65 +26,6 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * ### Identity Platform Tenant Inbound Saml Config Basic
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.identityplatform.Tenant;
- * import com.pulumi.gcp.identityplatform.TenantArgs;
- * import com.pulumi.gcp.identityplatform.TenantInboundSamlConfig;
- * import com.pulumi.gcp.identityplatform.TenantInboundSamlConfigArgs;
- * import com.pulumi.gcp.identityplatform.inputs.TenantInboundSamlConfigIdpConfigArgs;
- * import com.pulumi.gcp.identityplatform.inputs.TenantInboundSamlConfigSpConfigArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var tenant = new Tenant("tenant", TenantArgs.builder()
- *             .displayName("tenant")
- *             .build());
- * 
- *         var tenantSamlConfig = new TenantInboundSamlConfig("tenantSamlConfig", TenantInboundSamlConfigArgs.builder()
- *             .name("saml.tf-config")
- *             .displayName("Display Name")
- *             .tenant(tenant.name())
- *             .idpConfig(TenantInboundSamlConfigIdpConfigArgs.builder()
- *                 .idpEntityId("tf-idp")
- *                 .signRequest(true)
- *                 .ssoUrl("https://example.com")
- *                 .idpCertificates(TenantInboundSamlConfigIdpConfigIdpCertificateArgs.builder()
- *                     .x509Certificate(StdFunctions.file(FileArgs.builder()
- *                         .input("test-fixtures/rsa_cert.pem")
- *                         .build()).result())
- *                     .build())
- *                 .build())
- *             .spConfig(TenantInboundSamlConfigSpConfigArgs.builder()
- *                 .spEntityId("tf-sp")
- *                 .callbackUri("https://example.com")
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * TenantInboundSamlConfig can be imported using any of these accepted formats:

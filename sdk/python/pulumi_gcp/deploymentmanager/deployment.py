@@ -386,25 +386,6 @@ class Deployment(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Deployment Manager Deployment Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_std as std
-
-        deployment = gcp.deploymentmanager.Deployment("deployment",
-            name="my-deployment",
-            target={
-                "config": {
-                    "content": std.file(input="path/to/config.yml").result,
-                },
-            },
-            labels=[{
-                "key": "foo",
-                "value": "bar",
-            }])
-        ```
         ## Import
 
         Deployment can be imported using any of these accepted formats:
@@ -469,25 +450,6 @@ class Deployment(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Deployment Manager Deployment Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_std as std
-
-        deployment = gcp.deploymentmanager.Deployment("deployment",
-            name="my-deployment",
-            target={
-                "config": {
-                    "content": std.file(input="path/to/config.yml").result,
-                },
-            },
-            labels=[{
-                "key": "foo",
-                "value": "bar",
-            }])
-        ```
         ## Import
 
         Deployment can be imported using any of these accepted formats:

@@ -23,28 +23,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * ### Deployment Manager Deployment Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * import * as std from "@pulumi/std";
- *
- * const deployment = new gcp.deploymentmanager.Deployment("deployment", {
- *     name: "my-deployment",
- *     target: {
- *         config: {
- *             content: std.file({
- *                 input: "path/to/config.yml",
- *             }).then(invoke => invoke.result),
- *         },
- *     },
- *     labels: [{
- *         key: "foo",
- *         value: "bar",
- *     }],
- * });
- * ```
  * ## Import
  *
  * Deployment can be imported using any of these accepted formats:

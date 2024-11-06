@@ -119,48 +119,6 @@ namespace Pulumi.Gcp.SecretManager
     /// 
     /// });
     /// ```
-    /// ### Secret Version With Base64 String Secret Data
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// using Std = Pulumi.Std;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var secret_basic = new Gcp.SecretManager.Secret("secret-basic", new()
-    ///     {
-    ///         SecretId = "secret-version",
-    ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
-    ///         {
-    ///             UserManaged = new Gcp.SecretManager.Inputs.SecretReplicationUserManagedArgs
-    ///             {
-    ///                 Replicas = new[]
-    ///                 {
-    ///                     new Gcp.SecretManager.Inputs.SecretReplicationUserManagedReplicaArgs
-    ///                     {
-    ///                         Location = "us-central1",
-    ///                     },
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     var secret_version_base64 = new Gcp.SecretManager.SecretVersion("secret-version-base64", new()
-    ///     {
-    ///         Secret = secret_basic.Id,
-    ///         IsSecretDataBase64 = true,
-    ///         SecretData = Std.Filebase64.Invoke(new()
-    ///         {
-    ///             Input = "secret-data.pfx",
-    ///         }).Apply(invoke =&gt; invoke.Result),
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// SecretVersion can be imported using any of these accepted formats:

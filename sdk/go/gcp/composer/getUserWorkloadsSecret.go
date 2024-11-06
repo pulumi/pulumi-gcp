@@ -12,66 +12,6 @@ import (
 )
 
 // ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/composer"
-//	"github.com/pulumi/pulumi-std/sdk/go/std"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleEnvironment, err := composer.NewEnvironment(ctx, "example", &composer.EnvironmentArgs{
-//				Name: pulumi.String("example-environment"),
-//				Config: &composer.EnvironmentConfigArgs{
-//					SoftwareConfig: &composer.EnvironmentConfigSoftwareConfigArgs{
-//						ImageVersion: pulumi.String("composer-3-airflow-2"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			invokeBase64encode, err := std.Base64encode(ctx, &std.Base64encodeArgs{
-//				Input: "username",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			invokeBase64encode1, err := std.Base64encode(ctx, &std.Base64encodeArgs{
-//				Input: "password",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = composer.NewUserWorkloadsSecret(ctx, "example", &composer.UserWorkloadsSecretArgs{
-//				Environment: exampleEnvironment.Name,
-//				Name:        pulumi.String("example-secret"),
-//				Data: pulumi.StringMap{
-//					"username": pulumi.String(invokeBase64encode.Result),
-//					"password": pulumi.String(invokeBase64encode1.Result),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			example := exampleEnvironment.Name.ApplyT(func(name string) (composer.GetUserWorkloadsSecretResult, error) {
-//				return composer.GetUserWorkloadsSecretResult(interface{}(composer.LookupUserWorkloadsSecretOutput(ctx, composer.GetUserWorkloadsSecretOutputArgs{
-//					Environment: name,
-//					Name:        googleComposerUserWorkloadsSecret.Example.Name,
-//				}, nil))), nil
-//			}).(composer.GetUserWorkloadsSecretResultOutput)
-//			ctx.Export("debug", example)
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupUserWorkloadsSecret(ctx *pulumi.Context, args *LookupUserWorkloadsSecretArgs, opts ...pulumi.InvokeOption) (*LookupUserWorkloadsSecretResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupUserWorkloadsSecretResult

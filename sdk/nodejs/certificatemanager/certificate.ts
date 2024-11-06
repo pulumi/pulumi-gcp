@@ -150,27 +150,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Certificate Manager Self Managed Certificate Regional
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * import * as std from "@pulumi/std";
- *
- * const _default = new gcp.certificatemanager.Certificate("default", {
- *     name: "self-managed-cert",
- *     description: "Regional cert",
- *     location: "us-central1",
- *     selfManaged: {
- *         pemCertificate: std.file({
- *             input: "test-fixtures/cert.pem",
- *         }).then(invoke => invoke.result),
- *         pemPrivateKey: std.file({
- *             input: "test-fixtures/private-key.pem",
- *         }).then(invoke => invoke.result),
- *     },
- * });
- * ```
  * ### Certificate Manager Google Managed Certificate Issuance Config All Regions
  *
  * ```typescript

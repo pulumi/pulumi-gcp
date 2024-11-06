@@ -158,24 +158,6 @@ def get_object_signed_url(bucket: Optional[str] = None,
     vm = gcp.compute.Instance("vm", name="vm")
     ```
 
-    ## Full Example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-    import pulumi_std as std
-
-    get_url = gcp.storage.get_object_signed_url(bucket="fried_chicken",
-        path="path/to/file",
-        content_md5="pRviqwS4c4OTJRTe03FD1w==",
-        content_type="text/plain",
-        duration="2d",
-        credentials=std.file(input="path/to/credentials.json").result,
-        extension_headers={
-            "x-goog-if-generation-match": "1",
-        })
-    ```
-
 
     :param str bucket: The name of the bucket to read the object from
     :param str content_md5: The [MD5 digest](https://cloud.google.com/storage/docs/hashes-etags#_MD5) value in Base64.
@@ -239,24 +221,6 @@ def get_object_signed_url_output(bucket: Optional[pulumi.Input[str]] = None,
     artifact = gcp.storage.get_object_signed_url(bucket="install_binaries",
         path="path/to/install_file.bin")
     vm = gcp.compute.Instance("vm", name="vm")
-    ```
-
-    ## Full Example
-
-    ```python
-    import pulumi
-    import pulumi_gcp as gcp
-    import pulumi_std as std
-
-    get_url = gcp.storage.get_object_signed_url(bucket="fried_chicken",
-        path="path/to/file",
-        content_md5="pRviqwS4c4OTJRTe03FD1w==",
-        content_type="text/plain",
-        duration="2d",
-        credentials=std.file(input="path/to/credentials.json").result,
-        extension_headers={
-            "x-goog-if-generation-match": "1",
-        })
     ```
 
 

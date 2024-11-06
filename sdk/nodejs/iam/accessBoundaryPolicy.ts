@@ -13,64 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * ### Iam Access Boundary Policy Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * import * as std from "@pulumi/std";
- *
- * const project = new gcp.organizations.Project("project", {
- *     projectId: "my-project",
- *     name: "my-project",
- *     orgId: "123456789",
- *     billingAccount: "000000-0000000-0000000-000000",
- *     deletionPolicy: "DELETE",
- * });
- * const access_policy = new gcp.accesscontextmanager.AccessPolicy("access-policy", {
- *     parent: project.orgId.apply(orgId => `organizations/${orgId}`),
- *     title: "my policy",
- * });
- * const test_access = new gcp.accesscontextmanager.AccessLevel("test-access", {
- *     parent: pulumi.interpolate`accessPolicies/${access_policy.name}`,
- *     name: pulumi.interpolate`accessPolicies/${access_policy.name}/accessLevels/chromeos_no_lock`,
- *     title: "chromeos_no_lock",
- *     basic: {
- *         conditions: [{
- *             devicePolicy: {
- *                 requireScreenLock: true,
- *                 osConstraints: [{
- *                     osType: "DESKTOP_CHROME_OS",
- *                 }],
- *             },
- *             regions: [
- *                 "CH",
- *                 "IT",
- *                 "US",
- *             ],
- *         }],
- *     },
- * });
- * const example = new gcp.iam.AccessBoundaryPolicy("example", {
- *     parent: std.urlencodeOutput({
- *         input: pulumi.interpolate`cloudresourcemanager.googleapis.com/projects/${project.projectId}`,
- *     }).apply(invoke => invoke.result),
- *     name: "my-ab-policy",
- *     displayName: "My AB policy",
- *     rules: [{
- *         description: "AB rule",
- *         accessBoundaryRule: {
- *             availableResource: "*",
- *             availablePermissions: ["*"],
- *             availabilityCondition: {
- *                 title: "Access level expr",
- *                 expression: pulumi.all([project.orgId, test_access.name]).apply(([orgId, name]) => `request.matchAccessLevels('${orgId}', ['${name}'])`),
- *             },
- *         },
- *     }],
- * });
- * ```
- *
  * ## Import
  *
  * AccessBoundaryPolicy can be imported using any of these accepted formats:

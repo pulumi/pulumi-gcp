@@ -26,58 +26,6 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * ### Identity Platform Inbound Saml Config Basic
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.identityplatform.InboundSamlConfig;
- * import com.pulumi.gcp.identityplatform.InboundSamlConfigArgs;
- * import com.pulumi.gcp.identityplatform.inputs.InboundSamlConfigIdpConfigArgs;
- * import com.pulumi.gcp.identityplatform.inputs.InboundSamlConfigSpConfigArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var samlConfig = new InboundSamlConfig("samlConfig", InboundSamlConfigArgs.builder()
- *             .name("saml.tf-config")
- *             .displayName("Display Name")
- *             .idpConfig(InboundSamlConfigIdpConfigArgs.builder()
- *                 .idpEntityId("tf-idp")
- *                 .signRequest(true)
- *                 .ssoUrl("https://example.com")
- *                 .idpCertificates(InboundSamlConfigIdpConfigIdpCertificateArgs.builder()
- *                     .x509Certificate(StdFunctions.file(FileArgs.builder()
- *                         .input("test-fixtures/rsa_cert.pem")
- *                         .build()).result())
- *                     .build())
- *                 .build())
- *             .spConfig(InboundSamlConfigSpConfigArgs.builder()
- *                 .spEntityId("tf-sp")
- *                 .callbackUri("https://example.com")
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * InboundSamlConfig can be imported using any of these accepted formats:

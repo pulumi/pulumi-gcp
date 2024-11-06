@@ -21,60 +21,6 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// ## Example Usage
     /// 
-    /// ### Firebase App Check Device Check Config Full
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// using Std = Pulumi.Std;
-    /// using Time = Pulumi.Time;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new Gcp.Firebase.AppleApp("default", new()
-    ///     {
-    ///         Project = "my-project-name",
-    ///         DisplayName = "Apple app",
-    ///         BundleId = "bundle.id.devicecheck",
-    ///         TeamId = "9987654321",
-    ///     });
-    /// 
-    ///     // It takes a while for App Check to recognize the new app
-    ///     // If your app already exists, you don't have to wait 30 seconds.
-    ///     var wait30s = new Time.Index.Sleep("wait_30s", new()
-    ///     {
-    ///         CreateDuration = "30s",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn =
-    ///         {
-    ///             @default,
-    ///         },
-    ///     });
-    /// 
-    ///     var defaultAppCheckDeviceCheckConfig = new Gcp.Firebase.AppCheckDeviceCheckConfig("default", new()
-    ///     {
-    ///         Project = "my-project-name",
-    ///         AppId = @default.AppId,
-    ///         TokenTtl = "7200s",
-    ///         KeyId = "Key ID",
-    ///         PrivateKey = Std.File.Invoke(new()
-    ///         {
-    ///             Input = "path/to/private-key.p8",
-    ///         }).Apply(invoke =&gt; invoke.Result),
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn =
-    ///         {
-    ///             wait30s,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// DeviceCheckConfig can be imported using any of these accepted formats:

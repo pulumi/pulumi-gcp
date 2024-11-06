@@ -58,9 +58,9 @@ import * as utilities from "../utilities";
  *     service: "servicenetworking.googleapis.com",
  *     reservedPeeringRanges: [privateIpAddress.name],
  * });
- * const dbNameSuffix = new random.RandomId("db_name_suffix", {byteLength: 4});
+ * const dbNameSuffix = new random.index/randomId.RandomId("db_name_suffix", {byteLength: 4});
  * const instance = new gcp.sql.DatabaseInstance("instance", {
- *     name: pulumi.interpolate`private-instance-${dbNameSuffix.hex}`,
+ *     name: `private-instance-${dbNameSuffix.hex}`,
  *     region: "us-central1",
  *     databaseVersion: "MYSQL_5_7",
  *     settings: {

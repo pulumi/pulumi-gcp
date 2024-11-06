@@ -395,9 +395,9 @@ class User(pulumi.CustomResource):
         import pulumi_gcp as gcp
         import pulumi_random as random
 
-        db_name_suffix = random.RandomId("db_name_suffix", byte_length=4)
+        db_name_suffix = random.index.random_id.RandomId("db_name_suffix", byte_length=4)
         main = gcp.sql.DatabaseInstance("main",
-            name=db_name_suffix.hex.apply(lambda hex: f"main-instance-{hex}"),
+            name=f"main-instance-{db_name_suffix['hex']}",
             database_version="MYSQL_5_7",
             settings={
                 "tier": "db-f1-micro",
@@ -410,58 +410,6 @@ class User(pulumi.CustomResource):
         ```
 
         Example using [Cloud SQL IAM database authentication](https://cloud.google.com/sql/docs/mysql/authentication).
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_random as random
-        import pulumi_std as std
-
-        db_name_suffix = random.RandomId("db_name_suffix", byte_length=4)
-        main = gcp.sql.DatabaseInstance("main",
-            name=db_name_suffix.hex.apply(lambda hex: f"main-instance-{hex}"),
-            database_version="POSTGRES_15",
-            settings={
-                "tier": "db-f1-micro",
-                "database_flags": [{
-                    "name": "cloudsql_iam_authentication",
-                    "value": "on",
-                }],
-            })
-        iam_user = gcp.sql.User("iam_user",
-            name="me@example.com",
-            instance=main.name,
-            type="CLOUD_IAM_USER")
-        iam_service_account_user = gcp.sql.User("iam_service_account_user",
-            name=std.trimsuffix(input=service_account["email"],
-                suffix=".gserviceaccount.com").result,
-            instance=main.name,
-            type="CLOUD_IAM_SERVICE_ACCOUNT")
-        ```
-
-        Example using [Cloud SQL IAM Group authentication](https://cloud.google.com/sql/docs/mysql/iam-authentication#iam-group-auth).
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_random as random
-
-        db_name_suffix = random.RandomId("db_name_suffix", byte_length=4)
-        main = gcp.sql.DatabaseInstance("main",
-            name=db_name_suffix.hex.apply(lambda hex: f"main-instance-{hex}"),
-            database_version="MYSQL_8_0",
-            settings={
-                "tier": "db-f1-micro",
-                "database_flags": [{
-                    "name": "cloudsql_iam_authentication",
-                    "value": "on",
-                }],
-            })
-        iam_group_user = gcp.sql.User("iam_group_user",
-            name="iam_group@example.com",
-            instance=main.name,
-            type="CLOUD_IAM_GROUP")
-        ```
 
         ## Import
 
@@ -534,9 +482,9 @@ class User(pulumi.CustomResource):
         import pulumi_gcp as gcp
         import pulumi_random as random
 
-        db_name_suffix = random.RandomId("db_name_suffix", byte_length=4)
+        db_name_suffix = random.index.random_id.RandomId("db_name_suffix", byte_length=4)
         main = gcp.sql.DatabaseInstance("main",
-            name=db_name_suffix.hex.apply(lambda hex: f"main-instance-{hex}"),
+            name=f"main-instance-{db_name_suffix['hex']}",
             database_version="MYSQL_5_7",
             settings={
                 "tier": "db-f1-micro",
@@ -549,58 +497,6 @@ class User(pulumi.CustomResource):
         ```
 
         Example using [Cloud SQL IAM database authentication](https://cloud.google.com/sql/docs/mysql/authentication).
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_random as random
-        import pulumi_std as std
-
-        db_name_suffix = random.RandomId("db_name_suffix", byte_length=4)
-        main = gcp.sql.DatabaseInstance("main",
-            name=db_name_suffix.hex.apply(lambda hex: f"main-instance-{hex}"),
-            database_version="POSTGRES_15",
-            settings={
-                "tier": "db-f1-micro",
-                "database_flags": [{
-                    "name": "cloudsql_iam_authentication",
-                    "value": "on",
-                }],
-            })
-        iam_user = gcp.sql.User("iam_user",
-            name="me@example.com",
-            instance=main.name,
-            type="CLOUD_IAM_USER")
-        iam_service_account_user = gcp.sql.User("iam_service_account_user",
-            name=std.trimsuffix(input=service_account["email"],
-                suffix=".gserviceaccount.com").result,
-            instance=main.name,
-            type="CLOUD_IAM_SERVICE_ACCOUNT")
-        ```
-
-        Example using [Cloud SQL IAM Group authentication](https://cloud.google.com/sql/docs/mysql/iam-authentication#iam-group-auth).
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_random as random
-
-        db_name_suffix = random.RandomId("db_name_suffix", byte_length=4)
-        main = gcp.sql.DatabaseInstance("main",
-            name=db_name_suffix.hex.apply(lambda hex: f"main-instance-{hex}"),
-            database_version="MYSQL_8_0",
-            settings={
-                "tier": "db-f1-micro",
-                "database_flags": [{
-                    "name": "cloudsql_iam_authentication",
-                    "value": "on",
-                }],
-            })
-        iam_group_user = gcp.sql.User("iam_group_user",
-            name="iam_group@example.com",
-            instance=main.name,
-            type="CLOUD_IAM_GROUP")
-        ```
 
         ## Import
 

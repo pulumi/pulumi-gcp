@@ -23,65 +23,6 @@ import (
 //
 // ## Example Usage
 //
-// ### Firebase App Check Device Check Config Full
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/firebase"
-//	"github.com/pulumi/pulumi-std/sdk/go/std"
-//	"github.com/pulumi/pulumi-time/sdk/go/time"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := firebase.NewAppleApp(ctx, "default", &firebase.AppleAppArgs{
-//				Project:     pulumi.String("my-project-name"),
-//				DisplayName: pulumi.String("Apple app"),
-//				BundleId:    pulumi.String("bundle.id.devicecheck"),
-//				TeamId:      pulumi.String("9987654321"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// It takes a while for App Check to recognize the new app
-//			// If your app already exists, you don't have to wait 30 seconds.
-//			wait30s, err := time.NewSleep(ctx, "wait_30s", &time.SleepArgs{
-//				CreateDuration: "30s",
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				_default,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			invokeFile, err := std.File(ctx, &std.FileArgs{
-//				Input: "path/to/private-key.p8",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = firebase.NewAppCheckDeviceCheckConfig(ctx, "default", &firebase.AppCheckDeviceCheckConfigArgs{
-//				Project:    pulumi.String("my-project-name"),
-//				AppId:      _default.AppId,
-//				TokenTtl:   pulumi.String("7200s"),
-//				KeyId:      pulumi.String("Key ID"),
-//				PrivateKey: pulumi.String(invokeFile.Result),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				wait30s,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // DeviceCheckConfig can be imported using any of these accepted formats:

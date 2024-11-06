@@ -357,21 +357,6 @@ class RegionalSecretVersion(pulumi.CustomResource):
             secret=secret_basic.id,
             secret_data="secret-data")
         ```
-        ### Regional Secret Version With Base64 Data
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_std as std
-
-        secret_basic = gcp.secretmanager.RegionalSecret("secret-basic",
-            secret_id="secret-version",
-            location="us-central1")
-        regional_secret_version_base64 = gcp.secretmanager.RegionalSecretVersion("regional_secret_version_base64",
-            secret=secret_basic.id,
-            secret_data=std.filebase64(input="secret-data.pfx").result,
-            is_secret_data_base64=True)
-        ```
         ### Regional Secret Version Disabled
 
         ```python
@@ -467,21 +452,6 @@ class RegionalSecretVersion(pulumi.CustomResource):
         regional_secret_version_basic = gcp.secretmanager.RegionalSecretVersion("regional_secret_version_basic",
             secret=secret_basic.id,
             secret_data="secret-data")
-        ```
-        ### Regional Secret Version With Base64 Data
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_std as std
-
-        secret_basic = gcp.secretmanager.RegionalSecret("secret-basic",
-            secret_id="secret-version",
-            location="us-central1")
-        regional_secret_version_base64 = gcp.secretmanager.RegionalSecretVersion("regional_secret_version_base64",
-            secret=secret_basic.id,
-            secret_data=std.filebase64(input="secret-data.pfx").result,
-            is_secret_data_base64=True)
         ```
         ### Regional Secret Version Disabled
 

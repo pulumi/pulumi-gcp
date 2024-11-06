@@ -20,54 +20,6 @@ import (
 //
 // ## Example Usage
 //
-// ### Identity Platform Inbound Saml Config Basic
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/identityplatform"
-//	"github.com/pulumi/pulumi-std/sdk/go/std"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			invokeFile, err := std.File(ctx, &std.FileArgs{
-//				Input: "test-fixtures/rsa_cert.pem",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = identityplatform.NewInboundSamlConfig(ctx, "saml_config", &identityplatform.InboundSamlConfigArgs{
-//				Name:        pulumi.String("saml.tf-config"),
-//				DisplayName: pulumi.String("Display Name"),
-//				IdpConfig: &identityplatform.InboundSamlConfigIdpConfigArgs{
-//					IdpEntityId: pulumi.String("tf-idp"),
-//					SignRequest: pulumi.Bool(true),
-//					SsoUrl:      pulumi.String("https://example.com"),
-//					IdpCertificates: identityplatform.InboundSamlConfigIdpConfigIdpCertificateArray{
-//						&identityplatform.InboundSamlConfigIdpConfigIdpCertificateArgs{
-//							X509Certificate: pulumi.String(invokeFile.Result),
-//						},
-//					},
-//				},
-//				SpConfig: &identityplatform.InboundSamlConfigSpConfigArgs{
-//					SpEntityId:  pulumi.String("tf-sp"),
-//					CallbackUri: pulumi.String("https://example.com"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // InboundSamlConfig can be imported using any of these accepted formats:

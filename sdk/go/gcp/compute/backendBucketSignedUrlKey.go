@@ -31,15 +31,15 @@ import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/storage"
-//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi-random/sdk/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			urlSignature, err := random.NewRandomId(ctx, "url_signature", &random.RandomIdArgs{
-//				ByteLength: pulumi.Int(16),
+//			urlSignature, err := index / randomId.NewRandomId(ctx, "url_signature", &index/randomId.RandomIdArgs{
+//				ByteLength: 16,
 //			})
 //			if err != nil {
 //				return err

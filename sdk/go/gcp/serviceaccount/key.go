@@ -71,8 +71,8 @@ import (
 //				return err
 //			}
 //			// note this requires the terraform to be run regularly
-//			mykeyRotation, err := time.NewRotating(ctx, "mykey_rotation", &time.RotatingArgs{
-//				RotationDays: pulumi.Int(30),
+//			mykeyRotation, err := index / rotating.NewRotating(ctx, "mykey_rotation", &index/rotating.RotatingArgs{
+//				RotationDays: 30,
 //			})
 //			if err != nil {
 //				return err
@@ -91,63 +91,6 @@ import (
 //	}
 //
 // ```
-//
-// ### Save Key In Kubernetes Secret - DEPRECATED
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/serviceaccount"
-//	corev1 "github.com/pulumi/pulumi-kubernetes/sdk/v4/go/kubernetes/core/v1"
-//	metav1 "github.com/pulumi/pulumi-kubernetes/sdk/v4/go/kubernetes/meta/v1"
-//	"github.com/pulumi/pulumi-std/sdk/go/std"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Workload Identity is the recommended way of accessing Google Cloud APIs from pods.
-//			// https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
-//			myaccount, err := serviceaccount.NewAccount(ctx, "myaccount", &serviceaccount.AccountArgs{
-//				AccountId:   pulumi.String("myaccount"),
-//				DisplayName: pulumi.String("My Service Account"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			mykey, err := serviceaccount.NewKey(ctx, "mykey", &serviceaccount.KeyArgs{
-//				ServiceAccountId: myaccount.Name,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = corev1.NewSecret(ctx, "google-application-credentials", &corev1.SecretArgs{
-//				Metadata: &metav1.ObjectMetaArgs{
-//					Name: pulumi.String("google-application-credentials"),
-//				},
-//				Data: pulumi.StringMap{
-//					"credentials.json": pulumi.String(std.Base64decodeOutput(ctx, std.Base64decodeOutputArgs{
-//						Input: mykey.PrivateKey,
-//					}, nil).ApplyT(func(invoke std.Base64decodeResult) (*string, error) {
-//						return invoke.Result, nil
-//					}).(pulumi.StringPtrOutput)),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// This resource does not support import.
 type Key struct {
 	pulumi.CustomResourceState
 

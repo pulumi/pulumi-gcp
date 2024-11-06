@@ -491,43 +491,6 @@ class ServerTlsPolicy(pulumi.CustomResource):
                 },
             })
         ```
-        ### Network Security Server Tls Policy Mtls
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_std as std
-
-        project = gcp.organizations.get_project()
-        default_trust_config = gcp.certificatemanager.TrustConfig("default",
-            name="my-trust-config",
-            description="sample trust config description",
-            location="global",
-            trust_stores=[{
-                "trust_anchors": [{
-                    "pem_certificate": std.file(input="test-fixtures/ca_cert.pem").result,
-                }],
-                "intermediate_cas": [{
-                    "pem_certificate": std.file(input="test-fixtures/ca_cert.pem").result,
-                }],
-            }],
-            labels={
-                "foo": "bar",
-            })
-        default = gcp.networksecurity.ServerTlsPolicy("default",
-            name="my-server-tls-policy",
-            description="my description",
-            location="global",
-            allow_open=False,
-            mtls_policy={
-                "client_validation_mode": "REJECT_INVALID",
-                "client_validation_trust_config": default_trust_config.name.apply(lambda name: f"projects/{project.number}/locations/global/trustConfigs/{name}"),
-            },
-            labels={
-                "foo": "bar",
-            })
-        ```
-
         ## Import
 
         ServerTlsPolicy can be imported using any of these accepted formats:
@@ -654,43 +617,6 @@ class ServerTlsPolicy(pulumi.CustomResource):
                 },
             })
         ```
-        ### Network Security Server Tls Policy Mtls
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_std as std
-
-        project = gcp.organizations.get_project()
-        default_trust_config = gcp.certificatemanager.TrustConfig("default",
-            name="my-trust-config",
-            description="sample trust config description",
-            location="global",
-            trust_stores=[{
-                "trust_anchors": [{
-                    "pem_certificate": std.file(input="test-fixtures/ca_cert.pem").result,
-                }],
-                "intermediate_cas": [{
-                    "pem_certificate": std.file(input="test-fixtures/ca_cert.pem").result,
-                }],
-            }],
-            labels={
-                "foo": "bar",
-            })
-        default = gcp.networksecurity.ServerTlsPolicy("default",
-            name="my-server-tls-policy",
-            description="my description",
-            location="global",
-            allow_open=False,
-            mtls_policy={
-                "client_validation_mode": "REJECT_INVALID",
-                "client_validation_trust_config": default_trust_config.name.apply(lambda name: f"projects/{project.number}/locations/global/trustConfigs/{name}"),
-            },
-            labels={
-                "foo": "bar",
-            })
-        ```
-
         ## Import
 
         ServerTlsPolicy can be imported using any of these accepted formats:

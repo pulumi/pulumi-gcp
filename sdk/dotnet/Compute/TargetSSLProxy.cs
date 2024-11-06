@@ -22,61 +22,6 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ## Example Usage
     /// 
-    /// ### Target Ssl Proxy Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// using Std = Pulumi.Std;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var defaultSSLCertificate = new Gcp.Compute.SSLCertificate("default", new()
-    ///     {
-    ///         Name = "default-cert",
-    ///         PrivateKey = Std.File.Invoke(new()
-    ///         {
-    ///             Input = "path/to/private.key",
-    ///         }).Apply(invoke =&gt; invoke.Result),
-    ///         Certificate = Std.File.Invoke(new()
-    ///         {
-    ///             Input = "path/to/certificate.crt",
-    ///         }).Apply(invoke =&gt; invoke.Result),
-    ///     });
-    /// 
-    ///     var defaultHealthCheck = new Gcp.Compute.HealthCheck("default", new()
-    ///     {
-    ///         Name = "health-check",
-    ///         CheckIntervalSec = 1,
-    ///         TimeoutSec = 1,
-    ///         TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
-    ///         {
-    ///             Port = 443,
-    ///         },
-    ///     });
-    /// 
-    ///     var defaultBackendService = new Gcp.Compute.BackendService("default", new()
-    ///     {
-    ///         Name = "backend-service",
-    ///         Protocol = "SSL",
-    ///         HealthChecks = defaultHealthCheck.Id,
-    ///     });
-    /// 
-    ///     var @default = new Gcp.Compute.TargetSSLProxy("default", new()
-    ///     {
-    ///         Name = "test-proxy",
-    ///         BackendService = defaultBackendService.Id,
-    ///         SslCertificates = new[]
-    ///         {
-    ///             defaultSSLCertificate.Id,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// TargetSslProxy can be imported using any of these accepted formats:

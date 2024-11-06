@@ -19,65 +19,6 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.composer.Environment;
- * import com.pulumi.gcp.composer.EnvironmentArgs;
- * import com.pulumi.gcp.composer.inputs.EnvironmentConfigArgs;
- * import com.pulumi.gcp.composer.inputs.EnvironmentConfigSoftwareConfigArgs;
- * import com.pulumi.gcp.composer.UserWorkloadsSecret;
- * import com.pulumi.gcp.composer.UserWorkloadsSecretArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var example = new Environment("example", EnvironmentArgs.builder()
- *             .name("example-environment")
- *             .project("example-project")
- *             .region("us-central1")
- *             .config(EnvironmentConfigArgs.builder()
- *                 .softwareConfig(EnvironmentConfigSoftwareConfigArgs.builder()
- *                     .imageVersion("example-image-version")
- *                     .build())
- *                 .build())
- *             .build());
- * 
- *         var exampleUserWorkloadsSecret = new UserWorkloadsSecret("exampleUserWorkloadsSecret", UserWorkloadsSecretArgs.builder()
- *             .name("example-secret")
- *             .project("example-project")
- *             .region("us-central1")
- *             .environment(example.name())
- *             .data(Map.ofEntries(
- *                 Map.entry("email", StdFunctions.base64encode(Base64encodeArgs.builder()
- *                     .input("example-email")
- *                     .build()).result()),
- *                 Map.entry("password", StdFunctions.base64encode(Base64encodeArgs.builder()
- *                     .input("example-password")
- *                     .build()).result())
- *             ))
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * Secret can be imported using any of these accepted formats:

@@ -170,14 +170,11 @@ import javax.annotation.Nullable;
  *         final var bigDataJobSubscriptionId = config.get("bigDataJobSubscriptionId").orElse("projects/myproject/subscriptions/messages");
  *         var bigDataJobNameSuffix = new RandomId("bigDataJobNameSuffix", RandomIdArgs.builder()
  *             .byteLength(4)
- *             .keepers(Map.ofEntries(
- *                 Map.entry("region", region),
- *                 Map.entry("subscription_id", bigDataJobSubscriptionId)
- *             ))
+ *             .keepers(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
  *             .build());
  * 
  *         var bigDataJob = new FlexTemplateJob("bigDataJob", FlexTemplateJobArgs.builder()
- *             .name(bigDataJobNameSuffix.dec().applyValue(dec -> String.format("dataflow-flextemplates-job-%s", dec)))
+ *             .name(String.format("dataflow-flextemplates-job-%s", bigDataJobNameSuffix.dec()))
  *             .region(region)
  *             .containerSpecGcsPath("gs://my-bucket/templates/template.json")
  *             .skipWaitOnJobTermination(true)

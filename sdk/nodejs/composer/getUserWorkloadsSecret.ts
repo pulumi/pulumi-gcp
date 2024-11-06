@@ -6,38 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * import * as std from "@pulumi/std";
- *
- * const exampleEnvironment = new gcp.composer.Environment("example", {
- *     name: "example-environment",
- *     config: {
- *         softwareConfig: {
- *             imageVersion: "composer-3-airflow-2",
- *         },
- *     },
- * });
- * const exampleUserWorkloadsSecret = new gcp.composer.UserWorkloadsSecret("example", {
- *     environment: exampleEnvironment.name,
- *     name: "example-secret",
- *     data: {
- *         username: std.base64encode({
- *             input: "username",
- *         }).then(invoke => invoke.result),
- *         password: std.base64encode({
- *             input: "password",
- *         }).then(invoke => invoke.result),
- *     },
- * });
- * const example = exampleEnvironment.name.apply(name => gcp.composer.getUserWorkloadsSecretOutput({
- *     environment: name,
- *     name: googleComposerUserWorkloadsSecret.example.name,
- * }));
- * export const debug = example;
- * ```
  */
 export function getUserWorkloadsSecret(args: GetUserWorkloadsSecretArgs, opts?: pulumi.InvokeOptions): Promise<GetUserWorkloadsSecretResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -88,38 +56,6 @@ export interface GetUserWorkloadsSecretResult {
 }
 /**
  * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * import * as std from "@pulumi/std";
- *
- * const exampleEnvironment = new gcp.composer.Environment("example", {
- *     name: "example-environment",
- *     config: {
- *         softwareConfig: {
- *             imageVersion: "composer-3-airflow-2",
- *         },
- *     },
- * });
- * const exampleUserWorkloadsSecret = new gcp.composer.UserWorkloadsSecret("example", {
- *     environment: exampleEnvironment.name,
- *     name: "example-secret",
- *     data: {
- *         username: std.base64encode({
- *             input: "username",
- *         }).then(invoke => invoke.result),
- *         password: std.base64encode({
- *             input: "password",
- *         }).then(invoke => invoke.result),
- *     },
- * });
- * const example = exampleEnvironment.name.apply(name => gcp.composer.getUserWorkloadsSecretOutput({
- *     environment: name,
- *     name: googleComposerUserWorkloadsSecret.example.name,
- * }));
- * export const debug = example;
- * ```
  */
 export function getUserWorkloadsSecretOutput(args: GetUserWorkloadsSecretOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserWorkloadsSecretResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

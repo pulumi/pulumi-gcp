@@ -170,60 +170,6 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Secret Version With Base64 String Secret Data
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.secretmanager.Secret;
- * import com.pulumi.gcp.secretmanager.SecretArgs;
- * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
- * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationUserManagedArgs;
- * import com.pulumi.gcp.secretmanager.SecretVersion;
- * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var secret_basic = new Secret("secret-basic", SecretArgs.builder()
- *             .secretId("secret-version")
- *             .replication(SecretReplicationArgs.builder()
- *                 .userManaged(SecretReplicationUserManagedArgs.builder()
- *                     .replicas(SecretReplicationUserManagedReplicaArgs.builder()
- *                         .location("us-central1")
- *                         .build())
- *                     .build())
- *                 .build())
- *             .build());
- * 
- *         var secret_version_base64 = new SecretVersion("secret-version-base64", SecretVersionArgs.builder()
- *             .secret(secret_basic.id())
- *             .isSecretDataBase64(true)
- *             .secretData(StdFunctions.filebase64(Filebase64Args.builder()
- *                 .input("secret-data.pfx")
- *                 .build()).result())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * SecretVersion can be imported using any of these accepted formats:

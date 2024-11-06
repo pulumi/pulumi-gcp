@@ -59,7 +59,7 @@ import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigquery"
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/sql"
-//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi-random/sdk/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -85,9 +85,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			pwd, err := random.NewRandomPassword(ctx, "pwd", &random.RandomPasswordArgs{
-//				Length:  pulumi.Int(16),
-//				Special: pulumi.Bool(false),
+//			pwd, err := index / randomPassword.NewRandomPassword(ctx, "pwd", &index/randomPassword.RandomPasswordArgs{
+//				Length:  16,
+//				Special: false,
 //			})
 //			if err != nil {
 //				return err
@@ -131,7 +131,7 @@ import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigquery"
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/sql"
-//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi-random/sdk/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -157,9 +157,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			pwd, err := random.NewRandomPassword(ctx, "pwd", &random.RandomPasswordArgs{
-//				Length:  pulumi.Int(16),
-//				Special: pulumi.Bool(false),
+//			pwd, err := index / randomPassword.NewRandomPassword(ctx, "pwd", &index/randomPassword.RandomPasswordArgs{
+//				Length:  16,
+//				Special: false,
 //			})
 //			if err != nil {
 //				return err

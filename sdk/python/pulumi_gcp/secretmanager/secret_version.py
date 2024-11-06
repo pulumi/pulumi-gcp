@@ -366,28 +366,6 @@ class SecretVersion(pulumi.CustomResource):
             secret_data="secret-data",
             deletion_policy="DISABLE")
         ```
-        ### Secret Version With Base64 String Secret Data
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_std as std
-
-        secret_basic = gcp.secretmanager.Secret("secret-basic",
-            secret_id="secret-version",
-            replication={
-                "user_managed": {
-                    "replicas": [{
-                        "location": "us-central1",
-                    }],
-                },
-            })
-        secret_version_base64 = gcp.secretmanager.SecretVersion("secret-version-base64",
-            secret=secret_basic.id,
-            is_secret_data_base64=True,
-            secret_data=std.filebase64(input="secret-data.pfx").result)
-        ```
-
         ## Import
 
         SecretVersion can be imported using any of these accepted formats:
@@ -486,28 +464,6 @@ class SecretVersion(pulumi.CustomResource):
             secret_data="secret-data",
             deletion_policy="DISABLE")
         ```
-        ### Secret Version With Base64 String Secret Data
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_std as std
-
-        secret_basic = gcp.secretmanager.Secret("secret-basic",
-            secret_id="secret-version",
-            replication={
-                "user_managed": {
-                    "replicas": [{
-                        "location": "us-central1",
-                    }],
-                },
-            })
-        secret_version_base64 = gcp.secretmanager.SecretVersion("secret-version-base64",
-            secret=secret_basic.id,
-            is_secret_data_base64=True,
-            secret_data=std.filebase64(input="secret-data.pfx").result)
-        ```
-
         ## Import
 
         SecretVersion can be imported using any of these accepted formats:

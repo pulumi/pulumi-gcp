@@ -27,69 +27,6 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * ### Firebase App Check Device Check Config Full
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.firebase.AppleApp;
- * import com.pulumi.gcp.firebase.AppleAppArgs;
- * import com.pulumi.time.sleep;
- * import com.pulumi.time.SleepArgs;
- * import com.pulumi.gcp.firebase.AppCheckDeviceCheckConfig;
- * import com.pulumi.gcp.firebase.AppCheckDeviceCheckConfigArgs;
- * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var default_ = new AppleApp("default", AppleAppArgs.builder()
- *             .project("my-project-name")
- *             .displayName("Apple app")
- *             .bundleId("bundle.id.devicecheck")
- *             .teamId("9987654321")
- *             .build());
- * 
- *         // It takes a while for App Check to recognize the new app
- *         // If your app already exists, you don't have to wait 30 seconds.
- *         var wait30s = new Sleep("wait30s", SleepArgs.builder()
- *             .createDuration("30s")
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(default_)
- *                 .build());
- * 
- *         var defaultAppCheckDeviceCheckConfig = new AppCheckDeviceCheckConfig("defaultAppCheckDeviceCheckConfig", AppCheckDeviceCheckConfigArgs.builder()
- *             .project("my-project-name")
- *             .appId(default_.appId())
- *             .tokenTtl("7200s")
- *             .keyId("Key ID")
- *             .privateKey(StdFunctions.file(FileArgs.builder()
- *                 .input("path/to/private-key.p8")
- *                 .build()).result())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(wait30s)
- *                 .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * DeviceCheckConfig can be imported using any of these accepted formats:

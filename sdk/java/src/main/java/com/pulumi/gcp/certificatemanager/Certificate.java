@@ -261,51 +261,6 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Certificate Manager Self Managed Certificate Regional
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.certificatemanager.Certificate;
- * import com.pulumi.gcp.certificatemanager.CertificateArgs;
- * import com.pulumi.gcp.certificatemanager.inputs.CertificateSelfManagedArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var default_ = new Certificate("default", CertificateArgs.builder()
- *             .name("self-managed-cert")
- *             .description("Regional cert")
- *             .location("us-central1")
- *             .selfManaged(CertificateSelfManagedArgs.builder()
- *                 .pemCertificate(StdFunctions.file(FileArgs.builder()
- *                     .input("test-fixtures/cert.pem")
- *                     .build()).result())
- *                 .pemPrivateKey(StdFunctions.file(FileArgs.builder()
- *                     .input("test-fixtures/private-key.pem")
- *                     .build()).result())
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
  * ### Certificate Manager Google Managed Certificate Issuance Config All Regions
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

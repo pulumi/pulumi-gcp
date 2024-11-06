@@ -14,63 +14,6 @@ import (
 
 // ## Example Usage
 //
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/composer"
-//	"github.com/pulumi/pulumi-std/sdk/go/std"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := composer.NewEnvironment(ctx, "example", &composer.EnvironmentArgs{
-//				Name:    pulumi.String("example-environment"),
-//				Project: pulumi.String("example-project"),
-//				Region:  pulumi.String("us-central1"),
-//				Config: &composer.EnvironmentConfigArgs{
-//					SoftwareConfig: &composer.EnvironmentConfigSoftwareConfigArgs{
-//						ImageVersion: pulumi.String("example-image-version"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			invokeBase64encode, err := std.Base64encode(ctx, &std.Base64encodeArgs{
-//				Input: "example-email",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			invokeBase64encode1, err := std.Base64encode(ctx, &std.Base64encodeArgs{
-//				Input: "example-password",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = composer.NewUserWorkloadsSecret(ctx, "example", &composer.UserWorkloadsSecretArgs{
-//				Name:        pulumi.String("example-secret"),
-//				Project:     pulumi.String("example-project"),
-//				Region:      pulumi.String("us-central1"),
-//				Environment: example.Name,
-//				Data: pulumi.StringMap{
-//					"email":    pulumi.String(invokeBase64encode.Result),
-//					"password": pulumi.String(invokeBase64encode1.Result),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Secret can be imported using any of these accepted formats:

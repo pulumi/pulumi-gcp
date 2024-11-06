@@ -18,53 +18,6 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// 
     /// ## Example Usage
     /// 
-    /// ### Identity Platform Tenant Inbound Saml Config Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// using Std = Pulumi.Std;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var tenant = new Gcp.IdentityPlatform.Tenant("tenant", new()
-    ///     {
-    ///         DisplayName = "tenant",
-    ///     });
-    /// 
-    ///     var tenantSamlConfig = new Gcp.IdentityPlatform.TenantInboundSamlConfig("tenant_saml_config", new()
-    ///     {
-    ///         Name = "saml.tf-config",
-    ///         DisplayName = "Display Name",
-    ///         Tenant = tenant.Name,
-    ///         IdpConfig = new Gcp.IdentityPlatform.Inputs.TenantInboundSamlConfigIdpConfigArgs
-    ///         {
-    ///             IdpEntityId = "tf-idp",
-    ///             SignRequest = true,
-    ///             SsoUrl = "https://example.com",
-    ///             IdpCertificates = new[]
-    ///             {
-    ///                 new Gcp.IdentityPlatform.Inputs.TenantInboundSamlConfigIdpConfigIdpCertificateArgs
-    ///                 {
-    ///                     X509Certificate = Std.File.Invoke(new()
-    ///                     {
-    ///                         Input = "test-fixtures/rsa_cert.pem",
-    ///                     }).Apply(invoke =&gt; invoke.Result),
-    ///                 },
-    ///             },
-    ///         },
-    ///         SpConfig = new Gcp.IdentityPlatform.Inputs.TenantInboundSamlConfigSpConfigArgs
-    ///         {
-    ///             SpEntityId = "tf-sp",
-    ///             CallbackUri = "https://example.com",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// TenantInboundSamlConfig can be imported using any of these accepted formats:

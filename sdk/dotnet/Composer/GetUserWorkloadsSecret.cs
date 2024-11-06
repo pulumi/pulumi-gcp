@@ -13,114 +13,12 @@ namespace Pulumi.Gcp.Composer
     {
         /// <summary>
         /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// using Std = Pulumi.Std;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var exampleEnvironment = new Gcp.Composer.Environment("example", new()
-        ///     {
-        ///         Name = "example-environment",
-        ///         Config = new Gcp.Composer.Inputs.EnvironmentConfigArgs
-        ///         {
-        ///             SoftwareConfig = new Gcp.Composer.Inputs.EnvironmentConfigSoftwareConfigArgs
-        ///             {
-        ///                 ImageVersion = "composer-3-airflow-2",
-        ///             },
-        ///         },
-        ///     });
-        /// 
-        ///     var exampleUserWorkloadsSecret = new Gcp.Composer.UserWorkloadsSecret("example", new()
-        ///     {
-        ///         Environment = exampleEnvironment.Name,
-        ///         Name = "example-secret",
-        ///         Data = 
-        ///         {
-        ///             { "username", Std.Base64encode.Invoke(new()
-        ///             {
-        ///                 Input = "username",
-        ///             }).Apply(invoke =&gt; invoke.Result) },
-        ///             { "password", Std.Base64encode.Invoke(new()
-        ///             {
-        ///                 Input = "password",
-        ///             }).Apply(invoke =&gt; invoke.Result) },
-        ///         },
-        ///     });
-        /// 
-        ///     var example = Gcp.Composer.GetUserWorkloadsSecret.Invoke(new()
-        ///     {
-        ///         Environment = exampleEnvironment.Name,
-        ///         Name = googleComposerUserWorkloadsSecret.Example.Name,
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["debug"] = example,
-        ///     };
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetUserWorkloadsSecretResult> InvokeAsync(GetUserWorkloadsSecretArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetUserWorkloadsSecretResult>("gcp:composer/getUserWorkloadsSecret:getUserWorkloadsSecret", args ?? new GetUserWorkloadsSecretArgs(), options.WithDefaults());
 
         /// <summary>
         /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Gcp = Pulumi.Gcp;
-        /// using Std = Pulumi.Std;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var exampleEnvironment = new Gcp.Composer.Environment("example", new()
-        ///     {
-        ///         Name = "example-environment",
-        ///         Config = new Gcp.Composer.Inputs.EnvironmentConfigArgs
-        ///         {
-        ///             SoftwareConfig = new Gcp.Composer.Inputs.EnvironmentConfigSoftwareConfigArgs
-        ///             {
-        ///                 ImageVersion = "composer-3-airflow-2",
-        ///             },
-        ///         },
-        ///     });
-        /// 
-        ///     var exampleUserWorkloadsSecret = new Gcp.Composer.UserWorkloadsSecret("example", new()
-        ///     {
-        ///         Environment = exampleEnvironment.Name,
-        ///         Name = "example-secret",
-        ///         Data = 
-        ///         {
-        ///             { "username", Std.Base64encode.Invoke(new()
-        ///             {
-        ///                 Input = "username",
-        ///             }).Apply(invoke =&gt; invoke.Result) },
-        ///             { "password", Std.Base64encode.Invoke(new()
-        ///             {
-        ///                 Input = "password",
-        ///             }).Apply(invoke =&gt; invoke.Result) },
-        ///         },
-        ///     });
-        /// 
-        ///     var example = Gcp.Composer.GetUserWorkloadsSecret.Invoke(new()
-        ///     {
-        ///         Environment = exampleEnvironment.Name,
-        ///         Name = googleComposerUserWorkloadsSecret.Example.Name,
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["debug"] = example,
-        ///     };
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetUserWorkloadsSecretResult> Invoke(GetUserWorkloadsSecretInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetUserWorkloadsSecretResult>("gcp:composer/getUserWorkloadsSecret:getUserWorkloadsSecret", args ?? new GetUserWorkloadsSecretInvokeArgs(), options.WithDefaults());

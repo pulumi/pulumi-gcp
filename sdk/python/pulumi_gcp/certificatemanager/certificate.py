@@ -567,22 +567,6 @@ class Certificate(pulumi.CustomResource):
                 ],
             })
         ```
-        ### Certificate Manager Self Managed Certificate Regional
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_std as std
-
-        default = gcp.certificatemanager.Certificate("default",
-            name="self-managed-cert",
-            description="Regional cert",
-            location="us-central1",
-            self_managed={
-                "pem_certificate": std.file(input="test-fixtures/cert.pem").result,
-                "pem_private_key": std.file(input="test-fixtures/private-key.pem").result,
-            })
-        ```
         ### Certificate Manager Google Managed Certificate Issuance Config All Regions
 
         ```python
@@ -892,22 +876,6 @@ class Certificate(pulumi.CustomResource):
                     instance.id,
                     instance2.id,
                 ],
-            })
-        ```
-        ### Certificate Manager Self Managed Certificate Regional
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_std as std
-
-        default = gcp.certificatemanager.Certificate("default",
-            name="self-managed-cert",
-            description="Regional cert",
-            location="us-central1",
-            self_managed={
-                "pem_certificate": std.file(input="test-fixtures/cert.pem").result,
-                "pem_private_key": std.file(input="test-fixtures/private-key.pem").result,
             })
         ```
         ### Certificate Manager Google Managed Certificate Issuance Config All Regions

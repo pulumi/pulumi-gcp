@@ -17,63 +17,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * ### Certificate Manager Trust Config
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * import * as std from "@pulumi/std";
- *
- * const _default = new gcp.certificatemanager.TrustConfig("default", {
- *     name: "trust-config",
- *     description: "sample description for the trust config",
- *     location: "us-central1",
- *     trustStores: [{
- *         trustAnchors: [{
- *             pemCertificate: std.file({
- *                 input: "test-fixtures/cert.pem",
- *             }).then(invoke => invoke.result),
- *         }],
- *         intermediateCas: [{
- *             pemCertificate: std.file({
- *                 input: "test-fixtures/cert.pem",
- *             }).then(invoke => invoke.result),
- *         }],
- *     }],
- *     labels: {
- *         foo: "bar",
- *     },
- * });
- * ```
- * ### Certificate Manager Trust Config Allowlisted Certificates
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * import * as std from "@pulumi/std";
- *
- * const _default = new gcp.certificatemanager.TrustConfig("default", {
- *     name: "trust-config",
- *     description: "A sample trust config resource with allowlisted certificates",
- *     location: "global",
- *     allowlistedCertificates: [
- *         {
- *             pemCertificate: std.file({
- *                 input: "test-fixtures/cert.pem",
- *             }).then(invoke => invoke.result),
- *         },
- *         {
- *             pemCertificate: std.file({
- *                 input: "test-fixtures/cert2.pem",
- *             }).then(invoke => invoke.result),
- *         },
- *     ],
- *     labels: {
- *         foo: "bar",
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * TrustConfig can be imported using any of these accepted formats:

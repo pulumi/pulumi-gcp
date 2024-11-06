@@ -1020,6 +1020,50 @@ public final class OrganizationsFunctions {
      * ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetClusterArgs;
+     * import com.pulumi.kubernetes.rbac.authorization.k8s.io_v1.ClusterRoleBinding;
+     * import com.pulumi.kubernetes.rbac.authorization.k8s.io_v1.ClusterRoleBindingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var providerIdentity = OrganizationsFunctions.getClientOpenIdUserInfo();
+     * 
+     *         final var provider = OrganizationsFunctions.getClientConfig();
+     * 
+     *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
+     *             .name("my-cluster")
+     *             .zone("us-east1-a")
+     *             .build());
+     * 
+     *         var user = new ClusterRoleBinding("user", ClusterRoleBindingArgs.builder()
+     *             .metadata(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .roleRef(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .subject(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1077,6 +1121,50 @@ public final class OrganizationsFunctions {
      * ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetClusterArgs;
+     * import com.pulumi.kubernetes.rbac.authorization.k8s.io_v1.ClusterRoleBinding;
+     * import com.pulumi.kubernetes.rbac.authorization.k8s.io_v1.ClusterRoleBindingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var providerIdentity = OrganizationsFunctions.getClientOpenIdUserInfo();
+     * 
+     *         final var provider = OrganizationsFunctions.getClientConfig();
+     * 
+     *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
+     *             .name("my-cluster")
+     *             .zone("us-east1-a")
+     *             .build());
+     * 
+     *         var user = new ClusterRoleBinding("user", ClusterRoleBindingArgs.builder()
+     *             .metadata(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .roleRef(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .subject(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1134,6 +1222,50 @@ public final class OrganizationsFunctions {
      * ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetClusterArgs;
+     * import com.pulumi.kubernetes.rbac.authorization.k8s.io_v1.ClusterRoleBinding;
+     * import com.pulumi.kubernetes.rbac.authorization.k8s.io_v1.ClusterRoleBindingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var providerIdentity = OrganizationsFunctions.getClientOpenIdUserInfo();
+     * 
+     *         final var provider = OrganizationsFunctions.getClientConfig();
+     * 
+     *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
+     *             .name("my-cluster")
+     *             .zone("us-east1-a")
+     *             .build());
+     * 
+     *         var user = new ClusterRoleBinding("user", ClusterRoleBindingArgs.builder()
+     *             .metadata(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .roleRef(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .subject(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1191,6 +1323,50 @@ public final class OrganizationsFunctions {
      * ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetClusterArgs;
+     * import com.pulumi.kubernetes.rbac.authorization.k8s.io_v1.ClusterRoleBinding;
+     * import com.pulumi.kubernetes.rbac.authorization.k8s.io_v1.ClusterRoleBindingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var providerIdentity = OrganizationsFunctions.getClientOpenIdUserInfo();
+     * 
+     *         final var provider = OrganizationsFunctions.getClientConfig();
+     * 
+     *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
+     *             .name("my-cluster")
+     *             .zone("us-east1-a")
+     *             .build());
+     * 
+     *         var user = new ClusterRoleBinding("user", ClusterRoleBindingArgs.builder()
+     *             .metadata(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .roleRef(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .subject(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1248,6 +1424,50 @@ public final class OrganizationsFunctions {
      * ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetClusterArgs;
+     * import com.pulumi.kubernetes.rbac.authorization.k8s.io_v1.ClusterRoleBinding;
+     * import com.pulumi.kubernetes.rbac.authorization.k8s.io_v1.ClusterRoleBindingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var providerIdentity = OrganizationsFunctions.getClientOpenIdUserInfo();
+     * 
+     *         final var provider = OrganizationsFunctions.getClientConfig();
+     * 
+     *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
+     *             .name("my-cluster")
+     *             .zone("us-east1-a")
+     *             .build());
+     * 
+     *         var user = new ClusterRoleBinding("user", ClusterRoleBindingArgs.builder()
+     *             .metadata(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .roleRef(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .subject(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1305,6 +1525,50 @@ public final class OrganizationsFunctions {
      * ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetClusterArgs;
+     * import com.pulumi.kubernetes.rbac.authorization.k8s.io_v1.ClusterRoleBinding;
+     * import com.pulumi.kubernetes.rbac.authorization.k8s.io_v1.ClusterRoleBindingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var providerIdentity = OrganizationsFunctions.getClientOpenIdUserInfo();
+     * 
+     *         final var provider = OrganizationsFunctions.getClientConfig();
+     * 
+     *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
+     *             .name("my-cluster")
+     *             .zone("us-east1-a")
+     *             .build());
+     * 
+     *         var user = new ClusterRoleBinding("user", ClusterRoleBindingArgs.builder()
+     *             .metadata(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .roleRef(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .subject(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

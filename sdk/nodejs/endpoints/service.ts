@@ -8,38 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * This resource creates and rolls out a Cloud Endpoints service using OpenAPI or gRPC.  View the relevant docs for [OpenAPI](https://cloud.google.com/endpoints/docs/openapi/) and [gRPC](https://cloud.google.com/endpoints/docs/grpc/).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * import * as std from "@pulumi/std";
- *
- * const openapiService = new gcp.endpoints.Service("openapi_service", {
- *     serviceName: "api-name.endpoints.project-id.cloud.goog",
- *     project: "project-id",
- *     openapiConfig: std.file({
- *         input: "openapi_spec.yml",
- *     }).then(invoke => invoke.result),
- * });
- * const grpcService = new gcp.endpoints.Service("grpc_service", {
- *     serviceName: "api-name.endpoints.project-id.cloud.goog",
- *     project: "project-id",
- *     grpcConfig: std.file({
- *         input: "service_spec.yml",
- *     }).then(invoke => invoke.result),
- *     protocOutputBase64: std.filebase64({
- *         input: "compiled_descriptor_file.pb",
- *     }).then(invoke => invoke.result),
- * });
- * ```
- *
- * The example in `examples/endpoints_on_compute_engine` shows the API from the quickstart running on a Compute Engine VM and reachable through Cloud Endpoints, which may also be useful.
- *
- * ## Import
- *
- * This resource does not support import.
  */
 export class Service extends pulumi.CustomResource {
     /**

@@ -218,37 +218,6 @@ namespace Pulumi.Gcp.CertificateManager
     /// 
     /// });
     /// ```
-    /// ### Certificate Manager Self Managed Certificate Regional
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// using Std = Pulumi.Std;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @default = new Gcp.CertificateManager.Certificate("default", new()
-    ///     {
-    ///         Name = "self-managed-cert",
-    ///         Description = "Regional cert",
-    ///         Location = "us-central1",
-    ///         SelfManaged = new Gcp.CertificateManager.Inputs.CertificateSelfManagedArgs
-    ///         {
-    ///             PemCertificate = Std.File.Invoke(new()
-    ///             {
-    ///                 Input = "test-fixtures/cert.pem",
-    ///             }).Apply(invoke =&gt; invoke.Result),
-    ///             PemPrivateKey = Std.File.Invoke(new()
-    ///             {
-    ///                 Input = "test-fixtures/private-key.pem",
-    ///             }).Apply(invoke =&gt; invoke.Result),
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// ### Certificate Manager Google Managed Certificate Issuance Config All Regions
     /// 
     /// ```csharp

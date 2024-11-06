@@ -28,14 +28,14 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * import * as time from "@pulumiverse/time";
+ * import * as time from "@pulumi/time";
  *
  * const myaccount = new gcp.serviceaccount.Account("myaccount", {
  *     accountId: "myaccount",
  *     displayName: "My Service Account",
  * });
  * // note this requires the terraform to be run regularly
- * const mykeyRotation = new time.Rotating("mykey_rotation", {rotationDays: 30});
+ * const mykeyRotation = new time.index/rotating.Rotating("mykey_rotation", {rotationDays: 30});
  * const mykey = new gcp.serviceaccount.Key("mykey", {
  *     serviceAccountId: myaccount.name,
  *     keepers: {
@@ -43,37 +43,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- *
- * ### Save Key In Kubernetes Secret - DEPRECATED
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * import * as kubernetes from "@pulumi/kubernetes";
- * import * as std from "@pulumi/std";
- *
- * // Workload Identity is the recommended way of accessing Google Cloud APIs from pods.
- * // https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
- * const myaccount = new gcp.serviceaccount.Account("myaccount", {
- *     accountId: "myaccount",
- *     displayName: "My Service Account",
- * });
- * const mykey = new gcp.serviceaccount.Key("mykey", {serviceAccountId: myaccount.name});
- * const google_application_credentials = new kubernetes.core.v1.Secret("google-application-credentials", {
- *     metadata: {
- *         name: "google-application-credentials",
- *     },
- *     data: {
- *         "credentials.json": std.base64decodeOutput({
- *             input: mykey.privateKey,
- *         }).apply(invoke => invoke.result),
- *     },
- * });
- * ```
- *
- * ## Import
- *
- * This resource does not support import.
  */
 export class Key extends pulumi.CustomResource {
     /**

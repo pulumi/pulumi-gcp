@@ -11,50 +11,6 @@ namespace Pulumi.Gcp.Endpoints
 {
     /// <summary>
     /// This resource creates and rolls out a Cloud Endpoints service using OpenAPI or gRPC.  View the relevant docs for [OpenAPI](https://cloud.google.com/endpoints/docs/openapi/) and [gRPC](https://cloud.google.com/endpoints/docs/grpc/).
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// using Std = Pulumi.Std;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var openapiService = new Gcp.Endpoints.Service("openapi_service", new()
-    ///     {
-    ///         ServiceName = "api-name.endpoints.project-id.cloud.goog",
-    ///         Project = "project-id",
-    ///         OpenapiConfig = Std.File.Invoke(new()
-    ///         {
-    ///             Input = "openapi_spec.yml",
-    ///         }).Apply(invoke =&gt; invoke.Result),
-    ///     });
-    /// 
-    ///     var grpcService = new Gcp.Endpoints.Service("grpc_service", new()
-    ///     {
-    ///         ServiceName = "api-name.endpoints.project-id.cloud.goog",
-    ///         Project = "project-id",
-    ///         GrpcConfig = Std.File.Invoke(new()
-    ///         {
-    ///             Input = "service_spec.yml",
-    ///         }).Apply(invoke =&gt; invoke.Result),
-    ///         ProtocOutputBase64 = Std.Filebase64.Invoke(new()
-    ///         {
-    ///             Input = "compiled_descriptor_file.pb",
-    ///         }).Apply(invoke =&gt; invoke.Result),
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// The example in `examples/endpoints_on_compute_engine` shows the API from the quickstart running on a Compute Engine VM and reachable through Cloud Endpoints, which may also be useful.
-    /// 
-    /// ## Import
-    /// 
-    /// This resource does not support import.
     /// </summary>
     [GcpResourceType("gcp:endpoints/service:Service")]
     public partial class Service : global::Pulumi.CustomResource

@@ -135,55 +135,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Iam Workload Identity Pool Provider Saml Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * import * as std from "@pulumi/std";
- *
- * const pool = new gcp.iam.WorkloadIdentityPool("pool", {workloadIdentityPoolId: "example-pool"});
- * const example = new gcp.iam.WorkloadIdentityPoolProvider("example", {
- *     workloadIdentityPoolId: pool.workloadIdentityPoolId,
- *     workloadIdentityPoolProviderId: "example-prvdr",
- *     attributeMapping: {
- *         "google.subject": "assertion.arn",
- *         "attribute.aws_account": "assertion.account",
- *         "attribute.environment": "assertion.arn.contains(\":instance-profile/Production\") ? \"prod\" : \"test\"",
- *     },
- *     saml: {
- *         idpMetadataXml: std.file({
- *             input: "test-fixtures/metadata.xml",
- *         }).then(invoke => invoke.result),
- *     },
- * });
- * ```
- * ### Iam Workload Identity Pool Provider Saml Full
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * import * as std from "@pulumi/std";
- *
- * const pool = new gcp.iam.WorkloadIdentityPool("pool", {workloadIdentityPoolId: "example-pool"});
- * const example = new gcp.iam.WorkloadIdentityPoolProvider("example", {
- *     workloadIdentityPoolId: pool.workloadIdentityPoolId,
- *     workloadIdentityPoolProviderId: "example-prvdr",
- *     displayName: "Name of provider",
- *     description: "SAML 2.0 identity pool provider for automated test",
- *     disabled: true,
- *     attributeMapping: {
- *         "google.subject": "assertion.arn",
- *         "attribute.aws_account": "assertion.account",
- *         "attribute.environment": "assertion.arn.contains(\":instance-profile/Production\") ? \"prod\" : \"test\"",
- *     },
- *     saml: {
- *         idpMetadataXml: std.file({
- *             input: "test-fixtures/metadata.xml",
- *         }).then(invoke => invoke.result),
- *     },
- * });
- * ```
  * ### Iam Workload Identity Pool Provider Oidc Upload Key
  *
  * ```typescript
@@ -217,65 +168,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Iam Workload Identity Pool Provider X509 Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * import * as std from "@pulumi/std";
- *
- * const pool = new gcp.iam.WorkloadIdentityPool("pool", {workloadIdentityPoolId: "example-pool"});
- * const example = new gcp.iam.WorkloadIdentityPoolProvider("example", {
- *     workloadIdentityPoolId: pool.workloadIdentityPoolId,
- *     workloadIdentityPoolProviderId: "example-prvdr",
- *     attributeMapping: {
- *         "google.subject": "assertion.subject.dn.cn",
- *     },
- *     x509: {
- *         trustStore: {
- *             trustAnchors: [{
- *                 pemCertificate: std.file({
- *                     input: "test-fixtures/trust_anchor.pem",
- *                 }).then(invoke => invoke.result),
- *             }],
- *         },
- *     },
- * });
- * ```
- * ### Iam Workload Identity Pool Provider X509 Full
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * import * as std from "@pulumi/std";
- *
- * const pool = new gcp.iam.WorkloadIdentityPool("pool", {workloadIdentityPoolId: "example-pool"});
- * const example = new gcp.iam.WorkloadIdentityPoolProvider("example", {
- *     workloadIdentityPoolId: pool.workloadIdentityPoolId,
- *     workloadIdentityPoolProviderId: "example-prvdr",
- *     displayName: "Name of provider",
- *     description: "X.509 identity pool provider for automated test",
- *     disabled: true,
- *     attributeMapping: {
- *         "google.subject": "assertion.subject.dn.cn",
- *     },
- *     x509: {
- *         trustStore: {
- *             trustAnchors: [{
- *                 pemCertificate: std.file({
- *                     input: "test-fixtures/trust_anchor.pem",
- *                 }).then(invoke => invoke.result),
- *             }],
- *             intermediateCas: [{
- *                 pemCertificate: std.file({
- *                     input: "test-fixtures/intermediate_ca.pem",
- *                 }).then(invoke => invoke.result),
- *             }],
- *         },
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * WorkloadIdentityPoolProvider can be imported using any of these accepted formats:

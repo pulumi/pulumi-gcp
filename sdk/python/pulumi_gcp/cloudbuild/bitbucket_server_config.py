@@ -477,52 +477,6 @@ class BitbucketServerConfig(pulumi.CustomResource):
                 },
             ])
         ```
-        ### Cloudbuild Bitbucket Server Config Peered Network
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_std as std
-
-        project = gcp.organizations.get_project()
-        servicenetworking = gcp.projects.Service("servicenetworking",
-            service="servicenetworking.googleapis.com",
-            disable_on_destroy=False)
-        vpc_network = gcp.compute.Network("vpc_network", name="vpc-network",
-        opts = pulumi.ResourceOptions(depends_on=[servicenetworking]))
-        private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
-            name="private-ip-alloc",
-            purpose="VPC_PEERING",
-            address_type="INTERNAL",
-            prefix_length=16,
-            network=vpc_network.id)
-        default = gcp.servicenetworking.Connection("default",
-            network=vpc_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[private_ip_alloc.name],
-            opts = pulumi.ResourceOptions(depends_on=[servicenetworking]))
-        bbs_config_with_peered_network = gcp.cloudbuild.BitbucketServerConfig("bbs-config-with-peered-network",
-            config_id="bbs-config",
-            location="us-central1",
-            host_uri="https://bbs.com",
-            secrets={
-                "admin_access_token_version_name": "projects/myProject/secrets/mybbspat/versions/1",
-                "read_access_token_version_name": "projects/myProject/secrets/mybbspat/versions/1",
-                "webhook_secret_version_name": "projects/myProject/secrets/mybbspat/versions/1",
-            },
-            username="test",
-            api_key="<api-key>",
-            peered_network=vpc_network.id.apply(lambda id: std.replace_output(text=id,
-                search=project.name,
-                replace=project.number)).apply(lambda invoke: invoke.result),
-            ssl_ca=\"\"\"-----BEGIN CERTIFICATE-----
-        -----END CERTIFICATE-----
-        -----BEGIN CERTIFICATE-----
-        -----END CERTIFICATE-----
-        \"\"\",
-            opts = pulumi.ResourceOptions(depends_on=[default]))
-        ```
-
         ## Import
 
         BitbucketServerConfig can be imported using any of these accepted formats:
@@ -630,52 +584,6 @@ class BitbucketServerConfig(pulumi.CustomResource):
                 },
             ])
         ```
-        ### Cloudbuild Bitbucket Server Config Peered Network
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_std as std
-
-        project = gcp.organizations.get_project()
-        servicenetworking = gcp.projects.Service("servicenetworking",
-            service="servicenetworking.googleapis.com",
-            disable_on_destroy=False)
-        vpc_network = gcp.compute.Network("vpc_network", name="vpc-network",
-        opts = pulumi.ResourceOptions(depends_on=[servicenetworking]))
-        private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
-            name="private-ip-alloc",
-            purpose="VPC_PEERING",
-            address_type="INTERNAL",
-            prefix_length=16,
-            network=vpc_network.id)
-        default = gcp.servicenetworking.Connection("default",
-            network=vpc_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[private_ip_alloc.name],
-            opts = pulumi.ResourceOptions(depends_on=[servicenetworking]))
-        bbs_config_with_peered_network = gcp.cloudbuild.BitbucketServerConfig("bbs-config-with-peered-network",
-            config_id="bbs-config",
-            location="us-central1",
-            host_uri="https://bbs.com",
-            secrets={
-                "admin_access_token_version_name": "projects/myProject/secrets/mybbspat/versions/1",
-                "read_access_token_version_name": "projects/myProject/secrets/mybbspat/versions/1",
-                "webhook_secret_version_name": "projects/myProject/secrets/mybbspat/versions/1",
-            },
-            username="test",
-            api_key="<api-key>",
-            peered_network=vpc_network.id.apply(lambda id: std.replace_output(text=id,
-                search=project.name,
-                replace=project.number)).apply(lambda invoke: invoke.result),
-            ssl_ca=\"\"\"-----BEGIN CERTIFICATE-----
-        -----END CERTIFICATE-----
-        -----BEGIN CERTIFICATE-----
-        -----END CERTIFICATE-----
-        \"\"\",
-            opts = pulumi.ResourceOptions(depends_on=[default]))
-        ```
-
         ## Import
 
         BitbucketServerConfig can be imported using any of these accepted formats:

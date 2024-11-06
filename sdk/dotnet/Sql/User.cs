@@ -25,14 +25,14 @@ namespace Pulumi.Gcp.Sql
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var dbNameSuffix = new Random.RandomId("db_name_suffix", new()
+    ///     var dbNameSuffix = new Random.Index.RandomId.RandomId("db_name_suffix", new()
     ///     {
     ///         ByteLength = 4,
     ///     });
     /// 
     ///     var main = new Gcp.Sql.DatabaseInstance("main", new()
     ///     {
-    ///         Name = dbNameSuffix.Hex.Apply(hex =&gt; $"main-instance-{hex}"),
+    ///         Name = $"main-instance-{dbNameSuffix.Hex}",
     ///         DatabaseVersion = "MYSQL_5_7",
     ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
     ///         {
@@ -52,104 +52,6 @@ namespace Pulumi.Gcp.Sql
     /// ```
     /// 
     /// Example using [Cloud SQL IAM database authentication](https://cloud.google.com/sql/docs/mysql/authentication).
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// using Random = Pulumi.Random;
-    /// using Std = Pulumi.Std;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var dbNameSuffix = new Random.RandomId("db_name_suffix", new()
-    ///     {
-    ///         ByteLength = 4,
-    ///     });
-    /// 
-    ///     var main = new Gcp.Sql.DatabaseInstance("main", new()
-    ///     {
-    ///         Name = dbNameSuffix.Hex.Apply(hex =&gt; $"main-instance-{hex}"),
-    ///         DatabaseVersion = "POSTGRES_15",
-    ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
-    ///         {
-    ///             Tier = "db-f1-micro",
-    ///             DatabaseFlags = new[]
-    ///             {
-    ///                 new Gcp.Sql.Inputs.DatabaseInstanceSettingsDatabaseFlagArgs
-    ///                 {
-    ///                     Name = "cloudsql_iam_authentication",
-    ///                     Value = "on",
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     var iamUser = new Gcp.Sql.User("iam_user", new()
-    ///     {
-    ///         Name = "me@example.com",
-    ///         Instance = main.Name,
-    ///         Type = "CLOUD_IAM_USER",
-    ///     });
-    /// 
-    ///     var iamServiceAccountUser = new Gcp.Sql.User("iam_service_account_user", new()
-    ///     {
-    ///         Name = Std.Trimsuffix.Invoke(new()
-    ///         {
-    ///             Input = serviceAccount.Email,
-    ///             Suffix = ".gserviceaccount.com",
-    ///         }).Apply(invoke =&gt; invoke.Result),
-    ///         Instance = main.Name,
-    ///         Type = "CLOUD_IAM_SERVICE_ACCOUNT",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// Example using [Cloud SQL IAM Group authentication](https://cloud.google.com/sql/docs/mysql/iam-authentication#iam-group-auth).
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// using Random = Pulumi.Random;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var dbNameSuffix = new Random.RandomId("db_name_suffix", new()
-    ///     {
-    ///         ByteLength = 4,
-    ///     });
-    /// 
-    ///     var main = new Gcp.Sql.DatabaseInstance("main", new()
-    ///     {
-    ///         Name = dbNameSuffix.Hex.Apply(hex =&gt; $"main-instance-{hex}"),
-    ///         DatabaseVersion = "MYSQL_8_0",
-    ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
-    ///         {
-    ///             Tier = "db-f1-micro",
-    ///             DatabaseFlags = new[]
-    ///             {
-    ///                 new Gcp.Sql.Inputs.DatabaseInstanceSettingsDatabaseFlagArgs
-    ///                 {
-    ///                     Name = "cloudsql_iam_authentication",
-    ///                     Value = "on",
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     var iamGroupUser = new Gcp.Sql.User("iam_group_user", new()
-    ///     {
-    ///         Name = "iam_group@example.com",
-    ///         Instance = main.Name,
-    ///         Type = "CLOUD_IAM_GROUP",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// 
     /// ## Import
     /// 

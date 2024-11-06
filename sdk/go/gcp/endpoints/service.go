@@ -13,68 +13,6 @@ import (
 )
 
 // This resource creates and rolls out a Cloud Endpoints service using OpenAPI or gRPC.  View the relevant docs for [OpenAPI](https://cloud.google.com/endpoints/docs/openapi/) and [gRPC](https://cloud.google.com/endpoints/docs/grpc/).
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/endpoints"
-//	"github.com/pulumi/pulumi-std/sdk/go/std"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			invokeFile, err := std.File(ctx, &std.FileArgs{
-//				Input: "openapi_spec.yml",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = endpoints.NewService(ctx, "openapi_service", &endpoints.ServiceArgs{
-//				ServiceName:   pulumi.String("api-name.endpoints.project-id.cloud.goog"),
-//				Project:       pulumi.String("project-id"),
-//				OpenapiConfig: pulumi.String(invokeFile.Result),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			invokeFile1, err := std.File(ctx, &std.FileArgs{
-//				Input: "service_spec.yml",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			invokeFilebase642, err := std.Filebase64(ctx, &std.Filebase64Args{
-//				Input: "compiled_descriptor_file.pb",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = endpoints.NewService(ctx, "grpc_service", &endpoints.ServiceArgs{
-//				ServiceName:        pulumi.String("api-name.endpoints.project-id.cloud.goog"),
-//				Project:            pulumi.String("project-id"),
-//				GrpcConfig:         pulumi.String(invokeFile1.Result),
-//				ProtocOutputBase64: pulumi.String(invokeFilebase642.Result),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// The example in `examples/endpoints_on_compute_engine` shows the API from the quickstart running on a Compute Engine VM and reachable through Cloud Endpoints, which may also be useful.
-//
-// ## Import
-//
-// This resource does not support import.
 type Service struct {
 	pulumi.CustomResourceState
 

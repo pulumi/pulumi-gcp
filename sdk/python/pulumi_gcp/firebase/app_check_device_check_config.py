@@ -278,32 +278,6 @@ class AppCheckDeviceCheckConfig(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Firebase App Check Device Check Config Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_std as std
-        import pulumi_time as time
-
-        default = gcp.firebase.AppleApp("default",
-            project="my-project-name",
-            display_name="Apple app",
-            bundle_id="bundle.id.devicecheck",
-            team_id="9987654321")
-        # It takes a while for App Check to recognize the new app
-        # If your app already exists, you don't have to wait 30 seconds.
-        wait30s = time.index.Sleep("wait_30s", create_duration=30s,
-        opts = pulumi.ResourceOptions(depends_on=[default]))
-        default_app_check_device_check_config = gcp.firebase.AppCheckDeviceCheckConfig("default",
-            project="my-project-name",
-            app_id=default.app_id,
-            token_ttl="7200s",
-            key_id="Key ID",
-            private_key=std.file(input="path/to/private-key.p8").result,
-            opts = pulumi.ResourceOptions(depends_on=[wait30s]))
-        ```
-
         ## Import
 
         DeviceCheckConfig can be imported using any of these accepted formats:
@@ -361,32 +335,6 @@ class AppCheckDeviceCheckConfig(pulumi.CustomResource):
             * [Official Documentation](https://firebase.google.com/docs/app-check)
 
         ## Example Usage
-
-        ### Firebase App Check Device Check Config Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_std as std
-        import pulumi_time as time
-
-        default = gcp.firebase.AppleApp("default",
-            project="my-project-name",
-            display_name="Apple app",
-            bundle_id="bundle.id.devicecheck",
-            team_id="9987654321")
-        # It takes a while for App Check to recognize the new app
-        # If your app already exists, you don't have to wait 30 seconds.
-        wait30s = time.index.Sleep("wait_30s", create_duration=30s,
-        opts = pulumi.ResourceOptions(depends_on=[default]))
-        default_app_check_device_check_config = gcp.firebase.AppCheckDeviceCheckConfig("default",
-            project="my-project-name",
-            app_id=default.app_id,
-            token_ttl="7200s",
-            key_id="Key ID",
-            private_key=std.file(input="path/to/private-key.p8").result,
-            opts = pulumi.ResourceOptions(depends_on=[wait30s]))
-        ```
 
         ## Import
 

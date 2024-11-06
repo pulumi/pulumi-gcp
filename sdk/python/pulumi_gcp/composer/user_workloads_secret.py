@@ -209,31 +209,6 @@ class UserWorkloadsSecret(pulumi.CustomResource):
         """
         ## Example Usage
 
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_std as std
-
-        example = gcp.composer.Environment("example",
-            name="example-environment",
-            project="example-project",
-            region="us-central1",
-            config={
-                "software_config": {
-                    "image_version": "example-image-version",
-                },
-            })
-        example_user_workloads_secret = gcp.composer.UserWorkloadsSecret("example",
-            name="example-secret",
-            project="example-project",
-            region="us-central1",
-            environment=example.name,
-            data={
-                "email": std.base64encode(input="example-email").result,
-                "password": std.base64encode(input="example-password").result,
-            })
-        ```
-
         ## Import
 
         Secret can be imported using any of these accepted formats:
@@ -275,31 +250,6 @@ class UserWorkloadsSecret(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_std as std
-
-        example = gcp.composer.Environment("example",
-            name="example-environment",
-            project="example-project",
-            region="us-central1",
-            config={
-                "software_config": {
-                    "image_version": "example-image-version",
-                },
-            })
-        example_user_workloads_secret = gcp.composer.UserWorkloadsSecret("example",
-            name="example-secret",
-            project="example-project",
-            region="us-central1",
-            environment=example.name,
-            data={
-                "email": std.base64encode(input="example-email").result,
-                "password": std.base64encode(input="example-password").result,
-            })
-        ```
 
         ## Import
 

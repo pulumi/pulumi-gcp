@@ -73,32 +73,6 @@ import * as utilities from "../utilities";
  *     deletionPolicy: "DISABLE",
  * });
  * ```
- * ### Secret Version With Base64 String Secret Data
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * import * as std from "@pulumi/std";
- *
- * const secret_basic = new gcp.secretmanager.Secret("secret-basic", {
- *     secretId: "secret-version",
- *     replication: {
- *         userManaged: {
- *             replicas: [{
- *                 location: "us-central1",
- *             }],
- *         },
- *     },
- * });
- * const secret_version_base64 = new gcp.secretmanager.SecretVersion("secret-version-base64", {
- *     secret: secret_basic.id,
- *     isSecretDataBase64: true,
- *     secretData: std.filebase64({
- *         input: "secret-data.pfx",
- *     }).then(invoke => invoke.result),
- * });
- * ```
- *
  * ## Import
  *
  * SecretVersion can be imported using any of these accepted formats:

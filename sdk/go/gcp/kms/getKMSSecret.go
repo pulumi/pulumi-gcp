@@ -73,7 +73,7 @@ import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/kms"
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/sql"
-//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi-random/sdk/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -87,16 +87,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			dbNameSuffix, err := random.NewRandomId(ctx, "db_name_suffix", &random.RandomIdArgs{
-//				ByteLength: pulumi.Int(4),
+//			dbNameSuffix, err := index / randomId.NewRandomId(ctx, "db_name_suffix", &index/randomId.RandomIdArgs{
+//				ByteLength: 4,
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			main, err := sql.NewDatabaseInstance(ctx, "main", &sql.DatabaseInstanceArgs{
-//				Name: dbNameSuffix.Hex.ApplyT(func(hex string) (string, error) {
-//					return fmt.Sprintf("main-instance-%v", hex), nil
-//				}).(pulumi.StringOutput),
+//				Name:            pulumi.Sprintf("main-instance-%v", dbNameSuffix.Hex),
 //				DatabaseVersion: pulumi.String("MYSQL_5_7"),
 //				Settings: &sql.DatabaseInstanceSettingsArgs{
 //					Tier: pulumi.String("db-f1-micro"),

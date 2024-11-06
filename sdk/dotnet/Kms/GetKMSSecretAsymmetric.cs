@@ -122,14 +122,14 @@ namespace Pulumi.Gcp.Kms
         /// ",
         ///     });
         /// 
-        ///     var dbNameSuffix = new Random.RandomId("db_name_suffix", new()
+        ///     var dbNameSuffix = new Random.Index.RandomId.RandomId("db_name_suffix", new()
         ///     {
         ///         ByteLength = 4,
         ///     });
         /// 
         ///     var main = new Gcp.Sql.DatabaseInstance("main", new()
         ///     {
-        ///         Name = dbNameSuffix.Hex.Apply(hex =&gt; $"main-instance-{hex}"),
+        ///         Name = $"main-instance-{dbNameSuffix.Hex}",
         ///         DatabaseVersion = "MYSQL_5_7",
         ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
         ///         {
@@ -264,14 +264,14 @@ namespace Pulumi.Gcp.Kms
         /// ",
         ///     });
         /// 
-        ///     var dbNameSuffix = new Random.RandomId("db_name_suffix", new()
+        ///     var dbNameSuffix = new Random.Index.RandomId.RandomId("db_name_suffix", new()
         ///     {
         ///         ByteLength = 4,
         ///     });
         /// 
         ///     var main = new Gcp.Sql.DatabaseInstance("main", new()
         ///     {
-        ///         Name = dbNameSuffix.Hex.Apply(hex =&gt; $"main-instance-{hex}"),
+        ///         Name = $"main-instance-{dbNameSuffix.Hex}",
         ///         DatabaseVersion = "MYSQL_5_7",
         ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
         ///         {

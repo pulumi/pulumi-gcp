@@ -225,50 +225,6 @@ import (
 //	}
 //
 // ```
-// ### Certificate Manager Self Managed Certificate Regional
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/certificatemanager"
-//	"github.com/pulumi/pulumi-std/sdk/go/std"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			invokeFile, err := std.File(ctx, &std.FileArgs{
-//				Input: "test-fixtures/cert.pem",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			invokeFile1, err := std.File(ctx, &std.FileArgs{
-//				Input: "test-fixtures/private-key.pem",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = certificatemanager.NewCertificate(ctx, "default", &certificatemanager.CertificateArgs{
-//				Name:        pulumi.String("self-managed-cert"),
-//				Description: pulumi.String("Regional cert"),
-//				Location:    pulumi.String("us-central1"),
-//				SelfManaged: &certificatemanager.CertificateSelfManagedArgs{
-//					PemCertificate: pulumi.String(invokeFile.Result),
-//					PemPrivateKey:  pulumi.String(invokeFile1.Result),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 // ### Certificate Manager Google Managed Certificate Issuance Config All Regions
 //
 // ```go

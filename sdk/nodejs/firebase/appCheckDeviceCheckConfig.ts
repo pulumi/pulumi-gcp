@@ -16,38 +16,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * ### Firebase App Check Device Check Config Full
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * import * as std from "@pulumi/std";
- * import * as time from "@pulumi/time";
- *
- * const _default = new gcp.firebase.AppleApp("default", {
- *     project: "my-project-name",
- *     displayName: "Apple app",
- *     bundleId: "bundle.id.devicecheck",
- *     teamId: "9987654321",
- * });
- * // It takes a while for App Check to recognize the new app
- * // If your app already exists, you don't have to wait 30 seconds.
- * const wait30s = new time.index.Sleep("wait_30s", {createDuration: "30s"}, {
- *     dependsOn: [_default],
- * });
- * const defaultAppCheckDeviceCheckConfig = new gcp.firebase.AppCheckDeviceCheckConfig("default", {
- *     project: "my-project-name",
- *     appId: _default.appId,
- *     tokenTtl: "7200s",
- *     keyId: "Key ID",
- *     privateKey: std.file({
- *         input: "path/to/private-key.p8",
- *     }).then(invoke => invoke.result),
- * }, {
- *     dependsOn: [wait30s],
- * });
- * ```
- *
  * ## Import
  *
  * DeviceCheckConfig can be imported using any of these accepted formats:

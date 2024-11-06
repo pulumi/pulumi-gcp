@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
- *             .name(dbNameSuffix.hex().applyValue(hex -> String.format("main-instance-%s", hex)))
+ *             .name(String.format("main-instance-%s", dbNameSuffix.hex()))
  *             .databaseVersion("MYSQL_5_7")
  *             .settings(DatabaseInstanceSettingsArgs.builder()
  *                 .tier("db-f1-micro")
@@ -78,129 +78,6 @@ import javax.annotation.Nullable;
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * Example using [Cloud SQL IAM database authentication](https://cloud.google.com/sql/docs/mysql/authentication).
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.random.RandomId;
- * import com.pulumi.random.RandomIdArgs;
- * import com.pulumi.gcp.sql.DatabaseInstance;
- * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
- * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
- * import com.pulumi.gcp.sql.User;
- * import com.pulumi.gcp.sql.UserArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App }{{@code
- *     public static void main(String[] args) }{{@code
- *         Pulumi.run(App::stack);
- *     }}{@code
- * 
- *     public static void stack(Context ctx) }{{@code
- *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()
- *             .byteLength(4)
- *             .build());
- * 
- *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
- *             .name(dbNameSuffix.hex().applyValue(hex -> String.format("main-instance-%s", hex)))
- *             .databaseVersion("POSTGRES_15")
- *             .settings(DatabaseInstanceSettingsArgs.builder()
- *                 .tier("db-f1-micro")
- *                 .databaseFlags(DatabaseInstanceSettingsDatabaseFlagArgs.builder()
- *                     .name("cloudsql_iam_authentication")
- *                     .value("on")
- *                     .build())
- *                 .build())
- *             .build());
- * 
- *         var iamUser = new User("iamUser", UserArgs.builder()
- *             .name("me}{@literal @}{@code example.com")
- *             .instance(main.name())
- *             .type("CLOUD_IAM_USER")
- *             .build());
- * 
- *         var iamServiceAccountUser = new User("iamServiceAccountUser", UserArgs.builder()
- *             .name(StdFunctions.trimsuffix(TrimsuffixArgs.builder()
- *                 .input(serviceAccount.email())
- *                 .suffix(".gserviceaccount.com")
- *                 .build()).result())
- *             .instance(main.name())
- *             .type("CLOUD_IAM_SERVICE_ACCOUNT")
- *             .build());
- * 
- *     }}{@code
- * }}{@code
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * Example using [Cloud SQL IAM Group authentication](https://cloud.google.com/sql/docs/mysql/iam-authentication#iam-group-auth).
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.random.RandomId;
- * import com.pulumi.random.RandomIdArgs;
- * import com.pulumi.gcp.sql.DatabaseInstance;
- * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
- * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
- * import com.pulumi.gcp.sql.User;
- * import com.pulumi.gcp.sql.UserArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App }{{@code
- *     public static void main(String[] args) }{{@code
- *         Pulumi.run(App::stack);
- *     }}{@code
- * 
- *     public static void stack(Context ctx) }{{@code
- *         var dbNameSuffix = new RandomId("dbNameSuffix", RandomIdArgs.builder()
- *             .byteLength(4)
- *             .build());
- * 
- *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
- *             .name(dbNameSuffix.hex().applyValue(hex -> String.format("main-instance-%s", hex)))
- *             .databaseVersion("MYSQL_8_0")
- *             .settings(DatabaseInstanceSettingsArgs.builder()
- *                 .tier("db-f1-micro")
- *                 .databaseFlags(DatabaseInstanceSettingsDatabaseFlagArgs.builder()
- *                     .name("cloudsql_iam_authentication")
- *                     .value("on")
- *                     .build())
- *                 .build())
- *             .build());
- * 
- *         var iamGroupUser = new User("iamGroupUser", UserArgs.builder()
- *             .name("iam_group}{@literal @}{@code example.com")
- *             .instance(main.name())
- *             .type("CLOUD_IAM_GROUP")
- *             .build());
- * 
- *     }}{@code
- * }}{@code
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

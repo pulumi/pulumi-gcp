@@ -120,7 +120,7 @@ namespace Pulumi.Gcp.Datastream
     ///         Name = "db",
     ///     });
     /// 
-    ///     var pwd = new Random.RandomPassword("pwd", new()
+    ///     var pwd = new Random.Index.RandomPassword.RandomPassword("pwd", new()
     ///     {
     ///         Length = 16,
     ///         Special = false,
@@ -243,7 +243,7 @@ namespace Pulumi.Gcp.Datastream
     ///         Name = "db",
     ///     });
     /// 
-    ///     var pwd = new Random.RandomPassword("pwd", new()
+    ///     var pwd = new Random.Index.RandomPassword.RandomPassword("pwd", new()
     ///     {
     ///         Length = 16,
     ///         Special = false,

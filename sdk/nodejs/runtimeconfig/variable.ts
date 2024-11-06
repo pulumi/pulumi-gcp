@@ -29,24 +29,6 @@ import * as utilities from "../utilities";
  *
  * Example of using the `value` argument.
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * import * as std from "@pulumi/std";
- *
- * const my_runtime_config = new gcp.runtimeconfig.Config("my-runtime-config", {
- *     name: "my-service-runtime-config",
- *     description: "Runtime configuration values for my service",
- * });
- * const my_secret = new gcp.runtimeconfig.Variable("my-secret", {
- *     parent: my_runtime_config.name,
- *     name: "secret",
- *     value: std.filebase64({
- *         input: "my-encrypted-secret.dat",
- *     }).then(invoke => invoke.result),
- * });
- * ```
- *
  * ## Import
  *
  * Runtime Config Variables can be imported using the `name` or full variable name, e.g.

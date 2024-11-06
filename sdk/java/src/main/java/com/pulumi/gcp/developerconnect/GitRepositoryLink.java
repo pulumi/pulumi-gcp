@@ -20,11 +20,6 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
- * ### Developer Connect Git Repository Link Github Doc
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * GitRepositoryLink can be imported using any of these accepted formats:

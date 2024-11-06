@@ -15,33 +15,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * ### Identity Platform Inbound Saml Config Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * import * as std from "@pulumi/std";
- *
- * const samlConfig = new gcp.identityplatform.InboundSamlConfig("saml_config", {
- *     name: "saml.tf-config",
- *     displayName: "Display Name",
- *     idpConfig: {
- *         idpEntityId: "tf-idp",
- *         signRequest: true,
- *         ssoUrl: "https://example.com",
- *         idpCertificates: [{
- *             x509Certificate: std.file({
- *                 input: "test-fixtures/rsa_cert.pem",
- *             }).then(invoke => invoke.result),
- *         }],
- *     },
- *     spConfig: {
- *         spEntityId: "tf-sp",
- *         callbackUri: "https://example.com",
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * InboundSamlConfig can be imported using any of these accepted formats:

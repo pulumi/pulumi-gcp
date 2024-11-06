@@ -48,43 +48,6 @@ import (
 //	}
 //
 // ```
-//
-// ## Full Example
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/storage"
-//	"github.com/pulumi/pulumi-std/sdk/go/std"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := storage.GetObjectSignedUrl(ctx, &storage.GetObjectSignedUrlArgs{
-//				Bucket:      "fried_chicken",
-//				Path:        "path/to/file",
-//				ContentMd5:  pulumi.StringRef("pRviqwS4c4OTJRTe03FD1w=="),
-//				ContentType: pulumi.StringRef("text/plain"),
-//				Duration:    pulumi.StringRef("2d"),
-//				Credentials: pulumi.StringRef(std.File(ctx, &std.FileArgs{
-//					Input: "path/to/credentials.json",
-//				}, nil).Result),
-//				ExtensionHeaders: map[string]interface{}{
-//					"x-goog-if-generation-match": "1",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetObjectSignedUrl(ctx *pulumi.Context, args *GetObjectSignedUrlArgs, opts ...pulumi.InvokeOption) (*GetObjectSignedUrlResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetObjectSignedUrlResult

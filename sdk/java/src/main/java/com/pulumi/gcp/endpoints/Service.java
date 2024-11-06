@@ -20,62 +20,6 @@ import javax.annotation.Nullable;
 /**
  * This resource creates and rolls out a Cloud Endpoints service using OpenAPI or gRPC.  View the relevant docs for [OpenAPI](https://cloud.google.com/endpoints/docs/openapi/) and [gRPC](https://cloud.google.com/endpoints/docs/grpc/).
  * 
- * ## Example Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.endpoints.Service;
- * import com.pulumi.gcp.endpoints.ServiceArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var openapiService = new Service("openapiService", ServiceArgs.builder()
- *             .serviceName("api-name.endpoints.project-id.cloud.goog")
- *             .project("project-id")
- *             .openapiConfig(StdFunctions.file(FileArgs.builder()
- *                 .input("openapi_spec.yml")
- *                 .build()).result())
- *             .build());
- * 
- *         var grpcService = new Service("grpcService", ServiceArgs.builder()
- *             .serviceName("api-name.endpoints.project-id.cloud.goog")
- *             .project("project-id")
- *             .grpcConfig(StdFunctions.file(FileArgs.builder()
- *                 .input("service_spec.yml")
- *                 .build()).result())
- *             .protocOutputBase64(StdFunctions.filebase64(Filebase64Args.builder()
- *                 .input("compiled_descriptor_file.pb")
- *                 .build()).result())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * The example in `examples/endpoints_on_compute_engine` shows the API from the quickstart running on a Compute Engine VM and reachable through Cloud Endpoints, which may also be useful.
- * 
- * ## Import
- * 
- * This resource does not support import.
- * 
  */
 @ResourceType(type="gcp:endpoints/service:Service")
 public class Service extends com.pulumi.resources.CustomResource {

@@ -876,49 +876,6 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 "issuer_uri": "https://sts.windows.net/azure-tenant-id",
             })
         ```
-        ### Iam Workload Identity Pool Provider Saml Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_std as std
-
-        pool = gcp.iam.WorkloadIdentityPool("pool", workload_identity_pool_id="example-pool")
-        example = gcp.iam.WorkloadIdentityPoolProvider("example",
-            workload_identity_pool_id=pool.workload_identity_pool_id,
-            workload_identity_pool_provider_id="example-prvdr",
-            attribute_mapping={
-                "google.subject": "assertion.arn",
-                "attribute.aws_account": "assertion.account",
-                "attribute.environment": "assertion.arn.contains(\\":instance-profile/Production\\") ? \\"prod\\" : \\"test\\"",
-            },
-            saml={
-                "idp_metadata_xml": std.file(input="test-fixtures/metadata.xml").result,
-            })
-        ```
-        ### Iam Workload Identity Pool Provider Saml Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_std as std
-
-        pool = gcp.iam.WorkloadIdentityPool("pool", workload_identity_pool_id="example-pool")
-        example = gcp.iam.WorkloadIdentityPoolProvider("example",
-            workload_identity_pool_id=pool.workload_identity_pool_id,
-            workload_identity_pool_provider_id="example-prvdr",
-            display_name="Name of provider",
-            description="SAML 2.0 identity pool provider for automated test",
-            disabled=True,
-            attribute_mapping={
-                "google.subject": "assertion.arn",
-                "attribute.aws_account": "assertion.account",
-                "attribute.environment": "assertion.arn.contains(\\":instance-profile/Production\\") ? \\"prod\\" : \\"test\\"",
-            },
-            saml={
-                "idp_metadata_xml": std.file(input="test-fixtures/metadata.xml").result,
-            })
-        ```
         ### Iam Workload Identity Pool Provider Oidc Upload Key
 
         ```python
@@ -951,57 +908,6 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 "jwks_json": "{\\"keys\\":[{\\"kty\\":\\"RSA\\",\\"alg\\":\\"RS256\\",\\"kid\\":\\"sif0AR-F6MuvksAyAOv-Pds08Bcf2eUMlxE30NofddA\\",\\"use\\":\\"sig\\",\\"e\\":\\"AQAB\\",\\"n\\":\\"ylH1Chl1tpfti3lh51E1g5dPogzXDaQseqjsefGLknaNl5W6Wd4frBhHyE2t41Q5zgz_Ll0-NvWm0FlaG6brhrN9QZu6sJP1bM8WPfJVPgXOanxi7d7TXCkeNubGeiLTf5R3UXtS9Lm_guemU7MxDjDTelxnlgGCihOVTcL526suNJUdfXtpwUsvdU6_ZnAp9IpsuYjCtwPm9hPumlcZGMbxstdh07O4y4O90cVQClJOKSGQjAUCKJWXIQ0cqffGS_HuS_725CPzQ85SzYZzaNpgfhAER7kx_9P16ARM3BJz0PI5fe2hECE61J4GYU_BY43sxDfs7HyJpEXKLU9eWw\\"}]}",
             })
         ```
-        ### Iam Workload Identity Pool Provider X509 Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_std as std
-
-        pool = gcp.iam.WorkloadIdentityPool("pool", workload_identity_pool_id="example-pool")
-        example = gcp.iam.WorkloadIdentityPoolProvider("example",
-            workload_identity_pool_id=pool.workload_identity_pool_id,
-            workload_identity_pool_provider_id="example-prvdr",
-            attribute_mapping={
-                "google.subject": "assertion.subject.dn.cn",
-            },
-            x509={
-                "trust_store": {
-                    "trust_anchors": [{
-                        "pem_certificate": std.file(input="test-fixtures/trust_anchor.pem").result,
-                    }],
-                },
-            })
-        ```
-        ### Iam Workload Identity Pool Provider X509 Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_std as std
-
-        pool = gcp.iam.WorkloadIdentityPool("pool", workload_identity_pool_id="example-pool")
-        example = gcp.iam.WorkloadIdentityPoolProvider("example",
-            workload_identity_pool_id=pool.workload_identity_pool_id,
-            workload_identity_pool_provider_id="example-prvdr",
-            display_name="Name of provider",
-            description="X.509 identity pool provider for automated test",
-            disabled=True,
-            attribute_mapping={
-                "google.subject": "assertion.subject.dn.cn",
-            },
-            x509={
-                "trust_store": {
-                    "trust_anchors": [{
-                        "pem_certificate": std.file(input="test-fixtures/trust_anchor.pem").result,
-                    }],
-                    "intermediate_cas": [{
-                        "pem_certificate": std.file(input="test-fixtures/intermediate_ca.pem").result,
-                    }],
-                },
-            })
-        ```
-
         ## Import
 
         WorkloadIdentityPoolProvider can be imported using any of these accepted formats:
@@ -1239,49 +1145,6 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 "issuer_uri": "https://sts.windows.net/azure-tenant-id",
             })
         ```
-        ### Iam Workload Identity Pool Provider Saml Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_std as std
-
-        pool = gcp.iam.WorkloadIdentityPool("pool", workload_identity_pool_id="example-pool")
-        example = gcp.iam.WorkloadIdentityPoolProvider("example",
-            workload_identity_pool_id=pool.workload_identity_pool_id,
-            workload_identity_pool_provider_id="example-prvdr",
-            attribute_mapping={
-                "google.subject": "assertion.arn",
-                "attribute.aws_account": "assertion.account",
-                "attribute.environment": "assertion.arn.contains(\\":instance-profile/Production\\") ? \\"prod\\" : \\"test\\"",
-            },
-            saml={
-                "idp_metadata_xml": std.file(input="test-fixtures/metadata.xml").result,
-            })
-        ```
-        ### Iam Workload Identity Pool Provider Saml Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_std as std
-
-        pool = gcp.iam.WorkloadIdentityPool("pool", workload_identity_pool_id="example-pool")
-        example = gcp.iam.WorkloadIdentityPoolProvider("example",
-            workload_identity_pool_id=pool.workload_identity_pool_id,
-            workload_identity_pool_provider_id="example-prvdr",
-            display_name="Name of provider",
-            description="SAML 2.0 identity pool provider for automated test",
-            disabled=True,
-            attribute_mapping={
-                "google.subject": "assertion.arn",
-                "attribute.aws_account": "assertion.account",
-                "attribute.environment": "assertion.arn.contains(\\":instance-profile/Production\\") ? \\"prod\\" : \\"test\\"",
-            },
-            saml={
-                "idp_metadata_xml": std.file(input="test-fixtures/metadata.xml").result,
-            })
-        ```
         ### Iam Workload Identity Pool Provider Oidc Upload Key
 
         ```python
@@ -1314,57 +1177,6 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 "jwks_json": "{\\"keys\\":[{\\"kty\\":\\"RSA\\",\\"alg\\":\\"RS256\\",\\"kid\\":\\"sif0AR-F6MuvksAyAOv-Pds08Bcf2eUMlxE30NofddA\\",\\"use\\":\\"sig\\",\\"e\\":\\"AQAB\\",\\"n\\":\\"ylH1Chl1tpfti3lh51E1g5dPogzXDaQseqjsefGLknaNl5W6Wd4frBhHyE2t41Q5zgz_Ll0-NvWm0FlaG6brhrN9QZu6sJP1bM8WPfJVPgXOanxi7d7TXCkeNubGeiLTf5R3UXtS9Lm_guemU7MxDjDTelxnlgGCihOVTcL526suNJUdfXtpwUsvdU6_ZnAp9IpsuYjCtwPm9hPumlcZGMbxstdh07O4y4O90cVQClJOKSGQjAUCKJWXIQ0cqffGS_HuS_725CPzQ85SzYZzaNpgfhAER7kx_9P16ARM3BJz0PI5fe2hECE61J4GYU_BY43sxDfs7HyJpEXKLU9eWw\\"}]}",
             })
         ```
-        ### Iam Workload Identity Pool Provider X509 Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_std as std
-
-        pool = gcp.iam.WorkloadIdentityPool("pool", workload_identity_pool_id="example-pool")
-        example = gcp.iam.WorkloadIdentityPoolProvider("example",
-            workload_identity_pool_id=pool.workload_identity_pool_id,
-            workload_identity_pool_provider_id="example-prvdr",
-            attribute_mapping={
-                "google.subject": "assertion.subject.dn.cn",
-            },
-            x509={
-                "trust_store": {
-                    "trust_anchors": [{
-                        "pem_certificate": std.file(input="test-fixtures/trust_anchor.pem").result,
-                    }],
-                },
-            })
-        ```
-        ### Iam Workload Identity Pool Provider X509 Full
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_std as std
-
-        pool = gcp.iam.WorkloadIdentityPool("pool", workload_identity_pool_id="example-pool")
-        example = gcp.iam.WorkloadIdentityPoolProvider("example",
-            workload_identity_pool_id=pool.workload_identity_pool_id,
-            workload_identity_pool_provider_id="example-prvdr",
-            display_name="Name of provider",
-            description="X.509 identity pool provider for automated test",
-            disabled=True,
-            attribute_mapping={
-                "google.subject": "assertion.subject.dn.cn",
-            },
-            x509={
-                "trust_store": {
-                    "trust_anchors": [{
-                        "pem_certificate": std.file(input="test-fixtures/trust_anchor.pem").result,
-                    }],
-                    "intermediate_cas": [{
-                        "pem_certificate": std.file(input="test-fixtures/intermediate_ca.pem").result,
-                    }],
-                },
-            })
-        ```
-
         ## Import
 
         WorkloadIdentityPoolProvider can be imported using any of these accepted formats:

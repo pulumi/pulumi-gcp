@@ -18,9 +18,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  * import * as random from "@pulumi/random";
  *
- * const dbNameSuffix = new random.RandomId("db_name_suffix", {byteLength: 4});
+ * const dbNameSuffix = new random.index/randomId.RandomId("db_name_suffix", {byteLength: 4});
  * const main = new gcp.sql.DatabaseInstance("main", {
- *     name: pulumi.interpolate`main-instance-${dbNameSuffix.hex}`,
+ *     name: `main-instance-${dbNameSuffix.hex}`,
  *     databaseVersion: "MYSQL_5_7",
  *     settings: {
  *         tier: "db-f1-micro",
@@ -35,65 +35,6 @@ import * as utilities from "../utilities";
  * ```
  *
  * Example using [Cloud SQL IAM database authentication](https://cloud.google.com/sql/docs/mysql/authentication).
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * import * as random from "@pulumi/random";
- * import * as std from "@pulumi/std";
- *
- * const dbNameSuffix = new random.RandomId("db_name_suffix", {byteLength: 4});
- * const main = new gcp.sql.DatabaseInstance("main", {
- *     name: pulumi.interpolate`main-instance-${dbNameSuffix.hex}`,
- *     databaseVersion: "POSTGRES_15",
- *     settings: {
- *         tier: "db-f1-micro",
- *         databaseFlags: [{
- *             name: "cloudsql_iam_authentication",
- *             value: "on",
- *         }],
- *     },
- * });
- * const iamUser = new gcp.sql.User("iam_user", {
- *     name: "me@example.com",
- *     instance: main.name,
- *     type: "CLOUD_IAM_USER",
- * });
- * const iamServiceAccountUser = new gcp.sql.User("iam_service_account_user", {
- *     name: std.trimsuffix({
- *         input: serviceAccount.email,
- *         suffix: ".gserviceaccount.com",
- *     }).then(invoke => invoke.result),
- *     instance: main.name,
- *     type: "CLOUD_IAM_SERVICE_ACCOUNT",
- * });
- * ```
- *
- * Example using [Cloud SQL IAM Group authentication](https://cloud.google.com/sql/docs/mysql/iam-authentication#iam-group-auth).
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * import * as random from "@pulumi/random";
- *
- * const dbNameSuffix = new random.RandomId("db_name_suffix", {byteLength: 4});
- * const main = new gcp.sql.DatabaseInstance("main", {
- *     name: pulumi.interpolate`main-instance-${dbNameSuffix.hex}`,
- *     databaseVersion: "MYSQL_8_0",
- *     settings: {
- *         tier: "db-f1-micro",
- *         databaseFlags: [{
- *             name: "cloudsql_iam_authentication",
- *             value: "on",
- *         }],
- *     },
- * });
- * const iamGroupUser = new gcp.sql.User("iam_group_user", {
- *     name: "iam_group@example.com",
- *     instance: main.name,
- *     type: "CLOUD_IAM_GROUP",
- * });
- * ```
  *
  * ## Import
  *

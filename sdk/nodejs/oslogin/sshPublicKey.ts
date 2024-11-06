@@ -15,22 +15,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * ### Os Login Ssh Key Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * import * as std from "@pulumi/std";
- *
- * const me = gcp.organizations.getClientOpenIdUserInfo({});
- * const cache = new gcp.oslogin.SshPublicKey("cache", {
- *     user: me.then(me => me.email),
- *     key: std.file({
- *         input: "path/to/id_rsa.pub",
- *     }).then(invoke => invoke.result),
- * });
- * ```
- *
  * ## Import
  *
  * SSHPublicKey can be imported using any of these accepted formats:

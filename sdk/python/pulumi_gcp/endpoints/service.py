@@ -287,30 +287,6 @@ class Service(pulumi.CustomResource):
         """
         This resource creates and rolls out a Cloud Endpoints service using OpenAPI or gRPC.  View the relevant docs for [OpenAPI](https://cloud.google.com/endpoints/docs/openapi/) and [gRPC](https://cloud.google.com/endpoints/docs/grpc/).
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_std as std
-
-        openapi_service = gcp.endpoints.Service("openapi_service",
-            service_name="api-name.endpoints.project-id.cloud.goog",
-            project="project-id",
-            openapi_config=std.file(input="openapi_spec.yml").result)
-        grpc_service = gcp.endpoints.Service("grpc_service",
-            service_name="api-name.endpoints.project-id.cloud.goog",
-            project="project-id",
-            grpc_config=std.file(input="service_spec.yml").result,
-            protoc_output_base64=std.filebase64(input="compiled_descriptor_file.pb").result)
-        ```
-
-        The example in `examples/endpoints_on_compute_engine` shows the API from the quickstart running on a Compute Engine VM and reachable through Cloud Endpoints, which may also be useful.
-
-        ## Import
-
-        This resource does not support import.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] grpc_config: The full text of the Service Config YAML file (Example located [here](https://github.com/GoogleCloudPlatform/python-docs-samples/blob/main/endpoints/bookstore-grpc/api_config.yaml)).
@@ -331,30 +307,6 @@ class Service(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         This resource creates and rolls out a Cloud Endpoints service using OpenAPI or gRPC.  View the relevant docs for [OpenAPI](https://cloud.google.com/endpoints/docs/openapi/) and [gRPC](https://cloud.google.com/endpoints/docs/grpc/).
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_std as std
-
-        openapi_service = gcp.endpoints.Service("openapi_service",
-            service_name="api-name.endpoints.project-id.cloud.goog",
-            project="project-id",
-            openapi_config=std.file(input="openapi_spec.yml").result)
-        grpc_service = gcp.endpoints.Service("grpc_service",
-            service_name="api-name.endpoints.project-id.cloud.goog",
-            project="project-id",
-            grpc_config=std.file(input="service_spec.yml").result,
-            protoc_output_base64=std.filebase64(input="compiled_descriptor_file.pb").result)
-        ```
-
-        The example in `examples/endpoints_on_compute_engine` shows the API from the quickstart running on a Compute Engine VM and reachable through Cloud Endpoints, which may also be useful.
-
-        ## Import
-
-        This resource does not support import.
 
         :param str resource_name: The name of the resource.
         :param ServiceArgs args: The arguments to use to populate this resource's properties.

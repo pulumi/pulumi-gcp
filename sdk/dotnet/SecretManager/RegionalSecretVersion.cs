@@ -38,35 +38,6 @@ namespace Pulumi.Gcp.SecretManager
     /// 
     /// });
     /// ```
-    /// ### Regional Secret Version With Base64 Data
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// using Std = Pulumi.Std;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var secret_basic = new Gcp.SecretManager.RegionalSecret("secret-basic", new()
-    ///     {
-    ///         SecretId = "secret-version",
-    ///         Location = "us-central1",
-    ///     });
-    /// 
-    ///     var regionalSecretVersionBase64 = new Gcp.SecretManager.RegionalSecretVersion("regional_secret_version_base64", new()
-    ///     {
-    ///         Secret = secret_basic.Id,
-    ///         SecretData = Std.Filebase64.Invoke(new()
-    ///         {
-    ///             Input = "secret-data.pfx",
-    ///         }).Apply(invoke =&gt; invoke.Result),
-    ///         IsSecretDataBase64 = true,
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// ### Regional Secret Version Disabled
     /// 
     /// ```csharp

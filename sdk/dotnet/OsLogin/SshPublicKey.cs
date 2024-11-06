@@ -20,31 +20,6 @@ namespace Pulumi.Gcp.OsLogin
     /// 
     /// ## Example Usage
     /// 
-    /// ### Os Login Ssh Key Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// using Std = Pulumi.Std;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var me = Gcp.Organizations.GetClientOpenIdUserInfo.Invoke();
-    /// 
-    ///     var cache = new Gcp.OsLogin.SshPublicKey("cache", new()
-    ///     {
-    ///         User = me.Apply(getClientOpenIdUserInfoResult =&gt; getClientOpenIdUserInfoResult.Email),
-    ///         Key = Std.File.Invoke(new()
-    ///         {
-    ///             Input = "path/to/id_rsa.pub",
-    ///         }).Apply(invoke =&gt; invoke.Result),
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// SSHPublicKey can be imported using any of these accepted formats:

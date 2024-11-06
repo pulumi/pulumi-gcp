@@ -18,29 +18,6 @@ import * as utilities from "../utilities";
  *     accountId: "object-viewer",
  * });
  * ```
- *
- * ### Save Key In Kubernetes Secret
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * import * as kubernetes from "@pulumi/kubernetes";
- * import * as std from "@pulumi/std";
- *
- * const myaccount = gcp.serviceaccount.getAccount({
- *     accountId: "myaccount-id",
- * });
- * const mykey = new gcp.serviceaccount.Key("mykey", {serviceAccountId: myaccount.then(myaccount => myaccount.name)});
- * const google_application_credentials = new kubernetes.core.v1.Secret("google-application-credentials", {
- *     metadata: {
- *         name: "google-application-credentials",
- *     },
- *     data: {
- *         json: std.base64decodeOutput({
- *             input: mykey.privateKey,
- *         }).apply(invoke => invoke.result),
- *     },
- * });
- * ```
  */
 export function getAccount(args: GetAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -122,29 +99,6 @@ export interface GetAccountResult {
  *
  * const objectViewer = gcp.serviceaccount.getAccount({
  *     accountId: "object-viewer",
- * });
- * ```
- *
- * ### Save Key In Kubernetes Secret
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * import * as kubernetes from "@pulumi/kubernetes";
- * import * as std from "@pulumi/std";
- *
- * const myaccount = gcp.serviceaccount.getAccount({
- *     accountId: "myaccount-id",
- * });
- * const mykey = new gcp.serviceaccount.Key("mykey", {serviceAccountId: myaccount.then(myaccount => myaccount.name)});
- * const google_application_credentials = new kubernetes.core.v1.Secret("google-application-credentials", {
- *     metadata: {
- *         name: "google-application-credentials",
- *     },
- *     data: {
- *         json: std.base64decodeOutput({
- *             input: mykey.privateKey,
- *         }).apply(invoke => invoke.result),
- *     },
  * });
  * ```
  */

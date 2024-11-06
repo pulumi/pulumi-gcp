@@ -20,61 +20,6 @@ import (
 //
 // ## Example Usage
 //
-// ### Identity Platform Tenant Inbound Saml Config Basic
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/identityplatform"
-//	"github.com/pulumi/pulumi-std/sdk/go/std"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			tenant, err := identityplatform.NewTenant(ctx, "tenant", &identityplatform.TenantArgs{
-//				DisplayName: pulumi.String("tenant"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			invokeFile, err := std.File(ctx, &std.FileArgs{
-//				Input: "test-fixtures/rsa_cert.pem",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = identityplatform.NewTenantInboundSamlConfig(ctx, "tenant_saml_config", &identityplatform.TenantInboundSamlConfigArgs{
-//				Name:        pulumi.String("saml.tf-config"),
-//				DisplayName: pulumi.String("Display Name"),
-//				Tenant:      tenant.Name,
-//				IdpConfig: &identityplatform.TenantInboundSamlConfigIdpConfigArgs{
-//					IdpEntityId: pulumi.String("tf-idp"),
-//					SignRequest: pulumi.Bool(true),
-//					SsoUrl:      pulumi.String("https://example.com"),
-//					IdpCertificates: identityplatform.TenantInboundSamlConfigIdpConfigIdpCertificateArray{
-//						&identityplatform.TenantInboundSamlConfigIdpConfigIdpCertificateArgs{
-//							X509Certificate: pulumi.String(invokeFile.Result),
-//						},
-//					},
-//				},
-//				SpConfig: &identityplatform.TenantInboundSamlConfigSpConfigArgs{
-//					SpEntityId:  pulumi.String("tf-sp"),
-//					CallbackUri: pulumi.String("https://example.com"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // TenantInboundSamlConfig can be imported using any of these accepted formats:

@@ -26,23 +26,21 @@ import (
 //	"fmt"
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/sql"
-//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi-random/sdk/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			dbNameSuffix, err := random.NewRandomId(ctx, "db_name_suffix", &random.RandomIdArgs{
-//				ByteLength: pulumi.Int(4),
+//			dbNameSuffix, err := index / randomId.NewRandomId(ctx, "db_name_suffix", &index/randomId.RandomIdArgs{
+//				ByteLength: 4,
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			main, err := sql.NewDatabaseInstance(ctx, "main", &sql.DatabaseInstanceArgs{
-//				Name: dbNameSuffix.Hex.ApplyT(func(hex string) (string, error) {
-//					return fmt.Sprintf("main-instance-%v", hex), nil
-//				}).(pulumi.StringOutput),
+//				Name:            pulumi.Sprintf("main-instance-%v", dbNameSuffix.Hex),
 //				DatabaseVersion: pulumi.String("MYSQL_5_7"),
 //				Settings: &sql.DatabaseInstanceSettingsArgs{
 //					Tier: pulumi.String("db-f1-micro"),
@@ -67,130 +65,6 @@ import (
 // ```
 //
 // Example using [Cloud SQL IAM database authentication](https://cloud.google.com/sql/docs/mysql/authentication).
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/sql"
-//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
-//	"github.com/pulumi/pulumi-std/sdk/go/std"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			dbNameSuffix, err := random.NewRandomId(ctx, "db_name_suffix", &random.RandomIdArgs{
-//				ByteLength: pulumi.Int(4),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			main, err := sql.NewDatabaseInstance(ctx, "main", &sql.DatabaseInstanceArgs{
-//				Name: dbNameSuffix.Hex.ApplyT(func(hex string) (string, error) {
-//					return fmt.Sprintf("main-instance-%v", hex), nil
-//				}).(pulumi.StringOutput),
-//				DatabaseVersion: pulumi.String("POSTGRES_15"),
-//				Settings: &sql.DatabaseInstanceSettingsArgs{
-//					Tier: pulumi.String("db-f1-micro"),
-//					DatabaseFlags: sql.DatabaseInstanceSettingsDatabaseFlagArray{
-//						&sql.DatabaseInstanceSettingsDatabaseFlagArgs{
-//							Name:  pulumi.String("cloudsql_iam_authentication"),
-//							Value: pulumi.String("on"),
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = sql.NewUser(ctx, "iam_user", &sql.UserArgs{
-//				Name:     pulumi.String("me@example.com"),
-//				Instance: main.Name,
-//				Type:     pulumi.String("CLOUD_IAM_USER"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			invokeTrimsuffix, err := std.Trimsuffix(ctx, &std.TrimsuffixArgs{
-//				Input:  serviceAccount.Email,
-//				Suffix: ".gserviceaccount.com",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = sql.NewUser(ctx, "iam_service_account_user", &sql.UserArgs{
-//				Name:     pulumi.String(invokeTrimsuffix.Result),
-//				Instance: main.Name,
-//				Type:     pulumi.String("CLOUD_IAM_SERVICE_ACCOUNT"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// Example using [Cloud SQL IAM Group authentication](https://cloud.google.com/sql/docs/mysql/iam-authentication#iam-group-auth).
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/sql"
-//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			dbNameSuffix, err := random.NewRandomId(ctx, "db_name_suffix", &random.RandomIdArgs{
-//				ByteLength: pulumi.Int(4),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			main, err := sql.NewDatabaseInstance(ctx, "main", &sql.DatabaseInstanceArgs{
-//				Name: dbNameSuffix.Hex.ApplyT(func(hex string) (string, error) {
-//					return fmt.Sprintf("main-instance-%v", hex), nil
-//				}).(pulumi.StringOutput),
-//				DatabaseVersion: pulumi.String("MYSQL_8_0"),
-//				Settings: &sql.DatabaseInstanceSettingsArgs{
-//					Tier: pulumi.String("db-f1-micro"),
-//					DatabaseFlags: sql.DatabaseInstanceSettingsDatabaseFlagArray{
-//						&sql.DatabaseInstanceSettingsDatabaseFlagArgs{
-//							Name:  pulumi.String("cloudsql_iam_authentication"),
-//							Value: pulumi.String("on"),
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = sql.NewUser(ctx, "iam_group_user", &sql.UserArgs{
-//				Name:     pulumi.String("iam_group@example.com"),
-//				Instance: main.Name,
-//				Type:     pulumi.String("CLOUD_IAM_GROUP"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 //
 // ## Import
 //

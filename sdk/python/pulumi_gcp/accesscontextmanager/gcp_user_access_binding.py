@@ -171,47 +171,6 @@ class GcpUserAccessBinding(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Access Context Manager Gcp User Access Binding Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_std as std
-
-        group = gcp.cloudidentity.Group("group",
-            display_name="my-identity-group",
-            parent="customers/A01b123xz",
-            group_key={
-                "id": "my-identity-group@example.com",
-            },
-            labels={
-                "cloudidentity.googleapis.com/groups.discussion_forum": "",
-            })
-        access_policy = gcp.accesscontextmanager.AccessPolicy("access-policy",
-            parent="organizations/123456789",
-            title="my policy")
-        access_level_id_for_user_access_binding = gcp.accesscontextmanager.AccessLevel("access_level_id_for_user_access_binding",
-            parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
-            name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/accessLevels/chromeos_no_lock"),
-            title="chromeos_no_lock",
-            basic={
-                "conditions": [{
-                    "device_policy": {
-                        "require_screen_lock": True,
-                        "os_constraints": [{
-                            "os_type": "DESKTOP_CHROME_OS",
-                        }],
-                    },
-                    "regions": ["US"],
-                }],
-            })
-        gcp_user_access_binding = gcp.accesscontextmanager.GcpUserAccessBinding("gcp_user_access_binding",
-            organization_id="123456789",
-            group_key=std.trimprefix_output(input=group.id,
-                prefix="groups/").apply(lambda invoke: invoke.result),
-            access_levels=access_level_id_for_user_access_binding.name)
-        ```
-
         ## Import
 
         GcpUserAccessBinding can be imported using any of these accepted formats:
@@ -247,47 +206,6 @@ class GcpUserAccessBinding(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/organizations.gcpUserAccessBindings)
 
         ## Example Usage
-
-        ### Access Context Manager Gcp User Access Binding Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_std as std
-
-        group = gcp.cloudidentity.Group("group",
-            display_name="my-identity-group",
-            parent="customers/A01b123xz",
-            group_key={
-                "id": "my-identity-group@example.com",
-            },
-            labels={
-                "cloudidentity.googleapis.com/groups.discussion_forum": "",
-            })
-        access_policy = gcp.accesscontextmanager.AccessPolicy("access-policy",
-            parent="organizations/123456789",
-            title="my policy")
-        access_level_id_for_user_access_binding = gcp.accesscontextmanager.AccessLevel("access_level_id_for_user_access_binding",
-            parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
-            name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/accessLevels/chromeos_no_lock"),
-            title="chromeos_no_lock",
-            basic={
-                "conditions": [{
-                    "device_policy": {
-                        "require_screen_lock": True,
-                        "os_constraints": [{
-                            "os_type": "DESKTOP_CHROME_OS",
-                        }],
-                    },
-                    "regions": ["US"],
-                }],
-            })
-        gcp_user_access_binding = gcp.accesscontextmanager.GcpUserAccessBinding("gcp_user_access_binding",
-            organization_id="123456789",
-            group_key=std.trimprefix_output(input=group.id,
-                prefix="groups/").apply(lambda invoke: invoke.result),
-            access_levels=access_level_id_for_user_access_binding.name)
-        ```
 
         ## Import
 

@@ -25,47 +25,6 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * ### Os Login Ssh Key Basic
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.oslogin.SshPublicKey;
- * import com.pulumi.gcp.oslogin.SshPublicKeyArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
- * 
- *         var cache = new SshPublicKey("cache", SshPublicKeyArgs.builder()
- *             .user(me.applyValue(getClientOpenIdUserInfoResult -> getClientOpenIdUserInfoResult.email()))
- *             .key(StdFunctions.file(FileArgs.builder()
- *                 .input("path/to/id_rsa.pub")
- *                 .build()).result())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * SSHPublicKey can be imported using any of these accepted formats:

@@ -35,54 +35,6 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * ### Deployment Manager Deployment Basic
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.deploymentmanager.Deployment;
- * import com.pulumi.gcp.deploymentmanager.DeploymentArgs;
- * import com.pulumi.gcp.deploymentmanager.inputs.DeploymentTargetArgs;
- * import com.pulumi.gcp.deploymentmanager.inputs.DeploymentTargetConfigArgs;
- * import com.pulumi.gcp.deploymentmanager.inputs.DeploymentLabelArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var deployment = new Deployment("deployment", DeploymentArgs.builder()
- *             .name("my-deployment")
- *             .target(DeploymentTargetArgs.builder()
- *                 .config(DeploymentTargetConfigArgs.builder()
- *                     .content(StdFunctions.file(FileArgs.builder()
- *                         .input("path/to/config.yml")
- *                         .build()).result())
- *                     .build())
- *                 .build())
- *             .labels(DeploymentLabelArgs.builder()
- *                 .key("foo")
- *                 .value("bar")
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
  * ## Import
  * 
  * Deployment can be imported using any of these accepted formats:

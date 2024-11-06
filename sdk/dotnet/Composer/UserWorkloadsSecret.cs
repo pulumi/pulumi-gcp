@@ -12,51 +12,6 @@ namespace Pulumi.Gcp.Composer
     /// <summary>
     /// ## Example Usage
     /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// using Std = Pulumi.Std;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Gcp.Composer.Environment("example", new()
-    ///     {
-    ///         Name = "example-environment",
-    ///         Project = "example-project",
-    ///         Region = "us-central1",
-    ///         Config = new Gcp.Composer.Inputs.EnvironmentConfigArgs
-    ///         {
-    ///             SoftwareConfig = new Gcp.Composer.Inputs.EnvironmentConfigSoftwareConfigArgs
-    ///             {
-    ///                 ImageVersion = "example-image-version",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     var exampleUserWorkloadsSecret = new Gcp.Composer.UserWorkloadsSecret("example", new()
-    ///     {
-    ///         Name = "example-secret",
-    ///         Project = "example-project",
-    ///         Region = "us-central1",
-    ///         Environment = example.Name,
-    ///         Data = 
-    ///         {
-    ///             { "email", Std.Base64encode.Invoke(new()
-    ///             {
-    ///                 Input = "example-email",
-    ///             }).Apply(invoke =&gt; invoke.Result) },
-    ///             { "password", Std.Base64encode.Invoke(new()
-    ///             {
-    ///                 Input = "example-password",
-    ///             }).Apply(invoke =&gt; invoke.Result) },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Secret can be imported using any of these accepted formats:

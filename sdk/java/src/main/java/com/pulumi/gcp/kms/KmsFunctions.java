@@ -1657,7 +1657,7 @@ public final class KmsFunctions {
      *             .build());
      * 
      *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
-     *             .name(dbNameSuffix.hex().applyValue(hex -> String.format("main-instance-%s", hex)))
+     *             .name(String.format("main-instance-%s", dbNameSuffix.hex()))
      *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
      *                 .tier("db-f1-micro")
@@ -1786,7 +1786,7 @@ public final class KmsFunctions {
      *             .build());
      * 
      *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
-     *             .name(dbNameSuffix.hex().applyValue(hex -> String.format("main-instance-%s", hex)))
+     *             .name(String.format("main-instance-%s", dbNameSuffix.hex()))
      *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
      *                 .tier("db-f1-micro")
@@ -1915,7 +1915,7 @@ public final class KmsFunctions {
      *             .build());
      * 
      *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
-     *             .name(dbNameSuffix.hex().applyValue(hex -> String.format("main-instance-%s", hex)))
+     *             .name(String.format("main-instance-%s", dbNameSuffix.hex()))
      *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
      *                 .tier("db-f1-micro")
@@ -2044,7 +2044,7 @@ public final class KmsFunctions {
      *             .build());
      * 
      *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
-     *             .name(dbNameSuffix.hex().applyValue(hex -> String.format("main-instance-%s", hex)))
+     *             .name(String.format("main-instance-%s", dbNameSuffix.hex()))
      *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
      *                 .tier("db-f1-micro")
@@ -2186,7 +2186,7 @@ public final class KmsFunctions {
      *             .build());
      * 
      *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
-     *             .name(dbNameSuffix.hex().applyValue(hex -> String.format("main-instance-%s", hex)))
+     *             .name(String.format("main-instance-%s", dbNameSuffix.hex()))
      *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
      *                 .tier("db-f1-micro")
@@ -2328,7 +2328,7 @@ public final class KmsFunctions {
      *             .build());
      * 
      *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
-     *             .name(dbNameSuffix.hex().applyValue(hex -> String.format("main-instance-%s", hex)))
+     *             .name(String.format("main-instance-%s", dbNameSuffix.hex()))
      *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
      *                 .tier("db-f1-micro")
@@ -2470,7 +2470,7 @@ public final class KmsFunctions {
      *             .build());
      * 
      *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
-     *             .name(dbNameSuffix.hex().applyValue(hex -> String.format("main-instance-%s", hex)))
+     *             .name(String.format("main-instance-%s", dbNameSuffix.hex()))
      *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
      *                 .tier("db-f1-micro")
@@ -2612,7 +2612,7 @@ public final class KmsFunctions {
      *             .build());
      * 
      *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
-     *             .name(dbNameSuffix.hex().applyValue(hex -> String.format("main-instance-%s", hex)))
+     *             .name(String.format("main-instance-%s", dbNameSuffix.hex()))
      *             .databaseVersion("MYSQL_5_7")
      *             .settings(DatabaseInstanceSettingsArgs.builder()
      *                 .tier("db-f1-micro")

@@ -113,64 +113,6 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ### Save Key In Kubernetes Secret - DEPRECATED
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.serviceaccount.Account;
- * import com.pulumi.gcp.serviceaccount.AccountArgs;
- * import com.pulumi.gcp.serviceaccount.Key;
- * import com.pulumi.gcp.serviceaccount.KeyArgs;
- * import com.pulumi.kubernetes.core_v1.Secret;
- * import com.pulumi.kubernetes.core_v1.SecretArgs;
- * import com.pulumi.kubernetes.meta_v1.inputs.ObjectMetaArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         // Workload Identity is the recommended way of accessing Google Cloud APIs from pods.
- *         // https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
- *         var myaccount = new Account("myaccount", AccountArgs.builder()
- *             .accountId("myaccount")
- *             .displayName("My Service Account")
- *             .build());
- * 
- *         var mykey = new Key("mykey", KeyArgs.builder()
- *             .serviceAccountId(myaccount.name())
- *             .build());
- * 
- *         var google_application_credentials = new Secret("google-application-credentials", SecretArgs.builder()
- *             .metadata(ObjectMetaArgs.builder()
- *                 .name("google-application-credentials")
- *                 .build())
- *             .data(Map.of("credentials.json", StdFunctions.base64decode().applyValue(invoke -> invoke.result())))
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ## Import
- * 
- * This resource does not support import.
- * 
  */
 @ResourceType(type="gcp:serviceaccount/key:Key")
 public class Key extends com.pulumi.resources.CustomResource {

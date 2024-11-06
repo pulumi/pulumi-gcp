@@ -18,47 +18,6 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// 
     /// ## Example Usage
     /// 
-    /// ### Identity Platform Inbound Saml Config Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// using Std = Pulumi.Std;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var samlConfig = new Gcp.IdentityPlatform.InboundSamlConfig("saml_config", new()
-    ///     {
-    ///         Name = "saml.tf-config",
-    ///         DisplayName = "Display Name",
-    ///         IdpConfig = new Gcp.IdentityPlatform.Inputs.InboundSamlConfigIdpConfigArgs
-    ///         {
-    ///             IdpEntityId = "tf-idp",
-    ///             SignRequest = true,
-    ///             SsoUrl = "https://example.com",
-    ///             IdpCertificates = new[]
-    ///             {
-    ///                 new Gcp.IdentityPlatform.Inputs.InboundSamlConfigIdpConfigIdpCertificateArgs
-    ///                 {
-    ///                     X509Certificate = Std.File.Invoke(new()
-    ///                     {
-    ///                         Input = "test-fixtures/rsa_cert.pem",
-    ///                     }).Apply(invoke =&gt; invoke.Result),
-    ///                 },
-    ///             },
-    ///         },
-    ///         SpConfig = new Gcp.IdentityPlatform.Inputs.InboundSamlConfigSpConfigArgs
-    ///         {
-    ///             SpEntityId = "tf-sp",
-    ///             CallbackUri = "https://example.com",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// InboundSamlConfig can be imported using any of these accepted formats:

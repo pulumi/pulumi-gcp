@@ -49,47 +49,6 @@ import (
 //	}
 //
 // ```
-// ### Regional Secret Version With Base64 Data
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/secretmanager"
-//	"github.com/pulumi/pulumi-std/sdk/go/std"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := secretmanager.NewRegionalSecret(ctx, "secret-basic", &secretmanager.RegionalSecretArgs{
-//				SecretId: pulumi.String("secret-version"),
-//				Location: pulumi.String("us-central1"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			invokeFilebase64, err := std.Filebase64(ctx, &std.Filebase64Args{
-//				Input: "secret-data.pfx",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = secretmanager.NewRegionalSecretVersion(ctx, "regional_secret_version_base64", &secretmanager.RegionalSecretVersionArgs{
-//				Secret:             secret_basic.ID(),
-//				SecretData:         pulumi.String(invokeFilebase64.Result),
-//				IsSecretDataBase64: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 // ### Regional Secret Version Disabled
 //
 // ```go

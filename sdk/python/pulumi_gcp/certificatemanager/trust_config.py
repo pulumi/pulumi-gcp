@@ -395,53 +395,6 @@ class TrustConfig(pulumi.CustomResource):
 
         ## Example Usage
 
-        ### Certificate Manager Trust Config
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_std as std
-
-        default = gcp.certificatemanager.TrustConfig("default",
-            name="trust-config",
-            description="sample description for the trust config",
-            location="us-central1",
-            trust_stores=[{
-                "trust_anchors": [{
-                    "pem_certificate": std.file(input="test-fixtures/cert.pem").result,
-                }],
-                "intermediate_cas": [{
-                    "pem_certificate": std.file(input="test-fixtures/cert.pem").result,
-                }],
-            }],
-            labels={
-                "foo": "bar",
-            })
-        ```
-        ### Certificate Manager Trust Config Allowlisted Certificates
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_std as std
-
-        default = gcp.certificatemanager.TrustConfig("default",
-            name="trust-config",
-            description="A sample trust config resource with allowlisted certificates",
-            location="global",
-            allowlisted_certificates=[
-                {
-                    "pem_certificate": std.file(input="test-fixtures/cert.pem").result,
-                },
-                {
-                    "pem_certificate": std.file(input="test-fixtures/cert2.pem").result,
-                },
-            ],
-            labels={
-                "foo": "bar",
-            })
-        ```
-
         ## Import
 
         TrustConfig can be imported using any of these accepted formats:
@@ -502,53 +455,6 @@ class TrustConfig(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/certificate-manager/docs)
 
         ## Example Usage
-
-        ### Certificate Manager Trust Config
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_std as std
-
-        default = gcp.certificatemanager.TrustConfig("default",
-            name="trust-config",
-            description="sample description for the trust config",
-            location="us-central1",
-            trust_stores=[{
-                "trust_anchors": [{
-                    "pem_certificate": std.file(input="test-fixtures/cert.pem").result,
-                }],
-                "intermediate_cas": [{
-                    "pem_certificate": std.file(input="test-fixtures/cert.pem").result,
-                }],
-            }],
-            labels={
-                "foo": "bar",
-            })
-        ```
-        ### Certificate Manager Trust Config Allowlisted Certificates
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_std as std
-
-        default = gcp.certificatemanager.TrustConfig("default",
-            name="trust-config",
-            description="A sample trust config resource with allowlisted certificates",
-            location="global",
-            allowlisted_certificates=[
-                {
-                    "pem_certificate": std.file(input="test-fixtures/cert.pem").result,
-                },
-                {
-                    "pem_certificate": std.file(input="test-fixtures/cert2.pem").result,
-                },
-            ],
-            labels={
-                "foo": "bar",
-            })
-        ```
 
         ## Import
 
