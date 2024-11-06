@@ -35,7 +35,7 @@ namespace Pulumi.Gcp.AppEngine
     /// {
     ///     var customServiceAccount = new Gcp.ServiceAccount.Account("custom_service_account", new()
     ///     {
-    ///         AccountId = "my-account",
+    ///         Name = "my-account",
     ///         DisplayName = "Custom Service Account",
     ///     });
     /// 

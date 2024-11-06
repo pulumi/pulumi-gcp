@@ -586,7 +586,7 @@ namespace Pulumi.Gcp.Workstations
     /// 
     ///     var defaultAccount = new Gcp.ServiceAccount.Account("default", new()
     ///     {
-    ///         AccountId = "my-account",
+    ///         Name = "my-account",
     ///         DisplayName = "Service Account",
     ///     });
     /// 

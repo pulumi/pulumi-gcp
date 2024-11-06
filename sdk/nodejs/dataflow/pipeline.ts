@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const serviceAccount = new gcp.serviceaccount.Account("service_account", {
- *     accountId: "my-account",
+ *     name: "my-account",
  *     displayName: "Service Account",
  * });
  * const primary = new gcp.dataflow.Pipeline("primary", {

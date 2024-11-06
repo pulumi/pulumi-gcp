@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var serviceAccount = new Account("serviceAccount", AccountArgs.builder()
- *             .accountId("my-account")
+ *             .name("my-account")
  *             .displayName("Test Service Account")
  *             .build());
  * 
@@ -128,7 +128,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var serviceAccount = new Account("serviceAccount", AccountArgs.builder()
- *             .accountId("my-account")
+ *             .name("my-account")
  *             .displayName("Test Service Account")
  *             .build());
  * 

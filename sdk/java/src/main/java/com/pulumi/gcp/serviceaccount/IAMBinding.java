@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var sa = new Account("sa", AccountArgs.builder()
- *             .accountId("my-service-account")
+ *             .name("my-service-account")
  *             .displayName("A service account that only Jane can interact with")
  *             .build());
  * 
@@ -112,7 +112,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var sa = new Account("sa", AccountArgs.builder()
- *             .accountId("my-service-account")
+ *             .name("my-service-account")
  *             .displayName("A service account that only Jane can use")
  *             .build());
  * 
@@ -157,7 +157,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var sa = new Account("sa", AccountArgs.builder()
- *             .accountId("my-service-account")
+ *             .name("my-service-account")
  *             .displayName("A service account that only Jane can use")
  *             .build());
  * 
@@ -210,7 +210,7 @@ import javax.annotation.Nullable;
  *         final var default = ComputeFunctions.getDefaultServiceAccount();
  * 
  *         var sa = new Account("sa", AccountArgs.builder()
- *             .accountId("my-service-account")
+ *             .name("my-service-account")
  *             .displayName("A service account that Jane can use")
  *             .build());
  * 
@@ -262,7 +262,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var sa = new Account("sa", AccountArgs.builder()
- *             .accountId("my-service-account")
+ *             .name("my-service-account")
  *             .displayName("A service account that Jane can use")
  *             .build());
  * 
@@ -322,7 +322,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var sa = new Account("sa", AccountArgs.builder()
- *             .accountId("my-service-account")
+ *             .name("my-service-account")
  *             .displayName("A service account that only Jane can interact with")
  *             .build());
  * 
@@ -365,7 +365,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var sa = new Account("sa", AccountArgs.builder()
- *             .accountId("my-service-account")
+ *             .name("my-service-account")
  *             .displayName("A service account that only Jane can use")
  *             .build());
  * 
@@ -410,7 +410,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var sa = new Account("sa", AccountArgs.builder()
- *             .accountId("my-service-account")
+ *             .name("my-service-account")
  *             .displayName("A service account that only Jane can use")
  *             .build());
  * 
@@ -463,7 +463,7 @@ import javax.annotation.Nullable;
  *         final var default = ComputeFunctions.getDefaultServiceAccount();
  * 
  *         var sa = new Account("sa", AccountArgs.builder()
- *             .accountId("my-service-account")
+ *             .name("my-service-account")
  *             .displayName("A service account that Jane can use")
  *             .build());
  * 
@@ -515,7 +515,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var sa = new Account("sa", AccountArgs.builder()
- *             .accountId("my-service-account")
+ *             .name("my-service-account")
  *             .displayName("A service account that Jane can use")
  *             .build());
  * 

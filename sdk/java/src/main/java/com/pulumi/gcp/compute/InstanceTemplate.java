@@ -76,7 +76,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new Account("default", AccountArgs.builder()
- *             .accountId("service-account-id")
+ *             .name("service-account-id")
  *             .displayName("Service Account")
  *             .build());
  * 
@@ -288,7 +288,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new Account("default", AccountArgs.builder()
- *             .accountId("my-custom-sa")
+ *             .name("my-custom-sa")
  *             .displayName("Custom SA for VM Instance")
  *             .build());
  * 

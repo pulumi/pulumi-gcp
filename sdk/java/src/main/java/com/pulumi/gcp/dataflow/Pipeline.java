@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var serviceAccount = new Account("serviceAccount", AccountArgs.builder()
- *             .accountId("my-account")
+ *             .name("my-account")
  *             .displayName("Service Account")
  *             .build());
  * 

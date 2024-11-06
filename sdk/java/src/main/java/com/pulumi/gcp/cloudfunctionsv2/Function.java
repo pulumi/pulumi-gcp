@@ -144,7 +144,7 @@ import javax.annotation.Nullable;
  *         final var project = "my-project-name";
  * 
  *         var account = new Account("account", AccountArgs.builder()
- *             .accountId("gcf-sa")
+ *             .name("gcf-sa")
  *             .displayName("Test Service Account")
  *             .build());
  * 
@@ -254,7 +254,7 @@ import javax.annotation.Nullable;
  *         final var project = "my-project-name";
  * 
  *         var account = new Account("account", AccountArgs.builder()
- *             .accountId("gcf-sa")
+ *             .name("gcf-sa")
  *             .displayName("Test Service Account")
  *             .build());
  * 
@@ -400,7 +400,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var account = new Account("account", AccountArgs.builder()
- *             .accountId("gcf-sa")
+ *             .name("gcf-sa")
  *             .displayName("Test Service Account - used for both the cloud function and eventarc trigger in the test")
  *             .build());
  * 
@@ -531,7 +531,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var account = new Account("account", AccountArgs.builder()
- *             .accountId("gcf-sa")
+ *             .name("gcf-sa")
  *             .displayName("Test Service Account - used for both the cloud function and eventarc trigger in the test")
  *             .build());
  * 
@@ -667,7 +667,7 @@ import javax.annotation.Nullable;
  *         final var project = "my-project-name";
  * 
  *         var account = new Account("account", AccountArgs.builder()
- *             .accountId("gcf-sa")
+ *             .name("gcf-sa")
  *             .displayName("Test Service Account")
  *             .build());
  * 
@@ -1213,7 +1213,7 @@ import javax.annotation.Nullable;
  *         final var project = "my-project-name";
  * 
  *         var account = new Account("account", AccountArgs.builder()
- *             .accountId("gcf-sa")
+ *             .name("gcf-sa")
  *             .displayName("Test Service Account")
  *             .build());
  * 
@@ -1317,7 +1317,7 @@ import javax.annotation.Nullable;
  *         final var project = "my-project-name";
  * 
  *         var account = new Account("account", AccountArgs.builder()
- *             .accountId("gcf-sa")
+ *             .name("gcf-sa")
  *             .displayName("Test Service Account")
  *             .build());
  * 

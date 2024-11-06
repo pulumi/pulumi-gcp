@@ -76,7 +76,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var sa = new Account("sa", AccountArgs.builder()
- *             .accountId("vertex-sa")
+ *             .name("vertex-sa")
  *             .build());
  * 
  *         var bucket = new Bucket("bucket", BucketArgs.builder()
@@ -205,7 +205,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var sa = new Account("sa", AccountArgs.builder()
- *             .accountId("vertex-sa")
+ *             .name("vertex-sa")
  *             .build());
  * 
  *         var bucket = new Bucket("bucket", BucketArgs.builder()

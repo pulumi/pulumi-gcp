@@ -29,7 +29,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			myaccount, err := serviceaccount.NewAccount(ctx, "myaccount", &serviceaccount.AccountArgs{
-//				AccountId:   pulumi.String("myaccount"),
+//				Name:        pulumi.String("myaccount"),
 //				DisplayName: pulumi.String("My Service Account"),
 //			})
 //			if err != nil {
@@ -64,7 +64,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			myaccount, err := serviceaccount.NewAccount(ctx, "myaccount", &serviceaccount.AccountArgs{
-//				AccountId:   pulumi.String("myaccount"),
+//				Name:        pulumi.String("myaccount"),
 //				DisplayName: pulumi.String("My Service Account"),
 //			})
 //			if err != nil {
@@ -112,7 +112,7 @@ import (
 //			// Workload Identity is the recommended way of accessing Google Cloud APIs from pods.
 //			// https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
 //			myaccount, err := serviceaccount.NewAccount(ctx, "myaccount", &serviceaccount.AccountArgs{
-//				AccountId:   pulumi.String("myaccount"),
+//				Name:        pulumi.String("myaccount"),
 //				DisplayName: pulumi.String("My Service Account"),
 //			})
 //			if err != nil {

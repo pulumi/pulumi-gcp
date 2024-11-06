@@ -125,7 +125,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var dialogflowServiceAccount = new Account("dialogflowServiceAccount", AccountArgs.builder()
- *             .accountId("my-account")
+ *             .name("my-account")
  *             .build());
  * 
  *         var agentCreate = new IAMMember("agentCreate", IAMMemberArgs.builder()

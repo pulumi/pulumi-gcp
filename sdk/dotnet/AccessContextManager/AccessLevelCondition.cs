@@ -84,7 +84,7 @@ namespace Pulumi.Gcp.AccessContextManager
     /// 
     ///     var created_later = new Gcp.ServiceAccount.Account("created-later", new()
     ///     {
-    ///         AccountId = "my-account-id",
+    ///         Name = "my-account-id",
     ///     });
     /// 
     ///     var access_level_conditions = new Gcp.AccessContextManager.AccessLevelCondition("access-level-conditions", new()

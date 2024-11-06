@@ -215,7 +215,7 @@ class DenyPolicy(pulumi.CustomResource):
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE")
         test_account = gcp.serviceaccount.Account("test-account",
-            account_id="svc-acc",
+            name="svc-acc",
             display_name="Test Service Account",
             project=project.project_id)
         example = gcp.iam.DenyPolicy("example",
@@ -300,7 +300,7 @@ class DenyPolicy(pulumi.CustomResource):
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE")
         test_account = gcp.serviceaccount.Account("test-account",
-            account_id="svc-acc",
+            name="svc-acc",
             display_name="Test Service Account",
             project=project.project_id)
         example = gcp.iam.DenyPolicy("example",

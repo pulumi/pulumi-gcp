@@ -814,7 +814,7 @@ class StandardAppVersion(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         custom_service_account = gcp.serviceaccount.Account("custom_service_account",
-            account_id="my-account",
+            name="my-account",
             display_name="Custom Service Account")
         gae_api = gcp.projects.IAMMember("gae_api",
             project=custom_service_account.project,
@@ -980,7 +980,7 @@ class StandardAppVersion(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         custom_service_account = gcp.serviceaccount.Account("custom_service_account",
-            account_id="my-account",
+            name="my-account",
             display_name="Custom Service Account")
         gae_api = gcp.projects.IAMMember("gae_api",
             project=custom_service_account.project,

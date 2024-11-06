@@ -393,7 +393,7 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
                 },
             })
         dataform_sa = gcp.serviceaccount.Account("dataform_sa",
-            account_id="dataform-sa",
+            name="dataform-sa",
             display_name="Dataform Service Account")
         workflow = gcp.dataform.RepositoryWorkflowConfig("workflow",
             project=repository.project,
@@ -528,7 +528,7 @@ class RepositoryWorkflowConfig(pulumi.CustomResource):
                 },
             })
         dataform_sa = gcp.serviceaccount.Account("dataform_sa",
-            account_id="dataform-sa",
+            name="dataform-sa",
             display_name="Dataform Service Account")
         workflow = gcp.dataform.RepositoryWorkflowConfig("workflow",
             project=repository.project,

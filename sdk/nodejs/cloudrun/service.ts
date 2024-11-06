@@ -42,7 +42,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const sa = new gcp.serviceaccount.Account("sa", {
- *     accountId: "cloud-run-pubsub-invoker",
+ *     name: "cloud-run-pubsub-invoker",
  *     displayName: "Cloud Run Pub/Sub Invoker",
  * });
  * const binding = new gcp.cloudrun.IamBinding("binding", {

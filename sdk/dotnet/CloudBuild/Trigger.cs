@@ -231,7 +231,7 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     ///     var cloudbuildServiceAccount = new Gcp.ServiceAccount.Account("cloudbuild_service_account", new()
     ///     {
-    ///         AccountId = "cloud-sa",
+    ///         Name = "cloud-sa",
     ///     });
     /// 
     ///     var actAs = new Gcp.Projects.IAMMember("act_as", new()

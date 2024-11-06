@@ -642,7 +642,7 @@ import (
 //				return err
 //			}
 //			defaultAccount, err := serviceaccount.NewAccount(ctx, "default", &serviceaccount.AccountArgs{
-//				AccountId:   pulumi.String("my-account"),
+//				Name:        pulumi.String("my-account"),
 //				DisplayName: pulumi.String("Service Account"),
 //			})
 //			if err != nil {

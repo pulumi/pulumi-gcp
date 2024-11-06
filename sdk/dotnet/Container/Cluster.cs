@@ -38,7 +38,7 @@ namespace Pulumi.Gcp.Container
     /// {
     ///     var @default = new Gcp.ServiceAccount.Account("default", new()
     ///     {
-    ///         AccountId = "service-account-id",
+    ///         Name = "service-account-id",
     ///         DisplayName = "Service Account",
     ///     });
     /// 
@@ -87,7 +87,7 @@ namespace Pulumi.Gcp.Container
     /// {
     ///     var @default = new Gcp.ServiceAccount.Account("default", new()
     ///     {
-    ///         AccountId = "service-account-id",
+    ///         Name = "service-account-id",
     ///         DisplayName = "Service Account",
     ///     });
     /// 
@@ -130,7 +130,7 @@ namespace Pulumi.Gcp.Container
     /// {
     ///     var @default = new Gcp.ServiceAccount.Account("default", new()
     ///     {
-    ///         AccountId = "service-account-id",
+    ///         Name = "service-account-id",
     ///         DisplayName = "Service Account",
     ///     });
     /// 

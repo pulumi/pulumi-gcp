@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
  *                 .build());
  * 
  *         var serviceAccount = new Account("serviceAccount", AccountArgs.builder()
- *             .accountId("my-account")
+ *             .name("my-account")
  *             .displayName("Service Account")
  *             .build());
  * 

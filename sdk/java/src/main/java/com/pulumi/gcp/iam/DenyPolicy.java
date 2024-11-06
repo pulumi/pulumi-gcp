@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var test_account = new Account("test-account", AccountArgs.builder()
- *             .accountId("svc-acc")
+ *             .name("svc-acc")
  *             .displayName("Test Service Account")
  *             .project(project.projectId())
  *             .build());

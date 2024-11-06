@@ -1297,7 +1297,7 @@ class WorkstationConfig(pulumi.CustomResource):
             name="workstation-cluster",
             key_ring=default_key_ring.id)
         default_account = gcp.serviceaccount.Account("default",
-            account_id="my-account",
+            name="my-account",
             display_name="Service Account")
         default_workstation_config = gcp.workstations.WorkstationConfig("default",
             workstation_config_id="workstation-config",
@@ -1815,7 +1815,7 @@ class WorkstationConfig(pulumi.CustomResource):
             name="workstation-cluster",
             key_ring=default_key_ring.id)
         default_account = gcp.serviceaccount.Account("default",
-            account_id="my-account",
+            name="my-account",
             display_name="Service Account")
         default_workstation_config = gcp.workstations.WorkstationConfig("default",
             workstation_config_id="workstation-config",

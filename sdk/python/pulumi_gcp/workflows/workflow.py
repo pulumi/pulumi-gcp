@@ -577,7 +577,7 @@ class Workflow(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         test_account = gcp.serviceaccount.Account("test_account",
-            account_id="my-account",
+            name="my-account",
             display_name="Test Service Account")
         example = gcp.workflows.Workflow("example",
             name="workflow",
@@ -677,7 +677,7 @@ class Workflow(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         test_account = gcp.serviceaccount.Account("test_account",
-            account_id="my-account",
+            name="my-account",
             display_name="Test Service Account")
         example = gcp.workflows.Workflow("example",
             name="workflow",

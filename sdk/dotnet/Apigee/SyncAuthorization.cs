@@ -60,7 +60,7 @@ namespace Pulumi.Gcp.Apigee
     /// 
     ///     var serviceAccount = new Gcp.ServiceAccount.Account("service_account", new()
     ///     {
-    ///         AccountId = "my-account",
+    ///         Name = "my-account",
     ///         DisplayName = "Service Account",
     ///     });
     /// 

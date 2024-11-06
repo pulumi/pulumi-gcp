@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const serviceAccount = new gcp.serviceaccount.Account("service_account", {
- *     accountId: "service-account-id",
+ *     name: "service-account-id",
  *     displayName: "Service Account",
  * });
  * ```
@@ -72,13 +72,6 @@ export class Account extends pulumi.CustomResource {
     }
 
     /**
-     * The account id that is used to generate the service
-     * account email address and a stable unique id. It is unique within a project,
-     * must be 6-30 characters long, and match the regular expression `a-z`
-     * to comply with RFC1035. Changing this forces a new service account to be created.
-     */
-    public readonly accountId!: pulumi.Output<string>;
-    /**
      * If set to true, skip service account creation if a service account with the same email already exists.
      */
     public readonly createIgnoreAlreadyExists!: pulumi.Output<boolean | undefined>;
@@ -110,7 +103,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * The fully-qualified name of the service account.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The ID of the project that the service account will be created in.
      * Defaults to the provider project configuration.
@@ -128,13 +121,12 @@ export class Account extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: AccountArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: AccountArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccountArgs | AccountState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["createIgnoreAlreadyExists"] = state ? state.createIgnoreAlreadyExists : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["disabled"] = state ? state.disabled : undefined;
@@ -146,18 +138,14 @@ export class Account extends pulumi.CustomResource {
             resourceInputs["uniqueId"] = state ? state.uniqueId : undefined;
         } else {
             const args = argsOrState as AccountArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
-            resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["createIgnoreAlreadyExists"] = args ? args.createIgnoreAlreadyExists : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["disabled"] = args ? args.disabled : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["email"] = undefined /*out*/;
             resourceInputs["member"] = undefined /*out*/;
-            resourceInputs["name"] = undefined /*out*/;
             resourceInputs["uniqueId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -171,13 +159,6 @@ export class Account extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Account resources.
  */
 export interface AccountState {
-    /**
-     * The account id that is used to generate the service
-     * account email address and a stable unique id. It is unique within a project,
-     * must be 6-30 characters long, and match the regular expression `a-z`
-     * to comply with RFC1035. Changing this forces a new service account to be created.
-     */
-    accountId?: pulumi.Input<string>;
     /**
      * If set to true, skip service account creation if a service account with the same email already exists.
      */
@@ -227,13 +208,6 @@ export interface AccountState {
  */
 export interface AccountArgs {
     /**
-     * The account id that is used to generate the service
-     * account email address and a stable unique id. It is unique within a project,
-     * must be 6-30 characters long, and match the regular expression `a-z`
-     * to comply with RFC1035. Changing this forces a new service account to be created.
-     */
-    accountId: pulumi.Input<string>;
-    /**
      * If set to true, skip service account creation if a service account with the same email already exists.
      */
     createIgnoreAlreadyExists?: pulumi.Input<boolean>;
@@ -252,6 +226,13 @@ export interface AccountArgs {
      * Can be updated without creating a new resource.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * The account id that is used to generate the service
+     * account email address and a stable unique id. It is unique within a project,
+     * must be 6-30 characters long, and match the regular expression `a-z`
+     * to comply with RFC1035. Changing this forces a new service account to be created.
+     */
+    name?: pulumi.Input<string>;
     /**
      * The ID of the project that the service account will be created in.
      * Defaults to the provider project configuration.

@@ -118,7 +118,7 @@ import javax.annotation.Nullable;
  * 
  *         var customServiceAccount = new Account("customServiceAccount", AccountArgs.builder()
  *             .project(service.project())
- *             .accountId("my-account")
+ *             .name("my-account")
  *             .displayName("Custom Service Account")
  *             .build());
  * 

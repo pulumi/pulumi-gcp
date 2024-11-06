@@ -28,7 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			myaccount, err := serviceaccount.NewAccount(ctx, "myaccount", &serviceaccount.AccountArgs{
-//				AccountId: pulumi.String("dev-foo-account"),
+//				Name: pulumi.String("dev-foo-account"),
 //			})
 //			if err != nil {
 //				return err

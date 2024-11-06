@@ -33,6 +33,21 @@ public final class IAMCustomRoleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The camel case role id to use for this role. Cannot contain `-` characters.
+     * 
+     */
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    /**
+     * @return The camel case role id to use for this role. Cannot contain `-` characters.
+     * 
+     */
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
+    }
+
+    /**
      * The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
      * 
      */
@@ -62,21 +77,6 @@ public final class IAMCustomRoleArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
-    }
-
-    /**
-     * The camel case role id to use for this role. Cannot contain `-` characters.
-     * 
-     */
-    @Import(name="roleId", required=true)
-    private Output<String> roleId;
-
-    /**
-     * @return The camel case role id to use for this role. Cannot contain `-` characters.
-     * 
-     */
-    public Output<String> roleId() {
-        return this.roleId;
     }
 
     /**
@@ -117,9 +117,9 @@ public final class IAMCustomRoleArgs extends com.pulumi.resources.ResourceArgs {
 
     private IAMCustomRoleArgs(IAMCustomRoleArgs $) {
         this.description = $.description;
+        this.name = $.name;
         this.permissions = $.permissions;
         this.project = $.project;
-        this.roleId = $.roleId;
         this.stage = $.stage;
         this.title = $.title;
     }
@@ -161,6 +161,27 @@ public final class IAMCustomRoleArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param name The camel case role id to use for this role. Cannot contain `-` characters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable Output<String> name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
+         * @param name The camel case role id to use for this role. Cannot contain `-` characters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(String name) {
+            return name(Output.of(name));
         }
 
         /**
@@ -218,27 +239,6 @@ public final class IAMCustomRoleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param roleId The camel case role id to use for this role. Cannot contain `-` characters.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder roleId(Output<String> roleId) {
-            $.roleId = roleId;
-            return this;
-        }
-
-        /**
-         * @param roleId The camel case role id to use for this role. Cannot contain `-` characters.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder roleId(String roleId) {
-            return roleId(Output.of(roleId));
-        }
-
-        /**
          * @param stage The current launch stage of the role.
          * Defaults to `GA`.
          * List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).
@@ -287,9 +287,6 @@ public final class IAMCustomRoleArgs extends com.pulumi.resources.ResourceArgs {
         public IAMCustomRoleArgs build() {
             if ($.permissions == null) {
                 throw new MissingRequiredPropertyException("IAMCustomRoleArgs", "permissions");
-            }
-            if ($.roleId == null) {
-                throw new MissingRequiredPropertyException("IAMCustomRoleArgs", "roleId");
             }
             if ($.title == null) {
                 throw new MissingRequiredPropertyException("IAMCustomRoleArgs", "title");

@@ -42,7 +42,7 @@ import * as utilities from "../utilities";
  *     network: network.id,
  * });
  * const sa = new gcp.serviceaccount.Account("sa", {
- *     accountId: "tpu-sa",
+ *     name: "tpu-sa",
  *     displayName: "Test TPU VM",
  * });
  * const disk = new gcp.compute.Disk("disk", {

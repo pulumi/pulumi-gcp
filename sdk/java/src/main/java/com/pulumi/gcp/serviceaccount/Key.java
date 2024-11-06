@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var myaccount = new Account("myaccount", AccountArgs.builder()
- *             .accountId("myaccount")
+ *             .name("myaccount")
  *             .displayName("My Service Account")
  *             .build());
  * 
@@ -93,7 +93,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var myaccount = new Account("myaccount", AccountArgs.builder()
- *             .accountId("myaccount")
+ *             .name("myaccount")
  *             .displayName("My Service Account")
  *             .build());
  * 
@@ -146,7 +146,7 @@ import javax.annotation.Nullable;
  *         // Workload Identity is the recommended way of accessing Google Cloud APIs from pods.
  *         // https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
  *         var myaccount = new Account("myaccount", AccountArgs.builder()
- *             .accountId("myaccount")
+ *             .name("myaccount")
  *             .displayName("My Service Account")
  *             .build());
  * 

@@ -53,7 +53,7 @@ namespace Pulumi.Gcp.Dataproc
     /// {
     ///     var @default = new Gcp.ServiceAccount.Account("default", new()
     ///     {
-    ///         AccountId = "service-account-id",
+    ///         Name = "service-account-id",
     ///         DisplayName = "Service Account",
     ///     });
     /// 

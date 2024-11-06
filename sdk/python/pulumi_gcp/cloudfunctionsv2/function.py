@@ -542,7 +542,7 @@ class Function(pulumi.CustomResource):
 
         project = "my-project-name"
         account = gcp.serviceaccount.Account("account",
-            account_id="gcf-sa",
+            name="gcf-sa",
             display_name="Test Service Account")
         topic = gcp.pubsub.Topic("topic", name="functions2-topic")
         bucket = gcp.storage.Bucket("bucket",
@@ -600,7 +600,7 @@ class Function(pulumi.CustomResource):
 
         project = "my-project-name"
         account = gcp.serviceaccount.Account("account",
-            account_id="gcf-sa",
+            name="gcf-sa",
             display_name="Test Service Account")
         bucket = gcp.storage.Bucket("bucket",
             name=f"{project}-gcf-source",
@@ -683,7 +683,7 @@ class Function(pulumi.CustomResource):
             role="roles/pubsub.publisher",
             member=f"serviceAccount:{gcs_account.email_address}")
         account = gcp.serviceaccount.Account("account",
-            account_id="gcf-sa",
+            name="gcf-sa",
             display_name="Test Service Account - used for both the cloud function and eventarc trigger in the test")
         # Permissions on the service account used by the function and Eventarc trigger
         invoking = gcp.projects.IAMMember("invoking",
@@ -763,7 +763,7 @@ class Function(pulumi.CustomResource):
             bucket=source_bucket.name,
             source=pulumi.FileAsset("function-source.zip"))
         account = gcp.serviceaccount.Account("account",
-            account_id="gcf-sa",
+            name="gcf-sa",
             display_name="Test Service Account - used for both the cloud function and eventarc trigger in the test")
         # Note: The right way of listening for Cloud Storage events is to use a Cloud Storage trigger.
         # Here we use Audit Logs to monitor the bucket so path patterns can be used in the example of
@@ -851,7 +851,7 @@ class Function(pulumi.CustomResource):
 
         project = "my-project-name"
         account = gcp.serviceaccount.Account("account",
-            account_id="gcf-sa",
+            name="gcf-sa",
             display_name="Test Service Account")
         log_writer = gcp.projects.IAMMember("log_writer",
             project=account.project,
@@ -1131,7 +1131,7 @@ class Function(pulumi.CustomResource):
 
         project = "my-project-name"
         account = gcp.serviceaccount.Account("account",
-            account_id="gcf-sa",
+            name="gcf-sa",
             display_name="Test Service Account")
         topic = gcp.pubsub.Topic("topic", name="functions2-topic")
         bucket = gcp.storage.Bucket("bucket",
@@ -1189,7 +1189,7 @@ class Function(pulumi.CustomResource):
 
         project = "my-project-name"
         account = gcp.serviceaccount.Account("account",
-            account_id="gcf-sa",
+            name="gcf-sa",
             display_name="Test Service Account")
         topic = gcp.pubsub.Topic("topic", name="functions2-topic")
         bucket = gcp.storage.Bucket("bucket",
@@ -1348,7 +1348,7 @@ class Function(pulumi.CustomResource):
 
         project = "my-project-name"
         account = gcp.serviceaccount.Account("account",
-            account_id="gcf-sa",
+            name="gcf-sa",
             display_name="Test Service Account")
         topic = gcp.pubsub.Topic("topic", name="functions2-topic")
         bucket = gcp.storage.Bucket("bucket",
@@ -1406,7 +1406,7 @@ class Function(pulumi.CustomResource):
 
         project = "my-project-name"
         account = gcp.serviceaccount.Account("account",
-            account_id="gcf-sa",
+            name="gcf-sa",
             display_name="Test Service Account")
         bucket = gcp.storage.Bucket("bucket",
             name=f"{project}-gcf-source",
@@ -1489,7 +1489,7 @@ class Function(pulumi.CustomResource):
             role="roles/pubsub.publisher",
             member=f"serviceAccount:{gcs_account.email_address}")
         account = gcp.serviceaccount.Account("account",
-            account_id="gcf-sa",
+            name="gcf-sa",
             display_name="Test Service Account - used for both the cloud function and eventarc trigger in the test")
         # Permissions on the service account used by the function and Eventarc trigger
         invoking = gcp.projects.IAMMember("invoking",
@@ -1569,7 +1569,7 @@ class Function(pulumi.CustomResource):
             bucket=source_bucket.name,
             source=pulumi.FileAsset("function-source.zip"))
         account = gcp.serviceaccount.Account("account",
-            account_id="gcf-sa",
+            name="gcf-sa",
             display_name="Test Service Account - used for both the cloud function and eventarc trigger in the test")
         # Note: The right way of listening for Cloud Storage events is to use a Cloud Storage trigger.
         # Here we use Audit Logs to monitor the bucket so path patterns can be used in the example of
@@ -1657,7 +1657,7 @@ class Function(pulumi.CustomResource):
 
         project = "my-project-name"
         account = gcp.serviceaccount.Account("account",
-            account_id="gcf-sa",
+            name="gcf-sa",
             display_name="Test Service Account")
         log_writer = gcp.projects.IAMMember("log_writer",
             project=account.project,
@@ -1937,7 +1937,7 @@ class Function(pulumi.CustomResource):
 
         project = "my-project-name"
         account = gcp.serviceaccount.Account("account",
-            account_id="gcf-sa",
+            name="gcf-sa",
             display_name="Test Service Account")
         topic = gcp.pubsub.Topic("topic", name="functions2-topic")
         bucket = gcp.storage.Bucket("bucket",
@@ -1995,7 +1995,7 @@ class Function(pulumi.CustomResource):
 
         project = "my-project-name"
         account = gcp.serviceaccount.Account("account",
-            account_id="gcf-sa",
+            name="gcf-sa",
             display_name="Test Service Account")
         topic = gcp.pubsub.Topic("topic", name="functions2-topic")
         bucket = gcp.storage.Bucket("bucket",

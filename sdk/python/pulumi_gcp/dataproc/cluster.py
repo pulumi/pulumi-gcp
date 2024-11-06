@@ -366,7 +366,7 @@ class Cluster(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.serviceaccount.Account("default",
-            account_id="service-account-id",
+            name="service-account-id",
             display_name="Service Account")
         mycluster = gcp.dataproc.Cluster("mycluster",
             name="mycluster",
@@ -499,7 +499,7 @@ class Cluster(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.serviceaccount.Account("default",
-            account_id="service-account-id",
+            name="service-account-id",
             display_name="Service Account")
         mycluster = gcp.dataproc.Cluster("mycluster",
             name="mycluster",

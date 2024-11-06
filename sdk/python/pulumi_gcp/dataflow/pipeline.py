@@ -502,7 +502,7 @@ class Pipeline(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         service_account = gcp.serviceaccount.Account("service_account",
-            account_id="my-account",
+            name="my-account",
             display_name="Service Account")
         primary = gcp.dataflow.Pipeline("primary",
             name="my-pipeline",
@@ -631,7 +631,7 @@ class Pipeline(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         service_account = gcp.serviceaccount.Account("service_account",
-            account_id="my-account",
+            name="my-account",
             display_name="Service Account")
         primary = gcp.dataflow.Pipeline("primary",
             name="my-pipeline",

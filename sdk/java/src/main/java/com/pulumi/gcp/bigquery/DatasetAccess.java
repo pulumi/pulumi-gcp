@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var bqowner = new Account("bqowner", AccountArgs.builder()
- *             .accountId("bqowner")
+ *             .name("bqowner")
  *             .build());
  * 
  *         var access = new DatasetAccess("access", DatasetAccessArgs.builder()

@@ -5,7 +5,6 @@ package com.pulumi.gcp.serviceaccount;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -16,27 +15,6 @@ import javax.annotation.Nullable;
 public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AccountArgs Empty = new AccountArgs();
-
-    /**
-     * The account id that is used to generate the service
-     * account email address and a stable unique id. It is unique within a project,
-     * must be 6-30 characters long, and match the regular expression `a-z`
-     * to comply with RFC1035. Changing this forces a new service account to be created.
-     * 
-     */
-    @Import(name="accountId", required=true)
-    private Output<String> accountId;
-
-    /**
-     * @return The account id that is used to generate the service
-     * account email address and a stable unique id. It is unique within a project,
-     * must be 6-30 characters long, and match the regular expression `a-z`
-     * to comply with RFC1035. Changing this forces a new service account to be created.
-     * 
-     */
-    public Output<String> accountId() {
-        return this.accountId;
-    }
 
     /**
      * If set to true, skip service account creation if a service account with the same email already exists.
@@ -105,6 +83,27 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The account id that is used to generate the service
+     * account email address and a stable unique id. It is unique within a project,
+     * must be 6-30 characters long, and match the regular expression `a-z`
+     * to comply with RFC1035. Changing this forces a new service account to be created.
+     * 
+     */
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    /**
+     * @return The account id that is used to generate the service
+     * account email address and a stable unique id. It is unique within a project,
+     * must be 6-30 characters long, and match the regular expression `a-z`
+     * to comply with RFC1035. Changing this forces a new service account to be created.
+     * 
+     */
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
+    }
+
+    /**
      * The ID of the project that the service account will be created in.
      * Defaults to the provider project configuration.
      * 
@@ -124,11 +123,11 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
     private AccountArgs() {}
 
     private AccountArgs(AccountArgs $) {
-        this.accountId = $.accountId;
         this.createIgnoreAlreadyExists = $.createIgnoreAlreadyExists;
         this.description = $.description;
         this.disabled = $.disabled;
         this.displayName = $.displayName;
+        this.name = $.name;
         this.project = $.project;
     }
 
@@ -148,33 +147,6 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(AccountArgs defaults) {
             $ = new AccountArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param accountId The account id that is used to generate the service
-         * account email address and a stable unique id. It is unique within a project,
-         * must be 6-30 characters long, and match the regular expression `a-z`
-         * to comply with RFC1035. Changing this forces a new service account to be created.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder accountId(Output<String> accountId) {
-            $.accountId = accountId;
-            return this;
-        }
-
-        /**
-         * @param accountId The account id that is used to generate the service
-         * account email address and a stable unique id. It is unique within a project,
-         * must be 6-30 characters long, and match the regular expression `a-z`
-         * to comply with RFC1035. Changing this forces a new service account to be created.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder accountId(String accountId) {
-            return accountId(Output.of(accountId));
         }
 
         /**
@@ -268,6 +240,33 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param name The account id that is used to generate the service
+         * account email address and a stable unique id. It is unique within a project,
+         * must be 6-30 characters long, and match the regular expression `a-z`
+         * to comply with RFC1035. Changing this forces a new service account to be created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable Output<String> name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
+         * @param name The account id that is used to generate the service
+         * account email address and a stable unique id. It is unique within a project,
+         * must be 6-30 characters long, and match the regular expression `a-z`
+         * to comply with RFC1035. Changing this forces a new service account to be created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(String name) {
+            return name(Output.of(name));
+        }
+
+        /**
          * @param project The ID of the project that the service account will be created in.
          * Defaults to the provider project configuration.
          * 
@@ -291,9 +290,6 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AccountArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("AccountArgs", "accountId");
-            }
             return $;
         }
     }

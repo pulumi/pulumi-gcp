@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const customServiceAccount = new gcp.serviceaccount.Account("custom_service_account", {
- *     accountId: "my-account",
+ *     name: "my-account",
  *     displayName: "Custom Service Account",
  * });
  * const gaeApi = new gcp.projects.IAMMember("gae_api", {

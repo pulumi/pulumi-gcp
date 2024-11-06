@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const bqowner = new gcp.serviceaccount.Account("bqowner", {accountId: "bqowner"});
+ * const bqowner = new gcp.serviceaccount.Account("bqowner", {name: "bqowner"});
  * const dataset = new gcp.bigquery.Dataset("dataset", {
  *     datasetId: "example_dataset",
  *     friendlyName: "test",
@@ -68,7 +68,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const bqowner = new gcp.serviceaccount.Account("bqowner", {accountId: "bqowner"});
+ * const bqowner = new gcp.serviceaccount.Account("bqowner", {name: "bqowner"});
  * const _public = new gcp.bigquery.Dataset("public", {
  *     datasetId: "public",
  *     friendlyName: "test",

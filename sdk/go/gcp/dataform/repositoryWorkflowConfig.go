@@ -95,7 +95,7 @@ import (
 //				return err
 //			}
 //			dataformSa, err := serviceaccount.NewAccount(ctx, "dataform_sa", &serviceaccount.AccountArgs{
-//				AccountId:   pulumi.String("dataform-sa"),
+//				Name:        pulumi.String("dataform-sa"),
 //				DisplayName: pulumi.String("Dataform Service Account"),
 //			})
 //			if err != nil {

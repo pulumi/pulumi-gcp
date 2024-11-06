@@ -1510,7 +1510,7 @@ class Instance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.serviceaccount.Account("default",
-            account_id="my-custom-sa",
+            name="my-custom-sa",
             display_name="Custom SA for VM Instance")
         default_instance = gcp.compute.Instance("default",
             network_interfaces=[{
@@ -1554,7 +1554,7 @@ class Instance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.serviceaccount.Account("default",
-            account_id="my-custom-sa",
+            name="my-custom-sa",
             display_name="Custom SA for VM Instance")
         confidential_instance = gcp.compute.Instance("confidential_instance",
             network_interfaces=[{
@@ -1725,7 +1725,7 @@ class Instance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.serviceaccount.Account("default",
-            account_id="my-custom-sa",
+            name="my-custom-sa",
             display_name="Custom SA for VM Instance")
         default_instance = gcp.compute.Instance("default",
             network_interfaces=[{
@@ -1769,7 +1769,7 @@ class Instance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.serviceaccount.Account("default",
-            account_id="my-custom-sa",
+            name="my-custom-sa",
             display_name="Custom SA for VM Instance")
         confidential_instance = gcp.compute.Instance("confidential_instance",
             network_interfaces=[{

@@ -116,7 +116,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var serviceAccount = new Account("serviceAccount", AccountArgs.builder()
- *             .accountId("service-acc")
+ *             .name("service-acc")
  *             .displayName("Service Account")
  *             .build());
  * 

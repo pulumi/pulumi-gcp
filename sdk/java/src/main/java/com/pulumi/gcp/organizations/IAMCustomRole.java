@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var my_custom_role = new IAMCustomRole("my-custom-role", IAMCustomRoleArgs.builder()
- *             .roleId("myCustomRole")
+ *             .name("myCustomRole")
  *             .orgId("123456789")
  *             .title("My Custom Role")
  *             .description("A description")
@@ -113,14 +113,14 @@ public class IAMCustomRole extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The name of the role in the format `organizations/{{org_id}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
+     * The role id to use for this role.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the role in the format `organizations/{{org_id}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
+     * @return The role id to use for this role.
      * 
      */
     public Output<String> name() {
@@ -153,20 +153,6 @@ public class IAMCustomRole extends com.pulumi.resources.CustomResource {
      */
     public Output<List<String>> permissions() {
         return this.permissions;
-    }
-    /**
-     * The role id to use for this role.
-     * 
-     */
-    @Export(name="roleId", refs={String.class}, tree="[0]")
-    private Output<String> roleId;
-
-    /**
-     * @return The role id to use for this role.
-     * 
-     */
-    public Output<String> roleId() {
-        return this.roleId;
     }
     /**
      * The current launch stage of the role.

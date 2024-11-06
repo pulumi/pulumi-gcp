@@ -94,7 +94,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var testAccount = new Account("testAccount", AccountArgs.builder()
- *             .accountId("my-account")
+ *             .name("my-account")
  *             .displayName("Test Service Account")
  *             .build());
  * 

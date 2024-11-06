@@ -59,7 +59,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const oidcServiceAccount = new gcp.serviceaccount.Account("oidc_service_account", {
- *     accountId: "example-oidc",
+ *     name: "example-oidc",
  *     displayName: "Tasks Queue OIDC Service Account",
  * });
  * const httpTargetOidc = new gcp.cloudtasks.Queue("http_target_oidc", {
@@ -107,7 +107,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const oauthServiceAccount = new gcp.serviceaccount.Account("oauth_service_account", {
- *     accountId: "example-oauth",
+ *     name: "example-oauth",
  *     displayName: "Tasks Queue OAuth Service Account",
  * });
  * const httpTargetOauth = new gcp.cloudtasks.Queue("http_target_oauth", {

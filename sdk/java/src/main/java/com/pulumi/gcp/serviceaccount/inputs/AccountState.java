@@ -17,27 +17,6 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
     public static final AccountState Empty = new AccountState();
 
     /**
-     * The account id that is used to generate the service
-     * account email address and a stable unique id. It is unique within a project,
-     * must be 6-30 characters long, and match the regular expression `a-z`
-     * to comply with RFC1035. Changing this forces a new service account to be created.
-     * 
-     */
-    @Import(name="accountId")
-    private @Nullable Output<String> accountId;
-
-    /**
-     * @return The account id that is used to generate the service
-     * account email address and a stable unique id. It is unique within a project,
-     * must be 6-30 characters long, and match the regular expression `a-z`
-     * to comply with RFC1035. Changing this forces a new service account to be created.
-     * 
-     */
-    public Optional<Output<String>> accountId() {
-        return Optional.ofNullable(this.accountId);
-    }
-
-    /**
      * If set to true, skip service account creation if a service account with the same email already exists.
      * 
      */
@@ -187,7 +166,6 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
     private AccountState() {}
 
     private AccountState(AccountState $) {
-        this.accountId = $.accountId;
         this.createIgnoreAlreadyExists = $.createIgnoreAlreadyExists;
         this.description = $.description;
         this.disabled = $.disabled;
@@ -215,33 +193,6 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(AccountState defaults) {
             $ = new AccountState(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param accountId The account id that is used to generate the service
-         * account email address and a stable unique id. It is unique within a project,
-         * must be 6-30 characters long, and match the regular expression `a-z`
-         * to comply with RFC1035. Changing this forces a new service account to be created.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder accountId(@Nullable Output<String> accountId) {
-            $.accountId = accountId;
-            return this;
-        }
-
-        /**
-         * @param accountId The account id that is used to generate the service
-         * account email address and a stable unique id. It is unique within a project,
-         * must be 6-30 characters long, and match the regular expression `a-z`
-         * to comply with RFC1035. Changing this forces a new service account to be created.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder accountId(String accountId) {
-            return accountId(Output.of(accountId));
         }
 
         /**

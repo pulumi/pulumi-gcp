@@ -130,7 +130,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var sa = new Account("sa", AccountArgs.builder()
- *             .accountId("tpu-sa")
+ *             .name("tpu-sa")
  *             .displayName("Test TPU VM")
  *             .build());
  * 

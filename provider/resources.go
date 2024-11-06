@@ -23,6 +23,7 @@ import (
 
 	pf "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	info "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/info"
 	tks "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
@@ -787,6 +788,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"google_organization_iam_custom_role": {
 				Tok: gcpResource(gcpOrganization, "IAMCustomRole"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"role_id": info.AutoName("name", 255, "-"),
+				},
 				Docs: &tfbridge.DocInfo{
 					Source: "google_organization_iam_custom_role.html.markdown",
 				},
@@ -862,6 +866,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"google_project_iam_custom_role": {
 				Tok: gcpResource(gcpProject, "IAMCustomRole"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"role_id": info.AutoName("name", 255, "-"),
+				},
 				Docs: &tfbridge.DocInfo{
 					Source: "google_project_iam_custom_role.html.markdown",
 				},
@@ -911,6 +918,9 @@ func Provider() tfbridge.ProviderInfo {
 
 			"google_service_account": {
 				Tok: gcpResource(gcpServiceAccount, "Account"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"account_id": info.AutoName("name", 30, "-"),
+				},
 				Docs: &tfbridge.DocInfo{
 					Source: "google_service_account.html.markdown",
 				},

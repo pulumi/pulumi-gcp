@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// {
         ///     var myaccount = new Gcp.ServiceAccount.Account("myaccount", new()
         ///     {
-        ///         AccountId = "dev-foo-account",
+        ///         Name = "dev-foo-account",
         ///     });
         /// 
         ///     var mykeyKey = new Gcp.ServiceAccount.Key("mykey", new()
@@ -61,7 +61,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// {
         ///     var myaccount = new Gcp.ServiceAccount.Account("myaccount", new()
         ///     {
-        ///         AccountId = "dev-foo-account",
+        ///         Name = "dev-foo-account",
         ///     });
         /// 
         ///     var mykeyKey = new Gcp.ServiceAccount.Key("mykey", new()

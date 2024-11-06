@@ -36,7 +36,7 @@ import (
 //				return err
 //			}
 //			bqowner, err := serviceaccount.NewAccount(ctx, "bqowner", &serviceaccount.AccountArgs{
-//				AccountId: pulumi.String("bqowner"),
+//				Name: pulumi.String("bqowner"),
 //			})
 //			if err != nil {
 //				return err

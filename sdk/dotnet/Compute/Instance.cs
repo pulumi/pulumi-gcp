@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var @default = new Gcp.ServiceAccount.Account("default", new()
     ///     {
-    ///         AccountId = "my-custom-sa",
+    ///         Name = "my-custom-sa",
     ///         DisplayName = "Custom SA for VM Instance",
     ///     });
     /// 
@@ -102,7 +102,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var @default = new Gcp.ServiceAccount.Account("default", new()
     ///     {
-    ///         AccountId = "my-custom-sa",
+    ///         Name = "my-custom-sa",
     ///         DisplayName = "Custom SA for VM Instance",
     ///     });
     /// 

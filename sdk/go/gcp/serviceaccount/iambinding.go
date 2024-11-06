@@ -55,7 +55,7 @@ import (
 //				return err
 //			}
 //			sa, err := serviceaccount.NewAccount(ctx, "sa", &serviceaccount.AccountArgs{
-//				AccountId:   pulumi.String("my-service-account"),
+//				Name:        pulumi.String("my-service-account"),
 //				DisplayName: pulumi.String("A service account that only Jane can interact with"),
 //			})
 //			if err != nil {
@@ -89,7 +89,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			sa, err := serviceaccount.NewAccount(ctx, "sa", &serviceaccount.AccountArgs{
-//				AccountId:   pulumi.String("my-service-account"),
+//				Name:        pulumi.String("my-service-account"),
 //				DisplayName: pulumi.String("A service account that only Jane can use"),
 //			})
 //			if err != nil {
@@ -126,7 +126,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			sa, err := serviceaccount.NewAccount(ctx, "sa", &serviceaccount.AccountArgs{
-//				AccountId:   pulumi.String("my-service-account"),
+//				Name:        pulumi.String("my-service-account"),
 //				DisplayName: pulumi.String("A service account that only Jane can use"),
 //			})
 //			if err != nil {
@@ -175,7 +175,7 @@ import (
 //				return err
 //			}
 //			sa, err := serviceaccount.NewAccount(ctx, "sa", &serviceaccount.AccountArgs{
-//				AccountId:   pulumi.String("my-service-account"),
+//				Name:        pulumi.String("my-service-account"),
 //				DisplayName: pulumi.String("A service account that Jane can use"),
 //			})
 //			if err != nil {
@@ -221,7 +221,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			sa, err := serviceaccount.NewAccount(ctx, "sa", &serviceaccount.AccountArgs{
-//				AccountId:   pulumi.String("my-service-account"),
+//				Name:        pulumi.String("my-service-account"),
 //				DisplayName: pulumi.String("A service account that Jane can use"),
 //			})
 //			if err != nil {
@@ -277,7 +277,7 @@ import (
 //				return err
 //			}
 //			sa, err := serviceaccount.NewAccount(ctx, "sa", &serviceaccount.AccountArgs{
-//				AccountId:   pulumi.String("my-service-account"),
+//				Name:        pulumi.String("my-service-account"),
 //				DisplayName: pulumi.String("A service account that only Jane can interact with"),
 //			})
 //			if err != nil {
@@ -311,7 +311,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			sa, err := serviceaccount.NewAccount(ctx, "sa", &serviceaccount.AccountArgs{
-//				AccountId:   pulumi.String("my-service-account"),
+//				Name:        pulumi.String("my-service-account"),
 //				DisplayName: pulumi.String("A service account that only Jane can use"),
 //			})
 //			if err != nil {
@@ -348,7 +348,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			sa, err := serviceaccount.NewAccount(ctx, "sa", &serviceaccount.AccountArgs{
-//				AccountId:   pulumi.String("my-service-account"),
+//				Name:        pulumi.String("my-service-account"),
 //				DisplayName: pulumi.String("A service account that only Jane can use"),
 //			})
 //			if err != nil {
@@ -397,7 +397,7 @@ import (
 //				return err
 //			}
 //			sa, err := serviceaccount.NewAccount(ctx, "sa", &serviceaccount.AccountArgs{
-//				AccountId:   pulumi.String("my-service-account"),
+//				Name:        pulumi.String("my-service-account"),
 //				DisplayName: pulumi.String("A service account that Jane can use"),
 //			})
 //			if err != nil {
@@ -443,7 +443,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			sa, err := serviceaccount.NewAccount(ctx, "sa", &serviceaccount.AccountArgs{
-//				AccountId:   pulumi.String("my-service-account"),
+//				Name:        pulumi.String("my-service-account"),
 //				DisplayName: pulumi.String("A service account that Jane can use"),
 //			})
 //			if err != nil {

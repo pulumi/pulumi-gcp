@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const serviceAccount = new gcp.serviceaccount.Account("service_account", {
- *     accountId: "my-account",
+ *     name: "my-account",
  *     displayName: "Test Service Account",
  * });
  * const appConnector = new gcp.beyondcorp.AppConnector("app_connector", {
@@ -46,7 +46,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const serviceAccount = new gcp.serviceaccount.Account("service_account", {
- *     accountId: "my-account",
+ *     name: "my-account",
  *     displayName: "Test Service Account",
  * });
  * const appConnector = new gcp.beyondcorp.AppConnector("app_connector", {

@@ -49,7 +49,7 @@ namespace Pulumi.Gcp.SourceRepo
     /// {
     ///     var testAccount = new Gcp.ServiceAccount.Account("test_account", new()
     ///     {
-    ///         AccountId = "my-account",
+    ///         Name = "my-account",
     ///         DisplayName = "Test Service Account",
     ///     });
     /// 

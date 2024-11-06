@@ -3072,7 +3072,7 @@ class Cluster(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.serviceaccount.Account("default",
-            account_id="service-account-id",
+            name="service-account-id",
             display_name="Service Account")
         primary = gcp.container.Cluster("primary",
             name="my-gke-cluster",
@@ -3103,7 +3103,7 @@ class Cluster(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.serviceaccount.Account("default",
-            account_id="service-account-id",
+            name="service-account-id",
             display_name="Service Account")
         primary = gcp.container.Cluster("primary",
             name="marcellus-wallace",
@@ -3129,7 +3129,7 @@ class Cluster(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.serviceaccount.Account("default",
-            account_id="service-account-id",
+            name="service-account-id",
             display_name="Service Account")
         primary = gcp.container.Cluster("primary",
             name="marcellus-wallace",
@@ -3409,7 +3409,7 @@ class Cluster(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.serviceaccount.Account("default",
-            account_id="service-account-id",
+            name="service-account-id",
             display_name="Service Account")
         primary = gcp.container.Cluster("primary",
             name="my-gke-cluster",
@@ -3440,7 +3440,7 @@ class Cluster(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.serviceaccount.Account("default",
-            account_id="service-account-id",
+            name="service-account-id",
             display_name="Service Account")
         primary = gcp.container.Cluster("primary",
             name="marcellus-wallace",
@@ -3466,7 +3466,7 @@ class Cluster(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.serviceaccount.Account("default",
-            account_id="service-account-id",
+            name="service-account-id",
             display_name="Service Account")
         primary = gcp.container.Cluster("primary",
             name="marcellus-wallace",

@@ -409,7 +409,7 @@ import * as utilities from "../utilities";
  *     keyRing: defaultKeyRing.id,
  * });
  * const defaultAccount = new gcp.serviceaccount.Account("default", {
- *     accountId: "my-account",
+ *     name: "my-account",
  *     displayName: "Service Account",
  * });
  * const defaultWorkstationConfig = new gcp.workstations.WorkstationConfig("default", {

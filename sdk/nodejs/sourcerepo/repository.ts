@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const testAccount = new gcp.serviceaccount.Account("test_account", {
- *     accountId: "my-account",
+ *     name: "my-account",
  *     displayName: "Test Service Account",
  * });
  * const topic = new gcp.pubsub.Topic("topic", {name: "my-topic"});

@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  *     deletionPolicy: "DELETE",
  * });
  * const test_account = new gcp.serviceaccount.Account("test-account", {
- *     accountId: "svc-acc",
+ *     name: "svc-acc",
  *     displayName: "Test Service Account",
  *     project: project.projectId,
  * });

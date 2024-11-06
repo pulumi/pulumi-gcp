@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.ServiceAccount
     /// {
     ///     var myaccount = new Gcp.ServiceAccount.Account("myaccount", new()
     ///     {
-    ///         AccountId = "myaccount",
+    ///         Name = "myaccount",
     ///         DisplayName = "My Service Account",
     ///     });
     /// 
@@ -50,7 +50,7 @@ namespace Pulumi.Gcp.ServiceAccount
     /// {
     ///     var myaccount = new Gcp.ServiceAccount.Account("myaccount", new()
     ///     {
-    ///         AccountId = "myaccount",
+    ///         Name = "myaccount",
     ///         DisplayName = "My Service Account",
     ///     });
     /// 
@@ -88,7 +88,7 @@ namespace Pulumi.Gcp.ServiceAccount
     ///     // https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
     ///     var myaccount = new Gcp.ServiceAccount.Account("myaccount", new()
     ///     {
-    ///         AccountId = "myaccount",
+    ///         Name = "myaccount",
     ///         DisplayName = "My Service Account",
     ///     });
     /// 

@@ -293,7 +293,7 @@ namespace Pulumi.Gcp.PubSub
     /// 
     ///     var bqWriteServiceAccount = new Gcp.ServiceAccount.Account("bq_write_service_account", new()
     ///     {
-    ///         AccountId = "example-bqw",
+    ///         Name = "example-bqw",
     ///         DisplayName = "BQ Write Service Account",
     ///     });
     /// 
@@ -502,7 +502,7 @@ namespace Pulumi.Gcp.PubSub
     /// 
     ///     var storageWriteServiceAccount = new Gcp.ServiceAccount.Account("storage_write_service_account", new()
     ///     {
-    ///         AccountId = "example-stw",
+    ///         Name = "example-stw",
     ///         DisplayName = "Storage Write Service Account",
     ///     });
     /// 

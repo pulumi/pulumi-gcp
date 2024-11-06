@@ -361,7 +361,7 @@ class Key(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         myaccount = gcp.serviceaccount.Account("myaccount",
-            account_id="myaccount",
+            name="myaccount",
             display_name="My Service Account")
         mykey = gcp.serviceaccount.Key("mykey",
             service_account_id=myaccount.name,
@@ -376,7 +376,7 @@ class Key(pulumi.CustomResource):
         import pulumiverse_time as time
 
         myaccount = gcp.serviceaccount.Account("myaccount",
-            account_id="myaccount",
+            name="myaccount",
             display_name="My Service Account")
         # note this requires the terraform to be run regularly
         mykey_rotation = time.Rotating("mykey_rotation", rotation_days=30)
@@ -398,7 +398,7 @@ class Key(pulumi.CustomResource):
         # Workload Identity is the recommended way of accessing Google Cloud APIs from pods.
         # https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
         myaccount = gcp.serviceaccount.Account("myaccount",
-            account_id="myaccount",
+            name="myaccount",
             display_name="My Service Account")
         mykey = gcp.serviceaccount.Key("mykey", service_account_id=myaccount.name)
         google_application_credentials = kubernetes.core.v1.Secret("google-application-credentials",
@@ -447,7 +447,7 @@ class Key(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         myaccount = gcp.serviceaccount.Account("myaccount",
-            account_id="myaccount",
+            name="myaccount",
             display_name="My Service Account")
         mykey = gcp.serviceaccount.Key("mykey",
             service_account_id=myaccount.name,
@@ -462,7 +462,7 @@ class Key(pulumi.CustomResource):
         import pulumiverse_time as time
 
         myaccount = gcp.serviceaccount.Account("myaccount",
-            account_id="myaccount",
+            name="myaccount",
             display_name="My Service Account")
         # note this requires the terraform to be run regularly
         mykey_rotation = time.Rotating("mykey_rotation", rotation_days=30)
@@ -484,7 +484,7 @@ class Key(pulumi.CustomResource):
         # Workload Identity is the recommended way of accessing Google Cloud APIs from pods.
         # https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
         myaccount = gcp.serviceaccount.Account("myaccount",
-            account_id="myaccount",
+            name="myaccount",
             display_name="My Service Account")
         mykey = gcp.serviceaccount.Key("mykey", service_account_id=myaccount.name)
         google_application_credentials = kubernetes.core.v1.Secret("google-application-credentials",

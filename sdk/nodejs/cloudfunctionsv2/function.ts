@@ -61,7 +61,7 @@ import * as utilities from "../utilities";
  *
  * const project = "my-project-name";
  * const account = new gcp.serviceaccount.Account("account", {
- *     accountId: "gcf-sa",
+ *     name: "gcf-sa",
  *     displayName: "Test Service Account",
  * });
  * const topic = new gcp.pubsub.Topic("topic", {name: "functions2-topic"});
@@ -123,7 +123,7 @@ import * as utilities from "../utilities";
  *
  * const project = "my-project-name";
  * const account = new gcp.serviceaccount.Account("account", {
- *     accountId: "gcf-sa",
+ *     name: "gcf-sa",
  *     displayName: "Test Service Account",
  * });
  * const bucket = new gcp.storage.Bucket("bucket", {
@@ -217,7 +217,7 @@ import * as utilities from "../utilities";
  *     member: gcsAccount.then(gcsAccount => `serviceAccount:${gcsAccount.emailAddress}`),
  * });
  * const account = new gcp.serviceaccount.Account("account", {
- *     accountId: "gcf-sa",
+ *     name: "gcf-sa",
  *     displayName: "Test Service Account - used for both the cloud function and eventarc trigger in the test",
  * });
  * // Permissions on the service account used by the function and Eventarc trigger
@@ -308,7 +308,7 @@ import * as utilities from "../utilities";
  *     source: new pulumi.asset.FileAsset("function-source.zip"),
  * });
  * const account = new gcp.serviceaccount.Account("account", {
- *     accountId: "gcf-sa",
+ *     name: "gcf-sa",
  *     displayName: "Test Service Account - used for both the cloud function and eventarc trigger in the test",
  * });
  * // Note: The right way of listening for Cloud Storage events is to use a Cloud Storage trigger.
@@ -405,7 +405,7 @@ import * as utilities from "../utilities";
  *
  * const project = "my-project-name";
  * const account = new gcp.serviceaccount.Account("account", {
- *     accountId: "gcf-sa",
+ *     name: "gcf-sa",
  *     displayName: "Test Service Account",
  * });
  * const logWriter = new gcp.projects.IAMMember("log_writer", {
@@ -721,7 +721,7 @@ import * as utilities from "../utilities";
  *
  * const project = "my-project-name";
  * const account = new gcp.serviceaccount.Account("account", {
- *     accountId: "gcf-sa",
+ *     name: "gcf-sa",
  *     displayName: "Test Service Account",
  * });
  * const topic = new gcp.pubsub.Topic("topic", {name: "functions2-topic"});
@@ -783,7 +783,7 @@ import * as utilities from "../utilities";
  *
  * const project = "my-project-name";
  * const account = new gcp.serviceaccount.Account("account", {
- *     accountId: "gcf-sa",
+ *     name: "gcf-sa",
  *     displayName: "Test Service Account",
  * });
  * const topic = new gcp.pubsub.Topic("topic", {name: "functions2-topic"});

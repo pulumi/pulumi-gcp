@@ -439,7 +439,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var bqWriteServiceAccount = new Account("bqWriteServiceAccount", AccountArgs.builder()
- *             .accountId("example-bqw")
+ *             .name("example-bqw")
  *             .displayName("BQ Write Service Account")
  *             .build());
  * 
@@ -706,7 +706,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var storageWriteServiceAccount = new Account("storageWriteServiceAccount", AccountArgs.builder()
- *             .accountId("example-stw")
+ *             .name("example-stw")
  *             .displayName("Storage Write Service Account")
  *             .build());
  * 

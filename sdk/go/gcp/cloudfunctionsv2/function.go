@@ -103,7 +103,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			project := "my-project-name"
 //			account, err := serviceaccount.NewAccount(ctx, "account", &serviceaccount.AccountArgs{
-//				AccountId:   pulumi.String("gcf-sa"),
+//				Name:        pulumi.String("gcf-sa"),
 //				DisplayName: pulumi.String("Test Service Account"),
 //			})
 //			if err != nil {
@@ -200,7 +200,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			project := "my-project-name"
 //			account, err := serviceaccount.NewAccount(ctx, "account", &serviceaccount.AccountArgs{
-//				AccountId:   pulumi.String("gcf-sa"),
+//				Name:        pulumi.String("gcf-sa"),
 //				DisplayName: pulumi.String("Test Service Account"),
 //			})
 //			if err != nil {
@@ -355,7 +355,7 @@ import (
 //				return err
 //			}
 //			account, err := serviceaccount.NewAccount(ctx, "account", &serviceaccount.AccountArgs{
-//				AccountId:   pulumi.String("gcf-sa"),
+//				Name:        pulumi.String("gcf-sa"),
 //				DisplayName: pulumi.String("Test Service Account - used for both the cloud function and eventarc trigger in the test"),
 //			})
 //			if err != nil {
@@ -490,7 +490,7 @@ import (
 //				return err
 //			}
 //			account, err := serviceaccount.NewAccount(ctx, "account", &serviceaccount.AccountArgs{
-//				AccountId:   pulumi.String("gcf-sa"),
+//				Name:        pulumi.String("gcf-sa"),
 //				DisplayName: pulumi.String("Test Service Account - used for both the cloud function and eventarc trigger in the test"),
 //			})
 //			if err != nil {
@@ -628,7 +628,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			project := "my-project-name"
 //			account, err := serviceaccount.NewAccount(ctx, "account", &serviceaccount.AccountArgs{
-//				AccountId:   pulumi.String("gcf-sa"),
+//				Name:        pulumi.String("gcf-sa"),
 //				DisplayName: pulumi.String("Test Service Account"),
 //			})
 //			if err != nil {
@@ -1137,7 +1137,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			project := "my-project-name"
 //			account, err := serviceaccount.NewAccount(ctx, "account", &serviceaccount.AccountArgs{
-//				AccountId:   pulumi.String("gcf-sa"),
+//				Name:        pulumi.String("gcf-sa"),
 //				DisplayName: pulumi.String("Test Service Account"),
 //			})
 //			if err != nil {
@@ -1233,7 +1233,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			project := "my-project-name"
 //			account, err := serviceaccount.NewAccount(ctx, "account", &serviceaccount.AccountArgs{
-//				AccountId:   pulumi.String("gcf-sa"),
+//				Name:        pulumi.String("gcf-sa"),
 //				DisplayName: pulumi.String("Test Service Account"),
 //			})
 //			if err != nil {

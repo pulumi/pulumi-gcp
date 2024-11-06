@@ -50,7 +50,7 @@ import * as utilities from "../utilities";
  *     service: "dialogflow.googleapis.com",
  *     disableDependentServices: false,
  * });
- * const dialogflowServiceAccount = new gcp.serviceaccount.Account("dialogflow_service_account", {accountId: "my-account"});
+ * const dialogflowServiceAccount = new gcp.serviceaccount.Account("dialogflow_service_account", {name: "my-account"});
  * const agentCreate = new gcp.projects.IAMMember("agent_create", {
  *     project: agentProjectService.project,
  *     role: "roles/dialogflow.admin",

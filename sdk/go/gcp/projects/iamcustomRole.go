@@ -42,7 +42,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := projects.NewIAMCustomRole(ctx, "my-custom-role", &projects.IAMCustomRoleArgs{
-//				RoleId:      pulumi.String("myCustomRole"),
+//				Name:        pulumi.String("myCustomRole"),
 //				Title:       pulumi.String("My Custom Role"),
 //				Description: pulumi.String("A description"),
 //				Permissions: pulumi.StringArray{
@@ -90,15 +90,13 @@ type IAMCustomRole struct {
 	Deleted pulumi.BoolOutput `pulumi:"deleted"`
 	// A human-readable description for the role.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The name of the role in the format `projects/{{project}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
+	// The camel case role id to use for this role. Cannot contain `-` characters.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
 	Permissions pulumi.StringArrayOutput `pulumi:"permissions"`
 	// The project that the custom role will be created in.
 	// Defaults to the provider project configuration.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The camel case role id to use for this role. Cannot contain `-` characters.
-	RoleId pulumi.StringOutput `pulumi:"roleId"`
 	// The current launch stage of the role.
 	// Defaults to `GA`.
 	// List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).
@@ -116,9 +114,6 @@ func NewIAMCustomRole(ctx *pulumi.Context,
 
 	if args.Permissions == nil {
 		return nil, errors.New("invalid value for required argument 'Permissions'")
-	}
-	if args.RoleId == nil {
-		return nil, errors.New("invalid value for required argument 'RoleId'")
 	}
 	if args.Title == nil {
 		return nil, errors.New("invalid value for required argument 'Title'")
@@ -150,15 +145,13 @@ type iamcustomRoleState struct {
 	Deleted *bool `pulumi:"deleted"`
 	// A human-readable description for the role.
 	Description *string `pulumi:"description"`
-	// The name of the role in the format `projects/{{project}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
+	// The camel case role id to use for this role. Cannot contain `-` characters.
 	Name *string `pulumi:"name"`
 	// The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
 	Permissions []string `pulumi:"permissions"`
 	// The project that the custom role will be created in.
 	// Defaults to the provider project configuration.
 	Project *string `pulumi:"project"`
-	// The camel case role id to use for this role. Cannot contain `-` characters.
-	RoleId *string `pulumi:"roleId"`
 	// The current launch stage of the role.
 	// Defaults to `GA`.
 	// List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).
@@ -172,15 +165,13 @@ type IAMCustomRoleState struct {
 	Deleted pulumi.BoolPtrInput
 	// A human-readable description for the role.
 	Description pulumi.StringPtrInput
-	// The name of the role in the format `projects/{{project}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
+	// The camel case role id to use for this role. Cannot contain `-` characters.
 	Name pulumi.StringPtrInput
 	// The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
 	Permissions pulumi.StringArrayInput
 	// The project that the custom role will be created in.
 	// Defaults to the provider project configuration.
 	Project pulumi.StringPtrInput
-	// The camel case role id to use for this role. Cannot contain `-` characters.
-	RoleId pulumi.StringPtrInput
 	// The current launch stage of the role.
 	// Defaults to `GA`.
 	// List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).
@@ -196,13 +187,13 @@ func (IAMCustomRoleState) ElementType() reflect.Type {
 type iamcustomRoleArgs struct {
 	// A human-readable description for the role.
 	Description *string `pulumi:"description"`
+	// The camel case role id to use for this role. Cannot contain `-` characters.
+	Name *string `pulumi:"name"`
 	// The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
 	Permissions []string `pulumi:"permissions"`
 	// The project that the custom role will be created in.
 	// Defaults to the provider project configuration.
 	Project *string `pulumi:"project"`
-	// The camel case role id to use for this role. Cannot contain `-` characters.
-	RoleId string `pulumi:"roleId"`
 	// The current launch stage of the role.
 	// Defaults to `GA`.
 	// List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).
@@ -215,13 +206,13 @@ type iamcustomRoleArgs struct {
 type IAMCustomRoleArgs struct {
 	// A human-readable description for the role.
 	Description pulumi.StringPtrInput
+	// The camel case role id to use for this role. Cannot contain `-` characters.
+	Name pulumi.StringPtrInput
 	// The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
 	Permissions pulumi.StringArrayInput
 	// The project that the custom role will be created in.
 	// Defaults to the provider project configuration.
 	Project pulumi.StringPtrInput
-	// The camel case role id to use for this role. Cannot contain `-` characters.
-	RoleId pulumi.StringInput
 	// The current launch stage of the role.
 	// Defaults to `GA`.
 	// List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).
@@ -327,7 +318,7 @@ func (o IAMCustomRoleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IAMCustomRole) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The name of the role in the format `projects/{{project}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
+// The camel case role id to use for this role. Cannot contain `-` characters.
 func (o IAMCustomRoleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *IAMCustomRole) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -341,11 +332,6 @@ func (o IAMCustomRoleOutput) Permissions() pulumi.StringArrayOutput {
 // Defaults to the provider project configuration.
 func (o IAMCustomRoleOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *IAMCustomRole) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
-}
-
-// The camel case role id to use for this role. Cannot contain `-` characters.
-func (o IAMCustomRoleOutput) RoleId() pulumi.StringOutput {
-	return o.ApplyT(func(v *IAMCustomRole) pulumi.StringOutput { return v.RoleId }).(pulumi.StringOutput)
 }
 
 // The current launch stage of the role.

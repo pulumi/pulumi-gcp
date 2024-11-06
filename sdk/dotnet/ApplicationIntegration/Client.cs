@@ -70,7 +70,7 @@ namespace Pulumi.Gcp.ApplicationIntegration
     /// 
     ///     var serviceAccount = new Gcp.ServiceAccount.Account("service_account", new()
     ///     {
-    ///         AccountId = "service-acc",
+    ///         Name = "service-acc",
     ///         DisplayName = "Service Account",
     ///     });
     /// 

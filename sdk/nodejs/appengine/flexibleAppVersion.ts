@@ -47,7 +47,7 @@ import * as utilities from "../utilities";
  * });
  * const customServiceAccount = new gcp.serviceaccount.Account("custom_service_account", {
  *     project: service.project,
- *     accountId: "my-account",
+ *     name: "my-account",
  *     displayName: "Custom Service Account",
  * });
  * const gaeApi = new gcp.projects.IAMMember("gae_api", {

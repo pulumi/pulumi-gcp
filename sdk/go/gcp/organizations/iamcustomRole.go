@@ -42,7 +42,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := organizations.NewIAMCustomRole(ctx, "my-custom-role", &organizations.IAMCustomRoleArgs{
-//				RoleId:      pulumi.String("myCustomRole"),
+//				Name:        pulumi.String("myCustomRole"),
 //				OrgId:       pulumi.String("123456789"),
 //				Title:       pulumi.String("My Custom Role"),
 //				Description: pulumi.String("A description"),
@@ -75,14 +75,12 @@ type IAMCustomRole struct {
 	Deleted pulumi.BoolOutput `pulumi:"deleted"`
 	// A human-readable description for the role.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The name of the role in the format `organizations/{{org_id}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
+	// The role id to use for this role.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The numeric ID of the organization in which you want to create a custom role.
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
 	// The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
 	Permissions pulumi.StringArrayOutput `pulumi:"permissions"`
-	// The role id to use for this role.
-	RoleId pulumi.StringOutput `pulumi:"roleId"`
 	// The current launch stage of the role.
 	// Defaults to `GA`.
 	// List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).
@@ -103,9 +101,6 @@ func NewIAMCustomRole(ctx *pulumi.Context,
 	}
 	if args.Permissions == nil {
 		return nil, errors.New("invalid value for required argument 'Permissions'")
-	}
-	if args.RoleId == nil {
-		return nil, errors.New("invalid value for required argument 'RoleId'")
 	}
 	if args.Title == nil {
 		return nil, errors.New("invalid value for required argument 'Title'")
@@ -137,14 +132,12 @@ type iamcustomRoleState struct {
 	Deleted *bool `pulumi:"deleted"`
 	// A human-readable description for the role.
 	Description *string `pulumi:"description"`
-	// The name of the role in the format `organizations/{{org_id}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
+	// The role id to use for this role.
 	Name *string `pulumi:"name"`
 	// The numeric ID of the organization in which you want to create a custom role.
 	OrgId *string `pulumi:"orgId"`
 	// The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
 	Permissions []string `pulumi:"permissions"`
-	// The role id to use for this role.
-	RoleId *string `pulumi:"roleId"`
 	// The current launch stage of the role.
 	// Defaults to `GA`.
 	// List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).
@@ -158,14 +151,12 @@ type IAMCustomRoleState struct {
 	Deleted pulumi.BoolPtrInput
 	// A human-readable description for the role.
 	Description pulumi.StringPtrInput
-	// The name of the role in the format `organizations/{{org_id}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
+	// The role id to use for this role.
 	Name pulumi.StringPtrInput
 	// The numeric ID of the organization in which you want to create a custom role.
 	OrgId pulumi.StringPtrInput
 	// The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
 	Permissions pulumi.StringArrayInput
-	// The role id to use for this role.
-	RoleId pulumi.StringPtrInput
 	// The current launch stage of the role.
 	// Defaults to `GA`.
 	// List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).
@@ -181,12 +172,12 @@ func (IAMCustomRoleState) ElementType() reflect.Type {
 type iamcustomRoleArgs struct {
 	// A human-readable description for the role.
 	Description *string `pulumi:"description"`
+	// The role id to use for this role.
+	Name *string `pulumi:"name"`
 	// The numeric ID of the organization in which you want to create a custom role.
 	OrgId string `pulumi:"orgId"`
 	// The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
 	Permissions []string `pulumi:"permissions"`
-	// The role id to use for this role.
-	RoleId string `pulumi:"roleId"`
 	// The current launch stage of the role.
 	// Defaults to `GA`.
 	// List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).
@@ -199,12 +190,12 @@ type iamcustomRoleArgs struct {
 type IAMCustomRoleArgs struct {
 	// A human-readable description for the role.
 	Description pulumi.StringPtrInput
+	// The role id to use for this role.
+	Name pulumi.StringPtrInput
 	// The numeric ID of the organization in which you want to create a custom role.
 	OrgId pulumi.StringInput
 	// The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
 	Permissions pulumi.StringArrayInput
-	// The role id to use for this role.
-	RoleId pulumi.StringInput
 	// The current launch stage of the role.
 	// Defaults to `GA`.
 	// List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).
@@ -310,7 +301,7 @@ func (o IAMCustomRoleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IAMCustomRole) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The name of the role in the format `organizations/{{org_id}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
+// The role id to use for this role.
 func (o IAMCustomRoleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *IAMCustomRole) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -323,11 +314,6 @@ func (o IAMCustomRoleOutput) OrgId() pulumi.StringOutput {
 // The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
 func (o IAMCustomRoleOutput) Permissions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *IAMCustomRole) pulumi.StringArrayOutput { return v.Permissions }).(pulumi.StringArrayOutput)
-}
-
-// The role id to use for this role.
-func (o IAMCustomRoleOutput) RoleId() pulumi.StringOutput {
-	return o.ApplyT(func(v *IAMCustomRole) pulumi.StringOutput { return v.RoleId }).(pulumi.StringOutput)
 }
 
 // The current launch stage of the role.

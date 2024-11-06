@@ -52,7 +52,7 @@ import (
 //				return err
 //			}
 //			_, err = serviceaccount.NewAccount(ctx, "test-account", &serviceaccount.AccountArgs{
-//				AccountId:   pulumi.String("svc-acc"),
+//				Name:        pulumi.String("svc-acc"),
 //				DisplayName: pulumi.String("Test Service Account"),
 //				Project:     project.ProjectId,
 //			})

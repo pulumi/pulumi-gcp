@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var my_custom_role = new IAMCustomRole("my-custom-role", IAMCustomRoleArgs.builder()
- *             .roleId("myCustomRole")
+ *             .name("myCustomRole")
  *             .title("My Custom Role")
  *             .description("A description")
  *             .permissions(            
@@ -128,14 +128,14 @@ public class IAMCustomRole extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The name of the role in the format `projects/{{project}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
+     * The camel case role id to use for this role. Cannot contain `-` characters.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the role in the format `projects/{{project}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
+     * @return The camel case role id to use for this role. Cannot contain `-` characters.
      * 
      */
     public Output<String> name() {
@@ -170,20 +170,6 @@ public class IAMCustomRole extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
-    }
-    /**
-     * The camel case role id to use for this role. Cannot contain `-` characters.
-     * 
-     */
-    @Export(name="roleId", refs={String.class}, tree="[0]")
-    private Output<String> roleId;
-
-    /**
-     * @return The camel case role id to use for this role. Cannot contain `-` characters.
-     * 
-     */
-    public Output<String> roleId() {
-        return this.roleId;
     }
     /**
      * The current launch stage of the role.

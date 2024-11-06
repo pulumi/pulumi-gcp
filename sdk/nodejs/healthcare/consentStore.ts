@@ -65,7 +65,7 @@ import * as utilities from "../utilities";
  *     name: "my-consent-store",
  * });
  * const test_account = new gcp.serviceaccount.Account("test-account", {
- *     accountId: "my-account",
+ *     name: "my-account",
  *     displayName: "Test Service Account",
  * });
  * const test_iam = new gcp.healthcare.ConsentStoreIamMember("test-iam", {

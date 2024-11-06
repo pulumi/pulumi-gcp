@@ -44,7 +44,7 @@ import * as utilities from "../utilities";
  * });
  * const testKey = new gcp.kms.CryptoKeyVersion("test_key", {cryptoKey: cryptokey.id});
  * const serviceAccount = new gcp.serviceaccount.Account("service_account", {
- *     accountId: "service-acc",
+ *     name: "service-acc",
  *     displayName: "Service Account",
  * });
  * const example = new gcp.applicationintegration.Client("example", {

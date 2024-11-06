@@ -48,14 +48,14 @@ public final class IAMCustomRoleState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The name of the role in the format `projects/{{project}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
+     * The camel case role id to use for this role. Cannot contain `-` characters.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the role in the format `projects/{{project}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
+     * @return The camel case role id to use for this role. Cannot contain `-` characters.
      * 
      */
     public Optional<Output<String>> name() {
@@ -92,21 +92,6 @@ public final class IAMCustomRoleState extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
-    }
-
-    /**
-     * The camel case role id to use for this role. Cannot contain `-` characters.
-     * 
-     */
-    @Import(name="roleId")
-    private @Nullable Output<String> roleId;
-
-    /**
-     * @return The camel case role id to use for this role. Cannot contain `-` characters.
-     * 
-     */
-    public Optional<Output<String>> roleId() {
-        return Optional.ofNullable(this.roleId);
     }
 
     /**
@@ -151,7 +136,6 @@ public final class IAMCustomRoleState extends com.pulumi.resources.ResourceArgs 
         this.name = $.name;
         this.permissions = $.permissions;
         this.project = $.project;
-        this.roleId = $.roleId;
         this.stage = $.stage;
         this.title = $.title;
     }
@@ -217,7 +201,7 @@ public final class IAMCustomRoleState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name The name of the role in the format `projects/{{project}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
+         * @param name The camel case role id to use for this role. Cannot contain `-` characters.
          * 
          * @return builder
          * 
@@ -228,7 +212,7 @@ public final class IAMCustomRoleState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name The name of the role in the format `projects/{{project}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
+         * @param name The camel case role id to use for this role. Cannot contain `-` characters.
          * 
          * @return builder
          * 
@@ -289,27 +273,6 @@ public final class IAMCustomRoleState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder project(String project) {
             return project(Output.of(project));
-        }
-
-        /**
-         * @param roleId The camel case role id to use for this role. Cannot contain `-` characters.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder roleId(@Nullable Output<String> roleId) {
-            $.roleId = roleId;
-            return this;
-        }
-
-        /**
-         * @param roleId The camel case role id to use for this role. Cannot contain `-` characters.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder roleId(String roleId) {
-            return roleId(Output.of(roleId));
         }
 
         /**

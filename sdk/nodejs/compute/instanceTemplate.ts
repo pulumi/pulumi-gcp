@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.serviceaccount.Account("default", {
- *     accountId: "service-account-id",
+ *     name: "service-account-id",
  *     displayName: "Service Account",
  * });
  * const myImage = gcp.compute.getImage({
@@ -173,7 +173,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.serviceaccount.Account("default", {
- *     accountId: "my-custom-sa",
+ *     name: "my-custom-sa",
  *     displayName: "Custom SA for VM Instance",
  * });
  * const confidentialInstanceTemplate = new gcp.compute.InstanceTemplate("confidential_instance_template", {

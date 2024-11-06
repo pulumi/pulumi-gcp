@@ -30,7 +30,7 @@ namespace Pulumi.Gcp.Vertex
     /// {
     ///     var sa = new Gcp.ServiceAccount.Account("sa", new()
     ///     {
-    ///         AccountId = "vertex-sa",
+    ///         Name = "vertex-sa",
     ///     });
     /// 
     ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
@@ -154,7 +154,7 @@ namespace Pulumi.Gcp.Vertex
     /// {
     ///     var sa = new Gcp.ServiceAccount.Account("sa", new()
     ///     {
-    ///         AccountId = "vertex-sa",
+    ///         Name = "vertex-sa",
     ///     });
     /// 
     ///     var bucket = new Gcp.Storage.Bucket("bucket", new()

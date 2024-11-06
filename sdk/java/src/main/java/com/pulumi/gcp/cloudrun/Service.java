@@ -91,7 +91,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var sa = new Account("sa", AccountArgs.builder()
- *             .accountId("cloud-run-pubsub-invoker")
+ *             .name("cloud-run-pubsub-invoker")
  *             .displayName("Cloud Run Pub/Sub Invoker")
  *             .build());
  * 

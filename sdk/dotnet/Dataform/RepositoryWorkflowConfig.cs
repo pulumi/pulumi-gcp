@@ -87,7 +87,7 @@ namespace Pulumi.Gcp.Dataform
     /// 
     ///     var dataformSa = new Gcp.ServiceAccount.Account("dataform_sa", new()
     ///     {
-    ///         AccountId = "dataform-sa",
+    ///         Name = "dataform-sa",
     ///         DisplayName = "Dataform Service Account",
     ///     });
     /// 
