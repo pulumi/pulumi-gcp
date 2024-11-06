@@ -4,14 +4,22 @@
 package com.pulumi.gcp.spanner.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.spanner.outputs.InstanceAutoscalingConfigAsymmetricAutoscalingOption;
 import com.pulumi.gcp.spanner.outputs.InstanceAutoscalingConfigAutoscalingLimits;
 import com.pulumi.gcp.spanner.outputs.InstanceAutoscalingConfigAutoscalingTargets;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class InstanceAutoscalingConfig {
+    /**
+     * @return Asymmetric autoscaling options for specific replicas.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<InstanceAutoscalingConfigAsymmetricAutoscalingOption> asymmetricAutoscalingOptions;
     /**
      * @return Defines scale in controls to reduce the risk of response latency
      * and outages due to abrupt scale-in events. Users can define the minimum and
@@ -32,6 +40,14 @@ public final class InstanceAutoscalingConfig {
     private @Nullable InstanceAutoscalingConfigAutoscalingTargets autoscalingTargets;
 
     private InstanceAutoscalingConfig() {}
+    /**
+     * @return Asymmetric autoscaling options for specific replicas.
+     * Structure is documented below.
+     * 
+     */
+    public List<InstanceAutoscalingConfigAsymmetricAutoscalingOption> asymmetricAutoscalingOptions() {
+        return this.asymmetricAutoscalingOptions == null ? List.of() : this.asymmetricAutoscalingOptions;
+    }
     /**
      * @return Defines scale in controls to reduce the risk of response latency
      * and outages due to abrupt scale-in events. Users can define the minimum and
@@ -64,15 +80,26 @@ public final class InstanceAutoscalingConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<InstanceAutoscalingConfigAsymmetricAutoscalingOption> asymmetricAutoscalingOptions;
         private @Nullable InstanceAutoscalingConfigAutoscalingLimits autoscalingLimits;
         private @Nullable InstanceAutoscalingConfigAutoscalingTargets autoscalingTargets;
         public Builder() {}
         public Builder(InstanceAutoscalingConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.asymmetricAutoscalingOptions = defaults.asymmetricAutoscalingOptions;
     	      this.autoscalingLimits = defaults.autoscalingLimits;
     	      this.autoscalingTargets = defaults.autoscalingTargets;
         }
 
+        @CustomType.Setter
+        public Builder asymmetricAutoscalingOptions(@Nullable List<InstanceAutoscalingConfigAsymmetricAutoscalingOption> asymmetricAutoscalingOptions) {
+
+            this.asymmetricAutoscalingOptions = asymmetricAutoscalingOptions;
+            return this;
+        }
+        public Builder asymmetricAutoscalingOptions(InstanceAutoscalingConfigAsymmetricAutoscalingOption... asymmetricAutoscalingOptions) {
+            return asymmetricAutoscalingOptions(List.of(asymmetricAutoscalingOptions));
+        }
         @CustomType.Setter
         public Builder autoscalingLimits(@Nullable InstanceAutoscalingConfigAutoscalingLimits autoscalingLimits) {
 
@@ -87,6 +114,7 @@ public final class InstanceAutoscalingConfig {
         }
         public InstanceAutoscalingConfig build() {
             final var _resultValue = new InstanceAutoscalingConfig();
+            _resultValue.asymmetricAutoscalingOptions = asymmetricAutoscalingOptions;
             _resultValue.autoscalingLimits = autoscalingLimits;
             _resultValue.autoscalingTargets = autoscalingTargets;
             return _resultValue;

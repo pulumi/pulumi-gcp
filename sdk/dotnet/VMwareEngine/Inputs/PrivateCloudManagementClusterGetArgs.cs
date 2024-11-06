@@ -13,6 +13,14 @@ namespace Pulumi.Gcp.VMwareEngine.Inputs
     public sealed class PrivateCloudManagementClusterGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Configuration of the autoscaling applied to this cluster
+        /// Private cloud must have a minimum of 3 nodes to add autoscale settings
+        /// Structure is documented below.
+        /// </summary>
+        [Input("autoscalingSettings")]
+        public Input<Inputs.PrivateCloudManagementClusterAutoscalingSettingsGetArgs>? AutoscalingSettings { get; set; }
+
+        /// <summary>
         /// The user-provided identifier of the new Cluster. The identifier must meet the following requirements:
         /// * Only contains 1-63 alphanumeric characters and hyphens
         /// * Begins with an alphabetical character

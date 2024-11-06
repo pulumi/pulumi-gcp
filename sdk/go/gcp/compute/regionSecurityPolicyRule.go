@@ -128,6 +128,71 @@ import (
 //	}
 //
 // ```
+// ### Region Security Policy Rule Default Rule
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewRegionSecurityPolicy(ctx, "default", &compute.RegionSecurityPolicyArgs{
+//				Region:      pulumi.String("us-west2"),
+//				Name:        pulumi.String("policywithdefaultrule"),
+//				Description: pulumi.String("basic region security policy"),
+//				Type:        pulumi.String("CLOUD_ARMOR"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewRegionSecurityPolicyRule(ctx, "default_rule", &compute.RegionSecurityPolicyRuleArgs{
+//				Region:         pulumi.String("us-west2"),
+//				SecurityPolicy: _default.Name,
+//				Description:    pulumi.String("new rule"),
+//				Action:         pulumi.String("deny"),
+//				Priority:       pulumi.Int(2147483647),
+//				Match: &compute.RegionSecurityPolicyRuleMatchArgs{
+//					VersionedExpr: pulumi.String("SRC_IPS_V1"),
+//					Config: &compute.RegionSecurityPolicyRuleMatchConfigArgs{
+//						SrcIpRanges: pulumi.StringArray{
+//							pulumi.String("*"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewRegionSecurityPolicyRule(ctx, "policy_rule", &compute.RegionSecurityPolicyRuleArgs{
+//				Region:         pulumi.String("us-west2"),
+//				SecurityPolicy: _default.Name,
+//				Description:    pulumi.String("new rule"),
+//				Priority:       pulumi.Int(100),
+//				Match: &compute.RegionSecurityPolicyRuleMatchArgs{
+//					VersionedExpr: pulumi.String("SRC_IPS_V1"),
+//					Config: &compute.RegionSecurityPolicyRuleMatchConfigArgs{
+//						SrcIpRanges: pulumi.StringArray{
+//							pulumi.String("10.10.0.0/16"),
+//						},
+//					},
+//				},
+//				Action:  pulumi.String("allow"),
+//				Preview: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Region Security Policy Rule With Preconfigured Waf Config
 //
 // ```go

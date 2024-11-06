@@ -10,9 +10,11 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.SecurityPolicyRuleArgs;
 import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleState;
+import com.pulumi.gcp.compute.outputs.SecurityPolicyRuleHeaderAction;
 import com.pulumi.gcp.compute.outputs.SecurityPolicyRuleMatch;
 import com.pulumi.gcp.compute.outputs.SecurityPolicyRulePreconfiguredWafConfig;
 import com.pulumi.gcp.compute.outputs.SecurityPolicyRuleRateLimitOptions;
+import com.pulumi.gcp.compute.outputs.SecurityPolicyRuleRedirectOptions;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -119,15 +121,10 @@ import javax.annotation.Nullable;
  *             .type("CLOUD_ARMOR")
  *             .build());
  * 
- *         // A default rule is generated when creating the security_policy resource, import is needed to patch it
- *         // import {
- *         //   id = "projects//global/securityPolicies/policyruletest/priority/2147483647"
- *         //   to = google_compute_security_policy_rule.default_rule
- *         // }
  *         var defaultRule = new SecurityPolicyRule("defaultRule", SecurityPolicyRuleArgs.builder()
  *             .securityPolicy(default_.name())
  *             .description("default rule")
- *             .action("allow")
+ *             .action("deny")
  *             .priority("2147483647")
  *             .match(SecurityPolicyRuleMatchArgs.builder()
  *                 .versionedExpr("SRC_IPS_V1")
@@ -293,6 +290,22 @@ public class SecurityPolicyRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
+     * Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="headerAction", refs={SecurityPolicyRuleHeaderAction.class}, tree="[0]")
+    private Output</* @Nullable */ SecurityPolicyRuleHeaderAction> headerAction;
+
+    /**
+     * @return Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<SecurityPolicyRuleHeaderAction>> headerAction() {
+        return Codegen.optional(this.headerAction);
+    }
+    /**
      * A match condition that incoming traffic is evaluated against.
      * If it evaluates to true, the corresponding &#39;action&#39; is enforced.
      * Structure is documented below.
@@ -391,6 +404,22 @@ public class SecurityPolicyRule extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<SecurityPolicyRuleRateLimitOptions>> rateLimitOptions() {
         return Codegen.optional(this.rateLimitOptions);
+    }
+    /**
+     * Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="redirectOptions", refs={SecurityPolicyRuleRedirectOptions.class}, tree="[0]")
+    private Output</* @Nullable */ SecurityPolicyRuleRedirectOptions> redirectOptions;
+
+    /**
+     * @return Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<SecurityPolicyRuleRedirectOptions>> redirectOptions() {
+        return Codegen.optional(this.redirectOptions);
     }
     /**
      * The name of the security policy this rule belongs to.

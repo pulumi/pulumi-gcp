@@ -148,6 +148,7 @@ namespace Pulumi.Gcp.MemoryStore
     ///         },
     ///         EngineVersion = "VALKEY_7_2",
     ///         DeletionProtectionEnabled = false,
+    ///         Mode = "CLUSTER",
     ///         PersistenceConfig = new Gcp.MemoryStore.Inputs.InstancePersistenceConfigArgs
     ///         {
     ///             Mode = "RDB",
@@ -314,6 +315,12 @@ namespace Pulumi.Gcp.MemoryStore
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
+        /// Endpoints for the instance.
+        /// </summary>
+        [Output("endpoints")]
+        public Output<ImmutableArray<ImmutableArray<object>>> Endpoints { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. User-provided engine configurations for the instance.
         /// </summary>
         [Output("engineConfigs")]
@@ -354,6 +361,16 @@ namespace Pulumi.Gcp.MemoryStore
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Standalone or cluster.
+        /// Possible values:
+        /// CLUSTER
+        /// STANDALONE
+        /// Possible values are: `CLUSTER`, `STANDALONE`.
+        /// </summary>
+        [Output("mode")]
+        public Output<string> Mode { get; private set; } = null!;
 
         /// <summary>
         /// Identifier. Unique name of the instance.
@@ -598,6 +615,16 @@ namespace Pulumi.Gcp.MemoryStore
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
+        /// Optional. Standalone or cluster.
+        /// Possible values:
+        /// CLUSTER
+        /// STANDALONE
+        /// Possible values are: `CLUSTER`, `STANDALONE`.
+        /// </summary>
+        [Input("mode")]
+        public Input<string>? Mode { get; set; }
+
+        /// <summary>
         /// Optional. Immutable. Machine type for individual nodes of the instance.
         /// Possible values:
         /// SHARED_CORE_NANO
@@ -720,6 +747,18 @@ namespace Pulumi.Gcp.MemoryStore
             }
         }
 
+        [Input("endpoints")]
+        private InputList<ImmutableArray<object>>? _endpoints;
+
+        /// <summary>
+        /// Endpoints for the instance.
+        /// </summary>
+        public InputList<ImmutableArray<object>> Endpoints
+        {
+            get => _endpoints ?? (_endpoints = new InputList<ImmutableArray<object>>());
+            set => _endpoints = value;
+        }
+
         [Input("engineConfigs")]
         private InputMap<string>? _engineConfigs;
 
@@ -773,6 +812,16 @@ namespace Pulumi.Gcp.MemoryStore
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// Optional. Standalone or cluster.
+        /// Possible values:
+        /// CLUSTER
+        /// STANDALONE
+        /// Possible values are: `CLUSTER`, `STANDALONE`.
+        /// </summary>
+        [Input("mode")]
+        public Input<string>? Mode { get; set; }
 
         /// <summary>
         /// Identifier. Unique name of the instance.

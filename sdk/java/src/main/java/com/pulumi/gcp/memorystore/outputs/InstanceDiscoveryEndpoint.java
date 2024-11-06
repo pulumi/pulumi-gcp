@@ -27,7 +27,7 @@ public final class InstanceDiscoveryEndpoint {
     private @Nullable String network;
     /**
      * @return (Output)
-     * Output only. The port number of the exposed endpoint.
+     * Output only. Ports of the exposed endpoint.
      * 
      */
     private @Nullable Integer port;
@@ -52,7 +52,7 @@ public final class InstanceDiscoveryEndpoint {
     }
     /**
      * @return (Output)
-     * Output only. The port number of the exposed endpoint.
+     * Output only. Ports of the exposed endpoint.
      * 
      */
     public Optional<Integer> port() {

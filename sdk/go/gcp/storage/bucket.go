@@ -240,7 +240,7 @@ type Bucket struct {
 	// boolean option will delete all contained objects. If you try to delete a
 	// bucket that contains objects, the provider will fail that run.
 	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
-	// The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below.
+	// The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniformBucketLevelAccess` must be enabled on bucket.
 	HierarchicalNamespace BucketHierarchicalNamespacePtrOutput `pulumi:"hierarchicalNamespace"`
 	// A map of key/value label pairs to assign to the bucket.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
@@ -341,7 +341,7 @@ type bucketState struct {
 	// boolean option will delete all contained objects. If you try to delete a
 	// bucket that contains objects, the provider will fail that run.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
-	// The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below.
+	// The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniformBucketLevelAccess` must be enabled on bucket.
 	HierarchicalNamespace *BucketHierarchicalNamespace `pulumi:"hierarchicalNamespace"`
 	// A map of key/value label pairs to assign to the bucket.
 	Labels map[string]string `pulumi:"labels"`
@@ -405,7 +405,7 @@ type BucketState struct {
 	// boolean option will delete all contained objects. If you try to delete a
 	// bucket that contains objects, the provider will fail that run.
 	ForceDestroy pulumi.BoolPtrInput
-	// The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below.
+	// The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniformBucketLevelAccess` must be enabled on bucket.
 	HierarchicalNamespace BucketHierarchicalNamespacePtrInput
 	// A map of key/value label pairs to assign to the bucket.
 	Labels pulumi.StringMapInput
@@ -472,7 +472,7 @@ type bucketArgs struct {
 	// boolean option will delete all contained objects. If you try to delete a
 	// bucket that contains objects, the provider will fail that run.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
-	// The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below.
+	// The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniformBucketLevelAccess` must be enabled on bucket.
 	HierarchicalNamespace *BucketHierarchicalNamespace `pulumi:"hierarchicalNamespace"`
 	// A map of key/value label pairs to assign to the bucket.
 	Labels map[string]string `pulumi:"labels"`
@@ -528,7 +528,7 @@ type BucketArgs struct {
 	// boolean option will delete all contained objects. If you try to delete a
 	// bucket that contains objects, the provider will fail that run.
 	ForceDestroy pulumi.BoolPtrInput
-	// The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below.
+	// The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniformBucketLevelAccess` must be enabled on bucket.
 	HierarchicalNamespace BucketHierarchicalNamespacePtrInput
 	// A map of key/value label pairs to assign to the bucket.
 	Labels pulumi.StringMapInput
@@ -694,7 +694,7 @@ func (o BucketOutput) ForceDestroy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Bucket) pulumi.BoolPtrOutput { return v.ForceDestroy }).(pulumi.BoolPtrOutput)
 }
 
-// The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below.
+// The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniformBucketLevelAccess` must be enabled on bucket.
 func (o BucketOutput) HierarchicalNamespace() BucketHierarchicalNamespacePtrOutput {
 	return o.ApplyT(func(v *Bucket) BucketHierarchicalNamespacePtrOutput { return v.HierarchicalNamespace }).(BucketHierarchicalNamespacePtrOutput)
 }

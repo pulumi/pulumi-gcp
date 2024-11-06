@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.MemoryStore.Outputs
         public readonly string? Network;
         /// <summary>
         /// (Output)
-        /// Output only. The port number of the exposed endpoint.
+        /// Output only. Ports of the exposed endpoint.
         /// </summary>
         public readonly int? Port;
 

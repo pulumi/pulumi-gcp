@@ -51,14 +51,14 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagementArgs extends c
     }
 
     /**
-     * Version of ACM installed
+     * Version of Config Sync installed
      * 
      */
     @Import(name="version")
     private @Nullable Output<String> version;
 
     /**
-     * @return Version of ACM installed
+     * @return Version of Config Sync installed
      * 
      */
     public Optional<Output<String>> version() {
@@ -138,7 +138,7 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagementArgs extends c
         }
 
         /**
-         * @param version Version of ACM installed
+         * @param version Version of Config Sync installed
          * 
          * @return builder
          * 
@@ -149,7 +149,7 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagementArgs extends c
         }
 
         /**
-         * @param version Version of ACM installed
+         * @param version Version of Config Sync installed
          * 
          * @return builder
          * 

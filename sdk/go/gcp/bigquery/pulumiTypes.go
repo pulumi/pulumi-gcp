@@ -4727,6 +4727,170 @@ func (o DatasetDefaultEncryptionConfigurationPtrOutput) KmsKeyName() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+type DatasetExternalCatalogDatasetOptions struct {
+	// The storage location URI for all tables in the dataset. Equivalent to hive metastore's
+	// database locationUri. Maximum length of 1024 characters.
+	DefaultStorageLocationUri *string `pulumi:"defaultStorageLocationUri"`
+	// A map of key value pairs defining the parameters and properties of the open source schema.
+	// Maximum size of 2Mib.
+	Parameters map[string]string `pulumi:"parameters"`
+}
+
+// DatasetExternalCatalogDatasetOptionsInput is an input type that accepts DatasetExternalCatalogDatasetOptionsArgs and DatasetExternalCatalogDatasetOptionsOutput values.
+// You can construct a concrete instance of `DatasetExternalCatalogDatasetOptionsInput` via:
+//
+//	DatasetExternalCatalogDatasetOptionsArgs{...}
+type DatasetExternalCatalogDatasetOptionsInput interface {
+	pulumi.Input
+
+	ToDatasetExternalCatalogDatasetOptionsOutput() DatasetExternalCatalogDatasetOptionsOutput
+	ToDatasetExternalCatalogDatasetOptionsOutputWithContext(context.Context) DatasetExternalCatalogDatasetOptionsOutput
+}
+
+type DatasetExternalCatalogDatasetOptionsArgs struct {
+	// The storage location URI for all tables in the dataset. Equivalent to hive metastore's
+	// database locationUri. Maximum length of 1024 characters.
+	DefaultStorageLocationUri pulumi.StringPtrInput `pulumi:"defaultStorageLocationUri"`
+	// A map of key value pairs defining the parameters and properties of the open source schema.
+	// Maximum size of 2Mib.
+	Parameters pulumi.StringMapInput `pulumi:"parameters"`
+}
+
+func (DatasetExternalCatalogDatasetOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetExternalCatalogDatasetOptions)(nil)).Elem()
+}
+
+func (i DatasetExternalCatalogDatasetOptionsArgs) ToDatasetExternalCatalogDatasetOptionsOutput() DatasetExternalCatalogDatasetOptionsOutput {
+	return i.ToDatasetExternalCatalogDatasetOptionsOutputWithContext(context.Background())
+}
+
+func (i DatasetExternalCatalogDatasetOptionsArgs) ToDatasetExternalCatalogDatasetOptionsOutputWithContext(ctx context.Context) DatasetExternalCatalogDatasetOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetExternalCatalogDatasetOptionsOutput)
+}
+
+func (i DatasetExternalCatalogDatasetOptionsArgs) ToDatasetExternalCatalogDatasetOptionsPtrOutput() DatasetExternalCatalogDatasetOptionsPtrOutput {
+	return i.ToDatasetExternalCatalogDatasetOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i DatasetExternalCatalogDatasetOptionsArgs) ToDatasetExternalCatalogDatasetOptionsPtrOutputWithContext(ctx context.Context) DatasetExternalCatalogDatasetOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetExternalCatalogDatasetOptionsOutput).ToDatasetExternalCatalogDatasetOptionsPtrOutputWithContext(ctx)
+}
+
+// DatasetExternalCatalogDatasetOptionsPtrInput is an input type that accepts DatasetExternalCatalogDatasetOptionsArgs, DatasetExternalCatalogDatasetOptionsPtr and DatasetExternalCatalogDatasetOptionsPtrOutput values.
+// You can construct a concrete instance of `DatasetExternalCatalogDatasetOptionsPtrInput` via:
+//
+//	        DatasetExternalCatalogDatasetOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatasetExternalCatalogDatasetOptionsPtrInput interface {
+	pulumi.Input
+
+	ToDatasetExternalCatalogDatasetOptionsPtrOutput() DatasetExternalCatalogDatasetOptionsPtrOutput
+	ToDatasetExternalCatalogDatasetOptionsPtrOutputWithContext(context.Context) DatasetExternalCatalogDatasetOptionsPtrOutput
+}
+
+type datasetExternalCatalogDatasetOptionsPtrType DatasetExternalCatalogDatasetOptionsArgs
+
+func DatasetExternalCatalogDatasetOptionsPtr(v *DatasetExternalCatalogDatasetOptionsArgs) DatasetExternalCatalogDatasetOptionsPtrInput {
+	return (*datasetExternalCatalogDatasetOptionsPtrType)(v)
+}
+
+func (*datasetExternalCatalogDatasetOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatasetExternalCatalogDatasetOptions)(nil)).Elem()
+}
+
+func (i *datasetExternalCatalogDatasetOptionsPtrType) ToDatasetExternalCatalogDatasetOptionsPtrOutput() DatasetExternalCatalogDatasetOptionsPtrOutput {
+	return i.ToDatasetExternalCatalogDatasetOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *datasetExternalCatalogDatasetOptionsPtrType) ToDatasetExternalCatalogDatasetOptionsPtrOutputWithContext(ctx context.Context) DatasetExternalCatalogDatasetOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetExternalCatalogDatasetOptionsPtrOutput)
+}
+
+type DatasetExternalCatalogDatasetOptionsOutput struct{ *pulumi.OutputState }
+
+func (DatasetExternalCatalogDatasetOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetExternalCatalogDatasetOptions)(nil)).Elem()
+}
+
+func (o DatasetExternalCatalogDatasetOptionsOutput) ToDatasetExternalCatalogDatasetOptionsOutput() DatasetExternalCatalogDatasetOptionsOutput {
+	return o
+}
+
+func (o DatasetExternalCatalogDatasetOptionsOutput) ToDatasetExternalCatalogDatasetOptionsOutputWithContext(ctx context.Context) DatasetExternalCatalogDatasetOptionsOutput {
+	return o
+}
+
+func (o DatasetExternalCatalogDatasetOptionsOutput) ToDatasetExternalCatalogDatasetOptionsPtrOutput() DatasetExternalCatalogDatasetOptionsPtrOutput {
+	return o.ToDatasetExternalCatalogDatasetOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o DatasetExternalCatalogDatasetOptionsOutput) ToDatasetExternalCatalogDatasetOptionsPtrOutputWithContext(ctx context.Context) DatasetExternalCatalogDatasetOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatasetExternalCatalogDatasetOptions) *DatasetExternalCatalogDatasetOptions {
+		return &v
+	}).(DatasetExternalCatalogDatasetOptionsPtrOutput)
+}
+
+// The storage location URI for all tables in the dataset. Equivalent to hive metastore's
+// database locationUri. Maximum length of 1024 characters.
+func (o DatasetExternalCatalogDatasetOptionsOutput) DefaultStorageLocationUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatasetExternalCatalogDatasetOptions) *string { return v.DefaultStorageLocationUri }).(pulumi.StringPtrOutput)
+}
+
+// A map of key value pairs defining the parameters and properties of the open source schema.
+// Maximum size of 2Mib.
+func (o DatasetExternalCatalogDatasetOptionsOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DatasetExternalCatalogDatasetOptions) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
+}
+
+type DatasetExternalCatalogDatasetOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (DatasetExternalCatalogDatasetOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatasetExternalCatalogDatasetOptions)(nil)).Elem()
+}
+
+func (o DatasetExternalCatalogDatasetOptionsPtrOutput) ToDatasetExternalCatalogDatasetOptionsPtrOutput() DatasetExternalCatalogDatasetOptionsPtrOutput {
+	return o
+}
+
+func (o DatasetExternalCatalogDatasetOptionsPtrOutput) ToDatasetExternalCatalogDatasetOptionsPtrOutputWithContext(ctx context.Context) DatasetExternalCatalogDatasetOptionsPtrOutput {
+	return o
+}
+
+func (o DatasetExternalCatalogDatasetOptionsPtrOutput) Elem() DatasetExternalCatalogDatasetOptionsOutput {
+	return o.ApplyT(func(v *DatasetExternalCatalogDatasetOptions) DatasetExternalCatalogDatasetOptions {
+		if v != nil {
+			return *v
+		}
+		var ret DatasetExternalCatalogDatasetOptions
+		return ret
+	}).(DatasetExternalCatalogDatasetOptionsOutput)
+}
+
+// The storage location URI for all tables in the dataset. Equivalent to hive metastore's
+// database locationUri. Maximum length of 1024 characters.
+func (o DatasetExternalCatalogDatasetOptionsPtrOutput) DefaultStorageLocationUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatasetExternalCatalogDatasetOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultStorageLocationUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// A map of key value pairs defining the parameters and properties of the open source schema.
+// Maximum size of 2Mib.
+func (o DatasetExternalCatalogDatasetOptionsPtrOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DatasetExternalCatalogDatasetOptions) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Parameters
+	}).(pulumi.StringMapOutput)
+}
+
 type DatasetExternalDatasetReference struct {
 	// The connection id that is used to access the externalSource.
 	// Format: projects/{projectId}/locations/{locationId}/connections/{connectionId}
@@ -16185,6 +16349,118 @@ func (o GetDatasetDefaultEncryptionConfigurationArrayOutput) Index(i pulumi.IntI
 	}).(GetDatasetDefaultEncryptionConfigurationOutput)
 }
 
+type GetDatasetExternalCatalogDatasetOption struct {
+	// The storage location URI for all tables in the dataset. Equivalent to hive metastore's
+	// database locationUri. Maximum length of 1024 characters.
+	DefaultStorageLocationUri string `pulumi:"defaultStorageLocationUri"`
+	// A map of key value pairs defining the parameters and properties of the open source schema.
+	// Maximum size of 2Mib.
+	Parameters map[string]string `pulumi:"parameters"`
+}
+
+// GetDatasetExternalCatalogDatasetOptionInput is an input type that accepts GetDatasetExternalCatalogDatasetOptionArgs and GetDatasetExternalCatalogDatasetOptionOutput values.
+// You can construct a concrete instance of `GetDatasetExternalCatalogDatasetOptionInput` via:
+//
+//	GetDatasetExternalCatalogDatasetOptionArgs{...}
+type GetDatasetExternalCatalogDatasetOptionInput interface {
+	pulumi.Input
+
+	ToGetDatasetExternalCatalogDatasetOptionOutput() GetDatasetExternalCatalogDatasetOptionOutput
+	ToGetDatasetExternalCatalogDatasetOptionOutputWithContext(context.Context) GetDatasetExternalCatalogDatasetOptionOutput
+}
+
+type GetDatasetExternalCatalogDatasetOptionArgs struct {
+	// The storage location URI for all tables in the dataset. Equivalent to hive metastore's
+	// database locationUri. Maximum length of 1024 characters.
+	DefaultStorageLocationUri pulumi.StringInput `pulumi:"defaultStorageLocationUri"`
+	// A map of key value pairs defining the parameters and properties of the open source schema.
+	// Maximum size of 2Mib.
+	Parameters pulumi.StringMapInput `pulumi:"parameters"`
+}
+
+func (GetDatasetExternalCatalogDatasetOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatasetExternalCatalogDatasetOption)(nil)).Elem()
+}
+
+func (i GetDatasetExternalCatalogDatasetOptionArgs) ToGetDatasetExternalCatalogDatasetOptionOutput() GetDatasetExternalCatalogDatasetOptionOutput {
+	return i.ToGetDatasetExternalCatalogDatasetOptionOutputWithContext(context.Background())
+}
+
+func (i GetDatasetExternalCatalogDatasetOptionArgs) ToGetDatasetExternalCatalogDatasetOptionOutputWithContext(ctx context.Context) GetDatasetExternalCatalogDatasetOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatasetExternalCatalogDatasetOptionOutput)
+}
+
+// GetDatasetExternalCatalogDatasetOptionArrayInput is an input type that accepts GetDatasetExternalCatalogDatasetOptionArray and GetDatasetExternalCatalogDatasetOptionArrayOutput values.
+// You can construct a concrete instance of `GetDatasetExternalCatalogDatasetOptionArrayInput` via:
+//
+//	GetDatasetExternalCatalogDatasetOptionArray{ GetDatasetExternalCatalogDatasetOptionArgs{...} }
+type GetDatasetExternalCatalogDatasetOptionArrayInput interface {
+	pulumi.Input
+
+	ToGetDatasetExternalCatalogDatasetOptionArrayOutput() GetDatasetExternalCatalogDatasetOptionArrayOutput
+	ToGetDatasetExternalCatalogDatasetOptionArrayOutputWithContext(context.Context) GetDatasetExternalCatalogDatasetOptionArrayOutput
+}
+
+type GetDatasetExternalCatalogDatasetOptionArray []GetDatasetExternalCatalogDatasetOptionInput
+
+func (GetDatasetExternalCatalogDatasetOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatasetExternalCatalogDatasetOption)(nil)).Elem()
+}
+
+func (i GetDatasetExternalCatalogDatasetOptionArray) ToGetDatasetExternalCatalogDatasetOptionArrayOutput() GetDatasetExternalCatalogDatasetOptionArrayOutput {
+	return i.ToGetDatasetExternalCatalogDatasetOptionArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatasetExternalCatalogDatasetOptionArray) ToGetDatasetExternalCatalogDatasetOptionArrayOutputWithContext(ctx context.Context) GetDatasetExternalCatalogDatasetOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatasetExternalCatalogDatasetOptionArrayOutput)
+}
+
+type GetDatasetExternalCatalogDatasetOptionOutput struct{ *pulumi.OutputState }
+
+func (GetDatasetExternalCatalogDatasetOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatasetExternalCatalogDatasetOption)(nil)).Elem()
+}
+
+func (o GetDatasetExternalCatalogDatasetOptionOutput) ToGetDatasetExternalCatalogDatasetOptionOutput() GetDatasetExternalCatalogDatasetOptionOutput {
+	return o
+}
+
+func (o GetDatasetExternalCatalogDatasetOptionOutput) ToGetDatasetExternalCatalogDatasetOptionOutputWithContext(ctx context.Context) GetDatasetExternalCatalogDatasetOptionOutput {
+	return o
+}
+
+// The storage location URI for all tables in the dataset. Equivalent to hive metastore's
+// database locationUri. Maximum length of 1024 characters.
+func (o GetDatasetExternalCatalogDatasetOptionOutput) DefaultStorageLocationUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatasetExternalCatalogDatasetOption) string { return v.DefaultStorageLocationUri }).(pulumi.StringOutput)
+}
+
+// A map of key value pairs defining the parameters and properties of the open source schema.
+// Maximum size of 2Mib.
+func (o GetDatasetExternalCatalogDatasetOptionOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetDatasetExternalCatalogDatasetOption) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
+}
+
+type GetDatasetExternalCatalogDatasetOptionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatasetExternalCatalogDatasetOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatasetExternalCatalogDatasetOption)(nil)).Elem()
+}
+
+func (o GetDatasetExternalCatalogDatasetOptionArrayOutput) ToGetDatasetExternalCatalogDatasetOptionArrayOutput() GetDatasetExternalCatalogDatasetOptionArrayOutput {
+	return o
+}
+
+func (o GetDatasetExternalCatalogDatasetOptionArrayOutput) ToGetDatasetExternalCatalogDatasetOptionArrayOutputWithContext(ctx context.Context) GetDatasetExternalCatalogDatasetOptionArrayOutput {
+	return o
+}
+
+func (o GetDatasetExternalCatalogDatasetOptionArrayOutput) Index(i pulumi.IntInput) GetDatasetExternalCatalogDatasetOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatasetExternalCatalogDatasetOption {
+		return vs[0].([]GetDatasetExternalCatalogDatasetOption)[vs[1].(int)]
+	}).(GetDatasetExternalCatalogDatasetOptionOutput)
+}
+
 type GetDatasetExternalDatasetReference struct {
 	// The connection id that is used to access the externalSource.
 	// Format: projects/{projectId}/locations/{locationId}/connections/{connectionId}
@@ -16457,6 +16733,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessViewPtrInput)(nil)).Elem(), DatasetAccessViewArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetDefaultEncryptionConfigurationInput)(nil)).Elem(), DatasetDefaultEncryptionConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetDefaultEncryptionConfigurationPtrInput)(nil)).Elem(), DatasetDefaultEncryptionConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetExternalCatalogDatasetOptionsInput)(nil)).Elem(), DatasetExternalCatalogDatasetOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetExternalCatalogDatasetOptionsPtrInput)(nil)).Elem(), DatasetExternalCatalogDatasetOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetExternalDatasetReferenceInput)(nil)).Elem(), DatasetExternalDatasetReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetExternalDatasetReferencePtrInput)(nil)).Elem(), DatasetExternalDatasetReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetIamBindingConditionInput)(nil)).Elem(), DatasetIamBindingConditionArgs{})
@@ -16573,6 +16851,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatasetAccessViewArrayInput)(nil)).Elem(), GetDatasetAccessViewArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatasetDefaultEncryptionConfigurationInput)(nil)).Elem(), GetDatasetDefaultEncryptionConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatasetDefaultEncryptionConfigurationArrayInput)(nil)).Elem(), GetDatasetDefaultEncryptionConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatasetExternalCatalogDatasetOptionInput)(nil)).Elem(), GetDatasetExternalCatalogDatasetOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatasetExternalCatalogDatasetOptionArrayInput)(nil)).Elem(), GetDatasetExternalCatalogDatasetOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatasetExternalDatasetReferenceInput)(nil)).Elem(), GetDatasetExternalDatasetReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatasetExternalDatasetReferenceArrayInput)(nil)).Elem(), GetDatasetExternalDatasetReferenceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTablesTableInput)(nil)).Elem(), GetTablesTableArgs{})
@@ -16633,6 +16913,8 @@ func init() {
 	pulumi.RegisterOutputType(DatasetAccessViewPtrOutput{})
 	pulumi.RegisterOutputType(DatasetDefaultEncryptionConfigurationOutput{})
 	pulumi.RegisterOutputType(DatasetDefaultEncryptionConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(DatasetExternalCatalogDatasetOptionsOutput{})
+	pulumi.RegisterOutputType(DatasetExternalCatalogDatasetOptionsPtrOutput{})
 	pulumi.RegisterOutputType(DatasetExternalDatasetReferenceOutput{})
 	pulumi.RegisterOutputType(DatasetExternalDatasetReferencePtrOutput{})
 	pulumi.RegisterOutputType(DatasetIamBindingConditionOutput{})
@@ -16749,6 +17031,8 @@ func init() {
 	pulumi.RegisterOutputType(GetDatasetAccessViewArrayOutput{})
 	pulumi.RegisterOutputType(GetDatasetDefaultEncryptionConfigurationOutput{})
 	pulumi.RegisterOutputType(GetDatasetDefaultEncryptionConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(GetDatasetExternalCatalogDatasetOptionOutput{})
+	pulumi.RegisterOutputType(GetDatasetExternalCatalogDatasetOptionArrayOutput{})
 	pulumi.RegisterOutputType(GetDatasetExternalDatasetReferenceOutput{})
 	pulumi.RegisterOutputType(GetDatasetExternalDatasetReferenceArrayOutput{})
 	pulumi.RegisterOutputType(GetTablesTableOutput{})

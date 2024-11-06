@@ -154,7 +154,7 @@ import javax.annotation.Nullable;
  *                     .image("us-docker.pkg.dev/cloudrun/container/hello")
  *                     .build())
  *                 .build())
- *             .deletionProtection("true")
+ *             .deletionProtection(true)
  *             .build());
  * 
  *         var defaultHostingVersion = new HostingVersion("defaultHostingVersion", HostingVersionArgs.builder()

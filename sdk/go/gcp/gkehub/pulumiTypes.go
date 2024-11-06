@@ -211,7 +211,7 @@ type FeatureFleetDefaultMemberConfigConfigmanagement struct {
 	// Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
 	// Possible values are: `MANAGEMENT_UNSPECIFIED`, `MANAGEMENT_AUTOMATIC`, `MANAGEMENT_MANUAL`.
 	Management *string `pulumi:"management"`
-	// Version of ACM installed
+	// Version of Config Sync installed
 	Version *string `pulumi:"version"`
 }
 
@@ -233,7 +233,7 @@ type FeatureFleetDefaultMemberConfigConfigmanagementArgs struct {
 	// Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
 	// Possible values are: `MANAGEMENT_UNSPECIFIED`, `MANAGEMENT_AUTOMATIC`, `MANAGEMENT_MANUAL`.
 	Management pulumi.StringPtrInput `pulumi:"management"`
-	// Version of ACM installed
+	// Version of Config Sync installed
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
@@ -328,7 +328,7 @@ func (o FeatureFleetDefaultMemberConfigConfigmanagementOutput) Management() pulu
 	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigConfigmanagement) *string { return v.Management }).(pulumi.StringPtrOutput)
 }
 
-// Version of ACM installed
+// Version of Config Sync installed
 func (o FeatureFleetDefaultMemberConfigConfigmanagementOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigConfigmanagement) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -379,7 +379,7 @@ func (o FeatureFleetDefaultMemberConfigConfigmanagementPtrOutput) Management() p
 	}).(pulumi.StringPtrOutput)
 }
 
-// Version of ACM installed
+// Version of Config Sync installed
 func (o FeatureFleetDefaultMemberConfigConfigmanagementPtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigConfigmanagement) *string {
 		if v == nil {
@@ -898,11 +898,11 @@ type FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci struct {
 	// Period in seconds between consecutive syncs. Default: 15
 	SyncWaitSecs *string `pulumi:"syncWaitSecs"`
 	// (Optional, Deprecated)
-	// Version of ACM installed
+	// Version of Config Sync installed
 	//
-	// > **Warning:** The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.
+	// > **Warning:** The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of Config Sync installed instead.
 	//
-	// Deprecated: The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.
+	// Deprecated: The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of Config Sync installed instead.
 	Version *string `pulumi:"version"`
 }
 
@@ -929,11 +929,11 @@ type FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs struct {
 	// Period in seconds between consecutive syncs. Default: 15
 	SyncWaitSecs pulumi.StringPtrInput `pulumi:"syncWaitSecs"`
 	// (Optional, Deprecated)
-	// Version of ACM installed
+	// Version of Config Sync installed
 	//
-	// > **Warning:** The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.
+	// > **Warning:** The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of Config Sync installed instead.
 	//
-	// Deprecated: The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.
+	// Deprecated: The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of Config Sync installed instead.
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
@@ -1042,11 +1042,11 @@ func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput) Sync
 }
 
 // (Optional, Deprecated)
-// Version of ACM installed
+// Version of Config Sync installed
 //
-// > **Warning:** The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.
+// > **Warning:** The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of Config Sync installed instead.
 //
-// Deprecated: The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.
+// Deprecated: The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of Config Sync installed instead.
 func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -1126,11 +1126,11 @@ func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutput) S
 }
 
 // (Optional, Deprecated)
-// Version of ACM installed
+// Version of Config Sync installed
 //
-// > **Warning:** The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.
+// > **Warning:** The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of Config Sync installed instead.
 //
-// Deprecated: The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.
+// Deprecated: The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of Config Sync installed instead.
 func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci) *string {
 		if v == nil {
@@ -3468,7 +3468,7 @@ type FeatureMembershipConfigmanagement struct {
 	// Configuring Policy Controller through the configmanagement feature is no longer recommended.
 	// Use the policycontroller feature instead.
 	PolicyController *FeatureMembershipConfigmanagementPolicyController `pulumi:"policyController"`
-	// Version of ACM installed.
+	// Version of Config Sync installed.
 	Version *string `pulumi:"version"`
 }
 
@@ -3502,7 +3502,7 @@ type FeatureMembershipConfigmanagementArgs struct {
 	// Configuring Policy Controller through the configmanagement feature is no longer recommended.
 	// Use the policycontroller feature instead.
 	PolicyController FeatureMembershipConfigmanagementPolicyControllerPtrInput `pulumi:"policyController"`
-	// Version of ACM installed.
+	// Version of Config Sync installed.
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
@@ -3624,7 +3624,7 @@ func (o FeatureMembershipConfigmanagementOutput) PolicyController() FeatureMembe
 	}).(FeatureMembershipConfigmanagementPolicyControllerPtrOutput)
 }
 
-// Version of ACM installed.
+// Version of Config Sync installed.
 func (o FeatureMembershipConfigmanagementOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureMembershipConfigmanagement) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -3711,7 +3711,7 @@ func (o FeatureMembershipConfigmanagementPtrOutput) PolicyController() FeatureMe
 	}).(FeatureMembershipConfigmanagementPolicyControllerPtrOutput)
 }
 
-// Version of ACM installed.
+// Version of Config Sync installed.
 func (o FeatureMembershipConfigmanagementPtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FeatureMembershipConfigmanagement) *string {
 		if v == nil {
@@ -3865,11 +3865,11 @@ type FeatureMembershipConfigmanagementConfigSync struct {
 	Git *FeatureMembershipConfigmanagementConfigSyncGit `pulumi:"git"`
 	// The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
 	MetricsGcpServiceAccountEmail *string `pulumi:"metricsGcpServiceAccountEmail"`
-	// (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+	// (Optional) Supported from Config Sync versions 1.12.0 onwards. Structure is documented below.
 	//
 	// Use either `git` or `oci` config option.
 	Oci *FeatureMembershipConfigmanagementConfigSyncOci `pulumi:"oci"`
-	// Supported from ACM versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
+	// Supported from Config Sync versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
 	PreventDrift *bool `pulumi:"preventDrift"`
 	// Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
 	SourceFormat *string `pulumi:"sourceFormat"`
@@ -3893,11 +3893,11 @@ type FeatureMembershipConfigmanagementConfigSyncArgs struct {
 	Git FeatureMembershipConfigmanagementConfigSyncGitPtrInput `pulumi:"git"`
 	// The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
 	MetricsGcpServiceAccountEmail pulumi.StringPtrInput `pulumi:"metricsGcpServiceAccountEmail"`
-	// (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+	// (Optional) Supported from Config Sync versions 1.12.0 onwards. Structure is documented below.
 	//
 	// Use either `git` or `oci` config option.
 	Oci FeatureMembershipConfigmanagementConfigSyncOciPtrInput `pulumi:"oci"`
-	// Supported from ACM versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
+	// Supported from Config Sync versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
 	PreventDrift pulumi.BoolPtrInput `pulumi:"preventDrift"`
 	// Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
 	SourceFormat pulumi.StringPtrInput `pulumi:"sourceFormat"`
@@ -3997,7 +3997,7 @@ func (o FeatureMembershipConfigmanagementConfigSyncOutput) MetricsGcpServiceAcco
 	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSync) *string { return v.MetricsGcpServiceAccountEmail }).(pulumi.StringPtrOutput)
 }
 
-// (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+// (Optional) Supported from Config Sync versions 1.12.0 onwards. Structure is documented below.
 //
 // Use either `git` or `oci` config option.
 func (o FeatureMembershipConfigmanagementConfigSyncOutput) Oci() FeatureMembershipConfigmanagementConfigSyncOciPtrOutput {
@@ -4006,7 +4006,7 @@ func (o FeatureMembershipConfigmanagementConfigSyncOutput) Oci() FeatureMembersh
 	}).(FeatureMembershipConfigmanagementConfigSyncOciPtrOutput)
 }
 
-// Supported from ACM versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
+// Supported from Config Sync versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
 func (o FeatureMembershipConfigmanagementConfigSyncOutput) PreventDrift() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSync) *bool { return v.PreventDrift }).(pulumi.BoolPtrOutput)
 }
@@ -4070,7 +4070,7 @@ func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) MetricsGcpServiceA
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+// (Optional) Supported from Config Sync versions 1.12.0 onwards. Structure is documented below.
 //
 // Use either `git` or `oci` config option.
 func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) Oci() FeatureMembershipConfigmanagementConfigSyncOciPtrOutput {
@@ -4082,7 +4082,7 @@ func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) Oci() FeatureMembe
 	}).(FeatureMembershipConfigmanagementConfigSyncOciPtrOutput)
 }
 
-// Supported from ACM versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
+// Supported from Config Sync versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
 func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) PreventDrift() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *FeatureMembershipConfigmanagementConfigSync) *bool {
 		if v == nil {

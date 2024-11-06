@@ -14,7 +14,8 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class SecurityPolicyRuleHeaderAction
     {
         /// <summary>
-        /// The list of request headers to add or overwrite if they're already present. Structure is documented below.
+        /// The list of request headers to add or overwrite if they're already present.
+        /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.SecurityPolicyRuleHeaderActionRequestHeadersToAdd> RequestHeadersToAdds;
 

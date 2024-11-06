@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * ### Application Basic
+ * ### Apphub Application Basic
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -25,7 +25,21 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Application Full
+ * ### Apphub Application Global Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example = new gcp.apphub.Application("example", {
+ *     location: "global",
+ *     applicationId: "example-application",
+ *     scope: {
+ *         type: "GLOBAL",
+ *     },
+ * });
+ * ```
+ * ### Apphub Application Full
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

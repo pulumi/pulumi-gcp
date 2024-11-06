@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.bigquery.outputs.GetDatasetAccess;
 import com.pulumi.gcp.bigquery.outputs.GetDatasetDefaultEncryptionConfiguration;
+import com.pulumi.gcp.bigquery.outputs.GetDatasetExternalCatalogDatasetOption;
 import com.pulumi.gcp.bigquery.outputs.GetDatasetExternalDatasetReference;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -30,6 +31,7 @@ public final class GetDatasetResult {
     private String description;
     private Map<String,String> effectiveLabels;
     private String etag;
+    private List<GetDatasetExternalCatalogDatasetOption> externalCatalogDatasetOptions;
     private List<GetDatasetExternalDatasetReference> externalDatasetReferences;
     private String friendlyName;
     /**
@@ -81,6 +83,9 @@ public final class GetDatasetResult {
     }
     public String etag() {
         return this.etag;
+    }
+    public List<GetDatasetExternalCatalogDatasetOption> externalCatalogDatasetOptions() {
+        return this.externalCatalogDatasetOptions;
     }
     public List<GetDatasetExternalDatasetReference> externalDatasetReferences() {
         return this.externalDatasetReferences;
@@ -146,6 +151,7 @@ public final class GetDatasetResult {
         private String description;
         private Map<String,String> effectiveLabels;
         private String etag;
+        private List<GetDatasetExternalCatalogDatasetOption> externalCatalogDatasetOptions;
         private List<GetDatasetExternalDatasetReference> externalDatasetReferences;
         private String friendlyName;
         private String id;
@@ -173,6 +179,7 @@ public final class GetDatasetResult {
     	      this.description = defaults.description;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.etag = defaults.etag;
+    	      this.externalCatalogDatasetOptions = defaults.externalCatalogDatasetOptions;
     	      this.externalDatasetReferences = defaults.externalDatasetReferences;
     	      this.friendlyName = defaults.friendlyName;
     	      this.id = defaults.id;
@@ -281,6 +288,17 @@ public final class GetDatasetResult {
             }
             this.etag = etag;
             return this;
+        }
+        @CustomType.Setter
+        public Builder externalCatalogDatasetOptions(List<GetDatasetExternalCatalogDatasetOption> externalCatalogDatasetOptions) {
+            if (externalCatalogDatasetOptions == null) {
+              throw new MissingRequiredPropertyException("GetDatasetResult", "externalCatalogDatasetOptions");
+            }
+            this.externalCatalogDatasetOptions = externalCatalogDatasetOptions;
+            return this;
+        }
+        public Builder externalCatalogDatasetOptions(GetDatasetExternalCatalogDatasetOption... externalCatalogDatasetOptions) {
+            return externalCatalogDatasetOptions(List.of(externalCatalogDatasetOptions));
         }
         @CustomType.Setter
         public Builder externalDatasetReferences(List<GetDatasetExternalDatasetReference> externalDatasetReferences) {
@@ -400,6 +418,7 @@ public final class GetDatasetResult {
             _resultValue.description = description;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.etag = etag;
+            _resultValue.externalCatalogDatasetOptions = externalCatalogDatasetOptions;
             _resultValue.externalDatasetReferences = externalDatasetReferences;
             _resultValue.friendlyName = friendlyName;
             _resultValue.id = id;

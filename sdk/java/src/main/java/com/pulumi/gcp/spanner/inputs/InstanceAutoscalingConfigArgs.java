@@ -5,8 +5,10 @@ package com.pulumi.gcp.spanner.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.spanner.inputs.InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs;
 import com.pulumi.gcp.spanner.inputs.InstanceAutoscalingConfigAutoscalingLimitsArgs;
 import com.pulumi.gcp.spanner.inputs.InstanceAutoscalingConfigAutoscalingTargetsArgs;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,6 +17,23 @@ import javax.annotation.Nullable;
 public final class InstanceAutoscalingConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final InstanceAutoscalingConfigArgs Empty = new InstanceAutoscalingConfigArgs();
+
+    /**
+     * Asymmetric autoscaling options for specific replicas.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="asymmetricAutoscalingOptions")
+    private @Nullable Output<List<InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs>> asymmetricAutoscalingOptions;
+
+    /**
+     * @return Asymmetric autoscaling options for specific replicas.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs>>> asymmetricAutoscalingOptions() {
+        return Optional.ofNullable(this.asymmetricAutoscalingOptions);
+    }
 
     /**
      * Defines scale in controls to reduce the risk of response latency
@@ -65,6 +84,7 @@ public final class InstanceAutoscalingConfigArgs extends com.pulumi.resources.Re
     private InstanceAutoscalingConfigArgs() {}
 
     private InstanceAutoscalingConfigArgs(InstanceAutoscalingConfigArgs $) {
+        this.asymmetricAutoscalingOptions = $.asymmetricAutoscalingOptions;
         this.autoscalingLimits = $.autoscalingLimits;
         this.autoscalingTargets = $.autoscalingTargets;
     }
@@ -85,6 +105,40 @@ public final class InstanceAutoscalingConfigArgs extends com.pulumi.resources.Re
 
         public Builder(InstanceAutoscalingConfigArgs defaults) {
             $ = new InstanceAutoscalingConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param asymmetricAutoscalingOptions Asymmetric autoscaling options for specific replicas.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder asymmetricAutoscalingOptions(@Nullable Output<List<InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs>> asymmetricAutoscalingOptions) {
+            $.asymmetricAutoscalingOptions = asymmetricAutoscalingOptions;
+            return this;
+        }
+
+        /**
+         * @param asymmetricAutoscalingOptions Asymmetric autoscaling options for specific replicas.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder asymmetricAutoscalingOptions(List<InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs> asymmetricAutoscalingOptions) {
+            return asymmetricAutoscalingOptions(Output.of(asymmetricAutoscalingOptions));
+        }
+
+        /**
+         * @param asymmetricAutoscalingOptions Asymmetric autoscaling options for specific replicas.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder asymmetricAutoscalingOptions(InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs... asymmetricAutoscalingOptions) {
+            return asymmetricAutoscalingOptions(List.of(asymmetricAutoscalingOptions));
         }
 
         /**

@@ -277,7 +277,7 @@ import (
 // $ pulumi import gcp:datacatalog/entryGroupIamMember:EntryGroupIamMember editor projects/{{project}}/locations/{{region}}/entryGroups/{{entry_group}}
 // ```
 //
-// -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+// -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 //
 //	full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type EntryGroupIamMember struct {

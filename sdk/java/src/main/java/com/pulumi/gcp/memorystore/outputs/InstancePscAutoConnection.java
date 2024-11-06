@@ -4,6 +4,7 @@
 package com.pulumi.gcp.memorystore.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -11,6 +12,16 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InstancePscAutoConnection {
+    /**
+     * @return (Output)
+     * Output Only. Type of a PSC Connection.
+     * Possible values:
+     * CONNECTION_TYPE_DISCOVERY
+     * CONNECTION_TYPE_PRIMARY
+     * CONNECTION_TYPE_READER
+     * 
+     */
+    private @Nullable String connectionType;
     /**
      * @return (Output)
      * Output only. The URI of the consumer side forwarding rule.
@@ -34,6 +45,12 @@ public final class InstancePscAutoConnection {
     private @Nullable String network;
     /**
      * @return (Output)
+     * Output only. Ports of the exposed endpoint.
+     * 
+     */
+    private @Nullable Integer port;
+    /**
+     * @return (Output)
      * Output only. The consumer project_id where the forwarding rule is created from.
      * 
      */
@@ -45,8 +62,35 @@ public final class InstancePscAutoConnection {
      * 
      */
     private @Nullable String pscConnectionId;
+    /**
+     * @return (Output)
+     * Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists.
+     * Possible values:
+     * ACTIVE
+     * NOT_FOUND
+     * 
+     */
+    private @Nullable String pscConnectionStatus;
+    /**
+     * @return (Output)
+     * Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+     * 
+     */
+    private @Nullable String serviceAttachment;
 
     private InstancePscAutoConnection() {}
+    /**
+     * @return (Output)
+     * Output Only. Type of a PSC Connection.
+     * Possible values:
+     * CONNECTION_TYPE_DISCOVERY
+     * CONNECTION_TYPE_PRIMARY
+     * CONNECTION_TYPE_READER
+     * 
+     */
+    public Optional<String> connectionType() {
+        return Optional.ofNullable(this.connectionType);
+    }
     /**
      * @return (Output)
      * Output only. The URI of the consumer side forwarding rule.
@@ -76,6 +120,14 @@ public final class InstancePscAutoConnection {
     }
     /**
      * @return (Output)
+     * Output only. Ports of the exposed endpoint.
+     * 
+     */
+    public Optional<Integer> port() {
+        return Optional.ofNullable(this.port);
+    }
+    /**
+     * @return (Output)
      * Output only. The consumer project_id where the forwarding rule is created from.
      * 
      */
@@ -91,6 +143,25 @@ public final class InstancePscAutoConnection {
     public Optional<String> pscConnectionId() {
         return Optional.ofNullable(this.pscConnectionId);
     }
+    /**
+     * @return (Output)
+     * Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists.
+     * Possible values:
+     * ACTIVE
+     * NOT_FOUND
+     * 
+     */
+    public Optional<String> pscConnectionStatus() {
+        return Optional.ofNullable(this.pscConnectionStatus);
+    }
+    /**
+     * @return (Output)
+     * Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+     * 
+     */
+    public Optional<String> serviceAttachment() {
+        return Optional.ofNullable(this.serviceAttachment);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -101,21 +172,35 @@ public final class InstancePscAutoConnection {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String connectionType;
         private @Nullable String forwardingRule;
         private @Nullable String ipAddress;
         private @Nullable String network;
+        private @Nullable Integer port;
         private @Nullable String projectId;
         private @Nullable String pscConnectionId;
+        private @Nullable String pscConnectionStatus;
+        private @Nullable String serviceAttachment;
         public Builder() {}
         public Builder(InstancePscAutoConnection defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.connectionType = defaults.connectionType;
     	      this.forwardingRule = defaults.forwardingRule;
     	      this.ipAddress = defaults.ipAddress;
     	      this.network = defaults.network;
+    	      this.port = defaults.port;
     	      this.projectId = defaults.projectId;
     	      this.pscConnectionId = defaults.pscConnectionId;
+    	      this.pscConnectionStatus = defaults.pscConnectionStatus;
+    	      this.serviceAttachment = defaults.serviceAttachment;
         }
 
+        @CustomType.Setter
+        public Builder connectionType(@Nullable String connectionType) {
+
+            this.connectionType = connectionType;
+            return this;
+        }
         @CustomType.Setter
         public Builder forwardingRule(@Nullable String forwardingRule) {
 
@@ -135,6 +220,12 @@ public final class InstancePscAutoConnection {
             return this;
         }
         @CustomType.Setter
+        public Builder port(@Nullable Integer port) {
+
+            this.port = port;
+            return this;
+        }
+        @CustomType.Setter
         public Builder projectId(@Nullable String projectId) {
 
             this.projectId = projectId;
@@ -146,13 +237,29 @@ public final class InstancePscAutoConnection {
             this.pscConnectionId = pscConnectionId;
             return this;
         }
+        @CustomType.Setter
+        public Builder pscConnectionStatus(@Nullable String pscConnectionStatus) {
+
+            this.pscConnectionStatus = pscConnectionStatus;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder serviceAttachment(@Nullable String serviceAttachment) {
+
+            this.serviceAttachment = serviceAttachment;
+            return this;
+        }
         public InstancePscAutoConnection build() {
             final var _resultValue = new InstancePscAutoConnection();
+            _resultValue.connectionType = connectionType;
             _resultValue.forwardingRule = forwardingRule;
             _resultValue.ipAddress = ipAddress;
             _resultValue.network = network;
+            _resultValue.port = port;
             _resultValue.projectId = projectId;
             _resultValue.pscConnectionId = pscConnectionId;
+            _resultValue.pscConnectionStatus = pscConnectionStatus;
+            _resultValue.serviceAttachment = serviceAttachment;
             return _resultValue;
         }
     }

@@ -49,7 +49,7 @@ public final class FeatureMembershipConfigmanagement {
      */
     private @Nullable FeatureMembershipConfigmanagementPolicyController policyController;
     /**
-     * @return Version of ACM installed.
+     * @return Version of Config Sync installed.
      * 
      */
     private @Nullable String version;
@@ -99,7 +99,7 @@ public final class FeatureMembershipConfigmanagement {
         return Optional.ofNullable(this.policyController);
     }
     /**
-     * @return Version of ACM installed.
+     * @return Version of Config Sync installed.
      * 
      */
     public Optional<String> version() {

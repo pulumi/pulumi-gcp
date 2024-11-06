@@ -178,22 +178,6 @@ namespace Pulumi.Gcp.PubSub
     ///         Name = "example-topic",
     ///     });
     /// 
-    ///     var project = Gcp.Organizations.GetProject.Invoke();
-    /// 
-    ///     var viewer = new Gcp.Projects.IAMMember("viewer", new()
-    ///     {
-    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
-    ///         Role = "roles/bigquery.metadataViewer",
-    ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-pubsub.iam.gserviceaccount.com",
-    ///     });
-    /// 
-    ///     var editor = new Gcp.Projects.IAMMember("editor", new()
-    ///     {
-    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
-    ///         Role = "roles/bigquery.dataEditor",
-    ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-pubsub.iam.gserviceaccount.com",
-    ///     });
-    /// 
     ///     var test = new Gcp.BigQuery.Dataset("test", new()
     ///     {
     ///         DatasetId = "example_dataset",
@@ -201,7 +185,6 @@ namespace Pulumi.Gcp.PubSub
     /// 
     ///     var testTable = new Gcp.BigQuery.Table("test", new()
     ///     {
-    ///         DeletionProtection = false,
     ///         TableId = "example_table",
     ///         DatasetId = test.DatasetId,
     ///         Schema = @"[
@@ -213,6 +196,7 @@ namespace Pulumi.Gcp.PubSub
     ///   }
     /// ]
     /// ",
+    ///         DeletionProtection = false,
     ///     });
     /// 
     ///     var exampleSubscription = new Gcp.PubSub.Subscription("example", new()
@@ -229,14 +213,9 @@ namespace Pulumi.Gcp.PubSub
     ///                 return $"{project}.{datasetId}.{tableId}";
     ///             }),
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn =
-    ///         {
-    ///             viewer,
-    ///             editor,
-    ///         },
     ///     });
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
     /// });
     /// ```
@@ -255,22 +234,6 @@ namespace Pulumi.Gcp.PubSub
     ///         Name = "example-topic",
     ///     });
     /// 
-    ///     var project = Gcp.Organizations.GetProject.Invoke();
-    /// 
-    ///     var viewer = new Gcp.Projects.IAMMember("viewer", new()
-    ///     {
-    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
-    ///         Role = "roles/bigquery.metadataViewer",
-    ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-pubsub.iam.gserviceaccount.com",
-    ///     });
-    /// 
-    ///     var editor = new Gcp.Projects.IAMMember("editor", new()
-    ///     {
-    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
-    ///         Role = "roles/bigquery.dataEditor",
-    ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-pubsub.iam.gserviceaccount.com",
-    ///     });
-    /// 
     ///     var test = new Gcp.BigQuery.Dataset("test", new()
     ///     {
     ///         DatasetId = "example_dataset",
@@ -278,7 +241,6 @@ namespace Pulumi.Gcp.PubSub
     /// 
     ///     var testTable = new Gcp.BigQuery.Table("test", new()
     ///     {
-    ///         DeletionProtection = false,
     ///         TableId = "example_table",
     ///         DatasetId = test.DatasetId,
     ///         Schema = @"[
@@ -290,6 +252,7 @@ namespace Pulumi.Gcp.PubSub
     ///   }
     /// ]
     /// ",
+    ///         DeletionProtection = false,
     ///     });
     /// 
     ///     var exampleSubscription = new Gcp.PubSub.Subscription("example", new()
@@ -307,14 +270,9 @@ namespace Pulumi.Gcp.PubSub
     ///             }),
     ///             UseTableSchema = true,
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn =
-    ///         {
-    ///             viewer,
-    ///             editor,
-    ///         },
     ///     });
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
     /// });
     /// ```

@@ -255,7 +255,7 @@ namespace Pulumi.Gcp.Storage
         public Output<bool?> ForceDestroy { get; private set; } = null!;
 
         /// <summary>
-        /// The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below.
+        /// The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniform_bucket_level_access` must be enabled on bucket.
         /// </summary>
         [Output("hierarchicalNamespace")]
         public Output<Outputs.BucketHierarchicalNamespace?> HierarchicalNamespace { get; private set; } = null!;
@@ -480,7 +480,7 @@ namespace Pulumi.Gcp.Storage
         public Input<bool>? ForceDestroy { get; set; }
 
         /// <summary>
-        /// The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below.
+        /// The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniform_bucket_level_access` must be enabled on bucket.
         /// </summary>
         [Input("hierarchicalNamespace")]
         public Input<Inputs.BucketHierarchicalNamespaceArgs>? HierarchicalNamespace { get; set; }
@@ -662,7 +662,7 @@ namespace Pulumi.Gcp.Storage
         public Input<bool>? ForceDestroy { get; set; }
 
         /// <summary>
-        /// The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below.
+        /// The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniform_bucket_level_access` must be enabled on bucket.
         /// </summary>
         [Input("hierarchicalNamespace")]
         public Input<Inputs.BucketHierarchicalNamespaceGetArgs>? HierarchicalNamespace { get; set; }

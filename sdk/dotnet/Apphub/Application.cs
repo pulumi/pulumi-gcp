@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Apphub
     /// 
     /// ## Example Usage
     /// 
-    /// ### Application Basic
+    /// ### Apphub Application Basic
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -36,7 +36,29 @@ namespace Pulumi.Gcp.Apphub
     /// 
     /// });
     /// ```
-    /// ### Application Full
+    /// ### Apphub Application Global Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Gcp.Apphub.Application("example", new()
+    ///     {
+    ///         Location = "global",
+    ///         ApplicationId = "example-application",
+    ///         Scope = new Gcp.Apphub.Inputs.ApplicationScopeArgs
+    ///         {
+    ///             Type = "GLOBAL",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Apphub Application Full
     /// 
     /// ```csharp
     /// using System.Collections.Generic;

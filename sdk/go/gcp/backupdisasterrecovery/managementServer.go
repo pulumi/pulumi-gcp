@@ -60,12 +60,6 @@ import (
 //				Location: pulumi.String("us-central1"),
 //				Name:     pulumi.String("ms-console"),
 //				Type:     pulumi.String("BACKUP_RESTORE"),
-//				Networks: backupdisasterrecovery.ManagementServerNetworkArray{
-//					&backupdisasterrecovery.ManagementServerNetworkArgs{
-//						Network:     _default.ID(),
-//						PeeringMode: pulumi.String("PRIVATE_SERVICE_ACCESS"),
-//					},
-//				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				defaultConnection,
 //			}))
@@ -110,14 +104,20 @@ type ManagementServer struct {
 	// Structure is documented below.
 	ManagementUris ManagementServerManagementUriArrayOutput `pulumi:"managementUris"`
 	// The name of management server (management console)
+	//
+	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Network details to create management server (management console).
 	// Structure is documented below.
 	Networks ManagementServerNetworkArrayOutput `pulumi:"networks"`
 	// The oauth2ClientId of management console.
 	Oauth2ClientId pulumi.StringOutput `pulumi:"oauth2ClientId"`
-	Project        pulumi.StringOutput `pulumi:"project"`
-	// The type of management server (management console). Default value: "BACKUP_RESTORE" Possible values: ["BACKUP_RESTORE"]
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringOutput `pulumi:"project"`
+	// The type of management server (management console).
+	// Default value is `BACKUP_RESTORE`.
+	// Possible values are: `BACKUP_RESTORE`.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 }
 
@@ -130,9 +130,6 @@ func NewManagementServer(ctx *pulumi.Context,
 
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
-	}
-	if args.Networks == nil {
-		return nil, errors.New("invalid value for required argument 'Networks'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ManagementServer
@@ -163,14 +160,20 @@ type managementServerState struct {
 	// Structure is documented below.
 	ManagementUris []ManagementServerManagementUri `pulumi:"managementUris"`
 	// The name of management server (management console)
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// Network details to create management server (management console).
 	// Structure is documented below.
 	Networks []ManagementServerNetwork `pulumi:"networks"`
 	// The oauth2ClientId of management console.
 	Oauth2ClientId *string `pulumi:"oauth2ClientId"`
-	Project        *string `pulumi:"project"`
-	// The type of management server (management console). Default value: "BACKUP_RESTORE" Possible values: ["BACKUP_RESTORE"]
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
+	// The type of management server (management console).
+	// Default value is `BACKUP_RESTORE`.
+	// Possible values are: `BACKUP_RESTORE`.
 	Type *string `pulumi:"type"`
 }
 
@@ -181,14 +184,20 @@ type ManagementServerState struct {
 	// Structure is documented below.
 	ManagementUris ManagementServerManagementUriArrayInput
 	// The name of management server (management console)
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// Network details to create management server (management console).
 	// Structure is documented below.
 	Networks ManagementServerNetworkArrayInput
 	// The oauth2ClientId of management console.
 	Oauth2ClientId pulumi.StringPtrInput
-	Project        pulumi.StringPtrInput
-	// The type of management server (management console). Default value: "BACKUP_RESTORE" Possible values: ["BACKUP_RESTORE"]
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
+	// The type of management server (management console).
+	// Default value is `BACKUP_RESTORE`.
+	// Possible values are: `BACKUP_RESTORE`.
 	Type pulumi.StringPtrInput
 }
 
@@ -200,12 +209,18 @@ type managementServerArgs struct {
 	// The location for the management server (management console)
 	Location string `pulumi:"location"`
 	// The name of management server (management console)
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// Network details to create management server (management console).
 	// Structure is documented below.
 	Networks []ManagementServerNetwork `pulumi:"networks"`
-	Project  *string                   `pulumi:"project"`
-	// The type of management server (management console). Default value: "BACKUP_RESTORE" Possible values: ["BACKUP_RESTORE"]
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
+	// The type of management server (management console).
+	// Default value is `BACKUP_RESTORE`.
+	// Possible values are: `BACKUP_RESTORE`.
 	Type *string `pulumi:"type"`
 }
 
@@ -214,12 +229,18 @@ type ManagementServerArgs struct {
 	// The location for the management server (management console)
 	Location pulumi.StringInput
 	// The name of management server (management console)
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// Network details to create management server (management console).
 	// Structure is documented below.
 	Networks ManagementServerNetworkArrayInput
-	Project  pulumi.StringPtrInput
-	// The type of management server (management console). Default value: "BACKUP_RESTORE" Possible values: ["BACKUP_RESTORE"]
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
+	// The type of management server (management console).
+	// Default value is `BACKUP_RESTORE`.
+	// Possible values are: `BACKUP_RESTORE`.
 	Type pulumi.StringPtrInput
 }
 
@@ -322,6 +343,8 @@ func (o ManagementServerOutput) ManagementUris() ManagementServerManagementUriAr
 }
 
 // The name of management server (management console)
+//
+// ***
 func (o ManagementServerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagementServer) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -337,11 +360,15 @@ func (o ManagementServerOutput) Oauth2ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagementServer) pulumi.StringOutput { return v.Oauth2ClientId }).(pulumi.StringOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o ManagementServerOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagementServer) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The type of management server (management console). Default value: "BACKUP_RESTORE" Possible values: ["BACKUP_RESTORE"]
+// The type of management server (management console).
+// Default value is `BACKUP_RESTORE`.
+// Possible values are: `BACKUP_RESTORE`.
 func (o ManagementServerOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagementServer) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }

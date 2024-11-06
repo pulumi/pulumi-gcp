@@ -55,6 +55,10 @@ namespace Pulumi.Gcp.AssuredWorkloads
     ///             },
     ///         },
     ///         ViolationNotificationsEnabled = true,
+    ///         WorkloadOptions = new Gcp.AssuredWorkloads.Inputs.WorkloadWorkloadOptionsArgs
+    ///         {
+    ///             KajEnrollmentType = "KEY_ACCESS_TRANSPARENCY_OFF",
+    ///         },
     ///         Labels = 
     ///         {
     ///             { "label-one", "value-one" },
@@ -333,6 +337,12 @@ namespace Pulumi.Gcp.AssuredWorkloads
         [Output("violationNotificationsEnabled")]
         public Output<bool> ViolationNotificationsEnabled { get; private set; } = null!;
 
+        /// <summary>
+        /// Optional. Used to specify certain options for a workload during workload creation - currently only supporting KAT Optionality for Regional Controls workloads.
+        /// </summary>
+        [Output("workloadOptions")]
+        public Output<Outputs.WorkloadWorkloadOptions?> WorkloadOptions { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Workload resource with the given unique name, arguments, and options.
@@ -486,6 +496,12 @@ namespace Pulumi.Gcp.AssuredWorkloads
         /// </summary>
         [Input("violationNotificationsEnabled")]
         public Input<bool>? ViolationNotificationsEnabled { get; set; }
+
+        /// <summary>
+        /// Optional. Used to specify certain options for a workload during workload creation - currently only supporting KAT Optionality for Regional Controls workloads.
+        /// </summary>
+        [Input("workloadOptions")]
+        public Input<Inputs.WorkloadWorkloadOptionsArgs>? WorkloadOptions { get; set; }
 
         public WorkloadArgs()
         {
@@ -707,6 +723,12 @@ namespace Pulumi.Gcp.AssuredWorkloads
         /// </summary>
         [Input("violationNotificationsEnabled")]
         public Input<bool>? ViolationNotificationsEnabled { get; set; }
+
+        /// <summary>
+        /// Optional. Used to specify certain options for a workload during workload creation - currently only supporting KAT Optionality for Regional Controls workloads.
+        /// </summary>
+        [Input("workloadOptions")]
+        public Input<Inputs.WorkloadWorkloadOptionsGetArgs>? WorkloadOptions { get; set; }
 
         public WorkloadState()
         {

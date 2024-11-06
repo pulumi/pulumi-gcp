@@ -5,6 +5,7 @@ package com.pulumi.gcp.memorystore.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +15,31 @@ import javax.annotation.Nullable;
 public final class InstancePscAutoConnectionArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final InstancePscAutoConnectionArgs Empty = new InstancePscAutoConnectionArgs();
+
+    /**
+     * (Output)
+     * Output Only. Type of a PSC Connection.
+     * Possible values:
+     * CONNECTION_TYPE_DISCOVERY
+     * CONNECTION_TYPE_PRIMARY
+     * CONNECTION_TYPE_READER
+     * 
+     */
+    @Import(name="connectionType")
+    private @Nullable Output<String> connectionType;
+
+    /**
+     * @return (Output)
+     * Output Only. Type of a PSC Connection.
+     * Possible values:
+     * CONNECTION_TYPE_DISCOVERY
+     * CONNECTION_TYPE_PRIMARY
+     * CONNECTION_TYPE_READER
+     * 
+     */
+    public Optional<Output<String>> connectionType() {
+        return Optional.ofNullable(this.connectionType);
+    }
 
     /**
      * (Output)
@@ -74,6 +100,23 @@ public final class InstancePscAutoConnectionArgs extends com.pulumi.resources.Re
 
     /**
      * (Output)
+     * Output only. Ports of the exposed endpoint.
+     * 
+     */
+    @Import(name="port")
+    private @Nullable Output<Integer> port;
+
+    /**
+     * @return (Output)
+     * Output only. Ports of the exposed endpoint.
+     * 
+     */
+    public Optional<Output<Integer>> port() {
+        return Optional.ofNullable(this.port);
+    }
+
+    /**
+     * (Output)
      * Output only. The consumer project_id where the forwarding rule is created from.
      * 
      */
@@ -108,14 +151,58 @@ public final class InstancePscAutoConnectionArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.pscConnectionId);
     }
 
+    /**
+     * (Output)
+     * Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists.
+     * Possible values:
+     * ACTIVE
+     * NOT_FOUND
+     * 
+     */
+    @Import(name="pscConnectionStatus")
+    private @Nullable Output<String> pscConnectionStatus;
+
+    /**
+     * @return (Output)
+     * Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists.
+     * Possible values:
+     * ACTIVE
+     * NOT_FOUND
+     * 
+     */
+    public Optional<Output<String>> pscConnectionStatus() {
+        return Optional.ofNullable(this.pscConnectionStatus);
+    }
+
+    /**
+     * (Output)
+     * Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+     * 
+     */
+    @Import(name="serviceAttachment")
+    private @Nullable Output<String> serviceAttachment;
+
+    /**
+     * @return (Output)
+     * Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+     * 
+     */
+    public Optional<Output<String>> serviceAttachment() {
+        return Optional.ofNullable(this.serviceAttachment);
+    }
+
     private InstancePscAutoConnectionArgs() {}
 
     private InstancePscAutoConnectionArgs(InstancePscAutoConnectionArgs $) {
+        this.connectionType = $.connectionType;
         this.forwardingRule = $.forwardingRule;
         this.ipAddress = $.ipAddress;
         this.network = $.network;
+        this.port = $.port;
         this.projectId = $.projectId;
         this.pscConnectionId = $.pscConnectionId;
+        this.pscConnectionStatus = $.pscConnectionStatus;
+        this.serviceAttachment = $.serviceAttachment;
     }
 
     public static Builder builder() {
@@ -134,6 +221,37 @@ public final class InstancePscAutoConnectionArgs extends com.pulumi.resources.Re
 
         public Builder(InstancePscAutoConnectionArgs defaults) {
             $ = new InstancePscAutoConnectionArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param connectionType (Output)
+         * Output Only. Type of a PSC Connection.
+         * Possible values:
+         * CONNECTION_TYPE_DISCOVERY
+         * CONNECTION_TYPE_PRIMARY
+         * CONNECTION_TYPE_READER
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectionType(@Nullable Output<String> connectionType) {
+            $.connectionType = connectionType;
+            return this;
+        }
+
+        /**
+         * @param connectionType (Output)
+         * Output Only. Type of a PSC Connection.
+         * Possible values:
+         * CONNECTION_TYPE_DISCOVERY
+         * CONNECTION_TYPE_PRIMARY
+         * CONNECTION_TYPE_READER
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectionType(String connectionType) {
+            return connectionType(Output.of(connectionType));
         }
 
         /**
@@ -212,6 +330,29 @@ public final class InstancePscAutoConnectionArgs extends com.pulumi.resources.Re
         }
 
         /**
+         * @param port (Output)
+         * Output only. Ports of the exposed endpoint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder port(@Nullable Output<Integer> port) {
+            $.port = port;
+            return this;
+        }
+
+        /**
+         * @param port (Output)
+         * Output only. Ports of the exposed endpoint.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder port(Integer port) {
+            return port(Output.of(port));
+        }
+
+        /**
          * @param projectId (Output)
          * Output only. The consumer project_id where the forwarding rule is created from.
          * 
@@ -257,6 +398,58 @@ public final class InstancePscAutoConnectionArgs extends com.pulumi.resources.Re
          */
         public Builder pscConnectionId(String pscConnectionId) {
             return pscConnectionId(Output.of(pscConnectionId));
+        }
+
+        /**
+         * @param pscConnectionStatus (Output)
+         * Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists.
+         * Possible values:
+         * ACTIVE
+         * NOT_FOUND
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscConnectionStatus(@Nullable Output<String> pscConnectionStatus) {
+            $.pscConnectionStatus = pscConnectionStatus;
+            return this;
+        }
+
+        /**
+         * @param pscConnectionStatus (Output)
+         * Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists.
+         * Possible values:
+         * ACTIVE
+         * NOT_FOUND
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscConnectionStatus(String pscConnectionStatus) {
+            return pscConnectionStatus(Output.of(pscConnectionStatus));
+        }
+
+        /**
+         * @param serviceAttachment (Output)
+         * Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAttachment(@Nullable Output<String> serviceAttachment) {
+            $.serviceAttachment = serviceAttachment;
+            return this;
+        }
+
+        /**
+         * @param serviceAttachment (Output)
+         * Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAttachment(String serviceAttachment) {
+            return serviceAttachment(Output.of(serviceAttachment));
         }
 
         public InstancePscAutoConnectionArgs build() {

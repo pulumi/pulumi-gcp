@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? Endpoint { get; set; }
 
         /// <summary>
-        /// (Output, Beta)
+        /// (Output)
         /// The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to.
         /// </summary>
         [Input("propagatedConnectionCount")]

@@ -111,20 +111,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const example = new gcp.pubsub.Topic("example", {name: "example-topic"});
- * const project = gcp.organizations.getProject({});
- * const viewer = new gcp.projects.IAMMember("viewer", {
- *     project: project.then(project => project.projectId),
- *     role: "roles/bigquery.metadataViewer",
- *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-pubsub.iam.gserviceaccount.com`),
- * });
- * const editor = new gcp.projects.IAMMember("editor", {
- *     project: project.then(project => project.projectId),
- *     role: "roles/bigquery.dataEditor",
- *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-pubsub.iam.gserviceaccount.com`),
- * });
  * const test = new gcp.bigquery.Dataset("test", {datasetId: "example_dataset"});
  * const testTable = new gcp.bigquery.Table("test", {
- *     deletionProtection: false,
  *     tableId: "example_table",
  *     datasetId: test.datasetId,
  *     schema: `[
@@ -136,6 +124,7 @@ import * as utilities from "../utilities";
  *   }
  * ]
  * `,
+ *     deletionProtection: false,
  * });
  * const exampleSubscription = new gcp.pubsub.Subscription("example", {
  *     name: "example-subscription",
@@ -143,12 +132,8 @@ import * as utilities from "../utilities";
  *     bigqueryConfig: {
  *         table: pulumi.interpolate`${testTable.project}.${testTable.datasetId}.${testTable.tableId}`,
  *     },
- * }, {
- *     dependsOn: [
- *         viewer,
- *         editor,
- *     ],
  * });
+ * const project = gcp.organizations.getProject({});
  * ```
  * ### Pubsub Subscription Push Bq Table Schema
  *
@@ -157,20 +142,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const example = new gcp.pubsub.Topic("example", {name: "example-topic"});
- * const project = gcp.organizations.getProject({});
- * const viewer = new gcp.projects.IAMMember("viewer", {
- *     project: project.then(project => project.projectId),
- *     role: "roles/bigquery.metadataViewer",
- *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-pubsub.iam.gserviceaccount.com`),
- * });
- * const editor = new gcp.projects.IAMMember("editor", {
- *     project: project.then(project => project.projectId),
- *     role: "roles/bigquery.dataEditor",
- *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-pubsub.iam.gserviceaccount.com`),
- * });
  * const test = new gcp.bigquery.Dataset("test", {datasetId: "example_dataset"});
  * const testTable = new gcp.bigquery.Table("test", {
- *     deletionProtection: false,
  *     tableId: "example_table",
  *     datasetId: test.datasetId,
  *     schema: `[
@@ -182,6 +155,7 @@ import * as utilities from "../utilities";
  *   }
  * ]
  * `,
+ *     deletionProtection: false,
  * });
  * const exampleSubscription = new gcp.pubsub.Subscription("example", {
  *     name: "example-subscription",
@@ -190,12 +164,8 @@ import * as utilities from "../utilities";
  *         table: pulumi.interpolate`${testTable.project}.${testTable.datasetId}.${testTable.tableId}`,
  *         useTableSchema: true,
  *     },
- * }, {
- *     dependsOn: [
- *         viewer,
- *         editor,
- *     ],
  * });
+ * const project = gcp.organizations.getProject({});
  * ```
  * ### Pubsub Subscription Push Bq Service Account
  *

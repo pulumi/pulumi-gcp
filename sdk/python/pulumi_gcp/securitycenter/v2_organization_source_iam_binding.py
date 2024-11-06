@@ -303,7 +303,7 @@ class V2OrganizationSourceIamBinding(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## > **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+        ## > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
         ---
@@ -394,7 +394,7 @@ class V2OrganizationSourceIamBinding(pulumi.CustomResource):
         $ pulumi import gcp:securitycenter/v2OrganizationSourceIamBinding:V2OrganizationSourceIamBinding editor organizations/{{organization}}/sources/{{source}}
         ```
 
-        -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
@@ -476,7 +476,7 @@ class V2OrganizationSourceIamBinding(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## > **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+        ## > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
         ---
@@ -567,7 +567,7 @@ class V2OrganizationSourceIamBinding(pulumi.CustomResource):
         $ pulumi import gcp:securitycenter/v2OrganizationSourceIamBinding:V2OrganizationSourceIamBinding editor organizations/{{organization}}/sources/{{source}}
         ```
 
-        -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 

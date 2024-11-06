@@ -4,26 +4,28 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.SecurityPolicyRuleHeaderActionRequestHeadersToAdd;
 import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class SecurityPolicyRuleHeaderAction {
     /**
-     * @return The list of request headers to add or overwrite if they&#39;re already present. Structure is documented below.
+     * @return The list of request headers to add or overwrite if they&#39;re already present.
+     * Structure is documented below.
      * 
      */
-    private List<SecurityPolicyRuleHeaderActionRequestHeadersToAdd> requestHeadersToAdds;
+    private @Nullable List<SecurityPolicyRuleHeaderActionRequestHeadersToAdd> requestHeadersToAdds;
 
     private SecurityPolicyRuleHeaderAction() {}
     /**
-     * @return The list of request headers to add or overwrite if they&#39;re already present. Structure is documented below.
+     * @return The list of request headers to add or overwrite if they&#39;re already present.
+     * Structure is documented below.
      * 
      */
     public List<SecurityPolicyRuleHeaderActionRequestHeadersToAdd> requestHeadersToAdds() {
-        return this.requestHeadersToAdds;
+        return this.requestHeadersToAdds == null ? List.of() : this.requestHeadersToAdds;
     }
 
     public static Builder builder() {
@@ -35,7 +37,7 @@ public final class SecurityPolicyRuleHeaderAction {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<SecurityPolicyRuleHeaderActionRequestHeadersToAdd> requestHeadersToAdds;
+        private @Nullable List<SecurityPolicyRuleHeaderActionRequestHeadersToAdd> requestHeadersToAdds;
         public Builder() {}
         public Builder(SecurityPolicyRuleHeaderAction defaults) {
     	      Objects.requireNonNull(defaults);
@@ -43,10 +45,8 @@ public final class SecurityPolicyRuleHeaderAction {
         }
 
         @CustomType.Setter
-        public Builder requestHeadersToAdds(List<SecurityPolicyRuleHeaderActionRequestHeadersToAdd> requestHeadersToAdds) {
-            if (requestHeadersToAdds == null) {
-              throw new MissingRequiredPropertyException("SecurityPolicyRuleHeaderAction", "requestHeadersToAdds");
-            }
+        public Builder requestHeadersToAdds(@Nullable List<SecurityPolicyRuleHeaderActionRequestHeadersToAdd> requestHeadersToAdds) {
+
             this.requestHeadersToAdds = requestHeadersToAdds;
             return this;
         }

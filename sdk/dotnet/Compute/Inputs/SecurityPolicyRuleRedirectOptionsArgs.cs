@@ -13,19 +13,16 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class SecurityPolicyRuleRedirectOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// External redirection target when `EXTERNAL_302` is set in `type`.
+        /// Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
         /// </summary>
         [Input("target")]
         public Input<string>? Target { get; set; }
 
         /// <summary>
-        /// Type of redirect action.
-        /// 
-        /// * `EXTERNAL_302`: Redirect to an external address, configured in `target`.
-        /// * `GOOGLE_RECAPTCHA`: Redirect to Google reCAPTCHA.
+        /// Type of the redirect action.
         /// </summary>
-        [Input("type", required: true)]
-        public Input<string> Type { get; set; } = null!;
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         public SecurityPolicyRuleRedirectOptionsArgs()
         {

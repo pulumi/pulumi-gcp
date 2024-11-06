@@ -658,7 +658,7 @@ import * as utilities from "../utilities";
  *     defaultCustomErrorResponsePolicy: {
  *         errorResponseRules: [{
  *             matchResponseCodes: ["5xx"],
- *             path: "/*",
+ *             path: "/internal_error.html",
  *             overrideResponseCode: 502,
  *         }],
  *         errorService: error.id,
@@ -677,24 +677,24 @@ import * as utilities from "../utilities";
  *                         "4xx",
  *                         "5xx",
  *                     ],
- *                     path: "/login",
+ *                     path: "/login_error.html",
  *                     overrideResponseCode: 404,
  *                 },
  *                 {
  *                     matchResponseCodes: ["503"],
- *                     path: "/example",
+ *                     path: "/bad_gateway.html",
  *                     overrideResponseCode: 502,
  *                 },
  *             ],
  *             errorService: error.id,
  *         },
  *         pathRules: [{
- *             paths: ["/*"],
+ *             paths: ["/private/*"],
  *             service: example.id,
  *             customErrorResponsePolicy: {
  *                 errorResponseRules: [{
  *                     matchResponseCodes: ["4xx"],
- *                     path: "/register",
+ *                     path: "/login.html",
  *                     overrideResponseCode: 401,
  *                 }],
  *                 errorService: error.id,

@@ -115,7 +115,7 @@ import javax.annotation.Nullable;
  *             .name("basic-cluster")
  *             .location("us-central1-a")
  *             .initialNodeCount(1)
- *             .deletionProtection("true")
+ *             .deletionProtection(true)
  *             .network("default")
  *             .subnetwork("default")
  *             .build());
@@ -173,7 +173,7 @@ import javax.annotation.Nullable;
  *             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
  *                 .workloadPool("my-project-name.svc.id.goog")
  *                 .build())
- *             .deletionProtection("true")
+ *             .deletionProtection(true)
  *             .network("default")
  *             .subnetwork("default")
  *             .build());

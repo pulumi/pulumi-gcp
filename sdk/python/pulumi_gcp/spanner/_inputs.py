@@ -31,6 +31,14 @@ __all__ = [
     'DatabaseIAMMemberConditionArgsDict',
     'InstanceAutoscalingConfigArgs',
     'InstanceAutoscalingConfigArgsDict',
+    'InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs',
+    'InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgsDict',
+    'InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgs',
+    'InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgsDict',
+    'InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs',
+    'InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgsDict',
+    'InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArgs',
+    'InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArgsDict',
     'InstanceAutoscalingConfigAutoscalingLimitsArgs',
     'InstanceAutoscalingConfigAutoscalingLimitsArgsDict',
     'InstanceAutoscalingConfigAutoscalingTargetsArgs',
@@ -352,6 +360,11 @@ class DatabaseIAMMemberConditionArgs:
 
 if not MYPY:
     class InstanceAutoscalingConfigArgsDict(TypedDict):
+        asymmetric_autoscaling_options: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgsDict']]]]
+        """
+        Asymmetric autoscaling options for specific replicas.
+        Structure is documented below.
+        """
         autoscaling_limits: NotRequired[pulumi.Input['InstanceAutoscalingConfigAutoscalingLimitsArgsDict']]
         """
         Defines scale in controls to reduce the risk of response latency
@@ -374,9 +387,12 @@ elif False:
 @pulumi.input_type
 class InstanceAutoscalingConfigArgs:
     def __init__(__self__, *,
+                 asymmetric_autoscaling_options: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs']]]] = None,
                  autoscaling_limits: Optional[pulumi.Input['InstanceAutoscalingConfigAutoscalingLimitsArgs']] = None,
                  autoscaling_targets: Optional[pulumi.Input['InstanceAutoscalingConfigAutoscalingTargetsArgs']] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs']]] asymmetric_autoscaling_options: Asymmetric autoscaling options for specific replicas.
+               Structure is documented below.
         :param pulumi.Input['InstanceAutoscalingConfigAutoscalingLimitsArgs'] autoscaling_limits: Defines scale in controls to reduce the risk of response latency
                and outages due to abrupt scale-in events. Users can define the minimum and
                maximum compute capacity allocated to the instance, and the autoscaler will
@@ -388,10 +404,25 @@ class InstanceAutoscalingConfigArgs:
                and outages due to abrupt scale-in events
                Structure is documented below.
         """
+        if asymmetric_autoscaling_options is not None:
+            pulumi.set(__self__, "asymmetric_autoscaling_options", asymmetric_autoscaling_options)
         if autoscaling_limits is not None:
             pulumi.set(__self__, "autoscaling_limits", autoscaling_limits)
         if autoscaling_targets is not None:
             pulumi.set(__self__, "autoscaling_targets", autoscaling_targets)
+
+    @property
+    @pulumi.getter(name="asymmetricAutoscalingOptions")
+    def asymmetric_autoscaling_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs']]]]:
+        """
+        Asymmetric autoscaling options for specific replicas.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "asymmetric_autoscaling_options")
+
+    @asymmetric_autoscaling_options.setter
+    def asymmetric_autoscaling_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs']]]]):
+        pulumi.set(self, "asymmetric_autoscaling_options", value)
 
     @property
     @pulumi.getter(name="autoscalingLimits")
@@ -427,11 +458,181 @@ class InstanceAutoscalingConfigArgs:
 
 
 if not MYPY:
+    class InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgsDict(TypedDict):
+        overrides: pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgsDict']
+        """
+        A nested object resource
+        Structure is documented below.
+        """
+        replica_selection: pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArgsDict']
+        """
+        A nested object resource
+        Structure is documented below.
+        """
+elif False:
+    InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs:
+    def __init__(__self__, *,
+                 overrides: pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgs'],
+                 replica_selection: pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArgs']):
+        """
+        :param pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgs'] overrides: A nested object resource
+               Structure is documented below.
+        :param pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArgs'] replica_selection: A nested object resource
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "overrides", overrides)
+        pulumi.set(__self__, "replica_selection", replica_selection)
+
+    @property
+    @pulumi.getter
+    def overrides(self) -> pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgs']:
+        """
+        A nested object resource
+        Structure is documented below.
+        """
+        return pulumi.get(self, "overrides")
+
+    @overrides.setter
+    def overrides(self, value: pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgs']):
+        pulumi.set(self, "overrides", value)
+
+    @property
+    @pulumi.getter(name="replicaSelection")
+    def replica_selection(self) -> pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArgs']:
+        """
+        A nested object resource
+        Structure is documented below.
+        """
+        return pulumi.get(self, "replica_selection")
+
+    @replica_selection.setter
+    def replica_selection(self, value: pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArgs']):
+        pulumi.set(self, "replica_selection", value)
+
+
+if not MYPY:
+    class InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgsDict(TypedDict):
+        autoscaling_limits: pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgsDict']
+        """
+        A nested object resource
+        Structure is documented below.
+        """
+elif False:
+    InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgs:
+    def __init__(__self__, *,
+                 autoscaling_limits: pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs']):
+        """
+        :param pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs'] autoscaling_limits: A nested object resource
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "autoscaling_limits", autoscaling_limits)
+
+    @property
+    @pulumi.getter(name="autoscalingLimits")
+    def autoscaling_limits(self) -> pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs']:
+        """
+        A nested object resource
+        Structure is documented below.
+        """
+        return pulumi.get(self, "autoscaling_limits")
+
+    @autoscaling_limits.setter
+    def autoscaling_limits(self, value: pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs']):
+        pulumi.set(self, "autoscaling_limits", value)
+
+
+if not MYPY:
+    class InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgsDict(TypedDict):
+        max_nodes: pulumi.Input[int]
+        """
+        The maximum number of nodes for this specific replica.
+        """
+        min_nodes: pulumi.Input[int]
+        """
+        The minimum number of nodes for this specific replica.
+        """
+elif False:
+    InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs:
+    def __init__(__self__, *,
+                 max_nodes: pulumi.Input[int],
+                 min_nodes: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] max_nodes: The maximum number of nodes for this specific replica.
+        :param pulumi.Input[int] min_nodes: The minimum number of nodes for this specific replica.
+        """
+        pulumi.set(__self__, "max_nodes", max_nodes)
+        pulumi.set(__self__, "min_nodes", min_nodes)
+
+    @property
+    @pulumi.getter(name="maxNodes")
+    def max_nodes(self) -> pulumi.Input[int]:
+        """
+        The maximum number of nodes for this specific replica.
+        """
+        return pulumi.get(self, "max_nodes")
+
+    @max_nodes.setter
+    def max_nodes(self, value: pulumi.Input[int]):
+        pulumi.set(self, "max_nodes", value)
+
+    @property
+    @pulumi.getter(name="minNodes")
+    def min_nodes(self) -> pulumi.Input[int]:
+        """
+        The minimum number of nodes for this specific replica.
+        """
+        return pulumi.get(self, "min_nodes")
+
+    @min_nodes.setter
+    def min_nodes(self, value: pulumi.Input[int]):
+        pulumi.set(self, "min_nodes", value)
+
+
+if not MYPY:
+    class InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArgsDict(TypedDict):
+        location: pulumi.Input[str]
+        """
+        The location of the replica to apply asymmetric autoscaling options.
+        """
+elif False:
+    InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArgs:
+    def __init__(__self__, *,
+                 location: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] location: The location of the replica to apply asymmetric autoscaling options.
+        """
+        pulumi.set(__self__, "location", location)
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        """
+        The location of the replica to apply asymmetric autoscaling options.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
+
+
+if not MYPY:
     class InstanceAutoscalingConfigAutoscalingLimitsArgsDict(TypedDict):
         max_nodes: NotRequired[pulumi.Input[int]]
         """
-        Specifies maximum number of nodes allocated to the instance. If set, this number
-        should be greater than or equal to min_nodes.
+        The maximum number of nodes for this specific replica.
         """
         max_processing_units: NotRequired[pulumi.Input[int]]
         """
@@ -441,8 +642,7 @@ if not MYPY:
         """
         min_nodes: NotRequired[pulumi.Input[int]]
         """
-        Specifies number of nodes allocated to the instance. If set, this number
-        should be greater than or equal to 1.
+        The minimum number of nodes for this specific replica.
         """
         min_processing_units: NotRequired[pulumi.Input[int]]
         """
@@ -460,13 +660,11 @@ class InstanceAutoscalingConfigAutoscalingLimitsArgs:
                  min_nodes: Optional[pulumi.Input[int]] = None,
                  min_processing_units: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[int] max_nodes: Specifies maximum number of nodes allocated to the instance. If set, this number
-               should be greater than or equal to min_nodes.
+        :param pulumi.Input[int] max_nodes: The maximum number of nodes for this specific replica.
         :param pulumi.Input[int] max_processing_units: Specifies maximum number of processing units allocated to the instance.
                If set, this number should be multiples of 1000 and be greater than or equal to
                min_processing_units.
-        :param pulumi.Input[int] min_nodes: Specifies number of nodes allocated to the instance. If set, this number
-               should be greater than or equal to 1.
+        :param pulumi.Input[int] min_nodes: The minimum number of nodes for this specific replica.
         :param pulumi.Input[int] min_processing_units: Specifies minimum number of processing units allocated to the instance.
                If set, this number should be multiples of 1000.
         """
@@ -483,8 +681,7 @@ class InstanceAutoscalingConfigAutoscalingLimitsArgs:
     @pulumi.getter(name="maxNodes")
     def max_nodes(self) -> Optional[pulumi.Input[int]]:
         """
-        Specifies maximum number of nodes allocated to the instance. If set, this number
-        should be greater than or equal to min_nodes.
+        The maximum number of nodes for this specific replica.
         """
         return pulumi.get(self, "max_nodes")
 
@@ -510,8 +707,7 @@ class InstanceAutoscalingConfigAutoscalingLimitsArgs:
     @pulumi.getter(name="minNodes")
     def min_nodes(self) -> Optional[pulumi.Input[int]]:
         """
-        Specifies number of nodes allocated to the instance. If set, this number
-        should be greater than or equal to 1.
+        The minimum number of nodes for this specific replica.
         """
         return pulumi.get(self, "min_nodes")
 

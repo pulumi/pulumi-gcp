@@ -22,6 +22,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly int? ThreadsPerCore;
         /// <summary>
+        /// Turbo frequency mode to use for the instance. Currently supported modes is "ALL_CORE_MAX".
+        /// </summary>
+        public readonly string? TurboMode;
+        /// <summary>
         /// The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\'s nominal CPU count and the underlying platform\'s SMT width.
         /// </summary>
         public readonly int? VisibleCoreCount;
@@ -32,10 +36,13 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             int? threadsPerCore,
 
+            string? turboMode,
+
             int? visibleCoreCount)
         {
             EnableNestedVirtualization = enableNestedVirtualization;
             ThreadsPerCore = threadsPerCore;
+            TurboMode = turboMode;
             VisibleCoreCount = visibleCoreCount;
         }
     }

@@ -14,6 +14,12 @@ namespace Pulumi.Gcp.VMwareEngine.Outputs
     public sealed class PrivateCloudManagementCluster
     {
         /// <summary>
+        /// Configuration of the autoscaling applied to this cluster
+        /// Private cloud must have a minimum of 3 nodes to add autoscale settings
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.PrivateCloudManagementClusterAutoscalingSettings? AutoscalingSettings;
+        /// <summary>
         /// The user-provided identifier of the new Cluster. The identifier must meet the following requirements:
         /// * Only contains 1-63 alphanumeric characters and hyphens
         /// * Begins with an alphabetical character
@@ -36,12 +42,15 @@ namespace Pulumi.Gcp.VMwareEngine.Outputs
 
         [OutputConstructor]
         private PrivateCloudManagementCluster(
+            Outputs.PrivateCloudManagementClusterAutoscalingSettings? autoscalingSettings,
+
             string clusterId,
 
             ImmutableArray<Outputs.PrivateCloudManagementClusterNodeTypeConfig> nodeTypeConfigs,
 
             Outputs.PrivateCloudManagementClusterStretchedClusterConfig? stretchedClusterConfig)
         {
+            AutoscalingSettings = autoscalingSettings;
             ClusterId = clusterId;
             NodeTypeConfigs = nodeTypeConfigs;
             StretchedClusterConfig = stretchedClusterConfig;

@@ -80,6 +80,46 @@ import * as utilities from "../utilities";
  *     preview: true,
  * });
  * ```
+ * ### Region Security Policy Rule Default Rule
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.RegionSecurityPolicy("default", {
+ *     region: "us-west2",
+ *     name: "policywithdefaultrule",
+ *     description: "basic region security policy",
+ *     type: "CLOUD_ARMOR",
+ * });
+ * const defaultRule = new gcp.compute.RegionSecurityPolicyRule("default_rule", {
+ *     region: "us-west2",
+ *     securityPolicy: _default.name,
+ *     description: "new rule",
+ *     action: "deny",
+ *     priority: 2147483647,
+ *     match: {
+ *         versionedExpr: "SRC_IPS_V1",
+ *         config: {
+ *             srcIpRanges: ["*"],
+ *         },
+ *     },
+ * });
+ * const policyRule = new gcp.compute.RegionSecurityPolicyRule("policy_rule", {
+ *     region: "us-west2",
+ *     securityPolicy: _default.name,
+ *     description: "new rule",
+ *     priority: 100,
+ *     match: {
+ *         versionedExpr: "SRC_IPS_V1",
+ *         config: {
+ *             srcIpRanges: ["10.10.0.0/16"],
+ *         },
+ *     },
+ *     action: "allow",
+ *     preview: true,
+ * });
+ * ```
  * ### Region Security Policy Rule With Preconfigured Waf Config
  *
  * ```typescript

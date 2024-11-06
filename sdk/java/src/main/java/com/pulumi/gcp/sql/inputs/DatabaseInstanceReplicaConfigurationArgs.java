@@ -87,7 +87,8 @@ public final class DatabaseInstanceReplicaConfigurationArgs extends com.pulumi.r
 
     /**
      * Path to a SQL file in GCS from which replica
-     * instances are created. Format is `gs://bucket/filename`.
+     * instances are created. Format is `gs://bucket/filename`. Note, if the master
+     * instance is a source representation instance this field must be present.
      * 
      */
     @Import(name="dumpFilePath")
@@ -95,7 +96,8 @@ public final class DatabaseInstanceReplicaConfigurationArgs extends com.pulumi.r
 
     /**
      * @return Path to a SQL file in GCS from which replica
-     * instances are created. Format is `gs://bucket/filename`.
+     * instances are created. Format is `gs://bucket/filename`. Note, if the master
+     * instance is a source representation instance this field must be present.
      * 
      */
     public Optional<Output<String>> dumpFilePath() {
@@ -332,7 +334,8 @@ public final class DatabaseInstanceReplicaConfigurationArgs extends com.pulumi.r
 
         /**
          * @param dumpFilePath Path to a SQL file in GCS from which replica
-         * instances are created. Format is `gs://bucket/filename`.
+         * instances are created. Format is `gs://bucket/filename`. Note, if the master
+         * instance is a source representation instance this field must be present.
          * 
          * @return builder
          * 
@@ -344,7 +347,8 @@ public final class DatabaseInstanceReplicaConfigurationArgs extends com.pulumi.r
 
         /**
          * @param dumpFilePath Path to a SQL file in GCS from which replica
-         * instances are created. Format is `gs://bucket/filename`.
+         * instances are created. Format is `gs://bucket/filename`. Note, if the master
+         * instance is a source representation instance this field must be present.
          * 
          * @return builder
          * 

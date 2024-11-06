@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GetBucketHierarchicalNamespace {
     /**
-     * @return Set this enabled flag to true when folders with logical files structure. Default value is false.
+     * @return Set this field true to organize bucket with logical file system structure.
      * 
      */
     private Boolean enabled;
 
     private GetBucketHierarchicalNamespace() {}
     /**
-     * @return Set this enabled flag to true when folders with logical files structure. Default value is false.
+     * @return Set this field true to organize bucket with logical file system structure.
      * 
      */
     public Boolean enabled() {

@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Spanner.Outputs
     public sealed class GetInstanceAutoscalingConfigResult
     {
         /// <summary>
+        /// Asymmetric autoscaling options for specific replicas.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionResult> AsymmetricAutoscalingOptions;
+        /// <summary>
         /// Defines scale in controls to reduce the risk of response latency
         /// and outages due to abrupt scale-in events. Users can define the minimum and
         /// maximum compute capacity allocated to the instance, and the autoscaler will
@@ -30,10 +34,13 @@ namespace Pulumi.Gcp.Spanner.Outputs
 
         [OutputConstructor]
         private GetInstanceAutoscalingConfigResult(
+            ImmutableArray<Outputs.GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionResult> asymmetricAutoscalingOptions,
+
             ImmutableArray<Outputs.GetInstanceAutoscalingConfigAutoscalingLimitResult> autoscalingLimits,
 
             ImmutableArray<Outputs.GetInstanceAutoscalingConfigAutoscalingTargetResult> autoscalingTargets)
         {
+            AsymmetricAutoscalingOptions = asymmetricAutoscalingOptions;
             AutoscalingLimits = autoscalingLimits;
             AutoscalingTargets = autoscalingTargets;
         }

@@ -4048,7 +4048,8 @@ export namespace apphub {
          * Required. Scope Type.
          * Possible values:
          * REGIONAL
-         * Possible values are: `REGIONAL`.
+         * GLOBAL
+         * Possible values are: `REGIONAL`, `GLOBAL`.
          *
          * - - -
          */
@@ -4129,7 +4130,8 @@ export namespace apphub {
         /**
          * Required. Scope Type. 
          *  Possible values:
-         * REGIONAL Possible values: ["REGIONAL"]
+         * REGIONAL
+         * GLOBAL Possible values: ["REGIONAL", "GLOBAL"]
          */
         type: string;
     }
@@ -5333,6 +5335,13 @@ export namespace assuredworkloads {
         setupStatus: string;
     }
 
+    export interface WorkloadWorkloadOptions {
+        /**
+         * Indicates type of KAJ enrollment for the workload. Currently, only specifiying KEY_ACCESS_TRANSPARENCY_OFF is implemented to not enroll in KAT-level KAJ enrollment for Regional Controls workloads. Possible values: KAJ_ENROLLMENT_TYPE_UNSPECIFIED, FULL_KAJ, EKM_ONLY, KEY_ACCESS_TRANSPARENCY_OFF
+         */
+        kajEnrollmentType?: string;
+    }
+
 }
 
 export namespace backupdisasterrecovery {
@@ -5380,8 +5389,6 @@ export namespace backupdisasterrecovery {
          * Type of Network peeringMode
          * Default value is `PRIVATE_SERVICE_ACCESS`.
          * Possible values are: `PRIVATE_SERVICE_ACCESS`.
-         *
-         * - - -
          */
         peeringMode?: string;
     }
@@ -5985,6 +5992,19 @@ export namespace bigquery {
         kmsKeyName: string;
     }
 
+    export interface DatasetExternalCatalogDatasetOptions {
+        /**
+         * The storage location URI for all tables in the dataset. Equivalent to hive metastore's
+         * database locationUri. Maximum length of 1024 characters.
+         */
+        defaultStorageLocationUri?: string;
+        /**
+         * A map of key value pairs defining the parameters and properties of the open source schema.
+         * Maximum size of 2Mib.
+         */
+        parameters?: {[key: string]: string};
+    }
+
     export interface DatasetExternalDatasetReference {
         /**
          * The connection id that is used to access the externalSource.
@@ -6131,6 +6151,19 @@ export namespace bigquery {
          * access to this encryption key.
          */
         kmsKeyName: string;
+    }
+
+    export interface GetDatasetExternalCatalogDatasetOption {
+        /**
+         * The storage location URI for all tables in the dataset. Equivalent to hive metastore's
+         * database locationUri. Maximum length of 1024 characters.
+         */
+        defaultStorageLocationUri: string;
+        /**
+         * A map of key value pairs defining the parameters and properties of the open source schema.
+         * Maximum size of 2Mib.
+         */
+        parameters: {[key: string]: string};
     }
 
     export interface GetDatasetExternalDatasetReference {
@@ -21891,6 +21924,15 @@ export namespace compute {
          * it cannot be an IP address from Google Compute Engine.
          */
         ipAddress?: string;
+        /**
+         * IPv6 address of the interface in the external VPN gateway. This IPv6
+         * address can be either from your on-premise gateway or another Cloud
+         * provider's VPN gateway, it cannot be an IP address from Google Compute
+         * Engine. Must specify an IPv6 address (not IPV4-mapped) using any format
+         * described in RFC 4291 (e.g. 2001:db8:0:0:2d9:51:0:0). The output format
+         * is RFC 5952 format (e.g. 2001:db8::2d9:51:0:0).
+         */
+        ipv6Address?: string;
     }
 
     export interface FirewallAllow {
@@ -23877,6 +23919,10 @@ export namespace compute {
          */
         threadsPerCore: number;
         /**
+         * Turbo frequency mode to use for the instance. Currently supported modes is "ALL_CORE_MAX".
+         */
+        turboMode: string;
+        /**
          * The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\'s nominal CPU count and the underlying platform\'s SMT width.
          */
         visibleCoreCount: number;
@@ -24246,6 +24292,21 @@ export namespace compute {
         type: string;
     }
 
+    export interface GetInstanceGuestAttributesQueryValue {
+        /**
+         * Key of the guest_attribute.
+         */
+        key: string;
+        /**
+         * Namespace of the guest_attribute.
+         */
+        namespace: string;
+        /**
+         * Value of the guest_attribute.
+         */
+        value: string;
+    }
+
     export interface GetInstanceNetworkInterface {
         /**
          * Access configurations, i.e. IPs via which this
@@ -24557,6 +24618,10 @@ export namespace compute {
          * The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
          */
         threadsPerCore: number;
+        /**
+         * Turbo frequency mode to use for the instance. Currently supported modes is "ALL_CORE_MAX".
+         */
+        turboMode: string;
         /**
          * The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\'s nominal CPU count and the underlying platform\'s SMT width.
          */
@@ -25427,6 +25492,10 @@ export namespace compute {
          * The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
          */
         threadsPerCore: number;
+        /**
+         * Turbo frequency mode to use for the instance. Currently supported modes is "ALL_CORE_MAX".
+         */
+        turboMode: string;
         /**
          * The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\'s nominal CPU count and the underlying platform\'s SMT width.
          */
@@ -27516,9 +27585,13 @@ export namespace compute {
          */
         enableNestedVirtualization?: boolean;
         /**
-         * he number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
+         * The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
          */
         threadsPerCore?: number;
+        /**
+         * Turbo frequency mode to use for the instance. Supported modes are currently either `ALL_CORE_MAX` or unset (default).
+         */
+        turboMode?: string;
         /**
          * The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
          */
@@ -27706,6 +27779,10 @@ export namespace compute {
          * The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
          */
         threadsPerCore: number;
+        /**
+         * Turbo frequency mode to use for the instance. Currently supported modes is "ALL_CORE_MAX".
+         */
+        turboMode: string;
         /**
          * The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\'s nominal CPU count and the underlying platform\'s SMT width.
          */
@@ -28152,6 +28229,10 @@ export namespace compute {
          * The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
          */
         threadsPerCore: number;
+        /**
+         * Turbo frequency mode to use for the instance. Currently supported modes is "ALL_CORE_MAX".
+         */
+        turboMode: string;
         /**
          * The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\'s nominal CPU count and the underlying platform\'s SMT width.
          */
@@ -29252,6 +29333,10 @@ export namespace compute {
          * The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
          */
         threadsPerCore?: number;
+        /**
+         * Turbo frequency mode to use for the instance. Supported modes are currently either `ALL_CORE_MAX` or unset (default).
+         */
+        turboMode?: string;
         /**
          * The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
          */
@@ -32353,6 +32438,10 @@ export namespace compute {
          * The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
          */
         threadsPerCore?: number;
+        /**
+         * Turbo frequency mode to use for the instance. Supported modes are currently either `ALL_CORE_MAX` or unset (default).
+         */
+        turboMode?: string;
         /**
          * The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
          */
@@ -36693,16 +36782,17 @@ export namespace compute {
 
     export interface SecurityPolicyRuleHeaderAction {
         /**
-         * The list of request headers to add or overwrite if they're already present. Structure is documented below.
+         * The list of request headers to add or overwrite if they're already present.
+         * Structure is documented below.
          */
-        requestHeadersToAdds: outputs.compute.SecurityPolicyRuleHeaderActionRequestHeadersToAdd[];
+        requestHeadersToAdds?: outputs.compute.SecurityPolicyRuleHeaderActionRequestHeadersToAdd[];
     }
 
     export interface SecurityPolicyRuleHeaderActionRequestHeadersToAdd {
         /**
          * The name of the header to set.
          */
-        headerName: string;
+        headerName?: string;
         /**
          * The value to set the named header to.
          */
@@ -37002,16 +37092,13 @@ export namespace compute {
 
     export interface SecurityPolicyRuleRedirectOptions {
         /**
-         * External redirection target when `EXTERNAL_302` is set in `type`.
+         * Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
          */
         target?: string;
         /**
-         * Type of redirect action.
-         *
-         * * `EXTERNAL_302`: Redirect to an external address, configured in `target`.
-         * * `GOOGLE_RECAPTCHA`: Redirect to Google reCAPTCHA.
+         * Type of the redirect action.
          */
-        type: string;
+        type?: string;
     }
 
     export interface SecurityScanConfigAuthentication {
@@ -37082,7 +37169,7 @@ export namespace compute {
          */
         endpoint: string;
         /**
-         * (Output, Beta)
+         * (Output)
          * The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to.
          */
         propagatedConnectionCount: number;
@@ -63861,7 +63948,7 @@ export namespace gkehub {
          */
         management?: string;
         /**
-         * Version of ACM installed
+         * Version of Config Sync installed
          */
         version?: string;
     }
@@ -63949,11 +64036,11 @@ export namespace gkehub {
         syncWaitSecs?: string;
         /**
          * (Optional, Deprecated)
-         * Version of ACM installed
+         * Version of Config Sync installed
          *
-         * > **Warning:** The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.
+         * > **Warning:** The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of Config Sync installed instead.
          *
-         * @deprecated The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.
+         * @deprecated The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of Config Sync installed instead.
          */
         version?: string;
     }
@@ -64187,7 +64274,7 @@ export namespace gkehub {
          */
         policyController?: outputs.gkehub.FeatureMembershipConfigmanagementPolicyController;
         /**
-         * Version of ACM installed.
+         * Version of Config Sync installed.
          */
         version: string;
     }
@@ -64213,13 +64300,13 @@ export namespace gkehub {
          */
         metricsGcpServiceAccountEmail?: string;
         /**
-         * (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+         * (Optional) Supported from Config Sync versions 1.12.0 onwards. Structure is documented below.
          *
          * Use either `git` or `oci` config option.
          */
         oci?: outputs.gkehub.FeatureMembershipConfigmanagementConfigSyncOci;
         /**
-         * Supported from ACM versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
+         * Supported from Config Sync versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
          */
         preventDrift: boolean;
         /**
@@ -67779,6 +67866,233 @@ export namespace iap {
         title: string;
     }
 
+    export interface SettingsAccessSettings {
+        /**
+         * Settings to configure and enable allowed domains.
+         * Structure is documented below.
+         */
+        allowedDomainsSettings?: outputs.iap.SettingsAccessSettingsAllowedDomainsSettings;
+        /**
+         * Configuration to allow cross-origin requests via IAP.
+         * Structure is documented below.
+         */
+        corsSettings?: outputs.iap.SettingsAccessSettingsCorsSettings;
+        /**
+         * GCIP claims and endpoint configurations for 3p identity providers.
+         * Structure is documented below.
+         */
+        gcipSettings?: outputs.iap.SettingsAccessSettingsGcipSettings;
+        /**
+         * Identity sources that IAP can use to authenticate the end user. Only one identity source
+         * can be configured. The possible values are:
+         * * `WORKFORCE_IDENTITY_FEDERATION`: Use external identities set up on Google Cloud Workforce
+         * Identity Federation.
+         * Each value may be one of: `WORKFORCE_IDENTITY_FEDERATION`.
+         */
+        identitySources?: string[];
+        /**
+         * Settings to configure IAP's OAuth behavior.
+         * Structure is documented below.
+         */
+        oauthSettings?: outputs.iap.SettingsAccessSettingsOauthSettings;
+        /**
+         * Settings to configure reauthentication policies in IAP.
+         * Structure is documented below.
+         */
+        reauthSettings?: outputs.iap.SettingsAccessSettingsReauthSettings;
+        /**
+         * Settings to configure the workforce identity federation, including workforce pools
+         * and OAuth 2.0 settings.
+         * Structure is documented below.
+         */
+        workforceIdentitySettings?: outputs.iap.SettingsAccessSettingsWorkforceIdentitySettings;
+    }
+
+    export interface SettingsAccessSettingsAllowedDomainsSettings {
+        /**
+         * List of trusted domains.
+         */
+        domains?: string[];
+        /**
+         * Configuration for customers to opt in for the feature.
+         */
+        enable?: boolean;
+    }
+
+    export interface SettingsAccessSettingsCorsSettings {
+        /**
+         * Configuration to allow HTTP OPTIONS calls to skip authorization.
+         * If undefined, IAP will not apply any special logic to OPTIONS requests.
+         */
+        allowHttpOptions?: boolean;
+    }
+
+    export interface SettingsAccessSettingsGcipSettings {
+        /**
+         * Login page URI associated with the GCIP tenants. Typically, all resources within
+         * the same project share the same login page, though it could be overridden at the
+         * sub resource level.
+         */
+        loginPageUri?: string;
+        /**
+         * GCIP tenant ids that are linked to the IAP resource. tenantIds could be a string
+         * beginning with a number character to indicate authenticating with GCIP tenant flow,
+         * or in the format of _ to indicate authenticating with GCIP agent flow. If agent flow
+         * is used, tenantIds should only contain one single element, while for tenant flow,
+         * tenantIds can contain multiple elements.
+         */
+        tenantIds?: string[];
+    }
+
+    export interface SettingsAccessSettingsOauthSettings {
+        /**
+         * Domain hint to send as hd=? parameter in OAuth request flow.
+         * Enables redirect to primary IDP by skipping Google's login screen.
+         * (https://developers.google.com/identity/protocols/OpenIDConnect#hd-param)
+         * Note: IAP does not verify that the id token's hd claim matches this value
+         * since access behavior is managed by IAM policies.
+         */
+        loginHint?: string;
+        /**
+         * List of client ids allowed to use IAP programmatically.
+         */
+        programmaticClients?: string[];
+    }
+
+    export interface SettingsAccessSettingsReauthSettings {
+        /**
+         * Reauth session lifetime, how long before a user has to reauthenticate again.
+         * A duration in seconds with up to nine fractional digits, ending with 's'.
+         * Example: "3.5s".
+         */
+        maxAge: string;
+        /**
+         * Reauth method requested. The possible values are:
+         * * `LOGIN`: Prompts the user to log in again.
+         * * `SECURE_KEY`: User must use their secure key 2nd factor device.
+         * * `ENROLLED_SECOND_FACTORS`: User can use any enabled 2nd factor.
+         * Possible values are: `LOGIN`, `SECURE_KEY`, `ENROLLED_SECOND_FACTORS`.
+         */
+        method: string;
+        /**
+         * How IAP determines the effective policy in cases of hierarchical policies.
+         * Policies are merged from higher in the hierarchy to lower in the hierarchy.
+         * The possible values are:
+         * * `MINIMUM`: This policy acts as a minimum to other policies, lower in the hierarchy.
+         * Effective policy may only be the same or stricter.
+         * * `DEFAULT`: This policy acts as a default if no other reauth policy is set.
+         * Possible values are: `MINIMUM`, `DEFAULT`.
+         */
+        policyType: string;
+    }
+
+    export interface SettingsAccessSettingsWorkforceIdentitySettings {
+        /**
+         * OAuth 2.0 settings for IAP to perform OIDC flow with workforce identity
+         * federation services.
+         * Structure is documented below.
+         *
+         *
+         * <a name="nestedOauth2"></a>The `oauth2` block supports:
+         */
+        oauth2?: outputs.iap.SettingsAccessSettingsWorkforceIdentitySettingsOauth2;
+        /**
+         * The workforce pool resources. Only one workforce pool is accepted.
+         */
+        workforcePools?: string;
+    }
+
+    export interface SettingsAccessSettingsWorkforceIdentitySettingsOauth2 {
+        /**
+         * The OAuth 2.0 client ID registered in the workforce identity
+         * federation OAuth 2.0 Server.
+         */
+        clientId?: string;
+        /**
+         * Input only. The OAuth 2.0 client secret created while registering
+         * the client ID.
+         */
+        clientSecret?: string;
+        /**
+         * Output only. SHA256 hash value for the client secret. This field
+         * is returned by IAP when the settings are retrieved.
+         */
+        clientSecretSha256: string;
+    }
+
+    export interface SettingsApplicationSettings {
+        /**
+         * Customization for Access Denied page. IAP allows customers to define a custom URI
+         * to use as the error page when access is denied to users. If IAP prevents access
+         * to this page, the default IAP error page will be displayed instead.
+         * Structure is documented below.
+         */
+        accessDeniedPageSettings?: outputs.iap.SettingsApplicationSettingsAccessDeniedPageSettings;
+        /**
+         * Settings to configure attribute propagation.
+         * Structure is documented below.
+         */
+        attributePropagationSettings?: outputs.iap.SettingsApplicationSettingsAttributePropagationSettings;
+        /**
+         * The Domain value to set for cookies generated by IAP. This value is not validated by the API,
+         * but will be ignored at runtime if invalid.
+         */
+        cookieDomain?: string;
+        /**
+         * Settings to configure IAP's behavior for a service mesh.
+         * Structure is documented below.
+         */
+        csmSettings?: outputs.iap.SettingsApplicationSettingsCsmSettings;
+    }
+
+    export interface SettingsApplicationSettingsAccessDeniedPageSettings {
+        /**
+         * The URI to be redirected to when access is denied.
+         */
+        accessDeniedPageUri?: string;
+        /**
+         * Whether to generate a troubleshooting URL on access denied events to this application.
+         */
+        generateTroubleshootingUri?: boolean;
+        /**
+         * Whether to generate remediation token on access denied events to this application.
+         */
+        remediationTokenGenerationEnabled?: boolean;
+    }
+
+    export interface SettingsApplicationSettingsAttributePropagationSettings {
+        /**
+         * Whether the provided attribute propagation settings should be evaluated on user requests.
+         * If set to true, attributes returned from the expression will be propagated in the set output credentials.
+         */
+        enable?: boolean;
+        /**
+         * Raw string CEL expression. Must return a list of attributes. A maximum of 45 attributes can
+         * be selected. Expressions can select different attribute types from attributes:
+         * attributes.saml_attributes, attributes.iap_attributes.
+         */
+        expression?: string;
+        /**
+         * Which output credentials attributes selected by the CEL expression should be propagated in.
+         * All attributes will be fully duplicated in each selected output credential.
+         * Possible values are:
+         * * `HEADER`: Propagate attributes in the headers with "x-goog-iap-attr-" prefix.
+         * * `JWT`: Propagate attributes in the JWT of the form:
+         * "additionalClaims": { "myAttribute": ["value1", "value2"] }
+         * * `RCTOKEN`: Propagate attributes in the RCToken of the form: "
+         * additionalClaims": { "myAttribute": ["value1", "value2"] }
+         * Each value may be one of: `HEADER`, `JWT`, `RCTOKEN`.
+         */
+        outputCredentials?: string[];
+    }
+
+    export interface SettingsApplicationSettingsCsmSettings {
+        /**
+         * Audience claim set in the generated RCToken. This value is not validated by IAP.
+         */
+        rctokenAud?: string;
+    }
+
     export interface TunnelDestGroupIamBindingCondition {
         description?: string;
         /**
@@ -70571,7 +70885,7 @@ export namespace memorystore {
         network: string;
         /**
          * (Output)
-         * Output only. The port number of the exposed endpoint.
+         * Output only. Ports of the exposed endpoint.
          */
         port: number;
     }
@@ -70638,6 +70952,15 @@ export namespace memorystore {
     export interface InstancePscAutoConnection {
         /**
          * (Output)
+         * Output Only. Type of a PSC Connection.
+         * Possible values:
+         * CONNECTION_TYPE_DISCOVERY
+         * CONNECTION_TYPE_PRIMARY
+         * CONNECTION_TYPE_READER
+         */
+        connectionType: string;
+        /**
+         * (Output)
          * Output only. The URI of the consumer side forwarding rule.
          * Format:
          * projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
@@ -70656,6 +70979,11 @@ export namespace memorystore {
         network: string;
         /**
          * (Output)
+         * Output only. Ports of the exposed endpoint.
+         */
+        port: number;
+        /**
+         * (Output)
          * Output only. The consumer projectId where the forwarding rule is created from.
          */
         projectId: string;
@@ -70665,6 +70993,19 @@ export namespace memorystore {
          * service attachment.
          */
         pscConnectionId: string;
+        /**
+         * (Output)
+         * Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists.
+         * Possible values:
+         * ACTIVE
+         * NOT_FOUND
+         */
+        pscConnectionStatus: string;
+        /**
+         * (Output)
+         * Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+         */
+        serviceAttachment: string;
     }
 
     export interface InstanceStateInfo {
@@ -84893,6 +85234,39 @@ export namespace securityposture {
 }
 
 export namespace serviceaccount {
+    export interface GetSAccount {
+        /**
+         * The Google service account ID (the part before the `@` sign in the `email`)
+         */
+        accountId: string;
+        /**
+         * Whether a service account is disabled or not.
+         */
+        disabled: boolean;
+        /**
+         * The display name for the service account.
+         */
+        displayName: string;
+        /**
+         * The e-mail address of the service account. This value
+         * should be referenced from any `gcp.organizations.getIAMPolicy` data sources
+         * that would grant the service account privileges.
+         */
+        email: string;
+        /**
+         * The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
+         */
+        member: string;
+        /**
+         * The fully-qualified name of the service account.
+         */
+        name: string;
+        /**
+         * The unique id of the service account.
+         */
+        uniqueId: string;
+    }
+
     export interface IAMBindingCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -85102,6 +85476,10 @@ export namespace spanner {
 
     export interface GetInstanceAutoscalingConfig {
         /**
+         * Asymmetric autoscaling options for specific replicas.
+         */
+        asymmetricAutoscalingOptions: outputs.spanner.GetInstanceAutoscalingConfigAsymmetricAutoscalingOption[];
+        /**
          * Defines scale in controls to reduce the risk of response latency
          * and outages due to abrupt scale-in events. Users can define the minimum and
          * maximum compute capacity allocated to the instance, and the autoscaler will
@@ -85115,6 +85493,42 @@ export namespace spanner {
          * and outages due to abrupt scale-in events
          */
         autoscalingTargets: outputs.spanner.GetInstanceAutoscalingConfigAutoscalingTarget[];
+    }
+
+    export interface GetInstanceAutoscalingConfigAsymmetricAutoscalingOption {
+        /**
+         * A nested object resource
+         */
+        overrides: outputs.spanner.GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverride[];
+        /**
+         * A nested object resource
+         */
+        replicaSelections: outputs.spanner.GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection[];
+    }
+
+    export interface GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverride {
+        /**
+         * A nested object resource
+         */
+        autoscalingLimits: outputs.spanner.GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimit[];
+    }
+
+    export interface GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimit {
+        /**
+         * The maximum number of nodes for this specific replica.
+         */
+        maxNodes: number;
+        /**
+         * The minimum number of nodes for this specific replica.
+         */
+        minNodes: number;
+    }
+
+    export interface GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection {
+        /**
+         * The location of the replica to apply asymmetric autoscaling options.
+         */
+        location: string;
     }
 
     export interface GetInstanceAutoscalingConfigAutoscalingLimit {
@@ -85158,6 +85572,11 @@ export namespace spanner {
 
     export interface InstanceAutoscalingConfig {
         /**
+         * Asymmetric autoscaling options for specific replicas.
+         * Structure is documented below.
+         */
+        asymmetricAutoscalingOptions?: outputs.spanner.InstanceAutoscalingConfigAsymmetricAutoscalingOption[];
+        /**
          * Defines scale in controls to reduce the risk of response latency
          * and outages due to abrupt scale-in events. Users can define the minimum and
          * maximum compute capacity allocated to the instance, and the autoscaler will
@@ -85175,10 +85594,48 @@ export namespace spanner {
         autoscalingTargets?: outputs.spanner.InstanceAutoscalingConfigAutoscalingTargets;
     }
 
+    export interface InstanceAutoscalingConfigAsymmetricAutoscalingOption {
+        /**
+         * A nested object resource
+         * Structure is documented below.
+         */
+        overrides: outputs.spanner.InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides;
+        /**
+         * A nested object resource
+         * Structure is documented below.
+         */
+        replicaSelection: outputs.spanner.InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection;
+    }
+
+    export interface InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides {
+        /**
+         * A nested object resource
+         * Structure is documented below.
+         */
+        autoscalingLimits: outputs.spanner.InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits;
+    }
+
+    export interface InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits {
+        /**
+         * The maximum number of nodes for this specific replica.
+         */
+        maxNodes: number;
+        /**
+         * The minimum number of nodes for this specific replica.
+         */
+        minNodes: number;
+    }
+
+    export interface InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection {
+        /**
+         * The location of the replica to apply asymmetric autoscaling options.
+         */
+        location: string;
+    }
+
     export interface InstanceAutoscalingConfigAutoscalingLimits {
         /**
-         * Specifies maximum number of nodes allocated to the instance. If set, this number
-         * should be greater than or equal to min_nodes.
+         * The maximum number of nodes for this specific replica.
          */
         maxNodes?: number;
         /**
@@ -85188,8 +85645,7 @@ export namespace spanner {
          */
         maxProcessingUnits?: number;
         /**
-         * Specifies number of nodes allocated to the instance. If set, this number
-         * should be greater than or equal to 1.
+         * The minimum number of nodes for this specific replica.
          */
         minNodes?: number;
         /**
@@ -85314,7 +85770,8 @@ export namespace sql {
         connectRetryInterval?: number;
         /**
          * Path to a SQL file in GCS from which replica
-         * instances are created. Format is `gs://bucket/filename`.
+         * instances are created. Format is `gs://bucket/filename`. Note, if the master
+         * instance is a source representation instance this field must be present.
          */
         dumpFilePath?: string;
         /**
@@ -86895,8 +87352,7 @@ export namespace storage {
 
     export interface BucketHierarchicalNamespace {
         /**
-         * Enable hierarchical namespace for the bucket. 
-         * To use this flag, you must also use --uniform-bucket-level-access
+         * Enables hierarchical namespace for the bucket.
          */
         enabled: boolean;
     }
@@ -87161,7 +87617,7 @@ export namespace storage {
 
     export interface GetBucketHierarchicalNamespace {
         /**
-         * Set this enabled flag to true when folders with logical files structure. Default value is false.
+         * Set this field true to organize bucket with logical file system structure.
          */
         enabled: boolean;
     }
@@ -90152,6 +90608,11 @@ export namespace vmwareengine {
 
     export interface GetPrivateCloudManagementCluster {
         /**
+         * Configuration of the autoscaling applied to this cluster
+         * Private cloud must have a minimum of 3 nodes to add autoscale settings
+         */
+        autoscalingSettings: outputs.vmwareengine.GetPrivateCloudManagementClusterAutoscalingSetting[];
+        /**
          * The user-provided identifier of the new Cluster. The identifier must meet the following requirements:
          *   * Only contains 1-63 alphanumeric characters and hyphens
          *   * Begins with an alphabetical character
@@ -90169,6 +90630,99 @@ export namespace vmwareengine {
          * The stretched cluster configuration for the private cloud.
          */
         stretchedClusterConfigs: outputs.vmwareengine.GetPrivateCloudManagementClusterStretchedClusterConfig[];
+    }
+
+    export interface GetPrivateCloudManagementClusterAutoscalingSetting {
+        /**
+         * The map with autoscaling policies applied to the cluster.
+         * The key is the identifier of the policy.
+         * It must meet the following requirements:
+         *  * Only contains 1-63 alphanumeric characters and hyphens
+         *  * Begins with an alphabetical character
+         *  * Ends with a non-hyphen character
+         *  * Not formatted as a UUID
+         *  * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+         *
+         * Currently the map must contain only one element
+         * that describes the autoscaling policy for compute nodes.
+         */
+        autoscalingPolicies: outputs.vmwareengine.GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicy[];
+        /**
+         * The minimum duration between consecutive autoscale operations.
+         * It starts once addition or removal of nodes is fully completed.
+         * Minimum cool down period is 30m.
+         * Cool down period must be in whole minutes (for example, 30m, 31m, 50m).
+         * Mandatory for successful addition of autoscaling settings in cluster.
+         */
+        coolDownPeriod: string;
+        /**
+         * Maximum number of nodes of any type in a cluster.
+         * Mandatory for successful addition of autoscaling settings in cluster.
+         */
+        maxClusterNodeCount: number;
+        /**
+         * Minimum number of nodes of any type in a cluster.
+         * Mandatory for successful addition of autoscaling settings in cluster.
+         */
+        minClusterNodeCount: number;
+    }
+
+    export interface GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicy {
+        autoscalePolicyId: string;
+        /**
+         * Utilization thresholds pertaining to amount of consumed memory.
+         */
+        consumedMemoryThresholds: outputs.vmwareengine.GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold[];
+        /**
+         * Utilization thresholds pertaining to CPU utilization.
+         */
+        cpuThresholds: outputs.vmwareengine.GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThreshold[];
+        /**
+         * The canonical identifier of the node type to add or remove.
+         */
+        nodeTypeId: string;
+        /**
+         * Number of nodes to add to a cluster during a scale-out operation.
+         * Must be divisible by 2 for stretched clusters.
+         */
+        scaleOutSize: number;
+        /**
+         * Utilization thresholds pertaining to amount of consumed storage.
+         */
+        storageThresholds: outputs.vmwareengine.GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThreshold[];
+    }
+
+    export interface GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyConsumedMemoryThreshold {
+        /**
+         * The utilization triggering the scale-in operation in percent.
+         */
+        scaleIn: number;
+        /**
+         * The utilization triggering the scale-out operation in percent.
+         */
+        scaleOut: number;
+    }
+
+    export interface GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyCpuThreshold {
+        /**
+         * The utilization triggering the scale-in operation in percent.
+         */
+        scaleIn: number;
+        /**
+         * The utilization triggering the scale-out operation in percent.
+         */
+        scaleOut: number;
+    }
+
+    export interface GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicyStorageThreshold {
+        /**
+         * The utilization triggering the scale-in operation in percent.
+         */
+        scaleIn: number;
+        /**
+         * The utilization triggering the scale-out operation in percent.
+         */
+        scaleOut: number;
     }
 
     export interface GetPrivateCloudManagementClusterNodeTypeConfig {
@@ -90337,6 +90891,12 @@ export namespace vmwareengine {
 
     export interface PrivateCloudManagementCluster {
         /**
+         * Configuration of the autoscaling applied to this cluster
+         * Private cloud must have a minimum of 3 nodes to add autoscale settings
+         * Structure is documented below.
+         */
+        autoscalingSettings?: outputs.vmwareengine.PrivateCloudManagementClusterAutoscalingSettings;
+        /**
          * The user-provided identifier of the new Cluster. The identifier must meet the following requirements:
          * * Only contains 1-63 alphanumeric characters and hyphens
          * * Begins with an alphabetical character
@@ -90356,6 +90916,107 @@ export namespace vmwareengine {
          * Structure is documented below.
          */
         stretchedClusterConfig?: outputs.vmwareengine.PrivateCloudManagementClusterStretchedClusterConfig;
+    }
+
+    export interface PrivateCloudManagementClusterAutoscalingSettings {
+        /**
+         * The map with autoscaling policies applied to the cluster.
+         * The key is the identifier of the policy.
+         * It must meet the following requirements:
+         * * Only contains 1-63 alphanumeric characters and hyphens
+         * * Begins with an alphabetical character
+         * * Ends with a non-hyphen character
+         * * Not formatted as a UUID
+         * * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+         * Currently the map must contain only one element
+         * that describes the autoscaling policy for compute nodes.
+         * Structure is documented below.
+         */
+        autoscalingPolicies: outputs.vmwareengine.PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicy[];
+        /**
+         * The minimum duration between consecutive autoscale operations.
+         * It starts once addition or removal of nodes is fully completed.
+         * Minimum cool down period is 30m.
+         * Cool down period must be in whole minutes (for example, 30m, 31m, 50m).
+         * Mandatory for successful addition of autoscaling settings in cluster.
+         */
+        coolDownPeriod?: string;
+        /**
+         * Maximum number of nodes of any type in a cluster.
+         * Mandatory for successful addition of autoscaling settings in cluster.
+         */
+        maxClusterNodeCount?: number;
+        /**
+         * Minimum number of nodes of any type in a cluster.
+         * Mandatory for successful addition of autoscaling settings in cluster.
+         */
+        minClusterNodeCount?: number;
+    }
+
+    export interface PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicy {
+        /**
+         * The identifier for this object. Format specified above.
+         */
+        autoscalePolicyId: string;
+        /**
+         * Utilization thresholds pertaining to amount of consumed memory.
+         * Structure is documented below.
+         */
+        consumedMemoryThresholds?: outputs.vmwareengine.PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholds;
+        /**
+         * Utilization thresholds pertaining to CPU utilization.
+         * Structure is documented below.
+         */
+        cpuThresholds?: outputs.vmwareengine.PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds;
+        /**
+         * The canonical identifier of the node type to add or remove.
+         */
+        nodeTypeId: string;
+        /**
+         * Number of nodes to add to a cluster during a scale-out operation.
+         * Must be divisible by 2 for stretched clusters.
+         */
+        scaleOutSize: number;
+        /**
+         * Utilization thresholds pertaining to amount of consumed storage.
+         * Structure is documented below.
+         */
+        storageThresholds?: outputs.vmwareengine.PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds;
+    }
+
+    export interface PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholds {
+        /**
+         * The utilization triggering the scale-in operation in percent.
+         */
+        scaleIn: number;
+        /**
+         * The utilization triggering the scale-out operation in percent.
+         */
+        scaleOut: number;
+    }
+
+    export interface PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds {
+        /**
+         * The utilization triggering the scale-in operation in percent.
+         */
+        scaleIn: number;
+        /**
+         * The utilization triggering the scale-out operation in percent.
+         */
+        scaleOut: number;
+    }
+
+    export interface PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds {
+        /**
+         * The utilization triggering the scale-in operation in percent.
+         *
+         * - - -
+         */
+        scaleIn: number;
+        /**
+         * The utilization triggering the scale-out operation in percent.
+         */
+        scaleOut: number;
     }
 
     export interface PrivateCloudManagementClusterNodeTypeConfig {
@@ -90383,8 +91044,6 @@ export namespace vmwareengine {
         preferredLocation?: string;
         /**
          * Additional zone for a higher level of availability and load balancing.
-         *
-         * - - -
          */
         secondaryLocation?: string;
     }

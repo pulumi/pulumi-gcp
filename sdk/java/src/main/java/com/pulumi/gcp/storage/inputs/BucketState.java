@@ -147,14 +147,14 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The bucket&#39;s hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below.
+     * The bucket&#39;s hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniform_bucket_level_access` must be enabled on bucket.
      * 
      */
     @Import(name="hierarchicalNamespace")
     private @Nullable Output<BucketHierarchicalNamespaceArgs> hierarchicalNamespace;
 
     /**
-     * @return The bucket&#39;s hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below.
+     * @return The bucket&#39;s hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniform_bucket_level_access` must be enabled on bucket.
      * 
      */
     public Optional<Output<BucketHierarchicalNamespaceArgs>> hierarchicalNamespace() {
@@ -676,7 +676,7 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hierarchicalNamespace The bucket&#39;s hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below.
+         * @param hierarchicalNamespace The bucket&#39;s hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniform_bucket_level_access` must be enabled on bucket.
          * 
          * @return builder
          * 
@@ -687,7 +687,7 @@ public final class BucketState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hierarchicalNamespace The bucket&#39;s hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below.
+         * @param hierarchicalNamespace The bucket&#39;s hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniform_bucket_level_access` must be enabled on bucket.
          * 
          * @return builder
          * 

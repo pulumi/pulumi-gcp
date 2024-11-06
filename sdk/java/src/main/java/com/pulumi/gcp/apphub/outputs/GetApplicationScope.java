@@ -13,7 +13,8 @@ public final class GetApplicationScope {
     /**
      * @return Required. Scope Type.
      *  Possible values:
-     * REGIONAL Possible values: [&#34;REGIONAL&#34;]
+     * REGIONAL
+     * GLOBAL Possible values: [&#34;REGIONAL&#34;, &#34;GLOBAL&#34;]
      * 
      */
     private String type;
@@ -22,7 +23,8 @@ public final class GetApplicationScope {
     /**
      * @return Required. Scope Type.
      *  Possible values:
-     * REGIONAL Possible values: [&#34;REGIONAL&#34;]
+     * REGIONAL
+     * GLOBAL Possible values: [&#34;REGIONAL&#34;, &#34;GLOBAL&#34;]
      * 
      */
     public String type() {

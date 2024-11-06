@@ -29,6 +29,8 @@ __all__ = [
     'WorkloadResourceSettingArgsDict',
     'WorkloadSaaEnrollmentResponseArgs',
     'WorkloadSaaEnrollmentResponseArgsDict',
+    'WorkloadWorkloadOptionsArgs',
+    'WorkloadWorkloadOptionsArgsDict',
 ]
 
 MYPY = False
@@ -453,5 +455,37 @@ class WorkloadSaaEnrollmentResponseArgs:
     @setup_status.setter
     def setup_status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "setup_status", value)
+
+
+if not MYPY:
+    class WorkloadWorkloadOptionsArgsDict(TypedDict):
+        kaj_enrollment_type: NotRequired[pulumi.Input[str]]
+        """
+        Indicates type of KAJ enrollment for the workload. Currently, only specifiying KEY_ACCESS_TRANSPARENCY_OFF is implemented to not enroll in KAT-level KAJ enrollment for Regional Controls workloads. Possible values: KAJ_ENROLLMENT_TYPE_UNSPECIFIED, FULL_KAJ, EKM_ONLY, KEY_ACCESS_TRANSPARENCY_OFF
+        """
+elif False:
+    WorkloadWorkloadOptionsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkloadWorkloadOptionsArgs:
+    def __init__(__self__, *,
+                 kaj_enrollment_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] kaj_enrollment_type: Indicates type of KAJ enrollment for the workload. Currently, only specifiying KEY_ACCESS_TRANSPARENCY_OFF is implemented to not enroll in KAT-level KAJ enrollment for Regional Controls workloads. Possible values: KAJ_ENROLLMENT_TYPE_UNSPECIFIED, FULL_KAJ, EKM_ONLY, KEY_ACCESS_TRANSPARENCY_OFF
+        """
+        if kaj_enrollment_type is not None:
+            pulumi.set(__self__, "kaj_enrollment_type", kaj_enrollment_type)
+
+    @property
+    @pulumi.getter(name="kajEnrollmentType")
+    def kaj_enrollment_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates type of KAJ enrollment for the workload. Currently, only specifiying KEY_ACCESS_TRANSPARENCY_OFF is implemented to not enroll in KAT-level KAJ enrollment for Regional Controls workloads. Possible values: KAJ_ENROLLMENT_TYPE_UNSPECIFIED, FULL_KAJ, EKM_ONLY, KEY_ACCESS_TRANSPARENCY_OFF
+        """
+        return pulumi.get(self, "kaj_enrollment_type")
+
+    @kaj_enrollment_type.setter
+    def kaj_enrollment_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kaj_enrollment_type", value)
 
 

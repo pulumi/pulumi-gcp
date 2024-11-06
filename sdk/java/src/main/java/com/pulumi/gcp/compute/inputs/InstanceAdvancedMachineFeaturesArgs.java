@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -32,18 +33,33 @@ public final class InstanceAdvancedMachineFeaturesArgs extends com.pulumi.resour
     }
 
     /**
-     * he number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
+     * The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
      * 
      */
     @Import(name="threadsPerCore")
     private @Nullable Output<Integer> threadsPerCore;
 
     /**
-     * @return he number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
+     * @return The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
      * 
      */
     public Optional<Output<Integer>> threadsPerCore() {
         return Optional.ofNullable(this.threadsPerCore);
+    }
+
+    /**
+     * Turbo frequency mode to use for the instance. Supported modes are currently either `ALL_CORE_MAX` or unset (default).
+     * 
+     */
+    @Import(name="turboMode")
+    private @Nullable Output<String> turboMode;
+
+    /**
+     * @return Turbo frequency mode to use for the instance. Supported modes are currently either `ALL_CORE_MAX` or unset (default).
+     * 
+     */
+    public Optional<Output<String>> turboMode() {
+        return Optional.ofNullable(this.turboMode);
     }
 
     /**
@@ -66,6 +82,7 @@ public final class InstanceAdvancedMachineFeaturesArgs extends com.pulumi.resour
     private InstanceAdvancedMachineFeaturesArgs(InstanceAdvancedMachineFeaturesArgs $) {
         this.enableNestedVirtualization = $.enableNestedVirtualization;
         this.threadsPerCore = $.threadsPerCore;
+        this.turboMode = $.turboMode;
         this.visibleCoreCount = $.visibleCoreCount;
     }
 
@@ -109,7 +126,7 @@ public final class InstanceAdvancedMachineFeaturesArgs extends com.pulumi.resour
         }
 
         /**
-         * @param threadsPerCore he number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
+         * @param threadsPerCore The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
          * 
          * @return builder
          * 
@@ -120,13 +137,34 @@ public final class InstanceAdvancedMachineFeaturesArgs extends com.pulumi.resour
         }
 
         /**
-         * @param threadsPerCore he number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
+         * @param threadsPerCore The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
          * 
          * @return builder
          * 
          */
         public Builder threadsPerCore(Integer threadsPerCore) {
             return threadsPerCore(Output.of(threadsPerCore));
+        }
+
+        /**
+         * @param turboMode Turbo frequency mode to use for the instance. Supported modes are currently either `ALL_CORE_MAX` or unset (default).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder turboMode(@Nullable Output<String> turboMode) {
+            $.turboMode = turboMode;
+            return this;
+        }
+
+        /**
+         * @param turboMode Turbo frequency mode to use for the instance. Supported modes are currently either `ALL_CORE_MAX` or unset (default).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder turboMode(String turboMode) {
+            return turboMode(Output.of(turboMode));
         }
 
         /**

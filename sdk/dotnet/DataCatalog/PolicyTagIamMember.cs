@@ -101,7 +101,7 @@ namespace Pulumi.Gcp.DataCatalog
     /// });
     /// ```
     /// 
-    /// ## &gt; **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+    /// ## &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
     /// 
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// ---
@@ -226,7 +226,7 @@ namespace Pulumi.Gcp.DataCatalog
     /// $ pulumi import gcp:datacatalog/policyTagIamMember:PolicyTagIamMember editor {{policy_tag}}
     /// ```
     /// 
-    /// -&gt; **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+    /// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
     /// 
     ///  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>

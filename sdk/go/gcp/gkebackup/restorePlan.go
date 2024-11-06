@@ -49,7 +49,7 @@ import (
 //						Enabled: pulumi.Bool(true),
 //					},
 //				},
-//				DeletionProtection: pulumi.Bool(""),
+//				DeletionProtection: pulumi.Bool(true),
 //				Network:            pulumi.String("default"),
 //				Subnetwork:         pulumi.String("default"),
 //			})
@@ -119,7 +119,7 @@ import (
 //						Enabled: pulumi.Bool(true),
 //					},
 //				},
-//				DeletionProtection: pulumi.Bool(""),
+//				DeletionProtection: pulumi.Bool(true),
 //				Network:            pulumi.String("default"),
 //				Subnetwork:         pulumi.String("default"),
 //			})
@@ -202,7 +202,7 @@ import (
 //						Enabled: pulumi.Bool(true),
 //					},
 //				},
-//				DeletionProtection: pulumi.Bool(""),
+//				DeletionProtection: pulumi.Bool(true),
 //				Network:            pulumi.String("default"),
 //				Subnetwork:         pulumi.String("default"),
 //			})
@@ -278,7 +278,7 @@ import (
 //						Enabled: pulumi.Bool(true),
 //					},
 //				},
-//				DeletionProtection: pulumi.Bool(""),
+//				DeletionProtection: pulumi.Bool(true),
 //				Network:            pulumi.String("default"),
 //				Subnetwork:         pulumi.String("default"),
 //			})
@@ -347,7 +347,7 @@ import (
 //						Enabled: pulumi.Bool(true),
 //					},
 //				},
-//				DeletionProtection: pulumi.Bool(""),
+//				DeletionProtection: pulumi.Bool(true),
 //				Network:            pulumi.String("default"),
 //				Subnetwork:         pulumi.String("default"),
 //			})
@@ -455,7 +455,7 @@ import (
 //						Enabled: pulumi.Bool(true),
 //					},
 //				},
-//				DeletionProtection: pulumi.Bool(""),
+//				DeletionProtection: pulumi.Bool(true),
 //				Network:            pulumi.String("default"),
 //				Subnetwork:         pulumi.String("default"),
 //			})
@@ -559,7 +559,7 @@ import (
 //						Enabled: pulumi.Bool(true),
 //					},
 //				},
-//				DeletionProtection: pulumi.Bool(""),
+//				DeletionProtection: pulumi.Bool(true),
 //				Network:            pulumi.String("default"),
 //				Subnetwork:         pulumi.String("default"),
 //			})
@@ -629,7 +629,7 @@ import (
 //						Enabled: pulumi.Bool(true),
 //					},
 //				},
-//				DeletionProtection: pulumi.Bool(""),
+//				DeletionProtection: pulumi.Bool(true),
 //				Network:            pulumi.String("default"),
 //				Subnetwork:         pulumi.String("default"),
 //			})
@@ -723,7 +723,7 @@ import (
 //						Enabled: pulumi.Bool(true),
 //					},
 //				},
-//				DeletionProtection: pulumi.Bool(""),
+//				DeletionProtection: pulumi.Bool(true),
 //				Network:            pulumi.String("default"),
 //				Subnetwork:         pulumi.String("default"),
 //			})

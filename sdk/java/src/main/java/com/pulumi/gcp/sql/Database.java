@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *             .settings(DatabaseInstanceSettingsArgs.builder()
  *                 .tier("db-f1-micro")
  *                 .build())
- *             .deletionProtection("true")
+ *             .deletionProtection(true)
  *             .build());
  * 
  *         var database = new Database("database", DatabaseArgs.builder()
@@ -105,7 +105,7 @@ import javax.annotation.Nullable;
  *             .settings(DatabaseInstanceSettingsArgs.builder()
  *                 .tier("db-g1-small")
  *                 .build())
- *             .deletionProtection("true")
+ *             .deletionProtection(true)
  *             .build());
  * 
  *         var databaseDeletionPolicy = new Database("databaseDeletionPolicy", DatabaseArgs.builder()

@@ -316,7 +316,7 @@ import * as utilities from "../utilities";
  * $ pulumi import gcp:iap/appEngineVersionIamBinding:AppEngineVersionIamBinding editor projects/{{project}}/iap_web/appengine-{{appId}}/services/{{service}}/versions/{{versionId}}
  * ```
  *
- * -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+ * -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
  *
  *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  */

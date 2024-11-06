@@ -5,6 +5,7 @@ package com.pulumi.gcp.spanner.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.spanner.outputs.GetInstanceAutoscalingConfigAsymmetricAutoscalingOption;
 import com.pulumi.gcp.spanner.outputs.GetInstanceAutoscalingConfigAutoscalingLimit;
 import com.pulumi.gcp.spanner.outputs.GetInstanceAutoscalingConfigAutoscalingTarget;
 import java.util.List;
@@ -12,6 +13,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceAutoscalingConfig {
+    /**
+     * @return Asymmetric autoscaling options for specific replicas.
+     * 
+     */
+    private List<GetInstanceAutoscalingConfigAsymmetricAutoscalingOption> asymmetricAutoscalingOptions;
     /**
      * @return Defines scale in controls to reduce the risk of response latency
      * and outages due to abrupt scale-in events. Users can define the minimum and
@@ -30,6 +36,13 @@ public final class GetInstanceAutoscalingConfig {
     private List<GetInstanceAutoscalingConfigAutoscalingTarget> autoscalingTargets;
 
     private GetInstanceAutoscalingConfig() {}
+    /**
+     * @return Asymmetric autoscaling options for specific replicas.
+     * 
+     */
+    public List<GetInstanceAutoscalingConfigAsymmetricAutoscalingOption> asymmetricAutoscalingOptions() {
+        return this.asymmetricAutoscalingOptions;
+    }
     /**
      * @return Defines scale in controls to reduce the risk of response latency
      * and outages due to abrupt scale-in events. Users can define the minimum and
@@ -60,15 +73,28 @@ public final class GetInstanceAutoscalingConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetInstanceAutoscalingConfigAsymmetricAutoscalingOption> asymmetricAutoscalingOptions;
         private List<GetInstanceAutoscalingConfigAutoscalingLimit> autoscalingLimits;
         private List<GetInstanceAutoscalingConfigAutoscalingTarget> autoscalingTargets;
         public Builder() {}
         public Builder(GetInstanceAutoscalingConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.asymmetricAutoscalingOptions = defaults.asymmetricAutoscalingOptions;
     	      this.autoscalingLimits = defaults.autoscalingLimits;
     	      this.autoscalingTargets = defaults.autoscalingTargets;
         }
 
+        @CustomType.Setter
+        public Builder asymmetricAutoscalingOptions(List<GetInstanceAutoscalingConfigAsymmetricAutoscalingOption> asymmetricAutoscalingOptions) {
+            if (asymmetricAutoscalingOptions == null) {
+              throw new MissingRequiredPropertyException("GetInstanceAutoscalingConfig", "asymmetricAutoscalingOptions");
+            }
+            this.asymmetricAutoscalingOptions = asymmetricAutoscalingOptions;
+            return this;
+        }
+        public Builder asymmetricAutoscalingOptions(GetInstanceAutoscalingConfigAsymmetricAutoscalingOption... asymmetricAutoscalingOptions) {
+            return asymmetricAutoscalingOptions(List.of(asymmetricAutoscalingOptions));
+        }
         @CustomType.Setter
         public Builder autoscalingLimits(List<GetInstanceAutoscalingConfigAutoscalingLimit> autoscalingLimits) {
             if (autoscalingLimits == null) {
@@ -93,6 +119,7 @@ public final class GetInstanceAutoscalingConfig {
         }
         public GetInstanceAutoscalingConfig build() {
             final var _resultValue = new GetInstanceAutoscalingConfig();
+            _resultValue.asymmetricAutoscalingOptions = asymmetricAutoscalingOptions;
             _resultValue.autoscalingLimits = autoscalingLimits;
             _resultValue.autoscalingTargets = autoscalingTargets;
             return _resultValue;

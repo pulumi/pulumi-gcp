@@ -361,8 +361,7 @@ if not MYPY:
     class BucketHierarchicalNamespaceArgsDict(TypedDict):
         enabled: pulumi.Input[bool]
         """
-        Enable hierarchical namespace for the bucket. 
-        To use this flag, you must also use --uniform-bucket-level-access
+        Enables hierarchical namespace for the bucket.
         """
 elif False:
     BucketHierarchicalNamespaceArgsDict: TypeAlias = Mapping[str, Any]
@@ -372,8 +371,7 @@ class BucketHierarchicalNamespaceArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool]):
         """
-        :param pulumi.Input[bool] enabled: Enable hierarchical namespace for the bucket. 
-               To use this flag, you must also use --uniform-bucket-level-access
+        :param pulumi.Input[bool] enabled: Enables hierarchical namespace for the bucket.
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -381,8 +379,7 @@ class BucketHierarchicalNamespaceArgs:
     @pulumi.getter
     def enabled(self) -> pulumi.Input[bool]:
         """
-        Enable hierarchical namespace for the bucket. 
-        To use this flag, you must also use --uniform-bucket-level-access
+        Enables hierarchical namespace for the bucket.
         """
         return pulumi.get(self, "enabled")
 

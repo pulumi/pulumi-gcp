@@ -12,8 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceAutoscalingConfigAutoscalingLimits {
     /**
-     * @return Specifies maximum number of nodes allocated to the instance. If set, this number
-     * should be greater than or equal to min_nodes.
+     * @return The maximum number of nodes for this specific replica.
      * 
      */
     private @Nullable Integer maxNodes;
@@ -25,8 +24,7 @@ public final class InstanceAutoscalingConfigAutoscalingLimits {
      */
     private @Nullable Integer maxProcessingUnits;
     /**
-     * @return Specifies number of nodes allocated to the instance. If set, this number
-     * should be greater than or equal to 1.
+     * @return The minimum number of nodes for this specific replica.
      * 
      */
     private @Nullable Integer minNodes;
@@ -39,8 +37,7 @@ public final class InstanceAutoscalingConfigAutoscalingLimits {
 
     private InstanceAutoscalingConfigAutoscalingLimits() {}
     /**
-     * @return Specifies maximum number of nodes allocated to the instance. If set, this number
-     * should be greater than or equal to min_nodes.
+     * @return The maximum number of nodes for this specific replica.
      * 
      */
     public Optional<Integer> maxNodes() {
@@ -56,8 +53,7 @@ public final class InstanceAutoscalingConfigAutoscalingLimits {
         return Optional.ofNullable(this.maxProcessingUnits);
     }
     /**
-     * @return Specifies number of nodes allocated to the instance. If set, this number
-     * should be greater than or equal to 1.
+     * @return The minimum number of nodes for this specific replica.
      * 
      */
     public Optional<Integer> minNodes() {

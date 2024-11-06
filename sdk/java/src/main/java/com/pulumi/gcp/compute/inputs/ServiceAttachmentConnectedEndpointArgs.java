@@ -51,7 +51,7 @@ public final class ServiceAttachmentConnectedEndpointArgs extends com.pulumi.res
     }
 
     /**
-     * (Output, Beta)
+     * (Output)
      * The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to.
      * 
      */
@@ -59,7 +59,7 @@ public final class ServiceAttachmentConnectedEndpointArgs extends com.pulumi.res
     private @Nullable Output<Integer> propagatedConnectionCount;
 
     /**
-     * @return (Output, Beta)
+     * @return (Output)
      * The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to.
      * 
      */
@@ -178,7 +178,7 @@ public final class ServiceAttachmentConnectedEndpointArgs extends com.pulumi.res
         }
 
         /**
-         * @param propagatedConnectionCount (Output, Beta)
+         * @param propagatedConnectionCount (Output)
          * The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to.
          * 
          * @return builder
@@ -190,7 +190,7 @@ public final class ServiceAttachmentConnectedEndpointArgs extends com.pulumi.res
         }
 
         /**
-         * @param propagatedConnectionCount (Output, Beta)
+         * @param propagatedConnectionCount (Output)
          * The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to.
          * 
          * @return builder

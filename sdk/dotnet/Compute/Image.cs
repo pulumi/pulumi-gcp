@@ -45,13 +45,25 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var debian = Gcp.Compute.GetImage.Invoke(new()
+    ///     {
+    ///         Family = "debian-12",
+    ///         Project = "debian-cloud",
+    ///     });
+    /// 
+    ///     var persistent = new Gcp.Compute.Disk("persistent", new()
+    ///     {
+    ///         Name = "example-disk",
+    ///         Image = debian.Apply(getImageResult =&gt; getImageResult.SelfLink),
+    ///         Size = 10,
+    ///         Type = "pd-ssd",
+    ///         Zone = "us-central1-a",
+    ///     });
+    /// 
     ///     var example = new Gcp.Compute.Image("example", new()
     ///     {
     ///         Name = "example-image",
-    ///         RawDisk = new Gcp.Compute.Inputs.ImageRawDiskArgs
-    ///         {
-    ///             Source = "https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
-    ///         },
+    ///         SourceDisk = persistent.Id,
     ///     });
     /// 
     /// });
@@ -66,22 +78,46 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var debian = Gcp.Compute.GetImage.Invoke(new()
+    ///     {
+    ///         Family = "debian-12",
+    ///         Project = "debian-cloud",
+    ///     });
+    /// 
+    ///     var persistent = new Gcp.Compute.Disk("persistent", new()
+    ///     {
+    ///         Name = "example-disk",
+    ///         Image = debian.Apply(getImageResult =&gt; getImageResult.SelfLink),
+    ///         Size = 10,
+    ///         Type = "pd-ssd",
+    ///         Zone = "us-central1-a",
+    ///     });
+    /// 
     ///     var example = new Gcp.Compute.Image("example", new()
     ///     {
     ///         Name = "example-image",
-    ///         RawDisk = new Gcp.Compute.Inputs.ImageRawDiskArgs
-    ///         {
-    ///             Source = "https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
-    ///         },
+    ///         SourceDisk = persistent.Id,
     ///         GuestOsFeatures = new[]
     ///         {
     ///             new Gcp.Compute.Inputs.ImageGuestOsFeatureArgs
     ///             {
-    ///                 Type = "SECURE_BOOT",
+    ///                 Type = "UEFI_COMPATIBLE",
     ///             },
     ///             new Gcp.Compute.Inputs.ImageGuestOsFeatureArgs
     ///             {
-    ///                 Type = "MULTI_IP_SUBNET",
+    ///                 Type = "VIRTIO_SCSI_MULTIQUEUE",
+    ///             },
+    ///             new Gcp.Compute.Inputs.ImageGuestOsFeatureArgs
+    ///             {
+    ///                 Type = "GVNIC",
+    ///             },
+    ///             new Gcp.Compute.Inputs.ImageGuestOsFeatureArgs
+    ///             {
+    ///                 Type = "SEV_CAPABLE",
+    ///             },
+    ///             new Gcp.Compute.Inputs.ImageGuestOsFeatureArgs
+    ///             {
+    ///                 Type = "SEV_LIVE_MIGRATABLE_V2",
     ///             },
     ///         },
     ///     });
@@ -98,13 +134,25 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var debian = Gcp.Compute.GetImage.Invoke(new()
+    ///     {
+    ///         Family = "debian-12",
+    ///         Project = "debian-cloud",
+    ///     });
+    /// 
+    ///     var persistent = new Gcp.Compute.Disk("persistent", new()
+    ///     {
+    ///         Name = "example-disk",
+    ///         Image = debian.Apply(getImageResult =&gt; getImageResult.SelfLink),
+    ///         Size = 10,
+    ///         Type = "pd-ssd",
+    ///         Zone = "us-central1-a",
+    ///     });
+    /// 
     ///     var example = new Gcp.Compute.Image("example", new()
     ///     {
     ///         Name = "example-sl-image",
-    ///         RawDisk = new Gcp.Compute.Inputs.ImageRawDiskArgs
-    ///         {
-    ///             Source = "https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
-    ///         },
+    ///         SourceDisk = persistent.Id,
     ///         StorageLocations = new[]
     ///         {
     ///             "us-central1",

@@ -447,7 +447,7 @@ namespace Pulumi.Gcp.Iap
     /// $ pulumi import gcp:iap/tunnelDestGroupIamMember:TunnelDestGroupIamMember editor projects/{{project}}/iap_tunnel/locations/{{region}}/destGroups/{{dest_group}}
     /// ```
     /// 
-    /// -&gt; **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+    /// -&gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
     /// 
     ///  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>

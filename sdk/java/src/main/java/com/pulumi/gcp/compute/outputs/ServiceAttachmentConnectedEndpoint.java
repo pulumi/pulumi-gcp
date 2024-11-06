@@ -25,7 +25,7 @@ public final class ServiceAttachmentConnectedEndpoint {
      */
     private @Nullable String endpoint;
     /**
-     * @return (Output, Beta)
+     * @return (Output)
      * The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to.
      * 
      */
@@ -62,7 +62,7 @@ public final class ServiceAttachmentConnectedEndpoint {
         return Optional.ofNullable(this.endpoint);
     }
     /**
-     * @return (Output, Beta)
+     * @return (Output)
      * The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to.
      * 
      */

@@ -12,11 +12,12 @@ namespace Pulumi.Gcp.Compute.Inputs
 
     public sealed class SecurityPolicyRuleHeaderActionArgs : global::Pulumi.ResourceArgs
     {
-        [Input("requestHeadersToAdds", required: true)]
+        [Input("requestHeadersToAdds")]
         private InputList<Inputs.SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs>? _requestHeadersToAdds;
 
         /// <summary>
-        /// The list of request headers to add or overwrite if they're already present. Structure is documented below.
+        /// The list of request headers to add or overwrite if they're already present.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs> RequestHeadersToAdds
         {

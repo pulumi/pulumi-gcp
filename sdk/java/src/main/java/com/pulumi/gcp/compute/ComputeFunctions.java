@@ -49,6 +49,8 @@ import com.pulumi.gcp.compute.inputs.GetInstanceGroupArgs;
 import com.pulumi.gcp.compute.inputs.GetInstanceGroupManagerArgs;
 import com.pulumi.gcp.compute.inputs.GetInstanceGroupManagerPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetInstanceGroupPlainArgs;
+import com.pulumi.gcp.compute.inputs.GetInstanceGuestAttributesArgs;
+import com.pulumi.gcp.compute.inputs.GetInstanceGuestAttributesPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetInstanceIamPolicyArgs;
 import com.pulumi.gcp.compute.inputs.GetInstanceIamPolicyPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetInstancePlainArgs;
@@ -140,6 +142,7 @@ import com.pulumi.gcp.compute.outputs.GetImageIamPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetImageResult;
 import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerResult;
 import com.pulumi.gcp.compute.outputs.GetInstanceGroupResult;
+import com.pulumi.gcp.compute.outputs.GetInstanceGuestAttributesResult;
 import com.pulumi.gcp.compute.outputs.GetInstanceIamPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetInstanceResult;
 import com.pulumi.gcp.compute.outputs.GetInstanceSerialPortResult;
@@ -4510,6 +4513,366 @@ public final class ComputeFunctions {
      */
     public static CompletableFuture<GetInstanceGroupManagerResult> getInstanceGroupManagerPlain(GetInstanceGroupManagerPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:compute/getInstanceGroupManager:getInstanceGroupManager", TypeShape.of(GetInstanceGroupManagerResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a VM instance resource within GCE. For more information see
+     * [the official documentation](https://cloud.google.com/compute/docs/instances)
+     * and
+     * [API](https://cloud.google.com/compute/docs/reference/latest/instances).
+     * 
+     * Get information about VM&#39;s guest attrubutes. For more information see [the official documentation](https://cloud.google.com/compute/docs/metadata/manage-guest-attributes)
+     * and
+     * [API](https://cloud.google.com/compute/docs/reference/rest/v1/instances/getGuestAttributes).
+     * 
+     * ## Example Usage
+     * 
+     * ### Get All Attributes From A Single Namespace
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceGuestAttributesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var appserverGa = ComputeFunctions.getInstanceGuestAttributes(GetInstanceGuestAttributesArgs.builder()
+     *             .name("primary-application-server")
+     *             .zone("us-central1-a")
+     *             .queryPath("variables/")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### Get A Specific Variable
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceGuestAttributesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var appserverGa = ComputeFunctions.getInstanceGuestAttributes(GetInstanceGuestAttributesArgs.builder()
+     *             .name("primary-application-server")
+     *             .zone("us-central1-a")
+     *             .variableKey("variables/key1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetInstanceGuestAttributesResult> getInstanceGuestAttributes(GetInstanceGuestAttributesArgs args) {
+        return getInstanceGuestAttributes(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a VM instance resource within GCE. For more information see
+     * [the official documentation](https://cloud.google.com/compute/docs/instances)
+     * and
+     * [API](https://cloud.google.com/compute/docs/reference/latest/instances).
+     * 
+     * Get information about VM&#39;s guest attrubutes. For more information see [the official documentation](https://cloud.google.com/compute/docs/metadata/manage-guest-attributes)
+     * and
+     * [API](https://cloud.google.com/compute/docs/reference/rest/v1/instances/getGuestAttributes).
+     * 
+     * ## Example Usage
+     * 
+     * ### Get All Attributes From A Single Namespace
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceGuestAttributesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var appserverGa = ComputeFunctions.getInstanceGuestAttributes(GetInstanceGuestAttributesArgs.builder()
+     *             .name("primary-application-server")
+     *             .zone("us-central1-a")
+     *             .queryPath("variables/")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### Get A Specific Variable
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceGuestAttributesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var appserverGa = ComputeFunctions.getInstanceGuestAttributes(GetInstanceGuestAttributesArgs.builder()
+     *             .name("primary-application-server")
+     *             .zone("us-central1-a")
+     *             .variableKey("variables/key1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetInstanceGuestAttributesResult> getInstanceGuestAttributesPlain(GetInstanceGuestAttributesPlainArgs args) {
+        return getInstanceGuestAttributesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a VM instance resource within GCE. For more information see
+     * [the official documentation](https://cloud.google.com/compute/docs/instances)
+     * and
+     * [API](https://cloud.google.com/compute/docs/reference/latest/instances).
+     * 
+     * Get information about VM&#39;s guest attrubutes. For more information see [the official documentation](https://cloud.google.com/compute/docs/metadata/manage-guest-attributes)
+     * and
+     * [API](https://cloud.google.com/compute/docs/reference/rest/v1/instances/getGuestAttributes).
+     * 
+     * ## Example Usage
+     * 
+     * ### Get All Attributes From A Single Namespace
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceGuestAttributesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var appserverGa = ComputeFunctions.getInstanceGuestAttributes(GetInstanceGuestAttributesArgs.builder()
+     *             .name("primary-application-server")
+     *             .zone("us-central1-a")
+     *             .queryPath("variables/")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### Get A Specific Variable
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceGuestAttributesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var appserverGa = ComputeFunctions.getInstanceGuestAttributes(GetInstanceGuestAttributesArgs.builder()
+     *             .name("primary-application-server")
+     *             .zone("us-central1-a")
+     *             .variableKey("variables/key1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetInstanceGuestAttributesResult> getInstanceGuestAttributes(GetInstanceGuestAttributesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getInstanceGuestAttributes:getInstanceGuestAttributes", TypeShape.of(GetInstanceGuestAttributesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a VM instance resource within GCE. For more information see
+     * [the official documentation](https://cloud.google.com/compute/docs/instances)
+     * and
+     * [API](https://cloud.google.com/compute/docs/reference/latest/instances).
+     * 
+     * Get information about VM&#39;s guest attrubutes. For more information see [the official documentation](https://cloud.google.com/compute/docs/metadata/manage-guest-attributes)
+     * and
+     * [API](https://cloud.google.com/compute/docs/reference/rest/v1/instances/getGuestAttributes).
+     * 
+     * ## Example Usage
+     * 
+     * ### Get All Attributes From A Single Namespace
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceGuestAttributesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var appserverGa = ComputeFunctions.getInstanceGuestAttributes(GetInstanceGuestAttributesArgs.builder()
+     *             .name("primary-application-server")
+     *             .zone("us-central1-a")
+     *             .queryPath("variables/")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### Get A Specific Variable
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceGuestAttributesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var appserverGa = ComputeFunctions.getInstanceGuestAttributes(GetInstanceGuestAttributesArgs.builder()
+     *             .name("primary-application-server")
+     *             .zone("us-central1-a")
+     *             .variableKey("variables/key1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetInstanceGuestAttributesResult> getInstanceGuestAttributesPlain(GetInstanceGuestAttributesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getInstanceGuestAttributes:getInstanceGuestAttributes", TypeShape.of(GetInstanceGuestAttributesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves the current IAM policy data for instance

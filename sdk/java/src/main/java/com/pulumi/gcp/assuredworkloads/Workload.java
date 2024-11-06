@@ -17,6 +17,7 @@ import com.pulumi.gcp.assuredworkloads.outputs.WorkloadPartnerPermissions;
 import com.pulumi.gcp.assuredworkloads.outputs.WorkloadResource;
 import com.pulumi.gcp.assuredworkloads.outputs.WorkloadResourceSetting;
 import com.pulumi.gcp.assuredworkloads.outputs.WorkloadSaaEnrollmentResponse;
+import com.pulumi.gcp.assuredworkloads.outputs.WorkloadWorkloadOptions;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -43,6 +44,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.assuredworkloads.WorkloadArgs;
  * import com.pulumi.gcp.assuredworkloads.inputs.WorkloadKmsSettingsArgs;
  * import com.pulumi.gcp.assuredworkloads.inputs.WorkloadResourceSettingArgs;
+ * import com.pulumi.gcp.assuredworkloads.inputs.WorkloadWorkloadOptionsArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -80,6 +82,9 @@ import javax.annotation.Nullable;
  *                     .resourceType("KEYRING")
  *                     .build())
  *             .violationNotificationsEnabled(true)
+ *             .workloadOptions(WorkloadWorkloadOptionsArgs.builder()
+ *                 .kajEnrollmentType("KEY_ACCESS_TRANSPARENCY_OFF")
+ *                 .build())
  *             .labels(Map.of("label-one", "value-one"))
  *             .build());
  * 
@@ -572,6 +577,20 @@ public class Workload extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> violationNotificationsEnabled() {
         return this.violationNotificationsEnabled;
+    }
+    /**
+     * Optional. Used to specify certain options for a workload during workload creation - currently only supporting KAT Optionality for Regional Controls workloads.
+     * 
+     */
+    @Export(name="workloadOptions", refs={WorkloadWorkloadOptions.class}, tree="[0]")
+    private Output</* @Nullable */ WorkloadWorkloadOptions> workloadOptions;
+
+    /**
+     * @return Optional. Used to specify certain options for a workload during workload creation - currently only supporting KAT Optionality for Regional Controls workloads.
+     * 
+     */
+    public Output<Optional<WorkloadWorkloadOptions>> workloadOptions() {
+        return Codegen.optional(this.workloadOptions);
     }
 
     /**

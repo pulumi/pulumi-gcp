@@ -37,6 +37,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Brand{}
 	case "gcp:iap/client:Client":
 		r = &Client{}
+	case "gcp:iap/settings:Settings":
+		r = &Settings{}
 	case "gcp:iap/tunnelDestGroup:TunnelDestGroup":
 		r = &TunnelDestGroup{}
 	case "gcp:iap/tunnelDestGroupIamBinding:TunnelDestGroupIamBinding":
@@ -138,6 +140,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"iap/client",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"iap/settings",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

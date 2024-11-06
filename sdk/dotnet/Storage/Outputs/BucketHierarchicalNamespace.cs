@@ -14,8 +14,7 @@ namespace Pulumi.Gcp.Storage.Outputs
     public sealed class BucketHierarchicalNamespace
     {
         /// <summary>
-        /// Enable hierarchical namespace for the bucket. 
-        /// To use this flag, you must also use --uniform-bucket-level-access
+        /// Enables hierarchical namespace for the bucket.
         /// </summary>
         public readonly bool Enabled;
 

@@ -24,6 +24,7 @@ from .get_web_iam_policy import *
 from .get_web_region_backend_service_iam_policy import *
 from .get_web_type_app_engine_iam_policy import *
 from .get_web_type_compute_iam_policy import *
+from .settings import *
 from .tunnel_dest_group import *
 from .tunnel_dest_group_iam_binding import *
 from .tunnel_dest_group_iam_member import *

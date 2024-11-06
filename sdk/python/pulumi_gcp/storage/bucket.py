@@ -58,7 +58,7 @@ class BucketArgs:
         :param pulumi.Input[bool] force_destroy: When deleting a bucket, this
                boolean option will delete all contained objects. If you try to delete a
                bucket that contains objects, the provider will fail that run.
-        :param pulumi.Input['BucketHierarchicalNamespaceArgs'] hierarchical_namespace: The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below.
+        :param pulumi.Input['BucketHierarchicalNamespaceArgs'] hierarchical_namespace: The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniform_bucket_level_access` must be enabled on bucket.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value label pairs to assign to the bucket.
         :param pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]] lifecycle_rules: The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input['BucketLoggingArgs'] logging: The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration. Structure is documented below.
@@ -226,7 +226,7 @@ class BucketArgs:
     @pulumi.getter(name="hierarchicalNamespace")
     def hierarchical_namespace(self) -> Optional[pulumi.Input['BucketHierarchicalNamespaceArgs']]:
         """
-        The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below.
+        The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniform_bucket_level_access` must be enabled on bucket.
         """
         return pulumi.get(self, "hierarchical_namespace")
 
@@ -447,7 +447,7 @@ class _BucketState:
         :param pulumi.Input[bool] force_destroy: When deleting a bucket, this
                boolean option will delete all contained objects. If you try to delete a
                bucket that contains objects, the provider will fail that run.
-        :param pulumi.Input['BucketHierarchicalNamespaceArgs'] hierarchical_namespace: The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below.
+        :param pulumi.Input['BucketHierarchicalNamespaceArgs'] hierarchical_namespace: The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniform_bucket_level_access` must be enabled on bucket.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value label pairs to assign to the bucket.
         :param pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]] lifecycle_rules: The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input[str] location: The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
@@ -628,7 +628,7 @@ class _BucketState:
     @pulumi.getter(name="hierarchicalNamespace")
     def hierarchical_namespace(self) -> Optional[pulumi.Input['BucketHierarchicalNamespaceArgs']]:
         """
-        The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below.
+        The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniform_bucket_level_access` must be enabled on bucket.
         """
         return pulumi.get(self, "hierarchical_namespace")
 
@@ -1047,7 +1047,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[bool] force_destroy: When deleting a bucket, this
                boolean option will delete all contained objects. If you try to delete a
                bucket that contains objects, the provider will fail that run.
-        :param pulumi.Input[Union['BucketHierarchicalNamespaceArgs', 'BucketHierarchicalNamespaceArgsDict']] hierarchical_namespace: The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below.
+        :param pulumi.Input[Union['BucketHierarchicalNamespaceArgs', 'BucketHierarchicalNamespaceArgsDict']] hierarchical_namespace: The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniform_bucket_level_access` must be enabled on bucket.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value label pairs to assign to the bucket.
         :param pulumi.Input[Sequence[pulumi.Input[Union['BucketLifecycleRuleArgs', 'BucketLifecycleRuleArgsDict']]]] lifecycle_rules: The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input[str] location: The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
@@ -1345,7 +1345,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[bool] force_destroy: When deleting a bucket, this
                boolean option will delete all contained objects. If you try to delete a
                bucket that contains objects, the provider will fail that run.
-        :param pulumi.Input[Union['BucketHierarchicalNamespaceArgs', 'BucketHierarchicalNamespaceArgsDict']] hierarchical_namespace: The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below.
+        :param pulumi.Input[Union['BucketHierarchicalNamespaceArgs', 'BucketHierarchicalNamespaceArgsDict']] hierarchical_namespace: The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniform_bucket_level_access` must be enabled on bucket.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value label pairs to assign to the bucket.
         :param pulumi.Input[Sequence[pulumi.Input[Union['BucketLifecycleRuleArgs', 'BucketLifecycleRuleArgsDict']]]] lifecycle_rules: The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input[str] location: The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
@@ -1471,7 +1471,7 @@ class Bucket(pulumi.CustomResource):
     @pulumi.getter(name="hierarchicalNamespace")
     def hierarchical_namespace(self) -> pulumi.Output[Optional['outputs.BucketHierarchicalNamespace']]:
         """
-        The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below.
+        The bucket's hierarchical namespace policy, which defines the bucket capability to handle folders in logical structure. Structure is documented below. To use this configuration, `uniform_bucket_level_access` must be enabled on bucket.
         """
         return pulumi.get(self, "hierarchical_namespace")
 

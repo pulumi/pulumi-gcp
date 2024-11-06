@@ -20,12 +20,15 @@ import com.pulumi.gcp.serviceaccount.inputs.GetAccountKeyPlainArgs;
 import com.pulumi.gcp.serviceaccount.inputs.GetAccountPlainArgs;
 import com.pulumi.gcp.serviceaccount.inputs.GetIamPolicyArgs;
 import com.pulumi.gcp.serviceaccount.inputs.GetIamPolicyPlainArgs;
+import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
+import com.pulumi.gcp.serviceaccount.inputs.GetSPlainArgs;
 import com.pulumi.gcp.serviceaccount.outputs.GetAccountAccessTokenResult;
 import com.pulumi.gcp.serviceaccount.outputs.GetAccountIdTokenResult;
 import com.pulumi.gcp.serviceaccount.outputs.GetAccountJwtResult;
 import com.pulumi.gcp.serviceaccount.outputs.GetAccountKeyResult;
 import com.pulumi.gcp.serviceaccount.outputs.GetAccountResult;
 import com.pulumi.gcp.serviceaccount.outputs.GetIamPolicyResult;
+import com.pulumi.gcp.serviceaccount.outputs.GetSResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class ServiceaccountFunctions {
@@ -1984,5 +1987,281 @@ public final class ServiceaccountFunctions {
      */
     public static CompletableFuture<GetIamPolicyResult> getIamPolicyPlain(GetIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:serviceaccount/getIamPolicy:getIamPolicy", TypeShape.of(GetIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets a list of all service accounts from a project.
+     * See [the official documentation](https://cloud.google.com/iam/docs/service-account-overview)
+     * and [API](https://cloud.google.com/iam/docs/reference/rest/v1/projects.serviceAccounts).
+     * 
+     * ## Example Usage
+     * 
+     * Example service accounts.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
+     * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ServiceaccountFunctions.getS(GetSArgs.builder()
+     *             .project("example-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSResult> getS() {
+        return getS(GetSArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Gets a list of all service accounts from a project.
+     * See [the official documentation](https://cloud.google.com/iam/docs/service-account-overview)
+     * and [API](https://cloud.google.com/iam/docs/reference/rest/v1/projects.serviceAccounts).
+     * 
+     * ## Example Usage
+     * 
+     * Example service accounts.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
+     * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ServiceaccountFunctions.getS(GetSArgs.builder()
+     *             .project("example-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetSResult> getSPlain() {
+        return getSPlain(GetSPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Gets a list of all service accounts from a project.
+     * See [the official documentation](https://cloud.google.com/iam/docs/service-account-overview)
+     * and [API](https://cloud.google.com/iam/docs/reference/rest/v1/projects.serviceAccounts).
+     * 
+     * ## Example Usage
+     * 
+     * Example service accounts.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
+     * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ServiceaccountFunctions.getS(GetSArgs.builder()
+     *             .project("example-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSResult> getS(GetSArgs args) {
+        return getS(args, InvokeOptions.Empty);
+    }
+    /**
+     * Gets a list of all service accounts from a project.
+     * See [the official documentation](https://cloud.google.com/iam/docs/service-account-overview)
+     * and [API](https://cloud.google.com/iam/docs/reference/rest/v1/projects.serviceAccounts).
+     * 
+     * ## Example Usage
+     * 
+     * Example service accounts.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
+     * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ServiceaccountFunctions.getS(GetSArgs.builder()
+     *             .project("example-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetSResult> getSPlain(GetSPlainArgs args) {
+        return getSPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Gets a list of all service accounts from a project.
+     * See [the official documentation](https://cloud.google.com/iam/docs/service-account-overview)
+     * and [API](https://cloud.google.com/iam/docs/reference/rest/v1/projects.serviceAccounts).
+     * 
+     * ## Example Usage
+     * 
+     * Example service accounts.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
+     * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ServiceaccountFunctions.getS(GetSArgs.builder()
+     *             .project("example-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSResult> getS(GetSArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:serviceaccount/getS:getS", TypeShape.of(GetSResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets a list of all service accounts from a project.
+     * See [the official documentation](https://cloud.google.com/iam/docs/service-account-overview)
+     * and [API](https://cloud.google.com/iam/docs/reference/rest/v1/projects.serviceAccounts).
+     * 
+     * ## Example Usage
+     * 
+     * Example service accounts.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceaccount.ServiceaccountFunctions;
+     * import com.pulumi.gcp.serviceaccount.inputs.GetSArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ServiceaccountFunctions.getS(GetSArgs.builder()
+     *             .project("example-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetSResult> getSPlain(GetSPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:serviceaccount/getS:getS", TypeShape.of(GetSResult.class), args, Utilities.withVersion(options));
     }
 }

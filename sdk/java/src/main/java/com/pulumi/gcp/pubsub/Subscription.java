@@ -250,10 +250,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.pubsub.Topic;
  * import com.pulumi.gcp.pubsub.TopicArgs;
- * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
- * import com.pulumi.gcp.projects.IAMMember;
- * import com.pulumi.gcp.projects.IAMMemberArgs;
  * import com.pulumi.gcp.bigquery.Dataset;
  * import com.pulumi.gcp.bigquery.DatasetArgs;
  * import com.pulumi.gcp.bigquery.Table;
@@ -261,7 +257,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.pubsub.Subscription;
  * import com.pulumi.gcp.pubsub.SubscriptionArgs;
  * import com.pulumi.gcp.pubsub.inputs.SubscriptionBigqueryConfigArgs;
- * import com.pulumi.resources.CustomResourceOptions;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -269,28 +266,14 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App }{{@code
- *     public static void main(String[] args) }{{@code
+ * public class App {
+ *     public static void main(String[] args) {
  *         Pulumi.run(App::stack);
- *     }}{@code
+ *     }
  * 
- *     public static void stack(Context ctx) }{{@code
+ *     public static void stack(Context ctx) {
  *         var example = new Topic("example", TopicArgs.builder()
  *             .name("example-topic")
- *             .build());
- * 
- *         final var project = OrganizationsFunctions.getProject();
- * 
- *         var viewer = new IAMMember("viewer", IAMMemberArgs.builder()
- *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
- *             .role("roles/bigquery.metadataViewer")
- *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-pubsub.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
- *             .build());
- * 
- *         var editor = new IAMMember("editor", IAMMemberArgs.builder()
- *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
- *             .role("roles/bigquery.dataEditor")
- *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-pubsub.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
  *         var test = new Dataset("test", DatasetArgs.builder()
@@ -298,40 +281,38 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var testTable = new Table("testTable", TableArgs.builder()
- *             .deletionProtection(false)
  *             .tableId("example_table")
  *             .datasetId(test.datasetId())
  *             .schema("""
  * [
- *   }{{@code
+ *   {
  *     "name": "data",
  *     "type": "STRING",
  *     "mode": "NULLABLE",
  *     "description": "The data"
- *   }}{@code
+ *   }
  * ]
  *             """)
+ *             .deletionProtection(false)
  *             .build());
  * 
  *         var exampleSubscription = new Subscription("exampleSubscription", SubscriptionArgs.builder()
  *             .name("example-subscription")
  *             .topic(example.id())
  *             .bigqueryConfig(SubscriptionBigqueryConfigArgs.builder()
- *                 .table(Output.tuple(testTable.project(), testTable.datasetId(), testTable.tableId()).applyValue(values -> }{{@code
+ *                 .table(Output.tuple(testTable.project(), testTable.datasetId(), testTable.tableId()).applyValue(values -> {
  *                     var project = values.t1;
  *                     var datasetId = values.t2;
  *                     var tableId = values.t3;
- *                     return String.format("%s.%s.%s", project.applyValue(getProjectResult -> getProjectResult),datasetId,tableId);
- *                 }}{@code ))
+ *                     return String.format("%s.%s.%s", project,datasetId,tableId);
+ *                 }))
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(                
- *                     viewer,
- *                     editor)
- *                 .build());
+ *             .build());
  * 
- *     }}{@code
- * }}{@code
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *     }
+ * }
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -347,10 +328,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.pubsub.Topic;
  * import com.pulumi.gcp.pubsub.TopicArgs;
- * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
- * import com.pulumi.gcp.projects.IAMMember;
- * import com.pulumi.gcp.projects.IAMMemberArgs;
  * import com.pulumi.gcp.bigquery.Dataset;
  * import com.pulumi.gcp.bigquery.DatasetArgs;
  * import com.pulumi.gcp.bigquery.Table;
@@ -358,7 +335,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.pubsub.Subscription;
  * import com.pulumi.gcp.pubsub.SubscriptionArgs;
  * import com.pulumi.gcp.pubsub.inputs.SubscriptionBigqueryConfigArgs;
- * import com.pulumi.resources.CustomResourceOptions;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -366,28 +344,14 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App }{{@code
- *     public static void main(String[] args) }{{@code
+ * public class App {
+ *     public static void main(String[] args) {
  *         Pulumi.run(App::stack);
- *     }}{@code
+ *     }
  * 
- *     public static void stack(Context ctx) }{{@code
+ *     public static void stack(Context ctx) {
  *         var example = new Topic("example", TopicArgs.builder()
  *             .name("example-topic")
- *             .build());
- * 
- *         final var project = OrganizationsFunctions.getProject();
- * 
- *         var viewer = new IAMMember("viewer", IAMMemberArgs.builder()
- *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
- *             .role("roles/bigquery.metadataViewer")
- *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-pubsub.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
- *             .build());
- * 
- *         var editor = new IAMMember("editor", IAMMemberArgs.builder()
- *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
- *             .role("roles/bigquery.dataEditor")
- *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-pubsub.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
  * 
  *         var test = new Dataset("test", DatasetArgs.builder()
@@ -395,41 +359,39 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var testTable = new Table("testTable", TableArgs.builder()
- *             .deletionProtection(false)
  *             .tableId("example_table")
  *             .datasetId(test.datasetId())
  *             .schema("""
  * [
- *   }{{@code
+ *   {
  *     "name": "data",
  *     "type": "STRING",
  *     "mode": "NULLABLE",
  *     "description": "The data"
- *   }}{@code
+ *   }
  * ]
  *             """)
+ *             .deletionProtection(false)
  *             .build());
  * 
  *         var exampleSubscription = new Subscription("exampleSubscription", SubscriptionArgs.builder()
  *             .name("example-subscription")
  *             .topic(example.id())
  *             .bigqueryConfig(SubscriptionBigqueryConfigArgs.builder()
- *                 .table(Output.tuple(testTable.project(), testTable.datasetId(), testTable.tableId()).applyValue(values -> }{{@code
+ *                 .table(Output.tuple(testTable.project(), testTable.datasetId(), testTable.tableId()).applyValue(values -> {
  *                     var project = values.t1;
  *                     var datasetId = values.t2;
  *                     var tableId = values.t3;
- *                     return String.format("%s.%s.%s", project.applyValue(getProjectResult -> getProjectResult),datasetId,tableId);
- *                 }}{@code ))
+ *                     return String.format("%s.%s.%s", project,datasetId,tableId);
+ *                 }))
  *                 .useTableSchema(true)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(                
- *                     viewer,
- *                     editor)
- *                 .build());
+ *             .build());
  * 
- *     }}{@code
- * }}{@code
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *     }
+ * }
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;

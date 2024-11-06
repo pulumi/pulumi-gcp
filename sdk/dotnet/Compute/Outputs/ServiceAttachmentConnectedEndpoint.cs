@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? Endpoint;
         /// <summary>
-        /// (Output, Beta)
+        /// (Output)
         /// The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to.
         /// </summary>
         public readonly int? PropagatedConnectionCount;

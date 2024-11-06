@@ -14,6 +14,17 @@ namespace Pulumi.Gcp.MemoryStore.Inputs
     {
         /// <summary>
         /// (Output)
+        /// Output Only. Type of a PSC Connection.
+        /// Possible values:
+        /// CONNECTION_TYPE_DISCOVERY
+        /// CONNECTION_TYPE_PRIMARY
+        /// CONNECTION_TYPE_READER
+        /// </summary>
+        [Input("connectionType")]
+        public Input<string>? ConnectionType { get; set; }
+
+        /// <summary>
+        /// (Output)
         /// Output only. The URI of the consumer side forwarding rule.
         /// Format:
         /// projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
@@ -38,6 +49,13 @@ namespace Pulumi.Gcp.MemoryStore.Inputs
 
         /// <summary>
         /// (Output)
+        /// Output only. Ports of the exposed endpoint.
+        /// </summary>
+        [Input("port")]
+        public Input<int>? Port { get; set; }
+
+        /// <summary>
+        /// (Output)
         /// Output only. The consumer project_id where the forwarding rule is created from.
         /// </summary>
         [Input("projectId")]
@@ -50,6 +68,23 @@ namespace Pulumi.Gcp.MemoryStore.Inputs
         /// </summary>
         [Input("pscConnectionId")]
         public Input<string>? PscConnectionId { get; set; }
+
+        /// <summary>
+        /// (Output)
+        /// Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists.
+        /// Possible values:
+        /// ACTIVE
+        /// NOT_FOUND
+        /// </summary>
+        [Input("pscConnectionStatus")]
+        public Input<string>? PscConnectionStatus { get; set; }
+
+        /// <summary>
+        /// (Output)
+        /// Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+        /// </summary>
+        [Input("serviceAttachment")]
+        public Input<string>? ServiceAttachment { get; set; }
 
         public InstancePscAutoConnectionArgs()
         {

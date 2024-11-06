@@ -792,11 +792,17 @@ class Image(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        debian = gcp.compute.get_image(family="debian-12",
+            project="debian-cloud")
+        persistent = gcp.compute.Disk("persistent",
+            name="example-disk",
+            image=debian.self_link,
+            size=10,
+            type="pd-ssd",
+            zone="us-central1-a")
         example = gcp.compute.Image("example",
             name="example-image",
-            raw_disk={
-                "source": "https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
-            })
+            source_disk=persistent.id)
         ```
         ### Image Guest Os
 
@@ -804,17 +810,32 @@ class Image(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        debian = gcp.compute.get_image(family="debian-12",
+            project="debian-cloud")
+        persistent = gcp.compute.Disk("persistent",
+            name="example-disk",
+            image=debian.self_link,
+            size=10,
+            type="pd-ssd",
+            zone="us-central1-a")
         example = gcp.compute.Image("example",
             name="example-image",
-            raw_disk={
-                "source": "https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
-            },
+            source_disk=persistent.id,
             guest_os_features=[
                 {
-                    "type": "SECURE_BOOT",
+                    "type": "UEFI_COMPATIBLE",
                 },
                 {
-                    "type": "MULTI_IP_SUBNET",
+                    "type": "VIRTIO_SCSI_MULTIQUEUE",
+                },
+                {
+                    "type": "GVNIC",
+                },
+                {
+                    "type": "SEV_CAPABLE",
+                },
+                {
+                    "type": "SEV_LIVE_MIGRATABLE_V2",
                 },
             ])
         ```
@@ -824,11 +845,17 @@ class Image(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        debian = gcp.compute.get_image(family="debian-12",
+            project="debian-cloud")
+        persistent = gcp.compute.Disk("persistent",
+            name="example-disk",
+            image=debian.self_link,
+            size=10,
+            type="pd-ssd",
+            zone="us-central1-a")
         example = gcp.compute.Image("example",
             name="example-sl-image",
-            raw_disk={
-                "source": "https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
-            },
+            source_disk=persistent.id,
             storage_locations=["us-central1"])
         ```
 
@@ -950,11 +977,17 @@ class Image(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        debian = gcp.compute.get_image(family="debian-12",
+            project="debian-cloud")
+        persistent = gcp.compute.Disk("persistent",
+            name="example-disk",
+            image=debian.self_link,
+            size=10,
+            type="pd-ssd",
+            zone="us-central1-a")
         example = gcp.compute.Image("example",
             name="example-image",
-            raw_disk={
-                "source": "https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
-            })
+            source_disk=persistent.id)
         ```
         ### Image Guest Os
 
@@ -962,17 +995,32 @@ class Image(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        debian = gcp.compute.get_image(family="debian-12",
+            project="debian-cloud")
+        persistent = gcp.compute.Disk("persistent",
+            name="example-disk",
+            image=debian.self_link,
+            size=10,
+            type="pd-ssd",
+            zone="us-central1-a")
         example = gcp.compute.Image("example",
             name="example-image",
-            raw_disk={
-                "source": "https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
-            },
+            source_disk=persistent.id,
             guest_os_features=[
                 {
-                    "type": "SECURE_BOOT",
+                    "type": "UEFI_COMPATIBLE",
                 },
                 {
-                    "type": "MULTI_IP_SUBNET",
+                    "type": "VIRTIO_SCSI_MULTIQUEUE",
+                },
+                {
+                    "type": "GVNIC",
+                },
+                {
+                    "type": "SEV_CAPABLE",
+                },
+                {
+                    "type": "SEV_LIVE_MIGRATABLE_V2",
                 },
             ])
         ```
@@ -982,11 +1030,17 @@ class Image(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        debian = gcp.compute.get_image(family="debian-12",
+            project="debian-cloud")
+        persistent = gcp.compute.Disk("persistent",
+            name="example-disk",
+            image=debian.self_link,
+            size=10,
+            type="pd-ssd",
+            zone="us-central1-a")
         example = gcp.compute.Image("example",
             name="example-sl-image",
-            raw_disk={
-                "source": "https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
-            },
+            source_disk=persistent.id,
             storage_locations=["us-central1"])
         ```
 

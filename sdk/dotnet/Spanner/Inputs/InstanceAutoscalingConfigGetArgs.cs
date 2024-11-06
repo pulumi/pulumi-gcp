@@ -12,6 +12,19 @@ namespace Pulumi.Gcp.Spanner.Inputs
 
     public sealed class InstanceAutoscalingConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("asymmetricAutoscalingOptions")]
+        private InputList<Inputs.InstanceAutoscalingConfigAsymmetricAutoscalingOptionGetArgs>? _asymmetricAutoscalingOptions;
+
+        /// <summary>
+        /// Asymmetric autoscaling options for specific replicas.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.InstanceAutoscalingConfigAsymmetricAutoscalingOptionGetArgs> AsymmetricAutoscalingOptions
+        {
+            get => _asymmetricAutoscalingOptions ?? (_asymmetricAutoscalingOptions = new InputList<Inputs.InstanceAutoscalingConfigAsymmetricAutoscalingOptionGetArgs>());
+            set => _asymmetricAutoscalingOptions = value;
+        }
+
         /// <summary>
         /// Defines scale in controls to reduce the risk of response latency
         /// and outages due to abrupt scale-in events. Users can define the minimum and

@@ -35,7 +35,8 @@ namespace Pulumi.Gcp.Sql.Outputs
         public readonly int? ConnectRetryInterval;
         /// <summary>
         /// Path to a SQL file in GCS from which replica
-        /// instances are created. Format is `gs://bucket/filename`.
+        /// instances are created. Format is `gs://bucket/filename`. Note, if the master
+        /// instance is a source representation instance this field must be present.
         /// </summary>
         public readonly string? DumpFilePath;
         /// <summary>

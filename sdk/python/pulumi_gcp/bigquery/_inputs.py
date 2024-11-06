@@ -71,6 +71,8 @@ __all__ = [
     'DatasetAccessViewArgsDict',
     'DatasetDefaultEncryptionConfigurationArgs',
     'DatasetDefaultEncryptionConfigurationArgsDict',
+    'DatasetExternalCatalogDatasetOptionsArgs',
+    'DatasetExternalCatalogDatasetOptionsArgsDict',
     'DatasetExternalDatasetReferenceArgs',
     'DatasetExternalDatasetReferenceArgsDict',
     'DatasetIamBindingConditionArgs',
@@ -2073,6 +2075,64 @@ class DatasetDefaultEncryptionConfigurationArgs:
     @kms_key_name.setter
     def kms_key_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "kms_key_name", value)
+
+
+if not MYPY:
+    class DatasetExternalCatalogDatasetOptionsArgsDict(TypedDict):
+        default_storage_location_uri: NotRequired[pulumi.Input[str]]
+        """
+        The storage location URI for all tables in the dataset. Equivalent to hive metastore's
+        database locationUri. Maximum length of 1024 characters.
+        """
+        parameters: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        A map of key value pairs defining the parameters and properties of the open source schema.
+        Maximum size of 2Mib.
+        """
+elif False:
+    DatasetExternalCatalogDatasetOptionsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DatasetExternalCatalogDatasetOptionsArgs:
+    def __init__(__self__, *,
+                 default_storage_location_uri: Optional[pulumi.Input[str]] = None,
+                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] default_storage_location_uri: The storage location URI for all tables in the dataset. Equivalent to hive metastore's
+               database locationUri. Maximum length of 1024 characters.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: A map of key value pairs defining the parameters and properties of the open source schema.
+               Maximum size of 2Mib.
+        """
+        if default_storage_location_uri is not None:
+            pulumi.set(__self__, "default_storage_location_uri", default_storage_location_uri)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+
+    @property
+    @pulumi.getter(name="defaultStorageLocationUri")
+    def default_storage_location_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        The storage location URI for all tables in the dataset. Equivalent to hive metastore's
+        database locationUri. Maximum length of 1024 characters.
+        """
+        return pulumi.get(self, "default_storage_location_uri")
+
+    @default_storage_location_uri.setter
+    def default_storage_location_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_storage_location_uri", value)
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A map of key value pairs defining the parameters and properties of the open source schema.
+        Maximum size of 2Mib.
+        """
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "parameters", value)
 
 
 if not MYPY:

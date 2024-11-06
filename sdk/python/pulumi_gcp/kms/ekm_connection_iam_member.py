@@ -600,7 +600,7 @@ class EkmConnectionIamMember(pulumi.CustomResource):
         $ pulumi import gcp:kms/ekmConnectionIamMember:EkmConnectionIamMember editor projects/{{project}}/locations/{{location}}/ekmConnections/{{ekm_connection}}
         ```
 
-        -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
@@ -913,7 +913,7 @@ class EkmConnectionIamMember(pulumi.CustomResource):
         $ pulumi import gcp:kms/ekmConnectionIamMember:EkmConnectionIamMember editor projects/{{project}}/locations/{{location}}/ekmConnections/{{ekm_connection}}
         ```
 
-        -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 

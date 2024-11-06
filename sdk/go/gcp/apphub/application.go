@@ -16,7 +16,7 @@ import (
 //
 // ## Example Usage
 //
-// ### Application Basic
+// ### Apphub Application Basic
 //
 // ```go
 // package main
@@ -45,7 +45,36 @@ import (
 //	}
 //
 // ```
-// ### Application Full
+// ### Apphub Application Global Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/apphub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := apphub.NewApplication(ctx, "example", &apphub.ApplicationArgs{
+//				Location:      pulumi.String("global"),
+//				ApplicationId: pulumi.String("example-application"),
+//				Scope: &apphub.ApplicationScopeArgs{
+//					Type: pulumi.String("GLOBAL"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Apphub Application Full
 //
 // ```go
 // package main

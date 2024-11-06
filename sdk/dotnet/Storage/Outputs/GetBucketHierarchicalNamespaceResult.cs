@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Storage.Outputs
     public sealed class GetBucketHierarchicalNamespaceResult
     {
         /// <summary>
-        /// Set this enabled flag to true when folders with logical files structure. Default value is false.
+        /// Set this field true to organize bucket with logical file system structure.
         /// </summary>
         public readonly bool Enabled;
 

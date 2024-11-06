@@ -12,6 +12,7 @@ import com.pulumi.gcp.bigquery.DatasetArgs;
 import com.pulumi.gcp.bigquery.inputs.DatasetState;
 import com.pulumi.gcp.bigquery.outputs.DatasetAccess;
 import com.pulumi.gcp.bigquery.outputs.DatasetDefaultEncryptionConfiguration;
+import com.pulumi.gcp.bigquery.outputs.DatasetExternalCatalogDatasetOptions;
 import com.pulumi.gcp.bigquery.outputs.DatasetExternalDatasetReference;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -346,6 +347,48 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Bigquery Dataset External Catalog Dataset Options
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigquery.inputs.DatasetExternalCatalogDatasetOptionsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var dataset = new Dataset("dataset", DatasetArgs.builder()
+ *             .datasetId("example_dataset")
+ *             .friendlyName("test")
+ *             .description("This is a test description")
+ *             .location("US")
+ *             .externalCatalogDatasetOptions(DatasetExternalCatalogDatasetOptionsArgs.builder()
+ *                 .parameters(Map.of("dataset_owner", "test_dataset_owner"))
+ *                 .defaultStorageLocationUri("gs://test_dataset/tables")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -609,6 +652,24 @@ public class Dataset extends com.pulumi.resources.CustomResource {
      */
     public Output<String> etag() {
         return this.etag;
+    }
+    /**
+     * Options defining open source compatible datasets living in the BigQuery catalog. Contains
+     * metadata of open source database, schema or namespace represented by the current dataset.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="externalCatalogDatasetOptions", refs={DatasetExternalCatalogDatasetOptions.class}, tree="[0]")
+    private Output</* @Nullable */ DatasetExternalCatalogDatasetOptions> externalCatalogDatasetOptions;
+
+    /**
+     * @return Options defining open source compatible datasets living in the BigQuery catalog. Contains
+     * metadata of open source database, schema or namespace represented by the current dataset.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<DatasetExternalCatalogDatasetOptions>> externalCatalogDatasetOptions() {
+        return Codegen.optional(this.externalCatalogDatasetOptions);
     }
     /**
      * Information about the external metadata storage where the dataset is defined.

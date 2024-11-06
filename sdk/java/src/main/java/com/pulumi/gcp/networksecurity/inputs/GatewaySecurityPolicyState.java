@@ -121,6 +121,7 @@ public final class GatewaySecurityPolicyState extends com.pulumi.resources.Resou
 
     /**
      * Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
+     * Note: gcp.networksecurity.TlsInspectionPolicy resource is still in Beta therefore it will need to import the provider.
      * 
      */
     @Import(name="tlsInspectionPolicy")
@@ -128,6 +129,7 @@ public final class GatewaySecurityPolicyState extends com.pulumi.resources.Resou
 
     /**
      * @return Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
+     * Note: gcp.networksecurity.TlsInspectionPolicy resource is still in Beta therefore it will need to import the provider.
      * 
      */
     public Optional<Output<String>> tlsInspectionPolicy() {
@@ -326,6 +328,7 @@ public final class GatewaySecurityPolicyState extends com.pulumi.resources.Resou
 
         /**
          * @param tlsInspectionPolicy Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
+         * Note: gcp.networksecurity.TlsInspectionPolicy resource is still in Beta therefore it will need to import the provider.
          * 
          * @return builder
          * 
@@ -337,6 +340,7 @@ public final class GatewaySecurityPolicyState extends com.pulumi.resources.Resou
 
         /**
          * @param tlsInspectionPolicy Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
+         * Note: gcp.networksecurity.TlsInspectionPolicy resource is still in Beta therefore it will need to import the provider.
          * 
          * @return builder
          * 

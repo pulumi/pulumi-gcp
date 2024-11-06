@@ -116,7 +116,7 @@ import javax.annotation.Nullable;
  *             .location("us-central1")
  *             .port(9080)
  *             .tier("DEVELOPER")
- *             .deletionProtection("true")
+ *             .deletionProtection(true)
  *             .maintenanceWindow(MetastoreServiceMaintenanceWindowArgs.builder()
  *                 .hourOfDay(2)
  *                 .dayOfWeek("SUNDAY")

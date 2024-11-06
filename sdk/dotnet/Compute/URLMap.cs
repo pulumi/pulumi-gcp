@@ -1113,7 +1113,7 @@ namespace Pulumi.Gcp.Compute
     ///                     {
     ///                         "5xx",
     ///                     },
-    ///                     Path = "/*",
+    ///                     Path = "/internal_error.html",
     ///                     OverrideResponseCode = 502,
     ///                 },
     ///             },
@@ -1147,7 +1147,7 @@ namespace Pulumi.Gcp.Compute
     ///                                 "4xx",
     ///                                 "5xx",
     ///                             },
-    ///                             Path = "/login",
+    ///                             Path = "/login_error.html",
     ///                             OverrideResponseCode = 404,
     ///                         },
     ///                         new Gcp.Compute.Inputs.URLMapPathMatcherDefaultCustomErrorResponsePolicyErrorResponseRuleArgs
@@ -1156,7 +1156,7 @@ namespace Pulumi.Gcp.Compute
     ///                             {
     ///                                 "503",
     ///                             },
-    ///                             Path = "/example",
+    ///                             Path = "/bad_gateway.html",
     ///                             OverrideResponseCode = 502,
     ///                         },
     ///                     },
@@ -1168,7 +1168,7 @@ namespace Pulumi.Gcp.Compute
     ///                     {
     ///                         Paths = new[]
     ///                         {
-    ///                             "/*",
+    ///                             "/private/*",
     ///                         },
     ///                         Service = example.Id,
     ///                         CustomErrorResponsePolicy = new Gcp.Compute.Inputs.URLMapPathMatcherPathRuleCustomErrorResponsePolicyArgs
@@ -1181,7 +1181,7 @@ namespace Pulumi.Gcp.Compute
     ///                                     {
     ///                                         "4xx",
     ///                                     },
-    ///                                     Path = "/register",
+    ///                                     Path = "/login.html",
     ///                                     OverrideResponseCode = 401,
     ///                                 },
     ///                             },

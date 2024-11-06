@@ -171,6 +171,57 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## gcp.bigquery.DatasetIamPolicy
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigquery.DatasetIamPolicy;
+ * import com.pulumi.gcp.bigquery.DatasetIamPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var owner = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role("roles/bigquery.dataOwner")
+ *                 .members("user:jane}{@literal @}{@code example.com")
+ *                 .build())
+ *             .build());
+ * 
+ *         var datasetDataset = new Dataset("datasetDataset", DatasetArgs.builder()
+ *             .datasetId("example_dataset")
+ *             .build());
+ * 
+ *         var dataset = new DatasetIamPolicy("dataset", DatasetIamPolicyArgs.builder()
+ *             .datasetId(datasetDataset.datasetId())
+ *             .policyData(owner.applyValue(getIAMPolicyResult -> getIAMPolicyResult.policyData()))
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## gcp.bigquery.DatasetIamBinding
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -328,6 +379,9 @@ public class DatasetIamMember extends com.pulumi.resources.CustomResource {
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * * **group:{emailid}**: An email address that represents a Google group. For example, admins{@literal @}example.com.
      * * **iamMember:{principal}**: Some other type of member that appears in the IAM Policy but isn&#39;t a user, group, domain, or special group. This is used for example for workload/workforce federated identities (principal, principalSet).
+     * * **projectOwners**: A special identifier that represents the Owners of the project of the dataset.
+     * * **projectReaders**: A special identifier that represents the Viewers of the project of the dataset.
+     * * **projectWriters**: A special identifier that represents the Editors of the project of the dataset.
      * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app{@literal @}appspot.gserviceaccount.com.
      * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice{@literal @}gmail.com or joe{@literal @}example.com.
      * 
@@ -343,6 +397,9 @@ public class DatasetIamMember extends com.pulumi.resources.CustomResource {
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * * **group:{emailid}**: An email address that represents a Google group. For example, admins{@literal @}example.com.
      * * **iamMember:{principal}**: Some other type of member that appears in the IAM Policy but isn&#39;t a user, group, domain, or special group. This is used for example for workload/workforce federated identities (principal, principalSet).
+     * * **projectOwners**: A special identifier that represents the Owners of the project of the dataset.
+     * * **projectReaders**: A special identifier that represents the Viewers of the project of the dataset.
+     * * **projectWriters**: A special identifier that represents the Editors of the project of the dataset.
      * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app{@literal @}appspot.gserviceaccount.com.
      * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice{@literal @}gmail.com or joe{@literal @}example.com.
      * 

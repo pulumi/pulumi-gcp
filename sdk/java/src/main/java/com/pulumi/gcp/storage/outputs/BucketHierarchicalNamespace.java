@@ -11,16 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class BucketHierarchicalNamespace {
     /**
-     * @return Enable hierarchical namespace for the bucket.
-     * To use this flag, you must also use --uniform-bucket-level-access
+     * @return Enables hierarchical namespace for the bucket.
      * 
      */
     private Boolean enabled;
 
     private BucketHierarchicalNamespace() {}
     /**
-     * @return Enable hierarchical namespace for the bucket.
-     * To use this flag, you must also use --uniform-bucket-level-access
+     * @return Enables hierarchical namespace for the bucket.
      * 
      */
     public Boolean enabled() {

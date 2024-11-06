@@ -18,7 +18,8 @@ public final class ApplicationScopeArgs extends com.pulumi.resources.ResourceArg
      * Required. Scope Type.
      * Possible values:
      * REGIONAL
-     * Possible values are: `REGIONAL`.
+     * GLOBAL
+     * Possible values are: `REGIONAL`, `GLOBAL`.
      * 
      * ***
      * 
@@ -30,7 +31,8 @@ public final class ApplicationScopeArgs extends com.pulumi.resources.ResourceArg
      * @return Required. Scope Type.
      * Possible values:
      * REGIONAL
-     * Possible values are: `REGIONAL`.
+     * GLOBAL
+     * Possible values are: `REGIONAL`, `GLOBAL`.
      * 
      * ***
      * 
@@ -67,7 +69,8 @@ public final class ApplicationScopeArgs extends com.pulumi.resources.ResourceArg
          * @param type Required. Scope Type.
          * Possible values:
          * REGIONAL
-         * Possible values are: `REGIONAL`.
+         * GLOBAL
+         * Possible values are: `REGIONAL`, `GLOBAL`.
          * 
          * ***
          * 
@@ -83,7 +86,8 @@ public final class ApplicationScopeArgs extends com.pulumi.resources.ResourceArg
          * @param type Required. Scope Type.
          * Possible values:
          * REGIONAL
-         * Possible values are: `REGIONAL`.
+         * GLOBAL
+         * Possible values are: `REGIONAL`, `GLOBAL`.
          * 
          * ***
          * 

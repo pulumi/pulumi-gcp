@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  *                     .numNodes(3)
  *                     .storageType("HDD")
  *                     .build())
- *             .deletionProtection("true")
+ *             .deletionProtection(true)
  *             .build());
  * 
  *         var ap = new AppProfile("ap", AppProfileArgs.builder()
@@ -129,7 +129,7 @@ import javax.annotation.Nullable;
  *                 .numNodes(3)
  *                 .storageType("HDD")
  *                 .build())
- *             .deletionProtection("true")
+ *             .deletionProtection(true)
  *             .build());
  * 
  *         var ap = new AppProfile("ap", AppProfileArgs.builder()
@@ -196,7 +196,7 @@ import javax.annotation.Nullable;
  *                     .numNodes(3)
  *                     .storageType("HDD")
  *                     .build())
- *             .deletionProtection("true")
+ *             .deletionProtection(true)
  *             .build());
  * 
  *         var ap = new AppProfile("ap", AppProfileArgs.builder()
@@ -252,7 +252,7 @@ import javax.annotation.Nullable;
  *                 .numNodes(3)
  *                 .storageType("HDD")
  *                 .build())
- *             .deletionProtection("true")
+ *             .deletionProtection(true)
  *             .build());
  * 
  *         var ap = new AppProfile("ap", AppProfileArgs.builder()

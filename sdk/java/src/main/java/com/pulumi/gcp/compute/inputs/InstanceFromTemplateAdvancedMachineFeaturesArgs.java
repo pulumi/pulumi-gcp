@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -47,6 +48,21 @@ public final class InstanceFromTemplateAdvancedMachineFeaturesArgs extends com.p
     }
 
     /**
+     * Turbo frequency mode to use for the instance. Currently supported modes is &#34;ALL_CORE_MAX&#34;.
+     * 
+     */
+    @Import(name="turboMode")
+    private @Nullable Output<String> turboMode;
+
+    /**
+     * @return Turbo frequency mode to use for the instance. Currently supported modes is &#34;ALL_CORE_MAX&#34;.
+     * 
+     */
+    public Optional<Output<String>> turboMode() {
+        return Optional.ofNullable(this.turboMode);
+    }
+
+    /**
      * The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\&#39;s nominal CPU count and the underlying platform\&#39;s SMT width.
      * 
      */
@@ -66,6 +82,7 @@ public final class InstanceFromTemplateAdvancedMachineFeaturesArgs extends com.p
     private InstanceFromTemplateAdvancedMachineFeaturesArgs(InstanceFromTemplateAdvancedMachineFeaturesArgs $) {
         this.enableNestedVirtualization = $.enableNestedVirtualization;
         this.threadsPerCore = $.threadsPerCore;
+        this.turboMode = $.turboMode;
         this.visibleCoreCount = $.visibleCoreCount;
     }
 
@@ -127,6 +144,27 @@ public final class InstanceFromTemplateAdvancedMachineFeaturesArgs extends com.p
          */
         public Builder threadsPerCore(Integer threadsPerCore) {
             return threadsPerCore(Output.of(threadsPerCore));
+        }
+
+        /**
+         * @param turboMode Turbo frequency mode to use for the instance. Currently supported modes is &#34;ALL_CORE_MAX&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder turboMode(@Nullable Output<String> turboMode) {
+            $.turboMode = turboMode;
+            return this;
+        }
+
+        /**
+         * @param turboMode Turbo frequency mode to use for the instance. Currently supported modes is &#34;ALL_CORE_MAX&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder turboMode(String turboMode) {
+            return turboMode(Output.of(turboMode));
         }
 
         /**

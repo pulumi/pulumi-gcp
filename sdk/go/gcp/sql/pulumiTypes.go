@@ -366,7 +366,8 @@ type DatabaseInstanceReplicaConfiguration struct {
 	// between connect retries. MySQL's default is 60 seconds.
 	ConnectRetryInterval *int `pulumi:"connectRetryInterval"`
 	// Path to a SQL file in GCS from which replica
-	// instances are created. Format is `gs://bucket/filename`.
+	// instances are created. Format is `gs://bucket/filename`. Note, if the master
+	// instance is a source representation instance this field must be present.
 	DumpFilePath *string `pulumi:"dumpFilePath"`
 	// Specifies if the replica is the failover target.
 	// If the field is set to true the replica will be designated as a failover replica.
@@ -413,7 +414,8 @@ type DatabaseInstanceReplicaConfigurationArgs struct {
 	// between connect retries. MySQL's default is 60 seconds.
 	ConnectRetryInterval pulumi.IntPtrInput `pulumi:"connectRetryInterval"`
 	// Path to a SQL file in GCS from which replica
-	// instances are created. Format is `gs://bucket/filename`.
+	// instances are created. Format is `gs://bucket/filename`. Note, if the master
+	// instance is a source representation instance this field must be present.
 	DumpFilePath pulumi.StringPtrInput `pulumi:"dumpFilePath"`
 	// Specifies if the replica is the failover target.
 	// If the field is set to true the replica will be designated as a failover replica.
@@ -537,7 +539,8 @@ func (o DatabaseInstanceReplicaConfigurationOutput) ConnectRetryInterval() pulum
 }
 
 // Path to a SQL file in GCS from which replica
-// instances are created. Format is `gs://bucket/filename`.
+// instances are created. Format is `gs://bucket/filename`. Note, if the master
+// instance is a source representation instance this field must be present.
 func (o DatabaseInstanceReplicaConfigurationOutput) DumpFilePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceReplicaConfiguration) *string { return v.DumpFilePath }).(pulumi.StringPtrOutput)
 }
@@ -647,7 +650,8 @@ func (o DatabaseInstanceReplicaConfigurationPtrOutput) ConnectRetryInterval() pu
 }
 
 // Path to a SQL file in GCS from which replica
-// instances are created. Format is `gs://bucket/filename`.
+// instances are created. Format is `gs://bucket/filename`. Note, if the master
+// instance is a source representation instance this field must be present.
 func (o DatabaseInstanceReplicaConfigurationPtrOutput) DumpFilePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceReplicaConfiguration) *string {
 		if v == nil {

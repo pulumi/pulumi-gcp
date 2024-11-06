@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.bigquery.inputs.DatasetAccessArgs;
 import com.pulumi.gcp.bigquery.inputs.DatasetDefaultEncryptionConfigurationArgs;
+import com.pulumi.gcp.bigquery.inputs.DatasetExternalCatalogDatasetOptionsArgs;
 import com.pulumi.gcp.bigquery.inputs.DatasetExternalDatasetReferenceArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -270,6 +271,25 @@ public final class DatasetState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Options defining open source compatible datasets living in the BigQuery catalog. Contains
+     * metadata of open source database, schema or namespace represented by the current dataset.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="externalCatalogDatasetOptions")
+    private @Nullable Output<DatasetExternalCatalogDatasetOptionsArgs> externalCatalogDatasetOptions;
+
+    /**
+     * @return Options defining open source compatible datasets living in the BigQuery catalog. Contains
+     * metadata of open source database, schema or namespace represented by the current dataset.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<DatasetExternalCatalogDatasetOptionsArgs>> externalCatalogDatasetOptions() {
+        return Optional.ofNullable(this.externalCatalogDatasetOptions);
+    }
+
+    /**
      * Information about the external metadata storage where the dataset is defined.
      * Structure is documented below.
      * 
@@ -511,6 +531,7 @@ public final class DatasetState extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.effectiveLabels = $.effectiveLabels;
         this.etag = $.etag;
+        this.externalCatalogDatasetOptions = $.externalCatalogDatasetOptions;
         this.externalDatasetReference = $.externalDatasetReference;
         this.friendlyName = $.friendlyName;
         this.isCaseInsensitive = $.isCaseInsensitive;
@@ -865,6 +886,31 @@ public final class DatasetState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder etag(String etag) {
             return etag(Output.of(etag));
+        }
+
+        /**
+         * @param externalCatalogDatasetOptions Options defining open source compatible datasets living in the BigQuery catalog. Contains
+         * metadata of open source database, schema or namespace represented by the current dataset.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalCatalogDatasetOptions(@Nullable Output<DatasetExternalCatalogDatasetOptionsArgs> externalCatalogDatasetOptions) {
+            $.externalCatalogDatasetOptions = externalCatalogDatasetOptions;
+            return this;
+        }
+
+        /**
+         * @param externalCatalogDatasetOptions Options defining open source compatible datasets living in the BigQuery catalog. Contains
+         * metadata of open source database, schema or namespace represented by the current dataset.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalCatalogDatasetOptions(DatasetExternalCatalogDatasetOptionsArgs externalCatalogDatasetOptions) {
+            return externalCatalogDatasetOptions(Output.of(externalCatalogDatasetOptions));
         }
 
         /**

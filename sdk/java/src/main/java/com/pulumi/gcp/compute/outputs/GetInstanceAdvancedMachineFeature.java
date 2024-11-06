@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
 
 @CustomType
@@ -21,6 +22,11 @@ public final class GetInstanceAdvancedMachineFeature {
      * 
      */
     private Integer threadsPerCore;
+    /**
+     * @return Turbo frequency mode to use for the instance. Currently supported modes is &#34;ALL_CORE_MAX&#34;.
+     * 
+     */
+    private String turboMode;
     /**
      * @return The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\&#39;s nominal CPU count and the underlying platform\&#39;s SMT width.
      * 
@@ -43,6 +49,13 @@ public final class GetInstanceAdvancedMachineFeature {
         return this.threadsPerCore;
     }
     /**
+     * @return Turbo frequency mode to use for the instance. Currently supported modes is &#34;ALL_CORE_MAX&#34;.
+     * 
+     */
+    public String turboMode() {
+        return this.turboMode;
+    }
+    /**
      * @return The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\&#39;s nominal CPU count and the underlying platform\&#39;s SMT width.
      * 
      */
@@ -61,12 +74,14 @@ public final class GetInstanceAdvancedMachineFeature {
     public static final class Builder {
         private Boolean enableNestedVirtualization;
         private Integer threadsPerCore;
+        private String turboMode;
         private Integer visibleCoreCount;
         public Builder() {}
         public Builder(GetInstanceAdvancedMachineFeature defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableNestedVirtualization = defaults.enableNestedVirtualization;
     	      this.threadsPerCore = defaults.threadsPerCore;
+    	      this.turboMode = defaults.turboMode;
     	      this.visibleCoreCount = defaults.visibleCoreCount;
         }
 
@@ -87,6 +102,14 @@ public final class GetInstanceAdvancedMachineFeature {
             return this;
         }
         @CustomType.Setter
+        public Builder turboMode(String turboMode) {
+            if (turboMode == null) {
+              throw new MissingRequiredPropertyException("GetInstanceAdvancedMachineFeature", "turboMode");
+            }
+            this.turboMode = turboMode;
+            return this;
+        }
+        @CustomType.Setter
         public Builder visibleCoreCount(Integer visibleCoreCount) {
             if (visibleCoreCount == null) {
               throw new MissingRequiredPropertyException("GetInstanceAdvancedMachineFeature", "visibleCoreCount");
@@ -98,6 +121,7 @@ public final class GetInstanceAdvancedMachineFeature {
             final var _resultValue = new GetInstanceAdvancedMachineFeature();
             _resultValue.enableNestedVirtualization = enableNestedVirtualization;
             _resultValue.threadsPerCore = threadsPerCore;
+            _resultValue.turboMode = turboMode;
             _resultValue.visibleCoreCount = visibleCoreCount;
             return _resultValue;
         }

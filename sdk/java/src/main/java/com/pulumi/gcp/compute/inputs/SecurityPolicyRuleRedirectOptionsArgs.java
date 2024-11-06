@@ -5,7 +5,6 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,14 +16,14 @@ public final class SecurityPolicyRuleRedirectOptionsArgs extends com.pulumi.reso
     public static final SecurityPolicyRuleRedirectOptionsArgs Empty = new SecurityPolicyRuleRedirectOptionsArgs();
 
     /**
-     * External redirection target when `EXTERNAL_302` is set in `type`.
+     * Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
      * 
      */
     @Import(name="target")
     private @Nullable Output<String> target;
 
     /**
-     * @return External redirection target when `EXTERNAL_302` is set in `type`.
+     * @return Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
      * 
      */
     public Optional<Output<String>> target() {
@@ -32,24 +31,18 @@ public final class SecurityPolicyRuleRedirectOptionsArgs extends com.pulumi.reso
     }
 
     /**
-     * Type of redirect action.
-     * 
-     * * `EXTERNAL_302`: Redirect to an external address, configured in `target`.
-     * * `GOOGLE_RECAPTCHA`: Redirect to Google reCAPTCHA.
+     * Type of the redirect action.
      * 
      */
-    @Import(name="type", required=true)
-    private Output<String> type;
+    @Import(name="type")
+    private @Nullable Output<String> type;
 
     /**
-     * @return Type of redirect action.
-     * 
-     * * `EXTERNAL_302`: Redirect to an external address, configured in `target`.
-     * * `GOOGLE_RECAPTCHA`: Redirect to Google reCAPTCHA.
+     * @return Type of the redirect action.
      * 
      */
-    public Output<String> type() {
-        return this.type;
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
     }
 
     private SecurityPolicyRuleRedirectOptionsArgs() {}
@@ -78,7 +71,7 @@ public final class SecurityPolicyRuleRedirectOptionsArgs extends com.pulumi.reso
         }
 
         /**
-         * @param target External redirection target when `EXTERNAL_302` is set in `type`.
+         * @param target Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
          * 
          * @return builder
          * 
@@ -89,7 +82,7 @@ public final class SecurityPolicyRuleRedirectOptionsArgs extends com.pulumi.reso
         }
 
         /**
-         * @param target External redirection target when `EXTERNAL_302` is set in `type`.
+         * @param target Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
          * 
          * @return builder
          * 
@@ -99,24 +92,18 @@ public final class SecurityPolicyRuleRedirectOptionsArgs extends com.pulumi.reso
         }
 
         /**
-         * @param type Type of redirect action.
-         * 
-         * * `EXTERNAL_302`: Redirect to an external address, configured in `target`.
-         * * `GOOGLE_RECAPTCHA`: Redirect to Google reCAPTCHA.
+         * @param type Type of the redirect action.
          * 
          * @return builder
          * 
          */
-        public Builder type(Output<String> type) {
+        public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
         /**
-         * @param type Type of redirect action.
-         * 
-         * * `EXTERNAL_302`: Redirect to an external address, configured in `target`.
-         * * `GOOGLE_RECAPTCHA`: Redirect to Google reCAPTCHA.
+         * @param type Type of the redirect action.
          * 
          * @return builder
          * 
@@ -126,9 +113,6 @@ public final class SecurityPolicyRuleRedirectOptionsArgs extends com.pulumi.reso
         }
 
         public SecurityPolicyRuleRedirectOptionsArgs build() {
-            if ($.type == null) {
-                throw new MissingRequiredPropertyException("SecurityPolicyRuleRedirectOptionsArgs", "type");
-            }
             return $;
         }
     }

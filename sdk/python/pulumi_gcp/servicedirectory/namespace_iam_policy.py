@@ -177,7 +177,7 @@ class NamespaceIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## > **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+        ## > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
         ---
@@ -268,7 +268,7 @@ class NamespaceIamPolicy(pulumi.CustomResource):
         $ pulumi import gcp:servicedirectory/namespaceIamPolicy:NamespaceIamPolicy editor projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}
         ```
 
-        -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
@@ -338,7 +338,7 @@ class NamespaceIamPolicy(pulumi.CustomResource):
             member="user:jane@example.com")
         ```
 
-        ## > **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+        ## > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
         ---
@@ -429,7 +429,7 @@ class NamespaceIamPolicy(pulumi.CustomResource):
         $ pulumi import gcp:servicedirectory/namespaceIamPolicy:NamespaceIamPolicy editor projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}
         ```
 
-        -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 

@@ -51,7 +51,7 @@ namespace Pulumi.Gcp.GkeHub.Inputs
         public Input<Inputs.FeatureMembershipConfigmanagementPolicyControllerArgs>? PolicyController { get; set; }
 
         /// <summary>
-        /// Version of ACM installed.
+        /// Version of Config Sync installed.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

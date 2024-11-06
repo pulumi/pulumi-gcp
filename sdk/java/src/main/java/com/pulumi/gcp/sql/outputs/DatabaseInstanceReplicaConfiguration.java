@@ -39,7 +39,8 @@ public final class DatabaseInstanceReplicaConfiguration {
     private @Nullable Integer connectRetryInterval;
     /**
      * @return Path to a SQL file in GCS from which replica
-     * instances are created. Format is `gs://bucket/filename`.
+     * instances are created. Format is `gs://bucket/filename`. Note, if the master
+     * instance is a source representation instance this field must be present.
      * 
      */
     private @Nullable String dumpFilePath;
@@ -115,7 +116,8 @@ public final class DatabaseInstanceReplicaConfiguration {
     }
     /**
      * @return Path to a SQL file in GCS from which replica
-     * instances are created. Format is `gs://bucket/filename`.
+     * instances are created. Format is `gs://bucket/filename`. Note, if the master
+     * instance is a source representation instance this field must be present.
      * 
      */
     public Optional<String> dumpFilePath() {

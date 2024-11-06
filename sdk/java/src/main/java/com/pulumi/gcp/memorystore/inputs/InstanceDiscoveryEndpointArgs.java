@@ -54,7 +54,7 @@ public final class InstanceDiscoveryEndpointArgs extends com.pulumi.resources.Re
 
     /**
      * (Output)
-     * Output only. The port number of the exposed endpoint.
+     * Output only. Ports of the exposed endpoint.
      * 
      */
     @Import(name="port")
@@ -62,7 +62,7 @@ public final class InstanceDiscoveryEndpointArgs extends com.pulumi.resources.Re
 
     /**
      * @return (Output)
-     * Output only. The port number of the exposed endpoint.
+     * Output only. Ports of the exposed endpoint.
      * 
      */
     public Optional<Output<Integer>> port() {
@@ -145,7 +145,7 @@ public final class InstanceDiscoveryEndpointArgs extends com.pulumi.resources.Re
 
         /**
          * @param port (Output)
-         * Output only. The port number of the exposed endpoint.
+         * Output only. Ports of the exposed endpoint.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class InstanceDiscoveryEndpointArgs extends com.pulumi.resources.Re
 
         /**
          * @param port (Output)
-         * Output only. The port number of the exposed endpoint.
+         * Output only. Ports of the exposed endpoint.
          * 
          * @return builder
          * 

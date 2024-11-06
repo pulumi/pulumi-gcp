@@ -348,7 +348,7 @@ type ServiceAttachmentConnectedEndpoint struct {
 	// (Output)
 	// The URL of the consumer forwarding rule.
 	Endpoint *string `pulumi:"endpoint"`
-	// (Output, Beta)
+	// (Output)
 	// The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to.
 	PropagatedConnectionCount *int `pulumi:"propagatedConnectionCount"`
 	// (Output)
@@ -378,7 +378,7 @@ type ServiceAttachmentConnectedEndpointArgs struct {
 	// (Output)
 	// The URL of the consumer forwarding rule.
 	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
-	// (Output, Beta)
+	// (Output)
 	// The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to.
 	PropagatedConnectionCount pulumi.IntPtrInput `pulumi:"propagatedConnectionCount"`
 	// (Output)
@@ -453,7 +453,7 @@ func (o ServiceAttachmentConnectedEndpointOutput) Endpoint() pulumi.StringPtrOut
 	return o.ApplyT(func(v ServiceAttachmentConnectedEndpoint) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
 }
 
-// (Output, Beta)
+// (Output)
 // The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to.
 func (o ServiceAttachmentConnectedEndpointOutput) PropagatedConnectionCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceAttachmentConnectedEndpoint) *int { return v.PropagatedConnectionCount }).(pulumi.IntPtrOutput)
@@ -26651,6 +26651,8 @@ type GetInstanceAdvancedMachineFeature struct {
 	EnableNestedVirtualization bool `pulumi:"enableNestedVirtualization"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore int `pulumi:"threadsPerCore"`
+	// Turbo frequency mode to use for the instance. Currently supported modes is "ALL_CORE_MAX".
+	TurboMode string `pulumi:"turboMode"`
 	// The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\'s nominal CPU count and the underlying platform\'s SMT width.
 	VisibleCoreCount int `pulumi:"visibleCoreCount"`
 }
@@ -26671,6 +26673,8 @@ type GetInstanceAdvancedMachineFeatureArgs struct {
 	EnableNestedVirtualization pulumi.BoolInput `pulumi:"enableNestedVirtualization"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore pulumi.IntInput `pulumi:"threadsPerCore"`
+	// Turbo frequency mode to use for the instance. Currently supported modes is "ALL_CORE_MAX".
+	TurboMode pulumi.StringInput `pulumi:"turboMode"`
 	// The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\'s nominal CPU count and the underlying platform\'s SMT width.
 	VisibleCoreCount pulumi.IntInput `pulumi:"visibleCoreCount"`
 }
@@ -26734,6 +26738,11 @@ func (o GetInstanceAdvancedMachineFeatureOutput) EnableNestedVirtualization() pu
 // The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 func (o GetInstanceAdvancedMachineFeatureOutput) ThreadsPerCore() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceAdvancedMachineFeature) int { return v.ThreadsPerCore }).(pulumi.IntOutput)
+}
+
+// Turbo frequency mode to use for the instance. Currently supported modes is "ALL_CORE_MAX".
+func (o GetInstanceAdvancedMachineFeatureOutput) TurboMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceAdvancedMachineFeature) string { return v.TurboMode }).(pulumi.StringOutput)
 }
 
 // The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\'s nominal CPU count and the underlying platform\'s SMT width.
@@ -29469,6 +29478,121 @@ func (o GetInstanceGuestAcceleratorArrayOutput) Index(i pulumi.IntInput) GetInst
 	}).(GetInstanceGuestAcceleratorOutput)
 }
 
+type GetInstanceGuestAttributesQueryValue struct {
+	// Key of the guest_attribute.
+	Key string `pulumi:"key"`
+	// Namespace of the guest_attribute.
+	Namespace string `pulumi:"namespace"`
+	// Value of the guest_attribute.
+	Value string `pulumi:"value"`
+}
+
+// GetInstanceGuestAttributesQueryValueInput is an input type that accepts GetInstanceGuestAttributesQueryValueArgs and GetInstanceGuestAttributesQueryValueOutput values.
+// You can construct a concrete instance of `GetInstanceGuestAttributesQueryValueInput` via:
+//
+//	GetInstanceGuestAttributesQueryValueArgs{...}
+type GetInstanceGuestAttributesQueryValueInput interface {
+	pulumi.Input
+
+	ToGetInstanceGuestAttributesQueryValueOutput() GetInstanceGuestAttributesQueryValueOutput
+	ToGetInstanceGuestAttributesQueryValueOutputWithContext(context.Context) GetInstanceGuestAttributesQueryValueOutput
+}
+
+type GetInstanceGuestAttributesQueryValueArgs struct {
+	// Key of the guest_attribute.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Namespace of the guest_attribute.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// Value of the guest_attribute.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetInstanceGuestAttributesQueryValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGuestAttributesQueryValue)(nil)).Elem()
+}
+
+func (i GetInstanceGuestAttributesQueryValueArgs) ToGetInstanceGuestAttributesQueryValueOutput() GetInstanceGuestAttributesQueryValueOutput {
+	return i.ToGetInstanceGuestAttributesQueryValueOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGuestAttributesQueryValueArgs) ToGetInstanceGuestAttributesQueryValueOutputWithContext(ctx context.Context) GetInstanceGuestAttributesQueryValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGuestAttributesQueryValueOutput)
+}
+
+// GetInstanceGuestAttributesQueryValueArrayInput is an input type that accepts GetInstanceGuestAttributesQueryValueArray and GetInstanceGuestAttributesQueryValueArrayOutput values.
+// You can construct a concrete instance of `GetInstanceGuestAttributesQueryValueArrayInput` via:
+//
+//	GetInstanceGuestAttributesQueryValueArray{ GetInstanceGuestAttributesQueryValueArgs{...} }
+type GetInstanceGuestAttributesQueryValueArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceGuestAttributesQueryValueArrayOutput() GetInstanceGuestAttributesQueryValueArrayOutput
+	ToGetInstanceGuestAttributesQueryValueArrayOutputWithContext(context.Context) GetInstanceGuestAttributesQueryValueArrayOutput
+}
+
+type GetInstanceGuestAttributesQueryValueArray []GetInstanceGuestAttributesQueryValueInput
+
+func (GetInstanceGuestAttributesQueryValueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGuestAttributesQueryValue)(nil)).Elem()
+}
+
+func (i GetInstanceGuestAttributesQueryValueArray) ToGetInstanceGuestAttributesQueryValueArrayOutput() GetInstanceGuestAttributesQueryValueArrayOutput {
+	return i.ToGetInstanceGuestAttributesQueryValueArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceGuestAttributesQueryValueArray) ToGetInstanceGuestAttributesQueryValueArrayOutputWithContext(ctx context.Context) GetInstanceGuestAttributesQueryValueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceGuestAttributesQueryValueArrayOutput)
+}
+
+type GetInstanceGuestAttributesQueryValueOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGuestAttributesQueryValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceGuestAttributesQueryValue)(nil)).Elem()
+}
+
+func (o GetInstanceGuestAttributesQueryValueOutput) ToGetInstanceGuestAttributesQueryValueOutput() GetInstanceGuestAttributesQueryValueOutput {
+	return o
+}
+
+func (o GetInstanceGuestAttributesQueryValueOutput) ToGetInstanceGuestAttributesQueryValueOutputWithContext(ctx context.Context) GetInstanceGuestAttributesQueryValueOutput {
+	return o
+}
+
+// Key of the guest_attribute.
+func (o GetInstanceGuestAttributesQueryValueOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGuestAttributesQueryValue) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Namespace of the guest_attribute.
+func (o GetInstanceGuestAttributesQueryValueOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGuestAttributesQueryValue) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// Value of the guest_attribute.
+func (o GetInstanceGuestAttributesQueryValueOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceGuestAttributesQueryValue) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetInstanceGuestAttributesQueryValueArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceGuestAttributesQueryValueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceGuestAttributesQueryValue)(nil)).Elem()
+}
+
+func (o GetInstanceGuestAttributesQueryValueArrayOutput) ToGetInstanceGuestAttributesQueryValueArrayOutput() GetInstanceGuestAttributesQueryValueArrayOutput {
+	return o
+}
+
+func (o GetInstanceGuestAttributesQueryValueArrayOutput) ToGetInstanceGuestAttributesQueryValueArrayOutputWithContext(ctx context.Context) GetInstanceGuestAttributesQueryValueArrayOutput {
+	return o
+}
+
+func (o GetInstanceGuestAttributesQueryValueArrayOutput) Index(i pulumi.IntInput) GetInstanceGuestAttributesQueryValueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceGuestAttributesQueryValue {
+		return vs[0].([]GetInstanceGuestAttributesQueryValue)[vs[1].(int)]
+	}).(GetInstanceGuestAttributesQueryValueOutput)
+}
+
 type GetInstanceNetworkInterface struct {
 	// Access configurations, i.e. IPs via which this
 	// instance can be accessed via the Internet. Structure documented below.
@@ -31491,6 +31615,8 @@ type GetInstanceTemplateAdvancedMachineFeature struct {
 	EnableNestedVirtualization bool `pulumi:"enableNestedVirtualization"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore int `pulumi:"threadsPerCore"`
+	// Turbo frequency mode to use for the instance. Currently supported modes is "ALL_CORE_MAX".
+	TurboMode string `pulumi:"turboMode"`
 	// The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\'s nominal CPU count and the underlying platform\'s SMT width.
 	VisibleCoreCount int `pulumi:"visibleCoreCount"`
 }
@@ -31511,6 +31637,8 @@ type GetInstanceTemplateAdvancedMachineFeatureArgs struct {
 	EnableNestedVirtualization pulumi.BoolInput `pulumi:"enableNestedVirtualization"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore pulumi.IntInput `pulumi:"threadsPerCore"`
+	// Turbo frequency mode to use for the instance. Currently supported modes is "ALL_CORE_MAX".
+	TurboMode pulumi.StringInput `pulumi:"turboMode"`
 	// The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\'s nominal CPU count and the underlying platform\'s SMT width.
 	VisibleCoreCount pulumi.IntInput `pulumi:"visibleCoreCount"`
 }
@@ -31574,6 +31702,11 @@ func (o GetInstanceTemplateAdvancedMachineFeatureOutput) EnableNestedVirtualizat
 // The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 func (o GetInstanceTemplateAdvancedMachineFeatureOutput) ThreadsPerCore() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceTemplateAdvancedMachineFeature) int { return v.ThreadsPerCore }).(pulumi.IntOutput)
+}
+
+// Turbo frequency mode to use for the instance. Currently supported modes is "ALL_CORE_MAX".
+func (o GetInstanceTemplateAdvancedMachineFeatureOutput) TurboMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTemplateAdvancedMachineFeature) string { return v.TurboMode }).(pulumi.StringOutput)
 }
 
 // The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\'s nominal CPU count and the underlying platform\'s SMT width.
@@ -37458,6 +37591,8 @@ type GetRegionInstanceTemplateAdvancedMachineFeature struct {
 	EnableNestedVirtualization bool `pulumi:"enableNestedVirtualization"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore int `pulumi:"threadsPerCore"`
+	// Turbo frequency mode to use for the instance. Currently supported modes is "ALL_CORE_MAX".
+	TurboMode string `pulumi:"turboMode"`
 	// The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\'s nominal CPU count and the underlying platform\'s SMT width.
 	VisibleCoreCount int `pulumi:"visibleCoreCount"`
 }
@@ -37478,6 +37613,8 @@ type GetRegionInstanceTemplateAdvancedMachineFeatureArgs struct {
 	EnableNestedVirtualization pulumi.BoolInput `pulumi:"enableNestedVirtualization"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore pulumi.IntInput `pulumi:"threadsPerCore"`
+	// Turbo frequency mode to use for the instance. Currently supported modes is "ALL_CORE_MAX".
+	TurboMode pulumi.StringInput `pulumi:"turboMode"`
 	// The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\'s nominal CPU count and the underlying platform\'s SMT width.
 	VisibleCoreCount pulumi.IntInput `pulumi:"visibleCoreCount"`
 }
@@ -37541,6 +37678,11 @@ func (o GetRegionInstanceTemplateAdvancedMachineFeatureOutput) EnableNestedVirtu
 // The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 func (o GetRegionInstanceTemplateAdvancedMachineFeatureOutput) ThreadsPerCore() pulumi.IntOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateAdvancedMachineFeature) int { return v.ThreadsPerCore }).(pulumi.IntOutput)
+}
+
+// Turbo frequency mode to use for the instance. Currently supported modes is "ALL_CORE_MAX".
+func (o GetRegionInstanceTemplateAdvancedMachineFeatureOutput) TurboMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateAdvancedMachineFeature) string { return v.TurboMode }).(pulumi.StringOutput)
 }
 
 // The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\'s nominal CPU count and the underlying platform\'s SMT width.
@@ -48498,6 +48640,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGroupNamedPortTypeArrayInput)(nil)).Elem(), GetInstanceGroupNamedPortTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGuestAcceleratorInput)(nil)).Elem(), GetInstanceGuestAcceleratorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGuestAcceleratorArrayInput)(nil)).Elem(), GetInstanceGuestAcceleratorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGuestAttributesQueryValueInput)(nil)).Elem(), GetInstanceGuestAttributesQueryValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceGuestAttributesQueryValueArrayInput)(nil)).Elem(), GetInstanceGuestAttributesQueryValueArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkInterfaceInput)(nil)).Elem(), GetInstanceNetworkInterfaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkInterfaceArrayInput)(nil)).Elem(), GetInstanceNetworkInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkInterfaceAccessConfigInput)(nil)).Elem(), GetInstanceNetworkInterfaceAccessConfigArgs{})
@@ -49134,6 +49278,8 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceGroupNamedPortTypeArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceGuestAcceleratorOutput{})
 	pulumi.RegisterOutputType(GetInstanceGuestAcceleratorArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceGuestAttributesQueryValueOutput{})
+	pulumi.RegisterOutputType(GetInstanceGuestAttributesQueryValueArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceNetworkInterfaceOutput{})
 	pulumi.RegisterOutputType(GetInstanceNetworkInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceNetworkInterfaceAccessConfigOutput{})

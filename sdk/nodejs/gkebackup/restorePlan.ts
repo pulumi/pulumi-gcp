@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  *             enabled: true,
  *         },
  *     },
- *     deletionProtection: "",
+ *     deletionProtection: true,
  *     network: "default",
  *     subnetwork: "default",
  * });
@@ -83,7 +83,7 @@ import * as utilities from "../utilities";
  *             enabled: true,
  *         },
  *     },
- *     deletionProtection: "",
+ *     deletionProtection: true,
  *     network: "default",
  *     subnetwork: "default",
  * });
@@ -142,7 +142,7 @@ import * as utilities from "../utilities";
  *             enabled: true,
  *         },
  *     },
- *     deletionProtection: "",
+ *     deletionProtection: true,
  *     network: "default",
  *     subnetwork: "default",
  * });
@@ -194,7 +194,7 @@ import * as utilities from "../utilities";
  *             enabled: true,
  *         },
  *     },
- *     deletionProtection: "",
+ *     deletionProtection: true,
  *     network: "default",
  *     subnetwork: "default",
  * });
@@ -241,7 +241,7 @@ import * as utilities from "../utilities";
  *             enabled: true,
  *         },
  *     },
- *     deletionProtection: "",
+ *     deletionProtection: true,
  *     network: "default",
  *     subnetwork: "default",
  * });
@@ -317,7 +317,7 @@ import * as utilities from "../utilities";
  *             enabled: true,
  *         },
  *     },
- *     deletionProtection: "",
+ *     deletionProtection: true,
  *     network: "default",
  *     subnetwork: "default",
  * });
@@ -389,7 +389,7 @@ import * as utilities from "../utilities";
  *             enabled: true,
  *         },
  *     },
- *     deletionProtection: "",
+ *     deletionProtection: true,
  *     network: "default",
  *     subnetwork: "default",
  * });
@@ -437,7 +437,7 @@ import * as utilities from "../utilities";
  *             enabled: true,
  *         },
  *     },
- *     deletionProtection: "",
+ *     deletionProtection: true,
  *     network: "default",
  *     subnetwork: "default",
  * });
@@ -509,7 +509,7 @@ import * as utilities from "../utilities";
  *             enabled: true,
  *         },
  *     },
- *     deletionProtection: "",
+ *     deletionProtection: true,
  *     network: "default",
  *     subnetwork: "default",
  * });

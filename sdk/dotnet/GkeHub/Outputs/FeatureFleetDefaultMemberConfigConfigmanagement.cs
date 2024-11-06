@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.GkeHub.Outputs
         /// </summary>
         public readonly string? Management;
         /// <summary>
-        /// Version of ACM installed
+        /// Version of Config Sync installed
         /// </summary>
         public readonly string? Version;
 

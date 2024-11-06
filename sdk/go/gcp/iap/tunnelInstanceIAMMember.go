@@ -531,7 +531,7 @@ import (
 // $ pulumi import gcp:iap/tunnelInstanceIAMMember:TunnelInstanceIAMMember editor projects/{{project}}/iap_tunnel/zones/{{zone}}/instances/{{tunnel_instance}}
 // ```
 //
-// -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+// -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 //
 //	full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type TunnelInstanceIAMMember struct {

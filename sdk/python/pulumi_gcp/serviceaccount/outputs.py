@@ -17,6 +17,7 @@ from .. import _utilities
 __all__ = [
     'IAMBindingCondition',
     'IAMMemberCondition',
+    'GetSAccountResult',
 ]
 
 @pulumi.output_type
@@ -115,5 +116,93 @@ class IAMMemberCondition(dict):
         consider it to be an entirely different resource and will treat it as such.
         """
         return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class GetSAccountResult(dict):
+    def __init__(__self__, *,
+                 account_id: str,
+                 disabled: bool,
+                 display_name: str,
+                 email: str,
+                 member: str,
+                 name: str,
+                 unique_id: str):
+        """
+        :param str account_id: The Google service account ID (the part before the `@` sign in the `email`)
+        :param bool disabled: Whether a service account is disabled or not.
+        :param str display_name: The display name for the service account.
+        :param str email: The e-mail address of the service account. This value
+               should be referenced from any `organizations_get_iam_policy` data sources
+               that would grant the service account privileges.
+        :param str member: The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
+        :param str name: The fully-qualified name of the service account.
+        :param str unique_id: The unique id of the service account.
+        """
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "disabled", disabled)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "email", email)
+        pulumi.set(__self__, "member", member)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "unique_id", unique_id)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> str:
+        """
+        The Google service account ID (the part before the `@` sign in the `email`)
+        """
+        return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> bool:
+        """
+        Whether a service account is disabled or not.
+        """
+        return pulumi.get(self, "disabled")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        The display name for the service account.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def email(self) -> str:
+        """
+        The e-mail address of the service account. This value
+        should be referenced from any `organizations_get_iam_policy` data sources
+        that would grant the service account privileges.
+        """
+        return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter
+    def member(self) -> str:
+        """
+        The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
+        """
+        return pulumi.get(self, "member")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The fully-qualified name of the service account.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="uniqueId")
+    def unique_id(self) -> str:
+        """
+        The unique id of the service account.
+        """
+        return pulumi.get(self, "unique_id")
 
 

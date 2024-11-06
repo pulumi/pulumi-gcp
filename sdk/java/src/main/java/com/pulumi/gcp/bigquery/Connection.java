@@ -114,7 +114,7 @@ import javax.annotation.Nullable;
  *             .settings(DatabaseInstanceSettingsArgs.builder()
  *                 .tier("db-f1-micro")
  *                 .build())
- *             .deletionProtection("true")
+ *             .deletionProtection(true)
  *             .build());
  * 
  *         var db = new Database("db", DatabaseArgs.builder()
@@ -196,7 +196,7 @@ import javax.annotation.Nullable;
  *             .settings(DatabaseInstanceSettingsArgs.builder()
  *                 .tier("db-f1-micro")
  *                 .build())
- *             .deletionProtection("true")
+ *             .deletionProtection(true)
  *             .build());
  * 
  *         var db = new Database("db", DatabaseArgs.builder()
@@ -521,7 +521,7 @@ import javax.annotation.Nullable;
  *             .settings(DatabaseInstanceSettingsArgs.builder()
  *                 .tier("db-f1-micro")
  *                 .build())
- *             .deletionProtection("true")
+ *             .deletionProtection(true)
  *             .build());
  * 
  *         var db = new Database("db", DatabaseArgs.builder()

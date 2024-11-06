@@ -33,16 +33,12 @@ public final class PrivateCloudManagementClusterStretchedClusterConfigArgs exten
     /**
      * Additional zone for a higher level of availability and load balancing.
      * 
-     * ***
-     * 
      */
     @Import(name="secondaryLocation")
     private @Nullable Output<String> secondaryLocation;
 
     /**
      * @return Additional zone for a higher level of availability and load balancing.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> secondaryLocation() {
@@ -98,8 +94,6 @@ public final class PrivateCloudManagementClusterStretchedClusterConfigArgs exten
         /**
          * @param secondaryLocation Additional zone for a higher level of availability and load balancing.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -110,8 +104,6 @@ public final class PrivateCloudManagementClusterStretchedClusterConfigArgs exten
 
         /**
          * @param secondaryLocation Additional zone for a higher level of availability and load balancing.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -29,6 +29,16 @@ public final class ExternalVpnGatewayInterface {
      * 
      */
     private @Nullable String ipAddress;
+    /**
+     * @return IPv6 address of the interface in the external VPN gateway. This IPv6
+     * address can be either from your on-premise gateway or another Cloud
+     * provider&#39;s VPN gateway, it cannot be an IP address from Google Compute
+     * Engine. Must specify an IPv6 address (not IPV4-mapped) using any format
+     * described in RFC 4291 (e.g. 2001:db8:0:0:2d9:51:0:0). The output format
+     * is RFC 5952 format (e.g. 2001:db8::2d9:51:0:0).
+     * 
+     */
+    private @Nullable String ipv6Address;
 
     private ExternalVpnGatewayInterface() {}
     /**
@@ -52,6 +62,18 @@ public final class ExternalVpnGatewayInterface {
     public Optional<String> ipAddress() {
         return Optional.ofNullable(this.ipAddress);
     }
+    /**
+     * @return IPv6 address of the interface in the external VPN gateway. This IPv6
+     * address can be either from your on-premise gateway or another Cloud
+     * provider&#39;s VPN gateway, it cannot be an IP address from Google Compute
+     * Engine. Must specify an IPv6 address (not IPV4-mapped) using any format
+     * described in RFC 4291 (e.g. 2001:db8:0:0:2d9:51:0:0). The output format
+     * is RFC 5952 format (e.g. 2001:db8::2d9:51:0:0).
+     * 
+     */
+    public Optional<String> ipv6Address() {
+        return Optional.ofNullable(this.ipv6Address);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -64,11 +86,13 @@ public final class ExternalVpnGatewayInterface {
     public static final class Builder {
         private @Nullable Integer id;
         private @Nullable String ipAddress;
+        private @Nullable String ipv6Address;
         public Builder() {}
         public Builder(ExternalVpnGatewayInterface defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.ipAddress = defaults.ipAddress;
+    	      this.ipv6Address = defaults.ipv6Address;
         }
 
         @CustomType.Setter
@@ -83,10 +107,17 @@ public final class ExternalVpnGatewayInterface {
             this.ipAddress = ipAddress;
             return this;
         }
+        @CustomType.Setter
+        public Builder ipv6Address(@Nullable String ipv6Address) {
+
+            this.ipv6Address = ipv6Address;
+            return this;
+        }
         public ExternalVpnGatewayInterface build() {
             final var _resultValue = new ExternalVpnGatewayInterface();
             _resultValue.id = id;
             _resultValue.ipAddress = ipAddress;
+            _resultValue.ipv6Address = ipv6Address;
             return _resultValue;
         }
     }

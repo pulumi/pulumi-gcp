@@ -312,6 +312,40 @@ import (
 //	}
 //
 // ```
+// ### Bigquery Dataset External Catalog Dataset Options
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := bigquery.NewDataset(ctx, "dataset", &bigquery.DatasetArgs{
+//				DatasetId:    pulumi.String("example_dataset"),
+//				FriendlyName: pulumi.String("test"),
+//				Description:  pulumi.String("This is a test description"),
+//				Location:     pulumi.String("US"),
+//				ExternalCatalogDatasetOptions: &bigquery.DatasetExternalCatalogDatasetOptionsArgs{
+//					Parameters: pulumi.StringMap{
+//						"dataset_owner": pulumi.String("test_dataset_owner"),
+//					},
+//					DefaultStorageLocationUri: pulumi.String("gs://test_dataset/tables"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -402,6 +436,10 @@ type Dataset struct {
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// A hash of the resource.
 	Etag pulumi.StringOutput `pulumi:"etag"`
+	// Options defining open source compatible datasets living in the BigQuery catalog. Contains
+	// metadata of open source database, schema or namespace represented by the current dataset.
+	// Structure is documented below.
+	ExternalCatalogDatasetOptions DatasetExternalCatalogDatasetOptionsPtrOutput `pulumi:"externalCatalogDatasetOptions"`
 	// Information about the external metadata storage where the dataset is defined.
 	// Structure is documented below.
 	ExternalDatasetReference DatasetExternalDatasetReferencePtrOutput `pulumi:"externalDatasetReference"`
@@ -553,6 +591,10 @@ type datasetState struct {
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// A hash of the resource.
 	Etag *string `pulumi:"etag"`
+	// Options defining open source compatible datasets living in the BigQuery catalog. Contains
+	// metadata of open source database, schema or namespace represented by the current dataset.
+	// Structure is documented below.
+	ExternalCatalogDatasetOptions *DatasetExternalCatalogDatasetOptions `pulumi:"externalCatalogDatasetOptions"`
 	// Information about the external metadata storage where the dataset is defined.
 	// Structure is documented below.
 	ExternalDatasetReference *DatasetExternalDatasetReference `pulumi:"externalDatasetReference"`
@@ -667,6 +709,10 @@ type DatasetState struct {
 	EffectiveLabels pulumi.StringMapInput
 	// A hash of the resource.
 	Etag pulumi.StringPtrInput
+	// Options defining open source compatible datasets living in the BigQuery catalog. Contains
+	// metadata of open source database, schema or namespace represented by the current dataset.
+	// Structure is documented below.
+	ExternalCatalogDatasetOptions DatasetExternalCatalogDatasetOptionsPtrInput
 	// Information about the external metadata storage where the dataset is defined.
 	// Structure is documented below.
 	ExternalDatasetReference DatasetExternalDatasetReferencePtrInput
@@ -778,6 +824,10 @@ type datasetArgs struct {
 	DeleteContentsOnDestroy *bool `pulumi:"deleteContentsOnDestroy"`
 	// A user-friendly description of the dataset
 	Description *string `pulumi:"description"`
+	// Options defining open source compatible datasets living in the BigQuery catalog. Contains
+	// metadata of open source database, schema or namespace represented by the current dataset.
+	// Structure is documented below.
+	ExternalCatalogDatasetOptions *DatasetExternalCatalogDatasetOptions `pulumi:"externalCatalogDatasetOptions"`
 	// Information about the external metadata storage where the dataset is defined.
 	// Structure is documented below.
 	ExternalDatasetReference *DatasetExternalDatasetReference `pulumi:"externalDatasetReference"`
@@ -878,6 +928,10 @@ type DatasetArgs struct {
 	DeleteContentsOnDestroy pulumi.BoolPtrInput
 	// A user-friendly description of the dataset
 	Description pulumi.StringPtrInput
+	// Options defining open source compatible datasets living in the BigQuery catalog. Contains
+	// metadata of open source database, schema or namespace represented by the current dataset.
+	// Structure is documented below.
+	ExternalCatalogDatasetOptions DatasetExternalCatalogDatasetOptionsPtrInput
 	// Information about the external metadata storage where the dataset is defined.
 	// Structure is documented below.
 	ExternalDatasetReference DatasetExternalDatasetReferencePtrInput
@@ -1103,6 +1157,13 @@ func (o DatasetOutput) EffectiveLabels() pulumi.StringMapOutput {
 // A hash of the resource.
 func (o DatasetOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Options defining open source compatible datasets living in the BigQuery catalog. Contains
+// metadata of open source database, schema or namespace represented by the current dataset.
+// Structure is documented below.
+func (o DatasetOutput) ExternalCatalogDatasetOptions() DatasetExternalCatalogDatasetOptionsPtrOutput {
+	return o.ApplyT(func(v *Dataset) DatasetExternalCatalogDatasetOptionsPtrOutput { return v.ExternalCatalogDatasetOptions }).(DatasetExternalCatalogDatasetOptionsPtrOutput)
 }
 
 // Information about the external metadata storage where the dataset is defined.

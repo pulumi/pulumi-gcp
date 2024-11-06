@@ -38,11 +38,20 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * const debian = gcp.compute.getImage({
+ *     family: "debian-12",
+ *     project: "debian-cloud",
+ * });
+ * const persistent = new gcp.compute.Disk("persistent", {
+ *     name: "example-disk",
+ *     image: debian.then(debian => debian.selfLink),
+ *     size: 10,
+ *     type: "pd-ssd",
+ *     zone: "us-central1-a",
+ * });
  * const example = new gcp.compute.Image("example", {
  *     name: "example-image",
- *     rawDisk: {
- *         source: "https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
- *     },
+ *     sourceDisk: persistent.id,
  * });
  * ```
  * ### Image Guest Os
@@ -51,17 +60,35 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * const debian = gcp.compute.getImage({
+ *     family: "debian-12",
+ *     project: "debian-cloud",
+ * });
+ * const persistent = new gcp.compute.Disk("persistent", {
+ *     name: "example-disk",
+ *     image: debian.then(debian => debian.selfLink),
+ *     size: 10,
+ *     type: "pd-ssd",
+ *     zone: "us-central1-a",
+ * });
  * const example = new gcp.compute.Image("example", {
  *     name: "example-image",
- *     rawDisk: {
- *         source: "https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
- *     },
+ *     sourceDisk: persistent.id,
  *     guestOsFeatures: [
  *         {
- *             type: "SECURE_BOOT",
+ *             type: "UEFI_COMPATIBLE",
  *         },
  *         {
- *             type: "MULTI_IP_SUBNET",
+ *             type: "VIRTIO_SCSI_MULTIQUEUE",
+ *         },
+ *         {
+ *             type: "GVNIC",
+ *         },
+ *         {
+ *             type: "SEV_CAPABLE",
+ *         },
+ *         {
+ *             type: "SEV_LIVE_MIGRATABLE_V2",
  *         },
  *     ],
  * });
@@ -72,11 +99,20 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * const debian = gcp.compute.getImage({
+ *     family: "debian-12",
+ *     project: "debian-cloud",
+ * });
+ * const persistent = new gcp.compute.Disk("persistent", {
+ *     name: "example-disk",
+ *     image: debian.then(debian => debian.selfLink),
+ *     size: 10,
+ *     type: "pd-ssd",
+ *     zone: "us-central1-a",
+ * });
  * const example = new gcp.compute.Image("example", {
  *     name: "example-sl-image",
- *     rawDisk: {
- *         source: "https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
- *     },
+ *     sourceDisk: persistent.id,
  *     storageLocations: ["us-central1"],
  * });
  * ```

@@ -89,16 +89,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			// A default rule is generated when creating the security_policy resource, import is needed to patch it
-//			//
-//			//	import {
-//			//	  id = "projects//global/securityPolicies/policyruletest/priority/2147483647"
-//			//	  to = google_compute_security_policy_rule.default_rule
-//			//	}
 //			_, err = compute.NewSecurityPolicyRule(ctx, "default_rule", &compute.SecurityPolicyRuleArgs{
 //				SecurityPolicy: _default.Name,
 //				Description:    pulumi.String("default rule"),
-//				Action:         pulumi.String("allow"),
+//				Action:         pulumi.String("deny"),
 //				Priority:       pulumi.Int(2147483647),
 //				Match: &compute.SecurityPolicyRuleMatchArgs{
 //					VersionedExpr: pulumi.String("SRC_IPS_V1"),
@@ -235,6 +229,9 @@ type SecurityPolicyRule struct {
 	Action pulumi.StringOutput `pulumi:"action"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+	// Structure is documented below.
+	HeaderAction SecurityPolicyRuleHeaderActionPtrOutput `pulumi:"headerAction"`
 	// A match condition that incoming traffic is evaluated against.
 	// If it evaluates to true, the corresponding 'action' is enforced.
 	// Structure is documented below.
@@ -255,6 +252,9 @@ type SecurityPolicyRule struct {
 	// Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
 	// Structure is documented below.
 	RateLimitOptions SecurityPolicyRuleRateLimitOptionsPtrOutput `pulumi:"rateLimitOptions"`
+	// Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+	// Structure is documented below.
+	RedirectOptions SecurityPolicyRuleRedirectOptionsPtrOutput `pulumi:"redirectOptions"`
 	// The name of the security policy this rule belongs to.
 	//
 	// ***
@@ -309,6 +309,9 @@ type securityPolicyRuleState struct {
 	Action *string `pulumi:"action"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
+	// Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+	// Structure is documented below.
+	HeaderAction *SecurityPolicyRuleHeaderAction `pulumi:"headerAction"`
 	// A match condition that incoming traffic is evaluated against.
 	// If it evaluates to true, the corresponding 'action' is enforced.
 	// Structure is documented below.
@@ -329,6 +332,9 @@ type securityPolicyRuleState struct {
 	// Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
 	// Structure is documented below.
 	RateLimitOptions *SecurityPolicyRuleRateLimitOptions `pulumi:"rateLimitOptions"`
+	// Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+	// Structure is documented below.
+	RedirectOptions *SecurityPolicyRuleRedirectOptions `pulumi:"redirectOptions"`
 	// The name of the security policy this rule belongs to.
 	//
 	// ***
@@ -345,6 +351,9 @@ type SecurityPolicyRuleState struct {
 	Action pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
+	// Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+	// Structure is documented below.
+	HeaderAction SecurityPolicyRuleHeaderActionPtrInput
 	// A match condition that incoming traffic is evaluated against.
 	// If it evaluates to true, the corresponding 'action' is enforced.
 	// Structure is documented below.
@@ -365,6 +374,9 @@ type SecurityPolicyRuleState struct {
 	// Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
 	// Structure is documented below.
 	RateLimitOptions SecurityPolicyRuleRateLimitOptionsPtrInput
+	// Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+	// Structure is documented below.
+	RedirectOptions SecurityPolicyRuleRedirectOptionsPtrInput
 	// The name of the security policy this rule belongs to.
 	//
 	// ***
@@ -385,6 +397,9 @@ type securityPolicyRuleArgs struct {
 	Action string `pulumi:"action"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
+	// Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+	// Structure is documented below.
+	HeaderAction *SecurityPolicyRuleHeaderAction `pulumi:"headerAction"`
 	// A match condition that incoming traffic is evaluated against.
 	// If it evaluates to true, the corresponding 'action' is enforced.
 	// Structure is documented below.
@@ -405,6 +420,9 @@ type securityPolicyRuleArgs struct {
 	// Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
 	// Structure is documented below.
 	RateLimitOptions *SecurityPolicyRuleRateLimitOptions `pulumi:"rateLimitOptions"`
+	// Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+	// Structure is documented below.
+	RedirectOptions *SecurityPolicyRuleRedirectOptions `pulumi:"redirectOptions"`
 	// The name of the security policy this rule belongs to.
 	//
 	// ***
@@ -422,6 +440,9 @@ type SecurityPolicyRuleArgs struct {
 	Action pulumi.StringInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
+	// Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+	// Structure is documented below.
+	HeaderAction SecurityPolicyRuleHeaderActionPtrInput
 	// A match condition that incoming traffic is evaluated against.
 	// If it evaluates to true, the corresponding 'action' is enforced.
 	// Structure is documented below.
@@ -442,6 +463,9 @@ type SecurityPolicyRuleArgs struct {
 	// Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
 	// Structure is documented below.
 	RateLimitOptions SecurityPolicyRuleRateLimitOptionsPtrInput
+	// Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+	// Structure is documented below.
+	RedirectOptions SecurityPolicyRuleRedirectOptionsPtrInput
 	// The name of the security policy this rule belongs to.
 	//
 	// ***
@@ -550,6 +574,12 @@ func (o SecurityPolicyRuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityPolicyRule) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+// Structure is documented below.
+func (o SecurityPolicyRuleOutput) HeaderAction() SecurityPolicyRuleHeaderActionPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyRule) SecurityPolicyRuleHeaderActionPtrOutput { return v.HeaderAction }).(SecurityPolicyRuleHeaderActionPtrOutput)
+}
+
 // A match condition that incoming traffic is evaluated against.
 // If it evaluates to true, the corresponding 'action' is enforced.
 // Structure is documented below.
@@ -588,6 +618,12 @@ func (o SecurityPolicyRuleOutput) Project() pulumi.StringOutput {
 // Structure is documented below.
 func (o SecurityPolicyRuleOutput) RateLimitOptions() SecurityPolicyRuleRateLimitOptionsPtrOutput {
 	return o.ApplyT(func(v *SecurityPolicyRule) SecurityPolicyRuleRateLimitOptionsPtrOutput { return v.RateLimitOptions }).(SecurityPolicyRuleRateLimitOptionsPtrOutput)
+}
+
+// Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+// Structure is documented below.
+func (o SecurityPolicyRuleOutput) RedirectOptions() SecurityPolicyRuleRedirectOptionsPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyRule) SecurityPolicyRuleRedirectOptionsPtrOutput { return v.RedirectOptions }).(SecurityPolicyRuleRedirectOptionsPtrOutput)
 }
 
 // The name of the security policy this rule belongs to.

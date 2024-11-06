@@ -53,6 +53,7 @@ from .get_image_iam_policy import *
 from .get_instance import *
 from .get_instance_group import *
 from .get_instance_group_manager import *
+from .get_instance_guest_attributes import *
 from .get_instance_iam_policy import *
 from .get_instance_serial_port import *
 from .get_instance_template import *

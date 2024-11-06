@@ -50,11 +50,26 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewImage(ctx, "example", &compute.ImageArgs{
-//				Name: pulumi.String("example-image"),
-//				RawDisk: &compute.ImageRawDiskArgs{
-//					Source: pulumi.String("https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz"),
-//				},
+//			debian, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
+//				Family:  pulumi.StringRef("debian-12"),
+//				Project: pulumi.StringRef("debian-cloud"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			persistent, err := compute.NewDisk(ctx, "persistent", &compute.DiskArgs{
+//				Name:  pulumi.String("example-disk"),
+//				Image: pulumi.String(debian.SelfLink),
+//				Size:  pulumi.Int(10),
+//				Type:  pulumi.String("pd-ssd"),
+//				Zone:  pulumi.String("us-central1-a"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewImage(ctx, "example", &compute.ImageArgs{
+//				Name:       pulumi.String("example-image"),
+//				SourceDisk: persistent.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -78,17 +93,41 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewImage(ctx, "example", &compute.ImageArgs{
-//				Name: pulumi.String("example-image"),
-//				RawDisk: &compute.ImageRawDiskArgs{
-//					Source: pulumi.String("https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz"),
-//				},
+//			debian, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
+//				Family:  pulumi.StringRef("debian-12"),
+//				Project: pulumi.StringRef("debian-cloud"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			persistent, err := compute.NewDisk(ctx, "persistent", &compute.DiskArgs{
+//				Name:  pulumi.String("example-disk"),
+//				Image: pulumi.String(debian.SelfLink),
+//				Size:  pulumi.Int(10),
+//				Type:  pulumi.String("pd-ssd"),
+//				Zone:  pulumi.String("us-central1-a"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewImage(ctx, "example", &compute.ImageArgs{
+//				Name:       pulumi.String("example-image"),
+//				SourceDisk: persistent.ID(),
 //				GuestOsFeatures: compute.ImageGuestOsFeatureArray{
 //					&compute.ImageGuestOsFeatureArgs{
-//						Type: pulumi.String("SECURE_BOOT"),
+//						Type: pulumi.String("UEFI_COMPATIBLE"),
 //					},
 //					&compute.ImageGuestOsFeatureArgs{
-//						Type: pulumi.String("MULTI_IP_SUBNET"),
+//						Type: pulumi.String("VIRTIO_SCSI_MULTIQUEUE"),
+//					},
+//					&compute.ImageGuestOsFeatureArgs{
+//						Type: pulumi.String("GVNIC"),
+//					},
+//					&compute.ImageGuestOsFeatureArgs{
+//						Type: pulumi.String("SEV_CAPABLE"),
+//					},
+//					&compute.ImageGuestOsFeatureArgs{
+//						Type: pulumi.String("SEV_LIVE_MIGRATABLE_V2"),
 //					},
 //				},
 //			})
@@ -114,11 +153,26 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewImage(ctx, "example", &compute.ImageArgs{
-//				Name: pulumi.String("example-sl-image"),
-//				RawDisk: &compute.ImageRawDiskArgs{
-//					Source: pulumi.String("https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz"),
-//				},
+//			debian, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
+//				Family:  pulumi.StringRef("debian-12"),
+//				Project: pulumi.StringRef("debian-cloud"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			persistent, err := compute.NewDisk(ctx, "persistent", &compute.DiskArgs{
+//				Name:  pulumi.String("example-disk"),
+//				Image: pulumi.String(debian.SelfLink),
+//				Size:  pulumi.Int(10),
+//				Type:  pulumi.String("pd-ssd"),
+//				Zone:  pulumi.String("us-central1-a"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewImage(ctx, "example", &compute.ImageArgs{
+//				Name:       pulumi.String("example-sl-image"),
+//				SourceDisk: persistent.ID(),
 //				StorageLocations: pulumi.StringArray{
 //					pulumi.String("us-central1"),
 //				},

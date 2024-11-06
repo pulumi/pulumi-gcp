@@ -60,11 +60,37 @@ public final class ExternalVpnGatewayInterfaceArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.ipAddress);
     }
 
+    /**
+     * IPv6 address of the interface in the external VPN gateway. This IPv6
+     * address can be either from your on-premise gateway or another Cloud
+     * provider&#39;s VPN gateway, it cannot be an IP address from Google Compute
+     * Engine. Must specify an IPv6 address (not IPV4-mapped) using any format
+     * described in RFC 4291 (e.g. 2001:db8:0:0:2d9:51:0:0). The output format
+     * is RFC 5952 format (e.g. 2001:db8::2d9:51:0:0).
+     * 
+     */
+    @Import(name="ipv6Address")
+    private @Nullable Output<String> ipv6Address;
+
+    /**
+     * @return IPv6 address of the interface in the external VPN gateway. This IPv6
+     * address can be either from your on-premise gateway or another Cloud
+     * provider&#39;s VPN gateway, it cannot be an IP address from Google Compute
+     * Engine. Must specify an IPv6 address (not IPV4-mapped) using any format
+     * described in RFC 4291 (e.g. 2001:db8:0:0:2d9:51:0:0). The output format
+     * is RFC 5952 format (e.g. 2001:db8::2d9:51:0:0).
+     * 
+     */
+    public Optional<Output<String>> ipv6Address() {
+        return Optional.ofNullable(this.ipv6Address);
+    }
+
     private ExternalVpnGatewayInterfaceArgs() {}
 
     private ExternalVpnGatewayInterfaceArgs(ExternalVpnGatewayInterfaceArgs $) {
         this.id = $.id;
         this.ipAddress = $.ipAddress;
+        this.ipv6Address = $.ipv6Address;
     }
 
     public static Builder builder() {
@@ -139,6 +165,37 @@ public final class ExternalVpnGatewayInterfaceArgs extends com.pulumi.resources.
          */
         public Builder ipAddress(String ipAddress) {
             return ipAddress(Output.of(ipAddress));
+        }
+
+        /**
+         * @param ipv6Address IPv6 address of the interface in the external VPN gateway. This IPv6
+         * address can be either from your on-premise gateway or another Cloud
+         * provider&#39;s VPN gateway, it cannot be an IP address from Google Compute
+         * Engine. Must specify an IPv6 address (not IPV4-mapped) using any format
+         * described in RFC 4291 (e.g. 2001:db8:0:0:2d9:51:0:0). The output format
+         * is RFC 5952 format (e.g. 2001:db8::2d9:51:0:0).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6Address(@Nullable Output<String> ipv6Address) {
+            $.ipv6Address = ipv6Address;
+            return this;
+        }
+
+        /**
+         * @param ipv6Address IPv6 address of the interface in the external VPN gateway. This IPv6
+         * address can be either from your on-premise gateway or another Cloud
+         * provider&#39;s VPN gateway, it cannot be an IP address from Google Compute
+         * Engine. Must specify an IPv6 address (not IPV4-mapped) using any format
+         * described in RFC 4291 (e.g. 2001:db8:0:0:2d9:51:0:0). The output format
+         * is RFC 5952 format (e.g. 2001:db8::2d9:51:0:0).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6Address(String ipv6Address) {
+            return ipv6Address(Output.of(ipv6Address));
         }
 
         public ExternalVpnGatewayInterfaceArgs build() {

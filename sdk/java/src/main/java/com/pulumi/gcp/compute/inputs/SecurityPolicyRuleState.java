@@ -5,9 +5,11 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleHeaderActionArgs;
 import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleMatchArgs;
 import com.pulumi.gcp.compute.inputs.SecurityPolicyRulePreconfiguredWafConfigArgs;
 import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleRateLimitOptionsArgs;
+import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleRedirectOptionsArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -58,6 +60,23 @@ public final class SecurityPolicyRuleState extends com.pulumi.resources.Resource
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="headerAction")
+    private @Nullable Output<SecurityPolicyRuleHeaderActionArgs> headerAction;
+
+    /**
+     * @return Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<SecurityPolicyRuleHeaderActionArgs>> headerAction() {
+        return Optional.ofNullable(this.headerAction);
     }
 
     /**
@@ -167,6 +186,23 @@ public final class SecurityPolicyRuleState extends com.pulumi.resources.Resource
     }
 
     /**
+     * Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="redirectOptions")
+    private @Nullable Output<SecurityPolicyRuleRedirectOptionsArgs> redirectOptions;
+
+    /**
+     * @return Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<SecurityPolicyRuleRedirectOptionsArgs>> redirectOptions() {
+        return Optional.ofNullable(this.redirectOptions);
+    }
+
+    /**
      * The name of the security policy this rule belongs to.
      * 
      * ***
@@ -190,12 +226,14 @@ public final class SecurityPolicyRuleState extends com.pulumi.resources.Resource
     private SecurityPolicyRuleState(SecurityPolicyRuleState $) {
         this.action = $.action;
         this.description = $.description;
+        this.headerAction = $.headerAction;
         this.match = $.match;
         this.preconfiguredWafConfig = $.preconfiguredWafConfig;
         this.preview = $.preview;
         this.priority = $.priority;
         this.project = $.project;
         this.rateLimitOptions = $.rateLimitOptions;
+        this.redirectOptions = $.redirectOptions;
         this.securityPolicy = $.securityPolicy;
     }
 
@@ -267,6 +305,29 @@ public final class SecurityPolicyRuleState extends com.pulumi.resources.Resource
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param headerAction Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder headerAction(@Nullable Output<SecurityPolicyRuleHeaderActionArgs> headerAction) {
+            $.headerAction = headerAction;
+            return this;
+        }
+
+        /**
+         * @param headerAction Optional, additional actions that are performed on headers. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder headerAction(SecurityPolicyRuleHeaderActionArgs headerAction) {
+            return headerAction(Output.of(headerAction));
         }
 
         /**
@@ -409,6 +470,29 @@ public final class SecurityPolicyRuleState extends com.pulumi.resources.Resource
          */
         public Builder rateLimitOptions(SecurityPolicyRuleRateLimitOptionsArgs rateLimitOptions) {
             return rateLimitOptions(Output.of(rateLimitOptions));
+        }
+
+        /**
+         * @param redirectOptions Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder redirectOptions(@Nullable Output<SecurityPolicyRuleRedirectOptionsArgs> redirectOptions) {
+            $.redirectOptions = redirectOptions;
+            return this;
+        }
+
+        /**
+         * @param redirectOptions Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder redirectOptions(SecurityPolicyRuleRedirectOptionsArgs redirectOptions) {
+            return redirectOptions(Output.of(redirectOptions));
         }
 
         /**

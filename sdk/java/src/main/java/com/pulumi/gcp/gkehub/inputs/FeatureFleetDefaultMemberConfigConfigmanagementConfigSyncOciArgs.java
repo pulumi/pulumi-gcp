@@ -93,29 +93,29 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciA
 
     /**
      * (Optional, Deprecated)
-     * Version of ACM installed
+     * Version of Config Sync installed
      * 
-     * &gt; **Warning:** The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.
+     * &gt; **Warning:** The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of Config Sync installed instead.
      * 
      * @deprecated
-     * The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.
+     * The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of Config Sync installed instead.
      * 
      */
-    @Deprecated /* The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead. */
+    @Deprecated /* The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of Config Sync installed instead. */
     @Import(name="version")
     private @Nullable Output<String> version;
 
     /**
      * @return (Optional, Deprecated)
-     * Version of ACM installed
+     * Version of Config Sync installed
      * 
-     * &gt; **Warning:** The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.
+     * &gt; **Warning:** The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of Config Sync installed instead.
      * 
      * @deprecated
-     * The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.
+     * The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of Config Sync installed instead.
      * 
      */
-    @Deprecated /* The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead. */
+    @Deprecated /* The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of Config Sync installed instead. */
     public Optional<Output<String>> version() {
         return Optional.ofNullable(this.version);
     }
@@ -256,17 +256,17 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciA
 
         /**
          * @param version (Optional, Deprecated)
-         * Version of ACM installed
+         * Version of Config Sync installed
          * 
-         * &gt; **Warning:** The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.
+         * &gt; **Warning:** The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of Config Sync installed instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.
+         * The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of Config Sync installed instead.
          * 
          */
-        @Deprecated /* The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead. */
+        @Deprecated /* The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of Config Sync installed instead. */
         public Builder version(@Nullable Output<String> version) {
             $.version = version;
             return this;
@@ -274,17 +274,17 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciA
 
         /**
          * @param version (Optional, Deprecated)
-         * Version of ACM installed
+         * Version of Config Sync installed
          * 
-         * &gt; **Warning:** The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.
+         * &gt; **Warning:** The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of Config Sync installed instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.
+         * The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of Config Sync installed instead.
          * 
          */
-        @Deprecated /* The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead. */
+        @Deprecated /* The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of Config Sync installed instead. */
         public Builder version(String version) {
             return version(Output.of(version));
         }

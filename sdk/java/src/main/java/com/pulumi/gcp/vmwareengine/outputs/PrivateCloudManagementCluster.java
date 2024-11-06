@@ -5,6 +5,7 @@ package com.pulumi.gcp.vmwareengine.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.vmwareengine.outputs.PrivateCloudManagementClusterAutoscalingSettings;
 import com.pulumi.gcp.vmwareengine.outputs.PrivateCloudManagementClusterNodeTypeConfig;
 import com.pulumi.gcp.vmwareengine.outputs.PrivateCloudManagementClusterStretchedClusterConfig;
 import java.lang.String;
@@ -15,6 +16,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PrivateCloudManagementCluster {
+    /**
+     * @return Configuration of the autoscaling applied to this cluster
+     * Private cloud must have a minimum of 3 nodes to add autoscale settings
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable PrivateCloudManagementClusterAutoscalingSettings autoscalingSettings;
     /**
      * @return The user-provided identifier of the new Cluster. The identifier must meet the following requirements:
      * * Only contains 1-63 alphanumeric characters and hyphens
@@ -40,6 +48,15 @@ public final class PrivateCloudManagementCluster {
     private @Nullable PrivateCloudManagementClusterStretchedClusterConfig stretchedClusterConfig;
 
     private PrivateCloudManagementCluster() {}
+    /**
+     * @return Configuration of the autoscaling applied to this cluster
+     * Private cloud must have a minimum of 3 nodes to add autoscale settings
+     * Structure is documented below.
+     * 
+     */
+    public Optional<PrivateCloudManagementClusterAutoscalingSettings> autoscalingSettings() {
+        return Optional.ofNullable(this.autoscalingSettings);
+    }
     /**
      * @return The user-provided identifier of the new Cluster. The identifier must meet the following requirements:
      * * Only contains 1-63 alphanumeric characters and hyphens
@@ -79,17 +96,25 @@ public final class PrivateCloudManagementCluster {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable PrivateCloudManagementClusterAutoscalingSettings autoscalingSettings;
         private String clusterId;
         private @Nullable List<PrivateCloudManagementClusterNodeTypeConfig> nodeTypeConfigs;
         private @Nullable PrivateCloudManagementClusterStretchedClusterConfig stretchedClusterConfig;
         public Builder() {}
         public Builder(PrivateCloudManagementCluster defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.autoscalingSettings = defaults.autoscalingSettings;
     	      this.clusterId = defaults.clusterId;
     	      this.nodeTypeConfigs = defaults.nodeTypeConfigs;
     	      this.stretchedClusterConfig = defaults.stretchedClusterConfig;
         }
 
+        @CustomType.Setter
+        public Builder autoscalingSettings(@Nullable PrivateCloudManagementClusterAutoscalingSettings autoscalingSettings) {
+
+            this.autoscalingSettings = autoscalingSettings;
+            return this;
+        }
         @CustomType.Setter
         public Builder clusterId(String clusterId) {
             if (clusterId == null) {
@@ -115,6 +140,7 @@ public final class PrivateCloudManagementCluster {
         }
         public PrivateCloudManagementCluster build() {
             final var _resultValue = new PrivateCloudManagementCluster();
+            _resultValue.autoscalingSettings = autoscalingSettings;
             _resultValue.clusterId = clusterId;
             _resultValue.nodeTypeConfigs = nodeTypeConfigs;
             _resultValue.stretchedClusterConfig = stretchedClusterConfig;

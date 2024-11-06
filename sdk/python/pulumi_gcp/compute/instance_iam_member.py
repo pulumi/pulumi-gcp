@@ -593,7 +593,7 @@ class InstanceIAMMember(pulumi.CustomResource):
         $ pulumi import gcp:compute/instanceIAMMember:InstanceIAMMember editor projects/{{project}}/zones/{{zone}}/instances/{{instance}}
         ```
 
-        -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
@@ -906,7 +906,7 @@ class InstanceIAMMember(pulumi.CustomResource):
         $ pulumi import gcp:compute/instanceIAMMember:InstanceIAMMember editor projects/{{project}}/zones/{{zone}}/instances/{{instance}}
         ```
 
-        -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+        -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 
          full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 

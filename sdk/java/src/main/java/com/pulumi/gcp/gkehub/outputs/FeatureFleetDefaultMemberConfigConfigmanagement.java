@@ -25,7 +25,7 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagement {
      */
     private @Nullable String management;
     /**
-     * @return Version of ACM installed
+     * @return Version of Config Sync installed
      * 
      */
     private @Nullable String version;
@@ -48,7 +48,7 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagement {
         return Optional.ofNullable(this.management);
     }
     /**
-     * @return Version of ACM installed
+     * @return Version of Config Sync installed
      * 
      */
     public Optional<String> version() {

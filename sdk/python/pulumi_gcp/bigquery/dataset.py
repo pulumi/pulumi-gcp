@@ -29,6 +29,7 @@ class DatasetArgs:
                  default_table_expiration_ms: Optional[pulumi.Input[int]] = None,
                  delete_contents_on_destroy: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 external_catalog_dataset_options: Optional[pulumi.Input['DatasetExternalCatalogDatasetOptionsArgs']] = None,
                  external_dataset_reference: Optional[pulumi.Input['DatasetExternalDatasetReferenceArgs']] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  is_case_insensitive: Optional[pulumi.Input[bool]] = None,
@@ -89,6 +90,9 @@ class DatasetArgs:
                dataset when destroying the resource; otherwise,
                destroying the resource will fail if tables are present.
         :param pulumi.Input[str] description: A user-friendly description of the dataset
+        :param pulumi.Input['DatasetExternalCatalogDatasetOptionsArgs'] external_catalog_dataset_options: Options defining open source compatible datasets living in the BigQuery catalog. Contains
+               metadata of open source database, schema or namespace represented by the current dataset.
+               Structure is documented below.
         :param pulumi.Input['DatasetExternalDatasetReferenceArgs'] external_dataset_reference: Information about the external metadata storage where the dataset is defined.
                Structure is documented below.
         :param pulumi.Input[str] friendly_name: A descriptive name for the dataset
@@ -136,6 +140,8 @@ class DatasetArgs:
             pulumi.set(__self__, "delete_contents_on_destroy", delete_contents_on_destroy)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if external_catalog_dataset_options is not None:
+            pulumi.set(__self__, "external_catalog_dataset_options", external_catalog_dataset_options)
         if external_dataset_reference is not None:
             pulumi.set(__self__, "external_dataset_reference", external_dataset_reference)
         if friendly_name is not None:
@@ -293,6 +299,20 @@ class DatasetArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="externalCatalogDatasetOptions")
+    def external_catalog_dataset_options(self) -> Optional[pulumi.Input['DatasetExternalCatalogDatasetOptionsArgs']]:
+        """
+        Options defining open source compatible datasets living in the BigQuery catalog. Contains
+        metadata of open source database, schema or namespace represented by the current dataset.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "external_catalog_dataset_options")
+
+    @external_catalog_dataset_options.setter
+    def external_catalog_dataset_options(self, value: Optional[pulumi.Input['DatasetExternalCatalogDatasetOptionsArgs']]):
+        pulumi.set(self, "external_catalog_dataset_options", value)
+
+    @property
     @pulumi.getter(name="externalDatasetReference")
     def external_dataset_reference(self) -> Optional[pulumi.Input['DatasetExternalDatasetReferenceArgs']]:
         """
@@ -437,6 +457,7 @@ class _DatasetState:
                  description: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
+                 external_catalog_dataset_options: Optional[pulumi.Input['DatasetExternalCatalogDatasetOptionsArgs']] = None,
                  external_dataset_reference: Optional[pulumi.Input['DatasetExternalDatasetReferenceArgs']] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  is_case_insensitive: Optional[pulumi.Input[bool]] = None,
@@ -504,6 +525,9 @@ class _DatasetState:
         :param pulumi.Input[str] description: A user-friendly description of the dataset
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] etag: A hash of the resource.
+        :param pulumi.Input['DatasetExternalCatalogDatasetOptionsArgs'] external_catalog_dataset_options: Options defining open source compatible datasets living in the BigQuery catalog. Contains
+               metadata of open source database, schema or namespace represented by the current dataset.
+               Structure is documented below.
         :param pulumi.Input['DatasetExternalDatasetReferenceArgs'] external_dataset_reference: Information about the external metadata storage where the dataset is defined.
                Structure is documented below.
         :param pulumi.Input[str] friendly_name: A descriptive name for the dataset
@@ -563,6 +587,8 @@ class _DatasetState:
             pulumi.set(__self__, "effective_labels", effective_labels)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
+        if external_catalog_dataset_options is not None:
+            pulumi.set(__self__, "external_catalog_dataset_options", external_catalog_dataset_options)
         if external_dataset_reference is not None:
             pulumi.set(__self__, "external_dataset_reference", external_dataset_reference)
         if friendly_name is not None:
@@ -763,6 +789,20 @@ class _DatasetState:
         pulumi.set(self, "etag", value)
 
     @property
+    @pulumi.getter(name="externalCatalogDatasetOptions")
+    def external_catalog_dataset_options(self) -> Optional[pulumi.Input['DatasetExternalCatalogDatasetOptionsArgs']]:
+        """
+        Options defining open source compatible datasets living in the BigQuery catalog. Contains
+        metadata of open source database, schema or namespace represented by the current dataset.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "external_catalog_dataset_options")
+
+    @external_catalog_dataset_options.setter
+    def external_catalog_dataset_options(self, value: Optional[pulumi.Input['DatasetExternalCatalogDatasetOptionsArgs']]):
+        pulumi.set(self, "external_catalog_dataset_options", value)
+
+    @property
     @pulumi.getter(name="externalDatasetReference")
     def external_dataset_reference(self) -> Optional[pulumi.Input['DatasetExternalDatasetReferenceArgs']]:
         """
@@ -944,6 +984,7 @@ class Dataset(pulumi.CustomResource):
                  default_table_expiration_ms: Optional[pulumi.Input[int]] = None,
                  delete_contents_on_destroy: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 external_catalog_dataset_options: Optional[pulumi.Input[Union['DatasetExternalCatalogDatasetOptionsArgs', 'DatasetExternalCatalogDatasetOptionsArgsDict']]] = None,
                  external_dataset_reference: Optional[pulumi.Input[Union['DatasetExternalDatasetReferenceArgs', 'DatasetExternalDatasetReferenceArgsDict']]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  is_case_insensitive: Optional[pulumi.Input[bool]] = None,
@@ -1081,7 +1122,7 @@ class Dataset(pulumi.CustomResource):
                 "name": "value",
                 "argument_kind": "FIXED_TYPE",
                 "data_type": json.dumps({
-                    "type_kind": "INT64",
+                    "typeKind": "INT64",
                 }),
             }],
             return_table_type=json.dumps({
@@ -1123,6 +1164,24 @@ class Dataset(pulumi.CustomResource):
             external_dataset_reference={
                 "external_source": "aws-glue://arn:aws:glue:us-east-1:999999999999:database/database",
                 "connection": "projects/project/locations/aws-us-east-1/connections/connection",
+            })
+        ```
+        ### Bigquery Dataset External Catalog Dataset Options
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.bigquery.Dataset("dataset",
+            dataset_id="example_dataset",
+            friendly_name="test",
+            description="This is a test description",
+            location="US",
+            external_catalog_dataset_options={
+                "parameters": {
+                    "dataset_owner": "test_dataset_owner",
+                },
+                "default_storage_location_uri": "gs://test_dataset/tables",
             })
         ```
 
@@ -1201,6 +1260,9 @@ class Dataset(pulumi.CustomResource):
                dataset when destroying the resource; otherwise,
                destroying the resource will fail if tables are present.
         :param pulumi.Input[str] description: A user-friendly description of the dataset
+        :param pulumi.Input[Union['DatasetExternalCatalogDatasetOptionsArgs', 'DatasetExternalCatalogDatasetOptionsArgsDict']] external_catalog_dataset_options: Options defining open source compatible datasets living in the BigQuery catalog. Contains
+               metadata of open source database, schema or namespace represented by the current dataset.
+               Structure is documented below.
         :param pulumi.Input[Union['DatasetExternalDatasetReferenceArgs', 'DatasetExternalDatasetReferenceArgsDict']] external_dataset_reference: Information about the external metadata storage where the dataset is defined.
                Structure is documented below.
         :param pulumi.Input[str] friendly_name: A descriptive name for the dataset
@@ -1366,7 +1428,7 @@ class Dataset(pulumi.CustomResource):
                 "name": "value",
                 "argument_kind": "FIXED_TYPE",
                 "data_type": json.dumps({
-                    "type_kind": "INT64",
+                    "typeKind": "INT64",
                 }),
             }],
             return_table_type=json.dumps({
@@ -1408,6 +1470,24 @@ class Dataset(pulumi.CustomResource):
             external_dataset_reference={
                 "external_source": "aws-glue://arn:aws:glue:us-east-1:999999999999:database/database",
                 "connection": "projects/project/locations/aws-us-east-1/connections/connection",
+            })
+        ```
+        ### Bigquery Dataset External Catalog Dataset Options
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.bigquery.Dataset("dataset",
+            dataset_id="example_dataset",
+            friendly_name="test",
+            description="This is a test description",
+            location="US",
+            external_catalog_dataset_options={
+                "parameters": {
+                    "dataset_owner": "test_dataset_owner",
+                },
+                "default_storage_location_uri": "gs://test_dataset/tables",
             })
         ```
 
@@ -1458,6 +1538,7 @@ class Dataset(pulumi.CustomResource):
                  default_table_expiration_ms: Optional[pulumi.Input[int]] = None,
                  delete_contents_on_destroy: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 external_catalog_dataset_options: Optional[pulumi.Input[Union['DatasetExternalCatalogDatasetOptionsArgs', 'DatasetExternalCatalogDatasetOptionsArgsDict']]] = None,
                  external_dataset_reference: Optional[pulumi.Input[Union['DatasetExternalDatasetReferenceArgs', 'DatasetExternalDatasetReferenceArgsDict']]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  is_case_insensitive: Optional[pulumi.Input[bool]] = None,
@@ -1486,6 +1567,7 @@ class Dataset(pulumi.CustomResource):
             __props__.__dict__["default_table_expiration_ms"] = default_table_expiration_ms
             __props__.__dict__["delete_contents_on_destroy"] = delete_contents_on_destroy
             __props__.__dict__["description"] = description
+            __props__.__dict__["external_catalog_dataset_options"] = external_catalog_dataset_options
             __props__.__dict__["external_dataset_reference"] = external_dataset_reference
             __props__.__dict__["friendly_name"] = friendly_name
             __props__.__dict__["is_case_insensitive"] = is_case_insensitive
@@ -1524,6 +1606,7 @@ class Dataset(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
+            external_catalog_dataset_options: Optional[pulumi.Input[Union['DatasetExternalCatalogDatasetOptionsArgs', 'DatasetExternalCatalogDatasetOptionsArgsDict']]] = None,
             external_dataset_reference: Optional[pulumi.Input[Union['DatasetExternalDatasetReferenceArgs', 'DatasetExternalDatasetReferenceArgsDict']]] = None,
             friendly_name: Optional[pulumi.Input[str]] = None,
             is_case_insensitive: Optional[pulumi.Input[bool]] = None,
@@ -1596,6 +1679,9 @@ class Dataset(pulumi.CustomResource):
         :param pulumi.Input[str] description: A user-friendly description of the dataset
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] etag: A hash of the resource.
+        :param pulumi.Input[Union['DatasetExternalCatalogDatasetOptionsArgs', 'DatasetExternalCatalogDatasetOptionsArgsDict']] external_catalog_dataset_options: Options defining open source compatible datasets living in the BigQuery catalog. Contains
+               metadata of open source database, schema or namespace represented by the current dataset.
+               Structure is documented below.
         :param pulumi.Input[Union['DatasetExternalDatasetReferenceArgs', 'DatasetExternalDatasetReferenceArgsDict']] external_dataset_reference: Information about the external metadata storage where the dataset is defined.
                Structure is documented below.
         :param pulumi.Input[str] friendly_name: A descriptive name for the dataset
@@ -1648,6 +1734,7 @@ class Dataset(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["etag"] = etag
+        __props__.__dict__["external_catalog_dataset_options"] = external_catalog_dataset_options
         __props__.__dict__["external_dataset_reference"] = external_dataset_reference
         __props__.__dict__["friendly_name"] = friendly_name
         __props__.__dict__["is_case_insensitive"] = is_case_insensitive
@@ -1791,6 +1878,16 @@ class Dataset(pulumi.CustomResource):
         A hash of the resource.
         """
         return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter(name="externalCatalogDatasetOptions")
+    def external_catalog_dataset_options(self) -> pulumi.Output[Optional['outputs.DatasetExternalCatalogDatasetOptions']]:
+        """
+        Options defining open source compatible datasets living in the BigQuery catalog. Contains
+        metadata of open source database, schema or namespace represented by the current dataset.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "external_catalog_dataset_options")
 
     @property
     @pulumi.getter(name="externalDatasetReference")

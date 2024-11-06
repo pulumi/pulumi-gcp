@@ -15,16 +15,14 @@ public final class BucketHierarchicalNamespaceArgs extends com.pulumi.resources.
     public static final BucketHierarchicalNamespaceArgs Empty = new BucketHierarchicalNamespaceArgs();
 
     /**
-     * Enable hierarchical namespace for the bucket.
-     * To use this flag, you must also use --uniform-bucket-level-access
+     * Enables hierarchical namespace for the bucket.
      * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
-     * @return Enable hierarchical namespace for the bucket.
-     * To use this flag, you must also use --uniform-bucket-level-access
+     * @return Enables hierarchical namespace for the bucket.
      * 
      */
     public Output<Boolean> enabled() {
@@ -56,8 +54,7 @@ public final class BucketHierarchicalNamespaceArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param enabled Enable hierarchical namespace for the bucket.
-         * To use this flag, you must also use --uniform-bucket-level-access
+         * @param enabled Enables hierarchical namespace for the bucket.
          * 
          * @return builder
          * 
@@ -68,8 +65,7 @@ public final class BucketHierarchicalNamespaceArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param enabled Enable hierarchical namespace for the bucket.
-         * To use this flag, you must also use --uniform-bucket-level-access
+         * @param enabled Enables hierarchical namespace for the bucket.
          * 
          * @return builder
          * 

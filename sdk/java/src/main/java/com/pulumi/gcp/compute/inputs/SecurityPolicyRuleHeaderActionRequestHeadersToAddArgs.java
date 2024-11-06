@@ -5,7 +5,6 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -20,15 +19,15 @@ public final class SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs extends
      * The name of the header to set.
      * 
      */
-    @Import(name="headerName", required=true)
-    private Output<String> headerName;
+    @Import(name="headerName")
+    private @Nullable Output<String> headerName;
 
     /**
      * @return The name of the header to set.
      * 
      */
-    public Output<String> headerName() {
-        return this.headerName;
+    public Optional<Output<String>> headerName() {
+        return Optional.ofNullable(this.headerName);
     }
 
     /**
@@ -77,7 +76,7 @@ public final class SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs extends
          * @return builder
          * 
          */
-        public Builder headerName(Output<String> headerName) {
+        public Builder headerName(@Nullable Output<String> headerName) {
             $.headerName = headerName;
             return this;
         }
@@ -114,9 +113,6 @@ public final class SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs extends
         }
 
         public SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs build() {
-            if ($.headerName == null) {
-                throw new MissingRequiredPropertyException("SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs", "headerName");
-            }
             return $;
         }
     }

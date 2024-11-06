@@ -26,10 +26,13 @@ class GetAccountResult:
     """
     A collection of values returned by getAccount.
     """
-    def __init__(__self__, account_id=None, display_name=None, email=None, id=None, member=None, name=None, project=None, unique_id=None):
+    def __init__(__self__, account_id=None, disabled=None, display_name=None, email=None, id=None, member=None, name=None, project=None, unique_id=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
+        if disabled and not isinstance(disabled, bool):
+            raise TypeError("Expected argument 'disabled' to be a bool")
+        pulumi.set(__self__, "disabled", disabled)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
@@ -56,6 +59,14 @@ class GetAccountResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> str:
         return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> bool:
+        """
+        Whether a service account is disabled or not.
+        """
+        return pulumi.get(self, "disabled")
 
     @property
     @pulumi.getter(name="displayName")
@@ -120,6 +131,7 @@ class AwaitableGetAccountResult(GetAccountResult):
             yield self
         return GetAccountResult(
             account_id=self.account_id,
+            disabled=self.disabled,
             display_name=self.display_name,
             email=self.email,
             id=self.id,
@@ -184,6 +196,7 @@ def get_account(account_id: Optional[str] = None,
 
     return AwaitableGetAccountResult(
         account_id=pulumi.get(__ret__, 'account_id'),
+        disabled=pulumi.get(__ret__, 'disabled'),
         display_name=pulumi.get(__ret__, 'display_name'),
         email=pulumi.get(__ret__, 'email'),
         id=pulumi.get(__ret__, 'id'),
@@ -245,6 +258,7 @@ def get_account_output(account_id: Optional[pulumi.Input[str]] = None,
     __ret__ = pulumi.runtime.invoke_output('gcp:serviceaccount/getAccount:getAccount', __args__, opts=opts, typ=GetAccountResult)
     return __ret__.apply(lambda __response__: GetAccountResult(
         account_id=pulumi.get(__response__, 'account_id'),
+        disabled=pulumi.get(__response__, 'disabled'),
         display_name=pulumi.get(__response__, 'display_name'),
         email=pulumi.get(__response__, 'email'),
         id=pulumi.get(__response__, 'id'),

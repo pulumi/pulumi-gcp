@@ -529,7 +529,7 @@ import (
 // $ pulumi import gcp:iap/webRegionBackendServiceIamMember:WebRegionBackendServiceIamMember editor projects/{{project}}/iap_web/compute-{{region}}/services/{{web_region_backend_service}}
 // ```
 //
-// -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+// -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
 //
 //	full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type WebRegionBackendServiceIamMember struct {

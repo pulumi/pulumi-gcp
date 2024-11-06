@@ -3971,7 +3971,8 @@ export namespace apphub {
          * Required. Scope Type.
          * Possible values:
          * REGIONAL
-         * Possible values are: `REGIONAL`.
+         * GLOBAL
+         * Possible values are: `REGIONAL`, `GLOBAL`.
          *
          * - - -
          */
@@ -4859,6 +4860,13 @@ export namespace assuredworkloads {
          */
         setupStatus?: pulumi.Input<string>;
     }
+
+    export interface WorkloadWorkloadOptions {
+        /**
+         * Indicates type of KAJ enrollment for the workload. Currently, only specifiying KEY_ACCESS_TRANSPARENCY_OFF is implemented to not enroll in KAT-level KAJ enrollment for Regional Controls workloads. Possible values: KAJ_ENROLLMENT_TYPE_UNSPECIFIED, FULL_KAJ, EKM_ONLY, KEY_ACCESS_TRANSPARENCY_OFF
+         */
+        kajEnrollmentType?: pulumi.Input<string>;
+    }
 }
 
 export namespace backupdisasterrecovery {
@@ -4884,8 +4892,6 @@ export namespace backupdisasterrecovery {
          * Type of Network peeringMode
          * Default value is `PRIVATE_SERVICE_ACCESS`.
          * Possible values are: `PRIVATE_SERVICE_ACCESS`.
-         *
-         * - - -
          */
         peeringMode?: pulumi.Input<string>;
     }
@@ -5428,6 +5434,19 @@ export namespace bigquery {
          * access to this encryption key.
          */
         kmsKeyName: pulumi.Input<string>;
+    }
+
+    export interface DatasetExternalCatalogDatasetOptions {
+        /**
+         * The storage location URI for all tables in the dataset. Equivalent to hive metastore's
+         * database locationUri. Maximum length of 1024 characters.
+         */
+        defaultStorageLocationUri?: pulumi.Input<string>;
+        /**
+         * A map of key value pairs defining the parameters and properties of the open source schema.
+         * Maximum size of 2Mib.
+         */
+        parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
 
     export interface DatasetExternalDatasetReference {
@@ -16672,6 +16691,15 @@ export namespace compute {
          * it cannot be an IP address from Google Compute Engine.
          */
         ipAddress?: pulumi.Input<string>;
+        /**
+         * IPv6 address of the interface in the external VPN gateway. This IPv6
+         * address can be either from your on-premise gateway or another Cloud
+         * provider's VPN gateway, it cannot be an IP address from Google Compute
+         * Engine. Must specify an IPv6 address (not IPV4-mapped) using any format
+         * described in RFC 4291 (e.g. 2001:db8:0:0:2d9:51:0:0). The output format
+         * is RFC 5952 format (e.g. 2001:db8::2d9:51:0:0).
+         */
+        ipv6Address?: pulumi.Input<string>;
     }
 
     export interface FirewallAllow {
@@ -17565,9 +17593,13 @@ export namespace compute {
          */
         enableNestedVirtualization?: pulumi.Input<boolean>;
         /**
-         * he number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
+         * The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
          */
         threadsPerCore?: pulumi.Input<number>;
+        /**
+         * Turbo frequency mode to use for the instance. Supported modes are currently either `ALL_CORE_MAX` or unset (default).
+         */
+        turboMode?: pulumi.Input<string>;
         /**
          * The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
          */
@@ -17755,6 +17787,10 @@ export namespace compute {
          * The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
          */
         threadsPerCore?: pulumi.Input<number>;
+        /**
+         * Turbo frequency mode to use for the instance. Currently supported modes is "ALL_CORE_MAX".
+         */
+        turboMode?: pulumi.Input<string>;
         /**
          * The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\'s nominal CPU count and the underlying platform\'s SMT width.
          */
@@ -18201,6 +18237,10 @@ export namespace compute {
          * The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
          */
         threadsPerCore?: pulumi.Input<number>;
+        /**
+         * Turbo frequency mode to use for the instance. Currently supported modes is "ALL_CORE_MAX".
+         */
+        turboMode?: pulumi.Input<string>;
         /**
          * The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\'s nominal CPU count and the underlying platform\'s SMT width.
          */
@@ -19301,6 +19341,10 @@ export namespace compute {
          * The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
          */
         threadsPerCore?: pulumi.Input<number>;
+        /**
+         * Turbo frequency mode to use for the instance. Supported modes are currently either `ALL_CORE_MAX` or unset (default).
+         */
+        turboMode?: pulumi.Input<string>;
         /**
          * The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
          */
@@ -22402,6 +22446,10 @@ export namespace compute {
          * The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
          */
         threadsPerCore?: pulumi.Input<number>;
+        /**
+         * Turbo frequency mode to use for the instance. Supported modes are currently either `ALL_CORE_MAX` or unset (default).
+         */
+        turboMode?: pulumi.Input<string>;
         /**
          * The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
          */
@@ -26526,16 +26574,17 @@ export namespace compute {
 
     export interface SecurityPolicyRuleHeaderAction {
         /**
-         * The list of request headers to add or overwrite if they're already present. Structure is documented below.
+         * The list of request headers to add or overwrite if they're already present.
+         * Structure is documented below.
          */
-        requestHeadersToAdds: pulumi.Input<pulumi.Input<inputs.compute.SecurityPolicyRuleHeaderActionRequestHeadersToAdd>[]>;
+        requestHeadersToAdds?: pulumi.Input<pulumi.Input<inputs.compute.SecurityPolicyRuleHeaderActionRequestHeadersToAdd>[]>;
     }
 
     export interface SecurityPolicyRuleHeaderActionRequestHeadersToAdd {
         /**
          * The name of the header to set.
          */
-        headerName: pulumi.Input<string>;
+        headerName?: pulumi.Input<string>;
         /**
          * The value to set the named header to.
          */
@@ -26835,16 +26884,13 @@ export namespace compute {
 
     export interface SecurityPolicyRuleRedirectOptions {
         /**
-         * External redirection target when `EXTERNAL_302` is set in `type`.
+         * Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
          */
         target?: pulumi.Input<string>;
         /**
-         * Type of redirect action.
-         *
-         * * `EXTERNAL_302`: Redirect to an external address, configured in `target`.
-         * * `GOOGLE_RECAPTCHA`: Redirect to Google reCAPTCHA.
+         * Type of the redirect action.
          */
-        type: pulumi.Input<string>;
+        type?: pulumi.Input<string>;
     }
 
     export interface SecurityScanConfigAuthentication {
@@ -26915,7 +26961,7 @@ export namespace compute {
          */
         endpoint?: pulumi.Input<string>;
         /**
-         * (Output, Beta)
+         * (Output)
          * The number of consumer Network Connectivity Center spokes that the connected Private Service Connect endpoint has propagated to.
          */
         propagatedConnectionCount?: pulumi.Input<number>;
@@ -51150,7 +51196,7 @@ export namespace gkehub {
          */
         management?: pulumi.Input<string>;
         /**
-         * Version of ACM installed
+         * Version of Config Sync installed
          */
         version?: pulumi.Input<string>;
     }
@@ -51238,11 +51284,11 @@ export namespace gkehub {
         syncWaitSecs?: pulumi.Input<string>;
         /**
          * (Optional, Deprecated)
-         * Version of ACM installed
+         * Version of Config Sync installed
          *
-         * > **Warning:** The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.
+         * > **Warning:** The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of Config Sync installed instead.
          *
-         * @deprecated The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.
+         * @deprecated The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of Config Sync installed instead.
          */
         version?: pulumi.Input<string>;
     }
@@ -51476,7 +51522,7 @@ export namespace gkehub {
          */
         policyController?: pulumi.Input<inputs.gkehub.FeatureMembershipConfigmanagementPolicyController>;
         /**
-         * Version of ACM installed.
+         * Version of Config Sync installed.
          */
         version?: pulumi.Input<string>;
     }
@@ -51502,13 +51548,13 @@ export namespace gkehub {
          */
         metricsGcpServiceAccountEmail?: pulumi.Input<string>;
         /**
-         * (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+         * (Optional) Supported from Config Sync versions 1.12.0 onwards. Structure is documented below.
          *
          * Use either `git` or `oci` config option.
          */
         oci?: pulumi.Input<inputs.gkehub.FeatureMembershipConfigmanagementConfigSyncOci>;
         /**
-         * Supported from ACM versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
+         * Supported from Config Sync versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
          */
         preventDrift?: pulumi.Input<boolean>;
         /**
@@ -54930,6 +54976,233 @@ export namespace iap {
         title: pulumi.Input<string>;
     }
 
+    export interface SettingsAccessSettings {
+        /**
+         * Settings to configure and enable allowed domains.
+         * Structure is documented below.
+         */
+        allowedDomainsSettings?: pulumi.Input<inputs.iap.SettingsAccessSettingsAllowedDomainsSettings>;
+        /**
+         * Configuration to allow cross-origin requests via IAP.
+         * Structure is documented below.
+         */
+        corsSettings?: pulumi.Input<inputs.iap.SettingsAccessSettingsCorsSettings>;
+        /**
+         * GCIP claims and endpoint configurations for 3p identity providers.
+         * Structure is documented below.
+         */
+        gcipSettings?: pulumi.Input<inputs.iap.SettingsAccessSettingsGcipSettings>;
+        /**
+         * Identity sources that IAP can use to authenticate the end user. Only one identity source
+         * can be configured. The possible values are:
+         * * `WORKFORCE_IDENTITY_FEDERATION`: Use external identities set up on Google Cloud Workforce
+         * Identity Federation.
+         * Each value may be one of: `WORKFORCE_IDENTITY_FEDERATION`.
+         */
+        identitySources?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Settings to configure IAP's OAuth behavior.
+         * Structure is documented below.
+         */
+        oauthSettings?: pulumi.Input<inputs.iap.SettingsAccessSettingsOauthSettings>;
+        /**
+         * Settings to configure reauthentication policies in IAP.
+         * Structure is documented below.
+         */
+        reauthSettings?: pulumi.Input<inputs.iap.SettingsAccessSettingsReauthSettings>;
+        /**
+         * Settings to configure the workforce identity federation, including workforce pools
+         * and OAuth 2.0 settings.
+         * Structure is documented below.
+         */
+        workforceIdentitySettings?: pulumi.Input<inputs.iap.SettingsAccessSettingsWorkforceIdentitySettings>;
+    }
+
+    export interface SettingsAccessSettingsAllowedDomainsSettings {
+        /**
+         * List of trusted domains.
+         */
+        domains?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Configuration for customers to opt in for the feature.
+         */
+        enable?: pulumi.Input<boolean>;
+    }
+
+    export interface SettingsAccessSettingsCorsSettings {
+        /**
+         * Configuration to allow HTTP OPTIONS calls to skip authorization.
+         * If undefined, IAP will not apply any special logic to OPTIONS requests.
+         */
+        allowHttpOptions?: pulumi.Input<boolean>;
+    }
+
+    export interface SettingsAccessSettingsGcipSettings {
+        /**
+         * Login page URI associated with the GCIP tenants. Typically, all resources within
+         * the same project share the same login page, though it could be overridden at the
+         * sub resource level.
+         */
+        loginPageUri?: pulumi.Input<string>;
+        /**
+         * GCIP tenant ids that are linked to the IAP resource. tenantIds could be a string
+         * beginning with a number character to indicate authenticating with GCIP tenant flow,
+         * or in the format of _ to indicate authenticating with GCIP agent flow. If agent flow
+         * is used, tenantIds should only contain one single element, while for tenant flow,
+         * tenantIds can contain multiple elements.
+         */
+        tenantIds?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface SettingsAccessSettingsOauthSettings {
+        /**
+         * Domain hint to send as hd=? parameter in OAuth request flow.
+         * Enables redirect to primary IDP by skipping Google's login screen.
+         * (https://developers.google.com/identity/protocols/OpenIDConnect#hd-param)
+         * Note: IAP does not verify that the id token's hd claim matches this value
+         * since access behavior is managed by IAM policies.
+         */
+        loginHint?: pulumi.Input<string>;
+        /**
+         * List of client ids allowed to use IAP programmatically.
+         */
+        programmaticClients?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface SettingsAccessSettingsReauthSettings {
+        /**
+         * Reauth session lifetime, how long before a user has to reauthenticate again.
+         * A duration in seconds with up to nine fractional digits, ending with 's'.
+         * Example: "3.5s".
+         */
+        maxAge: pulumi.Input<string>;
+        /**
+         * Reauth method requested. The possible values are:
+         * * `LOGIN`: Prompts the user to log in again.
+         * * `SECURE_KEY`: User must use their secure key 2nd factor device.
+         * * `ENROLLED_SECOND_FACTORS`: User can use any enabled 2nd factor.
+         * Possible values are: `LOGIN`, `SECURE_KEY`, `ENROLLED_SECOND_FACTORS`.
+         */
+        method: pulumi.Input<string>;
+        /**
+         * How IAP determines the effective policy in cases of hierarchical policies.
+         * Policies are merged from higher in the hierarchy to lower in the hierarchy.
+         * The possible values are:
+         * * `MINIMUM`: This policy acts as a minimum to other policies, lower in the hierarchy.
+         * Effective policy may only be the same or stricter.
+         * * `DEFAULT`: This policy acts as a default if no other reauth policy is set.
+         * Possible values are: `MINIMUM`, `DEFAULT`.
+         */
+        policyType: pulumi.Input<string>;
+    }
+
+    export interface SettingsAccessSettingsWorkforceIdentitySettings {
+        /**
+         * OAuth 2.0 settings for IAP to perform OIDC flow with workforce identity
+         * federation services.
+         * Structure is documented below.
+         *
+         *
+         * <a name="nestedOauth2"></a>The `oauth2` block supports:
+         */
+        oauth2?: pulumi.Input<inputs.iap.SettingsAccessSettingsWorkforceIdentitySettingsOauth2>;
+        /**
+         * The workforce pool resources. Only one workforce pool is accepted.
+         */
+        workforcePools?: pulumi.Input<string>;
+    }
+
+    export interface SettingsAccessSettingsWorkforceIdentitySettingsOauth2 {
+        /**
+         * The OAuth 2.0 client ID registered in the workforce identity
+         * federation OAuth 2.0 Server.
+         */
+        clientId?: pulumi.Input<string>;
+        /**
+         * Input only. The OAuth 2.0 client secret created while registering
+         * the client ID.
+         */
+        clientSecret?: pulumi.Input<string>;
+        /**
+         * Output only. SHA256 hash value for the client secret. This field
+         * is returned by IAP when the settings are retrieved.
+         */
+        clientSecretSha256?: pulumi.Input<string>;
+    }
+
+    export interface SettingsApplicationSettings {
+        /**
+         * Customization for Access Denied page. IAP allows customers to define a custom URI
+         * to use as the error page when access is denied to users. If IAP prevents access
+         * to this page, the default IAP error page will be displayed instead.
+         * Structure is documented below.
+         */
+        accessDeniedPageSettings?: pulumi.Input<inputs.iap.SettingsApplicationSettingsAccessDeniedPageSettings>;
+        /**
+         * Settings to configure attribute propagation.
+         * Structure is documented below.
+         */
+        attributePropagationSettings?: pulumi.Input<inputs.iap.SettingsApplicationSettingsAttributePropagationSettings>;
+        /**
+         * The Domain value to set for cookies generated by IAP. This value is not validated by the API,
+         * but will be ignored at runtime if invalid.
+         */
+        cookieDomain?: pulumi.Input<string>;
+        /**
+         * Settings to configure IAP's behavior for a service mesh.
+         * Structure is documented below.
+         */
+        csmSettings?: pulumi.Input<inputs.iap.SettingsApplicationSettingsCsmSettings>;
+    }
+
+    export interface SettingsApplicationSettingsAccessDeniedPageSettings {
+        /**
+         * The URI to be redirected to when access is denied.
+         */
+        accessDeniedPageUri?: pulumi.Input<string>;
+        /**
+         * Whether to generate a troubleshooting URL on access denied events to this application.
+         */
+        generateTroubleshootingUri?: pulumi.Input<boolean>;
+        /**
+         * Whether to generate remediation token on access denied events to this application.
+         */
+        remediationTokenGenerationEnabled?: pulumi.Input<boolean>;
+    }
+
+    export interface SettingsApplicationSettingsAttributePropagationSettings {
+        /**
+         * Whether the provided attribute propagation settings should be evaluated on user requests.
+         * If set to true, attributes returned from the expression will be propagated in the set output credentials.
+         */
+        enable?: pulumi.Input<boolean>;
+        /**
+         * Raw string CEL expression. Must return a list of attributes. A maximum of 45 attributes can
+         * be selected. Expressions can select different attribute types from attributes:
+         * attributes.saml_attributes, attributes.iap_attributes.
+         */
+        expression?: pulumi.Input<string>;
+        /**
+         * Which output credentials attributes selected by the CEL expression should be propagated in.
+         * All attributes will be fully duplicated in each selected output credential.
+         * Possible values are:
+         * * `HEADER`: Propagate attributes in the headers with "x-goog-iap-attr-" prefix.
+         * * `JWT`: Propagate attributes in the JWT of the form:
+         * "additionalClaims": { "myAttribute": ["value1", "value2"] }
+         * * `RCTOKEN`: Propagate attributes in the RCToken of the form: "
+         * additionalClaims": { "myAttribute": ["value1", "value2"] }
+         * Each value may be one of: `HEADER`, `JWT`, `RCTOKEN`.
+         */
+        outputCredentials?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface SettingsApplicationSettingsCsmSettings {
+        /**
+         * Audience claim set in the generated RCToken. This value is not validated by IAP.
+         */
+        rctokenAud?: pulumi.Input<string>;
+    }
+
     export interface TunnelDestGroupIamBindingCondition {
         description?: pulumi.Input<string>;
         /**
@@ -57476,7 +57749,7 @@ export namespace memorystore {
         network?: pulumi.Input<string>;
         /**
          * (Output)
-         * Output only. The port number of the exposed endpoint.
+         * Output only. Ports of the exposed endpoint.
          */
         port?: pulumi.Input<number>;
     }
@@ -57543,6 +57816,15 @@ export namespace memorystore {
     export interface InstancePscAutoConnection {
         /**
          * (Output)
+         * Output Only. Type of a PSC Connection.
+         * Possible values:
+         * CONNECTION_TYPE_DISCOVERY
+         * CONNECTION_TYPE_PRIMARY
+         * CONNECTION_TYPE_READER
+         */
+        connectionType?: pulumi.Input<string>;
+        /**
+         * (Output)
          * Output only. The URI of the consumer side forwarding rule.
          * Format:
          * projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
@@ -57561,6 +57843,11 @@ export namespace memorystore {
         network?: pulumi.Input<string>;
         /**
          * (Output)
+         * Output only. Ports of the exposed endpoint.
+         */
+        port?: pulumi.Input<number>;
+        /**
+         * (Output)
          * Output only. The consumer projectId where the forwarding rule is created from.
          */
         projectId?: pulumi.Input<string>;
@@ -57570,6 +57857,19 @@ export namespace memorystore {
          * service attachment.
          */
         pscConnectionId?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists.
+         * Possible values:
+         * ACTIVE
+         * NOT_FOUND
+         */
+        pscConnectionStatus?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+         */
+        serviceAttachment?: pulumi.Input<string>;
     }
 
     export interface InstanceStateInfo {
@@ -68534,6 +68834,11 @@ export namespace spanner {
 
     export interface InstanceAutoscalingConfig {
         /**
+         * Asymmetric autoscaling options for specific replicas.
+         * Structure is documented below.
+         */
+        asymmetricAutoscalingOptions?: pulumi.Input<pulumi.Input<inputs.spanner.InstanceAutoscalingConfigAsymmetricAutoscalingOption>[]>;
+        /**
          * Defines scale in controls to reduce the risk of response latency
          * and outages due to abrupt scale-in events. Users can define the minimum and
          * maximum compute capacity allocated to the instance, and the autoscaler will
@@ -68551,10 +68856,48 @@ export namespace spanner {
         autoscalingTargets?: pulumi.Input<inputs.spanner.InstanceAutoscalingConfigAutoscalingTargets>;
     }
 
+    export interface InstanceAutoscalingConfigAsymmetricAutoscalingOption {
+        /**
+         * A nested object resource
+         * Structure is documented below.
+         */
+        overrides: pulumi.Input<inputs.spanner.InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides>;
+        /**
+         * A nested object resource
+         * Structure is documented below.
+         */
+        replicaSelection: pulumi.Input<inputs.spanner.InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection>;
+    }
+
+    export interface InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides {
+        /**
+         * A nested object resource
+         * Structure is documented below.
+         */
+        autoscalingLimits: pulumi.Input<inputs.spanner.InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits>;
+    }
+
+    export interface InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits {
+        /**
+         * The maximum number of nodes for this specific replica.
+         */
+        maxNodes: pulumi.Input<number>;
+        /**
+         * The minimum number of nodes for this specific replica.
+         */
+        minNodes: pulumi.Input<number>;
+    }
+
+    export interface InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection {
+        /**
+         * The location of the replica to apply asymmetric autoscaling options.
+         */
+        location: pulumi.Input<string>;
+    }
+
     export interface InstanceAutoscalingConfigAutoscalingLimits {
         /**
-         * Specifies maximum number of nodes allocated to the instance. If set, this number
-         * should be greater than or equal to min_nodes.
+         * The maximum number of nodes for this specific replica.
          */
         maxNodes?: pulumi.Input<number>;
         /**
@@ -68564,8 +68907,7 @@ export namespace spanner {
          */
         maxProcessingUnits?: pulumi.Input<number>;
         /**
-         * Specifies number of nodes allocated to the instance. If set, this number
-         * should be greater than or equal to 1.
+         * The minimum number of nodes for this specific replica.
          */
         minNodes?: pulumi.Input<number>;
         /**
@@ -68689,7 +69031,8 @@ export namespace sql {
         connectRetryInterval?: pulumi.Input<number>;
         /**
          * Path to a SQL file in GCS from which replica
-         * instances are created. Format is `gs://bucket/filename`.
+         * instances are created. Format is `gs://bucket/filename`. Note, if the master
+         * instance is a source representation instance this field must be present.
          */
         dumpFilePath?: pulumi.Input<string>;
         /**
@@ -69224,8 +69567,7 @@ export namespace storage {
 
     export interface BucketHierarchicalNamespace {
         /**
-         * Enable hierarchical namespace for the bucket. 
-         * To use this flag, you must also use --uniform-bucket-level-access
+         * Enables hierarchical namespace for the bucket.
          */
         enabled: pulumi.Input<boolean>;
     }
@@ -71889,6 +72231,12 @@ export namespace vmwareengine {
 
     export interface PrivateCloudManagementCluster {
         /**
+         * Configuration of the autoscaling applied to this cluster
+         * Private cloud must have a minimum of 3 nodes to add autoscale settings
+         * Structure is documented below.
+         */
+        autoscalingSettings?: pulumi.Input<inputs.vmwareengine.PrivateCloudManagementClusterAutoscalingSettings>;
+        /**
          * The user-provided identifier of the new Cluster. The identifier must meet the following requirements:
          * * Only contains 1-63 alphanumeric characters and hyphens
          * * Begins with an alphabetical character
@@ -71908,6 +72256,107 @@ export namespace vmwareengine {
          * Structure is documented below.
          */
         stretchedClusterConfig?: pulumi.Input<inputs.vmwareengine.PrivateCloudManagementClusterStretchedClusterConfig>;
+    }
+
+    export interface PrivateCloudManagementClusterAutoscalingSettings {
+        /**
+         * The map with autoscaling policies applied to the cluster.
+         * The key is the identifier of the policy.
+         * It must meet the following requirements:
+         * * Only contains 1-63 alphanumeric characters and hyphens
+         * * Begins with an alphabetical character
+         * * Ends with a non-hyphen character
+         * * Not formatted as a UUID
+         * * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+         * Currently the map must contain only one element
+         * that describes the autoscaling policy for compute nodes.
+         * Structure is documented below.
+         */
+        autoscalingPolicies: pulumi.Input<pulumi.Input<inputs.vmwareengine.PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicy>[]>;
+        /**
+         * The minimum duration between consecutive autoscale operations.
+         * It starts once addition or removal of nodes is fully completed.
+         * Minimum cool down period is 30m.
+         * Cool down period must be in whole minutes (for example, 30m, 31m, 50m).
+         * Mandatory for successful addition of autoscaling settings in cluster.
+         */
+        coolDownPeriod?: pulumi.Input<string>;
+        /**
+         * Maximum number of nodes of any type in a cluster.
+         * Mandatory for successful addition of autoscaling settings in cluster.
+         */
+        maxClusterNodeCount?: pulumi.Input<number>;
+        /**
+         * Minimum number of nodes of any type in a cluster.
+         * Mandatory for successful addition of autoscaling settings in cluster.
+         */
+        minClusterNodeCount?: pulumi.Input<number>;
+    }
+
+    export interface PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicy {
+        /**
+         * The identifier for this object. Format specified above.
+         */
+        autoscalePolicyId: pulumi.Input<string>;
+        /**
+         * Utilization thresholds pertaining to amount of consumed memory.
+         * Structure is documented below.
+         */
+        consumedMemoryThresholds?: pulumi.Input<inputs.vmwareengine.PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholds>;
+        /**
+         * Utilization thresholds pertaining to CPU utilization.
+         * Structure is documented below.
+         */
+        cpuThresholds?: pulumi.Input<inputs.vmwareengine.PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds>;
+        /**
+         * The canonical identifier of the node type to add or remove.
+         */
+        nodeTypeId: pulumi.Input<string>;
+        /**
+         * Number of nodes to add to a cluster during a scale-out operation.
+         * Must be divisible by 2 for stretched clusters.
+         */
+        scaleOutSize: pulumi.Input<number>;
+        /**
+         * Utilization thresholds pertaining to amount of consumed storage.
+         * Structure is documented below.
+         */
+        storageThresholds?: pulumi.Input<inputs.vmwareengine.PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds>;
+    }
+
+    export interface PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholds {
+        /**
+         * The utilization triggering the scale-in operation in percent.
+         */
+        scaleIn: pulumi.Input<number>;
+        /**
+         * The utilization triggering the scale-out operation in percent.
+         */
+        scaleOut: pulumi.Input<number>;
+    }
+
+    export interface PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds {
+        /**
+         * The utilization triggering the scale-in operation in percent.
+         */
+        scaleIn: pulumi.Input<number>;
+        /**
+         * The utilization triggering the scale-out operation in percent.
+         */
+        scaleOut: pulumi.Input<number>;
+    }
+
+    export interface PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds {
+        /**
+         * The utilization triggering the scale-in operation in percent.
+         *
+         * - - -
+         */
+        scaleIn: pulumi.Input<number>;
+        /**
+         * The utilization triggering the scale-out operation in percent.
+         */
+        scaleOut: pulumi.Input<number>;
     }
 
     export interface PrivateCloudManagementClusterNodeTypeConfig {
@@ -71935,8 +72384,6 @@ export namespace vmwareengine {
         preferredLocation?: pulumi.Input<string>;
         /**
          * Additional zone for a higher level of availability and load balancing.
-         *
-         * - - -
          */
         secondaryLocation?: pulumi.Input<string>;
     }

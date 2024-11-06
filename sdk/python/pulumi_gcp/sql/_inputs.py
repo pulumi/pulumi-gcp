@@ -284,7 +284,8 @@ if not MYPY:
         dump_file_path: NotRequired[pulumi.Input[str]]
         """
         Path to a SQL file in GCS from which replica
-        instances are created. Format is `gs://bucket/filename`.
+        instances are created. Format is `gs://bucket/filename`. Note, if the master
+        instance is a source representation instance this field must be present.
         """
         failover_target: NotRequired[pulumi.Input[bool]]
         """
@@ -343,7 +344,8 @@ class DatabaseInstanceReplicaConfigurationArgs:
         :param pulumi.Input[int] connect_retry_interval: The number of seconds
                between connect retries. MySQL's default is 60 seconds.
         :param pulumi.Input[str] dump_file_path: Path to a SQL file in GCS from which replica
-               instances are created. Format is `gs://bucket/filename`.
+               instances are created. Format is `gs://bucket/filename`. Note, if the master
+               instance is a source representation instance this field must be present.
         :param pulumi.Input[bool] failover_target: Specifies if the replica is the failover target.
                If the field is set to true the replica will be designated as a failover replica.
                If the master instance fails, the replica instance will be promoted as
@@ -437,7 +439,8 @@ class DatabaseInstanceReplicaConfigurationArgs:
     def dump_file_path(self) -> Optional[pulumi.Input[str]]:
         """
         Path to a SQL file in GCS from which replica
-        instances are created. Format is `gs://bucket/filename`.
+        instances are created. Format is `gs://bucket/filename`. Note, if the master
+        instance is a source representation instance this field must be present.
         """
         return pulumi.get(self, "dump_file_path")
 

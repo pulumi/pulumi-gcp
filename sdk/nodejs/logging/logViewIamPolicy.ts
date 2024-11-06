@@ -140,7 +140,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## > **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+ * ## > **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
  *
  * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  * ---
@@ -311,7 +311,7 @@ import * as utilities from "../utilities";
  * $ pulumi import gcp:logging/logViewIamPolicy:LogViewIamPolicy editor {{parent}}/locations/{{location}}/buckets/{{bucket}}/views/{{log_view}}
  * ```
  *
- * -> **Custom Roles**: If you're importing a IAM resource with a custom role, make sure to use the
+ * -> **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
  *
  *  full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  */

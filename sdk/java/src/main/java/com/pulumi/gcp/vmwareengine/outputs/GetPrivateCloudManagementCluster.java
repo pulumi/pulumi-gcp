@@ -5,6 +5,7 @@ package com.pulumi.gcp.vmwareengine.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.vmwareengine.outputs.GetPrivateCloudManagementClusterAutoscalingSetting;
 import com.pulumi.gcp.vmwareengine.outputs.GetPrivateCloudManagementClusterNodeTypeConfig;
 import com.pulumi.gcp.vmwareengine.outputs.GetPrivateCloudManagementClusterStretchedClusterConfig;
 import java.lang.String;
@@ -13,6 +14,12 @@ import java.util.Objects;
 
 @CustomType
 public final class GetPrivateCloudManagementCluster {
+    /**
+     * @return Configuration of the autoscaling applied to this cluster
+     * Private cloud must have a minimum of 3 nodes to add autoscale settings
+     * 
+     */
+    private List<GetPrivateCloudManagementClusterAutoscalingSetting> autoscalingSettings;
     /**
      * @return The user-provided identifier of the new Cluster. The identifier must meet the following requirements:
      *   * Only contains 1-63 alphanumeric characters and hyphens
@@ -36,6 +43,14 @@ public final class GetPrivateCloudManagementCluster {
     private List<GetPrivateCloudManagementClusterStretchedClusterConfig> stretchedClusterConfigs;
 
     private GetPrivateCloudManagementCluster() {}
+    /**
+     * @return Configuration of the autoscaling applied to this cluster
+     * Private cloud must have a minimum of 3 nodes to add autoscale settings
+     * 
+     */
+    public List<GetPrivateCloudManagementClusterAutoscalingSetting> autoscalingSettings() {
+        return this.autoscalingSettings;
+    }
     /**
      * @return The user-provided identifier of the new Cluster. The identifier must meet the following requirements:
      *   * Only contains 1-63 alphanumeric characters and hyphens
@@ -73,17 +88,30 @@ public final class GetPrivateCloudManagementCluster {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetPrivateCloudManagementClusterAutoscalingSetting> autoscalingSettings;
         private String clusterId;
         private List<GetPrivateCloudManagementClusterNodeTypeConfig> nodeTypeConfigs;
         private List<GetPrivateCloudManagementClusterStretchedClusterConfig> stretchedClusterConfigs;
         public Builder() {}
         public Builder(GetPrivateCloudManagementCluster defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.autoscalingSettings = defaults.autoscalingSettings;
     	      this.clusterId = defaults.clusterId;
     	      this.nodeTypeConfigs = defaults.nodeTypeConfigs;
     	      this.stretchedClusterConfigs = defaults.stretchedClusterConfigs;
         }
 
+        @CustomType.Setter
+        public Builder autoscalingSettings(List<GetPrivateCloudManagementClusterAutoscalingSetting> autoscalingSettings) {
+            if (autoscalingSettings == null) {
+              throw new MissingRequiredPropertyException("GetPrivateCloudManagementCluster", "autoscalingSettings");
+            }
+            this.autoscalingSettings = autoscalingSettings;
+            return this;
+        }
+        public Builder autoscalingSettings(GetPrivateCloudManagementClusterAutoscalingSetting... autoscalingSettings) {
+            return autoscalingSettings(List.of(autoscalingSettings));
+        }
         @CustomType.Setter
         public Builder clusterId(String clusterId) {
             if (clusterId == null) {
@@ -116,6 +144,7 @@ public final class GetPrivateCloudManagementCluster {
         }
         public GetPrivateCloudManagementCluster build() {
             final var _resultValue = new GetPrivateCloudManagementCluster();
+            _resultValue.autoscalingSettings = autoscalingSettings;
             _resultValue.clusterId = clusterId;
             _resultValue.nodeTypeConfigs = nodeTypeConfigs;
             _resultValue.stretchedClusterConfigs = stretchedClusterConfigs;
