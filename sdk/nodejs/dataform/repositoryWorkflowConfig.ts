@@ -62,7 +62,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const dataformSa = new gcp.serviceaccount.Account("dataform_sa", {
- *     name: "dataform-sa",
+ *     accountId: "dataform-sa",
  *     displayName: "Dataform Service Account",
  * });
  * const workflow = new gcp.dataform.RepositoryWorkflowConfig("workflow", {

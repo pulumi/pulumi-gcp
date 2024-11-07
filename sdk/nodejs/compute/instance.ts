@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.serviceaccount.Account("default", {
- *     name: "my-custom-sa",
+ *     accountId: "my-custom-sa",
  *     displayName: "Custom SA for VM Instance",
  * });
  * const defaultInstance = new gcp.compute.Instance("default", {
@@ -65,7 +65,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.serviceaccount.Account("default", {
- *     name: "my-custom-sa",
+ *     accountId: "my-custom-sa",
  *     displayName: "Custom SA for VM Instance",
  * });
  * const confidentialInstance = new gcp.compute.Instance("confidential_instance", {

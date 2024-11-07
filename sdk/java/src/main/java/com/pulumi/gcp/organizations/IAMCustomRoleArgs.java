@@ -33,21 +33,6 @@ public final class IAMCustomRoleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The role id to use for this role.
-     * 
-     */
-    @Import(name="name")
-    private @Nullable Output<String> name;
-
-    /**
-     * @return The role id to use for this role.
-     * 
-     */
-    public Optional<Output<String>> name() {
-        return Optional.ofNullable(this.name);
-    }
-
-    /**
      * The numeric ID of the organization in which you want to create a custom role.
      * 
      */
@@ -75,6 +60,21 @@ public final class IAMCustomRoleArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Output<List<String>> permissions() {
         return this.permissions;
+    }
+
+    /**
+     * The role id to use for this role.
+     * 
+     */
+    @Import(name="roleId")
+    private @Nullable Output<String> roleId;
+
+    /**
+     * @return The role id to use for this role.
+     * 
+     */
+    public Optional<Output<String>> roleId() {
+        return Optional.ofNullable(this.roleId);
     }
 
     /**
@@ -115,9 +115,9 @@ public final class IAMCustomRoleArgs extends com.pulumi.resources.ResourceArgs {
 
     private IAMCustomRoleArgs(IAMCustomRoleArgs $) {
         this.description = $.description;
-        this.name = $.name;
         this.orgId = $.orgId;
         this.permissions = $.permissions;
+        this.roleId = $.roleId;
         this.stage = $.stage;
         this.title = $.title;
     }
@@ -159,27 +159,6 @@ public final class IAMCustomRoleArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
-        }
-
-        /**
-         * @param name The role id to use for this role.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder name(@Nullable Output<String> name) {
-            $.name = name;
-            return this;
-        }
-
-        /**
-         * @param name The role id to use for this role.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder name(String name) {
-            return name(Output.of(name));
         }
 
         /**
@@ -232,6 +211,27 @@ public final class IAMCustomRoleArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder permissions(String... permissions) {
             return permissions(List.of(permissions));
+        }
+
+        /**
+         * @param roleId The role id to use for this role.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder roleId(@Nullable Output<String> roleId) {
+            $.roleId = roleId;
+            return this;
+        }
+
+        /**
+         * @param roleId The role id to use for this role.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder roleId(String roleId) {
+            return roleId(Output.of(roleId));
         }
 
         /**

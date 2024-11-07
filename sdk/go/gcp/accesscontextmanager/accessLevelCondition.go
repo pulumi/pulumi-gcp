@@ -91,7 +91,7 @@ import (
 //				return err
 //			}
 //			_, err = serviceaccount.NewAccount(ctx, "created-later", &serviceaccount.AccountArgs{
-//				Name: pulumi.String("my-account-id"),
+//				AccountId: pulumi.String("my-account-id"),
 //			})
 //			if err != nil {
 //				return err

@@ -148,7 +148,7 @@ class IAMPolicy(pulumi.CustomResource):
             "members": ["user:jane@example.com"],
         }])
         sa = gcp.serviceaccount.Account("sa",
-            name="my-service-account",
+            account_id="my-service-account",
             display_name="A service account that only Jane can interact with")
         admin_account_iam = gcp.serviceaccount.IAMPolicy("admin-account-iam",
             service_account_id=sa.name,
@@ -162,7 +162,7 @@ class IAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         sa = gcp.serviceaccount.Account("sa",
-            name="my-service-account",
+            account_id="my-service-account",
             display_name="A service account that only Jane can use")
         admin_account_iam = gcp.serviceaccount.IAMBinding("admin-account-iam",
             service_account_id=sa.name,
@@ -177,7 +177,7 @@ class IAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         sa = gcp.serviceaccount.Account("sa",
-            name="my-service-account",
+            account_id="my-service-account",
             display_name="A service account that only Jane can use")
         admin_account_iam = gcp.serviceaccount.IAMBinding("admin-account-iam",
             service_account_id=sa.name,
@@ -198,7 +198,7 @@ class IAMPolicy(pulumi.CustomResource):
 
         default = gcp.compute.get_default_service_account()
         sa = gcp.serviceaccount.Account("sa",
-            name="my-service-account",
+            account_id="my-service-account",
             display_name="A service account that Jane can use")
         admin_account_iam = gcp.serviceaccount.IAMMember("admin-account-iam",
             service_account_id=sa.name,
@@ -218,7 +218,7 @@ class IAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         sa = gcp.serviceaccount.Account("sa",
-            name="my-service-account",
+            account_id="my-service-account",
             display_name="A service account that Jane can use")
         admin_account_iam = gcp.serviceaccount.IAMMember("admin-account-iam",
             service_account_id=sa.name,
@@ -244,7 +244,7 @@ class IAMPolicy(pulumi.CustomResource):
             "members": ["user:jane@example.com"],
         }])
         sa = gcp.serviceaccount.Account("sa",
-            name="my-service-account",
+            account_id="my-service-account",
             display_name="A service account that only Jane can interact with")
         admin_account_iam = gcp.serviceaccount.IAMPolicy("admin-account-iam",
             service_account_id=sa.name,
@@ -258,7 +258,7 @@ class IAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         sa = gcp.serviceaccount.Account("sa",
-            name="my-service-account",
+            account_id="my-service-account",
             display_name="A service account that only Jane can use")
         admin_account_iam = gcp.serviceaccount.IAMBinding("admin-account-iam",
             service_account_id=sa.name,
@@ -273,7 +273,7 @@ class IAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         sa = gcp.serviceaccount.Account("sa",
-            name="my-service-account",
+            account_id="my-service-account",
             display_name="A service account that only Jane can use")
         admin_account_iam = gcp.serviceaccount.IAMBinding("admin-account-iam",
             service_account_id=sa.name,
@@ -294,7 +294,7 @@ class IAMPolicy(pulumi.CustomResource):
 
         default = gcp.compute.get_default_service_account()
         sa = gcp.serviceaccount.Account("sa",
-            name="my-service-account",
+            account_id="my-service-account",
             display_name="A service account that Jane can use")
         admin_account_iam = gcp.serviceaccount.IAMMember("admin-account-iam",
             service_account_id=sa.name,
@@ -314,7 +314,7 @@ class IAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         sa = gcp.serviceaccount.Account("sa",
-            name="my-service-account",
+            account_id="my-service-account",
             display_name="A service account that Jane can use")
         admin_account_iam = gcp.serviceaccount.IAMMember("admin-account-iam",
             service_account_id=sa.name,
@@ -379,7 +379,7 @@ class IAMPolicy(pulumi.CustomResource):
             "members": ["user:jane@example.com"],
         }])
         sa = gcp.serviceaccount.Account("sa",
-            name="my-service-account",
+            account_id="my-service-account",
             display_name="A service account that only Jane can interact with")
         admin_account_iam = gcp.serviceaccount.IAMPolicy("admin-account-iam",
             service_account_id=sa.name,
@@ -393,7 +393,7 @@ class IAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         sa = gcp.serviceaccount.Account("sa",
-            name="my-service-account",
+            account_id="my-service-account",
             display_name="A service account that only Jane can use")
         admin_account_iam = gcp.serviceaccount.IAMBinding("admin-account-iam",
             service_account_id=sa.name,
@@ -408,7 +408,7 @@ class IAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         sa = gcp.serviceaccount.Account("sa",
-            name="my-service-account",
+            account_id="my-service-account",
             display_name="A service account that only Jane can use")
         admin_account_iam = gcp.serviceaccount.IAMBinding("admin-account-iam",
             service_account_id=sa.name,
@@ -429,7 +429,7 @@ class IAMPolicy(pulumi.CustomResource):
 
         default = gcp.compute.get_default_service_account()
         sa = gcp.serviceaccount.Account("sa",
-            name="my-service-account",
+            account_id="my-service-account",
             display_name="A service account that Jane can use")
         admin_account_iam = gcp.serviceaccount.IAMMember("admin-account-iam",
             service_account_id=sa.name,
@@ -449,7 +449,7 @@ class IAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         sa = gcp.serviceaccount.Account("sa",
-            name="my-service-account",
+            account_id="my-service-account",
             display_name="A service account that Jane can use")
         admin_account_iam = gcp.serviceaccount.IAMMember("admin-account-iam",
             service_account_id=sa.name,
@@ -475,7 +475,7 @@ class IAMPolicy(pulumi.CustomResource):
             "members": ["user:jane@example.com"],
         }])
         sa = gcp.serviceaccount.Account("sa",
-            name="my-service-account",
+            account_id="my-service-account",
             display_name="A service account that only Jane can interact with")
         admin_account_iam = gcp.serviceaccount.IAMPolicy("admin-account-iam",
             service_account_id=sa.name,
@@ -489,7 +489,7 @@ class IAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         sa = gcp.serviceaccount.Account("sa",
-            name="my-service-account",
+            account_id="my-service-account",
             display_name="A service account that only Jane can use")
         admin_account_iam = gcp.serviceaccount.IAMBinding("admin-account-iam",
             service_account_id=sa.name,
@@ -504,7 +504,7 @@ class IAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         sa = gcp.serviceaccount.Account("sa",
-            name="my-service-account",
+            account_id="my-service-account",
             display_name="A service account that only Jane can use")
         admin_account_iam = gcp.serviceaccount.IAMBinding("admin-account-iam",
             service_account_id=sa.name,
@@ -525,7 +525,7 @@ class IAMPolicy(pulumi.CustomResource):
 
         default = gcp.compute.get_default_service_account()
         sa = gcp.serviceaccount.Account("sa",
-            name="my-service-account",
+            account_id="my-service-account",
             display_name="A service account that Jane can use")
         admin_account_iam = gcp.serviceaccount.IAMMember("admin-account-iam",
             service_account_id=sa.name,
@@ -545,7 +545,7 @@ class IAMPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         sa = gcp.serviceaccount.Account("sa",
-            name="my-service-account",
+            account_id="my-service-account",
             display_name="A service account that Jane can use")
         admin_account_iam = gcp.serviceaccount.IAMMember("admin-account-iam",
             service_account_id=sa.name,

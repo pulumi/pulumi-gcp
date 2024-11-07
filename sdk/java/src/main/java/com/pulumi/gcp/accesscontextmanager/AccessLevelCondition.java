@@ -101,7 +101,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var created_later = new Account("created-later", AccountArgs.builder()
- *             .name("my-account-id")
+ *             .accountId("my-account-id")
  *             .build());
  * 
  *         var access_level_conditions = new AccessLevelCondition("access-level-conditions", AccessLevelConditionArgs.builder()

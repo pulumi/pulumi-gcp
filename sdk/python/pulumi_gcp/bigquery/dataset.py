@@ -1004,7 +1004,7 @@ class Dataset(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        bqowner = gcp.serviceaccount.Account("bqowner", name="bqowner")
+        bqowner = gcp.serviceaccount.Account("bqowner", account_id="bqowner")
         dataset = gcp.bigquery.Dataset("dataset",
             dataset_id="example_dataset",
             friendly_name="test",
@@ -1053,7 +1053,7 @@ class Dataset(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        bqowner = gcp.serviceaccount.Account("bqowner", name="bqowner")
+        bqowner = gcp.serviceaccount.Account("bqowner", account_id="bqowner")
         public = gcp.bigquery.Dataset("public",
             dataset_id="public",
             friendly_name="test",
@@ -1310,7 +1310,7 @@ class Dataset(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        bqowner = gcp.serviceaccount.Account("bqowner", name="bqowner")
+        bqowner = gcp.serviceaccount.Account("bqowner", account_id="bqowner")
         dataset = gcp.bigquery.Dataset("dataset",
             dataset_id="example_dataset",
             friendly_name="test",
@@ -1359,7 +1359,7 @@ class Dataset(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        bqowner = gcp.serviceaccount.Account("bqowner", name="bqowner")
+        bqowner = gcp.serviceaccount.Account("bqowner", account_id="bqowner")
         public = gcp.bigquery.Dataset("public",
             dataset_id="public",
             friendly_name="test",

@@ -103,7 +103,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new Account("default", AccountArgs.builder()
- *             .name("service-account-id")
+ *             .accountId("service-account-id")
  *             .displayName("Service Account")
  *             .build());
  * 

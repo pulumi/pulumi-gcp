@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var bqowner = new Account("bqowner", AccountArgs.builder()
- *             .name("bqowner")
+ *             .accountId("bqowner")
  *             .build());
  * 
  *         var dataset = new Dataset("dataset", DatasetArgs.builder()
@@ -167,7 +167,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var bqowner = new Account("bqowner", AccountArgs.builder()
- *             .name("bqowner")
+ *             .accountId("bqowner")
  *             .build());
  * 
  *         var public_ = new Dataset("public", DatasetArgs.builder()

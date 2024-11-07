@@ -1633,7 +1633,7 @@ public final class ServiceaccountFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var myaccount = new Account("myaccount", AccountArgs.builder()
-     *             .name("dev-foo-account")
+     *             .accountId("dev-foo-account")
      *             .build());
      * 
      *         var mykeyKey = new Key("mykeyKey", KeyArgs.builder()
@@ -1688,7 +1688,7 @@ public final class ServiceaccountFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var myaccount = new Account("myaccount", AccountArgs.builder()
-     *             .name("dev-foo-account")
+     *             .accountId("dev-foo-account")
      *             .build());
      * 
      *         var mykeyKey = new Key("mykeyKey", KeyArgs.builder()
@@ -1743,7 +1743,7 @@ public final class ServiceaccountFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var myaccount = new Account("myaccount", AccountArgs.builder()
-     *             .name("dev-foo-account")
+     *             .accountId("dev-foo-account")
      *             .build());
      * 
      *         var mykeyKey = new Key("mykeyKey", KeyArgs.builder()
@@ -1798,7 +1798,7 @@ public final class ServiceaccountFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var myaccount = new Account("myaccount", AccountArgs.builder()
-     *             .name("dev-foo-account")
+     *             .accountId("dev-foo-account")
      *             .build());
      * 
      *         var mykeyKey = new Key("mykeyKey", KeyArgs.builder()

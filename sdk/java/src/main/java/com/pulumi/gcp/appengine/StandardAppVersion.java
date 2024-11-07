@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var customServiceAccount = new Account("customServiceAccount", AccountArgs.builder()
- *             .name("my-account")
+ *             .accountId("my-account")
  *             .displayName("Custom Service Account")
  *             .build());
  * 

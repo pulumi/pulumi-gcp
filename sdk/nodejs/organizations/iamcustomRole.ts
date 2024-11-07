@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const my_custom_role = new gcp.organizations.IAMCustomRole("my-custom-role", {
- *     name: "myCustomRole",
+ *     roleId: "myCustomRole",
  *     orgId: "123456789",
  *     title: "My Custom Role",
  *     description: "A description",
@@ -83,9 +83,9 @@ export class IAMCustomRole extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The role id to use for this role.
+     * The name of the role in the format `organizations/{{org_id}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
      */
-    public readonly name!: pulumi.Output<string>;
+    public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * The numeric ID of the organization in which you want to create a custom role.
      */
@@ -94,6 +94,10 @@ export class IAMCustomRole extends pulumi.CustomResource {
      * The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
      */
     public readonly permissions!: pulumi.Output<string[]>;
+    /**
+     * The role id to use for this role.
+     */
+    public readonly roleId!: pulumi.Output<string>;
     /**
      * The current launch stage of the role.
      * Defaults to `GA`.
@@ -123,6 +127,7 @@ export class IAMCustomRole extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["orgId"] = state ? state.orgId : undefined;
             resourceInputs["permissions"] = state ? state.permissions : undefined;
+            resourceInputs["roleId"] = state ? state.roleId : undefined;
             resourceInputs["stage"] = state ? state.stage : undefined;
             resourceInputs["title"] = state ? state.title : undefined;
         } else {
@@ -137,12 +142,13 @@ export class IAMCustomRole extends pulumi.CustomResource {
                 throw new Error("Missing required property 'title'");
             }
             resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["orgId"] = args ? args.orgId : undefined;
             resourceInputs["permissions"] = args ? args.permissions : undefined;
+            resourceInputs["roleId"] = args ? args.roleId : undefined;
             resourceInputs["stage"] = args ? args.stage : undefined;
             resourceInputs["title"] = args ? args.title : undefined;
             resourceInputs["deleted"] = undefined /*out*/;
+            resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(IAMCustomRole.__pulumiType, name, resourceInputs, opts);
@@ -162,7 +168,7 @@ export interface IAMCustomRoleState {
      */
     description?: pulumi.Input<string>;
     /**
-     * The role id to use for this role.
+     * The name of the role in the format `organizations/{{org_id}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
      */
     name?: pulumi.Input<string>;
     /**
@@ -173,6 +179,10 @@ export interface IAMCustomRoleState {
      * The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
      */
     permissions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The role id to use for this role.
+     */
+    roleId?: pulumi.Input<string>;
     /**
      * The current launch stage of the role.
      * Defaults to `GA`.
@@ -194,10 +204,6 @@ export interface IAMCustomRoleArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * The role id to use for this role.
-     */
-    name?: pulumi.Input<string>;
-    /**
      * The numeric ID of the organization in which you want to create a custom role.
      */
     orgId: pulumi.Input<string>;
@@ -205,6 +211,10 @@ export interface IAMCustomRoleArgs {
      * The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
      */
     permissions: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The role id to use for this role.
+     */
+    roleId?: pulumi.Input<string>;
     /**
      * The current launch stage of the role.
      * Defaults to `GA`.

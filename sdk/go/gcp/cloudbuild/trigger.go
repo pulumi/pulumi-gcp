@@ -222,7 +222,7 @@ import (
 //				return err
 //			}
 //			cloudbuildServiceAccount, err := serviceaccount.NewAccount(ctx, "cloudbuild_service_account", &serviceaccount.AccountArgs{
-//				Name: pulumi.String("cloud-sa"),
+//				AccountId: pulumi.String("cloud-sa"),
 //			})
 //			if err != nil {
 //				return err

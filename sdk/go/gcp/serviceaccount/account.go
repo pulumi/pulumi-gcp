@@ -40,7 +40,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := serviceaccount.NewAccount(ctx, "service_account", &serviceaccount.AccountArgs{
-//				Name:        pulumi.String("service-account-id"),
+//				AccountId:   pulumi.String("service-account-id"),
 //				DisplayName: pulumi.String("Service Account"),
 //			})
 //			if err != nil {
@@ -66,6 +66,11 @@ import (
 type Account struct {
 	pulumi.CustomResourceState
 
+	// The account id that is used to generate the service
+	// account email address and a stable unique id. It is unique within a project,
+	// must be 6-30 characters long, and match the regular expression `a-z`
+	// to comply with RFC1035. Changing this forces a new service account to be created.
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// If set to true, skip service account creation if a service account with the same email already exists.
 	CreateIgnoreAlreadyExists pulumi.BoolPtrOutput `pulumi:"createIgnoreAlreadyExists"`
 	// A text description of the service account.
@@ -128,6 +133,11 @@ func GetAccount(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Account resources.
 type accountState struct {
+	// The account id that is used to generate the service
+	// account email address and a stable unique id. It is unique within a project,
+	// must be 6-30 characters long, and match the regular expression `a-z`
+	// to comply with RFC1035. Changing this forces a new service account to be created.
+	AccountId *string `pulumi:"accountId"`
 	// If set to true, skip service account creation if a service account with the same email already exists.
 	CreateIgnoreAlreadyExists *bool `pulumi:"createIgnoreAlreadyExists"`
 	// A text description of the service account.
@@ -155,6 +165,11 @@ type accountState struct {
 }
 
 type AccountState struct {
+	// The account id that is used to generate the service
+	// account email address and a stable unique id. It is unique within a project,
+	// must be 6-30 characters long, and match the regular expression `a-z`
+	// to comply with RFC1035. Changing this forces a new service account to be created.
+	AccountId pulumi.StringPtrInput
 	// If set to true, skip service account creation if a service account with the same email already exists.
 	CreateIgnoreAlreadyExists pulumi.BoolPtrInput
 	// A text description of the service account.
@@ -186,6 +201,11 @@ func (AccountState) ElementType() reflect.Type {
 }
 
 type accountArgs struct {
+	// The account id that is used to generate the service
+	// account email address and a stable unique id. It is unique within a project,
+	// must be 6-30 characters long, and match the regular expression `a-z`
+	// to comply with RFC1035. Changing this forces a new service account to be created.
+	AccountId *string `pulumi:"accountId"`
 	// If set to true, skip service account creation if a service account with the same email already exists.
 	CreateIgnoreAlreadyExists *bool `pulumi:"createIgnoreAlreadyExists"`
 	// A text description of the service account.
@@ -197,11 +217,6 @@ type accountArgs struct {
 	// The display name for the service account.
 	// Can be updated without creating a new resource.
 	DisplayName *string `pulumi:"displayName"`
-	// The account id that is used to generate the service
-	// account email address and a stable unique id. It is unique within a project,
-	// must be 6-30 characters long, and match the regular expression `a-z`
-	// to comply with RFC1035. Changing this forces a new service account to be created.
-	Name *string `pulumi:"name"`
 	// The ID of the project that the service account will be created in.
 	// Defaults to the provider project configuration.
 	Project *string `pulumi:"project"`
@@ -209,6 +224,11 @@ type accountArgs struct {
 
 // The set of arguments for constructing a Account resource.
 type AccountArgs struct {
+	// The account id that is used to generate the service
+	// account email address and a stable unique id. It is unique within a project,
+	// must be 6-30 characters long, and match the regular expression `a-z`
+	// to comply with RFC1035. Changing this forces a new service account to be created.
+	AccountId pulumi.StringPtrInput
 	// If set to true, skip service account creation if a service account with the same email already exists.
 	CreateIgnoreAlreadyExists pulumi.BoolPtrInput
 	// A text description of the service account.
@@ -220,11 +240,6 @@ type AccountArgs struct {
 	// The display name for the service account.
 	// Can be updated without creating a new resource.
 	DisplayName pulumi.StringPtrInput
-	// The account id that is used to generate the service
-	// account email address and a stable unique id. It is unique within a project,
-	// must be 6-30 characters long, and match the regular expression `a-z`
-	// to comply with RFC1035. Changing this forces a new service account to be created.
-	Name pulumi.StringPtrInput
 	// The ID of the project that the service account will be created in.
 	// Defaults to the provider project configuration.
 	Project pulumi.StringPtrInput
@@ -315,6 +330,14 @@ func (o AccountOutput) ToAccountOutput() AccountOutput {
 
 func (o AccountOutput) ToAccountOutputWithContext(ctx context.Context) AccountOutput {
 	return o
+}
+
+// The account id that is used to generate the service
+// account email address and a stable unique id. It is unique within a project,
+// must be 6-30 characters long, and match the regular expression `a-z`
+// to comply with RFC1035. Changing this forces a new service account to be created.
+func (o AccountOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
 // If set to true, skip service account creation if a service account with the same email already exists.

@@ -85,7 +85,7 @@ namespace Pulumi.Gcp.CloudTasks
     /// {
     ///     var oidcServiceAccount = new Gcp.ServiceAccount.Account("oidc_service_account", new()
     ///     {
-    ///         Name = "example-oidc",
+    ///         AccountId = "example-oidc",
     ///         DisplayName = "Tasks Queue OIDC Service Account",
     ///     });
     /// 
@@ -152,7 +152,7 @@ namespace Pulumi.Gcp.CloudTasks
     /// {
     ///     var oauthServiceAccount = new Gcp.ServiceAccount.Account("oauth_service_account", new()
     ///     {
-    ///         Name = "example-oauth",
+    ///         AccountId = "example-oauth",
     ///         DisplayName = "Tasks Queue OAuth Service Account",
     ///     });
     /// 

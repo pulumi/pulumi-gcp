@@ -175,7 +175,7 @@ import * as utilities from "../utilities";
  *
  * const example = new gcp.pubsub.Topic("example", {name: "example-topic"});
  * const bqWriteServiceAccount = new gcp.serviceaccount.Account("bq_write_service_account", {
- *     name: "example-bqw",
+ *     accountId: "example-bqw",
  *     displayName: "BQ Write Service Account",
  * });
  * const project = gcp.organizations.getProject({});
@@ -310,7 +310,7 @@ import * as utilities from "../utilities";
  * });
  * const exampleTopic = new gcp.pubsub.Topic("example", {name: "example-topic"});
  * const storageWriteServiceAccount = new gcp.serviceaccount.Account("storage_write_service_account", {
- *     name: "example-stw",
+ *     accountId: "example-stw",
  *     displayName: "Storage Write Service Account",
  * });
  * const admin = new gcp.storage.BucketIAMMember("admin", {

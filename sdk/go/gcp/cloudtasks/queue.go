@@ -103,7 +103,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			oidcServiceAccount, err := serviceaccount.NewAccount(ctx, "oidc_service_account", &serviceaccount.AccountArgs{
-//				Name:        pulumi.String("example-oidc"),
+//				AccountId:   pulumi.String("example-oidc"),
 //				DisplayName: pulumi.String("Tasks Queue OIDC Service Account"),
 //			})
 //			if err != nil {
@@ -170,7 +170,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			oauthServiceAccount, err := serviceaccount.NewAccount(ctx, "oauth_service_account", &serviceaccount.AccountArgs{
-//				Name:        pulumi.String("example-oauth"),
+//				AccountId:   pulumi.String("example-oauth"),
 //				DisplayName: pulumi.String("Tasks Queue OAuth Service Account"),
 //			})
 //			if err != nil {

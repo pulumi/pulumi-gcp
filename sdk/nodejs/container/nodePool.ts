@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.serviceaccount.Account("default", {
- *     name: "service-account-id",
+ *     accountId: "service-account-id",
  *     displayName: "Service Account",
  * });
  * const primary = new gcp.container.Cluster("primary", {
@@ -49,7 +49,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.serviceaccount.Account("default", {
- *     name: "service-account-id",
+ *     accountId: "service-account-id",
  *     displayName: "Service Account",
  * });
  * const primary = new gcp.container.Cluster("primary", {

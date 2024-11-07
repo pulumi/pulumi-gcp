@@ -115,7 +115,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var dataformSa = new Account("dataformSa", AccountArgs.builder()
- *             .name("dataform-sa")
+ *             .accountId("dataform-sa")
  *             .displayName("Dataform Service Account")
  *             .build());
  * 

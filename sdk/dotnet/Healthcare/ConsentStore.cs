@@ -98,7 +98,7 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     ///     var test_account = new Gcp.ServiceAccount.Account("test-account", new()
     ///     {
-    ///         Name = "my-account",
+    ///         AccountId = "my-account",
     ///         DisplayName = "Test Service Account",
     ///     });
     /// 

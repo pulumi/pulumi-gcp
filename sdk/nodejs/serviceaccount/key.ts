@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const myaccount = new gcp.serviceaccount.Account("myaccount", {
- *     name: "myaccount",
+ *     accountId: "myaccount",
  *     displayName: "My Service Account",
  * });
  * const mykey = new gcp.serviceaccount.Key("mykey", {
@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  * import * as time from "@pulumiverse/time";
  *
  * const myaccount = new gcp.serviceaccount.Account("myaccount", {
- *     name: "myaccount",
+ *     accountId: "myaccount",
  *     displayName: "My Service Account",
  * });
  * // note this requires the terraform to be run regularly
@@ -55,7 +55,7 @@ import * as utilities from "../utilities";
  * // Workload Identity is the recommended way of accessing Google Cloud APIs from pods.
  * // https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
  * const myaccount = new gcp.serviceaccount.Account("myaccount", {
- *     name: "myaccount",
+ *     accountId: "myaccount",
  *     displayName: "My Service Account",
  * });
  * const mykey = new gcp.serviceaccount.Key("mykey", {serviceAccountId: myaccount.name});

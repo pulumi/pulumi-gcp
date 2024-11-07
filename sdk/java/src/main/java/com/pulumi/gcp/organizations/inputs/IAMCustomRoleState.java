@@ -48,14 +48,14 @@ public final class IAMCustomRoleState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The role id to use for this role.
+     * The name of the role in the format `organizations/{{org_id}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The role id to use for this role.
+     * @return The name of the role in the format `organizations/{{org_id}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
      * 
      */
     public Optional<Output<String>> name() {
@@ -90,6 +90,21 @@ public final class IAMCustomRoleState extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<List<String>>> permissions() {
         return Optional.ofNullable(this.permissions);
+    }
+
+    /**
+     * The role id to use for this role.
+     * 
+     */
+    @Import(name="roleId")
+    private @Nullable Output<String> roleId;
+
+    /**
+     * @return The role id to use for this role.
+     * 
+     */
+    public Optional<Output<String>> roleId() {
+        return Optional.ofNullable(this.roleId);
     }
 
     /**
@@ -134,6 +149,7 @@ public final class IAMCustomRoleState extends com.pulumi.resources.ResourceArgs 
         this.name = $.name;
         this.orgId = $.orgId;
         this.permissions = $.permissions;
+        this.roleId = $.roleId;
         this.stage = $.stage;
         this.title = $.title;
     }
@@ -199,7 +215,7 @@ public final class IAMCustomRoleState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name The role id to use for this role.
+         * @param name The name of the role in the format `organizations/{{org_id}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
          * 
          * @return builder
          * 
@@ -210,7 +226,7 @@ public final class IAMCustomRoleState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name The role id to use for this role.
+         * @param name The name of the role in the format `organizations/{{org_id}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
          * 
          * @return builder
          * 
@@ -269,6 +285,27 @@ public final class IAMCustomRoleState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder permissions(String... permissions) {
             return permissions(List.of(permissions));
+        }
+
+        /**
+         * @param roleId The role id to use for this role.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder roleId(@Nullable Output<String> roleId) {
+            $.roleId = roleId;
+            return this;
+        }
+
+        /**
+         * @param roleId The role id to use for this role.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder roleId(String roleId) {
+            return roleId(Output.of(roleId));
         }
 
         /**

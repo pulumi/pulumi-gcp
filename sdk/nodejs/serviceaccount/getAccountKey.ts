@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const myaccount = new gcp.serviceaccount.Account("myaccount", {name: "dev-foo-account"});
+ * const myaccount = new gcp.serviceaccount.Account("myaccount", {accountId: "dev-foo-account"});
  * const mykeyKey = new gcp.serviceaccount.Key("mykey", {serviceAccountId: myaccount.name});
  * const mykey = gcp.serviceaccount.getAccountKeyOutput({
  *     name: mykeyKey.name,
@@ -77,7 +77,7 @@ export interface GetAccountKeyResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const myaccount = new gcp.serviceaccount.Account("myaccount", {name: "dev-foo-account"});
+ * const myaccount = new gcp.serviceaccount.Account("myaccount", {accountId: "dev-foo-account"});
  * const mykeyKey = new gcp.serviceaccount.Key("mykey", {serviceAccountId: myaccount.name});
  * const mykey = gcp.serviceaccount.getAccountKeyOutput({
  *     name: mykeyKey.name,

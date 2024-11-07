@@ -19,14 +19,18 @@ __all__ = ['AccountArgs', 'Account']
 @pulumi.input_type
 class AccountArgs:
     def __init__(__self__, *,
+                 account_id: Optional[pulumi.Input[str]] = None,
                  create_ignore_already_exists: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Account resource.
+        :param pulumi.Input[str] account_id: The account id that is used to generate the service
+               account email address and a stable unique id. It is unique within a project,
+               must be 6-30 characters long, and match the regular expression `a-z`
+               to comply with RFC1035. Changing this forces a new service account to be created.
         :param pulumi.Input[bool] create_ignore_already_exists: If set to true, skip service account creation if a service account with the same email already exists.
         :param pulumi.Input[str] description: A text description of the service account.
                Must be less than or equal to 256 UTF-8 bytes.
@@ -34,13 +38,11 @@ class AccountArgs:
                Must be set after creation to disable a service account.
         :param pulumi.Input[str] display_name: The display name for the service account.
                Can be updated without creating a new resource.
-        :param pulumi.Input[str] name: The account id that is used to generate the service
-               account email address and a stable unique id. It is unique within a project,
-               must be 6-30 characters long, and match the regular expression `a-z`
-               to comply with RFC1035. Changing this forces a new service account to be created.
         :param pulumi.Input[str] project: The ID of the project that the service account will be created in.
                Defaults to the provider project configuration.
         """
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if create_ignore_already_exists is not None:
             pulumi.set(__self__, "create_ignore_already_exists", create_ignore_already_exists)
         if description is not None:
@@ -49,10 +51,23 @@ class AccountArgs:
             pulumi.set(__self__, "disabled", disabled)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The account id that is used to generate the service
+        account email address and a stable unique id. It is unique within a project,
+        must be 6-30 characters long, and match the regular expression `a-z`
+        to comply with RFC1035. Changing this forces a new service account to be created.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_id", value)
 
     @property
     @pulumi.getter(name="createIgnoreAlreadyExists")
@@ -107,21 +122,6 @@ class AccountArgs:
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The account id that is used to generate the service
-        account email address and a stable unique id. It is unique within a project,
-        must be 6-30 characters long, and match the regular expression `a-z`
-        to comply with RFC1035. Changing this forces a new service account to be created.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the project that the service account will be created in.
@@ -137,6 +137,7 @@ class AccountArgs:
 @pulumi.input_type
 class _AccountState:
     def __init__(__self__, *,
+                 account_id: Optional[pulumi.Input[str]] = None,
                  create_ignore_already_exists: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
@@ -148,6 +149,10 @@ class _AccountState:
                  unique_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Account resources.
+        :param pulumi.Input[str] account_id: The account id that is used to generate the service
+               account email address and a stable unique id. It is unique within a project,
+               must be 6-30 characters long, and match the regular expression `a-z`
+               to comply with RFC1035. Changing this forces a new service account to be created.
         :param pulumi.Input[bool] create_ignore_already_exists: If set to true, skip service account creation if a service account with the same email already exists.
         :param pulumi.Input[str] description: A text description of the service account.
                Must be less than or equal to 256 UTF-8 bytes.
@@ -164,6 +169,8 @@ class _AccountState:
                Defaults to the provider project configuration.
         :param pulumi.Input[str] unique_id: The unique id of the service account.
         """
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if create_ignore_already_exists is not None:
             pulumi.set(__self__, "create_ignore_already_exists", create_ignore_already_exists)
         if description is not None:
@@ -182,6 +189,21 @@ class _AccountState:
             pulumi.set(__self__, "project", project)
         if unique_id is not None:
             pulumi.set(__self__, "unique_id", unique_id)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The account id that is used to generate the service
+        account email address and a stable unique id. It is unique within a project,
+        must be 6-30 characters long, and match the regular expression `a-z`
+        to comply with RFC1035. Changing this forces a new service account to be created.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_id", value)
 
     @property
     @pulumi.getter(name="createIgnoreAlreadyExists")
@@ -303,11 +325,11 @@ class Account(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 account_id: Optional[pulumi.Input[str]] = None,
                  create_ignore_already_exists: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -332,7 +354,7 @@ class Account(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         service_account = gcp.serviceaccount.Account("service_account",
-            name="service-account-id",
+            account_id="service-account-id",
             display_name="Service Account")
         ```
 
@@ -350,6 +372,10 @@ class Account(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] account_id: The account id that is used to generate the service
+               account email address and a stable unique id. It is unique within a project,
+               must be 6-30 characters long, and match the regular expression `a-z`
+               to comply with RFC1035. Changing this forces a new service account to be created.
         :param pulumi.Input[bool] create_ignore_already_exists: If set to true, skip service account creation if a service account with the same email already exists.
         :param pulumi.Input[str] description: A text description of the service account.
                Must be less than or equal to 256 UTF-8 bytes.
@@ -357,10 +383,6 @@ class Account(pulumi.CustomResource):
                Must be set after creation to disable a service account.
         :param pulumi.Input[str] display_name: The display name for the service account.
                Can be updated without creating a new resource.
-        :param pulumi.Input[str] name: The account id that is used to generate the service
-               account email address and a stable unique id. It is unique within a project,
-               must be 6-30 characters long, and match the regular expression `a-z`
-               to comply with RFC1035. Changing this forces a new service account to be created.
         :param pulumi.Input[str] project: The ID of the project that the service account will be created in.
                Defaults to the provider project configuration.
         """
@@ -392,7 +414,7 @@ class Account(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         service_account = gcp.serviceaccount.Account("service_account",
-            name="service-account-id",
+            account_id="service-account-id",
             display_name="Service Account")
         ```
 
@@ -423,11 +445,11 @@ class Account(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 account_id: Optional[pulumi.Input[str]] = None,
                  create_ignore_already_exists: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -438,14 +460,15 @@ class Account(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AccountArgs.__new__(AccountArgs)
 
+            __props__.__dict__["account_id"] = account_id
             __props__.__dict__["create_ignore_already_exists"] = create_ignore_already_exists
             __props__.__dict__["description"] = description
             __props__.__dict__["disabled"] = disabled
             __props__.__dict__["display_name"] = display_name
-            __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["email"] = None
             __props__.__dict__["member"] = None
+            __props__.__dict__["name"] = None
             __props__.__dict__["unique_id"] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="gcp:serviceAccount/account:Account")])
         opts = pulumi.ResourceOptions.merge(opts, alias_opts)
@@ -459,6 +482,7 @@ class Account(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: Optional[pulumi.Input[str]] = None,
             create_ignore_already_exists: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
             disabled: Optional[pulumi.Input[bool]] = None,
@@ -475,6 +499,10 @@ class Account(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] account_id: The account id that is used to generate the service
+               account email address and a stable unique id. It is unique within a project,
+               must be 6-30 characters long, and match the regular expression `a-z`
+               to comply with RFC1035. Changing this forces a new service account to be created.
         :param pulumi.Input[bool] create_ignore_already_exists: If set to true, skip service account creation if a service account with the same email already exists.
         :param pulumi.Input[str] description: A text description of the service account.
                Must be less than or equal to 256 UTF-8 bytes.
@@ -495,6 +523,7 @@ class Account(pulumi.CustomResource):
 
         __props__ = _AccountState.__new__(_AccountState)
 
+        __props__.__dict__["account_id"] = account_id
         __props__.__dict__["create_ignore_already_exists"] = create_ignore_already_exists
         __props__.__dict__["description"] = description
         __props__.__dict__["disabled"] = disabled
@@ -505,6 +534,17 @@ class Account(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["unique_id"] = unique_id
         return Account(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Output[str]:
+        """
+        The account id that is used to generate the service
+        account email address and a stable unique id. It is unique within a project,
+        must be 6-30 characters long, and match the regular expression `a-z`
+        to comply with RFC1035. Changing this forces a new service account to be created.
+        """
+        return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter(name="createIgnoreAlreadyExists")

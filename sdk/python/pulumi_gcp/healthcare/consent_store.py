@@ -355,7 +355,7 @@ class ConsentStore(pulumi.CustomResource):
             dataset=dataset.id,
             name="my-consent-store")
         test_account = gcp.serviceaccount.Account("test-account",
-            name="my-account",
+            account_id="my-account",
             display_name="Test Service Account")
         test_iam = gcp.healthcare.ConsentStoreIamMember("test-iam",
             dataset=dataset.id,
@@ -461,7 +461,7 @@ class ConsentStore(pulumi.CustomResource):
             dataset=dataset.id,
             name="my-consent-store")
         test_account = gcp.serviceaccount.Account("test-account",
-            name="my-account",
+            account_id="my-account",
             display_name="Test Service Account")
         test_iam = gcp.healthcare.ConsentStoreIamMember("test-iam",
             dataset=dataset.id,

@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const dataset = new gcp.bigquery.Dataset("dataset", {datasetId: "example_dataset"});
- * const bqowner = new gcp.serviceaccount.Account("bqowner", {name: "bqowner"});
+ * const bqowner = new gcp.serviceaccount.Account("bqowner", {accountId: "bqowner"});
  * const access = new gcp.bigquery.DatasetAccess("access", {
  *     datasetId: dataset.datasetId,
  *     role: "OWNER",

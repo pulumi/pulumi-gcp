@@ -67,7 +67,7 @@ import (
 //				return err
 //			}
 //			sa, err := serviceaccount.NewAccount(ctx, "sa", &serviceaccount.AccountArgs{
-//				Name:        pulumi.String("cloud-run-pubsub-invoker"),
+//				AccountId:   pulumi.String("cloud-run-pubsub-invoker"),
 //				DisplayName: pulumi.String("Cloud Run Pub/Sub Invoker"),
 //			})
 //			if err != nil {

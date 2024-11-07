@@ -418,7 +418,7 @@ class Queue(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         oidc_service_account = gcp.serviceaccount.Account("oidc_service_account",
-            name="example-oidc",
+            account_id="example-oidc",
             display_name="Tasks Queue OIDC Service Account")
         http_target_oidc = gcp.cloudtasks.Queue("http_target_oidc",
             name="cloud-tasks-queue-http-target-oidc",
@@ -464,7 +464,7 @@ class Queue(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         oauth_service_account = gcp.serviceaccount.Account("oauth_service_account",
-            name="example-oauth",
+            account_id="example-oauth",
             display_name="Tasks Queue OAuth Service Account")
         http_target_oauth = gcp.cloudtasks.Queue("http_target_oauth",
             name="cloud-tasks-queue-http-target-oauth",
@@ -612,7 +612,7 @@ class Queue(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         oidc_service_account = gcp.serviceaccount.Account("oidc_service_account",
-            name="example-oidc",
+            account_id="example-oidc",
             display_name="Tasks Queue OIDC Service Account")
         http_target_oidc = gcp.cloudtasks.Queue("http_target_oidc",
             name="cloud-tasks-queue-http-target-oidc",
@@ -658,7 +658,7 @@ class Queue(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         oauth_service_account = gcp.serviceaccount.Account("oauth_service_account",
-            name="example-oauth",
+            account_id="example-oauth",
             display_name="Tasks Queue OAuth Service Account")
         http_target_oauth = gcp.cloudtasks.Queue("http_target_oauth",
             name="cloud-tasks-queue-http-target-oauth",

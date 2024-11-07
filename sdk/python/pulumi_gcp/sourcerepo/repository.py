@@ -258,7 +258,7 @@ class Repository(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         test_account = gcp.serviceaccount.Account("test_account",
-            name="my-account",
+            account_id="my-account",
             display_name="Test Service Account")
         topic = gcp.pubsub.Topic("topic", name="my-topic")
         my_repo = gcp.sourcerepo.Repository("my-repo",
@@ -334,7 +334,7 @@ class Repository(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         test_account = gcp.serviceaccount.Account("test_account",
-            name="my-account",
+            account_id="my-account",
             display_name="Test Service Account")
         topic = gcp.pubsub.Topic("topic", name="my-topic")
         my_repo = gcp.sourcerepo.Repository("my-repo",

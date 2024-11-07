@@ -35,7 +35,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := serviceaccount.NewAccount(ctx, "default", &serviceaccount.AccountArgs{
-//				Name:        pulumi.String("service-account-id"),
+//				AccountId:   pulumi.String("service-account-id"),
 //				DisplayName: pulumi.String("Service Account"),
 //			})
 //			if err != nil {
@@ -250,7 +250,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := serviceaccount.NewAccount(ctx, "default", &serviceaccount.AccountArgs{
-//				Name:        pulumi.String("my-custom-sa"),
+//				AccountId:   pulumi.String("my-custom-sa"),
 //				DisplayName: pulumi.String("Custom SA for VM Instance"),
 //			})
 //			if err != nil {

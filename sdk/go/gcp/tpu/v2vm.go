@@ -87,7 +87,7 @@ import (
 //				return err
 //			}
 //			sa, err := serviceaccount.NewAccount(ctx, "sa", &serviceaccount.AccountArgs{
-//				Name:        pulumi.String("tpu-sa"),
+//				AccountId:   pulumi.String("tpu-sa"),
 //				DisplayName: pulumi.String("Test TPU VM"),
 //			})
 //			if err != nil {

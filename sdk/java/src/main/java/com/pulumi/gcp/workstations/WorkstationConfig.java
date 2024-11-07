@@ -699,7 +699,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultAccount = new Account("defaultAccount", AccountArgs.builder()
- *             .name("my-account")
+ *             .accountId("my-account")
  *             .displayName("Service Account")
  *             .build());
  * 

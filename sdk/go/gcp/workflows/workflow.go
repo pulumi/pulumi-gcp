@@ -37,7 +37,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			testAccount, err := serviceaccount.NewAccount(ctx, "test_account", &serviceaccount.AccountArgs{
-//				Name:        pulumi.String("my-account"),
+//				AccountId:   pulumi.String("my-account"),
 //				DisplayName: pulumi.String("Test Service Account"),
 //			})
 //			if err != nil {

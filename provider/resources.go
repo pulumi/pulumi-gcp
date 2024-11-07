@@ -789,7 +789,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_organization_iam_custom_role": {
 				Tok: gcpResource(gcpOrganization, "IAMCustomRole"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"role_id": info.AutoName("name", 255, "-"),
+					"role_id": info.AutoName("", 255, "-"),
 				},
 				Docs: &tfbridge.DocInfo{
 					Source: "google_organization_iam_custom_role.html.markdown",
@@ -867,7 +867,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_project_iam_custom_role": {
 				Tok: gcpResource(gcpProject, "IAMCustomRole"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"role_id": info.AutoName("name", 255, "-"),
+					"role_id": info.AutoName("", 255, "-"),
 				},
 				Docs: &tfbridge.DocInfo{
 					Source: "google_project_iam_custom_role.html.markdown",
@@ -919,7 +919,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_service_account": {
 				Tok: gcpResource(gcpServiceAccount, "Account"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"account_id": info.AutoName("name", 30, "-"),
+					"account_id": info.AutoName("", 30, "-"),
 				},
 				Docs: &tfbridge.DocInfo{
 					Source: "google_service_account.html.markdown",

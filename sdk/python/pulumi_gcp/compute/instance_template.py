@@ -1263,7 +1263,7 @@ class InstanceTemplate(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.serviceaccount.Account("default",
-            name="service-account-id",
+            account_id="service-account-id",
             display_name="Service Account")
         my_image = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
@@ -1406,7 +1406,7 @@ class InstanceTemplate(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.serviceaccount.Account("default",
-            name="my-custom-sa",
+            account_id="my-custom-sa",
             display_name="Custom SA for VM Instance")
         confidential_instance_template = gcp.compute.InstanceTemplate("confidential_instance_template",
             network_interfaces=[{
@@ -1598,7 +1598,7 @@ class InstanceTemplate(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.serviceaccount.Account("default",
-            name="service-account-id",
+            account_id="service-account-id",
             display_name="Service Account")
         my_image = gcp.compute.get_image(family="debian-11",
             project="debian-cloud")
@@ -1741,7 +1741,7 @@ class InstanceTemplate(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.serviceaccount.Account("default",
-            name="my-custom-sa",
+            account_id="my-custom-sa",
             display_name="Custom SA for VM Instance")
         confidential_instance_template = gcp.compute.InstanceTemplate("confidential_instance_template",
             network_interfaces=[{

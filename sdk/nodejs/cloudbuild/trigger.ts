@@ -145,7 +145,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const project = gcp.organizations.getProject({});
- * const cloudbuildServiceAccount = new gcp.serviceaccount.Account("cloudbuild_service_account", {name: "cloud-sa"});
+ * const cloudbuildServiceAccount = new gcp.serviceaccount.Account("cloudbuild_service_account", {accountId: "cloud-sa"});
  * const actAs = new gcp.projects.IAMMember("act_as", {
  *     project: project.then(project => project.projectId),
  *     role: "roles/iam.serviceAccountUser",

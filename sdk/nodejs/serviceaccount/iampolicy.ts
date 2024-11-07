@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const sa = new gcp.serviceaccount.Account("sa", {
- *     name: "my-service-account",
+ *     accountId: "my-service-account",
  *     displayName: "A service account that only Jane can interact with",
  * });
  * const admin_account_iam = new gcp.serviceaccount.IAMPolicy("admin-account-iam", {
@@ -48,7 +48,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const sa = new gcp.serviceaccount.Account("sa", {
- *     name: "my-service-account",
+ *     accountId: "my-service-account",
  *     displayName: "A service account that only Jane can use",
  * });
  * const admin_account_iam = new gcp.serviceaccount.IAMBinding("admin-account-iam", {
@@ -65,7 +65,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const sa = new gcp.serviceaccount.Account("sa", {
- *     name: "my-service-account",
+ *     accountId: "my-service-account",
  *     displayName: "A service account that only Jane can use",
  * });
  * const admin_account_iam = new gcp.serviceaccount.IAMBinding("admin-account-iam", {
@@ -88,7 +88,7 @@ import * as utilities from "../utilities";
  *
  * const default = gcp.compute.getDefaultServiceAccount({});
  * const sa = new gcp.serviceaccount.Account("sa", {
- *     name: "my-service-account",
+ *     accountId: "my-service-account",
  *     displayName: "A service account that Jane can use",
  * });
  * const admin_account_iam = new gcp.serviceaccount.IAMMember("admin-account-iam", {
@@ -111,7 +111,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const sa = new gcp.serviceaccount.Account("sa", {
- *     name: "my-service-account",
+ *     accountId: "my-service-account",
  *     displayName: "A service account that Jane can use",
  * });
  * const admin_account_iam = new gcp.serviceaccount.IAMMember("admin-account-iam", {
@@ -141,7 +141,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const sa = new gcp.serviceaccount.Account("sa", {
- *     name: "my-service-account",
+ *     accountId: "my-service-account",
  *     displayName: "A service account that only Jane can interact with",
  * });
  * const admin_account_iam = new gcp.serviceaccount.IAMPolicy("admin-account-iam", {
@@ -157,7 +157,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const sa = new gcp.serviceaccount.Account("sa", {
- *     name: "my-service-account",
+ *     accountId: "my-service-account",
  *     displayName: "A service account that only Jane can use",
  * });
  * const admin_account_iam = new gcp.serviceaccount.IAMBinding("admin-account-iam", {
@@ -174,7 +174,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const sa = new gcp.serviceaccount.Account("sa", {
- *     name: "my-service-account",
+ *     accountId: "my-service-account",
  *     displayName: "A service account that only Jane can use",
  * });
  * const admin_account_iam = new gcp.serviceaccount.IAMBinding("admin-account-iam", {
@@ -197,7 +197,7 @@ import * as utilities from "../utilities";
  *
  * const default = gcp.compute.getDefaultServiceAccount({});
  * const sa = new gcp.serviceaccount.Account("sa", {
- *     name: "my-service-account",
+ *     accountId: "my-service-account",
  *     displayName: "A service account that Jane can use",
  * });
  * const admin_account_iam = new gcp.serviceaccount.IAMMember("admin-account-iam", {
@@ -220,7 +220,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const sa = new gcp.serviceaccount.Account("sa", {
- *     name: "my-service-account",
+ *     accountId: "my-service-account",
  *     displayName: "A service account that Jane can use",
  * });
  * const admin_account_iam = new gcp.serviceaccount.IAMMember("admin-account-iam", {

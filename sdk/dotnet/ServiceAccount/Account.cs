@@ -36,7 +36,7 @@ namespace Pulumi.Gcp.ServiceAccount
     /// {
     ///     var serviceAccount = new Gcp.ServiceAccount.Account("service_account", new()
     ///     {
-    ///         Name = "service-account-id",
+    ///         AccountId = "service-account-id",
     ///         DisplayName = "Service Account",
     ///     });
     /// 
@@ -58,6 +58,15 @@ namespace Pulumi.Gcp.ServiceAccount
     [GcpResourceType("gcp:serviceaccount/account:Account")]
     public partial class Account : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The account id that is used to generate the service
+        /// account email address and a stable unique id. It is unique within a project,
+        /// must be 6-30 characters long, and match the regular expression `a-z`
+        /// to comply with RFC1035. Changing this forces a new service account to be created.
+        /// </summary>
+        [Output("accountId")]
+        public Output<string> AccountId { get; private set; } = null!;
+
         /// <summary>
         /// If set to true, skip service account creation if a service account with the same email already exists.
         /// </summary>
@@ -169,6 +178,15 @@ namespace Pulumi.Gcp.ServiceAccount
     public sealed class AccountArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The account id that is used to generate the service
+        /// account email address and a stable unique id. It is unique within a project,
+        /// must be 6-30 characters long, and match the regular expression `a-z`
+        /// to comply with RFC1035. Changing this forces a new service account to be created.
+        /// </summary>
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
+
+        /// <summary>
         /// If set to true, skip service account creation if a service account with the same email already exists.
         /// </summary>
         [Input("createIgnoreAlreadyExists")]
@@ -196,15 +214,6 @@ namespace Pulumi.Gcp.ServiceAccount
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// The account id that is used to generate the service
-        /// account email address and a stable unique id. It is unique within a project,
-        /// must be 6-30 characters long, and match the regular expression `a-z`
-        /// to comply with RFC1035. Changing this forces a new service account to be created.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        /// <summary>
         /// The ID of the project that the service account will be created in.
         /// Defaults to the provider project configuration.
         /// </summary>
@@ -219,6 +228,15 @@ namespace Pulumi.Gcp.ServiceAccount
 
     public sealed class AccountState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The account id that is used to generate the service
+        /// account email address and a stable unique id. It is unique within a project,
+        /// must be 6-30 characters long, and match the regular expression `a-z`
+        /// to comply with RFC1035. Changing this forces a new service account to be created.
+        /// </summary>
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
+
         /// <summary>
         /// If set to true, skip service account creation if a service account with the same email already exists.
         /// </summary>

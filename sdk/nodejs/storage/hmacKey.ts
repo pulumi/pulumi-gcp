@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * // Create a new service account
- * const serviceAccount = new gcp.serviceaccount.Account("service_account", {name: "my-svc-acc"});
+ * const serviceAccount = new gcp.serviceaccount.Account("service_account", {accountId: "my-svc-acc"});
  * //Create the HMAC key for the associated service account
  * const key = new gcp.storage.HmacKey("key", {serviceAccountEmail: serviceAccount.email});
  * ```

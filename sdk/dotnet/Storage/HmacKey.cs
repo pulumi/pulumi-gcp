@@ -35,7 +35,7 @@ namespace Pulumi.Gcp.Storage
     ///     // Create a new service account
     ///     var serviceAccount = new Gcp.ServiceAccount.Account("service_account", new()
     ///     {
-    ///         Name = "my-svc-acc",
+    ///         AccountId = "my-svc-acc",
     ///     });
     /// 
     ///     //Create the HMAC key for the associated service account

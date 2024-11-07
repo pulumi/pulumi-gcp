@@ -36,7 +36,7 @@ namespace Pulumi.Gcp.Organizations
     /// {
     ///     var my_custom_role = new Gcp.Organizations.IAMCustomRole("my-custom-role", new()
     ///     {
-    ///         Name = "myCustomRole",
+    ///         RoleId = "myCustomRole",
     ///         OrgId = "123456789",
     ///         Title = "My Custom Role",
     ///         Description = "A description",
@@ -75,7 +75,7 @@ namespace Pulumi.Gcp.Organizations
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The role id to use for this role.
+        /// The name of the role in the format `organizations/{{org_id}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -91,6 +91,12 @@ namespace Pulumi.Gcp.Organizations
         /// </summary>
         [Output("permissions")]
         public Output<ImmutableArray<string>> Permissions { get; private set; } = null!;
+
+        /// <summary>
+        /// The role id to use for this role.
+        /// </summary>
+        [Output("roleId")]
+        public Output<string> RoleId { get; private set; } = null!;
 
         /// <summary>
         /// The current launch stage of the role.
@@ -159,12 +165,6 @@ namespace Pulumi.Gcp.Organizations
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The role id to use for this role.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        /// <summary>
         /// The numeric ID of the organization in which you want to create a custom role.
         /// </summary>
         [Input("orgId", required: true)]
@@ -181,6 +181,12 @@ namespace Pulumi.Gcp.Organizations
             get => _permissions ?? (_permissions = new InputList<string>());
             set => _permissions = value;
         }
+
+        /// <summary>
+        /// The role id to use for this role.
+        /// </summary>
+        [Input("roleId")]
+        public Input<string>? RoleId { get; set; }
 
         /// <summary>
         /// The current launch stage of the role.
@@ -217,7 +223,7 @@ namespace Pulumi.Gcp.Organizations
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The role id to use for this role.
+        /// The name of the role in the format `organizations/{{org_id}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -239,6 +245,12 @@ namespace Pulumi.Gcp.Organizations
             get => _permissions ?? (_permissions = new InputList<string>());
             set => _permissions = value;
         }
+
+        /// <summary>
+        /// The role id to use for this role.
+        /// </summary>
+        [Input("roleId")]
+        public Input<string>? RoleId { get; set; }
 
         /// <summary>
         /// The current launch stage of the role.

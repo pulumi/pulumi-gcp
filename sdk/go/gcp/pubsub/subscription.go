@@ -366,7 +366,7 @@ import (
 //				return err
 //			}
 //			bqWriteServiceAccount, err := serviceaccount.NewAccount(ctx, "bq_write_service_account", &serviceaccount.AccountArgs{
-//				Name:        pulumi.String("example-bqw"),
+//				AccountId:   pulumi.String("example-bqw"),
 //				DisplayName: pulumi.String("BQ Write Service Account"),
 //			})
 //			if err != nil {
@@ -620,7 +620,7 @@ import (
 //				return err
 //			}
 //			storageWriteServiceAccount, err := serviceaccount.NewAccount(ctx, "storage_write_service_account", &serviceaccount.AccountArgs{
-//				Name:        pulumi.String("example-stw"),
+//				AccountId:   pulumi.String("example-stw"),
 //				DisplayName: pulumi.String("Storage Write Service Account"),
 //			})
 //			if err != nil {

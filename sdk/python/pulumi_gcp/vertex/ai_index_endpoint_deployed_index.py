@@ -514,7 +514,7 @@ class AiIndexEndpointDeployedIndex(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        sa = gcp.serviceaccount.Account("sa", name="vertex-sa")
+        sa = gcp.serviceaccount.Account("sa", account_id="vertex-sa")
         bucket = gcp.storage.Bucket("bucket",
             name="bucket-name",
             location="us-central1",
@@ -584,7 +584,7 @@ class AiIndexEndpointDeployedIndex(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        sa = gcp.serviceaccount.Account("sa", name="vertex-sa")
+        sa = gcp.serviceaccount.Account("sa", account_id="vertex-sa")
         bucket = gcp.storage.Bucket("bucket",
             name="bucket-name",
             location="us-central1",
@@ -732,7 +732,7 @@ class AiIndexEndpointDeployedIndex(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        sa = gcp.serviceaccount.Account("sa", name="vertex-sa")
+        sa = gcp.serviceaccount.Account("sa", account_id="vertex-sa")
         bucket = gcp.storage.Bucket("bucket",
             name="bucket-name",
             location="us-central1",
@@ -802,7 +802,7 @@ class AiIndexEndpointDeployedIndex(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        sa = gcp.serviceaccount.Account("sa", name="vertex-sa")
+        sa = gcp.serviceaccount.Account("sa", account_id="vertex-sa")
         bucket = gcp.storage.Bucket("bucket",
             name="bucket-name",
             location="us-central1",

@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const sa = new gcp.serviceaccount.Account("sa", {name: "vertex-sa"});
+ * const sa = new gcp.serviceaccount.Account("sa", {accountId: "vertex-sa"});
  * const bucket = new gcp.storage.Bucket("bucket", {
  *     name: "bucket-name",
  *     location: "us-central1",
@@ -99,7 +99,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const sa = new gcp.serviceaccount.Account("sa", {name: "vertex-sa"});
+ * const sa = new gcp.serviceaccount.Account("sa", {accountId: "vertex-sa"});
  * const bucket = new gcp.storage.Bucket("bucket", {
  *     name: "bucket-name",
  *     location: "us-central1",

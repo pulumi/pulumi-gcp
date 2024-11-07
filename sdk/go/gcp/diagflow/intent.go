@@ -95,7 +95,7 @@ import (
 //				return err
 //			}
 //			dialogflowServiceAccount, err := serviceaccount.NewAccount(ctx, "dialogflow_service_account", &serviceaccount.AccountArgs{
-//				Name: pulumi.String("my-account"),
+//				AccountId: pulumi.String("my-account"),
 //			})
 //			if err != nil {
 //				return err

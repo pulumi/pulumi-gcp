@@ -810,7 +810,7 @@ class NodePool(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.serviceaccount.Account("default",
-            name="service-account-id",
+            account_id="service-account-id",
             display_name="Service Account")
         primary = gcp.container.Cluster("primary",
             name="my-gke-cluster",
@@ -836,7 +836,7 @@ class NodePool(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.serviceaccount.Account("default",
-            name="service-account-id",
+            account_id="service-account-id",
             display_name="Service Account")
         primary = gcp.container.Cluster("primary",
             name="marcellus-wallace",
@@ -959,7 +959,7 @@ class NodePool(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.serviceaccount.Account("default",
-            name="service-account-id",
+            account_id="service-account-id",
             display_name="Service Account")
         primary = gcp.container.Cluster("primary",
             name="my-gke-cluster",
@@ -985,7 +985,7 @@ class NodePool(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.serviceaccount.Account("default",
-            name="service-account-id",
+            account_id="service-account-id",
             display_name="Service Account")
         primary = gcp.container.Cluster("primary",
             name="marcellus-wallace",

@@ -1048,7 +1048,7 @@ class Subscription(pulumi.CustomResource):
 
         example = gcp.pubsub.Topic("example", name="example-topic")
         bq_write_service_account = gcp.serviceaccount.Account("bq_write_service_account",
-            name="example-bqw",
+            account_id="example-bqw",
             display_name="BQ Write Service Account")
         project = gcp.organizations.get_project()
         viewer = gcp.projects.IAMMember("viewer",
@@ -1173,7 +1173,7 @@ class Subscription(pulumi.CustomResource):
             uniform_bucket_level_access=True)
         example_topic = gcp.pubsub.Topic("example", name="example-topic")
         storage_write_service_account = gcp.serviceaccount.Account("storage_write_service_account",
-            name="example-stw",
+            account_id="example-stw",
             display_name="Storage Write Service Account")
         admin = gcp.storage.BucketIAMMember("admin",
             bucket=example.name,
@@ -1488,7 +1488,7 @@ class Subscription(pulumi.CustomResource):
 
         example = gcp.pubsub.Topic("example", name="example-topic")
         bq_write_service_account = gcp.serviceaccount.Account("bq_write_service_account",
-            name="example-bqw",
+            account_id="example-bqw",
             display_name="BQ Write Service Account")
         project = gcp.organizations.get_project()
         viewer = gcp.projects.IAMMember("viewer",
@@ -1613,7 +1613,7 @@ class Subscription(pulumi.CustomResource):
             uniform_bucket_level_access=True)
         example_topic = gcp.pubsub.Topic("example", name="example-topic")
         storage_write_service_account = gcp.serviceaccount.Account("storage_write_service_account",
-            name="example-stw",
+            account_id="example-stw",
             display_name="Storage Write Service Account")
         admin = gcp.storage.BucketIAMMember("admin",
             bucket=example.name,

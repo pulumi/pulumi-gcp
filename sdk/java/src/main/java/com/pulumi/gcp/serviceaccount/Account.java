@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var serviceAccount = new Account("serviceAccount", AccountArgs.builder()
- *             .name("service-account-id")
+ *             .accountId("service-account-id")
  *             .displayName("Service Account")
  *             .build());
  * 
@@ -83,6 +83,26 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:serviceaccount/account:Account")
 public class Account extends com.pulumi.resources.CustomResource {
+    /**
+     * The account id that is used to generate the service
+     * account email address and a stable unique id. It is unique within a project,
+     * must be 6-30 characters long, and match the regular expression `a-z`
+     * to comply with RFC1035. Changing this forces a new service account to be created.
+     * 
+     */
+    @Export(name="accountId", refs={String.class}, tree="[0]")
+    private Output<String> accountId;
+
+    /**
+     * @return The account id that is used to generate the service
+     * account email address and a stable unique id. It is unique within a project,
+     * must be 6-30 characters long, and match the regular expression `a-z`
+     * to comply with RFC1035. Changing this forces a new service account to be created.
+     * 
+     */
+    public Output<String> accountId() {
+        return this.accountId;
+    }
     /**
      * If set to true, skip service account creation if a service account with the same email already exists.
      * 

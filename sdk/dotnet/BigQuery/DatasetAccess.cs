@@ -29,7 +29,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     ///     var bqowner = new Gcp.ServiceAccount.Account("bqowner", new()
     ///     {
-    ///         Name = "bqowner",
+    ///         AccountId = "bqowner",
     ///     });
     /// 
     ///     var access = new Gcp.BigQuery.DatasetAccess("access", new()

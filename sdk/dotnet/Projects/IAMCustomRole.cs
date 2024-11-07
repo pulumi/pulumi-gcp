@@ -36,7 +36,7 @@ namespace Pulumi.Gcp.Projects
     /// {
     ///     var my_custom_role = new Gcp.Projects.IAMCustomRole("my-custom-role", new()
     ///     {
-    ///         Name = "myCustomRole",
+    ///         RoleId = "myCustomRole",
     ///         Title = "My Custom Role",
     ///         Description = "A description",
     ///         Permissions = new[]
@@ -90,7 +90,7 @@ namespace Pulumi.Gcp.Projects
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The camel case role id to use for this role. Cannot contain `-` characters.
+        /// The name of the role in the format `projects/{{project}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -107,6 +107,12 @@ namespace Pulumi.Gcp.Projects
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// The camel case role id to use for this role. Cannot contain `-` characters.
+        /// </summary>
+        [Output("roleId")]
+        public Output<string> RoleId { get; private set; } = null!;
 
         /// <summary>
         /// The current launch stage of the role.
@@ -174,12 +180,6 @@ namespace Pulumi.Gcp.Projects
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The camel case role id to use for this role. Cannot contain `-` characters.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
         [Input("permissions", required: true)]
         private InputList<string>? _permissions;
 
@@ -198,6 +198,12 @@ namespace Pulumi.Gcp.Projects
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The camel case role id to use for this role. Cannot contain `-` characters.
+        /// </summary>
+        [Input("roleId")]
+        public Input<string>? RoleId { get; set; }
 
         /// <summary>
         /// The current launch stage of the role.
@@ -234,7 +240,7 @@ namespace Pulumi.Gcp.Projects
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The camel case role id to use for this role. Cannot contain `-` characters.
+        /// The name of the role in the format `projects/{{project}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -257,6 +263,12 @@ namespace Pulumi.Gcp.Projects
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The camel case role id to use for this role. Cannot contain `-` characters.
+        /// </summary>
+        [Input("roleId")]
+        public Input<string>? RoleId { get; set; }
 
         /// <summary>
         /// The current launch stage of the role.

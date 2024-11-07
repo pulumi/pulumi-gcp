@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.Beyondcorp
     /// {
     ///     var serviceAccount = new Gcp.ServiceAccount.Account("service_account", new()
     ///     {
-    ///         Name = "my-account",
+    ///         AccountId = "my-account",
     ///         DisplayName = "Test Service Account",
     ///     });
     /// 
@@ -79,7 +79,7 @@ namespace Pulumi.Gcp.Beyondcorp
     /// {
     ///     var serviceAccount = new Gcp.ServiceAccount.Account("service_account", new()
     ///     {
-    ///         Name = "my-account",
+    ///         AccountId = "my-account",
     ///         DisplayName = "Test Service Account",
     ///     });
     /// 

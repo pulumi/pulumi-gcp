@@ -51,7 +51,7 @@ namespace Pulumi.Gcp.ServiceAccount
     /// 
     ///     var sa = new Gcp.ServiceAccount.Account("sa", new()
     ///     {
-    ///         Name = "my-service-account",
+    ///         AccountId = "my-service-account",
     ///         DisplayName = "A service account that only Jane can interact with",
     ///     });
     /// 
@@ -76,7 +76,7 @@ namespace Pulumi.Gcp.ServiceAccount
     /// {
     ///     var sa = new Gcp.ServiceAccount.Account("sa", new()
     ///     {
-    ///         Name = "my-service-account",
+    ///         AccountId = "my-service-account",
     ///         DisplayName = "A service account that only Jane can use",
     ///     });
     /// 
@@ -105,7 +105,7 @@ namespace Pulumi.Gcp.ServiceAccount
     /// {
     ///     var sa = new Gcp.ServiceAccount.Account("sa", new()
     ///     {
-    ///         Name = "my-service-account",
+    ///         AccountId = "my-service-account",
     ///         DisplayName = "A service account that only Jane can use",
     ///     });
     /// 
@@ -142,7 +142,7 @@ namespace Pulumi.Gcp.ServiceAccount
     /// 
     ///     var sa = new Gcp.ServiceAccount.Account("sa", new()
     ///     {
-    ///         Name = "my-service-account",
+    ///         AccountId = "my-service-account",
     ///         DisplayName = "A service account that Jane can use",
     ///     });
     /// 
@@ -176,7 +176,7 @@ namespace Pulumi.Gcp.ServiceAccount
     /// {
     ///     var sa = new Gcp.ServiceAccount.Account("sa", new()
     ///     {
-    ///         Name = "my-service-account",
+    ///         AccountId = "my-service-account",
     ///         DisplayName = "A service account that Jane can use",
     ///     });
     /// 
@@ -225,7 +225,7 @@ namespace Pulumi.Gcp.ServiceAccount
     /// 
     ///     var sa = new Gcp.ServiceAccount.Account("sa", new()
     ///     {
-    ///         Name = "my-service-account",
+    ///         AccountId = "my-service-account",
     ///         DisplayName = "A service account that only Jane can interact with",
     ///     });
     /// 
@@ -250,7 +250,7 @@ namespace Pulumi.Gcp.ServiceAccount
     /// {
     ///     var sa = new Gcp.ServiceAccount.Account("sa", new()
     ///     {
-    ///         Name = "my-service-account",
+    ///         AccountId = "my-service-account",
     ///         DisplayName = "A service account that only Jane can use",
     ///     });
     /// 
@@ -279,7 +279,7 @@ namespace Pulumi.Gcp.ServiceAccount
     /// {
     ///     var sa = new Gcp.ServiceAccount.Account("sa", new()
     ///     {
-    ///         Name = "my-service-account",
+    ///         AccountId = "my-service-account",
     ///         DisplayName = "A service account that only Jane can use",
     ///     });
     /// 
@@ -316,7 +316,7 @@ namespace Pulumi.Gcp.ServiceAccount
     /// 
     ///     var sa = new Gcp.ServiceAccount.Account("sa", new()
     ///     {
-    ///         Name = "my-service-account",
+    ///         AccountId = "my-service-account",
     ///         DisplayName = "A service account that Jane can use",
     ///     });
     /// 
@@ -350,7 +350,7 @@ namespace Pulumi.Gcp.ServiceAccount
     /// {
     ///     var sa = new Gcp.ServiceAccount.Account("sa", new()
     ///     {
-    ///         Name = "my-service-account",
+    ///         AccountId = "my-service-account",
     ///         DisplayName = "A service account that Jane can use",
     ///     });
     /// 

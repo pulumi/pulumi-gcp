@@ -1120,7 +1120,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
             disable_dependent_services=False)
         custom_service_account = gcp.serviceaccount.Account("custom_service_account",
             project=service.project,
-            name="my-account",
+            account_id="my-account",
             display_name="Custom Service Account")
         gae_api = gcp.projects.IAMMember("gae_api",
             project=service.project,
@@ -1305,7 +1305,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
             disable_dependent_services=False)
         custom_service_account = gcp.serviceaccount.Account("custom_service_account",
             project=service.project,
-            name="my-account",
+            account_id="my-account",
             display_name="Custom Service Account")
         gae_api = gcp.projects.IAMMember("gae_api",
             project=service.project,

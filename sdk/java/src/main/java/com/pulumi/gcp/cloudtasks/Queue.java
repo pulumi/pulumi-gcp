@@ -150,7 +150,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var oidcServiceAccount = new Account("oidcServiceAccount", AccountArgs.builder()
- *             .name("example-oidc")
+ *             .accountId("example-oidc")
  *             .displayName("Tasks Queue OIDC Service Account")
  *             .build());
  * 
@@ -229,7 +229,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var oauthServiceAccount = new Account("oauthServiceAccount", AccountArgs.builder()
- *             .name("example-oauth")
+ *             .accountId("example-oauth")
  *             .displayName("Tasks Queue OAuth Service Account")
  *             .build());
  * 

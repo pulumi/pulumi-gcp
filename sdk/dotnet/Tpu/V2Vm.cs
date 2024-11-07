@@ -64,7 +64,7 @@ namespace Pulumi.Gcp.Tpu
     /// 
     ///     var sa = new Gcp.ServiceAccount.Account("sa", new()
     ///     {
-    ///         Name = "tpu-sa",
+    ///         AccountId = "tpu-sa",
     ///         DisplayName = "Test TPU VM",
     ///     });
     /// 

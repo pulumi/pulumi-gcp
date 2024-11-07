@@ -247,7 +247,7 @@ import javax.annotation.Nullable;
  *         final var project = OrganizationsFunctions.getProject();
  * 
  *         var cloudbuildServiceAccount = new Account("cloudbuildServiceAccount", AccountArgs.builder()
- *             .name("cloud-sa")
+ *             .accountId("cloud-sa")
  *             .build());
  * 
  *         var actAs = new IAMMember("actAs", IAMMemberArgs.builder()

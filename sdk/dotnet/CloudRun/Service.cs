@@ -62,7 +62,7 @@ namespace Pulumi.Gcp.CloudRun
     /// 
     ///     var sa = new Gcp.ServiceAccount.Account("sa", new()
     ///     {
-    ///         Name = "cloud-run-pubsub-invoker",
+    ///         AccountId = "cloud-run-pubsub-invoker",
     ///         DisplayName = "Cloud Run Pub/Sub Invoker",
     ///     });
     /// 

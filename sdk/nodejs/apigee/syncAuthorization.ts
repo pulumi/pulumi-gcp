@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [apigee],
  * });
  * const serviceAccount = new gcp.serviceaccount.Account("service_account", {
- *     name: "my-account",
+ *     accountId: "my-account",
  *     displayName: "Service Account",
  * });
  * const synchronizer_iam = new gcp.projects.IAMMember("synchronizer-iam", {

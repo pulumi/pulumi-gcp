@@ -75,7 +75,7 @@ import (
 //			}
 //			customServiceAccount, err := serviceaccount.NewAccount(ctx, "custom_service_account", &serviceaccount.AccountArgs{
 //				Project:     service.Project,
-//				Name:        pulumi.String("my-account"),
+//				AccountId:   pulumi.String("my-account"),
 //				DisplayName: pulumi.String("Custom Service Account"),
 //			})
 //			if err != nil {

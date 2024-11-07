@@ -78,7 +78,7 @@ namespace Pulumi.Gcp.Diagflow
     /// 
     ///     var dialogflowServiceAccount = new Gcp.ServiceAccount.Account("dialogflow_service_account", new()
     ///     {
-    ///         Name = "my-account",
+    ///         AccountId = "my-account",
     ///     });
     /// 
     ///     var agentCreate = new Gcp.Projects.IAMMember("agent_create", new()

@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.BigQuery
     /// {
     ///     var bqowner = new Gcp.ServiceAccount.Account("bqowner", new()
     ///     {
-    ///         Name = "bqowner",
+    ///         AccountId = "bqowner",
     ///     });
     /// 
     ///     var dataset = new Gcp.BigQuery.Dataset("dataset", new()
@@ -104,7 +104,7 @@ namespace Pulumi.Gcp.BigQuery
     /// {
     ///     var bqowner = new Gcp.ServiceAccount.Account("bqowner", new()
     ///     {
-    ///         Name = "bqowner",
+    ///         AccountId = "bqowner",
     ///     });
     /// 
     ///     var @public = new Gcp.BigQuery.Dataset("public", new()

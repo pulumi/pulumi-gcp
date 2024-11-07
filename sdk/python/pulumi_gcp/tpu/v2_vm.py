@@ -848,7 +848,7 @@ class V2Vm(pulumi.CustomResource):
             region="us-central1",
             network=network.id)
         sa = gcp.serviceaccount.Account("sa",
-            name="tpu-sa",
+            account_id="tpu-sa",
             display_name="Test TPU VM")
         disk = gcp.compute.Disk("disk",
             name="tpu-disk",
@@ -1007,7 +1007,7 @@ class V2Vm(pulumi.CustomResource):
             region="us-central1",
             network=network.id)
         sa = gcp.serviceaccount.Account("sa",
-            name="tpu-sa",
+            account_id="tpu-sa",
             display_name="Test TPU VM")
         disk = gcp.compute.Disk("disk",
             name="tpu-disk",

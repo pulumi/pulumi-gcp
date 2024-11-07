@@ -157,7 +157,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var test_account = new Account("test-account", AccountArgs.builder()
- *             .name("my-account")
+ *             .accountId("my-account")
  *             .displayName("Test Service Account")
  *             .build());
  * 

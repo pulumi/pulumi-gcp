@@ -42,7 +42,7 @@ namespace Pulumi.Gcp.Iam
     /// 
     ///     var test_account = new Gcp.ServiceAccount.Account("test-account", new()
     ///     {
-    ///         Name = "svc-acc",
+    ///         AccountId = "svc-acc",
     ///         DisplayName = "Test Service Account",
     ///         Project = project.ProjectId,
     ///     });

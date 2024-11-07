@@ -69,7 +69,7 @@ import (
 //				return err
 //			}
 //			serviceAccount, err := serviceaccount.NewAccount(ctx, "service_account", &serviceaccount.AccountArgs{
-//				Name:        pulumi.String("my-account"),
+//				AccountId:   pulumi.String("my-account"),
 //				DisplayName: pulumi.String("Service Account"),
 //			})
 //			if err != nil {
