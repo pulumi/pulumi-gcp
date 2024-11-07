@@ -22,7 +22,7 @@ import (
 	// Allow embedding a pregenerated schema.
 	_ "embed"
 
-	"github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 
 	gcp "github.com/pulumi/pulumi-gcp/provider/v8"
 )
