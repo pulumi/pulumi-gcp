@@ -20,30 +20,31 @@ __all__ = ['IAMCustomRoleArgs', 'IAMCustomRole']
 class IAMCustomRoleArgs:
     def __init__(__self__, *,
                  permissions: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 role_id: pulumi.Input[str],
                  title: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 role_id: Optional[pulumi.Input[str]] = None,
                  stage: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a IAMCustomRole resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
-        :param pulumi.Input[str] role_id: The camel case role id to use for this role. Cannot contain `-` characters.
         :param pulumi.Input[str] title: A human-readable title for the role.
         :param pulumi.Input[str] description: A human-readable description for the role.
         :param pulumi.Input[str] project: The project that the custom role will be created in.
                Defaults to the provider project configuration.
+        :param pulumi.Input[str] role_id: The camel case role id to use for this role. Cannot contain `-` characters.
         :param pulumi.Input[str] stage: The current launch stage of the role.
                Defaults to `GA`.
                List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).
         """
         pulumi.set(__self__, "permissions", permissions)
-        pulumi.set(__self__, "role_id", role_id)
         pulumi.set(__self__, "title", title)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if role_id is not None:
+            pulumi.set(__self__, "role_id", role_id)
         if stage is not None:
             pulumi.set(__self__, "stage", stage)
 
@@ -58,18 +59,6 @@ class IAMCustomRoleArgs:
     @permissions.setter
     def permissions(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "permissions", value)
-
-    @property
-    @pulumi.getter(name="roleId")
-    def role_id(self) -> pulumi.Input[str]:
-        """
-        The camel case role id to use for this role. Cannot contain `-` characters.
-        """
-        return pulumi.get(self, "role_id")
-
-    @role_id.setter
-    def role_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "role_id", value)
 
     @property
     @pulumi.getter
@@ -107,6 +96,18 @@ class IAMCustomRoleArgs:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="roleId")
+    def role_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The camel case role id to use for this role. Cannot contain `-` characters.
+        """
+        return pulumi.get(self, "role_id")
+
+    @role_id.setter
+    def role_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role_id", value)
 
     @property
     @pulumi.getter
@@ -442,8 +443,6 @@ class IAMCustomRole(pulumi.CustomResource):
                 raise TypeError("Missing required property 'permissions'")
             __props__.__dict__["permissions"] = permissions
             __props__.__dict__["project"] = project
-            if role_id is None and not opts.urn:
-                raise TypeError("Missing required property 'role_id'")
             __props__.__dict__["role_id"] = role_id
             __props__.__dict__["stage"] = stage
             if title is None and not opts.urn:

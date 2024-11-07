@@ -68,15 +68,15 @@ public final class IAMCustomRoleArgs extends com.pulumi.resources.ResourceArgs {
      * The camel case role id to use for this role. Cannot contain `-` characters.
      * 
      */
-    @Import(name="roleId", required=true)
-    private Output<String> roleId;
+    @Import(name="roleId")
+    private @Nullable Output<String> roleId;
 
     /**
      * @return The camel case role id to use for this role. Cannot contain `-` characters.
      * 
      */
-    public Output<String> roleId() {
-        return this.roleId;
+    public Optional<Output<String>> roleId() {
+        return Optional.ofNullable(this.roleId);
     }
 
     /**
@@ -223,7 +223,7 @@ public final class IAMCustomRoleArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder roleId(Output<String> roleId) {
+        public Builder roleId(@Nullable Output<String> roleId) {
             $.roleId = roleId;
             return this;
         }
@@ -287,9 +287,6 @@ public final class IAMCustomRoleArgs extends com.pulumi.resources.ResourceArgs {
         public IAMCustomRoleArgs build() {
             if ($.permissions == null) {
                 throw new MissingRequiredPropertyException("IAMCustomRoleArgs", "permissions");
-            }
-            if ($.roleId == null) {
-                throw new MissingRequiredPropertyException("IAMCustomRoleArgs", "roleId");
             }
             if ($.title == null) {
                 throw new MissingRequiredPropertyException("IAMCustomRoleArgs", "title");

@@ -66,15 +66,15 @@ public final class IAMCustomRoleArgs extends com.pulumi.resources.ResourceArgs {
      * The role id to use for this role.
      * 
      */
-    @Import(name="roleId", required=true)
-    private Output<String> roleId;
+    @Import(name="roleId")
+    private @Nullable Output<String> roleId;
 
     /**
      * @return The role id to use for this role.
      * 
      */
-    public Output<String> roleId() {
-        return this.roleId;
+    public Optional<Output<String>> roleId() {
+        return Optional.ofNullable(this.roleId);
     }
 
     /**
@@ -219,7 +219,7 @@ public final class IAMCustomRoleArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder roleId(Output<String> roleId) {
+        public Builder roleId(@Nullable Output<String> roleId) {
             $.roleId = roleId;
             return this;
         }
@@ -286,9 +286,6 @@ public final class IAMCustomRoleArgs extends com.pulumi.resources.ResourceArgs {
             }
             if ($.permissions == null) {
                 throw new MissingRequiredPropertyException("IAMCustomRoleArgs", "permissions");
-            }
-            if ($.roleId == null) {
-                throw new MissingRequiredPropertyException("IAMCustomRoleArgs", "roleId");
             }
             if ($.title == null) {
                 throw new MissingRequiredPropertyException("IAMCustomRoleArgs", "title");

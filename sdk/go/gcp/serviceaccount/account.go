@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -102,12 +101,9 @@ type Account struct {
 func NewAccount(ctx *pulumi.Context,
 	name string, args *AccountArgs, opts ...pulumi.ResourceOption) (*Account, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &AccountArgs{}
 	}
 
-	if args.AccountId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountId'")
-	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("gcp:serviceAccount/account:Account"),
@@ -209,7 +205,7 @@ type accountArgs struct {
 	// account email address and a stable unique id. It is unique within a project,
 	// must be 6-30 characters long, and match the regular expression `a-z`
 	// to comply with RFC1035. Changing this forces a new service account to be created.
-	AccountId string `pulumi:"accountId"`
+	AccountId *string `pulumi:"accountId"`
 	// If set to true, skip service account creation if a service account with the same email already exists.
 	CreateIgnoreAlreadyExists *bool `pulumi:"createIgnoreAlreadyExists"`
 	// A text description of the service account.
@@ -232,7 +228,7 @@ type AccountArgs struct {
 	// account email address and a stable unique id. It is unique within a project,
 	// must be 6-30 characters long, and match the regular expression `a-z`
 	// to comply with RFC1035. Changing this forces a new service account to be created.
-	AccountId pulumi.StringInput
+	AccountId pulumi.StringPtrInput
 	// If set to true, skip service account creation if a service account with the same email already exists.
 	CreateIgnoreAlreadyExists pulumi.BoolPtrInput
 	// A text description of the service account.

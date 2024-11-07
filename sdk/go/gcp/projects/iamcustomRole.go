@@ -117,9 +117,6 @@ func NewIAMCustomRole(ctx *pulumi.Context,
 	if args.Permissions == nil {
 		return nil, errors.New("invalid value for required argument 'Permissions'")
 	}
-	if args.RoleId == nil {
-		return nil, errors.New("invalid value for required argument 'RoleId'")
-	}
 	if args.Title == nil {
 		return nil, errors.New("invalid value for required argument 'Title'")
 	}
@@ -202,7 +199,7 @@ type iamcustomRoleArgs struct {
 	// Defaults to the provider project configuration.
 	Project *string `pulumi:"project"`
 	// The camel case role id to use for this role. Cannot contain `-` characters.
-	RoleId string `pulumi:"roleId"`
+	RoleId *string `pulumi:"roleId"`
 	// The current launch stage of the role.
 	// Defaults to `GA`.
 	// List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).
@@ -221,7 +218,7 @@ type IAMCustomRoleArgs struct {
 	// Defaults to the provider project configuration.
 	Project pulumi.StringPtrInput
 	// The camel case role id to use for this role. Cannot contain `-` characters.
-	RoleId pulumi.StringInput
+	RoleId pulumi.StringPtrInput
 	// The current launch stage of the role.
 	// Defaults to `GA`.
 	// List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).

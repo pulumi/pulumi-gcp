@@ -128,7 +128,7 @@ export class Account extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: AccountArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: AccountArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccountArgs | AccountState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -146,9 +146,6 @@ export class Account extends pulumi.CustomResource {
             resourceInputs["uniqueId"] = state ? state.uniqueId : undefined;
         } else {
             const args = argsOrState as AccountArgs | undefined;
-            if ((!args || args.accountId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'accountId'");
-            }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["createIgnoreAlreadyExists"] = args ? args.createIgnoreAlreadyExists : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -232,7 +229,7 @@ export interface AccountArgs {
      * must be 6-30 characters long, and match the regular expression `a-z`
      * to comply with RFC1035. Changing this forces a new service account to be created.
      */
-    accountId: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * If set to true, skip service account creation if a service account with the same email already exists.
      */

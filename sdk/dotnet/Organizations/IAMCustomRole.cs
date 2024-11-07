@@ -185,8 +185,8 @@ namespace Pulumi.Gcp.Organizations
         /// <summary>
         /// The role id to use for this role.
         /// </summary>
-        [Input("roleId", required: true)]
-        public Input<string> RoleId { get; set; } = null!;
+        [Input("roleId")]
+        public Input<string>? RoleId { get; set; }
 
         /// <summary>
         /// The current launch stage of the role.

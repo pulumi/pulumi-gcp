@@ -104,9 +104,6 @@ func NewIAMCustomRole(ctx *pulumi.Context,
 	if args.Permissions == nil {
 		return nil, errors.New("invalid value for required argument 'Permissions'")
 	}
-	if args.RoleId == nil {
-		return nil, errors.New("invalid value for required argument 'RoleId'")
-	}
 	if args.Title == nil {
 		return nil, errors.New("invalid value for required argument 'Title'")
 	}
@@ -186,7 +183,7 @@ type iamcustomRoleArgs struct {
 	// The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
 	Permissions []string `pulumi:"permissions"`
 	// The role id to use for this role.
-	RoleId string `pulumi:"roleId"`
+	RoleId *string `pulumi:"roleId"`
 	// The current launch stage of the role.
 	// Defaults to `GA`.
 	// List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).
@@ -204,7 +201,7 @@ type IAMCustomRoleArgs struct {
 	// The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
 	Permissions pulumi.StringArrayInput
 	// The role id to use for this role.
-	RoleId pulumi.StringInput
+	RoleId pulumi.StringPtrInput
 	// The current launch stage of the role.
 	// Defaults to `GA`.
 	// List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).

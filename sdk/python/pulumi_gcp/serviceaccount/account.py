@@ -19,7 +19,7 @@ __all__ = ['AccountArgs', 'Account']
 @pulumi.input_type
 class AccountArgs:
     def __init__(__self__, *,
-                 account_id: pulumi.Input[str],
+                 account_id: Optional[pulumi.Input[str]] = None,
                  create_ignore_already_exists: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
@@ -41,7 +41,8 @@ class AccountArgs:
         :param pulumi.Input[str] project: The ID of the project that the service account will be created in.
                Defaults to the provider project configuration.
         """
-        pulumi.set(__self__, "account_id", account_id)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if create_ignore_already_exists is not None:
             pulumi.set(__self__, "create_ignore_already_exists", create_ignore_already_exists)
         if description is not None:
@@ -55,7 +56,7 @@ class AccountArgs:
 
     @property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Input[str]:
+    def account_id(self) -> Optional[pulumi.Input[str]]:
         """
         The account id that is used to generate the service
         account email address and a stable unique id. It is unique within a project,
@@ -65,7 +66,7 @@ class AccountArgs:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: pulumi.Input[str]):
+    def account_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "account_id", value)
 
     @property
@@ -389,7 +390,7 @@ class Account(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AccountArgs,
+                 args: Optional[AccountArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Allows management of a Google Cloud service account.
@@ -459,8 +460,6 @@ class Account(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AccountArgs.__new__(AccountArgs)
 
-            if account_id is None and not opts.urn:
-                raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["create_ignore_already_exists"] = create_ignore_already_exists
             __props__.__dict__["description"] = description

@@ -202,8 +202,8 @@ namespace Pulumi.Gcp.Projects
         /// <summary>
         /// The camel case role id to use for this role. Cannot contain `-` characters.
         /// </summary>
-        [Input("roleId", required: true)]
-        public Input<string> RoleId { get; set; } = null!;
+        [Input("roleId")]
+        public Input<string>? RoleId { get; set; }
 
         /// <summary>
         /// The current launch stage of the role.

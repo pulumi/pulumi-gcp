@@ -254,7 +254,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Account(java.lang.String name, AccountArgs args) {
+    public Account(java.lang.String name, @Nullable AccountArgs args) {
         this(name, args, null);
     }
     /**
@@ -263,7 +263,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Account(java.lang.String name, AccountArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public Account(java.lang.String name, @Nullable AccountArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:serviceaccount/account:Account", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -271,7 +271,7 @@ public class Account extends com.pulumi.resources.CustomResource {
         super("gcp:serviceaccount/account:Account", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static AccountArgs makeArgs(AccountArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static AccountArgs makeArgs(@Nullable AccountArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

@@ -135,7 +135,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Account(string name, AccountArgs args, CustomResourceOptions? options = null)
+        public Account(string name, AccountArgs? args = null, CustomResourceOptions? options = null)
             : base("gcp:serviceaccount/account:Account", name, args ?? new AccountArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -183,8 +183,8 @@ namespace Pulumi.Gcp.ServiceAccount
         /// must be 6-30 characters long, and match the regular expression `a-z`
         /// to comply with RFC1035. Changing this forces a new service account to be created.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// If set to true, skip service account creation if a service account with the same email already exists.

@@ -138,9 +138,6 @@ export class IAMCustomRole extends pulumi.CustomResource {
             if ((!args || args.permissions === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'permissions'");
             }
-            if ((!args || args.roleId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'roleId'");
-            }
             if ((!args || args.title === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'title'");
             }
@@ -217,7 +214,7 @@ export interface IAMCustomRoleArgs {
     /**
      * The role id to use for this role.
      */
-    roleId: pulumi.Input<string>;
+    roleId?: pulumi.Input<string>;
     /**
      * The current launch stage of the role.
      * Defaults to `GA`.

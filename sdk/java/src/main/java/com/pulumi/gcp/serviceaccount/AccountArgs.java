@@ -5,7 +5,6 @@ package com.pulumi.gcp.serviceaccount;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -24,8 +23,8 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
      * to comply with RFC1035. Changing this forces a new service account to be created.
      * 
      */
-    @Import(name="accountId", required=true)
-    private Output<String> accountId;
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
 
     /**
      * @return The account id that is used to generate the service
@@ -34,8 +33,8 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
      * to comply with RFC1035. Changing this forces a new service account to be created.
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
     }
 
     /**
@@ -159,7 +158,7 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder accountId(Output<String> accountId) {
+        public Builder accountId(@Nullable Output<String> accountId) {
             $.accountId = accountId;
             return this;
         }
@@ -291,9 +290,6 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AccountArgs build() {
-            if ($.accountId == null) {
-                throw new MissingRequiredPropertyException("AccountArgs", "accountId");
-            }
             return $;
         }
     }
