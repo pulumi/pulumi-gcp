@@ -1037,10 +1037,6 @@ func Provider() tfbridge.ProviderInfo {
 			"google_compute_health_check":                  {Tok: gcpResource(gcpCompute, "HealthCheck")},
 			"google_compute_http_health_check":             {Fields: nameField(lowercaseAutoName())},
 			"google_compute_https_health_check":            {Fields: nameField(lowercaseAutoName())},
-			"google_compute_instance": {
-				Tok:                 gcpResource(gcpCompute, "Instance"),
-				DeleteBeforeReplace: true,
-			},
 			"google_compute_instance_iam_binding": {
 				Tok: gcpResource(gcpCompute, "InstanceIAMBinding"),
 				Docs: &tfbridge.DocInfo{
