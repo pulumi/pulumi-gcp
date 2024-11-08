@@ -878,7 +878,6 @@ func Provider() tfbridge.ProviderInfo {
 				Docs: &tfbridge.DocInfo{
 					Source: "google_project_iam.html.markdown",
 				},
-				DeleteBeforeReplace: true,
 			},
 			"google_project_iam_policy": {
 				Tok: gcpResource(gcpProject, "IAMPolicy"),
@@ -937,7 +936,6 @@ func Provider() tfbridge.ProviderInfo {
 				Docs: &tfbridge.DocInfo{
 					Source: "google_service_account_iam.html.markdown",
 				},
-				DeleteBeforeReplace: true,
 			},
 			"google_service_account_iam_policy": {
 				Tok: gcpResource(gcpServiceAccount, "IAMPolicy"),
@@ -1031,7 +1029,7 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"google_compute_external_vpn_gateway":          {Tok: gcpResource(gcpCompute, "ExternalVpnGateway")},
-			"google_compute_global_address":                {Tok: gcpResource(gcpCompute, "GlobalAddress"), DeleteBeforeReplace: true},
+			"google_compute_global_address":                {Tok: gcpResource(gcpCompute, "GlobalAddress")},
 			"google_compute_global_forwarding_rule":        {Tok: gcpResource(gcpCompute, "GlobalForwardingRule")},
 			"google_compute_global_network_endpoint":       {Tok: gcpResource(gcpCompute, "GlobalNetworkEndpoint")},
 			"google_compute_global_network_endpoint_group": {Tok: gcpResource(gcpCompute, "GlobalNetworkEndpointGroup")},
@@ -1154,7 +1152,7 @@ func Provider() tfbridge.ProviderInfo {
 				Fields: nameField(lowercaseAutoName()),
 			},
 			"google_compute_vpn_gateway":         {Tok: gcpResource(gcpCompute, "VPNGateway")},
-			"google_compute_vpn_tunnel":          {Tok: gcpResource(gcpCompute, "VPNTunnel"), DeleteBeforeReplace: true},
+			"google_compute_vpn_tunnel":          {Tok: gcpResource(gcpCompute, "VPNTunnel")},
 			"google_compute_reservation":         {Tok: gcpResource(gcpCompute, "Reservation")},
 			"google_compute_region_health_check": {Tok: gcpResource(gcpCompute, "RegionHealthCheck")},
 			"google_compute_region_url_map":      {Tok: gcpResource(gcpCompute, "RegionUrlMap")},
