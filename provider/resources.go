@@ -463,9 +463,6 @@ func preConfigureCallbackWithLogger(credentialsValidationRun *atomic.Bool, gcpCl
 //go:embed cmd/pulumi-resource-gcp/bridge-metadata.json
 var metadata []byte
 
-// A predicate function that always returns true.
-func always[T any](T) bool { return true }
-
 // Provider returns additional overlaid schema and metadata associated with the gcp package.
 //
 //nolint:lll
@@ -473,7 +470,6 @@ func Provider() tfbridge.ProviderInfo {
 	p := pf.MuxShimWithDisjointgPF(
 		context.Background(),
 		shimv2.NewProvider(gcpProvider.Provider(),
-			shimv2.WithPlanResourceChange(always),
 			shimv2.WithPlanStateEdit(fixEmptyLabels),
 		),
 		gcpPFProvider.New())
