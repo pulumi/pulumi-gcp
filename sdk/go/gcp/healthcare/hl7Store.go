@@ -272,7 +272,7 @@ type Hl7Store struct {
 	// ** Changing this property may recreate the Hl7v2 store (removing all data) **
 	Name pulumi.StringOutput `pulumi:"name"`
 	// (Optional, Deprecated)
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	//
 	// > **Warning:** `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
@@ -284,7 +284,7 @@ type Hl7Store struct {
 	// is sent as part of the notification. Supplied by the client.
 	// Structure is documented below.
 	NotificationConfigs Hl7StoreNotificationConfigsArrayOutput `pulumi:"notificationConfigs"`
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	ParserConfig Hl7StoreParserConfigOutput `pulumi:"parserConfig"`
 	// The combination of labels configured directly on the resource
@@ -357,7 +357,7 @@ type hl7StoreState struct {
 	// ** Changing this property may recreate the Hl7v2 store (removing all data) **
 	Name *string `pulumi:"name"`
 	// (Optional, Deprecated)
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	//
 	// > **Warning:** `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
@@ -369,7 +369,7 @@ type hl7StoreState struct {
 	// is sent as part of the notification. Supplied by the client.
 	// Structure is documented below.
 	NotificationConfigs []Hl7StoreNotificationConfigs `pulumi:"notificationConfigs"`
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	ParserConfig *Hl7StoreParserConfig `pulumi:"parserConfig"`
 	// The combination of labels configured directly on the resource
@@ -405,7 +405,7 @@ type Hl7StoreState struct {
 	// ** Changing this property may recreate the Hl7v2 store (removing all data) **
 	Name pulumi.StringPtrInput
 	// (Optional, Deprecated)
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	//
 	// > **Warning:** `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
@@ -417,7 +417,7 @@ type Hl7StoreState struct {
 	// is sent as part of the notification. Supplied by the client.
 	// Structure is documented below.
 	NotificationConfigs Hl7StoreNotificationConfigsArrayInput
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	ParserConfig Hl7StoreParserConfigPtrInput
 	// The combination of labels configured directly on the resource
@@ -455,7 +455,7 @@ type hl7StoreArgs struct {
 	// ** Changing this property may recreate the Hl7v2 store (removing all data) **
 	Name *string `pulumi:"name"`
 	// (Optional, Deprecated)
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	//
 	// > **Warning:** `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
@@ -467,7 +467,7 @@ type hl7StoreArgs struct {
 	// is sent as part of the notification. Supplied by the client.
 	// Structure is documented below.
 	NotificationConfigs []Hl7StoreNotificationConfigs `pulumi:"notificationConfigs"`
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	ParserConfig *Hl7StoreParserConfig `pulumi:"parserConfig"`
 	// Determines whether duplicate messages are allowed.
@@ -497,7 +497,7 @@ type Hl7StoreArgs struct {
 	// ** Changing this property may recreate the Hl7v2 store (removing all data) **
 	Name pulumi.StringPtrInput
 	// (Optional, Deprecated)
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	//
 	// > **Warning:** `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
@@ -509,7 +509,7 @@ type Hl7StoreArgs struct {
 	// is sent as part of the notification. Supplied by the client.
 	// Structure is documented below.
 	NotificationConfigs Hl7StoreNotificationConfigsArrayInput
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	ParserConfig Hl7StoreParserConfigPtrInput
 	// Determines whether duplicate messages are allowed.
@@ -638,7 +638,7 @@ func (o Hl7StoreOutput) Name() pulumi.StringOutput {
 }
 
 // (Optional, Deprecated)
-// A nested object resource
+// A nested object resource.
 // Structure is documented below.
 //
 // > **Warning:** `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
@@ -656,7 +656,7 @@ func (o Hl7StoreOutput) NotificationConfigs() Hl7StoreNotificationConfigsArrayOu
 	return o.ApplyT(func(v *Hl7Store) Hl7StoreNotificationConfigsArrayOutput { return v.NotificationConfigs }).(Hl7StoreNotificationConfigsArrayOutput)
 }
 
-// A nested object resource
+// A nested object resource.
 // Structure is documented below.
 func (o Hl7StoreOutput) ParserConfig() Hl7StoreParserConfigOutput {
 	return o.ApplyT(func(v *Hl7Store) Hl7StoreParserConfigOutput { return v.ParserConfig }).(Hl7StoreParserConfigOutput)

@@ -21,7 +21,7 @@ namespace Pulumi.Gcp.GkeOnPrem.Outputs
         /// </summary>
         public readonly bool? AdvancedNetworking;
         /// <summary>
-        /// A nested object resource
+        /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.BareMetalClusterNetworkConfigIslandModeCidr? IslandModeCidr;

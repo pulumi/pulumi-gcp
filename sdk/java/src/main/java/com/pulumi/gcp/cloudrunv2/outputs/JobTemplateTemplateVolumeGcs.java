@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,6 +19,12 @@ public final class JobTemplateTemplateVolumeGcs {
      * 
      */
     private String bucket;
+    /**
+     * @return A list of flags to pass to the gcsfuse command for configuring this volume.
+     * Flags should be passed without leading dashes.
+     * 
+     */
+    private @Nullable List<String> mountOptions;
     /**
      * @return If true, mount this volume as read-only in all mounts. If false, mount this volume as read-write.
      * 
@@ -31,6 +38,14 @@ public final class JobTemplateTemplateVolumeGcs {
      */
     public String bucket() {
         return this.bucket;
+    }
+    /**
+     * @return A list of flags to pass to the gcsfuse command for configuring this volume.
+     * Flags should be passed without leading dashes.
+     * 
+     */
+    public List<String> mountOptions() {
+        return this.mountOptions == null ? List.of() : this.mountOptions;
     }
     /**
      * @return If true, mount this volume as read-only in all mounts. If false, mount this volume as read-write.
@@ -50,11 +65,13 @@ public final class JobTemplateTemplateVolumeGcs {
     @CustomType.Builder
     public static final class Builder {
         private String bucket;
+        private @Nullable List<String> mountOptions;
         private @Nullable Boolean readOnly;
         public Builder() {}
         public Builder(JobTemplateTemplateVolumeGcs defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bucket = defaults.bucket;
+    	      this.mountOptions = defaults.mountOptions;
     	      this.readOnly = defaults.readOnly;
         }
 
@@ -67,6 +84,15 @@ public final class JobTemplateTemplateVolumeGcs {
             return this;
         }
         @CustomType.Setter
+        public Builder mountOptions(@Nullable List<String> mountOptions) {
+
+            this.mountOptions = mountOptions;
+            return this;
+        }
+        public Builder mountOptions(String... mountOptions) {
+            return mountOptions(List.of(mountOptions));
+        }
+        @CustomType.Setter
         public Builder readOnly(@Nullable Boolean readOnly) {
 
             this.readOnly = readOnly;
@@ -75,6 +101,7 @@ public final class JobTemplateTemplateVolumeGcs {
         public JobTemplateTemplateVolumeGcs build() {
             final var _resultValue = new JobTemplateTemplateVolumeGcs();
             _resultValue.bucket = bucket;
+            _resultValue.mountOptions = mountOptions;
             _resultValue.readOnly = readOnly;
             return _resultValue;
         }

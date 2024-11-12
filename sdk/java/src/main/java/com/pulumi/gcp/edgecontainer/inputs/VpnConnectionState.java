@@ -51,7 +51,7 @@ public final class VpnConnectionState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -59,7 +59,7 @@ public final class VpnConnectionState extends com.pulumi.resources.ResourceArgs 
     private @Nullable Output<List<VpnConnectionDetailArgs>> details;
 
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -344,7 +344,7 @@ public final class VpnConnectionState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param details A nested object resource
+         * @param details A nested object resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -356,7 +356,7 @@ public final class VpnConnectionState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param details A nested object resource
+         * @param details A nested object resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -367,7 +367,7 @@ public final class VpnConnectionState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param details A nested object resource
+         * @param details A nested object resource.
          * Structure is documented below.
          * 
          * @return builder

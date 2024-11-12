@@ -41,9 +41,10 @@ import (
 //					"annotations1": pulumi.String("bar1"),
 //					"annotations2": pulumi.String("baz1"),
 //				},
-//				ForceUpdate:  pulumi.Bool(true),
-//				ForceDelete:  pulumi.Bool(true),
-//				AllowMissing: pulumi.Bool(true),
+//				ForceUpdate:                pulumi.Bool(true),
+//				IgnoreInactiveDatasources:  pulumi.Bool(true),
+//				IgnoreBackupPlanReferences: pulumi.Bool(true),
+//				AllowMissing:               pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -108,15 +109,26 @@ type BackupVault struct {
 	EffectiveTime pulumi.StringPtrOutput `pulumi:"effectiveTime"`
 	// Optional. Server specified ETag for the backup vault resource to prevent simultaneous updates from overwiting each other.
 	Etag pulumi.StringOutput `pulumi:"etag"`
+	// (Optional, Deprecated)
 	// If set, the following restrictions against deletion of the backup vault instance can be overridden:
 	// * deletion of a backup vault instance containing no backups, but still containing empty datasources.
 	// * deletion of a backup vault instance that is being referenced by an active backup plan.
+	//
+	// > **Warning:** `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead.
+	//
+	// Deprecated: `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead.
 	ForceDelete pulumi.BoolPtrOutput `pulumi:"forceDelete"`
 	// If set, allow update to extend the minimum enforced retention for backup vault. This overrides
 	// the restriction against conflicting retention periods. This conflict may occur when the
 	// expiration schedule defined by the associated backup plan is shorter than the minimum
 	// retention set by the backup vault.
 	ForceUpdate pulumi.BoolPtrOutput `pulumi:"forceUpdate"`
+	// If set, the following restrictions against deletion of the backup vault instance can be overridden:
+	// * deletion of a backup vault instance that is being referenced by an active backup plan.
+	IgnoreBackupPlanReferences pulumi.BoolPtrOutput `pulumi:"ignoreBackupPlanReferences"`
+	// If set, the following restrictions against deletion of the backup vault instance can be overridden:
+	// * deletion of a backup vault instance containing no backups, but still containing empty datasources.
+	IgnoreInactiveDatasources pulumi.BoolPtrOutput `pulumi:"ignoreInactiveDatasources"`
 	// Optional. Resource labels to represent user provided metadata.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -221,15 +233,26 @@ type backupVaultState struct {
 	EffectiveTime *string `pulumi:"effectiveTime"`
 	// Optional. Server specified ETag for the backup vault resource to prevent simultaneous updates from overwiting each other.
 	Etag *string `pulumi:"etag"`
+	// (Optional, Deprecated)
 	// If set, the following restrictions against deletion of the backup vault instance can be overridden:
 	// * deletion of a backup vault instance containing no backups, but still containing empty datasources.
 	// * deletion of a backup vault instance that is being referenced by an active backup plan.
+	//
+	// > **Warning:** `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead.
+	//
+	// Deprecated: `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead.
 	ForceDelete *bool `pulumi:"forceDelete"`
 	// If set, allow update to extend the minimum enforced retention for backup vault. This overrides
 	// the restriction against conflicting retention periods. This conflict may occur when the
 	// expiration schedule defined by the associated backup plan is shorter than the minimum
 	// retention set by the backup vault.
 	ForceUpdate *bool `pulumi:"forceUpdate"`
+	// If set, the following restrictions against deletion of the backup vault instance can be overridden:
+	// * deletion of a backup vault instance that is being referenced by an active backup plan.
+	IgnoreBackupPlanReferences *bool `pulumi:"ignoreBackupPlanReferences"`
+	// If set, the following restrictions against deletion of the backup vault instance can be overridden:
+	// * deletion of a backup vault instance containing no backups, but still containing empty datasources.
+	IgnoreInactiveDatasources *bool `pulumi:"ignoreInactiveDatasources"`
 	// Optional. Resource labels to represent user provided metadata.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -291,15 +314,26 @@ type BackupVaultState struct {
 	EffectiveTime pulumi.StringPtrInput
 	// Optional. Server specified ETag for the backup vault resource to prevent simultaneous updates from overwiting each other.
 	Etag pulumi.StringPtrInput
+	// (Optional, Deprecated)
 	// If set, the following restrictions against deletion of the backup vault instance can be overridden:
 	// * deletion of a backup vault instance containing no backups, but still containing empty datasources.
 	// * deletion of a backup vault instance that is being referenced by an active backup plan.
+	//
+	// > **Warning:** `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead.
+	//
+	// Deprecated: `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead.
 	ForceDelete pulumi.BoolPtrInput
 	// If set, allow update to extend the minimum enforced retention for backup vault. This overrides
 	// the restriction against conflicting retention periods. This conflict may occur when the
 	// expiration schedule defined by the associated backup plan is shorter than the minimum
 	// retention set by the backup vault.
 	ForceUpdate pulumi.BoolPtrInput
+	// If set, the following restrictions against deletion of the backup vault instance can be overridden:
+	// * deletion of a backup vault instance that is being referenced by an active backup plan.
+	IgnoreBackupPlanReferences pulumi.BoolPtrInput
+	// If set, the following restrictions against deletion of the backup vault instance can be overridden:
+	// * deletion of a backup vault instance containing no backups, but still containing empty datasources.
+	IgnoreInactiveDatasources pulumi.BoolPtrInput
 	// Optional. Resource labels to represent user provided metadata.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -354,15 +388,26 @@ type backupVaultArgs struct {
 	Description *string `pulumi:"description"`
 	// Optional. Time after which the BackupVault resource is locked.
 	EffectiveTime *string `pulumi:"effectiveTime"`
+	// (Optional, Deprecated)
 	// If set, the following restrictions against deletion of the backup vault instance can be overridden:
 	// * deletion of a backup vault instance containing no backups, but still containing empty datasources.
 	// * deletion of a backup vault instance that is being referenced by an active backup plan.
+	//
+	// > **Warning:** `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead.
+	//
+	// Deprecated: `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead.
 	ForceDelete *bool `pulumi:"forceDelete"`
 	// If set, allow update to extend the minimum enforced retention for backup vault. This overrides
 	// the restriction against conflicting retention periods. This conflict may occur when the
 	// expiration schedule defined by the associated backup plan is shorter than the minimum
 	// retention set by the backup vault.
 	ForceUpdate *bool `pulumi:"forceUpdate"`
+	// If set, the following restrictions against deletion of the backup vault instance can be overridden:
+	// * deletion of a backup vault instance that is being referenced by an active backup plan.
+	IgnoreBackupPlanReferences *bool `pulumi:"ignoreBackupPlanReferences"`
+	// If set, the following restrictions against deletion of the backup vault instance can be overridden:
+	// * deletion of a backup vault instance containing no backups, but still containing empty datasources.
+	IgnoreInactiveDatasources *bool `pulumi:"ignoreInactiveDatasources"`
 	// Optional. Resource labels to represent user provided metadata.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -393,15 +438,26 @@ type BackupVaultArgs struct {
 	Description pulumi.StringPtrInput
 	// Optional. Time after which the BackupVault resource is locked.
 	EffectiveTime pulumi.StringPtrInput
+	// (Optional, Deprecated)
 	// If set, the following restrictions against deletion of the backup vault instance can be overridden:
 	// * deletion of a backup vault instance containing no backups, but still containing empty datasources.
 	// * deletion of a backup vault instance that is being referenced by an active backup plan.
+	//
+	// > **Warning:** `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead.
+	//
+	// Deprecated: `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead.
 	ForceDelete pulumi.BoolPtrInput
 	// If set, allow update to extend the minimum enforced retention for backup vault. This overrides
 	// the restriction against conflicting retention periods. This conflict may occur when the
 	// expiration schedule defined by the associated backup plan is shorter than the minimum
 	// retention set by the backup vault.
 	ForceUpdate pulumi.BoolPtrInput
+	// If set, the following restrictions against deletion of the backup vault instance can be overridden:
+	// * deletion of a backup vault instance that is being referenced by an active backup plan.
+	IgnoreBackupPlanReferences pulumi.BoolPtrInput
+	// If set, the following restrictions against deletion of the backup vault instance can be overridden:
+	// * deletion of a backup vault instance containing no backups, but still containing empty datasources.
+	IgnoreInactiveDatasources pulumi.BoolPtrInput
 	// Optional. Resource labels to represent user provided metadata.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -564,9 +620,14 @@ func (o BackupVaultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupVault) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
+// (Optional, Deprecated)
 // If set, the following restrictions against deletion of the backup vault instance can be overridden:
 // * deletion of a backup vault instance containing no backups, but still containing empty datasources.
 // * deletion of a backup vault instance that is being referenced by an active backup plan.
+//
+// > **Warning:** `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead.
+//
+// Deprecated: `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead.
 func (o BackupVaultOutput) ForceDelete() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BackupVault) pulumi.BoolPtrOutput { return v.ForceDelete }).(pulumi.BoolPtrOutput)
 }
@@ -577,6 +638,18 @@ func (o BackupVaultOutput) ForceDelete() pulumi.BoolPtrOutput {
 // retention set by the backup vault.
 func (o BackupVaultOutput) ForceUpdate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BackupVault) pulumi.BoolPtrOutput { return v.ForceUpdate }).(pulumi.BoolPtrOutput)
+}
+
+// If set, the following restrictions against deletion of the backup vault instance can be overridden:
+// * deletion of a backup vault instance that is being referenced by an active backup plan.
+func (o BackupVaultOutput) IgnoreBackupPlanReferences() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BackupVault) pulumi.BoolPtrOutput { return v.IgnoreBackupPlanReferences }).(pulumi.BoolPtrOutput)
+}
+
+// If set, the following restrictions against deletion of the backup vault instance can be overridden:
+// * deletion of a backup vault instance containing no backups, but still containing empty datasources.
+func (o BackupVaultOutput) IgnoreInactiveDatasources() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BackupVault) pulumi.BoolPtrOutput { return v.IgnoreInactiveDatasources }).(pulumi.BoolPtrOutput)
 }
 
 // Optional. Resource labels to represent user provided metadata.

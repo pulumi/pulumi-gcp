@@ -7,17 +7,16 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * The Compute FirewallPolicyRule resource
- *
  * ## Example Usage
  *
- * ### Basic_fir_sec_rule
+ * ### Firewall Policy Rule
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
  * const basicGlobalNetworksecurityAddressGroup = new gcp.networksecurity.AddressGroup("basic_global_networksecurity_address_group", {
- *     name: "policy",
+ *     name: "address",
  *     parent: "organizations/123456789",
  *     description: "Sample global networksecurity_address_group",
  *     location: "global",
@@ -26,7 +25,7 @@ import * as utilities from "../utilities";
  *     capacity: 100,
  * });
  * const folder = new gcp.organizations.Folder("folder", {
- *     displayName: "policy",
+ *     displayName: "folder",
  *     parent: "organizations/123456789",
  *     deletionProtection: false,
  * });
@@ -35,7 +34,7 @@ import * as utilities from "../utilities";
  *     shortName: "policy",
  *     description: "Resource created for Terraform acceptance testing",
  * });
- * const primary = new gcp.compute.FirewallPolicyRule("primary", {
+ * const policyRule = new gcp.compute.FirewallPolicyRule("policy_rule", {
  *     firewallPolicy: _default.name,
  *     description: "Resource created for Terraform acceptance testing",
  *     priority: 9000,
@@ -116,11 +115,16 @@ export class FirewallPolicyRule extends pulumi.CustomResource {
      */
     public readonly action!: pulumi.Output<string>;
     /**
+     * Creation timestamp in RFC3339 text format.
+     */
+    public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
+    /**
      * An optional description for this resource.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The direction in which this rule applies. Possible values: INGRESS, EGRESS
+     * The direction in which this rule applies.
+     * Possible values are: `INGRESS`, `EGRESS`.
      */
     public readonly direction!: pulumi.Output<string>;
     /**
@@ -144,10 +148,13 @@ export class FirewallPolicyRule extends pulumi.CustomResource {
     public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
      * A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+     * Structure is documented below.
      */
     public readonly match!: pulumi.Output<outputs.compute.FirewallPolicyRuleMatch>;
     /**
-     * An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
+     * An integer indicating the priority of a rule in the list.
+     * The priority must be a positive value between 0 and 2147483647.
+     * Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
      */
     public readonly priority!: pulumi.Output<number>;
     /**
@@ -155,9 +162,9 @@ export class FirewallPolicyRule extends pulumi.CustomResource {
      */
     public /*out*/ readonly ruleTupleCount!: pulumi.Output<number>;
     /**
-     * A fully-qualified URL of a SecurityProfileGroup resource. Example:
-     * https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
-     * It must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
+     * A fully-qualified URL of a SecurityProfile resource instance. Example:
+     * https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+     * Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
      */
     public readonly securityProfileGroup!: pulumi.Output<string | undefined>;
     /**
@@ -170,7 +177,7 @@ export class FirewallPolicyRule extends pulumi.CustomResource {
      */
     public readonly targetServiceAccounts!: pulumi.Output<string[] | undefined>;
     /**
-     * Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+     * Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
      * 'apply_security_profile_group' and cannot be set for other actions.
      */
     public readonly tlsInspect!: pulumi.Output<boolean | undefined>;
@@ -189,6 +196,7 @@ export class FirewallPolicyRule extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as FirewallPolicyRuleState | undefined;
             resourceInputs["action"] = state ? state.action : undefined;
+            resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["direction"] = state ? state.direction : undefined;
             resourceInputs["disabled"] = state ? state.disabled : undefined;
@@ -231,6 +239,7 @@ export class FirewallPolicyRule extends pulumi.CustomResource {
             resourceInputs["targetResources"] = args ? args.targetResources : undefined;
             resourceInputs["targetServiceAccounts"] = args ? args.targetServiceAccounts : undefined;
             resourceInputs["tlsInspect"] = args ? args.tlsInspect : undefined;
+            resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["ruleTupleCount"] = undefined /*out*/;
         }
@@ -248,11 +257,16 @@ export interface FirewallPolicyRuleState {
      */
     action?: pulumi.Input<string>;
     /**
+     * Creation timestamp in RFC3339 text format.
+     */
+    creationTimestamp?: pulumi.Input<string>;
+    /**
      * An optional description for this resource.
      */
     description?: pulumi.Input<string>;
     /**
-     * The direction in which this rule applies. Possible values: INGRESS, EGRESS
+     * The direction in which this rule applies.
+     * Possible values are: `INGRESS`, `EGRESS`.
      */
     direction?: pulumi.Input<string>;
     /**
@@ -276,10 +290,13 @@ export interface FirewallPolicyRuleState {
     kind?: pulumi.Input<string>;
     /**
      * A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+     * Structure is documented below.
      */
     match?: pulumi.Input<inputs.compute.FirewallPolicyRuleMatch>;
     /**
-     * An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
+     * An integer indicating the priority of a rule in the list.
+     * The priority must be a positive value between 0 and 2147483647.
+     * Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
      */
     priority?: pulumi.Input<number>;
     /**
@@ -287,9 +304,9 @@ export interface FirewallPolicyRuleState {
      */
     ruleTupleCount?: pulumi.Input<number>;
     /**
-     * A fully-qualified URL of a SecurityProfileGroup resource. Example:
-     * https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
-     * It must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
+     * A fully-qualified URL of a SecurityProfile resource instance. Example:
+     * https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+     * Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
      */
     securityProfileGroup?: pulumi.Input<string>;
     /**
@@ -302,7 +319,7 @@ export interface FirewallPolicyRuleState {
      */
     targetServiceAccounts?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+     * Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
      * 'apply_security_profile_group' and cannot be set for other actions.
      */
     tlsInspect?: pulumi.Input<boolean>;
@@ -321,7 +338,8 @@ export interface FirewallPolicyRuleArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * The direction in which this rule applies. Possible values: INGRESS, EGRESS
+     * The direction in which this rule applies.
+     * Possible values are: `INGRESS`, `EGRESS`.
      */
     direction: pulumi.Input<string>;
     /**
@@ -341,16 +359,19 @@ export interface FirewallPolicyRuleArgs {
     firewallPolicy: pulumi.Input<string>;
     /**
      * A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+     * Structure is documented below.
      */
     match: pulumi.Input<inputs.compute.FirewallPolicyRuleMatch>;
     /**
-     * An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
+     * An integer indicating the priority of a rule in the list.
+     * The priority must be a positive value between 0 and 2147483647.
+     * Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
      */
     priority: pulumi.Input<number>;
     /**
-     * A fully-qualified URL of a SecurityProfileGroup resource. Example:
-     * https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
-     * It must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
+     * A fully-qualified URL of a SecurityProfile resource instance. Example:
+     * https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+     * Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
      */
     securityProfileGroup?: pulumi.Input<string>;
     /**
@@ -363,7 +384,7 @@ export interface FirewallPolicyRuleArgs {
      */
     targetServiceAccounts?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+     * Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
      * 'apply_security_profile_group' and cannot be set for other actions.
      */
     tlsInspect?: pulumi.Input<boolean>;

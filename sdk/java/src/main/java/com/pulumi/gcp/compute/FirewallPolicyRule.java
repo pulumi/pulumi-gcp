@@ -19,11 +19,10 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The Compute FirewallPolicyRule resource
- * 
  * ## Example Usage
  * 
- * ### Basic_fir_sec_rule
+ * ### Firewall Policy Rule
+ * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
@@ -55,7 +54,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var basicGlobalNetworksecurityAddressGroup = new AddressGroup("basicGlobalNetworksecurityAddressGroup", AddressGroupArgs.builder()
- *             .name("policy")
+ *             .name("address")
  *             .parent("organizations/123456789")
  *             .description("Sample global networksecurity_address_group")
  *             .location("global")
@@ -65,7 +64,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var folder = new Folder("folder", FolderArgs.builder()
- *             .displayName("policy")
+ *             .displayName("folder")
  *             .parent("organizations/123456789")
  *             .deletionProtection(false)
  *             .build());
@@ -76,7 +75,7 @@ import javax.annotation.Nullable;
  *             .description("Resource created for Terraform acceptance testing")
  *             .build());
  * 
- *         var primary = new FirewallPolicyRule("primary", FirewallPolicyRuleArgs.builder()
+ *         var policyRule = new FirewallPolicyRule("policyRule", FirewallPolicyRuleArgs.builder()
  *             .firewallPolicy(default_.name())
  *             .description("Resource created for Terraform acceptance testing")
  *             .priority(9000)
@@ -146,6 +145,20 @@ public class FirewallPolicyRule extends com.pulumi.resources.CustomResource {
         return this.action;
     }
     /**
+     * Creation timestamp in RFC3339 text format.
+     * 
+     */
+    @Export(name="creationTimestamp", refs={String.class}, tree="[0]")
+    private Output<String> creationTimestamp;
+
+    /**
+     * @return Creation timestamp in RFC3339 text format.
+     * 
+     */
+    public Output<String> creationTimestamp() {
+        return this.creationTimestamp;
+    }
+    /**
      * An optional description for this resource.
      * 
      */
@@ -160,14 +173,16 @@ public class FirewallPolicyRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The direction in which this rule applies. Possible values: INGRESS, EGRESS
+     * The direction in which this rule applies.
+     * Possible values are: `INGRESS`, `EGRESS`.
      * 
      */
     @Export(name="direction", refs={String.class}, tree="[0]")
     private Output<String> direction;
 
     /**
-     * @return The direction in which this rule applies. Possible values: INGRESS, EGRESS
+     * @return The direction in which this rule applies.
+     * Possible values are: `INGRESS`, `EGRESS`.
      * 
      */
     public Output<String> direction() {
@@ -237,6 +252,7 @@ public class FirewallPolicyRule extends com.pulumi.resources.CustomResource {
     }
     /**
      * A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding &#39;action&#39; is enforced.
+     * Structure is documented below.
      * 
      */
     @Export(name="match", refs={FirewallPolicyRuleMatch.class}, tree="[0]")
@@ -244,20 +260,25 @@ public class FirewallPolicyRule extends com.pulumi.resources.CustomResource {
 
     /**
      * @return A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding &#39;action&#39; is enforced.
+     * Structure is documented below.
      * 
      */
     public Output<FirewallPolicyRuleMatch> match() {
         return this.match;
     }
     /**
-     * An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
+     * An integer indicating the priority of a rule in the list.
+     * The priority must be a positive value between 0 and 2147483647.
+     * Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
      * 
      */
     @Export(name="priority", refs={Integer.class}, tree="[0]")
     private Output<Integer> priority;
 
     /**
-     * @return An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
+     * @return An integer indicating the priority of a rule in the list.
+     * The priority must be a positive value between 0 and 2147483647.
+     * Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
      * 
      */
     public Output<Integer> priority() {
@@ -278,18 +299,18 @@ public class FirewallPolicyRule extends com.pulumi.resources.CustomResource {
         return this.ruleTupleCount;
     }
     /**
-     * A fully-qualified URL of a SecurityProfileGroup resource. Example:
-     * https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
-     * It must be specified if action = &#39;apply_security_profile_group&#39; and cannot be specified for other actions.
+     * A fully-qualified URL of a SecurityProfile resource instance. Example:
+     * https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+     * Must be specified if action = &#39;apply_security_profile_group&#39; and cannot be specified for other actions.
      * 
      */
     @Export(name="securityProfileGroup", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> securityProfileGroup;
 
     /**
-     * @return A fully-qualified URL of a SecurityProfileGroup resource. Example:
-     * https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
-     * It must be specified if action = &#39;apply_security_profile_group&#39; and cannot be specified for other actions.
+     * @return A fully-qualified URL of a SecurityProfile resource instance. Example:
+     * https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+     * Must be specified if action = &#39;apply_security_profile_group&#39; and cannot be specified for other actions.
      * 
      */
     public Output<Optional<String>> securityProfileGroup() {
@@ -326,7 +347,7 @@ public class FirewallPolicyRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.targetServiceAccounts);
     }
     /**
-     * Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+     * Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
      * &#39;apply_security_profile_group&#39; and cannot be set for other actions.
      * 
      */
@@ -334,7 +355,7 @@ public class FirewallPolicyRule extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Boolean> tlsInspect;
 
     /**
-     * @return Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+     * @return Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
      * &#39;apply_security_profile_group&#39; and cannot be set for other actions.
      * 
      */

@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * const project = gcp.organizations.getProject({});
  * const addressGroup1 = new gcp.networksecurity.AddressGroup("address_group_1", {
  *     name: "tf-address-group",
- *     parent: project.then(project => `projects/${project.name}`),
+ *     parent: project.then(project => project.id),
  *     description: "Regional address group",
  *     location: "us-west2",
  *     items: ["208.80.154.224/32"],
@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  * });
  * const secureTagKey1 = new gcp.tags.TagKey("secure_tag_key_1", {
  *     description: "Tag key",
- *     parent: project.then(project => `projects/${project.name}`),
+ *     parent: project.then(project => project.id),
  *     purpose: "GCE_FIREWALL",
  *     shortName: "tf-tag-key",
  *     purposeData: {
@@ -36,7 +36,7 @@ import * as utilities from "../utilities";
  * });
  * const secureTagValue1 = new gcp.tags.TagValue("secure_tag_value_1", {
  *     description: "Tag value",
- *     parent: pulumi.interpolate`tagKeys/${secureTagKey1.name}`,
+ *     parent: secureTagKey1.id,
  *     shortName: "tf-tag-value",
  * });
  * const region_network_firewall_policy_with_rules = new gcp.compute.RegionNetworkFirewallPolicyWithRules("region-network-firewall-policy-with-rules", {
@@ -74,7 +74,7 @@ import * as utilities from "../utilities";
  *                 destAddressGroups: [addressGroup1.id],
  *             },
  *             targetSecureTags: [{
- *                 name: pulumi.interpolate`tagValues/${secureTagValue1.name}`,
+ *                 name: secureTagValue1.id,
  *             }],
  *         },
  *         {
@@ -103,7 +103,7 @@ import * as utilities from "../utilities";
  *                 ],
  *                 srcAddressGroups: [addressGroup1.id],
  *                 srcSecureTags: [{
- *                     name: pulumi.interpolate`tagValues/${secureTagValue1.name}`,
+ *                     name: secureTagValue1.id,
  *                 }],
  *             },
  *             disabled: true,

@@ -27,7 +27,7 @@ public final class InsightsReportConfigObjectMetadataReportOptions {
      */
     private InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions storageDestinationOptions;
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -50,7 +50,7 @@ public final class InsightsReportConfigObjectMetadataReportOptions {
         return this.storageDestinationOptions;
     }
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */

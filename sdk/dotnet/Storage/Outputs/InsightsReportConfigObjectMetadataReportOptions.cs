@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.Storage.Outputs
         /// </summary>
         public readonly Outputs.InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions StorageDestinationOptions;
         /// <summary>
-        /// A nested object resource
+        /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.InsightsReportConfigObjectMetadataReportOptionsStorageFilters? StorageFilters;

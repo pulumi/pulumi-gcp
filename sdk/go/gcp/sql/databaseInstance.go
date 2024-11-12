@@ -215,6 +215,39 @@ import (
 //
 // ```
 //
+// ## Switchover (SQL Server Only)
+//
+// Users can perform a switchover on any direct `cascadable` replica by following the steps below.
+//
+//	~>**WARNING:** Failure to follow these steps can lead to data loss (You will be warned during plan stage). To prevent data loss during a switchover, please verify your plan with the checklist below.
+//
+// # For a more in-depth walkthrough with example code, see the Switchover Guide
+//
+// ### Steps to Invoke Switchover
+//
+// Create a `cascadable` replica in a different region from the primary (`cascadableReplica` is set to true in `replicaConfiguration`)
+//
+// #### Invoking switchover in the replica resource:
+// 1. Change instanceType from `READ_REPLICA_INSTANCE` to `CLOUD_SQL_INSTANCE`
+// 2. Remove `masterInstanceName`
+// 3. Remove `replicaConfiguration`
+// 4. Add current primary's name to the replica's `replicaNames` list
+//
+// #### Updating the primary resource:
+// 1. Change `instanceType` from `CLOUD_SQL_INSTANCE` to `READ_REPLICA_INSTANCE`
+// 2. Set `masterInstanceName` to the original replica (which will be primary after switchover)
+// 3. Set `replicaConfiguration` and set `cascadableReplica` to `true`
+// 4. Remove original replica from `replicaNames`
+//
+//	> **NOTE**: Do **not** delete the replicaNames field, even if it has no replicas remaining. Set replicaNames = [ ] to indicate it having no replicas.
+//
+// #### Plan and verify that:
+// - `pulumi preview` outputs **"0 to add, 0 to destroy"**
+// - `pulumi preview` does not say **"must be replaced"** for any resource
+// - Every resource **"will be updated in-place"**
+// - Only the 2 instances involved in switchover have planned changes
+// - (Recommended) Use `deletionProtection` on instances as a safety measure
+//
 // ## Import
 //
 // Database instances can be imported using one of any of these accepted formats:
@@ -269,7 +302,7 @@ type DatabaseInstance struct {
 	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
 	// in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
-	// The dns name of the instance.
+	// The DNS name of the instance. See [Connect to an instance using Private Service Connect](https://cloud.google.com/sql/docs/mysql/configure-private-service-connect#view-summary-information-cloud-sql-instances-psc-enabled) for more details.
 	DnsName pulumi.StringOutput `pulumi:"dnsName"`
 	// The full path to the encryption key used for the CMEK disk encryption.  Setting
 	// up disk encryption currently requires manual steps outside of this provider.
@@ -311,8 +344,10 @@ type DatabaseInstance struct {
 	// ***
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The configuration for replication. The
-	// configuration is detailed below. Valid only for MySQL instances.
+	// configuration is detailed below.
 	ReplicaConfiguration DatabaseInstanceReplicaConfigurationOutput `pulumi:"replicaConfiguration"`
+	// List of replica names. Can be updated.
+	ReplicaNames pulumi.StringArrayOutput `pulumi:"replicaNames"`
 	// The context needed to restore the database to a backup run. This field will
 	// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
 	// **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
@@ -398,7 +433,7 @@ type databaseInstanceState struct {
 	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
 	// in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
-	// The dns name of the instance.
+	// The DNS name of the instance. See [Connect to an instance using Private Service Connect](https://cloud.google.com/sql/docs/mysql/configure-private-service-connect#view-summary-information-cloud-sql-instances-psc-enabled) for more details.
 	DnsName *string `pulumi:"dnsName"`
 	// The full path to the encryption key used for the CMEK disk encryption.  Setting
 	// up disk encryption currently requires manual steps outside of this provider.
@@ -440,8 +475,10 @@ type databaseInstanceState struct {
 	// ***
 	Region *string `pulumi:"region"`
 	// The configuration for replication. The
-	// configuration is detailed below. Valid only for MySQL instances.
+	// configuration is detailed below.
 	ReplicaConfiguration *DatabaseInstanceReplicaConfiguration `pulumi:"replicaConfiguration"`
+	// List of replica names. Can be updated.
+	ReplicaNames []string `pulumi:"replicaNames"`
 	// The context needed to restore the database to a backup run. This field will
 	// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
 	// **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
@@ -483,7 +520,7 @@ type DatabaseInstanceState struct {
 	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
 	// in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
 	DeletionProtection pulumi.BoolPtrInput
-	// The dns name of the instance.
+	// The DNS name of the instance. See [Connect to an instance using Private Service Connect](https://cloud.google.com/sql/docs/mysql/configure-private-service-connect#view-summary-information-cloud-sql-instances-psc-enabled) for more details.
 	DnsName pulumi.StringPtrInput
 	// The full path to the encryption key used for the CMEK disk encryption.  Setting
 	// up disk encryption currently requires manual steps outside of this provider.
@@ -525,8 +562,10 @@ type DatabaseInstanceState struct {
 	// ***
 	Region pulumi.StringPtrInput
 	// The configuration for replication. The
-	// configuration is detailed below. Valid only for MySQL instances.
+	// configuration is detailed below.
 	ReplicaConfiguration DatabaseInstanceReplicaConfigurationPtrInput
+	// List of replica names. Can be updated.
+	ReplicaNames pulumi.StringArrayInput
 	// The context needed to restore the database to a backup run. This field will
 	// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
 	// **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
@@ -598,8 +637,10 @@ type databaseInstanceArgs struct {
 	// ***
 	Region *string `pulumi:"region"`
 	// The configuration for replication. The
-	// configuration is detailed below. Valid only for MySQL instances.
+	// configuration is detailed below.
 	ReplicaConfiguration *DatabaseInstanceReplicaConfiguration `pulumi:"replicaConfiguration"`
+	// List of replica names. Can be updated.
+	ReplicaNames []string `pulumi:"replicaNames"`
 	// The context needed to restore the database to a backup run. This field will
 	// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
 	// **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
@@ -662,8 +703,10 @@ type DatabaseInstanceArgs struct {
 	// ***
 	Region pulumi.StringPtrInput
 	// The configuration for replication. The
-	// configuration is detailed below. Valid only for MySQL instances.
+	// configuration is detailed below.
 	ReplicaConfiguration DatabaseInstanceReplicaConfigurationPtrInput
+	// List of replica names. Can be updated.
+	ReplicaNames pulumi.StringArrayInput
 	// The context needed to restore the database to a backup run. This field will
 	// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
 	// **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
@@ -800,7 +843,7 @@ func (o DatabaseInstanceOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
 
-// The dns name of the instance.
+// The DNS name of the instance. See [Connect to an instance using Private Service Connect](https://cloud.google.com/sql/docs/mysql/configure-private-service-connect#view-summary-information-cloud-sql-instances-psc-enabled) for more details.
 func (o DatabaseInstanceOutput) DnsName() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.DnsName }).(pulumi.StringOutput)
 }
@@ -881,9 +924,14 @@ func (o DatabaseInstanceOutput) Region() pulumi.StringOutput {
 }
 
 // The configuration for replication. The
-// configuration is detailed below. Valid only for MySQL instances.
+// configuration is detailed below.
 func (o DatabaseInstanceOutput) ReplicaConfiguration() DatabaseInstanceReplicaConfigurationOutput {
 	return o.ApplyT(func(v *DatabaseInstance) DatabaseInstanceReplicaConfigurationOutput { return v.ReplicaConfiguration }).(DatabaseInstanceReplicaConfigurationOutput)
+}
+
+// List of replica names. Can be updated.
+func (o DatabaseInstanceOutput) ReplicaNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringArrayOutput { return v.ReplicaNames }).(pulumi.StringArrayOutput)
 }
 
 // The context needed to restore the database to a backup run. This field will

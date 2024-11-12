@@ -46,7 +46,7 @@ class DicomStoreArgs:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name for the DicomStore.
                ** Changing this property may recreate the Dicom store (removing all data) **
-        :param pulumi.Input['DicomStoreNotificationConfigArgs'] notification_config: A nested object resource
+        :param pulumi.Input['DicomStoreNotificationConfigArgs'] notification_config: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['DicomStoreStreamConfigArgs']]] stream_configs: To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
                streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
@@ -117,7 +117,7 @@ class DicomStoreArgs:
     @pulumi.getter(name="notificationConfig")
     def notification_config(self) -> Optional[pulumi.Input['DicomStoreNotificationConfigArgs']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "notification_config")
@@ -173,7 +173,7 @@ class _DicomStoreState:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name for the DicomStore.
                ** Changing this property may recreate the Dicom store (removing all data) **
-        :param pulumi.Input['DicomStoreNotificationConfigArgs'] notification_config: A nested object resource
+        :param pulumi.Input['DicomStoreNotificationConfigArgs'] notification_config: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
@@ -266,7 +266,7 @@ class _DicomStoreState:
     @pulumi.getter(name="notificationConfig")
     def notification_config(self) -> Optional[pulumi.Input['DicomStoreNotificationConfigArgs']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "notification_config")
@@ -438,7 +438,7 @@ class DicomStore(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name for the DicomStore.
                ** Changing this property may recreate the Dicom store (removing all data) **
-        :param pulumi.Input[Union['DicomStoreNotificationConfigArgs', 'DicomStoreNotificationConfigArgsDict']] notification_config: A nested object resource
+        :param pulumi.Input[Union['DicomStoreNotificationConfigArgs', 'DicomStoreNotificationConfigArgsDict']] notification_config: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DicomStoreStreamConfigArgs', 'DicomStoreStreamConfigArgsDict']]]] stream_configs: To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
                streamConfigs is an array, so you can specify multiple BigQuery destinations. You can stream metadata from a single DICOM store to up to five BigQuery tables in a BigQuery dataset.
@@ -627,7 +627,7 @@ class DicomStore(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name for the DicomStore.
                ** Changing this property may recreate the Dicom store (removing all data) **
-        :param pulumi.Input[Union['DicomStoreNotificationConfigArgs', 'DicomStoreNotificationConfigArgsDict']] notification_config: A nested object resource
+        :param pulumi.Input[Union['DicomStoreNotificationConfigArgs', 'DicomStoreNotificationConfigArgsDict']] notification_config: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
@@ -701,7 +701,7 @@ class DicomStore(pulumi.CustomResource):
     @pulumi.getter(name="notificationConfig")
     def notification_config(self) -> pulumi.Output[Optional['outputs.DicomStoreNotificationConfig']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "notification_config")

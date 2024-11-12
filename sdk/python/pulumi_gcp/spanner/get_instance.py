@@ -27,13 +27,16 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, autoscaling_configs=None, config=None, display_name=None, edition=None, effective_labels=None, force_destroy=None, id=None, labels=None, name=None, num_nodes=None, processing_units=None, project=None, pulumi_labels=None, state=None):
+    def __init__(__self__, autoscaling_configs=None, config=None, default_backup_schedule_type=None, display_name=None, edition=None, effective_labels=None, force_destroy=None, id=None, labels=None, name=None, num_nodes=None, processing_units=None, project=None, pulumi_labels=None, state=None):
         if autoscaling_configs and not isinstance(autoscaling_configs, list):
             raise TypeError("Expected argument 'autoscaling_configs' to be a list")
         pulumi.set(__self__, "autoscaling_configs", autoscaling_configs)
         if config and not isinstance(config, str):
             raise TypeError("Expected argument 'config' to be a str")
         pulumi.set(__self__, "config", config)
+        if default_backup_schedule_type and not isinstance(default_backup_schedule_type, str):
+            raise TypeError("Expected argument 'default_backup_schedule_type' to be a str")
+        pulumi.set(__self__, "default_backup_schedule_type", default_backup_schedule_type)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
@@ -80,6 +83,11 @@ class GetInstanceResult:
     @pulumi.getter
     def config(self) -> Optional[str]:
         return pulumi.get(self, "config")
+
+    @property
+    @pulumi.getter(name="defaultBackupScheduleType")
+    def default_backup_schedule_type(self) -> str:
+        return pulumi.get(self, "default_backup_schedule_type")
 
     @property
     @pulumi.getter(name="displayName")
@@ -153,6 +161,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
         return GetInstanceResult(
             autoscaling_configs=self.autoscaling_configs,
             config=self.config,
+            default_backup_schedule_type=self.default_backup_schedule_type,
             display_name=self.display_name,
             edition=self.edition,
             effective_labels=self.effective_labels,
@@ -202,6 +211,7 @@ def get_instance(config: Optional[str] = None,
     return AwaitableGetInstanceResult(
         autoscaling_configs=pulumi.get(__ret__, 'autoscaling_configs'),
         config=pulumi.get(__ret__, 'config'),
+        default_backup_schedule_type=pulumi.get(__ret__, 'default_backup_schedule_type'),
         display_name=pulumi.get(__ret__, 'display_name'),
         edition=pulumi.get(__ret__, 'edition'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
@@ -248,6 +258,7 @@ def get_instance_output(config: Optional[pulumi.Input[Optional[str]]] = None,
     return __ret__.apply(lambda __response__: GetInstanceResult(
         autoscaling_configs=pulumi.get(__response__, 'autoscaling_configs'),
         config=pulumi.get(__response__, 'config'),
+        default_backup_schedule_type=pulumi.get(__response__, 'default_backup_schedule_type'),
         display_name=pulumi.get(__response__, 'display_name'),
         edition=pulumi.get(__response__, 'edition'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),

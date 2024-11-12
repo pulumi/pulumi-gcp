@@ -2705,6 +2705,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_privileged_access_manager_entitlement": {
 				Docs: &tfbridge.DocInfo{AllowMissing: true},
 			},
+			"google_backup_dr_backup_plan": {Docs: &tfbridge.DocInfo{AllowMissing: true}},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

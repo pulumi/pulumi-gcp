@@ -258,6 +258,39 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Switchover (SQL Server Only)
+ * 
+ * Users can perform a switchover on any direct `cascadable` replica by following the steps below.
+ * 
+ *   ~&gt;**WARNING:** Failure to follow these steps can lead to data loss (You will be warned during plan stage). To prevent data loss during a switchover, please verify your plan with the checklist below.
+ * 
+ * For a more in-depth walkthrough with example code, see the Switchover Guide
+ * 
+ * ### Steps to Invoke Switchover
+ * 
+ * Create a `cascadable` replica in a different region from the primary (`cascadable_replica` is set to true in `replica_configuration`)
+ * 
+ * #### Invoking switchover in the replica resource:
+ * 1. Change instance_type from `READ_REPLICA_INSTANCE` to `CLOUD_SQL_INSTANCE`
+ * 2. Remove `master_instance_name`
+ * 3. Remove `replica_configuration`
+ * 4. Add current primary&#39;s name to the replica&#39;s `replica_names` list
+ * 
+ * #### Updating the primary resource:
+ * 1. Change `instance_type` from `CLOUD_SQL_INSTANCE` to `READ_REPLICA_INSTANCE`
+ * 2. Set `master_instance_name` to the original replica (which will be primary after switchover)
+ * 3. Set `replica_configuration` and set `cascadable_replica` to `true`
+ * 4. Remove original replica from `replica_names`
+ *    
+ *     &gt; **NOTE**: Do **not** delete the replica_names field, even if it has no replicas remaining. Set replica_names = [ ] to indicate it having no replicas.
+ * 
+ * #### Plan and verify that:
+ * - `pulumi preview` outputs **&#34;0 to add, 0 to destroy&#34;**
+ * - `pulumi preview` does not say **&#34;must be replaced&#34;** for any resource
+ * - Every resource **&#34;will be updated in-place&#34;**
+ * - Only the 2 instances involved in switchover have planned changes
+ * - (Recommended) Use `deletion_protection` on instances as a safety measure
+ * 
  * ## Import
  * 
  * Database instances can be imported using one of any of these accepted formats:
@@ -386,14 +419,14 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.deletionProtection);
     }
     /**
-     * The dns name of the instance.
+     * The DNS name of the instance. See [Connect to an instance using Private Service Connect](https://cloud.google.com/sql/docs/mysql/configure-private-service-connect#view-summary-information-cloud-sql-instances-psc-enabled) for more details.
      * 
      */
     @Export(name="dnsName", refs={String.class}, tree="[0]")
     private Output<String> dnsName;
 
     /**
-     * @return The dns name of the instance.
+     * @return The DNS name of the instance. See [Connect to an instance using Private Service Connect](https://cloud.google.com/sql/docs/mysql/configure-private-service-connect#view-summary-information-cloud-sql-instances-psc-enabled) for more details.
      * 
      */
     public Output<String> dnsName() {
@@ -593,7 +626,7 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The configuration for replication. The
-     * configuration is detailed below. Valid only for MySQL instances.
+     * configuration is detailed below.
      * 
      */
     @Export(name="replicaConfiguration", refs={DatabaseInstanceReplicaConfiguration.class}, tree="[0]")
@@ -601,11 +634,25 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The configuration for replication. The
-     * configuration is detailed below. Valid only for MySQL instances.
+     * configuration is detailed below.
      * 
      */
     public Output<DatabaseInstanceReplicaConfiguration> replicaConfiguration() {
         return this.replicaConfiguration;
+    }
+    /**
+     * List of replica names. Can be updated.
+     * 
+     */
+    @Export(name="replicaNames", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> replicaNames;
+
+    /**
+     * @return List of replica names. Can be updated.
+     * 
+     */
+    public Output<List<String>> replicaNames() {
+        return this.replicaNames;
     }
     /**
      * The context needed to restore the database to a backup run. This field will

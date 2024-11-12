@@ -38,10 +38,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := spanner.NewInstance(ctx, "example", &spanner.InstanceArgs{
-//				Config:      pulumi.String("regional-us-central1"),
-//				DisplayName: pulumi.String("Test Spanner Instance"),
-//				NumNodes:    pulumi.Int(2),
-//				Edition:     pulumi.String("STANDARD"),
+//				Config:                    pulumi.String("regional-us-central1"),
+//				DisplayName:               pulumi.String("Test Spanner Instance"),
+//				NumNodes:                  pulumi.Int(2),
+//				Edition:                   pulumi.String("STANDARD"),
+//				DefaultBackupScheduleType: pulumi.String("AUTOMATIC"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -193,6 +194,11 @@ type Instance struct {
 	// In order to obtain a valid list please consult the
 	// [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
 	Config pulumi.StringOutput `pulumi:"config"`
+	// Controls the default backup behavior for new databases within the instance.
+	// Note that `AUTOMATIC` is not permitted for free instances, as backups and backup schedules are not allowed for free instances.
+	// if unset or NONE, no default backup schedule will be created for new databases within the instance.
+	// Possible values are: `NONE`, `AUTOMATIC`.
+	DefaultBackupScheduleType pulumi.StringOutput `pulumi:"defaultBackupScheduleType"`
 	// The descriptive name for this instance as it appears in UIs. Must be
 	// unique per project and between 4 and 30 characters in length.
 	//
@@ -283,6 +289,11 @@ type instanceState struct {
 	// In order to obtain a valid list please consult the
 	// [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
 	Config *string `pulumi:"config"`
+	// Controls the default backup behavior for new databases within the instance.
+	// Note that `AUTOMATIC` is not permitted for free instances, as backups and backup schedules are not allowed for free instances.
+	// if unset or NONE, no default backup schedule will be created for new databases within the instance.
+	// Possible values are: `NONE`, `AUTOMATIC`.
+	DefaultBackupScheduleType *string `pulumi:"defaultBackupScheduleType"`
 	// The descriptive name for this instance as it appears in UIs. Must be
 	// unique per project and between 4 and 30 characters in length.
 	//
@@ -333,6 +344,11 @@ type InstanceState struct {
 	// In order to obtain a valid list please consult the
 	// [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
 	Config pulumi.StringPtrInput
+	// Controls the default backup behavior for new databases within the instance.
+	// Note that `AUTOMATIC` is not permitted for free instances, as backups and backup schedules are not allowed for free instances.
+	// if unset or NONE, no default backup schedule will be created for new databases within the instance.
+	// Possible values are: `NONE`, `AUTOMATIC`.
+	DefaultBackupScheduleType pulumi.StringPtrInput
 	// The descriptive name for this instance as it appears in UIs. Must be
 	// unique per project and between 4 and 30 characters in length.
 	//
@@ -387,6 +403,11 @@ type instanceArgs struct {
 	// In order to obtain a valid list please consult the
 	// [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
 	Config string `pulumi:"config"`
+	// Controls the default backup behavior for new databases within the instance.
+	// Note that `AUTOMATIC` is not permitted for free instances, as backups and backup schedules are not allowed for free instances.
+	// if unset or NONE, no default backup schedule will be created for new databases within the instance.
+	// Possible values are: `NONE`, `AUTOMATIC`.
+	DefaultBackupScheduleType *string `pulumi:"defaultBackupScheduleType"`
 	// The descriptive name for this instance as it appears in UIs. Must be
 	// unique per project and between 4 and 30 characters in length.
 	//
@@ -431,6 +452,11 @@ type InstanceArgs struct {
 	// In order to obtain a valid list please consult the
 	// [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
 	Config pulumi.StringInput
+	// Controls the default backup behavior for new databases within the instance.
+	// Note that `AUTOMATIC` is not permitted for free instances, as backups and backup schedules are not allowed for free instances.
+	// if unset or NONE, no default backup schedule will be created for new databases within the instance.
+	// Possible values are: `NONE`, `AUTOMATIC`.
+	DefaultBackupScheduleType pulumi.StringPtrInput
 	// The descriptive name for this instance as it appears in UIs. Must be
 	// unique per project and between 4 and 30 characters in length.
 	//
@@ -564,6 +590,14 @@ func (o InstanceOutput) AutoscalingConfig() InstanceAutoscalingConfigPtrOutput {
 // [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
 func (o InstanceOutput) Config() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Config }).(pulumi.StringOutput)
+}
+
+// Controls the default backup behavior for new databases within the instance.
+// Note that `AUTOMATIC` is not permitted for free instances, as backups and backup schedules are not allowed for free instances.
+// if unset or NONE, no default backup schedule will be created for new databases within the instance.
+// Possible values are: `NONE`, `AUTOMATIC`.
+func (o InstanceOutput) DefaultBackupScheduleType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DefaultBackupScheduleType }).(pulumi.StringOutput)
 }
 
 // The descriptive name for this instance as it appears in UIs. Must be

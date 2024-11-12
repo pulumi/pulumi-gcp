@@ -180,7 +180,7 @@ export class RegionDisk extends pulumi.CustomResource {
     }
 
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      */
     public readonly asyncPrimaryDisk!: pulumi.Output<outputs.compute.RegionDiskAsyncPrimaryDisk | undefined>;
@@ -439,7 +439,7 @@ export class RegionDisk extends pulumi.CustomResource {
  */
 export interface RegionDiskState {
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      */
     asyncPrimaryDisk?: pulumi.Input<inputs.compute.RegionDiskAsyncPrimaryDisk>;
@@ -619,7 +619,7 @@ export interface RegionDiskState {
  */
 export interface RegionDiskArgs {
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      */
     asyncPrimaryDisk?: pulumi.Input<inputs.compute.RegionDiskAsyncPrimaryDisk>;

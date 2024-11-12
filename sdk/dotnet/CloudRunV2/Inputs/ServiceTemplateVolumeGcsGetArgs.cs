@@ -18,6 +18,19 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
         [Input("bucket", required: true)]
         public Input<string> Bucket { get; set; } = null!;
 
+        [Input("mountOptions")]
+        private InputList<string>? _mountOptions;
+
+        /// <summary>
+        /// A list of flags to pass to the gcsfuse command for configuring this volume.
+        /// Flags should be passed without leading dashes.
+        /// </summary>
+        public InputList<string> MountOptions
+        {
+            get => _mountOptions ?? (_mountOptions = new InputList<string>());
+            set => _mountOptions = value;
+        }
+
         /// <summary>
         /// If true, mount the GCS bucket as read-only
         /// </summary>

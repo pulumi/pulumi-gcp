@@ -32,7 +32,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? Mask { get; set; }
 
         /// <summary>
-        /// The name of this field. Must be unique within the policy.
+        /// Name of the user-defined field, as given in the definition.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

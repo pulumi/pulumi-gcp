@@ -1634,6 +1634,8 @@ type InstanceOauthConfig struct {
 	// The client ID for the Oauth config.
 	ClientId string `pulumi:"clientId"`
 	// The client secret for the Oauth config.
+	//
+	// ***
 	ClientSecret string `pulumi:"clientSecret"`
 }
 
@@ -1652,6 +1654,8 @@ type InstanceOauthConfigArgs struct {
 	// The client ID for the Oauth config.
 	ClientId pulumi.StringInput `pulumi:"clientId"`
 	// The client secret for the Oauth config.
+	//
+	// ***
 	ClientSecret pulumi.StringInput `pulumi:"clientSecret"`
 }
 
@@ -1738,6 +1742,8 @@ func (o InstanceOauthConfigOutput) ClientId() pulumi.StringOutput {
 }
 
 // The client secret for the Oauth config.
+//
+// ***
 func (o InstanceOauthConfigOutput) ClientSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceOauthConfig) string { return v.ClientSecret }).(pulumi.StringOutput)
 }
@@ -1777,6 +1783,8 @@ func (o InstanceOauthConfigPtrOutput) ClientId() pulumi.StringPtrOutput {
 }
 
 // The client secret for the Oauth config.
+//
+// ***
 func (o InstanceOauthConfigPtrOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceOauthConfig) *string {
 		if v == nil {

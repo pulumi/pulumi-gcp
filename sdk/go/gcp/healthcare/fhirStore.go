@@ -297,7 +297,7 @@ type FhirStore struct {
 	// ** Changing this property may recreate the FHIR store (removing all data) **
 	Name pulumi.StringOutput `pulumi:"name"`
 	// (Optional, Deprecated)
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	//
 	// > **Warning:** `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
@@ -425,7 +425,7 @@ type fhirStoreState struct {
 	// ** Changing this property may recreate the FHIR store (removing all data) **
 	Name *string `pulumi:"name"`
 	// (Optional, Deprecated)
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	//
 	// > **Warning:** `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
@@ -516,7 +516,7 @@ type FhirStoreState struct {
 	// ** Changing this property may recreate the FHIR store (removing all data) **
 	Name pulumi.StringPtrInput
 	// (Optional, Deprecated)
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	//
 	// > **Warning:** `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
@@ -609,7 +609,7 @@ type fhirStoreArgs struct {
 	// ** Changing this property may recreate the FHIR store (removing all data) **
 	Name *string `pulumi:"name"`
 	// (Optional, Deprecated)
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	//
 	// > **Warning:** `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
@@ -694,7 +694,7 @@ type FhirStoreArgs struct {
 	// ** Changing this property may recreate the FHIR store (removing all data) **
 	Name pulumi.StringPtrInput
 	// (Optional, Deprecated)
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	//
 	// > **Warning:** `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
@@ -899,7 +899,7 @@ func (o FhirStoreOutput) Name() pulumi.StringOutput {
 }
 
 // (Optional, Deprecated)
-// A nested object resource
+// A nested object resource.
 // Structure is documented below.
 //
 // > **Warning:** `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.

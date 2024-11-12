@@ -14,94 +14,95 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FirewallPolicyRuleMatch {
     /**
-     * @return Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
+     * @return Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
      * 
      */
     private @Nullable List<String> destAddressGroups;
     /**
-     * @return Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
+     * @return Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
      * 
      */
     private @Nullable List<String> destFqdns;
     /**
-     * @return CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+     * @return CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
      * 
      */
     private @Nullable List<String> destIpRanges;
     /**
-     * @return The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is egress.
+     * @return Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex.&#34;US&#34; Maximum number of dest region codes allowed is 5000.
      * 
      */
     private @Nullable List<String> destRegionCodes;
     /**
-     * @return Name of the Google Cloud Threat Intelligence list.
+     * @return Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
      * 
      */
     private @Nullable List<String> destThreatIntelligences;
     /**
      * @return Pairs of IP protocols and ports that the rule should match.
+     * Structure is documented below.
      * 
      */
     private List<FirewallPolicyRuleMatchLayer4Config> layer4Configs;
     /**
-     * @return Address groups which should be matched against the traffic source. Maximum number of source address groups is 10. Source address groups is only supported in Ingress rules.
+     * @return Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
      * 
      */
     private @Nullable List<String> srcAddressGroups;
     /**
-     * @return Domain names that will be used to match against the resolved domain name of source of traffic. Can only be specified if DIRECTION is ingress.
+     * @return Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
      * 
      */
     private @Nullable List<String> srcFqdns;
     /**
-     * @return CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+     * @return CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
      * 
      */
     private @Nullable List<String> srcIpRanges;
     /**
-     * @return The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
+     * @return Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex.&#34;US&#34; Maximum number of source region codes allowed is 5000.
      * 
      */
     private @Nullable List<String> srcRegionCodes;
     /**
-     * @return Name of the Google Cloud Threat Intelligence list.
+     * @return Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
      * 
-     * The `layer4_configs` block supports:
+     * &lt;a name=&#34;nested_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
      * 
      */
     private @Nullable List<String> srcThreatIntelligences;
 
     private FirewallPolicyRuleMatch() {}
     /**
-     * @return Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
+     * @return Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
      * 
      */
     public List<String> destAddressGroups() {
         return this.destAddressGroups == null ? List.of() : this.destAddressGroups;
     }
     /**
-     * @return Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
+     * @return Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
      * 
      */
     public List<String> destFqdns() {
         return this.destFqdns == null ? List.of() : this.destFqdns;
     }
     /**
-     * @return CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+     * @return CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
      * 
      */
     public List<String> destIpRanges() {
         return this.destIpRanges == null ? List.of() : this.destIpRanges;
     }
     /**
-     * @return The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is egress.
+     * @return Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex.&#34;US&#34; Maximum number of dest region codes allowed is 5000.
      * 
      */
     public List<String> destRegionCodes() {
         return this.destRegionCodes == null ? List.of() : this.destRegionCodes;
     }
     /**
-     * @return Name of the Google Cloud Threat Intelligence list.
+     * @return Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
      * 
      */
     public List<String> destThreatIntelligences() {
@@ -109,43 +110,44 @@ public final class FirewallPolicyRuleMatch {
     }
     /**
      * @return Pairs of IP protocols and ports that the rule should match.
+     * Structure is documented below.
      * 
      */
     public List<FirewallPolicyRuleMatchLayer4Config> layer4Configs() {
         return this.layer4Configs;
     }
     /**
-     * @return Address groups which should be matched against the traffic source. Maximum number of source address groups is 10. Source address groups is only supported in Ingress rules.
+     * @return Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
      * 
      */
     public List<String> srcAddressGroups() {
         return this.srcAddressGroups == null ? List.of() : this.srcAddressGroups;
     }
     /**
-     * @return Domain names that will be used to match against the resolved domain name of source of traffic. Can only be specified if DIRECTION is ingress.
+     * @return Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
      * 
      */
     public List<String> srcFqdns() {
         return this.srcFqdns == null ? List.of() : this.srcFqdns;
     }
     /**
-     * @return CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+     * @return CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
      * 
      */
     public List<String> srcIpRanges() {
         return this.srcIpRanges == null ? List.of() : this.srcIpRanges;
     }
     /**
-     * @return The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
+     * @return Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex.&#34;US&#34; Maximum number of source region codes allowed is 5000.
      * 
      */
     public List<String> srcRegionCodes() {
         return this.srcRegionCodes == null ? List.of() : this.srcRegionCodes;
     }
     /**
-     * @return Name of the Google Cloud Threat Intelligence list.
+     * @return Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
      * 
-     * The `layer4_configs` block supports:
+     * &lt;a name=&#34;nested_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
      * 
      */
     public List<String> srcThreatIntelligences() {

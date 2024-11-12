@@ -94,7 +94,7 @@ import javax.annotation.Nullable;
  * 
  *         var basicValue = new TagValue("basicValue", TagValueArgs.builder()
  *             .description("For valuename resources.")
- *             .parent(basicKey.name().applyValue(name -> String.format("tagKeys/%s", name)))
+ *             .parent(basicKey.id())
  *             .shortName("tagvalue")
  *             .build());
  * 
@@ -114,7 +114,7 @@ import javax.annotation.Nullable;
  *                 .srcRegionCodes("US")
  *                 .srcThreatIntelligences("iplist-known-malicious-ips")
  *                 .srcSecureTags(NetworkFirewallPolicyRuleMatchSrcSecureTagArgs.builder()
- *                     .name(basicValue.name().applyValue(name -> String.format("tagValues/%s", name)))
+ *                     .name(basicValue.id())
  *                     .build())
  *                 .layer4Configs(NetworkFirewallPolicyRuleMatchLayer4ConfigArgs.builder()
  *                     .ipProtocol("all")

@@ -8,18 +8,193 @@ import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.gcp.Utilities;
+import com.pulumi.gcp.spanner.inputs.GetDatabaseArgs;
 import com.pulumi.gcp.spanner.inputs.GetDatabaseIamPolicyArgs;
 import com.pulumi.gcp.spanner.inputs.GetDatabaseIamPolicyPlainArgs;
+import com.pulumi.gcp.spanner.inputs.GetDatabasePlainArgs;
 import com.pulumi.gcp.spanner.inputs.GetInstanceArgs;
 import com.pulumi.gcp.spanner.inputs.GetInstanceIamPolicyArgs;
 import com.pulumi.gcp.spanner.inputs.GetInstanceIamPolicyPlainArgs;
 import com.pulumi.gcp.spanner.inputs.GetInstancePlainArgs;
 import com.pulumi.gcp.spanner.outputs.GetDatabaseIamPolicyResult;
+import com.pulumi.gcp.spanner.outputs.GetDatabaseResult;
 import com.pulumi.gcp.spanner.outputs.GetInstanceIamPolicyResult;
 import com.pulumi.gcp.spanner.outputs.GetInstanceResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class SpannerFunctions {
+    /**
+     * Get a spanner database from Google Cloud by its name and instance name.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.spanner.SpannerFunctions;
+     * import com.pulumi.gcp.spanner.inputs.GetDatabaseArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = SpannerFunctions.getDatabase(GetDatabaseArgs.builder()
+     *             .name("foo")
+     *             .instance(instance.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDatabaseResult> getDatabase(GetDatabaseArgs args) {
+        return getDatabase(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get a spanner database from Google Cloud by its name and instance name.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.spanner.SpannerFunctions;
+     * import com.pulumi.gcp.spanner.inputs.GetDatabaseArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = SpannerFunctions.getDatabase(GetDatabaseArgs.builder()
+     *             .name("foo")
+     *             .instance(instance.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetDatabaseResult> getDatabasePlain(GetDatabasePlainArgs args) {
+        return getDatabasePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get a spanner database from Google Cloud by its name and instance name.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.spanner.SpannerFunctions;
+     * import com.pulumi.gcp.spanner.inputs.GetDatabaseArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = SpannerFunctions.getDatabase(GetDatabaseArgs.builder()
+     *             .name("foo")
+     *             .instance(instance.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDatabaseResult> getDatabase(GetDatabaseArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:spanner/getDatabase:getDatabase", TypeShape.of(GetDatabaseResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get a spanner database from Google Cloud by its name and instance name.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.spanner.SpannerFunctions;
+     * import com.pulumi.gcp.spanner.inputs.GetDatabaseArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = SpannerFunctions.getDatabase(GetDatabaseArgs.builder()
+     *             .name("foo")
+     *             .instance(instance.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetDatabaseResult> getDatabasePlain(GetDatabasePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:spanner/getDatabase:getDatabase", TypeShape.of(GetDatabaseResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * Retrieves the current IAM policy data for a Spanner database.
      * 

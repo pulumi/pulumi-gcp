@@ -159,7 +159,7 @@ export class DicomStore extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      */
     public readonly notificationConfig!: pulumi.Output<outputs.healthcare.DicomStoreNotificationConfig | undefined>;
@@ -257,7 +257,7 @@ export interface DicomStoreState {
      */
     name?: pulumi.Input<string>;
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      */
     notificationConfig?: pulumi.Input<inputs.healthcare.DicomStoreNotificationConfig>;
@@ -310,7 +310,7 @@ export interface DicomStoreArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      */
     notificationConfig?: pulumi.Input<inputs.healthcare.DicomStoreNotificationConfig>;

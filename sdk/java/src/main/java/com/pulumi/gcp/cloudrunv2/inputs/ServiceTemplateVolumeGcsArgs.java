@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -33,6 +34,23 @@ public final class ServiceTemplateVolumeGcsArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * A list of flags to pass to the gcsfuse command for configuring this volume.
+     * Flags should be passed without leading dashes.
+     * 
+     */
+    @Import(name="mountOptions")
+    private @Nullable Output<List<String>> mountOptions;
+
+    /**
+     * @return A list of flags to pass to the gcsfuse command for configuring this volume.
+     * Flags should be passed without leading dashes.
+     * 
+     */
+    public Optional<Output<List<String>>> mountOptions() {
+        return Optional.ofNullable(this.mountOptions);
+    }
+
+    /**
      * If true, mount the GCS bucket as read-only
      * 
      */
@@ -51,6 +69,7 @@ public final class ServiceTemplateVolumeGcsArgs extends com.pulumi.resources.Res
 
     private ServiceTemplateVolumeGcsArgs(ServiceTemplateVolumeGcsArgs $) {
         this.bucket = $.bucket;
+        this.mountOptions = $.mountOptions;
         this.readOnly = $.readOnly;
     }
 
@@ -91,6 +110,40 @@ public final class ServiceTemplateVolumeGcsArgs extends com.pulumi.resources.Res
          */
         public Builder bucket(String bucket) {
             return bucket(Output.of(bucket));
+        }
+
+        /**
+         * @param mountOptions A list of flags to pass to the gcsfuse command for configuring this volume.
+         * Flags should be passed without leading dashes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mountOptions(@Nullable Output<List<String>> mountOptions) {
+            $.mountOptions = mountOptions;
+            return this;
+        }
+
+        /**
+         * @param mountOptions A list of flags to pass to the gcsfuse command for configuring this volume.
+         * Flags should be passed without leading dashes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mountOptions(List<String> mountOptions) {
+            return mountOptions(Output.of(mountOptions));
+        }
+
+        /**
+         * @param mountOptions A list of flags to pass to the gcsfuse command for configuring this volume.
+         * Flags should be passed without leading dashes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mountOptions(String... mountOptions) {
+            return mountOptions(List.of(mountOptions));
         }
 
         /**

@@ -17,6 +17,7 @@ import com.pulumi.gcp.container.inputs.ClusterAddonsConfigHttpLoadBalancingArgs;
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigIstioConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigKalmConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigNetworkPolicyConfigArgs;
+import com.pulumi.gcp.container.inputs.ClusterAddonsConfigParallelstoreCsiDriverConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigRayOperatorConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterAddonsConfigStatefulHaConfigArgs;
 import java.util.List;
@@ -268,6 +269,33 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * The status of the Parallelstore CSI driver addon,
+     * which allows the usage of a Parallelstore instances as volumes.
+     * It is disabled by default for Standard clusters; set `enabled = true` to enable.
+     * It is enabled by default for Autopilot clusters with version 1.29 or later; set `enabled = true` to enable it explicitly.
+     * See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
+     * 
+     * This example `addons_config` disables two addons:
+     * 
+     */
+    @Import(name="parallelstoreCsiDriverConfig")
+    private @Nullable Output<ClusterAddonsConfigParallelstoreCsiDriverConfigArgs> parallelstoreCsiDriverConfig;
+
+    /**
+     * @return The status of the Parallelstore CSI driver addon,
+     * which allows the usage of a Parallelstore instances as volumes.
+     * It is disabled by default for Standard clusters; set `enabled = true` to enable.
+     * It is enabled by default for Autopilot clusters with version 1.29 or later; set `enabled = true` to enable it explicitly.
+     * See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
+     * 
+     * This example `addons_config` disables two addons:
+     * 
+     */
+    public Optional<Output<ClusterAddonsConfigParallelstoreCsiDriverConfigArgs>> parallelstoreCsiDriverConfig() {
+        return Optional.ofNullable(this.parallelstoreCsiDriverConfig);
+    }
+
+    /**
      * . The status of the [Ray Operator
      * addon](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/concepts/overview).
      * It is disabled by default. Set `enabled = true` to enable. The minimum
@@ -280,8 +308,6 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
      * clusters on
      * GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
      * for more information.
-     * 
-     * This example `addons_config` disables two addons:
      * 
      */
     @Import(name="rayOperatorConfigs")
@@ -300,8 +326,6 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
      * clusters on
      * GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
      * for more information.
-     * 
-     * This example `addons_config` disables two addons:
      * 
      */
     public Optional<Output<List<ClusterAddonsConfigRayOperatorConfigArgs>>> rayOperatorConfigs() {
@@ -342,6 +366,7 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
         this.istioConfig = $.istioConfig;
         this.kalmConfig = $.kalmConfig;
         this.networkPolicyConfig = $.networkPolicyConfig;
+        this.parallelstoreCsiDriverConfig = $.parallelstoreCsiDriverConfig;
         this.rayOperatorConfigs = $.rayOperatorConfigs;
         this.statefulHaConfig = $.statefulHaConfig;
     }
@@ -675,6 +700,39 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
+         * @param parallelstoreCsiDriverConfig The status of the Parallelstore CSI driver addon,
+         * which allows the usage of a Parallelstore instances as volumes.
+         * It is disabled by default for Standard clusters; set `enabled = true` to enable.
+         * It is enabled by default for Autopilot clusters with version 1.29 or later; set `enabled = true` to enable it explicitly.
+         * See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
+         * 
+         * This example `addons_config` disables two addons:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parallelstoreCsiDriverConfig(@Nullable Output<ClusterAddonsConfigParallelstoreCsiDriverConfigArgs> parallelstoreCsiDriverConfig) {
+            $.parallelstoreCsiDriverConfig = parallelstoreCsiDriverConfig;
+            return this;
+        }
+
+        /**
+         * @param parallelstoreCsiDriverConfig The status of the Parallelstore CSI driver addon,
+         * which allows the usage of a Parallelstore instances as volumes.
+         * It is disabled by default for Standard clusters; set `enabled = true` to enable.
+         * It is enabled by default for Autopilot clusters with version 1.29 or later; set `enabled = true` to enable it explicitly.
+         * See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
+         * 
+         * This example `addons_config` disables two addons:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parallelstoreCsiDriverConfig(ClusterAddonsConfigParallelstoreCsiDriverConfigArgs parallelstoreCsiDriverConfig) {
+            return parallelstoreCsiDriverConfig(Output.of(parallelstoreCsiDriverConfig));
+        }
+
+        /**
          * @param rayOperatorConfigs . The status of the [Ray Operator
          * addon](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/concepts/overview).
          * It is disabled by default. Set `enabled = true` to enable. The minimum
@@ -687,8 +745,6 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
          * clusters on
          * GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
          * for more information.
-         * 
-         * This example `addons_config` disables two addons:
          * 
          * @return builder
          * 
@@ -712,8 +768,6 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
          * GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
          * for more information.
          * 
-         * This example `addons_config` disables two addons:
-         * 
          * @return builder
          * 
          */
@@ -734,8 +788,6 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
          * clusters on
          * GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
          * for more information.
-         * 
-         * This example `addons_config` disables two addons:
          * 
          * @return builder
          * 

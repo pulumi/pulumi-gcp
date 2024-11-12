@@ -328,8 +328,8 @@ import javax.annotation.Nullable;
  *         final var testProject = OrganizationsFunctions.getProject();
  * 
  *         var project = new Project("project", ProjectArgs.builder()
- *             .projectId("tf-test_69391")
- *             .name("tf-test_8270")
+ *             .projectId("tf-test_41150")
+ *             .name("tf-test_89313")
  *             .orgId("123456789")
  *             .billingAccount("000000-0000000-0000000-000000")
  *             .deletionPolicy("DELETE")

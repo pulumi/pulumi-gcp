@@ -6,6 +6,7 @@ package com.pulumi.gcp.compute;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyDdosProtectionConfigArgs;
+import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRuleArgs;
 import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyUserDefinedFieldArgs;
 import java.lang.String;
 import java.util.List;
@@ -106,6 +107,23 @@ public final class RegionSecurityPolicyArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * The set of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match &#34;*&#34;). If no rules are provided when creating a security policy, a default rule with action &#34;allow&#34; will be added.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="rules")
+    private @Nullable Output<List<RegionSecurityPolicyRuleArgs>> rules;
+
+    /**
+     * @return The set of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match &#34;*&#34;). If no rules are provided when creating a security policy, a default rule with action &#34;allow&#34; will be added.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<RegionSecurityPolicyRuleArgs>>> rules() {
+        return Optional.ofNullable(this.rules);
+    }
+
+    /**
      * The type indicates the intended use of the security policy.
      * - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers.
      * - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google&#39;s cache.
@@ -159,6 +177,7 @@ public final class RegionSecurityPolicyArgs extends com.pulumi.resources.Resourc
         this.name = $.name;
         this.project = $.project;
         this.region = $.region;
+        this.rules = $.rules;
         this.type = $.type;
         this.userDefinedFields = $.userDefinedFields;
     }
@@ -296,6 +315,40 @@ public final class RegionSecurityPolicyArgs extends com.pulumi.resources.Resourc
          */
         public Builder region(String region) {
             return region(Output.of(region));
+        }
+
+        /**
+         * @param rules The set of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match &#34;*&#34;). If no rules are provided when creating a security policy, a default rule with action &#34;allow&#34; will be added.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rules(@Nullable Output<List<RegionSecurityPolicyRuleArgs>> rules) {
+            $.rules = rules;
+            return this;
+        }
+
+        /**
+         * @param rules The set of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match &#34;*&#34;). If no rules are provided when creating a security policy, a default rule with action &#34;allow&#34; will be added.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rules(List<RegionSecurityPolicyRuleArgs> rules) {
+            return rules(Output.of(rules));
+        }
+
+        /**
+         * @param rules The set of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match &#34;*&#34;). If no rules are provided when creating a security policy, a default rule with action &#34;allow&#34; will be added.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rules(RegionSecurityPolicyRuleArgs... rules) {
+            return rules(List.of(rules));
         }
 
         /**

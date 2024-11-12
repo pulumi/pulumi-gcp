@@ -23,7 +23,7 @@ public final class RegionDiskState extends com.pulumi.resources.ResourceArgs {
     public static final RegionDiskState Empty = new RegionDiskState();
 
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -31,7 +31,7 @@ public final class RegionDiskState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<RegionDiskAsyncPrimaryDiskArgs> asyncPrimaryDisk;
 
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -612,7 +612,7 @@ public final class RegionDiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param asyncPrimaryDisk A nested object resource
+         * @param asyncPrimaryDisk A nested object resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -624,7 +624,7 @@ public final class RegionDiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param asyncPrimaryDisk A nested object resource
+         * @param asyncPrimaryDisk A nested object resource.
          * Structure is documented below.
          * 
          * @return builder

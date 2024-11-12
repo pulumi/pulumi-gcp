@@ -12,6 +12,7 @@ import com.pulumi.gcp.sql.inputs.DatabaseInstanceRestoreBackupContextArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -227,7 +228,7 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * The configuration for replication. The
-     * configuration is detailed below. Valid only for MySQL instances.
+     * configuration is detailed below.
      * 
      */
     @Import(name="replicaConfiguration")
@@ -235,11 +236,26 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return The configuration for replication. The
-     * configuration is detailed below. Valid only for MySQL instances.
+     * configuration is detailed below.
      * 
      */
     public Optional<Output<DatabaseInstanceReplicaConfigurationArgs>> replicaConfiguration() {
         return Optional.ofNullable(this.replicaConfiguration);
+    }
+
+    /**
+     * List of replica names. Can be updated.
+     * 
+     */
+    @Import(name="replicaNames")
+    private @Nullable Output<List<String>> replicaNames;
+
+    /**
+     * @return List of replica names. Can be updated.
+     * 
+     */
+    public Optional<Output<List<String>>> replicaNames() {
+        return Optional.ofNullable(this.replicaNames);
     }
 
     /**
@@ -309,6 +325,7 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
         this.project = $.project;
         this.region = $.region;
         this.replicaConfiguration = $.replicaConfiguration;
+        this.replicaNames = $.replicaNames;
         this.restoreBackupContext = $.restoreBackupContext;
         this.rootPassword = $.rootPassword;
         this.settings = $.settings;
@@ -598,7 +615,7 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param replicaConfiguration The configuration for replication. The
-         * configuration is detailed below. Valid only for MySQL instances.
+         * configuration is detailed below.
          * 
          * @return builder
          * 
@@ -610,13 +627,44 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param replicaConfiguration The configuration for replication. The
-         * configuration is detailed below. Valid only for MySQL instances.
+         * configuration is detailed below.
          * 
          * @return builder
          * 
          */
         public Builder replicaConfiguration(DatabaseInstanceReplicaConfigurationArgs replicaConfiguration) {
             return replicaConfiguration(Output.of(replicaConfiguration));
+        }
+
+        /**
+         * @param replicaNames List of replica names. Can be updated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicaNames(@Nullable Output<List<String>> replicaNames) {
+            $.replicaNames = replicaNames;
+            return this;
+        }
+
+        /**
+         * @param replicaNames List of replica names. Can be updated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicaNames(List<String> replicaNames) {
+            return replicaNames(Output.of(replicaNames));
+        }
+
+        /**
+         * @param replicaNames List of replica names. Can be updated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicaNames(String... replicaNames) {
+            return replicaNames(List.of(replicaNames));
         }
 
         /**

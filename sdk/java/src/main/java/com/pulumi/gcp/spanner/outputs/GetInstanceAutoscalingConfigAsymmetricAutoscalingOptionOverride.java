@@ -12,14 +12,14 @@ import java.util.Objects;
 @CustomType
 public final class GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverride {
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * 
      */
     private List<GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimit> autoscalingLimits;
 
     private GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverride() {}
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * 
      */
     public List<GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimit> autoscalingLimits() {

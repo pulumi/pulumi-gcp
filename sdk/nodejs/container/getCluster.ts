@@ -67,6 +67,7 @@ export interface GetClusterResult {
     readonly clusterIpv4Cidr: string;
     readonly clusterTelemetries: outputs.container.GetClusterClusterTelemetry[];
     readonly confidentialNodes: outputs.container.GetClusterConfidentialNode[];
+    readonly controlPlaneEndpointsConfigs: outputs.container.GetClusterControlPlaneEndpointsConfig[];
     readonly costManagementConfigs: outputs.container.GetClusterCostManagementConfig[];
     readonly databaseEncryptions: outputs.container.GetClusterDatabaseEncryption[];
     readonly datapathProvider: string;
@@ -139,6 +140,7 @@ export interface GetClusterResult {
     readonly subnetwork: string;
     readonly tpuConfigs: outputs.container.GetClusterTpuConfig[];
     readonly tpuIpv4CidrBlock: string;
+    readonly userManagedKeysConfigs: outputs.container.GetClusterUserManagedKeysConfig[];
     readonly verticalPodAutoscalings: outputs.container.GetClusterVerticalPodAutoscaling[];
     readonly workloadAltsConfigs: outputs.container.GetClusterWorkloadAltsConfig[];
     readonly workloadIdentityConfigs: outputs.container.GetClusterWorkloadIdentityConfig[];

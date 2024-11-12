@@ -53,7 +53,7 @@ class DiskArgs:
                * READ_WRITE_SINGLE
                * READ_WRITE_MANY
                * READ_ONLY_SINGLE
-        :param pulumi.Input['DiskAsyncPrimaryDiskArgs'] async_primary_disk: A nested object resource
+        :param pulumi.Input['DiskAsyncPrimaryDiskArgs'] async_primary_disk: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
@@ -234,7 +234,7 @@ class DiskArgs:
     @pulumi.getter(name="asyncPrimaryDisk")
     def async_primary_disk(self) -> Optional[pulumi.Input['DiskAsyncPrimaryDiskArgs']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "async_primary_disk")
@@ -649,7 +649,7 @@ class _DiskState:
                * READ_WRITE_SINGLE
                * READ_WRITE_MANY
                * READ_ONLY_SINGLE
-        :param pulumi.Input['DiskAsyncPrimaryDiskArgs'] async_primary_disk: A nested object resource
+        :param pulumi.Input['DiskAsyncPrimaryDiskArgs'] async_primary_disk: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
@@ -880,7 +880,7 @@ class _DiskState:
     @pulumi.getter(name="asyncPrimaryDisk")
     def async_primary_disk(self) -> Optional[pulumi.Input['DiskAsyncPrimaryDiskArgs']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "async_primary_disk")
@@ -1563,7 +1563,7 @@ class Disk(pulumi.CustomResource):
                * READ_WRITE_SINGLE
                * READ_WRITE_MANY
                * READ_ONLY_SINGLE
-        :param pulumi.Input[Union['DiskAsyncPrimaryDiskArgs', 'DiskAsyncPrimaryDiskArgsDict']] async_primary_disk: A nested object resource
+        :param pulumi.Input[Union['DiskAsyncPrimaryDiskArgs', 'DiskAsyncPrimaryDiskArgsDict']] async_primary_disk: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
@@ -1942,7 +1942,7 @@ class Disk(pulumi.CustomResource):
                * READ_WRITE_SINGLE
                * READ_WRITE_MANY
                * READ_ONLY_SINGLE
-        :param pulumi.Input[Union['DiskAsyncPrimaryDiskArgs', 'DiskAsyncPrimaryDiskArgsDict']] async_primary_disk: A nested object resource
+        :param pulumi.Input[Union['DiskAsyncPrimaryDiskArgs', 'DiskAsyncPrimaryDiskArgsDict']] async_primary_disk: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
@@ -2134,7 +2134,7 @@ class Disk(pulumi.CustomResource):
     @pulumi.getter(name="asyncPrimaryDisk")
     def async_primary_disk(self) -> pulumi.Output[Optional['outputs.DiskAsyncPrimaryDisk']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "async_primary_disk")

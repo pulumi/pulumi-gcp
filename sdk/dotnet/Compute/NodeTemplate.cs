@@ -105,6 +105,39 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Node Template Disks
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var central1a = Gcp.Compute.GetNodeTypes.Invoke(new()
+    ///     {
+    ///         Zone = "us-central1-a",
+    ///     });
+    /// 
+    ///     var template = new Gcp.Compute.NodeTemplate("template", new()
+    ///     {
+    ///         Name = "soletenant-with-disks",
+    ///         Region = "us-central1",
+    ///         NodeType = "n2-node-80-640",
+    ///         Disks = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.NodeTemplateDiskArgs
+    ///             {
+    ///                 DiskCount = 16,
+    ///                 DiskSizeGb = 375,
+    ///                 DiskType = "local-ssd",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -166,6 +199,14 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// List of the type, size and count of disks attached to the
+        /// node template
+        /// Structure is documented below.
+        /// </summary>
+        [Output("disks")]
+        public Output<ImmutableArray<Outputs.NodeTemplateDisk>> Disks { get; private set; } = null!;
 
         /// <summary>
         /// Name of the resource.
@@ -299,6 +340,20 @@ namespace Pulumi.Gcp.Compute
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("disks")]
+        private InputList<Inputs.NodeTemplateDiskArgs>? _disks;
+
+        /// <summary>
+        /// List of the type, size and count of disks attached to the
+        /// node template
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.NodeTemplateDiskArgs> Disks
+        {
+            get => _disks ?? (_disks = new InputList<Inputs.NodeTemplateDiskArgs>());
+            set => _disks = value;
+        }
+
         /// <summary>
         /// Name of the resource.
         /// </summary>
@@ -398,6 +453,20 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        [Input("disks")]
+        private InputList<Inputs.NodeTemplateDiskGetArgs>? _disks;
+
+        /// <summary>
+        /// List of the type, size and count of disks attached to the
+        /// node template
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.NodeTemplateDiskGetArgs> Disks
+        {
+            get => _disks ?? (_disks = new InputList<Inputs.NodeTemplateDiskGetArgs>());
+            set => _disks = value;
+        }
 
         /// <summary>
         /// Name of the resource.

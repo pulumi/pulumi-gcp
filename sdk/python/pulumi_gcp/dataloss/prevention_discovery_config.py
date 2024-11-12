@@ -42,7 +42,7 @@ class PreventionDiscoveryConfigArgs:
                Structure is documented below.
         :param pulumi.Input[str] display_name: Display Name (max 1000 Chars)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] inspect_templates: Detection logic for profile generation
-        :param pulumi.Input['PreventionDiscoveryConfigOrgConfigArgs'] org_config: A nested object resource
+        :param pulumi.Input['PreventionDiscoveryConfigOrgConfigArgs'] org_config: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[str] status: Required. A status for this configuration
                Possible values are: `RUNNING`, `PAUSED`.
@@ -134,7 +134,7 @@ class PreventionDiscoveryConfigArgs:
     @pulumi.getter(name="orgConfig")
     def org_config(self) -> Optional[pulumi.Input['PreventionDiscoveryConfigOrgConfigArgs']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "org_config")
@@ -201,7 +201,7 @@ class _PreventionDiscoveryConfigState:
                
                - - -
         :param pulumi.Input[str] name: Unique resource name for the DiscoveryConfig, assigned by the service when the DiscoveryConfig is created.
-        :param pulumi.Input['PreventionDiscoveryConfigOrgConfigArgs'] org_config: A nested object resource
+        :param pulumi.Input['PreventionDiscoveryConfigOrgConfigArgs'] org_config: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[str] parent: The parent of the discovery config in any of the following formats:
                * `projects/{{project}}/locations/{{location}}`
@@ -344,7 +344,7 @@ class _PreventionDiscoveryConfigState:
     @pulumi.getter(name="orgConfig")
     def org_config(self) -> Optional[pulumi.Input['PreventionDiscoveryConfigOrgConfigArgs']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "org_config")
@@ -459,7 +459,7 @@ class PreventionDiscoveryConfig(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[Union['PreventionDiscoveryConfigOrgConfigArgs', 'PreventionDiscoveryConfigOrgConfigArgsDict']] org_config: A nested object resource
+        :param pulumi.Input[Union['PreventionDiscoveryConfigOrgConfigArgs', 'PreventionDiscoveryConfigOrgConfigArgsDict']] org_config: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[str] parent: The parent of the discovery config in any of the following formats:
                * `projects/{{project}}/locations/{{location}}`
@@ -596,7 +596,7 @@ class PreventionDiscoveryConfig(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[str] name: Unique resource name for the DiscoveryConfig, assigned by the service when the DiscoveryConfig is created.
-        :param pulumi.Input[Union['PreventionDiscoveryConfigOrgConfigArgs', 'PreventionDiscoveryConfigOrgConfigArgsDict']] org_config: A nested object resource
+        :param pulumi.Input[Union['PreventionDiscoveryConfigOrgConfigArgs', 'PreventionDiscoveryConfigOrgConfigArgsDict']] org_config: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[str] parent: The parent of the discovery config in any of the following formats:
                * `projects/{{project}}/locations/{{location}}`
@@ -699,7 +699,7 @@ class PreventionDiscoveryConfig(pulumi.CustomResource):
     @pulumi.getter(name="orgConfig")
     def org_config(self) -> pulumi.Output[Optional['outputs.PreventionDiscoveryConfigOrgConfig']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "org_config")

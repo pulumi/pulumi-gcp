@@ -80,6 +80,9 @@ __all__ = [
     'ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling',
     'ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig',
     'ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig',
+    'GdcApplicationEnvironmentSparkApplicationEnvironmentConfig',
+    'GdcServiceInstanceGdceCluster',
+    'GdcServiceInstanceSparkServiceInstanceConfig',
     'JobHadoopConfig',
     'JobHadoopConfigLoggingConfig',
     'JobHiveConfig',
@@ -5202,6 +5205,97 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig
         for example spark:spark.kubernetes.container.image.
         """
         return pulumi.get(self, "properties")
+
+
+@pulumi.output_type
+class GdcApplicationEnvironmentSparkApplicationEnvironmentConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultProperties":
+            suggest = "default_properties"
+        elif key == "defaultVersion":
+            suggest = "default_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GdcApplicationEnvironmentSparkApplicationEnvironmentConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GdcApplicationEnvironmentSparkApplicationEnvironmentConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GdcApplicationEnvironmentSparkApplicationEnvironmentConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_properties: Optional[Mapping[str, str]] = None,
+                 default_version: Optional[str] = None):
+        """
+        :param Mapping[str, str] default_properties: A map of default Spark properties to apply to workloads in this application environment. These defaults may be overridden by per-application properties.
+        :param str default_version: The default Dataproc version to use for applications submitted to this application environment
+        """
+        if default_properties is not None:
+            pulumi.set(__self__, "default_properties", default_properties)
+        if default_version is not None:
+            pulumi.set(__self__, "default_version", default_version)
+
+    @property
+    @pulumi.getter(name="defaultProperties")
+    def default_properties(self) -> Optional[Mapping[str, str]]:
+        """
+        A map of default Spark properties to apply to workloads in this application environment. These defaults may be overridden by per-application properties.
+        """
+        return pulumi.get(self, "default_properties")
+
+    @property
+    @pulumi.getter(name="defaultVersion")
+    def default_version(self) -> Optional[str]:
+        """
+        The default Dataproc version to use for applications submitted to this application environment
+        """
+        return pulumi.get(self, "default_version")
+
+
+@pulumi.output_type
+class GdcServiceInstanceGdceCluster(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gdceCluster":
+            suggest = "gdce_cluster"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GdcServiceInstanceGdceCluster. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GdcServiceInstanceGdceCluster.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GdcServiceInstanceGdceCluster.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gdce_cluster: str):
+        """
+        :param str gdce_cluster: Gdce cluster resource id.
+        """
+        pulumi.set(__self__, "gdce_cluster", gdce_cluster)
+
+    @property
+    @pulumi.getter(name="gdceCluster")
+    def gdce_cluster(self) -> str:
+        """
+        Gdce cluster resource id.
+        """
+        return pulumi.get(self, "gdce_cluster")
+
+
+@pulumi.output_type
+class GdcServiceInstanceSparkServiceInstanceConfig(dict):
+    def __init__(__self__):
+        pass
 
 
 @pulumi.output_type

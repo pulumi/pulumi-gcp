@@ -3419,7 +3419,7 @@ type InsightsReportConfigObjectMetadataReportOptions struct {
 	// Options for where the inventory reports are stored.
 	// Structure is documented below.
 	StorageDestinationOptions InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions `pulumi:"storageDestinationOptions"`
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	StorageFilters *InsightsReportConfigObjectMetadataReportOptionsStorageFilters `pulumi:"storageFilters"`
 }
@@ -3441,7 +3441,7 @@ type InsightsReportConfigObjectMetadataReportOptionsArgs struct {
 	// Options for where the inventory reports are stored.
 	// Structure is documented below.
 	StorageDestinationOptions InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsInput `pulumi:"storageDestinationOptions"`
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	StorageFilters InsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrInput `pulumi:"storageFilters"`
 }
@@ -3536,7 +3536,7 @@ func (o InsightsReportConfigObjectMetadataReportOptionsOutput) StorageDestinatio
 	}).(InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsOutput)
 }
 
-// A nested object resource
+// A nested object resource.
 // Structure is documented below.
 func (o InsightsReportConfigObjectMetadataReportOptionsOutput) StorageFilters() InsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrOutput {
 	return o.ApplyT(func(v InsightsReportConfigObjectMetadataReportOptions) *InsightsReportConfigObjectMetadataReportOptionsStorageFilters {
@@ -3589,7 +3589,7 @@ func (o InsightsReportConfigObjectMetadataReportOptionsPtrOutput) StorageDestina
 	}).(InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsPtrOutput)
 }
 
-// A nested object resource
+// A nested object resource.
 // Structure is documented below.
 func (o InsightsReportConfigObjectMetadataReportOptionsPtrOutput) StorageFilters() InsightsReportConfigObjectMetadataReportOptionsStorageFiltersPtrOutput {
 	return o.ApplyT(func(v *InsightsReportConfigObjectMetadataReportOptions) *InsightsReportConfigObjectMetadataReportOptionsStorageFilters {

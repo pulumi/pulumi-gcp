@@ -252,7 +252,7 @@ export class FhirStore extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * (Optional, Deprecated)
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      *
      * > **Warning:** `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
@@ -440,7 +440,7 @@ export interface FhirStoreState {
     name?: pulumi.Input<string>;
     /**
      * (Optional, Deprecated)
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      *
      * > **Warning:** `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
@@ -565,7 +565,7 @@ export interface FhirStoreArgs {
     name?: pulumi.Input<string>;
     /**
      * (Optional, Deprecated)
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      *
      * > **Warning:** `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.

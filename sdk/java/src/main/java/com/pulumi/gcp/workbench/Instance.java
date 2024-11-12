@@ -481,7 +481,9 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * &#39;Optional. Input only. The owner of this instance after creation. Format:
      * `alias{@literal @}example.com` Currently supports one owner only. If not specified, all of
-     * the service account users of your VM instance&#39;&#39;s service account can use the instance.&#39;
+     * the service account users of your VM instance&#39;&#39;s service account can use the instance.
+     * If specified, sets the access mode to `Single user`. For more details, see
+     * https://cloud.google.com/vertex-ai/docs/workbench/instances/manage-access-jupyterlab&#39;
      * 
      */
     @Export(name="instanceOwners", refs={List.class,String.class}, tree="[0,1]")
@@ -490,7 +492,9 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * @return &#39;Optional. Input only. The owner of this instance after creation. Format:
      * `alias{@literal @}example.com` Currently supports one owner only. If not specified, all of
-     * the service account users of your VM instance&#39;&#39;s service account can use the instance.&#39;
+     * the service account users of your VM instance&#39;&#39;s service account can use the instance.
+     * If specified, sets the access mode to `Single user`. For more details, see
+     * https://cloud.google.com/vertex-ai/docs/workbench/instances/manage-access-jupyterlab&#39;
      * 
      */
     public Output<Optional<List<String>>> instanceOwners() {

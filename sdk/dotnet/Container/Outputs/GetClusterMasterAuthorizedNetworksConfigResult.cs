@@ -21,15 +21,22 @@ namespace Pulumi.Gcp.Container.Outputs
         /// Whether Kubernetes master is accessible via Google Compute Engine Public IPs.
         /// </summary>
         public readonly bool GcpPublicCidrsAccessEnabled;
+        /// <summary>
+        /// Whether authorized networks is enforced on the private endpoint or not. Defaults to false.
+        /// </summary>
+        public readonly bool PrivateEndpointEnforcementEnabled;
 
         [OutputConstructor]
         private GetClusterMasterAuthorizedNetworksConfigResult(
             ImmutableArray<Outputs.GetClusterMasterAuthorizedNetworksConfigCidrBlockResult> cidrBlocks,
 
-            bool gcpPublicCidrsAccessEnabled)
+            bool gcpPublicCidrsAccessEnabled,
+
+            bool privateEndpointEnforcementEnabled)
         {
             CidrBlocks = cidrBlocks;
             GcpPublicCidrsAccessEnabled = gcpPublicCidrsAccessEnabled;
+            PrivateEndpointEnforcementEnabled = privateEndpointEnforcementEnabled;
         }
     }
 }

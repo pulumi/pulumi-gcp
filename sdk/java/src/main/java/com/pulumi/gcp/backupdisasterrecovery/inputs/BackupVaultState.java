@@ -200,20 +200,34 @@ public final class BackupVaultState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Deprecated)
      * If set, the following restrictions against deletion of the backup vault instance can be overridden:
      * * deletion of a backup vault instance containing no backups, but still containing empty datasources.
      * * deletion of a backup vault instance that is being referenced by an active backup plan.
      * 
+     * &gt; **Warning:** `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.
+     * 
+     * @deprecated
+     * `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.
+     * 
      */
+    @Deprecated /* `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead. */
     @Import(name="forceDelete")
     private @Nullable Output<Boolean> forceDelete;
 
     /**
-     * @return If set, the following restrictions against deletion of the backup vault instance can be overridden:
+     * @return (Optional, Deprecated)
+     * If set, the following restrictions against deletion of the backup vault instance can be overridden:
      * * deletion of a backup vault instance containing no backups, but still containing empty datasources.
      * * deletion of a backup vault instance that is being referenced by an active backup plan.
      * 
+     * &gt; **Warning:** `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.
+     * 
+     * @deprecated
+     * `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.
+     * 
      */
+    @Deprecated /* `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead. */
     public Optional<Output<Boolean>> forceDelete() {
         return Optional.ofNullable(this.forceDelete);
     }
@@ -237,6 +251,40 @@ public final class BackupVaultState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> forceUpdate() {
         return Optional.ofNullable(this.forceUpdate);
+    }
+
+    /**
+     * If set, the following restrictions against deletion of the backup vault instance can be overridden:
+     * * deletion of a backup vault instance that is being referenced by an active backup plan.
+     * 
+     */
+    @Import(name="ignoreBackupPlanReferences")
+    private @Nullable Output<Boolean> ignoreBackupPlanReferences;
+
+    /**
+     * @return If set, the following restrictions against deletion of the backup vault instance can be overridden:
+     * * deletion of a backup vault instance that is being referenced by an active backup plan.
+     * 
+     */
+    public Optional<Output<Boolean>> ignoreBackupPlanReferences() {
+        return Optional.ofNullable(this.ignoreBackupPlanReferences);
+    }
+
+    /**
+     * If set, the following restrictions against deletion of the backup vault instance can be overridden:
+     * * deletion of a backup vault instance containing no backups, but still containing empty datasources.
+     * 
+     */
+    @Import(name="ignoreInactiveDatasources")
+    private @Nullable Output<Boolean> ignoreInactiveDatasources;
+
+    /**
+     * @return If set, the following restrictions against deletion of the backup vault instance can be overridden:
+     * * deletion of a backup vault instance containing no backups, but still containing empty datasources.
+     * 
+     */
+    public Optional<Output<Boolean>> ignoreInactiveDatasources() {
+        return Optional.ofNullable(this.ignoreInactiveDatasources);
     }
 
     /**
@@ -426,6 +474,8 @@ public final class BackupVaultState extends com.pulumi.resources.ResourceArgs {
         this.etag = $.etag;
         this.forceDelete = $.forceDelete;
         this.forceUpdate = $.forceUpdate;
+        this.ignoreBackupPlanReferences = $.ignoreBackupPlanReferences;
+        this.ignoreInactiveDatasources = $.ignoreInactiveDatasources;
         this.labels = $.labels;
         this.location = $.location;
         this.name = $.name;
@@ -707,26 +757,40 @@ public final class BackupVaultState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param forceDelete If set, the following restrictions against deletion of the backup vault instance can be overridden:
+         * @param forceDelete (Optional, Deprecated)
+         * If set, the following restrictions against deletion of the backup vault instance can be overridden:
          * * deletion of a backup vault instance containing no backups, but still containing empty datasources.
          * * deletion of a backup vault instance that is being referenced by an active backup plan.
          * 
+         * &gt; **Warning:** `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.
+         * 
          * @return builder
          * 
+         * @deprecated
+         * `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.
+         * 
          */
+        @Deprecated /* `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead. */
         public Builder forceDelete(@Nullable Output<Boolean> forceDelete) {
             $.forceDelete = forceDelete;
             return this;
         }
 
         /**
-         * @param forceDelete If set, the following restrictions against deletion of the backup vault instance can be overridden:
+         * @param forceDelete (Optional, Deprecated)
+         * If set, the following restrictions against deletion of the backup vault instance can be overridden:
          * * deletion of a backup vault instance containing no backups, but still containing empty datasources.
          * * deletion of a backup vault instance that is being referenced by an active backup plan.
          * 
+         * &gt; **Warning:** `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.
+         * 
          * @return builder
          * 
+         * @deprecated
+         * `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.
+         * 
          */
+        @Deprecated /* `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead. */
         public Builder forceDelete(Boolean forceDelete) {
             return forceDelete(Output.of(forceDelete));
         }
@@ -756,6 +820,52 @@ public final class BackupVaultState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder forceUpdate(Boolean forceUpdate) {
             return forceUpdate(Output.of(forceUpdate));
+        }
+
+        /**
+         * @param ignoreBackupPlanReferences If set, the following restrictions against deletion of the backup vault instance can be overridden:
+         * * deletion of a backup vault instance that is being referenced by an active backup plan.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ignoreBackupPlanReferences(@Nullable Output<Boolean> ignoreBackupPlanReferences) {
+            $.ignoreBackupPlanReferences = ignoreBackupPlanReferences;
+            return this;
+        }
+
+        /**
+         * @param ignoreBackupPlanReferences If set, the following restrictions against deletion of the backup vault instance can be overridden:
+         * * deletion of a backup vault instance that is being referenced by an active backup plan.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ignoreBackupPlanReferences(Boolean ignoreBackupPlanReferences) {
+            return ignoreBackupPlanReferences(Output.of(ignoreBackupPlanReferences));
+        }
+
+        /**
+         * @param ignoreInactiveDatasources If set, the following restrictions against deletion of the backup vault instance can be overridden:
+         * * deletion of a backup vault instance containing no backups, but still containing empty datasources.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ignoreInactiveDatasources(@Nullable Output<Boolean> ignoreInactiveDatasources) {
+            $.ignoreInactiveDatasources = ignoreInactiveDatasources;
+            return this;
+        }
+
+        /**
+         * @param ignoreInactiveDatasources If set, the following restrictions against deletion of the backup vault instance can be overridden:
+         * * deletion of a backup vault instance containing no backups, but still containing empty datasources.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ignoreInactiveDatasources(Boolean ignoreInactiveDatasources) {
+            return ignoreInactiveDatasources(Output.of(ignoreInactiveDatasources));
         }
 
         /**

@@ -52,7 +52,7 @@ public final class InsightsReportConfigObjectMetadataReportOptionsArgs extends c
     }
 
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -60,7 +60,7 @@ public final class InsightsReportConfigObjectMetadataReportOptionsArgs extends c
     private @Nullable Output<InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs> storageFilters;
 
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -149,7 +149,7 @@ public final class InsightsReportConfigObjectMetadataReportOptionsArgs extends c
         }
 
         /**
-         * @param storageFilters A nested object resource
+         * @param storageFilters A nested object resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -161,7 +161,7 @@ public final class InsightsReportConfigObjectMetadataReportOptionsArgs extends c
         }
 
         /**
-         * @param storageFilters A nested object resource
+         * @param storageFilters A nested object resource.
          * Structure is documented below.
          * 
          * @return builder

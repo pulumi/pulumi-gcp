@@ -27,6 +27,8 @@ __all__ = [
     'AddonsConfigAddonsConfigIntegrationConfigArgsDict',
     'AddonsConfigAddonsConfigMonetizationConfigArgs',
     'AddonsConfigAddonsConfigMonetizationConfigArgsDict',
+    'ApiMetaDataArgs',
+    'ApiMetaDataArgsDict',
     'AppGroupAttributeArgs',
     'AppGroupAttributeArgsDict',
     'DeveloperAttributeArgs',
@@ -398,6 +400,78 @@ class AddonsConfigAddonsConfigMonetizationConfigArgs:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
+
+
+if not MYPY:
+    class ApiMetaDataArgsDict(TypedDict):
+        created_at: NotRequired[pulumi.Input[str]]
+        """
+        Time at which the API proxy was created, in milliseconds since epoch.
+        """
+        last_modified_at: NotRequired[pulumi.Input[str]]
+        """
+        Time at which the API proxy was most recently modified, in milliseconds since epoch.
+        """
+        sub_type: NotRequired[pulumi.Input[str]]
+        """
+        The type of entity described
+        """
+elif False:
+    ApiMetaDataArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ApiMetaDataArgs:
+    def __init__(__self__, *,
+                 created_at: Optional[pulumi.Input[str]] = None,
+                 last_modified_at: Optional[pulumi.Input[str]] = None,
+                 sub_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] created_at: Time at which the API proxy was created, in milliseconds since epoch.
+        :param pulumi.Input[str] last_modified_at: Time at which the API proxy was most recently modified, in milliseconds since epoch.
+        :param pulumi.Input[str] sub_type: The type of entity described
+        """
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if last_modified_at is not None:
+            pulumi.set(__self__, "last_modified_at", last_modified_at)
+        if sub_type is not None:
+            pulumi.set(__self__, "sub_type", sub_type)
+
+    @property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        Time at which the API proxy was created, in milliseconds since epoch.
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_at", value)
+
+    @property
+    @pulumi.getter(name="lastModifiedAt")
+    def last_modified_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        Time at which the API proxy was most recently modified, in milliseconds since epoch.
+        """
+        return pulumi.get(self, "last_modified_at")
+
+    @last_modified_at.setter
+    def last_modified_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_modified_at", value)
+
+    @property
+    @pulumi.getter(name="subType")
+    def sub_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of entity described
+        """
+        return pulumi.get(self, "sub_type")
+
+    @sub_type.setter
+    def sub_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sub_type", value)
 
 
 if not MYPY:

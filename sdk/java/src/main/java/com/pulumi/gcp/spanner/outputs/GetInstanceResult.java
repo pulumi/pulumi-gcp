@@ -19,6 +19,7 @@ import javax.annotation.Nullable;
 public final class GetInstanceResult {
     private List<GetInstanceAutoscalingConfig> autoscalingConfigs;
     private @Nullable String config;
+    private String defaultBackupScheduleType;
     private @Nullable String displayName;
     private String edition;
     private Map<String,String> effectiveLabels;
@@ -42,6 +43,9 @@ public final class GetInstanceResult {
     }
     public Optional<String> config() {
         return Optional.ofNullable(this.config);
+    }
+    public String defaultBackupScheduleType() {
+        return this.defaultBackupScheduleType;
     }
     public Optional<String> displayName() {
         return Optional.ofNullable(this.displayName);
@@ -95,6 +99,7 @@ public final class GetInstanceResult {
     public static final class Builder {
         private List<GetInstanceAutoscalingConfig> autoscalingConfigs;
         private @Nullable String config;
+        private String defaultBackupScheduleType;
         private @Nullable String displayName;
         private String edition;
         private Map<String,String> effectiveLabels;
@@ -112,6 +117,7 @@ public final class GetInstanceResult {
     	      Objects.requireNonNull(defaults);
     	      this.autoscalingConfigs = defaults.autoscalingConfigs;
     	      this.config = defaults.config;
+    	      this.defaultBackupScheduleType = defaults.defaultBackupScheduleType;
     	      this.displayName = defaults.displayName;
     	      this.edition = defaults.edition;
     	      this.effectiveLabels = defaults.effectiveLabels;
@@ -141,6 +147,14 @@ public final class GetInstanceResult {
         public Builder config(@Nullable String config) {
 
             this.config = config;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder defaultBackupScheduleType(String defaultBackupScheduleType) {
+            if (defaultBackupScheduleType == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "defaultBackupScheduleType");
+            }
+            this.defaultBackupScheduleType = defaultBackupScheduleType;
             return this;
         }
         @CustomType.Setter
@@ -239,6 +253,7 @@ public final class GetInstanceResult {
             final var _resultValue = new GetInstanceResult();
             _resultValue.autoscalingConfigs = autoscalingConfigs;
             _resultValue.config = config;
+            _resultValue.defaultBackupScheduleType = defaultBackupScheduleType;
             _resultValue.displayName = displayName;
             _resultValue.edition = edition;
             _resultValue.effectiveLabels = effectiveLabels;

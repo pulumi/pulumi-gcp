@@ -113,6 +113,18 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("networkPolicyConfig")]
         public Input<Inputs.ClusterAddonsConfigNetworkPolicyConfigArgs>? NetworkPolicyConfig { get; set; }
 
+        /// <summary>
+        /// The status of the Parallelstore CSI driver addon,
+        /// which allows the usage of a Parallelstore instances as volumes.
+        /// It is disabled by default for Standard clusters; set `enabled = true` to enable.
+        /// It is enabled by default for Autopilot clusters with version 1.29 or later; set `enabled = true` to enable it explicitly.
+        /// See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
+        /// 
+        /// This example `addons_config` disables two addons:
+        /// </summary>
+        [Input("parallelstoreCsiDriverConfig")]
+        public Input<Inputs.ClusterAddonsConfigParallelstoreCsiDriverConfigArgs>? ParallelstoreCsiDriverConfig { get; set; }
+
         [Input("rayOperatorConfigs")]
         private InputList<Inputs.ClusterAddonsConfigRayOperatorConfigArgs>? _rayOperatorConfigs;
 
@@ -129,9 +141,6 @@ namespace Pulumi.Gcp.Container.Inputs
         /// clusters on
         /// GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
         /// for more information.
-        /// 
-        /// 
-        /// This example `addons_config` disables two addons:
         /// </summary>
         public InputList<Inputs.ClusterAddonsConfigRayOperatorConfigArgs> RayOperatorConfigs
         {

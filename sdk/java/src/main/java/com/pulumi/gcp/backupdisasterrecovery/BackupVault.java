@@ -59,7 +59,8 @@ import javax.annotation.Nullable;
  *                 Map.entry("annotations2", "baz1")
  *             ))
  *             .forceUpdate("true")
- *             .forceDelete("true")
+ *             .ignoreInactiveDatasources("true")
+ *             .ignoreBackupPlanReferences("true")
  *             .allowMissing("true")
  *             .build());
  * 
@@ -267,18 +268,28 @@ public class BackupVault extends com.pulumi.resources.CustomResource {
         return this.etag;
     }
     /**
+     * (Optional, Deprecated)
      * If set, the following restrictions against deletion of the backup vault instance can be overridden:
      * * deletion of a backup vault instance containing no backups, but still containing empty datasources.
      * * deletion of a backup vault instance that is being referenced by an active backup plan.
      * 
+     * &gt; **Warning:** `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.
+     * 
+     * @deprecated
+     * `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.
+     * 
      */
+    @Deprecated /* `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead. */
     @Export(name="forceDelete", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceDelete;
 
     /**
-     * @return If set, the following restrictions against deletion of the backup vault instance can be overridden:
+     * @return (Optional, Deprecated)
+     * If set, the following restrictions against deletion of the backup vault instance can be overridden:
      * * deletion of a backup vault instance containing no backups, but still containing empty datasources.
      * * deletion of a backup vault instance that is being referenced by an active backup plan.
+     * 
+     * &gt; **Warning:** `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.
      * 
      */
     public Output<Optional<Boolean>> forceDelete() {
@@ -303,6 +314,38 @@ public class BackupVault extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> forceUpdate() {
         return Codegen.optional(this.forceUpdate);
+    }
+    /**
+     * If set, the following restrictions against deletion of the backup vault instance can be overridden:
+     * * deletion of a backup vault instance that is being referenced by an active backup plan.
+     * 
+     */
+    @Export(name="ignoreBackupPlanReferences", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> ignoreBackupPlanReferences;
+
+    /**
+     * @return If set, the following restrictions against deletion of the backup vault instance can be overridden:
+     * * deletion of a backup vault instance that is being referenced by an active backup plan.
+     * 
+     */
+    public Output<Optional<Boolean>> ignoreBackupPlanReferences() {
+        return Codegen.optional(this.ignoreBackupPlanReferences);
+    }
+    /**
+     * If set, the following restrictions against deletion of the backup vault instance can be overridden:
+     * * deletion of a backup vault instance containing no backups, but still containing empty datasources.
+     * 
+     */
+    @Export(name="ignoreInactiveDatasources", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> ignoreInactiveDatasources;
+
+    /**
+     * @return If set, the following restrictions against deletion of the backup vault instance can be overridden:
+     * * deletion of a backup vault instance containing no backups, but still containing empty datasources.
+     * 
+     */
+    public Output<Optional<Boolean>> ignoreInactiveDatasources() {
+        return Codegen.optional(this.ignoreInactiveDatasources);
     }
     /**
      * Optional. Resource labels to represent user provided metadata.

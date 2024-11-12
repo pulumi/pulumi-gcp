@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class RouterPeerCustomLearnedIpRange {
     /**
-     * @return The IP range to advertise. The value must be a
+     * @return The IP range to learn. The value must be a
      * CIDR-formatted string.
      * 
      */
@@ -19,7 +19,7 @@ public final class RouterPeerCustomLearnedIpRange {
 
     private RouterPeerCustomLearnedIpRange() {}
     /**
-     * @return The IP range to advertise. The value must be a
+     * @return The IP range to learn. The value must be a
      * CIDR-formatted string.
      * 
      */

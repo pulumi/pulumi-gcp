@@ -222,7 +222,7 @@ class _VpnConnectionState:
         Input properties used for looking up and filtering VpnConnection resources.
         :param pulumi.Input[str] cluster: The canonical Cluster name to connect to. It is in the form of projects/{project}/locations/{location}/clusters/{cluster}.
         :param pulumi.Input[str] create_time: The time when the VPN connection was created.
-        :param pulumi.Input[Sequence[pulumi.Input['VpnConnectionDetailArgs']]] details: A nested object resource
+        :param pulumi.Input[Sequence[pulumi.Input['VpnConnectionDetailArgs']]] details: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[bool] enable_high_availability: Whether this VPN connection has HA enabled on cluster side. If enabled, when creating VPN connection we will attempt to use 2 ANG floating IPs.
@@ -305,7 +305,7 @@ class _VpnConnectionState:
     @pulumi.getter
     def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VpnConnectionDetailArgs']]]]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "details")
@@ -754,7 +754,7 @@ class VpnConnection(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster: The canonical Cluster name to connect to. It is in the form of projects/{project}/locations/{location}/clusters/{cluster}.
         :param pulumi.Input[str] create_time: The time when the VPN connection was created.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VpnConnectionDetailArgs', 'VpnConnectionDetailArgsDict']]]] details: A nested object resource
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VpnConnectionDetailArgs', 'VpnConnectionDetailArgsDict']]]] details: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[bool] enable_high_availability: Whether this VPN connection has HA enabled on cluster side. If enabled, when creating VPN connection we will attempt to use 2 ANG floating IPs.
@@ -819,7 +819,7 @@ class VpnConnection(pulumi.CustomResource):
     @pulumi.getter
     def details(self) -> pulumi.Output[Sequence['outputs.VpnConnectionDetail']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "details")

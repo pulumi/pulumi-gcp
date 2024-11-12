@@ -17,6 +17,7 @@ import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigHttpLoadBalancing;
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigIstioConfig;
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigKalmConfig;
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigNetworkPolicyConfig;
+import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigParallelstoreCsiDriverConfig;
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigRayOperatorConfig;
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigStatefulHaConfig;
 import java.util.List;
@@ -84,6 +85,11 @@ public final class GetClusterAddonsConfig {
      * 
      */
     private List<GetClusterAddonsConfigNetworkPolicyConfig> networkPolicyConfigs;
+    /**
+     * @return The status of the Parallelstore CSI driver addon, which allows the usage of Parallelstore instances as volumes. Defaults to disabled; set enabled = true to enable.
+     * 
+     */
+    private List<GetClusterAddonsConfigParallelstoreCsiDriverConfig> parallelstoreCsiDriverConfigs;
     /**
      * @return The status of the Ray Operator addon, which enabled management of Ray AI/ML jobs on GKE. Defaults to disabled; set enabled = true to enable.
      * 
@@ -181,6 +187,13 @@ public final class GetClusterAddonsConfig {
         return this.networkPolicyConfigs;
     }
     /**
+     * @return The status of the Parallelstore CSI driver addon, which allows the usage of Parallelstore instances as volumes. Defaults to disabled; set enabled = true to enable.
+     * 
+     */
+    public List<GetClusterAddonsConfigParallelstoreCsiDriverConfig> parallelstoreCsiDriverConfigs() {
+        return this.parallelstoreCsiDriverConfigs;
+    }
+    /**
      * @return The status of the Ray Operator addon, which enabled management of Ray AI/ML jobs on GKE. Defaults to disabled; set enabled = true to enable.
      * 
      */
@@ -216,6 +229,7 @@ public final class GetClusterAddonsConfig {
         private List<GetClusterAddonsConfigIstioConfig> istioConfigs;
         private List<GetClusterAddonsConfigKalmConfig> kalmConfigs;
         private List<GetClusterAddonsConfigNetworkPolicyConfig> networkPolicyConfigs;
+        private List<GetClusterAddonsConfigParallelstoreCsiDriverConfig> parallelstoreCsiDriverConfigs;
         private List<GetClusterAddonsConfigRayOperatorConfig> rayOperatorConfigs;
         private List<GetClusterAddonsConfigStatefulHaConfig> statefulHaConfigs;
         public Builder() {}
@@ -233,6 +247,7 @@ public final class GetClusterAddonsConfig {
     	      this.istioConfigs = defaults.istioConfigs;
     	      this.kalmConfigs = defaults.kalmConfigs;
     	      this.networkPolicyConfigs = defaults.networkPolicyConfigs;
+    	      this.parallelstoreCsiDriverConfigs = defaults.parallelstoreCsiDriverConfigs;
     	      this.rayOperatorConfigs = defaults.rayOperatorConfigs;
     	      this.statefulHaConfigs = defaults.statefulHaConfigs;
         }
@@ -370,6 +385,17 @@ public final class GetClusterAddonsConfig {
             return networkPolicyConfigs(List.of(networkPolicyConfigs));
         }
         @CustomType.Setter
+        public Builder parallelstoreCsiDriverConfigs(List<GetClusterAddonsConfigParallelstoreCsiDriverConfig> parallelstoreCsiDriverConfigs) {
+            if (parallelstoreCsiDriverConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterAddonsConfig", "parallelstoreCsiDriverConfigs");
+            }
+            this.parallelstoreCsiDriverConfigs = parallelstoreCsiDriverConfigs;
+            return this;
+        }
+        public Builder parallelstoreCsiDriverConfigs(GetClusterAddonsConfigParallelstoreCsiDriverConfig... parallelstoreCsiDriverConfigs) {
+            return parallelstoreCsiDriverConfigs(List.of(parallelstoreCsiDriverConfigs));
+        }
+        @CustomType.Setter
         public Builder rayOperatorConfigs(List<GetClusterAddonsConfigRayOperatorConfig> rayOperatorConfigs) {
             if (rayOperatorConfigs == null) {
               throw new MissingRequiredPropertyException("GetClusterAddonsConfig", "rayOperatorConfigs");
@@ -405,6 +431,7 @@ public final class GetClusterAddonsConfig {
             _resultValue.istioConfigs = istioConfigs;
             _resultValue.kalmConfigs = kalmConfigs;
             _resultValue.networkPolicyConfigs = networkPolicyConfigs;
+            _resultValue.parallelstoreCsiDriverConfigs = parallelstoreCsiDriverConfigs;
             _resultValue.rayOperatorConfigs = rayOperatorConfigs;
             _resultValue.statefulHaConfigs = statefulHaConfigs;
             return _resultValue;

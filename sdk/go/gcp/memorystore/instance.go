@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A Google Cloud Memorystore instance.
+//
 // ## Example Usage
 //
 // ### Memorystore Instance Basic

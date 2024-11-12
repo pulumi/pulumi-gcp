@@ -18,6 +18,11 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// </summary>
         public readonly string Bucket;
         /// <summary>
+        /// A list of flags to pass to the gcsfuse command for configuring this volume.
+        /// Flags should be passed without leading dashes.
+        /// </summary>
+        public readonly ImmutableArray<string> MountOptions;
+        /// <summary>
         /// If true, mount this volume as read-only in all mounts. If false, mount this volume as read-write.
         /// </summary>
         public readonly bool ReadOnly;
@@ -26,9 +31,12 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         private GetJobTemplateTemplateVolumeGcResult(
             string bucket,
 
+            ImmutableArray<string> mountOptions,
+
             bool readOnly)
         {
             Bucket = bucket;
+            MountOptions = mountOptions;
             ReadOnly = readOnly;
         }
     }

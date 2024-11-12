@@ -82,10 +82,8 @@ import (
 //			}
 //			basicValue, err := tags.NewTagValue(ctx, "basic_value", &tags.TagValueArgs{
 //				Description: pulumi.String("For valuename resources."),
-//				Parent: basicKey.Name.ApplyT(func(name string) (string, error) {
-//					return fmt.Sprintf("tagKeys/%v", name), nil
-//				}).(pulumi.StringOutput),
-//				ShortName: pulumi.String("tagvalue"),
+//				Parent:      basicKey.ID(),
+//				ShortName:   pulumi.String("tagvalue"),
 //			})
 //			if err != nil {
 //				return err
@@ -117,9 +115,7 @@ import (
 //					},
 //					SrcSecureTags: compute.NetworkFirewallPolicyRuleMatchSrcSecureTagArray{
 //						&compute.NetworkFirewallPolicyRuleMatchSrcSecureTagArgs{
-//							Name: basicValue.Name.ApplyT(func(name string) (string, error) {
-//								return fmt.Sprintf("tagValues/%v", name), nil
-//							}).(pulumi.StringOutput),
+//							Name: basicValue.ID(),
 //						},
 //					},
 //					Layer4Configs: compute.NetworkFirewallPolicyRuleMatchLayer4ConfigArray{

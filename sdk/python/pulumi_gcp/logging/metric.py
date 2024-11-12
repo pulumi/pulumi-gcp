@@ -604,7 +604,7 @@ class Metric(pulumi.CustomResource):
         When using the `pulumi import` command, Metric can be imported using one of the formats above. For example:
 
         ```sh
-        $ pulumi import gcp:logging/metric:Metric default {{project}} {{name}}
+        $ pulumi import gcp:logging/metric:Metric default "{{project}} {{name}}"
         ```
 
         ```sh
@@ -787,7 +787,7 @@ class Metric(pulumi.CustomResource):
         When using the `pulumi import` command, Metric can be imported using one of the formats above. For example:
 
         ```sh
-        $ pulumi import gcp:logging/metric:Metric default {{project}} {{name}}
+        $ pulumi import gcp:logging/metric:Metric default "{{project}} {{name}}"
         ```
 
         ```sh

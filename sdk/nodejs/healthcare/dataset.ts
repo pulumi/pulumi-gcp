@@ -115,7 +115,7 @@ export class Dataset extends pulumi.CustomResource {
     }
 
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      */
     public readonly encryptionSpec!: pulumi.Output<outputs.healthcare.DatasetEncryptionSpec>;
@@ -187,7 +187,7 @@ export class Dataset extends pulumi.CustomResource {
  */
 export interface DatasetState {
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      */
     encryptionSpec?: pulumi.Input<inputs.healthcare.DatasetEncryptionSpec>;
@@ -224,7 +224,7 @@ export interface DatasetState {
  */
 export interface DatasetArgs {
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      */
     encryptionSpec?: pulumi.Input<inputs.healthcare.DatasetEncryptionSpec>;

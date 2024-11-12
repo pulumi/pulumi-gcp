@@ -35,6 +35,11 @@ export const getWorkloadIdentityPoolProvider: typeof import("./getWorkloadIdenti
 export const getWorkloadIdentityPoolProviderOutput: typeof import("./getWorkloadIdentityPoolProvider").getWorkloadIdentityPoolProviderOutput = null as any;
 utilities.lazyLoad(exports, ["getWorkloadIdentityPoolProvider","getWorkloadIdentityPoolProviderOutput"], () => require("./getWorkloadIdentityPoolProvider"));
 
+export { PrincipalAccessBoundaryPolicyArgs, PrincipalAccessBoundaryPolicyState } from "./principalAccessBoundaryPolicy";
+export type PrincipalAccessBoundaryPolicy = import("./principalAccessBoundaryPolicy").PrincipalAccessBoundaryPolicy;
+export const PrincipalAccessBoundaryPolicy: typeof import("./principalAccessBoundaryPolicy").PrincipalAccessBoundaryPolicy = null as any;
+utilities.lazyLoad(exports, ["PrincipalAccessBoundaryPolicy"], () => require("./principalAccessBoundaryPolicy"));
+
 export { WorkforcePoolArgs, WorkforcePoolState } from "./workforcePool";
 export type WorkforcePool = import("./workforcePool").WorkforcePool;
 export const WorkforcePool: typeof import("./workforcePool").WorkforcePool = null as any;
@@ -64,6 +69,8 @@ const _module = {
                 return new AccessBoundaryPolicy(name, <any>undefined, { urn })
             case "gcp:iam/denyPolicy:DenyPolicy":
                 return new DenyPolicy(name, <any>undefined, { urn })
+            case "gcp:iam/principalAccessBoundaryPolicy:PrincipalAccessBoundaryPolicy":
+                return new PrincipalAccessBoundaryPolicy(name, <any>undefined, { urn })
             case "gcp:iam/workforcePool:WorkforcePool":
                 return new WorkforcePool(name, <any>undefined, { urn })
             case "gcp:iam/workforcePoolProvider:WorkforcePoolProvider":
@@ -79,6 +86,7 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("gcp", "iam/accessBoundaryPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/denyPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "iam/principalAccessBoundaryPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/workforcePool", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/workforcePoolProvider", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/workloadIdentityPool", _module)

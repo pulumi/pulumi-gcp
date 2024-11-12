@@ -28,6 +28,7 @@ class RegionInstanceGroupManagerArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  distribution_policy_target_shape: Optional[pulumi.Input[str]] = None,
                  distribution_policy_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 instance_flexibility_policy: Optional[pulumi.Input['RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs']] = None,
                  instance_lifecycle_policy: Optional[pulumi.Input['RegionInstanceGroupManagerInstanceLifecyclePolicyArgs']] = None,
                  list_managed_instances_results: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -67,6 +68,8 @@ class RegionInstanceGroupManagerArgs:
         :param pulumi.Input[str] distribution_policy_target_shape: The shape to which the group converges either proactively or on resize events (depending on the value set in update_policy.0.instance_redistribution_type). For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/regional-mig-distribution-shape).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] distribution_policy_zones: The distribution policy for this managed instance
                group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
+        :param pulumi.Input['RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs'] instance_flexibility_policy: The flexibility policy for managed instance group. Instance flexibility allows managed instance group to create VMs from multiple types of machines. Instance flexibility configuration on managed instance group overrides instance template configuration. Structure is documented below.
+               - - -
         :param pulumi.Input['RegionInstanceGroupManagerInstanceLifecyclePolicyArgs'] instance_lifecycle_policy: The instance lifecycle policy for this managed instance group.
         :param pulumi.Input[str] list_managed_instances_results: Pagination behavior of the `listManagedInstances` API
                method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
@@ -81,8 +84,6 @@ class RegionInstanceGroupManagerArgs:
         :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerNamedPortArgs']]] named_ports: The named port configuration. See the section below
                for details on configuration.
         :param pulumi.Input['RegionInstanceGroupManagerParamsArgs'] params: Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region where the managed instance group resides. If not provided, the provider region is used.
@@ -120,6 +121,8 @@ class RegionInstanceGroupManagerArgs:
             pulumi.set(__self__, "distribution_policy_target_shape", distribution_policy_target_shape)
         if distribution_policy_zones is not None:
             pulumi.set(__self__, "distribution_policy_zones", distribution_policy_zones)
+        if instance_flexibility_policy is not None:
+            pulumi.set(__self__, "instance_flexibility_policy", instance_flexibility_policy)
         if instance_lifecycle_policy is not None:
             pulumi.set(__self__, "instance_lifecycle_policy", instance_lifecycle_policy)
         if list_managed_instances_results is not None:
@@ -254,6 +257,19 @@ class RegionInstanceGroupManagerArgs:
         pulumi.set(self, "distribution_policy_zones", value)
 
     @property
+    @pulumi.getter(name="instanceFlexibilityPolicy")
+    def instance_flexibility_policy(self) -> Optional[pulumi.Input['RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs']]:
+        """
+        The flexibility policy for managed instance group. Instance flexibility allows managed instance group to create VMs from multiple types of machines. Instance flexibility configuration on managed instance group overrides instance template configuration. Structure is documented below.
+        - - -
+        """
+        return pulumi.get(self, "instance_flexibility_policy")
+
+    @instance_flexibility_policy.setter
+    def instance_flexibility_policy(self, value: Optional[pulumi.Input['RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs']]):
+        pulumi.set(self, "instance_flexibility_policy", value)
+
+    @property
     @pulumi.getter(name="instanceLifecyclePolicy")
     def instance_lifecycle_policy(self) -> Optional[pulumi.Input['RegionInstanceGroupManagerInstanceLifecyclePolicyArgs']]:
         """
@@ -315,8 +331,6 @@ class RegionInstanceGroupManagerArgs:
     def params(self) -> Optional[pulumi.Input['RegionInstanceGroupManagerParamsArgs']]:
         """
         Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-
-        - - -
         """
         return pulumi.get(self, "params")
 
@@ -503,6 +517,7 @@ class _RegionInstanceGroupManagerState:
                  distribution_policy_target_shape: Optional[pulumi.Input[str]] = None,
                  distribution_policy_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  fingerprint: Optional[pulumi.Input[str]] = None,
+                 instance_flexibility_policy: Optional[pulumi.Input['RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs']] = None,
                  instance_group: Optional[pulumi.Input[str]] = None,
                  instance_lifecycle_policy: Optional[pulumi.Input['RegionInstanceGroupManagerInstanceLifecyclePolicyArgs']] = None,
                  list_managed_instances_results: Optional[pulumi.Input[str]] = None,
@@ -545,6 +560,8 @@ class _RegionInstanceGroupManagerState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] distribution_policy_zones: The distribution policy for this managed instance
                group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
         :param pulumi.Input[str] fingerprint: The fingerprint of the instance group manager.
+        :param pulumi.Input['RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs'] instance_flexibility_policy: The flexibility policy for managed instance group. Instance flexibility allows managed instance group to create VMs from multiple types of machines. Instance flexibility configuration on managed instance group overrides instance template configuration. Structure is documented below.
+               - - -
         :param pulumi.Input[str] instance_group: The full URL of the instance group created by the manager.
         :param pulumi.Input['RegionInstanceGroupManagerInstanceLifecyclePolicyArgs'] instance_lifecycle_policy: The instance lifecycle policy for this managed instance group.
         :param pulumi.Input[str] list_managed_instances_results: Pagination behavior of the `listManagedInstances` API
@@ -560,8 +577,6 @@ class _RegionInstanceGroupManagerState:
         :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerNamedPortArgs']]] named_ports: The named port configuration. See the section below
                for details on configuration.
         :param pulumi.Input['RegionInstanceGroupManagerParamsArgs'] params: Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region where the managed instance group resides. If not provided, the provider region is used.
@@ -608,6 +623,8 @@ class _RegionInstanceGroupManagerState:
             pulumi.set(__self__, "distribution_policy_zones", distribution_policy_zones)
         if fingerprint is not None:
             pulumi.set(__self__, "fingerprint", fingerprint)
+        if instance_flexibility_policy is not None:
+            pulumi.set(__self__, "instance_flexibility_policy", instance_flexibility_policy)
         if instance_group is not None:
             pulumi.set(__self__, "instance_group", instance_group)
         if instance_lifecycle_policy is not None:
@@ -760,6 +777,19 @@ class _RegionInstanceGroupManagerState:
         pulumi.set(self, "fingerprint", value)
 
     @property
+    @pulumi.getter(name="instanceFlexibilityPolicy")
+    def instance_flexibility_policy(self) -> Optional[pulumi.Input['RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs']]:
+        """
+        The flexibility policy for managed instance group. Instance flexibility allows managed instance group to create VMs from multiple types of machines. Instance flexibility configuration on managed instance group overrides instance template configuration. Structure is documented below.
+        - - -
+        """
+        return pulumi.get(self, "instance_flexibility_policy")
+
+    @instance_flexibility_policy.setter
+    def instance_flexibility_policy(self, value: Optional[pulumi.Input['RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs']]):
+        pulumi.set(self, "instance_flexibility_policy", value)
+
+    @property
     @pulumi.getter(name="instanceGroup")
     def instance_group(self) -> Optional[pulumi.Input[str]]:
         """
@@ -833,8 +863,6 @@ class _RegionInstanceGroupManagerState:
     def params(self) -> Optional[pulumi.Input['RegionInstanceGroupManagerParamsArgs']]:
         """
         Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-
-        - - -
         """
         return pulumi.get(self, "params")
 
@@ -1059,6 +1087,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  distribution_policy_target_shape: Optional[pulumi.Input[str]] = None,
                  distribution_policy_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 instance_flexibility_policy: Optional[pulumi.Input[Union['RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs', 'RegionInstanceGroupManagerInstanceFlexibilityPolicyArgsDict']]] = None,
                  instance_lifecycle_policy: Optional[pulumi.Input[Union['RegionInstanceGroupManagerInstanceLifecyclePolicyArgs', 'RegionInstanceGroupManagerInstanceLifecyclePolicyArgsDict']]] = None,
                  list_managed_instances_results: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -1216,6 +1245,8 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[str] distribution_policy_target_shape: The shape to which the group converges either proactively or on resize events (depending on the value set in update_policy.0.instance_redistribution_type). For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/regional-mig-distribution-shape).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] distribution_policy_zones: The distribution policy for this managed instance
                group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
+        :param pulumi.Input[Union['RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs', 'RegionInstanceGroupManagerInstanceFlexibilityPolicyArgsDict']] instance_flexibility_policy: The flexibility policy for managed instance group. Instance flexibility allows managed instance group to create VMs from multiple types of machines. Instance flexibility configuration on managed instance group overrides instance template configuration. Structure is documented below.
+               - - -
         :param pulumi.Input[Union['RegionInstanceGroupManagerInstanceLifecyclePolicyArgs', 'RegionInstanceGroupManagerInstanceLifecyclePolicyArgsDict']] instance_lifecycle_policy: The instance lifecycle policy for this managed instance group.
         :param pulumi.Input[str] list_managed_instances_results: Pagination behavior of the `listManagedInstances` API
                method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
@@ -1230,8 +1261,6 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerNamedPortArgs', 'RegionInstanceGroupManagerNamedPortArgsDict']]]] named_ports: The named port configuration. See the section below
                for details on configuration.
         :param pulumi.Input[Union['RegionInstanceGroupManagerParamsArgs', 'RegionInstanceGroupManagerParamsArgsDict']] params: Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region where the managed instance group resides. If not provided, the provider region is used.
@@ -1406,6 +1435,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  distribution_policy_target_shape: Optional[pulumi.Input[str]] = None,
                  distribution_policy_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 instance_flexibility_policy: Optional[pulumi.Input[Union['RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs', 'RegionInstanceGroupManagerInstanceFlexibilityPolicyArgsDict']]] = None,
                  instance_lifecycle_policy: Optional[pulumi.Input[Union['RegionInstanceGroupManagerInstanceLifecyclePolicyArgs', 'RegionInstanceGroupManagerInstanceLifecyclePolicyArgsDict']]] = None,
                  list_managed_instances_results: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -1442,6 +1472,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["distribution_policy_target_shape"] = distribution_policy_target_shape
             __props__.__dict__["distribution_policy_zones"] = distribution_policy_zones
+            __props__.__dict__["instance_flexibility_policy"] = instance_flexibility_policy
             __props__.__dict__["instance_lifecycle_policy"] = instance_lifecycle_policy
             __props__.__dict__["list_managed_instances_results"] = list_managed_instances_results
             __props__.__dict__["name"] = name
@@ -1486,6 +1517,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
             distribution_policy_target_shape: Optional[pulumi.Input[str]] = None,
             distribution_policy_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             fingerprint: Optional[pulumi.Input[str]] = None,
+            instance_flexibility_policy: Optional[pulumi.Input[Union['RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs', 'RegionInstanceGroupManagerInstanceFlexibilityPolicyArgsDict']]] = None,
             instance_group: Optional[pulumi.Input[str]] = None,
             instance_lifecycle_policy: Optional[pulumi.Input[Union['RegionInstanceGroupManagerInstanceLifecyclePolicyArgs', 'RegionInstanceGroupManagerInstanceLifecyclePolicyArgsDict']]] = None,
             list_managed_instances_results: Optional[pulumi.Input[str]] = None,
@@ -1533,6 +1565,8 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] distribution_policy_zones: The distribution policy for this managed instance
                group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
         :param pulumi.Input[str] fingerprint: The fingerprint of the instance group manager.
+        :param pulumi.Input[Union['RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs', 'RegionInstanceGroupManagerInstanceFlexibilityPolicyArgsDict']] instance_flexibility_policy: The flexibility policy for managed instance group. Instance flexibility allows managed instance group to create VMs from multiple types of machines. Instance flexibility configuration on managed instance group overrides instance template configuration. Structure is documented below.
+               - - -
         :param pulumi.Input[str] instance_group: The full URL of the instance group created by the manager.
         :param pulumi.Input[Union['RegionInstanceGroupManagerInstanceLifecyclePolicyArgs', 'RegionInstanceGroupManagerInstanceLifecyclePolicyArgsDict']] instance_lifecycle_policy: The instance lifecycle policy for this managed instance group.
         :param pulumi.Input[str] list_managed_instances_results: Pagination behavior of the `listManagedInstances` API
@@ -1548,8 +1582,6 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['RegionInstanceGroupManagerNamedPortArgs', 'RegionInstanceGroupManagerNamedPortArgsDict']]]] named_ports: The named port configuration. See the section below
                for details on configuration.
         :param pulumi.Input[Union['RegionInstanceGroupManagerParamsArgs', 'RegionInstanceGroupManagerParamsArgsDict']] params: Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-               
-               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region where the managed instance group resides. If not provided, the provider region is used.
@@ -1592,6 +1624,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         __props__.__dict__["distribution_policy_target_shape"] = distribution_policy_target_shape
         __props__.__dict__["distribution_policy_zones"] = distribution_policy_zones
         __props__.__dict__["fingerprint"] = fingerprint
+        __props__.__dict__["instance_flexibility_policy"] = instance_flexibility_policy
         __props__.__dict__["instance_group"] = instance_group
         __props__.__dict__["instance_lifecycle_policy"] = instance_lifecycle_policy
         __props__.__dict__["list_managed_instances_results"] = list_managed_instances_results
@@ -1691,6 +1724,15 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         return pulumi.get(self, "fingerprint")
 
     @property
+    @pulumi.getter(name="instanceFlexibilityPolicy")
+    def instance_flexibility_policy(self) -> pulumi.Output[Optional['outputs.RegionInstanceGroupManagerInstanceFlexibilityPolicy']]:
+        """
+        The flexibility policy for managed instance group. Instance flexibility allows managed instance group to create VMs from multiple types of machines. Instance flexibility configuration on managed instance group overrides instance template configuration. Structure is documented below.
+        - - -
+        """
+        return pulumi.get(self, "instance_flexibility_policy")
+
+    @property
     @pulumi.getter(name="instanceGroup")
     def instance_group(self) -> pulumi.Output[str]:
         """
@@ -1744,8 +1786,6 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
     def params(self) -> pulumi.Output[Optional['outputs.RegionInstanceGroupManagerParams']]:
         """
         Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-
-        - - -
         """
         return pulumi.get(self, "params")
 

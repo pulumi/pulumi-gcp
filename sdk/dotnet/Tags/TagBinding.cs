@@ -47,7 +47,7 @@ namespace Pulumi.Gcp.Tags
     /// 
     ///     var @value = new Gcp.Tags.TagValue("value", new()
     ///     {
-    ///         Parent = key.Name.Apply(name =&gt; $"tagKeys/{name}"),
+    ///         Parent = key.Id,
     ///         ShortName = "valuename",
     ///         Description = "For valuename resources.",
     ///     });
@@ -55,7 +55,7 @@ namespace Pulumi.Gcp.Tags
     ///     var binding = new Gcp.Tags.TagBinding("binding", new()
     ///     {
     ///         Parent = project.Number.Apply(number =&gt; $"//cloudresourcemanager.googleapis.com/projects/{number}"),
-    ///         TagValue = @value.Name.Apply(name =&gt; $"tagValues/{name}"),
+    ///         TagValue = @value.Id,
     ///     });
     /// 
     /// });

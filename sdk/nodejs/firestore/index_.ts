@@ -126,6 +126,30 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * ### Firestore Index Name Descending
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const database = new gcp.firestore.Database("database", {
+ *     project: "my-project-name",
+ *     name: "database-id",
+ *     locationId: "nam5",
+ *     type: "FIRESTORE_NATIVE",
+ *     deleteProtectionState: "DELETE_PROTECTION_DISABLED",
+ *     deletionPolicy: "DELETE",
+ * });
+ * const my_index = new gcp.firestore.Index("my-index", {
+ *     project: "my-project-name",
+ *     database: database.name,
+ *     collection: "atestcollection",
+ *     fields: [{
+ *         fieldPath: "__name__",
+ *         order: "DESCENDING",
+ *     }],
+ * });
+ * ```
  *
  * ## Import
  *

@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class BareMetalAdminClusterNetworkConfig {
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -20,7 +20,7 @@ public final class BareMetalAdminClusterNetworkConfig {
 
     private BareMetalAdminClusterNetworkConfig() {}
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */

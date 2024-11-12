@@ -293,13 +293,11 @@ export class Instance extends pulumi.CustomResource {
 
     /**
      * Looker instance Admin settings.
-     * Structure is documented below.
      */
     public readonly adminSettings!: pulumi.Output<outputs.looker.InstanceAdminSettings | undefined>;
     /**
-     * Network name in the consumer project in the format of: projects/{project}/global/networks/{network}
-     * Note that the consumer network may be in a different GCP project than the consumer
-     * project that is hosting the Looker Instance.
+     * Network name in the consumer project in the format of: projects/{project}/global/networks/{network} Note that the
+     * consumer network may be in a different GCP project than the consumer project that is hosting the Looker Instance.
      */
     public readonly consumerNetwork!: pulumi.Output<string | undefined>;
     /**
@@ -309,21 +307,17 @@ export class Instance extends pulumi.CustomResource {
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * Custom domain settings for a Looker instance.
-     * Structure is documented below.
      */
     public readonly customDomain!: pulumi.Output<outputs.looker.InstanceCustomDomain | undefined>;
     /**
-     * Policy to determine if the cluster should be deleted forcefully.
-     * If setting deletionPolicy = "FORCE", the Looker instance will be deleted regardless
-     * of its nested resources. If set to "DEFAULT", Looker instances that still have
+     * Policy to determine if the cluster should be deleted forcefully. If setting deletionPolicy = "FORCE", the Looker
+     * instance will be deleted regardless of its nested resources. If set to "DEFAULT", Looker instances that still have
      * nested resources will return an error. Possible values: DEFAULT, FORCE
      */
     public readonly deletionPolicy!: pulumi.Output<string | undefined>;
     /**
-     * Maintenance denial period for this instance.
-     * You must allow at least 14 days of maintenance availability
-     * between any two deny maintenance periods.
-     * Structure is documented below.
+     * Maintenance denial period for this instance. You must allow at least 14 days of maintenance availability between any two
+     * deny maintenance periods.
      */
     public readonly denyMaintenancePeriod!: pulumi.Output<outputs.looker.InstanceDenyMaintenancePeriod | undefined>;
     /**
@@ -332,7 +326,6 @@ export class Instance extends pulumi.CustomResource {
     public /*out*/ readonly egressPublicIp!: pulumi.Output<string>;
     /**
      * Looker instance encryption settings.
-     * Structure is documented below.
      */
     public readonly encryptionConfig!: pulumi.Output<outputs.looker.InstanceEncryptionConfig>;
     /**
@@ -356,48 +349,35 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly lookerVersion!: pulumi.Output<string>;
     /**
-     * Maintenance window for an instance.
-     * Maintenance of your instance takes place once a month, and will require
-     * your instance to be restarted during updates, which will temporarily
-     * disrupt service.
-     * Structure is documented below.
+     * Maintenance window for an instance. Maintenance of your instance takes place once a month, and will require your
+     * instance to be restarted during updates, which will temporarily disrupt service.
      */
     public readonly maintenanceWindow!: pulumi.Output<outputs.looker.InstanceMaintenanceWindow | undefined>;
     /**
      * The ID of the instance or a fully qualified identifier for the instance.
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
      * Looker Instance OAuth login settings.
      * Structure is documented below.
      */
-    public readonly oauthConfig!: pulumi.Output<outputs.looker.InstanceOauthConfig | undefined>;
+    public readonly oauthConfig!: pulumi.Output<outputs.looker.InstanceOauthConfig>;
     /**
-     * Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
-     * - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
-     * - LOOKER_CORE_STANDARD: pay as you go standard instance (Currently Unavailable)
-     * - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
-     * - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
-     * - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
-     * Default value is `LOOKER_CORE_TRIAL`.
-     * Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
+     * Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of
+     * these values: - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable) - LOOKER_CORE_STANDARD: pay as you go standard
+     * instance (Currently Unavailable) - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance -
+     * LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
+     * Default value: "LOOKER_CORE_TRIAL" Possible values: ["LOOKER_CORE_TRIAL", "LOOKER_CORE_STANDARD",
+     * "LOOKER_CORE_STANDARD_ANNUAL", "LOOKER_CORE_ENTERPRISE_ANNUAL", "LOOKER_CORE_EMBED_ANNUAL"]
      */
     public readonly platformEdition!: pulumi.Output<string | undefined>;
     /**
      * Whether private IP is enabled on the Looker instance.
      */
     public readonly privateIpEnabled!: pulumi.Output<boolean | undefined>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     public readonly project!: pulumi.Output<string>;
     /**
      * Information for Private Service Connect (PSC) setup for a Looker instance.
-     * Structure is documented below.
      */
     public readonly pscConfig!: pulumi.Output<outputs.looker.InstancePscConfig | undefined>;
     /**
@@ -413,8 +393,8 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
-     * Name of a reserved IP address range within the consumer network, to be used for
-     * private service access connection. User may or may not specify this in a request.
+     * Name of a reserved IP address range within the consumer network, to be used for private service access connection. User
+     * may or may not specify this in a request.
      */
     public readonly reservedRange!: pulumi.Output<string | undefined>;
     /**
@@ -423,14 +403,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
-     * Metadata about users for a Looker instance.
-     * These settings are only available when platform edition LOOKER_CORE_STANDARD is set.
-     * There are ten Standard and two Developer users included in the cost of the product.
-     * You can allocate additional Standard, Viewer, and Developer users for this instance.
-     * It is an optional step and can be modified later.
-     * With the Standard edition of Looker (Google Cloud core), you can provision up to 50
-     * total users, distributed across Viewer, Standard, and Developer.
-     * Structure is documented below.
+     * Metadata about users for a Looker instance. These settings are only available when platform edition LOOKER_CORE_STANDARD
+     * is set. There are ten Standard and two Developer users included in the cost of the product. You can allocate additional
+     * Standard, Viewer, and Developer users for this instance. It is an optional step and can be modified later. With the
+     * Standard edition of Looker (Google Cloud core), you can provision up to 50 total users, distributed across Viewer,
+     * Standard, and Developer.
      */
     public readonly userMetadata!: pulumi.Output<outputs.looker.InstanceUserMetadata | undefined>;
 
@@ -441,7 +418,7 @@ export class Instance extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: InstanceArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: InstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceArgs | InstanceState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -475,6 +452,9 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["userMetadata"] = state ? state.userMetadata : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
+            if ((!args || args.oauthConfig === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'oauthConfig'");
+            }
             resourceInputs["adminSettings"] = args ? args.adminSettings : undefined;
             resourceInputs["consumerNetwork"] = args ? args.consumerNetwork : undefined;
             resourceInputs["customDomain"] = args ? args.customDomain : undefined;
@@ -513,13 +493,11 @@ export class Instance extends pulumi.CustomResource {
 export interface InstanceState {
     /**
      * Looker instance Admin settings.
-     * Structure is documented below.
      */
     adminSettings?: pulumi.Input<inputs.looker.InstanceAdminSettings>;
     /**
-     * Network name in the consumer project in the format of: projects/{project}/global/networks/{network}
-     * Note that the consumer network may be in a different GCP project than the consumer
-     * project that is hosting the Looker Instance.
+     * Network name in the consumer project in the format of: projects/{project}/global/networks/{network} Note that the
+     * consumer network may be in a different GCP project than the consumer project that is hosting the Looker Instance.
      */
     consumerNetwork?: pulumi.Input<string>;
     /**
@@ -529,21 +507,17 @@ export interface InstanceState {
     createTime?: pulumi.Input<string>;
     /**
      * Custom domain settings for a Looker instance.
-     * Structure is documented below.
      */
     customDomain?: pulumi.Input<inputs.looker.InstanceCustomDomain>;
     /**
-     * Policy to determine if the cluster should be deleted forcefully.
-     * If setting deletionPolicy = "FORCE", the Looker instance will be deleted regardless
-     * of its nested resources. If set to "DEFAULT", Looker instances that still have
+     * Policy to determine if the cluster should be deleted forcefully. If setting deletionPolicy = "FORCE", the Looker
+     * instance will be deleted regardless of its nested resources. If set to "DEFAULT", Looker instances that still have
      * nested resources will return an error. Possible values: DEFAULT, FORCE
      */
     deletionPolicy?: pulumi.Input<string>;
     /**
-     * Maintenance denial period for this instance.
-     * You must allow at least 14 days of maintenance availability
-     * between any two deny maintenance periods.
-     * Structure is documented below.
+     * Maintenance denial period for this instance. You must allow at least 14 days of maintenance availability between any two
+     * deny maintenance periods.
      */
     denyMaintenancePeriod?: pulumi.Input<inputs.looker.InstanceDenyMaintenancePeriod>;
     /**
@@ -552,7 +526,6 @@ export interface InstanceState {
     egressPublicIp?: pulumi.Input<string>;
     /**
      * Looker instance encryption settings.
-     * Structure is documented below.
      */
     encryptionConfig?: pulumi.Input<inputs.looker.InstanceEncryptionConfig>;
     /**
@@ -576,18 +549,12 @@ export interface InstanceState {
      */
     lookerVersion?: pulumi.Input<string>;
     /**
-     * Maintenance window for an instance.
-     * Maintenance of your instance takes place once a month, and will require
-     * your instance to be restarted during updates, which will temporarily
-     * disrupt service.
-     * Structure is documented below.
+     * Maintenance window for an instance. Maintenance of your instance takes place once a month, and will require your
+     * instance to be restarted during updates, which will temporarily disrupt service.
      */
     maintenanceWindow?: pulumi.Input<inputs.looker.InstanceMaintenanceWindow>;
     /**
      * The ID of the instance or a fully qualified identifier for the instance.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -596,28 +563,21 @@ export interface InstanceState {
      */
     oauthConfig?: pulumi.Input<inputs.looker.InstanceOauthConfig>;
     /**
-     * Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
-     * - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
-     * - LOOKER_CORE_STANDARD: pay as you go standard instance (Currently Unavailable)
-     * - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
-     * - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
-     * - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
-     * Default value is `LOOKER_CORE_TRIAL`.
-     * Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
+     * Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of
+     * these values: - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable) - LOOKER_CORE_STANDARD: pay as you go standard
+     * instance (Currently Unavailable) - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance -
+     * LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
+     * Default value: "LOOKER_CORE_TRIAL" Possible values: ["LOOKER_CORE_TRIAL", "LOOKER_CORE_STANDARD",
+     * "LOOKER_CORE_STANDARD_ANNUAL", "LOOKER_CORE_ENTERPRISE_ANNUAL", "LOOKER_CORE_EMBED_ANNUAL"]
      */
     platformEdition?: pulumi.Input<string>;
     /**
      * Whether private IP is enabled on the Looker instance.
      */
     privateIpEnabled?: pulumi.Input<boolean>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
      * Information for Private Service Connect (PSC) setup for a Looker instance.
-     * Structure is documented below.
      */
     pscConfig?: pulumi.Input<inputs.looker.InstancePscConfig>;
     /**
@@ -633,8 +593,8 @@ export interface InstanceState {
      */
     region?: pulumi.Input<string>;
     /**
-     * Name of a reserved IP address range within the consumer network, to be used for
-     * private service access connection. User may or may not specify this in a request.
+     * Name of a reserved IP address range within the consumer network, to be used for private service access connection. User
+     * may or may not specify this in a request.
      */
     reservedRange?: pulumi.Input<string>;
     /**
@@ -643,14 +603,11 @@ export interface InstanceState {
      */
     updateTime?: pulumi.Input<string>;
     /**
-     * Metadata about users for a Looker instance.
-     * These settings are only available when platform edition LOOKER_CORE_STANDARD is set.
-     * There are ten Standard and two Developer users included in the cost of the product.
-     * You can allocate additional Standard, Viewer, and Developer users for this instance.
-     * It is an optional step and can be modified later.
-     * With the Standard edition of Looker (Google Cloud core), you can provision up to 50
-     * total users, distributed across Viewer, Standard, and Developer.
-     * Structure is documented below.
+     * Metadata about users for a Looker instance. These settings are only available when platform edition LOOKER_CORE_STANDARD
+     * is set. There are ten Standard and two Developer users included in the cost of the product. You can allocate additional
+     * Standard, Viewer, and Developer users for this instance. It is an optional step and can be modified later. With the
+     * Standard edition of Looker (Google Cloud core), you can provision up to 50 total users, distributed across Viewer,
+     * Standard, and Developer.
      */
     userMetadata?: pulumi.Input<inputs.looker.InstanceUserMetadata>;
 }
@@ -661,37 +618,30 @@ export interface InstanceState {
 export interface InstanceArgs {
     /**
      * Looker instance Admin settings.
-     * Structure is documented below.
      */
     adminSettings?: pulumi.Input<inputs.looker.InstanceAdminSettings>;
     /**
-     * Network name in the consumer project in the format of: projects/{project}/global/networks/{network}
-     * Note that the consumer network may be in a different GCP project than the consumer
-     * project that is hosting the Looker Instance.
+     * Network name in the consumer project in the format of: projects/{project}/global/networks/{network} Note that the
+     * consumer network may be in a different GCP project than the consumer project that is hosting the Looker Instance.
      */
     consumerNetwork?: pulumi.Input<string>;
     /**
      * Custom domain settings for a Looker instance.
-     * Structure is documented below.
      */
     customDomain?: pulumi.Input<inputs.looker.InstanceCustomDomain>;
     /**
-     * Policy to determine if the cluster should be deleted forcefully.
-     * If setting deletionPolicy = "FORCE", the Looker instance will be deleted regardless
-     * of its nested resources. If set to "DEFAULT", Looker instances that still have
+     * Policy to determine if the cluster should be deleted forcefully. If setting deletionPolicy = "FORCE", the Looker
+     * instance will be deleted regardless of its nested resources. If set to "DEFAULT", Looker instances that still have
      * nested resources will return an error. Possible values: DEFAULT, FORCE
      */
     deletionPolicy?: pulumi.Input<string>;
     /**
-     * Maintenance denial period for this instance.
-     * You must allow at least 14 days of maintenance availability
-     * between any two deny maintenance periods.
-     * Structure is documented below.
+     * Maintenance denial period for this instance. You must allow at least 14 days of maintenance availability between any two
+     * deny maintenance periods.
      */
     denyMaintenancePeriod?: pulumi.Input<inputs.looker.InstanceDenyMaintenancePeriod>;
     /**
      * Looker instance encryption settings.
-     * Structure is documented below.
      */
     encryptionConfig?: pulumi.Input<inputs.looker.InstanceEncryptionConfig>;
     /**
@@ -699,48 +649,35 @@ export interface InstanceArgs {
      */
     fipsEnabled?: pulumi.Input<boolean>;
     /**
-     * Maintenance window for an instance.
-     * Maintenance of your instance takes place once a month, and will require
-     * your instance to be restarted during updates, which will temporarily
-     * disrupt service.
-     * Structure is documented below.
+     * Maintenance window for an instance. Maintenance of your instance takes place once a month, and will require your
+     * instance to be restarted during updates, which will temporarily disrupt service.
      */
     maintenanceWindow?: pulumi.Input<inputs.looker.InstanceMaintenanceWindow>;
     /**
      * The ID of the instance or a fully qualified identifier for the instance.
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
      * Looker Instance OAuth login settings.
      * Structure is documented below.
      */
-    oauthConfig?: pulumi.Input<inputs.looker.InstanceOauthConfig>;
+    oauthConfig: pulumi.Input<inputs.looker.InstanceOauthConfig>;
     /**
-     * Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of these values:
-     * - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable)
-     * - LOOKER_CORE_STANDARD: pay as you go standard instance (Currently Unavailable)
-     * - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance
-     * - LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance
-     * - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
-     * Default value is `LOOKER_CORE_TRIAL`.
-     * Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`.
+     * Platform editions for a Looker instance. Each edition maps to a set of instance features, like its size. Must be one of
+     * these values: - LOOKER_CORE_TRIAL: trial instance (Currently Unavailable) - LOOKER_CORE_STANDARD: pay as you go standard
+     * instance (Currently Unavailable) - LOOKER_CORE_STANDARD_ANNUAL: subscription standard instance -
+     * LOOKER_CORE_ENTERPRISE_ANNUAL: subscription enterprise instance - LOOKER_CORE_EMBED_ANNUAL: subscription embed instance
+     * Default value: "LOOKER_CORE_TRIAL" Possible values: ["LOOKER_CORE_TRIAL", "LOOKER_CORE_STANDARD",
+     * "LOOKER_CORE_STANDARD_ANNUAL", "LOOKER_CORE_ENTERPRISE_ANNUAL", "LOOKER_CORE_EMBED_ANNUAL"]
      */
     platformEdition?: pulumi.Input<string>;
     /**
      * Whether private IP is enabled on the Looker instance.
      */
     privateIpEnabled?: pulumi.Input<boolean>;
-    /**
-     * The ID of the project in which the resource belongs.
-     * If it is not provided, the provider project is used.
-     */
     project?: pulumi.Input<string>;
     /**
      * Information for Private Service Connect (PSC) setup for a Looker instance.
-     * Structure is documented below.
      */
     pscConfig?: pulumi.Input<inputs.looker.InstancePscConfig>;
     /**
@@ -756,19 +693,16 @@ export interface InstanceArgs {
      */
     region?: pulumi.Input<string>;
     /**
-     * Name of a reserved IP address range within the consumer network, to be used for
-     * private service access connection. User may or may not specify this in a request.
+     * Name of a reserved IP address range within the consumer network, to be used for private service access connection. User
+     * may or may not specify this in a request.
      */
     reservedRange?: pulumi.Input<string>;
     /**
-     * Metadata about users for a Looker instance.
-     * These settings are only available when platform edition LOOKER_CORE_STANDARD is set.
-     * There are ten Standard and two Developer users included in the cost of the product.
-     * You can allocate additional Standard, Viewer, and Developer users for this instance.
-     * It is an optional step and can be modified later.
-     * With the Standard edition of Looker (Google Cloud core), you can provision up to 50
-     * total users, distributed across Viewer, Standard, and Developer.
-     * Structure is documented below.
+     * Metadata about users for a Looker instance. These settings are only available when platform edition LOOKER_CORE_STANDARD
+     * is set. There are ten Standard and two Developer users included in the cost of the product. You can allocate additional
+     * Standard, Viewer, and Developer users for this instance. It is an optional step and can be modified later. With the
+     * Standard edition of Looker (Google Cloud core), you can provision up to 50 total users, distributed across Viewer,
+     * Standard, and Developer.
      */
     userMetadata?: pulumi.Input<inputs.looker.InstanceUserMetadata>;
 }

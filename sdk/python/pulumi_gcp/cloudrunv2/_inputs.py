@@ -1655,6 +1655,11 @@ if not MYPY:
         """
         Name of the cloud storage bucket to back the volume. The resource service account must have permission to access the bucket.
         """
+        mount_options: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of flags to pass to the gcsfuse command for configuring this volume.
+        Flags should be passed without leading dashes.
+        """
         read_only: NotRequired[pulumi.Input[bool]]
         """
         If true, mount this volume as read-only in all mounts. If false, mount this volume as read-write.
@@ -1666,12 +1671,17 @@ elif False:
 class JobTemplateTemplateVolumeGcsArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[str],
+                 mount_options: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  read_only: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] bucket: Name of the cloud storage bucket to back the volume. The resource service account must have permission to access the bucket.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] mount_options: A list of flags to pass to the gcsfuse command for configuring this volume.
+               Flags should be passed without leading dashes.
         :param pulumi.Input[bool] read_only: If true, mount this volume as read-only in all mounts. If false, mount this volume as read-write.
         """
         pulumi.set(__self__, "bucket", bucket)
+        if mount_options is not None:
+            pulumi.set(__self__, "mount_options", mount_options)
         if read_only is not None:
             pulumi.set(__self__, "read_only", read_only)
 
@@ -1686,6 +1696,19 @@ class JobTemplateTemplateVolumeGcsArgs:
     @bucket.setter
     def bucket(self, value: pulumi.Input[str]):
         pulumi.set(self, "bucket", value)
+
+    @property
+    @pulumi.getter(name="mountOptions")
+    def mount_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of flags to pass to the gcsfuse command for configuring this volume.
+        Flags should be passed without leading dashes.
+        """
+        return pulumi.get(self, "mount_options")
+
+    @mount_options.setter
+    def mount_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "mount_options", value)
 
     @property
     @pulumi.getter(name="readOnly")
@@ -4779,6 +4802,11 @@ if not MYPY:
         """
         GCS Bucket name
         """
+        mount_options: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of flags to pass to the gcsfuse command for configuring this volume.
+        Flags should be passed without leading dashes.
+        """
         read_only: NotRequired[pulumi.Input[bool]]
         """
         If true, mount the GCS bucket as read-only
@@ -4790,12 +4818,17 @@ elif False:
 class ServiceTemplateVolumeGcsArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[str],
+                 mount_options: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  read_only: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] bucket: GCS Bucket name
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] mount_options: A list of flags to pass to the gcsfuse command for configuring this volume.
+               Flags should be passed without leading dashes.
         :param pulumi.Input[bool] read_only: If true, mount the GCS bucket as read-only
         """
         pulumi.set(__self__, "bucket", bucket)
+        if mount_options is not None:
+            pulumi.set(__self__, "mount_options", mount_options)
         if read_only is not None:
             pulumi.set(__self__, "read_only", read_only)
 
@@ -4810,6 +4843,19 @@ class ServiceTemplateVolumeGcsArgs:
     @bucket.setter
     def bucket(self, value: pulumi.Input[str]):
         pulumi.set(self, "bucket", value)
+
+    @property
+    @pulumi.getter(name="mountOptions")
+    def mount_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of flags to pass to the gcsfuse command for configuring this volume.
+        Flags should be passed without leading dashes.
+        """
+        return pulumi.get(self, "mount_options")
+
+    @mount_options.setter
+    def mount_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "mount_options", value)
 
     @property
     @pulumi.getter(name="readOnly")

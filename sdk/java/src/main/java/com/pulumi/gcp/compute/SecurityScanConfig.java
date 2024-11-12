@@ -76,20 +76,20 @@ import javax.annotation.Nullable;
  * 
  * ScanConfig can be imported using any of these accepted formats:
  * 
- * * `projects/{{project}}/scanConfigs/{{name}}`
- * 
  * * `{{project}}/{{name}}`
+ * 
+ * * `{{project}} {{name}}`
  * 
  * * `{{name}}`
  * 
  * When using the `pulumi import` command, ScanConfig can be imported using one of the formats above. For example:
  * 
  * ```sh
- * $ pulumi import gcp:compute/securityScanConfig:SecurityScanConfig default projects/{{project}}/scanConfigs/{{name}}
+ * $ pulumi import gcp:compute/securityScanConfig:SecurityScanConfig default {{project}}/{{name}}
  * ```
  * 
  * ```sh
- * $ pulumi import gcp:compute/securityScanConfig:SecurityScanConfig default {{project}}/{{name}}
+ * $ pulumi import gcp:compute/securityScanConfig:SecurityScanConfig default &#34;{{project}} {{name}}&#34;
  * ```
  * 
  * ```sh

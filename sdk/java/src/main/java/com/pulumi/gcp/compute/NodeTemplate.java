@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.NodeTemplateArgs;
 import com.pulumi.gcp.compute.inputs.NodeTemplateState;
 import com.pulumi.gcp.compute.outputs.NodeTemplateAccelerator;
+import com.pulumi.gcp.compute.outputs.NodeTemplateDisk;
 import com.pulumi.gcp.compute.outputs.NodeTemplateNodeTypeFlexibility;
 import com.pulumi.gcp.compute.outputs.NodeTemplateServerBinding;
 import java.lang.String;
@@ -162,6 +163,54 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Node Template Disks
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.ComputeFunctions;
+ * import com.pulumi.gcp.compute.inputs.GetNodeTypesArgs;
+ * import com.pulumi.gcp.compute.NodeTemplate;
+ * import com.pulumi.gcp.compute.NodeTemplateArgs;
+ * import com.pulumi.gcp.compute.inputs.NodeTemplateDiskArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var central1a = ComputeFunctions.getNodeTypes(GetNodeTypesArgs.builder()
+ *             .zone("us-central1-a")
+ *             .build());
+ * 
+ *         var template = new NodeTemplate("template", NodeTemplateArgs.builder()
+ *             .name("soletenant-with-disks")
+ *             .region("us-central1")
+ *             .nodeType("n2-node-80-640")
+ *             .disks(NodeTemplateDiskArgs.builder()
+ *                 .diskCount(16)
+ *                 .diskSizeGb(375)
+ *                 .diskType("local-ssd")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -259,6 +308,24 @@ public class NodeTemplate extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * List of the type, size and count of disks attached to the
+     * node template
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="disks", refs={List.class,NodeTemplateDisk.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<NodeTemplateDisk>> disks;
+
+    /**
+     * @return List of the type, size and count of disks attached to the
+     * node template
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<List<NodeTemplateDisk>>> disks() {
+        return Codegen.optional(this.disks);
     }
     /**
      * Name of the resource.

@@ -124,7 +124,7 @@ export class VpnConnection extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      */
     public /*out*/ readonly details!: pulumi.Output<outputs.edgecontainer.VpnConnectionDetail[]>;
@@ -258,7 +258,7 @@ export interface VpnConnectionState {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      */
     details?: pulumi.Input<pulumi.Input<inputs.edgecontainer.VpnConnectionDetail>[]>;

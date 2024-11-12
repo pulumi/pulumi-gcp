@@ -160,7 +160,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:healthcare/dataset:Dataset")
 public class Dataset extends com.pulumi.resources.CustomResource {
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -168,7 +168,7 @@ public class Dataset extends com.pulumi.resources.CustomResource {
     private Output<DatasetEncryptionSpec> encryptionSpec;
 
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */

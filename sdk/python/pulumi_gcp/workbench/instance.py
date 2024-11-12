@@ -43,7 +43,9 @@ class InstanceArgs:
         :param pulumi.Input[str] instance_id: Required. User-defined unique ID of this instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_owners: 'Optional. Input only. The owner of this instance after creation. Format:
                `alias@example.com` Currently supports one owner only. If not specified, all of
-               the service account users of your VM instance''s service account can use the instance.'
+               the service account users of your VM instance''s service account can use the instance.
+               If specified, sets the access mode to `Single user`. For more details, see
+               https://cloud.google.com/vertex-ai/docs/workbench/instances/manage-access-jupyterlab'
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels to apply to this instance. These can be later modified
                by the UpdateInstance method.
                
@@ -141,7 +143,9 @@ class InstanceArgs:
         """
         'Optional. Input only. The owner of this instance after creation. Format:
         `alias@example.com` Currently supports one owner only. If not specified, all of
-        the service account users of your VM instance''s service account can use the instance.'
+        the service account users of your VM instance''s service account can use the instance.
+        If specified, sets the access mode to `Single user`. For more details, see
+        https://cloud.google.com/vertex-ai/docs/workbench/instances/manage-access-jupyterlab'
         """
         return pulumi.get(self, "instance_owners")
 
@@ -230,7 +234,9 @@ class _InstanceState:
         :param pulumi.Input[str] instance_id: Required. User-defined unique ID of this instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_owners: 'Optional. Input only. The owner of this instance after creation. Format:
                `alias@example.com` Currently supports one owner only. If not specified, all of
-               the service account users of your VM instance''s service account can use the instance.'
+               the service account users of your VM instance''s service account can use the instance.
+               If specified, sets the access mode to `Single user`. For more details, see
+               https://cloud.google.com/vertex-ai/docs/workbench/instances/manage-access-jupyterlab'
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels to apply to this instance. These can be later modified
                by the UpdateInstance method.
                
@@ -410,7 +416,9 @@ class _InstanceState:
         """
         'Optional. Input only. The owner of this instance after creation. Format:
         `alias@example.com` Currently supports one owner only. If not specified, all of
-        the service account users of your VM instance''s service account can use the instance.'
+        the service account users of your VM instance''s service account can use the instance.
+        If specified, sets the access mode to `Single user`. For more details, see
+        https://cloud.google.com/vertex-ai/docs/workbench/instances/manage-access-jupyterlab'
         """
         return pulumi.get(self, "instance_owners")
 
@@ -741,7 +749,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] instance_id: Required. User-defined unique ID of this instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_owners: 'Optional. Input only. The owner of this instance after creation. Format:
                `alias@example.com` Currently supports one owner only. If not specified, all of
-               the service account users of your VM instance''s service account can use the instance.'
+               the service account users of your VM instance''s service account can use the instance.
+               If specified, sets the access mode to `Single user`. For more details, see
+               https://cloud.google.com/vertex-ai/docs/workbench/instances/manage-access-jupyterlab'
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels to apply to this instance. These can be later modified
                by the UpdateInstance method.
                
@@ -1046,7 +1056,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] instance_id: Required. User-defined unique ID of this instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_owners: 'Optional. Input only. The owner of this instance after creation. Format:
                `alias@example.com` Currently supports one owner only. If not specified, all of
-               the service account users of your VM instance''s service account can use the instance.'
+               the service account users of your VM instance''s service account can use the instance.
+               If specified, sets the access mode to `Single user`. For more details, see
+               https://cloud.google.com/vertex-ai/docs/workbench/instances/manage-access-jupyterlab'
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels to apply to this instance. These can be later modified
                by the UpdateInstance method.
                
@@ -1176,7 +1188,9 @@ class Instance(pulumi.CustomResource):
         """
         'Optional. Input only. The owner of this instance after creation. Format:
         `alias@example.com` Currently supports one owner only. If not specified, all of
-        the service account users of your VM instance''s service account can use the instance.'
+        the service account users of your VM instance''s service account can use the instance.
+        If specified, sets the access mode to `Single user`. For more details, see
+        https://cloud.google.com/vertex-ai/docs/workbench/instances/manage-access-jupyterlab'
         """
         return pulumi.get(self, "instance_owners")
 

@@ -39,7 +39,8 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
     ///             { "annotations2", "baz1" },
     ///         },
     ///         ForceUpdate = true,
-    ///         ForceDelete = true,
+    ///         IgnoreInactiveDatasources = true,
+    ///         IgnoreBackupPlanReferences = true,
     ///         AllowMissing = true,
     ///     });
     /// 
@@ -149,9 +150,12 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// If set, the following restrictions against deletion of the backup vault instance can be overridden:
         /// * deletion of a backup vault instance containing no backups, but still containing empty datasources.
         /// * deletion of a backup vault instance that is being referenced by an active backup plan.
+        /// 
+        /// &gt; **Warning:** `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.
         /// </summary>
         [Output("forceDelete")]
         public Output<bool?> ForceDelete { get; private set; } = null!;
@@ -164,6 +168,20 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// </summary>
         [Output("forceUpdate")]
         public Output<bool?> ForceUpdate { get; private set; } = null!;
+
+        /// <summary>
+        /// If set, the following restrictions against deletion of the backup vault instance can be overridden:
+        /// * deletion of a backup vault instance that is being referenced by an active backup plan.
+        /// </summary>
+        [Output("ignoreBackupPlanReferences")]
+        public Output<bool?> IgnoreBackupPlanReferences { get; private set; } = null!;
+
+        /// <summary>
+        /// If set, the following restrictions against deletion of the backup vault instance can be overridden:
+        /// * deletion of a backup vault instance containing no backups, but still containing empty datasources.
+        /// </summary>
+        [Output("ignoreInactiveDatasources")]
+        public Output<bool?> IgnoreInactiveDatasources { get; private set; } = null!;
 
         /// <summary>
         /// Optional. Resource labels to represent user provided metadata.
@@ -335,9 +353,12 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         public Input<string>? EffectiveTime { get; set; }
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// If set, the following restrictions against deletion of the backup vault instance can be overridden:
         /// * deletion of a backup vault instance containing no backups, but still containing empty datasources.
         /// * deletion of a backup vault instance that is being referenced by an active backup plan.
+        /// 
+        /// &gt; **Warning:** `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.
         /// </summary>
         [Input("forceDelete")]
         public Input<bool>? ForceDelete { get; set; }
@@ -350,6 +371,20 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// </summary>
         [Input("forceUpdate")]
         public Input<bool>? ForceUpdate { get; set; }
+
+        /// <summary>
+        /// If set, the following restrictions against deletion of the backup vault instance can be overridden:
+        /// * deletion of a backup vault instance that is being referenced by an active backup plan.
+        /// </summary>
+        [Input("ignoreBackupPlanReferences")]
+        public Input<bool>? IgnoreBackupPlanReferences { get; set; }
+
+        /// <summary>
+        /// If set, the following restrictions against deletion of the backup vault instance can be overridden:
+        /// * deletion of a backup vault instance containing no backups, but still containing empty datasources.
+        /// </summary>
+        [Input("ignoreInactiveDatasources")]
+        public Input<bool>? IgnoreInactiveDatasources { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -483,9 +518,12 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         public Input<string>? Etag { get; set; }
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// If set, the following restrictions against deletion of the backup vault instance can be overridden:
         /// * deletion of a backup vault instance containing no backups, but still containing empty datasources.
         /// * deletion of a backup vault instance that is being referenced by an active backup plan.
+        /// 
+        /// &gt; **Warning:** `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.
         /// </summary>
         [Input("forceDelete")]
         public Input<bool>? ForceDelete { get; set; }
@@ -498,6 +536,20 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// </summary>
         [Input("forceUpdate")]
         public Input<bool>? ForceUpdate { get; set; }
+
+        /// <summary>
+        /// If set, the following restrictions against deletion of the backup vault instance can be overridden:
+        /// * deletion of a backup vault instance that is being referenced by an active backup plan.
+        /// </summary>
+        [Input("ignoreBackupPlanReferences")]
+        public Input<bool>? IgnoreBackupPlanReferences { get; set; }
+
+        /// <summary>
+        /// If set, the following restrictions against deletion of the backup vault instance can be overridden:
+        /// * deletion of a backup vault instance containing no backups, but still containing empty datasources.
+        /// </summary>
+        [Input("ignoreInactiveDatasources")]
+        public Input<bool>? IgnoreInactiveDatasources { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

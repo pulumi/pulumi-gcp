@@ -28,6 +28,8 @@ class BackupVaultArgs:
                  effective_time: Optional[pulumi.Input[str]] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
                  force_update: Optional[pulumi.Input[bool]] = None,
+                 ignore_backup_plan_references: Optional[pulumi.Input[bool]] = None,
+                 ignore_inactive_datasources: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -45,13 +47,20 @@ class BackupVaultArgs:
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] description: Optional. The description of the BackupVault instance (2048 characters or less).
         :param pulumi.Input[str] effective_time: Optional. Time after which the BackupVault resource is locked.
-        :param pulumi.Input[bool] force_delete: If set, the following restrictions against deletion of the backup vault instance can be overridden:
+        :param pulumi.Input[bool] force_delete: (Optional, Deprecated)
+               If set, the following restrictions against deletion of the backup vault instance can be overridden:
                * deletion of a backup vault instance containing no backups, but still containing empty datasources.
                * deletion of a backup vault instance that is being referenced by an active backup plan.
+               
+               > **Warning:** `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.
         :param pulumi.Input[bool] force_update: If set, allow update to extend the minimum enforced retention for backup vault. This overrides
                the restriction against conflicting retention periods. This conflict may occur when the
                expiration schedule defined by the associated backup plan is shorter than the minimum
                retention set by the backup vault.
+        :param pulumi.Input[bool] ignore_backup_plan_references: If set, the following restrictions against deletion of the backup vault instance can be overridden:
+               * deletion of a backup vault instance that is being referenced by an active backup plan.
+        :param pulumi.Input[bool] ignore_inactive_datasources: If set, the following restrictions against deletion of the backup vault instance can be overridden:
+               * deletion of a backup vault instance containing no backups, but still containing empty datasources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels to represent user provided metadata.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -70,9 +79,16 @@ class BackupVaultArgs:
         if effective_time is not None:
             pulumi.set(__self__, "effective_time", effective_time)
         if force_delete is not None:
+            warnings.warn("""`force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.""", DeprecationWarning)
+            pulumi.log.warn("""force_delete is deprecated: `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.""")
+        if force_delete is not None:
             pulumi.set(__self__, "force_delete", force_delete)
         if force_update is not None:
             pulumi.set(__self__, "force_update", force_update)
+        if ignore_backup_plan_references is not None:
+            pulumi.set(__self__, "ignore_backup_plan_references", ignore_backup_plan_references)
+        if ignore_inactive_datasources is not None:
+            pulumi.set(__self__, "ignore_inactive_datasources", ignore_inactive_datasources)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if project is not None:
@@ -170,11 +186,15 @@ class BackupVaultArgs:
 
     @property
     @pulumi.getter(name="forceDelete")
+    @_utilities.deprecated("""`force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.""")
     def force_delete(self) -> Optional[pulumi.Input[bool]]:
         """
+        (Optional, Deprecated)
         If set, the following restrictions against deletion of the backup vault instance can be overridden:
         * deletion of a backup vault instance containing no backups, but still containing empty datasources.
         * deletion of a backup vault instance that is being referenced by an active backup plan.
+
+        > **Warning:** `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.
         """
         return pulumi.get(self, "force_delete")
 
@@ -196,6 +216,32 @@ class BackupVaultArgs:
     @force_update.setter
     def force_update(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "force_update", value)
+
+    @property
+    @pulumi.getter(name="ignoreBackupPlanReferences")
+    def ignore_backup_plan_references(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set, the following restrictions against deletion of the backup vault instance can be overridden:
+        * deletion of a backup vault instance that is being referenced by an active backup plan.
+        """
+        return pulumi.get(self, "ignore_backup_plan_references")
+
+    @ignore_backup_plan_references.setter
+    def ignore_backup_plan_references(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ignore_backup_plan_references", value)
+
+    @property
+    @pulumi.getter(name="ignoreInactiveDatasources")
+    def ignore_inactive_datasources(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set, the following restrictions against deletion of the backup vault instance can be overridden:
+        * deletion of a backup vault instance containing no backups, but still containing empty datasources.
+        """
+        return pulumi.get(self, "ignore_inactive_datasources")
+
+    @ignore_inactive_datasources.setter
+    def ignore_inactive_datasources(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ignore_inactive_datasources", value)
 
     @property
     @pulumi.getter
@@ -242,6 +288,8 @@ class _BackupVaultState:
                  etag: Optional[pulumi.Input[str]] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
                  force_update: Optional[pulumi.Input[bool]] = None,
+                 ignore_backup_plan_references: Optional[pulumi.Input[bool]] = None,
+                 ignore_inactive_datasources: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -271,13 +319,20 @@ class _BackupVaultState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] effective_time: Optional. Time after which the BackupVault resource is locked.
         :param pulumi.Input[str] etag: Optional. Server specified ETag for the backup vault resource to prevent simultaneous updates from overwiting each other.
-        :param pulumi.Input[bool] force_delete: If set, the following restrictions against deletion of the backup vault instance can be overridden:
+        :param pulumi.Input[bool] force_delete: (Optional, Deprecated)
+               If set, the following restrictions against deletion of the backup vault instance can be overridden:
                * deletion of a backup vault instance containing no backups, but still containing empty datasources.
                * deletion of a backup vault instance that is being referenced by an active backup plan.
+               
+               > **Warning:** `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.
         :param pulumi.Input[bool] force_update: If set, allow update to extend the minimum enforced retention for backup vault. This overrides
                the restriction against conflicting retention periods. This conflict may occur when the
                expiration schedule defined by the associated backup plan is shorter than the minimum
                retention set by the backup vault.
+        :param pulumi.Input[bool] ignore_backup_plan_references: If set, the following restrictions against deletion of the backup vault instance can be overridden:
+               * deletion of a backup vault instance that is being referenced by an active backup plan.
+        :param pulumi.Input[bool] ignore_inactive_datasources: If set, the following restrictions against deletion of the backup vault instance can be overridden:
+               * deletion of a backup vault instance containing no backups, but still containing empty datasources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels to represent user provided metadata.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -324,9 +379,16 @@ class _BackupVaultState:
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
         if force_delete is not None:
+            warnings.warn("""`force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.""", DeprecationWarning)
+            pulumi.log.warn("""force_delete is deprecated: `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.""")
+        if force_delete is not None:
             pulumi.set(__self__, "force_delete", force_delete)
         if force_update is not None:
             pulumi.set(__self__, "force_update", force_update)
+        if ignore_backup_plan_references is not None:
+            pulumi.set(__self__, "ignore_backup_plan_references", ignore_backup_plan_references)
+        if ignore_inactive_datasources is not None:
+            pulumi.set(__self__, "ignore_inactive_datasources", ignore_inactive_datasources)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -497,11 +559,15 @@ class _BackupVaultState:
 
     @property
     @pulumi.getter(name="forceDelete")
+    @_utilities.deprecated("""`force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.""")
     def force_delete(self) -> Optional[pulumi.Input[bool]]:
         """
+        (Optional, Deprecated)
         If set, the following restrictions against deletion of the backup vault instance can be overridden:
         * deletion of a backup vault instance containing no backups, but still containing empty datasources.
         * deletion of a backup vault instance that is being referenced by an active backup plan.
+
+        > **Warning:** `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.
         """
         return pulumi.get(self, "force_delete")
 
@@ -523,6 +589,32 @@ class _BackupVaultState:
     @force_update.setter
     def force_update(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "force_update", value)
+
+    @property
+    @pulumi.getter(name="ignoreBackupPlanReferences")
+    def ignore_backup_plan_references(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set, the following restrictions against deletion of the backup vault instance can be overridden:
+        * deletion of a backup vault instance that is being referenced by an active backup plan.
+        """
+        return pulumi.get(self, "ignore_backup_plan_references")
+
+    @ignore_backup_plan_references.setter
+    def ignore_backup_plan_references(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ignore_backup_plan_references", value)
+
+    @property
+    @pulumi.getter(name="ignoreInactiveDatasources")
+    def ignore_inactive_datasources(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set, the following restrictions against deletion of the backup vault instance can be overridden:
+        * deletion of a backup vault instance containing no backups, but still containing empty datasources.
+        """
+        return pulumi.get(self, "ignore_inactive_datasources")
+
+    @ignore_inactive_datasources.setter
+    def ignore_inactive_datasources(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ignore_inactive_datasources", value)
 
     @property
     @pulumi.getter
@@ -668,6 +760,8 @@ class BackupVault(pulumi.CustomResource):
                  effective_time: Optional[pulumi.Input[str]] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
                  force_update: Optional[pulumi.Input[bool]] = None,
+                 ignore_backup_plan_references: Optional[pulumi.Input[bool]] = None,
+                 ignore_inactive_datasources: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -695,7 +789,8 @@ class BackupVault(pulumi.CustomResource):
                 "annotations2": "baz1",
             },
             force_update=True,
-            force_delete=True,
+            ignore_inactive_datasources=True,
+            ignore_backup_plan_references=True,
             allow_missing=True)
         ```
 
@@ -737,13 +832,20 @@ class BackupVault(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] description: Optional. The description of the BackupVault instance (2048 characters or less).
         :param pulumi.Input[str] effective_time: Optional. Time after which the BackupVault resource is locked.
-        :param pulumi.Input[bool] force_delete: If set, the following restrictions against deletion of the backup vault instance can be overridden:
+        :param pulumi.Input[bool] force_delete: (Optional, Deprecated)
+               If set, the following restrictions against deletion of the backup vault instance can be overridden:
                * deletion of a backup vault instance containing no backups, but still containing empty datasources.
                * deletion of a backup vault instance that is being referenced by an active backup plan.
+               
+               > **Warning:** `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.
         :param pulumi.Input[bool] force_update: If set, allow update to extend the minimum enforced retention for backup vault. This overrides
                the restriction against conflicting retention periods. This conflict may occur when the
                expiration schedule defined by the associated backup plan is shorter than the minimum
                retention set by the backup vault.
+        :param pulumi.Input[bool] ignore_backup_plan_references: If set, the following restrictions against deletion of the backup vault instance can be overridden:
+               * deletion of a backup vault instance that is being referenced by an active backup plan.
+        :param pulumi.Input[bool] ignore_inactive_datasources: If set, the following restrictions against deletion of the backup vault instance can be overridden:
+               * deletion of a backup vault instance containing no backups, but still containing empty datasources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels to represent user provided metadata.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -780,7 +882,8 @@ class BackupVault(pulumi.CustomResource):
                 "annotations2": "baz1",
             },
             force_update=True,
-            force_delete=True,
+            ignore_inactive_datasources=True,
+            ignore_backup_plan_references=True,
             allow_missing=True)
         ```
 
@@ -831,6 +934,8 @@ class BackupVault(pulumi.CustomResource):
                  effective_time: Optional[pulumi.Input[str]] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
                  force_update: Optional[pulumi.Input[bool]] = None,
+                 ignore_backup_plan_references: Optional[pulumi.Input[bool]] = None,
+                 ignore_inactive_datasources: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -855,6 +960,8 @@ class BackupVault(pulumi.CustomResource):
             __props__.__dict__["effective_time"] = effective_time
             __props__.__dict__["force_delete"] = force_delete
             __props__.__dict__["force_update"] = force_update
+            __props__.__dict__["ignore_backup_plan_references"] = ignore_backup_plan_references
+            __props__.__dict__["ignore_inactive_datasources"] = ignore_inactive_datasources
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
@@ -899,6 +1006,8 @@ class BackupVault(pulumi.CustomResource):
             etag: Optional[pulumi.Input[str]] = None,
             force_delete: Optional[pulumi.Input[bool]] = None,
             force_update: Optional[pulumi.Input[bool]] = None,
+            ignore_backup_plan_references: Optional[pulumi.Input[bool]] = None,
+            ignore_inactive_datasources: Optional[pulumi.Input[bool]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -933,13 +1042,20 @@ class BackupVault(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] effective_time: Optional. Time after which the BackupVault resource is locked.
         :param pulumi.Input[str] etag: Optional. Server specified ETag for the backup vault resource to prevent simultaneous updates from overwiting each other.
-        :param pulumi.Input[bool] force_delete: If set, the following restrictions against deletion of the backup vault instance can be overridden:
+        :param pulumi.Input[bool] force_delete: (Optional, Deprecated)
+               If set, the following restrictions against deletion of the backup vault instance can be overridden:
                * deletion of a backup vault instance containing no backups, but still containing empty datasources.
                * deletion of a backup vault instance that is being referenced by an active backup plan.
+               
+               > **Warning:** `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.
         :param pulumi.Input[bool] force_update: If set, allow update to extend the minimum enforced retention for backup vault. This overrides
                the restriction against conflicting retention periods. This conflict may occur when the
                expiration schedule defined by the associated backup plan is shorter than the minimum
                retention set by the backup vault.
+        :param pulumi.Input[bool] ignore_backup_plan_references: If set, the following restrictions against deletion of the backup vault instance can be overridden:
+               * deletion of a backup vault instance that is being referenced by an active backup plan.
+        :param pulumi.Input[bool] ignore_inactive_datasources: If set, the following restrictions against deletion of the backup vault instance can be overridden:
+               * deletion of a backup vault instance containing no backups, but still containing empty datasources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels to represent user provided metadata.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -979,6 +1095,8 @@ class BackupVault(pulumi.CustomResource):
         __props__.__dict__["etag"] = etag
         __props__.__dict__["force_delete"] = force_delete
         __props__.__dict__["force_update"] = force_update
+        __props__.__dict__["ignore_backup_plan_references"] = ignore_backup_plan_references
+        __props__.__dict__["ignore_inactive_datasources"] = ignore_inactive_datasources
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
@@ -1092,11 +1210,15 @@ class BackupVault(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="forceDelete")
+    @_utilities.deprecated("""`force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.""")
     def force_delete(self) -> pulumi.Output[Optional[bool]]:
         """
+        (Optional, Deprecated)
         If set, the following restrictions against deletion of the backup vault instance can be overridden:
         * deletion of a backup vault instance containing no backups, but still containing empty datasources.
         * deletion of a backup vault instance that is being referenced by an active backup plan.
+
+        > **Warning:** `force_delete` is deprecated and will be removed in a future major release. Use `ignore_inactive_datasources` instead.
         """
         return pulumi.get(self, "force_delete")
 
@@ -1110,6 +1232,24 @@ class BackupVault(pulumi.CustomResource):
         retention set by the backup vault.
         """
         return pulumi.get(self, "force_update")
+
+    @property
+    @pulumi.getter(name="ignoreBackupPlanReferences")
+    def ignore_backup_plan_references(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If set, the following restrictions against deletion of the backup vault instance can be overridden:
+        * deletion of a backup vault instance that is being referenced by an active backup plan.
+        """
+        return pulumi.get(self, "ignore_backup_plan_references")
+
+    @property
+    @pulumi.getter(name="ignoreInactiveDatasources")
+    def ignore_inactive_datasources(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If set, the following restrictions against deletion of the backup vault instance can be overridden:
+        * deletion of a backup vault instance containing no backups, but still containing empty datasources.
+        """
+        return pulumi.get(self, "ignore_inactive_datasources")
 
     @property
     @pulumi.getter

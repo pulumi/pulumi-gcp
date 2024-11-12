@@ -42,15 +42,15 @@ class RegionHealthCheckArgs:
                seconds.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
-        :param pulumi.Input['RegionHealthCheckGrpcHealthCheckArgs'] grpc_health_check: A nested object resource
+        :param pulumi.Input['RegionHealthCheckGrpcHealthCheckArgs'] grpc_health_check: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[int] healthy_threshold: A so-far unhealthy instance will be marked healthy after this many
                consecutive successes. The default value is 2.
-        :param pulumi.Input['RegionHealthCheckHttp2HealthCheckArgs'] http2_health_check: A nested object resource
+        :param pulumi.Input['RegionHealthCheckHttp2HealthCheckArgs'] http2_health_check: A nested object resource.
                Structure is documented below.
-        :param pulumi.Input['RegionHealthCheckHttpHealthCheckArgs'] http_health_check: A nested object resource
+        :param pulumi.Input['RegionHealthCheckHttpHealthCheckArgs'] http_health_check: A nested object resource.
                Structure is documented below.
-        :param pulumi.Input['RegionHealthCheckHttpsHealthCheckArgs'] https_health_check: A nested object resource
+        :param pulumi.Input['RegionHealthCheckHttpsHealthCheckArgs'] https_health_check: A nested object resource.
                Structure is documented below.
         :param pulumi.Input['RegionHealthCheckLogConfigArgs'] log_config: Configure logging on this health check.
                Structure is documented below.
@@ -68,9 +68,9 @@ class RegionHealthCheckArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The Region in which the created health check should reside.
                If it is not provided, the provider region is used.
-        :param pulumi.Input['RegionHealthCheckSslHealthCheckArgs'] ssl_health_check: A nested object resource
+        :param pulumi.Input['RegionHealthCheckSslHealthCheckArgs'] ssl_health_check: A nested object resource.
                Structure is documented below.
-        :param pulumi.Input['RegionHealthCheckTcpHealthCheckArgs'] tcp_health_check: A nested object resource
+        :param pulumi.Input['RegionHealthCheckTcpHealthCheckArgs'] tcp_health_check: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[int] timeout_sec: How long (in seconds) to wait before claiming failure.
                The default value is 5 seconds.  It is invalid for timeoutSec to have
@@ -139,7 +139,7 @@ class RegionHealthCheckArgs:
     @pulumi.getter(name="grpcHealthCheck")
     def grpc_health_check(self) -> Optional[pulumi.Input['RegionHealthCheckGrpcHealthCheckArgs']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "grpc_health_check")
@@ -165,7 +165,7 @@ class RegionHealthCheckArgs:
     @pulumi.getter(name="http2HealthCheck")
     def http2_health_check(self) -> Optional[pulumi.Input['RegionHealthCheckHttp2HealthCheckArgs']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "http2_health_check")
@@ -178,7 +178,7 @@ class RegionHealthCheckArgs:
     @pulumi.getter(name="httpHealthCheck")
     def http_health_check(self) -> Optional[pulumi.Input['RegionHealthCheckHttpHealthCheckArgs']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "http_health_check")
@@ -191,7 +191,7 @@ class RegionHealthCheckArgs:
     @pulumi.getter(name="httpsHealthCheck")
     def https_health_check(self) -> Optional[pulumi.Input['RegionHealthCheckHttpsHealthCheckArgs']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "https_health_check")
@@ -264,7 +264,7 @@ class RegionHealthCheckArgs:
     @pulumi.getter(name="sslHealthCheck")
     def ssl_health_check(self) -> Optional[pulumi.Input['RegionHealthCheckSslHealthCheckArgs']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "ssl_health_check")
@@ -277,7 +277,7 @@ class RegionHealthCheckArgs:
     @pulumi.getter(name="tcpHealthCheck")
     def tcp_health_check(self) -> Optional[pulumi.Input['RegionHealthCheckTcpHealthCheckArgs']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "tcp_health_check")
@@ -342,15 +342,15 @@ class _RegionHealthCheckState:
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
-        :param pulumi.Input['RegionHealthCheckGrpcHealthCheckArgs'] grpc_health_check: A nested object resource
+        :param pulumi.Input['RegionHealthCheckGrpcHealthCheckArgs'] grpc_health_check: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[int] healthy_threshold: A so-far unhealthy instance will be marked healthy after this many
                consecutive successes. The default value is 2.
-        :param pulumi.Input['RegionHealthCheckHttp2HealthCheckArgs'] http2_health_check: A nested object resource
+        :param pulumi.Input['RegionHealthCheckHttp2HealthCheckArgs'] http2_health_check: A nested object resource.
                Structure is documented below.
-        :param pulumi.Input['RegionHealthCheckHttpHealthCheckArgs'] http_health_check: A nested object resource
+        :param pulumi.Input['RegionHealthCheckHttpHealthCheckArgs'] http_health_check: A nested object resource.
                Structure is documented below.
-        :param pulumi.Input['RegionHealthCheckHttpsHealthCheckArgs'] https_health_check: A nested object resource
+        :param pulumi.Input['RegionHealthCheckHttpsHealthCheckArgs'] https_health_check: A nested object resource.
                Structure is documented below.
         :param pulumi.Input['RegionHealthCheckLogConfigArgs'] log_config: Configure logging on this health check.
                Structure is documented below.
@@ -369,9 +369,9 @@ class _RegionHealthCheckState:
         :param pulumi.Input[str] region: The Region in which the created health check should reside.
                If it is not provided, the provider region is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input['RegionHealthCheckSslHealthCheckArgs'] ssl_health_check: A nested object resource
+        :param pulumi.Input['RegionHealthCheckSslHealthCheckArgs'] ssl_health_check: A nested object resource.
                Structure is documented below.
-        :param pulumi.Input['RegionHealthCheckTcpHealthCheckArgs'] tcp_health_check: A nested object resource
+        :param pulumi.Input['RegionHealthCheckTcpHealthCheckArgs'] tcp_health_check: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[int] timeout_sec: How long (in seconds) to wait before claiming failure.
                The default value is 5 seconds.  It is invalid for timeoutSec to have
@@ -459,7 +459,7 @@ class _RegionHealthCheckState:
     @pulumi.getter(name="grpcHealthCheck")
     def grpc_health_check(self) -> Optional[pulumi.Input['RegionHealthCheckGrpcHealthCheckArgs']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "grpc_health_check")
@@ -485,7 +485,7 @@ class _RegionHealthCheckState:
     @pulumi.getter(name="http2HealthCheck")
     def http2_health_check(self) -> Optional[pulumi.Input['RegionHealthCheckHttp2HealthCheckArgs']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "http2_health_check")
@@ -498,7 +498,7 @@ class _RegionHealthCheckState:
     @pulumi.getter(name="httpHealthCheck")
     def http_health_check(self) -> Optional[pulumi.Input['RegionHealthCheckHttpHealthCheckArgs']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "http_health_check")
@@ -511,7 +511,7 @@ class _RegionHealthCheckState:
     @pulumi.getter(name="httpsHealthCheck")
     def https_health_check(self) -> Optional[pulumi.Input['RegionHealthCheckHttpsHealthCheckArgs']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "https_health_check")
@@ -596,7 +596,7 @@ class _RegionHealthCheckState:
     @pulumi.getter(name="sslHealthCheck")
     def ssl_health_check(self) -> Optional[pulumi.Input['RegionHealthCheckSslHealthCheckArgs']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "ssl_health_check")
@@ -609,7 +609,7 @@ class _RegionHealthCheckState:
     @pulumi.getter(name="tcpHealthCheck")
     def tcp_health_check(self) -> Optional[pulumi.Input['RegionHealthCheckTcpHealthCheckArgs']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "tcp_health_check")
@@ -962,15 +962,15 @@ class RegionHealthCheck(pulumi.CustomResource):
                seconds.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
-        :param pulumi.Input[Union['RegionHealthCheckGrpcHealthCheckArgs', 'RegionHealthCheckGrpcHealthCheckArgsDict']] grpc_health_check: A nested object resource
+        :param pulumi.Input[Union['RegionHealthCheckGrpcHealthCheckArgs', 'RegionHealthCheckGrpcHealthCheckArgsDict']] grpc_health_check: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[int] healthy_threshold: A so-far unhealthy instance will be marked healthy after this many
                consecutive successes. The default value is 2.
-        :param pulumi.Input[Union['RegionHealthCheckHttp2HealthCheckArgs', 'RegionHealthCheckHttp2HealthCheckArgsDict']] http2_health_check: A nested object resource
+        :param pulumi.Input[Union['RegionHealthCheckHttp2HealthCheckArgs', 'RegionHealthCheckHttp2HealthCheckArgsDict']] http2_health_check: A nested object resource.
                Structure is documented below.
-        :param pulumi.Input[Union['RegionHealthCheckHttpHealthCheckArgs', 'RegionHealthCheckHttpHealthCheckArgsDict']] http_health_check: A nested object resource
+        :param pulumi.Input[Union['RegionHealthCheckHttpHealthCheckArgs', 'RegionHealthCheckHttpHealthCheckArgsDict']] http_health_check: A nested object resource.
                Structure is documented below.
-        :param pulumi.Input[Union['RegionHealthCheckHttpsHealthCheckArgs', 'RegionHealthCheckHttpsHealthCheckArgsDict']] https_health_check: A nested object resource
+        :param pulumi.Input[Union['RegionHealthCheckHttpsHealthCheckArgs', 'RegionHealthCheckHttpsHealthCheckArgsDict']] https_health_check: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[Union['RegionHealthCheckLogConfigArgs', 'RegionHealthCheckLogConfigArgsDict']] log_config: Configure logging on this health check.
                Structure is documented below.
@@ -988,9 +988,9 @@ class RegionHealthCheck(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The Region in which the created health check should reside.
                If it is not provided, the provider region is used.
-        :param pulumi.Input[Union['RegionHealthCheckSslHealthCheckArgs', 'RegionHealthCheckSslHealthCheckArgsDict']] ssl_health_check: A nested object resource
+        :param pulumi.Input[Union['RegionHealthCheckSslHealthCheckArgs', 'RegionHealthCheckSslHealthCheckArgsDict']] ssl_health_check: A nested object resource.
                Structure is documented below.
-        :param pulumi.Input[Union['RegionHealthCheckTcpHealthCheckArgs', 'RegionHealthCheckTcpHealthCheckArgsDict']] tcp_health_check: A nested object resource
+        :param pulumi.Input[Union['RegionHealthCheckTcpHealthCheckArgs', 'RegionHealthCheckTcpHealthCheckArgsDict']] tcp_health_check: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[int] timeout_sec: How long (in seconds) to wait before claiming failure.
                The default value is 5 seconds.  It is invalid for timeoutSec to have
@@ -1378,15 +1378,15 @@ class RegionHealthCheck(pulumi.CustomResource):
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
-        :param pulumi.Input[Union['RegionHealthCheckGrpcHealthCheckArgs', 'RegionHealthCheckGrpcHealthCheckArgsDict']] grpc_health_check: A nested object resource
+        :param pulumi.Input[Union['RegionHealthCheckGrpcHealthCheckArgs', 'RegionHealthCheckGrpcHealthCheckArgsDict']] grpc_health_check: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[int] healthy_threshold: A so-far unhealthy instance will be marked healthy after this many
                consecutive successes. The default value is 2.
-        :param pulumi.Input[Union['RegionHealthCheckHttp2HealthCheckArgs', 'RegionHealthCheckHttp2HealthCheckArgsDict']] http2_health_check: A nested object resource
+        :param pulumi.Input[Union['RegionHealthCheckHttp2HealthCheckArgs', 'RegionHealthCheckHttp2HealthCheckArgsDict']] http2_health_check: A nested object resource.
                Structure is documented below.
-        :param pulumi.Input[Union['RegionHealthCheckHttpHealthCheckArgs', 'RegionHealthCheckHttpHealthCheckArgsDict']] http_health_check: A nested object resource
+        :param pulumi.Input[Union['RegionHealthCheckHttpHealthCheckArgs', 'RegionHealthCheckHttpHealthCheckArgsDict']] http_health_check: A nested object resource.
                Structure is documented below.
-        :param pulumi.Input[Union['RegionHealthCheckHttpsHealthCheckArgs', 'RegionHealthCheckHttpsHealthCheckArgsDict']] https_health_check: A nested object resource
+        :param pulumi.Input[Union['RegionHealthCheckHttpsHealthCheckArgs', 'RegionHealthCheckHttpsHealthCheckArgsDict']] https_health_check: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[Union['RegionHealthCheckLogConfigArgs', 'RegionHealthCheckLogConfigArgsDict']] log_config: Configure logging on this health check.
                Structure is documented below.
@@ -1405,9 +1405,9 @@ class RegionHealthCheck(pulumi.CustomResource):
         :param pulumi.Input[str] region: The Region in which the created health check should reside.
                If it is not provided, the provider region is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[Union['RegionHealthCheckSslHealthCheckArgs', 'RegionHealthCheckSslHealthCheckArgsDict']] ssl_health_check: A nested object resource
+        :param pulumi.Input[Union['RegionHealthCheckSslHealthCheckArgs', 'RegionHealthCheckSslHealthCheckArgsDict']] ssl_health_check: A nested object resource.
                Structure is documented below.
-        :param pulumi.Input[Union['RegionHealthCheckTcpHealthCheckArgs', 'RegionHealthCheckTcpHealthCheckArgsDict']] tcp_health_check: A nested object resource
+        :param pulumi.Input[Union['RegionHealthCheckTcpHealthCheckArgs', 'RegionHealthCheckTcpHealthCheckArgsDict']] tcp_health_check: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[int] timeout_sec: How long (in seconds) to wait before claiming failure.
                The default value is 5 seconds.  It is invalid for timeoutSec to have
@@ -1470,7 +1470,7 @@ class RegionHealthCheck(pulumi.CustomResource):
     @pulumi.getter(name="grpcHealthCheck")
     def grpc_health_check(self) -> pulumi.Output[Optional['outputs.RegionHealthCheckGrpcHealthCheck']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "grpc_health_check")
@@ -1488,7 +1488,7 @@ class RegionHealthCheck(pulumi.CustomResource):
     @pulumi.getter(name="http2HealthCheck")
     def http2_health_check(self) -> pulumi.Output[Optional['outputs.RegionHealthCheckHttp2HealthCheck']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "http2_health_check")
@@ -1497,7 +1497,7 @@ class RegionHealthCheck(pulumi.CustomResource):
     @pulumi.getter(name="httpHealthCheck")
     def http_health_check(self) -> pulumi.Output[Optional['outputs.RegionHealthCheckHttpHealthCheck']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "http_health_check")
@@ -1506,7 +1506,7 @@ class RegionHealthCheck(pulumi.CustomResource):
     @pulumi.getter(name="httpsHealthCheck")
     def https_health_check(self) -> pulumi.Output[Optional['outputs.RegionHealthCheckHttpsHealthCheck']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "https_health_check")
@@ -1567,7 +1567,7 @@ class RegionHealthCheck(pulumi.CustomResource):
     @pulumi.getter(name="sslHealthCheck")
     def ssl_health_check(self) -> pulumi.Output[Optional['outputs.RegionHealthCheckSslHealthCheck']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "ssl_health_check")
@@ -1576,7 +1576,7 @@ class RegionHealthCheck(pulumi.CustomResource):
     @pulumi.getter(name="tcpHealthCheck")
     def tcp_health_check(self) -> pulumi.Output[Optional['outputs.RegionHealthCheckTcpHealthCheck']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "tcp_health_check")

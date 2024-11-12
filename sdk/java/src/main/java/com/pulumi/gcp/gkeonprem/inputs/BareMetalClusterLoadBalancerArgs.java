@@ -38,7 +38,7 @@ public final class BareMetalClusterLoadBalancerArgs extends com.pulumi.resources
     }
 
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -46,7 +46,7 @@ public final class BareMetalClusterLoadBalancerArgs extends com.pulumi.resources
     private @Nullable Output<BareMetalClusterLoadBalancerManualLbConfigArgs> manualLbConfig;
 
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -55,7 +55,7 @@ public final class BareMetalClusterLoadBalancerArgs extends com.pulumi.resources
     }
 
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -63,7 +63,7 @@ public final class BareMetalClusterLoadBalancerArgs extends com.pulumi.resources
     private @Nullable Output<BareMetalClusterLoadBalancerMetalLbConfigArgs> metalLbConfig;
 
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -157,7 +157,7 @@ public final class BareMetalClusterLoadBalancerArgs extends com.pulumi.resources
         }
 
         /**
-         * @param manualLbConfig A nested object resource
+         * @param manualLbConfig A nested object resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -169,7 +169,7 @@ public final class BareMetalClusterLoadBalancerArgs extends com.pulumi.resources
         }
 
         /**
-         * @param manualLbConfig A nested object resource
+         * @param manualLbConfig A nested object resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -180,7 +180,7 @@ public final class BareMetalClusterLoadBalancerArgs extends com.pulumi.resources
         }
 
         /**
-         * @param metalLbConfig A nested object resource
+         * @param metalLbConfig A nested object resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -192,7 +192,7 @@ public final class BareMetalClusterLoadBalancerArgs extends com.pulumi.resources
         }
 
         /**
-         * @param metalLbConfig A nested object resource
+         * @param metalLbConfig A nested object resource.
          * Structure is documented below.
          * 
          * @return builder

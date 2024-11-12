@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Spanner.Inputs
     public sealed class InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A nested object resource
+        /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
         [Input("autoscalingLimits", required: true)]

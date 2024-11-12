@@ -210,6 +210,11 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly confidentialNodes!: pulumi.Output<outputs.container.ClusterConfidentialNodes>;
     /**
+     * Configuration for all of the cluster's control plane endpoints.
+     * Structure is documented below.
+     */
+    public readonly controlPlaneEndpointsConfig!: pulumi.Output<outputs.container.ClusterControlPlaneEndpointsConfig>;
+    /**
      * Configuration for the
      * [Cost Allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
      * Structure is documented below.
@@ -601,6 +606,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly tpuIpv4CidrBlock!: pulumi.Output<string>;
     /**
+     * The custom keys configuration of the cluster.
+     */
+    public readonly userManagedKeysConfig!: pulumi.Output<outputs.container.ClusterUserManagedKeysConfig | undefined>;
+    /**
      * Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
      * Structure is documented below.
      */
@@ -639,6 +648,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["clusterIpv4Cidr"] = state ? state.clusterIpv4Cidr : undefined;
             resourceInputs["clusterTelemetry"] = state ? state.clusterTelemetry : undefined;
             resourceInputs["confidentialNodes"] = state ? state.confidentialNodes : undefined;
+            resourceInputs["controlPlaneEndpointsConfig"] = state ? state.controlPlaneEndpointsConfig : undefined;
             resourceInputs["costManagementConfig"] = state ? state.costManagementConfig : undefined;
             resourceInputs["databaseEncryption"] = state ? state.databaseEncryption : undefined;
             resourceInputs["datapathProvider"] = state ? state.datapathProvider : undefined;
@@ -707,6 +717,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["subnetwork"] = state ? state.subnetwork : undefined;
             resourceInputs["tpuConfig"] = state ? state.tpuConfig : undefined;
             resourceInputs["tpuIpv4CidrBlock"] = state ? state.tpuIpv4CidrBlock : undefined;
+            resourceInputs["userManagedKeysConfig"] = state ? state.userManagedKeysConfig : undefined;
             resourceInputs["verticalPodAutoscaling"] = state ? state.verticalPodAutoscaling : undefined;
             resourceInputs["workloadAltsConfig"] = state ? state.workloadAltsConfig : undefined;
             resourceInputs["workloadIdentityConfig"] = state ? state.workloadIdentityConfig : undefined;
@@ -720,6 +731,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["clusterIpv4Cidr"] = args ? args.clusterIpv4Cidr : undefined;
             resourceInputs["clusterTelemetry"] = args ? args.clusterTelemetry : undefined;
             resourceInputs["confidentialNodes"] = args ? args.confidentialNodes : undefined;
+            resourceInputs["controlPlaneEndpointsConfig"] = args ? args.controlPlaneEndpointsConfig : undefined;
             resourceInputs["costManagementConfig"] = args ? args.costManagementConfig : undefined;
             resourceInputs["databaseEncryption"] = args ? args.databaseEncryption : undefined;
             resourceInputs["datapathProvider"] = args ? args.datapathProvider : undefined;
@@ -779,6 +791,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["serviceExternalIpsConfig"] = args ? args.serviceExternalIpsConfig : undefined;
             resourceInputs["subnetwork"] = args ? args.subnetwork : undefined;
             resourceInputs["tpuConfig"] = args ? args.tpuConfig : undefined;
+            resourceInputs["userManagedKeysConfig"] = args ? args.userManagedKeysConfig : undefined;
             resourceInputs["verticalPodAutoscaling"] = args ? args.verticalPodAutoscaling : undefined;
             resourceInputs["workloadAltsConfig"] = args ? args.workloadAltsConfig : undefined;
             resourceInputs["workloadIdentityConfig"] = args ? args.workloadIdentityConfig : undefined;
@@ -850,6 +863,11 @@ export interface ClusterState {
      * Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
      */
     confidentialNodes?: pulumi.Input<inputs.container.ClusterConfidentialNodes>;
+    /**
+     * Configuration for all of the cluster's control plane endpoints.
+     * Structure is documented below.
+     */
+    controlPlaneEndpointsConfig?: pulumi.Input<inputs.container.ClusterControlPlaneEndpointsConfig>;
     /**
      * Configuration for the
      * [Cost Allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
@@ -1242,6 +1260,10 @@ export interface ClusterState {
      */
     tpuIpv4CidrBlock?: pulumi.Input<string>;
     /**
+     * The custom keys configuration of the cluster.
+     */
+    userManagedKeysConfig?: pulumi.Input<inputs.container.ClusterUserManagedKeysConfig>;
+    /**
      * Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
      * Structure is documented below.
      */
@@ -1311,6 +1333,11 @@ export interface ClusterArgs {
      * Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
      */
     confidentialNodes?: pulumi.Input<inputs.container.ClusterConfidentialNodes>;
+    /**
+     * Configuration for all of the cluster's control plane endpoints.
+     * Structure is documented below.
+     */
+    controlPlaneEndpointsConfig?: pulumi.Input<inputs.container.ClusterControlPlaneEndpointsConfig>;
     /**
      * Configuration for the
      * [Cost Allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
@@ -1662,6 +1689,10 @@ export interface ClusterArgs {
      * TPU configuration for the cluster.
      */
     tpuConfig?: pulumi.Input<inputs.container.ClusterTpuConfig>;
+    /**
+     * The custom keys configuration of the cluster.
+     */
+    userManagedKeysConfig?: pulumi.Input<inputs.container.ClusterUserManagedKeysConfig>;
     /**
      * Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
      * Structure is documented below.

@@ -71,6 +71,7 @@ export interface GetRegionInstanceGroupManagerResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly instanceFlexibilityPolicies: outputs.compute.GetRegionInstanceGroupManagerInstanceFlexibilityPolicy[];
     readonly instanceGroup: string;
     readonly instanceLifecyclePolicies: outputs.compute.GetRegionInstanceGroupManagerInstanceLifecyclePolicy[];
     readonly listManagedInstancesResults: string;

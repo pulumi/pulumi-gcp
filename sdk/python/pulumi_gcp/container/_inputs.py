@@ -179,6 +179,8 @@ __all__ = [
     'ClusterAddonsConfigKalmConfigArgsDict',
     'ClusterAddonsConfigNetworkPolicyConfigArgs',
     'ClusterAddonsConfigNetworkPolicyConfigArgsDict',
+    'ClusterAddonsConfigParallelstoreCsiDriverConfigArgs',
+    'ClusterAddonsConfigParallelstoreCsiDriverConfigArgsDict',
     'ClusterAddonsConfigRayOperatorConfigArgs',
     'ClusterAddonsConfigRayOperatorConfigArgsDict',
     'ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArgs',
@@ -213,6 +215,10 @@ __all__ = [
     'ClusterClusterTelemetryArgsDict',
     'ClusterConfidentialNodesArgs',
     'ClusterConfidentialNodesArgsDict',
+    'ClusterControlPlaneEndpointsConfigArgs',
+    'ClusterControlPlaneEndpointsConfigArgsDict',
+    'ClusterControlPlaneEndpointsConfigDnsEndpointConfigArgs',
+    'ClusterControlPlaneEndpointsConfigDnsEndpointConfigArgsDict',
     'ClusterCostManagementConfigArgs',
     'ClusterCostManagementConfigArgsDict',
     'ClusterDatabaseEncryptionArgs',
@@ -457,6 +463,8 @@ __all__ = [
     'ClusterServiceExternalIpsConfigArgsDict',
     'ClusterTpuConfigArgs',
     'ClusterTpuConfigArgsDict',
+    'ClusterUserManagedKeysConfigArgs',
+    'ClusterUserManagedKeysConfigArgsDict',
     'ClusterVerticalPodAutoscalingArgs',
     'ClusterVerticalPodAutoscalingArgsDict',
     'ClusterWorkloadAltsConfigArgs',
@@ -4616,6 +4624,16 @@ if not MYPY:
         It can only be disabled if the nodes already do not have network policies enabled.
         Defaults to disabled; set `disabled = false` to enable.
         """
+        parallelstore_csi_driver_config: NotRequired[pulumi.Input['ClusterAddonsConfigParallelstoreCsiDriverConfigArgsDict']]
+        """
+        The status of the Parallelstore CSI driver addon,
+        which allows the usage of a Parallelstore instances as volumes.
+        It is disabled by default for Standard clusters; set `enabled = true` to enable.
+        It is enabled by default for Autopilot clusters with version 1.29 or later; set `enabled = true` to enable it explicitly.
+        See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
+
+        This example `addons_config` disables two addons:
+        """
         ray_operator_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterAddonsConfigRayOperatorConfigArgsDict']]]]
         """
         . The status of the [Ray Operator
@@ -4630,9 +4648,6 @@ if not MYPY:
         clusters on
         GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
         for more information.
-
-
-        This example `addons_config` disables two addons:
         """
         stateful_ha_config: NotRequired[pulumi.Input['ClusterAddonsConfigStatefulHaConfigArgsDict']]
         """
@@ -4658,6 +4673,7 @@ class ClusterAddonsConfigArgs:
                  istio_config: Optional[pulumi.Input['ClusterAddonsConfigIstioConfigArgs']] = None,
                  kalm_config: Optional[pulumi.Input['ClusterAddonsConfigKalmConfigArgs']] = None,
                  network_policy_config: Optional[pulumi.Input['ClusterAddonsConfigNetworkPolicyConfigArgs']] = None,
+                 parallelstore_csi_driver_config: Optional[pulumi.Input['ClusterAddonsConfigParallelstoreCsiDriverConfigArgs']] = None,
                  ray_operator_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterAddonsConfigRayOperatorConfigArgs']]]] = None,
                  stateful_ha_config: Optional[pulumi.Input['ClusterAddonsConfigStatefulHaConfigArgs']] = None):
         """
@@ -4702,6 +4718,13 @@ class ClusterAddonsConfigArgs:
                otherwise nothing will happen.
                It can only be disabled if the nodes already do not have network policies enabled.
                Defaults to disabled; set `disabled = false` to enable.
+        :param pulumi.Input['ClusterAddonsConfigParallelstoreCsiDriverConfigArgs'] parallelstore_csi_driver_config: The status of the Parallelstore CSI driver addon,
+               which allows the usage of a Parallelstore instances as volumes.
+               It is disabled by default for Standard clusters; set `enabled = true` to enable.
+               It is enabled by default for Autopilot clusters with version 1.29 or later; set `enabled = true` to enable it explicitly.
+               See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
+               
+               This example `addons_config` disables two addons:
         :param pulumi.Input[Sequence[pulumi.Input['ClusterAddonsConfigRayOperatorConfigArgs']]] ray_operator_configs: . The status of the [Ray Operator
                addon](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/concepts/overview).
                It is disabled by default. Set `enabled = true` to enable. The minimum
@@ -4714,9 +4737,6 @@ class ClusterAddonsConfigArgs:
                clusters on
                GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
                for more information.
-               
-               
-               This example `addons_config` disables two addons:
         :param pulumi.Input['ClusterAddonsConfigStatefulHaConfigArgs'] stateful_ha_config: .
                The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
                It is disabled by default for Standard clusters. Set `enabled = true` to enable.
@@ -4745,6 +4765,8 @@ class ClusterAddonsConfigArgs:
             pulumi.set(__self__, "kalm_config", kalm_config)
         if network_policy_config is not None:
             pulumi.set(__self__, "network_policy_config", network_policy_config)
+        if parallelstore_csi_driver_config is not None:
+            pulumi.set(__self__, "parallelstore_csi_driver_config", parallelstore_csi_driver_config)
         if ray_operator_configs is not None:
             pulumi.set(__self__, "ray_operator_configs", ray_operator_configs)
         if stateful_ha_config is not None:
@@ -4924,6 +4946,24 @@ class ClusterAddonsConfigArgs:
         pulumi.set(self, "network_policy_config", value)
 
     @property
+    @pulumi.getter(name="parallelstoreCsiDriverConfig")
+    def parallelstore_csi_driver_config(self) -> Optional[pulumi.Input['ClusterAddonsConfigParallelstoreCsiDriverConfigArgs']]:
+        """
+        The status of the Parallelstore CSI driver addon,
+        which allows the usage of a Parallelstore instances as volumes.
+        It is disabled by default for Standard clusters; set `enabled = true` to enable.
+        It is enabled by default for Autopilot clusters with version 1.29 or later; set `enabled = true` to enable it explicitly.
+        See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
+
+        This example `addons_config` disables two addons:
+        """
+        return pulumi.get(self, "parallelstore_csi_driver_config")
+
+    @parallelstore_csi_driver_config.setter
+    def parallelstore_csi_driver_config(self, value: Optional[pulumi.Input['ClusterAddonsConfigParallelstoreCsiDriverConfigArgs']]):
+        pulumi.set(self, "parallelstore_csi_driver_config", value)
+
+    @property
     @pulumi.getter(name="rayOperatorConfigs")
     def ray_operator_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterAddonsConfigRayOperatorConfigArgs']]]]:
         """
@@ -4939,9 +4979,6 @@ class ClusterAddonsConfigArgs:
         clusters on
         GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
         for more information.
-
-
-        This example `addons_config` disables two addons:
         """
         return pulumi.get(self, "ray_operator_configs")
 
@@ -5335,6 +5372,28 @@ class ClusterAddonsConfigNetworkPolicyConfigArgs:
     @disabled.setter
     def disabled(self, value: pulumi.Input[bool]):
         pulumi.set(self, "disabled", value)
+
+
+if not MYPY:
+    class ClusterAddonsConfigParallelstoreCsiDriverConfigArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+elif False:
+    ClusterAddonsConfigParallelstoreCsiDriverConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterAddonsConfigParallelstoreCsiDriverConfigArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool]):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
 
 
 if not MYPY:
@@ -6476,6 +6535,90 @@ class ClusterConfidentialNodesArgs:
     @enabled.setter
     def enabled(self, value: pulumi.Input[bool]):
         pulumi.set(self, "enabled", value)
+
+
+if not MYPY:
+    class ClusterControlPlaneEndpointsConfigArgsDict(TypedDict):
+        dns_endpoint_config: NotRequired[pulumi.Input['ClusterControlPlaneEndpointsConfigDnsEndpointConfigArgsDict']]
+        """
+        DNS endpoint configuration.
+        """
+elif False:
+    ClusterControlPlaneEndpointsConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterControlPlaneEndpointsConfigArgs:
+    def __init__(__self__, *,
+                 dns_endpoint_config: Optional[pulumi.Input['ClusterControlPlaneEndpointsConfigDnsEndpointConfigArgs']] = None):
+        """
+        :param pulumi.Input['ClusterControlPlaneEndpointsConfigDnsEndpointConfigArgs'] dns_endpoint_config: DNS endpoint configuration.
+        """
+        if dns_endpoint_config is not None:
+            pulumi.set(__self__, "dns_endpoint_config", dns_endpoint_config)
+
+    @property
+    @pulumi.getter(name="dnsEndpointConfig")
+    def dns_endpoint_config(self) -> Optional[pulumi.Input['ClusterControlPlaneEndpointsConfigDnsEndpointConfigArgs']]:
+        """
+        DNS endpoint configuration.
+        """
+        return pulumi.get(self, "dns_endpoint_config")
+
+    @dns_endpoint_config.setter
+    def dns_endpoint_config(self, value: Optional[pulumi.Input['ClusterControlPlaneEndpointsConfigDnsEndpointConfigArgs']]):
+        pulumi.set(self, "dns_endpoint_config", value)
+
+
+if not MYPY:
+    class ClusterControlPlaneEndpointsConfigDnsEndpointConfigArgsDict(TypedDict):
+        allow_external_traffic: NotRequired[pulumi.Input[bool]]
+        """
+        Controls whether user traffic is allowed over this endpoint. Note that GCP-managed services may still use the endpoint even if this is false.
+        """
+        endpoint: NotRequired[pulumi.Input[str]]
+        """
+        The cluster's DNS endpoint.
+        """
+elif False:
+    ClusterControlPlaneEndpointsConfigDnsEndpointConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterControlPlaneEndpointsConfigDnsEndpointConfigArgs:
+    def __init__(__self__, *,
+                 allow_external_traffic: Optional[pulumi.Input[bool]] = None,
+                 endpoint: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] allow_external_traffic: Controls whether user traffic is allowed over this endpoint. Note that GCP-managed services may still use the endpoint even if this is false.
+        :param pulumi.Input[str] endpoint: The cluster's DNS endpoint.
+        """
+        if allow_external_traffic is not None:
+            pulumi.set(__self__, "allow_external_traffic", allow_external_traffic)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+
+    @property
+    @pulumi.getter(name="allowExternalTraffic")
+    def allow_external_traffic(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Controls whether user traffic is allowed over this endpoint. Note that GCP-managed services may still use the endpoint even if this is false.
+        """
+        return pulumi.get(self, "allow_external_traffic")
+
+    @allow_external_traffic.setter
+    def allow_external_traffic(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_external_traffic", value)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The cluster's DNS endpoint.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @endpoint.setter
+    def endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "endpoint", value)
 
 
 if not MYPY:
@@ -7805,6 +7948,10 @@ if not MYPY:
         Whether Kubernetes master is
         accessible via Google Compute Engine Public IPs.
         """
+        private_endpoint_enforcement_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether authorized networks is enforced on the private endpoint or not. Defaults to false.
+        """
 elif False:
     ClusterMasterAuthorizedNetworksConfigArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -7812,17 +7959,21 @@ elif False:
 class ClusterMasterAuthorizedNetworksConfigArgs:
     def __init__(__self__, *,
                  cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMasterAuthorizedNetworksConfigCidrBlockArgs']]]] = None,
-                 gcp_public_cidrs_access_enabled: Optional[pulumi.Input[bool]] = None):
+                 gcp_public_cidrs_access_enabled: Optional[pulumi.Input[bool]] = None,
+                 private_endpoint_enforcement_enabled: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ClusterMasterAuthorizedNetworksConfigCidrBlockArgs']]] cidr_blocks: External networks that can access the
                Kubernetes cluster master through HTTPS.
         :param pulumi.Input[bool] gcp_public_cidrs_access_enabled: Whether Kubernetes master is
                accessible via Google Compute Engine Public IPs.
+        :param pulumi.Input[bool] private_endpoint_enforcement_enabled: Whether authorized networks is enforced on the private endpoint or not. Defaults to false.
         """
         if cidr_blocks is not None:
             pulumi.set(__self__, "cidr_blocks", cidr_blocks)
         if gcp_public_cidrs_access_enabled is not None:
             pulumi.set(__self__, "gcp_public_cidrs_access_enabled", gcp_public_cidrs_access_enabled)
+        if private_endpoint_enforcement_enabled is not None:
+            pulumi.set(__self__, "private_endpoint_enforcement_enabled", private_endpoint_enforcement_enabled)
 
     @property
     @pulumi.getter(name="cidrBlocks")
@@ -7849,6 +8000,18 @@ class ClusterMasterAuthorizedNetworksConfigArgs:
     @gcp_public_cidrs_access_enabled.setter
     def gcp_public_cidrs_access_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "gcp_public_cidrs_access_enabled", value)
+
+    @property
+    @pulumi.getter(name="privateEndpointEnforcementEnabled")
+    def private_endpoint_enforcement_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether authorized networks is enforced on the private endpoint or not. Defaults to false.
+        """
+        return pulumi.get(self, "private_endpoint_enforcement_enabled")
+
+    @private_endpoint_enforcement_enabled.setter
+    def private_endpoint_enforcement_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "private_endpoint_enforcement_enabled", value)
 
 
 if not MYPY:
@@ -15721,6 +15884,178 @@ class ClusterTpuConfigArgs:
     @use_service_networking.setter
     def use_service_networking(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "use_service_networking", value)
+
+
+if not MYPY:
+    class ClusterUserManagedKeysConfigArgsDict(TypedDict):
+        aggregation_ca: NotRequired[pulumi.Input[str]]
+        """
+        The Certificate Authority Service caPool to use for the aggreation CA in this cluster.
+        """
+        cluster_ca: NotRequired[pulumi.Input[str]]
+        """
+        The Certificate Authority Service caPool to use for the cluster CA in this cluster.
+        """
+        control_plane_disk_encryption_key: NotRequired[pulumi.Input[str]]
+        """
+        The Cloud KMS cryptoKey to use for Confidential Hyperdisk on the control plane nodes.
+        """
+        etcd_api_ca: NotRequired[pulumi.Input[str]]
+        """
+        The Certificate Authority Service caPool to use for the etcd API CA in this cluster.
+        """
+        etcd_peer_ca: NotRequired[pulumi.Input[str]]
+        """
+        The Certificate Authority Service caPool to use for the etcd peer CA in this cluster.
+        """
+        gkeops_etcd_backup_encryption_key: NotRequired[pulumi.Input[str]]
+        """
+        Resource path of the Cloud KMS cryptoKey to use for encryption of internal etcd backups.
+        """
+        service_account_signing_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The Cloud KMS cryptoKeyVersions to use for signing service account JWTs issued by this cluster.
+        """
+        service_account_verification_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The Cloud KMS cryptoKeyVersions to use for verifying service account JWTs issued by this cluster.
+        """
+elif False:
+    ClusterUserManagedKeysConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterUserManagedKeysConfigArgs:
+    def __init__(__self__, *,
+                 aggregation_ca: Optional[pulumi.Input[str]] = None,
+                 cluster_ca: Optional[pulumi.Input[str]] = None,
+                 control_plane_disk_encryption_key: Optional[pulumi.Input[str]] = None,
+                 etcd_api_ca: Optional[pulumi.Input[str]] = None,
+                 etcd_peer_ca: Optional[pulumi.Input[str]] = None,
+                 gkeops_etcd_backup_encryption_key: Optional[pulumi.Input[str]] = None,
+                 service_account_signing_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 service_account_verification_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] aggregation_ca: The Certificate Authority Service caPool to use for the aggreation CA in this cluster.
+        :param pulumi.Input[str] cluster_ca: The Certificate Authority Service caPool to use for the cluster CA in this cluster.
+        :param pulumi.Input[str] control_plane_disk_encryption_key: The Cloud KMS cryptoKey to use for Confidential Hyperdisk on the control plane nodes.
+        :param pulumi.Input[str] etcd_api_ca: The Certificate Authority Service caPool to use for the etcd API CA in this cluster.
+        :param pulumi.Input[str] etcd_peer_ca: The Certificate Authority Service caPool to use for the etcd peer CA in this cluster.
+        :param pulumi.Input[str] gkeops_etcd_backup_encryption_key: Resource path of the Cloud KMS cryptoKey to use for encryption of internal etcd backups.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] service_account_signing_keys: The Cloud KMS cryptoKeyVersions to use for signing service account JWTs issued by this cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] service_account_verification_keys: The Cloud KMS cryptoKeyVersions to use for verifying service account JWTs issued by this cluster.
+        """
+        if aggregation_ca is not None:
+            pulumi.set(__self__, "aggregation_ca", aggregation_ca)
+        if cluster_ca is not None:
+            pulumi.set(__self__, "cluster_ca", cluster_ca)
+        if control_plane_disk_encryption_key is not None:
+            pulumi.set(__self__, "control_plane_disk_encryption_key", control_plane_disk_encryption_key)
+        if etcd_api_ca is not None:
+            pulumi.set(__self__, "etcd_api_ca", etcd_api_ca)
+        if etcd_peer_ca is not None:
+            pulumi.set(__self__, "etcd_peer_ca", etcd_peer_ca)
+        if gkeops_etcd_backup_encryption_key is not None:
+            pulumi.set(__self__, "gkeops_etcd_backup_encryption_key", gkeops_etcd_backup_encryption_key)
+        if service_account_signing_keys is not None:
+            pulumi.set(__self__, "service_account_signing_keys", service_account_signing_keys)
+        if service_account_verification_keys is not None:
+            pulumi.set(__self__, "service_account_verification_keys", service_account_verification_keys)
+
+    @property
+    @pulumi.getter(name="aggregationCa")
+    def aggregation_ca(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Certificate Authority Service caPool to use for the aggreation CA in this cluster.
+        """
+        return pulumi.get(self, "aggregation_ca")
+
+    @aggregation_ca.setter
+    def aggregation_ca(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "aggregation_ca", value)
+
+    @property
+    @pulumi.getter(name="clusterCa")
+    def cluster_ca(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Certificate Authority Service caPool to use for the cluster CA in this cluster.
+        """
+        return pulumi.get(self, "cluster_ca")
+
+    @cluster_ca.setter
+    def cluster_ca(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_ca", value)
+
+    @property
+    @pulumi.getter(name="controlPlaneDiskEncryptionKey")
+    def control_plane_disk_encryption_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Cloud KMS cryptoKey to use for Confidential Hyperdisk on the control plane nodes.
+        """
+        return pulumi.get(self, "control_plane_disk_encryption_key")
+
+    @control_plane_disk_encryption_key.setter
+    def control_plane_disk_encryption_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "control_plane_disk_encryption_key", value)
+
+    @property
+    @pulumi.getter(name="etcdApiCa")
+    def etcd_api_ca(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Certificate Authority Service caPool to use for the etcd API CA in this cluster.
+        """
+        return pulumi.get(self, "etcd_api_ca")
+
+    @etcd_api_ca.setter
+    def etcd_api_ca(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etcd_api_ca", value)
+
+    @property
+    @pulumi.getter(name="etcdPeerCa")
+    def etcd_peer_ca(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Certificate Authority Service caPool to use for the etcd peer CA in this cluster.
+        """
+        return pulumi.get(self, "etcd_peer_ca")
+
+    @etcd_peer_ca.setter
+    def etcd_peer_ca(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etcd_peer_ca", value)
+
+    @property
+    @pulumi.getter(name="gkeopsEtcdBackupEncryptionKey")
+    def gkeops_etcd_backup_encryption_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource path of the Cloud KMS cryptoKey to use for encryption of internal etcd backups.
+        """
+        return pulumi.get(self, "gkeops_etcd_backup_encryption_key")
+
+    @gkeops_etcd_backup_encryption_key.setter
+    def gkeops_etcd_backup_encryption_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gkeops_etcd_backup_encryption_key", value)
+
+    @property
+    @pulumi.getter(name="serviceAccountSigningKeys")
+    def service_account_signing_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The Cloud KMS cryptoKeyVersions to use for signing service account JWTs issued by this cluster.
+        """
+        return pulumi.get(self, "service_account_signing_keys")
+
+    @service_account_signing_keys.setter
+    def service_account_signing_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "service_account_signing_keys", value)
+
+    @property
+    @pulumi.getter(name="serviceAccountVerificationKeys")
+    def service_account_verification_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The Cloud KMS cryptoKeyVersions to use for verifying service account JWTs issued by this cluster.
+        """
+        return pulumi.get(self, "service_account_verification_keys")
+
+    @service_account_verification_keys.setter
+    def service_account_verification_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "service_account_verification_keys", value)
 
 
 if not MYPY:

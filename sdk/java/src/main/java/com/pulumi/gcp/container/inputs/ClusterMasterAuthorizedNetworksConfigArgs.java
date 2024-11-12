@@ -51,11 +51,27 @@ public final class ClusterMasterAuthorizedNetworksConfigArgs extends com.pulumi.
         return Optional.ofNullable(this.gcpPublicCidrsAccessEnabled);
     }
 
+    /**
+     * Whether authorized networks is enforced on the private endpoint or not. Defaults to false.
+     * 
+     */
+    @Import(name="privateEndpointEnforcementEnabled")
+    private @Nullable Output<Boolean> privateEndpointEnforcementEnabled;
+
+    /**
+     * @return Whether authorized networks is enforced on the private endpoint or not. Defaults to false.
+     * 
+     */
+    public Optional<Output<Boolean>> privateEndpointEnforcementEnabled() {
+        return Optional.ofNullable(this.privateEndpointEnforcementEnabled);
+    }
+
     private ClusterMasterAuthorizedNetworksConfigArgs() {}
 
     private ClusterMasterAuthorizedNetworksConfigArgs(ClusterMasterAuthorizedNetworksConfigArgs $) {
         this.cidrBlocks = $.cidrBlocks;
         this.gcpPublicCidrsAccessEnabled = $.gcpPublicCidrsAccessEnabled;
+        this.privateEndpointEnforcementEnabled = $.privateEndpointEnforcementEnabled;
     }
 
     public static Builder builder() {
@@ -131,6 +147,27 @@ public final class ClusterMasterAuthorizedNetworksConfigArgs extends com.pulumi.
          */
         public Builder gcpPublicCidrsAccessEnabled(Boolean gcpPublicCidrsAccessEnabled) {
             return gcpPublicCidrsAccessEnabled(Output.of(gcpPublicCidrsAccessEnabled));
+        }
+
+        /**
+         * @param privateEndpointEnforcementEnabled Whether authorized networks is enforced on the private endpoint or not. Defaults to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateEndpointEnforcementEnabled(@Nullable Output<Boolean> privateEndpointEnforcementEnabled) {
+            $.privateEndpointEnforcementEnabled = privateEndpointEnforcementEnabled;
+            return this;
+        }
+
+        /**
+         * @param privateEndpointEnforcementEnabled Whether authorized networks is enforced on the private endpoint or not. Defaults to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateEndpointEnforcementEnabled(Boolean privateEndpointEnforcementEnabled) {
+            return privateEndpointEnforcementEnabled(Output.of(privateEndpointEnforcementEnabled));
         }
 
         public ClusterMasterAuthorizedNetworksConfigArgs build() {

@@ -125,6 +125,7 @@ namespace Pulumi.Gcp.Spanner
     {
         public readonly ImmutableArray<Outputs.GetInstanceAutoscalingConfigResult> AutoscalingConfigs;
         public readonly string? Config;
+        public readonly string DefaultBackupScheduleType;
         public readonly string? DisplayName;
         public readonly string Edition;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
@@ -146,6 +147,8 @@ namespace Pulumi.Gcp.Spanner
             ImmutableArray<Outputs.GetInstanceAutoscalingConfigResult> autoscalingConfigs,
 
             string? config,
+
+            string defaultBackupScheduleType,
 
             string? displayName,
 
@@ -173,6 +176,7 @@ namespace Pulumi.Gcp.Spanner
         {
             AutoscalingConfigs = autoscalingConfigs;
             Config = config;
+            DefaultBackupScheduleType = defaultBackupScheduleType;
             DisplayName = displayName;
             Edition = edition;
             EffectiveLabels = effectiveLabels;

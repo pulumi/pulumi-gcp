@@ -203,6 +203,9 @@ func GetDataplexCustomEndpoint(ctx *pulumi.Context) string {
 func GetDataprocCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:dataprocCustomEndpoint")
 }
+func GetDataprocGdcCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:dataprocGdcCustomEndpoint")
+}
 func GetDataprocMetastoreCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:dataprocMetastoreCustomEndpoint")
 }
@@ -301,6 +304,9 @@ func GetHealthcareCustomEndpoint(ctx *pulumi.Context) string {
 }
 func GetIam2CustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:iam2CustomEndpoint")
+}
+func GetIam3CustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:iam3CustomEndpoint")
 }
 func GetIamBetaCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:iamBetaCustomEndpoint")

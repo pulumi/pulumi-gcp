@@ -335,7 +335,6 @@ import * as utilities from "../utilities";
  *     name: "cloudrun-service",
  *     location: "us-central1",
  *     deletionProtection: false,
- *     launchStage: "BETA",
  *     ingress: "INGRESS_TRAFFIC_ALL",
  *     template: {
  *         containers: [

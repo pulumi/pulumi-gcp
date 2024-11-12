@@ -122,6 +122,39 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ## Switchover (SQL Server Only)
+ *
+ * Users can perform a switchover on any direct `cascadable` replica by following the steps below.
+ *
+ *   ~>**WARNING:** Failure to follow these steps can lead to data loss (You will be warned during plan stage). To prevent data loss during a switchover, please verify your plan with the checklist below.
+ *
+ * For a more in-depth walkthrough with example code, see the Switchover Guide
+ *
+ * ### Steps to Invoke Switchover
+ *
+ * Create a `cascadable` replica in a different region from the primary (`cascadableReplica` is set to true in `replicaConfiguration`)
+ *
+ * #### Invoking switchover in the replica resource:
+ * 1. Change instanceType from `READ_REPLICA_INSTANCE` to `CLOUD_SQL_INSTANCE`
+ * 2. Remove `masterInstanceName`
+ * 3. Remove `replicaConfiguration`
+ * 4. Add current primary's name to the replica's `replicaNames` list
+ *
+ * #### Updating the primary resource:
+ * 1. Change `instanceType` from `CLOUD_SQL_INSTANCE` to `READ_REPLICA_INSTANCE`
+ * 2. Set `masterInstanceName` to the original replica (which will be primary after switchover)
+ * 3. Set `replicaConfiguration` and set `cascadableReplica` to `true`
+ * 4. Remove original replica from `replicaNames`
+ *    
+ *     > **NOTE**: Do **not** delete the replicaNames field, even if it has no replicas remaining. Set replicaNames = [ ] to indicate it having no replicas.
+ *
+ * #### Plan and verify that:
+ * - `pulumi preview` outputs **"0 to add, 0 to destroy"**
+ * - `pulumi preview` does not say **"must be replaced"** for any resource
+ * - Every resource **"will be updated in-place"**
+ * - Only the 2 instances involved in switchover have planned changes
+ * - (Recommended) Use `deletionProtection` on instances as a safety measure
+ *
  * ## Import
  *
  * Database instances can be imported using one of any of these accepted formats:
@@ -213,7 +246,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
-     * The dns name of the instance.
+     * The DNS name of the instance. See [Connect to an instance using Private Service Connect](https://cloud.google.com/sql/docs/mysql/configure-private-service-connect#view-summary-information-cloud-sql-instances-psc-enabled) for more details.
      */
     public /*out*/ readonly dnsName!: pulumi.Output<string>;
     /**
@@ -279,9 +312,13 @@ export class DatabaseInstance extends pulumi.CustomResource {
     public readonly region!: pulumi.Output<string>;
     /**
      * The configuration for replication. The
-     * configuration is detailed below. Valid only for MySQL instances.
+     * configuration is detailed below.
      */
     public readonly replicaConfiguration!: pulumi.Output<outputs.sql.DatabaseInstanceReplicaConfiguration>;
+    /**
+     * List of replica names. Can be updated.
+     */
+    public readonly replicaNames!: pulumi.Output<string[]>;
     /**
      * The context needed to restore the database to a backup run. This field will
      * cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
@@ -341,6 +378,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             resourceInputs["publicIpAddress"] = state ? state.publicIpAddress : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["replicaConfiguration"] = state ? state.replicaConfiguration : undefined;
+            resourceInputs["replicaNames"] = state ? state.replicaNames : undefined;
             resourceInputs["restoreBackupContext"] = state ? state.restoreBackupContext : undefined;
             resourceInputs["rootPassword"] = state ? state.rootPassword : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
@@ -363,6 +401,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["replicaConfiguration"] = args?.replicaConfiguration ? pulumi.secret(args.replicaConfiguration) : undefined;
+            resourceInputs["replicaNames"] = args ? args.replicaNames : undefined;
             resourceInputs["restoreBackupContext"] = args ? args.restoreBackupContext : undefined;
             resourceInputs["rootPassword"] = args?.rootPassword ? pulumi.secret(args.rootPassword) : undefined;
             resourceInputs["settings"] = args ? args.settings : undefined;
@@ -422,7 +461,7 @@ export interface DatabaseInstanceState {
      */
     deletionProtection?: pulumi.Input<boolean>;
     /**
-     * The dns name of the instance.
+     * The DNS name of the instance. See [Connect to an instance using Private Service Connect](https://cloud.google.com/sql/docs/mysql/configure-private-service-connect#view-summary-information-cloud-sql-instances-psc-enabled) for more details.
      */
     dnsName?: pulumi.Input<string>;
     /**
@@ -488,9 +527,13 @@ export interface DatabaseInstanceState {
     region?: pulumi.Input<string>;
     /**
      * The configuration for replication. The
-     * configuration is detailed below. Valid only for MySQL instances.
+     * configuration is detailed below.
      */
     replicaConfiguration?: pulumi.Input<inputs.sql.DatabaseInstanceReplicaConfiguration>;
+    /**
+     * List of replica names. Can be updated.
+     */
+    replicaNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The context needed to restore the database to a backup run. This field will
      * cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
@@ -592,9 +635,13 @@ export interface DatabaseInstanceArgs {
     region?: pulumi.Input<string>;
     /**
      * The configuration for replication. The
-     * configuration is detailed below. Valid only for MySQL instances.
+     * configuration is detailed below.
      */
     replicaConfiguration?: pulumi.Input<inputs.sql.DatabaseInstanceReplicaConfiguration>;
+    /**
+     * List of replica names. Can be updated.
+     */
+    replicaNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The context needed to restore the database to a backup run. This field will
      * cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.

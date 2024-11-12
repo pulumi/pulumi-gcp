@@ -46,18 +46,12 @@ import * as utilities from "../utilities";
  *
  * OrganizationNotificationConfig can be imported using any of these accepted formats:
  *
- * * `organizations/{{organization}}/locations/{{location}}/notificationConfigs/{{name}}`
- *
- * * `{{organization}}/{{location}}/{{name}}`
+ * * `{{name}}`
  *
  * When using the `pulumi import` command, OrganizationNotificationConfig can be imported using one of the formats above. For example:
  *
  * ```sh
- * $ pulumi import gcp:securitycenter/v2OrganizationNotificationConfig:V2OrganizationNotificationConfig default organizations/{{organization}}/locations/{{location}}/notificationConfigs/{{name}}
- * ```
- *
- * ```sh
- * $ pulumi import gcp:securitycenter/v2OrganizationNotificationConfig:V2OrganizationNotificationConfig default {{organization}}/{{location}}/{{name}}
+ * $ pulumi import gcp:securitycenter/v2OrganizationNotificationConfig:V2OrganizationNotificationConfig default {{name}}
  * ```
  */
 export class V2OrganizationNotificationConfig extends pulumi.CustomResource {

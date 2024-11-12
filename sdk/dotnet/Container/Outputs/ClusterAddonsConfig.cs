@@ -91,6 +91,16 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.ClusterAddonsConfigNetworkPolicyConfig? NetworkPolicyConfig;
         /// <summary>
+        /// The status of the Parallelstore CSI driver addon,
+        /// which allows the usage of a Parallelstore instances as volumes.
+        /// It is disabled by default for Standard clusters; set `enabled = true` to enable.
+        /// It is enabled by default for Autopilot clusters with version 1.29 or later; set `enabled = true` to enable it explicitly.
+        /// See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
+        /// 
+        /// This example `addons_config` disables two addons:
+        /// </summary>
+        public readonly Outputs.ClusterAddonsConfigParallelstoreCsiDriverConfig? ParallelstoreCsiDriverConfig;
+        /// <summary>
         /// . The status of the [Ray Operator
         /// addon](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/concepts/overview).
         /// It is disabled by default. Set `enabled = true` to enable. The minimum
@@ -103,9 +113,6 @@ namespace Pulumi.Gcp.Container.Outputs
         /// clusters on
         /// GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
         /// for more information.
-        /// 
-        /// 
-        /// This example `addons_config` disables two addons:
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterAddonsConfigRayOperatorConfig> RayOperatorConfigs;
         /// <summary>
@@ -141,6 +148,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             Outputs.ClusterAddonsConfigNetworkPolicyConfig? networkPolicyConfig,
 
+            Outputs.ClusterAddonsConfigParallelstoreCsiDriverConfig? parallelstoreCsiDriverConfig,
+
             ImmutableArray<Outputs.ClusterAddonsConfigRayOperatorConfig> rayOperatorConfigs,
 
             Outputs.ClusterAddonsConfigStatefulHaConfig? statefulHaConfig)
@@ -157,6 +166,7 @@ namespace Pulumi.Gcp.Container.Outputs
             IstioConfig = istioConfig;
             KalmConfig = kalmConfig;
             NetworkPolicyConfig = networkPolicyConfig;
+            ParallelstoreCsiDriverConfig = parallelstoreCsiDriverConfig;
             RayOperatorConfigs = rayOperatorConfigs;
             StatefulHaConfig = statefulHaConfig;
         }

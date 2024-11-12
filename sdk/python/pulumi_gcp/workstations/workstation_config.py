@@ -940,7 +940,7 @@ class WorkstationConfig(pulumi.CustomResource):
             parent="organizations/123456789",
             short_name="keyname")
         tag_value1 = gcp.tags.TagValue("tag_value1",
-            parent=tag_key1.name.apply(lambda name: f"tagKeys/{name}"),
+            parent=tag_key1.id,
             short_name="valuename")
         default = gcp.compute.Network("default",
             name="workstation-cluster",
@@ -985,10 +985,10 @@ class WorkstationConfig(pulumi.CustomResource):
                     "disable_public_ip_addresses": True,
                     "disable_ssh": False,
                     "vm_tags": pulumi.Output.all(
-                        tagKey1Name=tag_key1.name,
-                        tagValue1Name=tag_value1.name
+                        tagKey1Id=tag_key1.id,
+                        tagValue1Id=tag_value1.id
         ).apply(lambda resolved_outputs: {
-                        f"tagKeys/{resolved_outputs['tagKey1Name']}": f"tagValues/{resolved_outputs['tagValue1Name']}",
+                        resolved_outputs['tagKey1Id']: resolved_outputs['tagValue1Id'],
                     })
         ,
                 },
@@ -1458,7 +1458,7 @@ class WorkstationConfig(pulumi.CustomResource):
             parent="organizations/123456789",
             short_name="keyname")
         tag_value1 = gcp.tags.TagValue("tag_value1",
-            parent=tag_key1.name.apply(lambda name: f"tagKeys/{name}"),
+            parent=tag_key1.id,
             short_name="valuename")
         default = gcp.compute.Network("default",
             name="workstation-cluster",
@@ -1503,10 +1503,10 @@ class WorkstationConfig(pulumi.CustomResource):
                     "disable_public_ip_addresses": True,
                     "disable_ssh": False,
                     "vm_tags": pulumi.Output.all(
-                        tagKey1Name=tag_key1.name,
-                        tagValue1Name=tag_value1.name
+                        tagKey1Id=tag_key1.id,
+                        tagValue1Id=tag_value1.id
         ).apply(lambda resolved_outputs: {
-                        f"tagKeys/{resolved_outputs['tagKey1Name']}": f"tagValues/{resolved_outputs['tagValue1Name']}",
+                        resolved_outputs['tagKey1Id']: resolved_outputs['tagValue1Id'],
                     })
         ,
                 },

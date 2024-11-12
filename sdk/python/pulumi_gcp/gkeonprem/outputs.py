@@ -568,7 +568,7 @@ class BareMetalAdminClusterLoadBalancer(dict):
                Structure is documented below.
         :param 'BareMetalAdminClusterLoadBalancerVipConfigArgs' vip_config: Specified the Bare Metal Load Balancer Config
                Structure is documented below.
-        :param 'BareMetalAdminClusterLoadBalancerManualLbConfigArgs' manual_lb_config: A nested object resource
+        :param 'BareMetalAdminClusterLoadBalancerManualLbConfigArgs' manual_lb_config: A nested object resource.
                Structure is documented below.
         """
         pulumi.set(__self__, "port_config", port_config)
@@ -598,7 +598,7 @@ class BareMetalAdminClusterLoadBalancer(dict):
     @pulumi.getter(name="manualLbConfig")
     def manual_lb_config(self) -> Optional['outputs.BareMetalAdminClusterLoadBalancerManualLbConfig']:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "manual_lb_config")
@@ -755,7 +755,7 @@ class BareMetalAdminClusterNetworkConfig(dict):
     def __init__(__self__, *,
                  island_mode_cidr: Optional['outputs.BareMetalAdminClusterNetworkConfigIslandModeCidr'] = None):
         """
-        :param 'BareMetalAdminClusterNetworkConfigIslandModeCidrArgs' island_mode_cidr: A nested object resource
+        :param 'BareMetalAdminClusterNetworkConfigIslandModeCidrArgs' island_mode_cidr: A nested object resource.
                Structure is documented below.
         """
         if island_mode_cidr is not None:
@@ -765,7 +765,7 @@ class BareMetalAdminClusterNetworkConfig(dict):
     @pulumi.getter(name="islandModeCidr")
     def island_mode_cidr(self) -> Optional['outputs.BareMetalAdminClusterNetworkConfigIslandModeCidr']:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "island_mode_cidr")
@@ -2007,9 +2007,9 @@ class BareMetalClusterLoadBalancer(dict):
                Structure is documented below.
         :param 'BareMetalClusterLoadBalancerBgpLbConfigArgs' bgp_lb_config: Configuration for BGP typed load balancers.
                Structure is documented below.
-        :param 'BareMetalClusterLoadBalancerManualLbConfigArgs' manual_lb_config: A nested object resource
+        :param 'BareMetalClusterLoadBalancerManualLbConfigArgs' manual_lb_config: A nested object resource.
                Structure is documented below.
-        :param 'BareMetalClusterLoadBalancerMetalLbConfigArgs' metal_lb_config: A nested object resource
+        :param 'BareMetalClusterLoadBalancerMetalLbConfigArgs' metal_lb_config: A nested object resource.
                Structure is documented below.
         """
         pulumi.set(__self__, "port_config", port_config)
@@ -2052,7 +2052,7 @@ class BareMetalClusterLoadBalancer(dict):
     @pulumi.getter(name="manualLbConfig")
     def manual_lb_config(self) -> Optional['outputs.BareMetalClusterLoadBalancerManualLbConfig']:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "manual_lb_config")
@@ -2061,7 +2061,7 @@ class BareMetalClusterLoadBalancer(dict):
     @pulumi.getter(name="metalLbConfig")
     def metal_lb_config(self) -> Optional['outputs.BareMetalClusterLoadBalancerMetalLbConfig']:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "metal_lb_config")
@@ -3216,7 +3216,7 @@ class BareMetalClusterNetworkConfig(dict):
                Load Balancing with BGP or the egress NAT gateway.
                Setting configuration for advanced networking features will automatically
                set this flag.
-        :param 'BareMetalClusterNetworkConfigIslandModeCidrArgs' island_mode_cidr: A nested object resource
+        :param 'BareMetalClusterNetworkConfigIslandModeCidrArgs' island_mode_cidr: A nested object resource.
                Structure is documented below.
         :param 'BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArgs' multiple_network_interfaces_config: Configuration for multiple network interfaces.
                Structure is documented below.
@@ -3247,7 +3247,7 @@ class BareMetalClusterNetworkConfig(dict):
     @pulumi.getter(name="islandModeCidr")
     def island_mode_cidr(self) -> Optional['outputs.BareMetalClusterNetworkConfigIslandModeCidr']:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "island_mode_cidr")

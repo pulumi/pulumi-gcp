@@ -64,6 +64,40 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * ### Region Security Policy With Rules
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const region_sec_policy_with_rules = new gcp.compute.RegionSecurityPolicy("region-sec-policy-with-rules", {
+ *     name: "my-sec-policy-with-rules",
+ *     description: "basic region security policy with multiple rules",
+ *     type: "CLOUD_ARMOR",
+ *     rules: [
+ *         {
+ *             action: "deny",
+ *             priority: 1000,
+ *             match: {
+ *                 expr: {
+ *                     expression: "request.path.matches(\"/login.html\") && token.recaptcha_session.score < 0.2",
+ *                 },
+ *             },
+ *         },
+ *         {
+ *             action: "deny",
+ *             priority: 2147483647,
+ *             match: {
+ *                 versionedExpr: "SRC_IPS_V1",
+ *                 config: {
+ *                     srcIpRanges: ["*"],
+ *                 },
+ *             },
+ *             description: "default rule",
+ *         },
+ *     ],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -160,6 +194,11 @@ export class RegionSecurityPolicy extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
+     * The set of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
+     * Structure is documented below.
+     */
+    public readonly rules!: pulumi.Output<outputs.compute.RegionSecurityPolicyRule[]>;
+    /**
      * Server-defined URL for the resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
@@ -204,6 +243,7 @@ export class RegionSecurityPolicy extends pulumi.CustomResource {
             resourceInputs["policyId"] = state ? state.policyId : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["rules"] = state ? state.rules : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["selfLinkWithPolicyId"] = state ? state.selfLinkWithPolicyId : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
@@ -215,6 +255,7 @@ export class RegionSecurityPolicy extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["rules"] = args ? args.rules : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["userDefinedFields"] = args ? args.userDefinedFields : undefined;
             resourceInputs["fingerprint"] = undefined /*out*/;
@@ -267,6 +308,11 @@ export interface RegionSecurityPolicyState {
      * If it is not provided, the provider region is used.
      */
     region?: pulumi.Input<string>;
+    /**
+     * The set of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
+     * Structure is documented below.
+     */
+    rules?: pulumi.Input<pulumi.Input<inputs.compute.RegionSecurityPolicyRule>[]>;
     /**
      * Server-defined URL for the resource.
      */
@@ -324,6 +370,11 @@ export interface RegionSecurityPolicyArgs {
      * If it is not provided, the provider region is used.
      */
     region?: pulumi.Input<string>;
+    /**
+     * The set of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
+     * Structure is documented below.
+     */
+    rules?: pulumi.Input<pulumi.Input<inputs.compute.RegionSecurityPolicyRule>[]>;
     /**
      * The type indicates the intended use of the security policy.
      * - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers.

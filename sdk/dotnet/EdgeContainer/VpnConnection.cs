@@ -142,7 +142,7 @@ namespace Pulumi.Gcp.EdgeContainer
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// A nested object resource
+        /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
         [Output("details")]
@@ -378,7 +378,7 @@ namespace Pulumi.Gcp.EdgeContainer
         private InputList<Inputs.VpnConnectionDetailGetArgs>? _details;
 
         /// <summary>
-        /// A nested object resource
+        /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.VpnConnectionDetailGetArgs> Details

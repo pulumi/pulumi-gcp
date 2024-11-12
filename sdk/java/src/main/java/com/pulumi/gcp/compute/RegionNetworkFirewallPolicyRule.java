@@ -95,7 +95,7 @@ import javax.annotation.Nullable;
  * 
  *         var basicValue = new TagValue("basicValue", TagValueArgs.builder()
  *             .description("For valuename resources.")
- *             .parent(basicKey.name().applyValue(name -> String.format("tagKeys/%s", name)))
+ *             .parent(basicKey.id())
  *             .shortName("tagvalue")
  *             .build());
  * 
@@ -119,7 +119,7 @@ import javax.annotation.Nullable;
  *                     .ipProtocol("all")
  *                     .build())
  *                 .srcSecureTags(RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgs.builder()
- *                     .name(basicValue.name().applyValue(name -> String.format("tagValues/%s", name)))
+ *                     .name(basicValue.id())
  *                     .build())
  *                 .srcAddressGroups(basicRegionalNetworksecurityAddressGroup.id())
  *                 .build())

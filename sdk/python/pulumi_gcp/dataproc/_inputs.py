@@ -143,6 +143,12 @@ __all__ = [
     'ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArgsDict',
     'ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArgs',
     'ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArgsDict',
+    'GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgs',
+    'GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgsDict',
+    'GdcServiceInstanceGdceClusterArgs',
+    'GdcServiceInstanceGdceClusterArgsDict',
+    'GdcServiceInstanceSparkServiceInstanceConfigArgs',
+    'GdcServiceInstanceSparkServiceInstanceConfigArgsDict',
     'JobHadoopConfigArgs',
     'JobHadoopConfigArgsDict',
     'JobHadoopConfigLoggingConfigArgs',
@@ -6566,6 +6572,101 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig
     @properties.setter
     def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "properties", value)
+
+
+if not MYPY:
+    class GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgsDict(TypedDict):
+        default_properties: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        A map of default Spark properties to apply to workloads in this application environment. These defaults may be overridden by per-application properties.
+        """
+        default_version: NotRequired[pulumi.Input[str]]
+        """
+        The default Dataproc version to use for applications submitted to this application environment
+        """
+elif False:
+    GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgs:
+    def __init__(__self__, *,
+                 default_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 default_version: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] default_properties: A map of default Spark properties to apply to workloads in this application environment. These defaults may be overridden by per-application properties.
+        :param pulumi.Input[str] default_version: The default Dataproc version to use for applications submitted to this application environment
+        """
+        if default_properties is not None:
+            pulumi.set(__self__, "default_properties", default_properties)
+        if default_version is not None:
+            pulumi.set(__self__, "default_version", default_version)
+
+    @property
+    @pulumi.getter(name="defaultProperties")
+    def default_properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A map of default Spark properties to apply to workloads in this application environment. These defaults may be overridden by per-application properties.
+        """
+        return pulumi.get(self, "default_properties")
+
+    @default_properties.setter
+    def default_properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "default_properties", value)
+
+    @property
+    @pulumi.getter(name="defaultVersion")
+    def default_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The default Dataproc version to use for applications submitted to this application environment
+        """
+        return pulumi.get(self, "default_version")
+
+    @default_version.setter
+    def default_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_version", value)
+
+
+if not MYPY:
+    class GdcServiceInstanceGdceClusterArgsDict(TypedDict):
+        gdce_cluster: pulumi.Input[str]
+        """
+        Gdce cluster resource id.
+        """
+elif False:
+    GdcServiceInstanceGdceClusterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GdcServiceInstanceGdceClusterArgs:
+    def __init__(__self__, *,
+                 gdce_cluster: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] gdce_cluster: Gdce cluster resource id.
+        """
+        pulumi.set(__self__, "gdce_cluster", gdce_cluster)
+
+    @property
+    @pulumi.getter(name="gdceCluster")
+    def gdce_cluster(self) -> pulumi.Input[str]:
+        """
+        Gdce cluster resource id.
+        """
+        return pulumi.get(self, "gdce_cluster")
+
+    @gdce_cluster.setter
+    def gdce_cluster(self, value: pulumi.Input[str]):
+        pulumi.set(self, "gdce_cluster", value)
+
+
+if not MYPY:
+    class GdcServiceInstanceSparkServiceInstanceConfigArgsDict(TypedDict):
+        pass
+elif False:
+    GdcServiceInstanceSparkServiceInstanceConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GdcServiceInstanceSparkServiceInstanceConfigArgs:
+    def __init__(__self__):
+        pass
 
 
 if not MYPY:

@@ -461,12 +461,12 @@ if not MYPY:
     class InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgsDict(TypedDict):
         overrides: pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgsDict']
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         replica_selection: pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArgsDict']
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
 elif False:
@@ -478,9 +478,9 @@ class InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs:
                  overrides: pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgs'],
                  replica_selection: pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArgs']):
         """
-        :param pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgs'] overrides: A nested object resource
+        :param pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgs'] overrides: A nested object resource.
                Structure is documented below.
-        :param pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArgs'] replica_selection: A nested object resource
+        :param pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArgs'] replica_selection: A nested object resource.
                Structure is documented below.
         """
         pulumi.set(__self__, "overrides", overrides)
@@ -490,7 +490,7 @@ class InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs:
     @pulumi.getter
     def overrides(self) -> pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgs']:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "overrides")
@@ -503,7 +503,7 @@ class InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs:
     @pulumi.getter(name="replicaSelection")
     def replica_selection(self) -> pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArgs']:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "replica_selection")
@@ -517,7 +517,7 @@ if not MYPY:
     class InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgsDict(TypedDict):
         autoscaling_limits: pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgsDict']
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
 elif False:
@@ -528,7 +528,7 @@ class InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgs:
     def __init__(__self__, *,
                  autoscaling_limits: pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs']):
         """
-        :param pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs'] autoscaling_limits: A nested object resource
+        :param pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs'] autoscaling_limits: A nested object resource.
                Structure is documented below.
         """
         pulumi.set(__self__, "autoscaling_limits", autoscaling_limits)
@@ -537,7 +537,7 @@ class InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgs:
     @pulumi.getter(name="autoscalingLimits")
     def autoscaling_limits(self) -> pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs']:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "autoscaling_limits")

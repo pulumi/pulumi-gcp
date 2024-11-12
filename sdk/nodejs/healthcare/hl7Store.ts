@@ -239,7 +239,7 @@ export class Hl7Store extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * (Optional, Deprecated)
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      *
      * > **Warning:** `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
@@ -255,7 +255,7 @@ export class Hl7Store extends pulumi.CustomResource {
      */
     public readonly notificationConfigs!: pulumi.Output<outputs.healthcare.Hl7StoreNotificationConfigs[] | undefined>;
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      */
     public readonly parserConfig!: pulumi.Output<outputs.healthcare.Hl7StoreParserConfig>;
@@ -356,7 +356,7 @@ export interface Hl7StoreState {
     name?: pulumi.Input<string>;
     /**
      * (Optional, Deprecated)
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      *
      * > **Warning:** `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
@@ -372,7 +372,7 @@ export interface Hl7StoreState {
      */
     notificationConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.Hl7StoreNotificationConfigs>[]>;
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      */
     parserConfig?: pulumi.Input<inputs.healthcare.Hl7StoreParserConfig>;
@@ -424,7 +424,7 @@ export interface Hl7StoreArgs {
     name?: pulumi.Input<string>;
     /**
      * (Optional, Deprecated)
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      *
      * > **Warning:** `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
@@ -440,7 +440,7 @@ export interface Hl7StoreArgs {
      */
     notificationConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.Hl7StoreNotificationConfigs>[]>;
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      */
     parserConfig?: pulumi.Input<inputs.healthcare.Hl7StoreParserConfig>;

@@ -266,6 +266,12 @@ if not MYPY:
         PEM representation of the trusted CA's x509
         certificate.
         """
+        cascadable_replica: NotRequired[pulumi.Input[bool]]
+        """
+        Specifies if the replica is a cascadable replica. If true, instance must be in different region from primary.
+
+        > **NOTE:** Only supported for SQL Server database.
+        """
         client_certificate: NotRequired[pulumi.Input[str]]
         """
         PEM representation of the replica's x509
@@ -324,6 +330,7 @@ elif False:
 class DatabaseInstanceReplicaConfigurationArgs:
     def __init__(__self__, *,
                  ca_certificate: Optional[pulumi.Input[str]] = None,
+                 cascadable_replica: Optional[pulumi.Input[bool]] = None,
                  client_certificate: Optional[pulumi.Input[str]] = None,
                  client_key: Optional[pulumi.Input[str]] = None,
                  connect_retry_interval: Optional[pulumi.Input[int]] = None,
@@ -337,6 +344,9 @@ class DatabaseInstanceReplicaConfigurationArgs:
         """
         :param pulumi.Input[str] ca_certificate: PEM representation of the trusted CA's x509
                certificate.
+        :param pulumi.Input[bool] cascadable_replica: Specifies if the replica is a cascadable replica. If true, instance must be in different region from primary.
+               
+               > **NOTE:** Only supported for SQL Server database.
         :param pulumi.Input[str] client_certificate: PEM representation of the replica's x509
                certificate.
         :param pulumi.Input[str] client_key: PEM representation of the replica's private key. The
@@ -361,6 +371,8 @@ class DatabaseInstanceReplicaConfigurationArgs:
         """
         if ca_certificate is not None:
             pulumi.set(__self__, "ca_certificate", ca_certificate)
+        if cascadable_replica is not None:
+            pulumi.set(__self__, "cascadable_replica", cascadable_replica)
         if client_certificate is not None:
             pulumi.set(__self__, "client_certificate", client_certificate)
         if client_key is not None:
@@ -394,6 +406,20 @@ class DatabaseInstanceReplicaConfigurationArgs:
     @ca_certificate.setter
     def ca_certificate(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ca_certificate", value)
+
+    @property
+    @pulumi.getter(name="cascadableReplica")
+    def cascadable_replica(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies if the replica is a cascadable replica. If true, instance must be in different region from primary.
+
+        > **NOTE:** Only supported for SQL Server database.
+        """
+        return pulumi.get(self, "cascadable_replica")
+
+    @cascadable_replica.setter
+    def cascadable_replica(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "cascadable_replica", value)
 
     @property
     @pulumi.getter(name="clientCertificate")

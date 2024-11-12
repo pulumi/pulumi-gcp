@@ -8,12 +8,194 @@ import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.gcp.Utilities;
+import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupPlanArgs;
+import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupPlanAssociationArgs;
+import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupPlanAssociationPlainArgs;
+import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupPlanPlainArgs;
 import com.pulumi.gcp.backupdisasterrecovery.inputs.GetManagementServerArgs;
 import com.pulumi.gcp.backupdisasterrecovery.inputs.GetManagementServerPlainArgs;
+import com.pulumi.gcp.backupdisasterrecovery.outputs.GetBackupPlanAssociationResult;
+import com.pulumi.gcp.backupdisasterrecovery.outputs.GetBackupPlanResult;
 import com.pulumi.gcp.backupdisasterrecovery.outputs.GetManagementServerResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class BackupdisasterrecoveryFunctions {
+    public static Output<GetBackupPlanResult> getBackupPlan(GetBackupPlanArgs args) {
+        return getBackupPlan(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetBackupPlanResult> getBackupPlanPlain(GetBackupPlanPlainArgs args) {
+        return getBackupPlanPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetBackupPlanResult> getBackupPlan(GetBackupPlanArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:backupdisasterrecovery/getBackupPlan:getBackupPlan", TypeShape.of(GetBackupPlanResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetBackupPlanResult> getBackupPlanPlain(GetBackupPlanPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:backupdisasterrecovery/getBackupPlan:getBackupPlan", TypeShape.of(GetBackupPlanResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
+     * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupPlanAssociationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-backupplan-association = BackupdisasterrecoveryFunctions.getBackupPlanAssociation(GetBackupPlanAssociationArgs.builder()
+     *             .location("us-central1")
+     *             .backupPlanAssociationId("bpa-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetBackupPlanAssociationResult> getBackupPlanAssociation(GetBackupPlanAssociationArgs args) {
+        return getBackupPlanAssociation(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
+     * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupPlanAssociationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-backupplan-association = BackupdisasterrecoveryFunctions.getBackupPlanAssociation(GetBackupPlanAssociationArgs.builder()
+     *             .location("us-central1")
+     *             .backupPlanAssociationId("bpa-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetBackupPlanAssociationResult> getBackupPlanAssociationPlain(GetBackupPlanAssociationPlainArgs args) {
+        return getBackupPlanAssociationPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
+     * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupPlanAssociationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-backupplan-association = BackupdisasterrecoveryFunctions.getBackupPlanAssociation(GetBackupPlanAssociationArgs.builder()
+     *             .location("us-central1")
+     *             .backupPlanAssociationId("bpa-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetBackupPlanAssociationResult> getBackupPlanAssociation(GetBackupPlanAssociationArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:backupdisasterrecovery/getBackupPlanAssociation:getBackupPlanAssociation", TypeShape.of(GetBackupPlanAssociationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
+     * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupPlanAssociationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-backupplan-association = BackupdisasterrecoveryFunctions.getBackupPlanAssociation(GetBackupPlanAssociationArgs.builder()
+     *             .location("us-central1")
+     *             .backupPlanAssociationId("bpa-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetBackupPlanAssociationResult> getBackupPlanAssociationPlain(GetBackupPlanAssociationPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:backupdisasterrecovery/getBackupPlanAssociation:getBackupPlanAssociation", TypeShape.of(GetBackupPlanAssociationResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * ## Example Usage
      * 

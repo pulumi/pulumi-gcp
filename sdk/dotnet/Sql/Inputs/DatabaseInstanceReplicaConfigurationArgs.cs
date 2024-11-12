@@ -20,6 +20,14 @@ namespace Pulumi.Gcp.Sql.Inputs
         public Input<string>? CaCertificate { get; set; }
 
         /// <summary>
+        /// Specifies if the replica is a cascadable replica. If true, instance must be in different region from primary.
+        /// 
+        /// &gt; **NOTE:** Only supported for SQL Server database.
+        /// </summary>
+        [Input("cascadableReplica")]
+        public Input<bool>? CascadableReplica { get; set; }
+
+        /// <summary>
         /// PEM representation of the replica's x509
         /// certificate.
         /// </summary>

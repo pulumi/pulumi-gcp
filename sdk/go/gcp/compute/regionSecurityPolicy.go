@@ -113,6 +113,57 @@ import (
 //	}
 //
 // ```
+// ### Region Security Policy With Rules
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewRegionSecurityPolicy(ctx, "region-sec-policy-with-rules", &compute.RegionSecurityPolicyArgs{
+//				Name:        pulumi.String("my-sec-policy-with-rules"),
+//				Description: pulumi.String("basic region security policy with multiple rules"),
+//				Type:        pulumi.String("CLOUD_ARMOR"),
+//				Rules: compute.RegionSecurityPolicyRuleTypeArray{
+//					&compute.RegionSecurityPolicyRuleTypeArgs{
+//						Action:   pulumi.String("deny"),
+//						Priority: pulumi.Int(1000),
+//						Match: &compute.RegionSecurityPolicyRuleMatchArgs{
+//							Expr: &compute.RegionSecurityPolicyRuleMatchExprArgs{
+//								Expression: pulumi.String("request.path.matches(\"/login.html\") && token.recaptcha_session.score < 0.2"),
+//							},
+//						},
+//					},
+//					&compute.RegionSecurityPolicyRuleTypeArgs{
+//						Action:   pulumi.String("deny"),
+//						Priority: pulumi.Int(2147483647),
+//						Match: &compute.RegionSecurityPolicyRuleMatchArgs{
+//							VersionedExpr: pulumi.String("SRC_IPS_V1"),
+//							Config: &compute.RegionSecurityPolicyRuleMatchConfigArgs{
+//								SrcIpRanges: pulumi.StringArray{
+//									pulumi.String("*"),
+//								},
+//							},
+//						},
+//						Description: pulumi.String("default rule"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -167,6 +218,9 @@ type RegionSecurityPolicy struct {
 	// The Region in which the created Region Security Policy should reside.
 	// If it is not provided, the provider region is used.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// The set of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
+	// Structure is documented below.
+	Rules RegionSecurityPolicyRuleTypeArrayOutput `pulumi:"rules"`
 	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Server-defined URL for this resource with the resource id.
@@ -236,6 +290,9 @@ type regionSecurityPolicyState struct {
 	// The Region in which the created Region Security Policy should reside.
 	// If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
+	// The set of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
+	// Structure is documented below.
+	Rules []RegionSecurityPolicyRuleType `pulumi:"rules"`
 	// Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// Server-defined URL for this resource with the resource id.
@@ -276,6 +333,9 @@ type RegionSecurityPolicyState struct {
 	// The Region in which the created Region Security Policy should reside.
 	// If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
+	// The set of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
+	// Structure is documented below.
+	Rules RegionSecurityPolicyRuleTypeArrayInput
 	// Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 	// Server-defined URL for this resource with the resource id.
@@ -315,6 +375,9 @@ type regionSecurityPolicyArgs struct {
 	// The Region in which the created Region Security Policy should reside.
 	// If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
+	// The set of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
+	// Structure is documented below.
+	Rules []RegionSecurityPolicyRuleType `pulumi:"rules"`
 	// The type indicates the intended use of the security policy.
 	// - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers.
 	// - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache.
@@ -347,6 +410,9 @@ type RegionSecurityPolicyArgs struct {
 	// The Region in which the created Region Security Policy should reside.
 	// If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
+	// The set of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
+	// Structure is documented below.
+	Rules RegionSecurityPolicyRuleTypeArrayInput
 	// The type indicates the intended use of the security policy.
 	// - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers.
 	// - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache.
@@ -490,6 +556,12 @@ func (o RegionSecurityPolicyOutput) Project() pulumi.StringOutput {
 // If it is not provided, the provider region is used.
 func (o RegionSecurityPolicyOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionSecurityPolicy) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The set of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
+// Structure is documented below.
+func (o RegionSecurityPolicyOutput) Rules() RegionSecurityPolicyRuleTypeArrayOutput {
+	return o.ApplyT(func(v *RegionSecurityPolicy) RegionSecurityPolicyRuleTypeArrayOutput { return v.Rules }).(RegionSecurityPolicyRuleTypeArrayOutput)
 }
 
 // Server-defined URL for the resource.

@@ -70,7 +70,7 @@ namespace Pulumi.Gcp.Compute
     ///     var basicValue = new Gcp.Tags.TagValue("basic_value", new()
     ///     {
     ///         Description = "For valuename resources.",
-    ///         Parent = basicKey.Name.Apply(name =&gt; $"tagKeys/{name}"),
+    ///         Parent = basicKey.Id,
     ///         ShortName = "tagvalue",
     ///     });
     /// 
@@ -118,7 +118,7 @@ namespace Pulumi.Gcp.Compute
     ///             {
     ///                 new Gcp.Compute.Inputs.RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgs
     ///                 {
-    ///                     Name = basicValue.Name.Apply(name =&gt; $"tagValues/{name}"),
+    ///                     Name = basicValue.Id,
     ///                 },
     ///             },
     ///             SrcAddressGroups = new[]

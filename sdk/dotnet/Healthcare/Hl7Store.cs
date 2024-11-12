@@ -263,7 +263,7 @@ namespace Pulumi.Gcp.Healthcare
 
         /// <summary>
         /// (Optional, Deprecated)
-        /// A nested object resource
+        /// A nested object resource.
         /// Structure is documented below.
         /// 
         /// &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
@@ -281,7 +281,7 @@ namespace Pulumi.Gcp.Healthcare
         public Output<ImmutableArray<Outputs.Hl7StoreNotificationConfigs>> NotificationConfigs { get; private set; } = null!;
 
         /// <summary>
-        /// A nested object resource
+        /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
         [Output("parserConfig")]
@@ -398,7 +398,7 @@ namespace Pulumi.Gcp.Healthcare
 
         /// <summary>
         /// (Optional, Deprecated)
-        /// A nested object resource
+        /// A nested object resource.
         /// Structure is documented below.
         /// 
         /// &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
@@ -422,7 +422,7 @@ namespace Pulumi.Gcp.Healthcare
         }
 
         /// <summary>
-        /// A nested object resource
+        /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
         [Input("parserConfig")]
@@ -499,7 +499,7 @@ namespace Pulumi.Gcp.Healthcare
 
         /// <summary>
         /// (Optional, Deprecated)
-        /// A nested object resource
+        /// A nested object resource.
         /// Structure is documented below.
         /// 
         /// &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
@@ -523,7 +523,7 @@ namespace Pulumi.Gcp.Healthcare
         }
 
         /// <summary>
-        /// A nested object resource
+        /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
         [Input("parserConfig")]

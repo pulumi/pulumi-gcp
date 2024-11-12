@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.MemoryStore
 {
     /// <summary>
+    /// A Google Cloud Memorystore instance.
+    /// 
     /// ## Example Usage
     /// 
     /// ### Memorystore Instance Basic

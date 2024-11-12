@@ -987,6 +987,121 @@ func (o AddonsConfigAddonsConfigMonetizationConfigPtrOutput) Enabled() pulumi.Bo
 	}).(pulumi.BoolPtrOutput)
 }
 
+type ApiMetaData struct {
+	// Time at which the API proxy was created, in milliseconds since epoch.
+	CreatedAt *string `pulumi:"createdAt"`
+	// Time at which the API proxy was most recently modified, in milliseconds since epoch.
+	LastModifiedAt *string `pulumi:"lastModifiedAt"`
+	// The type of entity described
+	SubType *string `pulumi:"subType"`
+}
+
+// ApiMetaDataInput is an input type that accepts ApiMetaDataArgs and ApiMetaDataOutput values.
+// You can construct a concrete instance of `ApiMetaDataInput` via:
+//
+//	ApiMetaDataArgs{...}
+type ApiMetaDataInput interface {
+	pulumi.Input
+
+	ToApiMetaDataOutput() ApiMetaDataOutput
+	ToApiMetaDataOutputWithContext(context.Context) ApiMetaDataOutput
+}
+
+type ApiMetaDataArgs struct {
+	// Time at which the API proxy was created, in milliseconds since epoch.
+	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
+	// Time at which the API proxy was most recently modified, in milliseconds since epoch.
+	LastModifiedAt pulumi.StringPtrInput `pulumi:"lastModifiedAt"`
+	// The type of entity described
+	SubType pulumi.StringPtrInput `pulumi:"subType"`
+}
+
+func (ApiMetaDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiMetaData)(nil)).Elem()
+}
+
+func (i ApiMetaDataArgs) ToApiMetaDataOutput() ApiMetaDataOutput {
+	return i.ToApiMetaDataOutputWithContext(context.Background())
+}
+
+func (i ApiMetaDataArgs) ToApiMetaDataOutputWithContext(ctx context.Context) ApiMetaDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiMetaDataOutput)
+}
+
+// ApiMetaDataArrayInput is an input type that accepts ApiMetaDataArray and ApiMetaDataArrayOutput values.
+// You can construct a concrete instance of `ApiMetaDataArrayInput` via:
+//
+//	ApiMetaDataArray{ ApiMetaDataArgs{...} }
+type ApiMetaDataArrayInput interface {
+	pulumi.Input
+
+	ToApiMetaDataArrayOutput() ApiMetaDataArrayOutput
+	ToApiMetaDataArrayOutputWithContext(context.Context) ApiMetaDataArrayOutput
+}
+
+type ApiMetaDataArray []ApiMetaDataInput
+
+func (ApiMetaDataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApiMetaData)(nil)).Elem()
+}
+
+func (i ApiMetaDataArray) ToApiMetaDataArrayOutput() ApiMetaDataArrayOutput {
+	return i.ToApiMetaDataArrayOutputWithContext(context.Background())
+}
+
+func (i ApiMetaDataArray) ToApiMetaDataArrayOutputWithContext(ctx context.Context) ApiMetaDataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiMetaDataArrayOutput)
+}
+
+type ApiMetaDataOutput struct{ *pulumi.OutputState }
+
+func (ApiMetaDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiMetaData)(nil)).Elem()
+}
+
+func (o ApiMetaDataOutput) ToApiMetaDataOutput() ApiMetaDataOutput {
+	return o
+}
+
+func (o ApiMetaDataOutput) ToApiMetaDataOutputWithContext(ctx context.Context) ApiMetaDataOutput {
+	return o
+}
+
+// Time at which the API proxy was created, in milliseconds since epoch.
+func (o ApiMetaDataOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiMetaData) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// Time at which the API proxy was most recently modified, in milliseconds since epoch.
+func (o ApiMetaDataOutput) LastModifiedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiMetaData) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
+}
+
+// The type of entity described
+func (o ApiMetaDataOutput) SubType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiMetaData) *string { return v.SubType }).(pulumi.StringPtrOutput)
+}
+
+type ApiMetaDataArrayOutput struct{ *pulumi.OutputState }
+
+func (ApiMetaDataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApiMetaData)(nil)).Elem()
+}
+
+func (o ApiMetaDataArrayOutput) ToApiMetaDataArrayOutput() ApiMetaDataArrayOutput {
+	return o
+}
+
+func (o ApiMetaDataArrayOutput) ToApiMetaDataArrayOutputWithContext(ctx context.Context) ApiMetaDataArrayOutput {
+	return o
+}
+
+func (o ApiMetaDataArrayOutput) Index(i pulumi.IntInput) ApiMetaDataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApiMetaData {
+		return vs[0].([]ApiMetaData)[vs[1].(int)]
+	}).(ApiMetaDataOutput)
+}
+
 type AppGroupAttribute struct {
 	// Key of the attribute
 	Name *string `pulumi:"name"`
@@ -3970,6 +4085,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AddonsConfigAddonsConfigIntegrationConfigPtrInput)(nil)).Elem(), AddonsConfigAddonsConfigIntegrationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AddonsConfigAddonsConfigMonetizationConfigInput)(nil)).Elem(), AddonsConfigAddonsConfigMonetizationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AddonsConfigAddonsConfigMonetizationConfigPtrInput)(nil)).Elem(), AddonsConfigAddonsConfigMonetizationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiMetaDataInput)(nil)).Elem(), ApiMetaDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiMetaDataArrayInput)(nil)).Elem(), ApiMetaDataArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppGroupAttributeInput)(nil)).Elem(), AppGroupAttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppGroupAttributeArrayInput)(nil)).Elem(), AppGroupAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeveloperAttributeInput)(nil)).Elem(), DeveloperAttributeArgs{})
@@ -4018,6 +4135,8 @@ func init() {
 	pulumi.RegisterOutputType(AddonsConfigAddonsConfigIntegrationConfigPtrOutput{})
 	pulumi.RegisterOutputType(AddonsConfigAddonsConfigMonetizationConfigOutput{})
 	pulumi.RegisterOutputType(AddonsConfigAddonsConfigMonetizationConfigPtrOutput{})
+	pulumi.RegisterOutputType(ApiMetaDataOutput{})
+	pulumi.RegisterOutputType(ApiMetaDataArrayOutput{})
 	pulumi.RegisterOutputType(AppGroupAttributeOutput{})
 	pulumi.RegisterOutputType(AppGroupAttributeArrayOutput{})
 	pulumi.RegisterOutputType(DeveloperAttributeOutput{})

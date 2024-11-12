@@ -350,7 +350,7 @@ class RegionNetworkFirewallPolicyWithRules(pulumi.CustomResource):
         project = gcp.organizations.get_project()
         address_group1 = gcp.networksecurity.AddressGroup("address_group_1",
             name="tf-address-group",
-            parent=f"projects/{project.name}",
+            parent=project.id,
             description="Regional address group",
             location="us-west2",
             items=["208.80.154.224/32"],
@@ -358,7 +358,7 @@ class RegionNetworkFirewallPolicyWithRules(pulumi.CustomResource):
             capacity=100)
         secure_tag_key1 = gcp.tags.TagKey("secure_tag_key_1",
             description="Tag key",
-            parent=f"projects/{project.name}",
+            parent=project.id,
             purpose="GCE_FIREWALL",
             short_name="tf-tag-key",
             purpose_data={
@@ -366,7 +366,7 @@ class RegionNetworkFirewallPolicyWithRules(pulumi.CustomResource):
             })
         secure_tag_value1 = gcp.tags.TagValue("secure_tag_value_1",
             description="Tag value",
-            parent=secure_tag_key1.name.apply(lambda name: f"tagKeys/{name}"),
+            parent=secure_tag_key1.id,
             short_name="tf-tag-value")
         region_network_firewall_policy_with_rules = gcp.compute.RegionNetworkFirewallPolicyWithRules("region-network-firewall-policy-with-rules",
             name="tf-region-fw-policy-with-rules",
@@ -403,7 +403,7 @@ class RegionNetworkFirewallPolicyWithRules(pulumi.CustomResource):
                         "dest_address_groups": [address_group1.id],
                     },
                     "target_secure_tags": [{
-                        "name": secure_tag_value1.name.apply(lambda name: f"tagValues/{name}"),
+                        "name": secure_tag_value1.id,
                     }],
                 },
                 {
@@ -432,7 +432,7 @@ class RegionNetworkFirewallPolicyWithRules(pulumi.CustomResource):
                         ],
                         "src_address_groups": [address_group1.id],
                         "src_secure_tags": [{
-                            "name": secure_tag_value1.name.apply(lambda name: f"tagValues/{name}"),
+                            "name": secure_tag_value1.id,
                         }],
                     },
                     "disabled": True,
@@ -502,7 +502,7 @@ class RegionNetworkFirewallPolicyWithRules(pulumi.CustomResource):
         project = gcp.organizations.get_project()
         address_group1 = gcp.networksecurity.AddressGroup("address_group_1",
             name="tf-address-group",
-            parent=f"projects/{project.name}",
+            parent=project.id,
             description="Regional address group",
             location="us-west2",
             items=["208.80.154.224/32"],
@@ -510,7 +510,7 @@ class RegionNetworkFirewallPolicyWithRules(pulumi.CustomResource):
             capacity=100)
         secure_tag_key1 = gcp.tags.TagKey("secure_tag_key_1",
             description="Tag key",
-            parent=f"projects/{project.name}",
+            parent=project.id,
             purpose="GCE_FIREWALL",
             short_name="tf-tag-key",
             purpose_data={
@@ -518,7 +518,7 @@ class RegionNetworkFirewallPolicyWithRules(pulumi.CustomResource):
             })
         secure_tag_value1 = gcp.tags.TagValue("secure_tag_value_1",
             description="Tag value",
-            parent=secure_tag_key1.name.apply(lambda name: f"tagKeys/{name}"),
+            parent=secure_tag_key1.id,
             short_name="tf-tag-value")
         region_network_firewall_policy_with_rules = gcp.compute.RegionNetworkFirewallPolicyWithRules("region-network-firewall-policy-with-rules",
             name="tf-region-fw-policy-with-rules",
@@ -555,7 +555,7 @@ class RegionNetworkFirewallPolicyWithRules(pulumi.CustomResource):
                         "dest_address_groups": [address_group1.id],
                     },
                     "target_secure_tags": [{
-                        "name": secure_tag_value1.name.apply(lambda name: f"tagValues/{name}"),
+                        "name": secure_tag_value1.id,
                     }],
                 },
                 {
@@ -584,7 +584,7 @@ class RegionNetworkFirewallPolicyWithRules(pulumi.CustomResource):
                         ],
                         "src_address_groups": [address_group1.id],
                         "src_secure_tags": [{
-                            "name": secure_tag_value1.name.apply(lambda name: f"tagValues/{name}"),
+                            "name": secure_tag_value1.id,
                         }],
                     },
                     "disabled": True,

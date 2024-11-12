@@ -69,6 +69,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Controls the default backup behavior for new databases within the instance.
+     * Note that `AUTOMATIC` is not permitted for free instances, as backups and backup schedules are not allowed for free instances.
+     * if unset or NONE, no default backup schedule will be created for new databases within the instance.
+     * Possible values are: `NONE`, `AUTOMATIC`.
+     * 
+     */
+    @Import(name="defaultBackupScheduleType")
+    private @Nullable Output<String> defaultBackupScheduleType;
+
+    /**
+     * @return Controls the default backup behavior for new databases within the instance.
+     * Note that `AUTOMATIC` is not permitted for free instances, as backups and backup schedules are not allowed for free instances.
+     * if unset or NONE, no default backup schedule will be created for new databases within the instance.
+     * Possible values are: `NONE`, `AUTOMATIC`.
+     * 
+     */
+    public Optional<Output<String>> defaultBackupScheduleType() {
+        return Optional.ofNullable(this.defaultBackupScheduleType);
+    }
+
+    /**
      * The descriptive name for this instance as it appears in UIs. Must be
      * unique per project and between 4 and 30 characters in length.
      * 
@@ -203,6 +224,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private InstanceArgs(InstanceArgs $) {
         this.autoscalingConfig = $.autoscalingConfig;
         this.config = $.config;
+        this.defaultBackupScheduleType = $.defaultBackupScheduleType;
         this.displayName = $.displayName;
         this.edition = $.edition;
         this.forceDestroy = $.forceDestroy;
@@ -289,6 +311,33 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder config(String config) {
             return config(Output.of(config));
+        }
+
+        /**
+         * @param defaultBackupScheduleType Controls the default backup behavior for new databases within the instance.
+         * Note that `AUTOMATIC` is not permitted for free instances, as backups and backup schedules are not allowed for free instances.
+         * if unset or NONE, no default backup schedule will be created for new databases within the instance.
+         * Possible values are: `NONE`, `AUTOMATIC`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultBackupScheduleType(@Nullable Output<String> defaultBackupScheduleType) {
+            $.defaultBackupScheduleType = defaultBackupScheduleType;
+            return this;
+        }
+
+        /**
+         * @param defaultBackupScheduleType Controls the default backup behavior for new databases within the instance.
+         * Note that `AUTOMATIC` is not permitted for free instances, as backups and backup schedules are not allowed for free instances.
+         * if unset or NONE, no default backup schedule will be created for new databases within the instance.
+         * Possible values are: `NONE`, `AUTOMATIC`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultBackupScheduleType(String defaultBackupScheduleType) {
+            return defaultBackupScheduleType(Output.of(defaultBackupScheduleType));
         }
 
         /**

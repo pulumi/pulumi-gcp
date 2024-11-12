@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  * 
  *         var addressGroup1 = new AddressGroup("addressGroup1", AddressGroupArgs.builder()
  *             .name("tf-address-group")
- *             .parent(String.format("projects/%s", project.applyValue(getProjectResult -> getProjectResult.name())))
+ *             .parent(project.applyValue(getProjectResult -> getProjectResult.id()))
  *             .description("Regional address group")
  *             .location("us-west2")
  *             .items("208.80.154.224/32")
@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  * 
  *         var secureTagKey1 = new TagKey("secureTagKey1", TagKeyArgs.builder()
  *             .description("Tag key")
- *             .parent(String.format("projects/%s", project.applyValue(getProjectResult -> getProjectResult.name())))
+ *             .parent(project.applyValue(getProjectResult -> getProjectResult.id()))
  *             .purpose("GCE_FIREWALL")
  *             .shortName("tf-tag-key")
  *             .purposeData(Map.of("network", String.format("%s/default", project.applyValue(getProjectResult -> getProjectResult.name()))))
@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  * 
  *         var secureTagValue1 = new TagValue("secureTagValue1", TagValueArgs.builder()
  *             .description("Tag value")
- *             .parent(secureTagKey1.name().applyValue(name -> String.format("tagKeys/%s", name)))
+ *             .parent(secureTagKey1.id())
  *             .shortName("tf-tag-value")
  *             .build());
  * 
@@ -113,7 +113,7 @@ import javax.annotation.Nullable;
  *                         .destAddressGroups(addressGroup1.id())
  *                         .build())
  *                     .targetSecureTags(RegionNetworkFirewallPolicyWithRulesRuleTargetSecureTagArgs.builder()
- *                         .name(secureTagValue1.name().applyValue(name -> String.format("tagValues/%s", name)))
+ *                         .name(secureTagValue1.id())
  *                         .build())
  *                     .build(),
  *                 RegionNetworkFirewallPolicyWithRulesRuleArgs.builder()
@@ -139,7 +139,7 @@ import javax.annotation.Nullable;
  *                             "iplist-public-clouds")
  *                         .srcAddressGroups(addressGroup1.id())
  *                         .srcSecureTags(RegionNetworkFirewallPolicyWithRulesRuleMatchSrcSecureTagArgs.builder()
- *                             .name(secureTagValue1.name().applyValue(name -> String.format("tagValues/%s", name)))
+ *                             .name(secureTagValue1.id())
  *                             .build())
  *                         .build())
  *                     .disabled(true)

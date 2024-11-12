@@ -35,6 +35,21 @@ public final class FirewallPolicyRuleState extends com.pulumi.resources.Resource
     }
 
     /**
+     * Creation timestamp in RFC3339 text format.
+     * 
+     */
+    @Import(name="creationTimestamp")
+    private @Nullable Output<String> creationTimestamp;
+
+    /**
+     * @return Creation timestamp in RFC3339 text format.
+     * 
+     */
+    public Optional<Output<String>> creationTimestamp() {
+        return Optional.ofNullable(this.creationTimestamp);
+    }
+
+    /**
      * An optional description for this resource.
      * 
      */
@@ -50,14 +65,16 @@ public final class FirewallPolicyRuleState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The direction in which this rule applies. Possible values: INGRESS, EGRESS
+     * The direction in which this rule applies.
+     * Possible values are: `INGRESS`, `EGRESS`.
      * 
      */
     @Import(name="direction")
     private @Nullable Output<String> direction;
 
     /**
-     * @return The direction in which this rule applies. Possible values: INGRESS, EGRESS
+     * @return The direction in which this rule applies.
+     * Possible values are: `INGRESS`, `EGRESS`.
      * 
      */
     public Optional<Output<String>> direction() {
@@ -132,6 +149,7 @@ public final class FirewallPolicyRuleState extends com.pulumi.resources.Resource
 
     /**
      * A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding &#39;action&#39; is enforced.
+     * Structure is documented below.
      * 
      */
     @Import(name="match")
@@ -139,6 +157,7 @@ public final class FirewallPolicyRuleState extends com.pulumi.resources.Resource
 
     /**
      * @return A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding &#39;action&#39; is enforced.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<FirewallPolicyRuleMatchArgs>> match() {
@@ -146,14 +165,18 @@ public final class FirewallPolicyRuleState extends com.pulumi.resources.Resource
     }
 
     /**
-     * An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
+     * An integer indicating the priority of a rule in the list.
+     * The priority must be a positive value between 0 and 2147483647.
+     * Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
      * 
      */
     @Import(name="priority")
     private @Nullable Output<Integer> priority;
 
     /**
-     * @return An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
+     * @return An integer indicating the priority of a rule in the list.
+     * The priority must be a positive value between 0 and 2147483647.
+     * Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
      * 
      */
     public Optional<Output<Integer>> priority() {
@@ -176,18 +199,18 @@ public final class FirewallPolicyRuleState extends com.pulumi.resources.Resource
     }
 
     /**
-     * A fully-qualified URL of a SecurityProfileGroup resource. Example:
-     * https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
-     * It must be specified if action = &#39;apply_security_profile_group&#39; and cannot be specified for other actions.
+     * A fully-qualified URL of a SecurityProfile resource instance. Example:
+     * https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+     * Must be specified if action = &#39;apply_security_profile_group&#39; and cannot be specified for other actions.
      * 
      */
     @Import(name="securityProfileGroup")
     private @Nullable Output<String> securityProfileGroup;
 
     /**
-     * @return A fully-qualified URL of a SecurityProfileGroup resource. Example:
-     * https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
-     * It must be specified if action = &#39;apply_security_profile_group&#39; and cannot be specified for other actions.
+     * @return A fully-qualified URL of a SecurityProfile resource instance. Example:
+     * https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+     * Must be specified if action = &#39;apply_security_profile_group&#39; and cannot be specified for other actions.
      * 
      */
     public Optional<Output<String>> securityProfileGroup() {
@@ -227,7 +250,7 @@ public final class FirewallPolicyRuleState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+     * Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
      * &#39;apply_security_profile_group&#39; and cannot be set for other actions.
      * 
      */
@@ -235,7 +258,7 @@ public final class FirewallPolicyRuleState extends com.pulumi.resources.Resource
     private @Nullable Output<Boolean> tlsInspect;
 
     /**
-     * @return Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+     * @return Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
      * &#39;apply_security_profile_group&#39; and cannot be set for other actions.
      * 
      */
@@ -247,6 +270,7 @@ public final class FirewallPolicyRuleState extends com.pulumi.resources.Resource
 
     private FirewallPolicyRuleState(FirewallPolicyRuleState $) {
         this.action = $.action;
+        this.creationTimestamp = $.creationTimestamp;
         this.description = $.description;
         this.direction = $.direction;
         this.disabled = $.disabled;
@@ -302,6 +326,27 @@ public final class FirewallPolicyRuleState extends com.pulumi.resources.Resource
         }
 
         /**
+         * @param creationTimestamp Creation timestamp in RFC3339 text format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder creationTimestamp(@Nullable Output<String> creationTimestamp) {
+            $.creationTimestamp = creationTimestamp;
+            return this;
+        }
+
+        /**
+         * @param creationTimestamp Creation timestamp in RFC3339 text format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder creationTimestamp(String creationTimestamp) {
+            return creationTimestamp(Output.of(creationTimestamp));
+        }
+
+        /**
          * @param description An optional description for this resource.
          * 
          * @return builder
@@ -323,7 +368,8 @@ public final class FirewallPolicyRuleState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param direction The direction in which this rule applies. Possible values: INGRESS, EGRESS
+         * @param direction The direction in which this rule applies.
+         * Possible values are: `INGRESS`, `EGRESS`.
          * 
          * @return builder
          * 
@@ -334,7 +380,8 @@ public final class FirewallPolicyRuleState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param direction The direction in which this rule applies. Possible values: INGRESS, EGRESS
+         * @param direction The direction in which this rule applies.
+         * Possible values are: `INGRESS`, `EGRESS`.
          * 
          * @return builder
          * 
@@ -435,6 +482,7 @@ public final class FirewallPolicyRuleState extends com.pulumi.resources.Resource
 
         /**
          * @param match A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding &#39;action&#39; is enforced.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -446,6 +494,7 @@ public final class FirewallPolicyRuleState extends com.pulumi.resources.Resource
 
         /**
          * @param match A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding &#39;action&#39; is enforced.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -455,7 +504,9 @@ public final class FirewallPolicyRuleState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param priority An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
+         * @param priority An integer indicating the priority of a rule in the list.
+         * The priority must be a positive value between 0 and 2147483647.
+         * Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
          * 
          * @return builder
          * 
@@ -466,7 +517,9 @@ public final class FirewallPolicyRuleState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param priority An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
+         * @param priority An integer indicating the priority of a rule in the list.
+         * The priority must be a positive value between 0 and 2147483647.
+         * Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
          * 
          * @return builder
          * 
@@ -497,9 +550,9 @@ public final class FirewallPolicyRuleState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param securityProfileGroup A fully-qualified URL of a SecurityProfileGroup resource. Example:
-         * https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
-         * It must be specified if action = &#39;apply_security_profile_group&#39; and cannot be specified for other actions.
+         * @param securityProfileGroup A fully-qualified URL of a SecurityProfile resource instance. Example:
+         * https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+         * Must be specified if action = &#39;apply_security_profile_group&#39; and cannot be specified for other actions.
          * 
          * @return builder
          * 
@@ -510,9 +563,9 @@ public final class FirewallPolicyRuleState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param securityProfileGroup A fully-qualified URL of a SecurityProfileGroup resource. Example:
-         * https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
-         * It must be specified if action = &#39;apply_security_profile_group&#39; and cannot be specified for other actions.
+         * @param securityProfileGroup A fully-qualified URL of a SecurityProfile resource instance. Example:
+         * https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+         * Must be specified if action = &#39;apply_security_profile_group&#39; and cannot be specified for other actions.
          * 
          * @return builder
          * 
@@ -587,7 +640,7 @@ public final class FirewallPolicyRuleState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param tlsInspect Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+         * @param tlsInspect Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
          * &#39;apply_security_profile_group&#39; and cannot be set for other actions.
          * 
          * @return builder
@@ -599,7 +652,7 @@ public final class FirewallPolicyRuleState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param tlsInspect Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+         * @param tlsInspect Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
          * &#39;apply_security_profile_group&#39; and cannot be set for other actions.
          * 
          * @return builder

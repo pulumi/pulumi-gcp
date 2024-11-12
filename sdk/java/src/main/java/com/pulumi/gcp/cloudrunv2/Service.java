@@ -621,7 +621,6 @@ import javax.annotation.Nullable;
  *             .name("cloudrun-service")
  *             .location("us-central1")
  *             .deletionProtection(false)
- *             .launchStage("BETA")
  *             .ingress("INGRESS_TRAFFIC_ALL")
  *             .template(ServiceTemplateArgs.builder()
  *                 .containers(                

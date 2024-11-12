@@ -19,12 +19,12 @@ namespace Pulumi.Gcp.GkeOnPrem.Outputs
         /// </summary>
         public readonly Outputs.BareMetalClusterLoadBalancerBgpLbConfig? BgpLbConfig;
         /// <summary>
-        /// A nested object resource
+        /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.BareMetalClusterLoadBalancerManualLbConfig? ManualLbConfig;
         /// <summary>
-        /// A nested object resource
+        /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.BareMetalClusterLoadBalancerMetalLbConfig? MetalLbConfig;

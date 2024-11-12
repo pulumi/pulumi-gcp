@@ -179,7 +179,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> AccessMode { get; private set; } = null!;
 
         /// <summary>
-        /// A nested object resource
+        /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
         [Output("asyncPrimaryDisk")]
@@ -552,7 +552,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? AccessMode { get; set; }
 
         /// <summary>
-        /// A nested object resource
+        /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
         [Input("asyncPrimaryDisk")]
@@ -820,7 +820,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? AccessMode { get; set; }
 
         /// <summary>
-        /// A nested object resource
+        /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
         [Input("asyncPrimaryDisk")]

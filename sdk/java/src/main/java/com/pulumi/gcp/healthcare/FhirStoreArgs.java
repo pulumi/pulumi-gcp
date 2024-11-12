@@ -249,7 +249,7 @@ public final class FhirStoreArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * (Optional, Deprecated)
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      * 
      * &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
@@ -264,7 +264,7 @@ public final class FhirStoreArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return (Optional, Deprecated)
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      * 
      * &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
@@ -666,7 +666,7 @@ public final class FhirStoreArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param notificationConfig (Optional, Deprecated)
-         * A nested object resource
+         * A nested object resource.
          * Structure is documented below.
          * 
          * &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
@@ -685,7 +685,7 @@ public final class FhirStoreArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param notificationConfig (Optional, Deprecated)
-         * A nested object resource
+         * A nested object resource.
          * Structure is documented below.
          * 
          * &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.

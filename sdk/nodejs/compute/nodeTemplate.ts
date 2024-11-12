@@ -71,6 +71,26 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * ### Node Template Disks
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const central1a = gcp.compute.getNodeTypes({
+ *     zone: "us-central1-a",
+ * });
+ * const template = new gcp.compute.NodeTemplate("template", {
+ *     name: "soletenant-with-disks",
+ *     region: "us-central1",
+ *     nodeType: "n2-node-80-640",
+ *     disks: [{
+ *         diskCount: 16,
+ *         diskSizeGb: 375,
+ *         diskType: "local-ssd",
+ *     }],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -151,6 +171,12 @@ export class NodeTemplate extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * List of the type, size and count of disks attached to the
+     * node template
+     * Structure is documented below.
+     */
+    public readonly disks!: pulumi.Output<outputs.compute.NodeTemplateDisk[] | undefined>;
+    /**
      * Name of the resource.
      */
     public readonly name!: pulumi.Output<string>;
@@ -210,6 +236,7 @@ export class NodeTemplate extends pulumi.CustomResource {
             resourceInputs["cpuOvercommitType"] = state ? state.cpuOvercommitType : undefined;
             resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["disks"] = state ? state.disks : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["nodeAffinityLabels"] = state ? state.nodeAffinityLabels : undefined;
             resourceInputs["nodeType"] = state ? state.nodeType : undefined;
@@ -223,6 +250,7 @@ export class NodeTemplate extends pulumi.CustomResource {
             resourceInputs["accelerators"] = args ? args.accelerators : undefined;
             resourceInputs["cpuOvercommitType"] = args ? args.cpuOvercommitType : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["disks"] = args ? args.disks : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["nodeAffinityLabels"] = args ? args.nodeAffinityLabels : undefined;
             resourceInputs["nodeType"] = args ? args.nodeType : undefined;
@@ -262,6 +290,12 @@ export interface NodeTemplateState {
      * An optional textual description of the resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * List of the type, size and count of disks attached to the
+     * node template
+     * Structure is documented below.
+     */
+    disks?: pulumi.Input<pulumi.Input<inputs.compute.NodeTemplateDisk>[]>;
     /**
      * Name of the resource.
      */
@@ -326,6 +360,12 @@ export interface NodeTemplateArgs {
      * An optional textual description of the resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * List of the type, size and count of disks attached to the
+     * node template
+     * Structure is documented below.
+     */
+    disks?: pulumi.Input<pulumi.Input<inputs.compute.NodeTemplateDisk>[]>;
     /**
      * Name of the resource.
      */

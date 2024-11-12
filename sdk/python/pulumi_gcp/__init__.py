@@ -701,6 +701,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "apigee/api",
+  "fqn": "pulumi_gcp.apigee",
+  "classes": {
+   "gcp:apigee/api:Api": "Api"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "apigee/appGroup",
   "fqn": "pulumi_gcp.apigee",
   "classes": {
@@ -1057,6 +1065,22 @@ _utilities.register(
   "fqn": "pulumi_gcp.assuredworkloads",
   "classes": {
    "gcp:assuredworkloads/workload:Workload": "Workload"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "backupdisasterrecovery/backupPlan",
+  "fqn": "pulumi_gcp.backupdisasterrecovery",
+  "classes": {
+   "gcp:backupdisasterrecovery/backupPlan:BackupPlan": "BackupPlan"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "backupdisasterrecovery/backupPlanAssociation",
+  "fqn": "pulumi_gcp.backupdisasterrecovery",
+  "classes": {
+   "gcp:backupdisasterrecovery/backupPlanAssociation:BackupPlanAssociation": "BackupPlanAssociation"
   }
  },
  {
@@ -2997,6 +3021,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "compute/regionResizeRequest",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/regionResizeRequest:RegionResizeRequest": "RegionResizeRequest"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "compute/regionSecurityPolicy",
   "fqn": "pulumi_gcp.compute",
   "classes": {
@@ -4073,6 +4105,22 @@ _utilities.register(
   "fqn": "pulumi_gcp.dataproc",
   "classes": {
    "gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy": "ClusterIAMPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataproc/gdcApplicationEnvironment",
+  "fqn": "pulumi_gcp.dataproc",
+  "classes": {
+   "gcp:dataproc/gdcApplicationEnvironment:GdcApplicationEnvironment": "GdcApplicationEnvironment"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataproc/gdcServiceInstance",
+  "fqn": "pulumi_gcp.dataproc",
+  "classes": {
+   "gcp:dataproc/gdcServiceInstance:GdcServiceInstance": "GdcServiceInstance"
   }
  },
  {
@@ -5325,6 +5373,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "iam/principalAccessBoundaryPolicy",
+  "fqn": "pulumi_gcp.iam",
+  "classes": {
+   "gcp:iam/principalAccessBoundaryPolicy:PrincipalAccessBoundaryPolicy": "PrincipalAccessBoundaryPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "iam/workforcePool",
   "fqn": "pulumi_gcp.iam",
   "classes": {
@@ -6297,6 +6353,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.networkmanagement",
   "classes": {
    "gcp:networkmanagement/connectivityTest:ConnectivityTest": "ConnectivityTest"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "networkmanagement/vpcFlowLogsConfig",
+  "fqn": "pulumi_gcp.networkmanagement",
+  "classes": {
+   "gcp:networkmanagement/vpcFlowLogsConfig:VpcFlowLogsConfig": "VpcFlowLogsConfig"
   }
  },
  {

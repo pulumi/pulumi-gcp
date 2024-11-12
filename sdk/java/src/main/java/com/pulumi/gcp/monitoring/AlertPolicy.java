@@ -245,9 +245,21 @@ import javax.annotation.Nullable;
  * 
  * AlertPolicy can be imported using any of these accepted formats:
  * 
+ * * `{{project}}/{{name}}`
+ * 
+ * * `{{project}} {{name}}`
+ * 
  * * `{{name}}`
  * 
  * When using the `pulumi import` command, AlertPolicy can be imported using one of the formats above. For example:
+ * 
+ * ```sh
+ * $ pulumi import gcp:monitoring/alertPolicy:AlertPolicy default {{project}}/{{name}}
+ * ```
+ * 
+ * ```sh
+ * $ pulumi import gcp:monitoring/alertPolicy:AlertPolicy default &#34;{{project}} {{name}}&#34;
+ * ```
  * 
  * ```sh
  * $ pulumi import gcp:monitoring/alertPolicy:AlertPolicy default {{name}}

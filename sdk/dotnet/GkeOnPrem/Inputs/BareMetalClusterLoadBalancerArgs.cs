@@ -20,14 +20,14 @@ namespace Pulumi.Gcp.GkeOnPrem.Inputs
         public Input<Inputs.BareMetalClusterLoadBalancerBgpLbConfigArgs>? BgpLbConfig { get; set; }
 
         /// <summary>
-        /// A nested object resource
+        /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
         [Input("manualLbConfig")]
         public Input<Inputs.BareMetalClusterLoadBalancerManualLbConfigArgs>? ManualLbConfig { get; set; }
 
         /// <summary>
-        /// A nested object resource
+        /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
         [Input("metalLbConfig")]

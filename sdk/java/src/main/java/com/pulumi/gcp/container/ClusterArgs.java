@@ -11,6 +11,7 @@ import com.pulumi.gcp.container.inputs.ClusterBinaryAuthorizationArgs;
 import com.pulumi.gcp.container.inputs.ClusterClusterAutoscalingArgs;
 import com.pulumi.gcp.container.inputs.ClusterClusterTelemetryArgs;
 import com.pulumi.gcp.container.inputs.ClusterConfidentialNodesArgs;
+import com.pulumi.gcp.container.inputs.ClusterControlPlaneEndpointsConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterCostManagementConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterDatabaseEncryptionArgs;
 import com.pulumi.gcp.container.inputs.ClusterDefaultSnatStatusArgs;
@@ -41,6 +42,7 @@ import com.pulumi.gcp.container.inputs.ClusterSecretManagerConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterSecurityPostureConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterServiceExternalIpsConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterTpuConfigArgs;
+import com.pulumi.gcp.container.inputs.ClusterUserManagedKeysConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterVerticalPodAutoscalingArgs;
 import com.pulumi.gcp.container.inputs.ClusterWorkloadAltsConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
@@ -206,6 +208,23 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<ClusterConfidentialNodesArgs>> confidentialNodes() {
         return Optional.ofNullable(this.confidentialNodes);
+    }
+
+    /**
+     * Configuration for all of the cluster&#39;s control plane endpoints.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="controlPlaneEndpointsConfig")
+    private @Nullable Output<ClusterControlPlaneEndpointsConfigArgs> controlPlaneEndpointsConfig;
+
+    /**
+     * @return Configuration for all of the cluster&#39;s control plane endpoints.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterControlPlaneEndpointsConfigArgs>> controlPlaneEndpointsConfig() {
+        return Optional.ofNullable(this.controlPlaneEndpointsConfig);
     }
 
     /**
@@ -1322,6 +1341,21 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The custom keys configuration of the cluster.
+     * 
+     */
+    @Import(name="userManagedKeysConfig")
+    private @Nullable Output<ClusterUserManagedKeysConfigArgs> userManagedKeysConfig;
+
+    /**
+     * @return The custom keys configuration of the cluster.
+     * 
+     */
+    public Optional<Output<ClusterUserManagedKeysConfigArgs>> userManagedKeysConfig() {
+        return Optional.ofNullable(this.userManagedKeysConfig);
+    }
+
+    /**
      * Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
      * Structure is documented below.
      * 
@@ -1387,6 +1421,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.clusterIpv4Cidr = $.clusterIpv4Cidr;
         this.clusterTelemetry = $.clusterTelemetry;
         this.confidentialNodes = $.confidentialNodes;
+        this.controlPlaneEndpointsConfig = $.controlPlaneEndpointsConfig;
         this.costManagementConfig = $.costManagementConfig;
         this.databaseEncryption = $.databaseEncryption;
         this.datapathProvider = $.datapathProvider;
@@ -1446,6 +1481,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.serviceExternalIpsConfig = $.serviceExternalIpsConfig;
         this.subnetwork = $.subnetwork;
         this.tpuConfig = $.tpuConfig;
+        this.userManagedKeysConfig = $.userManagedKeysConfig;
         this.verticalPodAutoscaling = $.verticalPodAutoscaling;
         this.workloadAltsConfig = $.workloadAltsConfig;
         this.workloadIdentityConfig = $.workloadIdentityConfig;
@@ -1665,6 +1701,29 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder confidentialNodes(ClusterConfidentialNodesArgs confidentialNodes) {
             return confidentialNodes(Output.of(confidentialNodes));
+        }
+
+        /**
+         * @param controlPlaneEndpointsConfig Configuration for all of the cluster&#39;s control plane endpoints.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder controlPlaneEndpointsConfig(@Nullable Output<ClusterControlPlaneEndpointsConfigArgs> controlPlaneEndpointsConfig) {
+            $.controlPlaneEndpointsConfig = controlPlaneEndpointsConfig;
+            return this;
+        }
+
+        /**
+         * @param controlPlaneEndpointsConfig Configuration for all of the cluster&#39;s control plane endpoints.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder controlPlaneEndpointsConfig(ClusterControlPlaneEndpointsConfigArgs controlPlaneEndpointsConfig) {
+            return controlPlaneEndpointsConfig(Output.of(controlPlaneEndpointsConfig));
         }
 
         /**
@@ -3163,6 +3222,27 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tpuConfig(ClusterTpuConfigArgs tpuConfig) {
             return tpuConfig(Output.of(tpuConfig));
+        }
+
+        /**
+         * @param userManagedKeysConfig The custom keys configuration of the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userManagedKeysConfig(@Nullable Output<ClusterUserManagedKeysConfigArgs> userManagedKeysConfig) {
+            $.userManagedKeysConfig = userManagedKeysConfig;
+            return this;
+        }
+
+        /**
+         * @param userManagedKeysConfig The custom keys configuration of the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userManagedKeysConfig(ClusterUserManagedKeysConfigArgs userManagedKeysConfig) {
+            return userManagedKeysConfig(Output.of(userManagedKeysConfig));
         }
 
         /**

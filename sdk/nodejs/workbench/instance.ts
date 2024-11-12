@@ -263,7 +263,9 @@ export class Instance extends pulumi.CustomResource {
     /**
      * 'Optional. Input only. The owner of this instance after creation. Format:
      * `alias@example.com` Currently supports one owner only. If not specified, all of
-     * the service account users of your VM instance''s service account can use the instance.'
+     * the service account users of your VM instance''s service account can use the instance.
+     * If specified, sets the access mode to `Single user`. For more details, see
+     * https://cloud.google.com/vertex-ai/docs/workbench/instances/manage-access-jupyterlab'
      */
     public readonly instanceOwners!: pulumi.Output<string[] | undefined>;
     /**
@@ -426,7 +428,9 @@ export interface InstanceState {
     /**
      * 'Optional. Input only. The owner of this instance after creation. Format:
      * `alias@example.com` Currently supports one owner only. If not specified, all of
-     * the service account users of your VM instance''s service account can use the instance.'
+     * the service account users of your VM instance''s service account can use the instance.
+     * If specified, sets the access mode to `Single user`. For more details, see
+     * https://cloud.google.com/vertex-ai/docs/workbench/instances/manage-access-jupyterlab'
      */
     instanceOwners?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -503,7 +507,9 @@ export interface InstanceArgs {
     /**
      * 'Optional. Input only. The owner of this instance after creation. Format:
      * `alias@example.com` Currently supports one owner only. If not specified, all of
-     * the service account users of your VM instance''s service account can use the instance.'
+     * the service account users of your VM instance''s service account can use the instance.
+     * If specified, sets the access mode to `Single user`. For more details, see
+     * https://cloud.google.com/vertex-ai/docs/workbench/instances/manage-access-jupyterlab'
      */
     instanceOwners?: pulumi.Input<pulumi.Input<string>[]>;
     /**

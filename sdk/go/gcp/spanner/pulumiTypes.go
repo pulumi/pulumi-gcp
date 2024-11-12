@@ -1291,10 +1291,10 @@ func (o InstanceAutoscalingConfigPtrOutput) AutoscalingTargets() InstanceAutosca
 }
 
 type InstanceAutoscalingConfigAsymmetricAutoscalingOption struct {
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	Overrides InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides `pulumi:"overrides"`
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	ReplicaSelection InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection `pulumi:"replicaSelection"`
 }
@@ -1311,10 +1311,10 @@ type InstanceAutoscalingConfigAsymmetricAutoscalingOptionInput interface {
 }
 
 type InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs struct {
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	Overrides InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesInput `pulumi:"overrides"`
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	ReplicaSelection InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionInput `pulumi:"replicaSelection"`
 }
@@ -1370,7 +1370,7 @@ func (o InstanceAutoscalingConfigAsymmetricAutoscalingOptionOutput) ToInstanceAu
 	return o
 }
 
-// A nested object resource
+// A nested object resource.
 // Structure is documented below.
 func (o InstanceAutoscalingConfigAsymmetricAutoscalingOptionOutput) Overrides() InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesOutput {
 	return o.ApplyT(func(v InstanceAutoscalingConfigAsymmetricAutoscalingOption) InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides {
@@ -1378,7 +1378,7 @@ func (o InstanceAutoscalingConfigAsymmetricAutoscalingOptionOutput) Overrides() 
 	}).(InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesOutput)
 }
 
-// A nested object resource
+// A nested object resource.
 // Structure is documented below.
 func (o InstanceAutoscalingConfigAsymmetricAutoscalingOptionOutput) ReplicaSelection() InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionOutput {
 	return o.ApplyT(func(v InstanceAutoscalingConfigAsymmetricAutoscalingOption) InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection {
@@ -1407,7 +1407,7 @@ func (o InstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutput) Index(i
 }
 
 type InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides struct {
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	AutoscalingLimits InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits `pulumi:"autoscalingLimits"`
 }
@@ -1424,7 +1424,7 @@ type InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesInput interfac
 }
 
 type InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgs struct {
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	AutoscalingLimits InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsInput `pulumi:"autoscalingLimits"`
 }
@@ -1455,7 +1455,7 @@ func (o InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesOutput) ToI
 	return o
 }
 
-// A nested object resource
+// A nested object resource.
 // Structure is documented below.
 func (o InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesOutput) AutoscalingLimits() InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsOutput {
 	return o.ApplyT(func(v InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides) InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits {
@@ -2417,6 +2417,118 @@ func (o InstanceIAMMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetDatabaseEncryptionConfig struct {
+	// Fully qualified name of the KMS key to use to encrypt this database. This key must exist
+	// in the same location as the Spanner Database.
+	KmsKeyName string `pulumi:"kmsKeyName"`
+	// Fully qualified name of the KMS keys to use to encrypt this database. The keys must exist
+	// in the same locations as the Spanner Database.
+	KmsKeyNames []string `pulumi:"kmsKeyNames"`
+}
+
+// GetDatabaseEncryptionConfigInput is an input type that accepts GetDatabaseEncryptionConfigArgs and GetDatabaseEncryptionConfigOutput values.
+// You can construct a concrete instance of `GetDatabaseEncryptionConfigInput` via:
+//
+//	GetDatabaseEncryptionConfigArgs{...}
+type GetDatabaseEncryptionConfigInput interface {
+	pulumi.Input
+
+	ToGetDatabaseEncryptionConfigOutput() GetDatabaseEncryptionConfigOutput
+	ToGetDatabaseEncryptionConfigOutputWithContext(context.Context) GetDatabaseEncryptionConfigOutput
+}
+
+type GetDatabaseEncryptionConfigArgs struct {
+	// Fully qualified name of the KMS key to use to encrypt this database. This key must exist
+	// in the same location as the Spanner Database.
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+	// Fully qualified name of the KMS keys to use to encrypt this database. The keys must exist
+	// in the same locations as the Spanner Database.
+	KmsKeyNames pulumi.StringArrayInput `pulumi:"kmsKeyNames"`
+}
+
+func (GetDatabaseEncryptionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseEncryptionConfig)(nil)).Elem()
+}
+
+func (i GetDatabaseEncryptionConfigArgs) ToGetDatabaseEncryptionConfigOutput() GetDatabaseEncryptionConfigOutput {
+	return i.ToGetDatabaseEncryptionConfigOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseEncryptionConfigArgs) ToGetDatabaseEncryptionConfigOutputWithContext(ctx context.Context) GetDatabaseEncryptionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseEncryptionConfigOutput)
+}
+
+// GetDatabaseEncryptionConfigArrayInput is an input type that accepts GetDatabaseEncryptionConfigArray and GetDatabaseEncryptionConfigArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseEncryptionConfigArrayInput` via:
+//
+//	GetDatabaseEncryptionConfigArray{ GetDatabaseEncryptionConfigArgs{...} }
+type GetDatabaseEncryptionConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseEncryptionConfigArrayOutput() GetDatabaseEncryptionConfigArrayOutput
+	ToGetDatabaseEncryptionConfigArrayOutputWithContext(context.Context) GetDatabaseEncryptionConfigArrayOutput
+}
+
+type GetDatabaseEncryptionConfigArray []GetDatabaseEncryptionConfigInput
+
+func (GetDatabaseEncryptionConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseEncryptionConfig)(nil)).Elem()
+}
+
+func (i GetDatabaseEncryptionConfigArray) ToGetDatabaseEncryptionConfigArrayOutput() GetDatabaseEncryptionConfigArrayOutput {
+	return i.ToGetDatabaseEncryptionConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseEncryptionConfigArray) ToGetDatabaseEncryptionConfigArrayOutputWithContext(ctx context.Context) GetDatabaseEncryptionConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseEncryptionConfigArrayOutput)
+}
+
+type GetDatabaseEncryptionConfigOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseEncryptionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseEncryptionConfig)(nil)).Elem()
+}
+
+func (o GetDatabaseEncryptionConfigOutput) ToGetDatabaseEncryptionConfigOutput() GetDatabaseEncryptionConfigOutput {
+	return o
+}
+
+func (o GetDatabaseEncryptionConfigOutput) ToGetDatabaseEncryptionConfigOutputWithContext(ctx context.Context) GetDatabaseEncryptionConfigOutput {
+	return o
+}
+
+// Fully qualified name of the KMS key to use to encrypt this database. This key must exist
+// in the same location as the Spanner Database.
+func (o GetDatabaseEncryptionConfigOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseEncryptionConfig) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+// Fully qualified name of the KMS keys to use to encrypt this database. The keys must exist
+// in the same locations as the Spanner Database.
+func (o GetDatabaseEncryptionConfigOutput) KmsKeyNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDatabaseEncryptionConfig) []string { return v.KmsKeyNames }).(pulumi.StringArrayOutput)
+}
+
+type GetDatabaseEncryptionConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseEncryptionConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseEncryptionConfig)(nil)).Elem()
+}
+
+func (o GetDatabaseEncryptionConfigArrayOutput) ToGetDatabaseEncryptionConfigArrayOutput() GetDatabaseEncryptionConfigArrayOutput {
+	return o
+}
+
+func (o GetDatabaseEncryptionConfigArrayOutput) ToGetDatabaseEncryptionConfigArrayOutputWithContext(ctx context.Context) GetDatabaseEncryptionConfigArrayOutput {
+	return o
+}
+
+func (o GetDatabaseEncryptionConfigArrayOutput) Index(i pulumi.IntInput) GetDatabaseEncryptionConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseEncryptionConfig {
+		return vs[0].([]GetDatabaseEncryptionConfig)[vs[1].(int)]
+	}).(GetDatabaseEncryptionConfigOutput)
+}
+
 type GetInstanceAutoscalingConfig struct {
 	// Asymmetric autoscaling options for specific replicas.
 	AsymmetricAutoscalingOptions []GetInstanceAutoscalingConfigAsymmetricAutoscalingOption `pulumi:"asymmetricAutoscalingOptions"`
@@ -2557,9 +2669,9 @@ func (o GetInstanceAutoscalingConfigArrayOutput) Index(i pulumi.IntInput) GetIns
 }
 
 type GetInstanceAutoscalingConfigAsymmetricAutoscalingOption struct {
-	// A nested object resource
+	// A nested object resource.
 	Overrides []GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverride `pulumi:"overrides"`
-	// A nested object resource
+	// A nested object resource.
 	ReplicaSelections []GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection `pulumi:"replicaSelections"`
 }
 
@@ -2575,9 +2687,9 @@ type GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionInput interface {
 }
 
 type GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs struct {
-	// A nested object resource
+	// A nested object resource.
 	Overrides GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArrayInput `pulumi:"overrides"`
-	// A nested object resource
+	// A nested object resource.
 	ReplicaSelections GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArrayInput `pulumi:"replicaSelections"`
 }
 
@@ -2632,14 +2744,14 @@ func (o GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOutput) ToGetInst
 	return o
 }
 
-// A nested object resource
+// A nested object resource.
 func (o GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOutput) Overrides() GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArrayOutput {
 	return o.ApplyT(func(v GetInstanceAutoscalingConfigAsymmetricAutoscalingOption) []GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverride {
 		return v.Overrides
 	}).(GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArrayOutput)
 }
 
-// A nested object resource
+// A nested object resource.
 func (o GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOutput) ReplicaSelections() GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArrayOutput {
 	return o.ApplyT(func(v GetInstanceAutoscalingConfigAsymmetricAutoscalingOption) []GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection {
 		return v.ReplicaSelections
@@ -2667,7 +2779,7 @@ func (o GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionArrayOutput) Inde
 }
 
 type GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverride struct {
-	// A nested object resource
+	// A nested object resource.
 	AutoscalingLimits []GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimit `pulumi:"autoscalingLimits"`
 }
 
@@ -2683,7 +2795,7 @@ type GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideInput interf
 }
 
 type GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArgs struct {
-	// A nested object resource
+	// A nested object resource.
 	AutoscalingLimits GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArrayInput `pulumi:"autoscalingLimits"`
 }
 
@@ -2738,7 +2850,7 @@ func (o GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideOutput) T
 	return o
 }
 
-// A nested object resource
+// A nested object resource.
 func (o GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideOutput) AutoscalingLimits() GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArrayOutput {
 	return o.ApplyT(func(v GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverride) []GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimit {
 		return v.AutoscalingLimits
@@ -3263,6 +3375,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIAMBindingConditionPtrInput)(nil)).Elem(), InstanceIAMBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIAMMemberConditionInput)(nil)).Elem(), InstanceIAMMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIAMMemberConditionPtrInput)(nil)).Elem(), InstanceIAMMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseEncryptionConfigInput)(nil)).Elem(), GetDatabaseEncryptionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseEncryptionConfigArrayInput)(nil)).Elem(), GetDatabaseEncryptionConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAutoscalingConfigInput)(nil)).Elem(), GetInstanceAutoscalingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAutoscalingConfigArrayInput)(nil)).Elem(), GetInstanceAutoscalingConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionInput)(nil)).Elem(), GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs{})
@@ -3308,6 +3422,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceIAMBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(InstanceIAMMemberConditionOutput{})
 	pulumi.RegisterOutputType(InstanceIAMMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(GetDatabaseEncryptionConfigOutput{})
+	pulumi.RegisterOutputType(GetDatabaseEncryptionConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceAutoscalingConfigOutput{})
 	pulumi.RegisterOutputType(GetInstanceAutoscalingConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOutput{})

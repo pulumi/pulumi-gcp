@@ -214,7 +214,7 @@ import (
 type RegionDisk struct {
 	pulumi.CustomResourceState
 
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	AsyncPrimaryDisk RegionDiskAsyncPrimaryDiskPtrOutput `pulumi:"asyncPrimaryDisk"`
 	// Creation timestamp in RFC3339 text format.
@@ -373,7 +373,7 @@ func GetRegionDisk(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RegionDisk resources.
 type regionDiskState struct {
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	AsyncPrimaryDisk *RegionDiskAsyncPrimaryDisk `pulumi:"asyncPrimaryDisk"`
 	// Creation timestamp in RFC3339 text format.
@@ -495,7 +495,7 @@ type regionDiskState struct {
 }
 
 type RegionDiskState struct {
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	AsyncPrimaryDisk RegionDiskAsyncPrimaryDiskPtrInput
 	// Creation timestamp in RFC3339 text format.
@@ -621,7 +621,7 @@ func (RegionDiskState) ElementType() reflect.Type {
 }
 
 type regionDiskArgs struct {
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	AsyncPrimaryDisk *RegionDiskAsyncPrimaryDisk `pulumi:"asyncPrimaryDisk"`
 	// An optional description of this resource. Provide this property when
@@ -714,7 +714,7 @@ type regionDiskArgs struct {
 
 // The set of arguments for constructing a RegionDisk resource.
 type RegionDiskArgs struct {
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	AsyncPrimaryDisk RegionDiskAsyncPrimaryDiskPtrInput
 	// An optional description of this resource. Provide this property when
@@ -892,7 +892,7 @@ func (o RegionDiskOutput) ToRegionDiskOutputWithContext(ctx context.Context) Reg
 	return o
 }
 
-// A nested object resource
+// A nested object resource.
 // Structure is documented below.
 func (o RegionDiskOutput) AsyncPrimaryDisk() RegionDiskAsyncPrimaryDiskPtrOutput {
 	return o.ApplyT(func(v *RegionDisk) RegionDiskAsyncPrimaryDiskPtrOutput { return v.AsyncPrimaryDisk }).(RegionDiskAsyncPrimaryDiskPtrOutput)

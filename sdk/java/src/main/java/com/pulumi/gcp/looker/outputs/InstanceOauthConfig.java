@@ -18,6 +18,8 @@ public final class InstanceOauthConfig {
     /**
      * @return The client secret for the Oauth config.
      * 
+     * ***
+     * 
      */
     private String clientSecret;
 
@@ -31,6 +33,8 @@ public final class InstanceOauthConfig {
     }
     /**
      * @return The client secret for the Oauth config.
+     * 
+     * ***
      * 
      */
     public String clientSecret() {

@@ -2778,6 +2778,9 @@ func (o JobTemplateTemplateVolumeEmptyDirPtrOutput) SizeLimit() pulumi.StringPtr
 type JobTemplateTemplateVolumeGcs struct {
 	// Name of the cloud storage bucket to back the volume. The resource service account must have permission to access the bucket.
 	Bucket string `pulumi:"bucket"`
+	// A list of flags to pass to the gcsfuse command for configuring this volume.
+	// Flags should be passed without leading dashes.
+	MountOptions []string `pulumi:"mountOptions"`
 	// If true, mount this volume as read-only in all mounts. If false, mount this volume as read-write.
 	ReadOnly *bool `pulumi:"readOnly"`
 }
@@ -2796,6 +2799,9 @@ type JobTemplateTemplateVolumeGcsInput interface {
 type JobTemplateTemplateVolumeGcsArgs struct {
 	// Name of the cloud storage bucket to back the volume. The resource service account must have permission to access the bucket.
 	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// A list of flags to pass to the gcsfuse command for configuring this volume.
+	// Flags should be passed without leading dashes.
+	MountOptions pulumi.StringArrayInput `pulumi:"mountOptions"`
 	// If true, mount this volume as read-only in all mounts. If false, mount this volume as read-write.
 	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
 }
@@ -2882,6 +2888,12 @@ func (o JobTemplateTemplateVolumeGcsOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v JobTemplateTemplateVolumeGcs) string { return v.Bucket }).(pulumi.StringOutput)
 }
 
+// A list of flags to pass to the gcsfuse command for configuring this volume.
+// Flags should be passed without leading dashes.
+func (o JobTemplateTemplateVolumeGcsOutput) MountOptions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v JobTemplateTemplateVolumeGcs) []string { return v.MountOptions }).(pulumi.StringArrayOutput)
+}
+
 // If true, mount this volume as read-only in all mounts. If false, mount this volume as read-write.
 func (o JobTemplateTemplateVolumeGcsOutput) ReadOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v JobTemplateTemplateVolumeGcs) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
@@ -2919,6 +2931,17 @@ func (o JobTemplateTemplateVolumeGcsPtrOutput) Bucket() pulumi.StringPtrOutput {
 		}
 		return &v.Bucket
 	}).(pulumi.StringPtrOutput)
+}
+
+// A list of flags to pass to the gcsfuse command for configuring this volume.
+// Flags should be passed without leading dashes.
+func (o JobTemplateTemplateVolumeGcsPtrOutput) MountOptions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *JobTemplateTemplateVolumeGcs) []string {
+		if v == nil {
+			return nil
+		}
+		return v.MountOptions
+	}).(pulumi.StringArrayOutput)
 }
 
 // If true, mount this volume as read-only in all mounts. If false, mount this volume as read-write.
@@ -8903,6 +8926,9 @@ func (o ServiceTemplateVolumeEmptyDirPtrOutput) SizeLimit() pulumi.StringPtrOutp
 type ServiceTemplateVolumeGcs struct {
 	// GCS Bucket name
 	Bucket string `pulumi:"bucket"`
+	// A list of flags to pass to the gcsfuse command for configuring this volume.
+	// Flags should be passed without leading dashes.
+	MountOptions []string `pulumi:"mountOptions"`
 	// If true, mount the GCS bucket as read-only
 	ReadOnly *bool `pulumi:"readOnly"`
 }
@@ -8921,6 +8947,9 @@ type ServiceTemplateVolumeGcsInput interface {
 type ServiceTemplateVolumeGcsArgs struct {
 	// GCS Bucket name
 	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// A list of flags to pass to the gcsfuse command for configuring this volume.
+	// Flags should be passed without leading dashes.
+	MountOptions pulumi.StringArrayInput `pulumi:"mountOptions"`
 	// If true, mount the GCS bucket as read-only
 	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
 }
@@ -9007,6 +9036,12 @@ func (o ServiceTemplateVolumeGcsOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceTemplateVolumeGcs) string { return v.Bucket }).(pulumi.StringOutput)
 }
 
+// A list of flags to pass to the gcsfuse command for configuring this volume.
+// Flags should be passed without leading dashes.
+func (o ServiceTemplateVolumeGcsOutput) MountOptions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServiceTemplateVolumeGcs) []string { return v.MountOptions }).(pulumi.StringArrayOutput)
+}
+
 // If true, mount the GCS bucket as read-only
 func (o ServiceTemplateVolumeGcsOutput) ReadOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateVolumeGcs) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
@@ -9044,6 +9079,17 @@ func (o ServiceTemplateVolumeGcsPtrOutput) Bucket() pulumi.StringPtrOutput {
 		}
 		return &v.Bucket
 	}).(pulumi.StringPtrOutput)
+}
+
+// A list of flags to pass to the gcsfuse command for configuring this volume.
+// Flags should be passed without leading dashes.
+func (o ServiceTemplateVolumeGcsPtrOutput) MountOptions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServiceTemplateVolumeGcs) []string {
+		if v == nil {
+			return nil
+		}
+		return v.MountOptions
+	}).(pulumi.StringArrayOutput)
 }
 
 // If true, mount the GCS bucket as read-only
@@ -12194,6 +12240,9 @@ func (o GetJobTemplateTemplateVolumeEmptyDirArrayOutput) Index(i pulumi.IntInput
 type GetJobTemplateTemplateVolumeGc struct {
 	// Name of the cloud storage bucket to back the volume. The resource service account must have permission to access the bucket.
 	Bucket string `pulumi:"bucket"`
+	// A list of flags to pass to the gcsfuse command for configuring this volume.
+	// Flags should be passed without leading dashes.
+	MountOptions []string `pulumi:"mountOptions"`
 	// If true, mount this volume as read-only in all mounts. If false, mount this volume as read-write.
 	ReadOnly bool `pulumi:"readOnly"`
 }
@@ -12212,6 +12261,9 @@ type GetJobTemplateTemplateVolumeGcInput interface {
 type GetJobTemplateTemplateVolumeGcArgs struct {
 	// Name of the cloud storage bucket to back the volume. The resource service account must have permission to access the bucket.
 	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// A list of flags to pass to the gcsfuse command for configuring this volume.
+	// Flags should be passed without leading dashes.
+	MountOptions pulumi.StringArrayInput `pulumi:"mountOptions"`
 	// If true, mount this volume as read-only in all mounts. If false, mount this volume as read-write.
 	ReadOnly pulumi.BoolInput `pulumi:"readOnly"`
 }
@@ -12270,6 +12322,12 @@ func (o GetJobTemplateTemplateVolumeGcOutput) ToGetJobTemplateTemplateVolumeGcOu
 // Name of the cloud storage bucket to back the volume. The resource service account must have permission to access the bucket.
 func (o GetJobTemplateTemplateVolumeGcOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v GetJobTemplateTemplateVolumeGc) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// A list of flags to pass to the gcsfuse command for configuring this volume.
+// Flags should be passed without leading dashes.
+func (o GetJobTemplateTemplateVolumeGcOutput) MountOptions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetJobTemplateTemplateVolumeGc) []string { return v.MountOptions }).(pulumi.StringArrayOutput)
 }
 
 // If true, mount this volume as read-only in all mounts. If false, mount this volume as read-write.
@@ -16394,6 +16452,9 @@ func (o GetServiceTemplateVolumeEmptyDirArrayOutput) Index(i pulumi.IntInput) Ge
 type GetServiceTemplateVolumeGc struct {
 	// GCS Bucket name
 	Bucket string `pulumi:"bucket"`
+	// A list of flags to pass to the gcsfuse command for configuring this volume.
+	// Flags should be passed without leading dashes.
+	MountOptions []string `pulumi:"mountOptions"`
 	// If true, mount the GCS bucket as read-only
 	ReadOnly bool `pulumi:"readOnly"`
 }
@@ -16412,6 +16473,9 @@ type GetServiceTemplateVolumeGcInput interface {
 type GetServiceTemplateVolumeGcArgs struct {
 	// GCS Bucket name
 	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// A list of flags to pass to the gcsfuse command for configuring this volume.
+	// Flags should be passed without leading dashes.
+	MountOptions pulumi.StringArrayInput `pulumi:"mountOptions"`
 	// If true, mount the GCS bucket as read-only
 	ReadOnly pulumi.BoolInput `pulumi:"readOnly"`
 }
@@ -16470,6 +16534,12 @@ func (o GetServiceTemplateVolumeGcOutput) ToGetServiceTemplateVolumeGcOutputWith
 // GCS Bucket name
 func (o GetServiceTemplateVolumeGcOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateVolumeGc) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// A list of flags to pass to the gcsfuse command for configuring this volume.
+// Flags should be passed without leading dashes.
+func (o GetServiceTemplateVolumeGcOutput) MountOptions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplateVolumeGc) []string { return v.MountOptions }).(pulumi.StringArrayOutput)
 }
 
 // If true, mount the GCS bucket as read-only

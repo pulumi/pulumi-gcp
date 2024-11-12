@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RegionAutoscalerAutoscalingPolicyScaleInControl {
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -27,7 +27,7 @@ public final class RegionAutoscalerAutoscalingPolicyScaleInControl {
 
     private RegionAutoscalerAutoscalingPolicyScaleInControl() {}
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */

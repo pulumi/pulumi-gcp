@@ -39,7 +39,7 @@ import (
 //			}
 //			addressGroup1, err := networksecurity.NewAddressGroup(ctx, "address_group_1", &networksecurity.AddressGroupArgs{
 //				Name:        pulumi.String("tf-address-group"),
-//				Parent:      pulumi.Sprintf("projects/%v", project.Name),
+//				Parent:      pulumi.String(project.Id),
 //				Description: pulumi.String("Global address group"),
 //				Location:    pulumi.String("global"),
 //				Items: pulumi.StringArray{
@@ -53,7 +53,7 @@ import (
 //			}
 //			secureTagKey1, err := tags.NewTagKey(ctx, "secure_tag_key_1", &tags.TagKeyArgs{
 //				Description: pulumi.String("Tag key"),
-//				Parent:      pulumi.Sprintf("projects/%v", project.Name),
+//				Parent:      pulumi.String(project.Id),
 //				Purpose:     pulumi.String("GCE_FIREWALL"),
 //				ShortName:   pulumi.String("tf-tag-key"),
 //				PurposeData: pulumi.StringMap{
@@ -65,10 +65,8 @@ import (
 //			}
 //			secureTagValue1, err := tags.NewTagValue(ctx, "secure_tag_value_1", &tags.TagValueArgs{
 //				Description: pulumi.String("Tag value"),
-//				Parent: secureTagKey1.Name.ApplyT(func(name string) (string, error) {
-//					return fmt.Sprintf("tagKeys/%v", name), nil
-//				}).(pulumi.StringOutput),
-//				ShortName: pulumi.String("tf-tag-value"),
+//				Parent:      secureTagKey1.ID(),
+//				ShortName:   pulumi.String("tf-tag-value"),
 //			})
 //			if err != nil {
 //				return err
@@ -132,9 +130,7 @@ import (
 //						},
 //						TargetSecureTags: compute.NetworkFirewallPolicyWithRulesRuleTargetSecureTagArray{
 //							&compute.NetworkFirewallPolicyWithRulesRuleTargetSecureTagArgs{
-//								Name: secureTagValue1.Name.ApplyT(func(name string) (string, error) {
-//									return fmt.Sprintf("tagValues/%v", name), nil
-//								}).(pulumi.StringOutput),
+//								Name: secureTagValue1.ID(),
 //							},
 //						},
 //					},
@@ -170,9 +166,7 @@ import (
 //							},
 //							SrcSecureTags: compute.NetworkFirewallPolicyWithRulesRuleMatchSrcSecureTagArray{
 //								&compute.NetworkFirewallPolicyWithRulesRuleMatchSrcSecureTagArgs{
-//									Name: secureTagValue1.Name.ApplyT(func(name string) (string, error) {
-//										return fmt.Sprintf("tagValues/%v", name), nil
-//									}).(pulumi.StringOutput),
+//									Name: secureTagValue1.ID(),
 //								},
 //							},
 //						},

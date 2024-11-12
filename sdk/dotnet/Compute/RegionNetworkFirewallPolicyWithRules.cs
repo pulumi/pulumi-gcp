@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.Compute
     ///     var addressGroup1 = new Gcp.NetworkSecurity.AddressGroup("address_group_1", new()
     ///     {
     ///         Name = "tf-address-group",
-    ///         Parent = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Name)}",
+    ///         Parent = project.Apply(getProjectResult =&gt; getProjectResult.Id),
     ///         Description = "Regional address group",
     ///         Location = "us-west2",
     ///         Items = new[]
@@ -41,7 +41,7 @@ namespace Pulumi.Gcp.Compute
     ///     var secureTagKey1 = new Gcp.Tags.TagKey("secure_tag_key_1", new()
     ///     {
     ///         Description = "Tag key",
-    ///         Parent = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Name)}",
+    ///         Parent = project.Apply(getProjectResult =&gt; getProjectResult.Id),
     ///         Purpose = "GCE_FIREWALL",
     ///         ShortName = "tf-tag-key",
     ///         PurposeData = 
@@ -53,7 +53,7 @@ namespace Pulumi.Gcp.Compute
     ///     var secureTagValue1 = new Gcp.Tags.TagValue("secure_tag_value_1", new()
     ///     {
     ///         Description = "Tag value",
-    ///         Parent = secureTagKey1.Name.Apply(name =&gt; $"tagKeys/{name}"),
+    ///         Parent = secureTagKey1.Id,
     ///         ShortName = "tf-tag-value",
     ///     });
     /// 
@@ -113,7 +113,7 @@ namespace Pulumi.Gcp.Compute
     ///                 {
     ///                     new Gcp.Compute.Inputs.RegionNetworkFirewallPolicyWithRulesRuleTargetSecureTagArgs
     ///                     {
-    ///                         Name = secureTagValue1.Name.Apply(name =&gt; $"tagValues/{name}"),
+    ///                         Name = secureTagValue1.Id,
     ///                     },
     ///                 },
     ///             },
@@ -161,7 +161,7 @@ namespace Pulumi.Gcp.Compute
     ///                     {
     ///                         new Gcp.Compute.Inputs.RegionNetworkFirewallPolicyWithRulesRuleMatchSrcSecureTagArgs
     ///                         {
-    ///                             Name = secureTagValue1.Name.Apply(name =&gt; $"tagValues/{name}"),
+    ///                             Name = secureTagValue1.Id,
     ///                         },
     ///                     },
     ///                 },

@@ -14,11 +14,11 @@ namespace Pulumi.Gcp.Spanner.Outputs
     public sealed class GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionResult
     {
         /// <summary>
-        /// A nested object resource
+        /// A nested object resource.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideResult> Overrides;
         /// <summary>
-        /// A nested object resource
+        /// A nested object resource.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionResult> ReplicaSelections;
 

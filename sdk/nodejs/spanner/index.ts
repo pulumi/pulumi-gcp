@@ -30,6 +30,11 @@ export type DatabaseIAMPolicy = import("./databaseIAMPolicy").DatabaseIAMPolicy;
 export const DatabaseIAMPolicy: typeof import("./databaseIAMPolicy").DatabaseIAMPolicy = null as any;
 utilities.lazyLoad(exports, ["DatabaseIAMPolicy"], () => require("./databaseIAMPolicy"));
 
+export { GetDatabaseArgs, GetDatabaseResult, GetDatabaseOutputArgs } from "./getDatabase";
+export const getDatabase: typeof import("./getDatabase").getDatabase = null as any;
+export const getDatabaseOutput: typeof import("./getDatabase").getDatabaseOutput = null as any;
+utilities.lazyLoad(exports, ["getDatabase","getDatabaseOutput"], () => require("./getDatabase"));
+
 export { GetDatabaseIamPolicyArgs, GetDatabaseIamPolicyResult, GetDatabaseIamPolicyOutputArgs } from "./getDatabaseIamPolicy";
 export const getDatabaseIamPolicy: typeof import("./getDatabaseIamPolicy").getDatabaseIamPolicy = null as any;
 export const getDatabaseIamPolicyOutput: typeof import("./getDatabaseIamPolicy").getDatabaseIamPolicyOutput = null as any;

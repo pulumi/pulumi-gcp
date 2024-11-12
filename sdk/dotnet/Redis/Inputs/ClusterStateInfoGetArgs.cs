@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Redis.Inputs
     public sealed class ClusterStateInfoGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A nested object resource
+        /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
         [Input("updateInfo")]

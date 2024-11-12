@@ -122,7 +122,7 @@ namespace Pulumi.Gcp.Healthcare
     public partial class Dataset : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A nested object resource
+        /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
         [Output("encryptionSpec")]
@@ -211,7 +211,7 @@ namespace Pulumi.Gcp.Healthcare
     public sealed class DatasetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A nested object resource
+        /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
         [Input("encryptionSpec")]
@@ -256,7 +256,7 @@ namespace Pulumi.Gcp.Healthcare
     public sealed class DatasetState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A nested object resource
+        /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
         [Input("encryptionSpec")]

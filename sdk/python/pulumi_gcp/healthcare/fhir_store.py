@@ -87,7 +87,7 @@ class FhirStoreArgs:
         :param pulumi.Input[str] name: The resource name for the FhirStore.
                ** Changing this property may recreate the FHIR store (removing all data) **
         :param pulumi.Input['FhirStoreNotificationConfigArgs'] notification_config: (Optional, Deprecated)
-               A nested object resource
+               A nested object resource.
                Structure is documented below.
                
                > **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
@@ -300,7 +300,7 @@ class FhirStoreArgs:
     def notification_config(self) -> Optional[pulumi.Input['FhirStoreNotificationConfigArgs']]:
         """
         (Optional, Deprecated)
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
 
         > **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
@@ -430,7 +430,7 @@ class _FhirStoreState:
         :param pulumi.Input[str] name: The resource name for the FhirStore.
                ** Changing this property may recreate the FHIR store (removing all data) **
         :param pulumi.Input['FhirStoreNotificationConfigArgs'] notification_config: (Optional, Deprecated)
-               A nested object resource
+               A nested object resource.
                Structure is documented below.
                
                > **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
@@ -665,7 +665,7 @@ class _FhirStoreState:
     def notification_config(self) -> Optional[pulumi.Input['FhirStoreNotificationConfigArgs']]:
         """
         (Optional, Deprecated)
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
 
         > **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
@@ -949,7 +949,7 @@ class FhirStore(pulumi.CustomResource):
         :param pulumi.Input[str] name: The resource name for the FhirStore.
                ** Changing this property may recreate the FHIR store (removing all data) **
         :param pulumi.Input[Union['FhirStoreNotificationConfigArgs', 'FhirStoreNotificationConfigArgsDict']] notification_config: (Optional, Deprecated)
-               A nested object resource
+               A nested object resource.
                Structure is documented below.
                
                > **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
@@ -1246,7 +1246,7 @@ class FhirStore(pulumi.CustomResource):
         :param pulumi.Input[str] name: The resource name for the FhirStore.
                ** Changing this property may recreate the FHIR store (removing all data) **
         :param pulumi.Input[Union['FhirStoreNotificationConfigArgs', 'FhirStoreNotificationConfigArgsDict']] notification_config: (Optional, Deprecated)
-               A nested object resource
+               A nested object resource.
                Structure is documented below.
                
                > **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
@@ -1422,7 +1422,7 @@ class FhirStore(pulumi.CustomResource):
     def notification_config(self) -> pulumi.Output[Optional['outputs.FhirStoreNotificationConfig']]:
         """
         (Optional, Deprecated)
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
 
         > **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.

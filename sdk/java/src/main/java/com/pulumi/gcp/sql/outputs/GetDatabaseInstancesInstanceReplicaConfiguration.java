@@ -18,6 +18,11 @@ public final class GetDatabaseInstancesInstanceReplicaConfiguration {
      */
     private String caCertificate;
     /**
+     * @return Specifies if a SQL Server replica is a cascadable replica. A cascadable replica is a SQL Server cross region replica that supports replica(s) under it.
+     * 
+     */
+    private Boolean cascadableReplica;
+    /**
      * @return PEM representation of the replica&#39;s x509 certificate.
      * 
      */
@@ -75,6 +80,13 @@ public final class GetDatabaseInstancesInstanceReplicaConfiguration {
      */
     public String caCertificate() {
         return this.caCertificate;
+    }
+    /**
+     * @return Specifies if a SQL Server replica is a cascadable replica. A cascadable replica is a SQL Server cross region replica that supports replica(s) under it.
+     * 
+     */
+    public Boolean cascadableReplica() {
+        return this.cascadableReplica;
     }
     /**
      * @return PEM representation of the replica&#39;s x509 certificate.
@@ -157,6 +169,7 @@ public final class GetDatabaseInstancesInstanceReplicaConfiguration {
     @CustomType.Builder
     public static final class Builder {
         private String caCertificate;
+        private Boolean cascadableReplica;
         private String clientCertificate;
         private String clientKey;
         private Integer connectRetryInterval;
@@ -171,6 +184,7 @@ public final class GetDatabaseInstancesInstanceReplicaConfiguration {
         public Builder(GetDatabaseInstancesInstanceReplicaConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.caCertificate = defaults.caCertificate;
+    	      this.cascadableReplica = defaults.cascadableReplica;
     	      this.clientCertificate = defaults.clientCertificate;
     	      this.clientKey = defaults.clientKey;
     	      this.connectRetryInterval = defaults.connectRetryInterval;
@@ -189,6 +203,14 @@ public final class GetDatabaseInstancesInstanceReplicaConfiguration {
               throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceReplicaConfiguration", "caCertificate");
             }
             this.caCertificate = caCertificate;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder cascadableReplica(Boolean cascadableReplica) {
+            if (cascadableReplica == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceReplicaConfiguration", "cascadableReplica");
+            }
+            this.cascadableReplica = cascadableReplica;
             return this;
         }
         @CustomType.Setter
@@ -274,6 +296,7 @@ public final class GetDatabaseInstancesInstanceReplicaConfiguration {
         public GetDatabaseInstancesInstanceReplicaConfiguration build() {
             final var _resultValue = new GetDatabaseInstancesInstanceReplicaConfiguration();
             _resultValue.caCertificate = caCertificate;
+            _resultValue.cascadableReplica = cascadableReplica;
             _resultValue.clientCertificate = clientCertificate;
             _resultValue.clientKey = clientKey;
             _resultValue.connectRetryInterval = connectRetryInterval;

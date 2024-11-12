@@ -167,7 +167,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * &#39;Optional. Input only. The owner of this instance after creation. Format:
      * `alias{@literal @}example.com` Currently supports one owner only. If not specified, all of
-     * the service account users of your VM instance&#39;&#39;s service account can use the instance.&#39;
+     * the service account users of your VM instance&#39;&#39;s service account can use the instance.
+     * If specified, sets the access mode to `Single user`. For more details, see
+     * https://cloud.google.com/vertex-ai/docs/workbench/instances/manage-access-jupyterlab&#39;
      * 
      */
     @Import(name="instanceOwners")
@@ -176,7 +178,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return &#39;Optional. Input only. The owner of this instance after creation. Format:
      * `alias{@literal @}example.com` Currently supports one owner only. If not specified, all of
-     * the service account users of your VM instance&#39;&#39;s service account can use the instance.&#39;
+     * the service account users of your VM instance&#39;&#39;s service account can use the instance.
+     * If specified, sets the access mode to `Single user`. For more details, see
+     * https://cloud.google.com/vertex-ai/docs/workbench/instances/manage-access-jupyterlab&#39;
      * 
      */
     public Optional<Output<List<String>>> instanceOwners() {
@@ -594,7 +598,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param instanceOwners &#39;Optional. Input only. The owner of this instance after creation. Format:
          * `alias{@literal @}example.com` Currently supports one owner only. If not specified, all of
-         * the service account users of your VM instance&#39;&#39;s service account can use the instance.&#39;
+         * the service account users of your VM instance&#39;&#39;s service account can use the instance.
+         * If specified, sets the access mode to `Single user`. For more details, see
+         * https://cloud.google.com/vertex-ai/docs/workbench/instances/manage-access-jupyterlab&#39;
          * 
          * @return builder
          * 
@@ -607,7 +613,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param instanceOwners &#39;Optional. Input only. The owner of this instance after creation. Format:
          * `alias{@literal @}example.com` Currently supports one owner only. If not specified, all of
-         * the service account users of your VM instance&#39;&#39;s service account can use the instance.&#39;
+         * the service account users of your VM instance&#39;&#39;s service account can use the instance.
+         * If specified, sets the access mode to `Single user`. For more details, see
+         * https://cloud.google.com/vertex-ai/docs/workbench/instances/manage-access-jupyterlab&#39;
          * 
          * @return builder
          * 
@@ -619,7 +627,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param instanceOwners &#39;Optional. Input only. The owner of this instance after creation. Format:
          * `alias{@literal @}example.com` Currently supports one owner only. If not specified, all of
-         * the service account users of your VM instance&#39;&#39;s service account can use the instance.&#39;
+         * the service account users of your VM instance&#39;&#39;s service account can use the instance.
+         * If specified, sets the access mode to `Single user`. For more details, see
+         * https://cloud.google.com/vertex-ai/docs/workbench/instances/manage-access-jupyterlab&#39;
          * 
          * @return builder
          * 

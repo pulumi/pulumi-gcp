@@ -26,6 +26,7 @@ class RegionSecurityPolicyArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyRuleArgs']]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyUserDefinedFieldArgs']]]] = None):
         """
@@ -42,6 +43,8 @@ class RegionSecurityPolicyArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The Region in which the created Region Security Policy should reside.
                If it is not provided, the provider region is used.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyRuleArgs']]] rules: The set of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
+               Structure is documented below.
         :param pulumi.Input[str] type: The type indicates the intended use of the security policy.
                - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers.
                - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache.
@@ -63,6 +66,8 @@ class RegionSecurityPolicyArgs:
             pulumi.set(__self__, "project", project)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if user_defined_fields is not None:
@@ -137,6 +142,19 @@ class RegionSecurityPolicyArgs:
 
     @property
     @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyRuleArgs']]]]:
+        """
+        The set of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         The type indicates the intended use of the security policy.
@@ -178,6 +196,7 @@ class _RegionSecurityPolicyState:
                  policy_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyRuleArgs']]]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_policy_id: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -199,6 +218,8 @@ class _RegionSecurityPolicyState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The Region in which the created Region Security Policy should reside.
                If it is not provided, the provider region is used.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyRuleArgs']]] rules: The set of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
+               Structure is documented below.
         :param pulumi.Input[str] self_link: Server-defined URL for the resource.
         :param pulumi.Input[str] self_link_with_policy_id: Server-defined URL for this resource with the resource id.
         :param pulumi.Input[str] type: The type indicates the intended use of the security policy.
@@ -226,6 +247,8 @@ class _RegionSecurityPolicyState:
             pulumi.set(__self__, "project", project)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
         if self_link_with_policy_id is not None:
@@ -328,6 +351,19 @@ class _RegionSecurityPolicyState:
         pulumi.set(self, "region", value)
 
     @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyRuleArgs']]]]:
+        """
+        The set of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> Optional[pulumi.Input[str]]:
         """
@@ -394,6 +430,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionSecurityPolicyRuleArgs', 'RegionSecurityPolicyRuleArgsDict']]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionSecurityPolicyUserDefinedFieldArgs', 'RegionSecurityPolicyUserDefinedFieldArgsDict']]]]] = None,
                  __props__=None):
@@ -452,6 +489,39 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                 },
             ])
         ```
+        ### Region Security Policy With Rules
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        region_sec_policy_with_rules = gcp.compute.RegionSecurityPolicy("region-sec-policy-with-rules",
+            name="my-sec-policy-with-rules",
+            description="basic region security policy with multiple rules",
+            type="CLOUD_ARMOR",
+            rules=[
+                {
+                    "action": "deny",
+                    "priority": 1000,
+                    "match": {
+                        "expr": {
+                            "expression": "request.path.matches(\\"/login.html\\") && token.recaptcha_session.score < 0.2",
+                        },
+                    },
+                },
+                {
+                    "action": "deny",
+                    "priority": 2147483647,
+                    "match": {
+                        "versioned_expr": "SRC_IPS_V1",
+                        "config": {
+                            "src_ip_ranges": ["*"],
+                        },
+                    },
+                    "description": "default rule",
+                },
+            ])
+        ```
 
         ## Import
 
@@ -497,6 +567,8 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The Region in which the created Region Security Policy should reside.
                If it is not provided, the provider region is used.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionSecurityPolicyRuleArgs', 'RegionSecurityPolicyRuleArgsDict']]]] rules: The set of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
+               Structure is documented below.
         :param pulumi.Input[str] type: The type indicates the intended use of the security policy.
                - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers.
                - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache.
@@ -569,6 +641,39 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                 },
             ])
         ```
+        ### Region Security Policy With Rules
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        region_sec_policy_with_rules = gcp.compute.RegionSecurityPolicy("region-sec-policy-with-rules",
+            name="my-sec-policy-with-rules",
+            description="basic region security policy with multiple rules",
+            type="CLOUD_ARMOR",
+            rules=[
+                {
+                    "action": "deny",
+                    "priority": 1000,
+                    "match": {
+                        "expr": {
+                            "expression": "request.path.matches(\\"/login.html\\") && token.recaptcha_session.score < 0.2",
+                        },
+                    },
+                },
+                {
+                    "action": "deny",
+                    "priority": 2147483647,
+                    "match": {
+                        "versioned_expr": "SRC_IPS_V1",
+                        "config": {
+                            "src_ip_ranges": ["*"],
+                        },
+                    },
+                    "description": "default rule",
+                },
+            ])
+        ```
 
         ## Import
 
@@ -620,6 +725,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionSecurityPolicyRuleArgs', 'RegionSecurityPolicyRuleArgsDict']]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionSecurityPolicyUserDefinedFieldArgs', 'RegionSecurityPolicyUserDefinedFieldArgsDict']]]]] = None,
                  __props__=None):
@@ -636,6 +742,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
+            __props__.__dict__["rules"] = rules
             __props__.__dict__["type"] = type
             __props__.__dict__["user_defined_fields"] = user_defined_fields
             __props__.__dict__["fingerprint"] = None
@@ -659,6 +766,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
             policy_id: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
+            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RegionSecurityPolicyRuleArgs', 'RegionSecurityPolicyRuleArgsDict']]]]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             self_link_with_policy_id: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None,
@@ -685,6 +793,8 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The Region in which the created Region Security Policy should reside.
                If it is not provided, the provider region is used.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RegionSecurityPolicyRuleArgs', 'RegionSecurityPolicyRuleArgsDict']]]] rules: The set of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
+               Structure is documented below.
         :param pulumi.Input[str] self_link: Server-defined URL for the resource.
         :param pulumi.Input[str] self_link_with_policy_id: Server-defined URL for this resource with the resource id.
         :param pulumi.Input[str] type: The type indicates the intended use of the security policy.
@@ -709,6 +819,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
         __props__.__dict__["policy_id"] = policy_id
         __props__.__dict__["project"] = project
         __props__.__dict__["region"] = region
+        __props__.__dict__["rules"] = rules
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["self_link_with_policy_id"] = self_link_with_policy_id
         __props__.__dict__["type"] = type
@@ -778,6 +889,15 @@ class RegionSecurityPolicy(pulumi.CustomResource):
         If it is not provided, the provider region is used.
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def rules(self) -> pulumi.Output[Sequence['outputs.RegionSecurityPolicyRule']]:
+        """
+        The set of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rules")
 
     @property
     @pulumi.getter(name="selfLink")

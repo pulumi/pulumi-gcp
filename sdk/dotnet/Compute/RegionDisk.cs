@@ -197,7 +197,7 @@ namespace Pulumi.Gcp.Compute
     public partial class RegionDisk : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A nested object resource
+        /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
         [Output("asyncPrimaryDisk")]
@@ -474,7 +474,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class RegionDiskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A nested object resource
+        /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
         [Input("asyncPrimaryDisk")]
@@ -662,7 +662,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class RegionDiskState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A nested object resource
+        /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
         [Input("asyncPrimaryDisk")]

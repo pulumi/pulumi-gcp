@@ -175,7 +175,7 @@ public class VpnConnection extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -183,7 +183,7 @@ public class VpnConnection extends com.pulumi.resources.CustomResource {
     private Output<List<VpnConnectionDetail>> details;
 
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */

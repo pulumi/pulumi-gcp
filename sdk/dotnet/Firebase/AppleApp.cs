@@ -88,7 +88,7 @@ namespace Pulumi.Gcp.Firebase
     /// When using the `pulumi import` command, AppleApp can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    /// $ pulumi import gcp:firebase/appleApp:AppleApp default {{project}} projects/{{project}}/iosApps/{{app_id}}
+    /// $ pulumi import gcp:firebase/appleApp:AppleApp default "{{project}} projects/{{project}}/iosApps/{{app_id}}"
     /// ```
     /// 
     /// ```sh

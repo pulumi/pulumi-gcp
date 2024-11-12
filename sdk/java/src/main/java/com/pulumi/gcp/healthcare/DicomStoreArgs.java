@@ -94,7 +94,7 @@ public final class DicomStoreArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -102,7 +102,7 @@ public final class DicomStoreArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<DicomStoreNotificationConfigArgs> notificationConfig;
 
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -249,7 +249,7 @@ public final class DicomStoreArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notificationConfig A nested object resource
+         * @param notificationConfig A nested object resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -261,7 +261,7 @@ public final class DicomStoreArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notificationConfig A nested object resource
+         * @param notificationConfig A nested object resource.
          * Structure is documented below.
          * 
          * @return builder

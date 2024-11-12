@@ -688,7 +688,7 @@ public class RegionHealthCheck extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -696,7 +696,7 @@ public class RegionHealthCheck extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ RegionHealthCheckGrpcHealthCheck> grpcHealthCheck;
 
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -720,7 +720,7 @@ public class RegionHealthCheck extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.healthyThreshold);
     }
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -728,7 +728,7 @@ public class RegionHealthCheck extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ RegionHealthCheckHttp2HealthCheck> http2HealthCheck;
 
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -736,7 +736,7 @@ public class RegionHealthCheck extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.http2HealthCheck);
     }
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -744,7 +744,7 @@ public class RegionHealthCheck extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ RegionHealthCheckHttpHealthCheck> httpHealthCheck;
 
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -752,7 +752,7 @@ public class RegionHealthCheck extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.httpHealthCheck);
     }
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -760,7 +760,7 @@ public class RegionHealthCheck extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ RegionHealthCheckHttpsHealthCheck> httpsHealthCheck;
 
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -860,7 +860,7 @@ public class RegionHealthCheck extends com.pulumi.resources.CustomResource {
         return this.selfLink;
     }
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -868,7 +868,7 @@ public class RegionHealthCheck extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ RegionHealthCheckSslHealthCheck> sslHealthCheck;
 
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -876,7 +876,7 @@ public class RegionHealthCheck extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sslHealthCheck);
     }
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -884,7 +884,7 @@ public class RegionHealthCheck extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ RegionHealthCheckTcpHealthCheck> tcpHealthCheck;
 
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */

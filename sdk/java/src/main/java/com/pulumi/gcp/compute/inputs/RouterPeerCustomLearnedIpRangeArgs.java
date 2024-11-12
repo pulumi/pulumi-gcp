@@ -15,7 +15,7 @@ public final class RouterPeerCustomLearnedIpRangeArgs extends com.pulumi.resourc
     public static final RouterPeerCustomLearnedIpRangeArgs Empty = new RouterPeerCustomLearnedIpRangeArgs();
 
     /**
-     * The IP range to advertise. The value must be a
+     * The IP range to learn. The value must be a
      * CIDR-formatted string.
      * 
      */
@@ -23,7 +23,7 @@ public final class RouterPeerCustomLearnedIpRangeArgs extends com.pulumi.resourc
     private Output<String> range;
 
     /**
-     * @return The IP range to advertise. The value must be a
+     * @return The IP range to learn. The value must be a
      * CIDR-formatted string.
      * 
      */
@@ -56,7 +56,7 @@ public final class RouterPeerCustomLearnedIpRangeArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param range The IP range to advertise. The value must be a
+         * @param range The IP range to learn. The value must be a
          * CIDR-formatted string.
          * 
          * @return builder
@@ -68,7 +68,7 @@ public final class RouterPeerCustomLearnedIpRangeArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param range The IP range to advertise. The value must be a
+         * @param range The IP range to learn. The value must be a
          * CIDR-formatted string.
          * 
          * @return builder

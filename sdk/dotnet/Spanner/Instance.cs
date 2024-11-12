@@ -37,6 +37,7 @@ namespace Pulumi.Gcp.Spanner
     ///         DisplayName = "Test Spanner Instance",
     ///         NumNodes = 2,
     ///         Edition = "STANDARD",
+    ///         DefaultBackupScheduleType = "AUTOMATIC",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -174,6 +175,15 @@ namespace Pulumi.Gcp.Spanner
         /// </summary>
         [Output("config")]
         public Output<string> Config { get; private set; } = null!;
+
+        /// <summary>
+        /// Controls the default backup behavior for new databases within the instance.
+        /// Note that `AUTOMATIC` is not permitted for free instances, as backups and backup schedules are not allowed for free instances.
+        /// if unset or NONE, no default backup schedule will be created for new databases within the instance.
+        /// Possible values are: `NONE`, `AUTOMATIC`.
+        /// </summary>
+        [Output("defaultBackupScheduleType")]
+        public Output<string> DefaultBackupScheduleType { get; private set; } = null!;
 
         /// <summary>
         /// The descriptive name for this instance as it appears in UIs. Must be
@@ -323,6 +333,15 @@ namespace Pulumi.Gcp.Spanner
         public Input<string> Config { get; set; } = null!;
 
         /// <summary>
+        /// Controls the default backup behavior for new databases within the instance.
+        /// Note that `AUTOMATIC` is not permitted for free instances, as backups and backup schedules are not allowed for free instances.
+        /// if unset or NONE, no default backup schedule will be created for new databases within the instance.
+        /// Possible values are: `NONE`, `AUTOMATIC`.
+        /// </summary>
+        [Input("defaultBackupScheduleType")]
+        public Input<string>? DefaultBackupScheduleType { get; set; }
+
+        /// <summary>
         /// The descriptive name for this instance as it appears in UIs. Must be
         /// unique per project and between 4 and 30 characters in length.
         /// 
@@ -412,6 +431,15 @@ namespace Pulumi.Gcp.Spanner
         /// </summary>
         [Input("config")]
         public Input<string>? Config { get; set; }
+
+        /// <summary>
+        /// Controls the default backup behavior for new databases within the instance.
+        /// Note that `AUTOMATIC` is not permitted for free instances, as backups and backup schedules are not allowed for free instances.
+        /// if unset or NONE, no default backup schedule will be created for new databases within the instance.
+        /// Possible values are: `NONE`, `AUTOMATIC`.
+        /// </summary>
+        [Input("defaultBackupScheduleType")]
+        public Input<string>? DefaultBackupScheduleType { get; set; }
 
         /// <summary>
         /// The descriptive name for this instance as it appears in UIs. Must be

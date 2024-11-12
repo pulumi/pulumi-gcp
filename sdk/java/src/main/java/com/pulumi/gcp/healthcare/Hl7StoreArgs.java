@@ -97,7 +97,7 @@ public final class Hl7StoreArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * (Optional, Deprecated)
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      * 
      * &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
@@ -112,7 +112,7 @@ public final class Hl7StoreArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return (Optional, Deprecated)
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      * 
      * &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
@@ -148,7 +148,7 @@ public final class Hl7StoreArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -156,7 +156,7 @@ public final class Hl7StoreArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Hl7StoreParserConfigArgs> parserConfig;
 
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -302,7 +302,7 @@ public final class Hl7StoreArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param notificationConfig (Optional, Deprecated)
-         * A nested object resource
+         * A nested object resource.
          * Structure is documented below.
          * 
          * &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
@@ -321,7 +321,7 @@ public final class Hl7StoreArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param notificationConfig (Optional, Deprecated)
-         * A nested object resource
+         * A nested object resource.
          * Structure is documented below.
          * 
          * &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
@@ -378,7 +378,7 @@ public final class Hl7StoreArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parserConfig A nested object resource
+         * @param parserConfig A nested object resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -390,7 +390,7 @@ public final class Hl7StoreArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parserConfig A nested object resource
+         * @param parserConfig A nested object resource.
          * Structure is documented below.
          * 
          * @return builder

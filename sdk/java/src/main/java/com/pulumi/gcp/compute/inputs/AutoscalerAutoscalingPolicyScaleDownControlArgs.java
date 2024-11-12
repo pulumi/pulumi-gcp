@@ -17,7 +17,7 @@ public final class AutoscalerAutoscalingPolicyScaleDownControlArgs extends com.p
     public static final AutoscalerAutoscalingPolicyScaleDownControlArgs Empty = new AutoscalerAutoscalingPolicyScaleDownControlArgs();
 
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -25,7 +25,7 @@ public final class AutoscalerAutoscalingPolicyScaleDownControlArgs extends com.p
     private @Nullable Output<AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs> maxScaledDownReplicas;
 
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -76,7 +76,7 @@ public final class AutoscalerAutoscalingPolicyScaleDownControlArgs extends com.p
         }
 
         /**
-         * @param maxScaledDownReplicas A nested object resource
+         * @param maxScaledDownReplicas A nested object resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -88,7 +88,7 @@ public final class AutoscalerAutoscalingPolicyScaleDownControlArgs extends com.p
         }
 
         /**
-         * @param maxScaledDownReplicas A nested object resource
+         * @param maxScaledDownReplicas A nested object resource.
          * Structure is documented below.
          * 
          * @return builder

@@ -5,6 +5,7 @@ package com.pulumi.gcp.workflows;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -52,6 +53,13 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> cryptoKeyName() {
         return Optional.ofNullable(this.cryptoKeyName);
+    }
+
+    @Import(name="deletionProtection")
+    private @Nullable Output<Boolean> deletionProtection;
+
+    public Optional<Output<Boolean>> deletionProtection() {
+        return Optional.ofNullable(this.deletionProtection);
     }
 
     /**
@@ -216,6 +224,7 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
     private WorkflowArgs(WorkflowArgs $) {
         this.callLogLevel = $.callLogLevel;
         this.cryptoKeyName = $.cryptoKeyName;
+        this.deletionProtection = $.deletionProtection;
         this.description = $.description;
         this.labels = $.labels;
         this.name = $.name;
@@ -293,6 +302,15 @@ public final class WorkflowArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder cryptoKeyName(String cryptoKeyName) {
             return cryptoKeyName(Output.of(cryptoKeyName));
+        }
+
+        public Builder deletionProtection(@Nullable Output<Boolean> deletionProtection) {
+            $.deletionProtection = deletionProtection;
+            return this;
+        }
+
+        public Builder deletionProtection(Boolean deletionProtection) {
+            return deletionProtection(Output.of(deletionProtection));
         }
 
         /**

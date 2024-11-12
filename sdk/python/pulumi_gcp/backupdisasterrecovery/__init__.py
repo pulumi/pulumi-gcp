@@ -5,7 +5,11 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .backup_plan import *
+from .backup_plan_association import *
 from .backup_vault import *
+from .get_backup_plan import *
+from .get_backup_plan_association import *
 from .get_management_server import *
 from .management_server import *
 from ._inputs import *

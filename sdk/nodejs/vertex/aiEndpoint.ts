@@ -36,6 +36,13 @@ import * as utilities from "../utilities";
  *     service: "servicenetworking.googleapis.com",
  *     reservedPeeringRanges: [vertexRange.name],
  * });
+ * const bqDataset = new gcp.bigquery.Dataset("bq_dataset", {
+ *     datasetId: "some_dataset",
+ *     friendlyName: "logging dataset",
+ *     description: "This is a dataset that requests are logged to",
+ *     location: "US",
+ *     deleteContentsOnDestroy: true,
+ * });
  * const project = gcp.organizations.getProject({});
  * const endpoint = new gcp.vertex.AiEndpoint("endpoint", {
  *     name: "endpoint-name",
@@ -50,6 +57,16 @@ import * as utilities from "../utilities";
  *     encryptionSpec: {
  *         kmsKeyName: "kms-name",
  *     },
+ *     predictRequestResponseLoggingConfig: {
+ *         bigqueryDestination: {
+ *             outputUri: pulumi.all([project, bqDataset.datasetId]).apply(([project, datasetId]) => `bq://${project.projectId}.${datasetId}.request_response_logging`),
+ *         },
+ *         enabled: true,
+ *         samplingRate: 0.1,
+ *     },
+ *     trafficSplit: JSON.stringify({
+ *         "12345": 100,
+ *     }),
  * }, {
  *     dependsOn: [vertexVpcConnection],
  * });
@@ -58,6 +75,48 @@ import * as utilities from "../utilities";
  *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
  *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-aiplatform.iam.gserviceaccount.com`),
  * });
+ * ```
+ * ### Vertex Ai Endpoint Private Service Connect
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const endpoint = new gcp.vertex.AiEndpoint("endpoint", {
+ *     name: "endpoint-name_69391",
+ *     displayName: "sample-endpoint",
+ *     description: "A sample vertex endpoint",
+ *     location: "us-central1",
+ *     region: "us-central1",
+ *     labels: {
+ *         "label-one": "value-one",
+ *     },
+ *     privateServiceConnectConfig: {
+ *         enablePrivateServiceConnect: true,
+ *         projectAllowlists: [project.then(project => project.projectId)],
+ *         enableSecurePrivateServiceConnect: false,
+ *     },
+ * });
+ * ```
+ * ### Vertex Ai Endpoint Dedicated Endpoint
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const endpoint = new gcp.vertex.AiEndpoint("endpoint", {
+ *     name: "endpoint-name_8270",
+ *     displayName: "sample-endpoint",
+ *     description: "A sample vertex endpoint",
+ *     location: "us-central1",
+ *     region: "us-central1",
+ *     labels: {
+ *         "label-one": "value-one",
+ *     },
+ *     dedicatedEndpointEnabled: true,
+ * });
+ * const project = gcp.organizations.getProject({});
  * ```
  *
  * ## Import
@@ -118,6 +177,14 @@ export class AiEndpoint extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * Output only. DNS of the dedicated endpoint. Will only be populated if dedicatedEndpointEnabled is true. Format: `https://{endpointId}.{region}-{projectNumber}.prediction.vertexai.goog`.
+     */
+    public /*out*/ readonly dedicatedEndpointDns!: pulumi.Output<string>;
+    /**
+     * If true, the endpoint will be exposed through a dedicated DNS [Endpoint.dedicated_endpoint_dns]. Your request to the dedicated DNS will be isolated from other users' traffic and will have better performance and reliability. Note: Once you enabled dedicated endpoint, you won't be able to send request to the shared DNS {region}-aiplatform.googleapis.com. The limitation will be removed soon.
+     */
+    public readonly dedicatedEndpointEnabled!: pulumi.Output<boolean | undefined>;
+    /**
      * Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud Console](https://console.cloud.google.com/vertex-ai/).
      * Structure is documented below.
      */
@@ -165,9 +232,19 @@ export class AiEndpoint extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name.
+     * The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name. Only one of the fields, `network` or `privateServiceConnectConfig`, can be set.
      */
     public readonly network!: pulumi.Output<string | undefined>;
+    /**
+     * Configures the request-response logging for online prediction.
+     * Structure is documented below.
+     */
+    public readonly predictRequestResponseLoggingConfig!: pulumi.Output<outputs.vertex.AiEndpointPredictRequestResponseLoggingConfig | undefined>;
+    /**
+     * Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
+     * Structure is documented below.
+     */
+    public readonly privateServiceConnectConfig!: pulumi.Output<outputs.vertex.AiEndpointPrivateServiceConnectConfig | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -182,6 +259,16 @@ export class AiEndpoint extends pulumi.CustomResource {
      * The region for the resource
      */
     public readonly region!: pulumi.Output<string | undefined>;
+    /**
+     * A map from a DeployedModel's id to the percentage of this Endpoint's traffic that should be forwarded to that DeployedModel.
+     * If a DeployedModel's id is not listed in this map, then it receives no traffic.
+     * The traffic percentage values must add up to 100, or map must be empty if the Endpoint is to not accept any traffic at a moment.
+     * > **Note:** The `trafficSplit` setting only applies after a model has been deployed to the endpoint. Re-applying a `gcp.vertex.AiEndpoint`
+     * resource without updating the `trafficSplit` post-deployment may lead to your deployed `trafficSplit` being lost; see
+     * the `deployModel` [example](https://cloud.google.com/vertex-ai/docs/general/deployment#deploy_a_model_to_an_endpoint) and
+     * [documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.endpoints/deployModel) for details.
+     */
+    public readonly trafficSplit!: pulumi.Output<string | undefined>;
     /**
      * Output only. Timestamp when this Endpoint was last updated.
      */
@@ -201,6 +288,8 @@ export class AiEndpoint extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as AiEndpointState | undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["dedicatedEndpointDns"] = state ? state.dedicatedEndpointDns : undefined;
+            resourceInputs["dedicatedEndpointEnabled"] = state ? state.dedicatedEndpointEnabled : undefined;
             resourceInputs["deployedModels"] = state ? state.deployedModels : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
@@ -212,9 +301,12 @@ export class AiEndpoint extends pulumi.CustomResource {
             resourceInputs["modelDeploymentMonitoringJob"] = state ? state.modelDeploymentMonitoringJob : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["network"] = state ? state.network : undefined;
+            resourceInputs["predictRequestResponseLoggingConfig"] = state ? state.predictRequestResponseLoggingConfig : undefined;
+            resourceInputs["privateServiceConnectConfig"] = state ? state.privateServiceConnectConfig : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["trafficSplit"] = state ? state.trafficSplit : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as AiEndpointArgs | undefined;
@@ -224,6 +316,7 @@ export class AiEndpoint extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
+            resourceInputs["dedicatedEndpointEnabled"] = args ? args.dedicatedEndpointEnabled : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["encryptionSpec"] = args ? args.encryptionSpec : undefined;
@@ -231,9 +324,13 @@ export class AiEndpoint extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["predictRequestResponseLoggingConfig"] = args ? args.predictRequestResponseLoggingConfig : undefined;
+            resourceInputs["privateServiceConnectConfig"] = args ? args.privateServiceConnectConfig : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["trafficSplit"] = args ? args.trafficSplit : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["dedicatedEndpointDns"] = undefined /*out*/;
             resourceInputs["deployedModels"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
@@ -257,6 +354,14 @@ export interface AiEndpointState {
      * Output only. Timestamp when the DeployedModel was created.
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * Output only. DNS of the dedicated endpoint. Will only be populated if dedicatedEndpointEnabled is true. Format: `https://{endpointId}.{region}-{projectNumber}.prediction.vertexai.goog`.
+     */
+    dedicatedEndpointDns?: pulumi.Input<string>;
+    /**
+     * If true, the endpoint will be exposed through a dedicated DNS [Endpoint.dedicated_endpoint_dns]. Your request to the dedicated DNS will be isolated from other users' traffic and will have better performance and reliability. Note: Once you enabled dedicated endpoint, you won't be able to send request to the shared DNS {region}-aiplatform.googleapis.com. The limitation will be removed soon.
+     */
+    dedicatedEndpointEnabled?: pulumi.Input<boolean>;
     /**
      * Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud Console](https://console.cloud.google.com/vertex-ai/).
      * Structure is documented below.
@@ -305,9 +410,19 @@ export interface AiEndpointState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name.
+     * The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name. Only one of the fields, `network` or `privateServiceConnectConfig`, can be set.
      */
     network?: pulumi.Input<string>;
+    /**
+     * Configures the request-response logging for online prediction.
+     * Structure is documented below.
+     */
+    predictRequestResponseLoggingConfig?: pulumi.Input<inputs.vertex.AiEndpointPredictRequestResponseLoggingConfig>;
+    /**
+     * Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
+     * Structure is documented below.
+     */
+    privateServiceConnectConfig?: pulumi.Input<inputs.vertex.AiEndpointPrivateServiceConnectConfig>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -323,6 +438,16 @@ export interface AiEndpointState {
      */
     region?: pulumi.Input<string>;
     /**
+     * A map from a DeployedModel's id to the percentage of this Endpoint's traffic that should be forwarded to that DeployedModel.
+     * If a DeployedModel's id is not listed in this map, then it receives no traffic.
+     * The traffic percentage values must add up to 100, or map must be empty if the Endpoint is to not accept any traffic at a moment.
+     * > **Note:** The `trafficSplit` setting only applies after a model has been deployed to the endpoint. Re-applying a `gcp.vertex.AiEndpoint`
+     * resource without updating the `trafficSplit` post-deployment may lead to your deployed `trafficSplit` being lost; see
+     * the `deployModel` [example](https://cloud.google.com/vertex-ai/docs/general/deployment#deploy_a_model_to_an_endpoint) and
+     * [documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.endpoints/deployModel) for details.
+     */
+    trafficSplit?: pulumi.Input<string>;
+    /**
      * Output only. Timestamp when this Endpoint was last updated.
      */
     updateTime?: pulumi.Input<string>;
@@ -332,6 +457,10 @@ export interface AiEndpointState {
  * The set of arguments for constructing a AiEndpoint resource.
  */
 export interface AiEndpointArgs {
+    /**
+     * If true, the endpoint will be exposed through a dedicated DNS [Endpoint.dedicated_endpoint_dns]. Your request to the dedicated DNS will be isolated from other users' traffic and will have better performance and reliability. Note: Once you enabled dedicated endpoint, you won't be able to send request to the shared DNS {region}-aiplatform.googleapis.com. The limitation will be removed soon.
+     */
+    dedicatedEndpointEnabled?: pulumi.Input<boolean>;
     /**
      * The description of the Endpoint.
      */
@@ -363,9 +492,19 @@ export interface AiEndpointArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name.
+     * The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name. Only one of the fields, `network` or `privateServiceConnectConfig`, can be set.
      */
     network?: pulumi.Input<string>;
+    /**
+     * Configures the request-response logging for online prediction.
+     * Structure is documented below.
+     */
+    predictRequestResponseLoggingConfig?: pulumi.Input<inputs.vertex.AiEndpointPredictRequestResponseLoggingConfig>;
+    /**
+     * Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
+     * Structure is documented below.
+     */
+    privateServiceConnectConfig?: pulumi.Input<inputs.vertex.AiEndpointPrivateServiceConnectConfig>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -375,4 +514,14 @@ export interface AiEndpointArgs {
      * The region for the resource
      */
     region?: pulumi.Input<string>;
+    /**
+     * A map from a DeployedModel's id to the percentage of this Endpoint's traffic that should be forwarded to that DeployedModel.
+     * If a DeployedModel's id is not listed in this map, then it receives no traffic.
+     * The traffic percentage values must add up to 100, or map must be empty if the Endpoint is to not accept any traffic at a moment.
+     * > **Note:** The `trafficSplit` setting only applies after a model has been deployed to the endpoint. Re-applying a `gcp.vertex.AiEndpoint`
+     * resource without updating the `trafficSplit` post-deployment may lead to your deployed `trafficSplit` being lost; see
+     * the `deployModel` [example](https://cloud.google.com/vertex-ai/docs/general/deployment#deploy_a_model_to_an_endpoint) and
+     * [documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.endpoints/deployModel) for details.
+     */
+    trafficSplit?: pulumi.Input<string>;
 }

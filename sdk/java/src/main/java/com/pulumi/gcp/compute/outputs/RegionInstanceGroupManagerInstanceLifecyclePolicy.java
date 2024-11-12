@@ -15,6 +15,7 @@ public final class RegionInstanceGroupManagerInstanceLifecyclePolicy {
      * @return , Default behavior for all instance or health check failures. Valid options are: `REPAIR`, `DO_NOTHING`. If `DO_NOTHING` then instances will not be repaired. If `REPAIR` (default), then failed instances will be repaired.
      * 
      * ***
+     * &lt;a name=&#34;nested_instance_flexibility_policy&#34;&gt;&lt;/a&gt;The `instance_flexibility_policy` block supports:
      * 
      */
     private @Nullable String defaultActionOnFailure;
@@ -29,6 +30,7 @@ public final class RegionInstanceGroupManagerInstanceLifecyclePolicy {
      * @return , Default behavior for all instance or health check failures. Valid options are: `REPAIR`, `DO_NOTHING`. If `DO_NOTHING` then instances will not be repaired. If `REPAIR` (default), then failed instances will be repaired.
      * 
      * ***
+     * &lt;a name=&#34;nested_instance_flexibility_policy&#34;&gt;&lt;/a&gt;The `instance_flexibility_policy` block supports:
      * 
      */
     public Optional<String> defaultActionOnFailure() {

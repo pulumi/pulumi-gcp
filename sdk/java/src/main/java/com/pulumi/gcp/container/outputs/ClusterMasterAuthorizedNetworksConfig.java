@@ -25,6 +25,11 @@ public final class ClusterMasterAuthorizedNetworksConfig {
      * 
      */
     private @Nullable Boolean gcpPublicCidrsAccessEnabled;
+    /**
+     * @return Whether authorized networks is enforced on the private endpoint or not. Defaults to false.
+     * 
+     */
+    private @Nullable Boolean privateEndpointEnforcementEnabled;
 
     private ClusterMasterAuthorizedNetworksConfig() {}
     /**
@@ -43,6 +48,13 @@ public final class ClusterMasterAuthorizedNetworksConfig {
     public Optional<Boolean> gcpPublicCidrsAccessEnabled() {
         return Optional.ofNullable(this.gcpPublicCidrsAccessEnabled);
     }
+    /**
+     * @return Whether authorized networks is enforced on the private endpoint or not. Defaults to false.
+     * 
+     */
+    public Optional<Boolean> privateEndpointEnforcementEnabled() {
+        return Optional.ofNullable(this.privateEndpointEnforcementEnabled);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -55,11 +67,13 @@ public final class ClusterMasterAuthorizedNetworksConfig {
     public static final class Builder {
         private @Nullable List<ClusterMasterAuthorizedNetworksConfigCidrBlock> cidrBlocks;
         private @Nullable Boolean gcpPublicCidrsAccessEnabled;
+        private @Nullable Boolean privateEndpointEnforcementEnabled;
         public Builder() {}
         public Builder(ClusterMasterAuthorizedNetworksConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cidrBlocks = defaults.cidrBlocks;
     	      this.gcpPublicCidrsAccessEnabled = defaults.gcpPublicCidrsAccessEnabled;
+    	      this.privateEndpointEnforcementEnabled = defaults.privateEndpointEnforcementEnabled;
         }
 
         @CustomType.Setter
@@ -77,10 +91,17 @@ public final class ClusterMasterAuthorizedNetworksConfig {
             this.gcpPublicCidrsAccessEnabled = gcpPublicCidrsAccessEnabled;
             return this;
         }
+        @CustomType.Setter
+        public Builder privateEndpointEnforcementEnabled(@Nullable Boolean privateEndpointEnforcementEnabled) {
+
+            this.privateEndpointEnforcementEnabled = privateEndpointEnforcementEnabled;
+            return this;
+        }
         public ClusterMasterAuthorizedNetworksConfig build() {
             final var _resultValue = new ClusterMasterAuthorizedNetworksConfig();
             _resultValue.cidrBlocks = cidrBlocks;
             _resultValue.gcpPublicCidrsAccessEnabled = gcpPublicCidrsAccessEnabled;
+            _resultValue.privateEndpointEnforcementEnabled = privateEndpointEnforcementEnabled;
             return _resultValue;
         }
     }

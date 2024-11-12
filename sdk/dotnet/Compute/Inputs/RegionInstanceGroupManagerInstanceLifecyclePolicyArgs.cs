@@ -16,6 +16,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// , Default behavior for all instance or health check failures. Valid options are: `REPAIR`, `DO_NOTHING`. If `DO_NOTHING` then instances will not be repaired. If `REPAIR` (default), then failed instances will be repaired.
         /// 
         /// - - -
+        /// &lt;a name="nested_instance_flexibility_policy"&gt;&lt;/a&gt;The `instance_flexibility_policy` block supports:
         /// </summary>
         [Input("defaultActionOnFailure")]
         public Input<string>? DefaultActionOnFailure { get; set; }

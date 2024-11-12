@@ -287,7 +287,7 @@ class WebApp(pulumi.CustomResource):
         When using the `pulumi import` command, WebApp can be imported using one of the formats above. For example:
 
         ```sh
-        $ pulumi import gcp:firebase/webApp:WebApp default {{project}} projects/{{project}}/webApps/{{app_id}}
+        $ pulumi import gcp:firebase/webApp:WebApp default "{{project}} projects/{{project}}/webApps/{{app_id}}"
         ```
 
         ```sh
@@ -374,7 +374,7 @@ class WebApp(pulumi.CustomResource):
         When using the `pulumi import` command, WebApp can be imported using one of the formats above. For example:
 
         ```sh
-        $ pulumi import gcp:firebase/webApp:WebApp default {{project}} projects/{{project}}/webApps/{{app_id}}
+        $ pulumi import gcp:firebase/webApp:WebApp default "{{project}} projects/{{project}}/webApps/{{app_id}}"
         ```
 
         ```sh

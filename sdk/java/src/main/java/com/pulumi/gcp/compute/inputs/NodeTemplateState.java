@@ -6,6 +6,7 @@ package com.pulumi.gcp.compute.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.NodeTemplateAcceleratorArgs;
+import com.pulumi.gcp.compute.inputs.NodeTemplateDiskArgs;
 import com.pulumi.gcp.compute.inputs.NodeTemplateNodeTypeFlexibilityArgs;
 import com.pulumi.gcp.compute.inputs.NodeTemplateServerBindingArgs;
 import java.lang.String;
@@ -86,6 +87,25 @@ public final class NodeTemplateState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * List of the type, size and count of disks attached to the
+     * node template
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="disks")
+    private @Nullable Output<List<NodeTemplateDiskArgs>> disks;
+
+    /**
+     * @return List of the type, size and count of disks attached to the
+     * node template
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<NodeTemplateDiskArgs>>> disks() {
+        return Optional.ofNullable(this.disks);
     }
 
     /**
@@ -235,6 +255,7 @@ public final class NodeTemplateState extends com.pulumi.resources.ResourceArgs {
         this.cpuOvercommitType = $.cpuOvercommitType;
         this.creationTimestamp = $.creationTimestamp;
         this.description = $.description;
+        this.disks = $.disks;
         this.name = $.name;
         this.nodeAffinityLabels = $.nodeAffinityLabels;
         this.nodeType = $.nodeType;
@@ -365,6 +386,43 @@ public final class NodeTemplateState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param disks List of the type, size and count of disks attached to the
+         * node template
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disks(@Nullable Output<List<NodeTemplateDiskArgs>> disks) {
+            $.disks = disks;
+            return this;
+        }
+
+        /**
+         * @param disks List of the type, size and count of disks attached to the
+         * node template
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disks(List<NodeTemplateDiskArgs> disks) {
+            return disks(Output.of(disks));
+        }
+
+        /**
+         * @param disks List of the type, size and count of disks attached to the
+         * node template
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disks(NodeTemplateDiskArgs... disks) {
+            return disks(List.of(disks));
         }
 
         /**

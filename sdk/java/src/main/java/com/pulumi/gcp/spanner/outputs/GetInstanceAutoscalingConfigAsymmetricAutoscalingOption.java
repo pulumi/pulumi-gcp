@@ -13,26 +13,26 @@ import java.util.Objects;
 @CustomType
 public final class GetInstanceAutoscalingConfigAsymmetricAutoscalingOption {
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * 
      */
     private List<GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverride> overrides;
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * 
      */
     private List<GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection> replicaSelections;
 
     private GetInstanceAutoscalingConfigAsymmetricAutoscalingOption() {}
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * 
      */
     public List<GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverride> overrides() {
         return this.overrides;
     }
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * 
      */
     public List<GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection> replicaSelections() {

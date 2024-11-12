@@ -68,37 +68,38 @@ type LookupClusterArgs struct {
 
 // A collection of values returned by getCluster.
 type LookupClusterResult struct {
-	AddonsConfigs                        []GetClusterAddonsConfig              `pulumi:"addonsConfigs"`
-	AllowNetAdmin                        bool                                  `pulumi:"allowNetAdmin"`
-	AuthenticatorGroupsConfigs           []GetClusterAuthenticatorGroupsConfig `pulumi:"authenticatorGroupsConfigs"`
-	BinaryAuthorizations                 []GetClusterBinaryAuthorization       `pulumi:"binaryAuthorizations"`
-	ClusterAutoscalings                  []GetClusterClusterAutoscaling        `pulumi:"clusterAutoscalings"`
-	ClusterIpv4Cidr                      string                                `pulumi:"clusterIpv4Cidr"`
-	ClusterTelemetries                   []GetClusterClusterTelemetry          `pulumi:"clusterTelemetries"`
-	ConfidentialNodes                    []GetClusterConfidentialNode          `pulumi:"confidentialNodes"`
-	CostManagementConfigs                []GetClusterCostManagementConfig      `pulumi:"costManagementConfigs"`
-	DatabaseEncryptions                  []GetClusterDatabaseEncryption        `pulumi:"databaseEncryptions"`
-	DatapathProvider                     string                                `pulumi:"datapathProvider"`
-	DefaultMaxPodsPerNode                int                                   `pulumi:"defaultMaxPodsPerNode"`
-	DefaultSnatStatuses                  []GetClusterDefaultSnatStatus         `pulumi:"defaultSnatStatuses"`
-	DeletionProtection                   bool                                  `pulumi:"deletionProtection"`
-	Description                          string                                `pulumi:"description"`
-	DnsConfigs                           []GetClusterDnsConfig                 `pulumi:"dnsConfigs"`
-	EffectiveLabels                      map[string]string                     `pulumi:"effectiveLabels"`
-	EnableAutopilot                      bool                                  `pulumi:"enableAutopilot"`
-	EnableCiliumClusterwideNetworkPolicy bool                                  `pulumi:"enableCiliumClusterwideNetworkPolicy"`
-	EnableFqdnNetworkPolicy              bool                                  `pulumi:"enableFqdnNetworkPolicy"`
-	EnableIntranodeVisibility            bool                                  `pulumi:"enableIntranodeVisibility"`
-	EnableK8sBetaApis                    []GetClusterEnableK8sBetaApi          `pulumi:"enableK8sBetaApis"`
-	EnableKubernetesAlpha                bool                                  `pulumi:"enableKubernetesAlpha"`
-	EnableL4IlbSubsetting                bool                                  `pulumi:"enableL4IlbSubsetting"`
-	EnableLegacyAbac                     bool                                  `pulumi:"enableLegacyAbac"`
-	EnableMultiNetworking                bool                                  `pulumi:"enableMultiNetworking"`
-	EnableShieldedNodes                  bool                                  `pulumi:"enableShieldedNodes"`
-	EnableTpu                            bool                                  `pulumi:"enableTpu"`
-	Endpoint                             string                                `pulumi:"endpoint"`
-	Fleets                               []GetClusterFleet                     `pulumi:"fleets"`
-	GatewayApiConfigs                    []GetClusterGatewayApiConfig          `pulumi:"gatewayApiConfigs"`
+	AddonsConfigs                        []GetClusterAddonsConfig                `pulumi:"addonsConfigs"`
+	AllowNetAdmin                        bool                                    `pulumi:"allowNetAdmin"`
+	AuthenticatorGroupsConfigs           []GetClusterAuthenticatorGroupsConfig   `pulumi:"authenticatorGroupsConfigs"`
+	BinaryAuthorizations                 []GetClusterBinaryAuthorization         `pulumi:"binaryAuthorizations"`
+	ClusterAutoscalings                  []GetClusterClusterAutoscaling          `pulumi:"clusterAutoscalings"`
+	ClusterIpv4Cidr                      string                                  `pulumi:"clusterIpv4Cidr"`
+	ClusterTelemetries                   []GetClusterClusterTelemetry            `pulumi:"clusterTelemetries"`
+	ConfidentialNodes                    []GetClusterConfidentialNode            `pulumi:"confidentialNodes"`
+	ControlPlaneEndpointsConfigs         []GetClusterControlPlaneEndpointsConfig `pulumi:"controlPlaneEndpointsConfigs"`
+	CostManagementConfigs                []GetClusterCostManagementConfig        `pulumi:"costManagementConfigs"`
+	DatabaseEncryptions                  []GetClusterDatabaseEncryption          `pulumi:"databaseEncryptions"`
+	DatapathProvider                     string                                  `pulumi:"datapathProvider"`
+	DefaultMaxPodsPerNode                int                                     `pulumi:"defaultMaxPodsPerNode"`
+	DefaultSnatStatuses                  []GetClusterDefaultSnatStatus           `pulumi:"defaultSnatStatuses"`
+	DeletionProtection                   bool                                    `pulumi:"deletionProtection"`
+	Description                          string                                  `pulumi:"description"`
+	DnsConfigs                           []GetClusterDnsConfig                   `pulumi:"dnsConfigs"`
+	EffectiveLabels                      map[string]string                       `pulumi:"effectiveLabels"`
+	EnableAutopilot                      bool                                    `pulumi:"enableAutopilot"`
+	EnableCiliumClusterwideNetworkPolicy bool                                    `pulumi:"enableCiliumClusterwideNetworkPolicy"`
+	EnableFqdnNetworkPolicy              bool                                    `pulumi:"enableFqdnNetworkPolicy"`
+	EnableIntranodeVisibility            bool                                    `pulumi:"enableIntranodeVisibility"`
+	EnableK8sBetaApis                    []GetClusterEnableK8sBetaApi            `pulumi:"enableK8sBetaApis"`
+	EnableKubernetesAlpha                bool                                    `pulumi:"enableKubernetesAlpha"`
+	EnableL4IlbSubsetting                bool                                    `pulumi:"enableL4IlbSubsetting"`
+	EnableLegacyAbac                     bool                                    `pulumi:"enableLegacyAbac"`
+	EnableMultiNetworking                bool                                    `pulumi:"enableMultiNetworking"`
+	EnableShieldedNodes                  bool                                    `pulumi:"enableShieldedNodes"`
+	EnableTpu                            bool                                    `pulumi:"enableTpu"`
+	Endpoint                             string                                  `pulumi:"endpoint"`
+	Fleets                               []GetClusterFleet                       `pulumi:"fleets"`
+	GatewayApiConfigs                    []GetClusterGatewayApiConfig            `pulumi:"gatewayApiConfigs"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                              string                                     `pulumi:"id"`
 	IdentityServiceConfigs          []GetClusterIdentityServiceConfig          `pulumi:"identityServiceConfigs"`
@@ -146,6 +147,7 @@ type LookupClusterResult struct {
 	Subnetwork                      string                                     `pulumi:"subnetwork"`
 	TpuConfigs                      []GetClusterTpuConfig                      `pulumi:"tpuConfigs"`
 	TpuIpv4CidrBlock                string                                     `pulumi:"tpuIpv4CidrBlock"`
+	UserManagedKeysConfigs          []GetClusterUserManagedKeysConfig          `pulumi:"userManagedKeysConfigs"`
 	VerticalPodAutoscalings         []GetClusterVerticalPodAutoscaling         `pulumi:"verticalPodAutoscalings"`
 	WorkloadAltsConfigs             []GetClusterWorkloadAltsConfig             `pulumi:"workloadAltsConfigs"`
 	WorkloadIdentityConfigs         []GetClusterWorkloadIdentityConfig         `pulumi:"workloadIdentityConfigs"`
@@ -232,6 +234,12 @@ func (o LookupClusterResultOutput) ClusterTelemetries() GetClusterClusterTelemet
 
 func (o LookupClusterResultOutput) ConfidentialNodes() GetClusterConfidentialNodeArrayOutput {
 	return o.ApplyT(func(v LookupClusterResult) []GetClusterConfidentialNode { return v.ConfidentialNodes }).(GetClusterConfidentialNodeArrayOutput)
+}
+
+func (o LookupClusterResultOutput) ControlPlaneEndpointsConfigs() GetClusterControlPlaneEndpointsConfigArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterControlPlaneEndpointsConfig {
+		return v.ControlPlaneEndpointsConfigs
+	}).(GetClusterControlPlaneEndpointsConfigArrayOutput)
 }
 
 func (o LookupClusterResultOutput) CostManagementConfigs() GetClusterCostManagementConfigArrayOutput {
@@ -511,6 +519,10 @@ func (o LookupClusterResultOutput) TpuConfigs() GetClusterTpuConfigArrayOutput {
 
 func (o LookupClusterResultOutput) TpuIpv4CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.TpuIpv4CidrBlock }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) UserManagedKeysConfigs() GetClusterUserManagedKeysConfigArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterUserManagedKeysConfig { return v.UserManagedKeysConfigs }).(GetClusterUserManagedKeysConfigArrayOutput)
 }
 
 func (o LookupClusterResultOutput) VerticalPodAutoscalings() GetClusterVerticalPodAutoscalingArrayOutput {

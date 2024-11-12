@@ -16,6 +16,7 @@ import com.pulumi.gcp.container.outputs.ClusterBinaryAuthorization;
 import com.pulumi.gcp.container.outputs.ClusterClusterAutoscaling;
 import com.pulumi.gcp.container.outputs.ClusterClusterTelemetry;
 import com.pulumi.gcp.container.outputs.ClusterConfidentialNodes;
+import com.pulumi.gcp.container.outputs.ClusterControlPlaneEndpointsConfig;
 import com.pulumi.gcp.container.outputs.ClusterCostManagementConfig;
 import com.pulumi.gcp.container.outputs.ClusterDatabaseEncryption;
 import com.pulumi.gcp.container.outputs.ClusterDefaultSnatStatus;
@@ -46,6 +47,7 @@ import com.pulumi.gcp.container.outputs.ClusterSecretManagerConfig;
 import com.pulumi.gcp.container.outputs.ClusterSecurityPostureConfig;
 import com.pulumi.gcp.container.outputs.ClusterServiceExternalIpsConfig;
 import com.pulumi.gcp.container.outputs.ClusterTpuConfig;
+import com.pulumi.gcp.container.outputs.ClusterUserManagedKeysConfig;
 import com.pulumi.gcp.container.outputs.ClusterVerticalPodAutoscaling;
 import com.pulumi.gcp.container.outputs.ClusterWorkloadAltsConfig;
 import com.pulumi.gcp.container.outputs.ClusterWorkloadIdentityConfig;
@@ -412,6 +414,22 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<ClusterConfidentialNodes> confidentialNodes() {
         return this.confidentialNodes;
+    }
+    /**
+     * Configuration for all of the cluster&#39;s control plane endpoints.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="controlPlaneEndpointsConfig", refs={ClusterControlPlaneEndpointsConfig.class}, tree="[0]")
+    private Output<ClusterControlPlaneEndpointsConfig> controlPlaneEndpointsConfig;
+
+    /**
+     * @return Configuration for all of the cluster&#39;s control plane endpoints.
+     * Structure is documented below.
+     * 
+     */
+    public Output<ClusterControlPlaneEndpointsConfig> controlPlaneEndpointsConfig() {
+        return this.controlPlaneEndpointsConfig;
     }
     /**
      * Configuration for the
@@ -1598,6 +1616,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> tpuIpv4CidrBlock() {
         return this.tpuIpv4CidrBlock;
+    }
+    /**
+     * The custom keys configuration of the cluster.
+     * 
+     */
+    @Export(name="userManagedKeysConfig", refs={ClusterUserManagedKeysConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ClusterUserManagedKeysConfig> userManagedKeysConfig;
+
+    /**
+     * @return The custom keys configuration of the cluster.
+     * 
+     */
+    public Output<Optional<ClusterUserManagedKeysConfig>> userManagedKeysConfig() {
+        return Codegen.optional(this.userManagedKeysConfig);
     }
     /**
      * Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.

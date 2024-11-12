@@ -19,7 +19,7 @@ public final class BareMetalAdminClusterLoadBalancerArgs extends com.pulumi.reso
     public static final BareMetalAdminClusterLoadBalancerArgs Empty = new BareMetalAdminClusterLoadBalancerArgs();
 
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -27,7 +27,7 @@ public final class BareMetalAdminClusterLoadBalancerArgs extends com.pulumi.reso
     private @Nullable Output<BareMetalAdminClusterLoadBalancerManualLbConfigArgs> manualLbConfig;
 
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -96,7 +96,7 @@ public final class BareMetalAdminClusterLoadBalancerArgs extends com.pulumi.reso
         }
 
         /**
-         * @param manualLbConfig A nested object resource
+         * @param manualLbConfig A nested object resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -108,7 +108,7 @@ public final class BareMetalAdminClusterLoadBalancerArgs extends com.pulumi.reso
         }
 
         /**
-         * @param manualLbConfig A nested object resource
+         * @param manualLbConfig A nested object resource.
          * Structure is documented below.
          * 
          * @return builder

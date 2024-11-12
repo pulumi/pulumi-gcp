@@ -16,7 +16,7 @@ public final class InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs exte
     public static final InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs Empty = new InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs();
 
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -24,7 +24,7 @@ public final class InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs exte
     private Output<InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgs> overrides;
 
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -33,7 +33,7 @@ public final class InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs exte
     }
 
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -41,7 +41,7 @@ public final class InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs exte
     private Output<InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArgs> replicaSelection;
 
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -75,7 +75,7 @@ public final class InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs exte
         }
 
         /**
-         * @param overrides A nested object resource
+         * @param overrides A nested object resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -87,7 +87,7 @@ public final class InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs exte
         }
 
         /**
-         * @param overrides A nested object resource
+         * @param overrides A nested object resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -98,7 +98,7 @@ public final class InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs exte
         }
 
         /**
-         * @param replicaSelection A nested object resource
+         * @param replicaSelection A nested object resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -110,7 +110,7 @@ public final class InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs exte
         }
 
         /**
-         * @param replicaSelection A nested object resource
+         * @param replicaSelection A nested object resource.
          * Structure is documented below.
          * 
          * @return builder

@@ -141,7 +141,7 @@ import (
 type Dataset struct {
 	pulumi.CustomResourceState
 
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	EncryptionSpec DatasetEncryptionSpecOutput `pulumi:"encryptionSpec"`
 	// The location for the Dataset.
@@ -194,7 +194,7 @@ func GetDataset(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Dataset resources.
 type datasetState struct {
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	EncryptionSpec *DatasetEncryptionSpec `pulumi:"encryptionSpec"`
 	// The location for the Dataset.
@@ -215,7 +215,7 @@ type datasetState struct {
 }
 
 type DatasetState struct {
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	EncryptionSpec DatasetEncryptionSpecPtrInput
 	// The location for the Dataset.
@@ -240,7 +240,7 @@ func (DatasetState) ElementType() reflect.Type {
 }
 
 type datasetArgs struct {
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	EncryptionSpec *DatasetEncryptionSpec `pulumi:"encryptionSpec"`
 	// The location for the Dataset.
@@ -260,7 +260,7 @@ type datasetArgs struct {
 
 // The set of arguments for constructing a Dataset resource.
 type DatasetArgs struct {
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	EncryptionSpec DatasetEncryptionSpecPtrInput
 	// The location for the Dataset.
@@ -365,7 +365,7 @@ func (o DatasetOutput) ToDatasetOutputWithContext(ctx context.Context) DatasetOu
 	return o
 }
 
-// A nested object resource
+// A nested object resource.
 // Structure is documented below.
 func (o DatasetOutput) EncryptionSpec() DatasetEncryptionSpecOutput {
 	return o.ApplyT(func(v *Dataset) DatasetEncryptionSpecOutput { return v.EncryptionSpec }).(DatasetEncryptionSpecOutput)

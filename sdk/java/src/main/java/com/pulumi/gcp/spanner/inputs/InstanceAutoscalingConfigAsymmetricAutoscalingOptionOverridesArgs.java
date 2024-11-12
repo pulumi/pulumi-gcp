@@ -15,7 +15,7 @@ public final class InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides
     public static final InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgs Empty = new InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgs();
 
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -23,7 +23,7 @@ public final class InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides
     private Output<InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs> autoscalingLimits;
 
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -56,7 +56,7 @@ public final class InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides
         }
 
         /**
-         * @param autoscalingLimits A nested object resource
+         * @param autoscalingLimits A nested object resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -68,7 +68,7 @@ public final class InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides
         }
 
         /**
-         * @param autoscalingLimits A nested object resource
+         * @param autoscalingLimits A nested object resource.
          * Structure is documented below.
          * 
          * @return builder

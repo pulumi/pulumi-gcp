@@ -149,7 +149,7 @@ public final class PreventionDiscoveryConfigState extends com.pulumi.resources.R
     }
 
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -157,7 +157,7 @@ public final class PreventionDiscoveryConfigState extends com.pulumi.resources.R
     private @Nullable Output<PreventionDiscoveryConfigOrgConfigArgs> orgConfig;
 
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -478,7 +478,7 @@ public final class PreventionDiscoveryConfigState extends com.pulumi.resources.R
         }
 
         /**
-         * @param orgConfig A nested object resource
+         * @param orgConfig A nested object resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -490,7 +490,7 @@ public final class PreventionDiscoveryConfigState extends com.pulumi.resources.R
         }
 
         /**
-         * @param orgConfig A nested object resource
+         * @param orgConfig A nested object resource.
          * Structure is documented below.
          * 
          * @return builder

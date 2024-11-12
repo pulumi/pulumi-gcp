@@ -29,6 +29,7 @@ import * as utilities from "../utilities";
  *     displayName: "Test Spanner Instance",
  *     numNodes: 2,
  *     edition: "STANDARD",
+ *     defaultBackupScheduleType: "AUTOMATIC",
  *     labels: {
  *         foo: "bar",
  *     },
@@ -159,6 +160,13 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly config!: pulumi.Output<string>;
     /**
+     * Controls the default backup behavior for new databases within the instance.
+     * Note that `AUTOMATIC` is not permitted for free instances, as backups and backup schedules are not allowed for free instances.
+     * if unset or NONE, no default backup schedule will be created for new databases within the instance.
+     * Possible values are: `NONE`, `AUTOMATIC`.
+     */
+    public readonly defaultBackupScheduleType!: pulumi.Output<string>;
+    /**
      * The descriptive name for this instance as it appears in UIs. Must be
      * unique per project and between 4 and 30 characters in length.
      *
@@ -227,6 +235,7 @@ export class Instance extends pulumi.CustomResource {
             const state = argsOrState as InstanceState | undefined;
             resourceInputs["autoscalingConfig"] = state ? state.autoscalingConfig : undefined;
             resourceInputs["config"] = state ? state.config : undefined;
+            resourceInputs["defaultBackupScheduleType"] = state ? state.defaultBackupScheduleType : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["edition"] = state ? state.edition : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
@@ -248,6 +257,7 @@ export class Instance extends pulumi.CustomResource {
             }
             resourceInputs["autoscalingConfig"] = args ? args.autoscalingConfig : undefined;
             resourceInputs["config"] = args ? args.config : undefined;
+            resourceInputs["defaultBackupScheduleType"] = args ? args.defaultBackupScheduleType : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["edition"] = args ? args.edition : undefined;
             resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
@@ -288,6 +298,13 @@ export interface InstanceState {
      * [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
      */
     config?: pulumi.Input<string>;
+    /**
+     * Controls the default backup behavior for new databases within the instance.
+     * Note that `AUTOMATIC` is not permitted for free instances, as backups and backup schedules are not allowed for free instances.
+     * if unset or NONE, no default backup schedule will be created for new databases within the instance.
+     * Possible values are: `NONE`, `AUTOMATIC`.
+     */
+    defaultBackupScheduleType?: pulumi.Input<string>;
     /**
      * The descriptive name for this instance as it appears in UIs. Must be
      * unique per project and between 4 and 30 characters in length.
@@ -364,6 +381,13 @@ export interface InstanceArgs {
      * [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
      */
     config: pulumi.Input<string>;
+    /**
+     * Controls the default backup behavior for new databases within the instance.
+     * Note that `AUTOMATIC` is not permitted for free instances, as backups and backup schedules are not allowed for free instances.
+     * if unset or NONE, no default backup schedule will be created for new databases within the instance.
+     * Possible values are: `NONE`, `AUTOMATIC`.
+     */
+    defaultBackupScheduleType?: pulumi.Input<string>;
     /**
      * The descriptive name for this instance as it appears in UIs. Must be
      * unique per project and between 4 and 30 characters in length.

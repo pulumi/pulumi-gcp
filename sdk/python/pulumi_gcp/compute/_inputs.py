@@ -445,6 +445,8 @@ __all__ = [
     'NodeGroupShareSettingsProjectMapArgsDict',
     'NodeTemplateAcceleratorArgs',
     'NodeTemplateAcceleratorArgsDict',
+    'NodeTemplateDiskArgs',
+    'NodeTemplateDiskArgsDict',
     'NodeTemplateNodeTypeFlexibilityArgs',
     'NodeTemplateNodeTypeFlexibilityArgsDict',
     'NodeTemplateServerBindingArgs',
@@ -573,6 +575,10 @@ __all__ = [
     'RegionInstanceGroupManagerAllInstancesConfigArgsDict',
     'RegionInstanceGroupManagerAutoHealingPoliciesArgs',
     'RegionInstanceGroupManagerAutoHealingPoliciesArgsDict',
+    'RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs',
+    'RegionInstanceGroupManagerInstanceFlexibilityPolicyArgsDict',
+    'RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs',
+    'RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgsDict',
     'RegionInstanceGroupManagerInstanceLifecyclePolicyArgs',
     'RegionInstanceGroupManagerInstanceLifecyclePolicyArgsDict',
     'RegionInstanceGroupManagerNamedPortArgs',
@@ -693,8 +699,48 @@ __all__ = [
     'RegionPerInstanceConfigPreservedStateInternalIpArgsDict',
     'RegionPerInstanceConfigPreservedStateInternalIpIpAddressArgs',
     'RegionPerInstanceConfigPreservedStateInternalIpIpAddressArgsDict',
+    'RegionResizeRequestRequestedRunDurationArgs',
+    'RegionResizeRequestRequestedRunDurationArgsDict',
+    'RegionResizeRequestStatusArgs',
+    'RegionResizeRequestStatusArgsDict',
+    'RegionResizeRequestStatusErrorArgs',
+    'RegionResizeRequestStatusErrorArgsDict',
+    'RegionResizeRequestStatusErrorErrorArgs',
+    'RegionResizeRequestStatusErrorErrorArgsDict',
+    'RegionResizeRequestStatusErrorErrorErrorDetailArgs',
+    'RegionResizeRequestStatusErrorErrorErrorDetailArgsDict',
+    'RegionResizeRequestStatusErrorErrorErrorDetailErrorInfoArgs',
+    'RegionResizeRequestStatusErrorErrorErrorDetailErrorInfoArgsDict',
+    'RegionResizeRequestStatusErrorErrorErrorDetailHelpArgs',
+    'RegionResizeRequestStatusErrorErrorErrorDetailHelpArgsDict',
+    'RegionResizeRequestStatusErrorErrorErrorDetailHelpLinkArgs',
+    'RegionResizeRequestStatusErrorErrorErrorDetailHelpLinkArgsDict',
+    'RegionResizeRequestStatusErrorErrorErrorDetailLocalizedMessageArgs',
+    'RegionResizeRequestStatusErrorErrorErrorDetailLocalizedMessageArgsDict',
+    'RegionResizeRequestStatusErrorErrorErrorDetailQuotaInfoArgs',
+    'RegionResizeRequestStatusErrorErrorErrorDetailQuotaInfoArgsDict',
+    'RegionResizeRequestStatusLastAttemptArgs',
+    'RegionResizeRequestStatusLastAttemptArgsDict',
+    'RegionResizeRequestStatusLastAttemptErrorArgs',
+    'RegionResizeRequestStatusLastAttemptErrorArgsDict',
+    'RegionResizeRequestStatusLastAttemptErrorErrorArgs',
+    'RegionResizeRequestStatusLastAttemptErrorErrorArgsDict',
+    'RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailArgs',
+    'RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailArgsDict',
+    'RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfoArgs',
+    'RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfoArgsDict',
+    'RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpArgs',
+    'RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpArgsDict',
+    'RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLinkArgs',
+    'RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLinkArgsDict',
+    'RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessageArgs',
+    'RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessageArgsDict',
+    'RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailQuotaInfoArgs',
+    'RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailQuotaInfoArgsDict',
     'RegionSecurityPolicyDdosProtectionConfigArgs',
     'RegionSecurityPolicyDdosProtectionConfigArgsDict',
+    'RegionSecurityPolicyRuleArgs',
+    'RegionSecurityPolicyRuleArgsDict',
     'RegionSecurityPolicyRuleMatchArgs',
     'RegionSecurityPolicyRuleMatchArgsDict',
     'RegionSecurityPolicyRuleMatchConfigArgs',
@@ -1890,7 +1936,7 @@ if not MYPY:
     class AutoscalerAutoscalingPolicyScaleDownControlArgsDict(TypedDict):
         max_scaled_down_replicas: NotRequired[pulumi.Input['AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgsDict']]
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         time_window_sec: NotRequired[pulumi.Input[int]]
@@ -1907,7 +1953,7 @@ class AutoscalerAutoscalingPolicyScaleDownControlArgs:
                  max_scaled_down_replicas: Optional[pulumi.Input['AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs']] = None,
                  time_window_sec: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input['AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs'] max_scaled_down_replicas: A nested object resource
+        :param pulumi.Input['AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs'] max_scaled_down_replicas: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[int] time_window_sec: How long back autoscaling should look when computing recommendations
                to include directives regarding slower scale down, as described above.
@@ -1921,7 +1967,7 @@ class AutoscalerAutoscalingPolicyScaleDownControlArgs:
     @pulumi.getter(name="maxScaledDownReplicas")
     def max_scaled_down_replicas(self) -> Optional[pulumi.Input['AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "max_scaled_down_replicas")
@@ -2006,7 +2052,7 @@ if not MYPY:
     class AutoscalerAutoscalingPolicyScaleInControlArgsDict(TypedDict):
         max_scaled_in_replicas: NotRequired[pulumi.Input['AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgsDict']]
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         time_window_sec: NotRequired[pulumi.Input[int]]
@@ -2023,7 +2069,7 @@ class AutoscalerAutoscalingPolicyScaleInControlArgs:
                  max_scaled_in_replicas: Optional[pulumi.Input['AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs']] = None,
                  time_window_sec: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input['AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs'] max_scaled_in_replicas: A nested object resource
+        :param pulumi.Input['AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs'] max_scaled_in_replicas: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[int] time_window_sec: How long back autoscaling should look when computing recommendations
                to include directives regarding slower scale down, as described above.
@@ -2037,7 +2083,7 @@ class AutoscalerAutoscalingPolicyScaleInControlArgs:
     @pulumi.getter(name="maxScaledInReplicas")
     def max_scaled_in_replicas(self) -> Optional[pulumi.Input['AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "max_scaled_in_replicas")
@@ -6361,48 +6407,50 @@ if not MYPY:
         layer4_configs: pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatchLayer4ConfigArgsDict']]]
         """
         Pairs of IP protocols and ports that the rule should match.
+        Structure is documented below.
         """
         dest_address_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
+        Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
         """
         dest_fqdns: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
+        Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
         """
         dest_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+        CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
         """
         dest_region_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is egress.
+        Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
         """
         dest_threat_intelligences: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        Name of the Google Cloud Threat Intelligence list.
+        Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
         """
         src_address_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        Address groups which should be matched against the traffic source. Maximum number of source address groups is 10. Source address groups is only supported in Ingress rules.
+        Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
         """
         src_fqdns: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        Domain names that will be used to match against the resolved domain name of source of traffic. Can only be specified if DIRECTION is ingress.
+        Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
         """
         src_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+        CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
         """
         src_region_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
+        Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
         """
         src_threat_intelligences: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        Name of the Google Cloud Threat Intelligence list.
+        Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
 
-        The `layer4_configs` block supports:
+
+        <a name="nested_layer4_configs"></a>The `layer4_configs` block supports:
         """
 elif False:
     FirewallPolicyRuleMatchArgsDict: TypeAlias = Mapping[str, Any]
@@ -6423,18 +6471,20 @@ class FirewallPolicyRuleMatchArgs:
                  src_threat_intelligences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatchLayer4ConfigArgs']]] layer4_configs: Pairs of IP protocols and ports that the rule should match.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_address_groups: Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_fqdns: Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_region_codes: The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is egress.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_threat_intelligences: Name of the Google Cloud Threat Intelligence list.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_address_groups: Address groups which should be matched against the traffic source. Maximum number of source address groups is 10. Source address groups is only supported in Ingress rules.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_fqdns: Domain names that will be used to match against the resolved domain name of source of traffic. Can only be specified if DIRECTION is ingress.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_region_codes: The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_threat_intelligences: Name of the Google Cloud Threat Intelligence list.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_address_groups: Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_region_codes: Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_threat_intelligences: Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_address_groups: Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_region_codes: Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_threat_intelligences: Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
                
-               The `layer4_configs` block supports:
+               
+               <a name="nested_layer4_configs"></a>The `layer4_configs` block supports:
         """
         pulumi.set(__self__, "layer4_configs", layer4_configs)
         if dest_address_groups is not None:
@@ -6463,6 +6513,7 @@ class FirewallPolicyRuleMatchArgs:
     def layer4_configs(self) -> pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatchLayer4ConfigArgs']]]:
         """
         Pairs of IP protocols and ports that the rule should match.
+        Structure is documented below.
         """
         return pulumi.get(self, "layer4_configs")
 
@@ -6474,7 +6525,7 @@ class FirewallPolicyRuleMatchArgs:
     @pulumi.getter(name="destAddressGroups")
     def dest_address_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
+        Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
         """
         return pulumi.get(self, "dest_address_groups")
 
@@ -6486,7 +6537,7 @@ class FirewallPolicyRuleMatchArgs:
     @pulumi.getter(name="destFqdns")
     def dest_fqdns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
+        Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
         """
         return pulumi.get(self, "dest_fqdns")
 
@@ -6498,7 +6549,7 @@ class FirewallPolicyRuleMatchArgs:
     @pulumi.getter(name="destIpRanges")
     def dest_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+        CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
         """
         return pulumi.get(self, "dest_ip_ranges")
 
@@ -6510,7 +6561,7 @@ class FirewallPolicyRuleMatchArgs:
     @pulumi.getter(name="destRegionCodes")
     def dest_region_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is egress.
+        Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
         """
         return pulumi.get(self, "dest_region_codes")
 
@@ -6522,7 +6573,7 @@ class FirewallPolicyRuleMatchArgs:
     @pulumi.getter(name="destThreatIntelligences")
     def dest_threat_intelligences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Name of the Google Cloud Threat Intelligence list.
+        Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
         """
         return pulumi.get(self, "dest_threat_intelligences")
 
@@ -6534,7 +6585,7 @@ class FirewallPolicyRuleMatchArgs:
     @pulumi.getter(name="srcAddressGroups")
     def src_address_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Address groups which should be matched against the traffic source. Maximum number of source address groups is 10. Source address groups is only supported in Ingress rules.
+        Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
         """
         return pulumi.get(self, "src_address_groups")
 
@@ -6546,7 +6597,7 @@ class FirewallPolicyRuleMatchArgs:
     @pulumi.getter(name="srcFqdns")
     def src_fqdns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Domain names that will be used to match against the resolved domain name of source of traffic. Can only be specified if DIRECTION is ingress.
+        Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
         """
         return pulumi.get(self, "src_fqdns")
 
@@ -6558,7 +6609,7 @@ class FirewallPolicyRuleMatchArgs:
     @pulumi.getter(name="srcIpRanges")
     def src_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+        CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
         """
         return pulumi.get(self, "src_ip_ranges")
 
@@ -6570,7 +6621,7 @@ class FirewallPolicyRuleMatchArgs:
     @pulumi.getter(name="srcRegionCodes")
     def src_region_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
+        Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
         """
         return pulumi.get(self, "src_region_codes")
 
@@ -6582,9 +6633,10 @@ class FirewallPolicyRuleMatchArgs:
     @pulumi.getter(name="srcThreatIntelligences")
     def src_threat_intelligences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Name of the Google Cloud Threat Intelligence list.
+        Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
 
-        The `layer4_configs` block supports:
+
+        <a name="nested_layer4_configs"></a>The `layer4_configs` block supports:
         """
         return pulumi.get(self, "src_threat_intelligences")
 
@@ -6597,11 +6649,13 @@ if not MYPY:
     class FirewallPolicyRuleMatchLayer4ConfigArgsDict(TypedDict):
         ip_protocol: pulumi.Input[str]
         """
-        The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (`tcp`, `udp`, `icmp`, `esp`, `ah`, `ipip`, `sctp`), or the IP protocol number.
+        The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule.
+        This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
         """
         ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
+        An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+        Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
         """
 elif False:
     FirewallPolicyRuleMatchLayer4ConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -6612,8 +6666,10 @@ class FirewallPolicyRuleMatchLayer4ConfigArgs:
                  ip_protocol: pulumi.Input[str],
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[str] ip_protocol: The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (`tcp`, `udp`, `icmp`, `esp`, `ah`, `ipip`, `sctp`), or the IP protocol number.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
+        :param pulumi.Input[str] ip_protocol: The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule.
+               This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+               Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
         """
         pulumi.set(__self__, "ip_protocol", ip_protocol)
         if ports is not None:
@@ -6623,7 +6679,8 @@ class FirewallPolicyRuleMatchLayer4ConfigArgs:
     @pulumi.getter(name="ipProtocol")
     def ip_protocol(self) -> pulumi.Input[str]:
         """
-        The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (`tcp`, `udp`, `icmp`, `esp`, `ah`, `ipip`, `sctp`), or the IP protocol number.
+        The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule.
+        This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
         """
         return pulumi.get(self, "ip_protocol")
 
@@ -6635,7 +6692,8 @@ class FirewallPolicyRuleMatchLayer4ConfigArgs:
     @pulumi.getter
     def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
+        An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+        Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
         """
         return pulumi.get(self, "ports")
 
@@ -23972,6 +24030,78 @@ class NodeTemplateAcceleratorArgs:
 
 
 if not MYPY:
+    class NodeTemplateDiskArgsDict(TypedDict):
+        disk_count: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the number of such disks.
+        """
+        disk_size_gb: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the size of the disk in base-2 GB.
+        """
+        disk_type: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the desired disk type on the node. This disk type must be a local storage type (e.g.: local-ssd). Note that for nodeTemplates, this should be the name of the disk type and not its URL.
+        """
+elif False:
+    NodeTemplateDiskArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NodeTemplateDiskArgs:
+    def __init__(__self__, *,
+                 disk_count: Optional[pulumi.Input[int]] = None,
+                 disk_size_gb: Optional[pulumi.Input[int]] = None,
+                 disk_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] disk_count: Specifies the number of such disks.
+        :param pulumi.Input[int] disk_size_gb: Specifies the size of the disk in base-2 GB.
+        :param pulumi.Input[str] disk_type: Specifies the desired disk type on the node. This disk type must be a local storage type (e.g.: local-ssd). Note that for nodeTemplates, this should be the name of the disk type and not its URL.
+        """
+        if disk_count is not None:
+            pulumi.set(__self__, "disk_count", disk_count)
+        if disk_size_gb is not None:
+            pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if disk_type is not None:
+            pulumi.set(__self__, "disk_type", disk_type)
+
+    @property
+    @pulumi.getter(name="diskCount")
+    def disk_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies the number of such disks.
+        """
+        return pulumi.get(self, "disk_count")
+
+    @disk_count.setter
+    def disk_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "disk_count", value)
+
+    @property
+    @pulumi.getter(name="diskSizeGb")
+    def disk_size_gb(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies the size of the disk in base-2 GB.
+        """
+        return pulumi.get(self, "disk_size_gb")
+
+    @disk_size_gb.setter
+    def disk_size_gb(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "disk_size_gb", value)
+
+    @property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the desired disk type on the node. This disk type must be a local storage type (e.g.: local-ssd). Note that for nodeTemplates, this should be the name of the disk type and not its URL.
+        """
+        return pulumi.get(self, "disk_type")
+
+    @disk_type.setter
+    def disk_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_type", value)
+
+
+if not MYPY:
     class NodeTemplateNodeTypeFlexibilityArgsDict(TypedDict):
         cpus: NotRequired[pulumi.Input[str]]
         """
@@ -25765,7 +25895,7 @@ if not MYPY:
     class RegionAutoscalerAutoscalingPolicyScaleDownControlArgsDict(TypedDict):
         max_scaled_down_replicas: NotRequired[pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgsDict']]
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         time_window_sec: NotRequired[pulumi.Input[int]]
@@ -25782,7 +25912,7 @@ class RegionAutoscalerAutoscalingPolicyScaleDownControlArgs:
                  max_scaled_down_replicas: Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs']] = None,
                  time_window_sec: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs'] max_scaled_down_replicas: A nested object resource
+        :param pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs'] max_scaled_down_replicas: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[int] time_window_sec: How long back autoscaling should look when computing recommendations
                to include directives regarding slower scale down, as described above.
@@ -25796,7 +25926,7 @@ class RegionAutoscalerAutoscalingPolicyScaleDownControlArgs:
     @pulumi.getter(name="maxScaledDownReplicas")
     def max_scaled_down_replicas(self) -> Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "max_scaled_down_replicas")
@@ -25881,7 +26011,7 @@ if not MYPY:
     class RegionAutoscalerAutoscalingPolicyScaleInControlArgsDict(TypedDict):
         max_scaled_in_replicas: NotRequired[pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgsDict']]
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         time_window_sec: NotRequired[pulumi.Input[int]]
@@ -25898,7 +26028,7 @@ class RegionAutoscalerAutoscalingPolicyScaleInControlArgs:
                  max_scaled_in_replicas: Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs']] = None,
                  time_window_sec: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs'] max_scaled_in_replicas: A nested object resource
+        :param pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs'] max_scaled_in_replicas: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[int] time_window_sec: How long back autoscaling should look when computing recommendations
                to include directives regarding slower scale down, as described above.
@@ -25912,7 +26042,7 @@ class RegionAutoscalerAutoscalingPolicyScaleInControlArgs:
     @pulumi.getter(name="maxScaledInReplicas")
     def max_scaled_in_replicas(self) -> Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "max_scaled_in_replicas")
@@ -30357,13 +30487,11 @@ if not MYPY:
     class RegionInstanceGroupManagerAllInstancesConfigArgsDict(TypedDict):
         labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
-        , The label key-value pairs that you want to patch onto the instance.
-
-        - - -
+        The label key-value pairs that you want to patch onto the instance,
         """
         metadata: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
         """
-        , The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
+        The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata,
         """
 elif False:
     RegionInstanceGroupManagerAllInstancesConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -30374,10 +30502,8 @@ class RegionInstanceGroupManagerAllInstancesConfigArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: , The label key-value pairs that you want to patch onto the instance.
-               
-               - - -
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: , The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The label key-value pairs that you want to patch onto the instance,
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata,
         """
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
@@ -30388,9 +30514,7 @@ class RegionInstanceGroupManagerAllInstancesConfigArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        , The label key-value pairs that you want to patch onto the instance.
-
-        - - -
+        The label key-value pairs that you want to patch onto the instance,
         """
         return pulumi.get(self, "labels")
 
@@ -30402,7 +30526,7 @@ class RegionInstanceGroupManagerAllInstancesConfigArgs:
     @pulumi.getter
     def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        , The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
+        The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata,
         """
         return pulumi.get(self, "metadata")
 
@@ -30465,12 +30589,124 @@ class RegionInstanceGroupManagerAutoHealingPoliciesArgs:
 
 
 if not MYPY:
+    class RegionInstanceGroupManagerInstanceFlexibilityPolicyArgsDict(TypedDict):
+        instance_selections: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgsDict']]]]
+        """
+        Named instance selections configuring properties that the group will use when creating new VMs.
+        """
+elif False:
+    RegionInstanceGroupManagerInstanceFlexibilityPolicyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs:
+    def __init__(__self__, *,
+                 instance_selections: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs']]] instance_selections: Named instance selections configuring properties that the group will use when creating new VMs.
+        """
+        if instance_selections is not None:
+            pulumi.set(__self__, "instance_selections", instance_selections)
+
+    @property
+    @pulumi.getter(name="instanceSelections")
+    def instance_selections(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs']]]]:
+        """
+        Named instance selections configuring properties that the group will use when creating new VMs.
+        """
+        return pulumi.get(self, "instance_selections")
+
+    @instance_selections.setter
+    def instance_selections(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs']]]]):
+        pulumi.set(self, "instance_selections", value)
+
+
+if not MYPY:
+    class RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgsDict(TypedDict):
+        machine_types: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Full machine-type names, e.g. "n1-standard-16"
+        """
+        name: pulumi.Input[str]
+        """
+        The name of the instance group manager. Must be 1-63
+        characters long and comply with
+        [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+        include lowercase letters, numbers, and hyphens.
+        """
+        rank: NotRequired[pulumi.Input[int]]
+        """
+        Preference of this instance selection. Lower number means higher preference. MIG will first try to create a VM based on the machine-type with lowest rank and fallback to next rank based on availability. Machine types and instance selections with the same rank have the same preference.
+        """
+elif False:
+    RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionArgs:
+    def __init__(__self__, *,
+                 machine_types: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 name: pulumi.Input[str],
+                 rank: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] machine_types: Full machine-type names, e.g. "n1-standard-16"
+        :param pulumi.Input[str] name: The name of the instance group manager. Must be 1-63
+               characters long and comply with
+               [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+               include lowercase letters, numbers, and hyphens.
+        :param pulumi.Input[int] rank: Preference of this instance selection. Lower number means higher preference. MIG will first try to create a VM based on the machine-type with lowest rank and fallback to next rank based on availability. Machine types and instance selections with the same rank have the same preference.
+        """
+        pulumi.set(__self__, "machine_types", machine_types)
+        pulumi.set(__self__, "name", name)
+        if rank is not None:
+            pulumi.set(__self__, "rank", rank)
+
+    @property
+    @pulumi.getter(name="machineTypes")
+    def machine_types(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Full machine-type names, e.g. "n1-standard-16"
+        """
+        return pulumi.get(self, "machine_types")
+
+    @machine_types.setter
+    def machine_types(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "machine_types", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the instance group manager. Must be 1-63
+        characters long and comply with
+        [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+        include lowercase letters, numbers, and hyphens.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def rank(self) -> Optional[pulumi.Input[int]]:
+        """
+        Preference of this instance selection. Lower number means higher preference. MIG will first try to create a VM based on the machine-type with lowest rank and fallback to next rank based on availability. Machine types and instance selections with the same rank have the same preference.
+        """
+        return pulumi.get(self, "rank")
+
+    @rank.setter
+    def rank(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "rank", value)
+
+
+if not MYPY:
     class RegionInstanceGroupManagerInstanceLifecyclePolicyArgsDict(TypedDict):
         default_action_on_failure: NotRequired[pulumi.Input[str]]
         """
         , Default behavior for all instance or health check failures. Valid options are: `REPAIR`, `DO_NOTHING`. If `DO_NOTHING` then instances will not be repaired. If `REPAIR` (default), then failed instances will be repaired.
 
         - - -
+        <a name="nested_instance_flexibility_policy"></a>The `instance_flexibility_policy` block supports:
         """
         force_update_on_repair: NotRequired[pulumi.Input[str]]
         """
@@ -30488,6 +30724,7 @@ class RegionInstanceGroupManagerInstanceLifecyclePolicyArgs:
         :param pulumi.Input[str] default_action_on_failure: , Default behavior for all instance or health check failures. Valid options are: `REPAIR`, `DO_NOTHING`. If `DO_NOTHING` then instances will not be repaired. If `REPAIR` (default), then failed instances will be repaired.
                
                - - -
+               <a name="nested_instance_flexibility_policy"></a>The `instance_flexibility_policy` block supports:
         :param pulumi.Input[str] force_update_on_repair: , Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: `YES`, `NO`. If `YES` and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If `NO` (default), then updates are applied in accordance with the group's update policy type.
         """
         if default_action_on_failure is not None:
@@ -30502,6 +30739,7 @@ class RegionInstanceGroupManagerInstanceLifecyclePolicyArgs:
         , Default behavior for all instance or health check failures. Valid options are: `REPAIR`, `DO_NOTHING`. If `DO_NOTHING` then instances will not be repaired. If `REPAIR` (default), then failed instances will be repaired.
 
         - - -
+        <a name="nested_instance_flexibility_policy"></a>The `instance_flexibility_policy` block supports:
         """
         return pulumi.get(self, "default_action_on_failure")
 
@@ -36759,6 +36997,1445 @@ class RegionPerInstanceConfigPreservedStateInternalIpIpAddressArgs:
 
 
 if not MYPY:
+    class RegionResizeRequestRequestedRunDurationArgsDict(TypedDict):
+        seconds: pulumi.Input[str]
+        """
+        Span of time at a resolution of a second. Must be from 600 to 604800 inclusive. Note: minimum and maximum allowed range for requestedRunDuration is 10 minutes (600 seconds) and 7 days(604800 seconds) correspondingly.
+        """
+        nanos: NotRequired[pulumi.Input[int]]
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+elif False:
+    RegionResizeRequestRequestedRunDurationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionResizeRequestRequestedRunDurationArgs:
+    def __init__(__self__, *,
+                 seconds: pulumi.Input[str],
+                 nanos: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] seconds: Span of time at a resolution of a second. Must be from 600 to 604800 inclusive. Note: minimum and maximum allowed range for requestedRunDuration is 10 minutes (600 seconds) and 7 days(604800 seconds) correspondingly.
+        :param pulumi.Input[int] nanos: Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+        pulumi.set(__self__, "seconds", seconds)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> pulumi.Input[str]:
+        """
+        Span of time at a resolution of a second. Must be from 600 to 604800 inclusive. Note: minimum and maximum allowed range for requestedRunDuration is 10 minutes (600 seconds) and 7 days(604800 seconds) correspondingly.
+        """
+        return pulumi.get(self, "seconds")
+
+    @seconds.setter
+    def seconds(self, value: pulumi.Input[str]):
+        pulumi.set(self, "seconds", value)
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[pulumi.Input[int]]:
+        """
+        Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+        """
+        return pulumi.get(self, "nanos")
+
+    @nanos.setter
+    def nanos(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "nanos", value)
+
+
+if not MYPY:
+    class RegionResizeRequestStatusArgsDict(TypedDict):
+        errors: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusErrorArgsDict']]]]
+        """
+        (Output)
+        Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the lastAttempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry.
+        Structure is documented below.
+        """
+        last_attempts: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusLastAttemptArgsDict']]]]
+        """
+        (Output)
+        Information about the last attempt to fulfill the request. The value is temporary since the ResizeRequest can retry, as long as it's still active and the last attempt value can either be cleared or replaced with a different error. Since ResizeRequest retries infrequently, the value may be stale and no longer show an active problem. The value is cleared when ResizeRequest transitions to the final state (becomes inactive). If the final state is FAILED the error describing it will be storred in the "error" field only.
+        Structure is documented below.
+        """
+elif False:
+    RegionResizeRequestStatusArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionResizeRequestStatusArgs:
+    def __init__(__self__, *,
+                 errors: Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusErrorArgs']]]] = None,
+                 last_attempts: Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusLastAttemptArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusErrorArgs']]] errors: (Output)
+               Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the lastAttempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusLastAttemptArgs']]] last_attempts: (Output)
+               Information about the last attempt to fulfill the request. The value is temporary since the ResizeRequest can retry, as long as it's still active and the last attempt value can either be cleared or replaced with a different error. Since ResizeRequest retries infrequently, the value may be stale and no longer show an active problem. The value is cleared when ResizeRequest transitions to the final state (becomes inactive). If the final state is FAILED the error describing it will be storred in the "error" field only.
+               Structure is documented below.
+        """
+        if errors is not None:
+            pulumi.set(__self__, "errors", errors)
+        if last_attempts is not None:
+            pulumi.set(__self__, "last_attempts", last_attempts)
+
+    @property
+    @pulumi.getter
+    def errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusErrorArgs']]]]:
+        """
+        (Output)
+        Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the lastAttempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "errors")
+
+    @errors.setter
+    def errors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusErrorArgs']]]]):
+        pulumi.set(self, "errors", value)
+
+    @property
+    @pulumi.getter(name="lastAttempts")
+    def last_attempts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusLastAttemptArgs']]]]:
+        """
+        (Output)
+        Information about the last attempt to fulfill the request. The value is temporary since the ResizeRequest can retry, as long as it's still active and the last attempt value can either be cleared or replaced with a different error. Since ResizeRequest retries infrequently, the value may be stale and no longer show an active problem. The value is cleared when ResizeRequest transitions to the final state (becomes inactive). If the final state is FAILED the error describing it will be storred in the "error" field only.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "last_attempts")
+
+    @last_attempts.setter
+    def last_attempts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusLastAttemptArgs']]]]):
+        pulumi.set(self, "last_attempts", value)
+
+
+if not MYPY:
+    class RegionResizeRequestStatusErrorArgsDict(TypedDict):
+        errors: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusErrorErrorArgsDict']]]]
+        """
+        (Output)
+        The array of errors encountered while processing this operation.
+        Structure is documented below.
+        """
+elif False:
+    RegionResizeRequestStatusErrorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionResizeRequestStatusErrorArgs:
+    def __init__(__self__, *,
+                 errors: Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusErrorErrorArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusErrorErrorArgs']]] errors: (Output)
+               The array of errors encountered while processing this operation.
+               Structure is documented below.
+        """
+        if errors is not None:
+            pulumi.set(__self__, "errors", errors)
+
+    @property
+    @pulumi.getter
+    def errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusErrorErrorArgs']]]]:
+        """
+        (Output)
+        The array of errors encountered while processing this operation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "errors")
+
+    @errors.setter
+    def errors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusErrorErrorArgs']]]]):
+        pulumi.set(self, "errors", value)
+
+
+if not MYPY:
+    class RegionResizeRequestStatusErrorErrorArgsDict(TypedDict):
+        code: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The error type identifier for this error.
+        """
+        error_details: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusErrorErrorErrorDetailArgsDict']]]]
+        """
+        (Output)
+        An array of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
+        Structure is documented below.
+        """
+        location: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Indicates the field in the request that caused the error. This property is optional.
+        """
+        message: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The localized error message in the above locale.
+        """
+elif False:
+    RegionResizeRequestStatusErrorErrorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionResizeRequestStatusErrorErrorArgs:
+    def __init__(__self__, *,
+                 code: Optional[pulumi.Input[str]] = None,
+                 error_details: Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusErrorErrorErrorDetailArgs']]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 message: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] code: (Output)
+               The error type identifier for this error.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusErrorErrorErrorDetailArgs']]] error_details: (Output)
+               An array of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
+               Structure is documented below.
+        :param pulumi.Input[str] location: (Output)
+               Indicates the field in the request that caused the error. This property is optional.
+        :param pulumi.Input[str] message: (Output)
+               The localized error message in the above locale.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if error_details is not None:
+            pulumi.set(__self__, "error_details", error_details)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The error type identifier for this error.
+        """
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "code", value)
+
+    @property
+    @pulumi.getter(name="errorDetails")
+    def error_details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusErrorErrorErrorDetailArgs']]]]:
+        """
+        (Output)
+        An array of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "error_details")
+
+    @error_details.setter
+    def error_details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusErrorErrorErrorDetailArgs']]]]):
+        pulumi.set(self, "error_details", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Indicates the field in the request that caused the error. This property is optional.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The localized error message in the above locale.
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "message", value)
+
+
+if not MYPY:
+    class RegionResizeRequestStatusErrorErrorErrorDetailArgsDict(TypedDict):
+        error_infos: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusErrorErrorErrorDetailErrorInfoArgsDict']]]]
+        """
+        (Output)
+        A nested object resource.
+        Structure is documented below.
+        """
+        helps: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusErrorErrorErrorDetailHelpArgsDict']]]]
+        """
+        (Output)
+        A nested object resource.
+        Structure is documented below.
+        """
+        localized_messages: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusErrorErrorErrorDetailLocalizedMessageArgsDict']]]]
+        """
+        (Output)
+        A nested object resource.
+        Structure is documented below.
+        """
+        quota_infos: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusErrorErrorErrorDetailQuotaInfoArgsDict']]]]
+        """
+        (Output)
+        A nested object resource.
+        Structure is documented below.
+        """
+elif False:
+    RegionResizeRequestStatusErrorErrorErrorDetailArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionResizeRequestStatusErrorErrorErrorDetailArgs:
+    def __init__(__self__, *,
+                 error_infos: Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusErrorErrorErrorDetailErrorInfoArgs']]]] = None,
+                 helps: Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusErrorErrorErrorDetailHelpArgs']]]] = None,
+                 localized_messages: Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusErrorErrorErrorDetailLocalizedMessageArgs']]]] = None,
+                 quota_infos: Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusErrorErrorErrorDetailQuotaInfoArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusErrorErrorErrorDetailErrorInfoArgs']]] error_infos: (Output)
+               A nested object resource.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusErrorErrorErrorDetailHelpArgs']]] helps: (Output)
+               A nested object resource.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusErrorErrorErrorDetailLocalizedMessageArgs']]] localized_messages: (Output)
+               A nested object resource.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusErrorErrorErrorDetailQuotaInfoArgs']]] quota_infos: (Output)
+               A nested object resource.
+               Structure is documented below.
+        """
+        if error_infos is not None:
+            pulumi.set(__self__, "error_infos", error_infos)
+        if helps is not None:
+            pulumi.set(__self__, "helps", helps)
+        if localized_messages is not None:
+            pulumi.set(__self__, "localized_messages", localized_messages)
+        if quota_infos is not None:
+            pulumi.set(__self__, "quota_infos", quota_infos)
+
+    @property
+    @pulumi.getter(name="errorInfos")
+    def error_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusErrorErrorErrorDetailErrorInfoArgs']]]]:
+        """
+        (Output)
+        A nested object resource.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "error_infos")
+
+    @error_infos.setter
+    def error_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusErrorErrorErrorDetailErrorInfoArgs']]]]):
+        pulumi.set(self, "error_infos", value)
+
+    @property
+    @pulumi.getter
+    def helps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusErrorErrorErrorDetailHelpArgs']]]]:
+        """
+        (Output)
+        A nested object resource.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "helps")
+
+    @helps.setter
+    def helps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusErrorErrorErrorDetailHelpArgs']]]]):
+        pulumi.set(self, "helps", value)
+
+    @property
+    @pulumi.getter(name="localizedMessages")
+    def localized_messages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusErrorErrorErrorDetailLocalizedMessageArgs']]]]:
+        """
+        (Output)
+        A nested object resource.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "localized_messages")
+
+    @localized_messages.setter
+    def localized_messages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusErrorErrorErrorDetailLocalizedMessageArgs']]]]):
+        pulumi.set(self, "localized_messages", value)
+
+    @property
+    @pulumi.getter(name="quotaInfos")
+    def quota_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusErrorErrorErrorDetailQuotaInfoArgs']]]]:
+        """
+        (Output)
+        A nested object resource.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "quota_infos")
+
+    @quota_infos.setter
+    def quota_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusErrorErrorErrorDetailQuotaInfoArgs']]]]):
+        pulumi.set(self, "quota_infos", value)
+
+
+if not MYPY:
+    class RegionResizeRequestStatusErrorErrorErrorDetailErrorInfoArgsDict(TypedDict):
+        domain: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The logical grouping to which the "reason" belongs. The error domain is typically the registered service name of the tool or product that generates the error. Example: "pubsub.googleapis.com".
+        """
+        metadatas: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        (Output)
+        Additional structured details about this error.
+        """
+        reason: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The reason of the error. This is a constant value that identifies the proximate cause of the error. Error reasons are unique within a particular domain of errors.
+        """
+elif False:
+    RegionResizeRequestStatusErrorErrorErrorDetailErrorInfoArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionResizeRequestStatusErrorErrorErrorDetailErrorInfoArgs:
+    def __init__(__self__, *,
+                 domain: Optional[pulumi.Input[str]] = None,
+                 metadatas: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 reason: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] domain: (Output)
+               The logical grouping to which the "reason" belongs. The error domain is typically the registered service name of the tool or product that generates the error. Example: "pubsub.googleapis.com".
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadatas: (Output)
+               Additional structured details about this error.
+        :param pulumi.Input[str] reason: (Output)
+               The reason of the error. This is a constant value that identifies the proximate cause of the error. Error reasons are unique within a particular domain of errors.
+        """
+        if domain is not None:
+            pulumi.set(__self__, "domain", domain)
+        if metadatas is not None:
+            pulumi.set(__self__, "metadatas", metadatas)
+        if reason is not None:
+            pulumi.set(__self__, "reason", reason)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The logical grouping to which the "reason" belongs. The error domain is typically the registered service name of the tool or product that generates the error. Example: "pubsub.googleapis.com".
+        """
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain", value)
+
+    @property
+    @pulumi.getter
+    def metadatas(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        (Output)
+        Additional structured details about this error.
+        """
+        return pulumi.get(self, "metadatas")
+
+    @metadatas.setter
+    def metadatas(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "metadatas", value)
+
+    @property
+    @pulumi.getter
+    def reason(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The reason of the error. This is a constant value that identifies the proximate cause of the error. Error reasons are unique within a particular domain of errors.
+        """
+        return pulumi.get(self, "reason")
+
+    @reason.setter
+    def reason(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "reason", value)
+
+
+if not MYPY:
+    class RegionResizeRequestStatusErrorErrorErrorDetailHelpArgsDict(TypedDict):
+        links: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusErrorErrorErrorDetailHelpLinkArgsDict']]]]
+        """
+        (Output)
+        A nested object resource.
+        Structure is documented below.
+        """
+elif False:
+    RegionResizeRequestStatusErrorErrorErrorDetailHelpArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionResizeRequestStatusErrorErrorErrorDetailHelpArgs:
+    def __init__(__self__, *,
+                 links: Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusErrorErrorErrorDetailHelpLinkArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusErrorErrorErrorDetailHelpLinkArgs']]] links: (Output)
+               A nested object resource.
+               Structure is documented below.
+        """
+        if links is not None:
+            pulumi.set(__self__, "links", links)
+
+    @property
+    @pulumi.getter
+    def links(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusErrorErrorErrorDetailHelpLinkArgs']]]]:
+        """
+        (Output)
+        A nested object resource.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "links")
+
+    @links.setter
+    def links(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusErrorErrorErrorDetailHelpLinkArgs']]]]):
+        pulumi.set(self, "links", value)
+
+
+if not MYPY:
+    class RegionResizeRequestStatusErrorErrorErrorDetailHelpLinkArgsDict(TypedDict):
+        description: NotRequired[pulumi.Input[str]]
+        """
+        An optional description of this resize-request.
+        """
+        url: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The URL of the link.
+        """
+elif False:
+    RegionResizeRequestStatusErrorErrorErrorDetailHelpLinkArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionResizeRequestStatusErrorErrorErrorDetailHelpLinkArgs:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 url: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] description: An optional description of this resize-request.
+        :param pulumi.Input[str] url: (Output)
+               The URL of the link.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional description of this resize-request.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The URL of the link.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "url", value)
+
+
+if not MYPY:
+    class RegionResizeRequestStatusErrorErrorErrorDetailLocalizedMessageArgsDict(TypedDict):
+        locale: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The locale used following the specification defined at https://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: "en-US", "fr-CH", "es-MX"
+        """
+        message: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The localized error message in the above locale.
+        """
+elif False:
+    RegionResizeRequestStatusErrorErrorErrorDetailLocalizedMessageArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionResizeRequestStatusErrorErrorErrorDetailLocalizedMessageArgs:
+    def __init__(__self__, *,
+                 locale: Optional[pulumi.Input[str]] = None,
+                 message: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] locale: (Output)
+               The locale used following the specification defined at https://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: "en-US", "fr-CH", "es-MX"
+        :param pulumi.Input[str] message: (Output)
+               The localized error message in the above locale.
+        """
+        if locale is not None:
+            pulumi.set(__self__, "locale", locale)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def locale(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The locale used following the specification defined at https://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: "en-US", "fr-CH", "es-MX"
+        """
+        return pulumi.get(self, "locale")
+
+    @locale.setter
+    def locale(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "locale", value)
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The localized error message in the above locale.
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "message", value)
+
+
+if not MYPY:
+    class RegionResizeRequestStatusErrorErrorErrorDetailQuotaInfoArgsDict(TypedDict):
+        dimensions: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        (Output)
+        The map holding related quota dimensions
+        """
+        future_limit: NotRequired[pulumi.Input[int]]
+        """
+        (Output)
+        Future quota limit being rolled out. The limit's unit depends on the quota type or metric.
+        """
+        limit: NotRequired[pulumi.Input[int]]
+        """
+        (Output)
+        Current effective quota limit. The limit's unit depends on the quota type or metric.
+        """
+        limit_name: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The name of the quota limit.
+        """
+        metric_name: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The Compute Engine quota metric name.
+        """
+        rollout_status: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Rollout status of the future quota limit.
+        """
+elif False:
+    RegionResizeRequestStatusErrorErrorErrorDetailQuotaInfoArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionResizeRequestStatusErrorErrorErrorDetailQuotaInfoArgs:
+    def __init__(__self__, *,
+                 dimensions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 future_limit: Optional[pulumi.Input[int]] = None,
+                 limit: Optional[pulumi.Input[int]] = None,
+                 limit_name: Optional[pulumi.Input[str]] = None,
+                 metric_name: Optional[pulumi.Input[str]] = None,
+                 rollout_status: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] dimensions: (Output)
+               The map holding related quota dimensions
+        :param pulumi.Input[int] future_limit: (Output)
+               Future quota limit being rolled out. The limit's unit depends on the quota type or metric.
+        :param pulumi.Input[int] limit: (Output)
+               Current effective quota limit. The limit's unit depends on the quota type or metric.
+        :param pulumi.Input[str] limit_name: (Output)
+               The name of the quota limit.
+        :param pulumi.Input[str] metric_name: (Output)
+               The Compute Engine quota metric name.
+        :param pulumi.Input[str] rollout_status: (Output)
+               Rollout status of the future quota limit.
+        """
+        if dimensions is not None:
+            pulumi.set(__self__, "dimensions", dimensions)
+        if future_limit is not None:
+            pulumi.set(__self__, "future_limit", future_limit)
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if limit_name is not None:
+            pulumi.set(__self__, "limit_name", limit_name)
+        if metric_name is not None:
+            pulumi.set(__self__, "metric_name", metric_name)
+        if rollout_status is not None:
+            pulumi.set(__self__, "rollout_status", rollout_status)
+
+    @property
+    @pulumi.getter
+    def dimensions(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        (Output)
+        The map holding related quota dimensions
+        """
+        return pulumi.get(self, "dimensions")
+
+    @dimensions.setter
+    def dimensions(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "dimensions", value)
+
+    @property
+    @pulumi.getter(name="futureLimit")
+    def future_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Output)
+        Future quota limit being rolled out. The limit's unit depends on the quota type or metric.
+        """
+        return pulumi.get(self, "future_limit")
+
+    @future_limit.setter
+    def future_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "future_limit", value)
+
+    @property
+    @pulumi.getter
+    def limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Output)
+        Current effective quota limit. The limit's unit depends on the quota type or metric.
+        """
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "limit", value)
+
+    @property
+    @pulumi.getter(name="limitName")
+    def limit_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The name of the quota limit.
+        """
+        return pulumi.get(self, "limit_name")
+
+    @limit_name.setter
+    def limit_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "limit_name", value)
+
+    @property
+    @pulumi.getter(name="metricName")
+    def metric_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The Compute Engine quota metric name.
+        """
+        return pulumi.get(self, "metric_name")
+
+    @metric_name.setter
+    def metric_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metric_name", value)
+
+    @property
+    @pulumi.getter(name="rolloutStatus")
+    def rollout_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Rollout status of the future quota limit.
+        """
+        return pulumi.get(self, "rollout_status")
+
+    @rollout_status.setter
+    def rollout_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rollout_status", value)
+
+
+if not MYPY:
+    class RegionResizeRequestStatusLastAttemptArgsDict(TypedDict):
+        errors: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusLastAttemptErrorArgsDict']]]]
+        """
+        (Output)
+        Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the lastAttempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry.
+        Structure is documented below.
+        """
+elif False:
+    RegionResizeRequestStatusLastAttemptArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionResizeRequestStatusLastAttemptArgs:
+    def __init__(__self__, *,
+                 errors: Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusLastAttemptErrorArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusLastAttemptErrorArgs']]] errors: (Output)
+               Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the lastAttempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry.
+               Structure is documented below.
+        """
+        if errors is not None:
+            pulumi.set(__self__, "errors", errors)
+
+    @property
+    @pulumi.getter
+    def errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusLastAttemptErrorArgs']]]]:
+        """
+        (Output)
+        Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the lastAttempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "errors")
+
+    @errors.setter
+    def errors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusLastAttemptErrorArgs']]]]):
+        pulumi.set(self, "errors", value)
+
+
+if not MYPY:
+    class RegionResizeRequestStatusLastAttemptErrorArgsDict(TypedDict):
+        errors: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusLastAttemptErrorErrorArgsDict']]]]
+        """
+        (Output)
+        The array of errors encountered while processing this operation.
+        Structure is documented below.
+        """
+elif False:
+    RegionResizeRequestStatusLastAttemptErrorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionResizeRequestStatusLastAttemptErrorArgs:
+    def __init__(__self__, *,
+                 errors: Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusLastAttemptErrorErrorArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusLastAttemptErrorErrorArgs']]] errors: (Output)
+               The array of errors encountered while processing this operation.
+               Structure is documented below.
+        """
+        if errors is not None:
+            pulumi.set(__self__, "errors", errors)
+
+    @property
+    @pulumi.getter
+    def errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusLastAttemptErrorErrorArgs']]]]:
+        """
+        (Output)
+        The array of errors encountered while processing this operation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "errors")
+
+    @errors.setter
+    def errors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusLastAttemptErrorErrorArgs']]]]):
+        pulumi.set(self, "errors", value)
+
+
+if not MYPY:
+    class RegionResizeRequestStatusLastAttemptErrorErrorArgsDict(TypedDict):
+        code: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The error type identifier for this error.
+        """
+        error_details: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailArgsDict']]]]
+        """
+        (Output)
+        An array of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
+        Structure is documented below.
+        """
+        location: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Indicates the field in the request that caused the error. This property is optional.
+        """
+        message: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The localized error message in the above locale.
+        """
+elif False:
+    RegionResizeRequestStatusLastAttemptErrorErrorArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionResizeRequestStatusLastAttemptErrorErrorArgs:
+    def __init__(__self__, *,
+                 code: Optional[pulumi.Input[str]] = None,
+                 error_details: Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailArgs']]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 message: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] code: (Output)
+               The error type identifier for this error.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailArgs']]] error_details: (Output)
+               An array of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
+               Structure is documented below.
+        :param pulumi.Input[str] location: (Output)
+               Indicates the field in the request that caused the error. This property is optional.
+        :param pulumi.Input[str] message: (Output)
+               The localized error message in the above locale.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if error_details is not None:
+            pulumi.set(__self__, "error_details", error_details)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The error type identifier for this error.
+        """
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "code", value)
+
+    @property
+    @pulumi.getter(name="errorDetails")
+    def error_details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailArgs']]]]:
+        """
+        (Output)
+        An array of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "error_details")
+
+    @error_details.setter
+    def error_details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailArgs']]]]):
+        pulumi.set(self, "error_details", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Indicates the field in the request that caused the error. This property is optional.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The localized error message in the above locale.
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "message", value)
+
+
+if not MYPY:
+    class RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailArgsDict(TypedDict):
+        error_infos: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfoArgsDict']]]]
+        """
+        (Output)
+        A nested object resource.
+        Structure is documented below.
+        """
+        helps: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpArgsDict']]]]
+        """
+        (Output)
+        A nested object resource.
+        Structure is documented below.
+        """
+        localized_messages: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessageArgsDict']]]]
+        """
+        (Output)
+        A nested object resource.
+        Structure is documented below.
+        """
+        quota_infos: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailQuotaInfoArgsDict']]]]
+        """
+        (Output)
+        A nested object resource.
+        Structure is documented below.
+        """
+elif False:
+    RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailArgs:
+    def __init__(__self__, *,
+                 error_infos: Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfoArgs']]]] = None,
+                 helps: Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpArgs']]]] = None,
+                 localized_messages: Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessageArgs']]]] = None,
+                 quota_infos: Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailQuotaInfoArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfoArgs']]] error_infos: (Output)
+               A nested object resource.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpArgs']]] helps: (Output)
+               A nested object resource.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessageArgs']]] localized_messages: (Output)
+               A nested object resource.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailQuotaInfoArgs']]] quota_infos: (Output)
+               A nested object resource.
+               Structure is documented below.
+        """
+        if error_infos is not None:
+            pulumi.set(__self__, "error_infos", error_infos)
+        if helps is not None:
+            pulumi.set(__self__, "helps", helps)
+        if localized_messages is not None:
+            pulumi.set(__self__, "localized_messages", localized_messages)
+        if quota_infos is not None:
+            pulumi.set(__self__, "quota_infos", quota_infos)
+
+    @property
+    @pulumi.getter(name="errorInfos")
+    def error_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfoArgs']]]]:
+        """
+        (Output)
+        A nested object resource.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "error_infos")
+
+    @error_infos.setter
+    def error_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfoArgs']]]]):
+        pulumi.set(self, "error_infos", value)
+
+    @property
+    @pulumi.getter
+    def helps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpArgs']]]]:
+        """
+        (Output)
+        A nested object resource.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "helps")
+
+    @helps.setter
+    def helps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpArgs']]]]):
+        pulumi.set(self, "helps", value)
+
+    @property
+    @pulumi.getter(name="localizedMessages")
+    def localized_messages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessageArgs']]]]:
+        """
+        (Output)
+        A nested object resource.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "localized_messages")
+
+    @localized_messages.setter
+    def localized_messages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessageArgs']]]]):
+        pulumi.set(self, "localized_messages", value)
+
+    @property
+    @pulumi.getter(name="quotaInfos")
+    def quota_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailQuotaInfoArgs']]]]:
+        """
+        (Output)
+        A nested object resource.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "quota_infos")
+
+    @quota_infos.setter
+    def quota_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailQuotaInfoArgs']]]]):
+        pulumi.set(self, "quota_infos", value)
+
+
+if not MYPY:
+    class RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfoArgsDict(TypedDict):
+        domain: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The logical grouping to which the "reason" belongs. The error domain is typically the registered service name of the tool or product that generates the error. Example: "pubsub.googleapis.com".
+        """
+        metadatas: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        (Output)
+        Additional structured details about this error.
+        """
+        reason: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The reason of the error. This is a constant value that identifies the proximate cause of the error. Error reasons are unique within a particular domain of errors.
+        """
+elif False:
+    RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfoArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfoArgs:
+    def __init__(__self__, *,
+                 domain: Optional[pulumi.Input[str]] = None,
+                 metadatas: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 reason: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] domain: (Output)
+               The logical grouping to which the "reason" belongs. The error domain is typically the registered service name of the tool or product that generates the error. Example: "pubsub.googleapis.com".
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadatas: (Output)
+               Additional structured details about this error.
+        :param pulumi.Input[str] reason: (Output)
+               The reason of the error. This is a constant value that identifies the proximate cause of the error. Error reasons are unique within a particular domain of errors.
+        """
+        if domain is not None:
+            pulumi.set(__self__, "domain", domain)
+        if metadatas is not None:
+            pulumi.set(__self__, "metadatas", metadatas)
+        if reason is not None:
+            pulumi.set(__self__, "reason", reason)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The logical grouping to which the "reason" belongs. The error domain is typically the registered service name of the tool or product that generates the error. Example: "pubsub.googleapis.com".
+        """
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain", value)
+
+    @property
+    @pulumi.getter
+    def metadatas(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        (Output)
+        Additional structured details about this error.
+        """
+        return pulumi.get(self, "metadatas")
+
+    @metadatas.setter
+    def metadatas(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "metadatas", value)
+
+    @property
+    @pulumi.getter
+    def reason(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The reason of the error. This is a constant value that identifies the proximate cause of the error. Error reasons are unique within a particular domain of errors.
+        """
+        return pulumi.get(self, "reason")
+
+    @reason.setter
+    def reason(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "reason", value)
+
+
+if not MYPY:
+    class RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpArgsDict(TypedDict):
+        links: NotRequired[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLinkArgsDict']]]]
+        """
+        (Output)
+        A nested object resource.
+        Structure is documented below.
+        """
+elif False:
+    RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpArgs:
+    def __init__(__self__, *,
+                 links: Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLinkArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLinkArgs']]] links: (Output)
+               A nested object resource.
+               Structure is documented below.
+        """
+        if links is not None:
+            pulumi.set(__self__, "links", links)
+
+    @property
+    @pulumi.getter
+    def links(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLinkArgs']]]]:
+        """
+        (Output)
+        A nested object resource.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "links")
+
+    @links.setter
+    def links(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLinkArgs']]]]):
+        pulumi.set(self, "links", value)
+
+
+if not MYPY:
+    class RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLinkArgsDict(TypedDict):
+        description: NotRequired[pulumi.Input[str]]
+        """
+        An optional description of this resize-request.
+        """
+        url: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The URL of the link.
+        """
+elif False:
+    RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLinkArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLinkArgs:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 url: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] description: An optional description of this resize-request.
+        :param pulumi.Input[str] url: (Output)
+               The URL of the link.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional description of this resize-request.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The URL of the link.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "url", value)
+
+
+if not MYPY:
+    class RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessageArgsDict(TypedDict):
+        locale: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The locale used following the specification defined at https://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: "en-US", "fr-CH", "es-MX"
+        """
+        message: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The localized error message in the above locale.
+        """
+elif False:
+    RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessageArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessageArgs:
+    def __init__(__self__, *,
+                 locale: Optional[pulumi.Input[str]] = None,
+                 message: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] locale: (Output)
+               The locale used following the specification defined at https://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: "en-US", "fr-CH", "es-MX"
+        :param pulumi.Input[str] message: (Output)
+               The localized error message in the above locale.
+        """
+        if locale is not None:
+            pulumi.set(__self__, "locale", locale)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def locale(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The locale used following the specification defined at https://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: "en-US", "fr-CH", "es-MX"
+        """
+        return pulumi.get(self, "locale")
+
+    @locale.setter
+    def locale(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "locale", value)
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The localized error message in the above locale.
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "message", value)
+
+
+if not MYPY:
+    class RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailQuotaInfoArgsDict(TypedDict):
+        dimensions: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        (Output)
+        The map holding related quota dimensions
+        """
+        future_limit: NotRequired[pulumi.Input[int]]
+        """
+        (Output)
+        Future quota limit being rolled out. The limit's unit depends on the quota type or metric.
+        """
+        limit: NotRequired[pulumi.Input[int]]
+        """
+        (Output)
+        Current effective quota limit. The limit's unit depends on the quota type or metric.
+        """
+        limit_name: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The name of the quota limit.
+        """
+        metric_name: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The Compute Engine quota metric name.
+        """
+        rollout_status: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Rollout status of the future quota limit.
+        """
+elif False:
+    RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailQuotaInfoArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailQuotaInfoArgs:
+    def __init__(__self__, *,
+                 dimensions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 future_limit: Optional[pulumi.Input[int]] = None,
+                 limit: Optional[pulumi.Input[int]] = None,
+                 limit_name: Optional[pulumi.Input[str]] = None,
+                 metric_name: Optional[pulumi.Input[str]] = None,
+                 rollout_status: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] dimensions: (Output)
+               The map holding related quota dimensions
+        :param pulumi.Input[int] future_limit: (Output)
+               Future quota limit being rolled out. The limit's unit depends on the quota type or metric.
+        :param pulumi.Input[int] limit: (Output)
+               Current effective quota limit. The limit's unit depends on the quota type or metric.
+        :param pulumi.Input[str] limit_name: (Output)
+               The name of the quota limit.
+        :param pulumi.Input[str] metric_name: (Output)
+               The Compute Engine quota metric name.
+        :param pulumi.Input[str] rollout_status: (Output)
+               Rollout status of the future quota limit.
+        """
+        if dimensions is not None:
+            pulumi.set(__self__, "dimensions", dimensions)
+        if future_limit is not None:
+            pulumi.set(__self__, "future_limit", future_limit)
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if limit_name is not None:
+            pulumi.set(__self__, "limit_name", limit_name)
+        if metric_name is not None:
+            pulumi.set(__self__, "metric_name", metric_name)
+        if rollout_status is not None:
+            pulumi.set(__self__, "rollout_status", rollout_status)
+
+    @property
+    @pulumi.getter
+    def dimensions(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        (Output)
+        The map holding related quota dimensions
+        """
+        return pulumi.get(self, "dimensions")
+
+    @dimensions.setter
+    def dimensions(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "dimensions", value)
+
+    @property
+    @pulumi.getter(name="futureLimit")
+    def future_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Output)
+        Future quota limit being rolled out. The limit's unit depends on the quota type or metric.
+        """
+        return pulumi.get(self, "future_limit")
+
+    @future_limit.setter
+    def future_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "future_limit", value)
+
+    @property
+    @pulumi.getter
+    def limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Output)
+        Current effective quota limit. The limit's unit depends on the quota type or metric.
+        """
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "limit", value)
+
+    @property
+    @pulumi.getter(name="limitName")
+    def limit_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The name of the quota limit.
+        """
+        return pulumi.get(self, "limit_name")
+
+    @limit_name.setter
+    def limit_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "limit_name", value)
+
+    @property
+    @pulumi.getter(name="metricName")
+    def metric_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The Compute Engine quota metric name.
+        """
+        return pulumi.get(self, "metric_name")
+
+    @metric_name.setter
+    def metric_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metric_name", value)
+
+    @property
+    @pulumi.getter(name="rolloutStatus")
+    def rollout_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Rollout status of the future quota limit.
+        """
+        return pulumi.get(self, "rollout_status")
+
+    @rollout_status.setter
+    def rollout_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rollout_status", value)
+
+
+if not MYPY:
     class RegionSecurityPolicyDdosProtectionConfigArgsDict(TypedDict):
         ddos_protection: pulumi.Input[str]
         """
@@ -36799,6 +38476,236 @@ class RegionSecurityPolicyDdosProtectionConfigArgs:
     @ddos_protection.setter
     def ddos_protection(self, value: pulumi.Input[str]):
         pulumi.set(self, "ddos_protection", value)
+
+
+if not MYPY:
+    class RegionSecurityPolicyRuleArgsDict(TypedDict):
+        action: pulumi.Input[str]
+        """
+        The Action to perform when the rule is matched. The following are the valid actions:
+        * allow: allow access to target.
+        * deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for STATUS are 403, 404, and 502.
+        * rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rateLimitOptions to be set.
+        * redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR.
+        * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
+        """
+        priority: pulumi.Input[int]
+        """
+        An integer indicating the priority of a rule in the list.
+        The priority must be a positive value between 0 and 2147483647.
+        Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        An optional description of this resource. Provide this property when you create the resource.
+        """
+        match: NotRequired[pulumi.Input['RegionSecurityPolicyRuleMatchArgsDict']]
+        """
+        A match condition that incoming traffic is evaluated against.
+        If it evaluates to true, the corresponding 'action' is enforced.
+        Structure is documented below.
+        """
+        network_match: NotRequired[pulumi.Input['RegionSecurityPolicyRuleNetworkMatchArgsDict']]
+        """
+        A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced.
+        The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields').
+        Field values may be extracted directly from the packet or derived from it (e.g. 'srcRegionCodes'). Some fields may not be present in every packet (e.g. 'srcPorts'). A user-defined field is only present if the base header is found in the packet and the entire field is in bounds.
+        Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For strings specifying '*' is also equivalent to match all.
+        For a packet to match a rule, all specified match fields must match the corresponding field values derived from the packet.
+        Example:
+        networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff"
+        The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive
+        Structure is documented below.
+        """
+        preconfigured_waf_config: NotRequired[pulumi.Input['RegionSecurityPolicyRulePreconfiguredWafConfigArgsDict']]
+        """
+        Preconfigured WAF configuration to be applied for the rule.
+        If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+        Structure is documented below.
+        """
+        preview: NotRequired[pulumi.Input[bool]]
+        """
+        If set to true, the specified action is not enforced.
+        """
+        rate_limit_options: NotRequired[pulumi.Input['RegionSecurityPolicyRuleRateLimitOptionsArgsDict']]
+        """
+        Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+        Structure is documented below.
+        """
+elif False:
+    RegionSecurityPolicyRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionSecurityPolicyRuleArgs:
+    def __init__(__self__, *,
+                 action: pulumi.Input[str],
+                 priority: pulumi.Input[int],
+                 description: Optional[pulumi.Input[str]] = None,
+                 match: Optional[pulumi.Input['RegionSecurityPolicyRuleMatchArgs']] = None,
+                 network_match: Optional[pulumi.Input['RegionSecurityPolicyRuleNetworkMatchArgs']] = None,
+                 preconfigured_waf_config: Optional[pulumi.Input['RegionSecurityPolicyRulePreconfiguredWafConfigArgs']] = None,
+                 preview: Optional[pulumi.Input[bool]] = None,
+                 rate_limit_options: Optional[pulumi.Input['RegionSecurityPolicyRuleRateLimitOptionsArgs']] = None):
+        """
+        :param pulumi.Input[str] action: The Action to perform when the rule is matched. The following are the valid actions:
+               * allow: allow access to target.
+               * deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for STATUS are 403, 404, and 502.
+               * rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rateLimitOptions to be set.
+               * redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR.
+               * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
+        :param pulumi.Input[int] priority: An integer indicating the priority of a rule in the list.
+               The priority must be a positive value between 0 and 2147483647.
+               Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
+        :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
+        :param pulumi.Input['RegionSecurityPolicyRuleMatchArgs'] match: A match condition that incoming traffic is evaluated against.
+               If it evaluates to true, the corresponding 'action' is enforced.
+               Structure is documented below.
+        :param pulumi.Input['RegionSecurityPolicyRuleNetworkMatchArgs'] network_match: A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced.
+               The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields').
+               Field values may be extracted directly from the packet or derived from it (e.g. 'srcRegionCodes'). Some fields may not be present in every packet (e.g. 'srcPorts'). A user-defined field is only present if the base header is found in the packet and the entire field is in bounds.
+               Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For strings specifying '*' is also equivalent to match all.
+               For a packet to match a rule, all specified match fields must match the corresponding field values derived from the packet.
+               Example:
+               networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff"
+               The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive
+               Structure is documented below.
+        :param pulumi.Input['RegionSecurityPolicyRulePreconfiguredWafConfigArgs'] preconfigured_waf_config: Preconfigured WAF configuration to be applied for the rule.
+               If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+               Structure is documented below.
+        :param pulumi.Input[bool] preview: If set to true, the specified action is not enforced.
+        :param pulumi.Input['RegionSecurityPolicyRuleRateLimitOptionsArgs'] rate_limit_options: Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "priority", priority)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if match is not None:
+            pulumi.set(__self__, "match", match)
+        if network_match is not None:
+            pulumi.set(__self__, "network_match", network_match)
+        if preconfigured_waf_config is not None:
+            pulumi.set(__self__, "preconfigured_waf_config", preconfigured_waf_config)
+        if preview is not None:
+            pulumi.set(__self__, "preview", preview)
+        if rate_limit_options is not None:
+            pulumi.set(__self__, "rate_limit_options", rate_limit_options)
+
+    @property
+    @pulumi.getter
+    def action(self) -> pulumi.Input[str]:
+        """
+        The Action to perform when the rule is matched. The following are the valid actions:
+        * allow: allow access to target.
+        * deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for STATUS are 403, 404, and 502.
+        * rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rateLimitOptions to be set.
+        * redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR.
+        * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: pulumi.Input[str]):
+        pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> pulumi.Input[int]:
+        """
+        An integer indicating the priority of a rule in the list.
+        The priority must be a positive value between 0 and 2147483647.
+        Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: pulumi.Input[int]):
+        pulumi.set(self, "priority", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional description of this resource. Provide this property when you create the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def match(self) -> Optional[pulumi.Input['RegionSecurityPolicyRuleMatchArgs']]:
+        """
+        A match condition that incoming traffic is evaluated against.
+        If it evaluates to true, the corresponding 'action' is enforced.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "match")
+
+    @match.setter
+    def match(self, value: Optional[pulumi.Input['RegionSecurityPolicyRuleMatchArgs']]):
+        pulumi.set(self, "match", value)
+
+    @property
+    @pulumi.getter(name="networkMatch")
+    def network_match(self) -> Optional[pulumi.Input['RegionSecurityPolicyRuleNetworkMatchArgs']]:
+        """
+        A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced.
+        The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields').
+        Field values may be extracted directly from the packet or derived from it (e.g. 'srcRegionCodes'). Some fields may not be present in every packet (e.g. 'srcPorts'). A user-defined field is only present if the base header is found in the packet and the entire field is in bounds.
+        Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For strings specifying '*' is also equivalent to match all.
+        For a packet to match a rule, all specified match fields must match the corresponding field values derived from the packet.
+        Example:
+        networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff"
+        The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive
+        Structure is documented below.
+        """
+        return pulumi.get(self, "network_match")
+
+    @network_match.setter
+    def network_match(self, value: Optional[pulumi.Input['RegionSecurityPolicyRuleNetworkMatchArgs']]):
+        pulumi.set(self, "network_match", value)
+
+    @property
+    @pulumi.getter(name="preconfiguredWafConfig")
+    def preconfigured_waf_config(self) -> Optional[pulumi.Input['RegionSecurityPolicyRulePreconfiguredWafConfigArgs']]:
+        """
+        Preconfigured WAF configuration to be applied for the rule.
+        If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "preconfigured_waf_config")
+
+    @preconfigured_waf_config.setter
+    def preconfigured_waf_config(self, value: Optional[pulumi.Input['RegionSecurityPolicyRulePreconfiguredWafConfigArgs']]):
+        pulumi.set(self, "preconfigured_waf_config", value)
+
+    @property
+    @pulumi.getter
+    def preview(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to true, the specified action is not enforced.
+        """
+        return pulumi.get(self, "preview")
+
+    @preview.setter
+    def preview(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "preview", value)
+
+    @property
+    @pulumi.getter(name="rateLimitOptions")
+    def rate_limit_options(self) -> Optional[pulumi.Input['RegionSecurityPolicyRuleRateLimitOptionsArgs']]:
+        """
+        Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rate_limit_options")
+
+    @rate_limit_options.setter
+    def rate_limit_options(self, value: Optional[pulumi.Input['RegionSecurityPolicyRuleRateLimitOptionsArgs']]):
+        pulumi.set(self, "rate_limit_options", value)
 
 
 if not MYPY:
@@ -38117,7 +40024,7 @@ if not MYPY:
         """
         name: NotRequired[pulumi.Input[str]]
         """
-        The name of this field. Must be unique within the policy.
+        Name of the user-defined field, as given in the definition.
         """
         offset: NotRequired[pulumi.Input[int]]
         """
@@ -38148,7 +40055,7 @@ class RegionSecurityPolicyUserDefinedFieldArgs:
         :param pulumi.Input[str] mask: If specified, apply this mask (bitwise AND) to the field to ignore bits before matching.
                Encoded as a hexadecimal number (starting with "0x").
                The last byte of the field (in network byte order) corresponds to the least significant byte of the mask.
-        :param pulumi.Input[str] name: The name of this field. Must be unique within the policy.
+        :param pulumi.Input[str] name: Name of the user-defined field, as given in the definition.
         :param pulumi.Input[int] offset: Offset of the first byte of the field (in network byte order) relative to 'base'.
         :param pulumi.Input[int] size: Size of the field in bytes. Valid values: 1-4.
         """
@@ -38197,7 +40104,7 @@ class RegionSecurityPolicyUserDefinedFieldArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of this field. Must be unique within the policy.
+        Name of the user-defined field, as given in the definition.
         """
         return pulumi.get(self, "name")
 
@@ -48314,7 +50221,7 @@ if not MYPY:
     class RouterPeerCustomLearnedIpRangeArgsDict(TypedDict):
         range: pulumi.Input[str]
         """
-        The IP range to advertise. The value must be a
+        The IP range to learn. The value must be a
         CIDR-formatted string.
         """
 elif False:
@@ -48325,7 +50232,7 @@ class RouterPeerCustomLearnedIpRangeArgs:
     def __init__(__self__, *,
                  range: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] range: The IP range to advertise. The value must be a
+        :param pulumi.Input[str] range: The IP range to learn. The value must be a
                CIDR-formatted string.
         """
         pulumi.set(__self__, "range", range)
@@ -48334,7 +50241,7 @@ class RouterPeerCustomLearnedIpRangeArgs:
     @pulumi.getter
     def range(self) -> pulumi.Input[str]:
         """
-        The IP range to advertise. The value must be a
+        The IP range to learn. The value must be a
         CIDR-formatted string.
         """
         return pulumi.get(self, "range")

@@ -21,8 +21,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/tags"
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/workstations"
@@ -39,9 +37,7 @@ import (
 // return err
 // }
 // tagValue1, err := tags.NewTagValue(ctx, "tag_value1", &tags.TagValueArgs{
-// Parent: tagKey1.Name.ApplyT(func(name string) (string, error) {
-// return fmt.Sprintf("tagKeys/%v", name), nil
-// }).(pulumi.StringOutput),
+// Parent: tagKey1.ID(),
 // ShortName: pulumi.String("valuename"),
 // })
 // if err != nil {
@@ -101,11 +97,11 @@ import (
 // BootDiskSizeGb: pulumi.Int(35),
 // DisablePublicIpAddresses: pulumi.Bool(true),
 // DisableSsh: pulumi.Bool(false),
-// VmTags: pulumi.All(tagKey1.Name,tagValue1.Name).ApplyT(func(_args []interface{}) (map[string]string, error) {
-// tagKey1Name := _args[0].(string)
-// tagValue1Name := _args[1].(string)
+// VmTags: pulumi.All(tagKey1.ID(),tagValue1.ID()).ApplyT(func(_args []interface{}) (map[string]string, error) {
+// tagKey1Id := _args[0].(string)
+// tagValue1Id := _args[1].(string)
 // return map[string]string{
-// fmt.Sprintf("tagKeys/%v", tagKey1Name): fmt.Sprintf("tagValues/%v", tagValue1Name),
+// tagKey1Id: tagValue1Id,
 // }, nil
 // }).(pulumi.Map[string]stringOutput),
 // },

@@ -32,6 +32,7 @@ class DatabaseInstanceArgs:
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  replica_configuration: Optional[pulumi.Input['DatabaseInstanceReplicaConfigurationArgs']] = None,
+                 replica_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  restore_backup_context: Optional[pulumi.Input['DatabaseInstanceRestoreBackupContextArgs']] = None,
                  root_password: Optional[pulumi.Input[str]] = None,
                  settings: Optional[pulumi.Input['DatabaseInstanceSettingsArgs']] = None):
@@ -75,7 +76,8 @@ class DatabaseInstanceArgs:
                
                - - -
         :param pulumi.Input['DatabaseInstanceReplicaConfigurationArgs'] replica_configuration: The configuration for replication. The
-               configuration is detailed below. Valid only for MySQL instances.
+               configuration is detailed below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] replica_names: List of replica names. Can be updated.
         :param pulumi.Input['DatabaseInstanceRestoreBackupContextArgs'] restore_backup_context: The context needed to restore the database to a backup run. This field will
                cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
                **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
@@ -105,6 +107,8 @@ class DatabaseInstanceArgs:
             pulumi.set(__self__, "region", region)
         if replica_configuration is not None:
             pulumi.set(__self__, "replica_configuration", replica_configuration)
+        if replica_names is not None:
+            pulumi.set(__self__, "replica_names", replica_names)
         if restore_backup_context is not None:
             pulumi.set(__self__, "restore_backup_context", restore_backup_context)
         if root_password is not None:
@@ -264,13 +268,25 @@ class DatabaseInstanceArgs:
     def replica_configuration(self) -> Optional[pulumi.Input['DatabaseInstanceReplicaConfigurationArgs']]:
         """
         The configuration for replication. The
-        configuration is detailed below. Valid only for MySQL instances.
+        configuration is detailed below.
         """
         return pulumi.get(self, "replica_configuration")
 
     @replica_configuration.setter
     def replica_configuration(self, value: Optional[pulumi.Input['DatabaseInstanceReplicaConfigurationArgs']]):
         pulumi.set(self, "replica_configuration", value)
+
+    @property
+    @pulumi.getter(name="replicaNames")
+    def replica_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of replica names. Can be updated.
+        """
+        return pulumi.get(self, "replica_names")
+
+    @replica_names.setter
+    def replica_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "replica_names", value)
 
     @property
     @pulumi.getter(name="restoreBackupContext")
@@ -335,6 +351,7 @@ class _DatabaseInstanceState:
                  public_ip_address: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  replica_configuration: Optional[pulumi.Input['DatabaseInstanceReplicaConfigurationArgs']] = None,
+                 replica_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  restore_backup_context: Optional[pulumi.Input['DatabaseInstanceRestoreBackupContextArgs']] = None,
                  root_password: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
@@ -360,7 +377,7 @@ class _DatabaseInstanceState:
                includes an up-to-date reference of supported versions.
         :param pulumi.Input[bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
                in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
-        :param pulumi.Input[str] dns_name: The dns name of the instance.
+        :param pulumi.Input[str] dns_name: The DNS name of the instance. See [Connect to an instance using Private Service Connect](https://cloud.google.com/sql/docs/mysql/configure-private-service-connect#view-summary-information-cloud-sql-instances-psc-enabled) for more details.
         :param pulumi.Input[str] encryption_key_name: The full path to the encryption key used for the CMEK disk encryption.  Setting
                up disk encryption currently requires manual steps outside of this provider.
                The provided key must be in the same region as the SQL instance.  In order
@@ -389,7 +406,8 @@ class _DatabaseInstanceState:
                
                - - -
         :param pulumi.Input['DatabaseInstanceReplicaConfigurationArgs'] replica_configuration: The configuration for replication. The
-               configuration is detailed below. Valid only for MySQL instances.
+               configuration is detailed below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] replica_names: List of replica names. Can be updated.
         :param pulumi.Input['DatabaseInstanceRestoreBackupContextArgs'] restore_backup_context: The context needed to restore the database to a backup run. This field will
                cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
                **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
@@ -439,6 +457,8 @@ class _DatabaseInstanceState:
             pulumi.set(__self__, "region", region)
         if replica_configuration is not None:
             pulumi.set(__self__, "replica_configuration", replica_configuration)
+        if replica_names is not None:
+            pulumi.set(__self__, "replica_names", replica_names)
         if restore_backup_context is not None:
             pulumi.set(__self__, "restore_backup_context", restore_backup_context)
         if root_password is not None:
@@ -528,7 +548,7 @@ class _DatabaseInstanceState:
     @pulumi.getter(name="dnsName")
     def dns_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The dns name of the instance.
+        The DNS name of the instance. See [Connect to an instance using Private Service Connect](https://cloud.google.com/sql/docs/mysql/configure-private-service-connect#view-summary-information-cloud-sql-instances-psc-enabled) for more details.
         """
         return pulumi.get(self, "dns_name")
 
@@ -698,13 +718,25 @@ class _DatabaseInstanceState:
     def replica_configuration(self) -> Optional[pulumi.Input['DatabaseInstanceReplicaConfigurationArgs']]:
         """
         The configuration for replication. The
-        configuration is detailed below. Valid only for MySQL instances.
+        configuration is detailed below.
         """
         return pulumi.get(self, "replica_configuration")
 
     @replica_configuration.setter
     def replica_configuration(self, value: Optional[pulumi.Input['DatabaseInstanceReplicaConfigurationArgs']]):
         pulumi.set(self, "replica_configuration", value)
+
+    @property
+    @pulumi.getter(name="replicaNames")
+    def replica_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of replica names. Can be updated.
+        """
+        return pulumi.get(self, "replica_names")
+
+    @replica_names.setter
+    def replica_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "replica_names", value)
 
     @property
     @pulumi.getter(name="restoreBackupContext")
@@ -797,6 +829,7 @@ class DatabaseInstance(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  replica_configuration: Optional[pulumi.Input[Union['DatabaseInstanceReplicaConfigurationArgs', 'DatabaseInstanceReplicaConfigurationArgsDict']]] = None,
+                 replica_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  restore_backup_context: Optional[pulumi.Input[Union['DatabaseInstanceRestoreBackupContextArgs', 'DatabaseInstanceRestoreBackupContextArgsDict']]] = None,
                  root_password: Optional[pulumi.Input[str]] = None,
                  settings: Optional[pulumi.Input[Union['DatabaseInstanceSettingsArgs', 'DatabaseInstanceSettingsArgsDict']]] = None,
@@ -910,6 +943,39 @@ class DatabaseInstance(pulumi.CustomResource):
             })
         ```
 
+        ## Switchover (SQL Server Only)
+
+        Users can perform a switchover on any direct `cascadable` replica by following the steps below.
+
+          ~>**WARNING:** Failure to follow these steps can lead to data loss (You will be warned during plan stage). To prevent data loss during a switchover, please verify your plan with the checklist below.
+
+        For a more in-depth walkthrough with example code, see the Switchover Guide
+
+        ### Steps to Invoke Switchover
+
+        Create a `cascadable` replica in a different region from the primary (`cascadable_replica` is set to true in `replica_configuration`)
+
+        #### Invoking switchover in the replica resource:
+        1. Change instance_type from `READ_REPLICA_INSTANCE` to `CLOUD_SQL_INSTANCE`
+        2. Remove `master_instance_name`
+        3. Remove `replica_configuration`
+        4. Add current primary's name to the replica's `replica_names` list
+
+        #### Updating the primary resource:
+        1. Change `instance_type` from `CLOUD_SQL_INSTANCE` to `READ_REPLICA_INSTANCE`
+        2. Set `master_instance_name` to the original replica (which will be primary after switchover)
+        3. Set `replica_configuration` and set `cascadable_replica` to `true`
+        4. Remove original replica from `replica_names`
+           
+            > **NOTE**: Do **not** delete the replica_names field, even if it has no replicas remaining. Set replica_names = [ ] to indicate it having no replicas.
+
+        #### Plan and verify that:
+        - `pulumi preview` outputs **"0 to add, 0 to destroy"**
+        - `pulumi preview` does not say **"must be replaced"** for any resource
+        - Every resource **"will be updated in-place"**
+        - Only the 2 instances involved in switchover have planned changes
+        - (Recommended) Use `deletion_protection` on instances as a safety measure
+
         ## Import
 
         Database instances can be imported using one of any of these accepted formats:
@@ -980,7 +1046,8 @@ class DatabaseInstance(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[Union['DatabaseInstanceReplicaConfigurationArgs', 'DatabaseInstanceReplicaConfigurationArgsDict']] replica_configuration: The configuration for replication. The
-               configuration is detailed below. Valid only for MySQL instances.
+               configuration is detailed below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] replica_names: List of replica names. Can be updated.
         :param pulumi.Input[Union['DatabaseInstanceRestoreBackupContextArgs', 'DatabaseInstanceRestoreBackupContextArgsDict']] restore_backup_context: The context needed to restore the database to a backup run. This field will
                cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
                **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
@@ -1104,6 +1171,39 @@ class DatabaseInstance(pulumi.CustomResource):
             })
         ```
 
+        ## Switchover (SQL Server Only)
+
+        Users can perform a switchover on any direct `cascadable` replica by following the steps below.
+
+          ~>**WARNING:** Failure to follow these steps can lead to data loss (You will be warned during plan stage). To prevent data loss during a switchover, please verify your plan with the checklist below.
+
+        For a more in-depth walkthrough with example code, see the Switchover Guide
+
+        ### Steps to Invoke Switchover
+
+        Create a `cascadable` replica in a different region from the primary (`cascadable_replica` is set to true in `replica_configuration`)
+
+        #### Invoking switchover in the replica resource:
+        1. Change instance_type from `READ_REPLICA_INSTANCE` to `CLOUD_SQL_INSTANCE`
+        2. Remove `master_instance_name`
+        3. Remove `replica_configuration`
+        4. Add current primary's name to the replica's `replica_names` list
+
+        #### Updating the primary resource:
+        1. Change `instance_type` from `CLOUD_SQL_INSTANCE` to `READ_REPLICA_INSTANCE`
+        2. Set `master_instance_name` to the original replica (which will be primary after switchover)
+        3. Set `replica_configuration` and set `cascadable_replica` to `true`
+        4. Remove original replica from `replica_names`
+           
+            > **NOTE**: Do **not** delete the replica_names field, even if it has no replicas remaining. Set replica_names = [ ] to indicate it having no replicas.
+
+        #### Plan and verify that:
+        - `pulumi preview` outputs **"0 to add, 0 to destroy"**
+        - `pulumi preview` does not say **"must be replaced"** for any resource
+        - Every resource **"will be updated in-place"**
+        - Only the 2 instances involved in switchover have planned changes
+        - (Recommended) Use `deletion_protection` on instances as a safety measure
+
         ## Import
 
         Database instances can be imported using one of any of these accepted formats:
@@ -1160,6 +1260,7 @@ class DatabaseInstance(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  replica_configuration: Optional[pulumi.Input[Union['DatabaseInstanceReplicaConfigurationArgs', 'DatabaseInstanceReplicaConfigurationArgsDict']]] = None,
+                 replica_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  restore_backup_context: Optional[pulumi.Input[Union['DatabaseInstanceRestoreBackupContextArgs', 'DatabaseInstanceRestoreBackupContextArgsDict']]] = None,
                  root_password: Optional[pulumi.Input[str]] = None,
                  settings: Optional[pulumi.Input[Union['DatabaseInstanceSettingsArgs', 'DatabaseInstanceSettingsArgsDict']]] = None,
@@ -1185,6 +1286,7 @@ class DatabaseInstance(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
             __props__.__dict__["replica_configuration"] = None if replica_configuration is None else pulumi.Output.secret(replica_configuration)
+            __props__.__dict__["replica_names"] = replica_names
             __props__.__dict__["restore_backup_context"] = restore_backup_context
             __props__.__dict__["root_password"] = None if root_password is None else pulumi.Output.secret(root_password)
             __props__.__dict__["settings"] = settings
@@ -1230,6 +1332,7 @@ class DatabaseInstance(pulumi.CustomResource):
             public_ip_address: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             replica_configuration: Optional[pulumi.Input[Union['DatabaseInstanceReplicaConfigurationArgs', 'DatabaseInstanceReplicaConfigurationArgsDict']]] = None,
+            replica_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             restore_backup_context: Optional[pulumi.Input[Union['DatabaseInstanceRestoreBackupContextArgs', 'DatabaseInstanceRestoreBackupContextArgsDict']]] = None,
             root_password: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
@@ -1260,7 +1363,7 @@ class DatabaseInstance(pulumi.CustomResource):
                includes an up-to-date reference of supported versions.
         :param pulumi.Input[bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
                in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
-        :param pulumi.Input[str] dns_name: The dns name of the instance.
+        :param pulumi.Input[str] dns_name: The DNS name of the instance. See [Connect to an instance using Private Service Connect](https://cloud.google.com/sql/docs/mysql/configure-private-service-connect#view-summary-information-cloud-sql-instances-psc-enabled) for more details.
         :param pulumi.Input[str] encryption_key_name: The full path to the encryption key used for the CMEK disk encryption.  Setting
                up disk encryption currently requires manual steps outside of this provider.
                The provided key must be in the same region as the SQL instance.  In order
@@ -1289,7 +1392,8 @@ class DatabaseInstance(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[Union['DatabaseInstanceReplicaConfigurationArgs', 'DatabaseInstanceReplicaConfigurationArgsDict']] replica_configuration: The configuration for replication. The
-               configuration is detailed below. Valid only for MySQL instances.
+               configuration is detailed below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] replica_names: List of replica names. Can be updated.
         :param pulumi.Input[Union['DatabaseInstanceRestoreBackupContextArgs', 'DatabaseInstanceRestoreBackupContextArgsDict']] restore_backup_context: The context needed to restore the database to a backup run. This field will
                cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
                **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
@@ -1324,6 +1428,7 @@ class DatabaseInstance(pulumi.CustomResource):
         __props__.__dict__["public_ip_address"] = public_ip_address
         __props__.__dict__["region"] = region
         __props__.__dict__["replica_configuration"] = replica_configuration
+        __props__.__dict__["replica_names"] = replica_names
         __props__.__dict__["restore_backup_context"] = restore_backup_context
         __props__.__dict__["root_password"] = root_password
         __props__.__dict__["self_link"] = self_link
@@ -1388,7 +1493,7 @@ class DatabaseInstance(pulumi.CustomResource):
     @pulumi.getter(name="dnsName")
     def dns_name(self) -> pulumi.Output[str]:
         """
-        The dns name of the instance.
+        The DNS name of the instance. See [Connect to an instance using Private Service Connect](https://cloud.google.com/sql/docs/mysql/configure-private-service-connect#view-summary-information-cloud-sql-instances-psc-enabled) for more details.
         """
         return pulumi.get(self, "dns_name")
 
@@ -1506,9 +1611,17 @@ class DatabaseInstance(pulumi.CustomResource):
     def replica_configuration(self) -> pulumi.Output['outputs.DatabaseInstanceReplicaConfiguration']:
         """
         The configuration for replication. The
-        configuration is detailed below. Valid only for MySQL instances.
+        configuration is detailed below.
         """
         return pulumi.get(self, "replica_configuration")
+
+    @property
+    @pulumi.getter(name="replicaNames")
+    def replica_names(self) -> pulumi.Output[Sequence[str]]:
+        """
+        List of replica names. Can be updated.
+        """
+        return pulumi.get(self, "replica_names")
 
     @property
     @pulumi.getter(name="restoreBackupContext")

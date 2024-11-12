@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class RouterPeerCustomLearnedIpRange
     {
         /// <summary>
-        /// The IP range to advertise. The value must be a
+        /// The IP range to learn. The value must be a
         /// CIDR-formatted string.
         /// </summary>
         public readonly string Range;

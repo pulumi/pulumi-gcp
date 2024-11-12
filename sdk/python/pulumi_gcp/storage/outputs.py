@@ -1338,7 +1338,7 @@ class InsightsReportConfigObjectMetadataReportOptions(dict):
         :param Sequence[str] metadata_fields: The metadata fields included in an inventory report.
         :param 'InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgs' storage_destination_options: Options for where the inventory reports are stored.
                Structure is documented below.
-        :param 'InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs' storage_filters: A nested object resource
+        :param 'InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs' storage_filters: A nested object resource.
                Structure is documented below.
         """
         pulumi.set(__self__, "metadata_fields", metadata_fields)
@@ -1367,7 +1367,7 @@ class InsightsReportConfigObjectMetadataReportOptions(dict):
     @pulumi.getter(name="storageFilters")
     def storage_filters(self) -> Optional['outputs.InsightsReportConfigObjectMetadataReportOptionsStorageFilters']:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "storage_filters")

@@ -137,7 +137,7 @@ type VpnConnection struct {
 	Cluster pulumi.StringOutput `pulumi:"cluster"`
 	// The time when the VPN connection was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	Details VpnConnectionDetailArrayOutput `pulumi:"details"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -219,7 +219,7 @@ type vpnConnectionState struct {
 	Cluster *string `pulumi:"cluster"`
 	// The time when the VPN connection was created.
 	CreateTime *string `pulumi:"createTime"`
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	Details []VpnConnectionDetail `pulumi:"details"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -261,7 +261,7 @@ type VpnConnectionState struct {
 	Cluster pulumi.StringPtrInput
 	// The time when the VPN connection was created.
 	CreateTime pulumi.StringPtrInput
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	Details VpnConnectionDetailArrayInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -460,7 +460,7 @@ func (o VpnConnectionOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpnConnection) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// A nested object resource
+// A nested object resource.
 // Structure is documented below.
 func (o VpnConnectionOutput) Details() VpnConnectionDetailArrayOutput {
 	return o.ApplyT(func(v *VpnConnection) VpnConnectionDetailArrayOutput { return v.Details }).(VpnConnectionDetailArrayOutput)

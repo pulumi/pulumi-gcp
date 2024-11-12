@@ -49,7 +49,7 @@ class Hl7StoreArgs:
         :param pulumi.Input[str] name: The resource name for the Hl7V2Store.
                ** Changing this property may recreate the Hl7v2 store (removing all data) **
         :param pulumi.Input['Hl7StoreNotificationConfigArgs'] notification_config: (Optional, Deprecated)
-               A nested object resource
+               A nested object resource.
                Structure is documented below.
                
                > **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
@@ -57,7 +57,7 @@ class Hl7StoreArgs:
                message (both Ingest & Create) on the corresponding notification destination. Only the message name
                is sent as part of the notification. Supplied by the client.
                Structure is documented below.
-        :param pulumi.Input['Hl7StoreParserConfigArgs'] parser_config: A nested object resource
+        :param pulumi.Input['Hl7StoreParserConfigArgs'] parser_config: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[bool] reject_duplicate_message: Determines whether duplicate messages are allowed.
         """
@@ -135,7 +135,7 @@ class Hl7StoreArgs:
     def notification_config(self) -> Optional[pulumi.Input['Hl7StoreNotificationConfigArgs']]:
         """
         (Optional, Deprecated)
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
 
         > **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
@@ -165,7 +165,7 @@ class Hl7StoreArgs:
     @pulumi.getter(name="parserConfig")
     def parser_config(self) -> Optional[pulumi.Input['Hl7StoreParserConfigArgs']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "parser_config")
@@ -222,7 +222,7 @@ class _Hl7StoreState:
         :param pulumi.Input[str] name: The resource name for the Hl7V2Store.
                ** Changing this property may recreate the Hl7v2 store (removing all data) **
         :param pulumi.Input['Hl7StoreNotificationConfigArgs'] notification_config: (Optional, Deprecated)
-               A nested object resource
+               A nested object resource.
                Structure is documented below.
                
                > **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
@@ -230,7 +230,7 @@ class _Hl7StoreState:
                message (both Ingest & Create) on the corresponding notification destination. Only the message name
                is sent as part of the notification. Supplied by the client.
                Structure is documented below.
-        :param pulumi.Input['Hl7StoreParserConfigArgs'] parser_config: A nested object resource
+        :param pulumi.Input['Hl7StoreParserConfigArgs'] parser_config: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
@@ -330,7 +330,7 @@ class _Hl7StoreState:
     def notification_config(self) -> Optional[pulumi.Input['Hl7StoreNotificationConfigArgs']]:
         """
         (Optional, Deprecated)
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
 
         > **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
@@ -360,7 +360,7 @@ class _Hl7StoreState:
     @pulumi.getter(name="parserConfig")
     def parser_config(self) -> Optional[pulumi.Input['Hl7StoreParserConfigArgs']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "parser_config")
@@ -607,7 +607,7 @@ class Hl7Store(pulumi.CustomResource):
         :param pulumi.Input[str] name: The resource name for the Hl7V2Store.
                ** Changing this property may recreate the Hl7v2 store (removing all data) **
         :param pulumi.Input[Union['Hl7StoreNotificationConfigArgs', 'Hl7StoreNotificationConfigArgsDict']] notification_config: (Optional, Deprecated)
-               A nested object resource
+               A nested object resource.
                Structure is documented below.
                
                > **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
@@ -615,7 +615,7 @@ class Hl7Store(pulumi.CustomResource):
                message (both Ingest & Create) on the corresponding notification destination. Only the message name
                is sent as part of the notification. Supplied by the client.
                Structure is documented below.
-        :param pulumi.Input[Union['Hl7StoreParserConfigArgs', 'Hl7StoreParserConfigArgsDict']] parser_config: A nested object resource
+        :param pulumi.Input[Union['Hl7StoreParserConfigArgs', 'Hl7StoreParserConfigArgsDict']] parser_config: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[bool] reject_duplicate_message: Determines whether duplicate messages are allowed.
         """
@@ -883,7 +883,7 @@ class Hl7Store(pulumi.CustomResource):
         :param pulumi.Input[str] name: The resource name for the Hl7V2Store.
                ** Changing this property may recreate the Hl7v2 store (removing all data) **
         :param pulumi.Input[Union['Hl7StoreNotificationConfigArgs', 'Hl7StoreNotificationConfigArgsDict']] notification_config: (Optional, Deprecated)
-               A nested object resource
+               A nested object resource.
                Structure is documented below.
                
                > **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
@@ -891,7 +891,7 @@ class Hl7Store(pulumi.CustomResource):
                message (both Ingest & Create) on the corresponding notification destination. Only the message name
                is sent as part of the notification. Supplied by the client.
                Structure is documented below.
-        :param pulumi.Input[Union['Hl7StoreParserConfigArgs', 'Hl7StoreParserConfigArgsDict']] parser_config: A nested object resource
+        :param pulumi.Input[Union['Hl7StoreParserConfigArgs', 'Hl7StoreParserConfigArgsDict']] parser_config: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
@@ -967,7 +967,7 @@ class Hl7Store(pulumi.CustomResource):
     def notification_config(self) -> pulumi.Output[Optional['outputs.Hl7StoreNotificationConfig']]:
         """
         (Optional, Deprecated)
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
 
         > **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
@@ -989,7 +989,7 @@ class Hl7Store(pulumi.CustomResource):
     @pulumi.getter(name="parserConfig")
     def parser_config(self) -> pulumi.Output['outputs.Hl7StoreParserConfig']:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "parser_config")

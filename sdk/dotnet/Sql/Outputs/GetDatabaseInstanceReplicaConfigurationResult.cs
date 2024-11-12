@@ -18,6 +18,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly string CaCertificate;
         /// <summary>
+        /// Specifies if a SQL Server replica is a cascadable replica. A cascadable replica is a SQL Server cross region replica that supports replica(s) under it.
+        /// </summary>
+        public readonly bool CascadableReplica;
+        /// <summary>
         /// PEM representation of the replica's x509 certificate.
         /// </summary>
         public readonly string ClientCertificate;
@@ -62,6 +66,8 @@ namespace Pulumi.Gcp.Sql.Outputs
         private GetDatabaseInstanceReplicaConfigurationResult(
             string caCertificate,
 
+            bool cascadableReplica,
+
             string clientCertificate,
 
             string clientKey,
@@ -83,6 +89,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             bool verifyServerCertificate)
         {
             CaCertificate = caCertificate;
+            CascadableReplica = cascadableReplica;
             ClientCertificate = clientCertificate;
             ClientKey = clientKey;
             ConnectRetryInterval = connectRetryInterval;

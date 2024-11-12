@@ -41,6 +41,12 @@ __all__ = [
     'AiEndpointIamBindingConditionArgsDict',
     'AiEndpointIamMemberConditionArgs',
     'AiEndpointIamMemberConditionArgsDict',
+    'AiEndpointPredictRequestResponseLoggingConfigArgs',
+    'AiEndpointPredictRequestResponseLoggingConfigArgsDict',
+    'AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationArgs',
+    'AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationArgsDict',
+    'AiEndpointPrivateServiceConnectConfigArgs',
+    'AiEndpointPrivateServiceConnectConfigArgsDict',
     'AiFeatureGroupBigQueryArgs',
     'AiFeatureGroupBigQueryArgsDict',
     'AiFeatureGroupBigQueryBigQuerySourceArgs',
@@ -1217,6 +1223,184 @@ class AiEndpointIamMemberConditionArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class AiEndpointPredictRequestResponseLoggingConfigArgsDict(TypedDict):
+        bigquery_destination: NotRequired[pulumi.Input['AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationArgsDict']]
+        """
+        BigQuery table for logging. If only given a project, a new dataset will be created with name `logging_<endpoint-display-name>_<endpoint-id>` where will be made BigQuery-dataset-name compatible (e.g. most special characters will become underscores). If no table name is given, a new table will be created with name `request_response_logging`
+        Structure is documented below.
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        If logging is enabled or not.
+        """
+        sampling_rate: NotRequired[pulumi.Input[float]]
+        """
+        Percentage of requests to be logged, expressed as a fraction in range(0,1]
+        """
+elif False:
+    AiEndpointPredictRequestResponseLoggingConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiEndpointPredictRequestResponseLoggingConfigArgs:
+    def __init__(__self__, *,
+                 bigquery_destination: Optional[pulumi.Input['AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationArgs']] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 sampling_rate: Optional[pulumi.Input[float]] = None):
+        """
+        :param pulumi.Input['AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationArgs'] bigquery_destination: BigQuery table for logging. If only given a project, a new dataset will be created with name `logging_<endpoint-display-name>_<endpoint-id>` where will be made BigQuery-dataset-name compatible (e.g. most special characters will become underscores). If no table name is given, a new table will be created with name `request_response_logging`
+               Structure is documented below.
+        :param pulumi.Input[bool] enabled: If logging is enabled or not.
+        :param pulumi.Input[float] sampling_rate: Percentage of requests to be logged, expressed as a fraction in range(0,1]
+        """
+        if bigquery_destination is not None:
+            pulumi.set(__self__, "bigquery_destination", bigquery_destination)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if sampling_rate is not None:
+            pulumi.set(__self__, "sampling_rate", sampling_rate)
+
+    @property
+    @pulumi.getter(name="bigqueryDestination")
+    def bigquery_destination(self) -> Optional[pulumi.Input['AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationArgs']]:
+        """
+        BigQuery table for logging. If only given a project, a new dataset will be created with name `logging_<endpoint-display-name>_<endpoint-id>` where will be made BigQuery-dataset-name compatible (e.g. most special characters will become underscores). If no table name is given, a new table will be created with name `request_response_logging`
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bigquery_destination")
+
+    @bigquery_destination.setter
+    def bigquery_destination(self, value: Optional[pulumi.Input['AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationArgs']]):
+        pulumi.set(self, "bigquery_destination", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If logging is enabled or not.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="samplingRate")
+    def sampling_rate(self) -> Optional[pulumi.Input[float]]:
+        """
+        Percentage of requests to be logged, expressed as a fraction in range(0,1]
+        """
+        return pulumi.get(self, "sampling_rate")
+
+    @sampling_rate.setter
+    def sampling_rate(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "sampling_rate", value)
+
+
+if not MYPY:
+    class AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationArgsDict(TypedDict):
+        output_uri: NotRequired[pulumi.Input[str]]
+        """
+        BigQuery URI to a project or table, up to 2000 characters long. When only the project is specified, the Dataset and Table is created. When the full table reference is specified, the Dataset must exist and table must not exist. Accepted forms: - BigQuery path. For example: `bq://projectId` or `bq://projectId.bqDatasetId` or `bq://projectId.bqDatasetId.bqTableId`.
+        """
+elif False:
+    AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationArgs:
+    def __init__(__self__, *,
+                 output_uri: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] output_uri: BigQuery URI to a project or table, up to 2000 characters long. When only the project is specified, the Dataset and Table is created. When the full table reference is specified, the Dataset must exist and table must not exist. Accepted forms: - BigQuery path. For example: `bq://projectId` or `bq://projectId.bqDatasetId` or `bq://projectId.bqDatasetId.bqTableId`.
+        """
+        if output_uri is not None:
+            pulumi.set(__self__, "output_uri", output_uri)
+
+    @property
+    @pulumi.getter(name="outputUri")
+    def output_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        BigQuery URI to a project or table, up to 2000 characters long. When only the project is specified, the Dataset and Table is created. When the full table reference is specified, the Dataset must exist and table must not exist. Accepted forms: - BigQuery path. For example: `bq://projectId` or `bq://projectId.bqDatasetId` or `bq://projectId.bqDatasetId.bqTableId`.
+        """
+        return pulumi.get(self, "output_uri")
+
+    @output_uri.setter
+    def output_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "output_uri", value)
+
+
+if not MYPY:
+    class AiEndpointPrivateServiceConnectConfigArgsDict(TypedDict):
+        enable_private_service_connect: pulumi.Input[bool]
+        """
+        Required. If true, expose the IndexEndpoint via private service connect.
+        """
+        enable_secure_private_service_connect: NotRequired[pulumi.Input[bool]]
+        """
+        If set to true, enable secure private service connect with IAM authorization. Otherwise, private service connect will be done without authorization. Note latency will be slightly increased if authorization is enabled.
+        """
+        project_allowlists: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A list of Projects from which the forwarding rule will target the service attachment.
+        """
+elif False:
+    AiEndpointPrivateServiceConnectConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AiEndpointPrivateServiceConnectConfigArgs:
+    def __init__(__self__, *,
+                 enable_private_service_connect: pulumi.Input[bool],
+                 enable_secure_private_service_connect: Optional[pulumi.Input[bool]] = None,
+                 project_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[bool] enable_private_service_connect: Required. If true, expose the IndexEndpoint via private service connect.
+        :param pulumi.Input[bool] enable_secure_private_service_connect: If set to true, enable secure private service connect with IAM authorization. Otherwise, private service connect will be done without authorization. Note latency will be slightly increased if authorization is enabled.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] project_allowlists: A list of Projects from which the forwarding rule will target the service attachment.
+        """
+        pulumi.set(__self__, "enable_private_service_connect", enable_private_service_connect)
+        if enable_secure_private_service_connect is not None:
+            pulumi.set(__self__, "enable_secure_private_service_connect", enable_secure_private_service_connect)
+        if project_allowlists is not None:
+            pulumi.set(__self__, "project_allowlists", project_allowlists)
+
+    @property
+    @pulumi.getter(name="enablePrivateServiceConnect")
+    def enable_private_service_connect(self) -> pulumi.Input[bool]:
+        """
+        Required. If true, expose the IndexEndpoint via private service connect.
+        """
+        return pulumi.get(self, "enable_private_service_connect")
+
+    @enable_private_service_connect.setter
+    def enable_private_service_connect(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enable_private_service_connect", value)
+
+    @property
+    @pulumi.getter(name="enableSecurePrivateServiceConnect")
+    def enable_secure_private_service_connect(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to true, enable secure private service connect with IAM authorization. Otherwise, private service connect will be done without authorization. Note latency will be slightly increased if authorization is enabled.
+        """
+        return pulumi.get(self, "enable_secure_private_service_connect")
+
+    @enable_secure_private_service_connect.setter
+    def enable_secure_private_service_connect(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_secure_private_service_connect", value)
+
+    @property
+    @pulumi.getter(name="projectAllowlists")
+    def project_allowlists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of Projects from which the forwarding rule will target the service attachment.
+        """
+        return pulumi.get(self, "project_allowlists")
+
+    @project_allowlists.setter
+    def project_allowlists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "project_allowlists", value)
 
 
 if not MYPY:

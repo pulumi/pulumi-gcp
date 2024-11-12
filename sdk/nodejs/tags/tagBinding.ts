@@ -33,13 +33,13 @@ import * as utilities from "../utilities";
  *     description: "For keyname resources.",
  * });
  * const value = new gcp.tags.TagValue("value", {
- *     parent: pulumi.interpolate`tagKeys/${key.name}`,
+ *     parent: key.id,
  *     shortName: "valuename",
  *     description: "For valuename resources.",
  * });
  * const binding = new gcp.tags.TagBinding("binding", {
  *     parent: pulumi.interpolate`//cloudresourcemanager.googleapis.com/projects/${project.number}`,
- *     tagValue: pulumi.interpolate`tagValues/${value.name}`,
+ *     tagValue: value.id,
  * });
  * ```
  *

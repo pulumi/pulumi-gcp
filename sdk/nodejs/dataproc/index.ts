@@ -50,6 +50,16 @@ export type ClusterIAMPolicy = import("./clusterIAMPolicy").ClusterIAMPolicy;
 export const ClusterIAMPolicy: typeof import("./clusterIAMPolicy").ClusterIAMPolicy = null as any;
 utilities.lazyLoad(exports, ["ClusterIAMPolicy"], () => require("./clusterIAMPolicy"));
 
+export { GdcApplicationEnvironmentArgs, GdcApplicationEnvironmentState } from "./gdcApplicationEnvironment";
+export type GdcApplicationEnvironment = import("./gdcApplicationEnvironment").GdcApplicationEnvironment;
+export const GdcApplicationEnvironment: typeof import("./gdcApplicationEnvironment").GdcApplicationEnvironment = null as any;
+utilities.lazyLoad(exports, ["GdcApplicationEnvironment"], () => require("./gdcApplicationEnvironment"));
+
+export { GdcServiceInstanceArgs, GdcServiceInstanceState } from "./gdcServiceInstance";
+export type GdcServiceInstance = import("./gdcServiceInstance").GdcServiceInstance;
+export const GdcServiceInstance: typeof import("./gdcServiceInstance").GdcServiceInstance = null as any;
+utilities.lazyLoad(exports, ["GdcServiceInstance"], () => require("./gdcServiceInstance"));
+
 export { GetAutoscalingPolicyIamPolicyArgs, GetAutoscalingPolicyIamPolicyResult, GetAutoscalingPolicyIamPolicyOutputArgs } from "./getAutoscalingPolicyIamPolicy";
 export const getAutoscalingPolicyIamPolicy: typeof import("./getAutoscalingPolicyIamPolicy").getAutoscalingPolicyIamPolicy = null as any;
 export const getAutoscalingPolicyIamPolicyOutput: typeof import("./getAutoscalingPolicyIamPolicy").getAutoscalingPolicyIamPolicyOutput = null as any;
@@ -168,6 +178,10 @@ const _module = {
                 return new ClusterIAMMember(name, <any>undefined, { urn })
             case "gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy":
                 return new ClusterIAMPolicy(name, <any>undefined, { urn })
+            case "gcp:dataproc/gdcApplicationEnvironment:GdcApplicationEnvironment":
+                return new GdcApplicationEnvironment(name, <any>undefined, { urn })
+            case "gcp:dataproc/gdcServiceInstance:GdcServiceInstance":
+                return new GdcServiceInstance(name, <any>undefined, { urn })
             case "gcp:dataproc/job:Job":
                 return new Job(name, <any>undefined, { urn })
             case "gcp:dataproc/jobIAMBinding:JobIAMBinding":
@@ -208,6 +222,8 @@ pulumi.runtime.registerResourceModule("gcp", "dataproc/cluster", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataproc/clusterIAMBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataproc/clusterIAMMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataproc/clusterIAMPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataproc/gdcApplicationEnvironment", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataproc/gdcServiceInstance", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataproc/job", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataproc/jobIAMBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataproc/jobIAMMember", _module)

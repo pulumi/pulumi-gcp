@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides {
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -19,7 +19,7 @@ public final class InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides
 
     private InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides() {}
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */

@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
@@ -16,6 +17,12 @@ public final class GetServiceTemplateVolumeGc {
      * 
      */
     private String bucket;
+    /**
+     * @return A list of flags to pass to the gcsfuse command for configuring this volume.
+     * Flags should be passed without leading dashes.
+     * 
+     */
+    private List<String> mountOptions;
     /**
      * @return If true, mount the GCS bucket as read-only
      * 
@@ -29,6 +36,14 @@ public final class GetServiceTemplateVolumeGc {
      */
     public String bucket() {
         return this.bucket;
+    }
+    /**
+     * @return A list of flags to pass to the gcsfuse command for configuring this volume.
+     * Flags should be passed without leading dashes.
+     * 
+     */
+    public List<String> mountOptions() {
+        return this.mountOptions;
     }
     /**
      * @return If true, mount the GCS bucket as read-only
@@ -48,11 +63,13 @@ public final class GetServiceTemplateVolumeGc {
     @CustomType.Builder
     public static final class Builder {
         private String bucket;
+        private List<String> mountOptions;
         private Boolean readOnly;
         public Builder() {}
         public Builder(GetServiceTemplateVolumeGc defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bucket = defaults.bucket;
+    	      this.mountOptions = defaults.mountOptions;
     	      this.readOnly = defaults.readOnly;
         }
 
@@ -65,6 +82,17 @@ public final class GetServiceTemplateVolumeGc {
             return this;
         }
         @CustomType.Setter
+        public Builder mountOptions(List<String> mountOptions) {
+            if (mountOptions == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateVolumeGc", "mountOptions");
+            }
+            this.mountOptions = mountOptions;
+            return this;
+        }
+        public Builder mountOptions(String... mountOptions) {
+            return mountOptions(List.of(mountOptions));
+        }
+        @CustomType.Setter
         public Builder readOnly(Boolean readOnly) {
             if (readOnly == null) {
               throw new MissingRequiredPropertyException("GetServiceTemplateVolumeGc", "readOnly");
@@ -75,6 +103,7 @@ public final class GetServiceTemplateVolumeGc {
         public GetServiceTemplateVolumeGc build() {
             final var _resultValue = new GetServiceTemplateVolumeGc();
             _resultValue.bucket = bucket;
+            _resultValue.mountOptions = mountOptions;
             _resultValue.readOnly = readOnly;
             return _resultValue;
         }

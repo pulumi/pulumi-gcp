@@ -1,6 +1,6 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Venelin <venelin@pulumi.com>
-Date: Fri, 2 Aug 2024 15:32:30 +0300
+Date: Tue, 12 Nov 2024 15:52:45 +0000
 Subject: [PATCH] docs patching
 
 
@@ -175,7 +175,7 @@ index 8eeb84614..4d5284637 100644
    an empty value.
  
 diff --git a/website/docs/r/bigquery_table.html.markdown b/website/docs/r/bigquery_table.html.markdown
-index 5fe162032..41205bbec 100644
+index 75c460cc7..294d64298 100644
 --- a/website/docs/r/bigquery_table.html.markdown
 +++ b/website/docs/r/bigquery_table.html.markdown
 @@ -11,7 +11,7 @@ Creates a table resource in a dataset for Google BigQuery. For more information
@@ -210,7 +210,7 @@ index 5fe162032..41205bbec 100644
 +    limitations with default values, this value is required to be
      explicitly set.
  
- * `allow_jagged_rows` (Optional) - Indicates if BigQuery should accept rows
+ * `allow_jagged_rows` - (Optional) Indicates if BigQuery should accept rows
 diff --git a/website/docs/r/bigtable_instance.html.markdown b/website/docs/r/bigtable_instance.html.markdown
 index c9b952fde..a17feabfb 100644
 --- a/website/docs/r/bigtable_instance.html.markdown
@@ -375,7 +375,7 @@ index a68f58813..650247567 100644
    **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
    Please refer to the field `effective_annotations` for all of the annotations present on the resource.
 diff --git a/website/docs/r/cloud_run_service.html.markdown b/website/docs/r/cloud_run_service.html.markdown
-index 78167878c..a7e143ddc 100644
+index 318d7fa21..bef470c6b 100644
 --- a/website/docs/r/cloud_run_service.html.markdown
 +++ b/website/docs/r/cloud_run_service.html.markdown
 @@ -31,8 +31,63 @@ To get more information about Service, see:
@@ -605,7 +605,7 @@ index a6bbbfa4b..92a6811de 100644
  ## Example Usage - Backend Service Signed Url Key
  
 diff --git a/website/docs/r/compute_disk.html.markdown b/website/docs/r/compute_disk.html.markdown
-index 0d44ace83..2e715bdbd 100644
+index ffd957ef2..97eab8598 100644
 --- a/website/docs/r/compute_disk.html.markdown
 +++ b/website/docs/r/compute_disk.html.markdown
 @@ -43,9 +43,6 @@ To get more information about Disk, see:
@@ -669,7 +669,7 @@ index df91843c5..40b452e03 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_instance.html.markdown b/website/docs/r/compute_instance.html.markdown
-index 0ca4bb31c..95e4223f4 100644
+index ccd6d6b7b..95e4223f4 100644
 --- a/website/docs/r/compute_instance.html.markdown
 +++ b/website/docs/r/compute_instance.html.markdown
 @@ -140,7 +140,7 @@ The following arguments are supported:
@@ -690,19 +690,18 @@ index 0ca4bb31c..95e4223f4 100644
  
  * `hostname` - (Optional) A custom hostname for the instance. Must be a fully qualified DNS name and RFC-1035-valid.
    Valid format is a series of labels 1-63 characters long matching the regular expression `[a-z]([-a-z0-9]*[a-z0-9])`, concatenated with periods.
-@@ -163,11 +163,6 @@ The following arguments are supported:
+@@ -163,10 +163,6 @@ The following arguments are supported:
  
  * `guest_accelerator` - (Optional) List of the type and count of accelerator cards attached to the instance. Structure [documented below](#nested_guest_accelerator).
      **Note:** GPU accelerators can only be used with [`on_host_maintenance`](#on_host_maintenance) option set to TERMINATE.
--    **Note**: This field uses [attr-as-block mode](https://www.terraform.io/docs/configuration/attr-as-blocks.html) to avoid
--    breaking users during the 0.12 upgrade. To explicitly send a list
--    of zero objects you must use the following syntax:
--    `example=[]`
--    For more details about this behavior, see [this section](https://www.terraform.io/docs/configuration/attr-as-blocks.html#defining-a-fixed-object-collection-value).
+-    **Note**: As of 6.0.0, [argument syntax](https://developer.hashicorp.com/terraform/language/syntax/configuration#arguments) 
+-    is no longer supported for this field in favor of [block syntax](https://developer.hashicorp.com/terraform/language/syntax/configuration#blocks).
+-    To dynamically set a list of guest accelerators, use [dynamic blocks](https://developer.hashicorp.com/terraform/language/expressions/dynamic-blocks).
+-    To set an empty list, use a single `guest_accelerator` block with `count = 0`.
  
  * `labels` - (Optional) A map of key/value label pairs to assign to the instance.
      **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-@@ -202,8 +197,7 @@ only distinction is that this separate attribute will cause a recreate on
+@@ -201,8 +197,7 @@ only distinction is that this separate attribute will cause a recreate on
  modification.  On import, `metadata_startup_script` will not be set - if you
  choose to specify it you will see a diff immediately after import causing a
  destroy/recreate operation. If importing an instance and specifying this value
@@ -1091,7 +1090,7 @@ index 3c624d8fc..a7a982c18 100644
  
  ## Example Usage
 diff --git a/website/docs/r/compute_region_disk.html.markdown b/website/docs/r/compute_region_disk.html.markdown
-index b1eff06f2..ab536bd1a 100644
+index 9df790d20..723d71634 100644
 --- a/website/docs/r/compute_region_disk.html.markdown
 +++ b/website/docs/r/compute_region_disk.html.markdown
 @@ -43,9 +43,8 @@ To get more information about RegionDisk, see:
@@ -1132,7 +1131,7 @@ index db7f57628..dceb98ac2 100644
  
  ```hcl
 diff --git a/website/docs/r/compute_region_instance_group_manager.html.markdown b/website/docs/r/compute_region_instance_group_manager.html.markdown
-index cdc4e9963..0f0c5cb65 100644
+index 465bfb373..af3c606c4 100644
 --- a/website/docs/r/compute_region_instance_group_manager.html.markdown
 +++ b/website/docs/r/compute_region_instance_group_manager.html.markdown
 @@ -166,7 +166,7 @@ The following arguments are supported:
@@ -1464,7 +1463,7 @@ index 000000000..62d6db522
 +
 +This resource supports [User Project Overrides](https://registry.terraform.io/providers/hashicorp/google/latest/docs/guides/provider_reference#user_project_override).
 diff --git a/website/docs/r/compute_security_policy.html.markdown b/website/docs/r/compute_security_policy.html.markdown
-index 194dcc798..199221c16 100644
+index 00c73a545..4ff6df593 100644
 --- a/website/docs/r/compute_security_policy.html.markdown
 +++ b/website/docs/r/compute_security_policy.html.markdown
 @@ -10,7 +10,7 @@ A Security Policy defines an IP blacklist or whitelist that protects load balanc
@@ -1582,7 +1581,7 @@ index f18c91533..924ad4cc0 100644
  <div class = "oics-button" style="float: right; margin: 0 0 -15px">
    <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md&cloudshell_working_dir=vpn_tunnel_basic&open_in_editor=main.tf" target="_blank">
 diff --git a/website/docs/r/container_cluster.html.markdown b/website/docs/r/container_cluster.html.markdown
-index cb9e51a02..e25c46c60 100644
+index 229241d93..2e60bccbe 100644
 --- a/website/docs/r/container_cluster.html.markdown
 +++ b/website/docs/r/container_cluster.html.markdown
 @@ -13,15 +13,12 @@ To get more information about GKE clusters, see:
@@ -1664,7 +1663,7 @@ index cb9e51a02..e25c46c60 100644
      To update nodes in other node pools, use the `version` attribute on the node pool.
  
  * `notification_config` - (Optional) Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is [documented below](#nested_notification_config).
-@@ -317,7 +335,7 @@ When updating this field, GKE imposes specific version requirements. See
+@@ -320,7 +338,7 @@ When updating this field, GKE imposes specific version requirements. See
  [Selecting a new release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels#selecting_a_new_release_channel)
  for more details; the `google_container_engine_versions` datasource can provide
  the default version for a channel. Note that removing the `release_channel`
@@ -1673,16 +1672,18 @@ index cb9e51a02..e25c46c60 100644
  release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
  channel. Structure is [documented below](#nested_release_channel).
  
-@@ -884,8 +902,6 @@ gvnic {
+@@ -894,10 +912,6 @@ gvnic {
  
  * `guest_accelerator` - (Optional) List of the type and count of accelerator cards attached to the instance.
      Structure [documented below](#nested_guest_accelerator).
--    To support removal of guest_accelerators in Terraform 0.12 this field is an
--    [Attribute as Block](/docs/configuration/attr-as-blocks.html)
+-    **Note**: As of 6.0.0, [argument syntax](https://developer.hashicorp.com/terraform/language/syntax/configuration#arguments) 
+-    is no longer supported for this field in favor of [block syntax](https://developer.hashicorp.com/terraform/language/syntax/configuration#blocks).
+-    To dynamically set a list of guest accelerators, use [dynamic blocks](https://developer.hashicorp.com/terraform/language/expressions/dynamic-blocks).
+-    To set an empty list, use a single `guest_accelerator` block with `count = 0`.
  
  * `image_type` - (Optional) The image type to use for this node. Note that changing the image type
      will delete and recreate all nodes in the node pool.
-@@ -906,7 +922,7 @@ gvnic {
+@@ -918,7 +932,7 @@ gvnic {
  * `metadata` - (Optional) The metadata key/value pairs assigned to instances in
      the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
      `true` by the API; if `metadata` is set but that default value is not
@@ -1691,7 +1692,7 @@ index cb9e51a02..e25c46c60 100644
      value in your config.
  
  * `min_cpu_platform` - (Optional) Minimum CPU platform to be used by this instance.
-@@ -931,10 +947,7 @@ gvnic {
+@@ -943,10 +957,7 @@ gvnic {
      See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
      for more information. Defaults to false.
  
@@ -1703,7 +1704,7 @@ index cb9e51a02..e25c46c60 100644
  
  * `service_account` - (Optional) The service account to be used by the Node VMs.
      If not specified, the "default" service account is used.
-@@ -948,13 +961,14 @@ gvnic {
+@@ -960,13 +971,14 @@ gvnic {
  
  * `resource_manager_tags` - (Optional) A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
  
@@ -1725,7 +1726,7 @@ index cb9e51a02..e25c46c60 100644
  
  * `workload_metadata_config` - (Optional) Metadata configuration to expose to workloads on the node pool.
      Structure is [documented below](#nested_workload_metadata_config).
-@@ -1013,6 +1027,20 @@ sole_tenant_config {
+@@ -1025,6 +1037,20 @@ sole_tenant_config {
  
  * `enable_nested_virtualization`- (Optional) Defines whether the instance should have nested virtualization enabled. Defaults to false.
  
@@ -1746,7 +1747,7 @@ index cb9e51a02..e25c46c60 100644
  <a name="nested_ephemeral_storage_config"></a>The `ephemeral_storage_config` block supports:
  
  * `local_ssd_count` (Required) - Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
-@@ -1182,7 +1210,7 @@ for more details. This field only applies to private clusters, when
+@@ -1204,7 +1230,7 @@ for more details. This field only applies to private clusters, when
  * `private_endpoint_subnetwork` - (Optional) Subnetwork in cluster's network where master's endpoint will be provisioned.
  
  * `master_global_access_config` (Optional) - Controls cluster master global
@@ -1755,7 +1756,7 @@ index cb9e51a02..e25c46c60 100644
  not modify the previously-set value. Structure is [documented below](#nested_master_global_access_config).
  
  In addition, the `private_cluster_config` allows access to the following read-only fields:
-@@ -1284,9 +1312,9 @@ Enables monitoring and attestation of the boot integrity of the instance. The at
+@@ -1306,9 +1332,9 @@ Enables monitoring and attestation of the boot integrity of the instance. The at
  
  * `mode` (Required) How to expose the node metadata to the workload running on the node.
      Accepted values are:
@@ -2266,7 +2267,7 @@ index 000000000..665a0f154
 +
 +This resource supports [User Project Overrides](https://registry.terraform.io/providers/hashicorp/google/latest/docs/guides/provider_reference#user_project_override).
 diff --git a/website/docs/r/firebase_web_app.html.markdown b/website/docs/r/firebase_web_app.html.markdown
-index 41b54deca..c0cab52cc 100644
+index 8632c3518..fa7a47c43 100644
 --- a/website/docs/r/firebase_web_app.html.markdown
 +++ b/website/docs/r/firebase_web_app.html.markdown
 @@ -21,9 +21,6 @@ description: |-
@@ -3248,7 +3249,7 @@ index 9a3a1f78f..6f8ccd37e 100644
    the sensitive_labels block, but cannot be configured in both places.
  
 diff --git a/website/docs/r/monitoring_slo.html.markdown b/website/docs/r/monitoring_slo.html.markdown
-index 364042a24..2559d9137 100644
+index 8978b4bdb..f5824a993 100644
 --- a/website/docs/r/monitoring_slo.html.markdown
 +++ b/website/docs/r/monitoring_slo.html.markdown
 @@ -53,7 +53,7 @@ resource "google_monitoring_slo" "appeng_slo" {
@@ -3306,7 +3307,7 @@ index 364042a24..2559d9137 100644
    goal = 0.9
    rolling_period_days = 20
 diff --git a/website/docs/r/monitoring_uptime_check_config.html.markdown b/website/docs/r/monitoring_uptime_check_config.html.markdown
-index 042cec9a6..5f4fe6afb 100644
+index c4933d88d..2328e5497 100644
 --- a/website/docs/r/monitoring_uptime_check_config.html.markdown
 +++ b/website/docs/r/monitoring_uptime_check_config.html.markdown
 @@ -28,9 +28,8 @@ To get more information about UptimeCheckConfig, see:
@@ -3400,7 +3401,7 @@ index 663f57a0a..b38168aef 100644
  <div class = "oics-button" style="float: right; margin: 0 0 -15px">
    <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md&cloudshell_working_dir=secret_version_basic&open_in_editor=main.tf" target="_blank">
 diff --git a/website/docs/r/security_scanner_scan_config.html.markdown b/website/docs/r/security_scanner_scan_config.html.markdown
-index 4326d560c..cee5453e3 100644
+index acb39f605..35cc434e4 100644
 --- a/website/docs/r/security_scanner_scan_config.html.markdown
 +++ b/website/docs/r/security_scanner_scan_config.html.markdown
 @@ -21,18 +21,13 @@ description: |-
@@ -3557,7 +3558,7 @@ index da83c6829..cd1223aa8 100644
  
  <a name="nested_encryption_config"></a>The `encryption_config` block supports:
 diff --git a/website/docs/r/sql_database_instance.html.markdown b/website/docs/r/sql_database_instance.html.markdown
-index 6469d2373..44c3849bf 100644
+index 0346b9a2e..566e36212 100644
 --- a/website/docs/r/sql_database_instance.html.markdown
 +++ b/website/docs/r/sql_database_instance.html.markdown
 @@ -10,12 +10,12 @@ Creates a new Google SQL Database Instance. For more information, see the [offic
@@ -3584,7 +3585,7 @@ index 6469d2373..44c3849bf 100644
      created. This is done because after a name is used, it cannot be reused for
      up to [one week](https://cloud.google.com/sql/docs/delete-instance).
  
-@@ -240,7 +240,7 @@ includes an up-to-date reference of supported versions.
+@@ -242,7 +242,7 @@ includes an up-to-date reference of supported versions.
  
  * `encryption_key_name` - (Optional)
      The full path to the encryption key used for the CMEK disk encryption.  Setting
@@ -3593,7 +3594,7 @@ index 6469d2373..44c3849bf 100644
      The provided key must be in the same region as the SQL instance.  In order
      to use this feature, a special kind of service account must be created and
      granted permission on this key.  This step can currently only be done
-@@ -248,20 +248,16 @@ includes an up-to-date reference of supported versions.
+@@ -250,20 +250,16 @@ includes an up-to-date reference of supported versions.
      That service account needs the `Cloud KMS > Cloud KMS CryptoKey Encrypter/Decrypter` role on your
      key - please see [this step](https://cloud.google.com/sql/docs/mysql/configure-cmek#grantkey).
  
@@ -3619,7 +3620,7 @@ index 6469d2373..44c3849bf 100644
      configuration is detailed below.
  
  The `settings` block supports:
-@@ -505,7 +501,7 @@ The optional `clone` block supports:
+@@ -511,7 +507,7 @@ The optional `clone` block supports:
  * `allocated_ip_range` -  (Optional) The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])?.
  
  The optional `restore_backup_context` block supports:
@@ -3628,7 +3629,7 @@ index 6469d2373..44c3849bf 100644
  block during resource creation/update will trigger the restore action after the resource is created/updated.
  
  * `backup_run_id` - (Required) The ID of the backup run to restore from.
-@@ -543,21 +539,13 @@ instance.
+@@ -549,21 +545,13 @@ instance.
  
    * A `PRIVATE` address is an address for an instance which has been configured to use private networking see: [Private IP](https://cloud.google.com/sql/docs/mysql/private-ip).
  

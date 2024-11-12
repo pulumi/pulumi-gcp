@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceGroupManagerAllInstancesConfig;
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceGroupManagerAutoHealingPolicy;
+import com.pulumi.gcp.compute.outputs.GetRegionInstanceGroupManagerInstanceFlexibilityPolicy;
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceGroupManagerInstanceLifecyclePolicy;
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceGroupManagerNamedPort;
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceGroupManagerParam;
@@ -40,6 +41,7 @@ public final class GetRegionInstanceGroupManagerResult {
      * 
      */
     private String id;
+    private List<GetRegionInstanceGroupManagerInstanceFlexibilityPolicy> instanceFlexibilityPolicies;
     private String instanceGroup;
     private List<GetRegionInstanceGroupManagerInstanceLifecyclePolicy> instanceLifecyclePolicies;
     private String listManagedInstancesResults;
@@ -94,6 +96,9 @@ public final class GetRegionInstanceGroupManagerResult {
      */
     public String id() {
         return this.id;
+    }
+    public List<GetRegionInstanceGroupManagerInstanceFlexibilityPolicy> instanceFlexibilityPolicies() {
+        return this.instanceFlexibilityPolicies;
     }
     public String instanceGroup() {
         return this.instanceGroup;
@@ -180,6 +185,7 @@ public final class GetRegionInstanceGroupManagerResult {
         private List<String> distributionPolicyZones;
         private String fingerprint;
         private String id;
+        private List<GetRegionInstanceGroupManagerInstanceFlexibilityPolicy> instanceFlexibilityPolicies;
         private String instanceGroup;
         private List<GetRegionInstanceGroupManagerInstanceLifecyclePolicy> instanceLifecyclePolicies;
         private String listManagedInstancesResults;
@@ -214,6 +220,7 @@ public final class GetRegionInstanceGroupManagerResult {
     	      this.distributionPolicyZones = defaults.distributionPolicyZones;
     	      this.fingerprint = defaults.fingerprint;
     	      this.id = defaults.id;
+    	      this.instanceFlexibilityPolicies = defaults.instanceFlexibilityPolicies;
     	      this.instanceGroup = defaults.instanceGroup;
     	      this.instanceLifecyclePolicies = defaults.instanceLifecyclePolicies;
     	      this.listManagedInstancesResults = defaults.listManagedInstancesResults;
@@ -318,6 +325,17 @@ public final class GetRegionInstanceGroupManagerResult {
             }
             this.id = id;
             return this;
+        }
+        @CustomType.Setter
+        public Builder instanceFlexibilityPolicies(List<GetRegionInstanceGroupManagerInstanceFlexibilityPolicy> instanceFlexibilityPolicies) {
+            if (instanceFlexibilityPolicies == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceGroupManagerResult", "instanceFlexibilityPolicies");
+            }
+            this.instanceFlexibilityPolicies = instanceFlexibilityPolicies;
+            return this;
+        }
+        public Builder instanceFlexibilityPolicies(GetRegionInstanceGroupManagerInstanceFlexibilityPolicy... instanceFlexibilityPolicies) {
+            return instanceFlexibilityPolicies(List.of(instanceFlexibilityPolicies));
         }
         @CustomType.Setter
         public Builder instanceGroup(String instanceGroup) {
@@ -531,6 +549,7 @@ public final class GetRegionInstanceGroupManagerResult {
             _resultValue.distributionPolicyZones = distributionPolicyZones;
             _resultValue.fingerprint = fingerprint;
             _resultValue.id = id;
+            _resultValue.instanceFlexibilityPolicies = instanceFlexibilityPolicies;
             _resultValue.instanceGroup = instanceGroup;
             _resultValue.instanceLifecyclePolicies = instanceLifecyclePolicies;
             _resultValue.listManagedInstancesResults = listManagedInstancesResults;
