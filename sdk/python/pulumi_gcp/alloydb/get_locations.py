@@ -98,7 +98,7 @@ def get_locations(project: Optional[str] = None,
         locations=pulumi.get(__ret__, 'locations'),
         project=pulumi.get(__ret__, 'project'))
 def get_locations_output(project: Optional[pulumi.Input[Optional[str]]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLocationsResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLocationsResult]:
     """
     Use this data source to get information about the available locations. For more details refer the [API docs](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations).
 
@@ -116,7 +116,7 @@ def get_locations_output(project: Optional[pulumi.Input[Optional[str]]] = None,
     """
     __args__ = dict()
     __args__['project'] = project
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:alloydb/getLocations:getLocations', __args__, opts=opts, typ=GetLocationsResult)
     return __ret__.apply(lambda __response__: GetLocationsResult(
         id=pulumi.get(__response__, 'id'),

@@ -181,7 +181,7 @@ def get_kms_secret_asymmetric(ciphertext: Optional[str] = None,
 def get_kms_secret_asymmetric_output(ciphertext: Optional[pulumi.Input[str]] = None,
                                      crc32: Optional[pulumi.Input[Optional[str]]] = None,
                                      crypto_key_version: Optional[pulumi.Input[str]] = None,
-                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKMSSecretAsymmetricResult]:
+                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKMSSecretAsymmetricResult]:
     """
     ## Example Usage
 
@@ -256,7 +256,7 @@ def get_kms_secret_asymmetric_output(ciphertext: Optional[pulumi.Input[str]] = N
     __args__['ciphertext'] = ciphertext
     __args__['crc32'] = crc32
     __args__['cryptoKeyVersion'] = crypto_key_version
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:kms/getKMSSecretAsymmetric:getKMSSecretAsymmetric', __args__, opts=opts, typ=GetKMSSecretAsymmetricResult)
     return __ret__.apply(lambda __response__: GetKMSSecretAsymmetricResult(
         ciphertext=pulumi.get(__response__, 'ciphertext'),
