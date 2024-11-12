@@ -4,6 +4,7 @@ package gcp
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"log"
 	"path"
@@ -1778,22 +1779,42 @@ func Provider() tfbridge.ProviderInfo {
 			"google_cloud_run_domain_mapping": {Tok: gcpResource(gcpCloudRun, "DomainMapping")},
 			"google_cloud_run_service": {
 				Tok: gcpResource(gcpCloudRun, "Service"),
-				// PreCheckCallback: func(
-				// 	ctx context.Context, config resource.PropertyMap, meta resource.PropertyMap,
-				// ) (resource.PropertyMap, error) {
-				// 	panic("I am your provider")
+				// // PreCheckCallback: func(
+				// // 	ctx context.Context, config resource.PropertyMap, meta resource.PropertyMap,
+				// // ) (resource.PropertyMap, error) {
+				// // 	panic("I am your provider")
+				// // },
+				// Fields: map[string]*tfbridge.SchemaInfo{
+				// 	"name": tfbridge.AutoNameWithCustomOptions("name",
+				// 		// Name is auto-named without any suffix.
+				// 		tfbridge.AutoNameOptions{Randlen: 0}),
+				// 	"autogenerate_revision_name": {
+				// 		Default: &tfbridge.DefaultInfo{
+				// 			Value: true,
+				// 		},
+				// 	},
 				// },
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"name": tfbridge.AutoNameWithCustomOptions("name",
-						// Name is auto-named without any suffix.
-						tfbridge.AutoNameOptions{Randlen: 0}),
-					"autogenerate_revision_name": {
-						Default: &tfbridge.DefaultInfo{
-							Value: true,
-						},
-					},
+				Fields: nameField(lowercaseAutoName()),
+				TransformFromState: func(ctx context.Context, state resource.PropertyMap) (resource.PropertyMap, error) {
+					jsonBytes, err := json.Marshal(state)
+					if err != nil {
+						return nil, err
+					}
+					log.Printf("state: %s", string(jsonBytes))
+					if _, md := state["metadata"]; md {
+						metadata := state["metadata"].ObjectValue()
+						if metadata == nil {
+							return nil, fmt.Errorf("metadata is not an object")
+						}
+						if _, rv := metadata["resourceVersion"]; rv {
+							delete(metadata, "resourceVersion")
+							state["metadata"] = resource.NewObjectProperty(metadata)
+							return state, nil
+						}
+						return state, nil
+					}
+					return state, nil
 				},
-				// Fields: nameField(lowercaseAutoName())
 			},
 			"google_cloud_run_service_iam_binding": {
 				Tok:  gcpResource(gcpCloudRun, "IamBinding"),
